@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-13 01:43+0000\n"
+"POT-Creation-Date: 2025-11-13 02:54+0000\n"
 "PO-Revision-Date: 2025-11-13 03:32+0300\n"
 "Last-Translator: Serhii Starovoitov <drommer.94@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
@@ -242,7 +242,7 @@ msgstr "Тривалість історії (максимальна)"
 
 #: src/contents/ui/Autogain.qml:108 src/contents/ui/Convolver.qml:225
 #: src/contents/ui/Convolver.qml:325 src/contents/ui/Convolver.qml:379
-#: src/contents/ui/PreferencesSheet.qml:211 src/contents/ui/Reverb.qml:68
+#: src/contents/ui/PreferencesSheet.qml:203 src/contents/ui/Reverb.qml:68
 msgid "s"
 msgstr "с"
 
@@ -343,9 +343,9 @@ msgstr "Діапазон"
 #: src/contents/ui/MultibandGate.qml:466 src/contents/ui/MultibandGate.qml:491
 #: src/contents/ui/PageStreamsEffects.qml:467
 #: src/contents/ui/PipeWirePage.qml:403
-#: src/contents/ui/PreferencesSheet.qml:384
-#: src/contents/ui/PreferencesSheet.qml:399
-#: src/contents/ui/PreferencesSheet.qml:483 src/contents/ui/Reverb.qml:127
+#: src/contents/ui/PreferencesSheet.qml:376
+#: src/contents/ui/PreferencesSheet.qml:391
+#: src/contents/ui/PreferencesSheet.qml:497 src/contents/ui/Reverb.qml:127
 #: src/contents/ui/Reverb.qml:144 src/contents/ui/Reverb.qml:161
 msgid "Hz"
 msgstr "Гц"
@@ -532,9 +532,9 @@ msgstr "Атака"
 #: src/contents/ui/MultibandGate.qml:428 src/contents/ui/MultibandGate.qml:443
 #: src/contents/ui/PageStreamsEffects.qml:609 src/contents/ui/Pitch.qml:58
 #: src/contents/ui/Pitch.qml:75 src/contents/ui/Pitch.qml:93
-#: src/contents/ui/PreferencesSheet.qml:227
-#: src/contents/ui/PreferencesSheet.qml:264
-#: src/contents/ui/PreferencesSheet.qml:420 src/contents/ui/RNNoise.qml:148
+#: src/contents/ui/PreferencesSheet.qml:219
+#: src/contents/ui/PreferencesSheet.qml:256
+#: src/contents/ui/PreferencesSheet.qml:412 src/contents/ui/RNNoise.qml:148
 #: src/contents/ui/Reverb.qml:84 src/contents/ui/StereoTools.qml:283
 msgid "ms"
 msgstr "мс"
@@ -1185,13 +1185,11 @@ msgctxt "@info:placeholder"
 msgid "No description set"
 msgstr "Опис не встановлено"
 
-#: src/contents/ui/DelegatePluginsList.qml:106
-#: src/contents/ui/DelegatePluginsList.qml:127
+#: src/contents/ui/DelegatePluginsList.qml:104
 msgid "Toggle this effect"
 msgstr "Увімкнути цей ефект"
 
-#: src/contents/ui/DelegatePluginsList.qml:114
-#: src/contents/ui/DelegatePluginsList.qml:135
+#: src/contents/ui/DelegatePluginsList.qml:112
 msgid "Remove this effect"
 msgstr "Вилучити цей ефект"
 
@@ -2024,12 +2022,12 @@ msgid "No Clients"
 msgstr "Немає клієнтів"
 
 #: src/contents/ui/PipeWirePage.qml:297
-#: src/contents/ui/PreferencesSheet.qml:240
+#: src/contents/ui/PreferencesSheet.qml:232
 msgid "State"
 msgstr "Стан"
 
 #: src/contents/ui/PipeWirePage.qml:304
-#: src/contents/ui/PreferencesSheet.qml:247
+#: src/contents/ui/PreferencesSheet.qml:239
 msgid "Enabled"
 msgstr "Увімкнено"
 
@@ -2126,62 +2124,55 @@ msgid "Database"
 msgstr "База даних"
 
 #: src/contents/ui/PreferencesSheet.qml:40
+#: src/contents/ui/PreferencesSheet.qml:264
+msgid "Style"
+msgstr "Стиль"
+
+#: src/contents/ui/PreferencesSheet.qml:46
 msgid "Experimental Features"
 msgstr "Експериментальні можливості"
 
-#: src/contents/ui/PreferencesSheet.qml:53
+#: src/contents/ui/PreferencesSheet.qml:59
 msgid "Enable service mode"
 msgstr "Увімкнути сервісний режим"
 
-#: src/contents/ui/PreferencesSheet.qml:54
+#: src/contents/ui/PreferencesSheet.qml:60
 msgid "Easy Effects is active in background when the window is closed."
 msgstr "Easy Effects активний у фоновому режимі, коли вікно закрито."
 
-#: src/contents/ui/PreferencesSheet.qml:66
+#: src/contents/ui/PreferencesSheet.qml:72
 msgid "Autostart on login"
 msgstr "Автозапуск при вході в систему"
 
-#: src/contents/ui/PreferencesSheet.qml:67
+#: src/contents/ui/PreferencesSheet.qml:73
 msgid "Easy Effects is launched at user session startup."
 msgstr "Easy Effects запускається під час запуску сеансу користувача."
 
-#: src/contents/ui/PreferencesSheet.qml:80
-msgid "Reduce effects list controls"
-msgstr "Приховати елементи керування у списку ефектів"
-
-#: src/contents/ui/PreferencesSheet.qml:81
-msgid ""
-"Action buttons in the effects list are moved inside a context menu for a "
-"more compact view."
-msgstr ""
-"Кнопки дій у списку ефектів переміщено в контекстне меню для більш "
-"компактного відображення."
-
-#: src/contents/ui/PreferencesSheet.qml:94
+#: src/contents/ui/PreferencesSheet.qml:86
 msgid "Show the tray icon"
 msgstr "Показати значок у треї"
 
-#: src/contents/ui/PreferencesSheet.qml:114
+#: src/contents/ui/PreferencesSheet.qml:106
 msgid "Process all output streams"
 msgstr "Обробляти всі вихідні потоки"
 
-#: src/contents/ui/PreferencesSheet.qml:125
+#: src/contents/ui/PreferencesSheet.qml:117
 msgid "Process all input streams"
 msgstr "Обробити всі вхідні потоки"
 
-#: src/contents/ui/PreferencesSheet.qml:136
+#: src/contents/ui/PreferencesSheet.qml:128
 msgid "Ignore streams from monitor of devices"
 msgstr "Ігнорувати потоки з монітора пристроїв"
 
-#: src/contents/ui/PreferencesSheet.qml:147
+#: src/contents/ui/PreferencesSheet.qml:139
 msgid "Use cubic volume"
 msgstr "Використовувати кубічний об'єм"
 
-#: src/contents/ui/PreferencesSheet.qml:158
+#: src/contents/ui/PreferencesSheet.qml:150
 msgid "Ignore system notifications"
 msgstr "Ігнорувати системні сповіщення"
 
-#: src/contents/ui/PreferencesSheet.qml:159
+#: src/contents/ui/PreferencesSheet.qml:151
 msgid ""
 "Processing system notifications may cause crackling sound, so it would be "
 "better to ignore them, but for some presets it may be recommended since they "
@@ -2191,19 +2182,19 @@ msgstr ""
 "ігнорувати, але для деяких попередніх налаштувань це може бути "
 "рекомендовано, оскільки вони можуть звучати занадто голосно."
 
-#: src/contents/ui/PreferencesSheet.qml:170
+#: src/contents/ui/PreferencesSheet.qml:162
 msgid "Enable/disable input monitoring"
 msgstr "Увімкнути/вимкнути прослуховування входу"
 
-#: src/contents/ui/PreferencesSheet.qml:181
+#: src/contents/ui/PreferencesSheet.qml:173
 msgid "Mic monitor plays to output effects pipeline"
 msgstr "Прослуховування мікрофона через вихідний конвеєр ефектів"
 
-#: src/contents/ui/PreferencesSheet.qml:192
+#: src/contents/ui/PreferencesSheet.qml:184
 msgid "Enable the inactivity timeout"
 msgstr "Увімкнути час очікування при бездіяльності"
 
-#: src/contents/ui/PreferencesSheet.qml:193
+#: src/contents/ui/PreferencesSheet.qml:185
 msgid ""
 "When all streams are inactive, Easy Effects pipeline remains loaded for an "
 "extra amount of time."
@@ -2211,15 +2202,15 @@ msgstr ""
 "Коли всі потоки неактивні, конвеєр Easy Effects залишається завантаженим "
 "протягом додаткового часу."
 
-#: src/contents/ui/PreferencesSheet.qml:205
+#: src/contents/ui/PreferencesSheet.qml:197
 msgid "Inactivity timeout"
 msgstr "Час очікування при бездіяльності"
 
-#: src/contents/ui/PreferencesSheet.qml:219
+#: src/contents/ui/PreferencesSheet.qml:211
 msgid "Level meters label"
 msgstr "Позначки індикаторів рівня"
 
-#: src/contents/ui/PreferencesSheet.qml:220
+#: src/contents/ui/PreferencesSheet.qml:212
 msgid ""
 "The time it takes for the level meter labels to be updated when the current "
 "level is below the last highest one."
@@ -2227,147 +2218,155 @@ msgstr ""
 "Час, необхідний для оновлення позначок індикатора рівня, коли поточний "
 "рівень нижчий за останній найвищий."
 
-#: src/contents/ui/PreferencesSheet.qml:258
+#: src/contents/ui/PreferencesSheet.qml:250
 msgid "Audio delay compensation"
 msgstr "Компенсація затримки звуку"
 
-#: src/contents/ui/PreferencesSheet.qml:272
-msgid "Style"
-msgstr "Стиль"
-
-#: src/contents/ui/PreferencesSheet.qml:279
+#: src/contents/ui/PreferencesSheet.qml:271
 msgid "Color scheme"
 msgstr "Колірна схема"
 
-#: src/contents/ui/PreferencesSheet.qml:283
+#: src/contents/ui/PreferencesSheet.qml:275
 msgid "Automatic"
 msgstr "Автоматична"
 
-#: src/contents/ui/PreferencesSheet.qml:283
+#: src/contents/ui/PreferencesSheet.qml:275
 msgid "Light"
 msgstr "Світла"
 
-#: src/contents/ui/PreferencesSheet.qml:283
+#: src/contents/ui/PreferencesSheet.qml:275
 msgid "Dark"
 msgstr "Темна"
 
-#: src/contents/ui/PreferencesSheet.qml:293
+#: src/contents/ui/PreferencesSheet.qml:285
 msgid "Color theme"
 msgstr "Колірна тема"
 
-#: src/contents/ui/PreferencesSheet.qml:297
+#: src/contents/ui/PreferencesSheet.qml:289
 msgid "Green"
 msgstr "Зелена"
 
-#: src/contents/ui/PreferencesSheet.qml:297
+#: src/contents/ui/PreferencesSheet.qml:289
 msgid "Green neon"
 msgstr "Зелений неон"
 
-#: src/contents/ui/PreferencesSheet.qml:297
+#: src/contents/ui/PreferencesSheet.qml:289
 msgid "Mix"
 msgstr "Змішана"
 
-#: src/contents/ui/PreferencesSheet.qml:297
+#: src/contents/ui/PreferencesSheet.qml:289
 msgid "Orange"
 msgstr "Помаранчева"
 
-#: src/contents/ui/PreferencesSheet.qml:297
+#: src/contents/ui/PreferencesSheet.qml:289
 msgid "Yellow"
 msgstr "Жовта"
 
-#: src/contents/ui/PreferencesSheet.qml:297
+#: src/contents/ui/PreferencesSheet.qml:289
 msgid "Blue"
 msgstr "Синя"
 
-#: src/contents/ui/PreferencesSheet.qml:297
+#: src/contents/ui/PreferencesSheet.qml:289
 msgid "Purple"
 msgstr "Фіолетова"
 
-#: src/contents/ui/PreferencesSheet.qml:297
+#: src/contents/ui/PreferencesSheet.qml:289
 msgid "Grey"
 msgstr "Сіра"
 
-#: src/contents/ui/PreferencesSheet.qml:307
+#: src/contents/ui/PreferencesSheet.qml:299
 msgid "Shape"
 msgstr "Форма"
 
-#: src/contents/ui/PreferencesSheet.qml:311
+#: src/contents/ui/PreferencesSheet.qml:303
 msgid "Bars"
 msgstr "Стовпці"
 
-#: src/contents/ui/PreferencesSheet.qml:311
+#: src/contents/ui/PreferencesSheet.qml:303
 msgid "Lines"
 msgstr "Лінії"
 
-#: src/contents/ui/PreferencesSheet.qml:311
+#: src/contents/ui/PreferencesSheet.qml:303
 msgid "Dots"
 msgstr "Крапки"
 
-#: src/contents/ui/PreferencesSheet.qml:311
+#: src/contents/ui/PreferencesSheet.qml:303
 msgid "Area"
 msgstr "Площа"
 
-#: src/contents/ui/PreferencesSheet.qml:321
+#: src/contents/ui/PreferencesSheet.qml:313
 msgid "Dynamic scale"
 msgstr "Динамічний масштаб"
 
-#: src/contents/ui/PreferencesSheet.qml:332
+#: src/contents/ui/PreferencesSheet.qml:324
 msgid "Logarithmic frequency axis"
 msgstr "Логарифмічна вісь частоти"
 
-#: src/contents/ui/PreferencesSheet.qml:343
+#: src/contents/ui/PreferencesSheet.qml:335
 msgid "Points"
 msgstr "Роздільна здатність"
 
-#: src/contents/ui/PreferencesSheet.qml:357
+#: src/contents/ui/PreferencesSheet.qml:349
 msgid "Height"
 msgstr "Висота"
 
-#: src/contents/ui/PreferencesSheet.qml:363
+#: src/contents/ui/PreferencesSheet.qml:355
 msgid "px"
 msgstr "пікс"
 
-#: src/contents/ui/PreferencesSheet.qml:371
+#: src/contents/ui/PreferencesSheet.qml:363
 msgid "Frequency Range"
 msgstr "Діапазон частот"
 
-#: src/contents/ui/PreferencesSheet.qml:378
+#: src/contents/ui/PreferencesSheet.qml:370
 msgid "Minimum"
 msgstr "Мінімум"
 
-#: src/contents/ui/PreferencesSheet.qml:393
+#: src/contents/ui/PreferencesSheet.qml:385
 msgid "Maximum"
 msgstr "Максимум"
 
-#: src/contents/ui/PreferencesSheet.qml:414
+#: src/contents/ui/PreferencesSheet.qml:406
 msgid "Database autosave interval"
 msgstr "Інтервал автоматичного збереження бази даних"
 
-#: src/contents/ui/PreferencesSheet.qml:427
+#: src/contents/ui/PreferencesSheet.qml:419
 msgid "Most used presets"
 msgstr "Найчастіше застосовувані попередні налаштування"
 
-#: src/contents/ui/PreferencesSheet.qml:449
+#: src/contents/ui/PreferencesSheet.qml:441
+msgid "Reduce effects list controls"
+msgstr "Приховати елементи керування у списку ефектів"
+
+#: src/contents/ui/PreferencesSheet.qml:442
+msgid ""
+"Action buttons in the effects list are moved inside a context menu for a "
+"more compact view."
+msgstr ""
+"Кнопки дій у списку ефектів переміщено в контекстне меню для більш "
+"компактного відображення."
+
+#: src/contents/ui/PreferencesSheet.qml:463
 msgid "Global shortcuts"
 msgstr "Глобальні скорочення"
 
-#: src/contents/ui/PreferencesSheet.qml:450
+#: src/contents/ui/PreferencesSheet.qml:464
 msgid "Enables support for XDG global shortcuts."
 msgstr "Увімкнути підтримку глобальних скорочень XDG."
 
-#: src/contents/ui/PreferencesSheet.qml:462
+#: src/contents/ui/PreferencesSheet.qml:476
 msgid "Native window of effects"
 msgstr "Рідне вікно ефектів"
 
-#: src/contents/ui/PreferencesSheet.qml:463
+#: src/contents/ui/PreferencesSheet.qml:477
 msgid "Allows the native user interface of effects to be shown/hidden."
 msgstr "Дозволяє показувати/приховувати власний інтерфейс користувача ефектів."
 
-#: src/contents/ui/PreferencesSheet.qml:475
+#: src/contents/ui/PreferencesSheet.qml:489
 msgid "Update frequency"
 msgstr "Частота оновлення"
 
-#: src/contents/ui/PreferencesSheet.qml:476
+#: src/contents/ui/PreferencesSheet.qml:490
 msgid "Related to LV2 plugins."
 msgstr "Стосується плагінів LV2."
 
