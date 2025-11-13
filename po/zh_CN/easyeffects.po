@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-12 21:48-0300\n"
-"PO-Revision-Date: 2025-11-12 11:51+0000\n"
+"PO-Revision-Date: 2025-11-13 01:42+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hans/>\n"
@@ -1108,7 +1108,7 @@ msgstr "钟形滤波器Q值"
 
 #: src/contents/ui/Deesser.qml:258
 msgid "Level"
-msgstr "等级"
+msgstr "电平"
 
 #: src/contents/ui/Deesser.qml:280
 msgid "Gain reduction"
@@ -1231,9 +1231,8 @@ msgid "Noise Suppression"
 msgstr "噪音抑制"
 
 #: src/contents/ui/EchoCanceller.qml:87
-#, fuzzy
 msgid "Strength"
-msgstr "过滤器长度"
+msgstr "强度"
 
 #: src/contents/ui/EchoCanceller.qml:91 src/contents/ui/Loudness.qml:100
 msgid "Low"
@@ -1279,19 +1278,18 @@ msgstr "输入"
 #: src/contents/ui/EeSpinBox.qml:138 src/contents/ui/EeSpinBox.qml:139
 #: src/contents/ui/EeSpinBox.qml:146
 msgid "-inf"
-msgstr "-inf"
+msgstr "负无穷"
 
 #: src/contents/ui/EeSpinBox.qml:146
 msgid "∞"
-msgstr ""
+msgstr "正无穷"
 
 #: src/contents/ui/EqualizerBandMenu.qml:25
 #: src/contents/ui/MultibandCompressor.qml:631
 #: src/contents/ui/MultibandCompressor.qml:901
 #: src/contents/ui/MultibandGate.qml:604 src/contents/ui/MultibandGate.qml:874
-#, fuzzy
 msgid "Band"
-msgstr "频段"
+msgstr "频带"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:50
 msgid "Bell"
@@ -1307,7 +1305,7 @@ msgstr "低架"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:50
 msgid "Notch"
-msgstr "低槽"
+msgstr "陷波"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:50
 msgid "Resonance"
@@ -1318,9 +1316,8 @@ msgid "Allpass"
 msgstr "全通"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:50
-#, fuzzy
 msgid "Bandpass"
-msgstr "频段旁路"
+msgstr "带通"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:50
 #, fuzzy
