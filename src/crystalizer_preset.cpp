@@ -23,6 +23,7 @@
 #include "easyeffects_db_crystalizer.h"
 #include "pipeline_type.hpp"
 #include "plugin_preset_base.hpp"
+#include "presets_macros.hpp"
 #include "util.hpp"
 
 // NOLINTNEXTLINE
@@ -76,14 +77,10 @@ void CrystalizerPreset::save(nlohmann::json& json) {
 }
 
 void CrystalizerPreset::load(const nlohmann::json& json) {
-  settings->setBypass(json.at(section).at(instance_name).value("bypass", settings->defaultBypassValue()));
-
-  settings->setInputGain(json.at(section).at(instance_name).value("input-gain", settings->defaultInputGainValue()));
-
-  settings->setOutputGain(json.at(section).at(instance_name).value("output-gain", settings->defaultOutputGainValue()));
-
-  settings->setAdaptiveIntensity(
-      json.at(section).at(instance_name).value("adaptive-intensity", settings->defaultAdaptiveIntensityValue()));
+  UPDATE_PROPERTY("bypass", Bypass);
+  UPDATE_PROPERTY("input-gain", InputGain);
+  UPDATE_PROPERTY("output-gain", OutputGain);
+  UPDATE_PROPERTY("adaptive-intensity", AdaptiveIntensity);
 
   LOAD_BAND(0);
   LOAD_BAND(1);
