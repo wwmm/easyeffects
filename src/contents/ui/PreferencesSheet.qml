@@ -75,6 +75,20 @@ KirigamiSettings.ConfigurationView {
                 }
 
                 EeSwitch {
+                    id: reducePluginsListControls
+
+                    label: i18n("Reduce effects list controls") // qmllint disable
+                    subtitle: i18n("Action buttons in the effects list are moved inside a context menu for a more compact view.") // qmllint disable
+                    maximumLineCount: -1
+                    isChecked: DB.Manager.main.reducePluginsListControls
+                    onCheckedChanged: {
+                        if (isChecked !== DB.Manager.main.reducePluginsListControls) {
+                            DB.Manager.main.reducePluginsListControls = isChecked;
+                        }
+                    }
+                }
+
+                EeSwitch {
                     id: showTrayIcon
 
                     label: i18n("Show the tray icon") // qmllint disable

@@ -208,21 +208,23 @@ Kirigami.Page {
             }
 
             function populatePluginsStack() {
-                if (pageStreamsEffects.streamDB.plugins.length > 0) {
-                    if (!pageStreamsEffects.streamDB.plugins.includes(pageStreamsEffects.streamDB.visiblePlugin))
-                        pageStreamsEffects.streamDB.visiblePlugin = pageStreamsEffects.streamDB.plugins[0];
+                if (pageStreamsEffects.streamDB.plugins.length < 1) {
+                    return;
+                }
 
-                    pluginsListView.currentIndex = pageStreamsEffects.streamDB.plugins.findIndex(v => {
-                        return v === pageStreamsEffects.streamDB.visiblePlugin;
-                    });
+                if (!pageStreamsEffects.streamDB.plugins.includes(pageStreamsEffects.streamDB.visiblePlugin))
+                    pageStreamsEffects.streamDB.visiblePlugin = pageStreamsEffects.streamDB.plugins[0];
 
-                    const baseNames = TagsPluginName.PluginsNameModel.getBaseNames();
+                pluginsListView.currentIndex = pageStreamsEffects.streamDB.plugins.findIndex(v => {
+                    return v === pageStreamsEffects.streamDB.visiblePlugin;
+                });
 
-                    for (let k = 0; k < baseNames.length; k++) {
-                        if (pageStreamsEffects.streamDB.visiblePlugin.startsWith(baseNames[k])) {
-                            createPluginStack(pageStreamsEffects.streamDB.visiblePlugin, baseNames[k], pageStreamsEffects.pluginsDB[pageStreamsEffects.streamDB.visiblePlugin]);
-                            break;
-                        }
+                const baseNames = TagsPluginName.PluginsNameModel.getBaseNames();
+
+                for (let k = 0; k < baseNames.length; k++) {
+                    if (pageStreamsEffects.streamDB.visiblePlugin.startsWith(baseNames[k])) {
+                        createPluginStack(pageStreamsEffects.streamDB.visiblePlugin, baseNames[k], pageStreamsEffects.pluginsDB[pageStreamsEffects.streamDB.visiblePlugin]);
+                        break;
                     }
                 }
             }

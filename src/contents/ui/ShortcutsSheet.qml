@@ -131,7 +131,7 @@ Kirigami.OverlaySheet {
                     }
 
                     Kirigami.Chip {
-                        text: "T"
+                        text: "Q"
                         closable: false
                         checkable: false
                         down: false

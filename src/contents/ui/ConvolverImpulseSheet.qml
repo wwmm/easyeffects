@@ -95,6 +95,9 @@ Kirigami.OverlaySheet {
                 contentItem: RowLayout {
                     Controls.Label {
                         text: listItemDelegate.name
+                        elide: Text.ElideRight
+                        wrapMode: Text.WrapAnywhere
+                        maximumLineCount: 2
                     }
 
                     Kirigami.ActionToolBar {

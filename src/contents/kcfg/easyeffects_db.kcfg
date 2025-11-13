@@ -24,6 +24,10 @@
             <label>Automatically start on desktop login</label>
             <default>false</default>
         </entry>
+        <entry name="reducePluginsListControls" type="Bool">
+            <label>Effect controls in the plugins list are shown inside a context menu</label>
+            <default>false</default>
+        </entry>
         <entry name="lastLoadedInputPreset" type="String">
             <label>Last used input preset.</label>
             <default code="true">""</default>

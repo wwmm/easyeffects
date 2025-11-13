@@ -118,7 +118,7 @@ void LocalServer::onReadyRead() {
           set_property(pipeline, plugin_name, instance_id, property, value);
         }
       } else if (std::strncmp(buf, tags::local_server::get_property, strlen(tags::local_server::get_property)) == 0) {
-        /*
+        /**
          * Example of client write that should be done:
          * client->write(std::format("{}:output:loudness:0:volume\n", tags::local_server::get_property).c_str());
          */
