@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-13 23:47-0300\n"
-"PO-Revision-Date: 2025-11-13 02:20+0000\n"
+"PO-Revision-Date: 2025-11-14 15:51+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hant/>\n"
@@ -41,13 +41,12 @@ msgid "Hide the Window."
 msgstr "隱藏視窗。"
 
 #: src/command_line_parser.cpp:45
-#, fuzzy
 msgid "Global bypass. 1 to enable and 2 to disable."
-msgstr "整體略過。 1 啟用；2 停用；3 取得狀態"
+msgstr "整體略過。 1 啟用；2 停用；3 取得狀態。"
 
 #: src/command_line_parser.cpp:45
 msgid "bypass-state"
-msgstr ""
+msgstr "略過-狀態"
 
 #: src/command_line_parser.cpp:46
 msgid "Load a preset. Example: easyeffects -l music"
@@ -1266,7 +1265,6 @@ msgid "Input"
 msgstr "輸入"
 
 #: src/contents/ui/EeSpinBox.qml:134 src/contents/ui/EeSpinBox.qml:149
-#, fuzzy
 msgctxt "minus infinity abbreviation"
 msgid "-inf"
 msgstr "-inf"
@@ -1606,7 +1604,6 @@ msgid "Half x3/16 bit"
 msgstr "Half x3/16 bit"
 
 #: src/contents/ui/Limiter.qml:73
-#, fuzzy
 msgid "Half x3/24 bit"
 msgstr "Half x3/24 bit"
 
@@ -1890,7 +1887,6 @@ msgstr "Low-cut"
 
 #: src/contents/ui/MultibandCompressor.qml:504
 #: src/contents/ui/MultibandGate.qml:477
-#, fuzzy
 msgid "High-cut"
 msgstr "High-cut"
 
@@ -1921,25 +1917,21 @@ msgstr "側鏈提升"
 
 #: src/contents/ui/MultibandCompressor.qml:553
 #: src/contents/ui/MultibandGate.qml:526
-#, fuzzy
 msgid "Pink BT"
 msgstr "Pink BT"
 
 #: src/contents/ui/MultibandCompressor.qml:553
 #: src/contents/ui/MultibandGate.qml:526
-#, fuzzy
 msgid "Pink MT"
 msgstr "Pink MT"
 
 #: src/contents/ui/MultibandCompressor.qml:553
 #: src/contents/ui/MultibandGate.qml:526
-#, fuzzy
 msgid "Brown BT"
 msgstr "Brown BT"
 
 #: src/contents/ui/MultibandCompressor.qml:553
 #: src/contents/ui/MultibandGate.qml:526
-#, fuzzy
 msgid "Brown MT"
 msgstr "Brown MT"
 
@@ -2411,7 +2403,7 @@ msgstr "自動載入"
 #: src/contents/ui/PreferencesSheet.qml:468
 msgid ""
 "Delay between receiving a new device route and the call to autoload a preset"
-msgstr ""
+msgstr "接收新裝置路徑和呼叫自動載入預設集之間的延遲"
 
 #: src/contents/ui/PreferencesSheet.qml:491
 msgid "Global shortcuts"
@@ -2445,7 +2437,7 @@ msgstr "裝置"
 #: src/contents/ui/PresetsAutoloadingPage.qml:37
 #: src/contents/ui/PresetsAutoloadingPage.qml:197
 msgid "Route"
-msgstr ""
+msgstr "路徑"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:78
 #: src/contents/ui/PresetsAutoloadingPage.qml:210
@@ -2903,11 +2895,11 @@ msgstr "整體音效處理"
 
 #: src/main.cpp:311
 msgid "© 2017-2025 EasyEffects Team"
-msgstr ""
+msgstr "© 2017-2025 EasyEffects 團隊"
 
 #: src/main.cpp:313
 msgid "Wellington Wallace"
-msgstr ""
+msgstr "Wellington Wallace"
 
 #: src/main.cpp:314
 msgctxt "@info:credit"
@@ -2915,15 +2907,14 @@ msgid "Developer"
 msgstr "開發人員"
 
 #: src/main.cpp:318
-#, fuzzy
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "幀"
+msgstr "BigELK176 ≡"
 
 #: src/main.cpp:318
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
+msgstr "．略．"
 
 #: src/plugin_base.cpp:272
 msgid "(Mic)"
@@ -3061,7 +3052,7 @@ msgstr "等化器、壓縮器、及其他音效處理"
 
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
-msgstr "簡單的音效處理"
+msgstr "簡易音效處理"
 
 #~ msgid "Hardware profile"
 #~ msgstr "硬體設定檔"
