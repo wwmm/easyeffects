@@ -51,11 +51,11 @@ Kirigami.OverlaySheet {
         source: {
             switch (DB.Manager.main.visiblePresetSheetPage) {
             case 0:
-                return "qrc:/ui/PresetsLocalPage.qml";
+                return Qt.resolvedUrl("PresetsLocalPage.qml");
             case 1:
-                return "qrc:/ui/PresetsCommunityPage.qml";
+                return Qt.resolvedUrl("PresetsCommunityPage.qml");
             case 2:
-                return "qrc:/ui/PresetsAutoloadingPage.qml";
+                return Qt.resolvedUrl("PresetsAutoloadingPage.qml");
             default:
                 return "";
             }

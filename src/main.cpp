@@ -202,11 +202,8 @@ static void initQml(QQmlApplicationEngine& engine,
   engine.rootContext()->setContextProperty("applicationId", APPLICATION_ID);
   engine.rootContext()->setContextProperty("applicationName", APPLICATION_NAME);
 
-  qmlRegisterSingletonType(QStringLiteral("qrc:/ui/Validators.qml"), "ee.validators", VERSION_MAJOR, VERSION_MINOR,
-                           "Validators");
-
   QObject::connect(&engine, &QQmlApplicationEngine::objectCreated, [&](QObject* object, const QUrl& url) {
-    if (url.toString() == "qrc:/ui/main.qml") {
+    if (url.toString() == "qrc:/qt/qml/ee/type/presets/contents/ui/Main.qml") {
       ui.window = qobject_cast<QQuickWindow*>(object);
 
       if (ui.window) {
@@ -255,7 +252,7 @@ static void initQml(QQmlApplicationEngine& engine,
     }
   });
 
-  engine.load(QUrl(QStringLiteral("qrc:/ui/main.qml")));
+  engine.loadFromModule("ee.type.presets", "Main");
 
   if (engine.rootObjects().isEmpty()) {
     throw std::runtime_error("Failed to load QML UI");
