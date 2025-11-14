@@ -465,7 +465,7 @@ KirigamiSettings.ConfigurationView {
 
                 EeSpinBox {
                     label: i18n("Autoload delay") // qmllint disable
-                    subtitle: i18n("Delay between receiving a new device route and the call to autoload a preset") // qmllint disable
+                    subtitle: i18n("Delay between receiving a new device route and the call to autoload a preset.") // qmllint disable
                     from: DB.Manager.main.getMinValue("presetsAutoloadInterval")
                     to: DB.Manager.main.getMaxValue("presetsAutoloadInterval")
                     value: DB.Manager.main.presetsAutoloadInterval
