@@ -7,7 +7,6 @@ import ee.database as DB
 import ee.pipewire as PW
 import ee.tags.plugin.name as TagsPluginName
 import org.kde.kirigami as Kirigami
-import org.kde.kirigamiaddons.components as Components
 
 Kirigami.Page {
     id: pageStreamsEffects

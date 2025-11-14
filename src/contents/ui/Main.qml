@@ -8,7 +8,6 @@ import ee.pipeline as Pipeline
 import ee.pipewire as PW
 import ee.presets as Presets
 import org.kde.kirigami as Kirigami
-import org.kde.kirigamiaddons.components as Components
 
 Kirigami.ApplicationWindow {
     id: appWindow
