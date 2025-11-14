@@ -22,7 +22,7 @@
 #include <api/scoped_refptr.h>
 #include <qobject.h>
 #include <qtypes.h>
-#include <webrtc-audio-processing-2/api/audio/audio_processing.h>
+#include <api/audio/audio_processing.h>
 #include <climits>
 #include <span>
 #include <string>
