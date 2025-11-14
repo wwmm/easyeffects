@@ -68,7 +68,8 @@ msgid ""
 "When Easy Effects is launched it will conveniently remember the "
 "configuration used in the last session. It is also possible to save all the "
 "current settings as profiles."
-msgstr "當 Easy Effects 啟動時，它會便利地記住上次工作階段所使用的設定。還可以將目前"
+msgstr ""
+"當 Easy Effects 啟動時，它會便利地記住上次工作階段所使用的設定。還可以將目前"
 "全部設定儲存成一個設定檔。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:16
