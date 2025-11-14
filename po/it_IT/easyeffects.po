@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-14 18:02+0000\n"
-"PO-Revision-Date: 2025-11-14 15:51+0000\n"
+"PO-Revision-Date: 2025-11-14 21:46+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -2406,12 +2406,11 @@ msgid "Autoload delay"
 msgstr "Ritardo del caricamento automatico"
 
 #: src/contents/ui/PreferencesSheet.qml:468
-#, fuzzy
 msgid ""
 "Delay between receiving a new device route and the call to autoload a preset."
 msgstr ""
 "Il ritardo tra la ricezione di un nuovo percorso del dispositivo e la "
-"chiamata del caricamento automatico del profilo"
+"chiamata del caricamento automatico del profilo."
 
 #: src/contents/ui/PreferencesSheet.qml:491
 msgid "Global shortcuts"
