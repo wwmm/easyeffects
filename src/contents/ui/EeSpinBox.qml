@@ -129,45 +129,82 @@ FormCard.AbstractFormDelegate {
             to: spinbox.decimalToInt(control.to)
             from: spinbox.decimalToInt(control.from)
             editable: control.editable
-            inputMethodHints: Qt.ImhFormattedNumbersOnly
+            inputMethodHints: Qt.ImhPreferNumbers
             textFromValue: (value, locale) => {
                 const locMinInfinity = i18nc("minus infinity abbreviation", "-inf");
                 const unit_str = (Common.isEmpty(control.unit)) ? "" : ` ${control.unit}`;
                 locale.numberOptions = Locale.OmitGroupSeparator;
                 const decimalValue = value / spinbox.decimalFactor;
 
+                // Lower bound check in minusInfinityMode.
                 if (control.minusInfinityMode === true && decimalValue <= control.from) {
                     textInputSpinBox.text = locMinInfinity;
                     return locMinInfinity;
                 }
 
-                const t = Number(decimalValue).toLocaleString(locale, 'f', control.decimals) + unit_str;
-                textInputSpinBox.text = t;
-                return t;
+                // Locale text conversion.
+                try {
+                    const t = Number(decimalValue).toLocaleString(locale, 'f', control.decimals) + unit_str;
+                    textInputSpinBox.text = t;
+                    return t;
+                } catch (e) {
+                    console.warn("Spinbox locale text to number conversion failed:", value);
+                    console.warn(e?.message ?? "");
+                    textInputSpinBox.text = "";
+                    return "";
+                }
             }
-            valueFromText: (text, locale) => {
+            valueFromText: (inputText, locale) => {
+                /**
+                 * We used to have a RegularExpressionValidator to validate
+                 * numbers by QML before invoking this function, but we had
+                 * to remove it to handle the locale -Infinity string
+                 * abbreviation.
+                 * So we accept all types of strings and check for the -inf
+                 * lower bound. If the check fails, then we apply the regular
+                 * expression inside this function.
+                 */
+                const text = inputText.trim();
                 const locMinInfinity = i18nc("minus infinity abbreviation", "-inf");
 
+                if (text === "") {
+                    return spinbox.value;
+                }
+
                 /**
+                 * -Infinity check.
                  * Here we don't have to localize the minus infinity symbol -∞
                  * since we only handle the special case when the user inputs it
                  * manually in the user interface field.
                  */
-                if (text.toLowerCase() === locMinInfinity.toLowerCase() || text === "-∞")
+                if (text.toLowerCase() === locMinInfinity.toLowerCase() || text === "-∞") {
                     return Math.floor(control.from * spinbox.decimalFactor);
+                }
 
-                // Handling scientific notation
-                const cleanedText = text.replace(/[^\d.,eE+-]/g, '');
+                /**
+                 * Number validation.
+                 * We need also `−` (U+2212) minus sign for Suomi localization.
+                 * Some other localizations may also use `＋` (U+FF0B) plus
+                 * sign, so let's allow it too for a more robust input
+                 * handling. See #4417.
+                 */
+                const numValidator = /^\s*[-−+＋]?(?:\d+(?:[.,]\d*)?(?:[eE][-−+＋]?\d+)?)/;
+                if (text.match(numValidator) === null) {
+                    console.warn("Spinbox number validation failed:", text);
+                    return spinbox.value;
+                }
+
+                // Handling scientific notation.
+                const cleanedText = text.replace(/[^\d.,eE+＋-−]/g, '');
                 try {
                     const n = Number.fromLocaleString(locale, cleanedText);
                     return !Number.isNaN(n) ? Math.round(n * spinbox.decimalFactor) : spinbox.value;
-                } catch (error) {
-                    console.warn("Invalid number format:", text);
+                } catch (e) {
+                    console.warn("Spinbox text to locale number conversion failed:", text);
+                    console.warn(e?.message ?? "");
                     return spinbox.value;
                 }
             }
-
-            validator: Validators.numberValidator
 
             contentItem: TextInput {
                 id: textInputSpinBox
@@ -177,8 +214,7 @@ FormCard.AbstractFormDelegate {
                 color: control.enabled ? Kirigami.Theme.textColor : Kirigami.Theme.disabledTextColor
                 selectionColor: Kirigami.Theme.highlightColor
                 readOnly: !spinbox.editable
-                validator: spinbox.validator
-                inputMethodHints: Qt.ImhFormattedNumbersOnly
+                inputMethodHints: Qt.ImhPreferNumbers
                 clip: true
             }
         }
