@@ -229,14 +229,13 @@ Manager::Manager()
   connect(&node_manager, &NodeManager::sinkAdded, [&](NodeInfo node) { Q_EMIT sinkAdded(node); });
 
   connect(&node_manager, &NodeManager::sourceProfileNameChanged,
-          [&](NodeInfo node) { Q_EMIT sourceProfileNameChanged(node); });
+          [&](NodeInfo node) { Q_EMIT sourceRouteChanged(node); });
 
-  connect(&node_manager, &NodeManager::sinkProfileNameChanged,
-          [&](NodeInfo node) { Q_EMIT sinkProfileNameChanged(node); });
+  connect(&node_manager, &NodeManager::sinkProfileNameChanged, [&](NodeInfo node) { Q_EMIT sinkRouteChanged(node); });
 
   connect(&link_manager, &LinkManager::linkChanged, [&](LinkInfo link) { Q_EMIT linkChanged(link); });
 
-  connect(&device_manager, &DeviceManager::profileChanged, [&](DeviceInfo device) {
+  connect(&device_manager, &DeviceManager::inputRouteChanged, [&](DeviceInfo device) {
     QTimer::singleShot(2000, this, [&, device]() {
       auto nodes = model_nodes.get_nodes_by_device_id(device.id);
 
@@ -246,16 +245,32 @@ Manager::Manager()
       }
 
       for (auto& node : nodes) {
-        node.device_profile_name = device.profile_name;
-        node.device_profile_description = device.profile_description;
+        node.device_route_name = device.input_route_name;
+        node.device_route_description = device.input_route_description;
 
         model_nodes.update_info(node);
 
-        if (node.media_class == tags::pipewire::media_class::source) {
-          Q_EMIT sourceProfileNameChanged(node);
-        } else if (node.media_class == tags::pipewire::media_class::sink) {
-          Q_EMIT sinkProfileNameChanged(node);
-        }
+        Q_EMIT sourceRouteChanged(node);
+      }
+    });
+  });
+
+  connect(&device_manager, &DeviceManager::outputRouteChanged, [&](DeviceInfo device) {
+    QTimer::singleShot(2000, this, [&, device]() {
+      auto nodes = model_nodes.get_nodes_by_device_id(device.id);
+
+      if (nodes.empty()) {
+        util::warning(std::format("Could not find a node related to {}", device.name.toStdString()));
+        return;
+      }
+
+      for (auto& node : nodes) {
+        node.device_route_name = device.output_route_name;
+        node.device_route_description = device.output_route_description;
+
+        model_nodes.update_info(node);
+
+        Q_EMIT sinkRouteChanged(node);
       }
     });
   });

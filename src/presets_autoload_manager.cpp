@@ -71,17 +71,19 @@ void AutoloadManager::refreshListModels() {
   output_model->update(dir_manager.getAutoloadingProfilesPaths(PipelineType::output));
 }
 
-auto AutoloadManager::getFilePath(const PipelineType& pipeline_type,
-                                  const QString& device_name,
-                                  const QString& device_profile) -> std::filesystem::path {
+auto AutoloadManager::getFilePath(const PipelineType& pipeline_type, QString device_name, QString device_route)
+    -> std::filesystem::path {
+  device_name.replace("/", "_");
+  device_route.replace("/", "_");  // pipewire can put "/" in the route description
+
   switch (pipeline_type) {
     case PipelineType::output:
       return dir_manager.autoloadOutputDir() /
-             std::filesystem::path{device_name.toStdString() + ":" + device_profile.toStdString() +
+             std::filesystem::path{device_name.toStdString() + ":" + device_route.toStdString() +
                                    DirectoryManager::json_ext};
     case PipelineType::input:
       return dir_manager.autoloadInputDir() /
-             std::filesystem::path{device_name.toStdString() + ":" + device_profile.toStdString() +
+             std::filesystem::path{device_name.toStdString() + ":" + device_route.toStdString() +
                                    DirectoryManager::json_ext};
   }
 
@@ -92,10 +94,10 @@ void AutoloadManager::add(const PipelineType& pipeline_type,
                           const QString& preset_name,
                           const QString& device_name,
                           const QString& device_description,
-                          const QString& device_profile) {
+                          const QString& device_route) {
   nlohmann::json json;
 
-  auto path = getFilePath(pipeline_type, device_name, device_profile);
+  auto path = getFilePath(pipeline_type, device_name, device_route);
 
   bool already_exists = std::filesystem::exists(path);
 
@@ -103,7 +105,7 @@ void AutoloadManager::add(const PipelineType& pipeline_type,
 
   json["device"] = device_name.toStdString();
   json["device-description"] = device_description.toStdString();
-  json["device-profile"] = device_profile.toStdString();
+  json["device-profile"] = device_route.toStdString();
   json["preset-name"] = preset_name.toStdString();
 
   o << std::setw(4) << json << '\n';
@@ -122,8 +124,8 @@ void AutoloadManager::add(const PipelineType& pipeline_type,
 void AutoloadManager::remove(const PipelineType& pipeline_type,
                              const QString& preset_name,
                              const QString& device_name,
-                             const QString& device_profile) {
-  auto path = getFilePath(pipeline_type, device_name, device_profile);
+                             const QString& device_route) {
+  auto path = getFilePath(pipeline_type, device_name, device_route);
 
   if (!std::filesystem::is_regular_file(path)) {
     return;
@@ -136,16 +138,16 @@ void AutoloadManager::remove(const PipelineType& pipeline_type,
   is >> json;
 
   if (preset_name.toStdString() == json.value("preset-name", "") &&
-      device_profile.toStdString() == json.value("device-profile", "")) {
+      device_route.toStdString() == json.value("device-profile", "")) {
     std::filesystem::remove(path);
 
     util::debug(std::format("Removed autoload: {}", path.string()));
   }
 }
 
-auto AutoloadManager::find(const PipelineType& pipeline_type, const QString& device_name, const QString& device_profile)
+auto AutoloadManager::find(const PipelineType& pipeline_type, const QString& device_name, const QString& device_route)
     -> std::string {
-  auto path = getFilePath(pipeline_type, device_name, device_profile);
+  auto path = getFilePath(pipeline_type, device_name, device_route);
 
   if (!std::filesystem::is_regular_file(path)) {
     return "";
@@ -160,10 +162,8 @@ auto AutoloadManager::find(const PipelineType& pipeline_type, const QString& dev
   return json.value("preset-name", "");
 }
 
-void AutoloadManager::load(const PipelineType& pipeline_type,
-                           const QString& device_name,
-                           const QString& device_profile) {
-  const auto name = find(pipeline_type, device_name, device_profile);
+void AutoloadManager::load(const PipelineType& pipeline_type, const QString& device_name, const QString& device_route) {
+  const auto name = find(pipeline_type, device_name, device_route);
 
   if (name.empty()) {
     QString fallback;

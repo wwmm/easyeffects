@@ -74,8 +74,8 @@ class Nodes : public QAbstractListModel {
     Latency,
     Volume,
     IsBlocklisted,
-    DeviceProfileName,
-    DeviceProfileDescription
+    DeviceRouteName,
+    DeviceRouteDescription
   };
   Q_ENUM(Roles)
 
@@ -315,16 +315,16 @@ class Nodes : public QAbstractListModel {
 
         break;
       }
-      case Roles::DeviceProfileName: {
+      case Roles::DeviceRouteName: {
         if constexpr (std::is_same_v<T, QString>) {
-          it->device_profile_name = value;
+          it->device_route_name = value;
         }
 
         break;
       }
-      case Roles::DeviceProfileDescription: {
+      case Roles::DeviceRouteDescription: {
         if constexpr (std::is_same_v<T, QString>) {
-          it->device_profile_description = value;
+          it->device_route_description = value;
         }
 
         break;

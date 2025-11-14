@@ -69,7 +69,7 @@ class Manager : public QObject {
 
   auto preset_file_exists(const PipelineType& pipeline_type, const std::string& name) -> bool;
 
-  void autoload(const PipelineType& pipeline_type, const QString& device_name, const QString& device_profile);
+  void autoload(const PipelineType& pipeline_type, const QString& device_name, const QString& device_route);
 
   auto get_local_presets_paths(const PipelineType& pipeline_type) -> QList<std::filesystem::path>;
 

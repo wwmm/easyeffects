@@ -60,9 +60,9 @@ struct NodeInfo {
 
   QString device_icon_name;
 
-  QString device_profile_name;
+  QString device_route_name;
 
-  QString device_profile_description;
+  QString device_route_description;
 
   QString media_name;
 
@@ -180,15 +180,19 @@ struct DeviceInfo {
 
   QString api;
 
-  QString profile_name;
+  QString input_route_name;
+  QString input_route_description;
 
-  QString profile_description;
+  QString output_route_name;
+  QString output_route_description;
 
   QString bus_id;
 
   QString bus_path;
 
-  spa_param_availability profile_available;
+  spa_param_availability input_route_available;
+
+  spa_param_availability output_route_available;
 };
 
 }  // namespace pw

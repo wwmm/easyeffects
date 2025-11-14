@@ -24,9 +24,9 @@ ColumnLayout {
                 const proxyIndex = model.index(currentIndex, 0);
                 return model.data(proxyIndex, PW.ModelNodes.Name);
             }
-            readonly property string deviceProfileDescription: {
+            readonly property string deviceRouteDescription: {
                 const proxyIndex = model.index(currentIndex, 0);
-                return model.data(proxyIndex, PW.ModelNodes.DeviceProfileDescription);
+                return model.data(proxyIndex, PW.ModelNodes.DeviceRouteDescription);
             }
 
             verticalPadding: 0
@@ -36,7 +36,7 @@ ColumnLayout {
             textRole: "description"
             editable: false
             model: DB.Manager.main.visiblePage === 0 ? PW.ModelSinkDevices : PW.ModelSourceDevices
-            description: `${i18n("Hardware profile")}: ${deviceProfileDescription}` // qmllint disable
+            description: `${i18n("Route")}: ${deviceRouteDescription}` // qmllint disable
 
         }
 
@@ -70,7 +70,7 @@ ColumnLayout {
                 const deviceName = device.deviceName;
                 const deviceDescription = device.currentText;
                 const presetName = preset.currentText;
-                const deviceRoute = device.deviceProfileDescription;
+                const deviceRoute = device.deviceRouteDescription;
                 if (DB.Manager.main.visiblePage === 0)
                     Presets.Manager.addAutoload(1, presetName, deviceName, deviceDescription, deviceRoute);
                 else if (DB.Manager.main.visiblePage === 1)
@@ -170,7 +170,7 @@ ColumnLayout {
                             Layout.alignment: Qt.AlignRight
                             wrapMode: Text.WordWrap
                             horizontalAlignment: Qt.AlignRight
-                            text: i18n("Hardware profile") // qmllint disable
+                            text: i18n("Route") // qmllint disable
                         }
 
                         Controls.Label {

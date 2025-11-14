@@ -62,7 +62,7 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
 
           set_bypass(false);
 
-          presets::Manager::self().autoload(PipelineType::input, node.name, node.device_profile_description);
+          presets::Manager::self().autoload(PipelineType::input, node.name, node.device_route_description);
         }
       },
       Qt::QueuedConnection);
@@ -103,7 +103,7 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
 
           set_bypass(false);
 
-          presets::Manager::self().autoload(PipelineType::input, node.name, node.device_profile_description);
+          presets::Manager::self().autoload(PipelineType::input, node.name, node.device_route_description);
         }
       },
       Qt::QueuedConnection);
@@ -126,10 +126,10 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
   connect(pm, &pw::Manager::linkChanged, this, &StreamInputEffects::on_link_changed, Qt::QueuedConnection);
 
   connect(
-      pm, &pw::Manager::sourceProfileNameChanged, this,
+      pm, &pw::Manager::sourceRouteChanged, this,
       [](pw::NodeInfo node) {
         if (node.name == db::StreamInputs::inputDevice()) {
-          presets::Manager::self().autoload(PipelineType::input, node.name, node.device_profile_description);
+          presets::Manager::self().autoload(PipelineType::input, node.name, node.device_route_description);
         }
       },
       Qt::QueuedConnection);
@@ -153,7 +153,7 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
   connect_filters();
 
   if (auto node = pm->model_nodes.get_node_by_name(db::StreamInputs::inputDevice()); node.serial != SPA_ID_INVALID) {
-    presets::Manager::self().autoload(PipelineType::input, node.name, node.device_profile_description);
+    presets::Manager::self().autoload(PipelineType::input, node.name, node.device_route_description);
   }
 
   set_listen_to_mic(db::StreamInputs::listenToMic());
