@@ -2,15 +2,18 @@
 Version: UNRELEASED_VERSION
 Date: UNRELEASED_DATE
 
-Description: 
+Description:
 - Features∶
-- 
+- Added the ability to keep the effects list controls always visible in order to toggle and remove a plugin with a single click.
+- Added Flatpak system tray permission handling.
+- Added XDG Color Scheme support for the Flatpak version.
+- Locale shortcut to quit the service has been changed back to "CTRL+Q".
 
 - Bug fixes∶
-- 
+- Preset autoloading has been improved to handle more specific hardware which were not detected by the previous system.
 
 - Other notes∶
-- 
+- Since the preset autoloading system has been changed, we recommend the users to reassociate their presets to the preferred input/output audio devices.
 
 ---
 Version: 8.0.0
@@ -54,19 +57,19 @@ Description:
 Version: 7.2.5
 Date: 2025-07-18
 
-Description: 
+Description:
 - Features∶
 
 - Bug fixes∶
 - Fixed a bug in the pitch plugin that made the cents and the octaves control to not be reapplied when EasyEffects was restarted
 
-- Other notes∶ 
+- Other notes∶
 
 ---
 Version: 7.2.4
 Date: 2025-07-07
 
-Description: 
+Description:
 - Features∶
 - The Pitch plugin has new cents and octaves parameters.
 - The client-rt.conf is ignored on 1.4.0 or newer PipeWire versions.
@@ -81,7 +84,7 @@ Description:
 Version: 7.2.3
 Date: 2025-01-06
 
-Description: 
+Description:
 - Features∶
 - Improved compatibility with future PipeWire releases. This version will avoid compilation errors like https://github.com/wwmm/easyeffects/issues/3620
 
@@ -93,12 +96,12 @@ Description:
 Version: 7.2.2
 Date: 2025-01-05
 
-Description: 
+Description:
 - Features∶
 - Updated translations
 
 - Bug fixes∶
-- Added a workaround for a glibc(or maybe libstdc++) bug that affects locale management. What in turns breaks our spinbuttons on some locales. 
+- Added a workaround for a glibc(or maybe libstdc++) bug that affects locale management. What in turns breaks our spinbuttons on some locales.
 
 - Other notes∶
 
@@ -106,7 +109,7 @@ Description:
 Version: 7.2.1
 Date: 2024-11-22
 
-Description: 
+Description:
 - Features∶
 
 - Bug fixes∶
@@ -118,7 +121,7 @@ Description:
 Version: 7.2.0
 Date: 2024-11-20
 
-Description: 
+Description:
 - Features∶
 - Updated translations
 
@@ -131,7 +134,7 @@ Description:
 Version: 7.1.9
 Date: 2024-09-12
 
-Description: 
+Description:
 - Features∶
 - Latency compensation can be applied to the spectrum plugin.It will delay its drawing so it matches the latency offset applied by the user on programs like Pavucontrol.
 
@@ -145,14 +148,14 @@ Description:
 Version: 7.1.8
 Date: 2024-08-17
 
-Description: 
+Description:
 - Features∶
 - The loudness plugin exposes the ISO 226:2023 standard that is now available in the LSP plugin.
 - Updated translations
 - Performance optmizations to the spectrum plugin and the LADSPA wrapper
 
 - Bug fixes∶
-- We were not locking PipeWire's thread main loop before setting a  stream volume and mute controls. THis could cause these operations to fail in some situations 
+- We were not locking PipeWire's thread main loop before setting a  stream volume and mute controls. THis could cause these operations to fail in some situations
 
 - Other notes∶
 
