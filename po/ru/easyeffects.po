@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-14 18:02+0000\n"
-"PO-Revision-Date: 2025-11-14 15:51+0000\n"
+"PO-Revision-Date: 2025-11-14 21:46+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -46,7 +46,7 @@ msgstr "Глобальный обход. 1 — включить, 2 — откл�
 
 #: src/command_line_parser.cpp:45
 msgid "bypass-state"
-msgstr ""
+msgstr "состояние-обхода"
 
 #: src/command_line_parser.cpp:46
 msgid "Load a preset. Example: easyeffects -l music"
@@ -121,9 +121,8 @@ msgstr "Моментальный замер"
 
 #: src/contents/ui/Autogain.qml:60 src/contents/ui/Autogain.qml:140
 #: src/contents/ui/LevelMeter.qml:154
-#, fuzzy
 msgid "Short-term"
-msgstr "Краткосрочный замер"
+msgstr "Краткосрочный"
 
 # Время интеграции — это величина, характеризующая быстродействие измерителя.
 # https://tech.ebu.ch/docs/factsheets/Factsheet-R128-2011-RUS.pdf
@@ -243,7 +242,7 @@ msgstr "Исторический максимум"
 #: src/contents/ui/Convolver.qml:325 src/contents/ui/Convolver.qml:379
 #: src/contents/ui/PreferencesSheet.qml:209 src/contents/ui/Reverb.qml:68
 msgid "s"
-msgstr ""
+msgstr "с"
 
 #: src/contents/ui/Autogain.qml:124 src/contents/ui/Autogain.qml:184
 #: src/contents/ui/BassLoudness.qml:47 src/contents/ui/LevelMeter.qml:131
@@ -805,7 +804,7 @@ msgstr "Компенсация"
 #: src/contents/ui/MultibandCompressor.qml:977
 #: src/contents/ui/MultibandGate.qml:950
 msgid "Pre-Mix"
-msgstr ""
+msgstr "Предсведение"
 
 # #, fuzzy
 #: src/contents/ui/Compressor.qml:535 src/contents/ui/Expander.qml:489
@@ -1113,9 +1112,8 @@ msgid "Detection"
 msgstr "Выявление"
 
 #: src/contents/ui/Deesser.qml:75
-#, fuzzy
 msgid "Wideband"
-msgstr "Широкий"
+msgstr "Широкополосный"
 
 #: src/contents/ui/Deesser.qml:75
 msgid "Split"
@@ -1147,11 +1145,11 @@ msgstr "Ч1 раздела"
 
 #: src/contents/ui/Deesser.qml:183
 msgid "F2 peak"
-msgstr ""
+msgstr "Пик Ч2"
 
 #: src/contents/ui/Deesser.qml:200
 msgid "F1 gain"
-msgstr ""
+msgstr "Усиление Ч1"
 
 #: src/contents/ui/Deesser.qml:217
 #, fuzzy
@@ -1160,7 +1158,7 @@ msgstr "Ч2 уровень"
 
 #: src/contents/ui/Deesser.qml:225
 msgid "dBFS"
-msgstr ""
+msgstr "дБFS"
 
 #: src/contents/ui/Deesser.qml:235
 #, fuzzy
@@ -1193,7 +1191,7 @@ msgstr "Метры"
 
 #: src/contents/ui/Delay.qml:111 src/contents/ui/Delay.qml:264
 msgid "m"
-msgstr ""
+msgstr "м"
 
 #: src/contents/ui/Delay.qml:121 src/contents/ui/Delay.qml:274
 msgid "Centimeters"
@@ -1219,7 +1217,6 @@ msgstr "Обратить фазу"
 
 #: src/contents/ui/DelegateClientsList.qml:37
 #: src/contents/ui/DelegateModulesList.qml:37
-#, fuzzy
 msgctxt "@info:placeholder"
 msgid "Unknown"
 msgstr "Неизвестно"
@@ -1437,13 +1434,12 @@ msgstr "Баланс"
 
 # #, fuzzy
 #: src/contents/ui/Equalizer.qml:149
-#, fuzzy
 msgid "Pitch left"
 msgstr "Высота тона левого"
 
 #: src/contents/ui/Equalizer.qml:157 src/contents/ui/Equalizer.qml:174
 msgid "st"
-msgstr ""
+msgstr "пт"
 
 # #, fuzzy
 #: src/contents/ui/Equalizer.qml:166
@@ -1490,9 +1486,8 @@ msgstr "Экспорт предустановки"
 #: src/contents/ui/MultibandCompressor.qml:631
 #: src/contents/ui/MultibandCompressor.qml:901
 #: src/contents/ui/MultibandGate.qml:604 src/contents/ui/MultibandGate.qml:874
-#, fuzzy
 msgid "Band"
-msgstr "Число полос"
+msgstr "Полоса"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:50
 msgid "Bell"
@@ -1823,9 +1818,8 @@ msgid "True peak/24 bit"
 msgstr "Истинный пик"
 
 #: src/contents/ui/Limiter.qml:83
-#, fuzzy
 msgid "Dithering"
-msgstr "Подмешивать шум"
+msgstr "Дизеринг"
 
 #: src/contents/ui/Limiter.qml:87
 msgid "7 bit"
@@ -1879,9 +1873,8 @@ msgid "Threshold boost"
 msgstr "Порог"
 
 #: src/contents/ui/Loudness.qml:68
-#, fuzzy
 msgid "Contour"
-msgstr "Элементы управления"
+msgstr "Контур"
 
 #: src/contents/ui/Loudness.qml:72
 msgid "Flat"
@@ -1893,11 +1886,11 @@ msgstr "ISO226-2003"
 
 #: src/contents/ui/Loudness.qml:72
 msgid "Fletcher-Munson"
-msgstr ""
+msgstr "Флетчера-Мансона"
 
 #: src/contents/ui/Loudness.qml:72
 msgid "Robinson-Dadson"
-msgstr ""
+msgstr "Робинсона-Дадсона"
 
 #: src/contents/ui/Loudness.qml:72
 #, fuzzy
@@ -1916,18 +1909,16 @@ msgid "IIR approximation"
 msgstr "Заглушить приложение"
 
 #: src/contents/ui/Loudness.qml:100
-#, fuzzy
 msgid "Fastest"
-msgstr "Быстрее"
+msgstr "Самый быстрый"
 
 #: src/contents/ui/Loudness.qml:100
-#, fuzzy
 msgid "Normal"
-msgstr "Формат"
+msgstr "Нормальный"
 
 #: src/contents/ui/Loudness.qml:100
 msgid "Best"
-msgstr ""
+msgstr "Лучший"
 
 #: src/contents/ui/Loudness.qml:110
 msgid "Volume"
@@ -1967,29 +1958,25 @@ msgid "Are you sure you want to clear this list?"
 msgstr "Уверены, что хотите убрать это приложение из списка?"
 
 #: src/contents/ui/Main.qml:379
-#, fuzzy
 msgid "Active"
-msgstr "Активировать"
+msgstr "Активно"
 
 #: src/contents/ui/Main.qml:390 src/contents/ui/Main.qml:539
 #: src/contents/ui/ShortcutsSheet.qml:369
-#, fuzzy
 msgid "Shortcuts"
-msgstr "_Горячие клавиши"
+msgstr "Горячие клавиши"
 
 #: src/contents/ui/Main.qml:399 src/contents/ui/Main.qml:547
-#, fuzzy
 msgid "Manual"
-msgstr "_Руководство"
+msgstr "Руководство"
 
 #: src/contents/ui/Main.qml:411 src/contents/ui/Main.qml:579
-#, fuzzy
 msgid "Quit"
-msgstr "_Выйти"
+msgstr "Выйти"
 
 #: src/contents/ui/Main.qml:435
 msgid "Go back"
-msgstr ""
+msgstr "Назад"
 
 #: src/contents/ui/Main.qml:445 src/contents/ui/PageStreamsEffects.qml:629
 msgid "Effects"
@@ -2008,14 +1995,12 @@ msgid "Audio effects are disabled."
 msgstr ""
 
 #: src/contents/ui/Main.qml:513
-#, fuzzy
 msgid "PipeWire"
-msgstr "_PipeWire"
+msgstr "PipeWire"
 
 #: src/contents/ui/Main.qml:531
-#, fuzzy
 msgid "Preferences"
-msgstr "_Настройки"
+msgstr "Настройки"
 
 #: src/contents/ui/Main.qml:571
 #, fuzzy
@@ -2024,7 +2009,7 @@ msgstr "_О программе Easy Effects"
 
 #: src/contents/ui/MenuAddPlugins.qml:75
 msgid "Add %1"
-msgstr ""
+msgstr "Добавить %1"
 
 #: src/contents/ui/MenuAddPlugins.qml:147
 msgid "Added a new effect to the pipeline: %1"
@@ -2042,19 +2027,16 @@ msgstr "Режим сжатия"
 
 #: src/contents/ui/MultibandCompressor.qml:196
 #: src/contents/ui/MultibandGate.qml:133
-#, fuzzy
 msgid "End"
-msgstr "2-ой"
+msgstr "Конец"
 
 #: src/contents/ui/MultibandCompressor.qml:479
 #: src/contents/ui/MultibandGate.qml:452
-#, fuzzy
 msgid "Low-cut"
 msgstr "Фильтр среза НЧ"
 
 #: src/contents/ui/MultibandCompressor.qml:504
 #: src/contents/ui/MultibandGate.qml:477
-#, fuzzy
 msgid "High-cut"
 msgstr "Фильтр среза ВЧ"
 
@@ -2115,9 +2097,8 @@ msgid "Sidechain input device"
 msgstr "Устройство ввода"
 
 #: src/contents/ui/MultibandGate.qml:159
-#, fuzzy
 msgid "Reaction"
-msgstr "Ослабление"
+msgstr "Реакция"
 
 #: src/contents/ui/PageStreamsEffects.qml:81
 #, fuzzy
@@ -2366,7 +2347,7 @@ msgstr "%1 нельзя использовать, поскольку %2 не у�
 
 #: src/contents/ui/PreferencesSheet.qml:16
 msgid "Background Service"
-msgstr ""
+msgstr "Фоновая служба"
 
 #: src/contents/ui/PreferencesSheet.qml:22
 msgid "Audio"
@@ -2379,7 +2360,7 @@ msgstr "Тип спектра"
 
 #: src/contents/ui/PreferencesSheet.qml:34
 msgid "Database"
-msgstr ""
+msgstr "База данных"
 
 #: src/contents/ui/PreferencesSheet.qml:40
 #: src/contents/ui/PreferencesSheet.qml:270
@@ -2488,14 +2469,12 @@ msgid "Color scheme"
 msgstr "Цвет"
 
 #: src/contents/ui/PreferencesSheet.qml:281
-#, fuzzy
 msgid "Automatic"
-msgstr "Авторегулятор"
+msgstr "Автоматически"
 
 #: src/contents/ui/PreferencesSheet.qml:281
-#, fuzzy
 msgid "Light"
-msgstr "Правый"
+msgstr "Светлый"
 
 #: src/contents/ui/PreferencesSheet.qml:281
 msgid "Dark"
@@ -2520,9 +2499,8 @@ msgstr "Сведение"
 
 # ??? Не уверен в переводе
 #: src/contents/ui/PreferencesSheet.qml:295
-#, fuzzy
 msgid "Orange"
-msgstr "Диапазон"
+msgstr "Оранжевый"
 
 #: src/contents/ui/PreferencesSheet.qml:295
 msgid "Yellow"
@@ -2558,7 +2536,7 @@ msgstr "Точки"
 
 #: src/contents/ui/PreferencesSheet.qml:309
 msgid "Area"
-msgstr ""
+msgstr "Область"
 
 #: src/contents/ui/PreferencesSheet.qml:319
 #, fuzzy
@@ -2662,7 +2640,7 @@ msgstr "Устройство"
 #: src/contents/ui/PresetsAutoloadingPage.qml:37
 #: src/contents/ui/PresetsAutoloadingPage.qml:197
 msgid "Route"
-msgstr ""
+msgstr "Маршрут"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:78
 #: src/contents/ui/PresetsAutoloadingPage.qml:210
@@ -2671,9 +2649,8 @@ msgid "Local preset"
 msgstr "Список локальных предустановок"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:88
-#, fuzzy
 msgid "Create"
-msgstr "Создание"
+msgstr "Создать"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:90
 #, fuzzy
@@ -2857,9 +2834,8 @@ msgid "Community"
 msgstr "Сообщество"
 
 #: src/contents/ui/PresetsSheet.qml:93
-#, fuzzy
 msgid "Autoloading"
-msgstr "Авторегулятор"
+msgstr "Автозагрузка"
 
 #: src/contents/ui/PresetsSheet.qml:112
 #, fuzzy
@@ -2868,7 +2844,7 @@ msgstr "Предустановка не загружена"
 
 #: src/contents/ui/PresetsSheet.qml:128
 msgid "Fallback Preset"
-msgstr ""
+msgstr "Резервная предустановка отката"
 
 #: src/contents/ui/RNNoise.qml:43
 #, fuzzy
@@ -2965,9 +2941,8 @@ msgid "Large"
 msgstr "Большой"
 
 #: src/contents/ui/Reverb.qml:52
-#, fuzzy
 msgid "Tunnel-like"
-msgstr "Туннель"
+msgstr "Туннелеобразный"
 
 #: src/contents/ui/Reverb.qml:52
 msgid "Large/smooth"
@@ -3203,7 +3178,6 @@ msgid "© 2017-2025 EasyEffects Team"
 msgstr ""
 
 #: src/main.cpp:310
-#, fuzzy
 msgid "Wellington Wallace"
 msgstr "Веллингтон Уоллис"
 
@@ -3227,9 +3201,8 @@ msgid "(Mic)"
 msgstr "(Микрофон)"
 
 #: src/plugin_base.cpp:275
-#, fuzzy
 msgid "(Speakers)"
-msgstr "Динамики"
+msgstr "(Динамики)"
 
 #: src/plugin_base.cpp:282
 msgid "Output Level Meter"
