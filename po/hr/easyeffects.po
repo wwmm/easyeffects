@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-14 00:20+0000\n"
+"POT-Creation-Date: 2025-11-13 22:38-0300\n"
 "PO-Revision-Date: 2025-11-10 22:39+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/easyeffects/"
@@ -221,8 +221,8 @@ msgstr "Cilj"
 #: src/contents/ui/MultibandGate.qml:412 src/contents/ui/MultibandGate.qml:567
 #: src/contents/ui/MultibandGate.qml:585
 #: src/contents/ui/PageStreamsEffects.qml:595 src/contents/ui/Pitch.qml:111
-#: src/contents/ui/Pitch.qml:130 src/contents/ui/RNNoise.qml:132
-#: src/contents/ui/Reverb.qml:178 src/contents/ui/Reverb.qml:196
+#: src/contents/ui/Pitch.qml:130 src/contents/ui/Reverb.qml:178
+#: src/contents/ui/Reverb.qml:196 src/contents/ui/RNNoise.qml:132
 #: src/contents/ui/Speex.qml:85 src/contents/ui/StereoTools.qml:125
 #: src/contents/ui/StereoTools.qml:159 src/contents/ui/StereoTools.qml:333
 #: src/contents/ui/StereoTools.qml:351
@@ -275,9 +275,9 @@ msgstr "Pojačanje izlaza"
 #: src/contents/ui/Loudness.qml:154 src/contents/ui/Maximizer.qml:102
 #: src/contents/ui/MultibandCompressor.qml:936
 #: src/contents/ui/MultibandGate.qml:909 src/contents/ui/Pitch.qml:246
-#: src/contents/ui/RNNoise.qml:56 src/contents/ui/RNNoise.qml:67
-#: src/contents/ui/RNNoise.qml:281 src/contents/ui/RNNoise.qml:283
-#: src/contents/ui/RNNoise.qml:301 src/contents/ui/Reverb.qml:298
+#: src/contents/ui/Reverb.qml:298 src/contents/ui/RNNoise.qml:56
+#: src/contents/ui/RNNoise.qml:67 src/contents/ui/RNNoise.qml:281
+#: src/contents/ui/RNNoise.qml:283 src/contents/ui/RNNoise.qml:301
 #: src/contents/ui/Speex.qml:155 src/contents/ui/StereoTools.qml:370
 #, fuzzy
 msgid "Using %1"
@@ -334,8 +334,8 @@ msgstr "Raspon"
 #: src/contents/ui/Convolver.qml:212 src/contents/ui/Convolver.qml:363
 #: src/contents/ui/Crossfeed.qml:67 src/contents/ui/CrystalizerBand.qml:75
 #: src/contents/ui/Deesser.qml:174 src/contents/ui/Deesser.qml:191
-#: src/contents/ui/EqualizerBand.qml:46
-#: src/contents/ui/EqualizerBandMenu.qml:80 src/contents/ui/Exciter.qml:134
+#: src/contents/ui/EqualizerBandMenu.qml:80
+#: src/contents/ui/EqualizerBand.qml:46 src/contents/ui/Exciter.qml:134
 #: src/contents/ui/Exciter.qml:161 src/contents/ui/Expander.qml:386
 #: src/contents/ui/Expander.qml:407 src/contents/ui/Filter.qml:116
 #: src/contents/ui/Gate.qml:405 src/contents/ui/Gate.qml:426
@@ -390,18 +390,18 @@ msgstr "Poslušaj"
 #: src/contents/ui/Exciter.qml:233 src/contents/ui/Expander.qml:872
 #: src/contents/ui/Filter.qml:231 src/contents/ui/Gate.qml:1009
 #: src/contents/ui/Limiter.qml:627 src/contents/ui/Loudness.qml:196
-#: src/contents/ui/Maximizer.qml:134
+#: src/contents/ui/main.qml:560 src/contents/ui/Maximizer.qml:134
 #: src/contents/ui/MultibandCompressor.qml:985
-#: src/contents/ui/MultibandGate.qml:958 src/contents/ui/RNNoise.qml:326
-#: src/contents/ui/Reverb.qml:338 src/contents/ui/Speex.qml:173
-#: src/contents/ui/StereoTools.qml:402 src/contents/ui/main.qml:560
+#: src/contents/ui/MultibandGate.qml:958 src/contents/ui/Reverb.qml:338
+#: src/contents/ui/RNNoise.qml:326 src/contents/ui/Speex.qml:173
+#: src/contents/ui/StereoTools.qml:402
 msgid "Reset"
 msgstr "Vrati na tvorničke postavke"
 
 #: src/contents/ui/BassLoudness.qml:63 src/contents/ui/Compressor.qml:463
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:421
-#: src/contents/ui/Gate.qml:436 src/contents/ui/StereoTools.qml:249
-#: src/contents/ui/main.qml:488
+#: src/contents/ui/Gate.qml:436 src/contents/ui/main.qml:488
+#: src/contents/ui/StereoTools.qml:249
 msgid "Output"
 msgstr "Izlaz"
 
@@ -472,8 +472,8 @@ msgstr "Kompresor"
 
 #: src/contents/ui/Compressor.qml:62 src/contents/ui/Compressor.qml:284
 #: src/contents/ui/Deesser.qml:71 src/contents/ui/Delay.qml:52
-#: src/contents/ui/Delay.qml:205 src/contents/ui/Equalizer.qml:103
-#: src/contents/ui/EqualizerBandMenu.qml:45 src/contents/ui/Expander.qml:62
+#: src/contents/ui/Delay.qml:205 src/contents/ui/EqualizerBandMenu.qml:45
+#: src/contents/ui/Equalizer.qml:103 src/contents/ui/Expander.qml:62
 #: src/contents/ui/Expander.qml:244 src/contents/ui/Gate.qml:262
 #: src/contents/ui/Limiter.qml:55 src/contents/ui/Loudness.qml:52
 #: src/contents/ui/MultibandCompressor.qml:396
@@ -552,8 +552,8 @@ msgstr "Pokretanje"
 #: src/contents/ui/Pitch.qml:75 src/contents/ui/Pitch.qml:93
 #: src/contents/ui/PreferencesSheet.qml:219
 #: src/contents/ui/PreferencesSheet.qml:256
-#: src/contents/ui/PreferencesSheet.qml:412 src/contents/ui/RNNoise.qml:148
-#: src/contents/ui/Reverb.qml:84 src/contents/ui/StereoTools.qml:283
+#: src/contents/ui/PreferencesSheet.qml:412 src/contents/ui/Reverb.qml:84
+#: src/contents/ui/RNNoise.qml:148 src/contents/ui/StereoTools.qml:283
 msgid "ms"
 msgstr ""
 
@@ -909,6 +909,52 @@ msgstr ""
 msgid "Stereo split"
 msgstr "Stereo baza"
 
+#: src/contents/ui/ConvolverImpulseSheet.qml:31
+#, fuzzy
+msgid "Imported a new Convolver impluse file."
+msgstr "Učitaj impuls datoteku"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:33
+#, fuzzy
+msgid "Failed to import the Convolver impulse file."
+msgstr "Neuspjelo učitavanje impuls datoteke."
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:45
+#: src/contents/ui/MenuAddPlugins.qml:168
+#: src/contents/ui/PresetsCommunityPage.qml:40
+#: src/contents/ui/PresetsLocalPage.qml:139
+msgid "Search"
+msgstr "Traži"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:83
+#, fuzzy
+msgid "Remove Impulse Response"
+msgstr "Reakcija impulsa"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:84
+msgid "Are you sure you want to remove this impulse response from the list?"
+msgstr ""
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:88
+#, fuzzy
+msgid "Removed the %1 Convolver impulse."
+msgstr "Nije bilo moguće učitati impuls datoteku"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:90
+#, fuzzy
+msgid "Failed to remove the %1 Convolver impulse."
+msgstr "Nije bilo moguće učitati impuls datoteku"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:107
+#, fuzzy
+msgid "Delete this impulse"
+msgstr "Učitaj impuls"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:127
+#, fuzzy
+msgid "Import impulse"
+msgstr "Uvezi impuls"
+
 #: src/contents/ui/Convolver.qml:49
 #, fuzzy
 msgid "Loaded the %1 Convolver impulse."
@@ -977,52 +1023,6 @@ msgstr "Stereo širina"
 msgid "Autogain"
 msgstr "Automatsko pojačanje"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:31
-#, fuzzy
-msgid "Imported a new Convolver impluse file."
-msgstr "Učitaj impuls datoteku"
-
-#: src/contents/ui/ConvolverImpulseSheet.qml:33
-#, fuzzy
-msgid "Failed to import the Convolver impulse file."
-msgstr "Neuspjelo učitavanje impuls datoteke."
-
-#: src/contents/ui/ConvolverImpulseSheet.qml:45
-#: src/contents/ui/MenuAddPlugins.qml:168
-#: src/contents/ui/PresetsCommunityPage.qml:40
-#: src/contents/ui/PresetsLocalPage.qml:139
-msgid "Search"
-msgstr "Traži"
-
-#: src/contents/ui/ConvolverImpulseSheet.qml:83
-#, fuzzy
-msgid "Remove Impulse Response"
-msgstr "Reakcija impulsa"
-
-#: src/contents/ui/ConvolverImpulseSheet.qml:84
-msgid "Are you sure you want to remove this impulse response from the list?"
-msgstr ""
-
-#: src/contents/ui/ConvolverImpulseSheet.qml:88
-#, fuzzy
-msgid "Removed the %1 Convolver impulse."
-msgstr "Nije bilo moguće učitati impuls datoteku"
-
-#: src/contents/ui/ConvolverImpulseSheet.qml:90
-#, fuzzy
-msgid "Failed to remove the %1 Convolver impulse."
-msgstr "Nije bilo moguće učitati impuls datoteku"
-
-#: src/contents/ui/ConvolverImpulseSheet.qml:107
-#, fuzzy
-msgid "Delete this impulse"
-msgstr "Učitaj impuls"
-
-#: src/contents/ui/ConvolverImpulseSheet.qml:127
-#, fuzzy
-msgid "Import impulse"
-msgstr "Uvezi impuls"
-
 #: src/contents/ui/Crossfeed.qml:60
 msgid "Cutoff"
 msgstr "Prekid"
@@ -1040,14 +1040,10 @@ msgstr "Križno spajanje"
 msgid "Default"
 msgstr "Tvorničke postavke"
 
-#: src/contents/ui/Crossfeed.qml:146 src/contents/ui/Reverb.qml:315
-#: src/contents/ui/main.qml:462
+#: src/contents/ui/Crossfeed.qml:146 src/contents/ui/main.qml:462
+#: src/contents/ui/Reverb.qml:315
 msgid "Presets"
 msgstr "Predlošci"
-
-#: src/contents/ui/Crystalizer.qml:107
-msgid "Adaptive intensity"
-msgstr ""
 
 #: src/contents/ui/CrystalizerBand.qml:35
 #: src/contents/ui/EqualizerBandMenu.qml:157
@@ -1066,6 +1062,10 @@ msgstr "Premosnica"
 #: src/contents/ui/CrystalizerBand.qml:75 src/contents/ui/EqualizerBand.qml:48
 #: src/contents/ui/PageStreamsEffects.qml:593
 msgid "kHz"
+msgstr ""
+
+#: src/contents/ui/Crystalizer.qml:107
+msgid "Adaptive intensity"
 msgstr ""
 
 #: src/contents/ui/DeepFilterNet.qml:32
@@ -1344,8 +1344,8 @@ msgstr ""
 msgid "Input and output gain controls with level meters"
 msgstr ""
 
-#: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/StereoTools.qml:40
-#: src/contents/ui/main.qml:501
+#: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/main.qml:501
+#: src/contents/ui/StereoTools.qml:40
 msgid "Input"
 msgstr "Ulaz"
 
@@ -1353,6 +1353,119 @@ msgstr "Ulaz"
 msgctxt "minus infinity abbreviation"
 msgid "-inf"
 msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:25
+#: src/contents/ui/MultibandCompressor.qml:631
+#: src/contents/ui/MultibandCompressor.qml:901
+#: src/contents/ui/MultibandGate.qml:604 src/contents/ui/MultibandGate.qml:874
+#, fuzzy
+msgid "Band"
+msgstr "Trake"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:50
+msgid "Bell"
+msgstr "Zvono"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:50
+#, fuzzy
+msgid "High-shelf"
+msgstr "Visoki shelf"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:50
+#, fuzzy
+msgid "Low-shelf"
+msgstr "Niski shelf"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:50
+msgid "Notch"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:50
+msgid "Resonance"
+msgstr "Rezonancija"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:50
+#, fuzzy
+msgid "Allpass"
+msgstr "Premosnica"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:50
+#, fuzzy
+msgid "Bandpass"
+msgstr "Premosnica"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:50
+#, fuzzy
+msgid "Ladder-pass"
+msgstr "Nizak prolaz"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:50
+#, fuzzy
+msgid "Ladder-rejection"
+msgstr "Ograničenje pojačanja"
+
+#: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
+msgid "RLC (BT)"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
+msgid "RLC (MT)"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
+msgid "BWC (BT)"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
+msgid "BWC (MT)"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
+msgid "LRX (BT)"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
+msgid "LRX (MT)"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
+msgid "APO (DR)"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:57 src/contents/ui/Filter.qml:88
+msgid "Slope"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:74 src/contents/ui/Filter.qml:109
+#: src/contents/ui/MultibandCompressor.qml:173
+#: src/contents/ui/MultibandGate.qml:110 src/contents/ui/PipeWirePage.qml:397
+msgid "Frequency"
+msgstr "Frekvencija"
+
+#: src/contents/ui/EqualizerBandMenu.qml:95 src/contents/ui/Filter.qml:140
+#: src/contents/ui/Limiter.qml:472 src/contents/ui/MultibandCompressor.qml:321
+#: src/contents/ui/MultibandGate.qml:207
+msgid "Gain"
+msgstr "Pojačanje"
+
+#: src/contents/ui/EqualizerBandMenu.qml:116 src/contents/ui/Filter.qml:156
+msgid "Quality"
+msgstr "Kvaliteta"
+
+#: src/contents/ui/EqualizerBandMenu.qml:137 src/contents/ui/Filter.qml:125
+msgid "Width"
+msgstr "Širina"
+
+#: src/contents/ui/EqualizerBandMenu.qml:143
+#, fuzzy
+msgid "oct"
+msgstr "Filter"
+
+#: src/contents/ui/EqualizerBandMenu.qml:167
+#: src/contents/ui/MultibandCompressor.qml:73
+#: src/contents/ui/MultibandGate.qml:73
+msgid "Solo"
+msgstr "Solo"
 
 #: src/contents/ui/Equalizer.qml:50 src/contents/ui/Equalizer.qml:80
 #, fuzzy
@@ -1470,119 +1583,6 @@ msgstr "Učitaj predloške"
 #, fuzzy
 msgid "Export APO"
 msgstr "Izvezi predloške"
-
-#: src/contents/ui/EqualizerBandMenu.qml:25
-#: src/contents/ui/MultibandCompressor.qml:631
-#: src/contents/ui/MultibandCompressor.qml:901
-#: src/contents/ui/MultibandGate.qml:604 src/contents/ui/MultibandGate.qml:874
-#, fuzzy
-msgid "Band"
-msgstr "Trake"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:50
-msgid "Bell"
-msgstr "Zvono"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:50
-#, fuzzy
-msgid "High-shelf"
-msgstr "Visoki shelf"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:50
-#, fuzzy
-msgid "Low-shelf"
-msgstr "Niski shelf"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:50
-msgid "Notch"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:50
-msgid "Resonance"
-msgstr "Rezonancija"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:50
-#, fuzzy
-msgid "Allpass"
-msgstr "Premosnica"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:50
-#, fuzzy
-msgid "Bandpass"
-msgstr "Premosnica"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:50
-#, fuzzy
-msgid "Ladder-pass"
-msgstr "Nizak prolaz"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:50
-#, fuzzy
-msgid "Ladder-rejection"
-msgstr "Ograničenje pojačanja"
-
-#: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
-msgid "RLC (BT)"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
-msgid "RLC (MT)"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
-msgid "BWC (BT)"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
-msgid "BWC (MT)"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
-msgid "LRX (BT)"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
-msgid "LRX (MT)"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
-msgid "APO (DR)"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:57 src/contents/ui/Filter.qml:88
-msgid "Slope"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:74 src/contents/ui/Filter.qml:109
-#: src/contents/ui/MultibandCompressor.qml:173
-#: src/contents/ui/MultibandGate.qml:110 src/contents/ui/PipeWirePage.qml:397
-msgid "Frequency"
-msgstr "Frekvencija"
-
-#: src/contents/ui/EqualizerBandMenu.qml:95 src/contents/ui/Filter.qml:140
-#: src/contents/ui/Limiter.qml:472 src/contents/ui/MultibandCompressor.qml:321
-#: src/contents/ui/MultibandGate.qml:207
-msgid "Gain"
-msgstr "Pojačanje"
-
-#: src/contents/ui/EqualizerBandMenu.qml:116 src/contents/ui/Filter.qml:156
-msgid "Quality"
-msgstr "Kvaliteta"
-
-#: src/contents/ui/EqualizerBandMenu.qml:137 src/contents/ui/Filter.qml:125
-msgid "Width"
-msgstr "Širina"
-
-#: src/contents/ui/EqualizerBandMenu.qml:143
-#, fuzzy
-msgid "oct"
-msgstr "Filter"
-
-#: src/contents/ui/EqualizerBandMenu.qml:167
-#: src/contents/ui/MultibandCompressor.qml:73
-#: src/contents/ui/MultibandGate.qml:73
-msgid "Solo"
-msgstr "Solo"
 
 #: src/contents/ui/Exciter.qml:143
 #, fuzzy
@@ -1919,6 +1919,82 @@ msgstr "Odrezivanje"
 msgid "Clipping"
 msgstr "Odrezivanje"
 
+#: src/contents/ui/main.qml:233
+msgid "Reset Settings?"
+msgstr "Resetirati postavke?"
+
+#: src/contents/ui/main.qml:234
+msgid "Are you sure you want to reset all Easy Effects settings?"
+msgstr ""
+
+#: src/contents/ui/main.qml:285 src/contents/ui/main.qml:301
+#, fuzzy
+msgid "Preset Loaded"
+msgstr "Učitaj predloške"
+
+#: src/contents/ui/main.qml:312 src/contents/ui/main.qml:324
+#, fuzzy
+msgid "Clear List"
+msgstr "Popis klijenata"
+
+#: src/contents/ui/main.qml:313 src/contents/ui/main.qml:325
+msgid "Are you sure you want to clear this list?"
+msgstr ""
+
+#: src/contents/ui/main.qml:380
+#, fuzzy
+msgid "Active"
+msgstr "Kompresija"
+
+#: src/contents/ui/main.qml:391 src/contents/ui/main.qml:540
+#: src/contents/ui/ShortcutsSheet.qml:369
+#, fuzzy
+msgid "Shortcuts"
+msgstr "Kratkoročno"
+
+#: src/contents/ui/main.qml:400 src/contents/ui/main.qml:548
+msgid "Manual"
+msgstr ""
+
+#: src/contents/ui/main.qml:412 src/contents/ui/main.qml:580
+msgid "Quit"
+msgstr ""
+
+#: src/contents/ui/main.qml:436
+msgid "Go back"
+msgstr ""
+
+#: src/contents/ui/main.qml:446 src/contents/ui/PageStreamsEffects.qml:630
+#, fuzzy
+msgid "Effects"
+msgstr "EasyEffects"
+
+#: src/contents/ui/main.qml:447
+msgid "Turn effects on/off"
+msgstr ""
+
+#: src/contents/ui/main.qml:458
+msgid "Audio effects are enabled."
+msgstr ""
+
+#: src/contents/ui/main.qml:458
+msgid "Audio effects are disabled."
+msgstr ""
+
+#: src/contents/ui/main.qml:514
+msgid "PipeWire"
+msgstr ""
+
+#: src/contents/ui/main.qml:532
+#, fuzzy
+msgid "Preferences"
+msgstr "Referenca"
+
+#: src/contents/ui/main.qml:572
+#, fuzzy
+msgid "About Easy Effects"
+msgstr "EasyEffects"
+
 #: src/contents/ui/MenuAddPlugins.qml:75
 msgid "Add %1"
 msgstr ""
@@ -2058,11 +2134,6 @@ msgstr "Bez efekata"
 #: src/contents/ui/PageStreamsEffects.qml:414
 msgid "Audio stream not modified"
 msgstr ""
-
-#: src/contents/ui/PageStreamsEffects.qml:630 src/contents/ui/main.qml:446
-#, fuzzy
-msgid "Effects"
-msgstr "EasyEffects"
 
 #: src/contents/ui/PageStreamsEffects.qml:648
 #, fuzzy
@@ -2537,9 +2608,8 @@ msgstr "Uređaj"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:39
 #: src/contents/ui/PresetsAutoloadingPage.qml:173
-#, fuzzy
-msgid "Hardware profile"
-msgstr "Profil"
+msgid "Route"
+msgstr ""
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:54
 #: src/contents/ui/PresetsAutoloadingPage.qml:186
@@ -2745,82 +2815,6 @@ msgstr "Učitaj predloške"
 msgid "Fallback Preset"
 msgstr ""
 
-#: src/contents/ui/RNNoise.qml:43
-#, fuzzy
-msgid "Imported a new RNNoise model file."
-msgstr "Standardni model"
-
-#: src/contents/ui/RNNoise.qml:45
-#, fuzzy
-msgid "Failed to import the RNNoise model file."
-msgstr "Neuspio uvoz datotek modela."
-
-#: src/contents/ui/RNNoise.qml:56 src/contents/ui/RNNoise.qml:67
-#: src/contents/ui/RNNoise.qml:281 src/contents/ui/RNNoise.qml:283
-#, fuzzy
-msgid "Standard RNNoise model"
-msgstr "Standardni model"
-
-#: src/contents/ui/RNNoise.qml:58
-#, fuzzy
-msgid "Standard RNNoise model loaded."
-msgstr "Standardni model"
-
-#: src/contents/ui/RNNoise.qml:63 src/contents/ui/RNNoise.qml:285
-#, fuzzy
-msgid "Using %1 Model"
-msgstr "Koristi se {}"
-
-#: src/contents/ui/RNNoise.qml:65
-#, fuzzy
-msgid "Loaded the %1 RNNoise model."
-msgstr "Standardni model"
-
-#: src/contents/ui/RNNoise.qml:69
-#, fuzzy
-msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
-msgstr "Nije bilo moguće učitati impuls datoteku"
-
-#: src/contents/ui/RNNoise.qml:88 src/contents/ui/Speex.qml:98
-#, fuzzy
-msgid "Voice detection"
-msgstr "Otkrivanje glasa"
-
-#: src/contents/ui/RNNoise.qml:125
-#, fuzzy
-msgid "Wet level"
-msgstr "Ciljana razina"
-
-#: src/contents/ui/RNNoise.qml:165
-#, fuzzy
-msgid "Use the Standard model"
-msgstr "Standardni model"
-
-#: src/contents/ui/RNNoise.qml:176
-#, fuzzy
-msgid "User Models"
-msgstr "Kompresija"
-
-#: src/contents/ui/RNNoise.qml:242
-#, fuzzy
-msgid "Delete this model"
-msgstr "Ukloni ovu datoteku modela"
-
-#: src/contents/ui/RNNoise.qml:247
-#, fuzzy
-msgid "Removed the %1 RNNoise model."
-msgstr "Standardni model"
-
-#: src/contents/ui/RNNoise.qml:249
-#, fuzzy
-msgid "Failed to remove the %1 RNNoise model."
-msgstr "Nije bilo moguće učitati impuls datoteku"
-
-#: src/contents/ui/RNNoise.qml:318
-#, fuzzy
-msgid "Import model"
-msgstr "Uvezi model"
-
 #: src/contents/ui/Reverb.qml:48
 #, fuzzy
 msgid "Room size"
@@ -2912,6 +2906,82 @@ msgstr "Disco"
 msgid "Large occupied hall"
 msgstr "Velika popunjena dvorana"
 
+#: src/contents/ui/RNNoise.qml:43
+#, fuzzy
+msgid "Imported a new RNNoise model file."
+msgstr "Standardni model"
+
+#: src/contents/ui/RNNoise.qml:45
+#, fuzzy
+msgid "Failed to import the RNNoise model file."
+msgstr "Neuspio uvoz datotek modela."
+
+#: src/contents/ui/RNNoise.qml:56 src/contents/ui/RNNoise.qml:67
+#: src/contents/ui/RNNoise.qml:281 src/contents/ui/RNNoise.qml:283
+#, fuzzy
+msgid "Standard RNNoise model"
+msgstr "Standardni model"
+
+#: src/contents/ui/RNNoise.qml:58
+#, fuzzy
+msgid "Standard RNNoise model loaded."
+msgstr "Standardni model"
+
+#: src/contents/ui/RNNoise.qml:63 src/contents/ui/RNNoise.qml:285
+#, fuzzy
+msgid "Using %1 Model"
+msgstr "Koristi se {}"
+
+#: src/contents/ui/RNNoise.qml:65
+#, fuzzy
+msgid "Loaded the %1 RNNoise model."
+msgstr "Standardni model"
+
+#: src/contents/ui/RNNoise.qml:69
+#, fuzzy
+msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
+msgstr "Nije bilo moguće učitati impuls datoteku"
+
+#: src/contents/ui/RNNoise.qml:88 src/contents/ui/Speex.qml:98
+#, fuzzy
+msgid "Voice detection"
+msgstr "Otkrivanje glasa"
+
+#: src/contents/ui/RNNoise.qml:125
+#, fuzzy
+msgid "Wet level"
+msgstr "Ciljana razina"
+
+#: src/contents/ui/RNNoise.qml:165
+#, fuzzy
+msgid "Use the Standard model"
+msgstr "Standardni model"
+
+#: src/contents/ui/RNNoise.qml:176
+#, fuzzy
+msgid "User Models"
+msgstr "Kompresija"
+
+#: src/contents/ui/RNNoise.qml:242
+#, fuzzy
+msgid "Delete this model"
+msgstr "Ukloni ovu datoteku modela"
+
+#: src/contents/ui/RNNoise.qml:247
+#, fuzzy
+msgid "Removed the %1 RNNoise model."
+msgstr "Standardni model"
+
+#: src/contents/ui/RNNoise.qml:249
+#, fuzzy
+msgid "Failed to remove the %1 RNNoise model."
+msgstr "Nije bilo moguće učitati impuls datoteku"
+
+#: src/contents/ui/RNNoise.qml:318
+#, fuzzy
+msgid "Import model"
+msgstr "Uvezi model"
+
 #: src/contents/ui/ShortcutsSheet.qml:46
 #, fuzzy
 msgid "Show help"
@@ -2958,12 +3028,6 @@ msgstr "Kratkoročno"
 #: src/contents/ui/ShortcutsSheet.qml:350 src/global_shortcuts.hpp:50
 msgid "Toggle microphone monitoring"
 msgstr ""
-
-#: src/contents/ui/ShortcutsSheet.qml:369 src/contents/ui/main.qml:391
-#: src/contents/ui/main.qml:540
-#, fuzzy
-msgid "Shortcuts"
-msgstr "Kratkoročno"
 
 #: src/contents/ui/Speex.qml:44
 msgid "Denoise"
@@ -3066,71 +3130,6 @@ msgstr "Stereo baza"
 #, fuzzy
 msgid "Stereo phase"
 msgstr "Stereo faza"
-
-#: src/contents/ui/main.qml:233
-msgid "Reset Settings?"
-msgstr "Resetirati postavke?"
-
-#: src/contents/ui/main.qml:234
-msgid "Are you sure you want to reset all Easy Effects settings?"
-msgstr ""
-
-#: src/contents/ui/main.qml:285 src/contents/ui/main.qml:301
-#, fuzzy
-msgid "Preset Loaded"
-msgstr "Učitaj predloške"
-
-#: src/contents/ui/main.qml:312 src/contents/ui/main.qml:324
-#, fuzzy
-msgid "Clear List"
-msgstr "Popis klijenata"
-
-#: src/contents/ui/main.qml:313 src/contents/ui/main.qml:325
-msgid "Are you sure you want to clear this list?"
-msgstr ""
-
-#: src/contents/ui/main.qml:380
-#, fuzzy
-msgid "Active"
-msgstr "Kompresija"
-
-#: src/contents/ui/main.qml:400 src/contents/ui/main.qml:548
-msgid "Manual"
-msgstr ""
-
-#: src/contents/ui/main.qml:412 src/contents/ui/main.qml:580
-msgid "Quit"
-msgstr ""
-
-#: src/contents/ui/main.qml:436
-msgid "Go back"
-msgstr ""
-
-#: src/contents/ui/main.qml:447
-msgid "Turn effects on/off"
-msgstr ""
-
-#: src/contents/ui/main.qml:458
-msgid "Audio effects are enabled."
-msgstr ""
-
-#: src/contents/ui/main.qml:458
-msgid "Audio effects are disabled."
-msgstr ""
-
-#: src/contents/ui/main.qml:514
-msgid "PipeWire"
-msgstr ""
-
-#: src/contents/ui/main.qml:532
-#, fuzzy
-msgid "Preferences"
-msgstr "Referenca"
-
-#: src/contents/ui/main.qml:572
-#, fuzzy
-msgid "About Easy Effects"
-msgstr "EasyEffects"
 
 #: src/main.cpp:309
 #, fuzzy
@@ -3309,6 +3308,10 @@ msgstr "Ekvalizator, kompresor i drugi audio efekti"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Hardware profile"
+#~ msgstr "Profil"
 
 #, fuzzy
 #~ msgid "Id"
