@@ -10,11 +10,75 @@ kconfig_add_kcfg_files(easyeffects GENERATE_MOC ${KCFGC_FILES})
 
 # install(FILES ${KCFG_FILES} DESTINATION ${KDE_INSTALL_KCFGDIR})
 
+set_source_files_properties(contents/ui/Validators.qml
+    PROPERTIES QT_QML_SINGLETON_TYPE TRUE)
+
 qt_add_qml_module(easyeffects
     URI ee.type.presets
     VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
     SOURCES
         presets_list_model.cpp presets_list_model.hpp
+    QML_FILES
+        contents/ui/AboutPage.qml
+        contents/ui/Autogain.qml
+        contents/ui/BassEnhancer.qml
+        contents/ui/BassLoudness.qml
+        contents/ui/BlocklistSheet.qml
+        contents/ui/Compressor.qml
+        contents/ui/Convolver.qml
+        contents/ui/ConvolverImpulseSheet.qml
+        contents/ui/Crossfeed.qml
+        contents/ui/Crystalizer.qml
+        contents/ui/CrystalizerBand.qml
+        contents/ui/Deesser.qml
+        contents/ui/Delay.qml
+        contents/ui/DeepFilterNet.qml
+        contents/ui/DelegateClientsList.qml
+        contents/ui/DelegateModulesList.qml
+        contents/ui/DelegatePluginsList.qml
+        contents/ui/DelegateStreamsList.qml
+        contents/ui/EchoCanceller.qml
+        contents/ui/EeCard.qml
+        contents/ui/EeChart.qml
+        contents/ui/EeAudioLevel.qml
+        contents/ui/EeInputOutputGain.qml
+        contents/ui/EeListSectionHeader.qml
+        contents/ui/EeProgressBar.qml
+        contents/ui/EeSpinBox.qml
+        contents/ui/EeSwitch.qml
+        contents/ui/Equalizer.qml
+        contents/ui/EqualizerBand.qml
+        contents/ui/EqualizerBandMenu.qml
+        contents/ui/Exciter.qml
+        contents/ui/Expander.qml
+        contents/ui/Filter.qml
+        contents/ui/Gate.qml
+        contents/ui/HelpSheet.qml
+        contents/ui/LevelMeter.qml
+        contents/ui/Limiter.qml
+        contents/ui/Loudness.qml
+        contents/ui/Maximizer.qml
+        contents/ui/MultibandCompressor.qml
+        contents/ui/MultibandGate.qml
+        contents/ui/Main.qml
+        contents/ui/MenuAddPlugins.qml
+        contents/ui/PageStreamsEffects.qml
+        contents/ui/Pitch.qml
+        contents/ui/PipeWirePage.qml
+        contents/ui/PluginNotAvailable.qml
+        contents/ui/PreferencesSheet.qml
+        contents/ui/LspPreMixSheet.qml
+        contents/ui/PresetsSheet.qml
+        contents/ui/PresetsAutoloadingPage.qml
+        contents/ui/PresetsLocalPage.qml
+        contents/ui/PresetsCommunityPage.qml
+        contents/ui/Reverb.qml
+        contents/ui/RNNoise.qml
+        contents/ui/ShortcutsSheet.qml
+        contents/ui/Speex.qml
+        contents/ui/StereoTools.qml
+        contents/ui/Validators.qml
+        contents/ui/Common.js
 )
 
 # The module definitions below are to help the qml linter

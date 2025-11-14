@@ -118,33 +118,33 @@ Kirigami.Page {
                     pluginsStack.pop();
 
                 const pluginMap = {
-                    [TagsPluginName.BaseName.autogain]: "qrc:/ui/Autogain.qml",
-                    [TagsPluginName.BaseName.bassEnhancer]: "qrc:/ui/BassEnhancer.qml",
-                    [TagsPluginName.BaseName.bassLoudness]: "qrc:/ui/BassLoudness.qml",
-                    [TagsPluginName.BaseName.compressor]: "qrc:/ui/Compressor.qml",
-                    [TagsPluginName.BaseName.convolver]: "qrc:/ui/Convolver.qml",
-                    [TagsPluginName.BaseName.crossfeed]: "qrc:/ui/Crossfeed.qml",
-                    [TagsPluginName.BaseName.crystalizer]: "qrc:/ui/Crystalizer.qml",
-                    [TagsPluginName.BaseName.delay]: "qrc:/ui/Delay.qml",
-                    [TagsPluginName.BaseName.deepfilternet]: "qrc:/ui/DeepFilterNet.qml",
-                    [TagsPluginName.BaseName.deesser]: "qrc:/ui/Deesser.qml",
-                    [TagsPluginName.BaseName.equalizer]: "qrc:/ui/Equalizer.qml",
-                    [TagsPluginName.BaseName.exciter]: "qrc:/ui/Exciter.qml",
-                    [TagsPluginName.BaseName.echoCanceller]: "qrc:/ui/EchoCanceller.qml",
-                    [TagsPluginName.BaseName.expander]: "qrc:/ui/Expander.qml",
-                    [TagsPluginName.BaseName.filter]: "qrc:/ui/Filter.qml",
-                    [TagsPluginName.BaseName.gate]: "qrc:/ui/Gate.qml",
-                    [TagsPluginName.BaseName.levelMeter]: "qrc:/ui/LevelMeter.qml",
-                    [TagsPluginName.BaseName.limiter]: "qrc:/ui/Limiter.qml",
-                    [TagsPluginName.BaseName.loudness]: "qrc:/ui/Loudness.qml",
-                    [TagsPluginName.BaseName.maximizer]: "qrc:/ui/Maximizer.qml",
-                    [TagsPluginName.BaseName.multibandCompressor]: "qrc:/ui/MultibandCompressor.qml",
-                    [TagsPluginName.BaseName.multibandGate]: "qrc:/ui/MultibandGate.qml",
-                    [TagsPluginName.BaseName.pitch]: "qrc:/ui/Pitch.qml",
-                    [TagsPluginName.BaseName.reverb]: "qrc:/ui/Reverb.qml",
-                    [TagsPluginName.BaseName.rnnoise]: "qrc:/ui/RNNoise.qml",
-                    [TagsPluginName.BaseName.speex]: "qrc:/ui/Speex.qml",
-                    [TagsPluginName.BaseName.stereoTools]: "qrc:/ui/StereoTools.qml"
+                    [TagsPluginName.BaseName.autogain]: Qt.resolvedUrl("Autogain.qml"),
+                    [TagsPluginName.BaseName.bassEnhancer]: Qt.resolvedUrl("BassEnhancer.qml"),
+                    [TagsPluginName.BaseName.bassLoudness]: Qt.resolvedUrl("BassLoudness.qml"),
+                    [TagsPluginName.BaseName.compressor]: Qt.resolvedUrl("Compressor.qml"),
+                    [TagsPluginName.BaseName.convolver]: Qt.resolvedUrl("Convolver.qml"),
+                    [TagsPluginName.BaseName.crossfeed]: Qt.resolvedUrl("Crossfeed.qml"),
+                    [TagsPluginName.BaseName.crystalizer]: Qt.resolvedUrl("Crystalizer.qml"),
+                    [TagsPluginName.BaseName.delay]: Qt.resolvedUrl("Delay.qml"),
+                    [TagsPluginName.BaseName.deepfilternet]: Qt.resolvedUrl("DeepFilterNet.qml"),
+                    [TagsPluginName.BaseName.deesser]: Qt.resolvedUrl("Deesser.qml"),
+                    [TagsPluginName.BaseName.equalizer]: Qt.resolvedUrl("Equalizer.qml"),
+                    [TagsPluginName.BaseName.exciter]: Qt.resolvedUrl("Exciter.qml"),
+                    [TagsPluginName.BaseName.echoCanceller]: Qt.resolvedUrl("EchoCanceller.qml"),
+                    [TagsPluginName.BaseName.expander]: Qt.resolvedUrl("Expander.qml"),
+                    [TagsPluginName.BaseName.filter]: Qt.resolvedUrl("Filter.qml"),
+                    [TagsPluginName.BaseName.gate]: Qt.resolvedUrl("Gate.qml"),
+                    [TagsPluginName.BaseName.levelMeter]: Qt.resolvedUrl("LevelMeter.qml"),
+                    [TagsPluginName.BaseName.limiter]: Qt.resolvedUrl("Limiter.qml"),
+                    [TagsPluginName.BaseName.loudness]: Qt.resolvedUrl("Loudness.qml"),
+                    [TagsPluginName.BaseName.maximizer]: Qt.resolvedUrl("Maximizer.qml"),
+                    [TagsPluginName.BaseName.multibandCompressor]: Qt.resolvedUrl("MultibandCompressor.qml"),
+                    [TagsPluginName.BaseName.multibandGate]: Qt.resolvedUrl("MultibandGate.qml"),
+                    [TagsPluginName.BaseName.pitch]: Qt.resolvedUrl("Pitch.qml"),
+                    [TagsPluginName.BaseName.reverb]: Qt.resolvedUrl("Reverb.qml"),
+                    [TagsPluginName.BaseName.rnnoise]: Qt.resolvedUrl("RNNoise.qml"),
+                    [TagsPluginName.BaseName.speex]: Qt.resolvedUrl("Speex.qml"),
+                    [TagsPluginName.BaseName.stereoTools]: Qt.resolvedUrl("StereoTools.qml"),
                 };
 
                 const packageMap = {
@@ -182,7 +182,7 @@ Kirigami.Page {
                 const pluginBackend = pageStreamsEffects.pipelineInstance.getPluginInstance(name);
 
                 if (pluginBackend.packageInstalled === false) {
-                    pluginsStack.push("qrc:/ui/PluginNotAvailable.qml", {
+                    pluginsStack.push(Qt.resolvedUrl("PluginNotAvailable.qml"), {
                         packageName: packageMap[baseName],
                         translatedName: TagsPluginName.PluginsNameModel.translate(baseName)
                     });
