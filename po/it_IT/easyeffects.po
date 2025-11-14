@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-13 23:47-0300\n"
-"PO-Revision-Date: 2025-11-13 15:51+0000\n"
+"PO-Revision-Date: 2025-11-14 15:51+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -45,10 +45,8 @@ msgid "Hide the Window."
 msgstr "Nascondi la Finestra."
 
 #: src/command_line_parser.cpp:45
-#, fuzzy
 msgid "Global bypass. 1 to enable and 2 to disable."
-msgstr ""
-"Bypass globale. 1 per abilitare, 2 per disabilitare e 3 per ottenere lo stato"
+msgstr "Bypass globale. 1 per abilitare e 2 per disabilitare."
 
 #: src/command_line_parser.cpp:45
 msgid "bypass-state"
@@ -1271,7 +1269,6 @@ msgid "Input"
 msgstr "Ingresso"
 
 #: src/contents/ui/EeSpinBox.qml:134 src/contents/ui/EeSpinBox.qml:149
-#, fuzzy
 msgctxt "minus infinity abbreviation"
 msgid "-inf"
 msgstr "-inf"
@@ -2405,14 +2402,15 @@ msgstr ""
 "una visualizzazione più compatta."
 
 #: src/contents/ui/PreferencesSheet.qml:467
-#, fuzzy
 msgid "Autoload delay"
-msgstr "Auto Caricamento"
+msgstr "Ritardo del caricamento automatico"
 
 #: src/contents/ui/PreferencesSheet.qml:468
 msgid ""
 "Delay between receiving a new device route and the call to autoload a preset"
 msgstr ""
+"Il ritardo tra la ricezione di un nuovo percorso del dispositivo e la "
+"chiamata del caricamento automatico del profilo"
 
 #: src/contents/ui/PreferencesSheet.qml:491
 msgid "Global shortcuts"
@@ -2447,7 +2445,7 @@ msgstr "Dispositivo Audio"
 #: src/contents/ui/PresetsAutoloadingPage.qml:37
 #: src/contents/ui/PresetsAutoloadingPage.qml:197
 msgid "Route"
-msgstr ""
+msgstr "Percorso"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:78
 #: src/contents/ui/PresetsAutoloadingPage.qml:210
@@ -2912,10 +2910,9 @@ msgstr "Effetti audio globali"
 
 #: src/main.cpp:311
 msgid "© 2017-2025 EasyEffects Team"
-msgstr ""
+msgstr "© 2017-2025 Il Team di EasyEffects"
 
 #: src/main.cpp:313
-#, fuzzy
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
@@ -2925,15 +2922,14 @@ msgid "Developer"
 msgstr "Sviluppatore"
 
 #: src/main.cpp:318
-#, fuzzy
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "frame"
+msgstr "Digit@lone1"
 
 #: src/main.cpp:318
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
+msgstr "kurmikon@yahoo.com"
 
 #: src/plugin_base.cpp:272
 msgid "(Mic)"

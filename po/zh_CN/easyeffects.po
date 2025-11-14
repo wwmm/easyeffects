@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-13 23:47-0300\n"
-"PO-Revision-Date: 2025-11-13 15:51+0000\n"
+"PO-Revision-Date: 2025-11-14 17:39+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hans/>\n"
@@ -42,13 +42,12 @@ msgid "Hide the Window."
 msgstr "隐藏窗口。"
 
 #: src/command_line_parser.cpp:45
-#, fuzzy
 msgid "Global bypass. 1 to enable and 2 to disable."
-msgstr "全局旁通。1以启用，2以禁用，3以获取状态"
+msgstr "全局旁通。1以启用，2以禁用。"
 
 #: src/command_line_parser.cpp:45
 msgid "bypass-state"
-msgstr ""
+msgstr "旁通状态"
 
 #: src/command_line_parser.cpp:46
 msgid "Load a preset. Example: easyeffects -l music"
@@ -342,11 +341,11 @@ msgstr "赫兹"
 
 #: src/contents/ui/BassEnhancer.qml:139
 msgid "Floor active"
-msgstr "启用频率下限"
+msgstr "激活下限"
 
 #: src/contents/ui/BassEnhancer.qml:150
 msgid "Floor"
-msgstr "频率下限"
+msgstr "下限"
 
 #: src/contents/ui/BassEnhancer.qml:204 src/contents/ui/Compressor.qml:890
 #: src/contents/ui/Deesser.qml:319 src/contents/ui/Delay.qml:393
@@ -919,12 +918,10 @@ msgid "Failed to load the %1 impulse. The Convolver is in passthrough mode."
 msgstr "无法加载脉冲响应%1。卷积器处于直通模式。"
 
 #: src/contents/ui/Convolver.qml:121
-#, fuzzy
 msgid "First"
 msgstr "第一项"
 
 #: src/contents/ui/Convolver.qml:133
-#, fuzzy
 msgid "Second"
 msgstr "第二项"
 
@@ -1074,33 +1071,28 @@ msgid "Filter"
 msgstr "滤波器"
 
 #: src/contents/ui/Deesser.qml:166
-#, fuzzy
 msgid "F1 split"
 msgstr "高通分频点"
 
 #: src/contents/ui/Deesser.qml:183
-#, fuzzy
 msgid "F2 peak"
-msgstr "滤波器峰值频率"
+msgstr "滤波峰值频率"
 
 #: src/contents/ui/Deesser.qml:200
-#, fuzzy
 msgid "F1 gain"
 msgstr "高通增益"
 
 #: src/contents/ui/Deesser.qml:217
-#, fuzzy
 msgid "F2 level"
-msgstr "峰值频率电平"
+msgstr "峰值电平补偿"
 
 #: src/contents/ui/Deesser.qml:225
 msgid "dBFS"
 msgstr "dBFS"
 
 #: src/contents/ui/Deesser.qml:235
-#, fuzzy
 msgid "F2 peak Q"
-msgstr "钟形滤波器Q值"
+msgstr "滤波器Q值"
 
 #: src/contents/ui/Deesser.qml:258
 msgid "Level"
@@ -1270,7 +1262,6 @@ msgid "Input"
 msgstr "输入"
 
 #: src/contents/ui/EeSpinBox.qml:134 src/contents/ui/EeSpinBox.qml:149
-#, fuzzy
 msgctxt "minus infinity abbreviation"
 msgid "-inf"
 msgstr "负无穷"
@@ -1482,9 +1473,8 @@ msgid "Export APO"
 msgstr "导出APO预设"
 
 #: src/contents/ui/Exciter.qml:143
-#, fuzzy
 msgid "Ceil active"
-msgstr "激活"
+msgstr "激活上限"
 
 #: src/contents/ui/Exciter.qml:154
 msgid "Ceil"
@@ -1501,12 +1491,10 @@ msgid "Internal"
 msgstr "内部"
 
 #: src/contents/ui/Filter.qml:60
-#, fuzzy
 msgid "Filter mode"
-msgstr "立体声模式"
+msgstr "滤波器模式"
 
 #: src/contents/ui/Filter.qml:74
-#, fuzzy
 msgid "Equalizer mode"
 msgstr "均衡器模式"
 
@@ -1527,7 +1515,7 @@ msgstr "迟滞"
 #: src/contents/ui/MultibandCompressor.qml:177
 #: src/contents/ui/MultibandGate.qml:114 src/contents/ui/Speex.qml:110
 msgid "Start"
-msgstr "开始概率"
+msgstr "启动"
 
 #: src/contents/ui/LevelMeter.qml:48
 msgid "Input Level"
@@ -1538,64 +1526,52 @@ msgid "True Peak"
 msgstr "实际峰值"
 
 #: src/contents/ui/Limiter.qml:59
-#, fuzzy
 msgid "Herm thin"
-msgstr "窄式埃尔米特插值"
+msgstr "窄式厄米插值"
 
 #: src/contents/ui/Limiter.qml:59
-#, fuzzy
 msgid "Herm wide"
-msgstr "宽式埃尔米特插值"
+msgstr "宽式厄米插值"
 
 #: src/contents/ui/Limiter.qml:59
-#, fuzzy
 msgid "Herm tail"
-msgstr "尾式埃尔米特插值"
+msgstr "尾式厄米插值"
 
 #: src/contents/ui/Limiter.qml:59
-#, fuzzy
 msgid "Herm duck"
-msgstr "蹲式埃尔米特插值"
+msgstr "闪避厄米插值"
 
 #: src/contents/ui/Limiter.qml:59
-#, fuzzy
 msgid "Exp thin"
 msgstr "窄式指数插值"
 
 #: src/contents/ui/Limiter.qml:59
-#, fuzzy
 msgid "Exp wide"
 msgstr "宽式指数插值"
 
 #: src/contents/ui/Limiter.qml:59
-#, fuzzy
 msgid "Exp tail"
 msgstr "尾式指数插值"
 
 #: src/contents/ui/Limiter.qml:59
-#, fuzzy
 msgid "Exp duck"
-msgstr "蹲式指数插值"
+msgstr "闪避指数插值"
 
 #: src/contents/ui/Limiter.qml:59
-#, fuzzy
 msgid "Line thin"
 msgstr "窄式线性插值"
 
 #: src/contents/ui/Limiter.qml:59
-#, fuzzy
 msgid "Line wide"
 msgstr "宽式线性插值"
 
 #: src/contents/ui/Limiter.qml:59
-#, fuzzy
 msgid "Line tail"
 msgstr "尾式线性插值"
 
 #: src/contents/ui/Limiter.qml:59
-#, fuzzy
 msgid "Line duck"
-msgstr "蹲式线性插值"
+msgstr "闪避线性插值"
 
 #: src/contents/ui/Limiter.qml:69
 msgid "Oversampling"
@@ -1609,140 +1585,127 @@ msgstr "无"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Half x2/16 bit"
-msgstr ""
+msgstr "2倍侧链超采样/16位输出"
 
 #: src/contents/ui/Limiter.qml:73
-#, fuzzy
 msgid "Half x2/24 bit"
-msgstr "部分 2倍 (2L)"
+msgstr "2倍侧链超采样/24位输出"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Half x3/16 bit"
-msgstr ""
+msgstr "3倍侧链超采样/16位输出"
 
 #: src/contents/ui/Limiter.qml:73
-#, fuzzy
 msgid "Half x3/24 bit"
-msgstr "部分 3倍 (2L)"
+msgstr "3倍侧链超采样/24位输出"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Half x4/16 bit"
-msgstr ""
+msgstr "4倍侧链超采样/16位输出"
 
 #: src/contents/ui/Limiter.qml:73
-#, fuzzy
 msgid "Half x4/24 bit"
-msgstr "部分 4倍 (2L)"
+msgstr "4倍侧链超采样/24位输出"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Half x6/16 bit"
-msgstr ""
+msgstr "6倍侧链超采样/16位输出"
 
 #: src/contents/ui/Limiter.qml:73
-#, fuzzy
 msgid "Half x6/24 bit"
-msgstr "部分 6倍 (2L)"
+msgstr "6倍侧链超采样/24位输出"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Half x8/16 bit"
-msgstr ""
+msgstr "8倍侧链超采样/16位输出"
 
 #: src/contents/ui/Limiter.qml:73
-#, fuzzy
 msgid "Half x8/24 bit"
-msgstr "部分 8倍 (2L)"
+msgstr "8倍侧链超采样/24位输出"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Full x2/16 bit"
-msgstr ""
+msgstr "2倍侧链+输入超采样/16位输出"
 
 #: src/contents/ui/Limiter.qml:73
-#, fuzzy
 msgid "Full x2/24 bit"
-msgstr "全部 2倍 (2L)"
+msgstr "2倍侧链+输入超采样/24位输出"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Full x3/16 bit"
-msgstr ""
+msgstr "3倍侧链+输入超采样/16位输出"
 
 #: src/contents/ui/Limiter.qml:73
-#, fuzzy
 msgid "Full x3/24 bit"
-msgstr "全部 3倍 (2L)"
+msgstr "3倍侧链+输入超采样/24位输出"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Full x4/16 bit"
-msgstr ""
+msgstr "4倍侧链+输入超采样/16位输出"
 
 #: src/contents/ui/Limiter.qml:73
-#, fuzzy
 msgid "Full x4/24 bit"
-msgstr "全部 4倍 (2L)"
+msgstr "4倍侧链+输入超采样/24位输出"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Full x6/16 bit"
-msgstr ""
+msgstr "6倍侧链+输入超采样/16位输出"
 
 #: src/contents/ui/Limiter.qml:73
-#, fuzzy
 msgid "Full x6/24 bit"
-msgstr "全部 6倍 (2L)"
+msgstr "6倍侧链+输入超采样/24位输出"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Full x8/16 bit"
-msgstr ""
+msgstr "8倍侧链+输入超采样/16位输出"
 
 #: src/contents/ui/Limiter.qml:73
-#, fuzzy
 msgid "Full x8/24 bit"
-msgstr "全部 8倍 (2L)"
+msgstr "8倍侧链+输入超采样/24位输出"
 
 #: src/contents/ui/Limiter.qml:73
-#, fuzzy
 msgid "True peak/16 bit"
-msgstr "实际峰值"
+msgstr "实际峰值/16位输出"
 
 #: src/contents/ui/Limiter.qml:73
-#, fuzzy
 msgid "True peak/24 bit"
-msgstr "实际峰值"
+msgstr "实际峰值/24位输出"
 
 #: src/contents/ui/Limiter.qml:83
-#, fuzzy
 msgid "Dithering"
 msgstr "抖动"
 
 #: src/contents/ui/Limiter.qml:87
 msgid "7 bit"
-msgstr ""
+msgstr "7比特"
 
 #: src/contents/ui/Limiter.qml:87
 msgid "8 bit"
-msgstr ""
+msgstr "8比特"
 
 #: src/contents/ui/Limiter.qml:87
 msgid "11 bit"
-msgstr ""
+msgstr "11比特"
 
 #: src/contents/ui/Limiter.qml:87
 msgid "12 bit"
-msgstr ""
+msgstr "12比特"
 
 #: src/contents/ui/Limiter.qml:87
 msgid "15 bit"
-msgstr ""
+msgstr "15比特"
 
 #: src/contents/ui/Limiter.qml:87
 msgid "16 bit"
-msgstr ""
+msgstr "16比特"
 
 #: src/contents/ui/Limiter.qml:87
 msgid "23 bit"
-msgstr ""
+msgstr "23比特"
 
 #: src/contents/ui/Limiter.qml:87
 msgid "24 bit"
-msgstr ""
+msgstr "24比特"
 
 #: src/contents/ui/Limiter.qml:99 src/tags_plugin_name.cpp:43
 msgid "Limiter"
@@ -1757,67 +1720,58 @@ msgid "Automatic level"
 msgstr "自动调平"
 
 #: src/contents/ui/Limiter.qml:606
-#, fuzzy
 msgid "Threshold boost"
-msgstr "阈值"
+msgstr "阈值外增强"
 
 #: src/contents/ui/Loudness.qml:68
-#, fuzzy
 msgid "Contour"
-msgstr "控制"
+msgstr "等响曲线"
 
 #: src/contents/ui/Loudness.qml:72
 msgid "Flat"
-msgstr "平滑"
+msgstr "平坦"
 
 #: src/contents/ui/Loudness.qml:72
 msgid "ISO226-2003"
-msgstr "ISO226-2003"
+msgstr "ISO 226:2003"
 
 #: src/contents/ui/Loudness.qml:72
 msgid "Fletcher-Munson"
-msgstr "Fletcher-Munson"
+msgstr "Fletcher–Munson"
 
 #: src/contents/ui/Loudness.qml:72
 msgid "Robinson-Dadson"
-msgstr "Robinson-Dadson"
+msgstr "Robinson–Dadson"
 
 #: src/contents/ui/Loudness.qml:72
-#, fuzzy
 msgid "ISO226-2023"
-msgstr "ISO226-2003"
+msgstr "ISO 226:2003"
 
 #: src/contents/ui/Loudness.qml:82
-#, fuzzy
 msgid "FFT size"
-msgstr "FFT 大小"
+msgstr "快速傅里叶变换点数"
 
 #: src/contents/ui/Loudness.qml:96
-#, fuzzy
 msgid "IIR approximation"
-msgstr "将程序静音"
+msgstr "无限脉冲响应预估"
 
 #: src/contents/ui/Loudness.qml:100
-#, fuzzy
 msgid "Fastest"
-msgstr "快速"
+msgstr "速度最快"
 
 #: src/contents/ui/Loudness.qml:100
-#, fuzzy
 msgid "Normal"
-msgstr "格式"
+msgstr "均衡"
 
 #: src/contents/ui/Loudness.qml:100
 msgid "Best"
-msgstr ""
+msgstr "质量最好"
 
 #: src/contents/ui/Loudness.qml:110
-#, fuzzy
 msgid "Volume"
 msgstr "输出音量"
 
 #: src/contents/ui/Loudness.qml:127
-#, fuzzy
 msgid "Clipping range"
 msgstr "削波范围"
 
@@ -1846,15 +1800,13 @@ msgid "Are you sure you want to clear this list?"
 msgstr "确定要清空列表吗？"
 
 #: src/contents/ui/main.qml:380
-#, fuzzy
 msgid "Active"
 msgstr "激活"
 
 #: src/contents/ui/main.qml:391 src/contents/ui/main.qml:540
 #: src/contents/ui/ShortcutsSheet.qml:369
-#, fuzzy
 msgid "Shortcuts"
-msgstr "快捷键(_S)"
+msgstr "快捷键"
 
 #: src/contents/ui/main.qml:400 src/contents/ui/main.qml:548
 msgid "Manual"
