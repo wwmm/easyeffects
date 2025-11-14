@@ -68,6 +68,12 @@
             <max>60000</max>
             <default>30000</default>
         </entry>
+        <entry name="presetsAutoloadInterval" type="Int">
+            <label>Delay between receiving a new device route and the call to autoload a preset.</label>
+            <min>0</min>
+            <max>60000</max>
+            <default>1000</default>
+        </entry>
         <entry name="maxMostUsedPresets" type="Int">
             <label>How many presets to show in our most used presets list</label>
             <min>1</min>

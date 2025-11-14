@@ -236,7 +236,7 @@ Manager::Manager()
   connect(&link_manager, &LinkManager::linkChanged, [&](LinkInfo link) { Q_EMIT linkChanged(link); });
 
   connect(&device_manager, &DeviceManager::inputRouteChanged, [&](DeviceInfo device) {
-    QTimer::singleShot(2000, this, [&, device]() {
+    QTimer::singleShot(db::Main::presetsAutoloadInterval(), this, [&, device]() {
       auto nodes = model_nodes.get_nodes_by_device_id(device.id);
 
       if (nodes.empty()) {
@@ -256,7 +256,7 @@ Manager::Manager()
   });
 
   connect(&device_manager, &DeviceManager::outputRouteChanged, [&](DeviceInfo device) {
-    QTimer::singleShot(2000, this, [&, device]() {
+    QTimer::singleShot(db::Main::presetsAutoloadInterval(), this, [&, device]() {
       auto nodes = model_nodes.get_nodes_by_device_id(device.id);
 
       if (nodes.empty()) {

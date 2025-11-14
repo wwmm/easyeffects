@@ -41,6 +41,12 @@ KirigamiSettings.ConfigurationView {
             page: () => stylePage
         },
         KirigamiSettings.ConfigurationModule {
+            moduleId: "presets"
+            icon.name: "bookmarks-symbolic"
+            text: i18n("Presets") // qmllint disable
+            page: () => presetsPage
+        },
+        KirigamiSettings.ConfigurationModule {
             moduleId: "experimental"
             icon.name: "emblem-warning"
             text: i18n("Experimental Features") // qmllint disable
@@ -446,6 +452,28 @@ KirigamiSettings.ConfigurationView {
                         if (isChecked !== DB.Manager.main.reducePluginsListControls) {
                             DB.Manager.main.reducePluginsListControls = isChecked;
                         }
+                    }
+                }
+            }
+        }
+    }
+
+    readonly property Component presetsPage: Component {
+        FormCard.FormCardPage {
+            FormCard.FormCard {
+                Layout.topMargin: Kirigami.Units.gridUnit
+
+                EeSpinBox {
+                    label: i18n("Autoload delay") // qmllint disable
+                    subtitle: i18n("Delay between receiving a new device route and the call to autoload a preset") // qmllint disable
+                    from: DB.Manager.main.getMinValue("presetsAutoloadInterval")
+                    to: DB.Manager.main.getMaxValue("presetsAutoloadInterval")
+                    value: DB.Manager.main.presetsAutoloadInterval
+                    decimals: 0
+                    stepSize: 1
+                    unit: "ms"
+                    onValueModified: v => {
+                        DB.Manager.main.presetsAutoloadInterval = v;
                     }
                 }
             }
