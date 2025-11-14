@@ -433,17 +433,51 @@ auto Nodes::has_serial(const uint& serial) -> bool {
 }
 
 void Nodes::update_info(const NodeInfo& new_info) {
-  for (int n = 0; n < list.size(); n++) {
-    if (list[n].serial == new_info.serial) {
-      list[n] = new_info;
+  const int row = get_row_by_serial(new_info.serial);
 
-      auto model_index = this->index(n);
-
-      Q_EMIT dataChanged(model_index, model_index);
-
-      return;
-    }
+  if (row < 0) {
+    return;
   }
+
+  NodeInfo& info = list[row];
+  bool anyChanged = false;
+
+  auto updateIfDifferent = [&](auto role, const auto& oldVal, const auto& newVal) {
+    if (oldVal != newVal) {
+      update_field(row, role, newVal);
+      anyChanged = true;
+    }
+  };
+
+  updateIfDifferent(Roles::Id, info.id, new_info.id);
+  updateIfDifferent(Roles::Serial, info.serial, new_info.serial);
+  updateIfDifferent(Roles::DeviceId, info.device_id, new_info.device_id);
+  updateIfDifferent(Roles::Name, info.name, new_info.name);
+  updateIfDifferent(Roles::Description, info.description, new_info.description);
+  updateIfDifferent(Roles::MediaClass, info.media_class, new_info.media_class);
+  updateIfDifferent(Roles::MediaRole, info.media_role, new_info.media_role);
+  updateIfDifferent(Roles::AppName, info.app_name, new_info.app_name);
+  updateIfDifferent(Roles::AppProcessId, info.app_process_id, new_info.app_process_id);
+  updateIfDifferent(Roles::AppProcessBinary, info.app_process_binary, new_info.app_process_binary);
+  updateIfDifferent(Roles::AppIconName, info.app_icon_name, new_info.app_icon_name);
+  updateIfDifferent(Roles::MediaIconName, info.media_icon_name, new_info.media_icon_name);
+  updateIfDifferent(Roles::DeviceIconName, info.device_icon_name, new_info.device_icon_name);
+  updateIfDifferent(Roles::MediaName, info.media_name, new_info.media_name);
+  updateIfDifferent(Roles::Format, info.format, new_info.format);
+  updateIfDifferent(Roles::ApplicationId, info.application_id, new_info.application_id);
+  updateIfDifferent(Roles::Priority, info.priority, new_info.priority);
+  updateIfDifferent(Roles::State, info.state, new_info.state);
+  updateIfDifferent(Roles::Mute, info.mute, new_info.mute);
+  updateIfDifferent(Roles::Connected, info.connected, new_info.connected);
+  updateIfDifferent(Roles::NinputPorts, info.n_input_ports, new_info.n_input_ports);
+  updateIfDifferent(Roles::NoutputPorts, info.n_output_ports, new_info.n_output_ports);
+  updateIfDifferent(Roles::Rate, info.rate, new_info.rate);
+  updateIfDifferent(Roles::NvolumeChannels, info.n_volume_channels, new_info.n_volume_channels);
+  updateIfDifferent(Roles::Latency, info.latency, new_info.latency);
+  updateIfDifferent(Roles::Volume, info.volume, new_info.volume);
+  updateIfDifferent(Roles::IsBlocklisted, info.is_blocklisted, new_info.is_blocklisted);
+  updateIfDifferent(Roles::DeviceRouteName, info.device_route_name, new_info.device_route_name);
+  updateIfDifferent(Roles::DeviceRouteDescription, info.device_route_description, new_info.device_route_description);
 }
 
 auto Nodes::get_row_by_serial(const uint& serial) -> int {

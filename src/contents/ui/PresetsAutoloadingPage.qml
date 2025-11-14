@@ -24,10 +24,8 @@ ColumnLayout {
                 const proxyIndex = model.index(currentIndex, 0);
                 return model.data(proxyIndex, PW.ModelNodes.Name);
             }
-            readonly property string deviceRouteDescription: {
-                const proxyIndex = model.index(currentIndex, 0);
-                return model.data(proxyIndex, PW.ModelNodes.DeviceRouteDescription);
-            }
+
+            property string deviceRouteDescription
 
             verticalPadding: 0
             text: i18n("Device") // qmllint disable
@@ -38,6 +36,32 @@ ColumnLayout {
             model: DB.Manager.main.visiblePage === 0 ? PW.ModelSinkDevices : PW.ModelSourceDevices
             description: `${i18n("Route")}: ${deviceRouteDescription}` // qmllint disable
 
+            function updateRouteDescription() {
+                const proxyIndex = model.index(currentIndex, 0);
+
+                return model.data(proxyIndex, PW.ModelNodes.DeviceRouteDescription);
+            }
+
+            onCurrentIndexChanged: {
+                device.deviceRouteDescription = device.updateRouteDescription();
+            }
+
+            Connections {
+                target: device.model
+
+                function onModelReset() {
+                    device.deviceRouteDescription = device.updateRouteDescription();
+                }
+                function onRowsInserted() {
+                    device.deviceRouteDescription = device.updateRouteDescription();
+                }
+                function onRowsRemoved() {
+                    device.deviceRouteDescription = device.updateRouteDescription();
+                }
+                function onDataChanged() {
+                    device.deviceRouteDescription = device.updateRouteDescription();
+                }
+            }
         }
 
         Kirigami.Icon {
