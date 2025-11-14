@@ -8,7 +8,6 @@ import ee.pipeline as Pipeline
 import ee.pipewire as PW
 import ee.presets as Presets
 import org.kde.kirigami as Kirigami
-import org.kde.kirigamiaddons.components as Components
 
 Kirigami.ApplicationWindow {
     id: appWindow
@@ -22,19 +21,19 @@ Kirigami.ApplicationWindow {
 
     property var pagesMap: {
         0: {
-            page: "qrc:/ui/PageStreamsEffects.qml",
+            page: Qt.resolvedUrl("./PageStreamsEffects.qml"),
             pageType: 0,
             streamDB: DB.Manager.streamOutputs,
             pipelineInstance: Pipeline.Output
         },
         1: {
-            page: "qrc:/ui/PageStreamsEffects.qml",
+            page: Qt.resolvedUrl("./PageStreamsEffects.qml"),
             pageType: 1,
             streamDB: DB.Manager.streamInputs,
             pipelineInstance: Pipeline.Input
         },
         2: {
-            page: "qrc:/ui/PipeWirePage.qml",
+            page: Qt.resolvedUrl("./PipeWirePage.qml"),
             pageType: 2,
             streamDB: null,
             pluginsDB: null,
@@ -573,7 +572,7 @@ Kirigami.ApplicationWindow {
                         icon.name: applicationId
                         displayHint: Kirigami.DisplayHint.AlwaysHide
                         onTriggered: {
-                            appWindow.pageStack.pushDialogLayer(Qt.createComponent("qrc:/ui/AboutPage.qml"));
+                            appWindow.pageStack.pushDialogLayer(Qt.resolvedUrl("./AboutPage.qml"));
                         }
                     },
                     Kirigami.Action {
