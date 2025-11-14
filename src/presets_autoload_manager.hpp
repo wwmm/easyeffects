@@ -50,14 +50,14 @@ class AutoloadManager : public QObject {
            const QString& preset_name,
            const QString& device_name,
            const QString& device_description,
-           const QString& device_profile);
+           const QString& device_route);
 
   void remove(const PipelineType& pipeline_type,
               const QString& preset_name,
               const QString& device_name,
-              const QString& device_profile);
+              const QString& device_route);
 
-  void load(const PipelineType& pipeline_type, const QString& device_name, const QString& device_profile);
+  void load(const PipelineType& pipeline_type, const QString& device_name, const QString& device_route);
 
   auto getProfiles(const PipelineType& pipeline_type) -> std::vector<nlohmann::json>;
 
@@ -93,10 +93,9 @@ class AutoloadManager : public QObject {
 
   void refreshListModels();
 
-  auto find(const PipelineType& pipeline_type, const QString& device_name, const QString& device_profile)
-      -> std::string;
+  auto find(const PipelineType& pipeline_type, const QString& device_name, const QString& device_route) -> std::string;
 
-  auto getFilePath(const PipelineType& pipeline_type, const QString& device_name, const QString& device_profile)
+  auto getFilePath(const PipelineType& pipeline_type, QString device_name, QString device_route)
       -> std::filesystem::path;
 };
 

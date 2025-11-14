@@ -678,8 +678,8 @@ void Manager::removeAutoload(const PipelineType& pipelineType,
   autoload_manager.remove(pipelineType, presetName, deviceName, deviceProfile);
 }
 
-void Manager::autoload(const PipelineType& pipeline_type, const QString& device_name, const QString& device_profile) {
-  autoload_manager.load(pipeline_type, device_name, device_profile);
+void Manager::autoload(const PipelineType& pipeline_type, const QString& device_name, const QString& device_route) {
+  autoload_manager.load(pipeline_type, device_name, device_route);
 }
 
 void Manager::set_last_preset_keys(const PipelineType& pipeline_type,

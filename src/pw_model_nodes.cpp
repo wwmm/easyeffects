@@ -216,8 +216,8 @@ QHash<int, QByteArray> Nodes::roleNames() const {
           {static_cast<int>(Roles::Latency), "latency"},
           {static_cast<int>(Roles::Volume), "volume"},
           {static_cast<int>(Roles::IsBlocklisted), "isBlocklisted"},
-          {static_cast<int>(Roles::DeviceProfileName), "deviceProfileName"},
-          {static_cast<int>(Roles::DeviceProfileDescription), "deviceProfileDescription"}};
+          {static_cast<int>(Roles::DeviceRouteName), "deviceRouteName"},
+          {static_cast<int>(Roles::DeviceRouteDescription), "deviceRouteDescription"}};
 }
 
 QVariant Nodes::data(const QModelIndex& index, int role) const {
@@ -288,10 +288,10 @@ QVariant Nodes::data(const QModelIndex& index, int role) const {
       return it->volume;
     case Roles::IsBlocklisted:
       return it->is_blocklisted;
-    case Roles::DeviceProfileName:
-      return it->device_profile_name;
-    case Roles::DeviceProfileDescription:
-      return it->device_profile_description;
+    case Roles::DeviceRouteName:
+      return it->device_route_name;
+    case Roles::DeviceRouteDescription:
+      return it->device_route_description;
     default:
       return {};
   }

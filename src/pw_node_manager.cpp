@@ -469,9 +469,8 @@ void NodeManager::onNodeInfo(void* object, const pw_node_info* info) {
     /*
      * This information is updated elsewhere through the device object event
      */
-    nd->nd_info->device_profile_name = nm->model_nodes.get_node_by_id(nd->nd_info->id).device_profile_name;
-    nd->nd_info->device_profile_description =
-        nm->model_nodes.get_node_by_id(nd->nd_info->id).device_profile_description;
+    nd->nd_info->device_route_name = nm->model_nodes.get_node_by_id(nd->nd_info->id).device_route_name;
+    nd->nd_info->device_route_description = nm->model_nodes.get_node_by_id(nd->nd_info->id).device_route_description;
 
     nm->model_nodes.update_info(*nd->nd_info);
 

@@ -140,7 +140,7 @@ void DeviceManager::on_device_info(void* object, const struct pw_device_info* in
           continue;
         }
 
-        if (const auto id = param.id; id == SPA_PARAM_Profile) {
+        if (const auto id = param.id; id == SPA_PARAM_Route) {
           pw_device_enum_params((struct pw_device*)dd->proxy, 0, id, 0, -1, nullptr);
         }
       }
@@ -156,7 +156,7 @@ void DeviceManager::on_device_event_param(void* object,
                                           [[maybe_unused]] uint32_t index,
                                           [[maybe_unused]] uint32_t next,
                                           const struct spa_pod* param) {
-  if (id != SPA_PARAM_Profile) {
+  if (id != SPA_PARAM_Route) {
     return;
   }
 
@@ -165,10 +165,12 @@ void DeviceManager::on_device_event_param(void* object,
   const char* name = nullptr;
   const char* description = nullptr;
 
+  enum spa_direction direction {};
   enum spa_param_availability available {};
 
-  if (spa_pod_parse_object(param, SPA_TYPE_OBJECT_ParamProfile, nullptr, SPA_PARAM_PROFILE_name, SPA_POD_String(&name),
-                           SPA_PARAM_PROFILE_description, SPA_POD_String(&description), SPA_PARAM_PROFILE_available,
+  if (spa_pod_parse_object(param, SPA_TYPE_OBJECT_ParamRoute, nullptr, SPA_PARAM_ROUTE_direction,
+                           SPA_POD_Id(&direction), SPA_PARAM_ROUTE_name, SPA_POD_String(&name),
+                           SPA_PARAM_ROUTE_description, SPA_POD_String(&description), SPA_PARAM_ROUTE_available,
                            SPA_POD_Id(&available)) < 0) {
     return;
   }
@@ -186,28 +188,28 @@ void DeviceManager::on_device_event_param(void* object,
       continue;
     }
 
-    bool update = false;
+    if (direction == SPA_DIRECTION_INPUT) {
+      if (name != device.input_route_name || available != device.input_route_available) {
+        device.input_route_name = name;
+        device.input_route_description = description;
+        device.input_route_available = available;
 
-    if (device.profile_name != name) {
-      device.profile_name = name;
-      update = true;
-    }
+        Q_EMIT dd->dm->inputRouteChanged(device);
 
-    if (device.profile_description != description) {
-      device.profile_description = description;
-      update = true;
-    }
+        util::debug(std::format("new {} input route: {}", device.description.toStdString(),
+                                device.input_route_description.toStdString()));
+      }
+    } else if (direction == SPA_DIRECTION_OUTPUT) {
+      if (name != device.output_route_name || available != device.output_route_available) {
+        device.output_route_name = name;
+        device.output_route_description = description;
+        device.output_route_available = available;
 
-    if (device.profile_available != available) {
-      device.profile_available = available;
-      update = true;
-    }
+        Q_EMIT dd->dm->outputRouteChanged(device);
 
-    if (update) {
-      util::debug(std::format("new {} hardware profile: {}", device.description.toStdString(),
-                              device.profile_description.toStdString()));
-
-      Q_EMIT dd->dm->profileChanged(device);
+        util::debug(std::format("new {} output route: {}", device.description.toStdString(),
+                                device.output_route_description.toStdString()));
+      }
     }
 
     break;

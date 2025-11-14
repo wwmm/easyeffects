@@ -158,8 +158,8 @@ class Manager : public QObject {
   void newDefaultSinkName(QString name);
   void newDefaultSourceName(QString name);
 
-  void sinkProfileNameChanged(NodeInfo node);
-  void sourceProfileNameChanged(NodeInfo node);
+  void sinkRouteChanged(NodeInfo node);
+  void sourceRouteChanged(NodeInfo node);
 
   void linkChanged(LinkInfo link);
 
