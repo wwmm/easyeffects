@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-13 23:47-0300\n"
-"PO-Revision-Date: 2025-11-12 23:18+0000\n"
+"PO-Revision-Date: 2025-11-14 15:51+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
 "ga/>\n"
@@ -43,14 +43,12 @@ msgid "Hide the Window."
 msgstr "Folaigh an fhuinneog."
 
 #: src/command_line_parser.cpp:45
-#, fuzzy
 msgid "Global bypass. 1 to enable and 2 to disable."
-msgstr ""
-"Seachbhóthar domhanda. 1 a chumasú, 2 a dhíchumasú agus 3 stádas a fháil"
+msgstr "Seachbhóthar domhanda. 1 chun a chumasú agus 2 chun a dhíchumasú."
 
 #: src/command_line_parser.cpp:45
 msgid "bypass-state"
-msgstr ""
+msgstr "staid-sheachbhóthar"
 
 #: src/command_line_parser.cpp:46
 msgid "Load a preset. Example: easyeffects -l music"
@@ -1224,9 +1222,8 @@ msgid "Noise Suppression"
 msgstr "Cur faoi chois torainn"
 
 #: src/contents/ui/EchoCanceller.qml:87
-#, fuzzy
 msgid "Strength"
-msgstr "Scag Fad"
+msgstr "Neart"
 
 #: src/contents/ui/EchoCanceller.qml:91 src/contents/ui/Loudness.qml:100
 msgid "Low"
@@ -1270,7 +1267,6 @@ msgid "Input"
 msgstr "Ionchur"
 
 #: src/contents/ui/EeSpinBox.qml:134 src/contents/ui/EeSpinBox.qml:149
-#, fuzzy
 msgctxt "minus infinity abbreviation"
 msgid "-inf"
 msgstr "-inf"
@@ -1371,9 +1367,8 @@ msgid "Width"
 msgstr "Leithead"
 
 #: src/contents/ui/EqualizerBandMenu.qml:143
-#, fuzzy
 msgid "oct"
-msgstr "Gearrtha íseal"
+msgstr "oct"
 
 #: src/contents/ui/EqualizerBandMenu.qml:167
 #: src/contents/ui/MultibandCompressor.qml:73
@@ -2393,25 +2388,27 @@ msgid "Most used presets"
 msgstr "Réamhshocruithe is mó a úsáidtear"
 
 #: src/contents/ui/PreferencesSheet.qml:447
-#, fuzzy
 msgid "Reduce effects list controls"
-msgstr "Taispeáin/ folaigh liosta na n-éifeachtaí"
+msgstr "Rialuithe liosta éifeachtaí a laghdú"
 
 #: src/contents/ui/PreferencesSheet.qml:448
 msgid ""
 "Action buttons in the effects list are moved inside a context menu for a "
 "more compact view."
 msgstr ""
+"Bogtar cnaipí gníomhaíochta sa liosta éifeachtaí taobh istigh de roghchlár "
+"comhthéacs le haghaidh radharc níos dlúithe."
 
 #: src/contents/ui/PreferencesSheet.qml:467
-#, fuzzy
 msgid "Autoload delay"
-msgstr "Uathlódáil"
+msgstr "Moill uathluchtaithe"
 
 #: src/contents/ui/PreferencesSheet.qml:468
 msgid ""
 "Delay between receiving a new device route and the call to autoload a preset"
 msgstr ""
+"Moill idir bealach nua gléis a fháil agus an glao chun réamhshocrú a "
+"uathlódáil"
 
 #: src/contents/ui/PreferencesSheet.qml:491
 msgid "Global shortcuts"
@@ -2447,7 +2444,7 @@ msgstr "Gléas"
 #: src/contents/ui/PresetsAutoloadingPage.qml:37
 #: src/contents/ui/PresetsAutoloadingPage.qml:197
 msgid "Route"
-msgstr ""
+msgstr "Bealach"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:78
 #: src/contents/ui/PresetsAutoloadingPage.qml:210
@@ -2913,11 +2910,11 @@ msgstr "Éifeachtaí fuaime domhanda"
 
 #: src/main.cpp:311
 msgid "© 2017-2025 EasyEffects Team"
-msgstr ""
+msgstr "© 2017-2025 Foireann EasyEffects"
 
 #: src/main.cpp:313
 msgid "Wellington Wallace"
-msgstr ""
+msgstr "Wellington Wallace"
 
 #: src/main.cpp:314
 msgctxt "@info:credit"
@@ -2925,15 +2922,14 @@ msgid "Developer"
 msgstr "Forbróir"
 
 #: src/main.cpp:318
-#, fuzzy
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "frámaí"
+msgstr "Do ainmneacha"
 
 #: src/main.cpp:318
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
+msgstr "Do ríomhphoist"
 
 #: src/plugin_base.cpp:272
 msgid "(Mic)"
