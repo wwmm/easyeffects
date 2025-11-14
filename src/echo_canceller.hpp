@@ -19,11 +19,10 @@
 
 #pragma once
 
+#include <api/audio/audio_processing.h>
 #include <api/scoped_refptr.h>
 #include <qobject.h>
 #include <qtypes.h>
-#include <api/audio/audio_processing.h>
-#include <climits>
 #include <span>
 #include <string>
 #include <vector>
