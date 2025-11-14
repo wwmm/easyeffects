@@ -608,6 +608,10 @@ Kirigami.Page {
 
                 readonly property int display: (!Kirigami.Settings.isMobile && hasEnoughWidth) ? Controls.ToolButton.TextBesideIcon : Controls.ToolButton.IconOnly
 
+                Controls.ButtonGroup {
+                    id: subNavButtonGroup
+                }
+
                 Controls.ToolButton {
                     icon.name: pageStreamsEffects.pageType === 0 ? "multimedia-player-symbolic" : "media-record-symbolic"
                     text: pageStreamsEffects.pageType === 0 ? i18n("Players") : i18n("Recorders")// qmllint disable
@@ -617,6 +621,8 @@ Kirigami.Page {
                     onClicked: {
                         pageStreamsEffects.streamDB.visiblePage = 0;
                     }
+
+                    Controls.ButtonGroup.group: subNavButtonGroup
                 }
 
                 Controls.ToolButton {
@@ -628,6 +634,8 @@ Kirigami.Page {
                     onClicked: {
                         pageStreamsEffects.streamDB.visiblePage = 1;
                     }
+
+                    Controls.ButtonGroup.group: subNavButtonGroup
                 }
             }
 

@@ -480,6 +480,10 @@ Kirigami.ApplicationWindow {
 
                 Layout.alignment: Qt.AlignHCenter
 
+                Controls.ButtonGroup {
+                    id: navButtonGroup
+                }
+
                 Controls.ToolButton {
                     text: i18n("Output") // qmllint disable
                     icon.name: "audio-speakers-symbolic"
@@ -489,6 +493,8 @@ Kirigami.ApplicationWindow {
                     onClicked: {
                         DB.Manager.main.visiblePage = 0;
                     }
+
+                    Controls.ButtonGroup.group: navButtonGroup
                 }
 
                 Controls.ToolButton {
@@ -500,6 +506,8 @@ Kirigami.ApplicationWindow {
                     onClicked: {
                         DB.Manager.main.visiblePage = 1;
                     }
+
+                    Controls.ButtonGroup.group: navButtonGroup
                 }
 
                 Controls.ToolButton {
@@ -511,6 +519,8 @@ Kirigami.ApplicationWindow {
                     onClicked: {
                         DB.Manager.main.visiblePage = 2;
                     }
+
+                    Controls.ButtonGroup.group: navButtonGroup
                 }
             }
 
