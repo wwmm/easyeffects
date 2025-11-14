@@ -56,6 +56,22 @@
     <color type="primary" scheme_preference="dark">#004079</color>
   </branding>
   <releases>
+    <release type="stable" version="8.0.1" date="2025-11-14T00:00:00Z">
+      <description>
+        <ul>
+          <li>Features:</li>
+          <li>Added the ability to keep the effects list controls always visible in order to toggle and remove a plugin with a single click.</li>
+          <li>Added Flatpak system tray permission handling.</li>
+          <li>Added XDG Color Scheme support for the Flatpak version.</li>
+          <li>Locale shortcut to quit the service has been changed back to "CTRL+Q".</li>
+          <li>Multiple improvements to our user interface that aim to better follow KDE HIG.</li>
+          <li>Bug fixes:</li>
+          <li>Preset autoloading has been improved to handle more specific hardware which were not detected by the previous system.</li>
+          <li>Other notes:</li>
+          <li>Since the preset autoloading system has been changed, we recommend the users to reassociate their presets to the preferred input/output audio devices.</li>
+        </ul>
+      </description>
+    </release>
     <release type="stable" version="8.0.0" date="2025-11-09T00:00:00Z">
       <description>
         <ul>

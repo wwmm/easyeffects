@@ -2,12 +2,27 @@
 Version: UNRELEASED_VERSION
 Date: UNRELEASED_DATE
 
+Description: 
+- Features∶
+- 
+
+- Bug fixes∶
+- 
+
+- Other notes∶
+- 
+
+---
+Version: 8.0.1
+Date: 2025-11-14
+
 Description:
 - Features∶
 - Added the ability to keep the effects list controls always visible in order to toggle and remove a plugin with a single click.
 - Added Flatpak system tray permission handling.
 - Added XDG Color Scheme support for the Flatpak version.
 - Locale shortcut to quit the service has been changed back to "CTRL+Q".
+- Multiple improvements to our user interface that aim to better follow KDE HIG. 
 
 - Bug fixes∶
 - Preset autoloading has been improved to handle more specific hardware which were not detected by the previous system.
