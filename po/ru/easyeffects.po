@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-15 17:00-0300\n"
-"PO-Revision-Date: 2025-11-15 19:19+0000\n"
+"POT-Creation-Date: 2025-11-15 01:35-0300\n"
+"PO-Revision-Date: 2025-11-15 20:01+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -86,15 +86,17 @@ msgstr "Запустить приложение с включённым режи
 msgid "Enable debug messages."
 msgstr "Включить отладочные сообщения."
 
-#: src/command_line_parser.cpp:126
+#: src/command_line_parser.cpp:112 src/command_line_parser.cpp:126
 msgid "Must specify preset type: input/output."
 msgstr "Необходимо указать тип предустановки: вход/выход."
 
-#: src/command_line_parser.cpp:164 src/contents/ui/Main.qml:348
+#: src/command_line_parser.cpp:150 src/contents/ui/Main.qml:348
+#: src/command_line_parser.cpp:164
 msgid "Output Presets"
 msgstr "Предустановки выхода"
 
-#: src/command_line_parser.cpp:172 src/contents/ui/Main.qml:333
+#: src/command_line_parser.cpp:158 src/contents/ui/Main.qml:333
+#: src/command_line_parser.cpp:172
 msgid "Input Presets"
 msgstr "Предустановки входа"
 
@@ -883,8 +885,7 @@ msgid "Stereo split"
 msgstr "Разделение стерео"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:31
-#, fuzzy
-msgid "Imported a new Convolver impulse file."
+msgid "Imported a new Convolver impluse file."
 msgstr "Импортирован новый файл импульса конвольвера."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:33
@@ -1631,7 +1632,7 @@ msgstr "Половинный x2/16 бит"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Half x2/24 bit"
-msgstr "Половинный x2/24 бит"
+msgstr "Половинный x2/24 бита"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Half x3/16 bit"
@@ -1743,11 +1744,11 @@ msgstr "16 бит"
 
 #: src/contents/ui/Limiter.qml:87
 msgid "23 bit"
-msgstr "23 бит"
+msgstr "23 бита"
 
 #: src/contents/ui/Limiter.qml:87
 msgid "24 bit"
-msgstr "24 бит"
+msgstr "24 бита"
 
 #: src/contents/ui/Limiter.qml:99 src/tags_plugin_name.cpp:43
 msgid "Limiter"
@@ -2232,7 +2233,7 @@ msgstr "Easy Effects активен в фоновом режиме, когда �
 
 #: src/contents/ui/PreferencesSheet.qml:78
 msgid "Autostart on login"
-msgstr "Автостарт при входе"
+msgstr "Автозапуск при входе в систему"
 
 #: src/contents/ui/PreferencesSheet.qml:79
 msgid "Easy Effects is launched at user session startup."
@@ -2887,11 +2888,11 @@ msgstr "ЛП > ЛП (стерео по умолчанию)"
 
 #: src/contents/ui/StereoTools.qml:108
 msgid "LR > MS (Stereo to Mid-Side)"
-msgstr "Стерео > Моно-раздельно"
+msgstr "ЛП > ЦК (стерео в центральный канал)"
 
 #: src/contents/ui/StereoTools.qml:108
 msgid "MS > LR (Mid-Side to Stereo)"
-msgstr "Моно-раздельно > Стерео"
+msgstr "ЦК > ЛП (центральный канал в стерео)"
 
 #: src/contents/ui/StereoTools.qml:108
 msgid "LR > LL (Mono left channel)"
@@ -2941,29 +2942,29 @@ msgstr "База стерео"
 msgid "Stereo phase"
 msgstr "Фаза стерео"
 
-#: src/main.cpp:310
+#: src/main.cpp:304 src/main.cpp:310
 msgid "Global audio effects"
 msgstr "Глобальные эффекты звука"
 
-#: src/main.cpp:311
+#: src/main.cpp:305 src/main.cpp:311
 msgid "© 2017-2025 EasyEffects Team"
 msgstr "© 2017-2025 Команда EasyEffects"
 
-#: src/main.cpp:313
+#: src/main.cpp:307 src/main.cpp:313
 msgid "Wellington Wallace"
 msgstr "Веллингтон Уоллис"
 
-#: src/main.cpp:313
+#: src/main.cpp:307 src/main.cpp:313
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Разработчик"
 
-#: src/main.cpp:317
+#: src/main.cpp:311 src/main.cpp:317
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Andrei Stepanov"
+msgstr "Андрей Степанов"
 
-#: src/main.cpp:317
+#: src/main.cpp:311 src/main.cpp:317
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "adem4ik@gmail.com"
@@ -3107,6 +3108,11 @@ msgstr "Эквалайзер, компрессор и прочие звуков�
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "Простые звуковые эффекты"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:31
+#, fuzzy
+msgid "Imported a new Convolver impulse file."
+msgstr "Импортирован новый файл импульса конвольвера."
 
 #, fuzzy
 #~ msgid "Hardware profile"
