@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-15 01:35-0300\n"
-"PO-Revision-Date: 2025-11-15 02:41+0000\n"
+"POT-Creation-Date: 2025-11-14 18:40-0300\n"
+"PO-Revision-Date: 2025-11-15 04:36+0000\n"
 "Last-Translator: Suu <suunya21@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
 "main/ja/>\n"
@@ -81,7 +81,7 @@ msgstr "非推奨です。代わりに --service-mode を使用してくださ�
 
 #: src/command_line_parser.cpp:51
 msgid "Start the application with service mode turned on."
-msgstr "サービス モードをオンにしてアプリケーションを起動します。"
+msgstr "サービスモードをオンにしてアプリケーションを起動します。"
 
 #: src/command_line_parser.cpp:52
 msgid "Enable debug messages."
@@ -2017,7 +2017,7 @@ msgid ""
 "external applications (e.g. Gnome Settings and Plasma System Settings)"
 msgstr ""
 "Easy Effects の Sink/Source は、外部アプリケーション（例: GNOME 設定、Plasma "
-"システム設定）でデフォルトデバイスとして設定しないことを推奨します。"
+"システム設定）でデフォルトデバイスとして設定しないことを推奨します"
 
 #: src/contents/ui/PipeWirePage.qml:122
 msgid "Use default input"
@@ -2895,29 +2895,29 @@ msgstr "ステレオベース"
 msgid "Stereo phase"
 msgstr "ステレオ位相"
 
-#: src/main.cpp:304
+#: src/main.cpp:306 src/main.cpp:304
 msgid "Global audio effects"
 msgstr "グローバルオーディオエフェクト"
 
-#: src/main.cpp:305
+#: src/main.cpp:308 src/main.cpp:305
 msgid "© 2017-2025 EasyEffects Team"
 msgstr "© 2017-2025 EasyEffects Team"
 
-#: src/main.cpp:307
+#: src/main.cpp:310 src/main.cpp:307
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:307
+#: src/main.cpp:311 src/main.cpp:307
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "開発者"
 
-#: src/main.cpp:311
+#: src/main.cpp:315 src/main.cpp:311
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Gemini, Suu"
 
-#: src/main.cpp:311
+#: src/main.cpp:315 src/main.cpp:311
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "suunya21@gmail.com"
