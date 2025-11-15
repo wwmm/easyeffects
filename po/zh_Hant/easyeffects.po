@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-14 18:40-0300\n"
-"PO-Revision-Date: 2025-11-14 15:51+0000\n"
+"PO-Revision-Date: 2025-11-15 00:51+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hant/>\n"
@@ -2401,10 +2401,9 @@ msgid "Autoload delay"
 msgstr "自動載入"
 
 #: src/contents/ui/PreferencesSheet.qml:468
-#, fuzzy
 msgid ""
 "Delay between receiving a new device route and the call to autoload a preset."
-msgstr "接收新裝置路徑和呼叫自動載入預設集之間的延遲"
+msgstr "接收新裝置路徑和呼叫自動載入預設集之間的延遲。"
 
 #: src/contents/ui/PreferencesSheet.qml:491
 msgid "Global shortcuts"
