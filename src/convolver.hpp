@@ -30,6 +30,7 @@
 #include <string>
 #include <thread>
 #include <vector>
+#include "convolver_kernel_fft.hpp"
 #include "convolver_kernel_manager.hpp"
 #include "easyeffects_db_convolver.h"
 #include "pipeline_type.hpp"
@@ -127,7 +128,6 @@ class Convolver : public PluginBase {
   QString kernelDuration;
 
   std::vector<float> data_L, data_R;
-
   std::vector<float> buf_in_L, buf_in_R;
   std::vector<float> buf_out_L, buf_out_R;
 
@@ -136,6 +136,8 @@ class Convolver : public PluginBase {
   ConvolverKernelManager kernel_manager;
 
   ConvolverKernelManager::KernelData kernel, original_kernel;
+
+  ConvolverKernelFFT kernel_fft;
 
   Convproc* conv = nullptr;
 

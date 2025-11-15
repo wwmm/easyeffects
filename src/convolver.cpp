@@ -37,7 +37,6 @@
 #include <cstddef>
 #include <format>
 #include <mutex>
-#include <numbers>
 #include <sndfile.hh>
 #include <span>
 #include <string>
@@ -548,149 +547,12 @@ void Convolver::chart_kernel_fft(const std::vector<float>& kernel_L,
                                  const float& kernel_rate) {
   std::scoped_lock<std::mutex> lock(data_mutex);
 
-  if (kernel_L.empty() || kernel_R.empty() || kernel_L.size() != kernel_R.size()) {
-    util::debug("Aborting the impulse fft calculation...");
+  kernel_fft.calculate_fft(kernel_L, kernel_R, kernel_rate, interpPoints);
 
-    return;
-  }
-
-  util::debug("Calculating the impulse fft...");
-
-  std::vector<double> spectrum_L((kernel_L.size() / 2U) + 1U);
-  std::vector<double> spectrum_R((kernel_R.size() / 2U) + 1U);
-
-  std::vector<double> real_input(kernel_L.size());
-
-  std::ranges::copy(kernel_L, real_input.begin());
-
-  for (uint n = 0U; n < real_input.size(); n++) {
-    // https://en.wikipedia.org/wiki/Hann_function
-
-    const float w = 0.5F * (1.0F - std::cos(2.0F * std::numbers::pi_v<float> * static_cast<float>(n) /
-                                            static_cast<float>(real_input.size() - 1U)));
-
-    real_input[n] *= w;
-  }
-
-  auto* complex_output = fftw_alloc_complex(real_input.size());
-
-  auto* plan =
-      fftw_plan_dft_r2c_1d(static_cast<int>(real_input.size()), real_input.data(), complex_output, FFTW_ESTIMATE);
-
-  fftw_execute(plan);
-
-  for (uint i = 0U; i < spectrum_L.size(); i++) {
-    double sqr = (complex_output[i][0] * complex_output[i][0]) + (complex_output[i][1] * complex_output[i][1]);
-
-    sqr /= static_cast<double>(spectrum_L.size() * spectrum_L.size());
-
-    spectrum_L[i] = sqr;
-  }
-
-  // right channel fft
-
-  real_input.resize(kernel_R.size());
-
-  std::ranges::copy(kernel_R, real_input.begin());
-
-  for (uint n = 0U; n < real_input.size(); n++) {
-    // https://en.wikipedia.org/wiki/Hann_function
-
-    const float w = 0.5F * (1.0F - std::cos(2.0F * std::numbers::pi_v<float> * static_cast<float>(n) /
-                                            static_cast<float>(real_input.size() - 1U)));
-
-    real_input[n] *= w;
-  }
-
-  fftw_execute(plan);
-
-  for (uint i = 0U; i < spectrum_R.size(); i++) {
-    double sqr = (complex_output[i][0] * complex_output[i][0]) + (complex_output[i][1] * complex_output[i][1]);
-
-    sqr /= static_cast<double>(spectrum_R.size() * spectrum_R.size());
-
-    spectrum_R[i] = sqr;
-  }
-
-  // cleaning
-
-  if (complex_output != nullptr) {
-    fftw_free(complex_output);
-  }
-
-  fftw_destroy_plan(plan);
-
-  // initializing the frequency axis
-
-  std::vector<double> freq_axis(spectrum_L.size());
-
-  for (uint n = 0U; n < freq_axis.size(); n++) {
-    freq_axis[n] =
-        0.5F * static_cast<float>(kernel_rate) * static_cast<float>(n) / static_cast<float>(freq_axis.size());
-  }
-
-  // removing the DC component at f = 0 Hz
-
-  freq_axis.erase(freq_axis.begin());
-  spectrum_L.erase(spectrum_L.begin());
-  spectrum_R.erase(spectrum_R.begin());
-
-  // initilizing the linear axis
-
-  auto linear_freq_axis = util::linspace(freq_axis.front(), freq_axis.back(), interpPoints);
-
-  auto linear_spectrum_L = interpolate(freq_axis, spectrum_L, linear_freq_axis);
-  auto linear_spectrum_R = interpolate(freq_axis, spectrum_R, linear_freq_axis);
-
-  // initializing the logarithmic frequency axis
-
-  auto max_freq = std::ranges::max(freq_axis);
-  auto min_freq = std::ranges::min(freq_axis);
-
-  util::debug(std::format("Min fft frequency: {}", min_freq));
-  util::debug(std::format("Max fft frequency: {}", max_freq));
-
-  auto log_freq_axis = util::logspace(min_freq, max_freq, interpPoints);
-
-  auto log_spectrum_L = interpolate(freq_axis, spectrum_L, log_freq_axis);
-  auto log_spectrum_R = interpolate(freq_axis, spectrum_R, log_freq_axis);
-
-  {
-    auto min_left = std::ranges::min(linear_spectrum_L);
-    auto max_left = std::ranges::max(linear_spectrum_L);
-    auto min_right = std::ranges::min(linear_spectrum_R);
-    auto max_right = std::ranges::max(linear_spectrum_R);
-
-    for (int n = 0U; n < interpPoints; n++) {
-      linear_spectrum_L[n] = (linear_spectrum_L[n] - min_left) / (max_left - min_left);
-      linear_spectrum_R[n] = (linear_spectrum_R[n] - min_right) / (max_right - min_right);
-    }
-  }
-
-  {
-    auto min_left = std::ranges::min(log_spectrum_L);
-    auto max_left = std::ranges::max(log_spectrum_L);
-    auto min_right = std::ranges::min(log_spectrum_R);
-    auto max_right = std::ranges::max(log_spectrum_R);
-
-    for (int n = 0U; n < interpPoints; n++) {
-      log_spectrum_L[n] = (log_spectrum_L[n] - min_left) / (max_left - min_left);
-      log_spectrum_R[n] = (log_spectrum_R[n] - min_right) / (max_right - min_right);
-    }
-  }
-
-  chartMagLfftLinear.resize(interpPoints);
-  chartMagRfftLinear.resize(interpPoints);
-  chartMagLfftLog.resize(interpPoints);
-  chartMagRfftLog.resize(interpPoints);
-
-  for (qsizetype n = 0; n < interpPoints; n++) {
-    chartMagLfftLinear[n] = QPointF(linear_freq_axis[n], linear_spectrum_L[n]);
-    chartMagRfftLinear[n] = QPointF(linear_freq_axis[n], linear_spectrum_R[n]);
-
-    chartMagLfftLog[n] = QPointF(log_freq_axis[n], log_spectrum_L[n]);
-    chartMagRfftLog[n] = QPointF(log_freq_axis[n], log_spectrum_R[n]);
-  }
+  chartMagLfftLinear = kernel_fft.get_linear_L();
+  chartMagRfftLinear = kernel_fft.get_linear_R();
+  chartMagLfftLog = kernel_fft.get_log_L();
+  chartMagRfftLog = kernel_fft.get_log_R();
 
   Q_EMIT chartMagLfftLinearChanged();
   Q_EMIT chartMagRfftLinearChanged();

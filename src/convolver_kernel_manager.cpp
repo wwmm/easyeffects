@@ -27,7 +27,6 @@
 #include <execution>
 #include <filesystem>
 #include <format>
-#include <limits>
 #include <memory>
 #include <numeric>
 #include <sndfile.hh>

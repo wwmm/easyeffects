@@ -1,0 +1,194 @@
+/**
+ * Copyright © 2017-2025 Wellington Wallace
+ *
+ * This file is part of Easy Effects
+ *
+ * Easy Effects is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Easy Effects is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
+ */
+
+#include "convolver_kernel_fft.hpp"
+#include <fftw3.h>
+#include <gsl/gsl_interp.h>
+#include <gsl/gsl_spline.h>
+#include <qlist.h>
+#include <qpoint.h>
+#include <qtypes.h>
+#include <algorithm>
+#include <cmath>
+#include <cstddef>
+#include <format>
+#include <numbers>
+#include <vector>
+#include "util.hpp"
+
+ConvolverKernelFFT::ConvolverKernelFFT() = default;
+
+ConvolverKernelFFT::~ConvolverKernelFFT() {
+  clear_data();
+}
+
+auto ConvolverKernelFFT::get_linear_L() const -> QList<QPointF> {
+  return linear_L;
+}
+
+auto ConvolverKernelFFT::get_linear_R() const -> QList<QPointF> {
+  return linear_R;
+}
+
+auto ConvolverKernelFFT::get_log_L() const -> QList<QPointF> {
+  return log_L;
+}
+
+auto ConvolverKernelFFT::get_log_R() const -> QList<QPointF> {
+  return log_R;
+}
+
+auto ConvolverKernelFFT::calculate_fft(const std::vector<float>& kernel_L,
+                                       const std::vector<float>& kernel_R,
+                                       float kernel_rate,
+                                       int interp_points) -> void {
+  if (kernel_L.empty() || kernel_R.empty() || kernel_L.size() != kernel_R.size()) {
+    util::debug("Aborting the impulse fft calculation...");
+    return;
+  }
+
+  util::debug("Calculating the impulse fft...");
+
+  // Calculate FFT magnitudes
+  auto spectrum_L = compute_fft_magnitude(std::vector<double>(kernel_L.begin(), kernel_L.end()));
+  auto spectrum_R = compute_fft_magnitude(std::vector<double>(kernel_R.begin(), kernel_R.end()));
+
+  // Initialize frequency axis
+  std::vector<double> freq_axis(spectrum_L.size());
+  for (uint n = 0U; n < freq_axis.size(); n++) {
+    freq_axis[n] = 0.5F * kernel_rate * static_cast<float>(n) / static_cast<float>(freq_axis.size());
+  }
+
+  // Remove DC component at f = 0 Hz
+  freq_axis.erase(freq_axis.begin());
+  spectrum_L.erase(spectrum_L.begin());
+  spectrum_R.erase(spectrum_R.erase(spectrum_R.begin()));
+
+  // Initialize linear axis
+  auto linear_freq_axis = util::linspace(freq_axis.front(), freq_axis.back(), interp_points);
+  auto linear_spectrum_L = interpolate(freq_axis, spectrum_L, linear_freq_axis);
+  auto linear_spectrum_R = interpolate(freq_axis, spectrum_R, linear_freq_axis);
+
+  // Initialize logarithmic frequency axis
+  auto max_freq = std::ranges::max(freq_axis);
+  auto min_freq = std::ranges::min(freq_axis);
+
+  util::debug(std::format("Min fft frequency: {}", min_freq));
+  util::debug(std::format("Max fft frequency: {}", max_freq));
+
+  auto log_freq_axis = util::logspace(min_freq, max_freq, interp_points);
+  auto log_spectrum_L = interpolate(freq_axis, spectrum_L, log_freq_axis);
+  auto log_spectrum_R = interpolate(freq_axis, spectrum_R, log_freq_axis);
+
+  // Normalizing the spectrum
+  normalize_spectrum(linear_spectrum_L);
+  normalize_spectrum(linear_spectrum_R);
+  normalize_spectrum(log_spectrum_L);
+  normalize_spectrum(log_spectrum_R);
+
+  // Update chart data
+  linear_L.resize(interp_points);
+  linear_R.resize(interp_points);
+  log_L.resize(interp_points);
+  log_R.resize(interp_points);
+
+  for (qsizetype n = 0; n < interp_points; n++) {
+    linear_L[n] = QPointF(linear_freq_axis[n], linear_spectrum_L[n]);
+    linear_R[n] = QPointF(linear_freq_axis[n], linear_spectrum_R[n]);
+    log_L[n] = QPointF(log_freq_axis[n], log_spectrum_L[n]);
+    log_R[n] = QPointF(log_freq_axis[n], log_spectrum_R[n]);
+  }
+}
+
+auto ConvolverKernelFFT::clear_data() -> void {
+  linear_L.clear();
+  linear_R.clear();
+  log_L.clear();
+  log_R.clear();
+}
+
+auto ConvolverKernelFFT::interpolate(const std::vector<double>& x_source,
+                                     const std::vector<double>& y_source,
+                                     const std::vector<double>& x_new) -> std::vector<double> {
+  auto* acc = gsl_interp_accel_alloc();
+  auto* spline = gsl_spline_alloc(gsl_interp_steffen, x_source.size());
+
+  gsl_spline_init(spline, x_source.data(), y_source.data(), x_source.size());
+
+  std::vector<double> output(x_new.size());
+  for (size_t n = 0; n < x_new.size(); n++) {
+    output[n] = static_cast<float>(gsl_spline_eval(spline, x_new[n], acc));
+  }
+
+  gsl_spline_free(spline);
+  gsl_interp_accel_free(acc);
+
+  return output;
+}
+
+auto ConvolverKernelFFT::apply_hanning_window(std::vector<double>& signal) -> void {
+  for (uint n = 0U; n < signal.size(); n++) {
+    const float w = 0.5F * (1.0F - std::cos(2.0F * std::numbers::pi_v<float> * static_cast<float>(n) /
+                                            static_cast<float>(signal.size() - 1U)));
+    signal[n] *= w;
+  }
+}
+
+auto ConvolverKernelFFT::compute_fft_magnitude(const std::vector<double>& real_input) -> std::vector<double> {
+  if (real_input.empty()) {
+    return {};
+  }
+
+  std::vector<double> signal_copy = real_input;
+  apply_hanning_window(signal_copy);
+
+  std::vector<double> spectrum((signal_copy.size() / 2U) + 1U);
+  auto* complex_output = fftw_alloc_complex(signal_copy.size());
+
+  auto* plan =
+      fftw_plan_dft_r2c_1d(static_cast<int>(signal_copy.size()), signal_copy.data(), complex_output, FFTW_ESTIMATE);
+
+  fftw_execute(plan);
+
+  for (uint i = 0U; i < spectrum.size(); i++) {
+    double sqr = (complex_output[i][0] * complex_output[i][0]) + (complex_output[i][1] * complex_output[i][1]);
+    sqr /= static_cast<double>(spectrum.size() * spectrum.size());
+    spectrum[i] = sqr;
+  }
+
+  fftw_destroy_plan(plan);
+  fftw_free(complex_output);
+
+  return spectrum;
+}
+
+auto ConvolverKernelFFT::normalize_spectrum(std::vector<double>& spectrum) -> void {
+  if (spectrum.empty()) {
+    return;
+  }
+
+  auto min_val = std::ranges::min(spectrum);
+  auto max_val = std::ranges::max(spectrum);
+
+  if (max_val > min_val) {
+    for (auto& value : spectrum) {
+      value = (value - min_val) / (max_val - min_val);
+    }
+  }
+}

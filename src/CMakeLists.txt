@@ -125,6 +125,7 @@ target_sources(easyeffects PRIVATE
     compressor.cpp
     compressor_preset.cpp
     convolver.cpp
+    convolver_kernel_fft.cpp
     convolver_kernel_manager.cpp
     convolver_preset.cpp
     crossfeed.cpp
