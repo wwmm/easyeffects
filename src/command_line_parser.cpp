@@ -21,8 +21,8 @@
 #include <qcommandlineparser.h>
 #include <qobject.h>
 #include <qtmetamacros.h>
-#include <KLocalizedString>
 #include <KAboutData>
+#include <KLocalizedString>
 #include <QApplication>
 #include <QLoggingCategory>
 #include <QString>
@@ -34,7 +34,7 @@
 #include "pipeline_type.hpp"
 #include "presets_manager.hpp"
 
-CommandLineParser::CommandLineParser(KAboutData &about, QObject* parent)
+CommandLineParser::CommandLineParser(KAboutData& about, QObject* parent)
     : QObject(parent), parser(std::make_unique<QCommandLineParser>()) {
   parser->setApplicationDescription("Easy Effects");
 
@@ -52,7 +52,19 @@ CommandLineParser::CommandLineParser(KAboutData &about, QObject* parent)
                       {"debug", i18n("Enable debug messages.")}});
 }
 
-void CommandLineParser::process(KAboutData &about, QApplication* app) {
+void CommandLineParser::set_is_primary(const bool& state) {
+  is_primary = state;
+}
+
+void CommandLineParser::process_debug_option(QApplication* app) {
+  parser->process(*app);
+
+  if (parser->isSet("debug")) {
+    QLoggingCategory::setFilterRules("easyeffects.debug=true");
+  }
+}
+
+void CommandLineParser::process(KAboutData& about, QApplication* app) {
   auto* pm = &presets::Manager::self();
 
   parser->process(*app);
@@ -79,10 +91,6 @@ void CommandLineParser::process(KAboutData &about, QApplication* app) {
     db::Main::setEnableServiceMode(true);
 
     Q_EMIT onHideWindow();
-  }
-
-  if (parser->isSet("debug")) {
-    QLoggingCategory::setFilterRules("easyeffects.debug=true");
   }
 
   if (parser->isSet("active-preset")) {
@@ -198,5 +206,9 @@ void CommandLineParser::process(KAboutData &about, QApplication* app) {
     } else {
       QCoreApplication::exit(EXIT_FAILURE);
     }
+  }
+
+  if (is_primary) {
+    Q_EMIT onInitQML();
   }
 }

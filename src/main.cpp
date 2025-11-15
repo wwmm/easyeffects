@@ -280,6 +280,7 @@ static int runSecondaryInstance(KAboutData& about, QApplication& app, CommandLin
     show_window = false;
   });
 
+  parser.set_is_primary(false);
   parser.process(about, &app);
 
   if (show_window) {
@@ -339,14 +340,13 @@ int main(int argc, char* argv[]) {
 
   if (!lockFile->isLocked()) {
     // Used only by an instance started when one is already running
-    CoreServices core(false);
 
     return runSecondaryInstance(about, app, *cmd_parser, show_window);
   }
 
-  QObject::connect(cmd_parser.get(), &CommandLineParser::onHideWindow, [&]() { show_window = false; });
+  cmd_parser->process_debug_option(&app);  // if we take too long to process this one we will miss debug messages
 
-  cmd_parser->process(about, &app);
+  UiState ui;
 
   // Core managers
   CoreServices core(true);
@@ -355,8 +355,6 @@ int main(int argc, char* argv[]) {
   auto local_server = std::make_unique<LocalServer>();
   auto global_shortcuts = std::make_unique<GlobalShortcuts>();
   auto autostart = std::make_unique<Autostart>();
-
-  UiState ui;
 
   QQmlApplicationEngine engine;
 
@@ -368,9 +366,21 @@ int main(int argc, char* argv[]) {
 
   initGlobalBypass(*core.sie, *core.soe);
   initGlobalShortcuts(global_shortcuts.get());
-  initQml(engine, *autostart, *local_server, ui, show_window);
 
   QObject::connect(&app, &QApplication::aboutToQuit, [&]() { db::Manager::self().saveAll(); });
+
+  QObject::connect(cmd_parser.get(), &CommandLineParser::onHideWindow, [&]() {
+    show_window = false;
+
+    if (ui.window) {
+      ui.window->hide();
+    }
+  });
+
+  QObject::connect(cmd_parser.get(), &CommandLineParser::onInitQML,
+                   [&]() { initQml(engine, *autostart, *local_server, ui, show_window); });
+
+  cmd_parser->process(about, &app);
 
   return QApplication::exec();
 }

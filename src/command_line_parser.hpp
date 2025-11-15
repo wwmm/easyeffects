@@ -32,9 +32,13 @@ class CommandLineParser : public QObject {
   Q_OBJECT
 
  public:
-  explicit CommandLineParser(KAboutData &about, QObject* parent = nullptr);
+  explicit CommandLineParser(KAboutData& about, QObject* parent = nullptr);
 
-  void process(KAboutData &about, QApplication* app);
+  void process(KAboutData& about, QApplication* app);
+
+  void process_debug_option(QApplication* app);
+
+  void set_is_primary(const bool& state);
 
  Q_SIGNALS:
   void onReset();
@@ -45,6 +49,10 @@ class CommandLineParser : public QObject {
 
   void onSetGlobalBypass(bool state);
 
+  void onInitQML();
+
  private:
   std::unique_ptr<QCommandLineParser> parser;
+
+  bool is_primary = true;
 };
