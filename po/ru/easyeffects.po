@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-14 23:38-0300\n"
+"POT-Creation-Date: 2025-11-15 01:35-0300\n"
 "PO-Revision-Date: 2025-11-14 21:46+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -3168,30 +3168,30 @@ msgstr "База стерео"
 msgid "Stereo phase"
 msgstr "Фаза стерео"
 
-#: src/main.cpp:306
+#: src/main.cpp:304
 #, fuzzy
 msgid "Global audio effects"
 msgstr "_Горячие клавиши"
 
-#: src/main.cpp:308
+#: src/main.cpp:305
 msgid "© 2017-2025 EasyEffects Team"
 msgstr ""
 
-#: src/main.cpp:310
+#: src/main.cpp:307
 msgid "Wellington Wallace"
 msgstr "Веллингтон Уоллис"
 
-#: src/main.cpp:311
+#: src/main.cpp:307
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Разработчик"
 
-#: src/main.cpp:315
+#: src/main.cpp:311
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 
-#: src/main.cpp:315
+#: src/main.cpp:311
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""

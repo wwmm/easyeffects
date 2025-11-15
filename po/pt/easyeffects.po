@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-14 23:38-0300\n"
+"POT-Creation-Date: 2025-11-15 01:35-0300\n"
 "PO-Revision-Date: 2025-07-20 18:40+0000\n"
 "Last-Translator: raffyll <raffyl.dev@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/easyeffects/"
@@ -3170,31 +3170,31 @@ msgstr "Base Estéreo"
 msgid "Stereo phase"
 msgstr "Fase Estéreo"
 
-#: src/main.cpp:306
+#: src/main.cpp:304
 #, fuzzy
 msgid "Global audio effects"
 msgstr "_Atalhos"
 
-#: src/main.cpp:308
+#: src/main.cpp:305
 msgid "© 2017-2025 EasyEffects Team"
 msgstr ""
 
-#: src/main.cpp:310
+#: src/main.cpp:307
 msgid "Wellington Wallace"
 msgstr ""
 
-#: src/main.cpp:311
+#: src/main.cpp:307
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Modulação"
 
-#: src/main.cpp:315
+#: src/main.cpp:311
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 
-#: src/main.cpp:315
+#: src/main.cpp:311
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""

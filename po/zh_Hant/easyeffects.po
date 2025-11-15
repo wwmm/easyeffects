@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-14 23:38-0300\n"
+"POT-Creation-Date: 2025-11-15 01:35-0300\n"
 "PO-Revision-Date: 2025-11-15 00:51+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
@@ -2889,29 +2889,29 @@ msgstr "立體聲低音"
 msgid "Stereo phase"
 msgstr "立體聲階段"
 
-#: src/main.cpp:306
+#: src/main.cpp:304
 msgid "Global audio effects"
 msgstr "整體音效處理"
 
-#: src/main.cpp:308
+#: src/main.cpp:305
 msgid "© 2017-2025 EasyEffects Team"
 msgstr "© 2017-2025 EasyEffects 團隊"
 
-#: src/main.cpp:310
+#: src/main.cpp:307
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:311
+#: src/main.cpp:307
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "開發人員"
 
-#: src/main.cpp:315
+#: src/main.cpp:311
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "BigELK176 ≡"
 
-#: src/main.cpp:315
+#: src/main.cpp:311
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "．略．"

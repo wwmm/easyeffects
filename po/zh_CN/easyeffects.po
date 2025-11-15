@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-14 23:38-0300\n"
+"POT-Creation-Date: 2025-11-15 01:35-0300\n"
 "PO-Revision-Date: 2025-11-14 17:39+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
@@ -3007,31 +3007,31 @@ msgstr "立体声基线"
 msgid "Stereo phase"
 msgstr "立体声相位"
 
-#: src/main.cpp:306
+#: src/main.cpp:304
 msgid "Global audio effects"
 msgstr "全局音频效果"
 
-#: src/main.cpp:308
+#: src/main.cpp:305
 msgid "© 2017-2025 EasyEffects Team"
 msgstr ""
 
-#: src/main.cpp:310
+#: src/main.cpp:307
 #, fuzzy
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:311
+#: src/main.cpp:307
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "开发者"
 
-#: src/main.cpp:315
+#: src/main.cpp:311
 #, fuzzy
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "帧"
 
-#: src/main.cpp:315
+#: src/main.cpp:311
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""

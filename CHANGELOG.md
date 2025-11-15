@@ -1,5 +1,18 @@
 # Changelog
  
+## 8.0.3
+### 2025-11-15
+
+ 
+### Features:
+- Updated translations
+
+### Bug fixes:
+- Fixed a regression introduced by version 8.0.1 that made EasyEffects unable properly parse extra LV2 paths given by LV2_PATH
+
+### Other notes:
+
+ 
 ## 8.0.2
 ### 2025-11-15
 
