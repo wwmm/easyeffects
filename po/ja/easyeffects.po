@@ -44,7 +44,8 @@ msgstr "ウィンドウを隠します。"
 
 #: src/command_line_parser.cpp:45
 msgid "Global bypass. 1 to enable and 2 to disable."
-msgstr "グローバルバイパス。1 を指定すると有効化し、2 を指定すると無効化します。"
+msgstr ""
+"グローバルバイパス。1 を指定すると有効化し、2 を指定すると無効化します。"
 
 #: src/command_line_parser.cpp:45
 msgid "bypass-state"
@@ -916,8 +917,9 @@ msgstr "コンボルバーはパススルーモードです。"
 
 #: src/contents/ui/Convolver.qml:57
 msgid "Failed to load the %1 impulse. The Convolver is in passthrough mode."
-msgstr "インパルス「%1」の読み込みに失敗しました。コンボルバーはパススルーモードです"
-"。"
+msgstr ""
+"インパルス「%1」の読み込みに失敗しました。コンボルバーはパススルーモードで"
+"す。"
 
 #: src/contents/ui/Convolver.qml:121
 msgid "First"
@@ -1399,13 +1401,15 @@ msgstr "GraphicEQ プリセットファイルのインポートに失敗しま�
 
 #: src/contents/ui/Equalizer.qml:83
 msgid "Exported the current Equalizer settings to an external APO preset file."
-msgstr "現在のイコライザー設定を外部 APO プリセットファイルにエクスポートしました。"
+msgstr ""
+"現在のイコライザー設定を外部 APO プリセットファイルにエクスポートしました。"
 
 #: src/contents/ui/Equalizer.qml:86
 msgid ""
 "Failed to export the current Equalizer settings to an external APO preset "
 "file."
-msgstr "現在のイコライザー設定を外部 APO プリセットファイルへのエクスポートに失敗しま"
+msgstr ""
+"現在のイコライザー設定を外部 APO プリセットファイルへのエクスポートに失敗しま"
 "した。"
 
 #: src/contents/ui/Equalizer.qml:107 src/contents/ui/Filter.qml:78
@@ -2244,7 +2248,8 @@ msgstr "非アクティブタイムアウトを有効化"
 msgid ""
 "When all streams are inactive, Easy Effects pipeline remains loaded for an "
 "extra amount of time."
-msgstr "すべてのストリームが非アクティブな場合、Easy Effects パイプラインは追加の時間"
+msgstr ""
+"すべてのストリームが非アクティブな場合、Easy Effects パイプラインは追加の時間"
 "だけ読み込まれたままになります。"
 
 #: src/contents/ui/PreferencesSheet.qml:203
@@ -2259,7 +2264,8 @@ msgstr "レベルメーターラベル"
 msgid ""
 "The time it takes for the level meter labels to be updated when the current "
 "level is below the last highest one."
-msgstr "現在のレベルが直前の最大値を下回った際に、レベルメーターのラベルが更新される"
+msgstr ""
+"現在のレベルが直前の最大値を下回った際に、レベルメーターのラベルが更新される"
 "までの時間。"
 
 #: src/contents/ui/PreferencesSheet.qml:256
@@ -2386,7 +2392,8 @@ msgstr "エフェクトリストのコントロールを減らす"
 msgid ""
 "Action buttons in the effects list are moved inside a context menu for a "
 "more compact view."
-msgstr "エフェクトリストのアクションボタンは、よりコンパクトな表示のためにコンテキス"
+msgstr ""
+"エフェクトリストのアクションボタンは、よりコンパクトな表示のためにコンテキス"
 "トメニュー内に移動されます。"
 
 #: src/contents/ui/PreferencesSheet.qml:467
@@ -2396,7 +2403,8 @@ msgstr "自動読み込み遅延"
 #: src/contents/ui/PreferencesSheet.qml:468
 msgid ""
 "Delay between receiving a new device route and the call to autoload a preset."
-msgstr "新しいデバイスルートを受信してからプリセットを自動読み込みするまでの遅延。"
+msgstr ""
+"新しいデバイスルートを受信してからプリセットを自動読み込みするまでの遅延。"
 
 #: src/contents/ui/PreferencesSheet.qml:491
 msgid "Global shortcuts"
@@ -2459,11 +2467,13 @@ msgstr "ローカルプリセットにコピー"
 
 #: src/contents/ui/PresetsCommunityPage.qml:105
 msgid "Imported the %1 community preset to the list of local presets."
-msgstr "コミュニティプリセット %1 をローカルプリセット一覧にインポートしました。"
+msgstr ""
+"コミュニティプリセット %1 をローカルプリセット一覧にインポートしました。"
 
 #: src/contents/ui/PresetsCommunityPage.qml:107
 msgid "Failed to import the %1 community preset to the list of local presets."
-msgstr "コミュニティプリセット %1 のローカルプリセット一覧へのインポートに失敗しまし"
+msgstr ""
+"コミュニティプリセット %1 のローカルプリセット一覧へのインポートに失敗しまし"
 "た。"
 
 #: src/contents/ui/PresetsCommunityPage.qml:127
@@ -2715,8 +2725,9 @@ msgstr "%1 RNNoise モデルを読み込みました。"
 
 #: src/contents/ui/RNNoise.qml:69
 msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
-msgstr "%1 モデルの読み込みに失敗しました。標準 RNNoise モデルにフォールバックします"
-"。"
+msgstr ""
+"%1 モデルの読み込みに失敗しました。標準 RNNoise モデルにフォールバックしま"
+"す。"
 
 #: src/contents/ui/RNNoise.qml:88 src/contents/ui/Speex.qml:98
 msgid "Voice detection"

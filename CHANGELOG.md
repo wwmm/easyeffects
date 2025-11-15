@@ -1,5 +1,17 @@
 # Changelog
  
+## 8.0.2
+### 2025-11-15
+
+ 
+### Features:
+- Improved preset migration function.
+
+### Bug fixes:
+
+### Other notes:
+
+ 
 ## 8.0.1
 ### 2025-11-14
 

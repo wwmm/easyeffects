@@ -53,7 +53,7 @@ void info(const std::string& s, source_location location = source_location::curr
 
 void create_user_directory(const std::filesystem::path& path);
 
-void copy_all_files(const std::filesystem::path& source_dir, const std::filesystem::path& target_dir);
+auto copy_all_files(const std::filesystem::path& source_dir, const std::filesystem::path& target_dir) -> int;
 
 auto normalize(const double& x, const double& max, const double& min = 1.0) -> double;
 

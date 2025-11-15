@@ -38,6 +38,7 @@
 #include <random>
 #include <regex>
 #include <string>
+#include <system_error>
 #include <thread>
 
 namespace util {
@@ -88,17 +89,32 @@ void create_user_directory(const std::filesystem::path& path) {
   util::warning(std::format("Failed to create directory: {}", path.string()));
 }
 
-void copy_all_files(const std::filesystem::path& source_dir, const std::filesystem::path& target_dir) {
+auto copy_all_files(const std::filesystem::path& source_dir, const std::filesystem::path& target_dir) -> int {
+  int count = 0;
+
   for (const auto& entry : std::filesystem::directory_iterator(source_dir)) {
     if (entry.is_regular_file()) {
       const std::filesystem::path& old_path = entry.path();
       const std::filesystem::path new_path = target_dir / old_path.filename();
 
-      std::filesystem::copy_file(old_path, new_path, std::filesystem::copy_options::overwrite_existing);
+      std::error_code ec_copy;
+
+      std::filesystem::copy_file(old_path, new_path, std::filesystem::copy_options::overwrite_existing, ec_copy);
+
+      if (ec_copy) {
+        info(std::format("Copy Error: Failed to copy {} to {}. Reason: {}", old_path.string(), new_path.string(),
+                         ec_copy.message()));
+
+        return -1;
+      }
 
       info(std::format("Copied  {} to {}", old_path.string(), new_path.string()));
+
+      count++;
     }
   }
+
+  return count;
 }
 
 auto normalize(const double& x, const double& max, const double& min) -> double {

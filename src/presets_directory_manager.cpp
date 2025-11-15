@@ -140,7 +140,15 @@ void DirectoryManager::xdg_migration() {
       util::info(
           std::format("Old {} directory detected. Migrating its files to {}", old_dir.string(), new_dir.string()));
 
-      util::copy_all_files(old_dir, new_dir);
+      auto count = util::copy_all_files(old_dir, new_dir);
+
+      if (count == -1) {
+        util::warning(std::format("Aborting migration of {}", old_dir.string()));
+        return;
+      } else if (count == 0) {
+        util::warning(std::format("Could not copy any file. Aborting migration of {}", old_dir.string()));
+        return;
+      }
 
       if (QFile::moveToTrash(QString::fromStdString(old_dir.string()))) {
         util::info(std::format("Moved {} to the trash folder", new_dir.string()));
