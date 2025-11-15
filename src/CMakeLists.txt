@@ -128,6 +128,7 @@ target_sources(easyeffects PRIVATE
     convolver_kernel_fft.cpp
     convolver_kernel_manager.cpp
     convolver_preset.cpp
+    convolver_zita.cpp
     crossfeed.cpp
     crossfeed_preset.cpp
     crystalizer.cpp

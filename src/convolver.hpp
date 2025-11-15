@@ -25,18 +25,17 @@
 #include <sys/types.h>
 #include <zita-convolver.h>
 #include <QString>
-#include <format>
 #include <span>
 #include <string>
 #include <thread>
 #include <vector>
 #include "convolver_kernel_fft.hpp"
 #include "convolver_kernel_manager.hpp"
+#include "convolver_zita.hpp"
 #include "easyeffects_db_convolver.h"
 #include "pipeline_type.hpp"
 #include "plugin_base.hpp"
 #include "pw_manager.hpp"
-#include "util.hpp"
 
 class Convolver : public PluginBase {
   Q_OBJECT
@@ -83,8 +82,6 @@ class Convolver : public PluginBase {
 
   auto get_latency_seconds() -> float override;
 
-  const std::string irs_ext = ".irs";
-
   Q_INVOKABLE void combineKernels(const QString& kernel1, const QString& kernel2, const QString& outputName);
 
  Q_SIGNALS:
@@ -112,7 +109,6 @@ class Convolver : public PluginBase {
 
   bool kernel_is_initialized = false;
   bool n_samples_is_power_of_2 = true;
-  bool zita_ready = false;
   bool ready = false;
   bool notify_latency = false;
 
@@ -139,17 +135,13 @@ class Convolver : public PluginBase {
 
   ConvolverKernelFFT kernel_fft;
 
-  Convproc* conv = nullptr;
+  ConvolverZita zita;
 
   std::vector<std::thread> mythreads;
 
   void apply_kernel_autogain();
 
   void set_kernel_stereo_width();
-
-  void setup_zita();
-
-  auto get_zita_buffer_size() -> uint;
 
   void prepare_kernel();
 
@@ -164,29 +156,4 @@ class Convolver : public PluginBase {
                         const float& kernel_rate);
 
   void clear_chart_data();
-
-  template <typename T1>
-  void do_convolution(T1& data_left, T1& data_right) {
-    std::span conv_left_in(conv->inpdata(0), get_zita_buffer_size());
-    std::span conv_right_in(conv->inpdata(1), get_zita_buffer_size());
-
-    std::span conv_left_out(conv->outdata(0), get_zita_buffer_size());
-    std::span conv_right_out(conv->outdata(1), get_zita_buffer_size());
-
-    std::copy(data_left.begin(), data_left.end(), conv_left_in.begin());
-    std::copy(data_right.begin(), data_right.end(), conv_right_in.begin());
-
-    if (zita_ready) {
-      const int& ret = conv->process(true);  // thread sync mode set to true
-
-      if (ret != 0) {
-        util::debug(std::format("{}IR: process failed: {}", log_tag, ret));
-
-        zita_ready = false;
-      } else {
-        std::copy(conv_left_out.begin(), conv_left_out.end(), data_left.begin());
-        std::copy(conv_right_out.begin(), conv_right_out.end(), data_right.begin());
-      }
-    }
-  }
 };

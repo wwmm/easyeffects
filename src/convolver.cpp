@@ -48,14 +48,6 @@
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
 
-namespace {
-
-constexpr auto CONVPROC_SCHEDULER_PRIORITY = 0;
-
-constexpr auto CONVPROC_SCHEDULER_CLASS = SCHED_FIFO;
-
-}  // namespace
-
 Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id)
     : PluginBase(tag,
                  tags::plugin_name::BaseName::convolver,
@@ -125,14 +117,6 @@ Convolver::~Convolver() {
   std::scoped_lock<std::mutex> lock(data_mutex);
 
   ready = false;
-
-  if (conv != nullptr) {
-    conv->stop_process();
-
-    conv->cleanup();
-
-    delete conv;
-  }
 
   util::debug(std::format("{}{} destroyed", log_tag, name.toStdString()));
 }
@@ -211,7 +195,7 @@ void Convolver::process(std::span<float>& left_in,
     std::ranges::copy(left_in, left_out.begin());
     std::ranges::copy(right_in, right_out.begin());
 
-    do_convolution(left_out, right_out);
+    zita.process(left_out, right_out);
   } else {
     buf_in_L.insert(buf_in_L.end(), left_in.begin(), left_in.end());
     buf_in_R.insert(buf_in_R.end(), right_in.begin(), right_in.end());
@@ -220,7 +204,7 @@ void Convolver::process(std::span<float>& left_in,
       util::copy_bulk(buf_in_L, data_L);
       util::copy_bulk(buf_in_R, data_R);
 
-      do_convolution(data_L, data_R);
+      zita.process(data_L, data_R);
 
       buf_out_L.insert(buf_out_L.end(), data_L.begin(), data_L.end());
       buf_out_R.insert(buf_out_R.end(), data_R.begin(), data_R.end());
@@ -406,76 +390,6 @@ void Convolver::set_kernel_stereo_width() {
   }
 }
 
-void Convolver::setup_zita() {
-  zita_ready = false;
-
-  if (n_samples == 0U || !kernel_is_initialized) {
-    return;
-  }
-
-  const uint max_convolution_size = kernel.sampleCount();
-  const uint buffer_size = get_zita_buffer_size();
-
-  if (conv != nullptr) {
-    conv->stop_process();
-
-    conv->cleanup();
-
-    delete conv;
-  }
-
-  conv = new Convproc();
-
-  conv->set_options(0);
-
-  int ret = conv->configure(2, 2, max_convolution_size, buffer_size, buffer_size, buffer_size, 0.0F /* density */);
-
-  if (ret != 0) {
-    util::warning(std::format("{}can't initialise zita-convolver engine: {}", log_tag, ret));
-
-    return;
-  }
-
-  ret = conv->impdata_create(0, 0, 1, kernel.left_channel.data(), 0, static_cast<int>(kernel.left_channel.size()));
-
-  if (ret != 0) {
-    util::warning(std::format("{}left impdata_create failed: {}", log_tag, ret));
-
-    return;
-  }
-
-  ret = conv->impdata_create(1, 1, 1, kernel.right_channel.data(), 0, static_cast<int>(kernel.right_channel.size()));
-
-  if (ret != 0) {
-    util::warning(std::format("{}right impdata_create failed: {}", log_tag, ret));
-
-    return;
-  }
-
-  ret = conv->start_process(CONVPROC_SCHEDULER_PRIORITY, CONVPROC_SCHEDULER_CLASS);
-
-  if (ret != 0) {
-    util::warning(std::format("{}right impdata_create failed: {}", log_tag, ret));
-
-    conv->stop_process();
-    conv->cleanup();
-
-    return;
-  }
-
-  zita_ready = true;
-
-  util::debug(std::format("{}{}: zita is ready", log_tag, name.toStdString()));
-}
-
-auto Convolver::get_zita_buffer_size() -> uint {
-  if (n_samples_is_power_of_2) {
-    return n_samples;
-  }
-
-  return blocksize;
-}
-
 auto Convolver::get_latency_seconds() -> float {
   return this->latency_value;
 }
@@ -495,11 +409,15 @@ void Convolver::prepare_kernel() {
     set_kernel_stereo_width();
     apply_kernel_autogain();
 
-    setup_zita();
+    auto success = zita.init(kernel.sampleCount(), blocksize, kernel.left_channel, kernel.right_channel);
+
+    if (!success) {
+      util::warning(std::format("{} Zita init failed", log_tag));
+    }
 
     data_mutex.lock();
 
-    ready = kernel_is_initialized && zita_ready;
+    ready = kernel_is_initialized && success;
 
     data_mutex.unlock();
   }
