@@ -143,7 +143,7 @@ Kirigami.Page {
                     [TagsPluginName.BaseName.reverb]: Qt.resolvedUrl("Reverb.qml"),
                     [TagsPluginName.BaseName.rnnoise]: Qt.resolvedUrl("RNNoise.qml"),
                     [TagsPluginName.BaseName.speex]: Qt.resolvedUrl("Speex.qml"),
-                    [TagsPluginName.BaseName.stereoTools]: Qt.resolvedUrl("StereoTools.qml"),
+                    [TagsPluginName.BaseName.stereoTools]: Qt.resolvedUrl("StereoTools.qml")
                 };
 
                 const packageMap = {

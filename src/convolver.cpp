@@ -35,25 +35,19 @@
 #include <algorithm>
 #include <cmath>
 #include <cstddef>
-#include <execution>
-#include <filesystem>
 #include <format>
-#include <memory>
 #include <mutex>
 #include <numbers>
-#include <numeric>
 #include <sndfile.hh>
 #include <span>
 #include <string>
-#include <tuple>
 #include <vector>
+#include "convolver_kernel_manager.hpp"
 #include "db_manager.hpp"
 #include "easyeffects_db_convolver.h"
 #include "pipeline_type.hpp"
 #include "plugin_base.hpp"
 #include "pw_manager.hpp"
-#include "resampler.hpp"
-#include "tags_app.hpp"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
 
@@ -75,9 +69,9 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
       settings(
           db::Manager::self().get_plugin_db<db::Convolver>(pipe_type,
                                                            tags::plugin_name::BaseName::convolver + "#" + instance_id)),
-      app_data_dir(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation).toStdString()) {
+      kernel_manager(ConvolverKernelManager(pipe_type)) {
   /**
-   * Setting valid rate and n_sampls values instead of zero allows the
+   * Setting valid rate and n_samples values instead of zero allows the
    * convolver ui to properly show the impulse response file parameters
    * even if nothing is playing audio.
    */
@@ -85,24 +79,6 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
   util::str_to_num(pw::Manager::self().defaultQuantum.toStdString(), n_samples);
 
   init_common_controls<db::Convolver>(settings);
-
-  // Initialize directories for local and community irs
-  local_dir_irs = app_data_dir + "/irs";
-
-  /**
-   * Flatpak specific path (.flatpak-info always present for apps running in
-   * the flatpak sandbox)
-   */
-  if (std::filesystem::is_regular_file(tags::app::flatpak_info_file)) {
-    system_data_dir_irs.emplace_back("/app/extensions/Presets/irs");
-  }
-
-  // Regular paths.
-  for (auto& dir : QStandardPaths::standardLocations(QStandardPaths::AppDataLocation)) {
-    dir += dir.endsWith("/") ? "" : "/";
-
-    system_data_dir_irs.push_back(dir.toStdString() + "irs");
-  }
 
   prepare_kernel();
 
@@ -114,8 +90,7 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
     std::scoped_lock<std::mutex> lock(data_mutex);
 
     if (kernel_is_initialized) {
-      kernel_L = original_kernel_L;
-      kernel_R = original_kernel_R;
+      kernel = original_kernel;
 
       set_kernel_stereo_width();
       apply_kernel_autogain();
@@ -312,92 +287,14 @@ void Convolver::process([[maybe_unused]] std::span<float>& left_in,
                         [[maybe_unused]] std::span<float>& probe_left,
                         [[maybe_unused]] std::span<float>& probe_right) {}
 
-auto Convolver::search_irs_path(const std::string& name) -> std::string {
-  // Given the irs name without extension, search the full path on the filesystem.
-  const auto irs_filename = name + irs_ext;
-
-  const auto community_package = (pipeline_type == PipelineType::input) ? db::Main::lastLoadedInputCommunityPackage()
-                                                                        : db::Main::lastLoadedOutputCommunityPackage();
-
-  std::string irs_full_path;
-
-  if (community_package.isEmpty()) {
-    // Search local irs file.
-    const auto local_irs_file = std::filesystem::path{local_dir_irs + "/" + irs_filename};
-
-    if (std::filesystem::exists(local_irs_file)) {
-      irs_full_path = local_irs_file.string();
-    }
-  } else {
-    // Search irs file in community package paths.
-    for (const auto& xdg_irs_dir : system_data_dir_irs) {
-      if (util::search_filename(std::filesystem::path{xdg_irs_dir + "/" + community_package.toStdString()},
-                                irs_filename, irs_full_path, 3U)) {
-        break;
-      }
-    }
-  }
-
-  return irs_full_path;
-}
-
-auto Convolver::read_kernel_file(const std::string& kernel_path)
-    -> std::tuple<int, std::vector<float>, std::vector<float>> {
-  int rate = 0;
-  std::vector<float> buffer;
-  std::vector<float> kernel_L;
-  std::vector<float> kernel_R;
-
-  auto file_path = std::filesystem::path{kernel_path};
-
-  util::debug(std::format("Reading the impulse file: {}", file_path.string()));
-
-  if (file_path.extension() != irs_ext) {
-    file_path += irs_ext;
-  }
-
-  if (!std::filesystem::exists(file_path)) {
-    util::debug(std::format("File: {} does not exist", file_path.string()));
-
-    return std::make_tuple(rate, kernel_L, kernel_R);
-  }
-
-  auto sndfile = SndfileHandle(file_path.string());
-
-  if (sndfile.channels() != 2 || sndfile.frames() == 0) {
-    util::warning(std::format("{}Only stereo impulse responses are supported.", log_tag));
-    util::warning(std::format("{}The impulse file was not loaded!", log_tag));
-
-    return std::make_tuple(rate, kernel_L, kernel_R);
-  }
-
-  util::debug(std::format("{}{}: irs file: {}", log_tag, name.toStdString(), kernel_path));
-  util::debug(std::format("{}{}: irs rate: {} Hz", log_tag, name.toStdString(), sndfile.samplerate()));
-  util::debug(std::format("{}{}: irs channels: {}", log_tag, name.toStdString(), sndfile.channels()));
-  util::debug(std::format("{}{}: irs frames: {}", log_tag, name.toStdString(), sndfile.frames()));
-
-  buffer.resize(sndfile.frames() * sndfile.channels());
-  kernel_L.resize(sndfile.frames());
-  kernel_R.resize(sndfile.frames());
-
-  sndfile.readf(buffer.data(), sndfile.frames());
-
-  for (size_t n = 0U; n < kernel_L.size(); n++) {
-    kernel_L[n] = buffer[2U * n];
-    kernel_R[n] = buffer[(2U * n) + 1U];
-  }
-
-  rate = sndfile.samplerate();
-
-  return std::make_tuple(rate, kernel_L, kernel_R);
-}
-
 void Convolver::load_kernel_file() {
   kernel_is_initialized = false;
 
   const auto name = settings->kernelName();
 
-  if (name.isEmpty()) {
+  kernel = kernel_manager.loadKernel(name.toStdString());
+
+  if (!kernel.isValid()) {
     clear_chart_data();
 
     Q_EMIT newKernelLoaded(name, false);
@@ -408,47 +305,22 @@ void Convolver::load_kernel_file() {
     return;
   }
 
-  const auto path = search_irs_path(name.toStdString());
-
-  auto [kernel_rate, kernel_L, kernel_R] = read_kernel_file(path);
-
-  // If the search fails, the path is empty
-  if (rate == 0 || kernel_L.empty() || kernel_R.empty()) {
-    clear_chart_data();
-
-    Q_EMIT newKernelLoaded(name, false);
-
-    util::warning(
-        std::format("{}{} irs has an invalid format. Entering passthrough mode...", log_tag, name.toStdString()));
-
-    return;
-  }
-
-  if (kernel_rate != static_cast<int>(rate)) {
+  if (kernel.rate != static_cast<int>(rate)) {
     util::debug(
-        std::format("{}{} kernel has {} rate. Resampling it to {}", log_tag, name.toStdString(), kernel_rate, rate));
+        std::format("{}{} kernel has {} rate. Resampling it to {}", log_tag, name.toStdString(), kernel.rate, rate));
 
-    auto resampler = std::make_unique<Resampler>(kernel_rate, rate);
-
-    original_kernel_L = resampler->process(kernel_L, true);
-
-    resampler = std::make_unique<Resampler>(kernel_rate, rate);
-
-    original_kernel_R = resampler->process(kernel_R, true);
+    original_kernel = ConvolverKernelManager::resampleKernel(kernel, rate);
   } else {
-    original_kernel_L = kernel_L;
-    original_kernel_R = kernel_R;
+    original_kernel = kernel;
   }
 
   const auto dt = 1.0 / rate;
 
-  const double duration = (static_cast<double>(kernel_L.size()) - 1.0) * dt;
+  kernelRate = QString::fromStdString(util::to_string(kernel.rate));
+  kernelSamples = QString::fromStdString(util::to_string(kernel.sampleCount()));
+  kernelDuration = QString::fromStdString(util::to_string(kernel.duration()));
 
-  kernelRate = QString::fromStdString(util::to_string(kernel_rate));
-  kernelSamples = QString::fromStdString(util::to_string(kernel_L.size()));
-  kernelDuration = QString::fromStdString(util::to_string(duration));
-
-  std::vector<double> time_axis(kernel_L.size());
+  std::vector<double> time_axis(kernel.sampleCount());
 
   for (size_t n = 0U; n < time_axis.size(); n++) {
     time_axis[n] = static_cast<double>(n) * dt;
@@ -456,13 +328,13 @@ void Convolver::load_kernel_file() {
 
   auto x_linear = util::linspace(time_axis.front(), time_axis.back(), interpPoints);
 
-  std::vector<double> copy_helper(kernel_L.size());
+  std::vector<double> copy_helper(kernel.sampleCount());
 
-  std::ranges::copy(kernel_L, copy_helper.begin());
+  std::ranges::copy(kernel.left_channel, copy_helper.begin());
 
   auto magL = interpolate(time_axis, copy_helper, x_linear);
 
-  std::ranges::copy(kernel_R, copy_helper.begin());
+  std::ranges::copy(kernel.right_channel, copy_helper.begin());
 
   auto magR = interpolate(time_axis, copy_helper, x_linear);
 
@@ -488,7 +360,7 @@ void Convolver::load_kernel_file() {
   util::debug(std::format("{}{}: kernel correctly loaded", log_tag, name.toStdString()));
 
   mythreads.emplace_back(  // Using emplace_back here makes sense
-      [this, kernel_R, kernel_L, kernel_rate]() { chart_kernel_fft(kernel_L, kernel_R, kernel_rate); });
+      [this]() { chart_kernel_fft(kernel.left_channel, kernel.right_channel, kernel.rate); });
 }
 
 void Convolver::apply_kernel_autogain() {
@@ -496,29 +368,19 @@ void Convolver::apply_kernel_autogain() {
     return;
   }
 
-  if (kernel_L.empty() || kernel_R.empty()) {
+  if (!kernel.isValid()) {
     return;
   }
 
-  const float abs_peak_L =
-      std::ranges::max(kernel_L, [](const auto& a, const auto& b) { return (std::fabs(a) < std::fabs(b)); });
-  const float abs_peak_R =
-      std::ranges::max(kernel_R, [](const auto& a, const auto& b) { return (std::fabs(a) < std::fabs(b)); });
-
-  const float peak = (abs_peak_L > abs_peak_R) ? abs_peak_L : abs_peak_R;
-
-  // normalize
-
-  std::ranges::for_each(kernel_L, [&](auto& v) { v /= peak; });
-  std::ranges::for_each(kernel_R, [&](auto& v) { v /= peak; });
+  ConvolverKernelManager::normalizeKernel(kernel);
 
   // find average power
 
   float power_L = 0.0F;
   float power_R = 0.0F;
 
-  std::ranges::for_each(kernel_L, [&](const auto& v) { power_L += v * v; });
-  std::ranges::for_each(kernel_R, [&](const auto& v) { power_R += v * v; });
+  std::ranges::for_each(kernel.left_channel, [&](const auto& v) { power_L += v * v; });
+  std::ranges::for_each(kernel.right_channel, [&](const auto& v) { power_R += v * v; });
 
   const float power = std::max(power_L, power_R);
 
@@ -526,8 +388,8 @@ void Convolver::apply_kernel_autogain() {
 
   util::debug(std::format("{} autogain factor: {}", log_tag, autogain));
 
-  std::ranges::for_each(kernel_L, [&](auto& v) { v *= autogain; });
-  std::ranges::for_each(kernel_R, [&](auto& v) { v *= autogain; });
+  std::ranges::for_each(kernel.left_channel, [&](auto& v) { v *= autogain; });
+  std::ranges::for_each(kernel.right_channel, [&](auto& v) { v *= autogain; });
 }
 
 /**
@@ -538,12 +400,12 @@ void Convolver::set_kernel_stereo_width() {
   const float w = static_cast<float>(settings->irWidth()) * 0.01F;
   const float x = (1.0F - w) / (1.0F + w);  // M-S coeff.; L_out = L + x*R; R_out = R + x*L
 
-  for (uint i = 0U; i < original_kernel_L.size(); i++) {
-    const auto L = original_kernel_L[i];
-    const auto R = original_kernel_R[i];
+  for (uint i = 0U; i < original_kernel.sampleCount(); i++) {
+    const auto L = original_kernel.left_channel[i];
+    const auto R = original_kernel.right_channel[i];
 
-    kernel_L[i] = L + (x * R);
-    kernel_R[i] = R + (x * L);
+    kernel.left_channel[i] = L + (x * R);
+    kernel.right_channel[i] = R + (x * L);
   }
 }
 
@@ -554,7 +416,7 @@ void Convolver::setup_zita() {
     return;
   }
 
-  const uint max_convolution_size = kernel_L.size();
+  const uint max_convolution_size = kernel.sampleCount();
   const uint buffer_size = get_zita_buffer_size();
 
   if (conv != nullptr) {
@@ -577,7 +439,7 @@ void Convolver::setup_zita() {
     return;
   }
 
-  ret = conv->impdata_create(0, 0, 1, kernel_L.data(), 0, static_cast<int>(kernel_L.size()));
+  ret = conv->impdata_create(0, 0, 1, kernel.left_channel.data(), 0, static_cast<int>(kernel.left_channel.size()));
 
   if (ret != 0) {
     util::warning(std::format("{}left impdata_create failed: {}", log_tag, ret));
@@ -585,7 +447,7 @@ void Convolver::setup_zita() {
     return;
   }
 
-  ret = conv->impdata_create(1, 1, 1, kernel_R.data(), 0, static_cast<int>(kernel_R.size()));
+  ret = conv->impdata_create(1, 1, 1, kernel.right_channel.data(), 0, static_cast<int>(kernel.right_channel.size()));
 
   if (ret != 0) {
     util::warning(std::format("{}right impdata_create failed: {}", log_tag, ret));
@@ -631,8 +493,7 @@ void Convolver::prepare_kernel() {
   load_kernel_file();
 
   if (kernel_is_initialized) {
-    kernel_L = original_kernel_L;
-    kernel_R = original_kernel_R;
+    kernel = original_kernel;
 
     set_kernel_stereo_width();
     apply_kernel_autogain();
@@ -647,125 +508,10 @@ void Convolver::prepare_kernel() {
   }
 }
 
-void Convolver::direct_conv(const std::vector<float>& a, const std::vector<float>& b, std::vector<float>& c) {
-  std::vector<size_t> indices(c.size());
-
-  std::iota(indices.begin(), indices.end(), 0U);
-
-  auto each = [&](const int n) {
-    c[n] = 0.0F;
-
-    // Static cast to avoid gcc signedness warning.
-
-    const int a_size = static_cast<int>(a.size());
-    const int b_size = static_cast<int>(b.size());
-
-    for (int m = 0; m < b_size; m++) {
-      if (const auto z = n - m; z >= 0 && z < a_size - 1) {
-        c[n] += b[m] * a[z];
-      }
-    }
-  };
-#if defined(ENABLE_LIBCPP_WORKAROUNDS) || defined(_LIBCPP_HAS_NO_INCOMPLETE_PSTL) || \
-    (defined(_LIBCPP_VERSION) && _LIBCPP_VERSION < 170000)
-  std::for_each(indices.begin(), indices.end(), each);
-#else
-  std::for_each(std::execution::par_unseq, indices.begin(), indices.end(), each);
-#endif
-}
-
 void Convolver::combine_kernels(const std::string& kernel_1_name,
                                 const std::string& kernel_2_name,
                                 const std::string& output_file_name) {
-  if (output_file_name.empty()) {
-    Q_EMIT kernelCombinationStopped();
-
-    return;
-  }
-
-  const auto kernel_1_path = search_irs_path(kernel_1_name);
-  const auto kernel_2_path = search_irs_path(kernel_2_name);
-
-  // If the search fails, the path is empty
-  if (kernel_1_path.empty()) {
-    util::warning(std::format("{}{}: irs filename does not exist.", log_tag, kernel_1_path));
-
-    Q_EMIT kernelCombinationStopped();
-
-    return;
-  }
-
-  if (kernel_2_path.empty()) {
-    util::warning(std::format("{}{}: irs filename does not exist.", log_tag, kernel_2_path));
-
-    Q_EMIT kernelCombinationStopped();
-
-    return;
-  }
-
-  auto [rate1, kernel_1_L, kernel_1_R] = read_kernel_file(kernel_1_path);
-  auto [rate2, kernel_2_L, kernel_2_R] = read_kernel_file(kernel_2_path);
-
-  if (rate1 == 0 || rate2 == 0) {
-    Q_EMIT kernelCombinationStopped();
-
-    return;
-  }
-
-  if (rate1 > rate2) {
-    util::debug(std::format("Resampling the kernel {} to {} Hz", kernel_2_name, rate1));
-
-    auto resampler = std::make_unique<Resampler>(rate2, rate1);
-
-    kernel_2_L = resampler->process(kernel_2_L, true);
-
-    resampler = std::make_unique<Resampler>(rate2, rate1);
-
-    kernel_2_R = resampler->process(kernel_2_R, true);
-  } else if (rate2 > rate1) {
-    util::debug(std::format("Resampling the kernel {} to {} Hz", kernel_1_name, rate2));
-
-    auto resampler = std::make_unique<Resampler>(rate1, rate2);
-
-    kernel_1_L = resampler->process(kernel_1_L, true);
-
-    resampler = std::make_unique<Resampler>(rate1, rate2);
-
-    kernel_1_R = resampler->process(kernel_1_R, true);
-  }
-
-  std::vector<float> kernel_L(kernel_1_L.size() + kernel_2_L.size() - 1U);
-  std::vector<float> kernel_R(kernel_1_R.size() + kernel_2_R.size() - 1U);
-
-  // As the convolution is commutative we change the order based on which will run faster.
-
-  if (kernel_1_L.size() > kernel_2_L.size()) {
-    direct_conv(kernel_1_L, kernel_2_L, kernel_L);
-    direct_conv(kernel_1_R, kernel_2_R, kernel_R);
-  } else {
-    direct_conv(kernel_2_L, kernel_1_L, kernel_L);
-    direct_conv(kernel_2_R, kernel_1_R, kernel_R);
-  }
-
-  std::vector<float> buffer(kernel_L.size() * 2U);  // 2 channels interleaved
-
-  for (size_t n = 0U; n < kernel_L.size(); n++) {
-    buffer[2U * n] = kernel_L[n];
-    buffer[(2U * n) + 1U] = kernel_R[n];
-  }
-
-  const auto output_file_path = local_dir_irs / std::filesystem::path{output_file_name + irs_ext};
-
-  auto mode = SFM_WRITE;
-  auto format = SF_FORMAT_WAV | SF_FORMAT_PCM_32;
-  auto n_channels = 2;
-  auto rate = (rate1 > rate2) ? rate1 : rate2;
-
-  auto sndfile = SndfileHandle(output_file_path.string(), mode, format, n_channels, rate);
-
-  sndfile.writef(buffer.data(), static_cast<sf_count_t>(kernel_L.size()));
-
-  util::debug(std::format("Combined kernel saved: {}", output_file_path.string()));
+  kernel_manager.combineKernels(kernel_1_name, kernel_2_name, output_file_name);
 
   Q_EMIT kernelCombinationStopped();
 }

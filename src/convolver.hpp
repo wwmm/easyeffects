@@ -29,8 +29,8 @@
 #include <span>
 #include <string>
 #include <thread>
-#include <tuple>
 #include <vector>
+#include "convolver_kernel_manager.hpp"
 #include "easyeffects_db_convolver.h"
 #include "pipeline_type.hpp"
 #include "plugin_base.hpp"
@@ -84,8 +84,6 @@ class Convolver : public PluginBase {
 
   const std::string irs_ext = ".irs";
 
-  auto search_irs_path(const std::string& name) -> std::string;
-
   Q_INVOKABLE void combineKernels(const QString& kernel1, const QString& kernel2, const QString& outputName);
 
  Q_SIGNALS:
@@ -111,10 +109,6 @@ class Convolver : public PluginBase {
  private:
   db::Convolver* settings = nullptr;
 
-  std::string app_data_dir;
-  std::string local_dir_irs;
-  std::vector<std::string> system_data_dir_irs;
-
   bool kernel_is_initialized = false;
   bool n_samples_is_power_of_2 = true;
   bool zita_ready = false;
@@ -132,14 +126,16 @@ class Convolver : public PluginBase {
   QString kernelSamples;
   QString kernelDuration;
 
-  std::vector<float> kernel_L, kernel_R;
-  std::vector<float> original_kernel_L, original_kernel_R;
   std::vector<float> data_L, data_R;
 
   std::vector<float> buf_in_L, buf_in_R;
   std::vector<float> buf_out_L, buf_out_R;
 
   QList<QPointF> chartMagL, chartMagR, chartMagLfftLinear, chartMagRfftLinear, chartMagLfftLog, chartMagRfftLog;
+
+  ConvolverKernelManager kernel_manager;
+
+  ConvolverKernelManager::KernelData kernel, original_kernel;
 
   Convproc* conv = nullptr;
 
@@ -154,10 +150,6 @@ class Convolver : public PluginBase {
   auto get_zita_buffer_size() -> uint;
 
   void prepare_kernel();
-
-  static void direct_conv(const std::vector<float>& a, const std::vector<float>& b, std::vector<float>& c);
-
-  auto read_kernel_file(const std::string& kernel_path) -> std::tuple<int, std::vector<float>, std::vector<float>>;
 
   void load_kernel_file();
 
