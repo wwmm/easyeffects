@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-15 01:35-0300\n"
-"PO-Revision-Date: 2025-11-15 19:19+0000\n"
+"PO-Revision-Date: 2025-11-15 20:01+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -1630,7 +1630,7 @@ msgstr "Половинный x2/16 бит"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Half x2/24 bit"
-msgstr "Половинный x2/24 бит"
+msgstr "Половинный x2/24 бита"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Half x3/16 bit"
@@ -1742,11 +1742,11 @@ msgstr "16 бит"
 
 #: src/contents/ui/Limiter.qml:87
 msgid "23 bit"
-msgstr "23 бит"
+msgstr "23 бита"
 
 #: src/contents/ui/Limiter.qml:87
 msgid "24 bit"
-msgstr "24 бит"
+msgstr "24 бита"
 
 #: src/contents/ui/Limiter.qml:99 src/tags_plugin_name.cpp:43
 msgid "Limiter"
@@ -2231,7 +2231,7 @@ msgstr "Easy Effects активен в фоновом режиме, когда �
 
 #: src/contents/ui/PreferencesSheet.qml:78
 msgid "Autostart on login"
-msgstr "Автостарт при входе"
+msgstr "Автозапуск при входе в систему"
 
 #: src/contents/ui/PreferencesSheet.qml:79
 msgid "Easy Effects is launched at user session startup."
@@ -2886,11 +2886,11 @@ msgstr "ЛП > ЛП (стерео по умолчанию)"
 
 #: src/contents/ui/StereoTools.qml:108
 msgid "LR > MS (Stereo to Mid-Side)"
-msgstr "Стерео > Моно-раздельно"
+msgstr "ЛП > ЦК (стерео в центральный канал)"
 
 #: src/contents/ui/StereoTools.qml:108
 msgid "MS > LR (Mid-Side to Stereo)"
-msgstr "Моно-раздельно > Стерео"
+msgstr "ЦК > ЛП (центральный канал в стерео)"
 
 #: src/contents/ui/StereoTools.qml:108
 msgid "LR > LL (Mono left channel)"
@@ -2960,7 +2960,7 @@ msgstr "Разработчик"
 #: src/main.cpp:311
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Andrei Stepanov"
+msgstr "Андрей Степанов"
 
 #: src/main.cpp:311
 msgctxt "EMAIL OF TRANSLATORS"
