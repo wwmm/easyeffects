@@ -36,7 +36,11 @@ class CommandLineParser : public QObject {
 
   void process(KAboutData& about, QApplication* app);
 
-  void process_debug_option(QApplication* app);
+  void process_debug_option();
+
+  void process_hide_window(bool& show_window);
+
+  void process_events();
 
   void set_is_primary(const bool& state);
 

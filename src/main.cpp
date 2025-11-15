@@ -195,7 +195,7 @@ static void initQml(QQmlApplicationEngine& engine,
                     Autostart& autostart,
                     LocalServer& server,
                     UiState& ui,
-                    bool show_window) {
+                    bool& show_window) {
   engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
   engine.rootContext()->setContextProperty("canUseSysTray", QSystemTrayIcon::isSystemTrayAvailable());
   engine.rootContext()->setContextProperty("projectVersion", PROJECT_VERSION);
@@ -239,6 +239,8 @@ static void initQml(QQmlApplicationEngine& engine,
   });
 
   QObject::connect(&server, &LocalServer::onShowWindow, [&]() {
+    show_window = true;
+
     if (ui.window) {
       ui.window->show();
       ui.window->raise();
@@ -247,6 +249,8 @@ static void initQml(QQmlApplicationEngine& engine,
   });
 
   QObject::connect(&server, &LocalServer::onHideWindow, [&]() {
+    show_window = false;
+
     if (ui.window) {
       ui.window->hide();
     }
@@ -282,6 +286,7 @@ static int runSecondaryInstance(KAboutData& about, QApplication& app, CommandLin
 
   parser.set_is_primary(false);
   parser.process(about, &app);
+  parser.process_events();
 
   if (show_window) {
     local_client->show_window();
@@ -344,7 +349,9 @@ int main(int argc, char* argv[]) {
     return runSecondaryInstance(about, app, *cmd_parser, show_window);
   }
 
-  cmd_parser->process_debug_option(&app);  // if we take too long to process this one we will miss debug messages
+  cmd_parser->process(about, &app);
+  cmd_parser->process_debug_option();  // if we take too long to process this one we will miss debug messages
+  cmd_parser->process_hide_window(show_window);
 
   UiState ui;
 
@@ -380,7 +387,7 @@ int main(int argc, char* argv[]) {
   QObject::connect(cmd_parser.get(), &CommandLineParser::onInitQML,
                    [&]() { initQml(engine, *autostart, *local_server, ui, show_window); });
 
-  cmd_parser->process(about, &app);
+  cmd_parser->process_events();
 
   return QApplication::exec();
 }

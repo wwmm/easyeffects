@@ -56,20 +56,26 @@ void CommandLineParser::set_is_primary(const bool& state) {
   is_primary = state;
 }
 
-void CommandLineParser::process_debug_option(QApplication* app) {
+void CommandLineParser::process(KAboutData& about, QApplication* app) {
   parser->process(*app);
 
+  about.processCommandLine(parser.get());
+}
+
+void CommandLineParser::process_debug_option() {
   if (parser->isSet("debug")) {
     QLoggingCategory::setFilterRules("easyeffects.debug=true");
   }
 }
 
-void CommandLineParser::process(KAboutData& about, QApplication* app) {
+void CommandLineParser::process_hide_window(bool& show_window) {
+  if (parser->isSet("hide-window")) {
+    show_window = false;
+  }
+}
+
+void CommandLineParser::process_events() {
   auto* pm = &presets::Manager::self();
-
-  parser->process(*app);
-
-  about.processCommandLine(parser.get());
 
   if (parser->isSet("quit")) {
     Q_EMIT onQuit();
@@ -184,8 +190,6 @@ void CommandLineParser::process(KAboutData& about, QApplication* app) {
 
       QCoreApplication::exit(EXIT_SUCCESS);
     }
-
-    Q_EMIT onHideWindow();
 
     QCoreApplication::exit(EXIT_FAILURE);
   }
