@@ -8,7 +8,7 @@
 - Updated translations
 
 ### Bug fixes:
-- Fixed a regression introduced by version 8.0.1 that made EasyEffects unable properly parse extra LV2 paths given by LV2_PATH
+- Fixed a regression introduced by version 8.0.1 that made Easy Effects unable to properly parse extra LV2 paths given by `LV2_PATH`.
 
 ### Other notes:
 
@@ -34,7 +34,7 @@
 - Added Flatpak system tray permission handling.
 - Added XDG Color Scheme support for the Flatpak version.
 - Locale shortcut to quit the service has been changed back to "CTRL+Q".
-- Multiple improvements to our user interface that aim to better follow KDE HIG. 
+- Multiple improvements to our user interface that aim to better follow KDE HIG.
 
 ### Bug fixes:
 - Preset autoloading has been improved to handle more specific hardware which were not detected by the previous system.
