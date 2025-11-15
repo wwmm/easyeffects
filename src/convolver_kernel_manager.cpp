@@ -219,8 +219,8 @@ void ConvolverKernelManager::normalizeKernel(KernelData& kernel) {
 
   const auto peak = std::max(std::fabs(max_abs_left), std::fabs(max_abs_right));
 
-  if (peak <= std::numeric_limits<float>::epsilon()) {
-    return;  // Avoid division by zero
+  if (peak <= 1e-6) {
+    return;
   }
 
   // Normalize both channels
