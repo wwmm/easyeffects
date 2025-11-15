@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-14 18:40-0300\n"
+"POT-Creation-Date: 2025-11-15 17:00-0300\n"
 "PO-Revision-Date: 2025-11-15 04:36+0000\n"
 "Last-Translator: Suu <suunya21@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
@@ -87,15 +87,15 @@ msgstr "サービスモードをオンにしてアプリケーションを起動
 msgid "Enable debug messages."
 msgstr "デバッグメッセージを有効化します。"
 
-#: src/command_line_parser.cpp:112
+#: src/command_line_parser.cpp:126
 msgid "Must specify preset type: input/output."
 msgstr "プリセットタイプを指定してください: input/output。"
 
-#: src/command_line_parser.cpp:150 src/contents/ui/Main.qml:348
+#: src/command_line_parser.cpp:164 src/contents/ui/Main.qml:348
 msgid "Output Presets"
 msgstr "出力プリセット"
 
-#: src/command_line_parser.cpp:158 src/contents/ui/Main.qml:333
+#: src/command_line_parser.cpp:172 src/contents/ui/Main.qml:333
 msgid "Input Presets"
 msgstr "入力プリセット"
 
@@ -865,7 +865,8 @@ msgid "Stereo split"
 msgstr "ステレオ分割"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:31
-msgid "Imported a new Convolver impluse file."
+#, fuzzy
+msgid "Imported a new Convolver impulse file."
 msgstr "新しいコンボルバーインパルスファイルをインポートしました。"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:33
@@ -2895,29 +2896,29 @@ msgstr "ステレオベース"
 msgid "Stereo phase"
 msgstr "ステレオ位相"
 
-#: src/main.cpp:306 src/main.cpp:304
+#: src/main.cpp:310
 msgid "Global audio effects"
 msgstr "グローバルオーディオエフェクト"
 
-#: src/main.cpp:308 src/main.cpp:305
+#: src/main.cpp:311
 msgid "© 2017-2025 EasyEffects Team"
 msgstr "© 2017-2025 EasyEffects Team"
 
-#: src/main.cpp:310 src/main.cpp:307
+#: src/main.cpp:313
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:311 src/main.cpp:307
+#: src/main.cpp:313
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "開発者"
 
-#: src/main.cpp:315 src/main.cpp:311
+#: src/main.cpp:317
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Gemini, Suu"
 
-#: src/main.cpp:315 src/main.cpp:311
+#: src/main.cpp:317
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "suunya21@gmail.com"

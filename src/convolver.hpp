@@ -159,10 +159,6 @@ class Convolver : public PluginBase {
                        const std::string& kernel_2_name,
                        const std::string& output_file_name);
 
-  static auto interpolate(const std::vector<double>& x_source,
-                          const std::vector<double>& y_source,
-                          const std::vector<double>& x_new) -> std::vector<double>;
-
   void chart_kernel_fft(const std::vector<float>& kernel_L,
                         const std::vector<float>& kernel_R,
                         const float& kernel_rate);

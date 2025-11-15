@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-15 01:35-0300\n"
+"POT-Creation-Date: 2025-11-15 17:00-0300\n"
 "PO-Revision-Date: 2025-11-14 21:46+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -88,15 +88,15 @@ msgstr "Avvia l'applicazione con la modalità di servizio abilitata."
 msgid "Enable debug messages."
 msgstr "Abilità messaggi di debug."
 
-#: src/command_line_parser.cpp:112
+#: src/command_line_parser.cpp:126
 msgid "Must specify preset type: input/output."
 msgstr "È necessario specificare il tipo di profilo: input/output."
 
-#: src/command_line_parser.cpp:150 src/contents/ui/Main.qml:348
+#: src/command_line_parser.cpp:164 src/contents/ui/Main.qml:348
 msgid "Output Presets"
 msgstr "Profili di Uscita"
 
-#: src/command_line_parser.cpp:158 src/contents/ui/Main.qml:333
+#: src/command_line_parser.cpp:172 src/contents/ui/Main.qml:333
 msgid "Input Presets"
 msgstr "Profili di Ingresso"
 
@@ -867,7 +867,8 @@ msgid "Stereo split"
 msgstr "Divisione stereo"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:31
-msgid "Imported a new Convolver impluse file."
+#, fuzzy
+msgid "Imported a new Convolver impulse file."
 msgstr "Importato un nuovo file di risposta impulsiva del Convolver."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:33
@@ -2904,29 +2905,29 @@ msgstr "Base stereo"
 msgid "Stereo phase"
 msgstr "Fase stereo"
 
-#: src/main.cpp:304
+#: src/main.cpp:310
 msgid "Global audio effects"
 msgstr "Effetti audio globali"
 
-#: src/main.cpp:305
+#: src/main.cpp:311
 msgid "© 2017-2025 EasyEffects Team"
 msgstr "© 2017-2025 Il Team di EasyEffects"
 
-#: src/main.cpp:307
+#: src/main.cpp:313
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:307
+#: src/main.cpp:313
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Sviluppatore"
 
-#: src/main.cpp:311
+#: src/main.cpp:317
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Digit@lone1"
 
-#: src/main.cpp:311
+#: src/main.cpp:317
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kurmikon@yahoo.com"

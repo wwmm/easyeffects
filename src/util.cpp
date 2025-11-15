@@ -18,6 +18,8 @@
  */
 
 #include "util.hpp"
+#include <gsl/gsl_interp.h>
+#include <gsl/gsl_spline.h>
 #include <qdebug.h>
 #include <qlockfile.h>
 #include <qlogging.h>
@@ -40,6 +42,7 @@
 #include <string>
 #include <system_error>
 #include <thread>
+#include <vector>
 
 namespace util {
 
@@ -347,6 +350,26 @@ auto spa_dict_get_bool(const spa_dict* props, const char* key, bool& b) -> bool 
   }
 
   return false;
+}
+
+auto interpolate(const std::vector<double>& x_source,
+                 const std::vector<double>& y_source,
+                 const std::vector<double>& x_new) -> std::vector<double> {
+  auto* acc = gsl_interp_accel_alloc();
+  auto* spline = gsl_spline_alloc(gsl_interp_steffen, x_source.size());
+
+  gsl_spline_init(spline, x_source.data(), y_source.data(), x_source.size());
+
+  std::vector<double> output(x_new.size());
+
+  for (size_t n = 0; n < x_new.size(); n++) {
+    output[n] = static_cast<float>(gsl_spline_eval(spline, x_new[n], acc));
+  }
+
+  gsl_spline_free(spline);
+  gsl_interp_accel_free(acc);
+
+  return output;
 }
 
 }  // namespace util

@@ -51,10 +51,6 @@ class ConvolverKernelFFT {
   QList<QPointF> log_L;
   QList<QPointF> log_R;
 
-  static auto interpolate(const std::vector<double>& x_source,
-                          const std::vector<double>& y_source,
-                          const std::vector<double>& x_new) -> std::vector<double>;
-
   static auto apply_hanning_window(std::vector<double>& signal) -> void;
 
   static auto compute_fft_magnitude(const std::vector<double>& real_input) -> std::vector<double>;

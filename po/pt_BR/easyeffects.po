@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-15 01:35-0300\n"
+"POT-Creation-Date: 2025-11-15 17:00-0300\n"
 "PO-Revision-Date: 2025-11-15 18:03+0000\n"
 "Last-Translator: Wellington Wallace <wellingtonwallace@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -89,15 +89,15 @@ msgstr "Inicie o aplicativo com o modo de serviço ativado."
 msgid "Enable debug messages."
 msgstr "Habilitar mensagens de depuração."
 
-#: src/command_line_parser.cpp:112
+#: src/command_line_parser.cpp:126
 msgid "Must specify preset type: input/output."
 msgstr "Deve especificar o tipo predefinido: entrada/saída."
 
-#: src/command_line_parser.cpp:150 src/contents/ui/Main.qml:348
+#: src/command_line_parser.cpp:164 src/contents/ui/Main.qml:348
 msgid "Output Presets"
 msgstr "Predefinições de Saída"
 
-#: src/command_line_parser.cpp:158 src/contents/ui/Main.qml:333
+#: src/command_line_parser.cpp:172 src/contents/ui/Main.qml:333
 msgid "Input Presets"
 msgstr "Predefinições de Entrada"
 
@@ -880,7 +880,8 @@ msgid "Stereo split"
 msgstr "Separação dos canais"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:31
-msgid "Imported a new Convolver impluse file."
+#, fuzzy
+msgid "Imported a new Convolver impulse file."
 msgstr "Um novo arquivo de impulso do Convolver foi importado."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:33
@@ -3117,32 +3118,32 @@ msgstr "Base Estéreo"
 msgid "Stereo phase"
 msgstr "Fase Estéreo"
 
-#: src/main.cpp:304
+#: src/main.cpp:310
 #, fuzzy
 msgid "Global audio effects"
 msgstr "Atalhos globais"
 
-#: src/main.cpp:305
+#: src/main.cpp:311
 msgid "© 2017-2025 EasyEffects Team"
 msgstr ""
 
-#: src/main.cpp:307
+#: src/main.cpp:313
 #, fuzzy
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:307
+#: src/main.cpp:313
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Desenvolvedor"
 
-#: src/main.cpp:311
+#: src/main.cpp:317
 #, fuzzy
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "quadros"
 
-#: src/main.cpp:311
+#: src/main.cpp:317
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
