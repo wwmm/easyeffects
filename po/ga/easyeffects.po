@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-15 01:35-0300\n"
+"POT-Creation-Date: 2025-11-15 17:00-0300\n"
 "PO-Revision-Date: 2025-11-14 15:51+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -86,15 +86,15 @@ msgstr "Tosaigh an feidhmchlár agus mód seirbhíse casta air."
 msgid "Enable debug messages."
 msgstr "Cumasaigh teachtaireachtaí dífhabhtaithe."
 
-#: src/command_line_parser.cpp:112
+#: src/command_line_parser.cpp:126
 msgid "Must specify preset type: input/output."
 msgstr "Ní mór cineál réamhshocraithe a shonrú: ionchur/aschur."
 
-#: src/command_line_parser.cpp:150 src/contents/ui/Main.qml:348
+#: src/command_line_parser.cpp:164 src/contents/ui/Main.qml:348
 msgid "Output Presets"
 msgstr "Réamhshocruithe Aschurtha"
 
-#: src/command_line_parser.cpp:158 src/contents/ui/Main.qml:333
+#: src/command_line_parser.cpp:172 src/contents/ui/Main.qml:333
 msgid "Input Presets"
 msgstr "Réamhshocruithe Ionchurtha"
 
@@ -866,7 +866,8 @@ msgid "Stereo split"
 msgstr "Scoilt steirió"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:31
-msgid "Imported a new Convolver impluse file."
+#, fuzzy
+msgid "Imported a new Convolver impulse file."
 msgstr "Iompórtáladh comhad implise Convolver nua."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:33
@@ -2905,29 +2906,29 @@ msgstr "Bonn steirió"
 msgid "Stereo phase"
 msgstr "Céim steiréó"
 
-#: src/main.cpp:304
+#: src/main.cpp:310
 msgid "Global audio effects"
 msgstr "Éifeachtaí fuaime domhanda"
 
-#: src/main.cpp:305
+#: src/main.cpp:311
 msgid "© 2017-2025 EasyEffects Team"
 msgstr "© 2017-2025 Foireann EasyEffects"
 
-#: src/main.cpp:307
+#: src/main.cpp:313
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:307
+#: src/main.cpp:313
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Forbróir"
 
-#: src/main.cpp:311
+#: src/main.cpp:317
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Do ainmneacha"
 
-#: src/main.cpp:311
+#: src/main.cpp:317
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "Do ríomhphoist"

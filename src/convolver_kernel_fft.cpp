@@ -19,14 +19,11 @@
 
 #include "convolver_kernel_fft.hpp"
 #include <fftw3.h>
-#include <gsl/gsl_interp.h>
-#include <gsl/gsl_spline.h>
 #include <qlist.h>
 #include <qpoint.h>
 #include <qtypes.h>
 #include <algorithm>
 #include <cmath>
-#include <cstddef>
 #include <format>
 #include <numbers>
 #include <vector>
@@ -82,8 +79,8 @@ auto ConvolverKernelFFT::calculate_fft(const std::vector<float>& kernel_L,
 
   // Initialize linear axis
   auto linear_freq_axis = util::linspace(freq_axis.front(), freq_axis.back(), interp_points);
-  auto linear_spectrum_L = interpolate(freq_axis, spectrum_L, linear_freq_axis);
-  auto linear_spectrum_R = interpolate(freq_axis, spectrum_R, linear_freq_axis);
+  auto linear_spectrum_L = util::interpolate(freq_axis, spectrum_L, linear_freq_axis);
+  auto linear_spectrum_R = util::interpolate(freq_axis, spectrum_R, linear_freq_axis);
 
   // Initialize logarithmic frequency axis
   auto max_freq = std::ranges::max(freq_axis);
@@ -93,8 +90,8 @@ auto ConvolverKernelFFT::calculate_fft(const std::vector<float>& kernel_L,
   util::debug(std::format("Max fft frequency: {}", max_freq));
 
   auto log_freq_axis = util::logspace(min_freq, max_freq, interp_points);
-  auto log_spectrum_L = interpolate(freq_axis, spectrum_L, log_freq_axis);
-  auto log_spectrum_R = interpolate(freq_axis, spectrum_R, log_freq_axis);
+  auto log_spectrum_L = util::interpolate(freq_axis, spectrum_L, log_freq_axis);
+  auto log_spectrum_R = util::interpolate(freq_axis, spectrum_R, log_freq_axis);
 
   // Normalizing the spectrum
   normalize_spectrum(linear_spectrum_L);
@@ -121,25 +118,6 @@ auto ConvolverKernelFFT::clear_data() -> void {
   linear_R.clear();
   log_L.clear();
   log_R.clear();
-}
-
-auto ConvolverKernelFFT::interpolate(const std::vector<double>& x_source,
-                                     const std::vector<double>& y_source,
-                                     const std::vector<double>& x_new) -> std::vector<double> {
-  auto* acc = gsl_interp_accel_alloc();
-  auto* spline = gsl_spline_alloc(gsl_interp_steffen, x_source.size());
-
-  gsl_spline_init(spline, x_source.data(), y_source.data(), x_source.size());
-
-  std::vector<double> output(x_new.size());
-  for (size_t n = 0; n < x_new.size(); n++) {
-    output[n] = static_cast<float>(gsl_spline_eval(spline, x_new[n], acc));
-  }
-
-  gsl_spline_free(spline);
-  gsl_interp_accel_free(acc);
-
-  return output;
 }
 
 auto ConvolverKernelFFT::apply_hanning_window(std::vector<double>& signal) -> void {

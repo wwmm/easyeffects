@@ -80,6 +80,10 @@ auto get_lock_file() -> std::unique_ptr<QLockFile>;
 
 auto spa_dict_get_bool(const spa_dict* props, const char* key, bool& b) -> bool;
 
+auto interpolate(const std::vector<double>& x_source,
+                 const std::vector<double>& y_source,
+                 const std::vector<double>& x_new) -> std::vector<double>;
+
 template <typename T>
 void print_type(T v) {
   warning(typeid(v).name());

@@ -19,8 +19,6 @@
 
 #include "convolver.hpp"
 #include <fftw3.h>
-#include <gsl/gsl_interp.h>
-#include <gsl/gsl_spline.h>
 #include <qlist.h>
 #include <qnamespace.h>
 #include <qpoint.h>
@@ -331,11 +329,11 @@ void Convolver::load_kernel_file() {
 
   std::ranges::copy(kernel.left_channel, copy_helper.begin());
 
-  auto magL = interpolate(time_axis, copy_helper, x_linear);
+  auto magL = util::interpolate(time_axis, copy_helper, x_linear);
 
   std::ranges::copy(kernel.right_channel, copy_helper.begin());
 
-  auto magR = interpolate(time_axis, copy_helper, x_linear);
+  auto magR = util::interpolate(time_axis, copy_helper, x_linear);
 
   chartMagL.resize(interpPoints);
   chartMagR.resize(interpPoints);
@@ -520,26 +518,6 @@ void Convolver::combineKernels(const QString& kernel1, const QString& kernel2, c
       [this, kernel1, kernel2, outputName]() {
         combine_kernels(kernel1.toStdString(), kernel2.toStdString(), outputName.toStdString());
       });
-}
-
-auto Convolver::interpolate(const std::vector<double>& x_source,
-                            const std::vector<double>& y_source,
-                            const std::vector<double>& x_new) -> std::vector<double> {
-  auto* acc = gsl_interp_accel_alloc();
-  auto* spline = gsl_spline_alloc(gsl_interp_steffen, x_source.size());
-
-  gsl_spline_init(spline, x_source.data(), y_source.data(), x_source.size());
-
-  std::vector<double> output(x_new.size());
-
-  for (size_t n = 0; n < x_new.size(); n++) {
-    output[n] = static_cast<float>(gsl_spline_eval(spline, x_new[n], acc));
-  }
-
-  gsl_spline_free(spline);
-  gsl_interp_accel_free(acc);
-
-  return output;
 }
 
 void Convolver::chart_kernel_fft(const std::vector<float>& kernel_L,

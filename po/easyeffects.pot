@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-15 01:35-0300\n"
+"POT-Creation-Date: 2025-11-15 17:00-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -80,15 +80,15 @@ msgstr ""
 msgid "Enable debug messages."
 msgstr ""
 
-#: src/command_line_parser.cpp:112
+#: src/command_line_parser.cpp:126
 msgid "Must specify preset type: input/output."
 msgstr ""
 
-#: src/command_line_parser.cpp:150 src/contents/ui/Main.qml:348
+#: src/command_line_parser.cpp:164 src/contents/ui/Main.qml:348
 msgid "Output Presets"
 msgstr ""
 
-#: src/command_line_parser.cpp:158 src/contents/ui/Main.qml:333
+#: src/command_line_parser.cpp:172 src/contents/ui/Main.qml:333
 msgid "Input Presets"
 msgstr ""
 
@@ -858,7 +858,7 @@ msgid "Stereo split"
 msgstr ""
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:31
-msgid "Imported a new Convolver impluse file."
+msgid "Imported a new Convolver impulse file."
 msgstr ""
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:33
@@ -2861,29 +2861,29 @@ msgstr ""
 msgid "Stereo phase"
 msgstr ""
 
-#: src/main.cpp:304
+#: src/main.cpp:310
 msgid "Global audio effects"
 msgstr ""
 
-#: src/main.cpp:305
+#: src/main.cpp:311
 msgid "© 2017-2025 EasyEffects Team"
 msgstr ""
 
-#: src/main.cpp:307
+#: src/main.cpp:313
 msgid "Wellington Wallace"
 msgstr ""
 
-#: src/main.cpp:307
+#: src/main.cpp:313
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr ""
 
-#: src/main.cpp:311
+#: src/main.cpp:317
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 
-#: src/main.cpp:311
+#: src/main.cpp:317
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""

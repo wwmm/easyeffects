@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-15 01:35-0300\n"
+"POT-Creation-Date: 2025-11-15 17:00-0300\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -85,15 +85,15 @@ msgstr ""
 msgid "Enable debug messages."
 msgstr ""
 
-#: src/command_line_parser.cpp:112
+#: src/command_line_parser.cpp:126
 msgid "Must specify preset type: input/output."
 msgstr ""
 
-#: src/command_line_parser.cpp:150 src/contents/ui/Main.qml:348
+#: src/command_line_parser.cpp:164 src/contents/ui/Main.qml:348
 msgid "Output Presets"
 msgstr "출력 프리셋"
 
-#: src/command_line_parser.cpp:158 src/contents/ui/Main.qml:333
+#: src/command_line_parser.cpp:172 src/contents/ui/Main.qml:333
 msgid "Input Presets"
 msgstr "입력 프리셋"
 
@@ -899,7 +899,7 @@ msgstr "스테레오 분할"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:31
 #, fuzzy
-msgid "Imported a new Convolver impluse file."
+msgid "Imported a new Convolver impulse file."
 msgstr "Impulse 파일 가져오기"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:33
@@ -3078,32 +3078,32 @@ msgstr "스테레오 도구"
 msgid "Stereo phase"
 msgstr "스테레오 분할"
 
-#: src/main.cpp:304
+#: src/main.cpp:310
 #, fuzzy
 msgid "Global audio effects"
 msgstr "단축키(_S)"
 
-#: src/main.cpp:305
+#: src/main.cpp:311
 msgid "© 2017-2025 EasyEffects Team"
 msgstr ""
 
-#: src/main.cpp:307
+#: src/main.cpp:313
 #, fuzzy
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:307
+#: src/main.cpp:313
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "엔벌로프"
 
-#: src/main.cpp:311
+#: src/main.cpp:317
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 
-#: src/main.cpp:311
+#: src/main.cpp:317
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""

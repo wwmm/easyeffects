@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-15 01:35-0300\n"
+"POT-Creation-Date: 2025-11-15 17:00-0300\n"
 "PO-Revision-Date: 2025-11-14 15:51+0000\n"
 "Last-Translator: Максим Горпиніч <gorpinicmaksim0@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
@@ -86,15 +86,15 @@ msgstr "Запустити застосунок із увімкненим реж
 msgid "Enable debug messages."
 msgstr "Увімкнути налагоджувальні повідомлення."
 
-#: src/command_line_parser.cpp:112
+#: src/command_line_parser.cpp:126
 msgid "Must specify preset type: input/output."
 msgstr "Потрібно вказати тип попереднього налаштування: вхід/вихід."
 
-#: src/command_line_parser.cpp:150 src/contents/ui/Main.qml:348
+#: src/command_line_parser.cpp:164 src/contents/ui/Main.qml:348
 msgid "Output Presets"
 msgstr "Попередні налаштування для виходу"
 
-#: src/command_line_parser.cpp:158 src/contents/ui/Main.qml:333
+#: src/command_line_parser.cpp:172 src/contents/ui/Main.qml:333
 msgid "Input Presets"
 msgstr "Попередні налаштування для входу"
 
@@ -864,7 +864,8 @@ msgid "Stereo split"
 msgstr "Розділити стерео"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:31
-msgid "Imported a new Convolver impluse file."
+#, fuzzy
+msgid "Imported a new Convolver impulse file."
 msgstr "Імпортовано новий файл імпульсу конвольвера."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:33
@@ -2902,29 +2903,29 @@ msgstr "База стерео"
 msgid "Stereo phase"
 msgstr "Фаза стерео"
 
-#: src/main.cpp:304
+#: src/main.cpp:310
 msgid "Global audio effects"
 msgstr "Глобальні звукові ефекти"
 
-#: src/main.cpp:305
+#: src/main.cpp:311
 msgid "© 2017-2025 EasyEffects Team"
 msgstr "© 2017-2025 Команда EasyEffects"
 
-#: src/main.cpp:307
+#: src/main.cpp:313
 msgid "Wellington Wallace"
 msgstr "Веллінгтон Уоллес"
 
-#: src/main.cpp:307
+#: src/main.cpp:313
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Розробник"
 
-#: src/main.cpp:311
+#: src/main.cpp:317
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Ваші імена"
 
-#: src/main.cpp:311
+#: src/main.cpp:317
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "Ваші електронні адреси"
