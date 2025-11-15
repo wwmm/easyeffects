@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-15 01:35-0300\n"
-"PO-Revision-Date: 2025-11-14 17:39+0000\n"
+"PO-Revision-Date: 2025-11-15 17:57+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hans/>\n"
@@ -357,7 +357,7 @@ msgstr "下限"
 #: src/contents/ui/MultibandGate.qml:927 src/contents/ui/Reverb.qml:324
 #: src/contents/ui/StereoTools.qml:388
 msgid "Show native window"
-msgstr "显示原插件窗口"
+msgstr "显示原生插件窗口"
 
 #: src/contents/ui/BassEnhancer.qml:217 src/contents/ui/Compressor.qml:903
 #: src/contents/ui/Deesser.qml:332 src/contents/ui/Exciter.qml:222
@@ -596,7 +596,7 @@ msgstr "均方根"
 #: src/contents/ui/MultibandCompressor.qml:400
 #: src/contents/ui/MultibandGate.qml:373
 msgid "Low-pass"
-msgstr "低通滤波"
+msgstr "低通"
 
 #: src/contents/ui/Compressor.qml:288 src/contents/ui/Expander.qml:248
 #: src/contents/ui/Gate.qml:266 src/contents/ui/MultibandCompressor.qml:400
@@ -711,7 +711,7 @@ msgstr "前视时间"
 #: src/contents/ui/Expander.qml:351 src/contents/ui/Filter.qml:50
 #: src/contents/ui/Gate.qml:370
 msgid "High-pass"
-msgstr "高通滤波"
+msgstr "高通"
 
 #: src/contents/ui/Compressor.qml:399 src/contents/ui/Compressor.qml:413
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Expander.qml:355
@@ -1850,45 +1850,40 @@ msgstr "关于Easy Effects"
 
 #: src/contents/ui/MenuAddPlugins.qml:75
 msgid "Add %1"
-msgstr ""
+msgstr "添加%1"
 
 #: src/contents/ui/MenuAddPlugins.qml:147
 msgid "Added a new effect to the pipeline: %1"
-msgstr ""
+msgstr "向管线添加新音效：%1"
 
 #: src/contents/ui/MenuAddPlugins.qml:184
 msgctxt "@action:button"
 msgid "Close"
-msgstr ""
+msgstr "关闭"
 
 #: src/contents/ui/MultibandCompressor.qml:101
-#, fuzzy
 msgid "Compression mode"
 msgstr "压缩模式"
 
 #: src/contents/ui/MultibandCompressor.qml:196
 #: src/contents/ui/MultibandGate.qml:133
-#, fuzzy
 msgid "End"
-msgstr "2 次"
+msgstr "结束"
 
 #: src/contents/ui/MultibandCompressor.qml:479
 #: src/contents/ui/MultibandGate.qml:452
-#, fuzzy
 msgid "Low-cut"
-msgstr "低切滤音"
+msgstr "低切"
 
 #: src/contents/ui/MultibandCompressor.qml:504
 #: src/contents/ui/MultibandGate.qml:477
-#, fuzzy
 msgid "High-cut"
-msgstr "高切滤音"
+msgstr "高切"
 
 #: src/contents/ui/MultibandCompressor.qml:536
 #: src/contents/ui/MultibandGate.qml:509
-#, fuzzy
 msgid "Operating mode"
-msgstr "运作模式"
+msgstr "运行模式"
 
 #: src/contents/ui/MultibandCompressor.qml:540
 #: src/contents/ui/MultibandGate.qml:513
@@ -1902,68 +1897,62 @@ msgstr "现代"
 
 #: src/contents/ui/MultibandCompressor.qml:540
 #: src/contents/ui/MultibandGate.qml:513
-#, fuzzy
 msgid "Linear phase"
 msgstr "线性相位"
 
 #: src/contents/ui/MultibandCompressor.qml:549
 #: src/contents/ui/MultibandGate.qml:522
-#, fuzzy
 msgid "Sidechain boost"
 msgstr "侧链增强"
 
 #: src/contents/ui/MultibandCompressor.qml:553
 #: src/contents/ui/MultibandGate.qml:526
 msgid "Pink BT"
-msgstr "粉噪 双线性变换"
+msgstr "粉噪声 双线性变换"
 
 #: src/contents/ui/MultibandCompressor.qml:553
 #: src/contents/ui/MultibandGate.qml:526
 msgid "Pink MT"
-msgstr "粉噪 匹配变换"
+msgstr "粉噪声 匹配变换"
 
 #: src/contents/ui/MultibandCompressor.qml:553
 #: src/contents/ui/MultibandGate.qml:526
 msgid "Brown BT"
-msgstr "棕噪 双线性变换"
+msgstr "棕噪声 双线性变换"
 
 #: src/contents/ui/MultibandCompressor.qml:553
 #: src/contents/ui/MultibandGate.qml:526
 msgid "Brown MT"
-msgstr "棕噪 匹配变换"
+msgstr "棕噪声 匹配变换"
 
 #: src/contents/ui/MultibandCompressor.qml:563
 #: src/contents/ui/MultibandGate.qml:536
-#, fuzzy
 msgid "Sidechain input device"
-msgstr "输入设备"
+msgstr "侧链输入设备"
 
 #: src/contents/ui/MultibandGate.qml:159
-#, fuzzy
 msgid "Reaction"
-msgstr "衰减"
+msgstr "响应"
 
 #: src/contents/ui/PageStreamsEffects.qml:81
-#, fuzzy
 msgid "No audio application available"
 msgstr "没有可用的音频应用程序"
 
 #: src/contents/ui/PageStreamsEffects.qml:315
-#, fuzzy
 msgid "Add effect"
 msgstr "添加音效"
 
 #: src/contents/ui/PageStreamsEffects.qml:323
 msgid "Close"
-msgstr ""
+msgstr "关闭"
 
 #: src/contents/ui/PageStreamsEffects.qml:327
 msgid "Expand the list of effects pipeline"
-msgstr ""
+msgstr "展开音效管线列表"
 
 #: src/contents/ui/PageStreamsEffects.qml:327
 msgid "Reduce the list of effects pipeline"
-msgstr ""
+msgstr "收起音效管线列表"
 
 #: src/contents/ui/PageStreamsEffects.qml:382
 #: src/contents/ui/PageStreamsEffects.qml:616
@@ -1971,7 +1960,6 @@ msgid "Players"
 msgstr "播放器"
 
 #: src/contents/ui/PageStreamsEffects.qml:391
-#, fuzzy
 msgid "Output device"
 msgstr "输出设备"
 
@@ -2224,11 +2212,11 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:78
 msgid "Autostart on login"
-msgstr ""
+msgstr "用户登录时自动启动"
 
 #: src/contents/ui/PreferencesSheet.qml:79
 msgid "Easy Effects is launched at user session startup."
-msgstr ""
+msgstr "在用户会话启动时启动Easy Effects."
 
 #: src/contents/ui/PreferencesSheet.qml:92
 msgid "Show the tray icon"
@@ -2347,7 +2335,7 @@ msgstr "范围"
 
 #: src/contents/ui/PreferencesSheet.qml:295
 msgid "Yellow"
-msgstr ""
+msgstr "黄色"
 
 #: src/contents/ui/PreferencesSheet.qml:295
 msgid "Blue"
@@ -2455,14 +2443,12 @@ msgid "Enables support for XDG global shortcuts."
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:504
-#, fuzzy
 msgid "Native window of effects"
-msgstr "显示原生窗口"
+msgstr "原生插件窗口"
 
 #: src/contents/ui/PreferencesSheet.qml:505
-#, fuzzy
 msgid "Allows the native user interface of effects to be shown/hidden."
-msgstr "允许显示或隐藏原生插件窗口"
+msgstr "允许显示或隐藏原生插件窗口。"
 
 #: src/contents/ui/PreferencesSheet.qml:517
 #, fuzzy
