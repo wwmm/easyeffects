@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-15 01:35-0300\n"
-"PO-Revision-Date: 2025-11-14 21:46+0000\n"
+"PO-Revision-Date: 2025-11-15 17:57+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -26,6 +26,9 @@ msgid ""
 "Please allow \"Run in Background\" permission for Easy Effects in your "
 "system app settings."
 msgstr ""
+"Невозможно включить опцию автозапуска, так как доступ в фоновом режиме "
+"запрещён. Пожалуйста, разрешите «Запуск в фоновом режиме» для Easy Effects в "
+"настройках системных приложений."
 
 #: src/command_line_parser.cpp:42
 msgid "Quit Easy Effects. Useful when running in service mode."
@@ -40,9 +43,8 @@ msgid "Hide the Window."
 msgstr "Скрыть окно."
 
 #: src/command_line_parser.cpp:45
-#, fuzzy
 msgid "Global bypass. 1 to enable and 2 to disable."
-msgstr "Глобальный обход. 1 — включить, 2 — отключить, 3 — получить статус"
+msgstr "Глобальный обход. Включить — 1, отключить — 2."
 
 #: src/command_line_parser.cpp:45
 msgid "bypass-state"
@@ -135,22 +137,18 @@ msgid "Integrated"
 msgstr "Комплексный замер"
 
 #: src/contents/ui/Autogain.qml:60
-#, fuzzy
 msgid "Geometric mean (MSI)"
 msgstr "Среднее геометрическое (MSI)"
 
 #: src/contents/ui/Autogain.qml:60
-#, fuzzy
 msgid "Geometric mean (MS)"
 msgstr "Среднее геометрическое (MS)"
 
 #: src/contents/ui/Autogain.qml:60
-#, fuzzy
 msgid "Geometric mean (MI)"
 msgstr "Среднее геометрическое (MI)"
 
 #: src/contents/ui/Autogain.qml:60
-#, fuzzy
 msgid "Geometric mean (SI)"
 msgstr "Среднее геометрическое (SI)"
 
@@ -234,7 +232,6 @@ msgid "Silence"
 msgstr "Тишина"
 
 #: src/contents/ui/Autogain.qml:101
-#, fuzzy
 msgid "Maximum history"
 msgstr "Исторический максимум"
 
@@ -260,7 +257,6 @@ msgid "Range"
 msgstr "Диапазон"
 
 #: src/contents/ui/Autogain.qml:195
-#, fuzzy
 msgid "Output gain"
 msgstr "Усиление выхода"
 
@@ -286,30 +282,24 @@ msgstr "Используется %1"
 # #, fuzzy
 #: src/contents/ui/Autogain.qml:236 src/contents/ui/DeepFilterNet.qml:192
 #: src/contents/ui/LevelMeter.qml:222 src/contents/ui/Pitch.qml:263
-#, fuzzy
 msgid "Reset history"
 msgstr "Сброс истории"
 
 #: src/contents/ui/Autogain.qml:243
-#, fuzzy
 msgid "Force silence"
-msgstr "Принудительно заглушить"
+msgstr "Заглушить принудительно"
 
 #: src/contents/ui/Autogain.qml:244
-#, fuzzy
 msgid "Force silence when the level is below the silence threshold"
 msgstr ""
-"Принудительно заглушить, когда уровень звука будет ниже порогового значения "
-"тишины"
+"Принудительно заглушить, когда уровень звука ниже порогового значения тишины"
 
 #: src/contents/ui/Autogain.qml:256 src/contents/ui/DeepFilterNet.qml:200
 #: src/contents/ui/LevelMeter.qml:230 src/contents/ui/Pitch.qml:291
-#, fuzzy
 msgid "Reset settings"
 msgstr "Сбросить настройки"
 
 #: src/contents/ui/BassEnhancer.qml:38 src/contents/ui/Exciter.qml:38
-#, fuzzy
 msgid "Blend harmonics"
 msgstr "Смешение гармоник"
 
@@ -359,7 +349,6 @@ msgid "Hz"
 msgstr "Гц"
 
 #: src/contents/ui/BassEnhancer.qml:139
-#, fuzzy
 msgid "Floor active"
 msgstr "Нижний порог активен"
 
@@ -376,7 +365,6 @@ msgstr "Нижний порог"
 #: src/contents/ui/MultibandCompressor.qml:954
 #: src/contents/ui/MultibandGate.qml:927 src/contents/ui/Reverb.qml:324
 #: src/contents/ui/StereoTools.qml:388
-#, fuzzy
 msgid "Show native window"
 msgstr "Показать родное окно"
 
@@ -417,17 +405,14 @@ msgid "Link"
 msgstr "Указатель"
 
 #: src/contents/ui/BlocklistSheet.qml:13
-#, fuzzy
 msgid "Excluded Applications"
 msgstr "Исключённые приложения"
 
 #: src/contents/ui/BlocklistSheet.qml:29
-#, fuzzy
 msgid "Application node name"
 msgstr "Имя узла приложения"
 
 #: src/contents/ui/BlocklistSheet.qml:45
-#, fuzzy
 msgid "Add to excluded applications"
 msgstr "Добавить в исключённые приложения"
 
@@ -454,7 +439,6 @@ msgid "Are you sure you want to remove this application from the list?"
 msgstr "Уверены, что хотите убрать это приложение из списка?"
 
 #: src/contents/ui/BlocklistSheet.qml:149
-#, fuzzy
 msgid "Remove this app"
 msgstr "Убрать это приложение"
 
@@ -463,9 +447,8 @@ msgid "Show excluded apps"
 msgstr "Показать исключённые приложения"
 
 #: src/contents/ui/BlocklistSheet.qml:177
-#, fuzzy
 msgid "Show excluded applications in the list of players/recorders"
-msgstr "Показать исключённые приложения в разделе потоков"
+msgstr "Показать исключённые приложения в списке проигрывателей/рекордеров"
 
 #: src/contents/ui/Compressor.qml:50 src/tags_plugin_name.cpp:29
 msgid "Compressor"
@@ -499,13 +482,11 @@ msgstr "Усиление"
 
 #: src/contents/ui/Compressor.qml:76
 #: src/contents/ui/MultibandCompressor.qml:114
-#, fuzzy
 msgid "Boost threshold"
 msgstr "Порог усиления"
 
 #: src/contents/ui/Compressor.qml:96
 #: src/contents/ui/MultibandCompressor.qml:133
-#, fuzzy
 msgid "Boost amount"
 msgstr "Величина усиления"
 
@@ -602,7 +583,6 @@ msgstr "Внешний"
 #: src/contents/ui/Compressor.qml:260 src/contents/ui/Expander.qml:220
 #: src/contents/ui/Gate.qml:238 src/contents/ui/Limiter.qml:210
 #: src/contents/ui/PageStreamsEffects.qml:382
-#, fuzzy
 msgid "Input device"
 msgstr "Устройство ввода"
 
@@ -810,48 +790,42 @@ msgstr "Предсведение"
 #: src/contents/ui/Compressor.qml:535 src/contents/ui/Expander.qml:489
 #: src/contents/ui/Gate.qml:510 src/contents/ui/Limiter.qml:285
 #: src/contents/ui/LspPreMixSheet.qml:30
-#, fuzzy
 msgid "Input to sidechain"
-msgstr "Боковая цепь"
+msgstr "Вход в боковую цепь"
 
 #: src/contents/ui/Compressor.qml:551 src/contents/ui/Expander.qml:505
 #: src/contents/ui/Gate.qml:526 src/contents/ui/Limiter.qml:301
 #: src/contents/ui/LspPreMixSheet.qml:46
-#, fuzzy
 msgid "Input to link"
-msgstr "Включить/отключить мониторинг"
+msgstr "Вход в указатель"
 
 # #, fuzzy
 #: src/contents/ui/Compressor.qml:567 src/contents/ui/Expander.qml:521
 #: src/contents/ui/Gate.qml:542 src/contents/ui/Limiter.qml:317
 #: src/contents/ui/LspPreMixSheet.qml:62
-#, fuzzy
 msgid "Sidechain to input"
-msgstr "Устройство ввода"
+msgstr "Боковая цепь во вход"
 
 # #, fuzzy
 #: src/contents/ui/Compressor.qml:583 src/contents/ui/Expander.qml:537
 #: src/contents/ui/Gate.qml:558 src/contents/ui/Limiter.qml:333
 #: src/contents/ui/LspPreMixSheet.qml:78
-#, fuzzy
 msgid "Sidechain to link"
-msgstr "Режим боковой цепи"
+msgstr "Боковая цепь в указатель"
 
 # #, fuzzy
 #: src/contents/ui/Compressor.qml:599 src/contents/ui/Expander.qml:553
 #: src/contents/ui/Gate.qml:574 src/contents/ui/Limiter.qml:349
 #: src/contents/ui/LspPreMixSheet.qml:94
-#, fuzzy
 msgid "Link to sidechain"
-msgstr "Слушать боковую цепь"
+msgstr "Указатель в боковую цепь"
 
 # #, fuzzy
 #: src/contents/ui/Compressor.qml:615 src/contents/ui/Expander.qml:569
 #: src/contents/ui/Gate.qml:590 src/contents/ui/Limiter.qml:365
 #: src/contents/ui/LspPreMixSheet.qml:110
-#, fuzzy
 msgid "Link to input"
-msgstr "Слушать боковую цепь"
+msgstr "Указатель во вход"
 
 #: src/contents/ui/Compressor.qml:659 src/contents/ui/Expander.qml:609
 #: src/contents/ui/Gate.qml:101 src/contents/ui/Gate.qml:635
@@ -905,19 +879,16 @@ msgstr "Огибающая"
 #: src/contents/ui/Compressor.qml:913 src/contents/ui/Expander.qml:861
 #: src/contents/ui/Gate.qml:998 src/contents/ui/MultibandCompressor.qml:967
 #: src/contents/ui/MultibandGate.qml:940
-#, fuzzy
 msgid "Stereo split"
 msgstr "Разделение стерео"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:31
-#, fuzzy
 msgid "Imported a new Convolver impluse file."
-msgstr "Импортировать файл импульса"
+msgstr "Импортирован новый файл импульса конвольвера."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:33
-#, fuzzy
 msgid "Failed to import the Convolver impulse file."
-msgstr "Не удалось импортировать файл импульса."
+msgstr "Не удалось импортировать файл импульса конвольвера."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:45
 #: src/contents/ui/MenuAddPlugins.qml:168
@@ -935,32 +906,26 @@ msgid "Are you sure you want to remove this impulse response from the list?"
 msgstr "Уверены, что хотите убрать эту реакцию импульса из списка?"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:88
-#, fuzzy
 msgid "Removed the %1 Convolver impulse."
-msgstr "Не удалось загрузить файл импульса"
+msgstr "Удалён импульс конвольвера %1."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:90
-#, fuzzy
 msgid "Failed to remove the %1 Convolver impulse."
-msgstr "Не удалось загрузить файл импульса"
+msgstr "Не удалось удалить импульс конвольвера %1."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:107
-#, fuzzy
 msgid "Delete this impulse"
-msgstr "Удалить Импульс"
+msgstr "Удалить этот импульс"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:127
-#, fuzzy
 msgid "Import impulse"
 msgstr "Импортировать импульс"
 
 #: src/contents/ui/Convolver.qml:49
-#, fuzzy
 msgid "Loaded the %1 Convolver impulse."
-msgstr "Не удалось загрузить файл импульса"
+msgstr "Загружен импульс конвольвера %1."
 
 #: src/contents/ui/Convolver.qml:51 src/contents/ui/Convolver.qml:309
-#, fuzzy
 msgid "Convolver impulse is not set"
 msgstr "Импульс конвольвера не установлен"
 
@@ -969,9 +934,9 @@ msgid "The Convolver is in passthrough mode."
 msgstr "Конвольвер находится в режиме сквозной передачи."
 
 #: src/contents/ui/Convolver.qml:57
-#, fuzzy
 msgid "Failed to load the %1 impulse. The Convolver is in passthrough mode."
-msgstr "Не удалось загрузить файл импульса"
+msgstr ""
+"Не удалось загрузить импульс %1. Конвольвер находится в сквозном режиме."
 
 #: src/contents/ui/Convolver.qml:121
 msgid "First"
@@ -994,7 +959,6 @@ msgid "Spectrum"
 msgstr "Спектр"
 
 #: src/contents/ui/Convolver.qml:239
-#, fuzzy
 msgid "Log scale"
 msgstr "Логарифмическая шкала"
 
@@ -1013,7 +977,6 @@ msgid "Duration"
 msgstr "Длительность"
 
 #: src/contents/ui/Convolver.qml:398
-#, fuzzy
 msgid "Stereo width"
 msgstr "Ширина стерео"
 
@@ -1030,9 +993,8 @@ msgid "Feed"
 msgstr "Подача"
 
 #: src/contents/ui/Crossfeed.qml:95
-#, fuzzy
 msgid "Crossfeed Presets"
-msgstr "Перекрёстная подача"
+msgstr "Перекрёстные предустановки"
 
 #: src/contents/ui/Crossfeed.qml:99
 msgid "Default"
@@ -1064,32 +1026,26 @@ msgstr "кГц"
 
 # # TODO: Mode/Режим заменить на "Режим сжатия"
 #: src/contents/ui/Crystalizer.qml:107
-#, fuzzy
 msgid "Adaptive intensity"
-msgstr "Адаптивное цифровое сжатие"
+msgstr "Адаптивная интенсивность"
 
 #: src/contents/ui/DeepFilterNet.qml:32
-#, fuzzy
 msgid "Attenuation limit"
 msgstr "Предел затухания"
 
 #: src/contents/ui/DeepFilterNet.qml:86
-#, fuzzy
 msgid "Minimum processing threshold"
 msgstr "Минимальный порог обработки"
 
 #: src/contents/ui/DeepFilterNet.qml:102
-#, fuzzy
 msgid "Maximum ERB processing threshold"
 msgstr "Максимальный порог обработки ERB"
 
 #: src/contents/ui/DeepFilterNet.qml:118
-#, fuzzy
 msgid "Maximum DF processing threshold"
 msgstr "Максимальный порог обработки DF"
 
 #: src/contents/ui/DeepFilterNet.qml:134
-#, fuzzy
 msgid "Minimum processing buffer"
 msgstr "Минимальный буфер обработки"
 
@@ -1098,9 +1054,8 @@ msgid "frames"
 msgstr "кадров"
 
 #: src/contents/ui/DeepFilterNet.qml:150
-#, fuzzy
 msgid "Post filter Beta"
-msgstr "Бета постфильтра"
+msgstr "Бета-регулировка постфильтра"
 
 # http://wikisound.org/Деэссер; предназначен для уменьшения или устранения избыточно шипящих звуков в записи человеческого голоса
 #: src/contents/ui/Deesser.qml:45 src/tags_plugin_name.cpp:34
@@ -1139,9 +1094,8 @@ msgid "Filter"
 msgstr "Фильтр"
 
 #: src/contents/ui/Deesser.qml:166
-#, fuzzy
 msgid "F1 split"
-msgstr "Ч1 раздела"
+msgstr "Разделение Ч1"
 
 #: src/contents/ui/Deesser.qml:183
 msgid "F2 peak"
@@ -1152,27 +1106,24 @@ msgid "F1 gain"
 msgstr "Усиление Ч1"
 
 #: src/contents/ui/Deesser.qml:217
-#, fuzzy
 msgid "F2 level"
-msgstr "Ч2 уровень"
+msgstr "Уровень Ч2"
 
 #: src/contents/ui/Deesser.qml:225
 msgid "dBFS"
 msgstr "дБFS"
 
 #: src/contents/ui/Deesser.qml:235
-#, fuzzy
 msgid "F2 peak Q"
-msgstr "Ч2 пик добротности"
+msgstr "Пик добротности Ч2"
 
 #: src/contents/ui/Deesser.qml:258
 msgid "Level"
 msgstr "Уровень"
 
 #: src/contents/ui/Deesser.qml:280
-#, fuzzy
 msgid "Gain reduction"
-msgstr "Уменьшение полосы"
+msgstr "Снижение усиления"
 
 #: src/contents/ui/Delay.qml:56 src/contents/ui/Delay.qml:209
 msgid "Distance"
@@ -1206,12 +1157,10 @@ msgid "Temperature"
 msgstr "Температура"
 
 #: src/contents/ui/Delay.qml:372
-#, fuzzy
 msgid "Invert left"
-msgstr "Обратить фазу"
+msgstr "Обратить левый канал"
 
 #: src/contents/ui/Delay.qml:382
-#, fuzzy
 msgid "Invert right"
 msgstr "Обратить фазу"
 
@@ -1223,39 +1172,35 @@ msgstr "Неизвестно"
 
 #: src/contents/ui/DelegateClientsList.qml:41
 msgid "(id: %1)"
-msgstr ""
+msgstr "(ИД: %1)"
 
 #: src/contents/ui/DelegateClientsList.qml:47
-#, fuzzy
 msgid "Access: %1"
-msgstr "Доступ"
+msgstr "Доступ: %1"
 
 #: src/contents/ui/DelegateClientsList.qml:54
 msgid "API: %1"
-msgstr ""
+msgstr "Интерфейс API: %1"
 
 #: src/contents/ui/DelegateModulesList.qml:41
 msgctxt "@info:placeholder"
 msgid "Not set"
-msgstr ""
+msgstr "Не задано"
 
 #: src/contents/ui/DelegateModulesList.qml:41
 msgid "(id: %1, version: %2)"
-msgstr ""
+msgstr "(ИД: %1, версия: %2)"
 
 #: src/contents/ui/DelegateModulesList.qml:47
-#, fuzzy
 msgctxt "@info:placeholder"
 msgid "No description set"
-msgstr "Описание"
+msgstr "Описание не задано"
 
 #: src/contents/ui/DelegatePluginsList.qml:100
-#, fuzzy
 msgid "Toggle this effect"
-msgstr "Включить/отключить эффект"
+msgstr "Переключить этот эффект"
 
 #: src/contents/ui/DelegatePluginsList.qml:108
-#, fuzzy
 msgid "Remove this effect"
 msgstr "Удалить этот эффект"
 
@@ -1283,23 +1228,20 @@ msgid "Echo Canceller"
 msgstr "Эхоподавитель"
 
 #: src/contents/ui/EchoCanceller.qml:53
-#, fuzzy
 msgid "Mobile mode"
-msgstr "Режим стерео"
+msgstr "Мобильный режим"
 
 #: src/contents/ui/EchoCanceller.qml:62
-#, fuzzy
 msgid "Enforce high-pass"
-msgstr "Фильтр ВЧ"
+msgstr "Применить ФВЧ принудительно"
 
 #: src/contents/ui/EchoCanceller.qml:74
 msgid "Noise Suppression"
 msgstr "Шумоглушитель"
 
 #: src/contents/ui/EchoCanceller.qml:87
-#, fuzzy
 msgid "Strength"
-msgstr "Длина фильтра"
+msgstr "Сила"
 
 #: src/contents/ui/EchoCanceller.qml:91 src/contents/ui/Loudness.qml:100
 msgid "Low"
@@ -1314,22 +1256,18 @@ msgid "High"
 msgstr "Высокий"
 
 #: src/contents/ui/EchoCanceller.qml:91
-#, fuzzy
 msgid "Very high"
 msgstr "Очень высокий"
 
 #: src/contents/ui/EchoCanceller.qml:101
-#, fuzzy
 msgid "High-Pass Filter"
-msgstr "Режим высокочастотного фильтра"
+msgstr "Фильтр высоких частот"
 
 #: src/contents/ui/EchoCanceller.qml:113
-#, fuzzy
 msgid "Full band"
-msgstr "Подполоса"
+msgstr "Полный диапазон"
 
 #: src/contents/ui/EchoCanceller.qml:153 src/contents/ui/Speex.qml:55
-#, fuzzy
 msgid "Automatic gain control"
 msgstr "Регулятор автоусиления"
 
@@ -1339,7 +1277,7 @@ msgstr "Контроль уровня звука"
 
 #: src/contents/ui/EeInputOutputGain.qml:22
 msgid "Input and output gain controls with level meters"
-msgstr ""
+msgstr "Регуляторы входного и выходного усиления с индикаторами уровня"
 
 # ###############################################
 # https://github.com/wwmm/easyeffects/pull/289
@@ -1357,10 +1295,9 @@ msgid "Input"
 msgstr "Вход"
 
 #: src/contents/ui/EeSpinBox.qml:134 src/contents/ui/EeSpinBox.qml:168
-#, fuzzy
 msgctxt "minus infinity abbreviation"
 msgid "-inf"
-msgstr "∞"
+msgstr "-inf"
 
 #: src/contents/ui/EqualizerBandMenu.qml:25
 #: src/contents/ui/MultibandCompressor.qml:631
@@ -1407,31 +1344,31 @@ msgstr "Лестнично-заграждающий фильтр"
 
 #: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
 msgid "RLC (BT)"
-msgstr ""
+msgstr "RLC (БП)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
 msgid "RLC (MT)"
-msgstr ""
+msgstr "RLC (СП)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
 msgid "BWC (BT)"
-msgstr ""
+msgstr "Чебышёва-Баттерворта (БП)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
 msgid "BWC (MT)"
-msgstr ""
+msgstr "Чебышёва-Баттерворта (СП)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
 msgid "LRX (BT)"
-msgstr ""
+msgstr "Линквица-Райли (БП)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
 msgid "LRX (MT)"
-msgstr ""
+msgstr "Линквица-Райли (СП)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
 msgid "APO (DR)"
-msgstr ""
+msgstr "APO (DR)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:57 src/contents/ui/Filter.qml:88
 msgid "Slope"
@@ -1458,9 +1395,8 @@ msgid "Width"
 msgstr "Ширина"
 
 #: src/contents/ui/EqualizerBandMenu.qml:143
-#, fuzzy
 msgid "oct"
-msgstr "Фильтр среза НЧ"
+msgstr "окт"
 
 #: src/contents/ui/EqualizerBandMenu.qml:167
 #: src/contents/ui/MultibandCompressor.qml:73
@@ -1469,46 +1405,42 @@ msgid "Solo"
 msgstr "Соло"
 
 #: src/contents/ui/Equalizer.qml:50 src/contents/ui/Equalizer.qml:80
-#, fuzzy
 msgid "APO preset"
-msgstr "Предустановки APO"
+msgstr "Предустановка APO"
 
 #: src/contents/ui/Equalizer.qml:53
-#, fuzzy
 msgid "Imported the Equalizer APO preset file."
-msgstr "Экспортировать файл предустановки APO"
+msgstr "Импортирован файл предустановки эквалайзера APO."
 
 #: src/contents/ui/Equalizer.qml:55
-#, fuzzy
 msgid "Failed to import the Equalizer APO preset file."
-msgstr "Импортировать файл предустановки APO"
+msgstr "Не удалось импортировать файл предустановки эквалайзера APO."
 
 #: src/contents/ui/Equalizer.qml:65
-#, fuzzy
 msgid "GraphicEQ preset"
-msgstr "Предустановки GraphicEQ"
+msgstr "Предустановка GraphicEQ"
 
 #: src/contents/ui/Equalizer.qml:68
-#, fuzzy
 msgid "Imported the GraphicEQ preset file."
-msgstr "Импортировать файл предустановки GraphicEQ"
+msgstr "Импортирован файл предустановки GraphicEQ."
 
 #: src/contents/ui/Equalizer.qml:70
-#, fuzzy
 msgid "Failed to import the GraphicEQ preset file."
-msgstr "Импортировать файл предустановки GraphicEQ"
+msgstr "Не удалось импортировать файл предустановки GraphicEQ."
 
 #: src/contents/ui/Equalizer.qml:83
-#, fuzzy
 msgid "Exported the current Equalizer settings to an external APO preset file."
-msgstr "Экспортировать файл предустановки APO"
+msgstr ""
+"Экспортированы текущие настройки эквалайзера во внешний файл предустановок "
+"APO."
 
 #: src/contents/ui/Equalizer.qml:86
-#, fuzzy
 msgid ""
 "Failed to export the current Equalizer settings to an external APO preset "
 "file."
-msgstr "Импортировать файл предустановки APO"
+msgstr ""
+"Не удалось экспортировать текущие настройки эквалайзера во внешний файл "
+"предустановок APO."
 
 #: src/contents/ui/Equalizer.qml:107 src/contents/ui/Filter.qml:78
 #: src/contents/ui/Loudness.qml:58
@@ -1525,9 +1457,8 @@ msgid "FFT"
 msgstr "БПФ (FFT)"
 
 #: src/contents/ui/Equalizer.qml:107 src/contents/ui/Filter.qml:78
-#, fuzzy
 msgid "SPM"
-msgstr "ПСС (SPM)"
+msgstr "Спектральный процессор"
 
 #: src/contents/ui/Equalizer.qml:116
 msgid "Bands"
@@ -1549,49 +1480,40 @@ msgstr "пт"
 
 # #, fuzzy
 #: src/contents/ui/Equalizer.qml:166
-#, fuzzy
 msgid "Pitch right"
 msgstr "Высота тона правого"
 
 #: src/contents/ui/Equalizer.qml:296
-#, fuzzy
 msgid "Split channels"
 msgstr "Разделить каналы"
 
 #: src/contents/ui/Equalizer.qml:306
-#, fuzzy
 msgid "Flat response"
-msgstr "Плоская АЧХ"
+msgstr "Линейная АЧХ"
 
 #: src/contents/ui/Equalizer.qml:313
-#, fuzzy
 msgid "Calculate frequencies"
-msgstr "Подсчитать частоты"
+msgstr "Рассчитать частоты"
 
 #: src/contents/ui/Equalizer.qml:320
-#, fuzzy
 msgid "Sort bands"
 msgstr "Сортировать полосы"
 
 #: src/contents/ui/Equalizer.qml:327
-#, fuzzy
 msgid "Import APO"
-msgstr "Импорт"
+msgstr "Импорт APO"
 
 #: src/contents/ui/Equalizer.qml:334
-#, fuzzy
 msgid "Import APO (GraphicEQ)"
-msgstr "Импортировать файл предустановки GraphicEQ"
+msgstr "Импорт APO (GraphicEQ)"
 
 #: src/contents/ui/Equalizer.qml:341
-#, fuzzy
 msgid "Export APO"
-msgstr "Экспорт предустановки"
+msgstr "Экспорт APO"
 
 #: src/contents/ui/Exciter.qml:143
-#, fuzzy
 msgid "Ceil active"
-msgstr "Активировать"
+msgstr "Потолок активен"
 
 #: src/contents/ui/Exciter.qml:154
 msgid "Ceil"
@@ -1608,12 +1530,10 @@ msgid "Internal"
 msgstr "Внутренний"
 
 #: src/contents/ui/Filter.qml:60
-#, fuzzy
 msgid "Filter mode"
-msgstr "Режим стерео"
+msgstr "Режим фильтра"
 
 #: src/contents/ui/Filter.qml:74
-#, fuzzy
 msgid "Equalizer mode"
 msgstr "Режим эквалайзера"
 
@@ -1639,71 +1559,58 @@ msgstr "Начало"
 
 # #, fuzzy
 #: src/contents/ui/LevelMeter.qml:48
-#, fuzzy
 msgid "Input Level"
-msgstr "Устройство ввода"
+msgstr "Уровень входа"
 
 #: src/contents/ui/LevelMeter.qml:89
 msgid "True Peak"
 msgstr "Истинный пик"
 
 #: src/contents/ui/Limiter.qml:59
-#, fuzzy
 msgid "Herm thin"
 msgstr "Эрмит узкий"
 
 #: src/contents/ui/Limiter.qml:59
-#, fuzzy
 msgid "Herm wide"
 msgstr "Эрмит широкий"
 
 #: src/contents/ui/Limiter.qml:59
-#, fuzzy
 msgid "Herm tail"
 msgstr "Эрмит хвост"
 
 #: src/contents/ui/Limiter.qml:59
-#, fuzzy
 msgid "Herm duck"
 msgstr "Эрмит нос"
 
 #: src/contents/ui/Limiter.qml:59
-#, fuzzy
 msgid "Exp thin"
 msgstr "Эксп. узкий"
 
 #: src/contents/ui/Limiter.qml:59
-#, fuzzy
 msgid "Exp wide"
 msgstr "Эксп. широкий"
 
 #: src/contents/ui/Limiter.qml:59
-#, fuzzy
 msgid "Exp tail"
 msgstr "Эксп. хвост"
 
 #: src/contents/ui/Limiter.qml:59
-#, fuzzy
 msgid "Exp duck"
 msgstr "Эксп. нос"
 
 #: src/contents/ui/Limiter.qml:59
-#, fuzzy
 msgid "Line thin"
 msgstr "Лин. узкий"
 
 #: src/contents/ui/Limiter.qml:59
-#, fuzzy
 msgid "Line wide"
 msgstr "Лин. широкий"
 
 #: src/contents/ui/Limiter.qml:59
-#, fuzzy
 msgid "Line tail"
 msgstr "Лин. хвост"
 
 #: src/contents/ui/Limiter.qml:59
-#, fuzzy
 msgid "Line duck"
 msgstr "Лин. нос"
 
@@ -1719,103 +1626,91 @@ msgstr "Нет"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Half x2/16 bit"
-msgstr ""
+msgstr "Половинный x2/16 бит"
 
 #: src/contents/ui/Limiter.qml:73
-#, fuzzy
 msgid "Half x2/24 bit"
-msgstr "Половинный x2(2L)"
+msgstr "Половинный x2/24 бит"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Half x3/16 bit"
-msgstr ""
+msgstr "Половинный x3/16 бит"
 
 #: src/contents/ui/Limiter.qml:73
-#, fuzzy
 msgid "Half x3/24 bit"
-msgstr "Половинный x3(2L)"
+msgstr "Половинный x3/24 бита"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Half x4/16 bit"
-msgstr ""
+msgstr "Половинный x4/16 бит"
 
 #: src/contents/ui/Limiter.qml:73
-#, fuzzy
 msgid "Half x4/24 bit"
-msgstr "Половинный x4(2L)"
+msgstr "Половинный x4/24 бита"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Half x6/16 bit"
-msgstr ""
+msgstr "Половинный x6/16 бит"
 
 #: src/contents/ui/Limiter.qml:73
-#, fuzzy
 msgid "Half x6/24 bit"
-msgstr "Половинный x6(2L)"
+msgstr "Половинный x6/24 бита"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Half x8/16 bit"
-msgstr ""
+msgstr "Половинный x8/16 бит"
 
 #: src/contents/ui/Limiter.qml:73
-#, fuzzy
 msgid "Half x8/24 bit"
-msgstr "Половинный x8(2L)"
+msgstr "Половинный x8/24 бита"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Full x2/16 bit"
-msgstr ""
+msgstr "Полный x2/16 бит"
 
 #: src/contents/ui/Limiter.qml:73
-#, fuzzy
 msgid "Full x2/24 bit"
-msgstr "Полный x2(2L)"
+msgstr "Полный x2/24 бита"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Full x3/16 bit"
-msgstr ""
+msgstr "Полный x3/16 бит"
 
 #: src/contents/ui/Limiter.qml:73
-#, fuzzy
 msgid "Full x3/24 bit"
-msgstr "Полный x3(2L)"
+msgstr "Полный x3/24 бита"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Full x4/16 bit"
-msgstr ""
+msgstr "Полный x4/16 бит"
 
 #: src/contents/ui/Limiter.qml:73
-#, fuzzy
 msgid "Full x4/24 bit"
-msgstr "Полный x4(2L)"
+msgstr "Полный x4/24 бита"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Full x6/16 bit"
-msgstr ""
+msgstr "Полный x6/16 бит"
 
 #: src/contents/ui/Limiter.qml:73
-#, fuzzy
 msgid "Full x6/24 bit"
-msgstr "Полный x6(2L)"
+msgstr "Полный x6/24 бита"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Full x8/16 bit"
-msgstr ""
+msgstr "Полный x8/16 бит"
 
 #: src/contents/ui/Limiter.qml:73
-#, fuzzy
 msgid "Full x8/24 bit"
-msgstr "Полный x8(2L)"
+msgstr "Полный x8/24 бита"
 
 #: src/contents/ui/Limiter.qml:73
-#, fuzzy
 msgid "True peak/16 bit"
-msgstr "Истинный пик"
+msgstr "Истинный пик/16 бит"
 
 #: src/contents/ui/Limiter.qml:73
-#, fuzzy
 msgid "True peak/24 bit"
-msgstr "Истинный пик"
+msgstr "Истинный пик/24 бита"
 
 #: src/contents/ui/Limiter.qml:83
 msgid "Dithering"
@@ -1863,14 +1758,12 @@ msgid "Stereo Link"
 msgstr "Стереосвязка"
 
 #: src/contents/ui/Limiter.qml:389 src/contents/ui/Limiter.qml:616
-#, fuzzy
 msgid "Automatic level"
-msgstr "Автовыравнивание"
+msgstr "Автоматический уровень"
 
 #: src/contents/ui/Limiter.qml:606
-#, fuzzy
 msgid "Threshold boost"
-msgstr "Порог"
+msgstr "Повышение порога"
 
 #: src/contents/ui/Loudness.qml:68
 msgid "Contour"
@@ -1893,20 +1786,17 @@ msgid "Robinson-Dadson"
 msgstr "Робинсона-Дадсона"
 
 #: src/contents/ui/Loudness.qml:72
-#, fuzzy
 msgid "ISO226-2023"
-msgstr "ISO226-2003"
+msgstr "ИСО 226-2003"
 
 # Taking lingual shortcuts to squeeze it in the text box
 #: src/contents/ui/Loudness.qml:82
-#, fuzzy
 msgid "FFT size"
 msgstr "Размер БПФ"
 
 #: src/contents/ui/Loudness.qml:96
-#, fuzzy
 msgid "IIR approximation"
-msgstr "Заглушить приложение"
+msgstr "Аппроксимация БИХ"
 
 #: src/contents/ui/Loudness.qml:100
 msgid "Fastest"
@@ -1925,7 +1815,6 @@ msgid "Volume"
 msgstr "Громкость"
 
 #: src/contents/ui/Loudness.qml:127
-#, fuzzy
 msgid "Clipping range"
 msgstr "Диапазон клиппинга"
 
@@ -1934,23 +1823,20 @@ msgid "Clipping"
 msgstr "Клиппинг"
 
 #: src/contents/ui/Main.qml:232
-#, fuzzy
 msgid "Reset Settings?"
-msgstr "Сбросить настрой_ки"
+msgstr "Сбросить настройки?"
 
 #: src/contents/ui/Main.qml:233
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr "Вы уверены, что хотите сбросить все настройки Easy Effects?"
 
 #: src/contents/ui/Main.qml:284 src/contents/ui/Main.qml:300
-#, fuzzy
 msgid "Preset Loaded"
-msgstr "Предустановка не загружена"
+msgstr "Предустановка загружена"
 
 #: src/contents/ui/Main.qml:311 src/contents/ui/Main.qml:323
-#, fuzzy
 msgid "Clear List"
-msgstr "Список клиентов"
+msgstr "Очистить список"
 
 #: src/contents/ui/Main.qml:312 src/contents/ui/Main.qml:324
 #, fuzzy
@@ -2147,9 +2033,8 @@ msgid "Audio stream not modified"
 msgstr "Аудиопоток не изменён"
 
 #: src/contents/ui/PageStreamsEffects.qml:647
-#, fuzzy
 msgid "Input monitoring"
-msgstr "Включить/отключить мониторинг"
+msgstr "Мониторинг входа"
 
 #: src/contents/ui/PageStreamsEffects.qml:660
 #, fuzzy
@@ -2240,14 +2125,12 @@ msgid "Default quantum"
 msgstr "Стандартное квантование"
 
 #: src/contents/ui/PipeWirePage.qml:261
-#, fuzzy
 msgid "No Modules"
-msgstr "Модули"
+msgstr "Нет модулей"
 
 #: src/contents/ui/PipeWirePage.qml:284
-#, fuzzy
 msgid "No Clients"
-msgstr "Клиенты"
+msgstr "Нет клиентов"
 
 #: src/contents/ui/PipeWirePage.qml:297
 #: src/contents/ui/PreferencesSheet.qml:238
@@ -2354,9 +2237,8 @@ msgid "Audio"
 msgstr "Аудио"
 
 #: src/contents/ui/PreferencesSheet.qml:28
-#, fuzzy
 msgid "Spectrum Analyzer"
-msgstr "Тип спектра"
+msgstr "Анализатор спектра"
 
 #: src/contents/ui/PreferencesSheet.qml:34
 msgid "Database"
@@ -2698,9 +2580,8 @@ msgid "Failed to import a new local preset from an external file."
 msgstr "Импортировать файл предустановки APO"
 
 #: src/contents/ui/PresetsLocalPage.qml:43
-#, fuzzy
 msgid "Export Presets"
-msgstr "Импорт предустановок"
+msgstr "Экспорт предустановок"
 
 #: src/contents/ui/PresetsLocalPage.qml:46
 #, fuzzy
@@ -2743,9 +2624,8 @@ msgid "Export presets"
 msgstr "Импорт предустановок"
 
 #: src/contents/ui/PresetsLocalPage.qml:185
-#, fuzzy
 msgid "Save Preset"
-msgstr "Создать новую предустановку"
+msgstr "Сохранить предустановку"
 
 #: src/contents/ui/PresetsLocalPage.qml:186
 #, fuzzy
@@ -2765,9 +2645,8 @@ msgid "Failed to save the current settings to %1 local preset."
 msgstr "Отменить текущие настройки и загрузить эту предустановку"
 
 #: src/contents/ui/PresetsLocalPage.qml:200
-#, fuzzy
 msgid "Remove Preset"
-msgstr "Создать новую предустановку"
+msgstr "Удалить предустановку"
 
 #: src/contents/ui/PresetsLocalPage.qml:201
 #, fuzzy
@@ -2788,9 +2667,8 @@ msgid "Failed to remove the %1 local preset."
 msgstr "Импортировать файл предустановки APO"
 
 #: src/contents/ui/PresetsLocalPage.qml:215
-#, fuzzy
 msgid "Rename Preset"
-msgstr "Создать новую предустановку"
+msgstr "Переименовать предустановку"
 
 #: src/contents/ui/PresetsLocalPage.qml:220
 msgid "Rename"
@@ -2906,9 +2784,8 @@ msgid "Treble cut"
 msgstr "Срез тембра"
 
 #: src/contents/ui/Reverb.qml:210
-#, fuzzy
 msgid "Reverberation Presets"
-msgstr "Реверберация"
+msgstr "Предустановки реверберации"
 
 #: src/contents/ui/Reverb.qml:214
 msgid "Ambience"
@@ -2990,9 +2867,8 @@ msgid "Use the Standard model"
 msgstr "Стандартная модель"
 
 #: src/contents/ui/RNNoise.qml:176
-#, fuzzy
 msgid "User Models"
-msgstr "Модели RNNoise"
+msgstr "Пользовательские модели"
 
 #: src/contents/ui/RNNoise.qml:242
 #, fuzzy
@@ -3015,7 +2891,6 @@ msgid "Import model"
 msgstr "Импортировать модель"
 
 #: src/contents/ui/ShortcutsSheet.qml:46
-#, fuzzy
 msgid "Show help"
 msgstr "Показать справку"
 
@@ -3055,9 +2930,8 @@ msgid "Can be used on numeric controls"
 msgstr ""
 
 #: src/contents/ui/ShortcutsSheet.qml:264
-#, fuzzy
 msgid "Global Shortcuts"
-msgstr "_Горячие клавиши"
+msgstr "Глобальные горячие клавиши"
 
 #: src/contents/ui/ShortcutsSheet.qml:350 src/global_shortcuts.hpp:50
 msgid "Toggle microphone monitoring"

@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-15 01:35-0300\n"
-"PO-Revision-Date: 2025-10-22 05:02+0000\n"
-"Last-Translator: John Peter Sa <johnppetersa@gmail.com>\n"
+"PO-Revision-Date: 2025-11-15 17:56+0000\n"
+"Last-Translator: Wellington Wallace <wellingtonwallace@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "easyeffects/main/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.14-dev\n"
+"X-Generator: Weblate 5.15-dev\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #: src/autostart.cpp:89
@@ -261,9 +261,8 @@ msgid "Range"
 msgstr "Alcance"
 
 #: src/contents/ui/Autogain.qml:195
-#, fuzzy
 msgid "Output gain"
-msgstr "Ganho de Saída"
+msgstr "Ganho de saída"
 
 #: src/contents/ui/Autogain.qml:219 src/contents/ui/BassEnhancer.qml:186
 #: src/contents/ui/BassLoudness.qml:104 src/contents/ui/Compressor.qml:872
@@ -286,14 +285,12 @@ msgstr "Usando %1"
 
 #: src/contents/ui/Autogain.qml:236 src/contents/ui/DeepFilterNet.qml:192
 #: src/contents/ui/LevelMeter.qml:222 src/contents/ui/Pitch.qml:263
-#, fuzzy
 msgid "Reset history"
-msgstr "Apagar o Histórico"
+msgstr "Apagar o histórico"
 
 #: src/contents/ui/Autogain.qml:243
-#, fuzzy
 msgid "Force silence"
-msgstr "Forçar o Silêncio"
+msgstr "Forçar o silêncio"
 
 #: src/contents/ui/Autogain.qml:244
 #, fuzzy
@@ -307,9 +304,8 @@ msgid "Reset settings"
 msgstr "Redefinir configurações"
 
 #: src/contents/ui/BassEnhancer.qml:38 src/contents/ui/Exciter.qml:38
-#, fuzzy
 msgid "Blend harmonics"
-msgstr "Mistura de Harmônicos"
+msgstr "Mistura de harmônicos"
 
 #: src/contents/ui/BassEnhancer.qml:47 src/contents/ui/Exciter.qml:47
 msgid "3rd"
@@ -357,9 +353,8 @@ msgid "Hz"
 msgstr ""
 
 #: src/contents/ui/BassEnhancer.qml:139
-#, fuzzy
 msgid "Floor active"
-msgstr "Piso Ativo"
+msgstr "Piso ativo"
 
 #: src/contents/ui/BassEnhancer.qml:150
 msgid "Floor"
@@ -374,9 +369,8 @@ msgstr "Mínimo"
 #: src/contents/ui/MultibandCompressor.qml:954
 #: src/contents/ui/MultibandGate.qml:927 src/contents/ui/Reverb.qml:324
 #: src/contents/ui/StereoTools.qml:388
-#, fuzzy
 msgid "Show native window"
-msgstr "Exibir a Janela Nativa"
+msgstr "Exibir a janela nativa"
 
 #: src/contents/ui/BassEnhancer.qml:217 src/contents/ui/Compressor.qml:903
 #: src/contents/ui/Deesser.qml:332 src/contents/ui/Exciter.qml:222
@@ -425,9 +419,8 @@ msgid "Application node name"
 msgstr "Nome do nó do aplicativo"
 
 #: src/contents/ui/BlocklistSheet.qml:45
-#, fuzzy
 msgid "Add to excluded applications"
-msgstr "Adicionar aos Aplicativos Excluídos"
+msgstr "Adicionar aos aplicativos excluídos"
 
 #: src/contents/ui/BlocklistSheet.qml:95
 #: src/contents/ui/ConvolverImpulseSheet.qml:65
@@ -440,9 +433,8 @@ msgid "Empty List"
 msgstr "Lista Vazia"
 
 #: src/contents/ui/BlocklistSheet.qml:96
-#, fuzzy
 msgid "No application excluded"
-msgstr "Volume do Aplicativo"
+msgstr "Nenhuma aplicação excluída"
 
 #: src/contents/ui/BlocklistSheet.qml:118
 msgid "Remove Application"
@@ -453,19 +445,16 @@ msgid "Are you sure you want to remove this application from the list?"
 msgstr "Tem certeza de que deseja remover este aplicativo da lista?"
 
 #: src/contents/ui/BlocklistSheet.qml:149
-#, fuzzy
 msgid "Remove this app"
-msgstr "Remover este arquivo de predefinição"
+msgstr "Remover esta aplicação"
 
 #: src/contents/ui/BlocklistSheet.qml:176
-#, fuzzy
 msgid "Show excluded apps"
-msgstr "Aplicativos Excluídos"
+msgstr "Mostrar aplicativos excluídos"
 
 #: src/contents/ui/BlocklistSheet.qml:177
-#, fuzzy
 msgid "Show excluded applications in the list of players/recorders"
-msgstr "Mostrar aplicativos excluídos na seção Streams"
+msgstr "Mostrar aplicativos excluídos na seção de tocadores/gravadores"
 
 #: src/contents/ui/Compressor.qml:50 src/tags_plugin_name.cpp:29
 msgid "Compressor"
@@ -499,15 +488,13 @@ msgstr "Impulsionando"
 
 #: src/contents/ui/Compressor.qml:76
 #: src/contents/ui/MultibandCompressor.qml:114
-#, fuzzy
 msgid "Boost threshold"
-msgstr "Limite do Impulso"
+msgstr "Limiar do impulso"
 
 #: src/contents/ui/Compressor.qml:96
 #: src/contents/ui/MultibandCompressor.qml:133
-#, fuzzy
 msgid "Boost amount"
-msgstr "Valor do Impulso"
+msgstr "Valor do impulso"
 
 #: src/contents/ui/Compressor.qml:115 src/contents/ui/Deesser.qml:101
 #: src/contents/ui/Expander.qml:75 src/contents/ui/MultibandCompressor.qml:325
@@ -600,9 +587,8 @@ msgstr "Externo"
 #: src/contents/ui/Compressor.qml:260 src/contents/ui/Expander.qml:220
 #: src/contents/ui/Gate.qml:238 src/contents/ui/Limiter.qml:210
 #: src/contents/ui/PageStreamsEffects.qml:382
-#, fuzzy
 msgid "Input device"
-msgstr "Dispositivo de Entrada"
+msgstr "Dispositivo de entrada"
 
 #: src/contents/ui/Compressor.qml:288 src/contents/ui/Deesser.qml:62
 #: src/contents/ui/Expander.qml:248 src/contents/ui/Gate.qml:266
@@ -803,16 +789,14 @@ msgstr "Pre-Mix"
 #: src/contents/ui/Compressor.qml:535 src/contents/ui/Expander.qml:489
 #: src/contents/ui/Gate.qml:510 src/contents/ui/Limiter.qml:285
 #: src/contents/ui/LspPreMixSheet.qml:30
-#, fuzzy
 msgid "Input to sidechain"
-msgstr "Entrada para Sidechain"
+msgstr "Entrada para sidechain"
 
 #: src/contents/ui/Compressor.qml:551 src/contents/ui/Expander.qml:505
 #: src/contents/ui/Gate.qml:526 src/contents/ui/Limiter.qml:301
 #: src/contents/ui/LspPreMixSheet.qml:46
-#, fuzzy
 msgid "Input to link"
-msgstr "Entrada para Link"
+msgstr "Entrada para link"
 
 #: src/contents/ui/Compressor.qml:567 src/contents/ui/Expander.qml:521
 #: src/contents/ui/Gate.qml:542 src/contents/ui/Limiter.qml:317
@@ -824,16 +808,14 @@ msgstr "Sidechain para entrada"
 #: src/contents/ui/Compressor.qml:583 src/contents/ui/Expander.qml:537
 #: src/contents/ui/Gate.qml:558 src/contents/ui/Limiter.qml:333
 #: src/contents/ui/LspPreMixSheet.qml:78
-#, fuzzy
 msgid "Sidechain to link"
-msgstr "Sidechain para Link"
+msgstr "Sidechain para link"
 
 #: src/contents/ui/Compressor.qml:599 src/contents/ui/Expander.qml:553
 #: src/contents/ui/Gate.qml:574 src/contents/ui/Limiter.qml:349
 #: src/contents/ui/LspPreMixSheet.qml:94
-#, fuzzy
 msgid "Link to sidechain"
-msgstr "Link para Sidechain"
+msgstr "Link para sidechain"
 
 #: src/contents/ui/Compressor.qml:615 src/contents/ui/Expander.qml:569
 #: src/contents/ui/Gate.qml:590 src/contents/ui/Limiter.qml:365
@@ -894,19 +876,16 @@ msgstr "Modulação"
 #: src/contents/ui/Compressor.qml:913 src/contents/ui/Expander.qml:861
 #: src/contents/ui/Gate.qml:998 src/contents/ui/MultibandCompressor.qml:967
 #: src/contents/ui/MultibandGate.qml:940
-#, fuzzy
 msgid "Stereo split"
-msgstr "Modo Estéreo"
+msgstr "Separação dos canais"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:31
-#, fuzzy
 msgid "Imported a new Convolver impluse file."
-msgstr "Importou um novo arquivo do Convolver Impulse."
+msgstr "Um novo arquivo de impulso do Convolver foi importado."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:33
-#, fuzzy
 msgid "Failed to import the Convolver impulse file."
-msgstr "Falha ao importar o arquivo Convolver Impulse."
+msgstr "Falha ao importar o arquivo de impulso do Convolver."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:45
 #: src/contents/ui/MenuAddPlugins.qml:168
@@ -924,29 +903,24 @@ msgid "Are you sure you want to remove this impulse response from the list?"
 msgstr "Tem certeza de que deseja remover esta resposta de impulso da lista?"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:88
-#, fuzzy
 msgid "Removed the %1 Convolver impulse."
-msgstr "Removido o Impulso Convolver %1."
+msgstr "Removido o arquido de impulso do Convolver %1."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:90
-#, fuzzy
 msgid "Failed to remove the %1 Convolver impulse."
-msgstr "Falha ao remover o impulso do Convolver %1."
+msgstr "Falha ao remover o arquivo de impulso do Convolver %1."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:107
-#, fuzzy
 msgid "Delete this impulse"
-msgstr "Apagar este Impulso"
+msgstr "Apagar este impulso"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:127
-#, fuzzy
 msgid "Import impulse"
-msgstr "Importar o Impulso"
+msgstr "Importar o impulso"
 
 #: src/contents/ui/Convolver.qml:49
-#, fuzzy
 msgid "Loaded the %1 Convolver impulse."
-msgstr "Carregou o %1 Convolver Impulse."
+msgstr "Impulso %1 do Convolver carregado."
 
 #: src/contents/ui/Convolver.qml:51 src/contents/ui/Convolver.qml:309
 #, fuzzy
@@ -2093,9 +2067,8 @@ msgid "Players"
 msgstr "Reprodutores"
 
 #: src/contents/ui/PageStreamsEffects.qml:391
-#, fuzzy
 msgid "Output device"
-msgstr "Dispositivo de Saída"
+msgstr "Dispositivo de saída"
 
 #: src/contents/ui/PageStreamsEffects.qml:391
 #: src/contents/ui/PageStreamsEffects.qml:616
@@ -2160,9 +2133,8 @@ msgid "Name"
 msgstr "Nome"
 
 #: src/contents/ui/PipeWirePage.qml:165
-#, fuzzy
 msgid "Use default output"
-msgstr "Utilizar a Saída Padrão"
+msgstr "Utilizar a saída padrão"
 
 #: src/contents/ui/PipeWirePage.qml:204
 msgid "Server Information"
