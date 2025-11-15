@@ -7,7 +7,7 @@ Description:
 - 
 
 - Bug fixes∶
-- 
+- Fixed a regression introduced by version 8.0.1 that made EasyEffects unable o find plugins inside Flatpak's sandbox
 
 - Other notes∶
 - 
