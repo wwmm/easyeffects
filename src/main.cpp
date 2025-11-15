@@ -117,7 +117,7 @@ struct CoreServices {
                       << "/usr/lib/x86_64-linux-gnu/lv2/";
 
     if (!existing_path.isEmpty()) {
-      search_paths_list << existing_path;
+      search_paths_list.append(existing_path.split(':'));
     }
 
     QSet<QString> unique_paths;
@@ -259,7 +259,7 @@ static void initQml(QQmlApplicationEngine& engine,
   }
 }
 
-static int runSecondaryInstance(KAboutData &about, QApplication& app, CommandLineParser& parser, bool& show_window) {
+static int runSecondaryInstance(KAboutData& about, QApplication& app, CommandLineParser& parser, bool& show_window) {
   auto local_client = std::make_unique<LocalClient>();
 
   QObject::connect(&parser, &CommandLineParser::onQuit, [&]() {
@@ -300,15 +300,11 @@ int main(int argc, char* argv[]) {
 
   KLocalizedString::setApplicationDomain(APPLICATION_DOMAIN);
 
-  KAboutData about(QStringLiteral(APPLICATION_DOMAIN),
-                   QStringLiteral(APPLICATION_NAME),
-                   QStringLiteral(PROJECT_VERSION),
-                   i18n("Global audio effects"),
-                   KAboutLicense::GPL_V3,
+  KAboutData about(QStringLiteral(APPLICATION_DOMAIN), QStringLiteral(APPLICATION_NAME),
+                   QStringLiteral(PROJECT_VERSION), i18n("Global audio effects"), KAboutLicense::GPL_V3,
                    i18n("© 2017-2025 EasyEffects Team"));
 
-  about.addAuthor(i18n("Wellington Wallace"),
-                  i18nc("@info:credit", "Developer"),
+  about.addAuthor(i18n("Wellington Wallace"), i18nc("@info:credit", "Developer"),
                   QStringLiteral("wellingtonwallace@gmail.com"));
 
   about.setOrganizationDomain(ORGANIZATION_DOMAIN);

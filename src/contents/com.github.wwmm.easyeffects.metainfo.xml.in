@@ -56,6 +56,17 @@
     <color type="primary" scheme_preference="dark">#004079</color>
   </branding>
   <releases>
+    <release type="stable" version="8.0.3" date="2025-11-15T00:00:00Z">
+      <description>
+        <ul>
+          <li>Features:</li>
+          <li>Updated translations</li>
+          <li>Bug fixes:</li>
+          <li>Fixed a regression introduced by version 8.0.1 that made EasyEffects unable properly parse extra LV2 paths given by LV2_PATH</li>
+          <li>Other notes:</li>
+        </ul>
+      </description>
+    </release>
     <release type="stable" version="8.0.2" date="2025-11-15T00:00:00Z">
       <description>
         <ul>

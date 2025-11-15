@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-14 23:38-0300\n"
+"POT-Creation-Date: 2025-11-15 01:35-0300\n"
 "PO-Revision-Date: 2025-11-05 00:44+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -3166,32 +3166,32 @@ msgstr "Základ sterea"
 msgid "Stereo phase"
 msgstr "Fáze sterea"
 
-#: src/main.cpp:306
+#: src/main.cpp:304
 #, fuzzy
 msgid "Global audio effects"
 msgstr "_Klávesové zkratky"
 
-#: src/main.cpp:308
+#: src/main.cpp:305
 msgid "© 2017-2025 EasyEffects Team"
 msgstr ""
 
-#: src/main.cpp:310
+#: src/main.cpp:307
 #, fuzzy
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:311
+#: src/main.cpp:307
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Obálka"
 
-#: src/main.cpp:315
+#: src/main.cpp:311
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 
-#: src/main.cpp:315
+#: src/main.cpp:311
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""

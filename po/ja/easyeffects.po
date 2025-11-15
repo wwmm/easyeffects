@@ -2895,29 +2895,29 @@ msgstr "ステレオベース"
 msgid "Stereo phase"
 msgstr "ステレオ位相"
 
-#: src/main.cpp:306
+#: src/main.cpp:306 src/main.cpp:304
 msgid "Global audio effects"
 msgstr "グローバルオーディオエフェクト"
 
-#: src/main.cpp:308
+#: src/main.cpp:308 src/main.cpp:305
 msgid "© 2017-2025 EasyEffects Team"
 msgstr "© 2017-2025 EasyEffects Team"
 
-#: src/main.cpp:310
+#: src/main.cpp:310 src/main.cpp:307
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:311
+#: src/main.cpp:311 src/main.cpp:307
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "開発者"
 
-#: src/main.cpp:315
+#: src/main.cpp:315 src/main.cpp:311
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Gemini, Suu"
 
-#: src/main.cpp:315
+#: src/main.cpp:315 src/main.cpp:311
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "suunya21@gmail.com"
