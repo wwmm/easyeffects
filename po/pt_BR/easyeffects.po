@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-15 01:35-0300\n"
-"PO-Revision-Date: 2025-11-15 17:56+0000\n"
+"PO-Revision-Date: 2025-11-15 18:03+0000\n"
 "Last-Translator: Wellington Wallace <wellingtonwallace@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "easyeffects/main/pt_BR/>\n"
@@ -2544,14 +2544,15 @@ msgid ""
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:467
-#, fuzzy
 msgid "Autoload delay"
-msgstr "Carregamento automático"
+msgstr "Atraso do carregamento automático"
 
 #: src/contents/ui/PreferencesSheet.qml:468
 msgid ""
 "Delay between receiving a new device route and the call to autoload a preset."
 msgstr ""
+"Atraso entre o recebimento de um novo dispositivo e a invocação de uma pré-"
+"definição de carregamento automático."
 
 #: src/contents/ui/PreferencesSheet.qml:491
 #, fuzzy
