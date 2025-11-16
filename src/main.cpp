@@ -326,11 +326,6 @@ int main(int argc, char* argv[]) {
 
   KColorSchemeManager::instance();
 
-  QApplication::setStyle(QStringLiteral("breeze"));
-  if (qEnvironmentVariableIsEmpty("QT_QUICK_CONTROLS_STYLE")) {
-    QQuickStyle::setStyle(QStringLiteral("org.kde.desktop"));
-  }
-
   // Parsing command line options
 
   auto cmd_parser = std::make_unique<CommandLineParser>(about);
@@ -362,6 +357,16 @@ int main(int argc, char* argv[]) {
   auto local_server = std::make_unique<LocalServer>();
   auto global_shortcuts = std::make_unique<GlobalShortcuts>();
   auto autostart = std::make_unique<Autostart>();
+
+  // theme initialization
+
+  if (db::Main::forceBreezeTheme()) {
+    QApplication::setStyle(QStringLiteral("breeze"));
+  }
+
+  if (qEnvironmentVariableIsEmpty("QT_QUICK_CONTROLS_STYLE")) {
+    QQuickStyle::setStyle(QStringLiteral("org.kde.desktop"));
+  }
 
   QQmlApplicationEngine engine;
 
