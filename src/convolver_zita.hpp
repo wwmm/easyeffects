@@ -21,7 +21,6 @@
 
 #include <zita-convolver.h>
 #include <cstdint>
-#include <memory>
 #include <span>
 
 class ConvolverZita {
@@ -40,8 +39,10 @@ class ConvolverZita {
 
   void process(std::span<float> dataLeft, std::span<float> dataRight);
 
+  void stop();
+
  private:
-  std::unique_ptr<Convproc> conv;
+  Convproc* conv = nullptr;
 
   bool ready = false;
 

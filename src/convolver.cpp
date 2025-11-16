@@ -118,6 +118,8 @@ Convolver::~Convolver() {
 
   ready = false;
 
+  zita.stop();
+
   util::debug(std::format("{}{} destroyed", log_tag, name.toStdString()));
 }
 

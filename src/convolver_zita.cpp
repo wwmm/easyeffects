@@ -36,15 +36,36 @@ constexpr auto ZITA_SCHED_CLASS = SCHED_FIFO;
 
 ConvolverZita::ConvolverZita() = default;
 
-ConvolverZita::~ConvolverZita() = default;
+ConvolverZita::~ConvolverZita() {
+  if (conv != nullptr) {
+    conv->stop_process();
+
+    conv->cleanup();
+
+    delete conv;
+  }
+}
+
+void ConvolverZita::stop() {
+  if (conv) {
+    conv->stop_process();
+  }
+}
 
 auto ConvolverZita::init(uint32_t sampleCount, uint32_t blockSize, std::span<float> kernelL, std::span<float> kernelR)
     -> bool {
   ready = false;
   bufferSize = blockSize;
 
-  // This should destroy the previous instance
-  conv = std::make_unique<Convproc>();
+  if (conv != nullptr) {
+    conv->stop_process();
+
+    conv->cleanup();
+
+    delete conv;
+  }
+
+  conv = new Convproc();
 
   conv->set_options(0);
 
