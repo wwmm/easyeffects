@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-16 21:24+0000\n"
-"PO-Revision-Date: 2025-11-14 21:46+0000\n"
+"POT-Creation-Date: 2025-11-16 19:25+0000\n"
+"PO-Revision-Date: 2025-11-16 21:28+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -931,7 +931,6 @@ msgid "Autogain"
 msgstr "Guadagno Automatico"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:31
-#, fuzzy
 msgid "Imported a new Convolver impulse file."
 msgstr "Importato un nuovo file di risposta impulsiva del Convolver."
 
@@ -2391,12 +2390,12 @@ msgid "Most used presets"
 msgstr "Profili più utilizzati"
 
 #: src/contents/ui/PreferencesSheet.qml:466
-msgid "Force KDE's Breeze theme when Easy Effects starts"
+msgid "Force KDE's Breeze Theme when EasyEffects starts"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:467
 msgid ""
-"It is necessary to restart the service for changes in this setting to take "
+"It is necessary to restart EasyEffects for changes in this setting to take "
 "effect."
 msgstr ""
 
@@ -3079,6 +3078,16 @@ msgstr "Equalizzatore, Compressore e Altri Effetti Audio"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "Effetti audio semplici"
+
+#: src/contents/ui/PreferencesSheet.qml:466
+msgid "Force KDE's Breeze theme when Easy Effects starts"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:467
+msgid ""
+"It is necessary to restart the service for changes in this setting to take "
+"effect."
+msgstr ""
 
 #~ msgid "Hardware profile"
 #~ msgstr "Profilo dispositivo"
