@@ -41,8 +41,6 @@ ConvolverZita::~ConvolverZita() {
   if (conv != nullptr) {
     conv->stop_process();
 
-    conv->cleanup();
-
     delete conv;
   }
 }
@@ -62,8 +60,6 @@ auto ConvolverZita::init(uint32_t sampleCount, uint32_t blockSize, std::span<flo
 
   if (conv != nullptr) {
     conv->stop_process();
-
-    conv->cleanup();
 
     delete conv;
   }
