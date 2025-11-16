@@ -38,6 +38,7 @@
 #include <sndfile.hh>
 #include <span>
 #include <string>
+#include <utility>
 #include <vector>
 #include "convolver_kernel_manager.hpp"
 #include "db_manager.hpp"
@@ -108,17 +109,17 @@ Convolver::~Convolver() {
 
   settings->disconnect();
 
-  for (auto& t : mythreads) {
-    t.join();
-  }
-
-  mythreads.clear();
-
   std::scoped_lock<std::mutex> lock(data_mutex);
 
   ready = false;
 
   zita.stop();
+
+  for (auto& t : mythreads) {
+    t.join();
+  }
+
+  mythreads.clear();
 
   util::debug(std::format("{}{} destroyed", log_tag, name.toStdString()));
 }
@@ -342,8 +343,12 @@ void Convolver::load_kernel_file() {
 
   util::debug(std::format("{}{}: kernel correctly loaded", log_tag, name.toStdString()));
 
-  mythreads.emplace_back(  // Using emplace_back here makes sense
-      [this]() { chart_kernel_fft(kernel.left_channel, kernel.right_channel, kernel.rate); });
+  auto left_copy = kernel.left_channel;
+  auto right_copy = kernel.right_channel;
+  auto rate_copy = kernel.rate;
+
+  mythreads.emplace_back([this, left_copy = std::move(left_copy), right_copy = std::move(right_copy),
+                          rate_copy = rate_copy]() { chart_kernel_fft(left_copy, right_copy, rate_copy); });
 }
 
 void Convolver::apply_kernel_autogain() {
@@ -430,7 +435,7 @@ void Convolver::combine_kernels(const std::string& kernel_1_name,
                                 const std::string& output_file_name) {
   kernel_manager.combineKernels(kernel_1_name, kernel_2_name, output_file_name);
 
-  Q_EMIT kernelCombinationStopped();
+  QMetaObject::invokeMethod(this, [this] { Q_EMIT kernelCombinationStopped(); });
 }
 
 void Convolver::combineKernels(const QString& kernel1, const QString& kernel2, const QString& outputName) {
@@ -443,19 +448,19 @@ void Convolver::combineKernels(const QString& kernel1, const QString& kernel2, c
 void Convolver::chart_kernel_fft(const std::vector<float>& kernel_L,
                                  const std::vector<float>& kernel_R,
                                  const float& kernel_rate) {
-  std::scoped_lock<std::mutex> lock(data_mutex);
-
   kernel_fft.calculate_fft(kernel_L, kernel_R, kernel_rate, interpPoints);
 
-  chartMagLfftLinear = kernel_fft.get_linear_L();
-  chartMagRfftLinear = kernel_fft.get_linear_R();
-  chartMagLfftLog = kernel_fft.get_log_L();
-  chartMagRfftLog = kernel_fft.get_log_R();
+  QMetaObject::invokeMethod(this, [this] {
+    chartMagLfftLinear = kernel_fft.get_linear_L();
+    chartMagRfftLinear = kernel_fft.get_linear_R();
+    chartMagLfftLog = kernel_fft.get_log_L();
+    chartMagRfftLog = kernel_fft.get_log_R();
 
-  Q_EMIT chartMagLfftLinearChanged();
-  Q_EMIT chartMagRfftLinearChanged();
-  Q_EMIT chartMagLfftLogChanged();
-  Q_EMIT chartMagRfftLogChanged();
+    Q_EMIT chartMagLfftLinearChanged();
+    Q_EMIT chartMagRfftLinearChanged();
+    Q_EMIT chartMagLfftLogChanged();
+    Q_EMIT chartMagRfftLogChanged();
+  });
 }
 
 void Convolver::clear_chart_data() {
