@@ -21,6 +21,7 @@
 
 #include <qmap.h>
 #include <qobject.h>
+#include <qqmlintegration.h>
 #include <qtmetamacros.h>
 #include <QTimer>
 #include "easyeffects_db.h"                // IWYU pragma: export
@@ -34,6 +35,9 @@ namespace db {
 
 class Manager : public QObject {
   Q_OBJECT
+  QML_NAMED_ELEMENT(DatabaseManager)
+  QML_SINGLETON
+  QML_UNCREATABLE("C++ singleton - use DatabaseManager.instance")
 
   Q_PROPERTY(db::Main* main MEMBER main NOTIFY mainChanged)
   Q_PROPERTY(db::Spectrum* spectrum MEMBER spectrum NOTIFY spectrumChanged)
