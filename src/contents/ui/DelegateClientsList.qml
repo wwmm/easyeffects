@@ -45,14 +45,14 @@ Controls.ItemDelegate {
 
         Controls.Label {
             text: i18n("Access: %1", root.access)
-            visible: root.api
+            visible: root.access
 
             Layout.fillWidth: true
         }
 
         Controls.Label {
             text: i18n("API: %1", root.api)
-            visible: root.access
+            visible: root.api
 
             Layout.fillWidth: true
         }
