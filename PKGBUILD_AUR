@@ -17,6 +17,7 @@ depends=(
   'kiconthemes'
   'kconfigwidgets'
   'qqc2-desktop-style' 
+  'breeze'
   'breeze-icons' 
   'qt6-base' 
   'qt6-graphs' 

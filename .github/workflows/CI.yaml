@@ -188,6 +188,7 @@ jobs:
         kf6-kcoreaddons-devel
         kirigami-addons6-devel
         kf6-qqc2-desktop-style
+        breeze
         desktop-file-utils
         itstool
         libxml2-devel
