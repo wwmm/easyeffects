@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-28 14:40+0000\n"
-"PO-Revision-Date: 2025-08-30 00:58+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2025-11-16 15:04+0000\n"
+"Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/changelog/zh_Hans/>\n"
 "Language: zh_CN\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.13.1-dev\n"
+"X-Generator: Weblate 5.15-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -74,7 +74,6 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:16
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:18
-#, fuzzy
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
@@ -127,9 +126,8 @@ msgstr "卷积混响器显示的音频控件"
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:537
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:547
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:560
-#, fuzzy
 msgid "Features:"
-msgstr "功能："
+msgstr "新增功能："
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
 msgid ""
@@ -214,7 +212,8 @@ msgid ""
 "The latest Maximizer plugin releases do not have the ceiling control "
 "anymore. So we removed it from our user interface (you can use the plugin "
 "input gain to retrieve the same functionality)."
-msgstr ""
+msgstr "最新的放大器版本不再有上限控制，因此我们从用户界面中移除了此选项（您仍可用插"
+"件输入增益达成相同效果）。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:67
 msgid ""
@@ -260,14 +259,16 @@ msgid ""
 "Presets with Convolver and/or Noise Reduction (RNNoise) effects created "
 "before 7.2.0 version are deprecated. Please reload the irs/model file inside "
 "the Convolver/RNNoise UI and resave the preset."
-msgstr ""
+msgstr "不再支持在7.2.0版本前创建的含卷积混响器与/或降噪器的预设。请在卷积混响器/降噪"
+"器界面中重新加载脉冲响应/模型文件并重新保存预设。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:78
 msgid ""
 "Improved the pipeline management system. Non-limiter effects are placed "
 "before the limiter even if the last two plugins in the pipeline are a "
 "limiter followed by a level meter."
-msgstr ""
+msgstr "改进了管线管理系统。限制器以外的音效会排在限制器之前，即使限制器之后还有电平"
+"表。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:80
 msgid ""
@@ -276,14 +277,13 @@ msgid ""
 msgstr "已修复导致水平表在某些情况下无法更新的回归错误。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:89
-#, fuzzy
 msgid ""
 "We now set monitor.passthrough = true in our virtual devices. This will "
 "allow latency offset to be properly applied by video players when PipeWire "
 "&gt; 1.0.3 is released."
 msgstr ""
-"本程序现在会为本程序的虚拟设备设置 monitor.passthrough = true。在 PipeWire > "
-"1.0.3 发布后，这将允许视频播放器正确设置延迟偏移。"
+"本程序现在会为所使用的虚拟设备设置 monitor.passthrough = true。在 PipeWire > "
+"1.0.3 发布后，这将允许视频播放器正确设置音频延迟偏移。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:90
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:237
@@ -297,6 +297,10 @@ msgid ""
 "EE is recording from. THe stream has to be started when EE is already "
 "running for this logic to take effect."
 msgstr ""
+"EasyEffects 将会尝试避免将其虚拟声源（virtual sources）移动到用户已设置了自定"
+"义目标对象（custom target.object）的音频流，前提是该自定义目标对象不同于 "
+"EasyEffects 正在录制的麦克风。这一逻辑仅在音频流于 EasyEffects 运行时启动时生"
+"效。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:101
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:115
@@ -315,7 +319,8 @@ msgstr "均衡性现可到处基本的APO预设文件"
 msgid ""
 "Our players/recorders tab will show the audio client binary name in the "
 "cases were no app name is defined."
-msgstr ""
+msgstr "我们的“播放器/录音器”标签页将在未定义应用程序名称的情况下，显示音频客户端的二"
+"进制文件名。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:104
 msgid ""
@@ -351,7 +356,7 @@ msgstr "改进了与最新LSP库的兼容性。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:140
 msgid "Fixed an incorrect drawing of the impulse response file characteristics"
-msgstr ""
+msgstr "修复了脉冲响应文件特征绘图不正确的问题"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:150
 msgid ""
@@ -369,7 +374,8 @@ msgstr "降噪插件新增控件，允许用户关闭插件的语音检测功能
 msgid ""
 "The Filter effect has been improved with new parameters since it has been "
 "ported from Calf Studio to Linux Studio Plugins."
-msgstr ""
+msgstr "滤波器（Filter）从 Calf Studio 移植到了 Linux Studio Plugins，并新增了参数，"
+"效果已经得到改进。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:170
 msgid ""
@@ -396,7 +402,8 @@ msgstr "EasyEffects现在也可使用libc++构建了。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:183
 msgid "The Expander from Linux Studio Plugins can be used in Easy Effects."
-msgstr ""
+msgstr "来自 Linux Studio Plugins 的 Expander（扩展器）现在可以在 EasyEffects 中使用"
+"。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:184
 msgid ""
@@ -404,16 +411,18 @@ msgid ""
 "efficient input of values that are hard to set in the scale. More details at "
 "issue 1383."
 msgstr ""
+"均衡器（Equalizer）的频段现在增加了一个额外的增益控制，可以更高效地输入那些在"
+"刻度尺上难以设置的精确值。更多详情请参阅 Issue #1383。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:185
 msgid ""
 "Added the ability to select and load multiple files in the opening dialogs "
 "for presets, Convolver impulse responses and RNNoise models."
-msgstr ""
+msgstr "现在可以在打开预设、卷积混响器和 RNNoise 模型的对话框中选择并加载多个文件。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:187
 msgid "Fixed the Solo button in the Equalizer band settings."
-msgstr ""
+msgstr "修复了均衡器频带设置里的独奏按钮。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:189
 msgid ""
@@ -442,7 +451,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:199
 msgid "Fractional semitone values can now be used in the Pitch Shift effect."
-msgstr ""
+msgstr "现在可以在音高效果中使用小数半音值。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:201
 msgid ""
@@ -450,6 +459,8 @@ msgid ""
 "system default device changes and Use Default is enabled. This fixes issue "
 "issue 1989."
 msgstr ""
+"当系统默认设备发生变化并且“使用默认设备”选项被启用时，我们 PipeWire 标签页中"
+"的输入/输出设备下拉菜单将会随之更新。这修复了 Issue #1989。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:210
 msgid "A new Level Meter plugin based on libebur128 has been added."
@@ -473,7 +484,7 @@ msgstr "改进了对近期PipeWire版本的支持。更多详情请见"
 msgid ""
 "Active Equalizer filters are not set to Bell type anymore when the number of "
 "bands changes."
-msgstr ""
+msgstr "改变均衡器频带数时，已激活的滤波器将不再被设为钟形。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:216
 msgid ""
@@ -516,7 +527,7 @@ msgstr ""
 msgid ""
 "The Equalizer \"sort bands\" feature is now ordering bands on GSettings, so "
 "the result can be saved into presets."
-msgstr ""
+msgstr "均衡器现在用GSettings管理频带排序，如此便可以将结果保存到预设中。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:248
 msgid "Improved performance when resetting keys."
@@ -525,7 +536,7 @@ msgstr "改善了将键重置时的性能。"
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:250
 msgid ""
 "Fixed the \"Large Empty Hall\" preset selection in the Reverberation effect."
-msgstr ""
+msgstr "修复了混响器效果中“空旷的大厅”预设。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:251
 msgid ""
@@ -673,9 +684,8 @@ msgid "The documentation has been updated"
 msgstr "文档已更新"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:300
-#, fuzzy
 msgid "Improved debug messages"
-msgstr "改善了调试信息"
+msgstr "改进了调试信息"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:311
 msgid "Improved translations"
