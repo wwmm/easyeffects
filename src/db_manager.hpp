@@ -19,10 +19,14 @@
 
 #pragma once
 
+#include <qassert.h>
+#include <qjsengine.h>
 #include <qmap.h>
 #include <qobject.h>
+#include <qqmlengine.h>
 #include <qqmlintegration.h>
 #include <qtmetamacros.h>
+#include <qtpreprocessorsupport.h>
 #include <QTimer>
 #include "easyeffects_db.h"                // IWYU pragma: export
 #include "easyeffects_db_spectrum.h"       // IWYU pragma: export
@@ -59,6 +63,21 @@ class Manager : public QObject {
   static Manager& self() {
     static Manager m;
     return m;
+  }
+
+  // Singleton provider for QML
+  static Manager* create(QQmlEngine* qmlEngine, QJSEngine* jsEngine) {
+    Q_UNUSED(jsEngine)
+
+    // The engine has to have the same thread affinity as the singleton.
+
+    Q_ASSERT(qmlEngine->thread() == self().thread());
+
+    // Explicitly specify C++ ownership so that the engine doesn't delete the instance.
+
+    QJSEngine::setObjectOwnership(&self(), QJSEngine::CppOwnership);
+
+    return &self();
   }
 
   Q_INVOKABLE void saveAll() const;
