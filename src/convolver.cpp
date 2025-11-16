@@ -435,7 +435,7 @@ void Convolver::combine_kernels(const std::string& kernel_1_name,
                                 const std::string& output_file_name) {
   kernel_manager.combineKernels(kernel_1_name, kernel_2_name, output_file_name);
 
-  QMetaObject::invokeMethod(this, [this] { Q_EMIT kernelCombinationStopped(); });
+  QMetaObject::invokeMethod(this, [this] { Q_EMIT kernelCombinationStopped(); }, Qt::QueuedConnection);
 }
 
 void Convolver::combineKernels(const QString& kernel1, const QString& kernel2, const QString& outputName) {
@@ -450,17 +450,20 @@ void Convolver::chart_kernel_fft(const std::vector<float>& kernel_L,
                                  const float& kernel_rate) {
   kernel_fft.calculate_fft(kernel_L, kernel_R, kernel_rate, interpPoints);
 
-  QMetaObject::invokeMethod(this, [this] {
-    chartMagLfftLinear = kernel_fft.get_linear_L();
-    chartMagRfftLinear = kernel_fft.get_linear_R();
-    chartMagLfftLog = kernel_fft.get_log_L();
-    chartMagRfftLog = kernel_fft.get_log_R();
+  QMetaObject::invokeMethod(
+      this,
+      [this] {
+        chartMagLfftLinear = kernel_fft.get_linear_L();
+        chartMagRfftLinear = kernel_fft.get_linear_R();
+        chartMagLfftLog = kernel_fft.get_log_L();
+        chartMagRfftLog = kernel_fft.get_log_R();
 
-    Q_EMIT chartMagLfftLinearChanged();
-    Q_EMIT chartMagRfftLinearChanged();
-    Q_EMIT chartMagLfftLogChanged();
-    Q_EMIT chartMagRfftLogChanged();
-  });
+        Q_EMIT chartMagLfftLinearChanged();
+        Q_EMIT chartMagRfftLinearChanged();
+        Q_EMIT chartMagLfftLogChanged();
+        Q_EMIT chartMagRfftLogChanged();
+      },
+      Qt::QueuedConnection);
 }
 
 void Convolver::clear_chart_data() {
