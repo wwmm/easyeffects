@@ -3079,6 +3079,16 @@ msgstr "Equalizzatore, Compressore e Altri Effetti Audio"
 msgid "Simple audio effects"
 msgstr "Effetti audio semplici"
 
+#: src/contents/ui/PreferencesSheet.qml:466
+msgid "Force KDE's Breeze theme when Easy Effects starts"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:467
+msgid ""
+"It is necessary to restart the service for changes in this setting to take "
+"effect."
+msgstr ""
+
 #~ msgid "Hardware profile"
 #~ msgstr "Profilo dispositivo"
 
