@@ -36,6 +36,8 @@ constexpr auto ZITA_SCHED_CLASS = SCHED_FIFO;
 ConvolverZita::ConvolverZita() = default;
 
 ConvolverZita::~ConvolverZita() {
+  ready = false;
+
   if (conv != nullptr) {
     conv->stop_process();
 
@@ -46,6 +48,8 @@ ConvolverZita::~ConvolverZita() {
 }
 
 void ConvolverZita::stop() {
+  ready = false;
+
   if (conv) {
     conv->stop_process();
   }
@@ -89,7 +93,8 @@ auto ConvolverZita::init(uint32_t sampleCount, uint32_t blockSize, std::span<flo
   }
 
   ready = true;
-  return true;
+
+  return ready;
 }
 
 void ConvolverZita::process(std::span<float> left, std::span<float> right) {
