@@ -212,7 +212,8 @@ msgid ""
 "The latest Maximizer plugin releases do not have the ceiling control "
 "anymore. So we removed it from our user interface (you can use the plugin "
 "input gain to retrieve the same functionality)."
-msgstr "最新的放大器版本不再有上限控制，因此我们从用户界面中移除了此选项（您仍可用插"
+msgstr ""
+"最新的放大器版本不再有上限控制，因此我们从用户界面中移除了此选项（您仍可用插"
 "件输入增益达成相同效果）。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:67
@@ -259,7 +260,8 @@ msgid ""
 "Presets with Convolver and/or Noise Reduction (RNNoise) effects created "
 "before 7.2.0 version are deprecated. Please reload the irs/model file inside "
 "the Convolver/RNNoise UI and resave the preset."
-msgstr "不再支持在7.2.0版本前创建的含卷积混响器与/或降噪器的预设。请在卷积混响器/降噪"
+msgstr ""
+"不再支持在7.2.0版本前创建的含卷积混响器与/或降噪器的预设。请在卷积混响器/降噪"
 "器界面中重新加载脉冲响应/模型文件并重新保存预设。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:78
@@ -267,7 +269,8 @@ msgid ""
 "Improved the pipeline management system. Non-limiter effects are placed "
 "before the limiter even if the last two plugins in the pipeline are a "
 "limiter followed by a level meter."
-msgstr "改进了管线管理系统。限制器以外的音效会排在限制器之前，即使限制器之后还有电平"
+msgstr ""
+"改进了管线管理系统。限制器以外的音效会排在限制器之前，即使限制器之后还有电平"
 "表。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:80
@@ -319,7 +322,8 @@ msgstr "均衡性现可到处基本的APO预设文件"
 msgid ""
 "Our players/recorders tab will show the audio client binary name in the "
 "cases were no app name is defined."
-msgstr "我们的“播放器/录音器”标签页将在未定义应用程序名称的情况下，显示音频客户端的二"
+msgstr ""
+"我们的“播放器/录音器”标签页将在未定义应用程序名称的情况下，显示音频客户端的二"
 "进制文件名。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:104
@@ -374,7 +378,8 @@ msgstr "降噪插件新增控件，允许用户关闭插件的语音检测功能
 msgid ""
 "The Filter effect has been improved with new parameters since it has been "
 "ported from Calf Studio to Linux Studio Plugins."
-msgstr "滤波器（Filter）从 Calf Studio 移植到了 Linux Studio Plugins，并新增了参数，"
+msgstr ""
+"滤波器（Filter）从 Calf Studio 移植到了 Linux Studio Plugins，并新增了参数，"
 "效果已经得到改进。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:170
@@ -402,8 +407,9 @@ msgstr "EasyEffects现在也可使用libc++构建了。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:183
 msgid "The Expander from Linux Studio Plugins can be used in Easy Effects."
-msgstr "来自 Linux Studio Plugins 的 Expander（扩展器）现在可以在 EasyEffects 中使用"
-"。"
+msgstr ""
+"来自 Linux Studio Plugins 的 Expander（扩展器）现在可以在 EasyEffects 中使"
+"用。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:184
 msgid ""
@@ -418,7 +424,8 @@ msgstr ""
 msgid ""
 "Added the ability to select and load multiple files in the opening dialogs "
 "for presets, Convolver impulse responses and RNNoise models."
-msgstr "现在可以在打开预设、卷积混响器和 RNNoise 模型的对话框中选择并加载多个文件。"
+msgstr ""
+"现在可以在打开预设、卷积混响器和 RNNoise 模型的对话框中选择并加载多个文件。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:187
 msgid "Fixed the Solo button in the Equalizer band settings."
