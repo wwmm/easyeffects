@@ -7,7 +7,7 @@ import QtQuick.Layouts
 import "Common.js" as Common
 import ee.presets as Presets
 import ee.tags.plugin.name as TagsPluginName // qmllint disable
-import ee.type.presets as TypePresets
+import ee.ui
 import org.kde.kirigami as Kirigami
 
 Kirigami.ScrollablePage {
@@ -196,7 +196,7 @@ Kirigami.ScrollablePage {
                         Component.onCompleted: {
                             for (let n = 0; n < model.rowCount(); n++) {
                                 const proxyIndex = model.index(n, 0);
-                                const name = model.data(proxyIndex, TypePresets.ListModel.Name);
+                                const name = model.data(proxyIndex, PresetsListModel.Name);
                                 if (name === rnnoisePage.pluginDB.modelName) {
                                     currentIndex = n;
                                     break;

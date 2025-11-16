@@ -2,11 +2,12 @@ import Qt.labs.platform
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
-import ee.autostart
+import ee.autostart //qmllint disable
 import ee.database as DB
 import ee.pipeline as Pipeline
 import ee.pipewire as PW
 import ee.presets as Presets
+import ee.ui
 import org.kde.kirigami as Kirigami
 
 Kirigami.ApplicationWindow {

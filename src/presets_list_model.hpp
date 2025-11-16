@@ -31,7 +31,7 @@
 
 class ListModel : public QAbstractListModel {
   Q_OBJECT
-  QML_ELEMENT
+  QML_NAMED_ELEMENT(PresetsListModel)
 
  public:
   enum class ModelType { Local = Qt::UserRole, Community, Autoloading, IRS, RNNOISE };

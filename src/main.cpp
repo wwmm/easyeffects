@@ -256,7 +256,7 @@ static void initQml(QQmlApplicationEngine& engine,
     }
   });
 
-  engine.loadFromModule("ee.type.presets", "Main");
+  engine.loadFromModule("ee.ui", "Main");
 
   if (engine.rootObjects().isEmpty()) {
     throw std::runtime_error("Failed to load QML UI");

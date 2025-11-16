@@ -14,7 +14,7 @@ set_source_files_properties(contents/ui/Validators.qml
     PROPERTIES QT_QML_SINGLETON_TYPE TRUE)
 
 qt_add_qml_module(easyeffects
-    URI ee.type.presets
+    URI ee.ui
     VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
     SOURCES
         presets_list_model.cpp presets_list_model.hpp

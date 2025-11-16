@@ -4,7 +4,7 @@ import QtQuick.Layouts
 import "Common.js" as Common
 import ee.database as DB
 import ee.presets as Presets
-import ee.type.presets as TypePresets
+import ee.ui
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.components as Components
 import org.kde.kirigamiaddons.formcard as FormCard
@@ -131,7 +131,7 @@ Kirigami.OverlaySheet {
                     const fallbackPreset = DB.Manager.main.visiblePage === 0 ? DB.Manager.main.outputAutoloadingFallbackPreset : DB.Manager.main.inputAutoloadingFallbackPreset;
                     for (let n = 0; n < model.rowCount(); n++) {
                         const proxyIndex = model.index(n, 0);
-                        const name = model.data(proxyIndex, TypePresets.ListModel.Name);
+                        const name = model.data(proxyIndex, PresetsListModel.Name);
                         if (name === fallbackPreset)
                             return n;
                     }
