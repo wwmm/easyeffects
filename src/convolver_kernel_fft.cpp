@@ -35,22 +35,6 @@ ConvolverKernelFFT::~ConvolverKernelFFT() {
   clear_data();
 }
 
-auto ConvolverKernelFFT::get_linear_L() const -> QList<QPointF> {
-  return linear_L;
-}
-
-auto ConvolverKernelFFT::get_linear_R() const -> QList<QPointF> {
-  return linear_R;
-}
-
-auto ConvolverKernelFFT::get_log_L() const -> QList<QPointF> {
-  return log_L;
-}
-
-auto ConvolverKernelFFT::get_log_R() const -> QList<QPointF> {
-  return log_R;
-}
-
 auto ConvolverKernelFFT::calculate_fft(const std::vector<float>& kernel_L,
                                        const std::vector<float>& kernel_R,
                                        float kernel_rate,

@@ -35,22 +35,14 @@ class ConvolverKernelFFT {
                      float kernel_rate,
                      int interp_points = 1000) -> void;
 
-  [[nodiscard]] auto get_linear_L() const -> QList<QPointF>;
-
-  [[nodiscard]] auto get_linear_R() const -> QList<QPointF>;
-
-  [[nodiscard]] auto get_log_L() const -> QList<QPointF>;
-
-  [[nodiscard]] auto get_log_R() const -> QList<QPointF>;
-
-  auto clear_data() -> void;
-
- private:
   QList<QPointF> linear_L;
   QList<QPointF> linear_R;
   QList<QPointF> log_L;
   QList<QPointF> log_R;
 
+  auto clear_data() -> void;
+
+ private:
   static auto apply_hanning_window(std::vector<double>& signal) -> void;
 
   static auto compute_fft_magnitude(const std::vector<double>& real_input) -> std::vector<double>;

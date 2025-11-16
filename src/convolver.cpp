@@ -107,6 +107,7 @@ Convolver::~Convolver() {
     disconnect_from_pw();
   }
 
+  this->disconnect();
   settings->disconnect();
 
   std::scoped_lock<std::mutex> lock(data_mutex);
@@ -453,10 +454,15 @@ void Convolver::chart_kernel_fft(const std::vector<float>& kernel_L,
   QMetaObject::invokeMethod(
       this,
       [this] {
-        chartMagLfftLinear = kernel_fft.get_linear_L();
-        chartMagRfftLinear = kernel_fft.get_linear_R();
-        chartMagLfftLog = kernel_fft.get_log_L();
-        chartMagRfftLog = kernel_fft.get_log_R();
+        auto linear_L = kernel_fft.linear_L;
+        auto linear_R = kernel_fft.linear_R;
+        auto log_L = kernel_fft.log_L;
+        auto log_R = kernel_fft.log_R;
+
+        chartMagLfftLinear.swap(linear_L);
+        chartMagRfftLinear.swap(linear_R);
+        chartMagLfftLog.swap(log_L);
+        chartMagRfftLog.swap(log_R);
 
         Q_EMIT chartMagLfftLinearChanged();
         Q_EMIT chartMagRfftLinearChanged();
