@@ -85,7 +85,7 @@ FormCard.AbstractFormDelegate {
                 elide: control.elide
                 color: control.enabled ? Kirigami.Theme.textColor : Kirigami.Theme.disabledTextColor
                 wrapMode: control.wrapMode
-                maximumLineCount: control.maximumLineCount
+                maximumLineCount: control.maximumLineCount > 0 ? control.maximumLineCount : Number.POSITIVE_INFINITY
                 horizontalAlignment: control.labelAlignment
             }
 
@@ -97,7 +97,6 @@ FormCard.AbstractFormDelegate {
                 elide: control.elide
                 color: Kirigami.Theme.disabledTextColor
                 wrapMode: control.wrapMode
-                maximumLineCount: control.maximumLineCount
                 horizontalAlignment: control.labelAlignment
                 visible: !Common.isEmpty(control.subtitle)
             }

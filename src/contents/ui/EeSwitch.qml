@@ -40,7 +40,7 @@ FormCard.AbstractFormDelegate {
                 elide: Text.ElideRight
                 color: control.enabled ? Kirigami.Theme.textColor : Kirigami.Theme.disabledTextColor
                 wrapMode: Text.Wrap
-                maximumLineCount: control.maximumLineCount
+                maximumLineCount: control.maximumLineCount > 0 ? control.maximumLineCount : Number.POSITIVE_INFINITY
             }
 
             Label {
@@ -49,7 +49,6 @@ FormCard.AbstractFormDelegate {
                 elide: Text.ElideRight
                 color: Kirigami.Theme.disabledTextColor
                 wrapMode: Text.Wrap
-                maximumLineCount: control.maximumLineCount
                 visible: !Common.isEmpty(control.subtitle)
             }
         }
