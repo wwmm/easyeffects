@@ -64,6 +64,10 @@ Autogain::~Autogain() {
     disconnect_from_pw();
   }
 
+  disconnect();
+  disconnect();
+  disconnect();
+  disconnect();
   settings->disconnect();
 
   for (auto& t : mythreads) {

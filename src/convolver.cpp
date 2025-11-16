@@ -110,6 +110,7 @@ Convolver::~Convolver() {
     disconnect_from_pw();
   }
 
+  disconnect();
   settings->disconnect();
 
   std::scoped_lock<std::mutex> lock(data_mutex);

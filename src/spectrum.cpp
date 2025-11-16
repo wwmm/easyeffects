@@ -90,6 +90,7 @@ Spectrum::~Spectrum() {
     disconnect_from_pw();
   }
 
+  disconnect();
   settings->disconnect();
 
   fftw_ready = false;

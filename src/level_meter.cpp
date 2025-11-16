@@ -53,6 +53,7 @@ LevelMeter::~LevelMeter() {
     disconnect_from_pw();
   }
 
+  disconnect();
   settings->disconnect();
 
   for (auto& t : mythreads) {

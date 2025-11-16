@@ -178,6 +178,7 @@ EchoCanceller::~EchoCanceller() {
     disconnect_from_pw();
   }
 
+  disconnect();
   settings->disconnect();
 
   data_mutex.lock();
