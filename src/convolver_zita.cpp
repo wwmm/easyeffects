@@ -36,13 +36,7 @@ constexpr auto ZITA_SCHED_CLASS = SCHED_FIFO;
 
 ConvolverZita::ConvolverZita() = default;
 
-ConvolverZita::~ConvolverZita() {
-  if (conv) {
-    conv->stop_process();
-    conv->cleanup();
-    conv.reset();
-  }
-}
+ConvolverZita::~ConvolverZita() = default;
 
 auto ConvolverZita::init(uint32_t sampleCount, uint32_t blockSize, std::span<float> kernelL, std::span<float> kernelR)
     -> bool {
