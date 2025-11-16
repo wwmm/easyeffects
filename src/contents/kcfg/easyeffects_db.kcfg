@@ -173,7 +173,7 @@
             <default>false</default>
         </entry>
         <entry name="forceBreezeTheme" type="Bool">
-            <label>Force KDE Breeze theme when EasyEffects starts</label>
+            <label>Force KDE Breeze theme when Easy Effects starts</label>
             <default>true</default>
         </entry>
     </group>
