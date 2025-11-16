@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-15 17:00-0300\n"
-"PO-Revision-Date: 2025-11-14 15:51+0000\n"
+"PO-Revision-Date: 2025-11-16 19:28+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
 "ga/>\n"
@@ -866,9 +866,8 @@ msgid "Stereo split"
 msgstr "Scoilt steirió"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:31
-#, fuzzy
 msgid "Imported a new Convolver impulse file."
-msgstr "Iompórtáladh comhad implise Convolver nua."
+msgstr "Iompórtáladh comhad Convolver impulse nua."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:33
 msgid "Failed to import the Convolver impulse file."
@@ -2405,12 +2404,11 @@ msgid "Autoload delay"
 msgstr "Moill uathluchtaithe"
 
 #: src/contents/ui/PreferencesSheet.qml:468
-#, fuzzy
 msgid ""
 "Delay between receiving a new device route and the call to autoload a preset."
 msgstr ""
 "Moill idir bealach nua gléis a fháil agus an glao chun réamhshocrú a "
-"uathlódáil"
+"uathlódáil."
 
 #: src/contents/ui/PreferencesSheet.qml:491
 msgid "Global shortcuts"
