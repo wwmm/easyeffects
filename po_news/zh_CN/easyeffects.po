@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-28 14:40+0000\n"
-"PO-Revision-Date: 2025-11-16 09:51+0000\n"
-"Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
+"PO-Revision-Date: 2025-11-16 15:04+0000\n"
+"Last-Translator: StarOnTheSky <i@sots.eu.org>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/changelog/zh_Hans/>\n"
 "Language: zh_CN\n"
@@ -276,14 +276,13 @@ msgid ""
 msgstr "已修复导致水平表在某些情况下无法更新的回归错误。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:89
-#, fuzzy
 msgid ""
 "We now set monitor.passthrough = true in our virtual devices. This will "
 "allow latency offset to be properly applied by video players when PipeWire "
 "&gt; 1.0.3 is released."
 msgstr ""
-"本程序现在会为本程序的虚拟设备设置 monitor.passthrough = true。在 PipeWire > "
-"1.0.3 发布后，这将允许视频播放器正确设置延迟偏移。"
+"本程序现在会为所使用的虚拟设备设置 monitor.passthrough = true。在 PipeWire > "
+"1.0.3 发布后，这将允许视频播放器正确设置音频延迟偏移。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:90
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:237
@@ -297,6 +296,10 @@ msgid ""
 "EE is recording from. THe stream has to be started when EE is already "
 "running for this logic to take effect."
 msgstr ""
+"EasyEffects 将会尝试避免将其虚拟声源（virtual sources）移动到用户已设置了自定"
+"义目标对象（custom target.object）的音频流，前提是该自定义目标对象不同于 "
+"EasyEffects 正在录制的麦克风。这一逻辑仅在音频流于 EasyEffects 运行时启动时生"
+"效。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:101
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:115
@@ -315,7 +318,8 @@ msgstr "均衡性现可到处基本的APO预设文件"
 msgid ""
 "Our players/recorders tab will show the audio client binary name in the "
 "cases were no app name is defined."
-msgstr ""
+msgstr "我们的“播放器/录音器”标签页将在未定义应用程序名称的情况下，显示音频客户端的二"
+"进制文件名。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:104
 msgid ""
@@ -351,7 +355,7 @@ msgstr "改进了与最新LSP库的兼容性。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:140
 msgid "Fixed an incorrect drawing of the impulse response file characteristics"
-msgstr ""
+msgstr "修复了脉冲响应文件特征绘图不正确的问题"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:150
 msgid ""
@@ -369,7 +373,8 @@ msgstr "降噪插件新增控件，允许用户关闭插件的语音检测功能
 msgid ""
 "The Filter effect has been improved with new parameters since it has been "
 "ported from Calf Studio to Linux Studio Plugins."
-msgstr ""
+msgstr "滤波器（Filter）从 Calf Studio 移植到了 Linux Studio Plugins，并新增了参数，"
+"效果已经得到改进。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:170
 msgid ""
@@ -396,7 +401,8 @@ msgstr "EasyEffects现在也可使用libc++构建了。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:183
 msgid "The Expander from Linux Studio Plugins can be used in Easy Effects."
-msgstr ""
+msgstr "来自 Linux Studio Plugins 的 Expander（扩展器）现在可以在 EasyEffects 中使用"
+"。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:184
 msgid ""
@@ -404,12 +410,14 @@ msgid ""
 "efficient input of values that are hard to set in the scale. More details at "
 "issue 1383."
 msgstr ""
+"均衡器（Equalizer）的频段现在增加了一个额外的增益控制，可以更高效地输入那些在"
+"刻度尺上难以设置的精确值。更多详情请参阅 Issue #1383。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:185
 msgid ""
 "Added the ability to select and load multiple files in the opening dialogs "
 "for presets, Convolver impulse responses and RNNoise models."
-msgstr ""
+msgstr "现在可以在打开预设、卷积混响器和 RNNoise 模型的对话框中选择并加载多个文件。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:187
 msgid "Fixed the Solo button in the Equalizer band settings."
@@ -442,7 +450,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:199
 msgid "Fractional semitone values can now be used in the Pitch Shift effect."
-msgstr ""
+msgstr "现在可以在音高效果中使用小数半音值。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:201
 msgid ""
@@ -450,6 +458,8 @@ msgid ""
 "system default device changes and Use Default is enabled. This fixes issue "
 "issue 1989."
 msgstr ""
+"当系统默认设备发生变化并且“使用默认设备”选项被启用时，我们 PipeWire 标签页中"
+"的输入/输出设备下拉菜单将会随之更新。这修复了 Issue #1989。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:210
 msgid "A new Level Meter plugin based on libebur128 has been added."
