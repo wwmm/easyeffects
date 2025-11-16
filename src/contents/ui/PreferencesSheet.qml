@@ -90,6 +90,7 @@ KirigamiSettings.ConfigurationView {
                     id: showTrayIcon
 
                     label: i18n("Show the tray icon") // qmllint disable
+                    maximumLineCount: -1
                     isChecked: DB.Manager.main.showTrayIcon && canUseSysTray// qmllint disable
                     enabled: canUseSysTray// qmllint disable
                     onCheckedChanged: {
@@ -110,6 +111,7 @@ KirigamiSettings.ConfigurationView {
                     id: processAllOutputs
 
                     label: i18n("Process all output streams") // qmllint disable
+                    maximumLineCount: -1
                     isChecked: DB.Manager.main.processAllOutputs
                     onCheckedChanged: {
                         if (isChecked !== DB.Manager.main.processAllOutputs)
@@ -121,6 +123,7 @@ KirigamiSettings.ConfigurationView {
                     id: processAllInputs
 
                     label: i18n("Process all input streams") // qmllint disable
+                    maximumLineCount: -1
                     isChecked: DB.Manager.main.processAllInputs
                     onCheckedChanged: {
                         if (isChecked !== DB.Manager.main.processAllInputs)
@@ -132,6 +135,7 @@ KirigamiSettings.ConfigurationView {
                     id: excludeMonitorStreams
 
                     label: i18n("Ignore streams from monitor of devices") // qmllint disable
+                    maximumLineCount: -1
                     isChecked: DB.Manager.main.excludeMonitorStreams
                     onCheckedChanged: {
                         if (isChecked !== DB.Manager.main.excludeMonitorStreams)
@@ -143,6 +147,7 @@ KirigamiSettings.ConfigurationView {
                     id: useCubicVolumes
 
                     label: i18n("Use cubic volume") // qmllint disable
+                    maximumLineCount: -1
                     isChecked: DB.Manager.main.useCubicVolumes
                     onCheckedChanged: {
                         if (isChecked !== DB.Manager.main.useCubicVolumes)
@@ -155,6 +160,7 @@ KirigamiSettings.ConfigurationView {
 
                     label: i18n("Ignore system notifications") // qmllint disable
                     subtitle: i18n("Processing system notifications may cause crackling sound, so it would be better to ignore them, but for some presets it may be recommended since they could sound too loud.") // qmllint disable
+                    maximumLineCount: -1
                     isChecked: DB.Manager.main.ignoreSystemNotifications
                     onCheckedChanged: {
                         if (isChecked !== DB.Manager.main.ignoreSystemNotifications)
@@ -166,6 +172,7 @@ KirigamiSettings.ConfigurationView {
                     id: listenToMic
 
                     label: i18n("Enable/disable input monitoring") // qmllint disable
+                    maximumLineCount: -1
                     isChecked: DB.Manager.streamInputs.listenToMic
                     onCheckedChanged: {
                         if (isChecked !== DB.Manager.streamInputs.listenToMic)
@@ -177,6 +184,7 @@ KirigamiSettings.ConfigurationView {
                     id: listenToMicIncludesOutputEffects
 
                     label: i18n("Mic monitor plays to output effects pipeline") // qmllint disable
+                    maximumLineCount: -1
                     isChecked: DB.Manager.streamInputs.listenToMicIncludesOutputEffects
                     onCheckedChanged: {
                         if (isChecked !== DB.Manager.streamInputs.listenToMicIncludesOutputEffects)
@@ -201,6 +209,7 @@ KirigamiSettings.ConfigurationView {
                     id: inactivityTimeout
 
                     label: i18n("Inactivity timeout") // qmllint disable
+                    maximumLineCount: -1
                     from: DB.Manager.main.getMinValue("inactivityTimeout")
                     to: DB.Manager.main.getMaxValue("inactivityTimeout")
                     value: DB.Manager.main.inactivityTimeout
@@ -243,6 +252,7 @@ KirigamiSettings.ConfigurationView {
                     id: spectrumState
 
                     label: i18n("Enabled") // qmllint disable
+                    maximumLineCount: -1
                     isChecked: DB.Manager.spectrum.state
                     onCheckedChanged: {
                         if (isChecked !== DB.Manager.spectrum.state)
@@ -254,6 +264,7 @@ KirigamiSettings.ConfigurationView {
                     id: avsyncDelay
 
                     label: i18n("Audio delay compensation") // qmllint disable
+                    maximumLineCount: -1
                     from: 0
                     to: 1000
                     value: DB.Manager.spectrum.avsyncDelay
@@ -317,6 +328,7 @@ KirigamiSettings.ConfigurationView {
                     id: dynamicYScale
 
                     label: i18n("Dynamic scale") // qmllint disable
+                    maximumLineCount: -1
                     isChecked: DB.Manager.spectrum.dynamicYScale
                     onCheckedChanged: {
                         if (isChecked !== DB.Manager.spectrum.dynamicYScale)
@@ -328,6 +340,7 @@ KirigamiSettings.ConfigurationView {
                     id: logarithimicHorizontalAxis
 
                     label: i18n("Logarithmic frequency axis") // qmllint disable
+                    maximumLineCount: -1
                     isChecked: DB.Manager.spectrum.logarithimicHorizontalAxis
                     onCheckedChanged: {
                         if (isChecked !== DB.Manager.spectrum.logarithimicHorizontalAxis)
@@ -339,6 +352,7 @@ KirigamiSettings.ConfigurationView {
                     id: nPoints
 
                     label: i18n("Points") // qmllint disable
+                    maximumLineCount: -1
                     from: 2
                     to: 2048
                     value: DB.Manager.spectrum.nPoints
@@ -353,6 +367,7 @@ KirigamiSettings.ConfigurationView {
                     id: height
 
                     label: i18n("Height") // qmllint disable
+                    maximumLineCount: -1
                     from: 100
                     to: 1000
                     value: DB.Manager.spectrum.height
@@ -374,6 +389,7 @@ KirigamiSettings.ConfigurationView {
                     id: minimumFrequency
 
                     label: i18n("Minimum") // qmllint disable
+                    maximumLineCount: -1
                     from: DB.Manager.spectrum.getMinValue("minimumFrequency")
                     to: DB.Manager.spectrum.getMaxValue("minimumFrequency")
                     value: DB.Manager.spectrum.minimumFrequency
@@ -389,6 +405,7 @@ KirigamiSettings.ConfigurationView {
                     id: maximumFrequency
 
                     label: i18n("Maximum") // qmllint disable
+                    maximumLineCount: -1
                     from: DB.Manager.spectrum.getMinValue("maximumFrequency")
                     to: DB.Manager.spectrum.getMaxValue("maximumFrequency")
                     value: DB.Manager.spectrum.maximumFrequency
@@ -410,6 +427,7 @@ KirigamiSettings.ConfigurationView {
 
                 EeSpinBox {
                     label: i18n("Database autosave interval") // qmllint disable
+                    maximumLineCount: -1
                     from: DB.Manager.main.getMinValue("databaseAutosaveInterval")
                     to: DB.Manager.main.getMaxValue("databaseAutosaveInterval")
                     value: DB.Manager.main.databaseAutosaveInterval
@@ -423,6 +441,7 @@ KirigamiSettings.ConfigurationView {
 
                 EeSpinBox {
                     label: i18n("Most used presets") // qmllint disable
+                    maximumLineCount: -1
                     from: DB.Manager.main.getMinValue("maxMostUsedPresets")
                     to: DB.Manager.main.getMaxValue("maxMostUsedPresets")
                     value: DB.Manager.main.maxMostUsedPresets
@@ -466,6 +485,7 @@ KirigamiSettings.ConfigurationView {
                 EeSpinBox {
                     label: i18n("Autoload delay") // qmllint disable
                     subtitle: i18n("Delay between receiving a new device route and the call to autoload a preset.") // qmllint disable
+                    maximumLineCount: -1
                     from: DB.Manager.main.getMinValue("presetsAutoloadInterval")
                     to: DB.Manager.main.getMaxValue("presetsAutoloadInterval")
                     value: DB.Manager.main.presetsAutoloadInterval
