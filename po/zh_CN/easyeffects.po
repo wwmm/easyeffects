@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-15 17:00-0300\n"
-"PO-Revision-Date: 2025-11-16 08:52+0000\n"
+"PO-Revision-Date: 2025-11-16 19:28+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hans/>\n"
@@ -1936,7 +1936,7 @@ msgstr "响应"
 
 #: src/contents/ui/PageStreamsEffects.qml:81
 msgid "No audio application available"
-msgstr "没有可用的音频应用程序"
+msgstr "无可用的音频应用程序"
 
 #: src/contents/ui/PageStreamsEffects.qml:315
 msgid "Add effect"
@@ -2009,7 +2009,7 @@ msgid ""
 "It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
 "external applications (e.g. Gnome Settings and Plasma System Settings)"
 msgstr "强烈建议不要在外部应用程序（如Gnome设置或Plasma系统设置）中将Easy Effects槽/"
-"源设置为默认设备。"
+"源设为默认设备。"
 
 #: src/contents/ui/PipeWirePage.qml:122
 msgid "Use default input"
