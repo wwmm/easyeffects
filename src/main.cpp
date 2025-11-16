@@ -203,7 +203,7 @@ static void initQml(QQmlApplicationEngine& engine,
   engine.rootContext()->setContextProperty("applicationName", APPLICATION_NAME);
 
   QObject::connect(&engine, &QQmlApplicationEngine::objectCreated, [&](QObject* object, const QUrl& url) {
-    if (url.toString() == "qrc:/qt/qml/ee/type/presets/contents/ui/Main.qml") {
+    if (url.toString() == "qrc:/qt/qml/ee/ui/contents/ui/Main.qml") {
       ui.window = qobject_cast<QQuickWindow*>(object);
 
       if (ui.window) {
