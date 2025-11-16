@@ -19,13 +19,10 @@
 
 #pragma once
 
-#include <qjsengine.h>
 #include <qmap.h>
 #include <qobject.h>
-#include <qqmlengine.h>
 #include <qqmlintegration.h>
 #include <qtmetamacros.h>
-#include <qtpreprocessorsupport.h>
 #include <QTimer>
 #include "easyeffects_db.h"                // IWYU pragma: export
 #include "easyeffects_db_spectrum.h"       // IWYU pragma: export
@@ -62,14 +59,6 @@ class Manager : public QObject {
   static Manager& self() {
     static Manager m;
     return m;
-  }
-
-  // Singleton provider for QML
-  static Manager* create(QQmlEngine* qmlEngine, QJSEngine* jsEngine) {
-    Q_UNUSED(qmlEngine)
-    Q_UNUSED(jsEngine)
-
-    return &self();
   }
 
   Q_INVOKABLE void saveAll() const;

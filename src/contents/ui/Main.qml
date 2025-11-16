@@ -44,18 +44,18 @@ Kirigami.ApplicationWindow {
 
     onVisibleChanged: {
         if (appWindow.visible) {
-            DatabaseManager.enableAutosave(true);
+            DB.Manager.enableAutosave(true);
 
-            openMappedPage(DatabaseManager.main.visiblePage);
+            openMappedPage(DB.Manager.main.visiblePage);
         } else {
-            DatabaseManager.saveAll();
+            DB.Manager.saveAll();
 
             pageStack.clear();
         }
     }
 
     onClosing: {
-        DatabaseManager.enableAutosave(false);
+        DB.Manager.enableAutosave(false);
     }
 
     function openMappedPage(index) {
@@ -72,9 +72,9 @@ Kirigami.ApplicationWindow {
 
             args.pluginsDB = index === 0 ? Qt.binding(function () {
                 // QMap used as property is viewed as a JS object and not a QObject. So binding needs Qt.binding
-                return DatabaseManager.soePluginsDB;
+                return DB.Manager.soePluginsDB;
             }) : Qt.binding(function () {
-                return DatabaseManager.siePluginsDB;
+                return DB.Manager.siePluginsDB;
             });
 
             args.pipelineInstance = info.pipelineInstance;

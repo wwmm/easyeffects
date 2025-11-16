@@ -17,9 +17,7 @@ qt_add_qml_module(easyeffects
     URI ee.ui
     VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
     SOURCES
-        db_manager.cpp
-        presets_list_model.cpp
-        presets_list_model.hpp
+        presets_list_model.cpp presets_list_model.hpp
     QML_FILES
         contents/ui/AboutPage.qml
         contents/ui/Autogain.qml
