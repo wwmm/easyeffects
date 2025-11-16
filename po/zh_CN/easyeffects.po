@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-15 17:00-0300\n"
-"PO-Revision-Date: 2025-11-15 17:57+0000\n"
+"PO-Revision-Date: 2025-11-16 08:52+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hans/>\n"
@@ -863,7 +863,6 @@ msgid "Stereo split"
 msgstr "分离立体声"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:31
-#, fuzzy
 msgid "Imported a new Convolver impulse file."
 msgstr "已导入新卷积脉冲响应文件。"
 
@@ -940,7 +939,7 @@ msgstr "频谱"
 
 #: src/contents/ui/Convolver.qml:239
 msgid "Log scale"
-msgstr "对数坐标"
+msgstr "对数刻度"
 
 #: src/contents/ui/Convolver.qml:346
 msgid "Rate"
@@ -1967,26 +1966,23 @@ msgstr "输出设备"
 #: src/contents/ui/PageStreamsEffects.qml:391
 #: src/contents/ui/PageStreamsEffects.qml:616
 msgid "Recorders"
-msgstr "录音程序"
+msgstr "录音器"
 
 #: src/contents/ui/PageStreamsEffects.qml:412
 msgid "No Effects"
 msgstr "无音效"
 
 #: src/contents/ui/PageStreamsEffects.qml:413
-#, fuzzy
 msgid "Audio stream not modified"
-msgstr "音频流未作修改"
+msgstr "音频流未修改"
 
 #: src/contents/ui/PageStreamsEffects.qml:647
-#, fuzzy
 msgid "Input monitoring"
-msgstr "启用/禁用此应用程序"
+msgstr "输入监听"
 
 #: src/contents/ui/PageStreamsEffects.qml:660
-#, fuzzy
 msgid "Excluded apps"
-msgstr "排除的应用"
+msgstr "已排除的应用程序"
 
 #: src/contents/ui/PipeWirePage.qml:26
 msgid "General"
@@ -2009,16 +2005,13 @@ msgid "Device Management"
 msgstr "设备管理"
 
 #: src/contents/ui/PipeWirePage.qml:115
-#, fuzzy
 msgid ""
 "It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
 "external applications (e.g. Gnome Settings and Plasma System Settings)"
-msgstr ""
-"不建议把 EasyEffects Sink/Source 设置为外部应用程序（例如 Gnome 设置或 "
-"Plasma 系统设置）的默认设备。"
+msgstr "强烈建议不要在外部应用程序（如Gnome设置或Plasma系统设置）中将Easy Effects槽/"
+"源设置为默认设备。"
 
 #: src/contents/ui/PipeWirePage.qml:122
-#, fuzzy
 msgid "Use default input"
 msgstr "使用默认输入"
 
@@ -2027,7 +2020,6 @@ msgid "Name"
 msgstr "名称"
 
 #: src/contents/ui/PipeWirePage.qml:165
-#, fuzzy
 msgid "Use default output"
 msgstr "使用默认输出"
 
@@ -2036,49 +2028,40 @@ msgid "Server Information"
 msgstr "服务器信息"
 
 #: src/contents/ui/PipeWirePage.qml:209
-#, fuzzy
 msgid "Header version"
 msgstr "头文件版本"
 
 #: src/contents/ui/PipeWirePage.qml:214
-#, fuzzy
 msgid "Library version"
 msgstr "库文件版本"
 
 #: src/contents/ui/PipeWirePage.qml:219
-#, fuzzy
 msgid "Runtime version"
-msgstr "核心版本"
+msgstr "运行时版本"
 
 #: src/contents/ui/PipeWirePage.qml:224
-#, fuzzy
 msgid "Default sampling rate"
-msgstr "采样率"
+msgstr "默认采样率"
 
 #: src/contents/ui/PipeWirePage.qml:229
-#, fuzzy
 msgid "Minimum quantum"
-msgstr "最小音频帧 (Quantum)"
+msgstr "最小音频帧（Quantum）"
 
 #: src/contents/ui/PipeWirePage.qml:234
-#, fuzzy
 msgid "Maximum quantum"
-msgstr "最大 Quantum"
+msgstr "最大音频帧（Quantum）"
 
 #: src/contents/ui/PipeWirePage.qml:239
-#, fuzzy
 msgid "Default quantum"
-msgstr "默认音频帧 (Quantum)"
+msgstr "默认音频帧（Quantum）"
 
 #: src/contents/ui/PipeWirePage.qml:261
-#, fuzzy
 msgid "No Modules"
-msgstr "模块"
+msgstr "无模块"
 
 #: src/contents/ui/PipeWirePage.qml:284
-#, fuzzy
 msgid "No Clients"
-msgstr "客户端"
+msgstr "无客户端"
 
 #: src/contents/ui/PipeWirePage.qml:297
 #: src/contents/ui/PreferencesSheet.qml:238
@@ -2103,32 +2086,26 @@ msgid "Waveform"
 msgstr "波形"
 
 #: src/contents/ui/PipeWirePage.qml:364
-#, fuzzy
 msgid "Sine wave"
 msgstr "正弦波"
 
 #: src/contents/ui/PipeWirePage.qml:375
-#, fuzzy
 msgid "White noise"
 msgstr "白噪声"
 
 #: src/contents/ui/PipeWirePage.qml:386
-#, fuzzy
 msgid "Pink noise"
-msgstr "白噪声"
+msgstr "粉噪声"
 
 #: src/contents/ui/Pitch.qml:50
-#, fuzzy
 msgid "Sequence length"
 msgstr "序列长度"
 
 #: src/contents/ui/Pitch.qml:67
-#, fuzzy
 msgid "Seek window"
-msgstr "序列查找窗口"
+msgstr "查找窗口"
 
 #: src/contents/ui/Pitch.qml:85
-#, fuzzy
 msgid "Overlap length"
 msgstr "重叠长度"
 
@@ -2149,17 +2126,14 @@ msgid "Semitones"
 msgstr "半音"
 
 #: src/contents/ui/Pitch.qml:203
-#, fuzzy
 msgid "Tempo difference"
-msgstr "拍子差"
+msgstr "节拍差"
 
 #: src/contents/ui/Pitch.qml:220
-#, fuzzy
 msgid "Rate difference"
 msgstr "速率差"
 
 #: src/contents/ui/Pitch.qml:270
-#, fuzzy
 msgid "Quick seek"
 msgstr "快速查找"
 
@@ -2168,30 +2142,28 @@ msgid "Anti-aliasing"
 msgstr "抗混叠"
 
 #: src/contents/ui/PluginNotAvailable.qml:14
-#, fuzzy
 msgid "Effect Not Available"
-msgstr "{} 不可用"
+msgstr "音效不可用"
 
 #: src/contents/ui/PluginNotAvailable.qml:15
 msgid "%1 cannot be used because %2 is not installed on the system."
-msgstr ""
+msgstr "%1不可用，因为%2未安装于系统上。"
 
 #: src/contents/ui/PreferencesSheet.qml:16
 msgid "Background Service"
-msgstr ""
+msgstr "后台服务"
 
 #: src/contents/ui/PreferencesSheet.qml:22
 msgid "Audio"
 msgstr "音频"
 
 #: src/contents/ui/PreferencesSheet.qml:28
-#, fuzzy
 msgid "Spectrum Analyzer"
-msgstr "频谱类型"
+msgstr "频谱分析器"
 
 #: src/contents/ui/PreferencesSheet.qml:34
 msgid "Database"
-msgstr ""
+msgstr "数据库"
 
 #: src/contents/ui/PreferencesSheet.qml:40
 #: src/contents/ui/PreferencesSheet.qml:270
@@ -2203,13 +2175,12 @@ msgid "Experimental Features"
 msgstr "实验性功能"
 
 #: src/contents/ui/PreferencesSheet.qml:65
-#, fuzzy
 msgid "Enable service mode"
-msgstr "均衡器模式"
+msgstr "启用服务模式"
 
 #: src/contents/ui/PreferencesSheet.qml:66
 msgid "Easy Effects is active in background when the window is closed."
-msgstr ""
+msgstr "Easy Effects将在窗口关闭后持续后台运行。"
 
 #: src/contents/ui/PreferencesSheet.qml:78
 msgid "Autostart on login"
@@ -2221,61 +2192,55 @@ msgstr "在用户会话启动时启动Easy Effects."
 
 #: src/contents/ui/PreferencesSheet.qml:92
 msgid "Show the tray icon"
-msgstr ""
+msgstr "显示状态栏图标"
 
 #: src/contents/ui/PreferencesSheet.qml:112
-#, fuzzy
 msgid "Process all output streams"
 msgstr "处理所有输出流"
 
 #: src/contents/ui/PreferencesSheet.qml:123
-#, fuzzy
 msgid "Process all input streams"
 msgstr "处理所有输入流"
 
 #: src/contents/ui/PreferencesSheet.qml:134
-#, fuzzy
 msgid "Ignore streams from monitor of devices"
-msgstr "忽略来自设备 Monitor 的音频流"
+msgstr "忽略来自设备监听器的音频流"
 
 #: src/contents/ui/PreferencesSheet.qml:145
-#, fuzzy
 msgid "Use cubic volume"
 msgstr "使用非线性（立方）音量调节"
 
 #: src/contents/ui/PreferencesSheet.qml:156
 msgid "Ignore system notifications"
-msgstr ""
+msgstr "忽略系统通知"
 
 #: src/contents/ui/PreferencesSheet.qml:157
 msgid ""
 "Processing system notifications may cause crackling sound, so it would be "
 "better to ignore them, but for some presets it may be recommended since they "
 "could sound too loud."
-msgstr ""
+msgstr "处理系统通知可能造成噼啪杂声，因此建议忽略，但一些预设可能导致音量过大，此时"
+"建议开启。"
 
 #: src/contents/ui/PreferencesSheet.qml:168
-#, fuzzy
 msgid "Enable/disable input monitoring"
-msgstr "启用/禁用此应用程序"
+msgstr "启用/禁用输入监听"
 
 #: src/contents/ui/PreferencesSheet.qml:179
 msgid "Mic monitor plays to output effects pipeline"
-msgstr ""
+msgstr "麦克风监听导向输出音效管线"
 
 #: src/contents/ui/PreferencesSheet.qml:190
-#, fuzzy
 msgid "Enable the inactivity timeout"
-msgstr "空闲超时"
+msgstr "启用空闲超时"
 
 #: src/contents/ui/PreferencesSheet.qml:191
 msgid ""
 "When all streams are inactive, Easy Effects pipeline remains loaded for an "
 "extra amount of time."
-msgstr "当所有音频流都不再活跃，Easy Effects管线仍将加载一段额外时间。"
+msgstr "当没有活跃音频流时，Easy Effects管线仍将加载一段额外时间。"
 
 #: src/contents/ui/PreferencesSheet.qml:203
-#, fuzzy
 msgid "Inactivity timeout"
 msgstr "空闲超时"
 
@@ -2291,48 +2256,43 @@ msgstr "当前电平低于此前最高值时，电平表更新耗时。"
 
 #: src/contents/ui/PreferencesSheet.qml:256
 msgid "Audio delay compensation"
-msgstr ""
+msgstr "音频延迟补偿"
 
 #: src/contents/ui/PreferencesSheet.qml:277
-#, fuzzy
 msgid "Color scheme"
-msgstr "颜色"
+msgstr "颜色方案"
 
 #: src/contents/ui/PreferencesSheet.qml:281
-#, fuzzy
 msgid "Automatic"
-msgstr "自动增益"
+msgstr "自动"
 
 #: src/contents/ui/PreferencesSheet.qml:281
-#, fuzzy
 msgid "Light"
-msgstr "右"
+msgstr "亮色"
 
 #: src/contents/ui/PreferencesSheet.qml:281
 msgid "Dark"
-msgstr ""
+msgstr "暗色"
 
 #: src/contents/ui/PreferencesSheet.qml:291
-#, fuzzy
 msgid "Color theme"
-msgstr "颜色"
+msgstr "颜色主题"
 
 #: src/contents/ui/PreferencesSheet.qml:295
 msgid "Green"
-msgstr ""
+msgstr "绿色"
 
 #: src/contents/ui/PreferencesSheet.qml:295
 msgid "Green neon"
-msgstr ""
+msgstr "霓虹绿色"
 
 #: src/contents/ui/PreferencesSheet.qml:295
 msgid "Mix"
-msgstr "干湿声混合"
+msgstr "混合"
 
 #: src/contents/ui/PreferencesSheet.qml:295
-#, fuzzy
 msgid "Orange"
-msgstr "范围"
+msgstr "橙色"
 
 #: src/contents/ui/PreferencesSheet.qml:295
 msgid "Yellow"
@@ -2340,15 +2300,15 @@ msgstr "黄色"
 
 #: src/contents/ui/PreferencesSheet.qml:295
 msgid "Blue"
-msgstr ""
+msgstr "蓝色"
 
 #: src/contents/ui/PreferencesSheet.qml:295
 msgid "Purple"
-msgstr ""
+msgstr "紫色"
 
 #: src/contents/ui/PreferencesSheet.qml:295
 msgid "Grey"
-msgstr ""
+msgstr "灰色"
 
 #: src/contents/ui/PreferencesSheet.qml:305
 msgid "Shape"
@@ -2356,7 +2316,7 @@ msgstr "形状"
 
 #: src/contents/ui/PreferencesSheet.qml:309
 msgid "Bars"
-msgstr "柱状"
+msgstr "柱型"
 
 #: src/contents/ui/PreferencesSheet.qml:309
 msgid "Lines"
@@ -2368,17 +2328,15 @@ msgstr "点阵"
 
 #: src/contents/ui/PreferencesSheet.qml:309
 msgid "Area"
-msgstr ""
+msgstr "实色"
 
 #: src/contents/ui/PreferencesSheet.qml:319
-#, fuzzy
 msgid "Dynamic scale"
 msgstr "动态刻度"
 
 #: src/contents/ui/PreferencesSheet.qml:330
-#, fuzzy
 msgid "Logarithmic frequency axis"
-msgstr "分割频率 2"
+msgstr "对数频率轴"
 
 #: src/contents/ui/PreferencesSheet.qml:341
 msgid "Points"
@@ -2390,7 +2348,7 @@ msgstr "高度"
 
 #: src/contents/ui/PreferencesSheet.qml:361
 msgid "px"
-msgstr ""
+msgstr "像素"
 
 #: src/contents/ui/PreferencesSheet.qml:369
 msgid "Frequency Range"
@@ -2406,42 +2364,38 @@ msgstr "最高"
 
 #: src/contents/ui/PreferencesSheet.qml:412
 msgid "Database autosave interval"
-msgstr ""
+msgstr "数据库自动保存间隔"
 
 #: src/contents/ui/PreferencesSheet.qml:425
-#, fuzzy
 msgid "Most used presets"
-msgstr "交叉反馈"
+msgstr "最常用的预设"
 
 #: src/contents/ui/PreferencesSheet.qml:447
-#, fuzzy
 msgid "Reduce effects list controls"
-msgstr "显示或隐藏音效列表"
+msgstr "收起音效列表控制项"
 
 #: src/contents/ui/PreferencesSheet.qml:448
 msgid ""
 "Action buttons in the effects list are moved inside a context menu for a "
 "more compact view."
-msgstr ""
+msgstr "将音效列表的操控按钮移入上下文菜单中，以使视图更紧凑。"
 
 #: src/contents/ui/PreferencesSheet.qml:467
-#, fuzzy
 msgid "Autoload delay"
-msgstr "自动增益"
+msgstr "自动加载延迟"
 
 #: src/contents/ui/PreferencesSheet.qml:468
 msgid ""
 "Delay between receiving a new device route and the call to autoload a preset."
-msgstr ""
+msgstr "在接收新设备路由和自动加载预设之间的延迟。"
 
 #: src/contents/ui/PreferencesSheet.qml:491
-#, fuzzy
 msgid "Global shortcuts"
-msgstr "快捷键(_S)"
+msgstr "全局快捷键"
 
 #: src/contents/ui/PreferencesSheet.qml:492
 msgid "Enables support for XDG global shortcuts."
-msgstr ""
+msgstr "启用对XDG全局快捷键的支持。"
 
 #: src/contents/ui/PreferencesSheet.qml:504
 msgid "Native window of effects"
@@ -2452,14 +2406,12 @@ msgid "Allows the native user interface of effects to be shown/hidden."
 msgstr "允许显示或隐藏原生插件窗口。"
 
 #: src/contents/ui/PreferencesSheet.qml:517
-#, fuzzy
 msgid "Update frequency"
 msgstr "更新频率"
 
 #: src/contents/ui/PreferencesSheet.qml:518
-#, fuzzy
 msgid "Related to LV2 plugins."
-msgstr "涉及 LV2 插件"
+msgstr "涉及LV2插件。"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:31
 #: src/contents/ui/PresetsAutoloadingPage.qml:155
@@ -2469,133 +2421,112 @@ msgstr "设备"
 #: src/contents/ui/PresetsAutoloadingPage.qml:37
 #: src/contents/ui/PresetsAutoloadingPage.qml:197
 msgid "Route"
-msgstr ""
+msgstr "路由"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:78
 #: src/contents/ui/PresetsAutoloadingPage.qml:210
-#, fuzzy
 msgid "Local preset"
-msgstr "本地预设列表"
+msgstr "本地预设"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:88
-#, fuzzy
 msgid "Create"
-msgstr "创建中"
+msgstr "新建"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:90
-#, fuzzy
 msgid "Create a new autoloading preset"
-msgstr "删除自动加载预设"
+msgstr "新建自动加载预设"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:169
-#, fuzzy
 msgid "Remove this autoloading preset"
-msgstr "删除自动加载预设"
+msgstr "移除此自动加载预设"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:183
 msgid "Description"
 msgstr "描述"
 
 #: src/contents/ui/PresetsCommunityPage.qml:100
-#, fuzzy
 msgid "Copy to local presets"
-msgstr "本地预设列表"
+msgstr "复制到本地预设"
 
 #: src/contents/ui/PresetsCommunityPage.qml:105
-#, fuzzy
 msgid "Imported the %1 community preset to the list of local presets."
-msgstr "将此社区预设导入至本地预设列表中"
+msgstr "已将社区预设%1导入到本地预设列表。"
 
 #: src/contents/ui/PresetsCommunityPage.qml:107
-#, fuzzy
 msgid "Failed to import the %1 community preset to the list of local presets."
-msgstr "搜索社区预设"
+msgstr "无法将社区预设%1导入到本地预设列表。"
 
 #: src/contents/ui/PresetsCommunityPage.qml:127
 msgid "Refresh"
 msgstr "刷新"
 
 #: src/contents/ui/PresetsLocalPage.qml:32
-#, fuzzy
 msgid "Imported a new local preset from an external file."
-msgstr "加载 APO 预设文件"
+msgstr "已从外部文件导入新本地预设。"
 
 #: src/contents/ui/PresetsLocalPage.qml:34
-#, fuzzy
 msgid "Failed to import a new local preset from an external file."
-msgstr "加载 APO 预设文件"
+msgstr "无法从外部文件导入新本地预设。"
 
 #: src/contents/ui/PresetsLocalPage.qml:43
-#, fuzzy
 msgid "Export Presets"
-msgstr "加载预设"
+msgstr "导出预设"
 
 #: src/contents/ui/PresetsLocalPage.qml:46
-#, fuzzy
 msgid "Exported all presets to an external folder."
-msgstr "加载 APO 预设文件"
+msgstr "已将所有预设导出到外部文件夹。"
 
 #: src/contents/ui/PresetsLocalPage.qml:48
-#, fuzzy
 msgid "Failed to export all presets to an external folder."
-msgstr "加载 APO 预设文件"
+msgstr "无法将所有预设导出到外部文件夹。"
 
 #: src/contents/ui/PresetsLocalPage.qml:60
-#, fuzzy
 msgid "New preset name"
 msgstr "新预设名称"
 
 #: src/contents/ui/PresetsLocalPage.qml:76
-#, fuzzy
 msgid "Import preset file"
-msgstr "加载 APO 预设文件"
+msgstr "加载预设文件"
 
 #: src/contents/ui/PresetsLocalPage.qml:85
-#, fuzzy
 msgid "Create new preset"
-msgstr "创建新预设"
+msgstr "新建预设"
 
 #: src/contents/ui/PresetsLocalPage.qml:95
-#, fuzzy
 msgid "Created a new local preset: %1"
-msgstr "搜索本地预设"
+msgstr "已新建本地预设：%1"
 
 #: src/contents/ui/PresetsLocalPage.qml:99
-#, fuzzy
 msgid "Failed to create a new local preset: %1"
-msgstr "搜索社区预设"
+msgstr "无法新建本地预设：%1"
 
 #: src/contents/ui/PresetsLocalPage.qml:126
-#, fuzzy
 msgid "Export presets"
-msgstr "加载预设"
+msgstr "导出预设"
 
 #: src/contents/ui/PresetsLocalPage.qml:185
-#, fuzzy
 msgid "Save Preset"
-msgstr "创建新预设"
+msgstr "保存预设"
 
 #: src/contents/ui/PresetsLocalPage.qml:186
-#, fuzzy
 msgid ""
 "Save current settings to the preset:\n"
 "%1"
-msgstr "将当前设置保存到这个预设文件"
+msgstr ""
+"将当前设置保存到预设：\n"
+"%1"
 
 #: src/contents/ui/PresetsLocalPage.qml:190
-#, fuzzy
 msgid "Saved the current settings to %1 local preset."
-msgstr "丢弃当前设置并加载此预设"
+msgstr "已将当前设置保存到本地预设%1。"
 
 #: src/contents/ui/PresetsLocalPage.qml:192
-#, fuzzy
 msgid "Failed to save the current settings to %1 local preset."
-msgstr "丢弃当前设置并加载此预设"
+msgstr "无法将当前设置保存到本地预设%1。"
 
 #: src/contents/ui/PresetsLocalPage.qml:200
-#, fuzzy
 msgid "Remove Preset"
-msgstr "创建新预设"
+msgstr "移除预设"
 
 #: src/contents/ui/PresetsLocalPage.qml:201
 msgid ""
@@ -2608,52 +2539,44 @@ msgstr ""
 "移出列表吗？"
 
 #: src/contents/ui/PresetsLocalPage.qml:205
-#, fuzzy
 msgid "Removed the %1 local preset."
-msgstr "删除此自动加载预设"
+msgstr "已移除本地预设%1。"
 
 #: src/contents/ui/PresetsLocalPage.qml:207
-#, fuzzy
 msgid "Failed to remove the %1 local preset."
-msgstr "加载 APO 预设文件"
+msgstr "无法移除本地预设%1。"
 
 #: src/contents/ui/PresetsLocalPage.qml:215
-#, fuzzy
 msgid "Rename Preset"
-msgstr "创建新预设"
+msgstr "重命名预设"
 
 #: src/contents/ui/PresetsLocalPage.qml:220
 msgid "Rename"
-msgstr ""
+msgstr "重命名"
 
 #: src/contents/ui/PresetsLocalPage.qml:229
-#, fuzzy
 msgid "Renamed the %1 local preset to %2"
-msgstr "删除这个预设文件"
+msgstr "已将本地预设%1重命名为%2"
 
 #: src/contents/ui/PresetsLocalPage.qml:232
-#, fuzzy
 msgid "Failed to rename the %1 local preset to %2"
-msgstr "加载脉冲文件失败"
+msgstr "无法将本地预设%1重命名为%2"
 
 #: src/contents/ui/PresetsLocalPage.qml:240
 msgid "Cancel"
 msgstr "取消"
 
 #: src/contents/ui/PresetsLocalPage.qml:277
-#, fuzzy
 msgid "Save settings to this preset"
-msgstr "将当前设置保存到这个预设文件"
+msgstr "将设置保存到此预设"
 
 #: src/contents/ui/PresetsLocalPage.qml:285
-#, fuzzy
 msgid "Rename this preset"
-msgstr "删除这个预设文件"
+msgstr "重命名此预设"
 
 #: src/contents/ui/PresetsLocalPage.qml:293
-#, fuzzy
 msgid "Delete this preset"
-msgstr "删除这个预设文件"
+msgstr "删除此预设"
 
 #: src/contents/ui/PresetsSheet.qml:77 src/contents/ui/PresetsSheet.qml:114
 msgid "Local"
@@ -2664,21 +2587,18 @@ msgid "Community"
 msgstr "社区"
 
 #: src/contents/ui/PresetsSheet.qml:93
-#, fuzzy
 msgid "Autoloading"
-msgstr "自动增益"
+msgstr "自动加载"
 
 #: src/contents/ui/PresetsSheet.qml:112
-#, fuzzy
 msgid "No preset loaded"
 msgstr "未加载预设"
 
 #: src/contents/ui/PresetsSheet.qml:128
 msgid "Fallback Preset"
-msgstr ""
+msgstr "备用预设"
 
 #: src/contents/ui/Reverb.qml:48
-#, fuzzy
 msgid "Room size"
 msgstr "房间大小"
 
@@ -2695,9 +2615,8 @@ msgid "Large"
 msgstr "大"
 
 #: src/contents/ui/Reverb.qml:52
-#, fuzzy
 msgid "Tunnel-like"
-msgstr "通道"
+msgstr "隧道式"
 
 #: src/contents/ui/Reverb.qml:52
 msgid "Large/smooth"
@@ -2708,101 +2627,85 @@ msgid "Experimental"
 msgstr "实验性"
 
 #: src/contents/ui/Reverb.qml:61
-#, fuzzy
 msgid "Decay time"
 msgstr "衰减时间"
 
 #: src/contents/ui/Reverb.qml:77
-#, fuzzy
 msgid "Pre delay"
-msgstr "前反射延迟"
+msgstr "预延迟"
 
 #: src/contents/ui/Reverb.qml:93
 msgid "Diffusion"
 msgstr "扩散"
 
 #: src/contents/ui/Reverb.qml:119
-#, fuzzy
 msgid "High frequency damping"
 msgstr "高频阻尼"
 
 #: src/contents/ui/Reverb.qml:136
-#, fuzzy
 msgid "Bass cut"
-msgstr "低切"
+msgstr "低音削减"
 
 #: src/contents/ui/Reverb.qml:153
-#, fuzzy
 msgid "Treble cut"
-msgstr "高切"
+msgstr "高音削减"
 
 #: src/contents/ui/Reverb.qml:210
-#, fuzzy
 msgid "Reverberation Presets"
-msgstr "混响"
+msgstr "混响预设"
 
 #: src/contents/ui/Reverb.qml:214
 msgid "Ambience"
 msgstr "氛围"
 
 #: src/contents/ui/Reverb.qml:229
-#, fuzzy
 msgid "Empty walls"
-msgstr "空旷"
+msgstr "空房间墙壁"
 
 #: src/contents/ui/Reverb.qml:244
 msgid "Room"
 msgstr "房间"
 
 #: src/contents/ui/Reverb.qml:259
-#, fuzzy
 msgid "Large empty hall"
-msgstr "空荡的大厅"
+msgstr "空旷的大厅"
 
 #: src/contents/ui/Reverb.qml:269
 msgid "Disco"
 msgstr "舞厅"
 
 #: src/contents/ui/Reverb.qml:279
-#, fuzzy
 msgid "Large occupied hall"
 msgstr "拥挤的大厅"
 
 #: src/contents/ui/RNNoise.qml:43
-#, fuzzy
 msgid "Imported a new RNNoise model file."
-msgstr "标准 RNNoise 模型"
+msgstr "已导入新RNNoise模型文件。"
 
 #: src/contents/ui/RNNoise.qml:45
-#, fuzzy
 msgid "Failed to import the RNNoise model file."
-msgstr "导入模型文件"
+msgstr "无法导入新RNNoise模型文件。"
 
 #: src/contents/ui/RNNoise.qml:56 src/contents/ui/RNNoise.qml:67
 #: src/contents/ui/RNNoise.qml:281 src/contents/ui/RNNoise.qml:283
-#, fuzzy
 msgid "Standard RNNoise model"
-msgstr "标准 RNNoise 模型"
+msgstr "标准RNNoise模型"
 
 #: src/contents/ui/RNNoise.qml:58
-#, fuzzy
 msgid "Standard RNNoise model loaded."
-msgstr "标准 RNNoise 模型"
+msgstr "已加载标准RNNoise模型。"
 
 #: src/contents/ui/RNNoise.qml:63 src/contents/ui/RNNoise.qml:285
-#, fuzzy
 msgid "Using %1 Model"
-msgstr "正在使用 {}"
+msgstr "正在使用模型%1"
 
 #: src/contents/ui/RNNoise.qml:65
-#, fuzzy
 msgid "Loaded the %1 RNNoise model."
-msgstr "标准 RNNoise 模型"
+msgstr "已加载RNNoise模型%1。"
 
 #: src/contents/ui/RNNoise.qml:69
-#, fuzzy
 msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
-msgstr "加载脉冲文件失败"
+msgstr "无法加载RNNoise模型%1。回退到标准RNNoise模型。"
 
 #: src/contents/ui/RNNoise.qml:88 src/contents/ui/Speex.qml:98
 msgid "Voice detection"
@@ -2813,96 +2716,82 @@ msgid "Wet level"
 msgstr "湿信号电平"
 
 #: src/contents/ui/RNNoise.qml:165
-#, fuzzy
 msgid "Use the Standard model"
-msgstr "标准模型"
+msgstr "使用标准模型"
 
 #: src/contents/ui/RNNoise.qml:176
-#, fuzzy
 msgid "User Models"
-msgstr "RNNoise 模型"
+msgstr "用户模型"
 
 #: src/contents/ui/RNNoise.qml:242
-#, fuzzy
 msgid "Delete this model"
-msgstr "删除这个模型文件"
+msgstr "删除此模型"
 
 #: src/contents/ui/RNNoise.qml:247
-#, fuzzy
 msgid "Removed the %1 RNNoise model."
-msgstr "标准 RNNoise 模型"
+msgstr "已移除RNNoise模型%1。"
 
 #: src/contents/ui/RNNoise.qml:249
-#, fuzzy
 msgid "Failed to remove the %1 RNNoise model."
-msgstr "加载脉冲文件失败"
+msgstr "无法移除RNNoise模型%1。"
 
 #: src/contents/ui/RNNoise.qml:318
-#, fuzzy
 msgid "Import model"
 msgstr "导入模型"
 
 #: src/contents/ui/ShortcutsSheet.qml:46
-#, fuzzy
 msgid "Show help"
 msgstr "显示帮助"
 
 #: src/contents/ui/ShortcutsSheet.qml:59
 msgid "Toggle fullscreen"
-msgstr ""
+msgstr "切换全屏"
 
 #: src/contents/ui/ShortcutsSheet.qml:87 src/contents/ui/ShortcutsSheet.qml:310
 #: src/global_shortcuts.hpp:48
-#, fuzzy
 msgid "Toggle global bypass"
-msgstr "全局旁路"
+msgstr "切换全局旁通"
 
 #: src/contents/ui/ShortcutsSheet.qml:115
-#, fuzzy
 msgid "Close the window"
 msgstr "关闭窗口"
 
 #: src/contents/ui/ShortcutsSheet.qml:143
-#, fuzzy
 msgid "Terminate Easy Effects service"
-msgstr "打印 EasyEffects 版本号"
+msgstr "终止Easy Effects服务"
 
 #: src/contents/ui/ShortcutsSheet.qml:183
-#, fuzzy
 msgid "Toggle process all inputs"
-msgstr "处理所有输入"
+msgstr "开关处理所有输入"
 
 #: src/contents/ui/ShortcutsSheet.qml:223
-#, fuzzy
 msgid "Toggle process all outputs"
-msgstr "处理所有输出"
+msgstr "开关处理所有输出"
 
 #: src/contents/ui/ShortcutsSheet.qml:236
 #: src/contents/ui/ShortcutsSheet.qml:249
 msgid "Can be used on numeric controls"
-msgstr ""
+msgstr "可用于数值控制"
 
 #: src/contents/ui/ShortcutsSheet.qml:264
-#, fuzzy
 msgid "Global Shortcuts"
-msgstr "快捷键(_S)"
+msgstr "全局快捷键"
 
 #: src/contents/ui/ShortcutsSheet.qml:350 src/global_shortcuts.hpp:50
 msgid "Toggle microphone monitoring"
-msgstr ""
+msgstr "开关麦克风监听"
 
 #: src/contents/ui/Speex.qml:44
 msgid "Denoise"
-msgstr "抑制噪音"
+msgstr "降噪"
 
 #: src/contents/ui/Speex.qml:66
 msgid "Dereverberation"
 msgstr "去混响"
 
 #: src/contents/ui/Speex.qml:77
-#, fuzzy
 msgid "Noise suppression"
-msgstr "抑制强度"
+msgstr "噪音抑制"
 
 #: src/contents/ui/Speex.qml:93
 msgid "Voice Activity Probability"
@@ -2925,58 +2814,50 @@ msgid "Stereo Matrix"
 msgstr "立体声阵距"
 
 #: src/contents/ui/StereoTools.qml:108
-#, fuzzy
 msgid "LR > LR (Stereo default)"
-msgstr "LR > LR (默认立体声)"
+msgstr "LR > LR（默认立体声）"
 
 #: src/contents/ui/StereoTools.qml:108
 msgid "LR > MS (Stereo to Mid-Side)"
-msgstr "LR > MS (立体声至中-侧)"
+msgstr "LR > MS（立体声到中—侧）"
 
 #: src/contents/ui/StereoTools.qml:108
 msgid "MS > LR (Mid-Side to Stereo)"
-msgstr "MS > LR (中-侧至立体声)"
+msgstr "MS > LR（中—侧到立体声）"
 
 #: src/contents/ui/StereoTools.qml:108
-#, fuzzy
 msgid "LR > LL (Mono left channel)"
-msgstr "LR > LL (单声道左)"
+msgstr "LR > LL（单声道左）"
 
 #: src/contents/ui/StereoTools.qml:108
-#, fuzzy
 msgid "LR > RR (Mono right channel)"
-msgstr "LR > RR (单声道右)"
+msgstr "LR > RR（单声道右）"
 
 #: src/contents/ui/StereoTools.qml:108
-#, fuzzy
 msgid "LR > L+R (Mono sum L+R)"
-msgstr "LR > L+R (单声道左右合并)"
+msgstr "LR > L+R（单声道左右合并）"
 
 #: src/contents/ui/StereoTools.qml:108
-#, fuzzy
 msgid "LR > RL (Stereo flip channels)"
-msgstr "LR > RL (立体声翻转)"
+msgstr "LR > RL（立体声翻转）"
 
 #: src/contents/ui/StereoTools.qml:117
 msgid "Side level"
 msgstr "侧信号电平"
 
 #: src/contents/ui/StereoTools.qml:135
-#, fuzzy
 msgid "Side balance"
-msgstr "侧边平衡"
+msgstr "侧信号平衡"
 
 #: src/contents/ui/StereoTools.qml:151
 msgid "Middle level"
 msgstr "中信号电平"
 
 #: src/contents/ui/StereoTools.qml:169
-#, fuzzy
 msgid "Middle panorama"
-msgstr "中置全景"
+msgstr "中信号全景"
 
 #: src/contents/ui/StereoTools.qml:203 src/contents/ui/StereoTools.qml:235
-#, fuzzy
 msgid "Invert phase"
 msgstr "反转相位"
 
@@ -2985,12 +2866,10 @@ msgid "Delay"
 msgstr "延迟"
 
 #: src/contents/ui/StereoTools.qml:292
-#, fuzzy
 msgid "Stereo base"
 msgstr "立体声基线"
 
 #: src/contents/ui/StereoTools.qml:308
-#, fuzzy
 msgid "Stereo phase"
 msgstr "立体声相位"
 
@@ -3000,10 +2879,9 @@ msgstr "全局音频效果"
 
 #: src/main.cpp:311
 msgid "© 2017-2025 EasyEffects Team"
-msgstr ""
+msgstr "© 2017–2025 Easy Effects开发团队"
 
 #: src/main.cpp:313
-#, fuzzy
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
@@ -3013,24 +2891,22 @@ msgid "Developer"
 msgstr "开发者"
 
 #: src/main.cpp:317
-#, fuzzy
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "帧"
+msgstr "ramdomPTM"
 
 #: src/main.cpp:317
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
+msgstr "z9r55jue3@mozmail.com"
 
 #: src/plugin_base.cpp:272
 msgid "(Mic)"
-msgstr "麦克风"
+msgstr "（麦克风）"
 
 #: src/plugin_base.cpp:275
-#, fuzzy
 msgid "(Speakers)"
-msgstr "扬声器"
+msgstr "（扬声器）"
 
 #: src/plugin_base.cpp:282
 msgid "Output Level Meter"
@@ -3144,7 +3020,7 @@ msgstr "混响"
 
 #: src/tags_plugin_name.cpp:50
 msgid "Noise Reduction"
-msgstr "降噪"
+msgstr "降噪器"
 
 #: src/tags_plugin_name.cpp:51
 msgid "Speech Processor"
