@@ -42,7 +42,8 @@ optdepends=('calf: limiter, exciter, bass enhancer and others'
             'lsp-plugins: equalizer, compressor, delay, loudness'
             'zam-plugins: maximizer'
             'mda.lv2: bass loudness'
-            'libdeep_filter_ladspa: noise remover')
+            'libdeep_filter_ladspa: noise remover'
+            'breeze: kde breeze style')
 conflicts=(easyeffects)
 provides=(easyeffects)
 replaces=('pulseeffects')

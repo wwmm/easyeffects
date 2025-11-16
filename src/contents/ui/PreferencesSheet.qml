@@ -461,6 +461,20 @@ KirigamiSettings.ConfigurationView {
                 Layout.topMargin: Kirigami.Units.gridUnit
 
                 EeSwitch {
+                    id: forceBreezeTheme
+
+                    label: i18n("Force KDE's Breeze Theme when EasyEffects starts") // qmllint disable
+                    subtitle: i18n("It is necessary to restart EasyEffects for changes in this setting to take effect.") // qmllint disable
+                    maximumLineCount: -1
+                    isChecked: DB.Manager.main.forceBreezeTheme
+                    onCheckedChanged: {
+                        if (isChecked !== DB.Manager.main.forceBreezeTheme) {
+                            DB.Manager.main.forceBreezeTheme = isChecked;
+                        }
+                    }
+                }
+
+                EeSwitch {
                     id: reducePluginsListControls
 
                     label: i18n("Reduce effects list controls") // qmllint disable

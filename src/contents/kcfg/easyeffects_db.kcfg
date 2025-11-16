@@ -166,9 +166,15 @@
             </choices>
             <default>0</default>
         </entry>
+    </group>
+    <group name="Style">
         <entry name="collapsePluginsList" type="Bool">
             <label>Horizontally collapse plugins list sidebar</label>
             <default>false</default>
+        </entry>
+        <entry name="forceBreezeTheme" type="Bool">
+            <label>Force KDE Breeze theme when EasyEffects starts</label>
+            <default>true</default>
         </entry>
     </group>
     <group name="EffectsPipelines">
