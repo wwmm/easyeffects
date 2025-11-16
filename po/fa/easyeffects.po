@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-16 19:25+0000\n"
+"POT-Creation-Date: 2025-11-16 21:24+0000\n"
 "PO-Revision-Date: 2025-09-23 14:01+0000\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2577,12 +2577,12 @@ msgid "Most used presets"
 msgstr "کراس‌فید"
 
 #: src/contents/ui/PreferencesSheet.qml:466
-msgid "Force KDE's Breeze Theme when EasyEffects starts"
+msgid "Force KDE's Breeze theme when Easy Effects starts"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:467
 msgid ""
-"It is necessary to restart EasyEffects for changes in this setting to take "
+"It is necessary to restart the service for changes in this setting to take "
 "effect."
 msgstr ""
 
