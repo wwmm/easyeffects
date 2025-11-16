@@ -42,7 +42,7 @@ FormCard.AbstractFormDelegate {
     property int spinboxAlignment: Qt.AlignRight
     property int labelAlignment: Qt.AlignLeft
     property bool minusInfinityMode: false
-    property int maximumLineCount: 2
+    property int maximumLineCount: 2 // -1 to unset
 
     signal valueModified(real value)
 

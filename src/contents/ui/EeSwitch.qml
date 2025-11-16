@@ -11,7 +11,7 @@ FormCard.AbstractFormDelegate {
     property alias isChecked: qtSwitch.checked
     property string label: ""
     property string subtitle: ""
-    property int maximumLineCount: 2
+    property int maximumLineCount: 2 // -1 to unset
 
     onClicked: qtSwitch.toggle()
     hoverEnabled: true
