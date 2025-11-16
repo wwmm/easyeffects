@@ -73,7 +73,7 @@ auto ConvolverZita::init(uint32_t sampleCount, uint32_t blockSize, std::span<flo
 }
 
 void ConvolverZita::process(std::span<float> left, std::span<float> right) {
-  if (!ready) {
+  if (!ready || !conv || conv->state() != Convproc::ST_PROC) {
     return;
   }
 
