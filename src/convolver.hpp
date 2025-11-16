@@ -110,6 +110,7 @@ class Convolver : public PluginBase {
   bool kernel_is_initialized = false;
   bool n_samples_is_power_of_2 = true;
   bool ready = false;
+  bool destructor_called = false;
   bool notify_latency = false;
 
   uint blocksize = 512U;

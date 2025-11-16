@@ -103,16 +103,16 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
 }
 
 Convolver::~Convolver() {
+  destructor_called = true;
+  ready = false;
+
   if (connected_to_pw) {
     disconnect_from_pw();
   }
 
-  this->disconnect();
   settings->disconnect();
 
   std::scoped_lock<std::mutex> lock(data_mutex);
-
-  ready = false;
 
   zita.stop();
 
@@ -145,7 +145,7 @@ void Convolver::setup() {
   QMetaObject::invokeMethod(
       this,
       [this] {
-        if (ready) {
+        if (ready || destructor_called) {
           return;
         }
 
@@ -454,6 +454,10 @@ void Convolver::chart_kernel_fft(const std::vector<float>& kernel_L,
   QMetaObject::invokeMethod(
       this,
       [this] {
+        if (!ready || destructor_called) {
+          return;
+        }
+
         auto linear_L = kernel_fft.linear_L;
         auto linear_R = kernel_fft.linear_R;
         auto log_L = kernel_fft.log_L;
