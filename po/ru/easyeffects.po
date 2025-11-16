@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-15 01:35-0300\n"
-"PO-Revision-Date: 2025-11-15 20:01+0000\n"
+"PO-Revision-Date: 2025-11-16 08:51+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -126,7 +126,7 @@ msgstr "Моментальный замер"
 #: src/contents/ui/Autogain.qml:60 src/contents/ui/Autogain.qml:140
 #: src/contents/ui/LevelMeter.qml:154
 msgid "Short-term"
-msgstr "Краткосрочный"
+msgstr "Краткосрочный замер"
 
 # Время интеграции — это величина, характеризующая быстродействие измерителя.
 # https://tech.ebu.ch/docs/factsheets/Factsheet-R128-2011-RUS.pdf
@@ -600,7 +600,7 @@ msgstr "Пик"
 #: src/contents/ui/MultibandCompressor.qml:400
 #: src/contents/ui/MultibandGate.qml:373
 msgid "RMS"
-msgstr "Среднеквадратично"
+msgstr "Сред. квад. (RMS)"
 
 #: src/contents/ui/Compressor.qml:288 src/contents/ui/Compressor.qml:409
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Expander.qml:248
@@ -609,13 +609,13 @@ msgstr "Среднеквадратично"
 #: src/contents/ui/MultibandCompressor.qml:400
 #: src/contents/ui/MultibandGate.qml:373
 msgid "Low-pass"
-msgstr "Низкочастотный фильтр"
+msgstr "Фильтр НЧ"
 
 #: src/contents/ui/Compressor.qml:288 src/contents/ui/Expander.qml:248
 #: src/contents/ui/Gate.qml:266 src/contents/ui/MultibandCompressor.qml:400
 #: src/contents/ui/MultibandGate.qml:373
 msgid "SMA"
-msgstr "ПСС (SPM)"
+msgstr "Сред. ариф. (SPM)"
 
 # #, fuzzy
 #: src/contents/ui/Compressor.qml:298 src/contents/ui/Compressor.qml:313
@@ -735,7 +735,7 @@ msgstr "Фильтр ВЧ"
 #: src/contents/ui/Expander.qml:369 src/contents/ui/Gate.qml:374
 #: src/contents/ui/Gate.qml:388
 msgid "Off"
-msgstr "Откл"
+msgstr "Отключено"
 
 #: src/contents/ui/Compressor.qml:399 src/contents/ui/Compressor.qml:413
 #: src/contents/ui/Expander.qml:355 src/contents/ui/Expander.qml:369
@@ -813,14 +813,14 @@ msgstr "Боковая цепь во вход"
 #: src/contents/ui/Gate.qml:558 src/contents/ui/Limiter.qml:333
 #: src/contents/ui/LspPreMixSheet.qml:78
 msgid "Sidechain to link"
-msgstr "Боковая цепь в указатель"
+msgstr "Бок. цепь в указатель"
 
 # #, fuzzy
 #: src/contents/ui/Compressor.qml:599 src/contents/ui/Expander.qml:553
 #: src/contents/ui/Gate.qml:574 src/contents/ui/Limiter.qml:349
 #: src/contents/ui/LspPreMixSheet.qml:94
 msgid "Link to sidechain"
-msgstr "Указатель в боковую цепь"
+msgstr "Указатель в бок. цепь"
 
 # #, fuzzy
 #: src/contents/ui/Compressor.qml:615 src/contents/ui/Expander.qml:569
@@ -1200,11 +1200,11 @@ msgstr "Описание не задано"
 
 #: src/contents/ui/DelegatePluginsList.qml:100
 msgid "Toggle this effect"
-msgstr "Переключить этот эффект"
+msgstr "Включить/отключить этот эффект"
 
 #: src/contents/ui/DelegatePluginsList.qml:108
 msgid "Remove this effect"
-msgstr "Удалить этот эффект"
+msgstr "Убрать этот эффект"
 
 #: src/contents/ui/DelegateStreamsList.qml:77
 msgid "channels"
@@ -1247,7 +1247,7 @@ msgstr "Сила"
 
 #: src/contents/ui/EchoCanceller.qml:91 src/contents/ui/Loudness.qml:100
 msgid "Low"
-msgstr "Низкочастотный фильтр"
+msgstr "Низ"
 
 #: src/contents/ui/EchoCanceller.qml:91
 msgid "Moderate"
@@ -1299,7 +1299,7 @@ msgstr "Вход"
 #: src/contents/ui/EeSpinBox.qml:134 src/contents/ui/EeSpinBox.qml:168
 msgctxt "minus infinity abbreviation"
 msgid "-inf"
-msgstr "-inf"
+msgstr "∞"
 
 #: src/contents/ui/EqualizerBandMenu.qml:25
 #: src/contents/ui/MultibandCompressor.qml:631
@@ -1354,19 +1354,19 @@ msgstr "RLC (СП)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
 msgid "BWC (BT)"
-msgstr "Чебышёва-Баттерворта (БП)"
+msgstr "BWC (БП)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
 msgid "BWC (MT)"
-msgstr "Чебышёва-Баттерворта (СП)"
+msgstr "BWC (СП)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
 msgid "LRX (BT)"
-msgstr "Линквица-Райли (БП)"
+msgstr "LRX (БП)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
 msgid "LRX (MT)"
-msgstr "Линквица-Райли (СП)"
+msgstr "LRX (СП)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
 msgid "APO (DR)"
@@ -1460,7 +1460,7 @@ msgstr "БПФ (FFT)"
 
 #: src/contents/ui/Equalizer.qml:107 src/contents/ui/Filter.qml:78
 msgid "SPM"
-msgstr "Спектральный процессор"
+msgstr "Спектр (SPM)"
 
 #: src/contents/ui/Equalizer.qml:116
 msgid "Bands"
@@ -1895,7 +1895,7 @@ msgstr "О программе Easy Effects"
 
 #: src/contents/ui/MenuAddPlugins.qml:75
 msgid "Add %1"
-msgstr "Добавить %1"
+msgstr "Добавить «%1»"
 
 #: src/contents/ui/MenuAddPlugins.qml:147
 msgid "Added a new effect to the pipeline: %1"
@@ -2241,7 +2241,7 @@ msgstr "Easy Effects стартует при запуске сеанса пол�
 
 #: src/contents/ui/PreferencesSheet.qml:92
 msgid "Show the tray icon"
-msgstr "Показать значок в трее"
+msgstr "Показывать значок в трее"
 
 #: src/contents/ui/PreferencesSheet.qml:112
 msgid "Process all output streams"
@@ -2269,9 +2269,9 @@ msgid ""
 "better to ignore them, but for some presets it may be recommended since they "
 "could sound too loud."
 msgstr ""
-"Обработка системных уведомлений может вызывать потрескивание звука, поэтому "
-"лучше игнорировать их, но для некоторых предустановок это может "
-"рекомендоваться, так как они могут звучать слишком громко."
+"Обработка уведомлений системы может вызывать потрескивание звука, поэтому "
+"лучше игнорировать их, но для некоторых предустановок это может быть "
+"полезно, так как они могут звучать громко."
 
 #: src/contents/ui/PreferencesSheet.qml:168
 msgid "Enable/disable input monitoring"
@@ -2290,7 +2290,7 @@ msgid ""
 "When all streams are inactive, Easy Effects pipeline remains loaded for an "
 "extra amount of time."
 msgstr ""
-"Когда все потоки неактивны, канал обработки Easy Effects остается "
+"Когда все потоки неактивны, канал обработки Easy Effects остаётся "
 "загруженным в течение дополнительного времени."
 
 #: src/contents/ui/PreferencesSheet.qml:203
@@ -2299,7 +2299,7 @@ msgstr "Тайм-аут бездействия"
 
 #: src/contents/ui/PreferencesSheet.qml:217
 msgid "Level meters label"
-msgstr "Метка уровнемеров"
+msgstr "Метки уровнемеров"
 
 #: src/contents/ui/PreferencesSheet.qml:218
 msgid ""
@@ -2323,11 +2323,11 @@ msgstr "Автоматически"
 
 #: src/contents/ui/PreferencesSheet.qml:281
 msgid "Light"
-msgstr "Светлый"
+msgstr "Светлая"
 
 #: src/contents/ui/PreferencesSheet.qml:281
 msgid "Dark"
-msgstr "Тёмный"
+msgstr "Тёмная"
 
 #: src/contents/ui/PreferencesSheet.qml:291
 msgid "Color theme"
@@ -2343,28 +2343,28 @@ msgstr "Зелёный неон"
 
 #: src/contents/ui/PreferencesSheet.qml:295
 msgid "Mix"
-msgstr "Сведение"
+msgstr "Микс"
 
 # ??? Не уверен в переводе
 #: src/contents/ui/PreferencesSheet.qml:295
 msgid "Orange"
-msgstr "Оранжевый"
+msgstr "Оранжевая"
 
 #: src/contents/ui/PreferencesSheet.qml:295
 msgid "Yellow"
-msgstr "Жёлтый"
+msgstr "Жёлтая"
 
 #: src/contents/ui/PreferencesSheet.qml:295
 msgid "Blue"
-msgstr "Синий"
+msgstr "Синяя"
 
 #: src/contents/ui/PreferencesSheet.qml:295
 msgid "Purple"
-msgstr "Фиолетовый"
+msgstr "Фиолетовая"
 
 #: src/contents/ui/PreferencesSheet.qml:295
 msgid "Grey"
-msgstr "Серый"
+msgstr "Серая"
 
 #: src/contents/ui/PreferencesSheet.qml:305
 msgid "Shape"
@@ -2435,8 +2435,8 @@ msgid ""
 "Action buttons in the effects list are moved inside a context menu for a "
 "more compact view."
 msgstr ""
-"Кнопки действий в списке эффектов перемещены в контекстное меню для более "
-"компактного вида."
+"Кнопки действий в списке эффектов будут перемещены в контекстное меню для "
+"более компактного вида."
 
 #: src/contents/ui/PreferencesSheet.qml:467
 msgid "Autoload delay"
@@ -2446,7 +2446,7 @@ msgstr "Задержка автозагрузки"
 msgid ""
 "Delay between receiving a new device route and the call to autoload a preset."
 msgstr ""
-"Задержка между получением маршрута нового устройства и вызовом автозагрузки "
+"Задержка между приёмом маршрута нового устройства и вызовом автозагрузки "
 "предустановки."
 
 #: src/contents/ui/PreferencesSheet.qml:491
@@ -2472,7 +2472,7 @@ msgstr "Частота обновления"
 
 #: src/contents/ui/PreferencesSheet.qml:518
 msgid "Related to LV2 plugins."
-msgstr "Связано с плагинами LV2."
+msgstr "Относится к плагинам LV2."
 
 # #, fuzzy
 #: src/contents/ui/PresetsAutoloadingPage.qml:31
@@ -3110,7 +3110,6 @@ msgid "Simple audio effects"
 msgstr "Простые звуковые эффекты"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:31
-#, fuzzy
 msgid "Imported a new Convolver impulse file."
 msgstr "Импортирован новый файл импульса конвольвера."
 
