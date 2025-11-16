@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-15 17:00-0300\n"
-"PO-Revision-Date: 2025-11-16 08:51+0000\n"
+"PO-Revision-Date: 2025-11-16 19:28+0000\n"
 "Last-Translator: Lito Parra <lito.15@proton.me>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
 "es/>\n"
@@ -487,7 +487,7 @@ msgstr "Umbral de aumento de ganancia"
 #: src/contents/ui/Compressor.qml:96
 #: src/contents/ui/MultibandCompressor.qml:133
 msgid "Boost amount"
-msgstr "Cantidad de aumento"
+msgstr "Cantidad de aumento de ganancia"
 
 #: src/contents/ui/Compressor.qml:115 src/contents/ui/Deesser.qml:101
 #: src/contents/ui/Expander.qml:75 src/contents/ui/MultibandCompressor.qml:325
