@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-28 14:40+0000\n"
 "PO-Revision-Date: 2025-11-16 15:04+0000\n"
-"Last-Translator: StarOnTheSky <i@sots.eu.org>\n"
+"Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/changelog/zh_Hans/>\n"
 "Language: zh_CN\n"
@@ -267,7 +267,8 @@ msgid ""
 "Improved the pipeline management system. Non-limiter effects are placed "
 "before the limiter even if the last two plugins in the pipeline are a "
 "limiter followed by a level meter."
-msgstr ""
+msgstr "改进了管线管理系统。限制器以外的音效会排在限制器之前，即使限制器之后还有电平"
+"表。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:80
 msgid ""
@@ -421,7 +422,7 @@ msgstr "现在可以在打开预设、卷积混响器和 RNNoise 模型的对话
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:187
 msgid "Fixed the Solo button in the Equalizer band settings."
-msgstr ""
+msgstr "修复了均衡器频带设置里的独奏按钮。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:189
 msgid ""
@@ -483,7 +484,7 @@ msgstr "改进了对近期PipeWire版本的支持。更多详情请见"
 msgid ""
 "Active Equalizer filters are not set to Bell type anymore when the number of "
 "bands changes."
-msgstr ""
+msgstr "改变均衡器频带数时，已激活的滤波器将不再被设为钟形。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:216
 msgid ""
@@ -526,7 +527,7 @@ msgstr ""
 msgid ""
 "The Equalizer \"sort bands\" feature is now ordering bands on GSettings, so "
 "the result can be saved into presets."
-msgstr ""
+msgstr "均衡器现在用GSettings管理频带排序，如此便可以将结果保存到预设中。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:248
 msgid "Improved performance when resetting keys."
@@ -535,7 +536,7 @@ msgstr "改善了将键重置时的性能。"
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:250
 msgid ""
 "Fixed the \"Large Empty Hall\" preset selection in the Reverberation effect."
-msgstr ""
+msgstr "修复了混响器效果中“空旷的大厅”预设。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:251
 msgid ""
@@ -683,9 +684,8 @@ msgid "The documentation has been updated"
 msgstr "文档已更新"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:300
-#, fuzzy
 msgid "Improved debug messages"
-msgstr "改善了调试信息"
+msgstr "改进了调试信息"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:311
 msgid "Improved translations"
