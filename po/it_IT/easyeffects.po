@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-16 19:25+0000\n"
-"PO-Revision-Date: 2025-11-14 21:46+0000\n"
+"PO-Revision-Date: 2025-11-16 21:28+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -931,7 +931,6 @@ msgid "Autogain"
 msgstr "Guadagno Automatico"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:31
-#, fuzzy
 msgid "Imported a new Convolver impulse file."
 msgstr "Importato un nuovo file di risposta impulsiva del Convolver."
 
