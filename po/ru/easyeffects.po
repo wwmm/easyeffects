@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-16 21:24+0000\n"
-"PO-Revision-Date: 2025-11-16 08:51+0000\n"
+"PO-Revision-Date: 2025-11-17 22:51+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -2227,7 +2227,7 @@ msgstr "Включить режим службы"
 
 #: src/contents/ui/PreferencesSheet.qml:66
 msgid "Easy Effects is active in background when the window is closed."
-msgstr "Easy Effects активен в фоновом режиме, когда окно закрыто."
+msgstr "Easy Effects будет активен в фоновом режиме, если окно закрыто."
 
 #: src/contents/ui/PreferencesSheet.qml:78
 msgid "Autostart on login"
@@ -2426,13 +2426,14 @@ msgstr "Часто используемые предустановки"
 
 #: src/contents/ui/PreferencesSheet.qml:466
 msgid "Force KDE's Breeze theme when Easy Effects starts"
-msgstr ""
+msgstr "Принудительно включить тему KDE Breeze при запуске Easy Effects"
 
 #: src/contents/ui/PreferencesSheet.qml:467
 msgid ""
 "It is necessary to restart the service for changes in this setting to take "
 "effect."
 msgstr ""
+"Необходимо перезапустить службу для при применений изменений этой настройки."
 
 #: src/contents/ui/PreferencesSheet.qml:480
 msgid "Reduce effects list controls"

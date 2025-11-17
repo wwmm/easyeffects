@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-16 21:24+0000\n"
-"PO-Revision-Date: 2025-11-14 15:51+0000\n"
+"PO-Revision-Date: 2025-11-17 22:51+0000\n"
 "Last-Translator: Максим Горпиніч <gorpinicmaksim0@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
@@ -16,8 +16,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural="
+"(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? "
+"1 : 2);\n"
 "X-Generator: Weblate 5.15-dev\n"
 
 #: src/autostart.cpp:89
@@ -44,7 +45,7 @@ msgstr "Сховати вікно."
 
 #: src/command_line_parser.cpp:45
 msgid "Global bypass. 1 to enable and 2 to disable."
-msgstr "Глобальний обхід. Увімкнути — 1, вимкнути — 2"
+msgstr "Глобальний обхід. Увімкнути — 1, вимкнути — 2."
 
 #: src/command_line_parser.cpp:45
 msgid "bypass-state"
@@ -927,9 +928,8 @@ msgid "Autogain"
 msgstr "Автоматичне підсилення"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:31
-#, fuzzy
 msgid "Imported a new Convolver impulse file."
-msgstr "Імпортовано новий файл імпульсу конвольвера."
+msgstr "Імпортовано новий імпульсний файл Convolver."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:33
 msgid "Failed to import the Convolver impulse file."
@@ -2388,13 +2388,15 @@ msgstr "Найчастіше застосовувані попередні на�
 
 #: src/contents/ui/PreferencesSheet.qml:466
 msgid "Force KDE's Breeze theme when Easy Effects starts"
-msgstr ""
+msgstr "Примусово вмикати тему Breeze від KDE під час запуску Easy Effects"
 
 #: src/contents/ui/PreferencesSheet.qml:467
 msgid ""
 "It is necessary to restart the service for changes in this setting to take "
 "effect."
 msgstr ""
+"Щоб зміни в цьому налаштуванні набули чинності, необхідно перезапустити "
+"службу."
 
 #: src/contents/ui/PreferencesSheet.qml:480
 msgid "Reduce effects list controls"
@@ -2413,12 +2415,11 @@ msgid "Autoload delay"
 msgstr "Затримка автозавантаження"
 
 #: src/contents/ui/PreferencesSheet.qml:501
-#, fuzzy
 msgid ""
 "Delay between receiving a new device route and the call to autoload a preset."
 msgstr ""
 "Затримка між отриманням нового маршруту пристрою та викликом автоматичного "
-"завантаження попереднього налаштування"
+"завантаження попереднього налаштування."
 
 #: src/contents/ui/PreferencesSheet.qml:525
 msgid "Global shortcuts"
@@ -2923,7 +2924,7 @@ msgstr "© 2017-2025 Команда EasyEffects"
 
 #: src/main.cpp:313
 msgid "Wellington Wallace"
-msgstr "Веллінгтон Уоллес"
+msgstr "Веллінгтон Воллес"
 
 #: src/main.cpp:313
 msgctxt "@info:credit"
