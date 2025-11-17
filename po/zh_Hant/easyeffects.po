@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-16 21:24+0000\n"
-"PO-Revision-Date: 2025-11-15 00:51+0000\n"
+"PO-Revision-Date: 2025-11-17 09:54+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hant/>\n"
@@ -2388,13 +2388,13 @@ msgstr "最常使用預設集"
 
 #: src/contents/ui/PreferencesSheet.qml:466
 msgid "Force KDE's Breeze theme when Easy Effects starts"
-msgstr ""
+msgstr "強制 KDE 的 Breeze 主題，當 Easy Effects 啟動時"
 
 #: src/contents/ui/PreferencesSheet.qml:467
 msgid ""
 "It is necessary to restart the service for changes in this setting to take "
 "effect."
-msgstr ""
+msgstr "必須重新啟動服務才能使此設定變更作用生效。"
 
 #: src/contents/ui/PreferencesSheet.qml:480
 msgid "Reduce effects list controls"
