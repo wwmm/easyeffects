@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-16 21:24+0000\n"
-"PO-Revision-Date: 2025-11-16 19:28+0000\n"
+"PO-Revision-Date: 2025-11-17 09:54+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hans/>\n"
@@ -31,7 +31,7 @@ msgstr ""
 
 #: src/command_line_parser.cpp:42
 msgid "Quit Easy Effects. Useful when running in service mode."
-msgstr "退出Easy Effects。可用于运行在服务模式下时。"
+msgstr "退出Easy Effects。可一并退出后台服务模式。"
 
 #: src/command_line_parser.cpp:43
 msgid "Reset Easy Effects."
@@ -79,7 +79,7 @@ msgstr "已弃用。请改用--service-mode。"
 
 #: src/command_line_parser.cpp:51
 msgid "Start the application with service mode turned on."
-msgstr "以服务模式启动应用程序。"
+msgstr "以后台服务模式启动应用程序。"
 
 #: src/command_line_parser.cpp:52
 msgid "Enable debug messages."
@@ -439,7 +439,7 @@ msgstr "显示已排除的应用程序"
 
 #: src/contents/ui/BlocklistSheet.qml:177
 msgid "Show excluded applications in the list of players/recorders"
-msgstr "按播放/录音设备显示已排除的应用程序"
+msgstr "按播放器/录音器分类显示已排除的应用程序"
 
 #: src/contents/ui/Compressor.qml:50 src/tags_plugin_name.cpp:29
 msgid "Compressor"
@@ -2177,7 +2177,7 @@ msgstr "实验性功能"
 
 #: src/contents/ui/PreferencesSheet.qml:65
 msgid "Enable service mode"
-msgstr "启用服务模式"
+msgstr "启用后台服务模式"
 
 #: src/contents/ui/PreferencesSheet.qml:66
 msgid "Easy Effects is active in background when the window is closed."
@@ -2374,13 +2374,13 @@ msgstr "最常用的预设"
 
 #: src/contents/ui/PreferencesSheet.qml:466
 msgid "Force KDE's Breeze theme when Easy Effects starts"
-msgstr ""
+msgstr "在Easy Effects启动时强制应用KDE Breeze微风主题"
 
 #: src/contents/ui/PreferencesSheet.qml:467
 msgid ""
 "It is necessary to restart the service for changes in this setting to take "
 "effect."
-msgstr ""
+msgstr "此设置需重启应用生效。"
 
 #: src/contents/ui/PreferencesSheet.qml:480
 msgid "Reduce effects list controls"
@@ -2399,7 +2399,7 @@ msgstr "自动加载延迟"
 #: src/contents/ui/PreferencesSheet.qml:501
 msgid ""
 "Delay between receiving a new device route and the call to autoload a preset."
-msgstr "在接收新设备路由和自动加载预设之间的延迟。"
+msgstr "在接收新设备路由与自动加载预设之间的延迟。"
 
 #: src/contents/ui/PreferencesSheet.qml:525
 msgid "Global shortcuts"
@@ -3032,7 +3032,7 @@ msgstr "混响"
 
 #: src/tags_plugin_name.cpp:50
 msgid "Noise Reduction"
-msgstr "降噪器"
+msgstr "降噪"
 
 #: src/tags_plugin_name.cpp:51
 msgid "Speech Processor"
@@ -3044,7 +3044,7 @@ msgstr "立体声工具"
 
 #: com.github.wwmm.easyeffects.desktop.in.template.h:1
 msgid "Equalizer, Compressor and Other Audio Effects"
-msgstr "均衡器、压缩器和其他音效"
+msgstr "均衡器、压缩器与其他音效"
 
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
