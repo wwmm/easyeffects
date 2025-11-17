@@ -45,7 +45,7 @@ class ConvolverKernelFFT {
  private:
   static auto apply_hanning_window(std::vector<double>& signal) -> void;
 
-  static auto compute_fft_magnitude(const std::vector<double>& real_input) -> std::vector<double>;
+  static auto compute_fft_magnitude(const std::vector<float>& real_input) -> std::vector<double>;
 
   static auto normalize_spectrum(std::vector<double>& spectrum) -> void;
 };

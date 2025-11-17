@@ -47,8 +47,8 @@ auto ConvolverKernelFFT::calculate_fft(const std::vector<float>& kernel_L,
   util::debug("Calculating the impulse fft...");
 
   // Calculate FFT magnitudes
-  auto spectrum_L = compute_fft_magnitude(std::vector<double>(kernel_L.begin(), kernel_L.end()));
-  auto spectrum_R = compute_fft_magnitude(std::vector<double>(kernel_R.begin(), kernel_R.end()));
+  auto spectrum_L = compute_fft_magnitude(kernel_L);
+  auto spectrum_R = compute_fft_magnitude(kernel_R);
 
   // Initialize frequency axis
   std::vector<double> freq_axis(spectrum_L.size());
@@ -112,15 +112,19 @@ auto ConvolverKernelFFT::apply_hanning_window(std::vector<double>& signal) -> vo
   }
 }
 
-auto ConvolverKernelFFT::compute_fft_magnitude(const std::vector<double>& real_input) -> std::vector<double> {
+auto ConvolverKernelFFT::compute_fft_magnitude(const std::vector<float>& real_input) -> std::vector<double> {
   if (real_input.empty()) {
     return {};
   }
 
-  std::vector<double> signal_copy = real_input;
+  std::vector<double> signal_copy(real_input.size());
+
+  std::ranges::copy(real_input, signal_copy.begin());
+
   apply_hanning_window(signal_copy);
 
   std::vector<double> spectrum((signal_copy.size() / 2U) + 1U);
+
   auto* complex_output = fftw_alloc_complex(signal_copy.size());
 
   auto* plan =
