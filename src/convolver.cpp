@@ -106,6 +106,12 @@ Convolver::~Convolver() {
   destructor_called = true;
   ready = false;
 
+  for (auto& t : mythreads) {
+    t.join();
+  }
+
+  mythreads.clear();
+
   if (connected_to_pw) {
     disconnect_from_pw();
   }
@@ -116,12 +122,6 @@ Convolver::~Convolver() {
   std::scoped_lock<std::mutex> lock(data_mutex);
 
   zita.stop();
-
-  for (auto& t : mythreads) {
-    t.join();
-  }
-
-  mythreads.clear();
 
   util::debug(std::format("{}{} destroyed", log_tag, name.toStdString()));
 }
@@ -404,6 +404,10 @@ auto Convolver::get_latency_seconds() -> float {
 }
 
 void Convolver::prepare_kernel() {
+  if (destructor_called) {
+    return;
+  }
+
   data_mutex.lock();
 
   ready = false;

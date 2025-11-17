@@ -58,14 +58,14 @@ class ConvolverKernelManager {
   auto saveKernel(const KernelData& kernel, const std::string& file_name) -> bool;
 
  private:
+  static constexpr std::string irs_ext = ".irs";
+
   PipelineType pipeline_type;
 
   std::string app_data_dir;
   std::string local_dir_irs;
 
   std::vector<std::string> system_data_dir_irs;
-
-  static constexpr std::string irs_ext = ".irs";
 
   static auto readKernelFile(const std::string& file_path) -> KernelData;
 

@@ -42,9 +42,9 @@ class ConvolverZita {
   void stop();
 
  private:
-  Convproc* conv = nullptr;
-
   bool ready = false;
 
   uint32_t bufferSize = 0;
+
+  Convproc* conv = nullptr;
 };

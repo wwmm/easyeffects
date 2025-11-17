@@ -35,12 +35,12 @@ class ConvolverKernelFFT {
                      float kernel_rate,
                      int interp_points = 1000) -> void;
 
+  auto clear_data() -> void;
+
   QList<QPointF> linear_L;
   QList<QPointF> linear_R;
   QList<QPointF> log_L;
   QList<QPointF> log_R;
-
-  auto clear_data() -> void;
 
  private:
   static auto apply_hanning_window(std::vector<double>& signal) -> void;
