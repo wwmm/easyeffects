@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-16 19:25+0000\n"
-"PO-Revision-Date: 2025-11-16 21:28+0000\n"
+"PO-Revision-Date: 2025-11-17 09:54+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -3081,13 +3081,15 @@ msgstr "Effetti audio semplici"
 
 #: src/contents/ui/PreferencesSheet.qml:466
 msgid "Force KDE's Breeze theme when Easy Effects starts"
-msgstr ""
+msgstr "Forza il tema Breeze di KDE all'avvio di Easy Effects"
 
 #: src/contents/ui/PreferencesSheet.qml:467
 msgid ""
 "It is necessary to restart the service for changes in this setting to take "
 "effect."
 msgstr ""
+"È necessario effettuare il riavvio del servizio per rendere esecutiva questa "
+"impostazione."
 
 #~ msgid "Hardware profile"
 #~ msgstr "Profilo dispositivo"
