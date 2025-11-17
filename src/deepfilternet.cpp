@@ -21,6 +21,7 @@
 #include <qnamespace.h>
 #include <qobject.h>
 #include <algorithm>
+#include <format>
 #include <memory>
 #include <mutex>
 #include <span>
@@ -106,13 +107,17 @@ void DeepFilterNet::setup() {
   QMetaObject::invokeMethod(
       this,
       [this] {
-        ladspa_wrapper->n_samples = n_samples;
         std::scoped_lock<std::mutex> lock(data_mutex);
 
-        if (ladspa_wrapper->get_rate() != 48000) {
-          ladspa_wrapper->create_instance(48000);
-          ladspa_wrapper->activate();
+        if (ladspa_wrapper->has_instance()) {
+          ladspa_wrapper->deactivate();
+
+          ladspa_wrapper = std::make_unique<ladspa::LadspaWrapper>("libdeep_filter_ladspa.so", "deep_filter_stereo");
         }
+
+        ladspa_wrapper->n_samples = n_samples;
+        ladspa_wrapper->create_instance(48000);
+        ladspa_wrapper->activate();
 
         if (resample && !resampler_ready) {
           resampler_inL = std::make_unique<Resampler>(rate, 48000);
