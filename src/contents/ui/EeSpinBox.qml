@@ -182,21 +182,31 @@ FormCard.AbstractFormDelegate {
 
                 /**
                  * Number validation.
-                 * We need also `−` (U+2212) minus sign for Suomi localization.
-                 * Some other localizations may also use `＋` (U+FF0B) plus
-                 * sign, so let's allow it too for a more robust input
-                 * handling. See #4417.
+                 *
+                 * The regex allows the decimal notation without the thousand
+                 * separator. Decimal separators are dot and comma, which will
+                 * work differently according to the user locale. The decimal
+                 * notation omitting the leading zero is also permitted.
+                 * For leading minus sign, we need to catch also `−` (U+2212)
+                 * for Suomi locale.
+                 *
+                 * The regex does not assert the start and the end of the
+                 * string, so it will match the number between other non-digits
+                 * character and, if more numbers are written, only the first
+                 * one is considered since the global flag is not used.
                  */
-                const numValidator = /^\s*[-−+＋]?(?:\d+(?:[.,]\d*)?(?:[eE][-−+＋]?\d+)?)/;
-                if (text.match(numValidator) === null) {
+                const numValidator = /[-−]?(?:(?:[.,]\d+)|\d+(?:[.,]\d+)?)/;
+
+                const matchResult = text.match(numValidator);
+
+                if (matchResult === null) {
                     console.warn("Spinbox number validation failed:", text);
                     return spinbox.value;
                 }
 
-                // Handling scientific notation.
-                const cleanedText = text.replace(/[^\d.,eE+＋-−]/g, '');
+                const num = matchResult[0];
                 try {
-                    const n = Number.fromLocaleString(locale, cleanedText);
+                    const n = Number.fromLocaleString(locale, num);
                     return !Number.isNaN(n) ? Math.round(n * spinbox.decimalFactor) : spinbox.value;
                 } catch (e) {
                     console.warn("Spinbox text to locale number conversion failed:", text);
