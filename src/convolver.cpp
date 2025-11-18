@@ -184,14 +184,14 @@ Convolver::~Convolver() {
   destructor_called = true;
   ready = false;
 
+  if (connected_to_pw) {
+    disconnect_from_pw();
+  }
+
   zita.stop();
 
   workerThread.quit();
   workerThread.wait();
-
-  if (connected_to_pw) {
-    disconnect_from_pw();
-  }
 
   disconnect();
   settings->disconnect();

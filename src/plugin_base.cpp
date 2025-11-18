@@ -478,6 +478,12 @@ void PluginBase::disconnect_from_pw() {
   pm->sync_wait_unlock();
 
   node_id = SPA_ID_INVALID;
+
+  while (pw_filter_get_state(filter, nullptr) != PW_FILTER_STATE_UNCONNECTED) {
+    std::this_thread::sleep_for(std::chrono::milliseconds(1));
+  }
+
+  util::warning(std::format("{}{} is disconnected", log_tag, name.toStdString()));
 }
 
 void PluginBase::setup() {}
