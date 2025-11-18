@@ -88,9 +88,9 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
     }
   });
 
-  connect(settings, &db::Convolver::kernelNameChanged, [&]() { prepare_kernel(); });
+  connect(settings, &db::Convolver::kernelNameChanged, [&]() { load_kernel_file(); });
 
-  connect(settings, &db::Convolver::autogainChanged, [&]() { prepare_kernel(); });
+  connect(settings, &db::Convolver::autogainChanged, [&]() { load_kernel_file(); });
 
   connect(settings, &db::Convolver::dryChanged, [&]() {
     dry =
@@ -148,7 +148,7 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
       Q_EMIT kernelRateChanged();
       Q_EMIT kernelDurationChanged();
       Q_EMIT kernelSamplesChanged();
-      Q_EMIT newKernelLoaded(name, true);
+      Q_EMIT newKernelLoaded(kernel.name, true);
     }
   });
 
@@ -167,7 +167,7 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
 
   workerThread.start();
 
-  QMetaObject::invokeMethod(worker, [this] { prepare_kernel(); }, Qt::QueuedConnection);
+  QMetaObject::invokeMethod(worker, [this] { load_kernel_file(); }, Qt::QueuedConnection);
 }
 
 Convolver::~Convolver() {
@@ -237,7 +237,7 @@ void Convolver::setup() {
 
         latency_n_frames = 0U;
 
-        prepare_kernel();
+        load_kernel_file();
       },
       Qt::QueuedConnection);
 
@@ -339,6 +339,16 @@ void Convolver::process([[maybe_unused]] std::span<float>& left_in,
                         [[maybe_unused]] std::span<float>& probe_right) {}
 
 void Convolver::load_kernel_file() {
+  if (destructor_called) {
+    return;
+  }
+
+  data_mutex.lock();
+
+  ready = false;
+
+  data_mutex.unlock();
+
   const auto name = settings->kernelName();
 
   auto kernel_data = kernel_manager.loadKernel(name.toStdString());
@@ -450,20 +460,6 @@ void Convolver::set_kernel_stereo_width() {
 
 auto Convolver::get_latency_seconds() -> float {
   return this->latency_value;
-}
-
-void Convolver::prepare_kernel() {
-  if (destructor_called) {
-    return;
-  }
-
-  data_mutex.lock();
-
-  ready = false;
-
-  data_mutex.unlock();
-
-  load_kernel_file();
 }
 
 void Convolver::combine_kernels(const std::string& kernel_1_name,

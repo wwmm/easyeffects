@@ -161,8 +161,6 @@ class Convolver : public PluginBase {
 
   void set_kernel_stereo_width();
 
-  void prepare_kernel();
-
   void load_kernel_file();
 
   void combine_kernels(const std::string& kernel_1_name,
