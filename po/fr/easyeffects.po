@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-16 21:24+0000\n"
-"PO-Revision-Date: 2025-11-15 00:51+0000\n"
+"PO-Revision-Date: 2025-11-18 11:51+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -928,9 +928,8 @@ msgid "Autogain"
 msgstr "Gain Automatique"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:31
-#, fuzzy
 msgid "Imported a new Convolver impulse file."
-msgstr "Importation d'un nouveau fichier d'impulsion pour le Convolver."
+msgstr "Importation d'un nouveau fichier d'impulsion du Convolver."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:33
 msgid "Failed to import the Convolver impulse file."
@@ -2393,13 +2392,15 @@ msgstr "Préréglages les plus utilisés"
 
 #: src/contents/ui/PreferencesSheet.qml:466
 msgid "Force KDE's Breeze theme when Easy Effects starts"
-msgstr ""
+msgstr "Forcer le thème Breeze de KDE au démarrage d'Easy Effects"
 
 #: src/contents/ui/PreferencesSheet.qml:467
 msgid ""
 "It is necessary to restart the service for changes in this setting to take "
 "effect."
 msgstr ""
+"Il est nécessaire de redémarrer le service pour que les modifications de ce "
+"paramètre prennent effet."
 
 #: src/contents/ui/PreferencesSheet.qml:480
 msgid "Reduce effects list controls"
