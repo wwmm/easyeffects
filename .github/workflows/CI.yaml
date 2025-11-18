@@ -180,6 +180,7 @@ jobs:
           itstool
 
         # Qt6 and KF6 dependencies (from KDE Neon)
+        # Uses correct package names found in Neon/Debian Trixie
         sudo apt-get install -y \
           qt6-base-dev \
           qt6-declarative-dev \
@@ -188,7 +189,7 @@ jobs:
           qt6-webengine-dev \
           qt6-webengine-dev-tools \
           qt6-charts-dev \
-          libqt6graphs6-dev \
+          qt6-graphs-dev \
           qml6-module-qtcharts \
           qml6-module-qtquick-shapes \
           libkf6coreaddons-dev \
@@ -196,7 +197,6 @@ jobs:
           libkf6i18n-dev \
           libkf6configwidgets-dev \
           libkf6widgetsaddons-dev \
-          libkf6colorscheme-dev \
           libkf6kcmutils-dev \
           libkf6iconthemes-dev \
           kirigami-addons-dev \
