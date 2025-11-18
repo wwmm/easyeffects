@@ -110,60 +110,68 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
 
   connect(&workerThread, &QThread::finished, worker, &QObject::deleteLater);
 
-  connect(worker, &ConvolverWorker::onNewChartMag, this, [this](QList<QPointF> mag_L, QList<QPointF> mag_R) {
-    chartMagL = mag_L;
-    chartMagR = mag_R;
+  connect(
+      worker, &ConvolverWorker::onNewChartMag, this,
+      [this](QList<QPointF> mag_L, QList<QPointF> mag_R) {
+        chartMagL = mag_L;
+        chartMagR = mag_R;
 
-    Q_EMIT chartMagLChanged();
-    Q_EMIT chartMagRChanged();
-  });
+        Q_EMIT chartMagLChanged();
+        Q_EMIT chartMagRChanged();
+      },
+      Qt::QueuedConnection);
 
-  connect(worker, &ConvolverWorker::onNewKernel, this, [this](ConvolverKernelManager::KernelData data) {
-    kernel = data;
+  connect(
+      worker, &ConvolverWorker::onNewKernel, this,
+      [this](ConvolverKernelManager::KernelData data) {
+        kernel = data;
 
-    kernel_is_initialized = kernel.isValid();
+        kernel_is_initialized = kernel.isValid();
 
-    if (kernel_is_initialized) {
-      original_kernel = kernel;
+        if (kernel_is_initialized) {
+          original_kernel = kernel;
 
-      set_kernel_stereo_width();
-      apply_kernel_autogain();
+          set_kernel_stereo_width();
+          apply_kernel_autogain();
 
-      auto success = zita.init(kernel.sampleCount(), blocksize, kernel.left_channel, kernel.right_channel);
+          auto success = zita.init(kernel.sampleCount(), blocksize, kernel.left_channel, kernel.right_channel);
 
-      if (!success) {
-        util::warning(std::format("{} Zita init failed", log_tag));
-      }
+          if (!success) {
+            util::warning(std::format("{} Zita init failed", log_tag));
+          }
 
-      data_mutex.lock();
+          data_mutex.lock();
 
-      ready = success;
+          ready = success;
 
-      data_mutex.unlock();
+          data_mutex.unlock();
 
-      kernelRate = QString::fromStdString(util::to_string(data.rate));
-      kernelSamples = QString::fromStdString(util::to_string(data.sampleCount()));
-      kernelDuration = QString::fromStdString(util::to_string(data.duration()));
+          kernelRate = QString::fromStdString(util::to_string(data.rate));
+          kernelSamples = QString::fromStdString(util::to_string(data.sampleCount()));
+          kernelDuration = QString::fromStdString(util::to_string(data.duration()));
 
-      Q_EMIT kernelRateChanged();
-      Q_EMIT kernelDurationChanged();
-      Q_EMIT kernelSamplesChanged();
-      Q_EMIT newKernelLoaded(kernel.name, true);
-    }
-  });
+          Q_EMIT kernelRateChanged();
+          Q_EMIT kernelDurationChanged();
+          Q_EMIT kernelSamplesChanged();
+          Q_EMIT newKernelLoaded(kernel.name, true);
+        }
+      },
+      Qt::QueuedConnection);
 
-  connect(worker, &ConvolverWorker::onNewSpectrum, this,
-          [this](QList<QPointF> linear_L, QList<QPointF> linear_R, QList<QPointF> log_L, QList<QPointF> log_R) {
-            chartMagLfftLinear.swap(linear_L);
-            chartMagRfftLinear.swap(linear_R);
-            chartMagLfftLog.swap(log_L);
-            chartMagRfftLog.swap(log_R);
+  connect(
+      worker, &ConvolverWorker::onNewSpectrum, this,
+      [this](QList<QPointF> linear_L, QList<QPointF> linear_R, QList<QPointF> log_L, QList<QPointF> log_R) {
+        chartMagLfftLinear.swap(linear_L);
+        chartMagRfftLinear.swap(linear_R);
+        chartMagLfftLog.swap(log_L);
+        chartMagRfftLog.swap(log_R);
 
-            Q_EMIT chartMagLfftLinearChanged();
-            Q_EMIT chartMagRfftLinearChanged();
-            Q_EMIT chartMagLfftLogChanged();
-            Q_EMIT chartMagRfftLogChanged();
-          });
+        Q_EMIT chartMagLfftLinearChanged();
+        Q_EMIT chartMagRfftLinearChanged();
+        Q_EMIT chartMagLfftLogChanged();
+        Q_EMIT chartMagRfftLogChanged();
+      },
+      Qt::QueuedConnection);
 
   workerThread.start();
 
