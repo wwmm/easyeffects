@@ -29,7 +29,6 @@
 #include <QThread>
 #include <span>
 #include <string>
-#include <thread>
 #include <vector>
 #include "convolver_kernel_fft.hpp"
 #include "convolver_kernel_manager.hpp"
@@ -46,7 +45,11 @@ class ConvolverWorker : public QObject {
   void calculateFFT(std::vector<float> kernel_L, std::vector<float> kernel_R, int kernel_rate, int interpPoints);
 
  Q_SIGNALS:
-  void fftCalculated(QList<QPointF> linear_L, QList<QPointF> linear_R, QList<QPointF> log_L, QList<QPointF> log_R);
+  void onNewKernel(ConvolverKernelManager::KernelData data);
+
+  void onNewChartMag(QList<QPointF> mag_L, QList<QPointF> mag_R);
+
+  void onNewSpectrum(QList<QPointF> linear_L, QList<QPointF> linear_R, QList<QPointF> log_L, QList<QPointF> log_R);
 };
 
 class Convolver : public PluginBase {
@@ -152,7 +155,7 @@ class Convolver : public PluginBase {
 
   ConvolverZita zita;
 
-  std::vector<std::thread> mythreads;
+  ConvolverWorker* worker;
 
   void apply_kernel_autogain();
 

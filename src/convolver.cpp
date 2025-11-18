@@ -73,8 +73,6 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
 
   init_common_controls<db::Convolver>(settings);
 
-  prepare_kernel();
-
   dry = (settings->dry() <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(settings->dry()));
 
   wet = (settings->wet() <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(settings->wet()));
@@ -103,17 +101,59 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
     wet =
         (settings->wet() <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(settings->wet()));
   });
+
+  // Preparing the worker thread
+
+  worker = new ConvolverWorker;
+
+  worker->moveToThread(&workerThread);
+
+  connect(&workerThread, &QThread::finished, worker, &QObject::deleteLater);
+
+  connect(worker, &ConvolverWorker::onNewChartMag, this, [this](QList<QPointF> mag_L, QList<QPointF> mag_R) {
+    chartMagL = mag_L;
+    chartMagR = mag_R;
+
+    Q_EMIT chartMagLChanged();
+    Q_EMIT chartMagRChanged();
+  });
+
+  connect(worker, &ConvolverWorker::onNewKernel, this, [this](ConvolverKernelManager::KernelData data) {
+    kernel = data;
+    original_kernel = kernel;
+
+    kernelRate = QString::fromStdString(util::to_string(data.rate));
+    kernelSamples = QString::fromStdString(util::to_string(data.sampleCount()));
+    kernelDuration = QString::fromStdString(util::to_string(data.duration()));
+
+    Q_EMIT kernelRateChanged();
+    Q_EMIT kernelDurationChanged();
+    Q_EMIT kernelSamplesChanged();
+  });
+
+  connect(worker, &ConvolverWorker::onNewSpectrum, this,
+          [this](QList<QPointF> linear_L, QList<QPointF> linear_R, QList<QPointF> log_L, QList<QPointF> log_R) {
+            chartMagLfftLinear.swap(linear_L);
+            chartMagRfftLinear.swap(linear_R);
+            chartMagLfftLog.swap(log_L);
+            chartMagRfftLog.swap(log_R);
+
+            Q_EMIT chartMagLfftLinearChanged();
+            Q_EMIT chartMagRfftLinearChanged();
+            Q_EMIT chartMagLfftLogChanged();
+            Q_EMIT chartMagRfftLogChanged();
+          });
+
+  workerThread.start();
+
+  QMetaObject::invokeMethod(worker, [this] { prepare_kernel(); }, Qt::QueuedConnection);
 }
 
 Convolver::~Convolver() {
   destructor_called = true;
   ready = false;
 
-  for (auto& t : mythreads) {
-    t.join();
-  }
-
-  mythreads.clear();
+  zita.stop();
 
   workerThread.quit();
   workerThread.wait();
@@ -126,8 +166,6 @@ Convolver::~Convolver() {
   settings->disconnect();
 
   std::scoped_lock<std::mutex> lock(data_mutex);
-
-  zita.stop();
 
   util::debug(std::format("{}{} destroyed", log_tag, name.toStdString()));
 }
@@ -150,7 +188,7 @@ void Convolver::setup() {
   // NOLINTBEGIN(clang-analyzer-cplusplus.NewDeleteLeaks)
 
   QMetaObject::invokeMethod(
-      this,
+      worker,
       [this] {
         if (ready || destructor_called) {
           return;
@@ -284,9 +322,9 @@ void Convolver::load_kernel_file() {
 
   const auto name = settings->kernelName();
 
-  kernel = kernel_manager.loadKernel(name.toStdString());
+  auto kernel_data = kernel_manager.loadKernel(name.toStdString());
 
-  if (!kernel.isValid()) {
+  if (!kernel_data.isValid()) {
     clear_chart_data();
 
     Q_EMIT newKernelLoaded(name, false);
@@ -297,22 +335,16 @@ void Convolver::load_kernel_file() {
     return;
   }
 
-  if (kernel.rate != static_cast<int>(rate)) {
-    util::debug(
-        std::format("{}{} kernel has {} rate. Resampling it to {}", log_tag, name.toStdString(), kernel.rate, rate));
+  if (kernel_data.rate != static_cast<int>(rate)) {
+    util::debug(std::format("{}{} kernel has {} rate. Resampling it to {}", log_tag, name.toStdString(),
+                            kernel_data.rate, rate));
 
-    original_kernel = ConvolverKernelManager::resampleKernel(kernel, rate);
-  } else {
-    original_kernel = kernel;
+    kernel_data = ConvolverKernelManager::resampleKernel(kernel_data, rate);
   }
 
   const auto dt = 1.0 / rate;
 
-  kernelRate = QString::fromStdString(util::to_string(kernel.rate));
-  kernelSamples = QString::fromStdString(util::to_string(kernel.sampleCount()));
-  kernelDuration = QString::fromStdString(util::to_string(kernel.duration()));
-
-  std::vector<double> time_axis(kernel.sampleCount());
+  std::vector<double> time_axis(kernel_data.sampleCount());
 
   for (size_t n = 0U; n < time_axis.size(); n++) {
     time_axis[n] = static_cast<double>(n) * dt;
@@ -320,69 +352,39 @@ void Convolver::load_kernel_file() {
 
   auto x_linear = util::linspace(time_axis.front(), time_axis.back(), interpPoints);
 
-  std::vector<double> copy_helper(kernel.sampleCount());
+  std::vector<double> copy_helper(kernel_data.sampleCount());
 
-  std::ranges::copy(kernel.left_channel, copy_helper.begin());
+  std::ranges::copy(kernel_data.left_channel, copy_helper.begin());
 
   auto magL = util::interpolate(time_axis, copy_helper, x_linear);
 
-  std::ranges::copy(kernel.right_channel, copy_helper.begin());
+  std::ranges::copy(kernel_data.right_channel, copy_helper.begin());
 
   auto magR = util::interpolate(time_axis, copy_helper, x_linear);
 
-  chartMagL.resize(interpPoints);
-  chartMagR.resize(interpPoints);
+  QList<QPointF> chart_mag_L(interpPoints);
+  QList<QPointF> chart_mag_R(interpPoints);
 
   for (qsizetype n = 0; n < interpPoints; n++) {
-    chartMagL[n] = QPointF(x_linear[n], magL[n]);
-    chartMagR[n] = QPointF(x_linear[n], magR[n]);
+    chart_mag_L[n] = QPointF(x_linear[n], magL[n]);
+    chart_mag_R[n] = QPointF(x_linear[n], magR[n]);
   }
-
-  kernel_is_initialized = true;
-
-  Q_EMIT newKernelLoaded(name, true);
-
-  Q_EMIT kernelRateChanged();
-  Q_EMIT kernelDurationChanged();
-  Q_EMIT kernelSamplesChanged();
-
-  Q_EMIT chartMagLChanged();
-  Q_EMIT chartMagRChanged();
 
   util::debug(std::format("{}{}: kernel correctly loaded", log_tag, name.toStdString()));
 
-  auto left_copy = kernel.left_channel;
-  auto right_copy = kernel.right_channel;
-  auto rate_copy = kernel.rate;
-  auto interpPoints_copy = interpPoints;
+  ConvolverKernelFFT kernel_fft;
 
-  auto* worker = new ConvolverWorker;
+  kernel_fft.calculate_fft(kernel_data.left_channel, kernel_data.right_channel, kernel_data.rate, interpPoints);
 
-  worker->moveToThread(&workerThread);
+  Q_EMIT worker->onNewKernel(kernel_data);
 
-  connect(&workerThread, &QThread::finished, worker, &QObject::deleteLater);
+  Q_EMIT worker->onNewChartMag(chart_mag_L, chart_mag_R);
 
-  connect(worker, &ConvolverWorker::fftCalculated, this,
-          [this](QList<QPointF> linear_L, QList<QPointF> linear_R, QList<QPointF> log_L, QList<QPointF> log_R) {
-            chartMagLfftLinear.swap(linear_L);
-            chartMagRfftLinear.swap(linear_R);
-            chartMagLfftLog.swap(log_L);
-            chartMagRfftLog.swap(log_R);
+  Q_EMIT worker->onNewSpectrum(kernel_fft.linear_L, kernel_fft.linear_R, kernel_fft.log_L, kernel_fft.log_R);
 
-            Q_EMIT chartMagLfftLinearChanged();
-            Q_EMIT chartMagRfftLinearChanged();
-            Q_EMIT chartMagLfftLogChanged();
-            Q_EMIT chartMagRfftLogChanged();
-          });
+  Q_EMIT newKernelLoaded(name, true);
 
-  workerThread.start();
-
-  QMetaObject::invokeMethod(worker, [worker, left_copy, right_copy, rate_copy, interpPoints_copy]() {
-    worker->calculateFFT(left_copy, right_copy, rate_copy, interpPoints_copy);
-  });
-
-  // mythreads.emplace_back([this, left_copy = std::move(left_copy), right_copy = std::move(right_copy),
-  //                         rate_copy = rate_copy]() { chart_kernel_fft(left_copy, right_copy, rate_copy); });
+  kernel_is_initialized = true;
 }
 
 void Convolver::apply_kernel_autogain() {
@@ -473,44 +475,22 @@ void Convolver::combine_kernels(const std::string& kernel_1_name,
                                 const std::string& output_file_name) {
   kernel_manager.combineKernels(kernel_1_name, kernel_2_name, output_file_name);
 
-  QMetaObject::invokeMethod(this, [this] { Q_EMIT kernelCombinationStopped(); }, Qt::QueuedConnection);
+  Q_EMIT kernelCombinationStopped();
 }
 
 void Convolver::combineKernels(const QString& kernel1, const QString& kernel2, const QString& outputName) {
-  mythreads.emplace_back(  // Using emplace_back here makes sense
-      [this, kernel1, kernel2, outputName]() {
+  QMetaObject::invokeMethod(
+      worker,
+      [this, kernel1, kernel2, outputName] {
         combine_kernels(kernel1.toStdString(), kernel2.toStdString(), outputName.toStdString());
-      });
+      },
+      Qt::QueuedConnection);
 }
 
 void Convolver::chart_kernel_fft(const std::vector<float>& kernel_L,
                                  const std::vector<float>& kernel_R,
                                  const float& kernel_rate) {
   kernel_fft.calculate_fft(kernel_L, kernel_R, kernel_rate, interpPoints);
-
-  // QMetaObject::invokeMethod(
-  //     this,
-  //     [this] {
-  //       if (!ready || destructor_called) {
-  //         return;
-  //       }
-
-  //       auto linear_L = kernel_fft.linear_L;
-  //       auto linear_R = kernel_fft.linear_R;
-  //       auto log_L = kernel_fft.log_L;
-  //       auto log_R = kernel_fft.log_R;
-
-  //       chartMagLfftLinear.swap(linear_L);
-  //       chartMagRfftLinear.swap(linear_R);
-  //       chartMagLfftLog.swap(log_L);
-  //       chartMagRfftLog.swap(log_R);
-
-  //       Q_EMIT chartMagLfftLinearChanged();
-  //       Q_EMIT chartMagRfftLinearChanged();
-  //       Q_EMIT chartMagLfftLogChanged();
-  //       Q_EMIT chartMagRfftLogChanged();
-  //     },
-  //     Qt::QueuedConnection);
 }
 
 void Convolver::clear_chart_data() {
@@ -535,5 +515,5 @@ void ConvolverWorker::calculateFFT(std::vector<float> kernel_L,
   auto log_L = kernel_fft.log_L;
   auto log_R = kernel_fft.log_R;
 
-  Q_EMIT fftCalculated(linear_L, linear_R, log_L, log_R);
+  Q_EMIT onNewSpectrum(linear_L, linear_R, log_L, log_R);
 }
