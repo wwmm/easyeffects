@@ -46,8 +46,6 @@ Kirigami.ScrollablePage {
             if (success) {
                 convolverChartContainer.banner.title = name;
 
-                console.log(name);
-
                 appWindow.showStatus(i18n("Loaded the %1 Convolver impulse.", `<strong>${name}</strong>`), Kirigami.MessageType.Positive); // qmllint disable
             } else {
                 convolverChartContainer.banner.title = i18n("Convolver impulse is not set");
