@@ -147,16 +147,15 @@ jobs:
     - name: Install Dependencies
       run: |
         # Linux Mint 22 is based on Ubuntu 24.04 LTS.
-        # Some Qt6/KF6 dependencies require versions newer than standard 24.04 repos (e.g. Qt Graphs).
+        # Some Qt6/KF6 dependencies require versions newer than standard 24.04 repos.
         # Adding Kubuntu Backports Extra PPA to ensure access to newer Qt6/KF6 libraries.
         sudo add-apt-repository -y ppa:kubuntu-ppa/backports-extra
         sudo apt-get update
         
-        # Install build tools
-        sudo apt-get install -y build-essential cmake ninja-build pkg-config gettext git
+        # Install build tools (autoconf/automake required for rnnoise)
+        sudo apt-get install -y build-essential cmake ninja-build pkg-config gettext git autoconf automake libtool
 
         # Install library dependencies
-        # Note: Mapped from openSUSE/Arch names to Debian/Ubuntu equivalents
         sudo apt-get install -y \
           libpipewire-0.3-dev \
           libfftw3-dev \
@@ -166,7 +165,6 @@ jobs:
           libsamplerate0-dev \
           libsndfile1-dev \
           libzita-convolver-dev \
-          librnnoise-dev \
           libspeexdsp-dev \
           nlohmann-json3-dev \
           libtbb-dev \
@@ -182,7 +180,6 @@ jobs:
           itstool
 
         # Install Qt6 and KF6 dependencies
-        # Includes Qt Graphs/Charts and KF6 libraries
         sudo apt-get install -y \
           qt6-base-dev \
           qt6-declarative-dev \
@@ -191,7 +188,8 @@ jobs:
           qt6-webengine-dev \
           qt6-webengine-dev-tools \
           libportal-qt6-dev \
-          libqt6graphs6-dev \
+          libqt6charts6-dev \
+          qml6-module-qtcharts \
           qml6-module-qtquick-shapes \
           libkf6coreaddons-dev \
           libkf6config-dev \
@@ -206,7 +204,17 @@ jobs:
           qml6-module-qtquick-controls \
           qml6-module-qtquick-layouts
 
-    - name: Build
+    - name: Build rnnoise
+      run: |
+        # librnnoise is not in standard Ubuntu repos, build from source
+        git clone https://github.com/xiph/rnnoise.git
+        cd rnnoise
+        ./autogen.sh
+        ./configure --prefix=/usr
+        make
+        sudo make install
+
+    - name: Build EasyEffects
       run: |
         # Configure with standard paths
         cmake -B build -S . -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
