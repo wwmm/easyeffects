@@ -11,7 +11,7 @@ Description:
 - Now the Reset History button in the Deep Noise Remover should work as intended.
 
 - Other notes∶
-- 
+- KDE Breeze theme is a required dependency in Flatpak version. For distribution packages instead we recommend to install the Breeze theme even if it's not strictly required.
 
 ---
 Version: 8.0.3
