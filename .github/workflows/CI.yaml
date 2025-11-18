@@ -31,7 +31,7 @@ jobs:
 
       - name: Get latest commit
         run: echo "GITHUB_HEAD_SHA=$(git log --pretty=format:'%h' -1)" >> $GITHUB_ENV
-      
+
       # on a pull_request event in github actions, the tests are not run on the head branch of the PR, rather they are run on the merge commit of head merged into the base branch
       # this means the latest commit in github actions, which is used for build artifact names is a commit that does not exist in the repository
       # so on pull requests we create a user-friendly string to use in place of the merge commit sha, otherwise we just use the normal git HEAD sha.
@@ -86,7 +86,7 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v5.0.1
-  
+
     # this just validates, actual update PRs are done in flatpak-update.yaml
     - name: Verify flatpak external data checker metadata
       uses: docker://ghcr.io/flathub/flatpak-external-data-checker:latest
@@ -132,6 +132,99 @@ jobs:
       with:
         name: easyeffects-archlinux-${{ needs.prepare.outputs.github_commit_desc }}-x86_64
         path: ${{ steps.makepkg.outputs.pkgfile0 }}
+        if-no-files-found: error
+
+  linux-mint:
+    name: Linux Mint 22 (Ubuntu 24.04)
+    runs-on: ubuntu-24.04
+    needs: prepare
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v5.0.1
+      with:
+        fetch-depth: 0
+
+    - name: Install Dependencies
+      run: |
+        # Linux Mint 22 is based on Ubuntu 24.04 LTS.
+        # Some Qt6/KF6 dependencies require versions newer than standard 24.04 repos (e.g. Qt Graphs).
+        # Adding Kubuntu Backports Extra PPA to ensure access to newer Qt6/KF6 libraries.
+        sudo add-apt-repository -y ppa:kubuntu-ppa/backports-extra
+        sudo apt-get update
+        
+        # Install build tools
+        sudo apt-get install -y build-essential cmake ninja-build pkg-config gettext git
+
+        # Install library dependencies
+        # Note: Mapped from openSUSE/Arch names to Debian/Ubuntu equivalents
+        sudo apt-get install -y \
+          libpipewire-0.3-dev \
+          libfftw3-dev \
+          libbs2b-dev \
+          libebur128-dev \
+          liblilv-dev \
+          libsamplerate0-dev \
+          libsndfile1-dev \
+          libzita-convolver-dev \
+          librnnoise-dev \
+          libspeexdsp-dev \
+          nlohmann-json3-dev \
+          libtbb-dev \
+          libgsl-dev \
+          libspeex-dev \
+          libsoundtouch-dev \
+          ladspa-sdk \
+          libwebrtc-audio-processing-dev \
+          libxml2-dev \
+          lv2-dev \
+          desktop-file-utils \
+          libappstream-glib-dev \
+          itstool
+
+        # Install Qt6 and KF6 dependencies
+        # Includes Qt Graphs/Charts and KF6 libraries
+        sudo apt-get install -y \
+          qt6-base-dev \
+          qt6-declarative-dev \
+          qt6-tools-dev \
+          libqt6svg6-dev \
+          qt6-webengine-dev \
+          qt6-webengine-dev-tools \
+          libportal-qt6-dev \
+          libqt6graphs6-dev \
+          qml6-module-qtquick-shapes \
+          libkf6coreaddons-dev \
+          libkf6config-dev \
+          libkf6i18n-dev \
+          libkf6configwidgets-dev \
+          libkf6widgetsaddons-dev \
+          libkf6colorscheme-dev \
+          libkf6kcmutils-dev \
+          libkf6iconthemes-dev \
+          kirigami-addons-dev \
+          qml6-module-org-kde-kirigami \
+          qml6-module-qtquick-controls \
+          qml6-module-qtquick-layouts
+
+    - name: Build
+      run: |
+        # Configure with standard paths
+        cmake -B build -S . -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+        cmake --build build
+
+    - name: Create Archive
+      run: |
+        # Install to a temporary directory to create a portable-like tarball
+        DESTDIR=$PWD/AppDir cmake --install build
+        
+        # Create a tarball of the result
+        tar -czf easyeffects-linuxmint-${{ needs.prepare.outputs.github_commit_desc }}-x86_64.tar.gz -C AppDir .
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v5.0.0
+      with:
+        name: easyeffects-linuxmint-${{ needs.prepare.outputs.github_commit_desc }}-x86_64
+        path: easyeffects-linuxmint-*.tar.gz
         if-no-files-found: error
 
   opensuse-tumbleweed:
@@ -252,7 +345,7 @@ jobs:
       with:
         languages: cpp 
         build-mode: manual
-    
+
     - name: Building
       run: |
         cmake -B build -S . -G Ninja -Wno-dev
@@ -334,7 +427,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v5.0.1
-      
+
       - name: Install deps
         run: | 
           # appstream deps
@@ -394,4 +487,3 @@ jobs:
 
       - name: Run QML lint
         run: ./util/qmllint.sh
-
