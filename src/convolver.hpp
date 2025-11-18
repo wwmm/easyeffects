@@ -79,8 +79,6 @@ class Convolver : public PluginBase {
   auto operator=(const Convolver&&) -> Convolver& = delete;
   ~Convolver() override;
 
-  QThread workerThread;
-
   void reset() override;
 
   void setup() override;
@@ -156,6 +154,8 @@ class Convolver : public PluginBase {
   ConvolverZita zita;
 
   ConvolverWorker* worker;
+
+  QThread workerThread;
 
   void apply_kernel_autogain();
 
