@@ -306,7 +306,7 @@ Kirigami.ScrollablePage {
             banner {
                 title: {
                     const name = convolverPage.pluginDB.kernelName;
-                    return (!convolverPage.pluginBackend.kernelIsInitialized || name.length === 0 || name === '""') ? i18n("Convolver impulse is not set") : name; // qmllint disable
+                    return (!convolverPage.pluginBackend?.kernelIsInitialized || name.length === 0 || name === '""') ? i18n("Convolver impulse is not set") : name; // qmllint disable
                 }
                 titleAlignment: Qt.AlignHCenter | Qt.AlignBottom
                 titleLevel: 2

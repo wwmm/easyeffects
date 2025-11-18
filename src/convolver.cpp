@@ -80,7 +80,7 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
   connect(settings, &db::Convolver::irWidthChanged, [&]() {
     std::scoped_lock<std::mutex> lock(data_mutex);
 
-    if (kernel_is_initialized) {
+    if (kernel.isValid()) {
       kernel = original_kernel;
 
       set_kernel_stereo_width();
@@ -120,15 +120,36 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
 
   connect(worker, &ConvolverWorker::onNewKernel, this, [this](ConvolverKernelManager::KernelData data) {
     kernel = data;
-    original_kernel = kernel;
 
-    kernelRate = QString::fromStdString(util::to_string(data.rate));
-    kernelSamples = QString::fromStdString(util::to_string(data.sampleCount()));
-    kernelDuration = QString::fromStdString(util::to_string(data.duration()));
+    kernel_is_initialized = kernel.isValid();
 
-    Q_EMIT kernelRateChanged();
-    Q_EMIT kernelDurationChanged();
-    Q_EMIT kernelSamplesChanged();
+    if (kernel_is_initialized) {
+      original_kernel = kernel;
+
+      set_kernel_stereo_width();
+      apply_kernel_autogain();
+
+      auto success = zita.init(kernel.sampleCount(), blocksize, kernel.left_channel, kernel.right_channel);
+
+      if (!success) {
+        util::warning(std::format("{} Zita init failed", log_tag));
+      }
+
+      data_mutex.lock();
+
+      ready = success;
+
+      data_mutex.unlock();
+
+      kernelRate = QString::fromStdString(util::to_string(data.rate));
+      kernelSamples = QString::fromStdString(util::to_string(data.sampleCount()));
+      kernelDuration = QString::fromStdString(util::to_string(data.duration()));
+
+      Q_EMIT kernelRateChanged();
+      Q_EMIT kernelDurationChanged();
+      Q_EMIT kernelSamplesChanged();
+      Q_EMIT newKernelLoaded(name, true);
+    }
   });
 
   connect(worker, &ConvolverWorker::onNewSpectrum, this,
@@ -150,6 +171,8 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
 }
 
 Convolver::~Convolver() {
+  std::scoped_lock<std::mutex> lock(data_mutex);
+
   destructor_called = true;
   ready = false;
 
@@ -164,8 +187,6 @@ Convolver::~Convolver() {
 
   disconnect();
   settings->disconnect();
-
-  std::scoped_lock<std::mutex> lock(data_mutex);
 
   util::debug(std::format("{}{} destroyed", log_tag, name.toStdString()));
 }
@@ -318,8 +339,6 @@ void Convolver::process([[maybe_unused]] std::span<float>& left_in,
                         [[maybe_unused]] std::span<float>& probe_right) {}
 
 void Convolver::load_kernel_file() {
-  kernel_is_initialized = false;
-
   const auto name = settings->kernelName();
 
   auto kernel_data = kernel_manager.loadKernel(name.toStdString());
@@ -381,10 +400,6 @@ void Convolver::load_kernel_file() {
   Q_EMIT worker->onNewChartMag(chart_mag_L, chart_mag_R);
 
   Q_EMIT worker->onNewSpectrum(kernel_fft.linear_L, kernel_fft.linear_R, kernel_fft.log_L, kernel_fft.log_R);
-
-  Q_EMIT newKernelLoaded(name, true);
-
-  kernel_is_initialized = true;
 }
 
 void Convolver::apply_kernel_autogain() {
@@ -449,25 +464,6 @@ void Convolver::prepare_kernel() {
   data_mutex.unlock();
 
   load_kernel_file();
-
-  if (kernel_is_initialized) {
-    kernel = original_kernel;
-
-    set_kernel_stereo_width();
-    apply_kernel_autogain();
-
-    auto success = zita.init(kernel.sampleCount(), blocksize, kernel.left_channel, kernel.right_channel);
-
-    if (!success) {
-      util::warning(std::format("{} Zita init failed", log_tag));
-    }
-
-    data_mutex.lock();
-
-    ready = kernel_is_initialized && success;
-
-    data_mutex.unlock();
-  }
 }
 
 void Convolver::combine_kernels(const std::string& kernel_1_name,
