@@ -161,7 +161,7 @@ Kirigami.ApplicationWindow {
     Shortcut {
         sequences: ["F1"]
         onActivated: {
-            Help.Manager.openManual();
+            helpSheet.open();
         }
     }
 
