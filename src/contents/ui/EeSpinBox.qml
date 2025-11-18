@@ -195,7 +195,7 @@ FormCard.AbstractFormDelegate {
                  * character and, if more numbers are written, only the first
                  * one is considered since the global flag is not used.
                  */
-                const numValidator = /[-−]?(?:(?:[.,]\d+)|\d+(?:[.,]\d+)?)/;
+                const numValidator = /[-−]?(?:[.,]\d+|\d+(?:[.,]\d+)?)/;
 
                 const matchResult = text.match(numValidator);
 
@@ -209,7 +209,7 @@ FormCard.AbstractFormDelegate {
                     const n = Number.fromLocaleString(locale, num);
                     return !Number.isNaN(n) ? Math.round(n * spinbox.decimalFactor) : spinbox.value;
                 } catch (e) {
-                    console.warn("Spinbox text to locale number conversion failed:", text);
+                    console.warn(`Spinbox locale number conversion failed with text "${text}" and captured number "${num}".`);
                     console.warn(e?.message ?? "");
                     return spinbox.value;
                 }

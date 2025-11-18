@@ -147,6 +147,7 @@ KirigamiSettings.ConfigurationView {
                     id: useCubicVolumes
 
                     label: i18n("Use cubic volume") // qmllint disable
+                    subtitle: i18n("Use cubic scale for stream volume rather than the linear one. Low percentages results in a lower perceived volume while the loudness appears to change more evenly across the slider.")
                     maximumLineCount: -1
                     isChecked: DB.Manager.main.useCubicVolumes
                     onCheckedChanged: {
