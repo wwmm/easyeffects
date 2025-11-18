@@ -144,18 +144,20 @@ jobs:
       with:
         fetch-depth: 0
 
+    - name: Setup KDE Neon Repo (for KF6/Qt6)
+      run: |
+        # Linux Mint 22 / Ubuntu 24.04 lacks full KF6 headers in default repos.
+        # We use KDE Neon User repo which is built on top of Ubuntu 24.04 (Noble).
+        wget -qO- https://archive.neon.kde.org/public.key | sudo tee /etc/apt/trusted.gpg.d/neon.asc
+        sudo apt-add-repository -y "deb http://archive.neon.kde.org/user noble main"
+        sudo apt-get update
+
     - name: Install Dependencies
       run: |
-        # Linux Mint 22 is based on Ubuntu 24.04 LTS.
-        # Some Qt6/KF6 dependencies require versions newer than standard 24.04 repos.
-        # Adding Kubuntu Backports Extra PPA to ensure access to newer Qt6/KF6 libraries.
-        sudo add-apt-repository -y ppa:kubuntu-ppa/backports-extra
-        sudo apt-get update
-        
-        # Install build tools (autoconf/automake required for rnnoise)
-        sudo apt-get install -y build-essential cmake ninja-build pkg-config gettext git autoconf automake libtool
+        # Core build tools
+        sudo apt-get install -y build-essential cmake ninja-build pkg-config gettext git autoconf automake libtool meson
 
-        # Install library dependencies
+        # Audio and processing dependencies
         sudo apt-get install -y \
           libpipewire-0.3-dev \
           libfftw3-dev \
@@ -179,7 +181,8 @@ jobs:
           libappstream-glib-dev \
           itstool
 
-        # Install Qt6 and KF6 dependencies
+        # Qt6 and KF6 dependencies (from KDE Neon)
+        # Note: explicit version checks removed, relying on Neon's latest
         sudo apt-get install -y \
           qt6-base-dev \
           qt6-declarative-dev \
@@ -187,7 +190,6 @@ jobs:
           libqt6svg6-dev \
           qt6-webengine-dev \
           qt6-webengine-dev-tools \
-          libportal-qt6-dev \
           libqt6charts6-dev \
           qml6-module-qtcharts \
           qml6-module-qtquick-shapes \
@@ -199,7 +201,7 @@ jobs:
           libkf6colorscheme-dev \
           libkf6kcmutils-dev \
           libkf6iconthemes-dev \
-          kirigami-addons-dev \
+          kirigami-addons6-dev \
           qml6-module-org-kde-kirigami \
           qml6-module-qtquick-controls \
           qml6-module-qtquick-layouts
@@ -211,8 +213,18 @@ jobs:
         cd rnnoise
         ./autogen.sh
         ./configure --prefix=/usr
-        make
+        make -j$(nproc)
         sudo make install
+
+    - name: Build libportal (Qt6 backend)
+      run: |
+        # libportal-qt6 is often missing or version-mismatched in stable repos
+        git clone https://github.com/flatpak/libportal.git
+        cd libportal
+        # We only need the headers/libs, documentation not required
+        meson setup build --prefix=/usr -Dbackends=qt6 -Ddocs=false -Dtests=false
+        meson compile -C build
+        sudo meson install -C build
 
     - name: Build EasyEffects
       run: |
