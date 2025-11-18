@@ -144,16 +144,14 @@ jobs:
       with:
         fetch-depth: 0
 
-    - name: Setup KDE Neon Repo (for KF6/Qt6)
-      run: |
-        # Linux Mint 22 / Ubuntu 24.04 lacks full KF6 headers in default repos.
-        # We use KDE Neon User repo which is built on top of Ubuntu 24.04 (Noble).
-        wget -qO- https://archive.neon.kde.org/public.key | sudo tee /etc/apt/trusted.gpg.d/neon.asc
-        sudo apt-add-repository -y "deb http://archive.neon.kde.org/user noble main"
-        sudo apt-get update
-
     - name: Install Dependencies
       run: |
+        # Add KDE Neon User repo for access to KF6 libraries not present in standard Ubuntu 24.04
+        wget -qO - 'https://archive.neon.kde.org/public.key' | sudo gpg --dearmor -o /usr/share/keyrings/neon-archive-keyring.gpg
+        echo 'deb [signed-by=/usr/share/keyrings/neon-archive-keyring.gpg] http://archive.neon.kde.org/user noble main' | sudo tee /etc/apt/sources.list.d/neon.list
+        
+        sudo apt-get update
+        
         # Core build tools
         sudo apt-get install -y build-essential cmake ninja-build pkg-config gettext git autoconf automake libtool meson
 
@@ -182,7 +180,6 @@ jobs:
           itstool
 
         # Qt6 and KF6 dependencies (from KDE Neon)
-        # Note: explicit version checks removed, relying on Neon's latest
         sudo apt-get install -y \
           qt6-base-dev \
           qt6-declarative-dev \
@@ -190,7 +187,8 @@ jobs:
           libqt6svg6-dev \
           qt6-webengine-dev \
           qt6-webengine-dev-tools \
-          libqt6charts6-dev \
+          qt6-charts-dev \
+          libqt6graphs6-dev \
           qml6-module-qtcharts \
           qml6-module-qtquick-shapes \
           libkf6coreaddons-dev \
@@ -201,7 +199,7 @@ jobs:
           libkf6colorscheme-dev \
           libkf6kcmutils-dev \
           libkf6iconthemes-dev \
-          kirigami-addons6-dev \
+          kirigami-addons-dev \
           qml6-module-org-kde-kirigami \
           qml6-module-qtquick-controls \
           qml6-module-qtquick-layouts
