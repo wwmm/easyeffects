@@ -180,7 +180,7 @@ See the wiki: [Preset Selector GNOME Extension](https://github.com/wwmm/easyeffe
 
 See the wiki: [Reporting Bugs](https://github.com/wwmm/easyeffects/wiki/Reporting-bugs)
 
-## Translating Easy Effects
+## Translating Easy Effects.
 
 See the wiki's [Translating Easy Effects](https://github.com/wwmm/easyeffects/wiki/Translating-EasyEffects) article for detailed instructions.
 
