@@ -20,11 +20,13 @@
 #pragma once
 
 #include <qlist.h>
+#include <qobject.h>
 #include <qpoint.h>
 #include <qtmetamacros.h>
 #include <sys/types.h>
 #include <zita-convolver.h>
 #include <QString>
+#include <QThread>
 #include <span>
 #include <string>
 #include <thread>
@@ -36,6 +38,16 @@
 #include "pipeline_type.hpp"
 #include "plugin_base.hpp"
 #include "pw_manager.hpp"
+
+class ConvolverWorker : public QObject {
+  Q_OBJECT
+
+ public Q_SLOTS:
+  void calculateFFT(std::vector<float> kernel_L, std::vector<float> kernel_R, int kernel_rate, int interpPoints);
+
+ Q_SIGNALS:
+  void fftCalculated(QList<QPointF> linear_L, QList<QPointF> linear_R, QList<QPointF> log_L, QList<QPointF> log_R);
+};
 
 class Convolver : public PluginBase {
   Q_OBJECT
@@ -63,6 +75,8 @@ class Convolver : public PluginBase {
   Convolver(const Convolver&&) = delete;
   auto operator=(const Convolver&&) -> Convolver& = delete;
   ~Convolver() override;
+
+  QThread workerThread;
 
   void reset() override;
 

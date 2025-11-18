@@ -21,8 +21,11 @@
 #include <fftw3.h>
 #include <qlist.h>
 #include <qnamespace.h>
+#include <qobject.h>
+#include <qobjectdefs.h>
 #include <qpoint.h>
 #include <qstandardpaths.h>
+#include <qthread.h>
 #include <qtmetamacros.h>
 #include <qtypes.h>
 #include <sched.h>
@@ -38,8 +41,8 @@
 #include <sndfile.hh>
 #include <span>
 #include <string>
-#include <utility>
 #include <vector>
+#include "convolver_kernel_fft.hpp"
 #include "convolver_kernel_manager.hpp"
 #include "db_manager.hpp"
 #include "easyeffects_db_convolver.h"
@@ -111,6 +114,9 @@ Convolver::~Convolver() {
   }
 
   mythreads.clear();
+
+  workerThread.quit();
+  workerThread.wait();
 
   if (connected_to_pw) {
     disconnect_from_pw();
@@ -348,9 +354,35 @@ void Convolver::load_kernel_file() {
   auto left_copy = kernel.left_channel;
   auto right_copy = kernel.right_channel;
   auto rate_copy = kernel.rate;
+  auto interpPoints_copy = interpPoints;
 
-  mythreads.emplace_back([this, left_copy = std::move(left_copy), right_copy = std::move(right_copy),
-                          rate_copy = rate_copy]() { chart_kernel_fft(left_copy, right_copy, rate_copy); });
+  auto* worker = new ConvolverWorker;
+
+  worker->moveToThread(&workerThread);
+
+  connect(&workerThread, &QThread::finished, worker, &QObject::deleteLater);
+
+  connect(worker, &ConvolverWorker::fftCalculated, this,
+          [this](QList<QPointF> linear_L, QList<QPointF> linear_R, QList<QPointF> log_L, QList<QPointF> log_R) {
+            chartMagLfftLinear.swap(linear_L);
+            chartMagRfftLinear.swap(linear_R);
+            chartMagLfftLog.swap(log_L);
+            chartMagRfftLog.swap(log_R);
+
+            Q_EMIT chartMagLfftLinearChanged();
+            Q_EMIT chartMagRfftLinearChanged();
+            Q_EMIT chartMagLfftLogChanged();
+            Q_EMIT chartMagRfftLogChanged();
+          });
+
+  workerThread.start();
+
+  QMetaObject::invokeMethod(worker, [worker, left_copy, right_copy, rate_copy, interpPoints_copy]() {
+    worker->calculateFFT(left_copy, right_copy, rate_copy, interpPoints_copy);
+  });
+
+  // mythreads.emplace_back([this, left_copy = std::move(left_copy), right_copy = std::move(right_copy),
+  //                         rate_copy = rate_copy]() { chart_kernel_fft(left_copy, right_copy, rate_copy); });
 }
 
 void Convolver::apply_kernel_autogain() {
@@ -456,29 +488,29 @@ void Convolver::chart_kernel_fft(const std::vector<float>& kernel_L,
                                  const float& kernel_rate) {
   kernel_fft.calculate_fft(kernel_L, kernel_R, kernel_rate, interpPoints);
 
-  QMetaObject::invokeMethod(
-      this,
-      [this] {
-        if (!ready || destructor_called) {
-          return;
-        }
+  // QMetaObject::invokeMethod(
+  //     this,
+  //     [this] {
+  //       if (!ready || destructor_called) {
+  //         return;
+  //       }
 
-        auto linear_L = kernel_fft.linear_L;
-        auto linear_R = kernel_fft.linear_R;
-        auto log_L = kernel_fft.log_L;
-        auto log_R = kernel_fft.log_R;
+  //       auto linear_L = kernel_fft.linear_L;
+  //       auto linear_R = kernel_fft.linear_R;
+  //       auto log_L = kernel_fft.log_L;
+  //       auto log_R = kernel_fft.log_R;
 
-        chartMagLfftLinear.swap(linear_L);
-        chartMagRfftLinear.swap(linear_R);
-        chartMagLfftLog.swap(log_L);
-        chartMagRfftLog.swap(log_R);
+  //       chartMagLfftLinear.swap(linear_L);
+  //       chartMagRfftLinear.swap(linear_R);
+  //       chartMagLfftLog.swap(log_L);
+  //       chartMagRfftLog.swap(log_R);
 
-        Q_EMIT chartMagLfftLinearChanged();
-        Q_EMIT chartMagRfftLinearChanged();
-        Q_EMIT chartMagLfftLogChanged();
-        Q_EMIT chartMagRfftLogChanged();
-      },
-      Qt::QueuedConnection);
+  //       Q_EMIT chartMagLfftLinearChanged();
+  //       Q_EMIT chartMagRfftLinearChanged();
+  //       Q_EMIT chartMagLfftLogChanged();
+  //       Q_EMIT chartMagRfftLogChanged();
+  //     },
+  //     Qt::QueuedConnection);
 }
 
 void Convolver::clear_chart_data() {
@@ -488,4 +520,20 @@ void Convolver::clear_chart_data() {
   chartMagRfftLinear.clear();
   chartMagLfftLog.clear();
   chartMagRfftLog.clear();
+}
+
+void ConvolverWorker::calculateFFT(std::vector<float> kernel_L,
+                                   std::vector<float> kernel_R,
+                                   int kernel_rate,
+                                   int interpPoints) {
+  ConvolverKernelFFT kernel_fft;
+
+  kernel_fft.calculate_fft(kernel_L, kernel_R, kernel_rate, interpPoints);
+
+  auto linear_L = kernel_fft.linear_L;
+  auto linear_R = kernel_fft.linear_R;
+  auto log_L = kernel_fft.log_L;
+  auto log_R = kernel_fft.log_R;
+
+  Q_EMIT fftCalculated(linear_L, linear_R, log_L, log_R);
 }
