@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-16 21:24+0000\n"
-"PO-Revision-Date: 2025-11-17 22:51+0000\n"
+"PO-Revision-Date: 2025-11-18 11:51+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hans/>\n"
@@ -25,17 +25,16 @@ msgid ""
 "Cannot enable autostart option because background access has been denied. "
 "Please allow \"Run in Background\" permission for Easy Effects in your "
 "system app settings."
-msgstr ""
-"无法启用自动启动选项，因为禁用了后台权限。请在系统设置中授予Easy Effects“在后"
-"台运行”权限。"
+msgstr "无法启用自动启动选项，因为禁用了后台权限。请在系统设置中授予 Easy Effects“在"
+"后台运行”权限。"
 
 #: src/command_line_parser.cpp:42
 msgid "Quit Easy Effects. Useful when running in service mode."
-msgstr "退出Easy Effects。可一并退出后台服务模式。"
+msgstr "退出 Easy Effects。可一并退出后台服务模式。"
 
 #: src/command_line_parser.cpp:43
 msgid "Reset Easy Effects."
-msgstr "重置Easy Effects。"
+msgstr "重置 Easy Effects。"
 
 #: src/command_line_parser.cpp:44
 msgid "Hide the Window."
@@ -43,7 +42,7 @@ msgstr "隐藏窗口。"
 
 #: src/command_line_parser.cpp:45
 msgid "Global bypass. 1 to enable and 2 to disable."
-msgstr "全局旁通。1以启用，2以禁用。"
+msgstr "全局旁通。1 以启用，2 以禁用。"
 
 #: src/command_line_parser.cpp:45
 msgid "bypass-state"
@@ -75,7 +74,7 @@ msgstr "显示正在使用的输入与输出预设。"
 
 #: src/command_line_parser.cpp:50
 msgid "Deprecated. Use --service-mode instead."
-msgstr "已弃用。请改用--service-mode。"
+msgstr "已弃用。请改用 --service-mode。"
 
 #: src/command_line_parser.cpp:51
 msgid "Start the application with service mode turned on."
@@ -118,33 +117,33 @@ msgstr "响度参考"
 #: src/contents/ui/Autogain.qml:60 src/contents/ui/Autogain.qml:129
 #: src/contents/ui/LevelMeter.qml:143
 msgid "Momentary"
-msgstr "瞬时（M）"
+msgstr "瞬时 (M)"
 
 #: src/contents/ui/Autogain.qml:60 src/contents/ui/Autogain.qml:140
 #: src/contents/ui/LevelMeter.qml:154
 msgid "Short-term"
-msgstr "短期（S）"
+msgstr "短期 (S)"
 
 #: src/contents/ui/Autogain.qml:60 src/contents/ui/Autogain.qml:151
 #: src/contents/ui/LevelMeter.qml:165
 msgid "Integrated"
-msgstr "综合（I）"
+msgstr "综合 (I)"
 
 #: src/contents/ui/Autogain.qml:60
 msgid "Geometric mean (MSI)"
-msgstr "几何平均（MSI）"
+msgstr "几何平均 (MSI)"
 
 #: src/contents/ui/Autogain.qml:60
 msgid "Geometric mean (MS)"
-msgstr "几何平均（MS）"
+msgstr "几何平均 (MS)"
 
 #: src/contents/ui/Autogain.qml:60
 msgid "Geometric mean (MI)"
-msgstr "几何平均（MI）"
+msgstr "几何平均 (MI)"
 
 #: src/contents/ui/Autogain.qml:60
 msgid "Geometric mean (SI)"
-msgstr "几何平均（SI）"
+msgstr "几何平均 (SI)"
 
 #: src/contents/ui/Autogain.qml:69
 msgid "Target"
@@ -270,7 +269,7 @@ msgstr "输出增益"
 #: src/contents/ui/RNNoise.qml:301 src/contents/ui/Reverb.qml:298
 #: src/contents/ui/Speex.qml:155 src/contents/ui/StereoTools.qml:370
 msgid "Using %1"
-msgstr "正在使用%1"
+msgstr "正在使用 %1"
 
 #: src/contents/ui/Autogain.qml:236 src/contents/ui/DeepFilterNet.qml:192
 #: src/contents/ui/LevelMeter.qml:222 src/contents/ui/Pitch.qml:263
@@ -724,19 +723,19 @@ msgstr "关闭"
 #: src/contents/ui/Expander.qml:355 src/contents/ui/Expander.qml:369
 #: src/contents/ui/Gate.qml:374 src/contents/ui/Gate.qml:388
 msgid "12 dB/oct"
-msgstr "每八度12分贝"
+msgstr "12 分贝每八度"
 
 #: src/contents/ui/Compressor.qml:399 src/contents/ui/Compressor.qml:413
 #: src/contents/ui/Expander.qml:355 src/contents/ui/Expander.qml:369
 #: src/contents/ui/Gate.qml:374 src/contents/ui/Gate.qml:388
 msgid "24 dB/oct"
-msgstr "每八度24分贝"
+msgstr "24 分贝每八度"
 
 #: src/contents/ui/Compressor.qml:399 src/contents/ui/Compressor.qml:413
 #: src/contents/ui/Expander.qml:355 src/contents/ui/Expander.qml:369
 #: src/contents/ui/Gate.qml:374 src/contents/ui/Gate.qml:388
 msgid "36 dB/oct"
-msgstr "每八度36分贝"
+msgstr "36 分贝每八度"
 
 #: src/contents/ui/Compressor.qml:469 src/contents/ui/Convolver.qml:415
 #: src/contents/ui/Delay.qml:157 src/contents/ui/Delay.qml:310
@@ -864,7 +863,7 @@ msgstr "分离立体声"
 
 #: src/contents/ui/Convolver.qml:49
 msgid "Loaded the %1 Convolver impulse."
-msgstr "已加载卷积脉冲响应%1。"
+msgstr "已加载卷积脉冲响应 %1。"
 
 #: src/contents/ui/Convolver.qml:51 src/contents/ui/Convolver.qml:309
 msgid "Convolver impulse is not set"
@@ -876,7 +875,7 @@ msgstr "卷积器处于直通模式。"
 
 #: src/contents/ui/Convolver.qml:57
 msgid "Failed to load the %1 impulse. The Convolver is in passthrough mode."
-msgstr "无法加载脉冲响应%1。卷积器处于直通模式。"
+msgstr "无法加载脉冲响应 %1。卷积器处于直通模式。"
 
 #: src/contents/ui/Convolver.qml:121
 msgid "First"
@@ -949,11 +948,11 @@ msgstr "确定要将此脉冲响应移出列表吗？"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:88
 msgid "Removed the %1 Convolver impulse."
-msgstr "已移除卷积脉冲响应%1。"
+msgstr "已移除卷积脉冲响应 %1。"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:90
 msgid "Failed to remove the %1 Convolver impulse."
-msgstr "无法移除卷积脉冲响应%1。"
+msgstr "无法移除卷积脉冲响应 %1。"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:107
 msgid "Delete this impulse"
@@ -1021,7 +1020,7 @@ msgstr "最大等效矩形带宽处理阈值"
 
 #: src/contents/ui/DeepFilterNet.qml:118
 msgid "Maximum DF processing threshold"
-msgstr "最大DeepFilter处理阈值"
+msgstr "最大 DeepFilter 处理阈值"
 
 #: src/contents/ui/DeepFilterNet.qml:134
 msgid "Minimum processing buffer"
@@ -1033,7 +1032,7 @@ msgstr "帧"
 
 #: src/contents/ui/DeepFilterNet.qml:150
 msgid "Post filter Beta"
-msgstr "后期过滤Beta值"
+msgstr "后期过滤 Beta 值"
 
 #: src/contents/ui/Deesser.qml:45 src/tags_plugin_name.cpp:34
 msgid "Deesser"
@@ -1092,7 +1091,7 @@ msgstr "dBFS"
 
 #: src/contents/ui/Deesser.qml:235
 msgid "F2 peak Q"
-msgstr "滤波器Q值"
+msgstr "滤波器 Q 值"
 
 #: src/contents/ui/Deesser.qml:258
 msgid "Level"
@@ -1149,11 +1148,11 @@ msgstr "未知"
 
 #: src/contents/ui/DelegateClientsList.qml:41
 msgid "(id: %1)"
-msgstr "（id：%1）"
+msgstr "(编号：%1)"
 
 #: src/contents/ui/DelegateClientsList.qml:47
 msgid "Access: %1"
-msgstr "访问：%1"
+msgstr "接口：%1"
 
 #: src/contents/ui/DelegateClientsList.qml:54
 msgid "API: %1"
@@ -1166,7 +1165,7 @@ msgstr "未设置"
 
 #: src/contents/ui/DelegateModulesList.qml:41
 msgid "(id: %1, version: %2)"
-msgstr "（id：%1，版本号：%2）"
+msgstr "(编号：%1，版本：%2)"
 
 #: src/contents/ui/DelegateModulesList.qml:47
 msgctxt "@info:placeholder"
@@ -1198,7 +1197,7 @@ msgstr "排除"
 
 #: src/contents/ui/DelegateStreamsList.qml:111
 msgid "Add %1 to excluded applications"
-msgstr "将%1添加到排除的应用程序"
+msgstr "将 %1 添加到排除的应用程序"
 
 #: src/contents/ui/EchoCanceller.qml:41 src/tags_plugin_name.cpp:36
 msgid "Echo Canceller"
@@ -1268,55 +1267,55 @@ msgstr "负无穷"
 
 #: src/contents/ui/Equalizer.qml:50 src/contents/ui/Equalizer.qml:80
 msgid "APO preset"
-msgstr "APO预设"
+msgstr "APO 预设"
 
 #: src/contents/ui/Equalizer.qml:53
 msgid "Imported the Equalizer APO preset file."
-msgstr "已导入APO预设文件。"
+msgstr "已导入 APO 预设文件。"
 
 #: src/contents/ui/Equalizer.qml:55
 msgid "Failed to import the Equalizer APO preset file."
-msgstr "无法导入APO预设文件。"
+msgstr "无法导入 APO 预设文件。"
 
 #: src/contents/ui/Equalizer.qml:65
 msgid "GraphicEQ preset"
-msgstr "GraphicEQ预设"
+msgstr "GraphicEQ 预设"
 
 #: src/contents/ui/Equalizer.qml:68
 msgid "Imported the GraphicEQ preset file."
-msgstr "已导入GraphicEQ预设文件。"
+msgstr "已导入 GraphicEQ 预设文件。"
 
 #: src/contents/ui/Equalizer.qml:70
 msgid "Failed to import the GraphicEQ preset file."
-msgstr "无法导入GraphicEQ预设文件。"
+msgstr "无法导入 GraphicEQ 预设文件。"
 
 #: src/contents/ui/Equalizer.qml:83
 msgid "Exported the current Equalizer settings to an external APO preset file."
-msgstr "已将当前均衡器设置导出为APO预设文件。"
+msgstr "已将当前均衡器设置导出为 APO 预设文件。"
 
 #: src/contents/ui/Equalizer.qml:86
 msgid ""
 "Failed to export the current Equalizer settings to an external APO preset "
 "file."
-msgstr "无法将当前均衡器设置导出为APO预设文件。"
+msgstr "无法将当前均衡器设置导出为 APO 预设文件。"
 
 #: src/contents/ui/Equalizer.qml:107 src/contents/ui/Filter.qml:78
 #: src/contents/ui/Loudness.qml:58
 msgid "IIR"
-msgstr "无限脉冲响应"
+msgstr "无限脉冲响应 (IIR)"
 
 #: src/contents/ui/Equalizer.qml:107 src/contents/ui/Filter.qml:78
 msgid "FIR"
-msgstr "有限脉冲响应"
+msgstr "有限脉冲响应 (FIR)"
 
 #: src/contents/ui/Equalizer.qml:107 src/contents/ui/Filter.qml:78
 #: src/contents/ui/Loudness.qml:58
 msgid "FFT"
-msgstr "快速傅里叶变换"
+msgstr "快速傅里叶变换 (FFT)"
 
 #: src/contents/ui/Equalizer.qml:107 src/contents/ui/Filter.qml:78
 msgid "SPM"
-msgstr "频谱处理模式"
+msgstr "频谱处理模式 (SPM)"
 
 #: src/contents/ui/Equalizer.qml:116
 msgid "Bands"
@@ -1357,15 +1356,15 @@ msgstr "排序频带"
 
 #: src/contents/ui/Equalizer.qml:327
 msgid "Import APO"
-msgstr "导入APO预设"
+msgstr "导入 APO 预设"
 
 #: src/contents/ui/Equalizer.qml:334
 msgid "Import APO (GraphicEQ)"
-msgstr "导入APO（GraphicEQ）预设"
+msgstr "导入 APO (GraphicEQ) 预设"
 
 #: src/contents/ui/Equalizer.qml:341
 msgid "Export APO"
-msgstr "导出APO预设"
+msgstr "导出 APO 预设"
 
 #: src/contents/ui/EqualizerBandMenu.qml:25
 #: src/contents/ui/MultibandCompressor.qml:631
@@ -1412,31 +1411,31 @@ msgstr "梯式带阻"
 
 #: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
 msgid "RLC (BT)"
-msgstr "RLC（双线性）"
+msgstr "RLC (双线性)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
 msgid "RLC (MT)"
-msgstr "RLC（匹配Z）"
+msgstr "RLC (匹配Z)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
 msgid "BWC (BT)"
-msgstr "BWC（双线性）"
+msgstr "BWC (双线性)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
 msgid "BWC (MT)"
-msgstr "BWC（匹配Z）"
+msgstr "BWC (匹配Z)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
 msgid "LRX (BT)"
-msgstr "LRX（双线性）"
+msgstr "LRX (双线性)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
 msgid "LRX (MT)"
-msgstr "LRX（匹配Z）"
+msgstr "LRX (匹配Z)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
 msgid "APO (DR)"
-msgstr "APO（直接设计）"
+msgstr "APO (直接设计)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:57 src/contents/ui/Filter.qml:88
 msgid "Slope"
@@ -1456,7 +1455,7 @@ msgstr "增益"
 
 #: src/contents/ui/EqualizerBandMenu.qml:116 src/contents/ui/Filter.qml:156
 msgid "Quality"
-msgstr "品质因数"
+msgstr "品质因数 (Q)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:137 src/contents/ui/Filter.qml:125
 msgid "Width"
@@ -1585,91 +1584,91 @@ msgstr "无"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Half x2/16 bit"
-msgstr "2倍侧链超采样/16位输出"
+msgstr "2 倍半超采样/16 位输出"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Half x2/24 bit"
-msgstr "2倍侧链超采样/24位输出"
+msgstr "2 倍半超采样/24 位输出"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Half x3/16 bit"
-msgstr "3倍侧链超采样/16位输出"
+msgstr "3 倍半超采样/16 位输出"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Half x3/24 bit"
-msgstr "3倍侧链超采样/24位输出"
+msgstr "3 倍半超采样/24 位输出"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Half x4/16 bit"
-msgstr "4倍侧链超采样/16位输出"
+msgstr "4 倍半超采样/16 位输出"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Half x4/24 bit"
-msgstr "4倍侧链超采样/24位输出"
+msgstr "4 倍半超采样/24 位输出"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Half x6/16 bit"
-msgstr "6倍侧链超采样/16位输出"
+msgstr "6 倍半超采样/16 位输出"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Half x6/24 bit"
-msgstr "6倍侧链超采样/24位输出"
+msgstr "6 倍半超采样/24 位输出"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Half x8/16 bit"
-msgstr "8倍侧链超采样/16位输出"
+msgstr "8 倍半超采样/16 位输出"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Half x8/24 bit"
-msgstr "8倍侧链超采样/24位输出"
+msgstr "8 倍半超采样/24 位输出"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Full x2/16 bit"
-msgstr "2倍侧链+输入超采样/16位输出"
+msgstr "2 倍全超采样/16 位输出"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Full x2/24 bit"
-msgstr "2倍侧链+输入超采样/24位输出"
+msgstr "2 倍全超采样/24 位输出"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Full x3/16 bit"
-msgstr "3倍侧链+输入超采样/16位输出"
+msgstr "3 倍全超采样/16 位输出"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Full x3/24 bit"
-msgstr "3倍侧链+输入超采样/24位输出"
+msgstr "3 倍全超采样/24 位输出"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Full x4/16 bit"
-msgstr "4倍侧链+输入超采样/16位输出"
+msgstr "4 倍全超采样/16 位输出"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Full x4/24 bit"
-msgstr "4倍侧链+输入超采样/24位输出"
+msgstr "4 倍全超采样/24 位输出"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Full x6/16 bit"
-msgstr "6倍侧链+输入超采样/16位输出"
+msgstr "6 倍全超采样/16 位输出"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Full x6/24 bit"
-msgstr "6倍侧链+输入超采样/24位输出"
+msgstr "6 倍全超采样/24 位输出"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Full x8/16 bit"
-msgstr "8倍侧链+输入超采样/16位输出"
+msgstr "8 倍全超采样/16 位输出"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Full x8/24 bit"
-msgstr "8倍侧链+输入超采样/24位输出"
+msgstr "8 倍全超采样/24 位输出"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "True peak/16 bit"
-msgstr "实际峰值/16位输出"
+msgstr "实际峰值/16 位输出"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "True peak/24 bit"
-msgstr "实际峰值/24位输出"
+msgstr "实际峰值/24 位输出"
 
 #: src/contents/ui/Limiter.qml:83
 msgid "Dithering"
@@ -1677,35 +1676,35 @@ msgstr "抖动"
 
 #: src/contents/ui/Limiter.qml:87
 msgid "7 bit"
-msgstr "7比特"
+msgstr "7 位"
 
 #: src/contents/ui/Limiter.qml:87
 msgid "8 bit"
-msgstr "8比特"
+msgstr "8 位"
 
 #: src/contents/ui/Limiter.qml:87
 msgid "11 bit"
-msgstr "11比特"
+msgstr "11 位"
 
 #: src/contents/ui/Limiter.qml:87
 msgid "12 bit"
-msgstr "12比特"
+msgstr "12 位"
 
 #: src/contents/ui/Limiter.qml:87
 msgid "15 bit"
-msgstr "15比特"
+msgstr "15 位"
 
 #: src/contents/ui/Limiter.qml:87
 msgid "16 bit"
-msgstr "16比特"
+msgstr "16 位"
 
 #: src/contents/ui/Limiter.qml:87
 msgid "23 bit"
-msgstr "23比特"
+msgstr "23 位"
 
 #: src/contents/ui/Limiter.qml:87
 msgid "24 bit"
-msgstr "24比特"
+msgstr "24 位"
 
 #: src/contents/ui/Limiter.qml:99 src/tags_plugin_name.cpp:43
 msgid "Limiter"
@@ -1785,7 +1784,7 @@ msgstr "重置设置？"
 
 #: src/contents/ui/Main.qml:234
 msgid "Are you sure you want to reset all Easy Effects settings?"
-msgstr "确定要重置所有Easy Effects设置吗？"
+msgstr "确定要重置所有 Easy Effects 设置吗？"
 
 #: src/contents/ui/Main.qml:285 src/contents/ui/Main.qml:301
 msgid "Preset Loaded"
@@ -1846,11 +1845,11 @@ msgstr "首选项"
 
 #: src/contents/ui/Main.qml:572
 msgid "About Easy Effects"
-msgstr "关于Easy Effects"
+msgstr "关于 Easy Effects"
 
 #: src/contents/ui/MenuAddPlugins.qml:75
 msgid "Add %1"
-msgstr "添加%1"
+msgstr "添加 %1"
 
 #: src/contents/ui/MenuAddPlugins.qml:147
 msgid "Added a new effect to the pipeline: %1"
@@ -2008,9 +2007,8 @@ msgstr "设备管理"
 msgid ""
 "It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
 "external applications (e.g. Gnome Settings and Plasma System Settings)"
-msgstr ""
-"强烈建议不要在外部应用程序（如Gnome设置或Plasma系统设置）中将Easy Effects槽/"
-"源设为默认设备。"
+msgstr "强烈建议不要在外部应用程序 (如 Gnome 设置或 Plasma 系统设置) 中将 Easy "
+"Effects 槽/源设为默认设备。"
 
 #: src/contents/ui/PipeWirePage.qml:122
 msgid "Use default input"
@@ -2046,15 +2044,15 @@ msgstr "默认采样率"
 
 #: src/contents/ui/PipeWirePage.qml:229
 msgid "Minimum quantum"
-msgstr "最小音频帧（Quantum）"
+msgstr "最小音频帧 (Quantum)"
 
 #: src/contents/ui/PipeWirePage.qml:234
 msgid "Maximum quantum"
-msgstr "最大音频帧（Quantum）"
+msgstr "最大音频帧 (Quantum)"
 
 #: src/contents/ui/PipeWirePage.qml:239
 msgid "Default quantum"
-msgstr "默认音频帧（Quantum）"
+msgstr "默认音频帧 (Quantum)"
 
 #: src/contents/ui/PipeWirePage.qml:261
 msgid "No Modules"
@@ -2148,7 +2146,7 @@ msgstr "音效不可用"
 
 #: src/contents/ui/PluginNotAvailable.qml:15
 msgid "%1 cannot be used because %2 is not installed on the system."
-msgstr "%1不可用，因为%2未安装于系统上。"
+msgstr "%1 不可用，因为系统未安装 %2。"
 
 #: src/contents/ui/PreferencesSheet.qml:16
 msgid "Background Service"
@@ -2181,7 +2179,7 @@ msgstr "启用后台服务模式"
 
 #: src/contents/ui/PreferencesSheet.qml:66
 msgid "Easy Effects is active in background when the window is closed."
-msgstr "Easy Effects将在窗口关闭后持续后台运行。"
+msgstr "Easy Effects 将在窗口关闭后持续后台运行。"
 
 #: src/contents/ui/PreferencesSheet.qml:78
 msgid "Autostart on login"
@@ -2189,7 +2187,7 @@ msgstr "用户登录时自动启动"
 
 #: src/contents/ui/PreferencesSheet.qml:79
 msgid "Easy Effects is launched at user session startup."
-msgstr "在用户会话启动时启动Easy Effects."
+msgstr "与用户会话一同启动 Easy Effects。"
 
 #: src/contents/ui/PreferencesSheet.qml:92
 msgid "Show the tray icon"
@@ -2209,7 +2207,7 @@ msgstr "忽略来自设备监听器的音频流"
 
 #: src/contents/ui/PreferencesSheet.qml:149
 msgid "Use cubic volume"
-msgstr "使用非线性（立方）音量调节"
+msgstr "使用非线性 (立方) 音量调节"
 
 #: src/contents/ui/PreferencesSheet.qml:161
 msgid "Ignore system notifications"
@@ -2220,9 +2218,8 @@ msgid ""
 "Processing system notifications may cause crackling sound, so it would be "
 "better to ignore them, but for some presets it may be recommended since they "
 "could sound too loud."
-msgstr ""
-"处理系统通知可能造成噼啪杂声，因此建议忽略，但一些预设可能导致音量过大，此时"
-"建议开启。"
+msgstr "处理系统通知可能造成噼啪杂声，因此建议忽略，但一些预设可能导致通知音量过大，"
+"此时建议开启。"
 
 #: src/contents/ui/PreferencesSheet.qml:174
 msgid "Enable/disable input monitoring"
@@ -2240,7 +2237,7 @@ msgstr "启用空闲超时"
 msgid ""
 "When all streams are inactive, Easy Effects pipeline remains loaded for an "
 "extra amount of time."
-msgstr "当没有活跃音频流时，Easy Effects管线仍将加载一段额外时间。"
+msgstr "当没有活跃音频流时，Easy Effects 管线仍将额外加载一段时间。"
 
 #: src/contents/ui/PreferencesSheet.qml:211
 msgid "Inactivity timeout"
@@ -2374,7 +2371,7 @@ msgstr "最常用的预设"
 
 #: src/contents/ui/PreferencesSheet.qml:466
 msgid "Force KDE's Breeze theme when Easy Effects starts"
-msgstr "在Easy Effects启动时强制应用KDE Breeze微风主题"
+msgstr "在 Easy Effects 启动时强制应用 KDE Breeze 微风主题"
 
 #: src/contents/ui/PreferencesSheet.qml:467
 msgid ""
@@ -2407,7 +2404,7 @@ msgstr "全局快捷键"
 
 #: src/contents/ui/PreferencesSheet.qml:526
 msgid "Enables support for XDG global shortcuts."
-msgstr "启用对XDG全局快捷键的支持。"
+msgstr "启用对 XDG 全局快捷键的支持。"
 
 #: src/contents/ui/PreferencesSheet.qml:538
 msgid "Native window of effects"
@@ -2423,7 +2420,7 @@ msgstr "更新频率"
 
 #: src/contents/ui/PreferencesSheet.qml:552
 msgid "Related to LV2 plugins."
-msgstr "涉及LV2插件。"
+msgstr "影响 LV2 插件。"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:31
 #: src/contents/ui/PresetsAutoloadingPage.qml:155
@@ -2462,11 +2459,11 @@ msgstr "复制到本地预设"
 
 #: src/contents/ui/PresetsCommunityPage.qml:105
 msgid "Imported the %1 community preset to the list of local presets."
-msgstr "已将社区预设%1导入到本地预设列表。"
+msgstr "已将社区预设 %1 导入到本地预设列表。"
 
 #: src/contents/ui/PresetsCommunityPage.qml:107
 msgid "Failed to import the %1 community preset to the list of local presets."
-msgstr "无法将社区预设%1导入到本地预设列表。"
+msgstr "无法将社区预设 %1 导入到本地预设列表。"
 
 #: src/contents/ui/PresetsCommunityPage.qml:127
 msgid "Refresh"
@@ -2530,11 +2527,11 @@ msgstr ""
 
 #: src/contents/ui/PresetsLocalPage.qml:190
 msgid "Saved the current settings to %1 local preset."
-msgstr "已将当前设置保存到本地预设%1。"
+msgstr "已将当前设置保存到本地预设 %1。"
 
 #: src/contents/ui/PresetsLocalPage.qml:192
 msgid "Failed to save the current settings to %1 local preset."
-msgstr "无法将当前设置保存到本地预设%1。"
+msgstr "无法将当前设置保存到本地预设 %1。"
 
 #: src/contents/ui/PresetsLocalPage.qml:200
 msgid "Remove Preset"
@@ -2552,11 +2549,11 @@ msgstr ""
 
 #: src/contents/ui/PresetsLocalPage.qml:205
 msgid "Removed the %1 local preset."
-msgstr "已移除本地预设%1。"
+msgstr "已移除本地预设 %1。"
 
 #: src/contents/ui/PresetsLocalPage.qml:207
 msgid "Failed to remove the %1 local preset."
-msgstr "无法移除本地预设%1。"
+msgstr "无法移除本地预设 %1。"
 
 #: src/contents/ui/PresetsLocalPage.qml:215
 msgid "Rename Preset"
@@ -2568,11 +2565,11 @@ msgstr "重命名"
 
 #: src/contents/ui/PresetsLocalPage.qml:229
 msgid "Renamed the %1 local preset to %2"
-msgstr "已将本地预设%1重命名为%2"
+msgstr "已将本地预设 %1 重命名为 %2"
 
 #: src/contents/ui/PresetsLocalPage.qml:232
 msgid "Failed to rename the %1 local preset to %2"
-msgstr "无法将本地预设%1重命名为%2"
+msgstr "无法将本地预设 %1 重命名为 %2"
 
 #: src/contents/ui/PresetsLocalPage.qml:240
 msgid "Cancel"
@@ -2612,32 +2609,32 @@ msgstr "备用预设"
 
 #: src/contents/ui/RNNoise.qml:43
 msgid "Imported a new RNNoise model file."
-msgstr "已导入新RNNoise模型文件。"
+msgstr "已导入新 RNNoise 模型文件。"
 
 #: src/contents/ui/RNNoise.qml:45
 msgid "Failed to import the RNNoise model file."
-msgstr "无法导入新RNNoise模型文件。"
+msgstr "无法导入新 RNNoise 模型文件。"
 
 #: src/contents/ui/RNNoise.qml:56 src/contents/ui/RNNoise.qml:67
 #: src/contents/ui/RNNoise.qml:281 src/contents/ui/RNNoise.qml:283
 msgid "Standard RNNoise model"
-msgstr "标准RNNoise模型"
+msgstr "标准 RNNoise 模型"
 
 #: src/contents/ui/RNNoise.qml:58
 msgid "Standard RNNoise model loaded."
-msgstr "已加载标准RNNoise模型。"
+msgstr "已加载标准 RNNoise 模型。"
 
 #: src/contents/ui/RNNoise.qml:63 src/contents/ui/RNNoise.qml:285
 msgid "Using %1 Model"
-msgstr "正在使用模型%1"
+msgstr "正在使用模型 %1"
 
 #: src/contents/ui/RNNoise.qml:65
 msgid "Loaded the %1 RNNoise model."
-msgstr "已加载RNNoise模型%1。"
+msgstr "已加载 RNNoise 模型 %1。"
 
 #: src/contents/ui/RNNoise.qml:69
 msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
-msgstr "无法加载RNNoise模型%1。回退到标准RNNoise模型。"
+msgstr "无法加载 RNNoise 模型 %1。回退到标准 RNNoise 模型。"
 
 #: src/contents/ui/RNNoise.qml:88 src/contents/ui/Speex.qml:98
 msgid "Voice detection"
@@ -2661,11 +2658,11 @@ msgstr "删除此模型"
 
 #: src/contents/ui/RNNoise.qml:247
 msgid "Removed the %1 RNNoise model."
-msgstr "已移除RNNoise模型%1。"
+msgstr "已移除 RNNoise 模型 %1。"
 
 #: src/contents/ui/RNNoise.qml:249
 msgid "Failed to remove the %1 RNNoise model."
-msgstr "无法移除RNNoise模型%1。"
+msgstr "无法移除 RNNoise 模型 %1。"
 
 #: src/contents/ui/RNNoise.qml:318
 msgid "Import model"
@@ -2770,7 +2767,7 @@ msgstr "关闭窗口"
 
 #: src/contents/ui/ShortcutsSheet.qml:143
 msgid "Terminate Easy Effects service"
-msgstr "终止Easy Effects服务"
+msgstr "终止 Easy Effects 服务"
 
 #: src/contents/ui/ShortcutsSheet.qml:183
 msgid "Toggle process all inputs"
@@ -2795,7 +2792,7 @@ msgstr "开关麦克风监听"
 
 #: src/contents/ui/Speex.qml:44
 msgid "Denoise"
-msgstr "降噪"
+msgstr "去噪"
 
 #: src/contents/ui/Speex.qml:66
 msgid "Dereverberation"
@@ -2807,11 +2804,11 @@ msgstr "噪音抑制"
 
 #: src/contents/ui/Speex.qml:93
 msgid "Voice Activity Probability"
-msgstr "语音状态进入概率"
+msgstr "语音活跃概率"
 
 #: src/contents/ui/Speex.qml:129
 msgid "Continue"
-msgstr "持续概率"
+msgstr "持续"
 
 #: src/contents/ui/StereoTools.qml:46
 msgid "Softclip"
@@ -2827,31 +2824,31 @@ msgstr "立体声阵距"
 
 #: src/contents/ui/StereoTools.qml:108
 msgid "LR > LR (Stereo default)"
-msgstr "LR > LR（默认立体声）"
+msgstr "LR > LR (默认立体声)"
 
 #: src/contents/ui/StereoTools.qml:108
 msgid "LR > MS (Stereo to Mid-Side)"
-msgstr "LR > MS（立体声到中—侧）"
+msgstr "LR > MS (立体声到中—侧)"
 
 #: src/contents/ui/StereoTools.qml:108
 msgid "MS > LR (Mid-Side to Stereo)"
-msgstr "MS > LR（中—侧到立体声）"
+msgstr "MS > LR (中—侧到立体声)"
 
 #: src/contents/ui/StereoTools.qml:108
 msgid "LR > LL (Mono left channel)"
-msgstr "LR > LL（单声道左）"
+msgstr "LR > LL (单声道左)"
 
 #: src/contents/ui/StereoTools.qml:108
 msgid "LR > RR (Mono right channel)"
-msgstr "LR > RR（单声道右）"
+msgstr "LR > RR (单声道右)"
 
 #: src/contents/ui/StereoTools.qml:108
 msgid "LR > L+R (Mono sum L+R)"
-msgstr "LR > L+R（单声道左右合并）"
+msgstr "LR > L+R (单声道左右合并)"
 
 #: src/contents/ui/StereoTools.qml:108
 msgid "LR > RL (Stereo flip channels)"
-msgstr "LR > RL（立体声翻转）"
+msgstr "LR > RL (立体声翻转)"
 
 #: src/contents/ui/StereoTools.qml:117
 msgid "Side level"
@@ -2891,7 +2888,7 @@ msgstr "全局音频效果"
 
 #: src/main.cpp:311
 msgid "© 2017-2025 EasyEffects Team"
-msgstr "© 2017–2025 Easy Effects开发团队"
+msgstr "© 2017–2025 Easy Effects 开发团队"
 
 #: src/main.cpp:313
 msgid "Wellington Wallace"
@@ -2914,11 +2911,11 @@ msgstr "z9r55jue3@mozmail.com"
 
 #: src/plugin_base.cpp:272
 msgid "(Mic)"
-msgstr "（麦克风）"
+msgstr "(麦克风)"
 
 #: src/plugin_base.cpp:275
 msgid "(Speakers)"
-msgstr "（扬声器）"
+msgstr "(扬声器)"
 
 #: src/plugin_base.cpp:282
 msgid "Output Level Meter"
