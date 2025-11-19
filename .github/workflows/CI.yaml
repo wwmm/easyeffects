@@ -184,7 +184,7 @@ jobs:
           itstool
 
         # Qt6 and KF6 dependencies (from KDE Neon / Ubuntu 24.04)
-        # Added libraries required for KF6 (Kirigami/QQC2) and Qt6 Graphs (Quick3D/Shadertools)
+        # Corrected names for Neon repo: libkirigami-dev, kirigami-addons-dev, qqc2-desktop-style-dev
         sudo apt-get install -y \
           qt6-base-dev \
           qt6-declarative-dev \
@@ -205,9 +205,9 @@ jobs:
           libkf6widgetsaddons-dev \
           libkf6kcmutils-dev \
           libkf6iconthemes-dev \
-          libkf6kirigami-dev \
-          libkf6qqc2desktopstyle-dev \
-          kf6-kirigami-addons-dev \
+          libkirigami-dev \
+          qqc2-desktop-style-dev \
+          kirigami-addons-dev \
           qml6-module-org-kde-kirigami \
           qml6-module-qtquick-controls \
           qml6-module-qtquick-layouts
