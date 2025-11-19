@@ -144,195 +144,156 @@ jobs:
       with:
         fetch-depth: 0
 
-    - name: Install Dependencies
+    - name: Install Build Dependencies
       run: |
-        # Add KDE Neon User repo for access to KF6 libraries not present in standard Ubuntu 24.04
+        # 1. Add KDE Neon User repo (BUILD TIME ONLY)
+        # We use this to get headers to compile. We will BUNDLE the resulting libs into the deb
+        # so the user does not need this repo.
         wget -qO - 'https://archive.neon.kde.org/public.key' | sudo gpg --dearmor -o /usr/share/keyrings/neon-archive-keyring.gpg
         echo 'deb [signed-by=/usr/share/keyrings/neon-archive-keyring.gpg] http://archive.neon.kde.org/user noble main' | sudo tee /etc/apt/sources.list.d/neon.list
         
         sudo apt-get update
         
-        # Core build tools and libportal build deps
-        # Added extra-cmake-modules (ECM)
+        # 2. Core build tools
         sudo apt-get install -y \
           build-essential cmake ninja-build pkg-config gettext git autoconf automake libtool meson \
-          gobject-introspection libgirepository1.0-dev extra-cmake-modules
+          gobject-introspection libgirepository1.0-dev extra-cmake-modules \
+          file wget patchelf
 
-        # Audio and processing dependencies
-        # Note: libwebrtc-audio-processing-dev in ubuntu 24.04 is v0.3, we need v2.0+ (built manually below)
-        # libabsl-dev is required for building webrtc-audio-processing
+        # 3. Audio/System libraries (Link against system versions)
         sudo apt-get install -y \
-          libpipewire-0.3-dev \
-          libfftw3-dev \
-          libbs2b-dev \
-          libebur128-dev \
-          liblilv-dev \
-          libsamplerate0-dev \
-          libsndfile1-dev \
-          libzita-convolver-dev \
-          libspeexdsp-dev \
-          nlohmann-json3-dev \
-          libtbb-dev \
-          libgsl-dev \
-          libspeex-dev \
-          libsoundtouch-dev \
-          ladspa-sdk \
-          libabsl-dev \
-          libxml2-dev \
-          lv2-dev \
-          desktop-file-utils \
-          libappstream-glib-dev \
-          itstool
+          libpipewire-0.3-dev libfftw3-dev libbs2b-dev libebur128-dev liblilv-dev \
+          libsamplerate0-dev libsndfile1-dev libzita-convolver-dev libspeexdsp-dev \
+          nlohmann-json3-dev libtbb-dev libgsl-dev libspeex-dev libsoundtouch-dev \
+          ladspa-sdk libabsl-dev libxml2-dev lv2-dev desktop-file-utils \
+          libappstream-glib-dev itstool
 
-        # Qt6 and KF6 dependencies (from KDE Neon / Ubuntu 24.04)
-        # We install specific KF6 dev packages required for compilation.
-        # kirigami-addons is removed from here as we build it from source.
+        # 4. Qt6/KF6 Build Dependencies (From Neon)
         sudo apt-get install -y \
-          qt6-base-dev \
-          qt6-declarative-dev \
-          qt6-tools-dev \
-          libqt6svg6-dev \
-          qt6-webengine-dev \
-          qt6-webengine-dev-tools \
-          qt6-charts-dev \
-          qt6-graphs-dev \
-          qt6-quick3d-dev \
-          qt6-shadertools-dev \
-          qml6-module-qtcharts \
-          qml6-module-qtquick-shapes \
-          libkf6coreaddons-dev \
-          libkf6config-dev \
-          libkf6i18n-dev \
-          libkf6configwidgets-dev \
-          libkf6widgetsaddons-dev \
-          libkf6kcmutils-dev \
-          libkf6iconthemes-dev \
-          libkf6globalaccel-dev \
-          libkf6xmlgui-dev \
-          libkf6notifications-dev \
-          libkf6package-dev \
-          libkirigami-dev \
-          libkf6qqc2desktopstyle-dev \
-          libkf6crash-dev \
-          qml6-module-org-kde-kirigami \
-          qml6-module-qtquick-controls \
-          qml6-module-qtquick-layouts
+          qt6-base-dev qt6-declarative-dev qt6-tools-dev libqt6svg6-dev qt6-webengine-dev \
+          qt6-webengine-dev-tools qt6-charts-dev qt6-graphs-dev qt6-quick3d-dev qt6-shadertools-dev \
+          qml6-module-qtcharts qml6-module-qtquick-shapes \
+          libkf6coreaddons-dev libkf6config-dev libkf6i18n-dev libkf6configwidgets-dev \
+          libkf6widgetsaddons-dev libkf6kcmutils-dev libkf6iconthemes-dev libkf6globalaccel-dev \
+          libkf6xmlgui-dev libkf6notifications-dev libkf6package-dev libkirigami-dev \
+          libkf6qqc2desktopstyle-dev libkf6crash-dev qml6-module-org-kde-kirigami \
+          qml6-module-qtquick-controls qml6-module-qtquick-layouts
 
-    - name: Build rnnoise
+    - name: Build rnnoise (Source)
       run: |
         git clone https://github.com/xiph/rnnoise.git
-        cd rnnoise
-        ./autogen.sh
-        ./configure --prefix=/usr
-        make -j$(nproc)
-        sudo make install
+        cd rnnoise && ./autogen.sh && ./configure --prefix=/usr && make -j$(nproc) && sudo make install
 
-    - name: Build webrtc-audio-processing
+    - name: Build webrtc-audio-processing (Source)
       run: |
-        # Ubuntu 24.04 has version 0.3, EasyEffects needs version 2.0+
         git clone https://gitlab.freedesktop.org/pulseaudio/webrtc-audio-processing.git
-        cd webrtc-audio-processing
-        meson setup build --prefix=/usr -Dbuildtype=release
-        meson compile -C build
-        sudo meson install -C build
+        cd webrtc-audio-processing && meson setup build --prefix=/usr -Dbuildtype=release && meson compile -C build && sudo meson install -C build
 
-    - name: Build libportal (Qt6 backend)
+    - name: Build libportal (Source)
       run: |
         git clone https://github.com/flatpak/libportal.git
-        cd libportal
-        meson setup build --prefix=/usr -Ddocs=false -Dtests=false -Dintrospection=false -Dvapi=false
-        meson compile -C build
-        sudo meson install -C build
+        cd libportal && meson setup build --prefix=/usr -Ddocs=false -Dtests=false -Dintrospection=false -Dvapi=false && meson compile -C build && sudo meson install -C build
 
-    - name: Build Kirigami Addons
+    - name: Build Kirigami Addons (Source)
       run: |
-        # Build from source to ensure KF6 compatibility matches the installed headers
         git clone https://invent.kde.org/libraries/kirigami-addons.git
-        cd kirigami-addons
-        cmake -B build -S . -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_TESTING=OFF
-        cmake --build build
-        sudo cmake --install build
+        cd kirigami-addons && cmake -B build -S . -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_TESTING=OFF && cmake --build build && sudo cmake --install build
 
     - name: Build EasyEffects
       run: |
-        # FIX: Patch source code to fix 'fabsf' not being in std:: namespace (GCC 13 compatibility)
+        # Patch source code to fix 'fabsf' not being in std:: namespace (GCC 13 compatibility)
         sed -i 's/std::fabsf/std::fabs/g' src/crystalizer.hpp
-
-        # Configure
+        
+        # Compile
         cmake -B build -S . -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
         cmake --build build
 
-    - name: Package DEB
+    - name: Bundle and Package DEB (Self-Contained)
       run: |
-        # 1. Install to AppDir to create the directory structure
-        DESTDIR=$PWD/AppDir cmake --install build
+        # 1. Install linuxdeploy and Qt plugin
+        wget https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage
+        wget https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/continuous/linuxdeploy-plugin-qt-x86_64.AppImage
+        chmod +x linuxdeploy*.AppImage
+
+        # 2. Prepare AppDir structure for /opt installation
+        mkdir -p AppDir/opt/easyeffects
         
-        # 2. Verify .desktop file exists (Standard CMake install path for /usr prefix is /usr/share/applications)
-        echo "Verifying .desktop file presence..."
-        if [ ! -f AppDir/usr/share/applications/*.desktop ]; then
-          echo "::error::Desktop file not found in AppDir/usr/share/applications! Packaging might be incorrect."
-          find AppDir -name "*.desktop"
-          exit 1
-        else
-          echo "Desktop file found:"
-          ls -l AppDir/usr/share/applications/*.desktop
-        fi
+        # Install to temp location
+        DESTDIR=temp_install cmake --install build
         
-        # 3. Create DEBIAN control file
+        # Move /usr contents to /opt/easyeffects
+        cp -r temp_install/usr/* AppDir/opt/easyeffects/
+
+        # 3. Bundle libraries (Qt6, KF6, WebRTC, etc) into the package
+        export QMAKE=/usr/bin/qmake6
+        ./linuxdeploy-x86_64.AppImage \
+          --appdir AppDir/opt/easyeffects \
+          --executable AppDir/opt/easyeffects/bin/easyeffects \
+          --desktop-file AppDir/opt/easyeffects/share/applications/com.github.wwmm.easyeffects.desktop \
+          --icon-file AppDir/opt/easyeffects/share/icons/hicolor/scalable/apps/com.github.wwmm.easyeffects.svg \
+          --plugin qt
+
+        # 4. Create Launch Script (Wraps binary with LD_LIBRARY_PATH)
+        cat <<EOF > AppDir/opt/easyeffects/easyeffects-launcher.sh
+        #!/bin/bash
+        APPDIR="/opt/easyeffects"
+        export LD_LIBRARY_PATH="\$APPDIR/lib:\$LD_LIBRARY_PATH"
+        export QT_PLUGIN_PATH="\$APPDIR/plugins"
+        export QML2_IMPORT_PATH="\$APPDIR/qml"
+        exec "\$APPDIR/bin/easyeffects" "\$@"
+        EOF
+        chmod +x AppDir/opt/easyeffects/easyeffects-launcher.sh
+
+        # 5. System Integration (Symlinks and Desktop files)
+        mkdir -p AppDir/usr/bin
+        mkdir -p AppDir/usr/share/applications
+        mkdir -p AppDir/usr/share/icons/hicolor/scalable/apps
+        
+        # Link launcher to /usr/bin/easyeffects
+        ln -s /opt/easyeffects/easyeffects-launcher.sh AppDir/usr/bin/easyeffects
+        
+        # Copy resources to system paths
+        cp AppDir/opt/easyeffects/share/applications/*.desktop AppDir/usr/share/applications/
+        cp AppDir/opt/easyeffects/share/icons/hicolor/scalable/apps/*.svg AppDir/usr/share/icons/hicolor/scalable/apps/
+
+        # Update Exec path in desktop file
+        sed -i 's|Exec=.*|Exec=/opt/easyeffects/easyeffects-launcher.sh|g' AppDir/usr/share/applications/*.desktop
+
+        # 6. Generate Metadata
         mkdir -p AppDir/DEBIAN
         cat <<EOF > AppDir/DEBIAN/control
         Package: easyeffects
         Version: 9.9.9-git-${{ github.sha }}
         Architecture: amd64
         Maintainer: CI Builder <ci@localhost>
-        Description: Limiter, compressor, convolver, equalizer and auto volume and many more for PipeWire applications
-         EasyEffects is an advanced audio manipulation tool. It includes an equalizer,
-         limiter, compressor and a reverberation tool, just to mention a few.
-         To complement this there is also a built in spectrum analyzer.
-        Depends: libc6, libgcc-s1, libstdc++6, libpipewire-0.3-0
+        Description: Audio effects for PipeWire applications (Bundled)
+         This package includes all necessary Qt6 and KF6 libraries bundled within /opt.
+         It is designed for Linux Mint 22 and does not require external repositories.
+        Depends: libc6, libgcc-s1, libstdc++6, libpipewire-0.3-0, dconf-gsettings-backend
         EOF
-        
-        # 4. Build .deb package
-        dpkg-deb --build AppDir easyeffects-linuxmint-${{ needs.prepare.outputs.github_commit_desc }}-amd64.deb
 
-    - name: Verify Package Installation and Runtime
+        # 7. Build DEB
+        dpkg-deb --build AppDir easyeffects-linuxmint-${{ needs.prepare.outputs.github_commit_desc }}-bundled-amd64.deb
+
+    - name: Verify Package Installation
       env:
-        # Prevent Qt from trying to connect to X11/Wayland which causes a crash in headless CI
         QT_QPA_PLATFORM: offscreen
         XDG_RUNTIME_DIR: /tmp/runtime-dir
       run: |
-        # Install the newly built package
-        sudo apt-get install -y ./easyeffects-linuxmint-${{ needs.prepare.outputs.github_commit_desc }}-amd64.deb
-
-        # Setup runtime dir for verification
-        mkdir -p $XDG_RUNTIME_DIR
-        chmod 700 $XDG_RUNTIME_DIR
-
-        # Check if binary exists in path
-        if ! command -v easyeffects &> /dev/null; then
-            echo "::error::easyeffects binary not found in path!"
-            exit 1
-        fi
-
-        # Check for missing shared libraries
-        echo "Checking shared libraries..."
-        LDD_OUTPUT=$(ldd /usr/bin/easyeffects)
-        echo "$LDD_OUTPUT"
+        # Install the deb to check dependencies and scripts
+        sudo apt-get install -y ./easyeffects-linuxmint-*-bundled-amd64.deb
         
-        if echo "$LDD_OUTPUT" | grep "not found"; then
-            echo "::error::One or more shared libraries are missing!"
-            exit 1
-        fi
-
-        # Run version check
-        # Using dbus-run-session to ensure a session bus is available, avoiding crashes on app init
-        echo "Running version check..."
+        # Verify binary exists in path
+        which easyeffects
+        
+        # Verify it runs (headless check)
+        mkdir -p $XDG_RUNTIME_DIR && chmod 700 $XDG_RUNTIME_DIR
         dbus-run-session -- easyeffects --version
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v5.0.0
       with:
-        name: easyeffects-linuxmint-${{ needs.prepare.outputs.github_commit_desc }}-amd64
+        name: easyeffects-linuxmint-${{ needs.prepare.outputs.github_commit_desc }}-bundled-amd64
         path: easyeffects-linuxmint-*.deb
         if-no-files-found: error
 
