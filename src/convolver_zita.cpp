@@ -22,8 +22,10 @@
 #include <sched.h>
 #include <zita-convolver.h>
 #include <algorithm>
+#include <chrono>
 #include <format>
 #include <span>
+#include <thread>
 #include "convolver_kernel_manager.hpp"
 #include "util.hpp"
 
@@ -37,13 +39,11 @@ constexpr auto ZITA_SCHED_CLASS = SCHED_FIFO;
 ConvolverZita::ConvolverZita() = default;
 
 ConvolverZita::~ConvolverZita() {
-  ready = false;
+  stop();
 
-  if (conv != nullptr) {
-    conv->stop_process();
+  delete conv;
 
-    delete conv;
-  }
+  conv = nullptr;
 }
 
 void ConvolverZita::stop() {
@@ -51,6 +51,10 @@ void ConvolverZita::stop() {
 
   if (conv) {
     conv->stop_process();
+
+    while (!conv->check_stop()) {
+      std::this_thread::sleep_for(std::chrono::milliseconds(1));
+    }
   }
 }
 
@@ -60,7 +64,13 @@ auto ConvolverZita::init(ConvolverKernelManager::KernelData data, uint bufferSiz
   if (conv != nullptr) {
     conv->stop_process();
 
+    while (!conv->check_stop()) {
+      std::this_thread::sleep_for(std::chrono::milliseconds(1));
+    }
+
     delete conv;
+
+    conv = nullptr;
   }
 
   conv = new Convproc();
