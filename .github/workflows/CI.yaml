@@ -160,6 +160,7 @@ jobs:
           gobject-introspection libgirepository1.0-dev extra-cmake-modules
 
         # Audio and processing dependencies
+        # Removed libwebrtc-audio-processing-dev (too old), added libabsl-dev (needed for manual build of webrtc)
         sudo apt-get install -y \
           libpipewire-0.3-dev \
           libfftw3-dev \
@@ -176,7 +177,7 @@ jobs:
           libspeex-dev \
           libsoundtouch-dev \
           ladspa-sdk \
-          libwebrtc-audio-processing-dev \
+          libabsl-dev \
           libxml2-dev \
           lv2-dev \
           desktop-file-utils \
@@ -184,7 +185,8 @@ jobs:
           itstool
 
         # Qt6 and KF6 dependencies (from KDE Neon / Ubuntu 24.04)
-        # Added libkf6globalaccel-dev, libkf6xmlgui-dev, libkf6notifications-dev, libkf6package-dev
+        # Corrected package names for Neon: libkirigami-dev, libkf6qqc2desktopstyle-dev
+        # Removed kirigami-addons-dev as we will build it from source to ensure KF6 version
         sudo apt-get install -y \
           qt6-base-dev \
           qt6-declarative-dev \
@@ -225,6 +227,15 @@ jobs:
         ./configure --prefix=/usr
         make -j$(nproc)
         sudo make install
+
+    - name: Build webrtc-audio-processing
+      run: |
+        # Ubuntu 24.04 has version 0.3, EasyEffects needs version 2.0+ (webrtc-audio-processing-2)
+        git clone https://gitlab.freedesktop.org/pulseaudio/webrtc-audio-processing.git
+        cd webrtc-audio-processing
+        meson setup build --prefix=/usr -Dbuildtype=release
+        meson compile -C build
+        sudo meson install -C build
 
     - name: Build libportal (Qt6 backend)
       run: |
