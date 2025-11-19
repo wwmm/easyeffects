@@ -184,7 +184,7 @@ jobs:
           itstool
 
         # Qt6 and KF6 dependencies (from KDE Neon / Ubuntu 24.04)
-        # Added libkf6crash-dev to fix "Could NOT find KF6 (missing: Crash)"
+        # Added libkf6globalaccel-dev, libkf6xmlgui-dev, libkf6notifications-dev, libkf6package-dev
         sudo apt-get install -y \
           qt6-base-dev \
           qt6-declarative-dev \
@@ -205,6 +205,10 @@ jobs:
           libkf6widgetsaddons-dev \
           libkf6kcmutils-dev \
           libkf6iconthemes-dev \
+          libkf6globalaccel-dev \
+          libkf6xmlgui-dev \
+          libkf6notifications-dev \
+          libkf6package-dev \
           libkirigami-dev \
           libkf6qqc2desktopstyle-dev \
           libkf6crash-dev \
