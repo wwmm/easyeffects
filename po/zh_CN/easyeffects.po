@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-18 14:59+0000\n"
-"PO-Revision-Date: 2025-11-18 11:51+0000\n"
+"PO-Revision-Date: 2025-11-19 03:51+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hans/>\n"
@@ -2216,7 +2216,8 @@ msgid ""
 "Use cubic scale for stream volume rather than the linear one. Low "
 "percentages results in a lower perceived volume while the loudness appears "
 "to change more evenly across the slider."
-msgstr ""
+msgstr "改用立方刻度调节音量。比起线性刻度，低数值下的感知音量更低，响度随滑条的变化"
+"也更均匀。"
 
 #: src/contents/ui/PreferencesSheet.qml:162
 msgid "Ignore system notifications"
@@ -2337,7 +2338,7 @@ msgstr "点阵"
 
 #: src/contents/ui/PreferencesSheet.qml:321
 msgid "Area"
-msgstr "实色"
+msgstr "色块"
 
 #: src/contents/ui/PreferencesSheet.qml:331
 msgid "Dynamic scale"
@@ -2975,7 +2976,7 @@ msgstr "空闲"
 
 #: src/pw_model_nodes.cpp:528
 msgid "Creating"
-msgstr "创建中"
+msgstr "新建中"
 
 #: src/pw_model_nodes.cpp:530
 msgid "Error"
