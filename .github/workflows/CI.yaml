@@ -259,6 +259,10 @@ jobs:
 
     - name: Build EasyEffects
       run: |
+        # Patch source code: std::fabsf is not standard C++, use std::fabs instead.
+        # This fixes build failure on GCC 13 / Ubuntu 24.04
+        sed -i 's/std::fabsf/std::fabs/g' src/crystalizer.hpp
+
         # Configure with standard paths
         cmake -B build -S . -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
         cmake --build build
