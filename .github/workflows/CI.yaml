@@ -153,10 +153,11 @@ jobs:
         
         sudo apt-get update
         
-        # Core build tools and libportal build deps (gobject-introspection)
+        # Core build tools and libportal build deps
+        # Added extra-cmake-modules (ECM) to fix "Could not find a package configuration file provided by ECM"
         sudo apt-get install -y \
           build-essential cmake ninja-build pkg-config gettext git autoconf automake libtool meson \
-          gobject-introspection libgirepository1.0-dev
+          gobject-introspection libgirepository1.0-dev extra-cmake-modules
 
         # Audio and processing dependencies
         sudo apt-get install -y \
