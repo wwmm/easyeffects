@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-18 14:59+0000\n"
+"POT-Creation-Date: 2025-11-19 22:03+0000\n"
 "PO-Revision-Date: 2025-07-20 18:38+0000\n"
 "Last-Translator: Santiago José Gutiérrez Llanos "
 "<gutierrezapata17@gmail.com>\n"
@@ -39,7 +39,8 @@ msgid "Reset Easy Effects."
 msgstr "Restablecer EasyEffects."
 
 #: src/command_line_parser.cpp:44
-msgid "Hide the Window."
+#, fuzzy
+msgid "Hide the window."
 msgstr "Oculta la ventana."
 
 #: src/command_line_parser.cpp:45
@@ -96,15 +97,33 @@ msgstr ""
 msgid "Must specify preset type: input/output."
 msgstr ""
 
-#: src/command_line_parser.cpp:164 src/contents/ui/Main.qml:350
+#: src/command_line_parser.cpp:166
 #, fuzzy
-msgid "Output Presets"
+msgid "Output presets"
 msgstr "Perfiles de Dispositivos de Salida: "
 
-#: src/command_line_parser.cpp:172 src/contents/ui/Main.qml:335
+#: src/command_line_parser.cpp:168
 #, fuzzy
-msgid "Input Presets"
+msgid "No output presets."
+msgstr "Perfiles de Dispositivos de Salida: "
+
+#: src/command_line_parser.cpp:179
+#, fuzzy
+msgid "Input presets"
 msgstr "Perfiles de Dispositivos de Entrada: "
+
+#: src/command_line_parser.cpp:181
+#, fuzzy
+msgid "No input presets."
+msgstr "Perfiles de Dispositivos de Entrada: "
+
+#: src/command_line_parser.cpp:211
+msgid "Specified preset does not exist."
+msgstr ""
+
+#: src/command_line_parser.cpp:229
+msgid "Provided an invalid bypass state."
+msgstr ""
 
 #: src/contents/ui/AboutPage.qml:4
 #, fuzzy
@@ -1953,6 +1972,16 @@ msgstr "Clientes"
 #: src/contents/ui/Main.qml:314 src/contents/ui/Main.qml:326
 msgid "Are you sure you want to clear this list?"
 msgstr ""
+
+#: src/contents/ui/Main.qml:335
+#, fuzzy
+msgid "Input Presets"
+msgstr "Perfiles de Dispositivos de Entrada: "
+
+#: src/contents/ui/Main.qml:350
+#, fuzzy
+msgid "Output Presets"
+msgstr "Perfiles de Dispositivos de Salida: "
 
 #: src/contents/ui/Main.qml:381
 #, fuzzy
