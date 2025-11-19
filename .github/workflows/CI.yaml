@@ -147,20 +147,18 @@ jobs:
     - name: Install Dependencies
       run: |
         # Add KDE Neon User repo for access to KF6 libraries not present in standard Ubuntu 24.04
-        # Using proper keyring method
         wget -qO - 'https://archive.neon.kde.org/public.key' | sudo gpg --dearmor -o /usr/share/keyrings/neon-archive-keyring.gpg
         echo 'deb [signed-by=/usr/share/keyrings/neon-archive-keyring.gpg] http://archive.neon.kde.org/user noble main' | sudo tee /etc/apt/sources.list.d/neon.list
         
         sudo apt-get update
         
         # Core build tools and libportal build deps
-        # Added extra-cmake-modules (ECM)
         sudo apt-get install -y \
           build-essential cmake ninja-build pkg-config gettext git autoconf automake libtool meson \
           gobject-introspection libgirepository1.0-dev extra-cmake-modules
 
         # Audio and processing dependencies
-        # Removed libwebrtc-audio-processing-dev (too old), added libabsl-dev (needed for manual build of webrtc)
+        # Note: libwebrtc-audio-processing-dev in ubuntu 24.04 is v0.3, we need v2.0+ (built manually below)
         sudo apt-get install -y \
           libpipewire-0.3-dev \
           libfftw3-dev \
@@ -185,8 +183,6 @@ jobs:
           itstool
 
         # Qt6 and KF6 dependencies (from KDE Neon / Ubuntu 24.04)
-        # Corrected package names for Neon: libkirigami-dev, libkf6qqc2desktopstyle-dev
-        # Removed kirigami-addons-dev as we will build it from source to ensure KF6 version
         sudo apt-get install -y \
           qt6-base-dev \
           qt6-declarative-dev \
@@ -220,7 +216,6 @@ jobs:
 
     - name: Build rnnoise
       run: |
-        # librnnoise is not in standard Ubuntu repos, build from source
         git clone https://github.com/xiph/rnnoise.git
         cd rnnoise
         ./autogen.sh
@@ -230,7 +225,7 @@ jobs:
 
     - name: Build webrtc-audio-processing
       run: |
-        # Ubuntu 24.04 has version 0.3, EasyEffects needs version 2.0+ (webrtc-audio-processing-2)
+        # Ubuntu 24.04 has version 0.3, EasyEffects needs version 2.0+
         git clone https://gitlab.freedesktop.org/pulseaudio/webrtc-audio-processing.git
         cd webrtc-audio-processing
         meson setup build --prefix=/usr -Dbuildtype=release
@@ -239,18 +234,15 @@ jobs:
 
     - name: Build libportal (Qt6 backend)
       run: |
-        # libportal-qt6 is often missing or version-mismatched in stable repos
         git clone https://github.com/flatpak/libportal.git
         cd libportal
-        # Disable docs, tests, introspection, and vapi to avoid extra dependencies/time.
-        # We only need the C++ headers and shared library.
         meson setup build --prefix=/usr -Ddocs=false -Dtests=false -Dintrospection=false -Dvapi=false
         meson compile -C build
         sudo meson install -C build
 
     - name: Build Kirigami Addons
       run: |
-        # Build Kirigami Addons from source to ensure KF6 compatibility
+        # Build from source to ensure KF6 compatibility matches the installed headers
         git clone https://invent.kde.org/libraries/kirigami-addons.git
         cd kirigami-addons
         cmake -B build -S . -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_TESTING=OFF
@@ -259,27 +251,51 @@ jobs:
 
     - name: Build EasyEffects
       run: |
-        # Patch source code: std::fabsf is not standard C++, use std::fabs instead.
-        # This fixes build failure on GCC 13 / Ubuntu 24.04
+        # FIX: Patch source code to fix 'fabsf' not being in std:: namespace (GCC 13 compatibility)
         sed -i 's/std::fabsf/std::fabs/g' src/crystalizer.hpp
 
-        # Configure with standard paths
+        # Configure
         cmake -B build -S . -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
         cmake --build build
 
-    - name: Create Archive
+    - name: Package DEB
       run: |
-        # Install to a temporary directory to create a portable-like tarball
+        # 1. Install to AppDir to create the directory structure
         DESTDIR=$PWD/AppDir cmake --install build
         
-        # Create a tarball of the result
-        tar -czf easyeffects-linuxmint-${{ needs.prepare.outputs.github_commit_desc }}-x86_64.tar.gz -C AppDir .
+        # 2. Verify .desktop file exists (Standard CMake install path for /usr prefix is /usr/share/applications)
+        echo "Verifying .desktop file presence..."
+        if [ ! -f AppDir/usr/share/applications/*.desktop ]; then
+          echo "::error::Desktop file not found in AppDir/usr/share/applications! Packaging might be incorrect."
+          find AppDir -name "*.desktop"
+          exit 1
+        else
+          echo "Desktop file found:"
+          ls -l AppDir/usr/share/applications/*.desktop
+        fi
+        
+        # 3. Create DEBIAN control file
+        mkdir -p AppDir/DEBIAN
+        cat <<EOF > AppDir/DEBIAN/control
+        Package: easyeffects
+        Version: 9.9.9-git-${{ github.sha }}
+        Architecture: amd64
+        Maintainer: CI Builder <ci@localhost>
+        Description: Limiter, compressor, convolver, equalizer and auto volume and many more for PipeWire applications
+         EasyEffects is an advanced audio manipulation tool. It includes an equalizer,
+         limiter, compressor and a reverberation tool, just to mention a few.
+         To complement this there is also a built in spectrum analyzer.
+        Depends: libc6, libgcc-s1, libstdc++6, libpipewire-0.3-0, dconf-gsettings-backend
+        EOF
+        
+        # 4. Build .deb package
+        dpkg-deb --build AppDir easyeffects-linuxmint-${{ needs.prepare.outputs.github_commit_desc }}-amd64.deb
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v5.0.0
       with:
-        name: easyeffects-linuxmint-${{ needs.prepare.outputs.github_commit_desc }}-x86_64
-        path: easyeffects-linuxmint-*.tar.gz
+        name: easyeffects-linuxmint-${{ needs.prepare.outputs.github_commit_desc }}-amd64
+        path: easyeffects-linuxmint-*.deb
         if-no-files-found: error
 
   opensuse-tumbleweed:
