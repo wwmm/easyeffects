@@ -19,9 +19,10 @@
 
 #pragma once
 
+#include <qtypes.h>
 #include <zita-convolver.h>
-#include <cstdint>
 #include <span>
+#include "convolver_kernel_manager.hpp"
 
 class ConvolverZita {
  public:
@@ -35,7 +36,7 @@ class ConvolverZita {
   ConvolverZita(ConvolverZita&&) noexcept = default;
   auto operator=(ConvolverZita&&) noexcept -> ConvolverZita& = default;
 
-  auto init(uint32_t sampleCount, uint32_t blockSize, std::span<float> kernelL, std::span<float> kernelR) -> bool;
+  auto init(ConvolverKernelManager::KernelData data, uint bufferSize) -> bool;
 
   void process(std::span<float> dataLeft, std::span<float> dataRight);
 
@@ -44,7 +45,9 @@ class ConvolverZita {
  private:
   bool ready = false;
 
-  uint32_t bufferSize = 0;
+  uint bufferSize = 0;
+
+  ConvolverKernelManager::KernelData kernel;
 
   Convproc* conv = nullptr;
 };

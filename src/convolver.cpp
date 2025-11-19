@@ -111,17 +111,6 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
   connect(&workerThread, &QThread::finished, worker, &QObject::deleteLater);
 
   connect(
-      worker, &ConvolverWorker::onNewChartMag, this,
-      [this](QList<QPointF> mag_L, QList<QPointF> mag_R) {
-        chartMagL = mag_L;
-        chartMagR = mag_R;
-
-        Q_EMIT chartMagLChanged();
-        Q_EMIT chartMagRChanged();
-      },
-      Qt::QueuedConnection);
-
-  connect(
       worker, &ConvolverWorker::onNewKernel, this,
       [this](ConvolverKernelManager::KernelData data) {
         kernel = data;
@@ -134,7 +123,7 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
           set_kernel_stereo_width();
           apply_kernel_autogain();
 
-          auto success = zita.init(kernel.sampleCount(), blocksize, kernel.left_channel, kernel.right_channel);
+          auto success = zita.init(kernel, blocksize);
 
           if (!success) {
             util::warning(std::format("{} Zita init failed", log_tag));
@@ -146,15 +135,38 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
 
           data_mutex.unlock();
 
-          kernelRate = QString::fromStdString(util::to_string(data.rate));
-          kernelSamples = QString::fromStdString(util::to_string(data.sampleCount()));
-          kernelDuration = QString::fromStdString(util::to_string(data.duration()));
+          kernelRate = QString::fromStdString(util::to_string(kernel.rate));
+          kernelSamples = QString::fromStdString(util::to_string(kernel.sampleCount()));
+          kernelDuration = QString::fromStdString(util::to_string(kernel.duration()));
 
           Q_EMIT kernelRateChanged();
           Q_EMIT kernelDurationChanged();
           Q_EMIT kernelSamplesChanged();
           Q_EMIT newKernelLoaded(kernel.name, true);
         }
+      },
+      Qt::QueuedConnection);
+
+  connect(
+      worker, &ConvolverWorker::onInvalidKernel, this,
+      [this](QString name) {
+        clear_chart_data();
+
+        Q_EMIT newKernelLoaded(name, false);
+
+        util::warning(
+            std::format("{}{}: irs filename is invalid. Entering passthrough mode...", log_tag, name.toStdString()));
+      },
+      Qt::QueuedConnection);
+
+  connect(
+      worker, &ConvolverWorker::onNewChartMag, this,
+      [this](QList<QPointF> mag_L, QList<QPointF> mag_R) {
+        chartMagL.swap(mag_L);
+        chartMagR.swap(mag_R);
+
+        Q_EMIT chartMagLChanged();
+        Q_EMIT chartMagRChanged();
       },
       Qt::QueuedConnection);
 
@@ -362,12 +374,7 @@ void Convolver::load_kernel_file() {
   auto kernel_data = kernel_manager.loadKernel(name.toStdString());
 
   if (!kernel_data.isValid()) {
-    clear_chart_data();
-
-    Q_EMIT newKernelLoaded(name, false);
-
-    util::warning(
-        std::format("{}{}: irs filename is invalid. Entering passthrough mode...", log_tag, name.toStdString()));
+    Q_EMIT worker->onInvalidKernel(name);
 
     return;
   }

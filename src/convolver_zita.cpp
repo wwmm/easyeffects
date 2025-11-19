@@ -18,12 +18,13 @@
  */
 
 #include "convolver_zita.hpp"
+#include <qtypes.h>
 #include <sched.h>
 #include <zita-convolver.h>
 #include <algorithm>
-#include <cstdint>
 #include <format>
 #include <span>
+#include "convolver_kernel_manager.hpp"
 #include "util.hpp"
 
 namespace {
@@ -53,10 +54,8 @@ void ConvolverZita::stop() {
   }
 }
 
-auto ConvolverZita::init(uint32_t sampleCount, uint32_t blockSize, std::span<float> kernelL, std::span<float> kernelR)
-    -> bool {
+auto ConvolverZita::init(ConvolverKernelManager::KernelData data, uint bufferSize) -> bool {
   ready = false;
-  bufferSize = blockSize;
 
   if (conv != nullptr) {
     conv->stop_process();
@@ -68,17 +67,23 @@ auto ConvolverZita::init(uint32_t sampleCount, uint32_t blockSize, std::span<flo
 
   conv->set_options(0);
 
-  if (auto ret = conv->configure(2, 2, sampleCount, bufferSize, bufferSize, bufferSize, 0.0F); ret != 0) {
+  kernel = data;
+
+  this->bufferSize = bufferSize;
+
+  if (auto ret = conv->configure(2, 2, kernel.sampleCount(), bufferSize, bufferSize, bufferSize, 0.0F); ret != 0) {
     util::warning(std::format("Zita: configure failed: {}", ret));
     return false;
   }
 
-  if (auto ret = conv->impdata_create(0, 0, 1, kernelL.data(), 0, static_cast<int>(kernelL.size())); ret != 0) {
+  if (auto ret = conv->impdata_create(0, 0, 1, kernel.left_channel.data(), 0, static_cast<int>(kernel.sampleCount()));
+      ret != 0) {
     util::warning(std::format("Zita: left impdata_create failed: {}", ret));
     return false;
   }
 
-  if (auto ret = conv->impdata_create(1, 1, 1, kernelR.data(), 0, static_cast<int>(kernelR.size())); ret != 0) {
+  if (auto ret = conv->impdata_create(1, 1, 1, kernel.right_channel.data(), 0, static_cast<int>(kernel.sampleCount()));
+      ret != 0) {
     util::warning(std::format("Zita: right impdata_create failed: {}", ret));
     return false;
   }

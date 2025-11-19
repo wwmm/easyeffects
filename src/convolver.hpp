@@ -50,6 +50,8 @@ class ConvolverWorker : public QObject {
   void onNewChartMag(QList<QPointF> mag_L, QList<QPointF> mag_R);
 
   void onNewSpectrum(QList<QPointF> linear_L, QList<QPointF> linear_R, QList<QPointF> log_L, QList<QPointF> log_R);
+
+  void onInvalidKernel(QString name);
 };
 
 class Convolver : public PluginBase {
