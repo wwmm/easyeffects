@@ -153,8 +153,10 @@ jobs:
         
         sudo apt-get update
         
-        # Core build tools
-        sudo apt-get install -y build-essential cmake ninja-build pkg-config gettext git autoconf automake libtool meson
+        # Core build tools and libportal build deps (gobject-introspection)
+        sudo apt-get install -y \
+          build-essential cmake ninja-build pkg-config gettext git autoconf automake libtool meson \
+          gobject-introspection libgirepository1.0-dev
 
         # Audio and processing dependencies
         sudo apt-get install -y \
@@ -219,10 +221,9 @@ jobs:
         # libportal-qt6 is often missing or version-mismatched in stable repos
         git clone https://github.com/flatpak/libportal.git
         cd libportal
-        # Remove -Dbackends=qt6 as it is no longer supported.
-        # Build all available backends (requires qt6-base-dev installed)
-        # Also disable docs and tests to save time
-        meson setup build --prefix=/usr -Ddocs=false -Dtests=false
+        # Disable docs, tests, introspection, and vapi to avoid extra dependencies/time.
+        # We only need the C++ headers and shared library.
+        meson setup build --prefix=/usr -Ddocs=false -Dtests=false -Dintrospection=false -Dvapi=false
         meson compile -C build
         sudo meson install -C build
 
