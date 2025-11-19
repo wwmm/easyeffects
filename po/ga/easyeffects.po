@@ -3091,6 +3091,39 @@ msgstr "Cothromóir, Comhbhrúiteoir agus Éifeachtaí Fuaime Eile"
 msgid "Simple audio effects"
 msgstr "Éifeachtaí fuaime simplí"
 
+#: src/command_line_parser.cpp:44
+#, fuzzy
+msgid "Hide the window."
+msgstr "Folaigh an fhuinneog."
+
+#: src/command_line_parser.cpp:166
+#, fuzzy
+msgid "Output presets"
+msgstr "Réamhshocruithe Aschurtha"
+
+#: src/command_line_parser.cpp:168
+#, fuzzy
+msgid "No output presets."
+msgstr "Réamhshocruithe Aschurtha"
+
+#: src/command_line_parser.cpp:179
+#, fuzzy
+msgid "Input presets"
+msgstr "Réamhshocruithe Ionchurtha"
+
+#: src/command_line_parser.cpp:181
+#, fuzzy
+msgid "No input presets."
+msgstr "Réamhshocruithe Ionchurtha"
+
+#: src/command_line_parser.cpp:211
+msgid "Specified preset does not exist."
+msgstr ""
+
+#: src/command_line_parser.cpp:229
+msgid "Provided an invalid bypass state."
+msgstr ""
+
 #~ msgid "Hardware profile"
 #~ msgstr "Próifíl crua-earraí"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-18 14:59+0000\n"
+"POT-Creation-Date: 2025-11-19 22:03+0000\n"
 "PO-Revision-Date: 2025-11-19 03:51+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
@@ -37,7 +37,8 @@ msgid "Reset Easy Effects."
 msgstr "重新設定 Easy Effects。"
 
 #: src/command_line_parser.cpp:44
-msgid "Hide the Window."
+#, fuzzy
+msgid "Hide the window."
 msgstr "隱藏視窗。"
 
 #: src/command_line_parser.cpp:45
@@ -88,13 +89,33 @@ msgstr "啟用除錯訊息。"
 msgid "Must specify preset type: input/output."
 msgstr "必須指定預設集型式：輸入/輸出。"
 
-#: src/command_line_parser.cpp:164 src/contents/ui/Main.qml:350
-msgid "Output Presets"
+#: src/command_line_parser.cpp:166
+#, fuzzy
+msgid "Output presets"
 msgstr "輸出預設集"
 
-#: src/command_line_parser.cpp:172 src/contents/ui/Main.qml:335
-msgid "Input Presets"
+#: src/command_line_parser.cpp:168
+#, fuzzy
+msgid "No output presets."
+msgstr "輸出預設集"
+
+#: src/command_line_parser.cpp:179
+#, fuzzy
+msgid "Input presets"
 msgstr "輸入預設集"
+
+#: src/command_line_parser.cpp:181
+#, fuzzy
+msgid "No input presets."
+msgstr "輸入預設集"
+
+#: src/command_line_parser.cpp:211
+msgid "Specified preset does not exist."
+msgstr ""
+
+#: src/command_line_parser.cpp:229
+msgid "Provided an invalid bypass state."
+msgstr ""
 
 #: src/contents/ui/AboutPage.qml:4
 msgctxt "@action:button"
@@ -1807,6 +1828,14 @@ msgstr "清除列表"
 #: src/contents/ui/Main.qml:314 src/contents/ui/Main.qml:326
 msgid "Are you sure you want to clear this list?"
 msgstr "確定要清除此列表？"
+
+#: src/contents/ui/Main.qml:335
+msgid "Input Presets"
+msgstr "輸入預設集"
+
+#: src/contents/ui/Main.qml:350
+msgid "Output Presets"
+msgstr "輸出預設集"
 
 #: src/contents/ui/Main.qml:381
 msgid "Active"

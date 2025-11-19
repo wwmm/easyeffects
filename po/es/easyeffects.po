@@ -3089,6 +3089,39 @@ msgstr "Ecualizador, compresor y otros efectos de sonido"
 msgid "Simple audio effects"
 msgstr "Efectos de audio simples"
 
+#: src/command_line_parser.cpp:44
+#, fuzzy
+msgid "Hide the window."
+msgstr "Ocultar la ventana."
+
+#: src/command_line_parser.cpp:166
+#, fuzzy
+msgid "Output presets"
+msgstr "Perfiles de salida"
+
+#: src/command_line_parser.cpp:168
+#, fuzzy
+msgid "No output presets."
+msgstr "Perfiles de salida"
+
+#: src/command_line_parser.cpp:179
+#, fuzzy
+msgid "Input presets"
+msgstr "Perfiles de entrada"
+
+#: src/command_line_parser.cpp:181
+#, fuzzy
+msgid "No input presets."
+msgstr "Perfiles de entrada"
+
+#: src/command_line_parser.cpp:211
+msgid "Specified preset does not exist."
+msgstr ""
+
+#: src/command_line_parser.cpp:229
+msgid "Provided an invalid bypass state."
+msgstr ""
+
 #, fuzzy
 #~ msgid "Hardware profile"
 #~ msgstr "Perfil"

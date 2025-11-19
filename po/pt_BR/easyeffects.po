@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-18 14:59+0000\n"
+"POT-Creation-Date: 2025-11-19 22:03+0000\n"
 "PO-Revision-Date: 2025-11-15 18:03+0000\n"
 "Last-Translator: Wellington Wallace <wellingtonwallace@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -39,7 +39,8 @@ msgid "Reset Easy Effects."
 msgstr "Redefinir o Easy Effects."
 
 #: src/command_line_parser.cpp:44
-msgid "Hide the Window."
+#, fuzzy
+msgid "Hide the window."
 msgstr "Ocultar a Janela."
 
 #: src/command_line_parser.cpp:45
@@ -93,13 +94,33 @@ msgstr "Habilitar mensagens de depuração."
 msgid "Must specify preset type: input/output."
 msgstr "Deve especificar o tipo predefinido: entrada/saída."
 
-#: src/command_line_parser.cpp:164 src/contents/ui/Main.qml:350
-msgid "Output Presets"
+#: src/command_line_parser.cpp:166
+#, fuzzy
+msgid "Output presets"
 msgstr "Predefinições de Saída"
 
-#: src/command_line_parser.cpp:172 src/contents/ui/Main.qml:335
-msgid "Input Presets"
+#: src/command_line_parser.cpp:168
+#, fuzzy
+msgid "No output presets."
+msgstr "Predefinições de Saída"
+
+#: src/command_line_parser.cpp:179
+#, fuzzy
+msgid "Input presets"
 msgstr "Predefinições de Entrada"
+
+#: src/command_line_parser.cpp:181
+#, fuzzy
+msgid "No input presets."
+msgstr "Predefinições de Entrada"
+
+#: src/command_line_parser.cpp:211
+msgid "Specified preset does not exist."
+msgstr ""
+
+#: src/command_line_parser.cpp:229
+msgid "Provided an invalid bypass state."
+msgstr ""
 
 #: src/contents/ui/AboutPage.qml:4
 #, fuzzy
@@ -1894,6 +1915,14 @@ msgstr "Lista de Clientes"
 #, fuzzy
 msgid "Are you sure you want to clear this list?"
 msgstr "Tem certeza de que deseja remover esta predefinição da lista?"
+
+#: src/contents/ui/Main.qml:335
+msgid "Input Presets"
+msgstr "Predefinições de Entrada"
+
+#: src/contents/ui/Main.qml:350
+msgid "Output Presets"
+msgstr "Predefinições de Saída"
 
 #: src/contents/ui/Main.qml:381
 msgid "Active"
