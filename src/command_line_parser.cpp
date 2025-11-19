@@ -187,21 +187,31 @@ void CommandLineParser::process_events() {
   }
 
   if (parser->isSet("load-preset")) {
+    bool ok = false;
+
     const auto name = parser->value("load-preset");
 
     if (pm->preset_file_exists(PipelineType::input, name.toStdString())) {
       Q_EMIT onLoadPreset(PipelineType::input, name);
 
-      QCoreApplication::exit(EXIT_SUCCESS);
+      ok = true;
     }
 
     if (pm->preset_file_exists(PipelineType::output, name.toStdString())) {
       Q_EMIT onLoadPreset(PipelineType::output, name);
 
-      QCoreApplication::exit(EXIT_SUCCESS);
+      ok = true;
     }
 
-    QCoreApplication::exit(EXIT_FAILURE);
+    Q_EMIT onHideWindow();
+
+    if (ok) {
+      QCoreApplication::exit(EXIT_SUCCESS);
+    } else {
+      std::cout << i18n("Specified preset does not exist.").toStdString() << '\n';
+
+      QCoreApplication::exit(EXIT_FAILURE);
+    }
   }
 
   if (parser->isSet("bypass")) {
