@@ -153,6 +153,7 @@ jobs:
         sudo apt-get update
         
         # Core build tools and libportal build deps
+        # Added extra-cmake-modules (ECM)
         sudo apt-get install -y \
           build-essential cmake ninja-build pkg-config gettext git autoconf automake libtool meson \
           gobject-introspection libgirepository1.0-dev extra-cmake-modules
@@ -294,22 +295,26 @@ jobs:
         # 4. Build .deb package
         dpkg-deb --build AppDir easyeffects-linuxmint-${{ needs.prepare.outputs.github_commit_desc }}-amd64.deb
 
-    - name: Verify Package Installation
+    - name: Verify Package Installation and Runtime
+      env:
+        # Prevent Qt from trying to connect to X11/Wayland which causes a crash in headless CI
+        QT_QPA_PLATFORM: offscreen
+        XDG_RUNTIME_DIR: /tmp/runtime-dir
       run: |
         # Install the newly built package
-        # This confirms dependencies are satisfiable and the control file is valid
         sudo apt-get install -y ./easyeffects-linuxmint-${{ needs.prepare.outputs.github_commit_desc }}-amd64.deb
 
-    - name: Verify Runtime Existence
-      run: |
-        # Check if the binary is now in the path
+        # Setup runtime dir for verification
+        mkdir -p $XDG_RUNTIME_DIR
+        chmod 700 $XDG_RUNTIME_DIR
+
+        # Check if binary exists in path
         if ! command -v easyeffects &> /dev/null; then
-            echo "::error::easyeffects binary not found in path after installation!"
+            echo "::error::easyeffects binary not found in path!"
             exit 1
         fi
 
         # Check for missing shared libraries
-        # ldd will print "not found" if any linked library is missing
         echo "Checking shared libraries..."
         LDD_OUTPUT=$(ldd /usr/bin/easyeffects)
         echo "$LDD_OUTPUT"
@@ -319,9 +324,10 @@ jobs:
             exit 1
         fi
 
-        # Check version (simple run test)
+        # Run version check
+        # Using dbus-run-session to ensure a session bus is available, avoiding crashes on app init
         echo "Running version check..."
-        easyeffects --version
+        dbus-run-session -- easyeffects --version
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v5.0.0
