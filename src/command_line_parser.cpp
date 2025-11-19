@@ -213,7 +213,13 @@ void CommandLineParser::process_events() {
       Q_EMIT onSetGlobalBypass(true);
     } else if (value == "2") {
       Q_EMIT onSetGlobalBypass(false);
+    } else {
+      ok = false;
+
+      std::cout << i18n("Provided an invalid bypass state.").toStdString() << '\n';
     }
+
+    Q_EMIT onHideWindow();
 
     if (ok) {
       QCoreApplication::exit(EXIT_SUCCESS);
