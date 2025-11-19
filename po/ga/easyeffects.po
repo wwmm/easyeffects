@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-19 22:03+0000\n"
+"POT-Creation-Date: 2025-11-18 14:59+0000\n"
 "PO-Revision-Date: 2025-11-19 12:29+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -39,8 +39,7 @@ msgid "Reset Easy Effects."
 msgstr "Athshocraigh Éifeachtaí Éasca."
 
 #: src/command_line_parser.cpp:44
-#, fuzzy
-msgid "Hide the window."
+msgid "Hide the Window."
 msgstr "Folaigh an fhuinneog."
 
 #: src/command_line_parser.cpp:45
@@ -91,33 +90,13 @@ msgstr "Cumasaigh teachtaireachtaí dífhabhtaithe."
 msgid "Must specify preset type: input/output."
 msgstr "Ní mór cineál réamhshocraithe a shonrú: ionchur/aschur."
 
-#: src/command_line_parser.cpp:166
-#, fuzzy
-msgid "Output presets"
+#: src/command_line_parser.cpp:164 src/contents/ui/Main.qml:350
+msgid "Output Presets"
 msgstr "Réamhshocruithe Aschurtha"
 
-#: src/command_line_parser.cpp:168
-#, fuzzy
-msgid "No output presets."
-msgstr "Réamhshocruithe Aschurtha"
-
-#: src/command_line_parser.cpp:179
-#, fuzzy
-msgid "Input presets"
+#: src/command_line_parser.cpp:172 src/contents/ui/Main.qml:335
+msgid "Input Presets"
 msgstr "Réamhshocruithe Ionchurtha"
-
-#: src/command_line_parser.cpp:181
-#, fuzzy
-msgid "No input presets."
-msgstr "Réamhshocruithe Ionchurtha"
-
-#: src/command_line_parser.cpp:211
-msgid "Specified preset does not exist."
-msgstr ""
-
-#: src/command_line_parser.cpp:229
-msgid "Provided an invalid bypass state."
-msgstr ""
 
 #: src/contents/ui/AboutPage.qml:4
 msgctxt "@action:button"
@@ -1829,14 +1808,6 @@ msgstr "Glan an Liosta"
 msgid "Are you sure you want to clear this list?"
 msgstr "An bhfuil tú cinnte gur mian leat an liosta seo a ghlanadh?"
 
-#: src/contents/ui/Main.qml:335
-msgid "Input Presets"
-msgstr "Réamhshocruithe Ionchurtha"
-
-#: src/contents/ui/Main.qml:350
-msgid "Output Presets"
-msgstr "Réamhshocruithe Aschurtha"
-
 #: src/contents/ui/Main.qml:381
 msgid "Active"
 msgstr "Gníomhach"
@@ -3119,6 +3090,39 @@ msgstr "Cothromóir, Comhbhrúiteoir agus Éifeachtaí Fuaime Eile"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "Éifeachtaí fuaime simplí"
+
+#: src/command_line_parser.cpp:44
+#, fuzzy
+msgid "Hide the window."
+msgstr "Folaigh an fhuinneog."
+
+#: src/command_line_parser.cpp:166
+#, fuzzy
+msgid "Output presets"
+msgstr "Réamhshocruithe Aschurtha"
+
+#: src/command_line_parser.cpp:168
+#, fuzzy
+msgid "No output presets."
+msgstr "Réamhshocruithe Aschurtha"
+
+#: src/command_line_parser.cpp:179
+#, fuzzy
+msgid "Input presets"
+msgstr "Réamhshocruithe Ionchurtha"
+
+#: src/command_line_parser.cpp:181
+#, fuzzy
+msgid "No input presets."
+msgstr "Réamhshocruithe Ionchurtha"
+
+#: src/command_line_parser.cpp:211
+msgid "Specified preset does not exist."
+msgstr ""
+
+#: src/command_line_parser.cpp:229
+msgid "Provided an invalid bypass state."
+msgstr ""
 
 #~ msgid "Hardware profile"
 #~ msgstr "Próifíl crua-earraí"
