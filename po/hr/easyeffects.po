@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-18 14:59+0000\n"
-"PO-Revision-Date: 2025-11-19 21:34+0000\n"
+"PO-Revision-Date: 2025-11-19 22:04+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/easyeffects/"
 "main/hr/>\n"
@@ -1046,7 +1046,7 @@ msgstr "Predlošci"
 
 #: src/contents/ui/Crystalizer.qml:107
 msgid "Adaptive intensity"
-msgstr ""
+msgstr "Adaptivni intenzitet"
 
 #: src/contents/ui/CrystalizerBand.qml:35
 #: src/contents/ui/EqualizerBandMenu.qml:157
@@ -1065,7 +1065,7 @@ msgstr "Premosnica"
 #: src/contents/ui/CrystalizerBand.qml:75 src/contents/ui/EqualizerBand.qml:48
 #: src/contents/ui/PageStreamsEffects.qml:592
 msgid "kHz"
-msgstr ""
+msgstr "kHz"
 
 #: src/contents/ui/DeepFilterNet.qml:32
 #, fuzzy
@@ -2800,9 +2800,8 @@ msgid "Fallback Preset"
 msgstr ""
 
 #: src/contents/ui/RNNoise.qml:43
-#, fuzzy
 msgid "Imported a new RNNoise model file."
-msgstr "Standardni model"
+msgstr "Uvezena je nova datoteka RNNoise modela."
 
 #: src/contents/ui/RNNoise.qml:45
 #, fuzzy
@@ -2816,9 +2815,8 @@ msgid "Standard RNNoise model"
 msgstr "Standardni model"
 
 #: src/contents/ui/RNNoise.qml:58
-#, fuzzy
 msgid "Standard RNNoise model loaded."
-msgstr "Standardni model"
+msgstr "Standardni RNNoise model je učitan."
 
 #: src/contents/ui/RNNoise.qml:63 src/contents/ui/RNNoise.qml:285
 #, fuzzy
@@ -2826,14 +2824,12 @@ msgid "Using %1 Model"
 msgstr "Koristi se {}"
 
 #: src/contents/ui/RNNoise.qml:65
-#, fuzzy
 msgid "Loaded the %1 RNNoise model."
-msgstr "Standardni model"
+msgstr "Učitan je %1 RNNoise model."
 
 #: src/contents/ui/RNNoise.qml:69
-#, fuzzy
 msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
-msgstr "Nije bilo moguće učitati impuls datoteku"
+msgstr "Neuspjelo učitavanje modela %1. Vraća se na standardni RNNoise model."
 
 #: src/contents/ui/RNNoise.qml:88 src/contents/ui/Speex.qml:98
 #, fuzzy
@@ -2861,14 +2857,12 @@ msgid "Delete this model"
 msgstr "Ukloni ovu datoteku modela"
 
 #: src/contents/ui/RNNoise.qml:247
-#, fuzzy
 msgid "Removed the %1 RNNoise model."
-msgstr "Standardni model"
+msgstr "Uklonjen je %1 RNNoise model."
 
 #: src/contents/ui/RNNoise.qml:249
-#, fuzzy
 msgid "Failed to remove the %1 RNNoise model."
-msgstr "Nije bilo moguće učitati impuls datoteku"
+msgstr "Neuspjelo uklanjanje %1 RNNoise modela."
 
 #: src/contents/ui/RNNoise.qml:318
 #, fuzzy
