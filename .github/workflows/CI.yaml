@@ -184,8 +184,7 @@ jobs:
           itstool
 
         # Qt6 and KF6 dependencies (from KDE Neon / Ubuntu 24.04)
-        # Corrected package names for Neon: libkirigami-dev, libkf6qqc2desktopstyle-dev
-        # Removed kirigami-addons-dev as we will build it from source to ensure KF6 version
+        # Added libkf6crash-dev to fix "Could NOT find KF6 (missing: Crash)"
         sudo apt-get install -y \
           qt6-base-dev \
           qt6-declarative-dev \
@@ -208,6 +207,7 @@ jobs:
           libkf6iconthemes-dev \
           libkirigami-dev \
           libkf6qqc2desktopstyle-dev \
+          libkf6crash-dev \
           qml6-module-org-kde-kirigami \
           qml6-module-qtquick-controls \
           qml6-module-qtquick-layouts
