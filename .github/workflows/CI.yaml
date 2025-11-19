@@ -185,6 +185,7 @@ jobs:
 
         # Qt6 and KF6 dependencies (from KDE Neon / Ubuntu 24.04)
         # Corrected package names for Neon: libkirigami-dev, libkf6qqc2desktopstyle-dev
+        # Removed kirigami-addons-dev as we will build it from source to ensure KF6 version
         sudo apt-get install -y \
           qt6-base-dev \
           qt6-declarative-dev \
@@ -207,7 +208,6 @@ jobs:
           libkf6iconthemes-dev \
           libkirigami-dev \
           libkf6qqc2desktopstyle-dev \
-          kirigami-addons-dev \
           qml6-module-org-kde-kirigami \
           qml6-module-qtquick-controls \
           qml6-module-qtquick-layouts
@@ -232,6 +232,15 @@ jobs:
         meson setup build --prefix=/usr -Ddocs=false -Dtests=false -Dintrospection=false -Dvapi=false
         meson compile -C build
         sudo meson install -C build
+
+    - name: Build Kirigami Addons
+      run: |
+        # Build Kirigami Addons from source to ensure KF6 compatibility
+        git clone https://invent.kde.org/libraries/kirigami-addons.git
+        cd kirigami-addons
+        cmake -B build -S . -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_TESTING=OFF
+        cmake --build build
+        sudo cmake --install build
 
     - name: Build EasyEffects
       run: |
