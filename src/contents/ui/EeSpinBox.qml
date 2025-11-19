@@ -219,6 +219,7 @@ FormCard.AbstractFormDelegate {
                 id: textInputSpinBox
 
                 z: 2
+                verticalAlignment: TextInput.AlignVCenter
                 font: spinbox.font
                 color: control.enabled ? Kirigami.Theme.textColor : Kirigami.Theme.disabledTextColor
                 selectionColor: Kirigami.Theme.highlightColor
