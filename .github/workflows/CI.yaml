@@ -184,7 +184,7 @@ jobs:
           itstool
 
         # Qt6 and KF6 dependencies (from KDE Neon / Ubuntu 24.04)
-        # Added qt6-quick3d-dev which is required by qt6-graphs-dev
+        # Added qt6-shadertools-dev (required by quick3d -> graphs)
         sudo apt-get install -y \
           qt6-base-dev \
           qt6-declarative-dev \
@@ -195,6 +195,7 @@ jobs:
           qt6-charts-dev \
           qt6-graphs-dev \
           qt6-quick3d-dev \
+          qt6-shadertools-dev \
           qml6-module-qtcharts \
           qml6-module-qtquick-shapes \
           libkf6coreaddons-dev \
