@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-18 14:59+0000\n"
-"PO-Revision-Date: 2025-11-17 09:54+0000\n"
+"PO-Revision-Date: 2025-11-19 12:29+0000\n"
 "Last-Translator: Lito Parra <lito.15@proton.me>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
 "es/>\n"
@@ -558,11 +558,11 @@ msgstr "Tipo"
 
 #: src/contents/ui/Compressor.qml:249
 msgid "Feed-forward"
-msgstr "Retroalimentación"
+msgstr "Feed-forward"
 
 #: src/contents/ui/Compressor.qml:249
 msgid "Feed-back"
-msgstr "Avance hacia atrás"
+msgstr "Feed-back"
 
 #: src/contents/ui/Compressor.qml:249 src/contents/ui/Expander.qml:209
 #: src/contents/ui/Gate.qml:227 src/contents/ui/Limiter.qml:200
@@ -1952,7 +1952,7 @@ msgstr "No hay ninguna aplicación en uso"
 
 #: src/contents/ui/PageStreamsEffects.qml:315
 msgid "Add effect"
-msgstr "Añadir efecto"
+msgstr "Agregar efecto"
 
 #: src/contents/ui/PageStreamsEffects.qml:323
 msgid "Close"
@@ -2150,7 +2150,7 @@ msgstr "Diferencia de frecuencia de muestreo"
 
 #: src/contents/ui/Pitch.qml:270
 msgid "Quick seek"
-msgstr "Ajuste rápido"
+msgstr "Avance rápido"
 
 #: src/contents/ui/Pitch.qml:280
 msgid "Anti-aliasing"
@@ -2231,6 +2231,9 @@ msgid ""
 "percentages results in a lower perceived volume while the loudness appears "
 "to change more evenly across the slider."
 msgstr ""
+"Utilizar escala cúbica en lugar de escala linear para el volumen del sonido. "
+"Un porcentaje más bajo resulta en menor volumen percibido y este cambia con "
+"más consistencia a medida que se mueve el deslizador."
 
 #: src/contents/ui/PreferencesSheet.qml:162
 msgid "Ignore system notifications"
@@ -3016,11 +3019,11 @@ msgstr "Desconocido"
 
 #: src/tags_plugin_name.cpp:27
 msgid "Bass Enhancer"
-msgstr "Refuerzo de graves"
+msgstr "Potenciador de graves"
 
 #: src/tags_plugin_name.cpp:28
 msgid "Bass Loudness"
-msgstr "Sonoridad de graves"
+msgstr "Realce de sonoridad en graves"
 
 #: src/tags_plugin_name.cpp:30
 msgid "Convolver"
@@ -3028,7 +3031,7 @@ msgstr "Convolucinador"
 
 #: src/tags_plugin_name.cpp:31
 msgid "Crossfeed"
-msgstr "Alimentación cruzada"
+msgstr "Mezcla cruzada"
 
 #: src/tags_plugin_name.cpp:32
 msgid "Crystalizer"
