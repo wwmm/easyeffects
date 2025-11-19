@@ -147,6 +147,7 @@ jobs:
     - name: Install Dependencies
       run: |
         # Add KDE Neon User repo for access to KF6 libraries not present in standard Ubuntu 24.04
+        # Using proper keyring method
         wget -qO - 'https://archive.neon.kde.org/public.key' | sudo gpg --dearmor -o /usr/share/keyrings/neon-archive-keyring.gpg
         echo 'deb [signed-by=/usr/share/keyrings/neon-archive-keyring.gpg] http://archive.neon.kde.org/user noble main' | sudo tee /etc/apt/sources.list.d/neon.list
         
@@ -179,8 +180,7 @@ jobs:
           libappstream-glib-dev \
           itstool
 
-        # Qt6 and KF6 dependencies (from KDE Neon)
-        # Uses correct package names found in Neon/Debian Trixie
+        # Qt6 and KF6 dependencies (from KDE Neon / Ubuntu 24.04)
         sudo apt-get install -y \
           qt6-base-dev \
           qt6-declarative-dev \
@@ -219,8 +219,10 @@ jobs:
         # libportal-qt6 is often missing or version-mismatched in stable repos
         git clone https://github.com/flatpak/libportal.git
         cd libportal
-        # We only need the headers/libs, documentation not required
-        meson setup build --prefix=/usr -Dbackends=qt6 -Ddocs=false -Dtests=false
+        # Remove -Dbackends=qt6 as it is no longer supported.
+        # Build all available backends (requires qt6-base-dev installed)
+        # Also disable docs and tests to save time
+        meson setup build --prefix=/usr -Ddocs=false -Dtests=false
         meson compile -C build
         sudo meson install -C build
 
