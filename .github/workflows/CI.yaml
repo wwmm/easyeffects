@@ -154,7 +154,7 @@ jobs:
         sudo apt-get update
         
         # Core build tools and libportal build deps
-        # Added extra-cmake-modules (ECM) to fix "Could not find a package configuration file provided by ECM"
+        # Added extra-cmake-modules (ECM)
         sudo apt-get install -y \
           build-essential cmake ninja-build pkg-config gettext git autoconf automake libtool meson \
           gobject-introspection libgirepository1.0-dev extra-cmake-modules
@@ -184,6 +184,7 @@ jobs:
           itstool
 
         # Qt6 and KF6 dependencies (from KDE Neon / Ubuntu 24.04)
+        # Added qt6-quick3d-dev which is required by qt6-graphs-dev
         sudo apt-get install -y \
           qt6-base-dev \
           qt6-declarative-dev \
@@ -193,6 +194,7 @@ jobs:
           qt6-webengine-dev-tools \
           qt6-charts-dev \
           qt6-graphs-dev \
+          qt6-quick3d-dev \
           qml6-module-qtcharts \
           qml6-module-qtquick-shapes \
           libkf6coreaddons-dev \
