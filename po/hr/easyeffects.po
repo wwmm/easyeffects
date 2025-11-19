@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-18 14:59+0000\n"
-"PO-Revision-Date: 2025-11-10 22:39+0000\n"
+"PO-Revision-Date: 2025-11-19 21:34+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/easyeffects/"
 "main/hr/>\n"
@@ -17,8 +17,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural="
+"(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? "
+"1 : 2);\n"
 "X-Generator: Weblate 5.15-dev\n"
 
 #: src/autostart.cpp:89
@@ -457,9 +458,8 @@ msgid "Remove this app"
 msgstr "Kompresija"
 
 #: src/contents/ui/BlocklistSheet.qml:176
-#, fuzzy
 msgid "Show excluded apps"
-msgstr "Isključene aplikacije"
+msgstr "Pokaži isključene aplikacije"
 
 #: src/contents/ui/BlocklistSheet.qml:177
 #, fuzzy
@@ -930,16 +930,15 @@ msgstr "Nije bilo moguće učitati impuls datoteku"
 
 #: src/contents/ui/Convolver.qml:121
 msgid "First"
-msgstr ""
+msgstr "Prvi"
 
 #: src/contents/ui/Convolver.qml:133
-#, fuzzy
 msgid "Second"
-msgstr "Drugi kernel"
+msgstr "Drugi"
 
 #: src/contents/ui/Convolver.qml:163 src/contents/ui/Convolver.qml:198
 msgid "Combine"
-msgstr ""
+msgstr "Spoji"
 
 #: src/contents/ui/Convolver.qml:191
 msgid "Impulses"
@@ -1383,35 +1382,36 @@ msgstr ""
 "Neuspio uvoz unaprijed postavljene datoteke grafičkog ekvilajzera GraphicEQ."
 
 #: src/contents/ui/Equalizer.qml:83
-#, fuzzy
 msgid "Exported the current Equalizer settings to an external APO preset file."
-msgstr "Učitaj predloške"
+msgstr ""
+"Trenutačne postavke ekvilajzera su izvezene u eksternu APO datoteku s "
+"unaprijed postavljenim postavkama."
 
 #: src/contents/ui/Equalizer.qml:86
-#, fuzzy
 msgid ""
 "Failed to export the current Equalizer settings to an external APO preset "
 "file."
-msgstr "Učitaj predloške"
+msgstr ""
+"Neuspio izvoz trenutačnih postavki ekvilajzera u eksternu APO datoteku s "
+"unaprijed postavljenim postavkama."
 
 #: src/contents/ui/Equalizer.qml:107 src/contents/ui/Filter.qml:78
 #: src/contents/ui/Loudness.qml:58
 msgid "IIR"
-msgstr ""
+msgstr "IIR"
 
 #: src/contents/ui/Equalizer.qml:107 src/contents/ui/Filter.qml:78
 msgid "FIR"
-msgstr ""
+msgstr "FIR"
 
 #: src/contents/ui/Equalizer.qml:107 src/contents/ui/Filter.qml:78
 #: src/contents/ui/Loudness.qml:58
 msgid "FFT"
-msgstr ""
+msgstr "FFT"
 
 #: src/contents/ui/Equalizer.qml:107 src/contents/ui/Filter.qml:78
-#, fuzzy
 msgid "SPM"
-msgstr "SMA"
+msgstr "SPM"
 
 #: src/contents/ui/Equalizer.qml:116
 msgid "Bands"
@@ -1423,23 +1423,20 @@ msgid "Balance"
 msgstr "Ravnoteža"
 
 #: src/contents/ui/Equalizer.qml:149
-#, fuzzy
 msgid "Pitch left"
-msgstr "Postranični ulaz"
+msgstr "Najviši ton lijevo"
 
 #: src/contents/ui/Equalizer.qml:157 src/contents/ui/Equalizer.qml:174
 msgid "st"
-msgstr ""
+msgstr "st"
 
 #: src/contents/ui/Equalizer.qml:166
-#, fuzzy
 msgid "Pitch right"
-msgstr "Postranični ulaz"
+msgstr "Najviši ton desno"
 
 #: src/contents/ui/Equalizer.qml:296
-#, fuzzy
 msgid "Split channels"
-msgstr "Rastavi kanale"
+msgstr "Odvoji kanale"
 
 #: src/contents/ui/Equalizer.qml:306
 #, fuzzy
@@ -1457,19 +1454,16 @@ msgid "Sort bands"
 msgstr "Razvrstaj trake"
 
 #: src/contents/ui/Equalizer.qml:327
-#, fuzzy
 msgid "Import APO"
-msgstr "Uvezi"
+msgstr "Uvezi APO"
 
 #: src/contents/ui/Equalizer.qml:334
-#, fuzzy
 msgid "Import APO (GraphicEQ)"
-msgstr "Učitaj predloške"
+msgstr "Uvezi APO (GraphicEQ)"
 
 #: src/contents/ui/Equalizer.qml:341
-#, fuzzy
 msgid "Export APO"
-msgstr "Izvezi predloške"
+msgstr "Izvezi APO"
 
 #: src/contents/ui/EqualizerBandMenu.qml:25
 #: src/contents/ui/MultibandCompressor.qml:631
@@ -1523,31 +1517,31 @@ msgstr "Ograničenje pojačanja"
 
 #: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
 msgid "RLC (BT)"
-msgstr ""
+msgstr "RLC (BT)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
 msgid "RLC (MT)"
-msgstr ""
+msgstr "RLC (MT)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
 msgid "BWC (BT)"
-msgstr ""
+msgstr "BWC (BT)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
 msgid "BWC (MT)"
-msgstr ""
+msgstr "BWC (MT)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
 msgid "LRX (BT)"
-msgstr ""
+msgstr "LRX (BT)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
 msgid "LRX (MT)"
-msgstr ""
+msgstr "LRX (MT)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
 msgid "APO (DR)"
-msgstr ""
+msgstr "APO (DR)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:57 src/contents/ui/Filter.qml:88
 msgid "Slope"
@@ -1590,9 +1584,8 @@ msgid "Ceil active"
 msgstr "Kompresija"
 
 #: src/contents/ui/Exciter.qml:154
-#, fuzzy
 msgid "Ceil"
-msgstr "Vrh"
+msgstr "Gornja granica"
 
 #: src/contents/ui/Expander.qml:50 src/tags_plugin_name.cpp:39
 msgid "Expander"
@@ -1605,14 +1598,12 @@ msgid "Internal"
 msgstr "Interni"
 
 #: src/contents/ui/Filter.qml:60
-#, fuzzy
 msgid "Filter mode"
-msgstr "Stereo modus"
+msgstr "Modus filtra"
 
 #: src/contents/ui/Filter.qml:74
-#, fuzzy
 msgid "Equalizer mode"
-msgstr "Ekvalizator"
+msgstr "Modus ekvilajzera"
 
 #: src/contents/ui/Gate.qml:54 src/tags_plugin_name.cpp:41
 msgid "Gate"
@@ -1621,7 +1612,7 @@ msgstr "Vrata"
 #: src/contents/ui/Gate.qml:135 src/contents/ui/Gate.qml:189
 #: src/contents/ui/MultibandGate.qml:275 src/contents/ui/MultibandGate.qml:330
 msgid "Zone"
-msgstr ""
+msgstr "Zona"
 
 #: src/contents/ui/Gate.qml:152 src/contents/ui/MultibandGate.qml:303
 msgid "Hysteresis"
@@ -1711,87 +1702,87 @@ msgstr "Jači sampling"
 #: src/contents/ui/MultibandCompressor.qml:553
 #: src/contents/ui/MultibandGate.qml:526
 msgid "None"
-msgstr ""
+msgstr "Bez"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Half x2/16 bit"
-msgstr ""
+msgstr "Pola x2/16 bita"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Half x2/24 bit"
-msgstr ""
+msgstr "Pola x2/24 bita"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Half x3/16 bit"
-msgstr ""
+msgstr "Pola x3/16 bita"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Half x3/24 bit"
-msgstr ""
+msgstr "Pola x3/24 bita"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Half x4/16 bit"
-msgstr ""
+msgstr "Pola x4/16 bita"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Half x4/24 bit"
-msgstr ""
+msgstr "Pola x4/24 bita"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Half x6/16 bit"
-msgstr ""
+msgstr "Pola x6/16 bita"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Half x6/24 bit"
-msgstr ""
+msgstr "Pola x6/24 bita"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Half x8/16 bit"
-msgstr ""
+msgstr "Pola x8/16 bita"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Half x8/24 bit"
-msgstr ""
+msgstr "Pola x8/24 bita"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Full x2/16 bit"
-msgstr ""
+msgstr "Potuno x2/16 bita"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Full x2/24 bit"
-msgstr ""
+msgstr "Potuno x2/24 bita"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Full x3/16 bit"
-msgstr ""
+msgstr "Potuno x3/16 bita"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Full x3/24 bit"
-msgstr ""
+msgstr "Potuno x3/24 bita"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Full x4/16 bit"
-msgstr ""
+msgstr "Potuno x4/16 bita"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Full x4/24 bit"
-msgstr ""
+msgstr "Potuno x4/24 bita"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Full x6/16 bit"
-msgstr ""
+msgstr "Potuno x6/16 bita"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Full x6/24 bit"
-msgstr ""
+msgstr "Potuno x6/24 bita"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Full x8/16 bit"
-msgstr ""
+msgstr "Potuno x8/16 bita"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Full x8/24 bit"
-msgstr ""
+msgstr "Potuno x8/24 bita"
 
 #: src/contents/ui/Limiter.qml:73
 #, fuzzy
@@ -1809,35 +1800,35 @@ msgstr ""
 
 #: src/contents/ui/Limiter.qml:87
 msgid "7 bit"
-msgstr ""
+msgstr "7 bitno"
 
 #: src/contents/ui/Limiter.qml:87
 msgid "8 bit"
-msgstr ""
+msgstr "8 bitno"
 
 #: src/contents/ui/Limiter.qml:87
 msgid "11 bit"
-msgstr ""
+msgstr "11 bitno"
 
 #: src/contents/ui/Limiter.qml:87
 msgid "12 bit"
-msgstr ""
+msgstr "12 bitno"
 
 #: src/contents/ui/Limiter.qml:87
 msgid "15 bit"
-msgstr ""
+msgstr "15 bitno"
 
 #: src/contents/ui/Limiter.qml:87
 msgid "16 bit"
-msgstr ""
+msgstr "16 bitno"
 
 #: src/contents/ui/Limiter.qml:87
 msgid "23 bit"
-msgstr ""
+msgstr "23 bitno"
 
 #: src/contents/ui/Limiter.qml:87
 msgid "24 bit"
-msgstr ""
+msgstr "24 bitno"
 
 #: src/contents/ui/Limiter.qml:99 src/tags_plugin_name.cpp:43
 msgid "Limiter"
@@ -1848,9 +1839,8 @@ msgid "Stereo Link"
 msgstr "Stereo veza"
 
 #: src/contents/ui/Limiter.qml:389 src/contents/ui/Limiter.qml:616
-#, fuzzy
 msgid "Automatic level"
-msgstr "Automatsko pojačavanje"
+msgstr "Automatska razina"
 
 #: src/contents/ui/Limiter.qml:606
 #, fuzzy
@@ -1868,52 +1858,47 @@ msgstr ""
 
 #: src/contents/ui/Loudness.qml:72
 msgid "ISO226-2003"
-msgstr ""
+msgstr "ISO226-2003"
 
 #: src/contents/ui/Loudness.qml:72
 msgid "Fletcher-Munson"
-msgstr ""
+msgstr "Fletcher-Munson"
 
 #: src/contents/ui/Loudness.qml:72
 msgid "Robinson-Dadson"
-msgstr ""
+msgstr "Robinson-Dadson"
 
 #: src/contents/ui/Loudness.qml:72
 msgid "ISO226-2023"
-msgstr ""
+msgstr "ISO226-2023"
 
 #: src/contents/ui/Loudness.qml:82
-#, fuzzy
 msgid "FFT size"
 msgstr "FFT veličina"
 
 #: src/contents/ui/Loudness.qml:96
-#, fuzzy
 msgid "IIR approximation"
-msgstr "Aplikacije"
+msgstr "IIR aproksimacija"
 
 #: src/contents/ui/Loudness.qml:100
-#, fuzzy
 msgid "Fastest"
-msgstr "Brže"
+msgstr "Najbrže"
 
 #: src/contents/ui/Loudness.qml:100
-#, fuzzy
 msgid "Normal"
-msgstr "Format"
+msgstr "Normalno"
 
 #: src/contents/ui/Loudness.qml:100
 msgid "Best"
-msgstr ""
+msgstr "Najbolje"
 
 #: src/contents/ui/Loudness.qml:110
 msgid "Volume"
 msgstr "Glasnoća"
 
 #: src/contents/ui/Loudness.qml:127
-#, fuzzy
 msgid "Clipping range"
-msgstr "Odrezivanje"
+msgstr "Raspon odrezivanja"
 
 #: src/contents/ui/Loudness.qml:185
 msgid "Clipping"
@@ -1933,71 +1918,65 @@ msgid "Preset Loaded"
 msgstr "Učitaj predloške"
 
 #: src/contents/ui/Main.qml:313 src/contents/ui/Main.qml:325
-#, fuzzy
 msgid "Clear List"
-msgstr "Popis klijenata"
+msgstr "Isprazni popis"
 
 #: src/contents/ui/Main.qml:314 src/contents/ui/Main.qml:326
 msgid "Are you sure you want to clear this list?"
-msgstr ""
+msgstr "Jeste li sigurni da želite isprazniti ovaj popis?"
 
 #: src/contents/ui/Main.qml:381
-#, fuzzy
 msgid "Active"
-msgstr "Kompresija"
+msgstr "Aktivni"
 
 #: src/contents/ui/Main.qml:392 src/contents/ui/Main.qml:541
 #: src/contents/ui/ShortcutsSheet.qml:369
-#, fuzzy
 msgid "Shortcuts"
-msgstr "Kratkoročno"
+msgstr "Prečaci"
 
 #: src/contents/ui/Main.qml:401 src/contents/ui/Main.qml:549
 msgid "Manual"
-msgstr ""
+msgstr "Priručnik"
 
 #: src/contents/ui/Main.qml:413 src/contents/ui/Main.qml:581
 msgid "Quit"
-msgstr ""
+msgstr "Prekini"
 
 #: src/contents/ui/Main.qml:437
 msgid "Go back"
-msgstr ""
+msgstr "Idi natrag"
 
 #: src/contents/ui/Main.qml:447 src/contents/ui/PageStreamsEffects.qml:629
-#, fuzzy
 msgid "Effects"
-msgstr "EasyEffects"
+msgstr "Efekti"
 
 #: src/contents/ui/Main.qml:448
 msgid "Turn effects on/off"
-msgstr ""
+msgstr "Uključi/Isključi efekte"
 
 #: src/contents/ui/Main.qml:459
 msgid "Audio effects are enabled."
-msgstr ""
+msgstr "Audio efekti su aktivirani."
 
 #: src/contents/ui/Main.qml:459
 msgid "Audio effects are disabled."
-msgstr ""
+msgstr "Audio efekti su deaktivirani."
 
 #: src/contents/ui/Main.qml:515
 msgid "PipeWire"
-msgstr ""
+msgstr "PipeWire"
 
 #: src/contents/ui/Main.qml:533
-#, fuzzy
 msgid "Preferences"
-msgstr "Referenca"
+msgstr "Postavke"
 
 #: src/contents/ui/Main.qml:573
-#, fuzzy
 msgid "About Easy Effects"
-msgstr "EasyEffects"
+msgstr "O aplikaciji EasyEffects"
 
 #: src/contents/ui/MenuAddPlugins.qml:75
 msgid "Add %1"
-msgstr ""
+msgstr "Dodaj %1"
 
 #: src/contents/ui/MenuAddPlugins.qml:147
 msgid "Added a new effect to the pipeline: %1"
@@ -2006,18 +1985,16 @@ msgstr ""
 #: src/contents/ui/MenuAddPlugins.qml:184
 msgctxt "@action:button"
 msgid "Close"
-msgstr ""
+msgstr "Zatvori"
 
 #: src/contents/ui/MultibandCompressor.qml:101
-#, fuzzy
 msgid "Compression mode"
 msgstr "Modus kompresije"
 
 #: src/contents/ui/MultibandCompressor.qml:196
 #: src/contents/ui/MultibandGate.qml:133
-#, fuzzy
 msgid "End"
-msgstr "2."
+msgstr "Kraj"
 
 #: src/contents/ui/MultibandCompressor.qml:479
 #: src/contents/ui/MultibandGate.qml:452
@@ -2049,7 +2026,6 @@ msgstr "Moderni"
 
 #: src/contents/ui/MultibandCompressor.qml:540
 #: src/contents/ui/MultibandGate.qml:513
-#, fuzzy
 msgid "Linear phase"
 msgstr "Linearna faza"
 
@@ -2086,23 +2062,20 @@ msgid "Sidechain input device"
 msgstr "Ulazni uređaj"
 
 #: src/contents/ui/MultibandGate.qml:159
-#, fuzzy
 msgid "Reaction"
-msgstr "Smanjivanje"
+msgstr "Reakcija"
 
 #: src/contents/ui/PageStreamsEffects.qml:81
-#, fuzzy
 msgid "No audio application available"
-msgstr "Nema dostupnih audio aplikacija"
+msgstr "Nijedna audio aplikacija nije dostupna"
 
 #: src/contents/ui/PageStreamsEffects.qml:315
-#, fuzzy
 msgid "Add effect"
 msgstr "Dodaj efekt"
 
 #: src/contents/ui/PageStreamsEffects.qml:323
 msgid "Close"
-msgstr ""
+msgstr "Zatvori"
 
 #: src/contents/ui/PageStreamsEffects.qml:327
 msgid "Expand the list of effects pipeline"
@@ -2115,17 +2088,16 @@ msgstr ""
 #: src/contents/ui/PageStreamsEffects.qml:382
 #: src/contents/ui/PageStreamsEffects.qml:616
 msgid "Players"
-msgstr ""
+msgstr "Playeri"
 
 #: src/contents/ui/PageStreamsEffects.qml:391
-#, fuzzy
 msgid "Output device"
-msgstr "Pojačanje ulaza"
+msgstr "Izlazni uređaj"
 
 #: src/contents/ui/PageStreamsEffects.qml:391
 #: src/contents/ui/PageStreamsEffects.qml:616
 msgid "Recorders"
-msgstr ""
+msgstr "Rekorderi"
 
 #: src/contents/ui/PageStreamsEffects.qml:412
 msgid "No Effects"
@@ -2136,12 +2108,10 @@ msgid "Audio stream not modified"
 msgstr ""
 
 #: src/contents/ui/PageStreamsEffects.qml:647
-#, fuzzy
 msgid "Input monitoring"
-msgstr "Aktiviraj/deaktiviraj praćenje unosa"
+msgstr "Monitoring unosa"
 
 #: src/contents/ui/PageStreamsEffects.qml:660
-#, fuzzy
 msgid "Excluded apps"
 msgstr "Isključene aplikacije"
 
@@ -2172,42 +2142,36 @@ msgid ""
 msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:122
-#, fuzzy
 msgid "Use default input"
 msgstr "Koristi standardni unos"
 
 #: src/contents/ui/PipeWirePage.qml:136 src/contents/ui/PipeWirePage.qml:180
 msgid "Name"
-msgstr "Naziv"
+msgstr "Ime"
 
 #: src/contents/ui/PipeWirePage.qml:165
-#, fuzzy
 msgid "Use default output"
-msgstr "Koristi tvorničke postavke"
+msgstr "Koristi standardni rezultat"
 
 #: src/contents/ui/PipeWirePage.qml:204
 msgid "Server Information"
 msgstr "Podaci servera"
 
 #: src/contents/ui/PipeWirePage.qml:209
-#, fuzzy
 msgid "Header version"
 msgstr "Verzija zaglavlja"
 
 #: src/contents/ui/PipeWirePage.qml:214
-#, fuzzy
 msgid "Library version"
 msgstr "Verzija biblioteke"
 
 #: src/contents/ui/PipeWirePage.qml:219
-#, fuzzy
 msgid "Runtime version"
-msgstr "Verzija zaglavlja"
+msgstr "Verzija okruženja za izvođenje"
 
 #: src/contents/ui/PipeWirePage.qml:224
-#, fuzzy
 msgid "Default sampling rate"
-msgstr "Jači sampling"
+msgstr "Standardna stopa uzorkovanja"
 
 #: src/contents/ui/PipeWirePage.qml:229
 #, fuzzy
@@ -2225,14 +2189,12 @@ msgid "Default quantum"
 msgstr "Tvorničke postavke"
 
 #: src/contents/ui/PipeWirePage.qml:261
-#, fuzzy
 msgid "No Modules"
-msgstr "Moduli"
+msgstr "Nema modula"
 
 #: src/contents/ui/PipeWirePage.qml:284
-#, fuzzy
 msgid "No Clients"
-msgstr "Klijenti"
+msgstr "Nema klijenata"
 
 #: src/contents/ui/PipeWirePage.qml:297
 #: src/contents/ui/PreferencesSheet.qml:248
@@ -2257,7 +2219,6 @@ msgid "Waveform"
 msgstr "Oblik krivulje"
 
 #: src/contents/ui/PipeWirePage.qml:364
-#, fuzzy
 msgid "Sine wave"
 msgstr "Sinusoida"
 
@@ -2303,12 +2264,10 @@ msgid "Semitones"
 msgstr "Polutonovi"
 
 #: src/contents/ui/Pitch.qml:203
-#, fuzzy
 msgid "Tempo difference"
 msgstr "Razlika tempa"
 
 #: src/contents/ui/Pitch.qml:220
-#, fuzzy
 msgid "Rate difference"
 msgstr "Razlika stope"
 
@@ -2344,7 +2303,7 @@ msgstr "Spektar"
 
 #: src/contents/ui/PreferencesSheet.qml:34
 msgid "Database"
-msgstr ""
+msgstr "Baza podataka"
 
 #: src/contents/ui/PreferencesSheet.qml:40
 #: src/contents/ui/PreferencesSheet.qml:282
@@ -2411,9 +2370,8 @@ msgid ""
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:175
-#, fuzzy
 msgid "Enable/disable input monitoring"
-msgstr "Aktiviraj/deaktiviraj praćenje unosa"
+msgstr "Aktiviraj/deaktiviraj monitoring unosa"
 
 #: src/contents/ui/PreferencesSheet.qml:187
 msgid "Mic monitor plays to output effects pipeline"
@@ -2614,9 +2572,8 @@ msgid "Native window of effects"
 msgstr "Prikaži izvorni prozor"
 
 #: src/contents/ui/PreferencesSheet.qml:540
-#, fuzzy
 msgid "Allows the native user interface of effects to be shown/hidden."
-msgstr "Dozvoljava prikazivanje/skrivanje prozora izvornog dodatka"
+msgstr "Dozvoljava prikazivanje/skrivanje izvornog korisničkog sučelja efekata."
 
 #: src/contents/ui/PreferencesSheet.qml:552
 #, fuzzy
@@ -2624,9 +2581,8 @@ msgid "Update frequency"
 msgstr "Frekvencija aktualiziranja"
 
 #: src/contents/ui/PreferencesSheet.qml:553
-#, fuzzy
 msgid "Related to LV2 plugins."
-msgstr "Povezano s LV2 dodacima"
+msgstr "Povezano s LV2 dodacima."
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:31
 #: src/contents/ui/PresetsAutoloadingPage.qml:155
@@ -2669,28 +2625,31 @@ msgid "Copy to local presets"
 msgstr "Popis lokalnih predložaka"
 
 #: src/contents/ui/PresetsCommunityPage.qml:105
-#, fuzzy
 msgid "Imported the %1 community preset to the list of local presets."
-msgstr "Uvezi ovaj predložak zajednice u popis lokalnih predložaka"
+msgstr ""
+"Uvezena je unaprijed postavljena postavka %1 zajednice u popis lokalnih "
+"unaprijed postavljenih postavki."
 
 #: src/contents/ui/PresetsCommunityPage.qml:107
-#, fuzzy
 msgid "Failed to import the %1 community preset to the list of local presets."
-msgstr "Traži predložak zajednice"
+msgstr ""
+"Neuspio uvoz unaprijed postavljenih postavki %1 zajednice u popis lokalnih "
+"unaprijed postavljenih postavki."
 
 #: src/contents/ui/PresetsCommunityPage.qml:127
 msgid "Refresh"
 msgstr "Osvježi"
 
 #: src/contents/ui/PresetsLocalPage.qml:32
-#, fuzzy
 msgid "Imported a new local preset from an external file."
-msgstr "Učitaj predloške"
+msgstr ""
+"Uvezena je nova lokalna unaprijed postavljena postavka iz eksterne datoteke."
 
 #: src/contents/ui/PresetsLocalPage.qml:34
-#, fuzzy
 msgid "Failed to import a new local preset from an external file."
-msgstr "Učitaj predloške"
+msgstr ""
+"Neuspio uvoz nove lokalne unaprijed postavljene postavka iz eksterne "
+"datoteke."
 
 #: src/contents/ui/PresetsLocalPage.qml:43
 #, fuzzy
@@ -2698,14 +2657,12 @@ msgid "Export Presets"
 msgstr "Učitaj predloške"
 
 #: src/contents/ui/PresetsLocalPage.qml:46
-#, fuzzy
 msgid "Exported all presets to an external folder."
-msgstr "Učitaj predloške"
+msgstr "Sve unaprijed postavljene postavke su izvezene u eksternu mapu."
 
 #: src/contents/ui/PresetsLocalPage.qml:48
-#, fuzzy
 msgid "Failed to export all presets to an external folder."
-msgstr "Učitaj predloške"
+msgstr "Neuspio izvoz svih unaprijed postavljenih postavku u eksternu mapu."
 
 #: src/contents/ui/PresetsLocalPage.qml:60
 #, fuzzy
@@ -2751,14 +2708,16 @@ msgstr ""
 "%1"
 
 #: src/contents/ui/PresetsLocalPage.qml:190
-#, fuzzy
 msgid "Saved the current settings to %1 local preset."
-msgstr "Odabaci trenutačne postavke i učitaj ovaj predložak"
+msgstr ""
+"Trenutačne postavke su spremljene u %1 lokalnu unaprijed postavljenu "
+"postavku."
 
 #: src/contents/ui/PresetsLocalPage.qml:192
-#, fuzzy
 msgid "Failed to save the current settings to %1 local preset."
-msgstr "Odabaci trenutačne postavke i učitaj ovaj predložak"
+msgstr ""
+"Neuspjelo spremanje trenutačnih postavki u %1 lokalnu unaprijed postavljenu "
+"postavku."
 
 #: src/contents/ui/PresetsLocalPage.qml:200
 #, fuzzy
@@ -2773,14 +2732,12 @@ msgid ""
 msgstr ""
 
 #: src/contents/ui/PresetsLocalPage.qml:205
-#, fuzzy
 msgid "Removed the %1 local preset."
-msgstr "Ukloni ovaj automatski učitani predložak"
+msgstr "Uklonjena je lokalna unaprijed postavljena postavka %1."
 
 #: src/contents/ui/PresetsLocalPage.qml:207
-#, fuzzy
 msgid "Failed to remove the %1 local preset."
-msgstr "Učitaj predloške"
+msgstr "Neuspjelo uklanjanje lokalne unaprijed postavljene postavke %1."
 
 #: src/contents/ui/PresetsLocalPage.qml:215
 #, fuzzy
@@ -3168,7 +3125,6 @@ msgid "© 2017-2025 EasyEffects Team"
 msgstr ""
 
 #: src/main.cpp:313
-#, fuzzy
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
@@ -3209,13 +3165,12 @@ msgid "Preset not loaded correctly"
 msgstr "Učitaj predloške"
 
 #: src/presets_manager.cpp:758
-#, fuzzy
 msgid "Wrong format in excluded apps list"
-msgstr "Popis izuzetih aplikacija"
+msgstr "Krivi format u popisu izuzetih aplikacija"
 
 #: src/presets_manager.cpp:766
 msgid "Generic error while loading excluded apps list"
-msgstr ""
+msgstr "Opća greška prilikom učitavanja popisa isključenih aplikacija"
 
 #: src/presets_manager.cpp:775
 #, fuzzy
