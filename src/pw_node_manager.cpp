@@ -638,6 +638,8 @@ void NodeManager::onDestroyNodeProxy(void* data) {
                           nd->nd_info->name.toStdString()));
 
   delete nd->nd_info;
+
+  nd->nd_info = nullptr;
 }
 
 void NodeManager::onRemovedNodeProxy(void* data) {

@@ -22,11 +22,13 @@
 #include <sys/types.h>
 #include <zita-convolver.h>
 #include <algorithm>
+#include <chrono>
 #include <cmath>
 #include <cstddef>
 #include <format>
 #include <numbers>
 #include <string>
+#include <thread>
 #include <utility>
 #include <vector>
 #include "util.hpp"
@@ -47,9 +49,13 @@ FirFilterBase::~FirFilterBase() {
   if (conv != nullptr) {
     conv->stop_process();
 
-    conv->cleanup();
+    while (!conv->check_stop()) {
+      std::this_thread::sleep_for(std::chrono::milliseconds(1));
+    }
 
     delete conv;
+
+    conv = nullptr;
   }
 }
 
@@ -145,9 +151,13 @@ void FirFilterBase::setup_zita() {
   if (conv != nullptr) {
     conv->stop_process();
 
-    conv->cleanup();
+    while (!conv->check_stop()) {
+      std::this_thread::sleep_for(std::chrono::milliseconds(1));
+    }
 
     delete conv;
+
+    conv = nullptr;
   }
 
   conv = new Convproc();
