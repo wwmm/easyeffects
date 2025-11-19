@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-18 14:59+0000\n"
+"POT-Creation-Date: 2025-11-19 22:03+0000\n"
 "PO-Revision-Date: 2025-11-18 11:51+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -39,7 +39,8 @@ msgid "Reset Easy Effects."
 msgstr "Réinitialiser Easy Effects."
 
 #: src/command_line_parser.cpp:44
-msgid "Hide the Window."
+#, fuzzy
+msgid "Hide the window."
 msgstr "Masquer la Fenêtre."
 
 #: src/command_line_parser.cpp:45
@@ -90,13 +91,33 @@ msgstr "Activer les messages de débogage."
 msgid "Must specify preset type: input/output."
 msgstr "Vous devez spécifier le type de préréglage : input/output."
 
-#: src/command_line_parser.cpp:164 src/contents/ui/Main.qml:350
-msgid "Output Presets"
+#: src/command_line_parser.cpp:166
+#, fuzzy
+msgid "Output presets"
 msgstr "Préréglages de Sortie"
 
-#: src/command_line_parser.cpp:172 src/contents/ui/Main.qml:335
-msgid "Input Presets"
+#: src/command_line_parser.cpp:168
+#, fuzzy
+msgid "No output presets."
+msgstr "Préréglages de Sortie"
+
+#: src/command_line_parser.cpp:179
+#, fuzzy
+msgid "Input presets"
 msgstr "Préréglages d’Entrée"
+
+#: src/command_line_parser.cpp:181
+#, fuzzy
+msgid "No input presets."
+msgstr "Préréglages d’Entrée"
+
+#: src/command_line_parser.cpp:211
+msgid "Specified preset does not exist."
+msgstr ""
+
+#: src/command_line_parser.cpp:229
+msgid "Provided an invalid bypass state."
+msgstr ""
 
 #: src/contents/ui/AboutPage.qml:4
 msgctxt "@action:button"
@@ -1808,6 +1829,14 @@ msgstr "Effacer la Liste"
 #: src/contents/ui/Main.qml:314 src/contents/ui/Main.qml:326
 msgid "Are you sure you want to clear this list?"
 msgstr "Êtes-vous sûr de vouloir effacer cette liste ?"
+
+#: src/contents/ui/Main.qml:335
+msgid "Input Presets"
+msgstr "Préréglages d’Entrée"
+
+#: src/contents/ui/Main.qml:350
+msgid "Output Presets"
+msgstr "Préréglages de Sortie"
 
 #: src/contents/ui/Main.qml:381
 msgid "Active"

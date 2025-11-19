@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-18 14:59+0000\n"
+"POT-Creation-Date: 2025-11-19 22:03+0000\n"
 "PO-Revision-Date: 2025-11-19 03:51+0000\n"
 "Last-Translator: Максим Горпиніч <gorpinicmaksim0@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
@@ -16,9 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural="
-"(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? "
-"1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Weblate 5.15-dev\n"
 
 #: src/autostart.cpp:89
@@ -40,7 +39,8 @@ msgid "Reset Easy Effects."
 msgstr "Скинути Easy Effects."
 
 #: src/command_line_parser.cpp:44
-msgid "Hide the Window."
+#, fuzzy
+msgid "Hide the window."
 msgstr "Сховати вікно."
 
 #: src/command_line_parser.cpp:45
@@ -91,13 +91,33 @@ msgstr "Увімкнути налагоджувальні повідомленн
 msgid "Must specify preset type: input/output."
 msgstr "Потрібно вказати тип попереднього налаштування: вхід/вихід."
 
-#: src/command_line_parser.cpp:164 src/contents/ui/Main.qml:350
-msgid "Output Presets"
+#: src/command_line_parser.cpp:166
+#, fuzzy
+msgid "Output presets"
 msgstr "Попередні налаштування для виходу"
 
-#: src/command_line_parser.cpp:172 src/contents/ui/Main.qml:335
-msgid "Input Presets"
+#: src/command_line_parser.cpp:168
+#, fuzzy
+msgid "No output presets."
+msgstr "Попередні налаштування для виходу"
+
+#: src/command_line_parser.cpp:179
+#, fuzzy
+msgid "Input presets"
 msgstr "Попередні налаштування для входу"
+
+#: src/command_line_parser.cpp:181
+#, fuzzy
+msgid "No input presets."
+msgstr "Попередні налаштування для входу"
+
+#: src/command_line_parser.cpp:211
+msgid "Specified preset does not exist."
+msgstr ""
+
+#: src/command_line_parser.cpp:229
+msgid "Provided an invalid bypass state."
+msgstr ""
 
 #: src/contents/ui/AboutPage.qml:4
 msgctxt "@action:button"
@@ -1806,6 +1826,14 @@ msgstr "Очистити список"
 #: src/contents/ui/Main.qml:314 src/contents/ui/Main.qml:326
 msgid "Are you sure you want to clear this list?"
 msgstr "Ви впевнені, що хочете очистити цей список?"
+
+#: src/contents/ui/Main.qml:335
+msgid "Input Presets"
+msgstr "Попередні налаштування для входу"
+
+#: src/contents/ui/Main.qml:350
+msgid "Output Presets"
+msgstr "Попередні налаштування для виходу"
 
 #: src/contents/ui/Main.qml:381
 msgid "Active"

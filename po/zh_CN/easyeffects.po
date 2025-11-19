@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-18 14:59+0000\n"
+"POT-Creation-Date: 2025-11-19 22:03+0000\n"
 "PO-Revision-Date: 2025-11-19 03:51+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
@@ -38,7 +38,8 @@ msgid "Reset Easy Effects."
 msgstr "重置 Easy Effects。"
 
 #: src/command_line_parser.cpp:44
-msgid "Hide the Window."
+#, fuzzy
+msgid "Hide the window."
 msgstr "隐藏窗口。"
 
 #: src/command_line_parser.cpp:45
@@ -89,13 +90,33 @@ msgstr "启用调试信息。"
 msgid "Must specify preset type: input/output."
 msgstr "必须指定预设类型：输入/输出。"
 
-#: src/command_line_parser.cpp:164 src/contents/ui/Main.qml:350
-msgid "Output Presets"
+#: src/command_line_parser.cpp:166
+#, fuzzy
+msgid "Output presets"
 msgstr "输出预设"
 
-#: src/command_line_parser.cpp:172 src/contents/ui/Main.qml:335
-msgid "Input Presets"
+#: src/command_line_parser.cpp:168
+#, fuzzy
+msgid "No output presets."
+msgstr "输出预设"
+
+#: src/command_line_parser.cpp:179
+#, fuzzy
+msgid "Input presets"
 msgstr "输入预设"
+
+#: src/command_line_parser.cpp:181
+#, fuzzy
+msgid "No input presets."
+msgstr "输入预设"
+
+#: src/command_line_parser.cpp:211
+msgid "Specified preset does not exist."
+msgstr ""
+
+#: src/command_line_parser.cpp:229
+msgid "Provided an invalid bypass state."
+msgstr ""
 
 #: src/contents/ui/AboutPage.qml:4
 msgctxt "@action:button"
@@ -1799,6 +1820,14 @@ msgstr "清空列表"
 msgid "Are you sure you want to clear this list?"
 msgstr "确定要清空列表吗？"
 
+#: src/contents/ui/Main.qml:335
+msgid "Input Presets"
+msgstr "输入预设"
+
+#: src/contents/ui/Main.qml:350
+msgid "Output Presets"
+msgstr "输出预设"
+
 #: src/contents/ui/Main.qml:381
 msgid "Active"
 msgstr "激活"
@@ -2216,7 +2245,8 @@ msgid ""
 "Use cubic scale for stream volume rather than the linear one. Low "
 "percentages results in a lower perceived volume while the loudness appears "
 "to change more evenly across the slider."
-msgstr "改用立方刻度调节音量。比起线性刻度，低数值下的感知音量更低，响度随滑条的变化"
+msgstr ""
+"改用立方刻度调节音量。比起线性刻度，低数值下的感知音量更低，响度随滑条的变化"
 "也更均匀。"
 
 #: src/contents/ui/PreferencesSheet.qml:162
