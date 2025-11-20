@@ -236,7 +236,7 @@ void MultibandCompressor::process(std::span<float>& left_in,
     for (uint n = 0U; n < n_bands; n++) {
       const auto nstr = util::to_string(n);
 
-      frequency_range_end[n] = util::linear_to_db(lv2_wrapper->get_control_port_value("fre_" + nstr));
+      frequency_range_end[n] = lv2_wrapper->get_control_port_value("fre_" + nstr);
 
       envelope_left[n] = util::linear_to_db(lv2_wrapper->get_control_port_value("elm_" + nstr + "l"));
       envelope_right[n] = util::linear_to_db(lv2_wrapper->get_control_port_value("elm_" + nstr + "r"));
