@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-18 14:59+0000\n"
-"PO-Revision-Date: 2025-11-19 12:29+0000\n"
+"PO-Revision-Date: 2025-11-20 14:29+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
 "ga/>\n"
@@ -3092,37 +3092,32 @@ msgid "Simple audio effects"
 msgstr "Éifeachtaí fuaime simplí"
 
 #: src/command_line_parser.cpp:44
-#, fuzzy
 msgid "Hide the window."
 msgstr "Folaigh an fhuinneog."
 
 #: src/command_line_parser.cpp:166
-#, fuzzy
 msgid "Output presets"
-msgstr "Réamhshocruithe Aschurtha"
+msgstr "Réamhshocruithe aschuir"
 
 #: src/command_line_parser.cpp:168
-#, fuzzy
 msgid "No output presets."
-msgstr "Réamhshocruithe Aschurtha"
+msgstr "Gan aon réamhshocruithe aschuir."
 
 #: src/command_line_parser.cpp:179
-#, fuzzy
 msgid "Input presets"
-msgstr "Réamhshocruithe Ionchurtha"
+msgstr "Réamhshocruithe ionchuir"
 
 #: src/command_line_parser.cpp:181
-#, fuzzy
 msgid "No input presets."
-msgstr "Réamhshocruithe Ionchurtha"
+msgstr "Gan aon réamhshocruithe ionchuir."
 
 #: src/command_line_parser.cpp:211
 msgid "Specified preset does not exist."
-msgstr ""
+msgstr "Níl an réamhshocrú sonraithe ann."
 
 #: src/command_line_parser.cpp:229
 msgid "Provided an invalid bypass state."
-msgstr ""
+msgstr "Cuireadh staid sheachbhóthar neamhbhailí ar fáil."
 
 #~ msgid "Hardware profile"
 #~ msgstr "Próifíl crua-earraí"

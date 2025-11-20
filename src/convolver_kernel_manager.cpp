@@ -19,6 +19,7 @@
 
 #include "convolver_kernel_manager.hpp"
 #include <qstandardpaths.h>
+#include <qtypes.h>
 #include <sndfile.h>
 #include <algorithm>
 #include <cmath>
@@ -174,7 +175,13 @@ auto ConvolverKernelManager::searchKernelPath(const std::string& name) -> std::s
   return irs_full_path;
 }
 
-auto ConvolverKernelManager::resampleKernel(const KernelData& kernel, int target_rate) -> KernelData {
+auto ConvolverKernelManager::resampleKernel(const KernelData& kernel, const uint& target_rate) -> KernelData {
+  if (target_rate == 0) {
+    util::debug(std::format("Target rate value is zero. Aborting resampling of kernel {}", kernel.name.toStdString()));
+
+    return kernel;
+  }
+
   if (kernel.rate == target_rate || !kernel.isValid()) {
     util::debug(std::format("The kernel '{}' does not need resampling", kernel.name.toStdString()));
 
