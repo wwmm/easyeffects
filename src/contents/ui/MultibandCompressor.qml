@@ -173,6 +173,17 @@ Kirigami.ScrollablePage {
                             text: i18n("Frequency") // qmllint disable
                         }
 
+                        /**
+                         * This option is missing in band 0.
+                         * We left it disabled, but some users were confused
+                         * thinking the first band had an issue.
+                         * The ideal solution would be to make it not visible,
+                         * but this messes the position and the vertical
+                         * alignment of the bandEndFrequency label.
+                         * So the best and simple solution is setting the
+                         * opacity to 0 in order to make the EeSpinBox fully
+                         * transparent when the first band is selected.
+                         */
                         EeSpinBox {
                             label: i18n("Start") // qmllint disable
                             labelAbove: true
@@ -184,6 +195,7 @@ Kirigami.ScrollablePage {
                             stepSize: 1
                             unit: i18n("Hz")
                             enabled: bandsListview.currentIndex > 0
+                            opacity: bandsListview.currentIndex > 0 ? 1 : 0
                             onValueModified: v => {
                                 multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SplitFrequency"] = v;
                             }
