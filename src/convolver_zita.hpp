@@ -36,7 +36,8 @@ class ConvolverZita {
   ConvolverZita(ConvolverZita&&) noexcept = default;
   auto operator=(ConvolverZita&&) noexcept -> ConvolverZita& = default;
 
-  auto init(ConvolverKernelManager::KernelData data, uint bufferSize) -> bool;
+  auto init(ConvolverKernelManager::KernelData data, uint bufferSize, const int& ir_width, const bool& apply_autogain)
+      -> bool;
 
   auto process(std::span<float> dataLeft, std::span<float> dataRight) -> bool;
 
@@ -44,9 +45,7 @@ class ConvolverZita {
 
   void reset_kernel_to_original();
 
-  void apply_kernel_autogain();
-
-  void set_kernel_stereo_width(const int& ir_width);
+  void update_ir_width_and_autogain(const int& ir_width, const bool& apply_autogain, const bool& clear_zita);
 
  private:
   bool ready = false;
@@ -56,4 +55,8 @@ class ConvolverZita {
   ConvolverKernelManager::KernelData kernel, original_kernel;
 
   Convproc* conv = nullptr;
+
+  void apply_kernel_autogain();
+
+  void set_kernel_stereo_width(const int& ir_width);
 };

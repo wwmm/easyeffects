@@ -168,6 +168,4 @@ class Convolver : public PluginBase {
                         const float& kernel_rate);
 
   void clear_chart_data();
-
-  void update_ir_width_and_autogain();
 };

@@ -70,9 +70,15 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
 
   connect(settings, &db::Convolver::kernelNameChanged, [&]() { load_kernel_file(true, rate); });
 
-  connect(settings, &db::Convolver::irWidthChanged, [&]() { update_ir_width_and_autogain(); });
+  connect(settings, &db::Convolver::irWidthChanged, [&]() {
+    std::scoped_lock<std::mutex> lock(data_mutex);
+    zita.update_ir_width_and_autogain(settings->irWidth(), settings->autogain(), true);
+  });
 
-  connect(settings, &db::Convolver::autogainChanged, [&]() { update_ir_width_and_autogain(); });
+  connect(settings, &db::Convolver::autogainChanged, [&]() {
+    std::scoped_lock<std::mutex> lock(data_mutex);
+    zita.update_ir_width_and_autogain(settings->irWidth(), settings->autogain(), true);
+  });
 
   connect(settings, &db::Convolver::dryChanged, [&]() {
     dry =
@@ -109,7 +115,7 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
 
           std::scoped_lock<std::mutex> lock(data_mutex);
 
-          auto success = zita.init(data, blocksize);
+          auto success = zita.init(data, blocksize, settings->irWidth(), settings->autogain());
 
           if (!success) {
             util::warning(std::format("{} Zita init failed", log_tag));
@@ -163,13 +169,13 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
   QMetaObject::invokeMethod(
       worker,
       [this] {
-        if (ready) {
+        if (ready || destructor_called) {
           return;
         }
 
         /**
          * Setting valid rate instead of zero allows the convolver ui to properly show the impulse response file
-         * parameterseven if nothing is playing audio.
+         * parameters even if nothing is playing audio.
          */
 
         uint r = 0;
@@ -349,18 +355,6 @@ void Convolver::process([[maybe_unused]] std::span<float>& left_in,
                         [[maybe_unused]] std::span<float>& right_out,
                         [[maybe_unused]] std::span<float>& probe_left,
                         [[maybe_unused]] std::span<float>& probe_right) {}
-
-void Convolver::update_ir_width_and_autogain() {
-  std::scoped_lock<std::mutex> lock(data_mutex);
-
-  zita.reset_kernel_to_original();
-
-  zita.set_kernel_stereo_width(settings->irWidth());
-
-  if (settings->autogain()) {
-    zita.apply_kernel_autogain();
-  }
-}
 
 void Convolver::load_kernel_file(const bool& init_zita, const uint& server_sampling_rate) {
   if (destructor_called || server_sampling_rate == 0) {

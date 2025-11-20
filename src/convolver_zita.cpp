@@ -59,7 +59,10 @@ void ConvolverZita::stop() {
   }
 }
 
-auto ConvolverZita::init(ConvolverKernelManager::KernelData data, uint bufferSize) -> bool {
+auto ConvolverZita::init(ConvolverKernelManager::KernelData data,
+                         uint bufferSize,
+                         const int& ir_width,
+                         const bool& apply_autogain) -> bool {
   ready = false;
 
   if (conv != nullptr) {
@@ -82,6 +85,8 @@ auto ConvolverZita::init(ConvolverKernelManager::KernelData data, uint bufferSiz
   original_kernel = kernel;
 
   this->bufferSize = bufferSize;
+
+  update_ir_width_and_autogain(ir_width, apply_autogain, false);
 
   if (auto ret = conv->configure(2, 2, kernel.sampleCount(), bufferSize, bufferSize, bufferSize, 0.0F); ret != 0) {
     util::warning(std::format("Zita: configure failed: {}", ret));
@@ -197,5 +202,25 @@ void ConvolverZita::set_kernel_stereo_width(const int& ir_width) {
 
     kernel.left_channel[i] = L + (x * R);
     kernel.right_channel[i] = R + (x * L);
+  }
+}
+
+void ConvolverZita::update_ir_width_and_autogain(const int& ir_width,
+                                                 const bool& apply_autogain,
+                                                 const bool& clear_zita) {
+  reset_kernel_to_original();
+
+  set_kernel_stereo_width(ir_width);
+
+  if (apply_autogain) {
+    apply_kernel_autogain();
+  }
+
+  if (clear_zita && conv) {
+    conv->impdata_clear(0, 0);
+    conv->impdata_clear(1, 1);
+
+    conv->impdata_update(0, 0, 1, kernel.left_channel.data(), 0, static_cast<int>(kernel.sampleCount()));
+    conv->impdata_update(1, 1, 1, kernel.right_channel.data(), 0, static_cast<int>(kernel.sampleCount()));
   }
 }

@@ -401,11 +401,11 @@ Kirigami.ScrollablePage {
                 value: convolverPage.pluginDB.irWidth
                 from: convolverPage.pluginDB.getMinValue("irWidth")
                 to: convolverPage.pluginDB.getMaxValue("irWidth")
-                decimals: 2
-                stepSize: 0.01
+                decimals: 0
+                stepSize: 1
                 unit: "%"
                 onValueModified: v => {
-                    convolverPage.pluginDB.irWidth = value;
+                    convolverPage.pluginDB.irWidth = v;
                 }
             }
 
