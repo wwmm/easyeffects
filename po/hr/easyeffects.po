@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-18 14:59+0000\n"
-"PO-Revision-Date: 2025-11-19 22:04+0000\n"
+"PO-Revision-Date: 2025-11-20 10:51+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/easyeffects/"
 "main/hr/>\n"
@@ -17,8 +17,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural="
+"(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? "
+"1 : 2);\n"
 "X-Generator: Weblate 5.15-dev\n"
 
 #: src/autostart.cpp:89
@@ -319,7 +320,7 @@ msgstr "2."
 
 #: src/contents/ui/BassEnhancer.qml:92 src/contents/ui/Exciter.qml:96
 msgid "Amount"
-msgstr "Jačina"
+msgstr "Količina"
 
 #: src/contents/ui/BassEnhancer.qml:108 src/contents/ui/BassEnhancer.qml:168
 #: src/contents/ui/Exciter.qml:112 src/contents/ui/Exciter.qml:172
@@ -893,7 +894,7 @@ msgstr "D"
 #: src/contents/ui/Gate.qml:746 src/contents/ui/MultibandCompressor.qml:827
 #: src/contents/ui/MultibandGate.qml:256 src/contents/ui/MultibandGate.qml:800
 msgid "Curve"
-msgstr ""
+msgstr "Krivulja"
 
 #: src/contents/ui/Compressor.qml:779 src/contents/ui/Expander.qml:727
 #: src/contents/ui/Gate.qml:755 src/contents/ui/MultibandCompressor.qml:768
@@ -1110,9 +1111,8 @@ msgid "Wideband"
 msgstr "Široko"
 
 #: src/contents/ui/Deesser.qml:75
-#, fuzzy
 msgid "Split"
-msgstr "Razdvojeno"
+msgstr "Rastavi"
 
 #: src/contents/ui/Deesser.qml:84 src/contents/ui/Gate.qml:118
 #: src/contents/ui/Gate.qml:170 src/contents/ui/Gate.qml:929
@@ -1130,49 +1130,44 @@ msgstr "Popustljivost"
 
 #: src/contents/ui/Deesser.qml:153 src/contents/ui/Filter.qml:104
 #: src/contents/ui/Reverb.qml:108 src/tags_plugin_name.cpp:40
-#, fuzzy
 msgid "Filter"
-msgstr "Filter"
+msgstr "Filtar"
 
 #: src/contents/ui/Deesser.qml:166
-#, fuzzy
 msgid "F1 split"
-msgstr "Razdvojeno"
+msgstr "F1 podjela"
 
 #: src/contents/ui/Deesser.qml:183
 msgid "F2 peak"
-msgstr ""
+msgstr "F2 vrh"
 
 #: src/contents/ui/Deesser.qml:200
 msgid "F1 gain"
-msgstr ""
+msgstr "F1 pojačanje"
 
 #: src/contents/ui/Deesser.qml:217
-#, fuzzy
 msgid "F2 level"
-msgstr "Razina"
+msgstr "F2 razina"
 
 #: src/contents/ui/Deesser.qml:225
 msgid "dBFS"
-msgstr ""
+msgstr "dBFS"
 
 #: src/contents/ui/Deesser.qml:235
-#, fuzzy
 msgid "F2 peak Q"
-msgstr "Vrhunac Q"
+msgstr "F2 vrh Q"
 
 #: src/contents/ui/Deesser.qml:258
 msgid "Level"
 msgstr "Razina"
 
 #: src/contents/ui/Deesser.qml:280
-#, fuzzy
 msgid "Gain reduction"
-msgstr "Smanjivanje trake"
+msgstr "Smanjivanje pojačanja"
 
 #: src/contents/ui/Delay.qml:56 src/contents/ui/Delay.qml:209
 msgid "Distance"
-msgstr ""
+msgstr "Udaljenost"
 
 #: src/contents/ui/Delay.qml:56 src/contents/ui/Delay.qml:85
 #: src/contents/ui/Delay.qml:209 src/contents/ui/Delay.qml:238
@@ -1183,82 +1178,73 @@ msgstr "Vrijeme"
 
 #: src/contents/ui/Delay.qml:103 src/contents/ui/Delay.qml:256
 msgid "Meters"
-msgstr ""
+msgstr "Metara"
 
 #: src/contents/ui/Delay.qml:111 src/contents/ui/Delay.qml:264
 msgid "m"
-msgstr ""
+msgstr "m"
 
 #: src/contents/ui/Delay.qml:121 src/contents/ui/Delay.qml:274
-#, fuzzy
 msgid "Centimeters"
-msgstr "Centi"
+msgstr "Centimetara"
 
 #: src/contents/ui/Delay.qml:129 src/contents/ui/Delay.qml:282
 msgid "cm"
-msgstr ""
+msgstr "cm"
 
 #: src/contents/ui/Delay.qml:140 src/contents/ui/Delay.qml:293
 msgid "Temperature"
-msgstr ""
+msgstr "Temperatura"
 
 #: src/contents/ui/Delay.qml:372
-#, fuzzy
 msgid "Invert left"
-msgstr "Inverzija faze"
+msgstr "Invertiraj lijevo"
 
 #: src/contents/ui/Delay.qml:382
-#, fuzzy
 msgid "Invert right"
-msgstr "Inverzija faze"
+msgstr "Invertiraj desno"
 
 #: src/contents/ui/DelegateClientsList.qml:37
 #: src/contents/ui/DelegateModulesList.qml:37
-#, fuzzy
 msgctxt "@info:placeholder"
 msgid "Unknown"
 msgstr "Nepoznato"
 
 #: src/contents/ui/DelegateClientsList.qml:41
 msgid "(id: %1)"
-msgstr ""
+msgstr "(id: %1)"
 
 #: src/contents/ui/DelegateClientsList.qml:47
-#, fuzzy
 msgid "Access: %1"
-msgstr "Pristup"
+msgstr "Pristup: %1"
 
 #: src/contents/ui/DelegateClientsList.qml:54
 msgid "API: %1"
-msgstr ""
+msgstr "API: %1"
 
 #: src/contents/ui/DelegateModulesList.qml:41
 msgctxt "@info:placeholder"
 msgid "Not set"
-msgstr ""
+msgstr "Nije postavljeno"
 
 #: src/contents/ui/DelegateModulesList.qml:41
 msgid "(id: %1, version: %2)"
-msgstr ""
+msgstr "(id: %1, verzija: %2)"
 
 #: src/contents/ui/DelegateModulesList.qml:47
-#, fuzzy
 msgctxt "@info:placeholder"
 msgid "No description set"
-msgstr "Opis"
+msgstr "Opis nije postavljen"
 
 #: src/contents/ui/DelegatePluginsList.qml:100
-#, fuzzy
 msgid "Toggle this effect"
-msgstr "Aktiviraj/deaktiviraj ovaj efekt"
+msgstr "Uključi/Isključi ovaj efekt"
 
 #: src/contents/ui/DelegatePluginsList.qml:108
-#, fuzzy
 msgid "Remove this effect"
 msgstr "Ukloni ovaj efekt"
 
 #: src/contents/ui/DelegateStreamsList.qml:77
-#, fuzzy
 msgid "channels"
 msgstr "kanali"
 
@@ -1266,27 +1252,24 @@ msgstr "kanali"
 #: src/contents/ui/EchoCanceller.qml:44 src/contents/ui/EchoCanceller.qml:77
 #: src/contents/ui/EchoCanceller.qml:104 src/contents/ui/Gate.qml:158
 #: src/contents/ui/RNNoise.qml:98
-#, fuzzy
 msgid "Enable"
-msgstr "Omogući"
+msgstr "Aktiviraj"
 
 #: src/contents/ui/DelegateStreamsList.qml:109
 msgid "Exclude"
-msgstr ""
+msgstr "Isključi"
 
 #: src/contents/ui/DelegateStreamsList.qml:111
-#, fuzzy
 msgid "Add %1 to excluded applications"
-msgstr "Dodaj u izuzete aplikacije"
+msgstr "Dodaj %1 u izuzete aplikacije"
 
 #: src/contents/ui/EchoCanceller.qml:41 src/tags_plugin_name.cpp:36
 msgid "Echo Canceller"
 msgstr "Poništenje jeke"
 
 #: src/contents/ui/EchoCanceller.qml:53
-#, fuzzy
 msgid "Mobile mode"
-msgstr "Stereo modus"
+msgstr "Mobilni modus"
 
 #: src/contents/ui/EchoCanceller.qml:62
 #, fuzzy
@@ -1298,9 +1281,8 @@ msgid "Noise Suppression"
 msgstr "Suzbijanje šumova"
 
 #: src/contents/ui/EchoCanceller.qml:87
-#, fuzzy
 msgid "Strength"
-msgstr "Duljina filtra"
+msgstr "Jačina"
 
 #: src/contents/ui/EchoCanceller.qml:91 src/contents/ui/Loudness.qml:100
 msgid "Low"
@@ -1315,7 +1297,6 @@ msgid "High"
 msgstr "Visoko"
 
 #: src/contents/ui/EchoCanceller.qml:91
-#, fuzzy
 msgid "Very high"
 msgstr "Jako visoko"
 
@@ -1330,13 +1311,12 @@ msgid "Full band"
 msgstr "Sub band"
 
 #: src/contents/ui/EchoCanceller.qml:153 src/contents/ui/Speex.qml:55
-#, fuzzy
 msgid "Automatic gain control"
 msgstr "Kontrola automatskog pojačanja"
 
 #: src/contents/ui/EeInputOutputGain.qml:21
 msgid "Audio levels control"
-msgstr ""
+msgstr "Kontrola audio razina"
 
 #: src/contents/ui/EeInputOutputGain.qml:22
 msgid "Input and output gain controls with level meters"
