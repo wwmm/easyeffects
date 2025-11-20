@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-19 22:03+0000\n"
-"PO-Revision-Date: 2025-11-19 03:51+0000\n"
+"PO-Revision-Date: 2025-11-20 14:29+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -41,9 +41,8 @@ msgid "Reset Easy Effects."
 msgstr "Reimposta Easy Effects."
 
 #: src/command_line_parser.cpp:44
-#, fuzzy
 msgid "Hide the window."
-msgstr "Nascondi la Finestra."
+msgstr "Nascondi la finestra."
 
 #: src/command_line_parser.cpp:45
 msgid "Global bypass. 1 to enable and 2 to disable."
@@ -94,32 +93,28 @@ msgid "Must specify preset type: input/output."
 msgstr "È necessario specificare il tipo di profilo: input/output."
 
 #: src/command_line_parser.cpp:166
-#, fuzzy
 msgid "Output presets"
-msgstr "Profili di Uscita"
+msgstr "Profili di uscita"
 
 #: src/command_line_parser.cpp:168
-#, fuzzy
 msgid "No output presets."
-msgstr "Profili di Uscita"
+msgstr "Nessun profilo di uscita."
 
 #: src/command_line_parser.cpp:179
-#, fuzzy
 msgid "Input presets"
-msgstr "Profili di Ingresso"
+msgstr "Profili di ingresso"
 
 #: src/command_line_parser.cpp:181
-#, fuzzy
 msgid "No input presets."
-msgstr "Profili di Ingresso"
+msgstr "Nessun profilo di ingresso."
 
 #: src/command_line_parser.cpp:211
 msgid "Specified preset does not exist."
-msgstr ""
+msgstr "Il profilo specificato non esiste."
 
 #: src/command_line_parser.cpp:229
 msgid "Provided an invalid bypass state."
-msgstr ""
+msgstr "È stato fornito uno stato del bypass non valido."
 
 #: src/contents/ui/AboutPage.qml:4
 msgctxt "@action:button"
@@ -3027,7 +3022,7 @@ msgstr "Errore generico nel caricamento dell'effetto"
 
 #: src/pw_model_nodes.cpp:522
 msgid "Running"
-msgstr "In Esecuzione"
+msgstr "In esecuzione"
 
 #: src/pw_model_nodes.cpp:524
 msgid "Suspended"
