@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-19 22:03+0000\n"
-"PO-Revision-Date: 2025-11-20 10:51+0000\n"
+"PO-Revision-Date: 2025-11-20 14:29+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -3022,7 +3022,7 @@ msgstr "Errore generico nel caricamento dell'effetto"
 
 #: src/pw_model_nodes.cpp:522
 msgid "Running"
-msgstr "In Esecuzione"
+msgstr "In esecuzione"
 
 #: src/pw_model_nodes.cpp:524
 msgid "Suspended"
