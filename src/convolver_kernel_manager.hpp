@@ -19,6 +19,7 @@
 
 #pragma once
 
+#include <qtypes.h>
 #include <QString>
 #include <cstddef>
 #include <filesystem>
@@ -29,7 +30,7 @@
 class ConvolverKernelManager {
  public:
   struct KernelData {
-    int rate = 0;
+    uint rate = 0;
     std::vector<float> left_channel;
     std::vector<float> right_channel;
     QString name;
@@ -51,7 +52,7 @@ class ConvolverKernelManager {
 
   auto searchKernelPath(const std::string& name) -> std::string;
 
-  static auto resampleKernel(const KernelData& kernel, int target_rate) -> KernelData;
+  static auto resampleKernel(const KernelData& kernel, const uint& target_rate) -> KernelData;
 
   static void normalizeKernel(KernelData& kernel);
 

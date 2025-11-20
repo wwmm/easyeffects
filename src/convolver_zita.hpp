@@ -38,7 +38,7 @@ class ConvolverZita {
 
   auto init(ConvolverKernelManager::KernelData data, uint bufferSize) -> bool;
 
-  void process(std::span<float> dataLeft, std::span<float> dataRight);
+  auto process(std::span<float> dataLeft, std::span<float> dataRight) -> bool;
 
   void stop();
 

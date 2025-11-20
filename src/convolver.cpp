@@ -62,21 +62,13 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
           db::Manager::self().get_plugin_db<db::Convolver>(pipe_type,
                                                            tags::plugin_name::BaseName::convolver + "#" + instance_id)),
       kernel_manager(ConvolverKernelManager(pipe_type)) {
-  /**
-   * Setting valid rate and n_samples values instead of zero allows the
-   * convolver ui to properly show the impulse response file parameters
-   * even if nothing is playing audio.
-   */
-  util::str_to_num(pw::Manager::self().defaultClockRate.toStdString(), rate);
-  util::str_to_num(pw::Manager::self().defaultQuantum.toStdString(), n_samples);
-
   init_common_controls<db::Convolver>(settings);
 
   dry = (settings->dry() <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(settings->dry()));
 
   wet = (settings->wet() <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(settings->wet()));
 
-  connect(settings, &db::Convolver::kernelNameChanged, [&]() { load_kernel_file(true); });
+  connect(settings, &db::Convolver::kernelNameChanged, [&]() { load_kernel_file(true, rate); });
 
   connect(settings, &db::Convolver::irWidthChanged, [&]() { update_ir_width_and_autogain(); });
 
@@ -168,7 +160,25 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
 
   workerThread.start();
 
-  QMetaObject::invokeMethod(worker, [this] { load_kernel_file(false); }, Qt::QueuedConnection);
+  QMetaObject::invokeMethod(
+      worker,
+      [this] {
+        if (ready) {
+          return;
+        }
+
+        /**
+         * Setting valid rate instead of zero allows the convolver ui to properly show the impulse response file
+         * parameterseven if nothing is playing audio.
+         */
+
+        uint r = 0;
+
+        util::str_to_num(pw::Manager::self().defaultClockRate.toStdString(), r);
+
+        load_kernel_file(false, r);
+      },
+      Qt::QueuedConnection);
 }
 
 Convolver::~Convolver() {
@@ -239,7 +249,7 @@ void Convolver::setup() {
 
         latency_n_frames = 0U;
 
-        load_kernel_file(true);
+        load_kernel_file(true, rate);
       },
       Qt::QueuedConnection);
 
@@ -352,8 +362,8 @@ void Convolver::update_ir_width_and_autogain() {
   }
 }
 
-void Convolver::load_kernel_file(const bool& init_zita) {
-  if (destructor_called) {
+void Convolver::load_kernel_file(const bool& init_zita, const uint& server_sampling_rate) {
+  if (destructor_called || server_sampling_rate == 0) {
     return;
   }
 
@@ -367,14 +377,14 @@ void Convolver::load_kernel_file(const bool& init_zita) {
     return;
   }
 
-  if (kernel_data.rate != static_cast<int>(rate)) {
+  if (kernel_data.rate != server_sampling_rate) {
     util::debug(std::format("{}{} kernel has {} rate. Resampling it to {}", log_tag, name.toStdString(),
-                            kernel_data.rate, rate));
+                            kernel_data.rate, server_sampling_rate));
 
-    kernel_data = ConvolverKernelManager::resampleKernel(kernel_data, rate);
+    kernel_data = ConvolverKernelManager::resampleKernel(kernel_data, server_sampling_rate);
   }
 
-  const auto dt = 1.0 / rate;
+  const auto dt = 1.0 / server_sampling_rate;
 
   std::vector<double> time_axis(kernel_data.sampleCount());
 

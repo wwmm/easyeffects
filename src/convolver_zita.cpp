@@ -113,9 +113,9 @@ auto ConvolverZita::init(ConvolverKernelManager::KernelData data, uint bufferSiz
   return ready;
 }
 
-void ConvolverZita::process(std::span<float> left, std::span<float> right) {
+auto ConvolverZita::process(std::span<float> left, std::span<float> right) -> bool {
   if (!ready || !conv || conv->state() != Convproc::ST_PROC) {
-    return;
+    return false;
   }
 
   if (left.size() != bufferSize || right.size() != bufferSize) {
@@ -125,7 +125,7 @@ void ConvolverZita::process(std::span<float> left, std::span<float> right) {
 
     ready = false;
 
-    return;
+    return false;
   }
 
   auto convLeftIn = std::span{conv->inpdata(0), bufferSize};
@@ -141,11 +141,13 @@ void ConvolverZita::process(std::span<float> left, std::span<float> right) {
 
     ready = false;
 
-    return;
+    return false;
   }
 
   std::ranges::copy(convLeftOut, left.begin());
   std::ranges::copy(convRightOut, right.begin());
+
+  return true;
 }
 
 void ConvolverZita::reset_kernel_to_original() {
