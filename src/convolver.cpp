@@ -113,6 +113,8 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
   connect(
       worker, &ConvolverWorker::onNewKernel, this,
       [this](ConvolverKernelManager::KernelData data) {
+        std::scoped_lock<std::mutex> lock(data_mutex);
+
         kernel = data;
 
         kernel_is_initialized = kernel.isValid();
@@ -138,11 +140,7 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
           Q_EMIT kernelSamplesChanged();
           Q_EMIT newKernelLoaded(kernel.name, true);
 
-          data_mutex.lock();
-
           ready = success;
-
-          data_mutex.unlock();
         }
       },
       Qt::QueuedConnection);
@@ -216,12 +214,15 @@ void Convolver::reset() {
 }
 
 void Convolver::setup() {
+  std::scoped_lock<std::mutex> lock(data_mutex);
+
+  ready = false;
+
   /**
    * As zita uses fftw we have to be careful when reinitializing it.
    * The thread that creates the fftw plan has to be the same that destroys it.
    * Otherwise segmentation faults can happen. As we do not want to do this
-   * initializing in the plugin realtime thread we send it to the main thread
-   * through g_idle_add().connect_once
+   * initializing in the plugin realtime thread we send it to the worker thread
    */
 
   // NOLINTBEGIN(clang-analyzer-cplusplus.NewDeleteLeaks)
@@ -229,15 +230,13 @@ void Convolver::setup() {
   QMetaObject::invokeMethod(
       worker,
       [this] {
+        std::scoped_lock<std::mutex> lock(data_mutex);
+
         if (destructor_called) {
           return;
         }
 
-        data_mutex.lock();
-
         ready = false;
-
-        data_mutex.unlock();
 
         blocksize = n_samples;
 
