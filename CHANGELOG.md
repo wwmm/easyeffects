@@ -1,5 +1,20 @@
 # Changelog
  
+## 8.0.4
+### 2025-11-20
+
+ 
+### Features:
+
+### Bug fixes:
+- Fixed a bug that prevented to correctly parse the number in input fields when the unit measurement was not deleted.
+- Now the Reset History button in the Deep Noise Remover should work as intended.
+- The "end frequency" of enabled bands in the Multiband Compressor are now correctly shown.
+
+### Other notes:
+- KDE Breeze theme is a required dependency in Flatpak version. For distribution packages instead we recommend to install the Breeze theme even if it's not strictly required.
+
+ 
 ## 8.0.3
 ### 2025-11-15
 
