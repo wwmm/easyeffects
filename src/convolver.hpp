@@ -157,7 +157,7 @@ class Convolver : public PluginBase {
 
   QThread workerThread;
 
-  void load_kernel_file();
+  void load_kernel_file(const bool& init_zita);
 
   void combine_kernels(const std::string& kernel_1_name,
                        const std::string& kernel_2_name,

@@ -76,7 +76,7 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
 
   wet = (settings->wet() <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(settings->wet()));
 
-  connect(settings, &db::Convolver::kernelNameChanged, [&]() { load_kernel_file(); });
+  connect(settings, &db::Convolver::kernelNameChanged, [&]() { load_kernel_file(true); });
 
   connect(settings, &db::Convolver::irWidthChanged, [&]() { update_ir_width_and_autogain(); });
 
@@ -168,7 +168,7 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
 
   workerThread.start();
 
-  QMetaObject::invokeMethod(worker, [this] { load_kernel_file(); }, Qt::QueuedConnection);
+  QMetaObject::invokeMethod(worker, [this] { load_kernel_file(false); }, Qt::QueuedConnection);
 }
 
 Convolver::~Convolver() {
@@ -239,7 +239,7 @@ void Convolver::setup() {
 
         latency_n_frames = 0U;
 
-        load_kernel_file();
+        load_kernel_file(true);
       },
       Qt::QueuedConnection);
 
@@ -352,7 +352,7 @@ void Convolver::update_ir_width_and_autogain() {
   }
 }
 
-void Convolver::load_kernel_file() {
+void Convolver::load_kernel_file(const bool& init_zita) {
   if (destructor_called) {
     return;
   }
@@ -408,11 +408,13 @@ void Convolver::load_kernel_file() {
 
   kernel_fft.calculate_fft(kernel_data.left_channel, kernel_data.right_channel, kernel_data.rate, interpPoints);
 
-  Q_EMIT worker->onNewKernel(kernel_data);
-
   Q_EMIT worker->onNewChartMag(chart_mag_L, chart_mag_R);
 
   Q_EMIT worker->onNewSpectrum(kernel_fft.linear_L, kernel_fft.linear_R, kernel_fft.log_L, kernel_fft.log_R);
+
+  if (init_zita) {
+    Q_EMIT worker->onNewKernel(kernel_data);
+  }
 }
 
 auto Convolver::get_latency_seconds() -> float {
