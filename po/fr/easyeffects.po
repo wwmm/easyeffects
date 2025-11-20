@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-19 22:03+0000\n"
-"PO-Revision-Date: 2025-11-18 11:51+0000\n"
+"PO-Revision-Date: 2025-11-20 10:51+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -39,9 +39,8 @@ msgid "Reset Easy Effects."
 msgstr "Réinitialiser Easy Effects."
 
 #: src/command_line_parser.cpp:44
-#, fuzzy
 msgid "Hide the window."
-msgstr "Masquer la Fenêtre."
+msgstr "Masquer la fenêtre."
 
 #: src/command_line_parser.cpp:45
 msgid "Global bypass. 1 to enable and 2 to disable."
@@ -92,32 +91,28 @@ msgid "Must specify preset type: input/output."
 msgstr "Vous devez spécifier le type de préréglage : input/output."
 
 #: src/command_line_parser.cpp:166
-#, fuzzy
 msgid "Output presets"
-msgstr "Préréglages de Sortie"
+msgstr "Préréglages de sortie"
 
 #: src/command_line_parser.cpp:168
-#, fuzzy
 msgid "No output presets."
-msgstr "Préréglages de Sortie"
+msgstr "Aucun préréglage de sortie."
 
 #: src/command_line_parser.cpp:179
-#, fuzzy
 msgid "Input presets"
-msgstr "Préréglages d’Entrée"
+msgstr "Préréglages d’entrée"
 
 #: src/command_line_parser.cpp:181
-#, fuzzy
 msgid "No input presets."
-msgstr "Préréglages d’Entrée"
+msgstr "Aucun préréglage d’entrée."
 
 #: src/command_line_parser.cpp:211
 msgid "Specified preset does not exist."
-msgstr ""
+msgstr "Le préréglage spécifié n'existe pas."
 
 #: src/command_line_parser.cpp:229
 msgid "Provided an invalid bypass state."
-msgstr ""
+msgstr "État de contournement fourni invalide."
 
 #: src/contents/ui/AboutPage.qml:4
 msgctxt "@action:button"
@@ -2258,6 +2253,10 @@ msgid ""
 "percentages results in a lower perceived volume while the loudness appears "
 "to change more evenly across the slider."
 msgstr ""
+"Utiliser une échelle cubique pour le volume du flux plutôt qu'une échelle "
+"linéaire. De faibles pourcentages entraînent un volume perçu plus bas, "
+"tandis que la sonie semble varier de manière plus uniforme le long du "
+"curseur."
 
 #: src/contents/ui/PreferencesSheet.qml:162
 msgid "Ignore system notifications"

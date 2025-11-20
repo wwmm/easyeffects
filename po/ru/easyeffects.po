@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-18 14:59+0000\n"
-"PO-Revision-Date: 2025-11-19 21:34+0000\n"
+"PO-Revision-Date: 2025-11-20 10:51+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -1249,15 +1249,15 @@ msgstr "Низ"
 
 #: src/contents/ui/EchoCanceller.qml:91
 msgid "Moderate"
-msgstr "Средний"
+msgstr "Умеренная"
 
 #: src/contents/ui/EchoCanceller.qml:91 src/contents/ui/Loudness.qml:100
 msgid "High"
-msgstr "Высокий"
+msgstr "Высокая"
 
 #: src/contents/ui/EchoCanceller.qml:91
 msgid "Very high"
-msgstr "Очень высокий"
+msgstr "Очень высокая"
 
 #: src/contents/ui/EchoCanceller.qml:101
 msgid "High-Pass Filter"
@@ -1540,7 +1540,7 @@ msgstr "Режим эквалайзера"
 # http://wikisound.org/Гейт: шумовой гейт или просто гейт — это электронное устройство или плагин динамической обработки, который используется для контроля уровня звукового сигнала. Гейт пропускает или глушит сигнал в зависимости от установленного порогового значения. Он очень часто используется для подавления шума в паузах.
 #: src/contents/ui/Gate.qml:54 src/tags_plugin_name.cpp:41
 msgid "Gate"
-msgstr "Пропускной уровень (гейт)"
+msgstr "Гейт"
 
 #: src/contents/ui/Gate.qml:135 src/contents/ui/Gate.qml:189
 #: src/contents/ui/MultibandGate.qml:275 src/contents/ui/MultibandGate.qml:330
@@ -1626,83 +1626,83 @@ msgstr "Нет"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Half x2/16 bit"
-msgstr "Половинный x2/16 бит"
+msgstr "Половинная x2/16 бит"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Half x2/24 bit"
-msgstr "Половинный x2/24 бита"
+msgstr "Половинная x2/24 бита"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Half x3/16 bit"
-msgstr "Половинный x3/16 бит"
+msgstr "Половинная x3/16 бит"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Half x3/24 bit"
-msgstr "Половинный x3/24 бита"
+msgstr "Половинная x3/24 бита"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Half x4/16 bit"
-msgstr "Половинный x4/16 бит"
+msgstr "Половинная x4/16 бит"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Half x4/24 bit"
-msgstr "Половинный x4/24 бита"
+msgstr "Половинная x4/24 бита"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Half x6/16 bit"
-msgstr "Половинный x6/16 бит"
+msgstr "Половинная x6/16 бит"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Half x6/24 bit"
-msgstr "Половинный x6/24 бита"
+msgstr "Половинная x6/24 бита"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Half x8/16 bit"
-msgstr "Половинный x8/16 бит"
+msgstr "Половинная x8/16 бит"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Half x8/24 bit"
-msgstr "Половинный x8/24 бита"
+msgstr "Половинная x8/24 бита"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Full x2/16 bit"
-msgstr "Полный x2/16 бит"
+msgstr "Полная x2/16 бит"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Full x2/24 bit"
-msgstr "Полный x2/24 бита"
+msgstr "Полная x2/24 бита"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Full x3/16 bit"
-msgstr "Полный x3/16 бит"
+msgstr "Полная x3/16 бит"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Full x3/24 bit"
-msgstr "Полный x3/24 бита"
+msgstr "Полная x3/24 бита"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Full x4/16 bit"
-msgstr "Полный x4/16 бит"
+msgstr "Полная x4/16 бит"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Full x4/24 bit"
-msgstr "Полный x4/24 бита"
+msgstr "Полная x4/24 бита"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Full x6/16 bit"
-msgstr "Полный x6/16 бит"
+msgstr "Полная x6/16 бит"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Full x6/24 bit"
-msgstr "Полный x6/24 бита"
+msgstr "Полная x6/24 бита"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Full x8/16 bit"
-msgstr "Полный x8/16 бит"
+msgstr "Полная x8/16 бит"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "Full x8/24 bit"
-msgstr "Полный x8/24 бита"
+msgstr "Полная x8/24 бита"
 
 #: src/contents/ui/Limiter.qml:73
 msgid "True peak/16 bit"
@@ -1775,7 +1775,7 @@ msgstr "Плоский"
 
 #: src/contents/ui/Loudness.qml:72
 msgid "ISO226-2003"
-msgstr "ISO226-2003"
+msgstr "ИСО 226:2003"
 
 #: src/contents/ui/Loudness.qml:72
 msgid "Fletcher-Munson"
@@ -1787,7 +1787,7 @@ msgstr "Робинсона-Дадсона"
 
 #: src/contents/ui/Loudness.qml:72
 msgid "ISO226-2023"
-msgstr "ИСО 226-2003"
+msgstr "ИСО 226:2023"
 
 # Taking lingual shortcuts to squeeze it in the text box
 #: src/contents/ui/Loudness.qml:82
@@ -1828,7 +1828,7 @@ msgstr "Сбросить настройки?"
 
 #: src/contents/ui/Main.qml:235
 msgid "Are you sure you want to reset all Easy Effects settings?"
-msgstr "Вы уверены, что хотите сбросить все настройки Easy Effects?"
+msgstr "Уверены, что хотите сбросить все настройки Easy Effects?"
 
 #: src/contents/ui/Main.qml:286 src/contents/ui/Main.qml:302
 msgid "Preset Loaded"
@@ -1889,7 +1889,7 @@ msgstr "Настройки"
 
 #: src/contents/ui/Main.qml:573
 msgid "About Easy Effects"
-msgstr "О программе Easy Effects"
+msgstr "Об Easy Effects"
 
 #: src/contents/ui/MenuAddPlugins.qml:75
 msgid "Add %1"
@@ -2343,7 +2343,7 @@ msgstr "Цветовая тема"
 
 #: src/contents/ui/PreferencesSheet.qml:307
 msgid "Green"
-msgstr "Зелёный"
+msgstr "Зелёная"
 
 #: src/contents/ui/PreferencesSheet.qml:307
 msgid "Green neon"
@@ -3062,7 +3062,7 @@ msgstr "Насыщение басов"
 
 #: src/tags_plugin_name.cpp:28
 msgid "Bass Loudness"
-msgstr "Громкость баса"
+msgstr "Громкость басов"
 
 #: src/tags_plugin_name.cpp:30
 msgid "Convolver"
@@ -3102,7 +3102,7 @@ msgstr "Многополосный компрессор"
 
 #: src/tags_plugin_name.cpp:47
 msgid "Multiband Gate"
-msgstr "Многополосный пропускной уровень"
+msgstr "Многополосный гейт"
 
 #: src/tags_plugin_name.cpp:49
 msgid "Reverberation"
@@ -3129,37 +3129,32 @@ msgid "Simple audio effects"
 msgstr "Простые звуковые эффекты"
 
 #: src/command_line_parser.cpp:44
-#, fuzzy
 msgid "Hide the window."
 msgstr "Скрыть окно."
 
 #: src/command_line_parser.cpp:166
-#, fuzzy
 msgid "Output presets"
 msgstr "Предустановки выхода"
 
 #: src/command_line_parser.cpp:168
-#, fuzzy
 msgid "No output presets."
-msgstr "Предустановки выхода"
+msgstr "Нет предустановок выхода."
 
 #: src/command_line_parser.cpp:179
-#, fuzzy
 msgid "Input presets"
 msgstr "Предустановки входа"
 
 #: src/command_line_parser.cpp:181
-#, fuzzy
 msgid "No input presets."
-msgstr "Предустановки входа"
+msgstr "Нет предустановок входа."
 
 #: src/command_line_parser.cpp:211
 msgid "Specified preset does not exist."
-msgstr ""
+msgstr "Указанная предустановка не существует."
 
 #: src/command_line_parser.cpp:229
 msgid "Provided an invalid bypass state."
-msgstr ""
+msgstr "Указано недопустимое состояние обхода."
 
 #~ msgid "Imported a new Convolver impluse file."
 #~ msgstr "Импортирован новый файл импульса конвольвера."

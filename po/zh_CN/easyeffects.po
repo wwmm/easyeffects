@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-19 22:03+0000\n"
-"PO-Revision-Date: 2025-11-19 03:51+0000\n"
+"PO-Revision-Date: 2025-11-20 10:51+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hans/>\n"
@@ -38,7 +38,6 @@ msgid "Reset Easy Effects."
 msgstr "重置 Easy Effects。"
 
 #: src/command_line_parser.cpp:44
-#, fuzzy
 msgid "Hide the window."
 msgstr "隐藏窗口。"
 
@@ -91,32 +90,28 @@ msgid "Must specify preset type: input/output."
 msgstr "必须指定预设类型：输入/输出。"
 
 #: src/command_line_parser.cpp:166
-#, fuzzy
 msgid "Output presets"
 msgstr "输出预设"
 
 #: src/command_line_parser.cpp:168
-#, fuzzy
 msgid "No output presets."
-msgstr "输出预设"
+msgstr "无输出预设。"
 
 #: src/command_line_parser.cpp:179
-#, fuzzy
 msgid "Input presets"
 msgstr "输入预设"
 
 #: src/command_line_parser.cpp:181
-#, fuzzy
 msgid "No input presets."
-msgstr "输入预设"
+msgstr "无输入预设。"
 
 #: src/command_line_parser.cpp:211
 msgid "Specified preset does not exist."
-msgstr ""
+msgstr "未发现指定的预设。"
 
 #: src/command_line_parser.cpp:229
 msgid "Provided an invalid bypass state."
-msgstr ""
+msgstr "旁通状态参数无效。"
 
 #: src/contents/ui/AboutPage.qml:4
 msgctxt "@action:button"
