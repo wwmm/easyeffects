@@ -23,6 +23,7 @@
 #include <zita-convolver.h>
 #include <algorithm>
 #include <chrono>
+#include <cmath>
 #include <format>
 #include <span>
 #include <thread>
@@ -78,6 +79,7 @@ auto ConvolverZita::init(ConvolverKernelManager::KernelData data, uint bufferSiz
   conv->set_options(0);
 
   kernel = data;
+  original_kernel = kernel;
 
   this->bufferSize = bufferSize;
 
@@ -116,6 +118,16 @@ void ConvolverZita::process(std::span<float> left, std::span<float> right) {
     return;
   }
 
+  if (left.size() != bufferSize || right.size() != bufferSize) {
+    util::warning(
+        std::format("Mismatch in buffer sizes! Zita wants {} but Pipewire is using {}. Aborting zita process!",
+                    bufferSize, left.size()));
+
+    ready = false;
+
+    return;
+  }
+
   auto convLeftIn = std::span{conv->inpdata(0), bufferSize};
   auto convRightIn = std::span{conv->inpdata(1), bufferSize};
   auto convLeftOut = std::span{conv->outdata(0), bufferSize};
@@ -134,4 +146,54 @@ void ConvolverZita::process(std::span<float> left, std::span<float> right) {
 
   std::ranges::copy(convLeftOut, left.begin());
   std::ranges::copy(convRightOut, right.begin());
+}
+
+void ConvolverZita::reset_kernel_to_original() {
+  kernel = original_kernel;
+}
+
+void ConvolverZita::apply_kernel_autogain() {
+  if (!kernel.isValid()) {
+    return;
+  }
+
+  ConvolverKernelManager::normalizeKernel(kernel);
+
+  // find average power
+
+  float power_L = 0.0F;
+  float power_R = 0.0F;
+
+  std::ranges::for_each(kernel.left_channel, [&](const auto& v) { power_L += v * v; });
+  std::ranges::for_each(kernel.right_channel, [&](const auto& v) { power_R += v * v; });
+
+  const float power = std::max(power_L, power_R);
+
+  const float autogain = std::min(1.0F, 1.0F / std::sqrt(power));
+
+  util::debug(std::format("autogain factor: {}", autogain));
+
+  std::ranges::for_each(kernel.left_channel, [&](auto& v) { v *= autogain; });
+  std::ranges::for_each(kernel.right_channel, [&](auto& v) { v *= autogain; });
+}
+
+/**
+ * Mid-Side based Stereo width effect
+ * taken from https://github.com/tomszilagyi/ir.lv2/blob/automatable/ir.cc
+ */
+void ConvolverZita::set_kernel_stereo_width(const int& ir_width) {
+  if (!kernel.isValid()) {
+    return;
+  }
+
+  const float w = static_cast<float>(ir_width) * 0.01F;
+  const float x = (1.0F - w) / (1.0F + w);  // M-S coeff.; L_out = L + x*R; R_out = R + x*L
+
+  for (uint i = 0U; i < kernel.sampleCount(); i++) {
+    const auto L = kernel.left_channel[i];
+    const auto R = kernel.right_channel[i];
+
+    kernel.left_channel[i] = L + (x * R);
+    kernel.right_channel[i] = R + (x * L);
+  }
 }

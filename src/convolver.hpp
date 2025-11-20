@@ -149,8 +149,6 @@ class Convolver : public PluginBase {
 
   ConvolverKernelManager kernel_manager;
 
-  ConvolverKernelManager::KernelData kernel, original_kernel;
-
   ConvolverKernelFFT kernel_fft;
 
   ConvolverZita zita;
@@ -158,10 +156,6 @@ class Convolver : public PluginBase {
   ConvolverWorker* worker;
 
   QThread workerThread;
-
-  void apply_kernel_autogain();
-
-  void set_kernel_stereo_width();
 
   void load_kernel_file();
 
@@ -174,4 +168,6 @@ class Convolver : public PluginBase {
                         const float& kernel_rate);
 
   void clear_chart_data();
+
+  void update_ir_width_and_autogain();
 };

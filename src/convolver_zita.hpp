@@ -42,12 +42,18 @@ class ConvolverZita {
 
   void stop();
 
+  void reset_kernel_to_original();
+
+  void apply_kernel_autogain();
+
+  void set_kernel_stereo_width(const int& ir_width);
+
  private:
   bool ready = false;
 
   uint bufferSize = 0;
 
-  ConvolverKernelManager::KernelData kernel;
+  ConvolverKernelManager::KernelData kernel, original_kernel;
 
   Convproc* conv = nullptr;
 };

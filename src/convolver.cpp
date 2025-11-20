@@ -34,7 +34,6 @@
 #include <zita-convolver.h>
 #include <QString>
 #include <algorithm>
-#include <cmath>
 #include <cstddef>
 #include <format>
 #include <mutex>
@@ -77,20 +76,11 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
 
   wet = (settings->wet() <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(settings->wet()));
 
-  connect(settings, &db::Convolver::irWidthChanged, [&]() {
-    std::scoped_lock<std::mutex> lock(data_mutex);
-
-    if (kernel.isValid()) {
-      kernel = original_kernel;
-
-      set_kernel_stereo_width();
-      apply_kernel_autogain();
-    }
-  });
-
   connect(settings, &db::Convolver::kernelNameChanged, [&]() { load_kernel_file(); });
 
-  connect(settings, &db::Convolver::autogainChanged, [&]() { load_kernel_file(); });
+  connect(settings, &db::Convolver::irWidthChanged, [&]() { update_ir_width_and_autogain(); });
+
+  connect(settings, &db::Convolver::autogainChanged, [&]() { update_ir_width_and_autogain(); });
 
   connect(settings, &db::Convolver::dryChanged, [&]() {
     dry =
@@ -113,32 +103,25 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
   connect(
       worker, &ConvolverWorker::onNewKernel, this,
       [this](ConvolverKernelManager::KernelData data) {
-        std::scoped_lock<std::mutex> lock(data_mutex);
-
-        kernel = data;
-
-        kernel_is_initialized = kernel.isValid();
+        kernel_is_initialized = data.isValid();
 
         if (kernel_is_initialized) {
-          original_kernel = kernel;
-
-          set_kernel_stereo_width();
-          apply_kernel_autogain();
-
-          auto success = zita.init(kernel, blocksize);
-
-          if (!success) {
-            util::warning(std::format("{} Zita init failed", log_tag));
-          }
-
-          kernelRate = QString::fromStdString(util::to_string(kernel.rate));
-          kernelSamples = QString::fromStdString(util::to_string(kernel.sampleCount()));
-          kernelDuration = QString::fromStdString(util::to_string(kernel.duration()));
+          kernelRate = QString::fromStdString(util::to_string(data.rate));
+          kernelSamples = QString::fromStdString(util::to_string(data.sampleCount()));
+          kernelDuration = QString::fromStdString(util::to_string(data.duration()));
 
           Q_EMIT kernelRateChanged();
           Q_EMIT kernelDurationChanged();
           Q_EMIT kernelSamplesChanged();
-          Q_EMIT newKernelLoaded(kernel.name, true);
+          Q_EMIT newKernelLoaded(data.name, true);
+
+          std::scoped_lock<std::mutex> lock(data_mutex);
+
+          auto success = zita.init(data, blocksize);
+
+          if (!success) {
+            util::warning(std::format("{} Zita init failed", log_tag));
+          }
 
           ready = success;
         }
@@ -230,13 +213,9 @@ void Convolver::setup() {
   QMetaObject::invokeMethod(
       worker,
       [this] {
-        std::scoped_lock<std::mutex> lock(data_mutex);
-
         if (destructor_called) {
           return;
         }
-
-        ready = false;
 
         blocksize = n_samples;
 
@@ -361,6 +340,18 @@ void Convolver::process([[maybe_unused]] std::span<float>& left_in,
                         [[maybe_unused]] std::span<float>& probe_left,
                         [[maybe_unused]] std::span<float>& probe_right) {}
 
+void Convolver::update_ir_width_and_autogain() {
+  std::scoped_lock<std::mutex> lock(data_mutex);
+
+  zita.reset_kernel_to_original();
+
+  zita.set_kernel_stereo_width(settings->irWidth());
+
+  if (settings->autogain()) {
+    zita.apply_kernel_autogain();
+  }
+}
+
 void Convolver::load_kernel_file() {
   if (destructor_called) {
     return;
@@ -422,52 +413,6 @@ void Convolver::load_kernel_file() {
   Q_EMIT worker->onNewChartMag(chart_mag_L, chart_mag_R);
 
   Q_EMIT worker->onNewSpectrum(kernel_fft.linear_L, kernel_fft.linear_R, kernel_fft.log_L, kernel_fft.log_R);
-}
-
-void Convolver::apply_kernel_autogain() {
-  if (!settings->autogain()) {
-    return;
-  }
-
-  if (!kernel.isValid()) {
-    return;
-  }
-
-  ConvolverKernelManager::normalizeKernel(kernel);
-
-  // find average power
-
-  float power_L = 0.0F;
-  float power_R = 0.0F;
-
-  std::ranges::for_each(kernel.left_channel, [&](const auto& v) { power_L += v * v; });
-  std::ranges::for_each(kernel.right_channel, [&](const auto& v) { power_R += v * v; });
-
-  const float power = std::max(power_L, power_R);
-
-  const float autogain = std::min(1.0F, 1.0F / std::sqrt(power));
-
-  util::debug(std::format("{} autogain factor: {}", log_tag, autogain));
-
-  std::ranges::for_each(kernel.left_channel, [&](auto& v) { v *= autogain; });
-  std::ranges::for_each(kernel.right_channel, [&](auto& v) { v *= autogain; });
-}
-
-/**
- * Mid-Side based Stereo width effect
- * taken from https://github.com/tomszilagyi/ir.lv2/blob/automatable/ir.cc
- */
-void Convolver::set_kernel_stereo_width() {
-  const float w = static_cast<float>(settings->irWidth()) * 0.01F;
-  const float x = (1.0F - w) / (1.0F + w);  // M-S coeff.; L_out = L + x*R; R_out = R + x*L
-
-  for (uint i = 0U; i < original_kernel.sampleCount(); i++) {
-    const auto L = original_kernel.left_channel[i];
-    const auto R = original_kernel.right_channel[i];
-
-    kernel.left_channel[i] = L + (x * R);
-    kernel.right_channel[i] = R + (x * L);
-  }
 }
 
 auto Convolver::get_latency_seconds() -> float {
