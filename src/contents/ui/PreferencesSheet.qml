@@ -254,10 +254,10 @@ KirigamiSettings.ConfigurationView {
 
                     label: i18n("Enabled") // qmllint disable
                     maximumLineCount: -1
-                    isChecked: DB.Manager.spectrum.state
+                    isChecked: DbSpectrum.state
                     onCheckedChanged: {
-                        if (isChecked !== DB.Manager.spectrum.state)
-                            DB.Manager.spectrum.state = isChecked;
+                        if (isChecked !== DbSpectrum.state)
+                            DbSpectrum.state = isChecked;
                     }
                 }
 
@@ -268,12 +268,12 @@ KirigamiSettings.ConfigurationView {
                     maximumLineCount: -1
                     from: 0
                     to: 1000
-                    value: DB.Manager.spectrum.avsyncDelay
+                    value: DbSpectrum.avsyncDelay
                     decimals: 0
                     stepSize: 1
                     unit: i18n("ms")
                     onValueModified: v => {
-                        DB.Manager.spectrum.avsyncDelay = v;
+                        DbSpectrum.avsyncDelay = v;
                     }
                 }
             }
@@ -288,12 +288,12 @@ KirigamiSettings.ConfigurationView {
 
                     text: i18n("Color scheme") // qmllint disable
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                    currentIndex: DB.Manager.spectrum.spectrumColorScheme
+                    currentIndex: DbSpectrum.spectrumColorScheme
                     editable: false
                     model: [i18n("Automatic"), i18n("Light"), i18n("Dark")]// qmllint disable
                     onActivated: idx => {
-                        if (idx !== DB.Manager.spectrum.spectrumColorScheme)
-                            DB.Manager.spectrum.spectrumColorScheme = idx;
+                        if (idx !== DbSpectrum.spectrumColorScheme)
+                            DbSpectrum.spectrumColorScheme = idx;
                     }
                 }
 
@@ -302,12 +302,12 @@ KirigamiSettings.ConfigurationView {
 
                     text: i18n("Color theme") // qmllint disable
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                    currentIndex: DB.Manager.spectrum.spectrumColorTheme
+                    currentIndex: DbSpectrum.spectrumColorTheme
                     editable: false
                     model: [i18n("Green"), i18n("Green neon"), i18n("Mix"), i18n("Orange"), i18n("Yellow"), i18n("Blue"), i18n("Purple"), i18n("Grey")]// qmllint disable
                     onActivated: idx => {
-                        if (idx !== DB.Manager.spectrum.spectrumColorTheme)
-                            DB.Manager.spectrum.spectrumColorTheme = idx;
+                        if (idx !== DbSpectrum.spectrumColorTheme)
+                            DbSpectrum.spectrumColorTheme = idx;
                     }
                 }
 
@@ -316,12 +316,12 @@ KirigamiSettings.ConfigurationView {
 
                     text: i18n("Shape") // qmllint disable
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                    currentIndex: DB.Manager.spectrum.spectrumShape
+                    currentIndex: DbSpectrum.spectrumShape
                     editable: false
                     model: [i18n("Bars"), i18n("Lines"), i18n("Dots"), i18n("Area")]// qmllint disable
                     onActivated: idx => {
-                        if (idx !== DB.Manager.spectrum.spectrumShape)
-                            DB.Manager.spectrum.spectrumShape = idx;
+                        if (idx !== DbSpectrum.spectrumShape)
+                            DbSpectrum.spectrumShape = idx;
                     }
                 }
 
@@ -330,10 +330,10 @@ KirigamiSettings.ConfigurationView {
 
                     label: i18n("Dynamic scale") // qmllint disable
                     maximumLineCount: -1
-                    isChecked: DB.Manager.spectrum.dynamicYScale
+                    isChecked: DbSpectrum.dynamicYScale
                     onCheckedChanged: {
-                        if (isChecked !== DB.Manager.spectrum.dynamicYScale)
-                            DB.Manager.spectrum.dynamicYScale = isChecked;
+                        if (isChecked !== DbSpectrum.dynamicYScale)
+                            DbSpectrum.dynamicYScale = isChecked;
                     }
                 }
 
@@ -342,10 +342,10 @@ KirigamiSettings.ConfigurationView {
 
                     label: i18n("Logarithmic frequency axis") // qmllint disable
                     maximumLineCount: -1
-                    isChecked: DB.Manager.spectrum.logarithimicHorizontalAxis
+                    isChecked: DbSpectrum.logarithimicHorizontalAxis
                     onCheckedChanged: {
-                        if (isChecked !== DB.Manager.spectrum.logarithimicHorizontalAxis)
-                            DB.Manager.spectrum.logarithimicHorizontalAxis = isChecked;
+                        if (isChecked !== DbSpectrum.logarithimicHorizontalAxis)
+                            DbSpectrum.logarithimicHorizontalAxis = isChecked;
                     }
                 }
 
@@ -356,11 +356,11 @@ KirigamiSettings.ConfigurationView {
                     maximumLineCount: -1
                     from: 2
                     to: 2048
-                    value: DB.Manager.spectrum.nPoints
+                    value: DbSpectrum.nPoints
                     decimals: 0
                     stepSize: 1
                     onValueModified: v => {
-                        DB.Manager.spectrum.nPoints = v;
+                        DbSpectrum.nPoints = v;
                     }
                 }
 
@@ -371,12 +371,12 @@ KirigamiSettings.ConfigurationView {
                     maximumLineCount: -1
                     from: 100
                     to: 1000
-                    value: DB.Manager.spectrum.height
+                    value: DbSpectrum.height
                     decimals: 0
                     stepSize: 1
                     unit: i18n("px")
                     onValueModified: v => {
-                        DB.Manager.spectrum.height = v;
+                        DbSpectrum.height = v;
                     }
                 }
             }
@@ -391,14 +391,14 @@ KirigamiSettings.ConfigurationView {
 
                     label: i18n("Minimum") // qmllint disable
                     maximumLineCount: -1
-                    from: DB.Manager.spectrum.getMinValue("minimumFrequency")
-                    to: DB.Manager.spectrum.getMaxValue("minimumFrequency")
-                    value: DB.Manager.spectrum.minimumFrequency
+                    from: DbSpectrum.getMinValue("minimumFrequency")
+                    to: DbSpectrum.getMaxValue("minimumFrequency")
+                    value: DbSpectrum.minimumFrequency
                     decimals: 0
                     stepSize: 10
                     unit: i18n("Hz")
                     onValueModified: v => {
-                        DB.Manager.spectrum.minimumFrequency = v;
+                        DbSpectrum.minimumFrequency = v;
                     }
                 }
 
@@ -407,14 +407,14 @@ KirigamiSettings.ConfigurationView {
 
                     label: i18n("Maximum") // qmllint disable
                     maximumLineCount: -1
-                    from: DB.Manager.spectrum.getMinValue("maximumFrequency")
-                    to: DB.Manager.spectrum.getMaxValue("maximumFrequency")
-                    value: DB.Manager.spectrum.maximumFrequency
+                    from: DbSpectrum.getMinValue("maximumFrequency")
+                    to: DbSpectrum.getMaxValue("maximumFrequency")
+                    value: DbSpectrum.maximumFrequency
                     decimals: 0
                     stepSize: 10
                     unit: i18n("Hz")
                     onValueModified: v => {
-                        DB.Manager.spectrum.maximumFrequency = v;
+                        DbSpectrum.maximumFrequency = v;
                     }
                 }
             }

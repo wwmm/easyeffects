@@ -44,9 +44,9 @@
 
 Spectrum::Spectrum(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id)
     : PluginBase(tag, "spectrum", tags::plugin_package::Package::ee, instance_id, pipe_manager, pipe_type),
-      settings(db::Spectrum::self()),
+      settings(DbSpectrum::self()),
       fftw_ready(true) {
-  bypass = !db::Spectrum::state();
+  bypass = !DbSpectrum::state();
   // Precompute the Hann window, which is an expensive operation.
   // https://en.wikipedia.org/wiki/Hann_function
   for (size_t n = 0; n < n_bands; n++) {
@@ -79,10 +79,10 @@ Spectrum::Spectrum(const std::string& tag, pw::Manager* pipe_manager, PipelineTy
   lv2_wrapper->set_control_port_value("wet_l", util::db_to_linear(0.0F));
   lv2_wrapper->set_control_port_value("wet_r", util::db_to_linear(0.0F));
 
-  BIND_LV2_PORT("time_l", avsyncDelay, setAvsyncDelay, db::Spectrum::avsyncDelayChanged);
-  BIND_LV2_PORT("time_r", avsyncDelay, setAvsyncDelay, db::Spectrum::avsyncDelayChanged);
+  BIND_LV2_PORT("time_l", avsyncDelay, setAvsyncDelay, DbSpectrum::avsyncDelayChanged);
+  BIND_LV2_PORT("time_r", avsyncDelay, setAvsyncDelay, DbSpectrum::avsyncDelayChanged);
 
-  connect(db::Spectrum::self(), &db::Spectrum::stateChanged, [&]() { bypass = !db::Spectrum::state(); });
+  connect(DbSpectrum::self(), &DbSpectrum::stateChanged, [&]() { bypass = !DbSpectrum::state(); });
 }
 
 Spectrum::~Spectrum() {

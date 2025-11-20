@@ -438,18 +438,18 @@ Kirigami.Page {
             id: spectrumChart
 
             Layout.fillWidth: true
-            implicitHeight: DB.Manager.spectrum.height
-            seriesType: DB.Manager.spectrum.spectrumShape
-            colorScheme: DB.Manager.spectrum.spectrumColorScheme
-            colorTheme: DB.Manager.spectrum.spectrumColorTheme
-            xMin: DB.Manager.spectrum.minimumFrequency
-            xMax: DB.Manager.spectrum.maximumFrequency
+            implicitHeight: DbSpectrum.height
+            seriesType: DbSpectrum.spectrumShape
+            colorScheme: DbSpectrum.spectrumColorScheme
+            colorTheme: DbSpectrum.spectrumColorTheme
+            xMin: DbSpectrum.minimumFrequency
+            xMax: DbSpectrum.maximumFrequency
             yMin: -100
             yMax: 0
-            logarithimicHorizontalAxis: DB.Manager.spectrum.logarithimicHorizontalAxis
-            dynamicYScale: DB.Manager.spectrum.dynamicYScale
+            logarithimicHorizontalAxis: DbSpectrum.logarithimicHorizontalAxis
+            dynamicYScale: DbSpectrum.dynamicYScale
             xUnit: i18n("Hz")
-            visible: DB.Manager.spectrum.state
+            visible: DbSpectrum.state
 
             Component.onDestruction: {
                 headerFrameAnimation.stop();
@@ -458,7 +458,7 @@ Kirigami.Page {
             FrameAnimation {
                 id: headerFrameAnimation
 
-                running: DB.Manager.spectrum.state && appWindow.visible // qmllint disable
+                running: DbSpectrum.state && appWindow.visible // qmllint disable
 
                 onRunningChanged: {
                     pageStreamsEffects.pipelineInstance.setSpectrumBypass(!running);

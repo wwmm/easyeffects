@@ -67,7 +67,7 @@ namespace db {
 
 Manager::Manager()
     : main(db::Main::self()),
-      spectrum(db::Spectrum::self()),
+      spectrum(DbSpectrum::self()),
       streamInputs(db::StreamInputs::self()),
       streamOutputs(db::StreamOutputs::self()),
       testSignals(db::TestSignals::self()),

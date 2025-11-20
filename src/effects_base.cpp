@@ -385,8 +385,8 @@ void EffectsBase::requestSpectrumData() {
           frequencies[n] = 0.5F * static_cast<float>(rate) * static_cast<float>(n) / static_cast<float>(n_bands);
         }
 
-        const auto min_freq = static_cast<float>(db::Spectrum::minimumFrequency());
-        const auto max_freq = static_cast<float>(db::Spectrum::maximumFrequency());
+        const auto min_freq = static_cast<float>(DbSpectrum::minimumFrequency());
+        const auto max_freq = static_cast<float>(DbSpectrum::maximumFrequency());
 
         if (min_freq > (max_freq - 100.0F)) {
           return;
@@ -394,10 +394,10 @@ void EffectsBase::requestSpectrumData() {
 
         std::vector<float> x_axis;
 
-        if (db::Spectrum::logarithimicHorizontalAxis()) {
-          x_axis = util::logspace(min_freq, max_freq, db::Spectrum::nPoints());
+        if (DbSpectrum::logarithimicHorizontalAxis()) {
+          x_axis = util::logspace(min_freq, max_freq, DbSpectrum::nPoints());
         } else {
-          x_axis = util::linspace(min_freq, max_freq, db::Spectrum::nPoints());
+          x_axis = util::linspace(min_freq, max_freq, DbSpectrum::nPoints());
         }
 
         auto* acc = gsl_interp_accel_alloc();
