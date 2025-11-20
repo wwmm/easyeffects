@@ -100,6 +100,9 @@ auto ConvolverZita::init(ConvolverKernelManager::KernelData data, uint bufferSiz
 
   if (auto ret = conv->start_process(ZITA_SCHED_PRIORITY, ZITA_SCHED_CLASS); ret != 0) {
     util::warning(std::format("Zita: start_process failed: {}", ret));
+
+    conv->cleanup();
+
     return false;
   }
 

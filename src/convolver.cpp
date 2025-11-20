@@ -129,12 +129,6 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
             util::warning(std::format("{} Zita init failed", log_tag));
           }
 
-          data_mutex.lock();
-
-          ready = success;
-
-          data_mutex.unlock();
-
           kernelRate = QString::fromStdString(util::to_string(kernel.rate));
           kernelSamples = QString::fromStdString(util::to_string(kernel.sampleCount()));
           kernelDuration = QString::fromStdString(util::to_string(kernel.duration()));
@@ -143,6 +137,12 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
           Q_EMIT kernelDurationChanged();
           Q_EMIT kernelSamplesChanged();
           Q_EMIT newKernelLoaded(kernel.name, true);
+
+          data_mutex.lock();
+
+          ready = success;
+
+          data_mutex.unlock();
         }
       },
       Qt::QueuedConnection);
@@ -216,8 +216,6 @@ void Convolver::reset() {
 }
 
 void Convolver::setup() {
-  ready = false;
-
   /**
    * As zita uses fftw we have to be careful when reinitializing it.
    * The thread that creates the fftw plan has to be the same that destroys it.
@@ -231,9 +229,15 @@ void Convolver::setup() {
   QMetaObject::invokeMethod(
       worker,
       [this] {
-        if (ready || destructor_called) {
+        if (destructor_called) {
           return;
         }
+
+        data_mutex.lock();
+
+        ready = false;
+
+        data_mutex.unlock();
 
         blocksize = n_samples;
 
@@ -362,12 +366,6 @@ void Convolver::load_kernel_file() {
   if (destructor_called) {
     return;
   }
-
-  data_mutex.lock();
-
-  ready = false;
-
-  data_mutex.unlock();
 
   const auto name = settings->kernelName();
 
