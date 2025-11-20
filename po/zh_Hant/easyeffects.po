@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-19 22:03+0000\n"
-"PO-Revision-Date: 2025-11-19 03:51+0000\n"
+"PO-Revision-Date: 2025-11-20 10:51+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hant/>\n"
@@ -95,9 +95,8 @@ msgid "Output presets"
 msgstr "輸出預設集"
 
 #: src/command_line_parser.cpp:168
-#, fuzzy
 msgid "No output presets."
-msgstr "輸出預設集"
+msgstr "無輸出預設集。"
 
 #: src/command_line_parser.cpp:179
 #, fuzzy
@@ -105,17 +104,16 @@ msgid "Input presets"
 msgstr "輸入預設集"
 
 #: src/command_line_parser.cpp:181
-#, fuzzy
 msgid "No input presets."
-msgstr "輸入預設集"
+msgstr "無輸入預設集。"
 
 #: src/command_line_parser.cpp:211
 msgid "Specified preset does not exist."
-msgstr ""
+msgstr "所指定的預設集並不存在。"
 
 #: src/command_line_parser.cpp:229
 msgid "Provided an invalid bypass state."
-msgstr ""
+msgstr "提供了無效的略過狀態。"
 
 #: src/contents/ui/AboutPage.qml:4
 msgctxt "@action:button"
