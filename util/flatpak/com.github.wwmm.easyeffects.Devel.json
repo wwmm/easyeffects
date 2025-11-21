@@ -9,7 +9,7 @@
     "command": "easyeffects",
     "finish-args": [
         "--share=ipc",
-        "--socket=fallback-x11",
+        "--socket=x11",
         "--env=QTWEBENGINEPROCESS_PATH=/app/bin/QtWebEngineProcess",
         "--talk-name=org.kde.StatusNotifierWatcher",
         "--socket=wayland",
