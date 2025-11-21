@@ -331,6 +331,15 @@ void StreamInputEffects::connect_filters(const bool& bypass) {
       util::warning(std::format("Link from node {} to node {} failed", prev_node_id, next_node_id));
     }
   }
+
+  /*
+   * The correct thing to do would be to check if at least one pair of filters are actually linked. But filtersLinked
+   * is used only to enable or disable qml frame animation. So let's keep the approach simple.
+   */
+
+  filtersLinked = true;
+
+  Q_EMIT filtersLinkedChanged();
 }
 
 void StreamInputEffects::disconnect_filters() {
@@ -374,6 +383,10 @@ void StreamInputEffects::disconnect_filters() {
   list_proxies.clear();
 
   remove_unused_filters();
+
+  filtersLinked = false;
+
+  Q_EMIT filtersLinkedChanged();
 }
 
 void StreamInputEffects::set_bypass(const bool& state) {

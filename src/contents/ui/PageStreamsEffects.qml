@@ -247,7 +247,7 @@ Kirigami.Page {
             FrameAnimation {
                 id: frameAnimation
 
-                running: pageStreamsEffects.pageType !== 2 && appWindow.visible // qmllint disable
+                running: pageStreamsEffects.pageType !== 2 && appWindow.visible && pipelineInstance.filtersLinked // qmllint disable
 
                 onTriggered: {
                     if (pluginsStack.depth > 1 && pluginsStack.currentItem?.pluginBackend !== undefined)
@@ -457,7 +457,7 @@ Kirigami.Page {
             FrameAnimation {
                 id: headerFrameAnimation
 
-                running: DbSpectrum.state && appWindow.visible // qmllint disable
+                running: DbSpectrum.state && appWindow.visible && pipelineInstance.filtersLinked // qmllint disable
 
                 onRunningChanged: {
                     pageStreamsEffects.pipelineInstance.setSpectrumBypass(!running);
@@ -550,7 +550,7 @@ Kirigami.Page {
                 FrameAnimation {
                     id: footerFrameAnimation
 
-                    running: pageStreamsEffects.pageType !== 2 && appWindow.visible // qmllint disable
+                    running: pageStreamsEffects.pageType !== 2 && appWindow.visible && pipelineInstance.filtersLinked // qmllint disable
 
                     onRunningChanged: {
                         pageStreamsEffects.pipelineInstance.setUpdateLevelMeters(running);

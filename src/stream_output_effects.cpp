@@ -356,6 +356,15 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
   if (links.size() < 2U) {
     util::warning(std::format("Link from easyeffecst sink {} to node {} failed", prev_node_id, next_node_id));
   }
+
+  /*
+   * The correct thing to do would be to check if at least one pair of filters are actually linked. But filtersLinked
+   * is used only to enable or disable qml frame animation. So let's keep the approach simple.
+   */
+
+  filtersLinked = true;
+
+  Q_EMIT filtersLinkedChanged();
 }
 
 void StreamOutputEffects::disconnect_filters() {
@@ -399,6 +408,10 @@ void StreamOutputEffects::disconnect_filters() {
   list_proxies.clear();
 
   remove_unused_filters();
+
+  filtersLinked = false;
+
+  Q_EMIT filtersLinkedChanged();
 }
 
 void StreamOutputEffects::set_bypass(const bool& state) {
