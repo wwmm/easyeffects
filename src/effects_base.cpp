@@ -93,7 +93,7 @@ EffectsBase::EffectsBase(pw::Manager* pipe_manager, PipelineType pipe_type)
 
   switch (pipeline_type) {
     case PipelineType::input:
-      connect(db::StreamInputs::self(), &db::StreamInputs::pluginsChanged, [&]() { create_filters_if_necessary(); });
+      connect(DbStreamInputs::self(), &DbStreamInputs::pluginsChanged, [&]() { create_filters_if_necessary(); });
       break;
     case PipelineType::output:
       connect(DbStreamOutputs::self(), &DbStreamOutputs::pluginsChanged, [&]() { create_filters_if_necessary(); });
@@ -114,7 +114,7 @@ EffectsBase::~EffectsBase() {
 }
 
 void EffectsBase::create_filters_if_necessary() {
-  auto list = (pipeline_type == PipelineType::output ? DbStreamOutputs::plugins() : db::StreamInputs::plugins());
+  auto list = (pipeline_type == PipelineType::output ? DbStreamOutputs::plugins() : DbStreamInputs::plugins());
 
   if (list.empty()) {
     return;
@@ -201,7 +201,7 @@ void EffectsBase::create_filters_if_necessary() {
 }
 
 void EffectsBase::remove_unused_filters() {
-  auto list = (pipeline_type == PipelineType::output ? DbStreamOutputs::plugins() : db::StreamInputs::plugins());
+  auto list = (pipeline_type == PipelineType::output ? DbStreamOutputs::plugins() : DbStreamInputs::plugins());
 
   if (list.empty()) {
     plugins.clear();
@@ -319,8 +319,7 @@ QVariant EffectsBase::getPluginInstance(const QString& pluginName) {
 uint EffectsBase::getPipeLineRate() const {
   switch (pipeline_type) {
     case PipelineType::input:
-      if (auto node = pm->model_nodes.get_node_by_name(db::StreamInputs::inputDevice());
-          node.serial != SPA_ID_INVALID) {
+      if (auto node = pm->model_nodes.get_node_by_name(DbStreamInputs::inputDevice()); node.serial != SPA_ID_INVALID) {
         return node.rate * 0.001F;
       }
       return 0.0F;
@@ -337,7 +336,7 @@ uint EffectsBase::getPipeLineRate() const {
 }
 
 uint EffectsBase::getPipeLineLatency() {
-  auto list = (pipeline_type == PipelineType::output ? DbStreamOutputs::plugins() : db::StreamInputs::plugins());
+  auto list = (pipeline_type == PipelineType::output ? DbStreamOutputs::plugins() : DbStreamInputs::plugins());
 
   auto v = 0.0F;
 

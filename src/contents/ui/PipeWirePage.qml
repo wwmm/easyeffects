@@ -78,7 +78,7 @@ Kirigami.Page {
             }
 
             function updateInputDevComboSelection() {
-                const deviceName = useDefaultInputDevice.isChecked ? PW.Manager.defaultInputDeviceName : DB.Manager.streamInputs.inputDevice;
+                const deviceName = useDefaultInputDevice.isChecked ? PW.Manager.defaultInputDeviceName : DbStreamInputs.inputDevice;
                 const comboRow = comboFindRow(PW.ModelSourceDevices, deviceName);
                 if (comboRow !== -1)
                     comboInputDevice.currentIndex = comboRow;
@@ -120,13 +120,13 @@ Kirigami.Page {
                     id: useDefaultInputDevice
 
                     label: i18n("Use default input") // qmllint disable
-                    isChecked: DB.Manager.streamInputs.useDefaultInputDevice
+                    isChecked: DbStreamInputs.useDefaultInputDevice
                     onCheckedChanged: {
                         if (isChecked)
                             generalFormCard.updateInputDevComboSelection();
 
-                        if (isChecked !== DB.Manager.streamInputs.useDefaultInputDevice)
-                            DB.Manager.streamInputs.useDefaultInputDevice = isChecked;
+                        if (isChecked !== DbStreamInputs.useDefaultInputDevice)
+                            DbStreamInputs.useDefaultInputDevice = isChecked;
                     }
                 }
 
@@ -138,15 +138,15 @@ Kirigami.Page {
                     editable: false
                     model: PW.ModelSourceDevices
                     textRole: "description"
-                    enabled: !DB.Manager.streamInputs.useDefaultInputDevice
+                    enabled: !DbStreamInputs.useDefaultInputDevice
 
                     onActivated: idx => {
                         const proxyIndex = PW.ModelSourceDevices.index(idx, 0);
                         const sourceIndex = PW.ModelSourceDevices.mapToSource(proxyIndex);
                         const nodeName = PW.ModelNodes.getNodeName(sourceIndex.row);
-                        if (DB.Manager.streamInputs.inputDevice !== nodeName) {
+                        if (DbStreamInputs.inputDevice !== nodeName) {
                             if (!Common.isEmpty(nodeName))
-                                DB.Manager.streamInputs.inputDevice = nodeName;
+                                DbStreamInputs.inputDevice = nodeName;
                         }
                     }
 

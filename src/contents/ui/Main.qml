@@ -31,7 +31,7 @@ Kirigami.ApplicationWindow {
         1: {
             page: Qt.resolvedUrl("./PageStreamsEffects.qml"),
             pageType: 1,
-            streamDB: DB.Manager.streamInputs,
+            streamDB: DbStreamInputs,
             pipelineInstance: Pipeline.Input
         },
         2: {
@@ -260,7 +260,7 @@ Kirigami.ApplicationWindow {
                 instantiatorInputPresets.model = [];
                 instantiatorOutputPresets.model = [];
 
-                instantiatorInputPresets.model = DB.Manager.streamInputs.mostUsedPresets;
+                instantiatorInputPresets.model = DbStreamInputs.mostUsedPresets;
                 instantiatorOutputPresets.model = DbStreamOutputsPresets;
 
                 /**
@@ -271,7 +271,7 @@ Kirigami.ApplicationWindow {
                  * to read the description when the user opens the tray icon menu.
                  */
 
-                inputDeviceMenuItem.text = PW.ModelNodes.getNodeDescription(DB.Manager.streamInputs.inputDevice);
+                inputDeviceMenuItem.text = PW.ModelNodes.getNodeDescription(DbStreamInputs.inputDevice);
                 outputDeviceMenuItem.text = PW.ModelNodes.getNodeDescription(DbStreamOutputs.outputDevice);
             }
 
@@ -326,8 +326,8 @@ Kirigami.ApplicationWindow {
                 subtitle: i18n("Are you sure you want to clear this list?") // qmllint disable
                 standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
                 onAccepted: {
-                    DB.Manager.streamInputs.usedPresets = [];
-                    DB.Manager.streamInputs.mostUsedPresets = [];
+                    DbStreamInputs.usedPresets = [];
+                    DbStreamInputs.mostUsedPresets = [];
                 }
             }
 

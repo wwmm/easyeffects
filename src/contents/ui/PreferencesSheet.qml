@@ -174,10 +174,10 @@ KirigamiSettings.ConfigurationView {
 
                     label: i18n("Enable/disable input monitoring") // qmllint disable
                     maximumLineCount: -1
-                    isChecked: DB.Manager.streamInputs.listenToMic
+                    isChecked: DbStreamInputs.listenToMic
                     onCheckedChanged: {
-                        if (isChecked !== DB.Manager.streamInputs.listenToMic)
-                            DB.Manager.streamInputs.listenToMic = isChecked;
+                        if (isChecked !== DbStreamInputs.listenToMic)
+                            DbStreamInputs.listenToMic = isChecked;
                     }
                 }
 
@@ -186,10 +186,10 @@ KirigamiSettings.ConfigurationView {
 
                     label: i18n("Mic monitor plays to output effects pipeline") // qmllint disable
                     maximumLineCount: -1
-                    isChecked: DB.Manager.streamInputs.listenToMicIncludesOutputEffects
+                    isChecked: DbStreamInputs.listenToMicIncludesOutputEffects
                     onCheckedChanged: {
-                        if (isChecked !== DB.Manager.streamInputs.listenToMicIncludesOutputEffects)
-                            DB.Manager.streamInputs.listenToMicIncludesOutputEffects = isChecked;
+                        if (isChecked !== DbStreamInputs.listenToMicIncludesOutputEffects)
+                            DbStreamInputs.listenToMicIncludesOutputEffects = isChecked;
                     }
                 }
 

@@ -649,10 +649,10 @@ Kirigami.Page {
                         displayHint: Kirigami.DisplayHint.KeepVisible
                         visible: pageStreamsEffects.pageType === 1 && pageStreamsEffects.streamDB.visiblePage === 1
                         checkable: true
-                        checked: DB.Manager.streamInputs.listenToMic
+                        checked: DbStreamInputs.listenToMic
                         onTriggered: {
-                            if (checked !== DB.Manager.streamInputs.listenToMic) {
-                                DB.Manager.streamInputs.listenToMic = checked;
+                            if (checked !== DbStreamInputs.listenToMic) {
+                                DbStreamInputs.listenToMic = checked;
                             }
                         }
                     },

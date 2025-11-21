@@ -68,7 +68,7 @@ namespace db {
 Manager::Manager()
     : main(db::Main::self()),
       spectrum(DbSpectrum::self()),
-      streamInputs(db::StreamInputs::self()),
+      streamInputs(DbStreamInputs::self()),
       streamOutputs(DbStreamOutputs::self()),
       testSignals(db::TestSignals::self()),
       timer(new QTimer(this)) {
@@ -89,7 +89,7 @@ Manager::Manager()
 
   // creating plugins database
 
-  create_plugin_db("sie", db::StreamInputs::plugins(), siePluginsDB);
+  create_plugin_db("sie", DbStreamInputs::plugins(), siePluginsDB);
   create_plugin_db("soe", DbStreamOutputs::plugins(), soePluginsDB);
 
   // signals
@@ -97,8 +97,8 @@ Manager::Manager()
   connect(main, &db::Main::enableServiceModeChanged,
           []() { QApplication::setQuitOnLastWindowClosed(!db::Main::enableServiceMode()); });
 
-  connect(streamInputs, &db::StreamInputs::pluginsChanged,
-          [&]() { create_plugin_db("sie", db::StreamInputs::plugins(), siePluginsDB); });
+  connect(streamInputs, &DbStreamInputs::pluginsChanged,
+          [&]() { create_plugin_db("sie", DbStreamInputs::plugins(), siePluginsDB); });
 
   connect(streamOutputs, &DbStreamOutputs::pluginsChanged,
           [&]() { create_plugin_db("soe", DbStreamOutputs::plugins(), soePluginsDB); });

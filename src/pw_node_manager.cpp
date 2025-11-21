@@ -215,9 +215,8 @@ auto NodeManager::registerNode(pw_registry* registry, uint32_t id, const char* t
 
   util::spa_dict_get_num(props, PW_KEY_DEVICE_ID, nd->nd_info->device_id);
 
-  const auto user_blocklist = (media_class == tags::pipewire::media_class::output_stream)
-                                  ? DbStreamOutputs::blocklist()
-                                  : db::StreamInputs::blocklist();
+  const auto user_blocklist = (media_class == tags::pipewire::media_class::output_stream) ? DbStreamOutputs::blocklist()
+                                                                                          : DbStreamInputs::blocklist();
 
   nd->nd_info->is_blocklisted = std::ranges::find(user_blocklist, nd->nd_info->application_id) != user_blocklist.end();
 
@@ -282,7 +281,7 @@ void NodeManager::onNodeInfo(void* object, const pw_node_info* info) {
 
       uint64_t serial = SPA_ID_INVALID;
 
-      auto input_device = nm->model_nodes.get_node_by_name(db::StreamInputs::inputDevice());
+      auto input_device = nm->model_nodes.get_node_by_name(DbStreamInputs::inputDevice());
 
       if (util::str_to_num(target_object, serial)) {
         if (serial != SPA_ID_INVALID && (serial != input_device.serial && serial != nm->ee_source_node.serial)) {

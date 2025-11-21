@@ -33,7 +33,7 @@ Kirigami.AbstractCard {
         if (mediaClass === "Stream/Output/Audio")
             return DbStreamOutputs.showBlocklistedApps;
         else if (mediaClass === "Stream/Input/Audio")
-            return DB.Manager.streamInputs.showBlocklistedApps;
+            return DbStreamInputs.showBlocklistedApps;
     }
 
     contentItem: ColumnLayout {

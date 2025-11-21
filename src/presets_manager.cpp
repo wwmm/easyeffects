@@ -205,7 +205,7 @@ void Manager::save_blocklist(const PipelineType& pipeline_type, nlohmann::json& 
       break;
     }
     case PipelineType::input: {
-      const auto list = db::StreamInputs::blocklist();
+      const auto list = DbStreamInputs::blocklist();
 
       for (const auto& l : list) {
         blocklist.push_back(l.toStdString());
@@ -232,9 +232,9 @@ auto Manager::load_blocklist(const PipelineType& pipeline_type, const nlohmann::
           new_list.append(QString::fromStdString(app));
         }
 
-        db::StreamInputs::setBlocklist(new_list);
+        DbStreamInputs::setBlocklist(new_list);
       } catch (const nlohmann::json::exception& e) {
-        db::StreamInputs::setBlocklist(QStringList{});
+        DbStreamInputs::setBlocklist(QStringList{});
 
         notify_error(PresetError::blocklist_format);
 
@@ -242,7 +242,7 @@ auto Manager::load_blocklist(const PipelineType& pipeline_type, const nlohmann::
 
         return false;
       } catch (...) {
-        db::StreamInputs::setBlocklist(QStringList{});
+        DbStreamInputs::setBlocklist(QStringList{});
 
         notify_error(PresetError::blocklist_generic);
 
@@ -319,7 +319,7 @@ bool Manager::savePresetFile(const PipelineType& pipeline_type, const QString& n
       break;
     }
     case PipelineType::input: {
-      const auto plugins = db::StreamInputs::plugins();
+      const auto plugins = DbStreamInputs::plugins();
 
       std::vector<std::string> list;
 
@@ -456,7 +456,7 @@ auto Manager::read_effects_pipeline_from_preset(const PipelineType& pipeline_typ
 
   switch (pipeline_type) {
     case PipelineType::input:
-      db::StreamInputs::setPlugins(new_list);
+      DbStreamInputs::setPlugins(new_list);
       break;
     case PipelineType::output:
       DbStreamOutputs::setPlugins(new_list);
@@ -875,7 +875,7 @@ void Manager::update_used_presets_list(const PipelineType& pipeline_type, const 
   QList<QString> names;
   QList<int> count_list;
 
-  names = (pipeline_type == PipelineType::input) ? db::StreamInputs::usedPresets() : DbStreamOutputs::usedPresets();
+  names = (pipeline_type == PipelineType::input) ? DbStreamInputs::usedPresets() : DbStreamOutputs::usedPresets();
 
   // removing from the list presets that are not installed anymore
 
@@ -910,7 +910,7 @@ void Manager::update_used_presets_list(const PipelineType& pipeline_type, const 
   }
 
   if (pipeline_type == PipelineType::input) {
-    db::StreamInputs::setUsedPresets(names);
+    DbStreamInputs::setUsedPresets(names);
   } else {
     DbStreamOutputs::setUsedPresets(names);
   }
@@ -939,7 +939,7 @@ void Manager::update_used_presets_list(const PipelineType& pipeline_type, const 
   }
 
   if (pipeline_type == PipelineType::input) {
-    db::StreamInputs::setMostUsedPresets(sortedList);
+    DbStreamInputs::setMostUsedPresets(sortedList);
   } else {
     DbStreamOutputs::setMostUsedPresets(sortedList);
   }

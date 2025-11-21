@@ -110,7 +110,7 @@ void GlobalShortcuts::process_activated_signal([[maybe_unused]] const QDBusObjec
   }
 
   if (shortcut_id == "microphone monitoring") {
-    db::StreamInputs::setListenToMic(!db::StreamInputs::listenToMic());
+    DbStreamInputs::setListenToMic(!DbStreamInputs::listenToMic());
 
     return;
   }
