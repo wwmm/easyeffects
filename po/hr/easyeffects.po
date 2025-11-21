@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-18 14:59+0000\n"
-"PO-Revision-Date: 2025-11-20 10:51+0000\n"
+"PO-Revision-Date: 2025-11-21 11:51+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/easyeffects/"
 "main/hr/>\n"
@@ -3276,9 +3276,8 @@ msgid "Output presets"
 msgstr "Unaprijed postavljene postavke ispisa"
 
 #: src/command_line_parser.cpp:168
-#, fuzzy
 msgid "No output presets."
-msgstr "Unaprijed postavljene postavke ispisa"
+msgstr "Bez unaprijed postavljenih postavki rezultata."
 
 #: src/command_line_parser.cpp:179
 #, fuzzy
@@ -3286,9 +3285,8 @@ msgid "Input presets"
 msgstr "Učitaj predloške"
 
 #: src/command_line_parser.cpp:181
-#, fuzzy
 msgid "No input presets."
-msgstr "Učitaj predloške"
+msgstr "Bez unaprijed postavljenih postavki unosa."
 
 #: src/command_line_parser.cpp:211
 msgid "Specified preset does not exist."
