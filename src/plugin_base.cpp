@@ -26,6 +26,7 @@
 #include <pipewire/thread-loop.h>
 #include <qnamespace.h>
 #include <qobjectdefs.h>
+#include <qthread.h>
 #include <qtimer.h>
 #include <spa/node/io.h>
 #include <spa/param/latency-utils.h>
@@ -263,6 +264,7 @@ PluginBase::PluginBase(std::string tag,
       pipeline_type(pipe_type),
       enable_probe(enable_probe),
       pm(pipe_manager),
+      baseWorker(new PluginBaseWorker),
       native_ui_timer(new QTimer(this)) {
   QString description;
   QString description_pipeline;
@@ -385,6 +387,14 @@ PluginBase::PluginBase(std::string tag,
     lv2_wrapper->notify_ui();
     lv2_wrapper->update_ui();
   });
+
+  // worker thread for the native ui and maybe also other things
+
+  baseWorker->moveToThread(&workerThread);
+
+  workerThread.start();
+
+  connect(&workerThread, &QThread::finished, baseWorker, &QObject::deleteLater);
 }
 
 PluginBase::~PluginBase() {
@@ -397,6 +407,9 @@ PluginBase::~PluginBase() {
   pw_filter_destroy(filter);
 
   pm->sync_wait_unlock();
+
+  workerThread.quit();
+  workerThread.wait();
 }
 
 void PluginBase::reset() {}
@@ -505,36 +518,39 @@ auto PluginBase::get_latency_seconds() -> float {
 }
 
 void PluginBase::showNativeUi() {
-  if (lv2_wrapper == nullptr) {
-    return;
-  }
+  native_ui_timer->start();
 
-  if (!lv2_wrapper->has_ui()) {
-    // using invokeMethod to force this code to run in the main thread and
-    // avoid load in the QML thread.
+  // using invokeMethod to force this code to run in the base class worker thread and
+  // avoid load in QML or main thread.
 
-    // NOLINTBEGIN(clang-analyzer-cplusplus.NewDeleteLeaks)
-    QMetaObject::invokeMethod(
-        this,
-        [this] {
+  // NOLINTBEGIN(clang-analyzer-cplusplus.NewDeleteLeaks)
+  QMetaObject::invokeMethod(
+      baseWorker,
+      [this] {
+        if (lv2_wrapper != nullptr && !lv2_wrapper->has_ui()) {
           lv2_wrapper->load_ui();
-          native_ui_timer->start();
-        },
-        Qt::QueuedConnection);
+        }
+      },
+      Qt::QueuedConnection);
 
-    // NOLINTEND(clang-analyzer-cplusplus.NewDeleteLeaks)
-  }
+  // NOLINTEND(clang-analyzer-cplusplus.NewDeleteLeaks)
 }
 
 void PluginBase::closeNativeUi() {
   native_ui_timer->stop();
 
-  if (lv2_wrapper == nullptr) {
-    return;
-  }
+  // NOLINTBEGIN(clang-analyzer-cplusplus.NewDeleteLeaks)
+  QMetaObject::invokeMethod(
+      baseWorker,
+      [this] {
+        if (lv2_wrapper != nullptr) {
+          lv2_wrapper->native_ui_to_database();
+          lv2_wrapper->close_ui();
+        }
+      },
+      Qt::QueuedConnection);
 
-  lv2_wrapper->native_ui_to_database();
-  lv2_wrapper->close_ui();
+  // NOLINTEND(clang-analyzer-cplusplus.NewDeleteLeaks)
 }
 
 void PluginBase::set_native_ui_update_frequency(const uint& value) {

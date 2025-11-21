@@ -61,7 +61,8 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
       settings(
           db::Manager::self().get_plugin_db<db::Convolver>(pipe_type,
                                                            tags::plugin_name::BaseName::convolver + "#" + instance_id)),
-      kernel_manager(ConvolverKernelManager(pipe_type)) {
+      kernel_manager(ConvolverKernelManager(pipe_type)),
+      worker(new ConvolverWorker) {
   init_common_controls<db::Convolver>(settings);
 
   dry = (settings->dry() <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(settings->dry()));
@@ -91,8 +92,6 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
   });
 
   // Preparing the worker thread
-
-  worker = new ConvolverWorker;
 
   worker->moveToThread(&workerThread);
 
@@ -164,8 +163,6 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
       },
       Qt::QueuedConnection);
 
-  workerThread.start();
-
   QMetaObject::invokeMethod(
       worker,
       [this] {
@@ -198,9 +195,6 @@ Convolver::~Convolver() {
   }
 
   zita.stop();
-
-  workerThread.quit();
-  workerThread.wait();
 
   disconnect();
   settings->disconnect();
@@ -442,12 +436,6 @@ void Convolver::combineKernels(const QString& kernel1, const QString& kernel2, c
       Qt::QueuedConnection);
 }
 
-void Convolver::chart_kernel_fft(const std::vector<float>& kernel_L,
-                                 const std::vector<float>& kernel_R,
-                                 const float& kernel_rate) {
-  kernel_fft.calculate_fft(kernel_L, kernel_R, kernel_rate, interpPoints);
-}
-
 void Convolver::clear_chart_data() {
   chartMagL.clear();
   chartMagR.clear();
@@ -455,20 +443,4 @@ void Convolver::clear_chart_data() {
   chartMagRfftLinear.clear();
   chartMagLfftLog.clear();
   chartMagRfftLog.clear();
-}
-
-void ConvolverWorker::calculateFFT(std::vector<float> kernel_L,
-                                   std::vector<float> kernel_R,
-                                   int kernel_rate,
-                                   int interpPoints) {
-  ConvolverKernelFFT kernel_fft;
-
-  kernel_fft.calculate_fft(kernel_L, kernel_R, kernel_rate, interpPoints);
-
-  auto linear_L = kernel_fft.linear_L;
-  auto linear_R = kernel_fft.linear_R;
-  auto log_L = kernel_fft.log_L;
-  auto log_R = kernel_fft.log_R;
-
-  Q_EMIT onNewSpectrum(linear_L, linear_R, log_L, log_R);
 }
