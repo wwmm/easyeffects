@@ -261,7 +261,7 @@ Kirigami.ApplicationWindow {
                 instantiatorOutputPresets.model = [];
 
                 instantiatorInputPresets.model = DbStreamInputs.mostUsedPresets;
-                instantiatorOutputPresets.model = DbStreamOutputsPresets;
+                instantiatorOutputPresets.model = DbStreamOutputs.mostUsedPresets;
 
                 /**
                  * Although it is possible to make a binding to the text property so it is automatically updated
@@ -273,6 +273,8 @@ Kirigami.ApplicationWindow {
 
                 inputDeviceMenuItem.text = PW.ModelNodes.getNodeDescription(DbStreamInputs.inputDevice);
                 outputDeviceMenuItem.text = PW.ModelNodes.getNodeDescription(DbStreamOutputs.outputDevice);
+
+                console.log(DbStreamOutputs.outputDevice);
             }
 
             Instantiator {
