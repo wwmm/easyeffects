@@ -36,7 +36,7 @@ class IrsManager : public QObject {
   Q_OBJECT
 
  public:
-  enum class ImportState { success, no_regular_file, no_frame, no_stereo };
+  enum class ImportState { success, no_regular_file, no_frame, unsupported };
 
   explicit IrsManager(DirectoryManager& directory_manager);
   IrsManager(const IrsManager&) = delete;

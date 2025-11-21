@@ -384,11 +384,11 @@ void Convolver::load_kernel_file(const bool& init_zita, const uint& server_sampl
 
   std::vector<double> copy_helper(kernel_data.sampleCount());
 
-  std::ranges::copy(kernel_data.left_channel, copy_helper.begin());
+  std::ranges::copy(kernel_data.channel_L, copy_helper.begin());
 
   auto magL = util::interpolate(time_axis, copy_helper, x_linear);
 
-  std::ranges::copy(kernel_data.right_channel, copy_helper.begin());
+  std::ranges::copy(kernel_data.channel_R, copy_helper.begin());
 
   auto magR = util::interpolate(time_axis, copy_helper, x_linear);
 
@@ -404,7 +404,7 @@ void Convolver::load_kernel_file(const bool& init_zita, const uint& server_sampl
 
   ConvolverKernelFFT kernel_fft;
 
-  kernel_fft.calculate_fft(kernel_data.left_channel, kernel_data.right_channel, kernel_data.rate, interpPoints);
+  kernel_fft.calculate_fft(kernel_data.channel_L, kernel_data.channel_R, kernel_data.rate, interpPoints);
 
   Q_EMIT worker->onNewChartMag(chart_mag_L, chart_mag_R);
 
