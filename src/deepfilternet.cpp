@@ -105,7 +105,7 @@ void DeepFilterNet::setup() {
   // NOLINTBEGIN(clang-analyzer-cplusplus.NewDeleteLeaks)
 
   QMetaObject::invokeMethod(
-      this,
+      baseWorker,
       [this] {
         std::scoped_lock<std::mutex> lock(data_mutex);
 
@@ -117,7 +117,6 @@ void DeepFilterNet::setup() {
 
         ladspa_wrapper->n_samples = n_samples;
         ladspa_wrapper->create_instance(48000);
-        ladspa_wrapper->activate();
 
         if (resample && !resampler_ready) {
           resampler_inL = std::make_unique<Resampler>(rate, 48000);

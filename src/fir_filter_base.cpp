@@ -46,6 +46,10 @@ FirFilterBase::FirFilterBase(std::string tag) : log_tag(std::move(tag)) {}
 FirFilterBase::~FirFilterBase() {
   zita_ready = false;
 
+  free_zita();
+}
+
+void FirFilterBase::free_zita() {
   if (conv != nullptr) {
     conv->stop_process();
 
@@ -148,17 +152,7 @@ void FirFilterBase::setup_zita() {
     return;
   }
 
-  if (conv != nullptr) {
-    conv->stop_process();
-
-    while (!conv->check_stop()) {
-      std::this_thread::sleep_for(std::chrono::milliseconds(1));
-    }
-
-    delete conv;
-
-    conv = nullptr;
-  }
+  free_zita();
 
   conv = new Convproc();
 

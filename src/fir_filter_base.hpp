@@ -49,6 +49,8 @@ class FirFilterBase {
 
   virtual void setup();
 
+  void free_zita();
+
   [[nodiscard]] auto get_delay() const -> float;
 
   template <typename T1>
