@@ -1,7 +1,6 @@
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
-import ee.database as DB
 import ee.pipewire as PW
 import ee.ui
 import org.kde.kirigami as Kirigami

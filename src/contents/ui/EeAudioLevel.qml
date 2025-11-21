@@ -1,6 +1,5 @@
 import QtQuick
 import "Common.js" as Common
-import ee.database as DB
 import org.kde.kirigami as Kirigami
 
 Rectangle {
