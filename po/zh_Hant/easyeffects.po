@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-19 22:03+0000\n"
-"PO-Revision-Date: 2025-11-20 10:51+0000\n"
+"PO-Revision-Date: 2025-11-21 11:51+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hant/>\n"
@@ -37,7 +37,6 @@ msgid "Reset Easy Effects."
 msgstr "重新設定 Easy Effects。"
 
 #: src/command_line_parser.cpp:44
-#, fuzzy
 msgid "Hide the window."
 msgstr "隱藏視窗。"
 
@@ -90,7 +89,6 @@ msgid "Must specify preset type: input/output."
 msgstr "必須指定預設集型式：輸入/輸出。"
 
 #: src/command_line_parser.cpp:166
-#, fuzzy
 msgid "Output presets"
 msgstr "輸出預設集"
 
@@ -99,7 +97,6 @@ msgid "No output presets."
 msgstr "無輸出預設集。"
 
 #: src/command_line_parser.cpp:179
-#, fuzzy
 msgid "Input presets"
 msgstr "輸入預設集"
 
@@ -359,12 +356,11 @@ msgstr "Hz"
 
 #: src/contents/ui/BassEnhancer.qml:139
 msgid "Floor active"
-msgstr "樓層作用"
+msgstr "基底作用"
 
 #: src/contents/ui/BassEnhancer.qml:150
-#, fuzzy
 msgid "Floor"
-msgstr "樓層"
+msgstr "基底 (Floor)"
 
 #: src/contents/ui/BassEnhancer.qml:204 src/contents/ui/Compressor.qml:890
 #: src/contents/ui/Deesser.qml:319 src/contents/ui/Delay.qml:393
@@ -944,7 +940,6 @@ msgid "Autogain"
 msgstr "自動增益"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:31
-#, fuzzy
 msgid "Imported a new Convolver impulse file."
 msgstr "已經匯入新的 Convolver 脈衝檔案。"
 
@@ -1163,7 +1158,6 @@ msgstr "向右反轉"
 
 #: src/contents/ui/DelegateClientsList.qml:37
 #: src/contents/ui/DelegateModulesList.qml:37
-#, fuzzy
 msgctxt "@info:placeholder"
 msgid "Unknown"
 msgstr "不明"
@@ -1173,9 +1167,8 @@ msgid "(id: %1)"
 msgstr "(id: %1)"
 
 #: src/contents/ui/DelegateClientsList.qml:47
-#, fuzzy
 msgid "Access: %1"
-msgstr "存取"
+msgstr "存取： %1"
 
 #: src/contents/ui/DelegateClientsList.qml:54
 msgid "API: %1"
@@ -1191,10 +1184,9 @@ msgid "(id: %1, version: %2)"
 msgstr "(ID： %1， 版本： %2)"
 
 #: src/contents/ui/DelegateModulesList.qml:47
-#, fuzzy
 msgctxt "@info:placeholder"
 msgid "No description set"
-msgstr "註釋"
+msgstr "沒有描述設定"
 
 #: src/contents/ui/DelegatePluginsList.qml:100
 msgid "Toggle this effect"
@@ -1325,7 +1317,6 @@ msgstr "匯出目前等化器設定至外部 APO 預設集檔案失敗。"
 
 #: src/contents/ui/Equalizer.qml:107 src/contents/ui/Filter.qml:78
 #: src/contents/ui/Loudness.qml:58
-#, fuzzy
 msgid "IIR"
 msgstr "IIR"
 
@@ -1335,14 +1326,12 @@ msgstr "FIR"
 
 #: src/contents/ui/Equalizer.qml:107 src/contents/ui/Filter.qml:78
 #: src/contents/ui/Loudness.qml:58
-#, fuzzy
 msgid "FFT"
 msgstr "FFT"
 
 #: src/contents/ui/Equalizer.qml:107 src/contents/ui/Filter.qml:78
-#, fuzzy
 msgid "SPM"
-msgstr "SMA"
+msgstr "SPM"
 
 #: src/contents/ui/Equalizer.qml:116
 msgid "Bands"
@@ -1358,9 +1347,8 @@ msgid "Pitch left"
 msgstr "向左傾斜"
 
 #: src/contents/ui/Equalizer.qml:157 src/contents/ui/Equalizer.qml:174
-#, fuzzy
 msgid "st"
-msgstr "最佳"
+msgstr "st"
 
 #: src/contents/ui/Equalizer.qml:166
 msgid "Pitch right"
@@ -1490,9 +1478,8 @@ msgid "Width"
 msgstr "寬度"
 
 #: src/contents/ui/EqualizerBandMenu.qml:143
-#, fuzzy
 msgid "oct"
-msgstr "Low-cut"
+msgstr "oct"
 
 #: src/contents/ui/EqualizerBandMenu.qml:167
 #: src/contents/ui/MultibandCompressor.qml:73
@@ -1893,7 +1880,6 @@ msgid "Added a new effect to the pipeline: %1"
 msgstr "已經添加新的音效至管道： %1"
 
 #: src/contents/ui/MenuAddPlugins.qml:184
-#, fuzzy
 msgctxt "@action:button"
 msgid "Close"
 msgstr "關閉"
@@ -1909,7 +1895,6 @@ msgstr "終止"
 
 #: src/contents/ui/MultibandCompressor.qml:479
 #: src/contents/ui/MultibandGate.qml:452
-#, fuzzy
 msgid "Low-cut"
 msgstr "Low-cut"
 
@@ -1998,7 +1983,6 @@ msgid "Players"
 msgstr "播放器"
 
 #: src/contents/ui/PageStreamsEffects.qml:391
-#, fuzzy
 msgid "Output device"
 msgstr "輸出裝置"
 
@@ -2044,13 +2028,12 @@ msgid "Device Management"
 msgstr "裝置管理"
 
 #: src/contents/ui/PipeWirePage.qml:115
-#, fuzzy
 msgid ""
 "It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
 "external applications (e.g. Gnome Settings and Plasma System Settings)"
 msgstr ""
-"It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
-"external applications (e.g. Gnome Settings and Plasma System Settings)"
+"建議不要將 Easy Effects Sink/Source 於外部應用程式中設定為預設裝置(例如 Gnome"
+" 設定及 Plasma 系統設定)"
 
 #: src/contents/ui/PipeWirePage.qml:122
 msgid "Use default input"
@@ -2252,15 +2235,12 @@ msgid "Use cubic volume"
 msgstr "使用立方體音量"
 
 #: src/contents/ui/PreferencesSheet.qml:150
-#, fuzzy
 msgid ""
 "Use cubic scale for stream volume rather than the linear one. Low "
 "percentages results in a lower perceived volume while the loudness appears "
 "to change more evenly across the slider."
-msgstr ""
-"Use cubic scale for stream volume rather than the linear one. Low "
-"percentages results in a lower perceived volume while the loudness appears "
-"to change more evenly across the slider."
+msgstr "使用立方尺度(cubic scale)來表示流量，而非線性尺度。較低的百分比會導致較低的感"
+"知音量，當調動鈕變動時其響度變化顯示較為均勻。"
 
 #: src/contents/ui/PreferencesSheet.qml:162
 msgid "Ignore system notifications"
@@ -2445,9 +2425,8 @@ msgid ""
 msgstr "音效列表中的操作按鈕移動至前後選單內，以獲得較為緊湊的檢視。"
 
 #: src/contents/ui/PreferencesSheet.qml:501
-#, fuzzy
 msgid "Autoload delay"
-msgstr "自動載入"
+msgstr "自動載入延遲"
 
 #: src/contents/ui/PreferencesSheet.qml:502
 msgid ""
