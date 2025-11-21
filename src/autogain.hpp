@@ -25,7 +25,6 @@
 #include <QString>
 #include <span>
 #include <string>
-#include <thread>
 #include <vector>
 #include "easyeffects_db_autogain.h"
 #include "pipeline_type.hpp"
@@ -99,8 +98,6 @@ class Autogain : public PluginBase {
   std::vector<float> data;
 
   ebur128_state* ebur_state = nullptr;
-
-  std::vector<std::thread> mythreads;
 
   db::Autogain* settings = nullptr;
 

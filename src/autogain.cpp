@@ -19,6 +19,8 @@
 
 #include "autogain.hpp"
 #include <ebur128.h>
+#include <qnamespace.h>
+#include <qobjectdefs.h>
 #include <qtypes.h>
 #include <algorithm>
 #include <cmath>
@@ -60,23 +62,16 @@ Autogain::Autogain(const std::string& tag, pw::Manager* pipe_manager, PipelineTy
 }
 
 Autogain::~Autogain() {
+  std::scoped_lock<std::mutex> lock(data_mutex);
+
+  ebur128_ready = false;
+
   if (connected_to_pw) {
     disconnect_from_pw();
   }
 
   disconnect();
-  disconnect();
-  disconnect();
-  disconnect();
   settings->disconnect();
-
-  for (auto& t : mythreads) {
-    t.join();
-  }
-
-  mythreads.clear();
-
-  std::scoped_lock<std::mutex> lock(data_mutex);
 
   if (ebur_state != nullptr) {
     ebur128_destroy(&ebur_state);
@@ -123,40 +118,39 @@ void Autogain::set_maximum_history(const int& seconds) {
 }
 
 void Autogain::setup() {
-  if (2U * static_cast<size_t>(n_samples) != data.size()) {
-    data.resize(static_cast<size_t>(n_samples) * 2U);
-  }
+  std::scoped_lock<std::mutex> lock(data_mutex);
 
-  if (rate != old_rate) {
-    block_time = static_cast<double>(n_samples) / static_cast<double>(rate);
+  ebur128_ready = false;
 
-    attack_coeff = std::exp(-block_time / attack_time);
-    release_coeff = std::exp(-block_time / release_time);
+  // NOLINTBEGIN(clang-analyzer-cplusplus.NewDeleteLeaks)
+  QMetaObject::invokeMethod(
+      baseWorker,
+      [this] {
+        if (ebur128_ready) {
+          return;
+        }
 
-    data_mutex.lock();
+        if (2U * static_cast<size_t>(n_samples) != data.size()) {
+          data.resize(static_cast<size_t>(n_samples) * 2U);
+        }
 
-    ebur128_ready = false;
+        block_time = static_cast<double>(n_samples) / static_cast<double>(rate);
 
-    data_mutex.unlock();
+        attack_coeff = std::exp(-block_time / attack_time);
+        release_coeff = std::exp(-block_time / release_time);
 
-    mythreads.emplace_back([this]() {  // Using emplace_back here makes sense
-      if (ebur128_ready) {
-        return;
-      }
+        auto status = true;
 
-      auto status = true;
+        old_rate = rate;
 
-      old_rate = rate;
+        status = init_ebur128();
 
-      status = init_ebur128();
+        std::scoped_lock<std::mutex> lock(data_mutex);
 
-      data_mutex.lock();
-
-      ebur128_ready = status;
-
-      data_mutex.unlock();
-    });
-  }
+        ebur128_ready = status;
+      },
+      Qt::QueuedConnection);
+  // NOLINTEND(clang-analyzer-cplusplus.NewDeleteLeaks)
 }
 
 void Autogain::process(std::span<float>& left_in,
@@ -371,19 +365,5 @@ float Autogain::getOutputGainLevel() const {
 }
 
 void Autogain::resetHistory() {
-  mythreads.emplace_back([&]() {  // Using emplace_back here makes sense
-    data_mutex.lock();
-
-    ebur128_ready = false;
-
-    data_mutex.unlock();
-
-    auto status = init_ebur128();
-
-    data_mutex.lock();
-
-    ebur128_ready = status;
-
-    data_mutex.unlock();
-  });
+  setup();
 }
