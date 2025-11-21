@@ -19,9 +19,11 @@
 
 #include "level_meter.hpp"
 #include <ebur128.h>
+#include <qnamespace.h>
 #include <qobject.h>
 #include <algorithm>
 #include <cstddef>
+#include <format>
 #include <mutex>
 #include <span>
 #include <string>
@@ -49,20 +51,16 @@ LevelMeter::LevelMeter(const std::string& tag, pw::Manager* pipe_manager, Pipeli
 }
 
 LevelMeter::~LevelMeter() {
+  std::scoped_lock<std::mutex> lock(data_mutex);
+
+  ebur128_ready = false;
+
   if (connected_to_pw) {
     disconnect_from_pw();
   }
 
   disconnect();
   settings->disconnect();
-
-  for (auto& t : mythreads) {
-    t.join();
-  }
-
-  mythreads.clear();
-
-  std::scoped_lock<std::mutex> lock(data_mutex);
 
   if (ebur_state != nullptr) {
     ebur128_destroy(&ebur_state);
@@ -96,35 +94,30 @@ auto LevelMeter::init_ebur128() -> bool {
 }
 
 void LevelMeter::setup() {
-  if (2U * static_cast<size_t>(n_samples) != data.size()) {
-    data.resize(static_cast<size_t>(n_samples) * 2U);
-  }
+  std::scoped_lock<std::mutex> lock(data_mutex);
 
-  if (rate != old_rate) {
-    data_mutex.lock();
+  ebur128_ready = false;
 
-    ebur128_ready = false;
+  // NOLINTBEGIN(clang-analyzer-cplusplus.NewDeleteLeaks)
+  QMetaObject::invokeMethod(
+      baseWorker,
+      [this] {
+        if (ebur128_ready) {
+          return;
+        }
 
-    data_mutex.unlock();
+        if (2U * static_cast<size_t>(n_samples) != data.size()) {
+          data.resize(static_cast<size_t>(n_samples) * 2U);
+        }
 
-    mythreads.emplace_back([this]() {  // Using emplace_back here makes sense
-      if (ebur128_ready) {
-        return;
-      }
+        auto status = init_ebur128();
 
-      auto status = true;
+        std::scoped_lock<std::mutex> lock(data_mutex);
 
-      old_rate = rate;
-
-      status = init_ebur128();
-
-      data_mutex.lock();
-
-      ebur128_ready = status;
-
-      data_mutex.unlock();
-    });
-  }
+        ebur128_ready = status;
+      },
+      Qt::QueuedConnection);
+  // NOLINTEND(clang-analyzer-cplusplus.NewDeleteLeaks)
 }
 
 void LevelMeter::process(std::span<float>& left_in,
@@ -140,9 +133,17 @@ void LevelMeter::process(std::span<float>& left_in,
     return;
   }
 
-  for (size_t n = 0U; n < n_samples; n++) {
-    data[2U * n] = left_in[n];
-    data[(2U * n) + 1U] = right_in[n];
+  {
+    const float* __restrict__ l = left_in.data();
+    const float* __restrict__ r = right_in.data();
+    float* __restrict__ d = data.data();
+
+    for (size_t i = 0; i < n_samples; ++i) {
+      const size_t idx = i * 2;
+
+      d[idx] = l[i];
+      d[idx + 1] = r[i];
+    }
   }
 
   ebur128_add_frames_float(ebur_state, data.data(), n_samples);
@@ -195,21 +196,7 @@ auto LevelMeter::get_latency_seconds() -> float {
 }
 
 void LevelMeter::resetHistory() {
-  mythreads.emplace_back([this]() {  // Using emplace_back here makes sense
-    data_mutex.lock();
-
-    ebur128_ready = false;
-
-    data_mutex.unlock();
-
-    auto status = init_ebur128();
-
-    data_mutex.lock();
-
-    ebur128_ready = status;
-
-    data_mutex.unlock();
-  });
+  setup();
 }
 
 float LevelMeter::getMomentaryLevel() const {
