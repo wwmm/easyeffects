@@ -69,7 +69,7 @@ Manager::Manager()
     : main(db::Main::self()),
       spectrum(DbSpectrum::self()),
       streamInputs(db::StreamInputs::self()),
-      streamOutputs(db::StreamOutputs::self()),
+      streamOutputs(DbStreamOutputs::self()),
       testSignals(db::TestSignals::self()),
       timer(new QTimer(this)) {
   // creating our database directory if it does not exist
@@ -90,7 +90,7 @@ Manager::Manager()
   // creating plugins database
 
   create_plugin_db("sie", db::StreamInputs::plugins(), siePluginsDB);
-  create_plugin_db("soe", db::StreamOutputs::plugins(), soePluginsDB);
+  create_plugin_db("soe", DbStreamOutputs::plugins(), soePluginsDB);
 
   // signals
 
@@ -100,8 +100,8 @@ Manager::Manager()
   connect(streamInputs, &db::StreamInputs::pluginsChanged,
           [&]() { create_plugin_db("sie", db::StreamInputs::plugins(), siePluginsDB); });
 
-  connect(streamOutputs, &db::StreamOutputs::pluginsChanged,
-          [&]() { create_plugin_db("soe", db::StreamOutputs::plugins(), soePluginsDB); });
+  connect(streamOutputs, &DbStreamOutputs::pluginsChanged,
+          [&]() { create_plugin_db("soe", DbStreamOutputs::plugins(), soePluginsDB); });
 
   connect(main, &db::Main::databaseAutosaveIntervalChanged,
           [&]() { timer->setInterval(db::Main::databaseAutosaveInterval()); });

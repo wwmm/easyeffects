@@ -299,7 +299,7 @@ void StreamInputEffects::connect_filters(const bool& bypass) {
 
       if (name.startsWith(tags::plugin_name::BaseName::echoCanceller)) {
         if (plugins[name]->connected_to_pw) {
-          auto output_device = pm->model_nodes.get_node_by_name(db::StreamOutputs::outputDevice());
+          auto output_device = pm->model_nodes.get_node_by_name(DbStreamOutputs::outputDevice());
 
           for (const auto& link : pm->link_nodes(output_device.id, plugins[name]->get_node_id(), true)) {
             list_proxies.push_back(link);
@@ -387,7 +387,7 @@ void StreamInputEffects::set_bypass(const bool& state) {
 void StreamInputEffects::set_listen_to_mic(const bool& state) {
   if (state) {
     auto output_device = !db::StreamInputs::listenToMicIncludesOutputEffects()
-                             ? pm->model_nodes.get_node_by_name(db::StreamOutputs::outputDevice())
+                             ? pm->model_nodes.get_node_by_name(DbStreamOutputs::outputDevice())
                              : pm->ee_sink_node;
 
     for (const auto& link : pm->link_nodes(pm->ee_source_node.id, output_device.id, false, false)) {

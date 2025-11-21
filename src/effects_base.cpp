@@ -96,7 +96,7 @@ EffectsBase::EffectsBase(pw::Manager* pipe_manager, PipelineType pipe_type)
       connect(db::StreamInputs::self(), &db::StreamInputs::pluginsChanged, [&]() { create_filters_if_necessary(); });
       break;
     case PipelineType::output:
-      connect(db::StreamOutputs::self(), &db::StreamOutputs::pluginsChanged, [&]() { create_filters_if_necessary(); });
+      connect(DbStreamOutputs::self(), &DbStreamOutputs::pluginsChanged, [&]() { create_filters_if_necessary(); });
       break;
   }
 
@@ -114,7 +114,7 @@ EffectsBase::~EffectsBase() {
 }
 
 void EffectsBase::create_filters_if_necessary() {
-  auto list = (pipeline_type == PipelineType::output ? db::StreamOutputs::plugins() : db::StreamInputs::plugins());
+  auto list = (pipeline_type == PipelineType::output ? DbStreamOutputs::plugins() : db::StreamInputs::plugins());
 
   if (list.empty()) {
     return;
@@ -201,7 +201,7 @@ void EffectsBase::create_filters_if_necessary() {
 }
 
 void EffectsBase::remove_unused_filters() {
-  auto list = (pipeline_type == PipelineType::output ? db::StreamOutputs::plugins() : db::StreamInputs::plugins());
+  auto list = (pipeline_type == PipelineType::output ? DbStreamOutputs::plugins() : db::StreamInputs::plugins());
 
   if (list.empty()) {
     plugins.clear();
@@ -325,7 +325,7 @@ uint EffectsBase::getPipeLineRate() const {
       }
       return 0.0F;
     case PipelineType::output: {
-      if (auto node = pm->model_nodes.get_node_by_name(db::StreamOutputs::outputDevice());
+      if (auto node = pm->model_nodes.get_node_by_name(DbStreamOutputs::outputDevice());
           node.serial != SPA_ID_INVALID) {
         return node.rate * 0.001F;
       }
@@ -337,7 +337,7 @@ uint EffectsBase::getPipeLineRate() const {
 }
 
 uint EffectsBase::getPipeLineLatency() {
-  auto list = (pipeline_type == PipelineType::output ? db::StreamOutputs::plugins() : db::StreamInputs::plugins());
+  auto list = (pipeline_type == PipelineType::output ? DbStreamOutputs::plugins() : db::StreamInputs::plugins());
 
   auto v = 0.0F;
 

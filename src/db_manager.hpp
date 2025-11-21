@@ -46,7 +46,7 @@ class Manager : public QObject {
   Q_PROPERTY(db::Main* main MEMBER main NOTIFY mainChanged)
   Q_PROPERTY(DbSpectrum* spectrum MEMBER spectrum NOTIFY spectrumChanged)
   Q_PROPERTY(db::StreamInputs* streamInputs MEMBER streamInputs NOTIFY streamInputsChanged)
-  Q_PROPERTY(db::StreamOutputs* streamOutputs MEMBER streamOutputs NOTIFY streamOutputsChanged)
+  Q_PROPERTY(DbStreamOutputs* streamOutputs MEMBER streamOutputs NOTIFY streamOutputsChanged)
   Q_PROPERTY(db::TestSignals* testSignals MEMBER testSignals NOTIFY testSignalsChanged)
 
   Q_PROPERTY(QMap<QString, QVariant> soePluginsDB MEMBER soePluginsDB NOTIFY soePluginsDBChanged)
@@ -89,7 +89,7 @@ class Manager : public QObject {
   db::Main* main;
   DbSpectrum* spectrum;
   db::StreamInputs* streamInputs;
-  db::StreamOutputs* streamOutputs;
+  DbStreamOutputs* streamOutputs;
   db::TestSignals* testSignals;
 
   QMap<QString, QVariant> soePluginsDB;

@@ -3,6 +3,7 @@ import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import ee.database as DB
 import ee.pipewire as PW
+import ee.ui
 import org.kde.kirigami as Kirigami
 
 Kirigami.AbstractCard {
@@ -30,7 +31,7 @@ Kirigami.AbstractCard {
             return true;
 
         if (mediaClass === "Stream/Output/Audio")
-            return DB.Manager.streamOutputs.showBlocklistedApps;
+            return DbStreamOutputs.showBlocklistedApps;
         else if (mediaClass === "Stream/Input/Audio")
             return DB.Manager.streamInputs.showBlocklistedApps;
     }

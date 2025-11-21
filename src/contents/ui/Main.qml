@@ -25,7 +25,7 @@ Kirigami.ApplicationWindow {
         0: {
             page: Qt.resolvedUrl("./PageStreamsEffects.qml"),
             pageType: 0,
-            streamDB: DB.Manager.streamOutputs,
+            streamDB: DbStreamOutputs,
             pipelineInstance: Pipeline.Output
         },
         1: {
@@ -261,7 +261,7 @@ Kirigami.ApplicationWindow {
                 instantiatorOutputPresets.model = [];
 
                 instantiatorInputPresets.model = DB.Manager.streamInputs.mostUsedPresets;
-                instantiatorOutputPresets.model = DB.Manager.streamOutputs.mostUsedPresets;
+                instantiatorOutputPresets.model = DbStreamOutputsPresets;
 
                 /**
                  * Although it is possible to make a binding to the text property so it is automatically updated
@@ -272,7 +272,7 @@ Kirigami.ApplicationWindow {
                  */
 
                 inputDeviceMenuItem.text = PW.ModelNodes.getNodeDescription(DB.Manager.streamInputs.inputDevice);
-                outputDeviceMenuItem.text = PW.ModelNodes.getNodeDescription(DB.Manager.streamOutputs.outputDevice);
+                outputDeviceMenuItem.text = PW.ModelNodes.getNodeDescription(DbStreamOutputs.outputDevice);
             }
 
             Instantiator {
@@ -314,8 +314,8 @@ Kirigami.ApplicationWindow {
                 subtitle: i18n("Are you sure you want to clear this list?") // qmllint disable
                 standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
                 onAccepted: {
-                    DB.Manager.streamOutputs.usedPresets = [];
-                    DB.Manager.streamOutputs.mostUsedPresets = [];
+                    DbStreamOutputs.usedPresets = [];
+                    DbStreamOutputs.mostUsedPresets = [];
                 }
             }
 

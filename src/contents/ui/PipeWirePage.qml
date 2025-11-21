@@ -85,7 +85,7 @@ Kirigami.Page {
             }
 
             function updateOutputDevComboSelection() {
-                const deviceName = useDefaultOutputDevice.isChecked ? PW.Manager.defaultOutputDeviceName : DB.Manager.streamOutputs.outputDevice;
+                const deviceName = useDefaultOutputDevice.isChecked ? PW.Manager.defaultOutputDeviceName : DbStreamOutputs.outputDevice;
                 const comboRow = comboFindRow(PW.ModelSinkDevices, deviceName);
                 if (comboRow !== -1)
                     comboOutputDevice.currentIndex = comboRow;
@@ -163,14 +163,14 @@ Kirigami.Page {
                     id: useDefaultOutputDevice
 
                     label: i18n("Use default output") // qmllint disable
-                    isChecked: DB.Manager.streamOutputs.useDefaultOutputDevice
+                    isChecked: DbStreamOutputs.useDefaultOutputDevice
 
                     onCheckedChanged: {
                         if (isChecked)
                             generalFormCard.updateOutputDevComboSelection();
 
-                        if (isChecked !== DB.Manager.streamOutputs.useDefaultOutputDevice)
-                            DB.Manager.streamOutputs.useDefaultOutputDevice = isChecked;
+                        if (isChecked !== DbStreamOutputs.useDefaultOutputDevice)
+                            DbStreamOutputs.useDefaultOutputDevice = isChecked;
                     }
                 }
 
@@ -182,15 +182,15 @@ Kirigami.Page {
                     editable: false
                     model: PW.ModelSinkDevices
                     textRole: "description"
-                    enabled: !DB.Manager.streamOutputs.useDefaultOutputDevice
+                    enabled: !DbStreamOutputs.useDefaultOutputDevice
 
                     onActivated: idx => {
                         const proxyIndex = PW.ModelSinkDevices.index(idx, 0);
                         const sourceIndex = PW.ModelSinkDevices.mapToSource(proxyIndex);
                         const nodeName = PW.ModelNodes.getNodeName(sourceIndex.row);
-                        if (DB.Manager.streamOutputs.outputDevice !== nodeName) {
+                        if (DbStreamOutputs.outputDevice !== nodeName) {
                             if (!Common.isEmpty(nodeName))
-                                DB.Manager.streamOutputs.outputDevice = nodeName;
+                                DbStreamOutputs.outputDevice = nodeName;
                         }
                     }
 
