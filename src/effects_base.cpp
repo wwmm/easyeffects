@@ -100,8 +100,8 @@ EffectsBase::EffectsBase(pw::Manager* pipe_manager, PipelineType pipe_type)
       break;
   }
 
-  connect(db::Main::self(), &db::Main::lv2uiUpdateFrequencyChanged, [&]() {
-    auto v = db::Main::lv2uiUpdateFrequency();
+  connect(DbMain::self(), &DbMain::lv2uiUpdateFrequencyChanged, [&]() {
+    auto v = DbMain::lv2uiUpdateFrequency();
 
     for (auto& plugin : plugins | std::views::values) {
       plugin->set_native_ui_update_frequency(v);

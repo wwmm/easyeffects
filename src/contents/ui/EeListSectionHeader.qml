@@ -68,7 +68,7 @@ QQC2.ItemDelegate {
         spacing: Kirigami.Units.largeSpacing
 
         Kirigami.Icon {
-            Layout.alignment: DB.Manager.main.collapsePluginsList ? Qt.AlignVCenter | Qt.AlignHCenter : Qt.AlignVCenter
+            Layout.alignment: DbMain.collapsePluginsList ? Qt.AlignVCenter | Qt.AlignHCenter : Qt.AlignVCenter
             implicitWidth: listSection.icon.width
             implicitHeight: listSection.icon.height
             color: listSection.icon.color

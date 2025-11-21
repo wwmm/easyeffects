@@ -259,8 +259,8 @@ auto RNNoise::search_model_path(const std::string& name) -> std::string {
   // Given the model name without extension, search the full path on the filesystem.
   const auto model_filename = name + rnnn_ext;
 
-  const auto community_package = (pipeline_type == PipelineType::input) ? db::Main::lastLoadedInputCommunityPackage()
-                                                                        : db::Main::lastLoadedOutputCommunityPackage();
+  const auto community_package = (pipeline_type == PipelineType::input) ? DbMain::lastLoadedInputCommunityPackage()
+                                                                        : DbMain::lastLoadedOutputCommunityPackage();
 
   std::string model_full_path;
 

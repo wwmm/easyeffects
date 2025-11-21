@@ -11,30 +11,30 @@ ColumnLayout {
     id: columnLayout
 
     readonly property int pipeline: {
-        if (DB.Manager.main.visiblePage === 0)
+        if (DbMain.visiblePage === 0)
             return 1;
-        else if (DB.Manager.main.visiblePage === 1)
+        else if (DbMain.visiblePage === 1)
             return 0;
     }
     readonly property string lastLoadedPresetName: {
-        if (DB.Manager.main.visiblePage === 0)
-            return DB.Manager.main.lastLoadedOutputPreset;
-        else if (DB.Manager.main.visiblePage === 1)
-            return DB.Manager.main.lastLoadedInputPreset;
+        if (DbMain.visiblePage === 0)
+            return DbMain.lastLoadedOutputPreset;
+        else if (DbMain.visiblePage === 1)
+            return DbMain.lastLoadedInputPreset;
         return "";
     }
     readonly property string lastLoadedCommunityPackage: {
-        if (DB.Manager.main.visiblePage === 0)
-            return DB.Manager.main.lastLoadedOutputCommunityPackage;
-        else if (DB.Manager.main.visiblePage === 1)
-            return DB.Manager.main.lastLoadedInputCommunityPackage;
+        if (DbMain.visiblePage === 0)
+            return DbMain.lastLoadedOutputCommunityPackage;
+        else if (DbMain.visiblePage === 1)
+            return DbMain.lastLoadedInputCommunityPackage;
         return "";
     }
 
     Kirigami.SearchField {
         id: search
 
-        readonly property var sortedListModel: DB.Manager.main.visiblePage === 0 ? Presets.SortedCommunityOutputListModel : Presets.SortedCommunityInputListModel
+        readonly property var sortedListModel: DbMain.visiblePage === 0 ? Presets.SortedCommunityOutputListModel : Presets.SortedCommunityInputListModel
 
         Layout.fillWidth: true
         placeholderText: i18n("Search") // qmllint disable
@@ -58,7 +58,7 @@ ColumnLayout {
             Layout.fillHeight: true
             clip: true
             reuseItems: true
-            model: DB.Manager.main.visiblePage === 0 ? Presets.SortedCommunityOutputListModel : Presets.SortedCommunityInputListModel
+            model: DbMain.visiblePage === 0 ? Presets.SortedCommunityOutputListModel : Presets.SortedCommunityInputListModel
             Controls.ScrollBar.vertical: listViewScrollBar
 
             Kirigami.PlaceholderMessage {

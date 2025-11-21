@@ -170,11 +170,11 @@ void AutoloadManager::load(const PipelineType& pipeline_type, const QString& dev
 
     switch (pipeline_type) {
       case PipelineType::input: {
-        fallback = db::Main::inputAutoloadingUsesFallback() ? db::Main::inputAutoloadingFallbackPreset() : "";
+        fallback = DbMain::inputAutoloadingUsesFallback() ? DbMain::inputAutoloadingFallbackPreset() : "";
         break;
       }
       case PipelineType::output: {
-        fallback = db::Main::outputAutoloadingUsesFallback() ? db::Main::outputAutoloadingFallbackPreset() : "";
+        fallback = DbMain::outputAutoloadingUsesFallback() ? DbMain::outputAutoloadingFallbackPreset() : "";
         break;
       }
     }

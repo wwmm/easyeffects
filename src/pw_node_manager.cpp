@@ -114,7 +114,7 @@ auto NodeManager::registerNode(pw_registry* registry, uint32_t id, const char* t
   bool is_ee_filter = false;
 
   if (const auto* key_media_role = spa_dict_lookup(props, PW_KEY_MEDIA_ROLE)) {
-    if (db::Main::ignoreSystemNotifications() &&
+    if (DbMain::ignoreSystemNotifications() &&
         std::ranges::find(blocklist_media_role, std::string(key_media_role)) != blocklist_media_role.end()) {
       return false;
     }
@@ -173,7 +173,7 @@ auto NodeManager::registerNode(pw_registry* registry, uint32_t id, const char* t
 
   // Exclude blocklisted notification node names
 
-  if (db::Main::ignoreSystemNotifications() &&
+  if (DbMain::ignoreSystemNotifications() &&
       std::ranges::find(blocklist_notification_nodes, node_name) != blocklist_notification_nodes.end()) {
     return false;
   }
@@ -269,7 +269,7 @@ void NodeManager::onNodeInfo(void* object, const pw_node_info* info) {
    */
 
   if (const auto* is_capture_sink = spa_dict_lookup(info->props, PW_KEY_STREAM_CAPTURE_SINK)) {
-    if (std::strcmp(is_capture_sink, "true") == 0 && db::Main::excludeMonitorStreams()) {
+    if (std::strcmp(is_capture_sink, "true") == 0 && DbMain::excludeMonitorStreams()) {
       ignore_node = true;
     }
   }
@@ -422,7 +422,7 @@ void NodeManager::onNodeInfo(void* object, const pw_node_info* info) {
   }
 
   auto connect_to_ee_sink = [&]() {
-    if (db::Main::processAllOutputs() && !nd->nd_info->is_blocklisted) {
+    if (DbMain::processAllOutputs() && !nd->nd_info->is_blocklisted) {
       // target.node for backward compatibility with old PW session managers
       nm->metadata_manager.set_property(nd->nd_info->id, "target.node", "Spa:Id",
                                         util::to_string(nm->ee_sink_node.id).c_str());
@@ -433,7 +433,7 @@ void NodeManager::onNodeInfo(void* object, const pw_node_info* info) {
   };
 
   auto connect_to_ee_source = [&]() {
-    if (db::Main::processAllInputs() && !nd->nd_info->is_blocklisted) {
+    if (DbMain::processAllInputs() && !nd->nd_info->is_blocklisted) {
       // target.node for backward compatibility with old PW session managers
       nm->metadata_manager.set_property(nd->nd_info->id, "target.node", "Spa:Id",
                                         util::to_string(nm->ee_source_node.id).c_str());

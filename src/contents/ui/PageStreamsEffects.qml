@@ -304,7 +304,7 @@ Kirigami.Page {
                 spacing: 0
 
                 GridLayout {
-                    columns: DB.Manager.main.collapsePluginsList === true ? 1 : 2
+                    columns: DbMain.collapsePluginsList === true ? 1 : 2
                     Layout.fillWidth: true
                     Layout.topMargin: Kirigami.Units.smallSpacing
                     Layout.bottomMargin: Kirigami.Units.smallSpacing
@@ -313,7 +313,7 @@ Kirigami.Page {
 
                     Controls.Button {
                         text: i18n("Add effect") // qmllint disable
-                        display: DB.Manager.main.collapsePluginsList === true ? Controls.Button.IconOnly : Controls.Button.TextBesideIcon
+                        display: DbMain.collapsePluginsList === true ? Controls.Button.IconOnly : Controls.Button.TextBesideIcon
                         icon.name: "list-add"
                         onClicked: menuAddPlugins.open()
                         Layout.fillWidth: true
@@ -321,13 +321,13 @@ Kirigami.Page {
 
                     Controls.Button {
                         text: i18n("Close") // qmllint disable
-                        display: DB.Manager.main.collapsePluginsList === true ? Controls.Button.IconOnly : Controls.Button.TextBesideIcon
-                        icon.name: DB.Manager.main.collapsePluginsList === true ? "sidebar-collapse-right-symbolic" : "sidebar-collapse-symbolic"
-                        Layout.fillWidth: DB.Manager.main.collapsePluginsList === true
-                        Controls.ToolTip.text: DB.Manager.main.collapsePluginsList === true ? i18n("Expand the list of effects pipeline") : i18n("Reduce the list of effects pipeline") // qmllint disable
+                        display: DbMain.collapsePluginsList === true ? Controls.Button.IconOnly : Controls.Button.TextBesideIcon
+                        icon.name: DbMain.collapsePluginsList === true ? "sidebar-collapse-right-symbolic" : "sidebar-collapse-symbolic"
+                        Layout.fillWidth: DbMain.collapsePluginsList === true
+                        Controls.ToolTip.text: DbMain.collapsePluginsList === true ? i18n("Expand the list of effects pipeline") : i18n("Reduce the list of effects pipeline") // qmllint disable
                         Controls.ToolTip.visible: hovered
                         onClicked: {
-                            DB.Manager.main.collapsePluginsList = !DB.Manager.main.collapsePluginsList;
+                            DbMain.collapsePluginsList = !DbMain.collapsePluginsList;
                         }
                     }
                 }
@@ -343,8 +343,8 @@ Kirigami.Page {
 
                     Layout.fillHeight: true
                     Layout.fillWidth: true
-                    Layout.maximumWidth: DB.Manager.main.collapsePluginsList ? Kirigami.Units.gridUnit * 3 : Kirigami.Units.gridUnit * 16
-                    Layout.minimumWidth: DB.Manager.main.collapsePluginsList ? Kirigami.Units.gridUnit * 3 : Kirigami.Units.gridUnit * 16
+                    Layout.maximumWidth: DbMain.collapsePluginsList ? Kirigami.Units.gridUnit * 3 : Kirigami.Units.gridUnit * 16
+                    Layout.minimumWidth: DbMain.collapsePluginsList ? Kirigami.Units.gridUnit * 3 : Kirigami.Units.gridUnit * 16
                     Layout.bottomMargin: Kirigami.Units.smallSpacing * 2
 
                     clip: true
@@ -378,7 +378,7 @@ Kirigami.Page {
                         visible: pluginsListView.count !== 0
 
                         icon.name: pageStreamsEffects.pageType === 0 ? "source-playlist-symbolic" : "audio-input-microphone-symbolic"
-                        compact: DB.Manager.main.collapsePluginsList
+                        compact: DbMain.collapsePluginsList
                         text: pageStreamsEffects.pageType === 0 ? i18n("Players") : i18n("Input device")// qmllint disable
                     }
 
@@ -387,7 +387,7 @@ Kirigami.Page {
                         visible: pluginsListView.count !== 0
 
                         icon.name: pageStreamsEffects.pageType === 0 ? "audio-speakers-symbolic" : "source-playlist-symbolic"
-                        compact: DB.Manager.main.collapsePluginsList
+                        compact: DbMain.collapsePluginsList
                         text: pageStreamsEffects.pageType === 0 ? i18n("Output device") : i18n("Recorders")// qmllint disable
                     }
                 }

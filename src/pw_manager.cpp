@@ -236,7 +236,7 @@ Manager::Manager()
   connect(&link_manager, &LinkManager::linkChanged, [&](LinkInfo link) { Q_EMIT linkChanged(link); });
 
   connect(&device_manager, &DeviceManager::inputRouteChanged, [&](DeviceInfo device) {
-    QTimer::singleShot(db::Main::presetsAutoloadInterval(), this, [&, device]() {
+    QTimer::singleShot(DbMain::presetsAutoloadInterval(), this, [&, device]() {
       auto nodes = model_nodes.get_nodes_by_device_id(device.id);
 
       if (nodes.empty()) {
@@ -256,7 +256,7 @@ Manager::Manager()
   });
 
   connect(&device_manager, &DeviceManager::outputRouteChanged, [&](DeviceInfo device) {
-    QTimer::singleShot(db::Main::presetsAutoloadInterval(), this, [&, device]() {
+    QTimer::singleShot(DbMain::presetsAutoloadInterval(), this, [&, device]() {
       auto nodes = model_nodes.get_nodes_by_device_id(device.id);
 
       if (nodes.empty()) {
@@ -366,11 +366,11 @@ Manager::Manager()
 
   for (const auto& node : model_nodes.get_list()) {
     if (node.media_class == tags::pipewire::media_class::output_stream) {
-      if (db::Main::processAllOutputs() && !node.is_blocklisted) {
+      if (DbMain::processAllOutputs() && !node.is_blocklisted) {
         connectStreamOutput(node.id);
       }
     } else if (node.media_class == tags::pipewire::media_class::input_stream) {
-      if (db::Main::processAllInputs() && !node.is_blocklisted) {
+      if (DbMain::processAllInputs() && !node.is_blocklisted) {
         connectStreamInput(node.id);
       }
     }

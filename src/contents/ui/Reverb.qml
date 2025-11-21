@@ -314,7 +314,7 @@ Kirigami.ScrollablePage {
                 Kirigami.Action {
                     text: i18n("Presets") // qmllint disable
                     icon.name: "bookmarks-symbolic"
-                    enabled: DB.Manager.main.showNativePluginUi
+                    enabled: DbMain.showNativePluginUi
                     onTriggered: {
                         presetsDialog.open();
                     }
@@ -323,7 +323,7 @@ Kirigami.ScrollablePage {
                     displayHint: Kirigami.DisplayHint.KeepVisible
                     text: i18n("Show native window") // qmllint disable
                     icon.name: "window-duplicate-symbolic"
-                    enabled: DB.Manager.main.showNativePluginUi
+                    enabled: DbMain.showNativePluginUi
                     checkable: true
                     checked: reverbPage.pluginBackend ? reverbPage.pluginBackend.hasNativeUi() : false
                     onTriggered: {

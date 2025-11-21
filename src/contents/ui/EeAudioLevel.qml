@@ -97,7 +97,7 @@ Rectangle {
 
         property real value: root.clampedValue
 
-        interval: DB.Manager.main.levelMetersLabelTimer
+        interval: DbMain.levelMetersLabelTimer
         repeat: true
         running: root.visible
 

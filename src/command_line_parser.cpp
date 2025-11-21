@@ -90,11 +90,11 @@ void CommandLineParser::process_events() {
   }
 
   if (parser->isSet("service-mode")) {
-    db::Main::setEnableServiceMode(true);
+    DbMain::setEnableServiceMode(true);
   }
 
   if (parser->isSet("gapplication-service")) {
-    db::Main::setEnableServiceMode(true);
+    DbMain::setEnableServiceMode(true);
 
     Q_EMIT onHideWindow();
   }
@@ -105,7 +105,7 @@ void CommandLineParser::process_events() {
     const auto value = parser->value("active-preset");
 
     if (value == "input") {
-      auto preset = db::Main::lastLoadedInputPreset();
+      auto preset = DbMain::lastLoadedInputPreset();
 
       if (preset.length() < 1) {
         preset = QString("None");
@@ -113,7 +113,7 @@ void CommandLineParser::process_events() {
 
       std::cout << preset.toStdString() << '\n';
     } else if (value == "output") {
-      auto preset = db::Main::lastLoadedOutputPreset();
+      auto preset = DbMain::lastLoadedOutputPreset();
 
       if (preset.length() < 1) {
         preset = QString("None");
@@ -136,8 +136,8 @@ void CommandLineParser::process_events() {
   }
 
   if (parser->isSet("active-presets")) {
-    auto input = db::Main::lastLoadedInputPreset();
-    auto output = db::Main::lastLoadedOutputPreset();
+    auto input = DbMain::lastLoadedInputPreset();
+    auto output = DbMain::lastLoadedOutputPreset();
 
     if (input.length() < 1) {
       input = QString("None");

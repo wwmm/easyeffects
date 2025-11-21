@@ -150,8 +150,8 @@ auto ConvolverKernelManager::searchKernelPath(const std::string& name) -> std::s
   // Given the irs name without extension, search the full path on the filesystem.
   const auto irs_filename = name + irs_ext;
 
-  const auto community_package = (pipeline_type == PipelineType::input) ? db::Main::lastLoadedInputCommunityPackage()
-                                                                        : db::Main::lastLoadedOutputCommunityPackage();
+  const auto community_package = (pipeline_type == PipelineType::input) ? DbMain::lastLoadedInputCommunityPackage()
+                                                                        : DbMain::lastLoadedOutputCommunityPackage();
 
   std::string irs_full_path;
 

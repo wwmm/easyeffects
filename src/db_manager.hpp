@@ -43,7 +43,7 @@ class Manager : public QObject {
   QML_SINGLETON
   QML_UNCREATABLE("C++ singleton - use DatabaseManager.instance")
 
-  Q_PROPERTY(db::Main* main MEMBER main NOTIFY mainChanged)
+  Q_PROPERTY(DbMain* main MEMBER main NOTIFY mainChanged)
   Q_PROPERTY(DbSpectrum* spectrum MEMBER spectrum NOTIFY spectrumChanged)
   Q_PROPERTY(DbStreamInputs* streamInputs MEMBER streamInputs NOTIFY streamInputsChanged)
   Q_PROPERTY(DbStreamOutputs* streamOutputs MEMBER streamOutputs NOTIFY streamOutputsChanged)
@@ -86,7 +86,7 @@ class Manager : public QObject {
 
   Q_INVOKABLE void enableAutosave(const bool& state);
 
-  db::Main* main;
+  DbMain* main;
   DbSpectrum* spectrum;
   DbStreamInputs* streamInputs;
   DbStreamOutputs* streamOutputs;

@@ -268,7 +268,7 @@ Kirigami.OverlaySheet {
             GridLayout {
                 columns: 2
                 columnSpacing: Kirigami.Units.gridUnit
-                enabled: DB.Manager.main.xdgGlobalShortcuts
+                enabled: DbMain.xdgGlobalShortcuts
 
                 RowLayout {
                     Layout.alignment: Qt.AlignRight

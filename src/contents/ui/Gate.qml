@@ -974,7 +974,7 @@ Kirigami.ScrollablePage {
                     displayHint: Kirigami.DisplayHint.KeepVisible
                     text: i18n("Show native window") // qmllint disable
                     icon.name: "window-duplicate-symbolic"
-                    enabled: DB.Manager.main.showNativePluginUi
+                    enabled: DbMain.showNativePluginUi
                     checkable: true
                     checked: gatePage.pluginBackend ? gatePage.pluginBackend.hasNativeUi() : false
                     onTriggered: {

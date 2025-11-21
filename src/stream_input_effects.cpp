@@ -54,8 +54,8 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
       pm, &pw::Manager::sourceAdded, this,
       [&](pw::NodeInfo node) {
         if (node.name == DbStreamInputs::inputDevice()) {
-          if (db::Main::bypass()) {
-            db::Main::setBypass(false);
+          if (DbMain::bypass()) {
+            DbMain::setBypass(false);
 
             return;  // filter connected through update_bypass_state
           }
@@ -95,8 +95,8 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
         }
 
         if (auto node = pm->model_nodes.get_node_by_name(name); node.serial != SPA_ID_INVALID) {
-          if (db::Main::bypass()) {
-            db::Main::setBypass(false);
+          if (DbMain::bypass()) {
+            DbMain::setBypass(false);
 
             return;  // filter connected through update_bypass_state
           }
@@ -111,8 +111,8 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
   connect(
       DbStreamInputs::self(), &DbStreamInputs::pluginsChanged, this,
       [&]() {
-        if (db::Main::bypass()) {
-          db::Main::setBypass(false);
+        if (DbMain::bypass()) {
+          DbMain::setBypass(false);
 
           return;  // filter connected through update_bypass_state
         }
@@ -196,10 +196,10 @@ void StreamInputEffects::on_link_changed(const pw::LinkInfo link_info) {
       connect_filters();
     };
   } else {
-    if (db::Main::inactivityTimerEnable()) {
+    if (DbMain::inactivityTimerEnable()) {
       // if the timer is enabled, wait for the timeout, then unlink plugin pipeline
 
-      QTimer::singleShot(db::Main::inactivityTimeout() * 1000, this, [&]() {
+      QTimer::singleShot(DbMain::inactivityTimeout() * 1000, this, [&]() {
         if (!apps_want_to_play() && !list_proxies.empty()) {
           util::debug("No app linked to our device wants to play. Unlinking our filters.");
 

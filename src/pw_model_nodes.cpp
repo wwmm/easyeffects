@@ -149,7 +149,7 @@ Nodes::Nodes(QObject* parent)
           } else {
             update_field(n, Roles::IsBlocklisted, false);
 
-            if (db::Main::processAllOutputs()) {
+            if (DbMain::processAllOutputs()) {
               pw::Manager::self().connectStreamOutput(list[n].id);
             }
           }
@@ -175,7 +175,7 @@ Nodes::Nodes(QObject* parent)
           } else {
             update_field(n, Roles::IsBlocklisted, false);
 
-            if (db::Main::processAllInputs()) {
+            if (DbMain::processAllInputs()) {
               pw::Manager::self().connectStreamInput(list[n].id);
             }
           }

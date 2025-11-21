@@ -87,7 +87,7 @@ void LocalServer::onReadyRead() {
 
           util::str_to_num(std::string(matches[1]), state);
 
-          db::Main::setBypass(state);
+          DbMain::setBypass(state);
         }
       } else if (std::strncmp(buf, tags::local_server::load_preset, strlen(tags::local_server::load_preset)) == 0) {
         std::string msg = buf;

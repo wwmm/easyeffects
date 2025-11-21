@@ -33,7 +33,7 @@ ColumnLayout {
             currentIndex: 0
             textRole: "description"
             editable: false
-            model: DB.Manager.main.visiblePage === 0 ? PW.ModelSinkDevices : PW.ModelSourceDevices
+            model: DbMain.visiblePage === 0 ? PW.ModelSinkDevices : PW.ModelSourceDevices
             description: `${i18n("Route")}: ${deviceRouteDescription}` // qmllint disable
 
             function updateRouteDescription() {
@@ -65,7 +65,7 @@ ColumnLayout {
         }
 
         Kirigami.Icon {
-            source: DB.Manager.main.visiblePage === 1 ? "audio-input-microphone-symbolic" : "audio-speakers-symbolic"
+            source: DbMain.visiblePage === 1 ? "audio-input-microphone-symbolic" : "audio-speakers-symbolic"
             Layout.preferredWidth: Kirigami.Units.iconSizes.medium
             Layout.preferredHeight: Kirigami.Units.iconSizes.medium
             Layout.alignment: Qt.AlignBottom | Qt.AlignHCenter
@@ -80,7 +80,7 @@ ColumnLayout {
             currentIndex: 0
             textRole: "name"
             editable: false
-            model: DB.Manager.main.visiblePage === 0 ? Presets.SortedOutputListModel : Presets.SortedInputListModel
+            model: DbMain.visiblePage === 0 ? Presets.SortedOutputListModel : Presets.SortedInputListModel
         }
 
         Controls.Button {
@@ -95,9 +95,9 @@ ColumnLayout {
                 const deviceDescription = device.currentText;
                 const presetName = preset.currentText;
                 const deviceRoute = device.deviceRouteDescription;
-                if (DB.Manager.main.visiblePage === 0)
+                if (DbMain.visiblePage === 0)
                     Presets.Manager.addAutoload(1, presetName, deviceName, deviceDescription, deviceRoute);
-                else if (DB.Manager.main.visiblePage === 1)
+                else if (DbMain.visiblePage === 1)
                     Presets.Manager.addAutoload(0, presetName, deviceName, deviceDescription, deviceRoute);
             }
         }
@@ -113,7 +113,7 @@ ColumnLayout {
             Layout.fillHeight: true
             clip: true
             reuseItems: true
-            model: DB.Manager.main.visiblePage === 0 ? Presets.SortedAutoloadingOutputListModel : Presets.SortedAutoloadingInputListModel
+            model: DbMain.visiblePage === 0 ? Presets.SortedAutoloadingOutputListModel : Presets.SortedAutoloadingInputListModel
             Controls.ScrollBar.vertical: listViewScrollBar
 
             Kirigami.PlaceholderMessage {
@@ -169,9 +169,9 @@ ColumnLayout {
                             Controls.ToolTip.text: i18n("Remove this autoloading preset")
                             Controls.ToolTip.visible: hovered
                             onClicked: {
-                                if (DB.Manager.main.visiblePage === 0)
+                                if (DbMain.visiblePage === 0)
                                     Presets.Manager.removeAutoload(1, abstractCard.devicePreset, abstractCard.deviceName, abstractCard.deviceProfile);
-                                else if (DB.Manager.main.visiblePage === 1)
+                                else if (DbMain.visiblePage === 1)
                                     Presets.Manager.removeAutoload(0, abstractCard.devicePreset, abstractCard.deviceName, abstractCard.deviceProfile);
                             }
                         }

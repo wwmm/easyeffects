@@ -66,7 +66,7 @@
 namespace db {
 
 Manager::Manager()
-    : main(db::Main::self()),
+    : main(DbMain::self()),
       spectrum(DbSpectrum::self()),
       streamInputs(DbStreamInputs::self()),
       streamOutputs(DbStreamOutputs::self()),
@@ -81,11 +81,11 @@ Manager::Manager()
   // NOLINTNEXTLINE(clang-analyzer-cplusplus.NewDelete)
   qmlRegisterSingletonInstance<db::Manager>("ee.database", VERSION_MAJOR, VERSION_MINOR, "Manager", this);
 
-  QApplication::setQuitOnLastWindowClosed(!db::Main::enableServiceMode());
+  QApplication::setQuitOnLastWindowClosed(!DbMain::enableServiceMode());
 
   // autosave timer
 
-  timer->setInterval(db::Main::databaseAutosaveInterval());
+  timer->setInterval(DbMain::databaseAutosaveInterval());
 
   // creating plugins database
 
@@ -94,8 +94,8 @@ Manager::Manager()
 
   // signals
 
-  connect(main, &db::Main::enableServiceModeChanged,
-          []() { QApplication::setQuitOnLastWindowClosed(!db::Main::enableServiceMode()); });
+  connect(main, &DbMain::enableServiceModeChanged,
+          []() { QApplication::setQuitOnLastWindowClosed(!DbMain::enableServiceMode()); });
 
   connect(streamInputs, &DbStreamInputs::pluginsChanged,
           [&]() { create_plugin_db("sie", DbStreamInputs::plugins(), siePluginsDB); });
@@ -103,8 +103,8 @@ Manager::Manager()
   connect(streamOutputs, &DbStreamOutputs::pluginsChanged,
           [&]() { create_plugin_db("soe", DbStreamOutputs::plugins(), soePluginsDB); });
 
-  connect(main, &db::Main::databaseAutosaveIntervalChanged,
-          [&]() { timer->setInterval(db::Main::databaseAutosaveInterval()); });
+  connect(main, &DbMain::databaseAutosaveIntervalChanged,
+          [&]() { timer->setInterval(DbMain::databaseAutosaveInterval()); });
 
   connect(timer, &QTimer::timeout, [&]() { saveAll(); });
 }

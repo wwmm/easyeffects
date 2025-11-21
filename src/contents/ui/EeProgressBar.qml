@@ -137,7 +137,7 @@ Control {
 
         property real value: control.clampedValue
 
-        interval: DB.Manager.main.levelMetersLabelTimer
+        interval: DbMain.levelMetersLabelTimer
         repeat: true
         running: control.visible
 

@@ -42,8 +42,8 @@ Kirigami.Page {
             ,
             "iconName": "waveform-symbolic"
         });
-        panelListView.currentIndex = DB.Manager.main.visiblePipeWirePage;
-        switch (DB.Manager.main.visiblePipeWirePage) {
+        panelListView.currentIndex = DbMain.visiblePipeWirePage;
+        switch (DbMain.visiblePipeWirePage) {
         case 0:
             columnView.addItem(generalPage.createObject());
             break;
@@ -448,19 +448,19 @@ Kirigami.Page {
                     switch (index) {
                     case 0:
                         columnView.replaceItem(1, generalPage.createObject());
-                        DB.Manager.main.visiblePipeWirePage = 0;
+                        DbMain.visiblePipeWirePage = 0;
                         break;
                     case 1:
                         columnView.replaceItem(1, modulesPage.createObject());
-                        DB.Manager.main.visiblePipeWirePage = 1;
+                        DbMain.visiblePipeWirePage = 1;
                         break;
                     case 2:
                         columnView.replaceItem(1, clientsPage.createObject());
-                        DB.Manager.main.visiblePipeWirePage = 2;
+                        DbMain.visiblePipeWirePage = 2;
                         break;
                     case 3:
                         columnView.replaceItem(1, testSignalPage.createObject());
-                        DB.Manager.main.visiblePipeWirePage = 3;
+                        DbMain.visiblePipeWirePage = 3;
                         break;
                     default:
                         console.log("pipewire page stackview: invalid index");
