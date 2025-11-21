@@ -302,10 +302,10 @@ Kirigami.Page {
                     id: enableTestSignals
 
                     label: i18n("Enabled") // qmllint disable
-                    isChecked: DB.Manager.testSignals.enable
+                    isChecked: DbTestSignals.enable
                     onCheckedChanged: {
-                        if (isChecked !== DB.Manager.testSignals.enable)
-                            DB.Manager.testSignals.enable = isChecked;
+                        if (isChecked !== DbTestSignals.enable)
+                            DbTestSignals.enable = isChecked;
                     }
                 }
             }
@@ -321,10 +321,10 @@ Kirigami.Page {
                     id: leftChannel
 
                     text: i18n("Left") // qmllint disable
-                    checked: DB.Manager.testSignals.channels === 0
+                    checked: DbTestSignals.channels === 0
                     onCheckedChanged: {
-                        if (checked !== DB.Manager.testSignals.channels)
-                            DB.Manager.testSignals.channels = 0;
+                        if (checked !== DbTestSignals.channels)
+                            DbTestSignals.channels = 0;
                     }
                 }
 
@@ -332,10 +332,10 @@ Kirigami.Page {
                     id: rightChannel
 
                     text: i18n("Right") // qmllint disable
-                    checked: DB.Manager.testSignals.channels === 1
+                    checked: DbTestSignals.channels === 1
                     onCheckedChanged: {
-                        if (checked !== DB.Manager.testSignals.channels)
-                            DB.Manager.testSignals.channels = 1;
+                        if (checked !== DbTestSignals.channels)
+                            DbTestSignals.channels = 1;
                     }
                 }
 
@@ -343,10 +343,10 @@ Kirigami.Page {
                     id: bothChannels
 
                     text: i18n("Both") // qmllint disable
-                    checked: DB.Manager.testSignals.channels === 2
+                    checked: DbTestSignals.channels === 2
                     onCheckedChanged: {
-                        if (checked !== DB.Manager.testSignals.channels)
-                            DB.Manager.testSignals.channels = 2;
+                        if (checked !== DbTestSignals.channels)
+                            DbTestSignals.channels = 2;
                     }
                 }
             }
@@ -362,10 +362,10 @@ Kirigami.Page {
                     id: sineWave
 
                     text: i18n("Sine wave") // qmllint disable
-                    checked: DB.Manager.testSignals.signalType === 0
+                    checked: DbTestSignals.signalType === 0
                     onCheckedChanged: {
-                        if (checked !== DB.Manager.testSignals.signalType)
-                            DB.Manager.testSignals.signalType = 0;
+                        if (checked !== DbTestSignals.signalType)
+                            DbTestSignals.signalType = 0;
                     }
                 }
 
@@ -373,10 +373,10 @@ Kirigami.Page {
                     id: whiteNoise
 
                     text: i18n("White noise") // qmllint disable
-                    checked: DB.Manager.testSignals.signalType === 1
+                    checked: DbTestSignals.signalType === 1
                     onCheckedChanged: {
-                        if (checked !== DB.Manager.testSignals.signalType)
-                            DB.Manager.testSignals.signalType = 1;
+                        if (checked !== DbTestSignals.signalType)
+                            DbTestSignals.signalType = 1;
                     }
                 }
 
@@ -384,10 +384,10 @@ Kirigami.Page {
                     id: pinkNoise
 
                     text: i18n("Pink noise") // qmllint disable
-                    checked: DB.Manager.testSignals.signalType === 2
+                    checked: DbTestSignals.signalType === 2
                     onCheckedChanged: {
-                        if (checked !== DB.Manager.testSignals.signalType)
-                            DB.Manager.testSignals.signalType = 2;
+                        if (checked !== DbTestSignals.signalType)
+                            DbTestSignals.signalType = 2;
                     }
                 }
 
@@ -397,14 +397,14 @@ Kirigami.Page {
                     label: i18n("Frequency") // qmllint disable
                     from: 10
                     to: 22000
-                    value: DB.Manager.testSignals.frequency
+                    value: DbTestSignals.frequency
                     decimals: 0
                     stepSize: 1
                     unit: i18n("Hz")
                     enabled: sineWave.checked
                     onValueModified: v => {
-                        if (v !== DB.Manager.testSignals.frequency)
-                            DB.Manager.testSignals.frequency = v;
+                        if (v !== DbTestSignals.frequency)
+                            DbTestSignals.frequency = v;
                     }
                 }
             }

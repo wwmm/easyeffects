@@ -70,7 +70,7 @@ Manager::Manager()
       spectrum(DbSpectrum::self()),
       streamInputs(DbStreamInputs::self()),
       streamOutputs(DbStreamOutputs::self()),
-      testSignals(db::TestSignals::self()),
+      testSignals(DbTestSignals::self()),
       timer(new QTimer(this)) {
   // creating our database directory if it does not exist
 
