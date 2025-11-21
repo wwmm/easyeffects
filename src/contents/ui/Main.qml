@@ -273,8 +273,6 @@ Kirigami.ApplicationWindow {
 
                 inputDeviceMenuItem.text = PW.ModelNodes.getNodeDescription(DbStreamInputs.inputDevice);
                 outputDeviceMenuItem.text = PW.ModelNodes.getNodeDescription(DbStreamOutputs.outputDevice);
-
-                console.log(DbStreamOutputs.outputDevice);
             }
 
             Instantiator {
