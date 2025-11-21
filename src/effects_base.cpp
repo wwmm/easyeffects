@@ -24,6 +24,7 @@
 #include <qnamespace.h>
 #include <qobjectdefs.h>
 #include <qpoint.h>
+#include <qthread.h>
 #include <qtmetamacros.h>
 #include <qtypes.h>
 #include <spa/utils/defs.h>
@@ -74,7 +75,10 @@
 #include "util.hpp"
 
 EffectsBase::EffectsBase(pw::Manager* pipe_manager, PipelineType pipe_type)
-    : log_tag(pipe_type == PipelineType::output ? "soe: " : "sie: "), pm(pipe_manager), pipeline_type(pipe_type) {
+    : log_tag(pipe_type == PipelineType::output ? "soe: " : "sie: "),
+      pm(pipe_manager),
+      pipeline_type(pipe_type),
+      baseWorker(new EffectsBaseWorker) {
   using namespace std::string_literals;
 
   output_level = std::make_shared<OutputLevel>(log_tag, pm, pipeline_type, "0");
@@ -107,9 +111,20 @@ EffectsBase::EffectsBase(pw::Manager* pipe_manager, PipelineType pipe_type)
       plugin->set_native_ui_update_frequency(v);
     }
   });
+
+  // worker thread for the native ui and maybe also other things
+
+  baseWorker->moveToThread(&workerThread);
+
+  workerThread.start();
+
+  connect(&workerThread, &QThread::finished, baseWorker, &QObject::deleteLater);
 }
 
 EffectsBase::~EffectsBase() {
+  workerThread.quit();
+  workerThread.wait();
+
   util::debug("effects_base: destroyed");
 }
 
@@ -368,7 +383,7 @@ void EffectsBase::requestSpectrumData() {
   // NOLINTBEGIN(clang-analyzer-cplusplus.NewDeleteLeaks)
 
   QMetaObject::invokeMethod(
-      this,
+      baseWorker,
       [this] {
         auto [rate, list] = spectrum->compute_magnitudes();
 

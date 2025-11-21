@@ -37,6 +37,10 @@
 #include "pw_manager.hpp"
 #include "spectrum.hpp"
 
+class EffectsBaseWorker : public QObject {
+  Q_OBJECT
+};
+
 class EffectsBase : public QObject {
   Q_OBJECT
 
@@ -88,6 +92,10 @@ class EffectsBase : public QObject {
   std::map<QString, std::shared_ptr<PluginBase>> plugins;
 
   std::vector<pw_proxy*> list_proxies, list_proxies_listen_mic;
+
+  EffectsBaseWorker* baseWorker;
+
+  QThread workerThread;
 
   void create_filters_if_necessary();
 
