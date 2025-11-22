@@ -51,16 +51,19 @@ std::map<std::string, std::string> const EasyEffectsToApoFilter = {
     {"Bell", "PK"},      {"Lo-pass", "LPQ"}, {"Hi-pass", "HPQ"}, {"Lo-shelf", "LSC"},
     {"Hi-shelf", "HSC"}, {"Notch", "NO"},    {"Allpass", "AP"},  {"Bandpass", "BP"}};
 
-auto import_preset(db::Equalizer* settings,
-                   db::EqualizerChannel* settings_left,
-                   db::EqualizerChannel* settings_right,
-                   const std::string& file_path) -> bool;
+auto import_apo_preset(db::Equalizer* settings,
+                       db::EqualizerChannel* settings_left,
+                       db::EqualizerChannel* settings_right,
+                       const std::string& file_path) -> bool;
 
 auto import_graphiceq_preset(db::Equalizer* settings,
                              db::EqualizerChannel* settings_left,
                              db::EqualizerChannel* settings_right,
                              const std::string& file_path) -> bool;
 
-auto export_preset(db::Equalizer* settings, db::EqualizerChannel* settings_left, const std::string& file_path) -> bool;
+auto export_apo_preset(db::Equalizer* settings,
+                       db::EqualizerChannel* settings_left,
+                       db::EqualizerChannel* settings_right,
+                       const std::string& file_path) -> bool;
 
 }  // namespace apo

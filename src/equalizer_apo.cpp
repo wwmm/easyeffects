@@ -225,10 +225,10 @@ static auto parse_apo_config_line(const std::string& line, struct APO_Band& filt
   return true;
 }
 
-auto import_preset(db::Equalizer* settings,
-                   db::EqualizerChannel* settings_left,
-                   db::EqualizerChannel* settings_right,
-                   const std::string& file_path) -> bool {
+auto import_apo_preset(db::Equalizer* settings,
+                       db::EqualizerChannel* settings_left,
+                       db::EqualizerChannel* settings_right,
+                       const std::string& file_path) -> bool {
   std::filesystem::path p{file_path};
 
   if (!std::filesystem::is_regular_file(p)) {
@@ -264,26 +264,43 @@ auto import_preset(db::Equalizer* settings,
   // Sort bands by freq is made by user through Equalizer::sort_bands()
   // std::ranges::stable_sort(bands, {}, &APO_Band::freq);
 
-  const auto& max_bands = settings->defaultNumBandsValue();
+  const auto max_bands = settings->getMaxValue(num_bands).value<int>();
+  const auto apo_bands = static_cast<int>(bands.size());
 
   // Apply APO parameters obtained
-  settings->setNumBands(std::min(static_cast<int>(bands.size()), max_bands));
   settings->setInputGain(preamp);
 
   std::vector<db::EqualizerChannel*> settings_channels;
 
-  // Whether to apply the parameters to both channels or the selected one only
+  /**
+   * When split channel mode is disabled, we can:
+   * - Select the band settings of both channels.
+   * - Set the band number according to the imported APO bands.
+   *
+   * In split channels mode, instead, we have to:
+   * - Select only the band settings of the visible channel, because the user
+   *   may want to import different APO presets for each channel.
+   * - Avoid to reduce the current band number because we only import to a
+   *   single channel, so we do NOT want to change the curreny band parameters
+   *   of the other channel.
+   */
   if (!settings->splitChannels()) {
+    settings->setNumBands(std::min(apo_bands, max_bands));
+
     settings_channels.push_back(settings_left);
     settings_channels.push_back(settings_right);
-  } else if (settings->viewLeftChannel()) {
-    settings_channels.push_back(settings_left);
   } else {
-    settings_channels.push_back(settings_right);
+    settings->setNumBands(std::max(settings->numBands(), std::min(apo_bands, max_bands)));
+
+    if (settings->viewLeftChannel()) {
+      settings_channels.push_back(settings_left);
+    } else {
+      settings_channels.push_back(settings_right);
+    }
   }
 
   // Apply APO parameters obtained for each band
-  for (int n = 0U, apo_bands = bands.size(); n < max_bands; n++) {
+  for (int n = 0U; n < max_bands; n++) {
     for (auto* channel : settings_channels) {
       if (n < apo_bands) {
         // Band frequency and type
@@ -468,29 +485,34 @@ auto import_graphiceq_preset(db::Equalizer* settings,
   // Sort bands by freq is made by user through Equalizer::sort_bands()
   // std::ranges::stable_sort(bands, {}, &GraphicEQ_Band::freq);
 
-  const auto& max_bands = settings->defaultNumBandsValue();
+  const auto max_bands = settings->getMaxValue(num_bands).value<int>();
+  const auto geq_bands = static_cast<int>(bands.size());
 
   // Reset preamp
   settings->resetProperty("input-gain");
 
   // Apply GraphicEQ parameters obtained
 
-  settings->setNumBands(std::min(static_cast<int>(bands.size()), max_bands));
-
   std::vector<db::EqualizerChannel*> settings_channels;
 
   // Whether to apply the parameters to both channels or the selected one only
   if (!settings->splitChannels()) {
+    settings->setNumBands(std::min(geq_bands, max_bands));
+
     settings_channels.push_back(settings_left);
     settings_channels.push_back(settings_right);
-  } else if (settings->viewLeftChannel()) {
-    settings_channels.push_back(settings_left);
   } else {
-    settings_channels.push_back(settings_right);
+    settings->setNumBands(std::max(settings->numBands(), std::min(geq_bands, max_bands)));
+
+    if (settings->viewLeftChannel()) {
+      settings_channels.push_back(settings_left);
+    } else {
+      settings_channels.push_back(settings_right);
+    }
   }
 
   // Apply GraphicEQ parameters obtained for each band
-  for (int n = 0U, geq_bands = bands.size(); n < max_bands; n++) {
+  for (int n = 0U; n < max_bands; n++) {
     for (auto* channel : settings_channels) {
       if (n < geq_bands) {
         // Band frequency and type
@@ -533,7 +555,10 @@ auto import_graphiceq_preset(db::Equalizer* settings,
   return true;
 }
 
-auto export_preset(db::Equalizer* settings, db::EqualizerChannel* settings_left, const std::string& file_path) -> bool {
+auto export_apo_preset(db::Equalizer* settings,
+                       db::EqualizerChannel* settings_left,
+                       db::EqualizerChannel* settings_right,
+                       const std::string& file_path) -> bool {
   std::ofstream write_buffer(file_path);
 
   const double preamp = settings->inputGain();
@@ -541,9 +566,18 @@ auto export_preset(db::Equalizer* settings, db::EqualizerChannel* settings_left,
   write_buffer << "Preamp: " << util::to_string(preamp) << " db"
                << "\n";
 
+  db::EqualizerChannel* settings_channel = nullptr;
+
+  // Whether to export the parameters from the left or the right channel.
+  if (!settings->splitChannels()) {
+    settings_channel = settings_left;
+  } else {
+    settings_channel = settings->viewLeftChannel() ? settings_left : settings_right;
+  }
+
   for (int i = 0, k = 1; i < settings->numBands(); ++i) {
     const auto curr_band_type =
-        settings_left->bandTypeLabels()[settings_left->property(band_type[i].data()).value<int>()];
+        settings_channel->bandTypeLabels()[settings_channel->property(band_type[i].data()).value<int>()];
 
     if (curr_band_type == "Off") {
       // Skip disabled filters, we only export active ones.
@@ -559,9 +593,9 @@ auto export_preset(db::Equalizer* settings, db::EqualizerChannel* settings_left,
       apo_band.type = "PK";
     }
 
-    apo_band.freq = settings_left->property(band_frequency[i].data()).value<float>();
-    apo_band.gain = settings_left->property(band_gain[i].data()).value<float>();
-    apo_band.quality = settings_left->property(band_q[i].data()).value<float>();
+    apo_band.freq = settings_channel->property(band_frequency[i].data()).value<float>();
+    apo_band.gain = settings_channel->property(band_gain[i].data()).value<float>();
+    apo_band.quality = settings_channel->property(band_q[i].data()).value<float>();
 
     write_buffer << "Filter " << util::to_string(k++) << ": ON " << apo_band.type << " Fc "
                  << util::to_string(apo_band.freq) << " Hz";

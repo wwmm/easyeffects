@@ -4,10 +4,11 @@ Date: UNRELEASED_DATE
 
 Description: 
 - Features∶
-- 
+- The labels of an Equalizer band in the main view are greyed out when the type of the filter is set to "Off", so the user can quickly know which band is enabled or not.
+- Added the ability to enable a global excluded apps list. In this mode the blocklist set by the user is always valid and do not depend on the blocklist value set in the loaded preset.
 
 - Bug fixes∶
-- 
+- Fixed a bug that occurred in the import of APO/GraphicEq presets. In certain conditions, when Equalizer Split Channels mode was enabled, the preset imported to a single channel was altering the configuration in the other channel.
 
 - Other notes∶
 - 

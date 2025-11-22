@@ -9,16 +9,18 @@ Controls.ItemDelegate {
     required property int index
     required property var bandDB
     required property var menu
+    readonly property string bandTypeName: `band${index}Type`
 
     down: false
     hoverEnabled: false
     height: ListView.view.height
 
     contentItem: ColumnLayout {
+
         Controls.Label {
             Layout.alignment: Qt.AlignHCenter
             text: delegate.index + 1
-            enabled: false
+            enabled: delegate.bandDB[delegate.bandTypeName] !== 0 // disable when filter is Off
         }
 
         Controls.Button {
@@ -41,26 +43,26 @@ Controls.ItemDelegate {
         Controls.Label {
             Layout.alignment: Qt.AlignHCenter
             text: {
-                const f = delegate.bandDB["band" + delegate.index + "Frequency"];
+                const f = delegate.bandDB[`band${delegate.index}Frequency`];
                 if (f < 1000) {
                     return Common.toLocaleLabel(f, 0, i18n("Hz"));
                 } else {
                     return Common.toLocaleLabel(f * 0.001, 1, i18n("kHz"));
                 }
             }
-            enabled: false
+            enabled: delegate.bandDB[delegate.bandTypeName] !== 0 // disable when filter is Off
         }
 
         Controls.Label {
             Layout.alignment: Qt.AlignHCenter
-            text: "Q " + Common.toLocaleLabel(delegate.bandDB["band" + delegate.index + "Q"], 2, "")
-            enabled: false
+            text: "Q " + Common.toLocaleLabel(delegate.bandDB[`band${delegate.index}Q`], 2, "")
+            enabled: delegate.bandDB[delegate.bandTypeName] !== 0 // disable when filter is Off
         }
 
         Controls.Slider {
             id: gainSlider
 
-            readonly property string bandName: "band" + delegate.index + "Gain"
+            readonly property string bandName: `band${delegate.index}Gain`
             property real pageSteps: 10
 
             Layout.alignment: Qt.AlignHCenter
@@ -81,15 +83,13 @@ Controls.ItemDelegate {
                     const v = value + pageSteps * stepSize;
 
                     delegate.bandDB[bandName] = Common.clamp(v, from, to);
-
-                    event.accepted = true;
                 } else if (event.key === Qt.Key_PageDown) {
                     const v = value - pageSteps * stepSize;
 
                     delegate.bandDB[bandName] = Common.clamp(v, from, to);
-
-                    event.accepted = true;
                 }
+
+                event.accepted = true;
             }
         }
 
