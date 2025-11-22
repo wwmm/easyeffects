@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-22 20:17-0300\n"
-"PO-Revision-Date: 2025-11-20 10:51+0000\n"
+"POT-Creation-Date: 2025-11-22 15:08-0300\n"
+"PO-Revision-Date: 2025-11-22 23:19+0000\n"
 "Last-Translator: Максим Горпиніч <gorpinicmaksim0@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
@@ -248,7 +248,8 @@ msgstr "Тривалість історії (максимальна)"
 
 #: src/contents/ui/Autogain.qml:108 src/contents/ui/Convolver.qml:224
 #: src/contents/ui/Convolver.qml:324 src/contents/ui/Convolver.qml:378
-#: src/contents/ui/PreferencesSheet.qml:231 src/contents/ui/Reverb.qml:67
+#: src/contents/ui/PreferencesSheet.qml:218 src/contents/ui/Reverb.qml:67
+#: src/contents/ui/PreferencesSheet.qml:231
 msgid "s"
 msgstr "с"
 
@@ -275,7 +276,7 @@ msgstr "Вихідне підсилення"
 #: src/contents/ui/Convolver.qml:457 src/contents/ui/Crossfeed.qml:128
 #: src/contents/ui/Crystalizer.qml:90 src/contents/ui/DeepFilterNet.qml:175
 #: src/contents/ui/Deesser.qml:300 src/contents/ui/Delay.qml:354
-#: src/contents/ui/EchoCanceller.qml:136 src/contents/ui/Equalizer.qml:283
+#: src/contents/ui/EchoCanceller.qml:136 src/contents/ui/Equalizer.qml:264
 #: src/contents/ui/Exciter.qml:190 src/contents/ui/Expander.qml:819
 #: src/contents/ui/Filter.qml:198 src/contents/ui/Gate.qml:956
 #: src/contents/ui/LevelMeter.qml:205 src/contents/ui/Limiter.qml:574
@@ -286,6 +287,7 @@ msgstr "Вихідне підсилення"
 #: src/contents/ui/RNNoise.qml:67 src/contents/ui/RNNoise.qml:281
 #: src/contents/ui/RNNoise.qml:283 src/contents/ui/RNNoise.qml:301
 #: src/contents/ui/Speex.qml:155 src/contents/ui/StereoTools.qml:369
+#: src/contents/ui/Equalizer.qml:283
 msgid "Using %1"
 msgstr "Використовується %1"
 
@@ -337,7 +339,7 @@ msgstr "Діапазон"
 #: src/contents/ui/Crossfeed.qml:66 src/contents/ui/CrystalizerBand.qml:75
 #: src/contents/ui/Deesser.qml:173 src/contents/ui/Deesser.qml:190
 #: src/contents/ui/EqualizerBandMenu.qml:80
-#: src/contents/ui/EqualizerBand.qml:48 src/contents/ui/Exciter.qml:133
+#: src/contents/ui/EqualizerBand.qml:46 src/contents/ui/Exciter.qml:133
 #: src/contents/ui/Exciter.qml:160 src/contents/ui/Expander.qml:385
 #: src/contents/ui/Expander.qml:406 src/contents/ui/Filter.qml:115
 #: src/contents/ui/Gate.qml:404 src/contents/ui/Gate.qml:425
@@ -349,10 +351,14 @@ msgstr "Діапазон"
 #: src/contents/ui/MultibandGate.qml:477 src/contents/ui/MultibandGate.qml:502
 #: src/contents/ui/PageStreamsEffects.qml:450
 #: src/contents/ui/PipeWirePage.qml:402
+#: src/contents/ui/PreferencesSheet.qml:398
+#: src/contents/ui/PreferencesSheet.qml:414
+#: src/contents/ui/PreferencesSheet.qml:573 src/contents/ui/Reverb.qml:126
+#: src/contents/ui/Reverb.qml:143 src/contents/ui/Reverb.qml:160
+#: src/contents/ui/EqualizerBand.qml:48
 #: src/contents/ui/PreferencesSheet.qml:411
 #: src/contents/ui/PreferencesSheet.qml:427
-#: src/contents/ui/PreferencesSheet.qml:586 src/contents/ui/Reverb.qml:126
-#: src/contents/ui/Reverb.qml:143 src/contents/ui/Reverb.qml:160
+#: src/contents/ui/PreferencesSheet.qml:586
 msgid "Hz"
 msgstr "Гц"
 
@@ -366,13 +372,13 @@ msgstr "Частота обмеження"
 
 #: src/contents/ui/BassEnhancer.qml:203 src/contents/ui/Compressor.qml:889
 #: src/contents/ui/Deesser.qml:318 src/contents/ui/Delay.qml:392
-#: src/contents/ui/Equalizer.qml:301 src/contents/ui/Exciter.qml:208
+#: src/contents/ui/Equalizer.qml:282 src/contents/ui/Exciter.qml:208
 #: src/contents/ui/Expander.qml:837 src/contents/ui/Filter.qml:216
 #: src/contents/ui/Gate.qml:974 src/contents/ui/Limiter.qml:592
 #: src/contents/ui/Loudness.qml:171 src/contents/ui/Maximizer.qml:119
 #: src/contents/ui/MultibandCompressor.qml:965
 #: src/contents/ui/MultibandGate.qml:938 src/contents/ui/Reverb.qml:323
-#: src/contents/ui/StereoTools.qml:387
+#: src/contents/ui/StereoTools.qml:387 src/contents/ui/Equalizer.qml:301
 msgid "Show native window"
 msgstr "Показати рідне вікно"
 
@@ -386,7 +392,7 @@ msgstr "Слухати"
 #: src/contents/ui/Compressor.qml:923 src/contents/ui/Convolver.qml:485
 #: src/contents/ui/Crossfeed.qml:154 src/contents/ui/Crystalizer.qml:118
 #: src/contents/ui/Deesser.qml:342 src/contents/ui/Delay.qml:406
-#: src/contents/ui/EchoCanceller.qml:164 src/contents/ui/Equalizer.qml:367
+#: src/contents/ui/EchoCanceller.qml:164 src/contents/ui/Equalizer.qml:348
 #: src/contents/ui/Exciter.qml:232 src/contents/ui/Expander.qml:871
 #: src/contents/ui/Filter.qml:230 src/contents/ui/Gate.qml:1008
 #: src/contents/ui/Limiter.qml:626 src/contents/ui/Loudness.qml:195
@@ -394,7 +400,7 @@ msgstr "Слухати"
 #: src/contents/ui/MultibandCompressor.qml:996
 #: src/contents/ui/MultibandGate.qml:969 src/contents/ui/Reverb.qml:337
 #: src/contents/ui/RNNoise.qml:326 src/contents/ui/Speex.qml:173
-#: src/contents/ui/StereoTools.qml:401
+#: src/contents/ui/StereoTools.qml:401 src/contents/ui/Equalizer.qml:367
 msgid "Reset"
 msgstr "Скинути"
 
@@ -465,11 +471,12 @@ msgstr "Компресор"
 #: src/contents/ui/Compressor.qml:61 src/contents/ui/Compressor.qml:283
 #: src/contents/ui/Deesser.qml:70 src/contents/ui/Delay.qml:51
 #: src/contents/ui/Delay.qml:204 src/contents/ui/EqualizerBandMenu.qml:45
-#: src/contents/ui/Equalizer.qml:121 src/contents/ui/Expander.qml:61
+#: src/contents/ui/Equalizer.qml:102 src/contents/ui/Expander.qml:61
 #: src/contents/ui/Expander.qml:243 src/contents/ui/Gate.qml:261
 #: src/contents/ui/Limiter.qml:54 src/contents/ui/Loudness.qml:51
 #: src/contents/ui/MultibandCompressor.qml:407
 #: src/contents/ui/MultibandGate.qml:380 src/contents/ui/StereoTools.qml:103
+#: src/contents/ui/Equalizer.qml:121
 msgid "Mode"
 msgstr "Режим"
 
@@ -538,10 +545,13 @@ msgstr "Атака"
 #: src/contents/ui/MultibandGate.qml:439 src/contents/ui/MultibandGate.qml:454
 #: src/contents/ui/PageStreamsEffects.qml:592 src/contents/ui/Pitch.qml:58
 #: src/contents/ui/Pitch.qml:75 src/contents/ui/Pitch.qml:93
+#: src/contents/ui/PreferencesSheet.qml:234
+#: src/contents/ui/PreferencesSheet.qml:273
+#: src/contents/ui/PreferencesSheet.qml:436 src/contents/ui/Reverb.qml:83
+#: src/contents/ui/RNNoise.qml:148 src/contents/ui/StereoTools.qml:282
 #: src/contents/ui/PreferencesSheet.qml:247
 #: src/contents/ui/PreferencesSheet.qml:286
-#: src/contents/ui/PreferencesSheet.qml:449 src/contents/ui/Reverb.qml:83
-#: src/contents/ui/RNNoise.qml:148 src/contents/ui/StereoTools.qml:282
+#: src/contents/ui/PreferencesSheet.qml:449
 msgid "ms"
 msgstr "мс"
 
@@ -643,22 +653,22 @@ msgid "Side"
 msgstr "Різність"
 
 #: src/contents/ui/Compressor.qml:301 src/contents/ui/Convolver.qml:267
-#: src/contents/ui/Delay.qml:39 src/contents/ui/Equalizer.qml:213
+#: src/contents/ui/Delay.qml:39 src/contents/ui/Equalizer.qml:194
 #: src/contents/ui/Expander.qml:261 src/contents/ui/Gate.qml:279
 #: src/contents/ui/LevelMeter.qml:60 src/contents/ui/LevelMeter.qml:101
 #: src/contents/ui/MultibandCompressor.qml:422
 #: src/contents/ui/MultibandGate.qml:395 src/contents/ui/PipeWirePage.qml:322
-#: src/contents/ui/StereoTools.qml:184
+#: src/contents/ui/StereoTools.qml:184 src/contents/ui/Equalizer.qml:213
 msgid "Left"
 msgstr "Лівий"
 
 #: src/contents/ui/Compressor.qml:301 src/contents/ui/Convolver.qml:285
-#: src/contents/ui/Delay.qml:192 src/contents/ui/Equalizer.qml:213
+#: src/contents/ui/Delay.qml:192 src/contents/ui/Equalizer.qml:194
 #: src/contents/ui/Expander.qml:261 src/contents/ui/Gate.qml:279
 #: src/contents/ui/LevelMeter.qml:71 src/contents/ui/LevelMeter.qml:112
 #: src/contents/ui/MultibandCompressor.qml:422
 #: src/contents/ui/MultibandGate.qml:395 src/contents/ui/PipeWirePage.qml:333
-#: src/contents/ui/StereoTools.qml:211
+#: src/contents/ui/StereoTools.qml:211 src/contents/ui/Equalizer.qml:213
 msgid "Right"
 msgstr "Правий"
 
@@ -1016,8 +1026,9 @@ msgstr "Приглушити"
 msgid "Bypass"
 msgstr "Обійти"
 
-#: src/contents/ui/CrystalizerBand.qml:75 src/contents/ui/EqualizerBand.qml:50
+#: src/contents/ui/CrystalizerBand.qml:75 src/contents/ui/EqualizerBand.qml:48
 #: src/contents/ui/PageStreamsEffects.qml:591
+#: src/contents/ui/EqualizerBand.qml:50
 msgid "kHz"
 msgstr "кГц"
 
@@ -1389,42 +1400,39 @@ msgstr "окт"
 msgid "Solo"
 msgstr "Ізолювати"
 
-#: src/contents/ui/Equalizer.qml:49 src/contents/ui/Equalizer.qml:89
+#: src/contents/ui/Equalizer.qml:49 src/contents/ui/Equalizer.qml:79
+#: src/contents/ui/Equalizer.qml:89
 msgid "APO preset"
 msgstr "Попередні налаштування APO"
 
-#: src/contents/ui/Equalizer.qml:52
-msgid "Failed to import the Equalizer APO preset file."
-msgstr "Не вдалося імпортувати файл попереднього налаштування APO."
-
-#: src/contents/ui/Equalizer.qml:57
+#: src/contents/ui/Equalizer.qml:52 src/contents/ui/Equalizer.qml:57
 msgid "Imported the Equalizer APO preset file."
 msgstr "Імпортовано файл попереднього налаштування APO."
 
-#: src/contents/ui/Equalizer.qml:59
-#, fuzzy
-msgid "Imported the Equalizer APO preset file into the left channel."
-msgstr "Імпортовано файл попереднього налаштування APO."
+#: src/contents/ui/Equalizer.qml:54 src/contents/ui/Equalizer.qml:52
+msgid "Failed to import the Equalizer APO preset file."
+msgstr "Не вдалося імпортувати файл попереднього налаштування APO."
 
-#: src/contents/ui/Equalizer.qml:61
-#, fuzzy
-msgid "Imported the Equalizer APO preset file into the right channel."
-msgstr "Імпортовано файл попереднього налаштування APO."
-
-#: src/contents/ui/Equalizer.qml:74
+#: src/contents/ui/Equalizer.qml:64 src/contents/ui/Equalizer.qml:74
 msgid "GraphicEQ preset"
 msgstr "Попередні налаштування графічного еквалайзера"
 
-#: src/contents/ui/Equalizer.qml:77
+#: src/contents/ui/Equalizer.qml:67 src/contents/ui/Equalizer.qml:77
 msgid "Imported the GraphicEQ preset file."
 msgstr "Імпортовано файл попереднього налаштування графічного еквалайзера."
 
-#: src/contents/ui/Equalizer.qml:79
+#: src/contents/ui/Equalizer.qml:69 src/contents/ui/Equalizer.qml:79
 msgid "Failed to import the GraphicEQ preset file."
 msgstr ""
 "Не вдалося імпортувати файл попереднього налаштування графічного еквалайзера."
 
-#: src/contents/ui/Equalizer.qml:92
+#: src/contents/ui/Equalizer.qml:82 src/contents/ui/Equalizer.qml:97
+msgid "Exported the current Equalizer settings to an external APO preset file."
+msgstr ""
+"Експортовано поточні налаштування еквалайзера до зовнішнього файлу "
+"попереднього налаштування APO."
+
+#: src/contents/ui/Equalizer.qml:85 src/contents/ui/Equalizer.qml:92
 msgid ""
 "Failed to export the current Equalizer settings to an external APO preset "
 "file."
@@ -1432,94 +1440,74 @@ msgstr ""
 "Не вдалося експортувати поточні налаштування еквалайзера до зовнішнього "
 "файлу попереднього налаштування APO."
 
-#: src/contents/ui/Equalizer.qml:97
-msgid "Exported the current Equalizer settings to an external APO preset file."
-msgstr ""
-"Експортовано поточні налаштування еквалайзера до зовнішнього файлу "
-"попереднього налаштування APO."
-
-#: src/contents/ui/Equalizer.qml:99
-#, fuzzy
-msgid ""
-"Exported the current Equalizer settings of the left channel to an external "
-"APO preset file."
-msgstr ""
-"Експортовано поточні налаштування еквалайзера до зовнішнього файлу "
-"попереднього налаштування APO."
-
-#: src/contents/ui/Equalizer.qml:101
-#, fuzzy
-msgid ""
-"Exported the current Equalizer settings of the right channel to an external "
-"APO preset file."
-msgstr ""
-"Експортовано поточні налаштування еквалайзера до зовнішнього файлу "
-"попереднього налаштування APO."
-
-#: src/contents/ui/Equalizer.qml:125 src/contents/ui/Filter.qml:77
-#: src/contents/ui/Loudness.qml:57
+#: src/contents/ui/Equalizer.qml:106 src/contents/ui/Filter.qml:77
+#: src/contents/ui/Loudness.qml:57 src/contents/ui/Equalizer.qml:125
 msgid "IIR"
 msgstr "Нескінченна імпульсна характеристика"
 
-#: src/contents/ui/Equalizer.qml:125 src/contents/ui/Filter.qml:77
+#: src/contents/ui/Equalizer.qml:106 src/contents/ui/Filter.qml:77
+#: src/contents/ui/Equalizer.qml:125
 msgid "FIR"
 msgstr "Кінцева імпульсна характеристика"
 
-#: src/contents/ui/Equalizer.qml:125 src/contents/ui/Filter.qml:77
-#: src/contents/ui/Loudness.qml:57
+#: src/contents/ui/Equalizer.qml:106 src/contents/ui/Filter.qml:77
+#: src/contents/ui/Loudness.qml:57 src/contents/ui/Equalizer.qml:125
 msgid "FFT"
 msgstr "Швидке перетворення Фур'є"
 
-#: src/contents/ui/Equalizer.qml:125 src/contents/ui/Filter.qml:77
+#: src/contents/ui/Equalizer.qml:106 src/contents/ui/Filter.qml:77
+#: src/contents/ui/Equalizer.qml:125
 msgid "SPM"
 msgstr "Спектральний процесор"
 
-#: src/contents/ui/Equalizer.qml:134
+#: src/contents/ui/Equalizer.qml:115 src/contents/ui/Equalizer.qml:134
 msgid "Bands"
 msgstr "Кількість смуг"
 
-#: src/contents/ui/Equalizer.qml:150 src/contents/ui/Filter.qml:170
+#: src/contents/ui/Equalizer.qml:131 src/contents/ui/Filter.qml:170
 #: src/contents/ui/StereoTools.qml:57 src/contents/ui/StereoTools.qml:258
+#: src/contents/ui/Equalizer.qml:150
 msgid "Balance"
 msgstr "Баланс"
 
-#: src/contents/ui/Equalizer.qml:167
+#: src/contents/ui/Equalizer.qml:148 src/contents/ui/Equalizer.qml:167
 msgid "Pitch left"
 msgstr "Зміщення частоти лівого каналу"
 
+#: src/contents/ui/Equalizer.qml:156 src/contents/ui/Equalizer.qml:173
 #: src/contents/ui/Equalizer.qml:175 src/contents/ui/Equalizer.qml:192
 msgid "st"
 msgstr "пт"
 
-#: src/contents/ui/Equalizer.qml:184
+#: src/contents/ui/Equalizer.qml:165 src/contents/ui/Equalizer.qml:184
 msgid "Pitch right"
 msgstr "Зміщення частоти правого каналу"
 
-#: src/contents/ui/Equalizer.qml:314
+#: src/contents/ui/Equalizer.qml:295 src/contents/ui/Equalizer.qml:314
 msgid "Split channels"
 msgstr "Розділити канали"
 
-#: src/contents/ui/Equalizer.qml:324
+#: src/contents/ui/Equalizer.qml:305 src/contents/ui/Equalizer.qml:324
 msgid "Flat response"
 msgstr "Плоска характеристика"
 
-#: src/contents/ui/Equalizer.qml:331
+#: src/contents/ui/Equalizer.qml:312 src/contents/ui/Equalizer.qml:331
 msgid "Calculate frequencies"
 msgstr "Розрахувати частоти"
 
-#: src/contents/ui/Equalizer.qml:338
+#: src/contents/ui/Equalizer.qml:319 src/contents/ui/Equalizer.qml:338
 msgid "Sort bands"
 msgstr "Сортувати смуги"
 
-#: src/contents/ui/Equalizer.qml:345
+#: src/contents/ui/Equalizer.qml:326 src/contents/ui/Equalizer.qml:345
 msgid "Import APO"
 msgstr "Імпорт APO"
 
-#: src/contents/ui/Equalizer.qml:352
+#: src/contents/ui/Equalizer.qml:333 src/contents/ui/Equalizer.qml:352
 msgid "Import APO (GraphicEQ)"
 msgstr "Імпорт APO (графічний)"
 
-#: src/contents/ui/Equalizer.qml:359
+#: src/contents/ui/Equalizer.qml:340 src/contents/ui/Equalizer.qml:359
 msgid "Export APO"
 msgstr "Експорт APO"
 
@@ -2125,11 +2113,13 @@ msgid "No Clients"
 msgstr "Немає клієнтів"
 
 #: src/contents/ui/PipeWirePage.qml:296
+#: src/contents/ui/PreferencesSheet.qml:247
 #: src/contents/ui/PreferencesSheet.qml:260
 msgid "State"
 msgstr "Стан"
 
 #: src/contents/ui/PipeWirePage.qml:303
+#: src/contents/ui/PreferencesSheet.qml:254
 #: src/contents/ui/PreferencesSheet.qml:267
 msgid "Enabled"
 msgstr "Увімкнено"
@@ -2227,6 +2217,7 @@ msgid "Database"
 msgstr "База даних"
 
 #: src/contents/ui/PreferencesSheet.qml:39
+#: src/contents/ui/PreferencesSheet.qml:281
 #: src/contents/ui/PreferencesSheet.qml:294
 msgid "Style"
 msgstr "Стиль"
@@ -2255,33 +2246,27 @@ msgstr "Easy Effects запускається під час запуску се�
 msgid "Show the tray icon"
 msgstr "Показати значок у треї"
 
-#: src/contents/ui/PreferencesSheet.qml:104
-msgid "Do not show our window"
-msgstr ""
-
-#: src/contents/ui/PreferencesSheet.qml:105
-msgid ""
-"Do not show our window after that application starts. In general this option "
-"should not be used. It is intended as a workaround for systems that do not "
-"work well with our autostart file."
-msgstr ""
-
+#: src/contents/ui/PreferencesSheet.qml:112
 #: src/contents/ui/PreferencesSheet.qml:125
 msgid "Process all output streams"
 msgstr "Обробляти всі вихідні потоки"
 
+#: src/contents/ui/PreferencesSheet.qml:124
 #: src/contents/ui/PreferencesSheet.qml:137
 msgid "Process all input streams"
 msgstr "Обробити всі вхідні потоки"
 
+#: src/contents/ui/PreferencesSheet.qml:136
 #: src/contents/ui/PreferencesSheet.qml:149
 msgid "Ignore streams from monitor of devices"
 msgstr "Ігнорувати потоки з монітора пристроїв"
 
+#: src/contents/ui/PreferencesSheet.qml:148
 #: src/contents/ui/PreferencesSheet.qml:161
 msgid "Use cubic volume"
 msgstr "Використовувати кубічний об'єм"
 
+#: src/contents/ui/PreferencesSheet.qml:149
 #: src/contents/ui/PreferencesSheet.qml:162
 msgid ""
 "Use cubic scale for stream volume rather than the linear one. Low "
@@ -2292,10 +2277,12 @@ msgstr ""
 "відсотки призводять до нижчої сприйнятої гучності, тоді як гучність "
 "змінюється більш рівномірно вздовж повзунка."
 
+#: src/contents/ui/PreferencesSheet.qml:161
 #: src/contents/ui/PreferencesSheet.qml:174
 msgid "Ignore system notifications"
 msgstr "Ігнорувати системні сповіщення"
 
+#: src/contents/ui/PreferencesSheet.qml:162
 #: src/contents/ui/PreferencesSheet.qml:175
 msgid ""
 "Processing system notifications may cause crackling sound, so it would be "
@@ -2306,18 +2293,22 @@ msgstr ""
 "ігнорувати, але для деяких попередніх налаштувань це може бути "
 "рекомендовано, оскільки вони можуть звучати занадто голосно."
 
+#: src/contents/ui/PreferencesSheet.qml:174
 #: src/contents/ui/PreferencesSheet.qml:187
 msgid "Enable/disable input monitoring"
 msgstr "Увімкнути/вимкнути прослуховування входу"
 
+#: src/contents/ui/PreferencesSheet.qml:186
 #: src/contents/ui/PreferencesSheet.qml:199
 msgid "Mic monitor plays to output effects pipeline"
 msgstr "Прослуховування мікрофона через вихідний конвеєр ефектів"
 
+#: src/contents/ui/PreferencesSheet.qml:198
 #: src/contents/ui/PreferencesSheet.qml:211
 msgid "Enable the inactivity timeout"
 msgstr "Увімкнути час очікування при бездіяльності"
 
+#: src/contents/ui/PreferencesSheet.qml:199
 #: src/contents/ui/PreferencesSheet.qml:212
 msgid ""
 "When all streams are inactive, Easy Effects pipeline remains loaded for an "
@@ -2326,14 +2317,17 @@ msgstr ""
 "Коли всі потоки неактивні, конвеєр Easy Effects залишається завантаженим "
 "протягом додаткового часу."
 
+#: src/contents/ui/PreferencesSheet.qml:211
 #: src/contents/ui/PreferencesSheet.qml:224
 msgid "Inactivity timeout"
 msgstr "Час очікування при бездіяльності"
 
+#: src/contents/ui/PreferencesSheet.qml:226
 #: src/contents/ui/PreferencesSheet.qml:239
 msgid "Level meters label"
 msgstr "Позначки індикаторів рівня"
 
+#: src/contents/ui/PreferencesSheet.qml:227
 #: src/contents/ui/PreferencesSheet.qml:240
 msgid ""
 "The time it takes for the level meter labels to be updated when the current "
@@ -2342,126 +2336,157 @@ msgstr ""
 "Час, необхідний для оновлення позначок індикатора рівня, коли поточний "
 "рівень нижчий за останній найвищий."
 
+#: src/contents/ui/PreferencesSheet.qml:266
 #: src/contents/ui/PreferencesSheet.qml:279
 msgid "Audio delay compensation"
 msgstr "Компенсація затримки звуку"
 
+#: src/contents/ui/PreferencesSheet.qml:288
 #: src/contents/ui/PreferencesSheet.qml:301
 msgid "Color scheme"
 msgstr "Колірна схема"
 
+#: src/contents/ui/PreferencesSheet.qml:292
 #: src/contents/ui/PreferencesSheet.qml:305
 msgid "Automatic"
 msgstr "Автоматична"
 
+#: src/contents/ui/PreferencesSheet.qml:292
 #: src/contents/ui/PreferencesSheet.qml:305
 msgid "Light"
 msgstr "Світла"
 
+#: src/contents/ui/PreferencesSheet.qml:292
 #: src/contents/ui/PreferencesSheet.qml:305
 msgid "Dark"
 msgstr "Темна"
 
+#: src/contents/ui/PreferencesSheet.qml:302
 #: src/contents/ui/PreferencesSheet.qml:315
 msgid "Color theme"
 msgstr "Колірна тема"
 
+#: src/contents/ui/PreferencesSheet.qml:306
 #: src/contents/ui/PreferencesSheet.qml:319
 msgid "Green"
 msgstr "Зелена"
 
+#: src/contents/ui/PreferencesSheet.qml:306
 #: src/contents/ui/PreferencesSheet.qml:319
 msgid "Green neon"
 msgstr "Зелений неон"
 
+#: src/contents/ui/PreferencesSheet.qml:306
 #: src/contents/ui/PreferencesSheet.qml:319
 msgid "Mix"
 msgstr "Змішана"
 
+#: src/contents/ui/PreferencesSheet.qml:306
 #: src/contents/ui/PreferencesSheet.qml:319
 msgid "Orange"
 msgstr "Помаранчева"
 
+#: src/contents/ui/PreferencesSheet.qml:306
 #: src/contents/ui/PreferencesSheet.qml:319
 msgid "Yellow"
 msgstr "Жовта"
 
+#: src/contents/ui/PreferencesSheet.qml:306
 #: src/contents/ui/PreferencesSheet.qml:319
 msgid "Blue"
 msgstr "Синя"
 
+#: src/contents/ui/PreferencesSheet.qml:306
 #: src/contents/ui/PreferencesSheet.qml:319
 msgid "Purple"
 msgstr "Фіолетова"
 
+#: src/contents/ui/PreferencesSheet.qml:306
 #: src/contents/ui/PreferencesSheet.qml:319
 msgid "Grey"
 msgstr "Сіра"
 
+#: src/contents/ui/PreferencesSheet.qml:316
 #: src/contents/ui/PreferencesSheet.qml:329
 msgid "Shape"
 msgstr "Форма"
 
+#: src/contents/ui/PreferencesSheet.qml:320
 #: src/contents/ui/PreferencesSheet.qml:333
 msgid "Bars"
 msgstr "Стовпці"
 
+#: src/contents/ui/PreferencesSheet.qml:320
 #: src/contents/ui/PreferencesSheet.qml:333
 msgid "Lines"
 msgstr "Лінії"
 
+#: src/contents/ui/PreferencesSheet.qml:320
 #: src/contents/ui/PreferencesSheet.qml:333
 msgid "Dots"
 msgstr "Крапки"
 
+#: src/contents/ui/PreferencesSheet.qml:320
 #: src/contents/ui/PreferencesSheet.qml:333
 msgid "Area"
 msgstr "Площа"
 
+#: src/contents/ui/PreferencesSheet.qml:330
 #: src/contents/ui/PreferencesSheet.qml:343
 msgid "Dynamic scale"
 msgstr "Динамічний масштаб"
 
+#: src/contents/ui/PreferencesSheet.qml:342
 #: src/contents/ui/PreferencesSheet.qml:355
 msgid "Logarithmic frequency axis"
 msgstr "Логарифмічна вісь частоти"
 
+#: src/contents/ui/PreferencesSheet.qml:354
 #: src/contents/ui/PreferencesSheet.qml:367
 msgid "Points"
 msgstr "Роздільна здатність"
 
+#: src/contents/ui/PreferencesSheet.qml:369
 #: src/contents/ui/PreferencesSheet.qml:382
 msgid "Height"
 msgstr "Висота"
 
+#: src/contents/ui/PreferencesSheet.qml:376
 #: src/contents/ui/PreferencesSheet.qml:389
 msgid "px"
 msgstr "пікс"
 
+#: src/contents/ui/PreferencesSheet.qml:384
 #: src/contents/ui/PreferencesSheet.qml:397
 msgid "Frequency Range"
 msgstr "Діапазон частот"
 
+#: src/contents/ui/PreferencesSheet.qml:391
 #: src/contents/ui/PreferencesSheet.qml:404
 msgid "Minimum"
 msgstr "Мінімум"
 
+#: src/contents/ui/PreferencesSheet.qml:407
 #: src/contents/ui/PreferencesSheet.qml:420
 msgid "Maximum"
 msgstr "Максимум"
 
+#: src/contents/ui/PreferencesSheet.qml:429
 #: src/contents/ui/PreferencesSheet.qml:442
 msgid "Database autosave interval"
 msgstr "Інтервал автоматичного збереження бази даних"
 
+#: src/contents/ui/PreferencesSheet.qml:443
 #: src/contents/ui/PreferencesSheet.qml:456
 msgid "Most used presets"
 msgstr "Найчастіше застосовувані попередні налаштування"
 
+#: src/contents/ui/PreferencesSheet.qml:466
 #: src/contents/ui/PreferencesSheet.qml:479
 msgid "Force KDE's Breeze theme when Easy Effects starts"
 msgstr "Примусово вмикати тему Breeze від KDE під час запуску Easy Effects"
 
+#: src/contents/ui/PreferencesSheet.qml:467
 #: src/contents/ui/PreferencesSheet.qml:480
 msgid ""
 "It is necessary to restart the service for changes in this setting to take "
@@ -2470,10 +2495,12 @@ msgstr ""
 "Щоб зміни в цьому налаштуванні набули чинності, необхідно перезапустити "
 "службу."
 
+#: src/contents/ui/PreferencesSheet.qml:480
 #: src/contents/ui/PreferencesSheet.qml:493
 msgid "Reduce effects list controls"
 msgstr "Приховати елементи керування у списку ефектів"
 
+#: src/contents/ui/PreferencesSheet.qml:481
 #: src/contents/ui/PreferencesSheet.qml:494
 msgid ""
 "Action buttons in the effects list are moved inside a context menu for a "
@@ -2482,10 +2509,12 @@ msgstr ""
 "Кнопки дій у списку ефектів переміщено в контекстне меню для більш "
 "компактного відображення."
 
+#: src/contents/ui/PreferencesSheet.qml:500
 #: src/contents/ui/PreferencesSheet.qml:513
 msgid "Autoload delay"
 msgstr "Затримка автозавантаження"
 
+#: src/contents/ui/PreferencesSheet.qml:501
 #: src/contents/ui/PreferencesSheet.qml:514
 msgid ""
 "Delay between receiving a new device route and the call to autoload a preset."
@@ -2493,36 +2522,45 @@ msgstr ""
 "Затримка між отриманням нового маршруту пристрою та викликом автоматичного "
 "завантаження попереднього налаштування."
 
-#: src/contents/ui/PreferencesSheet.qml:530
+#: src/contents/ui/PreferencesSheet.qml:517
 msgid "Ignore the blocklist"
-msgstr ""
+msgstr "Ігноруйте список блокування"
 
-#: src/contents/ui/PreferencesSheet.qml:531
+#: src/contents/ui/PreferencesSheet.qml:518
 msgid ""
 "If enabled the blocklist set in the preset file will be ignored. The one "
 "previously saved in our database will be used instead."
 msgstr ""
+"Якщо цю функцію ввімкнено, список блокування, встановлений у файлі пресетів, "
+"буде ігноруватися. Замість нього буде використано той, що раніше був "
+"збережений у нашій базі даних."
 
+#: src/contents/ui/PreferencesSheet.qml:539
 #: src/contents/ui/PreferencesSheet.qml:552
 msgid "Global shortcuts"
 msgstr "Глобальні скорочення"
 
+#: src/contents/ui/PreferencesSheet.qml:540
 #: src/contents/ui/PreferencesSheet.qml:553
 msgid "Enables support for XDG global shortcuts."
 msgstr "Увімкнути підтримку глобальних скорочень XDG."
 
+#: src/contents/ui/PreferencesSheet.qml:552
 #: src/contents/ui/PreferencesSheet.qml:565
 msgid "Native window of effects"
 msgstr "Рідне вікно ефектів"
 
+#: src/contents/ui/PreferencesSheet.qml:553
 #: src/contents/ui/PreferencesSheet.qml:566
 msgid "Allows the native user interface of effects to be shown/hidden."
 msgstr "Дозволяє показувати/приховувати власний інтерфейс користувача ефектів."
 
+#: src/contents/ui/PreferencesSheet.qml:565
 #: src/contents/ui/PreferencesSheet.qml:578
 msgid "Update frequency"
 msgstr "Частота оновлення"
 
+#: src/contents/ui/PreferencesSheet.qml:566
 #: src/contents/ui/PreferencesSheet.qml:579
 msgid "Related to LV2 plugins."
 msgstr "Стосується плагінів LV2."
@@ -3160,6 +3198,45 @@ msgstr "Еквалайзер, компресор та інші звукові е
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "Прості звукові ефекти"
+
+#: src/contents/ui/Equalizer.qml:59
+#, fuzzy
+msgid "Imported the Equalizer APO preset file into the left channel."
+msgstr "Імпортовано файл попереднього налаштування APO."
+
+#: src/contents/ui/Equalizer.qml:61
+#, fuzzy
+msgid "Imported the Equalizer APO preset file into the right channel."
+msgstr "Імпортовано файл попереднього налаштування APO."
+
+#: src/contents/ui/Equalizer.qml:99
+#, fuzzy
+msgid ""
+"Exported the current Equalizer settings of the left channel to an external "
+"APO preset file."
+msgstr ""
+"Експортовано поточні налаштування еквалайзера до зовнішнього файлу "
+"попереднього налаштування APO."
+
+#: src/contents/ui/Equalizer.qml:101
+#, fuzzy
+msgid ""
+"Exported the current Equalizer settings of the right channel to an external "
+"APO preset file."
+msgstr ""
+"Експортовано поточні налаштування еквалайзера до зовнішнього файлу "
+"попереднього налаштування APO."
+
+#: src/contents/ui/PreferencesSheet.qml:104
+msgid "Do not show our window"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:105
+msgid ""
+"Do not show our window after that application starts. In general this option "
+"should not be used. It is intended as a workaround for systems that do not "
+"work well with our autostart file."
+msgstr ""
 
 #~ msgid "Hardware profile"
 #~ msgstr "Профіль обладнання"
