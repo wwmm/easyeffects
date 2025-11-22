@@ -23,6 +23,10 @@
             <label>Automatically start on desktop login</label>
             <default>false</default>
         </entry>
+        <entry name="noWindowAfterStarting" type="Bool">
+            <label>Never show our window after the application initialization when running in service mode.</label>
+            <default>false</default>
+        </entry>
         <entry name="reducePluginsListControls" type="Bool">
             <label>Effect controls in the plugins list are shown inside a context menu</label>
             <default>false</default>

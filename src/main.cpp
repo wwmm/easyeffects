@@ -210,7 +210,7 @@ static void initQml(QQmlApplicationEngine& engine,
         ui.window->setPersistentGraphics(false);
         ui.window->setPersistentSceneGraph(false);
 
-        if (show_window) {
+        if (show_window && !DbMain::noWindowAfterStarting()) {
           ui.window->show();
           ui.window->raise();
           ui.window->requestActivate();
