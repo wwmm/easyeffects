@@ -23,6 +23,8 @@
 
 namespace tags::equalizer {
 
+inline constexpr auto num_bands = "numBands";
+
 // bands
 
 constexpr auto band_id = std::to_array(
