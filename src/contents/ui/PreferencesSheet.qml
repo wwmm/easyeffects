@@ -510,6 +510,20 @@ KirigamiSettings.ConfigurationView {
                         DbMain.presetsAutoloadInterval = v;
                     }
                 }
+
+                EeSwitch {
+                    id: useGlobalBlocklist
+
+                    label: i18n("Use shared excluded apps list") // qmllint disable
+                    subtitle: i18n("Do not exclude applications per preset.") // qmllint disable
+                    maximumLineCount: -1
+                    isChecked: DbMain.useGlobalBlocklist
+                    onCheckedChanged: {
+                        if (isChecked !== DbMain.useGlobalBlocklist) {
+                            DbMain.useGlobalBlocklist = isChecked;
+                        }
+                    }
+                }
             }
         }
     }

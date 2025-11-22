@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0 http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0 http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
     <kcfgfile name="easyeffects/db/easyeffectsrc" />
     <group name="Window">
         <entry name="width" type="Int">
@@ -26,6 +25,10 @@
         </entry>
         <entry name="reducePluginsListControls" type="Bool">
             <label>Effect controls in the plugins list are shown inside a context menu</label>
+            <default>false</default>
+        </entry>
+        <entry name="useGlobalBlocklist" type="Bool">
+            <label>Use a global blocklist instead of the one saved in presets.</label>
             <default>false</default>
         </entry>
         <entry name="lastLoadedInputPreset" type="String">
