@@ -93,16 +93,30 @@ auto ConvolverZita::init(ConvolverKernelManager::KernelData data,
     return false;
   }
 
-  if (auto ret = conv->impdata_create(0, 0, 1, kernel.left_channel.data(), 0, static_cast<int>(kernel.sampleCount()));
+  if (auto ret = conv->impdata_create(0, 0, 1, kernel.channel_L.data(), 0, static_cast<int>(kernel.sampleCount()));
       ret != 0) {
     util::warning(std::format("Zita: left impdata_create failed: {}", ret));
     return false;
   }
 
-  if (auto ret = conv->impdata_create(1, 1, 1, kernel.right_channel.data(), 0, static_cast<int>(kernel.sampleCount()));
+  if (auto ret = conv->impdata_create(1, 1, 1, kernel.channel_R.data(), 0, static_cast<int>(kernel.sampleCount()));
       ret != 0) {
     util::warning(std::format("Zita: right impdata_create failed: {}", ret));
     return false;
+  }
+
+  if (kernel.channels == 4) {
+    if (auto ret = conv->impdata_create(0, 1, 1, kernel.channel_LR.data(), 0, static_cast<int>(kernel.sampleCount()));
+        ret != 0) {
+      util::warning(std::format("Zita: LR impdata_create failed: {}", ret));
+      return false;
+    }
+
+    if (auto ret = conv->impdata_create(1, 0, 1, kernel.channel_RL.data(), 0, static_cast<int>(kernel.sampleCount()));
+        ret != 0) {
+      util::warning(std::format("Zita: RL impdata_create failed: {}", ret));
+      return false;
+    }
   }
 
   if (auto ret = conv->start_process(ZITA_SCHED_PRIORITY, ZITA_SCHED_CLASS); ret != 0) {
@@ -168,20 +182,36 @@ void ConvolverZita::apply_kernel_autogain() {
 
   // find average power
 
-  float power_L = 0.0F;
-  float power_R = 0.0F;
+  float power_LL = 0.0F;
+  float power_RR = 0.0F;
+  float power_LR = 0.0F;
+  float power_RL = 0.0F;
 
-  std::ranges::for_each(kernel.left_channel, [&](const auto& v) { power_L += v * v; });
-  std::ranges::for_each(kernel.right_channel, [&](const auto& v) { power_R += v * v; });
+  for (uint i = 0; i < kernel.sampleCount(); i++) {
+    power_LL += kernel.channel_L[i] * kernel.channel_L[i];
+    power_RR += kernel.channel_R[i] * kernel.channel_R[i];
 
-  const float power = std::max(power_L, power_R);
+    if (kernel.channels == 4) {
+      power_LR += kernel.channel_LR[i] * kernel.channel_LR[i];
+      power_RL += kernel.channel_RL[i] * kernel.channel_RL[i];
+    }
+  }
 
-  const float autogain = std::min(1.0F, 1.0F / std::sqrt(power));
+  float power = std::max({power_LL, power_RR, power_LR, power_RL});
+
+  float autogain = std::min(1.0F, 1.0F / std::sqrt(power));
 
   util::debug(std::format("autogain factor: {}", autogain));
 
-  std::ranges::for_each(kernel.left_channel, [&](auto& v) { v *= autogain; });
-  std::ranges::for_each(kernel.right_channel, [&](auto& v) { v *= autogain; });
+  for (uint i = 0; i < kernel.sampleCount(); i++) {
+    kernel.channel_L[i] *= autogain;
+    kernel.channel_R[i] *= autogain;
+
+    if (kernel.channels == 4) {
+      kernel.channel_LR[i] *= autogain;
+      kernel.channel_RL[i] *= autogain;
+    }
+  }
 }
 
 /**
@@ -196,12 +226,33 @@ void ConvolverZita::set_kernel_stereo_width(const int& ir_width) {
   const float w = static_cast<float>(ir_width) * 0.01F;
   const float x = (1.0F - w) / (1.0F + w);  // M-S coeff.; L_out = L + x*R; R_out = R + x*L
 
-  for (uint i = 0U; i < kernel.sampleCount(); i++) {
-    const auto L = kernel.left_channel[i];
-    const auto R = kernel.right_channel[i];
+  for (uint i = 0; i < kernel.sampleCount(); i++) {
+    const float LL = kernel.channel_L[i];
+    const float RR = kernel.channel_R[i];
 
-    kernel.left_channel[i] = L + (x * R);
-    kernel.right_channel[i] = R + (x * L);
+    float LR = 0.0F;
+    float RL = 0.0F;
+
+    if (kernel.channels == 4) {
+      LR = kernel.channel_LR[i];
+      RL = kernel.channel_RL[i];
+    }
+
+    // Apply width to direct paths
+    float new_LL = LL + (x * RR);
+    float new_RR = RR + (x * LL);
+
+    // Apply complementary width to cross paths
+    float new_LR = LR - (x * RL);
+    float new_RL = RL - (x * LR);
+
+    kernel.channel_L[i] = new_LL;
+    kernel.channel_R[i] = new_RR;
+
+    if (kernel.channels == 4) {
+      kernel.channel_LR[i] = new_LR;
+      kernel.channel_RL[i] = new_RL;
+    }
   }
 }
 
@@ -220,7 +271,15 @@ void ConvolverZita::update_ir_width_and_autogain(const int& ir_width,
     conv->impdata_clear(0, 0);
     conv->impdata_clear(1, 1);
 
-    conv->impdata_update(0, 0, 1, kernel.left_channel.data(), 0, static_cast<int>(kernel.sampleCount()));
-    conv->impdata_update(1, 1, 1, kernel.right_channel.data(), 0, static_cast<int>(kernel.sampleCount()));
+    conv->impdata_update(0, 0, 1, kernel.channel_L.data(), 0, static_cast<int>(kernel.sampleCount()));
+    conv->impdata_update(1, 1, 1, kernel.channel_R.data(), 0, static_cast<int>(kernel.sampleCount()));
+
+    if (kernel.channels == 4) {
+      conv->impdata_clear(0, 1);
+      conv->impdata_clear(1, 0);
+
+      conv->impdata_update(0, 1, 1, kernel.channel_LR.data(), 0, static_cast<int>(kernel.sampleCount()));
+      conv->impdata_update(1, 0, 1, kernel.channel_RL.data(), 0, static_cast<int>(kernel.sampleCount()));
+    }
   }
 }

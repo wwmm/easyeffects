@@ -351,7 +351,7 @@ void Convolver::process([[maybe_unused]] std::span<float>& left_in,
                         [[maybe_unused]] std::span<float>& probe_right) {}
 
 void Convolver::load_kernel_file(const bool& init_zita, const uint& server_sampling_rate) {
-  if (destructor_called || server_sampling_rate == 0) {
+  if (destructor_called) {
     return;
   }
 
@@ -365,14 +365,14 @@ void Convolver::load_kernel_file(const bool& init_zita, const uint& server_sampl
     return;
   }
 
-  if (kernel_data.rate != server_sampling_rate) {
+  if (server_sampling_rate != 0 && kernel_data.rate != server_sampling_rate) {
     util::debug(std::format("{}{} kernel has {} rate. Resampling it to {}", log_tag, name.toStdString(),
                             kernel_data.rate, server_sampling_rate));
 
     kernel_data = ConvolverKernelManager::resampleKernel(kernel_data, server_sampling_rate);
   }
 
-  const auto dt = 1.0 / server_sampling_rate;
+  const auto dt = 1.0 / kernel_data.rate;
 
   std::vector<double> time_axis(kernel_data.sampleCount());
 
@@ -384,11 +384,11 @@ void Convolver::load_kernel_file(const bool& init_zita, const uint& server_sampl
 
   std::vector<double> copy_helper(kernel_data.sampleCount());
 
-  std::ranges::copy(kernel_data.left_channel, copy_helper.begin());
+  std::ranges::copy(kernel_data.channel_L, copy_helper.begin());
 
   auto magL = util::interpolate(time_axis, copy_helper, x_linear);
 
-  std::ranges::copy(kernel_data.right_channel, copy_helper.begin());
+  std::ranges::copy(kernel_data.channel_R, copy_helper.begin());
 
   auto magR = util::interpolate(time_axis, copy_helper, x_linear);
 
@@ -404,7 +404,7 @@ void Convolver::load_kernel_file(const bool& init_zita, const uint& server_sampl
 
   ConvolverKernelFFT kernel_fft;
 
-  kernel_fft.calculate_fft(kernel_data.left_channel, kernel_data.right_channel, kernel_data.rate, interpPoints);
+  kernel_fft.calculate_fft(kernel_data.channel_L, kernel_data.channel_R, kernel_data.rate, interpPoints);
 
   Q_EMIT worker->onNewChartMag(chart_mag_L, chart_mag_R);
 

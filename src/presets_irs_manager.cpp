@@ -64,11 +64,11 @@ auto IrsManager::import_irs_file(const std::string& file_path) -> ImportState {
     return ImportState::no_frame;
   }
 
-  if (file.channels() != 2) {
-    util::warning("Only stereo impulse files are supported!");
+  if (file.channels() != 1 && file.channels() != 2 && file.channels() != 4) {
+    util::warning("Only mono, stereo and true stereo impulse fiels are supported!");
     util::warning(std::format("{} loading failed", file_path));
 
-    return ImportState::no_stereo;
+    return ImportState::unsupported;
   }
 
   auto out_path = dir_manager.userIrsDir() / p.filename();
