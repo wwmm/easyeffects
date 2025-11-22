@@ -97,6 +97,19 @@ KirigamiSettings.ConfigurationView {
                             DbMain.showTrayIcon = isChecked;
                     }
                 }
+
+                EeSwitch {
+                    id: noWindowAfterStarting
+
+                    label: i18n("Do not show our window") // qmllint disable
+                    subtitle: i18n("Do not show our window after that application starts. In general this option should not be used. It is intended as a workaround for systems that do not work well with our autostart file.") // qmllint disable
+                    maximumLineCount: -1
+                    isChecked: DbMain.noWindowAfterStarting // qmllint disable
+                    onCheckedChanged: {
+                        if (isChecked !== DbMain.noWindowAfterStarting)
+                            DbMain.noWindowAfterStarting = isChecked;
+                    }
+                }
             }
         }
     }
