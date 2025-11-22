@@ -225,10 +225,10 @@ static auto parse_apo_config_line(const std::string& line, struct APO_Band& filt
   return true;
 }
 
-auto import_preset(db::Equalizer* settings,
-                   db::EqualizerChannel* settings_left,
-                   db::EqualizerChannel* settings_right,
-                   const std::string& file_path) -> bool {
+auto import_apo_preset(db::Equalizer* settings,
+                       db::EqualizerChannel* settings_left,
+                       db::EqualizerChannel* settings_right,
+                       const std::string& file_path) -> bool {
   std::filesystem::path p{file_path};
 
   if (!std::filesystem::is_regular_file(p)) {
@@ -533,7 +533,10 @@ auto import_graphiceq_preset(db::Equalizer* settings,
   return true;
 }
 
-auto export_preset(db::Equalizer* settings, db::EqualizerChannel* settings_left, const std::string& file_path) -> bool {
+auto export_apo_preset(db::Equalizer* settings,
+                       db::EqualizerChannel* settings_left,
+                       db::EqualizerChannel* settings_right,
+                       const std::string& file_path) -> bool {
   std::ofstream write_buffer(file_path);
 
   const double preamp = settings->inputGain();
@@ -541,9 +544,18 @@ auto export_preset(db::Equalizer* settings, db::EqualizerChannel* settings_left,
   write_buffer << "Preamp: " << util::to_string(preamp) << " db"
                << "\n";
 
+  db::EqualizerChannel* settings_channel = nullptr;
+
+  // Whether to export the parameters from the left or the right channel.
+  if (!settings->splitChannels()) {
+    settings_channel = settings_left;
+  } else {
+    settings_channel = settings->viewLeftChannel() ? settings_left : settings_right;
+  }
+
   for (int i = 0, k = 1; i < settings->numBands(); ++i) {
     const auto curr_band_type =
-        settings_left->bandTypeLabels()[settings_left->property(band_type[i].data()).value<int>()];
+        settings_channel->bandTypeLabels()[settings_channel->property(band_type[i].data()).value<int>()];
 
     if (curr_band_type == "Off") {
       // Skip disabled filters, we only export active ones.
@@ -559,9 +571,9 @@ auto export_preset(db::Equalizer* settings, db::EqualizerChannel* settings_left,
       apo_band.type = "PK";
     }
 
-    apo_band.freq = settings_left->property(band_frequency[i].data()).value<float>();
-    apo_band.gain = settings_left->property(band_gain[i].data()).value<float>();
-    apo_band.quality = settings_left->property(band_q[i].data()).value<float>();
+    apo_band.freq = settings_channel->property(band_frequency[i].data()).value<float>();
+    apo_band.gain = settings_channel->property(band_gain[i].data()).value<float>();
+    apo_band.quality = settings_channel->property(band_q[i].data()).value<float>();
 
     write_buffer << "Filter " << util::to_string(k++) << ": ON " << apo_band.type << " Fc "
                  << util::to_string(apo_band.freq) << " Hz";

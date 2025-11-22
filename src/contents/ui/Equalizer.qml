@@ -48,10 +48,20 @@ Kirigami.ScrollablePage {
         currentFolder: StandardPaths.standardLocations(StandardPaths.DownloadLocation)[0]
         nameFilters: [`${i18n("APO preset")} (*.txt)`] // qmllint disable
         onAccepted: {
-            if (equalizerPage.pluginBackend.importApoPreset(apoFileDialog.selectedFiles) === true) {
-                appWindow.showStatus(i18n("Imported the Equalizer APO preset file."), Kirigami.MessageType.Positive); // qmllint disable
-            } else {
+            if (equalizerPage.pluginBackend.importApoPreset(apoFileDialog.selectedFiles) === false) {
                 appWindow.showStatus(i18n("Failed to import the Equalizer APO preset file."), Kirigami.MessageType.Error, false); // qmllint disable
+            } else {
+                let status = "";
+
+                if (!equalizerPage.pluginDB.splitChannels) {
+                    status = i18n("Imported the Equalizer APO preset file."); // qmllint disable
+                } else if (equalizerPage.pluginDB.viewLeftChannel) {
+                    status = i18n("Imported the Equalizer APO preset file into the left channel."); // qmllint disable
+                } else {
+                    status = i18n("Imported the Equalizer APO preset file into the right channel."); // qmllint disable
+                }
+
+                appWindow.showStatus(status, Kirigami.MessageType.Positive);
             }
         }
     }
@@ -78,11 +88,20 @@ Kirigami.ScrollablePage {
         currentFolder: StandardPaths.standardLocations(StandardPaths.DownloadLocation)[0]
         nameFilters: [`${i18n("APO preset")} (*.txt)`] // qmllint disable
         onAccepted: {
-            if (equalizerPage.pluginBackend.exportApoPreset(apoExportFileDialog.selectedFile) === true) {
-                appWindow.showStatus(i18n("Exported the current Equalizer settings to an external APO preset file."), Kirigami.MessageType.Positive);
-                // qmllint disable
-            } else {
+            if (equalizerPage.pluginBackend.exportApoPreset(apoExportFileDialog.selectedFile) === false) {
                 appWindow.showStatus(i18n("Failed to export the current Equalizer settings to an external APO preset file."), Kirigami.MessageType.Error, false); // qmllint disable
+            } else {
+                let status = "";
+
+                if (!equalizerPage.pluginDB.splitChannels) {
+                    status = i18n("Exported the current Equalizer settings to an external APO preset file."); // qmllint disable
+                } else if (equalizerPage.pluginDB.viewLeftChannel) {
+                    status = i18n("Exported the current Equalizer settings of the left channel to an external APO preset file."); // qmllint disable
+                } else {
+                    status = i18n("Exported the current Equalizer settings of the right channel to an external APO preset file."); // qmllint disable
+                }
+
+                appWindow.showStatus(status, Kirigami.MessageType.Positive);
             }
         }
     }
