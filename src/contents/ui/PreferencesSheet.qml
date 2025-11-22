@@ -101,8 +101,8 @@ KirigamiSettings.ConfigurationView {
                 EeSwitch {
                     id: noWindowAfterStarting
 
-                    label: i18n("Do not show our window") // qmllint disable
-                    subtitle: i18n("Do not show our window after that application starts. In general this option should not be used. It is intended as a workaround for systems that do not work well with our autostart file.") // qmllint disable
+                    label: i18n("Do not show the application window") // qmllint disable
+                    subtitle: i18n("Do not show the window when the application starts. In general this option should not be enabled. It is intended only as a workaround for systems that do not work well with the autostart of Easy Effects.") // qmllint disable
                     maximumLineCount: -1
                     isChecked: DbMain.noWindowAfterStarting // qmllint disable
                     onCheckedChanged: {
