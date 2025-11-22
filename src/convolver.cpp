@@ -351,7 +351,7 @@ void Convolver::process([[maybe_unused]] std::span<float>& left_in,
                         [[maybe_unused]] std::span<float>& probe_right) {}
 
 void Convolver::load_kernel_file(const bool& init_zita, const uint& server_sampling_rate) {
-  if (destructor_called || server_sampling_rate == 0) {
+  if (destructor_called) {
     return;
   }
 
@@ -365,14 +365,14 @@ void Convolver::load_kernel_file(const bool& init_zita, const uint& server_sampl
     return;
   }
 
-  if (kernel_data.rate != server_sampling_rate) {
+  if (server_sampling_rate != 0 && kernel_data.rate != server_sampling_rate) {
     util::debug(std::format("{}{} kernel has {} rate. Resampling it to {}", log_tag, name.toStdString(),
                             kernel_data.rate, server_sampling_rate));
 
     kernel_data = ConvolverKernelManager::resampleKernel(kernel_data, server_sampling_rate);
   }
 
-  const auto dt = 1.0 / server_sampling_rate;
+  const auto dt = 1.0 / kernel_data.rate;
 
   std::vector<double> time_axis(kernel_data.sampleCount());
 
