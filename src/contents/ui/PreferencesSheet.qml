@@ -11,7 +11,7 @@ KirigamiSettings.ConfigurationView {
     modules: [
         KirigamiSettings.ConfigurationModule {
             moduleId: "appearance"
-            icon.name: "flag-symbolic"
+            icon.name: "backgroundtool-symbolic"
             text: i18n("Background Service") // qmllint disable
             page: () => servicePage
         },
@@ -47,7 +47,7 @@ KirigamiSettings.ConfigurationView {
         },
         KirigamiSettings.ConfigurationModule {
             moduleId: "experimental"
-            icon.name: "data-warning"
+            icon.name: "flag-symbolic"
             text: i18n("Experimental Features") // qmllint disable
             page: () => experimentalPage
         }

@@ -603,7 +603,7 @@ Kirigami.ScrollablePage {
                 },
                 Kirigami.Action {
                     text: i18n("Threshold boost") // qmllint disable
-                    icon.name: "usermenu-up-symbolic"
+                    icon.name: "adjustlevels-symbolic"
                     checkable: true
                     checked: limiterPage.pluginDB.gainBoost
                     onTriggered: {
@@ -613,7 +613,7 @@ Kirigami.ScrollablePage {
                 },
                 Kirigami.Action {
                     text: i18n("Automatic level") // qmllint disable
-                    icon.name: "usermenu-up-symbolic"
+                    icon.name: "adjustlevels-symbolic"
                     checkable: true
                     checked: limiterPage.pluginDB.alr
                     onTriggered: {

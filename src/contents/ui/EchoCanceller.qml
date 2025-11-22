@@ -151,7 +151,7 @@ Kirigami.ScrollablePage {
             actions: [
                 Kirigami.Action {
                     text: i18n("Automatic gain control") // qmllint disable
-                    icon.name: "auto-scale-y"
+                    icon.name: "adjustlevels-symbolic"
                     checkable: true
                     checked: echoCancellerPage.pluginDB.enableAGC
                     onTriggered: {
