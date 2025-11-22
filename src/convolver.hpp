@@ -42,7 +42,7 @@ class ConvolverWorker : public QObject {
   Q_OBJECT
 
  Q_SIGNALS:
-  void onNewKernel(ConvolverKernelManager::KernelData data);
+  void onNewKernel(ConvolverKernelManager::KernelData data, bool init_zita);
 
   void onNewChartMag(QList<QPointF> mag_L, QList<QPointF> mag_R);
 

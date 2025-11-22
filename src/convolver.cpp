@@ -99,7 +99,7 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
 
   connect(
       worker, &ConvolverWorker::onNewKernel, this,
-      [this](ConvolverKernelManager::KernelData data) {
+      [this](ConvolverKernelManager::KernelData data, bool init_zita) {
         kernel_is_initialized = data.isValid();
 
         if (kernel_is_initialized) {
@@ -112,15 +112,17 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
           Q_EMIT kernelSamplesChanged();
           Q_EMIT newKernelLoaded(data.name, true);
 
-          std::scoped_lock<std::mutex> lock(data_mutex);
+          if (init_zita) {
+            std::scoped_lock<std::mutex> lock(data_mutex);
 
-          auto success = zita.init(data, blocksize, settings->irWidth(), settings->autogain());
+            auto success = zita.init(data, blocksize, settings->irWidth(), settings->autogain());
 
-          if (!success) {
-            util::warning(std::format("{} Zita init failed", log_tag));
+            if (!success) {
+              util::warning(std::format("{} Zita init failed", log_tag));
+            }
+
+            ready = success;
           }
-
-          ready = success;
         }
       },
       Qt::QueuedConnection);
@@ -410,9 +412,7 @@ void Convolver::load_kernel_file(const bool& init_zita, const uint& server_sampl
 
   Q_EMIT worker->onNewSpectrum(kernel_fft.linear_L, kernel_fft.linear_R, kernel_fft.log_L, kernel_fft.log_R);
 
-  if (init_zita) {
-    Q_EMIT worker->onNewKernel(kernel_data);
-  }
+  Q_EMIT worker->onNewKernel(kernel_data, init_zita);
 }
 
 auto Convolver::get_latency_seconds() -> float {
