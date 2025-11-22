@@ -134,10 +134,6 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
 
   connect_filters();
 
-  if (auto node = pm->model_nodes.get_node_by_name(DbStreamInputs::inputDevice()); node.serial != SPA_ID_INVALID) {
-    presets::Manager::self().autoload(PipelineType::input, node.name, node.device_route_description);
-  }
-
   set_listen_to_mic(DbStreamInputs::listenToMic());
 }
 

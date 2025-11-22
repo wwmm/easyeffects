@@ -139,10 +139,6 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
   }
 
   connect_filters();
-
-  if (auto node = pm->model_nodes.get_node_by_name(DbStreamOutputs::outputDevice()); node.serial != SPA_ID_INVALID) {
-    presets::Manager::self().autoload(PipelineType::output, node.name, node.device_route_description);
-  }
 }
 
 StreamOutputEffects::~StreamOutputEffects() {
