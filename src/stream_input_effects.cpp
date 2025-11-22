@@ -68,24 +68,6 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
       Qt::QueuedConnection);
 
   connect(
-      pm, &pw::Manager::newDefaultSourceName, this,
-      [](QString name) {
-        if (DbStreamInputs::useDefaultInputDevice() || DbStreamInputs::inputDevice().isEmpty()) {
-          DbStreamInputs::setInputDevice(name);
-        }
-      },
-      Qt::QueuedConnection);
-
-  connect(
-      DbStreamInputs::self(), &DbStreamInputs::useDefaultInputDeviceChanged, this,
-      [&]() {
-        if (DbStreamInputs::useDefaultInputDevice()) {
-          DbStreamInputs::setInputDevice(pm->defaultInputDeviceName);
-        }
-      },
-      Qt::QueuedConnection);
-
-  connect(
       DbStreamInputs::self(), &DbStreamInputs::inputDeviceChanged, this,
       [&]() {
         const auto name = DbStreamInputs::inputDevice();

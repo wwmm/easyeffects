@@ -69,15 +69,6 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
       Qt::QueuedConnection);
 
   connect(
-      pm, &pw::Manager::newDefaultSinkName, this,
-      [](QString name) {
-        if (DbStreamOutputs::useDefaultOutputDevice() || DbStreamOutputs::outputDevice().isEmpty()) {
-          DbStreamOutputs::setOutputDevice(name);
-        }
-      },
-      Qt::QueuedConnection);
-
-  connect(
       DbStreamOutputs::self(), &DbStreamOutputs::useDefaultOutputDeviceChanged, this,
       [&]() {
         if (DbStreamOutputs::useDefaultOutputDevice()) {

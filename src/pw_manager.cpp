@@ -213,15 +213,21 @@ Manager::Manager()
   connect(&metadata_manager, &MetadataManager::defaultSourceChanged, [&](const QString& name) {
     defaultInputDeviceName = name;
 
+    if (DbStreamInputs::useDefaultInputDevice() || DbStreamInputs::inputDevice().isEmpty()) {
+      DbStreamInputs::setInputDevice(name);
+    }
+
     Q_EMIT defaultInputDeviceNameChanged();
-    Q_EMIT newDefaultSourceName(name);
   });
 
   connect(&metadata_manager, &MetadataManager::defaultSinkChanged, [&](const QString& name) {
     defaultOutputDeviceName = name;
 
+    if (DbStreamOutputs::useDefaultOutputDevice() || DbStreamOutputs::outputDevice().isEmpty()) {
+      DbStreamOutputs::setOutputDevice(name);
+    }
+
     Q_EMIT defaultOutputDeviceNameChanged();
-    Q_EMIT newDefaultSinkName(name);
   });
 
   connect(&node_manager, &NodeManager::sourceAdded, [&](NodeInfo node) { Q_EMIT sourceAdded(node); });

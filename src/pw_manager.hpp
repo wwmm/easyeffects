@@ -155,8 +155,6 @@ class Manager : public QObject {
 
   void sourceAdded(NodeInfo node);
   void sinkAdded(NodeInfo node);
-  void newDefaultSinkName(QString name);
-  void newDefaultSourceName(QString name);
 
   void sinkRouteChanged(NodeInfo node);
   void sourceRouteChanged(NodeInfo node);
