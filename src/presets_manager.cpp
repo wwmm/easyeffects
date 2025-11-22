@@ -219,6 +219,10 @@ void Manager::save_blocklist(const PipelineType& pipeline_type, nlohmann::json& 
 }
 
 auto Manager::load_blocklist(const PipelineType& pipeline_type, const nlohmann::json& json) -> bool {
+  if (DbMain::useGlobalBlocklist()) {
+    return true;
+  }
+
   std::vector<std::string> blocklist;
 
   switch (pipeline_type) {
