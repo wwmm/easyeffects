@@ -512,15 +512,15 @@ KirigamiSettings.ConfigurationView {
                 }
 
                 EeSwitch {
-                    id: useGlobalBlocklist
+                    id: ignorePresetBlocklist
 
-                    label: i18n("Use shared excluded apps list") // qmllint disable
-                    subtitle: i18n("Do not exclude applications per preset.") // qmllint disable
+                    label: i18n("Ignore the blocklist") // qmllint disable
+                    subtitle: i18n("If enabled the blocklist set in the preset file will be ignored. The one previously saved in our database will be used instead.") // qmllint disable
                     maximumLineCount: -1
-                    isChecked: DbMain.useGlobalBlocklist
+                    isChecked: DbMain.ignorePresetBlocklist
                     onCheckedChanged: {
-                        if (isChecked !== DbMain.useGlobalBlocklist) {
-                            DbMain.useGlobalBlocklist = isChecked;
+                        if (isChecked !== DbMain.ignorePresetBlocklist) {
+                            DbMain.ignorePresetBlocklist = isChecked;
                         }
                     }
                 }

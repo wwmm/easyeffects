@@ -27,26 +27,6 @@
             <label>Effect controls in the plugins list are shown inside a context menu</label>
             <default>false</default>
         </entry>
-        <entry name="useGlobalBlocklist" type="Bool">
-            <label>Use a global blocklist instead of the one saved in presets.</label>
-            <default>false</default>
-        </entry>
-        <entry name="lastLoadedInputPreset" type="String">
-            <label>Last used input preset.</label>
-            <default code="true">""</default>
-        </entry>
-        <entry name="lastLoadedOutputPreset" type="String">
-            <label>Last used output preset.</label>
-            <default code="true">""</default>
-        </entry>
-        <entry name="lastLoadedInputCommunityPackage" type="String">
-            <label>Last used input community package.</label>
-            <default code="true">""</default>
-        </entry>
-        <entry name="lastLoadedOutputCommunityPackage" type="String">
-            <label>Last used output community package.</label>
-            <default code="true">""</default>
-        </entry>
         <entry name="xdgGlobalShortcuts" type="Bool">
             <label>Enable support for XDG Global Shortcuts</label>
             <default>false</default>
@@ -54,16 +34,6 @@
         <entry name="xdgGlobalShortcutsBound" type="Bool">
             <label>True if global shortcuts have already been bound</label>
             <default>false</default>
-        </entry>
-        <entry name="showNativePluginUi" type="Bool">
-            <label>Show Plugin's Native Window</label>
-            <default>false</default>
-        </entry>
-        <entry name="lv2uiUpdateFrequency" type="Int">
-            <label>LV2 Native Window Update Frequency</label>
-            <min>1</min>
-            <max>60</max>
-            <default>30</default>
         </entry>
         <entry name="databaseAutosaveInterval" type="Int">
             <label>Autosave interval. This timer is active only when our window is opened.</label>
@@ -180,6 +150,28 @@
             <default>true</default>
         </entry>
     </group>
+    <group name="Presets">
+        <entry name="ignorePresetBlocklist" type="Bool">
+            <label>Ignore the preset blocklist field when loading the preset file.</label>
+            <default>false</default>
+        </entry>
+        <entry name="lastLoadedInputPreset" type="String">
+            <label>Last used input preset.</label>
+            <default code="true">""</default>
+        </entry>
+        <entry name="lastLoadedOutputPreset" type="String">
+            <label>Last used output preset.</label>
+            <default code="true">""</default>
+        </entry>
+        <entry name="lastLoadedInputCommunityPackage" type="String">
+            <label>Last used input community package.</label>
+            <default code="true">""</default>
+        </entry>
+        <entry name="lastLoadedOutputCommunityPackage" type="String">
+            <label>Last used output community package.</label>
+            <default code="true">""</default>
+        </entry>
+    </group>
     <group name="EffectsPipelines">
         <entry name="bypass" type="Bool">
             <label>Global Bypass: Puts the Effects Pipelines in Passthrough Mode.</label>
@@ -214,6 +206,18 @@
             <min>1</min>
             <max>3600</max>
             <default>10</default>
+        </entry>
+    </group>
+    <group name="NativePluginWindow">
+        <entry name="showNativePluginUi" type="Bool">
+            <label>Show Plugin's Native Window</label>
+            <default>false</default>
+        </entry>
+        <entry name="lv2uiUpdateFrequency" type="Int">
+            <label>LV2 Native Window Update Frequency</label>
+            <min>1</min>
+            <max>60</max>
+            <default>30</default>
         </entry>
     </group>
 </kcfg>
