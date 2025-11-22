@@ -104,13 +104,13 @@ void GlobalShortcuts::process_activated_signal([[maybe_unused]] const QDBusObjec
   // options;
 
   if (shortcut_id == "global bypass") {
-    db::Main::setBypass(!db::Main::bypass());
+    DbMain::setBypass(!DbMain::bypass());
 
     return;
   }
 
   if (shortcut_id == "microphone monitoring") {
-    db::StreamInputs::setListenToMic(!db::StreamInputs::listenToMic());
+    DbStreamInputs::setListenToMic(!DbStreamInputs::listenToMic());
 
     return;
   }
@@ -164,5 +164,5 @@ void GlobalShortcuts::bind_shortcuts() {
 
   // qDebug() << "GlobalShortcuts BindShortcuts response ->" << bind_ret;
 
-  db::Main::setXdgGlobalShortcutsBound(true);
+  DbMain::setXdgGlobalShortcutsBound(true);
 }

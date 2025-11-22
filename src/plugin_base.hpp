@@ -21,6 +21,7 @@
 
 #include <pipewire/filter.h>
 #include <qobject.h>
+#include <qthread.h>
 #include <qtmetamacros.h>
 #include <spa/utils/hook.h>
 #include <sys/types.h>
@@ -35,6 +36,10 @@
 #include "pipeline_type.hpp"
 #include "pw_manager.hpp"
 #include "util.hpp"
+
+class PluginBaseWorker : public QObject {
+  Q_OBJECT
+};
 
 class PluginBase : public QObject {
   Q_OBJECT
@@ -184,6 +189,10 @@ class PluginBase : public QObject {
   float output_gain = 1.0F;
 
   std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
+
+  PluginBaseWorker* baseWorker;
+
+  QThread workerThread;
 
   void get_peaks(const std::span<float>& left_in,
                  const std::span<float>& right_in,

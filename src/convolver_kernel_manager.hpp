@@ -31,10 +31,13 @@ class ConvolverKernelManager {
  public:
   struct KernelData {
     uint rate = 0;
-    std::vector<float> left_channel;
-    std::vector<float> right_channel;
+    uint channels = 0;
     QString name;
     QString file_path;
+    std::vector<float> channel_L;
+    std::vector<float> channel_LR;
+    std::vector<float> channel_RL;
+    std::vector<float> channel_R;
 
     [[nodiscard]] auto isValid() const -> bool;
 

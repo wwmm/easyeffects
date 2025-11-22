@@ -64,7 +64,7 @@ class Spectrum : public PluginBase {
   auto compute_magnitudes() -> std::tuple<uint, QList<double>>;  // rate, magnitudes
 
  private:
-  db::Spectrum* settings = nullptr;
+  DbSpectrum* settings = nullptr;
 
   std::atomic<bool> fftw_ready = false;
 

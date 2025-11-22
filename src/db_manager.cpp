@@ -66,11 +66,11 @@
 namespace db {
 
 Manager::Manager()
-    : main(db::Main::self()),
-      spectrum(db::Spectrum::self()),
-      streamInputs(db::StreamInputs::self()),
-      streamOutputs(db::StreamOutputs::self()),
-      testSignals(db::TestSignals::self()),
+    : main(DbMain::self()),
+      spectrum(DbSpectrum::self()),
+      streamInputs(DbStreamInputs::self()),
+      streamOutputs(DbStreamOutputs::self()),
+      testSignals(DbTestSignals::self()),
       timer(new QTimer(this)) {
   // creating our database directory if it does not exist
 
@@ -81,30 +81,30 @@ Manager::Manager()
   // NOLINTNEXTLINE(clang-analyzer-cplusplus.NewDelete)
   qmlRegisterSingletonInstance<db::Manager>("ee.database", VERSION_MAJOR, VERSION_MINOR, "Manager", this);
 
-  QApplication::setQuitOnLastWindowClosed(!db::Main::enableServiceMode());
+  QApplication::setQuitOnLastWindowClosed(!DbMain::enableServiceMode());
 
   // autosave timer
 
-  timer->setInterval(db::Main::databaseAutosaveInterval());
+  timer->setInterval(DbMain::databaseAutosaveInterval());
 
   // creating plugins database
 
-  create_plugin_db("sie", db::StreamInputs::plugins(), siePluginsDB);
-  create_plugin_db("soe", db::StreamOutputs::plugins(), soePluginsDB);
+  create_plugin_db("sie", DbStreamInputs::plugins(), siePluginsDB);
+  create_plugin_db("soe", DbStreamOutputs::plugins(), soePluginsDB);
 
   // signals
 
-  connect(main, &db::Main::enableServiceModeChanged,
-          []() { QApplication::setQuitOnLastWindowClosed(!db::Main::enableServiceMode()); });
+  connect(main, &DbMain::enableServiceModeChanged,
+          []() { QApplication::setQuitOnLastWindowClosed(!DbMain::enableServiceMode()); });
 
-  connect(streamInputs, &db::StreamInputs::pluginsChanged,
-          [&]() { create_plugin_db("sie", db::StreamInputs::plugins(), siePluginsDB); });
+  connect(streamInputs, &DbStreamInputs::pluginsChanged,
+          [&]() { create_plugin_db("sie", DbStreamInputs::plugins(), siePluginsDB); });
 
-  connect(streamOutputs, &db::StreamOutputs::pluginsChanged,
-          [&]() { create_plugin_db("soe", db::StreamOutputs::plugins(), soePluginsDB); });
+  connect(streamOutputs, &DbStreamOutputs::pluginsChanged,
+          [&]() { create_plugin_db("soe", DbStreamOutputs::plugins(), soePluginsDB); });
 
-  connect(main, &db::Main::databaseAutosaveIntervalChanged,
-          [&]() { timer->setInterval(db::Main::databaseAutosaveInterval()); });
+  connect(main, &DbMain::databaseAutosaveIntervalChanged,
+          [&]() { timer->setInterval(DbMain::databaseAutosaveInterval()); });
 
   connect(timer, &QTimer::timeout, [&]() { saveAll(); });
 }

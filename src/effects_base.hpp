@@ -37,8 +37,14 @@
 #include "pw_manager.hpp"
 #include "spectrum.hpp"
 
+class EffectsBaseWorker : public QObject {
+  Q_OBJECT
+};
+
 class EffectsBase : public QObject {
   Q_OBJECT
+
+  Q_PROPERTY(bool filtersLinked MEMBER filtersLinked NOTIFY filtersLinkedChanged)
 
  public:
   EffectsBase(pw::Manager* pipe_manager, PipelineType pipe_type);
@@ -78,11 +84,18 @@ class EffectsBase : public QObject {
  Q_SIGNALS:
   void pipelineChanged();
   void newSpectrumData(QList<QPointF> newData);
+  void filtersLinkedChanged();
 
  protected:
+  bool filtersLinked = false;
+
   std::map<QString, std::shared_ptr<PluginBase>> plugins;
 
   std::vector<pw_proxy*> list_proxies, list_proxies_listen_mic;
+
+  EffectsBaseWorker* baseWorker;
+
+  QThread workerThread;
 
   void create_filters_if_necessary();
 

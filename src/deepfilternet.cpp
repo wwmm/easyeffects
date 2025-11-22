@@ -95,6 +95,8 @@ void DeepFilterNet::reset() {
 void DeepFilterNet::setup() {
   std::scoped_lock<std::mutex> lock(data_mutex);
 
+  ready = false;
+
   if (!ladspa_wrapper->found_plugin()) {
     return;
   }
@@ -105,10 +107,8 @@ void DeepFilterNet::setup() {
   // NOLINTBEGIN(clang-analyzer-cplusplus.NewDeleteLeaks)
 
   QMetaObject::invokeMethod(
-      this,
+      baseWorker,
       [this] {
-        std::scoped_lock<std::mutex> lock(data_mutex);
-
         if (ladspa_wrapper->has_instance()) {
           ladspa_wrapper->deactivate();
 
@@ -117,7 +117,6 @@ void DeepFilterNet::setup() {
 
         ladspa_wrapper->n_samples = n_samples;
         ladspa_wrapper->create_instance(48000);
-        ladspa_wrapper->activate();
 
         if (resample && !resampler_ready) {
           resampler_inL = std::make_unique<Resampler>(rate, 48000);
@@ -145,6 +144,10 @@ void DeepFilterNet::setup() {
 
           resampler_ready = true;
         }
+
+        std::scoped_lock<std::mutex> lock(data_mutex);
+
+        ready = true;
       },
       Qt::QueuedConnection);
 
@@ -157,7 +160,7 @@ void DeepFilterNet::process(std::span<float>& left_in,
                             std::span<float>& right_out) {
   std::scoped_lock<std::mutex> lock(data_mutex);
 
-  if (!ladspa_wrapper->found_plugin() || !ladspa_wrapper->has_instance() || bypass) {
+  if (!ready || bypass) {
     std::ranges::copy(left_in, left_out.begin());
     std::ranges::copy(right_in, right_out.begin());
 

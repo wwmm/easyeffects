@@ -3,7 +3,6 @@ import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import "Common.js" as Common
-import ee.database as DB
 import ee.pipewire as PW
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.delegates as Delegates
@@ -42,8 +41,8 @@ Kirigami.Page {
             ,
             "iconName": "waveform-symbolic"
         });
-        panelListView.currentIndex = DB.Manager.main.visiblePipeWirePage;
-        switch (DB.Manager.main.visiblePipeWirePage) {
+        panelListView.currentIndex = DbMain.visiblePipeWirePage;
+        switch (DbMain.visiblePipeWirePage) {
         case 0:
             columnView.addItem(generalPage.createObject());
             break;
@@ -78,14 +77,14 @@ Kirigami.Page {
             }
 
             function updateInputDevComboSelection() {
-                const deviceName = useDefaultInputDevice.isChecked ? PW.Manager.defaultInputDeviceName : DB.Manager.streamInputs.inputDevice;
+                const deviceName = useDefaultInputDevice.isChecked ? PW.Manager.defaultInputDeviceName : DbStreamInputs.inputDevice;
                 const comboRow = comboFindRow(PW.ModelSourceDevices, deviceName);
                 if (comboRow !== -1)
                     comboInputDevice.currentIndex = comboRow;
             }
 
             function updateOutputDevComboSelection() {
-                const deviceName = useDefaultOutputDevice.isChecked ? PW.Manager.defaultOutputDeviceName : DB.Manager.streamOutputs.outputDevice;
+                const deviceName = useDefaultOutputDevice.isChecked ? PW.Manager.defaultOutputDeviceName : DbStreamOutputs.outputDevice;
                 const comboRow = comboFindRow(PW.ModelSinkDevices, deviceName);
                 if (comboRow !== -1)
                     comboOutputDevice.currentIndex = comboRow;
@@ -120,13 +119,13 @@ Kirigami.Page {
                     id: useDefaultInputDevice
 
                     label: i18n("Use default input") // qmllint disable
-                    isChecked: DB.Manager.streamInputs.useDefaultInputDevice
+                    isChecked: DbStreamInputs.useDefaultInputDevice
                     onCheckedChanged: {
                         if (isChecked)
                             generalFormCard.updateInputDevComboSelection();
 
-                        if (isChecked !== DB.Manager.streamInputs.useDefaultInputDevice)
-                            DB.Manager.streamInputs.useDefaultInputDevice = isChecked;
+                        if (isChecked !== DbStreamInputs.useDefaultInputDevice)
+                            DbStreamInputs.useDefaultInputDevice = isChecked;
                     }
                 }
 
@@ -138,15 +137,15 @@ Kirigami.Page {
                     editable: false
                     model: PW.ModelSourceDevices
                     textRole: "description"
-                    enabled: !DB.Manager.streamInputs.useDefaultInputDevice
+                    enabled: !DbStreamInputs.useDefaultInputDevice
 
                     onActivated: idx => {
                         const proxyIndex = PW.ModelSourceDevices.index(idx, 0);
                         const sourceIndex = PW.ModelSourceDevices.mapToSource(proxyIndex);
                         const nodeName = PW.ModelNodes.getNodeName(sourceIndex.row);
-                        if (DB.Manager.streamInputs.inputDevice !== nodeName) {
+                        if (DbStreamInputs.inputDevice !== nodeName) {
                             if (!Common.isEmpty(nodeName))
-                                DB.Manager.streamInputs.inputDevice = nodeName;
+                                DbStreamInputs.inputDevice = nodeName;
                         }
                     }
 
@@ -163,14 +162,14 @@ Kirigami.Page {
                     id: useDefaultOutputDevice
 
                     label: i18n("Use default output") // qmllint disable
-                    isChecked: DB.Manager.streamOutputs.useDefaultOutputDevice
+                    isChecked: DbStreamOutputs.useDefaultOutputDevice
 
                     onCheckedChanged: {
                         if (isChecked)
                             generalFormCard.updateOutputDevComboSelection();
 
-                        if (isChecked !== DB.Manager.streamOutputs.useDefaultOutputDevice)
-                            DB.Manager.streamOutputs.useDefaultOutputDevice = isChecked;
+                        if (isChecked !== DbStreamOutputs.useDefaultOutputDevice)
+                            DbStreamOutputs.useDefaultOutputDevice = isChecked;
                     }
                 }
 
@@ -182,15 +181,15 @@ Kirigami.Page {
                     editable: false
                     model: PW.ModelSinkDevices
                     textRole: "description"
-                    enabled: !DB.Manager.streamOutputs.useDefaultOutputDevice
+                    enabled: !DbStreamOutputs.useDefaultOutputDevice
 
                     onActivated: idx => {
                         const proxyIndex = PW.ModelSinkDevices.index(idx, 0);
                         const sourceIndex = PW.ModelSinkDevices.mapToSource(proxyIndex);
                         const nodeName = PW.ModelNodes.getNodeName(sourceIndex.row);
-                        if (DB.Manager.streamOutputs.outputDevice !== nodeName) {
+                        if (DbStreamOutputs.outputDevice !== nodeName) {
                             if (!Common.isEmpty(nodeName))
-                                DB.Manager.streamOutputs.outputDevice = nodeName;
+                                DbStreamOutputs.outputDevice = nodeName;
                         }
                     }
 
@@ -302,10 +301,10 @@ Kirigami.Page {
                     id: enableTestSignals
 
                     label: i18n("Enabled") // qmllint disable
-                    isChecked: DB.Manager.testSignals.enable
+                    isChecked: DbTestSignals.enable
                     onCheckedChanged: {
-                        if (isChecked !== DB.Manager.testSignals.enable)
-                            DB.Manager.testSignals.enable = isChecked;
+                        if (isChecked !== DbTestSignals.enable)
+                            DbTestSignals.enable = isChecked;
                     }
                 }
             }
@@ -321,10 +320,10 @@ Kirigami.Page {
                     id: leftChannel
 
                     text: i18n("Left") // qmllint disable
-                    checked: DB.Manager.testSignals.channels === 0
+                    checked: DbTestSignals.channels === 0
                     onCheckedChanged: {
-                        if (checked !== DB.Manager.testSignals.channels)
-                            DB.Manager.testSignals.channels = 0;
+                        if (checked !== DbTestSignals.channels)
+                            DbTestSignals.channels = 0;
                     }
                 }
 
@@ -332,10 +331,10 @@ Kirigami.Page {
                     id: rightChannel
 
                     text: i18n("Right") // qmllint disable
-                    checked: DB.Manager.testSignals.channels === 1
+                    checked: DbTestSignals.channels === 1
                     onCheckedChanged: {
-                        if (checked !== DB.Manager.testSignals.channels)
-                            DB.Manager.testSignals.channels = 1;
+                        if (checked !== DbTestSignals.channels)
+                            DbTestSignals.channels = 1;
                     }
                 }
 
@@ -343,10 +342,10 @@ Kirigami.Page {
                     id: bothChannels
 
                     text: i18n("Both") // qmllint disable
-                    checked: DB.Manager.testSignals.channels === 2
+                    checked: DbTestSignals.channels === 2
                     onCheckedChanged: {
-                        if (checked !== DB.Manager.testSignals.channels)
-                            DB.Manager.testSignals.channels = 2;
+                        if (checked !== DbTestSignals.channels)
+                            DbTestSignals.channels = 2;
                     }
                 }
             }
@@ -362,10 +361,10 @@ Kirigami.Page {
                     id: sineWave
 
                     text: i18n("Sine wave") // qmllint disable
-                    checked: DB.Manager.testSignals.signalType === 0
+                    checked: DbTestSignals.signalType === 0
                     onCheckedChanged: {
-                        if (checked !== DB.Manager.testSignals.signalType)
-                            DB.Manager.testSignals.signalType = 0;
+                        if (checked !== DbTestSignals.signalType)
+                            DbTestSignals.signalType = 0;
                     }
                 }
 
@@ -373,10 +372,10 @@ Kirigami.Page {
                     id: whiteNoise
 
                     text: i18n("White noise") // qmllint disable
-                    checked: DB.Manager.testSignals.signalType === 1
+                    checked: DbTestSignals.signalType === 1
                     onCheckedChanged: {
-                        if (checked !== DB.Manager.testSignals.signalType)
-                            DB.Manager.testSignals.signalType = 1;
+                        if (checked !== DbTestSignals.signalType)
+                            DbTestSignals.signalType = 1;
                     }
                 }
 
@@ -384,10 +383,10 @@ Kirigami.Page {
                     id: pinkNoise
 
                     text: i18n("Pink noise") // qmllint disable
-                    checked: DB.Manager.testSignals.signalType === 2
+                    checked: DbTestSignals.signalType === 2
                     onCheckedChanged: {
-                        if (checked !== DB.Manager.testSignals.signalType)
-                            DB.Manager.testSignals.signalType = 2;
+                        if (checked !== DbTestSignals.signalType)
+                            DbTestSignals.signalType = 2;
                     }
                 }
 
@@ -397,14 +396,14 @@ Kirigami.Page {
                     label: i18n("Frequency") // qmllint disable
                     from: 10
                     to: 22000
-                    value: DB.Manager.testSignals.frequency
+                    value: DbTestSignals.frequency
                     decimals: 0
                     stepSize: 1
                     unit: i18n("Hz")
                     enabled: sineWave.checked
                     onValueModified: v => {
-                        if (v !== DB.Manager.testSignals.frequency)
-                            DB.Manager.testSignals.frequency = v;
+                        if (v !== DbTestSignals.frequency)
+                            DbTestSignals.frequency = v;
                     }
                 }
             }
@@ -448,19 +447,19 @@ Kirigami.Page {
                     switch (index) {
                     case 0:
                         columnView.replaceItem(1, generalPage.createObject());
-                        DB.Manager.main.visiblePipeWirePage = 0;
+                        DbMain.visiblePipeWirePage = 0;
                         break;
                     case 1:
                         columnView.replaceItem(1, modulesPage.createObject());
-                        DB.Manager.main.visiblePipeWirePage = 1;
+                        DbMain.visiblePipeWirePage = 1;
                         break;
                     case 2:
                         columnView.replaceItem(1, clientsPage.createObject());
-                        DB.Manager.main.visiblePipeWirePage = 2;
+                        DbMain.visiblePipeWirePage = 2;
                         break;
                     case 3:
                         columnView.replaceItem(1, testSignalPage.createObject());
-                        DB.Manager.main.visiblePipeWirePage = 3;
+                        DbMain.visiblePipeWirePage = 3;
                         break;
                     default:
                         console.log("pipewire page stackview: invalid index");

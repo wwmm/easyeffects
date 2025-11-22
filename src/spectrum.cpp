@@ -29,6 +29,7 @@
 #include <cstring>
 #include <format>
 #include <memory>
+#include <mutex>
 #include <numbers>
 #include <span>
 #include <string>
@@ -44,9 +45,8 @@
 
 Spectrum::Spectrum(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id)
     : PluginBase(tag, "spectrum", tags::plugin_package::Package::ee, instance_id, pipe_manager, pipe_type),
-      settings(db::Spectrum::self()),
-      fftw_ready(true) {
-  bypass = !db::Spectrum::state();
+      settings(DbSpectrum::self()) {
+  bypass = !DbSpectrum::state();
   // Precompute the Hann window, which is an expensive operation.
   // https://en.wikipedia.org/wiki/Hann_function
   for (size_t n = 0; n < n_bands; n++) {
@@ -58,6 +58,10 @@ Spectrum::Spectrum(const std::string& tag, pw::Manager* pipe_manager, PipelineTy
   complex_output = fftwf_alloc_complex(n_bands);
 
   plan = fftwf_plan_dft_r2c_1d(static_cast<int>(n_bands), real_input.data(), complex_output, FFTW_ESTIMATE);
+
+  if (plan != nullptr && complex_output != nullptr) {
+    fftw_ready = true;
+  }
 
   const auto lv2_plugin_uri = "http://lsp-plug.in/plugins/lv2/comp_delay_x2_stereo";
 
@@ -79,13 +83,15 @@ Spectrum::Spectrum(const std::string& tag, pw::Manager* pipe_manager, PipelineTy
   lv2_wrapper->set_control_port_value("wet_l", util::db_to_linear(0.0F));
   lv2_wrapper->set_control_port_value("wet_r", util::db_to_linear(0.0F));
 
-  BIND_LV2_PORT("time_l", avsyncDelay, setAvsyncDelay, db::Spectrum::avsyncDelayChanged);
-  BIND_LV2_PORT("time_r", avsyncDelay, setAvsyncDelay, db::Spectrum::avsyncDelayChanged);
+  BIND_LV2_PORT("time_l", avsyncDelay, setAvsyncDelay, DbSpectrum::avsyncDelayChanged);
+  BIND_LV2_PORT("time_r", avsyncDelay, setAvsyncDelay, DbSpectrum::avsyncDelayChanged);
 
-  connect(db::Spectrum::self(), &db::Spectrum::stateChanged, [&]() { bypass = !db::Spectrum::state(); });
+  connect(DbSpectrum::self(), &DbSpectrum::stateChanged, [&]() { bypass = !DbSpectrum::state(); });
 }
 
 Spectrum::~Spectrum() {
+  std::scoped_lock<std::mutex> lock(data_mutex);
+
   if (connected_to_pw) {
     disconnect_from_pw();
   }
@@ -240,10 +246,12 @@ void Spectrum::process(std::span<float>& left_in,
 }
 
 auto Spectrum::compute_magnitudes() -> std::tuple<uint, QList<double>> {
+  std::scoped_lock<std::mutex> lock(data_mutex);
+
   // Early return if no new data is available, ie if process() has not been
   // called since our last compute_magnitudes() call.
   int curr_control = db_control.load();
-  if (!(curr_control & static_cast<int>(DB_BIT::NEWDATA))) {
+  if (!fftw_ready || !(curr_control & static_cast<int>(DB_BIT::NEWDATA))) {
     return {0, {}};
   }
 

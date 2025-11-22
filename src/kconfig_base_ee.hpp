@@ -23,6 +23,8 @@
 #include <ksharedconfig.h>
 #include <qobject.h>
 #include <qtmetamacros.h>
+#include <QJSEngine>
+#include <QQmlEngine>
 #include <QString>
 
 class KConfigBaseEE : public KConfigSkeleton {

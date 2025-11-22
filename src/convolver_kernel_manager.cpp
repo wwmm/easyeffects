@@ -61,19 +61,19 @@ ConvolverKernelManager::ConvolverKernelManager(const PipelineType& pipeline_type
 }
 
 auto ConvolverKernelManager::KernelData::isValid() const -> bool {
-  return rate > 0 && !left_channel.empty() && !right_channel.empty() && left_channel.size() == right_channel.size();
+  return rate > 0 && !channel_L.empty() && !channel_R.empty() && channel_L.size() == channel_R.size();
 }
 
 auto ConvolverKernelManager::KernelData::duration() const -> double {
-  if (rate == 0 || left_channel.empty()) {
+  if (rate == 0 || channel_L.empty()) {
     return 0.0;
   }
 
-  return static_cast<double>(left_channel.size() - 1) / static_cast<double>(rate);
+  return static_cast<double>(channel_L.size() - 1) / static_cast<double>(rate);
 }
 
 auto ConvolverKernelManager::KernelData::sampleCount() const -> size_t {
-  return left_channel.size();
+  return channel_L.size();
 }
 
 auto ConvolverKernelManager::loadKernel(const std::string& name) -> KernelData {
@@ -121,18 +121,23 @@ auto ConvolverKernelManager::combineKernels(const std::string& kernel1_name,
     return false;
   }
 
+  if (kernel1.channels != kernel2.channels) {
+    util::warning("The kernels must have the same number of channel to be combined!");
+    return false;
+  }
+
   const auto target_rate = std::max(kernel1.rate, kernel2.rate);
   const auto resampled_kernel1 = (kernel1.rate != target_rate) ? resampleKernel(kernel1, target_rate) : kernel1;
   const auto resampled_kernel2 = (kernel2.rate != target_rate) ? resampleKernel(kernel2, target_rate) : kernel2;
 
-  auto combined_kernel_L = directConvolution(resampled_kernel1.left_channel, resampled_kernel2.left_channel);
-  auto combined_kernel_R = directConvolution(resampled_kernel1.right_channel, resampled_kernel2.right_channel);
+  auto combined_kernel_L = directConvolution(resampled_kernel1.channel_L, resampled_kernel2.channel_L);
+  auto combined_kernel_R = directConvolution(resampled_kernel1.channel_R, resampled_kernel2.channel_R);
 
   KernelData combined_kernel;
 
   combined_kernel.rate = target_rate;
-  combined_kernel.left_channel = std::move(combined_kernel_L);
-  combined_kernel.right_channel = std::move(combined_kernel_R);
+  combined_kernel.channel_L = std::move(combined_kernel_L);
+  combined_kernel.channel_R = std::move(combined_kernel_R);
   combined_kernel.name = QString::fromStdString(output_name);
 
   // Save the combined kernel
@@ -150,8 +155,8 @@ auto ConvolverKernelManager::searchKernelPath(const std::string& name) -> std::s
   // Given the irs name without extension, search the full path on the filesystem.
   const auto irs_filename = name + irs_ext;
 
-  const auto community_package = (pipeline_type == PipelineType::input) ? db::Main::lastLoadedInputCommunityPackage()
-                                                                        : db::Main::lastLoadedOutputCommunityPackage();
+  const auto community_package = (pipeline_type == PipelineType::input) ? DbMain::lastLoadedInputCommunityPackage()
+                                                                        : DbMain::lastLoadedOutputCommunityPackage();
 
   std::string irs_full_path;
 
@@ -200,13 +205,27 @@ auto ConvolverKernelManager::resampleKernel(const KernelData& kernel, const uint
 
   auto resampler = std::make_unique<Resampler>(kernel.rate, target_rate);
 
-  resampled_kernel.left_channel = resampler->process(kernel.left_channel, true);
+  resampled_kernel.channel_L = resampler->process(kernel.channel_L, true);
 
   // Resample right channel
 
   resampler = std::make_unique<Resampler>(kernel.rate, target_rate);
 
-  resampled_kernel.right_channel = resampler->process(kernel.right_channel, true);
+  resampled_kernel.channel_R = resampler->process(kernel.channel_R, true);
+
+  if (kernel.channels == 4) {
+    // Resample LR channel
+
+    resampler = std::make_unique<Resampler>(kernel.rate, target_rate);
+
+    resampled_kernel.channel_LR = resampler->process(kernel.channel_LR, true);
+
+    // Resample right channel
+
+    resampler = std::make_unique<Resampler>(kernel.rate, target_rate);
+
+    resampled_kernel.channel_RL = resampler->process(kernel.channel_RL, true);
+  }
 
   return resampled_kernel;
 }
@@ -217,13 +236,24 @@ void ConvolverKernelManager::normalizeKernel(KernelData& kernel) {
   }
 
   // Find the maximum absolute value across both channels
-  const auto max_abs_left =
-      std::ranges::max(kernel.left_channel, [](const auto& a, const auto& b) { return std::fabs(a) < std::fabs(b); });
+  const auto max_abs_L =
+      std::ranges::max(kernel.channel_L, [](const auto& a, const auto& b) { return std::fabs(a) < std::fabs(b); });
 
-  const auto max_abs_right =
-      std::ranges::max(kernel.right_channel, [](const auto& a, const auto& b) { return std::fabs(a) < std::fabs(b); });
+  const auto max_abs_R =
+      std::ranges::max(kernel.channel_R, [](const auto& a, const auto& b) { return std::fabs(a) < std::fabs(b); });
 
-  const auto peak = std::max(std::fabs(max_abs_left), std::fabs(max_abs_right));
+  auto peak = std::max(std::fabs(max_abs_L), std::fabs(max_abs_R));
+
+  if (kernel.channels == 4) {
+    const auto max_abs_LR =
+        std::ranges::max(kernel.channel_LR, [](const auto& a, const auto& b) { return std::fabs(a) < std::fabs(b); });
+
+    const auto max_abs_RL =
+        std::ranges::max(kernel.channel_RL, [](const auto& a, const auto& b) { return std::fabs(a) < std::fabs(b); });
+
+    peak = std::max(peak, std::fabs(max_abs_LR));
+    peak = std::max(peak, std::fabs(max_abs_RL));
+  }
 
   if (peak <= 1e-6) {
     return;
@@ -232,8 +262,13 @@ void ConvolverKernelManager::normalizeKernel(KernelData& kernel) {
   // Normalize both channels
   const auto normalize_lambda = [peak](auto& sample) { sample /= peak; };
 
-  std::ranges::for_each(kernel.left_channel, normalize_lambda);
-  std::ranges::for_each(kernel.right_channel, normalize_lambda);
+  std::ranges::for_each(kernel.channel_L, normalize_lambda);
+  std::ranges::for_each(kernel.channel_R, normalize_lambda);
+
+  if (kernel.channels == 4) {
+    std::ranges::for_each(kernel.channel_LR, normalize_lambda);
+    std::ranges::for_each(kernel.channel_RL, normalize_lambda);
+  }
 }
 
 auto ConvolverKernelManager::saveKernel(const KernelData& kernel, const std::string& file_name) -> bool {
@@ -248,17 +283,24 @@ auto ConvolverKernelManager::saveKernel(const KernelData& kernel, const std::str
     std::filesystem::create_directories(file_path.parent_path());
 
     // Prepare interleaved buffer
-    std::vector<float> buffer(kernel.left_channel.size() * 2);
+    std::vector<float> buffer(kernel.sampleCount() * kernel.channels);
 
-    for (size_t i = 0; i < kernel.left_channel.size(); ++i) {
-      buffer[2 * i] = kernel.left_channel[i];
-      buffer[(2 * i) + 1] = kernel.right_channel[i];
+    for (size_t i = 0; i < kernel.sampleCount(); ++i) {
+      if (kernel.channels == 2) {
+        buffer[2 * i] = kernel.channel_L[i];
+        buffer[(2 * i) + 1] = kernel.channel_R[i];
+      } else if (kernel.channels == 4) {
+        buffer[4 * i] = kernel.channel_L[i];
+        buffer[(4 * i) + 1] = kernel.channel_LR[i];
+        buffer[(4 * i) + 2] = kernel.channel_RL[i];
+        buffer[(4 * i) + 3] = kernel.channel_R[i];
+      }
     }
 
     // Write to file
     const auto mode = SFM_WRITE;
     const auto format = SF_FORMAT_WAV | SF_FORMAT_PCM_32;
-    const auto channels = 2;
+    const auto channels = kernel.channels;
 
     SndfileHandle sndfile(file_path.string(), mode, format, channels, kernel.rate);
 
@@ -267,11 +309,11 @@ auto ConvolverKernelManager::saveKernel(const KernelData& kernel, const std::str
       return false;
     }
 
-    const auto frames_written = sndfile.writef(buffer.data(), static_cast<sf_count_t>(kernel.left_channel.size()));
+    const auto frames_written = sndfile.writef(buffer.data(), static_cast<sf_count_t>(kernel.sampleCount()));
 
-    if (frames_written != static_cast<sf_count_t>(kernel.left_channel.size())) {
+    if (frames_written != static_cast<sf_count_t>(kernel.sampleCount())) {
       util::warning(std::format("Failed to write all kernel data: {} of {} frames written", frames_written,
-                                kernel.left_channel.size()));
+                                kernel.sampleCount()));
       return false;
     }
 
@@ -296,13 +338,14 @@ auto ConvolverKernelManager::readKernelFile(const std::string& file_path) -> Ker
       return kernel_data;
     }
 
-    if (sndfile.channels() != 2 || sndfile.frames() == 0) {
-      util::warning(std::format("Kernel file must be stereo and non-empty: {}", file_path));
+    if (sndfile.channels() != 1 && sndfile.channels() != 2 && sndfile.channels() != 4 && sndfile.frames() == 0) {
+      util::warning(std::format("Only mono, stereo and true stereo impulse fiels are supported: {}", file_path));
       return kernel_data;
     }
 
     // Read interleaved data
     std::vector<float> buffer(sndfile.frames() * sndfile.channels());
+
     const auto frames_read = sndfile.readf(buffer.data(), sndfile.frames());
 
     if (frames_read != sndfile.frames()) {
@@ -313,12 +356,28 @@ auto ConvolverKernelManager::readKernelFile(const std::string& file_path) -> Ker
 
     // Deinterleave channels
     kernel_data.rate = sndfile.samplerate();
-    kernel_data.left_channel.resize(sndfile.frames());
-    kernel_data.right_channel.resize(sndfile.frames());
+    kernel_data.channels = sndfile.channels() == 1 ? 2 : sndfile.channels();
+    kernel_data.channel_L.resize(sndfile.frames());
+    kernel_data.channel_R.resize(sndfile.frames());
+
+    if (kernel_data.channels == 4) {
+      kernel_data.channel_LR.resize(sndfile.frames());
+      kernel_data.channel_RL.resize(sndfile.frames());
+    }
 
     for (size_t i = 0; i < static_cast<size_t>(sndfile.frames()); ++i) {
-      kernel_data.left_channel[i] = buffer[2 * i];
-      kernel_data.right_channel[i] = buffer[(2 * i) + 1];
+      if (sndfile.channels() == 1) {
+        kernel_data.channel_L[i] = buffer[i];
+        kernel_data.channel_R[i] = buffer[i];
+      } else if (sndfile.channels() == 2) {
+        kernel_data.channel_L[i] = buffer[2 * i];
+        kernel_data.channel_R[i] = buffer[(2 * i) + 1];
+      } else if (sndfile.channels() == 4) {
+        kernel_data.channel_L[i] = buffer[4 * i];
+        kernel_data.channel_LR[i] = buffer[(4 * i) + 1];
+        kernel_data.channel_RL[i] = buffer[(4 * i) + 2];
+        kernel_data.channel_R[i] = buffer[(4 * i) + 3];
+      }
     }
 
   } catch (const std::exception& e) {
@@ -334,13 +393,23 @@ auto ConvolverKernelManager::validateKernel(const KernelData& kernel) -> bool {
     return false;
   }
 
-  if (kernel.left_channel.empty() || kernel.right_channel.empty()) {
+  if (kernel.channel_L.empty() || kernel.channel_R.empty()) {
     util::warning("Kernel channels are empty");
     return false;
   }
 
-  if (kernel.left_channel.size() != kernel.right_channel.size()) {
+  if ((kernel.channels == 4) & (kernel.channel_LR.empty() || kernel.channel_RL.empty())) {
+    util::warning("Kernel channels are empty");
+    return false;
+  }
+
+  if (kernel.channel_L.size() != kernel.channel_R.size()) {
     util::warning("Kernel channels have different sizes");
+    return false;
+  }
+
+  if ((kernel.channels == 4) & (kernel.channel_L.size() != kernel.channel_R.size())) {
+    util::warning("Kernel LR and RL channels have different sizes");
     return false;
   }
 
@@ -348,7 +417,12 @@ auto ConvolverKernelManager::validateKernel(const KernelData& kernel) -> bool {
     return std::ranges::any_of(channel, [](const auto& value) { return std::isnan(value) || std::isinf(value); });
   };
 
-  if (has_invalid_values(kernel.left_channel) || has_invalid_values(kernel.right_channel)) {
+  if (has_invalid_values(kernel.channel_L) || has_invalid_values(kernel.channel_R)) {
+    util::warning("Kernel contains NaN or infinite values");
+    return false;
+  }
+
+  if ((kernel.channels == 4) & has_invalid_values(kernel.channel_LR) || has_invalid_values(kernel.channel_RL)) {
     util::warning("Kernel contains NaN or infinite values");
     return false;
   }

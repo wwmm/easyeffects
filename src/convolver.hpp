@@ -41,9 +41,6 @@
 class ConvolverWorker : public QObject {
   Q_OBJECT
 
- public Q_SLOTS:
-  void calculateFFT(std::vector<float> kernel_L, std::vector<float> kernel_R, int kernel_rate, int interpPoints);
-
  Q_SIGNALS:
   void onNewKernel(ConvolverKernelManager::KernelData data);
 
@@ -155,19 +152,11 @@ class Convolver : public PluginBase {
 
   ConvolverWorker* worker;
 
-  QThread workerThread;
-
   void load_kernel_file(const bool& init_zita, const uint& server_sampling_rate);
 
   void combine_kernels(const std::string& kernel_1_name,
                        const std::string& kernel_2_name,
                        const std::string& output_file_name);
 
-  void chart_kernel_fft(const std::vector<float>& kernel_L,
-                        const std::vector<float>& kernel_R,
-                        const float& kernel_rate);
-
   void clear_chart_data();
-
-  void update_ir_width_and_autogain();
 };

@@ -14,8 +14,8 @@ Kirigami.ApplicationWindow {
     id: appWindow
 
     visible: false
-    width: DB.Manager.main.width
-    height: DB.Manager.main.height
+    width: DbMain.width
+    height: DbMain.height
     title: applicationName
     pageStack.globalToolBar.style: Kirigami.ApplicationHeaderStyle.None
 
@@ -25,13 +25,13 @@ Kirigami.ApplicationWindow {
         0: {
             page: Qt.resolvedUrl("./PageStreamsEffects.qml"),
             pageType: 0,
-            streamDB: DB.Manager.streamOutputs,
+            streamDB: DbStreamOutputs,
             pipelineInstance: Pipeline.Output
         },
         1: {
             page: Qt.resolvedUrl("./PageStreamsEffects.qml"),
             pageType: 1,
-            streamDB: DB.Manager.streamInputs,
+            streamDB: DbStreamInputs,
             pipelineInstance: Pipeline.Input
         },
         2: {
@@ -47,7 +47,7 @@ Kirigami.ApplicationWindow {
         if (appWindow.visible) {
             DB.Manager.enableAutosave(true);
 
-            openMappedPage(DB.Manager.main.visiblePage);
+            openMappedPage(DbMain.visiblePage);
         } else {
             DB.Manager.saveAll();
 
@@ -87,7 +87,7 @@ Kirigami.ApplicationWindow {
         else
             pageStack.replace(info.page, args);
 
-        DB.Manager.main.visiblePage = index;
+        DbMain.visiblePage = index;
     }
 
     function showStatus(label, statusType = Kirigami.MessageType.Information, autohide = true) {
@@ -103,22 +103,22 @@ Kirigami.ApplicationWindow {
     }
 
     Binding {
-        target: DB.Manager.main
+        target: DbMain
         property: "width"
         value: appWindow.width
     }
 
     Binding {
-        target: DB.Manager.main
+        target: DbMain
         property: "height"
         value: appWindow.height
     }
 
     Connections {
-        target: DB.Manager.main
+        target: DbMain
 
         function onVisiblePageChanged() {
-            appWindow.openMappedPage(DB.Manager.main.visiblePage);
+            appWindow.openMappedPage(DbMain.visiblePage);
         }
     }
 
@@ -140,7 +140,7 @@ Kirigami.ApplicationWindow {
 
     Timer {
         id: autoHideStatusTimer
-        interval: DB.Manager.main.autoHideInlineMessageTimeout
+        interval: DbMain.autoHideInlineMessageTimeout
         onTriggered: {
             status.visible = false;
 
@@ -168,7 +168,7 @@ Kirigami.ApplicationWindow {
     Shortcut {
         sequences: ["Ctrl+B"]
         onActivated: {
-            DB.Manager.main.bypass = !DB.Manager.main.bypass;
+            DbMain.bypass = !DbMain.bypass;
         }
     }
 
@@ -185,14 +185,14 @@ Kirigami.ApplicationWindow {
     Shortcut {
         sequences: ["Ctrl+Shift+I"]
         onActivated: {
-            DB.Manager.main.processAllInputs = !DB.Manager.main.processAllInputs;
+            DbMain.processAllInputs = !DbMain.processAllInputs;
         }
     }
 
     Shortcut {
         sequences: ["Ctrl+Shift+O"]
         onActivated: {
-            DB.Manager.main.processAllOutputs = !DB.Manager.main.processAllOutputs;
+            DbMain.processAllOutputs = !DbMain.processAllOutputs;
         }
     }
 
@@ -240,7 +240,7 @@ Kirigami.ApplicationWindow {
     SystemTrayIcon {
         id: tray
 
-        visible: DB.Manager.main.showTrayIcon && canUseSysTray // qmllint disable
+        visible: DbMain.showTrayIcon && canUseSysTray // qmllint disable
         icon.name: applicationId
         tooltip: applicationName
         onActivated: {
@@ -260,8 +260,8 @@ Kirigami.ApplicationWindow {
                 instantiatorInputPresets.model = [];
                 instantiatorOutputPresets.model = [];
 
-                instantiatorInputPresets.model = DB.Manager.streamInputs.mostUsedPresets;
-                instantiatorOutputPresets.model = DB.Manager.streamOutputs.mostUsedPresets;
+                instantiatorInputPresets.model = DbStreamInputs.mostUsedPresets;
+                instantiatorOutputPresets.model = DbStreamOutputs.mostUsedPresets;
 
                 /**
                  * Although it is possible to make a binding to the text property so it is automatically updated
@@ -271,8 +271,8 @@ Kirigami.ApplicationWindow {
                  * to read the description when the user opens the tray icon menu.
                  */
 
-                inputDeviceMenuItem.text = PW.ModelNodes.getNodeDescription(DB.Manager.streamInputs.inputDevice);
-                outputDeviceMenuItem.text = PW.ModelNodes.getNodeDescription(DB.Manager.streamOutputs.outputDevice);
+                inputDeviceMenuItem.text = PW.ModelNodes.getNodeDescription(DbStreamInputs.inputDevice);
+                outputDeviceMenuItem.text = PW.ModelNodes.getNodeDescription(DbStreamOutputs.outputDevice);
             }
 
             Instantiator {
@@ -314,8 +314,8 @@ Kirigami.ApplicationWindow {
                 subtitle: i18n("Are you sure you want to clear this list?") // qmllint disable
                 standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
                 onAccepted: {
-                    DB.Manager.streamOutputs.usedPresets = [];
-                    DB.Manager.streamOutputs.mostUsedPresets = [];
+                    DbStreamOutputs.usedPresets = [];
+                    DbStreamOutputs.mostUsedPresets = [];
                 }
             }
 
@@ -326,8 +326,8 @@ Kirigami.ApplicationWindow {
                 subtitle: i18n("Are you sure you want to clear this list?") // qmllint disable
                 standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
                 onAccepted: {
-                    DB.Manager.streamInputs.usedPresets = [];
-                    DB.Manager.streamInputs.mostUsedPresets = [];
+                    DbStreamInputs.usedPresets = [];
+                    DbStreamInputs.mostUsedPresets = [];
                 }
             }
 
@@ -380,9 +380,9 @@ Kirigami.ApplicationWindow {
             MenuItem {
                 text: i18n("Active") // qmllint disable
                 checkable: true
-                checked: !DB.Manager.main.bypass
+                checked: !DbMain.bypass
                 onTriggered: {
-                    DB.Manager.main.bypass = !checked;
+                    DbMain.bypass = !checked;
                 }
             }
 
@@ -450,10 +450,10 @@ Kirigami.ApplicationWindow {
                         icon.color: checked === true ? Kirigami.Theme.positiveTextColor : Kirigami.Theme.negativeTextColor
                         displayHint: Kirigami.DisplayHint.KeepVisible
                         checkable: true
-                        checked: !DB.Manager.main.bypass
+                        checked: !DbMain.bypass
                         onTriggered: {
-                            if (checked !== !DB.Manager.main.bypass) {
-                                DB.Manager.main.bypass = !checked;
+                            if (checked !== !DbMain.bypass) {
+                                DbMain.bypass = !checked;
                             }
 
                             checked ? appWindow.showStatus(i18n("Audio effects are enabled."), Kirigami.MessageType.Positive) : appWindow.showStatus(i18n("Audio effects are disabled.")); // qmllint disable
@@ -463,7 +463,7 @@ Kirigami.ApplicationWindow {
                         text: i18n("Presets") // qmllint disable
                         icon.name: "bookmarks-symbolic"
                         displayHint: Kirigami.DisplayHint.KeepVisible
-                        visible: DB.Manager.main.visiblePage !== 2
+                        visible: DbMain.visiblePage !== 2
                         onTriggered: {
                             presetsSheet.open();
                         }
@@ -489,10 +489,10 @@ Kirigami.ApplicationWindow {
                     text: i18n("Output") // qmllint disable
                     icon.name: "audio-speakers-symbolic"
                     checkable: true
-                    checked: DB.Manager.main.visiblePage === 0
+                    checked: DbMain.visiblePage === 0
                     display: segmentedButton.display
                     onClicked: {
-                        DB.Manager.main.visiblePage = 0;
+                        DbMain.visiblePage = 0;
                     }
 
                     Controls.ButtonGroup.group: navButtonGroup
@@ -502,10 +502,10 @@ Kirigami.ApplicationWindow {
                     text: i18n("Input") // qmllint disable
                     icon.name: "audio-input-microphone-symbolic"
                     checkable: true
-                    checked: DB.Manager.main.visiblePage === 1
+                    checked: DbMain.visiblePage === 1
                     display: segmentedButton.display
                     onClicked: {
-                        DB.Manager.main.visiblePage = 1;
+                        DbMain.visiblePage = 1;
                     }
 
                     Controls.ButtonGroup.group: navButtonGroup
@@ -515,10 +515,10 @@ Kirigami.ApplicationWindow {
                     text: i18n("PipeWire") // qmllint disable
                     icon.name: "network-server-symbolic"
                     checkable: true
-                    checked: DB.Manager.main.visiblePage === 2
+                    checked: DbMain.visiblePage === 2
                     display: segmentedButton.display
                     onClicked: {
-                        DB.Manager.main.visiblePage = 2;
+                        DbMain.visiblePage = 2;
                     }
 
                     Controls.ButtonGroup.group: navButtonGroup

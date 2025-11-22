@@ -1,6 +1,5 @@
 File=easyeffects_db_streaminputs.kcfg
-NameSpace=db
-ClassName=StreamInputs
+ClassName=DbStreamInputs
 Inherits=KConfigBaseEE
 IncludeFiles=\"kconfig_base_ee.hpp\"
 Mutators=true
@@ -8,3 +7,4 @@ Notifiers=true
 DefaultValueGetters=true
 Singleton=true
 GenerateProperties=true
+QmlRegistration=true

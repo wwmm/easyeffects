@@ -1,8 +1,8 @@
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
-import ee.database as DB
 import ee.pipewire as PW
+import ee.ui
 import org.kde.kirigami as Kirigami
 
 Kirigami.AbstractCard {
@@ -30,9 +30,9 @@ Kirigami.AbstractCard {
             return true;
 
         if (mediaClass === "Stream/Output/Audio")
-            return DB.Manager.streamOutputs.showBlocklistedApps;
+            return DbStreamOutputs.showBlocklistedApps;
         else if (mediaClass === "Stream/Input/Audio")
-            return DB.Manager.streamInputs.showBlocklistedApps;
+            return DbStreamInputs.showBlocklistedApps;
     }
 
     contentItem: ColumnLayout {
@@ -89,9 +89,9 @@ Kirigami.AbstractCard {
                     checked: root.connected
                     visible: {
                         if (root.mediaClass === "Stream/Output/Audio")
-                            return !DB.Manager.main.processAllOutputs;
+                            return !DbMain.processAllOutputs;
                         else if (root.mediaClass === "Stream/Input/Audio")
-                            return !DB.Manager.main.processAllInputs;
+                            return !DbMain.processAllInputs;
                     }
                     onCheckedChanged: {
                         if (checked === true && !root.isBlocklisted) {
@@ -136,7 +136,7 @@ Kirigami.AbstractCard {
                     id: volumeSlider
 
                     function prepareVolumeValue(normalizedValue) {
-                        const v = DB.Manager.main.useCubicVolumes === false ? normalizedValue : Math.cbrt(normalizedValue);
+                        const v = DbMain.useCubicVolumes === false ? normalizedValue : Math.cbrt(normalizedValue);
                         return v * 100;
                     }
 
@@ -150,7 +150,7 @@ Kirigami.AbstractCard {
                     onMoved: {
                         if (value !== prepareVolumeValue(root.volume)) {
                             let v = value / 100;
-                            v = DB.Manager.main.useCubicVolumes === false ? v : v * v * v;
+                            v = DbMain.useCubicVolumes === false ? v : v * v * v;
                             PW.Manager.setNodeVolume(root.serial, root.nVolumeChannels, v);
                         }
                     }

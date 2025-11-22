@@ -1,6 +1,5 @@
 import QtQuick
 import "Common.js" as Common
-import ee.database as DB
 import org.kde.kirigami as Kirigami
 
 Rectangle {
@@ -97,7 +96,7 @@ Rectangle {
 
         property real value: root.clampedValue
 
-        interval: DB.Manager.main.levelMetersLabelTimer
+        interval: DbMain.levelMetersLabelTimer
         repeat: true
         running: root.visible
 

@@ -1,7 +1,6 @@
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
-import ee.database as DB
 import ee.tags.plugin.name as TagsPluginName // qmllint disable
 import org.kde.kirigami as Kirigami
 
@@ -119,7 +118,7 @@ Kirigami.ScrollablePage {
                     displayHint: Kirigami.DisplayHint.KeepVisible
                     text: i18n("Show native window") // qmllint disable
                     icon.name: "window-duplicate-symbolic"
-                    enabled: DB.Manager.main.showNativePluginUi
+                    enabled: DbMain.showNativePluginUi
                     checkable: true
                     checked: maximizerPage.pluginBackend ? maximizerPage.pluginBackend.hasNativeUi() : false
                     onTriggered: {

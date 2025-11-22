@@ -54,9 +54,9 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
   connect(
       pm, &pw::Manager::sinkAdded, this,
       [&](pw::NodeInfo node) {
-        if (node.name == db::StreamOutputs::outputDevice()) {
-          if (db::Main::bypass()) {
-            db::Main::setBypass(false);
+        if (node.name == DbStreamOutputs::outputDevice()) {
+          if (DbMain::bypass()) {
+            DbMain::setBypass(false);
 
             return;  // filter connected through update_bypass_state
           }
@@ -71,33 +71,33 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
   connect(
       pm, &pw::Manager::newDefaultSinkName, this,
       [](QString name) {
-        if (db::StreamOutputs::useDefaultOutputDevice() || db::StreamOutputs::outputDevice().isEmpty()) {
-          db::StreamOutputs::setOutputDevice(name);
+        if (DbStreamOutputs::useDefaultOutputDevice() || DbStreamOutputs::outputDevice().isEmpty()) {
+          DbStreamOutputs::setOutputDevice(name);
         }
       },
       Qt::QueuedConnection);
 
   connect(
-      db::StreamOutputs::self(), &db::StreamOutputs::useDefaultOutputDeviceChanged, this,
+      DbStreamOutputs::self(), &DbStreamOutputs::useDefaultOutputDeviceChanged, this,
       [&]() {
-        if (db::StreamOutputs::useDefaultOutputDevice()) {
-          db::StreamOutputs::setOutputDevice(pm->defaultOutputDeviceName);
+        if (DbStreamOutputs::useDefaultOutputDevice()) {
+          DbStreamOutputs::setOutputDevice(pm->defaultOutputDeviceName);
         }
       },
       Qt::QueuedConnection);
 
   connect(
-      db::StreamOutputs::self(), &db::StreamOutputs::outputDeviceChanged, this,
+      DbStreamOutputs::self(), &DbStreamOutputs::outputDeviceChanged, this,
       [&]() {
-        const auto name = db::StreamOutputs::outputDevice();
+        const auto name = DbStreamOutputs::outputDevice();
 
         if (name.isEmpty()) {
           return;
         }
 
         if (auto node = pm->model_nodes.get_node_by_name(name); node.serial != SPA_ID_INVALID) {
-          if (db::Main::bypass()) {
-            db::Main::setBypass(false);
+          if (DbMain::bypass()) {
+            DbMain::setBypass(false);
 
             return;  // filter connected through update_bypass_state
           }
@@ -110,10 +110,10 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
       Qt::QueuedConnection);
 
   connect(
-      db::StreamOutputs::self(), &db::StreamOutputs::pluginsChanged, this,
+      DbStreamOutputs::self(), &DbStreamOutputs::pluginsChanged, this,
       [&]() {
-        if (db::Main::bypass()) {
-          db::Main::setBypass(false);
+        if (DbMain::bypass()) {
+          DbMain::setBypass(false);
 
           return;  // filter connected through update_bypass_state
         }
@@ -129,7 +129,7 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
   connect(
       pm, &pw::Manager::sinkRouteChanged, this,
       [](pw::NodeInfo node) {
-        if (node.name == db::StreamOutputs::outputDevice()) {
+        if (node.name == DbStreamOutputs::outputDevice()) {
           presets::Manager::self().autoload(PipelineType::output, node.name, node.device_route_description);
         }
       },
@@ -140,16 +140,16 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
   if (PULSE_SINK != nullptr && PULSE_SINK != tags::pipewire::ee_sink_name) {
     auto node = pm->model_nodes.get_node_by_name(PULSE_SINK);
 
-    db::StreamOutputs::setOutputDevice(PULSE_SINK);
+    DbStreamOutputs::setOutputDevice(PULSE_SINK);
   }
 
-  if (db::StreamOutputs::outputDevice().isEmpty()) {
-    db::StreamOutputs::setOutputDevice(pm->defaultOutputDeviceName);
+  if (DbStreamOutputs::outputDevice().isEmpty()) {
+    DbStreamOutputs::setOutputDevice(pm->defaultOutputDeviceName);
   }
 
   connect_filters();
 
-  if (auto node = pm->model_nodes.get_node_by_name(db::StreamOutputs::outputDevice()); node.serial != SPA_ID_INVALID) {
+  if (auto node = pm->model_nodes.get_node_by_name(DbStreamOutputs::outputDevice()); node.serial != SPA_ID_INVALID) {
     presets::Manager::self().autoload(PipelineType::output, node.name, node.device_route_description);
   }
 }
@@ -189,10 +189,10 @@ void StreamOutputEffects::on_link_changed(const pw::LinkInfo link_info) {
       connect_filters();
     };
   } else {
-    if (db::Main::inactivityTimerEnable()) {
+    if (DbMain::inactivityTimerEnable()) {
       // if the timer is enabled, wait for the timeout, then unlink plugin pipeline
 
-      QTimer::singleShot(db::Main::inactivityTimeout() * 1000, this, [&]() {
+      QTimer::singleShot(DbMain::inactivityTimeout() * 1000, this, [&]() {
         if (!apps_want_to_play() && !list_proxies.empty()) {
           util::debug("No app linked to our device wants to play. Unlinking our filters.");
 
@@ -228,17 +228,17 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
 
   // Checking if the output device exists.
 
-  if (db::StreamOutputs::outputDevice().isEmpty()) {
+  if (DbStreamOutputs::outputDevice().isEmpty()) {
     util::debug("No output device set. Aborting the link");
 
     return;
   }
 
-  auto output_device = pm->model_nodes.get_node_by_name(db::StreamOutputs::outputDevice());
+  auto output_device = pm->model_nodes.get_node_by_name(DbStreamOutputs::outputDevice());
 
   if (output_device.serial == SPA_ID_INVALID) {
     util::debug(std::format("The output device {} is not available. Aborting the link...",
-                            db::StreamOutputs::outputDevice().toStdString()));
+                            DbStreamOutputs::outputDevice().toStdString()));
 
     return;
   }
@@ -297,7 +297,7 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
 
   next_node_id = prev_node_id;
 
-  const auto list = (bypass) ? QStringList() : db::StreamOutputs::plugins();
+  const auto list = (bypass) ? QStringList() : DbStreamOutputs::plugins();
 
   if (!list.empty()) {
     for (const auto& name : std::ranges::reverse_view(list)) {
@@ -356,12 +356,21 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
   if (links.size() < 2U) {
     util::warning(std::format("Link from easyeffecst sink {} to node {} failed", prev_node_id, next_node_id));
   }
+
+  /*
+   * The correct thing to do would be to check if at least one pair of filters are actually linked. But filtersLinked
+   * is used only to enable or disable qml frame animation. So let's keep the approach simple.
+   */
+
+  filtersLinked = true;
+
+  Q_EMIT filtersLinkedChanged();
 }
 
 void StreamOutputEffects::disconnect_filters() {
   std::set<uint> link_id_list;
 
-  const auto selected_plugins_list = (bypass) ? QStringList() : db::StreamOutputs::plugins();
+  const auto selected_plugins_list = (bypass) ? QStringList() : DbStreamOutputs::plugins();
 
   for (const auto& plugin : plugins | std::views::values) {
     if (plugin == nullptr) {
@@ -399,6 +408,10 @@ void StreamOutputEffects::disconnect_filters() {
   list_proxies.clear();
 
   remove_unused_filters();
+
+  filtersLinked = false;
+
+  Q_EMIT filtersLinkedChanged();
 }
 
 void StreamOutputEffects::set_bypass(const bool& state) {

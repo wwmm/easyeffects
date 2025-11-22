@@ -7,7 +7,6 @@
 import QtQuick
 import QtQuick.Controls as QQC2
 import QtQuick.Layouts
-import ee.database as DB
 import org.kde.kirigami as Kirigami
 
 /*!
@@ -68,7 +67,7 @@ QQC2.ItemDelegate {
         spacing: Kirigami.Units.largeSpacing
 
         Kirigami.Icon {
-            Layout.alignment: DB.Manager.main.collapsePluginsList ? Qt.AlignVCenter | Qt.AlignHCenter : Qt.AlignVCenter
+            Layout.alignment: DbMain.collapsePluginsList ? Qt.AlignVCenter | Qt.AlignHCenter : Qt.AlignVCenter
             implicitWidth: listSection.icon.width
             implicitHeight: listSection.icon.height
             color: listSection.icon.color

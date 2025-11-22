@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-18 14:59+0000\n"
-"PO-Revision-Date: 2025-11-20 10:51+0000\n"
+"PO-Revision-Date: 2025-11-21 11:51+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -2428,7 +2428,7 @@ msgstr "Максимум"
 
 #: src/contents/ui/PreferencesSheet.qml:430
 msgid "Database autosave interval"
-msgstr "Интервал автосохранения базы данных"
+msgstr "Период автосохранения базы данных"
 
 #: src/contents/ui/PreferencesSheet.qml:444
 msgid "Most used presets"
@@ -2443,7 +2443,7 @@ msgid ""
 "It is necessary to restart the service for changes in this setting to take "
 "effect."
 msgstr ""
-"Необходимо перезапустить службу для при применений изменений этой настройки."
+"Необходимо перезапустить службу для применения изменений этой настройки."
 
 #: src/contents/ui/PreferencesSheet.qml:481
 msgid "Reduce effects list controls"

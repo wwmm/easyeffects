@@ -3,7 +3,6 @@ import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import "Common.js" as Common
-import ee.database as DB
 import ee.pipewire as PW
 import ee.tags.plugin.name as TagsPluginName
 import org.kde.kirigami as Kirigami
@@ -248,7 +247,7 @@ Kirigami.Page {
             FrameAnimation {
                 id: frameAnimation
 
-                running: pageStreamsEffects.pageType !== 2 && appWindow.visible // qmllint disable
+                running: pageStreamsEffects.pageType !== 2 && appWindow.visible && pipelineInstance.filtersLinked // qmllint disable
 
                 onTriggered: {
                     if (pluginsStack.depth > 1 && pluginsStack.currentItem?.pluginBackend !== undefined)
@@ -304,7 +303,7 @@ Kirigami.Page {
                 spacing: 0
 
                 GridLayout {
-                    columns: DB.Manager.main.collapsePluginsList === true ? 1 : 2
+                    columns: DbMain.collapsePluginsList === true ? 1 : 2
                     Layout.fillWidth: true
                     Layout.topMargin: Kirigami.Units.smallSpacing
                     Layout.bottomMargin: Kirigami.Units.smallSpacing
@@ -313,7 +312,7 @@ Kirigami.Page {
 
                     Controls.Button {
                         text: i18n("Add effect") // qmllint disable
-                        display: DB.Manager.main.collapsePluginsList === true ? Controls.Button.IconOnly : Controls.Button.TextBesideIcon
+                        display: DbMain.collapsePluginsList === true ? Controls.Button.IconOnly : Controls.Button.TextBesideIcon
                         icon.name: "list-add"
                         onClicked: menuAddPlugins.open()
                         Layout.fillWidth: true
@@ -321,13 +320,13 @@ Kirigami.Page {
 
                     Controls.Button {
                         text: i18n("Close") // qmllint disable
-                        display: DB.Manager.main.collapsePluginsList === true ? Controls.Button.IconOnly : Controls.Button.TextBesideIcon
-                        icon.name: DB.Manager.main.collapsePluginsList === true ? "sidebar-collapse-right-symbolic" : "sidebar-collapse-symbolic"
-                        Layout.fillWidth: DB.Manager.main.collapsePluginsList === true
-                        Controls.ToolTip.text: DB.Manager.main.collapsePluginsList === true ? i18n("Expand the list of effects pipeline") : i18n("Reduce the list of effects pipeline") // qmllint disable
+                        display: DbMain.collapsePluginsList === true ? Controls.Button.IconOnly : Controls.Button.TextBesideIcon
+                        icon.name: DbMain.collapsePluginsList === true ? "sidebar-collapse-right-symbolic" : "sidebar-collapse-symbolic"
+                        Layout.fillWidth: DbMain.collapsePluginsList === true
+                        Controls.ToolTip.text: DbMain.collapsePluginsList === true ? i18n("Expand the list of effects pipeline") : i18n("Reduce the list of effects pipeline") // qmllint disable
                         Controls.ToolTip.visible: hovered
                         onClicked: {
-                            DB.Manager.main.collapsePluginsList = !DB.Manager.main.collapsePluginsList;
+                            DbMain.collapsePluginsList = !DbMain.collapsePluginsList;
                         }
                     }
                 }
@@ -343,8 +342,8 @@ Kirigami.Page {
 
                     Layout.fillHeight: true
                     Layout.fillWidth: true
-                    Layout.maximumWidth: DB.Manager.main.collapsePluginsList ? Kirigami.Units.gridUnit * 3 : Kirigami.Units.gridUnit * 16
-                    Layout.minimumWidth: DB.Manager.main.collapsePluginsList ? Kirigami.Units.gridUnit * 3 : Kirigami.Units.gridUnit * 16
+                    Layout.maximumWidth: DbMain.collapsePluginsList ? Kirigami.Units.gridUnit * 3 : Kirigami.Units.gridUnit * 16
+                    Layout.minimumWidth: DbMain.collapsePluginsList ? Kirigami.Units.gridUnit * 3 : Kirigami.Units.gridUnit * 16
                     Layout.bottomMargin: Kirigami.Units.smallSpacing * 2
 
                     clip: true
@@ -378,7 +377,7 @@ Kirigami.Page {
                         visible: pluginsListView.count !== 0
 
                         icon.name: pageStreamsEffects.pageType === 0 ? "source-playlist-symbolic" : "audio-input-microphone-symbolic"
-                        compact: DB.Manager.main.collapsePluginsList
+                        compact: DbMain.collapsePluginsList
                         text: pageStreamsEffects.pageType === 0 ? i18n("Players") : i18n("Input device")// qmllint disable
                     }
 
@@ -387,7 +386,7 @@ Kirigami.Page {
                         visible: pluginsListView.count !== 0
 
                         icon.name: pageStreamsEffects.pageType === 0 ? "audio-speakers-symbolic" : "source-playlist-symbolic"
-                        compact: DB.Manager.main.collapsePluginsList
+                        compact: DbMain.collapsePluginsList
                         text: pageStreamsEffects.pageType === 0 ? i18n("Output device") : i18n("Recorders")// qmllint disable
                     }
                 }
@@ -438,18 +437,18 @@ Kirigami.Page {
             id: spectrumChart
 
             Layout.fillWidth: true
-            implicitHeight: DB.Manager.spectrum.height
-            seriesType: DB.Manager.spectrum.spectrumShape
-            colorScheme: DB.Manager.spectrum.spectrumColorScheme
-            colorTheme: DB.Manager.spectrum.spectrumColorTheme
-            xMin: DB.Manager.spectrum.minimumFrequency
-            xMax: DB.Manager.spectrum.maximumFrequency
+            implicitHeight: DbSpectrum.height
+            seriesType: DbSpectrum.spectrumShape
+            colorScheme: DbSpectrum.spectrumColorScheme
+            colorTheme: DbSpectrum.spectrumColorTheme
+            xMin: DbSpectrum.minimumFrequency
+            xMax: DbSpectrum.maximumFrequency
             yMin: -100
             yMax: 0
-            logarithimicHorizontalAxis: DB.Manager.spectrum.logarithimicHorizontalAxis
-            dynamicYScale: DB.Manager.spectrum.dynamicYScale
+            logarithimicHorizontalAxis: DbSpectrum.logarithimicHorizontalAxis
+            dynamicYScale: DbSpectrum.dynamicYScale
             xUnit: i18n("Hz")
-            visible: DB.Manager.spectrum.state
+            visible: DbSpectrum.state
 
             Component.onDestruction: {
                 headerFrameAnimation.stop();
@@ -458,7 +457,7 @@ Kirigami.Page {
             FrameAnimation {
                 id: headerFrameAnimation
 
-                running: DB.Manager.spectrum.state && appWindow.visible // qmllint disable
+                running: DbSpectrum.state && appWindow.visible && pipelineInstance.filtersLinked // qmllint disable
 
                 onRunningChanged: {
                     pageStreamsEffects.pipelineInstance.setSpectrumBypass(!running);
@@ -551,7 +550,7 @@ Kirigami.Page {
                 FrameAnimation {
                     id: footerFrameAnimation
 
-                    running: pageStreamsEffects.pageType !== 2 && appWindow.visible // qmllint disable
+                    running: pageStreamsEffects.pageType !== 2 && appWindow.visible && pipelineInstance.filtersLinked // qmllint disable
 
                     onRunningChanged: {
                         pageStreamsEffects.pipelineInstance.setUpdateLevelMeters(running);
@@ -649,10 +648,10 @@ Kirigami.Page {
                         displayHint: Kirigami.DisplayHint.KeepVisible
                         visible: pageStreamsEffects.pageType === 1 && pageStreamsEffects.streamDB.visiblePage === 1
                         checkable: true
-                        checked: DB.Manager.streamInputs.listenToMic
+                        checked: DbStreamInputs.listenToMic
                         onTriggered: {
-                            if (checked !== DB.Manager.streamInputs.listenToMic) {
-                                DB.Manager.streamInputs.listenToMic = checked;
+                            if (checked !== DbStreamInputs.listenToMic) {
+                                DbStreamInputs.listenToMic = checked;
                             }
                         }
                     },

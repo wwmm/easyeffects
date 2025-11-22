@@ -61,7 +61,8 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
       settings(
           db::Manager::self().get_plugin_db<db::Convolver>(pipe_type,
                                                            tags::plugin_name::BaseName::convolver + "#" + instance_id)),
-      kernel_manager(ConvolverKernelManager(pipe_type)) {
+      kernel_manager(ConvolverKernelManager(pipe_type)),
+      worker(new ConvolverWorker) {
   init_common_controls<db::Convolver>(settings);
 
   dry = (settings->dry() <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(settings->dry()));
@@ -70,9 +71,15 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
 
   connect(settings, &db::Convolver::kernelNameChanged, [&]() { load_kernel_file(true, rate); });
 
-  connect(settings, &db::Convolver::irWidthChanged, [&]() { update_ir_width_and_autogain(); });
+  connect(settings, &db::Convolver::irWidthChanged, [&]() {
+    std::scoped_lock<std::mutex> lock(data_mutex);
+    zita.update_ir_width_and_autogain(settings->irWidth(), settings->autogain(), true);
+  });
 
-  connect(settings, &db::Convolver::autogainChanged, [&]() { update_ir_width_and_autogain(); });
+  connect(settings, &db::Convolver::autogainChanged, [&]() {
+    std::scoped_lock<std::mutex> lock(data_mutex);
+    zita.update_ir_width_and_autogain(settings->irWidth(), settings->autogain(), true);
+  });
 
   connect(settings, &db::Convolver::dryChanged, [&]() {
     dry =
@@ -85,8 +92,6 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
   });
 
   // Preparing the worker thread
-
-  worker = new ConvolverWorker;
 
   worker->moveToThread(&workerThread);
 
@@ -109,7 +114,7 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
 
           std::scoped_lock<std::mutex> lock(data_mutex);
 
-          auto success = zita.init(data, blocksize);
+          auto success = zita.init(data, blocksize, settings->irWidth(), settings->autogain());
 
           if (!success) {
             util::warning(std::format("{} Zita init failed", log_tag));
@@ -158,18 +163,16 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
       },
       Qt::QueuedConnection);
 
-  workerThread.start();
-
   QMetaObject::invokeMethod(
       worker,
       [this] {
-        if (ready) {
+        if (ready || destructor_called) {
           return;
         }
 
         /**
          * Setting valid rate instead of zero allows the convolver ui to properly show the impulse response file
-         * parameterseven if nothing is playing audio.
+         * parameters even if nothing is playing audio.
          */
 
         uint r = 0;
@@ -192,9 +195,6 @@ Convolver::~Convolver() {
   }
 
   zita.stop();
-
-  workerThread.quit();
-  workerThread.wait();
 
   disconnect();
   settings->disconnect();
@@ -350,20 +350,8 @@ void Convolver::process([[maybe_unused]] std::span<float>& left_in,
                         [[maybe_unused]] std::span<float>& probe_left,
                         [[maybe_unused]] std::span<float>& probe_right) {}
 
-void Convolver::update_ir_width_and_autogain() {
-  std::scoped_lock<std::mutex> lock(data_mutex);
-
-  zita.reset_kernel_to_original();
-
-  zita.set_kernel_stereo_width(settings->irWidth());
-
-  if (settings->autogain()) {
-    zita.apply_kernel_autogain();
-  }
-}
-
 void Convolver::load_kernel_file(const bool& init_zita, const uint& server_sampling_rate) {
-  if (destructor_called || server_sampling_rate == 0) {
+  if (destructor_called) {
     return;
   }
 
@@ -377,14 +365,14 @@ void Convolver::load_kernel_file(const bool& init_zita, const uint& server_sampl
     return;
   }
 
-  if (kernel_data.rate != server_sampling_rate) {
+  if (server_sampling_rate != 0 && kernel_data.rate != server_sampling_rate) {
     util::debug(std::format("{}{} kernel has {} rate. Resampling it to {}", log_tag, name.toStdString(),
                             kernel_data.rate, server_sampling_rate));
 
     kernel_data = ConvolverKernelManager::resampleKernel(kernel_data, server_sampling_rate);
   }
 
-  const auto dt = 1.0 / server_sampling_rate;
+  const auto dt = 1.0 / kernel_data.rate;
 
   std::vector<double> time_axis(kernel_data.sampleCount());
 
@@ -396,11 +384,11 @@ void Convolver::load_kernel_file(const bool& init_zita, const uint& server_sampl
 
   std::vector<double> copy_helper(kernel_data.sampleCount());
 
-  std::ranges::copy(kernel_data.left_channel, copy_helper.begin());
+  std::ranges::copy(kernel_data.channel_L, copy_helper.begin());
 
   auto magL = util::interpolate(time_axis, copy_helper, x_linear);
 
-  std::ranges::copy(kernel_data.right_channel, copy_helper.begin());
+  std::ranges::copy(kernel_data.channel_R, copy_helper.begin());
 
   auto magR = util::interpolate(time_axis, copy_helper, x_linear);
 
@@ -416,7 +404,7 @@ void Convolver::load_kernel_file(const bool& init_zita, const uint& server_sampl
 
   ConvolverKernelFFT kernel_fft;
 
-  kernel_fft.calculate_fft(kernel_data.left_channel, kernel_data.right_channel, kernel_data.rate, interpPoints);
+  kernel_fft.calculate_fft(kernel_data.channel_L, kernel_data.channel_R, kernel_data.rate, interpPoints);
 
   Q_EMIT worker->onNewChartMag(chart_mag_L, chart_mag_R);
 
@@ -448,12 +436,6 @@ void Convolver::combineKernels(const QString& kernel1, const QString& kernel2, c
       Qt::QueuedConnection);
 }
 
-void Convolver::chart_kernel_fft(const std::vector<float>& kernel_L,
-                                 const std::vector<float>& kernel_R,
-                                 const float& kernel_rate) {
-  kernel_fft.calculate_fft(kernel_L, kernel_R, kernel_rate, interpPoints);
-}
-
 void Convolver::clear_chart_data() {
   chartMagL.clear();
   chartMagR.clear();
@@ -461,20 +443,4 @@ void Convolver::clear_chart_data() {
   chartMagRfftLinear.clear();
   chartMagLfftLog.clear();
   chartMagRfftLog.clear();
-}
-
-void ConvolverWorker::calculateFFT(std::vector<float> kernel_L,
-                                   std::vector<float> kernel_R,
-                                   int kernel_rate,
-                                   int interpPoints) {
-  ConvolverKernelFFT kernel_fft;
-
-  kernel_fft.calculate_fft(kernel_L, kernel_R, kernel_rate, interpPoints);
-
-  auto linear_L = kernel_fft.linear_L;
-  auto linear_R = kernel_fft.linear_R;
-  auto log_L = kernel_fft.log_L;
-  auto log_R = kernel_fft.log_R;
-
-  Q_EMIT onNewSpectrum(linear_L, linear_R, log_L, log_R);
 }

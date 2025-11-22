@@ -2,7 +2,6 @@ import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import "Common.js" as Common
-import ee.database as DB
 import ee.presets as Presets
 import ee.ui
 import org.kde.kirigami as Kirigami
@@ -13,17 +12,17 @@ Kirigami.OverlaySheet {
     id: control
 
     readonly property string lastLoadedPresetName: {
-        if (DB.Manager.main.visiblePage === 0)
-            return DB.Manager.main.lastLoadedOutputPreset;
-        else if (DB.Manager.main.visiblePage === 1)
-            return DB.Manager.main.lastLoadedInputPreset;
+        if (DbMain.visiblePage === 0)
+            return DbMain.lastLoadedOutputPreset;
+        else if (DbMain.visiblePage === 1)
+            return DbMain.lastLoadedInputPreset;
         return "";
     }
     readonly property string lastLoadedCommunityPackage: {
-        if (DB.Manager.main.visiblePage === 0)
-            return DB.Manager.main.lastLoadedOutputCommunityPackage;
-        else if (DB.Manager.main.visiblePage === 1)
-            return DB.Manager.main.lastLoadedInputCommunityPackage;
+        if (DbMain.visiblePage === 0)
+            return DbMain.lastLoadedOutputCommunityPackage;
+        else if (DbMain.visiblePage === 1)
+            return DbMain.lastLoadedInputCommunityPackage;
         return "";
     }
 
@@ -49,7 +48,7 @@ Kirigami.OverlaySheet {
         active: false
 
         source: {
-            switch (DB.Manager.main.visiblePresetSheetPage) {
+            switch (DbMain.visiblePresetSheetPage) {
             case 0:
                 return Qt.resolvedUrl("PresetsLocalPage.qml");
             case 1:
@@ -77,25 +76,25 @@ Kirigami.OverlaySheet {
                     text: i18n("Local")
                     icon.name: "system-file-manager-symbolic"
                     checkable: true
-                    checked: DB.Manager.main.visiblePresetSheetPage === 0
+                    checked: DbMain.visiblePresetSheetPage === 0
                     displayHint: segmentedButton.displayHint
-                    onTriggered: DB.Manager.main.visiblePresetSheetPage = 0
+                    onTriggered: DbMain.visiblePresetSheetPage = 0
                 },
                 Kirigami.Action {
                     text: i18n("Community")
                     icon.name: "system-users-symbolic"
                     checkable: true
-                    checked: DB.Manager.main.visiblePresetSheetPage === 1
+                    checked: DbMain.visiblePresetSheetPage === 1
                     displayHint: segmentedButton.displayHint
-                    onTriggered: DB.Manager.main.visiblePresetSheetPage = 1
+                    onTriggered: DbMain.visiblePresetSheetPage = 1
                 },
                 Kirigami.Action {
                     text: i18n("Autoloading")
                     icon.name: "task-recurring-symbolic"
                     checkable: true
-                    checked: DB.Manager.main.visiblePresetSheetPage === 2
+                    checked: DbMain.visiblePresetSheetPage === 2
                     displayHint: segmentedButton.displayHint
-                    onTriggered: DB.Manager.main.visiblePresetSheetPage = 2
+                    onTriggered: DbMain.visiblePresetSheetPage = 2
                 }
             ]
         }
@@ -106,7 +105,7 @@ Kirigami.OverlaySheet {
             Layout.fillWidth: true
             Layout.maximumWidth: parent.width
             position: Kirigami.InlineMessage.Position.Footer
-            visible: DB.Manager.main.visiblePresetSheetPage !== 2
+            visible: DbMain.visiblePresetSheetPage !== 2
             text: {
                 if (Common.isEmpty(control.lastLoadedPresetName))
                     return i18n("No preset loaded");// qmllint disable
@@ -118,7 +117,7 @@ Kirigami.OverlaySheet {
         }
 
         RowLayout {
-            visible: DB.Manager.main.visiblePresetSheetPage === 2
+            visible: DbMain.visiblePresetSheetPage === 2
 
             FormCard.FormComboBoxDelegate {
                 id: fallbackPreset
@@ -128,7 +127,7 @@ Kirigami.OverlaySheet {
                 text: i18n("Fallback Preset") // qmllint disable
                 displayMode: FormCard.FormComboBoxDelegate.ComboBox
                 currentIndex: {
-                    const fallbackPreset = DB.Manager.main.visiblePage === 0 ? DB.Manager.main.outputAutoloadingFallbackPreset : DB.Manager.main.inputAutoloadingFallbackPreset;
+                    const fallbackPreset = DbMain.visiblePage === 0 ? DbMain.outputAutoloadingFallbackPreset : DbMain.inputAutoloadingFallbackPreset;
                     for (let n = 0; n < model.rowCount(); n++) {
                         const proxyIndex = model.index(n, 0);
                         const name = model.data(proxyIndex, PresetsListModel.Name);
@@ -139,28 +138,28 @@ Kirigami.OverlaySheet {
                 }
                 textRole: "name"
                 editable: false
-                enabled: DB.Manager.main.visiblePage === 0 ? DB.Manager.main.outputAutoloadingUsesFallback : DB.Manager.main.inputAutoloadingUsesFallback
-                model: DB.Manager.main.visiblePage === 0 ? Presets.SortedOutputListModel : Presets.SortedInputListModel
+                enabled: DbMain.visiblePage === 0 ? DbMain.outputAutoloadingUsesFallback : DbMain.inputAutoloadingUsesFallback
+                model: DbMain.visiblePage === 0 ? Presets.SortedOutputListModel : Presets.SortedInputListModel
                 onActivated: idx => {
-                    if (DB.Manager.main.visiblePage === 0)
-                        DB.Manager.main.outputAutoloadingFallbackPreset = currentText;
-                    else if (DB.Manager.main.visiblePage === 1)
-                        DB.Manager.main.inputAutoloadingFallbackPreset = currentText;
+                    if (DbMain.visiblePage === 0)
+                        DbMain.outputAutoloadingFallbackPreset = currentText;
+                    else if (DbMain.visiblePage === 1)
+                        DbMain.inputAutoloadingFallbackPreset = currentText;
                 }
             }
 
             EeSwitch {
                 Layout.fillWidth: false
                 Layout.alignment: Qt.AlignHCenter | Qt.AlignBottom
-                isChecked: DB.Manager.main.visiblePage === 0 ? DB.Manager.main.outputAutoloadingUsesFallback : DB.Manager.main.inputAutoloadingUsesFallback
+                isChecked: DbMain.visiblePage === 0 ? DbMain.outputAutoloadingUsesFallback : DbMain.inputAutoloadingUsesFallback
                 verticalPadding: 0
                 onCheckedChanged: {
-                    if (DB.Manager.main.visiblePage === 0) {
-                        if (isChecked !== DB.Manager.main.outputAutoloadingUsesFallback)
-                            DB.Manager.main.outputAutoloadingUsesFallback = isChecked;
-                    } else if (DB.Manager.main.visiblePage === 1) {
-                        if (isChecked !== DB.Manager.main.inputAutoloadingUsesFallback)
-                            DB.Manager.main.inputAutoloadingUsesFallback = isChecked;
+                    if (DbMain.visiblePage === 0) {
+                        if (isChecked !== DbMain.outputAutoloadingUsesFallback)
+                            DbMain.outputAutoloadingUsesFallback = isChecked;
+                    } else if (DbMain.visiblePage === 1) {
+                        if (isChecked !== DbMain.inputAutoloadingUsesFallback)
+                            DbMain.inputAutoloadingUsesFallback = isChecked;
                     }
                 }
             }

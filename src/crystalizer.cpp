@@ -114,6 +114,8 @@ Crystalizer::Crystalizer(const std::string& tag, pw::Manager* pipe_manager, Pipe
 }
 
 Crystalizer::~Crystalizer() {
+  std::scoped_lock<std::mutex> lock(data_mutex);
+
   if (connected_to_pw) {
     disconnect_from_pw();
   }
@@ -121,11 +123,7 @@ Crystalizer::~Crystalizer() {
   disconnect();
   settings->disconnect();
 
-  data_mutex.lock();
-
   filters_are_ready = false;
-
-  data_mutex.unlock();
 
   util::debug(std::format("{}{} destroyed", log_tag, name.toStdString()));
 }
@@ -135,11 +133,9 @@ void Crystalizer::reset() {
 }
 
 void Crystalizer::setup() {
-  data_mutex.lock();
+  std::scoped_lock<std::mutex> lock(data_mutex);
 
   filters_are_ready = false;
-
-  data_mutex.unlock();
 
   block_time = static_cast<float>(n_samples) / static_cast<float>(rate);
 
@@ -156,7 +152,7 @@ void Crystalizer::setup() {
   // NOLINTBEGIN(clang-analyzer-cplusplus.NewDeleteLeaks)
 
   QMetaObject::invokeMethod(
-      this,
+      baseWorker,
       [this] {
         if (filters_are_ready) {
           return;
@@ -223,11 +219,9 @@ void Crystalizer::setup() {
           filters.at(n)->setup();
         }
 
-        data_mutex.lock();
+        std::scoped_lock<std::mutex> lock(data_mutex);
 
         filters_are_ready = true;
-
-        data_mutex.unlock();
       },
       Qt::QueuedConnection);
 

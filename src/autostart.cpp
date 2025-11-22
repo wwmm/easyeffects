@@ -83,7 +83,7 @@ void on_request_background_called([[maybe_unused]] GObject* source,
 
     util::warning("Due to error, setting autostart state and switch to false");
 
-    db::Main::setAutostartOnLogin(false);
+    DbMain::setAutostartOnLogin(false);
 
     Q_EMIT autoload->error(
         i18n("Cannot enable autostart option because background access has been denied. Please allow \"Run in "
@@ -99,14 +99,14 @@ Autostart::Autostart(QObject* parent) : QObject(parent) {
   // NOLINTNEXTLINE(clang-analyzer-cplusplus.NewDelete)
   qmlRegisterSingletonInstance<Autostart>("ee.autostart", VERSION_MAJOR, VERSION_MINOR, "Autostart", this);
 
-  connect(db::Main::self(), &db::Main::autostartOnLoginChanged, [&]() { update_state(); });
+  connect(DbMain::self(), &DbMain::autostartOnLoginChanged, [&]() { update_state(); });
 
-  connect(db::Main::self(), &db::Main::enableServiceModeChanged, [&]() { update_state(); });
+  connect(DbMain::self(), &DbMain::enableServiceModeChanged, [&]() { update_state(); });
 }
 
 void Autostart::update_state() {
   if (!std::filesystem::exists("/.flatpak-info")) {
-    fallback_enable_autostart(db::Main::autostartOnLogin());
+    fallback_enable_autostart(DbMain::autostartOnLogin());
 
     return;
   }
@@ -124,12 +124,12 @@ void Autostart::update_background_portal() {
   g_autoptr(GPtrArray) cmd = nullptr;
   XdpBackgroundFlags flags = XDP_BACKGROUND_FLAG_NONE;
 
-  if (db::Main::autostartOnLogin()) {
+  if (DbMain::autostartOnLogin()) {
     cmd = g_ptr_array_new_with_free_func(g_free);
 
     g_ptr_array_add(cmd, g_strdup("easyeffects"));
 
-    if (db::Main::enableServiceMode()) {
+    if (DbMain::enableServiceMode()) {
       g_ptr_array_add(cmd, g_strdup("--service-mode"));
     }
 
@@ -162,7 +162,7 @@ void Autostart::fallback_enable_autostart(const bool& state) {
     ofs << "Comment=" << APPLICATION_NAME << " Service\n";
     ofs << "Exec=easyeffects --hide-window";
 
-    if (db::Main::enableServiceMode()) {
+    if (DbMain::enableServiceMode()) {
       ofs << " --service-mode\n";
     } else {
       ofs << "\n";

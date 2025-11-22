@@ -1,7 +1,6 @@
 import QtQml // Despite of what Qt extension says this import is needed. We crash without it
 import QtQuick
 import QtQuick.Layouts
-import ee.database as DB
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 import org.kde.kirigamiaddons.settings as KirigamiSettings
@@ -65,10 +64,10 @@ KirigamiSettings.ConfigurationView {
                     label: i18n("Enable service mode") // qmllint disable
                     subtitle: i18n("Easy Effects is active in background when the window is closed.") // qmllint disable
                     maximumLineCount: -1
-                    isChecked: DB.Manager.main.enableServiceMode
+                    isChecked: DbMain.enableServiceMode
                     onCheckedChanged: {
-                        if (isChecked !== DB.Manager.main.enableServiceMode)
-                            DB.Manager.main.enableServiceMode = isChecked;
+                        if (isChecked !== DbMain.enableServiceMode)
+                            DbMain.enableServiceMode = isChecked;
                     }
                 }
 
@@ -78,10 +77,10 @@ KirigamiSettings.ConfigurationView {
                     label: i18n("Autostart on login") // qmllint disable
                     subtitle: i18n("Easy Effects is launched at user session startup.") // qmllint disable
                     maximumLineCount: -1
-                    isChecked: DB.Manager.main.autostartOnLogin
+                    isChecked: DbMain.autostartOnLogin
                     onCheckedChanged: {
-                        if (isChecked !== DB.Manager.main.autostartOnLogin) {
-                            DB.Manager.main.autostartOnLogin = isChecked;
+                        if (isChecked !== DbMain.autostartOnLogin) {
+                            DbMain.autostartOnLogin = isChecked;
                         }
                     }
                 }
@@ -91,11 +90,11 @@ KirigamiSettings.ConfigurationView {
 
                     label: i18n("Show the tray icon") // qmllint disable
                     maximumLineCount: -1
-                    isChecked: DB.Manager.main.showTrayIcon && canUseSysTray// qmllint disable
+                    isChecked: DbMain.showTrayIcon && canUseSysTray// qmllint disable
                     enabled: canUseSysTray// qmllint disable
                     onCheckedChanged: {
-                        if (isChecked !== DB.Manager.main.showTrayIcon)
-                            DB.Manager.main.showTrayIcon = isChecked;
+                        if (isChecked !== DbMain.showTrayIcon)
+                            DbMain.showTrayIcon = isChecked;
                     }
                 }
             }
@@ -112,10 +111,10 @@ KirigamiSettings.ConfigurationView {
 
                     label: i18n("Process all output streams") // qmllint disable
                     maximumLineCount: -1
-                    isChecked: DB.Manager.main.processAllOutputs
+                    isChecked: DbMain.processAllOutputs
                     onCheckedChanged: {
-                        if (isChecked !== DB.Manager.main.processAllOutputs)
-                            DB.Manager.main.processAllOutputs = isChecked;
+                        if (isChecked !== DbMain.processAllOutputs)
+                            DbMain.processAllOutputs = isChecked;
                     }
                 }
 
@@ -124,10 +123,10 @@ KirigamiSettings.ConfigurationView {
 
                     label: i18n("Process all input streams") // qmllint disable
                     maximumLineCount: -1
-                    isChecked: DB.Manager.main.processAllInputs
+                    isChecked: DbMain.processAllInputs
                     onCheckedChanged: {
-                        if (isChecked !== DB.Manager.main.processAllInputs)
-                            DB.Manager.main.processAllInputs = isChecked;
+                        if (isChecked !== DbMain.processAllInputs)
+                            DbMain.processAllInputs = isChecked;
                     }
                 }
 
@@ -136,10 +135,10 @@ KirigamiSettings.ConfigurationView {
 
                     label: i18n("Ignore streams from monitor of devices") // qmllint disable
                     maximumLineCount: -1
-                    isChecked: DB.Manager.main.excludeMonitorStreams
+                    isChecked: DbMain.excludeMonitorStreams
                     onCheckedChanged: {
-                        if (isChecked !== DB.Manager.main.excludeMonitorStreams)
-                            DB.Manager.main.excludeMonitorStreams = isChecked;
+                        if (isChecked !== DbMain.excludeMonitorStreams)
+                            DbMain.excludeMonitorStreams = isChecked;
                     }
                 }
 
@@ -149,10 +148,10 @@ KirigamiSettings.ConfigurationView {
                     label: i18n("Use cubic volume") // qmllint disable
                     subtitle: i18n("Use cubic scale for stream volume rather than the linear one. Low percentages results in a lower perceived volume while the loudness appears to change more evenly across the slider.")
                     maximumLineCount: -1
-                    isChecked: DB.Manager.main.useCubicVolumes
+                    isChecked: DbMain.useCubicVolumes
                     onCheckedChanged: {
-                        if (isChecked !== DB.Manager.main.useCubicVolumes)
-                            DB.Manager.main.useCubicVolumes = isChecked;
+                        if (isChecked !== DbMain.useCubicVolumes)
+                            DbMain.useCubicVolumes = isChecked;
                     }
                 }
 
@@ -162,10 +161,10 @@ KirigamiSettings.ConfigurationView {
                     label: i18n("Ignore system notifications") // qmllint disable
                     subtitle: i18n("Processing system notifications may cause crackling sound, so it would be better to ignore them, but for some presets it may be recommended since they could sound too loud.") // qmllint disable
                     maximumLineCount: -1
-                    isChecked: DB.Manager.main.ignoreSystemNotifications
+                    isChecked: DbMain.ignoreSystemNotifications
                     onCheckedChanged: {
-                        if (isChecked !== DB.Manager.main.ignoreSystemNotifications)
-                            DB.Manager.main.ignoreSystemNotifications = isChecked;
+                        if (isChecked !== DbMain.ignoreSystemNotifications)
+                            DbMain.ignoreSystemNotifications = isChecked;
                     }
                 }
 
@@ -174,10 +173,10 @@ KirigamiSettings.ConfigurationView {
 
                     label: i18n("Enable/disable input monitoring") // qmllint disable
                     maximumLineCount: -1
-                    isChecked: DB.Manager.streamInputs.listenToMic
+                    isChecked: DbStreamInputs.listenToMic
                     onCheckedChanged: {
-                        if (isChecked !== DB.Manager.streamInputs.listenToMic)
-                            DB.Manager.streamInputs.listenToMic = isChecked;
+                        if (isChecked !== DbStreamInputs.listenToMic)
+                            DbStreamInputs.listenToMic = isChecked;
                     }
                 }
 
@@ -186,10 +185,10 @@ KirigamiSettings.ConfigurationView {
 
                     label: i18n("Mic monitor plays to output effects pipeline") // qmllint disable
                     maximumLineCount: -1
-                    isChecked: DB.Manager.streamInputs.listenToMicIncludesOutputEffects
+                    isChecked: DbStreamInputs.listenToMicIncludesOutputEffects
                     onCheckedChanged: {
-                        if (isChecked !== DB.Manager.streamInputs.listenToMicIncludesOutputEffects)
-                            DB.Manager.streamInputs.listenToMicIncludesOutputEffects = isChecked;
+                        if (isChecked !== DbStreamInputs.listenToMicIncludesOutputEffects)
+                            DbStreamInputs.listenToMicIncludesOutputEffects = isChecked;
                     }
                 }
 
@@ -199,10 +198,10 @@ KirigamiSettings.ConfigurationView {
                     label: i18n("Enable the inactivity timeout") // qmllint disable
                     subtitle: i18n("When all streams are inactive, Easy Effects pipeline remains loaded for an extra amount of time.") // qmllint disable
                     maximumLineCount: -1
-                    isChecked: DB.Manager.main.inactivityTimerEnable
+                    isChecked: DbMain.inactivityTimerEnable
                     onCheckedChanged: {
-                        if (isChecked !== DB.Manager.main.inactivityTimerEnable)
-                            DB.Manager.main.inactivityTimerEnable = isChecked;
+                        if (isChecked !== DbMain.inactivityTimerEnable)
+                            DbMain.inactivityTimerEnable = isChecked;
                     }
                 }
 
@@ -211,15 +210,15 @@ KirigamiSettings.ConfigurationView {
 
                     label: i18n("Inactivity timeout") // qmllint disable
                     maximumLineCount: -1
-                    from: DB.Manager.main.getMinValue("inactivityTimeout")
-                    to: DB.Manager.main.getMaxValue("inactivityTimeout")
-                    value: DB.Manager.main.inactivityTimeout
+                    from: DbMain.getMinValue("inactivityTimeout")
+                    to: DbMain.getMaxValue("inactivityTimeout")
+                    value: DbMain.inactivityTimeout
                     decimals: 0
                     stepSize: 1
                     unit: i18n("s")
-                    enabled: DB.Manager.main.inactivityTimerEnable
+                    enabled: DbMain.inactivityTimerEnable
                     onValueModified: v => {
-                        DB.Manager.main.inactivityTimeout = v;
+                        DbMain.inactivityTimeout = v;
                     }
                 }
 
@@ -227,15 +226,15 @@ KirigamiSettings.ConfigurationView {
                     label: i18n("Level meters label") // qmllint disable
                     subtitle: i18n("The time it takes for the level meter labels to be updated when the current level is below the last highest one.") // qmllint disable
                     maximumLineCount: -1
-                    from: DB.Manager.main.getMinValue("levelMetersLabelTimer")
-                    to: DB.Manager.main.getMaxValue("levelMetersLabelTimer")
-                    value: DB.Manager.main.levelMetersLabelTimer
+                    from: DbMain.getMinValue("levelMetersLabelTimer")
+                    to: DbMain.getMaxValue("levelMetersLabelTimer")
+                    value: DbMain.levelMetersLabelTimer
                     decimals: 0
                     stepSize: 1
                     unit: i18n("ms")
-                    enabled: DB.Manager.main.levelMetersLabelTimer
+                    enabled: DbMain.levelMetersLabelTimer
                     onValueModified: v => {
-                        DB.Manager.main.levelMetersLabelTimer = v;
+                        DbMain.levelMetersLabelTimer = v;
                     }
                 }
             }
@@ -254,10 +253,10 @@ KirigamiSettings.ConfigurationView {
 
                     label: i18n("Enabled") // qmllint disable
                     maximumLineCount: -1
-                    isChecked: DB.Manager.spectrum.state
+                    isChecked: DbSpectrum.state
                     onCheckedChanged: {
-                        if (isChecked !== DB.Manager.spectrum.state)
-                            DB.Manager.spectrum.state = isChecked;
+                        if (isChecked !== DbSpectrum.state)
+                            DbSpectrum.state = isChecked;
                     }
                 }
 
@@ -268,12 +267,12 @@ KirigamiSettings.ConfigurationView {
                     maximumLineCount: -1
                     from: 0
                     to: 1000
-                    value: DB.Manager.spectrum.avsyncDelay
+                    value: DbSpectrum.avsyncDelay
                     decimals: 0
                     stepSize: 1
                     unit: i18n("ms")
                     onValueModified: v => {
-                        DB.Manager.spectrum.avsyncDelay = v;
+                        DbSpectrum.avsyncDelay = v;
                     }
                 }
             }
@@ -288,12 +287,12 @@ KirigamiSettings.ConfigurationView {
 
                     text: i18n("Color scheme") // qmllint disable
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                    currentIndex: DB.Manager.spectrum.spectrumColorScheme
+                    currentIndex: DbSpectrum.spectrumColorScheme
                     editable: false
                     model: [i18n("Automatic"), i18n("Light"), i18n("Dark")]// qmllint disable
                     onActivated: idx => {
-                        if (idx !== DB.Manager.spectrum.spectrumColorScheme)
-                            DB.Manager.spectrum.spectrumColorScheme = idx;
+                        if (idx !== DbSpectrum.spectrumColorScheme)
+                            DbSpectrum.spectrumColorScheme = idx;
                     }
                 }
 
@@ -302,12 +301,12 @@ KirigamiSettings.ConfigurationView {
 
                     text: i18n("Color theme") // qmllint disable
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                    currentIndex: DB.Manager.spectrum.spectrumColorTheme
+                    currentIndex: DbSpectrum.spectrumColorTheme
                     editable: false
                     model: [i18n("Green"), i18n("Green neon"), i18n("Mix"), i18n("Orange"), i18n("Yellow"), i18n("Blue"), i18n("Purple"), i18n("Grey")]// qmllint disable
                     onActivated: idx => {
-                        if (idx !== DB.Manager.spectrum.spectrumColorTheme)
-                            DB.Manager.spectrum.spectrumColorTheme = idx;
+                        if (idx !== DbSpectrum.spectrumColorTheme)
+                            DbSpectrum.spectrumColorTheme = idx;
                     }
                 }
 
@@ -316,12 +315,12 @@ KirigamiSettings.ConfigurationView {
 
                     text: i18n("Shape") // qmllint disable
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                    currentIndex: DB.Manager.spectrum.spectrumShape
+                    currentIndex: DbSpectrum.spectrumShape
                     editable: false
                     model: [i18n("Bars"), i18n("Lines"), i18n("Dots"), i18n("Area")]// qmllint disable
                     onActivated: idx => {
-                        if (idx !== DB.Manager.spectrum.spectrumShape)
-                            DB.Manager.spectrum.spectrumShape = idx;
+                        if (idx !== DbSpectrum.spectrumShape)
+                            DbSpectrum.spectrumShape = idx;
                     }
                 }
 
@@ -330,10 +329,10 @@ KirigamiSettings.ConfigurationView {
 
                     label: i18n("Dynamic scale") // qmllint disable
                     maximumLineCount: -1
-                    isChecked: DB.Manager.spectrum.dynamicYScale
+                    isChecked: DbSpectrum.dynamicYScale
                     onCheckedChanged: {
-                        if (isChecked !== DB.Manager.spectrum.dynamicYScale)
-                            DB.Manager.spectrum.dynamicYScale = isChecked;
+                        if (isChecked !== DbSpectrum.dynamicYScale)
+                            DbSpectrum.dynamicYScale = isChecked;
                     }
                 }
 
@@ -342,10 +341,10 @@ KirigamiSettings.ConfigurationView {
 
                     label: i18n("Logarithmic frequency axis") // qmllint disable
                     maximumLineCount: -1
-                    isChecked: DB.Manager.spectrum.logarithimicHorizontalAxis
+                    isChecked: DbSpectrum.logarithimicHorizontalAxis
                     onCheckedChanged: {
-                        if (isChecked !== DB.Manager.spectrum.logarithimicHorizontalAxis)
-                            DB.Manager.spectrum.logarithimicHorizontalAxis = isChecked;
+                        if (isChecked !== DbSpectrum.logarithimicHorizontalAxis)
+                            DbSpectrum.logarithimicHorizontalAxis = isChecked;
                     }
                 }
 
@@ -356,11 +355,11 @@ KirigamiSettings.ConfigurationView {
                     maximumLineCount: -1
                     from: 2
                     to: 2048
-                    value: DB.Manager.spectrum.nPoints
+                    value: DbSpectrum.nPoints
                     decimals: 0
                     stepSize: 1
                     onValueModified: v => {
-                        DB.Manager.spectrum.nPoints = v;
+                        DbSpectrum.nPoints = v;
                     }
                 }
 
@@ -371,12 +370,12 @@ KirigamiSettings.ConfigurationView {
                     maximumLineCount: -1
                     from: 100
                     to: 1000
-                    value: DB.Manager.spectrum.height
+                    value: DbSpectrum.height
                     decimals: 0
                     stepSize: 1
                     unit: i18n("px")
                     onValueModified: v => {
-                        DB.Manager.spectrum.height = v;
+                        DbSpectrum.height = v;
                     }
                 }
             }
@@ -391,14 +390,14 @@ KirigamiSettings.ConfigurationView {
 
                     label: i18n("Minimum") // qmllint disable
                     maximumLineCount: -1
-                    from: DB.Manager.spectrum.getMinValue("minimumFrequency")
-                    to: DB.Manager.spectrum.getMaxValue("minimumFrequency")
-                    value: DB.Manager.spectrum.minimumFrequency
+                    from: DbSpectrum.getMinValue("minimumFrequency")
+                    to: DbSpectrum.getMaxValue("minimumFrequency")
+                    value: DbSpectrum.minimumFrequency
                     decimals: 0
                     stepSize: 10
                     unit: i18n("Hz")
                     onValueModified: v => {
-                        DB.Manager.spectrum.minimumFrequency = v;
+                        DbSpectrum.minimumFrequency = v;
                     }
                 }
 
@@ -407,14 +406,14 @@ KirigamiSettings.ConfigurationView {
 
                     label: i18n("Maximum") // qmllint disable
                     maximumLineCount: -1
-                    from: DB.Manager.spectrum.getMinValue("maximumFrequency")
-                    to: DB.Manager.spectrum.getMaxValue("maximumFrequency")
-                    value: DB.Manager.spectrum.maximumFrequency
+                    from: DbSpectrum.getMinValue("maximumFrequency")
+                    to: DbSpectrum.getMaxValue("maximumFrequency")
+                    value: DbSpectrum.maximumFrequency
                     decimals: 0
                     stepSize: 10
                     unit: i18n("Hz")
                     onValueModified: v => {
-                        DB.Manager.spectrum.maximumFrequency = v;
+                        DbSpectrum.maximumFrequency = v;
                     }
                 }
             }
@@ -429,27 +428,27 @@ KirigamiSettings.ConfigurationView {
                 EeSpinBox {
                     label: i18n("Database autosave interval") // qmllint disable
                     maximumLineCount: -1
-                    from: DB.Manager.main.getMinValue("databaseAutosaveInterval")
-                    to: DB.Manager.main.getMaxValue("databaseAutosaveInterval")
-                    value: DB.Manager.main.databaseAutosaveInterval
+                    from: DbMain.getMinValue("databaseAutosaveInterval")
+                    to: DbMain.getMaxValue("databaseAutosaveInterval")
+                    value: DbMain.databaseAutosaveInterval
                     decimals: 0
                     stepSize: 1
                     unit: i18n("ms")
                     onValueModified: v => {
-                        DB.Manager.main.databaseAutosaveInterval = v;
+                        DbMain.databaseAutosaveInterval = v;
                     }
                 }
 
                 EeSpinBox {
                     label: i18n("Most used presets") // qmllint disable
                     maximumLineCount: -1
-                    from: DB.Manager.main.getMinValue("maxMostUsedPresets")
-                    to: DB.Manager.main.getMaxValue("maxMostUsedPresets")
-                    value: DB.Manager.main.maxMostUsedPresets
+                    from: DbMain.getMinValue("maxMostUsedPresets")
+                    to: DbMain.getMaxValue("maxMostUsedPresets")
+                    value: DbMain.maxMostUsedPresets
                     decimals: 0
                     stepSize: 1
                     onValueModified: v => {
-                        DB.Manager.main.maxMostUsedPresets = v;
+                        DbMain.maxMostUsedPresets = v;
                     }
                 }
             }
@@ -467,10 +466,10 @@ KirigamiSettings.ConfigurationView {
                     label: i18n("Force KDE's Breeze theme when Easy Effects starts") // qmllint disable
                     subtitle: i18n("It is necessary to restart the service for changes in this setting to take effect.") // qmllint disable
                     maximumLineCount: -1
-                    isChecked: DB.Manager.main.forceBreezeTheme
+                    isChecked: DbMain.forceBreezeTheme
                     onCheckedChanged: {
-                        if (isChecked !== DB.Manager.main.forceBreezeTheme) {
-                            DB.Manager.main.forceBreezeTheme = isChecked;
+                        if (isChecked !== DbMain.forceBreezeTheme) {
+                            DbMain.forceBreezeTheme = isChecked;
                         }
                     }
                 }
@@ -481,10 +480,10 @@ KirigamiSettings.ConfigurationView {
                     label: i18n("Reduce effects list controls") // qmllint disable
                     subtitle: i18n("Action buttons in the effects list are moved inside a context menu for a more compact view.") // qmllint disable
                     maximumLineCount: -1
-                    isChecked: DB.Manager.main.reducePluginsListControls
+                    isChecked: DbMain.reducePluginsListControls
                     onCheckedChanged: {
-                        if (isChecked !== DB.Manager.main.reducePluginsListControls) {
-                            DB.Manager.main.reducePluginsListControls = isChecked;
+                        if (isChecked !== DbMain.reducePluginsListControls) {
+                            DbMain.reducePluginsListControls = isChecked;
                         }
                     }
                 }
@@ -501,14 +500,14 @@ KirigamiSettings.ConfigurationView {
                     label: i18n("Autoload delay") // qmllint disable
                     subtitle: i18n("Delay between receiving a new device route and the call to autoload a preset.") // qmllint disable
                     maximumLineCount: -1
-                    from: DB.Manager.main.getMinValue("presetsAutoloadInterval")
-                    to: DB.Manager.main.getMaxValue("presetsAutoloadInterval")
-                    value: DB.Manager.main.presetsAutoloadInterval
+                    from: DbMain.getMinValue("presetsAutoloadInterval")
+                    to: DbMain.getMaxValue("presetsAutoloadInterval")
+                    value: DbMain.presetsAutoloadInterval
                     decimals: 0
                     stepSize: 1
                     unit: "ms"
                     onValueModified: v => {
-                        DB.Manager.main.presetsAutoloadInterval = v;
+                        DbMain.presetsAutoloadInterval = v;
                     }
                 }
             }
@@ -526,10 +525,10 @@ KirigamiSettings.ConfigurationView {
                     label: i18n("Global shortcuts") // qmllint disable
                     subtitle: i18n("Enables support for XDG global shortcuts.") // qmllint disable
                     maximumLineCount: -1
-                    isChecked: DB.Manager.main.xdgGlobalShortcuts
+                    isChecked: DbMain.xdgGlobalShortcuts
                     onCheckedChanged: {
-                        if (isChecked !== DB.Manager.main.xdgGlobalShortcuts)
-                            DB.Manager.main.xdgGlobalShortcuts = isChecked;
+                        if (isChecked !== DbMain.xdgGlobalShortcuts)
+                            DbMain.xdgGlobalShortcuts = isChecked;
                     }
                 }
 
@@ -539,10 +538,10 @@ KirigamiSettings.ConfigurationView {
                     label: i18n("Native window of effects") // qmllint disable
                     subtitle: i18n("Allows the native user interface of effects to be shown/hidden.") // qmllint disable
                     maximumLineCount: -1
-                    isChecked: DB.Manager.main.showNativePluginUi
+                    isChecked: DbMain.showNativePluginUi
                     onCheckedChanged: {
-                        if (isChecked !== DB.Manager.main.showNativePluginUi)
-                            DB.Manager.main.showNativePluginUi = isChecked;
+                        if (isChecked !== DbMain.showNativePluginUi)
+                            DbMain.showNativePluginUi = isChecked;
                     }
                 }
 
@@ -554,13 +553,13 @@ KirigamiSettings.ConfigurationView {
                     maximumLineCount: -1
                     from: 1
                     to: 60
-                    value: DB.Manager.main.lv2uiUpdateFrequency
+                    value: DbMain.lv2uiUpdateFrequency
                     decimals: 0
                     stepSize: 1
                     unit: i18n("Hz")
-                    enabled: DB.Manager.main.showNativePluginUi
+                    enabled: DbMain.showNativePluginUi
                     onValueModified: v => {
-                        DB.Manager.main.lv2uiUpdateFrequency = v;
+                        DbMain.lv2uiUpdateFrequency = v;
                     }
                 }
             }

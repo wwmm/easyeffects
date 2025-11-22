@@ -148,15 +148,15 @@ struct UiState {
 
 static void initGlobalBypass(StreamInputEffects& sie, StreamOutputEffects& soe) {
   auto update_bypass_state = [&]() {
-    soe.set_bypass(db::Main::bypass());
-    sie.set_bypass(db::Main::bypass());
+    soe.set_bypass(DbMain::bypass());
+    sie.set_bypass(DbMain::bypass());
 
-    util::info((db::Main::bypass() ? "Enabling global bypass" : "Disabling global bypass"));
+    util::info((DbMain::bypass() ? "Enabling global bypass" : "Disabling global bypass"));
   };
 
   update_bypass_state();
 
-  QObject::connect(db::Main::self(), &db::Main::bypassChanged, update_bypass_state);
+  QObject::connect(DbMain::self(), &DbMain::bypassChanged, update_bypass_state);
 }
 
 static void initGlobalShortcuts(GlobalShortcuts* shortcuts) {
@@ -167,7 +167,7 @@ static void initGlobalShortcuts(GlobalShortcuts* shortcuts) {
     const auto desktop = qEnvironmentVariable("XDG_CURRENT_DESKTOP");
 
     if (session == "KDE" || desktop == "KDE") {
-      if (!db::Main::xdgGlobalShortcutsBound()) {
+      if (!DbMain::xdgGlobalShortcutsBound()) {
         shortcuts->bind_shortcuts();
       }
     } else {
@@ -177,16 +177,16 @@ static void initGlobalShortcuts(GlobalShortcuts* shortcuts) {
   };
 
   QObject::connect(shortcuts, &GlobalShortcuts::onBindShortcuts, [bind]() {
-    if (db::Main::xdgGlobalShortcuts()) {
+    if (DbMain::xdgGlobalShortcuts()) {
       bind();
     }
   });
 
-  QObject::connect(db::Main::self(), &db::Main::xdgGlobalShortcutsChanged, [bind]() {
-    if (db::Main::xdgGlobalShortcuts()) {
+  QObject::connect(DbMain::self(), &DbMain::xdgGlobalShortcutsChanged, [bind]() {
+    if (DbMain::xdgGlobalShortcuts()) {
       bind();
     } else {
-      db::Main::setXdgGlobalShortcutsBound(false);
+      DbMain::setXdgGlobalShortcutsBound(false);
     }
   });
 }
@@ -360,7 +360,7 @@ int main(int argc, char* argv[]) {
 
   // theme initialization
 
-  if (db::Main::forceBreezeTheme()) {
+  if (DbMain::forceBreezeTheme()) {
     QApplication::setStyle(QStringLiteral("breeze"));
   }
 

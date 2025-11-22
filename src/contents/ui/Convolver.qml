@@ -2,7 +2,6 @@ pragma ComponentBehavior: Bound
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
-import ee.database as DB
 import ee.presets as Presets
 import ee.tags.plugin.name as TagsPluginName // qmllint disable
 import org.kde.kirigami as Kirigami
@@ -320,8 +319,8 @@ Kirigami.ScrollablePage {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
                     seriesType: 1 // spline series
-                    colorScheme: DB.Manager.spectrum.spectrumColorScheme
-                    colorTheme: DB.Manager.spectrum.spectrumColorTheme
+                    colorScheme: DbSpectrum.spectrumColorScheme
+                    colorTheme: DbSpectrum.spectrumColorTheme
                     xUnit: i18n("s")
                     xAxisDecimals: 2
                     logarithimicHorizontalAxis: false
@@ -401,11 +400,11 @@ Kirigami.ScrollablePage {
                 value: convolverPage.pluginDB.irWidth
                 from: convolverPage.pluginDB.getMinValue("irWidth")
                 to: convolverPage.pluginDB.getMaxValue("irWidth")
-                decimals: 2
-                stepSize: 0.01
+                decimals: 0
+                stepSize: 1
                 unit: "%"
                 onValueModified: v => {
-                    convolverPage.pluginDB.irWidth = value;
+                    convolverPage.pluginDB.irWidth = v;
                 }
             }
 

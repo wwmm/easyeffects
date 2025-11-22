@@ -68,6 +68,7 @@ class DeepFilterNet : public PluginBase {
 
   std::unique_ptr<ladspa::LadspaWrapper> ladspa_wrapper;
 
+  bool ready = false;
   bool resample = false;
   bool resampler_ready = true;
 

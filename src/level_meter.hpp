@@ -25,7 +25,6 @@
 #include <sys/types.h>
 #include <span>
 #include <string>
-#include <thread>
 #include <vector>
 #include "easyeffects_db_level_meter.h"
 #include "pipeline_type.hpp"
@@ -82,8 +81,6 @@ class LevelMeter : public PluginBase {
 
   bool ebur128_ready = false;
 
-  uint old_rate = 0U;
-
   double momentary = 0.0;
   double shortterm = 0.0;
   double global = 0.0;
@@ -96,8 +93,6 @@ class LevelMeter : public PluginBase {
   std::vector<float> data;
 
   ebur128_state* ebur_state = nullptr;
-
-  std::vector<std::thread> mythreads;
 
   auto init_ebur128() -> bool;
 };

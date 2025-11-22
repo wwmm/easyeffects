@@ -2,7 +2,6 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 import "Common.js" as Common
-import ee.database as DB
 import org.kde.kirigami as Kirigami
 
 Control {
@@ -137,7 +136,7 @@ Control {
 
         property real value: control.clampedValue
 
-        interval: DB.Manager.main.levelMetersLabelTimer
+        interval: DbMain.levelMetersLabelTimer
         repeat: true
         running: control.visible
 

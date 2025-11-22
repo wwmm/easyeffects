@@ -5,7 +5,6 @@ import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Dialogs
 import QtQuick.Layouts
-import ee.database as DB
 import ee.tags.plugin.name as TagsPluginName// qmllint disable
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
@@ -282,7 +281,7 @@ Kirigami.ScrollablePage {
                         displayHint: Kirigami.DisplayHint.KeepVisible
                         text: i18n("Show native window") // qmllint disable
                         icon.name: "window-duplicate-symbolic"
-                        enabled: DB.Manager.main.showNativePluginUi
+                        enabled: DbMain.showNativePluginUi
                         checkable: true
                         checked: equalizerPage.pluginBackend ? equalizerPage.pluginBackend.hasNativeUi() : false
                         onTriggered: {

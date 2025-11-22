@@ -53,9 +53,9 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
   connect(
       pm, &pw::Manager::sourceAdded, this,
       [&](pw::NodeInfo node) {
-        if (node.name == db::StreamInputs::inputDevice()) {
-          if (db::Main::bypass()) {
-            db::Main::setBypass(false);
+        if (node.name == DbStreamInputs::inputDevice()) {
+          if (DbMain::bypass()) {
+            DbMain::setBypass(false);
 
             return;  // filter connected through update_bypass_state
           }
@@ -70,33 +70,33 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
   connect(
       pm, &pw::Manager::newDefaultSourceName, this,
       [](QString name) {
-        if (db::StreamInputs::useDefaultInputDevice() || db::StreamInputs::inputDevice().isEmpty()) {
-          db::StreamInputs::setInputDevice(name);
+        if (DbStreamInputs::useDefaultInputDevice() || DbStreamInputs::inputDevice().isEmpty()) {
+          DbStreamInputs::setInputDevice(name);
         }
       },
       Qt::QueuedConnection);
 
   connect(
-      db::StreamInputs::self(), &db::StreamInputs::useDefaultInputDeviceChanged, this,
+      DbStreamInputs::self(), &DbStreamInputs::useDefaultInputDeviceChanged, this,
       [&]() {
-        if (db::StreamInputs::useDefaultInputDevice()) {
-          db::StreamInputs::setInputDevice(pm->defaultInputDeviceName);
+        if (DbStreamInputs::useDefaultInputDevice()) {
+          DbStreamInputs::setInputDevice(pm->defaultInputDeviceName);
         }
       },
       Qt::QueuedConnection);
 
   connect(
-      db::StreamInputs::self(), &db::StreamInputs::inputDeviceChanged, this,
+      DbStreamInputs::self(), &DbStreamInputs::inputDeviceChanged, this,
       [&]() {
-        const auto name = db::StreamInputs::inputDevice();
+        const auto name = DbStreamInputs::inputDevice();
 
         if (name.isEmpty()) {
           return;
         }
 
         if (auto node = pm->model_nodes.get_node_by_name(name); node.serial != SPA_ID_INVALID) {
-          if (db::Main::bypass()) {
-            db::Main::setBypass(false);
+          if (DbMain::bypass()) {
+            DbMain::setBypass(false);
 
             return;  // filter connected through update_bypass_state
           }
@@ -109,10 +109,10 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
       Qt::QueuedConnection);
 
   connect(
-      db::StreamInputs::self(), &db::StreamInputs::pluginsChanged, this,
+      DbStreamInputs::self(), &DbStreamInputs::pluginsChanged, this,
       [&]() {
-        if (db::Main::bypass()) {
-          db::Main::setBypass(false);
+        if (DbMain::bypass()) {
+          DbMain::setBypass(false);
 
           return;  // filter connected through update_bypass_state
         }
@@ -128,35 +128,35 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
   connect(
       pm, &pw::Manager::sourceRouteChanged, this,
       [](pw::NodeInfo node) {
-        if (node.name == db::StreamInputs::inputDevice()) {
+        if (node.name == DbStreamInputs::inputDevice()) {
           presets::Manager::self().autoload(PipelineType::input, node.name, node.device_route_description);
         }
       },
       Qt::QueuedConnection);
 
   connect(
-      db::StreamInputs::self(), &db::StreamInputs::listenToMicChanged, this,
-      [&]() { set_listen_to_mic(db::StreamInputs::listenToMic()); }, Qt::QueuedConnection);
+      DbStreamInputs::self(), &DbStreamInputs::listenToMicChanged, this,
+      [&]() { set_listen_to_mic(DbStreamInputs::listenToMic()); }, Qt::QueuedConnection);
 
   auto* PULSE_SOURCE = std::getenv("PULSE_SOURCE");
 
   if (PULSE_SOURCE != nullptr && PULSE_SOURCE != tags::pipewire::ee_source_name) {
     auto node = pm->model_nodes.get_node_by_name(PULSE_SOURCE);
 
-    db::StreamInputs::setInputDevice(PULSE_SOURCE);
+    DbStreamInputs::setInputDevice(PULSE_SOURCE);
   }
 
-  if (db::StreamInputs::inputDevice().isEmpty()) {
-    db::StreamInputs::setInputDevice(pm->defaultInputDeviceName);
+  if (DbStreamInputs::inputDevice().isEmpty()) {
+    DbStreamInputs::setInputDevice(pm->defaultInputDeviceName);
   }
 
   connect_filters();
 
-  if (auto node = pm->model_nodes.get_node_by_name(db::StreamInputs::inputDevice()); node.serial != SPA_ID_INVALID) {
+  if (auto node = pm->model_nodes.get_node_by_name(DbStreamInputs::inputDevice()); node.serial != SPA_ID_INVALID) {
     presets::Manager::self().autoload(PipelineType::input, node.name, node.device_route_description);
   }
 
-  set_listen_to_mic(db::StreamInputs::listenToMic());
+  set_listen_to_mic(DbStreamInputs::listenToMic());
 }
 
 StreamInputEffects::~StreamInputEffects() {
@@ -196,10 +196,10 @@ void StreamInputEffects::on_link_changed(const pw::LinkInfo link_info) {
       connect_filters();
     };
   } else {
-    if (db::Main::inactivityTimerEnable()) {
+    if (DbMain::inactivityTimerEnable()) {
       // if the timer is enabled, wait for the timeout, then unlink plugin pipeline
 
-      QTimer::singleShot(db::Main::inactivityTimeout() * 1000, this, [&]() {
+      QTimer::singleShot(DbMain::inactivityTimeout() * 1000, this, [&]() {
         if (!apps_want_to_play() && !list_proxies.empty()) {
           util::debug("No app linked to our device wants to play. Unlinking our filters.");
 
@@ -219,22 +219,22 @@ void StreamInputEffects::on_link_changed(const pw::LinkInfo link_info) {
 void StreamInputEffects::connect_filters(const bool& bypass) {
   // checking if the output device exists
 
-  if (db::StreamInputs::inputDevice().isEmpty()) {
+  if (DbStreamInputs::inputDevice().isEmpty()) {
     util::debug("No input device set. Aborting the link");
 
     return;
   }
 
-  auto input_device = pm->model_nodes.get_node_by_name(db::StreamInputs::inputDevice());
+  auto input_device = pm->model_nodes.get_node_by_name(DbStreamInputs::inputDevice());
 
   if (input_device.serial == SPA_ID_INVALID) {
     util::debug(std::format("The input device {} is not available. Aborting the link...",
-                            db::StreamInputs::inputDevice().toStdString()));
+                            DbStreamInputs::inputDevice().toStdString()));
 
     return;
   }
 
-  const auto list = (bypass) ? QStringList() : db::StreamInputs::plugins();
+  const auto list = (bypass) ? QStringList() : DbStreamInputs::plugins();
 
   auto mic_linked = false;
 
@@ -299,7 +299,7 @@ void StreamInputEffects::connect_filters(const bool& bypass) {
 
       if (name.startsWith(tags::plugin_name::BaseName::echoCanceller)) {
         if (plugins[name]->connected_to_pw) {
-          auto output_device = pm->model_nodes.get_node_by_name(db::StreamOutputs::outputDevice());
+          auto output_device = pm->model_nodes.get_node_by_name(DbStreamOutputs::outputDevice());
 
           for (const auto& link : pm->link_nodes(output_device.id, plugins[name]->get_node_id(), true)) {
             list_proxies.push_back(link);
@@ -331,12 +331,21 @@ void StreamInputEffects::connect_filters(const bool& bypass) {
       util::warning(std::format("Link from node {} to node {} failed", prev_node_id, next_node_id));
     }
   }
+
+  /*
+   * The correct thing to do would be to check if at least one pair of filters are actually linked. But filtersLinked
+   * is used only to enable or disable qml frame animation. So let's keep the approach simple.
+   */
+
+  filtersLinked = true;
+
+  Q_EMIT filtersLinkedChanged();
 }
 
 void StreamInputEffects::disconnect_filters() {
   std::set<uint> link_id_list;
 
-  const auto selected_plugins_list = (bypass) ? QStringList() : db::StreamInputs::plugins();
+  const auto selected_plugins_list = (bypass) ? QStringList() : DbStreamInputs::plugins();
 
   for (const auto& plugin : plugins | std::views::values) {
     if (plugin == nullptr) {
@@ -374,6 +383,10 @@ void StreamInputEffects::disconnect_filters() {
   list_proxies.clear();
 
   remove_unused_filters();
+
+  filtersLinked = false;
+
+  Q_EMIT filtersLinkedChanged();
 }
 
 void StreamInputEffects::set_bypass(const bool& state) {
@@ -386,8 +399,8 @@ void StreamInputEffects::set_bypass(const bool& state) {
 
 void StreamInputEffects::set_listen_to_mic(const bool& state) {
   if (state) {
-    auto output_device = !db::StreamInputs::listenToMicIncludesOutputEffects()
-                             ? pm->model_nodes.get_node_by_name(db::StreamOutputs::outputDevice())
+    auto output_device = !DbStreamInputs::listenToMicIncludesOutputEffects()
+                             ? pm->model_nodes.get_node_by_name(DbStreamOutputs::outputDevice())
                              : pm->ee_sink_node;
 
     for (const auto& link : pm->link_nodes(pm->ee_source_node.id, output_device.id, false, false)) {

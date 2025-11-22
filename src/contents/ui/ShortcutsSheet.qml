@@ -1,7 +1,6 @@
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
-import ee.database as DB
 import org.kde.kirigami as Kirigami
 
 Kirigami.OverlaySheet {
@@ -268,7 +267,7 @@ Kirigami.OverlaySheet {
             GridLayout {
                 columns: 2
                 columnSpacing: Kirigami.Units.gridUnit
-                enabled: DB.Manager.main.xdgGlobalShortcuts
+                enabled: DbMain.xdgGlobalShortcuts
 
                 RowLayout {
                     Layout.alignment: Qt.AlignRight

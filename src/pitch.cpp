@@ -102,23 +102,25 @@ void Pitch::reset() {
 }
 
 void Pitch::setup() {
+  std::scoped_lock<std::mutex> lock(data_mutex);
+
   soundtouch_ready = false;
 
-  latency_n_frames = 0U;
-
-  if (data.size() != static_cast<size_t>(n_samples) * 2) {
-    data.resize(2U * static_cast<size_t>(n_samples));
-  }
-
-  deque_out_L.resize(0U);
-  deque_out_R.resize(0U);
-
   QMetaObject::invokeMethod(
-      this,
+      baseWorker,
       [this] {
         if (soundtouch_ready) {
           return;
         }
+
+        latency_n_frames = 0U;
+
+        if (data.size() != static_cast<size_t>(n_samples) * 2) {
+          data.resize(2U * static_cast<size_t>(n_samples));
+        }
+
+        deque_out_L.resize(0U);
+        deque_out_R.resize(0U);
 
         init_soundtouch();
 
@@ -337,24 +339,7 @@ auto Pitch::get_latency_seconds() -> float {
 void Pitch::resetHistory() {
   // NOLINTBEGIN(clang-analyzer-cplusplus.NewDeleteLeaks)
 
-  QMetaObject::invokeMethod(
-      this,
-      [this] {
-        data_mutex.lock();
-
-        soundtouch_ready = false;
-
-        data_mutex.unlock();
-
-        init_soundtouch();
-
-        data_mutex.lock();
-
-        soundtouch_ready = true;
-
-        data_mutex.unlock();
-      },
-      Qt::QueuedConnection);
+  QMetaObject::invokeMethod(baseWorker, [this] { setup(); }, Qt::QueuedConnection);
 
   // NOLINTEND(clang-analyzer-cplusplus.NewDeleteLeaks)
 }

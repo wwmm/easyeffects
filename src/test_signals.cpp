@@ -223,24 +223,23 @@ TestSignals::TestSignals(pw::Manager* pipe_manager) : pm(pipe_manager), random_g
 
   pm->sync_wait_unlock();
 
-  signal_type = static_cast<TestSignalType>(db::TestSignals::signalType());
+  signal_type = static_cast<TestSignalType>(DbTestSignals::signalType());
 
-  set_frequency(db::TestSignals::frequency());
+  set_frequency(DbTestSignals::frequency());
 
-  set_state(db::TestSignals::enable());
+  set_state(DbTestSignals::enable());
 
-  set_channel(db::TestSignals::channels());
+  set_channel(DbTestSignals::channels());
 
-  connect(db::TestSignals::self(), &db::TestSignals::enableChanged, [this]() { set_state(db::TestSignals::enable()); });
+  connect(DbTestSignals::self(), &DbTestSignals::enableChanged, [this]() { set_state(DbTestSignals::enable()); });
 
-  connect(db::TestSignals::self(), &db::TestSignals::frequencyChanged,
-          [this]() { set_frequency(db::TestSignals::frequency()); });
+  connect(DbTestSignals::self(), &DbTestSignals::frequencyChanged,
+          [this]() { set_frequency(DbTestSignals::frequency()); });
 
-  connect(db::TestSignals::self(), &db::TestSignals::channelsChanged,
-          [this]() { set_channel(db::TestSignals::channels()); });
+  connect(DbTestSignals::self(), &DbTestSignals::channelsChanged, [this]() { set_channel(DbTestSignals::channels()); });
 
-  connect(db::TestSignals::self(), &db::TestSignals::signalTypeChanged,
-          [this]() { signal_type = static_cast<TestSignalType>(db::TestSignals::signalType()); });
+  connect(DbTestSignals::self(), &DbTestSignals::signalTypeChanged,
+          [this]() { signal_type = static_cast<TestSignalType>(DbTestSignals::signalType()); });
 }
 
 TestSignals::~TestSignals() {

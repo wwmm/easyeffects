@@ -8,3 +8,5 @@ Notifiers=true
 DefaultValueGetters=true
 Singleton=false
 GenerateProperties=true
+QmlUncreatable=true
+QmlRegistration=true

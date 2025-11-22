@@ -1,7 +1,6 @@
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
-import ee.database as DB
 import org.kde.kirigami as Kirigami
 
 //The ItemDelegate must be inside a Item for Kirigami.ListItemDragHandle to work.
@@ -84,7 +83,7 @@ Item {
 
             Controls.Label {
                 Layout.fillWidth: true
-                text: DB.Manager.main.collapsePluginsList === false ? delegateItem.translatedName : delegateItem.translatedName.charAt(0)
+                text: DbMain.collapsePluginsList === false ? delegateItem.translatedName : delegateItem.translatedName.charAt(0)
                 color: bypass ? Kirigami.Theme.disabledTextColor : Kirigami.Theme.textColor
                 elide: Text.ElideRight
             }
@@ -93,13 +92,13 @@ Item {
                 id: pluginActionButtonControls
 
                 alignment: Qt.AlignRight
-                visible: !DB.Manager.main.collapsePluginsList
-                Layout.preferredWidth: !DB.Manager.main.reducePluginsListControls ? maximumContentWidth + Kirigami.Units.smallSpacing : -1
+                visible: !DbMain.collapsePluginsList
+                Layout.preferredWidth: !DbMain.reducePluginsListControls ? maximumContentWidth + Kirigami.Units.smallSpacing : -1
                 actions: [
                     Kirigami.Action {
                         text: i18n("Toggle this effect") // qmllint disable
                         icon.name: "system-shutdown-symbolic"
-                        displayHint: DB.Manager.main.reducePluginsListControls ? Kirigami.DisplayHint.AlwaysHide : (Kirigami.DisplayHint.IconOnly | Kirigami.DisplayHint.KeepVisible)
+                        displayHint: DbMain.reducePluginsListControls ? Kirigami.DisplayHint.AlwaysHide : (Kirigami.DisplayHint.IconOnly | Kirigami.DisplayHint.KeepVisible)
                         checkable: true
                         checked: !bypass
                         onTriggered: pluginRowItem.toggledEffect(checked)
@@ -107,7 +106,7 @@ Item {
                     Kirigami.Action {
                         text: i18n("Remove this effect") // qmllint disable
                         icon.name: "delete"
-                        displayHint: DB.Manager.main.reducePluginsListControls ? Kirigami.DisplayHint.AlwaysHide : (Kirigami.DisplayHint.IconOnly | Kirigami.DisplayHint.KeepVisible)
+                        displayHint: DbMain.reducePluginsListControls ? Kirigami.DisplayHint.AlwaysHide : (Kirigami.DisplayHint.IconOnly | Kirigami.DisplayHint.KeepVisible)
                         onTriggered: pluginRowItem.removedEffect()
                     }
                 ]
@@ -116,7 +115,7 @@ Item {
             Kirigami.ListItemDragHandle {
                 listItem: listItemDelegate
                 listView: delegateItem.listView
-                visible: !DB.Manager.main.collapsePluginsList
+                visible: !DbMain.collapsePluginsList
                 onMoveRequested: (oldIndex, newIndex) => {
                     if (oldIndex === newIndex)
                         return;

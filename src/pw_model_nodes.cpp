@@ -132,9 +132,9 @@ Nodes::Nodes(QObject* parent)
   }
 
   connect(
-      db::Manager::self().streamOutputs, &db::StreamOutputs::blocklistChanged, this,
+      db::Manager::self().streamOutputs, &DbStreamOutputs::blocklistChanged, this,
       [this]() {
-        const auto blocklist = db::StreamOutputs::blocklist();
+        const auto blocklist = DbStreamOutputs::blocklist();
 
         for (qsizetype n = 0; n < list.size(); n++) {
           if (list[n].media_class != tags::pipewire::media_class::output_stream) {
@@ -149,7 +149,7 @@ Nodes::Nodes(QObject* parent)
           } else {
             update_field(n, Roles::IsBlocklisted, false);
 
-            if (db::Main::processAllOutputs()) {
+            if (DbMain::processAllOutputs()) {
               pw::Manager::self().connectStreamOutput(list[n].id);
             }
           }
@@ -158,9 +158,9 @@ Nodes::Nodes(QObject* parent)
       Qt::QueuedConnection);
 
   connect(
-      db::Manager::self().streamInputs, &db::StreamInputs::blocklistChanged, this,
+      db::Manager::self().streamInputs, &DbStreamInputs::blocklistChanged, this,
       [this]() {
-        const auto blocklist = db::StreamInputs::blocklist();
+        const auto blocklist = DbStreamInputs::blocklist();
 
         for (qsizetype n = 0; n < list.size(); n++) {
           if (list[n].media_class != tags::pipewire::media_class::input_stream) {
@@ -175,7 +175,7 @@ Nodes::Nodes(QObject* parent)
           } else {
             update_field(n, Roles::IsBlocklisted, false);
 
-            if (db::Main::processAllInputs()) {
+            if (DbMain::processAllInputs()) {
               pw::Manager::self().connectStreamInput(list[n].id);
             }
           }
@@ -307,24 +307,24 @@ bool Nodes::setData(const QModelIndex& index, const QVariant& value, int role) {
 
         if (it->is_blocklisted) {
           if (it->media_class == tags::pipewire::media_class::output_stream) {
-            auto blocklist = db::StreamOutputs::blocklist();
+            auto blocklist = DbStreamOutputs::blocklist();
 
             if (blocklist.indexOf(it->name) == -1) {
               blocklist.append(it->name);
-              db::StreamOutputs::setBlocklist(blocklist);
+              DbStreamOutputs::setBlocklist(blocklist);
             }
 
           } else if (it->media_class == tags::pipewire::media_class::input_stream) {
-            auto blocklist = db::StreamInputs::blocklist();
+            auto blocklist = DbStreamInputs::blocklist();
 
             if (blocklist.indexOf(it->name) == -1) {
               blocklist.append(it->name);
-              db::StreamInputs::setBlocklist(blocklist);
+              DbStreamInputs::setBlocklist(blocklist);
             }
           }
         } else {
           if (it->media_class == tags::pipewire::media_class::output_stream) {
-            auto blocklist = db::StreamOutputs::blocklist();
+            auto blocklist = DbStreamOutputs::blocklist();
 
             auto idx = blocklist.indexOf(it->name);
 
@@ -333,10 +333,10 @@ bool Nodes::setData(const QModelIndex& index, const QVariant& value, int role) {
             if (idx != -1) {
               blocklist.removeAt(idx);
 
-              db::StreamOutputs::setBlocklist(blocklist);
+              DbStreamOutputs::setBlocklist(blocklist);
             }
           } else if (it->media_class == tags::pipewire::media_class::input_stream) {
-            auto blocklist = db::StreamInputs::blocklist();
+            auto blocklist = DbStreamInputs::blocklist();
 
             auto idx = blocklist.indexOf(it->name);
 
@@ -345,7 +345,7 @@ bool Nodes::setData(const QModelIndex& index, const QVariant& value, int role) {
             if (idx != -1) {
               blocklist.removeAt(idx);
 
-              db::StreamInputs::setBlocklist(blocklist);
+              DbStreamInputs::setBlocklist(blocklist);
             }
           }
         }

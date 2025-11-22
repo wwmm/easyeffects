@@ -5,7 +5,6 @@ import QtQuick.Controls as Controls
 import QtQuick.Dialogs
 import QtQuick.Layouts
 import "Common.js" as Common
-import ee.database as DB
 import ee.presets as Presets
 import org.kde.kirigami as Kirigami
 
@@ -13,9 +12,9 @@ ColumnLayout {
     id: columnLayout
 
     readonly property int pipeline: {
-        if (DB.Manager.main.visiblePage === 0)
+        if (DbMain.visiblePage === 0)
             return 1;
-        else if (DB.Manager.main.visiblePage === 1)
+        else if (DbMain.visiblePage === 1)
             return 0;
         else
             return 1;
@@ -133,7 +132,7 @@ ColumnLayout {
         Kirigami.SearchField {
             id: search
 
-            readonly property var sortedListModel: DB.Manager.main.visiblePage === 0 ? Presets.SortedOutputListModel : Presets.SortedInputListModel
+            readonly property var sortedListModel: DbMain.visiblePage === 0 ? Presets.SortedOutputListModel : Presets.SortedInputListModel
 
             Layout.fillWidth: true
             placeholderText: i18n("Search") // qmllint disable
@@ -158,7 +157,7 @@ ColumnLayout {
             Layout.fillHeight: true
             clip: true
             reuseItems: true
-            model: DB.Manager.main.visiblePage === 0 ? Presets.SortedOutputListModel : Presets.SortedInputListModel
+            model: DbMain.visiblePage === 0 ? Presets.SortedOutputListModel : Presets.SortedInputListModel
             Controls.ScrollBar.vertical: listViewScrollBar
 
             Kirigami.PlaceholderMessage {

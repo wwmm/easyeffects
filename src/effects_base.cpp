@@ -24,6 +24,7 @@
 #include <qnamespace.h>
 #include <qobjectdefs.h>
 #include <qpoint.h>
+#include <qthread.h>
 #include <qtmetamacros.h>
 #include <qtypes.h>
 #include <spa/utils/defs.h>
@@ -74,7 +75,10 @@
 #include "util.hpp"
 
 EffectsBase::EffectsBase(pw::Manager* pipe_manager, PipelineType pipe_type)
-    : log_tag(pipe_type == PipelineType::output ? "soe: " : "sie: "), pm(pipe_manager), pipeline_type(pipe_type) {
+    : log_tag(pipe_type == PipelineType::output ? "soe: " : "sie: "),
+      pm(pipe_manager),
+      pipeline_type(pipe_type),
+      baseWorker(new EffectsBaseWorker) {
   using namespace std::string_literals;
 
   output_level = std::make_shared<OutputLevel>(log_tag, pm, pipeline_type, "0");
@@ -93,28 +97,39 @@ EffectsBase::EffectsBase(pw::Manager* pipe_manager, PipelineType pipe_type)
 
   switch (pipeline_type) {
     case PipelineType::input:
-      connect(db::StreamInputs::self(), &db::StreamInputs::pluginsChanged, [&]() { create_filters_if_necessary(); });
+      connect(DbStreamInputs::self(), &DbStreamInputs::pluginsChanged, [&]() { create_filters_if_necessary(); });
       break;
     case PipelineType::output:
-      connect(db::StreamOutputs::self(), &db::StreamOutputs::pluginsChanged, [&]() { create_filters_if_necessary(); });
+      connect(DbStreamOutputs::self(), &DbStreamOutputs::pluginsChanged, [&]() { create_filters_if_necessary(); });
       break;
   }
 
-  connect(db::Main::self(), &db::Main::lv2uiUpdateFrequencyChanged, [&]() {
-    auto v = db::Main::lv2uiUpdateFrequency();
+  connect(DbMain::self(), &DbMain::lv2uiUpdateFrequencyChanged, [&]() {
+    auto v = DbMain::lv2uiUpdateFrequency();
 
     for (auto& plugin : plugins | std::views::values) {
       plugin->set_native_ui_update_frequency(v);
     }
   });
+
+  // worker thread for the native ui and maybe also other things
+
+  baseWorker->moveToThread(&workerThread);
+
+  workerThread.start();
+
+  connect(&workerThread, &QThread::finished, baseWorker, &QObject::deleteLater);
 }
 
 EffectsBase::~EffectsBase() {
+  workerThread.quit();
+  workerThread.wait();
+
   util::debug("effects_base: destroyed");
 }
 
 void EffectsBase::create_filters_if_necessary() {
-  auto list = (pipeline_type == PipelineType::output ? db::StreamOutputs::plugins() : db::StreamInputs::plugins());
+  auto list = (pipeline_type == PipelineType::output ? DbStreamOutputs::plugins() : DbStreamInputs::plugins());
 
   if (list.empty()) {
     return;
@@ -201,7 +216,7 @@ void EffectsBase::create_filters_if_necessary() {
 }
 
 void EffectsBase::remove_unused_filters() {
-  auto list = (pipeline_type == PipelineType::output ? db::StreamOutputs::plugins() : db::StreamInputs::plugins());
+  auto list = (pipeline_type == PipelineType::output ? DbStreamOutputs::plugins() : DbStreamInputs::plugins());
 
   if (list.empty()) {
     plugins.clear();
@@ -319,13 +334,12 @@ QVariant EffectsBase::getPluginInstance(const QString& pluginName) {
 uint EffectsBase::getPipeLineRate() const {
   switch (pipeline_type) {
     case PipelineType::input:
-      if (auto node = pm->model_nodes.get_node_by_name(db::StreamInputs::inputDevice());
-          node.serial != SPA_ID_INVALID) {
+      if (auto node = pm->model_nodes.get_node_by_name(DbStreamInputs::inputDevice()); node.serial != SPA_ID_INVALID) {
         return node.rate * 0.001F;
       }
       return 0.0F;
     case PipelineType::output: {
-      if (auto node = pm->model_nodes.get_node_by_name(db::StreamOutputs::outputDevice());
+      if (auto node = pm->model_nodes.get_node_by_name(DbStreamOutputs::outputDevice());
           node.serial != SPA_ID_INVALID) {
         return node.rate * 0.001F;
       }
@@ -337,7 +351,7 @@ uint EffectsBase::getPipeLineRate() const {
 }
 
 uint EffectsBase::getPipeLineLatency() {
-  auto list = (pipeline_type == PipelineType::output ? db::StreamOutputs::plugins() : db::StreamInputs::plugins());
+  auto list = (pipeline_type == PipelineType::output ? DbStreamOutputs::plugins() : DbStreamInputs::plugins());
 
   auto v = 0.0F;
 
@@ -369,7 +383,7 @@ void EffectsBase::requestSpectrumData() {
   // NOLINTBEGIN(clang-analyzer-cplusplus.NewDeleteLeaks)
 
   QMetaObject::invokeMethod(
-      this,
+      baseWorker,
       [this] {
         auto [rate, list] = spectrum->compute_magnitudes();
 
@@ -385,8 +399,8 @@ void EffectsBase::requestSpectrumData() {
           frequencies[n] = 0.5F * static_cast<float>(rate) * static_cast<float>(n) / static_cast<float>(n_bands);
         }
 
-        const auto min_freq = static_cast<float>(db::Spectrum::minimumFrequency());
-        const auto max_freq = static_cast<float>(db::Spectrum::maximumFrequency());
+        const auto min_freq = static_cast<float>(DbSpectrum::minimumFrequency());
+        const auto max_freq = static_cast<float>(DbSpectrum::maximumFrequency());
 
         if (min_freq > (max_freq - 100.0F)) {
           return;
@@ -394,10 +408,10 @@ void EffectsBase::requestSpectrumData() {
 
         std::vector<float> x_axis;
 
-        if (db::Spectrum::logarithimicHorizontalAxis()) {
-          x_axis = util::logspace(min_freq, max_freq, db::Spectrum::nPoints());
+        if (DbSpectrum::logarithimicHorizontalAxis()) {
+          x_axis = util::logspace(min_freq, max_freq, DbSpectrum::nPoints());
         } else {
-          x_axis = util::linspace(min_freq, max_freq, db::Spectrum::nPoints());
+          x_axis = util::linspace(min_freq, max_freq, DbSpectrum::nPoints());
         }
 
         auto* acc = gsl_interp_accel_alloc();

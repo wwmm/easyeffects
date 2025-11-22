@@ -153,7 +153,7 @@ void Manager::prepare_filesystem_watchers() {
 
 void Manager::prepare_last_used_preset_key(const PipelineType& pipeline_type) {
   const auto preset_name =
-      pipeline_type == PipelineType::input ? db::Main::lastLoadedInputPreset() : db::Main::lastLoadedOutputPreset();
+      pipeline_type == PipelineType::input ? DbMain::lastLoadedInputPreset() : DbMain::lastLoadedOutputPreset();
 
   bool reset_key = true;
 
@@ -172,10 +172,10 @@ void Manager::prepare_last_used_preset_key(const PipelineType& pipeline_type) {
   if (reset_key) {
     switch (pipeline_type) {
       case PipelineType::input:
-        db::Main::setLastLoadedInputPreset(db::Main::defaultLastLoadedInputPresetValue());
+        DbMain::setLastLoadedInputPreset(DbMain::defaultLastLoadedInputPresetValue());
         break;
       case PipelineType::output:
-        db::Main::setLastLoadedOutputPreset(db::Main::defaultLastLoadedOutputPresetValue());
+        DbMain::setLastLoadedOutputPreset(DbMain::defaultLastLoadedOutputPresetValue());
         break;
     }
   }
@@ -194,7 +194,7 @@ void Manager::save_blocklist(const PipelineType& pipeline_type, nlohmann::json& 
 
   switch (pipeline_type) {
     case PipelineType::output: {
-      const auto list = db::StreamOutputs::blocklist();
+      const auto list = DbStreamOutputs::blocklist();
 
       for (const auto& l : list) {
         blocklist.push_back(l.toStdString());
@@ -205,7 +205,7 @@ void Manager::save_blocklist(const PipelineType& pipeline_type, nlohmann::json& 
       break;
     }
     case PipelineType::input: {
-      const auto list = db::StreamInputs::blocklist();
+      const auto list = DbStreamInputs::blocklist();
 
       for (const auto& l : list) {
         blocklist.push_back(l.toStdString());
@@ -232,9 +232,9 @@ auto Manager::load_blocklist(const PipelineType& pipeline_type, const nlohmann::
           new_list.append(QString::fromStdString(app));
         }
 
-        db::StreamInputs::setBlocklist(new_list);
+        DbStreamInputs::setBlocklist(new_list);
       } catch (const nlohmann::json::exception& e) {
-        db::StreamInputs::setBlocklist(QStringList{});
+        DbStreamInputs::setBlocklist(QStringList{});
 
         notify_error(PresetError::blocklist_format);
 
@@ -242,7 +242,7 @@ auto Manager::load_blocklist(const PipelineType& pipeline_type, const nlohmann::
 
         return false;
       } catch (...) {
-        db::StreamInputs::setBlocklist(QStringList{});
+        DbStreamInputs::setBlocklist(QStringList{});
 
         notify_error(PresetError::blocklist_generic);
 
@@ -261,9 +261,9 @@ auto Manager::load_blocklist(const PipelineType& pipeline_type, const nlohmann::
           new_list.append(QString::fromStdString(app));
         }
 
-        db::StreamOutputs::setBlocklist(new_list);
+        DbStreamOutputs::setBlocklist(new_list);
       } catch (const nlohmann::json::exception& e) {
-        db::StreamOutputs::setBlocklist(QStringList{});
+        DbStreamOutputs::setBlocklist(QStringList{});
 
         notify_error(PresetError::blocklist_format);
 
@@ -271,7 +271,7 @@ auto Manager::load_blocklist(const PipelineType& pipeline_type, const nlohmann::
 
         return false;
       } catch (...) {
-        db::StreamOutputs::setBlocklist(QStringList{});
+        DbStreamOutputs::setBlocklist(QStringList{});
 
         notify_error(PresetError::blocklist_generic);
 
@@ -299,7 +299,7 @@ bool Manager::savePresetFile(const PipelineType& pipeline_type, const QString& n
 
   switch (pipeline_type) {
     case PipelineType::output: {
-      const auto plugins = db::StreamOutputs::plugins();
+      const auto plugins = DbStreamOutputs::plugins();
 
       std::vector<std::string> list;
 
@@ -319,7 +319,7 @@ bool Manager::savePresetFile(const PipelineType& pipeline_type, const QString& n
       break;
     }
     case PipelineType::input: {
-      const auto plugins = db::StreamInputs::plugins();
+      const auto plugins = DbStreamInputs::plugins();
 
       std::vector<std::string> list;
 
@@ -456,10 +456,10 @@ auto Manager::read_effects_pipeline_from_preset(const PipelineType& pipeline_typ
 
   switch (pipeline_type) {
     case PipelineType::input:
-      db::StreamInputs::setPlugins(new_list);
+      DbStreamInputs::setPlugins(new_list);
       break;
     case PipelineType::output:
-      db::StreamOutputs::setPlugins(new_list);
+      DbStreamOutputs::setPlugins(new_list);
       break;
   }
 
@@ -690,19 +690,19 @@ void Manager::set_last_preset_keys(const PipelineType& pipeline_type,
   if (package_name.isEmpty()) {
     switch (pipeline_type) {
       case PipelineType::input:
-        db::Main::setLastLoadedInputCommunityPackage(db::Main::defaultLastLoadedInputCommunityPackageValue());
+        DbMain::setLastLoadedInputCommunityPackage(DbMain::defaultLastLoadedInputCommunityPackageValue());
         break;
       case PipelineType::output:
-        db::Main::setLastLoadedOutputCommunityPackage(db::Main::defaultLastLoadedOutputCommunityPackageValue());
+        DbMain::setLastLoadedOutputCommunityPackage(DbMain::defaultLastLoadedOutputCommunityPackageValue());
         break;
     }
   } else {
     switch (pipeline_type) {
       case PipelineType::input:
-        db::Main::setLastLoadedInputCommunityPackage(package_name);
+        DbMain::setLastLoadedInputCommunityPackage(package_name);
         break;
       case PipelineType::output:
-        db::Main::setLastLoadedOutputCommunityPackage(package_name);
+        DbMain::setLastLoadedOutputCommunityPackage(package_name);
         break;
     }
   }
@@ -710,19 +710,19 @@ void Manager::set_last_preset_keys(const PipelineType& pipeline_type,
   if (preset_name.isEmpty()) {
     switch (pipeline_type) {
       case PipelineType::input:
-        db::Main::setLastLoadedInputPreset(db::Main::defaultLastLoadedInputPresetValue());
+        DbMain::setLastLoadedInputPreset(DbMain::defaultLastLoadedInputPresetValue());
         break;
       case PipelineType::output:
-        db::Main::setLastLoadedOutputPreset(db::Main::defaultLastLoadedOutputPresetValue());
+        DbMain::setLastLoadedOutputPreset(DbMain::defaultLastLoadedOutputPresetValue());
         break;
     }
   } else {
     switch (pipeline_type) {
       case PipelineType::input:
-        db::Main::setLastLoadedInputPreset(preset_name);
+        DbMain::setLastLoadedInputPreset(preset_name);
         break;
       case PipelineType::output:
-        db::Main::setLastLoadedOutputPreset(preset_name);
+        DbMain::setLastLoadedOutputPreset(preset_name);
         break;
     }
   }
@@ -875,7 +875,7 @@ void Manager::update_used_presets_list(const PipelineType& pipeline_type, const 
   QList<QString> names;
   QList<int> count_list;
 
-  names = (pipeline_type == PipelineType::input) ? db::StreamInputs::usedPresets() : db::StreamOutputs::usedPresets();
+  names = (pipeline_type == PipelineType::input) ? DbStreamInputs::usedPresets() : DbStreamOutputs::usedPresets();
 
   // removing from the list presets that are not installed anymore
 
@@ -910,9 +910,9 @@ void Manager::update_used_presets_list(const PipelineType& pipeline_type, const 
   }
 
   if (pipeline_type == PipelineType::input) {
-    db::StreamInputs::setUsedPresets(names);
+    DbStreamInputs::setUsedPresets(names);
   } else {
-    db::StreamOutputs::setUsedPresets(names);
+    DbStreamOutputs::setUsedPresets(names);
   }
 
   std::multimap<int, QString> usageMap;
@@ -934,14 +934,14 @@ void Manager::update_used_presets_list(const PipelineType& pipeline_type, const 
   }
 
   if (sortedList.size() >
-      db::Main::maxMostUsedPresets()) {  // We can't have many entries in the tray menu. There is no space for that.
-    sortedList.resize(db::Main::maxMostUsedPresets());
+      DbMain::maxMostUsedPresets()) {  // We can't have many entries in the tray menu. There is no space for that.
+    sortedList.resize(DbMain::maxMostUsedPresets());
   }
 
   if (pipeline_type == PipelineType::input) {
-    db::StreamInputs::setMostUsedPresets(sortedList);
+    DbStreamInputs::setMostUsedPresets(sortedList);
   } else {
-    db::StreamOutputs::setMostUsedPresets(sortedList);
+    DbStreamOutputs::setMostUsedPresets(sortedList);
   }
 }
 
