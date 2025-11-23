@@ -70,7 +70,7 @@ qt_add_qml_module(easyeffects
         contents/ui/PluginNotAvailable.qml
         contents/ui/PreferencesSheet.qml
         contents/ui/LspPreMixSheet.qml
-        contents/ui/PresetsSheet.qml
+        contents/ui/PresetsDialog.qml
         contents/ui/PresetsAutoloadingPage.qml
         contents/ui/PresetsLocalPage.qml
         contents/ui/PresetsCommunityPage.qml

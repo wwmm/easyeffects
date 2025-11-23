@@ -251,12 +251,14 @@ Manager::Manager()
       }
 
       for (auto& node : nodes) {
-        node.device_route_name = device.input_route_name;
-        node.device_route_description = device.input_route_description;
+        if (node.media_class == tags::pipewire::media_class::source) {
+          node.device_route_name = device.input_route_name;
+          node.device_route_description = device.input_route_description;
 
-        model_nodes.update_info(node);
+          model_nodes.update_info(node);
 
-        Q_EMIT sourceRouteChanged(node);
+          Q_EMIT sourceRouteChanged(node);
+        }
       }
     });
   });
@@ -271,12 +273,14 @@ Manager::Manager()
       }
 
       for (auto& node : nodes) {
-        node.device_route_name = device.output_route_name;
-        node.device_route_description = device.output_route_description;
+        if (node.media_class == tags::pipewire::media_class::sink) {
+          node.device_route_name = device.output_route_name;
+          node.device_route_description = device.output_route_description;
 
-        model_nodes.update_info(node);
+          model_nodes.update_info(node);
 
-        Q_EMIT sinkRouteChanged(node);
+          Q_EMIT sinkRouteChanged(node);
+        }
       }
     });
   });

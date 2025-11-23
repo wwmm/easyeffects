@@ -8,7 +8,7 @@ import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.components as Components
 import org.kde.kirigamiaddons.formcard as FormCard
 
-Kirigami.OverlaySheet {
+Kirigami.Dialog {
     id: control
 
     readonly property string lastLoadedPresetName: {
@@ -29,9 +29,11 @@ Kirigami.OverlaySheet {
     parent: applicationWindow().overlay// qmllint disable
     closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutsideParent
     focus: true
-    y: 0
-    implicitWidth: Math.max(appWindow.width * 0.5, Kirigami.Units.gridUnit * 40)
-    implicitHeight: appWindow.maxOverlayHeight // qmllint disable
+    modal: true
+    implicitWidth: Math.min(Kirigami.Units.gridUnit * 30, appWindow.width * 0.8)// qmllint disable
+    implicitHeight: Math.min(Kirigami.Units.gridUnit * 40, Math.round(Controls.ApplicationWindow.window.height * 0.8))
+    bottomPadding: 1
+    anchors.centerIn: parent
 
     onAboutToShow: {
         pageLoader.active = true;
@@ -61,11 +63,17 @@ Kirigami.OverlaySheet {
         }
     }
 
-    header: RowLayout {
+    header: Item {
+        width: parent.width
+        height: segmentedButton.height + 2 * Kirigami.Units.smallSpacing
+
         Components.SegmentedButton {
             id: segmentedButton
 
-            Layout.alignment: Qt.AlignHCenter
+            anchors {
+                centerIn: parent
+                margins: Kirigami.Units.smallSpacing
+            }
 
             readonly property bool hasEnoughWidth: appWindow.width >= Kirigami.Units.gridUnit * 40
 
@@ -98,6 +106,19 @@ Kirigami.OverlaySheet {
                 }
             ]
         }
+
+        Controls.ToolButton {
+            text: i18nc("@action:button", "Close")
+            icon.name: 'dialog-close-symbolic'
+            display: Controls.ToolButton.IconOnly
+            onClicked: control.close()
+            anchors {
+                margins: Kirigami.Units.smallSpacing
+                right: parent.right
+                top: parent.top
+                bottom: parent.bottom
+            }
+        }
     }
 
     footer: ColumnLayout {
@@ -118,6 +139,7 @@ Kirigami.OverlaySheet {
 
         RowLayout {
             visible: DbMain.visiblePresetSheetPage === 2
+            Layout.margins: Kirigami.Units.smallSpacing
 
             FormCard.FormComboBoxDelegate {
                 id: fallbackPreset

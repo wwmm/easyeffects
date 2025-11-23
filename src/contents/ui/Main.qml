@@ -216,8 +216,8 @@ Kirigami.ApplicationWindow {
         window: appWindow
     }
 
-    PresetsSheet {
-        id: presetsSheet
+    PresetsDialog {
+        id: presetsDialog
     }
 
     ShortcutsSheet {
@@ -465,7 +465,7 @@ Kirigami.ApplicationWindow {
                         displayHint: Kirigami.DisplayHint.KeepVisible
                         visible: DbMain.visiblePage !== 2
                         onTriggered: {
-                            presetsSheet.open();
+                            presetsDialog.open();
                         }
                     }
                 ]

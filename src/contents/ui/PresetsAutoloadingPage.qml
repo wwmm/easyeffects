@@ -11,6 +11,7 @@ ColumnLayout {
 
     GridLayout {
         columns: 2
+        Layout.margins: Kirigami.Units.smallSpacing
 
         FormCard.FormComboBoxDelegate {
             id: device
@@ -100,6 +101,10 @@ ColumnLayout {
                     Presets.Manager.addAutoload(0, presetName, deviceName, deviceDescription, deviceRoute);
             }
         }
+    }
+
+    Kirigami.Separator {
+        Layout.fillWidth: true
     }
 
     RowLayout {

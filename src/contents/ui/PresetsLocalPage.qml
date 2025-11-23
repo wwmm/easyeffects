@@ -56,6 +56,7 @@ ColumnLayout {
             id: newPresetName
 
             Layout.fillWidth: true
+            Layout.margins: Kirigami.Units.smallSpacing
             placeholderText: i18n("New preset name") // qmllint disable
             // based on https://github.com/KDE/kirigami/blob/master/src/controls/SearchField.qml
             leftPadding: {
@@ -122,6 +123,7 @@ ColumnLayout {
         Controls.Button {
             Layout.alignment: Qt.AlignCenter
             Layout.rowSpan: 2
+            Layout.margins: Kirigami.Units.smallSpacing
             Controls.ToolTip.text: i18n("Export presets") // qmllint disable
             Controls.ToolTip.visible: hovered
             Controls.ToolTip.delay: 500
@@ -135,6 +137,7 @@ ColumnLayout {
             readonly property var sortedListModel: DbMain.visiblePage === 0 ? Presets.SortedOutputListModel : Presets.SortedInputListModel
 
             Layout.fillWidth: true
+            Layout.margins: Kirigami.Units.smallSpacing
             placeholderText: i18n("Search") // qmllint disable
             onAccepted: {
                 const re = Common.regExpEscape(search.text);
@@ -145,6 +148,10 @@ ColumnLayout {
                 sortedListModel.filterRegularExpression = RegExp(re, "i");
             }
         }
+    }
+
+    Kirigami.Separator {
+        Layout.fillWidth: true
     }
 
     RowLayout {

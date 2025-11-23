@@ -36,6 +36,7 @@ ColumnLayout {
         readonly property var sortedListModel: DbMain.visiblePage === 0 ? Presets.SortedCommunityOutputListModel : Presets.SortedCommunityInputListModel
 
         Layout.fillWidth: true
+        Layout.margins: Kirigami.Units.smallSpacing
         placeholderText: i18n("Search") // qmllint disable
         onAccepted: {
             const re = Common.regExpEscape(search.text);
@@ -45,6 +46,10 @@ ColumnLayout {
             const re = Common.regExpEscape("");
             sortedListModel.filterRegularExpression = RegExp(re, "i");
         }
+    }
+
+    Kirigami.Separator {
+        Layout.fillWidth: true
     }
 
     RowLayout {
