@@ -6,7 +6,7 @@ import org.kde.kirigami as Kirigami
 Kirigami.OverlaySheet {
     id: control
 
-    closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutsideParent
+    closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnReleaseOutside
     focus: true
     implicitWidth: Math.min(loader.implicitWidth, appWindow.width * 0.8) + 4 * Kirigami.Units.iconSizes.large // qmllint disable
     implicitHeight: Math.min(Kirigami.Units.gridUnit * 40, Math.round(Controls.ApplicationWindow.window.height * 0.8))

@@ -7,7 +7,7 @@ Kirigami.OverlaySheet {
     id: control
 
     parent: applicationWindow().overlay // qmllint disable
-    closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutsideParent
+    closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnReleaseOutside
     focus: true
     y: 0
 

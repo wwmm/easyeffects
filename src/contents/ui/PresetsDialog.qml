@@ -26,7 +26,7 @@ Kirigami.Dialog {
         return "";
     }
 
-    closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutsideParent
+    closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnReleaseOutside
     focus: true
     modal: true
     implicitWidth: Math.min(Kirigami.Units.gridUnit * 30, appWindow.width * 0.8)// qmllint disable
@@ -198,71 +198,4 @@ Kirigami.Dialog {
             }
         }
     }
-
-    // footer: ColumnLayout {
-    //     Kirigami.InlineMessage {
-    //         Layout.fillWidth: true
-    //         Layout.maximumWidth: parent.width
-    //         position: Kirigami.InlineMessage.Position.Footer
-    //         visible: DbMain.visiblePresetSheetPage !== 2
-    //         text: {
-    //             if (Common.isEmpty(control.lastLoadedPresetName))
-    //                 return i18n("No preset loaded");// qmllint disable
-
-    //             const presetType = Common.isEmpty(lastLoadedCommunityPackage) ? i18n("Local") : i18n("Community"); // qmllint disable
-
-    //             return `${presetType}: <strong>${control.lastLoadedPresetName}<strong>`;
-    //         }
-    //     }
-
-    //     RowLayout {
-    //         visible: DbMain.visiblePresetSheetPage === 2
-    //         Layout.margins: Kirigami.Units.smallSpacing
-
-    //         FormCard.FormComboBoxDelegate {
-    //             id: fallbackPreset
-
-    //             Layout.fillWidth: true
-    //             verticalPadding: 0
-    //             text: i18n("Fallback Preset") // qmllint disable
-    //             displayMode: FormCard.FormComboBoxDelegate.ComboBox
-    //             currentIndex: {
-    //                 const fallbackPreset = DbMain.visiblePage === 0 ? DbMain.outputAutoloadingFallbackPreset : DbMain.inputAutoloadingFallbackPreset;
-    //                 for (let n = 0; n < model.rowCount(); n++) {
-    //                     const proxyIndex = model.index(n, 0);
-    //                     const name = model.data(proxyIndex, PresetsListModel.Name);
-    //                     if (name === fallbackPreset)
-    //                         return n;
-    //                 }
-    //                 return 0;
-    //             }
-    //             textRole: "name"
-    //             editable: false
-    //             enabled: DbMain.visiblePage === 0 ? DbMain.outputAutoloadingUsesFallback : DbMain.inputAutoloadingUsesFallback
-    //             model: DbMain.visiblePage === 0 ? Presets.SortedOutputListModel : Presets.SortedInputListModel
-    //             onActivated: idx => {
-    //                 if (DbMain.visiblePage === 0)
-    //                     DbMain.outputAutoloadingFallbackPreset = currentText;
-    //                 else if (DbMain.visiblePage === 1)
-    //                     DbMain.inputAutoloadingFallbackPreset = currentText;
-    //             }
-    //         }
-
-    //         EeSwitch {
-    //             Layout.fillWidth: false
-    //             Layout.alignment: Qt.AlignHCenter | Qt.AlignBottom
-    //             isChecked: DbMain.visiblePage === 0 ? DbMain.outputAutoloadingUsesFallback : DbMain.inputAutoloadingUsesFallback
-    //             verticalPadding: 0
-    //             onCheckedChanged: {
-    //                 if (DbMain.visiblePage === 0) {
-    //                     if (isChecked !== DbMain.outputAutoloadingUsesFallback)
-    //                         DbMain.outputAutoloadingUsesFallback = isChecked;
-    //                 } else if (DbMain.visiblePage === 1) {
-    //                     if (isChecked !== DbMain.inputAutoloadingUsesFallback)
-    //                         DbMain.inputAutoloadingUsesFallback = isChecked;
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
 }

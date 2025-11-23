@@ -8,17 +8,19 @@ import "Common.js" as Common
 import ee.presets as Presets
 import org.kde.kirigami as Kirigami
 
-Kirigami.OverlaySheet {
+Kirigami.Dialog {
     id: control
 
     required property var pluginDB
 
     parent: applicationWindow().overlay // qmllint disable
-    closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutsideParent
+    closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnReleaseOutside
     focus: true
-    y: 0
-    implicitWidth: Math.max(Kirigami.Units.gridUnit * 40, appWindow.width * 0.5) // qmllint disable
-    implicitHeight: appWindow.maxOverlayHeight // qmllint disable
+    modal: true
+    implicitWidth: Math.min(Kirigami.Units.gridUnit * 30, appWindow.width * 0.8)// qmllint disable
+    implicitHeight: Math.min(Kirigami.Units.gridUnit * 40, Math.round(Controls.ApplicationWindow.window.height * 0.8))
+    bottomPadding: 1
+    anchors.centerIn: parent
 
     FileDialog {
         id: fileDialog
@@ -36,12 +38,14 @@ Kirigami.OverlaySheet {
     }
 
     ColumnLayout {
-        height: control.height - (control.header.height) - control.y
+        height: control.height - control.header.height
+        spacing: 0
 
         Kirigami.SearchField {
             id: search
 
             Layout.fillWidth: true
+            Layout.margins: Kirigami.Units.smallSpacing
             placeholderText: i18n("Search") // qmllint disable
             onAccepted: {
                 const re = Common.regExpEscape(search.text);
@@ -118,18 +122,43 @@ Kirigami.OverlaySheet {
         }
     }
 
-    header: Kirigami.ActionToolBar {
-        alignment: Qt.AlignHCenter
-        position: Controls.ToolBar.Header
-        actions: [
-            Kirigami.Action {
-                displayHint: Kirigami.DisplayHint.KeepVisible
-                text: i18n("Import impulse") // qmllint disable
-                icon.name: "document-import-symbolic"
-                onTriggered: {
-                    fileDialog.open();
-                }
+    header: Item {
+        width: parent.width
+        height: headerToolbar.height + 2 * Kirigami.Units.smallSpacing
+
+        Kirigami.ActionToolBar {
+            id: headerToolbar
+
+            anchors {
+                centerIn: parent
+                margins: Kirigami.Units.smallSpacing
             }
-        ]
+
+            alignment: Qt.AlignHCenter
+            position: Controls.ToolBar.Header
+            actions: [
+                Kirigami.Action {
+                    displayHint: Kirigami.DisplayHint.KeepVisible
+                    text: i18n("Import impulse") // qmllint disable
+                    icon.name: "document-import-symbolic"
+                    onTriggered: {
+                        fileDialog.open();
+                    }
+                }
+            ]
+        }
+
+        Controls.ToolButton {
+            text: i18nc("@action:button", "Close")
+            icon.name: 'dialog-close-symbolic'
+            display: Controls.ToolButton.IconOnly
+            onClicked: control.close()
+            anchors {
+                margins: Kirigami.Units.smallSpacing
+                right: parent.right
+                top: parent.top
+                bottom: parent.bottom
+            }
+        }
     }
 }

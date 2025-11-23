@@ -98,8 +98,8 @@ Kirigami.ScrollablePage {
         target: convolverPage.pluginBackend
     }
 
-    ConvolverImpulseSheet {
-        id: impulseSheet
+    ConvolverImpulseDialog {
+        id: impulseDialog
 
         pluginDB: convolverPage.pluginDB
     }
@@ -108,15 +108,21 @@ Kirigami.ScrollablePage {
         id: combineDialog
 
         title: "Combine Impulse Responses"
-        padding: Kirigami.Units.largeSpacing
         standardButtons: Kirigami.Dialog.NoButton
-        flatFooterButtons: false
+        focus: true
+        modal: true
+        implicitWidth: Math.min(Kirigami.Units.gridUnit * 30, appWindow.width * 0.8)// qmllint disable
+        bottomPadding: 1
+        anchors.centerIn: parent
 
         ColumnLayout {
+            spacing: 0
+
             FormCard.FormComboBoxDelegate {
                 id: firstImpulse
 
                 Layout.columnSpan: 2
+                Layout.margins: Kirigami.Units.smallSpacing
                 text: i18n("First") // qmllint disable
                 displayMode: FormCard.FormComboBoxDelegate.ComboBox
                 currentIndex: 0
@@ -129,6 +135,7 @@ Kirigami.ScrollablePage {
                 id: secondImpulse
 
                 Layout.columnSpan: 2
+                Layout.margins: Kirigami.Units.smallSpacing
                 text: i18n("Second") // qmllint disable
                 displayMode: FormCard.FormComboBoxDelegate.ComboBox
                 currentIndex: 0
@@ -140,6 +147,7 @@ Kirigami.ScrollablePage {
             FormCard.FormTextFieldDelegate {
                 id: combinedImpulseName
 
+                Layout.margins: Kirigami.Units.smallSpacing
                 label: "Output Impulse Name"
 
                 validator: Validators.validFileNameRegex
@@ -151,6 +159,7 @@ Kirigami.ScrollablePage {
                 Layout.fillWidth: true
                 Layout.maximumWidth: firstImpulse.contentItem.implicitWidth
                 Layout.alignment: Qt.AlignHCenter
+                Layout.margins: Kirigami.Units.smallSpacing
                 from: 0
                 to: 100
                 indeterminate: true
@@ -190,7 +199,7 @@ Kirigami.ScrollablePage {
                     text: i18n("Impulses")
                     icon.name: "waveform-symbolic"
                     onTriggered: {
-                        impulseSheet.open();
+                        impulseDialog.open();
                     }
                 },
                 Kirigami.Action {

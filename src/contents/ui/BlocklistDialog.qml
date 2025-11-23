@@ -11,7 +11,7 @@ Kirigami.Dialog {
     required property var streamDB
 
     title: i18n("Excluded Applications") // qmllint disable
-    closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutsideParent
+    closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnReleaseOutside
     focus: true
     modal: true
     implicitWidth: Math.min(Kirigami.Units.gridUnit * 30, appWindow.width * 0.8)// qmllint disable

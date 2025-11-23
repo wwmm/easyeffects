@@ -9,7 +9,7 @@ Kirigami.Dialog {
 
     required property var pluginDB
 
-    closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutsideParent
+    closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnReleaseOutside
     focus: true
     modal: true
     title: i18n("Pre-Mix") // qmllint disable

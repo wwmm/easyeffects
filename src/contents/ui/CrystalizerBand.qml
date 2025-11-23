@@ -24,7 +24,7 @@ Controls.ItemDelegate {
         focus: true
         x: Math.round((parent.width - width) / 2)
         y: parent.height
-        closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutsideParent
+        closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnReleaseOutside
         onClosed: {
             menuButton.checked = false;
         }

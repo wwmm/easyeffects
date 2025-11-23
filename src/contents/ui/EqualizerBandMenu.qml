@@ -11,7 +11,7 @@ Kirigami.OverlaySheet {
     required property var bandDB
 
     parent: applicationWindow().overlay// qmllint disable
-    closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutsideParent
+    closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnReleaseOutside
     focus: true
     y: appWindow.header.height + Kirigami.Units.gridUnit// qmllint disable
     implicitWidth: Math.min(columnLayout.implicitWidth, appWindow.width * 0.8) + 4 * Kirigami.Units.iconSizes.large// qmllint disable
