@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-22 20:17-0300\n"
-"PO-Revision-Date: 2025-11-20 14:29+0000\n"
+"PO-Revision-Date: 2025-11-23 14:27+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
 "ga/>\n"
@@ -1405,14 +1405,16 @@ msgid "Imported the Equalizer APO preset file."
 msgstr "Iompórtáladh an comhad réamhshocraithe Cothromóir APO."
 
 #: src/contents/ui/Equalizer.qml:59
-#, fuzzy
 msgid "Imported the Equalizer APO preset file into the left channel."
-msgstr "Iompórtáladh an comhad réamhshocraithe Cothromóir APO."
+msgstr ""
+"Iompórtáladh an comhad réamhshocraithe Cothromóir APO isteach sa chainéal "
+"clé."
 
 #: src/contents/ui/Equalizer.qml:61
-#, fuzzy
 msgid "Imported the Equalizer APO preset file into the right channel."
-msgstr "Iompórtáladh an comhad réamhshocraithe Cothromóir APO."
+msgstr ""
+"Iompórtáladh an comhad réamhshocraithe Cothromóir APO isteach sa chainéal "
+"ceart."
 
 #: src/contents/ui/Equalizer.qml:74
 msgid "GraphicEQ preset"
@@ -1441,22 +1443,20 @@ msgstr ""
 "réamhshocraithe APO seachtrach."
 
 #: src/contents/ui/Equalizer.qml:99
-#, fuzzy
 msgid ""
 "Exported the current Equalizer settings of the left channel to an external "
 "APO preset file."
 msgstr ""
-"Rinneadh socruithe reatha an Chothromóra a easpórtáil chuig comhad "
-"réamhshocraithe APO seachtrach."
+"Rinneadh socruithe reatha an Chothromóra den chainéal clé a easpórtáil chuig "
+"comhad réamhshocraithe APO seachtrach."
 
 #: src/contents/ui/Equalizer.qml:101
-#, fuzzy
 msgid ""
 "Exported the current Equalizer settings of the right channel to an external "
 "APO preset file."
 msgstr ""
-"Rinneadh socruithe reatha an Chothromóra a easpórtáil chuig comhad "
-"réamhshocraithe APO seachtrach."
+"Rinneadh socruithe reatha an Chothromóra den chainéil dheis a easpórtáil "
+"chuig comhad réamhshocraithe APO seachtrach."
 
 #: src/contents/ui/Equalizer.qml:125 src/contents/ui/Filter.qml:77
 #: src/contents/ui/Loudness.qml:57
@@ -2259,7 +2259,7 @@ msgstr "Taispeáin deilbhín an tráidire"
 
 #: src/contents/ui/PreferencesSheet.qml:104
 msgid "Do not show our window"
-msgstr ""
+msgstr "Ná taispeáin ár bhfuinneog"
 
 #: src/contents/ui/PreferencesSheet.qml:105
 msgid ""
@@ -2267,6 +2267,9 @@ msgid ""
 "should not be used. It is intended as a workaround for systems that do not "
 "work well with our autostart file."
 msgstr ""
+"Ná taispeáin ár bhfuinneog tar éis don fheidhmchlár sin tosú. Go ginearálta, "
+"níor cheart an rogha seo a úsáid. Tá sé beartaithe mar réiteach sealadach do "
+"chórais nach n-oibríonn go maith lenár gcomhad tosaithe uathoibríoch."
 
 #: src/contents/ui/PreferencesSheet.qml:125
 msgid "Process all output streams"
@@ -2497,13 +2500,16 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:530
 msgid "Ignore the blocklist"
-msgstr ""
+msgstr "Déan neamhaird den liosta blocála"
 
 #: src/contents/ui/PreferencesSheet.qml:531
 msgid ""
 "If enabled the blocklist set in the preset file will be ignored. The one "
 "previously saved in our database will be used instead."
 msgstr ""
+"Má tá sé cumasaithe, déanfar neamhaird den liosta blocála atá socraithe sa "
+"chomhad réamhshocraithe. Úsáidfear an ceann a sábháladh roimhe seo inár "
+"mbunachar sonraí ina ionad."
 
 #: src/contents/ui/PreferencesSheet.qml:552
 msgid "Global shortcuts"
