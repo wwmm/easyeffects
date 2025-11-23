@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-22 20:17-0300\n"
-"PO-Revision-Date: 2025-11-20 14:29+0000\n"
+"PO-Revision-Date: 2025-11-23 11:51+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -1407,14 +1407,12 @@ msgid "Imported the Equalizer APO preset file."
 msgstr "Importato il file del profilo Equalizer APO."
 
 #: src/contents/ui/Equalizer.qml:59
-#, fuzzy
 msgid "Imported the Equalizer APO preset file into the left channel."
-msgstr "Importato il file del profilo Equalizer APO."
+msgstr "Importato il file del profilo Equalizer APO nel canale sinistro."
 
 #: src/contents/ui/Equalizer.qml:61
-#, fuzzy
 msgid "Imported the Equalizer APO preset file into the right channel."
-msgstr "Importato il file del profilo Equalizer APO."
+msgstr "Importato il file del profilo Equalizer APO nel canale destro."
 
 #: src/contents/ui/Equalizer.qml:74
 msgid "GraphicEQ preset"
@@ -1443,22 +1441,20 @@ msgstr ""
 "esterno del profilo APO."
 
 #: src/contents/ui/Equalizer.qml:99
-#, fuzzy
 msgid ""
 "Exported the current Equalizer settings of the left channel to an external "
 "APO preset file."
 msgstr ""
-"Le attuali impostazioni dell'Equalizer sono state esportate in un file "
-"esterno del profilo APO."
+"Le attuali impostazioni del canale sinistro dell'Equalizer sono state "
+"esportate in un file esterno del profilo APO."
 
 #: src/contents/ui/Equalizer.qml:101
-#, fuzzy
 msgid ""
 "Exported the current Equalizer settings of the right channel to an external "
 "APO preset file."
 msgstr ""
-"Le attuali impostazioni dell'Equalizer sono state esportate in un file "
-"esterno del profilo APO."
+"Le attuali impostazioni del canale destro dell'Equalizer sono state "
+"esportate in un file esterno del profilo APO."
 
 #: src/contents/ui/Equalizer.qml:125 src/contents/ui/Filter.qml:77
 #: src/contents/ui/Loudness.qml:57
