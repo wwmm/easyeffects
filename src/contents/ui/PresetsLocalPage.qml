@@ -11,6 +11,8 @@ import org.kde.kirigami as Kirigami
 ColumnLayout {
     id: columnLayout
 
+    spacing: 0
+
     readonly property int pipeline: {
         if (DbMain.visiblePage === 0)
             return 1;
@@ -51,6 +53,8 @@ ColumnLayout {
 
     GridLayout {
         columns: 2
+        rowSpacing: 0
+        columnSpacing: 0
 
         Kirigami.ActionTextField {
             id: newPresetName
@@ -148,10 +152,6 @@ ColumnLayout {
                 sortedListModel.filterRegularExpression = RegExp(re, "i");
             }
         }
-    }
-
-    Kirigami.Separator {
-        Layout.fillWidth: true
     }
 
     RowLayout {

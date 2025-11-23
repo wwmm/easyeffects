@@ -9,6 +9,8 @@ import org.kde.kirigami as Kirigami
 ColumnLayout {
     id: columnLayout
 
+    spacing: 0
+
     readonly property int pipeline: {
         if (DbMain.visiblePage === 0)
             return 1;
@@ -30,26 +32,37 @@ ColumnLayout {
         return "";
     }
 
-    Kirigami.SearchField {
-        id: search
+    RowLayout {
+        spacing: 0
 
-        readonly property var sortedListModel: DbMain.visiblePage === 0 ? Presets.SortedCommunityOutputListModel : Presets.SortedCommunityInputListModel
+        Kirigami.SearchField {
+            id: search
 
-        Layout.fillWidth: true
-        Layout.margins: Kirigami.Units.smallSpacing
-        placeholderText: i18n("Search") // qmllint disable
-        onAccepted: {
-            const re = Common.regExpEscape(search.text);
-            sortedListModel.filterRegularExpression = RegExp(re, "i");
+            readonly property var sortedListModel: DbMain.visiblePage === 0 ? Presets.SortedCommunityOutputListModel : Presets.SortedCommunityInputListModel
+
+            Layout.fillWidth: true
+            Layout.margins: Kirigami.Units.smallSpacing
+            placeholderText: i18n("Search") // qmllint disable
+            onAccepted: {
+                const re = Common.regExpEscape(search.text);
+                sortedListModel.filterRegularExpression = RegExp(re, "i");
+            }
+            Component.onCompleted: {
+                const re = Common.regExpEscape("");
+                sortedListModel.filterRegularExpression = RegExp(re, "i");
+            }
         }
-        Component.onCompleted: {
-            const re = Common.regExpEscape("");
-            sortedListModel.filterRegularExpression = RegExp(re, "i");
-        }
-    }
 
-    Kirigami.Separator {
-        Layout.fillWidth: true
+        Controls.Button {
+            Layout.alignment: Qt.AlignCenter
+            Layout.margins: Kirigami.Units.smallSpacing
+            Controls.ToolTip.text: i18n("Refresh") // qmllint disable
+            Controls.ToolTip.visible: hovered
+            icon.name: "view-refresh-symbolic"
+            onClicked: {
+                Presets.Manager.refreshCommunityPresets(columnLayout.pipeline);
+            }
+        }
     }
 
     RowLayout {
@@ -123,14 +136,6 @@ ColumnLayout {
 
             parent: listviewRow
             Layout.fillHeight: true
-        }
-    }
-
-    Controls.Button {
-        Layout.alignment: Qt.AlignCenter
-        text: i18n("Refresh") // qmllint disable
-        onClicked: {
-            Presets.Manager.refreshCommunityPresets(columnLayout.pipeline);
         }
     }
 }

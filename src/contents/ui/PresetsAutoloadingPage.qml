@@ -9,9 +9,12 @@ import org.kde.kirigamiaddons.formcard as FormCard
 ColumnLayout {
     id: columnLayout
 
+    spacing: 0
+
     GridLayout {
         columns: 2
-        Layout.margins: Kirigami.Units.smallSpacing
+        rowSpacing: 0
+        columnSpacing: 0
 
         FormCard.FormComboBoxDelegate {
             id: device
@@ -27,6 +30,7 @@ ColumnLayout {
 
             property string deviceRouteDescription
 
+            Layout.margins: Kirigami.Units.smallSpacing
             verticalPadding: 0
             text: i18n("Device") // qmllint disable
             displayMode: FormCard.FormComboBoxDelegate.ComboBox
@@ -69,11 +73,13 @@ ColumnLayout {
             Layout.preferredWidth: Kirigami.Units.iconSizes.medium
             Layout.preferredHeight: Kirigami.Units.iconSizes.medium
             Layout.alignment: Qt.AlignBottom | Qt.AlignHCenter
+            Layout.margins: Kirigami.Units.smallSpacing
         }
 
         FormCard.FormComboBoxDelegate {
             id: preset
 
+            Layout.margins: Kirigami.Units.smallSpacing
             verticalPadding: 0
             text: i18n("Local preset") // qmllint disable
             displayMode: FormCard.FormComboBoxDelegate.ComboBox
@@ -85,6 +91,7 @@ ColumnLayout {
 
         Controls.Button {
             Layout.alignment: Qt.AlignHCenter | Qt.AlignBottom
+            Layout.margins: Kirigami.Units.smallSpacing
             text: i18n("Create") // qmllint disable
             icon.name: "list-add-symbolic"
             Controls.ToolTip.text: i18n("Create a new autoloading preset")
@@ -101,10 +108,6 @@ ColumnLayout {
                     Presets.Manager.addAutoload(0, presetName, deviceName, deviceDescription, deviceRoute);
             }
         }
-    }
-
-    Kirigami.Separator {
-        Layout.fillWidth: true
     }
 
     RowLayout {
