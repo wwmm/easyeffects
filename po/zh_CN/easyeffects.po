@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-22 20:17-0300\n"
-"PO-Revision-Date: 2025-11-20 10:51+0000\n"
+"PO-Revision-Date: 2025-11-23 11:51+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hans/>\n"
@@ -1400,14 +1400,12 @@ msgid "Imported the Equalizer APO preset file."
 msgstr "已导入 APO 预设文件。"
 
 #: src/contents/ui/Equalizer.qml:59
-#, fuzzy
 msgid "Imported the Equalizer APO preset file into the left channel."
-msgstr "已导入 APO 预设文件。"
+msgstr "已向左声道导入 APO 预设文件。"
 
 #: src/contents/ui/Equalizer.qml:61
-#, fuzzy
 msgid "Imported the Equalizer APO preset file into the right channel."
-msgstr "已导入 APO 预设文件。"
+msgstr "已向右声道导入 APO 预设文件。"
 
 #: src/contents/ui/Equalizer.qml:74
 msgid "GraphicEQ preset"
@@ -1432,18 +1430,16 @@ msgid "Exported the current Equalizer settings to an external APO preset file."
 msgstr "已将当前均衡器设置导出为 APO 预设文件。"
 
 #: src/contents/ui/Equalizer.qml:99
-#, fuzzy
 msgid ""
 "Exported the current Equalizer settings of the left channel to an external "
 "APO preset file."
-msgstr "已将当前均衡器设置导出为 APO 预设文件。"
+msgstr "已将当前均衡器左声道设置导出为 APO 预设文件。"
 
 #: src/contents/ui/Equalizer.qml:101
-#, fuzzy
 msgid ""
 "Exported the current Equalizer settings of the right channel to an external "
 "APO preset file."
-msgstr "已将当前均衡器设置导出为 APO 预设文件。"
+msgstr "已将当前均衡器右声道设置导出为 APO 预设文件。"
 
 #: src/contents/ui/Equalizer.qml:125 src/contents/ui/Filter.qml:77
 #: src/contents/ui/Loudness.qml:57
@@ -2245,14 +2241,15 @@ msgstr "显示状态栏图标"
 
 #: src/contents/ui/PreferencesSheet.qml:104
 msgid "Do not show our window"
-msgstr ""
+msgstr "不显示窗口"
 
 #: src/contents/ui/PreferencesSheet.qml:105
 msgid ""
 "Do not show our window after that application starts. In general this option "
 "should not be used. It is intended as a workaround for systems that do not "
 "work well with our autostart file."
-msgstr ""
+msgstr "启动应用时不显示窗口。此选项用于解决部分系统无法正常调用自动启动文件的问题，"
+"否则不必启用。"
 
 #: src/contents/ui/PreferencesSheet.qml:125
 msgid "Process all output streams"
@@ -2470,15 +2467,15 @@ msgid ""
 msgstr "在接收新设备路由与自动加载预设之间的延迟。"
 
 #: src/contents/ui/PreferencesSheet.qml:530
-#, fuzzy
 msgid "Ignore the blocklist"
-msgstr "加入黑名单"
+msgstr "忽略排除列表"
 
 #: src/contents/ui/PreferencesSheet.qml:531
 msgid ""
 "If enabled the blocklist set in the preset file will be ignored. The one "
 "previously saved in our database will be used instead."
-msgstr ""
+msgstr "启用后，Easy Effects 将忽略预设文件中的排除列表，转而使用先前保存在数据库中的"
+"备份。"
 
 #: src/contents/ui/PreferencesSheet.qml:552
 msgid "Global shortcuts"
