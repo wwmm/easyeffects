@@ -309,13 +309,14 @@ Kirigami.Page {
                     Layout.bottomMargin: Kirigami.Units.smallSpacing
                     Layout.leftMargin: Kirigami.Units.smallSpacing
                     Layout.rightMargin: Kirigami.Units.smallSpacing
+                    Layout.alignment: Qt.AlignCenter
 
                     Controls.Button {
                         text: i18n("Add effect") // qmllint disable
                         display: DbMain.collapsePluginsList === true ? Controls.Button.IconOnly : Controls.Button.TextBesideIcon
                         icon.name: "list-add"
                         onClicked: menuAddPlugins.open()
-                        Layout.fillWidth: true
+                        Layout.fillWidth: DbMain.collapsePluginsList === true
                     }
 
                     Controls.Button {
