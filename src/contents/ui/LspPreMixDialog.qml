@@ -4,17 +4,19 @@ import QtQuick.Layouts
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
-Kirigami.OverlaySheet {
-    id: preMixSheet
+Kirigami.Dialog {
+    id: preMixDialog
 
     required property var pluginDB
 
     closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutsideParent
     focus: true
+    modal: true
     title: i18n("Pre-Mix") // qmllint disable
-    y: 0
+    bottomPadding: 1
+    anchors.centerIn: parent
 
-    implicitWidth: Math.min(gridLayout.implicitWidth, preMixSheet.parent.width * 0.8)// qmllint disable
+    implicitWidth: Math.min(gridLayout.implicitWidth, preMixDialog.parent.width * 0.8)// qmllint disable
 
     ColumnLayout {
 
@@ -30,15 +32,15 @@ Kirigami.OverlaySheet {
                     label: i18n("Input to sidechain") // qmllint disable
                     labelAbove: true
                     spinboxLayoutFillWidth: true
-                    from: preMixSheet.pluginDB.getMinValue("inputToSidechain")
-                    to: preMixSheet.pluginDB.getMaxValue("inputToSidechain")
-                    value: preMixSheet.pluginDB.inputToSidechain
+                    from: preMixDialog.pluginDB.getMinValue("inputToSidechain")
+                    to: preMixDialog.pluginDB.getMaxValue("inputToSidechain")
+                    value: preMixDialog.pluginDB.inputToSidechain
                     decimals: 2
                     stepSize: 0.01
                     unit: i18n("dB")
                     minusInfinityMode: true
                     onValueModified: v => {
-                        preMixSheet.pluginDB.inputToSidechain = v;
+                        preMixDialog.pluginDB.inputToSidechain = v;
                     }
                 }
 
@@ -46,15 +48,15 @@ Kirigami.OverlaySheet {
                     label: i18n("Input to link") // qmllint disable
                     labelAbove: true
                     spinboxLayoutFillWidth: true
-                    from: preMixSheet.pluginDB.getMinValue("inputToLink")
-                    to: preMixSheet.pluginDB.getMaxValue("inputToLink")
-                    value: preMixSheet.pluginDB.inputToLink
+                    from: preMixDialog.pluginDB.getMinValue("inputToLink")
+                    to: preMixDialog.pluginDB.getMaxValue("inputToLink")
+                    value: preMixDialog.pluginDB.inputToLink
                     decimals: 2
                     stepSize: 0.01
                     unit: i18n("dB")
                     minusInfinityMode: true
                     onValueModified: v => {
-                        preMixSheet.pluginDB.inputToLink = v;
+                        preMixDialog.pluginDB.inputToLink = v;
                     }
                 }
 
@@ -62,15 +64,15 @@ Kirigami.OverlaySheet {
                     label: i18n("Sidechain to input") // qmllint disable
                     labelAbove: true
                     spinboxLayoutFillWidth: true
-                    from: preMixSheet.pluginDB.getMinValue("sidechainToInput")
-                    to: preMixSheet.pluginDB.getMaxValue("sidechainToInput")
-                    value: preMixSheet.pluginDB.sidechainToInput
+                    from: preMixDialog.pluginDB.getMinValue("sidechainToInput")
+                    to: preMixDialog.pluginDB.getMaxValue("sidechainToInput")
+                    value: preMixDialog.pluginDB.sidechainToInput
                     decimals: 2
                     stepSize: 0.01
                     unit: i18n("dB")
                     minusInfinityMode: true
                     onValueModified: v => {
-                        preMixSheet.pluginDB.sidechainToInput = v;
+                        preMixDialog.pluginDB.sidechainToInput = v;
                     }
                 }
 
@@ -78,15 +80,15 @@ Kirigami.OverlaySheet {
                     label: i18n("Sidechain to link") // qmllint disable
                     labelAbove: true
                     spinboxLayoutFillWidth: true
-                    from: preMixSheet.pluginDB.getMinValue("sidechainToLink")
-                    to: preMixSheet.pluginDB.getMaxValue("sidechainToLink")
-                    value: preMixSheet.pluginDB.sidechainToLink
+                    from: preMixDialog.pluginDB.getMinValue("sidechainToLink")
+                    to: preMixDialog.pluginDB.getMaxValue("sidechainToLink")
+                    value: preMixDialog.pluginDB.sidechainToLink
                     decimals: 2
                     stepSize: 0.01
                     unit: i18n("dB")
                     minusInfinityMode: true
                     onValueModified: v => {
-                        preMixSheet.pluginDB.sidechainToLink = v;
+                        preMixDialog.pluginDB.sidechainToLink = v;
                     }
                 }
 
@@ -94,15 +96,15 @@ Kirigami.OverlaySheet {
                     label: i18n("Link to sidechain") // qmllint disable
                     labelAbove: true
                     spinboxLayoutFillWidth: true
-                    from: preMixSheet.pluginDB.getMinValue("linkToSidechain")
-                    to: preMixSheet.pluginDB.getMaxValue("linkToSidechain")
-                    value: preMixSheet.pluginDB.linkToSidechain
+                    from: preMixDialog.pluginDB.getMinValue("linkToSidechain")
+                    to: preMixDialog.pluginDB.getMaxValue("linkToSidechain")
+                    value: preMixDialog.pluginDB.linkToSidechain
                     decimals: 2
                     stepSize: 0.01
                     unit: i18n("dB")
                     minusInfinityMode: true
                     onValueModified: v => {
-                        preMixSheet.pluginDB.linkToSidechain = v;
+                        preMixDialog.pluginDB.linkToSidechain = v;
                     }
                 }
 
@@ -110,15 +112,15 @@ Kirigami.OverlaySheet {
                     label: i18n("Link to input") // qmllint disable
                     labelAbove: true
                     spinboxLayoutFillWidth: true
-                    from: preMixSheet.pluginDB.getMinValue("linkToInput")
-                    to: preMixSheet.pluginDB.getMaxValue("linkToInput")
-                    value: preMixSheet.pluginDB.linkToInput
+                    from: preMixDialog.pluginDB.getMinValue("linkToInput")
+                    to: preMixDialog.pluginDB.getMaxValue("linkToInput")
+                    value: preMixDialog.pluginDB.linkToInput
                     decimals: 2
                     stepSize: 0.01
                     unit: i18n("dB")
                     minusInfinityMode: true
                     onValueModified: v => {
-                        preMixSheet.pluginDB.linkToInput = v;
+                        preMixDialog.pluginDB.linkToInput = v;
                     }
                 }
             }

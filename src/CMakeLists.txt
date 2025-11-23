@@ -69,7 +69,7 @@ qt_add_qml_module(easyeffects
         contents/ui/PipeWirePage.qml
         contents/ui/PluginNotAvailable.qml
         contents/ui/PreferencesSheet.qml
-        contents/ui/LspPreMixSheet.qml
+        contents/ui/LspPreMixDialog.qml
         contents/ui/PresetsDialog.qml
         contents/ui/PresetsAutoloadingPage.qml
         contents/ui/PresetsLocalPage.qml

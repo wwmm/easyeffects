@@ -903,8 +903,8 @@ Kirigami.ScrollablePage {
         }
     }
 
-    LspPreMixSheet {
-        id: preMixSheet
+    LspPreMixDialog {
+        id: preMixDialog
 
         pluginDB: multibandGatePage.pluginDB
     }
@@ -961,7 +961,7 @@ Kirigami.ScrollablePage {
                     text: i18n("Pre-Mix") // qmllint disable
                     icon.name: "channelmixer-symbolic"
                     onTriggered: {
-                        preMixSheet.open();
+                        preMixDialog.open();
                     }
                 },
                 Kirigami.Action {
