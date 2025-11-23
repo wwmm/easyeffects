@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-22 20:17-0300\n"
-"PO-Revision-Date: 2025-11-20 10:51+0000\n"
+"PO-Revision-Date: 2025-11-23 11:51+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ro/>\n"
@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
-"20)) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : "
+"(n==0 || (n%100 > 0 && n%100 < 20)) ? 1 : 2;\n"
 "X-Generator: Weblate 5.15-dev\n"
 
 #: src/autostart.cpp:89
@@ -1408,14 +1408,16 @@ msgid "Imported the Equalizer APO preset file."
 msgstr "A fost importat fișierul de preconfigurare al egalizatorului APO."
 
 #: src/contents/ui/Equalizer.qml:59
-#, fuzzy
 msgid "Imported the Equalizer APO preset file into the left channel."
-msgstr "A fost importat fișierul de preconfigurare al egalizatorului APO."
+msgstr ""
+"A fost importat fișierul de preconfigurare al egalizatorului APO în canalul "
+"stâng."
 
 #: src/contents/ui/Equalizer.qml:61
-#, fuzzy
 msgid "Imported the Equalizer APO preset file into the right channel."
-msgstr "A fost importat fișierul de preconfigurare al egalizatorului APO."
+msgstr ""
+"A fost importat fișierul de preconfigurare al egalizatorului APO în canalul "
+"drept."
 
 #: src/contents/ui/Equalizer.qml:74
 msgid "GraphicEQ preset"
@@ -1444,22 +1446,20 @@ msgstr ""
 "de preconfigurări APO."
 
 #: src/contents/ui/Equalizer.qml:99
-#, fuzzy
 msgid ""
 "Exported the current Equalizer settings of the left channel to an external "
 "APO preset file."
 msgstr ""
-"A fost exportată configurația curentă a egalizatorului într-un fișier extern "
-"de preconfigurări APO."
+"A fost exportată configurația curentă a egalizatorului canalului stâng într-"
+"un fișier extern de preconfigurări APO."
 
 #: src/contents/ui/Equalizer.qml:101
-#, fuzzy
 msgid ""
 "Exported the current Equalizer settings of the right channel to an external "
 "APO preset file."
 msgstr ""
-"A fost exportată configurația curentă a egalizatorului într-un fișier extern "
-"de preconfigurări APO."
+"A fost exportată configurația curentă a egalizatorului canalului drept într-"
+"un fișier extern de preconfigurări APO."
 
 #: src/contents/ui/Equalizer.qml:125 src/contents/ui/Filter.qml:77
 #: src/contents/ui/Loudness.qml:57
@@ -2263,7 +2263,7 @@ msgstr "Afișează pictograma în zona de notificare"
 
 #: src/contents/ui/PreferencesSheet.qml:104
 msgid "Do not show our window"
-msgstr ""
+msgstr "Nu afișează fereastra Easy Effects"
 
 #: src/contents/ui/PreferencesSheet.qml:105
 msgid ""
@@ -2271,6 +2271,10 @@ msgid ""
 "should not be used. It is intended as a workaround for systems that do not "
 "work well with our autostart file."
 msgstr ""
+"Nu afișează fereastra Easy Effects după ce aplicația pornește. În general, "
+"această opțiune nu ar trebui utilizată. Este destinată ca soluție "
+"alternativă pentru sistemele care nu funcționează bine cu fișierul de "
+"pornire automată."
 
 #: src/contents/ui/PreferencesSheet.qml:125
 msgid "Process all output streams"
@@ -2501,15 +2505,17 @@ msgstr ""
 "încărcarea automată a unei preconfigurări."
 
 #: src/contents/ui/PreferencesSheet.qml:530
-#, fuzzy
 msgid "Ignore the blocklist"
-msgstr "Adaugă la Lista de Blocare"
+msgstr "Ignoră lista de blocare"
 
 #: src/contents/ui/PreferencesSheet.qml:531
 msgid ""
 "If enabled the blocklist set in the preset file will be ignored. The one "
 "previously saved in our database will be used instead."
 msgstr ""
+"Dacă această opțiune este activată, lista de blocare definită în fișierul de "
+"preconfigurare va fi ignorată. În schimb, va fi utilizată lista salvată "
+"anterior în baza noastră de date."
 
 #: src/contents/ui/PreferencesSheet.qml:552
 msgid "Global shortcuts"

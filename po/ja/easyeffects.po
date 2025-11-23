@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-22 20:17-0300\n"
-"PO-Revision-Date: 2025-11-15 04:36+0000\n"
+"PO-Revision-Date: 2025-11-23 11:51+0000\n"
 "Last-Translator: Suu <suunya21@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
 "main/ja/>\n"
@@ -39,9 +39,8 @@ msgid "Reset Easy Effects."
 msgstr "Easy Effects をリセットします。"
 
 #: src/command_line_parser.cpp:44
-#, fuzzy
 msgid "Hide the window."
-msgstr "ウィンドウを隠します。"
+msgstr "ウィンドウを隠す。"
 
 #: src/command_line_parser.cpp:45
 msgid "Global bypass. 1 to enable and 2 to disable."
@@ -93,32 +92,28 @@ msgid "Must specify preset type: input/output."
 msgstr "プリセットタイプを指定してください: input/output。"
 
 #: src/command_line_parser.cpp:166
-#, fuzzy
 msgid "Output presets"
 msgstr "出力プリセット"
 
 #: src/command_line_parser.cpp:168
-#, fuzzy
 msgid "No output presets."
-msgstr "出力プリセット"
+msgstr "出力プリセットがありません。"
 
 #: src/command_line_parser.cpp:179
-#, fuzzy
 msgid "Input presets"
 msgstr "入力プリセット"
 
 #: src/command_line_parser.cpp:181
-#, fuzzy
 msgid "No input presets."
-msgstr "入力プリセット"
+msgstr "入力プリセットがありません。"
 
 #: src/command_line_parser.cpp:211
 msgid "Specified preset does not exist."
-msgstr ""
+msgstr "指定されたプリセットは存在しません。"
 
 #: src/command_line_parser.cpp:229
 msgid "Provided an invalid bypass state."
-msgstr ""
+msgstr "無効なバイパス状態が提供されました。"
 
 #: src/contents/ui/AboutPage.qml:4
 msgctxt "@action:button"
@@ -886,7 +881,6 @@ msgid "Stereo split"
 msgstr "ステレオ分割"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:31
-#, fuzzy
 msgid "Imported a new Convolver impulse file."
 msgstr "新しいコンボルバーインパルスファイルをインポートしました。"
 
@@ -1410,14 +1404,12 @@ msgid "Imported the Equalizer APO preset file."
 msgstr "Equalizer APO プリセットファイルをインポートしました。"
 
 #: src/contents/ui/Equalizer.qml:59
-#, fuzzy
 msgid "Imported the Equalizer APO preset file into the left channel."
-msgstr "Equalizer APO プリセットファイルをインポートしました。"
+msgstr "Equalizer APO プリセットファイルを左チャンネルにインポートしました。"
 
 #: src/contents/ui/Equalizer.qml:61
-#, fuzzy
 msgid "Imported the Equalizer APO preset file into the right channel."
-msgstr "Equalizer APO プリセットファイルをインポートしました。"
+msgstr "Equalizer APO プリセットファイルを右チャンネルにインポートしました。"
 
 #: src/contents/ui/Equalizer.qml:74
 msgid "GraphicEQ preset"
@@ -1445,20 +1437,18 @@ msgstr ""
 "現在のイコライザー設定を外部 APO プリセットファイルにエクスポートしました。"
 
 #: src/contents/ui/Equalizer.qml:99
-#, fuzzy
 msgid ""
 "Exported the current Equalizer settings of the left channel to an external "
 "APO preset file."
-msgstr ""
-"現在のイコライザー設定を外部 APO プリセットファイルにエクスポートしました。"
+msgstr "現在のイコライザー左チャンネル設定を外部 APO プリセットファイルにエクスポート"
+"しました。"
 
 #: src/contents/ui/Equalizer.qml:101
-#, fuzzy
 msgid ""
 "Exported the current Equalizer settings of the right channel to an external "
 "APO preset file."
-msgstr ""
-"現在のイコライザー設定を外部 APO プリセットファイルにエクスポートしました。"
+msgstr "現在のイコライザー右チャンネル設定を外部 APO プリセットファイルにエクスポート"
+"しました。"
 
 #: src/contents/ui/Equalizer.qml:125 src/contents/ui/Filter.qml:77
 #: src/contents/ui/Loudness.qml:57
@@ -2260,7 +2250,7 @@ msgstr "トレイアイコンを表示"
 
 #: src/contents/ui/PreferencesSheet.qml:104
 msgid "Do not show our window"
-msgstr ""
+msgstr "ウィンドウを表示しない"
 
 #: src/contents/ui/PreferencesSheet.qml:105
 msgid ""
@@ -2268,6 +2258,9 @@ msgid ""
 "should not be used. It is intended as a workaround for systems that do not "
 "work well with our autostart file."
 msgstr ""
+"アプリケーションを起動した後にウィンドウを表示しません。 一般的に、このオプシ"
+"ョンは使用しないでください。 オートスタートファイルでうまく動作しないシステム"
+"のための回避策として使用されます。"
 
 #: src/contents/ui/PreferencesSheet.qml:125
 msgid "Process all output streams"
@@ -2291,6 +2284,9 @@ msgid ""
 "percentages results in a lower perceived volume while the loudness appears "
 "to change more evenly across the slider."
 msgstr ""
+"ストリーミング音量に線形スケールではなく立方スケールを使用する。パーセンテー"
+"ジが低いほど、スライダー上で音量がより均等に変化するように見えますが、実際の"
+"音量は低くなります。"
 
 #: src/contents/ui/PreferencesSheet.qml:174
 msgid "Ignore system notifications"
@@ -2460,13 +2456,13 @@ msgstr "最も使用されているプリセット"
 
 #: src/contents/ui/PreferencesSheet.qml:479
 msgid "Force KDE's Breeze theme when Easy Effects starts"
-msgstr ""
+msgstr "Easy Effects の開始時に強制的にKDE Breeze テーマを使う"
 
 #: src/contents/ui/PreferencesSheet.qml:480
 msgid ""
 "It is necessary to restart the service for changes in this setting to take "
 "effect."
-msgstr ""
+msgstr "変更を反映するにはサービスを再起動する必要があります。"
 
 #: src/contents/ui/PreferencesSheet.qml:493
 msgid "Reduce effects list controls"
@@ -2491,15 +2487,15 @@ msgstr ""
 "新しいデバイスルートを受信してからプリセットを自動読み込みするまでの遅延。"
 
 #: src/contents/ui/PreferencesSheet.qml:530
-#, fuzzy
 msgid "Ignore the blocklist"
-msgstr "ブロックリストに追加"
+msgstr "ブロックリストを無視"
 
 #: src/contents/ui/PreferencesSheet.qml:531
 msgid ""
 "If enabled the blocklist set in the preset file will be ignored. The one "
 "previously saved in our database will be used instead."
-msgstr ""
+msgstr "有効にすると、プリセットファイルに設定されたブロックリストが無視されます。代"
+"わりに最後に保存されたデータベースが使用されます。"
 
 #: src/contents/ui/PreferencesSheet.qml:552
 msgid "Global shortcuts"
@@ -3010,7 +3006,7 @@ msgstr "開発者"
 #: src/main.cpp:317
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Gemini, Suu"
+msgstr "Suu"
 
 #: src/main.cpp:317
 msgctxt "EMAIL OF TRANSLATORS"
