@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-22 20:17-0300\n"
-"PO-Revision-Date: 2025-11-20 10:51+0000\n"
+"PO-Revision-Date: 2025-11-23 11:51+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -1404,14 +1404,16 @@ msgid "Imported the Equalizer APO preset file."
 msgstr "Importation du fichier de préréglage APO de l'Égaliseur."
 
 #: src/contents/ui/Equalizer.qml:59
-#, fuzzy
 msgid "Imported the Equalizer APO preset file into the left channel."
-msgstr "Importation du fichier de préréglage APO de l'Égaliseur."
+msgstr ""
+"Le fichier de préréglage APO de l'Égaliseur a été importé dans le canal "
+"gauche."
 
 #: src/contents/ui/Equalizer.qml:61
-#, fuzzy
 msgid "Imported the Equalizer APO preset file into the right channel."
-msgstr "Importation du fichier de préréglage APO de l'Égaliseur."
+msgstr ""
+"Le fichier de préréglage APO de l'Égaliseur a été importé dans le canal "
+"droit."
 
 #: src/contents/ui/Equalizer.qml:74
 msgid "GraphicEQ preset"
@@ -1440,22 +1442,20 @@ msgstr ""
 "préréglages APO externe."
 
 #: src/contents/ui/Equalizer.qml:99
-#, fuzzy
 msgid ""
 "Exported the current Equalizer settings of the left channel to an external "
 "APO preset file."
 msgstr ""
-"Exportation des paramètres actuels de l'Égaliseur vers un fichier de "
-"préréglages APO externe."
+"Les paramètres actuels du canal gauche de l’Égaliseur ont été exportés vers "
+"un fichier de préréglage APO externe."
 
 #: src/contents/ui/Equalizer.qml:101
-#, fuzzy
 msgid ""
 "Exported the current Equalizer settings of the right channel to an external "
 "APO preset file."
 msgstr ""
-"Exportation des paramètres actuels de l'Égaliseur vers un fichier de "
-"préréglages APO externe."
+"Les paramètres actuels du canal droit de l’Égaliseur ont été exportés vers "
+"un fichier de préréglage APO externe."
 
 #: src/contents/ui/Equalizer.qml:125 src/contents/ui/Filter.qml:77
 #: src/contents/ui/Loudness.qml:57
@@ -2261,7 +2261,7 @@ msgstr "Afficher l'icône dans la barre d'état"
 
 #: src/contents/ui/PreferencesSheet.qml:104
 msgid "Do not show our window"
-msgstr ""
+msgstr "Ne pas afficher notre fenêtre"
 
 #: src/contents/ui/PreferencesSheet.qml:105
 msgid ""
@@ -2269,6 +2269,10 @@ msgid ""
 "should not be used. It is intended as a workaround for systems that do not "
 "work well with our autostart file."
 msgstr ""
+"Ne pas afficher notre fenêtre après le démarrage de l'application. En "
+"général, cette option ne devrait pas être utilisée. Elle est destinée à "
+"servir de solution de contournement pour les systèmes qui ne fonctionnent "
+"pas correctement avec notre fichier de démarrage automatique."
 
 #: src/contents/ui/PreferencesSheet.qml:125
 msgid "Process all output streams"
@@ -2501,13 +2505,16 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:530
 msgid "Ignore the blocklist"
-msgstr ""
+msgstr "Ignorer la liste de blocage"
 
 #: src/contents/ui/PreferencesSheet.qml:531
 msgid ""
 "If enabled the blocklist set in the preset file will be ignored. The one "
 "previously saved in our database will be used instead."
 msgstr ""
+"Si cette option est activée, la liste de blocage définie dans le fichier de "
+"préréglage sera ignorée. Celle précédemment enregistrée dans notre base de "
+"données sera utilisée à la place."
 
 #: src/contents/ui/PreferencesSheet.qml:552
 msgid "Global shortcuts"
