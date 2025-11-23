@@ -26,7 +26,6 @@ Kirigami.Dialog {
         return "";
     }
 
-    parent: applicationWindow().overlay// qmllint disable
     closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutsideParent
     focus: true
     modal: true
