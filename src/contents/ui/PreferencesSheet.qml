@@ -527,8 +527,8 @@ KirigamiSettings.ConfigurationView {
                 EeSwitch {
                     id: ignorePresetBlocklist
 
-                    label: i18n("Ignore the blocklist") // qmllint disable
-                    subtitle: i18n("If enabled the blocklist set in the preset file will be ignored. The one previously saved in our database will be used instead.") // qmllint disable
+                    label: i18n("Ignore the blocklist from presets") // qmllint disable
+                    subtitle: i18n("If enabled, the list of excluded apps set in the loaded preset is ignored and does not replace the one set by the user.") // qmllint disable
                     maximumLineCount: -1
                     isChecked: DbMain.ignorePresetBlocklist
                     onCheckedChanged: {
