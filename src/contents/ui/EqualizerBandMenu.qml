@@ -3,26 +3,23 @@ import QtQuick.Layouts
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
-Kirigami.OverlaySheet {
+Kirigami.Dialog {
     id: bandMenu
 
     property int index: 0
     property var menuButton: null
     required property var bandDB
 
-    parent: applicationWindow().overlay// qmllint disable
+    title: `${i18n("Band")} ${bandMenu.index + 1}` // qmllint disable
     closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnReleaseOutside
     focus: true
-    y: appWindow.header.height + Kirigami.Units.gridUnit// qmllint disable
-    implicitWidth: Math.min(columnLayout.implicitWidth, appWindow.width * 0.8) + 4 * Kirigami.Units.iconSizes.large// qmllint disable
-    implicitHeight: Math.min(bandMenu.header.height + bandMenu.footer.height + 1.2 * columnLayout.implicitHeight, bandMenu.parent.height - (bandMenu.header.height + bandMenu.footer.height) - bandMenu.y)
+    modal: true
+    implicitWidth: Math.min(Kirigami.Units.gridUnit * 30, appWindow.width * 0.8)// qmllint disable
+    bottomPadding: 1
+    anchors.centerIn: parent
 
     onClosed: {
         menuButton.checked = false;
-    }
-
-    header: Controls.Label {
-        text: `${i18n("Band")} ${bandMenu.index + 1}` // qmllint disable
     }
 
     footer: RowLayout {
@@ -30,6 +27,8 @@ Kirigami.OverlaySheet {
             id: bandType
 
             readonly property string bandName: `band${bandMenu.index}Type`
+
+            Layout.margins: Kirigami.Units.smallSpacing
             text: i18n("Type") // qmllint disable
             displayMode: FormCard.FormComboBoxDelegate.ComboBox
             currentIndex: bandMenu.bandDB[bandName]
@@ -42,6 +41,8 @@ Kirigami.OverlaySheet {
 
         FormCard.FormComboBoxDelegate {
             readonly property string bandName: `band${bandMenu.index}Mode`
+
+            Layout.margins: Kirigami.Units.smallSpacing
             text: i18n("Mode") // qmllint disable
             displayMode: FormCard.FormComboBoxDelegate.ComboBox
             currentIndex: bandMenu.bandDB[bandName]
@@ -54,6 +55,8 @@ Kirigami.OverlaySheet {
 
         FormCard.FormComboBoxDelegate {
             readonly property string bandName: `band${bandMenu.index}Slope`
+
+            Layout.margins: Kirigami.Units.smallSpacing
             text: i18n("Slope") // qmllint disable
             displayMode: FormCard.FormComboBoxDelegate.ComboBox
             currentIndex: bandMenu.bandDB[bandName]
@@ -68,7 +71,11 @@ Kirigami.OverlaySheet {
     ColumnLayout {
         id: columnLayout
 
+        spacing: 0
+
         RowLayout {
+            Layout.margins: Kirigami.Units.smallSpacing
+
             EeSpinBox {
                 readonly property string bandName: `band${bandMenu.index}Frequency`
                 label: i18n("Frequency") // qmllint disable
@@ -90,6 +97,8 @@ Kirigami.OverlaySheet {
         }
 
         RowLayout {
+            Layout.margins: Kirigami.Units.smallSpacing
+
             EeSpinBox {
                 readonly property string bandName: `band${bandMenu.index}Gain`
                 label: i18n("Gain") // qmllint disable
@@ -111,6 +120,8 @@ Kirigami.OverlaySheet {
         }
 
         RowLayout {
+            Layout.margins: Kirigami.Units.smallSpacing
+
             EeSpinBox {
                 readonly property string bandName: `band${bandMenu.index}Q`
                 label: i18n("Quality") // qmllint disable
@@ -131,6 +142,8 @@ Kirigami.OverlaySheet {
         }
 
         RowLayout {
+            Layout.margins: Kirigami.Units.smallSpacing
+
             EeSpinBox {
                 readonly property string bandName: `band${bandMenu.index}Width`
                 enabled: (bandType.currentIndex === 9 || bandType.currentIndex === 10 || bandType.currentIndex === 11) ? true : false
@@ -154,6 +167,8 @@ Kirigami.OverlaySheet {
 
         EeSwitch {
             readonly property string bandName: `band${bandMenu.index}Mute`
+
+            Layout.margins: Kirigami.Units.smallSpacing
             label: i18n("Mute") // qmllint disable
             isChecked: bandMenu.bandDB[bandName]
             onCheckedChanged: {
@@ -164,6 +179,8 @@ Kirigami.OverlaySheet {
 
         EeSwitch {
             readonly property string bandName: `band${bandMenu.index}Solo`
+
+            Layout.margins: Kirigami.Units.smallSpacing
             label: i18n("Solo") // qmllint disable
             isChecked: bandMenu.bandDB[bandName]
             onCheckedChanged: {
