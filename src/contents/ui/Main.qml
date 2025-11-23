@@ -280,7 +280,8 @@ Kirigami.ApplicationWindow {
 
                 delegate: MenuItem {
                     text: modelData// qmllint disable
-                    icon.name: DbMain.lastLoadedInputPreset === modelData ? "checkbox-symbolic" : ""
+                    checkable: true
+                    checked: DbMain.lastLoadedInputPreset === modelData
                     onTriggered: {
                         Presets.Manager.loadLocalPresetFile(0, modelData);// qmllint disable
 
@@ -297,7 +298,8 @@ Kirigami.ApplicationWindow {
 
                 delegate: MenuItem {
                     text: modelData// qmllint disable
-                    icon.name: DbMain.lastLoadedOutputPreset === modelData ? "checkbox-symbolic" : ""
+                    checkable: true
+                    checked: DbMain.lastLoadedOutputPreset === modelData
                     onTriggered: {
                         Presets.Manager.loadLocalPresetFile(1, modelData);// qmllint disable
 
