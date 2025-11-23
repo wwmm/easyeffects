@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-22 20:17-0300\n"
+"POT-Creation-Date: 2025-11-23 12:50-0300\n"
 "PO-Revision-Date: 2025-11-15 18:03+0000\n"
 "Last-Translator: Wellington Wallace <wellingtonwallace@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -407,7 +407,7 @@ msgstr "Ouvir"
 #: src/contents/ui/Exciter.qml:232 src/contents/ui/Expander.qml:871
 #: src/contents/ui/Filter.qml:230 src/contents/ui/Gate.qml:1008
 #: src/contents/ui/Limiter.qml:626 src/contents/ui/Loudness.qml:195
-#: src/contents/ui/Main.qml:561 src/contents/ui/Maximizer.qml:133
+#: src/contents/ui/Main.qml:563 src/contents/ui/Maximizer.qml:133
 #: src/contents/ui/MultibandCompressor.qml:996
 #: src/contents/ui/MultibandGate.qml:969 src/contents/ui/Reverb.qml:337
 #: src/contents/ui/RNNoise.qml:326 src/contents/ui/Speex.qml:173
@@ -417,7 +417,7 @@ msgstr "Reiniciar"
 
 #: src/contents/ui/BassLoudness.qml:63 src/contents/ui/Compressor.qml:462
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:420
-#: src/contents/ui/Gate.qml:435 src/contents/ui/Main.qml:489
+#: src/contents/ui/Gate.qml:435 src/contents/ui/Main.qml:491
 #: src/contents/ui/StereoTools.qml:248
 msgid "Output"
 msgstr "Saída"
@@ -447,9 +447,9 @@ msgstr "Adicionar aos aplicativos excluídos"
 #: src/contents/ui/ConvolverImpulseSheet.qml:65
 #: src/contents/ui/MenuAddPlugins.qml:36
 #: src/contents/ui/PageStreamsEffects.qml:79
-#: src/contents/ui/PresetsAutoloadingPage.qml:122
-#: src/contents/ui/PresetsCommunityPage.qml:67
-#: src/contents/ui/PresetsLocalPage.qml:167 src/contents/ui/RNNoise.qml:211
+#: src/contents/ui/PresetsAutoloadingPage.qml:127
+#: src/contents/ui/PresetsCommunityPage.qml:72
+#: src/contents/ui/PresetsLocalPage.qml:174 src/contents/ui/RNNoise.qml:211
 msgid "Empty List"
 msgstr "Lista Vazia"
 
@@ -911,8 +911,8 @@ msgstr "Falha ao importar o arquivo de impulso do Convolver."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:45
 #: src/contents/ui/MenuAddPlugins.qml:168
-#: src/contents/ui/PresetsCommunityPage.qml:39
-#: src/contents/ui/PresetsLocalPage.qml:138
+#: src/contents/ui/PresetsCommunityPage.qml:40
+#: src/contents/ui/PresetsLocalPage.qml:141
 msgid "Search"
 msgstr "Buscar"
 
@@ -1022,7 +1022,7 @@ msgstr "Predefinições de alimentação cruzada"
 msgid "Default"
 msgstr "Padrão"
 
-#: src/contents/ui/Crossfeed.qml:145 src/contents/ui/Main.qml:463
+#: src/contents/ui/Crossfeed.qml:145 src/contents/ui/Main.qml:465
 #: src/contents/ui/PreferencesSheet.qml:45 src/contents/ui/Reverb.qml:314
 msgid "Presets"
 msgstr "Predefinições"
@@ -1326,7 +1326,7 @@ msgstr "Controle de níveis de áudio"
 msgid "Input and output gain controls with level meters"
 msgstr "Controles de ganho de entrada e saída com medidores de nível"
 
-#: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/Main.qml:502
+#: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/Main.qml:504
 #: src/contents/ui/StereoTools.qml:39
 msgid "Input"
 msgstr "Entrada"
@@ -1930,75 +1930,75 @@ msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr ""
 "Tem certeza de que deseja redefinir todas as configurações do Easy Effects?"
 
-#: src/contents/ui/Main.qml:286 src/contents/ui/Main.qml:302
+#: src/contents/ui/Main.qml:287 src/contents/ui/Main.qml:304
 msgid "Preset Loaded"
 msgstr "Predefinição carregada"
 
-#: src/contents/ui/Main.qml:313 src/contents/ui/Main.qml:325
+#: src/contents/ui/Main.qml:315 src/contents/ui/Main.qml:327
 #, fuzzy
 msgid "Clear List"
 msgstr "Lista de Clientes"
 
-#: src/contents/ui/Main.qml:314 src/contents/ui/Main.qml:326
+#: src/contents/ui/Main.qml:316 src/contents/ui/Main.qml:328
 #, fuzzy
 msgid "Are you sure you want to clear this list?"
 msgstr "Tem certeza de que deseja remover esta predefinição da lista?"
 
-#: src/contents/ui/Main.qml:335
+#: src/contents/ui/Main.qml:337
 msgid "Input Presets"
 msgstr "Predefinições de Entrada"
 
-#: src/contents/ui/Main.qml:350
+#: src/contents/ui/Main.qml:352
 msgid "Output Presets"
 msgstr "Predefinições de Saída"
 
-#: src/contents/ui/Main.qml:381
+#: src/contents/ui/Main.qml:383
 msgid "Active"
 msgstr "Ativo"
 
-#: src/contents/ui/Main.qml:392 src/contents/ui/Main.qml:541
+#: src/contents/ui/Main.qml:394 src/contents/ui/Main.qml:543
 #: src/contents/ui/ShortcutsSheet.qml:368
 msgid "Shortcuts"
 msgstr "Atalhos"
 
-#: src/contents/ui/Main.qml:401 src/contents/ui/Main.qml:549
+#: src/contents/ui/Main.qml:403 src/contents/ui/Main.qml:551
 msgid "Manual"
 msgstr "Manual"
 
-#: src/contents/ui/Main.qml:413 src/contents/ui/Main.qml:581
+#: src/contents/ui/Main.qml:415 src/contents/ui/Main.qml:583
 msgid "Quit"
 msgstr "Desistir"
 
-#: src/contents/ui/Main.qml:437
+#: src/contents/ui/Main.qml:439
 msgid "Go back"
 msgstr ""
 
-#: src/contents/ui/Main.qml:447 src/contents/ui/PageStreamsEffects.qml:628
+#: src/contents/ui/Main.qml:449 src/contents/ui/PageStreamsEffects.qml:628
 msgid "Effects"
 msgstr "Efeitos"
 
-#: src/contents/ui/Main.qml:448
+#: src/contents/ui/Main.qml:450
 #, fuzzy
 msgid "Turn effects on/off"
 msgstr "Ativar/desativar efeitos"
 
-#: src/contents/ui/Main.qml:459
+#: src/contents/ui/Main.qml:461
 msgid "Audio effects are enabled."
 msgstr ""
 
-#: src/contents/ui/Main.qml:459
+#: src/contents/ui/Main.qml:461
 msgid "Audio effects are disabled."
 msgstr ""
 
-#: src/contents/ui/Main.qml:515
+#: src/contents/ui/Main.qml:517
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/contents/ui/Main.qml:533
+#: src/contents/ui/Main.qml:535
 msgid "Preferences"
 msgstr "Preferências"
 
-#: src/contents/ui/Main.qml:573
+#: src/contents/ui/Main.qml:575
 msgid "About Easy Effects"
 msgstr "Sobre o Easy Effects"
 
@@ -2011,7 +2011,7 @@ msgstr ""
 msgid "Added a new effect to the pipeline: %1"
 msgstr "Adicionado um novo efeito ao pipeline: %1"
 
-#: src/contents/ui/MenuAddPlugins.qml:184
+#: src/contents/ui/MenuAddPlugins.qml:184 src/contents/ui/PresetsDialog.qml:110
 #, fuzzy
 msgctxt "@action:button"
 msgid "Close"
@@ -2388,14 +2388,14 @@ msgid "Show the tray icon"
 msgstr "Mostrar o ícone da bandeja"
 
 #: src/contents/ui/PreferencesSheet.qml:104
-msgid "Do not show our window"
+msgid "Do not show the application window"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:105
 msgid ""
-"Do not show our window after that application starts. In general this option "
-"should not be used. It is intended as a workaround for systems that do not "
-"work well with our autostart file."
+"Do not show the window when the application starts. In general this option "
+"should not be enabled. It is intended only as a workaround for systems that "
+"do not work well with the autostart of Easy Effects."
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:125
@@ -2642,13 +2642,13 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:530
 #, fuzzy
-msgid "Ignore the blocklist"
+msgid "Ignore the blocklist from presets"
 msgstr "Adicionar à Lista de Bloqueio"
 
 #: src/contents/ui/PreferencesSheet.qml:531
 msgid ""
-"If enabled the blocklist set in the preset file will be ignored. The one "
-"previously saved in our database will be used instead."
+"If enabled, the list of excluded apps set in the loaded preset is ignored "
+"and does not replace the one set by the user."
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:552
@@ -2682,62 +2682,83 @@ msgstr "Frequência das Atualizações"
 msgid "Related to LV2 plugins."
 msgstr "Relacionado ao Módulo de Extensão LV2"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:30
-#: src/contents/ui/PresetsAutoloadingPage.qml:154
+#: src/contents/ui/PresetsAutoloadingPage.qml:31
+#: src/contents/ui/PresetsAutoloadingPage.qml:159
 msgid "Device"
 msgstr "Dispositivo"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:36
-#: src/contents/ui/PresetsAutoloadingPage.qml:196
+#: src/contents/ui/PresetsAutoloadingPage.qml:37
+#: src/contents/ui/PresetsAutoloadingPage.qml:201
 msgid "Route"
 msgstr ""
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:77
-#: src/contents/ui/PresetsAutoloadingPage.qml:209
+#: src/contents/ui/PresetsAutoloadingPage.qml:78
+#: src/contents/ui/PresetsAutoloadingPage.qml:214
 #, fuzzy
 msgid "Local preset"
 msgstr "Predefinição local"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:87
+#: src/contents/ui/PresetsAutoloadingPage.qml:88
 msgid "Create"
 msgstr "Criar"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:89
+#: src/contents/ui/PresetsAutoloadingPage.qml:90
 #, fuzzy
 msgid "Create a new autoloading preset"
 msgstr "Remover as Predefinições que Foram Carregadas Automaticamente"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:168
+#: src/contents/ui/PresetsAutoloadingPage.qml:173
 #, fuzzy
 msgid "Remove this autoloading preset"
 msgstr "Remover as Predefinições que Foram Carregadas Automaticamente"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:182
+#: src/contents/ui/PresetsAutoloadingPage.qml:187
 msgid "Description"
 msgstr "Descrição"
 
-#: src/contents/ui/PresetsCommunityPage.qml:99
+#: src/contents/ui/PresetsCommunityPage.qml:104
 #, fuzzy
 msgid "Copy to local presets"
 msgstr "Copiar para a lista local"
 
-#: src/contents/ui/PresetsCommunityPage.qml:104
+#: src/contents/ui/PresetsCommunityPage.qml:109
 #, fuzzy
 msgid "Imported the %1 community preset to the list of local presets."
 msgstr ""
 "Importou a Predefinição da Comunidade %1 para a Lista de Predefinições "
 "Locais."
 
-#: src/contents/ui/PresetsCommunityPage.qml:106
+#: src/contents/ui/PresetsCommunityPage.qml:111
 #, fuzzy
 msgid "Failed to import the %1 community preset to the list of local presets."
 msgstr ""
 "Falha ao importar a predefinição da comunidade %1 para a lista de "
 "predefinições locais."
 
-#: src/contents/ui/PresetsCommunityPage.qml:126
+#: src/contents/ui/PresetsCommunityPage.qml:131
 msgid "Refresh"
 msgstr "Atualizar"
+
+#: src/contents/ui/PresetsDialog.qml:83 src/contents/ui/PresetsDialog.qml:133
+msgid "Local"
+msgstr "Local"
+
+#: src/contents/ui/PresetsDialog.qml:91 src/contents/ui/PresetsDialog.qml:133
+msgid "Community"
+msgstr "Comunidade"
+
+#: src/contents/ui/PresetsDialog.qml:99
+msgid "Autoloading"
+msgstr "Carregamento automático"
+
+#: src/contents/ui/PresetsDialog.qml:131
+#, fuzzy
+msgid "No preset loaded"
+msgstr "Nenhuma Predefinição Foi Carregada"
+
+#: src/contents/ui/PresetsDialog.qml:148
+msgid "Fallback Preset"
+msgstr "Predefinição de fallback"
 
 #: src/contents/ui/PresetsLocalPage.qml:31
 #, fuzzy
@@ -2763,63 +2784,63 @@ msgstr "Exportar todas as predefinições para uma pasta externa."
 msgid "Failed to export all presets to an external folder."
 msgstr "Falha ao exportar todas as predefinições para uma pasta externa."
 
-#: src/contents/ui/PresetsLocalPage.qml:59
+#: src/contents/ui/PresetsLocalPage.qml:60
 #, fuzzy
 msgid "New preset name"
 msgstr "Novo Nome da Predefinição"
 
-#: src/contents/ui/PresetsLocalPage.qml:75
+#: src/contents/ui/PresetsLocalPage.qml:76
 #, fuzzy
 msgid "Import preset file"
 msgstr "Importar arquivo predefinido"
 
-#: src/contents/ui/PresetsLocalPage.qml:84
+#: src/contents/ui/PresetsLocalPage.qml:85
 #, fuzzy
 msgid "Create new preset"
 msgstr "Criar predefinição"
 
-#: src/contents/ui/PresetsLocalPage.qml:94
+#: src/contents/ui/PresetsLocalPage.qml:95
 #, fuzzy
 msgid "Created a new local preset: %1"
 msgstr "Criar uma nova predefinição local: %1"
 
-#: src/contents/ui/PresetsLocalPage.qml:98
+#: src/contents/ui/PresetsLocalPage.qml:99
 #, fuzzy
 msgid "Failed to create a new local preset: %1"
 msgstr "Falha ao criar uma nova predefinição local: %1"
 
-#: src/contents/ui/PresetsLocalPage.qml:125
+#: src/contents/ui/PresetsLocalPage.qml:127
 #, fuzzy
 msgid "Export presets"
 msgstr "Exportar Predefinições"
 
-#: src/contents/ui/PresetsLocalPage.qml:184
+#: src/contents/ui/PresetsLocalPage.qml:191
 #, fuzzy
 msgid "Save Preset"
 msgstr "Remover predefinição"
 
-#: src/contents/ui/PresetsLocalPage.qml:185
+#: src/contents/ui/PresetsLocalPage.qml:192
 #, fuzzy
 msgid ""
 "Save current settings to the preset:\n"
 "%1"
 msgstr "Salvar configurações nesta predefinição"
 
-#: src/contents/ui/PresetsLocalPage.qml:189
+#: src/contents/ui/PresetsLocalPage.qml:196
 #, fuzzy
 msgid "Saved the current settings to %1 local preset."
 msgstr "Salvou as configurações atuais em %1 Predefinição local."
 
-#: src/contents/ui/PresetsLocalPage.qml:191
+#: src/contents/ui/PresetsLocalPage.qml:198
 #, fuzzy
 msgid "Failed to save the current settings to %1 local preset."
 msgstr "Falha ao salvar as configurações atuais na predefinição local %1."
 
-#: src/contents/ui/PresetsLocalPage.qml:199
+#: src/contents/ui/PresetsLocalPage.qml:206
 msgid "Remove Preset"
 msgstr "Remover predefinição"
 
-#: src/contents/ui/PresetsLocalPage.qml:200
+#: src/contents/ui/PresetsLocalPage.qml:207
 #, fuzzy
 msgid ""
 "Are you sure you want to remove the preset\n"
@@ -2827,73 +2848,52 @@ msgid ""
 "from the list?"
 msgstr "Tem certeza de que deseja remover esta predefinição da lista?"
 
-#: src/contents/ui/PresetsLocalPage.qml:204
+#: src/contents/ui/PresetsLocalPage.qml:211
 #, fuzzy
 msgid "Removed the %1 local preset."
 msgstr "Removida a predefinição local %1."
 
-#: src/contents/ui/PresetsLocalPage.qml:206
+#: src/contents/ui/PresetsLocalPage.qml:213
 #, fuzzy
 msgid "Failed to remove the %1 local preset."
 msgstr "Falha ao remover a predefinição local %1."
 
-#: src/contents/ui/PresetsLocalPage.qml:214
+#: src/contents/ui/PresetsLocalPage.qml:221
 msgid "Rename Preset"
 msgstr "Renomear Predefinição"
 
-#: src/contents/ui/PresetsLocalPage.qml:219
+#: src/contents/ui/PresetsLocalPage.qml:226
 msgid "Rename"
 msgstr "Renomear"
 
-#: src/contents/ui/PresetsLocalPage.qml:228
+#: src/contents/ui/PresetsLocalPage.qml:235
 #, fuzzy
 msgid "Renamed the %1 local preset to %2"
 msgstr "Renomeou a predefinição local %1 para %2"
 
-#: src/contents/ui/PresetsLocalPage.qml:231
+#: src/contents/ui/PresetsLocalPage.qml:238
 #, fuzzy
 msgid "Failed to rename the %1 local preset to %2"
 msgstr "Falha ao renomear a predefinição local %1 para %2"
 
-#: src/contents/ui/PresetsLocalPage.qml:239
+#: src/contents/ui/PresetsLocalPage.qml:246
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: src/contents/ui/PresetsLocalPage.qml:276
+#: src/contents/ui/PresetsLocalPage.qml:283
 #, fuzzy
 msgid "Save settings to this preset"
 msgstr "Salvar configurações nesta predefinição"
 
-#: src/contents/ui/PresetsLocalPage.qml:284
+#: src/contents/ui/PresetsLocalPage.qml:291
 #, fuzzy
 msgid "Rename this preset"
 msgstr "Renomear esta Predefinição"
 
-#: src/contents/ui/PresetsLocalPage.qml:292
+#: src/contents/ui/PresetsLocalPage.qml:299
 #, fuzzy
 msgid "Delete this preset"
 msgstr "Excluir esta predefinição"
-
-#: src/contents/ui/PresetsSheet.qml:76 src/contents/ui/PresetsSheet.qml:113
-msgid "Local"
-msgstr "Local"
-
-#: src/contents/ui/PresetsSheet.qml:84 src/contents/ui/PresetsSheet.qml:113
-msgid "Community"
-msgstr "Comunidade"
-
-#: src/contents/ui/PresetsSheet.qml:92
-msgid "Autoloading"
-msgstr "Carregamento automático"
-
-#: src/contents/ui/PresetsSheet.qml:111
-#, fuzzy
-msgid "No preset loaded"
-msgstr "Nenhuma Predefinição Foi Carregada"
-
-#: src/contents/ui/PresetsSheet.qml:127
-msgid "Fallback Preset"
-msgstr "Predefinição de fallback"
 
 #: src/contents/ui/Reverb.qml:47
 #, fuzzy

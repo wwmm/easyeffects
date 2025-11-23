@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-22 20:17-0300\n"
+"POT-Creation-Date: 2025-11-23 12:50-0300\n"
 "PO-Revision-Date: 2025-11-23 11:51+0000\n"
 "Last-Translator: Suu <suunya21@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
@@ -391,7 +391,7 @@ msgstr "聞く"
 #: src/contents/ui/Exciter.qml:232 src/contents/ui/Expander.qml:871
 #: src/contents/ui/Filter.qml:230 src/contents/ui/Gate.qml:1008
 #: src/contents/ui/Limiter.qml:626 src/contents/ui/Loudness.qml:195
-#: src/contents/ui/Main.qml:561 src/contents/ui/Maximizer.qml:133
+#: src/contents/ui/Main.qml:563 src/contents/ui/Maximizer.qml:133
 #: src/contents/ui/MultibandCompressor.qml:996
 #: src/contents/ui/MultibandGate.qml:969 src/contents/ui/Reverb.qml:337
 #: src/contents/ui/RNNoise.qml:326 src/contents/ui/Speex.qml:173
@@ -401,7 +401,7 @@ msgstr "リセット"
 
 #: src/contents/ui/BassLoudness.qml:63 src/contents/ui/Compressor.qml:462
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:420
-#: src/contents/ui/Gate.qml:435 src/contents/ui/Main.qml:489
+#: src/contents/ui/Gate.qml:435 src/contents/ui/Main.qml:491
 #: src/contents/ui/StereoTools.qml:248
 msgid "Output"
 msgstr "出力"
@@ -429,9 +429,9 @@ msgstr "除外アプリケーションに追加"
 #: src/contents/ui/ConvolverImpulseSheet.qml:65
 #: src/contents/ui/MenuAddPlugins.qml:36
 #: src/contents/ui/PageStreamsEffects.qml:79
-#: src/contents/ui/PresetsAutoloadingPage.qml:122
-#: src/contents/ui/PresetsCommunityPage.qml:67
-#: src/contents/ui/PresetsLocalPage.qml:167 src/contents/ui/RNNoise.qml:211
+#: src/contents/ui/PresetsAutoloadingPage.qml:127
+#: src/contents/ui/PresetsCommunityPage.qml:72
+#: src/contents/ui/PresetsLocalPage.qml:174 src/contents/ui/RNNoise.qml:211
 msgid "Empty List"
 msgstr "リストは空です"
 
@@ -890,8 +890,8 @@ msgstr "コンボルバーインパルスファイルのインポートに失敗
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:45
 #: src/contents/ui/MenuAddPlugins.qml:168
-#: src/contents/ui/PresetsCommunityPage.qml:39
-#: src/contents/ui/PresetsLocalPage.qml:138
+#: src/contents/ui/PresetsCommunityPage.qml:40
+#: src/contents/ui/PresetsLocalPage.qml:141
 msgid "Search"
 msgstr "検索"
 
@@ -999,7 +999,7 @@ msgstr "クロスフィードプリセット"
 msgid "Default"
 msgstr "デフォルト"
 
-#: src/contents/ui/Crossfeed.qml:145 src/contents/ui/Main.qml:463
+#: src/contents/ui/Crossfeed.qml:145 src/contents/ui/Main.qml:465
 #: src/contents/ui/PreferencesSheet.qml:45 src/contents/ui/Reverb.qml:314
 msgid "Presets"
 msgstr "プリセット"
@@ -1276,7 +1276,7 @@ msgstr "オーディオレベル制御"
 msgid "Input and output gain controls with level meters"
 msgstr "レベルメーター付き入出力ゲイン制御"
 
-#: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/Main.qml:502
+#: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/Main.qml:504
 #: src/contents/ui/StereoTools.qml:39
 msgid "Input"
 msgstr "入力"
@@ -1440,14 +1440,16 @@ msgstr ""
 msgid ""
 "Exported the current Equalizer settings of the left channel to an external "
 "APO preset file."
-msgstr "現在のイコライザー左チャンネル設定を外部 APO プリセットファイルにエクスポート"
+msgstr ""
+"現在のイコライザー左チャンネル設定を外部 APO プリセットファイルにエクスポート"
 "しました。"
 
 #: src/contents/ui/Equalizer.qml:101
 msgid ""
 "Exported the current Equalizer settings of the right channel to an external "
 "APO preset file."
-msgstr "現在のイコライザー右チャンネル設定を外部 APO プリセットファイルにエクスポート"
+msgstr ""
+"現在のイコライザー右チャンネル設定を外部 APO プリセットファイルにエクスポート"
 "しました。"
 
 #: src/contents/ui/Equalizer.qml:125 src/contents/ui/Filter.qml:77
@@ -1832,72 +1834,72 @@ msgstr "設定をリセットしますか？"
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr "すべての Easy Effects の設定をリセットしてもよろしいですか？"
 
-#: src/contents/ui/Main.qml:286 src/contents/ui/Main.qml:302
+#: src/contents/ui/Main.qml:287 src/contents/ui/Main.qml:304
 msgid "Preset Loaded"
 msgstr "プリセットを読み込みました"
 
-#: src/contents/ui/Main.qml:313 src/contents/ui/Main.qml:325
+#: src/contents/ui/Main.qml:315 src/contents/ui/Main.qml:327
 msgid "Clear List"
 msgstr "一覧をクリア"
 
-#: src/contents/ui/Main.qml:314 src/contents/ui/Main.qml:326
+#: src/contents/ui/Main.qml:316 src/contents/ui/Main.qml:328
 msgid "Are you sure you want to clear this list?"
 msgstr "この一覧をクリアしてもよろしいですか？"
 
-#: src/contents/ui/Main.qml:335
+#: src/contents/ui/Main.qml:337
 msgid "Input Presets"
 msgstr "入力プリセット"
 
-#: src/contents/ui/Main.qml:350
+#: src/contents/ui/Main.qml:352
 msgid "Output Presets"
 msgstr "出力プリセット"
 
-#: src/contents/ui/Main.qml:381
+#: src/contents/ui/Main.qml:383
 msgid "Active"
 msgstr "有効"
 
-#: src/contents/ui/Main.qml:392 src/contents/ui/Main.qml:541
+#: src/contents/ui/Main.qml:394 src/contents/ui/Main.qml:543
 #: src/contents/ui/ShortcutsSheet.qml:368
 msgid "Shortcuts"
 msgstr "ショートカット"
 
-#: src/contents/ui/Main.qml:401 src/contents/ui/Main.qml:549
+#: src/contents/ui/Main.qml:403 src/contents/ui/Main.qml:551
 msgid "Manual"
 msgstr "マニュアル"
 
-#: src/contents/ui/Main.qml:413 src/contents/ui/Main.qml:581
+#: src/contents/ui/Main.qml:415 src/contents/ui/Main.qml:583
 msgid "Quit"
 msgstr "終了"
 
-#: src/contents/ui/Main.qml:437
+#: src/contents/ui/Main.qml:439
 msgid "Go back"
 msgstr "戻る"
 
-#: src/contents/ui/Main.qml:447 src/contents/ui/PageStreamsEffects.qml:628
+#: src/contents/ui/Main.qml:449 src/contents/ui/PageStreamsEffects.qml:628
 msgid "Effects"
 msgstr "エフェクト"
 
-#: src/contents/ui/Main.qml:448
+#: src/contents/ui/Main.qml:450
 msgid "Turn effects on/off"
 msgstr "エフェクトのオン/オフ"
 
-#: src/contents/ui/Main.qml:459
+#: src/contents/ui/Main.qml:461
 msgid "Audio effects are enabled."
 msgstr "オーディオエフェクトが有効です。"
 
-#: src/contents/ui/Main.qml:459
+#: src/contents/ui/Main.qml:461
 msgid "Audio effects are disabled."
 msgstr "オーディオエフェクトが無効です。"
 
-#: src/contents/ui/Main.qml:515
+#: src/contents/ui/Main.qml:517
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/contents/ui/Main.qml:533
+#: src/contents/ui/Main.qml:535
 msgid "Preferences"
 msgstr "環境設定"
 
-#: src/contents/ui/Main.qml:573
+#: src/contents/ui/Main.qml:575
 msgid "About Easy Effects"
 msgstr "Easy Effects について"
 
@@ -1909,7 +1911,7 @@ msgstr "%1 を追加"
 msgid "Added a new effect to the pipeline: %1"
 msgstr "新しいエフェクトをパイプラインに追加しました: %1"
 
-#: src/contents/ui/MenuAddPlugins.qml:184
+#: src/contents/ui/MenuAddPlugins.qml:184 src/contents/ui/PresetsDialog.qml:110
 msgctxt "@action:button"
 msgid "Close"
 msgstr "閉じる"
@@ -2249,18 +2251,20 @@ msgid "Show the tray icon"
 msgstr "トレイアイコンを表示"
 
 #: src/contents/ui/PreferencesSheet.qml:104
-msgid "Do not show our window"
+#, fuzzy
+msgid "Do not show the application window"
 msgstr "ウィンドウを表示しない"
 
 #: src/contents/ui/PreferencesSheet.qml:105
+#, fuzzy
 msgid ""
-"Do not show our window after that application starts. In general this option "
-"should not be used. It is intended as a workaround for systems that do not "
-"work well with our autostart file."
+"Do not show the window when the application starts. In general this option "
+"should not be enabled. It is intended only as a workaround for systems that "
+"do not work well with the autostart of Easy Effects."
 msgstr ""
-"アプリケーションを起動した後にウィンドウを表示しません。 一般的に、このオプシ"
-"ョンは使用しないでください。 オートスタートファイルでうまく動作しないシステム"
-"のための回避策として使用されます。"
+"アプリケーションを起動した後にウィンドウを表示しません。 一般的に、このオプ"
+"ションは使用しないでください。 オートスタートファイルでうまく動作しないシステ"
+"ムのための回避策として使用されます。"
 
 #: src/contents/ui/PreferencesSheet.qml:125
 msgid "Process all output streams"
@@ -2487,15 +2491,15 @@ msgstr ""
 "新しいデバイスルートを受信してからプリセットを自動読み込みするまでの遅延。"
 
 #: src/contents/ui/PreferencesSheet.qml:530
-msgid "Ignore the blocklist"
+#, fuzzy
+msgid "Ignore the blocklist from presets"
 msgstr "ブロックリストを無視"
 
 #: src/contents/ui/PreferencesSheet.qml:531
 msgid ""
-"If enabled the blocklist set in the preset file will be ignored. The one "
-"previously saved in our database will be used instead."
-msgstr "有効にすると、プリセットファイルに設定されたブロックリストが無視されます。代"
-"わりに最後に保存されたデータベースが使用されます。"
+"If enabled, the list of excluded apps set in the loaded preset is ignored "
+"and does not replace the one set by the user."
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:552
 msgid "Global shortcuts"
@@ -2521,55 +2525,75 @@ msgstr "更新頻度"
 msgid "Related to LV2 plugins."
 msgstr "LV2 プラグインに影響します。"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:30
-#: src/contents/ui/PresetsAutoloadingPage.qml:154
+#: src/contents/ui/PresetsAutoloadingPage.qml:31
+#: src/contents/ui/PresetsAutoloadingPage.qml:159
 msgid "Device"
 msgstr "デバイス"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:36
-#: src/contents/ui/PresetsAutoloadingPage.qml:196
+#: src/contents/ui/PresetsAutoloadingPage.qml:37
+#: src/contents/ui/PresetsAutoloadingPage.qml:201
 msgid "Route"
 msgstr "ルート"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:77
-#: src/contents/ui/PresetsAutoloadingPage.qml:209
+#: src/contents/ui/PresetsAutoloadingPage.qml:78
+#: src/contents/ui/PresetsAutoloadingPage.qml:214
 msgid "Local preset"
 msgstr "ローカルプリセット"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:87
+#: src/contents/ui/PresetsAutoloadingPage.qml:88
 msgid "Create"
 msgstr "作成"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:89
+#: src/contents/ui/PresetsAutoloadingPage.qml:90
 msgid "Create a new autoloading preset"
 msgstr "新しい自動読み込みプリセットを作成"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:168
+#: src/contents/ui/PresetsAutoloadingPage.qml:173
 msgid "Remove this autoloading preset"
 msgstr "自動読み込みプリセットを削除"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:182
+#: src/contents/ui/PresetsAutoloadingPage.qml:187
 msgid "Description"
 msgstr "説明"
 
-#: src/contents/ui/PresetsCommunityPage.qml:99
+#: src/contents/ui/PresetsCommunityPage.qml:104
 msgid "Copy to local presets"
 msgstr "ローカルプリセットにコピー"
 
-#: src/contents/ui/PresetsCommunityPage.qml:104
+#: src/contents/ui/PresetsCommunityPage.qml:109
 msgid "Imported the %1 community preset to the list of local presets."
 msgstr ""
 "コミュニティプリセット %1 をローカルプリセット一覧にインポートしました。"
 
-#: src/contents/ui/PresetsCommunityPage.qml:106
+#: src/contents/ui/PresetsCommunityPage.qml:111
 msgid "Failed to import the %1 community preset to the list of local presets."
 msgstr ""
 "コミュニティプリセット %1 のローカルプリセット一覧へのインポートに失敗しまし"
 "た。"
 
-#: src/contents/ui/PresetsCommunityPage.qml:126
+#: src/contents/ui/PresetsCommunityPage.qml:131
 msgid "Refresh"
 msgstr "更新"
+
+#: src/contents/ui/PresetsDialog.qml:83 src/contents/ui/PresetsDialog.qml:133
+msgid "Local"
+msgstr "ローカル"
+
+#: src/contents/ui/PresetsDialog.qml:91 src/contents/ui/PresetsDialog.qml:133
+msgid "Community"
+msgstr "コミュニティ"
+
+#: src/contents/ui/PresetsDialog.qml:99
+msgid "Autoloading"
+msgstr "自動読み込み"
+
+#: src/contents/ui/PresetsDialog.qml:131
+msgid "No preset loaded"
+msgstr "プリセットが読み込まれていません"
+
+#: src/contents/ui/PresetsDialog.qml:148
+msgid "Fallback Preset"
+msgstr "フォールバックプリセット"
 
 #: src/contents/ui/PresetsLocalPage.qml:31
 msgid "Imported a new local preset from an external file."
@@ -2591,35 +2615,35 @@ msgstr "すべてのプリセットを外部フォルダーにエクスポート
 msgid "Failed to export all presets to an external folder."
 msgstr "すべてのプリセットを外部フォルダーへのエクスポートに失敗しました。"
 
-#: src/contents/ui/PresetsLocalPage.qml:59
+#: src/contents/ui/PresetsLocalPage.qml:60
 msgid "New preset name"
 msgstr "新規プリセット名"
 
-#: src/contents/ui/PresetsLocalPage.qml:75
+#: src/contents/ui/PresetsLocalPage.qml:76
 msgid "Import preset file"
 msgstr "プリセットファイルをインポート"
 
-#: src/contents/ui/PresetsLocalPage.qml:84
+#: src/contents/ui/PresetsLocalPage.qml:85
 msgid "Create new preset"
 msgstr "プリセットを作成"
 
-#: src/contents/ui/PresetsLocalPage.qml:94
+#: src/contents/ui/PresetsLocalPage.qml:95
 msgid "Created a new local preset: %1"
 msgstr "新しいローカルプリセットを作成しました: %1"
 
-#: src/contents/ui/PresetsLocalPage.qml:98
+#: src/contents/ui/PresetsLocalPage.qml:99
 msgid "Failed to create a new local preset: %1"
 msgstr "新しいローカルプリセットの作成に失敗しました: %1"
 
-#: src/contents/ui/PresetsLocalPage.qml:125
+#: src/contents/ui/PresetsLocalPage.qml:127
 msgid "Export presets"
 msgstr "プリセットをエクスポート"
 
-#: src/contents/ui/PresetsLocalPage.qml:184
+#: src/contents/ui/PresetsLocalPage.qml:191
 msgid "Save Preset"
 msgstr "プリセットを保存"
 
-#: src/contents/ui/PresetsLocalPage.qml:185
+#: src/contents/ui/PresetsLocalPage.qml:192
 msgid ""
 "Save current settings to the preset:\n"
 "%1"
@@ -2627,19 +2651,19 @@ msgstr ""
 "現在の設定をプリセットに保存します:\n"
 "%1"
 
-#: src/contents/ui/PresetsLocalPage.qml:189
+#: src/contents/ui/PresetsLocalPage.qml:196
 msgid "Saved the current settings to %1 local preset."
 msgstr "現在の設定をローカルプリセット %1 に保存しました。"
 
-#: src/contents/ui/PresetsLocalPage.qml:191
+#: src/contents/ui/PresetsLocalPage.qml:198
 msgid "Failed to save the current settings to %1 local preset."
 msgstr "現在の設定をローカルプリセット %1 に保存できませんでした。"
 
-#: src/contents/ui/PresetsLocalPage.qml:199
+#: src/contents/ui/PresetsLocalPage.qml:206
 msgid "Remove Preset"
 msgstr "プリセットを削除"
 
-#: src/contents/ui/PresetsLocalPage.qml:200
+#: src/contents/ui/PresetsLocalPage.qml:207
 msgid ""
 "Are you sure you want to remove the preset\n"
 "%1\n"
@@ -2649,65 +2673,45 @@ msgstr ""
 "%1\n"
 "を一覧から削除してもよろしいですか？"
 
-#: src/contents/ui/PresetsLocalPage.qml:204
+#: src/contents/ui/PresetsLocalPage.qml:211
 msgid "Removed the %1 local preset."
 msgstr "ローカルプリセット %1 を削除しました。"
 
-#: src/contents/ui/PresetsLocalPage.qml:206
+#: src/contents/ui/PresetsLocalPage.qml:213
 msgid "Failed to remove the %1 local preset."
 msgstr "ローカルプリセット %1 の削除に失敗しました。"
 
-#: src/contents/ui/PresetsLocalPage.qml:214
+#: src/contents/ui/PresetsLocalPage.qml:221
 msgid "Rename Preset"
 msgstr "プリセット名を変更"
 
-#: src/contents/ui/PresetsLocalPage.qml:219
+#: src/contents/ui/PresetsLocalPage.qml:226
 msgid "Rename"
 msgstr "名前を変更"
 
-#: src/contents/ui/PresetsLocalPage.qml:228
+#: src/contents/ui/PresetsLocalPage.qml:235
 msgid "Renamed the %1 local preset to %2"
 msgstr "ローカルプリセット「%1」を「%2」に名前変更しました"
 
-#: src/contents/ui/PresetsLocalPage.qml:231
+#: src/contents/ui/PresetsLocalPage.qml:238
 msgid "Failed to rename the %1 local preset to %2"
 msgstr "ローカルプリセット「%1」を「%2」への名前変更に失敗しました"
 
-#: src/contents/ui/PresetsLocalPage.qml:239
+#: src/contents/ui/PresetsLocalPage.qml:246
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: src/contents/ui/PresetsLocalPage.qml:276
+#: src/contents/ui/PresetsLocalPage.qml:283
 msgid "Save settings to this preset"
 msgstr "設定をこのプリセットに保存"
 
-#: src/contents/ui/PresetsLocalPage.qml:284
+#: src/contents/ui/PresetsLocalPage.qml:291
 msgid "Rename this preset"
 msgstr "このプリセットの名前を変更"
 
-#: src/contents/ui/PresetsLocalPage.qml:292
+#: src/contents/ui/PresetsLocalPage.qml:299
 msgid "Delete this preset"
 msgstr "このプリセットを削除"
-
-#: src/contents/ui/PresetsSheet.qml:76 src/contents/ui/PresetsSheet.qml:113
-msgid "Local"
-msgstr "ローカル"
-
-#: src/contents/ui/PresetsSheet.qml:84 src/contents/ui/PresetsSheet.qml:113
-msgid "Community"
-msgstr "コミュニティ"
-
-#: src/contents/ui/PresetsSheet.qml:92
-msgid "Autoloading"
-msgstr "自動読み込み"
-
-#: src/contents/ui/PresetsSheet.qml:111
-msgid "No preset loaded"
-msgstr "プリセットが読み込まれていません"
-
-#: src/contents/ui/PresetsSheet.qml:127
-msgid "Fallback Preset"
-msgstr "フォールバックプリセット"
 
 #: src/contents/ui/Reverb.qml:47
 msgid "Room size"
@@ -3150,6 +3154,13 @@ msgstr "イコライザー、コンプレッサーなどのオーディオエフ
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "シンプルなオーディオエフェクト"
+
+#~ msgid ""
+#~ "If enabled the blocklist set in the preset file will be ignored. The one "
+#~ "previously saved in our database will be used instead."
+#~ msgstr ""
+#~ "有効にすると、プリセットファイルに設定されたブロックリストが無視されます。"
+#~ "代わりに最後に保存されたデータベースが使用されます。"
 
 #, fuzzy
 #~ msgid "Hardware profile"

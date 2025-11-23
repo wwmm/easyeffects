@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-22 20:17-0300\n"
+"POT-Creation-Date: 2025-11-23 12:50-0300\n"
 "PO-Revision-Date: 2025-11-23 11:51+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
@@ -388,7 +388,7 @@ msgstr "聆聽"
 #: src/contents/ui/Exciter.qml:232 src/contents/ui/Expander.qml:871
 #: src/contents/ui/Filter.qml:230 src/contents/ui/Gate.qml:1008
 #: src/contents/ui/Limiter.qml:626 src/contents/ui/Loudness.qml:195
-#: src/contents/ui/Main.qml:561 src/contents/ui/Maximizer.qml:133
+#: src/contents/ui/Main.qml:563 src/contents/ui/Maximizer.qml:133
 #: src/contents/ui/MultibandCompressor.qml:996
 #: src/contents/ui/MultibandGate.qml:969 src/contents/ui/Reverb.qml:337
 #: src/contents/ui/RNNoise.qml:326 src/contents/ui/Speex.qml:173
@@ -398,7 +398,7 @@ msgstr "重設"
 
 #: src/contents/ui/BassLoudness.qml:63 src/contents/ui/Compressor.qml:462
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:420
-#: src/contents/ui/Gate.qml:435 src/contents/ui/Main.qml:489
+#: src/contents/ui/Gate.qml:435 src/contents/ui/Main.qml:491
 #: src/contents/ui/StereoTools.qml:248
 msgid "Output"
 msgstr "輸出"
@@ -426,9 +426,9 @@ msgstr "加入至排除的應用程式"
 #: src/contents/ui/ConvolverImpulseSheet.qml:65
 #: src/contents/ui/MenuAddPlugins.qml:36
 #: src/contents/ui/PageStreamsEffects.qml:79
-#: src/contents/ui/PresetsAutoloadingPage.qml:122
-#: src/contents/ui/PresetsCommunityPage.qml:67
-#: src/contents/ui/PresetsLocalPage.qml:167 src/contents/ui/RNNoise.qml:211
+#: src/contents/ui/PresetsAutoloadingPage.qml:127
+#: src/contents/ui/PresetsCommunityPage.qml:72
+#: src/contents/ui/PresetsLocalPage.qml:174 src/contents/ui/RNNoise.qml:211
 msgid "Empty List"
 msgstr "空白列表"
 
@@ -887,8 +887,8 @@ msgstr "匯入 Convolver 脈衝檔案失敗。"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:45
 #: src/contents/ui/MenuAddPlugins.qml:168
-#: src/contents/ui/PresetsCommunityPage.qml:39
-#: src/contents/ui/PresetsLocalPage.qml:138
+#: src/contents/ui/PresetsCommunityPage.qml:40
+#: src/contents/ui/PresetsLocalPage.qml:141
 msgid "Search"
 msgstr "搜尋"
 
@@ -994,7 +994,7 @@ msgstr "交叉饋送預設集"
 msgid "Default"
 msgstr "預設"
 
-#: src/contents/ui/Crossfeed.qml:145 src/contents/ui/Main.qml:463
+#: src/contents/ui/Crossfeed.qml:145 src/contents/ui/Main.qml:465
 #: src/contents/ui/PreferencesSheet.qml:45 src/contents/ui/Reverb.qml:314
 msgid "Presets"
 msgstr "預設集"
@@ -1271,7 +1271,7 @@ msgstr "音訊等級控制"
 msgid "Input and output gain controls with level meters"
 msgstr "使用等級量表的輸入和輸出增益控制"
 
-#: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/Main.qml:502
+#: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/Main.qml:504
 #: src/contents/ui/StereoTools.qml:39
 msgid "Input"
 msgstr "輸入"
@@ -1826,72 +1826,72 @@ msgstr "重置設定？"
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr "確定要重新設定全部 Easy Effects 設定嗎？"
 
-#: src/contents/ui/Main.qml:286 src/contents/ui/Main.qml:302
+#: src/contents/ui/Main.qml:287 src/contents/ui/Main.qml:304
 msgid "Preset Loaded"
 msgstr "預設集已經載入"
 
-#: src/contents/ui/Main.qml:313 src/contents/ui/Main.qml:325
+#: src/contents/ui/Main.qml:315 src/contents/ui/Main.qml:327
 msgid "Clear List"
 msgstr "清除列表"
 
-#: src/contents/ui/Main.qml:314 src/contents/ui/Main.qml:326
+#: src/contents/ui/Main.qml:316 src/contents/ui/Main.qml:328
 msgid "Are you sure you want to clear this list?"
 msgstr "確定要清除此列表？"
 
-#: src/contents/ui/Main.qml:335
+#: src/contents/ui/Main.qml:337
 msgid "Input Presets"
 msgstr "輸入預設集"
 
-#: src/contents/ui/Main.qml:350
+#: src/contents/ui/Main.qml:352
 msgid "Output Presets"
 msgstr "輸出預設集"
 
-#: src/contents/ui/Main.qml:381
+#: src/contents/ui/Main.qml:383
 msgid "Active"
 msgstr "作用"
 
-#: src/contents/ui/Main.qml:392 src/contents/ui/Main.qml:541
+#: src/contents/ui/Main.qml:394 src/contents/ui/Main.qml:543
 #: src/contents/ui/ShortcutsSheet.qml:368
 msgid "Shortcuts"
 msgstr "快速鍵"
 
-#: src/contents/ui/Main.qml:401 src/contents/ui/Main.qml:549
+#: src/contents/ui/Main.qml:403 src/contents/ui/Main.qml:551
 msgid "Manual"
 msgstr "手冊"
 
-#: src/contents/ui/Main.qml:413 src/contents/ui/Main.qml:581
+#: src/contents/ui/Main.qml:415 src/contents/ui/Main.qml:583
 msgid "Quit"
 msgstr "退出"
 
-#: src/contents/ui/Main.qml:437
+#: src/contents/ui/Main.qml:439
 msgid "Go back"
 msgstr "返回"
 
-#: src/contents/ui/Main.qml:447 src/contents/ui/PageStreamsEffects.qml:628
+#: src/contents/ui/Main.qml:449 src/contents/ui/PageStreamsEffects.qml:628
 msgid "Effects"
 msgstr "音效"
 
-#: src/contents/ui/Main.qml:448
+#: src/contents/ui/Main.qml:450
 msgid "Turn effects on/off"
 msgstr "將音效開啟/關閉"
 
-#: src/contents/ui/Main.qml:459
+#: src/contents/ui/Main.qml:461
 msgid "Audio effects are enabled."
 msgstr "音效處理已經啟用。"
 
-#: src/contents/ui/Main.qml:459
+#: src/contents/ui/Main.qml:461
 msgid "Audio effects are disabled."
 msgstr "音效處理已經停用。"
 
-#: src/contents/ui/Main.qml:515
+#: src/contents/ui/Main.qml:517
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/contents/ui/Main.qml:533
+#: src/contents/ui/Main.qml:535
 msgid "Preferences"
 msgstr "偏好設定"
 
-#: src/contents/ui/Main.qml:573
+#: src/contents/ui/Main.qml:575
 msgid "About Easy Effects"
 msgstr "關於 Easy Effects"
 
@@ -1903,7 +1903,7 @@ msgstr "添加 %1"
 msgid "Added a new effect to the pipeline: %1"
 msgstr "已經添加新的音效至管道： %1"
 
-#: src/contents/ui/MenuAddPlugins.qml:184
+#: src/contents/ui/MenuAddPlugins.qml:184 src/contents/ui/PresetsDialog.qml:110
 msgctxt "@action:button"
 msgid "Close"
 msgstr "關閉"
@@ -2243,15 +2243,18 @@ msgid "Show the tray icon"
 msgstr "顯示系統匣圖示"
 
 #: src/contents/ui/PreferencesSheet.qml:104
-msgid "Do not show our window"
+#, fuzzy
+msgid "Do not show the application window"
 msgstr "不要顯示我們的視窗"
 
 #: src/contents/ui/PreferencesSheet.qml:105
+#, fuzzy
 msgid ""
-"Do not show our window after that application starts. In general this option "
-"should not be used. It is intended as a workaround for systems that do not "
-"work well with our autostart file."
-msgstr "不要顯示我們的視窗，在該應用程式啟動之後。一般情況下不宜使用此選項。它意圖作"
+"Do not show the window when the application starts. In general this option "
+"should not be enabled. It is intended only as a workaround for systems that "
+"do not work well with the autostart of Easy Effects."
+msgstr ""
+"不要顯示我們的視窗，在該應用程式啟動之後。一般情況下不宜使用此選項。它意圖作"
 "為一種解法，用於系統無法良好地使用我們的自動啟動檔案。"
 
 #: src/contents/ui/PreferencesSheet.qml:125
@@ -2471,15 +2474,15 @@ msgid ""
 msgstr "接收新裝置路徑和呼叫自動載入預設集之間的延遲。"
 
 #: src/contents/ui/PreferencesSheet.qml:530
-msgid "Ignore the blocklist"
+#, fuzzy
+msgid "Ignore the blocklist from presets"
 msgstr "忽略排除列表"
 
 #: src/contents/ui/PreferencesSheet.qml:531
 msgid ""
-"If enabled the blocklist set in the preset file will be ignored. The one "
-"previously saved in our database will be used instead."
-msgstr "如果啟用，預設集中所設定的排除列表將被忽略。將以之前儲存在我們資料庫中的來代"
-"而用之。"
+"If enabled, the list of excluded apps set in the loaded preset is ignored "
+"and does not replace the one set by the user."
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:552
 msgid "Global shortcuts"
@@ -2505,52 +2508,72 @@ msgstr "更新頻率"
 msgid "Related to LV2 plugins."
 msgstr "與 LV2 插件相關。"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:30
-#: src/contents/ui/PresetsAutoloadingPage.qml:154
+#: src/contents/ui/PresetsAutoloadingPage.qml:31
+#: src/contents/ui/PresetsAutoloadingPage.qml:159
 msgid "Device"
 msgstr "裝置"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:36
-#: src/contents/ui/PresetsAutoloadingPage.qml:196
+#: src/contents/ui/PresetsAutoloadingPage.qml:37
+#: src/contents/ui/PresetsAutoloadingPage.qml:201
 msgid "Route"
 msgstr "路徑"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:77
-#: src/contents/ui/PresetsAutoloadingPage.qml:209
+#: src/contents/ui/PresetsAutoloadingPage.qml:78
+#: src/contents/ui/PresetsAutoloadingPage.qml:214
 msgid "Local preset"
 msgstr "本地預設集"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:87
+#: src/contents/ui/PresetsAutoloadingPage.qml:88
 msgid "Create"
 msgstr "建立"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:89
+#: src/contents/ui/PresetsAutoloadingPage.qml:90
 msgid "Create a new autoloading preset"
 msgstr "建立新的自動載入預設集"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:168
+#: src/contents/ui/PresetsAutoloadingPage.qml:173
 msgid "Remove this autoloading preset"
 msgstr "移除此自動載入預設集"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:182
+#: src/contents/ui/PresetsAutoloadingPage.qml:187
 msgid "Description"
 msgstr "註釋"
 
-#: src/contents/ui/PresetsCommunityPage.qml:99
+#: src/contents/ui/PresetsCommunityPage.qml:104
 msgid "Copy to local presets"
 msgstr "複製至本地預設集"
 
-#: src/contents/ui/PresetsCommunityPage.qml:104
+#: src/contents/ui/PresetsCommunityPage.qml:109
 msgid "Imported the %1 community preset to the list of local presets."
 msgstr "已經匯入 %1 社群預設集至本地預設集列表中。"
 
-#: src/contents/ui/PresetsCommunityPage.qml:106
+#: src/contents/ui/PresetsCommunityPage.qml:111
 msgid "Failed to import the %1 community preset to the list of local presets."
 msgstr "匯入 %1 社區預設集至本地預設集列表失敗。"
 
-#: src/contents/ui/PresetsCommunityPage.qml:126
+#: src/contents/ui/PresetsCommunityPage.qml:131
 msgid "Refresh"
 msgstr "重新整理"
+
+#: src/contents/ui/PresetsDialog.qml:83 src/contents/ui/PresetsDialog.qml:133
+msgid "Local"
+msgstr "本地"
+
+#: src/contents/ui/PresetsDialog.qml:91 src/contents/ui/PresetsDialog.qml:133
+msgid "Community"
+msgstr "社群"
+
+#: src/contents/ui/PresetsDialog.qml:99
+msgid "Autoloading"
+msgstr "自動載入"
+
+#: src/contents/ui/PresetsDialog.qml:131
+msgid "No preset loaded"
+msgstr "無預設集載入"
+
+#: src/contents/ui/PresetsDialog.qml:148
+msgid "Fallback Preset"
+msgstr "退回備用預設集"
 
 #: src/contents/ui/PresetsLocalPage.qml:31
 msgid "Imported a new local preset from an external file."
@@ -2572,35 +2595,35 @@ msgstr "已經匯出全部預設集至外部檔案。"
 msgid "Failed to export all presets to an external folder."
 msgstr "匯出全部預設集至外檔案失敗。"
 
-#: src/contents/ui/PresetsLocalPage.qml:59
+#: src/contents/ui/PresetsLocalPage.qml:60
 msgid "New preset name"
 msgstr "新建預設集名稱"
 
-#: src/contents/ui/PresetsLocalPage.qml:75
+#: src/contents/ui/PresetsLocalPage.qml:76
 msgid "Import preset file"
 msgstr "匯入預設集檔案"
 
-#: src/contents/ui/PresetsLocalPage.qml:84
+#: src/contents/ui/PresetsLocalPage.qml:85
 msgid "Create new preset"
 msgstr "建立新的預設集"
 
-#: src/contents/ui/PresetsLocalPage.qml:94
+#: src/contents/ui/PresetsLocalPage.qml:95
 msgid "Created a new local preset: %1"
 msgstr "已經建立新的本地預設集： %1"
 
-#: src/contents/ui/PresetsLocalPage.qml:98
+#: src/contents/ui/PresetsLocalPage.qml:99
 msgid "Failed to create a new local preset: %1"
 msgstr "失敗建立新的本地預設集： %1"
 
-#: src/contents/ui/PresetsLocalPage.qml:125
+#: src/contents/ui/PresetsLocalPage.qml:127
 msgid "Export presets"
 msgstr "匯出預設集"
 
-#: src/contents/ui/PresetsLocalPage.qml:184
+#: src/contents/ui/PresetsLocalPage.qml:191
 msgid "Save Preset"
 msgstr "儲存預設集"
 
-#: src/contents/ui/PresetsLocalPage.qml:185
+#: src/contents/ui/PresetsLocalPage.qml:192
 msgid ""
 "Save current settings to the preset:\n"
 "%1"
@@ -2608,19 +2631,19 @@ msgstr ""
 "儲存目前設定至預設集：\n"
 "%1"
 
-#: src/contents/ui/PresetsLocalPage.qml:189
+#: src/contents/ui/PresetsLocalPage.qml:196
 msgid "Saved the current settings to %1 local preset."
 msgstr "已經儲存目前設定至 %1 本地預設集。"
 
-#: src/contents/ui/PresetsLocalPage.qml:191
+#: src/contents/ui/PresetsLocalPage.qml:198
 msgid "Failed to save the current settings to %1 local preset."
 msgstr "儲存目前設定至 %1 本地預設集失敗。"
 
-#: src/contents/ui/PresetsLocalPage.qml:199
+#: src/contents/ui/PresetsLocalPage.qml:206
 msgid "Remove Preset"
 msgstr "移除預設集"
 
-#: src/contents/ui/PresetsLocalPage.qml:200
+#: src/contents/ui/PresetsLocalPage.qml:207
 msgid ""
 "Are you sure you want to remove the preset\n"
 "%1\n"
@@ -2630,65 +2653,45 @@ msgstr ""
 "%1\n"
 "來自列表？"
 
-#: src/contents/ui/PresetsLocalPage.qml:204
+#: src/contents/ui/PresetsLocalPage.qml:211
 msgid "Removed the %1 local preset."
 msgstr "已經移除 %1 本地預設集。"
 
-#: src/contents/ui/PresetsLocalPage.qml:206
+#: src/contents/ui/PresetsLocalPage.qml:213
 msgid "Failed to remove the %1 local preset."
 msgstr "移除 %1 本地預設集失敗。"
 
-#: src/contents/ui/PresetsLocalPage.qml:214
+#: src/contents/ui/PresetsLocalPage.qml:221
 msgid "Rename Preset"
 msgstr "重新命名預設集"
 
-#: src/contents/ui/PresetsLocalPage.qml:219
+#: src/contents/ui/PresetsLocalPage.qml:226
 msgid "Rename"
 msgstr "重新命名"
 
-#: src/contents/ui/PresetsLocalPage.qml:228
+#: src/contents/ui/PresetsLocalPage.qml:235
 msgid "Renamed the %1 local preset to %2"
 msgstr "重新命名 %1 本地預設集至 %2"
 
-#: src/contents/ui/PresetsLocalPage.qml:231
+#: src/contents/ui/PresetsLocalPage.qml:238
 msgid "Failed to rename the %1 local preset to %2"
 msgstr "重新命名 %1 本地預設集至 %2 失敗"
 
-#: src/contents/ui/PresetsLocalPage.qml:239
+#: src/contents/ui/PresetsLocalPage.qml:246
 msgid "Cancel"
 msgstr "取消"
 
-#: src/contents/ui/PresetsLocalPage.qml:276
+#: src/contents/ui/PresetsLocalPage.qml:283
 msgid "Save settings to this preset"
 msgstr "儲存設定至此預設集"
 
-#: src/contents/ui/PresetsLocalPage.qml:284
+#: src/contents/ui/PresetsLocalPage.qml:291
 msgid "Rename this preset"
 msgstr "重新命名此預設集"
 
-#: src/contents/ui/PresetsLocalPage.qml:292
+#: src/contents/ui/PresetsLocalPage.qml:299
 msgid "Delete this preset"
 msgstr "刪除此預設集"
-
-#: src/contents/ui/PresetsSheet.qml:76 src/contents/ui/PresetsSheet.qml:113
-msgid "Local"
-msgstr "本地"
-
-#: src/contents/ui/PresetsSheet.qml:84 src/contents/ui/PresetsSheet.qml:113
-msgid "Community"
-msgstr "社群"
-
-#: src/contents/ui/PresetsSheet.qml:92
-msgid "Autoloading"
-msgstr "自動載入"
-
-#: src/contents/ui/PresetsSheet.qml:111
-msgid "No preset loaded"
-msgstr "無預設集載入"
-
-#: src/contents/ui/PresetsSheet.qml:127
-msgid "Fallback Preset"
-msgstr "退回備用預設集"
 
 #: src/contents/ui/Reverb.qml:47
 msgid "Room size"
@@ -3129,6 +3132,13 @@ msgstr "等化器、壓縮器、及其他音效處理"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "簡易音效處理"
+
+#~ msgid ""
+#~ "If enabled the blocklist set in the preset file will be ignored. The one "
+#~ "previously saved in our database will be used instead."
+#~ msgstr ""
+#~ "如果啟用，預設集中所設定的排除列表將被忽略。將以之前儲存在我們資料庫中的來"
+#~ "代而用之。"
 
 #~ msgid "Hardware profile"
 #~ msgstr "硬體設定檔"

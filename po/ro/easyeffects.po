@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-22 20:17-0300\n"
+"POT-Creation-Date: 2025-11-23 12:50-0300\n"
 "PO-Revision-Date: 2025-11-23 11:51+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : "
-"(n==0 || (n%100 > 0 && n%100 < 20)) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
+"20)) ? 1 : 2;\n"
 "X-Generator: Weblate 5.15-dev\n"
 
 #: src/autostart.cpp:89
@@ -391,7 +391,7 @@ msgstr "Ascultă"
 #: src/contents/ui/Exciter.qml:232 src/contents/ui/Expander.qml:871
 #: src/contents/ui/Filter.qml:230 src/contents/ui/Gate.qml:1008
 #: src/contents/ui/Limiter.qml:626 src/contents/ui/Loudness.qml:195
-#: src/contents/ui/Main.qml:561 src/contents/ui/Maximizer.qml:133
+#: src/contents/ui/Main.qml:563 src/contents/ui/Maximizer.qml:133
 #: src/contents/ui/MultibandCompressor.qml:996
 #: src/contents/ui/MultibandGate.qml:969 src/contents/ui/Reverb.qml:337
 #: src/contents/ui/RNNoise.qml:326 src/contents/ui/Speex.qml:173
@@ -401,7 +401,7 @@ msgstr "Restabilește"
 
 #: src/contents/ui/BassLoudness.qml:63 src/contents/ui/Compressor.qml:462
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:420
-#: src/contents/ui/Gate.qml:435 src/contents/ui/Main.qml:489
+#: src/contents/ui/Gate.qml:435 src/contents/ui/Main.qml:491
 #: src/contents/ui/StereoTools.qml:248
 msgid "Output"
 msgstr "Ieșire"
@@ -429,9 +429,9 @@ msgstr "Adăugați la aplicațiile excluse"
 #: src/contents/ui/ConvolverImpulseSheet.qml:65
 #: src/contents/ui/MenuAddPlugins.qml:36
 #: src/contents/ui/PageStreamsEffects.qml:79
-#: src/contents/ui/PresetsAutoloadingPage.qml:122
-#: src/contents/ui/PresetsCommunityPage.qml:67
-#: src/contents/ui/PresetsLocalPage.qml:167 src/contents/ui/RNNoise.qml:211
+#: src/contents/ui/PresetsAutoloadingPage.qml:127
+#: src/contents/ui/PresetsCommunityPage.qml:72
+#: src/contents/ui/PresetsLocalPage.qml:174 src/contents/ui/RNNoise.qml:211
 msgid "Empty List"
 msgstr "Listă goală"
 
@@ -891,8 +891,8 @@ msgstr "Importarea fișierului de impuls al algoritmului de convoluție a eșuat
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:45
 #: src/contents/ui/MenuAddPlugins.qml:168
-#: src/contents/ui/PresetsCommunityPage.qml:39
-#: src/contents/ui/PresetsLocalPage.qml:138
+#: src/contents/ui/PresetsCommunityPage.qml:40
+#: src/contents/ui/PresetsLocalPage.qml:141
 msgid "Search"
 msgstr "Caută"
 
@@ -1001,7 +1001,7 @@ msgstr "Preconfigurări pentru flux încrucișat"
 msgid "Default"
 msgstr "Implicit"
 
-#: src/contents/ui/Crossfeed.qml:145 src/contents/ui/Main.qml:463
+#: src/contents/ui/Crossfeed.qml:145 src/contents/ui/Main.qml:465
 #: src/contents/ui/PreferencesSheet.qml:45 src/contents/ui/Reverb.qml:314
 msgid "Presets"
 msgstr "Preconfigurări"
@@ -1280,7 +1280,7 @@ msgstr ""
 "Controale de amplificare de intrare și ieșire cu indicatoare de nivel "
 "(vumetre)"
 
-#: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/Main.qml:502
+#: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/Main.qml:504
 #: src/contents/ui/StereoTools.qml:39
 msgid "Input"
 msgstr "Intrare"
@@ -1844,72 +1844,72 @@ msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr ""
 "Sunteți sigur că doriți să reinițializați toți parametrii Easy Effects?"
 
-#: src/contents/ui/Main.qml:286 src/contents/ui/Main.qml:302
+#: src/contents/ui/Main.qml:287 src/contents/ui/Main.qml:304
 msgid "Preset Loaded"
 msgstr "Preconfigurare încărcată"
 
-#: src/contents/ui/Main.qml:313 src/contents/ui/Main.qml:325
+#: src/contents/ui/Main.qml:315 src/contents/ui/Main.qml:327
 msgid "Clear List"
 msgstr "Golește lista"
 
-#: src/contents/ui/Main.qml:314 src/contents/ui/Main.qml:326
+#: src/contents/ui/Main.qml:316 src/contents/ui/Main.qml:328
 msgid "Are you sure you want to clear this list?"
 msgstr "Sunteți sigur că doriți să goliți această listă?"
 
-#: src/contents/ui/Main.qml:335
+#: src/contents/ui/Main.qml:337
 msgid "Input Presets"
 msgstr "Preconfigurări de intrare"
 
-#: src/contents/ui/Main.qml:350
+#: src/contents/ui/Main.qml:352
 msgid "Output Presets"
 msgstr "Preconfigurări de ieșire"
 
-#: src/contents/ui/Main.qml:381
+#: src/contents/ui/Main.qml:383
 msgid "Active"
 msgstr "Activ"
 
-#: src/contents/ui/Main.qml:392 src/contents/ui/Main.qml:541
+#: src/contents/ui/Main.qml:394 src/contents/ui/Main.qml:543
 #: src/contents/ui/ShortcutsSheet.qml:368
 msgid "Shortcuts"
 msgstr "Taste de comenzi rapide"
 
-#: src/contents/ui/Main.qml:401 src/contents/ui/Main.qml:549
+#: src/contents/ui/Main.qml:403 src/contents/ui/Main.qml:551
 msgid "Manual"
 msgstr "Manual"
 
-#: src/contents/ui/Main.qml:413 src/contents/ui/Main.qml:581
+#: src/contents/ui/Main.qml:415 src/contents/ui/Main.qml:583
 msgid "Quit"
 msgstr "Ieșire"
 
-#: src/contents/ui/Main.qml:437
+#: src/contents/ui/Main.qml:439
 msgid "Go back"
 msgstr "Înapoi"
 
-#: src/contents/ui/Main.qml:447 src/contents/ui/PageStreamsEffects.qml:628
+#: src/contents/ui/Main.qml:449 src/contents/ui/PageStreamsEffects.qml:628
 msgid "Effects"
 msgstr "Efecte"
 
-#: src/contents/ui/Main.qml:448
+#: src/contents/ui/Main.qml:450
 msgid "Turn effects on/off"
 msgstr "Activează/dezactivează efectele"
 
-#: src/contents/ui/Main.qml:459
+#: src/contents/ui/Main.qml:461
 msgid "Audio effects are enabled."
 msgstr "Efectele audio sunt activate."
 
-#: src/contents/ui/Main.qml:459
+#: src/contents/ui/Main.qml:461
 msgid "Audio effects are disabled."
 msgstr "Efectele audio sunt dezactivate."
 
-#: src/contents/ui/Main.qml:515
+#: src/contents/ui/Main.qml:517
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/contents/ui/Main.qml:533
+#: src/contents/ui/Main.qml:535
 msgid "Preferences"
 msgstr "Preferințe"
 
-#: src/contents/ui/Main.qml:573
+#: src/contents/ui/Main.qml:575
 msgid "About Easy Effects"
 msgstr "Despre Easy Effects"
 
@@ -1921,7 +1921,7 @@ msgstr "Adăugați %1"
 msgid "Added a new effect to the pipeline: %1"
 msgstr "A fost adăugat un efect nou în canalul (pipeline): %1"
 
-#: src/contents/ui/MenuAddPlugins.qml:184
+#: src/contents/ui/MenuAddPlugins.qml:184 src/contents/ui/PresetsDialog.qml:110
 msgctxt "@action:button"
 msgid "Close"
 msgstr "Închide"
@@ -2262,14 +2262,16 @@ msgid "Show the tray icon"
 msgstr "Afișează pictograma în zona de notificare"
 
 #: src/contents/ui/PreferencesSheet.qml:104
-msgid "Do not show our window"
+#, fuzzy
+msgid "Do not show the application window"
 msgstr "Nu afișează fereastra Easy Effects"
 
 #: src/contents/ui/PreferencesSheet.qml:105
+#, fuzzy
 msgid ""
-"Do not show our window after that application starts. In general this option "
-"should not be used. It is intended as a workaround for systems that do not "
-"work well with our autostart file."
+"Do not show the window when the application starts. In general this option "
+"should not be enabled. It is intended only as a workaround for systems that "
+"do not work well with the autostart of Easy Effects."
 msgstr ""
 "Nu afișează fereastra Easy Effects după ce aplicația pornește. În general, "
 "această opțiune nu ar trebui utilizată. Este destinată ca soluție "
@@ -2505,17 +2507,15 @@ msgstr ""
 "încărcarea automată a unei preconfigurări."
 
 #: src/contents/ui/PreferencesSheet.qml:530
-msgid "Ignore the blocklist"
+#, fuzzy
+msgid "Ignore the blocklist from presets"
 msgstr "Ignoră lista de blocare"
 
 #: src/contents/ui/PreferencesSheet.qml:531
 msgid ""
-"If enabled the blocklist set in the preset file will be ignored. The one "
-"previously saved in our database will be used instead."
+"If enabled, the list of excluded apps set in the loaded preset is ignored "
+"and does not replace the one set by the user."
 msgstr ""
-"Dacă această opțiune este activată, lista de blocare definită în fișierul de "
-"preconfigurare va fi ignorată. În schimb, va fi utilizată lista salvată "
-"anterior în baza noastră de date."
 
 #: src/contents/ui/PreferencesSheet.qml:552
 msgid "Global shortcuts"
@@ -2541,56 +2541,76 @@ msgstr "Frecvența de actualizare"
 msgid "Related to LV2 plugins."
 msgstr "Relativ la modulele LV2."
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:30
-#: src/contents/ui/PresetsAutoloadingPage.qml:154
+#: src/contents/ui/PresetsAutoloadingPage.qml:31
+#: src/contents/ui/PresetsAutoloadingPage.qml:159
 msgid "Device"
 msgstr "Dispozitiv"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:36
-#: src/contents/ui/PresetsAutoloadingPage.qml:196
+#: src/contents/ui/PresetsAutoloadingPage.qml:37
+#: src/contents/ui/PresetsAutoloadingPage.qml:201
 msgid "Route"
 msgstr "Rută"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:77
-#: src/contents/ui/PresetsAutoloadingPage.qml:209
+#: src/contents/ui/PresetsAutoloadingPage.qml:78
+#: src/contents/ui/PresetsAutoloadingPage.qml:214
 msgid "Local preset"
 msgstr "Preconfigurare locală"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:87
+#: src/contents/ui/PresetsAutoloadingPage.qml:88
 msgid "Create"
 msgstr "Creează"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:89
+#: src/contents/ui/PresetsAutoloadingPage.qml:90
 msgid "Create a new autoloading preset"
 msgstr "Creează o preconfigurare nouă cu încărcare automată"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:168
+#: src/contents/ui/PresetsAutoloadingPage.qml:173
 msgid "Remove this autoloading preset"
 msgstr "Elimină această preconfigurare cu încărcare automată"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:182
+#: src/contents/ui/PresetsAutoloadingPage.qml:187
 msgid "Description"
 msgstr "Descriere"
 
-#: src/contents/ui/PresetsCommunityPage.qml:99
+#: src/contents/ui/PresetsCommunityPage.qml:104
 msgid "Copy to local presets"
 msgstr "Copiază în lista de preconfigurări locale"
 
-#: src/contents/ui/PresetsCommunityPage.qml:104
+#: src/contents/ui/PresetsCommunityPage.qml:109
 msgid "Imported the %1 community preset to the list of local presets."
 msgstr ""
 "A fost importată preconfigurarea de la comunitate %1 în lista de "
 "preconfigurări locale."
 
-#: src/contents/ui/PresetsCommunityPage.qml:106
+#: src/contents/ui/PresetsCommunityPage.qml:111
 msgid "Failed to import the %1 community preset to the list of local presets."
 msgstr ""
 "Importarea preconfigurării de la comunitate %1 în lista de preconfigurări "
 "locale a eșuat."
 
-#: src/contents/ui/PresetsCommunityPage.qml:126
+#: src/contents/ui/PresetsCommunityPage.qml:131
 msgid "Refresh"
 msgstr "Actualizare"
+
+#: src/contents/ui/PresetsDialog.qml:83 src/contents/ui/PresetsDialog.qml:133
+msgid "Local"
+msgstr "Local"
+
+#: src/contents/ui/PresetsDialog.qml:91 src/contents/ui/PresetsDialog.qml:133
+msgid "Community"
+msgstr "Comunitate"
+
+#: src/contents/ui/PresetsDialog.qml:99
+msgid "Autoloading"
+msgstr "Încărcare automată"
+
+#: src/contents/ui/PresetsDialog.qml:131
+msgid "No preset loaded"
+msgstr "Nicio preconfigurare încărcată"
+
+#: src/contents/ui/PresetsDialog.qml:148
+msgid "Fallback Preset"
+msgstr "Preconfigurare de rezervă"
 
 #: src/contents/ui/PresetsLocalPage.qml:31
 msgid "Imported a new local preset from an external file."
@@ -2613,35 +2633,35 @@ msgstr "Au fost exportate toate preconfigurările într-un dosar extern."
 msgid "Failed to export all presets to an external folder."
 msgstr "Exportarea tuturor preconfigurărilor într-un dosar extern a eșuat."
 
-#: src/contents/ui/PresetsLocalPage.qml:59
+#: src/contents/ui/PresetsLocalPage.qml:60
 msgid "New preset name"
 msgstr "Numele noii preconfigurări"
 
-#: src/contents/ui/PresetsLocalPage.qml:75
+#: src/contents/ui/PresetsLocalPage.qml:76
 msgid "Import preset file"
 msgstr "Importă fișierul de preconfigurare"
 
-#: src/contents/ui/PresetsLocalPage.qml:84
+#: src/contents/ui/PresetsLocalPage.qml:85
 msgid "Create new preset"
 msgstr "Creează o preconfigurare nouă"
 
-#: src/contents/ui/PresetsLocalPage.qml:94
+#: src/contents/ui/PresetsLocalPage.qml:95
 msgid "Created a new local preset: %1"
 msgstr "A fost creată o preconfigurare locală nouă: %1"
 
-#: src/contents/ui/PresetsLocalPage.qml:98
+#: src/contents/ui/PresetsLocalPage.qml:99
 msgid "Failed to create a new local preset: %1"
 msgstr "Crearea unei noi preconfigurării locale a eșuat: %1"
 
-#: src/contents/ui/PresetsLocalPage.qml:125
+#: src/contents/ui/PresetsLocalPage.qml:127
 msgid "Export presets"
 msgstr "Exportă preconfigurări"
 
-#: src/contents/ui/PresetsLocalPage.qml:184
+#: src/contents/ui/PresetsLocalPage.qml:191
 msgid "Save Preset"
 msgstr "Salvează preconfigurarea"
 
-#: src/contents/ui/PresetsLocalPage.qml:185
+#: src/contents/ui/PresetsLocalPage.qml:192
 msgid ""
 "Save current settings to the preset:\n"
 "%1"
@@ -2649,19 +2669,19 @@ msgstr ""
 "Salvează parametrii actuali în preconfigurarea:\n"
 "%1"
 
-#: src/contents/ui/PresetsLocalPage.qml:189
+#: src/contents/ui/PresetsLocalPage.qml:196
 msgid "Saved the current settings to %1 local preset."
 msgstr "Configurația curentă a fost salvată în preconfigurarea locală %1."
 
-#: src/contents/ui/PresetsLocalPage.qml:191
+#: src/contents/ui/PresetsLocalPage.qml:198
 msgid "Failed to save the current settings to %1 local preset."
 msgstr "Salvarea configurației curente în preconfigurarea locală %1 a eșuat."
 
-#: src/contents/ui/PresetsLocalPage.qml:199
+#: src/contents/ui/PresetsLocalPage.qml:206
 msgid "Remove Preset"
 msgstr "Elimină preconfigurarea"
 
-#: src/contents/ui/PresetsLocalPage.qml:200
+#: src/contents/ui/PresetsLocalPage.qml:207
 msgid ""
 "Are you sure you want to remove the preset\n"
 "%1\n"
@@ -2671,65 +2691,45 @@ msgstr ""
 "%1\n"
 "din listă?"
 
-#: src/contents/ui/PresetsLocalPage.qml:204
+#: src/contents/ui/PresetsLocalPage.qml:211
 msgid "Removed the %1 local preset."
 msgstr "A fost eliminată preconfigurarea locală %1."
 
-#: src/contents/ui/PresetsLocalPage.qml:206
+#: src/contents/ui/PresetsLocalPage.qml:213
 msgid "Failed to remove the %1 local preset."
 msgstr "Eliminarea preconfigurării locale %1 a eșuat."
 
-#: src/contents/ui/PresetsLocalPage.qml:214
+#: src/contents/ui/PresetsLocalPage.qml:221
 msgid "Rename Preset"
 msgstr "Redenumește preconfigurarea"
 
-#: src/contents/ui/PresetsLocalPage.qml:219
+#: src/contents/ui/PresetsLocalPage.qml:226
 msgid "Rename"
 msgstr "Redenumește"
 
-#: src/contents/ui/PresetsLocalPage.qml:228
+#: src/contents/ui/PresetsLocalPage.qml:235
 msgid "Renamed the %1 local preset to %2"
 msgstr "Preconfigurarea locală %1 a fost redenumită %2"
 
-#: src/contents/ui/PresetsLocalPage.qml:231
+#: src/contents/ui/PresetsLocalPage.qml:238
 msgid "Failed to rename the %1 local preset to %2"
 msgstr "Redenumirea preconfigurării locale %1 în %2 a eșuat"
 
-#: src/contents/ui/PresetsLocalPage.qml:239
+#: src/contents/ui/PresetsLocalPage.qml:246
 msgid "Cancel"
 msgstr "Anulare"
 
-#: src/contents/ui/PresetsLocalPage.qml:276
+#: src/contents/ui/PresetsLocalPage.qml:283
 msgid "Save settings to this preset"
 msgstr "Salvează parametrii în această preconfigurare"
 
-#: src/contents/ui/PresetsLocalPage.qml:284
+#: src/contents/ui/PresetsLocalPage.qml:291
 msgid "Rename this preset"
 msgstr "Redenumește această preconfigurare"
 
-#: src/contents/ui/PresetsLocalPage.qml:292
+#: src/contents/ui/PresetsLocalPage.qml:299
 msgid "Delete this preset"
 msgstr "Șterge această preconfigurare"
-
-#: src/contents/ui/PresetsSheet.qml:76 src/contents/ui/PresetsSheet.qml:113
-msgid "Local"
-msgstr "Local"
-
-#: src/contents/ui/PresetsSheet.qml:84 src/contents/ui/PresetsSheet.qml:113
-msgid "Community"
-msgstr "Comunitate"
-
-#: src/contents/ui/PresetsSheet.qml:92
-msgid "Autoloading"
-msgstr "Încărcare automată"
-
-#: src/contents/ui/PresetsSheet.qml:111
-msgid "No preset loaded"
-msgstr "Nicio preconfigurare încărcată"
-
-#: src/contents/ui/PresetsSheet.qml:127
-msgid "Fallback Preset"
-msgstr "Preconfigurare de rezervă"
 
 #: src/contents/ui/Reverb.qml:47
 msgid "Room size"
@@ -3171,6 +3171,14 @@ msgstr "Egalizator, compresor și alte efecte audio"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "Efecte audio simple"
+
+#~ msgid ""
+#~ "If enabled the blocklist set in the preset file will be ignored. The one "
+#~ "previously saved in our database will be used instead."
+#~ msgstr ""
+#~ "Dacă această opțiune este activată, lista de blocare definită în fișierul "
+#~ "de preconfigurare va fi ignorată. În schimb, va fi utilizată lista "
+#~ "salvată anterior în baza noastră de date."
 
 #~ msgid "Global bypass. 1 to enable and 2 to disable"
 #~ msgstr "Ocolire globală. 1 pentru a activa, și 2 pentru a dezactiva"

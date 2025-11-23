@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-22 20:17-0300\n"
+"POT-Creation-Date: 2025-11-23 12:50-0300\n"
 "PO-Revision-Date: 2025-07-20 18:38+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/easyeffects/"
@@ -413,7 +413,7 @@ msgstr "Uji Pengaturan"
 #: src/contents/ui/Exciter.qml:232 src/contents/ui/Expander.qml:871
 #: src/contents/ui/Filter.qml:230 src/contents/ui/Gate.qml:1008
 #: src/contents/ui/Limiter.qml:626 src/contents/ui/Loudness.qml:195
-#: src/contents/ui/Main.qml:561 src/contents/ui/Maximizer.qml:133
+#: src/contents/ui/Main.qml:563 src/contents/ui/Maximizer.qml:133
 #: src/contents/ui/MultibandCompressor.qml:996
 #: src/contents/ui/MultibandGate.qml:969 src/contents/ui/Reverb.qml:337
 #: src/contents/ui/RNNoise.qml:326 src/contents/ui/Speex.qml:173
@@ -423,7 +423,7 @@ msgstr "Atur Ulang"
 
 #: src/contents/ui/BassLoudness.qml:63 src/contents/ui/Compressor.qml:462
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:420
-#: src/contents/ui/Gate.qml:435 src/contents/ui/Main.qml:489
+#: src/contents/ui/Gate.qml:435 src/contents/ui/Main.qml:491
 #: src/contents/ui/StereoTools.qml:248
 msgid "Output"
 msgstr "Output"
@@ -454,9 +454,9 @@ msgstr "Aplikasi"
 #: src/contents/ui/ConvolverImpulseSheet.qml:65
 #: src/contents/ui/MenuAddPlugins.qml:36
 #: src/contents/ui/PageStreamsEffects.qml:79
-#: src/contents/ui/PresetsAutoloadingPage.qml:122
-#: src/contents/ui/PresetsCommunityPage.qml:67
-#: src/contents/ui/PresetsLocalPage.qml:167 src/contents/ui/RNNoise.qml:211
+#: src/contents/ui/PresetsAutoloadingPage.qml:127
+#: src/contents/ui/PresetsCommunityPage.qml:72
+#: src/contents/ui/PresetsLocalPage.qml:174 src/contents/ui/RNNoise.qml:211
 msgid "Empty List"
 msgstr "Daftar Kosong"
 
@@ -951,8 +951,8 @@ msgstr "Tidak dapat Memuat Berkas Impuls"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:45
 #: src/contents/ui/MenuAddPlugins.qml:168
-#: src/contents/ui/PresetsCommunityPage.qml:39
-#: src/contents/ui/PresetsLocalPage.qml:138
+#: src/contents/ui/PresetsCommunityPage.qml:40
+#: src/contents/ui/PresetsLocalPage.qml:141
 msgid "Search"
 msgstr ""
 
@@ -1070,7 +1070,7 @@ msgstr "Crossfeed"
 msgid "Default"
 msgstr "Aturan Bawaan"
 
-#: src/contents/ui/Crossfeed.qml:145 src/contents/ui/Main.qml:463
+#: src/contents/ui/Crossfeed.qml:145 src/contents/ui/Main.qml:465
 #: src/contents/ui/PreferencesSheet.qml:45 src/contents/ui/Reverb.qml:314
 msgid "Presets"
 msgstr "Preset"
@@ -1375,7 +1375,7 @@ msgstr ""
 msgid "Input and output gain controls with level meters"
 msgstr ""
 
-#: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/Main.qml:502
+#: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/Main.qml:504
 #: src/contents/ui/StereoTools.qml:39
 msgid "Input"
 msgstr "Masukan"
@@ -1995,81 +1995,81 @@ msgstr "Setelan"
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr ""
 
-#: src/contents/ui/Main.qml:286 src/contents/ui/Main.qml:302
+#: src/contents/ui/Main.qml:287 src/contents/ui/Main.qml:304
 #, fuzzy
 msgid "Preset Loaded"
 msgstr "Nama Preset Input Baru"
 
-#: src/contents/ui/Main.qml:313 src/contents/ui/Main.qml:325
+#: src/contents/ui/Main.qml:315 src/contents/ui/Main.qml:327
 #, fuzzy
 msgid "Clear List"
 msgstr "Sen"
 
-#: src/contents/ui/Main.qml:314 src/contents/ui/Main.qml:326
+#: src/contents/ui/Main.qml:316 src/contents/ui/Main.qml:328
 msgid "Are you sure you want to clear this list?"
 msgstr ""
 
-#: src/contents/ui/Main.qml:335
+#: src/contents/ui/Main.qml:337
 #, fuzzy
 msgid "Input Presets"
 msgstr "Preset Input"
 
-#: src/contents/ui/Main.qml:350
+#: src/contents/ui/Main.qml:352
 msgid "Output Presets"
 msgstr "Preset Output"
 
-#: src/contents/ui/Main.qml:381
+#: src/contents/ui/Main.qml:383
 #, fuzzy
 msgid "Active"
 msgstr "Model Aktif"
 
-#: src/contents/ui/Main.qml:392 src/contents/ui/Main.qml:541
+#: src/contents/ui/Main.qml:394 src/contents/ui/Main.qml:543
 #: src/contents/ui/ShortcutsSheet.qml:368
 #, fuzzy
 msgid "Shortcuts"
 msgstr "Waktu Singkat"
 
-#: src/contents/ui/Main.qml:401 src/contents/ui/Main.qml:549
+#: src/contents/ui/Main.qml:403 src/contents/ui/Main.qml:551
 #, fuzzy
 msgid "Manual"
 msgstr "_Manual"
 
-#: src/contents/ui/Main.qml:413 src/contents/ui/Main.qml:581
+#: src/contents/ui/Main.qml:415 src/contents/ui/Main.qml:583
 msgid "Quit"
 msgstr ""
 
-#: src/contents/ui/Main.qml:437
+#: src/contents/ui/Main.qml:439
 msgid "Go back"
 msgstr ""
 
-#: src/contents/ui/Main.qml:447 src/contents/ui/PageStreamsEffects.qml:628
+#: src/contents/ui/Main.qml:449 src/contents/ui/PageStreamsEffects.qml:628
 #, fuzzy
 msgid "Effects"
 msgstr "EasyEffects"
 
-#: src/contents/ui/Main.qml:448
+#: src/contents/ui/Main.qml:450
 msgid "Turn effects on/off"
 msgstr ""
 
-#: src/contents/ui/Main.qml:459
+#: src/contents/ui/Main.qml:461
 msgid "Audio effects are enabled."
 msgstr ""
 
-#: src/contents/ui/Main.qml:459
+#: src/contents/ui/Main.qml:461
 msgid "Audio effects are disabled."
 msgstr ""
 
-#: src/contents/ui/Main.qml:515
+#: src/contents/ui/Main.qml:517
 #, fuzzy
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/contents/ui/Main.qml:533
+#: src/contents/ui/Main.qml:535
 #, fuzzy
 msgid "Preferences"
 msgstr "_Preferensi"
 
-#: src/contents/ui/Main.qml:573
+#: src/contents/ui/Main.qml:575
 #, fuzzy
 msgid "About Easy Effects"
 msgstr "Tentang EasyEffects"
@@ -2082,7 +2082,7 @@ msgstr ""
 msgid "Added a new effect to the pipeline: %1"
 msgstr ""
 
-#: src/contents/ui/MenuAddPlugins.qml:184
+#: src/contents/ui/MenuAddPlugins.qml:184 src/contents/ui/PresetsDialog.qml:110
 msgctxt "@action:button"
 msgid "Close"
 msgstr ""
@@ -2460,14 +2460,14 @@ msgid "Show the tray icon"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:104
-msgid "Do not show our window"
+msgid "Do not show the application window"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:105
 msgid ""
-"Do not show our window after that application starts. In general this option "
-"should not be used. It is intended as a workaround for systems that do not "
-"work well with our autostart file."
+"Do not show the window when the application starts. In general this option "
+"should not be enabled. It is intended only as a workaround for systems that "
+"do not work well with the autostart of Easy Effects."
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:125
@@ -2696,13 +2696,13 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:530
 #, fuzzy
-msgid "Ignore the blocklist"
+msgid "Ignore the blocklist from presets"
 msgstr "Daftar Blokir"
 
 #: src/contents/ui/PreferencesSheet.qml:531
 msgid ""
-"If enabled the blocklist set in the preset file will be ignored. The one "
-"previously saved in our database will be used instead."
+"If enabled, the list of excluded apps set in the loaded preset is ignored "
+"and does not replace the one set by the user."
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:552
@@ -2732,60 +2732,82 @@ msgstr "Frekuensi"
 msgid "Related to LV2 plugins."
 msgstr ""
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:30
-#: src/contents/ui/PresetsAutoloadingPage.qml:154
+#: src/contents/ui/PresetsAutoloadingPage.qml:31
+#: src/contents/ui/PresetsAutoloadingPage.qml:159
 #, fuzzy
 msgid "Device"
 msgstr "Pembatas Masukan"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:36
-#: src/contents/ui/PresetsAutoloadingPage.qml:196
+#: src/contents/ui/PresetsAutoloadingPage.qml:37
+#: src/contents/ui/PresetsAutoloadingPage.qml:201
 msgid "Route"
 msgstr ""
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:77
-#: src/contents/ui/PresetsAutoloadingPage.qml:209
+#: src/contents/ui/PresetsAutoloadingPage.qml:78
+#: src/contents/ui/PresetsAutoloadingPage.qml:214
 #, fuzzy
 msgid "Local preset"
 msgstr "Daftar Preset Input"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:87
+#: src/contents/ui/PresetsAutoloadingPage.qml:88
 #, fuzzy
 msgid "Create"
 msgstr "membuat"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:89
+#: src/contents/ui/PresetsAutoloadingPage.qml:90
 #, fuzzy
 msgid "Create a new autoloading preset"
 msgstr "Hapus Preset Pemuatan Otomatis"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:168
+#: src/contents/ui/PresetsAutoloadingPage.qml:173
 #, fuzzy
 msgid "Remove this autoloading preset"
 msgstr "Hapus Preset Pemuatan Otomatis"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:182
+#: src/contents/ui/PresetsAutoloadingPage.qml:187
 #, fuzzy
 msgid "Description"
 msgstr "Deteksi"
 
-#: src/contents/ui/PresetsCommunityPage.qml:99
+#: src/contents/ui/PresetsCommunityPage.qml:104
 #, fuzzy
 msgid "Copy to local presets"
 msgstr "Daftar Preset Input"
 
-#: src/contents/ui/PresetsCommunityPage.qml:104
+#: src/contents/ui/PresetsCommunityPage.qml:109
 #, fuzzy
 msgid "Imported the %1 community preset to the list of local presets."
 msgstr "Cari Preset Keluaran"
 
-#: src/contents/ui/PresetsCommunityPage.qml:106
+#: src/contents/ui/PresetsCommunityPage.qml:111
 #, fuzzy
 msgid "Failed to import the %1 community preset to the list of local presets."
 msgstr "Cari Preset Keluaran"
 
-#: src/contents/ui/PresetsCommunityPage.qml:126
+#: src/contents/ui/PresetsCommunityPage.qml:131
 msgid "Refresh"
+msgstr ""
+
+#: src/contents/ui/PresetsDialog.qml:83 src/contents/ui/PresetsDialog.qml:133
+msgid "Local"
+msgstr ""
+
+#: src/contents/ui/PresetsDialog.qml:91 src/contents/ui/PresetsDialog.qml:133
+msgid "Community"
+msgstr ""
+
+#: src/contents/ui/PresetsDialog.qml:99
+#, fuzzy
+msgid "Autoloading"
+msgstr "Autogain"
+
+#: src/contents/ui/PresetsDialog.qml:131
+#, fuzzy
+msgid "No preset loaded"
+msgstr "Nama Preset Input Baru"
+
+#: src/contents/ui/PresetsDialog.qml:148
+msgid "Fallback Preset"
 msgstr ""
 
 #: src/contents/ui/PresetsLocalPage.qml:31
@@ -2813,139 +2835,117 @@ msgstr "Impor File Preset APO"
 msgid "Failed to export all presets to an external folder."
 msgstr "Impor File Preset APO"
 
-#: src/contents/ui/PresetsLocalPage.qml:59
+#: src/contents/ui/PresetsLocalPage.qml:60
 #, fuzzy
 msgid "New preset name"
 msgstr "Nama Preset Input Baru"
 
-#: src/contents/ui/PresetsLocalPage.qml:75
+#: src/contents/ui/PresetsLocalPage.qml:76
 #, fuzzy
 msgid "Import preset file"
 msgstr "Impor File Preset APO"
 
-#: src/contents/ui/PresetsLocalPage.qml:84
+#: src/contents/ui/PresetsLocalPage.qml:85
 #, fuzzy
 msgid "Create new preset"
 msgstr "Buat Preset"
 
-#: src/contents/ui/PresetsLocalPage.qml:94
+#: src/contents/ui/PresetsLocalPage.qml:95
 #, fuzzy
 msgid "Created a new local preset: %1"
 msgstr "Cari Preset Input"
 
-#: src/contents/ui/PresetsLocalPage.qml:98
+#: src/contents/ui/PresetsLocalPage.qml:99
 #, fuzzy
 msgid "Failed to create a new local preset: %1"
 msgstr "Cari Preset Keluaran"
 
-#: src/contents/ui/PresetsLocalPage.qml:125
+#: src/contents/ui/PresetsLocalPage.qml:127
 #, fuzzy
 msgid "Export presets"
 msgstr "Muat Preset"
 
-#: src/contents/ui/PresetsLocalPage.qml:184
+#: src/contents/ui/PresetsLocalPage.qml:191
 #, fuzzy
 msgid "Save Preset"
 msgstr "Buat Preset"
 
-#: src/contents/ui/PresetsLocalPage.qml:185
+#: src/contents/ui/PresetsLocalPage.qml:192
 #, fuzzy
 msgid ""
 "Save current settings to the preset:\n"
 "%1"
 msgstr "Simpan Setelan Saat Ini Ke Berkas Preset"
 
-#: src/contents/ui/PresetsLocalPage.qml:189
+#: src/contents/ui/PresetsLocalPage.qml:196
 #, fuzzy
 msgid "Saved the current settings to %1 local preset."
 msgstr "Simpan Setelan Saat Ini Ke Berkas Preset"
 
-#: src/contents/ui/PresetsLocalPage.qml:191
+#: src/contents/ui/PresetsLocalPage.qml:198
 #, fuzzy
 msgid "Failed to save the current settings to %1 local preset."
 msgstr "Simpan Setelan Saat Ini Ke Berkas Preset"
 
-#: src/contents/ui/PresetsLocalPage.qml:199
+#: src/contents/ui/PresetsLocalPage.qml:206
 #, fuzzy
 msgid "Remove Preset"
 msgstr "Buat Preset"
 
-#: src/contents/ui/PresetsLocalPage.qml:200
+#: src/contents/ui/PresetsLocalPage.qml:207
 msgid ""
 "Are you sure you want to remove the preset\n"
 "%1\n"
 "from the list?"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:204
+#: src/contents/ui/PresetsLocalPage.qml:211
 #, fuzzy
 msgid "Removed the %1 local preset."
 msgstr "Hapus Preset Pemuatan Otomatis"
 
-#: src/contents/ui/PresetsLocalPage.qml:206
+#: src/contents/ui/PresetsLocalPage.qml:213
 #, fuzzy
 msgid "Failed to remove the %1 local preset."
 msgstr "Impor File Preset APO"
 
-#: src/contents/ui/PresetsLocalPage.qml:214
+#: src/contents/ui/PresetsLocalPage.qml:221
 #, fuzzy
 msgid "Rename Preset"
 msgstr "Buat Preset"
 
-#: src/contents/ui/PresetsLocalPage.qml:219
+#: src/contents/ui/PresetsLocalPage.qml:226
 msgid "Rename"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:228
+#: src/contents/ui/PresetsLocalPage.qml:235
 #, fuzzy
 msgid "Renamed the %1 local preset to %2"
 msgstr "Hapus Berkas Preset Ini"
 
-#: src/contents/ui/PresetsLocalPage.qml:231
+#: src/contents/ui/PresetsLocalPage.qml:238
 #, fuzzy
 msgid "Failed to rename the %1 local preset to %2"
 msgstr "Tidak dapat Memuat Berkas Impuls"
 
-#: src/contents/ui/PresetsLocalPage.qml:239
+#: src/contents/ui/PresetsLocalPage.qml:246
 msgid "Cancel"
 msgstr "Batal"
 
-#: src/contents/ui/PresetsLocalPage.qml:276
+#: src/contents/ui/PresetsLocalPage.qml:283
 #, fuzzy
 msgid "Save settings to this preset"
 msgstr "Simpan Setelan Saat Ini Ke Berkas Preset"
 
-#: src/contents/ui/PresetsLocalPage.qml:284
+#: src/contents/ui/PresetsLocalPage.qml:291
 #, fuzzy
 msgid "Rename this preset"
 msgstr "Hapus Berkas Preset Ini"
 
-#: src/contents/ui/PresetsLocalPage.qml:292
+#: src/contents/ui/PresetsLocalPage.qml:299
 #, fuzzy
 msgid "Delete this preset"
 msgstr "Hapus Berkas Preset Ini"
-
-#: src/contents/ui/PresetsSheet.qml:76 src/contents/ui/PresetsSheet.qml:113
-msgid "Local"
-msgstr ""
-
-#: src/contents/ui/PresetsSheet.qml:84 src/contents/ui/PresetsSheet.qml:113
-msgid "Community"
-msgstr ""
-
-#: src/contents/ui/PresetsSheet.qml:92
-#, fuzzy
-msgid "Autoloading"
-msgstr "Autogain"
-
-#: src/contents/ui/PresetsSheet.qml:111
-#, fuzzy
-msgid "No preset loaded"
-msgstr "Nama Preset Input Baru"
-
-#: src/contents/ui/PresetsSheet.qml:127
-msgid "Fallback Preset"
-msgstr ""
 
 #: src/contents/ui/Reverb.qml:47
 #, fuzzy
