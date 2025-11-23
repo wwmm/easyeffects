@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import org.kde.kirigami as Kirigami
+import org.kde.kirigamiaddons.delegates as Delegates
 
 //The ItemDelegate must be inside a Item for Kirigami.ListItemDragHandle to work.
 //The item beind dragged can not be the direct child.
@@ -24,7 +25,7 @@ Item {
 
     height: listItemDelegate.height
 
-    Controls.ItemDelegate {
+    Delegates.RoundedItemDelegate {
         id: listItemDelegate
 
         anchors {
@@ -33,7 +34,6 @@ Item {
         }
 
         hoverEnabled: true
-        // width: parent.width
         highlighted: delegateItem.ListView.isCurrentItem
         onClicked: {
             delegateItem.ListView.view.currentIndex = delegateItem.index;
