@@ -25,7 +25,7 @@ qt_add_qml_module(easyeffects
         contents/ui/Autogain.qml
         contents/ui/BassEnhancer.qml
         contents/ui/BassLoudness.qml
-        contents/ui/BlocklistSheet.qml
+        contents/ui/BlocklistDialog.qml
         contents/ui/Compressor.qml
         contents/ui/Convolver.qml
         contents/ui/ConvolverImpulseSheet.qml

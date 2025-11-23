@@ -5,27 +5,30 @@ import QtQuick.Layouts
 import "Common.js" as Common
 import org.kde.kirigami as Kirigami
 
-Kirigami.OverlaySheet {
+Kirigami.Dialog {
     id: control
 
     required property var streamDB
 
     title: i18n("Excluded Applications") // qmllint disable
-    parent: applicationWindow().overlay // qmllint disable
     closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutsideParent
     focus: true
-    y: 0
-    implicitHeight: appWindow.maxOverlayHeight // qmllint disable
+    modal: true
+    implicitWidth: Math.min(Kirigami.Units.gridUnit * 30, appWindow.width * 0.8)// qmllint disable
+    implicitHeight: Math.min(Kirigami.Units.gridUnit * 40, Math.round(Controls.ApplicationWindow.window.height * 0.8))
+    bottomPadding: 1
+    anchors.centerIn: parent
 
     ColumnLayout {
         id: columnLayout
 
-        Layout.preferredWidth: Kirigami.Units.gridUnit * 30
+        spacing: 0
 
         Kirigami.ActionTextField {
             id: newBlockedApp
 
             Layout.fillWidth: true
+            Layout.margins: Kirigami.Units.smallSpacing
             placeholderText: i18n("Application node name") // qmllint disable
             // based on https://github.com/KDE/kirigami/blob/master/src/controls/SearchField.qml
             leftPadding: {
@@ -168,22 +171,25 @@ Kirigami.OverlaySheet {
         }
     }
 
-    footer: Kirigami.ActionToolBar {
-        alignment: Qt.AlignRight
-        position: Controls.ToolBar.Footer
-        actions: [
-            Kirigami.Action {
-                text: i18n("Show excluded apps") // qmllint disable
-                tooltip: i18n("Show excluded applications in the list of players/recorders") // qmllint disable
-                icon.name: "applications-all-symbolic"
-                displayHint: Kirigami.DisplayHint.KeepVisible
-                checkable: true
-                checked: control.streamDB.showBlocklistedApps
-                onTriggered: {
-                    if (checked !== control.streamDB.showBlocklistedApps)
-                        control.streamDB.showBlocklistedApps = checked;
+    footer: RowLayout {
+        Kirigami.ActionToolBar {
+            alignment: Qt.AlignRight
+            position: Controls.ToolBar.Footer
+            Layout.margins: Kirigami.Units.smallSpacing
+            actions: [
+                Kirigami.Action {
+                    text: i18n("Show excluded apps") // qmllint disable
+                    tooltip: i18n("Show excluded applications in the list of players/recorders") // qmllint disable
+                    icon.name: "applications-all-symbolic"
+                    displayHint: Kirigami.DisplayHint.KeepVisible
+                    checkable: true
+                    checked: control.streamDB.showBlocklistedApps
+                    onTriggered: {
+                        if (checked !== control.streamDB.showBlocklistedApps)
+                            control.streamDB.showBlocklistedApps = checked;
+                    }
                 }
-            }
-        ]
+            ]
+        }
     }
 }

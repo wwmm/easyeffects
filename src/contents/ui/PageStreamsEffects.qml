@@ -55,8 +55,8 @@ Kirigami.Page {
         streamDB: pageStreamsEffects.streamDB
     }
 
-    BlocklistSheet {
-        id: blocklistSheet
+    BlocklistDialog {
+        id: blocklistDialog
 
         streamDB: pageStreamsEffects.streamDB
     }
@@ -661,7 +661,7 @@ Kirigami.Page {
                         displayHint: Kirigami.DisplayHint.KeepVisible
                         visible: pageStreamsEffects.streamDB.visiblePage === 0
                         onTriggered: {
-                            blocklistSheet.open();
+                            blocklistDialog.open();
                         }
                     }
                 ]
