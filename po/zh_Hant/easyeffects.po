@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-22 20:17-0300\n"
-"PO-Revision-Date: 2025-11-21 11:51+0000\n"
+"PO-Revision-Date: 2025-11-23 11:51+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hant/>\n"
@@ -2244,14 +2244,15 @@ msgstr "顯示系統匣圖示"
 
 #: src/contents/ui/PreferencesSheet.qml:104
 msgid "Do not show our window"
-msgstr ""
+msgstr "不要顯示我們的視窗"
 
 #: src/contents/ui/PreferencesSheet.qml:105
 msgid ""
 "Do not show our window after that application starts. In general this option "
 "should not be used. It is intended as a workaround for systems that do not "
 "work well with our autostart file."
-msgstr ""
+msgstr "不要顯示我們的視窗，在該應用程式啟動之後。一般情況下不宜使用此選項。它意圖作"
+"為一種解法，用於系統無法良好地使用我們的自動啟動檔案。"
 
 #: src/contents/ui/PreferencesSheet.qml:125
 msgid "Process all output streams"
@@ -2471,13 +2472,14 @@ msgstr "接收新裝置路徑和呼叫自動載入預設集之間的延遲。"
 
 #: src/contents/ui/PreferencesSheet.qml:530
 msgid "Ignore the blocklist"
-msgstr ""
+msgstr "忽略排除列表"
 
 #: src/contents/ui/PreferencesSheet.qml:531
 msgid ""
 "If enabled the blocklist set in the preset file will be ignored. The one "
 "previously saved in our database will be used instead."
-msgstr ""
+msgstr "如果啟用，預設集中所設定的排除列表將被忽略。將以之前儲存在我們資料庫中的來代"
+"而用之。"
 
 #: src/contents/ui/PreferencesSheet.qml:552
 msgid "Global shortcuts"
