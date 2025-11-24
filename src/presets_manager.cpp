@@ -376,17 +376,28 @@ bool Manager::remove(const PipelineType& pipeline_type, const QString& name) {
 
   preset_file = conf_dir / std::filesystem::path{name.toStdString() + DirectoryManager::json_ext};
 
-  if (std::filesystem::exists(preset_file)) {
-    std::filesystem::remove(preset_file);
-
-    util::debug(std::format("Removed preset: {}", preset_file.string()));
-
-    update_used_presets_list(pipeline_type, "");
-
-    return true;
+  if (!std::filesystem::exists(preset_file)) {
+    return false;
   }
 
-  return false;
+  std::filesystem::remove(preset_file);
+
+  // Check if the removed name is the last local preset loaded.
+  if (pipeline_type == PipelineType::output) {
+    if (DbMain::lastLoadedOutputCommunityPackage().isEmpty() && name == DbMain::lastLoadedOutputPreset()) {
+      DbMain::setLastLoadedOutputPreset(DbMain::defaultLastLoadedOutputPresetValue());
+    }
+  } else if (pipeline_type == PipelineType::input) {
+    if (DbMain::lastLoadedInputCommunityPackage().isEmpty() && name == DbMain::lastLoadedInputPreset()) {
+      DbMain::setLastLoadedInputPreset(DbMain::defaultLastLoadedInputPresetValue());
+    }
+  }
+
+  util::debug(std::format("Removed preset: {}", preset_file.string()));
+
+  update_used_presets_list(pipeline_type, "");
+
+  return true;
 }
 
 bool Manager::renameLocalPresetFile(const PipelineType& pipeline_type, const QString& name, const QString& newName) {
@@ -402,15 +413,15 @@ bool Manager::renameLocalPresetFile(const PipelineType& pipeline_type, const QSt
 
   new_file = conf_dir / std::filesystem::path{newName.toStdString() + DirectoryManager::json_ext};
 
-  if (std::filesystem::exists(preset_file)) {
-    std::filesystem::rename(preset_file, new_file);
-
-    util::debug(std::format("Renamed preset: {} to {}", preset_file.string(), new_file.string()));
-
-    return true;
+  if (!std::filesystem::exists(preset_file)) {
+    return false;
   }
 
-  return false;
+  std::filesystem::rename(preset_file, new_file);
+
+  util::debug(std::format("Renamed preset: {} to {}", preset_file.string(), new_file.string()));
+
+  return true;
 }
 
 auto Manager::read_effects_pipeline_from_preset(const PipelineType& pipeline_type,
@@ -937,8 +948,8 @@ void Manager::update_used_presets_list(const PipelineType& pipeline_type, const 
     sortedList << it.second;
   }
 
-  if (sortedList.size() >
-      DbMain::maxMostUsedPresets()) {  // We can't have many entries in the tray menu. There is no space for that.
+  if (sortedList.size() > DbMain::maxMostUsedPresets()) {
+    // We can't have many entries in the tray menu. There is no space for that.
     sortedList.resize(DbMain::maxMostUsedPresets());
   }
 

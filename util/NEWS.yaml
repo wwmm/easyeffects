@@ -11,7 +11,7 @@ Description:
 - Fixed a bug that occurred in the import of APO/GraphicEq presets. In certain conditions, when Equalizer Split Channels mode was enabled, the preset imported to a single channel was altering the configuration in the other channel.
 
 - Other notes∶
-- 
+- Some of the UI elements that were built with the Overlay Sheets have been ported to use the Kirigami Dialogs.
 
 ---
 Version: 8.0.4
