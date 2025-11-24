@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-23 12:50-0300\n"
-"PO-Revision-Date: 2025-11-23 11:51+0000\n"
+"PO-Revision-Date: 2025-11-24 19:51+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -2257,7 +2257,7 @@ msgstr "Mostra l'icona nella tray"
 
 #: src/contents/ui/PreferencesSheet.qml:104
 msgid "Do not show the application window"
-msgstr ""
+msgstr "Non mostrare la finestra dell'applicazione"
 
 #: src/contents/ui/PreferencesSheet.qml:105
 msgid ""
@@ -2265,6 +2265,9 @@ msgid ""
 "should not be enabled. It is intended only as a workaround for systems that "
 "do not work well with the autostart of Easy Effects."
 msgstr ""
+"Non mostrare la finestra quando l'applicazione si avvia. In generale, questa "
+"opzione non andrebbe abilitata. È soltanto un'alternativa per quei sistemi "
+"che non funzionano bene con l'avvio automatico di Easy Effects."
 
 #: src/contents/ui/PreferencesSheet.qml:125
 msgid "Process all output streams"
@@ -2495,15 +2498,16 @@ msgstr ""
 "chiamata del caricamento automatico del profilo."
 
 #: src/contents/ui/PreferencesSheet.qml:530
-#, fuzzy
 msgid "Ignore the blocklist from presets"
-msgstr "Aggiungi ad App Escluse"
+msgstr "Ignora le app escluse dai profili"
 
 #: src/contents/ui/PreferencesSheet.qml:531
 msgid ""
 "If enabled, the list of excluded apps set in the loaded preset is ignored "
 "and does not replace the one set by the user."
 msgstr ""
+"Se abilitato, la lista delle applicazioni escluse nei profili viene "
+"ignorata, mentre quella impostata dall'utente continua a rimanere in vigore."
 
 #: src/contents/ui/PreferencesSheet.qml:552
 msgid "Global shortcuts"
