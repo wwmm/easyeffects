@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-23 12:50-0300\n"
-"PO-Revision-Date: 2025-11-22 23:19+0000\n"
+"PO-Revision-Date: 2025-11-24 06:51+0000\n"
 "Last-Translator: Максим Горпиніч <gorpinicmaksim0@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
@@ -16,8 +16,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural="
+"(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? "
+"1 : 2);\n"
 "X-Generator: Weblate 5.15-dev\n"
 
 #: src/autostart.cpp:89
@@ -1402,14 +1403,12 @@ msgid "Imported the Equalizer APO preset file."
 msgstr "Імпортовано файл попереднього налаштування APO."
 
 #: src/contents/ui/Equalizer.qml:59
-#, fuzzy
 msgid "Imported the Equalizer APO preset file into the left channel."
-msgstr "Імпортовано файл попереднього налаштування APO."
+msgstr "Імпортовано файл пресету еквалайзера APO у лівий канал."
 
 #: src/contents/ui/Equalizer.qml:61
-#, fuzzy
 msgid "Imported the Equalizer APO preset file into the right channel."
-msgstr "Імпортовано файл попереднього налаштування APO."
+msgstr "Імпортовано файл пресету еквалайзера APO у правий канал."
 
 #: src/contents/ui/Equalizer.qml:74
 msgid "GraphicEQ preset"
@@ -1439,22 +1438,20 @@ msgstr ""
 "попереднього налаштування APO."
 
 #: src/contents/ui/Equalizer.qml:99
-#, fuzzy
 msgid ""
 "Exported the current Equalizer settings of the left channel to an external "
 "APO preset file."
 msgstr ""
-"Експортовано поточні налаштування еквалайзера до зовнішнього файлу "
-"попереднього налаштування APO."
+"Експортовано поточні налаштування еквалайзера лівого каналу до зовнішнього "
+"файлу пресетів APO."
 
 #: src/contents/ui/Equalizer.qml:101
-#, fuzzy
 msgid ""
 "Exported the current Equalizer settings of the right channel to an external "
 "APO preset file."
 msgstr ""
-"Експортовано поточні налаштування еквалайзера до зовнішнього файлу "
-"попереднього налаштування APO."
+"Експортовано поточні налаштування еквалайзера правого каналу до зовнішнього "
+"файлу пресетів APO."
 
 #: src/contents/ui/Equalizer.qml:125 src/contents/ui/Filter.qml:77
 #: src/contents/ui/Loudness.qml:57
@@ -2257,7 +2254,7 @@ msgstr "Показати значок у треї"
 
 #: src/contents/ui/PreferencesSheet.qml:104
 msgid "Do not show the application window"
-msgstr ""
+msgstr "Не показувати вікно програми"
 
 #: src/contents/ui/PreferencesSheet.qml:105
 msgid ""
@@ -2265,6 +2262,9 @@ msgid ""
 "should not be enabled. It is intended only as a workaround for systems that "
 "do not work well with the autostart of Easy Effects."
 msgstr ""
+"Не показувати вікно під час запуску програми. Загалом, цю опцію не слід "
+"вмикати. Вона призначена лише для систем, які погано працюють з автозапуском "
+"Easy Effects."
 
 #: src/contents/ui/PreferencesSheet.qml:125
 msgid "Process all output streams"
@@ -2494,15 +2494,16 @@ msgstr ""
 "завантаження попереднього налаштування."
 
 #: src/contents/ui/PreferencesSheet.qml:530
-#, fuzzy
 msgid "Ignore the blocklist from presets"
-msgstr "Ігноруйте список блокування"
+msgstr "Ігнорувати список блокування з пресетів"
 
 #: src/contents/ui/PreferencesSheet.qml:531
 msgid ""
 "If enabled, the list of excluded apps set in the loaded preset is ignored "
 "and does not replace the one set by the user."
 msgstr ""
+"Якщо ввімкнено, список виключених програм, встановлений у завантаженому "
+"пресеті, ігнорується та не замінює той, що встановлений користувачем."
 
 #: src/contents/ui/PreferencesSheet.qml:552
 msgid "Global shortcuts"
