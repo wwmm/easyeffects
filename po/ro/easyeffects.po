@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-23 12:50-0300\n"
-"PO-Revision-Date: 2025-11-23 11:51+0000\n"
+"PO-Revision-Date: 2025-11-24 19:51+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ro/>\n"
@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
-"20)) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : "
+"(n==0 || (n%100 > 0 && n%100 < 20)) ? 1 : 2;\n"
 "X-Generator: Weblate 5.15-dev\n"
 
 #: src/autostart.cpp:89
@@ -2262,21 +2262,18 @@ msgid "Show the tray icon"
 msgstr "Afișează pictograma în zona de notificare"
 
 #: src/contents/ui/PreferencesSheet.qml:104
-#, fuzzy
 msgid "Do not show the application window"
-msgstr "Nu afișează fereastra Easy Effects"
+msgstr "Nu afișează fereastra aplicației"
 
 #: src/contents/ui/PreferencesSheet.qml:105
-#, fuzzy
 msgid ""
 "Do not show the window when the application starts. In general this option "
 "should not be enabled. It is intended only as a workaround for systems that "
 "do not work well with the autostart of Easy Effects."
 msgstr ""
-"Nu afișează fereastra Easy Effects după ce aplicația pornește. În general, "
-"această opțiune nu ar trebui utilizată. Este destinată ca soluție "
-"alternativă pentru sistemele care nu funcționează bine cu fișierul de "
-"pornire automată."
+"Nu afișează fereastra la pornirea aplicației. În general, această opțiune nu "
+"trebuie activată. Este destinată doar ca soluție alternativă pentru "
+"sistemele care nu funcționează bine cu pornirea automată a Easy Effects."
 
 #: src/contents/ui/PreferencesSheet.qml:125
 msgid "Process all output streams"
@@ -2507,15 +2504,16 @@ msgstr ""
 "încărcarea automată a unei preconfigurări."
 
 #: src/contents/ui/PreferencesSheet.qml:530
-#, fuzzy
 msgid "Ignore the blocklist from presets"
-msgstr "Ignoră lista de blocare"
+msgstr "Ignoră lista de blocare din preconfigurări"
 
 #: src/contents/ui/PreferencesSheet.qml:531
 msgid ""
 "If enabled, the list of excluded apps set in the loaded preset is ignored "
 "and does not replace the one set by the user."
 msgstr ""
+"Dacă este activată, lista aplicațiilor excluse definită în preconfigurarea "
+"încărcată este ignorată și nu o înlocuiește pe cea definită de utilizator."
 
 #: src/contents/ui/PreferencesSheet.qml:552
 msgid "Global shortcuts"
