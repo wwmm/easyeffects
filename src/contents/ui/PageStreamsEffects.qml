@@ -87,6 +87,19 @@ Kirigami.Page {
     }
 
     Component {
+        id: pagePluginsEmptyListMessage
+
+        Kirigami.ScrollablePage {
+            Kirigami.PlaceholderMessage {
+                anchors.centerIn: parent
+                text: i18n("No Effects")// qmllint disable
+                explanation: i18n("Audio stream not modified")// qmllint disable
+                icon.name: "folder-music-symbolic"
+            }
+        }
+    }
+
+    Component {
         id: pagePlugins
 
         GridLayout {
@@ -406,14 +419,7 @@ Kirigami.Page {
                 Layout.horizontalStretchFactor: 3
                 visible: pageStreamsEffects.streamDB.visiblePage === 1
 
-                initialItem: Kirigami.ScrollablePage {
-                    Kirigami.PlaceholderMessage {
-                        anchors.centerIn: parent
-                        text: i18n("No Effects")// qmllint disable
-                        explanation: i18n("Audio stream not modified")// qmllint disable
-                        icon.name: "folder-music-symbolic"
-                    }
-                }
+                initialItem: pagePluginsEmptyListMessage
 
                 Binding {
                     target: pluginsStack.currentItem?.pluginBackend ?? null
