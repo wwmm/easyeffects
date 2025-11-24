@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-23 12:50-0300\n"
-"PO-Revision-Date: 2025-11-21 11:51+0000\n"
+"PO-Revision-Date: 2025-11-24 06:51+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -1433,14 +1433,12 @@ msgid "Imported the Equalizer APO preset file."
 msgstr "Импортирован файл предустановки эквалайзера APO."
 
 #: src/contents/ui/Equalizer.qml:59
-#, fuzzy
 msgid "Imported the Equalizer APO preset file into the left channel."
-msgstr "Импортирован файл предустановки эквалайзера APO."
+msgstr "Импортирован файл предустановки эквалайзера APO в левый канал."
 
 #: src/contents/ui/Equalizer.qml:61
-#, fuzzy
 msgid "Imported the Equalizer APO preset file into the right channel."
-msgstr "Импортирован файл предустановки эквалайзера APO."
+msgstr "Импортирован файл предустановки эквалайзера APO в правый канал."
 
 #: src/contents/ui/Equalizer.qml:74
 msgid "GraphicEQ preset"
@@ -1469,22 +1467,20 @@ msgstr ""
 "APO."
 
 #: src/contents/ui/Equalizer.qml:99
-#, fuzzy
 msgid ""
 "Exported the current Equalizer settings of the left channel to an external "
 "APO preset file."
 msgstr ""
-"Экспортированы текущие настройки эквалайзера во внешний файл предустановок "
-"APO."
+"Экспортированы текущие настройки эквалайзера левого канала во внешний файл "
+"предустановок APO."
 
 #: src/contents/ui/Equalizer.qml:101
-#, fuzzy
 msgid ""
 "Exported the current Equalizer settings of the right channel to an external "
 "APO preset file."
 msgstr ""
-"Экспортированы текущие настройки эквалайзера во внешний файл предустановок "
-"APO."
+"Экспортированы текущие настройки эквалайзера правого канала во внешний файл "
+"предустановок APO."
 
 #: src/contents/ui/Equalizer.qml:125 src/contents/ui/Filter.qml:77
 #: src/contents/ui/Loudness.qml:57
@@ -2295,7 +2291,7 @@ msgstr "Показывать значок в трее"
 
 #: src/contents/ui/PreferencesSheet.qml:104
 msgid "Do not show the application window"
-msgstr ""
+msgstr "Не показывать окно приложения"
 
 #: src/contents/ui/PreferencesSheet.qml:105
 msgid ""
@@ -2303,6 +2299,9 @@ msgid ""
 "should not be enabled. It is intended only as a workaround for systems that "
 "do not work well with the autostart of Easy Effects."
 msgstr ""
+"Не показывать окно при запуске приложения. Как правило, эту опцию не следует "
+"включать. Она предназначена только в качестве обходного пути для систем, "
+"которые работают плохо с автозапуском Easy Effects."
 
 #: src/contents/ui/PreferencesSheet.qml:125
 msgid "Process all output streams"
@@ -2532,15 +2531,17 @@ msgstr ""
 "предустановки."
 
 #: src/contents/ui/PreferencesSheet.qml:530
-#, fuzzy
 msgid "Ignore the blocklist from presets"
-msgstr "Добавить в чёрный список"
+msgstr "Игнорировать список блокировки из предустановок"
 
 #: src/contents/ui/PreferencesSheet.qml:531
 msgid ""
 "If enabled, the list of excluded apps set in the loaded preset is ignored "
 "and does not replace the one set by the user."
 msgstr ""
+"Если включено, список исключённых приложений, установленный в загруженной "
+"предустановке, игнорируется и не заменяет список, установленный "
+"пользователем."
 
 #: src/contents/ui/PreferencesSheet.qml:552
 msgid "Global shortcuts"
