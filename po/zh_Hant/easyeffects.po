@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-23 12:50-0300\n"
 "PO-Revision-Date: 2025-11-24 06:51+0000\n"
-"Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
+"Last-Translator: Jeff Huang <s8321414@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hant/>\n"
 "Language: zh_Hant\n"
@@ -1399,14 +1399,12 @@ msgid "Imported the Equalizer APO preset file."
 msgstr "已經匯入等化器 APO 預設集檔案。"
 
 #: src/contents/ui/Equalizer.qml:59
-#, fuzzy
 msgid "Imported the Equalizer APO preset file into the left channel."
-msgstr "已經匯入等化器 APO 預設集檔案。"
+msgstr "已將等化器 APO 預設集檔案匯入至左聲道。"
 
 #: src/contents/ui/Equalizer.qml:61
-#, fuzzy
 msgid "Imported the Equalizer APO preset file into the right channel."
-msgstr "已經匯入等化器 APO 預設集檔案。"
+msgstr "已將等化器 APO 預設集檔案匯入至右聲道。"
 
 #: src/contents/ui/Equalizer.qml:74
 msgid "GraphicEQ preset"
@@ -1431,18 +1429,16 @@ msgid "Exported the current Equalizer settings to an external APO preset file."
 msgstr "已經匯出目前等化器設定至外部 APO 預設集檔案。"
 
 #: src/contents/ui/Equalizer.qml:99
-#, fuzzy
 msgid ""
 "Exported the current Equalizer settings of the left channel to an external "
 "APO preset file."
-msgstr "已經匯出目前等化器設定至外部 APO 預設集檔案。"
+msgstr "已將左聲道的目前等化器設定匯出至外部 APO 預設集檔案。"
 
 #: src/contents/ui/Equalizer.qml:101
-#, fuzzy
 msgid ""
 "Exported the current Equalizer settings of the right channel to an external "
 "APO preset file."
-msgstr "已經匯出目前等化器設定至外部 APO 預設集檔案。"
+msgstr "已將右聲道的目前等化器設定匯出至外部 APO 預設集檔案。"
 
 #: src/contents/ui/Equalizer.qml:125 src/contents/ui/Filter.qml:77
 #: src/contents/ui/Loudness.qml:57
@@ -2243,19 +2239,16 @@ msgid "Show the tray icon"
 msgstr "顯示系統匣圖示"
 
 #: src/contents/ui/PreferencesSheet.qml:104
-#, fuzzy
 msgid "Do not show the application window"
-msgstr "不要顯示我們的視窗"
+msgstr "不要顯示應用程式視窗"
 
 #: src/contents/ui/PreferencesSheet.qml:105
-#, fuzzy
 msgid ""
 "Do not show the window when the application starts. In general this option "
 "should not be enabled. It is intended only as a workaround for systems that "
 "do not work well with the autostart of Easy Effects."
-msgstr ""
-"不要顯示我們的視窗，在該應用程式啟動之後。一般情況下不宜使用此選項。它意圖作"
-"為一種解法，用於系統無法良好地使用我們的自動啟動檔案。"
+msgstr "應用程式啟動時不要顯示視窗。通常不應啟用此選項，僅作為系統無法順利自動啟動 "
+"Easy Effects 時的替代方案。"
 
 #: src/contents/ui/PreferencesSheet.qml:125
 msgid "Process all output streams"
@@ -2474,9 +2467,8 @@ msgid ""
 msgstr "接收新裝置路徑和呼叫自動載入預設集之間的延遲。"
 
 #: src/contents/ui/PreferencesSheet.qml:530
-#, fuzzy
 msgid "Ignore the blocklist from presets"
-msgstr "忽略排除列表"
+msgstr "忽略來自預設集的封鎖清單"
 
 #: src/contents/ui/PreferencesSheet.qml:531
 msgid ""
