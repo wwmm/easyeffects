@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-23 12:50-0300\n"
-"PO-Revision-Date: 2025-11-23 11:51+0000\n"
+"PO-Revision-Date: 2025-11-24 06:51+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hans/>\n"
@@ -2240,19 +2240,16 @@ msgid "Show the tray icon"
 msgstr "显示状态栏图标"
 
 #: src/contents/ui/PreferencesSheet.qml:104
-#, fuzzy
 msgid "Do not show the application window"
-msgstr "不显示窗口"
+msgstr "不显示应用窗口"
 
 #: src/contents/ui/PreferencesSheet.qml:105
-#, fuzzy
 msgid ""
 "Do not show the window when the application starts. In general this option "
 "should not be enabled. It is intended only as a workaround for systems that "
 "do not work well with the autostart of Easy Effects."
-msgstr ""
-"启动应用时不显示窗口。此选项用于解决部分系统无法正常调用自动启动文件的问题，"
-"否则不必启用。"
+msgstr "启动应用时不显示窗口。此选项仅用于解决 Easy Effects 自动启动在部分系统上的问"
+"题，否则不必启用。"
 
 #: src/contents/ui/PreferencesSheet.qml:125
 msgid "Process all output streams"
@@ -2470,15 +2467,14 @@ msgid ""
 msgstr "在接收新设备路由与自动加载预设之间的延迟。"
 
 #: src/contents/ui/PreferencesSheet.qml:530
-#, fuzzy
 msgid "Ignore the blocklist from presets"
-msgstr "忽略排除列表"
+msgstr "忽略预设中的排除列表"
 
 #: src/contents/ui/PreferencesSheet.qml:531
 msgid ""
 "If enabled, the list of excluded apps set in the loaded preset is ignored "
 "and does not replace the one set by the user."
-msgstr ""
+msgstr "启用后，Easy Effects 将忽略从预设中读取的排除列表，也不会替换用户设定。"
 
 #: src/contents/ui/PreferencesSheet.qml:552
 msgid "Global shortcuts"

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-23 12:50-0300\n"
-"PO-Revision-Date: 2025-11-23 14:27+0000\n"
+"PO-Revision-Date: 2025-11-24 19:51+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
 "ga/>\n"
@@ -2258,20 +2258,18 @@ msgid "Show the tray icon"
 msgstr "Taispeáin deilbhín an tráidire"
 
 #: src/contents/ui/PreferencesSheet.qml:104
-#, fuzzy
 msgid "Do not show the application window"
-msgstr "Ná taispeáin ár bhfuinneog"
+msgstr "Ná taispeáin fuinneog an fheidhmchláir"
 
 #: src/contents/ui/PreferencesSheet.qml:105
-#, fuzzy
 msgid ""
 "Do not show the window when the application starts. In general this option "
 "should not be enabled. It is intended only as a workaround for systems that "
 "do not work well with the autostart of Easy Effects."
 msgstr ""
-"Ná taispeáin ár bhfuinneog tar éis don fheidhmchlár sin tosú. Go ginearálta, "
-"níor cheart an rogha seo a úsáid. Tá sé beartaithe mar réiteach sealadach do "
-"chórais nach n-oibríonn go maith lenár gcomhad tosaithe uathoibríoch."
+"Ná taispeáin an fhuinneog nuair a thosaíonn an feidhmchlár. Go ginearálta, "
+"níor cheart an rogha seo a chumasú. Níl sé beartaithe ach mar réiteach "
+"sealadach do chórais nach n-oibríonn go maith le huaththosú Easy Effects."
 
 #: src/contents/ui/PreferencesSheet.qml:125
 msgid "Process all output streams"
@@ -2501,15 +2499,17 @@ msgstr ""
 "uathlódáil."
 
 #: src/contents/ui/PreferencesSheet.qml:530
-#, fuzzy
 msgid "Ignore the blocklist from presets"
-msgstr "Déan neamhaird den liosta blocála"
+msgstr "Déan neamhaird den liosta blocála ó réamhshocruithe"
 
 #: src/contents/ui/PreferencesSheet.qml:531
 msgid ""
 "If enabled, the list of excluded apps set in the loaded preset is ignored "
 "and does not replace the one set by the user."
 msgstr ""
+"Má tá sé cumasaithe, déantar neamhaird den liosta d’aipeanna eisiata atá "
+"socraithe sa réamhshocrú luchtaithe agus ní chuireann sé in ionad an cheann "
+"a shocraigh an t-úsáideoir."
 
 #: src/contents/ui/PreferencesSheet.qml:552
 msgid "Global shortcuts"
