@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-23 12:50-0300\n"
-"PO-Revision-Date: 2025-11-23 11:51+0000\n"
+"PO-Revision-Date: 2025-11-24 06:51+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -2260,21 +2260,19 @@ msgid "Show the tray icon"
 msgstr "Afficher l'icône dans la barre d'état"
 
 #: src/contents/ui/PreferencesSheet.qml:104
-#, fuzzy
 msgid "Do not show the application window"
-msgstr "Ne pas afficher notre fenêtre"
+msgstr "Ne pas afficher la fenêtre de l'application"
 
 #: src/contents/ui/PreferencesSheet.qml:105
-#, fuzzy
 msgid ""
 "Do not show the window when the application starts. In general this option "
 "should not be enabled. It is intended only as a workaround for systems that "
 "do not work well with the autostart of Easy Effects."
 msgstr ""
-"Ne pas afficher notre fenêtre après le démarrage de l'application. En "
-"général, cette option ne devrait pas être utilisée. Elle est destinée à "
-"servir de solution de contournement pour les systèmes qui ne fonctionnent "
-"pas correctement avec notre fichier de démarrage automatique."
+"Ne pas afficher la fenêtre au démarrage de l'application. En général, cette "
+"option ne devrait pas être utilisée. Elle est uniquement destinée à servir "
+"de solution de contournement pour les systèmes qui ne fonctionnent pas "
+"correctement avec le démarrage automatique d'Easy Effects."
 
 #: src/contents/ui/PreferencesSheet.qml:125
 msgid "Process all output streams"
@@ -2506,15 +2504,17 @@ msgstr ""
 "pour charger automatiquement un préréglage."
 
 #: src/contents/ui/PreferencesSheet.qml:530
-#, fuzzy
 msgid "Ignore the blocklist from presets"
-msgstr "Ignorer la liste de blocage"
+msgstr "Ignorer la liste de blocage des préréglages"
 
 #: src/contents/ui/PreferencesSheet.qml:531
 msgid ""
 "If enabled, the list of excluded apps set in the loaded preset is ignored "
 "and does not replace the one set by the user."
 msgstr ""
+"Si cette option est activée, la liste des applications exclues définie dans "
+"le préréglage chargé est ignorée et ne remplace pas celle définie par "
+"l'utilisateur."
 
 #: src/contents/ui/PreferencesSheet.qml:552
 msgid "Global shortcuts"
