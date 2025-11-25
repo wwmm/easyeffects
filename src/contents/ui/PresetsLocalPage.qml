@@ -7,6 +7,7 @@ import QtQuick.Layouts
 import "Common.js" as Common
 import ee.presets as Presets
 import org.kde.kirigami as Kirigami
+import org.kde.kirigamiaddons.delegates as Delegates
 
 ColumnLayout {
     id: columnLayout
@@ -174,12 +175,13 @@ ColumnLayout {
                 text: i18n("Empty List") // qmllint disable
             }
 
-            delegate: Controls.ItemDelegate {
+            delegate: Delegates.RoundedItemDelegate {
                 id: listItemDelegate
 
                 required property string name
 
                 hoverEnabled: true
+                highlighted: false
                 width: listView.width
                 onClicked: {
                     Presets.Manager.loadLocalPresetFile(columnLayout.pipeline, name);

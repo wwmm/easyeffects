@@ -4,6 +4,7 @@ import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import "Common.js" as Common
 import org.kde.kirigami as Kirigami
+import org.kde.kirigamiaddons.delegates as Delegates
 
 Kirigami.Dialog {
     id: control
@@ -99,7 +100,7 @@ Kirigami.Dialog {
                     explanation: i18n("No application excluded") // qmllint disable
                 }
 
-                delegate: Controls.ItemDelegate {
+                delegate: Delegates.RoundedItemDelegate {
                     id: listItemDelegate
 
                     required property int index
@@ -112,6 +113,7 @@ Kirigami.Dialog {
                     }
 
                     hoverEnabled: true
+                    highlighted: false
                     down: false
                     width: listView.width
 

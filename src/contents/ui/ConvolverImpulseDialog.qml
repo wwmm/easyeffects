@@ -7,6 +7,7 @@ import QtQuick.Layouts
 import "Common.js" as Common
 import ee.presets as Presets
 import org.kde.kirigami as Kirigami
+import org.kde.kirigamiaddons.delegates as Delegates
 
 Kirigami.Dialog {
     id: control
@@ -69,13 +70,14 @@ Kirigami.Dialog {
                 text: i18n("Empty List") // qmllint disable
             }
 
-            delegate: Controls.ItemDelegate {
+            delegate: Delegates.RoundedItemDelegate {
                 id: listItemDelegate
 
                 required property string name
                 required property string path
 
                 hoverEnabled: true
+                highlighted: false
                 width: listView.width
                 onClicked: {
                     control.pluginDB.kernelName = name;

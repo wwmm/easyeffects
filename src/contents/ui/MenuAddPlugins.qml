@@ -5,6 +5,7 @@ import QtQuick.Layouts
 import "Common.js" as Common
 import ee.tags.plugin.name as TagsPluginName
 import org.kde.kirigami as Kirigami
+import org.kde.kirigamiaddons.delegates as Delegates
 
 Controls.Dialog {
     id: control
@@ -41,7 +42,7 @@ Controls.Dialog {
     Component {
         id: listDelegate
 
-        Controls.ItemDelegate {
+        Delegates.RoundedItemDelegate {
             id: listItemDelegate
 
             required property string name
@@ -50,7 +51,8 @@ Controls.Dialog {
             property int elide: Text.ElideRight
             property color color: Kirigami.Theme.textColor
 
-            hoverEnabled: false
+            hoverEnabled: true
+            highlighted: false
             down: false
             width: parent ? parent.width : implicitWidth
 

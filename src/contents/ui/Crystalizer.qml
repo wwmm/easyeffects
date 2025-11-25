@@ -67,7 +67,6 @@ Kirigami.ScrollablePage {
                 clip: true
                 reuseItems: true
                 orientation: ListView.Horizontal
-                // model: crystalizerPage.pluginBackend.numBands
                 model: listModel
                 Controls.ScrollBar.horizontal: listViewScrollBar
 
