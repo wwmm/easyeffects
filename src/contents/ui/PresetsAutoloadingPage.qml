@@ -113,8 +113,8 @@ ColumnLayout {
     RowLayout {
         id: listviewRow
 
-        Kirigami.CardsListView {
-            id: streamsListView
+        ListView {
+            id: listView
 
             Layout.fillWidth: true
             Layout.fillHeight: true
@@ -126,34 +126,38 @@ ColumnLayout {
             Kirigami.PlaceholderMessage {
                 anchors.centerIn: parent
                 width: parent.width - (Kirigami.Units.largeSpacing * 4)
-                visible: streamsListView.count === 0
+                visible: listView.count === 0
                 text: i18n("Empty List") // qmllint disable
                 icon.name: "notification-empty"
             }
 
-            delegate: Kirigami.AbstractCard {
-                id: abstractCard
+            delegate: Controls.ItemDelegate {
+                id: listItemDelegate
 
                 required property string deviceName
                 required property string deviceDescription
                 required property string deviceProfile
                 required property string devicePreset
 
-                contentItem: Item {
-                    implicitWidth: delegateLayout.implicitWidth
-                    implicitHeight: delegateLayout.implicitHeight
+                width: ListView.view.width
+
+                background: Kirigami.FlexColumn {
+                    maximumWidth: Kirigami.Units.gridUnit * 40
+
+                    Kirigami.Separator {
+                        Layout.alignment: Qt.AlignBottom
+                        Layout.fillWidth: true
+                        visible: listItemDelegate.index !== 0
+                    }
+                }
+
+                contentItem: Kirigami.FlexColumn {
 
                     GridLayout {
                         id: delegateLayout
 
                         columns: 3
                         rows: 4
-
-                        anchors {
-                            left: parent.left
-                            top: parent.top
-                            right: parent.right
-                        }
 
                         Controls.Label {
                             Layout.alignment: Qt.AlignRight
@@ -164,8 +168,9 @@ ColumnLayout {
 
                         Controls.Label {
                             Layout.fillWidth: true
-                            wrapMode: Text.WrapAnywhere
-                            text: abstractCard.deviceName
+                            wrapMode: Text.NoWrap
+                            elide: Text.ElideRight
+                            text: listItemDelegate.deviceName
                             color: Kirigami.Theme.disabledTextColor
                         }
 
@@ -177,9 +182,9 @@ ColumnLayout {
                             Controls.ToolTip.visible: hovered
                             onClicked: {
                                 if (DbMain.visiblePage === 0)
-                                    Presets.Manager.removeAutoload(1, abstractCard.devicePreset, abstractCard.deviceName, abstractCard.deviceProfile);
+                                    Presets.Manager.removeAutoload(1, listItemDelegate.devicePreset, listItemDelegate.deviceName, listItemDelegate.deviceProfile);
                                 else if (DbMain.visiblePage === 1)
-                                    Presets.Manager.removeAutoload(0, abstractCard.devicePreset, abstractCard.deviceName, abstractCard.deviceProfile);
+                                    Presets.Manager.removeAutoload(0, listItemDelegate.devicePreset, listItemDelegate.deviceName, listItemDelegate.deviceProfile);
                             }
                         }
 
@@ -192,8 +197,9 @@ ColumnLayout {
 
                         Controls.Label {
                             Layout.fillWidth: true
-                            wrapMode: Text.WrapAnywhere
-                            text: abstractCard.deviceDescription
+                            wrapMode: Text.NoWrap
+                            elide: Text.ElideRight
+                            text: listItemDelegate.deviceDescription
                             color: Kirigami.Theme.disabledTextColor
                         }
 
@@ -206,8 +212,9 @@ ColumnLayout {
 
                         Controls.Label {
                             Layout.fillWidth: true
-                            wrapMode: Text.WrapAnywhere
-                            text: abstractCard.deviceProfile
+                            wrapMode: Text.NoWrap
+                            elide: Text.ElideRight
+                            text: listItemDelegate.deviceProfile
                             color: Kirigami.Theme.disabledTextColor
                         }
 
@@ -219,8 +226,9 @@ ColumnLayout {
 
                         Controls.Label {
                             Layout.fillWidth: true
-                            wrapMode: Text.WrapAnywhere
-                            text: abstractCard.devicePreset
+                            wrapMode: Text.NoWrap
+                            elide: Text.ElideRight
+                            text: listItemDelegate.devicePreset
                             color: Kirigami.Theme.disabledTextColor
                         }
                     }
