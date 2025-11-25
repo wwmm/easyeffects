@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-24 23:25-0300\n"
-"PO-Revision-Date: 2025-11-19 12:29+0000\n"
+"PO-Revision-Date: 2025-11-26 10:51+0000\n"
 "Last-Translator: Lito Parra <lito.15@proton.me>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
 "es/>\n"
@@ -38,19 +38,18 @@ msgid "Reset Easy Effects."
 msgstr "Reiniciar Easy Effects."
 
 #: src/command_line_parser.cpp:44
-#, fuzzy
 msgid "Hide the window."
-msgstr "Ocultar la ventana."
+msgstr "Oculta la ventana."
 
 #: src/command_line_parser.cpp:45
 msgid "Global bypass. 1 to enable and 2 to disable."
 msgstr ""
-"Bypass global (desactivar todos los efectos). 1 para habilitar, 2 para "
+"Supresión global (desactivar todos los efectos). 1 para habilitar, 2 para "
 "deshabilitar."
 
 #: src/command_line_parser.cpp:45
 msgid "bypass-state"
-msgstr "Ignorar efectos"
+msgstr "Estado de supresión"
 
 #: src/command_line_parser.cpp:46
 msgid "Load a preset. Example: easyeffects -l music"
@@ -93,32 +92,28 @@ msgid "Must specify preset type: input/output."
 msgstr "Debes especificar el tipo de perfil: entrada/salida."
 
 #: src/command_line_parser.cpp:166
-#, fuzzy
 msgid "Output presets"
 msgstr "Perfiles de salida"
 
 #: src/command_line_parser.cpp:168
-#, fuzzy
 msgid "No output presets."
-msgstr "Perfiles de salida"
+msgstr "No hay perfiles de salida."
 
 #: src/command_line_parser.cpp:179
-#, fuzzy
 msgid "Input presets"
 msgstr "Perfiles de entrada"
 
 #: src/command_line_parser.cpp:181
-#, fuzzy
 msgid "No input presets."
-msgstr "Perfiles de entrada"
+msgstr "No hay perfiles de entrada."
 
 #: src/command_line_parser.cpp:211
 msgid "Specified preset does not exist."
-msgstr ""
+msgstr "Este perfil no existe."
 
 #: src/command_line_parser.cpp:229
 msgid "Provided an invalid bypass state."
-msgstr ""
+msgstr "Se ingresó un estado de supresión inválido."
 
 #: src/contents/ui/AboutPage.qml:4
 msgctxt "@action:button"
@@ -1030,7 +1025,7 @@ msgstr "Silenciar"
 #: src/contents/ui/MultibandCompressor.qml:82
 #: src/contents/ui/MultibandGate.qml:82
 msgid "Bypass"
-msgstr "Derivación"
+msgstr "Supresión"
 
 #: src/contents/ui/CrystalizerBand.qml:75 src/contents/ui/EqualizerBand.qml:50
 #: src/contents/ui/PageStreamsEffects.qml:598
@@ -1420,14 +1415,12 @@ msgid "Imported the Equalizer APO preset file."
 msgstr "Se importó el archivo de perfil APO para el ecualizador."
 
 #: src/contents/ui/Equalizer.qml:59
-#, fuzzy
 msgid "Imported the Equalizer APO preset file into the left channel."
-msgstr "Se importó el archivo de perfil APO para el ecualizador."
+msgstr "Se importó el archivo de perfil APO en el canal izquierdo."
 
 #: src/contents/ui/Equalizer.qml:61
-#, fuzzy
 msgid "Imported the Equalizer APO preset file into the right channel."
-msgstr "Se importó el archivo de perfil APO para el ecualizador."
+msgstr "Se importó el archivo de perfil APO en el canal derecho."
 
 #: src/contents/ui/Equalizer.qml:74
 msgid "GraphicEQ preset"
@@ -1456,22 +1449,20 @@ msgstr ""
 "perfil APO."
 
 #: src/contents/ui/Equalizer.qml:99
-#, fuzzy
 msgid ""
 "Exported the current Equalizer settings of the left channel to an external "
 "APO preset file."
 msgstr ""
-"Se exportaron los ajustes actuales del ecualizador a un archivo externo de "
-"perfil APO."
+"Se exportaron los ajustes actuales del canal izquierdo del ecualizador a un "
+"archivo externo de perfil APO."
 
 #: src/contents/ui/Equalizer.qml:101
-#, fuzzy
 msgid ""
 "Exported the current Equalizer settings of the right channel to an external "
 "APO preset file."
 msgstr ""
-"Se exportaron los ajustes actuales del ecualizador a un archivo externo de "
-"perfil APO."
+"Se exportaron los ajustes actuales del canal derecho del ecualizador a un "
+"archivo externo de perfil APO."
 
 #: src/contents/ui/Equalizer.qml:125 src/contents/ui/Filter.qml:77
 #: src/contents/ui/Loudness.qml:57
@@ -2271,7 +2262,7 @@ msgstr "Mostrar ícono en la bandeja del sistema"
 
 #: src/contents/ui/PreferencesSheet.qml:104
 msgid "Do not show the application window"
-msgstr ""
+msgstr "No mostrar la ventana de la aplicación"
 
 #: src/contents/ui/PreferencesSheet.qml:105
 msgid ""
@@ -2279,6 +2270,10 @@ msgid ""
 "should not be enabled. It is intended only as a workaround for systems that "
 "do not work well with the autostart of Easy Effects."
 msgstr ""
+"No mostrar la ventana cuando se inicia la aplicación. Por lo general, esta "
+"opción no debería ser activada. Está pensada solamente como una solución "
+"alternativa para sistemas en hos que el inicio automático de Easy Effects no "
+"funciona como debería."
 
 #: src/contents/ui/PreferencesSheet.qml:125
 msgid "Process all output streams"
@@ -2510,13 +2505,15 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:530
 msgid "Ignore the blocklist from presets"
-msgstr ""
+msgstr "Ignorar la lista de exclusión de los perfiles"
 
 #: src/contents/ui/PreferencesSheet.qml:531
 msgid ""
 "If enabled, the list of excluded apps set in the loaded preset is ignored "
 "and does not replace the one set by the user."
 msgstr ""
+"Si está activada, la lista de aplicaciones excluidas definida en el perfil "
+"cargado es ignorada y no reemplaza a la definida por el usuario."
 
 #: src/contents/ui/PreferencesSheet.qml:552
 msgid "Global shortcuts"
