@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-23 12:50-0300\n"
-"PO-Revision-Date: 2025-11-24 06:51+0000\n"
+"PO-Revision-Date: 2025-11-25 02:26+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -28,7 +28,7 @@ msgid ""
 msgstr ""
 "Невозможно включить опцию автозапуска, так как доступ в фоновом режиме "
 "запрещён. Пожалуйста, разрешите «Запуск в фоновом режиме» для Easy Effects в "
-"настройках системных приложений."
+"системных настройках приложений."
 
 #: src/command_line_parser.cpp:42
 msgid "Quit Easy Effects. Useful when running in service mode."
@@ -2250,7 +2250,7 @@ msgstr "Фоновая служба"
 
 #: src/contents/ui/PreferencesSheet.qml:21
 msgid "Audio"
-msgstr "Аудио"
+msgstr "Звук"
 
 #: src/contents/ui/PreferencesSheet.qml:27
 msgid "Spectrum Analyzer"
@@ -2283,7 +2283,7 @@ msgstr "Автозапуск при входе в систему"
 
 #: src/contents/ui/PreferencesSheet.qml:78
 msgid "Easy Effects is launched at user session startup."
-msgstr "Easy Effects стартует при запуске сеанса пользователя."
+msgstr "Easy Effects будет запускаться с началом сеанса пользователя."
 
 #: src/contents/ui/PreferencesSheet.qml:91
 msgid "Show the tray icon"
@@ -2540,8 +2540,7 @@ msgid ""
 "and does not replace the one set by the user."
 msgstr ""
 "Если включено, список исключённых приложений, установленный в загруженной "
-"предустановке, игнорируется и не заменяет список, установленный "
-"пользователем."
+"предустановке, игнорируется и не заменяет список, заданный пользователем."
 
 #: src/contents/ui/PreferencesSheet.qml:552
 msgid "Global shortcuts"
