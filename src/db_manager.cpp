@@ -125,6 +125,7 @@ Manager::~Manager() {
 void Manager::saveAll() const {
   util::debug("Saving settings...");
 
+  graph->save();
   main->save();
   spectrum->save();
   streamOutputs->save();
@@ -143,6 +144,7 @@ void Manager::saveAll() const {
 void Manager::resetAll() const {
   util::debug("Resetting settings...");
 
+  graph->setDefaults();
   main->setDefaults();
   spectrum->setDefaults();
   streamOutputs->setDefaults();
