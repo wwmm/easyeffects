@@ -328,8 +328,8 @@ Kirigami.ScrollablePage {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
                     seriesType: 1 // spline series
-                    colorScheme: DbSpectrum.spectrumColorScheme
-                    colorTheme: DbSpectrum.spectrumColorTheme
+                    colorScheme: DbGraph.colorScheme
+                    colorTheme: DbGraph.colorTheme
                     xUnit: i18n("s")
                     xAxisDecimals: 2
                     logarithimicHorizontalAxis: false

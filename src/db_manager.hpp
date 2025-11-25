@@ -29,6 +29,7 @@
 #include <qtpreprocessorsupport.h>
 #include <QTimer>
 #include "easyeffects_db.h"                // IWYU pragma: export
+#include "easyeffects_db_graph.h"          // IWYU pragma: export
 #include "easyeffects_db_spectrum.h"       // IWYU pragma: export
 #include "easyeffects_db_streaminputs.h"   // IWYU pragma: export
 #include "easyeffects_db_streamoutputs.h"  // IWYU pragma: export
@@ -42,12 +43,6 @@ class Manager : public QObject {
   QML_NAMED_ELEMENT(DatabaseManager)
   QML_SINGLETON
   QML_UNCREATABLE("C++ singleton - use DatabaseManager.instance")
-
-  Q_PROPERTY(DbMain* main MEMBER main NOTIFY mainChanged)
-  Q_PROPERTY(DbSpectrum* spectrum MEMBER spectrum NOTIFY spectrumChanged)
-  Q_PROPERTY(DbStreamInputs* streamInputs MEMBER streamInputs NOTIFY streamInputsChanged)
-  Q_PROPERTY(DbStreamOutputs* streamOutputs MEMBER streamOutputs NOTIFY streamOutputsChanged)
-  Q_PROPERTY(DbTestSignals* testSignals MEMBER testSignals NOTIFY testSignalsChanged)
 
   Q_PROPERTY(QMap<QString, QVariant> soePluginsDB MEMBER soePluginsDB NOTIFY soePluginsDBChanged)
   Q_PROPERTY(QMap<QString, QVariant> siePluginsDB MEMBER siePluginsDB NOTIFY siePluginsDBChanged)
@@ -86,6 +81,7 @@ class Manager : public QObject {
 
   Q_INVOKABLE void enableAutosave(const bool& state);
 
+  DbGraph* graph;
   DbMain* main;
   DbSpectrum* spectrum;
   DbStreamInputs* streamInputs;
@@ -108,13 +104,8 @@ class Manager : public QObject {
   }
 
  Q_SIGNALS:
-  void mainChanged();
-  void spectrumChanged();
-  void streamInputsChanged();
-  void streamOutputsChanged();
   void soePluginsDBChanged();
   void siePluginsDBChanged();
-  void testSignalsChanged();
 
  private:
   QTimer* timer = nullptr;

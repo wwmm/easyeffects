@@ -66,7 +66,8 @@
 namespace db {
 
 Manager::Manager()
-    : main(DbMain::self()),
+    : graph(DbGraph::self()),
+      main(DbMain::self()),
       spectrum(DbSpectrum::self()),
       streamInputs(DbStreamInputs::self()),
       streamOutputs(DbStreamOutputs::self()),

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0 http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
+    <kcfgfile name="easyeffects/db/graphrc" />
+    <group name="Graph">
+        <entry name="colorScheme" type="Enum">
+            <label>Graph color scheme</label>
+            <choices>
+                <choice name="automatic">
+                    <label>Automatic</label>
+                </choice>
+                <choice name="light">
+                    <label>Light</label>
+                </choice>
+                <choice name="dark">
+                    <label>Dark</label>
+                </choice>
+            </choices>
+            <default>2</default>
+        </entry>
+        <entry name="colorTheme" type="Enum">
+            <label>Graph color theme</label>
+            <choices>
+                <choice name="qtGreen">
+                    <label>A light theme with green as the base color.</label>
+                </choice>
+                <choice name="qtGreenNeon">
+                    <label>A light theme with green neon as the base color.</label>
+                </choice>
+                <choice name="mixSeries">
+                    <label>A mixed theme with various colors.</label>
+                </choice>
+                <choice name="orangeSeries">
+                    <label>A theme with Orange as the base color.</label>
+                </choice>
+                <choice name="yellowSeries">
+                    <label>A theme with Yellow as the base color.</label>
+                </choice>
+                <choice name="blueSeries">
+                    <label>A theme with Blue as the base color.</label>
+                </choice>
+                <choice name="purpleSeries">
+                    <label>A theme with Purple as the base color.</label>
+                </choice>
+                <choice name="greySeries">
+                    <label>A theme with Grey as the base color.</label>
+                </choice>
+                <choice name="user">
+                    <label>User custom theme.</label>
+                </choice>
+            </choices>
+            <default>1</default>
+        </entry>
+    </group>
+</kcfg>

@@ -291,38 +291,10 @@ KirigamiSettings.ConfigurationView {
             }
 
             FormCard.FormHeader {
-                title: i18n("Style") // qmllint disable
+                title: i18n("Graph") // qmllint disable
             }
 
             FormCard.FormCard {
-                FormCard.FormComboBoxDelegate {
-                    id: spectrumColorScheme
-
-                    text: i18n("Color scheme") // qmllint disable
-                    displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                    currentIndex: DbSpectrum.spectrumColorScheme
-                    editable: false
-                    model: [i18n("Automatic"), i18n("Light"), i18n("Dark")]// qmllint disable
-                    onActivated: idx => {
-                        if (idx !== DbSpectrum.spectrumColorScheme)
-                            DbSpectrum.spectrumColorScheme = idx;
-                    }
-                }
-
-                FormCard.FormComboBoxDelegate {
-                    id: spectrumColorTheme
-
-                    text: i18n("Color theme") // qmllint disable
-                    displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                    currentIndex: DbSpectrum.spectrumColorTheme
-                    editable: false
-                    model: [i18n("Green"), i18n("Green neon"), i18n("Mix"), i18n("Orange"), i18n("Yellow"), i18n("Blue"), i18n("Purple"), i18n("Grey")]// qmllint disable
-                    onActivated: idx => {
-                        if (idx !== DbSpectrum.spectrumColorTheme)
-                            DbSpectrum.spectrumColorTheme = idx;
-                    }
-                }
-
                 FormCard.FormComboBoxDelegate {
                     id: spectrumShape
 
@@ -470,6 +442,10 @@ KirigamiSettings.ConfigurationView {
 
     readonly property Component stylePage: Component {
         FormCard.FormCardPage {
+            FormCard.FormHeader {
+                title: i18n("Window") // qmllint disable
+            }
+
             FormCard.FormCard {
                 Layout.topMargin: Kirigami.Units.gridUnit
 
@@ -498,6 +474,40 @@ KirigamiSettings.ConfigurationView {
                         if (isChecked !== DbMain.reducePluginsListControls) {
                             DbMain.reducePluginsListControls = isChecked;
                         }
+                    }
+                }
+            }
+
+            FormCard.FormHeader {
+                title: i18n("Graphs") // qmllint disable
+            }
+
+            FormCard.FormCard {
+                FormCard.FormComboBoxDelegate {
+                    id: chartColorScheme
+
+                    text: i18n("Color scheme") // qmllint disable
+                    displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                    currentIndex: DbGraph.colorScheme
+                    editable: false
+                    model: [i18n("Automatic"), i18n("Light"), i18n("Dark")]// qmllint disable
+                    onActivated: idx => {
+                        if (idx !== DbGraph.colorScheme)
+                            DbGraph.colorScheme = idx;
+                    }
+                }
+
+                FormCard.FormComboBoxDelegate {
+                    id: chartColorTheme
+
+                    text: i18n("Color theme") // qmllint disable
+                    displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                    currentIndex: DbGraph.colorTheme
+                    editable: false
+                    model: [i18n("Green"), i18n("Green neon"), i18n("Mix"), i18n("Orange"), i18n("Yellow"), i18n("Blue"), i18n("Purple"), i18n("Grey"), i18n("User")]// qmllint disable
+                    onActivated: idx => {
+                        if (idx !== DbGraph.colorTheme)
+                            DbGraph.colorTheme = idx;
                     }
                 }
             }
