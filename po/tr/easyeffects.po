@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-23 12:50-0300\n"
+"POT-Creation-Date: 2025-11-24 23:25-0300\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: atahanacar <atahanacar@gmx.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -190,7 +190,7 @@ msgstr "Hedef"
 #: src/contents/ui/Compressor.qml:542 src/contents/ui/Compressor.qml:558
 #: src/contents/ui/Compressor.qml:574 src/contents/ui/Compressor.qml:590
 #: src/contents/ui/Compressor.qml:606 src/contents/ui/Compressor.qml:622
-#: src/contents/ui/Convolver.qml:422 src/contents/ui/Convolver.qml:440
+#: src/contents/ui/Convolver.qml:431 src/contents/ui/Convolver.qml:449
 #: src/contents/ui/Crossfeed.qml:82 src/contents/ui/DeepFilterNet.qml:93
 #: src/contents/ui/DeepFilterNet.qml:109 src/contents/ui/DeepFilterNet.qml:125
 #: src/contents/ui/DeepFilterNet.qml:157 src/contents/ui/Deesser.qml:91
@@ -200,7 +200,7 @@ msgstr "Hedef"
 #: src/contents/ui/Delay.qml:317 src/contents/ui/Delay.qml:335
 #: src/contents/ui/EeInputOutputGain.qml:99
 #: src/contents/ui/EeInputOutputGain.qml:112
-#: src/contents/ui/EqualizerBandMenu.qml:101 src/contents/ui/Exciter.qml:102
+#: src/contents/ui/EqualizerBandMenu.qml:110 src/contents/ui/Exciter.qml:102
 #: src/contents/ui/Expander.qml:98 src/contents/ui/Expander.qml:129
 #: src/contents/ui/Expander.qml:162 src/contents/ui/Expander.qml:304
 #: src/contents/ui/Expander.qml:434 src/contents/ui/Expander.qml:453
@@ -223,27 +223,29 @@ msgstr "Hedef"
 #: src/contents/ui/Limiter.qml:340 src/contents/ui/Limiter.qml:356
 #: src/contents/ui/Limiter.qml:372 src/contents/ui/Limiter.qml:440
 #: src/contents/ui/Loudness.qml:117 src/contents/ui/Loudness.qml:134
-#: src/contents/ui/LspPreMixSheet.qml:38 src/contents/ui/LspPreMixSheet.qml:54
-#: src/contents/ui/LspPreMixSheet.qml:70 src/contents/ui/LspPreMixSheet.qml:86
-#: src/contents/ui/LspPreMixSheet.qml:102
-#: src/contents/ui/LspPreMixSheet.qml:118 src/contents/ui/Maximizer.qml:71
-#: src/contents/ui/Maximizer.qml:82 src/contents/ui/MultibandCompressor.qml:121
-#: src/contents/ui/MultibandCompressor.qml:140
-#: src/contents/ui/MultibandCompressor.qml:260
-#: src/contents/ui/MultibandCompressor.qml:308
-#: src/contents/ui/MultibandCompressor.qml:360
-#: src/contents/ui/MultibandCompressor.qml:377
-#: src/contents/ui/MultibandCompressor.qml:450
-#: src/contents/ui/MultibandCompressor.qml:605
-#: src/contents/ui/MultibandCompressor.qml:623
-#: src/contents/ui/MultibandGate.qml:230 src/contents/ui/MultibandGate.qml:246
-#: src/contents/ui/MultibandGate.qml:279 src/contents/ui/MultibandGate.qml:294
-#: src/contents/ui/MultibandGate.qml:333 src/contents/ui/MultibandGate.qml:349
-#: src/contents/ui/MultibandGate.qml:423 src/contents/ui/MultibandGate.qml:578
-#: src/contents/ui/MultibandGate.qml:596
-#: src/contents/ui/PageStreamsEffects.qml:593 src/contents/ui/Pitch.qml:111
+#: src/contents/ui/LspPreMixDialog.qml:40
+#: src/contents/ui/LspPreMixDialog.qml:56
+#: src/contents/ui/LspPreMixDialog.qml:72
+#: src/contents/ui/LspPreMixDialog.qml:88
+#: src/contents/ui/LspPreMixDialog.qml:104
+#: src/contents/ui/LspPreMixDialog.qml:120 src/contents/ui/Maximizer.qml:71
+#: src/contents/ui/Maximizer.qml:82 src/contents/ui/MultibandCompressor.qml:122
+#: src/contents/ui/MultibandCompressor.qml:141
+#: src/contents/ui/MultibandCompressor.qml:261
+#: src/contents/ui/MultibandCompressor.qml:309
+#: src/contents/ui/MultibandCompressor.qml:361
+#: src/contents/ui/MultibandCompressor.qml:378
+#: src/contents/ui/MultibandCompressor.qml:451
+#: src/contents/ui/MultibandCompressor.qml:606
+#: src/contents/ui/MultibandCompressor.qml:624
+#: src/contents/ui/MultibandGate.qml:231 src/contents/ui/MultibandGate.qml:247
+#: src/contents/ui/MultibandGate.qml:280 src/contents/ui/MultibandGate.qml:295
+#: src/contents/ui/MultibandGate.qml:334 src/contents/ui/MultibandGate.qml:350
+#: src/contents/ui/MultibandGate.qml:424 src/contents/ui/MultibandGate.qml:579
+#: src/contents/ui/MultibandGate.qml:597
+#: src/contents/ui/PageStreamsEffects.qml:600 src/contents/ui/Pitch.qml:111
 #: src/contents/ui/Pitch.qml:130 src/contents/ui/Reverb.qml:177
-#: src/contents/ui/Reverb.qml:195 src/contents/ui/RNNoise.qml:132
+#: src/contents/ui/Reverb.qml:195 src/contents/ui/RNNoise.qml:133
 #: src/contents/ui/Speex.qml:85 src/contents/ui/StereoTools.qml:124
 #: src/contents/ui/StereoTools.qml:158 src/contents/ui/StereoTools.qml:332
 #: src/contents/ui/StereoTools.qml:350
@@ -259,8 +261,8 @@ msgstr "Sessizlik"
 msgid "Maximum history"
 msgstr "Azami Geçmiş"
 
-#: src/contents/ui/Autogain.qml:108 src/contents/ui/Convolver.qml:224
-#: src/contents/ui/Convolver.qml:324 src/contents/ui/Convolver.qml:378
+#: src/contents/ui/Autogain.qml:108 src/contents/ui/Convolver.qml:233
+#: src/contents/ui/Convolver.qml:333 src/contents/ui/Convolver.qml:387
 #: src/contents/ui/PreferencesSheet.qml:231 src/contents/ui/Reverb.qml:67
 msgid "s"
 msgstr ""
@@ -286,19 +288,19 @@ msgstr "Çıktı Kazancı"
 
 #: src/contents/ui/Autogain.qml:219 src/contents/ui/BassEnhancer.qml:185
 #: src/contents/ui/BassLoudness.qml:104 src/contents/ui/Compressor.qml:871
-#: src/contents/ui/Convolver.qml:457 src/contents/ui/Crossfeed.qml:128
-#: src/contents/ui/Crystalizer.qml:90 src/contents/ui/DeepFilterNet.qml:175
+#: src/contents/ui/Convolver.qml:466 src/contents/ui/Crossfeed.qml:128
+#: src/contents/ui/Crystalizer.qml:89 src/contents/ui/DeepFilterNet.qml:175
 #: src/contents/ui/Deesser.qml:300 src/contents/ui/Delay.qml:354
 #: src/contents/ui/EchoCanceller.qml:136 src/contents/ui/Equalizer.qml:283
 #: src/contents/ui/Exciter.qml:190 src/contents/ui/Expander.qml:819
 #: src/contents/ui/Filter.qml:198 src/contents/ui/Gate.qml:956
 #: src/contents/ui/LevelMeter.qml:205 src/contents/ui/Limiter.qml:574
 #: src/contents/ui/Loudness.qml:153 src/contents/ui/Maximizer.qml:101
-#: src/contents/ui/MultibandCompressor.qml:947
-#: src/contents/ui/MultibandGate.qml:920 src/contents/ui/Pitch.qml:246
-#: src/contents/ui/Reverb.qml:297 src/contents/ui/RNNoise.qml:56
-#: src/contents/ui/RNNoise.qml:67 src/contents/ui/RNNoise.qml:281
-#: src/contents/ui/RNNoise.qml:283 src/contents/ui/RNNoise.qml:301
+#: src/contents/ui/MultibandCompressor.qml:949
+#: src/contents/ui/MultibandGate.qml:922 src/contents/ui/Pitch.qml:246
+#: src/contents/ui/Reverb.qml:297 src/contents/ui/RNNoise.qml:57
+#: src/contents/ui/RNNoise.qml:68 src/contents/ui/RNNoise.qml:282
+#: src/contents/ui/RNNoise.qml:284 src/contents/ui/RNNoise.qml:302
 #: src/contents/ui/Speex.qml:155 src/contents/ui/StereoTools.qml:369
 #, fuzzy
 msgid "Using %1"
@@ -352,21 +354,21 @@ msgid "Scope"
 msgstr "Kapsam"
 
 #: src/contents/ui/BassEnhancer.qml:129 src/contents/ui/BassEnhancer.qml:156
-#: src/contents/ui/Convolver.qml:211 src/contents/ui/Convolver.qml:362
+#: src/contents/ui/Convolver.qml:220 src/contents/ui/Convolver.qml:371
 #: src/contents/ui/Crossfeed.qml:66 src/contents/ui/CrystalizerBand.qml:75
 #: src/contents/ui/Deesser.qml:173 src/contents/ui/Deesser.qml:190
-#: src/contents/ui/EqualizerBandMenu.qml:80
+#: src/contents/ui/EqualizerBandMenu.qml:87
 #: src/contents/ui/EqualizerBand.qml:48 src/contents/ui/Exciter.qml:133
 #: src/contents/ui/Exciter.qml:160 src/contents/ui/Expander.qml:385
 #: src/contents/ui/Expander.qml:406 src/contents/ui/Filter.qml:115
 #: src/contents/ui/Gate.qml:404 src/contents/ui/Gate.qml:425
-#: src/contents/ui/MultibandCompressor.qml:195
-#: src/contents/ui/MultibandCompressor.qml:214
-#: src/contents/ui/MultibandCompressor.qml:504
-#: src/contents/ui/MultibandCompressor.qml:529
-#: src/contents/ui/MultibandGate.qml:132 src/contents/ui/MultibandGate.qml:151
-#: src/contents/ui/MultibandGate.qml:477 src/contents/ui/MultibandGate.qml:502
-#: src/contents/ui/PageStreamsEffects.qml:450
+#: src/contents/ui/MultibandCompressor.qml:196
+#: src/contents/ui/MultibandCompressor.qml:215
+#: src/contents/ui/MultibandCompressor.qml:505
+#: src/contents/ui/MultibandCompressor.qml:530
+#: src/contents/ui/MultibandGate.qml:133 src/contents/ui/MultibandGate.qml:152
+#: src/contents/ui/MultibandGate.qml:478 src/contents/ui/MultibandGate.qml:503
+#: src/contents/ui/PageStreamsEffects.qml:457
 #: src/contents/ui/PipeWirePage.qml:402
 #: src/contents/ui/PreferencesSheet.qml:411
 #: src/contents/ui/PreferencesSheet.qml:427
@@ -390,8 +392,8 @@ msgstr "Zemin"
 #: src/contents/ui/Expander.qml:837 src/contents/ui/Filter.qml:216
 #: src/contents/ui/Gate.qml:974 src/contents/ui/Limiter.qml:592
 #: src/contents/ui/Loudness.qml:171 src/contents/ui/Maximizer.qml:119
-#: src/contents/ui/MultibandCompressor.qml:965
-#: src/contents/ui/MultibandGate.qml:938 src/contents/ui/Reverb.qml:323
+#: src/contents/ui/MultibandCompressor.qml:967
+#: src/contents/ui/MultibandGate.qml:940 src/contents/ui/Reverb.qml:323
 #: src/contents/ui/StereoTools.qml:387
 #, fuzzy
 msgid "Show native window"
@@ -404,85 +406,85 @@ msgid "Listen"
 msgstr "Liste"
 
 #: src/contents/ui/BassEnhancer.qml:227 src/contents/ui/BassLoudness.qml:122
-#: src/contents/ui/Compressor.qml:923 src/contents/ui/Convolver.qml:485
-#: src/contents/ui/Crossfeed.qml:154 src/contents/ui/Crystalizer.qml:118
+#: src/contents/ui/Compressor.qml:923 src/contents/ui/Convolver.qml:494
+#: src/contents/ui/Crossfeed.qml:154 src/contents/ui/Crystalizer.qml:117
 #: src/contents/ui/Deesser.qml:342 src/contents/ui/Delay.qml:406
 #: src/contents/ui/EchoCanceller.qml:164 src/contents/ui/Equalizer.qml:367
 #: src/contents/ui/Exciter.qml:232 src/contents/ui/Expander.qml:871
 #: src/contents/ui/Filter.qml:230 src/contents/ui/Gate.qml:1008
 #: src/contents/ui/Limiter.qml:626 src/contents/ui/Loudness.qml:195
-#: src/contents/ui/Main.qml:563 src/contents/ui/Maximizer.qml:133
-#: src/contents/ui/MultibandCompressor.qml:996
-#: src/contents/ui/MultibandGate.qml:969 src/contents/ui/Reverb.qml:337
-#: src/contents/ui/RNNoise.qml:326 src/contents/ui/Speex.qml:173
+#: src/contents/ui/Main.qml:565 src/contents/ui/Maximizer.qml:133
+#: src/contents/ui/MultibandCompressor.qml:998
+#: src/contents/ui/MultibandGate.qml:971 src/contents/ui/Reverb.qml:337
+#: src/contents/ui/RNNoise.qml:327 src/contents/ui/Speex.qml:173
 #: src/contents/ui/StereoTools.qml:401
 msgid "Reset"
 msgstr "Sıfırla"
 
 #: src/contents/ui/BassLoudness.qml:63 src/contents/ui/Compressor.qml:462
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:420
-#: src/contents/ui/Gate.qml:435 src/contents/ui/Main.qml:491
+#: src/contents/ui/Gate.qml:435 src/contents/ui/Main.qml:493
 #: src/contents/ui/StereoTools.qml:248
 msgid "Output"
 msgstr "Çıktı"
 
 #: src/contents/ui/BassLoudness.qml:79 src/contents/ui/Compressor.qml:248
 #: src/contents/ui/Expander.qml:208 src/contents/ui/Gate.qml:226
-#: src/contents/ui/Limiter.qml:199 src/contents/ui/MultibandCompressor.qml:400
-#: src/contents/ui/MultibandGate.qml:373
+#: src/contents/ui/Limiter.qml:199 src/contents/ui/MultibandCompressor.qml:401
+#: src/contents/ui/MultibandGate.qml:374
 msgid "Link"
 msgstr "Bağ"
 
-#: src/contents/ui/BlocklistSheet.qml:13
+#: src/contents/ui/BlocklistDialog.qml:14
 #, fuzzy
 msgid "Excluded Applications"
 msgstr "Hariç Tutulan Uygulamalar Listesi"
 
-#: src/contents/ui/BlocklistSheet.qml:29
+#: src/contents/ui/BlocklistDialog.qml:33
 #, fuzzy
 msgid "Application node name"
 msgstr "Uygulama Adı"
 
-#: src/contents/ui/BlocklistSheet.qml:45
+#: src/contents/ui/BlocklistDialog.qml:49
 #, fuzzy
 msgid "Add to excluded applications"
 msgstr "Hariç Tutulan Uygulamalara Ekle"
 
-#: src/contents/ui/BlocklistSheet.qml:95
-#: src/contents/ui/ConvolverImpulseSheet.qml:65
-#: src/contents/ui/MenuAddPlugins.qml:36
+#: src/contents/ui/BlocklistDialog.qml:99
+#: src/contents/ui/ConvolverImpulseDialog.qml:70
+#: src/contents/ui/MenuAddPlugins.qml:37
 #: src/contents/ui/PageStreamsEffects.qml:79
-#: src/contents/ui/PresetsAutoloadingPage.qml:127
-#: src/contents/ui/PresetsCommunityPage.qml:72
-#: src/contents/ui/PresetsLocalPage.qml:174 src/contents/ui/RNNoise.qml:211
+#: src/contents/ui/PresetsAutoloadingPage.qml:130
+#: src/contents/ui/PresetsCommunityPage.qml:86
+#: src/contents/ui/PresetsLocalPage.qml:175 src/contents/ui/RNNoise.qml:212
 msgid "Empty List"
 msgstr "Boş Liste"
 
-#: src/contents/ui/BlocklistSheet.qml:96
+#: src/contents/ui/BlocklistDialog.qml:100
 #, fuzzy
 msgid "No application excluded"
 msgstr "Uygulama Ses Seviyesi"
 
-#: src/contents/ui/BlocklistSheet.qml:118
+#: src/contents/ui/BlocklistDialog.qml:123
 #, fuzzy
 msgid "Remove Application"
 msgstr "Uygulamayı Sessize Al"
 
-#: src/contents/ui/BlocklistSheet.qml:119
+#: src/contents/ui/BlocklistDialog.qml:124
 msgid "Are you sure you want to remove this application from the list?"
 msgstr ""
 
-#: src/contents/ui/BlocklistSheet.qml:149
+#: src/contents/ui/BlocklistDialog.qml:154
 #, fuzzy
 msgid "Remove this app"
 msgstr "Bu eklentiyi kaldır"
 
-#: src/contents/ui/BlocklistSheet.qml:176
+#: src/contents/ui/BlocklistDialog.qml:183
 #, fuzzy
 msgid "Show excluded apps"
 msgstr "Hariç Tutulan Uygulamalar"
 
-#: src/contents/ui/BlocklistSheet.qml:177
+#: src/contents/ui/BlocklistDialog.qml:184
 #, fuzzy
 msgid "Show excluded applications in the list of players/recorders"
 msgstr "Hariç Tutulan Uygulamaları Göster"
@@ -493,49 +495,49 @@ msgstr "Sıkıştırıcı"
 
 #: src/contents/ui/Compressor.qml:61 src/contents/ui/Compressor.qml:283
 #: src/contents/ui/Deesser.qml:70 src/contents/ui/Delay.qml:51
-#: src/contents/ui/Delay.qml:204 src/contents/ui/EqualizerBandMenu.qml:45
+#: src/contents/ui/Delay.qml:204 src/contents/ui/EqualizerBandMenu.qml:46
 #: src/contents/ui/Equalizer.qml:121 src/contents/ui/Expander.qml:61
 #: src/contents/ui/Expander.qml:243 src/contents/ui/Gate.qml:261
 #: src/contents/ui/Limiter.qml:54 src/contents/ui/Loudness.qml:51
-#: src/contents/ui/MultibandCompressor.qml:407
-#: src/contents/ui/MultibandGate.qml:380 src/contents/ui/StereoTools.qml:103
+#: src/contents/ui/MultibandCompressor.qml:408
+#: src/contents/ui/MultibandGate.qml:381 src/contents/ui/StereoTools.qml:103
 msgid "Mode"
 msgstr "Kip"
 
 #: src/contents/ui/Compressor.qml:65 src/contents/ui/Expander.qml:65
-#: src/contents/ui/MultibandCompressor.qml:104
+#: src/contents/ui/MultibandCompressor.qml:105
 msgid "Downward"
 msgstr "Aşağıya"
 
 #: src/contents/ui/Compressor.qml:65 src/contents/ui/Expander.qml:65
-#: src/contents/ui/MultibandCompressor.qml:104
+#: src/contents/ui/MultibandCompressor.qml:105
 msgid "Upward"
 msgstr "Yukarı doğru"
 
 #: src/contents/ui/Compressor.qml:65
-#: src/contents/ui/MultibandCompressor.qml:104
+#: src/contents/ui/MultibandCompressor.qml:105
 msgid "Boosting"
 msgstr "Yükseltme"
 
 #: src/contents/ui/Compressor.qml:75
-#: src/contents/ui/MultibandCompressor.qml:113
+#: src/contents/ui/MultibandCompressor.qml:114
 #, fuzzy
 msgid "Boost threshold"
 msgstr "Yükseltme Eşiği"
 
 #: src/contents/ui/Compressor.qml:95
-#: src/contents/ui/MultibandCompressor.qml:132
+#: src/contents/ui/MultibandCompressor.qml:133
 #, fuzzy
 msgid "Boost amount"
 msgstr "Yükseltme Miktarı"
 
 #: src/contents/ui/Compressor.qml:114 src/contents/ui/Deesser.qml:100
-#: src/contents/ui/Expander.qml:74 src/contents/ui/MultibandCompressor.qml:336
+#: src/contents/ui/Expander.qml:74 src/contents/ui/MultibandCompressor.qml:337
 msgid "Ratio"
 msgstr "Oran"
 
 #: src/contents/ui/Compressor.qml:130 src/contents/ui/Expander.qml:90
-#: src/contents/ui/Limiter.qml:433 src/contents/ui/MultibandCompressor.qml:351
+#: src/contents/ui/Limiter.qml:433 src/contents/ui/MultibandCompressor.qml:352
 msgid "Knee"
 msgstr "Oynak"
 
@@ -547,8 +549,8 @@ msgstr "Eşik"
 #: src/contents/ui/Compressor.qml:161 src/contents/ui/Expander.qml:121
 #: src/contents/ui/Gate.qml:65 src/contents/ui/Gate.qml:854
 #: src/contents/ui/Limiter.qml:126 src/contents/ui/Limiter.qml:399
-#: src/contents/ui/MultibandCompressor.qml:233
-#: src/contents/ui/MultibandGate.qml:174
+#: src/contents/ui/MultibandCompressor.qml:234
+#: src/contents/ui/MultibandGate.qml:175
 msgid "Attack"
 msgstr "Atak"
 
@@ -562,26 +564,26 @@ msgstr "Atak"
 #: src/contents/ui/Limiter.qml:133 src/contents/ui/Limiter.qml:150
 #: src/contents/ui/Limiter.qml:258 src/contents/ui/Limiter.qml:406
 #: src/contents/ui/Limiter.qml:423 src/contents/ui/Maximizer.qml:55
-#: src/contents/ui/MultibandCompressor.qml:245
-#: src/contents/ui/MultibandCompressor.qml:293
-#: src/contents/ui/MultibandCompressor.qml:466
-#: src/contents/ui/MultibandCompressor.qml:481
-#: src/contents/ui/MultibandGate.qml:182 src/contents/ui/MultibandGate.qml:197
-#: src/contents/ui/MultibandGate.qml:439 src/contents/ui/MultibandGate.qml:454
-#: src/contents/ui/PageStreamsEffects.qml:592 src/contents/ui/Pitch.qml:58
+#: src/contents/ui/MultibandCompressor.qml:246
+#: src/contents/ui/MultibandCompressor.qml:294
+#: src/contents/ui/MultibandCompressor.qml:467
+#: src/contents/ui/MultibandCompressor.qml:482
+#: src/contents/ui/MultibandGate.qml:183 src/contents/ui/MultibandGate.qml:198
+#: src/contents/ui/MultibandGate.qml:440 src/contents/ui/MultibandGate.qml:455
+#: src/contents/ui/PageStreamsEffects.qml:599 src/contents/ui/Pitch.qml:58
 #: src/contents/ui/Pitch.qml:75 src/contents/ui/Pitch.qml:93
 #: src/contents/ui/PreferencesSheet.qml:247
 #: src/contents/ui/PreferencesSheet.qml:286
 #: src/contents/ui/PreferencesSheet.qml:449 src/contents/ui/Reverb.qml:83
-#: src/contents/ui/RNNoise.qml:148 src/contents/ui/StereoTools.qml:282
+#: src/contents/ui/RNNoise.qml:149 src/contents/ui/StereoTools.qml:282
 msgid "ms"
 msgstr ""
 
 #: src/contents/ui/Compressor.qml:194 src/contents/ui/Expander.qml:154
 #: src/contents/ui/Gate.qml:82 src/contents/ui/Gate.qml:863
 #: src/contents/ui/Limiter.qml:143 src/contents/ui/Limiter.qml:416
-#: src/contents/ui/Maximizer.qml:48 src/contents/ui/MultibandCompressor.qml:281
-#: src/contents/ui/MultibandGate.qml:189 src/contents/ui/RNNoise.qml:141
+#: src/contents/ui/Maximizer.qml:48 src/contents/ui/MultibandCompressor.qml:282
+#: src/contents/ui/MultibandGate.qml:190 src/contents/ui/RNNoise.qml:142
 msgid "Release"
 msgstr "Bırak"
 
@@ -590,16 +592,16 @@ msgstr "Bırak"
 #: src/contents/ui/Expander.qml:286 src/contents/ui/Expander.qml:617
 #: src/contents/ui/Gate.qml:209 src/contents/ui/Gate.qml:304
 #: src/contents/ui/Gate.qml:643 src/contents/ui/Limiter.qml:179
-#: src/contents/ui/Limiter.qml:480 src/contents/ui/MultibandCompressor.qml:641
-#: src/contents/ui/MultibandGate.qml:614
+#: src/contents/ui/Limiter.qml:480 src/contents/ui/MultibandCompressor.qml:642
+#: src/contents/ui/MultibandGate.qml:615
 msgid "Sidechain"
 msgstr "Yanzincir"
 
-#: src/contents/ui/Compressor.qml:244 src/contents/ui/EqualizerBandMenu.qml:33
+#: src/contents/ui/Compressor.qml:244 src/contents/ui/EqualizerBandMenu.qml:32
 #: src/contents/ui/Expander.qml:204 src/contents/ui/Filter.qml:45
 #: src/contents/ui/Gate.qml:222 src/contents/ui/Limiter.qml:195
-#: src/contents/ui/MultibandCompressor.qml:396
-#: src/contents/ui/MultibandGate.qml:369
+#: src/contents/ui/MultibandCompressor.qml:397
+#: src/contents/ui/MultibandGate.qml:370
 msgid "Type"
 msgstr "Tür"
 
@@ -613,45 +615,45 @@ msgstr "Geri-besleme"
 
 #: src/contents/ui/Compressor.qml:248 src/contents/ui/Expander.qml:208
 #: src/contents/ui/Gate.qml:226 src/contents/ui/Limiter.qml:199
-#: src/contents/ui/MultibandCompressor.qml:400
-#: src/contents/ui/MultibandGate.qml:373
+#: src/contents/ui/MultibandCompressor.qml:401
+#: src/contents/ui/MultibandGate.qml:374
 msgid "External"
 msgstr "Harici"
 
 #: src/contents/ui/Compressor.qml:259 src/contents/ui/Expander.qml:219
 #: src/contents/ui/Gate.qml:237 src/contents/ui/Limiter.qml:209
-#: src/contents/ui/PageStreamsEffects.qml:381
+#: src/contents/ui/PageStreamsEffects.qml:395
 #, fuzzy
 msgid "Input device"
 msgstr "Giriş Aygıtı"
 
 #: src/contents/ui/Compressor.qml:287 src/contents/ui/Deesser.qml:61
 #: src/contents/ui/Expander.qml:247 src/contents/ui/Gate.qml:265
-#: src/contents/ui/MultibandCompressor.qml:411
-#: src/contents/ui/MultibandGate.qml:384
+#: src/contents/ui/MultibandCompressor.qml:412
+#: src/contents/ui/MultibandGate.qml:385
 msgid "Peak"
 msgstr "Doruk"
 
 #: src/contents/ui/Compressor.qml:287 src/contents/ui/Deesser.qml:61
 #: src/contents/ui/Expander.qml:247 src/contents/ui/Gate.qml:265
-#: src/contents/ui/MultibandCompressor.qml:411
-#: src/contents/ui/MultibandGate.qml:384
+#: src/contents/ui/MultibandCompressor.qml:412
+#: src/contents/ui/MultibandGate.qml:385
 msgid "RMS"
 msgstr "RMS"
 
 #: src/contents/ui/Compressor.qml:287 src/contents/ui/Compressor.qml:408
-#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Expander.qml:247
+#: src/contents/ui/EqualizerBandMenu.qml:36 src/contents/ui/Expander.qml:247
 #: src/contents/ui/Expander.qml:364 src/contents/ui/Filter.qml:49
 #: src/contents/ui/Gate.qml:265 src/contents/ui/Gate.qml:383
-#: src/contents/ui/MultibandCompressor.qml:411
-#: src/contents/ui/MultibandGate.qml:384
+#: src/contents/ui/MultibandCompressor.qml:412
+#: src/contents/ui/MultibandGate.qml:385
 #, fuzzy
 msgid "Low-pass"
 msgstr "Düşük Geçiş"
 
 #: src/contents/ui/Compressor.qml:287 src/contents/ui/Expander.qml:247
-#: src/contents/ui/Gate.qml:265 src/contents/ui/MultibandCompressor.qml:411
-#: src/contents/ui/MultibandGate.qml:384
+#: src/contents/ui/Gate.qml:265 src/contents/ui/MultibandCompressor.qml:412
+#: src/contents/ui/MultibandGate.qml:385
 #, fuzzy
 msgid "SMA"
 msgstr "SPM"
@@ -659,40 +661,40 @@ msgstr "SPM"
 #: src/contents/ui/Compressor.qml:297 src/contents/ui/Compressor.qml:312
 #: src/contents/ui/Expander.qml:257 src/contents/ui/Expander.qml:272
 #: src/contents/ui/Gate.qml:275 src/contents/ui/Gate.qml:290
-#: src/contents/ui/MultibandCompressor.qml:418
-#: src/contents/ui/MultibandCompressor.qml:430
-#: src/contents/ui/MultibandGate.qml:391 src/contents/ui/MultibandGate.qml:403
+#: src/contents/ui/MultibandCompressor.qml:419
+#: src/contents/ui/MultibandCompressor.qml:431
+#: src/contents/ui/MultibandGate.qml:392 src/contents/ui/MultibandGate.qml:404
 msgid "Source"
 msgstr "Kaynak"
 
 #: src/contents/ui/Compressor.qml:301 src/contents/ui/Expander.qml:261
-#: src/contents/ui/Gate.qml:279 src/contents/ui/MultibandCompressor.qml:422
-#: src/contents/ui/MultibandGate.qml:395
+#: src/contents/ui/Gate.qml:279 src/contents/ui/MultibandCompressor.qml:423
+#: src/contents/ui/MultibandGate.qml:396
 msgid "Middle"
 msgstr "Orta"
 
 #: src/contents/ui/Compressor.qml:301 src/contents/ui/Expander.qml:261
-#: src/contents/ui/Gate.qml:279 src/contents/ui/MultibandCompressor.qml:422
-#: src/contents/ui/MultibandGate.qml:395
+#: src/contents/ui/Gate.qml:279 src/contents/ui/MultibandCompressor.qml:423
+#: src/contents/ui/MultibandGate.qml:396
 msgid "Side"
 msgstr "Yan"
 
-#: src/contents/ui/Compressor.qml:301 src/contents/ui/Convolver.qml:267
+#: src/contents/ui/Compressor.qml:301 src/contents/ui/Convolver.qml:276
 #: src/contents/ui/Delay.qml:39 src/contents/ui/Equalizer.qml:213
 #: src/contents/ui/Expander.qml:261 src/contents/ui/Gate.qml:279
 #: src/contents/ui/LevelMeter.qml:60 src/contents/ui/LevelMeter.qml:101
-#: src/contents/ui/MultibandCompressor.qml:422
-#: src/contents/ui/MultibandGate.qml:395 src/contents/ui/PipeWirePage.qml:322
+#: src/contents/ui/MultibandCompressor.qml:423
+#: src/contents/ui/MultibandGate.qml:396 src/contents/ui/PipeWirePage.qml:322
 #: src/contents/ui/StereoTools.qml:184
 msgid "Left"
 msgstr "Sol"
 
-#: src/contents/ui/Compressor.qml:301 src/contents/ui/Convolver.qml:285
+#: src/contents/ui/Compressor.qml:301 src/contents/ui/Convolver.qml:294
 #: src/contents/ui/Delay.qml:192 src/contents/ui/Equalizer.qml:213
 #: src/contents/ui/Expander.qml:261 src/contents/ui/Gate.qml:279
 #: src/contents/ui/LevelMeter.qml:71 src/contents/ui/LevelMeter.qml:112
-#: src/contents/ui/MultibandCompressor.qml:422
-#: src/contents/ui/MultibandGate.qml:395 src/contents/ui/PipeWirePage.qml:333
+#: src/contents/ui/MultibandCompressor.qml:423
+#: src/contents/ui/MultibandGate.qml:396 src/contents/ui/PipeWirePage.qml:333
 #: src/contents/ui/StereoTools.qml:211
 msgid "Right"
 msgstr "Sağ"
@@ -700,66 +702,66 @@ msgstr "Sağ"
 #: src/contents/ui/Compressor.qml:301 src/contents/ui/Compressor.qml:316
 #: src/contents/ui/Expander.qml:261 src/contents/ui/Expander.qml:276
 #: src/contents/ui/Gate.qml:279 src/contents/ui/Gate.qml:294
-#: src/contents/ui/MultibandCompressor.qml:422
-#: src/contents/ui/MultibandCompressor.qml:434
-#: src/contents/ui/MultibandGate.qml:395 src/contents/ui/MultibandGate.qml:407
+#: src/contents/ui/MultibandCompressor.qml:423
+#: src/contents/ui/MultibandCompressor.qml:435
+#: src/contents/ui/MultibandGate.qml:396 src/contents/ui/MultibandGate.qml:408
 msgid "Min"
 msgstr "Asgari"
 
 #: src/contents/ui/Compressor.qml:301 src/contents/ui/Compressor.qml:316
 #: src/contents/ui/Expander.qml:261 src/contents/ui/Expander.qml:276
 #: src/contents/ui/Gate.qml:279 src/contents/ui/Gate.qml:294
-#: src/contents/ui/MultibandCompressor.qml:422
-#: src/contents/ui/MultibandCompressor.qml:434
-#: src/contents/ui/MultibandGate.qml:395 src/contents/ui/MultibandGate.qml:407
+#: src/contents/ui/MultibandCompressor.qml:423
+#: src/contents/ui/MultibandCompressor.qml:435
+#: src/contents/ui/MultibandGate.qml:396 src/contents/ui/MultibandGate.qml:408
 msgid "Max"
 msgstr "Azami"
 
 #: src/contents/ui/Compressor.qml:316 src/contents/ui/Expander.qml:276
-#: src/contents/ui/Gate.qml:294 src/contents/ui/MultibandCompressor.qml:434
-#: src/contents/ui/MultibandGate.qml:407
+#: src/contents/ui/Gate.qml:294 src/contents/ui/MultibandCompressor.qml:435
+#: src/contents/ui/MultibandGate.qml:408
 msgid "Left/Right"
 msgstr "Sol/Sağ"
 
 #: src/contents/ui/Compressor.qml:316 src/contents/ui/Expander.qml:276
-#: src/contents/ui/Gate.qml:294 src/contents/ui/MultibandCompressor.qml:434
-#: src/contents/ui/MultibandGate.qml:407
+#: src/contents/ui/Gate.qml:294 src/contents/ui/MultibandCompressor.qml:435
+#: src/contents/ui/MultibandGate.qml:408
 msgid "Right/Left"
 msgstr "Sağ/Sol"
 
 #: src/contents/ui/Compressor.qml:316 src/contents/ui/Expander.qml:276
-#: src/contents/ui/Gate.qml:294 src/contents/ui/MultibandCompressor.qml:434
-#: src/contents/ui/MultibandGate.qml:407
+#: src/contents/ui/Gate.qml:294 src/contents/ui/MultibandCompressor.qml:435
+#: src/contents/ui/MultibandGate.qml:408
 msgid "Mid/Side"
 msgstr "Orta/Yan"
 
 #: src/contents/ui/Compressor.qml:316 src/contents/ui/Expander.qml:276
-#: src/contents/ui/Gate.qml:294 src/contents/ui/MultibandCompressor.qml:434
-#: src/contents/ui/MultibandGate.qml:407
+#: src/contents/ui/Gate.qml:294 src/contents/ui/MultibandCompressor.qml:435
+#: src/contents/ui/MultibandGate.qml:408
 msgid "Side/Mid"
 msgstr "Yan/Orta"
 
 #: src/contents/ui/Compressor.qml:340 src/contents/ui/Expander.qml:296
 #: src/contents/ui/Gate.qml:315 src/contents/ui/Limiter.qml:232
-#: src/contents/ui/MultibandCompressor.qml:442
-#: src/contents/ui/MultibandGate.qml:415
+#: src/contents/ui/MultibandCompressor.qml:443
+#: src/contents/ui/MultibandGate.qml:416
 msgid "Preamp"
 msgstr ""
 
 #: src/contents/ui/Compressor.qml:358 src/contents/ui/Expander.qml:314
-#: src/contents/ui/Gate.qml:333 src/contents/ui/MultibandCompressor.qml:458
-#: src/contents/ui/MultibandGate.qml:431
+#: src/contents/ui/Gate.qml:333 src/contents/ui/MultibandCompressor.qml:459
+#: src/contents/ui/MultibandGate.qml:432
 msgid "Reactivity"
 msgstr "Tepkinirlik"
 
 #: src/contents/ui/Compressor.qml:376 src/contents/ui/Expander.qml:332
 #: src/contents/ui/Gate.qml:351 src/contents/ui/Limiter.qml:250
-#: src/contents/ui/MultibandCompressor.qml:473
-#: src/contents/ui/MultibandGate.qml:446
+#: src/contents/ui/MultibandCompressor.qml:474
+#: src/contents/ui/MultibandGate.qml:447
 msgid "Lookahead"
 msgstr "İlerleme"
 
-#: src/contents/ui/Compressor.qml:394 src/contents/ui/EqualizerBandMenu.qml:37
+#: src/contents/ui/Compressor.qml:394 src/contents/ui/EqualizerBandMenu.qml:36
 #: src/contents/ui/Expander.qml:350 src/contents/ui/Filter.qml:49
 #: src/contents/ui/Gate.qml:369
 #, fuzzy
@@ -767,7 +769,7 @@ msgid "High-pass"
 msgstr "Yüksek Geçiş"
 
 #: src/contents/ui/Compressor.qml:398 src/contents/ui/Compressor.qml:412
-#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Expander.qml:354
+#: src/contents/ui/EqualizerBandMenu.qml:36 src/contents/ui/Expander.qml:354
 #: src/contents/ui/Expander.qml:368 src/contents/ui/Gate.qml:373
 #: src/contents/ui/Gate.qml:387
 msgid "Off"
@@ -791,21 +793,21 @@ msgstr "24 dB/oct"
 msgid "36 dB/oct"
 msgstr "36 dB/oct"
 
-#: src/contents/ui/Compressor.qml:468 src/contents/ui/Convolver.qml:414
+#: src/contents/ui/Compressor.qml:468 src/contents/ui/Convolver.qml:423
 #: src/contents/ui/Delay.qml:156 src/contents/ui/Delay.qml:309
 #: src/contents/ui/Expander.qml:426 src/contents/ui/Gate.qml:441
-#: src/contents/ui/MultibandCompressor.qml:597
-#: src/contents/ui/MultibandGate.qml:570 src/contents/ui/Pitch.qml:103
+#: src/contents/ui/MultibandCompressor.qml:598
+#: src/contents/ui/MultibandGate.qml:571 src/contents/ui/Pitch.qml:103
 #: src/contents/ui/Reverb.qml:169 src/contents/ui/StereoTools.qml:324
 #, fuzzy
 msgid "Dry"
 msgstr "Dene"
 
-#: src/contents/ui/Compressor.qml:487 src/contents/ui/Convolver.qml:432
+#: src/contents/ui/Compressor.qml:487 src/contents/ui/Convolver.qml:441
 #: src/contents/ui/Delay.qml:174 src/contents/ui/Delay.qml:327
 #: src/contents/ui/Expander.qml:445 src/contents/ui/Gate.qml:460
-#: src/contents/ui/MultibandCompressor.qml:615
-#: src/contents/ui/MultibandGate.qml:588 src/contents/ui/Pitch.qml:122
+#: src/contents/ui/MultibandCompressor.qml:616
+#: src/contents/ui/MultibandGate.qml:589 src/contents/ui/Pitch.qml:122
 #: src/contents/ui/Reverb.qml:187 src/contents/ui/StereoTools.qml:342
 #, fuzzy
 msgid "Wet"
@@ -813,65 +815,65 @@ msgstr "Webrtc"
 
 #: src/contents/ui/Compressor.qml:506 src/contents/ui/Deesser.qml:116
 #: src/contents/ui/Expander.qml:464 src/contents/ui/Gate.qml:479
-#: src/contents/ui/MultibandCompressor.qml:368
-#: src/contents/ui/MultibandGate.qml:238
+#: src/contents/ui/MultibandCompressor.qml:369
+#: src/contents/ui/MultibandGate.qml:239
 msgid "Makeup"
 msgstr "Süs"
 
 #: src/contents/ui/Compressor.qml:526 src/contents/ui/Expander.qml:480
 #: src/contents/ui/Gate.qml:499 src/contents/ui/Limiter.qml:271
-#: src/contents/ui/LspPreMixSheet.qml:14
-#: src/contents/ui/MultibandCompressor.qml:988
-#: src/contents/ui/MultibandGate.qml:961
+#: src/contents/ui/LspPreMixDialog.qml:15
+#: src/contents/ui/MultibandCompressor.qml:990
+#: src/contents/ui/MultibandGate.qml:963
 msgid "Pre-Mix"
 msgstr ""
 
 #: src/contents/ui/Compressor.qml:534 src/contents/ui/Expander.qml:488
 #: src/contents/ui/Gate.qml:509 src/contents/ui/Limiter.qml:284
-#: src/contents/ui/LspPreMixSheet.qml:30
+#: src/contents/ui/LspPreMixDialog.qml:32
 #, fuzzy
 msgid "Input to sidechain"
 msgstr "Yanzincir"
 
 #: src/contents/ui/Compressor.qml:550 src/contents/ui/Expander.qml:504
 #: src/contents/ui/Gate.qml:525 src/contents/ui/Limiter.qml:300
-#: src/contents/ui/LspPreMixSheet.qml:46
+#: src/contents/ui/LspPreMixDialog.qml:48
 #, fuzzy
 msgid "Input to link"
 msgstr "Giriş izlemeyi etkinleştir/devre dışı bırak"
 
 #: src/contents/ui/Compressor.qml:566 src/contents/ui/Expander.qml:520
 #: src/contents/ui/Gate.qml:541 src/contents/ui/Limiter.qml:316
-#: src/contents/ui/LspPreMixSheet.qml:62
+#: src/contents/ui/LspPreMixDialog.qml:64
 #, fuzzy
 msgid "Sidechain to input"
 msgstr "Giriş Aygıtı"
 
 #: src/contents/ui/Compressor.qml:582 src/contents/ui/Expander.qml:536
 #: src/contents/ui/Gate.qml:557 src/contents/ui/Limiter.qml:332
-#: src/contents/ui/LspPreMixSheet.qml:78
+#: src/contents/ui/LspPreMixDialog.qml:80
 #, fuzzy
 msgid "Sidechain to link"
 msgstr "Yanzincir Kipi"
 
 #: src/contents/ui/Compressor.qml:598 src/contents/ui/Expander.qml:552
 #: src/contents/ui/Gate.qml:573 src/contents/ui/Limiter.qml:348
-#: src/contents/ui/LspPreMixSheet.qml:94
+#: src/contents/ui/LspPreMixDialog.qml:96
 #, fuzzy
 msgid "Link to sidechain"
 msgstr "Yanzincir Dinle"
 
 #: src/contents/ui/Compressor.qml:614 src/contents/ui/Expander.qml:568
 #: src/contents/ui/Gate.qml:589 src/contents/ui/Limiter.qml:364
-#: src/contents/ui/LspPreMixSheet.qml:110
+#: src/contents/ui/LspPreMixDialog.qml:112
 #, fuzzy
 msgid "Link to input"
 msgstr "Yanzincir Dinle"
 
 #: src/contents/ui/Compressor.qml:658 src/contents/ui/Expander.qml:608
 #: src/contents/ui/Gate.qml:100 src/contents/ui/Gate.qml:634
-#: src/contents/ui/Maximizer.qml:81 src/contents/ui/MultibandCompressor.qml:718
-#: src/contents/ui/MultibandGate.qml:222 src/contents/ui/MultibandGate.qml:691
+#: src/contents/ui/Maximizer.qml:81 src/contents/ui/MultibandCompressor.qml:719
+#: src/contents/ui/MultibandGate.qml:223 src/contents/ui/MultibandGate.qml:692
 msgid "Reduction"
 msgstr "Azaltma"
 
@@ -882,11 +884,11 @@ msgstr "Azaltma"
 #: src/contents/ui/Gate.qml:704 src/contents/ui/Gate.qml:717
 #: src/contents/ui/Gate.qml:813 src/contents/ui/Gate.qml:826
 #: src/contents/ui/Limiter.qml:541 src/contents/ui/Limiter.qml:554
-#: src/contents/ui/MultibandCompressor.qml:752
-#: src/contents/ui/MultibandCompressor.qml:811
-#: src/contents/ui/MultibandCompressor.qml:870
-#: src/contents/ui/MultibandGate.qml:725 src/contents/ui/MultibandGate.qml:784
-#: src/contents/ui/MultibandGate.qml:843
+#: src/contents/ui/MultibandCompressor.qml:753
+#: src/contents/ui/MultibandCompressor.qml:812
+#: src/contents/ui/MultibandCompressor.qml:871
+#: src/contents/ui/MultibandGate.qml:726 src/contents/ui/MultibandGate.qml:785
+#: src/contents/ui/MultibandGate.qml:844
 msgid "L"
 msgstr "L"
 
@@ -897,85 +899,91 @@ msgstr "L"
 #: src/contents/ui/Gate.qml:710 src/contents/ui/Gate.qml:723
 #: src/contents/ui/Gate.qml:819 src/contents/ui/Gate.qml:832
 #: src/contents/ui/Limiter.qml:547 src/contents/ui/Limiter.qml:560
-#: src/contents/ui/MultibandCompressor.qml:758
-#: src/contents/ui/MultibandCompressor.qml:817
-#: src/contents/ui/MultibandCompressor.qml:876
-#: src/contents/ui/MultibandGate.qml:731 src/contents/ui/MultibandGate.qml:790
-#: src/contents/ui/MultibandGate.qml:849
+#: src/contents/ui/MultibandCompressor.qml:759
+#: src/contents/ui/MultibandCompressor.qml:818
+#: src/contents/ui/MultibandCompressor.qml:877
+#: src/contents/ui/MultibandGate.qml:732 src/contents/ui/MultibandGate.qml:791
+#: src/contents/ui/MultibandGate.qml:850
 msgid "R"
 msgstr "R"
 
 #: src/contents/ui/Compressor.qml:769 src/contents/ui/Expander.qml:717
-#: src/contents/ui/Gate.qml:745 src/contents/ui/MultibandCompressor.qml:838
-#: src/contents/ui/MultibandGate.qml:267 src/contents/ui/MultibandGate.qml:811
+#: src/contents/ui/Gate.qml:745 src/contents/ui/MultibandCompressor.qml:839
+#: src/contents/ui/MultibandGate.qml:268 src/contents/ui/MultibandGate.qml:812
 msgid "Curve"
 msgstr "Eğri"
 
 #: src/contents/ui/Compressor.qml:778 src/contents/ui/Expander.qml:726
-#: src/contents/ui/Gate.qml:754 src/contents/ui/MultibandCompressor.qml:779
-#: src/contents/ui/MultibandGate.qml:752
+#: src/contents/ui/Gate.qml:754 src/contents/ui/MultibandCompressor.qml:780
+#: src/contents/ui/MultibandGate.qml:753
 msgid "Envelope"
 msgstr "Eğim"
 
 #: src/contents/ui/Compressor.qml:912 src/contents/ui/Expander.qml:860
-#: src/contents/ui/Gate.qml:997 src/contents/ui/MultibandCompressor.qml:978
-#: src/contents/ui/MultibandGate.qml:951
+#: src/contents/ui/Gate.qml:997 src/contents/ui/MultibandCompressor.qml:980
+#: src/contents/ui/MultibandGate.qml:953
 #, fuzzy
 msgid "Stereo split"
 msgstr "Stereo Bölme"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:31
+#: src/contents/ui/ConvolverImpulseDialog.qml:34
 #, fuzzy
 msgid "Imported a new Convolver impulse file."
 msgstr "Dürtü Dosyasını İçe Aktar"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:33
+#: src/contents/ui/ConvolverImpulseDialog.qml:36
 #, fuzzy
 msgid "Failed to import the Convolver impulse file."
 msgstr "Dürtü Dosyası Yüklenemedi"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:45
-#: src/contents/ui/MenuAddPlugins.qml:168
-#: src/contents/ui/PresetsCommunityPage.qml:40
-#: src/contents/ui/PresetsLocalPage.qml:141
+#: src/contents/ui/ConvolverImpulseDialog.qml:50
+#: src/contents/ui/MenuAddPlugins.qml:170
+#: src/contents/ui/PresetsCommunityPage.qml:46
+#: src/contents/ui/PresetsLocalPage.qml:146
 msgid "Search"
 msgstr "Ara"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:83
+#: src/contents/ui/ConvolverImpulseDialog.qml:89
 #, fuzzy
 msgid "Remove Impulse Response"
 msgstr "Dürtü Yanıtı"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:84
+#: src/contents/ui/ConvolverImpulseDialog.qml:90
 msgid "Are you sure you want to remove this impulse response from the list?"
 msgstr ""
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:88
+#: src/contents/ui/ConvolverImpulseDialog.qml:94
 #, fuzzy
 msgid "Removed the %1 Convolver impulse."
 msgstr "Dürtü Dosyası Yüklenemedi"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:90
+#: src/contents/ui/ConvolverImpulseDialog.qml:96
 #, fuzzy
 msgid "Failed to remove the %1 Convolver impulse."
 msgstr "Dürtü Dosyası Yüklenemedi"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:107
+#: src/contents/ui/ConvolverImpulseDialog.qml:113
 #, fuzzy
 msgid "Delete this impulse"
 msgstr "Dürtüyü Kaldır"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:127
+#: src/contents/ui/ConvolverImpulseDialog.qml:144
 #, fuzzy
 msgid "Import impulse"
 msgstr "Dürtü Dosyasını İçeri Al"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:154
+#: src/contents/ui/MenuAddPlugins.qml:186 src/contents/ui/PresetsDialog.qml:110
+msgctxt "@action:button"
+msgid "Close"
+msgstr ""
 
 #: src/contents/ui/Convolver.qml:48
 #, fuzzy
 msgid "Loaded the %1 Convolver impulse."
 msgstr "Dürtü Dosyası Yüklenemedi"
 
-#: src/contents/ui/Convolver.qml:50 src/contents/ui/Convolver.qml:308
+#: src/contents/ui/Convolver.qml:50 src/contents/ui/Convolver.qml:317
 #, fuzzy
 msgid "Convolver impulse is not set"
 msgstr "Dürtü Yanıtlarını Birleştir"
@@ -989,52 +997,52 @@ msgstr ""
 msgid "Failed to load the %1 impulse. The Convolver is in passthrough mode."
 msgstr "Dürtü Dosyası Yüklenemedi"
 
-#: src/contents/ui/Convolver.qml:120
+#: src/contents/ui/Convolver.qml:126
 msgid "First"
 msgstr ""
 
-#: src/contents/ui/Convolver.qml:132
+#: src/contents/ui/Convolver.qml:139
 #, fuzzy
 msgid "Second"
 msgstr "İkinci Çekirdek"
 
-#: src/contents/ui/Convolver.qml:162 src/contents/ui/Convolver.qml:197
+#: src/contents/ui/Convolver.qml:171 src/contents/ui/Convolver.qml:206
 msgid "Combine"
 msgstr "Birleştir"
 
-#: src/contents/ui/Convolver.qml:190
+#: src/contents/ui/Convolver.qml:199
 msgid "Impulses"
 msgstr "Dürtüler"
 
-#: src/contents/ui/Convolver.qml:206 src/plugin_base.cpp:286
+#: src/contents/ui/Convolver.qml:215 src/plugin_base.cpp:286
 msgid "Spectrum"
 msgstr "Spektrum"
 
-#: src/contents/ui/Convolver.qml:238
+#: src/contents/ui/Convolver.qml:247
 #, fuzzy
 msgid "Log scale"
 msgstr "Günlük Ölçeği"
 
-#: src/contents/ui/Convolver.qml:345
+#: src/contents/ui/Convolver.qml:354
 msgid "Rate"
 msgstr "Oran"
 
-#: src/contents/ui/Convolver.qml:350 src/contents/ui/Delay.qml:55
+#: src/contents/ui/Convolver.qml:359 src/contents/ui/Delay.qml:55
 #: src/contents/ui/Delay.qml:66 src/contents/ui/Delay.qml:208
 #: src/contents/ui/Delay.qml:219
 msgid "Samples"
 msgstr "Örnekler"
 
-#: src/contents/ui/Convolver.qml:355
+#: src/contents/ui/Convolver.qml:364
 msgid "Duration"
 msgstr "Süre"
 
-#: src/contents/ui/Convolver.qml:397
+#: src/contents/ui/Convolver.qml:406
 #, fuzzy
 msgid "Stereo width"
 msgstr "Stereo Genişliği"
 
-#: src/contents/ui/Convolver.qml:474 src/tags_plugin_name.cpp:26
+#: src/contents/ui/Convolver.qml:483 src/tags_plugin_name.cpp:26
 msgid "Autogain"
 msgstr "Otomatik Kazanç"
 
@@ -1055,31 +1063,31 @@ msgstr "Çapraz Besleme"
 msgid "Default"
 msgstr "Öntanımlı"
 
-#: src/contents/ui/Crossfeed.qml:145 src/contents/ui/Main.qml:465
+#: src/contents/ui/Crossfeed.qml:145 src/contents/ui/Main.qml:467
 #: src/contents/ui/PreferencesSheet.qml:45 src/contents/ui/Reverb.qml:314
 msgid "Presets"
 msgstr "Ön Ayarlar"
 
 #: src/contents/ui/CrystalizerBand.qml:35
-#: src/contents/ui/EqualizerBandMenu.qml:157
-#: src/contents/ui/MultibandCompressor.qml:63
-#: src/contents/ui/MultibandGate.qml:63 src/contents/ui/StereoTools.qml:190
+#: src/contents/ui/EqualizerBandMenu.qml:172
+#: src/contents/ui/MultibandCompressor.qml:64
+#: src/contents/ui/MultibandGate.qml:64 src/contents/ui/StereoTools.qml:190
 #: src/contents/ui/StereoTools.qml:222
 msgid "Mute"
 msgstr "Sessiz"
 
 #: src/contents/ui/CrystalizerBand.qml:46
-#: src/contents/ui/MultibandCompressor.qml:81
-#: src/contents/ui/MultibandGate.qml:81
+#: src/contents/ui/MultibandCompressor.qml:82
+#: src/contents/ui/MultibandGate.qml:82
 msgid "Bypass"
 msgstr "Atla"
 
 #: src/contents/ui/CrystalizerBand.qml:75 src/contents/ui/EqualizerBand.qml:50
-#: src/contents/ui/PageStreamsEffects.qml:591
+#: src/contents/ui/PageStreamsEffects.qml:598
 msgid "kHz"
 msgstr ""
 
-#: src/contents/ui/Crystalizer.qml:107
+#: src/contents/ui/Crystalizer.qml:106
 #, fuzzy
 msgid "Adaptive intensity"
 msgstr "Dijital Uyarlamalı"
@@ -1138,10 +1146,10 @@ msgstr "Böl"
 #: src/contents/ui/Deesser.qml:83 src/contents/ui/Gate.qml:117
 #: src/contents/ui/Gate.qml:169 src/contents/ui/Gate.qml:928
 #: src/contents/ui/Gate.qml:941 src/contents/ui/Limiter.qml:109
-#: src/contents/ui/Maximizer.qml:64 src/contents/ui/MultibandCompressor.qml:252
-#: src/contents/ui/MultibandCompressor.qml:300
-#: src/contents/ui/MultibandGate.qml:271 src/contents/ui/MultibandGate.qml:325
-#: src/contents/ui/RNNoise.qml:109
+#: src/contents/ui/Maximizer.qml:64 src/contents/ui/MultibandCompressor.qml:253
+#: src/contents/ui/MultibandCompressor.qml:301
+#: src/contents/ui/MultibandGate.qml:272 src/contents/ui/MultibandGate.qml:326
+#: src/contents/ui/RNNoise.qml:110
 msgid "Threshold"
 msgstr "Eşik"
 
@@ -1196,8 +1204,8 @@ msgstr ""
 
 #: src/contents/ui/Delay.qml:55 src/contents/ui/Delay.qml:84
 #: src/contents/ui/Delay.qml:208 src/contents/ui/Delay.qml:237
-#: src/contents/ui/MultibandCompressor.qml:237
-#: src/contents/ui/MultibandCompressor.qml:285
+#: src/contents/ui/MultibandCompressor.qml:238
+#: src/contents/ui/MultibandCompressor.qml:286
 msgid "Time"
 msgstr "Zaman"
 
@@ -1285,7 +1293,7 @@ msgstr "kanallar"
 #: src/contents/ui/DelegateStreamsList.qml:88
 #: src/contents/ui/EchoCanceller.qml:44 src/contents/ui/EchoCanceller.qml:77
 #: src/contents/ui/EchoCanceller.qml:104 src/contents/ui/Gate.qml:157
-#: src/contents/ui/RNNoise.qml:98
+#: src/contents/ui/RNNoise.qml:99
 msgid "Enable"
 msgstr "Etkinleştir"
 
@@ -1361,7 +1369,7 @@ msgstr ""
 msgid "Input and output gain controls with level meters"
 msgstr ""
 
-#: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/Main.qml:504
+#: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/Main.qml:506
 #: src/contents/ui/StereoTools.qml:39
 msgid "Input"
 msgstr "Girdi"
@@ -1372,116 +1380,116 @@ msgctxt "minus infinity abbreviation"
 msgid "-inf"
 msgstr "-sonsuz"
 
-#: src/contents/ui/EqualizerBandMenu.qml:25
-#: src/contents/ui/MultibandCompressor.qml:642
-#: src/contents/ui/MultibandCompressor.qml:912
-#: src/contents/ui/MultibandGate.qml:615 src/contents/ui/MultibandGate.qml:885
+#: src/contents/ui/EqualizerBandMenu.qml:13
+#: src/contents/ui/MultibandCompressor.qml:643
+#: src/contents/ui/MultibandCompressor.qml:914
+#: src/contents/ui/MultibandGate.qml:616 src/contents/ui/MultibandGate.qml:887
 #, fuzzy
 msgid "Band"
 msgstr "Bantlar"
 
-#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:49
+#: src/contents/ui/EqualizerBandMenu.qml:36 src/contents/ui/Filter.qml:49
 msgid "Bell"
 msgstr "Çan"
 
-#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:49
+#: src/contents/ui/EqualizerBandMenu.qml:36 src/contents/ui/Filter.qml:49
 #, fuzzy
 msgid "High-shelf"
 msgstr "Yüksek Raf"
 
-#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:49
+#: src/contents/ui/EqualizerBandMenu.qml:36 src/contents/ui/Filter.qml:49
 #, fuzzy
 msgid "Low-shelf"
 msgstr "Düşük Raf"
 
-#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:49
+#: src/contents/ui/EqualizerBandMenu.qml:36 src/contents/ui/Filter.qml:49
 msgid "Notch"
 msgstr "Çentik"
 
-#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:49
+#: src/contents/ui/EqualizerBandMenu.qml:36 src/contents/ui/Filter.qml:49
 msgid "Resonance"
 msgstr "Çınlama"
 
-#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:49
+#: src/contents/ui/EqualizerBandMenu.qml:36 src/contents/ui/Filter.qml:49
 #, fuzzy
 msgid "Allpass"
 msgstr "Atla"
 
-#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:49
+#: src/contents/ui/EqualizerBandMenu.qml:36 src/contents/ui/Filter.qml:49
 #, fuzzy
 msgid "Bandpass"
 msgstr "Bant Atlama"
 
-#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:49
+#: src/contents/ui/EqualizerBandMenu.qml:36 src/contents/ui/Filter.qml:49
 #, fuzzy
 msgid "Ladder-pass"
 msgstr "Merdiven-Geçiş"
 
-#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:49
+#: src/contents/ui/EqualizerBandMenu.qml:36 src/contents/ui/Filter.qml:49
 #, fuzzy
 msgid "Ladder-rejection"
 msgstr "Merdiven-Reddetme"
 
-#: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:63
+#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:63
 msgid "RLC (BT)"
 msgstr "RLC (BT)"
 
-#: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:63
+#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:63
 msgid "RLC (MT)"
 msgstr "RLC (MT)"
 
-#: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:63
+#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:63
 msgid "BWC (BT)"
 msgstr "BWC (BT)"
 
-#: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:63
+#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:63
 msgid "BWC (MT)"
 msgstr "BWC (MT)"
 
-#: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:63
+#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:63
 msgid "LRX (BT)"
 msgstr "LRX (BT)"
 
-#: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:63
+#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:63
 msgid "LRX (MT)"
 msgstr "LRX (MT)"
 
-#: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:63
+#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:63
 msgid "APO (DR)"
 msgstr "APO (DR)"
 
-#: src/contents/ui/EqualizerBandMenu.qml:57 src/contents/ui/Filter.qml:87
+#: src/contents/ui/EqualizerBandMenu.qml:60 src/contents/ui/Filter.qml:87
 msgid "Slope"
 msgstr "Eğim"
 
-#: src/contents/ui/EqualizerBandMenu.qml:74 src/contents/ui/Filter.qml:108
-#: src/contents/ui/MultibandCompressor.qml:172
-#: src/contents/ui/MultibandGate.qml:109 src/contents/ui/PipeWirePage.qml:396
+#: src/contents/ui/EqualizerBandMenu.qml:81 src/contents/ui/Filter.qml:108
+#: src/contents/ui/MultibandCompressor.qml:173
+#: src/contents/ui/MultibandGate.qml:110 src/contents/ui/PipeWirePage.qml:396
 msgid "Frequency"
 msgstr "Sıklık"
 
-#: src/contents/ui/EqualizerBandMenu.qml:95 src/contents/ui/Filter.qml:139
-#: src/contents/ui/Limiter.qml:471 src/contents/ui/MultibandCompressor.qml:332
-#: src/contents/ui/MultibandGate.qml:218
+#: src/contents/ui/EqualizerBandMenu.qml:104 src/contents/ui/Filter.qml:139
+#: src/contents/ui/Limiter.qml:471 src/contents/ui/MultibandCompressor.qml:333
+#: src/contents/ui/MultibandGate.qml:219
 msgid "Gain"
 msgstr "Kazanç"
 
-#: src/contents/ui/EqualizerBandMenu.qml:116 src/contents/ui/Filter.qml:155
+#: src/contents/ui/EqualizerBandMenu.qml:127 src/contents/ui/Filter.qml:155
 msgid "Quality"
 msgstr "Kalite"
 
-#: src/contents/ui/EqualizerBandMenu.qml:137 src/contents/ui/Filter.qml:124
+#: src/contents/ui/EqualizerBandMenu.qml:150 src/contents/ui/Filter.qml:124
 msgid "Width"
 msgstr "Genişlik"
 
-#: src/contents/ui/EqualizerBandMenu.qml:143
+#: src/contents/ui/EqualizerBandMenu.qml:156
 #, fuzzy
 msgid "oct"
 msgstr "Düşük-Kesim"
 
-#: src/contents/ui/EqualizerBandMenu.qml:167
-#: src/contents/ui/MultibandCompressor.qml:72
-#: src/contents/ui/MultibandGate.qml:72
+#: src/contents/ui/EqualizerBandMenu.qml:184
+#: src/contents/ui/MultibandCompressor.qml:73
+#: src/contents/ui/MultibandGate.qml:73
 msgid "Solo"
 msgstr "Tekli"
 
@@ -1642,8 +1650,8 @@ msgid "Expander"
 msgstr "Genişletici"
 
 #: src/contents/ui/Expander.qml:208 src/contents/ui/Gate.qml:226
-#: src/contents/ui/Limiter.qml:199 src/contents/ui/MultibandCompressor.qml:400
-#: src/contents/ui/MultibandGate.qml:373
+#: src/contents/ui/Limiter.qml:199 src/contents/ui/MultibandCompressor.qml:401
+#: src/contents/ui/MultibandGate.qml:374
 msgid "Internal"
 msgstr "Dahili"
 
@@ -1662,17 +1670,17 @@ msgid "Gate"
 msgstr "Aralık"
 
 #: src/contents/ui/Gate.qml:134 src/contents/ui/Gate.qml:188
-#: src/contents/ui/MultibandGate.qml:286 src/contents/ui/MultibandGate.qml:341
+#: src/contents/ui/MultibandGate.qml:287 src/contents/ui/MultibandGate.qml:342
 msgid "Zone"
 msgstr "Bölge"
 
-#: src/contents/ui/Gate.qml:151 src/contents/ui/MultibandGate.qml:314
+#: src/contents/ui/Gate.qml:151 src/contents/ui/MultibandGate.qml:315
 msgid "Hysteresis"
 msgstr "Gecikme"
 
 #: src/contents/ui/Gate.qml:922 src/contents/ui/Gate.qml:935
-#: src/contents/ui/MultibandCompressor.qml:187
-#: src/contents/ui/MultibandGate.qml:124 src/contents/ui/Speex.qml:110
+#: src/contents/ui/MultibandCompressor.qml:188
+#: src/contents/ui/MultibandGate.qml:125 src/contents/ui/Speex.qml:110
 msgid "Start"
 msgstr "Başla"
 
@@ -1750,8 +1758,8 @@ msgid "Oversampling"
 msgstr "Aşırı Örnekleme"
 
 #: src/contents/ui/Limiter.qml:72 src/contents/ui/Limiter.qml:86
-#: src/contents/ui/MultibandCompressor.qml:564
-#: src/contents/ui/MultibandGate.qml:537
+#: src/contents/ui/MultibandCompressor.qml:565
+#: src/contents/ui/MultibandGate.qml:538
 msgid "None"
 msgstr "Hiçbiri"
 
@@ -1981,175 +1989,170 @@ msgstr "Ayarları _Sıfırla"
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr ""
 
-#: src/contents/ui/Main.qml:287 src/contents/ui/Main.qml:304
+#: src/contents/ui/Main.qml:288 src/contents/ui/Main.qml:306
 #, fuzzy
 msgid "Preset Loaded"
 msgstr "Ön Ayar Yüklü Değil"
 
-#: src/contents/ui/Main.qml:315 src/contents/ui/Main.qml:327
+#: src/contents/ui/Main.qml:317 src/contents/ui/Main.qml:329
 #, fuzzy
 msgid "Clear List"
 msgstr "İstemci Listesi"
 
-#: src/contents/ui/Main.qml:316 src/contents/ui/Main.qml:328
+#: src/contents/ui/Main.qml:318 src/contents/ui/Main.qml:330
 msgid "Are you sure you want to clear this list?"
 msgstr ""
 
-#: src/contents/ui/Main.qml:337
+#: src/contents/ui/Main.qml:339
 msgid "Input Presets"
 msgstr "Giriş Ön Ayarları"
 
-#: src/contents/ui/Main.qml:352
+#: src/contents/ui/Main.qml:354
 msgid "Output Presets"
 msgstr "Çıkış Ön Ayarları"
 
-#: src/contents/ui/Main.qml:383
+#: src/contents/ui/Main.qml:385
 #, fuzzy
 msgid "Active"
 msgstr "Etkin Model"
 
-#: src/contents/ui/Main.qml:394 src/contents/ui/Main.qml:543
-#: src/contents/ui/ShortcutsSheet.qml:368
+#: src/contents/ui/Main.qml:396 src/contents/ui/Main.qml:545
+#: src/contents/ui/ShortcutsSheet.qml:370
 #, fuzzy
 msgid "Shortcuts"
 msgstr "Kısa_yollar"
 
-#: src/contents/ui/Main.qml:403 src/contents/ui/Main.qml:551
+#: src/contents/ui/Main.qml:405 src/contents/ui/Main.qml:553
 #, fuzzy
 msgid "Manual"
 msgstr "_Kılavuz"
 
-#: src/contents/ui/Main.qml:415 src/contents/ui/Main.qml:583
+#: src/contents/ui/Main.qml:417 src/contents/ui/Main.qml:585
 #, fuzzy
 msgid "Quit"
 msgstr "_Çık"
 
-#: src/contents/ui/Main.qml:439
+#: src/contents/ui/Main.qml:441
 msgid "Go back"
 msgstr ""
 
-#: src/contents/ui/Main.qml:449 src/contents/ui/PageStreamsEffects.qml:628
+#: src/contents/ui/Main.qml:451 src/contents/ui/PageStreamsEffects.qml:635
 msgid "Effects"
 msgstr "Efektler"
 
-#: src/contents/ui/Main.qml:450
+#: src/contents/ui/Main.qml:452
 msgid "Turn effects on/off"
 msgstr ""
 
-#: src/contents/ui/Main.qml:461
+#: src/contents/ui/Main.qml:463
 msgid "Audio effects are enabled."
 msgstr ""
 
-#: src/contents/ui/Main.qml:461
+#: src/contents/ui/Main.qml:463
 msgid "Audio effects are disabled."
 msgstr ""
 
-#: src/contents/ui/Main.qml:517
+#: src/contents/ui/Main.qml:519
 #, fuzzy
 msgid "PipeWire"
 msgstr "_PipeWire"
 
-#: src/contents/ui/Main.qml:535
+#: src/contents/ui/Main.qml:537
 #, fuzzy
 msgid "Preferences"
 msgstr "_Tercihler"
 
-#: src/contents/ui/Main.qml:575
+#: src/contents/ui/Main.qml:577
 #, fuzzy
 msgid "About Easy Effects"
 msgstr "Easy Effects _Hakkında"
 
-#: src/contents/ui/MenuAddPlugins.qml:75
+#: src/contents/ui/MenuAddPlugins.qml:77
 msgid "Add %1"
 msgstr ""
 
-#: src/contents/ui/MenuAddPlugins.qml:147
+#: src/contents/ui/MenuAddPlugins.qml:149
 msgid "Added a new effect to the pipeline: %1"
 msgstr ""
 
-#: src/contents/ui/MenuAddPlugins.qml:184 src/contents/ui/PresetsDialog.qml:110
-msgctxt "@action:button"
-msgid "Close"
-msgstr ""
-
-#: src/contents/ui/MultibandCompressor.qml:100
+#: src/contents/ui/MultibandCompressor.qml:101
 #, fuzzy
 msgid "Compression mode"
 msgstr "Sıkıştırma Kipi"
 
-#: src/contents/ui/MultibandCompressor.qml:207
-#: src/contents/ui/MultibandGate.qml:144
+#: src/contents/ui/MultibandCompressor.qml:208
+#: src/contents/ui/MultibandGate.qml:145
 #, fuzzy
 msgid "End"
 msgstr "2."
 
-#: src/contents/ui/MultibandCompressor.qml:490
-#: src/contents/ui/MultibandGate.qml:463
+#: src/contents/ui/MultibandCompressor.qml:491
+#: src/contents/ui/MultibandGate.qml:464
 #, fuzzy
 msgid "Low-cut"
 msgstr "Düşük-Kesim"
 
-#: src/contents/ui/MultibandCompressor.qml:515
-#: src/contents/ui/MultibandGate.qml:488
+#: src/contents/ui/MultibandCompressor.qml:516
+#: src/contents/ui/MultibandGate.qml:489
 #, fuzzy
 msgid "High-cut"
 msgstr "Yüksek-Kesim"
 
-#: src/contents/ui/MultibandCompressor.qml:547
-#: src/contents/ui/MultibandGate.qml:520
+#: src/contents/ui/MultibandCompressor.qml:548
+#: src/contents/ui/MultibandGate.qml:521
 #, fuzzy
 msgid "Operating mode"
 msgstr "Çalışma Kipi"
 
-#: src/contents/ui/MultibandCompressor.qml:551
-#: src/contents/ui/MultibandGate.qml:524
+#: src/contents/ui/MultibandCompressor.qml:552
+#: src/contents/ui/MultibandGate.qml:525
 msgid "Classic"
 msgstr "Klasik"
 
-#: src/contents/ui/MultibandCompressor.qml:551
-#: src/contents/ui/MultibandGate.qml:524
+#: src/contents/ui/MultibandCompressor.qml:552
+#: src/contents/ui/MultibandGate.qml:525
 msgid "Modern"
 msgstr "Çağdaş"
 
-#: src/contents/ui/MultibandCompressor.qml:551
-#: src/contents/ui/MultibandGate.qml:524
+#: src/contents/ui/MultibandCompressor.qml:552
+#: src/contents/ui/MultibandGate.qml:525
 #, fuzzy
 msgid "Linear phase"
 msgstr "Doğrusal Faz"
 
-#: src/contents/ui/MultibandCompressor.qml:560
-#: src/contents/ui/MultibandGate.qml:533
+#: src/contents/ui/MultibandCompressor.qml:561
+#: src/contents/ui/MultibandGate.qml:534
 #, fuzzy
 msgid "Sidechain boost"
 msgstr "Yanzincir Güçlendirme"
 
-#: src/contents/ui/MultibandCompressor.qml:564
-#: src/contents/ui/MultibandGate.qml:537
+#: src/contents/ui/MultibandCompressor.qml:565
+#: src/contents/ui/MultibandGate.qml:538
 msgid "Pink BT"
 msgstr "Pink BT"
 
-#: src/contents/ui/MultibandCompressor.qml:564
-#: src/contents/ui/MultibandGate.qml:537
+#: src/contents/ui/MultibandCompressor.qml:565
+#: src/contents/ui/MultibandGate.qml:538
 msgid "Pink MT"
 msgstr "Pink MT"
 
-#: src/contents/ui/MultibandCompressor.qml:564
-#: src/contents/ui/MultibandGate.qml:537
+#: src/contents/ui/MultibandCompressor.qml:565
+#: src/contents/ui/MultibandGate.qml:538
 msgid "Brown BT"
 msgstr "Brown BT"
 
-#: src/contents/ui/MultibandCompressor.qml:564
-#: src/contents/ui/MultibandGate.qml:537
+#: src/contents/ui/MultibandCompressor.qml:565
+#: src/contents/ui/MultibandGate.qml:538
 msgid "Brown MT"
 msgstr "Brown MT"
 
-#: src/contents/ui/MultibandCompressor.qml:574
-#: src/contents/ui/MultibandGate.qml:547
+#: src/contents/ui/MultibandCompressor.qml:575
+#: src/contents/ui/MultibandGate.qml:548
 #, fuzzy
 msgid "Sidechain input device"
 msgstr "Giriş Aygıtı"
 
-#: src/contents/ui/MultibandGate.qml:170
+#: src/contents/ui/MultibandGate.qml:171
 #, fuzzy
 msgid "Reaction"
 msgstr "Azaltma"
@@ -2159,53 +2162,53 @@ msgstr "Azaltma"
 msgid "No audio application available"
 msgstr "Ses Uygulaması Yok"
 
-#: src/contents/ui/PageStreamsEffects.qml:314
-#, fuzzy
-msgid "Add effect"
-msgstr "Efekt Ekle"
-
-#: src/contents/ui/PageStreamsEffects.qml:322
-msgid "Close"
-msgstr ""
-
-#: src/contents/ui/PageStreamsEffects.qml:326
-msgid "Expand the list of effects pipeline"
-msgstr ""
-
-#: src/contents/ui/PageStreamsEffects.qml:326
-msgid "Reduce the list of effects pipeline"
-msgstr ""
-
-#: src/contents/ui/PageStreamsEffects.qml:381
-#: src/contents/ui/PageStreamsEffects.qml:615
-msgid "Players"
-msgstr "Oynatıcılar"
-
-#: src/contents/ui/PageStreamsEffects.qml:390
-#, fuzzy
-msgid "Output device"
-msgstr "Çıkış Aygıtı"
-
-#: src/contents/ui/PageStreamsEffects.qml:390
-#: src/contents/ui/PageStreamsEffects.qml:615
-msgid "Recorders"
-msgstr "Kaydediciler"
-
-#: src/contents/ui/PageStreamsEffects.qml:411
+#: src/contents/ui/PageStreamsEffects.qml:95
 msgid "No Effects"
 msgstr "Efekt Yok"
 
-#: src/contents/ui/PageStreamsEffects.qml:412
+#: src/contents/ui/PageStreamsEffects.qml:96
 #, fuzzy
 msgid "Audio stream not modified"
 msgstr "Ses Akışı Değiştirilmedi"
 
-#: src/contents/ui/PageStreamsEffects.qml:646
+#: src/contents/ui/PageStreamsEffects.qml:328
+#, fuzzy
+msgid "Add effect"
+msgstr "Efekt Ekle"
+
+#: src/contents/ui/PageStreamsEffects.qml:336
+msgid "Close"
+msgstr ""
+
+#: src/contents/ui/PageStreamsEffects.qml:340
+msgid "Expand the list of effects pipeline"
+msgstr ""
+
+#: src/contents/ui/PageStreamsEffects.qml:340
+msgid "Reduce the list of effects pipeline"
+msgstr ""
+
+#: src/contents/ui/PageStreamsEffects.qml:395
+#: src/contents/ui/PageStreamsEffects.qml:622
+msgid "Players"
+msgstr "Oynatıcılar"
+
+#: src/contents/ui/PageStreamsEffects.qml:404
+#, fuzzy
+msgid "Output device"
+msgstr "Çıkış Aygıtı"
+
+#: src/contents/ui/PageStreamsEffects.qml:404
+#: src/contents/ui/PageStreamsEffects.qml:622
+msgid "Recorders"
+msgstr "Kaydediciler"
+
+#: src/contents/ui/PageStreamsEffects.qml:653
 #, fuzzy
 msgid "Input monitoring"
 msgstr "Giriş izlemeyi etkinleştir/devre dışı bırak"
 
-#: src/contents/ui/PageStreamsEffects.qml:659
+#: src/contents/ui/PageStreamsEffects.qml:666
 #, fuzzy
 msgid "Excluded apps"
 msgstr "Hariç Tutulan Uygulamalar"
@@ -2726,65 +2729,65 @@ msgstr "Güncelleme Sıklığı"
 msgid "Related to LV2 plugins."
 msgstr "LV2 Eklentileri ile ilgili"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:31
-#: src/contents/ui/PresetsAutoloadingPage.qml:159
+#: src/contents/ui/PresetsAutoloadingPage.qml:35
+#: src/contents/ui/PresetsAutoloadingPage.qml:162
 msgid "Device"
 msgstr "Aygıt"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:37
-#: src/contents/ui/PresetsAutoloadingPage.qml:201
+#: src/contents/ui/PresetsAutoloadingPage.qml:41
+#: src/contents/ui/PresetsAutoloadingPage.qml:204
 msgid "Route"
 msgstr ""
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:78
-#: src/contents/ui/PresetsAutoloadingPage.qml:214
+#: src/contents/ui/PresetsAutoloadingPage.qml:84
+#: src/contents/ui/PresetsAutoloadingPage.qml:217
 #, fuzzy
 msgid "Local preset"
 msgstr "Yerel Ön Ayarlar Listesi"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:88
+#: src/contents/ui/PresetsAutoloadingPage.qml:95
 #, fuzzy
 msgid "Create"
 msgstr "Oluşturuluyor"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:90
+#: src/contents/ui/PresetsAutoloadingPage.qml:97
 #, fuzzy
 msgid "Create a new autoloading preset"
 msgstr "Otomatik Yükleme Ön Ayarını Kaldır"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:173
+#: src/contents/ui/PresetsAutoloadingPage.qml:176
 #, fuzzy
 msgid "Remove this autoloading preset"
 msgstr "Otomatik Yükleme Ön Ayarını Kaldır"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:187
+#: src/contents/ui/PresetsAutoloadingPage.qml:190
 msgid "Description"
 msgstr "Açıklama"
 
-#: src/contents/ui/PresetsCommunityPage.qml:104
+#: src/contents/ui/PresetsCommunityPage.qml:60
+msgid "Refresh"
+msgstr "Yenile"
+
+#: src/contents/ui/PresetsCommunityPage.qml:119
 #, fuzzy
 msgid "Copy to local presets"
 msgstr "Yerel Ön Ayarlar Listesi"
 
-#: src/contents/ui/PresetsCommunityPage.qml:109
+#: src/contents/ui/PresetsCommunityPage.qml:124
 #, fuzzy
 msgid "Imported the %1 community preset to the list of local presets."
 msgstr "Bu topluluk ön ayarını yerel ön ayarlar listesine aktar"
 
-#: src/contents/ui/PresetsCommunityPage.qml:111
+#: src/contents/ui/PresetsCommunityPage.qml:126
 #, fuzzy
 msgid "Failed to import the %1 community preset to the list of local presets."
 msgstr "Topluluk Ön Ayarı Ara"
 
-#: src/contents/ui/PresetsCommunityPage.qml:131
-msgid "Refresh"
-msgstr "Yenile"
-
-#: src/contents/ui/PresetsDialog.qml:83 src/contents/ui/PresetsDialog.qml:133
+#: src/contents/ui/PresetsDialog.qml:83 src/contents/ui/PresetsDialog.qml:140
 msgid "Local"
 msgstr "Yerel"
 
-#: src/contents/ui/PresetsDialog.qml:91 src/contents/ui/PresetsDialog.qml:133
+#: src/contents/ui/PresetsDialog.qml:91 src/contents/ui/PresetsDialog.qml:140
 msgid "Community"
 msgstr "Topluluk"
 
@@ -2793,148 +2796,148 @@ msgstr "Topluluk"
 msgid "Autoloading"
 msgstr "Otomatik Kazanç"
 
-#: src/contents/ui/PresetsDialog.qml:131
+#: src/contents/ui/PresetsDialog.qml:138
 #, fuzzy
 msgid "No preset loaded"
 msgstr "Ön Ayar Yüklü Değil"
 
-#: src/contents/ui/PresetsDialog.qml:148
+#: src/contents/ui/PresetsDialog.qml:158
 msgid "Fallback Preset"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:31
+#: src/contents/ui/PresetsLocalPage.qml:34
 #, fuzzy
 msgid "Imported a new local preset from an external file."
 msgstr "APO Ön Ayar Dosyasını İçe Aktar"
 
-#: src/contents/ui/PresetsLocalPage.qml:33
+#: src/contents/ui/PresetsLocalPage.qml:36
 #, fuzzy
 msgid "Failed to import a new local preset from an external file."
 msgstr "APO Ön Ayar Dosyasını İçe Aktar"
 
-#: src/contents/ui/PresetsLocalPage.qml:42
+#: src/contents/ui/PresetsLocalPage.qml:45
 #, fuzzy
 msgid "Export Presets"
 msgstr "Önayarları İçe Aktar"
 
-#: src/contents/ui/PresetsLocalPage.qml:45
+#: src/contents/ui/PresetsLocalPage.qml:48
 #, fuzzy
 msgid "Exported all presets to an external folder."
 msgstr "APO Ön Ayar Dosyasını İçe Aktar"
 
-#: src/contents/ui/PresetsLocalPage.qml:47
+#: src/contents/ui/PresetsLocalPage.qml:50
 #, fuzzy
 msgid "Failed to export all presets to an external folder."
 msgstr "APO Ön Ayar Dosyasını İçe Aktar"
 
-#: src/contents/ui/PresetsLocalPage.qml:60
+#: src/contents/ui/PresetsLocalPage.qml:65
 #, fuzzy
 msgid "New preset name"
 msgstr "Yeni Ön Ayar Adı"
 
-#: src/contents/ui/PresetsLocalPage.qml:76
+#: src/contents/ui/PresetsLocalPage.qml:81
 #, fuzzy
 msgid "Import preset file"
 msgstr "APO Ön Ayar Dosyasını İçe Aktar"
 
-#: src/contents/ui/PresetsLocalPage.qml:85
+#: src/contents/ui/PresetsLocalPage.qml:90
 #, fuzzy
 msgid "Create new preset"
 msgstr "Yeni bir ön ayar oluştur"
 
-#: src/contents/ui/PresetsLocalPage.qml:95
+#: src/contents/ui/PresetsLocalPage.qml:100
 #, fuzzy
 msgid "Created a new local preset: %1"
 msgstr "Yerel Ön Ayar Ara"
 
-#: src/contents/ui/PresetsLocalPage.qml:99
+#: src/contents/ui/PresetsLocalPage.qml:104
 #, fuzzy
 msgid "Failed to create a new local preset: %1"
 msgstr "Topluluk Ön Ayarı Ara"
 
-#: src/contents/ui/PresetsLocalPage.qml:127
+#: src/contents/ui/PresetsLocalPage.qml:132
 #, fuzzy
 msgid "Export presets"
 msgstr "Önayarları İçe Aktar"
 
-#: src/contents/ui/PresetsLocalPage.qml:191
+#: src/contents/ui/PresetsLocalPage.qml:193
 #, fuzzy
 msgid "Save Preset"
 msgstr "Yeni bir ön ayar oluştur"
 
-#: src/contents/ui/PresetsLocalPage.qml:192
+#: src/contents/ui/PresetsLocalPage.qml:194
 #, fuzzy
 msgid ""
 "Save current settings to the preset:\n"
 "%1"
 msgstr "Geçerli ayarları bu ön ayar dosyasına kaydet"
 
-#: src/contents/ui/PresetsLocalPage.qml:196
+#: src/contents/ui/PresetsLocalPage.qml:198
 #, fuzzy
 msgid "Saved the current settings to %1 local preset."
 msgstr "Geçerli ayarları gözden çıkar ve bu ön ayarı yükle"
 
-#: src/contents/ui/PresetsLocalPage.qml:198
+#: src/contents/ui/PresetsLocalPage.qml:200
 #, fuzzy
 msgid "Failed to save the current settings to %1 local preset."
 msgstr "Geçerli ayarları gözden çıkar ve bu ön ayarı yükle"
 
-#: src/contents/ui/PresetsLocalPage.qml:206
+#: src/contents/ui/PresetsLocalPage.qml:208
 #, fuzzy
 msgid "Remove Preset"
 msgstr "Yeni bir ön ayar oluştur"
 
-#: src/contents/ui/PresetsLocalPage.qml:207
+#: src/contents/ui/PresetsLocalPage.qml:209
 msgid ""
 "Are you sure you want to remove the preset\n"
 "%1\n"
 "from the list?"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:211
+#: src/contents/ui/PresetsLocalPage.qml:213
 #, fuzzy
 msgid "Removed the %1 local preset."
 msgstr "Bu otomatik yükleme ön ayarını kaldır"
 
-#: src/contents/ui/PresetsLocalPage.qml:213
+#: src/contents/ui/PresetsLocalPage.qml:215
 #, fuzzy
 msgid "Failed to remove the %1 local preset."
 msgstr "APO Ön Ayar Dosyasını İçe Aktar"
 
-#: src/contents/ui/PresetsLocalPage.qml:221
+#: src/contents/ui/PresetsLocalPage.qml:223
 #, fuzzy
 msgid "Rename Preset"
 msgstr "Yeni bir ön ayar oluştur"
 
-#: src/contents/ui/PresetsLocalPage.qml:226
+#: src/contents/ui/PresetsLocalPage.qml:228
 msgid "Rename"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:235
+#: src/contents/ui/PresetsLocalPage.qml:237
 #, fuzzy
 msgid "Renamed the %1 local preset to %2"
 msgstr "Hazır ayar dosyasını kaldır"
 
-#: src/contents/ui/PresetsLocalPage.qml:238
+#: src/contents/ui/PresetsLocalPage.qml:240
 #, fuzzy
 msgid "Failed to rename the %1 local preset to %2"
 msgstr "Dürtü Dosyası Yüklenemedi"
 
-#: src/contents/ui/PresetsLocalPage.qml:246
+#: src/contents/ui/PresetsLocalPage.qml:248
 msgid "Cancel"
 msgstr "İptal"
 
-#: src/contents/ui/PresetsLocalPage.qml:283
+#: src/contents/ui/PresetsLocalPage.qml:285
 #, fuzzy
 msgid "Save settings to this preset"
 msgstr "Geçerli ayarları bu ön ayar dosyasına kaydet"
 
-#: src/contents/ui/PresetsLocalPage.qml:291
+#: src/contents/ui/PresetsLocalPage.qml:293
 #, fuzzy
 msgid "Rename this preset"
 msgstr "Hazır ayar dosyasını kaldır"
 
-#: src/contents/ui/PresetsLocalPage.qml:299
+#: src/contents/ui/PresetsLocalPage.qml:301
 #, fuzzy
 msgid "Delete this preset"
 msgstr "Hazır ayar dosyasını kaldır"
@@ -3030,128 +3033,128 @@ msgstr "Disko"
 msgid "Large occupied hall"
 msgstr "Büyük Dolu Salon"
 
-#: src/contents/ui/RNNoise.qml:43
+#: src/contents/ui/RNNoise.qml:44
 #, fuzzy
 msgid "Imported a new RNNoise model file."
 msgstr "Standart RNNoise Modeli"
 
-#: src/contents/ui/RNNoise.qml:45
+#: src/contents/ui/RNNoise.qml:46
 #, fuzzy
 msgid "Failed to import the RNNoise model file."
 msgstr "Model Dosyasını İçe Aktar"
 
-#: src/contents/ui/RNNoise.qml:56 src/contents/ui/RNNoise.qml:67
-#: src/contents/ui/RNNoise.qml:281 src/contents/ui/RNNoise.qml:283
+#: src/contents/ui/RNNoise.qml:57 src/contents/ui/RNNoise.qml:68
+#: src/contents/ui/RNNoise.qml:282 src/contents/ui/RNNoise.qml:284
 #, fuzzy
 msgid "Standard RNNoise model"
 msgstr "Standart RNNoise Modeli"
 
-#: src/contents/ui/RNNoise.qml:58
+#: src/contents/ui/RNNoise.qml:59
 #, fuzzy
 msgid "Standard RNNoise model loaded."
 msgstr "Standart RNNoise Modeli"
 
-#: src/contents/ui/RNNoise.qml:63 src/contents/ui/RNNoise.qml:285
+#: src/contents/ui/RNNoise.qml:64 src/contents/ui/RNNoise.qml:286
 #, fuzzy
 msgid "Using %1 Model"
 msgstr "{} Kullanıyor"
 
-#: src/contents/ui/RNNoise.qml:65
+#: src/contents/ui/RNNoise.qml:66
 #, fuzzy
 msgid "Loaded the %1 RNNoise model."
 msgstr "Standart RNNoise Modeli"
 
-#: src/contents/ui/RNNoise.qml:69
+#: src/contents/ui/RNNoise.qml:70
 #, fuzzy
 msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
 msgstr "Dürtü Dosyası Yüklenemedi"
 
-#: src/contents/ui/RNNoise.qml:88 src/contents/ui/Speex.qml:98
+#: src/contents/ui/RNNoise.qml:89 src/contents/ui/Speex.qml:98
 #, fuzzy
 msgid "Voice detection"
 msgstr "Ses Algılama"
 
-#: src/contents/ui/RNNoise.qml:125
+#: src/contents/ui/RNNoise.qml:126
 #, fuzzy
 msgid "Wet level"
 msgstr "Islak Düzey"
 
-#: src/contents/ui/RNNoise.qml:165
+#: src/contents/ui/RNNoise.qml:166
 #, fuzzy
 msgid "Use the Standard model"
 msgstr "Standart Model"
 
-#: src/contents/ui/RNNoise.qml:176
+#: src/contents/ui/RNNoise.qml:177
 #, fuzzy
 msgid "User Models"
 msgstr "RNNoise Modelleri"
 
-#: src/contents/ui/RNNoise.qml:242
+#: src/contents/ui/RNNoise.qml:243
 #, fuzzy
 msgid "Delete this model"
 msgstr "Bu model dosyasını kaldır"
 
-#: src/contents/ui/RNNoise.qml:247
+#: src/contents/ui/RNNoise.qml:248
 #, fuzzy
 msgid "Removed the %1 RNNoise model."
 msgstr "Standart RNNoise Modeli"
 
-#: src/contents/ui/RNNoise.qml:249
+#: src/contents/ui/RNNoise.qml:250
 #, fuzzy
 msgid "Failed to remove the %1 RNNoise model."
 msgstr "Dürtü Dosyası Yüklenemedi"
 
-#: src/contents/ui/RNNoise.qml:318
+#: src/contents/ui/RNNoise.qml:319
 #, fuzzy
 msgid "Import model"
 msgstr "Modeli İçe Aktar"
 
-#: src/contents/ui/ShortcutsSheet.qml:45
+#: src/contents/ui/ShortcutsSheet.qml:47
 #, fuzzy
 msgid "Show help"
 msgstr "Yardımı göster"
 
-#: src/contents/ui/ShortcutsSheet.qml:58
+#: src/contents/ui/ShortcutsSheet.qml:60
 msgid "Toggle fullscreen"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:86 src/contents/ui/ShortcutsSheet.qml:309
+#: src/contents/ui/ShortcutsSheet.qml:88 src/contents/ui/ShortcutsSheet.qml:311
 #: src/global_shortcuts.hpp:48
 #, fuzzy
 msgid "Toggle global bypass"
 msgstr "Genel Atlama"
 
-#: src/contents/ui/ShortcutsSheet.qml:114
+#: src/contents/ui/ShortcutsSheet.qml:116
 #, fuzzy
 msgid "Close the window"
 msgstr "Pencereyi Kapat"
 
-#: src/contents/ui/ShortcutsSheet.qml:142
+#: src/contents/ui/ShortcutsSheet.qml:144
 #, fuzzy
 msgid "Terminate Easy Effects service"
 msgstr "Easyeffects sürümünü yazdır"
 
-#: src/contents/ui/ShortcutsSheet.qml:182
+#: src/contents/ui/ShortcutsSheet.qml:184
 #, fuzzy
 msgid "Toggle process all inputs"
 msgstr "Tüm Giriş Akışlarını İşle"
 
-#: src/contents/ui/ShortcutsSheet.qml:222
+#: src/contents/ui/ShortcutsSheet.qml:224
 #, fuzzy
 msgid "Toggle process all outputs"
 msgstr "Tüm Çıkış Akışlarını İşle"
 
-#: src/contents/ui/ShortcutsSheet.qml:235
-#: src/contents/ui/ShortcutsSheet.qml:248
+#: src/contents/ui/ShortcutsSheet.qml:237
+#: src/contents/ui/ShortcutsSheet.qml:250
 msgid "Can be used on numeric controls"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:263
+#: src/contents/ui/ShortcutsSheet.qml:265
 #, fuzzy
 msgid "Global Shortcuts"
 msgstr "Kısa_yollar"
 
-#: src/contents/ui/ShortcutsSheet.qml:349 src/global_shortcuts.hpp:50
+#: src/contents/ui/ShortcutsSheet.qml:351 src/global_shortcuts.hpp:50
 msgid "Toggle microphone monitoring"
 msgstr ""
 
@@ -3303,39 +3306,39 @@ msgstr "Hoparlörler"
 msgid "Output Level Meter"
 msgstr "Çıktı Düzey Ölçer"
 
-#: src/presets_manager.cpp:762 src/presets_manager.cpp:769
-#: src/presets_manager.cpp:779 src/presets_manager.cpp:786
-#: src/presets_manager.cpp:796 src/presets_manager.cpp:805
+#: src/presets_manager.cpp:773 src/presets_manager.cpp:780
+#: src/presets_manager.cpp:790 src/presets_manager.cpp:797
+#: src/presets_manager.cpp:807 src/presets_manager.cpp:816
 #, fuzzy
 msgid "Preset not loaded correctly"
 msgstr "Ön Ayar Doğru Yüklenmedi"
 
-#: src/presets_manager.cpp:762
+#: src/presets_manager.cpp:773
 #, fuzzy
 msgid "Wrong format in excluded apps list"
 msgstr "Hariç Tutulan Uygulamalar Listesinde Yanlış Biçim"
 
-#: src/presets_manager.cpp:770
+#: src/presets_manager.cpp:781
 #, fuzzy
 msgid "Generic error while loading excluded apps list"
 msgstr "Hariç Tutulan Uygulamalar Listesi Yüklenirken Genel Hata"
 
-#: src/presets_manager.cpp:779
+#: src/presets_manager.cpp:790
 #, fuzzy
 msgid "Wrong format in effects list"
 msgstr "Efektler Listesinde Yanlış Biçim"
 
-#: src/presets_manager.cpp:786
+#: src/presets_manager.cpp:797
 #, fuzzy
 msgid "Generic error while loading effects list"
 msgstr "Efekt Listesi Yüklenirken Genel Hata"
 
-#: src/presets_manager.cpp:797
+#: src/presets_manager.cpp:808
 #, fuzzy
 msgid "One or more parameters have a wrong format"
 msgstr "Bir veya Daha Fazla Parametre Yanlış Biçime Sahip"
 
-#: src/presets_manager.cpp:806
+#: src/presets_manager.cpp:817
 #, fuzzy
 msgid "Generic error while loading the effect"
 msgstr "Efekt Yüklenirken Genel Hata"
