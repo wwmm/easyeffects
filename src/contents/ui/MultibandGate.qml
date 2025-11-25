@@ -6,6 +6,7 @@ import "Common.js" as Common
 import ee.pipewire as PW
 import ee.tags.plugin.name as TagsPluginName// qmllint disable
 import org.kde.kirigami as Kirigami
+import org.kde.kirigamiaddons.delegates as Delegates
 import org.kde.kirigamiaddons.formcard as FormCard
 
 Kirigami.ScrollablePage {
@@ -868,11 +869,12 @@ Kirigami.ScrollablePage {
                     model: 8
                     implicitWidth: contentItem.childrenRect.width
                     clip: true
-                    delegate: Controls.ItemDelegate {
+                    delegate: Delegates.RoundedItemDelegate {
                         id: listItemDelegate
 
                         required property int index
 
+                        width: implicitWidth
                         hoverEnabled: true
                         highlighted: ListView.isCurrentItem
                         onClicked: {
@@ -888,8 +890,8 @@ Kirigami.ScrollablePage {
                             Controls.CheckBox {
                                 readonly property string bandName: "band" + listItemDelegate.index + "Enable"
                                 Layout.alignment: Qt.AlignHCenter
-                                visible: listItemDelegate.index > 0
-                                checked: listItemDelegate.index > 0 ? multibandGatePage.pluginDB[bandName] : false
+                                enabled: listItemDelegate.index > 0
+                                checked: listItemDelegate.index > 0 ? multibandGatePage.pluginDB[bandName] : true
                                 onCheckedChanged: {
                                     if (checked != multibandGatePage.pluginDB[bandName]) {
                                         multibandGatePage.pluginDB[bandName] = checked;
