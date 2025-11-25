@@ -1,5 +1,25 @@
 # Changelog
  
+## 8.0.5
+### 2025-11-25
+
+ 
+### Features:
+- The labels of an Equalizer band in the main view are greyed out when the type of the filter is set to "Off", so the user can quickly know which band is enabled or not.
+- Added the ability to enable a global excluded apps list. In this mode the blocklist set by the user is always valid and do not depend on the blocklist value set in the loaded preset.
+- The tray menu presets list now indicates the last loaded preset if this preset is among the most used ones.
+- Performance optimization to some operations that could temporarily freeze the main window animations. Like opening the native window of a heavy plugin.
+- Our convolver now supports mono and true stereo impulse response files.
+
+### Bug fixes:
+- Fixed a bug that occurred in the import of APO/GraphicEq presets. In certain conditions, when Equalizer Split Channels mode was enabled, the preset imported to a single channel was altering the configuration in the other channel.
+- Fixed a bug that caused Easy Effects to sometimes get the wrong default output device.
+- Fixed a bug tha caused the autoloading window to get the wrong device route when creating a profile.
+
+### Other notes:
+- Some of the UI elements that were built with the Overlay Sheets have been ported to use the Kirigami Dialogs. This should help us to better follow KDE HIG. But more work is still needed.
+
+ 
 ## 8.0.4
 ### 2025-11-20
 
