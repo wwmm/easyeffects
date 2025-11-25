@@ -9,6 +9,7 @@ import ee.presets as Presets
 import ee.tags.plugin.name as TagsPluginName // qmllint disable
 import ee.ui
 import org.kde.kirigami as Kirigami
+import org.kde.kirigamiaddons.delegates as Delegates
 
 Kirigami.ScrollablePage {
     id: rnnoisePage
@@ -211,7 +212,7 @@ Kirigami.ScrollablePage {
                             text: i18n("Empty List") // qmllint disable
                         }
 
-                        delegate: Controls.ItemDelegate {
+                        delegate: Delegates.RoundedItemDelegate {
                             id: listItemDelegate
 
                             required property string name
