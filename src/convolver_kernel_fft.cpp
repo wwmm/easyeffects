@@ -35,8 +35,8 @@ ConvolverKernelFFT::~ConvolverKernelFFT() {
   clear_data();
 }
 
-auto ConvolverKernelFFT::calculate_fft(const std::vector<float>& kernel_L,
-                                       const std::vector<float>& kernel_R,
+auto ConvolverKernelFFT::calculate_fft(std::vector<float> kernel_L,
+                                       std::vector<float> kernel_R,
                                        float kernel_rate,
                                        int interp_points) -> void {
   if (kernel_L.empty() || kernel_R.empty() || kernel_L.size() != kernel_R.size()) {
@@ -59,7 +59,7 @@ auto ConvolverKernelFFT::calculate_fft(const std::vector<float>& kernel_L,
   // Remove DC component at f = 0 Hz
   freq_axis.erase(freq_axis.begin());
   spectrum_L.erase(spectrum_L.begin());
-  spectrum_R.erase(spectrum_R.erase(spectrum_R.begin()));
+  spectrum_R.erase(spectrum_R.begin());
 
   // Initialize linear axis
   auto linear_freq_axis = util::linspace(freq_axis.front(), freq_axis.back(), interp_points);

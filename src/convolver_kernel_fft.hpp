@@ -30,8 +30,8 @@ class ConvolverKernelFFT {
   ConvolverKernelFFT();
   ~ConvolverKernelFFT();
 
-  auto calculate_fft(const std::vector<float>& kernel_L,
-                     const std::vector<float>& kernel_R,
+  auto calculate_fft(std::vector<float> kernel_L,
+                     std::vector<float> kernel_R,
                      float kernel_rate,
                      int interp_points = 1000) -> void;
 
