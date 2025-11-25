@@ -8,16 +8,17 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-24 23:25-0300\n"
-"PO-Revision-Date: 2025-11-24 06:51+0000\n"
-"Last-Translator: Максим Горпиніч <gorpinicmaksim0@gmail.com>\n"
+"PO-Revision-Date: 2025-11-25 19:51+0000\n"
+"Last-Translator: Володимир <vlzuykov@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural="
+"(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? "
+"1 : 2);\n"
 "X-Generator: Weblate 5.15-dev\n"
 
 #: src/autostart.cpp:89
@@ -40,7 +41,7 @@ msgstr "Скинути Easy Effects."
 
 #: src/command_line_parser.cpp:44
 msgid "Hide the window."
-msgstr "Сховайте вікно."
+msgstr "Сховати вікно."
 
 #: src/command_line_parser.cpp:45
 msgid "Global bypass. 1 to enable and 2 to disable."
@@ -52,27 +53,27 @@ msgstr "стан-глобального-обходу"
 
 #: src/command_line_parser.cpp:46
 msgid "Load a preset. Example: easyeffects -l music"
-msgstr "Завантажити попереднє налаштування. Приклад: easyeffects -l music"
+msgstr "Завантажити пресет. Приклад: easyeffects -l music"
 
 #: src/command_line_parser.cpp:46
 msgid "preset-name"
-msgstr "назва-попереднього-налаштування"
+msgstr "назва-пресету"
 
 #: src/command_line_parser.cpp:47
 msgid "Show available presets."
-msgstr "Показати доступні попередні налаштування."
+msgstr "Показати доступні пресети."
 
 #: src/command_line_parser.cpp:48
 msgid "Get the active input/output preset."
-msgstr "Отримати активне попереднє налаштування входу/виходу."
+msgstr "Отримати активний пресет входу/виходу."
 
 #: src/command_line_parser.cpp:48
 msgid "preset-type"
-msgstr "тип-попереднього-налаштування"
+msgstr "тип-пресету"
 
 #: src/command_line_parser.cpp:49
 msgid "Get the active input and output presets."
-msgstr "Отримати активні попередні налаштування входу та виходу."
+msgstr "Отримати активні пресети входу та виходу."
 
 #: src/command_line_parser.cpp:50
 msgid "Deprecated. Use --service-mode instead."
@@ -88,7 +89,7 @@ msgstr "Увімкнути налагоджувальні повідомленн
 
 #: src/command_line_parser.cpp:126
 msgid "Must specify preset type: input/output."
-msgstr "Потрібно вказати тип попереднього налаштування: вхід/вихід."
+msgstr "Потрібно вказати тип пресету: вхід/вихід."
 
 #: src/command_line_parser.cpp:166
 msgid "Output presets"
@@ -104,7 +105,7 @@ msgstr "Вхідні пресети"
 
 #: src/command_line_parser.cpp:181
 msgid "No input presets."
-msgstr "Немає пресетів введення."
+msgstr "Немає вхідних пресетів."
 
 #: src/command_line_parser.cpp:211
 msgid "Specified preset does not exist."
@@ -112,7 +113,7 @@ msgstr "Вказаного пресету не існує."
 
 #: src/command_line_parser.cpp:229
 msgid "Provided an invalid bypass state."
-msgstr "Надано недійсний стан обходу."
+msgstr "Вказано недійсний стан обходу."
 
 #: src/contents/ui/AboutPage.qml:4
 msgctxt "@action:button"
@@ -883,7 +884,7 @@ msgstr "Розділити стерео"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:34
 msgid "Imported a new Convolver impulse file."
-msgstr "Імпортовано новий імпульсний файл Convolver."
+msgstr "Імпортовано новий файл імпульсу конвольвера."
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:36
 msgid "Failed to import the Convolver impulse file."
@@ -999,7 +1000,7 @@ msgstr "Рівень змішування"
 
 #: src/contents/ui/Crossfeed.qml:94
 msgid "Crossfeed Presets"
-msgstr "Попередні налаштування"
+msgstr "Пресети кросфіду"
 
 #: src/contents/ui/Crossfeed.qml:98
 msgid "Default"
@@ -1008,7 +1009,7 @@ msgstr "За замовчуванням"
 #: src/contents/ui/Crossfeed.qml:145 src/contents/ui/Main.qml:467
 #: src/contents/ui/PreferencesSheet.qml:45 src/contents/ui/Reverb.qml:314
 msgid "Presets"
-msgstr "Попередні налаштування"
+msgstr "Пресети"
 
 #: src/contents/ui/CrystalizerBand.qml:35
 #: src/contents/ui/EqualizerBandMenu.qml:172
@@ -1114,7 +1115,7 @@ msgstr "Рівень центральної частоти"
 
 #: src/contents/ui/Deesser.qml:224
 msgid "dBFS"
-msgstr "дБПШ"
+msgstr "dBFS"
 
 #: src/contents/ui/Deesser.qml:234
 msgid "F2 peak Q"
@@ -1337,31 +1338,31 @@ msgstr "Сходовий (відхилення)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:63
 msgid "RLC (BT)"
-msgstr "Коливальний контур (БП)"
+msgstr "RLC (BT)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:63
 msgid "RLC (MT)"
-msgstr "Коливальний контур (УП)"
+msgstr "RLC (MT)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:63
 msgid "BWC (BT)"
-msgstr "Баттерворта-Чебишева (БП)"
+msgstr "BWC (BT)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:63
 msgid "BWC (MT)"
-msgstr "Баттерворта-Чебишева (УП)"
+msgstr "BWC (MT)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:63
 msgid "LRX (BT)"
-msgstr "Лінквіца-Райлі (БП)"
+msgstr "LRX (BT)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:63
 msgid "LRX (MT)"
-msgstr "Лінквіца-Райлі (УП)"
+msgstr "LRX (MT)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:63
 msgid "APO (DR)"
-msgstr "Біквадратний (ПД)"
+msgstr "APO (DR)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:60 src/contents/ui/Filter.qml:87
 msgid "Slope"
@@ -1399,15 +1400,15 @@ msgstr "Ізолювати"
 
 #: src/contents/ui/Equalizer.qml:49 src/contents/ui/Equalizer.qml:89
 msgid "APO preset"
-msgstr "Попередні налаштування APO"
+msgstr "Пресети APO"
 
 #: src/contents/ui/Equalizer.qml:52
 msgid "Failed to import the Equalizer APO preset file."
-msgstr "Не вдалося імпортувати файл попереднього налаштування APO."
+msgstr "Не вдалося імпортувати файл пресету APO."
 
 #: src/contents/ui/Equalizer.qml:57
 msgid "Imported the Equalizer APO preset file."
-msgstr "Імпортовано файл попереднього налаштування APO."
+msgstr "Імпортовано файл пресету APO."
 
 #: src/contents/ui/Equalizer.qml:59
 msgid "Imported the Equalizer APO preset file into the left channel."
@@ -1419,16 +1420,15 @@ msgstr "Імпортовано файл пресету еквалайзера AP
 
 #: src/contents/ui/Equalizer.qml:74
 msgid "GraphicEQ preset"
-msgstr "Попередні налаштування графічного еквалайзера"
+msgstr "Пресет графічного еквалайзера"
 
 #: src/contents/ui/Equalizer.qml:77
 msgid "Imported the GraphicEQ preset file."
-msgstr "Імпортовано файл попереднього налаштування графічного еквалайзера."
+msgstr "Імпортовано файл пресету графічного еквалайзера."
 
 #: src/contents/ui/Equalizer.qml:79
 msgid "Failed to import the GraphicEQ preset file."
-msgstr ""
-"Не вдалося імпортувати файл попереднього налаштування графічного еквалайзера."
+msgstr "Не вдалося імпортувати файл пресету графічного еквалайзера."
 
 #: src/contents/ui/Equalizer.qml:92
 msgid ""
@@ -1436,13 +1436,13 @@ msgid ""
 "file."
 msgstr ""
 "Не вдалося експортувати поточні налаштування еквалайзера до зовнішнього "
-"файлу попереднього налаштування APO."
+"файлу пресету APO."
 
 #: src/contents/ui/Equalizer.qml:97
 msgid "Exported the current Equalizer settings to an external APO preset file."
 msgstr ""
-"Експортовано поточні налаштування еквалайзера до зовнішнього файлу "
-"попереднього налаштування APO."
+"Експортовано поточні налаштування еквалайзера до зовнішнього файлу пресету "
+"APO."
 
 #: src/contents/ui/Equalizer.qml:99
 msgid ""
@@ -1463,20 +1463,20 @@ msgstr ""
 #: src/contents/ui/Equalizer.qml:125 src/contents/ui/Filter.qml:77
 #: src/contents/ui/Loudness.qml:57
 msgid "IIR"
-msgstr "Нескінченна імпульсна характеристика"
+msgstr "НІХ (IIR)"
 
 #: src/contents/ui/Equalizer.qml:125 src/contents/ui/Filter.qml:77
 msgid "FIR"
-msgstr "Кінцева імпульсна характеристика"
+msgstr "КІХ (FIR)"
 
 #: src/contents/ui/Equalizer.qml:125 src/contents/ui/Filter.qml:77
 #: src/contents/ui/Loudness.qml:57
 msgid "FFT"
-msgstr "Швидке перетворення Фур'є"
+msgstr "ШПФ (FFT)"
 
 #: src/contents/ui/Equalizer.qml:125 src/contents/ui/Filter.qml:77
 msgid "SPM"
-msgstr "Спектральний процесор"
+msgstr "ФСМ (SPM)"
 
 #: src/contents/ui/Equalizer.qml:134
 msgid "Bands"
@@ -1844,7 +1844,7 @@ msgstr "Ви впевнені, що хочете скинути всі нала�
 
 #: src/contents/ui/Main.qml:288 src/contents/ui/Main.qml:306
 msgid "Preset Loaded"
-msgstr "Попереднє налаштування завантажено"
+msgstr "Пресет завантажено"
 
 #: src/contents/ui/Main.qml:317 src/contents/ui/Main.qml:329
 msgid "Clear List"
@@ -1856,11 +1856,11 @@ msgstr "Ви впевнені, що хочете очистити цей спи�
 
 #: src/contents/ui/Main.qml:339
 msgid "Input Presets"
-msgstr "Попередні налаштування для входу"
+msgstr "Пресети для входу"
 
 #: src/contents/ui/Main.qml:354
 msgid "Output Presets"
-msgstr "Попередні налаштування для виходу"
+msgstr "Пресети для виходу"
 
 #: src/contents/ui/Main.qml:385
 msgid "Active"
@@ -2290,7 +2290,7 @@ msgid ""
 "percentages results in a lower perceived volume while the loudness appears "
 "to change more evenly across the slider."
 msgstr ""
-"Використовуйте кубічну шкалу для гучності потоку, а не лінійну. Низькі "
+"Використовувати кубічну шкалу для гучності потоку, а не лінійну. Низькі "
 "відсотки призводять до нижчої сприйнятої гучності, тоді як гучність "
 "змінюється більш рівномірно вздовж повзунка."
 
@@ -2305,8 +2305,8 @@ msgid ""
 "could sound too loud."
 msgstr ""
 "Сповіщення системи обробки можуть спричиняти потріскування, тому краще їх "
-"ігнорувати, але для деяких попередніх налаштувань це може бути "
-"рекомендовано, оскільки вони можуть звучати занадто голосно."
+"ігнорувати, але для деяких пресетів це може бути рекомендовано, оскільки "
+"вони можуть звучати занадто голосно."
 
 #: src/contents/ui/PreferencesSheet.qml:187
 msgid "Enable/disable input monitoring"
@@ -2458,11 +2458,11 @@ msgstr "Інтервал автоматичного збереження баз�
 
 #: src/contents/ui/PreferencesSheet.qml:456
 msgid "Most used presets"
-msgstr "Найчастіше застосовувані попередні налаштування"
+msgstr "Найчастіше застосовувані пресети"
 
 #: src/contents/ui/PreferencesSheet.qml:479
 msgid "Force KDE's Breeze theme when Easy Effects starts"
-msgstr "Примусово вмикати тему Breeze від KDE під час запуску Easy Effects"
+msgstr "Примусово вмикати тему KDE Breeze при запуску Easy Effects"
 
 #: src/contents/ui/PreferencesSheet.qml:480
 msgid ""
@@ -2492,8 +2492,8 @@ msgstr "Затримка автозавантаження"
 msgid ""
 "Delay between receiving a new device route and the call to autoload a preset."
 msgstr ""
-"Затримка між отриманням нового маршруту пристрою та викликом автоматичного "
-"завантаження попереднього налаштування."
+"Затримка між отриманням нового маршруту пристрою та викликом "
+"автозавантаження пресету."
 
 #: src/contents/ui/PreferencesSheet.qml:530
 msgid "Ignore the blocklist from presets"
@@ -2544,7 +2544,7 @@ msgstr "Маршрут"
 #: src/contents/ui/PresetsAutoloadingPage.qml:84
 #: src/contents/ui/PresetsAutoloadingPage.qml:217
 msgid "Local preset"
-msgstr "Локальне попереднє налаштування"
+msgstr "Локальний пресет"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:95
 msgid "Create"
@@ -2552,11 +2552,11 @@ msgstr "Створити"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:97
 msgid "Create a new autoloading preset"
-msgstr "Створити нове попереднє налаштування, що завантажується автоматично"
+msgstr "Створити новий пресет, що завантажуватиметься автоматично"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:176
 msgid "Remove this autoloading preset"
-msgstr "Вилучити це попереднє налаштування, що завантажується автоматично"
+msgstr "Вилучити цей пресет, що завантажується автоматично"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:190
 msgid "Description"
@@ -2568,17 +2568,15 @@ msgstr "Оновити"
 
 #: src/contents/ui/PresetsCommunityPage.qml:119
 msgid "Copy to local presets"
-msgstr "Копіювати до локальних попередніх налаштувань"
+msgstr "Копіювати до локальних пресетів"
 
 #: src/contents/ui/PresetsCommunityPage.qml:124
 msgid "Imported the %1 community preset to the list of local presets."
-msgstr "Імпортовано попереднє налаштування спільноти %1 до списку локальних."
+msgstr "Імпортовано пресет від спільноти «%1» до списку локальних."
 
 #: src/contents/ui/PresetsCommunityPage.qml:126
 msgid "Failed to import the %1 community preset to the list of local presets."
-msgstr ""
-"Не вдалося імпортувати попереднє налаштування спільноти %1 до списку "
-"локальних."
+msgstr "Не вдалося імпортувати пресет від спільноти «%1» до списку локальних."
 
 #: src/contents/ui/PresetsDialog.qml:83 src/contents/ui/PresetsDialog.qml:140
 msgid "Local"
@@ -2594,81 +2592,75 @@ msgstr "Автозавантаження"
 
 #: src/contents/ui/PresetsDialog.qml:138
 msgid "No preset loaded"
-msgstr "Не завантажено жодного попереднього налаштування"
+msgstr "Не завантажено жодного пресету"
 
 #: src/contents/ui/PresetsDialog.qml:158
 msgid "Fallback Preset"
-msgstr "Резервне попереднє налаштування"
+msgstr "Резервний пресет"
 
 #: src/contents/ui/PresetsLocalPage.qml:34
 msgid "Imported a new local preset from an external file."
-msgstr "Імпортовано нове локальне попереднє налаштування із зовнішнього файлу."
+msgstr "Імпортовано новий локальний пресет із зовнішнього файлу."
 
 #: src/contents/ui/PresetsLocalPage.qml:36
 msgid "Failed to import a new local preset from an external file."
-msgstr ""
-"Не вдалося імпортувати нове локальне попереднє налаштування із зовнішнього "
-"файлу."
+msgstr "Не вдалося імпортувати новий локальний пресет із зовнішнього файлу."
 
 #: src/contents/ui/PresetsLocalPage.qml:45
 msgid "Export Presets"
-msgstr "Експорт попередніх налаштувань"
+msgstr "Експорт пресетів"
 
 #: src/contents/ui/PresetsLocalPage.qml:48
 msgid "Exported all presets to an external folder."
-msgstr "Усі попередні налаштування експортовано до зовнішнього каталогу."
+msgstr "Усі пресети експортовано до зовнішнього каталогу."
 
 #: src/contents/ui/PresetsLocalPage.qml:50
 msgid "Failed to export all presets to an external folder."
-msgstr ""
-"Не вдалося експортувати всі попередні налаштування до зовнішнього каталогу."
+msgstr "Не вдалося експортувати всі пресети до зовнішнього каталогу."
 
 #: src/contents/ui/PresetsLocalPage.qml:65
 msgid "New preset name"
-msgstr "Назва нового попереднього налаштування"
+msgstr "Назва нового пресету"
 
 #: src/contents/ui/PresetsLocalPage.qml:81
 msgid "Import preset file"
-msgstr "Імпортувати файл попереднього налаштування"
+msgstr "Імпортувати файл пресету"
 
 #: src/contents/ui/PresetsLocalPage.qml:90
 msgid "Create new preset"
-msgstr "Створити нове попереднє налаштування"
+msgstr "Створити новий пресет"
 
 #: src/contents/ui/PresetsLocalPage.qml:100
 msgid "Created a new local preset: %1"
-msgstr "Створено нове локальне попереднє налаштування: %1"
+msgstr "Створено новий локальний пресет: %1"
 
 #: src/contents/ui/PresetsLocalPage.qml:104
 msgid "Failed to create a new local preset: %1"
-msgstr "Не вдалося створити нове локальне попереднє налаштування: %1"
+msgstr "Не вдалося створити новий локальний пресет: %1"
 
 #: src/contents/ui/PresetsLocalPage.qml:132
 msgid "Export presets"
-msgstr "Експортувати попередні налаштування"
+msgstr "Експортувати пресет"
 
 #: src/contents/ui/PresetsLocalPage.qml:193
 msgid "Save Preset"
-msgstr "Зберегти попереднє налаштування"
+msgstr "Зберегти пресет"
 
 #: src/contents/ui/PresetsLocalPage.qml:194
 msgid ""
 "Save current settings to the preset:\n"
 "%1"
 msgstr ""
-"Зберегти поточні налаштування до попереднього налаштування:\n"
+"Зберегти поточні налаштування до пресету:\n"
 "%1"
 
 #: src/contents/ui/PresetsLocalPage.qml:198
 msgid "Saved the current settings to %1 local preset."
-msgstr ""
-"Поточні налаштування збережено до локального попереднього налаштування %1."
+msgstr "Поточні налаштування збережено до локального пресету «%1»."
 
 #: src/contents/ui/PresetsLocalPage.qml:200
 msgid "Failed to save the current settings to %1 local preset."
-msgstr ""
-"Не вдалося зберегти поточні налаштування до локального попереднього "
-"налаштування %1."
+msgstr "Не вдалося зберегти поточні налаштування до локального пресету «%1»."
 
 #: src/contents/ui/PresetsLocalPage.qml:208
 msgid "Remove Preset"
@@ -2680,21 +2672,21 @@ msgid ""
 "%1\n"
 "from the list?"
 msgstr ""
-"Ви впевнені, що хочете вилучити попереднє налаштування\n"
+"Ви впевнені, що хочете вилучити пресет\n"
 "%1\n"
 "зі списку?"
 
 #: src/contents/ui/PresetsLocalPage.qml:213
 msgid "Removed the %1 local preset."
-msgstr "Вилучено локальне попереднє налаштування %1."
+msgstr "Вилучено локальний пресет «%1»."
 
 #: src/contents/ui/PresetsLocalPage.qml:215
 msgid "Failed to remove the %1 local preset."
-msgstr "Не вдалося вилучити локальне попереднє налаштування %1."
+msgstr "Не вдалося вилучити локальний пресет «%1»."
 
 #: src/contents/ui/PresetsLocalPage.qml:223
 msgid "Rename Preset"
-msgstr "Перейменувати попереднє налаштування"
+msgstr "Перейменувати пресет"
 
 #: src/contents/ui/PresetsLocalPage.qml:228
 msgid "Rename"
@@ -2702,11 +2694,11 @@ msgstr "Перейменувати"
 
 #: src/contents/ui/PresetsLocalPage.qml:237
 msgid "Renamed the %1 local preset to %2"
-msgstr "Локальне попереднє налаштування %1 перейменовано на %2"
+msgstr "Локальний пресет «%1» перейменовано на «%2»"
 
 #: src/contents/ui/PresetsLocalPage.qml:240
 msgid "Failed to rename the %1 local preset to %2"
-msgstr "Не вдалося перейменувати локальне попереднє налаштування %1 на %2"
+msgstr "Не вдалося перейменувати локальний пресет «%1» на «%2»"
 
 #: src/contents/ui/PresetsLocalPage.qml:248
 msgid "Cancel"
@@ -2714,15 +2706,15 @@ msgstr "Скасувати"
 
 #: src/contents/ui/PresetsLocalPage.qml:285
 msgid "Save settings to this preset"
-msgstr "Зберегти налаштування до цього попереднього налаштування"
+msgstr "Зберегти налаштування до цього пресету"
 
 #: src/contents/ui/PresetsLocalPage.qml:293
 msgid "Rename this preset"
-msgstr "Перейменувати це попереднє налаштування"
+msgstr "Перейменувати цей пресет"
 
 #: src/contents/ui/PresetsLocalPage.qml:301
 msgid "Delete this preset"
-msgstr "Видалити це попереднє налаштування"
+msgstr "Видалити цей пресет"
 
 #: src/contents/ui/Reverb.qml:47
 msgid "Room size"
@@ -2778,7 +2770,7 @@ msgstr "ФНЧ"
 
 #: src/contents/ui/Reverb.qml:209
 msgid "Reverberation Presets"
-msgstr "Попередні налаштування реверберації"
+msgstr "Пресети реверберації"
 
 #: src/contents/ui/Reverb.qml:213
 msgid "Ambience"
@@ -3043,7 +3035,7 @@ msgstr "Індикатор рівня вихідного сигналу"
 #: src/presets_manager.cpp:790 src/presets_manager.cpp:797
 #: src/presets_manager.cpp:807 src/presets_manager.cpp:816
 msgid "Preset not loaded correctly"
-msgstr "Попереднє налаштування завантажено неправильно"
+msgstr "Пресет завантажено неправильно"
 
 #: src/presets_manager.cpp:773
 msgid "Wrong format in excluded apps list"
@@ -3107,7 +3099,7 @@ msgstr "Конвольвер"
 
 #: src/tags_plugin_name.cpp:31
 msgid "Crossfeed"
-msgstr "Кросфід (змішування)"
+msgstr "Кросфід (підмішування)"
 
 #: src/tags_plugin_name.cpp:32
 msgid "Crystalizer"
