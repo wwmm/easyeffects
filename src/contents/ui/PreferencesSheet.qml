@@ -1,3 +1,4 @@
+import QtGraphs
 import QtQml // Despite of what Qt extension says this import is needed. We crash without it
 import QtQuick
 import QtQuick.Layouts
@@ -28,12 +29,6 @@ KirigamiSettings.ConfigurationView {
             page: () => spectrumPage
         },
         KirigamiSettings.ConfigurationModule {
-            moduleId: "database"
-            icon.name: "server-database-symbolic"
-            text: i18n("Database") // qmllint disable
-            page: () => databasePage
-        },
-        KirigamiSettings.ConfigurationModule {
             moduleId: "style"
             icon.name: "preferences-desktop-theme-global-symbolic"
             text: i18n("Style") // qmllint disable
@@ -44,6 +39,12 @@ KirigamiSettings.ConfigurationView {
             icon.name: "bookmarks-symbolic"
             text: i18n("Presets") // qmllint disable
             page: () => presetsPage
+        },
+        KirigamiSettings.ConfigurationModule {
+            moduleId: "database"
+            icon.name: "server-database-symbolic"
+            text: i18n("Database") // qmllint disable
+            page: () => databasePage
         },
         KirigamiSettings.ConfigurationModule {
             moduleId: "experimental"
@@ -483,6 +484,10 @@ KirigamiSettings.ConfigurationView {
             }
 
             FormCard.FormCard {
+                id: graphFormCard
+
+                readonly property bool useUserTheme: DbGraph.colorTheme === GraphsTheme.Theme.UserDefined ? true : false
+
                 FormCard.FormComboBoxDelegate {
                     id: chartColorScheme
 
@@ -491,6 +496,7 @@ KirigamiSettings.ConfigurationView {
                     currentIndex: DbGraph.colorScheme
                     editable: false
                     model: [i18n("Automatic"), i18n("Light"), i18n("Dark")]// qmllint disable
+                    enabled: !graphFormCard.useUserTheme
                     onActivated: idx => {
                         if (idx !== DbGraph.colorScheme)
                             DbGraph.colorScheme = idx;
@@ -508,6 +514,84 @@ KirigamiSettings.ConfigurationView {
                     onActivated: idx => {
                         if (idx !== DbGraph.colorTheme)
                             DbGraph.colorTheme = idx;
+                    }
+                }
+
+                FormCard.FormColorDelegate {
+                    text: i18nc("@label", "Background")
+                    color: DbGraph.backgroundColor
+                    enabled: graphFormCard.useUserTheme
+                    onColorChanged: {
+                        DbGraph.backgroundColor = color;
+                    }
+                }
+
+                FormCard.FormColorDelegate {
+                    text: i18nc("@label", "Plot area background")
+                    color: DbGraph.plotAreaBackgroundColor
+                    enabled: graphFormCard.useUserTheme
+                    onColorChanged: {
+                        DbGraph.plotAreaBackgroundColor = color;
+                    }
+                }
+
+                FormCard.FormColorDelegate {
+                    text: i18nc("@label", "Series colors")
+                    color: DbGraph.seriesColors
+                    enabled: graphFormCard.useUserTheme
+                    onColorChanged: {
+                        DbGraph.seriesColors = color;
+                    }
+                }
+
+                FormCard.FormColorDelegate {
+                    text: i18nc("@label", "Axis labels text color")
+                    color: DbGraph.labelTextColor
+                    enabled: graphFormCard.useUserTheme
+                    onColorChanged: {
+                        DbGraph.labelTextColor = color;
+                    }
+                }
+
+                FormCard.FormColorDelegate {
+                    text: i18nc("@label", "Axis labels background color")
+                    color: DbGraph.labelBackgroundColor
+                    enabled: graphFormCard.useUserTheme
+                    onColorChanged: {
+                        DbGraph.labelBackgroundColor = color;
+                    }
+                }
+
+                FormCard.FormColorDelegate {
+                    text: i18nc("@label", "Border color")
+                    color: DbGraph.borderColors
+                    enabled: graphFormCard.useUserTheme
+                    onColorChanged: {
+                        DbGraph.borderColors = color;
+                    }
+                }
+
+                EeSpinBox {
+                    label: i18n("Line width") // qmllint disable
+                    from: DbGraph.getMinValue("lineWidth")
+                    to: DbGraph.getMaxValue("lineWidth")
+                    value: DbGraph.lineWidth
+                    decimals: 2
+                    stepSize: 0.01
+                    onValueModified: v => {
+                        DbGraph.lineWidth = v;
+                    }
+                }
+
+                EeSwitch {
+                    id: gridVisible
+
+                    label: i18n("Show grid lines") // qmllint disable
+                    isChecked: DbGraph.gridVisible
+                    onCheckedChanged: {
+                        if (isChecked !== DbGraph.gridVisible) {
+                            DbGraph.gridVisible = isChecked;
+                        }
                     }
                 }
             }

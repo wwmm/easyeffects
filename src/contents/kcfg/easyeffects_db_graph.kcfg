@@ -46,11 +46,45 @@
                 <choice name="greySeries">
                     <label>A theme with Grey as the base color.</label>
                 </choice>
-                <choice name="user">
+                <choice name="userDefined">
                     <label>User custom theme.</label>
                 </choice>
             </choices>
             <default>1</default>
+        </entry>
+        <entry name="plotAreaBackgroundColor" type="Color">
+            <label>Plot area background color</label>
+            <default>#1f1f1f</default>
+        </entry>
+        <entry name="backgroundColor" type="Color">
+            <label>Background color</label>
+            <default>#262626</default>
+        </entry>
+        <entry name="seriesColors" type="Color">
+            <label>Data series color</label>
+            <default>#000000</default>
+        </entry>
+        <entry name="labelTextColor" type="Color">
+            <label>Axis label color</label>
+            <default>#aeaeae</default>
+        </entry>
+        <entry name="labelBackgroundColor" type="Color">
+            <label>Axis label background color</label>
+            <default>#2e2e2e</default>
+        </entry>
+        <entry name="borderColors" type="Color">
+            <label>Border color</label>
+            <default>#22d478</default>
+        </entry>
+        <entry name="lineWidth" type="Double">
+            <label>Line and spline series line width</label>
+            <min>0</min>
+            <max>50</max>
+            <default>2</default>
+        </entry>
+        <entry name="gridVisible" type="Bool">
+            <label></label>
+            <default>false</default>
         </entry>
     </group>
 </kcfg>
