@@ -180,24 +180,7 @@ FormCard.AbstractFormDelegate {
                     return Math.floor(control.from * spinbox.decimalFactor);
                 }
 
-                /**
-                 * Number validation.
-                 *
-                 * The regex allows the decimal notation without the thousand
-                 * separator. Decimal separators are dot and comma, which will
-                 * work differently according to the user locale. The decimal
-                 * notation omitting the leading zero is also permitted.
-                 * For leading minus sign, we need to catch also `−` (U+2212)
-                 * for Suomi locale.
-                 *
-                 * The regex does not assert the start and the end of the
-                 * string, so it will match the number between other non-digits
-                 * character and, if more numbers are written, only the first
-                 * one is considered since the global flag is not used.
-                 */
-                const numValidator = /[-−]?(?:[.,]\d+|\d+(?:[.,]\d+)?)/;
-
-                const matchResult = text.match(numValidator);
+                const matchResult = text.match(Validators.spinBoxRegex);
 
                 if (matchResult === null) {
                     console.warn("Spinbox number validation failed:", text);
@@ -205,6 +188,7 @@ FormCard.AbstractFormDelegate {
                 }
 
                 const num = matchResult[0];
+
                 try {
                     const n = Number.fromLocaleString(locale, num);
                     return !Number.isNaN(n) ? Math.round(n * spinbox.decimalFactor) : spinbox.value;
