@@ -132,7 +132,7 @@ Nodes::Nodes(QObject* parent)
   }
 
   connect(
-      db::Manager::self().streamOutputs, &DbStreamOutputs::blocklistChanged, this,
+      DbStreamOutputs::self(), &DbStreamOutputs::blocklistChanged, this,
       [this]() {
         const auto blocklist = DbStreamOutputs::blocklist();
 
@@ -158,7 +158,7 @@ Nodes::Nodes(QObject* parent)
       Qt::QueuedConnection);
 
   connect(
-      db::Manager::self().streamInputs, &DbStreamInputs::blocklistChanged, this,
+      DbStreamInputs::self(), &DbStreamInputs::blocklistChanged, this,
       [this]() {
         const auto blocklist = DbStreamInputs::blocklist();
 

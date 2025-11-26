@@ -1,3 +1,4 @@
+import QtGraphs
 import QtQml // Despite of what Qt extension says this import is needed. We crash without it
 import QtQuick
 import QtQuick.Layouts
@@ -28,12 +29,6 @@ KirigamiSettings.ConfigurationView {
             page: () => spectrumPage
         },
         KirigamiSettings.ConfigurationModule {
-            moduleId: "database"
-            icon.name: "server-database-symbolic"
-            text: i18n("Database") // qmllint disable
-            page: () => databasePage
-        },
-        KirigamiSettings.ConfigurationModule {
             moduleId: "style"
             icon.name: "preferences-desktop-theme-global-symbolic"
             text: i18n("Style") // qmllint disable
@@ -44,6 +39,12 @@ KirigamiSettings.ConfigurationView {
             icon.name: "bookmarks-symbolic"
             text: i18n("Presets") // qmllint disable
             page: () => presetsPage
+        },
+        KirigamiSettings.ConfigurationModule {
+            moduleId: "database"
+            icon.name: "server-database-symbolic"
+            text: i18n("Database") // qmllint disable
+            page: () => databasePage
         },
         KirigamiSettings.ConfigurationModule {
             moduleId: "experimental"
@@ -291,38 +292,10 @@ KirigamiSettings.ConfigurationView {
             }
 
             FormCard.FormHeader {
-                title: i18n("Style") // qmllint disable
+                title: i18n("Graph") // qmllint disable
             }
 
             FormCard.FormCard {
-                FormCard.FormComboBoxDelegate {
-                    id: spectrumColorScheme
-
-                    text: i18n("Color scheme") // qmllint disable
-                    displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                    currentIndex: DbSpectrum.spectrumColorScheme
-                    editable: false
-                    model: [i18n("Automatic"), i18n("Light"), i18n("Dark")]// qmllint disable
-                    onActivated: idx => {
-                        if (idx !== DbSpectrum.spectrumColorScheme)
-                            DbSpectrum.spectrumColorScheme = idx;
-                    }
-                }
-
-                FormCard.FormComboBoxDelegate {
-                    id: spectrumColorTheme
-
-                    text: i18n("Color theme") // qmllint disable
-                    displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                    currentIndex: DbSpectrum.spectrumColorTheme
-                    editable: false
-                    model: [i18n("Green"), i18n("Green neon"), i18n("Mix"), i18n("Orange"), i18n("Yellow"), i18n("Blue"), i18n("Purple"), i18n("Grey")]// qmllint disable
-                    onActivated: idx => {
-                        if (idx !== DbSpectrum.spectrumColorTheme)
-                            DbSpectrum.spectrumColorTheme = idx;
-                    }
-                }
-
                 FormCard.FormComboBoxDelegate {
                     id: spectrumShape
 
@@ -470,6 +443,10 @@ KirigamiSettings.ConfigurationView {
 
     readonly property Component stylePage: Component {
         FormCard.FormCardPage {
+            FormCard.FormHeader {
+                title: i18n("Window") // qmllint disable
+            }
+
             FormCard.FormCard {
                 Layout.topMargin: Kirigami.Units.gridUnit
 
@@ -497,6 +474,123 @@ KirigamiSettings.ConfigurationView {
                     onCheckedChanged: {
                         if (isChecked !== DbMain.reducePluginsListControls) {
                             DbMain.reducePluginsListControls = isChecked;
+                        }
+                    }
+                }
+            }
+
+            FormCard.FormHeader {
+                title: i18n("Graphs") // qmllint disable
+            }
+
+            FormCard.FormCard {
+                id: graphFormCard
+
+                readonly property bool useUserTheme: DbGraph.colorTheme === GraphsTheme.Theme.UserDefined ? true : false
+
+                FormCard.FormComboBoxDelegate {
+                    id: chartColorScheme
+
+                    text: i18n("Color scheme") // qmllint disable
+                    displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                    currentIndex: DbGraph.colorScheme
+                    editable: false
+                    model: [i18n("Automatic"), i18n("Light"), i18n("Dark")]// qmllint disable
+                    enabled: !graphFormCard.useUserTheme
+                    onActivated: idx => {
+                        if (idx !== DbGraph.colorScheme)
+                            DbGraph.colorScheme = idx;
+                    }
+                }
+
+                FormCard.FormComboBoxDelegate {
+                    id: chartColorTheme
+
+                    text: i18n("Color theme") // qmllint disable
+                    displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                    currentIndex: DbGraph.colorTheme
+                    editable: false
+                    model: [i18n("Green"), i18n("Green neon"), i18n("Mix"), i18n("Orange"), i18n("Yellow"), i18n("Blue"), i18n("Purple"), i18n("Grey"), i18n("User")]// qmllint disable
+                    onActivated: idx => {
+                        if (idx !== DbGraph.colorTheme)
+                            DbGraph.colorTheme = idx;
+                    }
+                }
+
+                FormCard.FormColorDelegate {
+                    text: i18nc("@label", "Background")
+                    color: DbGraph.backgroundColor
+                    enabled: graphFormCard.useUserTheme
+                    onColorChanged: {
+                        DbGraph.backgroundColor = color;
+                    }
+                }
+
+                FormCard.FormColorDelegate {
+                    text: i18nc("@label", "Plot area background")
+                    color: DbGraph.plotAreaBackgroundColor
+                    enabled: graphFormCard.useUserTheme
+                    onColorChanged: {
+                        DbGraph.plotAreaBackgroundColor = color;
+                    }
+                }
+
+                FormCard.FormColorDelegate {
+                    text: i18nc("@label", "Series colors")
+                    color: DbGraph.seriesColors
+                    enabled: graphFormCard.useUserTheme
+                    onColorChanged: {
+                        DbGraph.seriesColors = color;
+                    }
+                }
+
+                FormCard.FormColorDelegate {
+                    text: i18nc("@label", "Axis labels text color")
+                    color: DbGraph.labelTextColor
+                    enabled: graphFormCard.useUserTheme
+                    onColorChanged: {
+                        DbGraph.labelTextColor = color;
+                    }
+                }
+
+                FormCard.FormColorDelegate {
+                    text: i18nc("@label", "Axis labels background color")
+                    color: DbGraph.labelBackgroundColor
+                    enabled: graphFormCard.useUserTheme
+                    onColorChanged: {
+                        DbGraph.labelBackgroundColor = color;
+                    }
+                }
+
+                FormCard.FormColorDelegate {
+                    text: i18nc("@label", "Border color")
+                    color: DbGraph.borderColors
+                    enabled: graphFormCard.useUserTheme
+                    onColorChanged: {
+                        DbGraph.borderColors = color;
+                    }
+                }
+
+                EeSpinBox {
+                    label: i18n("Line width") // qmllint disable
+                    from: DbGraph.getMinValue("lineWidth")
+                    to: DbGraph.getMaxValue("lineWidth")
+                    value: DbGraph.lineWidth
+                    decimals: 2
+                    stepSize: 0.01
+                    onValueModified: v => {
+                        DbGraph.lineWidth = v;
+                    }
+                }
+
+                EeSwitch {
+                    id: gridVisible
+
+                    label: i18n("Show grid lines") // qmllint disable
+                    isChecked: DbGraph.gridVisible
+                    onCheckedChanged: {
+                        if (isChecked !== DbGraph.gridVisible) {
+                            DbGraph.gridVisible = isChecked;
                         }
                     }
                 }

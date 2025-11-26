@@ -158,6 +158,75 @@ Item {
         }
     }
 
+    GraphsTheme {
+        id: qtTheme
+
+        colorScheme: widgetRoot.colorScheme
+        theme: widgetRoot.colorTheme
+        onColorSchemeChanged: {
+            axisRectangle.color = chart.theme.backgroundColor;
+        }
+        onThemeChanged: {
+            axisRectangle.color = chart.theme.backgroundColor;
+        }
+
+        // Component.onCompleted: {
+        //     console.log("plot area: " + plotAreaBackgroundColor);
+        //     console.log("backgroundColor: " + backgroundColor);
+        //     console.log("seriesColors: " + seriesColors);
+        //     console.log("labelTextColor: " + labelTextColor);
+        //     console.log("labelBackgroundColor: " + labelBackgroundColor);
+        //     console.log("borderColors: " + borderColors);
+        // }
+    }
+
+    GraphsTheme {
+        id: userTheme
+
+        theme: GraphsTheme.Theme.UserDefined
+        backgroundColor: DbGraph.backgroundColor
+        plotAreaBackgroundColor: DbGraph.plotAreaBackgroundColor
+        seriesColors: [DbGraph.seriesColors]
+        labelTextColor: DbGraph.labelTextColor
+        labelBackgroundColor: DbGraph.labelBackgroundColor
+        borderColors: [DbGraph.borderColors]
+
+        Connections {
+            /*
+             * For some strange reason qt graphs properties are not updated when the corresponding database property
+             * changes. Probably a qt graph bug where the binding is broken internally.
+             */
+
+            target: DbGraph
+
+            onBackgroundColorChanged: {
+                userTheme.backgroundColor = DbGraph.backgroundColor;
+
+                axisRectangle.color = DbGraph.backgroundColor;
+            }
+
+            onPlotAreaBackgroundColorChanged: {
+                userTheme.plotAreaBackgroundColor = DbGraph.plotAreaBackgroundColor;
+            }
+
+            onSeriesColorsChanged: {
+                userTheme.seriesColors = [DbGraph.seriesColors];
+            }
+
+            onLabelTextColorChanged: {
+                userTheme.labelTextColor = DbGraph.labelTextColor;
+            }
+
+            onLabelBackgroundColorChanged: {
+                userTheme.labelBackgroundColor = DbGraph.labelBackgroundColor;
+            }
+
+            onBorderColorsChanged: {
+                userTheme.borderColors = [DbGraph.borderColors];
+            }
+        }
+    }
+
     ColumnLayout {
         id: columnLayout
 
@@ -187,6 +256,8 @@ Item {
             SplineSeries {
                 id: splineSeries
                 visible: widgetRoot.seriesType === 1
+
+                width: DbGraph.lineWidth
             }
             ScatterSeries {
                 id: scatterSeries
@@ -198,6 +269,8 @@ Item {
                 visible: widgetRoot.seriesType === 3
                 upperSeries: LineSeries {
                     id: areaLineSeries
+
+                    width: DbGraph.lineWidth
                 }
             }
 
@@ -206,8 +279,8 @@ Item {
                 labelFormat: "%.1f"
                 min: widgetRoot.logarithimicHorizontalAxis !== true ? widgetRoot.xMin : widgetRoot.xMinLog
                 max: widgetRoot.logarithimicHorizontalAxis !== true ? widgetRoot.xMax : widgetRoot.xMaxLog
-                gridVisible: false
-                subGridVisible: false
+                gridVisible: DbGraph.gridVisible
+                subGridVisible: DbGraph.gridVisible
                 lineVisible: false
                 visible: false
                 labelDecimals: 0
@@ -216,8 +289,8 @@ Item {
             BarCategoryAxis {
                 id: barAxis
                 categories: [2024, 2025, 2026]
-                gridVisible: false
-                subGridVisible: false
+                gridVisible: DbGraph.gridVisible
+                subGridVisible: DbGraph.gridVisible
                 visible: false
                 lineVisible: false
             }
@@ -225,8 +298,8 @@ Item {
             axisY: ValueAxis {
                 id: verticalAxis
                 labelFormat: "%.1e"
-                gridVisible: false
-                subGridVisible: false
+                gridVisible: DbGraph.gridVisible
+                subGridVisible: DbGraph.gridVisible
                 lineVisible: false
                 visible: false
                 labelsVisible: false
@@ -235,26 +308,14 @@ Item {
                 max: widgetRoot.logarithimicVerticalAxis !== true ? widgetRoot.yMax : widgetRoot.yMaxLog
             }
 
-            theme: GraphsTheme {
-                colorScheme: widgetRoot.colorScheme
-                theme: widgetRoot.colorTheme
-                plotAreaBackgroundColor: "transparent"
-                onColorSchemeChanged: {
-                    plotAreaBackgroundColor = "transparent";
-                    axisRectangle.color = chart.theme.backgroundColor;
-                }
-                onThemeChanged: {
-                    plotAreaBackgroundColor = "transparent";
-                    axisRectangle.color = chart.theme.backgroundColor;
-                }
-            }
+            theme: widgetRoot.colorTheme !== GraphsTheme.Theme.UserDefined ? qtTheme : userTheme
         }
 
         Rectangle {
             id: axisRectangle
             Layout.fillWidth: true
             Layout.fillHeight: false
-            color: chart.theme.backgroundColor
+            color: chart.theme.labelBackgroundColor
             implicitHeight: axisRow.implicitHeight
 
             Row {

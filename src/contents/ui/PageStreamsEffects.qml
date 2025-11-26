@@ -446,8 +446,8 @@ Kirigami.Page {
             Layout.fillWidth: true
             implicitHeight: DbSpectrum.height
             seriesType: DbSpectrum.spectrumShape
-            colorScheme: DbSpectrum.spectrumColorScheme
-            colorTheme: DbSpectrum.spectrumColorTheme
+            colorScheme: DbGraph.colorScheme
+            colorTheme: DbGraph.colorTheme
             xMin: DbSpectrum.minimumFrequency
             xMax: DbSpectrum.maximumFrequency
             yMin: -100
