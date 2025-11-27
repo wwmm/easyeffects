@@ -31,7 +31,6 @@ Control {
     readonly property real normalizedDisplayValueDB: (Common.dbToLinear(control.displayValue) - control.dbFrom) / (control.dbTo - control.dbFrom)
 
     Kirigami.Theme.colorSet: Kirigami.Theme.Button
-    Kirigami.Theme.inherit: false
 
     implicitWidth: contentItem.implicitWidth + leftPadding + rightPadding
     implicitHeight: contentItem.implicitHeight + topPadding + bottomPadding
@@ -48,8 +47,8 @@ Control {
     contentItem: Rectangle {
         id: item
 
-        color: Kirigami.Theme.neutralBackgroundColor
-        radius: 1
+        color: Kirigami.Theme.negativeBackgroundColor
+        radius: cornerRadius
 
         implicitHeight: Kirigami.Units.largeSpacing * 3
 
@@ -58,7 +57,7 @@ Control {
 
             width: parent.width
             height: parent.height
-            color: Kirigami.Theme.alternateBackgroundColor
+            color: Kirigami.Theme.positiveBackgroundColor
 
             transform: Scale {
                 id: levelScale
@@ -84,8 +83,8 @@ Control {
 
             width: Kirigami.Units.smallSpacing
             height: parent.height
-            radius: Kirigami.Units.smallSpacing
-            color: levelScale.xScale < 0.85 ? Kirigami.Theme.positiveTextColor : Kirigami.Theme.negativeTextColor
+            radius: Kirigami.Units.cornerRadius
+            color: levelScale.xScale < 0.85 ? Kirigami.Theme.neutralTextColor : Kirigami.Theme.negativeTextColor
 
             transform: Translate {
                 x: if (control.convertDecibelToLinear) {

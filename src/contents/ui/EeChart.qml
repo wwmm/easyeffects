@@ -31,7 +31,6 @@ Item {
 
     implicitHeight: columnLayout.implicitHeight
     implicitWidth: columnLayout.implicitWidth
-    Kirigami.Theme.inherit: false
     Kirigami.Theme.colorSet: Kirigami.Theme.View
 
     readonly property var linearTicks: {

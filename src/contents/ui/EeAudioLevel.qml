@@ -16,14 +16,13 @@ Rectangle {
     readonly property real clampedValue: Common.clamp(value, from, to)
     readonly property real displayValue: root.topToBottom === false ? (root.clampedValue > sampleTimer.value ? root.clampedValue : sampleTimer.value) : (root.clampedValue < sampleTimer.value ? root.clampedValue : sampleTimer.value)
 
+    Kirigami.Theme.colorSet: Kirigami.Theme.Button
     implicitWidth: valueLabel.implicitWidth + Kirigami.Units.largeSpacing
     implicitHeight: valueLabel.implicitWidth + Kirigami.Units.largeSpacing
-    radius: Kirigami.Units.smallSpacing
-    color: Kirigami.Theme.neutralBackgroundColor
+    radius: Kirigami.Units.cornerRadius
+    color: Kirigami.Theme.negativeBackgroundColor
     border.color: Kirigami.Theme.activeBackgroundColor
     border.width: 2
-    Kirigami.Theme.colorSet: Kirigami.Theme.Button
-    Kirigami.Theme.inherit: false
     clip: true
 
     Rectangle {
@@ -31,8 +30,8 @@ Rectangle {
 
         width: parent.width
         height: parent.height
-        radius: Kirigami.Units.smallSpacing
-        color: Kirigami.Theme.alternateBackgroundColor
+        radius: Kirigami.Units.cornerRadius
+        color: Kirigami.Theme.positiveBackgroundColor
         border.width: 0
 
         transform: Scale {
@@ -60,8 +59,8 @@ Rectangle {
 
         height: Kirigami.Units.smallSpacing * 0.5
         width: parent.height
-        radius: Kirigami.Units.smallSpacing
-        color: levelScale.yScale < 0.85 ? Kirigami.Theme.positiveTextColor : Kirigami.Theme.negativeTextColor
+        radius: Kirigami.Units.cornerRadius
+        color: levelScale.yScale < 0.85 ? Kirigami.Theme.neutralTextColor : Kirigami.Theme.negativeTextColor
 
         transform: Translate {
             readonly property real dbFrac: (Common.dbToLinear(root.displayValue) - root.dbFrom) / (root.dbTo - root.dbFrom)
