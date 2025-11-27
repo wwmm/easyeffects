@@ -19,7 +19,7 @@ set(QT_QML_GENERATE_QMLLS_INI ON)
 option(ENABLE_DEVEL "Whether to use development build mode, with .Devel appended to the application ID. For Flatpak builds, user data for development builds is stored separately from stable builds." OFF)
 option(ENABLE_RNNOISE "Whether to use RRNNoise for noise cancellation" ON)
 option(ENABLE_LIBCPP_WORKAROUNDS "Enabled Workarounds for systems that use libc++ instead of stdc++" OFF)
-option(ENABLE_SANATIZER "Enable the compiler's sanatizer" OFF)
+option(ENABLE_SANITIZER "Enable the compiler's sanitizer" OFF)
 
 if(ENABLE_DEVEL)
     message(STATUS "Using development build mode with .Devel appended to the application ID.")

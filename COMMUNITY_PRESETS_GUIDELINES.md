@@ -78,7 +78,7 @@ it is not Flatpak-specific).
 particular "theme". The name must be consistent across the files used for
 Flatpak otherwise the package will not build/work properly.
 
-> [!NOTE]  
+> [!NOTE]
 > Flatpak uses `io.github.wwmm.easyeffects.Presets` as the extension point name
 (which preset packages must use), while `com.github.wwmm.easyeffects` is the
 name of the Easy Effects package itself. This is necessary since `com.github.*`
@@ -168,7 +168,7 @@ each type of preset, with the options of `input`, `output`, `irs`, and
 ```
 
 5. It is also necessary to add the following file called `flathub.json` in the
-Flathub repo. The skip icons check is stricly necessary, since unlike a normal
+Flathub repo. The skip icons check is strictly necessary, since unlike a normal
 app we are not providing icons.
 We also recommend enabling a Flathub bot to automatically merge PRs with updates
 from the upstream repo. Given these are only preset files, this should not be a
@@ -205,7 +205,7 @@ In example:
 
 ### How Easy Effects looks for Community Presets
 Basically Easy Effects scans every directory with the package name looking for:
-- Files with the `.json` extention.
+- Files with the `.json` extension.
 - - The packager should take care of the integrity of those `.json` files being
 text files that can be correctly parsed by the application in order to be loaded
 without errors.
@@ -221,7 +221,7 @@ In example, the following presets are correctly loaded and listed:
 - `XDG_DATA_DIR/easyeffects/output/wwmm-presets/device-2/pop.json`
 - `XDG_DATA_DIR/easyeffects/output/wwmm-presets/device-1/rock.json`
 
-Files with the wrong extention or presets placed more in depth are not shown.
+Files with the wrong extension or presets placed more in depth are not shown.
 In example, the followings are ignored:
 - `XDG_DATA_DIR/easyeffects/output/wwmm-presets/rock.txt`
 - `XDG_DATA_DIR/easyeffects/output/wwmm-presets/device-3/alternative/rock.json`

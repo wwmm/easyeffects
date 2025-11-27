@@ -327,7 +327,7 @@ auto get_lock_file() -> std::unique_ptr<QLockFile> {
         break;
       }
       case QLockFile::PermissionError: {
-        util::debug("No permission to reate the lock file");
+        util::debug("No permission to create the lock file");
         break;
       }
       case QLockFile::UnknownError: {

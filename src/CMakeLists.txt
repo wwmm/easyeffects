@@ -267,11 +267,11 @@ target_link_libraries(easyeffects PRIVATE
 target_compile_definitions(easyeffects PRIVATE QT_NO_KEYWORDS=1)
 # target_compile_definitions(easyeffects PRIVATE QT_NO_KEYWORDS=1 QT_QML_DEBUG=1)
 
-if(ENABLE_SANATIZER)
-    MESSAGE(STATUS "Enabling the compiler's sanatizer")
+if(ENABLE_SANITIZER)
+    MESSAGE(STATUS "Enabling the compiler's sanitizer")
     target_compile_options(easyeffects PRIVATE "-fsanitize=address")
     target_link_options(easyeffects PRIVATE "-fsanitize=address")
-endif(ENABLE_SANATIZER)
+endif(ENABLE_SANITIZER)
 
 if(ENABLE_RNNOISE)
     MESSAGE(STATUS "Enabling rnnoise")

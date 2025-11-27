@@ -2,21 +2,21 @@
 Version: UNRELEASED_VERSION
 Date: UNRELEASED_DATE
 
-Description: 
+Description:
 - Features∶
-- 
+-
 
 - Bug fixes∶
-- 
+-
 
 - Other notes∶
-- 
+-
 
 ---
 Version: 8.0.5
 Date: 2025-11-25
 
-Description: 
+Description:
 - Features∶
 - The labels of an Equalizer band in the main view are greyed out when the type of the filter is set to "Off", so the user can quickly know which band is enabled or not.
 - Added the ability to enable a global excluded apps list. In this mode the blocklist set by the user is always valid and do not depend on the blocklist value set in the loaded preset.
@@ -36,7 +36,7 @@ Description:
 Version: 8.0.4
 Date: 2025-11-20
 
-Description: 
+Description:
 - Features∶
 
 - Bug fixes∶
@@ -51,7 +51,7 @@ Description:
 Version: 8.0.3
 Date: 2025-11-15
 
-Description: 
+Description:
 - Features∶
 - Updated translations
 
@@ -64,7 +64,7 @@ Description:
 Version: 8.0.2
 Date: 2025-11-15
 
-Description: 
+Description:
 - Features∶
 - Improved preset migration function.
 
@@ -227,10 +227,10 @@ Description:
 - Features∶
 - The loudness plugin exposes the ISO 226:2023 standard that is now available in the LSP plugin.
 - Updated translations
-- Performance optmizations to the spectrum plugin and the LADSPA wrapper
+- Performance optimizations to the spectrum plugin and the LADSPA wrapper
 
 - Bug fixes∶
-- We were not locking PipeWire's thread main loop before setting a  stream volume and mute controls. THis could cause these operations to fail in some situations
+- We were not locking PipeWire's thread main loop before setting a stream volume and mute controls. This could cause these operations to fail in some situations
 
 - Other notes∶
 
@@ -286,14 +286,14 @@ Date: 2024-02-01
 
 Description:
 - Features∶
-- EasyEffects will try to avoid moving to its virtual sources streams for which the user has set a custom `target.object` that is different from the mic EE is recording from. THe stream has to be started when EE is already running for this logic to take effect.
+- EasyEffects will try to avoid moving to its virtual sources streams for which the user has set a custom `target.object` that is different from the mic EE is recording from. The stream has to be started when EE is already running for this logic to take effect.
 - Updated translations
 - The equalizer can export basic APO preset files
 - Our players/recorders tab will show the audio client binary name in the cases were no app name is defined.
 - EasyEffects version can be shown in the command line through the option `--version`
 
 - Bug fixes∶
-- A workaround for a bug in gtk4 GtkLevelBar was implemented and will be kept in place until gtk developers fiz things on their side
+- A workaround for a bug in gtk4 GtkLevelBar was implemented and will be kept in place until GTK developers fix things on their side
 
 - Other notes∶
 
@@ -415,14 +415,14 @@ Date: 2023-06-11
 Description:
 - Features∶
 - A new `Level Meter` plugin based on `libebur128` has been added.
-- The Pitch plugin now uses the library SoundTouch instead of Rubberband. Hopefully some of the mysterious crashes that were happening with Rubbernand are not going to happen anymore.
+- The Pitch plugin now uses the library SoundTouch instead of Rubberband. Hopefully some of the mysterious crashes that were happening with Rubberband are not going to happen anymore.
 - Improved compatibility with recent PipeWire versions. More information at https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/3196
 
 - Bug fixes∶
 - Active Equalizer filters are not set to `Bell` type anymore when the number of bands changes.
 
 - Other notes∶
-- Rabberband is not a dependency anymore since it has been replaced by SoundTouch.
+- Rubberband is not a dependency anymore since it has been replaced by SoundTouch.
 
 ---
 Version: 7.0.4
@@ -478,7 +478,7 @@ Description:
 - Small improvements to the echo canceller.
 
 - Bug fixes∶
-- The echo canceller probes were not being linked to the soundcard after the move to multiple filters intances. This should be fixed now.
+- The echo canceller probes were not being linked to the soundcard after the move to multiple filters instances. This should be fixed now.
 
 
 ---

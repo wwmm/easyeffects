@@ -264,10 +264,10 @@ Kirigami.ApplicationWindow {
                 instantiatorOutputPresets.model = DbStreamOutputs.mostUsedPresets;
 
                 /**
-                 * Although it is possible to make a binding to the text property so it is automatically updated
-                 * it is possible that the menu is contructed before description is available for the node name. In
-                 * this situation we can have an empty string coming from getNodeDescription. And it will stay empty
-                 * until something forces the database device name property to be changed. it is more reliable
+                 * Although it is possible to make a binding to the text property so it is automatically updated,
+                 * it is possible that the menu is constructed before the description is available for the node name. In
+                 * this situation we can have an empty string coming from getNodeDescription, and it will stay empty
+                 * until something forces the database device name property to be changed. It is more reliable
                  * to read the description when the user opens the tray icon menu.
                  */
 
