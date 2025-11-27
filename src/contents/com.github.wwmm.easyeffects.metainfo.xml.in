@@ -68,7 +68,7 @@
           <li>Bug fixes:</li>
           <li>Fixed a bug that occurred in the import of APO/GraphicEq presets. In certain conditions, when Equalizer Split Channels mode was enabled, the preset imported to a single channel was altering the configuration in the other channel.</li>
           <li>Fixed a bug that caused Easy Effects to sometimes get the wrong default output device.</li>
-          <li>Fixed a bug tha caused the autoloading window to get the wrong device route when creating a profile.</li>
+          <li>Fixed a bug that caused the autoloading window to get the wrong device route when creating a profile.</li>
           <li>Other notes:</li>
           <li>Some of the UI elements that were built with the Overlay Sheets have been ported to use the Kirigami Dialogs. This should help us to better follow KDE HIG. But more work is still needed.</li>
         </ul>
@@ -229,7 +229,7 @@
       <description>
         <ul>
           <li>Features:</li>
-          <li>Latency compensation can be applied to the spectrum plugin.It will delay its drawing so it matches the latency offset applied by the user on programs like Pavucontrol.</li>
+          <li>Latency compensation can be applied to the spectrum plugin. It will delay its drawing so it matches the latency offset applied by the user on programs like Pavucontrol.</li>
           <li>Bug fixes:</li>
           <li>The command line option that shows EasyEffects version should work properly now.</li>
           <li>Fixed a regression in the autoload preset code.</li>
@@ -243,9 +243,9 @@
           <li>Features:</li>
           <li>The loudness plugin exposes the ISO 226:2023 standard that is now available in the LSP plugin.</li>
           <li>Updated translations</li>
-          <li>Performance optmizations to the spectrum plugin and the LADSPA wrapper</li>
+          <li>Performance optimizations to the spectrum plugin and the LADSPA wrapper</li>
           <li>Bug fixes:</li>
-          <li>We were not locking PipeWire's thread main loop before setting a  stream volume and mute controls. THis could cause these operations to fail in some situations</li>
+          <li>We were not locking PipeWire's thread main loop before setting a stream volume and mute controls. This could cause these operations to fail in some situations</li>
           <li>Other notes:</li>
         </ul>
       </description>
@@ -294,13 +294,13 @@
       <description>
         <ul>
           <li>Features:</li>
-          <li>EasyEffects will try to avoid moving to its virtual sources streams for which the user has set a custom target.object that is different from the mic EE is recording from. THe stream has to be started when EE is already running for this logic to take effect.</li>
+          <li>EasyEffects will try to avoid moving to its virtual sources streams for which the user has set a custom target.object that is different from the mic EE is recording from. The stream has to be started when EE is already running for this logic to take effect.</li>
           <li>Updated translations</li>
           <li>The equalizer can export basic APO preset files</li>
           <li>Our players/recorders tab will show the audio client binary name in the cases were no app name is defined.</li>
           <li>EasyEffects version can be shown in the command line through the option --version</li>
           <li>Bug fixes:</li>
-          <li>A workaround for a bug in gtk4 GtkLevelBar was implemented and will be kept in place until gtk developers fiz things on their side</li>
+          <li>A workaround for a bug in gtk4 GtkLevelBar was implemented and will be kept in place until GTK developers fix things on their side</li>
           <li>Other notes:</li>
         </ul>
       </description>
@@ -405,12 +405,12 @@
         <ul>
           <li>Features:</li>
           <li>A new Level Meter plugin based on libebur128 has been added.</li>
-          <li>The Pitch plugin now uses the library SoundTouch instead of Rubberband. Hopefully some of the mysterious crashes that were happening with Rubbernand are not going to happen anymore.</li>
+          <li>The Pitch plugin now uses the library SoundTouch instead of Rubberband. Hopefully some of the mysterious crashes that were happening with Rubberband are not going to happen anymore.</li>
           <li>Improved compatibility with recent PipeWire versions. More information at</li>
           <li>Bug fixes:</li>
           <li>Active Equalizer filters are not set to Bell type anymore when the number of bands changes.</li>
           <li>Other notes:</li>
-          <li>Rabberband is not a dependency anymore since it has been replaced by SoundTouch.</li>
+          <li>Rubberband is not a dependency anymore since it has been replaced by SoundTouch.</li>
         </ul>
       </description>
     </release>
@@ -420,7 +420,7 @@
           <li>Features:</li>
           <li>The presets menu now asks for confirmation before saving/deleting a preset file.</li>
           <li>Bug fixes:</li>
-          <li>The plugin reset should not make its controls innefective anymore.</li>
+          <li>The plugin reset should not make its controls ineffective anymore.</li>
           <li>Other notes:</li>
           <li>Speex is no longer incorrectly listed as a build dependency (speexdsp is still a build dependency)</li>
           <li>RNNoise is no longer an autodependency. It is now required by default, if not available it must be explicitly disabled with -Denable-rnnoise=false</li>
@@ -460,7 +460,7 @@
           <li>The equalizer band gain slider value can be updated in larger steps. Fine grain control is still possible through the keyboard up/down keys.</li>
           <li>Small improvements to the echo canceller.</li>
           <li>Bug fixes:</li>
-          <li>The echo canceller probes were not being linked to the soundcard after the move to multiple filters intances. This should be fixed now.</li>
+          <li>The echo canceller probes were not being linked to the soundcard after the move to multiple filters instances. This should be fixed now.</li>
         </ul>
       </description>
     </release>
@@ -469,7 +469,7 @@
         <ul>
           <li>Features:</li>
           <li>It is now possible to add more than one filter instance to the effects pipeline.</li>
-          <li>A new Speech Processor plugin based on the Speex library was added. Besides providing noise suppression it also can detect voice activity. It is a decent alternative to the cases whre the rnnoise library does not work well.</li>
+          <li>A new Speech Processor plugin based on the Speex library was added. Besides providing noise suppression it also can detect voice activity. It is a decent alternative to the cases where the rnnoise library does not work well.</li>
           <li>Improved compatibility with Linux Studio Plugins 1.2.3.</li>
           <li>GraphicEQ presets can be imported into the Equalizer effect.</li>
           <li>The application name has been changed to Easy Effects to adhere to the naming conventions of GNOME Human Interface Guidelines.</li>

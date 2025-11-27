@@ -65,7 +65,7 @@ auto IrsManager::import_irs_file(const std::string& file_path) -> ImportState {
   }
 
   if (file.channels() != 1 && file.channels() != 2 && file.channels() != 4) {
-    util::warning("Only mono, stereo and true stereo impulse fiels are supported!");
+    util::warning("Only mono, stereo and true stereo impulse files are supported!");
     util::warning(std::format("{} loading failed", file_path));
 
     return ImportState::unsupported;

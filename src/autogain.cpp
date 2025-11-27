@@ -208,7 +208,7 @@ void Autogain::process(std::span<float>& left_in,
      * Sometimes when a stream is started right after Easy Effects has been
      * initialized a very large shorterm value is calculated.
      * Probably because of some weird high intensity transient. So it is better
-     * to ignore unresonable large values. When they happen we just set the
+     * to ignore unreasonable large values. When they happen we just set the
      * shorterm value to the momentary loudness.
      */
 
@@ -220,7 +220,7 @@ void Autogain::process(std::span<float>& left_in,
      * Sometimes when a stream is started right after Easy Effects has been
      * initialized a very large integrated value is calculated.
      * Probably because of some weird high intensity transient. So it is better
-     * to ignore unresonable large values. When they happen we just set the
+     * to ignore unreasonable large values. When they happen we just set the
      * global value to the momentary loudness.
      */
 

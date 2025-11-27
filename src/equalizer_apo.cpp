@@ -281,7 +281,7 @@ auto import_apo_preset(db::Equalizer* settings,
    * - Select only the band settings of the visible channel, because the user
    *   may want to import different APO presets for each channel.
    * - Avoid to reduce the current band number because we only import to a
-   *   single channel, so we do NOT want to change the curreny band parameters
+   *   single channel, so we do NOT want to change the current band parameters
    *   of the other channel.
    */
   if (!settings->splitChannels()) {

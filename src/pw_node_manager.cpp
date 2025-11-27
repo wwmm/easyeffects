@@ -159,7 +159,7 @@ auto NodeManager::registerNode(pw_registry* registry, uint32_t id, const char* t
   util::spa_dict_get_string(props, PW_KEY_NODE_NAME, node_name);
 
   // At least for now I do not think there is a point in showing
-  // the spectrum adn the output level filters in menus
+  // the spectrum and the output level filters in menus
 
   if (node_name.contains("output_level") || node_name.contains("spectrum")) {
     return false;
@@ -339,7 +339,7 @@ void NodeManager::onNodeInfo(void* object, const pw_node_info* info) {
     return;
   }
 
-  // Chech for node info updates
+  // Check for node info updates
 
   nd->nd_info->state = info->state;
   nd->nd_info->n_input_ports = static_cast<int>(info->n_input_ports);

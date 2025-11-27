@@ -339,7 +339,7 @@ auto ConvolverKernelManager::readKernelFile(const std::string& file_path) -> Ker
     }
 
     if (sndfile.channels() != 1 && sndfile.channels() != 2 && sndfile.channels() != 4 && sndfile.frames() == 0) {
-      util::warning(std::format("Only mono, stereo and true stereo impulse fiels are supported: {}", file_path));
+      util::warning(std::format("Only mono, stereo and true stereo impulse files are supported: {}", file_path));
       return kernel_data;
     }
 

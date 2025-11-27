@@ -1,9 +1,9 @@
 # Changelog
- 
+
 ## 8.0.5
 ### 2025-11-25
 
- 
+
 ### Features:
 - The labels of an Equalizer band in the main view are greyed out when the type of the filter is set to "Off", so the user can quickly know which band is enabled or not.
 - Added the ability to enable a global excluded apps list. In this mode the blocklist set by the user is always valid and do not depend on the blocklist value set in the loaded preset.
@@ -14,16 +14,16 @@
 ### Bug fixes:
 - Fixed a bug that occurred in the import of APO/GraphicEq presets. In certain conditions, when Equalizer Split Channels mode was enabled, the preset imported to a single channel was altering the configuration in the other channel.
 - Fixed a bug that caused Easy Effects to sometimes get the wrong default output device.
-- Fixed a bug tha caused the autoloading window to get the wrong device route when creating a profile.
+- Fixed a bug that caused the autoloading window to get the wrong device route when creating a profile.
 
 ### Other notes:
 - Some of the UI elements that were built with the Overlay Sheets have been ported to use the Kirigami Dialogs. This should help us to better follow KDE HIG. But more work is still needed.
 
- 
+
 ## 8.0.4
 ### 2025-11-20
 
- 
+
 ### Features:
 
 ### Bug fixes:
@@ -34,11 +34,11 @@
 ### Other notes:
 - KDE Breeze theme is a required dependency in Flatpak version. For distribution packages instead we recommend to install the Breeze theme even if it's not strictly required.
 
- 
+
 ## 8.0.3
 ### 2025-11-15
 
- 
+
 ### Features:
 - Updated translations
 
@@ -47,11 +47,11 @@
 
 ### Other notes:
 
- 
+
 ## 8.0.2
 ### 2025-11-15
 
- 
+
 ### Features:
 - Improved preset migration function.
 
@@ -59,7 +59,7 @@
 
 ### Other notes:
 
- 
+
 ## 8.0.1
 ### 2025-11-14
 
@@ -77,7 +77,7 @@
 ### Other notes:
 - Since the preset autoloading system has been changed, we recommend the users to reassociate their presets to the preferred input/output audio devices.
 
- 
+
 ## 8.0.0
 ### 2025-11-09
 
@@ -115,7 +115,7 @@
 - For a long time we have been saving presets, impulse responses, rnnoise and autoload profile files in our configuration folder. What is not what XDG standard suggests to be done. Now it's the time to change that. Our master branch now saves these files inside `~/.local/share/easyeffects` and keeps only our database files inside `~/.config/easyeffects`. Easy Effects will copy the current files to the new location and move the old directories to the users trash. This way if something horrible happens the user will be able to get the files back.
 - At this moment XDG global shortcuts are working well on KDE. Not so much on GNOME and maybe other desktops too. On Gnome in particular, the shortcut itself does work, but key binding customization seems to be properly implemented only by KDE. Other Wayland implementations should be tested and we invite users to let us know how it works.
 
- 
+
 ## 7.2.5
 ### 2025-07-18
 
@@ -127,7 +127,7 @@
 
 ### Other notes:
 
- 
+
 ## 7.2.4
 ### 2025-07-07
 
@@ -142,7 +142,7 @@
 
 ### Other notes:
 
- 
+
 ## 7.2.3
 ### 2025-01-06
 
@@ -154,7 +154,7 @@
 
 ### Other notes:
 
- 
+
 ## 7.2.2
 ### 2025-01-05
 
@@ -167,7 +167,7 @@
 
 ### Other notes:
 
- 
+
 ## 7.2.1
 ### 2024-11-22
 
@@ -179,7 +179,7 @@
 
 ### Other notes:
 
- 
+
 ## 7.2.0
 ### 2024-11-20
 
@@ -192,7 +192,7 @@
 
 ### Other notes:
 
- 
+
 ## 7.1.9
 ### 2024-09-12
 
@@ -206,7 +206,7 @@
 
 ### Other notes:
 
- 
+
 ## 7.1.8
 ### 2024-08-17
 
@@ -221,7 +221,7 @@
 
 ### Other notes:
 
- 
+
 ## 7.1.7
 ### 2024-06-21
 
@@ -241,7 +241,7 @@
 - In order for Community Presets to be correctly shipped, packagers are invited to read and follow the guidelines linked inside the README of EasyEffects master branch.
 - Presets with Convolver and/or Noise Reduction (RNNoise) effects created before `7.2.0` version are deprecated. Please reload the irs/model file inside the Convolver/RNNoise UI and resave the preset.
 
- 
+
 ## 7.1.6
 ### 2024-03-29
 
@@ -254,7 +254,7 @@
 
 ### Other notes:
 
- 
+
 ## 7.1.5
 ### 2024-03-22
 
@@ -267,7 +267,7 @@
 
 ### Other notes:
 
- 
+
 ## 7.1.4
 ### 2024-02-01
 
@@ -284,7 +284,7 @@
 
 ### Other notes:
 
- 
+
 ## 7.1.3
 ### 2023-11-08
 
@@ -297,7 +297,7 @@
 
 ### Other notes:
 
- 
+
 ## 7.1.2
 ### 2023-11-08
 
@@ -310,7 +310,7 @@
 
 ### Other notes:
 
- 
+
 ## 7.1.1
 ### 2023-10-27
 
@@ -324,7 +324,7 @@
 
 ### Other notes:
 
- 
+
 ## 7.1.0
 ### 2023-09-07
 
@@ -336,7 +336,7 @@
 
 ### Other notes:
 
- 
+
 ## 7.0.9
 ### 2023-09-07
 
@@ -348,7 +348,7 @@
 
 ### Other notes:
 
- 
+
 ## 7.0.8
 ### 2023-08-29
 
@@ -364,7 +364,7 @@
 - This release is intended to work with versions of Linux Studio Plugins equal or greater than "1.2.10".
 - EasyEffects is now buildable also with libc++.
 
- 
+
 ## 7.0.7
 ### 2023-08-11
 
@@ -380,7 +380,7 @@
 ### Other notes:
 - Easy Effects folders under `/etc` have been deprecated and presets located there won't be loaded anymore. At the moment only local presets under `~/.config/easyeffects` are automatically loaded in the Presets Menu. In the future we will implement a new system to install, manage and import Community Presets.
 
- 
+
 ## 7.0.6
 ### 2023-07-28
 
@@ -395,7 +395,7 @@
 
 ### Other notes:
 
- 
+
 ## 7.0.5
 ### 2023-06-11
 
@@ -411,7 +411,7 @@
 ### Other notes:
 - Rabberband is not a dependency anymore since it has been replaced by SoundTouch.
 
- 
+
 ## 7.0.4
 ### 2023-05-01
 
@@ -426,7 +426,7 @@
 - Speex is no longer incorrectly listed as a build dependency (speexdsp is still a build dependency)
 - RNNoise is no longer an autodependency. It is now required by default, if not available it must be explicitly disabled with -Denable-rnnoise=false
 
- 
+
 ## 7.0.3
 ### 2023-04-06
 
@@ -437,7 +437,7 @@
 ### Bug fixes:
 - A small mistake was done in the last release. Making a new one to make sure people have the right branch in the package
 
- 
+
 ## 7.0.2
 ### 2023-04-06
 
@@ -453,7 +453,7 @@
 ### Other notes:
 - As we are removing code deprecated by `GTK 4.10` the minimum GTK version has been increased.
 
- 
+
 ## 7.0.1
 ### 2023-02-26
 
@@ -468,7 +468,7 @@
 - The echo canceller probes were not being linked to the soundcard after the move to multiple filters intances. This should be fixed now.
 
 
- 
+
 ## 7.0.0
 ### 2022-11-02
 
@@ -491,7 +491,7 @@
 ### Other notes:
 - Because of the new multiple instances feature, the preset format has changed, but the old one is still compatible to be loaded. Anyway take in consideration that saving the current preset will always write it in the new format.
 
- 
+
 ## 6.3.0
 ### 2022-09-02
 
@@ -509,7 +509,7 @@
 
 ### Other notes:
 
- 
+
 ## 6.2.8
 ### 2022-07-25
 
@@ -522,7 +522,7 @@
 
 ### Other notes:
 
- 
+
 ## 6.2.7
 ### 2022-07-18
 
@@ -539,7 +539,7 @@
 
 ### Other notes:
 
- 
+
 ## 6.2.6
 ### 2022-06-22
 
@@ -559,7 +559,7 @@
 - Fixed a crash that could happen when the maximum autogain history was changed.
 - Avoid crashes when pw-mididump is running
 
- 
+
 ## 6.2.5
 ### 2022-04-30
 
@@ -575,7 +575,7 @@
 - Fixed a bug where EasyEffects crashed when the number of points displayed in the spectrum was changed while our pipeline was active and the spectrum widget was visible
 - The pipeline latency value displayed in our window could be wrong in some situations. This was fixed.
 
- 
+
 ## 6.2.4
 ### 2022-03-07
 
@@ -588,7 +588,7 @@
 ### Bug fixes:
 - The command line option that returns the global bypass state is working again.
 
- 
+
 ## 6.2.3
 ### 2022-01-29
 
@@ -600,7 +600,7 @@
 
 - Fixed a bug that prevented mono microphones from properly working with EasyEffects
 
- 
+
 ## 6.2.2
 ### 2022-01-27
 
@@ -616,7 +616,7 @@
 
 - Fixed a bug where trying to create an autoloading profile without having presets caused the application to crash.
 
- 
+
 ## 6.2.1
 ### 2022-01-05
 
@@ -624,7 +624,7 @@
 ### Bug fixes:
 - Fixed a bug where setting a equalizer band `quality` to `zero` would lead to an application crash.
 
- 
+
 ## 6.2.0
 ### 2022-01-04
 
@@ -645,7 +645,7 @@
 - The fmt library is a new dependency https://github.com/fmtlib/fmt. At least while the c++ compilers do not implement its features. This is expected to happen in the next years.
 - GTKMM and GLIBMM are not a dependency anymore. We now use gtk4 directly.
 
- 
+
 ## 6.1.5
 ### 2021-11-17
 
@@ -664,7 +664,7 @@
 
 - The `tbb` library is a new dependency https://www.threadingbuildingblocks.org
 
- 
+
 ## 6.1.4
 ### 2021-10-16
 
@@ -681,7 +681,7 @@
 - Improved support for Assistive Technology.
 - The probes used in some filters like the Compressor and the Limiter were not being relinked after changing the order of the plugins in the pipeline. It should be working now.
 
- 
+
 ## 6.1.3
 ### 2021-10-03
 
@@ -695,7 +695,7 @@
 - Prevented a case in which Spectrum was crashing.
 - Pavucontrol is not added anymore to input applications list on systems with localization different than English.
 
- 
+
 ## 6.1.2
 ### 2021-09-20
 
@@ -703,7 +703,7 @@
 ### Features:
 - Improved compatibility with WirePlumber. This is needed to run on systems that decided to use it instead of the built-in PipeWire session manager. More information at https://github.com/wwmm/easyeffects/issues/1144.
 
- 
+
 ## 6.1.1
 ### 2021-09-17
 
@@ -723,7 +723,7 @@
 - Missing icons on the system should not be shown inside the application info UI (if an application icon could not be shown even if you're sure it's correctly installed, please open an issue).
 - Some icons not showing in Plasma DE with Breeze icon theme should appear now.
 
- 
+
 ## 6.1.0
 ### 2021-08-17
 
@@ -747,7 +747,7 @@
 - Improved linking management between port filter nodes in PipeWire.
 - The crystalizer plugin signal amplification was too high before. It should be within more reasonable levels now.
 
- 
+
 ## 6.0.3
 ### 2021-07-16
 
@@ -766,7 +766,7 @@
 - Fixed the locale in a few widgets
 - Fixed wrong alignment in a few widgets
 
- 
+
 ## 6.0.2
 ### 2021-07-11
 
@@ -778,7 +778,7 @@
 
 - Fixed a segmentation fault that happened when optional dependencies were not installed
 
- 
+
 ## 6.0.1
 ### 2021-07-09
 
@@ -793,7 +793,7 @@
 
 - Fixed some segmentation faults that could happen when creating a preset autoloading profile or removing presets
 
- 
+
 ## 6.0.0
 ### 2021-07-07
 
