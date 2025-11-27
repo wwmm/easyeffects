@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-25 22:32-0300\n"
-"PO-Revision-Date: 2025-11-24 06:51+0000\n"
+"PO-Revision-Date: 2025-11-27 05:01+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hans/>\n"
@@ -2330,7 +2330,7 @@ msgstr "音频延迟补偿"
 
 #: src/contents/ui/PreferencesSheet.qml:295
 msgid "Graph"
-msgstr ""
+msgstr "图像"
 
 #: src/contents/ui/PreferencesSheet.qml:302
 msgid "Shape"
@@ -2394,7 +2394,7 @@ msgstr "最常用的预设"
 
 #: src/contents/ui/PreferencesSheet.qml:447
 msgid "Window"
-msgstr ""
+msgstr "窗口"
 
 #: src/contents/ui/PreferencesSheet.qml:456
 msgid "Force KDE's Breeze theme when Easy Effects starts"
@@ -2418,7 +2418,7 @@ msgstr "将音效列表的操控按钮移入上下文菜单中，以使视图更
 
 #: src/contents/ui/PreferencesSheet.qml:483
 msgid "Graphs"
-msgstr ""
+msgstr "图像"
 
 #: src/contents/ui/PreferencesSheet.qml:494
 msgid "Color scheme"
@@ -2474,49 +2474,45 @@ msgstr "灰色"
 
 #: src/contents/ui/PreferencesSheet.qml:513
 msgid "User"
-msgstr ""
+msgstr "用户"
 
 #: src/contents/ui/PreferencesSheet.qml:521
-#, fuzzy
 msgctxt "@label"
 msgid "Background"
-msgstr "后台运行"
+msgstr "背景"
 
 #: src/contents/ui/PreferencesSheet.qml:530
 msgctxt "@label"
 msgid "Plot area background"
-msgstr ""
+msgstr "图块背景"
 
 #: src/contents/ui/PreferencesSheet.qml:539
 msgctxt "@label"
 msgid "Series colors"
-msgstr ""
+msgstr "色系"
 
 #: src/contents/ui/PreferencesSheet.qml:548
-#, fuzzy
 msgctxt "@label"
 msgid "Axis labels text color"
-msgstr "坐标轴标签"
+msgstr "坐标轴标签文本颜色"
 
 #: src/contents/ui/PreferencesSheet.qml:557
 msgctxt "@label"
 msgid "Axis labels background color"
-msgstr ""
+msgstr "坐标轴标签背景颜色"
 
 #: src/contents/ui/PreferencesSheet.qml:566
-#, fuzzy
 msgctxt "@label"
 msgid "Border color"
-msgstr "显示边界"
+msgstr "边界颜色"
 
 #: src/contents/ui/PreferencesSheet.qml:575
-#, fuzzy
 msgid "Line width"
 msgstr "线宽"
 
 #: src/contents/ui/PreferencesSheet.qml:589
 msgid "Show grid lines"
-msgstr ""
+msgstr "显示网格线"
 
 #: src/contents/ui/PreferencesSheet.qml:607
 msgid "Autoload delay"
