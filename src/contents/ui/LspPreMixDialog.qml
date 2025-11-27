@@ -1,8 +1,6 @@
 import QtQuick
-import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import org.kde.kirigami as Kirigami
-import org.kde.kirigamiaddons.formcard as FormCard
 
 Kirigami.Dialog {
     id: preMixDialog
@@ -15,111 +13,105 @@ Kirigami.Dialog {
 
     implicitWidth: Math.min(gridLayout.implicitWidth, preMixDialog.parent.width * 0.8)// qmllint disable
 
-    ColumnLayout {
+    GridLayout {
+        id: gridLayout
 
-        FormCard.FormCard {
-            GridLayout {
-                id: gridLayout
+        columns: 2
+        uniformCellWidths: true
 
-                columns: 2
-                uniformCellWidths: true
-                Layout.alignment: Qt.AlignTop
+        EeSpinBox {
+            label: i18n("Input to sidechain") // qmllint disable
+            labelAbove: true
+            spinboxLayoutFillWidth: true
+            from: preMixDialog.pluginDB.getMinValue("inputToSidechain")
+            to: preMixDialog.pluginDB.getMaxValue("inputToSidechain")
+            value: preMixDialog.pluginDB.inputToSidechain
+            decimals: 2
+            stepSize: 0.01
+            unit: i18n("dB")
+            minusInfinityMode: true
+            onValueModified: v => {
+                preMixDialog.pluginDB.inputToSidechain = v;
+            }
+        }
 
-                EeSpinBox {
-                    label: i18n("Input to sidechain") // qmllint disable
-                    labelAbove: true
-                    spinboxLayoutFillWidth: true
-                    from: preMixDialog.pluginDB.getMinValue("inputToSidechain")
-                    to: preMixDialog.pluginDB.getMaxValue("inputToSidechain")
-                    value: preMixDialog.pluginDB.inputToSidechain
-                    decimals: 2
-                    stepSize: 0.01
-                    unit: i18n("dB")
-                    minusInfinityMode: true
-                    onValueModified: v => {
-                        preMixDialog.pluginDB.inputToSidechain = v;
-                    }
-                }
+        EeSpinBox {
+            label: i18n("Input to link") // qmllint disable
+            labelAbove: true
+            spinboxLayoutFillWidth: true
+            from: preMixDialog.pluginDB.getMinValue("inputToLink")
+            to: preMixDialog.pluginDB.getMaxValue("inputToLink")
+            value: preMixDialog.pluginDB.inputToLink
+            decimals: 2
+            stepSize: 0.01
+            unit: i18n("dB")
+            minusInfinityMode: true
+            onValueModified: v => {
+                preMixDialog.pluginDB.inputToLink = v;
+            }
+        }
 
-                EeSpinBox {
-                    label: i18n("Input to link") // qmllint disable
-                    labelAbove: true
-                    spinboxLayoutFillWidth: true
-                    from: preMixDialog.pluginDB.getMinValue("inputToLink")
-                    to: preMixDialog.pluginDB.getMaxValue("inputToLink")
-                    value: preMixDialog.pluginDB.inputToLink
-                    decimals: 2
-                    stepSize: 0.01
-                    unit: i18n("dB")
-                    minusInfinityMode: true
-                    onValueModified: v => {
-                        preMixDialog.pluginDB.inputToLink = v;
-                    }
-                }
+        EeSpinBox {
+            label: i18n("Sidechain to input") // qmllint disable
+            labelAbove: true
+            spinboxLayoutFillWidth: true
+            from: preMixDialog.pluginDB.getMinValue("sidechainToInput")
+            to: preMixDialog.pluginDB.getMaxValue("sidechainToInput")
+            value: preMixDialog.pluginDB.sidechainToInput
+            decimals: 2
+            stepSize: 0.01
+            unit: i18n("dB")
+            minusInfinityMode: true
+            onValueModified: v => {
+                preMixDialog.pluginDB.sidechainToInput = v;
+            }
+        }
 
-                EeSpinBox {
-                    label: i18n("Sidechain to input") // qmllint disable
-                    labelAbove: true
-                    spinboxLayoutFillWidth: true
-                    from: preMixDialog.pluginDB.getMinValue("sidechainToInput")
-                    to: preMixDialog.pluginDB.getMaxValue("sidechainToInput")
-                    value: preMixDialog.pluginDB.sidechainToInput
-                    decimals: 2
-                    stepSize: 0.01
-                    unit: i18n("dB")
-                    minusInfinityMode: true
-                    onValueModified: v => {
-                        preMixDialog.pluginDB.sidechainToInput = v;
-                    }
-                }
+        EeSpinBox {
+            label: i18n("Sidechain to link") // qmllint disable
+            labelAbove: true
+            spinboxLayoutFillWidth: true
+            from: preMixDialog.pluginDB.getMinValue("sidechainToLink")
+            to: preMixDialog.pluginDB.getMaxValue("sidechainToLink")
+            value: preMixDialog.pluginDB.sidechainToLink
+            decimals: 2
+            stepSize: 0.01
+            unit: i18n("dB")
+            minusInfinityMode: true
+            onValueModified: v => {
+                preMixDialog.pluginDB.sidechainToLink = v;
+            }
+        }
 
-                EeSpinBox {
-                    label: i18n("Sidechain to link") // qmllint disable
-                    labelAbove: true
-                    spinboxLayoutFillWidth: true
-                    from: preMixDialog.pluginDB.getMinValue("sidechainToLink")
-                    to: preMixDialog.pluginDB.getMaxValue("sidechainToLink")
-                    value: preMixDialog.pluginDB.sidechainToLink
-                    decimals: 2
-                    stepSize: 0.01
-                    unit: i18n("dB")
-                    minusInfinityMode: true
-                    onValueModified: v => {
-                        preMixDialog.pluginDB.sidechainToLink = v;
-                    }
-                }
+        EeSpinBox {
+            label: i18n("Link to sidechain") // qmllint disable
+            labelAbove: true
+            spinboxLayoutFillWidth: true
+            from: preMixDialog.pluginDB.getMinValue("linkToSidechain")
+            to: preMixDialog.pluginDB.getMaxValue("linkToSidechain")
+            value: preMixDialog.pluginDB.linkToSidechain
+            decimals: 2
+            stepSize: 0.01
+            unit: i18n("dB")
+            minusInfinityMode: true
+            onValueModified: v => {
+                preMixDialog.pluginDB.linkToSidechain = v;
+            }
+        }
 
-                EeSpinBox {
-                    label: i18n("Link to sidechain") // qmllint disable
-                    labelAbove: true
-                    spinboxLayoutFillWidth: true
-                    from: preMixDialog.pluginDB.getMinValue("linkToSidechain")
-                    to: preMixDialog.pluginDB.getMaxValue("linkToSidechain")
-                    value: preMixDialog.pluginDB.linkToSidechain
-                    decimals: 2
-                    stepSize: 0.01
-                    unit: i18n("dB")
-                    minusInfinityMode: true
-                    onValueModified: v => {
-                        preMixDialog.pluginDB.linkToSidechain = v;
-                    }
-                }
-
-                EeSpinBox {
-                    label: i18n("Link to input") // qmllint disable
-                    labelAbove: true
-                    spinboxLayoutFillWidth: true
-                    from: preMixDialog.pluginDB.getMinValue("linkToInput")
-                    to: preMixDialog.pluginDB.getMaxValue("linkToInput")
-                    value: preMixDialog.pluginDB.linkToInput
-                    decimals: 2
-                    stepSize: 0.01
-                    unit: i18n("dB")
-                    minusInfinityMode: true
-                    onValueModified: v => {
-                        preMixDialog.pluginDB.linkToInput = v;
-                    }
-                }
+        EeSpinBox {
+            label: i18n("Link to input") // qmllint disable
+            labelAbove: true
+            spinboxLayoutFillWidth: true
+            from: preMixDialog.pluginDB.getMinValue("linkToInput")
+            to: preMixDialog.pluginDB.getMaxValue("linkToInput")
+            value: preMixDialog.pluginDB.linkToInput
+            decimals: 2
+            stepSize: 0.01
+            unit: i18n("dB")
+            minusInfinityMode: true
+            onValueModified: v => {
+                preMixDialog.pluginDB.linkToInput = v;
             }
         }
     }
