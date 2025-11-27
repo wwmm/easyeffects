@@ -8,16 +8,17 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-25 22:32-0300\n"
-"PO-Revision-Date: 2025-11-25 19:51+0000\n"
-"Last-Translator: Володимир <vlzuykov@gmail.com>\n"
+"PO-Revision-Date: 2025-11-27 05:01+0000\n"
+"Last-Translator: Максим Горпиніч <gorpinicmaksim0@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural="
+"(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? "
+"1 : 2);\n"
 "X-Generator: Weblate 5.15-dev\n"
 
 #: src/autostart.cpp:89
@@ -2348,7 +2349,7 @@ msgstr "Компенсація затримки звуку"
 
 #: src/contents/ui/PreferencesSheet.qml:295
 msgid "Graph"
-msgstr ""
+msgstr "Графік"
 
 #: src/contents/ui/PreferencesSheet.qml:302
 msgid "Shape"
@@ -2412,7 +2413,7 @@ msgstr "Найчастіше застосовувані пресети"
 
 #: src/contents/ui/PreferencesSheet.qml:447
 msgid "Window"
-msgstr ""
+msgstr "Вікно"
 
 #: src/contents/ui/PreferencesSheet.qml:456
 msgid "Force KDE's Breeze theme when Easy Effects starts"
@@ -2440,7 +2441,7 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:483
 msgid "Graphs"
-msgstr ""
+msgstr "Графіки"
 
 #: src/contents/ui/PreferencesSheet.qml:494
 msgid "Color scheme"
@@ -2496,47 +2497,45 @@ msgstr "Сіра"
 
 #: src/contents/ui/PreferencesSheet.qml:513
 msgid "User"
-msgstr ""
+msgstr "Користувач"
 
 #: src/contents/ui/PreferencesSheet.qml:521
-#, fuzzy
 msgctxt "@label"
 msgid "Background"
-msgstr "Фоновий сервіс"
+msgstr "Передісторія"
 
 #: src/contents/ui/PreferencesSheet.qml:530
 msgctxt "@label"
 msgid "Plot area background"
-msgstr ""
+msgstr "Фон ділянки"
 
 #: src/contents/ui/PreferencesSheet.qml:539
 msgctxt "@label"
 msgid "Series colors"
-msgstr ""
+msgstr "Кольори серії"
 
 #: src/contents/ui/PreferencesSheet.qml:548
 msgctxt "@label"
 msgid "Axis labels text color"
-msgstr ""
+msgstr "Колір тексту позначок осей"
 
 #: src/contents/ui/PreferencesSheet.qml:557
 msgctxt "@label"
 msgid "Axis labels background color"
-msgstr ""
+msgstr "Колір фону позначок осей"
 
 #: src/contents/ui/PreferencesSheet.qml:566
 msgctxt "@label"
 msgid "Border color"
-msgstr ""
+msgstr "Колір межі"
 
 #: src/contents/ui/PreferencesSheet.qml:575
-#, fuzzy
 msgid "Line width"
-msgstr "Лінійна інтерполяція (широка)"
+msgstr "Ширина лінії"
 
 #: src/contents/ui/PreferencesSheet.qml:589
 msgid "Show grid lines"
-msgstr ""
+msgstr "Показати лінії сітки"
 
 #: src/contents/ui/PreferencesSheet.qml:607
 msgid "Autoload delay"
