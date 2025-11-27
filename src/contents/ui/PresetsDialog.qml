@@ -26,9 +26,6 @@ Kirigami.Dialog {
         return "";
     }
 
-    closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnReleaseOutside
-    focus: true
-    modal: true
     implicitWidth: Math.min(Kirigami.Units.gridUnit * 30, appWindow.width * 0.8)// qmllint disable
     implicitHeight: Math.min(Kirigami.Units.gridUnit * 40, Math.round(Controls.ApplicationWindow.window.height * 0.8))
     bottomPadding: 1

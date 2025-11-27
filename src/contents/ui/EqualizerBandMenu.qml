@@ -11,9 +11,6 @@ Kirigami.Dialog {
     required property var bandDB
 
     title: `${i18n("Band")} ${bandMenu.index + 1}` // qmllint disable
-    closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnReleaseOutside
-    focus: true
-    modal: true
     implicitWidth: Math.min(Kirigami.Units.gridUnit * 30, appWindow.width * 0.8)// qmllint disable
     bottomPadding: 1
     anchors.centerIn: parent
