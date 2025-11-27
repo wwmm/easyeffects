@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-25 22:32-0300\n"
-"PO-Revision-Date: 2025-11-24 06:51+0000\n"
+"PO-Revision-Date: 2025-11-27 22:57+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -2360,7 +2360,7 @@ msgstr "Compensation du retard audio"
 
 #: src/contents/ui/PreferencesSheet.qml:295
 msgid "Graph"
-msgstr ""
+msgstr "Graphique"
 
 #: src/contents/ui/PreferencesSheet.qml:302
 msgid "Shape"
@@ -2424,7 +2424,7 @@ msgstr "Préréglages les plus utilisés"
 
 #: src/contents/ui/PreferencesSheet.qml:447
 msgid "Window"
-msgstr ""
+msgstr "Fenêtre"
 
 #: src/contents/ui/PreferencesSheet.qml:456
 msgid "Force KDE's Breeze theme when Easy Effects starts"
@@ -2452,7 +2452,7 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:483
 msgid "Graphs"
-msgstr ""
+msgstr "Graphiques"
 
 #: src/contents/ui/PreferencesSheet.qml:494
 msgid "Color scheme"
@@ -2508,7 +2508,7 @@ msgstr "Gris"
 
 #: src/contents/ui/PreferencesSheet.qml:513
 msgid "User"
-msgstr ""
+msgstr "Utilisateur"
 
 #: src/contents/ui/PreferencesSheet.qml:521
 #, fuzzy
