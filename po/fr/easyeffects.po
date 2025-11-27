@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-25 22:32-0300\n"
-"PO-Revision-Date: 2025-11-27 22:57+0000\n"
+"PO-Revision-Date: 2025-11-28 00:50+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -2576,45 +2576,42 @@ msgid "User"
 msgstr "Utilisateur"
 
 #: src/contents/ui/PreferencesSheet.qml:521
-#, fuzzy
 msgctxt "@label"
 msgid "Background"
-msgstr "Service en Arrière-plan"
+msgstr "Arrière-plan"
 
 #: src/contents/ui/PreferencesSheet.qml:530
 msgctxt "@label"
 msgid "Plot area background"
-msgstr ""
+msgstr "Arrière-plan de la zone de traçage"
 
 #: src/contents/ui/PreferencesSheet.qml:539
 msgctxt "@label"
 msgid "Series colors"
-msgstr ""
+msgstr "Couleurs des séries"
 
 #: src/contents/ui/PreferencesSheet.qml:548
-#, fuzzy
 msgctxt "@label"
 msgid "Axis labels text color"
-msgstr "Labels de l'Axe"
+msgstr "Couleur du texte du label des axes"
 
 #: src/contents/ui/PreferencesSheet.qml:557
 msgctxt "@label"
 msgid "Axis labels background color"
-msgstr ""
+msgstr "Couleur d'arrière-plan du label des axes"
 
 #: src/contents/ui/PreferencesSheet.qml:566
 msgctxt "@label"
 msgid "Border color"
-msgstr ""
+msgstr "Couleur de la bordure"
 
 #: src/contents/ui/PreferencesSheet.qml:575
-#, fuzzy
 msgid "Line width"
-msgstr "Largeur de Ligne"
+msgstr "Largeur de la ligne"
 
 #: src/contents/ui/PreferencesSheet.qml:589
 msgid "Show grid lines"
-msgstr ""
+msgstr "Afficher les lignes de la grille"
 
 #: src/contents/ui/PreferencesSheet.qml:607
 msgid "Autoload delay"
