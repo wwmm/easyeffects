@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-25 22:32-0300\n"
-"PO-Revision-Date: 2025-11-24 19:51+0000\n"
+"PO-Revision-Date: 2025-11-27 05:01+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -2354,7 +2354,7 @@ msgstr "Compensazione audio delay"
 
 #: src/contents/ui/PreferencesSheet.qml:295
 msgid "Graph"
-msgstr ""
+msgstr "Grafico"
 
 #: src/contents/ui/PreferencesSheet.qml:302
 msgid "Shape"
@@ -2418,7 +2418,7 @@ msgstr "Profili più utilizzati"
 
 #: src/contents/ui/PreferencesSheet.qml:447
 msgid "Window"
-msgstr ""
+msgstr "Finestra"
 
 #: src/contents/ui/PreferencesSheet.qml:456
 msgid "Force KDE's Breeze theme when Easy Effects starts"
@@ -2446,7 +2446,7 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:483
 msgid "Graphs"
-msgstr ""
+msgstr "Grafici"
 
 #: src/contents/ui/PreferencesSheet.qml:494
 msgid "Color scheme"
@@ -2502,48 +2502,45 @@ msgstr "Grigio"
 
 #: src/contents/ui/PreferencesSheet.qml:513
 msgid "User"
-msgstr ""
+msgstr "Utente"
 
 #: src/contents/ui/PreferencesSheet.qml:521
-#, fuzzy
 msgctxt "@label"
 msgid "Background"
-msgstr "Servizi in Background"
+msgstr "Sfondo"
 
 #: src/contents/ui/PreferencesSheet.qml:530
 msgctxt "@label"
 msgid "Plot area background"
-msgstr ""
+msgstr "Sfondo dell'area del grafico"
 
 #: src/contents/ui/PreferencesSheet.qml:539
 msgctxt "@label"
 msgid "Series colors"
-msgstr ""
+msgstr "Serie di colori"
 
 #: src/contents/ui/PreferencesSheet.qml:548
-#, fuzzy
 msgctxt "@label"
 msgid "Axis labels text color"
-msgstr "Etichette sull'Asse"
+msgstr "Colore delle etichette sulle assi"
 
 #: src/contents/ui/PreferencesSheet.qml:557
 msgctxt "@label"
 msgid "Axis labels background color"
-msgstr ""
+msgstr "Sfondo delle etichette sulle assi"
 
 #: src/contents/ui/PreferencesSheet.qml:566
 msgctxt "@label"
 msgid "Border color"
-msgstr ""
+msgstr "Colore del bordo"
 
 #: src/contents/ui/PreferencesSheet.qml:575
-#, fuzzy
 msgid "Line width"
-msgstr "Spessore Linea"
+msgstr "Spessore delle linee"
 
 #: src/contents/ui/PreferencesSheet.qml:589
 msgid "Show grid lines"
-msgstr ""
+msgstr "Mostra linee nella griglia"
 
 #: src/contents/ui/PreferencesSheet.qml:607
 msgid "Autoload delay"

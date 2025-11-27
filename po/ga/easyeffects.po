@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-25 22:32-0300\n"
-"PO-Revision-Date: 2025-11-24 19:51+0000\n"
+"PO-Revision-Date: 2025-11-27 05:01+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
 "ga/>\n"
@@ -2355,7 +2355,7 @@ msgstr "Cúiteamh moille fuaime"
 
 #: src/contents/ui/PreferencesSheet.qml:295
 msgid "Graph"
-msgstr ""
+msgstr "Graf"
 
 #: src/contents/ui/PreferencesSheet.qml:302
 msgid "Shape"
@@ -2419,7 +2419,7 @@ msgstr "Réamhshocruithe is mó a úsáidtear"
 
 #: src/contents/ui/PreferencesSheet.qml:447
 msgid "Window"
-msgstr ""
+msgstr "Fuinneog"
 
 #: src/contents/ui/PreferencesSheet.qml:456
 msgid "Force KDE's Breeze theme when Easy Effects starts"
@@ -2447,7 +2447,7 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:483
 msgid "Graphs"
-msgstr ""
+msgstr "Graif"
 
 #: src/contents/ui/PreferencesSheet.qml:494
 msgid "Color scheme"
@@ -2503,48 +2503,45 @@ msgstr "Liath"
 
 #: src/contents/ui/PreferencesSheet.qml:513
 msgid "User"
-msgstr ""
+msgstr "Úsáideoir"
 
 #: src/contents/ui/PreferencesSheet.qml:521
-#, fuzzy
 msgctxt "@label"
 msgid "Background"
-msgstr "Seirbhís Cúlra"
+msgstr "Cúlra"
 
 #: src/contents/ui/PreferencesSheet.qml:530
 msgctxt "@label"
 msgid "Plot area background"
-msgstr ""
+msgstr "Cúlra limistéar an phlota"
 
 #: src/contents/ui/PreferencesSheet.qml:539
 msgctxt "@label"
 msgid "Series colors"
-msgstr ""
+msgstr "Dathanna sraithe"
 
 #: src/contents/ui/PreferencesSheet.qml:548
-#, fuzzy
 msgctxt "@label"
 msgid "Axis labels text color"
-msgstr "Lipéid Ais"
+msgstr "Dath téacs lipéid ais"
 
 #: src/contents/ui/PreferencesSheet.qml:557
 msgctxt "@label"
 msgid "Axis labels background color"
-msgstr ""
+msgstr "Dath cúlra lipéid ais"
 
 #: src/contents/ui/PreferencesSheet.qml:566
 msgctxt "@label"
 msgid "Border color"
-msgstr ""
+msgstr "Dath na teorann"
 
 #: src/contents/ui/PreferencesSheet.qml:575
-#, fuzzy
 msgid "Line width"
-msgstr "Leithead Líne"
+msgstr "Leithead líne"
 
 #: src/contents/ui/PreferencesSheet.qml:589
 msgid "Show grid lines"
-msgstr ""
+msgstr "Taispeáin línte eangaí"
 
 #: src/contents/ui/PreferencesSheet.qml:607
 msgid "Autoload delay"
