@@ -1,3 +1,5 @@
 cmake --build . --parallel 16 // building with 16 threads
 
 cmake -DCMAKE_INSTALL_PREFIX=/usr/local -G Ninja .. // configuring the build directory to use ninja
+
+cmake -DCMAKE_INSTALL_PREFIX=/usr/local -DENABLE_SANITIZER=1 -G Ninja ..

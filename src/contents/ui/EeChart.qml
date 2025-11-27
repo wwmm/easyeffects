@@ -199,29 +199,29 @@ Item {
 
             target: DbGraph
 
-            onBackgroundColorChanged: {
+            function onBackgroundColorChanged() {
                 userTheme.backgroundColor = DbGraph.backgroundColor;
 
                 axisRectangle.color = DbGraph.backgroundColor;
             }
 
-            onPlotAreaBackgroundColorChanged: {
+            function onPlotAreaBackgroundColorChanged() {
                 userTheme.plotAreaBackgroundColor = DbGraph.plotAreaBackgroundColor;
             }
 
-            onSeriesColorsChanged: {
+            function onSeriesColorsChanged() {
                 userTheme.seriesColors = [DbGraph.seriesColors];
             }
 
-            onLabelTextColorChanged: {
+            function onLabelTextColorChanged() {
                 userTheme.labelTextColor = DbGraph.labelTextColor;
             }
 
-            onLabelBackgroundColorChanged: {
+            function onLabelBackgroundColorChanged() {
                 userTheme.labelBackgroundColor = DbGraph.labelBackgroundColor;
             }
 
-            onBorderColorsChanged: {
+            function onBorderColorsChanged() {
                 userTheme.borderColors = [DbGraph.borderColors];
             }
         }
