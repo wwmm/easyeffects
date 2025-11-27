@@ -7,7 +7,7 @@ import ee.tags.plugin.name as TagsPluginName
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.delegates as Delegates
 
-Controls.Dialog {
+Kirigami.Dialog {
     id: control
 
     required property var streamDB
@@ -20,22 +20,20 @@ Controls.Dialog {
     bottomPadding: 1
     anchors.centerIn: parent
 
-    contentItem: Controls.ScrollView {
-        ListView {
-            id: listView
+    ListView {
+        id: listView
 
-            currentIndex: -1
-            clip: true
-            delegate: listDelegate
-            reuseItems: true
-            model: TagsPluginName.SortedNameModel
+        currentIndex: -1
+        clip: true
+        delegate: listDelegate
+        reuseItems: true
+        model: TagsPluginName.SortedNameModel
 
-            Kirigami.PlaceholderMessage {
-                anchors.centerIn: parent
-                width: parent.width - (Kirigami.Units.largeSpacing * 4)
-                visible: listView.count === 0
-                text: i18n("Empty List") // qmllint disable
-            }
+        Kirigami.PlaceholderMessage {
+            anchors.centerIn: parent
+            width: parent.width - (Kirigami.Units.largeSpacing * 4)
+            visible: listView.count === 0
+            text: i18n("Empty List") // qmllint disable
         }
     }
 

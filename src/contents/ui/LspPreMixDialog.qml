@@ -8,10 +8,6 @@ Kirigami.Dialog {
     required property var pluginDB
 
     title: i18n("Pre-Mix") // qmllint disable
-    bottomPadding: 1
-    anchors.centerIn: parent
-
-    implicitWidth: Math.min(gridLayout.implicitWidth, preMixDialog.parent.width * 0.8)// qmllint disable
 
     GridLayout {
         id: gridLayout
