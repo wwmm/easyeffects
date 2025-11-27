@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-25 22:32-0300\n"
-"PO-Revision-Date: 2025-11-25 02:26+0000\n"
+"PO-Revision-Date: 2025-11-27 05:01+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -2387,7 +2387,7 @@ msgstr "Компенсация задержки звука"
 
 #: src/contents/ui/PreferencesSheet.qml:295
 msgid "Graph"
-msgstr ""
+msgstr "График"
 
 #: src/contents/ui/PreferencesSheet.qml:302
 msgid "Shape"
@@ -2451,7 +2451,7 @@ msgstr "Часто используемые предустановки"
 
 #: src/contents/ui/PreferencesSheet.qml:447
 msgid "Window"
-msgstr ""
+msgstr "Окно"
 
 #: src/contents/ui/PreferencesSheet.qml:456
 msgid "Force KDE's Breeze theme when Easy Effects starts"
@@ -2478,7 +2478,7 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:483
 msgid "Graphs"
-msgstr ""
+msgstr "Графики"
 
 #: src/contents/ui/PreferencesSheet.qml:494
 msgid "Color scheme"
@@ -2535,49 +2535,45 @@ msgstr "Серая"
 
 #: src/contents/ui/PreferencesSheet.qml:513
 msgid "User"
-msgstr ""
+msgstr "Пользователь"
 
 #: src/contents/ui/PreferencesSheet.qml:521
-#, fuzzy
 msgctxt "@label"
 msgid "Background"
-msgstr "Запускать в фоновом режиме"
+msgstr "Фон"
 
 #: src/contents/ui/PreferencesSheet.qml:530
 msgctxt "@label"
 msgid "Plot area background"
-msgstr ""
+msgstr "Фон площади участка"
 
 #: src/contents/ui/PreferencesSheet.qml:539
 msgctxt "@label"
 msgid "Series colors"
-msgstr ""
+msgstr "Цвета серий"
 
 #: src/contents/ui/PreferencesSheet.qml:548
-#, fuzzy
 msgctxt "@label"
 msgid "Axis labels text color"
-msgstr "Разметка осей"
+msgstr "Цвет текста меток осей"
 
 #: src/contents/ui/PreferencesSheet.qml:557
 msgctxt "@label"
 msgid "Axis labels background color"
-msgstr ""
+msgstr "Цвет фона меток осей"
 
 #: src/contents/ui/PreferencesSheet.qml:566
-#, fuzzy
 msgctxt "@label"
 msgid "Border color"
-msgstr "Граница"
+msgstr "Цвет обводки"
 
 #: src/contents/ui/PreferencesSheet.qml:575
-#, fuzzy
 msgid "Line width"
 msgstr "Ширина линии"
 
 #: src/contents/ui/PreferencesSheet.qml:589
 msgid "Show grid lines"
-msgstr ""
+msgstr "Показывать линии сетки"
 
 #: src/contents/ui/PreferencesSheet.qml:607
 msgid "Autoload delay"
