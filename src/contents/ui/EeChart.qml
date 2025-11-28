@@ -337,7 +337,7 @@ Item {
                         width: widgetRoot.width / widgetRoot.targetTicks
                         padding: 0
                         color: chart.theme.labelTextColor
-                        text: value < 1000 ? Number(value).toLocaleString(Qt.locale(), 'f', widgetRoot.xAxisDecimals) : `${Number(value / 1000).toLocaleString(Qt.locale(), 'f', 1)}k`
+                        text: value < 1000 ? Number(value).toLocaleString(Qt.locale(), 'f', widgetRoot.xAxisDecimals) : `${Number(value / 1000).toLocaleString(Qt.locale(), 'f', 1)}${Units.k}`
                         horizontalAlignment: Qt.AlignLeft
                         visible: index < (axisRepeater.tickValues.length - 1)
                     }
@@ -386,7 +386,7 @@ Item {
             // const dataY = widgetRoot.mapToValueY(mouse.y);
 
             const newText = `${Number(dataX).toLocaleString(Qt.locale(), 'f', widgetRoot.xAxisDecimals)} ${widgetRoot.xUnit}`;
-            // const newText = `x: ${Number(dataX).toLocaleString(Qt.locale(), 'f', widgetRoot.xAxisDecimals)} Hz, y: ${Number(dataY).toLocaleString(locale, 'f', widgetRoot.xAxisDecimals)}`;
+            // const newText = `x: ${Number(dataX).toLocaleString(Qt.locale(), 'f', widgetRoot.xAxisDecimals)} ${Units.hz}, y: ${Number(dataY).toLocaleString(locale, 'f', widgetRoot.xAxisDecimals)}`;
 
             if (coordinateLabel.text !== newText) {
                 coordinateLabel.text = newText;

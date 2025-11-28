@@ -69,7 +69,7 @@ Kirigami.ScrollablePage {
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: limiterPage.pluginDB.oversampling
                         editable: false
-                        model: [i18n("None"), i18n("Half x2/16 bit"), i18n("Half x2/24 bit"), i18n("Half x3/16 bit"), i18n("Half x3/24 bit"), i18n("Half x4/16 bit"), i18n("Half x4/24 bit"), i18n("Half x6/16 bit"), i18n("Half x6/24 bit"), i18n("Half x8/16 bit"), i18n("Half x8/24 bit"), i18n("Full x2/16 bit"), i18n("Full x2/24 bit"), i18n("Full x3/16 bit"), i18n("Full x3/24 bit"), i18n("Full x4/16 bit"), i18n("Full x4/24 bit"), i18n("Full x6/16 bit"), i18n("Full x6/24 bit"), i18n("Full x8/16 bit"), i18n("Full x8/24 bit"), i18n("True peak/16 bit"), i18n("True peak/24 bit")]// qmllint disable
+                        model: [i18n("None"), i18n("Half x2/16 bits"), i18n("Half x2/24 bits"), i18n("Half x3/16 bits"), i18n("Half x3/24 bits"), i18n("Half x4/16 bits"), i18n("Half x4/24 bits"), i18n("Half x6/16 bits"), i18n("Half x6/24 bits"), i18n("Half x8/16 bits"), i18n("Half x8/24 bits"), i18n("Full x2/16 bits"), i18n("Full x2/24 bits"), i18n("Full x3/16 bits"), i18n("Full x3/24 bits"), i18n("Full x4/16 bits"), i18n("Full x4/24 bits"), i18n("Full x6/16 bits"), i18n("Full x6/24 bits"), i18n("Full x8/16 bits"), i18n("Full x8/24 bits"), i18n("True peak/16 bits"), i18n("True peak/24 bits")]// qmllint disable
                         onActivated: idx => {
                             limiterPage.pluginDB.oversampling = idx;
                         }
@@ -83,7 +83,7 @@ Kirigami.ScrollablePage {
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: limiterPage.pluginDB.dithering
                         editable: false
-                        model: [i18n("None"), i18n("7 bit"), i18n("8 bit"), i18n("11 bit"), i18n("12 bit"), i18n("15 bit"), i18n("16 bit"), i18n("23 bit"), i18n("24 bit")]// qmllint disable
+                        model: [i18n("None"), `7 ${Units.bits}`, `8 ${Units.bits}`, `11 ${Units.bits}`, `12 ${Units.bits}`, `15 ${Units.bits}`, `16 ${Units.bits}`, `23 ${Units.bits}`, `24 ${Units.bits}`] // qmllint disable
                         onActivated: idx => {
                             limiterPage.pluginDB.dithering = idx;
                         }
@@ -113,7 +113,7 @@ Kirigami.ScrollablePage {
                         value: limiterPage.pluginDB.threshold
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("dB")
+                        unit: Units.dB
                         onValueModified: v => {
                             limiterPage.pluginDB.threshold = v;
                         }
@@ -130,7 +130,7 @@ Kirigami.ScrollablePage {
                         value: limiterPage.pluginDB.attack
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("ms")
+                        unit: Units.ms
                         onValueModified: v => {
                             limiterPage.pluginDB.attack = v;
                         }
@@ -147,7 +147,7 @@ Kirigami.ScrollablePage {
                         value: limiterPage.pluginDB.release
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("ms")
+                        unit: Units.ms
                         onValueModified: v => {
                             limiterPage.pluginDB.release = v;
                         }
@@ -164,7 +164,7 @@ Kirigami.ScrollablePage {
                         value: limiterPage.pluginDB.stereoLink
                         decimals: 1
                         stepSize: 0.1
-                        unit: "%"
+                        unit: Units.percent
                         onValueModified: v => {
                             limiterPage.pluginDB.stereoLink = v;
                         }
@@ -237,7 +237,7 @@ Kirigami.ScrollablePage {
                             value: limiterPage.pluginDB.sidechainPreamp
                             decimals: 2 // Required to show "-inf"
                             stepSize: 0.01
-                            unit: i18n("dB")
+                            unit: Units.dB
                             minusInfinityMode: true
                             onValueModified: v => {
                                 limiterPage.pluginDB.sidechainPreamp = v;
@@ -255,7 +255,7 @@ Kirigami.ScrollablePage {
                             value: limiterPage.pluginDB.lookahead
                             decimals: 2
                             stepSize: 0.01
-                            unit: i18n("ms")
+                            unit: Units.ms
                             onValueModified: v => {
                                 limiterPage.pluginDB.lookahead = v;
                             }
@@ -289,7 +289,7 @@ Kirigami.ScrollablePage {
                             value: limiterPage.pluginDB.inputToSidechain
                             decimals: 2
                             stepSize: 0.01
-                            unit: i18n("dB")
+                            unit: Units.dB
                             minusInfinityMode: true
                             onValueModified: v => {
                                 limiterPage.pluginDB.inputToSidechain = v;
@@ -305,7 +305,7 @@ Kirigami.ScrollablePage {
                             value: limiterPage.pluginDB.inputToLink
                             decimals: 2
                             stepSize: 0.01
-                            unit: i18n("dB")
+                            unit: Units.dB
                             minusInfinityMode: true
                             onValueModified: v => {
                                 limiterPage.pluginDB.inputToLink = v;
@@ -321,7 +321,7 @@ Kirigami.ScrollablePage {
                             value: limiterPage.pluginDB.sidechainToInput
                             decimals: 2
                             stepSize: 0.01
-                            unit: i18n("dB")
+                            unit: Units.dB
                             minusInfinityMode: true
                             onValueModified: v => {
                                 limiterPage.pluginDB.sidechainToInput = v;
@@ -337,7 +337,7 @@ Kirigami.ScrollablePage {
                             value: limiterPage.pluginDB.sidechainToLink
                             decimals: 2
                             stepSize: 0.01
-                            unit: i18n("dB")
+                            unit: Units.dB
                             minusInfinityMode: true
                             onValueModified: v => {
                                 limiterPage.pluginDB.sidechainToLink = v;
@@ -353,7 +353,7 @@ Kirigami.ScrollablePage {
                             value: limiterPage.pluginDB.linkToSidechain
                             decimals: 2
                             stepSize: 0.01
-                            unit: i18n("dB")
+                            unit: Units.dB
                             minusInfinityMode: true
                             onValueModified: v => {
                                 limiterPage.pluginDB.linkToSidechain = v;
@@ -369,7 +369,7 @@ Kirigami.ScrollablePage {
                             value: limiterPage.pluginDB.linkToInput
                             decimals: 2
                             stepSize: 0.01
-                            unit: i18n("dB")
+                            unit: Units.dB
                             minusInfinityMode: true
                             onValueModified: v => {
                                 limiterPage.pluginDB.linkToInput = v;
@@ -403,7 +403,7 @@ Kirigami.ScrollablePage {
                         value: limiterPage.pluginDB.alrAttack
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("ms")
+                        unit: Units.ms
                         onValueModified: v => {
                             limiterPage.pluginDB.alrAttack = v;
                         }
@@ -420,7 +420,7 @@ Kirigami.ScrollablePage {
                         value: limiterPage.pluginDB.alrRelease
                         decimals: 1
                         stepSize: 0.1
-                        unit: i18n("ms")
+                        unit: Units.ms
                         onValueModified: v => {
                             limiterPage.pluginDB.alrRelease = v;
                         }
@@ -437,7 +437,7 @@ Kirigami.ScrollablePage {
                         value: limiterPage.pluginDB.alrKnee
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("dB")
+                        unit: Units.dB
                         onValueModified: v => {
                             limiterPage.pluginDB.alrKnee = v;
                         }
@@ -538,26 +538,26 @@ Kirigami.ScrollablePage {
                 Controls.Label {
                     Layout.alignment: Qt.AlignHCenter
                     horizontalAlignment: Text.AlignHCenter
-                    text: i18n("L") // qmllint disable
+                    text: Units.leftCh
                 }
 
                 Controls.Label {
                     Layout.alignment: Qt.AlignHCenter
                     horizontalAlignment: Text.AlignHCenter
-                    text: i18n("R") // qmllint disable
+                    text: Units.rightCh
                 }
 
                 Controls.Label {
                     Layout.alignment: Qt.AlignHCenter
                     Layout.leftMargin: Kirigami.Units.gridUnit
                     horizontalAlignment: Text.AlignHCenter
-                    text: i18n("L") // qmllint disable
+                    text: Units.leftCh
                 }
 
                 Controls.Label {
                     Layout.alignment: Qt.AlignHCenter
                     horizontalAlignment: Text.AlignHCenter
-                    text: i18n("R") // qmllint disable
+                    text: Units.rightCh
                 }
             }
         }

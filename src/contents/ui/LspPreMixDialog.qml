@@ -24,7 +24,7 @@ Kirigami.Dialog {
             value: preMixDialog.pluginDB.inputToSidechain
             decimals: 2
             stepSize: 0.01
-            unit: i18n("dB")
+            unit: Units.dB
             minusInfinityMode: true
             onValueModified: v => {
                 preMixDialog.pluginDB.inputToSidechain = v;
@@ -40,7 +40,7 @@ Kirigami.Dialog {
             value: preMixDialog.pluginDB.inputToLink
             decimals: 2
             stepSize: 0.01
-            unit: i18n("dB")
+            unit: Units.dB
             minusInfinityMode: true
             onValueModified: v => {
                 preMixDialog.pluginDB.inputToLink = v;
@@ -56,7 +56,7 @@ Kirigami.Dialog {
             value: preMixDialog.pluginDB.sidechainToInput
             decimals: 2
             stepSize: 0.01
-            unit: i18n("dB")
+            unit: Units.dB
             minusInfinityMode: true
             onValueModified: v => {
                 preMixDialog.pluginDB.sidechainToInput = v;
@@ -72,7 +72,7 @@ Kirigami.Dialog {
             value: preMixDialog.pluginDB.sidechainToLink
             decimals: 2
             stepSize: 0.01
-            unit: i18n("dB")
+            unit: Units.dB
             minusInfinityMode: true
             onValueModified: v => {
                 preMixDialog.pluginDB.sidechainToLink = v;
@@ -88,7 +88,7 @@ Kirigami.Dialog {
             value: preMixDialog.pluginDB.linkToSidechain
             decimals: 2
             stepSize: 0.01
-            unit: i18n("dB")
+            unit: Units.dB
             minusInfinityMode: true
             onValueModified: v => {
                 preMixDialog.pluginDB.linkToSidechain = v;
@@ -104,7 +104,7 @@ Kirigami.Dialog {
             value: preMixDialog.pluginDB.linkToInput
             decimals: 2
             stepSize: 0.01
-            unit: i18n("dB")
+            unit: Units.dB
             minusInfinityMode: true
             onValueModified: v => {
                 preMixDialog.pluginDB.linkToInput = v;

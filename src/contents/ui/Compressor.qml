@@ -80,7 +80,7 @@ Kirigami.ScrollablePage {
                         value: compressorPage.pluginDB.boostThreshold
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("dB")
+                        unit: Units.dB
                         enabled: mode.currentIndex === 1
                         visible: mode.currentIndex === 1
                         onValueModified: v => {
@@ -100,7 +100,7 @@ Kirigami.ScrollablePage {
                         value: compressorPage.pluginDB.boostAmount
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("dB")
+                        unit: Units.dB
                         enabled: mode.currentIndex === 2
                         visible: mode.currentIndex === 2
                         onValueModified: v => {
@@ -135,7 +135,7 @@ Kirigami.ScrollablePage {
                         value: compressorPage.pluginDB.knee
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("dB")
+                        unit: Units.dB
                         onValueModified: v => {
                             compressorPage.pluginDB.knee = v;
                         }
@@ -166,7 +166,7 @@ Kirigami.ScrollablePage {
                         value: compressorPage.pluginDB.threshold
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("dB")
+                        unit: Units.dB
                         onValueModified: v => {
                             compressorPage.pluginDB.threshold = v;
                         }
@@ -182,7 +182,7 @@ Kirigami.ScrollablePage {
                         value: compressorPage.pluginDB.attack
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("ms")
+                        unit: Units.ms
                         onValueModified: v => {
                             compressorPage.pluginDB.attack = v;
                         }
@@ -199,7 +199,7 @@ Kirigami.ScrollablePage {
                         value: compressorPage.pluginDB.releaseThreshold
                         decimals: 2 // Required to show "-inf"
                         stepSize: 0.01
-                        unit: i18n("dB")
+                        unit: Units.dB
                         minusInfinityMode: true
                         onValueModified: v => {
                             compressorPage.pluginDB.releaseThreshold = v;
@@ -216,7 +216,7 @@ Kirigami.ScrollablePage {
                         value: compressorPage.pluginDB.release
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("ms")
+                        unit: Units.ms
                         onValueModified: v => {
                             compressorPage.pluginDB.release = v;
                         }
@@ -345,7 +345,7 @@ Kirigami.ScrollablePage {
                         value: compressorPage.pluginDB.sidechainPreamp
                         decimals: 2 // Required to show "-inf"
                         stepSize: 0.01
-                        unit: i18n("dB")
+                        unit: Units.dB
                         minusInfinityMode: true
                         onValueModified: v => {
                             compressorPage.pluginDB.sidechainPreamp = v;
@@ -363,7 +363,7 @@ Kirigami.ScrollablePage {
                         value: compressorPage.pluginDB.sidechainReactivity
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("ms")
+                        unit: Units.ms
                         onValueModified: v => {
                             compressorPage.pluginDB.sidechainReactivity = v;
                         }
@@ -381,7 +381,7 @@ Kirigami.ScrollablePage {
                         value: compressorPage.pluginDB.sidechainLookahead
                         decimals: 3
                         stepSize: 0.001
-                        unit: i18n("ms")
+                        unit: Units.ms
                         onValueModified: v => {
                             compressorPage.pluginDB.sidechainLookahead = v;
                         }
@@ -395,7 +395,7 @@ Kirigami.ScrollablePage {
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: compressorPage.pluginDB.hpfMode
                         editable: false
-                        model: [i18n("Off"), i18n("12 dB/oct"), i18n("24 dB/oct"), i18n("36 dB/oct")] // qmllint disable
+                        model: [i18n("Off"), `12 ${Units.dBoct}`, `24 ${Units.dBoct}`, `36 ${Units.dBoct}`] // qmllint disable
                         onActivated: idx => {
                             compressorPage.pluginDB.hpfMode = idx;
                         }
@@ -409,7 +409,7 @@ Kirigami.ScrollablePage {
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: compressorPage.pluginDB.lpfMode
                         editable: false
-                        model: [i18n("Off"), i18n("12 dB/oct"), i18n("24 dB/oct"), i18n("36 dB/oct")]// qmllint disable
+                        model: [i18n("Off"), `12 ${Units.dBoct}`, `24 ${Units.dBoct}`, `36 ${Units.dBoct}`]// qmllint disable
                         onActivated: idx => {
                             compressorPage.pluginDB.lpfMode = idx;
                         }
@@ -418,8 +418,7 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: hpfFrequency
 
-                        horizontalPadding: 0
-                        verticalPadding: 0
+                        verticalPadding: Kirigami.Units.largeSpacing
                         labelAbove: true
                         spinboxLayoutFillWidth: true
                         from: compressorPage.pluginDB.getMinValue("hpfFrequency")
@@ -427,7 +426,7 @@ Kirigami.ScrollablePage {
                         value: compressorPage.pluginDB.hpfFrequency
                         decimals: 0
                         stepSize: 1
-                        unit: "Hz"
+                        unit: Units.hz
                         visible: hpfMode.currentIndex !== 0
                         onValueModified: v => {
                             compressorPage.pluginDB.hpfFrequency = v;
@@ -439,8 +438,7 @@ Kirigami.ScrollablePage {
 
                         Layout.column: 1
                         Layout.row: 3
-                        horizontalPadding: 0
-                        verticalPadding: 0
+                        verticalPadding: Kirigami.Units.largeSpacing
                         labelFillWidth: false
                         labelAbove: true
                         spinboxLayoutFillWidth: true
@@ -449,7 +447,7 @@ Kirigami.ScrollablePage {
                         value: compressorPage.pluginDB.lpfFrequency
                         decimals: 0
                         stepSize: 1
-                        unit: "Hz"
+                        unit: Units.hz
                         visible: lpfMode.currentIndex !== 0
                         onValueModified: v => {
                             compressorPage.pluginDB.lpfFrequency = v;
@@ -473,7 +471,7 @@ Kirigami.ScrollablePage {
                     value: compressorPage.pluginDB.dry
                     decimals: 2 // Required to show "-inf"
                     stepSize: 0.01
-                    unit: i18n("dB")
+                    unit: Units.dB
                     minusInfinityMode: true
                     onValueModified: v => {
                         compressorPage.pluginDB.dry = v;
@@ -492,7 +490,7 @@ Kirigami.ScrollablePage {
                     value: compressorPage.pluginDB.wet
                     decimals: 2 // Required to show "-inf"
                     stepSize: 0.01
-                    unit: i18n("dB")
+                    unit: Units.dB
                     minusInfinityMode: true
                     onValueModified: v => {
                         compressorPage.pluginDB.wet = v;
@@ -511,7 +509,7 @@ Kirigami.ScrollablePage {
                     value: compressorPage.pluginDB.makeup
                     decimals: 2
                     stepSize: 0.01
-                    unit: i18n("dB")
+                    unit: Units.dB
                     onValueModified: v => {
                         compressorPage.pluginDB.makeup = v;
                     }
@@ -539,7 +537,7 @@ Kirigami.ScrollablePage {
                         value: compressorPage.pluginDB.inputToSidechain
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("dB")
+                        unit: Units.dB
                         minusInfinityMode: true
                         onValueModified: v => {
                             compressorPage.pluginDB.inputToSidechain = v;
@@ -555,7 +553,7 @@ Kirigami.ScrollablePage {
                         value: compressorPage.pluginDB.inputToLink
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("dB")
+                        unit: Units.dB
                         minusInfinityMode: true
                         onValueModified: v => {
                             compressorPage.pluginDB.inputToLink = v;
@@ -571,7 +569,7 @@ Kirigami.ScrollablePage {
                         value: compressorPage.pluginDB.sidechainToInput
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("dB")
+                        unit: Units.dB
                         minusInfinityMode: true
                         onValueModified: v => {
                             compressorPage.pluginDB.sidechainToInput = v;
@@ -587,7 +585,7 @@ Kirigami.ScrollablePage {
                         value: compressorPage.pluginDB.sidechainToLink
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("dB")
+                        unit: Units.dB
                         minusInfinityMode: true
                         onValueModified: v => {
                             compressorPage.pluginDB.sidechainToLink = v;
@@ -603,7 +601,7 @@ Kirigami.ScrollablePage {
                         value: compressorPage.pluginDB.linkToSidechain
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("dB")
+                        unit: Units.dB
                         minusInfinityMode: true
                         onValueModified: v => {
                             compressorPage.pluginDB.linkToSidechain = v;
@@ -619,7 +617,7 @@ Kirigami.ScrollablePage {
                         value: compressorPage.pluginDB.linkToInput
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("dB")
+                        unit: Units.dB
                         minusInfinityMode: true
                         onValueModified: v => {
                             compressorPage.pluginDB.linkToInput = v;
@@ -725,26 +723,26 @@ Kirigami.ScrollablePage {
                     Controls.Label {
                         Layout.alignment: Qt.AlignHCenter
                         horizontalAlignment: Text.AlignHCenter
-                        text: i18n("L") // qmllint disable
+                        text: Units.leftCh
                     }
 
                     Controls.Label {
                         Layout.alignment: Qt.AlignHCenter
                         horizontalAlignment: Text.AlignHCenter
-                        text: i18n("R") // qmllint disable
+                        text: Units.rightCh
                     }
 
                     Controls.Label {
                         Layout.alignment: Qt.AlignHCenter
                         Layout.leftMargin: Kirigami.Units.gridUnit
                         horizontalAlignment: Text.AlignHCenter
-                        text: i18n("L") // qmllint disable
+                        text: Units.leftCh
                     }
 
                     Controls.Label {
                         Layout.alignment: Qt.AlignHCenter
                         horizontalAlignment: Text.AlignHCenter
-                        text: i18n("R") // qmllint disable
+                        text: Units.rightCh
                     }
                 }
             }
@@ -834,26 +832,26 @@ Kirigami.ScrollablePage {
                     Controls.Label {
                         Layout.alignment: Qt.AlignHCenter
                         horizontalAlignment: Text.AlignHCenter
-                        text: i18n("L") // qmllint disable
+                        text: Units.leftCh
                     }
 
                     Controls.Label {
                         Layout.alignment: Qt.AlignHCenter
                         horizontalAlignment: Text.AlignHCenter
-                        text: i18n("R") // qmllint disable
+                        text: Units.rightCh
                     }
 
                     Controls.Label {
                         Layout.alignment: Qt.AlignHCenter
                         Layout.leftMargin: Kirigami.Units.gridUnit
                         horizontalAlignment: Text.AlignHCenter
-                        text: i18n("L") // qmllint disable
+                        text: Units.leftCh
                     }
 
                     Controls.Label {
                         Layout.alignment: Qt.AlignHCenter
                         horizontalAlignment: Text.AlignHCenter
-                        text: i18n("R") // qmllint disable
+                        text: Units.rightCh
                     }
                 }
             }

@@ -119,7 +119,7 @@ Kirigami.ScrollablePage {
                     value: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "BoostThreshold"]
                     decimals: 2
                     stepSize: 0.01
-                    unit: i18n("dB")
+                    unit: Units.dB
                     enabled: bandMode.currentIndex === 1
                     visible: bandMode.currentIndex === 1
                     onValueModified: v => {
@@ -138,7 +138,7 @@ Kirigami.ScrollablePage {
                     value: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "BoostAmount"]
                     decimals: 2
                     stepSize: 0.01
-                    unit: i18n("dB")
+                    unit: Units.dB
                     enabled: bandMode.currentIndex === 2
                     visible: bandMode.currentIndex === 2
                     onValueModified: v => {
@@ -193,7 +193,7 @@ Kirigami.ScrollablePage {
                             value: bandsListview.currentIndex > 0 ? multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SplitFrequency"] : 0
                             decimals: 0
                             stepSize: 1
-                            unit: i18n("Hz")
+                            unit: Units.hz
                             enabled: bandsListview.currentIndex > 0
                             opacity: bandsListview.currentIndex > 0 ? 1 : 0
                             onValueModified: v => {
@@ -212,7 +212,7 @@ Kirigami.ScrollablePage {
                                 id: bandEndFrequency
                                 Layout.fillWidth: true
                                 horizontalAlignment: Text.AlignHCenter
-                                text: Common.toLocaleLabel(multibandCompressorPage.bandFrequencyEnd[bandsListview.currentIndex], 0, i18n("Hz"))
+                                text: Common.toLocaleLabel(multibandCompressorPage.bandFrequencyEnd[bandsListview.currentIndex], 0, Units.hz)
                             }
                         }
                     }
@@ -243,7 +243,7 @@ Kirigami.ScrollablePage {
                             value: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "AttackTime"]
                             decimals: 2
                             stepSize: 0.01
-                            unit: i18n("ms")
+                            unit: Units.ms
                             onValueModified: v => {
                                 multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "AttackTime"] = v;
                             }
@@ -258,7 +258,7 @@ Kirigami.ScrollablePage {
                             value: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "AttackThreshold"]
                             decimals: 2
                             stepSize: 0.01
-                            unit: i18n("dB")
+                            unit: Units.dB
                             onValueModified: v => {
                                 multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "AttackThreshold"] = v;
                             }
@@ -291,7 +291,7 @@ Kirigami.ScrollablePage {
                             value: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "ReleaseTime"]
                             decimals: 2
                             stepSize: 0.01
-                            unit: i18n("ms")
+                            unit: Units.ms
                             onValueModified: v => {
                                 multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "ReleaseTime"] = v;
                             }
@@ -306,7 +306,7 @@ Kirigami.ScrollablePage {
                             value: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "ReleaseThreshold"]
                             decimals: 2 // Required to show "-inf"
                             stepSize: 0.01
-                            unit: i18n("dB")
+                            unit: Units.dB
                             minusInfinityMode: true
                             onValueModified: v => {
                                 multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "ReleaseThreshold"] = v;
@@ -358,7 +358,7 @@ Kirigami.ScrollablePage {
                             value: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "Knee"]
                             decimals: 1
                             stepSize: 0.1
-                            unit: i18n("dB")
+                            unit: Units.dB
                             onValueModified: v => {
                                 multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "Knee"] = v;
                             }
@@ -375,7 +375,7 @@ Kirigami.ScrollablePage {
                             value: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "Makeup"]
                             decimals: 1
                             stepSize: 0.1
-                            unit: i18n("dB")
+                            unit: Units.dB
                             onValueModified: v => {
                                 multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "Makeup"] = v;
                             }
@@ -448,7 +448,7 @@ Kirigami.ScrollablePage {
                     value: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainPreamp"]
                     decimals: 2 // Required to show "-inf"
                     stepSize: 0.01
-                    unit: i18n("dB")
+                    unit: Units.dB
                     minusInfinityMode: true
                     onValueModified: v => {
                         multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainPreamp"] = v;
@@ -464,7 +464,7 @@ Kirigami.ScrollablePage {
                     value: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainReactivity"]
                     decimals: 1
                     stepSize: 0.1
-                    unit: i18n("ms")
+                    unit: Units.ms
                     onValueModified: v => {
                         multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainReactivity"] = v;
                     }
@@ -479,7 +479,7 @@ Kirigami.ScrollablePage {
                     value: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainLookahead"]
                     decimals: 1
                     stepSize: 0.1
-                    unit: i18n("ms")
+                    unit: Units.ms
                     onValueModified: v => {
                         multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainLookahead"] = v;
                     }
@@ -502,7 +502,7 @@ Kirigami.ScrollablePage {
                         value: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainLowcutFrequency"]
                         decimals: 0
                         stepSize: 1
-                        unit: i18n("Hz")
+                        unit: Units.hz
                         enabled: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainCustomLowcutFilter"]
                         onValueModified: v => {
                             multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainLowcutFrequency"] = v;
@@ -527,7 +527,7 @@ Kirigami.ScrollablePage {
                         value: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainHighcutFrequency"]
                         decimals: 0
                         stepSize: 1
-                        unit: i18n("Hz")
+                        unit: Units.hz
                         enabled: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainCustomHighcutFilter"]
                         onValueModified: v => {
                             multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainHighcutFrequency"] = v;
@@ -603,7 +603,7 @@ Kirigami.ScrollablePage {
                 value: multibandCompressorPage.pluginDB.dry
                 decimals: 2 // Required to show "-inf"
                 stepSize: 0.01
-                unit: i18n("dB")
+                unit: Units.dB
                 minusInfinityMode: true
                 onValueModified: v => {
                     multibandCompressorPage.pluginDB.dry = v;
@@ -621,7 +621,7 @@ Kirigami.ScrollablePage {
                 value: multibandCompressorPage.pluginDB.wet
                 decimals: 2 // Required to show "-inf"
                 stepSize: 0.01
-                unit: i18n("dB")
+                unit: Units.dB
                 minusInfinityMode: true
                 onValueModified: v => {
                     multibandCompressorPage.pluginDB.wet = v;
@@ -750,13 +750,13 @@ Kirigami.ScrollablePage {
                             Controls.Label {
                                 Layout.alignment: Qt.AlignHCenter
                                 horizontalAlignment: Text.AlignHCenter
-                                text: i18n("L") // qmllint disable
+                                text: Units.leftCh
                             }
 
                             Controls.Label {
                                 Layout.alignment: Qt.AlignHCenter
                                 horizontalAlignment: Text.AlignHCenter
-                                text: i18n("R") // qmllint disable
+                                text: Units.rightCh
                             }
                         }
                     }
@@ -809,13 +809,13 @@ Kirigami.ScrollablePage {
                             Controls.Label {
                                 Layout.alignment: Qt.AlignHCenter
                                 horizontalAlignment: Text.AlignHCenter
-                                text: i18n("L") // qmllint disable
+                                text: Units.leftCh
                             }
 
                             Controls.Label {
                                 Layout.alignment: Qt.AlignHCenter
                                 horizontalAlignment: Text.AlignHCenter
-                                text: i18n("R") // qmllint disable
+                                text: Units.rightCh
                             }
                         }
                     }
@@ -868,13 +868,13 @@ Kirigami.ScrollablePage {
                             Controls.Label {
                                 Layout.alignment: Qt.AlignHCenter
                                 horizontalAlignment: Text.AlignHCenter
-                                text: i18n("L") // qmllint disable
+                                text: Units.leftCh
                             }
 
                             Controls.Label {
                                 Layout.alignment: Qt.AlignHCenter
                                 horizontalAlignment: Text.AlignHCenter
-                                text: i18n("R") // qmllint disable
+                                text: Units.rightCh
                             }
                         }
                     }

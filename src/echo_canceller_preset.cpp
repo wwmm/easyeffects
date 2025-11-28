@@ -40,6 +40,7 @@ void EchoCancellerPreset::save(nlohmann::json& json) {
   json[section][instance_name]["echo-canceller"]["enable"] = settings->enableEchoCanceller();
   json[section][instance_name]["echo-canceller"]["mobile-mode"] = settings->echoCancellerMobileMode();
   json[section][instance_name]["echo-canceller"]["enforce-high-pass"] = settings->echoCancellerEnforceHighPass();
+  json[section][instance_name]["echo-canceller"]["automatic-gain-control"] = settings->enableAGC();
 
   json[section][instance_name]["noise-suppression"]["enable"] = settings->enableNoiseSuppression();
   json[section][instance_name]["noise-suppression"]["level"] =
@@ -57,6 +58,7 @@ void EchoCancellerPreset::load(const nlohmann::json& json) {
   UPDATE_PROPERTY_INSIDE_SUBSECTION("echo-canceller", "enable", EnableEchoCanceller);
   UPDATE_PROPERTY_INSIDE_SUBSECTION("echo-canceller", "mobile-mode", EchoCancellerMobileMode);
   UPDATE_PROPERTY_INSIDE_SUBSECTION("echo-canceller", "enforce-high-pass", EchoCancellerEnforceHighPass);
+  UPDATE_PROPERTY_INSIDE_SUBSECTION("echo-canceller", "automatic-gain-control", EnableAGC);
 
   UPDATE_PROPERTY_INSIDE_SUBSECTION("noise-suppression", "enable", EnableNoiseSuppression);
   UPDATE_ENUM_LIKE_PROPERTY_INSIDE_SUBSECTION("noise-suppression", "level", NoiseSuppressionLevel);

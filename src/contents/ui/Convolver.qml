@@ -217,7 +217,7 @@ Kirigami.ScrollablePage {
                     checkable: true
                     onTriggered: {
                         if (checked) {
-                            convolverChart.xUnit = i18n("Hz");
+                            convolverChart.xUnit = Units.hz;
                             if (!convolverChart.logarithimicHorizontalAxis) {
                                 const chart = chartChannel.left ? convolverPage.pluginBackend.chartMagLfftLinear : convolverPage.pluginBackend.chartMagRfftLinear;
 
@@ -230,7 +230,7 @@ Kirigami.ScrollablePage {
                                     convolverChart.updateData(chart);
                             }
                         } else {
-                            convolverChart.xUnit = i18n("s");
+                            convolverChart.xUnit = Units.s;
 
                             const chart = chartChannel.left ? convolverPage.pluginBackend.chartMagL : convolverPage.pluginBackend.chartMagR;
                             if (convolverPage.validChartMag(chart))
@@ -330,7 +330,7 @@ Kirigami.ScrollablePage {
                     seriesType: 1 // spline series
                     colorScheme: DbGraph.colorScheme
                     colorTheme: DbGraph.colorTheme
-                    xUnit: i18n("s")
+                    xUnit: Units.s
                     xAxisDecimals: 2
                     logarithimicHorizontalAxis: false
                     onWidthChanged: {
@@ -368,7 +368,7 @@ Kirigami.ScrollablePage {
                         id: irRate
 
                         Layout.alignment: Qt.AlignHCenter
-                        text: (convolverPage.pluginBackend ? convolverPage.pluginBackend.kernelRate : "") + ` ${i18n("Hz")}` // qmllint disable
+                        text: (convolverPage.pluginBackend ? convolverPage.pluginBackend.kernelRate : "") + ` ${Units.hz}`
                         enabled: false
                     }
 
@@ -384,7 +384,7 @@ Kirigami.ScrollablePage {
                         id: irDuration
 
                         Layout.alignment: Qt.AlignHCenter
-                        text: Number(convolverPage.pluginBackend ? convolverPage.pluginBackend.kernelDuration : 0).toLocaleString(Qt.locale(), 'f', 3) + ` ${i18n("s")}` // qmllint disable
+                        text: Number(convolverPage.pluginBackend ? convolverPage.pluginBackend.kernelDuration : 0).toLocaleString(Qt.locale(), 'f', 3) + ` ${Units.s}`
                         enabled: false
                     }
                 }
@@ -411,7 +411,7 @@ Kirigami.ScrollablePage {
                 to: convolverPage.pluginDB.getMaxValue("irWidth")
                 decimals: 0
                 stepSize: 1
-                unit: "%"
+                unit: Units.percent
                 onValueModified: v => {
                     convolverPage.pluginDB.irWidth = v;
                 }
@@ -428,7 +428,7 @@ Kirigami.ScrollablePage {
                 value: convolverPage.pluginDB.dry
                 decimals: 2
                 stepSize: 0.01
-                unit: i18n("dB")
+                unit: Units.dB
                 minusInfinityMode: true
                 onValueModified: v => {
                     convolverPage.pluginDB.dry = v;
@@ -446,7 +446,7 @@ Kirigami.ScrollablePage {
                 value: convolverPage.pluginDB.wet
                 decimals: 2
                 stepSize: 0.01
-                unit: i18n("dB")
+                unit: Units.dB
                 minusInfinityMode: true
                 onValueModified: v => {
                     convolverPage.pluginDB.wet = v;

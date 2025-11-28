@@ -229,7 +229,7 @@ KirigamiSettings.ConfigurationView {
                     value: DbMain.inactivityTimeout
                     decimals: 0
                     stepSize: 1
-                    unit: i18n("s")
+                    unit: Units.s
                     enabled: DbMain.inactivityTimerEnable
                     onValueModified: v => {
                         DbMain.inactivityTimeout = v;
@@ -245,7 +245,7 @@ KirigamiSettings.ConfigurationView {
                     value: DbMain.levelMetersLabelTimer
                     decimals: 0
                     stepSize: 1
-                    unit: i18n("ms")
+                    unit: Units.ms
                     enabled: DbMain.levelMetersLabelTimer
                     onValueModified: v => {
                         DbMain.levelMetersLabelTimer = v;
@@ -284,7 +284,7 @@ KirigamiSettings.ConfigurationView {
                     value: DbSpectrum.avsyncDelay
                     decimals: 0
                     stepSize: 1
-                    unit: i18n("ms")
+                    unit: Units.ms
                     onValueModified: v => {
                         DbSpectrum.avsyncDelay = v;
                     }
@@ -381,7 +381,7 @@ KirigamiSettings.ConfigurationView {
                     value: DbSpectrum.minimumFrequency
                     decimals: 0
                     stepSize: 10
-                    unit: i18n("Hz")
+                    unit: Units.hz
                     onValueModified: v => {
                         DbSpectrum.minimumFrequency = v;
                     }
@@ -397,7 +397,7 @@ KirigamiSettings.ConfigurationView {
                     value: DbSpectrum.maximumFrequency
                     decimals: 0
                     stepSize: 10
-                    unit: i18n("Hz")
+                    unit: Units.hz
                     onValueModified: v => {
                         DbSpectrum.maximumFrequency = v;
                     }
@@ -419,7 +419,7 @@ KirigamiSettings.ConfigurationView {
                     value: DbMain.databaseAutosaveInterval
                     decimals: 0
                     stepSize: 1
-                    unit: i18n("ms")
+                    unit: Units.ms
                     onValueModified: v => {
                         DbMain.databaseAutosaveInterval = v;
                     }
@@ -612,7 +612,7 @@ KirigamiSettings.ConfigurationView {
                     value: DbMain.presetsAutoloadInterval
                     decimals: 0
                     stepSize: 1
-                    unit: "ms"
+                    unit: Units.ms
                     onValueModified: v => {
                         DbMain.presetsAutoloadInterval = v;
                     }
@@ -677,7 +677,7 @@ KirigamiSettings.ConfigurationView {
                     value: DbMain.lv2uiUpdateFrequency
                     decimals: 0
                     stepSize: 1
-                    unit: i18n("Hz")
+                    unit: Units.hz
                     enabled: DbMain.showNativePluginUi
                     onValueModified: v => {
                         DbMain.lv2uiUpdateFrequency = v;

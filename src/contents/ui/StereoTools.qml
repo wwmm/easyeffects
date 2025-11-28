@@ -121,7 +121,7 @@ Kirigami.ScrollablePage {
                         value: stereoToolsPage.pluginDB.slev
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("dB")
+                        unit: Units.dB
                         minusInfinityMode: true
                         onValueModified: v => {
                             stereoToolsPage.pluginDB.slev = v;
@@ -155,7 +155,7 @@ Kirigami.ScrollablePage {
                         value: stereoToolsPage.pluginDB.mlev
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("dB")
+                        unit: Units.dB
                         minusInfinityMode: true
                         onValueModified: v => {
                             stereoToolsPage.pluginDB.mlev = v;
@@ -279,7 +279,7 @@ Kirigami.ScrollablePage {
                         value: stereoToolsPage.pluginDB.delay
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("ms")
+                        unit: Units.ms
                         onValueModified: v => {
                             stereoToolsPage.pluginDB.delay = v;
                         }
@@ -313,6 +313,7 @@ Kirigami.ScrollablePage {
                         decimals: 0
                         stepSize: 1
                         unit: "°"
+                        separateUnit: false
                         onValueModified: v => {
                             stereoToolsPage.pluginDB.stereoPhase = v;
                         }
@@ -329,7 +330,7 @@ Kirigami.ScrollablePage {
                         value: stereoToolsPage.pluginDB.dry
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("dB")
+                        unit: Units.dB
                         minusInfinityMode: true
                         onValueModified: v => {
                             stereoToolsPage.pluginDB.dry = v;
@@ -347,7 +348,7 @@ Kirigami.ScrollablePage {
                         value: stereoToolsPage.pluginDB.wet
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("dB")
+                        unit: Units.dB
                         minusInfinityMode: true
                         onValueModified: v => {
                             stereoToolsPage.pluginDB.wet = v;

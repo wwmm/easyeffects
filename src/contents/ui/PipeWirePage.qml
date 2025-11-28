@@ -221,7 +221,7 @@ Kirigami.Page {
 
                 FormCard.FormTextDelegate {
                     text: i18n("Default sampling rate") // qmllint disable
-                    description: `${PW.Manager.defaultClockRate} Hz`
+                    description: `${PW.Manager.defaultClockRate} ${Units.hz}`
                 }
 
                 FormCard.FormTextDelegate {
@@ -399,7 +399,7 @@ Kirigami.Page {
                     value: DbTestSignals.frequency
                     decimals: 0
                     stepSize: 1
-                    unit: i18n("Hz")
+                    unit: Units.hz
                     enabled: sineWave.checked
                     onValueModified: v => {
                         if (v !== DbTestSignals.frequency)

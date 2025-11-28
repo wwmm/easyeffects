@@ -114,7 +114,7 @@ Kirigami.ScrollablePage {
                         value: rnnoisePage.pluginDB.vadThres
                         decimals: 0
                         stepSize: 1
-                        unit: "%"
+                        unit: Units.percent
                         onValueModified: v => {
                             rnnoisePage.pluginDB.vadThres = v;
                         }
@@ -130,7 +130,7 @@ Kirigami.ScrollablePage {
                         value: rnnoisePage.pluginDB.wet
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("dB")
+                        unit: Units.dB
                         onValueModified: v => {
                             rnnoisePage.pluginDB.wet = v;
                         }
@@ -146,7 +146,7 @@ Kirigami.ScrollablePage {
                         value: rnnoisePage.pluginDB.release
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("ms")
+                        unit: Units.ms
                         onValueModified: v => {
                             rnnoisePage.pluginDB.release = v;
                         }

@@ -89,7 +89,7 @@ Kirigami.ScrollablePage {
                         value: delayPage.pluginDB.timeL
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("ms")
+                        unit: Units.ms
                         onValueModified: v => {
                             delayPage.pluginDB.timeL = v;
                         }
@@ -107,7 +107,7 @@ Kirigami.ScrollablePage {
                         value: delayPage.pluginDB.metersL
                         decimals: 0
                         stepSize: 1
-                        unit: i18n("m")
+                        unit: Units.m
                         onValueModified: v => {
                             delayPage.pluginDB.metersL = v;
                         }
@@ -125,7 +125,7 @@ Kirigami.ScrollablePage {
                         value: delayPage.pluginDB.centimetersL
                         decimals: 1
                         stepSize: 0.1
-                        unit: i18n("cm")
+                        unit: Units.cm
                         onValueModified: v => {
                             delayPage.pluginDB.centimetersL = v;
                         }
@@ -144,7 +144,7 @@ Kirigami.ScrollablePage {
                         value: delayPage.pluginDB.temperatureL
                         decimals: 1
                         stepSize: 0.1
-                        unit: "°C"
+                        unit: Units.degC
                         onValueModified: v => {
                             delayPage.pluginDB.temperatureL = v;
                         }
@@ -161,7 +161,7 @@ Kirigami.ScrollablePage {
                         value: delayPage.pluginDB.dryL
                         decimals: 2 // Required to show "-inf"
                         stepSize: 0.01
-                        unit: i18n("dB")
+                        unit: Units.dB
                         minusInfinityMode: true
                         onValueModified: v => {
                             delayPage.pluginDB.dryL = v;
@@ -179,7 +179,7 @@ Kirigami.ScrollablePage {
                         value: delayPage.pluginDB.wetL
                         decimals: 2 // Required to show "-inf"
                         stepSize: 0.01
-                        unit: i18n("dB")
+                        unit: Units.dB
                         minusInfinityMode: true
                         onValueModified: v => {
                             delayPage.pluginDB.wetL = v;
@@ -242,7 +242,7 @@ Kirigami.ScrollablePage {
                         value: delayPage.pluginDB.timeR
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("ms")
+                        unit: Units.ms
                         onValueModified: v => {
                             delayPage.pluginDB.timeR = v;
                         }
@@ -260,7 +260,7 @@ Kirigami.ScrollablePage {
                         value: delayPage.pluginDB.metersR
                         decimals: 0
                         stepSize: 1
-                        unit: i18n("m")
+                        unit: Units.m
                         onValueModified: v => {
                             delayPage.pluginDB.metersR = v;
                         }
@@ -278,7 +278,7 @@ Kirigami.ScrollablePage {
                         value: delayPage.pluginDB.centimetersR
                         decimals: 1
                         stepSize: 0.1
-                        unit: i18n("cm")
+                        unit: Units.cm
                         onValueModified: v => {
                             delayPage.pluginDB.centimetersR = v;
                         }
@@ -297,7 +297,7 @@ Kirigami.ScrollablePage {
                         value: delayPage.pluginDB.temperatureR
                         decimals: 1
                         stepSize: 0.1
-                        unit: "°C"
+                        unit: Units.degC
                         onValueModified: v => {
                             delayPage.pluginDB.temperatureR = v;
                         }
@@ -314,7 +314,7 @@ Kirigami.ScrollablePage {
                         value: delayPage.pluginDB.dryR
                         decimals: 2 // Required to show "-inf"
                         stepSize: 0.01
-                        unit: i18n("dB")
+                        unit: Units.dB
                         minusInfinityMode: true
                         onValueModified: v => {
                             delayPage.pluginDB.dryR = v;
@@ -332,7 +332,7 @@ Kirigami.ScrollablePage {
                         value: delayPage.pluginDB.wetR
                         decimals: 2 // Required to show "-inf"
                         stepSize: 0.01
-                        unit: i18n("dB")
+                        unit: Units.dB
                         minusInfinityMode: true
                         onValueModified: v => {
                             delayPage.pluginDB.wetR = v;

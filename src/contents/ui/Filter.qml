@@ -112,7 +112,7 @@ Kirigami.ScrollablePage {
                     value: filterPage.pluginDB.frequency
                     decimals: 0
                     stepSize: 1
-                    unit: i18n("Hz")
+                    unit: Units.hz
                     onValueModified: v => {
                         filterPage.pluginDB.frequency = v;
                     }
@@ -143,7 +143,7 @@ Kirigami.ScrollablePage {
                     value: filterPage.pluginDB.gain
                     decimals: 2
                     stepSize: 0.01
-                    unit: i18n("dB")
+                    unit: Units.dB
                     onValueModified: v => {
                         filterPage.pluginDB.gain = v;
                     }
@@ -174,7 +174,7 @@ Kirigami.ScrollablePage {
                     value: filterPage.pluginDB.balance
                     decimals: 1
                     stepSize: 0.1
-                    unit: "%"
+                    unit: Units.percent
                     onValueModified: v => {
                         filterPage.pluginDB.balance = v;
                     }

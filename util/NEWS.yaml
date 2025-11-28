@@ -7,7 +7,7 @@ Description:
 -
 
 - Bug fixes∶
--
+- The automatic gain control of the Echo Canceller is now registered to the saved presets.
 
 - Other notes∶
 -

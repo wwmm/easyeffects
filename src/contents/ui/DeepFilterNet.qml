@@ -90,7 +90,7 @@ Kirigami.ScrollablePage {
                         value: deepfilternetPage.pluginDB.minProcessingThreshold
                         decimals: 1
                         stepSize: 0.1
-                        unit: i18n("dB")
+                        unit: Units.dB
                         onValueModified: v => {
                             deepfilternetPage.pluginDB.minProcessingThreshold = v;
                         }
@@ -106,7 +106,7 @@ Kirigami.ScrollablePage {
                         value: deepfilternetPage.pluginDB.maxErbProcessingThreshold
                         decimals: 1
                         stepSize: 0.1
-                        unit: i18n("dB")
+                        unit: Units.dB
                         onValueModified: v => {
                             deepfilternetPage.pluginDB.maxErbProcessingThreshold = v;
                         }
@@ -122,7 +122,7 @@ Kirigami.ScrollablePage {
                         value: deepfilternetPage.pluginDB.maxDfProcessingThreshold
                         decimals: 1
                         stepSize: 0.1
-                        unit: i18n("dB")
+                        unit: Units.dB
                         onValueModified: v => {
                             deepfilternetPage.pluginDB.maxDfProcessingThreshold = v;
                         }
@@ -138,7 +138,7 @@ Kirigami.ScrollablePage {
                         value: deepfilternetPage.pluginDB.minProcessingBuffer
                         decimals: 0
                         stepSize: 1
-                        unit: i18n("frames") // qmllint disable
+                        unit: Units.frames
                         onValueModified: v => {
                             deepfilternetPage.pluginDB.minProcessingBuffer = v;
                         }
@@ -154,7 +154,7 @@ Kirigami.ScrollablePage {
                         value: deepfilternetPage.pluginDB.postFilterBeta
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("dB")
+                        unit: Units.dB
                         onValueModified: v => {
                             deepfilternetPage.pluginDB.postFilterBeta = v;
                         }

@@ -454,7 +454,7 @@ Kirigami.Page {
             yMax: 0
             logarithimicHorizontalAxis: DbSpectrum.logarithimicHorizontalAxis
             dynamicYScale: DbSpectrum.dynamicYScale
-            xUnit: i18n("Hz")
+            xUnit: Units.hz
             visible: DbSpectrum.state
 
             Component.onDestruction: {
@@ -595,9 +595,9 @@ Kirigami.Page {
 
                         const cssFontColor = `style="color:${Kirigami.Theme.textColor}"`;
 
-                        actionRateValue.text = `<pre ${cssFontColor}> <span ${cssFontWeight}>${rate}</span> ${i18n("kHz")} </pre>`;
-                        actionLatencyValue.text = `<pre ${cssFontColor}> ${styledLatency} ${i18n("ms")} </pre>`;
-                        actionLevelValue.text = `<pre ${cssFontColor}> ${styledLocaleLeft} ${styledLocaleRight} ${i18n("dB")}</pre>`;
+                        actionRateValue.text = `<pre ${cssFontColor}> <span ${cssFontWeight}>${rate}</span> ${Units.kHz} </pre>`;
+                        actionLatencyValue.text = `<pre ${cssFontColor}> ${styledLatency} ${Units.ms} </pre>`;
+                        actionLevelValue.text = `<pre ${cssFontColor}> ${styledLocaleLeft} ${styledLocaleRight} ${Units.dB}</pre>`;
                     }
                 }
             }

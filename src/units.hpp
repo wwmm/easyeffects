@@ -29,31 +29,67 @@ class Units : public QObject {
   QML_ELEMENT
   QML_SINGLETON
 
+  Q_PROPERTY(QString leftCh MEMBER leftCh CONSTANT)
+  Q_PROPERTY(QString rightCh MEMBER rightCh CONSTANT)
   Q_PROPERTY(QString dB MEMBER dB CONSTANT)
+  Q_PROPERTY(QString dBFS MEMBER dBFS CONSTANT)
+  Q_PROPERTY(QString dBoct MEMBER dBoct CONSTANT)
+  Q_PROPERTY(QString k MEMBER k CONSTANT)
   Q_PROPERTY(QString s MEMBER s CONSTANT)
   Q_PROPERTY(QString ms MEMBER ms CONSTANT)
+  Q_PROPERTY(QString hz MEMBER hz CONSTANT)
   Q_PROPERTY(QString kHz MEMBER kHz CONSTANT)
-  Q_PROPERTY(QString percentage MEMBER percentage CONSTANT)
+  Q_PROPERTY(QString percent MEMBER percent CONSTANT)
   Q_PROPERTY(QString lufs MEMBER lufs CONSTANT)
   Q_PROPERTY(QString lu MEMBER lu CONSTANT)
+  Q_PROPERTY(QString m MEMBER m CONSTANT)
+  Q_PROPERTY(QString cm MEMBER cm CONSTANT)
+  Q_PROPERTY(QString degC MEMBER degC CONSTANT)
+  Q_PROPERTY(QString bits MEMBER bits CONSTANT)
+  Q_PROPERTY(QString frames MEMBER frames CONSTANT)
+  Q_PROPERTY(QString minInf MEMBER minInf CONSTANT)
 
  public:
   explicit Units(QObject* parent = nullptr) : QObject(parent) {
-    dB = ki18nc("decibel", "dB").toString();
-    s = ki18nc("seconds", "s").toString();
-    ms = ki18nc("milliseconds", "ms").toString();
-    kHz = ki18nc("kiloHertz", "kHz").toString();
-    percentage = ki18nc("percentage", "%").toString();
-    lufs = ki18nc("loudness units full scale", "LUFS").toString();
-    lu = ki18nc("loudness units", "LU").toString();
+    leftCh = ki18nc("left channel abbreviation (single letter)", "L").toString();
+    rightCh = ki18nc("left channel abbreviation (single letter)", "R").toString();
+    dB = ki18nc("decibel unit abbreviation", "dB").toString();
+    dBFS = ki18nc("decibel full scale unit abbreviation", "dBFS").toString();
+    dBoct = ki18nc("decibel per octaves unit abbreviation", "dB/oct").toString();
+    k = ki18nc("thousand abbreviation (single letter)", "k").toString();
+    s = ki18nc("seconds unit abbreviation", "s").toString();
+    ms = ki18nc("milliseconds unit abbreviation", "ms").toString();
+    hz = ki18nc("Hertz unit abbreviation", "Hz").toString();
+    kHz = ki18nc("kiloHertz unit abbreviation", "kHz").toString();
+    percent = ki18nc("percentage symbol", "%").toString();
+    lufs = ki18nc("loudness full scale unit abbreviation", "LUFS").toString();
+    lu = ki18nc("loudness unit abbreviation", "LU").toString();
+    m = ki18nc("meter unit abbreviation", "m").toString();
+    cm = ki18nc("centimeter unit abbreviation", "cm").toString();
+    degC = ki18nc("degree Celsius unit abbreviation", "°C").toString();
+    bits = ki18nc("bit unit (plural)", "bits").toString();
+    frames = ki18nc("frame unit (plural)", "frames").toString();
+    minInf = ki18nc("minus infinity abbreviation", "-inf").toString();
   }
 
  private:
+  QString leftCh;
+  QString rightCh;
   QString dB;
+  QString dBFS;
+  QString dBoct;
+  QString k;
   QString s;
   QString ms;
+  QString hz;
   QString kHz;
-  QString percentage;
+  QString percent;
   QString lufs;
   QString lu;
+  QString m;
+  QString cm;
+  QString degC;
+  QString bits;
+  QString frames;
+  QString minInf;
 };

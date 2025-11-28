@@ -30,6 +30,7 @@ FormCard.AbstractFormDelegate {
     property string label: ""
     property string subtitle: ""
     property string unit: ""
+    property bool separateUnit: true
     property alias displayText: spinbox.displayText
     property int boxWidth: 10 * Kirigami.Units.gridUnit
     property bool labelAbove: false
@@ -130,20 +131,23 @@ FormCard.AbstractFormDelegate {
             editable: control.editable
             inputMethodHints: Qt.ImhPreferNumbers
             textFromValue: (value, locale) => {
-                const locMinInfinity = i18nc("minus infinity abbreviation", "-inf");
-                const unit_str = (Common.isEmpty(control.unit)) ? "" : ` ${control.unit}`;
-                locale.numberOptions = Locale.OmitGroupSeparator;
-                const decimalValue = value / spinbox.decimalFactor;
+                let unitSuffix = "";
+                if (!Common.isEmpty(control.unit)) {
+                    const split = control.separateUnit ? ' ' : '';
+                    unitSuffix = `${split}${control.unit}`;
+                }
 
                 // Lower bound check in minusInfinityMode.
+                const decimalValue = value / spinbox.decimalFactor;
                 if (control.minusInfinityMode === true && decimalValue <= control.from) {
-                    textInputSpinBox.text = locMinInfinity;
-                    return locMinInfinity;
+                    textInputSpinBox.text = Units.minInf;
+                    return Units.minInf;
                 }
 
                 // Locale text conversion.
                 try {
-                    const t = Number(decimalValue).toLocaleString(locale, 'f', control.decimals) + unit_str;
+                    locale.numberOptions = Locale.OmitGroupSeparator;
+                    const t = Number(decimalValue).toLocaleString(locale, 'f', control.decimals) + unitSuffix;
                     textInputSpinBox.text = t;
                     return t;
                 } catch (e) {
@@ -164,7 +168,6 @@ FormCard.AbstractFormDelegate {
                  * expression inside this function.
                  */
                 const text = inputText.trim();
-                const locMinInfinity = i18nc("minus infinity abbreviation", "-inf");
 
                 if (text === "") {
                     return spinbox.value;
@@ -176,7 +179,7 @@ FormCard.AbstractFormDelegate {
                  * since we only handle the special case when the user inputs it
                  * manually in the user interface field.
                  */
-                if (text.toLowerCase() === locMinInfinity.toLowerCase() || text === "-∞") {
+                if (text.toLowerCase() === Units.minInf.toLowerCase() || text === "-∞") {
                     return Math.floor(control.from * spinbox.decimalFactor);
                 }
 

@@ -55,7 +55,7 @@ Kirigami.ScrollablePage {
                         value: pitchPage.pluginDB.sequenceLength
                         decimals: 0
                         stepSize: 1
-                        unit: i18n("ms")
+                        unit: Units.ms
                         onValueModified: v => {
                             pitchPage.pluginDB.sequenceLength = v;
                         }
@@ -72,7 +72,7 @@ Kirigami.ScrollablePage {
                         value: pitchPage.pluginDB.seekWindow
                         decimals: 0
                         stepSize: 1
-                        unit: i18n("ms")
+                        unit: Units.ms
                         onValueModified: v => {
                             pitchPage.pluginDB.seekWindow = v;
                         }
@@ -90,7 +90,7 @@ Kirigami.ScrollablePage {
                         value: pitchPage.pluginDB.overlapLength
                         decimals: 0
                         stepSize: 1
-                        unit: i18n("ms")
+                        unit: Units.ms
                         onValueModified: v => {
                             pitchPage.pluginDB.overlapLength = v;
                         }
@@ -108,7 +108,7 @@ Kirigami.ScrollablePage {
                         value: pitchPage.pluginDB.dry
                         decimals: 2 // Required to show "-inf"
                         stepSize: 0.01
-                        unit: i18n("dB")
+                        unit: Units.dB
                         minusInfinityMode: true
                         onValueModified: v => {
                             pitchPage.pluginDB.dry = v;
@@ -127,7 +127,7 @@ Kirigami.ScrollablePage {
                         value: pitchPage.pluginDB.wet
                         decimals: 2 // Required to show "-inf"
                         stepSize: 0.01
-                        unit: i18n("dB")
+                        unit: Units.dB
                         minusInfinityMode: true
                         onValueModified: v => {
                             pitchPage.pluginDB.wet = v;
@@ -208,7 +208,7 @@ Kirigami.ScrollablePage {
                         value: pitchPage.pluginDB.tempoDifference
                         decimals: 0
                         stepSize: 1
-                        unit: "%"
+                        unit: Units.percent
                         onValueModified: v => {
                             pitchPage.pluginDB.tempoDifference = v;
                         }
@@ -225,7 +225,7 @@ Kirigami.ScrollablePage {
                         value: pitchPage.pluginDB.rateDifference
                         decimals: 0
                         stepSize: 1
-                        unit: "%"
+                        unit: Units.percent
                         onValueModified: v => {
                             pitchPage.pluginDB.rateDifference = v;
                         }
