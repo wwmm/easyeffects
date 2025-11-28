@@ -313,6 +313,7 @@ Kirigami.ScrollablePage {
                         decimals: 0
                         stepSize: 1
                         unit: "°"
+                        separateUnit: false
                         onValueModified: v => {
                             stereoToolsPage.pluginDB.stereoPhase = v;
                         }

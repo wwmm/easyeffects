@@ -30,6 +30,7 @@ FormCard.AbstractFormDelegate {
     property string label: ""
     property string subtitle: ""
     property string unit: ""
+    property bool separateUnit: true
     property alias displayText: spinbox.displayText
     property int boxWidth: 10 * Kirigami.Units.gridUnit
     property bool labelAbove: false
@@ -130,11 +131,14 @@ FormCard.AbstractFormDelegate {
             editable: control.editable
             inputMethodHints: Qt.ImhPreferNumbers
             textFromValue: (value, locale) => {
-                const unit_str = (Common.isEmpty(control.unit)) ? "" : ` ${control.unit}`;
-                locale.numberOptions = Locale.OmitGroupSeparator;
-                const decimalValue = value / spinbox.decimalFactor;
+                let unitSuffix = "";
+                if (!Common.isEmpty(control.unit)) {
+                    const split = control.separateUnit ? ' ' : '';
+                    unitSuffix = `${split}${control.unit}`;
+                }
 
                 // Lower bound check in minusInfinityMode.
+                const decimalValue = value / spinbox.decimalFactor;
                 if (control.minusInfinityMode === true && decimalValue <= control.from) {
                     textInputSpinBox.text = Units.minInf;
                     return Units.minInf;
@@ -142,7 +146,8 @@ FormCard.AbstractFormDelegate {
 
                 // Locale text conversion.
                 try {
-                    const t = Number(decimalValue).toLocaleString(locale, 'f', control.decimals) + unit_str;
+                    locale.numberOptions = Locale.OmitGroupSeparator;
+                    const t = Number(decimalValue).toLocaleString(locale, 'f', control.decimals) + unitSuffix;
                     textInputSpinBox.text = t;
                     return t;
                 } catch (e) {

@@ -13,6 +13,7 @@ Control {
     property int decimals: 2
     property string label: ""
     property string unit: ""
+    property bool separateUnit: true
     property int elide: Text.ElideRight
     property int wrapMode: Text.Wrap
     property bool rightToLeft: false
@@ -121,7 +122,15 @@ Control {
                 Layout.rightMargin: Kirigami.Units.smallSpacing
                 horizontalAlignment: Qt.AlignRight
                 verticalAlignment: Qt.AlignVCenter
-                text: Number(control.displayValue).toLocaleString(Qt.locale(), 'f', control.decimals) + ` ${control.unit}`
+                text: {
+                    let unitSuffix = "";
+                    if (!Common.isEmpty(control.unit)) {
+                        const split = control.separateUnit ? ' ' : '';
+                        unitSuffix = `${split}${control.unit}`;
+                    }
+
+                    return Number(control.displayValue).toLocaleString(Qt.locale(), 'f', control.decimals) + unitSuffix;
+                }
                 elide: control.elide
                 color: control.enabled ? Kirigami.Theme.textColor : Kirigami.Theme.disabledTextColor
                 wrapMode: control.wrapMode
