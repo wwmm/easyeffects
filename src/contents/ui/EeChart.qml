@@ -337,7 +337,7 @@ Item {
                         width: widgetRoot.width / widgetRoot.targetTicks
                         padding: 0
                         color: chart.theme.labelTextColor
-                        text: value < 1000 ? Number(value).toLocaleString(Qt.locale(), 'f', widgetRoot.xAxisDecimals) : `${Number(value / 1000).toLocaleString(Qt.locale(), 'f', 1)}k`
+                        text: value < 1000 ? Number(value).toLocaleString(Qt.locale(), 'f', widgetRoot.xAxisDecimals) : `${Number(value / 1000).toLocaleString(Qt.locale(), 'f', 1)}${Units.k}`
                         horizontalAlignment: Qt.AlignLeft
                         visible: index < (axisRepeater.tickValues.length - 1)
                     }
