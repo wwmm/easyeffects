@@ -39,6 +39,9 @@ class Units : public QObject {
   Q_PROPERTY(QString percent MEMBER percent CONSTANT)
   Q_PROPERTY(QString lufs MEMBER lufs CONSTANT)
   Q_PROPERTY(QString lu MEMBER lu CONSTANT)
+  Q_PROPERTY(QString m MEMBER m CONSTANT)
+  Q_PROPERTY(QString cm MEMBER cm CONSTANT)
+  Q_PROPERTY(QString degC MEMBER degC CONSTANT)
   Q_PROPERTY(QString bits MEMBER bits CONSTANT)
   Q_PROPERTY(QString frames MEMBER frames CONSTANT)
   Q_PROPERTY(QString minInf MEMBER minInf CONSTANT)
@@ -55,6 +58,9 @@ class Units : public QObject {
     percent = ki18nc("percentage symbol", "%").toString();
     lufs = ki18nc("loudness full scale unit abbreviation", "LUFS").toString();
     lu = ki18nc("loudness unit abbreviation", "LU").toString();
+    m = ki18nc("meter unit abbreviation", "m").toString();
+    cm = ki18nc("centimeter unit abbreviation", "cm").toString();
+    degC = ki18nc("degree Celsius unit abbreviation", "°C").toString();
     bits = ki18nc("bit unit (plural)", "bits").toString();
     frames = ki18nc("frame unit (plural)", "frames").toString();
     minInf = ki18nc("minus infinity abbreviation", "-inf").toString();
@@ -71,6 +77,9 @@ class Units : public QObject {
   QString percent;
   QString lufs;
   QString lu;
+  QString m;
+  QString cm;
+  QString degC;
   QString bits;
   QString frames;
   QString minInf;

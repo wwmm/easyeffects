@@ -107,7 +107,7 @@ Kirigami.ScrollablePage {
                         value: delayPage.pluginDB.metersL
                         decimals: 0
                         stepSize: 1
-                        unit: i18n("m")
+                        unit: Units.m
                         onValueModified: v => {
                             delayPage.pluginDB.metersL = v;
                         }
@@ -125,7 +125,7 @@ Kirigami.ScrollablePage {
                         value: delayPage.pluginDB.centimetersL
                         decimals: 1
                         stepSize: 0.1
-                        unit: i18n("cm")
+                        unit: Units.cm
                         onValueModified: v => {
                             delayPage.pluginDB.centimetersL = v;
                         }
@@ -144,7 +144,7 @@ Kirigami.ScrollablePage {
                         value: delayPage.pluginDB.temperatureL
                         decimals: 1
                         stepSize: 0.1
-                        unit: "°C"
+                        unit: Units.degC
                         onValueModified: v => {
                             delayPage.pluginDB.temperatureL = v;
                         }
@@ -260,7 +260,7 @@ Kirigami.ScrollablePage {
                         value: delayPage.pluginDB.metersR
                         decimals: 0
                         stepSize: 1
-                        unit: i18n("m")
+                        unit: Units.m
                         onValueModified: v => {
                             delayPage.pluginDB.metersR = v;
                         }
@@ -278,7 +278,7 @@ Kirigami.ScrollablePage {
                         value: delayPage.pluginDB.centimetersR
                         decimals: 1
                         stepSize: 0.1
-                        unit: i18n("cm")
+                        unit: Units.cm
                         onValueModified: v => {
                             delayPage.pluginDB.centimetersR = v;
                         }
@@ -297,7 +297,7 @@ Kirigami.ScrollablePage {
                         value: delayPage.pluginDB.temperatureR
                         decimals: 1
                         stepSize: 0.1
-                        unit: "°C"
+                        unit: Units.degC
                         onValueModified: v => {
                             delayPage.pluginDB.temperatureR = v;
                         }
