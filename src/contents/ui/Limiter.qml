@@ -69,7 +69,7 @@ Kirigami.ScrollablePage {
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: limiterPage.pluginDB.oversampling
                         editable: false
-                        model: [i18n("None"), i18n("Half x2/16 bit"), i18n("Half x2/24 bit"), i18n("Half x3/16 bit"), i18n("Half x3/24 bit"), i18n("Half x4/16 bit"), i18n("Half x4/24 bit"), i18n("Half x6/16 bit"), i18n("Half x6/24 bit"), i18n("Half x8/16 bit"), i18n("Half x8/24 bit"), i18n("Full x2/16 bit"), i18n("Full x2/24 bit"), i18n("Full x3/16 bit"), i18n("Full x3/24 bit"), i18n("Full x4/16 bit"), i18n("Full x4/24 bit"), i18n("Full x6/16 bit"), i18n("Full x6/24 bit"), i18n("Full x8/16 bit"), i18n("Full x8/24 bit"), i18n("True peak/16 bit"), i18n("True peak/24 bit")]// qmllint disable
+                        model: [i18n("None"), i18n("Half x2/16 bits"), i18n("Half x2/24 bits"), i18n("Half x3/16 bits"), i18n("Half x3/24 bits"), i18n("Half x4/16 bits"), i18n("Half x4/24 bits"), i18n("Half x6/16 bits"), i18n("Half x6/24 bits"), i18n("Half x8/16 bits"), i18n("Half x8/24 bits"), i18n("Full x2/16 bits"), i18n("Full x2/24 bits"), i18n("Full x3/16 bits"), i18n("Full x3/24 bits"), i18n("Full x4/16 bits"), i18n("Full x4/24 bits"), i18n("Full x6/16 bits"), i18n("Full x6/24 bits"), i18n("Full x8/16 bits"), i18n("Full x8/24 bits"), i18n("True peak/16 bits"), i18n("True peak/24 bits")]// qmllint disable
                         onActivated: idx => {
                             limiterPage.pluginDB.oversampling = idx;
                         }
@@ -83,7 +83,7 @@ Kirigami.ScrollablePage {
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: limiterPage.pluginDB.dithering
                         editable: false
-                        model: [i18n("None"), i18n("7 bit"), i18n("8 bit"), i18n("11 bit"), i18n("12 bit"), i18n("15 bit"), i18n("16 bit"), i18n("23 bit"), i18n("24 bit")]// qmllint disable
+                        model: [i18n("None"), `7 ${Units.bits}`, `8 ${Units.bits}`, `11 ${Units.bits}`, `12 ${Units.bits}`, `15 ${Units.bits}`, `16 ${Units.bits}`, `23 ${Units.bits}`, `24 ${Units.bits}`] // qmllint disable
                         onActivated: idx => {
                             limiterPage.pluginDB.dithering = idx;
                         }

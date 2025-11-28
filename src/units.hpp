@@ -38,6 +38,7 @@ class Units : public QObject {
   Q_PROPERTY(QString percent MEMBER percent CONSTANT)
   Q_PROPERTY(QString lufs MEMBER lufs CONSTANT)
   Q_PROPERTY(QString lu MEMBER lu CONSTANT)
+  Q_PROPERTY(QString bits MEMBER bits CONSTANT)
   Q_PROPERTY(QString minInf MEMBER minInf CONSTANT)
 
  public:
@@ -51,6 +52,7 @@ class Units : public QObject {
     percent = ki18nc("percentage symbol", "%").toString();
     lufs = ki18nc("loudness full scale unit abbreviation", "LUFS").toString();
     lu = ki18nc("loudness units abbreviation", "LU").toString();
+    bits = ki18nc("bit unit (plural)", "bits").toString();
     minInf = ki18nc("minus infinity abbreviation", "-inf").toString();
   }
 
@@ -64,5 +66,6 @@ class Units : public QObject {
   QString percent;
   QString lufs;
   QString lu;
+  QString bits;
   QString minInf;
 };
