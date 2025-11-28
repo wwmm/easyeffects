@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-28 00:47+0000\n"
+"POT-Creation-Date: 2025-11-28 15:20-0300\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <https://hosted.weblate.org/projects/easyeffects/"
@@ -197,7 +197,7 @@ msgid "Output gain"
 msgstr "გამოტანის გაძლიერება"
 
 #: src/contents/ui/Autogain.qml:219 src/contents/ui/BassEnhancer.qml:185
-#: src/contents/ui/BassLoudness.qml:104 src/contents/ui/Compressor.qml:871
+#: src/contents/ui/BassLoudness.qml:104 src/contents/ui/Compressor.qml:869
 #: src/contents/ui/Convolver.qml:466 src/contents/ui/Crossfeed.qml:128
 #: src/contents/ui/Crystalizer.qml:89 src/contents/ui/DeepFilterNet.qml:175
 #: src/contents/ui/Deesser.qml:300 src/contents/ui/Delay.qml:354
@@ -208,10 +208,10 @@ msgstr "გამოტანის გაძლიერება"
 #: src/contents/ui/Loudness.qml:153 src/contents/ui/Maximizer.qml:101
 #: src/contents/ui/MultibandCompressor.qml:949
 #: src/contents/ui/MultibandGate.qml:922 src/contents/ui/Pitch.qml:246
-#: src/contents/ui/RNNoise.qml:57 src/contents/ui/RNNoise.qml:68
-#: src/contents/ui/RNNoise.qml:282 src/contents/ui/RNNoise.qml:284
-#: src/contents/ui/RNNoise.qml:302 src/contents/ui/Reverb.qml:297
-#: src/contents/ui/Speex.qml:155 src/contents/ui/StereoTools.qml:369
+#: src/contents/ui/Reverb.qml:297 src/contents/ui/RNNoise.qml:57
+#: src/contents/ui/RNNoise.qml:68 src/contents/ui/RNNoise.qml:282
+#: src/contents/ui/RNNoise.qml:284 src/contents/ui/RNNoise.qml:302
+#: src/contents/ui/Speex.qml:155 src/contents/ui/StereoTools.qml:370
 #, fuzzy
 msgid "Using %1"
 msgstr "ვიყენებ {}"
@@ -252,77 +252,6 @@ msgstr "მეორე"
 msgid "Amount"
 msgstr "რაოდენობა"
 
-#: src/contents/ui/BassEnhancer.qml:98 src/contents/ui/BassLoudness.qml:54
-#: src/contents/ui/BassLoudness.qml:70 src/contents/ui/BassLoudness.qml:86
-#: src/contents/ui/Compressor.qml:83 src/contents/ui/Compressor.qml:103
-#: src/contents/ui/Compressor.qml:138 src/contents/ui/Compressor.qml:169
-#: src/contents/ui/Compressor.qml:202 src/contents/ui/Compressor.qml:348
-#: src/contents/ui/Compressor.qml:476 src/contents/ui/Compressor.qml:495
-#: src/contents/ui/Compressor.qml:514 src/contents/ui/Compressor.qml:542
-#: src/contents/ui/Compressor.qml:558 src/contents/ui/Compressor.qml:574
-#: src/contents/ui/Compressor.qml:590 src/contents/ui/Compressor.qml:606
-#: src/contents/ui/Compressor.qml:622 src/contents/ui/Convolver.qml:431
-#: src/contents/ui/Convolver.qml:449 src/contents/ui/Crossfeed.qml:82
-#: src/contents/ui/DeepFilterNet.qml:93 src/contents/ui/DeepFilterNet.qml:109
-#: src/contents/ui/DeepFilterNet.qml:125 src/contents/ui/DeepFilterNet.qml:157
-#: src/contents/ui/Deesser.qml:91 src/contents/ui/Deesser.qml:124
-#: src/contents/ui/Deesser.qml:207 src/contents/ui/Deesser.qml:269
-#: src/contents/ui/Deesser.qml:280 src/contents/ui/Delay.qml:164
-#: src/contents/ui/Delay.qml:182 src/contents/ui/Delay.qml:317
-#: src/contents/ui/Delay.qml:335 src/contents/ui/EeInputOutputGain.qml:99
-#: src/contents/ui/EeInputOutputGain.qml:112
-#: src/contents/ui/EqualizerBandMenu.qml:104 src/contents/ui/Exciter.qml:102
-#: src/contents/ui/Expander.qml:98 src/contents/ui/Expander.qml:129
-#: src/contents/ui/Expander.qml:162 src/contents/ui/Expander.qml:304
-#: src/contents/ui/Expander.qml:434 src/contents/ui/Expander.qml:453
-#: src/contents/ui/Expander.qml:472 src/contents/ui/Expander.qml:496
-#: src/contents/ui/Expander.qml:512 src/contents/ui/Expander.qml:528
-#: src/contents/ui/Expander.qml:544 src/contents/ui/Expander.qml:560
-#: src/contents/ui/Expander.qml:576 src/contents/ui/Filter.qml:146
-#: src/contents/ui/Gate.qml:108 src/contents/ui/Gate.qml:125
-#: src/contents/ui/Gate.qml:142 src/contents/ui/Gate.qml:177
-#: src/contents/ui/Gate.qml:196 src/contents/ui/Gate.qml:323
-#: src/contents/ui/Gate.qml:449 src/contents/ui/Gate.qml:468
-#: src/contents/ui/Gate.qml:487 src/contents/ui/Gate.qml:517
-#: src/contents/ui/Gate.qml:533 src/contents/ui/Gate.qml:549
-#: src/contents/ui/Gate.qml:565 src/contents/ui/Gate.qml:581
-#: src/contents/ui/Gate.qml:597 src/contents/ui/LevelMeter.qml:61
-#: src/contents/ui/LevelMeter.qml:72 src/contents/ui/LevelMeter.qml:102
-#: src/contents/ui/LevelMeter.qml:113 src/contents/ui/Limiter.qml:116
-#: src/contents/ui/Limiter.qml:240 src/contents/ui/Limiter.qml:292
-#: src/contents/ui/Limiter.qml:308 src/contents/ui/Limiter.qml:324
-#: src/contents/ui/Limiter.qml:340 src/contents/ui/Limiter.qml:356
-#: src/contents/ui/Limiter.qml:372 src/contents/ui/Limiter.qml:440
-#: src/contents/ui/Loudness.qml:117 src/contents/ui/Loudness.qml:134
-#: src/contents/ui/LspPreMixDialog.qml:27
-#: src/contents/ui/LspPreMixDialog.qml:43
-#: src/contents/ui/LspPreMixDialog.qml:59
-#: src/contents/ui/LspPreMixDialog.qml:75
-#: src/contents/ui/LspPreMixDialog.qml:91
-#: src/contents/ui/LspPreMixDialog.qml:107 src/contents/ui/Maximizer.qml:71
-#: src/contents/ui/Maximizer.qml:82 src/contents/ui/MultibandCompressor.qml:122
-#: src/contents/ui/MultibandCompressor.qml:141
-#: src/contents/ui/MultibandCompressor.qml:261
-#: src/contents/ui/MultibandCompressor.qml:309
-#: src/contents/ui/MultibandCompressor.qml:361
-#: src/contents/ui/MultibandCompressor.qml:378
-#: src/contents/ui/MultibandCompressor.qml:451
-#: src/contents/ui/MultibandCompressor.qml:606
-#: src/contents/ui/MultibandCompressor.qml:624
-#: src/contents/ui/MultibandGate.qml:231 src/contents/ui/MultibandGate.qml:247
-#: src/contents/ui/MultibandGate.qml:280 src/contents/ui/MultibandGate.qml:295
-#: src/contents/ui/MultibandGate.qml:334 src/contents/ui/MultibandGate.qml:350
-#: src/contents/ui/MultibandGate.qml:424 src/contents/ui/MultibandGate.qml:579
-#: src/contents/ui/MultibandGate.qml:597
-#: src/contents/ui/PageStreamsEffects.qml:600 src/contents/ui/Pitch.qml:111
-#: src/contents/ui/Pitch.qml:130 src/contents/ui/RNNoise.qml:133
-#: src/contents/ui/Reverb.qml:177 src/contents/ui/Reverb.qml:195
-#: src/contents/ui/Speex.qml:85 src/contents/ui/StereoTools.qml:124
-#: src/contents/ui/StereoTools.qml:158 src/contents/ui/StereoTools.qml:332
-#: src/contents/ui/StereoTools.qml:350
-msgid "dB"
-msgstr ""
-
 #: src/contents/ui/BassEnhancer.qml:107 src/contents/ui/BassEnhancer.qml:167
 #: src/contents/ui/Exciter.qml:111 src/contents/ui/Exciter.qml:171
 msgid "Harmonics"
@@ -331,30 +260,6 @@ msgstr "ჰარმონიები"
 #: src/contents/ui/BassEnhancer.qml:122 src/contents/ui/Exciter.qml:126
 msgid "Scope"
 msgstr "ფარგლები"
-
-#: src/contents/ui/BassEnhancer.qml:129 src/contents/ui/BassEnhancer.qml:156
-#: src/contents/ui/Convolver.qml:220 src/contents/ui/Convolver.qml:371
-#: src/contents/ui/Crossfeed.qml:66 src/contents/ui/CrystalizerBand.qml:75
-#: src/contents/ui/Deesser.qml:173 src/contents/ui/Deesser.qml:190
-#: src/contents/ui/EqualizerBand.qml:48
-#: src/contents/ui/EqualizerBandMenu.qml:81 src/contents/ui/Exciter.qml:133
-#: src/contents/ui/Exciter.qml:160 src/contents/ui/Expander.qml:385
-#: src/contents/ui/Expander.qml:406 src/contents/ui/Filter.qml:115
-#: src/contents/ui/Gate.qml:404 src/contents/ui/Gate.qml:425
-#: src/contents/ui/MultibandCompressor.qml:196
-#: src/contents/ui/MultibandCompressor.qml:215
-#: src/contents/ui/MultibandCompressor.qml:505
-#: src/contents/ui/MultibandCompressor.qml:530
-#: src/contents/ui/MultibandGate.qml:133 src/contents/ui/MultibandGate.qml:152
-#: src/contents/ui/MultibandGate.qml:478 src/contents/ui/MultibandGate.qml:503
-#: src/contents/ui/PageStreamsEffects.qml:457
-#: src/contents/ui/PipeWirePage.qml:402
-#: src/contents/ui/PreferencesSheet.qml:384
-#: src/contents/ui/PreferencesSheet.qml:400
-#: src/contents/ui/PreferencesSheet.qml:680 src/contents/ui/Reverb.qml:126
-#: src/contents/ui/Reverb.qml:143 src/contents/ui/Reverb.qml:160
-msgid "Hz"
-msgstr ""
 
 #: src/contents/ui/BassEnhancer.qml:138
 #, fuzzy
@@ -365,7 +270,7 @@ msgstr "უმცირესი მნიშვნელობა"
 msgid "Floor"
 msgstr "იატაკი"
 
-#: src/contents/ui/BassEnhancer.qml:203 src/contents/ui/Compressor.qml:889
+#: src/contents/ui/BassEnhancer.qml:203 src/contents/ui/Compressor.qml:887
 #: src/contents/ui/Deesser.qml:318 src/contents/ui/Delay.qml:392
 #: src/contents/ui/Equalizer.qml:301 src/contents/ui/Exciter.qml:208
 #: src/contents/ui/Expander.qml:837 src/contents/ui/Filter.qml:216
@@ -373,18 +278,18 @@ msgstr "იატაკი"
 #: src/contents/ui/Loudness.qml:171 src/contents/ui/Maximizer.qml:119
 #: src/contents/ui/MultibandCompressor.qml:967
 #: src/contents/ui/MultibandGate.qml:940 src/contents/ui/Reverb.qml:323
-#: src/contents/ui/StereoTools.qml:387
+#: src/contents/ui/StereoTools.qml:388
 msgid "Show native window"
 msgstr ""
 
-#: src/contents/ui/BassEnhancer.qml:216 src/contents/ui/Compressor.qml:902
+#: src/contents/ui/BassEnhancer.qml:216 src/contents/ui/Compressor.qml:900
 #: src/contents/ui/Deesser.qml:331 src/contents/ui/Exciter.qml:221
 #: src/contents/ui/Expander.qml:850 src/contents/ui/Gate.qml:987
 msgid "Listen"
 msgstr "მოსმენა"
 
 #: src/contents/ui/BassEnhancer.qml:227 src/contents/ui/BassLoudness.qml:122
-#: src/contents/ui/Compressor.qml:923 src/contents/ui/Convolver.qml:494
+#: src/contents/ui/Compressor.qml:921 src/contents/ui/Convolver.qml:494
 #: src/contents/ui/Crossfeed.qml:154 src/contents/ui/Crystalizer.qml:117
 #: src/contents/ui/Deesser.qml:342 src/contents/ui/Delay.qml:406
 #: src/contents/ui/EchoCanceller.qml:164 src/contents/ui/Equalizer.qml:367
@@ -393,13 +298,13 @@ msgstr "მოსმენა"
 #: src/contents/ui/Limiter.qml:626 src/contents/ui/Loudness.qml:195
 #: src/contents/ui/Main.qml:565 src/contents/ui/Maximizer.qml:133
 #: src/contents/ui/MultibandCompressor.qml:998
-#: src/contents/ui/MultibandGate.qml:971 src/contents/ui/RNNoise.qml:327
-#: src/contents/ui/Reverb.qml:337 src/contents/ui/Speex.qml:173
-#: src/contents/ui/StereoTools.qml:401
+#: src/contents/ui/MultibandGate.qml:971 src/contents/ui/Reverb.qml:337
+#: src/contents/ui/RNNoise.qml:327 src/contents/ui/Speex.qml:173
+#: src/contents/ui/StereoTools.qml:402
 msgid "Reset"
 msgstr "დაბრუნება"
 
-#: src/contents/ui/BassLoudness.qml:63 src/contents/ui/Compressor.qml:462
+#: src/contents/ui/BassLoudness.qml:63 src/contents/ui/Compressor.qml:460
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:420
 #: src/contents/ui/Gate.qml:435 src/contents/ui/Main.qml:493
 #: src/contents/ui/StereoTools.qml:248
@@ -468,8 +373,8 @@ msgstr "კომპრესორი"
 
 #: src/contents/ui/Compressor.qml:61 src/contents/ui/Compressor.qml:283
 #: src/contents/ui/Deesser.qml:70 src/contents/ui/Delay.qml:51
-#: src/contents/ui/Delay.qml:204 src/contents/ui/Equalizer.qml:121
-#: src/contents/ui/EqualizerBandMenu.qml:40 src/contents/ui/Expander.qml:61
+#: src/contents/ui/Delay.qml:204 src/contents/ui/EqualizerBandMenu.qml:40
+#: src/contents/ui/Equalizer.qml:121 src/contents/ui/Expander.qml:61
 #: src/contents/ui/Expander.qml:243 src/contents/ui/Gate.qml:261
 #: src/contents/ui/Limiter.qml:54 src/contents/ui/Loudness.qml:51
 #: src/contents/ui/MultibandCompressor.qml:408
@@ -527,31 +432,6 @@ msgstr "ზღვარი"
 msgid "Attack"
 msgstr "შეტევა"
 
-#: src/contents/ui/Compressor.qml:185 src/contents/ui/Compressor.qml:219
-#: src/contents/ui/Compressor.qml:366 src/contents/ui/Compressor.qml:384
-#: src/contents/ui/Delay.qml:92 src/contents/ui/Delay.qml:245
-#: src/contents/ui/Expander.qml:145 src/contents/ui/Expander.qml:179
-#: src/contents/ui/Expander.qml:322 src/contents/ui/Expander.qml:340
-#: src/contents/ui/Gate.qml:73 src/contents/ui/Gate.qml:90
-#: src/contents/ui/Gate.qml:341 src/contents/ui/Gate.qml:359
-#: src/contents/ui/Limiter.qml:133 src/contents/ui/Limiter.qml:150
-#: src/contents/ui/Limiter.qml:258 src/contents/ui/Limiter.qml:406
-#: src/contents/ui/Limiter.qml:423 src/contents/ui/Maximizer.qml:55
-#: src/contents/ui/MultibandCompressor.qml:246
-#: src/contents/ui/MultibandCompressor.qml:294
-#: src/contents/ui/MultibandCompressor.qml:467
-#: src/contents/ui/MultibandCompressor.qml:482
-#: src/contents/ui/MultibandGate.qml:183 src/contents/ui/MultibandGate.qml:198
-#: src/contents/ui/MultibandGate.qml:440 src/contents/ui/MultibandGate.qml:455
-#: src/contents/ui/PageStreamsEffects.qml:599 src/contents/ui/Pitch.qml:58
-#: src/contents/ui/Pitch.qml:75 src/contents/ui/Pitch.qml:93
-#: src/contents/ui/PreferencesSheet.qml:248
-#: src/contents/ui/PreferencesSheet.qml:287
-#: src/contents/ui/PreferencesSheet.qml:422 src/contents/ui/RNNoise.qml:149
-#: src/contents/ui/Reverb.qml:83 src/contents/ui/StereoTools.qml:282
-msgid "ms"
-msgstr ""
-
 #: src/contents/ui/Compressor.qml:194 src/contents/ui/Expander.qml:154
 #: src/contents/ui/Gate.qml:82 src/contents/ui/Gate.qml:863
 #: src/contents/ui/Limiter.qml:143 src/contents/ui/Limiter.qml:416
@@ -561,7 +441,7 @@ msgid "Release"
 msgstr "გამოცემა"
 
 #: src/contents/ui/Compressor.qml:232 src/contents/ui/Compressor.qml:330
-#: src/contents/ui/Compressor.qml:667 src/contents/ui/Expander.qml:192
+#: src/contents/ui/Compressor.qml:665 src/contents/ui/Expander.qml:192
 #: src/contents/ui/Expander.qml:286 src/contents/ui/Expander.qml:617
 #: src/contents/ui/Gate.qml:209 src/contents/ui/Gate.qml:304
 #: src/contents/ui/Gate.qml:643 src/contents/ui/Limiter.qml:179
@@ -748,50 +628,32 @@ msgstr "მაღალსიხშირული ფილტრი"
 msgid "Off"
 msgstr "გამორთ"
 
-#: src/contents/ui/Compressor.qml:398 src/contents/ui/Compressor.qml:412
-#: src/contents/ui/Expander.qml:354 src/contents/ui/Expander.qml:368
-#: src/contents/ui/Gate.qml:373 src/contents/ui/Gate.qml:387
-msgid "12 dB/oct"
-msgstr ""
-
-#: src/contents/ui/Compressor.qml:398 src/contents/ui/Compressor.qml:412
-#: src/contents/ui/Expander.qml:354 src/contents/ui/Expander.qml:368
-#: src/contents/ui/Gate.qml:373 src/contents/ui/Gate.qml:387
-msgid "24 dB/oct"
-msgstr ""
-
-#: src/contents/ui/Compressor.qml:398 src/contents/ui/Compressor.qml:412
-#: src/contents/ui/Expander.qml:354 src/contents/ui/Expander.qml:368
-#: src/contents/ui/Gate.qml:373 src/contents/ui/Gate.qml:387
-msgid "36 dB/oct"
-msgstr ""
-
-#: src/contents/ui/Compressor.qml:468 src/contents/ui/Convolver.qml:423
+#: src/contents/ui/Compressor.qml:466 src/contents/ui/Convolver.qml:423
 #: src/contents/ui/Delay.qml:156 src/contents/ui/Delay.qml:309
 #: src/contents/ui/Expander.qml:426 src/contents/ui/Gate.qml:441
 #: src/contents/ui/MultibandCompressor.qml:598
 #: src/contents/ui/MultibandGate.qml:571 src/contents/ui/Pitch.qml:103
-#: src/contents/ui/Reverb.qml:169 src/contents/ui/StereoTools.qml:324
+#: src/contents/ui/Reverb.qml:169 src/contents/ui/StereoTools.qml:325
 msgid "Dry"
 msgstr ""
 
-#: src/contents/ui/Compressor.qml:487 src/contents/ui/Convolver.qml:441
+#: src/contents/ui/Compressor.qml:485 src/contents/ui/Convolver.qml:441
 #: src/contents/ui/Delay.qml:174 src/contents/ui/Delay.qml:327
 #: src/contents/ui/Expander.qml:445 src/contents/ui/Gate.qml:460
 #: src/contents/ui/MultibandCompressor.qml:616
 #: src/contents/ui/MultibandGate.qml:589 src/contents/ui/Pitch.qml:122
-#: src/contents/ui/Reverb.qml:187 src/contents/ui/StereoTools.qml:342
+#: src/contents/ui/Reverb.qml:187 src/contents/ui/StereoTools.qml:343
 msgid "Wet"
 msgstr ""
 
-#: src/contents/ui/Compressor.qml:506 src/contents/ui/Deesser.qml:116
+#: src/contents/ui/Compressor.qml:504 src/contents/ui/Deesser.qml:116
 #: src/contents/ui/Expander.qml:464 src/contents/ui/Gate.qml:479
 #: src/contents/ui/MultibandCompressor.qml:369
 #: src/contents/ui/MultibandGate.qml:239
 msgid "Makeup"
 msgstr "კომპენსაცია"
 
-#: src/contents/ui/Compressor.qml:526 src/contents/ui/Expander.qml:480
+#: src/contents/ui/Compressor.qml:524 src/contents/ui/Expander.qml:480
 #: src/contents/ui/Gate.qml:499 src/contents/ui/Limiter.qml:271
 #: src/contents/ui/LspPreMixDialog.qml:10
 #: src/contents/ui/MultibandCompressor.qml:990
@@ -799,174 +661,73 @@ msgstr "კომპენსაცია"
 msgid "Pre-Mix"
 msgstr ""
 
-#: src/contents/ui/Compressor.qml:534 src/contents/ui/Expander.qml:488
+#: src/contents/ui/Compressor.qml:532 src/contents/ui/Expander.qml:488
 #: src/contents/ui/Gate.qml:509 src/contents/ui/Limiter.qml:284
 #: src/contents/ui/LspPreMixDialog.qml:19
 #, fuzzy
 msgid "Input to sidechain"
 msgstr "გვერდითი ჯაჭვი"
 
-#: src/contents/ui/Compressor.qml:550 src/contents/ui/Expander.qml:504
+#: src/contents/ui/Compressor.qml:548 src/contents/ui/Expander.qml:504
 #: src/contents/ui/Gate.qml:525 src/contents/ui/Limiter.qml:300
 #: src/contents/ui/LspPreMixDialog.qml:35
 #, fuzzy
 msgid "Input to link"
 msgstr "შეყვანის დამუშავების ხაზი"
 
-#: src/contents/ui/Compressor.qml:566 src/contents/ui/Expander.qml:520
+#: src/contents/ui/Compressor.qml:564 src/contents/ui/Expander.qml:520
 #: src/contents/ui/Gate.qml:541 src/contents/ui/Limiter.qml:316
 #: src/contents/ui/LspPreMixDialog.qml:51
 #, fuzzy
 msgid "Sidechain to input"
 msgstr "შეყვანის მოწყობილობა"
 
-#: src/contents/ui/Compressor.qml:582 src/contents/ui/Expander.qml:536
+#: src/contents/ui/Compressor.qml:580 src/contents/ui/Expander.qml:536
 #: src/contents/ui/Gate.qml:557 src/contents/ui/Limiter.qml:332
 #: src/contents/ui/LspPreMixDialog.qml:67
 #, fuzzy
 msgid "Sidechain to link"
 msgstr "გვერდითი ჯაჭვი"
 
-#: src/contents/ui/Compressor.qml:598 src/contents/ui/Expander.qml:552
+#: src/contents/ui/Compressor.qml:596 src/contents/ui/Expander.qml:552
 #: src/contents/ui/Gate.qml:573 src/contents/ui/Limiter.qml:348
 #: src/contents/ui/LspPreMixDialog.qml:83
 #, fuzzy
 msgid "Link to sidechain"
 msgstr "გვერდითი ჯაჭვი"
 
-#: src/contents/ui/Compressor.qml:614 src/contents/ui/Expander.qml:568
+#: src/contents/ui/Compressor.qml:612 src/contents/ui/Expander.qml:568
 #: src/contents/ui/Gate.qml:589 src/contents/ui/Limiter.qml:364
 #: src/contents/ui/LspPreMixDialog.qml:99
 #, fuzzy
 msgid "Link to input"
 msgstr "გვერდითი ჯაჭვი"
 
-#: src/contents/ui/Compressor.qml:658 src/contents/ui/Expander.qml:608
+#: src/contents/ui/Compressor.qml:656 src/contents/ui/Expander.qml:608
 #: src/contents/ui/Gate.qml:100 src/contents/ui/Gate.qml:634
 #: src/contents/ui/Maximizer.qml:81 src/contents/ui/MultibandCompressor.qml:719
 #: src/contents/ui/MultibandGate.qml:223 src/contents/ui/MultibandGate.qml:692
 msgid "Reduction"
 msgstr ""
 
-#: src/contents/ui/Compressor.qml:728 src/contents/ui/Compressor.qml:741
-#: src/contents/ui/Compressor.qml:837 src/contents/ui/Compressor.qml:850
-#: src/contents/ui/Expander.qml:676 src/contents/ui/Expander.qml:689
-#: src/contents/ui/Expander.qml:785 src/contents/ui/Expander.qml:798
-#: src/contents/ui/Gate.qml:704 src/contents/ui/Gate.qml:717
-#: src/contents/ui/Gate.qml:813 src/contents/ui/Gate.qml:826
-#: src/contents/ui/Limiter.qml:541 src/contents/ui/Limiter.qml:554
-#: src/contents/ui/MultibandCompressor.qml:753
-#: src/contents/ui/MultibandCompressor.qml:812
-#: src/contents/ui/MultibandCompressor.qml:871
-#: src/contents/ui/MultibandGate.qml:726 src/contents/ui/MultibandGate.qml:785
-#: src/contents/ui/MultibandGate.qml:844
-msgid "L"
-msgstr "მხ"
-
-#: src/contents/ui/Compressor.qml:734 src/contents/ui/Compressor.qml:747
-#: src/contents/ui/Compressor.qml:843 src/contents/ui/Compressor.qml:856
-#: src/contents/ui/Expander.qml:682 src/contents/ui/Expander.qml:695
-#: src/contents/ui/Expander.qml:791 src/contents/ui/Expander.qml:804
-#: src/contents/ui/Gate.qml:710 src/contents/ui/Gate.qml:723
-#: src/contents/ui/Gate.qml:819 src/contents/ui/Gate.qml:832
-#: src/contents/ui/Limiter.qml:547 src/contents/ui/Limiter.qml:560
-#: src/contents/ui/MultibandCompressor.qml:759
-#: src/contents/ui/MultibandCompressor.qml:818
-#: src/contents/ui/MultibandCompressor.qml:877
-#: src/contents/ui/MultibandGate.qml:732 src/contents/ui/MultibandGate.qml:791
-#: src/contents/ui/MultibandGate.qml:850
-msgid "R"
-msgstr "მჯ"
-
-#: src/contents/ui/Compressor.qml:769 src/contents/ui/Expander.qml:717
+#: src/contents/ui/Compressor.qml:767 src/contents/ui/Expander.qml:717
 #: src/contents/ui/Gate.qml:745 src/contents/ui/MultibandCompressor.qml:839
 #: src/contents/ui/MultibandGate.qml:268 src/contents/ui/MultibandGate.qml:812
 msgid "Curve"
 msgstr "მრუდი"
 
-#: src/contents/ui/Compressor.qml:778 src/contents/ui/Expander.qml:726
+#: src/contents/ui/Compressor.qml:776 src/contents/ui/Expander.qml:726
 #: src/contents/ui/Gate.qml:754 src/contents/ui/MultibandCompressor.qml:780
 #: src/contents/ui/MultibandGate.qml:753
 msgid "Envelope"
 msgstr "კონვერტი"
 
-#: src/contents/ui/Compressor.qml:912 src/contents/ui/Expander.qml:860
+#: src/contents/ui/Compressor.qml:910 src/contents/ui/Expander.qml:860
 #: src/contents/ui/Gate.qml:997 src/contents/ui/MultibandCompressor.qml:980
 #: src/contents/ui/MultibandGate.qml:953
 #, fuzzy
 msgid "Stereo split"
 msgstr "სტერეოს გაყოფა"
-
-#: src/contents/ui/Convolver.qml:48
-#, fuzzy
-msgid "Loaded the %1 Convolver impulse."
-msgstr "საზოგადო პრესეტის ძებნა"
-
-#: src/contents/ui/Convolver.qml:50 src/contents/ui/Convolver.qml:317
-msgid "Convolver impulse is not set"
-msgstr ""
-
-#: src/contents/ui/Convolver.qml:54
-msgid "The Convolver is in passthrough mode."
-msgstr ""
-
-#: src/contents/ui/Convolver.qml:56
-#, fuzzy
-msgid "Failed to load the %1 impulse. The Convolver is in passthrough mode."
-msgstr "საზოგადო პრესეტის ძებნა"
-
-#: src/contents/ui/Convolver.qml:126
-msgid "First"
-msgstr ""
-
-#: src/contents/ui/Convolver.qml:139
-msgid "Second"
-msgstr ""
-
-#: src/contents/ui/Convolver.qml:171 src/contents/ui/Convolver.qml:206
-msgid "Combine"
-msgstr "კომბინირება"
-
-#: src/contents/ui/Convolver.qml:199
-msgid "Impulses"
-msgstr ""
-
-#: src/contents/ui/Convolver.qml:215 src/plugin_base.cpp:286
-msgid "Spectrum"
-msgstr "სპექტრი"
-
-#: src/contents/ui/Convolver.qml:233 src/contents/ui/Convolver.qml:333
-#: src/contents/ui/Convolver.qml:387 src/contents/ui/PreferencesSheet.qml:232
-#: src/contents/ui/Reverb.qml:67
-msgid "s"
-msgstr ""
-
-#: src/contents/ui/Convolver.qml:247
-msgid "Log scale"
-msgstr ""
-
-#: src/contents/ui/Convolver.qml:354
-msgid "Rate"
-msgstr "სიხშირე"
-
-#: src/contents/ui/Convolver.qml:359 src/contents/ui/Delay.qml:55
-#: src/contents/ui/Delay.qml:66 src/contents/ui/Delay.qml:208
-#: src/contents/ui/Delay.qml:219
-msgid "Samples"
-msgstr "სემპლები"
-
-#: src/contents/ui/Convolver.qml:364
-msgid "Duration"
-msgstr "ხანგრძლოვობა"
-
-#: src/contents/ui/Convolver.qml:406
-#, fuzzy
-msgid "Stereo width"
-msgstr "სტერეოს გაყოფა"
-
-#: src/contents/ui/Convolver.qml:483 src/tags_plugin_name.cpp:26
-msgid "Autogain"
-msgstr ""
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:31
 #, fuzzy
@@ -1019,6 +780,71 @@ msgctxt "@action:button"
 msgid "Close"
 msgstr ""
 
+#: src/contents/ui/Convolver.qml:48
+#, fuzzy
+msgid "Loaded the %1 Convolver impulse."
+msgstr "საზოგადო პრესეტის ძებნა"
+
+#: src/contents/ui/Convolver.qml:50 src/contents/ui/Convolver.qml:317
+msgid "Convolver impulse is not set"
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:54
+msgid "The Convolver is in passthrough mode."
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:56
+#, fuzzy
+msgid "Failed to load the %1 impulse. The Convolver is in passthrough mode."
+msgstr "საზოგადო პრესეტის ძებნა"
+
+#: src/contents/ui/Convolver.qml:126
+msgid "First"
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:139
+msgid "Second"
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:171 src/contents/ui/Convolver.qml:206
+msgid "Combine"
+msgstr "კომბინირება"
+
+#: src/contents/ui/Convolver.qml:199
+msgid "Impulses"
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:215 src/plugin_base.cpp:286
+msgid "Spectrum"
+msgstr "სპექტრი"
+
+#: src/contents/ui/Convolver.qml:247
+msgid "Log scale"
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:354
+msgid "Rate"
+msgstr "სიხშირე"
+
+#: src/contents/ui/Convolver.qml:359 src/contents/ui/Delay.qml:55
+#: src/contents/ui/Delay.qml:66 src/contents/ui/Delay.qml:208
+#: src/contents/ui/Delay.qml:219
+msgid "Samples"
+msgstr "სემპლები"
+
+#: src/contents/ui/Convolver.qml:364
+msgid "Duration"
+msgstr "ხანგრძლოვობა"
+
+#: src/contents/ui/Convolver.qml:406
+#, fuzzy
+msgid "Stereo width"
+msgstr "სტერეოს გაყოფა"
+
+#: src/contents/ui/Convolver.qml:483 src/tags_plugin_name.cpp:26
+msgid "Autogain"
+msgstr ""
+
 #: src/contents/ui/Crossfeed.qml:59
 msgid "Cutoff"
 msgstr ""
@@ -1040,10 +866,6 @@ msgstr ""
 msgid "Presets"
 msgstr "პრესეტები"
 
-#: src/contents/ui/Crystalizer.qml:106
-msgid "Adaptive intensity"
-msgstr ""
-
 #: src/contents/ui/CrystalizerBand.qml:35
 #: src/contents/ui/EqualizerBandMenu.qml:166
 #: src/contents/ui/MultibandCompressor.qml:64
@@ -1058,9 +880,8 @@ msgstr "დადუმება"
 msgid "Bypass"
 msgstr ""
 
-#: src/contents/ui/CrystalizerBand.qml:75 src/contents/ui/EqualizerBand.qml:50
-#: src/contents/ui/PageStreamsEffects.qml:598
-msgid "kHz"
+#: src/contents/ui/Crystalizer.qml:106
+msgid "Adaptive intensity"
 msgstr ""
 
 #: src/contents/ui/DeepFilterNet.qml:32
@@ -1081,10 +902,6 @@ msgstr ""
 
 #: src/contents/ui/DeepFilterNet.qml:134
 msgid "Minimum processing buffer"
-msgstr ""
-
-#: src/contents/ui/DeepFilterNet.qml:141
-msgid "frames"
 msgstr ""
 
 #: src/contents/ui/DeepFilterNet.qml:150
@@ -1145,10 +962,6 @@ msgstr ""
 msgid "F2 level"
 msgstr "დონე"
 
-#: src/contents/ui/Deesser.qml:224
-msgid "dBFS"
-msgstr ""
-
 #: src/contents/ui/Deesser.qml:234
 msgid "F2 peak Q"
 msgstr ""
@@ -1177,18 +990,10 @@ msgstr "დრო"
 msgid "Meters"
 msgstr ""
 
-#: src/contents/ui/Delay.qml:110 src/contents/ui/Delay.qml:263
-msgid "m"
-msgstr ""
-
 #: src/contents/ui/Delay.qml:120 src/contents/ui/Delay.qml:273
 #, fuzzy
 msgid "Centimeters"
 msgstr "ცენტი"
-
-#: src/contents/ui/Delay.qml:128 src/contents/ui/Delay.qml:281
-msgid "cm"
-msgstr ""
 
 #: src/contents/ui/Delay.qml:139 src/contents/ui/Delay.qml:292
 msgid "Temperature"
@@ -1338,10 +1143,114 @@ msgstr ""
 msgid "Input"
 msgstr "შეყვანა"
 
-#: src/contents/ui/EeSpinBox.qml:133 src/contents/ui/EeSpinBox.qml:167
-msgctxt "minus infinity abbreviation"
-msgid "-inf"
+#: src/contents/ui/EqualizerBandMenu.qml:13
+#: src/contents/ui/MultibandCompressor.qml:643
+#: src/contents/ui/MultibandCompressor.qml:914
+#: src/contents/ui/MultibandGate.qml:616 src/contents/ui/MultibandGate.qml:887
+#, fuzzy
+msgid "Band"
+msgstr "გუნდები"
+
+#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
+msgid "Bell"
+msgstr "ზარი"
+
+#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
+#, fuzzy
+msgid "High-shelf"
+msgstr "მაღალსიხშირული ფილტრი"
+
+#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
+msgid "Low-shelf"
 msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
+msgid "Notch"
+msgstr "ამოკვეთა"
+
+#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
+msgid "Resonance"
+msgstr "რეზონანსი"
+
+#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
+msgid "Allpass"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
+#, fuzzy
+msgid "Bandpass"
+msgstr "გუნდი-პასი"
+
+#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
+#, fuzzy
+msgid "Ladder-pass"
+msgstr "დაბალსიხშირული ფილტრი"
+
+#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
+msgid "Ladder-rejection"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:44 src/contents/ui/Filter.qml:63
+msgid "RLC (BT)"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:44 src/contents/ui/Filter.qml:63
+msgid "RLC (MT)"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:44 src/contents/ui/Filter.qml:63
+msgid "BWC (BT)"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:44 src/contents/ui/Filter.qml:63
+msgid "BWC (MT)"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:44 src/contents/ui/Filter.qml:63
+msgid "LRX (BT)"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:44 src/contents/ui/Filter.qml:63
+msgid "LRX (MT)"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:44 src/contents/ui/Filter.qml:63
+msgid "APO (DR)"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:54 src/contents/ui/Filter.qml:87
+msgid "Slope"
+msgstr "დახრა"
+
+#: src/contents/ui/EqualizerBandMenu.qml:75 src/contents/ui/Filter.qml:108
+#: src/contents/ui/MultibandCompressor.qml:173
+#: src/contents/ui/MultibandGate.qml:110 src/contents/ui/PipeWirePage.qml:396
+msgid "Frequency"
+msgstr "სიხშირე"
+
+#: src/contents/ui/EqualizerBandMenu.qml:98 src/contents/ui/Filter.qml:139
+#: src/contents/ui/Limiter.qml:471 src/contents/ui/MultibandCompressor.qml:333
+#: src/contents/ui/MultibandGate.qml:219
+msgid "Gain"
+msgstr "გაძლიერება"
+
+#: src/contents/ui/EqualizerBandMenu.qml:121 src/contents/ui/Filter.qml:155
+msgid "Quality"
+msgstr "ხარისხი"
+
+#: src/contents/ui/EqualizerBandMenu.qml:144 src/contents/ui/Filter.qml:124
+msgid "Width"
+msgstr "სიგანე"
+
+#: src/contents/ui/EqualizerBandMenu.qml:150
+msgid "oct"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:178
+#: src/contents/ui/MultibandCompressor.qml:73
+#: src/contents/ui/MultibandGate.qml:73
+msgid "Solo"
+msgstr "სოლო"
 
 #: src/contents/ui/Equalizer.qml:49 src/contents/ui/Equalizer.qml:89
 #, fuzzy
@@ -1482,115 +1391,6 @@ msgstr ""
 msgid "Export APO"
 msgstr "პრესეტის გატანა"
 
-#: src/contents/ui/EqualizerBandMenu.qml:13
-#: src/contents/ui/MultibandCompressor.qml:643
-#: src/contents/ui/MultibandCompressor.qml:914
-#: src/contents/ui/MultibandGate.qml:616 src/contents/ui/MultibandGate.qml:887
-#, fuzzy
-msgid "Band"
-msgstr "გუნდები"
-
-#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
-msgid "Bell"
-msgstr "ზარი"
-
-#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
-#, fuzzy
-msgid "High-shelf"
-msgstr "მაღალსიხშირული ფილტრი"
-
-#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
-msgid "Low-shelf"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
-msgid "Notch"
-msgstr "ამოკვეთა"
-
-#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
-msgid "Resonance"
-msgstr "რეზონანსი"
-
-#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
-msgid "Allpass"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
-#, fuzzy
-msgid "Bandpass"
-msgstr "გუნდი-პასი"
-
-#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
-#, fuzzy
-msgid "Ladder-pass"
-msgstr "დაბალსიხშირული ფილტრი"
-
-#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
-msgid "Ladder-rejection"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:44 src/contents/ui/Filter.qml:63
-msgid "RLC (BT)"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:44 src/contents/ui/Filter.qml:63
-msgid "RLC (MT)"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:44 src/contents/ui/Filter.qml:63
-msgid "BWC (BT)"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:44 src/contents/ui/Filter.qml:63
-msgid "BWC (MT)"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:44 src/contents/ui/Filter.qml:63
-msgid "LRX (BT)"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:44 src/contents/ui/Filter.qml:63
-msgid "LRX (MT)"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:44 src/contents/ui/Filter.qml:63
-msgid "APO (DR)"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:54 src/contents/ui/Filter.qml:87
-msgid "Slope"
-msgstr "დახრა"
-
-#: src/contents/ui/EqualizerBandMenu.qml:75 src/contents/ui/Filter.qml:108
-#: src/contents/ui/MultibandCompressor.qml:173
-#: src/contents/ui/MultibandGate.qml:110 src/contents/ui/PipeWirePage.qml:396
-msgid "Frequency"
-msgstr "სიხშირე"
-
-#: src/contents/ui/EqualizerBandMenu.qml:98 src/contents/ui/Filter.qml:139
-#: src/contents/ui/Limiter.qml:471 src/contents/ui/MultibandCompressor.qml:333
-#: src/contents/ui/MultibandGate.qml:219
-msgid "Gain"
-msgstr "გაძლიერება"
-
-#: src/contents/ui/EqualizerBandMenu.qml:121 src/contents/ui/Filter.qml:155
-msgid "Quality"
-msgstr "ხარისხი"
-
-#: src/contents/ui/EqualizerBandMenu.qml:144 src/contents/ui/Filter.qml:124
-msgid "Width"
-msgstr "სიგანე"
-
-#: src/contents/ui/EqualizerBandMenu.qml:150
-msgid "oct"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:178
-#: src/contents/ui/MultibandCompressor.qml:73
-#: src/contents/ui/MultibandGate.qml:73
-msgid "Solo"
-msgstr "სოლო"
-
 #: src/contents/ui/Exciter.qml:142
 #, fuzzy
 msgid "Ceil active"
@@ -1711,131 +1511,99 @@ msgid "None"
 msgstr ""
 
 #: src/contents/ui/Limiter.qml:72
-msgid "Half x2/16 bit"
+msgid "Half x2/16 bits"
 msgstr ""
 
 #: src/contents/ui/Limiter.qml:72
-msgid "Half x2/24 bit"
+msgid "Half x2/24 bits"
 msgstr ""
 
 #: src/contents/ui/Limiter.qml:72
-msgid "Half x3/16 bit"
+msgid "Half x3/16 bits"
 msgstr ""
 
 #: src/contents/ui/Limiter.qml:72
-msgid "Half x3/24 bit"
+msgid "Half x3/24 bits"
 msgstr ""
 
 #: src/contents/ui/Limiter.qml:72
-msgid "Half x4/16 bit"
+msgid "Half x4/16 bits"
 msgstr ""
 
 #: src/contents/ui/Limiter.qml:72
-msgid "Half x4/24 bit"
+msgid "Half x4/24 bits"
 msgstr ""
 
 #: src/contents/ui/Limiter.qml:72
-msgid "Half x6/16 bit"
+msgid "Half x6/16 bits"
 msgstr ""
 
 #: src/contents/ui/Limiter.qml:72
-msgid "Half x6/24 bit"
+msgid "Half x6/24 bits"
 msgstr ""
 
 #: src/contents/ui/Limiter.qml:72
-msgid "Half x8/16 bit"
+msgid "Half x8/16 bits"
 msgstr ""
 
 #: src/contents/ui/Limiter.qml:72
-msgid "Half x8/24 bit"
+msgid "Half x8/24 bits"
 msgstr ""
 
 #: src/contents/ui/Limiter.qml:72
-msgid "Full x2/16 bit"
+msgid "Full x2/16 bits"
 msgstr ""
 
 #: src/contents/ui/Limiter.qml:72
-msgid "Full x2/24 bit"
+msgid "Full x2/24 bits"
 msgstr ""
 
 #: src/contents/ui/Limiter.qml:72
-msgid "Full x3/16 bit"
+msgid "Full x3/16 bits"
 msgstr ""
 
 #: src/contents/ui/Limiter.qml:72
-msgid "Full x3/24 bit"
+msgid "Full x3/24 bits"
 msgstr ""
 
 #: src/contents/ui/Limiter.qml:72
-msgid "Full x4/16 bit"
+msgid "Full x4/16 bits"
 msgstr ""
 
 #: src/contents/ui/Limiter.qml:72
-msgid "Full x4/24 bit"
+msgid "Full x4/24 bits"
 msgstr ""
 
 #: src/contents/ui/Limiter.qml:72
-msgid "Full x6/16 bit"
+msgid "Full x6/16 bits"
 msgstr ""
 
 #: src/contents/ui/Limiter.qml:72
-msgid "Full x6/24 bit"
+msgid "Full x6/24 bits"
 msgstr ""
 
 #: src/contents/ui/Limiter.qml:72
-msgid "Full x8/16 bit"
+msgid "Full x8/16 bits"
 msgstr ""
 
 #: src/contents/ui/Limiter.qml:72
-msgid "Full x8/24 bit"
+msgid "Full x8/24 bits"
 msgstr ""
 
 #: src/contents/ui/Limiter.qml:72
 #, fuzzy
-msgid "True peak/16 bit"
+msgid "True peak/16 bits"
 msgstr "ნამდვილი პიკი"
 
 #: src/contents/ui/Limiter.qml:72
 #, fuzzy
-msgid "True peak/24 bit"
+msgid "True peak/24 bits"
 msgstr "ნამდვილი პიკი"
 
 #: src/contents/ui/Limiter.qml:82
 #, fuzzy
 msgid "Dithering"
 msgstr "დიზერი"
-
-#: src/contents/ui/Limiter.qml:86
-msgid "7 bit"
-msgstr ""
-
-#: src/contents/ui/Limiter.qml:86
-msgid "8 bit"
-msgstr ""
-
-#: src/contents/ui/Limiter.qml:86
-msgid "11 bit"
-msgstr ""
-
-#: src/contents/ui/Limiter.qml:86
-msgid "12 bit"
-msgstr ""
-
-#: src/contents/ui/Limiter.qml:86
-msgid "15 bit"
-msgstr ""
-
-#: src/contents/ui/Limiter.qml:86
-msgid "16 bit"
-msgstr ""
-
-#: src/contents/ui/Limiter.qml:86
-msgid "23 bit"
-msgstr ""
-
-#: src/contents/ui/Limiter.qml:86
-msgid "24 bit"
-msgstr ""
 
 #: src/contents/ui/Limiter.qml:98 src/tags_plugin_name.cpp:43
 msgid "Limiter"
@@ -2886,80 +2654,6 @@ msgstr "პრესეტის შემოტანა"
 msgid "Delete this preset"
 msgstr "პრესეტის შემოტანა"
 
-#: src/contents/ui/RNNoise.qml:44
-#, fuzzy
-msgid "Imported a new RNNoise model file."
-msgstr "საზოგადო პრესეტის ძებნა"
-
-#: src/contents/ui/RNNoise.qml:46
-#, fuzzy
-msgid "Failed to import the RNNoise model file."
-msgstr "საზოგადო პრესეტის ძებნა"
-
-#: src/contents/ui/RNNoise.qml:57 src/contents/ui/RNNoise.qml:68
-#: src/contents/ui/RNNoise.qml:282 src/contents/ui/RNNoise.qml:284
-#, fuzzy
-msgid "Standard RNNoise model"
-msgstr "საზოგადო პრესეტის ძებნა"
-
-#: src/contents/ui/RNNoise.qml:59
-msgid "Standard RNNoise model loaded."
-msgstr ""
-
-#: src/contents/ui/RNNoise.qml:64 src/contents/ui/RNNoise.qml:286
-#, fuzzy
-msgid "Using %1 Model"
-msgstr "ვიყენებ {}"
-
-#: src/contents/ui/RNNoise.qml:66
-#, fuzzy
-msgid "Loaded the %1 RNNoise model."
-msgstr "საზოგადო პრესეტის ძებნა"
-
-#: src/contents/ui/RNNoise.qml:70
-#, fuzzy
-msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
-msgstr "საზოგადო პრესეტის ძებნა"
-
-#: src/contents/ui/RNNoise.qml:89 src/contents/ui/Speex.qml:98
-#, fuzzy
-msgid "Voice detection"
-msgstr "ხმაურის შემცირება"
-
-#: src/contents/ui/RNNoise.qml:126
-#, fuzzy
-msgid "Wet level"
-msgstr "შეყვანის მოწყობილობა"
-
-#: src/contents/ui/RNNoise.qml:166
-msgid "Use the Standard model"
-msgstr ""
-
-#: src/contents/ui/RNNoise.qml:177
-#, fuzzy
-msgid "User Models"
-msgstr "მოდელები"
-
-#: src/contents/ui/RNNoise.qml:243
-#, fuzzy
-msgid "Delete this model"
-msgstr "პრესეტის შემოტანა"
-
-#: src/contents/ui/RNNoise.qml:248
-#, fuzzy
-msgid "Removed the %1 RNNoise model."
-msgstr "საზოგადო პრესეტის ძებნა"
-
-#: src/contents/ui/RNNoise.qml:250
-#, fuzzy
-msgid "Failed to remove the %1 RNNoise model."
-msgstr "საზოგადო პრესეტის ძებნა"
-
-#: src/contents/ui/RNNoise.qml:319
-#, fuzzy
-msgid "Import model"
-msgstr "შემოტანა"
-
 #: src/contents/ui/Reverb.qml:47
 #, fuzzy
 msgid "Room size"
@@ -3043,6 +2737,80 @@ msgstr "დისკო"
 #: src/contents/ui/Reverb.qml:278
 msgid "Large occupied hall"
 msgstr ""
+
+#: src/contents/ui/RNNoise.qml:44
+#, fuzzy
+msgid "Imported a new RNNoise model file."
+msgstr "საზოგადო პრესეტის ძებნა"
+
+#: src/contents/ui/RNNoise.qml:46
+#, fuzzy
+msgid "Failed to import the RNNoise model file."
+msgstr "საზოგადო პრესეტის ძებნა"
+
+#: src/contents/ui/RNNoise.qml:57 src/contents/ui/RNNoise.qml:68
+#: src/contents/ui/RNNoise.qml:282 src/contents/ui/RNNoise.qml:284
+#, fuzzy
+msgid "Standard RNNoise model"
+msgstr "საზოგადო პრესეტის ძებნა"
+
+#: src/contents/ui/RNNoise.qml:59
+msgid "Standard RNNoise model loaded."
+msgstr ""
+
+#: src/contents/ui/RNNoise.qml:64 src/contents/ui/RNNoise.qml:286
+#, fuzzy
+msgid "Using %1 Model"
+msgstr "ვიყენებ {}"
+
+#: src/contents/ui/RNNoise.qml:66
+#, fuzzy
+msgid "Loaded the %1 RNNoise model."
+msgstr "საზოგადო პრესეტის ძებნა"
+
+#: src/contents/ui/RNNoise.qml:70
+#, fuzzy
+msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
+msgstr "საზოგადო პრესეტის ძებნა"
+
+#: src/contents/ui/RNNoise.qml:89 src/contents/ui/Speex.qml:98
+#, fuzzy
+msgid "Voice detection"
+msgstr "ხმაურის შემცირება"
+
+#: src/contents/ui/RNNoise.qml:126
+#, fuzzy
+msgid "Wet level"
+msgstr "შეყვანის მოწყობილობა"
+
+#: src/contents/ui/RNNoise.qml:166
+msgid "Use the Standard model"
+msgstr ""
+
+#: src/contents/ui/RNNoise.qml:177
+#, fuzzy
+msgid "User Models"
+msgstr "მოდელები"
+
+#: src/contents/ui/RNNoise.qml:243
+#, fuzzy
+msgid "Delete this model"
+msgstr "პრესეტის შემოტანა"
+
+#: src/contents/ui/RNNoise.qml:248
+#, fuzzy
+msgid "Removed the %1 RNNoise model."
+msgstr "საზოგადო პრესეტის ძებნა"
+
+#: src/contents/ui/RNNoise.qml:250
+#, fuzzy
+msgid "Failed to remove the %1 RNNoise model."
+msgstr "საზოგადო პრესეტის ძებნა"
+
+#: src/contents/ui/RNNoise.qml:319
+#, fuzzy
+msgid "Import model"
+msgstr "შემოტანა"
 
 #: src/contents/ui/ShortcutsSheet.qml:47
 msgid "Show help"
@@ -3187,31 +2955,31 @@ msgstr "სტერეოს გაყოფა"
 msgid "Stereo phase"
 msgstr "სტერეოს გაყოფა"
 
-#: src/main.cpp:310
+#: src/main.cpp:311
 #, fuzzy
 msgid "Global audio effects"
 msgstr "მალ_სახმობები"
 
-#: src/main.cpp:311
+#: src/main.cpp:312
 msgid "© 2017-2025 EasyEffects Team"
 msgstr ""
 
-#: src/main.cpp:313
+#: src/main.cpp:314
 msgid "Wellington Wallace"
 msgstr ""
 
-#: src/main.cpp:313
+#: src/main.cpp:314
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "კონვერტი"
 
-#: src/main.cpp:317
+#: src/main.cpp:318
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 
-#: src/main.cpp:317
+#: src/main.cpp:318
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
@@ -3347,41 +3115,103 @@ msgstr ""
 msgid "Stereo Tools"
 msgstr ""
 
-#: src/units.hpp:42
-msgctxt "decibel"
+#: src/units.hpp:54
+#, fuzzy
+msgctxt "left channel abbreviation (single letter)"
+msgid "L"
+msgstr "მხ"
+
+#: src/units.hpp:55
+#, fuzzy
+msgctxt "left channel abbreviation (single letter)"
+msgid "R"
+msgstr "მჯ"
+
+#: src/units.hpp:56
+msgctxt "decibel unit abbreviation"
 msgid "dB"
 msgstr ""
 
-#: src/units.hpp:43
-msgctxt "seconds"
+#: src/units.hpp:57
+msgctxt "decibel full scale unit abbreviation"
+msgid "dBFS"
+msgstr ""
+
+#: src/units.hpp:58
+msgctxt "decibel per octaves unit abbreviation"
+msgid "dB/oct"
+msgstr ""
+
+#: src/units.hpp:59
+msgctxt "thousand abbreviation (single letter)"
+msgid "k"
+msgstr ""
+
+#: src/units.hpp:60
+msgctxt "seconds unit abbreviation"
 msgid "s"
 msgstr ""
 
-#: src/units.hpp:44
-msgctxt "milliseconds"
+#: src/units.hpp:61
+msgctxt "milliseconds unit abbreviation"
 msgid "ms"
 msgstr ""
 
-#: src/units.hpp:45
-msgctxt "kiloHertz"
+#: src/units.hpp:62
+msgctxt "Hertz unit abbreviation"
+msgid "Hz"
+msgstr ""
+
+#: src/units.hpp:63
+msgctxt "kiloHertz unit abbreviation"
 msgid "kHz"
 msgstr ""
 
-#: src/units.hpp:46
-msgctxt "percentage"
+#: src/units.hpp:64
+msgctxt "percentage symbol"
 msgid "%"
 msgstr ""
 
-#: src/units.hpp:47
-msgctxt "loudness units full scale"
+#: src/units.hpp:65
+msgctxt "loudness full scale unit abbreviation"
 msgid "LUFS"
 msgstr ""
 
-#: src/units.hpp:48
+#: src/units.hpp:66
 #, fuzzy
-msgctxt "loudness units"
+msgctxt "loudness unit abbreviation"
 msgid "LU"
 msgstr "მხ"
+
+#: src/units.hpp:67
+msgctxt "meter unit abbreviation"
+msgid "m"
+msgstr ""
+
+#: src/units.hpp:68
+msgctxt "centimeter unit abbreviation"
+msgid "cm"
+msgstr ""
+
+#: src/units.hpp:69
+msgctxt "degree Celsius unit abbreviation"
+msgid "°C"
+msgstr ""
+
+#: src/units.hpp:70
+msgctxt "bit unit (plural)"
+msgid "bits"
+msgstr ""
+
+#: src/units.hpp:71
+msgctxt "frame unit (plural)"
+msgid "frames"
+msgstr ""
+
+#: src/units.hpp:72
+msgctxt "minus infinity abbreviation"
+msgid "-inf"
+msgstr ""
 
 #: com.github.wwmm.easyeffects.desktop.in.template.h:1
 msgid "Equalizer, Compressor and Other Audio Effects"
