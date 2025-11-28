@@ -31,6 +31,7 @@ class Units : public QObject {
 
   Q_PROPERTY(QString dB MEMBER dB CONSTANT)
   Q_PROPERTY(QString dBFS MEMBER dBFS CONSTANT)
+  Q_PROPERTY(QString dBoct MEMBER dBoct CONSTANT)
   Q_PROPERTY(QString s MEMBER s CONSTANT)
   Q_PROPERTY(QString ms MEMBER ms CONSTANT)
   Q_PROPERTY(QString hz MEMBER hz CONSTANT)
@@ -45,6 +46,7 @@ class Units : public QObject {
   explicit Units(QObject* parent = nullptr) : QObject(parent) {
     dB = ki18nc("decibel unit abbreviation", "dB").toString();
     dBFS = ki18nc("decibel full scale unit abbreviation", "dBFS").toString();
+    dBoct = ki18nc("decibel per octaves unit abbreviation", "dB/oct").toString();
     s = ki18nc("seconds unit abbreviation", "s").toString();
     ms = ki18nc("milliseconds unit abbreviation", "ms").toString();
     hz = ki18nc("Hertz unit abbreviation", "Hz").toString();
@@ -59,6 +61,7 @@ class Units : public QObject {
  private:
   QString dB;
   QString dBFS;
+  QString dBoct;
   QString s;
   QString ms;
   QString hz;

@@ -351,7 +351,7 @@ Kirigami.ScrollablePage {
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: expanderPage.pluginDB.hpfMode
                         editable: false
-                        model: [i18n("Off"), i18n("12 dB/oct"), i18n("24 dB/oct"), i18n("36 dB/oct")]// qmllint disable
+                        model: [i18n("Off"), `12 ${Units.dBoct}`, `24 ${Units.dBoct}`, `36 ${Units.dBoct}`]// qmllint disable
                         onActivated: idx => {
                             expanderPage.pluginDB.hpfMode = idx;
                         }
@@ -365,7 +365,7 @@ Kirigami.ScrollablePage {
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: expanderPage.pluginDB.lpfMode
                         editable: false
-                        model: [i18n("Off"), i18n("12 dB/oct"), i18n("24 dB/oct"), i18n("36 dB/oct")]// qmllint disable
+                        model: [i18n("Off"), `12 ${Units.dBoct}`, `24 ${Units.dBoct}`, `36 ${Units.dBoct}`]// qmllint disable
                         onActivated: idx => {
                             expanderPage.pluginDB.lpfMode = idx;
                         }
