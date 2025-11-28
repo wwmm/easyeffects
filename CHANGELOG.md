@@ -214,7 +214,7 @@
 ### Features:
 - The loudness plugin exposes the ISO 226:2023 standard that is now available in the LSP plugin.
 - Updated translations
-- Performance optmizations to the spectrum plugin and the LADSPA wrapper
+- Performance optimizations to the spectrum plugin and the LADSPA wrapper
 
 ### Bug fixes:
 - We were not locking PipeWire's thread main loop before setting a  stream volume and mute controls. THis could cause these operations to fail in some situations
@@ -465,7 +465,7 @@
 - Small improvements to the echo canceller.
 
 ### Bug fixes:
-- The echo canceller probes were not being linked to the soundcard after the move to multiple filters intances. This should be fixed now.
+- The echo canceller probes were not being linked to the soundcard after the move to multiple filters instances. This should be fixed now.
 
 
 
@@ -475,7 +475,7 @@
 
 ### Features:
 - It is now possible to add more than one filter instance to the effects pipeline.
-- A new `Speech Processor` plugin based on the Speex library was added. Besides providing noise suppression it also can detect voice activity. It is a decent alternative to the cases whre the rnnoise library does not work well.
+- A new `Speech Processor` plugin based on the Speex library was added. Besides providing noise suppression it also can detect voice activity. It is a decent alternative to the cases where the rnnoise library does not work well.
 - Improved compatibility with Linux Studio Plugins `1.2.3`.
 - GraphicEQ presets can be imported into the Equalizer effect.
 - The application name has been changed to `Easy Effects` to adhere to the naming conventions of GNOME Human Interface Guidelines.

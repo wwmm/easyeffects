@@ -27,7 +27,7 @@ Description:
 - Bug fixes∶
 - Fixed a bug that occurred in the import of APO/GraphicEq presets. In certain conditions, when Equalizer Split Channels mode was enabled, the preset imported to a single channel was altering the configuration in the other channel.
 - Fixed a bug that caused Easy Effects to sometimes get the wrong default output device.
-- Fixed a bug tha caused the autoloading window to get the wrong device route when creating a profile.
+- Fixed a bug that caused the autoloading window to get the wrong device route when creating a profile.
 
 - Other notes∶
 - Some of the UI elements that were built with the Overlay Sheets have been ported to use the Kirigami Dialogs. This should help us to better follow KDE HIG. But more work is still needed.
@@ -488,7 +488,7 @@ Date: 2022-11-02
 Description:
 - Features∶
 - It is now possible to add more than one filter instance to the effects pipeline.
-- A new `Speech Processor` plugin based on the Speex library was added. Besides providing noise suppression it also can detect voice activity. It is a decent alternative to the cases whre the rnnoise library does not work well.
+- A new `Speech Processor` plugin based on the Speex library was added. Besides providing noise suppression it also can detect voice activity. It is a decent alternative to the cases where the rnnoise library does not work well.
 - Improved compatibility with Linux Studio Plugins `1.2.3`.
 - GraphicEQ presets can be imported into the Equalizer effect.
 - The application name has been changed to `Easy Effects` to adhere to the naming conventions of GNOME Human Interface Guidelines.

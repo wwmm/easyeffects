@@ -1,7 +1,7 @@
-# This PKGBUILD is intented for our github workflows. For building your custom packages use the file PKGBUILD_AUR
+# This PKGBUILD is intended for our github workflows. For building your custom packages use the file PKGBUILD_AUR
 
 # Contributor: Wellington <wellingtonwallace@gmail.com>
-# Maintainer: Upstream https://github.com/wwmm/easyeffects 
+# Maintainer: Upstream https://github.com/wwmm/easyeffects
 
 pkgname=easyeffects-git
 pkgver=pkgvernotupdated
@@ -11,27 +11,27 @@ arch=(x86_64)
 url='https://github.com/wwmm/easyeffects'
 license=('GPL3')
 depends=(
-  'kcolorscheme' 
-  'kirigami' 
+  'kcolorscheme'
+  'kirigami'
   'kirigami-addons'
   'kiconthemes'
   'kconfigwidgets'
-  'qqc2-desktop-style' 
-  'breeze-icons' 
+  'qqc2-desktop-style'
+  'breeze-icons'
   'qt6-base'
-  'qt6-graphs' 
+  'qt6-graphs'
   'qt6-webengine'
-  'pipewire-pulse' 
+  'pipewire-pulse'
   'lilv'
   'libsamplerate'
-  'libsndfile' 
-  'zita-convolver' 
-  'libebur128' 
-  'rnnoise' 
-  'soundtouch' 
-  'libbs2b' 
-  'nlohmann-json' 
-  'tbb' 
+  'libsndfile'
+  'zita-convolver'
+  'libebur128'
+  'rnnoise'
+  'soundtouch'
+  'libbs2b'
+  'nlohmann-json'
+  'tbb'
   'speexdsp'
   'gsl'
   'libportal-qt6'
@@ -52,7 +52,7 @@ sha512sums=()
 pkgver() {
   description=$(git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')
   # if in github actions environment
-  if test -f "../GITHUB_COMMIT_DESC"; then 
+  if test -f "../GITHUB_COMMIT_DESC"; then
     # remove last commit from git describe output (which may sometimes be a merge commit),
     # and replace it with a human friendly version
     description_short=$(echo "$description" | sed -r 's/(.*)\..*/\1/')
