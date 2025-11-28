@@ -25,6 +25,7 @@
 #include <qtmetamacros.h>
 #include <qvariant.h>
 #include <QMap>
+#include <QSet>
 #include <QString>
 #include <QTimer>
 #include "config.h"
@@ -163,6 +164,8 @@ void Manager::resetAll() const {
 void Manager::create_plugin_db(const QString& parentGroup,
                                const auto& plugins_list,
                                QMap<QString, QVariant>& plugins_map) {
+  QSet<QString> active_keys;
+
   auto makeKey = [&](const QString& base, const QString& id, const QString& suffix = QString()) {
     return suffix.isEmpty() ? base + "#" + id : base + "#" + id + "#" + suffix;
   };
@@ -177,106 +180,160 @@ void Manager::create_plugin_db(const QString& parentGroup,
     auto id = tags::plugin_name::get_id(name);
 
     if (name.startsWith(tags::plugin_name::BaseName::autogain)) {
-      ensureExists(makeKey(tags::plugin_name::BaseName::autogain, id),
-                   [&] { return new db::Autogain(parentGroup, id); });
+      const auto key = makeKey(tags::plugin_name::BaseName::autogain, id);
+      ensureExists(key, [&] { return new db::Autogain(parentGroup, id); });
+      active_keys.insert(key);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::bassEnhancer)) {
-      ensureExists(makeKey(tags::plugin_name::BaseName::bassEnhancer, id),
-                   [&] { return new db::BassEnhancer(parentGroup, id); });
+      const auto key = makeKey(tags::plugin_name::BaseName::bassEnhancer, id);
+      ensureExists(key, [&] { return new db::BassEnhancer(parentGroup, id); });
+      active_keys.insert(key);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::bassLoudness)) {
-      ensureExists(makeKey(tags::plugin_name::BaseName::bassLoudness, id),
-                   [&] { return new db::BassLoudness(parentGroup, id); });
+      const auto key = makeKey(tags::plugin_name::BaseName::bassLoudness, id);
+      ensureExists(key, [&] { return new db::BassLoudness(parentGroup, id); });
+      active_keys.insert(key);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::compressor)) {
-      ensureExists(makeKey(tags::plugin_name::BaseName::compressor, id),
-                   [&] { return new db::Compressor(parentGroup, id); });
+      const auto key = makeKey(tags::plugin_name::BaseName::compressor, id);
+      ensureExists(key, [&] { return new db::Compressor(parentGroup, id); });
+      active_keys.insert(key);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::convolver)) {
-      ensureExists(makeKey(tags::plugin_name::BaseName::convolver, id),
-                   [&] { return new db::Convolver(parentGroup, id); });
+      const auto key = makeKey(tags::plugin_name::BaseName::convolver, id);
+      ensureExists(key, [&] { return new db::Convolver(parentGroup, id); });
+      active_keys.insert(key);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::crossfeed)) {
-      ensureExists(makeKey(tags::plugin_name::BaseName::crossfeed, id),
-                   [&] { return new db::Crossfeed(parentGroup, id); });
+      const auto key = makeKey(tags::plugin_name::BaseName::crossfeed, id);
+      ensureExists(key, [&] { return new db::Crossfeed(parentGroup, id); });
+      active_keys.insert(key);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::crystalizer)) {
-      ensureExists(makeKey(tags::plugin_name::BaseName::crystalizer, id),
-                   [&] { return new db::Crystalizer(parentGroup, id); });
+      const auto key = makeKey(tags::plugin_name::BaseName::crystalizer, id);
+      ensureExists(key, [&] { return new db::Crystalizer(parentGroup, id); });
+      active_keys.insert(key);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::delay)) {
-      ensureExists(makeKey(tags::plugin_name::BaseName::delay, id), [&] { return new db::Delay(parentGroup, id); });
+      const auto key = makeKey(tags::plugin_name::BaseName::delay, id);
+      ensureExists(key, [&] { return new db::Delay(parentGroup, id); });
+      active_keys.insert(key);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::deepfilternet)) {
-      ensureExists(makeKey(tags::plugin_name::BaseName::deepfilternet, id),
-                   [&] { return new db::DeepFilterNet(parentGroup, id); });
+      const auto key = makeKey(tags::plugin_name::BaseName::deepfilternet, id);
+      ensureExists(key, [&] { return new db::DeepFilterNet(parentGroup, id); });
+      active_keys.insert(key);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::deesser)) {
-      ensureExists(makeKey(tags::plugin_name::BaseName::deesser, id), [&] { return new db::Deesser(parentGroup, id); });
+      const auto key = makeKey(tags::plugin_name::BaseName::deesser, id);
+      ensureExists(key, [&] { return new db::Deesser(parentGroup, id); });
+      active_keys.insert(key);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::echoCanceller)) {
-      ensureExists(makeKey(tags::plugin_name::BaseName::echoCanceller, id),
-                   [&] { return new db::EchoCanceller(parentGroup, id); });
+      const auto key = makeKey(tags::plugin_name::BaseName::echoCanceller, id);
+      ensureExists(key, [&] { return new db::EchoCanceller(parentGroup, id); });
+      active_keys.insert(key);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::equalizer)) {
-      ensureExists(makeKey(tags::plugin_name::BaseName::equalizer, id),
-                   [&] { return new db::Equalizer(parentGroup, id); });
-      ensureExists(makeKey(tags::plugin_name::BaseName::equalizer, id, "left"),
-                   [&] { return new db::EqualizerChannel(parentGroup, id, "left"); });
-      ensureExists(makeKey(tags::plugin_name::BaseName::equalizer, id, "right"),
-                   [&] { return new db::EqualizerChannel(parentGroup, id, "right"); });
+      const auto base_key = makeKey(tags::plugin_name::BaseName::equalizer, id);
+      const auto left_key = makeKey(tags::plugin_name::BaseName::equalizer, id, "left");
+      const auto right_key = makeKey(tags::plugin_name::BaseName::equalizer, id, "right");
+
+      ensureExists(base_key, [&] { return new db::Equalizer(parentGroup, id); });
+      ensureExists(left_key, [&] { return new db::EqualizerChannel(parentGroup, id, "left"); });
+      ensureExists(right_key, [&] { return new db::EqualizerChannel(parentGroup, id, "right"); });
+
+      active_keys.insert(base_key);
+      active_keys.insert(left_key);
+      active_keys.insert(right_key);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::exciter)) {
-      ensureExists(makeKey(tags::plugin_name::BaseName::exciter, id), [&] { return new db::Exciter(parentGroup, id); });
+      const auto key = makeKey(tags::plugin_name::BaseName::exciter, id);
+      ensureExists(key, [&] { return new db::Exciter(parentGroup, id); });
+      active_keys.insert(key);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::expander)) {
-      ensureExists(makeKey(tags::plugin_name::BaseName::expander, id),
-                   [&] { return new db::Expander(parentGroup, id); });
+      const auto key = makeKey(tags::plugin_name::BaseName::expander, id);
+      ensureExists(key, [&] { return new db::Expander(parentGroup, id); });
+      active_keys.insert(key);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::filter)) {
-      ensureExists(makeKey(tags::plugin_name::BaseName::filter, id), [&] { return new db::Filter(parentGroup, id); });
+      const auto key = makeKey(tags::plugin_name::BaseName::filter, id);
+      ensureExists(key, [&] { return new db::Filter(parentGroup, id); });
+      active_keys.insert(key);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::gate)) {
-      ensureExists(makeKey(tags::plugin_name::BaseName::gate, id), [&] { return new db::Gate(parentGroup, id); });
+      const auto key = makeKey(tags::plugin_name::BaseName::gate, id);
+      ensureExists(key, [&] { return new db::Gate(parentGroup, id); });
+      active_keys.insert(key);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::levelMeter)) {
-      ensureExists(makeKey(tags::plugin_name::BaseName::levelMeter, id),
-                   [&] { return new db::LevelMeter(parentGroup, id); });
+      const auto key = makeKey(tags::plugin_name::BaseName::levelMeter, id);
+      ensureExists(key, [&] { return new db::LevelMeter(parentGroup, id); });
+      active_keys.insert(key);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::limiter)) {
-      ensureExists(makeKey(tags::plugin_name::BaseName::limiter, id), [&] { return new db::Limiter(parentGroup, id); });
+      const auto key = makeKey(tags::plugin_name::BaseName::limiter, id);
+      ensureExists(key, [&] { return new db::Limiter(parentGroup, id); });
+      active_keys.insert(key);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::loudness)) {
-      ensureExists(makeKey(tags::plugin_name::BaseName::loudness, id),
-                   [&] { return new db::Loudness(parentGroup, id); });
+      const auto key = makeKey(tags::plugin_name::BaseName::loudness, id);
+      ensureExists(key, [&] { return new db::Loudness(parentGroup, id); });
+      active_keys.insert(key);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::maximizer)) {
-      ensureExists(makeKey(tags::plugin_name::BaseName::maximizer, id),
-                   [&] { return new db::Maximizer(parentGroup, id); });
+      const auto key = makeKey(tags::plugin_name::BaseName::maximizer, id);
+      ensureExists(key, [&] { return new db::Maximizer(parentGroup, id); });
+      active_keys.insert(key);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::multibandCompressor)) {
-      ensureExists(makeKey(tags::plugin_name::BaseName::multibandCompressor, id),
-                   [&] { return new db::MultibandCompressor(parentGroup, id); });
+      const auto key = makeKey(tags::plugin_name::BaseName::multibandCompressor, id);
+      ensureExists(key, [&] { return new db::MultibandCompressor(parentGroup, id); });
+      active_keys.insert(key);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::multibandGate)) {
-      ensureExists(makeKey(tags::plugin_name::BaseName::multibandGate, id),
-                   [&] { return new db::MultibandGate(parentGroup, id); });
+      const auto key = makeKey(tags::plugin_name::BaseName::multibandGate, id);
+      ensureExists(key, [&] { return new db::MultibandGate(parentGroup, id); });
+      active_keys.insert(key);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::pitch)) {
-      ensureExists(makeKey(tags::plugin_name::BaseName::pitch, id), [&] { return new db::Pitch(parentGroup, id); });
+      const auto key = makeKey(tags::plugin_name::BaseName::pitch, id);
+      ensureExists(key, [&] { return new db::Pitch(parentGroup, id); });
+      active_keys.insert(key);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::reverb)) {
-      ensureExists(makeKey(tags::plugin_name::BaseName::reverb, id), [&] { return new db::Reverb(parentGroup, id); });
+      const auto key = makeKey(tags::plugin_name::BaseName::reverb, id);
+      ensureExists(key, [&] { return new db::Reverb(parentGroup, id); });
+      active_keys.insert(key);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::rnnoise)) {
-      ensureExists(makeKey(tags::plugin_name::BaseName::rnnoise, id), [&] { return new db::RNNoise(parentGroup, id); });
+      const auto key = makeKey(tags::plugin_name::BaseName::rnnoise, id);
+      ensureExists(key, [&] { return new db::RNNoise(parentGroup, id); });
+      active_keys.insert(key);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::speex)) {
-      ensureExists(makeKey(tags::plugin_name::BaseName::speex, id), [&] { return new db::Speex(parentGroup, id); });
+      const auto key = makeKey(tags::plugin_name::BaseName::speex, id);
+      ensureExists(key, [&] { return new db::Speex(parentGroup, id); });
+      active_keys.insert(key);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::stereoTools)) {
-      ensureExists(makeKey(tags::plugin_name::BaseName::stereoTools, id),
-                   [&] { return new db::StereoTools(parentGroup, id); });
+      const auto key = makeKey(tags::plugin_name::BaseName::stereoTools, id);
+      ensureExists(key, [&] { return new db::StereoTools(parentGroup, id); });
+      active_keys.insert(key);
+    }
+  }
+
+  for (auto it = plugins_map.begin(); it != plugins_map.end();) {
+    if (!active_keys.contains(it.key())) {
+      auto value = it.value();
+      if (value.canConvert<KConfigSkeleton*>()) {
+        delete value.value<KConfigSkeleton*>();
+      }
+
+      it = plugins_map.erase(it);
+    } else {
+      ++it;
     }
   }
 
