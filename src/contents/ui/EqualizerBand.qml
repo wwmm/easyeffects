@@ -47,7 +47,7 @@ Controls.ItemDelegate {
                 if (f < 1000) {
                     return Common.toLocaleLabel(f, 0, i18n("Hz"));
                 } else {
-                    return Common.toLocaleLabel(f * 0.001, 1, i18n("kHz"));
+                    return Common.toLocaleLabel(f * 0.001, 1, Units.kHz);
                 }
             }
             enabled: delegate.bandDB[delegate.bandTypeName] !== 0 // disable when filter is Off

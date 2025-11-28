@@ -595,7 +595,7 @@ Kirigami.Page {
 
                         const cssFontColor = `style="color:${Kirigami.Theme.textColor}"`;
 
-                        actionRateValue.text = `<pre ${cssFontColor}> <span ${cssFontWeight}>${rate}</span> ${i18n("kHz")} </pre>`;
+                        actionRateValue.text = `<pre ${cssFontColor}> <span ${cssFontWeight}>${rate}</span> ${Units.kHz} </pre>`;
                         actionLatencyValue.text = `<pre ${cssFontColor}> ${styledLatency} ${Units.ms} </pre>`;
                         actionLevelValue.text = `<pre ${cssFontColor}> ${styledLocaleLeft} ${styledLocaleRight} ${Units.dB}</pre>`;
                     }
