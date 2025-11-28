@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-27 22:50+0000\n"
+"POT-Creation-Date: 2025-11-28 00:47+0000\n"
 "PO-Revision-Date: 2025-11-27 05:01+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
@@ -3175,6 +3175,46 @@ msgstr "語音處理器"
 #: src/tags_plugin_name.cpp:52
 msgid "Stereo Tools"
 msgstr "立體聲工具"
+
+#: src/units.hpp:42
+#, fuzzy
+msgctxt "decibel"
+msgid "dB"
+msgstr "dB"
+
+#: src/units.hpp:43
+#, fuzzy
+msgctxt "seconds"
+msgid "s"
+msgstr "s"
+
+#: src/units.hpp:44
+#, fuzzy
+msgctxt "milliseconds"
+msgid "ms"
+msgstr "ms"
+
+#: src/units.hpp:45
+#, fuzzy
+msgctxt "kiloHertz"
+msgid "kHz"
+msgstr "kHz"
+
+#: src/units.hpp:46
+msgctxt "percentage"
+msgid "%"
+msgstr ""
+
+#: src/units.hpp:47
+msgctxt "loudness units full scale"
+msgid "LUFS"
+msgstr ""
+
+#: src/units.hpp:48
+#, fuzzy
+msgctxt "loudness units"
+msgid "LU"
+msgstr "左"
 
 #: com.github.wwmm.easyeffects.desktop.in.template.h:1
 msgid "Equalizer, Compressor and Other Audio Effects"

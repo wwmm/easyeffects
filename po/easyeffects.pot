@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-27 22:50+0000\n"
+"POT-Creation-Date: 2025-11-28 00:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3152,6 +3152,41 @@ msgstr ""
 
 #: src/tags_plugin_name.cpp:52
 msgid "Stereo Tools"
+msgstr ""
+
+#: src/units.hpp:42
+msgctxt "decibel"
+msgid "dB"
+msgstr ""
+
+#: src/units.hpp:43
+msgctxt "seconds"
+msgid "s"
+msgstr ""
+
+#: src/units.hpp:44
+msgctxt "milliseconds"
+msgid "ms"
+msgstr ""
+
+#: src/units.hpp:45
+msgctxt "kiloHertz"
+msgid "kHz"
+msgstr ""
+
+#: src/units.hpp:46
+msgctxt "percentage"
+msgid "%"
+msgstr ""
+
+#: src/units.hpp:47
+msgctxt "loudness units full scale"
+msgid "LUFS"
+msgstr ""
+
+#: src/units.hpp:48
+msgctxt "loudness units"
+msgid "LU"
 msgstr ""
 
 #: com.github.wwmm.easyeffects.desktop.in.template.h:1
