@@ -257,7 +257,7 @@ Kirigami.OverlaySheet {
 
             RowLayout {
                 Kirigami.Icon {
-                    source: "configure-shortcuts-symbolic"
+                    source: "input-keyboard-symbolic"
                 }
 
                 Kirigami.Heading {
@@ -362,7 +362,7 @@ Kirigami.OverlaySheet {
         Kirigami.Icon {
             id: headerIcon
 
-            source: "configure-shortcuts-symbolic"
+            source: "input-keyboard-symbolic"
         }
 
         Kirigami.Heading {

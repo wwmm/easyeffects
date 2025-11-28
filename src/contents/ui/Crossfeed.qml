@@ -94,21 +94,21 @@ Kirigami.ScrollablePage {
         title: i18n("Crossfeed Presets") // qmllint disable
         actions: [
             Kirigami.Action {
-                icon.name: "bookmarks-symbolic"
+                icon.name: "user-bookmarks-symbolic"
                 text: i18n("Default") // qmllint disable
                 onTriggered: {
                     crossfeedPage.applyPreset("default");
                 }
             },
             Kirigami.Action {
-                icon.name: "bookmarks-symbolic"
+                icon.name: "user-bookmarks-symbolic"
                 text: "Cmoy"
                 onTriggered: {
                     crossfeedPage.applyPreset("cmoy");
                 }
             },
             Kirigami.Action {
-                icon.name: "bookmarks-symbolic"
+                icon.name: "user-bookmarks-symbolic"
                 text: "Jmeier"
                 onTriggered: {
                     crossfeedPage.applyPreset("jmeier");
@@ -143,7 +143,7 @@ Kirigami.ScrollablePage {
             actions: [
                 Kirigami.Action {
                     text: i18n("Presets") // qmllint disable
-                    icon.name: "bookmarks-symbolic"
+                    icon.name: "user-bookmarks-symbolic"
                     enabled: DbMain.showNativePluginUi
                     onTriggered: {
                         presetsDialog.open();

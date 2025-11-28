@@ -69,7 +69,7 @@ Kirigami.Dialog {
                 implicitHeight: Kirigami.Units.iconSizes.sizeForLabels
                 implicitWidth: Kirigami.Units.iconSizes.sizeForLabels
                 color: newBlockedApp.placeholderTextColor
-                source: "bookmarks-symbolic"
+                source: "application-x-executable"
             }
 
             validator: Validators.validFileNameRegex

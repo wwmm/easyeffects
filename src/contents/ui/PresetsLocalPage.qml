@@ -119,7 +119,7 @@ ColumnLayout {
                 implicitHeight: Kirigami.Units.iconSizes.sizeForLabels
                 implicitWidth: Kirigami.Units.iconSizes.sizeForLabels
                 color: newPresetName.placeholderTextColor
-                source: "bookmarks-symbolic"
+                source: "user-bookmarks-symbolic"
             }
 
             validator: Validators.validFileNameRegex

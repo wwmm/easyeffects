@@ -36,7 +36,7 @@ KirigamiSettings.ConfigurationView {
         },
         KirigamiSettings.ConfigurationModule {
             moduleId: "presets"
-            icon.name: "bookmarks-symbolic"
+            icon.name: "user-bookmarks-symbolic"
             text: i18n("Presets") // qmllint disable
             page: () => presetsPage
         },

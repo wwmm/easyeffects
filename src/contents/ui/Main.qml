@@ -337,7 +337,7 @@ Kirigami.ApplicationWindow {
 
             MenuItem {
                 text: i18n("Input Presets") // qmllint disable
-                icon.name: "bookmarks-symbolic"
+                icon.name: "user-bookmarks-symbolic"
                 onTriggered: {
                     appWindow.show();
                     appWindow.raise();
@@ -352,7 +352,7 @@ Kirigami.ApplicationWindow {
 
             MenuItem {
                 text: i18n("Output Presets") // qmllint disable
-                icon.name: "bookmarks-symbolic"
+                icon.name: "user-bookmarks-symbolic"
                 onTriggered: {
                     appWindow.show();
                     appWindow.raise();
@@ -394,7 +394,7 @@ Kirigami.ApplicationWindow {
 
             MenuItem {
                 text: i18n("Shortcuts") // qmllint disable
-                icon.name: "configure-shortcuts-symbolic"
+                icon.name: "input-keyboard-symbolic"
                 onTriggered: {
                     appWindow.show();
                     shortcutsSheet.open();
@@ -415,7 +415,7 @@ Kirigami.ApplicationWindow {
 
             MenuItem {
                 text: i18n("Quit") // qmllint disable
-                icon.name: "gtk-quit"
+                icon.name: "application-exit-symbolic"
                 onTriggered: Qt.quit()
             }
         }
@@ -465,7 +465,7 @@ Kirigami.ApplicationWindow {
                     },
                     Kirigami.Action {
                         text: i18n("Presets") // qmllint disable
-                        icon.name: "bookmarks-symbolic"
+                        icon.name: "user-bookmarks-symbolic"
                         displayHint: Kirigami.DisplayHint.KeepVisible
                         visible: DbMain.visiblePage !== 2
                         onTriggered: {
@@ -543,7 +543,7 @@ Kirigami.ApplicationWindow {
                     },
                     Kirigami.Action {
                         text: i18n("Shortcuts") // qmllint disable
-                        icon.name: "configure-shortcuts-symbolic"
+                        icon.name: "input-keyboard-symbolic"
                         displayHint: Kirigami.DisplayHint.AlwaysHide
                         onTriggered: {
                             shortcutsSheet.open();
@@ -583,7 +583,7 @@ Kirigami.ApplicationWindow {
                     },
                     Kirigami.Action {
                         text: i18n("Quit") // qmllint disable
-                        icon.name: "gtk-quit"
+                        icon.name: "application-exit-symbolic"
                         displayHint: Kirigami.DisplayHint.AlwaysHide
                         onTriggered: {
                             Qt.quit();
