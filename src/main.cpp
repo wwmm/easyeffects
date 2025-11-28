@@ -20,6 +20,7 @@
 #include <kicontheme.h>
 #include <klocalizedcontext.h>
 #include <qcontainerfwd.h>
+#include <qhashfunctions.h>
 #include <qnamespace.h>
 #include <qobject.h>
 #include <qqml.h>
