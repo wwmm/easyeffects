@@ -16,7 +16,7 @@ Rectangle {
     readonly property real clampedValue: Common.clamp(value, from, to)
     readonly property real displayValue: root.topToBottom === false ? (root.clampedValue > sampleTimer.value ? root.clampedValue : sampleTimer.value) : (root.clampedValue < sampleTimer.value ? root.clampedValue : sampleTimer.value)
 
-    Kirigami.Theme.colorSet: Kirigami.Theme.Button
+    Kirigami.Theme.colorSet: Kirigami.Theme.View
     implicitWidth: valueLabel.implicitWidth + Kirigami.Units.largeSpacing
     implicitHeight: valueLabel.implicitWidth + Kirigami.Units.largeSpacing
     radius: Kirigami.Units.cornerRadius

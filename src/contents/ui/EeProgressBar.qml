@@ -30,7 +30,7 @@ Control {
     readonly property real normalizedDisplayValue: (control.displayValue - control.from) / (control.to - control.from)
     readonly property real normalizedDisplayValueDB: (Common.dbToLinear(control.displayValue) - control.dbFrom) / (control.dbTo - control.dbFrom)
 
-    Kirigami.Theme.colorSet: Kirigami.Theme.Button
+    Kirigami.Theme.colorSet: Kirigami.Theme.View
 
     implicitWidth: contentItem.implicitWidth + leftPadding + rightPadding
     implicitHeight: contentItem.implicitHeight + topPadding + bottomPadding
