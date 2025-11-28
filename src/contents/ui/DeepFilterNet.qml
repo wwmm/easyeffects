@@ -138,7 +138,7 @@ Kirigami.ScrollablePage {
                         value: deepfilternetPage.pluginDB.minProcessingBuffer
                         decimals: 0
                         stepSize: 1
-                        unit: i18n("frames") // qmllint disable
+                        unit: Units.frames
                         onValueModified: v => {
                             deepfilternetPage.pluginDB.minProcessingBuffer = v;
                         }
