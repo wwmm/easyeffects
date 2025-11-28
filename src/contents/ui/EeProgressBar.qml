@@ -48,7 +48,7 @@ Control {
         id: item
 
         color: Kirigami.Theme.negativeBackgroundColor
-        radius: cornerRadius
+        radius: Kirigami.Units.cornerRadius
 
         implicitHeight: Kirigami.Units.largeSpacing * 3
 

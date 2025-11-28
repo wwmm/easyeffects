@@ -162,11 +162,13 @@ Item {
 
         colorScheme: widgetRoot.colorScheme
         theme: widgetRoot.colorTheme
+
         onColorSchemeChanged: {
-            axisRectangle.color = chart.theme.backgroundColor;
+            axisRectangle.color = chart.theme.labelBackgroundColor;
         }
+
         onThemeChanged: {
-            axisRectangle.color = chart.theme.backgroundColor;
+            axisRectangle.color = chart.theme.labelBackgroundColor;
         }
 
         // Component.onCompleted: {
@@ -200,8 +202,6 @@ Item {
 
             function onBackgroundColorChanged() {
                 userTheme.backgroundColor = DbGraph.backgroundColor;
-
-                axisRectangle.color = DbGraph.backgroundColor;
             }
 
             function onPlotAreaBackgroundColorChanged() {
@@ -218,6 +218,8 @@ Item {
 
             function onLabelBackgroundColorChanged() {
                 userTheme.labelBackgroundColor = DbGraph.labelBackgroundColor;
+
+                axisRectangle.color = DbGraph.labelBackgroundColor;
             }
 
             function onBorderColorsChanged() {
