@@ -622,7 +622,7 @@ Kirigami.ScrollablePage {
                     readonly property real radius: 2.5 * Kirigami.Units.gridUnit
 
                     columnSpacing: Kirigami.Units.largeSpacing
-                    rowSpacing: 0
+                    rowSpacing: Kirigami.Units.largeSpacing
                     columns: 4
                     rows: 3
 
@@ -733,7 +733,7 @@ Kirigami.ScrollablePage {
                     readonly property real radius: 2.5 * Kirigami.Units.gridUnit
 
                     columnSpacing: Kirigami.Units.largeSpacing
-                    rowSpacing: 0
+                    rowSpacing: Kirigami.Units.largeSpacing
                     columns: 4
                     rows: 3
 
