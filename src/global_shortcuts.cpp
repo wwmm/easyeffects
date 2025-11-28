@@ -169,7 +169,7 @@ void GlobalShortcuts::bind_shortcuts() {
 
     DbMain::setXdgGlobalShortcutsBound(false);
   } else {
-    util::debug("Successfully bound global shortcuts without session (fallback)");
+    util::debug("The bind global shortcuts call returned without errors");
 
     DbMain::setXdgGlobalShortcutsBound(true);
   }
