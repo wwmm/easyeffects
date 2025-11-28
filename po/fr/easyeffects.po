@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-28 15:20-0300\n"
-"PO-Revision-Date: 2025-11-28 00:50+0000\n"
+"PO-Revision-Date: 2025-11-28 19:12+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -1442,104 +1442,84 @@ msgid "None"
 msgstr "Aucun"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x2/16 bits"
-msgstr "Half x2/16 bit"
+msgstr "Demi x2/16 bits"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x2/24 bits"
-msgstr "Half x2/24 bit"
+msgstr "Demi x2/24 bits"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x3/16 bits"
-msgstr "Half x3/16 bit"
+msgstr "Demi x3/16 bits"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x3/24 bits"
-msgstr "Half x3/24 bit"
+msgstr "Demi x3/24 bits"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x4/16 bits"
-msgstr "Half x4/16 bit"
+msgstr "Demi x4/16 bits"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x4/24 bits"
-msgstr "Half x4/24 bit"
+msgstr "Demi x4/24 bits"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x6/16 bits"
-msgstr "Half x6/16 bit"
+msgstr "Demi x6/16 bits"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x6/24 bits"
-msgstr "Half x6/24 bit"
+msgstr "Demi x6/24 bits"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x8/16 bits"
-msgstr "Half x8/16 bit"
+msgstr "Demi x8/16 bits"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x8/24 bits"
-msgstr "Half x8/24 bit"
+msgstr "Demi x8/24 bits"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x2/16 bits"
-msgstr "Full x2/16 bit"
+msgstr "Complet x2/16 bits"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x2/24 bits"
-msgstr "Full x2/24 bit"
+msgstr "Complet x2/24 bits"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x3/16 bits"
-msgstr "Full x3/16 bit"
+msgstr "Complet x3/16 bits"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x3/24 bits"
-msgstr "Full x3/24 bit"
+msgstr "Complet x3/24 bits"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x4/16 bits"
-msgstr "Full x4/16 bit"
+msgstr "Complet x4/16 bits"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x4/24 bits"
-msgstr "Full x4/24 bit"
+msgstr "Complet x4/24 bits"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x6/16 bits"
-msgstr "Full x6/16 bit"
+msgstr "Complet x6/16 bits"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x6/24 bits"
-msgstr "Full x6/24 bit"
+msgstr "Complet x6/24 bits"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x8/16 bits"
-msgstr "Full x8/16 bit"
+msgstr "Complet x8/16 bits"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x8/24 bits"
-msgstr "Full x8/24 bit"
+msgstr "Complet x8/24 bits"
 
 #: src/contents/ui/Limiter.qml:72
 #, fuzzy
