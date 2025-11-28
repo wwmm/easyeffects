@@ -29,6 +29,8 @@ class Units : public QObject {
   QML_ELEMENT
   QML_SINGLETON
 
+  Q_PROPERTY(QString leftCh MEMBER leftCh CONSTANT)
+  Q_PROPERTY(QString rightCh MEMBER rightCh CONSTANT)
   Q_PROPERTY(QString dB MEMBER dB CONSTANT)
   Q_PROPERTY(QString dBFS MEMBER dBFS CONSTANT)
   Q_PROPERTY(QString dBoct MEMBER dBoct CONSTANT)
@@ -49,10 +51,12 @@ class Units : public QObject {
 
  public:
   explicit Units(QObject* parent = nullptr) : QObject(parent) {
+    leftCh = ki18nc("left channel abbreviation (single letter)", "L").toString();
+    rightCh = ki18nc("left channel abbreviation (single letter)", "R").toString();
     dB = ki18nc("decibel unit abbreviation", "dB").toString();
     dBFS = ki18nc("decibel full scale unit abbreviation", "dBFS").toString();
     dBoct = ki18nc("decibel per octaves unit abbreviation", "dB/oct").toString();
-    k = ki18nc("thousand abbreviation", "k").toString();
+    k = ki18nc("thousand abbreviation (single letter)", "k").toString();
     s = ki18nc("seconds unit abbreviation", "s").toString();
     ms = ki18nc("milliseconds unit abbreviation", "ms").toString();
     hz = ki18nc("Hertz unit abbreviation", "Hz").toString();
@@ -69,6 +73,8 @@ class Units : public QObject {
   }
 
  private:
+  QString leftCh;
+  QString rightCh;
   QString dB;
   QString dBFS;
   QString dBoct;
