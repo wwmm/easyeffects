@@ -164,5 +164,13 @@ void GlobalShortcuts::bind_shortcuts() {
 
   // qDebug() << "GlobalShortcuts BindShortcuts response ->" << bind_ret;
 
-  DbMain::setXdgGlobalShortcutsBound(true);
+  if (bind_ret.type() == QDBusMessage::ErrorMessage) {
+    util::warning(std::format("Failed to bind shortcuts without session: {}", bind_ret.errorMessage().toStdString()));
+
+    DbMain::setXdgGlobalShortcutsBound(false);
+  } else {
+    util::debug("Successfully bound global shortcuts without session (fallback)");
+
+    DbMain::setXdgGlobalShortcutsBound(true);
+  }
 }
