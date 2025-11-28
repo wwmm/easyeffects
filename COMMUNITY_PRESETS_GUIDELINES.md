@@ -27,7 +27,7 @@ repositories.
 
 # Guidelines for packagers of Easy Effects Community Presets
 
-The followings are the guidelines that packagers should respect in order to make
+The following are the guidelines that packagers should respect in order to make
 their presets available inside Easy Effects.
 
 ## How to make a package
@@ -222,7 +222,7 @@ In example, the following presets are correctly loaded and listed:
 - `XDG_DATA_DIR/easyeffects/output/wwmm-presets/device-1/rock.json`
 
 Files with the wrong extension or presets placed more in depth are not shown.
-In example, the followings are ignored:
+In example, the following are ignored:
 - `XDG_DATA_DIR/easyeffects/output/wwmm-presets/rock.txt`
 - `XDG_DATA_DIR/easyeffects/output/wwmm-presets/device-3/alternative/rock.json`
 
