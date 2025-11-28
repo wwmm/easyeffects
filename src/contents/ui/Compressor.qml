@@ -418,8 +418,7 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: hpfFrequency
 
-                        horizontalPadding: 0
-                        verticalPadding: 0
+                        verticalPadding: Kirigami.Units.largeSpacing
                         labelAbove: true
                         spinboxLayoutFillWidth: true
                         from: compressorPage.pluginDB.getMinValue("hpfFrequency")
@@ -439,8 +438,7 @@ Kirigami.ScrollablePage {
 
                         Layout.column: 1
                         Layout.row: 3
-                        horizontalPadding: 0
-                        verticalPadding: 0
+                        verticalPadding: Kirigami.Units.largeSpacing
                         labelFillWidth: false
                         labelAbove: true
                         spinboxLayoutFillWidth: true
