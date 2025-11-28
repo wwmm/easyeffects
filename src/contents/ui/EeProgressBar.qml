@@ -49,7 +49,7 @@ Control {
         id: item
 
         color: Kirigami.Theme.neutralBackgroundColor
-        radius: 0
+        radius: Kirigami.Units.cornerRadius
 
         implicitHeight: Kirigami.Units.largeSpacing * 3
 
@@ -83,7 +83,6 @@ Control {
             id: histRect
 
             width: Kirigami.Units.smallSpacing * 0.5
-            height: parent.height
             radius: Kirigami.Units.cornerRadius
             color: levelScale.xScale < 0.85 ? Kirigami.Theme.neutralTextColor : Kirigami.Theme.negativeTextColor
 
@@ -100,6 +99,11 @@ Control {
                         easing.type: Easing.OutCubic
                     }
                 }
+            }
+
+            anchors {
+                bottom: parent.bottom
+                top: parent.top
             }
         }
 

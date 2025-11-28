@@ -20,10 +20,10 @@ Rectangle {
     implicitWidth: valueLabel.implicitWidth + Kirigami.Units.largeSpacing
     implicitHeight: valueLabel.implicitWidth + Kirigami.Units.largeSpacing
     radius: Kirigami.Units.cornerRadius
-    color: Kirigami.Theme.neutralBackgroundColor
-    border.color: Kirigami.Theme.activeBackgroundColor
-    border.width: 2
+    border.width: 1
     clip: true
+    color: Kirigami.Theme.neutralBackgroundColor
+    border.color: Kirigami.ColorUtils.linearInterpolation(Kirigami.Theme.backgroundColor, Kirigami.Theme.textColor, Kirigami.Theme.frameContrast)
 
     Rectangle {
         id: levelRect
@@ -31,8 +31,9 @@ Rectangle {
         width: parent.width
         height: parent.height
         radius: Kirigami.Units.cornerRadius
+        border.width: 1
         color: Kirigami.ColorUtils.tintWithAlpha(Kirigami.Theme.backgroundColor, Kirigami.Theme.highlightColor, 0.3)
-        border.width: 0
+        border.color: Kirigami.ColorUtils.linearInterpolation(Kirigami.Theme.backgroundColor, Kirigami.Theme.textColor, Kirigami.Theme.frameContrast)
 
         transform: Scale {
             id: levelScale
@@ -58,7 +59,6 @@ Rectangle {
         id: histRect
 
         height: Kirigami.Units.smallSpacing * 0.5
-        width: parent.height
         radius: Kirigami.Units.cornerRadius
         color: levelScale.yScale < 0.85 ? Kirigami.Theme.neutralTextColor : Kirigami.Theme.negativeTextColor
 
@@ -79,6 +79,11 @@ Rectangle {
                     easing.type: Easing.OutCubic
                 }
             }
+        }
+
+        anchors {
+            left: parent.left
+            right: parent.right
         }
     }
 
