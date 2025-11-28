@@ -141,7 +141,7 @@ Kirigami.ScrollablePage {
                         id: momentary
 
                         label: i18n("Momentary") // qmllint disable
-                        unit: "LUFS"
+                        unit: Units.lufs
                         from: Common.minimumDecibelLevel
                         to: 10
                         value: 0
@@ -152,7 +152,7 @@ Kirigami.ScrollablePage {
                         id: shortterm
 
                         label: i18n("Short-term") // qmllint disable
-                        unit: "LUFS"
+                        unit: Units.lufs
                         from: Common.minimumDecibelLevel
                         to: 10
                         value: 0
@@ -163,7 +163,7 @@ Kirigami.ScrollablePage {
                         id: integrated
 
                         label: i18n("Integrated") // qmllint disable
-                        unit: "LUFS"
+                        unit: Units.lufs
                         from: Common.minimumDecibelLevel
                         to: 10
                         value: 0
@@ -174,7 +174,7 @@ Kirigami.ScrollablePage {
                         id: relative
 
                         label: i18n("Relative") // qmllint disable
-                        unit: "LUFS"
+                        unit: Units.lufs
                         from: Common.minimumDecibelLevel
                         to: 10
                         value: 0
@@ -185,7 +185,7 @@ Kirigami.ScrollablePage {
                         id: range
 
                         label: i18n("Range") // qmllint disable
-                        unit: "LU"
+                        unit: Units.lu
                         from: 0
                         to: 50
                         value: 0
