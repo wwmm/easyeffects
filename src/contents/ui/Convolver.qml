@@ -384,7 +384,7 @@ Kirigami.ScrollablePage {
                         id: irDuration
 
                         Layout.alignment: Qt.AlignHCenter
-                        text: Number(convolverPage.pluginBackend ? convolverPage.pluginBackend.kernelDuration : 0).toLocaleString(Qt.locale(), 'f', 3) + ` ${Units.s}` // qmllint disable
+                        text: Number(convolverPage.pluginBackend ? convolverPage.pluginBackend.kernelDuration : 0).toLocaleString(Qt.locale(), 'f', 3) + ` ${Units.s}`
                         enabled: false
                     }
                 }
