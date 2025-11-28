@@ -411,7 +411,7 @@ Kirigami.ScrollablePage {
                 to: convolverPage.pluginDB.getMaxValue("irWidth")
                 decimals: 0
                 stepSize: 1
-                unit: "%"
+                unit: Units.percent
                 onValueModified: v => {
                     convolverPage.pluginDB.irWidth = v;
                 }

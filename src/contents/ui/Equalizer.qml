@@ -155,7 +155,7 @@ Kirigami.ScrollablePage {
                 value: equalizerPage.pluginDB.balance
                 decimals: 1
                 stepSize: 0.1
-                unit: "%"
+                unit: Units.percent
                 onValueModified: v => {
                     equalizerPage.pluginDB.balance = v;
                 }

@@ -158,7 +158,7 @@ Kirigami.AbstractCard {
 
                 Controls.Label {
                     Layout.alignment: Qt.AlignHCenter
-                    text: `${Math.round(volumeSlider.value)}%`
+                    text: `${Math.round(volumeSlider.value)} ${Units.percent}`
                 }
             }
         }

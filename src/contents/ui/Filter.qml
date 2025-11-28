@@ -174,7 +174,7 @@ Kirigami.ScrollablePage {
                     value: filterPage.pluginDB.balance
                     decimals: 1
                     stepSize: 0.1
-                    unit: "%"
+                    unit: Units.percent
                     onValueModified: v => {
                         filterPage.pluginDB.balance = v;
                     }

@@ -208,7 +208,7 @@ Kirigami.ScrollablePage {
                         value: pitchPage.pluginDB.tempoDifference
                         decimals: 0
                         stepSize: 1
-                        unit: "%"
+                        unit: Units.percent
                         onValueModified: v => {
                             pitchPage.pluginDB.tempoDifference = v;
                         }
@@ -225,7 +225,7 @@ Kirigami.ScrollablePage {
                         value: pitchPage.pluginDB.rateDifference
                         decimals: 0
                         stepSize: 1
-                        unit: "%"
+                        unit: Units.percent
                         onValueModified: v => {
                             pitchPage.pluginDB.rateDifference = v;
                         }

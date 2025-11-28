@@ -115,7 +115,7 @@ Kirigami.ScrollablePage {
                     value: speexPage.pluginDB.vadProbabilityStart
                     decimals: 0
                     stepSize: 1
-                    unit: "%"
+                    unit: Units.percent
                     enabled: enableVad.isChecked
                     onValueModified: v => {
                         speexPage.pluginDB.vadProbabilityStart = v;
@@ -134,7 +134,7 @@ Kirigami.ScrollablePage {
                     value: speexPage.pluginDB.vadProbabilityContinue
                     decimals: 0
                     stepSize: 1
-                    unit: "%"
+                    unit: Units.percent
                     enabled: enableVad.isChecked
                     onValueModified: v => {
                         speexPage.pluginDB.vadProbabilityContinue = v;

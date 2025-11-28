@@ -114,7 +114,7 @@ Kirigami.ScrollablePage {
                         value: rnnoisePage.pluginDB.vadThres
                         decimals: 0
                         stepSize: 1
-                        unit: "%"
+                        unit: Units.percent
                         onValueModified: v => {
                             rnnoisePage.pluginDB.vadThres = v;
                         }

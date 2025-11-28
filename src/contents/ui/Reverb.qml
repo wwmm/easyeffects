@@ -96,7 +96,7 @@ Kirigami.ScrollablePage {
                     value: reverbPage.pluginDB.diffusion
                     decimals: 2
                     stepSize: 0.01
-                    unit: "%"
+                    unit: Units.percent
                     onValueModified: v => {
                         reverbPage.pluginDB.diffusion = v;
                     }

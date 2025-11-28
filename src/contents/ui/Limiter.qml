@@ -164,7 +164,7 @@ Kirigami.ScrollablePage {
                         value: limiterPage.pluginDB.stereoLink
                         decimals: 1
                         stepSize: 0.1
-                        unit: "%"
+                        unit: Units.percent
                         onValueModified: v => {
                             limiterPage.pluginDB.stereoLink = v;
                         }
