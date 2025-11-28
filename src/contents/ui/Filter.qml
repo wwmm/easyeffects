@@ -143,7 +143,7 @@ Kirigami.ScrollablePage {
                     value: filterPage.pluginDB.gain
                     decimals: 2
                     stepSize: 0.01
-                    unit: i18n("dB")
+                    unit: Units.dB
                     onValueModified: v => {
                         filterPage.pluginDB.gain = v;
                     }

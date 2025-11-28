@@ -428,7 +428,7 @@ Kirigami.ScrollablePage {
                 value: convolverPage.pluginDB.dry
                 decimals: 2
                 stepSize: 0.01
-                unit: i18n("dB")
+                unit: Units.dB
                 minusInfinityMode: true
                 onValueModified: v => {
                     convolverPage.pluginDB.dry = v;
@@ -446,7 +446,7 @@ Kirigami.ScrollablePage {
                 value: convolverPage.pluginDB.wet
                 decimals: 2
                 stepSize: 0.01
-                unit: i18n("dB")
+                unit: Units.dB
                 minusInfinityMode: true
                 onValueModified: v => {
                     convolverPage.pluginDB.wet = v;

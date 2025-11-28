@@ -82,7 +82,7 @@ Kirigami.ScrollablePage {
                     value: speexPage.pluginDB.noiseSuppression
                     decimals: 2
                     stepSize: 0.1
-                    unit: i18n("dB") //qmllint disable
+                    unit: Units.dB
                     onValueModified: v => {
                         speexPage.pluginDB.noiseSuppression = v;
                     }

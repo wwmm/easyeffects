@@ -51,7 +51,7 @@ Kirigami.ScrollablePage {
                         value: bassLoudnessPage.pluginDB.loudness
                         decimals: 1
                         stepSize: 0.1
-                        unit: i18n("dB")
+                        unit: Units.dB
                         onValueModified: v => {
                             bassLoudnessPage.pluginDB.loudness = v;
                         }
@@ -67,7 +67,7 @@ Kirigami.ScrollablePage {
                         value: bassLoudnessPage.pluginDB.output
                         decimals: 1
                         stepSize: 0.1
-                        unit: i18n("dB")
+                        unit: Units.dB
                         onValueModified: v => {
                             bassLoudnessPage.pluginDB.output = v;
                         }
@@ -83,7 +83,7 @@ Kirigami.ScrollablePage {
                         value: bassLoudnessPage.pluginDB.link
                         decimals: 1
                         stepSize: 0.1
-                        unit: i18n("dB")
+                        unit: Units.dB
                         onValueModified: v => {
                             bassLoudnessPage.pluginDB.link = v;
                         }

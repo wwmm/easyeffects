@@ -114,7 +114,7 @@ Kirigami.ScrollablePage {
                         value: loudnessPage.pluginDB.volume
                         decimals: 1
                         stepSize: 0.1
-                        unit: i18n("dB")
+                        unit: Units.dB
                         onValueModified: v => {
                             loudnessPage.pluginDB.volume = v;
                         }
@@ -131,7 +131,7 @@ Kirigami.ScrollablePage {
                         value: loudnessPage.pluginDB.clippingRange
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("dB")
+                        unit: Units.dB
                         enabled: loudnessPage.pluginDB.clipping
                         onValueModified: v => {
                             loudnessPage.pluginDB.clippingRange = v;

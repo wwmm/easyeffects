@@ -79,7 +79,7 @@ Kirigami.ScrollablePage {
                     value: crossfeedPage.pluginDB.feed
                     decimals: 1
                     stepSize: 0.1
-                    unit: i18n("dB")
+                    unit: Units.dB
                     onValueModified: v => {
                         crossfeedPage.pluginDB.feed = v;
                     }

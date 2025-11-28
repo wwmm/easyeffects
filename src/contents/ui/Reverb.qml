@@ -174,7 +174,7 @@ Kirigami.ScrollablePage {
                         value: reverbPage.pluginDB.dry
                         decimals: 1
                         stepSize: 0.1
-                        unit: i18n("dB")
+                        unit: Units.dB
                         minusInfinityMode: true
                         onValueModified: v => {
                             reverbPage.pluginDB.dry = v;
@@ -192,7 +192,7 @@ Kirigami.ScrollablePage {
                         value: reverbPage.pluginDB.amount
                         decimals: 1
                         stepSize: 0.1
-                        unit: i18n("dB")
+                        unit: Units.dB
                         minusInfinityMode: true
                         onValueModified: v => {
                             reverbPage.pluginDB.amount = v;

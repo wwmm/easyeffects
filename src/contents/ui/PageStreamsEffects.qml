@@ -597,7 +597,7 @@ Kirigami.Page {
 
                         actionRateValue.text = `<pre ${cssFontColor}> <span ${cssFontWeight}>${rate}</span> ${i18n("kHz")} </pre>`;
                         actionLatencyValue.text = `<pre ${cssFontColor}> ${styledLatency} ${i18n("ms")} </pre>`;
-                        actionLevelValue.text = `<pre ${cssFontColor}> ${styledLocaleLeft} ${styledLocaleRight} ${i18n("dB")}</pre>`;
+                        actionLevelValue.text = `<pre ${cssFontColor}> ${styledLocaleLeft} ${styledLocaleRight} ${Units.dB}</pre>`;
                     }
                 }
             }

@@ -113,7 +113,7 @@ Kirigami.ScrollablePage {
                         value: limiterPage.pluginDB.threshold
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("dB")
+                        unit: Units.dB
                         onValueModified: v => {
                             limiterPage.pluginDB.threshold = v;
                         }
@@ -237,7 +237,7 @@ Kirigami.ScrollablePage {
                             value: limiterPage.pluginDB.sidechainPreamp
                             decimals: 2 // Required to show "-inf"
                             stepSize: 0.01
-                            unit: i18n("dB")
+                            unit: Units.dB
                             minusInfinityMode: true
                             onValueModified: v => {
                                 limiterPage.pluginDB.sidechainPreamp = v;
@@ -289,7 +289,7 @@ Kirigami.ScrollablePage {
                             value: limiterPage.pluginDB.inputToSidechain
                             decimals: 2
                             stepSize: 0.01
-                            unit: i18n("dB")
+                            unit: Units.dB
                             minusInfinityMode: true
                             onValueModified: v => {
                                 limiterPage.pluginDB.inputToSidechain = v;
@@ -305,7 +305,7 @@ Kirigami.ScrollablePage {
                             value: limiterPage.pluginDB.inputToLink
                             decimals: 2
                             stepSize: 0.01
-                            unit: i18n("dB")
+                            unit: Units.dB
                             minusInfinityMode: true
                             onValueModified: v => {
                                 limiterPage.pluginDB.inputToLink = v;
@@ -321,7 +321,7 @@ Kirigami.ScrollablePage {
                             value: limiterPage.pluginDB.sidechainToInput
                             decimals: 2
                             stepSize: 0.01
-                            unit: i18n("dB")
+                            unit: Units.dB
                             minusInfinityMode: true
                             onValueModified: v => {
                                 limiterPage.pluginDB.sidechainToInput = v;
@@ -337,7 +337,7 @@ Kirigami.ScrollablePage {
                             value: limiterPage.pluginDB.sidechainToLink
                             decimals: 2
                             stepSize: 0.01
-                            unit: i18n("dB")
+                            unit: Units.dB
                             minusInfinityMode: true
                             onValueModified: v => {
                                 limiterPage.pluginDB.sidechainToLink = v;
@@ -353,7 +353,7 @@ Kirigami.ScrollablePage {
                             value: limiterPage.pluginDB.linkToSidechain
                             decimals: 2
                             stepSize: 0.01
-                            unit: i18n("dB")
+                            unit: Units.dB
                             minusInfinityMode: true
                             onValueModified: v => {
                                 limiterPage.pluginDB.linkToSidechain = v;
@@ -369,7 +369,7 @@ Kirigami.ScrollablePage {
                             value: limiterPage.pluginDB.linkToInput
                             decimals: 2
                             stepSize: 0.01
-                            unit: i18n("dB")
+                            unit: Units.dB
                             minusInfinityMode: true
                             onValueModified: v => {
                                 limiterPage.pluginDB.linkToInput = v;
@@ -437,7 +437,7 @@ Kirigami.ScrollablePage {
                         value: limiterPage.pluginDB.alrKnee
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("dB")
+                        unit: Units.dB
                         onValueModified: v => {
                             limiterPage.pluginDB.alrKnee = v;
                         }

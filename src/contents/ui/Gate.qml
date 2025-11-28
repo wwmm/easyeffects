@@ -105,7 +105,7 @@ Kirigami.ScrollablePage {
                         value: gatePage.pluginDB.reduction
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("dB")
+                        unit: Units.dB
                         onValueModified: v => {
                             gatePage.pluginDB.reduction = v;
                         }
@@ -122,7 +122,7 @@ Kirigami.ScrollablePage {
                         value: gatePage.pluginDB.curveThreshold
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("dB")
+                        unit: Units.dB
                         onValueModified: v => {
                             gatePage.pluginDB.curveThreshold = v;
                         }
@@ -139,7 +139,7 @@ Kirigami.ScrollablePage {
                         value: gatePage.pluginDB.curveZone
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("dB")
+                        unit: Units.dB
                         onValueModified: v => {
                             gatePage.pluginDB.curveZone = v;
                         }
@@ -174,7 +174,7 @@ Kirigami.ScrollablePage {
                     value: gatePage.pluginDB.hysteresisThreshold
                     decimals: 2
                     stepSize: 0.01
-                    unit: i18n("dB")
+                    unit: Units.dB
                     enabled: hysteresis.isChecked
                     onValueModified: v => {
                         gatePage.pluginDB.hysteresisThreshold = v;
@@ -193,7 +193,7 @@ Kirigami.ScrollablePage {
                     value: gatePage.pluginDB.hysteresisZone
                     decimals: 2
                     stepSize: 0.01
-                    unit: i18n("dB")
+                    unit: Units.dB
                     enabled: hysteresis.isChecked
                     onValueModified: v => {
                         gatePage.pluginDB.hysteresisZone = v;
@@ -320,7 +320,7 @@ Kirigami.ScrollablePage {
                         value: gatePage.pluginDB.sidechainPreamp
                         decimals: 2 // Required to show "-inf"
                         stepSize: 0.01
-                        unit: i18n("dB")
+                        unit: Units.dB
                         minusInfinityMode: true
                         onValueModified: v => {
                             gatePage.pluginDB.sidechainPreamp = v;
@@ -446,7 +446,7 @@ Kirigami.ScrollablePage {
                     value: gatePage.pluginDB.dry
                     decimals: 2 // Required to show "-inf"
                     stepSize: 0.01
-                    unit: i18n("dB")
+                    unit: Units.dB
                     minusInfinityMode: true
                     onValueModified: v => {
                         gatePage.pluginDB.dry = v;
@@ -465,7 +465,7 @@ Kirigami.ScrollablePage {
                     value: gatePage.pluginDB.wet
                     decimals: 2 // Required to show "-inf"
                     stepSize: 0.01
-                    unit: i18n("dB")
+                    unit: Units.dB
                     minusInfinityMode: true
                     onValueModified: v => {
                         gatePage.pluginDB.wet = v;
@@ -484,7 +484,7 @@ Kirigami.ScrollablePage {
                     value: gatePage.pluginDB.makeup
                     decimals: 2
                     stepSize: 0.01
-                    unit: i18n("dB")
+                    unit: Units.dB
                     onValueModified: v => {
                         gatePage.pluginDB.makeup = v;
                     }
@@ -514,7 +514,7 @@ Kirigami.ScrollablePage {
                         value: gatePage.pluginDB.inputToSidechain
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("dB")
+                        unit: Units.dB
                         minusInfinityMode: true
                         onValueModified: v => {
                             gatePage.pluginDB.inputToSidechain = v;
@@ -530,7 +530,7 @@ Kirigami.ScrollablePage {
                         value: gatePage.pluginDB.inputToLink
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("dB")
+                        unit: Units.dB
                         minusInfinityMode: true
                         onValueModified: v => {
                             gatePage.pluginDB.inputToLink = v;
@@ -546,7 +546,7 @@ Kirigami.ScrollablePage {
                         value: gatePage.pluginDB.sidechainToInput
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("dB")
+                        unit: Units.dB
                         minusInfinityMode: true
                         onValueModified: v => {
                             gatePage.pluginDB.sidechainToInput = v;
@@ -562,7 +562,7 @@ Kirigami.ScrollablePage {
                         value: gatePage.pluginDB.sidechainToLink
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("dB")
+                        unit: Units.dB
                         minusInfinityMode: true
                         onValueModified: v => {
                             gatePage.pluginDB.sidechainToLink = v;
@@ -578,7 +578,7 @@ Kirigami.ScrollablePage {
                         value: gatePage.pluginDB.linkToSidechain
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("dB")
+                        unit: Units.dB
                         minusInfinityMode: true
                         onValueModified: v => {
                             gatePage.pluginDB.linkToSidechain = v;
@@ -594,7 +594,7 @@ Kirigami.ScrollablePage {
                         value: gatePage.pluginDB.linkToInput
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("dB")
+                        unit: Units.dB
                         minusInfinityMode: true
                         onValueModified: v => {
                             gatePage.pluginDB.linkToInput = v;

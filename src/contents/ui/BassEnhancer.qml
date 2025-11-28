@@ -95,7 +95,7 @@ Kirigami.ScrollablePage {
                     value: bassEnchancerPage.pluginDB.amount
                     decimals: 2
                     stepSize: 0.1
-                    unit: i18n("dB")
+                    unit: Units.dB
                     onValueModified: v => {
                         bassEnchancerPage.pluginDB.amount = v;
                     }

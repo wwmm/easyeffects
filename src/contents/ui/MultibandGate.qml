@@ -228,7 +228,7 @@ Kirigami.ScrollablePage {
                             value: multibandGatePage.pluginDB[multibandGatePage.bandId + "Reduction"]
                             decimals: 1
                             stepSize: 0.1
-                            unit: i18n("dB")
+                            unit: Units.dB
                             onValueModified: v => {
                                 multibandGatePage.pluginDB[multibandGatePage.bandId + "Reduction"] = v;
                             }
@@ -244,7 +244,7 @@ Kirigami.ScrollablePage {
                             value: multibandGatePage.pluginDB[multibandGatePage.bandId + "Makeup"]
                             decimals: 1
                             stepSize: 0.1
-                            unit: i18n("dB")
+                            unit: Units.dB
                             onValueModified: v => {
                                 multibandGatePage.pluginDB[multibandGatePage.bandId + "Makeup"] = v;
                             }
@@ -277,7 +277,7 @@ Kirigami.ScrollablePage {
                             value: multibandGatePage.pluginDB[multibandGatePage.bandId + "CurveThreshold"]
                             decimals: 1
                             stepSize: 0.1
-                            unit: i18n("dB")
+                            unit: Units.dB
                             onValueModified: v => {
                                 multibandGatePage.pluginDB[multibandGatePage.bandId + "CurveThreshold"] = v;
                             }
@@ -292,7 +292,7 @@ Kirigami.ScrollablePage {
                             value: multibandGatePage.pluginDB[multibandGatePage.bandId + "CurveZone"]
                             decimals: 1
                             stepSize: 0.1
-                            unit: i18n("dB")
+                            unit: Units.dB
                             onValueModified: v => {
                                 multibandGatePage.pluginDB[multibandGatePage.bandId + "CurveZone"] = v;
                             }
@@ -331,7 +331,7 @@ Kirigami.ScrollablePage {
                             value: multibandGatePage.pluginDB[multibandGatePage.bandId + "HysteresisThreshold"]
                             decimals: 1
                             stepSize: 0.1
-                            unit: i18n("dB")
+                            unit: Units.dB
                             enabled: multibandGatePage.pluginDB[multibandGatePage.bandId + "Hysteresis"]
                             onValueModified: v => {
                                 multibandGatePage.pluginDB[multibandGatePage.bandId + "HysteresisThreshold"] = v;
@@ -347,7 +347,7 @@ Kirigami.ScrollablePage {
                             value: multibandGatePage.pluginDB[multibandGatePage.bandId + "HysteresisZone"]
                             decimals: 1
                             stepSize: 0.1
-                            unit: i18n("dB")
+                            unit: Units.dB
                             enabled: multibandGatePage.pluginDB[multibandGatePage.bandId + "Hysteresis"]
                             onValueModified: v => {
                                 multibandGatePage.pluginDB[multibandGatePage.bandId + "HysteresisZone"] = v;
@@ -421,7 +421,7 @@ Kirigami.ScrollablePage {
                     value: multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainPreamp"]
                     decimals: 2 // Required to show "-inf"
                     stepSize: 0.01
-                    unit: i18n("dB")
+                    unit: Units.dB
                     minusInfinityMode: true
                     onValueModified: v => {
                         multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainPreamp"] = v;
@@ -576,7 +576,7 @@ Kirigami.ScrollablePage {
                 value: multibandGatePage.pluginDB.dry
                 decimals: 2 // Required to show "-inf"
                 stepSize: 0.01
-                unit: i18n("dB")
+                unit: Units.dB
                 minusInfinityMode: true
                 onValueModified: v => {
                     multibandGatePage.pluginDB.dry = v;
@@ -594,7 +594,7 @@ Kirigami.ScrollablePage {
                 value: multibandGatePage.pluginDB.wet
                 decimals: 2 // Required to show "-inf"
                 stepSize: 0.01
-                unit: i18n("dB")
+                unit: Units.dB
                 minusInfinityMode: true
                 onValueModified: v => {
                     multibandGatePage.pluginDB.wet = v;

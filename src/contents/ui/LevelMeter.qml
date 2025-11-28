@@ -58,7 +58,7 @@ Kirigami.ScrollablePage {
                             id: inputL
 
                             label: i18n("Left") // qmllint disable
-                            unit: i18n("dB")
+                            unit: Units.dB
                             from: Common.minimumDecibelLevel
                             to: 10
                             value: 0
@@ -69,7 +69,7 @@ Kirigami.ScrollablePage {
                             id: inputR
 
                             label: i18n("Right") // qmllint disable
-                            unit: i18n("dB")
+                            unit: Units.dB
                             from: Common.minimumDecibelLevel
                             to: 10
                             value: 0
@@ -99,7 +99,7 @@ Kirigami.ScrollablePage {
                             id: truePeakL
 
                             label: i18n("Left") // qmllint disable
-                            unit: i18n("dB")
+                            unit: Units.dB
                             from: Common.minimumDecibelLevel
                             to: 10
                             value: 0
@@ -110,7 +110,7 @@ Kirigami.ScrollablePage {
                             id: truePeakR
 
                             label: i18n("Right") // qmllint disable
-                            unit: i18n("dB")
+                            unit: Units.dB
                             from: Common.minimumDecibelLevel
                             to: 10
                             value: 0

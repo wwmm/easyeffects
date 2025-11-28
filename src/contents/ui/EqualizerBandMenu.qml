@@ -101,7 +101,7 @@ Kirigami.Dialog {
                 value: bandMenu.bandDB[bandName]
                 decimals: 2
                 stepSize: 0.01
-                unit: i18n("dB")
+                unit: Units.dB
                 onValueModified: v => {
                     bandMenu.bandDB[bandName] = v;
                 }

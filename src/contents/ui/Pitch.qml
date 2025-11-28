@@ -108,7 +108,7 @@ Kirigami.ScrollablePage {
                         value: pitchPage.pluginDB.dry
                         decimals: 2 // Required to show "-inf"
                         stepSize: 0.01
-                        unit: i18n("dB")
+                        unit: Units.dB
                         minusInfinityMode: true
                         onValueModified: v => {
                             pitchPage.pluginDB.dry = v;
@@ -127,7 +127,7 @@ Kirigami.ScrollablePage {
                         value: pitchPage.pluginDB.wet
                         decimals: 2 // Required to show "-inf"
                         stepSize: 0.01
-                        unit: i18n("dB")
+                        unit: Units.dB
                         minusInfinityMode: true
                         onValueModified: v => {
                             pitchPage.pluginDB.wet = v;

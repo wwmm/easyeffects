@@ -99,7 +99,7 @@ Kirigami.ScrollablePage {
                         value: exciterPage.pluginDB.amount
                         decimals: 2
                         stepSize: 0.1
-                        unit: i18n("dB")
+                        unit: Units.dB
                         onValueModified: v => {
                             exciterPage.pluginDB.amount = v;
                         }
