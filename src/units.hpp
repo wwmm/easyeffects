@@ -19,27 +19,41 @@
 
 #pragma once
 
-#include <qobject.h>
 #include <qqmlintegration.h>
 #include <qtmetamacros.h>
-#include <KLazyLocalizedString>
-
-// NOLINTNEXTLINE
-#define CREATE_PROPERTY(type, name, value)          \
-  static inline const type name = value.toString(); \
-  Q_PROPERTY(type name MEMBER name CONSTANT)
+#include <KLocalizedString>
+#include <QObject>
 
 class Units : public QObject {
   Q_OBJECT
   QML_ELEMENT
   QML_SINGLETON
 
+  Q_PROPERTY(QString dB MEMBER dB CONSTANT)
+  Q_PROPERTY(QString s MEMBER s CONSTANT)
+  Q_PROPERTY(QString ms MEMBER ms CONSTANT)
+  Q_PROPERTY(QString kHz MEMBER kHz CONSTANT)
+  Q_PROPERTY(QString percentage MEMBER percentage CONSTANT)
+  Q_PROPERTY(QString lufs MEMBER lufs CONSTANT)
+  Q_PROPERTY(QString lu MEMBER lu CONSTANT)
+
  public:
-  CREATE_PROPERTY(QString, dB, kli18nc("decibel", "dB"));
-  CREATE_PROPERTY(QString, s, kli18nc("seconds", "s"));
-  CREATE_PROPERTY(QString, ms, kli18nc("milliseconds", "ms"));
-  CREATE_PROPERTY(QString, kHz, kli18nc("kiloHertz", "kHz"));
-  CREATE_PROPERTY(QString, percentage, kli18nc("percentage", "%"));
-  CREATE_PROPERTY(QString, lufs, kli18nc("loudness units full scale", "LUFS"));
-  CREATE_PROPERTY(QString, lu, kli18nc("loudness units", "LU"));
+  explicit Units(QObject* parent = nullptr) : QObject(parent) {
+    dB = ki18nc("decibel", "dB").toString();
+    s = ki18nc("seconds", "s").toString();
+    ms = ki18nc("milliseconds", "ms").toString();
+    kHz = ki18nc("kiloHertz", "kHz").toString();
+    percentage = ki18nc("percentage", "%").toString();
+    lufs = ki18nc("loudness units full scale", "LUFS").toString();
+    lu = ki18nc("loudness units", "LU").toString();
+  }
+
+ private:
+  QString dB;
+  QString s;
+  QString ms;
+  QString kHz;
+  QString percentage;
+  QString lufs;
+  QString lu;
 };
