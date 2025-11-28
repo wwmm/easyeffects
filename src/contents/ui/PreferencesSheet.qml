@@ -229,7 +229,7 @@ KirigamiSettings.ConfigurationView {
                     value: DbMain.inactivityTimeout
                     decimals: 0
                     stepSize: 1
-                    unit: i18n("s")
+                    unit: Units.s
                     enabled: DbMain.inactivityTimerEnable
                     onValueModified: v => {
                         DbMain.inactivityTimeout = v;

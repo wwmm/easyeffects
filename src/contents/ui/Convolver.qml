@@ -230,7 +230,7 @@ Kirigami.ScrollablePage {
                                     convolverChart.updateData(chart);
                             }
                         } else {
-                            convolverChart.xUnit = i18n("s");
+                            convolverChart.xUnit = Units.s;
 
                             const chart = chartChannel.left ? convolverPage.pluginBackend.chartMagL : convolverPage.pluginBackend.chartMagR;
                             if (convolverPage.validChartMag(chart))
@@ -330,7 +330,7 @@ Kirigami.ScrollablePage {
                     seriesType: 1 // spline series
                     colorScheme: DbGraph.colorScheme
                     colorTheme: DbGraph.colorTheme
-                    xUnit: i18n("s")
+                    xUnit: Units.s
                     xAxisDecimals: 2
                     logarithimicHorizontalAxis: false
                     onWidthChanged: {
@@ -384,7 +384,7 @@ Kirigami.ScrollablePage {
                         id: irDuration
 
                         Layout.alignment: Qt.AlignHCenter
-                        text: Number(convolverPage.pluginBackend ? convolverPage.pluginBackend.kernelDuration : 0).toLocaleString(Qt.locale(), 'f', 3) + ` ${i18n("s")}` // qmllint disable
+                        text: Number(convolverPage.pluginBackend ? convolverPage.pluginBackend.kernelDuration : 0).toLocaleString(Qt.locale(), 'f', 3) + ` ${Units.s}` // qmllint disable
                         enabled: false
                     }
                 }

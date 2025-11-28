@@ -64,7 +64,7 @@ Kirigami.ScrollablePage {
                     value: reverbPage.pluginDB.decayTime
                     decimals: 2
                     stepSize: 0.01
-                    unit: i18n("s")
+                    unit: Units.s
                     onValueModified: v => {
                         reverbPage.pluginDB.decayTime = v;
                     }
