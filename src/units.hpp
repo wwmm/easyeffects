@@ -33,19 +33,21 @@ class Units : public QObject {
   Q_PROPERTY(QString s MEMBER s CONSTANT)
   Q_PROPERTY(QString ms MEMBER ms CONSTANT)
   Q_PROPERTY(QString kHz MEMBER kHz CONSTANT)
-  Q_PROPERTY(QString percentage MEMBER percentage CONSTANT)
+  Q_PROPERTY(QString percent MEMBER percent CONSTANT)
   Q_PROPERTY(QString lufs MEMBER lufs CONSTANT)
   Q_PROPERTY(QString lu MEMBER lu CONSTANT)
+  Q_PROPERTY(QString minInf MEMBER minInf CONSTANT)
 
  public:
   explicit Units(QObject* parent = nullptr) : QObject(parent) {
-    dB = ki18nc("decibel", "dB").toString();
-    s = ki18nc("seconds", "s").toString();
-    ms = ki18nc("milliseconds", "ms").toString();
-    kHz = ki18nc("kiloHertz", "kHz").toString();
-    percentage = ki18nc("percentage", "%").toString();
-    lufs = ki18nc("loudness units full scale", "LUFS").toString();
-    lu = ki18nc("loudness units", "LU").toString();
+    dB = ki18nc("decibel unit abbreviation", "dB").toString();
+    s = ki18nc("seconds unit abbreviation", "s").toString();
+    ms = ki18nc("milliseconds unit abbreviation", "ms").toString();
+    kHz = ki18nc("kiloHertz unit abbreviation", "kHz").toString();
+    percent = ki18nc("percentage symbol", "%").toString();
+    lufs = ki18nc("loudness units full scale abbreviation", "LUFS").toString();
+    lu = ki18nc("loudness units abbreviation", "LU").toString();
+    minInf = ki18nc("minus infinity abbreviation", "-inf").toString();
   }
 
  private:
@@ -53,7 +55,8 @@ class Units : public QObject {
   QString s;
   QString ms;
   QString kHz;
-  QString percentage;
+  QString percent;
   QString lufs;
   QString lu;
+  QString minInf;
 };
