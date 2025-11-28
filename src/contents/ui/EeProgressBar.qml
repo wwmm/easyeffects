@@ -47,8 +47,8 @@ Control {
     contentItem: Rectangle {
         id: item
 
-        color: Kirigami.Theme.negativeBackgroundColor
-        radius: Kirigami.Units.cornerRadius
+        color: Kirigami.Theme.neutralBackgroundColor
+        radius: 0
 
         implicitHeight: Kirigami.Units.largeSpacing * 3
 
@@ -57,7 +57,7 @@ Control {
 
             width: parent.width
             height: parent.height
-            color: Kirigami.Theme.positiveBackgroundColor
+            color: Kirigami.ColorUtils.tintWithAlpha(Kirigami.Theme.backgroundColor, Kirigami.Theme.highlightColor, 0.3)
 
             transform: Scale {
                 id: levelScale
@@ -81,7 +81,7 @@ Control {
         Rectangle {
             id: histRect
 
-            width: Kirigami.Units.smallSpacing
+            width: Kirigami.Units.smallSpacing * 0.5
             height: parent.height
             radius: Kirigami.Units.cornerRadius
             color: levelScale.xScale < 0.85 ? Kirigami.Theme.neutralTextColor : Kirigami.Theme.negativeTextColor

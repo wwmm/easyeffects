@@ -20,7 +20,7 @@ Rectangle {
     implicitWidth: valueLabel.implicitWidth + Kirigami.Units.largeSpacing
     implicitHeight: valueLabel.implicitWidth + Kirigami.Units.largeSpacing
     radius: Kirigami.Units.cornerRadius
-    color: Kirigami.Theme.negativeBackgroundColor
+    color: Kirigami.Theme.neutralBackgroundColor
     border.color: Kirigami.Theme.activeBackgroundColor
     border.width: 2
     clip: true
@@ -31,7 +31,7 @@ Rectangle {
         width: parent.width
         height: parent.height
         radius: Kirigami.Units.cornerRadius
-        color: Kirigami.Theme.positiveBackgroundColor
+        color: Kirigami.ColorUtils.tintWithAlpha(Kirigami.Theme.backgroundColor, Kirigami.Theme.highlightColor, 0.3)
         border.width: 0
 
         transform: Scale {
