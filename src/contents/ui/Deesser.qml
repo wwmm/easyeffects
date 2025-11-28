@@ -221,7 +221,7 @@ Kirigami.ScrollablePage {
                             value: deesserPage.pluginDB.f2Level
                             decimals: 1
                             stepSize: 0.1
-                            unit: i18n("dBFS")
+                            unit: Units.dBFS
                             onValueModified: v => {
                                 deesserPage.pluginDB.f2Level = v;
                             }

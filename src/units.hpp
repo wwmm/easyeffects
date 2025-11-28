@@ -30,6 +30,7 @@ class Units : public QObject {
   QML_SINGLETON
 
   Q_PROPERTY(QString dB MEMBER dB CONSTANT)
+  Q_PROPERTY(QString dBFS MEMBER dBFS CONSTANT)
   Q_PROPERTY(QString s MEMBER s CONSTANT)
   Q_PROPERTY(QString ms MEMBER ms CONSTANT)
   Q_PROPERTY(QString hz MEMBER hz CONSTANT)
@@ -42,18 +43,20 @@ class Units : public QObject {
  public:
   explicit Units(QObject* parent = nullptr) : QObject(parent) {
     dB = ki18nc("decibel unit abbreviation", "dB").toString();
+    dBFS = ki18nc("decibel full scale unit abbreviation", "dBFS").toString();
     s = ki18nc("seconds unit abbreviation", "s").toString();
     ms = ki18nc("milliseconds unit abbreviation", "ms").toString();
     hz = ki18nc("Hertz unit abbreviation", "Hz").toString();
     kHz = ki18nc("kiloHertz unit abbreviation", "kHz").toString();
     percent = ki18nc("percentage symbol", "%").toString();
-    lufs = ki18nc("loudness units full scale abbreviation", "LUFS").toString();
+    lufs = ki18nc("loudness full scale unit abbreviation", "LUFS").toString();
     lu = ki18nc("loudness units abbreviation", "LU").toString();
     minInf = ki18nc("minus infinity abbreviation", "-inf").toString();
   }
 
  private:
   QString dB;
+  QString dBFS;
   QString s;
   QString ms;
   QString hz;
