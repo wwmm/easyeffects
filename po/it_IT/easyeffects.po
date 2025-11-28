@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-28 00:47+0000\n"
-"PO-Revision-Date: 2025-11-27 05:01+0000\n"
+"PO-Revision-Date: 2025-11-28 14:00+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -3213,7 +3213,6 @@ msgid "Stereo Tools"
 msgstr "Strumenti Stereo"
 
 #: src/units.hpp:42
-#, fuzzy
 msgctxt "decibel"
 msgid "dB"
 msgstr "dB"
