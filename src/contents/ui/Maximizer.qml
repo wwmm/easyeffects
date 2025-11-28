@@ -52,7 +52,7 @@ Kirigami.ScrollablePage {
                         value: maximizerPage.pluginDB.release
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("ms")
+                        unit: Units.ms
                         onValueModified: v => {
                             maximizerPage.pluginDB.release = v;
                         }

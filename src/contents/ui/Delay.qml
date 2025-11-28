@@ -89,7 +89,7 @@ Kirigami.ScrollablePage {
                         value: delayPage.pluginDB.timeL
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("ms")
+                        unit: Units.ms
                         onValueModified: v => {
                             delayPage.pluginDB.timeL = v;
                         }
@@ -242,7 +242,7 @@ Kirigami.ScrollablePage {
                         value: delayPage.pluginDB.timeR
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("ms")
+                        unit: Units.ms
                         onValueModified: v => {
                             delayPage.pluginDB.timeR = v;
                         }

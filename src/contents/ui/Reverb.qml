@@ -80,7 +80,7 @@ Kirigami.ScrollablePage {
                     value: reverbPage.pluginDB.predelay
                     decimals: 0
                     stepSize: 1
-                    unit: i18n("ms")
+                    unit: Units.ms
                     onValueModified: v => {
                         reverbPage.pluginDB.predelay = v;
                     }

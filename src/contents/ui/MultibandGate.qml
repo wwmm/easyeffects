@@ -180,7 +180,7 @@ Kirigami.ScrollablePage {
                             value: multibandGatePage.pluginDB[multibandGatePage.bandId + "AttackTime"]
                             decimals: 2
                             stepSize: 0.01
-                            unit: i18n("ms")
+                            unit: Units.ms
                             onValueModified: v => {
                                 multibandGatePage.pluginDB[multibandGatePage.bandId + "AttackTime"] = v;
                             }
@@ -195,7 +195,7 @@ Kirigami.ScrollablePage {
                             value: multibandGatePage.pluginDB[multibandGatePage.bandId + "ReleaseTime"]
                             decimals: 2
                             stepSize: 0.01
-                            unit: i18n("ms")
+                            unit: Units.ms
                             onValueModified: v => {
                                 multibandGatePage.pluginDB[multibandGatePage.bandId + "ReleaseTime"] = v;
                             }
@@ -437,7 +437,7 @@ Kirigami.ScrollablePage {
                     value: multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainReactivity"]
                     decimals: 1
                     stepSize: 0.1
-                    unit: i18n("ms")
+                    unit: Units.ms
                     onValueModified: v => {
                         multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainReactivity"] = v;
                     }
@@ -452,7 +452,7 @@ Kirigami.ScrollablePage {
                     value: multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainLookahead"]
                     decimals: 1
                     stepSize: 0.1
-                    unit: i18n("ms")
+                    unit: Units.ms
                     onValueModified: v => {
                         multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainLookahead"] = v;
                     }

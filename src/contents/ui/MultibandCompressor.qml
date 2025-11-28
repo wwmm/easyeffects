@@ -243,7 +243,7 @@ Kirigami.ScrollablePage {
                             value: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "AttackTime"]
                             decimals: 2
                             stepSize: 0.01
-                            unit: i18n("ms")
+                            unit: Units.ms
                             onValueModified: v => {
                                 multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "AttackTime"] = v;
                             }
@@ -291,7 +291,7 @@ Kirigami.ScrollablePage {
                             value: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "ReleaseTime"]
                             decimals: 2
                             stepSize: 0.01
-                            unit: i18n("ms")
+                            unit: Units.ms
                             onValueModified: v => {
                                 multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "ReleaseTime"] = v;
                             }
@@ -464,7 +464,7 @@ Kirigami.ScrollablePage {
                     value: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainReactivity"]
                     decimals: 1
                     stepSize: 0.1
-                    unit: i18n("ms")
+                    unit: Units.ms
                     onValueModified: v => {
                         multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainReactivity"] = v;
                     }
@@ -479,7 +479,7 @@ Kirigami.ScrollablePage {
                     value: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainLookahead"]
                     decimals: 1
                     stepSize: 0.1
-                    unit: i18n("ms")
+                    unit: Units.ms
                     onValueModified: v => {
                         multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainLookahead"] = v;
                     }

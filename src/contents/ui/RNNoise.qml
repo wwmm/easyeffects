@@ -146,7 +146,7 @@ Kirigami.ScrollablePage {
                         value: rnnoisePage.pluginDB.release
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("ms")
+                        unit: Units.ms
                         onValueModified: v => {
                             rnnoisePage.pluginDB.release = v;
                         }

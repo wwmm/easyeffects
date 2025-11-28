@@ -130,7 +130,7 @@ Kirigami.ScrollablePage {
                         value: limiterPage.pluginDB.attack
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("ms")
+                        unit: Units.ms
                         onValueModified: v => {
                             limiterPage.pluginDB.attack = v;
                         }
@@ -147,7 +147,7 @@ Kirigami.ScrollablePage {
                         value: limiterPage.pluginDB.release
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("ms")
+                        unit: Units.ms
                         onValueModified: v => {
                             limiterPage.pluginDB.release = v;
                         }
@@ -255,7 +255,7 @@ Kirigami.ScrollablePage {
                             value: limiterPage.pluginDB.lookahead
                             decimals: 2
                             stepSize: 0.01
-                            unit: i18n("ms")
+                            unit: Units.ms
                             onValueModified: v => {
                                 limiterPage.pluginDB.lookahead = v;
                             }
@@ -403,7 +403,7 @@ Kirigami.ScrollablePage {
                         value: limiterPage.pluginDB.alrAttack
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("ms")
+                        unit: Units.ms
                         onValueModified: v => {
                             limiterPage.pluginDB.alrAttack = v;
                         }
@@ -420,7 +420,7 @@ Kirigami.ScrollablePage {
                         value: limiterPage.pluginDB.alrRelease
                         decimals: 1
                         stepSize: 0.1
-                        unit: i18n("ms")
+                        unit: Units.ms
                         onValueModified: v => {
                             limiterPage.pluginDB.alrRelease = v;
                         }

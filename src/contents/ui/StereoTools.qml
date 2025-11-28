@@ -279,7 +279,7 @@ Kirigami.ScrollablePage {
                         value: stereoToolsPage.pluginDB.delay
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("ms")
+                        unit: Units.ms
                         onValueModified: v => {
                             stereoToolsPage.pluginDB.delay = v;
                         }

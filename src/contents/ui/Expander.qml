@@ -142,7 +142,7 @@ Kirigami.ScrollablePage {
                         value: expanderPage.pluginDB.attack
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("ms")
+                        unit: Units.ms
                         onValueModified: v => {
                             expanderPage.pluginDB.attack = v;
                         }
@@ -176,7 +176,7 @@ Kirigami.ScrollablePage {
                         value: expanderPage.pluginDB.release
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("ms")
+                        unit: Units.ms
                         onValueModified: v => {
                             expanderPage.pluginDB.release = v;
                         }
@@ -319,7 +319,7 @@ Kirigami.ScrollablePage {
                         value: expanderPage.pluginDB.sidechainReactivity
                         decimals: 2
                         stepSize: 0.01
-                        unit: i18n("ms")
+                        unit: Units.ms
                         onValueModified: v => {
                             expanderPage.pluginDB.sidechainReactivity = v;
                         }
@@ -337,7 +337,7 @@ Kirigami.ScrollablePage {
                         value: expanderPage.pluginDB.sidechainLookahead
                         decimals: 3
                         stepSize: 0.001
-                        unit: i18n("ms")
+                        unit: Units.ms
                         onValueModified: v => {
                             expanderPage.pluginDB.sidechainLookahead = v;
                         }

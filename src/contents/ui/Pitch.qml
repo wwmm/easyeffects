@@ -55,7 +55,7 @@ Kirigami.ScrollablePage {
                         value: pitchPage.pluginDB.sequenceLength
                         decimals: 0
                         stepSize: 1
-                        unit: i18n("ms")
+                        unit: Units.ms
                         onValueModified: v => {
                             pitchPage.pluginDB.sequenceLength = v;
                         }
@@ -72,7 +72,7 @@ Kirigami.ScrollablePage {
                         value: pitchPage.pluginDB.seekWindow
                         decimals: 0
                         stepSize: 1
-                        unit: i18n("ms")
+                        unit: Units.ms
                         onValueModified: v => {
                             pitchPage.pluginDB.seekWindow = v;
                         }
@@ -90,7 +90,7 @@ Kirigami.ScrollablePage {
                         value: pitchPage.pluginDB.overlapLength
                         decimals: 0
                         stepSize: 1
-                        unit: i18n("ms")
+                        unit: Units.ms
                         onValueModified: v => {
                             pitchPage.pluginDB.overlapLength = v;
                         }
