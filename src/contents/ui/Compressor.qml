@@ -427,7 +427,7 @@ Kirigami.ScrollablePage {
                         value: compressorPage.pluginDB.hpfFrequency
                         decimals: 0
                         stepSize: 1
-                        unit: "Hz"
+                        unit: Units.hz
                         visible: hpfMode.currentIndex !== 0
                         onValueModified: v => {
                             compressorPage.pluginDB.hpfFrequency = v;
@@ -449,7 +449,7 @@ Kirigami.ScrollablePage {
                         value: compressorPage.pluginDB.lpfFrequency
                         decimals: 0
                         stepSize: 1
-                        unit: "Hz"
+                        unit: Units.hz
                         visible: lpfMode.currentIndex !== 0
                         onValueModified: v => {
                             compressorPage.pluginDB.lpfFrequency = v;

@@ -193,7 +193,7 @@ Kirigami.ScrollablePage {
                             value: bandsListview.currentIndex > 0 ? multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SplitFrequency"] : 0
                             decimals: 0
                             stepSize: 1
-                            unit: i18n("Hz")
+                            unit: Units.hz
                             enabled: bandsListview.currentIndex > 0
                             opacity: bandsListview.currentIndex > 0 ? 1 : 0
                             onValueModified: v => {
@@ -212,7 +212,7 @@ Kirigami.ScrollablePage {
                                 id: bandEndFrequency
                                 Layout.fillWidth: true
                                 horizontalAlignment: Text.AlignHCenter
-                                text: Common.toLocaleLabel(multibandCompressorPage.bandFrequencyEnd[bandsListview.currentIndex], 0, i18n("Hz"))
+                                text: Common.toLocaleLabel(multibandCompressorPage.bandFrequencyEnd[bandsListview.currentIndex], 0, Units.hz)
                             }
                         }
                     }
@@ -502,7 +502,7 @@ Kirigami.ScrollablePage {
                         value: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainLowcutFrequency"]
                         decimals: 0
                         stepSize: 1
-                        unit: i18n("Hz")
+                        unit: Units.hz
                         enabled: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainCustomLowcutFilter"]
                         onValueModified: v => {
                             multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainLowcutFrequency"] = v;
@@ -527,7 +527,7 @@ Kirigami.ScrollablePage {
                         value: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainHighcutFrequency"]
                         decimals: 0
                         stepSize: 1
-                        unit: i18n("Hz")
+                        unit: Units.hz
                         enabled: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainCustomHighcutFilter"]
                         onValueModified: v => {
                             multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainHighcutFrequency"] = v;

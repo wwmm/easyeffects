@@ -401,7 +401,7 @@ Kirigami.ScrollablePage {
                         value: gatePage.pluginDB.hpfFrequency
                         decimals: 0
                         stepSize: 1
-                        unit: i18n("Hz")
+                        unit: Units.hz
                         visible: hpfMode.currentIndex !== 0
                         onValueModified: v => {
                             gatePage.pluginDB.hpfFrequency = v;
@@ -422,7 +422,7 @@ Kirigami.ScrollablePage {
                         value: gatePage.pluginDB.lpfFrequency
                         decimals: 0
                         stepSize: 1
-                        unit: i18n("Hz")
+                        unit: Units.hz
                         visible: lpfMode.currentIndex !== 0
                         onValueModified: v => {
                             gatePage.pluginDB.lpfFrequency = v;

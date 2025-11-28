@@ -381,7 +381,7 @@ KirigamiSettings.ConfigurationView {
                     value: DbSpectrum.minimumFrequency
                     decimals: 0
                     stepSize: 10
-                    unit: i18n("Hz")
+                    unit: Units.hz
                     onValueModified: v => {
                         DbSpectrum.minimumFrequency = v;
                     }
@@ -397,7 +397,7 @@ KirigamiSettings.ConfigurationView {
                     value: DbSpectrum.maximumFrequency
                     decimals: 0
                     stepSize: 10
-                    unit: i18n("Hz")
+                    unit: Units.hz
                     onValueModified: v => {
                         DbSpectrum.maximumFrequency = v;
                     }
@@ -677,7 +677,7 @@ KirigamiSettings.ConfigurationView {
                     value: DbMain.lv2uiUpdateFrequency
                     decimals: 0
                     stepSize: 1
-                    unit: i18n("Hz")
+                    unit: Units.hz
                     enabled: DbMain.showNativePluginUi
                     onValueModified: v => {
                         DbMain.lv2uiUpdateFrequency = v;

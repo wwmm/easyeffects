@@ -170,7 +170,7 @@ Kirigami.ScrollablePage {
                             value: deesserPage.pluginDB.f1Freq
                             decimals: 2
                             stepSize: 0.01
-                            unit: i18n("Hz")
+                            unit: Units.hz
                             onValueModified: v => {
                                 deesserPage.pluginDB.f1Freq = v;
                             }
@@ -187,7 +187,7 @@ Kirigami.ScrollablePage {
                             value: deesserPage.pluginDB.f2Freq
                             decimals: 2
                             stepSize: 0.01
-                            unit: i18n("Hz")
+                            unit: Units.hz
                             onValueModified: v => {
                                 deesserPage.pluginDB.f2Freq = v;
                             }

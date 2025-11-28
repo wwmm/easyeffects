@@ -72,7 +72,7 @@ Controls.ItemDelegate {
 
         Controls.Label {
             Layout.alignment: Qt.AlignHCenter
-            text: frequency >= 1000 ? Common.toLocaleLabel(delegate.frequency / 1000, 1, Units.kHz) : Common.toLocaleLabel(delegate.frequency, 0, Units.kHz)
+            text: frequency >= 1000 ? Common.toLocaleLabel(delegate.frequency / 1000, 1, Units.kHz) : Common.toLocaleLabel(delegate.frequency, 0, Units.hz)
             enabled: false
         }
 

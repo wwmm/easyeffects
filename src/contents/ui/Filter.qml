@@ -112,7 +112,7 @@ Kirigami.ScrollablePage {
                     value: filterPage.pluginDB.frequency
                     decimals: 0
                     stepSize: 1
-                    unit: i18n("Hz")
+                    unit: Units.hz
                     onValueModified: v => {
                         filterPage.pluginDB.frequency = v;
                     }

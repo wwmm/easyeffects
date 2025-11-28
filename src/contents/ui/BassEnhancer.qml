@@ -126,7 +126,7 @@ Kirigami.ScrollablePage {
                     value: bassEnchancerPage.pluginDB.scope
                     decimals: 0
                     stepSize: 1
-                    unit: i18n("Hz")
+                    unit: Units.hz
                     onValueModified: v => {
                         bassEnchancerPage.pluginDB.scope = v;
                     }
@@ -153,7 +153,7 @@ Kirigami.ScrollablePage {
                     value: bassEnchancerPage.pluginDB.floor
                     decimals: 0
                     stepSize: 1
-                    unit: i18n("Hz")
+                    unit: Units.hz
                     enabled: floorActive.isChecked
                     onValueModified: v => {
                         bassEnchancerPage.pluginDB.floor = v;

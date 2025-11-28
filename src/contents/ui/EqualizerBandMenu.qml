@@ -78,7 +78,7 @@ Kirigami.Dialog {
                 value: bandMenu.bandDB[bandName]
                 decimals: 0
                 stepSize: 1
-                unit: i18n("Hz")
+                unit: Units.hz
                 onValueModified: v => {
                     bandMenu.bandDB[bandName] = v;
                 }

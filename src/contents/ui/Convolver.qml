@@ -217,7 +217,7 @@ Kirigami.ScrollablePage {
                     checkable: true
                     onTriggered: {
                         if (checked) {
-                            convolverChart.xUnit = i18n("Hz");
+                            convolverChart.xUnit = Units.hz;
                             if (!convolverChart.logarithimicHorizontalAxis) {
                                 const chart = chartChannel.left ? convolverPage.pluginBackend.chartMagLfftLinear : convolverPage.pluginBackend.chartMagRfftLinear;
 
@@ -368,7 +368,7 @@ Kirigami.ScrollablePage {
                         id: irRate
 
                         Layout.alignment: Qt.AlignHCenter
-                        text: (convolverPage.pluginBackend ? convolverPage.pluginBackend.kernelRate : "") + ` ${i18n("Hz")}` // qmllint disable
+                        text: (convolverPage.pluginBackend ? convolverPage.pluginBackend.kernelRate : "") + ` ${Units.hz}`
                         enabled: false
                     }
 

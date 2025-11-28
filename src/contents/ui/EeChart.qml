@@ -386,7 +386,7 @@ Item {
             // const dataY = widgetRoot.mapToValueY(mouse.y);
 
             const newText = `${Number(dataX).toLocaleString(Qt.locale(), 'f', widgetRoot.xAxisDecimals)} ${widgetRoot.xUnit}`;
-            // const newText = `x: ${Number(dataX).toLocaleString(Qt.locale(), 'f', widgetRoot.xAxisDecimals)} Hz, y: ${Number(dataY).toLocaleString(locale, 'f', widgetRoot.xAxisDecimals)}`;
+            // const newText = `x: ${Number(dataX).toLocaleString(Qt.locale(), 'f', widgetRoot.xAxisDecimals)} ${Units.hz}, y: ${Number(dataY).toLocaleString(locale, 'f', widgetRoot.xAxisDecimals)}`;
 
             if (coordinateLabel.text !== newText) {
                 coordinateLabel.text = newText;

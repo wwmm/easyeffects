@@ -45,7 +45,7 @@ Controls.ItemDelegate {
             text: {
                 const f = delegate.bandDB[`band${delegate.index}Frequency`];
                 if (f < 1000) {
-                    return Common.toLocaleLabel(f, 0, i18n("Hz"));
+                    return Common.toLocaleLabel(f, 0, Units.hz);
                 } else {
                     return Common.toLocaleLabel(f * 0.001, 1, Units.kHz);
                 }

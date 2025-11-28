@@ -130,7 +130,7 @@ Kirigami.ScrollablePage {
                             value: bandsListview.currentIndex > 0 ? multibandGatePage.pluginDB[multibandGatePage.bandId + "SplitFrequency"] : 0
                             decimals: 0
                             stepSize: 1
-                            unit: i18n("Hz")
+                            unit: Units.hz
                             enabled: bandsListview.currentIndex > 0
                             opacity: bandsListview.currentIndex > 0 ? 1 : 0
                             onValueModified: v => {
@@ -149,7 +149,7 @@ Kirigami.ScrollablePage {
                                 id: bandEndFrequency
                                 Layout.fillWidth: true
                                 horizontalAlignment: Text.AlignHCenter
-                                text: Common.toLocaleLabel(multibandGatePage.bandFrequencyEnd[bandsListview.currentIndex], 0, i18n("Hz"))
+                                text: Common.toLocaleLabel(multibandGatePage.bandFrequencyEnd[bandsListview.currentIndex], 0, Units.hz)
                             }
                         }
                     }
@@ -475,7 +475,7 @@ Kirigami.ScrollablePage {
                         value: multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainLowcutFrequency"]
                         decimals: 0
                         stepSize: 1
-                        unit: i18n("Hz")
+                        unit: Units.hz
                         enabled: multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainCustomLowcutFilter"]
                         onValueModified: v => {
                             multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainLowcutFrequency"] = v;
@@ -500,7 +500,7 @@ Kirigami.ScrollablePage {
                         value: multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainHighcutFrequency"]
                         decimals: 0
                         stepSize: 1
-                        unit: i18n("Hz")
+                        unit: Units.hz
                         enabled: multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainCustomHighcutFilter"]
                         onValueModified: v => {
                             multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainHighcutFrequency"] = v;
