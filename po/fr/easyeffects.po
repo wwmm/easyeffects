@@ -3300,6 +3300,46 @@ msgstr "Égaliseur, Compresseur et Autres Effets Audio"
 msgid "Simple audio effects"
 msgstr "Effets audio simples"
 
+#: src/units.hpp:42
+#, fuzzy
+msgctxt "decibel"
+msgid "dB"
+msgstr "dB"
+
+#: src/units.hpp:43
+#, fuzzy
+msgctxt "seconds"
+msgid "s"
+msgstr "s"
+
+#: src/units.hpp:44
+#, fuzzy
+msgctxt "milliseconds"
+msgid "ms"
+msgstr "ms"
+
+#: src/units.hpp:45
+#, fuzzy
+msgctxt "kiloHertz"
+msgid "kHz"
+msgstr "kHz"
+
+#: src/units.hpp:46
+msgctxt "percentage"
+msgid "%"
+msgstr ""
+
+#: src/units.hpp:47
+msgctxt "loudness units full scale"
+msgid "LUFS"
+msgstr ""
+
+#: src/units.hpp:48
+#, fuzzy
+msgctxt "loudness units"
+msgid "LU"
+msgstr "G"
+
 #~ msgid ""
 #~ "If enabled the blocklist set in the preset file will be ignored. The one "
 #~ "previously saved in our database will be used instead."

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-27 22:50+0000\n"
+"POT-Creation-Date: 2025-11-28 00:47+0000\n"
 "PO-Revision-Date: 2025-11-27 05:01+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -3247,6 +3247,46 @@ msgstr "Речевой процессор"
 #: src/tags_plugin_name.cpp:52
 msgid "Stereo Tools"
 msgstr "Наладчики стерео"
+
+#: src/units.hpp:42
+#, fuzzy
+msgctxt "decibel"
+msgid "dB"
+msgstr "дБ"
+
+#: src/units.hpp:43
+#, fuzzy
+msgctxt "seconds"
+msgid "s"
+msgstr "с"
+
+#: src/units.hpp:44
+#, fuzzy
+msgctxt "milliseconds"
+msgid "ms"
+msgstr "мс"
+
+#: src/units.hpp:45
+#, fuzzy
+msgctxt "kiloHertz"
+msgid "kHz"
+msgstr "кГц"
+
+#: src/units.hpp:46
+msgctxt "percentage"
+msgid "%"
+msgstr ""
+
+#: src/units.hpp:47
+msgctxt "loudness units full scale"
+msgid "LUFS"
+msgstr ""
+
+#: src/units.hpp:48
+#, fuzzy
+msgctxt "loudness units"
+msgid "LU"
+msgstr "Л"
 
 #: com.github.wwmm.easyeffects.desktop.in.template.h:1
 msgid "Equalizer, Compressor and Other Audio Effects"
