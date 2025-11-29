@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-29 15:12-0300\n"
-"PO-Revision-Date: 2025-11-28 19:12+0000\n"
+"PO-Revision-Date: 2025-11-29 22:47+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -2116,7 +2116,7 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:256
 msgid "Level meters animation duration"
-msgstr ""
+msgstr "Durata delle animazioni dei misuratori di livello"
 
 #: src/contents/ui/PreferencesSheet.qml:294
 msgid "Audio delay compensation"
