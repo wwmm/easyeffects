@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-28 15:20-0300\n"
-"PO-Revision-Date: 2025-11-28 14:00+0000\n"
+"PO-Revision-Date: 2025-11-29 08:00+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -1471,112 +1471,90 @@ msgid "None"
 msgstr "Нет"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x2/16 bits"
 msgstr "Половинная x2/16 бит"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x2/24 bits"
 msgstr "Половинная x2/24 бита"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x3/16 bits"
 msgstr "Половинная x3/16 бит"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x3/24 bits"
 msgstr "Половинная x3/24 бита"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x4/16 bits"
 msgstr "Половинная x4/16 бит"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x4/24 bits"
 msgstr "Половинная x4/24 бита"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x6/16 bits"
 msgstr "Половинная x6/16 бит"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x6/24 bits"
 msgstr "Половинная x6/24 бита"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x8/16 bits"
 msgstr "Половинная x8/16 бит"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x8/24 bits"
 msgstr "Половинная x8/24 бита"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x2/16 bits"
 msgstr "Полная x2/16 бит"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x2/24 bits"
 msgstr "Полная x2/24 бита"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x3/16 bits"
 msgstr "Полная x3/16 бит"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x3/24 bits"
 msgstr "Полная x3/24 бита"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x4/16 bits"
 msgstr "Полная x4/16 бит"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x4/24 bits"
 msgstr "Полная x4/24 бита"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x6/16 bits"
 msgstr "Полная x6/16 бит"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x6/24 bits"
 msgstr "Полная x6/24 бита"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x8/16 bits"
 msgstr "Полная x8/16 бит"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x8/24 bits"
 msgstr "Полная x8/24 бита"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "True peak/16 bits"
 msgstr "Истинный пик/16 бит"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "True peak/24 bits"
 msgstr "Истинный пик/24 бита"
 
@@ -3039,90 +3017,76 @@ msgid "Stereo Tools"
 msgstr "Наладчики стерео"
 
 #: src/units.hpp:54
-#, fuzzy
 msgctxt "left channel abbreviation (single letter)"
 msgid "L"
 msgstr "Л"
 
 #: src/units.hpp:55
-#, fuzzy
 msgctxt "left channel abbreviation (single letter)"
 msgid "R"
 msgstr "П"
 
 #: src/units.hpp:56
-#, fuzzy
 msgctxt "decibel unit abbreviation"
 msgid "dB"
 msgstr "дБ"
 
 #: src/units.hpp:57
-#, fuzzy
 msgctxt "decibel full scale unit abbreviation"
 msgid "dBFS"
 msgstr "дБFS"
 
 #: src/units.hpp:58
-#, fuzzy
 msgctxt "decibel per octaves unit abbreviation"
 msgid "dB/oct"
-msgstr "12 дБ/окт"
+msgstr "дБ/окт"
 
 #: src/units.hpp:59
 msgctxt "thousand abbreviation (single letter)"
 msgid "k"
-msgstr ""
+msgstr "к"
 
 #: src/units.hpp:60
-#, fuzzy
 msgctxt "seconds unit abbreviation"
 msgid "s"
 msgstr "с"
 
 #: src/units.hpp:61
-#, fuzzy
 msgctxt "milliseconds unit abbreviation"
 msgid "ms"
 msgstr "мс"
 
 #: src/units.hpp:62
-#, fuzzy
 msgctxt "Hertz unit abbreviation"
 msgid "Hz"
 msgstr "Гц"
 
 #: src/units.hpp:63
-#, fuzzy
 msgctxt "kiloHertz unit abbreviation"
 msgid "kHz"
 msgstr "кГц"
 
 #: src/units.hpp:64
-#, fuzzy
 msgctxt "percentage symbol"
 msgid "%"
 msgstr "%"
 
 #: src/units.hpp:65
-#, fuzzy
 msgctxt "loudness full scale unit abbreviation"
 msgid "LUFS"
 msgstr "LUFS"
 
 #: src/units.hpp:66
-#, fuzzy
 msgctxt "loudness unit abbreviation"
 msgid "LU"
 msgstr "LU"
 
 #: src/units.hpp:67
-#, fuzzy
 msgctxt "meter unit abbreviation"
 msgid "m"
 msgstr "м"
 
 #: src/units.hpp:68
-#, fuzzy
 msgctxt "centimeter unit abbreviation"
 msgid "cm"
 msgstr "см"
@@ -3130,18 +3094,17 @@ msgstr "см"
 #: src/units.hpp:69
 msgctxt "degree Celsius unit abbreviation"
 msgid "°C"
-msgstr ""
+msgstr "°C"
 
 #: src/units.hpp:70
 msgctxt "bit unit (plural)"
 msgid "bits"
-msgstr ""
+msgstr "бит(-а)"
 
 #: src/units.hpp:71
-#, fuzzy
 msgctxt "frame unit (plural)"
 msgid "frames"
-msgstr "кадров"
+msgstr "кадр(-а/-ов)"
 
 #: src/units.hpp:72
 msgctxt "minus infinity abbreviation"

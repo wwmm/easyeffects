@@ -8,16 +8,17 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-28 15:20-0300\n"
-"PO-Revision-Date: 2025-11-28 14:00+0000\n"
-"Last-Translator: Максим Горпиніч <gorpinicmaksim0@gmail.com>\n"
+"PO-Revision-Date: 2025-11-29 08:00+0000\n"
+"Last-Translator: Serhii Starovoitov <drommer.94@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural="
+"(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? "
+"1 : 2);\n"
 "X-Generator: Weblate 5.15-dev\n"
 
 #: src/autostart.cpp:89
@@ -1209,11 +1210,11 @@ msgstr "Імпортовано файл пресету APO."
 
 #: src/contents/ui/Equalizer.qml:59
 msgid "Imported the Equalizer APO preset file into the left channel."
-msgstr "Імпортовано файл пресету еквалайзера APO у лівий канал."
+msgstr "Імпортовано файл пресету еквалайзера APO для лівого каналу."
 
 #: src/contents/ui/Equalizer.qml:61
 msgid "Imported the Equalizer APO preset file into the right channel."
-msgstr "Імпортовано файл пресету еквалайзера APO у правий канал."
+msgstr "Імпортовано файл пресету еквалайзера APO для правого каналу."
 
 #: src/contents/ui/Equalizer.qml:74
 msgid "GraphicEQ preset"
@@ -1246,16 +1247,16 @@ msgid ""
 "Exported the current Equalizer settings of the left channel to an external "
 "APO preset file."
 msgstr ""
-"Експортовано поточні налаштування еквалайзера лівого каналу до зовнішнього "
-"файлу пресетів APO."
+"Експортовано поточні налаштування еквалайзера для лівого каналу до "
+"зовнішнього файлу пресетів APO."
 
 #: src/contents/ui/Equalizer.qml:101
 msgid ""
 "Exported the current Equalizer settings of the right channel to an external "
 "APO preset file."
 msgstr ""
-"Експортовано поточні налаштування еквалайзера правого каналу до зовнішнього "
-"файлу пресетів APO."
+"Експортовано поточні налаштування еквалайзера для правого каналу до "
+"зовнішнього файлу пресетів APO."
 
 #: src/contents/ui/Equalizer.qml:125 src/contents/ui/Filter.qml:77
 #: src/contents/ui/Loudness.qml:57
@@ -1436,112 +1437,90 @@ msgid "None"
 msgstr "Немає"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x2/16 bits"
 msgstr "Половина x2/16 біт"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x2/24 bits"
 msgstr "Половина x2/24 біти"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x3/16 bits"
 msgstr "Половина x3/16 біт"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x3/24 bits"
 msgstr "Половина x3/24 біти"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x4/16 bits"
 msgstr "Половина x4/16 біт"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x4/24 bits"
 msgstr "Половина x4/24 біти"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x6/16 bits"
 msgstr "Половина x6/16 біт"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x6/24 bits"
 msgstr "Половина x6/24 біти"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x8/16 bits"
 msgstr "Половина x8/16 біт"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x8/24 bits"
 msgstr "Половина x8/24 біти"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x2/16 bits"
 msgstr "Повна x2/16 біт"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x2/24 bits"
 msgstr "Повна x2/24 біти"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x3/16 bits"
 msgstr "Повна x3/16 біт"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x3/24 bits"
 msgstr "Повна x3/24 біти"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x4/16 bits"
 msgstr "Повна x4/16 біт"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x4/24 bits"
 msgstr "Повна x4/24 біти"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x6/16 bits"
 msgstr "Повна x6/16 біт"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x6/24 bits"
 msgstr "Повна x6/24 біти"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x8/16 bits"
 msgstr "Повна x8/16 біт"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x8/24 bits"
 msgstr "Повна x8/24 біти"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "True peak/16 bits"
 msgstr "Справжній пік (16 біт)"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "True peak/24 bits"
 msgstr "Справжній пік (24 біти)"
 
@@ -2076,7 +2055,7 @@ msgid ""
 "percentages results in a lower perceived volume while the loudness appears "
 "to change more evenly across the slider."
 msgstr ""
-"Використовувати кубічну шкалу для гучності потоку, а не лінійну. Низькі "
+"Використовувати кубічну шкалу для гучності потоку замість лінійної. Низькі "
 "відсотки призводять до нижчої сприйнятої гучності, тоді як гучність "
 "змінюється більш рівномірно вздовж повзунка."
 
@@ -2211,8 +2190,8 @@ msgid ""
 "It is necessary to restart the service for changes in this setting to take "
 "effect."
 msgstr ""
-"Щоб зміни в цьому налаштуванні набули чинності, необхідно перезапустити "
-"службу."
+"Необхідно перезапустити службу для того, щоб зміни цього налаштування набули "
+"чинності."
 
 #: src/contents/ui/PreferencesSheet.qml:470
 msgid "Reduce effects list controls"
@@ -2289,32 +2268,32 @@ msgstr "Користувач"
 #: src/contents/ui/PreferencesSheet.qml:521
 msgctxt "@label"
 msgid "Background"
-msgstr "Передісторія"
+msgstr "Фон"
 
 #: src/contents/ui/PreferencesSheet.qml:530
 msgctxt "@label"
 msgid "Plot area background"
-msgstr "Фон ділянки"
+msgstr "Фон площі ділянки"
 
 #: src/contents/ui/PreferencesSheet.qml:539
 msgctxt "@label"
 msgid "Series colors"
-msgstr "Кольори серії"
+msgstr "Кольори лінійки"
 
 #: src/contents/ui/PreferencesSheet.qml:548
 msgctxt "@label"
 msgid "Axis labels text color"
-msgstr "Колір тексту позначок осей"
+msgstr "Колір тексту міток осей"
 
 #: src/contents/ui/PreferencesSheet.qml:557
 msgctxt "@label"
 msgid "Axis labels background color"
-msgstr "Колір фону позначок осей"
+msgstr "Колір фону міток осей"
 
 #: src/contents/ui/PreferencesSheet.qml:566
 msgctxt "@label"
 msgid "Border color"
-msgstr "Колір межі"
+msgstr "Колір контурів"
 
 #: src/contents/ui/PreferencesSheet.qml:575
 msgid "Line width"
@@ -2322,7 +2301,7 @@ msgstr "Ширина лінії"
 
 #: src/contents/ui/PreferencesSheet.qml:589
 msgid "Show grid lines"
-msgstr "Показати лінії сітки"
+msgstr "Показувати лінії сітки"
 
 #: src/contents/ui/PreferencesSheet.qml:607
 msgid "Autoload delay"
@@ -2990,90 +2969,76 @@ msgid "Stereo Tools"
 msgstr "Стерео інструменти"
 
 #: src/units.hpp:54
-#, fuzzy
 msgctxt "left channel abbreviation (single letter)"
 msgid "L"
 msgstr "Л"
 
 #: src/units.hpp:55
-#, fuzzy
 msgctxt "left channel abbreviation (single letter)"
 msgid "R"
 msgstr "П"
 
 #: src/units.hpp:56
-#, fuzzy
 msgctxt "decibel unit abbreviation"
 msgid "dB"
 msgstr "дБ"
 
 #: src/units.hpp:57
-#, fuzzy
 msgctxt "decibel full scale unit abbreviation"
 msgid "dBFS"
-msgstr "dBFS"
+msgstr "дБПШ (dBFS)"
 
 #: src/units.hpp:58
-#, fuzzy
 msgctxt "decibel per octaves unit abbreviation"
 msgid "dB/oct"
-msgstr "12 дБ/окт"
+msgstr "дБ/окт"
 
 #: src/units.hpp:59
 msgctxt "thousand abbreviation (single letter)"
 msgid "k"
-msgstr ""
+msgstr "к"
 
 #: src/units.hpp:60
-#, fuzzy
 msgctxt "seconds unit abbreviation"
 msgid "s"
 msgstr "с"
 
 #: src/units.hpp:61
-#, fuzzy
 msgctxt "milliseconds unit abbreviation"
 msgid "ms"
 msgstr "мс"
 
 #: src/units.hpp:62
-#, fuzzy
 msgctxt "Hertz unit abbreviation"
 msgid "Hz"
 msgstr "Гц"
 
 #: src/units.hpp:63
-#, fuzzy
 msgctxt "kiloHertz unit abbreviation"
 msgid "kHz"
 msgstr "кГц"
 
 #: src/units.hpp:64
-#, fuzzy
 msgctxt "percentage symbol"
 msgid "%"
 msgstr "%"
 
 #: src/units.hpp:65
-#, fuzzy
 msgctxt "loudness full scale unit abbreviation"
 msgid "LUFS"
-msgstr "LUFS"
+msgstr "ОГПШ (LUFS)"
 
 #: src/units.hpp:66
-#, fuzzy
 msgctxt "loudness unit abbreviation"
 msgid "LU"
-msgstr "ЛУ"
+msgstr "ОГ (LU)"
 
 #: src/units.hpp:67
-#, fuzzy
 msgctxt "meter unit abbreviation"
 msgid "m"
 msgstr "м"
 
 #: src/units.hpp:68
-#, fuzzy
 msgctxt "centimeter unit abbreviation"
 msgid "cm"
 msgstr "см"
@@ -3081,15 +3046,14 @@ msgstr "см"
 #: src/units.hpp:69
 msgctxt "degree Celsius unit abbreviation"
 msgid "°C"
-msgstr ""
+msgstr "°C"
 
 #: src/units.hpp:70
 msgctxt "bit unit (plural)"
 msgid "bits"
-msgstr ""
+msgstr "біт(-а/-ів)"
 
 #: src/units.hpp:71
-#, fuzzy
 msgctxt "frame unit (plural)"
 msgid "frames"
 msgstr "кадр(-а/-ів)"
