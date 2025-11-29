@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-28 15:20-0300\n"
-"PO-Revision-Date: 2025-11-27 05:01+0000\n"
+"PO-Revision-Date: 2025-11-29 08:00+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hant/>\n"
@@ -2999,7 +2999,7 @@ msgstr "12 dB/oct"
 #: src/units.hpp:59
 msgctxt "thousand abbreviation (single letter)"
 msgid "k"
-msgstr ""
+msgstr "k"
 
 #: src/units.hpp:60
 #, fuzzy
@@ -3028,12 +3028,12 @@ msgstr "kHz"
 #: src/units.hpp:64
 msgctxt "percentage symbol"
 msgid "%"
-msgstr ""
+msgstr "%"
 
 #: src/units.hpp:65
 msgctxt "loudness full scale unit abbreviation"
 msgid "LUFS"
-msgstr ""
+msgstr "LUFS"
 
 #: src/units.hpp:66
 #, fuzzy
@@ -3056,12 +3056,12 @@ msgstr "cm"
 #: src/units.hpp:69
 msgctxt "degree Celsius unit abbreviation"
 msgid "°C"
-msgstr ""
+msgstr "°C"
 
 #: src/units.hpp:70
 msgctxt "bit unit (plural)"
 msgid "bits"
-msgstr ""
+msgstr "bits"
 
 #: src/units.hpp:71
 #, fuzzy
