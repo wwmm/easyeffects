@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-28 15:20-0300\n"
+"POT-Creation-Date: 2025-11-29 15:12-0300\n"
 "PO-Revision-Date: 2025-07-20 18:38+0000\n"
 "Last-Translator: Santiago José Gutiérrez Llanos "
 "<gutierrezapata17@gmail.com>\n"
@@ -213,17 +213,17 @@ msgid "Output gain"
 msgstr "Ganancia de Entrada"
 
 #: src/contents/ui/Autogain.qml:219 src/contents/ui/BassEnhancer.qml:185
-#: src/contents/ui/BassLoudness.qml:104 src/contents/ui/Compressor.qml:869
+#: src/contents/ui/BassLoudness.qml:104 src/contents/ui/Compressor.qml:861
 #: src/contents/ui/Convolver.qml:466 src/contents/ui/Crossfeed.qml:128
 #: src/contents/ui/Crystalizer.qml:89 src/contents/ui/DeepFilterNet.qml:175
 #: src/contents/ui/Deesser.qml:300 src/contents/ui/Delay.qml:354
 #: src/contents/ui/EchoCanceller.qml:136 src/contents/ui/Equalizer.qml:283
-#: src/contents/ui/Exciter.qml:190 src/contents/ui/Expander.qml:819
-#: src/contents/ui/Filter.qml:198 src/contents/ui/Gate.qml:956
+#: src/contents/ui/Exciter.qml:190 src/contents/ui/Expander.qml:811
+#: src/contents/ui/Filter.qml:198 src/contents/ui/Gate.qml:944
 #: src/contents/ui/LevelMeter.qml:205 src/contents/ui/Limiter.qml:574
 #: src/contents/ui/Loudness.qml:153 src/contents/ui/Maximizer.qml:101
-#: src/contents/ui/MultibandCompressor.qml:949
-#: src/contents/ui/MultibandGate.qml:922 src/contents/ui/Pitch.qml:246
+#: src/contents/ui/MultibandCompressor.qml:943
+#: src/contents/ui/MultibandGate.qml:916 src/contents/ui/Pitch.qml:246
 #: src/contents/ui/Reverb.qml:297 src/contents/ui/RNNoise.qml:57
 #: src/contents/ui/RNNoise.qml:68 src/contents/ui/RNNoise.qml:282
 #: src/contents/ui/RNNoise.qml:284 src/contents/ui/RNNoise.qml:302
@@ -287,36 +287,36 @@ msgstr "Fondo"
 msgid "Floor"
 msgstr "Fondo"
 
-#: src/contents/ui/BassEnhancer.qml:203 src/contents/ui/Compressor.qml:887
+#: src/contents/ui/BassEnhancer.qml:203 src/contents/ui/Compressor.qml:879
 #: src/contents/ui/Deesser.qml:318 src/contents/ui/Delay.qml:392
 #: src/contents/ui/Equalizer.qml:301 src/contents/ui/Exciter.qml:208
-#: src/contents/ui/Expander.qml:837 src/contents/ui/Filter.qml:216
-#: src/contents/ui/Gate.qml:974 src/contents/ui/Limiter.qml:592
+#: src/contents/ui/Expander.qml:829 src/contents/ui/Filter.qml:216
+#: src/contents/ui/Gate.qml:962 src/contents/ui/Limiter.qml:592
 #: src/contents/ui/Loudness.qml:171 src/contents/ui/Maximizer.qml:119
-#: src/contents/ui/MultibandCompressor.qml:967
-#: src/contents/ui/MultibandGate.qml:940 src/contents/ui/Reverb.qml:323
+#: src/contents/ui/MultibandCompressor.qml:961
+#: src/contents/ui/MultibandGate.qml:934 src/contents/ui/Reverb.qml:323
 #: src/contents/ui/StereoTools.qml:388
 #, fuzzy
 msgid "Show native window"
 msgstr "Cierra la ventana"
 
-#: src/contents/ui/BassEnhancer.qml:216 src/contents/ui/Compressor.qml:900
+#: src/contents/ui/BassEnhancer.qml:216 src/contents/ui/Compressor.qml:892
 #: src/contents/ui/Deesser.qml:331 src/contents/ui/Exciter.qml:221
-#: src/contents/ui/Expander.qml:850 src/contents/ui/Gate.qml:987
+#: src/contents/ui/Expander.qml:842 src/contents/ui/Gate.qml:975
 msgid "Listen"
 msgstr "Escuchar"
 
 #: src/contents/ui/BassEnhancer.qml:227 src/contents/ui/BassLoudness.qml:122
-#: src/contents/ui/Compressor.qml:921 src/contents/ui/Convolver.qml:494
+#: src/contents/ui/Compressor.qml:913 src/contents/ui/Convolver.qml:494
 #: src/contents/ui/Crossfeed.qml:154 src/contents/ui/Crystalizer.qml:117
 #: src/contents/ui/Deesser.qml:342 src/contents/ui/Delay.qml:406
 #: src/contents/ui/EchoCanceller.qml:164 src/contents/ui/Equalizer.qml:367
-#: src/contents/ui/Exciter.qml:232 src/contents/ui/Expander.qml:871
-#: src/contents/ui/Filter.qml:230 src/contents/ui/Gate.qml:1008
+#: src/contents/ui/Exciter.qml:232 src/contents/ui/Expander.qml:863
+#: src/contents/ui/Filter.qml:230 src/contents/ui/Gate.qml:996
 #: src/contents/ui/Limiter.qml:626 src/contents/ui/Loudness.qml:195
 #: src/contents/ui/Main.qml:565 src/contents/ui/Maximizer.qml:133
-#: src/contents/ui/MultibandCompressor.qml:998
-#: src/contents/ui/MultibandGate.qml:971 src/contents/ui/Reverb.qml:337
+#: src/contents/ui/MultibandCompressor.qml:992
+#: src/contents/ui/MultibandGate.qml:965 src/contents/ui/Reverb.qml:337
 #: src/contents/ui/RNNoise.qml:327 src/contents/ui/Speex.qml:173
 #: src/contents/ui/StereoTools.qml:402
 msgid "Reset"
@@ -449,7 +449,7 @@ msgid "Threshold and Time"
 msgstr "Límite"
 
 #: src/contents/ui/Compressor.qml:161 src/contents/ui/Expander.qml:121
-#: src/contents/ui/Gate.qml:65 src/contents/ui/Gate.qml:854
+#: src/contents/ui/Gate.qml:65 src/contents/ui/Gate.qml:846
 #: src/contents/ui/Limiter.qml:126 src/contents/ui/Limiter.qml:399
 #: src/contents/ui/MultibandCompressor.qml:234
 #: src/contents/ui/MultibandGate.qml:175
@@ -457,7 +457,7 @@ msgid "Attack"
 msgstr "Ataque"
 
 #: src/contents/ui/Compressor.qml:194 src/contents/ui/Expander.qml:154
-#: src/contents/ui/Gate.qml:82 src/contents/ui/Gate.qml:863
+#: src/contents/ui/Gate.qml:82 src/contents/ui/Gate.qml:855
 #: src/contents/ui/Limiter.qml:143 src/contents/ui/Limiter.qml:416
 #: src/contents/ui/Maximizer.qml:48 src/contents/ui/MultibandCompressor.qml:282
 #: src/contents/ui/MultibandGate.qml:190 src/contents/ui/RNNoise.qml:142
@@ -688,8 +688,8 @@ msgstr "Amplificación"
 #: src/contents/ui/Compressor.qml:524 src/contents/ui/Expander.qml:480
 #: src/contents/ui/Gate.qml:499 src/contents/ui/Limiter.qml:271
 #: src/contents/ui/LspPreMixDialog.qml:10
-#: src/contents/ui/MultibandCompressor.qml:990
-#: src/contents/ui/MultibandGate.qml:963
+#: src/contents/ui/MultibandCompressor.qml:984
+#: src/contents/ui/MultibandGate.qml:957
 msgid "Pre-Mix"
 msgstr ""
 
@@ -743,22 +743,22 @@ msgstr "Cadena Lateral"
 msgid "Reduction"
 msgstr "Reducción"
 
-#: src/contents/ui/Compressor.qml:767 src/contents/ui/Expander.qml:717
-#: src/contents/ui/Gate.qml:745 src/contents/ui/MultibandCompressor.qml:839
-#: src/contents/ui/MultibandGate.qml:268 src/contents/ui/MultibandGate.qml:812
+#: src/contents/ui/Compressor.qml:763 src/contents/ui/Expander.qml:713
+#: src/contents/ui/Gate.qml:741 src/contents/ui/MultibandCompressor.qml:835
+#: src/contents/ui/MultibandGate.qml:268 src/contents/ui/MultibandGate.qml:808
 msgid "Curve"
 msgstr "Curva"
 
-#: src/contents/ui/Compressor.qml:776 src/contents/ui/Expander.qml:726
-#: src/contents/ui/Gate.qml:754 src/contents/ui/MultibandCompressor.qml:780
-#: src/contents/ui/MultibandGate.qml:753
+#: src/contents/ui/Compressor.qml:772 src/contents/ui/Expander.qml:722
+#: src/contents/ui/Gate.qml:750 src/contents/ui/MultibandCompressor.qml:778
+#: src/contents/ui/MultibandGate.qml:751
 #, fuzzy
 msgid "Envelope"
 msgstr "Pendiente"
 
-#: src/contents/ui/Compressor.qml:910 src/contents/ui/Expander.qml:860
-#: src/contents/ui/Gate.qml:997 src/contents/ui/MultibandCompressor.qml:980
-#: src/contents/ui/MultibandGate.qml:953
+#: src/contents/ui/Compressor.qml:902 src/contents/ui/Expander.qml:852
+#: src/contents/ui/Gate.qml:985 src/contents/ui/MultibandCompressor.qml:974
+#: src/contents/ui/MultibandGate.qml:947
 #, fuzzy
 msgid "Stereo split"
 msgstr "Modo Estéreo"
@@ -968,8 +968,8 @@ msgid "Split"
 msgstr "Dividir"
 
 #: src/contents/ui/Deesser.qml:83 src/contents/ui/Gate.qml:117
-#: src/contents/ui/Gate.qml:169 src/contents/ui/Gate.qml:928
-#: src/contents/ui/Gate.qml:941 src/contents/ui/Limiter.qml:109
+#: src/contents/ui/Gate.qml:169 src/contents/ui/Gate.qml:916
+#: src/contents/ui/Gate.qml:929 src/contents/ui/Limiter.qml:109
 #: src/contents/ui/Maximizer.qml:64 src/contents/ui/MultibandCompressor.qml:253
 #: src/contents/ui/MultibandCompressor.qml:301
 #: src/contents/ui/MultibandGate.qml:272 src/contents/ui/MultibandGate.qml:326
@@ -1191,8 +1191,8 @@ msgstr "Entrada"
 
 #: src/contents/ui/EqualizerBandMenu.qml:13
 #: src/contents/ui/MultibandCompressor.qml:643
-#: src/contents/ui/MultibandCompressor.qml:914
-#: src/contents/ui/MultibandGate.qml:616 src/contents/ui/MultibandGate.qml:887
+#: src/contents/ui/MultibandCompressor.qml:908
+#: src/contents/ui/MultibandGate.qml:616 src/contents/ui/MultibandGate.qml:881
 #, fuzzy
 msgid "Band"
 msgstr "Bandas"
@@ -1488,7 +1488,7 @@ msgstr ""
 msgid "Hysteresis"
 msgstr ""
 
-#: src/contents/ui/Gate.qml:922 src/contents/ui/Gate.qml:935
+#: src/contents/ui/Gate.qml:910 src/contents/ui/Gate.qml:923
 #: src/contents/ui/MultibandCompressor.qml:188
 #: src/contents/ui/MultibandGate.qml:125 src/contents/ui/Speex.qml:110
 msgid "Start"
@@ -2072,12 +2072,12 @@ msgid "No Clients"
 msgstr "Clientes"
 
 #: src/contents/ui/PipeWirePage.qml:296
-#: src/contents/ui/PreferencesSheet.qml:261
+#: src/contents/ui/PreferencesSheet.qml:275
 msgid "State"
 msgstr "Estado"
 
 #: src/contents/ui/PipeWirePage.qml:303
-#: src/contents/ui/PreferencesSheet.qml:268
+#: src/contents/ui/PreferencesSheet.qml:282
 #, fuzzy
 msgid "Enabled"
 msgstr "Habilitar"
@@ -2293,249 +2293,253 @@ msgid ""
 "level is below the last highest one."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:280
+#: src/contents/ui/PreferencesSheet.qml:256
+msgid "Level meters animation duration"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:294
 msgid "Audio delay compensation"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:295
+#: src/contents/ui/PreferencesSheet.qml:309
 msgid "Graph"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:302
+#: src/contents/ui/PreferencesSheet.qml:316
 msgid "Shape"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:306
+#: src/contents/ui/PreferencesSheet.qml:320
 msgid "Bars"
 msgstr "Barras"
 
-#: src/contents/ui/PreferencesSheet.qml:306
+#: src/contents/ui/PreferencesSheet.qml:320
 msgid "Lines"
 msgstr "Lineas"
 
-#: src/contents/ui/PreferencesSheet.qml:306
+#: src/contents/ui/PreferencesSheet.qml:320
 msgid "Dots"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:306
+#: src/contents/ui/PreferencesSheet.qml:320
 msgid "Area"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:316
+#: src/contents/ui/PreferencesSheet.qml:330
 msgid "Dynamic scale"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:328
+#: src/contents/ui/PreferencesSheet.qml:342
 #, fuzzy
 msgid "Logarithmic frequency axis"
 msgstr "Frecuencia"
 
-#: src/contents/ui/PreferencesSheet.qml:340
+#: src/contents/ui/PreferencesSheet.qml:354
 msgid "Points"
 msgstr "Puntos"
 
-#: src/contents/ui/PreferencesSheet.qml:355
+#: src/contents/ui/PreferencesSheet.qml:369
 msgid "Height"
 msgstr "Altura"
 
-#: src/contents/ui/PreferencesSheet.qml:362
+#: src/contents/ui/PreferencesSheet.qml:376
 msgid "px"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:370
+#: src/contents/ui/PreferencesSheet.qml:384
 #, fuzzy
 msgid "Frequency Range"
 msgstr "Frecuencia"
 
-#: src/contents/ui/PreferencesSheet.qml:377
+#: src/contents/ui/PreferencesSheet.qml:391
 #, fuzzy
 msgid "Minimum"
 msgstr "Máximo"
 
-#: src/contents/ui/PreferencesSheet.qml:393
+#: src/contents/ui/PreferencesSheet.qml:407
 msgid "Maximum"
 msgstr "Máximo"
 
-#: src/contents/ui/PreferencesSheet.qml:415
+#: src/contents/ui/PreferencesSheet.qml:429
 msgid "Database autosave interval"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:429
+#: src/contents/ui/PreferencesSheet.qml:443
 #, fuzzy
 msgid "Most used presets"
 msgstr "Crossfeed"
 
-#: src/contents/ui/PreferencesSheet.qml:447
+#: src/contents/ui/PreferencesSheet.qml:461
 msgid "Window"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:456
+#: src/contents/ui/PreferencesSheet.qml:470
 msgid "Force KDE's Breeze theme when Easy Effects starts"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:457
+#: src/contents/ui/PreferencesSheet.qml:471
 msgid ""
 "It is necessary to restart the service for changes in this setting to take "
 "effect."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:470
+#: src/contents/ui/PreferencesSheet.qml:484
 msgid "Reduce effects list controls"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:471
+#: src/contents/ui/PreferencesSheet.qml:485
 msgid ""
 "Action buttons in the effects list are moved inside a context menu for a "
 "more compact view."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:483
+#: src/contents/ui/PreferencesSheet.qml:497
 msgid "Graphs"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:494
+#: src/contents/ui/PreferencesSheet.qml:508
 msgid "Color scheme"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:498
+#: src/contents/ui/PreferencesSheet.qml:512
 #, fuzzy
 msgid "Automatic"
 msgstr "AutoGain"
 
-#: src/contents/ui/PreferencesSheet.qml:498
+#: src/contents/ui/PreferencesSheet.qml:512
 #, fuzzy
 msgid "Light"
 msgstr "Derecha"
 
-#: src/contents/ui/PreferencesSheet.qml:498
+#: src/contents/ui/PreferencesSheet.qml:512
 msgid "Dark"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:509
+#: src/contents/ui/PreferencesSheet.qml:523
 msgid "Color theme"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:513
+#: src/contents/ui/PreferencesSheet.qml:527
 msgid "Green"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:513
+#: src/contents/ui/PreferencesSheet.qml:527
 msgid "Green neon"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:513
+#: src/contents/ui/PreferencesSheet.qml:527
 msgid "Mix"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:513
+#: src/contents/ui/PreferencesSheet.qml:527
 #, fuzzy
 msgid "Orange"
 msgstr "Rango"
 
-#: src/contents/ui/PreferencesSheet.qml:513
+#: src/contents/ui/PreferencesSheet.qml:527
 msgid "Yellow"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:513
+#: src/contents/ui/PreferencesSheet.qml:527
 msgid "Blue"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:513
+#: src/contents/ui/PreferencesSheet.qml:527
 msgid "Purple"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:513
+#: src/contents/ui/PreferencesSheet.qml:527
 msgid "Grey"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:513
+#: src/contents/ui/PreferencesSheet.qml:527
 msgid "User"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:521
+#: src/contents/ui/PreferencesSheet.qml:535
 msgctxt "@label"
 msgid "Background"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:530
+#: src/contents/ui/PreferencesSheet.qml:544
 msgctxt "@label"
 msgid "Plot area background"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:539
+#: src/contents/ui/PreferencesSheet.qml:553
 msgctxt "@label"
 msgid "Series colors"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:548
+#: src/contents/ui/PreferencesSheet.qml:562
 msgctxt "@label"
 msgid "Axis labels text color"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:557
+#: src/contents/ui/PreferencesSheet.qml:571
 msgctxt "@label"
 msgid "Axis labels background color"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:566
+#: src/contents/ui/PreferencesSheet.qml:580
 #, fuzzy
 msgctxt "@label"
 msgid "Border color"
 msgstr "Color del Degradado"
 
-#: src/contents/ui/PreferencesSheet.qml:575
+#: src/contents/ui/PreferencesSheet.qml:589
 #, fuzzy
 msgid "Line width"
 msgstr "Ancho de Linea"
 
-#: src/contents/ui/PreferencesSheet.qml:589
+#: src/contents/ui/PreferencesSheet.qml:603
 msgid "Show grid lines"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:607
+#: src/contents/ui/PreferencesSheet.qml:621
 #, fuzzy
 msgid "Autoload delay"
 msgstr "AutoGain"
 
-#: src/contents/ui/PreferencesSheet.qml:608
+#: src/contents/ui/PreferencesSheet.qml:622
 msgid ""
 "Delay between receiving a new device route and the call to autoload a preset."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:624
+#: src/contents/ui/PreferencesSheet.qml:638
 #, fuzzy
 msgid "Ignore the blocklist from presets"
 msgstr "Lista Negra"
 
-#: src/contents/ui/PreferencesSheet.qml:625
+#: src/contents/ui/PreferencesSheet.qml:639
 msgid ""
 "If enabled, the list of excluded apps set in the loaded preset is ignored "
 "and does not replace the one set by the user."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:646
+#: src/contents/ui/PreferencesSheet.qml:660
 msgid "Global shortcuts"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:647
+#: src/contents/ui/PreferencesSheet.qml:661
 msgid "Enables support for XDG global shortcuts."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:659
+#: src/contents/ui/PreferencesSheet.qml:673
 #, fuzzy
 msgid "Native window of effects"
 msgstr "Cierra la ventana"
 
-#: src/contents/ui/PreferencesSheet.qml:660
+#: src/contents/ui/PreferencesSheet.qml:674
 msgid "Allows the native user interface of effects to be shown/hidden."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:672
+#: src/contents/ui/PreferencesSheet.qml:686
 #, fuzzy
 msgid "Update frequency"
 msgstr "Frecuencia"
 
-#: src/contents/ui/PreferencesSheet.qml:673
+#: src/contents/ui/PreferencesSheet.qml:687
 msgid "Related to LV2 plugins."
 msgstr ""
 

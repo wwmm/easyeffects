@@ -251,6 +251,20 @@ KirigamiSettings.ConfigurationView {
                         DbMain.levelMetersLabelTimer = v;
                     }
                 }
+
+                EeSpinBox {
+                    label: i18n("Level meters animation duration") // qmllint disable
+                    from: DbMain.getMinValue("levelMetersAnimationDuration")
+                    to: DbMain.getMaxValue("levelMetersAnimationDuration")
+                    value: DbMain.levelMetersAnimationDuration
+                    decimals: 0
+                    stepSize: 1
+                    unit: Units.ms
+                    enabled: DbMain.levelMetersAnimationDuration
+                    onValueModified: v => {
+                        DbMain.levelMetersAnimationDuration = v;
+                    }
+                }
             }
         }
     }

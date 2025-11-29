@@ -46,6 +46,13 @@ Rectangle {
             }
 
             origin.y: root.topToBottom === false ? levelRect.height : 0
+
+            Behavior on yScale {
+                NumberAnimation {
+                    duration: DbMain.levelMetersAnimationDuration
+                    easing.type: Easing.OutQuad
+                }
+            }
         }
 
         anchors {
@@ -75,7 +82,7 @@ Rectangle {
 
             Behavior on y {
                 NumberAnimation {
-                    duration: 400
+                    duration: DbMain.levelMetersAnimationDuration
                     easing.type: Easing.OutCubic
                 }
             }
