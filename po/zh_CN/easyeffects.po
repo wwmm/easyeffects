@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-28 15:20-0300\n"
-"PO-Revision-Date: 2025-11-28 14:00+0000\n"
+"PO-Revision-Date: 2025-11-29 08:00+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hans/>\n"
@@ -1426,112 +1426,90 @@ msgid "None"
 msgstr "无"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x2/16 bits"
 msgstr "2 倍半超采样/16 位输出"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x2/24 bits"
 msgstr "2 倍半超采样/24 位输出"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x3/16 bits"
 msgstr "3 倍半超采样/16 位输出"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x3/24 bits"
 msgstr "3 倍半超采样/24 位输出"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x4/16 bits"
 msgstr "4 倍半超采样/16 位输出"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x4/24 bits"
 msgstr "4 倍半超采样/24 位输出"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x6/16 bits"
 msgstr "6 倍半超采样/16 位输出"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x6/24 bits"
 msgstr "6 倍半超采样/24 位输出"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x8/16 bits"
 msgstr "8 倍半超采样/16 位输出"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x8/24 bits"
 msgstr "8 倍半超采样/24 位输出"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x2/16 bits"
 msgstr "2 倍全超采样/16 位输出"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x2/24 bits"
 msgstr "2 倍全超采样/24 位输出"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x3/16 bits"
 msgstr "3 倍全超采样/16 位输出"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x3/24 bits"
 msgstr "3 倍全超采样/24 位输出"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x4/16 bits"
 msgstr "4 倍全超采样/16 位输出"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x4/24 bits"
 msgstr "4 倍全超采样/24 位输出"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x6/16 bits"
 msgstr "6 倍全超采样/16 位输出"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x6/24 bits"
 msgstr "6 倍全超采样/24 位输出"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x8/16 bits"
 msgstr "8 倍全超采样/16 位输出"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x8/24 bits"
 msgstr "8 倍全超采样/24 位输出"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "True peak/16 bits"
 msgstr "实际峰值/16 位输出"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "True peak/24 bits"
 msgstr "实际峰值/24 位输出"
 
@@ -1999,7 +1977,7 @@ msgstr "频谱分析器"
 
 #: src/contents/ui/PreferencesSheet.qml:34
 msgid "Style"
-msgstr "界面风格"
+msgstr "样式"
 
 #: src/contents/ui/PreferencesSheet.qml:46
 msgid "Database"
@@ -2964,90 +2942,76 @@ msgid "Stereo Tools"
 msgstr "立体声工具"
 
 #: src/units.hpp:54
-#, fuzzy
 msgctxt "left channel abbreviation (single letter)"
 msgid "L"
 msgstr "左"
 
 #: src/units.hpp:55
-#, fuzzy
 msgctxt "left channel abbreviation (single letter)"
 msgid "R"
 msgstr "右"
 
 #: src/units.hpp:56
-#, fuzzy
 msgctxt "decibel unit abbreviation"
 msgid "dB"
 msgstr "分贝"
 
 #: src/units.hpp:57
-#, fuzzy
 msgctxt "decibel full scale unit abbreviation"
 msgid "dBFS"
 msgstr "dBFS"
 
 #: src/units.hpp:58
-#, fuzzy
 msgctxt "decibel per octaves unit abbreviation"
 msgid "dB/oct"
-msgstr "12 分贝每八度"
+msgstr "分贝每八度"
 
 #: src/units.hpp:59
 msgctxt "thousand abbreviation (single letter)"
 msgid "k"
-msgstr ""
+msgstr "千"
 
 #: src/units.hpp:60
-#, fuzzy
 msgctxt "seconds unit abbreviation"
 msgid "s"
 msgstr "秒"
 
 #: src/units.hpp:61
-#, fuzzy
 msgctxt "milliseconds unit abbreviation"
 msgid "ms"
 msgstr "毫秒"
 
 #: src/units.hpp:62
-#, fuzzy
 msgctxt "Hertz unit abbreviation"
 msgid "Hz"
 msgstr "赫兹"
 
 #: src/units.hpp:63
-#, fuzzy
 msgctxt "kiloHertz unit abbreviation"
 msgid "kHz"
 msgstr "千赫兹"
 
 #: src/units.hpp:64
-#, fuzzy
 msgctxt "percentage symbol"
 msgid "%"
 msgstr "%"
 
 #: src/units.hpp:65
-#, fuzzy
 msgctxt "loudness full scale unit abbreviation"
 msgid "LUFS"
 msgstr "LUFS"
 
 #: src/units.hpp:66
-#, fuzzy
 msgctxt "loudness unit abbreviation"
 msgid "LU"
 msgstr "LU"
 
 #: src/units.hpp:67
-#, fuzzy
 msgctxt "meter unit abbreviation"
 msgid "m"
 msgstr "米"
 
 #: src/units.hpp:68
-#, fuzzy
 msgctxt "centimeter unit abbreviation"
 msgid "cm"
 msgstr "厘米"
@@ -3055,15 +3019,14 @@ msgstr "厘米"
 #: src/units.hpp:69
 msgctxt "degree Celsius unit abbreviation"
 msgid "°C"
-msgstr ""
+msgstr "摄氏度"
 
 #: src/units.hpp:70
 msgctxt "bit unit (plural)"
 msgid "bits"
-msgstr ""
+msgstr "位"
 
 #: src/units.hpp:71
-#, fuzzy
 msgctxt "frame unit (plural)"
 msgid "frames"
 msgstr "帧"
