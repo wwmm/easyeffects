@@ -57,12 +57,6 @@
             <max>100</max>
             <default>5</default>
         </entry>
-        <entry name="levelMetersLabelTimer" type="Int">
-            <label>Time it takes for the level meters label to be updated. This is only used while the current level is below the last highest level.</label>
-            <min>1</min>
-            <max>10000</max>
-            <default>2500</default>
-        </entry>
         <entry name="autoHideInlineMessageTimeout" type="Int">
             <label>The amount of time in milliseconds an inline message is visible when the autohiding mode is enabled.</label>
             <default>5000</default>
@@ -210,6 +204,20 @@
             <min>1</min>
             <max>3600</max>
             <default>10</default>
+        </entry>
+    </group>
+    <group name="Audio">
+        <entry name="levelMetersLabelTimer" type="Int">
+            <label>Time it takes for the level meters label to be updated. This is only used while the current level is below the last highest level.</label>
+            <min>1</min>
+            <max>10000</max>
+            <default>2500</default>
+        </entry>
+        <entry name="levelMetersAnimationDuration" type="Int">
+            <label>Duration of the animation used in the level meters.</label>
+            <min>1</min>
+            <max>10000</max>
+            <default>250</default>
         </entry>
     </group>
     <group name="NativePluginWindow">

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-28 15:20-0300\n"
+"POT-Creation-Date: 2025-11-29 15:12-0300\n"
 "PO-Revision-Date: 2025-11-29 08:00+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
@@ -192,17 +192,17 @@ msgid "Output gain"
 msgstr "輸出增益 (Gain)"
 
 #: src/contents/ui/Autogain.qml:219 src/contents/ui/BassEnhancer.qml:185
-#: src/contents/ui/BassLoudness.qml:104 src/contents/ui/Compressor.qml:869
+#: src/contents/ui/BassLoudness.qml:104 src/contents/ui/Compressor.qml:861
 #: src/contents/ui/Convolver.qml:466 src/contents/ui/Crossfeed.qml:128
 #: src/contents/ui/Crystalizer.qml:89 src/contents/ui/DeepFilterNet.qml:175
 #: src/contents/ui/Deesser.qml:300 src/contents/ui/Delay.qml:354
 #: src/contents/ui/EchoCanceller.qml:136 src/contents/ui/Equalizer.qml:283
-#: src/contents/ui/Exciter.qml:190 src/contents/ui/Expander.qml:819
-#: src/contents/ui/Filter.qml:198 src/contents/ui/Gate.qml:956
+#: src/contents/ui/Exciter.qml:190 src/contents/ui/Expander.qml:811
+#: src/contents/ui/Filter.qml:198 src/contents/ui/Gate.qml:944
 #: src/contents/ui/LevelMeter.qml:205 src/contents/ui/Limiter.qml:574
 #: src/contents/ui/Loudness.qml:153 src/contents/ui/Maximizer.qml:101
-#: src/contents/ui/MultibandCompressor.qml:949
-#: src/contents/ui/MultibandGate.qml:922 src/contents/ui/Pitch.qml:246
+#: src/contents/ui/MultibandCompressor.qml:943
+#: src/contents/ui/MultibandGate.qml:916 src/contents/ui/Pitch.qml:246
 #: src/contents/ui/Reverb.qml:297 src/contents/ui/RNNoise.qml:57
 #: src/contents/ui/RNNoise.qml:68 src/contents/ui/RNNoise.qml:282
 #: src/contents/ui/RNNoise.qml:284 src/contents/ui/RNNoise.qml:302
@@ -261,35 +261,35 @@ msgstr "基底作用"
 msgid "Floor"
 msgstr "基底 (Floor)"
 
-#: src/contents/ui/BassEnhancer.qml:203 src/contents/ui/Compressor.qml:887
+#: src/contents/ui/BassEnhancer.qml:203 src/contents/ui/Compressor.qml:879
 #: src/contents/ui/Deesser.qml:318 src/contents/ui/Delay.qml:392
 #: src/contents/ui/Equalizer.qml:301 src/contents/ui/Exciter.qml:208
-#: src/contents/ui/Expander.qml:837 src/contents/ui/Filter.qml:216
-#: src/contents/ui/Gate.qml:974 src/contents/ui/Limiter.qml:592
+#: src/contents/ui/Expander.qml:829 src/contents/ui/Filter.qml:216
+#: src/contents/ui/Gate.qml:962 src/contents/ui/Limiter.qml:592
 #: src/contents/ui/Loudness.qml:171 src/contents/ui/Maximizer.qml:119
-#: src/contents/ui/MultibandCompressor.qml:967
-#: src/contents/ui/MultibandGate.qml:940 src/contents/ui/Reverb.qml:323
+#: src/contents/ui/MultibandCompressor.qml:961
+#: src/contents/ui/MultibandGate.qml:934 src/contents/ui/Reverb.qml:323
 #: src/contents/ui/StereoTools.qml:388
 msgid "Show native window"
 msgstr "顯示原生視窗"
 
-#: src/contents/ui/BassEnhancer.qml:216 src/contents/ui/Compressor.qml:900
+#: src/contents/ui/BassEnhancer.qml:216 src/contents/ui/Compressor.qml:892
 #: src/contents/ui/Deesser.qml:331 src/contents/ui/Exciter.qml:221
-#: src/contents/ui/Expander.qml:850 src/contents/ui/Gate.qml:987
+#: src/contents/ui/Expander.qml:842 src/contents/ui/Gate.qml:975
 msgid "Listen"
 msgstr "聆聽"
 
 #: src/contents/ui/BassEnhancer.qml:227 src/contents/ui/BassLoudness.qml:122
-#: src/contents/ui/Compressor.qml:921 src/contents/ui/Convolver.qml:494
+#: src/contents/ui/Compressor.qml:913 src/contents/ui/Convolver.qml:494
 #: src/contents/ui/Crossfeed.qml:154 src/contents/ui/Crystalizer.qml:117
 #: src/contents/ui/Deesser.qml:342 src/contents/ui/Delay.qml:406
 #: src/contents/ui/EchoCanceller.qml:164 src/contents/ui/Equalizer.qml:367
-#: src/contents/ui/Exciter.qml:232 src/contents/ui/Expander.qml:871
-#: src/contents/ui/Filter.qml:230 src/contents/ui/Gate.qml:1008
+#: src/contents/ui/Exciter.qml:232 src/contents/ui/Expander.qml:863
+#: src/contents/ui/Filter.qml:230 src/contents/ui/Gate.qml:996
 #: src/contents/ui/Limiter.qml:626 src/contents/ui/Loudness.qml:195
 #: src/contents/ui/Main.qml:565 src/contents/ui/Maximizer.qml:133
-#: src/contents/ui/MultibandCompressor.qml:998
-#: src/contents/ui/MultibandGate.qml:971 src/contents/ui/Reverb.qml:337
+#: src/contents/ui/MultibandCompressor.qml:992
+#: src/contents/ui/MultibandGate.qml:965 src/contents/ui/Reverb.qml:337
 #: src/contents/ui/RNNoise.qml:327 src/contents/ui/Speex.qml:173
 #: src/contents/ui/StereoTools.qml:402
 msgid "Reset"
@@ -410,7 +410,7 @@ msgid "Threshold and Time"
 msgstr "閾值和時間"
 
 #: src/contents/ui/Compressor.qml:161 src/contents/ui/Expander.qml:121
-#: src/contents/ui/Gate.qml:65 src/contents/ui/Gate.qml:854
+#: src/contents/ui/Gate.qml:65 src/contents/ui/Gate.qml:846
 #: src/contents/ui/Limiter.qml:126 src/contents/ui/Limiter.qml:399
 #: src/contents/ui/MultibandCompressor.qml:234
 #: src/contents/ui/MultibandGate.qml:175
@@ -418,7 +418,7 @@ msgid "Attack"
 msgstr "起音(Attack)"
 
 #: src/contents/ui/Compressor.qml:194 src/contents/ui/Expander.qml:154
-#: src/contents/ui/Gate.qml:82 src/contents/ui/Gate.qml:863
+#: src/contents/ui/Gate.qml:82 src/contents/ui/Gate.qml:855
 #: src/contents/ui/Limiter.qml:143 src/contents/ui/Limiter.qml:416
 #: src/contents/ui/Maximizer.qml:48 src/contents/ui/MultibandCompressor.qml:282
 #: src/contents/ui/MultibandGate.qml:190 src/contents/ui/RNNoise.qml:142
@@ -637,8 +637,8 @@ msgstr "補償"
 #: src/contents/ui/Compressor.qml:524 src/contents/ui/Expander.qml:480
 #: src/contents/ui/Gate.qml:499 src/contents/ui/Limiter.qml:271
 #: src/contents/ui/LspPreMixDialog.qml:10
-#: src/contents/ui/MultibandCompressor.qml:990
-#: src/contents/ui/MultibandGate.qml:963
+#: src/contents/ui/MultibandCompressor.qml:984
+#: src/contents/ui/MultibandGate.qml:957
 msgid "Pre-Mix"
 msgstr "預先-混合"
 
@@ -685,21 +685,21 @@ msgstr "連結至輸入"
 msgid "Reduction"
 msgstr "衰減"
 
-#: src/contents/ui/Compressor.qml:767 src/contents/ui/Expander.qml:717
-#: src/contents/ui/Gate.qml:745 src/contents/ui/MultibandCompressor.qml:839
-#: src/contents/ui/MultibandGate.qml:268 src/contents/ui/MultibandGate.qml:812
+#: src/contents/ui/Compressor.qml:763 src/contents/ui/Expander.qml:713
+#: src/contents/ui/Gate.qml:741 src/contents/ui/MultibandCompressor.qml:835
+#: src/contents/ui/MultibandGate.qml:268 src/contents/ui/MultibandGate.qml:808
 msgid "Curve"
 msgstr "曲線"
 
-#: src/contents/ui/Compressor.qml:776 src/contents/ui/Expander.qml:726
-#: src/contents/ui/Gate.qml:754 src/contents/ui/MultibandCompressor.qml:780
-#: src/contents/ui/MultibandGate.qml:753
+#: src/contents/ui/Compressor.qml:772 src/contents/ui/Expander.qml:722
+#: src/contents/ui/Gate.qml:750 src/contents/ui/MultibandCompressor.qml:778
+#: src/contents/ui/MultibandGate.qml:751
 msgid "Envelope"
 msgstr "封套"
 
-#: src/contents/ui/Compressor.qml:910 src/contents/ui/Expander.qml:860
-#: src/contents/ui/Gate.qml:997 src/contents/ui/MultibandCompressor.qml:980
-#: src/contents/ui/MultibandGate.qml:953
+#: src/contents/ui/Compressor.qml:902 src/contents/ui/Expander.qml:852
+#: src/contents/ui/Gate.qml:985 src/contents/ui/MultibandCompressor.qml:974
+#: src/contents/ui/MultibandGate.qml:947
 msgid "Stereo split"
 msgstr "立體聲分開"
 
@@ -890,8 +890,8 @@ msgid "Split"
 msgstr "分割"
 
 #: src/contents/ui/Deesser.qml:83 src/contents/ui/Gate.qml:117
-#: src/contents/ui/Gate.qml:169 src/contents/ui/Gate.qml:928
-#: src/contents/ui/Gate.qml:941 src/contents/ui/Limiter.qml:109
+#: src/contents/ui/Gate.qml:169 src/contents/ui/Gate.qml:916
+#: src/contents/ui/Gate.qml:929 src/contents/ui/Limiter.qml:109
 #: src/contents/ui/Maximizer.qml:64 src/contents/ui/MultibandCompressor.qml:253
 #: src/contents/ui/MultibandCompressor.qml:301
 #: src/contents/ui/MultibandGate.qml:272 src/contents/ui/MultibandGate.qml:326
@@ -1089,8 +1089,8 @@ msgstr "輸入"
 
 #: src/contents/ui/EqualizerBandMenu.qml:13
 #: src/contents/ui/MultibandCompressor.qml:643
-#: src/contents/ui/MultibandCompressor.qml:914
-#: src/contents/ui/MultibandGate.qml:616 src/contents/ui/MultibandGate.qml:887
+#: src/contents/ui/MultibandCompressor.qml:908
+#: src/contents/ui/MultibandGate.qml:616 src/contents/ui/MultibandGate.qml:881
 msgid "Band"
 msgstr "頻段"
 
@@ -1352,7 +1352,7 @@ msgstr "區域"
 msgid "Hysteresis"
 msgstr "遲滯"
 
-#: src/contents/ui/Gate.qml:922 src/contents/ui/Gate.qml:935
+#: src/contents/ui/Gate.qml:910 src/contents/ui/Gate.qml:923
 #: src/contents/ui/MultibandCompressor.qml:188
 #: src/contents/ui/MultibandGate.qml:125 src/contents/ui/Speex.qml:110
 msgid "Start"
@@ -1899,12 +1899,12 @@ msgid "No Clients"
 msgstr "無客端"
 
 #: src/contents/ui/PipeWirePage.qml:296
-#: src/contents/ui/PreferencesSheet.qml:261
+#: src/contents/ui/PreferencesSheet.qml:275
 msgid "State"
 msgstr "狀態"
 
 #: src/contents/ui/PipeWirePage.qml:303
-#: src/contents/ui/PreferencesSheet.qml:268
+#: src/contents/ui/PreferencesSheet.qml:282
 msgid "Enabled"
 msgstr "已經啟用"
 
@@ -2112,212 +2112,216 @@ msgid ""
 "level is below the last highest one."
 msgstr "當前等級低於最後最高等級時，更新等級量表標籤所需的時間。"
 
-#: src/contents/ui/PreferencesSheet.qml:280
+#: src/contents/ui/PreferencesSheet.qml:256
+msgid "Level meters animation duration"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:294
 msgid "Audio delay compensation"
 msgstr "音訊延遲補償"
 
-#: src/contents/ui/PreferencesSheet.qml:295
+#: src/contents/ui/PreferencesSheet.qml:309
 msgid "Graph"
 msgstr "圖形"
 
-#: src/contents/ui/PreferencesSheet.qml:302
+#: src/contents/ui/PreferencesSheet.qml:316
 msgid "Shape"
 msgstr "形狀"
 
-#: src/contents/ui/PreferencesSheet.qml:306
+#: src/contents/ui/PreferencesSheet.qml:320
 msgid "Bars"
 msgstr "條柱"
 
-#: src/contents/ui/PreferencesSheet.qml:306
+#: src/contents/ui/PreferencesSheet.qml:320
 msgid "Lines"
 msgstr "線條"
 
-#: src/contents/ui/PreferencesSheet.qml:306
+#: src/contents/ui/PreferencesSheet.qml:320
 msgid "Dots"
 msgstr "點點"
 
-#: src/contents/ui/PreferencesSheet.qml:306
+#: src/contents/ui/PreferencesSheet.qml:320
 msgid "Area"
 msgstr "區塊"
 
-#: src/contents/ui/PreferencesSheet.qml:316
+#: src/contents/ui/PreferencesSheet.qml:330
 msgid "Dynamic scale"
 msgstr "動態比例"
 
-#: src/contents/ui/PreferencesSheet.qml:328
+#: src/contents/ui/PreferencesSheet.qml:342
 msgid "Logarithmic frequency axis"
 msgstr "對數頻率軸"
 
-#: src/contents/ui/PreferencesSheet.qml:340
+#: src/contents/ui/PreferencesSheet.qml:354
 msgid "Points"
 msgstr "點數"
 
-#: src/contents/ui/PreferencesSheet.qml:355
+#: src/contents/ui/PreferencesSheet.qml:369
 msgid "Height"
 msgstr "高度"
 
-#: src/contents/ui/PreferencesSheet.qml:362
+#: src/contents/ui/PreferencesSheet.qml:376
 msgid "px"
 msgstr "px"
 
-#: src/contents/ui/PreferencesSheet.qml:370
+#: src/contents/ui/PreferencesSheet.qml:384
 msgid "Frequency Range"
 msgstr "頻率範圍"
 
-#: src/contents/ui/PreferencesSheet.qml:377
+#: src/contents/ui/PreferencesSheet.qml:391
 msgid "Minimum"
 msgstr "最小"
 
-#: src/contents/ui/PreferencesSheet.qml:393
+#: src/contents/ui/PreferencesSheet.qml:407
 msgid "Maximum"
 msgstr "最大"
 
-#: src/contents/ui/PreferencesSheet.qml:415
+#: src/contents/ui/PreferencesSheet.qml:429
 msgid "Database autosave interval"
 msgstr "資料庫自動儲存間隔"
 
-#: src/contents/ui/PreferencesSheet.qml:429
+#: src/contents/ui/PreferencesSheet.qml:443
 msgid "Most used presets"
 msgstr "最常使用預設集"
 
-#: src/contents/ui/PreferencesSheet.qml:447
+#: src/contents/ui/PreferencesSheet.qml:461
 msgid "Window"
 msgstr "視窗"
 
-#: src/contents/ui/PreferencesSheet.qml:456
+#: src/contents/ui/PreferencesSheet.qml:470
 msgid "Force KDE's Breeze theme when Easy Effects starts"
 msgstr "強制 KDE 的 Breeze 主題，當 Easy Effects 啟動時"
 
-#: src/contents/ui/PreferencesSheet.qml:457
+#: src/contents/ui/PreferencesSheet.qml:471
 msgid ""
 "It is necessary to restart the service for changes in this setting to take "
 "effect."
 msgstr "必須重新啟動服務才能使此設定變更作用生效。"
 
-#: src/contents/ui/PreferencesSheet.qml:470
+#: src/contents/ui/PreferencesSheet.qml:484
 msgid "Reduce effects list controls"
 msgstr "減小音效列表控制"
 
-#: src/contents/ui/PreferencesSheet.qml:471
+#: src/contents/ui/PreferencesSheet.qml:485
 msgid ""
 "Action buttons in the effects list are moved inside a context menu for a "
 "more compact view."
 msgstr "音效列表中的操作按鈕移動至前後選單內，以獲得較為緊湊的檢視。"
 
-#: src/contents/ui/PreferencesSheet.qml:483
+#: src/contents/ui/PreferencesSheet.qml:497
 msgid "Graphs"
 msgstr "圖形"
 
-#: src/contents/ui/PreferencesSheet.qml:494
+#: src/contents/ui/PreferencesSheet.qml:508
 msgid "Color scheme"
 msgstr "配色方案"
 
-#: src/contents/ui/PreferencesSheet.qml:498
+#: src/contents/ui/PreferencesSheet.qml:512
 msgid "Automatic"
 msgstr "自動"
 
-#: src/contents/ui/PreferencesSheet.qml:498
+#: src/contents/ui/PreferencesSheet.qml:512
 msgid "Light"
 msgstr "亮"
 
-#: src/contents/ui/PreferencesSheet.qml:498
+#: src/contents/ui/PreferencesSheet.qml:512
 msgid "Dark"
 msgstr "暗"
 
-#: src/contents/ui/PreferencesSheet.qml:509
+#: src/contents/ui/PreferencesSheet.qml:523
 msgid "Color theme"
 msgstr "顏色主題"
 
-#: src/contents/ui/PreferencesSheet.qml:513
+#: src/contents/ui/PreferencesSheet.qml:527
 msgid "Green"
 msgstr "綠"
 
-#: src/contents/ui/PreferencesSheet.qml:513
+#: src/contents/ui/PreferencesSheet.qml:527
 msgid "Green neon"
 msgstr "綠色霓虹"
 
-#: src/contents/ui/PreferencesSheet.qml:513
+#: src/contents/ui/PreferencesSheet.qml:527
 msgid "Mix"
 msgstr "混音"
 
-#: src/contents/ui/PreferencesSheet.qml:513
+#: src/contents/ui/PreferencesSheet.qml:527
 msgid "Orange"
 msgstr "橘"
 
-#: src/contents/ui/PreferencesSheet.qml:513
+#: src/contents/ui/PreferencesSheet.qml:527
 msgid "Yellow"
 msgstr "黃"
 
-#: src/contents/ui/PreferencesSheet.qml:513
+#: src/contents/ui/PreferencesSheet.qml:527
 msgid "Blue"
 msgstr "藍"
 
-#: src/contents/ui/PreferencesSheet.qml:513
+#: src/contents/ui/PreferencesSheet.qml:527
 msgid "Purple"
 msgstr "紫"
 
-#: src/contents/ui/PreferencesSheet.qml:513
+#: src/contents/ui/PreferencesSheet.qml:527
 msgid "Grey"
 msgstr "灰"
 
-#: src/contents/ui/PreferencesSheet.qml:513
+#: src/contents/ui/PreferencesSheet.qml:527
 msgid "User"
 msgstr "使用者"
 
-#: src/contents/ui/PreferencesSheet.qml:521
+#: src/contents/ui/PreferencesSheet.qml:535
 #, fuzzy
 msgctxt "@label"
 msgid "Background"
 msgstr "背景服務"
 
-#: src/contents/ui/PreferencesSheet.qml:530
+#: src/contents/ui/PreferencesSheet.qml:544
 msgctxt "@label"
 msgid "Plot area background"
 msgstr "繪製區域背景"
 
-#: src/contents/ui/PreferencesSheet.qml:539
+#: src/contents/ui/PreferencesSheet.qml:553
 msgctxt "@label"
 msgid "Series colors"
 msgstr "系列顏色"
 
-#: src/contents/ui/PreferencesSheet.qml:548
+#: src/contents/ui/PreferencesSheet.qml:562
 msgctxt "@label"
 msgid "Axis labels text color"
 msgstr "座標軸線標籤文字顏色"
 
-#: src/contents/ui/PreferencesSheet.qml:557
+#: src/contents/ui/PreferencesSheet.qml:571
 msgctxt "@label"
 msgid "Axis labels background color"
 msgstr "坐標軸線標籤背景顏色"
 
-#: src/contents/ui/PreferencesSheet.qml:566
+#: src/contents/ui/PreferencesSheet.qml:580
 msgctxt "@label"
 msgid "Border color"
 msgstr "邊框顏色"
 
-#: src/contents/ui/PreferencesSheet.qml:575
+#: src/contents/ui/PreferencesSheet.qml:589
 #, fuzzy
 msgid "Line width"
 msgstr "Line 寬"
 
-#: src/contents/ui/PreferencesSheet.qml:589
+#: src/contents/ui/PreferencesSheet.qml:603
 msgid "Show grid lines"
 msgstr "顯示網格線"
 
-#: src/contents/ui/PreferencesSheet.qml:607
+#: src/contents/ui/PreferencesSheet.qml:621
 msgid "Autoload delay"
 msgstr "自動載入延遲"
 
-#: src/contents/ui/PreferencesSheet.qml:608
+#: src/contents/ui/PreferencesSheet.qml:622
 msgid ""
 "Delay between receiving a new device route and the call to autoload a preset."
 msgstr "接收新裝置路徑和呼叫自動載入預設集之間的延遲。"
 
-#: src/contents/ui/PreferencesSheet.qml:624
+#: src/contents/ui/PreferencesSheet.qml:638
 msgid "Ignore the blocklist from presets"
 msgstr "忽略來自預設集的封鎖清單"
 
-#: src/contents/ui/PreferencesSheet.qml:625
+#: src/contents/ui/PreferencesSheet.qml:639
 msgid ""
 "If enabled, the list of excluded apps set in the loaded preset is ignored "
 "and does not replace the one set by the user."
@@ -2325,27 +2329,27 @@ msgstr ""
 "如果啟用，則所載入的預設集其設定中的排除程式列表將被忽略，並且不會取代用戶的"
 "設定。"
 
-#: src/contents/ui/PreferencesSheet.qml:646
+#: src/contents/ui/PreferencesSheet.qml:660
 msgid "Global shortcuts"
 msgstr "整體快速鍵"
 
-#: src/contents/ui/PreferencesSheet.qml:647
+#: src/contents/ui/PreferencesSheet.qml:661
 msgid "Enables support for XDG global shortcuts."
 msgstr "啟用對 XDG 整體快速鍵的支援。"
 
-#: src/contents/ui/PreferencesSheet.qml:659
+#: src/contents/ui/PreferencesSheet.qml:673
 msgid "Native window of effects"
 msgstr "音效的原生視窗"
 
-#: src/contents/ui/PreferencesSheet.qml:660
+#: src/contents/ui/PreferencesSheet.qml:674
 msgid "Allows the native user interface of effects to be shown/hidden."
 msgstr "允許音效的原生使用者介面可以顯示/隱藏。"
 
-#: src/contents/ui/PreferencesSheet.qml:672
+#: src/contents/ui/PreferencesSheet.qml:686
 msgid "Update frequency"
 msgstr "更新頻率"
 
-#: src/contents/ui/PreferencesSheet.qml:673
+#: src/contents/ui/PreferencesSheet.qml:687
 msgid "Related to LV2 plugins."
 msgstr "與 LV2 插件相關。"
 

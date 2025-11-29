@@ -72,7 +72,7 @@ Control {
 
                 Behavior on xScale {
                     NumberAnimation {
-                        duration: 100
+                        duration: DbMain.levelMetersAnimationDuration
                         easing.type: Easing.OutQuad
                     }
                 }
@@ -95,7 +95,7 @@ Control {
 
                 Behavior on x {
                     NumberAnimation {
-                        duration: 400
+                        duration: DbMain.levelMetersAnimationDuration
                         easing.type: Easing.OutCubic
                     }
                 }
