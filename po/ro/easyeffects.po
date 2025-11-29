@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-28 15:20-0300\n"
-"PO-Revision-Date: 2025-11-28 19:12+0000\n"
+"PO-Revision-Date: 2025-11-29 08:00+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ro/>\n"
@@ -1446,112 +1446,90 @@ msgid "None"
 msgstr "Niciunul"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x2/16 bits"
 msgstr "Jumătate x2/16 biți"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x2/24 bits"
 msgstr "Jumătate x2/24 biți"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x3/16 bits"
 msgstr "Jumătate x3/16 biți"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x3/24 bits"
 msgstr "Jumătate x3/24 biți"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x4/16 bits"
 msgstr "Jumătate x4/16 biți"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x4/24 bits"
 msgstr "Jumătate x4/24 biți"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x6/16 bits"
 msgstr "Jumătate x6/16 biți"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x6/24 bits"
 msgstr "Jumătate x6/24 biți"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x8/16 bits"
 msgstr "Jumătate x8/16 biți"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x8/24 bits"
 msgstr "Jumătate x8/24 biți"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x2/16 bits"
 msgstr "Complet x2/16 biți"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x2/24 bits"
 msgstr "Complet x2/24 biți"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x3/16 bits"
 msgstr "Complet x3/16 biți"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x3/24 bits"
 msgstr "Complet x3/24 biți"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x4/16 bits"
 msgstr "Complet x4/16 biți"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x4/24 bits"
 msgstr "Complet x4/24 biți"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x6/16 bits"
 msgstr "Complet x6/16 biți"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x6/24 bits"
 msgstr "Complet x6/24 biți"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x8/16 bits"
 msgstr "Complet x8/16 biți"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x8/24 bits"
 msgstr "Complet x8/24 biți"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "True peak/16 bits"
 msgstr "Vârful real/16 biți"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "True peak/24 bits"
 msgstr "Vârful real/24 biți"
 
@@ -3027,15 +3005,14 @@ msgid "dBFS"
 msgstr "dBFS"
 
 #: src/units.hpp:58
-#, fuzzy
 msgctxt "decibel per octaves unit abbreviation"
 msgid "dB/oct"
-msgstr "12 dB/oct"
+msgstr "dB/oct"
 
 #: src/units.hpp:59
 msgctxt "thousand abbreviation (single letter)"
 msgid "k"
-msgstr ""
+msgstr "k"
 
 #: src/units.hpp:60
 msgctxt "seconds unit abbreviation"
@@ -3065,13 +3042,12 @@ msgstr "%"
 #: src/units.hpp:65
 msgctxt "loudness full scale unit abbreviation"
 msgid "LUFS"
-msgstr ""
+msgstr "LUFS"
 
 #: src/units.hpp:66
-#, fuzzy
 msgctxt "loudness unit abbreviation"
 msgid "LU"
-msgstr "S"
+msgstr "LU"
 
 #: src/units.hpp:67
 msgctxt "meter unit abbreviation"
@@ -3086,12 +3062,12 @@ msgstr "cm"
 #: src/units.hpp:69
 msgctxt "degree Celsius unit abbreviation"
 msgid "°C"
-msgstr ""
+msgstr "°C"
 
 #: src/units.hpp:70
 msgctxt "bit unit (plural)"
 msgid "bits"
-msgstr ""
+msgstr "biți"
 
 #: src/units.hpp:71
 msgctxt "frame unit (plural)"
