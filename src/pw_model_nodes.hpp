@@ -95,7 +95,7 @@ class Nodes : public QAbstractListModel {
 
   auto get_list() -> QList<NodeInfo>;
 
-  void append(const NodeInfo& info);
+  void append(NodeInfo info);
 
   void remove_by_id(const uint& id);
 
@@ -103,21 +103,21 @@ class Nodes : public QAbstractListModel {
 
   auto has_serial(const uint& serial) -> bool;
 
-  void update_info(const NodeInfo& new_info);
+  void update_info(NodeInfo new_info);
 
   auto get_row_by_serial(const uint& serial) -> int;
 
   auto get_proxy_by_serial(const uint& serial) -> pw_proxy*;
 
-  auto get_node_by_name(const QString& name) -> NodeInfo;
+  auto get_node_by_name(QString name) -> NodeInfo;
 
   auto get_node_by_id(const uint& id) -> NodeInfo;
 
   auto get_nodes_by_device_id(const uint& id) -> QList<NodeInfo>;
 
   Q_INVOKABLE QString getNodeName(const uint& rowIndex);
-  Q_INVOKABLE QString getNodeDescription(const QString& nodeName);
-  Q_INVOKABLE QModelIndex getModelIndexByName(const QString& nodeName);
+  Q_INVOKABLE QString getNodeDescription(QString nodeName);
+  Q_INVOKABLE QModelIndex getModelIndexByName(QString nodeName);
 
   template <typename T>
   void update_field(const int& row, const Roles& role, const T& value) {

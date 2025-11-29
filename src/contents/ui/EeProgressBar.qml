@@ -18,18 +18,22 @@ Control {
     property int wrapMode: Text.Wrap
     property bool rightToLeft: false
     property bool convertDecibelToLinear: false
-
+    property real clampedValue: 0
+    property real displayValue: 0
+    property real normalizedClampedValue: 0
+    property real normalizedClampedValueDB: 0
+    property real normalizedDisplayValue: 0
+    property real normalizedDisplayValueDB: 0
     readonly property real dbFrom: Common.dbToLinear(from)
     readonly property real dbTo: Common.dbToLinear(to)
+    readonly property real decimalFactor: Math.pow(10, -decimals)
 
-    readonly property real clampedValue: Common.clamp(value, from, to)
-    readonly property real displayValue: control.rightToLeft === false ? (control.clampedValue > sampleTimer.value ? control.clampedValue : sampleTimer.value) : (control.clampedValue < sampleTimer.value ? control.clampedValue : sampleTimer.value)
-
-    readonly property real normalizedClampedValue: (control.clampedValue - control.from) / (control.to - control.from)
-    readonly property real normalizedClampedValueDB: (Common.dbToLinear(control.clampedValue) - control.dbFrom) / (control.dbTo - control.dbFrom)
-
-    readonly property real normalizedDisplayValue: (control.displayValue - control.from) / (control.to - control.from)
-    readonly property real normalizedDisplayValueDB: (Common.dbToLinear(control.displayValue) - control.dbFrom) / (control.dbTo - control.dbFrom)
+    readonly property string unitSuffix: if (!Common.isEmpty(control.unit)) {
+        const split = control.separateUnit ? ' ' : '';
+        return `${split}${control.unit}`;
+    } else {
+        return "";
+    }
 
     Kirigami.Theme.colorSet: Kirigami.Theme.View
 
@@ -44,6 +48,50 @@ Control {
     background: null
 
     Layout.fillWidth: true
+
+    onValueChanged: {
+        const newC = Common.clamp(control.value, control.from, control.to);
+
+        // Only update if meaningfully different
+
+        if (Math.abs(newC - control.clampedValue) > decimalFactor) {
+            control.clampedValue = newC;
+        }
+
+        // For the history/peak indicator
+
+        if (control.rightToLeft === false) {
+            control.displayValue = control.clampedValue > sampleTimer.value ? control.clampedValue : sampleTimer.value;
+        } else {
+            control.displayValue = control.clampedValue < sampleTimer.value ? control.clampedValue : sampleTimer.value;
+        }
+
+        normalizedClampedValue = (control.clampedValue - control.from) / (control.to - control.from);
+        normalizedClampedValueDB = (Common.dbToLinear(control.clampedValue) - control.dbFrom) / (control.dbTo - control.dbFrom);
+
+        normalizedDisplayValue = (control.displayValue - control.from) / (control.to - control.from);
+        normalizedDisplayValueDB = (Common.dbToLinear(control.displayValue) - control.dbFrom) / (control.dbTo - control.dbFrom);
+
+        // level rect
+
+        if (control.convertDecibelToLinear) {
+            levelScale.xScale = control.rightToLeft === false ? control.normalizedClampedValueDB : (Common.dbToLinear(control.clampedValue) - control.dbTo) / (control.dbFrom - control.dbTo);
+        } else {
+            levelScale.xScale = control.rightToLeft === false ? control.normalizedClampedValue : (control.clampedValue - control.to) / (control.from - control.to);
+        }
+
+        // hist rect
+
+        if (control.convertDecibelToLinear) {
+            histScale.x = control.rightToLeft === false ? control.normalizedDisplayValueDB * item.width : item.width - (Common.dbToLinear(control.displayValue) - control.dbTo) / (control.dbFrom - control.dbTo) * item.width;
+        } else {
+            histScale.x = control.rightToLeft === false ? control.normalizedDisplayValue * item.width : item.width - (control.displayValue - control.to) / (control.from - control.to) * item.width;
+        }
+
+        //label
+
+        valueLabel.text = Number(control.displayValue).toLocaleString(Qt.locale(), 'f', control.decimals) + unitSuffix;
+    }
 
     contentItem: Rectangle {
         id: item
@@ -63,17 +111,12 @@ Control {
             transform: Scale {
                 id: levelScale
 
-                xScale: if (control.convertDecibelToLinear) {
-                    control.rightToLeft === false ? control.normalizedClampedValueDB : (Common.dbToLinear(control.clampedValue) - control.dbTo) / (control.dbFrom - control.dbTo);
-                } else {
-                    control.rightToLeft === false ? control.normalizedClampedValue : (control.clampedValue - control.to) / (control.from - control.to);
-                }
                 origin.x: control.rightToLeft === false ? 0 : levelRect.width
 
                 Behavior on xScale {
                     NumberAnimation {
                         duration: DbMain.levelMetersAnimationDuration
-                        easing.type: Easing.OutQuad
+                        easing.type: Easing.OutCubic
                     }
                 }
             }
@@ -87,11 +130,7 @@ Control {
             color: levelScale.xScale < 0.85 ? Kirigami.Theme.neutralTextColor : Kirigami.Theme.negativeTextColor
 
             transform: Translate {
-                x: if (control.convertDecibelToLinear) {
-                    control.rightToLeft === false ? control.normalizedDisplayValueDB * item.width : item.width - (Common.dbToLinear(control.displayValue) - control.dbTo) / (control.dbFrom - control.dbTo) * item.width;
-                } else {
-                    control.rightToLeft === false ? control.normalizedDisplayValue * item.width : item.width - (control.displayValue - control.to) / (control.from - control.to) * item.width;
-                }
+                id: histScale
 
                 Behavior on x {
                     NumberAnimation {
@@ -123,18 +162,12 @@ Control {
             }
 
             Label {
+                id: valueLabel
+
                 Layout.rightMargin: Kirigami.Units.smallSpacing
                 horizontalAlignment: Qt.AlignRight
                 verticalAlignment: Qt.AlignVCenter
-                text: {
-                    let unitSuffix = "";
-                    if (!Common.isEmpty(control.unit)) {
-                        const split = control.separateUnit ? ' ' : '';
-                        unitSuffix = `${split}${control.unit}`;
-                    }
-
-                    return Number(control.displayValue).toLocaleString(Qt.locale(), 'f', control.decimals) + unitSuffix;
-                }
+                text: ""
                 elide: control.elide
                 color: control.enabled ? Kirigami.Theme.textColor : Kirigami.Theme.disabledTextColor
                 wrapMode: control.wrapMode

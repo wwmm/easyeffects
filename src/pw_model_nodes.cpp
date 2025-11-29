@@ -366,7 +366,7 @@ auto Nodes::get_list() -> QList<NodeInfo> {
   return list;
 }
 
-void Nodes::append(const NodeInfo& info) {
+void Nodes::append(NodeInfo info) {
   beginInsertRows(QModelIndex(), list.size(), list.size());
 
   list.append(info);
@@ -432,7 +432,7 @@ auto Nodes::has_serial(const uint& serial) -> bool {
   return std::ranges::find_if(list, [=](const NodeInfo& ni) { return ni.serial == serial; }) != list.end();
 }
 
-void Nodes::update_info(const NodeInfo& new_info) {
+void Nodes::update_info(NodeInfo new_info) {
   const int row = get_row_by_serial(new_info.serial);
 
   if (row < 0) {
@@ -575,7 +575,7 @@ QString Nodes::getNodeName(const uint& rowIndex) {
   return list[rowIndex].name;
 }
 
-QString Nodes::getNodeDescription(const QString& nodeName) {
+QString Nodes::getNodeDescription(QString nodeName) {
   for (const auto& node : list) {
     if (node.name == nodeName) {
       return node.description;
@@ -585,7 +585,7 @@ QString Nodes::getNodeDescription(const QString& nodeName) {
   return "";
 }
 
-QModelIndex Nodes::getModelIndexByName(const QString& nodeName) {
+QModelIndex Nodes::getModelIndexByName(QString nodeName) {
   for (int n = 0; n < list.size(); n++) {
     if (list[n].name == nodeName) {
       return this->index(n);
@@ -595,7 +595,7 @@ QModelIndex Nodes::getModelIndexByName(const QString& nodeName) {
   return this->index(-1);
 }
 
-auto Nodes::get_node_by_name(const QString& name) -> NodeInfo {
+auto Nodes::get_node_by_name(QString name) -> NodeInfo {
   for (const auto& node : list) {
     if (node.name == name) {
       return node;

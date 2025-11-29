@@ -13,8 +13,9 @@ Rectangle {
     property bool topToBottom: false
     readonly property real dbFrom: Common.dbToLinear(from)
     readonly property real dbTo: Common.dbToLinear(to)
-    readonly property real clampedValue: Common.clamp(value, from, to)
-    readonly property real displayValue: root.topToBottom === false ? (root.clampedValue > sampleTimer.value ? root.clampedValue : sampleTimer.value) : (root.clampedValue < sampleTimer.value ? root.clampedValue : sampleTimer.value)
+    readonly property real decimalFactor: Math.pow(10, -decimals)
+    property real clampedValue: 0
+    property real displayValue: 0
 
     Kirigami.Theme.colorSet: Kirigami.Theme.View
     implicitWidth: valueLabel.implicitWidth + Kirigami.Units.largeSpacing
@@ -24,6 +25,47 @@ Rectangle {
     clip: true
     color: Kirigami.Theme.neutralBackgroundColor
     border.color: Kirigami.ColorUtils.linearInterpolation(Kirigami.Theme.backgroundColor, Kirigami.Theme.textColor, Kirigami.Theme.frameContrast)
+
+    onValueChanged: {
+        const newC = Common.clamp(root.value, root.from, root.to);
+
+        // Only update if meaningfully different
+
+        if (Math.abs(newC - root.clampedValue) > root.decimalFactor) {
+            root.clampedValue = newC;
+        }
+
+        // For the history/peak indicator
+
+        if (root.topToBottom === false) {
+            root.displayValue = root.clampedValue > sampleTimer.value ? root.clampedValue : sampleTimer.value;
+        } else {
+            root.displayValue = root.clampedValue < sampleTimer.value ? root.clampedValue : sampleTimer.value;
+        }
+
+        // level rect
+
+        if (root.convertDecibelToLinear) {
+            levelScale.yScale = root.topToBottom === false ? (Common.dbToLinear(root.clampedValue) - root.dbFrom) / (root.dbTo - root.dbFrom) : (Common.dbToLinear(root.clampedValue) - root.dbTo) / (root.dbFrom - root.dbTo);
+        } else {
+            levelScale.yScale = root.topToBottom === false ? (root.clampedValue - root.from) / (root.to - root.from) : (root.clampedValue - root.to) / (root.from - root.to);
+        }
+
+        //hist rect
+
+        const dbFrac = (Common.dbToLinear(root.displayValue) - root.dbFrom) / (root.dbTo - root.dbFrom);
+        const frac = (root.displayValue - root.from) / (root.to - root.from);
+
+        if (root.convertDecibelToLinear) {
+            histScale.y = root.height * (1.0 - dbFrac);
+        } else {
+            histScale.y = root.height * (1.0 - frac);
+        }
+
+        // label
+
+        valueLabel.text = Number(root.displayValue).toLocaleString(Qt.locale(), 'f', root.decimals);
+    }
 
     Rectangle {
         id: levelRect
@@ -38,19 +80,12 @@ Rectangle {
         transform: Scale {
             id: levelScale
 
-            yScale: {
-                if (root.convertDecibelToLinear)
-                    root.topToBottom === false ? (Common.dbToLinear(root.clampedValue) - root.dbFrom) / (root.dbTo - root.dbFrom) : (Common.dbToLinear(root.clampedValue) - root.dbTo) / (root.dbFrom - root.dbTo);
-                else
-                    root.topToBottom === false ? (root.clampedValue - root.from) / (root.to - root.from) : (root.clampedValue - root.to) / (root.from - root.to);
-            }
-
             origin.y: root.topToBottom === false ? levelRect.height : 0
 
             Behavior on yScale {
                 NumberAnimation {
                     duration: DbMain.levelMetersAnimationDuration
-                    easing.type: Easing.OutQuad
+                    easing.type: Easing.OutCubic
                 }
             }
         }
@@ -70,15 +105,7 @@ Rectangle {
         color: levelScale.yScale < 0.85 ? Kirigami.Theme.neutralTextColor : Kirigami.Theme.negativeTextColor
 
         transform: Translate {
-            readonly property real dbFrac: (Common.dbToLinear(root.displayValue) - root.dbFrom) / (root.dbTo - root.dbFrom)
-            readonly property real frac: (root.displayValue - root.from) / (root.to - root.from)
-
-            y: {
-                if (root.convertDecibelToLinear)
-                    return root.height * (1.0 - dbFrac);
-                else
-                    return root.height * (1.0 - frac);
-            }
+            id: histScale
 
             Behavior on y {
                 NumberAnimation {
@@ -98,7 +125,7 @@ Rectangle {
         id: valueLabel
 
         anchors.centerIn: parent
-        text: Number(root.displayValue).toLocaleString(Qt.locale(), 'f', root.decimals)
+        text: ""
         color: Kirigami.Theme.textColor
     }
 
