@@ -729,7 +729,6 @@ Kirigami.ScrollablePage {
                                 to: 72
                                 value: Common.toLocaleLabel(multibandCompressorPage.bandReductionLevelLeft[bandsListview.currentIndex] ?? 0, 0, "")
                                 decimals: 0
-                                convertDecibelToLinear: true
                                 topToBottom: true
                             }
 
@@ -743,7 +742,6 @@ Kirigami.ScrollablePage {
                                 to: 72
                                 value: Common.toLocaleLabel(multibandCompressorPage.bandReductionLevelRight[bandsListview.currentIndex] ?? 0, 0, "")
                                 decimals: 0
-                                convertDecibelToLinear: true
                                 topToBottom: true
                             }
 
@@ -790,7 +788,6 @@ Kirigami.ScrollablePage {
                                 to: 36
                                 value: Common.toLocaleLabel(multibandCompressorPage.bandEnvelopeLevelLeft[bandsListview.currentIndex] ?? 0, 0, "")
                                 decimals: 0
-                                convertDecibelToLinear: true
                             }
 
                             EeAudioLevel {
@@ -803,7 +800,6 @@ Kirigami.ScrollablePage {
                                 to: 36
                                 value: Common.toLocaleLabel(multibandCompressorPage.bandEnvelopeLevelRight[bandsListview.currentIndex] ?? 0, 0, "")
                                 decimals: 0
-                                convertDecibelToLinear: true
                             }
 
                             Controls.Label {
@@ -849,7 +845,6 @@ Kirigami.ScrollablePage {
                                 to: 36
                                 value: Common.toLocaleLabel(multibandCompressorPage.bandCurveLevelLeft[bandsListview.currentIndex] ?? 0, 0, "")
                                 decimals: 0
-                                convertDecibelToLinear: true
                             }
 
                             EeAudioLevel {
@@ -862,7 +857,6 @@ Kirigami.ScrollablePage {
                                 to: 36
                                 value: Common.toLocaleLabel(multibandCompressorPage.bandCurveLevelRight[bandsListview.currentIndex] ?? 0, 0, "")
                                 decimals: 0
-                                convertDecibelToLinear: true
                             }
 
                             Controls.Label {

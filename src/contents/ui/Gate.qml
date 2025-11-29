@@ -653,7 +653,6 @@ Kirigami.ScrollablePage {
                         to: 0
                         value: 0
                         decimals: 0
-                        convertDecibelToLinear: true
                         topToBottom: true
                     }
 
@@ -667,7 +666,6 @@ Kirigami.ScrollablePage {
                         to: 0
                         value: 0
                         decimals: 0
-                        convertDecibelToLinear: true
                         topToBottom: true
                     }
 
@@ -682,7 +680,6 @@ Kirigami.ScrollablePage {
                         to: 24
                         value: 0
                         decimals: 0
-                        convertDecibelToLinear: true
                     }
 
                     EeAudioLevel {
@@ -695,7 +692,6 @@ Kirigami.ScrollablePage {
                         to: 24
                         value: 0
                         decimals: 0
-                        convertDecibelToLinear: true
                     }
 
                     Controls.Label {
@@ -764,7 +760,6 @@ Kirigami.ScrollablePage {
                         to: 24
                         value: 0
                         decimals: 0
-                        convertDecibelToLinear: true
                     }
 
                     EeAudioLevel {
@@ -777,7 +772,6 @@ Kirigami.ScrollablePage {
                         to: 24
                         value: 0
                         decimals: 0
-                        convertDecibelToLinear: true
                     }
 
                     EeAudioLevel {
@@ -791,7 +785,6 @@ Kirigami.ScrollablePage {
                         to: 24
                         value: 0
                         decimals: 0
-                        convertDecibelToLinear: true
                     }
 
                     EeAudioLevel {
@@ -804,7 +797,6 @@ Kirigami.ScrollablePage {
                         to: 24
                         value: 0
                         decimals: 0
-                        convertDecibelToLinear: true
                     }
 
                     Controls.Label {
@@ -873,7 +865,6 @@ Kirigami.ScrollablePage {
                         to: 0
                         value: 0
                         decimals: 0
-                        convertDecibelToLinear: true
                     }
 
                     EeAudioLevel {
@@ -886,7 +877,6 @@ Kirigami.ScrollablePage {
                         to: 0
                         value: 0
                         decimals: 0
-                        convertDecibelToLinear: true
                     }
 
                     EeAudioLevel {
@@ -900,7 +890,6 @@ Kirigami.ScrollablePage {
                         to: 0
                         value: 0
                         decimals: 0
-                        convertDecibelToLinear: true
                     }
 
                     EeAudioLevel {
@@ -913,7 +902,6 @@ Kirigami.ScrollablePage {
                         to: 0
                         value: 0
                         decimals: 0
-                        convertDecibelToLinear: true
                     }
 
                     Controls.Label {

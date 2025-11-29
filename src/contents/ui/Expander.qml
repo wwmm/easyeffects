@@ -627,7 +627,6 @@ Kirigami.ScrollablePage {
                         to: 60
                         value: 0
                         decimals: 0
-                        convertDecibelToLinear: true
                     }
 
                     EeAudioLevel {
@@ -640,7 +639,6 @@ Kirigami.ScrollablePage {
                         to: 60
                         value: 0
                         decimals: 0
-                        convertDecibelToLinear: true
                     }
 
                     EeAudioLevel {
@@ -654,7 +652,6 @@ Kirigami.ScrollablePage {
                         to: 36
                         value: 0
                         decimals: 0
-                        convertDecibelToLinear: true
                     }
 
                     EeAudioLevel {
@@ -667,7 +664,6 @@ Kirigami.ScrollablePage {
                         to: 36
                         value: 0
                         decimals: 0
-                        convertDecibelToLinear: true
                     }
 
                     Controls.Label {
@@ -736,7 +732,6 @@ Kirigami.ScrollablePage {
                         to: 36
                         value: 0
                         decimals: 0
-                        convertDecibelToLinear: true
                     }
 
                     EeAudioLevel {
@@ -749,7 +744,6 @@ Kirigami.ScrollablePage {
                         to: 36
                         value: 0
                         decimals: 0
-                        convertDecibelToLinear: true
                     }
 
                     EeAudioLevel {
@@ -763,7 +757,6 @@ Kirigami.ScrollablePage {
                         to: 36
                         value: 0
                         decimals: 0
-                        convertDecibelToLinear: true
                     }
 
                     EeAudioLevel {
@@ -776,7 +769,6 @@ Kirigami.ScrollablePage {
                         to: 36
                         value: 0
                         decimals: 0
-                        convertDecibelToLinear: true
                     }
 
                     Controls.Label {
