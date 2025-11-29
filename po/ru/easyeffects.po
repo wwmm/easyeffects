@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-29 15:12-0300\n"
-"PO-Revision-Date: 2025-11-29 22:47+0000\n"
+"PO-Revision-Date: 2025-11-29 22:50+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -244,11 +244,11 @@ msgstr "Смешение гармоник"
 
 #: src/contents/ui/BassEnhancer.qml:46 src/contents/ui/Exciter.qml:46
 msgid "3rd"
-msgstr "3-ий"
+msgstr "3-й"
 
 #: src/contents/ui/BassEnhancer.qml:68 src/contents/ui/Exciter.qml:68
 msgid "2nd"
-msgstr "2-ой"
+msgstr "2-й"
 
 #: src/contents/ui/BassEnhancer.qml:91 src/contents/ui/Exciter.qml:95
 msgid "Amount"
@@ -1872,8 +1872,8 @@ msgid ""
 "external applications (e.g. Gnome Settings and Plasma System Settings)"
 msgstr ""
 "НЕ рекомендуется использовать приёмники/источники Easy Effects в качестве "
-"стандартного устройства во внешних приложениях "
-"(например, настройки Gnome и параметры системы Plasma)"
+"стандартного устройства во внешних приложениях (например, настройки Gnome и "
+"параметры системы Plasma)"
 
 #: src/contents/ui/PipeWirePage.qml:121
 msgid "Use default input"
