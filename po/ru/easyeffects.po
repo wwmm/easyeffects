@@ -1872,8 +1872,8 @@ msgid ""
 "external applications (e.g. Gnome Settings and Plasma System Settings)"
 msgstr ""
 "НЕ рекомендуется использовать приёмники/источники Easy Effects в качестве "
-"стандартного устройства во внешних приложениях "
-"(например, настройки Gnome и параметры системы Plasma)"
+"стандартного устройства во внешних приложениях (например, настройки Gnome и "
+"параметры системы Plasma)"
 
 #: src/contents/ui/PipeWirePage.qml:121
 msgid "Use default input"
