@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-29 15:12-0300\n"
-"PO-Revision-Date: 2025-11-29 22:50+0000\n"
+"PO-Revision-Date: 2025-11-30 02:24+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -1560,7 +1560,7 @@ msgstr "Истинный пик/24 бита"
 
 #: src/contents/ui/Limiter.qml:82
 msgid "Dithering"
-msgstr "Дизеринг"
+msgstr "Дизеринг (зашумление)"
 
 #: src/contents/ui/Limiter.qml:98 src/tags_plugin_name.cpp:43
 msgid "Limiter"
