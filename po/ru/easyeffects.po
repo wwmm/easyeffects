@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-29 15:12-0300\n"
-"PO-Revision-Date: 2025-11-29 08:00+0000\n"
+"PO-Revision-Date: 2025-11-29 22:50+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -244,11 +244,11 @@ msgstr "Смешение гармоник"
 
 #: src/contents/ui/BassEnhancer.qml:46 src/contents/ui/Exciter.qml:46
 msgid "3rd"
-msgstr "3-ий"
+msgstr "3-й"
 
 #: src/contents/ui/BassEnhancer.qml:68 src/contents/ui/Exciter.qml:68
 msgid "2nd"
-msgstr "2-ой"
+msgstr "2-й"
 
 #: src/contents/ui/BassEnhancer.qml:91 src/contents/ui/Exciter.qml:95
 msgid "Amount"
@@ -683,14 +683,14 @@ msgstr "Боковая цепь во вход"
 #: src/contents/ui/Gate.qml:557 src/contents/ui/Limiter.qml:332
 #: src/contents/ui/LspPreMixDialog.qml:67
 msgid "Sidechain to link"
-msgstr "Бок. цепь в указатель"
+msgstr "Боковая цепь в указатель"
 
 # #, fuzzy
 #: src/contents/ui/Compressor.qml:596 src/contents/ui/Expander.qml:552
 #: src/contents/ui/Gate.qml:573 src/contents/ui/Limiter.qml:348
 #: src/contents/ui/LspPreMixDialog.qml:83
 msgid "Link to sidechain"
-msgstr "Указатель в бок. цепь"
+msgstr "Указатель в боковую цепь"
 
 # #, fuzzy
 #: src/contents/ui/Compressor.qml:612 src/contents/ui/Expander.qml:568
@@ -1072,7 +1072,7 @@ msgstr "Сила"
 
 #: src/contents/ui/EchoCanceller.qml:91 src/contents/ui/Loudness.qml:99
 msgid "Low"
-msgstr "Низ"
+msgstr "Низкая"
 
 #: src/contents/ui/EchoCanceller.qml:91
 msgid "Moderate"
@@ -1871,9 +1871,9 @@ msgid ""
 "It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
 "external applications (e.g. Gnome Settings and Plasma System Settings)"
 msgstr ""
-"Рекомендуется НЕ устанавливать указатели/источники Easy Effects в качестве "
-"стандартного устройства во внешних приложениях (таких как, настройки Gnome и "
-"параметры системы Plasma)"
+"НЕ рекомендуется использовать приёмники/источники Easy Effects в качестве "
+"стандартного устройства во внешних приложениях "
+"(например, настройки Gnome и параметры системы Plasma)"
 
 #: src/contents/ui/PipeWirePage.qml:121
 msgid "Use default input"
@@ -2035,7 +2035,7 @@ msgstr "База данных"
 
 #: src/contents/ui/PreferencesSheet.qml:52
 msgid "Experimental Features"
-msgstr "Экспериментальные возможности"
+msgstr "Экспериментально"
 
 #: src/contents/ui/PreferencesSheet.qml:65
 msgid "Enable service mode"
@@ -2067,9 +2067,9 @@ msgid ""
 "should not be enabled. It is intended only as a workaround for systems that "
 "do not work well with the autostart of Easy Effects."
 msgstr ""
-"Не показывать окно при запуске приложения. Как правило, эту опцию не следует "
-"включать. Она предназначена только в качестве обходного пути для систем, "
-"которые работают плохо с автозапуском Easy Effects."
+"Не показывать окно при запуске приложения. Обычно эту опцию не следует "
+"включать. Это обходное решение для тех систем, которые плохо работают с "
+"автозапуском Easy Effects."
 
 #: src/contents/ui/PreferencesSheet.qml:126
 msgid "Process all output streams"
@@ -2095,7 +2095,7 @@ msgid ""
 msgstr ""
 "Использовать кубическую шкалу громкости потока вместо линейной. Низкие "
 "значения процентов приводят к снижению воспринимаемой громкости, а изменение "
-"громкости на ползунке происходит более равномерно."
+"громкости на ползунке происходит более плавно."
 
 #: src/contents/ui/PreferencesSheet.qml:175
 msgid "Ignore system notifications"
@@ -2149,7 +2149,7 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:256
 msgid "Level meters animation duration"
-msgstr ""
+msgstr "Длительность анимации уровнемеров"
 
 #: src/contents/ui/PreferencesSheet.qml:294
 msgid "Audio delay compensation"
@@ -2305,7 +2305,7 @@ msgstr "Серая"
 
 #: src/contents/ui/PreferencesSheet.qml:527
 msgid "User"
-msgstr "Пользователь"
+msgstr "Пользовательская"
 
 #: src/contents/ui/PreferencesSheet.qml:535
 msgctxt "@label"
