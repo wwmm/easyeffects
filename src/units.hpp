@@ -47,6 +47,7 @@ class Units : public QObject {
   Q_PROPERTY(QString degC MEMBER degC CONSTANT)
   Q_PROPERTY(QString bits MEMBER bits CONSTANT)
   Q_PROPERTY(QString frames MEMBER frames CONSTANT)
+  Q_PROPERTY(QString fps MEMBER fps CONSTANT)
   Q_PROPERTY(QString minInf MEMBER minInf CONSTANT)
 
  public:
@@ -69,6 +70,7 @@ class Units : public QObject {
     degC = ki18nc("degree Celsius unit abbreviation", "°C").toString();
     bits = ki18nc("bit unit (plural)", "bits").toString();
     frames = ki18nc("frame unit (plural)", "frames").toString();
+    fps = ki18nc("frames per second", "fps").toString();
     minInf = ki18nc("minus infinity abbreviation", "-inf").toString();
   }
 
@@ -91,5 +93,6 @@ class Units : public QObject {
   QString degC;
   QString bits;
   QString frames;
+  QString fps;
   QString minInf;
 };

@@ -221,7 +221,13 @@
             <label>Duration of the animation used in the level meters.</label>
             <min>1</min>
             <max>10000</max>
-            <default>250</default>
+            <default>300</default>
+        </entry>
+        <entry name="levelMetersAnimationFpsCap" type="Int">
+            <label>Maximum level meter update rate when animations are enabled.</label>
+            <min>1</min>
+            <max>240</max>
+            <default>30</default>
         </entry>
     </group>
     <group name="NativePluginWindow">

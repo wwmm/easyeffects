@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-29 23:20-0300\n"
+"POT-Creation-Date: 2025-11-30 16:51-0300\n"
 "PO-Revision-Date: 2025-11-23 11:51+0000\n"
 "Last-Translator: Suu <suunya21@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
@@ -1911,12 +1911,12 @@ msgid "No Clients"
 msgstr "クライアントなし"
 
 #: src/contents/ui/PipeWirePage.qml:296
-#: src/contents/ui/PreferencesSheet.qml:286
+#: src/contents/ui/PreferencesSheet.qml:302
 msgid "State"
 msgstr "状態"
 
 #: src/contents/ui/PipeWirePage.qml:303
-#: src/contents/ui/PreferencesSheet.qml:293
+#: src/contents/ui/PreferencesSheet.qml:309
 msgid "Enabled"
 msgstr "有効"
 
@@ -2141,93 +2141,102 @@ msgstr "このアプリケーションの有効化/無効化"
 msgid "Level meters animation duration"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:305
+#: src/contents/ui/PreferencesSheet.qml:281
+#, fuzzy
+msgid "Level meters animation frame rate cap"
+msgstr "このアプリケーションの有効化/無効化"
+
+#: src/contents/ui/PreferencesSheet.qml:282
+msgid "Maximum level meter update rate when animations are enabled."
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:321
 msgid "Audio delay compensation"
 msgstr "オーディオ遅延補正"
 
-#: src/contents/ui/PreferencesSheet.qml:320
+#: src/contents/ui/PreferencesSheet.qml:336
 msgid "Graph"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:327
+#: src/contents/ui/PreferencesSheet.qml:343
 msgid "Shape"
 msgstr "形状"
 
-#: src/contents/ui/PreferencesSheet.qml:331
+#: src/contents/ui/PreferencesSheet.qml:347
 msgid "Bars"
 msgstr "バー"
 
-#: src/contents/ui/PreferencesSheet.qml:331
+#: src/contents/ui/PreferencesSheet.qml:347
 msgid "Lines"
 msgstr "線"
 
-#: src/contents/ui/PreferencesSheet.qml:331
+#: src/contents/ui/PreferencesSheet.qml:347
 msgid "Dots"
 msgstr "ドット"
 
-#: src/contents/ui/PreferencesSheet.qml:331
+#: src/contents/ui/PreferencesSheet.qml:347
 msgid "Area"
 msgstr "エリア"
 
-#: src/contents/ui/PreferencesSheet.qml:341
+#: src/contents/ui/PreferencesSheet.qml:357
 msgid "Dynamic scale"
 msgstr "動的スケール"
 
-#: src/contents/ui/PreferencesSheet.qml:353
+#: src/contents/ui/PreferencesSheet.qml:369
 msgid "Logarithmic frequency axis"
 msgstr "対数周波数軸"
 
-#: src/contents/ui/PreferencesSheet.qml:365
+#: src/contents/ui/PreferencesSheet.qml:381
 msgid "Points"
 msgstr "ポイント数"
 
-#: src/contents/ui/PreferencesSheet.qml:380
+#: src/contents/ui/PreferencesSheet.qml:396
 msgid "Height"
 msgstr "高さ"
 
-#: src/contents/ui/PreferencesSheet.qml:387
+#: src/contents/ui/PreferencesSheet.qml:403
 msgid "px"
 msgstr "px"
 
-#: src/contents/ui/PreferencesSheet.qml:395
+#: src/contents/ui/PreferencesSheet.qml:411
 msgid "Frequency Range"
 msgstr "周波数範囲"
 
-#: src/contents/ui/PreferencesSheet.qml:402
+#: src/contents/ui/PreferencesSheet.qml:418
 msgid "Minimum"
 msgstr "最小"
 
-#: src/contents/ui/PreferencesSheet.qml:418
+#: src/contents/ui/PreferencesSheet.qml:434
 msgid "Maximum"
 msgstr "最大"
 
-#: src/contents/ui/PreferencesSheet.qml:440
+#: src/contents/ui/PreferencesSheet.qml:456
 msgid "Database autosave interval"
 msgstr "データベース自動保存間隔"
 
-#: src/contents/ui/PreferencesSheet.qml:454
+#: src/contents/ui/PreferencesSheet.qml:470
 msgid "Most used presets"
 msgstr "最も使用されているプリセット"
 
-#: src/contents/ui/PreferencesSheet.qml:472
+#: src/contents/ui/PreferencesSheet.qml:488
 msgid "Window"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:481
+#: src/contents/ui/PreferencesSheet.qml:497
 msgid "Force KDE's Breeze theme when Easy Effects starts"
 msgstr "Easy Effects の開始時に強制的にKDE Breeze テーマを使う"
 
-#: src/contents/ui/PreferencesSheet.qml:482
+#: src/contents/ui/PreferencesSheet.qml:498
 msgid ""
 "It is necessary to restart the service for changes in this setting to take "
 "effect."
 msgstr "変更を反映するにはサービスを再起動する必要があります。"
 
-#: src/contents/ui/PreferencesSheet.qml:495
+#: src/contents/ui/PreferencesSheet.qml:511
 msgid "Reduce effects list controls"
 msgstr "エフェクトリストのコントロールを減らす"
 
-#: src/contents/ui/PreferencesSheet.qml:496
+#: src/contents/ui/PreferencesSheet.qml:512
 msgid ""
 "Action buttons in the effects list are moved inside a context menu for a "
 "more compact view."
@@ -2235,149 +2244,149 @@ msgstr ""
 "エフェクトリストのアクションボタンは、よりコンパクトな表示のためにコンテキス"
 "トメニュー内に移動されます。"
 
-#: src/contents/ui/PreferencesSheet.qml:508
+#: src/contents/ui/PreferencesSheet.qml:524
 msgid "Graphs"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:519
+#: src/contents/ui/PreferencesSheet.qml:535
 msgid "Color scheme"
 msgstr "カラースキーム"
 
-#: src/contents/ui/PreferencesSheet.qml:523
+#: src/contents/ui/PreferencesSheet.qml:539
 msgid "Automatic"
 msgstr "自動"
 
-#: src/contents/ui/PreferencesSheet.qml:523
+#: src/contents/ui/PreferencesSheet.qml:539
 msgid "Light"
 msgstr "ライト"
 
-#: src/contents/ui/PreferencesSheet.qml:523
+#: src/contents/ui/PreferencesSheet.qml:539
 msgid "Dark"
 msgstr "ダーク"
 
-#: src/contents/ui/PreferencesSheet.qml:534
+#: src/contents/ui/PreferencesSheet.qml:550
 msgid "Color theme"
 msgstr "カラーテーマ"
 
-#: src/contents/ui/PreferencesSheet.qml:538
+#: src/contents/ui/PreferencesSheet.qml:554
 msgid "Green"
 msgstr "グリーン"
 
-#: src/contents/ui/PreferencesSheet.qml:538
+#: src/contents/ui/PreferencesSheet.qml:554
 msgid "Green neon"
 msgstr "グリーンネオン"
 
-#: src/contents/ui/PreferencesSheet.qml:538
+#: src/contents/ui/PreferencesSheet.qml:554
 msgid "Mix"
 msgstr "ミックス"
 
-#: src/contents/ui/PreferencesSheet.qml:538
+#: src/contents/ui/PreferencesSheet.qml:554
 msgid "Orange"
 msgstr "オレンジ"
 
-#: src/contents/ui/PreferencesSheet.qml:538
+#: src/contents/ui/PreferencesSheet.qml:554
 msgid "Yellow"
 msgstr "イエロー"
 
-#: src/contents/ui/PreferencesSheet.qml:538
+#: src/contents/ui/PreferencesSheet.qml:554
 msgid "Blue"
 msgstr "ブルー"
 
-#: src/contents/ui/PreferencesSheet.qml:538
+#: src/contents/ui/PreferencesSheet.qml:554
 msgid "Purple"
 msgstr "パープル"
 
-#: src/contents/ui/PreferencesSheet.qml:538
+#: src/contents/ui/PreferencesSheet.qml:554
 msgid "Grey"
 msgstr "グレー"
 
-#: src/contents/ui/PreferencesSheet.qml:538
+#: src/contents/ui/PreferencesSheet.qml:554
 msgid "User"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:546
+#: src/contents/ui/PreferencesSheet.qml:562
 #, fuzzy
 msgctxt "@label"
 msgid "Background"
 msgstr "バックグラウンドサービス"
 
-#: src/contents/ui/PreferencesSheet.qml:555
+#: src/contents/ui/PreferencesSheet.qml:571
 msgctxt "@label"
 msgid "Plot area background"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:564
+#: src/contents/ui/PreferencesSheet.qml:580
 msgctxt "@label"
 msgid "Series colors"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:573
+#: src/contents/ui/PreferencesSheet.qml:589
 #, fuzzy
 msgctxt "@label"
 msgid "Axis labels text color"
 msgstr "軸ラベル"
 
-#: src/contents/ui/PreferencesSheet.qml:582
+#: src/contents/ui/PreferencesSheet.qml:598
 msgctxt "@label"
 msgid "Axis labels background color"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:591
+#: src/contents/ui/PreferencesSheet.qml:607
 msgctxt "@label"
 msgid "Border color"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:600
+#: src/contents/ui/PreferencesSheet.qml:616
 #, fuzzy
 msgid "Line width"
 msgstr "線幅"
 
-#: src/contents/ui/PreferencesSheet.qml:614
+#: src/contents/ui/PreferencesSheet.qml:630
 msgid "Show grid lines"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:632
+#: src/contents/ui/PreferencesSheet.qml:648
 msgid "Autoload delay"
 msgstr "自動読み込み遅延"
 
-#: src/contents/ui/PreferencesSheet.qml:633
+#: src/contents/ui/PreferencesSheet.qml:649
 msgid ""
 "Delay between receiving a new device route and the call to autoload a preset."
 msgstr ""
 "新しいデバイスルートを受信してからプリセットを自動読み込みするまでの遅延。"
 
-#: src/contents/ui/PreferencesSheet.qml:649
+#: src/contents/ui/PreferencesSheet.qml:665
 #, fuzzy
 msgid "Ignore the blocklist from presets"
 msgstr "ブロックリストを無視"
 
-#: src/contents/ui/PreferencesSheet.qml:650
+#: src/contents/ui/PreferencesSheet.qml:666
 msgid ""
 "If enabled, the list of excluded apps set in the loaded preset is ignored "
 "and does not replace the one set by the user."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:671
+#: src/contents/ui/PreferencesSheet.qml:687
 msgid "Global shortcuts"
 msgstr "グローバルショートカット"
 
-#: src/contents/ui/PreferencesSheet.qml:672
+#: src/contents/ui/PreferencesSheet.qml:688
 msgid "Enables support for XDG global shortcuts."
 msgstr "XDG グローバルショートカットのサポートを有効にします。"
 
-#: src/contents/ui/PreferencesSheet.qml:684
+#: src/contents/ui/PreferencesSheet.qml:700
 msgid "Native window of effects"
 msgstr "エフェクトのネイティブウィンドウ"
 
-#: src/contents/ui/PreferencesSheet.qml:685
+#: src/contents/ui/PreferencesSheet.qml:701
 msgid "Allows the native user interface of effects to be shown/hidden."
 msgstr "エフェクトのネイティブウィンドウの表示/非表示を許可します。"
 
-#: src/contents/ui/PreferencesSheet.qml:697
+#: src/contents/ui/PreferencesSheet.qml:713
 msgid "Update frequency"
 msgstr "更新頻度"
 
-#: src/contents/ui/PreferencesSheet.qml:698
+#: src/contents/ui/PreferencesSheet.qml:714
 msgid "Related to LV2 plugins."
 msgstr "LV2 プラグインに影響します。"
 
@@ -3003,110 +3012,115 @@ msgstr "スピーチプロセッサー"
 msgid "Stereo Tools"
 msgstr "ステレオツール"
 
-#: src/units.hpp:54
+#: src/units.hpp:55
 #, fuzzy
 msgctxt "left channel abbreviation (single letter)"
 msgid "L"
 msgstr "L"
 
-#: src/units.hpp:55
+#: src/units.hpp:56
 #, fuzzy
 msgctxt "left channel abbreviation (single letter)"
 msgid "R"
 msgstr "R"
 
-#: src/units.hpp:56
+#: src/units.hpp:57
 #, fuzzy
 msgctxt "decibel unit abbreviation"
 msgid "dB"
 msgstr "dB"
 
-#: src/units.hpp:57
+#: src/units.hpp:58
 #, fuzzy
 msgctxt "decibel full scale unit abbreviation"
 msgid "dBFS"
 msgstr "dBFS"
 
-#: src/units.hpp:58
+#: src/units.hpp:59
 #, fuzzy
 msgctxt "decibel per octaves unit abbreviation"
 msgid "dB/oct"
 msgstr "12 dB/oct"
 
-#: src/units.hpp:59
+#: src/units.hpp:60
 msgctxt "thousand abbreviation (single letter)"
 msgid "k"
 msgstr ""
 
-#: src/units.hpp:60
+#: src/units.hpp:61
 #, fuzzy
 msgctxt "seconds unit abbreviation"
 msgid "s"
 msgstr "s"
 
-#: src/units.hpp:61
+#: src/units.hpp:62
 #, fuzzy
 msgctxt "milliseconds unit abbreviation"
 msgid "ms"
 msgstr "ms"
 
-#: src/units.hpp:62
+#: src/units.hpp:63
 #, fuzzy
 msgctxt "Hertz unit abbreviation"
 msgid "Hz"
 msgstr "Hz"
 
-#: src/units.hpp:63
+#: src/units.hpp:64
 #, fuzzy
 msgctxt "kiloHertz unit abbreviation"
 msgid "kHz"
 msgstr "kHz"
 
-#: src/units.hpp:64
+#: src/units.hpp:65
 msgctxt "percentage symbol"
 msgid "%"
 msgstr ""
 
-#: src/units.hpp:65
+#: src/units.hpp:66
 msgctxt "loudness full scale unit abbreviation"
 msgid "LUFS"
 msgstr ""
 
-#: src/units.hpp:66
+#: src/units.hpp:67
 #, fuzzy
 msgctxt "loudness unit abbreviation"
 msgid "LU"
 msgstr "L"
 
-#: src/units.hpp:67
+#: src/units.hpp:68
 #, fuzzy
 msgctxt "meter unit abbreviation"
 msgid "m"
 msgstr "m"
 
-#: src/units.hpp:68
+#: src/units.hpp:69
 #, fuzzy
 msgctxt "centimeter unit abbreviation"
 msgid "cm"
 msgstr "cm"
 
-#: src/units.hpp:69
+#: src/units.hpp:70
 msgctxt "degree Celsius unit abbreviation"
 msgid "°C"
 msgstr ""
 
-#: src/units.hpp:70
+#: src/units.hpp:71
 msgctxt "bit unit (plural)"
 msgid "bits"
 msgstr ""
 
-#: src/units.hpp:71
+#: src/units.hpp:72
 #, fuzzy
 msgctxt "frame unit (plural)"
 msgid "frames"
 msgstr "フレーム"
 
-#: src/units.hpp:72
+#: src/units.hpp:73
+msgctxt "frames per second"
+msgid "fps"
+msgstr ""
+
+#: src/units.hpp:74
 msgctxt "minus infinity abbreviation"
 msgid "-inf"
 msgstr "-inf"

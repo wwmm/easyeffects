@@ -19,9 +19,11 @@ Rectangle {
     property bool convertDecibelToLinear: false
     property real clampedValue: 0
     property real displayValue: 0
+    property var lastUpdateTime: 0
     readonly property real liFrom: Common.dbToLinear(from)
     readonly property real liTo: Common.dbToLinear(to)
     readonly property real decimalFactor: Math.pow(10, -decimals)
+    readonly property real invFps: 1000.0 / DbMain.levelMetersAnimationFpsCap
 
     readonly property string unitSuffix: if (!Common.isEmpty(control.unit)) {
         const split = control.separateUnit ? ' ' : '';
@@ -39,6 +41,18 @@ Rectangle {
     clip: true
 
     function setValue(value) {
+        if (DbMain.enableLevelMetersAnimation) {
+            const now = Date.now();
+
+            const timeDiff = now - lastUpdateTime;
+
+            if (timeDiff < invFps) {
+                return;
+            }
+
+            lastUpdateTime = now;
+        }
+
         const newC = Common.clamp(value, control.from, control.to);
 
         // Only update if meaningfully different
