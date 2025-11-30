@@ -63,6 +63,6 @@ class Deesser : public PluginBase {
  private:
   db::Deesser* settings = nullptr;
 
-  double compression_value = 0.0;
-  double detected_value = 0.0;
+  float compression_value = 0.0F;
+  float detected_value = 0.0F;
 };

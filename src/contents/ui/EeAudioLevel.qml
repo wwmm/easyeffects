@@ -30,8 +30,10 @@ Rectangle {
 
         // Only update if meaningfully different
 
-        if (Math.abs(newC - root.clampedValue) > root.decimalFactor) {
+        if (Math.abs(newC - root.clampedValue) >= root.decimalFactor) {
             root.clampedValue = newC;
+        } else {
+            return;
         }
 
         let newDisplayValue;

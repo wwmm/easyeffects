@@ -20,6 +20,7 @@
 #include "deesser.hpp"
 #include <qobject.h>
 #include <algorithm>
+#include <format>
 #include <memory>
 #include <span>
 #include <string>

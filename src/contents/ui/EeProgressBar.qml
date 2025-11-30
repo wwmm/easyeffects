@@ -43,8 +43,10 @@ Rectangle {
 
         // Only update if meaningfully different
 
-        if (Math.abs(newC - control.clampedValue) > decimalFactor) {
+        if (Math.abs(newC - control.clampedValue) >= decimalFactor) {
             control.clampedValue = newC;
+        } else {
+            return;
         }
 
         let newDisplayValue;
