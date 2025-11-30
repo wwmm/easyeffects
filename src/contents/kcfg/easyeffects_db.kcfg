@@ -213,6 +213,10 @@
             <max>10000</max>
             <default>2500</default>
         </entry>
+        <entry name="enableLevelMetersAnimation" type="Bool">
+            <label>Enable or disable animations for the level meters</label>
+            <default>false</default>
+        </entry>
         <entry name="levelMetersAnimationDuration" type="Int">
             <label>Duration of the animation used in the level meters.</label>
             <min>1</min>

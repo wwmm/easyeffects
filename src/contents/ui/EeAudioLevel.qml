@@ -82,6 +82,8 @@ Rectangle {
             origin.y: root.topToBottom === false ? levelRect.height : 0
 
             Behavior on yScale {
+                enabled: DbMain.enableLevelMetersAnimation
+
                 NumberAnimation {
                     duration: DbMain.levelMetersAnimationDuration
                     easing.type: Easing.OutCubic
@@ -107,6 +109,8 @@ Rectangle {
             id: histScale
 
             Behavior on y {
+                enabled: DbMain.enableLevelMetersAnimation
+
                 NumberAnimation {
                     duration: DbMain.levelMetersAnimationDuration
                     easing.type: Easing.OutCubic

@@ -252,6 +252,17 @@ KirigamiSettings.ConfigurationView {
                     }
                 }
 
+                EeSwitch {
+                    id: enableLevelMetersAnimation
+
+                    label: i18n("Enable level meters animation") // qmllint disable
+                    isChecked: DbMain.enableLevelMetersAnimation
+                    onCheckedChanged: {
+                        if (isChecked !== DbMain.enableLevelMetersAnimation)
+                            DbMain.enableLevelMetersAnimation = isChecked;
+                    }
+                }
+
                 EeSpinBox {
                     label: i18n("Level meters animation duration") // qmllint disable
                     from: DbMain.getMinValue("levelMetersAnimationDuration")
@@ -260,7 +271,7 @@ KirigamiSettings.ConfigurationView {
                     decimals: 0
                     stepSize: 1
                     unit: Units.ms
-                    enabled: DbMain.levelMetersAnimationDuration
+                    enabled: DbMain.enableLevelMetersAnimation
                     onValueModified: v => {
                         DbMain.levelMetersAnimationDuration = v;
                     }

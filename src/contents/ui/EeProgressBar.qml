@@ -113,6 +113,8 @@ Control {
                 origin.x: control.rightToLeft === false ? 0 : levelRect.width
 
                 Behavior on xScale {
+                    enabled: DbMain.enableLevelMetersAnimation
+
                     NumberAnimation {
                         duration: DbMain.levelMetersAnimationDuration
                         easing.type: Easing.OutCubic
@@ -132,6 +134,8 @@ Control {
                 id: histScale
 
                 Behavior on x {
+                    enabled: DbMain.enableLevelMetersAnimation
+
                     NumberAnimation {
                         duration: DbMain.levelMetersAnimationDuration
                         easing.type: Easing.OutCubic
