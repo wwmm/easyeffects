@@ -16,7 +16,7 @@ Rectangle {
     property real clampedValue: 0
     property real displayValue: 0
     property var lastUpdateTime: 0
-    readonly property real invFps: 1000.0 / DbMain.levelMetersAnimationFpsCap
+    readonly property real invFps: 1000.0 / DbMain.levelMetersFpsCap
 
     Kirigami.Theme.colorSet: Kirigami.Theme.View
     implicitWidth: valueLabel.implicitWidth + Kirigami.Units.largeSpacing
@@ -28,17 +28,15 @@ Rectangle {
     border.color: Kirigami.ColorUtils.linearInterpolation(Kirigami.Theme.backgroundColor, Kirigami.Theme.textColor, Kirigami.Theme.frameContrast)
 
     function setValue(value) {
-        if (DbMain.enableLevelMetersAnimation) {
-            const now = Date.now();
+        const now = Date.now();
 
-            const timeDiff = now - lastUpdateTime;
+        const timeDiff = now - lastUpdateTime;
 
-            if (timeDiff < invFps) {
-                return;
-            }
-
-            lastUpdateTime = now;
+        if (timeDiff < invFps) {
+            return;
         }
+
+        lastUpdateTime = now;
 
         const newC = Common.clamp(value, root.from, root.to);
 

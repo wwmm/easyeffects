@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-30 16:51-0300\n"
+"POT-Creation-Date: 2025-11-30 16:55-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1871,12 +1871,12 @@ msgid "No Clients"
 msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:296
-#: src/contents/ui/PreferencesSheet.qml:302
+#: src/contents/ui/PreferencesSheet.qml:301
 msgid "State"
 msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:303
-#: src/contents/ui/PreferencesSheet.qml:309
+#: src/contents/ui/PreferencesSheet.qml:308
 msgid "Enabled"
 msgstr ""
 
@@ -2068,261 +2068,261 @@ msgid "Inactivity timeout"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:240
-msgid "Level meters label"
+msgid "Level meters frame rate cap"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:241
+msgid "Maximum level meter update rate."
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:255
+msgid "Level meters label"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:256
 msgid ""
 "The time it takes for the level meter labels to be updated when the current "
 "level is below the last highest one."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:258
+#: src/contents/ui/PreferencesSheet.qml:273
 msgid "Enable level meters animation"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:267
+#: src/contents/ui/PreferencesSheet.qml:282
 msgid "Level meters animation duration"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:281
-msgid "Level meters animation frame rate cap"
-msgstr ""
-
-#: src/contents/ui/PreferencesSheet.qml:282
-msgid "Maximum level meter update rate when animations are enabled."
-msgstr ""
-
-#: src/contents/ui/PreferencesSheet.qml:321
+#: src/contents/ui/PreferencesSheet.qml:320
 msgid "Audio delay compensation"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:336
+#: src/contents/ui/PreferencesSheet.qml:335
 msgid "Graph"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:343
+#: src/contents/ui/PreferencesSheet.qml:342
 msgid "Shape"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:347
+#: src/contents/ui/PreferencesSheet.qml:346
 msgid "Bars"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:347
+#: src/contents/ui/PreferencesSheet.qml:346
 msgid "Lines"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:347
+#: src/contents/ui/PreferencesSheet.qml:346
 msgid "Dots"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:347
+#: src/contents/ui/PreferencesSheet.qml:346
 msgid "Area"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:357
+#: src/contents/ui/PreferencesSheet.qml:356
 msgid "Dynamic scale"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:369
+#: src/contents/ui/PreferencesSheet.qml:368
 msgid "Logarithmic frequency axis"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:381
+#: src/contents/ui/PreferencesSheet.qml:380
 msgid "Points"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:396
+#: src/contents/ui/PreferencesSheet.qml:395
 msgid "Height"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:403
+#: src/contents/ui/PreferencesSheet.qml:402
 msgid "px"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:411
+#: src/contents/ui/PreferencesSheet.qml:410
 msgid "Frequency Range"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:418
+#: src/contents/ui/PreferencesSheet.qml:417
 msgid "Minimum"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:434
+#: src/contents/ui/PreferencesSheet.qml:433
 msgid "Maximum"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:456
+#: src/contents/ui/PreferencesSheet.qml:455
 msgid "Database autosave interval"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:470
+#: src/contents/ui/PreferencesSheet.qml:469
 msgid "Most used presets"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:488
+#: src/contents/ui/PreferencesSheet.qml:487
 msgid "Window"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:497
+#: src/contents/ui/PreferencesSheet.qml:496
 msgid "Force KDE's Breeze theme when Easy Effects starts"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:498
+#: src/contents/ui/PreferencesSheet.qml:497
 msgid ""
 "It is necessary to restart the service for changes in this setting to take "
 "effect."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:511
+#: src/contents/ui/PreferencesSheet.qml:510
 msgid "Reduce effects list controls"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:512
+#: src/contents/ui/PreferencesSheet.qml:511
 msgid ""
 "Action buttons in the effects list are moved inside a context menu for a "
 "more compact view."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:524
+#: src/contents/ui/PreferencesSheet.qml:523
 msgid "Graphs"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:535
+#: src/contents/ui/PreferencesSheet.qml:534
 msgid "Color scheme"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:539
+#: src/contents/ui/PreferencesSheet.qml:538
 msgid "Automatic"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:539
+#: src/contents/ui/PreferencesSheet.qml:538
 msgid "Light"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:539
+#: src/contents/ui/PreferencesSheet.qml:538
 msgid "Dark"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:550
+#: src/contents/ui/PreferencesSheet.qml:549
 msgid "Color theme"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:554
+#: src/contents/ui/PreferencesSheet.qml:553
 msgid "Green"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:554
+#: src/contents/ui/PreferencesSheet.qml:553
 msgid "Green neon"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:554
+#: src/contents/ui/PreferencesSheet.qml:553
 msgid "Mix"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:554
+#: src/contents/ui/PreferencesSheet.qml:553
 msgid "Orange"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:554
+#: src/contents/ui/PreferencesSheet.qml:553
 msgid "Yellow"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:554
+#: src/contents/ui/PreferencesSheet.qml:553
 msgid "Blue"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:554
+#: src/contents/ui/PreferencesSheet.qml:553
 msgid "Purple"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:554
+#: src/contents/ui/PreferencesSheet.qml:553
 msgid "Grey"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:554
+#: src/contents/ui/PreferencesSheet.qml:553
 msgid "User"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:562
+#: src/contents/ui/PreferencesSheet.qml:561
 msgctxt "@label"
 msgid "Background"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:571
+#: src/contents/ui/PreferencesSheet.qml:570
 msgctxt "@label"
 msgid "Plot area background"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:580
+#: src/contents/ui/PreferencesSheet.qml:579
 msgctxt "@label"
 msgid "Series colors"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:589
+#: src/contents/ui/PreferencesSheet.qml:588
 msgctxt "@label"
 msgid "Axis labels text color"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:598
+#: src/contents/ui/PreferencesSheet.qml:597
 msgctxt "@label"
 msgid "Axis labels background color"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:607
+#: src/contents/ui/PreferencesSheet.qml:606
 msgctxt "@label"
 msgid "Border color"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:616
+#: src/contents/ui/PreferencesSheet.qml:615
 msgid "Line width"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:630
+#: src/contents/ui/PreferencesSheet.qml:629
 msgid "Show grid lines"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:648
+#: src/contents/ui/PreferencesSheet.qml:647
 msgid "Autoload delay"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:649
+#: src/contents/ui/PreferencesSheet.qml:648
 msgid ""
 "Delay between receiving a new device route and the call to autoload a preset."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:665
+#: src/contents/ui/PreferencesSheet.qml:664
 msgid "Ignore the blocklist from presets"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:666
+#: src/contents/ui/PreferencesSheet.qml:665
 msgid ""
 "If enabled, the list of excluded apps set in the loaded preset is ignored "
 "and does not replace the one set by the user."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:687
+#: src/contents/ui/PreferencesSheet.qml:686
 msgid "Global shortcuts"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:688
+#: src/contents/ui/PreferencesSheet.qml:687
 msgid "Enables support for XDG global shortcuts."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:700
+#: src/contents/ui/PreferencesSheet.qml:699
 msgid "Native window of effects"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:701
+#: src/contents/ui/PreferencesSheet.qml:700
 msgid "Allows the native user interface of effects to be shown/hidden."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:713
+#: src/contents/ui/PreferencesSheet.qml:712
 msgid "Update frequency"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:714
+#: src/contents/ui/PreferencesSheet.qml:713
 msgid "Related to LV2 plugins."
 msgstr ""
 

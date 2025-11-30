@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-30 16:51-0300\n"
+"POT-Creation-Date: 2025-11-30 16:55-0300\n"
 "PO-Revision-Date: 2025-11-29 18:17+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1895,12 +1895,12 @@ msgid "No Clients"
 msgstr "Gan Cliant"
 
 #: src/contents/ui/PipeWirePage.qml:296
-#: src/contents/ui/PreferencesSheet.qml:302
+#: src/contents/ui/PreferencesSheet.qml:301
 msgid "State"
 msgstr "An Stát"
 
 #: src/contents/ui/PipeWirePage.qml:303
-#: src/contents/ui/PreferencesSheet.qml:309
+#: src/contents/ui/PreferencesSheet.qml:308
 msgid "Enabled"
 msgstr "Cumasaithe"
 
@@ -2104,10 +2104,19 @@ msgid "Inactivity timeout"
 msgstr "Am scoir neamhghníomhaíochta"
 
 #: src/contents/ui/PreferencesSheet.qml:240
+#, fuzzy
+msgid "Level meters frame rate cap"
+msgstr "Cumasaigh/díchumasaigh an feidhmchlár seo"
+
+#: src/contents/ui/PreferencesSheet.qml:241
+msgid "Maximum level meter update rate."
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:255
 msgid "Level meters label"
 msgstr "Lipéad méadair leibhéal"
 
-#: src/contents/ui/PreferencesSheet.qml:241
+#: src/contents/ui/PreferencesSheet.qml:256
 msgid ""
 "The time it takes for the level meter labels to be updated when the current "
 "level is below the last highest one."
@@ -2115,101 +2124,92 @@ msgstr ""
 "An t-am a thógann sé chun lipéid an mhéadair leibhéil a nuashonrú nuair a "
 "bhíonn an leibhéal reatha faoi bhun an leibhéal is airde deireanach."
 
-#: src/contents/ui/PreferencesSheet.qml:258
+#: src/contents/ui/PreferencesSheet.qml:273
 #, fuzzy
 msgid "Enable level meters animation"
 msgstr "Cumasaigh/díchumasaigh an feidhmchlár seo"
 
-#: src/contents/ui/PreferencesSheet.qml:267
+#: src/contents/ui/PreferencesSheet.qml:282
 msgid "Level meters animation duration"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:281
-#, fuzzy
-msgid "Level meters animation frame rate cap"
-msgstr "Cumasaigh/díchumasaigh an feidhmchlár seo"
-
-#: src/contents/ui/PreferencesSheet.qml:282
-msgid "Maximum level meter update rate when animations are enabled."
-msgstr ""
-
-#: src/contents/ui/PreferencesSheet.qml:321
+#: src/contents/ui/PreferencesSheet.qml:320
 msgid "Audio delay compensation"
 msgstr "Cúiteamh moille fuaime"
 
-#: src/contents/ui/PreferencesSheet.qml:336
+#: src/contents/ui/PreferencesSheet.qml:335
 msgid "Graph"
 msgstr "Graf"
 
-#: src/contents/ui/PreferencesSheet.qml:343
+#: src/contents/ui/PreferencesSheet.qml:342
 msgid "Shape"
 msgstr "Cruth"
 
-#: src/contents/ui/PreferencesSheet.qml:347
+#: src/contents/ui/PreferencesSheet.qml:346
 msgid "Bars"
 msgstr "Barraí"
 
-#: src/contents/ui/PreferencesSheet.qml:347
+#: src/contents/ui/PreferencesSheet.qml:346
 msgid "Lines"
 msgstr "Línte"
 
-#: src/contents/ui/PreferencesSheet.qml:347
+#: src/contents/ui/PreferencesSheet.qml:346
 msgid "Dots"
 msgstr "Poncanna"
 
-#: src/contents/ui/PreferencesSheet.qml:347
+#: src/contents/ui/PreferencesSheet.qml:346
 msgid "Area"
 msgstr "Limistéar"
 
-#: src/contents/ui/PreferencesSheet.qml:357
+#: src/contents/ui/PreferencesSheet.qml:356
 msgid "Dynamic scale"
 msgstr "Scála dinimiciúil"
 
-#: src/contents/ui/PreferencesSheet.qml:369
+#: src/contents/ui/PreferencesSheet.qml:368
 msgid "Logarithmic frequency axis"
 msgstr "Ais minicíochta logartamach"
 
-#: src/contents/ui/PreferencesSheet.qml:381
+#: src/contents/ui/PreferencesSheet.qml:380
 msgid "Points"
 msgstr "Pointí"
 
-#: src/contents/ui/PreferencesSheet.qml:396
+#: src/contents/ui/PreferencesSheet.qml:395
 msgid "Height"
 msgstr "Airde"
 
-#: src/contents/ui/PreferencesSheet.qml:403
+#: src/contents/ui/PreferencesSheet.qml:402
 msgid "px"
 msgstr "px"
 
-#: src/contents/ui/PreferencesSheet.qml:411
+#: src/contents/ui/PreferencesSheet.qml:410
 msgid "Frequency Range"
 msgstr "Raon Minicíochta"
 
-#: src/contents/ui/PreferencesSheet.qml:418
+#: src/contents/ui/PreferencesSheet.qml:417
 msgid "Minimum"
 msgstr "Íosmhéid"
 
-#: src/contents/ui/PreferencesSheet.qml:434
+#: src/contents/ui/PreferencesSheet.qml:433
 msgid "Maximum"
 msgstr "Uasmhéid"
 
-#: src/contents/ui/PreferencesSheet.qml:456
+#: src/contents/ui/PreferencesSheet.qml:455
 msgid "Database autosave interval"
 msgstr "Eatramh uath-shábháil bunachar sonraí"
 
-#: src/contents/ui/PreferencesSheet.qml:470
+#: src/contents/ui/PreferencesSheet.qml:469
 msgid "Most used presets"
 msgstr "Réamhshocruithe is mó a úsáidtear"
 
-#: src/contents/ui/PreferencesSheet.qml:488
+#: src/contents/ui/PreferencesSheet.qml:487
 msgid "Window"
 msgstr "Fuinneog"
 
-#: src/contents/ui/PreferencesSheet.qml:497
+#: src/contents/ui/PreferencesSheet.qml:496
 msgid "Force KDE's Breeze theme when Easy Effects starts"
 msgstr "Fórsaigh téama Breeze KDE nuair a thosaíonn Easy Effects"
 
-#: src/contents/ui/PreferencesSheet.qml:498
+#: src/contents/ui/PreferencesSheet.qml:497
 msgid ""
 "It is necessary to restart the service for changes in this setting to take "
 "effect."
@@ -2217,11 +2217,11 @@ msgstr ""
 "Is gá an tseirbhís a atosú le go dtiocfaidh athruithe sa socrú seo i "
 "bhfeidhm."
 
-#: src/contents/ui/PreferencesSheet.qml:511
+#: src/contents/ui/PreferencesSheet.qml:510
 msgid "Reduce effects list controls"
 msgstr "Rialuithe liosta éifeachtaí a laghdú"
 
-#: src/contents/ui/PreferencesSheet.qml:512
+#: src/contents/ui/PreferencesSheet.qml:511
 msgid ""
 "Action buttons in the effects list are moved inside a context menu for a "
 "more compact view."
@@ -2229,120 +2229,120 @@ msgstr ""
 "Bogtar cnaipí gníomhaíochta sa liosta éifeachtaí taobh istigh de roghchlár "
 "comhthéacs le haghaidh radharc níos dlúithe."
 
-#: src/contents/ui/PreferencesSheet.qml:524
+#: src/contents/ui/PreferencesSheet.qml:523
 msgid "Graphs"
 msgstr "Graif"
 
-#: src/contents/ui/PreferencesSheet.qml:535
+#: src/contents/ui/PreferencesSheet.qml:534
 msgid "Color scheme"
 msgstr "Scéim dathanna"
 
-#: src/contents/ui/PreferencesSheet.qml:539
+#: src/contents/ui/PreferencesSheet.qml:538
 msgid "Automatic"
 msgstr "Uathoibríoch"
 
-#: src/contents/ui/PreferencesSheet.qml:539
+#: src/contents/ui/PreferencesSheet.qml:538
 msgid "Light"
 msgstr "Solas"
 
-#: src/contents/ui/PreferencesSheet.qml:539
+#: src/contents/ui/PreferencesSheet.qml:538
 msgid "Dark"
 msgstr "Dorcha"
 
-#: src/contents/ui/PreferencesSheet.qml:550
+#: src/contents/ui/PreferencesSheet.qml:549
 msgid "Color theme"
 msgstr "Téama datha"
 
-#: src/contents/ui/PreferencesSheet.qml:554
+#: src/contents/ui/PreferencesSheet.qml:553
 msgid "Green"
 msgstr "Glas"
 
-#: src/contents/ui/PreferencesSheet.qml:554
+#: src/contents/ui/PreferencesSheet.qml:553
 msgid "Green neon"
 msgstr "Neon glas"
 
-#: src/contents/ui/PreferencesSheet.qml:554
+#: src/contents/ui/PreferencesSheet.qml:553
 msgid "Mix"
 msgstr "Measc"
 
-#: src/contents/ui/PreferencesSheet.qml:554
+#: src/contents/ui/PreferencesSheet.qml:553
 msgid "Orange"
 msgstr "Oráiste"
 
-#: src/contents/ui/PreferencesSheet.qml:554
+#: src/contents/ui/PreferencesSheet.qml:553
 msgid "Yellow"
 msgstr "Buí"
 
-#: src/contents/ui/PreferencesSheet.qml:554
+#: src/contents/ui/PreferencesSheet.qml:553
 msgid "Blue"
 msgstr "Gorm"
 
-#: src/contents/ui/PreferencesSheet.qml:554
+#: src/contents/ui/PreferencesSheet.qml:553
 msgid "Purple"
 msgstr "Corcra"
 
-#: src/contents/ui/PreferencesSheet.qml:554
+#: src/contents/ui/PreferencesSheet.qml:553
 msgid "Grey"
 msgstr "Liath"
 
-#: src/contents/ui/PreferencesSheet.qml:554
+#: src/contents/ui/PreferencesSheet.qml:553
 msgid "User"
 msgstr "Úsáideoir"
 
-#: src/contents/ui/PreferencesSheet.qml:562
+#: src/contents/ui/PreferencesSheet.qml:561
 msgctxt "@label"
 msgid "Background"
 msgstr "Cúlra"
 
-#: src/contents/ui/PreferencesSheet.qml:571
+#: src/contents/ui/PreferencesSheet.qml:570
 msgctxt "@label"
 msgid "Plot area background"
 msgstr "Cúlra limistéar an phlota"
 
-#: src/contents/ui/PreferencesSheet.qml:580
+#: src/contents/ui/PreferencesSheet.qml:579
 msgctxt "@label"
 msgid "Series colors"
 msgstr "Dathanna sraithe"
 
-#: src/contents/ui/PreferencesSheet.qml:589
+#: src/contents/ui/PreferencesSheet.qml:588
 msgctxt "@label"
 msgid "Axis labels text color"
 msgstr "Dath téacs lipéid ais"
 
-#: src/contents/ui/PreferencesSheet.qml:598
+#: src/contents/ui/PreferencesSheet.qml:597
 msgctxt "@label"
 msgid "Axis labels background color"
 msgstr "Dath cúlra lipéid ais"
 
-#: src/contents/ui/PreferencesSheet.qml:607
+#: src/contents/ui/PreferencesSheet.qml:606
 msgctxt "@label"
 msgid "Border color"
 msgstr "Dath na teorann"
 
-#: src/contents/ui/PreferencesSheet.qml:616
+#: src/contents/ui/PreferencesSheet.qml:615
 msgid "Line width"
 msgstr "Leithead líne"
 
-#: src/contents/ui/PreferencesSheet.qml:630
+#: src/contents/ui/PreferencesSheet.qml:629
 msgid "Show grid lines"
 msgstr "Taispeáin línte eangaí"
 
-#: src/contents/ui/PreferencesSheet.qml:648
+#: src/contents/ui/PreferencesSheet.qml:647
 msgid "Autoload delay"
 msgstr "Moill uathluchtaithe"
 
-#: src/contents/ui/PreferencesSheet.qml:649
+#: src/contents/ui/PreferencesSheet.qml:648
 msgid ""
 "Delay between receiving a new device route and the call to autoload a preset."
 msgstr ""
 "Moill idir bealach nua gléis a fháil agus an glao chun réamhshocrú a "
 "uathlódáil."
 
-#: src/contents/ui/PreferencesSheet.qml:665
+#: src/contents/ui/PreferencesSheet.qml:664
 msgid "Ignore the blocklist from presets"
 msgstr "Déan neamhaird den liosta blocála ó réamhshocruithe"
 
-#: src/contents/ui/PreferencesSheet.qml:666
+#: src/contents/ui/PreferencesSheet.qml:665
 msgid ""
 "If enabled, the list of excluded apps set in the loaded preset is ignored "
 "and does not replace the one set by the user."
@@ -2351,29 +2351,29 @@ msgstr ""
 "socraithe sa réamhshocrú luchtaithe agus ní chuireann sé in ionad an cheann "
 "a shocraigh an t-úsáideoir."
 
-#: src/contents/ui/PreferencesSheet.qml:687
+#: src/contents/ui/PreferencesSheet.qml:686
 msgid "Global shortcuts"
 msgstr "Aicearraí domhanda"
 
-#: src/contents/ui/PreferencesSheet.qml:688
+#: src/contents/ui/PreferencesSheet.qml:687
 msgid "Enables support for XDG global shortcuts."
 msgstr "Cumasaíonn sé tacaíocht do aicearraí domhanda XDG."
 
-#: src/contents/ui/PreferencesSheet.qml:700
+#: src/contents/ui/PreferencesSheet.qml:699
 msgid "Native window of effects"
 msgstr "Fuinneog dhúchasach éifeachtaí"
 
-#: src/contents/ui/PreferencesSheet.qml:701
+#: src/contents/ui/PreferencesSheet.qml:700
 msgid "Allows the native user interface of effects to be shown/hidden."
 msgstr ""
 "Ceadaíonn sé seo comhéadan úsáideora dúchais na n-éifeachtaí a thaispeáint/a "
 "cheilt."
 
-#: src/contents/ui/PreferencesSheet.qml:713
+#: src/contents/ui/PreferencesSheet.qml:712
 msgid "Update frequency"
 msgstr "Minicíocht nuashonraithe"
 
-#: src/contents/ui/PreferencesSheet.qml:714
+#: src/contents/ui/PreferencesSheet.qml:713
 msgid "Related to LV2 plugins."
 msgstr "Gaolmhar le breiseáin LV2."
 

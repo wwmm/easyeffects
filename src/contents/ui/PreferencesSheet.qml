@@ -237,6 +237,21 @@ KirigamiSettings.ConfigurationView {
                 }
 
                 EeSpinBox {
+                    label: i18n("Level meters frame rate cap") // qmllint disable
+                    subtitle: i18n("Maximum level meter update rate.") // qmllint disable
+                    maximumLineCount: -1
+                    from: DbMain.getMinValue("levelMetersFpsCap")
+                    to: DbMain.getMaxValue("levelMetersFpsCap")
+                    value: DbMain.levelMetersFpsCap
+                    decimals: 0
+                    stepSize: 1
+                    unit: Units.fps
+                    onValueModified: v => {
+                        DbMain.levelMetersFpsCap = v;
+                    }
+                }
+
+                EeSpinBox {
                     label: i18n("Level meters label") // qmllint disable
                     subtitle: i18n("The time it takes for the level meter labels to be updated when the current level is below the last highest one.") // qmllint disable
                     maximumLineCount: -1
@@ -274,22 +289,6 @@ KirigamiSettings.ConfigurationView {
                     enabled: DbMain.enableLevelMetersAnimation
                     onValueModified: v => {
                         DbMain.levelMetersAnimationDuration = v;
-                    }
-                }
-
-                EeSpinBox {
-                    label: i18n("Level meters animation frame rate cap") // qmllint disable
-                    subtitle: i18n("Maximum level meter update rate when animations are enabled.") // qmllint disable
-                    maximumLineCount: -1
-                    from: DbMain.getMinValue("levelMetersAnimationFpsCap")
-                    to: DbMain.getMaxValue("levelMetersAnimationFpsCap")
-                    value: DbMain.levelMetersAnimationFpsCap
-                    decimals: 0
-                    stepSize: 1
-                    unit: Units.fps
-                    enabled: DbMain.enableLevelMetersAnimation
-                    onValueModified: v => {
-                        DbMain.levelMetersAnimationFpsCap = v;
                     }
                 }
             }

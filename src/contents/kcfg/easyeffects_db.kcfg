@@ -223,11 +223,11 @@
             <max>10000</max>
             <default>300</default>
         </entry>
-        <entry name="levelMetersAnimationFpsCap" type="Int">
-            <label>Maximum level meter update rate when animations are enabled.</label>
+        <entry name="levelMetersFpsCap" type="Int">
+            <label>Maximum level meter update rate.</label>
             <min>1</min>
             <max>240</max>
-            <default>30</default>
+            <default>60</default>
         </entry>
     </group>
     <group name="NativePluginWindow">
