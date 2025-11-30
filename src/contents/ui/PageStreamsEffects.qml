@@ -557,6 +557,9 @@ Kirigami.Page {
                 FrameAnimation {
                     id: footerFrameAnimation
 
+                    property var timeDiff: 0
+                    readonly property real invFps: 1.0 / DbMain.levelMetersFpsCap
+
                     running: pageStreamsEffects.pageType !== 2 && appWindow.visible && pipelineInstance.filtersLinked // qmllint disable
 
                     onRunningChanged: {
@@ -564,6 +567,14 @@ Kirigami.Page {
                     }
 
                     onTriggered: {
+                        if (footerFrameAnimation.timeDiff < invFps) {
+                            footerFrameAnimation.timeDiff += footerFrameAnimation.smoothFrameTime;
+
+                            return;
+                        }
+
+                        footerFrameAnimation.timeDiff = 0;
+
                         let left = Number(pageStreamsEffects.pipelineInstance.getOutputLevelLeft());
                         let right = Number(pageStreamsEffects.pipelineInstance.getOutputLevelRight());
                         if (Number.isNaN(left) || left < pageStreamsEffects.minLeftLevel)
