@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-29 23:20-0300\n"
-"PO-Revision-Date: 2025-07-20 18:39+0000\n"
-"Last-Translator: atahanacar <atahanacar@gmx.com>\n"
+"PO-Revision-Date: 2025-11-30 19:51+0000\n"
+"Last-Translator: Cagatay Coban <cagataycobande@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
 "tr/>\n"
 "Language: tr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.13-dev\n"
+"X-Generator: Weblate 5.15-dev\n"
 
 #: src/autostart.cpp:89
 msgid ""
@@ -86,7 +86,7 @@ msgstr ""
 
 #: src/command_line_parser.cpp:52
 msgid "Enable debug messages."
-msgstr ""
+msgstr "Hata ayıklama mesajlarını aç."
 
 #: src/command_line_parser.cpp:126
 msgid "Must specify preset type: input/output."
