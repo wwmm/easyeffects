@@ -23,10 +23,10 @@ Kirigami.ScrollablePage {
         if (!pluginBackend)
             return;
 
-        inputOutputLevels.inputLevelLeft = equalizerPage.pluginBackend.getInputLevelLeft();
-        inputOutputLevels.inputLevelRight = equalizerPage.pluginBackend.getInputLevelRight();
-        inputOutputLevels.outputLevelLeft = equalizerPage.pluginBackend.getOutputLevelLeft();
-        inputOutputLevels.outputLevelRight = equalizerPage.pluginBackend.getOutputLevelRight();
+        inputOutputLevels.setInputLevelLeft(pluginBackend.getInputLevelLeft());
+        inputOutputLevels.setInputLevelRight(pluginBackend.getInputLevelRight());
+        inputOutputLevels.setOutputLevelLeft(pluginBackend.getOutputLevelLeft());
+        inputOutputLevels.setOutputLevelRight(pluginBackend.getOutputLevelRight());
     }
 
     Component.onCompleted: {

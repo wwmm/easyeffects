@@ -14,17 +14,17 @@ Kirigami.ScrollablePage {
     property var pluginBackend
 
     function updateMeters() {
-        if (!pluginBackend)
+        if (!stereoToolsPage.pluginBackend)
             return;
 
-        inputOutputLevels.inputLevelLeft = pluginBackend.getInputLevelLeft();
-        inputOutputLevels.inputLevelRight = pluginBackend.getInputLevelRight();
-        inputOutputLevels.outputLevelLeft = pluginBackend.getOutputLevelLeft();
-        inputOutputLevels.outputLevelRight = pluginBackend.getOutputLevelRight();
+        inputOutputLevels.setInputLevelLeft(stereoToolsPage.pluginBackend.getInputLevelLeft());
+        inputOutputLevels.setInputLevelRight(stereoToolsPage.pluginBackend.getInputLevelRight());
+        inputOutputLevels.setOutputLevelLeft(stereoToolsPage.pluginBackend.getOutputLevelLeft());
+        inputOutputLevels.setOutputLevelRight(stereoToolsPage.pluginBackend.getOutputLevelRight());
     }
 
     Component.onCompleted: {
-        pluginBackend = pipelineInstance.getPluginInstance(name);
+        stereoToolsPage.pluginBackend = stereoToolsPage.pipelineInstance.getPluginInstance(name);
     }
 
     ColumnLayout {

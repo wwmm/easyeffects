@@ -18,10 +18,10 @@ Kirigami.ScrollablePage {
         if (!pluginBackend)
             return;
 
-        inputOutputLevels.inputLevelLeft = pluginBackend.getInputLevelLeft();
-        inputOutputLevels.inputLevelRight = pluginBackend.getInputLevelRight();
-        inputOutputLevels.outputLevelLeft = pluginBackend.getOutputLevelLeft();
-        inputOutputLevels.outputLevelRight = pluginBackend.getOutputLevelRight();
+        inputOutputLevels.setInputLevelLeft(crystalizerPage.pluginBackend.getInputLevelLeft());
+        inputOutputLevels.setInputLevelRight(crystalizerPage.pluginBackend.getInputLevelRight());
+        inputOutputLevels.setOutputLevelLeft(crystalizerPage.pluginBackend.getOutputLevelLeft());
+        inputOutputLevels.setOutputLevelRight(crystalizerPage.pluginBackend.getOutputLevelRight());
 
         const newData = pluginBackend.getAdaptiveIntensities();
 

@@ -19,22 +19,22 @@ Kirigami.ScrollablePage {
         if (!pluginBackend)
             return;
 
-        inputOutputLevels.inputLevelLeft = pluginBackend.getInputLevelLeft();
-        inputOutputLevels.inputLevelRight = pluginBackend.getInputLevelRight();
-        inputOutputLevels.outputLevelLeft = pluginBackend.getOutputLevelLeft();
-        inputOutputLevels.outputLevelRight = pluginBackend.getOutputLevelRight();
-        reductionLevelLeft.value = pluginBackend.getReductionLevelLeft();
-        reductionLevelRight.value = pluginBackend.getReductionLevelRight();
-        sideChainLevelLeft.value = pluginBackend.getSideChainLevelLeft();
-        sideChainLevelRight.value = pluginBackend.getSideChainLevelRight();
-        curveLevelLeft.value = pluginBackend.getCurveLevelLeft();
-        curveLevelRight.value = pluginBackend.getCurveLevelRight();
-        envelopeLevelLeft.value = pluginBackend.getEnvelopeLevelLeft();
-        envelopeLevelRight.value = pluginBackend.getEnvelopeLevelRight();
-        attackZoneStart.value = pluginBackend.getAttackZoneStart();
-        attackThreshold.value = pluginBackend.getAttackThreshold();
-        releaseZoneStart.value = pluginBackend.getReleaseZoneStart();
-        releaseThreshold.value = pluginBackend.getReleaseThreshold();
+        inputOutputLevels.setInputLevelLeft(gatePage.pluginBackend.getInputLevelLeft());
+        inputOutputLevels.setInputLevelRight(gatePage.pluginBackend.getInputLevelRight());
+        inputOutputLevels.setOutputLevelLeft(gatePage.pluginBackend.getOutputLevelLeft());
+        inputOutputLevels.setOutputLevelRight(gatePage.pluginBackend.getOutputLevelRight());
+        reductionLevelLeft.setValue(gatePage.pluginBackend.getReductionLevelLeft());
+        reductionLevelRight.setValue(gatePage.pluginBackend.getReductionLevelRight());
+        sideChainLevelLeft.setValue(gatePage.pluginBackend.getSideChainLevelLeft());
+        sideChainLevelRight.setValue(gatePage.pluginBackend.getSideChainLevelRight());
+        curveLevelLeft.setValue(gatePage.pluginBackend.getCurveLevelLeft());
+        curveLevelRight.setValue(gatePage.pluginBackend.getCurveLevelRight());
+        envelopeLevelLeft.setValue(gatePage.pluginBackend.getEnvelopeLevelLeft());
+        envelopeLevelRight.setValue(gatePage.pluginBackend.getEnvelopeLevelRight());
+        attackZoneStart.setValue(gatePage.pluginBackend.getAttackZoneStart());
+        attackThreshold.setValue(gatePage.pluginBackend.getAttackThreshold());
+        releaseZoneStart.setValue(gatePage.pluginBackend.getReleaseZoneStart());
+        releaseThreshold.setValue(gatePage.pluginBackend.getReleaseThreshold());
     }
 
     Component.onCompleted: {
@@ -651,7 +651,6 @@ Kirigami.ScrollablePage {
                         implicitHeight: parent.radius
                         from: Common.minimumDecibelLevel
                         to: 0
-                        value: 0
                         decimals: 0
                         topToBottom: true
                     }
@@ -664,7 +663,6 @@ Kirigami.ScrollablePage {
                         implicitHeight: parent.radius
                         from: Common.minimumDecibelLevel
                         to: 0
-                        value: 0
                         decimals: 0
                         topToBottom: true
                     }
@@ -678,7 +676,6 @@ Kirigami.ScrollablePage {
                         implicitHeight: parent.radius
                         from: Common.minimumDecibelLevel
                         to: 24
-                        value: 0
                         decimals: 0
                     }
 
@@ -690,7 +687,6 @@ Kirigami.ScrollablePage {
                         implicitHeight: parent.radius
                         from: Common.minimumDecibelLevel
                         to: 24
-                        value: 0
                         decimals: 0
                     }
 
@@ -758,7 +754,6 @@ Kirigami.ScrollablePage {
                         implicitHeight: parent.radius
                         from: Common.minimumDecibelLevel
                         to: 24
-                        value: 0
                         decimals: 0
                     }
 
@@ -770,7 +765,6 @@ Kirigami.ScrollablePage {
                         implicitHeight: parent.radius
                         from: Common.minimumDecibelLevel
                         to: 24
-                        value: 0
                         decimals: 0
                     }
 
@@ -783,7 +777,6 @@ Kirigami.ScrollablePage {
                         implicitHeight: parent.radius
                         from: Common.minimumDecibelLevel
                         to: 24
-                        value: 0
                         decimals: 0
                     }
 
@@ -795,7 +788,6 @@ Kirigami.ScrollablePage {
                         implicitHeight: parent.radius
                         from: Common.minimumDecibelLevel
                         to: 24
-                        value: 0
                         decimals: 0
                     }
 
@@ -863,7 +855,6 @@ Kirigami.ScrollablePage {
                         implicitHeight: parent.radius
                         from: Common.minimumDecibelLevel
                         to: 0
-                        value: 0
                         decimals: 0
                     }
 
@@ -875,7 +866,6 @@ Kirigami.ScrollablePage {
                         implicitHeight: parent.radius
                         from: Common.minimumDecibelLevel
                         to: 0
-                        value: 0
                         decimals: 0
                     }
 
@@ -888,7 +878,6 @@ Kirigami.ScrollablePage {
                         implicitHeight: parent.radius
                         from: Common.minimumDecibelLevel
                         to: 0
-                        value: 0
                         decimals: 0
                     }
 
@@ -900,7 +889,6 @@ Kirigami.ScrollablePage {
                         implicitHeight: parent.radius
                         from: Common.minimumDecibelLevel
                         to: 0
-                        value: 0
                         decimals: 0
                     }
 

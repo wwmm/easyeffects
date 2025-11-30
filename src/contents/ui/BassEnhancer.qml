@@ -17,11 +17,11 @@ Kirigami.ScrollablePage {
         if (!pluginBackend)
             return;
 
-        inputOutputLevels.inputLevelLeft = pluginBackend.getInputLevelLeft();
-        inputOutputLevels.inputLevelRight = pluginBackend.getInputLevelRight();
-        inputOutputLevels.outputLevelLeft = pluginBackend.getOutputLevelLeft();
-        inputOutputLevels.outputLevelRight = pluginBackend.getOutputLevelRight();
-        harmonicsLevel.value = pluginBackend.getHarmonicsLevel();
+        inputOutputLevels.setInputLevelLeft(pluginBackend.getInputLevelLeft());
+        inputOutputLevels.setInputLevelRight(pluginBackend.getInputLevelRight());
+        inputOutputLevels.setOutputLevelLeft(pluginBackend.getOutputLevelLeft());
+        inputOutputLevels.setOutputLevelRight(pluginBackend.getOutputLevelRight());
+        harmonicsLevel.setValue(pluginBackend.getHarmonicsLevel());
     }
 
     Component.onCompleted: {
@@ -167,7 +167,6 @@ Kirigami.ScrollablePage {
                     label: i18n("Harmonics")// qmllint disable
                     from: Common.minimumDecibelLevel
                     to: 10
-                    value: 0
                     decimals: 0
                 }
             }

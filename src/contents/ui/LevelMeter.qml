@@ -14,22 +14,22 @@ Kirigami.ScrollablePage {
     property var pluginBackend
 
     function updateMeters() {
-        if (!pluginBackend)
+        if (!levelMeterPage.pluginBackend)
             return;
 
-        momentary.value = pluginBackend.getMomentaryLevel();
-        shortterm.value = pluginBackend.getShorttermLevel();
-        integrated.value = pluginBackend.getIntegratedLevel();
-        relative.value = pluginBackend.getRelativeLevel();
-        range.value = pluginBackend.getRangeLevel();
-        truePeakL.value = pluginBackend.getTruePeakL();
-        truePeakR.value = pluginBackend.getTruePeakR();
-        inputL.value = pluginBackend.getInputLevelLeft();
-        inputR.value = pluginBackend.getInputLevelRight();
+        momentary.setValue(levelMeterPage.pluginBackend.getMomentaryLevel());
+        shortterm.setValue(levelMeterPage.pluginBackend.getShorttermLevel());
+        integrated.setValue(levelMeterPage.pluginBackend.getIntegratedLevel());
+        relative.setValue(levelMeterPage.pluginBackend.getRelativeLevel());
+        range.setValue(levelMeterPage.pluginBackend.getRangeLevel());
+        truePeakL.setValue(levelMeterPage.pluginBackend.getTruePeakL());
+        truePeakR.setValue(levelMeterPage.pluginBackend.getTruePeakR());
+        inputL.setValue(levelMeterPage.pluginBackend.getInputLevelLeft());
+        inputR.setValue(levelMeterPage.pluginBackend.getInputLevelRight());
     }
 
     Component.onCompleted: {
-        pluginBackend = pipelineInstance.getPluginInstance(name);
+        levelMeterPage.pluginBackend = levelMeterPage.pipelineInstance.getPluginInstance(name);
     }
 
     ColumnLayout {
@@ -61,7 +61,6 @@ Kirigami.ScrollablePage {
                             unit: Units.dB
                             from: Common.minimumDecibelLevel
                             to: 10
-                            value: 0
                             decimals: 1
                         }
 
@@ -72,7 +71,6 @@ Kirigami.ScrollablePage {
                             unit: Units.dB
                             from: Common.minimumDecibelLevel
                             to: 10
-                            value: 0
                             decimals: 1
                         }
 
@@ -102,7 +100,6 @@ Kirigami.ScrollablePage {
                             unit: Units.dB
                             from: Common.minimumDecibelLevel
                             to: 10
-                            value: 0
                             decimals: 1
                         }
 
@@ -113,7 +110,6 @@ Kirigami.ScrollablePage {
                             unit: Units.dB
                             from: Common.minimumDecibelLevel
                             to: 10
-                            value: 0
                             decimals: 1
                         }
 
@@ -144,7 +140,6 @@ Kirigami.ScrollablePage {
                         unit: Units.lufs
                         from: Common.minimumDecibelLevel
                         to: 10
-                        value: 0
                         decimals: 1
                     }
 
@@ -155,7 +150,6 @@ Kirigami.ScrollablePage {
                         unit: Units.lufs
                         from: Common.minimumDecibelLevel
                         to: 10
-                        value: 0
                         decimals: 1
                     }
 
@@ -166,7 +160,6 @@ Kirigami.ScrollablePage {
                         unit: Units.lufs
                         from: Common.minimumDecibelLevel
                         to: 10
-                        value: 0
                         decimals: 1
                     }
 
@@ -177,7 +170,6 @@ Kirigami.ScrollablePage {
                         unit: Units.lufs
                         from: Common.minimumDecibelLevel
                         to: 10
-                        value: 0
                         decimals: 1
                     }
 
@@ -188,7 +180,6 @@ Kirigami.ScrollablePage {
                         unit: Units.lu
                         from: 0
                         to: 50
-                        value: 0
                         decimals: 1
                     }
 

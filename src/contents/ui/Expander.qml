@@ -19,18 +19,18 @@ Kirigami.ScrollablePage {
         if (!pluginBackend)
             return;
 
-        inputOutputLevels.inputLevelLeft = expanderPage.pluginBackend.getInputLevelLeft();
-        inputOutputLevels.inputLevelRight = expanderPage.pluginBackend.getInputLevelRight();
-        inputOutputLevels.outputLevelLeft = expanderPage.pluginBackend.getOutputLevelLeft();
-        inputOutputLevels.outputLevelRight = expanderPage.pluginBackend.getOutputLevelRight();
-        reductionLevelLeft.value = expanderPage.pluginBackend.getReductionLevelLeft();
-        reductionLevelRight.value = expanderPage.pluginBackend.getReductionLevelRight();
-        sideChainLevelLeft.value = expanderPage.pluginBackend.getSideChainLevelLeft();
-        sideChainLevelRight.value = expanderPage.pluginBackend.getSideChainLevelRight();
-        curveLevelLeft.value = expanderPage.pluginBackend.getCurveLevelLeft();
-        curveLevelRight.value = expanderPage.pluginBackend.getCurveLevelRight();
-        envelopeLevelLeft.value = expanderPage.pluginBackend.getEnvelopeLevelLeft();
-        envelopeLevelRight.value = expanderPage.pluginBackend.getEnvelopeLevelRight();
+        inputOutputLevels.setInputLevelLeft(expanderPage.pluginBackend.getInputLevelLeft());
+        inputOutputLevels.setInputLevelRight(expanderPage.pluginBackend.getInputLevelRight());
+        inputOutputLevels.setOutputLevelLeft(expanderPage.pluginBackend.getOutputLevelLeft());
+        inputOutputLevels.setOutputLevelRight(expanderPage.pluginBackend.getOutputLevelRight());
+        reductionLevelLeft.setValue(expanderPage.pluginBackend.getReductionLevelLeft());
+        reductionLevelRight.setValue(expanderPage.pluginBackend.getReductionLevelRight());
+        sideChainLevelLeft.setValue(expanderPage.pluginBackend.getSideChainLevelLeft());
+        sideChainLevelRight.setValue(expanderPage.pluginBackend.getSideChainLevelRight());
+        curveLevelLeft.setValue(expanderPage.pluginBackend.getCurveLevelLeft());
+        curveLevelRight.setValue(expanderPage.pluginBackend.getCurveLevelRight());
+        envelopeLevelLeft.setValue(expanderPage.pluginBackend.getEnvelopeLevelLeft());
+        envelopeLevelRight.setValue(expanderPage.pluginBackend.getEnvelopeLevelRight());
     }
 
     Component.onCompleted: {
@@ -625,7 +625,6 @@ Kirigami.ScrollablePage {
                         implicitHeight: parent.radius
                         from: Common.minimumDecibelLevel
                         to: 60
-                        value: 0
                         decimals: 0
                     }
 
@@ -637,7 +636,6 @@ Kirigami.ScrollablePage {
                         implicitHeight: parent.radius
                         from: Common.minimumDecibelLevel
                         to: 60
-                        value: 0
                         decimals: 0
                     }
 
@@ -650,7 +648,6 @@ Kirigami.ScrollablePage {
                         implicitHeight: parent.radius
                         from: Common.minimumDecibelLevel
                         to: 36
-                        value: 0
                         decimals: 0
                     }
 
@@ -662,7 +659,6 @@ Kirigami.ScrollablePage {
                         implicitHeight: parent.radius
                         from: Common.minimumDecibelLevel
                         to: 36
-                        value: 0
                         decimals: 0
                     }
 
@@ -730,7 +726,6 @@ Kirigami.ScrollablePage {
                         implicitHeight: parent.radius
                         from: Common.minimumDecibelLevel
                         to: 36
-                        value: 0
                         decimals: 0
                     }
 
@@ -742,7 +737,6 @@ Kirigami.ScrollablePage {
                         implicitHeight: parent.radius
                         from: Common.minimumDecibelLevel
                         to: 36
-                        value: 0
                         decimals: 0
                     }
 
@@ -755,7 +749,6 @@ Kirigami.ScrollablePage {
                         implicitHeight: parent.radius
                         from: Common.minimumDecibelLevel
                         to: 36
-                        value: 0
                         decimals: 0
                     }
 
@@ -767,7 +760,6 @@ Kirigami.ScrollablePage {
                         implicitHeight: parent.radius
                         from: Common.minimumDecibelLevel
                         to: 36
-                        value: 0
                         decimals: 0
                     }
 
