@@ -33,7 +33,7 @@ Rectangle {
     Layout.fillWidth: true
     Layout.margins: Kirigami.Units.smallSpacing
     Kirigami.Theme.colorSet: Kirigami.Theme.View
-    implicitHeight: labelsLayout.implicitHeight //+ Kirigami.Units.smallSpacing * 2
+    implicitHeight: labelsItem.implicitHeight
     color: Kirigami.Theme.neutralBackgroundColor
     radius: 0
     clip: true
@@ -141,10 +141,12 @@ Rectangle {
         }
     }
 
-    RowLayout {
-        id: labelsLayout
+    Item {
+        id: labelsItem
 
         anchors.fill: parent
+
+        implicitHeight: valueLabel.implicitHeight
 
         Label {
             Layout.fillWidth: true
@@ -156,6 +158,12 @@ Rectangle {
             color: control.enabled ? Kirigami.Theme.textColor : Kirigami.Theme.disabledTextColor
             wrapMode: control.wrapMode
             maximumLineCount: 1
+
+            anchors {
+                left: parent.left
+                verticalCenter: parent.verticalCenter
+                leftMargin: Kirigami.Units.smallSpacing
+            }
         }
 
         Label {
@@ -169,6 +177,12 @@ Rectangle {
             color: control.enabled ? Kirigami.Theme.textColor : Kirigami.Theme.disabledTextColor
             wrapMode: control.wrapMode
             maximumLineCount: 1
+
+            anchors {
+                right: parent.right
+                verticalCenter: parent.verticalCenter
+                rightMargin: Kirigami.Units.smallSpacing
+            }
         }
     }
 
