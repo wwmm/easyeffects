@@ -58,15 +58,15 @@ Rectangle {
         }
 
         const normalizedClampedValue = (control.clampedValue - control.from) / (control.to - control.from);
-        const normalizedClampedValueDB = (Common.dbToLinear(control.clampedValue) - control.liFrom) / (control.liTo - control.liFrom);
+        const normalizedClampedValueLinear = (Common.dbToLinear(control.clampedValue) - control.liFrom) / (control.liTo - control.liFrom);
 
         const rlNormalizedClampedValue = (control.clampedValue - control.to) / (control.from - control.to);
-        const rlNormalizedClampedValueDB = (Common.dbToLinear(control.clampedValue) - control.liTo) / (control.liFrom - control.liTo);
+        const rlNormalizedClampedValueLinear = (Common.dbToLinear(control.clampedValue) - control.liTo) / (control.liFrom - control.liTo);
 
         // level rect
 
         if (control.convertDecibelToLinear) {
-            levelScale.xScale = control.rightToLeft === false ? normalizedClampedValueDB : rlNormalizedClampedValueDB;
+            levelScale.xScale = control.rightToLeft === false ? normalizedClampedValueLinear : rlNormalizedClampedValueLinear;
         } else {
             levelScale.xScale = control.rightToLeft === false ? normalizedClampedValue : rlNormalizedClampedValue;
         }
