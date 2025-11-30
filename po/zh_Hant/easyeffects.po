@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-29 15:12-0300\n"
-"PO-Revision-Date: 2025-11-29 08:00+0000\n"
+"PO-Revision-Date: 2025-11-30 02:24+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hant/>\n"
@@ -2114,7 +2114,7 @@ msgstr "當前等級低於最後最高等級時，更新等級量表標籤所需
 
 #: src/contents/ui/PreferencesSheet.qml:256
 msgid "Level meters animation duration"
-msgstr ""
+msgstr "等級量表動畫持續時間"
 
 #: src/contents/ui/PreferencesSheet.qml:294
 msgid "Audio delay compensation"
