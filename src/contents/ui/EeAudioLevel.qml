@@ -10,8 +10,8 @@ Rectangle {
     property int decimals: 2
     property bool convertDecibelToLinear: false
     property bool topToBottom: false
-    readonly property real dbFrom: Common.dbToLinear(from)
-    readonly property real dbTo: Common.dbToLinear(to)
+    readonly property real liFrom: Common.dbToLinear(from)
+    readonly property real liTo: Common.dbToLinear(to)
     readonly property real decimalFactor: Math.pow(10, -decimals)
     property real clampedValue: 0
     property real displayValue: 0
@@ -47,7 +47,7 @@ Rectangle {
         // level rect
 
         if (root.convertDecibelToLinear) {
-            levelScale.yScale = root.topToBottom === false ? (Common.dbToLinear(root.clampedValue) - root.dbFrom) / (root.dbTo - root.dbFrom) : (Common.dbToLinear(root.clampedValue) - root.dbTo) / (root.dbFrom - root.dbTo);
+            levelScale.yScale = root.topToBottom === false ? (Common.dbToLinear(root.clampedValue) - root.liFrom) / (root.liTo - root.liFrom) : (Common.dbToLinear(root.clampedValue) - root.liTo) / (root.liFrom - root.liTo);
         } else {
             levelScale.yScale = root.topToBottom === false ? (root.clampedValue - root.from) / (root.to - root.from) : (root.clampedValue - root.to) / (root.from - root.to);
         }
@@ -57,11 +57,11 @@ Rectangle {
 
             //hist rect
 
-            const dbFrac = (Common.dbToLinear(root.displayValue) - root.dbFrom) / (root.dbTo - root.dbFrom);
+            const liFrac = (Common.dbToLinear(root.displayValue) - root.liFrom) / (root.liTo - root.liFrom);
             const frac = (root.displayValue - root.from) / (root.to - root.from);
 
             if (root.convertDecibelToLinear) {
-                histScale.y = root.height * (1.0 - dbFrac);
+                histScale.y = root.height * (1.0 - liFrac);
             } else {
                 histScale.y = root.height * (1.0 - frac);
             }

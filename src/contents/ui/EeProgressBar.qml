@@ -19,8 +19,8 @@ Rectangle {
     property bool convertDecibelToLinear: false
     property real clampedValue: 0
     property real displayValue: 0
-    readonly property real dbFrom: Common.dbToLinear(from)
-    readonly property real dbTo: Common.dbToLinear(to)
+    readonly property real liFrom: Common.dbToLinear(from)
+    readonly property real liTo: Common.dbToLinear(to)
     readonly property real decimalFactor: Math.pow(10, -decimals)
 
     readonly property string unitSuffix: if (!Common.isEmpty(control.unit)) {
@@ -58,10 +58,10 @@ Rectangle {
         }
 
         const normalizedClampedValue = (control.clampedValue - control.from) / (control.to - control.from);
-        const normalizedClampedValueDB = (Common.dbToLinear(control.clampedValue) - control.dbFrom) / (control.dbTo - control.dbFrom);
+        const normalizedClampedValueDB = (Common.dbToLinear(control.clampedValue) - control.liFrom) / (control.liTo - control.liFrom);
 
         const rlNormalizedClampedValue = (control.clampedValue - control.to) / (control.from - control.to);
-        const rlNormalizedClampedValueDB = (Common.dbToLinear(control.clampedValue) - control.dbTo) / (control.dbFrom - control.dbTo);
+        const rlNormalizedClampedValueDB = (Common.dbToLinear(control.clampedValue) - control.liTo) / (control.liFrom - control.liTo);
 
         // level rect
 
@@ -75,15 +75,15 @@ Rectangle {
             control.displayValue = newDisplayValue;
 
             const normalizedDisplayValue = (control.displayValue - control.from) / (control.to - control.from);
-            const normalizedDisplayValueDB = (Common.dbToLinear(control.displayValue) - control.dbFrom) / (control.dbTo - control.dbFrom);
+            const normalizedDisplayValueLinear = (Common.dbToLinear(control.displayValue) - control.liFrom) / (control.liTo - control.liFrom);
 
             const rlNormalizedDisplayValue = (control.displayValue - control.to) / (control.from - control.to);
-            const rlNormalizedDisplayValueDB = (Common.dbToLinear(control.displayValue) - control.dbTo) / (control.dbFrom - control.dbTo);
+            const rlNormalizedDisplayValueLinear = (Common.dbToLinear(control.displayValue) - control.liTo) / (control.liFrom - control.liTo);
 
             // hist rect
 
             if (control.convertDecibelToLinear) {
-                histScale.x = control.rightToLeft === false ? normalizedDisplayValueDB * control.width : control.width - rlNormalizedDisplayValueDB * control.width;
+                histScale.x = control.rightToLeft === false ? normalizedDisplayValueLinear * control.width : control.width - rlNormalizedDisplayValueLinear * control.width;
             } else {
                 histScale.x = control.rightToLeft === false ? normalizedDisplayValue * control.width : control.width - rlNormalizedDisplayValue * control.width;
             }
