@@ -4,7 +4,7 @@ import QtQuick.Layouts
 import "Common.js" as Common
 import org.kde.kirigami as Kirigami
 
-Control {
+Rectangle {
     id: control
 
     property real from: 0
@@ -30,19 +30,13 @@ Control {
         return "";
     }
 
-    Kirigami.Theme.colorSet: Kirigami.Theme.View
-
-    implicitWidth: contentItem.implicitWidth + leftPadding + rightPadding
-    implicitHeight: contentItem.implicitHeight + topPadding + bottomPadding
-
-    leftPadding: Kirigami.Units.largeSpacing
-    rightPadding: Kirigami.Units.largeSpacing
-    topPadding: Kirigami.Units.smallSpacing
-    bottomPadding: Kirigami.Units.smallSpacing
-
-    background: null
-
     Layout.fillWidth: true
+    Layout.margins: Kirigami.Units.smallSpacing
+    Kirigami.Theme.colorSet: Kirigami.Theme.View
+    implicitHeight: labelsLayout.implicitHeight //+ Kirigami.Units.smallSpacing * 2
+    color: Kirigami.Theme.neutralBackgroundColor
+    radius: 0
+    clip: true
 
     function setValue(value) {
         const newC = Common.clamp(value, control.from, control.to);
@@ -87,9 +81,9 @@ Control {
             // hist rect
 
             if (control.convertDecibelToLinear) {
-                histScale.x = control.rightToLeft === false ? normalizedDisplayValueDB * item.width : item.width - rlNormalizedDisplayValueDB * item.width;
+                histScale.x = control.rightToLeft === false ? normalizedDisplayValueDB * control.width : control.width - rlNormalizedDisplayValueDB * control.width;
             } else {
-                histScale.x = control.rightToLeft === false ? normalizedDisplayValue * item.width : item.width - rlNormalizedDisplayValue * item.width;
+                histScale.x = control.rightToLeft === false ? normalizedDisplayValue * control.width : control.width - rlNormalizedDisplayValue * control.width;
             }
 
             //label
@@ -98,90 +92,83 @@ Control {
         }
     }
 
-    contentItem: Rectangle {
-        id: item
+    Rectangle {
+        id: levelRect
 
-        color: Kirigami.Theme.neutralBackgroundColor
+        width: parent.width
+        height: parent.height
+        color: Kirigami.ColorUtils.tintWithAlpha(Kirigami.Theme.backgroundColor, Kirigami.Theme.highlightColor, 0.3)
+
+        transform: Scale {
+            id: levelScale
+
+            origin.x: control.rightToLeft === false ? 0 : levelRect.width
+
+            Behavior on xScale {
+                enabled: DbMain.enableLevelMetersAnimation
+
+                NumberAnimation {
+                    duration: DbMain.levelMetersAnimationDuration
+                    easing.type: Easing.OutCubic
+                }
+            }
+        }
+    }
+
+    Rectangle {
+        id: histRect
+
+        width: Kirigami.Units.smallSpacing * 0.5
         radius: Kirigami.Units.cornerRadius
+        color: levelScale.xScale < 0.85 ? Kirigami.Theme.neutralTextColor : Kirigami.Theme.negativeTextColor
 
-        implicitHeight: Kirigami.Units.largeSpacing * 3
+        transform: Translate {
+            id: histScale
 
-        Rectangle {
-            id: levelRect
+            Behavior on x {
+                enabled: DbMain.enableLevelMetersAnimation
 
-            width: parent.width
-            height: parent.height
-            color: Kirigami.ColorUtils.tintWithAlpha(Kirigami.Theme.backgroundColor, Kirigami.Theme.highlightColor, 0.3)
-
-            transform: Scale {
-                id: levelScale
-
-                origin.x: control.rightToLeft === false ? 0 : levelRect.width
-
-                Behavior on xScale {
-                    enabled: DbMain.enableLevelMetersAnimation
-
-                    NumberAnimation {
-                        duration: DbMain.levelMetersAnimationDuration
-                        easing.type: Easing.OutCubic
-                    }
+                NumberAnimation {
+                    duration: DbMain.levelMetersAnimationDuration
+                    easing.type: Easing.OutCubic
                 }
             }
         }
 
-        Rectangle {
-            id: histRect
+        anchors {
+            bottom: parent.bottom
+            top: parent.top
+        }
+    }
 
-            width: Kirigami.Units.smallSpacing * 0.5
-            radius: Kirigami.Units.cornerRadius
-            color: levelScale.xScale < 0.85 ? Kirigami.Theme.neutralTextColor : Kirigami.Theme.negativeTextColor
+    RowLayout {
+        id: labelsLayout
 
-            transform: Translate {
-                id: histScale
+        anchors.fill: parent
 
-                Behavior on x {
-                    enabled: DbMain.enableLevelMetersAnimation
-
-                    NumberAnimation {
-                        duration: DbMain.levelMetersAnimationDuration
-                        easing.type: Easing.OutCubic
-                    }
-                }
-            }
-
-            anchors {
-                bottom: parent.bottom
-                top: parent.top
-            }
+        Label {
+            Layout.fillWidth: true
+            Layout.leftMargin: Kirigami.Units.smallSpacing
+            horizontalAlignment: Qt.AlignLeft
+            verticalAlignment: Qt.AlignVCenter
+            text: control.label
+            elide: control.elide
+            color: control.enabled ? Kirigami.Theme.textColor : Kirigami.Theme.disabledTextColor
+            wrapMode: control.wrapMode
+            maximumLineCount: 1
         }
 
-        RowLayout {
-            anchors.fill: parent
+        Label {
+            id: valueLabel
 
-            Label {
-                Layout.fillWidth: true
-                Layout.leftMargin: Kirigami.Units.smallSpacing
-                horizontalAlignment: Qt.AlignLeft
-                verticalAlignment: Qt.AlignVCenter
-                text: control.label
-                elide: control.elide
-                color: control.enabled ? Kirigami.Theme.textColor : Kirigami.Theme.disabledTextColor
-                wrapMode: control.wrapMode
-                maximumLineCount: 1
-            }
-
-            Label {
-                id: valueLabel
-
-                Layout.rightMargin: Kirigami.Units.smallSpacing
-                horizontalAlignment: Qt.AlignRight
-                verticalAlignment: Qt.AlignVCenter
-                text: ""
-                elide: control.elide
-                color: control.enabled ? Kirigami.Theme.textColor : Kirigami.Theme.disabledTextColor
-                wrapMode: control.wrapMode
-                maximumLineCount: 1
-            }
+            Layout.rightMargin: Kirigami.Units.smallSpacing
+            horizontalAlignment: Qt.AlignRight
+            verticalAlignment: Qt.AlignVCenter
+            text: ""
+            elide: control.elide
+            color: control.enabled ? Kirigami.Theme.textColor : Kirigami.Theme.disabledTextColor
+            wrapMode: control.wrapMode
+            maximumLineCount: 1
         }
     }
 
