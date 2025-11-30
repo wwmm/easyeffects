@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-29 15:12-0300\n"
-"PO-Revision-Date: 2025-11-30 02:24+0000\n"
+"PO-Revision-Date: 2025-11-30 19:51+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -505,11 +505,11 @@ msgstr "Тип"
 
 #: src/contents/ui/Compressor.qml:248
 msgid "Feed-forward"
-msgstr "Прямая связь"
+msgstr "Прямая подача"
 
 #: src/contents/ui/Compressor.qml:248
 msgid "Feed-back"
-msgstr "Обратная связь"
+msgstr "Обратная подача"
 
 #: src/contents/ui/Compressor.qml:248 src/contents/ui/Expander.qml:208
 #: src/contents/ui/Gate.qml:226 src/contents/ui/Limiter.qml:199
@@ -2278,7 +2278,7 @@ msgid ""
 msgstr ""
 "Обработка уведомлений системы может вызывать потрескивание звука, поэтому "
 "лучше игнорировать их, но для некоторых предустановок это может быть "
-"полезно, так как они могут звучать громко."
+"полезно, если они звучат громко."
 
 #: src/contents/ui/PreferencesSheet.qml:188
 msgid "Enable/disable input monitoring"
@@ -2313,8 +2313,8 @@ msgid ""
 "The time it takes for the level meter labels to be updated when the current "
 "level is below the last highest one."
 msgstr ""
-"Время, необходимое для обновления меток уровнемеров, когда текущий уровень "
-"ниже последнего наивысшего."
+"Задержка обновления меток уровнемеров при снижении уровня ниже последнего "
+"пикового значения."
 
 #: src/contents/ui/PreferencesSheet.qml:256
 #: src/contents/ui/PreferencesSheet.qml:267
@@ -3349,9 +3349,8 @@ msgid "Simple audio effects"
 msgstr "Простые звуковые эффекты"
 
 #: src/contents/ui/PreferencesSheet.qml:258
-#, fuzzy
 msgid "Enable level meters animation"
-msgstr "Длительность анимации уровнемеров"
+msgstr "Включить анимацию уровнемеров"
 
 #~ msgid "24 dB/oct"
 #~ msgstr "24 дБ/окт"
