@@ -7,7 +7,6 @@ import org.kde.kirigami as Kirigami
 Control {
     id: control
 
-    property real value: 0
     property real from: 0
     property real to: 1
     property int decimals: 2
@@ -49,8 +48,8 @@ Control {
 
     Layout.fillWidth: true
 
-    onValueChanged: {
-        const newC = Common.clamp(control.value, control.from, control.to);
+    function setValue(value) {
+        const newC = Common.clamp(value, control.from, control.to);
 
         // Only update if meaningfully different
 

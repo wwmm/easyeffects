@@ -439,7 +439,7 @@ void Nodes::update_info(NodeInfo new_info) {
     return;
   }
 
-  NodeInfo& info = list[row];
+  NodeInfo info = list[row];
   bool anyChanged = false;
 
   auto updateIfDifferent = [&](auto role, const auto& oldVal, const auto& newVal) {

@@ -5,7 +5,6 @@ import org.kde.kirigami as Kirigami
 Rectangle {
     id: root
 
-    property real value: 0.5
     property real from: 0
     property real to: 1
     property int decimals: 2
@@ -26,8 +25,8 @@ Rectangle {
     color: Kirigami.Theme.neutralBackgroundColor
     border.color: Kirigami.ColorUtils.linearInterpolation(Kirigami.Theme.backgroundColor, Kirigami.Theme.textColor, Kirigami.Theme.frameContrast)
 
-    onValueChanged: {
-        const newC = Common.clamp(root.value, root.from, root.to);
+    function setValue(value) {
+        const newC = Common.clamp(value, root.from, root.to);
 
         // Only update if meaningfully different
 

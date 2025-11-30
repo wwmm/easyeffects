@@ -16,21 +16,21 @@ Kirigami.ScrollablePage {
     property var pluginBackend
 
     function updateMeters() {
-        if (!pluginBackend)
+        if (!limiterPage.pluginBackend)
             return;
 
-        inputOutputLevels.inputLevelLeft = limiterPage.pluginBackend.getInputLevelLeft();
-        inputOutputLevels.inputLevelRight = limiterPage.pluginBackend.getInputLevelRight();
-        inputOutputLevels.outputLevelLeft = limiterPage.pluginBackend.getOutputLevelLeft();
-        inputOutputLevels.outputLevelRight = limiterPage.pluginBackend.getOutputLevelRight();
-        gainLevelLeft.value = limiterPage.pluginBackend.getGainLevelLeft();
-        gainLevelRight.value = limiterPage.pluginBackend.getGainLevelRight();
-        sideChainLevelLeft.value = limiterPage.pluginBackend.getSideChainLevelLeft();
-        sideChainLevelRight.value = limiterPage.pluginBackend.getSideChainLevelRight();
+        inputOutputLevels.setInputLevelLeft(limiterPage.pluginBackend.getInputLevelLeft());
+        inputOutputLevels.setInputLevelRight(limiterPage.pluginBackend.getInputLevelRight());
+        inputOutputLevels.setOutputLevelLeft(limiterPage.pluginBackend.getOutputLevelLeft());
+        inputOutputLevels.setOutputLevelRight(limiterPage.pluginBackend.getOutputLevelRight());
+        gainLevelLeft.setValue(limiterPage.pluginBackend.getGainLevelLeft());
+        gainLevelRight.setValue(limiterPage.pluginBackend.getGainLevelRight());
+        sideChainLevelLeft.setValue(limiterPage.pluginBackend.getSideChainLevelLeft());
+        sideChainLevelRight.setValue(limiterPage.pluginBackend.getSideChainLevelRight());
     }
 
     Component.onCompleted: {
-        pluginBackend = pipelineInstance.getPluginInstance(name);
+        limiterPage.pluginBackend = pipelineInstance.getPluginInstance(name);
     }
 
     ColumnLayout {
@@ -488,7 +488,6 @@ Kirigami.ScrollablePage {
                     implicitHeight: levelGridLayout.radius
                     from: Common.minimumDecibelLevel
                     to: 0
-                    value: 0
                     decimals: 0
                     convertDecibelToLinear: true
                     topToBottom: true
@@ -502,7 +501,6 @@ Kirigami.ScrollablePage {
                     implicitHeight: levelGridLayout.radius
                     from: Common.minimumDecibelLevel
                     to: 0
-                    value: 0
                     decimals: 0
                     convertDecibelToLinear: true
                     topToBottom: true
@@ -517,7 +515,6 @@ Kirigami.ScrollablePage {
                     implicitHeight: levelGridLayout.radius
                     from: Common.minimumDecibelLevel
                     to: 0
-                    value: 0
                     decimals: 0
                     convertDecibelToLinear: true
                 }
@@ -530,7 +527,6 @@ Kirigami.ScrollablePage {
                     implicitHeight: levelGridLayout.radius
                     from: Common.minimumDecibelLevel
                     to: 0
-                    value: 0
                     decimals: 0
                     convertDecibelToLinear: true
                 }

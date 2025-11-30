@@ -27,24 +27,33 @@ Kirigami.ScrollablePage {
     readonly property real radius: 2.5 * Kirigami.Units.gridUnit
 
     function updateMeters() {
-        if (!pluginBackend)
+        if (!multibandGatePage.pluginBackend)
             return;
 
-        inputOutputLevels.inputLevelLeft = pluginBackend.getInputLevelLeft();
-        inputOutputLevels.inputLevelRight = pluginBackend.getInputLevelRight();
-        inputOutputLevels.outputLevelLeft = pluginBackend.getOutputLevelLeft();
-        inputOutputLevels.outputLevelRight = pluginBackend.getOutputLevelRight();
-        bandFrequencyEnd = pluginBackend.getFrequencyRangeEnd();
-        bandReductionLevelLeft = pluginBackend.getReductionLevelLeft();
-        bandReductionLevelRight = pluginBackend.getReductionLevelRight();
-        bandEnvelopeLevelLeft = pluginBackend.getEnvelopeLevelLeft();
-        bandEnvelopeLevelRight = pluginBackend.getEnvelopeLevelRight();
-        bandCurveLevelLeft = pluginBackend.getCurveLevelLeft();
-        bandCurveLevelRight = pluginBackend.getCurveLevelRight();
+        inputOutputLevels.setInputLevelLeft(multibandGatePage.pluginBackend.getInputLevelLeft());
+        inputOutputLevels.setInputLevelRight(multibandGatePage.pluginBackend.getInputLevelRight());
+        inputOutputLevels.setOutputLevelLeft(multibandGatePage.pluginBackend.getOutputLevelLeft());
+        inputOutputLevels.setOutputLevelRight(multibandGatePage.pluginBackend.getOutputLevelRight());
+        bandFrequencyEnd = multibandGatePage.pluginBackend.getFrequencyRangeEnd();
+        bandReductionLevelLeft = multibandGatePage.pluginBackend.getReductionLevelLeft();
+        bandReductionLevelRight = multibandGatePage.pluginBackend.getReductionLevelRight();
+        bandEnvelopeLevelLeft = multibandGatePage.pluginBackend.getEnvelopeLevelLeft();
+        bandEnvelopeLevelRight = multibandGatePage.pluginBackend.getEnvelopeLevelRight();
+        bandCurveLevelLeft = multibandGatePage.pluginBackend.getCurveLevelLeft();
+        bandCurveLevelRight = multibandGatePage.pluginBackend.getCurveLevelRight();
+
+        reductionLevelLeft.setValue(Common.toLocaleLabel(multibandGatePage.bandReductionLevelLeft[bandsListview.currentIndex] ?? 0, 0, ""));
+        reductionLevelRight.setValue(Common.toLocaleLabel(multibandGatePage.bandReductionLevelRight[bandsListview.currentIndex] ?? 0, 0, ""));
+
+        envelopeLevelLeft.setValue(Common.toLocaleLabel(multibandGatePage.bandEnvelopeLevelLeft[bandsListview.currentIndex] ?? 0, 0, ""));
+        envelopeLevelRight.setValue(Common.toLocaleLabel(multibandGatePage.bandEnvelopeLevelRight[bandsListview.currentIndex] ?? 0, 0, ""));
+
+        curveLevelLeft.setValue(Common.toLocaleLabel(multibandGatePage.bandCurveLevelLeft[bandsListview.currentIndex] ?? 0, 0, ""));
+        curveLevelRight.setValue(Common.toLocaleLabel(multibandGatePage.bandCurveLevelRight[bandsListview.currentIndex] ?? 0, 0, ""));
     }
 
     Component.onCompleted: {
-        pluginBackend = pipelineInstance.getPluginInstance(name);
+        multibandGatePage.pluginBackend = multibandGatePage.pipelineInstance.getPluginInstance(name);
     }
 
     Component {
@@ -700,7 +709,6 @@ Kirigami.ScrollablePage {
                                 implicitHeight: multibandGatePage.radius
                                 from: Common.minimumDecibelLevel
                                 to: 72
-                                value: Common.toLocaleLabel(multibandGatePage.bandReductionLevelLeft[bandsListview.currentIndex] ?? 0, 0, "")
                                 decimals: 0
                                 topToBottom: true
                             }
@@ -713,7 +721,6 @@ Kirigami.ScrollablePage {
                                 implicitHeight: multibandGatePage.radius
                                 from: Common.minimumDecibelLevel
                                 to: 72
-                                value: Common.toLocaleLabel(multibandGatePage.bandReductionLevelRight[bandsListview.currentIndex] ?? 0, 0, "")
                                 decimals: 0
                                 topToBottom: true
                             }
@@ -759,7 +766,6 @@ Kirigami.ScrollablePage {
                                 implicitHeight: multibandGatePage.radius
                                 from: Common.minimumDecibelLevel
                                 to: 36
-                                value: Common.toLocaleLabel(multibandGatePage.bandEnvelopeLevelLeft[bandsListview.currentIndex] ?? 0, 0, "")
                                 decimals: 0
                             }
 
@@ -771,7 +777,6 @@ Kirigami.ScrollablePage {
                                 implicitHeight: multibandGatePage.radius
                                 from: Common.minimumDecibelLevel
                                 to: 36
-                                value: Common.toLocaleLabel(multibandGatePage.bandEnvelopeLevelRight[bandsListview.currentIndex] ?? 0, 0, "")
                                 decimals: 0
                             }
 
@@ -816,7 +821,6 @@ Kirigami.ScrollablePage {
                                 implicitHeight: multibandGatePage.radius
                                 from: Common.minimumDecibelLevel
                                 to: 36
-                                value: Common.toLocaleLabel(multibandGatePage.bandCurveLevelLeft[bandsListview.currentIndex] ?? 0, 0, "")
                                 decimals: 0
                             }
 
@@ -828,7 +832,6 @@ Kirigami.ScrollablePage {
                                 implicitHeight: multibandGatePage.radius
                                 from: Common.minimumDecibelLevel
                                 to: 36
-                                value: Common.toLocaleLabel(multibandGatePage.bandCurveLevelRight[bandsListview.currentIndex] ?? 0, 0, "")
                                 decimals: 0
                             }
 

@@ -8,10 +8,6 @@ Item {
     id: control
 
     required property var pluginDB
-    property alias inputLevelLeft: inputRow.leftLevel
-    property alias inputLevelRight: inputRow.rightLevel
-    property alias outputLevelLeft: outputRow.leftLevel
-    property alias outputLevelRight: outputRow.rightLevel
     readonly property real radius: 2.5 * Kirigami.Units.gridUnit
 
     implicitHeight: column.implicitHeight
@@ -21,6 +17,22 @@ Item {
     Accessible.name: i18n("Audio levels control") // qmllint disable
     Accessible.description: i18n("Input and output gain controls with level meters") // qmllint disable
 
+    function setInputLevelLeft(value) {
+        inputRow.setLevelLeft(value);
+    }
+
+    function setInputLevelRight(value) {
+        inputRow.setLevelRight(value);
+    }
+
+    function setOutputLevelLeft(value) {
+        outputRow.setLevelLeft(value);
+    }
+
+    function setOutputLevelRight(value) {
+        outputRow.setLevelRight(value);
+    }
+
     component GainRow: RowLayout {
 
         property alias label: gain.label
@@ -28,10 +40,16 @@ Item {
         property alias from: gain.from
         property alias to: gain.to
         property alias value: gain.value
-        property alias leftLevel: left.value
-        property alias rightLevel: right.value
 
         signal gainChanged(real v)
+
+        function setLevelLeft(value) {
+            left.setValue(value);
+        }
+
+        function setLevelRight(value) {
+            right.setValue(value);
+        }
 
         EeSpinBox {
             id: gain
@@ -57,7 +75,6 @@ Item {
             implicitHeight: control.radius
             from: Common.minimumDecibelLevel
             to: 0
-            value: 0
             decimals: 0
             convertDecibelToLinear: true
         }
@@ -70,7 +87,6 @@ Item {
             implicitHeight: control.radius
             from: Common.minimumDecibelLevel
             to: 0
-            value: 0
             decimals: 0
             convertDecibelToLinear: true
         }

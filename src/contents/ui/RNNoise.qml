@@ -20,17 +20,17 @@ Kirigami.ScrollablePage {
     property var pluginBackend
 
     function updateMeters() {
-        if (!pluginBackend)
+        if (!rnnoisePage.pluginBackend)
             return;
 
-        inputOutputLevels.inputLevelLeft = pluginBackend.getInputLevelLeft();
-        inputOutputLevels.inputLevelRight = pluginBackend.getInputLevelRight();
-        inputOutputLevels.outputLevelLeft = pluginBackend.getOutputLevelLeft();
-        inputOutputLevels.outputLevelRight = pluginBackend.getOutputLevelRight();
+        inputOutputLevels.setInputLevelLeft(rnnoisePage.pluginBackend.getInputLevelLeft());
+        inputOutputLevels.setInputLevelRight(rnnoisePage.pluginBackend.getInputLevelRight());
+        inputOutputLevels.setOutputLevelLeft(rnnoisePage.pluginBackend.getOutputLevelLeft());
+        inputOutputLevels.setOutputLevelRight(rnnoisePage.pluginBackend.getOutputLevelRight());
     }
 
     Component.onCompleted: {
-        pluginBackend = pipelineInstance.getPluginInstance(name);
+        rnnoisePage.pluginBackend = rnnoisePage.pipelineInstance.getPluginInstance(name);
     }
 
     FileDialog {

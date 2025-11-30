@@ -18,17 +18,17 @@ Kirigami.ScrollablePage {
         if (!pluginBackend)
             return;
 
-        momentary.value = pluginBackend.getMomentaryLevel();
-        shortterm.value = pluginBackend.getShorttermLevel();
-        integrated.value = pluginBackend.getIntegratedLevel();
-        relative.value = pluginBackend.getRelativeLevel();
-        range.value = pluginBackend.getRangeLevel();
-        loudness.value = pluginBackend.getLoudnessLevel();
-        outputGain.value = pluginBackend.getOutputGainLevel();
-        inputOutputLevels.inputLevelLeft = pluginBackend.getInputLevelLeft();
-        inputOutputLevels.inputLevelRight = pluginBackend.getInputLevelRight();
-        inputOutputLevels.outputLevelLeft = pluginBackend.getOutputLevelLeft();
-        inputOutputLevels.outputLevelRight = pluginBackend.getOutputLevelRight();
+        momentary.setValue(pluginBackend.getMomentaryLevel());
+        shortterm.setValue(pluginBackend.getShorttermLevel());
+        integrated.setValue(pluginBackend.getIntegratedLevel());
+        relative.setValue(pluginBackend.getRelativeLevel());
+        range.setValue(pluginBackend.getRangeLevel());
+        loudness.setValue(pluginBackend.getLoudnessLevel());
+        outputGain.setValue(pluginBackend.getOutputGainLevel());
+        inputOutputLevels.setInputLevelLeft(pluginBackend.getInputLevelLeft());
+        inputOutputLevels.setInputLevelRight(pluginBackend.getInputLevelRight());
+        inputOutputLevels.setOutputLevelLeft(pluginBackend.getOutputLevelLeft());
+        inputOutputLevels.setOutputLevelRight(pluginBackend.getOutputLevelRight());
     }
 
     Component.onCompleted: {
@@ -130,7 +130,6 @@ Kirigami.ScrollablePage {
                     unit: Units.lufs
                     from: Common.minimumDecibelLevel
                     to: 10
-                    value: 0
                     decimals: 1
                 }
 
@@ -141,7 +140,6 @@ Kirigami.ScrollablePage {
                     unit: Units.lufs
                     from: Common.minimumDecibelLevel
                     to: 10
-                    value: 0
                     decimals: 1
                 }
 
@@ -152,7 +150,6 @@ Kirigami.ScrollablePage {
                     unit: Units.lufs
                     from: Common.minimumDecibelLevel
                     to: 10
-                    value: 0
                     decimals: 1
                 }
 
@@ -163,7 +160,6 @@ Kirigami.ScrollablePage {
                     unit: Units.lufs
                     from: Common.minimumDecibelLevel
                     to: 10
-                    value: 0
                     decimals: 1
                 }
 
@@ -174,7 +170,6 @@ Kirigami.ScrollablePage {
                     unit: Units.lu
                     from: 0
                     to: 50
-                    value: 0
                     decimals: 1
                 }
 
@@ -185,7 +180,6 @@ Kirigami.ScrollablePage {
                     unit: Units.lufs
                     from: Common.minimumDecibelLevel
                     to: 10
-                    value: 0
                     decimals: 1
                 }
 
@@ -196,7 +190,6 @@ Kirigami.ScrollablePage {
                     unit: Units.dB
                     from: Common.minimumDecibelLevel
                     to: 20
-                    value: 0
                     decimals: 1
                     convertDecibelToLinear: true
                 }

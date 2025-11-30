@@ -13,17 +13,17 @@ Kirigami.ScrollablePage {
     property var pluginBackend
 
     function updateMeters() {
-        if (!pluginBackend)
+        if (!speexPage.pluginBackend)
             return;
 
-        inputOutputLevels.inputLevelLeft = pluginBackend.getInputLevelLeft();
-        inputOutputLevels.inputLevelRight = pluginBackend.getInputLevelRight();
-        inputOutputLevels.outputLevelLeft = pluginBackend.getOutputLevelLeft();
-        inputOutputLevels.outputLevelRight = pluginBackend.getOutputLevelRight();
+        inputOutputLevels.setInputLevelLeft(speexPage.pluginBackend.getInputLevelLeft());
+        inputOutputLevels.setInputLevelRight(speexPage.pluginBackend.getInputLevelRight());
+        inputOutputLevels.setOutputLevelLeft(speexPage.pluginBackend.getOutputLevelLeft());
+        inputOutputLevels.setOutputLevelRight(speexPage.pluginBackend.getOutputLevelRight());
     }
 
     Component.onCompleted: {
-        pluginBackend = pipelineInstance.getPluginInstance(name);
+        speexPage.pluginBackend = speexPage.pipelineInstance.getPluginInstance(name);
     }
 
     ColumnLayout {

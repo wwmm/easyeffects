@@ -15,17 +15,17 @@ Kirigami.ScrollablePage {
     property var pluginBackend
 
     function updateMeters() {
-        if (!pluginBackend)
+        if (!reverbPage.pluginBackend)
             return;
 
-        inputOutputLevels.inputLevelLeft = pluginBackend.getInputLevelLeft();
-        inputOutputLevels.inputLevelRight = pluginBackend.getInputLevelRight();
-        inputOutputLevels.outputLevelLeft = pluginBackend.getOutputLevelLeft();
-        inputOutputLevels.outputLevelRight = pluginBackend.getOutputLevelRight();
+        inputOutputLevels.setInputLevelLeft(reverbPage.pluginBackend.getInputLevelLeft());
+        inputOutputLevels.setInputLevelRight(reverbPage.pluginBackend.getInputLevelRight());
+        inputOutputLevels.setOutputLevelLeft(reverbPage.pluginBackend.getOutputLevelLeft());
+        inputOutputLevels.setOutputLevelRight(reverbPage.pluginBackend.getOutputLevelRight());
     }
 
     Component.onCompleted: {
-        pluginBackend = pipelineInstance.getPluginInstance(name);
+        reverbPage.pluginBackend = reverbPage.pipelineInstance.getPluginInstance(name);
     }
 
     ColumnLayout {

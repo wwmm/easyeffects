@@ -13,18 +13,18 @@ Kirigami.ScrollablePage {
     property var pluginBackend
 
     function updateMeters() {
-        if (!pluginBackend)
+        if (!maximizerPage.pluginBackend)
             return;
 
-        inputOutputLevels.inputLevelLeft = maximizerPage.pluginBackend.getInputLevelLeft();
-        inputOutputLevels.inputLevelRight = maximizerPage.pluginBackend.getInputLevelRight();
-        inputOutputLevels.outputLevelLeft = maximizerPage.pluginBackend.getOutputLevelLeft();
-        inputOutputLevels.outputLevelRight = maximizerPage.pluginBackend.getOutputLevelRight();
-        reductionLevel.value = maximizerPage.pluginBackend.getReductionLevel();
+        inputOutputLevels.setInputLevelLeft(maximizerPage.pluginBackend.getInputLevelLeft());
+        inputOutputLevels.setInputLevelRight(maximizerPage.pluginBackend.getInputLevelRight());
+        inputOutputLevels.setOutputLevelLeft(maximizerPage.pluginBackend.getOutputLevelLeft());
+        inputOutputLevels.setOutputLevelRight(maximizerPage.pluginBackend.getOutputLevelRight());
+        reductionLevel.setValue(maximizerPage.pluginBackend.getReductionLevel());
     }
 
     Component.onCompleted: {
-        pluginBackend = pipelineInstance.getPluginInstance(name);
+        maximizerPage.pluginBackend = maximizerPage.pipelineInstance.getPluginInstance(name);
     }
 
     ColumnLayout {
@@ -82,7 +82,6 @@ Kirigami.ScrollablePage {
                         unit: Units.dB
                         from: 0
                         to: 40
-                        value: 0
                         decimals: 0
                     }
                 }

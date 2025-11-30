@@ -18,12 +18,12 @@ Kirigami.ScrollablePage {
         if (!pluginBackend)
             return;
 
-        inputOutputLevels.inputLevelLeft = pluginBackend.getInputLevelLeft();
-        inputOutputLevels.inputLevelRight = pluginBackend.getInputLevelRight();
-        inputOutputLevels.outputLevelLeft = pluginBackend.getOutputLevelLeft();
-        inputOutputLevels.outputLevelRight = pluginBackend.getOutputLevelRight();
-        detectionLevel.value = pluginBackend.getDetectedLevel();
-        gainReduction.value = pluginBackend.getCompressionLevel();
+        inputOutputLevels.setInputLevelLeft(pluginBackend.getInputLevelLeft());
+        inputOutputLevels.setInputLevelRight(pluginBackend.getInputLevelRight());
+        inputOutputLevels.setOutputLevelLeft(pluginBackend.getOutputLevelLeft());
+        inputOutputLevels.setOutputLevelRight(pluginBackend.getOutputLevelRight());
+        detectionLevel.setValue(pluginBackend.getDetectedLevel());
+        gainReduction.setValue(pluginBackend.getCompressionLevel());
     }
 
     Component.onCompleted: {
@@ -269,7 +269,6 @@ Kirigami.ScrollablePage {
                         unit: Units.dB
                         from: Common.minimumDecibelLevel
                         to: 10
-                        value: 0
                         decimals: 1
                     }
 
@@ -280,7 +279,6 @@ Kirigami.ScrollablePage {
                         unit: Units.dB
                         from: Common.minimumDecibelLevel
                         to: 0
-                        value: 0
                         decimals: 1
                         rightToLeft: true
                     }

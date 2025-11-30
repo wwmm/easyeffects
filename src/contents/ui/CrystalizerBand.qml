@@ -17,6 +17,10 @@ Controls.ItemDelegate {
     hoverEnabled: false
     height: ListView.view.height
 
+    onAdaptiveIntensityChanged: {
+        levelMeter.setValue(delegate.adaptiveIntensity);
+    }
+
     Controls.Popup {
         id: menu
 
@@ -117,6 +121,8 @@ Controls.ItemDelegate {
         }
 
         EeAudioLevel {
+            id: levelMeter
+
             readonly property real radius: 2.5 * Kirigami.Units.gridUnit
 
             Layout.alignment: Qt.AlignHCenter | Qt.AlignBottom
@@ -124,7 +130,6 @@ Controls.ItemDelegate {
             implicitHeight: radius
             from: delegate.pluginDB.getMinValue("intensityBand" + delegate.index)
             to: delegate.pluginDB.getMaxValue("intensityBand" + delegate.index)
-            value: delegate.adaptiveIntensity
             decimals: 1
             visible: delegate.pluginDB.adaptiveIntensity
         }
