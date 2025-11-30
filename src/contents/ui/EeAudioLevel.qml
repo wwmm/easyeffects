@@ -34,12 +34,12 @@ Rectangle {
             root.clampedValue = newC;
         }
 
-        // For the history/peak indicator
+        let newDisplayValue;
 
         if (root.topToBottom === false) {
-            root.displayValue = root.clampedValue > sampleTimer.value ? root.clampedValue : sampleTimer.value;
+            newDisplayValue = root.clampedValue > sampleTimer.value ? root.clampedValue : sampleTimer.value;
         } else {
-            root.displayValue = root.clampedValue < sampleTimer.value ? root.clampedValue : sampleTimer.value;
+            newDisplayValue = root.clampedValue < sampleTimer.value ? root.clampedValue : sampleTimer.value;
         }
 
         // level rect
@@ -50,20 +50,24 @@ Rectangle {
             levelScale.yScale = root.topToBottom === false ? (root.clampedValue - root.from) / (root.to - root.from) : (root.clampedValue - root.to) / (root.from - root.to);
         }
 
-        //hist rect
+        if (newDisplayValue !== root.displayValue) {
+            root.displayValue = newDisplayValue;
 
-        const dbFrac = (Common.dbToLinear(root.displayValue) - root.dbFrom) / (root.dbTo - root.dbFrom);
-        const frac = (root.displayValue - root.from) / (root.to - root.from);
+            //hist rect
 
-        if (root.convertDecibelToLinear) {
-            histScale.y = root.height * (1.0 - dbFrac);
-        } else {
-            histScale.y = root.height * (1.0 - frac);
+            const dbFrac = (Common.dbToLinear(root.displayValue) - root.dbFrom) / (root.dbTo - root.dbFrom);
+            const frac = (root.displayValue - root.from) / (root.to - root.from);
+
+            if (root.convertDecibelToLinear) {
+                histScale.y = root.height * (1.0 - dbFrac);
+            } else {
+                histScale.y = root.height * (1.0 - frac);
+            }
+
+            // label
+
+            valueLabel.text = Number(root.displayValue).toLocaleString(Qt.locale(), 'f', root.decimals);
         }
-
-        // label
-
-        valueLabel.text = Number(root.displayValue).toLocaleString(Qt.locale(), 'f', root.decimals);
     }
 
     Rectangle {

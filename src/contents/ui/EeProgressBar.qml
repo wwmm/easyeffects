@@ -19,10 +19,6 @@ Control {
     property bool convertDecibelToLinear: false
     property real clampedValue: 0
     property real displayValue: 0
-    property real normalizedClampedValue: 0
-    property real normalizedClampedValueDB: 0
-    property real normalizedDisplayValue: 0
-    property real normalizedDisplayValueDB: 0
     readonly property real dbFrom: Common.dbToLinear(from)
     readonly property real dbTo: Common.dbToLinear(to)
     readonly property real decimalFactor: Math.pow(10, -decimals)
@@ -57,39 +53,49 @@ Control {
             control.clampedValue = newC;
         }
 
-        // For the history/peak indicator
+        let newDisplayValue;
 
         if (control.rightToLeft === false) {
-            control.displayValue = control.clampedValue > sampleTimer.value ? control.clampedValue : sampleTimer.value;
+            newDisplayValue = control.clampedValue > sampleTimer.value ? control.clampedValue : sampleTimer.value;
         } else {
-            control.displayValue = control.clampedValue < sampleTimer.value ? control.clampedValue : sampleTimer.value;
+            newDisplayValue = control.clampedValue < sampleTimer.value ? control.clampedValue : sampleTimer.value;
         }
 
-        normalizedClampedValue = (control.clampedValue - control.from) / (control.to - control.from);
-        normalizedClampedValueDB = (Common.dbToLinear(control.clampedValue) - control.dbFrom) / (control.dbTo - control.dbFrom);
+        const normalizedClampedValue = (control.clampedValue - control.from) / (control.to - control.from);
+        const normalizedClampedValueDB = (Common.dbToLinear(control.clampedValue) - control.dbFrom) / (control.dbTo - control.dbFrom);
 
-        normalizedDisplayValue = (control.displayValue - control.from) / (control.to - control.from);
-        normalizedDisplayValueDB = (Common.dbToLinear(control.displayValue) - control.dbFrom) / (control.dbTo - control.dbFrom);
+        const rlNormalizedClampedValue = (control.clampedValue - control.to) / (control.from - control.to);
+        const rlNormalizedClampedValueDB = (Common.dbToLinear(control.clampedValue) - control.dbTo) / (control.dbFrom - control.dbTo);
 
         // level rect
 
         if (control.convertDecibelToLinear) {
-            levelScale.xScale = control.rightToLeft === false ? control.normalizedClampedValueDB : (Common.dbToLinear(control.clampedValue) - control.dbTo) / (control.dbFrom - control.dbTo);
+            levelScale.xScale = control.rightToLeft === false ? normalizedClampedValueDB : rlNormalizedClampedValueDB;
         } else {
-            levelScale.xScale = control.rightToLeft === false ? control.normalizedClampedValue : (control.clampedValue - control.to) / (control.from - control.to);
+            levelScale.xScale = control.rightToLeft === false ? normalizedClampedValue : rlNormalizedClampedValue;
         }
 
-        // hist rect
+        if (newDisplayValue !== control.displayValue) {
+            control.displayValue = newDisplayValue;
 
-        if (control.convertDecibelToLinear) {
-            histScale.x = control.rightToLeft === false ? control.normalizedDisplayValueDB * item.width : item.width - (Common.dbToLinear(control.displayValue) - control.dbTo) / (control.dbFrom - control.dbTo) * item.width;
-        } else {
-            histScale.x = control.rightToLeft === false ? control.normalizedDisplayValue * item.width : item.width - (control.displayValue - control.to) / (control.from - control.to) * item.width;
+            const normalizedDisplayValue = (control.displayValue - control.from) / (control.to - control.from);
+            const normalizedDisplayValueDB = (Common.dbToLinear(control.displayValue) - control.dbFrom) / (control.dbTo - control.dbFrom);
+
+            const rlNormalizedDisplayValue = (control.displayValue - control.to) / (control.from - control.to);
+            const rlNormalizedDisplayValueDB = (Common.dbToLinear(control.displayValue) - control.dbTo) / (control.dbFrom - control.dbTo);
+
+            // hist rect
+
+            if (control.convertDecibelToLinear) {
+                histScale.x = control.rightToLeft === false ? normalizedDisplayValueDB * item.width : item.width - rlNormalizedDisplayValueDB * item.width;
+            } else {
+                histScale.x = control.rightToLeft === false ? normalizedDisplayValue * item.width : item.width - rlNormalizedDisplayValue * item.width;
+            }
+
+            //label
+
+            valueLabel.text = Number(control.displayValue).toLocaleString(Qt.locale(), 'f', control.decimals) + unitSuffix;
         }
-
-        //label
-
-        valueLabel.text = Number(control.displayValue).toLocaleString(Qt.locale(), 'f', control.decimals) + unitSuffix;
     }
 
     contentItem: Rectangle {
