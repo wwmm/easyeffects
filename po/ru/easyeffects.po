@@ -2097,12 +2097,14 @@ msgstr "Нет клиентов"
 #: src/contents/ui/PipeWirePage.qml:296
 #: src/contents/ui/PreferencesSheet.qml:275
 #: src/contents/ui/PreferencesSheet.qml:286
+#: src/contents/ui/PreferencesSheet.qml:302
 msgid "State"
 msgstr "Состояние"
 
 #: src/contents/ui/PipeWirePage.qml:303
 #: src/contents/ui/PreferencesSheet.qml:282
 #: src/contents/ui/PreferencesSheet.qml:293
+#: src/contents/ui/PreferencesSheet.qml:309
 msgid "Enabled"
 msgstr "Включено"
 
@@ -2323,101 +2325,121 @@ msgstr "Длительность анимации уровнемеров"
 
 #: src/contents/ui/PreferencesSheet.qml:294
 #: src/contents/ui/PreferencesSheet.qml:305
+#: src/contents/ui/PreferencesSheet.qml:321
 msgid "Audio delay compensation"
 msgstr "Компенсация задержки звука"
 
 #: src/contents/ui/PreferencesSheet.qml:309
 #: src/contents/ui/PreferencesSheet.qml:320
+#: src/contents/ui/PreferencesSheet.qml:336
 msgid "Graph"
 msgstr "График"
 
 #: src/contents/ui/PreferencesSheet.qml:316
 #: src/contents/ui/PreferencesSheet.qml:327
+#: src/contents/ui/PreferencesSheet.qml:343
 msgid "Shape"
 msgstr "Форма"
 
 #: src/contents/ui/PreferencesSheet.qml:320
 #: src/contents/ui/PreferencesSheet.qml:331
+#: src/contents/ui/PreferencesSheet.qml:347
 msgid "Bars"
 msgstr "Полосы"
 
 #: src/contents/ui/PreferencesSheet.qml:320
 #: src/contents/ui/PreferencesSheet.qml:331
+#: src/contents/ui/PreferencesSheet.qml:347
 msgid "Lines"
 msgstr "Линии"
 
 #: src/contents/ui/PreferencesSheet.qml:320
 #: src/contents/ui/PreferencesSheet.qml:331
+#: src/contents/ui/PreferencesSheet.qml:347
 msgid "Dots"
 msgstr "Точки"
 
 #: src/contents/ui/PreferencesSheet.qml:320
 #: src/contents/ui/PreferencesSheet.qml:331
+#: src/contents/ui/PreferencesSheet.qml:347
 msgid "Area"
 msgstr "Область"
 
 #: src/contents/ui/PreferencesSheet.qml:330
 #: src/contents/ui/PreferencesSheet.qml:341
+#: src/contents/ui/PreferencesSheet.qml:357
 msgid "Dynamic scale"
 msgstr "Динамический масштаб"
 
 #: src/contents/ui/PreferencesSheet.qml:342
 #: src/contents/ui/PreferencesSheet.qml:353
+#: src/contents/ui/PreferencesSheet.qml:369
 msgid "Logarithmic frequency axis"
 msgstr "Логарифмическая ось частоты"
 
 #: src/contents/ui/PreferencesSheet.qml:354
 #: src/contents/ui/PreferencesSheet.qml:365
+#: src/contents/ui/PreferencesSheet.qml:381
 msgid "Points"
 msgstr "Пункты"
 
 #: src/contents/ui/PreferencesSheet.qml:369
 #: src/contents/ui/PreferencesSheet.qml:380
+#: src/contents/ui/PreferencesSheet.qml:396
 msgid "Height"
 msgstr "Высота"
 
 #: src/contents/ui/PreferencesSheet.qml:376
 #: src/contents/ui/PreferencesSheet.qml:387
+#: src/contents/ui/PreferencesSheet.qml:403
 msgid "px"
 msgstr "пкс"
 
 #: src/contents/ui/PreferencesSheet.qml:384
 #: src/contents/ui/PreferencesSheet.qml:395
+#: src/contents/ui/PreferencesSheet.qml:411
 msgid "Frequency Range"
 msgstr "Диапазон частот"
 
 #: src/contents/ui/PreferencesSheet.qml:391
 #: src/contents/ui/PreferencesSheet.qml:402
+#: src/contents/ui/PreferencesSheet.qml:418
 msgid "Minimum"
 msgstr "Минимум"
 
 #: src/contents/ui/PreferencesSheet.qml:407
 #: src/contents/ui/PreferencesSheet.qml:418
+#: src/contents/ui/PreferencesSheet.qml:434
 msgid "Maximum"
 msgstr "Максимум"
 
 #: src/contents/ui/PreferencesSheet.qml:429
 #: src/contents/ui/PreferencesSheet.qml:440
+#: src/contents/ui/PreferencesSheet.qml:456
 msgid "Database autosave interval"
 msgstr "Период автосохранения базы данных"
 
 #: src/contents/ui/PreferencesSheet.qml:443
 #: src/contents/ui/PreferencesSheet.qml:454
+#: src/contents/ui/PreferencesSheet.qml:470
 msgid "Most used presets"
 msgstr "Часто используемые предустановки"
 
 #: src/contents/ui/PreferencesSheet.qml:461
 #: src/contents/ui/PreferencesSheet.qml:472
+#: src/contents/ui/PreferencesSheet.qml:488
 msgid "Window"
 msgstr "Окно"
 
 #: src/contents/ui/PreferencesSheet.qml:470
 #: src/contents/ui/PreferencesSheet.qml:481
+#: src/contents/ui/PreferencesSheet.qml:497
 msgid "Force KDE's Breeze theme when Easy Effects starts"
 msgstr "Принудительно включить тему KDE Breeze при запуске Easy Effects"
 
 #: src/contents/ui/PreferencesSheet.qml:471
 #: src/contents/ui/PreferencesSheet.qml:482
+#: src/contents/ui/PreferencesSheet.qml:498
 msgid ""
 "It is necessary to restart the service for changes in this setting to take "
 "effect."
@@ -2426,11 +2448,13 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:484
 #: src/contents/ui/PreferencesSheet.qml:495
+#: src/contents/ui/PreferencesSheet.qml:511
 msgid "Reduce effects list controls"
 msgstr "Свернуть элементы управления списка эффектов"
 
 #: src/contents/ui/PreferencesSheet.qml:485
 #: src/contents/ui/PreferencesSheet.qml:496
+#: src/contents/ui/PreferencesSheet.qml:512
 msgid ""
 "Action buttons in the effects list are moved inside a context menu for a "
 "more compact view."
@@ -2440,133 +2464,158 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:497
 #: src/contents/ui/PreferencesSheet.qml:508
+#: src/contents/ui/PreferencesSheet.qml:524
 msgid "Graphs"
 msgstr "Графики"
 
 #: src/contents/ui/PreferencesSheet.qml:508
 #: src/contents/ui/PreferencesSheet.qml:519
+#: src/contents/ui/PreferencesSheet.qml:535
 msgid "Color scheme"
 msgstr "Цветовая схема"
 
 #: src/contents/ui/PreferencesSheet.qml:512
 #: src/contents/ui/PreferencesSheet.qml:523
+#: src/contents/ui/PreferencesSheet.qml:539
 msgid "Automatic"
 msgstr "Автоматически"
 
 #: src/contents/ui/PreferencesSheet.qml:512
 #: src/contents/ui/PreferencesSheet.qml:523
+#: src/contents/ui/PreferencesSheet.qml:539
 msgid "Light"
 msgstr "Светлая"
 
 #: src/contents/ui/PreferencesSheet.qml:512
 #: src/contents/ui/PreferencesSheet.qml:523
+#: src/contents/ui/PreferencesSheet.qml:539
 msgid "Dark"
 msgstr "Тёмная"
 
 #: src/contents/ui/PreferencesSheet.qml:523
 #: src/contents/ui/PreferencesSheet.qml:534
+#: src/contents/ui/PreferencesSheet.qml:550
 msgid "Color theme"
 msgstr "Цветовая тема"
 
 #: src/contents/ui/PreferencesSheet.qml:527
 #: src/contents/ui/PreferencesSheet.qml:538
+#: src/contents/ui/PreferencesSheet.qml:554
 msgid "Green"
 msgstr "Зелёная"
 
 #: src/contents/ui/PreferencesSheet.qml:527
 #: src/contents/ui/PreferencesSheet.qml:538
+#: src/contents/ui/PreferencesSheet.qml:554
 msgid "Green neon"
 msgstr "Зелёный неон"
 
 #: src/contents/ui/PreferencesSheet.qml:527
 #: src/contents/ui/PreferencesSheet.qml:538
+#: src/contents/ui/PreferencesSheet.qml:554
 msgid "Mix"
 msgstr "Микс"
 
 # ??? Не уверен в переводе
 #: src/contents/ui/PreferencesSheet.qml:527
 #: src/contents/ui/PreferencesSheet.qml:538
+#: src/contents/ui/PreferencesSheet.qml:554
 msgid "Orange"
 msgstr "Оранжевая"
 
 #: src/contents/ui/PreferencesSheet.qml:527
 #: src/contents/ui/PreferencesSheet.qml:538
+#: src/contents/ui/PreferencesSheet.qml:554
 msgid "Yellow"
 msgstr "Жёлтая"
 
 #: src/contents/ui/PreferencesSheet.qml:527
 #: src/contents/ui/PreferencesSheet.qml:538
+#: src/contents/ui/PreferencesSheet.qml:554
 msgid "Blue"
 msgstr "Синяя"
 
 #: src/contents/ui/PreferencesSheet.qml:527
 #: src/contents/ui/PreferencesSheet.qml:538
+#: src/contents/ui/PreferencesSheet.qml:554
 msgid "Purple"
 msgstr "Фиолетовая"
 
 #: src/contents/ui/PreferencesSheet.qml:527
 #: src/contents/ui/PreferencesSheet.qml:538
+#: src/contents/ui/PreferencesSheet.qml:554
 msgid "Grey"
 msgstr "Серая"
 
 #: src/contents/ui/PreferencesSheet.qml:527
 #: src/contents/ui/PreferencesSheet.qml:538
+#: src/contents/ui/PreferencesSheet.qml:554
 msgid "User"
 msgstr "Пользовательская"
 
 #: src/contents/ui/PreferencesSheet.qml:535
 #: src/contents/ui/PreferencesSheet.qml:546
+#: src/contents/ui/PreferencesSheet.qml:562
 msgctxt "@label"
 msgid "Background"
 msgstr "Фон"
 
 #: src/contents/ui/PreferencesSheet.qml:544
 #: src/contents/ui/PreferencesSheet.qml:555
+#: src/contents/ui/PreferencesSheet.qml:571
 msgctxt "@label"
 msgid "Plot area background"
 msgstr "Фон площади участка"
 
 #: src/contents/ui/PreferencesSheet.qml:553
 #: src/contents/ui/PreferencesSheet.qml:564
+#: src/contents/ui/PreferencesSheet.qml:580
 msgctxt "@label"
 msgid "Series colors"
 msgstr "Цвета серий"
 
 #: src/contents/ui/PreferencesSheet.qml:562
 #: src/contents/ui/PreferencesSheet.qml:573
+#: src/contents/ui/PreferencesSheet.qml:589
 msgctxt "@label"
 msgid "Axis labels text color"
 msgstr "Цвет текста меток осей"
 
 #: src/contents/ui/PreferencesSheet.qml:571
 #: src/contents/ui/PreferencesSheet.qml:582
+#: src/contents/ui/PreferencesSheet.qml:598
 msgctxt "@label"
 msgid "Axis labels background color"
 msgstr "Цвет фона меток осей"
 
 #: src/contents/ui/PreferencesSheet.qml:580
 #: src/contents/ui/PreferencesSheet.qml:591
+#: src/contents/ui/PreferencesSheet.qml:607
 msgctxt "@label"
 msgid "Border color"
 msgstr "Цвет обводки"
 
 #: src/contents/ui/PreferencesSheet.qml:589
 #: src/contents/ui/PreferencesSheet.qml:600
+#: src/contents/ui/PreferencesSheet.qml:616
 msgid "Line width"
 msgstr "Ширина линии"
 
 #: src/contents/ui/PreferencesSheet.qml:603
 #: src/contents/ui/PreferencesSheet.qml:614
+#: src/contents/ui/PreferencesSheet.qml:630
 msgid "Show grid lines"
 msgstr "Показывать линии сетки"
 
 #: src/contents/ui/PreferencesSheet.qml:621
 #: src/contents/ui/PreferencesSheet.qml:632
+#: src/contents/ui/PreferencesSheet.qml:648
 msgid "Autoload delay"
 msgstr "Задержка автозагрузки"
 
 #: src/contents/ui/PreferencesSheet.qml:622
 #: src/contents/ui/PreferencesSheet.qml:633
+#: src/contents/ui/PreferencesSheet.qml:649
 msgid ""
 "Delay between receiving a new device route and the call to autoload a preset."
 msgstr ""
@@ -2575,11 +2624,13 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:638
 #: src/contents/ui/PreferencesSheet.qml:649
+#: src/contents/ui/PreferencesSheet.qml:665
 msgid "Ignore the blocklist from presets"
 msgstr "Игнорировать список блокировки из предустановок"
 
 #: src/contents/ui/PreferencesSheet.qml:639
 #: src/contents/ui/PreferencesSheet.qml:650
+#: src/contents/ui/PreferencesSheet.qml:666
 msgid ""
 "If enabled, the list of excluded apps set in the loaded preset is ignored "
 "and does not replace the one set by the user."
@@ -2589,32 +2640,38 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:660
 #: src/contents/ui/PreferencesSheet.qml:671
+#: src/contents/ui/PreferencesSheet.qml:687
 msgid "Global shortcuts"
 msgstr "Глобальные горячие клавиши"
 
 #: src/contents/ui/PreferencesSheet.qml:661
 #: src/contents/ui/PreferencesSheet.qml:672
+#: src/contents/ui/PreferencesSheet.qml:688
 msgid "Enables support for XDG global shortcuts."
 msgstr "Включает поддержку глобальных горячих клавиш XDG."
 
 #: src/contents/ui/PreferencesSheet.qml:673
 #: src/contents/ui/PreferencesSheet.qml:684
+#: src/contents/ui/PreferencesSheet.qml:700
 msgid "Native window of effects"
 msgstr "Встроенное окно эффектов"
 
 #: src/contents/ui/PreferencesSheet.qml:674
 #: src/contents/ui/PreferencesSheet.qml:685
+#: src/contents/ui/PreferencesSheet.qml:701
 msgid "Allows the native user interface of effects to be shown/hidden."
 msgstr ""
 "Позволяет показывать/скрывать встроенный пользовательский интерфейс плагина."
 
 #: src/contents/ui/PreferencesSheet.qml:686
 #: src/contents/ui/PreferencesSheet.qml:697
+#: src/contents/ui/PreferencesSheet.qml:713
 msgid "Update frequency"
 msgstr "Частота обновления"
 
 #: src/contents/ui/PreferencesSheet.qml:687
 #: src/contents/ui/PreferencesSheet.qml:698
+#: src/contents/ui/PreferencesSheet.qml:714
 msgid "Related to LV2 plugins."
 msgstr "Относится к плагинам LV2."
 
@@ -3245,97 +3302,97 @@ msgstr "Речевой процессор"
 msgid "Stereo Tools"
 msgstr "Наладчики стерео"
 
-#: src/units.hpp:54
+#: src/units.hpp:54 src/units.hpp:55
 msgctxt "left channel abbreviation (single letter)"
 msgid "L"
 msgstr "Л"
 
-#: src/units.hpp:55
+#: src/units.hpp:55 src/units.hpp:56
 msgctxt "left channel abbreviation (single letter)"
 msgid "R"
 msgstr "П"
 
-#: src/units.hpp:56
+#: src/units.hpp:56 src/units.hpp:57
 msgctxt "decibel unit abbreviation"
 msgid "dB"
 msgstr "дБ"
 
-#: src/units.hpp:57
+#: src/units.hpp:57 src/units.hpp:58
 msgctxt "decibel full scale unit abbreviation"
 msgid "dBFS"
 msgstr "дБFS"
 
-#: src/units.hpp:58
+#: src/units.hpp:58 src/units.hpp:59
 msgctxt "decibel per octaves unit abbreviation"
 msgid "dB/oct"
 msgstr "дБ/окт"
 
-#: src/units.hpp:59
+#: src/units.hpp:59 src/units.hpp:60
 msgctxt "thousand abbreviation (single letter)"
 msgid "k"
 msgstr "к"
 
-#: src/units.hpp:60
+#: src/units.hpp:60 src/units.hpp:61
 msgctxt "seconds unit abbreviation"
 msgid "s"
 msgstr "с"
 
-#: src/units.hpp:61
+#: src/units.hpp:61 src/units.hpp:62
 msgctxt "milliseconds unit abbreviation"
 msgid "ms"
 msgstr "мс"
 
-#: src/units.hpp:62
+#: src/units.hpp:62 src/units.hpp:63
 msgctxt "Hertz unit abbreviation"
 msgid "Hz"
 msgstr "Гц"
 
-#: src/units.hpp:63
+#: src/units.hpp:63 src/units.hpp:64
 msgctxt "kiloHertz unit abbreviation"
 msgid "kHz"
 msgstr "кГц"
 
-#: src/units.hpp:64
+#: src/units.hpp:64 src/units.hpp:65
 msgctxt "percentage symbol"
 msgid "%"
 msgstr "%"
 
-#: src/units.hpp:65
+#: src/units.hpp:65 src/units.hpp:66
 msgctxt "loudness full scale unit abbreviation"
 msgid "LUFS"
 msgstr "LUFS"
 
-#: src/units.hpp:66
+#: src/units.hpp:66 src/units.hpp:67
 msgctxt "loudness unit abbreviation"
 msgid "LU"
 msgstr "LU"
 
-#: src/units.hpp:67
+#: src/units.hpp:67 src/units.hpp:68
 msgctxt "meter unit abbreviation"
 msgid "m"
 msgstr "м"
 
-#: src/units.hpp:68
+#: src/units.hpp:68 src/units.hpp:69
 msgctxt "centimeter unit abbreviation"
 msgid "cm"
 msgstr "см"
 
-#: src/units.hpp:69
+#: src/units.hpp:69 src/units.hpp:70
 msgctxt "degree Celsius unit abbreviation"
 msgid "°C"
 msgstr "°C"
 
-#: src/units.hpp:70
+#: src/units.hpp:70 src/units.hpp:71
 msgctxt "bit unit (plural)"
 msgid "bits"
 msgstr "бит(-а)"
 
-#: src/units.hpp:71
+#: src/units.hpp:71 src/units.hpp:72
 msgctxt "frame unit (plural)"
 msgid "frames"
 msgstr "кадр(-а/-ов)"
 
-#: src/units.hpp:72
+#: src/units.hpp:72 src/units.hpp:74
 msgctxt "minus infinity abbreviation"
 msgid "-inf"
 msgstr "-беск."
@@ -3351,6 +3408,20 @@ msgstr "Простые звуковые эффекты"
 #: src/contents/ui/PreferencesSheet.qml:258
 msgid "Enable level meters animation"
 msgstr "Включить анимацию уровнемеров"
+
+#: src/contents/ui/PreferencesSheet.qml:281
+#, fuzzy
+msgid "Level meters animation frame rate cap"
+msgstr "Длительность анимации уровнемеров"
+
+#: src/contents/ui/PreferencesSheet.qml:282
+msgid "Maximum level meter update rate when animations are enabled."
+msgstr ""
+
+#: src/units.hpp:73
+msgctxt "frames per second"
+msgid "fps"
+msgstr ""
 
 #~ msgid "24 dB/oct"
 #~ msgstr "24 дБ/окт"

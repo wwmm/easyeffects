@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-29 23:20-0300\n"
+"POT-Creation-Date: 2025-11-30 16:51-0300\n"
 "PO-Revision-Date: 2025-11-29 22:47+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1894,12 +1894,12 @@ msgid "No Clients"
 msgstr "Nessun Client"
 
 #: src/contents/ui/PipeWirePage.qml:296
-#: src/contents/ui/PreferencesSheet.qml:286
+#: src/contents/ui/PreferencesSheet.qml:302
 msgid "State"
 msgstr "Stato"
 
 #: src/contents/ui/PipeWirePage.qml:303
-#: src/contents/ui/PreferencesSheet.qml:293
+#: src/contents/ui/PreferencesSheet.qml:309
 msgid "Enabled"
 msgstr "Abilitato"
 
@@ -2123,83 +2123,92 @@ msgstr "Durata delle animazioni dei misuratori di livello"
 msgid "Level meters animation duration"
 msgstr "Durata delle animazioni dei misuratori di livello"
 
-#: src/contents/ui/PreferencesSheet.qml:305
+#: src/contents/ui/PreferencesSheet.qml:281
+#, fuzzy
+msgid "Level meters animation frame rate cap"
+msgstr "Durata delle animazioni dei misuratori di livello"
+
+#: src/contents/ui/PreferencesSheet.qml:282
+msgid "Maximum level meter update rate when animations are enabled."
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:321
 msgid "Audio delay compensation"
 msgstr "Compensazione audio delay"
 
-#: src/contents/ui/PreferencesSheet.qml:320
+#: src/contents/ui/PreferencesSheet.qml:336
 msgid "Graph"
 msgstr "Grafico"
 
-#: src/contents/ui/PreferencesSheet.qml:327
+#: src/contents/ui/PreferencesSheet.qml:343
 msgid "Shape"
 msgstr "Forma"
 
-#: src/contents/ui/PreferencesSheet.qml:331
+#: src/contents/ui/PreferencesSheet.qml:347
 msgid "Bars"
 msgstr "Barre"
 
-#: src/contents/ui/PreferencesSheet.qml:331
+#: src/contents/ui/PreferencesSheet.qml:347
 msgid "Lines"
 msgstr "Linee"
 
-#: src/contents/ui/PreferencesSheet.qml:331
+#: src/contents/ui/PreferencesSheet.qml:347
 msgid "Dots"
 msgstr "Punti"
 
-#: src/contents/ui/PreferencesSheet.qml:331
+#: src/contents/ui/PreferencesSheet.qml:347
 msgid "Area"
 msgstr "Area"
 
-#: src/contents/ui/PreferencesSheet.qml:341
+#: src/contents/ui/PreferencesSheet.qml:357
 msgid "Dynamic scale"
 msgstr "Scala dinamica"
 
-#: src/contents/ui/PreferencesSheet.qml:353
+#: src/contents/ui/PreferencesSheet.qml:369
 msgid "Logarithmic frequency axis"
 msgstr "Asse frequenza logaritmica"
 
-#: src/contents/ui/PreferencesSheet.qml:365
+#: src/contents/ui/PreferencesSheet.qml:381
 msgid "Points"
 msgstr "Punti"
 
-#: src/contents/ui/PreferencesSheet.qml:380
+#: src/contents/ui/PreferencesSheet.qml:396
 msgid "Height"
 msgstr "Altezza"
 
-#: src/contents/ui/PreferencesSheet.qml:387
+#: src/contents/ui/PreferencesSheet.qml:403
 msgid "px"
 msgstr "px"
 
-#: src/contents/ui/PreferencesSheet.qml:395
+#: src/contents/ui/PreferencesSheet.qml:411
 msgid "Frequency Range"
 msgstr "Gamma Frequenze"
 
-#: src/contents/ui/PreferencesSheet.qml:402
+#: src/contents/ui/PreferencesSheet.qml:418
 msgid "Minimum"
 msgstr "Minima"
 
-#: src/contents/ui/PreferencesSheet.qml:418
+#: src/contents/ui/PreferencesSheet.qml:434
 msgid "Maximum"
 msgstr "Massima"
 
-#: src/contents/ui/PreferencesSheet.qml:440
+#: src/contents/ui/PreferencesSheet.qml:456
 msgid "Database autosave interval"
 msgstr "Intervallo di auto salvataggio del database"
 
-#: src/contents/ui/PreferencesSheet.qml:454
+#: src/contents/ui/PreferencesSheet.qml:470
 msgid "Most used presets"
 msgstr "Profili più utilizzati"
 
-#: src/contents/ui/PreferencesSheet.qml:472
+#: src/contents/ui/PreferencesSheet.qml:488
 msgid "Window"
 msgstr "Finestra"
 
-#: src/contents/ui/PreferencesSheet.qml:481
+#: src/contents/ui/PreferencesSheet.qml:497
 msgid "Force KDE's Breeze theme when Easy Effects starts"
 msgstr "Forza il tema Breeze di KDE all'avvio di Easy Effects"
 
-#: src/contents/ui/PreferencesSheet.qml:482
+#: src/contents/ui/PreferencesSheet.qml:498
 msgid ""
 "It is necessary to restart the service for changes in this setting to take "
 "effect."
@@ -2207,11 +2216,11 @@ msgstr ""
 "È necessario effettuare il riavvio del servizio per rendere esecutiva questa "
 "impostazione."
 
-#: src/contents/ui/PreferencesSheet.qml:495
+#: src/contents/ui/PreferencesSheet.qml:511
 msgid "Reduce effects list controls"
 msgstr "Riduci le opzioni della lista degli effetti"
 
-#: src/contents/ui/PreferencesSheet.qml:496
+#: src/contents/ui/PreferencesSheet.qml:512
 msgid ""
 "Action buttons in the effects list are moved inside a context menu for a "
 "more compact view."
@@ -2219,120 +2228,120 @@ msgstr ""
 "I bottoni nella lista degli effetti sono inseriti in un menu contestuale per "
 "una visualizzazione più compatta."
 
-#: src/contents/ui/PreferencesSheet.qml:508
+#: src/contents/ui/PreferencesSheet.qml:524
 msgid "Graphs"
 msgstr "Grafici"
 
-#: src/contents/ui/PreferencesSheet.qml:519
+#: src/contents/ui/PreferencesSheet.qml:535
 msgid "Color scheme"
 msgstr "Schema colori"
 
-#: src/contents/ui/PreferencesSheet.qml:523
+#: src/contents/ui/PreferencesSheet.qml:539
 msgid "Automatic"
 msgstr "Automatico"
 
-#: src/contents/ui/PreferencesSheet.qml:523
+#: src/contents/ui/PreferencesSheet.qml:539
 msgid "Light"
 msgstr "Chiaro"
 
-#: src/contents/ui/PreferencesSheet.qml:523
+#: src/contents/ui/PreferencesSheet.qml:539
 msgid "Dark"
 msgstr "Scuro"
 
-#: src/contents/ui/PreferencesSheet.qml:534
+#: src/contents/ui/PreferencesSheet.qml:550
 msgid "Color theme"
 msgstr "Tema colori"
 
-#: src/contents/ui/PreferencesSheet.qml:538
+#: src/contents/ui/PreferencesSheet.qml:554
 msgid "Green"
 msgstr "Verde"
 
-#: src/contents/ui/PreferencesSheet.qml:538
+#: src/contents/ui/PreferencesSheet.qml:554
 msgid "Green neon"
 msgstr "Verde neon"
 
-#: src/contents/ui/PreferencesSheet.qml:538
+#: src/contents/ui/PreferencesSheet.qml:554
 msgid "Mix"
 msgstr "Mix"
 
-#: src/contents/ui/PreferencesSheet.qml:538
+#: src/contents/ui/PreferencesSheet.qml:554
 msgid "Orange"
 msgstr "Arancione"
 
-#: src/contents/ui/PreferencesSheet.qml:538
+#: src/contents/ui/PreferencesSheet.qml:554
 msgid "Yellow"
 msgstr "Giallo"
 
-#: src/contents/ui/PreferencesSheet.qml:538
+#: src/contents/ui/PreferencesSheet.qml:554
 msgid "Blue"
 msgstr "Blu"
 
-#: src/contents/ui/PreferencesSheet.qml:538
+#: src/contents/ui/PreferencesSheet.qml:554
 msgid "Purple"
 msgstr "Viola"
 
-#: src/contents/ui/PreferencesSheet.qml:538
+#: src/contents/ui/PreferencesSheet.qml:554
 msgid "Grey"
 msgstr "Grigio"
 
-#: src/contents/ui/PreferencesSheet.qml:538
+#: src/contents/ui/PreferencesSheet.qml:554
 msgid "User"
 msgstr "Utente"
 
-#: src/contents/ui/PreferencesSheet.qml:546
+#: src/contents/ui/PreferencesSheet.qml:562
 msgctxt "@label"
 msgid "Background"
 msgstr "Sfondo"
 
-#: src/contents/ui/PreferencesSheet.qml:555
+#: src/contents/ui/PreferencesSheet.qml:571
 msgctxt "@label"
 msgid "Plot area background"
 msgstr "Sfondo dell'area del grafico"
 
-#: src/contents/ui/PreferencesSheet.qml:564
+#: src/contents/ui/PreferencesSheet.qml:580
 msgctxt "@label"
 msgid "Series colors"
 msgstr "Serie di colori"
 
-#: src/contents/ui/PreferencesSheet.qml:573
+#: src/contents/ui/PreferencesSheet.qml:589
 msgctxt "@label"
 msgid "Axis labels text color"
 msgstr "Colore delle etichette sulle assi"
 
-#: src/contents/ui/PreferencesSheet.qml:582
+#: src/contents/ui/PreferencesSheet.qml:598
 msgctxt "@label"
 msgid "Axis labels background color"
 msgstr "Sfondo delle etichette sulle assi"
 
-#: src/contents/ui/PreferencesSheet.qml:591
+#: src/contents/ui/PreferencesSheet.qml:607
 msgctxt "@label"
 msgid "Border color"
 msgstr "Colore del bordo"
 
-#: src/contents/ui/PreferencesSheet.qml:600
+#: src/contents/ui/PreferencesSheet.qml:616
 msgid "Line width"
 msgstr "Spessore delle linee"
 
-#: src/contents/ui/PreferencesSheet.qml:614
+#: src/contents/ui/PreferencesSheet.qml:630
 msgid "Show grid lines"
 msgstr "Mostra linee nella griglia"
 
-#: src/contents/ui/PreferencesSheet.qml:632
+#: src/contents/ui/PreferencesSheet.qml:648
 msgid "Autoload delay"
 msgstr "Ritardo del caricamento automatico"
 
-#: src/contents/ui/PreferencesSheet.qml:633
+#: src/contents/ui/PreferencesSheet.qml:649
 msgid ""
 "Delay between receiving a new device route and the call to autoload a preset."
 msgstr ""
 "Il ritardo tra la ricezione di un nuovo percorso del dispositivo e la "
 "chiamata del caricamento automatico del profilo."
 
-#: src/contents/ui/PreferencesSheet.qml:649
+#: src/contents/ui/PreferencesSheet.qml:665
 msgid "Ignore the blocklist from presets"
 msgstr "Ignora le app escluse dai profili"
 
-#: src/contents/ui/PreferencesSheet.qml:650
+#: src/contents/ui/PreferencesSheet.qml:666
 msgid ""
 "If enabled, the list of excluded apps set in the loaded preset is ignored "
 "and does not replace the one set by the user."
@@ -2340,28 +2349,28 @@ msgstr ""
 "Se abilitato, la lista delle applicazioni escluse nei profili viene "
 "ignorata, mentre quella impostata dall'utente continua a rimanere in vigore."
 
-#: src/contents/ui/PreferencesSheet.qml:671
+#: src/contents/ui/PreferencesSheet.qml:687
 msgid "Global shortcuts"
 msgstr "Scorciatoie globali"
 
-#: src/contents/ui/PreferencesSheet.qml:672
+#: src/contents/ui/PreferencesSheet.qml:688
 msgid "Enables support for XDG global shortcuts."
 msgstr "Abilita il supporto alle scorciatoie globali XDG."
 
-#: src/contents/ui/PreferencesSheet.qml:684
+#: src/contents/ui/PreferencesSheet.qml:700
 msgid "Native window of effects"
 msgstr "Mostra interfaccia nativa degli effetti"
 
-#: src/contents/ui/PreferencesSheet.qml:685
+#: src/contents/ui/PreferencesSheet.qml:701
 msgid "Allows the native user interface of effects to be shown/hidden."
 msgstr ""
 "Permette di visualizzare o nascondere le finestre native degli effetti."
 
-#: src/contents/ui/PreferencesSheet.qml:697
+#: src/contents/ui/PreferencesSheet.qml:713
 msgid "Update frequency"
 msgstr "Frequenza di aggiornamento"
 
-#: src/contents/ui/PreferencesSheet.qml:698
+#: src/contents/ui/PreferencesSheet.qml:714
 msgid "Related to LV2 plugins."
 msgstr "Correlato ai plugin LV2."
 
@@ -2989,97 +2998,102 @@ msgstr "Miglioramento Voce"
 msgid "Stereo Tools"
 msgstr "Strumenti Stereo"
 
-#: src/units.hpp:54
+#: src/units.hpp:55
 msgctxt "left channel abbreviation (single letter)"
 msgid "L"
 msgstr "S"
 
-#: src/units.hpp:55
+#: src/units.hpp:56
 msgctxt "left channel abbreviation (single letter)"
 msgid "R"
 msgstr "D"
 
-#: src/units.hpp:56
+#: src/units.hpp:57
 msgctxt "decibel unit abbreviation"
 msgid "dB"
 msgstr "dB"
 
-#: src/units.hpp:57
+#: src/units.hpp:58
 msgctxt "decibel full scale unit abbreviation"
 msgid "dBFS"
 msgstr "dBFS"
 
-#: src/units.hpp:58
+#: src/units.hpp:59
 msgctxt "decibel per octaves unit abbreviation"
 msgid "dB/oct"
 msgstr "dB/oct"
 
-#: src/units.hpp:59
+#: src/units.hpp:60
 msgctxt "thousand abbreviation (single letter)"
 msgid "k"
 msgstr "k"
 
-#: src/units.hpp:60
+#: src/units.hpp:61
 msgctxt "seconds unit abbreviation"
 msgid "s"
 msgstr "s"
 
-#: src/units.hpp:61
+#: src/units.hpp:62
 msgctxt "milliseconds unit abbreviation"
 msgid "ms"
 msgstr "ms"
 
-#: src/units.hpp:62
+#: src/units.hpp:63
 msgctxt "Hertz unit abbreviation"
 msgid "Hz"
 msgstr "Hz"
 
-#: src/units.hpp:63
+#: src/units.hpp:64
 msgctxt "kiloHertz unit abbreviation"
 msgid "kHz"
 msgstr "kHz"
 
-#: src/units.hpp:64
+#: src/units.hpp:65
 msgctxt "percentage symbol"
 msgid "%"
 msgstr "%"
 
-#: src/units.hpp:65
+#: src/units.hpp:66
 msgctxt "loudness full scale unit abbreviation"
 msgid "LUFS"
 msgstr "LUFS"
 
-#: src/units.hpp:66
+#: src/units.hpp:67
 msgctxt "loudness unit abbreviation"
 msgid "LU"
 msgstr "LU"
 
-#: src/units.hpp:67
+#: src/units.hpp:68
 msgctxt "meter unit abbreviation"
 msgid "m"
 msgstr "m"
 
-#: src/units.hpp:68
+#: src/units.hpp:69
 msgctxt "centimeter unit abbreviation"
 msgid "cm"
 msgstr "cm"
 
-#: src/units.hpp:69
+#: src/units.hpp:70
 msgctxt "degree Celsius unit abbreviation"
 msgid "°C"
 msgstr "°C"
 
-#: src/units.hpp:70
+#: src/units.hpp:71
 msgctxt "bit unit (plural)"
 msgid "bits"
 msgstr "bit"
 
-#: src/units.hpp:71
+#: src/units.hpp:72
 msgctxt "frame unit (plural)"
 msgid "frames"
 msgstr "frame"
 
-#: src/units.hpp:72
+#: src/units.hpp:73
+msgctxt "frames per second"
+msgid "fps"
+msgstr ""
+
+#: src/units.hpp:74
 msgctxt "minus infinity abbreviation"
 msgid "-inf"
 msgstr "-inf"

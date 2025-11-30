@@ -16,9 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural="
-"(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? "
-"1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Weblate 5.15-dev\n"
 
 #: src/autostart.cpp:89
@@ -1891,11 +1890,13 @@ msgstr "Немає клієнтів"
 
 #: src/contents/ui/PipeWirePage.qml:296
 #: src/contents/ui/PreferencesSheet.qml:286
+#: src/contents/ui/PreferencesSheet.qml:302
 msgid "State"
 msgstr "Стан"
 
 #: src/contents/ui/PipeWirePage.qml:303
 #: src/contents/ui/PreferencesSheet.qml:293
+#: src/contents/ui/PreferencesSheet.qml:309
 msgid "Enabled"
 msgstr "Увімкнено"
 
@@ -2118,82 +2119,102 @@ msgid "Level meters animation duration"
 msgstr "Тривалість анімації рівня"
 
 #: src/contents/ui/PreferencesSheet.qml:305
+#: src/contents/ui/PreferencesSheet.qml:321
 msgid "Audio delay compensation"
 msgstr "Компенсація затримки звуку"
 
 #: src/contents/ui/PreferencesSheet.qml:320
+#: src/contents/ui/PreferencesSheet.qml:336
 msgid "Graph"
 msgstr "Графік"
 
 #: src/contents/ui/PreferencesSheet.qml:327
+#: src/contents/ui/PreferencesSheet.qml:343
 msgid "Shape"
 msgstr "Форма"
 
 #: src/contents/ui/PreferencesSheet.qml:331
+#: src/contents/ui/PreferencesSheet.qml:347
 msgid "Bars"
 msgstr "Стовпці"
 
 #: src/contents/ui/PreferencesSheet.qml:331
+#: src/contents/ui/PreferencesSheet.qml:347
 msgid "Lines"
 msgstr "Лінії"
 
 #: src/contents/ui/PreferencesSheet.qml:331
+#: src/contents/ui/PreferencesSheet.qml:347
 msgid "Dots"
 msgstr "Крапки"
 
 #: src/contents/ui/PreferencesSheet.qml:331
+#: src/contents/ui/PreferencesSheet.qml:347
 msgid "Area"
 msgstr "Площа"
 
 #: src/contents/ui/PreferencesSheet.qml:341
+#: src/contents/ui/PreferencesSheet.qml:357
 msgid "Dynamic scale"
 msgstr "Динамічний масштаб"
 
 #: src/contents/ui/PreferencesSheet.qml:353
+#: src/contents/ui/PreferencesSheet.qml:369
 msgid "Logarithmic frequency axis"
 msgstr "Логарифмічна вісь частоти"
 
 #: src/contents/ui/PreferencesSheet.qml:365
+#: src/contents/ui/PreferencesSheet.qml:381
 msgid "Points"
 msgstr "Роздільна здатність"
 
 #: src/contents/ui/PreferencesSheet.qml:380
+#: src/contents/ui/PreferencesSheet.qml:396
 msgid "Height"
 msgstr "Висота"
 
 #: src/contents/ui/PreferencesSheet.qml:387
+#: src/contents/ui/PreferencesSheet.qml:403
 msgid "px"
 msgstr "пікс"
 
 #: src/contents/ui/PreferencesSheet.qml:395
+#: src/contents/ui/PreferencesSheet.qml:411
 msgid "Frequency Range"
 msgstr "Діапазон частот"
 
 #: src/contents/ui/PreferencesSheet.qml:402
+#: src/contents/ui/PreferencesSheet.qml:418
 msgid "Minimum"
 msgstr "Мінімум"
 
 #: src/contents/ui/PreferencesSheet.qml:418
+#: src/contents/ui/PreferencesSheet.qml:434
 msgid "Maximum"
 msgstr "Максимум"
 
 #: src/contents/ui/PreferencesSheet.qml:440
+#: src/contents/ui/PreferencesSheet.qml:456
 msgid "Database autosave interval"
 msgstr "Інтервал автоматичного збереження бази даних"
 
 #: src/contents/ui/PreferencesSheet.qml:454
+#: src/contents/ui/PreferencesSheet.qml:470
 msgid "Most used presets"
 msgstr "Найчастіше застосовувані пресети"
 
 #: src/contents/ui/PreferencesSheet.qml:472
+#: src/contents/ui/PreferencesSheet.qml:488
 msgid "Window"
 msgstr "Вікно"
 
 #: src/contents/ui/PreferencesSheet.qml:481
+#: src/contents/ui/PreferencesSheet.qml:497
 msgid "Force KDE's Breeze theme when Easy Effects starts"
 msgstr "Примусово вмикати тему KDE Breeze при запуску Easy Effects"
 
 #: src/contents/ui/PreferencesSheet.qml:482
+#: src/contents/ui/PreferencesSheet.qml:498
 msgid ""
 "It is necessary to restart the service for changes in this setting to take "
 "effect."
@@ -2202,10 +2223,12 @@ msgstr ""
 "чинності."
 
 #: src/contents/ui/PreferencesSheet.qml:495
+#: src/contents/ui/PreferencesSheet.qml:511
 msgid "Reduce effects list controls"
 msgstr "Приховати елементи керування у списку ефектів"
 
 #: src/contents/ui/PreferencesSheet.qml:496
+#: src/contents/ui/PreferencesSheet.qml:512
 msgid ""
 "Action buttons in the effects list are moved inside a context menu for a "
 "more compact view."
@@ -2214,108 +2237,133 @@ msgstr ""
 "компактного відображення."
 
 #: src/contents/ui/PreferencesSheet.qml:508
+#: src/contents/ui/PreferencesSheet.qml:524
 msgid "Graphs"
 msgstr "Графіки"
 
 #: src/contents/ui/PreferencesSheet.qml:519
+#: src/contents/ui/PreferencesSheet.qml:535
 msgid "Color scheme"
 msgstr "Колірна схема"
 
 #: src/contents/ui/PreferencesSheet.qml:523
+#: src/contents/ui/PreferencesSheet.qml:539
 msgid "Automatic"
 msgstr "Автоматична"
 
 #: src/contents/ui/PreferencesSheet.qml:523
+#: src/contents/ui/PreferencesSheet.qml:539
 msgid "Light"
 msgstr "Світла"
 
 #: src/contents/ui/PreferencesSheet.qml:523
+#: src/contents/ui/PreferencesSheet.qml:539
 msgid "Dark"
 msgstr "Темна"
 
 #: src/contents/ui/PreferencesSheet.qml:534
+#: src/contents/ui/PreferencesSheet.qml:550
 msgid "Color theme"
 msgstr "Колірна тема"
 
 #: src/contents/ui/PreferencesSheet.qml:538
+#: src/contents/ui/PreferencesSheet.qml:554
 msgid "Green"
 msgstr "Зелена"
 
 #: src/contents/ui/PreferencesSheet.qml:538
+#: src/contents/ui/PreferencesSheet.qml:554
 msgid "Green neon"
 msgstr "Зелений неон"
 
 #: src/contents/ui/PreferencesSheet.qml:538
+#: src/contents/ui/PreferencesSheet.qml:554
 msgid "Mix"
 msgstr "Змішана"
 
 #: src/contents/ui/PreferencesSheet.qml:538
+#: src/contents/ui/PreferencesSheet.qml:554
 msgid "Orange"
 msgstr "Помаранчева"
 
 #: src/contents/ui/PreferencesSheet.qml:538
+#: src/contents/ui/PreferencesSheet.qml:554
 msgid "Yellow"
 msgstr "Жовта"
 
 #: src/contents/ui/PreferencesSheet.qml:538
+#: src/contents/ui/PreferencesSheet.qml:554
 msgid "Blue"
 msgstr "Синя"
 
 #: src/contents/ui/PreferencesSheet.qml:538
+#: src/contents/ui/PreferencesSheet.qml:554
 msgid "Purple"
 msgstr "Фіолетова"
 
 #: src/contents/ui/PreferencesSheet.qml:538
+#: src/contents/ui/PreferencesSheet.qml:554
 msgid "Grey"
 msgstr "Сіра"
 
 #: src/contents/ui/PreferencesSheet.qml:538
+#: src/contents/ui/PreferencesSheet.qml:554
 msgid "User"
 msgstr "Користувач"
 
 #: src/contents/ui/PreferencesSheet.qml:546
+#: src/contents/ui/PreferencesSheet.qml:562
 msgctxt "@label"
 msgid "Background"
 msgstr "Фон"
 
 #: src/contents/ui/PreferencesSheet.qml:555
+#: src/contents/ui/PreferencesSheet.qml:571
 msgctxt "@label"
 msgid "Plot area background"
 msgstr "Фон площі ділянки"
 
 #: src/contents/ui/PreferencesSheet.qml:564
+#: src/contents/ui/PreferencesSheet.qml:580
 msgctxt "@label"
 msgid "Series colors"
 msgstr "Кольори лінійки"
 
 #: src/contents/ui/PreferencesSheet.qml:573
+#: src/contents/ui/PreferencesSheet.qml:589
 msgctxt "@label"
 msgid "Axis labels text color"
 msgstr "Колір тексту міток осей"
 
 #: src/contents/ui/PreferencesSheet.qml:582
+#: src/contents/ui/PreferencesSheet.qml:598
 msgctxt "@label"
 msgid "Axis labels background color"
 msgstr "Колір фону міток осей"
 
 #: src/contents/ui/PreferencesSheet.qml:591
+#: src/contents/ui/PreferencesSheet.qml:607
 msgctxt "@label"
 msgid "Border color"
 msgstr "Колір контурів"
 
 #: src/contents/ui/PreferencesSheet.qml:600
+#: src/contents/ui/PreferencesSheet.qml:616
 msgid "Line width"
 msgstr "Ширина лінії"
 
 #: src/contents/ui/PreferencesSheet.qml:614
+#: src/contents/ui/PreferencesSheet.qml:630
 msgid "Show grid lines"
 msgstr "Показувати лінії сітки"
 
 #: src/contents/ui/PreferencesSheet.qml:632
+#: src/contents/ui/PreferencesSheet.qml:648
 msgid "Autoload delay"
 msgstr "Затримка автозавантаження"
 
 #: src/contents/ui/PreferencesSheet.qml:633
+#: src/contents/ui/PreferencesSheet.qml:649
 msgid ""
 "Delay between receiving a new device route and the call to autoload a preset."
 msgstr ""
@@ -2323,10 +2371,12 @@ msgstr ""
 "автозавантаження пресету."
 
 #: src/contents/ui/PreferencesSheet.qml:649
+#: src/contents/ui/PreferencesSheet.qml:665
 msgid "Ignore the blocklist from presets"
 msgstr "Ігнорувати список блокування з пресетів"
 
 #: src/contents/ui/PreferencesSheet.qml:650
+#: src/contents/ui/PreferencesSheet.qml:666
 msgid ""
 "If enabled, the list of excluded apps set in the loaded preset is ignored "
 "and does not replace the one set by the user."
@@ -2335,26 +2385,32 @@ msgstr ""
 "пресеті, ігнорується та не замінює той, що встановлений користувачем."
 
 #: src/contents/ui/PreferencesSheet.qml:671
+#: src/contents/ui/PreferencesSheet.qml:687
 msgid "Global shortcuts"
 msgstr "Глобальні скорочення"
 
 #: src/contents/ui/PreferencesSheet.qml:672
+#: src/contents/ui/PreferencesSheet.qml:688
 msgid "Enables support for XDG global shortcuts."
 msgstr "Увімкнути підтримку глобальних скорочень XDG."
 
 #: src/contents/ui/PreferencesSheet.qml:684
+#: src/contents/ui/PreferencesSheet.qml:700
 msgid "Native window of effects"
 msgstr "Рідне вікно ефектів"
 
 #: src/contents/ui/PreferencesSheet.qml:685
+#: src/contents/ui/PreferencesSheet.qml:701
 msgid "Allows the native user interface of effects to be shown/hidden."
 msgstr "Дозволяє показувати/приховувати власний інтерфейс користувача ефектів."
 
 #: src/contents/ui/PreferencesSheet.qml:697
+#: src/contents/ui/PreferencesSheet.qml:713
 msgid "Update frequency"
 msgstr "Частота оновлення"
 
 #: src/contents/ui/PreferencesSheet.qml:698
+#: src/contents/ui/PreferencesSheet.qml:714
 msgid "Related to LV2 plugins."
 msgstr "Стосується плагінів LV2."
 
@@ -2976,97 +3032,97 @@ msgstr "Шумозаглушення (Speex)"
 msgid "Stereo Tools"
 msgstr "Стерео інструменти"
 
-#: src/units.hpp:54
+#: src/units.hpp:54 src/units.hpp:55
 msgctxt "left channel abbreviation (single letter)"
 msgid "L"
 msgstr "Л"
 
-#: src/units.hpp:55
+#: src/units.hpp:55 src/units.hpp:56
 msgctxt "left channel abbreviation (single letter)"
 msgid "R"
 msgstr "П"
 
-#: src/units.hpp:56
+#: src/units.hpp:56 src/units.hpp:57
 msgctxt "decibel unit abbreviation"
 msgid "dB"
 msgstr "дБ"
 
-#: src/units.hpp:57
+#: src/units.hpp:57 src/units.hpp:58
 msgctxt "decibel full scale unit abbreviation"
 msgid "dBFS"
 msgstr "дБПШ (dBFS)"
 
-#: src/units.hpp:58
+#: src/units.hpp:58 src/units.hpp:59
 msgctxt "decibel per octaves unit abbreviation"
 msgid "dB/oct"
 msgstr "дБ/окт"
 
-#: src/units.hpp:59
+#: src/units.hpp:59 src/units.hpp:60
 msgctxt "thousand abbreviation (single letter)"
 msgid "k"
 msgstr "к"
 
-#: src/units.hpp:60
+#: src/units.hpp:60 src/units.hpp:61
 msgctxt "seconds unit abbreviation"
 msgid "s"
 msgstr "с"
 
-#: src/units.hpp:61
+#: src/units.hpp:61 src/units.hpp:62
 msgctxt "milliseconds unit abbreviation"
 msgid "ms"
 msgstr "мс"
 
-#: src/units.hpp:62
+#: src/units.hpp:62 src/units.hpp:63
 msgctxt "Hertz unit abbreviation"
 msgid "Hz"
 msgstr "Гц"
 
-#: src/units.hpp:63
+#: src/units.hpp:63 src/units.hpp:64
 msgctxt "kiloHertz unit abbreviation"
 msgid "kHz"
 msgstr "кГц"
 
-#: src/units.hpp:64
+#: src/units.hpp:64 src/units.hpp:65
 msgctxt "percentage symbol"
 msgid "%"
 msgstr "%"
 
-#: src/units.hpp:65
+#: src/units.hpp:65 src/units.hpp:66
 msgctxt "loudness full scale unit abbreviation"
 msgid "LUFS"
 msgstr "ОГПШ (LUFS)"
 
-#: src/units.hpp:66
+#: src/units.hpp:66 src/units.hpp:67
 msgctxt "loudness unit abbreviation"
 msgid "LU"
 msgstr "ОГ (LU)"
 
-#: src/units.hpp:67
+#: src/units.hpp:67 src/units.hpp:68
 msgctxt "meter unit abbreviation"
 msgid "m"
 msgstr "м"
 
-#: src/units.hpp:68
+#: src/units.hpp:68 src/units.hpp:69
 msgctxt "centimeter unit abbreviation"
 msgid "cm"
 msgstr "см"
 
-#: src/units.hpp:69
+#: src/units.hpp:69 src/units.hpp:70
 msgctxt "degree Celsius unit abbreviation"
 msgid "°C"
 msgstr "°C"
 
-#: src/units.hpp:70
+#: src/units.hpp:70 src/units.hpp:71
 msgctxt "bit unit (plural)"
 msgid "bits"
 msgstr "біт(-а/-ів)"
 
-#: src/units.hpp:71
+#: src/units.hpp:71 src/units.hpp:72
 msgctxt "frame unit (plural)"
 msgid "frames"
 msgstr "кадр(-а/-ів)"
 
-#: src/units.hpp:72
+#: src/units.hpp:72 src/units.hpp:74
 msgctxt "minus infinity abbreviation"
 msgid "-inf"
 msgstr "-∞"
@@ -3078,6 +3134,19 @@ msgstr "Еквалайзер, компресор та інші звукові е
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "Прості звукові ефекти"
+
+#: src/contents/ui/PreferencesSheet.qml:281
+msgid "Level meters animation frame rate cap"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:282
+msgid "Maximum level meter update rate when animations are enabled."
+msgstr ""
+
+#: src/units.hpp:73
+msgctxt "frames per second"
+msgid "fps"
+msgstr ""
 
 #~ msgid "24 dB/oct"
 #~ msgstr "24 дБ/окт"

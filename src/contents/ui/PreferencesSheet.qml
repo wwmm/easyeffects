@@ -276,6 +276,22 @@ KirigamiSettings.ConfigurationView {
                         DbMain.levelMetersAnimationDuration = v;
                     }
                 }
+
+                EeSpinBox {
+                    label: i18n("Level meters animation frame rate cap") // qmllint disable
+                    subtitle: i18n("Maximum level meter update rate when animations are enabled.") // qmllint disable
+                    maximumLineCount: -1
+                    from: DbMain.getMinValue("levelMetersAnimationFpsCap")
+                    to: DbMain.getMaxValue("levelMetersAnimationFpsCap")
+                    value: DbMain.levelMetersAnimationFpsCap
+                    decimals: 0
+                    stepSize: 1
+                    unit: Units.fps
+                    enabled: DbMain.enableLevelMetersAnimation
+                    onValueModified: v => {
+                        DbMain.levelMetersAnimationFpsCap = v;
+                    }
+                }
             }
         }
     }
