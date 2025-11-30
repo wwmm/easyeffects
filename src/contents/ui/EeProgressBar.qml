@@ -95,14 +95,13 @@ Rectangle {
     Rectangle {
         id: levelRect
 
-        width: parent.width
-        height: parent.height
+        anchors.fill: parent
         color: Kirigami.ColorUtils.tintWithAlpha(Kirigami.Theme.backgroundColor, Kirigami.Theme.highlightColor, 0.3)
 
         transform: Scale {
             id: levelScale
 
-            origin.x: control.rightToLeft === false ? 0 : levelRect.width
+            origin.x: control.rightToLeft === false ? 0 : control.width
 
             Behavior on xScale {
                 enabled: DbMain.enableLevelMetersAnimation
@@ -145,12 +144,10 @@ Rectangle {
         id: labelsItem
 
         anchors.fill: parent
-
+        z: 2
         implicitHeight: valueLabel.implicitHeight
 
         Label {
-            Layout.fillWidth: true
-            Layout.leftMargin: Kirigami.Units.smallSpacing
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter
             text: control.label
@@ -169,7 +166,6 @@ Rectangle {
         Label {
             id: valueLabel
 
-            Layout.rightMargin: Kirigami.Units.smallSpacing
             horizontalAlignment: Qt.AlignRight
             verticalAlignment: Qt.AlignVCenter
             text: ""

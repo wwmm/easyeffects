@@ -73,8 +73,7 @@ Rectangle {
     Rectangle {
         id: levelRect
 
-        width: parent.width
-        height: parent.height
+        anchors.fill: parent
         radius: Kirigami.Units.cornerRadius
         border.width: 1
         color: Kirigami.ColorUtils.tintWithAlpha(Kirigami.Theme.backgroundColor, Kirigami.Theme.highlightColor, 0.3)
@@ -83,7 +82,7 @@ Rectangle {
         transform: Scale {
             id: levelScale
 
-            origin.y: root.topToBottom === false ? levelRect.height : 0
+            origin.y: root.topToBottom === false ? root.height : 0
 
             Behavior on yScale {
                 enabled: DbMain.enableLevelMetersAnimation
@@ -93,12 +92,6 @@ Rectangle {
                     easing.type: Easing.OutCubic
                 }
             }
-        }
-
-        anchors {
-            bottom: parent.bottom
-            left: parent.left
-            right: parent.right
         }
     }
 
