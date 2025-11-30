@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-29 23:20-0300\n"
-"PO-Revision-Date: 2025-11-29 08:00+0000\n"
+"PO-Revision-Date: 2025-11-30 19:51+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hans/>\n"
@@ -2091,13 +2091,12 @@ msgid ""
 msgstr "当前电平低于此前最高值时，电平表更新耗时。"
 
 #: src/contents/ui/PreferencesSheet.qml:258
-#, fuzzy
 msgid "Enable level meters animation"
-msgstr "启用/禁用此应用程序"
+msgstr "启用电平表动画"
 
 #: src/contents/ui/PreferencesSheet.qml:267
 msgid "Level meters animation duration"
-msgstr ""
+msgstr "电平表动画持续时间"
 
 #: src/contents/ui/PreferencesSheet.qml:305
 msgid "Audio delay compensation"
