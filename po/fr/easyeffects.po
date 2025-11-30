@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-30 16:55-0300\n"
-"PO-Revision-Date: 2025-11-29 08:00+0000\n"
+"PO-Revision-Date: 2025-12-01 03:15+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -2108,13 +2108,12 @@ msgid "Inactivity timeout"
 msgstr "Délai d’inactivité"
 
 #: src/contents/ui/PreferencesSheet.qml:240
-#, fuzzy
 msgid "Level meters frame rate cap"
-msgstr "Activer/désactiver cette application"
+msgstr "Limite de la fréquence de trames pour les indicateurs de niveau"
 
 #: src/contents/ui/PreferencesSheet.qml:241
 msgid "Maximum level meter update rate."
-msgstr ""
+msgstr "Fréquence maximale de mise à jour de l'indicateur de niveau."
 
 #: src/contents/ui/PreferencesSheet.qml:255
 msgid "Level meters label"
@@ -2130,13 +2129,12 @@ msgstr ""
 "plus élevé."
 
 #: src/contents/ui/PreferencesSheet.qml:273
-#, fuzzy
 msgid "Enable level meters animation"
-msgstr "Activer/désactiver cette application"
+msgstr "Activer l'animation des indicateurs de niveau"
 
 #: src/contents/ui/PreferencesSheet.qml:282
 msgid "Level meters animation duration"
-msgstr ""
+msgstr "Durée de l'animation des indicateurs de niveau"
 
 #: src/contents/ui/PreferencesSheet.qml:320
 msgid "Audio delay compensation"
@@ -3102,7 +3100,7 @@ msgstr "trames"
 #: src/units.hpp:73
 msgctxt "frames per second"
 msgid "fps"
-msgstr ""
+msgstr "tps"
 
 #: src/units.hpp:74
 msgctxt "minus infinity abbreviation"
