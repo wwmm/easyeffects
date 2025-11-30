@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-29 23:20-0300\n"
-"PO-Revision-Date: 2025-11-29 08:00+0000\n"
+"PO-Revision-Date: 2025-11-30 19:51+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ro/>\n"
@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
-"20)) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : "
+"(n==0 || (n%100 > 0 && n%100 < 20)) ? 1 : 2;\n"
 "X-Generator: Weblate 5.15-dev\n"
 
 #: src/autostart.cpp:89
@@ -2121,13 +2121,12 @@ msgstr ""
 "(vumetrelor) atunci când nivelul actual este sub ultimul nivel maxim atins."
 
 #: src/contents/ui/PreferencesSheet.qml:258
-#, fuzzy
 msgid "Enable level meters animation"
-msgstr "Activează/dezactivează această aplicație"
+msgstr "Activează animația indicatoarelor de nivel"
 
 #: src/contents/ui/PreferencesSheet.qml:267
 msgid "Level meters animation duration"
-msgstr ""
+msgstr "Durata animației indicatoarelor de nivel"
 
 #: src/contents/ui/PreferencesSheet.qml:305
 msgid "Audio delay compensation"
