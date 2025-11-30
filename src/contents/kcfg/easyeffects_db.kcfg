@@ -227,7 +227,7 @@
             <label>Maximum level meter update rate.</label>
             <min>1</min>
             <max>240</max>
-            <default>60</default>
+            <default>30</default>
         </entry>
     </group>
     <group name="NativePluginWindow">
