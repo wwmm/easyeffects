@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-12-01 01:56+0000\n"
-"PO-Revision-Date: 2025-11-29 18:17+0000\n"
+"PO-Revision-Date: 2025-12-01 16:02+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
 "ga/>\n"
@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :"
-"(n>6 && n<11) ? 3 : 4;\n"
+"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :(n>"
+"6 && n<11) ? 3 : 4;\n"
 "X-Generator: Weblate 5.15-dev\n"
 
 #: src/autostart.cpp:89
@@ -2104,13 +2104,12 @@ msgid "Inactivity timeout"
 msgstr "Am scoir neamhghníomhaíochta"
 
 #: src/contents/ui/PreferencesSheet.qml:240
-#, fuzzy
 msgid "Level meters frame rate cap"
-msgstr "Cumasaigh/díchumasaigh an feidhmchlár seo"
+msgstr "Caipín ráta fráma méadair leibhéal"
 
 #: src/contents/ui/PreferencesSheet.qml:241
 msgid "Maximum level meter update rate."
-msgstr ""
+msgstr "Uasráta nuashonraithe an mhéadair leibhéil."
 
 #: src/contents/ui/PreferencesSheet.qml:255
 msgid "Level meters label"
@@ -2125,13 +2124,12 @@ msgstr ""
 "bhíonn an leibhéal reatha faoi bhun an leibhéal is airde deireanach."
 
 #: src/contents/ui/PreferencesSheet.qml:273
-#, fuzzy
 msgid "Enable level meters animation"
-msgstr "Cumasaigh/díchumasaigh an feidhmchlár seo"
+msgstr "Cumasaigh beochan méadair leibhéal"
 
 #: src/contents/ui/PreferencesSheet.qml:282
 msgid "Level meters animation duration"
-msgstr ""
+msgstr "Fad beochana méadair leibhéal"
 
 #: src/contents/ui/PreferencesSheet.qml:320
 msgid "Audio delay compensation"
@@ -2182,13 +2180,12 @@ msgid "px"
 msgstr "px"
 
 #: src/contents/ui/PreferencesSheet.qml:409
-#, fuzzy
 msgid "Spectrum frame rate cap"
-msgstr "Cumasaigh/díchumasaigh an feidhmchlár seo"
+msgstr "Caipín ráta fráma speictrim"
 
 #: src/contents/ui/PreferencesSheet.qml:410
 msgid "Maximum spectrum update rate."
-msgstr ""
+msgstr "Uasráta nuashonraithe speictrim."
 
 #: src/contents/ui/PreferencesSheet.qml:425
 msgid "Frequency Range"
@@ -3104,7 +3101,7 @@ msgstr "frámaí"
 #: src/units.hpp:73
 msgctxt "frames per second"
 msgid "fps"
-msgstr ""
+msgstr "fps"
 
 #: src/units.hpp:74
 msgctxt "minus infinity abbreviation"
