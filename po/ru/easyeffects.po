@@ -3204,6 +3204,12 @@ msgstr "Предел частоты кадров спектра"
 msgid "Maximum spectrum update rate."
 msgstr "Максимальная частота обновления спектра."
 
+#: src/units.hpp:73
+#, fuzzy
+msgctxt "frames per second abbreviation"
+msgid "fps"
+msgstr "к/с"
+
 #~ msgid "24 dB/oct"
 #~ msgstr "24 дБ/окт"
 

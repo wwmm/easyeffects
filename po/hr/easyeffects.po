@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-12-01 01:56+0000\n"
+"POT-Creation-Date: 2025-12-01 22:54+0000\n"
 "PO-Revision-Date: 2025-11-21 11:51+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/easyeffects/"
@@ -3303,7 +3303,7 @@ msgid "frames"
 msgstr ""
 
 #: src/units.hpp:73
-msgctxt "frames per second"
+msgctxt "frames per second abbreviation"
 msgid "fps"
 msgstr ""
 

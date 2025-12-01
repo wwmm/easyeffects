@@ -3112,6 +3112,11 @@ msgstr "Equalizzatore, Compressore e Altri Effetti Audio"
 msgid "Simple audio effects"
 msgstr "Effetti audio semplici"
 
+#: src/units.hpp:73
+msgctxt "frames per second abbreviation"
+msgid "fps"
+msgstr ""
+
 #~ msgid "24 dB/oct"
 #~ msgstr "24 dB/ott"
 
