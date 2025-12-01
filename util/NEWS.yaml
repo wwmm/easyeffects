@@ -5,8 +5,8 @@ Date: UNRELEASED_DATE
 Description:
 - Features∶
 - Users are now able to set custom colors and other style settings to the spectrum graph.
-- Level meter widgets performance has been improved
-- Some of our icons have been replaced by icons from the Freedesktop standard. This wayour tray menu should not have missing icons in systems that do not use the Breeze icon theme.
+- Level meter widgets performance has been improved.
+- Some of our icons have been replaced by icons from the Freedesktop standard. This way our tray menu should not have missing icons in systems that do not use the icons in Breeze theme.
 
 - Bug fixes∶
 - The automatic gain control of the Echo Canceller is now registered to the saved presets.
