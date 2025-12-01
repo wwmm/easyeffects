@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-12-01 01:56+0000\n"
-"PO-Revision-Date: 2025-11-29 22:47+0000\n"
+"PO-Revision-Date: 2025-12-01 23:03+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -2103,13 +2103,12 @@ msgid "Inactivity timeout"
 msgstr "Timeout di inattività"
 
 #: src/contents/ui/PreferencesSheet.qml:240
-#, fuzzy
 msgid "Level meters frame rate cap"
-msgstr "Durata delle animazioni dei misuratori di livello"
+msgstr "Limite del frame rate dei misuratori di livello"
 
 #: src/contents/ui/PreferencesSheet.qml:241
 msgid "Maximum level meter update rate."
-msgstr ""
+msgstr "La massima frequenza di aggiornamento dei misuratori di livello."
 
 #: src/contents/ui/PreferencesSheet.qml:255
 msgid "Level meters label"
@@ -2124,9 +2123,8 @@ msgstr ""
 "quando il livello corrente è inferiore all'ultimo picco."
 
 #: src/contents/ui/PreferencesSheet.qml:273
-#, fuzzy
 msgid "Enable level meters animation"
-msgstr "Durata delle animazioni dei misuratori di livello"
+msgstr "Abilita le animazioni dei misuratori di livello"
 
 #: src/contents/ui/PreferencesSheet.qml:282
 msgid "Level meters animation duration"
@@ -2181,13 +2179,12 @@ msgid "px"
 msgstr "px"
 
 #: src/contents/ui/PreferencesSheet.qml:409
-#, fuzzy
 msgid "Spectrum frame rate cap"
-msgstr "Durata delle animazioni dei misuratori di livello"
+msgstr "Limite del frame rate dello spettro"
 
 #: src/contents/ui/PreferencesSheet.qml:410
 msgid "Maximum spectrum update rate."
-msgstr ""
+msgstr "La massima frequenza di aggiornamento dello spettro."
 
 #: src/contents/ui/PreferencesSheet.qml:425
 msgid "Frequency Range"
@@ -3100,7 +3097,7 @@ msgstr "frame"
 #: src/units.hpp:73
 msgctxt "frames per second"
 msgid "fps"
-msgstr ""
+msgstr "fps"
 
 #: src/units.hpp:74
 msgctxt "minus infinity abbreviation"
