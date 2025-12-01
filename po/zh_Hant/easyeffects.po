@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-30 16:55-0300\n"
-"PO-Revision-Date: 2025-11-30 02:24+0000\n"
+"PO-Revision-Date: 2025-12-01 03:15+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hant/>\n"
@@ -2109,7 +2109,7 @@ msgstr "等級量表動畫持續時間"
 
 #: src/contents/ui/PreferencesSheet.qml:241
 msgid "Maximum level meter update rate."
-msgstr ""
+msgstr "等級量表最大更新率。"
 
 #: src/contents/ui/PreferencesSheet.qml:255
 msgid "Level meters label"
@@ -3090,7 +3090,7 @@ msgstr "幀"
 #: src/units.hpp:73
 msgctxt "frames per second"
 msgid "fps"
-msgstr ""
+msgstr "fps"
 
 #: src/units.hpp:74
 msgctxt "minus infinity abbreviation"
