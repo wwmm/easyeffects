@@ -215,7 +215,7 @@
         </entry>
         <entry name="enableLevelMetersAnimation" type="Bool">
             <label>Enable or disable animations for the level meters</label>
-            <default>false</default>
+            <default>true</default>
         </entry>
         <entry name="levelMetersAnimationDuration" type="Int">
             <label>Duration of the animation used in the level meters.</label>
@@ -227,7 +227,7 @@
             <label>Maximum level meter update rate.</label>
             <min>1</min>
             <max>240</max>
-            <default>30</default>
+            <default>60</default>
         </entry>
     </group>
     <group name="NativePluginWindow">

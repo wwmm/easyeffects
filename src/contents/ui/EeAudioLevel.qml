@@ -15,8 +15,6 @@ Rectangle {
     readonly property real decimalFactor: Math.pow(10, -decimals)
     property real clampedValue: 0
     property real displayValue: 0
-    property var lastUpdateTime: 0
-    readonly property real invFps: 1000.0 / DbMain.levelMetersFpsCap
 
     Kirigami.Theme.colorSet: Kirigami.Theme.View
     implicitWidth: valueLabel.implicitWidth + Kirigami.Units.largeSpacing
@@ -28,16 +26,6 @@ Rectangle {
     border.color: Kirigami.ColorUtils.linearInterpolation(Kirigami.Theme.backgroundColor, Kirigami.Theme.textColor, Kirigami.Theme.frameContrast)
 
     function setValue(value) {
-        const now = Date.now();
-
-        const timeDiff = now - lastUpdateTime;
-
-        if (timeDiff < invFps) {
-            return;
-        }
-
-        lastUpdateTime = now;
-
         const newC = Common.clamp(value, root.from, root.to);
 
         // Only update if meaningfully different
