@@ -260,9 +260,20 @@ Kirigami.Page {
             FrameAnimation {
                 id: frameAnimation
 
+                property var timeDiff: 0
+                readonly property real invFps: 1.0 / DbMain.levelMetersFpsCap
+
                 running: pageStreamsEffects.pageType !== 2 && appWindow.visible && pipelineInstance.filtersLinked // qmllint disable
 
                 onTriggered: {
+                    if (frameAnimation.timeDiff < invFps) {
+                        frameAnimation.timeDiff += frameAnimation.smoothFrameTime;
+
+                        return;
+                    }
+
+                    frameAnimation.timeDiff = 0;
+
                     if (pluginsStack.depth > 1 && pluginsStack.currentItem?.pluginBackend !== undefined)
                         pluginsStack.currentItem.updateMeters();
                 }
@@ -464,6 +475,9 @@ Kirigami.Page {
             FrameAnimation {
                 id: headerFrameAnimation
 
+                property var timeDiff: 0
+                readonly property real invFps: 1.0 / DbSpectrum.spectrumFpsCap
+
                 running: DbSpectrum.state && appWindow.visible && pipelineInstance.filtersLinked // qmllint disable
 
                 onRunningChanged: {
@@ -471,6 +485,14 @@ Kirigami.Page {
                 }
 
                 onTriggered: {
+                    if (headerFrameAnimation.timeDiff < invFps) {
+                        headerFrameAnimation.timeDiff += headerFrameAnimation.smoothFrameTime;
+
+                        return;
+                    }
+
+                    headerFrameAnimation.timeDiff = 0;
+
                     pageStreamsEffects.pipelineInstance.requestSpectrumData();
                 }
             }

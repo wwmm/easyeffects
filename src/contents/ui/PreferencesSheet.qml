@@ -404,6 +404,21 @@ KirigamiSettings.ConfigurationView {
                         DbSpectrum.height = v;
                     }
                 }
+
+                EeSpinBox {
+                    label: i18n("Spectrum frame rate cap") // qmllint disable
+                    subtitle: i18n("Maximum spectrum update rate.") // qmllint disable
+                    maximumLineCount: -1
+                    from: DbSpectrum.getMinValue("spectrumFpsCap")
+                    to: DbSpectrum.getMaxValue("spectrumFpsCap")
+                    value: DbSpectrum.spectrumFpsCap
+                    decimals: 0
+                    stepSize: 1
+                    unit: Units.fps
+                    onValueModified: v => {
+                        DbSpectrum.spectrumFpsCap = v;
+                    }
+                }
             }
 
             FormCard.FormHeader {

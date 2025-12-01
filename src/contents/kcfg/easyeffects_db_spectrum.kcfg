@@ -64,5 +64,11 @@
             <max>1000</max>
             <default>0</default>
         </entry>
+        <entry name="spectrumFpsCap" type="Int">
+            <label>Maximum spectrum update rate.</label>
+            <min>1</min>
+            <max>240</max>
+            <default>60</default>
+        </entry>
     </group>
 </kcfg>

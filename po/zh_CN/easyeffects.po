@@ -462,6 +462,7 @@ msgstr "外部输入"
 #: src/contents/ui/Compressor.qml:259 src/contents/ui/Expander.qml:219
 #: src/contents/ui/Gate.qml:237 src/contents/ui/Limiter.qml:209
 #: src/contents/ui/PageStreamsEffects.qml:395
+#: src/contents/ui/PageStreamsEffects.qml:406
 msgid "Input device"
 msgstr "输入设备"
 
@@ -1639,6 +1640,7 @@ msgid "Go back"
 msgstr "返回"
 
 #: src/contents/ui/Main.qml:451 src/contents/ui/PageStreamsEffects.qml:635
+#: src/contents/ui/PageStreamsEffects.qml:668
 msgid "Effects"
 msgstr "音效"
 
@@ -1760,40 +1762,51 @@ msgid "Audio stream not modified"
 msgstr "音频流未修改"
 
 #: src/contents/ui/PageStreamsEffects.qml:328
+#: src/contents/ui/PageStreamsEffects.qml:339
 msgid "Add effect"
 msgstr "添加音效"
 
 #: src/contents/ui/PageStreamsEffects.qml:336
+#: src/contents/ui/PageStreamsEffects.qml:347
 msgid "Close"
 msgstr "关闭"
 
 #: src/contents/ui/PageStreamsEffects.qml:340
+#: src/contents/ui/PageStreamsEffects.qml:351
 msgid "Expand the list of effects pipeline"
 msgstr "展开音效管线列表"
 
 #: src/contents/ui/PageStreamsEffects.qml:340
+#: src/contents/ui/PageStreamsEffects.qml:351
 msgid "Reduce the list of effects pipeline"
 msgstr "收起音效管线列表"
 
 #: src/contents/ui/PageStreamsEffects.qml:395
 #: src/contents/ui/PageStreamsEffects.qml:622
+#: src/contents/ui/PageStreamsEffects.qml:406
+#: src/contents/ui/PageStreamsEffects.qml:655
 msgid "Players"
 msgstr "播放器"
 
 #: src/contents/ui/PageStreamsEffects.qml:404
+#: src/contents/ui/PageStreamsEffects.qml:415
 msgid "Output device"
 msgstr "输出设备"
 
 #: src/contents/ui/PageStreamsEffects.qml:404
 #: src/contents/ui/PageStreamsEffects.qml:622
+#: src/contents/ui/PageStreamsEffects.qml:415
+#: src/contents/ui/PageStreamsEffects.qml:655
 msgid "Recorders"
 msgstr "录音器"
 
 #: src/contents/ui/PageStreamsEffects.qml:653
+#: src/contents/ui/PageStreamsEffects.qml:686
 msgid "Input monitoring"
 msgstr "输入监听"
 
 #: src/contents/ui/PageStreamsEffects.qml:666
+#: src/contents/ui/PageStreamsEffects.qml:699
 msgid "Excluded apps"
 msgstr "已排除的应用程序"
 
@@ -2155,161 +2168,198 @@ msgid "px"
 msgstr "像素"
 
 #: src/contents/ui/PreferencesSheet.qml:410
+#: src/contents/ui/PreferencesSheet.qml:425
 msgid "Frequency Range"
 msgstr "频率范围"
 
 #: src/contents/ui/PreferencesSheet.qml:417
+#: src/contents/ui/PreferencesSheet.qml:432
 msgid "Minimum"
 msgstr "最低"
 
 #: src/contents/ui/PreferencesSheet.qml:433
+#: src/contents/ui/PreferencesSheet.qml:448
 msgid "Maximum"
 msgstr "最高"
 
 #: src/contents/ui/PreferencesSheet.qml:455
+#: src/contents/ui/PreferencesSheet.qml:470
 msgid "Database autosave interval"
 msgstr "数据库自动保存间隔"
 
 #: src/contents/ui/PreferencesSheet.qml:469
+#: src/contents/ui/PreferencesSheet.qml:484
 msgid "Most used presets"
 msgstr "最常用的预设"
 
 #: src/contents/ui/PreferencesSheet.qml:487
+#: src/contents/ui/PreferencesSheet.qml:502
 msgid "Window"
 msgstr "窗口"
 
 #: src/contents/ui/PreferencesSheet.qml:496
+#: src/contents/ui/PreferencesSheet.qml:511
 msgid "Force KDE's Breeze theme when Easy Effects starts"
 msgstr "在 Easy Effects 启动时强制应用 KDE Breeze 微风主题"
 
 #: src/contents/ui/PreferencesSheet.qml:497
+#: src/contents/ui/PreferencesSheet.qml:512
 msgid ""
 "It is necessary to restart the service for changes in this setting to take "
 "effect."
 msgstr "此设置需重启服务生效。"
 
 #: src/contents/ui/PreferencesSheet.qml:510
+#: src/contents/ui/PreferencesSheet.qml:525
 msgid "Reduce effects list controls"
 msgstr "收起音效列表控制项"
 
 #: src/contents/ui/PreferencesSheet.qml:511
+#: src/contents/ui/PreferencesSheet.qml:526
 msgid ""
 "Action buttons in the effects list are moved inside a context menu for a "
 "more compact view."
 msgstr "将音效列表的操控按钮移入上下文菜单中，以使视图更紧凑。"
 
 #: src/contents/ui/PreferencesSheet.qml:523
+#: src/contents/ui/PreferencesSheet.qml:538
 msgid "Graphs"
 msgstr "图像"
 
 #: src/contents/ui/PreferencesSheet.qml:534
+#: src/contents/ui/PreferencesSheet.qml:549
 msgid "Color scheme"
 msgstr "颜色方案"
 
 #: src/contents/ui/PreferencesSheet.qml:538
+#: src/contents/ui/PreferencesSheet.qml:553
 msgid "Automatic"
 msgstr "自动"
 
 #: src/contents/ui/PreferencesSheet.qml:538
+#: src/contents/ui/PreferencesSheet.qml:553
 msgid "Light"
 msgstr "亮色"
 
 #: src/contents/ui/PreferencesSheet.qml:538
+#: src/contents/ui/PreferencesSheet.qml:553
 msgid "Dark"
 msgstr "暗色"
 
 #: src/contents/ui/PreferencesSheet.qml:549
+#: src/contents/ui/PreferencesSheet.qml:564
 msgid "Color theme"
 msgstr "颜色主题"
 
 #: src/contents/ui/PreferencesSheet.qml:553
+#: src/contents/ui/PreferencesSheet.qml:568
 msgid "Green"
 msgstr "绿色"
 
 #: src/contents/ui/PreferencesSheet.qml:553
+#: src/contents/ui/PreferencesSheet.qml:568
 msgid "Green neon"
 msgstr "霓虹绿色"
 
 #: src/contents/ui/PreferencesSheet.qml:553
+#: src/contents/ui/PreferencesSheet.qml:568
 msgid "Mix"
 msgstr "混合"
 
 #: src/contents/ui/PreferencesSheet.qml:553
+#: src/contents/ui/PreferencesSheet.qml:568
 msgid "Orange"
 msgstr "橙色"
 
 #: src/contents/ui/PreferencesSheet.qml:553
+#: src/contents/ui/PreferencesSheet.qml:568
 msgid "Yellow"
 msgstr "黄色"
 
 #: src/contents/ui/PreferencesSheet.qml:553
+#: src/contents/ui/PreferencesSheet.qml:568
 msgid "Blue"
 msgstr "蓝色"
 
 #: src/contents/ui/PreferencesSheet.qml:553
+#: src/contents/ui/PreferencesSheet.qml:568
 msgid "Purple"
 msgstr "紫色"
 
 #: src/contents/ui/PreferencesSheet.qml:553
+#: src/contents/ui/PreferencesSheet.qml:568
 msgid "Grey"
 msgstr "灰色"
 
 #: src/contents/ui/PreferencesSheet.qml:553
+#: src/contents/ui/PreferencesSheet.qml:568
 msgid "User"
 msgstr "用户"
 
 #: src/contents/ui/PreferencesSheet.qml:561
+#: src/contents/ui/PreferencesSheet.qml:576
 msgctxt "@label"
 msgid "Background"
 msgstr "背景"
 
 #: src/contents/ui/PreferencesSheet.qml:570
+#: src/contents/ui/PreferencesSheet.qml:585
 msgctxt "@label"
 msgid "Plot area background"
 msgstr "图块背景"
 
 #: src/contents/ui/PreferencesSheet.qml:579
+#: src/contents/ui/PreferencesSheet.qml:594
 msgctxt "@label"
 msgid "Series colors"
 msgstr "色系"
 
 #: src/contents/ui/PreferencesSheet.qml:588
+#: src/contents/ui/PreferencesSheet.qml:603
 msgctxt "@label"
 msgid "Axis labels text color"
 msgstr "坐标轴标签文本颜色"
 
 #: src/contents/ui/PreferencesSheet.qml:597
+#: src/contents/ui/PreferencesSheet.qml:612
 msgctxt "@label"
 msgid "Axis labels background color"
 msgstr "坐标轴标签背景颜色"
 
 #: src/contents/ui/PreferencesSheet.qml:606
+#: src/contents/ui/PreferencesSheet.qml:621
 msgctxt "@label"
 msgid "Border color"
 msgstr "边界颜色"
 
 #: src/contents/ui/PreferencesSheet.qml:615
+#: src/contents/ui/PreferencesSheet.qml:630
 msgid "Line width"
 msgstr "线宽"
 
 #: src/contents/ui/PreferencesSheet.qml:629
+#: src/contents/ui/PreferencesSheet.qml:644
 msgid "Show grid lines"
 msgstr "显示网格线"
 
 #: src/contents/ui/PreferencesSheet.qml:647
+#: src/contents/ui/PreferencesSheet.qml:662
 msgid "Autoload delay"
 msgstr "自动加载延迟"
 
 #: src/contents/ui/PreferencesSheet.qml:648
+#: src/contents/ui/PreferencesSheet.qml:663
 msgid ""
 "Delay between receiving a new device route and the call to autoload a preset."
 msgstr "在接收新设备路由与自动加载预设之间的延迟。"
 
 #: src/contents/ui/PreferencesSheet.qml:664
+#: src/contents/ui/PreferencesSheet.qml:679
 msgid "Ignore the blocklist from presets"
 msgstr "忽略预设中的排除列表"
 
 #: src/contents/ui/PreferencesSheet.qml:665
+#: src/contents/ui/PreferencesSheet.qml:680
 msgid ""
 "If enabled, the list of excluded apps set in the loaded preset is ignored "
 "and does not replace the one set by the user."
@@ -2317,26 +2367,32 @@ msgstr ""
 "启用后，Easy Effects 将忽略从预设中读取的排除列表，也不会替换用户设定。"
 
 #: src/contents/ui/PreferencesSheet.qml:686
+#: src/contents/ui/PreferencesSheet.qml:701
 msgid "Global shortcuts"
 msgstr "全局快捷键"
 
 #: src/contents/ui/PreferencesSheet.qml:687
+#: src/contents/ui/PreferencesSheet.qml:702
 msgid "Enables support for XDG global shortcuts."
 msgstr "启用对 XDG 全局快捷键的支持。"
 
 #: src/contents/ui/PreferencesSheet.qml:699
+#: src/contents/ui/PreferencesSheet.qml:714
 msgid "Native window of effects"
 msgstr "原生插件窗口"
 
 #: src/contents/ui/PreferencesSheet.qml:700
+#: src/contents/ui/PreferencesSheet.qml:715
 msgid "Allows the native user interface of effects to be shown/hidden."
 msgstr "允许显示或隐藏原生插件窗口。"
 
 #: src/contents/ui/PreferencesSheet.qml:712
+#: src/contents/ui/PreferencesSheet.qml:727
 msgid "Update frequency"
 msgstr "更新频率"
 
 #: src/contents/ui/PreferencesSheet.qml:713
+#: src/contents/ui/PreferencesSheet.qml:728
 msgid "Related to LV2 plugins."
 msgstr "影响 LV2 插件。"
 
@@ -3064,6 +3120,15 @@ msgstr "均衡器、压缩器与其他音效"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "简易音效集锦"
+
+#: src/contents/ui/PreferencesSheet.qml:409
+#, fuzzy
+msgid "Spectrum frame rate cap"
+msgstr "启用/禁用此应用程序"
+
+#: src/contents/ui/PreferencesSheet.qml:410
+msgid "Maximum spectrum update rate."
+msgstr ""
 
 #~ msgid "24 dB/oct"
 #~ msgstr "24 分贝每八度"

@@ -464,6 +464,7 @@ msgstr "Externe"
 #: src/contents/ui/Compressor.qml:259 src/contents/ui/Expander.qml:219
 #: src/contents/ui/Gate.qml:237 src/contents/ui/Limiter.qml:209
 #: src/contents/ui/PageStreamsEffects.qml:395
+#: src/contents/ui/PageStreamsEffects.qml:406
 msgid "Input device"
 msgstr "Périphérique d’entrée"
 
@@ -1657,6 +1658,7 @@ msgid "Go back"
 msgstr "Revenir en arrière"
 
 #: src/contents/ui/Main.qml:451 src/contents/ui/PageStreamsEffects.qml:635
+#: src/contents/ui/PageStreamsEffects.qml:668
 msgid "Effects"
 msgstr "Effets"
 
@@ -1778,40 +1780,51 @@ msgid "Audio stream not modified"
 msgstr "Flux audio non modifié"
 
 #: src/contents/ui/PageStreamsEffects.qml:328
+#: src/contents/ui/PageStreamsEffects.qml:339
 msgid "Add effect"
 msgstr "Ajouter un effet"
 
 #: src/contents/ui/PageStreamsEffects.qml:336
+#: src/contents/ui/PageStreamsEffects.qml:347
 msgid "Close"
 msgstr "Fermer"
 
 #: src/contents/ui/PageStreamsEffects.qml:340
+#: src/contents/ui/PageStreamsEffects.qml:351
 msgid "Expand the list of effects pipeline"
 msgstr "Développer la liste des effets du pipeline"
 
 #: src/contents/ui/PageStreamsEffects.qml:340
+#: src/contents/ui/PageStreamsEffects.qml:351
 msgid "Reduce the list of effects pipeline"
 msgstr "Réduire la liste des effects du pipeline"
 
 #: src/contents/ui/PageStreamsEffects.qml:395
 #: src/contents/ui/PageStreamsEffects.qml:622
+#: src/contents/ui/PageStreamsEffects.qml:406
+#: src/contents/ui/PageStreamsEffects.qml:655
 msgid "Players"
 msgstr "Lecteurs"
 
 #: src/contents/ui/PageStreamsEffects.qml:404
+#: src/contents/ui/PageStreamsEffects.qml:415
 msgid "Output device"
 msgstr "Périphérique de sortie"
 
 #: src/contents/ui/PageStreamsEffects.qml:404
 #: src/contents/ui/PageStreamsEffects.qml:622
+#: src/contents/ui/PageStreamsEffects.qml:415
+#: src/contents/ui/PageStreamsEffects.qml:655
 msgid "Recorders"
 msgstr "Enregistreurs"
 
 #: src/contents/ui/PageStreamsEffects.qml:653
+#: src/contents/ui/PageStreamsEffects.qml:686
 msgid "Input monitoring"
 msgstr "Surveillance de l'entrée"
 
 #: src/contents/ui/PageStreamsEffects.qml:666
+#: src/contents/ui/PageStreamsEffects.qml:699
 msgid "Excluded apps"
 msgstr "Applications exclues"
 
@@ -2185,34 +2198,42 @@ msgid "px"
 msgstr "px"
 
 #: src/contents/ui/PreferencesSheet.qml:410
+#: src/contents/ui/PreferencesSheet.qml:425
 msgid "Frequency Range"
 msgstr "Intervalle de Fréquences"
 
 #: src/contents/ui/PreferencesSheet.qml:417
+#: src/contents/ui/PreferencesSheet.qml:432
 msgid "Minimum"
 msgstr "Minimum"
 
 #: src/contents/ui/PreferencesSheet.qml:433
+#: src/contents/ui/PreferencesSheet.qml:448
 msgid "Maximum"
 msgstr "Maximum"
 
 #: src/contents/ui/PreferencesSheet.qml:455
+#: src/contents/ui/PreferencesSheet.qml:470
 msgid "Database autosave interval"
 msgstr "Intervalle d'enregistrement automatique de la base de données"
 
 #: src/contents/ui/PreferencesSheet.qml:469
+#: src/contents/ui/PreferencesSheet.qml:484
 msgid "Most used presets"
 msgstr "Préréglages les plus utilisés"
 
 #: src/contents/ui/PreferencesSheet.qml:487
+#: src/contents/ui/PreferencesSheet.qml:502
 msgid "Window"
 msgstr "Fenêtre"
 
 #: src/contents/ui/PreferencesSheet.qml:496
+#: src/contents/ui/PreferencesSheet.qml:511
 msgid "Force KDE's Breeze theme when Easy Effects starts"
 msgstr "Forcer le thème Breeze de KDE au démarrage d'Easy Effects"
 
 #: src/contents/ui/PreferencesSheet.qml:497
+#: src/contents/ui/PreferencesSheet.qml:512
 msgid ""
 "It is necessary to restart the service for changes in this setting to take "
 "effect."
@@ -2221,10 +2242,12 @@ msgstr ""
 "paramètre prennent effet."
 
 #: src/contents/ui/PreferencesSheet.qml:510
+#: src/contents/ui/PreferencesSheet.qml:525
 msgid "Reduce effects list controls"
 msgstr "Réduire les contrôles de la liste des effets"
 
 #: src/contents/ui/PreferencesSheet.qml:511
+#: src/contents/ui/PreferencesSheet.qml:526
 msgid ""
 "Action buttons in the effects list are moved inside a context menu for a "
 "more compact view."
@@ -2233,108 +2256,133 @@ msgstr ""
 "menu contextuel pour une vue plus compacte."
 
 #: src/contents/ui/PreferencesSheet.qml:523
+#: src/contents/ui/PreferencesSheet.qml:538
 msgid "Graphs"
 msgstr "Graphiques"
 
 #: src/contents/ui/PreferencesSheet.qml:534
+#: src/contents/ui/PreferencesSheet.qml:549
 msgid "Color scheme"
 msgstr "Schéma des couleurs"
 
 #: src/contents/ui/PreferencesSheet.qml:538
+#: src/contents/ui/PreferencesSheet.qml:553
 msgid "Automatic"
 msgstr "Automatique"
 
 #: src/contents/ui/PreferencesSheet.qml:538
+#: src/contents/ui/PreferencesSheet.qml:553
 msgid "Light"
 msgstr "Clair"
 
 #: src/contents/ui/PreferencesSheet.qml:538
+#: src/contents/ui/PreferencesSheet.qml:553
 msgid "Dark"
 msgstr "Sombre"
 
 #: src/contents/ui/PreferencesSheet.qml:549
+#: src/contents/ui/PreferencesSheet.qml:564
 msgid "Color theme"
 msgstr "Thème des couleurs"
 
 #: src/contents/ui/PreferencesSheet.qml:553
+#: src/contents/ui/PreferencesSheet.qml:568
 msgid "Green"
 msgstr "Vert"
 
 #: src/contents/ui/PreferencesSheet.qml:553
+#: src/contents/ui/PreferencesSheet.qml:568
 msgid "Green neon"
 msgstr "Vert néon"
 
 #: src/contents/ui/PreferencesSheet.qml:553
+#: src/contents/ui/PreferencesSheet.qml:568
 msgid "Mix"
 msgstr "Mix"
 
 #: src/contents/ui/PreferencesSheet.qml:553
+#: src/contents/ui/PreferencesSheet.qml:568
 msgid "Orange"
 msgstr "Orange"
 
 #: src/contents/ui/PreferencesSheet.qml:553
+#: src/contents/ui/PreferencesSheet.qml:568
 msgid "Yellow"
 msgstr "Jaune"
 
 #: src/contents/ui/PreferencesSheet.qml:553
+#: src/contents/ui/PreferencesSheet.qml:568
 msgid "Blue"
 msgstr "Bleu"
 
 #: src/contents/ui/PreferencesSheet.qml:553
+#: src/contents/ui/PreferencesSheet.qml:568
 msgid "Purple"
 msgstr "Violet"
 
 #: src/contents/ui/PreferencesSheet.qml:553
+#: src/contents/ui/PreferencesSheet.qml:568
 msgid "Grey"
 msgstr "Gris"
 
 #: src/contents/ui/PreferencesSheet.qml:553
+#: src/contents/ui/PreferencesSheet.qml:568
 msgid "User"
 msgstr "Utilisateur"
 
 #: src/contents/ui/PreferencesSheet.qml:561
+#: src/contents/ui/PreferencesSheet.qml:576
 msgctxt "@label"
 msgid "Background"
 msgstr "Arrière-plan"
 
 #: src/contents/ui/PreferencesSheet.qml:570
+#: src/contents/ui/PreferencesSheet.qml:585
 msgctxt "@label"
 msgid "Plot area background"
 msgstr "Arrière-plan de la zone de traçage"
 
 #: src/contents/ui/PreferencesSheet.qml:579
+#: src/contents/ui/PreferencesSheet.qml:594
 msgctxt "@label"
 msgid "Series colors"
 msgstr "Couleurs des séries"
 
 #: src/contents/ui/PreferencesSheet.qml:588
+#: src/contents/ui/PreferencesSheet.qml:603
 msgctxt "@label"
 msgid "Axis labels text color"
 msgstr "Couleur du texte du label des axes"
 
 #: src/contents/ui/PreferencesSheet.qml:597
+#: src/contents/ui/PreferencesSheet.qml:612
 msgctxt "@label"
 msgid "Axis labels background color"
 msgstr "Couleur d'arrière-plan du label des axes"
 
 #: src/contents/ui/PreferencesSheet.qml:606
+#: src/contents/ui/PreferencesSheet.qml:621
 msgctxt "@label"
 msgid "Border color"
 msgstr "Couleur de la bordure"
 
 #: src/contents/ui/PreferencesSheet.qml:615
+#: src/contents/ui/PreferencesSheet.qml:630
 msgid "Line width"
 msgstr "Largeur de la ligne"
 
 #: src/contents/ui/PreferencesSheet.qml:629
+#: src/contents/ui/PreferencesSheet.qml:644
 msgid "Show grid lines"
 msgstr "Afficher les lignes de la grille"
 
 #: src/contents/ui/PreferencesSheet.qml:647
+#: src/contents/ui/PreferencesSheet.qml:662
 msgid "Autoload delay"
 msgstr "Délai de chargement automatique"
 
 #: src/contents/ui/PreferencesSheet.qml:648
+#: src/contents/ui/PreferencesSheet.qml:663
 msgid ""
 "Delay between receiving a new device route and the call to autoload a preset."
 msgstr ""
@@ -2342,10 +2390,12 @@ msgstr ""
 "pour charger automatiquement un préréglage."
 
 #: src/contents/ui/PreferencesSheet.qml:664
+#: src/contents/ui/PreferencesSheet.qml:679
 msgid "Ignore the blocklist from presets"
 msgstr "Ignorer la liste de blocage des préréglages"
 
 #: src/contents/ui/PreferencesSheet.qml:665
+#: src/contents/ui/PreferencesSheet.qml:680
 msgid ""
 "If enabled, the list of excluded apps set in the loaded preset is ignored "
 "and does not replace the one set by the user."
@@ -2355,26 +2405,32 @@ msgstr ""
 "l'utilisateur."
 
 #: src/contents/ui/PreferencesSheet.qml:686
+#: src/contents/ui/PreferencesSheet.qml:701
 msgid "Global shortcuts"
 msgstr "Raccourcis globaux"
 
 #: src/contents/ui/PreferencesSheet.qml:687
+#: src/contents/ui/PreferencesSheet.qml:702
 msgid "Enables support for XDG global shortcuts."
 msgstr "Activation du support des raccourcis globaux XDG."
 
 #: src/contents/ui/PreferencesSheet.qml:699
+#: src/contents/ui/PreferencesSheet.qml:714
 msgid "Native window of effects"
 msgstr "Fenêtre native des effets"
 
 #: src/contents/ui/PreferencesSheet.qml:700
+#: src/contents/ui/PreferencesSheet.qml:715
 msgid "Allows the native user interface of effects to be shown/hidden."
 msgstr "Permet d'afficher/masquer l'interface utilisateur native des effets."
 
 #: src/contents/ui/PreferencesSheet.qml:712
+#: src/contents/ui/PreferencesSheet.qml:727
 msgid "Update frequency"
 msgstr "Fréquence de mise à jour"
 
 #: src/contents/ui/PreferencesSheet.qml:713
+#: src/contents/ui/PreferencesSheet.qml:728
 msgid "Related to LV2 plugins."
 msgstr "Associé aux plugins LV2."
 
@@ -3114,6 +3170,15 @@ msgstr "Égaliseur, Compresseur et Autres Effets Audio"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "Effets audio simples"
+
+#: src/contents/ui/PreferencesSheet.qml:409
+#, fuzzy
+msgid "Spectrum frame rate cap"
+msgstr "Activer/désactiver cette application"
+
+#: src/contents/ui/PreferencesSheet.qml:410
+msgid "Maximum spectrum update rate."
+msgstr ""
 
 #~ msgid "24 dB/oct"
 #~ msgstr "24 dB/oct"
