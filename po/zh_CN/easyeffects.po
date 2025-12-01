@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-30 16:55-0300\n"
-"PO-Revision-Date: 2025-11-30 19:51+0000\n"
+"PO-Revision-Date: 2025-12-01 03:14+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hans/>\n"
@@ -2081,13 +2081,12 @@ msgid "Inactivity timeout"
 msgstr "空闲超时"
 
 #: src/contents/ui/PreferencesSheet.qml:240
-#, fuzzy
 msgid "Level meters frame rate cap"
-msgstr "启用/禁用此应用程序"
+msgstr "电平表帧率上限"
 
 #: src/contents/ui/PreferencesSheet.qml:241
 msgid "Maximum level meter update rate."
-msgstr ""
+msgstr "电平表动画刷新率的最大值。"
 
 #: src/contents/ui/PreferencesSheet.qml:255
 msgid "Level meters label"
@@ -3051,7 +3050,7 @@ msgstr "帧"
 #: src/units.hpp:73
 msgctxt "frames per second"
 msgid "fps"
-msgstr ""
+msgstr "帧"
 
 #: src/units.hpp:74
 msgctxt "minus infinity abbreviation"
