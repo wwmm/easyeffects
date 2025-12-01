@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-12-01 01:56+0000\n"
-"PO-Revision-Date: 2025-11-30 19:51+0000\n"
+"PO-Revision-Date: 2025-12-01 16:02+0000\n"
 "Last-Translator: Максим Горпиніч <gorpinicmaksim0@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
@@ -2097,13 +2097,12 @@ msgid "Inactivity timeout"
 msgstr "Час очікування при бездіяльності"
 
 #: src/contents/ui/PreferencesSheet.qml:240
-#, fuzzy
 msgid "Level meters frame rate cap"
-msgstr "Позначки індикаторів рівня"
+msgstr "Обмеження частоти кадрів рівня"
 
 #: src/contents/ui/PreferencesSheet.qml:241
 msgid "Maximum level meter update rate."
-msgstr ""
+msgstr "Максимальна частота оновлення рівня."
 
 #: src/contents/ui/PreferencesSheet.qml:255
 msgid "Level meters label"
@@ -2174,13 +2173,12 @@ msgid "px"
 msgstr "пікс"
 
 #: src/contents/ui/PreferencesSheet.qml:409
-#, fuzzy
 msgid "Spectrum frame rate cap"
-msgstr "Позначки індикаторів рівня"
+msgstr "Обмеження частоти кадрів спектру"
 
 #: src/contents/ui/PreferencesSheet.qml:410
 msgid "Maximum spectrum update rate."
-msgstr ""
+msgstr "Максимальна швидкість оновлення спектру."
 
 #: src/contents/ui/PreferencesSheet.qml:425
 msgid "Frequency Range"
@@ -3086,7 +3084,7 @@ msgstr "кадр(-а/-ів)"
 #: src/units.hpp:73
 msgctxt "frames per second"
 msgid "fps"
-msgstr ""
+msgstr "кадрів/с"
 
 #: src/units.hpp:74
 msgctxt "minus infinity abbreviation"
