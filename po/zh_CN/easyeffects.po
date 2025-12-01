@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-30 16:55-0300\n"
-"PO-Revision-Date: 2025-12-01 03:14+0000\n"
+"PO-Revision-Date: 2025-12-01 16:02+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hans/>\n"
@@ -2099,7 +2099,7 @@ msgstr "电平表帧率上限"
 
 #: src/contents/ui/PreferencesSheet.qml:241
 msgid "Maximum level meter update rate."
-msgstr "电平表动画刷新率的最大值。"
+msgstr "电平表动画的最高刷新率。"
 
 #: src/contents/ui/PreferencesSheet.qml:255
 msgid "Level meters label"
@@ -3122,13 +3122,12 @@ msgid "Simple audio effects"
 msgstr "简易音效集锦"
 
 #: src/contents/ui/PreferencesSheet.qml:409
-#, fuzzy
 msgid "Spectrum frame rate cap"
-msgstr "启用/禁用此应用程序"
+msgstr "频谱帧率上限"
 
 #: src/contents/ui/PreferencesSheet.qml:410
 msgid "Maximum spectrum update rate."
-msgstr ""
+msgstr "频谱动画的最高刷新率。"
 
 #~ msgid "24 dB/oct"
 #~ msgstr "24 分贝每八度"
