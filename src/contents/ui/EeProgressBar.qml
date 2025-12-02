@@ -169,7 +169,7 @@ Rectangle {
 
             horizontalAlignment: Qt.AlignRight
             verticalAlignment: Qt.AlignVCenter
-            text: ""
+            text: Number(0).toLocaleString(Qt.locale(), 'f', control.decimals) + unitSuffix
             elide: control.elide
             color: control.enabled ? Kirigami.Theme.textColor : Kirigami.Theme.disabledTextColor
             wrapMode: control.wrapMode

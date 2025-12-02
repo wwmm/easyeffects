@@ -127,7 +127,7 @@ Rectangle {
         id: valueLabel
 
         anchors.centerIn: parent
-        text: ""
+        text: Number(0).toLocaleString(Qt.locale(), 'f', root.decimals)
         color: Kirigami.Theme.textColor
     }
 
