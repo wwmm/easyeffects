@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-12-01 22:36-0300\n"
-"PO-Revision-Date: 2025-12-01 16:02+0000\n"
+"PO-Revision-Date: 2025-12-02 15:32+0000\n"
 "Last-Translator: Максим Горпиніч <gorpinicmaksim0@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
@@ -3083,10 +3083,9 @@ msgid "frames"
 msgstr "кадр(-а/-ів)"
 
 #: src/units.hpp:73
-#, fuzzy
 msgctxt "frames per second abbreviation"
 msgid "fps"
-msgstr "кадрів/с"
+msgstr "fps"
 
 #: src/units.hpp:74
 msgctxt "minus infinity abbreviation"

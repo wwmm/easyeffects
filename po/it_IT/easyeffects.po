@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-12-01 22:36-0300\n"
-"PO-Revision-Date: 2025-12-01 23:03+0000\n"
+"PO-Revision-Date: 2025-12-02 15:32+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -3098,7 +3098,7 @@ msgstr "frame"
 #: src/units.hpp:73
 msgctxt "frames per second abbreviation"
 msgid "fps"
-msgstr ""
+msgstr "fps"
 
 #: src/units.hpp:74
 msgctxt "minus infinity abbreviation"
