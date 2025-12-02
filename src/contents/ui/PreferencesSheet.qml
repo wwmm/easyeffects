@@ -532,6 +532,18 @@ KirigamiSettings.ConfigurationView {
                         }
                     }
                 }
+
+                FormCard.FormComboBoxDelegate {
+                    text: i18n("Color scheme") // qmllint disable
+                    displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                    currentIndex: KColorManager.activeScheme()
+                    editable: false
+                    model: KColorManager.model
+                    textRole: "display"
+                    onActivated: idx => {
+                        KColorManager.activateScheme(idx);
+                    }
+                }
             }
 
             FormCard.FormHeader {

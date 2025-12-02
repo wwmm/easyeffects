@@ -51,6 +51,7 @@
 #include "config.h"
 #include "db_manager.hpp"
 #include "global_shortcuts.hpp"
+#include "kcolor_manager.hpp"
 #include "local_client.hpp"
 #include "local_server.hpp"
 #include "pipeline_type.hpp"
@@ -358,6 +359,7 @@ int main(int argc, char* argv[]) {
   auto local_server = std::make_unique<LocalServer>();
   auto global_shortcuts = std::make_unique<GlobalShortcuts>();
   auto autostart = std::make_unique<Autostart>();
+  auto color_manager = std::make_unique<KColorManager>();
 
   // theme initialization
 
