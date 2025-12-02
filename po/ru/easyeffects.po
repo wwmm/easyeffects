@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-30 16:55-0300\n"
+"POT-Creation-Date: 2025-12-01 22:36-0300\n"
 "PO-Revision-Date: 2025-12-01 23:03+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -472,7 +472,6 @@ msgstr "Внешний"
 # #, fuzzy
 #: src/contents/ui/Compressor.qml:259 src/contents/ui/Expander.qml:219
 #: src/contents/ui/Gate.qml:237 src/contents/ui/Limiter.qml:209
-#: src/contents/ui/PageStreamsEffects.qml:395
 #: src/contents/ui/PageStreamsEffects.qml:406
 msgid "Input device"
 msgstr "Устройство ввода"
@@ -1686,8 +1685,7 @@ msgstr "Выйти"
 msgid "Go back"
 msgstr "Назад"
 
-#: src/contents/ui/Main.qml:451 src/contents/ui/PageStreamsEffects.qml:635
-#: src/contents/ui/PageStreamsEffects.qml:668
+#: src/contents/ui/Main.qml:451 src/contents/ui/PageStreamsEffects.qml:668
 msgid "Effects"
 msgstr "Эффекты"
 
@@ -1810,51 +1808,40 @@ msgstr "Без эффектов"
 msgid "Audio stream not modified"
 msgstr "Аудиопоток не изменён"
 
-#: src/contents/ui/PageStreamsEffects.qml:328
 #: src/contents/ui/PageStreamsEffects.qml:339
 msgid "Add effect"
 msgstr "Добавить эффект"
 
-#: src/contents/ui/PageStreamsEffects.qml:336
 #: src/contents/ui/PageStreamsEffects.qml:347
 msgid "Close"
 msgstr "Закрыть"
 
-#: src/contents/ui/PageStreamsEffects.qml:340
 #: src/contents/ui/PageStreamsEffects.qml:351
 msgid "Expand the list of effects pipeline"
 msgstr "Развернуть список эффектов канала обработки"
 
-#: src/contents/ui/PageStreamsEffects.qml:340
 #: src/contents/ui/PageStreamsEffects.qml:351
 msgid "Reduce the list of effects pipeline"
 msgstr "Свернуть список эффектов канала обработки"
 
-#: src/contents/ui/PageStreamsEffects.qml:395
-#: src/contents/ui/PageStreamsEffects.qml:622
 #: src/contents/ui/PageStreamsEffects.qml:406
 #: src/contents/ui/PageStreamsEffects.qml:655
 msgid "Players"
 msgstr "Проигрыватели"
 
-#: src/contents/ui/PageStreamsEffects.qml:404
 #: src/contents/ui/PageStreamsEffects.qml:415
 msgid "Output device"
 msgstr "Устройство вывода"
 
-#: src/contents/ui/PageStreamsEffects.qml:404
-#: src/contents/ui/PageStreamsEffects.qml:622
 #: src/contents/ui/PageStreamsEffects.qml:415
 #: src/contents/ui/PageStreamsEffects.qml:655
 msgid "Recorders"
 msgstr "Рекордеры"
 
-#: src/contents/ui/PageStreamsEffects.qml:653
 #: src/contents/ui/PageStreamsEffects.qml:686
 msgid "Input monitoring"
 msgstr "Мониторинг входа"
 
-#: src/contents/ui/PageStreamsEffects.qml:666
 #: src/contents/ui/PageStreamsEffects.qml:699
 msgid "Excluded apps"
 msgstr "Исключённые приложения"
@@ -2224,42 +2211,42 @@ msgstr "Высота"
 msgid "px"
 msgstr "пкс"
 
+#: src/contents/ui/PreferencesSheet.qml:409
+msgid "Spectrum frame rate cap"
+msgstr "Предел частоты кадров спектра"
+
 #: src/contents/ui/PreferencesSheet.qml:410
+msgid "Maximum spectrum update rate."
+msgstr "Максимальная частота обновления спектра."
+
 #: src/contents/ui/PreferencesSheet.qml:425
 msgid "Frequency Range"
 msgstr "Диапазон частот"
 
-#: src/contents/ui/PreferencesSheet.qml:417
 #: src/contents/ui/PreferencesSheet.qml:432
 msgid "Minimum"
 msgstr "Минимум"
 
-#: src/contents/ui/PreferencesSheet.qml:433
 #: src/contents/ui/PreferencesSheet.qml:448
 msgid "Maximum"
 msgstr "Максимум"
 
-#: src/contents/ui/PreferencesSheet.qml:455
 #: src/contents/ui/PreferencesSheet.qml:470
 msgid "Database autosave interval"
 msgstr "Период автосохранения базы данных"
 
-#: src/contents/ui/PreferencesSheet.qml:469
 #: src/contents/ui/PreferencesSheet.qml:484
 msgid "Most used presets"
 msgstr "Часто используемые предустановки"
 
-#: src/contents/ui/PreferencesSheet.qml:487
 #: src/contents/ui/PreferencesSheet.qml:502
 msgid "Window"
 msgstr "Окно"
 
-#: src/contents/ui/PreferencesSheet.qml:496
 #: src/contents/ui/PreferencesSheet.qml:511
 msgid "Force KDE's Breeze theme when Easy Effects starts"
 msgstr "Принудительно включить тему KDE Breeze при запуске Easy Effects"
 
-#: src/contents/ui/PreferencesSheet.qml:497
 #: src/contents/ui/PreferencesSheet.qml:512
 msgid ""
 "It is necessary to restart the service for changes in this setting to take "
@@ -2267,12 +2254,10 @@ msgid ""
 msgstr ""
 "Необходимо перезапустить службу для применения изменений этой настройки."
 
-#: src/contents/ui/PreferencesSheet.qml:510
 #: src/contents/ui/PreferencesSheet.qml:525
 msgid "Reduce effects list controls"
 msgstr "Свернуть элементы управления списка эффектов"
 
-#: src/contents/ui/PreferencesSheet.qml:511
 #: src/contents/ui/PreferencesSheet.qml:526
 msgid ""
 "Action buttons in the effects list are moved inside a context menu for a "
@@ -2281,148 +2266,122 @@ msgstr ""
 "Кнопки действий в списке эффектов будут перемещены в контекстное меню для "
 "более компактного вида."
 
-#: src/contents/ui/PreferencesSheet.qml:523
-#: src/contents/ui/PreferencesSheet.qml:538
-msgid "Graphs"
-msgstr "Графики"
-
-#: src/contents/ui/PreferencesSheet.qml:534
-#: src/contents/ui/PreferencesSheet.qml:549
+#: src/contents/ui/PreferencesSheet.qml:537
+#: src/contents/ui/PreferencesSheet.qml:561
 msgid "Color scheme"
 msgstr "Цветовая схема"
 
-#: src/contents/ui/PreferencesSheet.qml:538
-#: src/contents/ui/PreferencesSheet.qml:553
+#: src/contents/ui/PreferencesSheet.qml:550
+msgid "Graphs"
+msgstr "Графики"
+
+#: src/contents/ui/PreferencesSheet.qml:565
 msgid "Automatic"
 msgstr "Автоматически"
 
-#: src/contents/ui/PreferencesSheet.qml:538
-#: src/contents/ui/PreferencesSheet.qml:553
+#: src/contents/ui/PreferencesSheet.qml:565
 msgid "Light"
 msgstr "Светлая"
 
-#: src/contents/ui/PreferencesSheet.qml:538
-#: src/contents/ui/PreferencesSheet.qml:553
+#: src/contents/ui/PreferencesSheet.qml:565
 msgid "Dark"
 msgstr "Тёмная"
 
-#: src/contents/ui/PreferencesSheet.qml:549
-#: src/contents/ui/PreferencesSheet.qml:564
+#: src/contents/ui/PreferencesSheet.qml:576
 msgid "Color theme"
 msgstr "Цветовая тема"
 
-#: src/contents/ui/PreferencesSheet.qml:553
-#: src/contents/ui/PreferencesSheet.qml:568
+#: src/contents/ui/PreferencesSheet.qml:580
 msgid "Green"
 msgstr "Зелёная"
 
-#: src/contents/ui/PreferencesSheet.qml:553
-#: src/contents/ui/PreferencesSheet.qml:568
+#: src/contents/ui/PreferencesSheet.qml:580
 msgid "Green neon"
 msgstr "Зелёный неон"
 
-#: src/contents/ui/PreferencesSheet.qml:553
-#: src/contents/ui/PreferencesSheet.qml:568
+#: src/contents/ui/PreferencesSheet.qml:580
 msgid "Mix"
 msgstr "Микс"
 
 # ??? Не уверен в переводе
-#: src/contents/ui/PreferencesSheet.qml:553
-#: src/contents/ui/PreferencesSheet.qml:568
+#: src/contents/ui/PreferencesSheet.qml:580
 msgid "Orange"
 msgstr "Оранжевая"
 
-#: src/contents/ui/PreferencesSheet.qml:553
-#: src/contents/ui/PreferencesSheet.qml:568
+#: src/contents/ui/PreferencesSheet.qml:580
 msgid "Yellow"
 msgstr "Жёлтая"
 
-#: src/contents/ui/PreferencesSheet.qml:553
-#: src/contents/ui/PreferencesSheet.qml:568
+#: src/contents/ui/PreferencesSheet.qml:580
 msgid "Blue"
 msgstr "Синяя"
 
-#: src/contents/ui/PreferencesSheet.qml:553
-#: src/contents/ui/PreferencesSheet.qml:568
+#: src/contents/ui/PreferencesSheet.qml:580
 msgid "Purple"
 msgstr "Фиолетовая"
 
-#: src/contents/ui/PreferencesSheet.qml:553
-#: src/contents/ui/PreferencesSheet.qml:568
+#: src/contents/ui/PreferencesSheet.qml:580
 msgid "Grey"
 msgstr "Серая"
 
-#: src/contents/ui/PreferencesSheet.qml:553
-#: src/contents/ui/PreferencesSheet.qml:568
+#: src/contents/ui/PreferencesSheet.qml:580
 msgid "User"
 msgstr "Пользовательская"
 
-#: src/contents/ui/PreferencesSheet.qml:561
-#: src/contents/ui/PreferencesSheet.qml:576
+#: src/contents/ui/PreferencesSheet.qml:588
 msgctxt "@label"
 msgid "Background"
 msgstr "Фон"
 
-#: src/contents/ui/PreferencesSheet.qml:570
-#: src/contents/ui/PreferencesSheet.qml:585
+#: src/contents/ui/PreferencesSheet.qml:597
 msgctxt "@label"
 msgid "Plot area background"
 msgstr "Фон площади участка"
 
-#: src/contents/ui/PreferencesSheet.qml:579
-#: src/contents/ui/PreferencesSheet.qml:594
+#: src/contents/ui/PreferencesSheet.qml:606
 msgctxt "@label"
 msgid "Series colors"
 msgstr "Цвета серий"
 
-#: src/contents/ui/PreferencesSheet.qml:588
-#: src/contents/ui/PreferencesSheet.qml:603
+#: src/contents/ui/PreferencesSheet.qml:615
 msgctxt "@label"
 msgid "Axis labels text color"
 msgstr "Цвет текста меток осей"
 
-#: src/contents/ui/PreferencesSheet.qml:597
-#: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:624
 msgctxt "@label"
 msgid "Axis labels background color"
 msgstr "Цвет фона меток осей"
 
-#: src/contents/ui/PreferencesSheet.qml:606
-#: src/contents/ui/PreferencesSheet.qml:621
+#: src/contents/ui/PreferencesSheet.qml:633
 msgctxt "@label"
 msgid "Border color"
 msgstr "Цвет обводки"
 
-#: src/contents/ui/PreferencesSheet.qml:615
-#: src/contents/ui/PreferencesSheet.qml:630
+#: src/contents/ui/PreferencesSheet.qml:642
 msgid "Line width"
 msgstr "Ширина линии"
 
-#: src/contents/ui/PreferencesSheet.qml:629
-#: src/contents/ui/PreferencesSheet.qml:644
+#: src/contents/ui/PreferencesSheet.qml:656
 msgid "Show grid lines"
 msgstr "Показывать линии сетки"
 
-#: src/contents/ui/PreferencesSheet.qml:647
-#: src/contents/ui/PreferencesSheet.qml:662
+#: src/contents/ui/PreferencesSheet.qml:674
 msgid "Autoload delay"
 msgstr "Задержка автозагрузки"
 
-#: src/contents/ui/PreferencesSheet.qml:648
-#: src/contents/ui/PreferencesSheet.qml:663
+#: src/contents/ui/PreferencesSheet.qml:675
 msgid ""
 "Delay between receiving a new device route and the call to autoload a preset."
 msgstr ""
 "Задержка между приёмом маршрута нового устройства и вызовом автозагрузки "
 "предустановки."
 
-#: src/contents/ui/PreferencesSheet.qml:664
-#: src/contents/ui/PreferencesSheet.qml:679
+#: src/contents/ui/PreferencesSheet.qml:691
 msgid "Ignore the blocklist from presets"
 msgstr "Игнорировать список блокировки из предустановок"
 
-#: src/contents/ui/PreferencesSheet.qml:665
-#: src/contents/ui/PreferencesSheet.qml:680
+#: src/contents/ui/PreferencesSheet.qml:692
 msgid ""
 "If enabled, the list of excluded apps set in the loaded preset is ignored "
 "and does not replace the one set by the user."
@@ -2430,34 +2389,28 @@ msgstr ""
 "Если включено, список исключённых приложений, установленный в загруженной "
 "предустановке, игнорируется и не заменяет список, заданный пользователем."
 
-#: src/contents/ui/PreferencesSheet.qml:686
-#: src/contents/ui/PreferencesSheet.qml:701
+#: src/contents/ui/PreferencesSheet.qml:713
 msgid "Global shortcuts"
 msgstr "Глобальные горячие клавиши"
 
-#: src/contents/ui/PreferencesSheet.qml:687
-#: src/contents/ui/PreferencesSheet.qml:702
+#: src/contents/ui/PreferencesSheet.qml:714
 msgid "Enables support for XDG global shortcuts."
 msgstr "Включает поддержку глобальных горячих клавиш XDG."
 
-#: src/contents/ui/PreferencesSheet.qml:699
-#: src/contents/ui/PreferencesSheet.qml:714
+#: src/contents/ui/PreferencesSheet.qml:726
 msgid "Native window of effects"
 msgstr "Встроенное окно эффектов"
 
-#: src/contents/ui/PreferencesSheet.qml:700
-#: src/contents/ui/PreferencesSheet.qml:715
+#: src/contents/ui/PreferencesSheet.qml:727
 msgid "Allows the native user interface of effects to be shown/hidden."
 msgstr ""
 "Позволяет показывать/скрывать встроенный пользовательский интерфейс плагина."
 
-#: src/contents/ui/PreferencesSheet.qml:712
-#: src/contents/ui/PreferencesSheet.qml:727
+#: src/contents/ui/PreferencesSheet.qml:739
 msgid "Update frequency"
 msgstr "Частота обновления"
 
-#: src/contents/ui/PreferencesSheet.qml:713
-#: src/contents/ui/PreferencesSheet.qml:728
+#: src/contents/ui/PreferencesSheet.qml:740
 msgid "Related to LV2 plugins."
 msgstr "Относится к плагинам LV2."
 
@@ -2929,29 +2882,29 @@ msgstr "База стерео"
 msgid "Stereo phase"
 msgstr "Фаза стерео"
 
-#: src/main.cpp:311
+#: src/main.cpp:312
 msgid "Global audio effects"
 msgstr "Глобальные эффекты звука"
 
-#: src/main.cpp:312
+#: src/main.cpp:313
 msgid "© 2017-2025 EasyEffects Team"
 msgstr "© 2017-2025 Команда EasyEffects"
 
-#: src/main.cpp:314
+#: src/main.cpp:315
 msgid "Wellington Wallace"
 msgstr "Веллингтон Уоллис"
 
-#: src/main.cpp:314
+#: src/main.cpp:315
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Разработчик"
 
-#: src/main.cpp:318
+#: src/main.cpp:319
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Андрей Степанов"
 
-#: src/main.cpp:318
+#: src/main.cpp:319
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "adem4ik@gmail.com"
@@ -3179,7 +3132,8 @@ msgid "frames"
 msgstr "кадр(-а/-ов)"
 
 #: src/units.hpp:73
-msgctxt "frames per second"
+#, fuzzy
+msgctxt "frames per second abbreviation"
 msgid "fps"
 msgstr "к/с"
 
@@ -3196,19 +3150,9 @@ msgstr "Эквалайзер, компрессор и прочие звуков�
 msgid "Simple audio effects"
 msgstr "Простые звуковые эффекты"
 
-#: src/contents/ui/PreferencesSheet.qml:409
-msgid "Spectrum frame rate cap"
-msgstr "Предел частоты кадров спектра"
-
-#: src/contents/ui/PreferencesSheet.qml:410
-msgid "Maximum spectrum update rate."
-msgstr "Максимальная частота обновления спектра."
-
-#: src/units.hpp:73
-#, fuzzy
-msgctxt "frames per second abbreviation"
-msgid "fps"
-msgstr "к/с"
+#~ msgctxt "frames per second"
+#~ msgid "fps"
+#~ msgstr "к/с"
 
 #~ msgid "24 dB/oct"
 #~ msgstr "24 дБ/окт"
