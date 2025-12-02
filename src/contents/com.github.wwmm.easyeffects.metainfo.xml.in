@@ -56,6 +56,22 @@
     <color type="primary" scheme_preference="dark">#004079</color>
   </branding>
   <releases>
+    <release type="stable" version="8.0.6" date="2025-12-02T00:00:00Z">
+      <description>
+        <ul>
+          <li>Features:</li>
+          <li>Users are now able to set custom colors and other style settings to the spectrum graph.</li>
+          <li>Level meter widgets performance has been improved.</li>
+          <li>Some of our icons have been replaced by icons from the Freedesktop standard. This way our tray menu should not have missing icons in systems that do not use the icons in Breeze theme.</li>
+          <li>Users are now able to select a custom color theme in EasyEffects preferences window.</li>
+          <li>Users are now able to set a fps cap to the spectrum and level meters.</li>
+          <li>Improved translations.</li>
+          <li>Bug fixes:</li>
+          <li>The automatic gain control of the Echo Canceller is now registered to the saved presets.</li>
+          <li>Other notes:</li>
+        </ul>
+      </description>
+    </release>
     <release type="stable" version="8.0.5" date="2025-11-25T00:00:00Z">
       <description>
         <ul>
@@ -229,7 +245,7 @@
       <description>
         <ul>
           <li>Features:</li>
-          <li>Latency compensation can be applied to the spectrum plugin. It will delay its drawing so it matches the latency offset applied by the user on programs like Pavucontrol.</li>
+          <li>Latency compensation can be applied to the spectrum plugin.It will delay its drawing so it matches the latency offset applied by the user on programs like Pavucontrol.</li>
           <li>Bug fixes:</li>
           <li>The command line option that shows EasyEffects version should work properly now.</li>
           <li>Fixed a regression in the autoload preset code.</li>
@@ -420,7 +436,7 @@
           <li>Features:</li>
           <li>The presets menu now asks for confirmation before saving/deleting a preset file.</li>
           <li>Bug fixes:</li>
-          <li>The plugin reset should not make its controls ineffective anymore.</li>
+          <li>The plugin reset should not make its controls innefective anymore.</li>
           <li>Other notes:</li>
           <li>Speex is no longer incorrectly listed as a build dependency (speexdsp is still a build dependency)</li>
           <li>RNNoise is no longer an autodependency. It is now required by default, if not available it must be explicitly disabled with -Denable-rnnoise=false</li>

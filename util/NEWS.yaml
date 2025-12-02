@@ -2,6 +2,20 @@
 Version: UNRELEASED_VERSION
 Date: UNRELEASED_DATE
 
+Description: 
+- Features∶
+- 
+
+- Bug fixes∶
+- 
+
+- Other notes∶
+- 
+
+---
+Version: 8.0.6
+Date: 2025-12-02
+
 Description:
 - Features∶
 - Users are now able to set custom colors and other style settings to the spectrum graph.
@@ -15,7 +29,6 @@ Description:
 - The automatic gain control of the Echo Canceller is now registered to the saved presets.
 
 - Other notes∶
--
 
 ---
 Version: 8.0.5
