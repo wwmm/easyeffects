@@ -245,6 +245,17 @@ void Crystalizer::process(std::span<float>& left_in,
     apply_gain(left_in, right_in, input_gain);
   }
 
+  if (!filters_are_ready) {
+    std::ranges::copy(left_in, left_out.begin());
+    std::ranges::copy(right_in, right_out.begin());
+
+    if (output_gain != 1.0F) {
+      apply_gain(left_out, right_out, output_gain);
+    }
+
+    return;
+  }
+
   if (n_samples_is_power_of_2 && blocksize == n_samples) {
     std::ranges::copy(left_in, left_out.begin());
     std::ranges::copy(right_in, right_out.begin());
