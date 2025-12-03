@@ -19,6 +19,7 @@
 
 #include "rnnoise.hpp"
 #include <qstandardpaths.h>
+#include <qtmetamacros.h>
 #include <algorithm>
 #include <filesystem>
 #include <format>
@@ -168,9 +169,16 @@ void RNNoise::process(std::span<float>& left_in,
                       std::span<float>& right_out) {
   std::scoped_lock<std::mutex> lock(data_mutex);
 
-  if (bypass || !rnnoise_ready) {
+  if (bypass) {
     std::ranges::copy(left_in, left_out.begin());
     std::ranges::copy(right_in, right_out.begin());
+
+    return;
+  }
+
+  if (!rnnoise_ready) {
+    std::ranges::fill(left_out, 0.0F);
+    std::ranges::fill(right_out, 0.0F);
 
     return;
   }
@@ -323,13 +331,7 @@ auto RNNoise::get_model_from_name() -> RNNModel* {
   // Try to load a Custom Model (fallback to Standard Model on error).
   util::debug(std::format("{}loading custom model {} from path: {}", log_tag, name, path));
 
-  RNNModel* m = nullptr;
-
-  if (FILE* f = fopen(path.c_str(), "r"); f != nullptr) {
-    m = rnnoise_model_from_file(f);
-
-    fclose(f);
-  }
+  RNNModel* m = rnnoise_model_from_filename(path.c_str());
 
   standard_model = (m == nullptr);
 
