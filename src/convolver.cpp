@@ -264,9 +264,16 @@ void Convolver::process(std::span<float>& left_in,
                         std::span<float>& right_out) {
   std::scoped_lock<std::mutex> lock(data_mutex);
 
-  if (bypass || !ready) {
+  if (bypass) {
     std::ranges::copy(left_in, left_out.begin());
     std::ranges::copy(right_in, right_out.begin());
+
+    return;
+  }
+
+  if (!ready) {
+    std::ranges::fill(left_out, 0.0F);
+    std::ranges::fill(right_out, 0.0F);
 
     return;
   }
