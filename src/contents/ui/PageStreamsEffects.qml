@@ -324,7 +324,12 @@ Kirigami.Page {
             }
 
             ColumnLayout {
+                id: pluginsListLayout
+
                 spacing: 0
+                Layout.maximumWidth: DbMain.collapsePluginsList ? Kirigami.Units.gridUnit * 3 : Kirigami.Units.gridUnit * 32
+                Layout.minimumWidth: DbMain.collapsePluginsList ? Kirigami.Units.gridUnit * 3 : Kirigami.Units.gridUnit * 16
+                Layout.preferredWidth: Common.clamp(streamDB.pluginsListWidth, Layout.minimumWidth, Layout.maximumWidth)
 
                 GridLayout {
                     columns: DbMain.collapsePluginsList === true ? 1 : 2
@@ -367,8 +372,6 @@ Kirigami.Page {
 
                     Layout.fillHeight: true
                     Layout.fillWidth: true
-                    Layout.maximumWidth: DbMain.collapsePluginsList ? Kirigami.Units.gridUnit * 3 : Kirigami.Units.gridUnit * 16
-                    Layout.minimumWidth: DbMain.collapsePluginsList ? Kirigami.Units.gridUnit * 3 : Kirigami.Units.gridUnit * 16
                     Layout.bottomMargin: Kirigami.Units.smallSpacing * 2
 
                     clip: true
@@ -418,8 +421,53 @@ Kirigami.Page {
             }
 
             Kirigami.Separator {
+                id: pluginsSeparator
+
                 Layout.fillHeight: true
-                visible: true
+                Layout.fillWidth: false
+
+                MouseArea {
+                    property bool dragging: false
+                    property real dragStartX: 0
+                    property real initialListWidth: 0
+
+                    anchors.fill: parent
+                    enabled: !DbMain.collapsePluginsList
+                    hoverEnabled: true
+                    cursorShape: !DbMain.collapsePluginsList ? Qt.SplitHCursor : Qt.ArrowCursor
+                    drag.axis: Drag.XAxis
+                    drag.minimumX: pluginsListLayout.Layout.minimumWidth
+                    drag.maximumX: pluginsListLayout.Layout.maximumWidth
+
+                    onPressed: mouse => {
+                        dragging = true;
+                        dragStartX = mouse.x;
+                        initialListWidth = pluginsListLayout.width;
+                    }
+
+                    onPositionChanged: mouse => {
+                        if (dragging && mouse.buttons & Qt.LeftButton) {
+                            const deltaX = mouse.x - dragStartX;
+                            const newWidth = initialListWidth + deltaX;
+
+                            pluginsListLayout.Layout.preferredWidth = newWidth;
+                        }
+                    }
+
+                    onReleased: {
+                        dragging = false;
+
+                        streamDB.pluginsListWidth = pluginsListLayout.width;
+                    }
+
+                    onEntered: {
+                        pluginsSeparator.Layout.preferredWidth = Kirigami.Units.largeSpacing;
+                    }
+
+                    onExited: {
+                        pluginsSeparator.Layout.preferredWidth = pluginsSeparator.implicitWidth;
+                    }
+                }
             }
 
             Controls.StackView {

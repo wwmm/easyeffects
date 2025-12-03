@@ -60,5 +60,9 @@
             <label>Ordered list of most used Presets.</label>
             <default></default>
         </entry>
+        <entry name="pluginsListWidth" type="Int">
+            <label>Width of the plugins list column.</label>
+            <default>0</default>
+        </entry>
     </group>
 </kcfg>
