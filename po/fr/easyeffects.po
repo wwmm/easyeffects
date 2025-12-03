@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-12-02 14:04-0300\n"
-"PO-Revision-Date: 2025-12-01 03:15+0000\n"
+"PO-Revision-Date: 2025-12-03 09:00+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -2109,7 +2109,7 @@ msgstr "Délai d’inactivité"
 
 #: src/contents/ui/PreferencesSheet.qml:240
 msgid "Level meters frame rate cap"
-msgstr "Limite de la fréquence de trames pour les indicateurs de niveau"
+msgstr "Limite de la fréquence d'images pour les indicateurs de niveau"
 
 #: src/contents/ui/PreferencesSheet.qml:241
 msgid "Maximum level meter update rate."
@@ -2185,13 +2185,12 @@ msgid "px"
 msgstr "px"
 
 #: src/contents/ui/PreferencesSheet.qml:409
-#, fuzzy
 msgid "Spectrum frame rate cap"
-msgstr "Activer/désactiver cette application"
+msgstr "Limite de la fréquence d'images du spectre"
 
 #: src/contents/ui/PreferencesSheet.qml:410
 msgid "Maximum spectrum update rate."
-msgstr ""
+msgstr "Fréquence maximale de mise à jour du spectre."
 
 #: src/contents/ui/PreferencesSheet.qml:425
 msgid "Frequency Range"
@@ -3105,13 +3104,12 @@ msgstr "bits"
 #: src/units.hpp:72
 msgctxt "frame unit (plural)"
 msgid "frames"
-msgstr "trames"
+msgstr "images"
 
 #: src/units.hpp:73
-#, fuzzy
 msgctxt "frames per second abbreviation"
 msgid "fps"
-msgstr "tps"
+msgstr "ips"
 
 #: src/units.hpp:74
 msgctxt "minus infinity abbreviation"
