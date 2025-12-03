@@ -159,7 +159,7 @@ void Autogain::process(std::span<float>& left_in,
                        std::span<float>& right_out) {
   std::scoped_lock<std::mutex> lock(data_mutex);
 
-  if (bypass || !ebur128_ready) {
+  if (bypass) {
     std::ranges::copy(left_in, left_out.begin());
     std::ranges::copy(right_in, right_out.begin());
 
@@ -168,6 +168,19 @@ void Autogain::process(std::span<float>& left_in,
 
   if (input_gain != 1.0F) {
     apply_gain(left_in, right_in, input_gain);
+  }
+
+  if (!ebur128_ready) {
+    std::ranges::copy(left_in, left_out.begin());
+    std::ranges::copy(right_in, right_out.begin());
+
+    const float final_gain = static_cast<float>(internal_output_gain) * output_gain;
+
+    if (final_gain != 1.0F) {
+      apply_gain(left_out, right_out, final_gain);
+    }
+
+    return;
   }
 
   {
