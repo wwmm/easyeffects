@@ -113,7 +113,7 @@ auto ConvolverKernelFFT::apply_hanning_window(std::vector<double>& signal) -> vo
 }
 
 auto ConvolverKernelFFT::compute_fft_magnitude(const std::vector<float>& real_input) -> std::vector<double> {
-  if (real_input.empty()) {
+  if (real_input.empty() || real_input.size() < 2) {
     return {};
   }
 
@@ -127,8 +127,22 @@ auto ConvolverKernelFFT::compute_fft_magnitude(const std::vector<float>& real_in
 
   auto* complex_output = fftw_alloc_complex(signal_copy.size());
 
+  if (complex_output == nullptr) {
+    util::debug("FFTW complex_output allocation failed!");
+
+    return {};
+  }
+
   auto* plan =
       fftw_plan_dft_r2c_1d(static_cast<int>(signal_copy.size()), signal_copy.data(), complex_output, FFTW_ESTIMATE);
+
+  if (plan == nullptr) {
+    util::debug("FFTW plan creation failed!");
+
+    fftw_free(complex_output);
+
+    return {};
+  }
 
   fftw_execute(plan);
 
