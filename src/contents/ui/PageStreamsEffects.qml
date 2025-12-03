@@ -425,8 +425,11 @@ Kirigami.Page {
 
                 Layout.fillHeight: true
                 Layout.fillWidth: false
+                Layout.preferredWidth: separatorMouseArea.containsMouse ? Kirigami.Units.largeSpacing : implicitWidth
 
                 MouseArea {
+                    id: separatorMouseArea
+
                     property bool dragging: false
                     property real dragStartX: 0
                     property real initialListWidth: 0
@@ -458,14 +461,6 @@ Kirigami.Page {
                         dragging = false;
 
                         streamDB.pluginsListWidth = pluginsListLayout.width;
-                    }
-
-                    onEntered: {
-                        pluginsSeparator.Layout.preferredWidth = Kirigami.Units.largeSpacing;
-                    }
-
-                    onExited: {
-                        pluginsSeparator.Layout.preferredWidth = pluginsSeparator.implicitWidth;
                     }
                 }
             }
