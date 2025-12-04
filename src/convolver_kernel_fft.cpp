@@ -24,6 +24,7 @@
 #include <qtypes.h>
 #include <algorithm>
 #include <cmath>
+#include <cstring>
 #include <format>
 #include <numbers>
 #include <vector>
@@ -104,7 +105,7 @@ auto ConvolverKernelFFT::clear_data() -> void {
   log_R.clear();
 }
 
-auto ConvolverKernelFFT::apply_hanning_window(std::vector<double>& signal) -> void {
+auto ConvolverKernelFFT::apply_hanning_window(std::vector<float>& signal) -> void {
   for (uint n = 0U; n < signal.size(); n++) {
     const float w = 0.5F * (1.0F - std::cos(2.0F * std::numbers::pi_v<float> * static_cast<float>(n) /
                                             static_cast<float>(signal.size() - 1U)));
@@ -112,18 +113,14 @@ auto ConvolverKernelFFT::apply_hanning_window(std::vector<double>& signal) -> vo
   }
 }
 
-auto ConvolverKernelFFT::compute_fft_magnitude(const std::vector<float>& real_input) -> std::vector<double> {
-  if (real_input.empty() || real_input.size() < 2) {
+auto ConvolverKernelFFT::compute_fft_magnitude(std::vector<float>& kernel) -> std::vector<double> {
+  if (kernel.empty() || kernel.size() < 2) {
     return {};
   }
 
-  std::vector<double> signal_copy(real_input.size());
+  apply_hanning_window(kernel);
 
-  std::ranges::copy(real_input, signal_copy.begin());
-
-  apply_hanning_window(signal_copy);
-
-  std::vector<double> spectrum((signal_copy.size() / 2U) + 1U);
+  std::vector<double> spectrum((kernel.size() / 2U) + 1U);
 
   auto* complex_output = fftw_alloc_complex(spectrum.size());
 
@@ -133,13 +130,25 @@ auto ConvolverKernelFFT::compute_fft_magnitude(const std::vector<float>& real_in
     return {};
   }
 
-  auto* plan =
-      fftw_plan_dft_r2c_1d(static_cast<int>(signal_copy.size()), signal_copy.data(), complex_output, FFTW_ESTIMATE);
+  auto* real_input = static_cast<double*>(fftw_malloc(sizeof(double) * kernel.size()));
+
+  if (real_input == nullptr) {
+    util::debug("FFTW real_input allocation failed!");
+
+    return {};
+  }
+
+  for (size_t n = 0; n < kernel.size(); n++) {
+    real_input[n] = static_cast<double>(kernel[n]);
+  }
+
+  auto* plan = fftw_plan_dft_r2c_1d(static_cast<int>(kernel.size()), real_input, complex_output, FFTW_ESTIMATE);
 
   if (plan == nullptr) {
     util::debug("FFTW plan creation failed!");
 
     fftw_free(complex_output);
+    fftw_free(real_input);
 
     return {};
   }
@@ -154,6 +163,7 @@ auto ConvolverKernelFFT::compute_fft_magnitude(const std::vector<float>& real_in
 
   fftw_destroy_plan(plan);
   fftw_free(complex_output);
+  fftw_free(real_input);
 
   return spectrum;
 }

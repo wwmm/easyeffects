@@ -43,9 +43,9 @@ class ConvolverKernelFFT {
   QList<QPointF> log_R;
 
  private:
-  static auto apply_hanning_window(std::vector<double>& signal) -> void;
+  static auto apply_hanning_window(std::vector<float>& signal) -> void;
 
-  static auto compute_fft_magnitude(const std::vector<float>& real_input) -> std::vector<double>;
+  static auto compute_fft_magnitude(std::vector<float>& kernel) -> std::vector<double>;
 
   static auto normalize_spectrum(std::vector<double>& spectrum) -> void;
 };
