@@ -31,6 +31,7 @@ class ConvolverKernelManager {
  public:
   struct KernelData {
     uint rate = 0;
+    uint original_rate = 0;
     uint channels = 0;
     QString name;
     QString file_path;

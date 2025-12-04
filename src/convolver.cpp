@@ -103,7 +103,7 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
         kernel_is_initialized = data.isValid();
 
         if (kernel_is_initialized) {
-          kernelRate = QString::fromStdString(util::to_string(data.rate));
+          kernelRate = QString::fromStdString(util::to_string(data.original_rate));
           kernelSamples = QString::fromStdString(util::to_string(data.sampleCount()));
           kernelDuration = QString::fromStdString(util::to_string(data.duration()));
 
@@ -413,7 +413,7 @@ void Convolver::load_kernel_file(const bool& init_zita, const uint& server_sampl
 
   ConvolverKernelFFT kernel_fft;
 
-  kernel_fft.calculate_fft(kernel_data.channel_L, kernel_data.channel_R, kernel_data.rate, interpPoints);
+  kernel_fft.calculate_fft(kernel_data.channel_L, kernel_data.channel_R, kernel_data.original_rate, interpPoints);
 
   Q_EMIT worker->onNewChartMag(chart_mag_L, chart_mag_R);
 

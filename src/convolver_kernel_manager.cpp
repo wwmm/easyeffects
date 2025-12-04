@@ -193,10 +193,9 @@ auto ConvolverKernelManager::resampleKernel(const KernelData& kernel, const uint
     return kernel;
   }
 
-  KernelData resampled_kernel;
+  KernelData resampled_kernel = kernel;
 
   resampled_kernel.rate = target_rate;
-  resampled_kernel.name = kernel.name;
 
   util::debug(
       std::format("Resampling kernel '{}' from {} Hz to {} Hz", kernel.name.toStdString(), kernel.rate, target_rate));
@@ -356,6 +355,7 @@ auto ConvolverKernelManager::readKernelFile(const std::string& file_path) -> Ker
 
     // Deinterleave channels
     kernel_data.rate = sndfile.samplerate();
+    kernel_data.original_rate = sndfile.samplerate();
     kernel_data.channels = sndfile.channels() == 1 ? 2 : sndfile.channels();
     kernel_data.channel_L.resize(sndfile.frames());
     kernel_data.channel_R.resize(sndfile.frames());
