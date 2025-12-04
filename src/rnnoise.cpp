@@ -31,7 +31,6 @@
 #endif
 #include <sys/types.h>
 #include <cmath>
-#include <cstdio>
 #include <memory>
 #include <mutex>
 #include <span>

@@ -125,7 +125,7 @@ auto ConvolverKernelFFT::compute_fft_magnitude(const std::vector<float>& real_in
 
   std::vector<double> spectrum((signal_copy.size() / 2U) + 1U);
 
-  auto* complex_output = fftw_alloc_complex(signal_copy.size());
+  auto* complex_output = fftw_alloc_complex(spectrum.size());
 
   if (complex_output == nullptr) {
     util::debug("FFTW complex_output allocation failed!");
