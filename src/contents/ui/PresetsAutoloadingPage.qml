@@ -102,6 +102,11 @@ ColumnLayout {
                 const deviceDescription = device.currentText;
                 const presetName = preset.currentText;
                 const deviceRoute = device.deviceRouteDescription;
+
+                if (Common.isEmpty(presetName)) {
+                    return;
+                }
+
                 if (DbMain.visiblePage === 0)
                     Presets.Manager.addAutoload(1, presetName, deviceName, deviceDescription, deviceRoute);
                 else if (DbMain.visiblePage === 1)
