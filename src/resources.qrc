@@ -18,6 +18,7 @@
         <file alias="enableapp.html">contents/help/enableapp.html</file>
         <file alias="equalizer.html">contents/help/equalizer.html</file>
         <file alias="exciter.html">contents/help/exciter.html</file>
+        <file alias="expander.html">contents/help/expander.html</file>
         <file alias="filter.html">contents/help/filter.html</file>
         <file alias="gate.html">contents/help/gate.html</file>
         <file alias="general.html">contents/help/general.html</file>
