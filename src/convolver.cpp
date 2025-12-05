@@ -411,6 +411,8 @@ void Convolver::load_kernel_file(const bool& init_zita, const uint& server_sampl
 
   util::debug(std::format("{}{}: kernel correctly loaded", log_tag, name.toStdString()));
 
+  std::scoped_lock<std::mutex> lock(data_mutex);
+
   ConvolverKernelFFT kernel_fft;
 
   kernel_fft.calculate_fft(kernel_data.channel_L, kernel_data.channel_R, kernel_data.original_rate, interpPoints);
