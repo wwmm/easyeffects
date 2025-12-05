@@ -326,8 +326,9 @@
             "name": "libmysofa",
             "buildsystem": "cmake-ninja",
             "config-opts": [
-                "-DCMAKE_BUILD_TYPE=None",
+                "-DCMAKE_BUILD_TYPE=Release",
                 "-DCODE_COVERAGE=OFF",
+                "-DBUILD_TESTS=OFF",
                 "-Wno-dev"
             ],
             "sources": [
