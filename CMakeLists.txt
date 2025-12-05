@@ -93,6 +93,7 @@ pkg_check_modules(LIBSOUNDTOUCH soundtouch IMPORTED_TARGET REQUIRED)
 pkg_check_modules(LIBPORTAL libportal IMPORTED_TARGET REQUIRED)
 pkg_check_modules(LIBPORTALQT libportal-qt6 IMPORTED_TARGET REQUIRED)
 pkg_check_modules(LIBWEBRTC webrtc-audio-processing-2 IMPORTED_TARGET REQUIRED)
+pkg_check_modules(LIBMYSOFA libmysofa IMPORTED_TARGET REQUIRED)
 
 file(GLOB KCFG_FILES ${PROJECT_SOURCE_DIR}/src/contents/kcfg/*.kcfg)
 file(GLOB KCFGC_FILES ${PROJECT_SOURCE_DIR}/src/contents/kcfg/*.kcfgc)

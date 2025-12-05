@@ -18,6 +18,7 @@
  */
 
 #include "presets_irs_manager.hpp"
+#include <mysofa.h>
 #include <qcontainerfwd.h>
 #include <qfilesystemwatcher.h>
 #include <qtmetamacros.h>
@@ -55,25 +56,38 @@ auto IrsManager::import_irs_file(const std::string& file_path) -> ImportState {
     return ImportState::no_regular_file;
   }
 
-  auto file = SndfileHandle(file_path);
+  int error = 0;
+  struct MYSOFA_HRTF* sofa = mysofa_load(file_path.c_str(), &error);
 
-  if (file.frames() == 0) {
-    util::warning("Cannot import the impulse response! The format may be corrupted or unsupported.");
-    util::warning(std::format("{} loading failed", file_path));
+  bool is_sofa = error == MYSOFA_OK && sofa != nullptr;
 
-    return ImportState::no_frame;
+  if (sofa != nullptr) {
+    mysofa_free(sofa);
   }
 
-  if (file.channels() != 1 && file.channels() != 2 && file.channels() != 4) {
-    util::warning("Only mono, stereo and true stereo impulse files are supported!");
-    util::warning(std::format("{} loading failed", file_path));
+  if (!is_sofa) {
+    auto file = SndfileHandle(file_path);
 
-    return ImportState::unsupported;
+    if (file.frames() == 0) {
+      util::warning("Cannot import the impulse response! The format may be corrupted or unsupported.");
+      util::warning(std::format("{} loading failed", file_path));
+
+      return ImportState::no_frame;
+    }
+
+    if (file.channels() != 1 && file.channels() != 2 && file.channels() != 4) {
+      util::warning("Only mono, stereo and true stereo impulse files are supported!");
+      util::warning(std::format("{} loading failed", file_path));
+
+      return ImportState::unsupported;
+    }
   }
 
   auto out_path = dir_manager.userIrsDir() / p.filename();
 
-  out_path.replace_extension(DirectoryManager::irs_ext);
+  if (out_path.extension().string() != DirectoryManager::sofa_ext) {
+    out_path.replace_extension(DirectoryManager::irs_ext);
+  }
 
   std::filesystem::copy_file(p, out_path, std::filesystem::copy_options::overwrite_existing);
 

@@ -64,6 +64,7 @@ class DirectoryManager {
 
   static constexpr auto json_ext = ".json";
   static constexpr auto* irs_ext = ".irs";
+  static constexpr auto* sofa_ext = ".sofa";
   static constexpr auto* rnnoise_ext = ".rnnn";
 
  private:
@@ -85,8 +86,8 @@ class DirectoryManager {
 
   void createUserDirectories();
 
-  static auto searchPresetsPath(std::filesystem::directory_iterator& it, const std::string& file_extension = json_ext)
-      -> QList<std::filesystem::path>;
+  static auto searchPresetsPath(std::filesystem::directory_iterator& it,
+                                const std::vector<std::string>& file_extensions) -> QList<std::filesystem::path>;
 
   void xdg_migration();
 };

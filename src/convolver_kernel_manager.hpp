@@ -30,15 +30,33 @@
 class ConvolverKernelManager {
  public:
   struct KernelData {
+    bool is_sofa = false;
+
     uint rate = 0;
     uint original_rate = 0;
     uint channels = 0;
+
     QString name;
     QString file_path;
+
     std::vector<float> channel_L;
     std::vector<float> channel_LR;
     std::vector<float> channel_RL;
     std::vector<float> channel_R;
+
+    struct SofaMetadata {
+      QString listenerDescription;
+      QString roomDescription;
+      QString sourceDescription;
+
+      uint measurementIndex = 0;  // Which measurement to use
+      uint receiverIndex = 0;     // Which receiver to use
+
+      double azimuth = 0.0;    // In degrees
+      double elevation = 0.0;  // In degrees
+      double radius = 0.0;     // In meters
+
+    } sofaMetadata;
 
     [[nodiscard]] auto isValid() const -> bool;
 
@@ -62,8 +80,16 @@ class ConvolverKernelManager {
 
   auto saveKernel(const KernelData& kernel, const std::string& file_name) -> bool;
 
+  static auto readSofaKernelFile(const std::string& file_path,
+                                 double azimuth = 0.0,
+                                 double elevation = 0.0,
+                                 double radius = 0.0,
+                                 uint measurementIndex = 0,
+                                 uint receiverIndex = 0) -> KernelData;
+
  private:
   static constexpr std::string irs_ext = ".irs";
+  static constexpr std::string sofa_ext = ".sofa";
 
   PipelineType pipeline_type;
 
@@ -80,4 +106,6 @@ class ConvolverKernelManager {
       -> std::string;
 
   static auto directConvolution(const std::vector<float>& a, const std::vector<float>& b) -> std::vector<float>;
+
+  static auto getFileExtension(const std::string& file_path) -> std::string;
 };

@@ -264,6 +264,7 @@ target_link_libraries(easyeffects PRIVATE
     PkgConfig::LIBPORTAL
     PkgConfig::LIBPORTALQT
     PkgConfig::LIBWEBRTC
+    PkgConfig::LIBMYSOFA
     ${LIBZITACONVOLVER}
 )
 

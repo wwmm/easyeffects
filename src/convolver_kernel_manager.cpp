@@ -18,10 +18,12 @@
  */
 
 #include "convolver_kernel_manager.hpp"
+#include <mysofa.h>
 #include <qstandardpaths.h>
 #include <qtypes.h>
 #include <sndfile.h>
 #include <algorithm>
+#include <cctype>
 #include <cmath>
 #include <cstddef>
 #include <exception>
@@ -90,7 +92,16 @@ auto ConvolverKernelManager::loadKernel(const std::string& name) -> KernelData {
     return KernelData{};
   }
 
-  auto kernel_data = readKernelFile(file_path);
+  KernelData kernel_data;
+
+  const auto extension = getFileExtension(file_path);
+
+  if (extension == sofa_ext) {
+    kernel_data = readSofaKernelFile(file_path);
+  } else {
+    kernel_data = readKernelFile(file_path);
+  }
+
   kernel_data.name = QString::fromStdString(name);
   kernel_data.file_path = QString::fromStdString(file_path);
 
@@ -153,31 +164,54 @@ auto ConvolverKernelManager::combineKernels(const std::string& kernel1_name,
 
 auto ConvolverKernelManager::searchKernelPath(const std::string& name) -> std::string {
   // Given the irs name without extension, search the full path on the filesystem.
-  const auto irs_filename = name + irs_ext;
+
+  const std::vector<std::string> extensions = {irs_ext, sofa_ext};
 
   const auto community_package = (pipeline_type == PipelineType::input) ? DbMain::lastLoadedInputCommunityPackage()
                                                                         : DbMain::lastLoadedOutputCommunityPackage();
 
-  std::string irs_full_path;
+  std::string kernel_full_path;
 
   if (community_package.isEmpty()) {
-    // Search local irs file.
-    const auto local_irs_file = std::filesystem::path{local_dir_irs + "/" + irs_filename};
+    for (const auto& ext : extensions) {
+      std::string path = local_dir_irs;
 
-    if (std::filesystem::exists(local_irs_file)) {
-      irs_full_path = local_irs_file.string();
+      path.append("/");
+      path.append(name);
+      path.append(ext);
+
+      auto local_kernel_file = std::filesystem::path{path};
+
+      util::warning(local_kernel_file);
+
+      if (std::filesystem::exists(local_kernel_file)) {
+        kernel_full_path = local_kernel_file.string();
+
+        break;
+      }
     }
   } else {
-    // Search irs file in community package paths.
-    for (const auto& xdg_irs_dir : system_data_dir_irs) {
-      if (util::search_filename(std::filesystem::path{xdg_irs_dir + "/" + community_package.toStdString()},
-                                irs_filename, irs_full_path, 3U)) {
+    // Search kernel file in community package paths.
+
+    for (const auto& ext : extensions) {
+      auto kernel_filename = name;
+
+      kernel_filename.append(ext);
+
+      for (const auto& xdg_irs_dir : system_data_dir_irs) {
+        if (util::search_filename(std::filesystem::path{xdg_irs_dir + "/" + community_package.toStdString()},
+                                  kernel_filename, kernel_full_path, 3U)) {
+          break;
+        }
+      }
+
+      if (!kernel_full_path.empty()) {
         break;
       }
     }
   }
 
-  return irs_full_path;
+  return kernel_full_path;
 }
 
 auto ConvolverKernelManager::resampleKernel(const KernelData& kernel, const uint& target_rate) -> KernelData {
@@ -486,4 +520,103 @@ auto ConvolverKernelManager::directConvolution(const std::vector<float>& a, cons
 #endif
 
   return result;
+}
+
+auto ConvolverKernelManager::getFileExtension(const std::string& file_path) -> std::string {
+  std::filesystem::path path(file_path);
+  std::string ext = path.extension().string();
+
+  // Convert to lowercase for case-insensitive comparison
+  std::ranges::transform(ext, ext.begin(), [](unsigned char c) { return std::tolower(c); });
+
+  return ext;
+}
+
+auto ConvolverKernelManager::readSofaKernelFile(const std::string& file_path,
+                                                double azimuth,
+                                                double elevation,
+                                                double radius,
+                                                uint measurementIndex,
+                                                uint receiverIndex) -> KernelData {
+  KernelData kernel_data;
+
+  try {
+    int error = 0;
+
+    struct MYSOFA_HRTF* hrtf = mysofa_load(file_path.c_str(), &error);
+
+    if (!hrtf) {
+      util::warning(std::format("Failed to load SOFA file: {} - Error: {}", file_path, error));
+      return kernel_data;
+    }
+
+    // Validate the HRTF structure
+    if (mysofa_check(hrtf) != MYSOFA_OK) {
+      util::warning(std::format("SOFA file validation failed: {}", file_path));
+    }
+
+    kernel_data.rate = 48000;  // Default fallback
+    kernel_data.original_rate = kernel_data.rate;
+
+    if (hrtf->DataSamplingRate.elements > 0 && hrtf->DataSamplingRate.values) {
+      kernel_data.rate = static_cast<uint>(hrtf->DataSamplingRate.values[0]);
+      kernel_data.original_rate = kernel_data.rate;
+
+      util::debug(std::format("Found SOFA sampling rate: {} Hz", kernel_data.rate));
+    }
+
+    // Set SOFA metadata
+    kernel_data.is_sofa = true;
+    kernel_data.sofaMetadata.azimuth = azimuth;
+    kernel_data.sofaMetadata.elevation = elevation;
+    kernel_data.sofaMetadata.radius = radius;
+    kernel_data.sofaMetadata.measurementIndex = measurementIndex;
+    kernel_data.sofaMetadata.receiverIndex = receiverIndex;
+    kernel_data.channels = 2;  // Default to stereo
+
+    // Get dimensions
+    int M = hrtf->M;  // Number of measurements (source positions)
+    int R = hrtf->R;  // Number of receivers (ears, usually 2)
+    int N = hrtf->N;  // Filter length (samples per IR)
+
+    util::debug(std::format("SOFA file source positions: {}", M));
+    util::debug(std::format("SOFA file receivers: {}", R));
+    util::debug(std::format("SOFA file filter length: {}", N));
+
+    if (M <= 0 || R < 1 || N <= 0) {
+      util::warning(std::format("Invalid SOFA file structure: M={}, R={}, N={}", M, R, N));
+
+      mysofa_free(hrtf);
+
+      return kernel_data;
+    }
+
+    kernel_data.channel_L.resize(N);
+    kernel_data.channel_R.resize(N);
+
+    int m = measurementIndex;
+
+    // Left ear (receiver 0)
+    for (int n = 0; n < N; n++) {
+      kernel_data.channel_L[n] = hrtf->DataIR.values[((m * R + 0) * N) + n];
+    }
+
+    // Right ear (receiver 1)
+    if (R > 1) {
+      for (int n = 0; n < N; n++) {
+        kernel_data.channel_R[n] = hrtf->DataIR.values[((m * R + 1) * N) + n];
+      }
+    } else {
+      kernel_data.channel_R = kernel_data.channel_L;
+    }
+
+    mysofa_free(hrtf);
+
+    util::debug(std::format("Successfully loaded SOFA file '{}': {} Hz, {} samples", file_path, kernel_data.rate, N));
+
+  } catch (const std::exception& e) {
+    util::warning(std::format("Exception while reading SOFA file {}: {}", file_path, e.what()));
+  }
+
+  return kernel_data;
 }

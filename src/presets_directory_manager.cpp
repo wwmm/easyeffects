@@ -169,7 +169,7 @@ auto DirectoryManager::getLocalPresetsPaths(PipelineType type) const -> QList<st
 
   auto it = std::filesystem::directory_iterator{conf_dir};
 
-  return searchPresetsPath(it);
+  return searchPresetsPath(it, {json_ext});
 }
 
 auto DirectoryManager::getAutoloadingProfilesPaths(PipelineType type) const -> QList<std::filesystem::path> {
@@ -177,30 +177,34 @@ auto DirectoryManager::getAutoloadingProfilesPaths(PipelineType type) const -> Q
 
   auto it = std::filesystem::directory_iterator{conf_dir};
 
-  return searchPresetsPath(it);
+  return searchPresetsPath(it, {json_ext});
 }
 
 auto DirectoryManager::getLocalIrsPaths() const -> QList<std::filesystem::path> {
   auto it = std::filesystem::directory_iterator{user_irs_dir};
 
-  return searchPresetsPath(it, irs_ext);
+  return searchPresetsPath(it, {irs_ext, sofa_ext});
 }
 
 auto DirectoryManager::getLocalRnnoisePaths() const -> QList<std::filesystem::path> {
   auto it = std::filesystem::directory_iterator{user_rnnoise_dir};
 
-  return searchPresetsPath(it, rnnoise_ext);
+  return searchPresetsPath(it, {rnnoise_ext});
 }
 
-auto DirectoryManager::searchPresetsPath(std::filesystem::directory_iterator& it, const std::string& file_extension)
+auto DirectoryManager::searchPresetsPath(std::filesystem::directory_iterator& it,
+                                         const std::vector<std::string>& file_extensions)
     -> QList<std::filesystem::path> {
   QList<std::filesystem::path> paths;
 
   try {
     while (it != std::filesystem::directory_iterator{}) {
-      if (std::filesystem::is_regular_file(it->status()) && it->path().extension().string() == file_extension) {
-        paths.append(it->path());
+      for (const auto& ext : file_extensions) {
+        if (std::filesystem::is_regular_file(it->status()) && it->path().extension().string() == ext) {
+          paths.append(it->path());
+        }
       }
+
       ++it;
     }
   } catch (const std::exception& e) {

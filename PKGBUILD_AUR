@@ -36,6 +36,7 @@ depends=(
   'gsl'
   'libportal-qt6'
   'webrtc-audio-processing'
+  'libmysofa'
 )
 makedepends=('cmake' 'extra-cmake-modules' 'git' 'ninja' 'intltool' 'appstream' 'ladspa')
 optdepends=('calf: limiter, exciter, bass enhancer and others'

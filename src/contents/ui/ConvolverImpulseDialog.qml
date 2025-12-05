@@ -25,7 +25,7 @@ Kirigami.Dialog {
 
         fileMode: FileDialog.OpenFiles
         currentFolder: StandardPaths.standardLocations(StandardPaths.DownloadLocation)[0]
-        nameFilters: ["IRS (*.irs)", "WAVE (*.wav)"]
+        nameFilters: ["IRS (*.irs)", "WAVE (*.wav)", "SOFA (*.sofa)"]
         onAccepted: {
             if (Presets.Manager.importImpulses(fileDialog.selectedFiles) === 0) {
                 appWindow.showStatus(i18n("Imported a new Convolver impulse file."), Kirigami.MessageType.Positive); // qmllint disable
