@@ -322,6 +322,8 @@ Item {
             Row {
                 id: axisRow
                 padding: 0
+                x: chart.plotArea.x  // Align with plot area start
+                width: chart.plotArea.width  // Match plot area width
 
                 Repeater {
                     id: axisRepeater
