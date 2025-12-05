@@ -533,9 +533,9 @@ auto ConvolverKernelManager::getFileExtension(const std::string& file_path) -> s
 }
 
 auto ConvolverKernelManager::readSofaKernelFile(const std::string& file_path,
-                                                double azimuth,
-                                                double elevation,
-                                                double radius,
+                                                float azimuth,
+                                                float elevation,
+                                                float radius,
                                                 uint measurementIndex,
                                                 uint receiverIndex) -> KernelData {
   KernelData kernel_data;
@@ -595,6 +595,29 @@ auto ConvolverKernelManager::readSofaKernelFile(const std::string& file_path,
     kernel_data.channel_R.resize(N);
 
     int m = measurementIndex;
+
+    mysofa_tocartesian(hrtf);
+
+    struct MYSOFA_LOOKUP* lookup = mysofa_lookup_init(hrtf);
+
+    if (!lookup) {
+      util::warning("Failed to create SOFA lookup structure.");
+    } else {
+      // azimuth = 90;
+      // elevation = -45;
+
+      float coords[3] = {azimuth, elevation, radius};
+
+      mysofa_s2c(coords);
+
+      m = mysofa_lookup(lookup, coords);
+
+      util::debug(
+          std::format("For azimuth = {}, elevation = {} and radius = {} the nearest SOFA measurement index is {}",
+                      azimuth, elevation, radius, m));
+
+      mysofa_lookup_free(lookup);
+    }
 
     // Left ear (receiver 0)
     for (int n = 0; n < N; n++) {

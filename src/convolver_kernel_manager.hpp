@@ -81,9 +81,9 @@ class ConvolverKernelManager {
   auto saveKernel(const KernelData& kernel, const std::string& file_name) -> bool;
 
   static auto readSofaKernelFile(const std::string& file_path,
-                                 double azimuth = 0.0,
-                                 double elevation = 0.0,
-                                 double radius = 0.0,
+                                 float azimuth = 0.0F,
+                                 float elevation = 0.0F,
+                                 float radius = 1.0F,
                                  uint measurementIndex = 0,
                                  uint receiverIndex = 0) -> KernelData;
 
