@@ -326,15 +326,16 @@
             "name": "libmysofa",
             "buildsystem": "cmake-ninja",
             "config-opts": [
-                "-DCMAKE_BUILD_TYPE=Release",
-                "-DBUILD_TESTS=OFF"
+                "-DCMAKE_BUILD_TYPE=None",
+                "-DCODE_COVERAGE=OFF",
+                "-Wno-dev"
             ],
             "sources": [
                 {
                     "type": "git",
                     "url": "https://github.com/hoene/libmysofa.git",
-                    "tag": "v1.3.2",
-                    "commit": "33974839677da7044ef5a70be7ad5550735aae6e",
+                    "tag": "v1.3.3",
+                    "commit": "444d2c1d7ececf5cc2d96d3b17b209047b02318d",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^v([\\d.]+)$"

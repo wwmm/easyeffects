@@ -619,6 +619,8 @@ auto ConvolverKernelManager::readSofaKernelFile(const std::string& file_path,
       mysofa_lookup_free(lookup);
     }
 
+    // mysofa_tospherical(hrtf);
+
     // Left ear (receiver 0)
     for (int n = 0; n < N; n++) {
       kernel_data.channel_L[n] = hrtf->DataIR.values[((m * R + 0) * N) + n];
