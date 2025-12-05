@@ -583,6 +583,10 @@ auto ConvolverKernelManager::readSofaKernelFile(const std::string& file_path,
     util::debug(std::format("SOFA file receivers: {}", R));
     util::debug(std::format("SOFA file filter length: {}", N));
 
+    util::debug(std::format("Database: {}", mysofa_getAttribute(hrtf->attributes, const_cast<char*>("DatabaseName"))));
+    util::debug(
+        std::format("Listener: {}", mysofa_getAttribute(hrtf->attributes, const_cast<char*>("ListenerShortName"))));
+
     if (M <= 0 || R < 1 || N <= 0) {
       util::warning(std::format("Invalid SOFA file structure: M={}, R={}, N={}", M, R, N));
 
@@ -603,8 +607,14 @@ auto ConvolverKernelManager::readSofaKernelFile(const std::string& file_path,
     if (!lookup) {
       util::warning("Failed to create SOFA lookup structure.");
     } else {
+      util::debug(std::format("Theta min: {}, max: {}", lookup->theta_min, lookup->theta_max));
+      util::debug(std::format("Phi min: {}, max: {}", lookup->phi_min, lookup->phi_max));
+      util::debug(std::format("Radius min: {}, max: {}", lookup->radius_min, lookup->radius_max));
+
       // azimuth = 90;
-      // elevation = -45;
+      // elevation = 90;
+
+      // util::debug("Positions array size: " + std::to_string(hrtf->SourcePosition.elements));
 
       float coords[3] = {azimuth, elevation, radius};
 
