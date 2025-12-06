@@ -565,6 +565,17 @@ auto ConvolverKernelManager::readSofaKernelFile(const std::string& file_path,
       util::debug(std::format("Found SOFA sampling rate: {} Hz", kernel_data.rate));
     }
 
+    // Get dimensions
+    int M = hrtf->M;  // Number of measurements (source positions)
+    int R = hrtf->R;  // Number of receivers (ears, usually 2)
+    int N = hrtf->N;  // Filter length (samples per IR)
+    int E = hrtf->E;  // Number of emitters
+
+    util::debug(std::format("SOFA file measurements: {}", M));
+    util::debug(std::format("SOFA file receivers: {}", R));
+    util::debug(std::format("SOFA file filter length: {}", N));
+    util::debug(std::format("SOFA file emitters: {}", E));
+
     // Set SOFA metadata
     kernel_data.is_sofa = true;
     kernel_data.sofaMetadata.azimuth = azimuth;
@@ -572,16 +583,6 @@ auto ConvolverKernelManager::readSofaKernelFile(const std::string& file_path,
     kernel_data.sofaMetadata.radius = radius;
     kernel_data.sofaMetadata.measurementIndex = measurementIndex;
     kernel_data.sofaMetadata.receiverIndex = receiverIndex;
-    kernel_data.channels = 2;  // Default to stereo
-
-    // Get dimensions
-    int M = hrtf->M;  // Number of measurements (source positions)
-    int R = hrtf->R;  // Number of receivers (ears, usually 2)
-    int N = hrtf->N;  // Filter length (samples per IR)
-
-    util::debug(std::format("SOFA file source positions: {}", M));
-    util::debug(std::format("SOFA file receivers: {}", R));
-    util::debug(std::format("SOFA file filter length: {}", N));
 
     util::debug(std::format("Database: {}", mysofa_getAttribute(hrtf->attributes, const_cast<char*>("DatabaseName"))));
     util::debug(
@@ -594,9 +595,6 @@ auto ConvolverKernelManager::readSofaKernelFile(const std::string& file_path,
 
       return kernel_data;
     }
-
-    kernel_data.channel_L.resize(N);
-    kernel_data.channel_R.resize(N);
 
     int m = measurementIndex;
 
@@ -631,18 +629,58 @@ auto ConvolverKernelManager::readSofaKernelFile(const std::string& file_path,
 
     // mysofa_tospherical(hrtf);
 
-    // Left ear (receiver 0)
-    for (int n = 0; n < N; n++) {
-      kernel_data.channel_L[n] = hrtf->DataIR.values[((m * R + 0) * N) + n];
+    const int RxE_times_N = R * E * N;
+
+    if (E == 1) {
+      kernel_data.channel_L.resize(N);
+      kernel_data.channel_R.resize(N);
+      kernel_data.channels = 2;
+
+      // Left ear (receiver 0)
+      for (int n = 0; n < N; n++) {
+        kernel_data.channel_L[n] = hrtf->DataIR.values[(m * RxE_times_N) + (0 * N) + n];
+      }
+
+      // Right ear (receiver 1)
+      if (R > 1) {
+        for (int n = 0; n < N; n++) {
+          kernel_data.channel_R[n] = hrtf->DataIR.values[(m * RxE_times_N) + (1 * N) + n];
+        }
+      } else {
+        kernel_data.channel_R = kernel_data.channel_L;
+      }
     }
 
-    // Right ear (receiver 1)
-    if (R > 1) {
+    if (R == 2 && E == 2) {
+      // Assuming it is True Stereo HRTF: 4 channels
+
+      kernel_data.channels = 4;
+      kernel_data.channel_L.resize(N);   // LL
+      kernel_data.channel_LR.resize(N);  // LR
+      kernel_data.channel_RL.resize(N);  // RL
+      kernel_data.channel_R.resize(N);   // RR
+
+      const int RxE_times_N = R * E * N;  // Size of one M block (4 * N)
+
+      // Left Channel (LL: Emitter 0 to Receiver 0)
       for (int n = 0; n < N; n++) {
-        kernel_data.channel_R[n] = hrtf->DataIR.values[((m * R + 1) * N) + n];
+        kernel_data.channel_L[n] = hrtf->DataIR.values[(m * RxE_times_N) + (0 * E * N) + (0 * N) + n];
       }
-    } else {
-      kernel_data.channel_R = kernel_data.channel_L;
+
+      // Left-to-Right Crosstalk (LR: Emitter 0 to Receiver 1)
+      for (int n = 0; n < N; n++) {
+        kernel_data.channel_LR[n] = hrtf->DataIR.values[(m * RxE_times_N) + (1 * E * N) + (0 * N) + n];
+      }
+
+      // Right-to-Left Crosstalk (RL: Emitter 1 to Receiver 0)
+      for (int n = 0; n < N; n++) {
+        kernel_data.channel_RL[n] = hrtf->DataIR.values[(m * RxE_times_N) + (0 * E * N) + (1 * N) + n];
+      }
+
+      // Right Channel (RR: Emitter 1 to Receiver 1)
+      for (int n = 0; n < N; n++) {
+        kernel_data.channel_R[n] = hrtf->DataIR.values[(m * RxE_times_N) + (1 * E * N) + (1 * N) + n];
+      }
     }
 
     mysofa_free(hrtf);
