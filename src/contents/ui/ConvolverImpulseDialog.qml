@@ -51,72 +51,84 @@ Kirigami.Dialog {
             }
         }
 
-        ListView {
-            id: listView
+        RowLayout {
+            id: listviewRow
 
-            clip: true
-            reuseItems: true
-            model: Presets.SortedImpulseListModel
-            Layout.fillWidth: true
-            Layout.fillHeight: true
+            ListView {
+                id: listView
 
-            Kirigami.PlaceholderMessage {
-                anchors.centerIn: parent
-                width: parent.width - (Kirigami.Units.largeSpacing * 4)
-                visible: listView.count === 0
-                text: i18n("Empty List") // qmllint disable
-            }
+                clip: true
+                reuseItems: true
+                model: Presets.SortedImpulseListModel
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                Controls.ScrollBar.vertical: listViewScrollBar
 
-            delegate: Delegates.RoundedItemDelegate {
-                id: listItemDelegate
-
-                required property string name
-                required property string path
-
-                hoverEnabled: true
-                highlighted: false
-                width: listView.width
-                onClicked: {
-                    control.pluginDB.kernelName = name;
+                Kirigami.PlaceholderMessage {
+                    anchors.centerIn: parent
+                    width: parent.width - (Kirigami.Units.largeSpacing * 4)
+                    visible: listView.count === 0
+                    text: i18n("Empty List") // qmllint disable
                 }
 
-                Kirigami.PromptDialog {
-                    id: deleteDialog
+                delegate: Delegates.RoundedItemDelegate {
+                    id: listItemDelegate
 
-                    title: i18n("Remove Impulse Response") // qmllint disable
-                    subtitle: i18n("Are you sure you want to remove this impulse response from the list?") // qmllint disable
-                    standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
-                    onAccepted: {
-                        if (Presets.Manager.removeImpulseFile(listItemDelegate.path) === true) {
-                            appWindow.showStatus(i18n("Removed the %1 Convolver impulse.", `<strong>${listItemDelegate.name}</strong>`), Kirigami.MessageType.Positive); // qmllint disable
-                        } else {
-                            appWindow.showStatus(i18n("Failed to remove the %1 Convolver impulse.", `<strong>${listItemDelegate.name}</strong>`), Kirigami.MessageType.Error, false);  // qmllint disable
+                    required property string name
+                    required property string path
+
+                    hoverEnabled: true
+                    highlighted: false
+                    width: listView.width
+                    onClicked: {
+                        control.pluginDB.kernelName = name;
+                    }
+
+                    Kirigami.PromptDialog {
+                        id: deleteDialog
+
+                        title: i18n("Remove Impulse Response") // qmllint disable
+                        subtitle: i18n("Are you sure you want to remove this impulse response from the list?") // qmllint disable
+                        standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
+                        onAccepted: {
+                            if (Presets.Manager.removeImpulseFile(listItemDelegate.path) === true) {
+                                appWindow.showStatus(i18n("Removed the %1 Convolver impulse.", `<strong>${listItemDelegate.name}</strong>`), Kirigami.MessageType.Positive); // qmllint disable
+                            } else {
+                                appWindow.showStatus(i18n("Failed to remove the %1 Convolver impulse.", `<strong>${listItemDelegate.name}</strong>`), Kirigami.MessageType.Error, false);  // qmllint disable
+                            }
+                        }
+                    }
+
+                    contentItem: RowLayout {
+                        Controls.Label {
+                            text: listItemDelegate.name
+                            elide: Text.ElideRight
+                            wrapMode: Text.WrapAnywhere
+                            maximumLineCount: 2
+                        }
+
+                        Kirigami.ActionToolBar {
+                            alignment: Qt.AlignRight
+                            actions: [
+                                Kirigami.Action {
+                                    text: i18n("Delete this impulse") // qmllint disable
+                                    icon.name: "delete"
+                                    displayHint: Kirigami.DisplayHint.AlwaysHide
+                                    onTriggered: {
+                                        deleteDialog.open();
+                                    }
+                                }
+                            ]
                         }
                     }
                 }
+            }
 
-                contentItem: RowLayout {
-                    Controls.Label {
-                        text: listItemDelegate.name
-                        elide: Text.ElideRight
-                        wrapMode: Text.WrapAnywhere
-                        maximumLineCount: 2
-                    }
+            Controls.ScrollBar {
+                id: listViewScrollBar
 
-                    Kirigami.ActionToolBar {
-                        alignment: Qt.AlignRight
-                        actions: [
-                            Kirigami.Action {
-                                text: i18n("Delete this impulse") // qmllint disable
-                                icon.name: "delete"
-                                displayHint: Kirigami.DisplayHint.AlwaysHide
-                                onTriggered: {
-                                    deleteDialog.open();
-                                }
-                            }
-                        ]
-                    }
-                }
+                parent: listviewRow
+                Layout.fillHeight: true
             }
         }
     }
