@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects-news\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-28 14:40+0000\n"
-"PO-Revision-Date: 2025-11-13 14:51+0000\n"
-"Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
+"PO-Revision-Date: 2025-12-06 12:00+0000\n"
+"Last-Translator: neko0xff <neko_0xff@protonmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/changelog/zh_Hant/>\n"
 "Language: zh_Hant\n"
@@ -199,33 +199,27 @@ msgid "Bug fixes:"
 msgstr "錯誤修正："
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:65
-#, fuzzy
 msgid ""
 "A change in GTK 4.14.1 prevented to apply the values inserted into the text "
 "field of our SpinButton widgets. This issue is now resolved."
 msgstr ""
-"A change in GTK 4.14.1 prevented to apply the values inserted into the text "
-"field of our SpinButton widgets. This issue is now resolved."
+"GTK 4.14.1 的變更導致無法套用至 SpinButton 小組件文字欄位中輸入的數值。此問題"
+"現已修復。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:66
-#, fuzzy
 msgid ""
 "The latest Maximizer plugin releases do not have the ceiling control "
 "anymore. So we removed it from our user interface (you can use the plugin "
 "input gain to retrieve the same functionality)."
 msgstr ""
-"The latest Maximizer plugin releases do not have the ceiling control "
-"anymore. So we removed it from our user interface (you can use the plugin "
-"input gain to retrieve the same functionality)."
+"最新版本的Maximizer外掛程式已不再具備上限控制功能。因此我們已從使用者介面移除"
+"此功能（您可透過外掛程式的輸入增益來實現相同效果）。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:67
-#, fuzzy
 msgid ""
 "Equalizer APO import feature does not crash anymore on Flatpak when invalid "
 "values are provided."
-msgstr ""
-"Equalizer APO import feature does not crash anymore on Flatpak when invalid "
-"values are provided."
+msgstr "當提供無效數值時，Equalizer APO 的匯入功能在 Flatpak 環境中不再發生當機。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:68
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:81
@@ -252,57 +246,46 @@ msgid "Other notes:"
 msgstr "其他更新："
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:69
-#, fuzzy
 msgid ""
 "In order for Community Presets to be correctly shipped, packagers are "
 "invited to read and follow the guidelines linked inside the README of "
 "EasyEffects master branch."
 msgstr ""
-"In order for Community Presets to be correctly shipped, packagers are "
-"invited to read and follow the guidelines linked inside the README of "
-"EasyEffects master branch."
+"為了確保社群的預設檔能正確發布，請負責打包人員參閱並遵循 EasyEffects 主分支"
+"的 README 文件內連結的指南。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:70
-#, fuzzy
 msgid ""
 "Presets with Convolver and/or Noise Reduction (RNNoise) effects created "
 "before 7.2.0 version are deprecated. Please reload the irs/model file inside "
 "the Convolver/RNNoise UI and resave the preset."
 msgstr ""
-"Presets with Convolver and/or Noise Reduction (RNNoise) effects created "
-"before 7.2.0 version are deprecated. Please reload the irs/model file inside "
-"the Convolver/RNNoise UI and resave the preset."
+"在 7.2.0 版本之前建立、含有卷積器和/或降噪 (RNNoise) 效果的預設檔已遭廢棄。請"
+"重新載入卷積器/降噪介面內的 irs/model 檔案，並重新儲存該預設檔。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:78
-#, fuzzy
 msgid ""
 "Improved the pipeline management system. Non-limiter effects are placed "
 "before the limiter even if the last two plugins in the pipeline are a "
 "limiter followed by a level meter."
 msgstr ""
-"Improved the pipeline management system. Non-limiter effects are placed "
-"before the limiter even if the last two plugins in the pipeline are a "
-"limiter followed by a level meter."
+"改進了 pipeline 管理系統。即使 pipeline 中最後兩個插件是限幅器接音量計，非限"
+"幅效果器仍會置於限幅器之前。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:80
-#, fuzzy
 msgid ""
 "Fixed a regression that prevented the level meters to be updated under "
 "certain conditions."
-msgstr ""
-"Fixed a regression that prevented the level meters to be updated under "
-"certain conditions."
+msgstr "修復了導致等級計量表在特定條件下無法更新的回歸問題。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:89
-#, fuzzy
 msgid ""
 "We now set monitor.passthrough = true in our virtual devices. This will "
 "allow latency offset to be properly applied by video players when PipeWire "
 "&gt; 1.0.3 is released."
 msgstr ""
-"We now set monitor.passthrough = true in our virtual devices. This will "
-"allow latency offset to be properly applied by video players when PipeWire "
-"&gt; 1.0.3 is released."
+"我們現在在虛擬裝置中設定 monitor.passthrough = true。此設定將使當 PipeWire 版"
+"本高於 1.0.3 時，視訊播放器能正確套用延遲偏移量。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:90
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:237
@@ -360,11 +343,9 @@ msgstr ""
 "in place until gtk developers fiz things on their side"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:117
-#, fuzzy
 msgid ""
 "Fixed a regression introduced in 7.1.2 that could cause EasyEffects to crash"
-msgstr ""
-"Fixed a regression introduced in 7.1.2 that could cause EasyEffects to crash"
+msgstr "修復了在 7.1.2 版本中引入的回歸問題，該問題可能導致 EasyEffects 發生崩潰"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:128
 msgid "The DeepFilterNet plugin can now be added to the preset file"
