@@ -660,8 +660,6 @@ auto ConvolverKernelManager::readSofaKernelFile(const std::string& file_path,
       kernel_data.channel_RL.resize(N);  // RL
       kernel_data.channel_R.resize(N);   // RR
 
-      const int RxE_times_N = R * E * N;  // Size of one M block (4 * N)
-
       // Left Channel (LL: Emitter 0 to Receiver 0)
       for (int n = 0; n < N; n++) {
         kernel_data.channel_L[n] = hrtf->DataIR.values[(m * RxE_times_N) + (0 * E * N) + (0 * N) + n];
