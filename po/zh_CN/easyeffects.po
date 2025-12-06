@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-12-02 14:04-0300\n"
-"PO-Revision-Date: 2025-12-02 15:32+0000\n"
+"PO-Revision-Date: 2025-12-06 09:00+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hans/>\n"
@@ -1822,7 +1822,7 @@ msgid ""
 "It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
 "external applications (e.g. Gnome Settings and Plasma System Settings)"
 msgstr ""
-"强烈建议不要在外部应用程序 (如 Gnome 设置或 Plasma 系统设置) 中将 Easy "
+"强烈建议不要在外部应用程序 (如 GNOME 设置或 Plasma 系统设置) 中将 Easy "
 "Effects 槽/源设为默认设备。"
 
 #: src/contents/ui/PipeWirePage.qml:121
@@ -1885,7 +1885,7 @@ msgstr "状态"
 #: src/contents/ui/PipeWirePage.qml:303
 #: src/contents/ui/PreferencesSheet.qml:308
 msgid "Enabled"
-msgstr "已启用"
+msgstr "启用"
 
 #: src/contents/ui/PipeWirePage.qml:313
 msgid "Channels"
@@ -2204,7 +2204,7 @@ msgstr "收起音效列表控制项"
 msgid ""
 "Action buttons in the effects list are moved inside a context menu for a "
 "more compact view."
-msgstr "将音效列表的操控按钮移入上下文菜单中，以使视图更紧凑。"
+msgstr "将音效列表的操控按钮移入上下文菜单，使视图更紧凑。"
 
 #: src/contents/ui/PreferencesSheet.qml:537
 #: src/contents/ui/PreferencesSheet.qml:561
@@ -2265,7 +2265,7 @@ msgstr "灰色"
 
 #: src/contents/ui/PreferencesSheet.qml:580
 msgid "User"
-msgstr "用户"
+msgstr "自定义"
 
 #: src/contents/ui/PreferencesSheet.qml:588
 msgctxt "@label"
@@ -2275,27 +2275,27 @@ msgstr "背景"
 #: src/contents/ui/PreferencesSheet.qml:597
 msgctxt "@label"
 msgid "Plot area background"
-msgstr "图块背景"
+msgstr "线图背景"
 
 #: src/contents/ui/PreferencesSheet.qml:606
 msgctxt "@label"
 msgid "Series colors"
-msgstr "色系"
+msgstr "主颜色"
 
 #: src/contents/ui/PreferencesSheet.qml:615
 msgctxt "@label"
 msgid "Axis labels text color"
-msgstr "坐标轴标签文本颜色"
+msgstr "坐标轴文本颜色"
 
 #: src/contents/ui/PreferencesSheet.qml:624
 msgctxt "@label"
 msgid "Axis labels background color"
-msgstr "坐标轴标签背景颜色"
+msgstr "坐标轴背景颜色"
 
 #: src/contents/ui/PreferencesSheet.qml:633
 msgctxt "@label"
 msgid "Border color"
-msgstr "边界颜色"
+msgstr "边框颜色"
 
 #: src/contents/ui/PreferencesSheet.qml:642
 msgid "Line width"
