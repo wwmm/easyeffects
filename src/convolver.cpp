@@ -103,14 +103,32 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
         kernel_is_initialized = data.isValid();
 
         if (kernel_is_initialized) {
+          kernelIsSofa = data.is_sofa;
           kernelRate = QString::fromStdString(util::to_string(data.original_rate));
           kernelSamples = QString::fromStdString(util::to_string(data.sampleCount()));
           kernelDuration = QString::fromStdString(util::to_string(data.duration()));
 
+          Q_EMIT kernelIsSofaChanged();
           Q_EMIT kernelRateChanged();
           Q_EMIT kernelDurationChanged();
           Q_EMIT kernelSamplesChanged();
           Q_EMIT newKernelLoaded(data.name, true);
+
+          if (data.is_sofa) {
+            sofaMinAzimuth = data.sofaMetadata.min_azimuth;
+            sofaMaxAzimuth = data.sofaMetadata.max_azimuth;
+            sofaMinElevation = data.sofaMetadata.min_elevation;
+            sofaMaxElevation = data.sofaMetadata.max_elevation;
+            sofaMinRadius = data.sofaMetadata.min_radius;
+            sofaMaxRadius = data.sofaMetadata.max_radius;
+
+            Q_EMIT sofaMinAzimuthChanged();
+            Q_EMIT sofaMaxAzimuthChanged();
+            Q_EMIT sofaMinElevationChanged();
+            Q_EMIT sofaMaxElevationChanged();
+            Q_EMIT sofaMinRadiusChanged();
+            Q_EMIT sofaMaxRadiusChanged();
+          }
 
           if (init_zita) {
             std::scoped_lock<std::mutex> lock(data_mutex);

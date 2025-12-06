@@ -532,12 +532,12 @@ auto ConvolverKernelManager::getFileExtension(const std::string& file_path) -> s
   return ext;
 }
 
+// https://www.sofaconventions.org/mediawiki/index.php/SOFA_specifications
+
 auto ConvolverKernelManager::readSofaKernelFile(const std::string& file_path,
-                                                float azimuth,
-                                                float elevation,
-                                                float radius,
-                                                uint measurementIndex,
-                                                uint receiverIndex) -> KernelData {
+                                                float target_azimuth,
+                                                float target_elevation,
+                                                float target_radius) -> KernelData {
   KernelData kernel_data;
 
   try {
@@ -578,11 +578,6 @@ auto ConvolverKernelManager::readSofaKernelFile(const std::string& file_path,
 
     // Set SOFA metadata
     kernel_data.is_sofa = true;
-    kernel_data.sofaMetadata.azimuth = azimuth;
-    kernel_data.sofaMetadata.elevation = elevation;
-    kernel_data.sofaMetadata.radius = radius;
-    kernel_data.sofaMetadata.measurementIndex = measurementIndex;
-    kernel_data.sofaMetadata.receiverIndex = receiverIndex;
 
     util::debug(std::format("Database: {}", mysofa_getAttribute(hrtf->attributes, const_cast<char*>("DatabaseName"))));
     util::debug(
@@ -596,7 +591,7 @@ auto ConvolverKernelManager::readSofaKernelFile(const std::string& file_path,
       return kernel_data;
     }
 
-    int m = measurementIndex;
+    int m = 0;
 
     mysofa_tocartesian(hrtf);
 
@@ -609,25 +604,43 @@ auto ConvolverKernelManager::readSofaKernelFile(const std::string& file_path,
       util::debug(std::format("Phi min: {}, max: {}", lookup->phi_min, lookup->phi_max));
       util::debug(std::format("Radius min: {}, max: {}", lookup->radius_min, lookup->radius_max));
 
+      kernel_data.sofaMetadata.min_azimuth = lookup->phi_min;
+      kernel_data.sofaMetadata.max_azimuth = lookup->phi_max;
+      kernel_data.sofaMetadata.min_elevation = lookup->theta_min;
+      kernel_data.sofaMetadata.max_elevation = lookup->theta_max;
+      kernel_data.sofaMetadata.min_radius = lookup->radius_min;
+      kernel_data.sofaMetadata.max_radius = lookup->radius_max;
+
       // azimuth = 90;
       // elevation = 90;
 
-      // util::debug("Positions array size: " + std::to_string(hrtf->SourcePosition.elements));
-
-      float coords[3] = {azimuth, elevation, radius};
+      float coords[3] = {target_azimuth, target_elevation, target_radius};
 
       mysofa_s2c(coords);
 
       m = mysofa_lookup(lookup, coords);
 
-      util::debug(
-          std::format("For azimuth = {}, elevation = {} and radius = {} the nearest SOFA measurement index is {}",
-                      azimuth, elevation, radius, m));
+      kernel_data.sofaMetadata.measurementIndex = m;
+
+      util::debug(std::format(
+          "For the desired azimuth = {}, elevation = {} and radius = {} the nearest SOFA measurement index is {}",
+          target_azimuth, target_elevation, target_radius, m));
 
       mysofa_lookup_free(lookup);
-    }
 
-    // mysofa_tospherical(hrtf);
+      mysofa_tospherical(hrtf);
+
+      float selected_azimuth = hrtf->SourcePosition.values[(m * 3) + 0];
+      float selected_elevation = hrtf->SourcePosition.values[(m * 3) + 1];
+      float selected_radius = hrtf->SourcePosition.values[(m * 3) + 2];
+
+      kernel_data.sofaMetadata.azimuth = selected_azimuth;
+      kernel_data.sofaMetadata.elevation = selected_elevation;
+      kernel_data.sofaMetadata.radius = selected_radius;
+
+      util::debug(std::format("For measurement {} we have azimuth = {}, elevation = {} and radius = {}", m,
+                              selected_azimuth, selected_elevation, selected_radius));
+    }
 
     const int RxE_times_N = R * E * N;
 

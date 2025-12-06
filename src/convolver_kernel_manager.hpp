@@ -52,9 +52,16 @@ class ConvolverKernelManager {
       uint measurementIndex = 0;  // Which measurement to use
       uint receiverIndex = 0;     // Which receiver to use
 
-      double azimuth = 0.0;    // In degrees
-      double elevation = 0.0;  // In degrees
-      double radius = 0.0;     // In meters
+      float azimuth = 0.0;    // In degrees
+      float elevation = 0.0;  // In degrees
+      float radius = 0.0;     // In meters
+
+      float min_azimuth = 0.0F;
+      float max_azimuth = 0.0F;
+      float min_elevation = 0.0F;
+      float max_elevation = 0.0F;
+      float min_radius = 0.0F;
+      float max_radius = 0.0F;
 
     } sofaMetadata;
 
@@ -81,11 +88,9 @@ class ConvolverKernelManager {
   auto saveKernel(const KernelData& kernel, const std::string& file_name) -> bool;
 
   static auto readSofaKernelFile(const std::string& file_path,
-                                 float azimuth = 0.0F,
-                                 float elevation = 0.0F,
-                                 float radius = 1.0F,
-                                 uint measurementIndex = 0,
-                                 uint receiverIndex = 0) -> KernelData;
+                                 float target_azimuth = 0.0F,
+                                 float target_elevation = 0.0F,
+                                 float target_radius = 1.0F) -> KernelData;
 
  private:
   static constexpr std::string irs_ext = ".irs";

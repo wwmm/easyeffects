@@ -55,10 +55,18 @@ class Convolver : public PluginBase {
   Q_OBJECT
 
   Q_PROPERTY(bool kernelIsInitialized MEMBER kernel_is_initialized NOTIFY kernelInitializedChanged)
+  Q_PROPERTY(bool kernelIsSofa MEMBER kernelIsSofa NOTIFY kernelIsSofaChanged)
 
   Q_PROPERTY(QString kernelRate MEMBER kernelRate NOTIFY kernelRateChanged)
   Q_PROPERTY(QString kernelSamples MEMBER kernelSamples NOTIFY kernelSamplesChanged)
   Q_PROPERTY(QString kernelDuration MEMBER kernelDuration NOTIFY kernelDurationChanged)
+
+  Q_PROPERTY(float sofaMinAzimuth MEMBER sofaMinAzimuth NOTIFY sofaMinAzimuthChanged)
+  Q_PROPERTY(float sofaMaxAzimuth MEMBER sofaMaxAzimuth NOTIFY sofaMaxAzimuthChanged)
+  Q_PROPERTY(float sofaMinElevation MEMBER sofaMinElevation NOTIFY sofaMinElevationChanged)
+  Q_PROPERTY(float sofaMaxElevation MEMBER sofaMaxElevation NOTIFY sofaMaxElevationChanged)
+  Q_PROPERTY(float sofaMinRadius MEMBER sofaMinRadius NOTIFY sofaMinRadiusChanged)
+  Q_PROPERTY(float sofaMaxRadius MEMBER sofaMaxRadius NOTIFY sofaMaxRadiusChanged)
 
   Q_PROPERTY(int interpPoints MEMBER interpPoints NOTIFY interpPointsChanged)
 
@@ -102,9 +110,17 @@ class Convolver : public PluginBase {
   void newKernelLoaded(QString name, bool success);
 
   void kernelInitializedChanged();
+  void kernelIsSofaChanged();
   void kernelRateChanged();
   void kernelSamplesChanged();
   void kernelDurationChanged();
+
+  void sofaMinAzimuthChanged();
+  void sofaMaxAzimuthChanged();
+  void sofaMinElevationChanged();
+  void sofaMaxElevationChanged();
+  void sofaMinRadiusChanged();
+  void sofaMaxRadiusChanged();
 
   void interpPointsChanged();
 
@@ -122,6 +138,7 @@ class Convolver : public PluginBase {
   db::Convolver* settings = nullptr;
 
   bool kernel_is_initialized = false;
+  bool kernelIsSofa = false;
   bool n_samples_is_power_of_2 = true;
   bool ready = false;
   bool destructor_called = false;
@@ -133,6 +150,13 @@ class Convolver : public PluginBase {
   int interpPoints = 1000;
 
   float dry = 0.0F, wet = 1.0F;
+
+  float sofaMinAzimuth = 0.0F;
+  float sofaMaxAzimuth = 0.0F;
+  float sofaMinElevation = 0.0F;
+  float sofaMaxElevation = 0.0F;
+  float sofaMinRadius = 0.0F;
+  float sofaMaxRadius = 0.0F;
 
   QString kernelRate;
   QString kernelSamples;
