@@ -158,7 +158,9 @@ void FirFilterBase::setup_zita() {
 
   conv->set_options(0);
 
-  int ret = conv->configure(2, 2, kernel.size(), n_samples, n_samples, n_samples, 0.0F /* density */);
+  float density = 0.5F;
+
+  int ret = conv->configure(2, 2, kernel.size(), n_samples, n_samples, Convproc::MAXPART, density);
 
   if (ret != 0) {
     util::warning(std::format("{}can't initialise zita-convolver engine: {}", log_tag, ret));

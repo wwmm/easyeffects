@@ -88,7 +88,10 @@ auto ConvolverZita::init(ConvolverKernelManager::KernelData data,
 
   update_ir_width_and_autogain(ir_width, apply_autogain, false);
 
-  if (auto ret = conv->configure(2, 2, kernel.sampleCount(), bufferSize, bufferSize, bufferSize, 0.0F); ret != 0) {
+  float density = 0.5F;
+
+  if (auto ret = conv->configure(2, 2, kernel.sampleCount(), bufferSize, bufferSize, Convproc::MAXPART, density);
+      ret != 0) {
     util::warning(std::format("Zita: configure failed: {}", ret));
     return false;
   }
