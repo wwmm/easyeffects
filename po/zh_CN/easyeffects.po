@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-12-06 21:39-0300\n"
+"POT-Creation-Date: 2025-12-07 16:47-0300\n"
 "PO-Revision-Date: 2025-12-06 09:00+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
@@ -194,7 +194,7 @@ msgstr "输出增益"
 
 #: src/contents/ui/Autogain.qml:212 src/contents/ui/BassEnhancer.qml:184
 #: src/contents/ui/BassLoudness.qml:104 src/contents/ui/Compressor.qml:853
-#: src/contents/ui/Convolver.qml:492 src/contents/ui/Crossfeed.qml:128
+#: src/contents/ui/Convolver.qml:499 src/contents/ui/Crossfeed.qml:128
 #: src/contents/ui/Crystalizer.qml:89 src/contents/ui/DeepFilterNet.qml:175
 #: src/contents/ui/Deesser.qml:298 src/contents/ui/Delay.qml:354
 #: src/contents/ui/EchoCanceller.qml:136 src/contents/ui/Equalizer.qml:283
@@ -281,7 +281,7 @@ msgid "Listen"
 msgstr "聆听"
 
 #: src/contents/ui/BassEnhancer.qml:226 src/contents/ui/BassLoudness.qml:122
-#: src/contents/ui/Compressor.qml:905 src/contents/ui/Convolver.qml:520
+#: src/contents/ui/Compressor.qml:905 src/contents/ui/Convolver.qml:534
 #: src/contents/ui/Crossfeed.qml:154 src/contents/ui/Crystalizer.qml:117
 #: src/contents/ui/Deesser.qml:340 src/contents/ui/Delay.qml:406
 #: src/contents/ui/EchoCanceller.qml:164 src/contents/ui/Equalizer.qml:367
@@ -515,7 +515,7 @@ msgstr "中信号"
 msgid "Side"
 msgstr "侧信号"
 
-#: src/contents/ui/Compressor.qml:301 src/contents/ui/Convolver.qml:276
+#: src/contents/ui/Compressor.qml:301 src/contents/ui/Convolver.qml:283
 #: src/contents/ui/Delay.qml:39 src/contents/ui/Equalizer.qml:213
 #: src/contents/ui/Expander.qml:261 src/contents/ui/Gate.qml:279
 #: src/contents/ui/LevelMeter.qml:60 src/contents/ui/LevelMeter.qml:99
@@ -525,7 +525,7 @@ msgstr "侧信号"
 msgid "Left"
 msgstr "左声道"
 
-#: src/contents/ui/Compressor.qml:301 src/contents/ui/Convolver.qml:294
+#: src/contents/ui/Compressor.qml:301 src/contents/ui/Convolver.qml:301
 #: src/contents/ui/Delay.qml:192 src/contents/ui/Equalizer.qml:213
 #: src/contents/ui/Expander.qml:261 src/contents/ui/Gate.qml:279
 #: src/contents/ui/LevelMeter.qml:70 src/contents/ui/LevelMeter.qml:109
@@ -610,7 +610,7 @@ msgstr "高通"
 msgid "Off"
 msgstr "关闭"
 
-#: src/contents/ui/Compressor.qml:466 src/contents/ui/Convolver.qml:449
+#: src/contents/ui/Compressor.qml:466 src/contents/ui/Convolver.qml:456
 #: src/contents/ui/Delay.qml:156 src/contents/ui/Delay.qml:309
 #: src/contents/ui/Expander.qml:426 src/contents/ui/Gate.qml:441
 #: src/contents/ui/MultibandCompressor.qml:607
@@ -619,7 +619,7 @@ msgstr "关闭"
 msgid "Dry"
 msgstr "干"
 
-#: src/contents/ui/Compressor.qml:485 src/contents/ui/Convolver.qml:467
+#: src/contents/ui/Compressor.qml:485 src/contents/ui/Convolver.qml:474
 #: src/contents/ui/Delay.qml:174 src/contents/ui/Delay.qml:327
 #: src/contents/ui/Expander.qml:445 src/contents/ui/Gate.qml:460
 #: src/contents/ui/MultibandCompressor.qml:625
@@ -753,7 +753,7 @@ msgstr "关闭"
 msgid "Loaded the %1 Convolver impulse."
 msgstr "已加载卷积脉冲响应 %1。"
 
-#: src/contents/ui/Convolver.qml:50 src/contents/ui/Convolver.qml:317
+#: src/contents/ui/Convolver.qml:50 src/contents/ui/Convolver.qml:324
 msgid "Convolver impulse is not set"
 msgstr "未设置卷积脉冲响应"
 
@@ -765,70 +765,112 @@ msgstr "卷积器处于直通模式。"
 msgid "Failed to load the %1 impulse. The Convolver is in passthrough mode."
 msgstr "无法加载脉冲响应 %1。卷积器处于直通模式。"
 
-#: src/contents/ui/Convolver.qml:126
+#: src/contents/ui/Convolver.qml:133
 msgid "First"
 msgstr "第一项"
 
-#: src/contents/ui/Convolver.qml:139
+#: src/contents/ui/Convolver.qml:146
 msgid "Second"
 msgstr "第二项"
 
-#: src/contents/ui/Convolver.qml:171 src/contents/ui/Convolver.qml:206
+#: src/contents/ui/Convolver.qml:178 src/contents/ui/Convolver.qml:213
 msgid "Combine"
 msgstr "合并"
 
-#: src/contents/ui/Convolver.qml:199
+#: src/contents/ui/Convolver.qml:206
 msgid "Impulses"
 msgstr "脉冲响应"
 
-#: src/contents/ui/Convolver.qml:215 src/plugin_base.cpp:286
+#: src/contents/ui/Convolver.qml:222 src/plugin_base.cpp:286
 msgid "Spectrum"
 msgstr "频谱"
 
-#: src/contents/ui/Convolver.qml:247
+#: src/contents/ui/Convolver.qml:254
 msgid "Log scale"
 msgstr "对数刻度"
 
-#: src/contents/ui/Convolver.qml:354
+#: src/contents/ui/Convolver.qml:361
 msgid "Rate"
 msgstr "速率"
 
-#: src/contents/ui/Convolver.qml:359 src/contents/ui/Delay.qml:55
+#: src/contents/ui/Convolver.qml:366 src/contents/ui/Delay.qml:55
 #: src/contents/ui/Delay.qml:66 src/contents/ui/Delay.qml:208
 #: src/contents/ui/Delay.qml:219
 msgid "Samples"
 msgstr "采样"
 
-#: src/contents/ui/Convolver.qml:364
+#: src/contents/ui/Convolver.qml:371
 msgid "Duration"
 msgstr "持续时间"
 
-#: src/contents/ui/Convolver.qml:369 src/contents/ui/PipeWirePage.qml:313
+#: src/contents/ui/Convolver.qml:376 src/contents/ui/PipeWirePage.qml:313
 msgid "Channels"
 msgstr "声道"
 
-#: src/contents/ui/Convolver.qml:374
+#: src/contents/ui/Convolver.qml:381
 #, fuzzy
 msgid "Format"
 msgstr "格式"
 
-#: src/contents/ui/Convolver.qml:413
+#: src/contents/ui/Convolver.qml:420 src/contents/ui/Convolver.qml:526
 msgctxt "The sofa audio file format"
 msgid "SOFA"
 msgstr ""
 
-#: src/contents/ui/Convolver.qml:413
+#: src/contents/ui/Convolver.qml:420
 msgctxt "The wav audio format"
 msgid "WAV"
 msgstr ""
 
-#: src/contents/ui/Convolver.qml:432
+#: src/contents/ui/Convolver.qml:439
 msgid "Stereo width"
 msgstr "立体声宽度"
 
-#: src/contents/ui/Convolver.qml:509 src/tags_plugin_name.cpp:26
+#: src/contents/ui/Convolver.qml:516 src/tags_plugin_name.cpp:26
 msgid "Autogain"
 msgstr "自动增益"
+
+#: src/contents/ui/ConvolverSofaDialog.qml:12
+msgid "Target Orientation"
+msgstr ""
+
+#: src/contents/ui/ConvolverSofaDialog.qml:23
+#: src/contents/ui/ConvolverSofaDialog.qml:117
+msgid "Azimuth"
+msgstr ""
+
+#: src/contents/ui/ConvolverSofaDialog.qml:38
+#: src/contents/ui/ConvolverSofaDialog.qml:122
+#, fuzzy
+msgid "Elevation"
+msgstr "响应"
+
+#: src/contents/ui/ConvolverSofaDialog.qml:53
+#: src/contents/ui/ConvolverSofaDialog.qml:127
+msgid "Radius"
+msgstr ""
+
+#: src/contents/ui/ConvolverSofaDialog.qml:69
+#, fuzzy
+msgid "Status"
+msgstr "状态"
+
+#: src/contents/ui/ConvolverSofaDialog.qml:84
+#: src/contents/ui/PreferencesSheet.qml:46
+msgid "Database"
+msgstr "数据库"
+
+#: src/contents/ui/ConvolverSofaDialog.qml:89
+msgid "Measurements"
+msgstr ""
+
+#: src/contents/ui/ConvolverSofaDialog.qml:94
+msgid "Index"
+msgstr ""
+
+#: src/contents/ui/ConvolverSofaDialog.qml:152
+msgid "Apply"
+msgstr ""
 
 #: src/contents/ui/Crossfeed.qml:59
 msgid "Cutoff"
@@ -1994,10 +2036,6 @@ msgstr "频谱分析器"
 msgid "Style"
 msgstr "样式"
 
-#: src/contents/ui/PreferencesSheet.qml:46
-msgid "Database"
-msgstr "数据库"
-
 #: src/contents/ui/PreferencesSheet.qml:52
 msgid "Experimental Features"
 msgstr "实验性功能"
@@ -2981,102 +3019,108 @@ msgstr "人声处理器"
 msgid "Stereo Tools"
 msgstr "立体声工具"
 
-#: src/units.hpp:55
+#: src/units.hpp:56
 msgctxt "left channel abbreviation (single letter)"
 msgid "L"
 msgstr "左"
 
-#: src/units.hpp:56
+#: src/units.hpp:57
 msgctxt "left channel abbreviation (single letter)"
 msgid "R"
 msgstr "右"
 
-#: src/units.hpp:57
+#: src/units.hpp:58
 msgctxt "decibel unit abbreviation"
 msgid "dB"
 msgstr "分贝"
 
-#: src/units.hpp:58
+#: src/units.hpp:59
 msgctxt "decibel full scale unit abbreviation"
 msgid "dBFS"
 msgstr "dBFS"
 
-#: src/units.hpp:59
+#: src/units.hpp:60
 msgctxt "decibel per octaves unit abbreviation"
 msgid "dB/oct"
 msgstr "分贝每八度"
 
-#: src/units.hpp:60
+#: src/units.hpp:61
 msgctxt "thousand abbreviation (single letter)"
 msgid "k"
 msgstr "千"
 
-#: src/units.hpp:61
+#: src/units.hpp:62
 msgctxt "seconds unit abbreviation"
 msgid "s"
 msgstr "秒"
 
-#: src/units.hpp:62
+#: src/units.hpp:63
 msgctxt "milliseconds unit abbreviation"
 msgid "ms"
 msgstr "毫秒"
 
-#: src/units.hpp:63
+#: src/units.hpp:64
 msgctxt "Hertz unit abbreviation"
 msgid "Hz"
 msgstr "赫兹"
 
-#: src/units.hpp:64
+#: src/units.hpp:65
 msgctxt "kiloHertz unit abbreviation"
 msgid "kHz"
 msgstr "千赫兹"
 
-#: src/units.hpp:65
+#: src/units.hpp:66
 msgctxt "percentage symbol"
 msgid "%"
 msgstr "%"
 
-#: src/units.hpp:66
+#: src/units.hpp:67
 msgctxt "loudness full scale unit abbreviation"
 msgid "LUFS"
 msgstr "LUFS"
 
-#: src/units.hpp:67
+#: src/units.hpp:68
 msgctxt "loudness unit abbreviation"
 msgid "LU"
 msgstr "LU"
 
-#: src/units.hpp:68
+#: src/units.hpp:69
 msgctxt "meter unit abbreviation"
 msgid "m"
 msgstr "米"
 
-#: src/units.hpp:69
+#: src/units.hpp:70
 msgctxt "centimeter unit abbreviation"
 msgid "cm"
 msgstr "厘米"
 
-#: src/units.hpp:70
+#: src/units.hpp:71
+#, fuzzy
+msgctxt "degrees (angle)"
+msgid "°"
+msgstr "摄氏度"
+
+#: src/units.hpp:72
 msgctxt "degree Celsius unit abbreviation"
 msgid "°C"
 msgstr "摄氏度"
 
-#: src/units.hpp:71
+#: src/units.hpp:73
 msgctxt "bit unit (plural)"
 msgid "bits"
 msgstr "位"
 
-#: src/units.hpp:72
+#: src/units.hpp:74
 msgctxt "frame unit (plural)"
 msgid "frames"
 msgstr "帧"
 
-#: src/units.hpp:73
+#: src/units.hpp:75
 msgctxt "frames per second abbreviation"
 msgid "fps"
 msgstr "帧"
 
-#: src/units.hpp:74
+#: src/units.hpp:76
 msgctxt "minus infinity abbreviation"
 msgid "-inf"
 msgstr "负无穷"

@@ -50,6 +50,12 @@ void ConvolverPreset::save(nlohmann::json& json) {
   json[section][instance_name]["dry"] = settings->dry();
 
   json[section][instance_name]["wet"] = settings->wet();
+
+  json[section][instance_name]["sofa"]["azimuth"] = settings->targetSofaAzimuth();
+
+  json[section][instance_name]["sofa"]["elevation"] = settings->targetSofaElevation();
+
+  json[section][instance_name]["sofa"]["radius"] = settings->targetSofaRadius();
 }
 
 void ConvolverPreset::load(const nlohmann::json& json) {
@@ -60,6 +66,10 @@ void ConvolverPreset::load(const nlohmann::json& json) {
   UPDATE_PROPERTY("autogain", Autogain);
   UPDATE_PROPERTY("dry", Dry);
   UPDATE_PROPERTY("wet", Wet);
+
+  UPDATE_PROPERTY_INSIDE_SUBSECTION("sofa", "azimuth", TargetSofaAzimuth);
+  UPDATE_PROPERTY_INSIDE_SUBSECTION("sofa", "elevation", TargetSofaElevation);
+  UPDATE_PROPERTY_INSIDE_SUBSECTION("sofa", "radius", TargetSofaRadius);
 
   // kernel-path deprecation
   const auto* kernel_name_key = "kernel-name";

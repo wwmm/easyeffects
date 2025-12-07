@@ -37,13 +37,15 @@
 #include <utility>
 #include <vector>
 #include "db_manager.hpp"
+#include "easyeffects_db_convolver.h"
 #include "pipeline_type.hpp"
 #include "resampler.hpp"
 #include "tags_app.hpp"
 #include "util.hpp"
 
-ConvolverKernelManager::ConvolverKernelManager(const PipelineType& pipeline_type)
-    : pipeline_type(pipeline_type),
+ConvolverKernelManager::ConvolverKernelManager(db::Convolver* settings, const PipelineType& pipeline_type)
+    : settings(settings),
+      pipeline_type(pipeline_type),
       app_data_dir(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation).toStdString()),
       local_dir_irs(app_data_dir + "/irs") {
   /**
@@ -534,10 +536,7 @@ auto ConvolverKernelManager::getFileExtension(const std::string& file_path) -> s
 
 // https://www.sofaconventions.org/mediawiki/index.php/SOFA_specifications
 
-auto ConvolverKernelManager::readSofaKernelFile(const std::string& file_path,
-                                                float target_azimuth,
-                                                float target_elevation,
-                                                float target_radius) -> KernelData {
+auto ConvolverKernelManager::readSofaKernelFile(const std::string& file_path) -> KernelData {
   KernelData kernel_data;
 
   try {
@@ -578,10 +577,10 @@ auto ConvolverKernelManager::readSofaKernelFile(const std::string& file_path,
 
     // Set SOFA metadata
     kernel_data.is_sofa = true;
+    kernel_data.sofaMetadata.measurements = M;
+    kernel_data.sofaMetadata.database = mysofa_getAttribute(hrtf->attributes, const_cast<char*>("DatabaseName"));
 
-    util::debug(std::format("Database: {}", mysofa_getAttribute(hrtf->attributes, const_cast<char*>("DatabaseName"))));
-    util::debug(
-        std::format("Listener: {}", mysofa_getAttribute(hrtf->attributes, const_cast<char*>("ListenerShortName"))));
+    util::debug(std::format("Database: {}", kernel_data.sofaMetadata.database.toStdString()));
 
     if (M <= 0 || R < 1 || N <= 0) {
       util::warning(std::format("Invalid SOFA file structure: M={}, R={}, N={}", M, R, N));
@@ -611,20 +610,19 @@ auto ConvolverKernelManager::readSofaKernelFile(const std::string& file_path,
       kernel_data.sofaMetadata.min_radius = lookup->radius_min;
       kernel_data.sofaMetadata.max_radius = lookup->radius_max;
 
-      // azimuth = 90;
-      // elevation = 90;
-
-      float coords[3] = {target_azimuth, target_elevation, target_radius};
+      float coords[3] = {static_cast<float>(settings->targetSofaAzimuth()),
+                         static_cast<float>(settings->targetSofaElevation()),
+                         static_cast<float>(settings->targetSofaRadius())};
 
       mysofa_s2c(coords);
 
       m = mysofa_lookup(lookup, coords);
 
-      kernel_data.sofaMetadata.measurementIndex = m;
+      kernel_data.sofaMetadata.index = m;
 
       util::debug(std::format(
           "For the desired azimuth = {}, elevation = {} and radius = {} the nearest SOFA measurement index is {}",
-          target_azimuth, target_elevation, target_radius, m));
+          settings->targetSofaAzimuth(), settings->targetSofaElevation(), settings->targetSofaRadius(), m));
 
       mysofa_lookup_free(lookup);
 

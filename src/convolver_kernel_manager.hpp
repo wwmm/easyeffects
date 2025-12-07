@@ -25,6 +25,7 @@
 #include <filesystem>
 #include <string>
 #include <vector>
+#include "easyeffects_db_convolver.h"
 #include "pipeline_type.hpp"
 
 class ConvolverKernelManager {
@@ -45,12 +46,10 @@ class ConvolverKernelManager {
     std::vector<float> channel_R;
 
     struct SofaMetadata {
-      QString listenerDescription;
-      QString roomDescription;
-      QString sourceDescription;
+      QString database;
 
-      uint measurementIndex = 0;  // Which measurement to use
-      uint receiverIndex = 0;     // Which receiver to use
+      int index = 0;  // Which measurement to use
+      int measurements = 1;
 
       float azimuth = 0.0;    // In degrees
       float elevation = 0.0;  // In degrees
@@ -72,7 +71,7 @@ class ConvolverKernelManager {
     [[nodiscard]] auto sampleCount() const -> size_t;
   };
 
-  ConvolverKernelManager(const PipelineType& pipeline_type);
+  ConvolverKernelManager(db::Convolver* settings, const PipelineType& pipeline_type);
 
   auto loadKernel(const std::string& name) -> KernelData;
 
@@ -87,12 +86,11 @@ class ConvolverKernelManager {
 
   auto saveKernel(const KernelData& kernel, const std::string& file_name) -> bool;
 
-  static auto readSofaKernelFile(const std::string& file_path,
-                                 float target_azimuth = 0.0F,
-                                 float target_elevation = 0.0F,
-                                 float target_radius = 1.0F) -> KernelData;
+  auto readSofaKernelFile(const std::string& file_path) -> KernelData;
 
  private:
+  db::Convolver* settings = nullptr;
+
   static constexpr std::string irs_ext = ".irs";
   static constexpr std::string sofa_ext = ".sofa";
 
