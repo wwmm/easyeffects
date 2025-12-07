@@ -46,5 +46,17 @@
             <max>20</max>
             <default>0</default>
         </entry>
+        <entry name="targetSofaAzimuth" type="Double">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="targetSofaElevation" type="Double">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="targetSofaRadius" type="Double">
+            <label></label>
+            <default>1.0</default>
+        </entry>
     </group>
 </kcfg>

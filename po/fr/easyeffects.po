@@ -209,6 +209,7 @@ msgstr "Gain de sortie"
 #: src/contents/ui/RNNoise.qml:68 src/contents/ui/RNNoise.qml:282
 #: src/contents/ui/RNNoise.qml:284 src/contents/ui/RNNoise.qml:302
 #: src/contents/ui/Speex.qml:155 src/contents/ui/StereoTools.qml:370
+#: src/contents/ui/Convolver.qml:499
 msgid "Using %1"
 msgstr "Utilisation de %1"
 
@@ -293,7 +294,7 @@ msgstr "Écouter"
 #: src/contents/ui/MultibandCompressor.qml:995
 #: src/contents/ui/MultibandGate.qml:968 src/contents/ui/Reverb.qml:337
 #: src/contents/ui/RNNoise.qml:327 src/contents/ui/Speex.qml:173
-#: src/contents/ui/StereoTools.qml:402
+#: src/contents/ui/StereoTools.qml:402 src/contents/ui/Convolver.qml:534
 msgid "Reset"
 msgstr "Réinitialiser"
 
@@ -523,7 +524,7 @@ msgstr "Latérale"
 #: src/contents/ui/LevelMeter.qml:60 src/contents/ui/LevelMeter.qml:99
 #: src/contents/ui/MultibandCompressor.qml:432
 #: src/contents/ui/MultibandGate.qml:405 src/contents/ui/PipeWirePage.qml:322
-#: src/contents/ui/StereoTools.qml:184
+#: src/contents/ui/StereoTools.qml:184 src/contents/ui/Convolver.qml:283
 msgid "Left"
 msgstr "Gauche"
 
@@ -533,7 +534,7 @@ msgstr "Gauche"
 #: src/contents/ui/LevelMeter.qml:70 src/contents/ui/LevelMeter.qml:109
 #: src/contents/ui/MultibandCompressor.qml:432
 #: src/contents/ui/MultibandGate.qml:405 src/contents/ui/PipeWirePage.qml:333
-#: src/contents/ui/StereoTools.qml:211
+#: src/contents/ui/StereoTools.qml:211 src/contents/ui/Convolver.qml:301
 msgid "Right"
 msgstr "Droite"
 
@@ -618,6 +619,7 @@ msgstr "Désactivé"
 #: src/contents/ui/MultibandCompressor.qml:607
 #: src/contents/ui/MultibandGate.qml:580 src/contents/ui/Pitch.qml:103
 #: src/contents/ui/Reverb.qml:169 src/contents/ui/StereoTools.qml:325
+#: src/contents/ui/Convolver.qml:456
 msgid "Dry"
 msgstr "Sec"
 
@@ -627,6 +629,7 @@ msgstr "Sec"
 #: src/contents/ui/MultibandCompressor.qml:625
 #: src/contents/ui/MultibandGate.qml:598 src/contents/ui/Pitch.qml:122
 #: src/contents/ui/Reverb.qml:187 src/contents/ui/StereoTools.qml:343
+#: src/contents/ui/Convolver.qml:474
 msgid "Wet"
 msgstr "Humide"
 
@@ -757,6 +760,7 @@ msgid "Loaded the %1 Convolver impulse."
 msgstr "Chargement de l'impulsion %1 du Convolver."
 
 #: src/contents/ui/Convolver.qml:50 src/contents/ui/Convolver.qml:317
+#: src/contents/ui/Convolver.qml:324
 msgid "Convolver impulse is not set"
 msgstr "L'impulsion du Convolver n'est pas définie"
 
@@ -769,45 +773,48 @@ msgid "Failed to load the %1 impulse. The Convolver is in passthrough mode."
 msgstr ""
 "Échec du chargement de l'impulsion %1. Le Convolver est en mode transparent."
 
-#: src/contents/ui/Convolver.qml:126
+#: src/contents/ui/Convolver.qml:126 src/contents/ui/Convolver.qml:133
 msgid "First"
 msgstr "Premier"
 
-#: src/contents/ui/Convolver.qml:139
+#: src/contents/ui/Convolver.qml:139 src/contents/ui/Convolver.qml:146
 msgid "Second"
 msgstr "Deuxième"
 
 #: src/contents/ui/Convolver.qml:171 src/contents/ui/Convolver.qml:206
+#: src/contents/ui/Convolver.qml:178 src/contents/ui/Convolver.qml:213
 msgid "Combine"
 msgstr "Combiner"
 
-#: src/contents/ui/Convolver.qml:199
+#: src/contents/ui/Convolver.qml:199 src/contents/ui/Convolver.qml:206
 msgid "Impulses"
 msgstr "Impulsions"
 
 #: src/contents/ui/Convolver.qml:215 src/plugin_base.cpp:286
+#: src/contents/ui/Convolver.qml:222
 msgid "Spectrum"
 msgstr "Spectre"
 
-#: src/contents/ui/Convolver.qml:247
+#: src/contents/ui/Convolver.qml:247 src/contents/ui/Convolver.qml:254
 msgid "Log scale"
 msgstr "Échelle logarithmique"
 
-#: src/contents/ui/Convolver.qml:354
+#: src/contents/ui/Convolver.qml:354 src/contents/ui/Convolver.qml:361
 msgid "Rate"
 msgstr "Taux"
 
 #: src/contents/ui/Convolver.qml:359 src/contents/ui/Delay.qml:55
 #: src/contents/ui/Delay.qml:66 src/contents/ui/Delay.qml:208
-#: src/contents/ui/Delay.qml:219
+#: src/contents/ui/Delay.qml:219 src/contents/ui/Convolver.qml:366
 msgid "Samples"
 msgstr "Échantillons"
 
-#: src/contents/ui/Convolver.qml:364
+#: src/contents/ui/Convolver.qml:364 src/contents/ui/Convolver.qml:371
 msgid "Duration"
 msgstr "Durée"
 
 #: src/contents/ui/Convolver.qml:369 src/contents/ui/PipeWirePage.qml:313
+#: src/contents/ui/Convolver.qml:376
 msgid "Channels"
 msgstr "Canaux"
 
@@ -825,11 +832,12 @@ msgctxt "The wav audio format"
 msgid "WAV"
 msgstr "WAV"
 
-#: src/contents/ui/Convolver.qml:432
+#: src/contents/ui/Convolver.qml:432 src/contents/ui/Convolver.qml:439
 msgid "Stereo width"
 msgstr "Largeur Stéréo"
 
 #: src/contents/ui/Convolver.qml:509 src/tags_plugin_name.cpp:26
+#: src/contents/ui/Convolver.qml:516
 msgid "Autogain"
 msgstr "Gain Automatique"
 
@@ -2013,6 +2021,7 @@ msgid "Style"
 msgstr "Style"
 
 #: src/contents/ui/PreferencesSheet.qml:46
+#: src/contents/ui/ConvolverSofaDialog.qml:84
 msgid "Database"
 msgstr "Base de Données"
 
@@ -3030,102 +3039,102 @@ msgstr "Processeur Vocal"
 msgid "Stereo Tools"
 msgstr "Outils Stéréo"
 
-#: src/units.hpp:55
+#: src/units.hpp:55 src/units.hpp:56
 msgctxt "left channel abbreviation (single letter)"
 msgid "L"
 msgstr "G"
 
-#: src/units.hpp:56
+#: src/units.hpp:56 src/units.hpp:57
 msgctxt "left channel abbreviation (single letter)"
 msgid "R"
 msgstr "D"
 
-#: src/units.hpp:57
+#: src/units.hpp:57 src/units.hpp:58
 msgctxt "decibel unit abbreviation"
 msgid "dB"
 msgstr "dB"
 
-#: src/units.hpp:58
+#: src/units.hpp:58 src/units.hpp:59
 msgctxt "decibel full scale unit abbreviation"
 msgid "dBFS"
 msgstr "dB FS"
 
-#: src/units.hpp:59
+#: src/units.hpp:59 src/units.hpp:60
 msgctxt "decibel per octaves unit abbreviation"
 msgid "dB/oct"
 msgstr "dB/oct"
 
-#: src/units.hpp:60
+#: src/units.hpp:60 src/units.hpp:61
 msgctxt "thousand abbreviation (single letter)"
 msgid "k"
 msgstr "m"
 
-#: src/units.hpp:61
+#: src/units.hpp:61 src/units.hpp:62
 msgctxt "seconds unit abbreviation"
 msgid "s"
 msgstr "s"
 
-#: src/units.hpp:62
+#: src/units.hpp:62 src/units.hpp:63
 msgctxt "milliseconds unit abbreviation"
 msgid "ms"
 msgstr "ms"
 
-#: src/units.hpp:63
+#: src/units.hpp:63 src/units.hpp:64
 msgctxt "Hertz unit abbreviation"
 msgid "Hz"
 msgstr "Hz"
 
-#: src/units.hpp:64
+#: src/units.hpp:64 src/units.hpp:65
 msgctxt "kiloHertz unit abbreviation"
 msgid "kHz"
 msgstr "kHz"
 
-#: src/units.hpp:65
+#: src/units.hpp:65 src/units.hpp:66
 msgctxt "percentage symbol"
 msgid "%"
 msgstr "%"
 
-#: src/units.hpp:66
+#: src/units.hpp:66 src/units.hpp:67
 msgctxt "loudness full scale unit abbreviation"
 msgid "LUFS"
 msgstr "LUFS"
 
-#: src/units.hpp:67
+#: src/units.hpp:67 src/units.hpp:68
 msgctxt "loudness unit abbreviation"
 msgid "LU"
 msgstr "LU"
 
-#: src/units.hpp:68
+#: src/units.hpp:68 src/units.hpp:69
 msgctxt "meter unit abbreviation"
 msgid "m"
 msgstr "m"
 
-#: src/units.hpp:69
+#: src/units.hpp:69 src/units.hpp:70
 msgctxt "centimeter unit abbreviation"
 msgid "cm"
 msgstr "cm"
 
-#: src/units.hpp:70
+#: src/units.hpp:70 src/units.hpp:72
 msgctxt "degree Celsius unit abbreviation"
 msgid "°C"
 msgstr "°C"
 
-#: src/units.hpp:71
+#: src/units.hpp:71 src/units.hpp:73
 msgctxt "bit unit (plural)"
 msgid "bits"
 msgstr "bits"
 
-#: src/units.hpp:72
+#: src/units.hpp:72 src/units.hpp:74
 msgctxt "frame unit (plural)"
 msgid "frames"
 msgstr "images"
 
-#: src/units.hpp:73
+#: src/units.hpp:73 src/units.hpp:75
 msgctxt "frames per second abbreviation"
 msgid "fps"
 msgstr "ips"
 
-#: src/units.hpp:74
+#: src/units.hpp:74 src/units.hpp:76
 msgctxt "minus infinity abbreviation"
 msgid "-inf"
 msgstr "-inf"
@@ -3137,6 +3146,50 @@ msgstr "Égaliseur, Compresseur et Autres Effets Audio"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "Effets audio simples"
+
+#: src/contents/ui/ConvolverSofaDialog.qml:12
+msgid "Target Orientation"
+msgstr ""
+
+#: src/contents/ui/ConvolverSofaDialog.qml:23
+#: src/contents/ui/ConvolverSofaDialog.qml:117
+msgid "Azimuth"
+msgstr ""
+
+#: src/contents/ui/ConvolverSofaDialog.qml:38
+#: src/contents/ui/ConvolverSofaDialog.qml:122
+#, fuzzy
+msgid "Elevation"
+msgstr "Réaction"
+
+#: src/contents/ui/ConvolverSofaDialog.qml:53
+#: src/contents/ui/ConvolverSofaDialog.qml:127
+msgid "Radius"
+msgstr ""
+
+#: src/contents/ui/ConvolverSofaDialog.qml:69
+#, fuzzy
+msgid "Status"
+msgstr "État"
+
+#: src/contents/ui/ConvolverSofaDialog.qml:89
+#, fuzzy
+msgid "Measurements"
+msgstr "Mesurer le bruit"
+
+#: src/contents/ui/ConvolverSofaDialog.qml:94
+msgid "Index"
+msgstr ""
+
+#: src/contents/ui/ConvolverSofaDialog.qml:152
+msgid "Apply"
+msgstr ""
+
+#: src/units.hpp:71
+#, fuzzy
+msgctxt "degrees (angle)"
+msgid "°"
+msgstr "°C"
 
 #~ msgid "24 dB/oct"
 #~ msgstr "24 dB/oct"

@@ -44,6 +44,7 @@ class Units : public QObject {
   Q_PROPERTY(QString lu MEMBER lu CONSTANT)
   Q_PROPERTY(QString m MEMBER m CONSTANT)
   Q_PROPERTY(QString cm MEMBER cm CONSTANT)
+  Q_PROPERTY(QString degrees MEMBER degrees CONSTANT)
   Q_PROPERTY(QString degC MEMBER degC CONSTANT)
   Q_PROPERTY(QString bits MEMBER bits CONSTANT)
   Q_PROPERTY(QString frames MEMBER frames CONSTANT)
@@ -67,6 +68,7 @@ class Units : public QObject {
     lu = ki18nc("loudness unit abbreviation", "LU").toString();
     m = ki18nc("meter unit abbreviation", "m").toString();
     cm = ki18nc("centimeter unit abbreviation", "cm").toString();
+    degrees = ki18nc("degrees (angle)", "°").toString();
     degC = ki18nc("degree Celsius unit abbreviation", "°C").toString();
     bits = ki18nc("bit unit (plural)", "bits").toString();
     frames = ki18nc("frame unit (plural)", "frames").toString();
@@ -90,6 +92,7 @@ class Units : public QObject {
   QString lu;
   QString m;
   QString cm;
+  QString degrees;
   QString degC;
   QString bits;
   QString frames;

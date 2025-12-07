@@ -104,6 +104,13 @@ Kirigami.ScrollablePage {
         pluginDB: convolverPage.pluginDB
     }
 
+    ConvolverSofaDialog {
+        id: sofaDialog
+
+        pluginDB: convolverPage.pluginDB
+        pluginBackend: convolverPage.pluginBackend
+    }
+
     Kirigami.Dialog {
         id: combineDialog
 
@@ -402,7 +409,7 @@ Kirigami.ScrollablePage {
                         id: irChannels
 
                         Layout.alignment: Qt.AlignHCenter
-                        text: convolverPage.pluginBackend.kernelChannels
+                        text: convolverPage.pluginBackend ? convolverPage.pluginBackend.kernelChannels : ""
                         enabled: false
                     }
 
@@ -410,7 +417,7 @@ Kirigami.ScrollablePage {
                         id: irFormat
 
                         Layout.alignment: Qt.AlignHCenter
-                        text: convolverPage.pluginBackend.kernelIsSofa ? i18nc("The sofa audio file format", "SOFA") : i18nc("The wav audio format", "WAV")
+                        text: (convolverPage.pluginBackend ? convolverPage.pluginBackend.kernelIsSofa : false) ? i18nc("The sofa audio file format", "SOFA") : i18nc("The wav audio format", "WAV")
                         enabled: false
                     }
                 }
@@ -513,6 +520,13 @@ Kirigami.ScrollablePage {
                     onTriggered: {
                         if (checked !== convolverPage.pluginDB.autogain)
                             convolverPage.pluginDB.autogain = checked;
+                    }
+                },
+                Kirigami.Action {
+                    text: i18nc("The sofa audio file format", "SOFA")
+                    icon.name: "waveform-symbolic"
+                    onTriggered: {
+                        sofaDialog.open();
                     }
                 },
                 Kirigami.Action {

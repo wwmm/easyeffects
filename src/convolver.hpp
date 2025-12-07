@@ -62,6 +62,9 @@ class Convolver : public PluginBase {
   Q_PROPERTY(QString kernelSamples MEMBER kernelSamples NOTIFY kernelSamplesChanged)
   Q_PROPERTY(QString kernelDuration MEMBER kernelDuration NOTIFY kernelDurationChanged)
 
+  Q_PROPERTY(QString sofaDatabase MEMBER sofaDatabase NOTIFY sofaDatabaseChanged)
+  Q_PROPERTY(float sofaMeasurements MEMBER sofaMeasurements NOTIFY sofaMeasurementsChanged)
+  Q_PROPERTY(float sofaIndex MEMBER sofaIndex NOTIFY sofaIndexChanged)
   Q_PROPERTY(float sofaAzimuth MEMBER sofaAzimuth NOTIFY sofaAzimuthChanged)
   Q_PROPERTY(float sofaElevation MEMBER sofaElevation NOTIFY sofaElevationChanged)
   Q_PROPERTY(float sofaRadius MEMBER sofaRadius NOTIFY sofaRadiusChanged)
@@ -110,6 +113,8 @@ class Convolver : public PluginBase {
 
   Q_INVOKABLE void combineKernels(const QString& kernel1, const QString& kernel2, const QString& outputName);
 
+  Q_INVOKABLE void applySofaOrientation();
+
  Q_SIGNALS:
   void newKernelLoaded(QString name, bool success);
 
@@ -120,6 +125,9 @@ class Convolver : public PluginBase {
   void kernelDurationChanged();
   void kernelChannelsChanged();
 
+  void sofaDatabaseChanged();
+  void sofaMeasurementsChanged();
+  void sofaIndexChanged();
   void sofaAzimuthChanged();
   void sofaElevationChanged();
   void sofaRadiusChanged();
@@ -159,6 +167,9 @@ class Convolver : public PluginBase {
 
   float dry = 0.0F, wet = 1.0F;
 
+  QString sofaDatabase;
+  int sofaMeasurements = 1;
+  int sofaIndex = 0;
   float sofaAzimuth = 0.0F;
   float sofaElevation = 0.0F;
   float sofaRadius = 0.0F;

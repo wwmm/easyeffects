@@ -61,7 +61,7 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
       settings(
           db::Manager::self().get_plugin_db<db::Convolver>(pipe_type,
                                                            tags::plugin_name::BaseName::convolver + "#" + instance_id)),
-      kernel_manager(ConvolverKernelManager(pipe_type)),
+      kernel_manager(ConvolverKernelManager(settings, pipe_type)),
       worker(new ConvolverWorker) {
   init_common_controls<db::Convolver>(settings);
 
@@ -117,6 +117,9 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
           Q_EMIT newKernelLoaded(data.name, true);
 
           if (data.is_sofa) {
+            sofaDatabase = data.sofaMetadata.database;
+            sofaMeasurements = data.sofaMetadata.measurements;
+            sofaIndex = data.sofaMetadata.index;
             sofaAzimuth = data.sofaMetadata.azimuth;
             sofaElevation = data.sofaMetadata.elevation;
             sofaRadius = data.sofaMetadata.radius;
@@ -128,6 +131,9 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
             sofaMinRadius = data.sofaMetadata.min_radius;
             sofaMaxRadius = data.sofaMetadata.max_radius;
 
+            Q_EMIT sofaDatabaseChanged();
+            Q_EMIT sofaMeasurementsChanged();
+            Q_EMIT sofaIndexChanged();
             Q_EMIT sofaAzimuthChanged();
             Q_EMIT sofaElevationChanged();
             Q_EMIT sofaRadiusChanged();
@@ -480,4 +486,8 @@ void Convolver::clear_chart_data() {
   chartMagRfftLinear.clear();
   chartMagLfftLog.clear();
   chartMagRfftLog.clear();
+}
+
+void Convolver::applySofaOrientation() {
+  setup();
 }

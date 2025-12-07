@@ -31,6 +31,7 @@ qt_add_qml_module(easyeffects
         contents/ui/Compressor.qml
         contents/ui/Convolver.qml
         contents/ui/ConvolverImpulseDialog.qml
+        contents/ui/ConvolverSofaDialog.qml
         contents/ui/Crossfeed.qml
         contents/ui/Crystalizer.qml
         contents/ui/CrystalizerBand.qml
