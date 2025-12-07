@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-12-06 21:39-0300\n"
-"PO-Revision-Date: 2025-07-20 18:38+0000\n"
-"Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
+"PO-Revision-Date: 2025-12-07 19:47+0000\n"
+"Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/easyeffects/main/"
 "nl/>\n"
 "Language: nl\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.13-dev\n"
+"X-Generator: Weblate 5.15-dev\n"
 
 #: src/autostart.cpp:89
 msgid ""
@@ -25,6 +25,9 @@ msgid ""
 "Please allow \"Run in Background\" permission for Easy Effects in your "
 "system app settings."
 msgstr ""
+"Kan de autostart-optie niet inschakelen omdat toegang tot de achtergrond is "
+"geweigerd. Sta 'Op de achtergrond uitvoeren' toe voor Easy Effects in de "
+"app­instellingen van uw systeem."
 
 #: src/command_line_parser.cpp:42
 msgid "Quit Easy Effects. Useful when running in service mode."
@@ -32,96 +35,85 @@ msgstr "Sluit Easy Effects af. Nuttig in dienstmodus."
 
 #: src/command_line_parser.cpp:43
 msgid "Reset Easy Effects."
-msgstr "Reset Easy Effects."
+msgstr "Easy Effects resetten."
 
 #: src/command_line_parser.cpp:44
-#, fuzzy
 msgid "Hide the window."
 msgstr "Verberg het venster."
 
 #: src/command_line_parser.cpp:45
-#, fuzzy
 msgid "Global bypass. 1 to enable and 2 to disable."
-msgstr ""
-"Globale omzeiling: 1 = inschakelen, 2 = uitschakelen, 3 = status opvragen"
+msgstr "Globale omzeiling: 1 = inschakelen, 2 = uitschakelen."
 
 #: src/command_line_parser.cpp:45
 msgid "bypass-state"
-msgstr ""
+msgstr "omzeilings­toestand"
 
 #: src/command_line_parser.cpp:46
 msgid "Load a preset. Example: easyeffects -l music"
-msgstr "Laad een voorinstelling. Voorbeeld: easyeffects -l music"
+msgstr "Laad een voor­instelling. Voorbeeld: easyeffects -l music"
 
 #: src/command_line_parser.cpp:46
-#, fuzzy
 msgid "preset-name"
-msgstr "Naam voor nieuwe voor­instelling"
+msgstr "voorinstellings­naam"
 
 #: src/command_line_parser.cpp:47
 msgid "Show available presets."
-msgstr "Toon de beschikbare voorinstellingen."
+msgstr "Toon de beschikbare voor­instellingen."
 
 #: src/command_line_parser.cpp:48
-#, fuzzy
 msgid "Get the active input/output preset."
-msgstr "Toon de actieve voor­instellingen."
+msgstr "Toon de actieve invoer-/uitvoer­voorinstelling."
 
 #: src/command_line_parser.cpp:48
 msgid "preset-type"
-msgstr ""
+msgstr "voor­instellingstype"
 
 #: src/command_line_parser.cpp:49
-#, fuzzy
 msgid "Get the active input and output presets."
-msgstr "Toon de actieve voor­instellingen."
+msgstr "Toon de actieve invoer- en uitvoer­voorinstellingen."
 
 #: src/command_line_parser.cpp:50
 msgid "Deprecated. Use --service-mode instead."
-msgstr ""
+msgstr "Verouderd. Gebruik in plaats daarvan --service-mode."
 
 #: src/command_line_parser.cpp:51
 msgid "Start the application with service mode turned on."
-msgstr ""
+msgstr "Start de app met ingeschakelde dienstmodus."
 
 #: src/command_line_parser.cpp:52
 msgid "Enable debug messages."
-msgstr ""
+msgstr "Schakel foutopsporings­berichten in."
 
 #: src/command_line_parser.cpp:126
 msgid "Must specify preset type: input/output."
-msgstr ""
+msgstr "U moet een voorinstellings­type opgeven: input/output."
 
 #: src/command_line_parser.cpp:166
-#, fuzzy
 msgid "Output presets"
-msgstr "Uitvoervoorinstellingen"
+msgstr "Uitvoer­voorinstellingen"
 
 #: src/command_line_parser.cpp:168
-#, fuzzy
 msgid "No output presets."
-msgstr "Uitvoervoorinstellingen"
+msgstr "Geen uitvoer­voorinstellingen."
 
 #: src/command_line_parser.cpp:179
-#, fuzzy
 msgid "Input presets"
-msgstr "Invoervoorinstellingen"
+msgstr "Invoer­voorinstellingen"
 
 #: src/command_line_parser.cpp:181
-#, fuzzy
 msgid "No input presets."
-msgstr "Invoervoorinstellingen"
+msgstr "Geen invoer­voorinstellingen."
 
 #: src/command_line_parser.cpp:211
 msgid "Specified preset does not exist."
-msgstr ""
+msgstr "De opgegeven voor­instelling bestaat niet."
 
 #: src/command_line_parser.cpp:229
 msgid "Provided an invalid bypass state."
-msgstr ""
+msgstr "Ongeldige omzeilings­toestand opgegeven."
 
 #: src/contents/ui/AboutPage.qml:4
-#, fuzzy
 msgctxt "@action:button"
 msgid "About"
 msgstr "Over"
@@ -137,7 +129,7 @@ msgstr "Bediening"
 
 #: src/contents/ui/Autogain.qml:55
 msgid "Reference"
-msgstr "Verwijzing"
+msgstr "Referentie"
 
 #: src/contents/ui/Autogain.qml:60 src/contents/ui/Autogain.qml:129
 #: src/contents/ui/LevelMeter.qml:139
@@ -146,7 +138,6 @@ msgstr "Kortstondig"
 
 #: src/contents/ui/Autogain.qml:60 src/contents/ui/Autogain.qml:139
 #: src/contents/ui/LevelMeter.qml:149
-#, fuzzy
 msgid "Short-term"
 msgstr "Korte termijn"
 
@@ -156,24 +147,20 @@ msgid "Integrated"
 msgstr "Geïntegreerd"
 
 #: src/contents/ui/Autogain.qml:60
-#, fuzzy
 msgid "Geometric mean (MSI)"
-msgstr "Meetkundig gem. (MSI)"
+msgstr "Meetkundig gemiddelde (MSI)"
 
 #: src/contents/ui/Autogain.qml:60
-#, fuzzy
 msgid "Geometric mean (MS)"
-msgstr "Meetkundig gem. (MS)"
+msgstr "Meetkundig gemiddelde (MS)"
 
 #: src/contents/ui/Autogain.qml:60
-#, fuzzy
 msgid "Geometric mean (MI)"
-msgstr "Meetkundig gem. (MI)"
+msgstr "Meetkundig gemiddelde (MI)"
 
 #: src/contents/ui/Autogain.qml:60
-#, fuzzy
 msgid "Geometric mean (SI)"
-msgstr "Meetkundig gem. (SI)"
+msgstr "Meetkundig gemiddelde (SI)"
 
 #: src/contents/ui/Autogain.qml:69
 msgid "Target"
@@ -184,7 +171,6 @@ msgid "Silence"
 msgstr "Stilte"
 
 #: src/contents/ui/Autogain.qml:101
-#, fuzzy
 msgid "Maximum history"
 msgstr "Maximale geschiedenis"
 
@@ -203,9 +189,8 @@ msgid "Range"
 msgstr "Bereik"
 
 #: src/contents/ui/Autogain.qml:189
-#, fuzzy
 msgid "Output gain"
-msgstr "Uitvoerversterking"
+msgstr "Uitvoer­versterking"
 
 #: src/contents/ui/Autogain.qml:212 src/contents/ui/BassEnhancer.qml:184
 #: src/contents/ui/BassLoudness.qml:104 src/contents/ui/Compressor.qml:853
@@ -223,33 +208,28 @@ msgstr "Uitvoerversterking"
 #: src/contents/ui/RNNoise.qml:68 src/contents/ui/RNNoise.qml:282
 #: src/contents/ui/RNNoise.qml:284 src/contents/ui/RNNoise.qml:302
 #: src/contents/ui/Speex.qml:155 src/contents/ui/StereoTools.qml:370
-#, fuzzy
 msgid "Using %1"
-msgstr "{} wordt gebruikt"
+msgstr "Gebruikt %1"
 
 #: src/contents/ui/Autogain.qml:229 src/contents/ui/DeepFilterNet.qml:192
 #: src/contents/ui/LevelMeter.qml:213 src/contents/ui/Pitch.qml:263
-#, fuzzy
 msgid "Reset history"
 msgstr "Geschiedenis wissen"
 
 #: src/contents/ui/Autogain.qml:236
-#, fuzzy
 msgid "Force silence"
-msgstr "Stilte"
+msgstr "Stilte forceren"
 
 #: src/contents/ui/Autogain.qml:237
 msgid "Force silence when the level is below the silence threshold"
-msgstr ""
+msgstr "Forceer stilte wanneer het niveau onder de stilte­drempel ligt"
 
 #: src/contents/ui/Autogain.qml:249 src/contents/ui/DeepFilterNet.qml:200
 #: src/contents/ui/LevelMeter.qml:221 src/contents/ui/Pitch.qml:291
-#, fuzzy
 msgid "Reset settings"
-msgstr "Standaardinstellingen _herstellen"
+msgstr "Instellingen herstellen"
 
 #: src/contents/ui/BassEnhancer.qml:37 src/contents/ui/Exciter.qml:37
-#, fuzzy
 msgid "Blend harmonics"
 msgstr "Harmonieën mengen"
 
@@ -275,9 +255,8 @@ msgid "Scope"
 msgstr "Domein"
 
 #: src/contents/ui/BassEnhancer.qml:138
-#, fuzzy
 msgid "Floor active"
-msgstr "Vloerwaarde"
+msgstr "Vloer actief"
 
 #: src/contents/ui/BassEnhancer.qml:149
 msgid "Floor"
@@ -292,7 +271,6 @@ msgstr "Vloer"
 #: src/contents/ui/MultibandCompressor.qml:964
 #: src/contents/ui/MultibandGate.qml:937 src/contents/ui/Reverb.qml:323
 #: src/contents/ui/StereoTools.qml:388
-#, fuzzy
 msgid "Show native window"
 msgstr "Native venster tonen"
 
@@ -316,7 +294,7 @@ msgstr "Beluisteren"
 #: src/contents/ui/RNNoise.qml:327 src/contents/ui/Speex.qml:173
 #: src/contents/ui/StereoTools.qml:402
 msgid "Reset"
-msgstr "Standaardwaarden"
+msgstr "Standaard­waarden"
 
 #: src/contents/ui/BassLoudness.qml:63 src/contents/ui/Compressor.qml:460
 #: src/contents/ui/EeInputOutputGain.qml:124 src/contents/ui/Expander.qml:420
@@ -333,17 +311,14 @@ msgid "Link"
 msgstr "Verwijzing"
 
 #: src/contents/ui/BlocklistDialog.qml:14
-#, fuzzy
 msgid "Excluded Applications"
-msgstr "Lijst met uitgesloten apps"
+msgstr "Uitgesloten apps"
 
 #: src/contents/ui/BlocklistDialog.qml:30
-#, fuzzy
 msgid "Application node name"
-msgstr "App-naam"
+msgstr "App-knooppuntnaam"
 
 #: src/contents/ui/BlocklistDialog.qml:46
-#, fuzzy
 msgid "Add to excluded applications"
 msgstr "Toevoegen aan uitgesloten apps"
 
@@ -358,33 +333,28 @@ msgid "Empty List"
 msgstr "Lege lijst"
 
 #: src/contents/ui/BlocklistDialog.qml:97
-#, fuzzy
 msgid "No application excluded"
-msgstr "App-volume"
+msgstr "Geen app uitgesloten"
 
 #: src/contents/ui/BlocklistDialog.qml:120
-#, fuzzy
 msgid "Remove Application"
-msgstr "App dempen"
+msgstr "App verwijderen"
 
 #: src/contents/ui/BlocklistDialog.qml:121
 msgid "Are you sure you want to remove this application from the list?"
-msgstr ""
+msgstr "Weet u zeker dat u deze app uit de lijst wilt verwijderen?"
 
 #: src/contents/ui/BlocklistDialog.qml:151
-#, fuzzy
 msgid "Remove this app"
-msgstr "Verwijder dit voorinstellingsbestand"
+msgstr "Deze app verwijderen"
 
 #: src/contents/ui/BlocklistDialog.qml:180
-#, fuzzy
 msgid "Show excluded apps"
-msgstr "Uitgesloten apps"
+msgstr "Uitgesloten apps tonen"
 
 #: src/contents/ui/BlocklistDialog.qml:181
-#, fuzzy
 msgid "Show excluded applications in the list of players/recorders"
-msgstr "Uitgesloten apps tonen"
+msgstr "Uitgesloten apps tonen in de lijst met spelers/opname­apparaten"
 
 #: src/contents/ui/Compressor.qml:49 src/tags_plugin_name.cpp:29
 msgid "Compressor"
@@ -418,15 +388,13 @@ msgstr "Versterking"
 
 #: src/contents/ui/Compressor.qml:75
 #: src/contents/ui/MultibandCompressor.qml:123
-#, fuzzy
 msgid "Boost threshold"
-msgstr "Versterkingsdrempelwaarde"
+msgstr "Versterkings­drempelwaarde"
 
 #: src/contents/ui/Compressor.qml:95
 #: src/contents/ui/MultibandCompressor.qml:142
-#, fuzzy
 msgid "Boost amount"
-msgstr "Versterkingsgrootte"
+msgstr "Versterkings­grootte"
 
 #: src/contents/ui/Compressor.qml:114 src/contents/ui/Deesser.qml:100
 #: src/contents/ui/Expander.qml:74 src/contents/ui/MultibandCompressor.qml:346
@@ -439,9 +407,8 @@ msgid "Knee"
 msgstr "Knie"
 
 #: src/contents/ui/Compressor.qml:151 src/contents/ui/Expander.qml:111
-#, fuzzy
 msgid "Threshold and Time"
-msgstr "Drempelwaarde"
+msgstr "Drempel­waarde en tijd"
 
 #: src/contents/ui/Compressor.qml:161 src/contents/ui/Expander.qml:121
 #: src/contents/ui/Gate.qml:65 src/contents/ui/Gate.qml:838
@@ -495,9 +462,8 @@ msgstr "Extern"
 #: src/contents/ui/Compressor.qml:259 src/contents/ui/Expander.qml:219
 #: src/contents/ui/Gate.qml:237 src/contents/ui/Limiter.qml:209
 #: src/contents/ui/PageStreamsEffects.qml:409
-#, fuzzy
 msgid "Input device"
-msgstr "Invoerapparaat"
+msgstr "Invoer­apparaat"
 
 #: src/contents/ui/Compressor.qml:287 src/contents/ui/Deesser.qml:61
 #: src/contents/ui/Expander.qml:247 src/contents/ui/Gate.qml:265
@@ -525,9 +491,8 @@ msgstr "Low-pass"
 #: src/contents/ui/Compressor.qml:287 src/contents/ui/Expander.qml:247
 #: src/contents/ui/Gate.qml:265 src/contents/ui/MultibandCompressor.qml:421
 #: src/contents/ui/MultibandGate.qml:394
-#, fuzzy
 msgid "SMA"
-msgstr "SPM"
+msgstr "SMA"
 
 #: src/contents/ui/Compressor.qml:297 src/contents/ui/Compressor.qml:312
 #: src/contents/ui/Expander.qml:257 src/contents/ui/Expander.qml:272
@@ -536,7 +501,7 @@ msgstr "SPM"
 #: src/contents/ui/MultibandCompressor.qml:440
 #: src/contents/ui/MultibandGate.qml:401 src/contents/ui/MultibandGate.qml:413
 msgid "Source"
-msgstr "Brok"
+msgstr "Bron"
 
 #: src/contents/ui/Compressor.qml:301 src/contents/ui/Expander.qml:261
 #: src/contents/ui/Gate.qml:279 src/contents/ui/MultibandCompressor.qml:432
@@ -617,7 +582,7 @@ msgstr "Zijkant/midden"
 #: src/contents/ui/MultibandCompressor.qml:452
 #: src/contents/ui/MultibandGate.qml:425
 msgid "Preamp"
-msgstr ""
+msgstr "Voor­versterker"
 
 #: src/contents/ui/Compressor.qml:358 src/contents/ui/Expander.qml:314
 #: src/contents/ui/Gate.qml:333 src/contents/ui/MultibandCompressor.qml:468
@@ -651,9 +616,8 @@ msgstr "Uit"
 #: src/contents/ui/MultibandCompressor.qml:607
 #: src/contents/ui/MultibandGate.qml:580 src/contents/ui/Pitch.qml:103
 #: src/contents/ui/Reverb.qml:169 src/contents/ui/StereoTools.qml:325
-#, fuzzy
 msgid "Dry"
-msgstr "Uitproberen"
+msgstr "Droog"
 
 #: src/contents/ui/Compressor.qml:485 src/contents/ui/Convolver.qml:467
 #: src/contents/ui/Delay.qml:174 src/contents/ui/Delay.qml:327
@@ -677,49 +641,43 @@ msgstr "Make-up"
 #: src/contents/ui/MultibandCompressor.qml:987
 #: src/contents/ui/MultibandGate.qml:960
 msgid "Pre-Mix"
-msgstr ""
+msgstr "Voormix"
 
 #: src/contents/ui/Compressor.qml:532 src/contents/ui/Expander.qml:488
 #: src/contents/ui/Gate.qml:509 src/contents/ui/Limiter.qml:284
 #: src/contents/ui/LspPreMixDialog.qml:19
-#, fuzzy
 msgid "Input to sidechain"
-msgstr "Zijketen"
+msgstr "Invoer naar zijketen"
 
 #: src/contents/ui/Compressor.qml:548 src/contents/ui/Expander.qml:504
 #: src/contents/ui/Gate.qml:525 src/contents/ui/Limiter.qml:300
 #: src/contents/ui/LspPreMixDialog.qml:35
-#, fuzzy
 msgid "Input to link"
-msgstr "Invoer­monitoring in-/uit­schakelen"
+msgstr "Invoer naar koppeling"
 
 #: src/contents/ui/Compressor.qml:564 src/contents/ui/Expander.qml:520
 #: src/contents/ui/Gate.qml:541 src/contents/ui/Limiter.qml:316
 #: src/contents/ui/LspPreMixDialog.qml:51
-#, fuzzy
 msgid "Sidechain to input"
-msgstr "Invoerapparaat"
+msgstr "Zijketen naar invoer"
 
 #: src/contents/ui/Compressor.qml:580 src/contents/ui/Expander.qml:536
 #: src/contents/ui/Gate.qml:557 src/contents/ui/Limiter.qml:332
 #: src/contents/ui/LspPreMixDialog.qml:67
-#, fuzzy
 msgid "Sidechain to link"
-msgstr "Zijketenmodus"
+msgstr "Zijketen naar koppeling"
 
 #: src/contents/ui/Compressor.qml:596 src/contents/ui/Expander.qml:552
 #: src/contents/ui/Gate.qml:573 src/contents/ui/Limiter.qml:348
 #: src/contents/ui/LspPreMixDialog.qml:83
-#, fuzzy
 msgid "Link to sidechain"
-msgstr "Luister-sidechain"
+msgstr "Koppeling naar zijketen"
 
 #: src/contents/ui/Compressor.qml:612 src/contents/ui/Expander.qml:568
 #: src/contents/ui/Gate.qml:589 src/contents/ui/Limiter.qml:364
 #: src/contents/ui/LspPreMixDialog.qml:99
-#, fuzzy
 msgid "Link to input"
-msgstr "Luister-sidechain"
+msgstr "Koppeling naar invoer"
 
 #: src/contents/ui/Compressor.qml:656 src/contents/ui/Expander.qml:608
 #: src/contents/ui/Gate.qml:100 src/contents/ui/Gate.qml:634
@@ -743,19 +701,16 @@ msgstr "Envelop"
 #: src/contents/ui/Compressor.qml:894 src/contents/ui/Expander.qml:844
 #: src/contents/ui/Gate.qml:973 src/contents/ui/MultibandCompressor.qml:977
 #: src/contents/ui/MultibandGate.qml:950
-#, fuzzy
 msgid "Stereo split"
-msgstr "Stereo­split"
+msgstr "Stereo­splitsing"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:31
-#, fuzzy
 msgid "Imported a new Convolver impulse file."
-msgstr "Impulse-bestand importeren"
+msgstr "Nieuw Convolver-impuls­bestand geïmporteerd."
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:33
-#, fuzzy
 msgid "Failed to import the Convolver impulse file."
-msgstr "Impulsbestand laden mislukt"
+msgstr "Kan het Convolver-impuls­bestand niet importeren."
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:47
 #: src/contents/ui/MenuAddPlugins.qml:168
@@ -765,67 +720,59 @@ msgid "Search"
 msgstr "Zoeken"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:90
-#, fuzzy
 msgid "Remove Impulse Response"
-msgstr "Impulsrespons"
+msgstr "Impulsrespons verwijderen"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:91
 msgid "Are you sure you want to remove this impulse response from the list?"
-msgstr ""
+msgstr "Weet u zeker dat u deze impulsrespons uit de lijst wilt verwijderen?"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:95
-#, fuzzy
 msgid "Removed the %1 Convolver impulse."
-msgstr "Impulsbestand laden mislukt"
+msgstr "De Convolver-impuls %1 is verwijderd."
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:97
-#, fuzzy
 msgid "Failed to remove the %1 Convolver impulse."
-msgstr "Impulsbestand laden mislukt"
+msgstr "Kan de Convolver-impuls %1 niet verwijderen."
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:114
-#, fuzzy
 msgid "Delete this impulse"
-msgstr "Impuls verwijderen"
+msgstr "Deze impuls verwijderen"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:153
-#, fuzzy
 msgid "Import impulse"
-msgstr "Impulse importeren"
+msgstr "Impuls importeren"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:163
 #: src/contents/ui/MenuAddPlugins.qml:184 src/contents/ui/PresetsDialog.qml:107
 msgctxt "@action:button"
 msgid "Close"
-msgstr ""
+msgstr "Sluiten"
 
 #: src/contents/ui/Convolver.qml:48
-#, fuzzy
 msgid "Loaded the %1 Convolver impulse."
-msgstr "Impulsbestand laden mislukt"
+msgstr "De Convolver-impuls %1 is geladen."
 
 #: src/contents/ui/Convolver.qml:50 src/contents/ui/Convolver.qml:317
-#, fuzzy
 msgid "Convolver impulse is not set"
-msgstr "Impulsresponsen combineren"
+msgstr "Convolver-impuls is niet ingesteld"
 
 #: src/contents/ui/Convolver.qml:54
 msgid "The Convolver is in passthrough mode."
-msgstr ""
+msgstr "De Convolver bevindt zich in doorvoer­modus."
 
 #: src/contents/ui/Convolver.qml:56
-#, fuzzy
 msgid "Failed to load the %1 impulse. The Convolver is in passthrough mode."
-msgstr "Impulsbestand laden mislukt"
+msgstr ""
+"Kan de impuls %1 niet laden. De Convolver bevindt zich in doorvoer­modus."
 
 #: src/contents/ui/Convolver.qml:126
 msgid "First"
-msgstr ""
+msgstr "Eerste"
 
 #: src/contents/ui/Convolver.qml:139
-#, fuzzy
 msgid "Second"
-msgstr "Tweede kernel"
+msgstr "Tweede"
 
 #: src/contents/ui/Convolver.qml:171 src/contents/ui/Convolver.qml:206
 msgid "Combine"
@@ -840,7 +787,6 @@ msgid "Spectrum"
 msgstr "Spectrum"
 
 #: src/contents/ui/Convolver.qml:247
-#, fuzzy
 msgid "Log scale"
 msgstr "Logaritmische schaal"
 
@@ -863,24 +809,22 @@ msgid "Channels"
 msgstr "Kanalen"
 
 #: src/contents/ui/Convolver.qml:374
-#, fuzzy
 msgid "Format"
-msgstr "Formant"
+msgstr "Formaat"
 
 #: src/contents/ui/Convolver.qml:413
 msgctxt "The sofa audio file format"
 msgid "SOFA"
-msgstr ""
+msgstr "SOFA"
 
 #: src/contents/ui/Convolver.qml:413
 msgctxt "The wav audio format"
 msgid "WAV"
-msgstr ""
+msgstr "WAV"
 
 #: src/contents/ui/Convolver.qml:432
-#, fuzzy
 msgid "Stereo width"
-msgstr "Stereobreedte"
+msgstr "Stereo­breedte"
 
 #: src/contents/ui/Convolver.qml:509 src/tags_plugin_name.cpp:26
 msgid "Autogain"
@@ -895,9 +839,8 @@ msgid "Feed"
 msgstr "Aanvoer"
 
 #: src/contents/ui/Crossfeed.qml:94
-#, fuzzy
 msgid "Crossfeed Presets"
-msgstr "Crossfeed"
+msgstr "Crossfeed-voor­instellingen"
 
 #: src/contents/ui/Crossfeed.qml:98
 msgid "Default"
@@ -906,7 +849,7 @@ msgstr "Standaard"
 #: src/contents/ui/Crossfeed.qml:145 src/contents/ui/Main.qml:467
 #: src/contents/ui/PreferencesSheet.qml:40 src/contents/ui/Reverb.qml:314
 msgid "Presets"
-msgstr "Voorinstellingen"
+msgstr "Voor­instellingen"
 
 #: src/contents/ui/CrystalizerBand.qml:39
 #: src/contents/ui/EqualizerBandMenu.qml:166
@@ -923,37 +866,30 @@ msgid "Bypass"
 msgstr "Omzeiling"
 
 #: src/contents/ui/Crystalizer.qml:106
-#, fuzzy
 msgid "Adaptive intensity"
-msgstr "Adaptief digitaal"
+msgstr "Adaptieve intensiteit"
 
 #: src/contents/ui/DeepFilterNet.qml:32
-#, fuzzy
 msgid "Attenuation limit"
-msgstr "Verzwakkingslimiet"
+msgstr "Verzwakkings­limiet"
 
 #: src/contents/ui/DeepFilterNet.qml:86
-#, fuzzy
 msgid "Minimum processing threshold"
 msgstr "Minimale verwerkings­drempel"
 
 #: src/contents/ui/DeepFilterNet.qml:102
-#, fuzzy
 msgid "Maximum ERB processing threshold"
 msgstr "Maximale ERB-verwerkings­drempel"
 
 #: src/contents/ui/DeepFilterNet.qml:118
-#, fuzzy
 msgid "Maximum DF processing threshold"
 msgstr "Maximale DF-verwerkings­drempel"
 
 #: src/contents/ui/DeepFilterNet.qml:134
-#, fuzzy
 msgid "Minimum processing buffer"
 msgstr "Minimale verwerkings­buffer"
 
 #: src/contents/ui/DeepFilterNet.qml:150
-#, fuzzy
 msgid "Post filter Beta"
 msgstr "Postfilter­bèta"
 
@@ -966,9 +902,8 @@ msgid "Detection"
 msgstr "Detectie"
 
 #: src/contents/ui/Deesser.qml:74
-#, fuzzy
 msgid "Wideband"
-msgstr "Breed"
+msgstr "Breedband"
 
 #: src/contents/ui/Deesser.qml:74
 msgid "Split"
@@ -982,7 +917,7 @@ msgstr "Splitsen"
 #: src/contents/ui/MultibandGate.qml:281 src/contents/ui/MultibandGate.qml:335
 #: src/contents/ui/RNNoise.qml:110
 msgid "Threshold"
-msgstr "Drempelwaarde"
+msgstr "Drempel­waarde"
 
 #: src/contents/ui/Deesser.qml:133
 msgid "Laxity"
@@ -994,40 +929,36 @@ msgid "Filter"
 msgstr "Filter"
 
 #: src/contents/ui/Deesser.qml:165
-#, fuzzy
 msgid "F1 split"
 msgstr "F1-splitsing"
 
 #: src/contents/ui/Deesser.qml:182
 msgid "F2 peak"
-msgstr ""
+msgstr "F2-piek"
 
 #: src/contents/ui/Deesser.qml:199
 msgid "F1 gain"
-msgstr ""
+msgstr "F1-versterking"
 
 #: src/contents/ui/Deesser.qml:216
-#, fuzzy
 msgid "F2 level"
 msgstr "F2-niveau"
 
 #: src/contents/ui/Deesser.qml:234
-#, fuzzy
 msgid "F2 peak Q"
-msgstr "F2-piek-Q"
+msgstr "F2-piek Q"
 
 #: src/contents/ui/Deesser.qml:257
 msgid "Level"
 msgstr "Niveau"
 
 #: src/contents/ui/Deesser.qml:278
-#, fuzzy
 msgid "Gain reduction"
-msgstr "Bandvermindering"
+msgstr "Versterkings­vermindering"
 
 #: src/contents/ui/Delay.qml:55 src/contents/ui/Delay.qml:208
 msgid "Distance"
-msgstr ""
+msgstr "Afstand"
 
 #: src/contents/ui/Delay.qml:55 src/contents/ui/Delay.qml:84
 #: src/contents/ui/Delay.qml:208 src/contents/ui/Delay.qml:237
@@ -1038,74 +969,65 @@ msgstr "Duur"
 
 #: src/contents/ui/Delay.qml:102 src/contents/ui/Delay.qml:255
 msgid "Meters"
-msgstr ""
+msgstr "Meters"
 
 #: src/contents/ui/Delay.qml:120 src/contents/ui/Delay.qml:273
-#, fuzzy
 msgid "Centimeters"
-msgstr "Cents"
+msgstr "Centimeters"
 
 #: src/contents/ui/Delay.qml:139 src/contents/ui/Delay.qml:292
 msgid "Temperature"
-msgstr ""
+msgstr "Temperatuur"
 
 #: src/contents/ui/Delay.qml:371
-#, fuzzy
 msgid "Invert left"
-msgstr "Fase omkeren"
+msgstr "Links omkeren"
 
 #: src/contents/ui/Delay.qml:381
-#, fuzzy
 msgid "Invert right"
-msgstr "Fase omkeren"
+msgstr "Rechts omkeren"
 
 #: src/contents/ui/DelegateClientsList.qml:37
 #: src/contents/ui/DelegateModulesList.qml:37
-#, fuzzy
 msgctxt "@info:placeholder"
 msgid "Unknown"
 msgstr "Onbekend"
 
 #: src/contents/ui/DelegateClientsList.qml:41
 msgid "(id: %1)"
-msgstr ""
+msgstr "(id: %1)"
 
 #: src/contents/ui/DelegateClientsList.qml:47
-#, fuzzy
 msgid "Access: %1"
-msgstr "Toegang"
+msgstr "Toegang: %1"
 
 #: src/contents/ui/DelegateClientsList.qml:54
 msgid "API: %1"
-msgstr ""
+msgstr "API: %1"
 
 #: src/contents/ui/DelegateModulesList.qml:41
 msgctxt "@info:placeholder"
 msgid "Not set"
-msgstr ""
+msgstr "Niet ingesteld"
 
 #: src/contents/ui/DelegateModulesList.qml:41
 msgid "(id: %1, version: %2)"
-msgstr ""
+msgstr "(id: %1, versie: %2)"
 
 #: src/contents/ui/DelegateModulesList.qml:47
-#, fuzzy
 msgctxt "@info:placeholder"
 msgid "No description set"
-msgstr "Omschrijving"
+msgstr "Geen omschrijving ingesteld"
 
 #: src/contents/ui/DelegatePluginsList.qml:99
-#, fuzzy
 msgid "Toggle this effect"
-msgstr "Effect omschakelen"
+msgstr "Dit effect omschakelen"
 
 #: src/contents/ui/DelegatePluginsList.qml:107
-#, fuzzy
 msgid "Remove this effect"
-msgstr "Effect verwijderen"
+msgstr "Dit effect verwijderen"
 
 #: src/contents/ui/DelegateStreamsList.qml:77
-#, fuzzy
 msgid "channels"
 msgstr "kanalen"
 
@@ -1121,32 +1043,28 @@ msgid "Exclude"
 msgstr "Uitsluiten"
 
 #: src/contents/ui/DelegateStreamsList.qml:111
-#, fuzzy
 msgid "Add %1 to excluded applications"
-msgstr "Toevoegen aan uitgesloten apps"
+msgstr "%1 toevoegen aan uitgesloten apps"
 
 #: src/contents/ui/EchoCanceller.qml:41 src/tags_plugin_name.cpp:36
 msgid "Echo Canceller"
 msgstr "Echo-onderdrukking"
 
 #: src/contents/ui/EchoCanceller.qml:53
-#, fuzzy
 msgid "Mobile mode"
-msgstr "Stereo-mode"
+msgstr "Mobiele modus"
 
 #: src/contents/ui/EchoCanceller.qml:62
-#, fuzzy
 msgid "Enforce high-pass"
-msgstr "High-pass"
+msgstr "High-pass afdwingen"
 
 #: src/contents/ui/EchoCanceller.qml:74
 msgid "Noise Suppression"
-msgstr "Ruisonderdrukking"
+msgstr "Ruis­onderdrukking"
 
 #: src/contents/ui/EchoCanceller.qml:87
-#, fuzzy
 msgid "Strength"
-msgstr "Filterlengte"
+msgstr "Sterkte"
 
 #: src/contents/ui/EchoCanceller.qml:91 src/contents/ui/Loudness.qml:99
 msgid "Low"
@@ -1161,32 +1079,28 @@ msgid "High"
 msgstr "Hoog"
 
 #: src/contents/ui/EchoCanceller.qml:91
-#, fuzzy
 msgid "Very high"
 msgstr "Erg hoog"
 
 #: src/contents/ui/EchoCanceller.qml:101
-#, fuzzy
 msgid "High-Pass Filter"
-msgstr "High-pass-filtermodus"
+msgstr "High-pass-filter"
 
 #: src/contents/ui/EchoCanceller.qml:113
-#, fuzzy
 msgid "Full band"
-msgstr "Subband"
+msgstr "Volledige band"
 
 #: src/contents/ui/EchoCanceller.qml:153 src/contents/ui/Speex.qml:55
-#, fuzzy
 msgid "Automatic gain control"
-msgstr "Automatische versterking"
+msgstr "Automatische versterkings­regeling"
 
 #: src/contents/ui/EeInputOutputGain.qml:17
 msgid "Audio levels control"
-msgstr ""
+msgstr "Audio­niveau­regeling"
 
 #: src/contents/ui/EeInputOutputGain.qml:18
 msgid "Input and output gain controls with level meters"
-msgstr ""
+msgstr "Invoer- en uitvoer­versterkingsregeling met niveau­meters"
 
 #: src/contents/ui/EeInputOutputGain.qml:111 src/contents/ui/Main.qml:506
 #: src/contents/ui/StereoTools.qml:39
@@ -1197,21 +1111,18 @@ msgstr "Invoer"
 #: src/contents/ui/MultibandCompressor.qml:652
 #: src/contents/ui/MultibandCompressor.qml:911
 #: src/contents/ui/MultibandGate.qml:625 src/contents/ui/MultibandGate.qml:884
-#, fuzzy
 msgid "Band"
-msgstr "Banden"
+msgstr "Band"
 
 #: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
 msgid "Bell"
 msgstr "Bel"
 
 #: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
-#, fuzzy
 msgid "High-shelf"
 msgstr "High-shelf"
 
 #: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
-#, fuzzy
 msgid "Low-shelf"
 msgstr "Low-shelf"
 
@@ -1224,24 +1135,20 @@ msgid "Resonance"
 msgstr "Resonantie"
 
 #: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
-#, fuzzy
 msgid "Allpass"
-msgstr "Omzeiling"
+msgstr "Alles-doorlaat"
 
 #: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
-#, fuzzy
 msgid "Bandpass"
-msgstr "Bandomzeiling"
+msgstr "Band-doorlaat"
 
 #: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
-#, fuzzy
 msgid "Ladder-pass"
-msgstr "Ladder-pass"
+msgstr "Ladder-doorlaat"
 
 #: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
-#, fuzzy
 msgid "Ladder-rejection"
-msgstr "Ladder-rejection"
+msgstr "Ladder-afwijzing"
 
 #: src/contents/ui/EqualizerBandMenu.qml:44 src/contents/ui/Filter.qml:63
 msgid "RLC (BT)"
@@ -1296,9 +1203,8 @@ msgid "Width"
 msgstr "Breedte"
 
 #: src/contents/ui/EqualizerBandMenu.qml:150
-#, fuzzy
 msgid "oct"
-msgstr "Low-cut"
+msgstr "oct"
 
 #: src/contents/ui/EqualizerBandMenu.qml:178
 #: src/contents/ui/MultibandCompressor.qml:82
@@ -1307,70 +1213,69 @@ msgid "Solo"
 msgstr "Solo"
 
 #: src/contents/ui/Equalizer.qml:49 src/contents/ui/Equalizer.qml:89
-#, fuzzy
 msgid "APO preset"
-msgstr "APO-voorinstellingen"
+msgstr "APO-voor­instelling"
 
 #: src/contents/ui/Equalizer.qml:52
-#, fuzzy
 msgid "Failed to import the Equalizer APO preset file."
-msgstr "APO-voorinstellingsbestand importeren"
+msgstr "Kan het Equalizer APO-voorinstellings­bestand niet importeren."
 
 #: src/contents/ui/Equalizer.qml:57
-#, fuzzy
 msgid "Imported the Equalizer APO preset file."
-msgstr "EqualizerAPO-voorinstellings­bestand exporteren"
+msgstr "Het Equalizer APO-voorinstellings­bestand is geïmporteerd."
 
 #: src/contents/ui/Equalizer.qml:59
-#, fuzzy
 msgid "Imported the Equalizer APO preset file into the left channel."
-msgstr "EqualizerAPO-voorinstellings­bestand exporteren"
+msgstr ""
+"Het Equalizer APO-voorinstellings­bestand is in het linkerkanaal geïmporteerd."
 
 #: src/contents/ui/Equalizer.qml:61
-#, fuzzy
 msgid "Imported the Equalizer APO preset file into the right channel."
-msgstr "EqualizerAPO-voorinstellings­bestand exporteren"
+msgstr ""
+"Het Equalizer APO-voorinstellings­bestand is in het rechterkanaal "
+"geïmporteerd."
 
 #: src/contents/ui/Equalizer.qml:74
-#, fuzzy
 msgid "GraphicEQ preset"
-msgstr "GraphicEQ-voorinstellingen"
+msgstr "GraphicEQ-voor­instelling"
 
 #: src/contents/ui/Equalizer.qml:77
-#, fuzzy
 msgid "Imported the GraphicEQ preset file."
-msgstr "GraphicEQ-voorinstellingsbestand importeren"
+msgstr "Het GraphicEQ-voorinstellings­bestand is geïmporteerd."
 
 #: src/contents/ui/Equalizer.qml:79
-#, fuzzy
 msgid "Failed to import the GraphicEQ preset file."
-msgstr "GraphicEQ-voorinstellingsbestand importeren"
+msgstr "Kan het GraphicEQ-voorinstellings­bestand niet importeren."
 
 #: src/contents/ui/Equalizer.qml:92
-#, fuzzy
 msgid ""
 "Failed to export the current Equalizer settings to an external APO preset "
 "file."
-msgstr "APO-voorinstellingsbestand importeren"
+msgstr ""
+"Kan de huidige Equalizer-instellingen niet exporteren naar een extern APO-"
+"voorinstellings­bestand."
 
 #: src/contents/ui/Equalizer.qml:97
-#, fuzzy
 msgid "Exported the current Equalizer settings to an external APO preset file."
-msgstr "EqualizerAPO-voorinstellings­bestand exporteren"
+msgstr ""
+"De huidige Equalizer-instellingen zijn geëxporteerd naar een extern APO-"
+"voorinstellings­bestand."
 
 #: src/contents/ui/Equalizer.qml:99
-#, fuzzy
 msgid ""
 "Exported the current Equalizer settings of the left channel to an external "
 "APO preset file."
-msgstr "EqualizerAPO-voorinstellings­bestand exporteren"
+msgstr ""
+"De huidige Equalizer-instellingen van het linkerkanaal zijn geëxporteerd "
+"naar een extern APO-voorinstellings­bestand."
 
 #: src/contents/ui/Equalizer.qml:101
-#, fuzzy
 msgid ""
 "Exported the current Equalizer settings of the right channel to an external "
 "APO preset file."
-msgstr "EqualizerAPO-voorinstellings­bestand exporteren"
+msgstr ""
+"De huidige Equalizer-instellingen van het rechterkanaal zijn geëxporteerd "
+"naar een extern APO-voorinstellings­bestand."
 
 #: src/contents/ui/Equalizer.qml:125 src/contents/ui/Filter.qml:77
 #: src/contents/ui/Loudness.qml:57
@@ -1387,7 +1292,6 @@ msgid "FFT"
 msgstr "FFT"
 
 #: src/contents/ui/Equalizer.qml:125 src/contents/ui/Filter.qml:77
-#, fuzzy
 msgid "SPM"
 msgstr "SPM"
 
@@ -1401,58 +1305,48 @@ msgid "Balance"
 msgstr "Balans"
 
 #: src/contents/ui/Equalizer.qml:167
-#, fuzzy
 msgid "Pitch left"
 msgstr "Toonhoogte links"
 
 #: src/contents/ui/Equalizer.qml:175 src/contents/ui/Equalizer.qml:192
 msgid "st"
-msgstr ""
+msgstr "st"
 
 #: src/contents/ui/Equalizer.qml:184
-#, fuzzy
 msgid "Pitch right"
-msgstr "Toonhoogte rechts"
+msgstr "Toon­hoogte rechts"
 
 #: src/contents/ui/Equalizer.qml:314
-#, fuzzy
 msgid "Split channels"
 msgstr "Kanalen splitsen"
 
 #: src/contents/ui/Equalizer.qml:324
-#, fuzzy
 msgid "Flat response"
 msgstr "Platte respons"
 
 #: src/contents/ui/Equalizer.qml:331
-#, fuzzy
 msgid "Calculate frequencies"
 msgstr "Frequenties berekenen"
 
 #: src/contents/ui/Equalizer.qml:338
-#, fuzzy
 msgid "Sort bands"
 msgstr "Banden sorteren"
 
 #: src/contents/ui/Equalizer.qml:345
-#, fuzzy
 msgid "Import APO"
-msgstr "Importeren"
+msgstr "APO importeren"
 
 #: src/contents/ui/Equalizer.qml:352
-#, fuzzy
 msgid "Import APO (GraphicEQ)"
-msgstr "GraphicEQ-voorinstellingsbestand importeren"
+msgstr "APO (GraphicEQ) importeren"
 
 #: src/contents/ui/Equalizer.qml:359
-#, fuzzy
 msgid "Export APO"
-msgstr "Voorinstelling exporteren"
+msgstr "APO exporteren"
 
 #: src/contents/ui/Exciter.qml:142
-#, fuzzy
 msgid "Ceil active"
-msgstr "Huidig model"
+msgstr "Plafond actief"
 
 #: src/contents/ui/Exciter.qml:153
 msgid "Ceil"
@@ -1469,12 +1363,10 @@ msgid "Internal"
 msgstr "Intern"
 
 #: src/contents/ui/Filter.qml:59
-#, fuzzy
 msgid "Filter mode"
-msgstr "Stereo-mode"
+msgstr "Filter­modus"
 
 #: src/contents/ui/Filter.qml:73
-#, fuzzy
 msgid "Equalizer mode"
 msgstr "Equalizer-modus"
 
@@ -1498,73 +1390,60 @@ msgid "Start"
 msgstr "Starten"
 
 #: src/contents/ui/LevelMeter.qml:48
-#, fuzzy
 msgid "Input Level"
-msgstr "Invoerapparaat"
+msgstr "Invoer­niveau"
 
 #: src/contents/ui/LevelMeter.qml:87
 msgid "True Peak"
 msgstr "Echte piek"
 
 #: src/contents/ui/Limiter.qml:58
-#, fuzzy
 msgid "Herm thin"
-msgstr "Hermite-dun"
+msgstr "Hermite dun"
 
 #: src/contents/ui/Limiter.qml:58
-#, fuzzy
 msgid "Herm wide"
-msgstr "Hermite-breed"
+msgstr "Hermite breed"
 
 #: src/contents/ui/Limiter.qml:58
-#, fuzzy
 msgid "Herm tail"
-msgstr "Hermite-linksbreed"
+msgstr "Hermite staart"
 
 #: src/contents/ui/Limiter.qml:58
-#, fuzzy
 msgid "Herm duck"
-msgstr "Hermite-rechtsbreed"
+msgstr "Hermite duck"
 
 #: src/contents/ui/Limiter.qml:58
-#, fuzzy
 msgid "Exp thin"
-msgstr "Exponentieel-dun"
+msgstr "Exponentieel dun"
 
 #: src/contents/ui/Limiter.qml:58
-#, fuzzy
 msgid "Exp wide"
-msgstr "Exponentieel-breed"
+msgstr "Exponentieel breed"
 
 #: src/contents/ui/Limiter.qml:58
-#, fuzzy
 msgid "Exp tail"
-msgstr "Exponentieel-linksbreed"
+msgstr "Exponentieel staart"
 
 #: src/contents/ui/Limiter.qml:58
-#, fuzzy
 msgid "Exp duck"
-msgstr "Exponentieel-rechtsbreed"
+msgstr "Exponentieel duck"
 
 #: src/contents/ui/Limiter.qml:58
-#, fuzzy
 msgid "Line thin"
-msgstr "Lineair-dun"
+msgstr "Lineair dun"
 
 #: src/contents/ui/Limiter.qml:58
-#, fuzzy
 msgid "Line wide"
-msgstr "Lineair-breed"
+msgstr "Lineair breed"
 
 #: src/contents/ui/Limiter.qml:58
-#, fuzzy
 msgid "Line tail"
-msgstr "Lineair-rechtsbreed"
+msgstr "Lineair staart"
 
 #: src/contents/ui/Limiter.qml:58
-#, fuzzy
 msgid "Line duck"
-msgstr "Lineair-linksbreed"
+msgstr "Lineair duck"
 
 #: src/contents/ui/Limiter.qml:68
 msgid "Oversampling"
@@ -1577,119 +1456,96 @@ msgid "None"
 msgstr "Geen"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x2/16 bits"
-msgstr "Half 2× (2L)"
+msgstr "Half 2×/16 bits"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x2/24 bits"
-msgstr "Half 2× (2L)"
+msgstr "Half 2×/24 bits"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x3/16 bits"
-msgstr "Half 3× (2L)"
+msgstr "Half 3×/16 bits"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x3/24 bits"
-msgstr "Half 3× (2L)"
+msgstr "Half 3×/24 bits"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x4/16 bits"
-msgstr "Half 4× (2L)"
+msgstr "Half 4×/16 bits"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x4/24 bits"
-msgstr "Half 4× (2L)"
+msgstr "Half 4×/24 bits"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x6/16 bits"
-msgstr "Half 6× (2L)"
+msgstr "Half 6×/16 bits"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x6/24 bits"
-msgstr "Half 6× (2L)"
+msgstr "Half 6×/24 bits"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x8/16 bits"
-msgstr "Half 8× (2L)"
+msgstr "Half 8×/16 bits"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x8/24 bits"
-msgstr "Half 8× (2L)"
+msgstr "Half 8×/24 bits"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x2/16 bits"
-msgstr "Volledig 2× (2L)"
+msgstr "Volledig 2×/16 bits"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x2/24 bits"
-msgstr "Volledig 2× (2L)"
+msgstr "Volledig 2×/24 bits"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x3/16 bits"
-msgstr "Volledig 3× (2L)"
+msgstr "Volledig 3×/16 bits"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x3/24 bits"
-msgstr "Volledig 3× (2L)"
+msgstr "Volledig 3×/24 bits"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x4/16 bits"
-msgstr "Volledig 4× (2L)"
+msgstr "Volledig 4×/16 bits"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x4/24 bits"
-msgstr "Volledig 4× (2L)"
+msgstr "Volledig 4×/24 bits"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x6/16 bits"
-msgstr "Volledig 6× (2L)"
+msgstr "Volledig 6×/16 bits"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x6/24 bits"
-msgstr "Volledig 6× (2L)"
+msgstr "Volledig 6×/24 bits"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x8/16 bits"
-msgstr "Volledig 8× (2L)"
+msgstr "Volledig 8×/16 bits"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x8/24 bits"
-msgstr "Volledig 8× (2L)"
+msgstr "Volledig 8×/24 bits"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "True peak/16 bits"
-msgstr "Echte piek"
+msgstr "Echte piek/16 bits"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "True peak/24 bits"
-msgstr "Echte piek"
+msgstr "Echte piek/24 bits"
 
 #: src/contents/ui/Limiter.qml:82
-#, fuzzy
 msgid "Dithering"
-msgstr "Dither"
+msgstr "Dithering"
 
 #: src/contents/ui/Limiter.qml:98 src/tags_plugin_name.cpp:43
 msgid "Limiter"
@@ -1697,22 +1553,19 @@ msgstr "Limiter"
 
 #: src/contents/ui/Limiter.qml:160
 msgid "Stereo Link"
-msgstr "Stereokoppeling"
+msgstr "Stereo­koppeling"
 
 #: src/contents/ui/Limiter.qml:388 src/contents/ui/Limiter.qml:611
-#, fuzzy
 msgid "Automatic level"
-msgstr "Automatische niveau's"
+msgstr "Automatisch niveau"
 
 #: src/contents/ui/Limiter.qml:601
-#, fuzzy
 msgid "Threshold boost"
-msgstr "Drempelwaarde"
+msgstr "Drempel­verhoging"
 
 #: src/contents/ui/Loudness.qml:67
-#, fuzzy
 msgid "Contour"
-msgstr "Bediening"
+msgstr "Contour"
 
 #: src/contents/ui/Loudness.qml:71
 msgid "Flat"
@@ -1731,102 +1584,89 @@ msgid "Robinson-Dadson"
 msgstr "Robinson-Dadson"
 
 #: src/contents/ui/Loudness.qml:71
-#, fuzzy
 msgid "ISO226-2023"
-msgstr "ISO226-2003"
+msgstr "ISO226-2023"
 
 #: src/contents/ui/Loudness.qml:81
-#, fuzzy
 msgid "FFT size"
 msgstr "FFT-grootte"
 
 #: src/contents/ui/Loudness.qml:95
-#, fuzzy
 msgid "IIR approximation"
-msgstr "App dempen"
+msgstr "IIR-benadering"
 
 #: src/contents/ui/Loudness.qml:99
-#, fuzzy
 msgid "Fastest"
-msgstr "Sneller"
+msgstr "Snelste"
 
 #: src/contents/ui/Loudness.qml:99
-#, fuzzy
 msgid "Normal"
-msgstr "Formaat"
+msgstr "Normaal"
 
 #: src/contents/ui/Loudness.qml:99
 msgid "Best"
-msgstr ""
+msgstr "Beste"
 
 #: src/contents/ui/Loudness.qml:109
 msgid "Volume"
 msgstr "Volume"
 
 #: src/contents/ui/Loudness.qml:126
-#, fuzzy
 msgid "Clipping range"
-msgstr "Knippen"
+msgstr "Knip­bereik"
 
 #: src/contents/ui/Loudness.qml:184
 msgid "Clipping"
 msgstr "Knippen"
 
 #: src/contents/ui/Main.qml:234
-#, fuzzy
 msgid "Reset Settings?"
-msgstr "Standaardinstellingen _herstellen"
+msgstr "Instellingen herstellen?"
 
 #: src/contents/ui/Main.qml:235
 msgid "Are you sure you want to reset all Easy Effects settings?"
-msgstr ""
+msgstr "Weet u zeker dat u alle instellingen van Easy Effects wilt herstellen?"
 
 #: src/contents/ui/Main.qml:288 src/contents/ui/Main.qml:306
-#, fuzzy
 msgid "Preset Loaded"
-msgstr "Geen voor­instelling geladen"
+msgstr "Voor­instelling geladen"
 
 #: src/contents/ui/Main.qml:317 src/contents/ui/Main.qml:329
-#, fuzzy
 msgid "Clear List"
-msgstr "Cliëntenlijst"
+msgstr "Lijst wissen"
 
 #: src/contents/ui/Main.qml:318 src/contents/ui/Main.qml:330
 msgid "Are you sure you want to clear this list?"
-msgstr ""
+msgstr "Weet u zeker dat u deze lijst wilt wissen?"
 
 #: src/contents/ui/Main.qml:339
 msgid "Input Presets"
-msgstr "Invoervoorinstellingen"
+msgstr "Invoer­voorinstellingen"
 
 #: src/contents/ui/Main.qml:354
 msgid "Output Presets"
-msgstr "Uitvoervoorinstellingen"
+msgstr "Uitvoer­voorinstellingen"
 
 #: src/contents/ui/Main.qml:385
-#, fuzzy
 msgid "Active"
-msgstr "Huidig model"
+msgstr "Actief"
 
 #: src/contents/ui/Main.qml:396 src/contents/ui/Main.qml:545
 #: src/contents/ui/ShortcutsSheet.qml:370
-#, fuzzy
 msgid "Shortcuts"
-msgstr "_Sneltoetsen"
+msgstr "Snel­toetsen"
 
 #: src/contents/ui/Main.qml:405 src/contents/ui/Main.qml:553
-#, fuzzy
 msgid "Manual"
-msgstr "_Handleiding"
+msgstr "Hand­leiding"
 
 #: src/contents/ui/Main.qml:417 src/contents/ui/Main.qml:585
-#, fuzzy
 msgid "Quit"
-msgstr "_Afsluiten"
+msgstr "Afsluiten"
 
 #: src/contents/ui/Main.qml:441
 msgid "Go back"
-msgstr ""
+msgstr "Terug"
 
 #: src/contents/ui/Main.qml:451 src/contents/ui/PageStreamsEffects.qml:711
 msgid "Effects"
@@ -1834,67 +1674,59 @@ msgstr "Effecten"
 
 #: src/contents/ui/Main.qml:452
 msgid "Turn effects on/off"
-msgstr ""
+msgstr "Effecten in-/uitschakelen"
 
 #: src/contents/ui/Main.qml:463
 msgid "Audio effects are enabled."
-msgstr ""
+msgstr "Audio-effecten zijn ingeschakeld."
 
 #: src/contents/ui/Main.qml:463
 msgid "Audio effects are disabled."
-msgstr ""
+msgstr "Audio-effecten zijn uitgeschakeld."
 
 #: src/contents/ui/Main.qml:519
-#, fuzzy
 msgid "PipeWire"
-msgstr "_PipeWire"
+msgstr "PipeWire"
 
 #: src/contents/ui/Main.qml:537
-#, fuzzy
 msgid "Preferences"
-msgstr "_Voorkeuren"
+msgstr "Voorkeuren"
 
 #: src/contents/ui/Main.qml:577
-#, fuzzy
 msgid "About Easy Effects"
-msgstr "_Over Easy Effects"
+msgstr "Over Easy Effects"
 
 #: src/contents/ui/MenuAddPlugins.qml:75
 msgid "Add %1"
-msgstr ""
+msgstr "%1 toevoegen"
 
 #: src/contents/ui/MenuAddPlugins.qml:147
 msgid "Added a new effect to the pipeline: %1"
-msgstr ""
+msgstr "Nieuw effect toegevoegd aan de pijplijn: %1"
 
 #: src/contents/ui/MultibandCompressor.qml:110
-#, fuzzy
 msgid "Compression mode"
-msgstr "Compressiemodus"
+msgstr "Compressie­modus"
 
 #: src/contents/ui/MultibandCompressor.qml:217
 #: src/contents/ui/MultibandGate.qml:154
-#, fuzzy
 msgid "End"
-msgstr "2e"
+msgstr "Eind"
 
 #: src/contents/ui/MultibandCompressor.qml:500
 #: src/contents/ui/MultibandGate.qml:473
-#, fuzzy
 msgid "Low-cut"
 msgstr "Low-cut"
 
 #: src/contents/ui/MultibandCompressor.qml:525
 #: src/contents/ui/MultibandGate.qml:498
-#, fuzzy
 msgid "High-cut"
 msgstr "High-cut"
 
 #: src/contents/ui/MultibandCompressor.qml:557
 #: src/contents/ui/MultibandGate.qml:530
-#, fuzzy
 msgid "Operating mode"
-msgstr "Bedrijfsmodus"
+msgstr "Bedrijfs­modus"
 
 #: src/contents/ui/MultibandCompressor.qml:561
 #: src/contents/ui/MultibandGate.qml:534
@@ -1908,15 +1740,13 @@ msgstr "Modern"
 
 #: src/contents/ui/MultibandCompressor.qml:561
 #: src/contents/ui/MultibandGate.qml:534
-#, fuzzy
 msgid "Linear phase"
 msgstr "Lineaire fase"
 
 #: src/contents/ui/MultibandCompressor.qml:570
 #: src/contents/ui/MultibandGate.qml:543
-#, fuzzy
 msgid "Sidechain boost"
-msgstr "sidechain-versterking"
+msgstr "Zijketen-versterking"
 
 #: src/contents/ui/MultibandCompressor.qml:574
 #: src/contents/ui/MultibandGate.qml:547
@@ -1940,17 +1770,14 @@ msgstr "Bruin-MT"
 
 #: src/contents/ui/MultibandCompressor.qml:584
 #: src/contents/ui/MultibandGate.qml:557
-#, fuzzy
 msgid "Sidechain input device"
-msgstr "Invoerapparaat"
+msgstr "Zijketen-invoer­apparaat"
 
 #: src/contents/ui/MultibandGate.qml:180
-#, fuzzy
 msgid "Reaction"
-msgstr "Vermindering"
+msgstr "Reactie"
 
 #: src/contents/ui/PageStreamsEffects.qml:80
-#, fuzzy
 msgid "No audio application available"
 msgstr "Geen audio-app beschikbaar"
 
@@ -1959,26 +1786,24 @@ msgid "No Effects"
 msgstr "Geen effecten"
 
 #: src/contents/ui/PageStreamsEffects.qml:96
-#, fuzzy
 msgid "Audio stream not modified"
 msgstr "Audio-stream onbewerkt"
 
 #: src/contents/ui/PageStreamsEffects.qml:344
-#, fuzzy
 msgid "Add effect"
 msgstr "Effect toevoegen"
 
 #: src/contents/ui/PageStreamsEffects.qml:352
 msgid "Close"
-msgstr ""
+msgstr "Sluiten"
 
 #: src/contents/ui/PageStreamsEffects.qml:356
 msgid "Expand the list of effects pipeline"
-msgstr ""
+msgstr "Lijst met effectenpijplijn uitvouwen"
 
 #: src/contents/ui/PageStreamsEffects.qml:356
 msgid "Reduce the list of effects pipeline"
-msgstr ""
+msgstr "Lijst met effectenpijplijn invouwen"
 
 #: src/contents/ui/PageStreamsEffects.qml:409
 #: src/contents/ui/PageStreamsEffects.qml:698
@@ -1986,22 +1811,19 @@ msgid "Players"
 msgstr "Spelers"
 
 #: src/contents/ui/PageStreamsEffects.qml:418
-#, fuzzy
 msgid "Output device"
-msgstr "Uitvoerapparaat"
+msgstr "Uitvoer­apparaat"
 
 #: src/contents/ui/PageStreamsEffects.qml:418
 #: src/contents/ui/PageStreamsEffects.qml:698
 msgid "Recorders"
-msgstr "Opname-apparaten"
+msgstr "Opname­apparaten"
 
 #: src/contents/ui/PageStreamsEffects.qml:729
-#, fuzzy
 msgid "Input monitoring"
-msgstr "Invoer­monitoring in-/uit­schakelen"
+msgstr "Invoer­monitoring"
 
 #: src/contents/ui/PageStreamsEffects.qml:742
-#, fuzzy
 msgid "Excluded apps"
 msgstr "Uitgesloten apps"
 
@@ -2023,80 +1845,68 @@ msgstr "Signaal testen"
 
 #: src/contents/ui/PipeWirePage.qml:110
 msgid "Device Management"
-msgstr "Apparaatbeheer"
+msgstr "Apparaat­beheer"
 
 #: src/contents/ui/PipeWirePage.qml:114
-#, fuzzy
 msgid ""
 "It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
 "external applications (e.g. Gnome Settings and Plasma System Settings)"
 msgstr ""
-"Het wordt aanbevolen om NIET de bron Easy Effects als standaardapparaat in "
-"te stellen bij externe apps (bijv. GNOME Instellingen en Plasma "
-"Systeeminstellingen)."
+"Het wordt aanbevolen om NIET de bron/uitvoer van Easy Effects als "
+"standaard­apparaat in te stellen bij externe apps (bijv. GNOME Instellingen "
+"en Plasma Systeem­instellingen)"
 
 #: src/contents/ui/PipeWirePage.qml:121
-#, fuzzy
 msgid "Use default input"
-msgstr "Standaardinvoer gebruiken"
+msgstr "Standaard­invoer gebruiken"
 
 #: src/contents/ui/PipeWirePage.qml:135 src/contents/ui/PipeWirePage.qml:179
 msgid "Name"
 msgstr "Naam"
 
 #: src/contents/ui/PipeWirePage.qml:164
-#, fuzzy
 msgid "Use default output"
-msgstr "Standaarduitvoer gebruiken"
+msgstr "Standaard­uitvoer gebruiken"
 
 #: src/contents/ui/PipeWirePage.qml:203
 msgid "Server Information"
 msgstr "Server-informatie"
 
 #: src/contents/ui/PipeWirePage.qml:208
-#, fuzzy
 msgid "Header version"
-msgstr "Kopversie"
+msgstr "Kop­versie"
 
 #: src/contents/ui/PipeWirePage.qml:213
-#, fuzzy
 msgid "Library version"
-msgstr "Bibliotheekversie"
+msgstr "Bibliotheek­versie"
 
 #: src/contents/ui/PipeWirePage.qml:218
-#, fuzzy
 msgid "Runtime version"
-msgstr "Kern­versie"
+msgstr "Runtime-versie"
 
 #: src/contents/ui/PipeWirePage.qml:223
-#, fuzzy
 msgid "Default sampling rate"
-msgstr "Bemonsteringsfrequentie"
+msgstr "Standaard bemonster­frequentie"
 
 #: src/contents/ui/PipeWirePage.qml:228
-#, fuzzy
 msgid "Minimum quantum"
 msgstr "Minimale quantum"
 
 #: src/contents/ui/PipeWirePage.qml:233
-#, fuzzy
 msgid "Maximum quantum"
 msgstr "Maximale quantum"
 
 #: src/contents/ui/PipeWirePage.qml:238
-#, fuzzy
 msgid "Default quantum"
 msgstr "Standaard-quantum"
 
 #: src/contents/ui/PipeWirePage.qml:260
-#, fuzzy
 msgid "No Modules"
-msgstr "Modules"
+msgstr "Geen modules"
 
 #: src/contents/ui/PipeWirePage.qml:283
-#, fuzzy
 msgid "No Clients"
-msgstr "Cliënten"
+msgstr "Geen cliënten"
 
 #: src/contents/ui/PipeWirePage.qml:296
 #: src/contents/ui/PreferencesSheet.qml:301
@@ -2117,34 +1927,28 @@ msgid "Waveform"
 msgstr "Golfvorm"
 
 #: src/contents/ui/PipeWirePage.qml:363
-#, fuzzy
 msgid "Sine wave"
-msgstr "Sinusgolf"
+msgstr "Sinus­golf"
 
 #: src/contents/ui/PipeWirePage.qml:374
-#, fuzzy
 msgid "White noise"
 msgstr "Witte ruis"
 
 #: src/contents/ui/PipeWirePage.qml:385
-#, fuzzy
 msgid "Pink noise"
 msgstr "Roze ruis"
 
 #: src/contents/ui/Pitch.qml:50
-#, fuzzy
 msgid "Sequence length"
-msgstr "Sequentielengte"
+msgstr "Sequentie­lengte"
 
 #: src/contents/ui/Pitch.qml:67
-#, fuzzy
 msgid "Seek window"
-msgstr "Zoekvenster"
+msgstr "Zoek­venster"
 
 #: src/contents/ui/Pitch.qml:85
-#, fuzzy
 msgid "Overlap length"
-msgstr "Overlapslengte"
+msgstr "Overlaps­lengte"
 
 #: src/contents/ui/Pitch.qml:144 src/tags_plugin_name.cpp:48
 msgid "Pitch"
@@ -2163,17 +1967,14 @@ msgid "Semitones"
 msgstr "Halve tonen"
 
 #: src/contents/ui/Pitch.qml:203
-#, fuzzy
 msgid "Tempo difference"
-msgstr "Tempoverschil"
+msgstr "Tempo­verschil"
 
 #: src/contents/ui/Pitch.qml:220
-#, fuzzy
 msgid "Rate difference"
-msgstr "Snelheidsverschil"
+msgstr "Snelheids­verschil"
 
 #: src/contents/ui/Pitch.qml:270
-#, fuzzy
 msgid "Quick seek"
 msgstr "Snel zoeken"
 
@@ -2182,26 +1983,25 @@ msgid "Anti-aliasing"
 msgstr "Anti-aliasing"
 
 #: src/contents/ui/PluginNotAvailable.qml:14
-#, fuzzy
 msgid "Effect Not Available"
-msgstr "{} is niet beschikbaar"
+msgstr "Effect niet beschikbaar"
 
 #: src/contents/ui/PluginNotAvailable.qml:15
 msgid "%1 cannot be used because %2 is not installed on the system."
 msgstr ""
+"%1 kan niet worden gebruikt omdat %2 niet op het systeem is geïnstalleerd."
 
 #: src/contents/ui/PreferencesSheet.qml:16
 msgid "Background Service"
-msgstr ""
+msgstr "Achtergrond­dienst"
 
 #: src/contents/ui/PreferencesSheet.qml:22
 msgid "Audio"
 msgstr "Audio"
 
 #: src/contents/ui/PreferencesSheet.qml:28
-#, fuzzy
 msgid "Spectrum Analyzer"
-msgstr "Soort spectrum"
+msgstr "Spectrum­analyse"
 
 #: src/contents/ui/PreferencesSheet.qml:34
 msgid "Style"
@@ -2209,36 +2009,36 @@ msgstr "Stijl"
 
 #: src/contents/ui/PreferencesSheet.qml:46
 msgid "Database"
-msgstr ""
+msgstr "Database"
 
 #: src/contents/ui/PreferencesSheet.qml:52
 msgid "Experimental Features"
 msgstr "Experimentele functies"
 
 #: src/contents/ui/PreferencesSheet.qml:65
-#, fuzzy
 msgid "Enable service mode"
-msgstr "Equalizer-modus"
+msgstr "Dienst­modus inschakelen"
 
 #: src/contents/ui/PreferencesSheet.qml:66
 msgid "Easy Effects is active in background when the window is closed."
 msgstr ""
+"Easy Effects is actief op de achtergrond wanneer het venster is gesloten."
 
 #: src/contents/ui/PreferencesSheet.qml:78
 msgid "Autostart on login"
-msgstr ""
+msgstr "Automatisch starten bij aanmelden"
 
 #: src/contents/ui/PreferencesSheet.qml:79
 msgid "Easy Effects is launched at user session startup."
-msgstr ""
+msgstr "Easy Effects wordt gestart bij het begin van de gebruikerssessie."
 
 #: src/contents/ui/PreferencesSheet.qml:92
 msgid "Show the tray icon"
-msgstr ""
+msgstr "Systeemvak­pictogram tonen"
 
 #: src/contents/ui/PreferencesSheet.qml:105
 msgid "Do not show the application window"
-msgstr ""
+msgstr "App-venster niet tonen"
 
 #: src/contents/ui/PreferencesSheet.qml:106
 msgid ""
@@ -2246,24 +2046,24 @@ msgid ""
 "should not be enabled. It is intended only as a workaround for systems that "
 "do not work well with the autostart of Easy Effects."
 msgstr ""
+"Toon het venster niet wanneer de app start. Over het algemeen moet deze "
+"optie niet worden ingeschakeld. Het is alleen bedoeld als tijdelijke "
+"oplossing voor systemen die niet goed werken met de autostart van Easy "
+"Effects."
 
 #: src/contents/ui/PreferencesSheet.qml:126
-#, fuzzy
 msgid "Process all output streams"
-msgstr "Alle uitvoer-streams verwerken"
+msgstr "Alle uitvoer­stromen verwerken"
 
 #: src/contents/ui/PreferencesSheet.qml:138
-#, fuzzy
 msgid "Process all input streams"
-msgstr "Alle invoer-streams verwerken"
+msgstr "Alle invoer­stromen verwerken"
 
 #: src/contents/ui/PreferencesSheet.qml:150
-#, fuzzy
 msgid "Ignore streams from monitor of devices"
-msgstr "Streams van apparaatmonitor negeren"
+msgstr "Stromen van apparaat­monitor negeren"
 
 #: src/contents/ui/PreferencesSheet.qml:162
-#, fuzzy
 msgid "Use cubic volume"
 msgstr "Kubisch volume gebruiken"
 
@@ -2273,10 +2073,13 @@ msgid ""
 "percentages results in a lower perceived volume while the loudness appears "
 "to change more evenly across the slider."
 msgstr ""
+"Gebruik een kubische schaal voor stroomvolume in plaats van een lineaire. "
+"Lage percentages resulteren in een lager waargenomen volume, terwijl de "
+"luidheid gelijkmatiger lijkt te veranderen over de schuifregelaar."
 
 #: src/contents/ui/PreferencesSheet.qml:175
 msgid "Ignore system notifications"
-msgstr ""
+msgstr "Systeem­meldingen negeren"
 
 #: src/contents/ui/PreferencesSheet.qml:176
 msgid ""
@@ -2284,69 +2087,69 @@ msgid ""
 "better to ignore them, but for some presets it may be recommended since they "
 "could sound too loud."
 msgstr ""
+"Het verwerken van systeemmeldingen kan krakend geluid veroorzaken, dus het "
+"is beter om deze te negeren. Voor sommige voor­instellingen kan het echter "
+"aanbevolen zijn, omdat ze anders te luid kunnen klinken."
 
 #: src/contents/ui/PreferencesSheet.qml:188
-#, fuzzy
 msgid "Enable/disable input monitoring"
-msgstr "Invoer­monitoring in-/uit­schakelen"
+msgstr "Invoer­monitoring in-/uitschakelen"
 
 #: src/contents/ui/PreferencesSheet.qml:200
 msgid "Mic monitor plays to output effects pipeline"
-msgstr ""
+msgstr "Microfoon­monitor speelt via uitvoereffecten­pijplijn"
 
 #: src/contents/ui/PreferencesSheet.qml:212
-#, fuzzy
 msgid "Enable the inactivity timeout"
-msgstr "Inactiviteits-time-out"
+msgstr "Inactiviteits-time-out inschakelen"
 
 #: src/contents/ui/PreferencesSheet.qml:213
 msgid ""
 "When all streams are inactive, Easy Effects pipeline remains loaded for an "
 "extra amount of time."
 msgstr ""
+"Wanneer alle stromen inactief zijn, blijft de Easy Effects-pijplijn nog "
+"enige tijd geladen."
 
 #: src/contents/ui/PreferencesSheet.qml:225
-#, fuzzy
 msgid "Inactivity timeout"
 msgstr "Inactiviteits-time-out"
 
 #: src/contents/ui/PreferencesSheet.qml:240
-#, fuzzy
 msgid "Level meters frame rate cap"
-msgstr "Deze app omschakelen"
+msgstr "Niveau­meters framesnelheids­limiet"
 
 #: src/contents/ui/PreferencesSheet.qml:241
 msgid "Maximum level meter update rate."
-msgstr ""
+msgstr "Maximale vernieuwings­snelheid niveau­meter."
 
 #: src/contents/ui/PreferencesSheet.qml:255
-#, fuzzy
 msgid "Level meters label"
-msgstr "Niveaumeter"
+msgstr "Niveau­meters label"
 
 #: src/contents/ui/PreferencesSheet.qml:256
 msgid ""
 "The time it takes for the level meter labels to be updated when the current "
 "level is below the last highest one."
 msgstr ""
+"De tijd die het kost om niveaumeter­labels bij te werken wanneer het huidige "
+"niveau onder het laatst hoogste niveau ligt."
 
 #: src/contents/ui/PreferencesSheet.qml:273
-#, fuzzy
 msgid "Enable level meters animation"
-msgstr "Deze app omschakelen"
+msgstr "Niveaumeter­animatie inschakelen"
 
 #: src/contents/ui/PreferencesSheet.qml:282
 msgid "Level meters animation duration"
-msgstr ""
+msgstr "Duur niveaumeter­animatie"
 
 #: src/contents/ui/PreferencesSheet.qml:320
-#, fuzzy
 msgid "Audio delay compensation"
-msgstr "Geluidssterkte-compensatie"
+msgstr "Audiovertragings­compensatie"
 
 #: src/contents/ui/PreferencesSheet.qml:335
 msgid "Graph"
-msgstr ""
+msgstr "Grafiek"
 
 #: src/contents/ui/PreferencesSheet.qml:342
 msgid "Shape"
@@ -2366,17 +2169,15 @@ msgstr "Puntjes"
 
 #: src/contents/ui/PreferencesSheet.qml:346
 msgid "Area"
-msgstr ""
+msgstr "Gebied"
 
 #: src/contents/ui/PreferencesSheet.qml:356
-#, fuzzy
 msgid "Dynamic scale"
 msgstr "Dynamische schaal"
 
 #: src/contents/ui/PreferencesSheet.qml:368
-#, fuzzy
 msgid "Logarithmic frequency axis"
-msgstr "Frequentie"
+msgstr "Logaritmische frequentie­as"
 
 #: src/contents/ui/PreferencesSheet.qml:380
 msgid "Points"
@@ -2388,20 +2189,19 @@ msgstr "Lengte"
 
 #: src/contents/ui/PreferencesSheet.qml:402
 msgid "px"
-msgstr ""
+msgstr "px"
 
 #: src/contents/ui/PreferencesSheet.qml:409
-#, fuzzy
 msgid "Spectrum frame rate cap"
-msgstr "Deze app omschakelen"
+msgstr "Spectrum framesnelheids­limiet"
 
 #: src/contents/ui/PreferencesSheet.qml:410
 msgid "Maximum spectrum update rate."
-msgstr ""
+msgstr "Maximale spectrum­vernieuwingssnelheid."
 
 #: src/contents/ui/PreferencesSheet.qml:425
 msgid "Frequency Range"
-msgstr "Frequentiebereik"
+msgstr "Frequentie­bereik"
 
 #: src/contents/ui/PreferencesSheet.qml:432
 msgid "Minimum"
@@ -2413,196 +2213,188 @@ msgstr "Maximaal"
 
 #: src/contents/ui/PreferencesSheet.qml:470
 msgid "Database autosave interval"
-msgstr ""
+msgstr "Database automatisch opslaan interval"
 
 #: src/contents/ui/PreferencesSheet.qml:484
-#, fuzzy
 msgid "Most used presets"
-msgstr "Crossfeed"
+msgstr "Meest gebruikte voor­instellingen"
 
 #: src/contents/ui/PreferencesSheet.qml:502
 msgid "Window"
-msgstr ""
+msgstr "Venster"
 
 #: src/contents/ui/PreferencesSheet.qml:511
 msgid "Force KDE's Breeze theme when Easy Effects starts"
-msgstr ""
+msgstr "KDE's Breeze-thema forceren wanneer Easy Effects start"
 
 #: src/contents/ui/PreferencesSheet.qml:512
 msgid ""
 "It is necessary to restart the service for changes in this setting to take "
 "effect."
 msgstr ""
+"Het is noodzakelijk om de dienst te herstarten om wijzigingen in deze "
+"instelling van kracht te laten worden."
 
 #: src/contents/ui/PreferencesSheet.qml:525
-#, fuzzy
 msgid "Reduce effects list controls"
-msgstr "Effecten­lĳst tonen/verbergen"
+msgstr "Effectenlijst­bediening verminderen"
 
 #: src/contents/ui/PreferencesSheet.qml:526
 msgid ""
 "Action buttons in the effects list are moved inside a context menu for a "
 "more compact view."
 msgstr ""
+"Actie­knoppen in de effecten­lijst worden naar een contextmenu verplaatst voor "
+"een compacter overzicht."
 
 #: src/contents/ui/PreferencesSheet.qml:537
 #: src/contents/ui/PreferencesSheet.qml:561
-#, fuzzy
 msgid "Color scheme"
-msgstr "Kleur"
+msgstr "Kleuren­schema"
 
 #: src/contents/ui/PreferencesSheet.qml:550
 msgid "Graphs"
-msgstr ""
+msgstr "Grafieken"
 
 #: src/contents/ui/PreferencesSheet.qml:565
-#, fuzzy
 msgid "Automatic"
-msgstr "Automatisch versterken"
+msgstr "Automatisch"
 
 #: src/contents/ui/PreferencesSheet.qml:565
-#, fuzzy
 msgid "Light"
-msgstr "Rechts"
+msgstr "Licht"
 
 #: src/contents/ui/PreferencesSheet.qml:565
 msgid "Dark"
-msgstr ""
+msgstr "Donker"
 
 #: src/contents/ui/PreferencesSheet.qml:576
-#, fuzzy
 msgid "Color theme"
-msgstr "Kleur"
+msgstr "Kleuren­thema"
 
 #: src/contents/ui/PreferencesSheet.qml:580
 msgid "Green"
-msgstr ""
+msgstr "Groen"
 
 #: src/contents/ui/PreferencesSheet.qml:580
 msgid "Green neon"
-msgstr ""
+msgstr "Groen-neon"
 
 #: src/contents/ui/PreferencesSheet.qml:580
 msgid "Mix"
 msgstr "Mix"
 
 #: src/contents/ui/PreferencesSheet.qml:580
-#, fuzzy
 msgid "Orange"
-msgstr "Bereik"
+msgstr "Oranje"
 
 #: src/contents/ui/PreferencesSheet.qml:580
 msgid "Yellow"
-msgstr ""
+msgstr "Geel"
 
 #: src/contents/ui/PreferencesSheet.qml:580
 msgid "Blue"
-msgstr ""
+msgstr "Blauw"
 
 #: src/contents/ui/PreferencesSheet.qml:580
 msgid "Purple"
-msgstr ""
+msgstr "Paars"
 
 #: src/contents/ui/PreferencesSheet.qml:580
 msgid "Grey"
-msgstr ""
+msgstr "Grijs"
 
 #: src/contents/ui/PreferencesSheet.qml:580
 msgid "User"
-msgstr ""
+msgstr "Gebruiker"
 
 #: src/contents/ui/PreferencesSheet.qml:588
-#, fuzzy
 msgctxt "@label"
 msgid "Background"
-msgstr "Uitvoeren op achtergrond"
+msgstr "Achtergrond"
 
 #: src/contents/ui/PreferencesSheet.qml:597
 msgctxt "@label"
 msgid "Plot area background"
-msgstr ""
+msgstr "Plotgebied­achtergrond"
 
 #: src/contents/ui/PreferencesSheet.qml:606
 msgctxt "@label"
 msgid "Series colors"
-msgstr ""
+msgstr "Seriekleuren"
 
 #: src/contents/ui/PreferencesSheet.qml:615
-#, fuzzy
 msgctxt "@label"
 msgid "Axis labels text color"
-msgstr "As-labels"
+msgstr "Tekstkleur aslabels"
 
 #: src/contents/ui/PreferencesSheet.qml:624
 msgctxt "@label"
 msgid "Axis labels background color"
-msgstr ""
+msgstr "Achtergrond­kleur aslabels"
 
 #: src/contents/ui/PreferencesSheet.qml:633
-#, fuzzy
 msgctxt "@label"
 msgid "Border color"
-msgstr "Rand"
+msgstr "Rand­kleur"
 
 #: src/contents/ui/PreferencesSheet.qml:642
-#, fuzzy
 msgid "Line width"
-msgstr "Lijnbreedte"
+msgstr "Lijn­breedte"
 
 #: src/contents/ui/PreferencesSheet.qml:656
 msgid "Show grid lines"
-msgstr ""
+msgstr "Raster­lijnen tonen"
 
 #: src/contents/ui/PreferencesSheet.qml:674
-#, fuzzy
 msgid "Autoload delay"
-msgstr "Automatisch versterken"
+msgstr "Automatisch laden vertraging"
 
 #: src/contents/ui/PreferencesSheet.qml:675
 msgid ""
 "Delay between receiving a new device route and the call to autoload a preset."
 msgstr ""
+"Vertraging tussen het ontvangen van een nieuwe apparaat­route en de aanroep "
+"om automatisch een voor­instelling te laden."
 
 #: src/contents/ui/PreferencesSheet.qml:691
-#, fuzzy
 msgid "Ignore the blocklist from presets"
-msgstr "Toevoegen aan zwarte lijst"
+msgstr "Blokkeerlijst van voor­instellingen negeren"
 
 #: src/contents/ui/PreferencesSheet.qml:692
 msgid ""
 "If enabled, the list of excluded apps set in the loaded preset is ignored "
 "and does not replace the one set by the user."
 msgstr ""
+"Indien ingeschakeld, wordt de lijst met uitgesloten apps in de geladen "
+"voor­instelling genegeerd en vervangt deze niet de lijst die door de "
+"gebruiker is ingesteld."
 
 #: src/contents/ui/PreferencesSheet.qml:713
-#, fuzzy
 msgid "Global shortcuts"
-msgstr "_Sneltoetsen"
+msgstr "Globale snel­toetsen"
 
 #: src/contents/ui/PreferencesSheet.qml:714
 msgid "Enables support for XDG global shortcuts."
-msgstr ""
+msgstr "Schakelt onder­steuning voor globale XDG-sneltoetsen in."
 
 #: src/contents/ui/PreferencesSheet.qml:726
-#, fuzzy
 msgid "Native window of effects"
-msgstr "Native venster tonen"
+msgstr "Oorspronkelijk venster van effecten"
 
 #: src/contents/ui/PreferencesSheet.qml:727
-#, fuzzy
 msgid "Allows the native user interface of effects to be shown/hidden."
 msgstr ""
-"Staat toe dat het venster voor native plug-ins wordt weergegeven/verborgen"
+"Staat toe dat de oorspronkelijke gebruikers­interface van effecten wordt "
+"getoond/verborgen."
 
 #: src/contents/ui/PreferencesSheet.qml:739
-#, fuzzy
 msgid "Update frequency"
 msgstr "Vernieuwings­frequentie"
 
 #: src/contents/ui/PreferencesSheet.qml:740
-#, fuzzy
 msgid "Related to LV2 plugins."
-msgstr "Gerelateerd aan LV2-plug-ins"
+msgstr "Gerelateerd aan LV2-plug-ins."
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:35
 #: src/contents/ui/PresetsAutoloadingPage.qml:171
@@ -2612,28 +2404,24 @@ msgstr "Apparaat"
 #: src/contents/ui/PresetsAutoloadingPage.qml:41
 #: src/contents/ui/PresetsAutoloadingPage.qml:215
 msgid "Route"
-msgstr ""
+msgstr "Route"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:84
 #: src/contents/ui/PresetsAutoloadingPage.qml:229
-#, fuzzy
 msgid "Local preset"
-msgstr "Lijst met lokale voor­instellingen"
+msgstr "Lokale voor­instelling"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:95
-#, fuzzy
 msgid "Create"
-msgstr "Bezig met aanmaken"
+msgstr "Maken"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:97
-#, fuzzy
 msgid "Create a new autoloading preset"
-msgstr "Automatisch ingeladen voorinstelling verwijderen"
+msgstr "Maak een nieuwe automatisch te laden voor­instelling"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:186
-#, fuzzy
 msgid "Remove this autoloading preset"
-msgstr "Automatisch ingeladen voorinstelling verwijderen"
+msgstr "Verwijder deze automatisch te laden voor­instelling"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:200
 msgid "Description"
@@ -2644,21 +2432,20 @@ msgid "Refresh"
 msgstr "Verversen"
 
 #: src/contents/ui/PresetsCommunityPage.qml:119
-#, fuzzy
 msgid "Copy to local presets"
-msgstr "Lijst met lokale voor­instellingen"
+msgstr "Kopiëren naar lokale voor­instellingen"
 
 #: src/contents/ui/PresetsCommunityPage.qml:124
-#, fuzzy
 msgid "Imported the %1 community preset to the list of local presets."
 msgstr ""
-"Importeer deze gemeenschaps­voorinstelling in de lĳst met lokale voor­"
-"instellingen"
+"De gemeenschaps­voorinstelling %1 is geïmporteerd naar de lijst met lokale "
+"voor­instellingen."
 
 #: src/contents/ui/PresetsCommunityPage.qml:126
-#, fuzzy
 msgid "Failed to import the %1 community preset to the list of local presets."
-msgstr "Gemeenschaps­voorinstelling zoeken"
+msgstr ""
+"Kan de gemeenschaps­voorinstelling %1 niet importeren naar de lijst met "
+"lokale voor­instellingen."
 
 #: src/contents/ui/PresetsDialog.qml:80 src/contents/ui/PresetsDialog.qml:137
 msgid "Local"
@@ -2669,100 +2456,85 @@ msgid "Community"
 msgstr "Gemeenschap"
 
 #: src/contents/ui/PresetsDialog.qml:96
-#, fuzzy
 msgid "Autoloading"
-msgstr "Automatisch versterken"
+msgstr "Automatisch laden"
 
 #: src/contents/ui/PresetsDialog.qml:135
-#, fuzzy
 msgid "No preset loaded"
 msgstr "Geen voor­instelling geladen"
 
 #: src/contents/ui/PresetsDialog.qml:155
 msgid "Fallback Preset"
-msgstr ""
+msgstr "Terugval­voorinstelling"
 
 #: src/contents/ui/PresetsLocalPage.qml:34
-#, fuzzy
 msgid "Imported a new local preset from an external file."
-msgstr "APO-voorinstellingsbestand importeren"
+msgstr "Nieuwe lokale voor­instelling geïmporteerd vanuit een extern bestand."
 
 #: src/contents/ui/PresetsLocalPage.qml:36
-#, fuzzy
 msgid "Failed to import a new local preset from an external file."
-msgstr "APO-voorinstellingsbestand importeren"
+msgstr ""
+"Kan geen nieuwe lokale voor­instelling importeren vanuit een extern bestand."
 
 #: src/contents/ui/PresetsLocalPage.qml:45
-#, fuzzy
 msgid "Export Presets"
-msgstr "Importeer voorinstellingen"
+msgstr "Voor­instellingen exporteren"
 
 #: src/contents/ui/PresetsLocalPage.qml:48
-#, fuzzy
 msgid "Exported all presets to an external folder."
-msgstr "APO-voorinstellingsbestand importeren"
+msgstr "Alle voor­instellingen geëxporteerd naar een externe map."
 
 #: src/contents/ui/PresetsLocalPage.qml:50
-#, fuzzy
 msgid "Failed to export all presets to an external folder."
-msgstr "APO-voorinstellingsbestand importeren"
+msgstr "Kan niet alle voor­instellingen exporteren naar een externe map."
 
 #: src/contents/ui/PresetsLocalPage.qml:65
-#, fuzzy
 msgid "New preset name"
-msgstr "Naam voor nieuwe voor­instelling"
+msgstr "Naam van nieuwe voor­instelling"
 
 #: src/contents/ui/PresetsLocalPage.qml:81
-#, fuzzy
 msgid "Import preset file"
-msgstr "APO-voorinstellingsbestand importeren"
+msgstr "Voorinstellings­bestand importeren"
 
 #: src/contents/ui/PresetsLocalPage.qml:90
-#, fuzzy
 msgid "Create new preset"
-msgstr "Nieuwe voorinstelling aanmaken"
+msgstr "Nieuwe voor­instelling aanmaken"
 
 #: src/contents/ui/PresetsLocalPage.qml:100
-#, fuzzy
 msgid "Created a new local preset: %1"
-msgstr "Lokale voor­instelling zoeken"
+msgstr "Nieuwe lokale voor­instelling aangemaakt: %1"
 
 #: src/contents/ui/PresetsLocalPage.qml:104
-#, fuzzy
 msgid "Failed to create a new local preset: %1"
-msgstr "Gemeenschaps­voorinstelling zoeken"
+msgstr "Aanmaken van nieuwe lokale voor­instelling %1 mislukt"
 
 #: src/contents/ui/PresetsLocalPage.qml:132
-#, fuzzy
 msgid "Export presets"
-msgstr "Importeer voorinstellingen"
+msgstr "Voor­instellingen exporteren"
 
 #: src/contents/ui/PresetsLocalPage.qml:193
-#, fuzzy
 msgid "Save Preset"
-msgstr "Nieuwe voorinstelling aanmaken"
+msgstr "Voor­instelling opslaan"
 
 #: src/contents/ui/PresetsLocalPage.qml:194
-#, fuzzy
 msgid ""
 "Save current settings to the preset:\n"
 "%1"
-msgstr "Sla de huidige instellingen op in dit voorinstellingsbestand"
+msgstr ""
+"Huidige instellingen opslaan in de voor­instelling:\n"
+"%1"
 
 #: src/contents/ui/PresetsLocalPage.qml:198
-#, fuzzy
 msgid "Saved the current settings to %1 local preset."
-msgstr "Huidige instellingen verwerpen en deze voorinstelling laden"
+msgstr "Huidige instellingen opgeslagen in lokale voor­instelling %1."
 
 #: src/contents/ui/PresetsLocalPage.qml:200
-#, fuzzy
 msgid "Failed to save the current settings to %1 local preset."
-msgstr "Huidige instellingen verwerpen en deze voorinstelling laden"
+msgstr "Opslaan van huidige instellingen in lokale voor­instelling %1 mislukt."
 
 #: src/contents/ui/PresetsLocalPage.qml:208
-#, fuzzy
 msgid "Remove Preset"
-msgstr "Nieuwe voorinstelling aanmaken"
+msgstr "Voor­instelling verwijderen"
 
 #: src/contents/ui/PresetsLocalPage.qml:209
 msgid ""
@@ -2770,59 +2542,53 @@ msgid ""
 "%1\n"
 "from the list?"
 msgstr ""
+"Weet u zeker dat u de voor­instelling\n"
+"%1\n"
+"wilt verwijderen uit de lijst?"
 
 #: src/contents/ui/PresetsLocalPage.qml:213
-#, fuzzy
 msgid "Removed the %1 local preset."
-msgstr "Deze automatisch geladen voorinstelling verwijderen"
+msgstr "Lokale voor­instelling %1 verwijderd."
 
 #: src/contents/ui/PresetsLocalPage.qml:215
-#, fuzzy
 msgid "Failed to remove the %1 local preset."
-msgstr "APO-voorinstellingsbestand importeren"
+msgstr "Verwijderen van lokale voor­instelling %1 mislukt."
 
 #: src/contents/ui/PresetsLocalPage.qml:223
-#, fuzzy
 msgid "Rename Preset"
-msgstr "Nieuwe voorinstelling aanmaken"
+msgstr "Voor­instelling hernoemen"
 
 #: src/contents/ui/PresetsLocalPage.qml:228
 msgid "Rename"
-msgstr ""
+msgstr "Hernoemen"
 
 #: src/contents/ui/PresetsLocalPage.qml:237
-#, fuzzy
 msgid "Renamed the %1 local preset to %2"
-msgstr "Verwijder dit voorinstellingsbestand"
+msgstr "Lokale voor­instelling %1 hernoemd naar %2"
 
 #: src/contents/ui/PresetsLocalPage.qml:240
-#, fuzzy
 msgid "Failed to rename the %1 local preset to %2"
-msgstr "Impulsbestand laden mislukt"
+msgstr "Hernoemen van lokale voor­instelling %1 naar %2 mislukt"
 
 #: src/contents/ui/PresetsLocalPage.qml:248
 msgid "Cancel"
 msgstr "Annuleren"
 
 #: src/contents/ui/PresetsLocalPage.qml:285
-#, fuzzy
 msgid "Save settings to this preset"
-msgstr "Sla de huidige instellingen op in dit voorinstellingsbestand"
+msgstr "Instellingen opslaan in deze voor­instelling"
 
 #: src/contents/ui/PresetsLocalPage.qml:293
-#, fuzzy
 msgid "Rename this preset"
-msgstr "Verwijder dit voorinstellingsbestand"
+msgstr "Deze voor­instelling hernoemen"
 
 #: src/contents/ui/PresetsLocalPage.qml:301
-#, fuzzy
 msgid "Delete this preset"
-msgstr "Verwijder dit voorinstellingsbestand"
+msgstr "Deze voor­instelling verwijderen"
 
 #: src/contents/ui/Reverb.qml:47
-#, fuzzy
 msgid "Room size"
-msgstr "Kamergrootte"
+msgstr "Kamer­grootte"
 
 #: src/contents/ui/Reverb.qml:51
 msgid "Small"
@@ -2837,9 +2603,8 @@ msgid "Large"
 msgstr "Groot"
 
 #: src/contents/ui/Reverb.qml:51
-#, fuzzy
 msgid "Tunnel-like"
-msgstr "Tunnel"
+msgstr "Tunnel­achtig"
 
 #: src/contents/ui/Reverb.qml:51
 msgid "Large/smooth"
@@ -2850,207 +2615,175 @@ msgid "Experimental"
 msgstr "Experimenteel"
 
 #: src/contents/ui/Reverb.qml:60
-#, fuzzy
 msgid "Decay time"
-msgstr "Vervaltijd"
+msgstr "Afval­tijd"
 
 #: src/contents/ui/Reverb.qml:76
-#, fuzzy
 msgid "Pre delay"
-msgstr "Vertraging vooraf"
+msgstr "Voor­vertraging"
 
 #: src/contents/ui/Reverb.qml:92
 msgid "Diffusion"
 msgstr "Verspreiding"
 
 #: src/contents/ui/Reverb.qml:118
-#, fuzzy
 msgid "High frequency damping"
-msgstr "Hoge frequentiedemping"
+msgstr "Hogefrequentie­demping"
 
 #: src/contents/ui/Reverb.qml:135
-#, fuzzy
 msgid "Bass cut"
-msgstr "Bas onderdrukken"
+msgstr "Bas­onderdrukking"
 
 #: src/contents/ui/Reverb.qml:152
-#, fuzzy
 msgid "Treble cut"
-msgstr "Hoge tonen afsnijden"
+msgstr "Hogetonen­onderdrukking"
 
 #: src/contents/ui/Reverb.qml:209
-#, fuzzy
 msgid "Reverberation Presets"
-msgstr "Nagalm"
+msgstr "Nagalm­voorinstellingen"
 
 #: src/contents/ui/Reverb.qml:213
 msgid "Ambience"
 msgstr "Sfeer"
 
 #: src/contents/ui/Reverb.qml:228
-#, fuzzy
 msgid "Empty walls"
-msgstr "Kale muren"
+msgstr "Lege muren"
 
 #: src/contents/ui/Reverb.qml:243
 msgid "Room"
 msgstr "Kamer"
 
 #: src/contents/ui/Reverb.qml:258
-#, fuzzy
 msgid "Large empty hall"
-msgstr "Grote, lege zaal"
+msgstr "Grote lege zaal"
 
 #: src/contents/ui/Reverb.qml:268
 msgid "Disco"
 msgstr "Disco"
 
 #: src/contents/ui/Reverb.qml:278
-#, fuzzy
 msgid "Large occupied hall"
-msgstr "Grote, bezette zaal"
+msgstr "Grote bezette zaal"
 
 #: src/contents/ui/RNNoise.qml:44
-#, fuzzy
 msgid "Imported a new RNNoise model file."
-msgstr "Standaard RNNoise-model"
+msgstr "Nieuw RNNoise-model­bestand geïmporteerd."
 
 #: src/contents/ui/RNNoise.qml:46
-#, fuzzy
 msgid "Failed to import the RNNoise model file."
-msgstr "Modelbestand importeren"
+msgstr "Importeren van RNNoise-model­bestand mislukt."
 
 #: src/contents/ui/RNNoise.qml:57 src/contents/ui/RNNoise.qml:68
 #: src/contents/ui/RNNoise.qml:282 src/contents/ui/RNNoise.qml:284
-#, fuzzy
 msgid "Standard RNNoise model"
 msgstr "Standaard RNNoise-model"
 
 #: src/contents/ui/RNNoise.qml:59
-#, fuzzy
 msgid "Standard RNNoise model loaded."
-msgstr "Standaard RNNoise-model"
+msgstr "Standaard RNNoise-model geladen."
 
 #: src/contents/ui/RNNoise.qml:64 src/contents/ui/RNNoise.qml:286
-#, fuzzy
 msgid "Using %1 Model"
-msgstr "{} wordt gebruikt"
+msgstr "Model %1 wordt gebruikt"
 
 #: src/contents/ui/RNNoise.qml:66
-#, fuzzy
 msgid "Loaded the %1 RNNoise model."
-msgstr "Standaard RNNoise-model"
+msgstr "RNNoise-model %1 geladen."
 
 #: src/contents/ui/RNNoise.qml:70
-#, fuzzy
 msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
-msgstr "Impulsbestand laden mislukt"
+msgstr "Laden van model %1 mislukt. Terug­gevallen op standaard RNNoise-model."
 
 #: src/contents/ui/RNNoise.qml:89 src/contents/ui/Speex.qml:98
-#, fuzzy
 msgid "Voice detection"
-msgstr "Stemdetectie"
+msgstr "Stem­detectie"
 
 #: src/contents/ui/RNNoise.qml:126
-#, fuzzy
 msgid "Wet level"
 msgstr "Nat-niveau"
 
 #: src/contents/ui/RNNoise.qml:166
-#, fuzzy
 msgid "Use the Standard model"
-msgstr "Standaardmodel"
+msgstr "Standaard­model gebruiken"
 
 #: src/contents/ui/RNNoise.qml:177
-#, fuzzy
 msgid "User Models"
-msgstr "RNNoise-modellen"
+msgstr "Gebruikers­modellen"
 
 #: src/contents/ui/RNNoise.qml:243
-#, fuzzy
 msgid "Delete this model"
-msgstr "Modelbestand verwijderen"
+msgstr "Dit model verwijderen"
 
 #: src/contents/ui/RNNoise.qml:248
-#, fuzzy
 msgid "Removed the %1 RNNoise model."
-msgstr "Standaard RNNoise-model"
+msgstr "RNNoise-model %1 verwijderd."
 
 #: src/contents/ui/RNNoise.qml:250
-#, fuzzy
 msgid "Failed to remove the %1 RNNoise model."
-msgstr "Impulsbestand laden mislukt"
+msgstr "Verwijderen van RNNoise-model %1 mislukt."
 
 #: src/contents/ui/RNNoise.qml:319
-#, fuzzy
 msgid "Import model"
 msgstr "Model importeren"
 
 #: src/contents/ui/ShortcutsSheet.qml:47
-#, fuzzy
 msgid "Show help"
 msgstr "Hulp tonen"
 
 #: src/contents/ui/ShortcutsSheet.qml:60
 msgid "Toggle fullscreen"
-msgstr ""
+msgstr "Volledig scherm omschakelen"
 
 #: src/contents/ui/ShortcutsSheet.qml:88 src/contents/ui/ShortcutsSheet.qml:311
 #: src/global_shortcuts.hpp:48
-#, fuzzy
 msgid "Toggle global bypass"
-msgstr "Globale omzeiling"
+msgstr "Globale omzeiling omschakelen"
 
 #: src/contents/ui/ShortcutsSheet.qml:116
-#, fuzzy
 msgid "Close the window"
 msgstr "Venster sluiten"
 
 #: src/contents/ui/ShortcutsSheet.qml:144
-#, fuzzy
 msgid "Terminate Easy Effects service"
-msgstr "Print de versie van Easy Effects"
+msgstr "Easy Effects-dienst beïndigen"
 
 #: src/contents/ui/ShortcutsSheet.qml:184
-#, fuzzy
 msgid "Toggle process all inputs"
-msgstr "Alle invoer-streams verwerken"
+msgstr "Alle invoer­stromen verwerken schakelen"
 
 #: src/contents/ui/ShortcutsSheet.qml:224
-#, fuzzy
 msgid "Toggle process all outputs"
-msgstr "Alle uitvoer-streams verwerken"
+msgstr "Alle uitvoer­stromen verwerken schakelen"
 
 #: src/contents/ui/ShortcutsSheet.qml:237
 #: src/contents/ui/ShortcutsSheet.qml:250
 msgid "Can be used on numeric controls"
-msgstr ""
+msgstr "Kan gebruikt worden op numerieke bedienings­elementen"
 
 #: src/contents/ui/ShortcutsSheet.qml:265
-#, fuzzy
 msgid "Global Shortcuts"
-msgstr "_Sneltoetsen"
+msgstr "Globale snel­toetsen"
 
 #: src/contents/ui/ShortcutsSheet.qml:351 src/global_shortcuts.hpp:50
 msgid "Toggle microphone monitoring"
-msgstr ""
+msgstr "Microfoon­monitoring schakelen"
 
 #: src/contents/ui/Speex.qml:44
 msgid "Denoise"
-msgstr "Ruis wegfilteren"
+msgstr "Ruis weg­filteren"
 
 #: src/contents/ui/Speex.qml:66
 msgid "Dereverberation"
-msgstr "Nagalm wegfilteren"
+msgstr "Nagalm weg­filteren"
 
 #: src/contents/ui/Speex.qml:77
-#, fuzzy
 msgid "Noise suppression"
-msgstr "Ruisonderdrukking"
+msgstr "Ruis­onderdrukking"
 
 #: src/contents/ui/Speex.qml:93
 msgid "Voice Activity Probability"
-msgstr "Waarschijnlijkheid van stemactiviteit"
+msgstr "Waarschijnlijk­heid van stem­­activiteit"
 
 #: src/contents/ui/Speex.qml:129
 msgid "Continue"
@@ -3066,12 +2799,11 @@ msgstr "S/C-niveau"
 
 #: src/contents/ui/StereoTools.qml:90
 msgid "Stereo Matrix"
-msgstr "Stereomatrix"
+msgstr "Stereo­matrix"
 
 #: src/contents/ui/StereoTools.qml:107
-#, fuzzy
 msgid "LR > LR (Stereo default)"
-msgstr "LR > LR (standaard stereo)"
+msgstr "LR > LR (stereo, standaard)"
 
 #: src/contents/ui/StereoTools.qml:107
 msgid "LR > MS (Stereo to Mid-Side)"
@@ -3082,47 +2814,38 @@ msgid "MS > LR (Mid-Side to Stereo)"
 msgstr "MS > LR (midden-zijkant naar stereo)"
 
 #: src/contents/ui/StereoTools.qml:107
-#, fuzzy
 msgid "LR > LL (Mono left channel)"
-msgstr "LR > LL (mono, linkerkanaal)"
+msgstr "LR > LL (mono, linker­kanaal)"
 
 #: src/contents/ui/StereoTools.qml:107
-#, fuzzy
 msgid "LR > RR (Mono right channel)"
-msgstr "LR > RR (mono, rechterkanaal)"
+msgstr "LR > RR (mono, rechter­kanaal)"
 
 #: src/contents/ui/StereoTools.qml:107
-#, fuzzy
 msgid "LR > L+R (Mono sum L+R)"
-msgstr "LR > L+R (mono, sum L+R)"
+msgstr "LR > L+R (mono, som L+R)"
 
 #: src/contents/ui/StereoTools.qml:107
-#, fuzzy
 msgid "LR > RL (Stereo flip channels)"
 msgstr "LR > RL (stereo, kanalen omwisselen)"
 
 #: src/contents/ui/StereoTools.qml:116
-#, fuzzy
 msgid "Side level"
-msgstr "Zijniveau"
+msgstr "Zij­niveau"
 
 #: src/contents/ui/StereoTools.qml:134
-#, fuzzy
 msgid "Side balance"
-msgstr "Zijbalans"
+msgstr "Zij­balans"
 
 #: src/contents/ui/StereoTools.qml:150
-#, fuzzy
 msgid "Middle level"
-msgstr "Middelste niveau"
+msgstr "Midden­niveau"
 
 #: src/contents/ui/StereoTools.qml:168
-#, fuzzy
 msgid "Middle panorama"
-msgstr "Middelste panorama"
+msgstr "Midden­panorama"
 
 #: src/contents/ui/StereoTools.qml:202 src/contents/ui/StereoTools.qml:234
-#, fuzzy
 msgid "Invert phase"
 msgstr "Fase omkeren"
 
@@ -3131,92 +2854,79 @@ msgid "Delay"
 msgstr "Vertraging"
 
 #: src/contents/ui/StereoTools.qml:291
-#, fuzzy
 msgid "Stereo base"
-msgstr "Stereobasis"
+msgstr "Stereo­basis"
 
 #: src/contents/ui/StereoTools.qml:307
-#, fuzzy
 msgid "Stereo phase"
-msgstr "Stereofase"
+msgstr "Stereo­fase"
 
 #: src/main.cpp:312
-#, fuzzy
 msgid "Global audio effects"
-msgstr "_Sneltoetsen"
+msgstr "Globale audio-effecten"
 
 #: src/main.cpp:313
 msgid "© 2017-2025 EasyEffects Team"
-msgstr ""
+msgstr "© 2017-2025 EasyEffects-team"
 
 #: src/main.cpp:315
-#, fuzzy
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
 #: src/main.cpp:315
-#, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
-msgstr "Envelop"
+msgstr "Ontwikkelaar"
 
 #: src/main.cpp:319
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
+msgstr "Philip Goto"
 
 #: src/main.cpp:319
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
+msgstr "philip.goto@gmail.com"
 
 #: src/plugin_base.cpp:274
 msgid "(Mic)"
-msgstr ""
+msgstr "(Microfoon)"
 
 #: src/plugin_base.cpp:277
-#, fuzzy
 msgid "(Speakers)"
-msgstr "Luidsprekers"
+msgstr "(Luidsprekers)"
 
 #: src/plugin_base.cpp:284
 msgid "Output Level Meter"
-msgstr "Uitvoerniveaumeter"
+msgstr "Uitvoerniveau­meter"
 
 #: src/presets_manager.cpp:773 src/presets_manager.cpp:780
 #: src/presets_manager.cpp:790 src/presets_manager.cpp:797
 #: src/presets_manager.cpp:807 src/presets_manager.cpp:816
-#, fuzzy
 msgid "Preset not loaded correctly"
 msgstr "Voor­instelling niet correct geladen"
 
 #: src/presets_manager.cpp:773
-#, fuzzy
 msgid "Wrong format in excluded apps list"
 msgstr "Verkeerd formaat in lijst met uitgesloten apps"
 
 #: src/presets_manager.cpp:781
-#, fuzzy
 msgid "Generic error while loading excluded apps list"
 msgstr "Algemene fout bij laden van lijst met uitgesloten apps"
 
 #: src/presets_manager.cpp:790
-#, fuzzy
 msgid "Wrong format in effects list"
 msgstr "Verkeerd formaat in effecten­lijst"
 
 #: src/presets_manager.cpp:797
-#, fuzzy
 msgid "Generic error while loading effects list"
 msgstr "Algemene fout bij laden van effecten­lijst"
 
 #: src/presets_manager.cpp:808
-#, fuzzy
 msgid "One or more parameters have a wrong format"
 msgstr "Een of meer parameters hebben een verkeerd formaat"
 
 #: src/presets_manager.cpp:817
-#, fuzzy
 msgid "Generic error while loading the effect"
 msgstr "Algemene fout bij laden van het effect"
 
@@ -3278,7 +2988,7 @@ msgstr "Exciter"
 
 #: src/tags_plugin_name.cpp:42
 msgid "Level Meter"
-msgstr "Niveaumeter"
+msgstr "Niveau­meter"
 
 #: src/tags_plugin_name.cpp:45
 msgid "Maximizer"
@@ -3298,24 +3008,22 @@ msgstr "Nagalm"
 
 #: src/tags_plugin_name.cpp:50
 msgid "Noise Reduction"
-msgstr "Ruisverlaging"
+msgstr "Ruis­vermindering"
 
 #: src/tags_plugin_name.cpp:51
 msgid "Speech Processor"
-msgstr "Spraakverwerker"
+msgstr "Spraak­verwerker"
 
 #: src/tags_plugin_name.cpp:52
 msgid "Stereo Tools"
-msgstr "Stereobediening"
+msgstr "Stereo­bediening"
 
 #: src/units.hpp:55
-#, fuzzy
 msgctxt "left channel abbreviation (single letter)"
 msgid "L"
 msgstr "L"
 
 #: src/units.hpp:56
-#, fuzzy
 msgctxt "left channel abbreviation (single letter)"
 msgid "R"
 msgstr "R"
@@ -3323,95 +3031,92 @@ msgstr "R"
 #: src/units.hpp:57
 msgctxt "decibel unit abbreviation"
 msgid "dB"
-msgstr ""
+msgstr "dB"
 
 #: src/units.hpp:58
 msgctxt "decibel full scale unit abbreviation"
 msgid "dBFS"
-msgstr ""
+msgstr "dBFS"
 
 #: src/units.hpp:59
-#, fuzzy
 msgctxt "decibel per octaves unit abbreviation"
 msgid "dB/oct"
-msgstr "12 dB/oct"
+msgstr "dB/oct"
 
 #: src/units.hpp:60
 msgctxt "thousand abbreviation (single letter)"
 msgid "k"
-msgstr ""
+msgstr "k"
 
 #: src/units.hpp:61
 msgctxt "seconds unit abbreviation"
 msgid "s"
-msgstr ""
+msgstr "s"
 
 #: src/units.hpp:62
 msgctxt "milliseconds unit abbreviation"
 msgid "ms"
-msgstr ""
+msgstr "ms"
 
 #: src/units.hpp:63
 msgctxt "Hertz unit abbreviation"
 msgid "Hz"
-msgstr ""
+msgstr "Hz"
 
 #: src/units.hpp:64
 msgctxt "kiloHertz unit abbreviation"
 msgid "kHz"
-msgstr ""
+msgstr "kHz"
 
 #: src/units.hpp:65
 msgctxt "percentage symbol"
 msgid "%"
-msgstr ""
+msgstr "%"
 
 #: src/units.hpp:66
 msgctxt "loudness full scale unit abbreviation"
 msgid "LUFS"
-msgstr ""
+msgstr "LUFS"
 
 #: src/units.hpp:67
-#, fuzzy
 msgctxt "loudness unit abbreviation"
 msgid "LU"
-msgstr "L"
+msgstr "LU"
 
 #: src/units.hpp:68
 msgctxt "meter unit abbreviation"
 msgid "m"
-msgstr ""
+msgstr "m"
 
 #: src/units.hpp:69
 msgctxt "centimeter unit abbreviation"
 msgid "cm"
-msgstr ""
+msgstr "cm"
 
 #: src/units.hpp:70
 msgctxt "degree Celsius unit abbreviation"
 msgid "°C"
-msgstr ""
+msgstr "°C"
 
 #: src/units.hpp:71
 msgctxt "bit unit (plural)"
 msgid "bits"
-msgstr ""
+msgstr "bits"
 
 #: src/units.hpp:72
 msgctxt "frame unit (plural)"
 msgid "frames"
-msgstr ""
+msgstr "frames"
 
 #: src/units.hpp:73
 msgctxt "frames per second abbreviation"
 msgid "fps"
-msgstr ""
+msgstr "fps"
 
 #: src/units.hpp:74
-#, fuzzy
 msgctxt "minus infinity abbreviation"
 msgid "-inf"
-msgstr "- ∞"
+msgstr "-∞"
 
 #: com.github.wwmm.easyeffects.desktop.in.template.h:1
 msgid "Equalizer, Compressor and Other Audio Effects"
@@ -3419,7 +3124,7 @@ msgstr "Equalizer, compressor en overige audio-effecten"
 
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
-msgstr ""
+msgstr "Eenvoudige audio-effecten"
 
 #~ msgid "24 dB/oct"
 #~ msgstr "24 dB/oct"
