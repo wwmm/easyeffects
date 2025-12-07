@@ -18,16 +18,17 @@
  */
 
 #include "local_server.hpp"
+#include <kconfigskeleton.h>
 #include <qobject.h>
 #include <qtmetamacros.h>
 #include <QLocalServer>
+#include <QMetaType>
 #include <cstring>
 #include <format>
 #include <memory>
 #include <regex>
 #include <string>
 #include "db_manager.hpp"
-#include "easyeffects_db_loudness.h"
 #include "pipeline_type.hpp"
 #include "presets_manager.hpp"
 #include "tags_local_server.hpp"
@@ -179,22 +180,55 @@ void LocalServer::set_property(const std::string& pipeline,
                                const std::string& instance_id,
                                const std::string& property,
                                const std::string& value) {
-  // util::warning(std::format("pipeline: {}\tplugin_name: {}\tinstance id: {}\tproperty: {}\tvalue: {}", pipeline,
-  //                           plugin_name, instance_id, property, value));
+  PipelineType type = (pipeline == "input") ? PipelineType::input : PipelineType::output;
+  QString key = QString::fromStdString(plugin_name + "#" + instance_id);
 
-  PipelineType pipeline_type = pipeline == "input" ? PipelineType::input : PipelineType::output;
+  auto& mgr = db::Manager::self();
+  QObject* db = nullptr;
 
-  if (plugin_name == tags::plugin_name::BaseName::loudness) {
-    auto plugin_db = db::Manager::self().get_plugin_db<db::Loudness>(
-        pipeline_type, tags::plugin_name::BaseName::loudness + "#" + QString::fromStdString(instance_id));
+  if (type == PipelineType::input && mgr.siePluginsDB.contains(key))
+    db = mgr.siePluginsDB.value(key).value<KConfigSkeleton*>();
+  else if (type == PipelineType::output && mgr.soePluginsDB.contains(key))
+    db = mgr.soePluginsDB.value(key).value<KConfigSkeleton*>();
 
-    if (property == "volume") {
-      double volume = plugin_db->defaultVolumeValue();
+  if (!db) {
+    util::warning(std::format("LocalServer: Plugin DB not found: {}", key.toStdString()));
+    return;
+  }
 
-      util::str_to_num(value, volume);
+  QVariant current = db->property(property.c_str());
+  if (!current.isValid()) {
+    util::warning(std::format("LocalServer: Property '{}' invalid on {}", property, key.toStdString()));
+    return;
+  }
 
-      plugin_db->setVolume(volume);
+  switch (current.typeId()) {
+    case QMetaType::Bool:
+      db->setProperty(property.c_str(), (value == "true" || value == "1" || value == "on"));
+      break;
+    case QMetaType::Int:
+    case QMetaType::UInt:
+    case QMetaType::LongLong:
+      try {
+        db->setProperty(property.c_str(), std::stoi(value));
+      } catch (...) {
+        util::warning(std::format("LocalServer: Invalid integer value for {}", property));
+      }
+      break;
+    case QMetaType::Double:
+    case QMetaType::Float: {
+      double v = 0.0;
+      if (util::str_to_num(value, v))
+        db->setProperty(property.c_str(), v);
+      else
+        util::warning(std::format("LocalServer: Invalid float value for {}", property));
+      break;
     }
+    case QMetaType::QString:
+      db->setProperty(property.c_str(), QString::fromStdString(value));
+      break;
+    default:
+      util::warning(std::format("LocalServer: Unhandled type {} for {}", current.typeName(), property));
   }
 }
 
@@ -202,22 +236,23 @@ auto LocalServer::get_property(const std::string& pipeline,
                                const std::string& plugin_name,
                                const std::string& instance_id,
                                const std::string& property) -> std::string {
-  std::string value;
+  PipelineType type = (pipeline == "input") ? PipelineType::input : PipelineType::output;
+  QString key = QString::fromStdString(plugin_name + "#" + instance_id);
 
-  PipelineType pipeline_type = pipeline == "input" ? PipelineType::input : PipelineType::output;
+  auto& mgr = db::Manager::self();
+  QObject* db = nullptr;
 
-  if (plugin_name == tags::plugin_name::BaseName::loudness) {
-    auto plugin_db = db::Manager::self().get_plugin_db<db::Loudness>(
-        pipeline_type, tags::plugin_name::BaseName::loudness + "#" + QString::fromStdString(instance_id));
+  if (type == PipelineType::input && mgr.siePluginsDB.contains(key))
+    db = mgr.siePluginsDB.value(key).value<KConfigSkeleton*>();
+  else if (type == PipelineType::output && mgr.soePluginsDB.contains(key))
+    db = mgr.soePluginsDB.value(key).value<KConfigSkeleton*>();
 
-    if (plugin_db == nullptr) {
-      util::warning(std::format("Could not find a database for: {}", plugin_name));
+  if (!db)
+    return "error_plugin_not_found";
 
-      return "";
-    }
+  QVariant val = db->property(property.c_str());
+  if (!val.isValid())
+    return "error_property_not_found";
 
-    value = plugin_db->property(property.c_str()).toString().toStdString();
-  }
-
-  return value;
+  return val.toString().toStdString();
 }

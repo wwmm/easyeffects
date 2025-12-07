@@ -1,5 +1,6 @@
 __pycache__
 _build
+/install
 build
 build-dir
 locale
