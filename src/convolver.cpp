@@ -232,7 +232,6 @@ Convolver::~Convolver() {
 
   zita.stop();
 
-  disconnect();
   settings->disconnect();
 
   util::debug(std::format("{}{} destroyed", log_tag, name.toStdString()));

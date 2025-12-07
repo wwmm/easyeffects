@@ -59,7 +59,6 @@ LevelMeter::~LevelMeter() {
     disconnect_from_pw();
   }
 
-  disconnect();
   settings->disconnect();
 
   if (ebur_state != nullptr) {

@@ -75,7 +75,6 @@ Deesser::~Deesser() {
     disconnect_from_pw();
   }
 
-  disconnect();
   settings->disconnect();
 
   util::debug(std::format("{}{} destroyed", log_tag, name.toStdString()));

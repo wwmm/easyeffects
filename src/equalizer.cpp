@@ -114,7 +114,6 @@ Equalizer::~Equalizer() {
     disconnect_from_pw();
   }
 
-  disconnect();
   settings->disconnect();
   settings_left->disconnect();
   settings_right->disconnect();

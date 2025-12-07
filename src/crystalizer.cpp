@@ -120,7 +120,6 @@ Crystalizer::~Crystalizer() {
     disconnect_from_pw();
   }
 
-  disconnect();
   settings->disconnect();
 
   filters_are_ready = false;
