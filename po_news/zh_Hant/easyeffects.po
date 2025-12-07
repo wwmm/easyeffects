@@ -219,7 +219,8 @@ msgstr ""
 msgid ""
 "Equalizer APO import feature does not crash anymore on Flatpak when invalid "
 "values are provided."
-msgstr "當提供無效數值時，Equalizer APO 的匯入功能在 Flatpak 環境中不再發生當機。"
+msgstr ""
+"當提供無效數值時，Equalizer APO 的匯入功能在 Flatpak 環境中不再發生當機。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:68
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:81
@@ -345,7 +346,8 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:117
 msgid ""
 "Fixed a regression introduced in 7.1.2 that could cause EasyEffects to crash"
-msgstr "修復了在 7.1.2 版本中引入的回歸問題，該問題可能導致 EasyEffects 發生崩潰"
+msgstr ""
+"修復了在 7.1.2 版本中引入的回歸問題，該問題可能導致 EasyEffects 發生崩潰"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:128
 msgid "The DeepFilterNet plugin can now be added to the preset file"

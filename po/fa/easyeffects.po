@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-12-02 14:04-0300\n"
+"POT-Creation-Date: 2025-12-06 21:39-0300\n"
 "PO-Revision-Date: 2025-09-23 14:01+0000\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -207,7 +207,7 @@ msgstr "افزایش خروجی"
 
 #: src/contents/ui/Autogain.qml:212 src/contents/ui/BassEnhancer.qml:184
 #: src/contents/ui/BassLoudness.qml:104 src/contents/ui/Compressor.qml:853
-#: src/contents/ui/Convolver.qml:466 src/contents/ui/Crossfeed.qml:128
+#: src/contents/ui/Convolver.qml:492 src/contents/ui/Crossfeed.qml:128
 #: src/contents/ui/Crystalizer.qml:89 src/contents/ui/DeepFilterNet.qml:175
 #: src/contents/ui/Deesser.qml:298 src/contents/ui/Delay.qml:354
 #: src/contents/ui/EchoCanceller.qml:136 src/contents/ui/Equalizer.qml:283
@@ -301,7 +301,7 @@ msgid "Listen"
 msgstr "گوش کن"
 
 #: src/contents/ui/BassEnhancer.qml:226 src/contents/ui/BassLoudness.qml:122
-#: src/contents/ui/Compressor.qml:905 src/contents/ui/Convolver.qml:494
+#: src/contents/ui/Compressor.qml:905 src/contents/ui/Convolver.qml:520
 #: src/contents/ui/Crossfeed.qml:154 src/contents/ui/Crystalizer.qml:117
 #: src/contents/ui/Deesser.qml:340 src/contents/ui/Delay.qml:406
 #: src/contents/ui/EchoCanceller.qml:164 src/contents/ui/Equalizer.qml:367
@@ -346,10 +346,10 @@ msgid "Add to excluded applications"
 msgstr "به برنامه‌های حذف‌شده اضافه کنید"
 
 #: src/contents/ui/BlocklistDialog.qml:96
-#: src/contents/ui/ConvolverImpulseDialog.qml:67
+#: src/contents/ui/ConvolverImpulseDialog.qml:71
 #: src/contents/ui/MenuAddPlugins.qml:36
 #: src/contents/ui/PageStreamsEffects.qml:79
-#: src/contents/ui/PresetsAutoloadingPage.qml:130
+#: src/contents/ui/PresetsAutoloadingPage.qml:135
 #: src/contents/ui/PresetsCommunityPage.qml:86
 #: src/contents/ui/PresetsLocalPage.qml:175 src/contents/ui/RNNoise.qml:212
 msgid "Empty List"
@@ -492,7 +492,7 @@ msgstr "خارجی"
 
 #: src/contents/ui/Compressor.qml:259 src/contents/ui/Expander.qml:219
 #: src/contents/ui/Gate.qml:237 src/contents/ui/Limiter.qml:209
-#: src/contents/ui/PageStreamsEffects.qml:406
+#: src/contents/ui/PageStreamsEffects.qml:409
 #, fuzzy
 msgid "Input device"
 msgstr "دستگاه ورودی"
@@ -644,7 +644,7 @@ msgstr "بالا-گذر"
 msgid "Off"
 msgstr "خاموش"
 
-#: src/contents/ui/Compressor.qml:466 src/contents/ui/Convolver.qml:423
+#: src/contents/ui/Compressor.qml:466 src/contents/ui/Convolver.qml:449
 #: src/contents/ui/Delay.qml:156 src/contents/ui/Delay.qml:309
 #: src/contents/ui/Expander.qml:426 src/contents/ui/Gate.qml:441
 #: src/contents/ui/MultibandCompressor.qml:607
@@ -654,7 +654,7 @@ msgstr "خاموش"
 msgid "Dry"
 msgstr "امتحان کنید"
 
-#: src/contents/ui/Compressor.qml:485 src/contents/ui/Convolver.qml:441
+#: src/contents/ui/Compressor.qml:485 src/contents/ui/Convolver.qml:467
 #: src/contents/ui/Delay.qml:174 src/contents/ui/Delay.qml:327
 #: src/contents/ui/Expander.qml:445 src/contents/ui/Gate.qml:460
 #: src/contents/ui/MultibandCompressor.qml:625
@@ -763,36 +763,36 @@ msgstr "بارگذاری فایل ایمپالس ناموفق بود"
 msgid "Search"
 msgstr "جستجو"
 
-#: src/contents/ui/ConvolverImpulseDialog.qml:86
+#: src/contents/ui/ConvolverImpulseDialog.qml:90
 #, fuzzy
 msgid "Remove Impulse Response"
 msgstr "پاسخ ایمپالس"
 
-#: src/contents/ui/ConvolverImpulseDialog.qml:87
+#: src/contents/ui/ConvolverImpulseDialog.qml:91
 msgid "Are you sure you want to remove this impulse response from the list?"
 msgstr ""
 
-#: src/contents/ui/ConvolverImpulseDialog.qml:91
+#: src/contents/ui/ConvolverImpulseDialog.qml:95
 #, fuzzy
 msgid "Removed the %1 Convolver impulse."
 msgstr "بارگذاری فایل ایمپالس ناموفق بود"
 
-#: src/contents/ui/ConvolverImpulseDialog.qml:93
+#: src/contents/ui/ConvolverImpulseDialog.qml:97
 #, fuzzy
 msgid "Failed to remove the %1 Convolver impulse."
 msgstr "بارگذاری فایل ایمپالس ناموفق بود"
 
-#: src/contents/ui/ConvolverImpulseDialog.qml:110
+#: src/contents/ui/ConvolverImpulseDialog.qml:114
 #, fuzzy
 msgid "Delete this impulse"
 msgstr "حذف ایمپالس"
 
-#: src/contents/ui/ConvolverImpulseDialog.qml:141
+#: src/contents/ui/ConvolverImpulseDialog.qml:153
 #, fuzzy
 msgid "Import impulse"
 msgstr "وارد کردن ایمپالس"
 
-#: src/contents/ui/ConvolverImpulseDialog.qml:151
+#: src/contents/ui/ConvolverImpulseDialog.qml:163
 #: src/contents/ui/MenuAddPlugins.qml:184 src/contents/ui/PresetsDialog.qml:107
 msgctxt "@action:button"
 msgid "Close"
@@ -857,12 +857,30 @@ msgstr "نمونه ها"
 msgid "Duration"
 msgstr "مدت زمان"
 
-#: src/contents/ui/Convolver.qml:406
+#: src/contents/ui/Convolver.qml:369 src/contents/ui/PipeWirePage.qml:313
+msgid "Channels"
+msgstr "کانال ها"
+
+#: src/contents/ui/Convolver.qml:374
+msgid "Format"
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:413
+msgctxt "The sofa audio file format"
+msgid "SOFA"
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:413
+msgctxt "The wav audio format"
+msgid "WAV"
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:432
 #, fuzzy
 msgid "Stereo width"
 msgstr "عرض استریو"
 
-#: src/contents/ui/Convolver.qml:483 src/tags_plugin_name.cpp:26
+#: src/contents/ui/Convolver.qml:509 src/tags_plugin_name.cpp:26
 msgid "Autogain"
 msgstr "افزایش خودکار"
 
@@ -1806,7 +1824,7 @@ msgstr "_خروج"
 msgid "Go back"
 msgstr ""
 
-#: src/contents/ui/Main.qml:451 src/contents/ui/PageStreamsEffects.qml:668
+#: src/contents/ui/Main.qml:451 src/contents/ui/PageStreamsEffects.qml:711
 msgid "Effects"
 msgstr "جلوه ها"
 
@@ -1940,44 +1958,44 @@ msgstr "بدون افکت"
 msgid "Audio stream not modified"
 msgstr "جریان صوتی تغییر نکرده است"
 
-#: src/contents/ui/PageStreamsEffects.qml:339
+#: src/contents/ui/PageStreamsEffects.qml:344
 #, fuzzy
 msgid "Add effect"
 msgstr "افزودن افکت"
 
-#: src/contents/ui/PageStreamsEffects.qml:347
+#: src/contents/ui/PageStreamsEffects.qml:352
 msgid "Close"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:351
+#: src/contents/ui/PageStreamsEffects.qml:356
 msgid "Expand the list of effects pipeline"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:351
+#: src/contents/ui/PageStreamsEffects.qml:356
 msgid "Reduce the list of effects pipeline"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:406
-#: src/contents/ui/PageStreamsEffects.qml:655
+#: src/contents/ui/PageStreamsEffects.qml:409
+#: src/contents/ui/PageStreamsEffects.qml:698
 msgid "Players"
 msgstr "پلیرها"
 
-#: src/contents/ui/PageStreamsEffects.qml:415
+#: src/contents/ui/PageStreamsEffects.qml:418
 #, fuzzy
 msgid "Output device"
 msgstr "دستگاه خروجی"
 
-#: src/contents/ui/PageStreamsEffects.qml:415
-#: src/contents/ui/PageStreamsEffects.qml:655
+#: src/contents/ui/PageStreamsEffects.qml:418
+#: src/contents/ui/PageStreamsEffects.qml:698
 msgid "Recorders"
 msgstr "ضبط کننده ها"
 
-#: src/contents/ui/PageStreamsEffects.qml:686
+#: src/contents/ui/PageStreamsEffects.qml:729
 #, fuzzy
 msgid "Input monitoring"
 msgstr "فعال‌سازی پایش ورودی"
 
-#: src/contents/ui/PageStreamsEffects.qml:699
+#: src/contents/ui/PageStreamsEffects.qml:742
 #, fuzzy
 msgid "Excluded apps"
 msgstr "برنامه های مستثنی شده"
@@ -2083,10 +2101,6 @@ msgstr "ایالت"
 #: src/contents/ui/PreferencesSheet.qml:308
 msgid "Enabled"
 msgstr "فعال شد"
-
-#: src/contents/ui/PipeWirePage.qml:313
-msgid "Channels"
-msgstr "کانال ها"
 
 #: src/contents/ui/PipeWirePage.qml:344
 msgid "Both"
@@ -2579,17 +2593,17 @@ msgid "Related to LV2 plugins."
 msgstr "مرتبط با افزونه‌های LV2"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:35
-#: src/contents/ui/PresetsAutoloadingPage.qml:166
+#: src/contents/ui/PresetsAutoloadingPage.qml:171
 msgid "Device"
 msgstr "دستگاه"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:41
-#: src/contents/ui/PresetsAutoloadingPage.qml:210
+#: src/contents/ui/PresetsAutoloadingPage.qml:215
 msgid "Route"
 msgstr ""
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:84
-#: src/contents/ui/PresetsAutoloadingPage.qml:224
+#: src/contents/ui/PresetsAutoloadingPage.qml:229
 #, fuzzy
 msgid "Local preset"
 msgstr "فهرست پیش‌تنظیم‌های محلی"
@@ -2604,12 +2618,12 @@ msgstr "در حال ایجاد"
 msgid "Create a new autoloading preset"
 msgstr "حذف پیش‌تنظیم بارگذاری خودکار"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:181
+#: src/contents/ui/PresetsAutoloadingPage.qml:186
 #, fuzzy
 msgid "Remove this autoloading preset"
 msgstr "حذف پیش‌تنظیم بارگذاری خودکار"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:195
+#: src/contents/ui/PresetsAutoloadingPage.qml:200
 msgid "Description"
 msgstr "توضیحات"
 

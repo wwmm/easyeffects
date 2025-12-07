@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-12-02 14:04-0300\n"
+"POT-Creation-Date: 2025-12-06 21:39-0300\n"
 "PO-Revision-Date: 2025-07-20 18:38+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Danish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -211,7 +211,7 @@ msgstr "Udgangsforstærkning"
 
 #: src/contents/ui/Autogain.qml:212 src/contents/ui/BassEnhancer.qml:184
 #: src/contents/ui/BassLoudness.qml:104 src/contents/ui/Compressor.qml:853
-#: src/contents/ui/Convolver.qml:466 src/contents/ui/Crossfeed.qml:128
+#: src/contents/ui/Convolver.qml:492 src/contents/ui/Crossfeed.qml:128
 #: src/contents/ui/Crystalizer.qml:89 src/contents/ui/DeepFilterNet.qml:175
 #: src/contents/ui/Deesser.qml:298 src/contents/ui/Delay.qml:354
 #: src/contents/ui/EchoCanceller.qml:136 src/contents/ui/Equalizer.qml:283
@@ -305,7 +305,7 @@ msgid "Listen"
 msgstr "Lyt"
 
 #: src/contents/ui/BassEnhancer.qml:226 src/contents/ui/BassLoudness.qml:122
-#: src/contents/ui/Compressor.qml:905 src/contents/ui/Convolver.qml:494
+#: src/contents/ui/Compressor.qml:905 src/contents/ui/Convolver.qml:520
 #: src/contents/ui/Crossfeed.qml:154 src/contents/ui/Crystalizer.qml:117
 #: src/contents/ui/Deesser.qml:340 src/contents/ui/Delay.qml:406
 #: src/contents/ui/EchoCanceller.qml:164 src/contents/ui/Equalizer.qml:367
@@ -350,10 +350,10 @@ msgid "Add to excluded applications"
 msgstr "Liste over Blokerede Applikationer"
 
 #: src/contents/ui/BlocklistDialog.qml:96
-#: src/contents/ui/ConvolverImpulseDialog.qml:67
+#: src/contents/ui/ConvolverImpulseDialog.qml:71
 #: src/contents/ui/MenuAddPlugins.qml:36
 #: src/contents/ui/PageStreamsEffects.qml:79
-#: src/contents/ui/PresetsAutoloadingPage.qml:130
+#: src/contents/ui/PresetsAutoloadingPage.qml:135
 #: src/contents/ui/PresetsCommunityPage.qml:86
 #: src/contents/ui/PresetsLocalPage.qml:175 src/contents/ui/RNNoise.qml:212
 #, fuzzy
@@ -498,7 +498,7 @@ msgstr "Ekstern"
 
 #: src/contents/ui/Compressor.qml:259 src/contents/ui/Expander.qml:219
 #: src/contents/ui/Gate.qml:237 src/contents/ui/Limiter.qml:209
-#: src/contents/ui/PageStreamsEffects.qml:406
+#: src/contents/ui/PageStreamsEffects.qml:409
 #, fuzzy
 msgid "Input device"
 msgstr "Input-enhed"
@@ -657,7 +657,7 @@ msgstr "Højpas"
 msgid "Off"
 msgstr "Slukket"
 
-#: src/contents/ui/Compressor.qml:466 src/contents/ui/Convolver.qml:423
+#: src/contents/ui/Compressor.qml:466 src/contents/ui/Convolver.qml:449
 #: src/contents/ui/Delay.qml:156 src/contents/ui/Delay.qml:309
 #: src/contents/ui/Expander.qml:426 src/contents/ui/Gate.qml:441
 #: src/contents/ui/MultibandCompressor.qml:607
@@ -666,7 +666,7 @@ msgstr "Slukket"
 msgid "Dry"
 msgstr ""
 
-#: src/contents/ui/Compressor.qml:485 src/contents/ui/Convolver.qml:441
+#: src/contents/ui/Compressor.qml:485 src/contents/ui/Convolver.qml:467
 #: src/contents/ui/Delay.qml:174 src/contents/ui/Delay.qml:327
 #: src/contents/ui/Expander.qml:445 src/contents/ui/Gate.qml:460
 #: src/contents/ui/MultibandCompressor.qml:625
@@ -775,36 +775,36 @@ msgstr "Kunne Ikke Indlæse Impulsfilen"
 msgid "Search"
 msgstr "Søg"
 
-#: src/contents/ui/ConvolverImpulseDialog.qml:86
+#: src/contents/ui/ConvolverImpulseDialog.qml:90
 #, fuzzy
 msgid "Remove Impulse Response"
 msgstr "Impulsrespons"
 
-#: src/contents/ui/ConvolverImpulseDialog.qml:87
+#: src/contents/ui/ConvolverImpulseDialog.qml:91
 msgid "Are you sure you want to remove this impulse response from the list?"
 msgstr ""
 
-#: src/contents/ui/ConvolverImpulseDialog.qml:91
+#: src/contents/ui/ConvolverImpulseDialog.qml:95
 #, fuzzy
 msgid "Removed the %1 Convolver impulse."
 msgstr "Kunne Ikke Indlæse Impulsfilen"
 
-#: src/contents/ui/ConvolverImpulseDialog.qml:93
+#: src/contents/ui/ConvolverImpulseDialog.qml:97
 #, fuzzy
 msgid "Failed to remove the %1 Convolver impulse."
 msgstr "Kunne Ikke Indlæse Impulsfilen"
 
-#: src/contents/ui/ConvolverImpulseDialog.qml:110
+#: src/contents/ui/ConvolverImpulseDialog.qml:114
 #, fuzzy
 msgid "Delete this impulse"
 msgstr "Fjern Impuls"
 
-#: src/contents/ui/ConvolverImpulseDialog.qml:141
+#: src/contents/ui/ConvolverImpulseDialog.qml:153
 #, fuzzy
 msgid "Import impulse"
 msgstr "Import Impulser"
 
-#: src/contents/ui/ConvolverImpulseDialog.qml:151
+#: src/contents/ui/ConvolverImpulseDialog.qml:163
 #: src/contents/ui/MenuAddPlugins.qml:184 src/contents/ui/PresetsDialog.qml:107
 msgctxt "@action:button"
 msgid "Close"
@@ -868,12 +868,31 @@ msgstr "Prøver"
 msgid "Duration"
 msgstr "Varighed"
 
-#: src/contents/ui/Convolver.qml:406
+#: src/contents/ui/Convolver.qml:369 src/contents/ui/PipeWirePage.qml:313
+msgid "Channels"
+msgstr "Kanaler"
+
+#: src/contents/ui/Convolver.qml:374
+#, fuzzy
+msgid "Format"
+msgstr "Formater"
+
+#: src/contents/ui/Convolver.qml:413
+msgctxt "The sofa audio file format"
+msgid "SOFA"
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:413
+msgctxt "The wav audio format"
+msgid "WAV"
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:432
 #, fuzzy
 msgid "Stereo width"
 msgstr "Stereo-bredde"
 
-#: src/contents/ui/Convolver.qml:483 src/tags_plugin_name.cpp:26
+#: src/contents/ui/Convolver.qml:509 src/tags_plugin_name.cpp:26
 msgid "Autogain"
 msgstr ""
 
@@ -1817,7 +1836,7 @@ msgstr ""
 msgid "Go back"
 msgstr ""
 
-#: src/contents/ui/Main.qml:451 src/contents/ui/PageStreamsEffects.qml:668
+#: src/contents/ui/Main.qml:451 src/contents/ui/PageStreamsEffects.qml:711
 #, fuzzy
 msgid "Effects"
 msgstr "Easyeffects"
@@ -1953,44 +1972,44 @@ msgstr "Easyeffects"
 msgid "Audio stream not modified"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:339
+#: src/contents/ui/PageStreamsEffects.qml:344
 #, fuzzy
 msgid "Add effect"
 msgstr "Easyeffects"
 
-#: src/contents/ui/PageStreamsEffects.qml:347
+#: src/contents/ui/PageStreamsEffects.qml:352
 msgid "Close"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:351
+#: src/contents/ui/PageStreamsEffects.qml:356
 msgid "Expand the list of effects pipeline"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:351
+#: src/contents/ui/PageStreamsEffects.qml:356
 msgid "Reduce the list of effects pipeline"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:406
-#: src/contents/ui/PageStreamsEffects.qml:655
+#: src/contents/ui/PageStreamsEffects.qml:409
+#: src/contents/ui/PageStreamsEffects.qml:698
 msgid "Players"
 msgstr "Spillere"
 
-#: src/contents/ui/PageStreamsEffects.qml:415
+#: src/contents/ui/PageStreamsEffects.qml:418
 #, fuzzy
 msgid "Output device"
 msgstr "Udgangsenhed"
 
-#: src/contents/ui/PageStreamsEffects.qml:415
-#: src/contents/ui/PageStreamsEffects.qml:655
+#: src/contents/ui/PageStreamsEffects.qml:418
+#: src/contents/ui/PageStreamsEffects.qml:698
 msgid "Recorders"
 msgstr "Optagere"
 
-#: src/contents/ui/PageStreamsEffects.qml:686
+#: src/contents/ui/PageStreamsEffects.qml:729
 #, fuzzy
 msgid "Input monitoring"
 msgstr "Input-enhed"
 
-#: src/contents/ui/PageStreamsEffects.qml:699
+#: src/contents/ui/PageStreamsEffects.qml:742
 #, fuzzy
 msgid "Excluded apps"
 msgstr "Liste over Blokerede Applikationer"
@@ -2093,10 +2112,6 @@ msgstr "Tilstand"
 #: src/contents/ui/PreferencesSheet.qml:308
 msgid "Enabled"
 msgstr "Aktiveret"
-
-#: src/contents/ui/PipeWirePage.qml:313
-msgid "Channels"
-msgstr "Kanaler"
 
 #: src/contents/ui/PipeWirePage.qml:344
 msgid "Both"
@@ -2581,17 +2596,17 @@ msgid "Related to LV2 plugins."
 msgstr ""
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:35
-#: src/contents/ui/PresetsAutoloadingPage.qml:166
+#: src/contents/ui/PresetsAutoloadingPage.qml:171
 msgid "Device"
 msgstr "Enhed"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:41
-#: src/contents/ui/PresetsAutoloadingPage.qml:210
+#: src/contents/ui/PresetsAutoloadingPage.qml:215
 msgid "Route"
 msgstr ""
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:84
-#: src/contents/ui/PresetsAutoloadingPage.qml:224
+#: src/contents/ui/PresetsAutoloadingPage.qml:229
 #, fuzzy
 msgid "Local preset"
 msgstr "Liste Af Indgangsforindstillinger"
@@ -2606,12 +2621,12 @@ msgstr "Gating"
 msgid "Create a new autoloading preset"
 msgstr "Fjern Autoindlæst Forudindstilling"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:181
+#: src/contents/ui/PresetsAutoloadingPage.qml:186
 #, fuzzy
 msgid "Remove this autoloading preset"
 msgstr "Fjern Autoindlæst Forudindstilling"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:195
+#: src/contents/ui/PresetsAutoloadingPage.qml:200
 msgid "Description"
 msgstr "Beskrivelse"
 
@@ -4091,10 +4106,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "High Quality"
 #~ msgstr "Kvalitet"
-
-#, fuzzy
-#~ msgid "Formant"
-#~ msgstr "Formater"
 
 #, fuzzy
 #~ msgid "Preserved"

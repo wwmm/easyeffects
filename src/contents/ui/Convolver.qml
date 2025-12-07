@@ -191,7 +191,7 @@ Kirigami.ScrollablePage {
         Kirigami.Card {
             id: convolverChartContainer
 
-            Layout.minimumWidth: Kirigami.Units.gridUnit * 16
+            Layout.minimumWidth: Math.max(delegateLayout.implicitWidth, convolverChart.implicitWidth)
             Layout.fillHeight: true
 
             actions: [
@@ -346,7 +346,7 @@ Kirigami.ScrollablePage {
                     uniformCellWidths: true
                     rowSpacing: Kirigami.Units.largeSpacing
                     columnSpacing: Kirigami.Units.largeSpacing
-                    columns: 3
+                    columns: 5
                     rows: 2
 
                     Controls.Label {
@@ -362,6 +362,16 @@ Kirigami.ScrollablePage {
                     Controls.Label {
                         Layout.alignment: Qt.AlignHCenter
                         text: i18n("Duration") // qmllint disable
+                    }
+
+                    Controls.Label {
+                        Layout.alignment: Qt.AlignHCenter
+                        text: i18n("Channels") // qmllint disable
+                    }
+
+                    Controls.Label {
+                        Layout.alignment: Qt.AlignHCenter
+                        text: i18n("Format") // qmllint disable
                     }
 
                     Controls.Label {
@@ -385,6 +395,22 @@ Kirigami.ScrollablePage {
 
                         Layout.alignment: Qt.AlignHCenter
                         text: Number(convolverPage.pluginBackend ? convolverPage.pluginBackend.kernelDuration : 0).toLocaleString(Qt.locale(), 'f', 3) + ` ${Units.s}`
+                        enabled: false
+                    }
+
+                    Controls.Label {
+                        id: irChannels
+
+                        Layout.alignment: Qt.AlignHCenter
+                        text: convolverPage.pluginBackend.kernelChannels
+                        enabled: false
+                    }
+
+                    Controls.Label {
+                        id: irFormat
+
+                        Layout.alignment: Qt.AlignHCenter
+                        text: convolverPage.pluginBackend.kernelIsSofa ? i18nc("The sofa audio file format", "SOFA") : i18nc("The wav audio format", "WAV")
                         enabled: false
                     }
                 }

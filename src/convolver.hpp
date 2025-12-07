@@ -57,10 +57,14 @@ class Convolver : public PluginBase {
   Q_PROPERTY(bool kernelIsInitialized MEMBER kernel_is_initialized NOTIFY kernelInitializedChanged)
   Q_PROPERTY(bool kernelIsSofa MEMBER kernelIsSofa NOTIFY kernelIsSofaChanged)
 
+  Q_PROPERTY(int kernelChannels MEMBER kernelChannels NOTIFY kernelChannelsChanged)
   Q_PROPERTY(QString kernelRate MEMBER kernelRate NOTIFY kernelRateChanged)
   Q_PROPERTY(QString kernelSamples MEMBER kernelSamples NOTIFY kernelSamplesChanged)
   Q_PROPERTY(QString kernelDuration MEMBER kernelDuration NOTIFY kernelDurationChanged)
 
+  Q_PROPERTY(float sofaAzimuth MEMBER sofaAzimuth NOTIFY sofaAzimuthChanged)
+  Q_PROPERTY(float sofaElevation MEMBER sofaElevation NOTIFY sofaElevationChanged)
+  Q_PROPERTY(float sofaRadius MEMBER sofaRadius NOTIFY sofaRadiusChanged)
   Q_PROPERTY(float sofaMinAzimuth MEMBER sofaMinAzimuth NOTIFY sofaMinAzimuthChanged)
   Q_PROPERTY(float sofaMaxAzimuth MEMBER sofaMaxAzimuth NOTIFY sofaMaxAzimuthChanged)
   Q_PROPERTY(float sofaMinElevation MEMBER sofaMinElevation NOTIFY sofaMinElevationChanged)
@@ -114,7 +118,11 @@ class Convolver : public PluginBase {
   void kernelRateChanged();
   void kernelSamplesChanged();
   void kernelDurationChanged();
+  void kernelChannelsChanged();
 
+  void sofaAzimuthChanged();
+  void sofaElevationChanged();
+  void sofaRadiusChanged();
   void sofaMinAzimuthChanged();
   void sofaMaxAzimuthChanged();
   void sofaMinElevationChanged();
@@ -151,6 +159,9 @@ class Convolver : public PluginBase {
 
   float dry = 0.0F, wet = 1.0F;
 
+  float sofaAzimuth = 0.0F;
+  float sofaElevation = 0.0F;
+  float sofaRadius = 0.0F;
   float sofaMinAzimuth = 0.0F;
   float sofaMaxAzimuth = 0.0F;
   float sofaMinElevation = 0.0F;
@@ -158,6 +169,7 @@ class Convolver : public PluginBase {
   float sofaMinRadius = 0.0F;
   float sofaMaxRadius = 0.0F;
 
+  int kernelChannels = 2;
   QString kernelRate;
   QString kernelSamples;
   QString kernelDuration;
