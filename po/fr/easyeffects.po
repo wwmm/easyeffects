@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-12-06 21:39-0300\n"
-"PO-Revision-Date: 2025-12-03 09:00+0000\n"
+"PO-Revision-Date: 2025-12-07 19:47+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -812,19 +812,18 @@ msgid "Channels"
 msgstr "Canaux"
 
 #: src/contents/ui/Convolver.qml:374
-#, fuzzy
 msgid "Format"
-msgstr "Formant"
+msgstr "Format"
 
 #: src/contents/ui/Convolver.qml:413
 msgctxt "The sofa audio file format"
 msgid "SOFA"
-msgstr ""
+msgstr "SOFA"
 
 #: src/contents/ui/Convolver.qml:413
 msgctxt "The wav audio format"
 msgid "WAV"
-msgstr ""
+msgstr "WAV"
 
 #: src/contents/ui/Convolver.qml:432
 msgid "Stereo width"
