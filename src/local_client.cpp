@@ -64,7 +64,7 @@ void LocalClient::setGlobalBypass(const bool& state) {
   client->flush();
 }
 
-auto LocalClient::getActivePreset(PipelineType pipeline_type) -> QString {
+auto LocalClient::getLastLoadedPreset(PipelineType pipeline_type) -> QString {
   auto msg = std::format("{}:{}\n", tags::local_server::get_active_preset, static_cast<int>(pipeline_type));
 
   client->write(msg.c_str());

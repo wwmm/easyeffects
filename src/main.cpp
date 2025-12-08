@@ -287,9 +287,9 @@ static int runSecondaryInstance(KAboutData& about, QApplication& app, CommandLin
     show_window = false;
   });
 
-  QObject::connect(&parser, &CommandLineParser::onGetActivePreset, [&](PipelineType type) {
-    auto preset = local_client->getActivePreset(type);
-    std::cout << preset.toStdString() << std::endl;
+  QObject::connect(&parser, &CommandLineParser::onGetLastLoadedPreset, [&](PipelineType type) {
+    auto preset = local_client->getLastLoadedPreset(type);
+    std::cout << preset.toStdString() << '\n';
     show_window = false;
   });
 

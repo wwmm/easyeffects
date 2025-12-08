@@ -40,7 +40,7 @@ class LocalClient : public QObject {
 
   void setGlobalBypass(const bool& state);
 
-  auto getActivePreset(PipelineType pipeline_type) -> QString;
+  auto getLastLoadedPreset(PipelineType pipeline_type) -> QString;
 
  private:
   std::unique_ptr<QLocalSocket> client;

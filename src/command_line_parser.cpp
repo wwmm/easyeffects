@@ -33,23 +33,25 @@
 #include "easyeffects_db.h"
 #include "pipeline_type.hpp"
 #include "presets_manager.hpp"
+#include "util.hpp"
 
 CommandLineParser::CommandLineParser(KAboutData& about, QObject* parent)
     : QObject(parent), parser(std::make_unique<QCommandLineParser>()) {
   parser->setApplicationDescription("Easy Effects");
 
   about.setupCommandLine(parser.get());
-  parser->addOptions({{{"q", "quit"}, i18n("Quit Easy Effects. Useful when running in service mode.")},
-                      {{"r", "reset"}, i18n("Reset Easy Effects.")},
-                      {{"w", "hide-window"}, i18n("Hide the window.")},
-                      {{"b", "bypass"}, i18n("Global bypass. 1 to enable and 2 to disable."), i18n("bypass-state")},
-                      {{"l", "load-preset"}, i18n("Load a preset. Example: easyeffects -l music"), i18n("preset-name")},
-                      {{"p", "presets"}, i18n("Show available presets.")},
-                      {{"a", "active-preset"}, i18n("Get the active input/output preset."), i18n("preset-type")},
-                      {{"s", "active-presets"}, i18n("Get the active input and output presets.")},
-                      {"gapplication-service", i18n("Deprecated. Use --service-mode instead.")},
-                      {"service-mode", i18n("Start the application with service mode turned on.")},
-                      {"debug", i18n("Enable debug messages.")}});
+  parser->addOptions(
+      {{{"q", "quit"}, i18n("Quit Easy Effects. Useful when running in service mode.")},
+       {{"r", "reset"}, i18n("Reset Easy Effects.")},
+       {{"w", "hide-window"}, i18n("Hide the window.")},
+       {{"b", "bypass"}, i18n("Global bypass. 1 to enable and 2 to disable."), i18n("bypass-state")},
+       {{"l", "load-preset"}, i18n("Load a preset. Example: easyeffects -l music"), i18n("preset-name")},
+       {{"p", "presets"}, i18n("Show available presets.")},
+       {{"a", "last-loaded-preset"}, i18n("Get the last loaded input/output preset."), i18n("preset-type")},
+       {{"s", "last-loaded-presets"}, i18n("Get the last loaded input and output presets.")},
+       {"gapplication-service", i18n("Deprecated. Use --service-mode instead.")},
+       {"service-mode", i18n("Start the application with service mode turned on.")},
+       {"debug", i18n("Enable debug messages.")}});
 }
 
 void CommandLineParser::set_is_primary(const bool& state) {
@@ -114,7 +116,7 @@ void CommandLineParser::process_events() {
 
         std::cout << preset.toStdString() << '\n';
       } else {
-        Q_EMIT onGetActivePreset((value == "input") ? PipelineType::input : PipelineType::output);
+        Q_EMIT onGetLastLoadedPreset((value == "input") ? PipelineType::input : PipelineType::output);
       }
     } else {
       ok = false;
