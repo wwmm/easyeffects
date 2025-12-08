@@ -77,9 +77,11 @@
 #include "presets_directory_manager.hpp"
 #include "presets_irs_manager.hpp"
 #include "presets_list_model.hpp"
+#if defined(ENABLE_RNNOISE) && ENABLE_RNNOISE == 1
 #include "presets_rnnoise_manager.hpp"
-#include "reverb_preset.hpp"
 #include "rnnoise_preset.hpp"
+#endif
+#include "reverb_preset.hpp"
 #include "speex_preset.hpp"
 #include "stereo_tools_preset.hpp"
 #include "tags_plugin_name.hpp"
@@ -130,9 +132,11 @@ void Manager::initialize_qml_types() {
   qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.presets", VERSION_MAJOR, VERSION_MINOR,
                                                       "SortedImpulseListModel", irs_manager.get_model()->getProxy());
 
+#if defined(ENABLE_RNNOISE) && ENABLE_RNNOISE == 1
   qmlRegisterSingletonInstance<QSortFilterProxyModel>(
       "ee.presets", VERSION_MAJOR, VERSION_MINOR, "SortedRNNoiseListModel", rnnoise_manager.get_model()->getProxy());
   // NOLINTEND(clang-analyzer-cplusplus.NewDelete)
+#endif
 }
 
 void Manager::refresh_list_models() {
@@ -659,17 +663,17 @@ bool Manager::exportPresets(const PipelineType& pipeline_type, const QString& di
 int Manager::importImpulses(const QList<QString>& url_list) {
   return irs_manager.import_impulses(url_list);
 }
-
+#if defined(ENABLE_RNNOISE) && ENABLE_RNNOISE == 1
 int Manager::importRNNoiseModel(const QList<QString>& url_list) {
   return rnnoise_manager.import_model(url_list);
 }
 
-bool Manager::removeImpulseFile(const QString& filePath) {
-  return IrsManager::remove_impulse_file(filePath);
-}
-
 bool Manager::removeRNNoiseModel(const QString& filePath) {
   return RnnoiseManager::remove_model(filePath);
+}
+#endif
+bool Manager::removeImpulseFile(const QString& filePath) {
+  return IrsManager::remove_impulse_file(filePath);
 }
 
 bool Manager::importFromCommunityPackage(const PipelineType& pipeline_type,
@@ -873,8 +877,10 @@ auto Manager::create_wrapper(const PipelineType& pipeline_type, const QString& f
     return std::make_unique<PitchPreset>(pipeline_type, filter_name.toStdString());
   } else if (filter_name.startsWith(tags::plugin_name::BaseName::reverb)) {
     return std::make_unique<ReverbPreset>(pipeline_type, filter_name.toStdString());
+#if defined(ENABLE_RNNOISE) && ENABLE_RNNOISE == 1
   } else if (filter_name.startsWith(tags::plugin_name::BaseName::rnnoise)) {
     return std::make_unique<RNNoisePreset>(pipeline_type, filter_name.toStdString());
+#endif
   } else if (filter_name.startsWith(tags::plugin_name::BaseName::speex)) {
     return std::make_unique<SpeexPreset>(pipeline_type, filter_name.toStdString());
   } else if (filter_name.startsWith(tags::plugin_name::BaseName::stereoTools)) {

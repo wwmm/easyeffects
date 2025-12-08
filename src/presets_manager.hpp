@@ -38,7 +38,9 @@
 #include "presets_directory_manager.hpp"
 #include "presets_irs_manager.hpp"
 #include "presets_list_model.hpp"
+#if defined(ENABLE_RNNOISE) && ENABLE_RNNOISE == 1
 #include "presets_rnnoise_manager.hpp"
+#endif
 
 namespace presets {
 
@@ -90,12 +92,12 @@ class Manager : public QObject {
   Q_INVOKABLE bool exportPresets(const PipelineType& pipeline_type, const QString& dirUrl);
 
   Q_INVOKABLE int importImpulses(const QList<QString>& url_list);
-
+#if defined(ENABLE_RNNOISE) && ENABLE_RNNOISE == 1
   Q_INVOKABLE int importRNNoiseModel(const QList<QString>& url_list);
 
-  Q_INVOKABLE static bool removeImpulseFile(const QString& filePath);
-
   Q_INVOKABLE static bool removeRNNoiseModel(const QString& filePath);
+#endif
+  Q_INVOKABLE static bool removeImpulseFile(const QString& filePath);
 
   Q_INVOKABLE void refreshCommunityPresets(const PipelineType& pipeline_type);
 
@@ -130,9 +132,9 @@ class Manager : public QObject {
   CommunityManager community_manager{dir_manager};
 
   IrsManager irs_manager{dir_manager};
-
+#if defined(ENABLE_RNNOISE) && ENABLE_RNNOISE == 1
   RnnoiseManager rnnoise_manager{dir_manager};
-
+#endif
   QFileSystemWatcher user_output_watcher, user_input_watcher;
 
   ListModel *outputListModel, *inputListModel;

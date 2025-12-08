@@ -47,7 +47,9 @@ Model::Model(QObject* parent)
                 {BaseName::multibandGate, i18n("Multiband Gate")},
                 {BaseName::pitch, i18n("Pitch")},
                 {BaseName::reverb, i18n("Reverberation")},
+#if defined(ENABLE_RNNOISE) && ENABLE_RNNOISE == 1
                 {BaseName::rnnoise, i18n("Noise Reduction")},
+#endif
                 {BaseName::speex, i18n("Speech Processor")},
                 {BaseName::stereoTools, i18n("Stereo Tools")}}) {
   auto* proxyModel = new QSortFilterProxyModel(this);

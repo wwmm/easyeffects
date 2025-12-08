@@ -193,7 +193,6 @@ target_sources(easyeffects PRIVATE
     presets_community_manager.cpp
     presets_directory_manager.cpp
     presets_irs_manager.cpp
-    presets_rnnoise_manager.cpp
     presets_manager.cpp
     presets_list_model.cpp
     pw_manager.cpp
@@ -209,8 +208,6 @@ target_sources(easyeffects PRIVATE
     resampler.cpp
     reverb.cpp
     reverb_preset.cpp
-    rnnoise.cpp
-    rnnoise_preset.cpp
     spectrum.cpp
     speex.cpp
     speex_preset.cpp
@@ -223,6 +220,14 @@ target_sources(easyeffects PRIVATE
     util.cpp
     resources.qrc
 )
+
+if(BUILD_FLATPAK OR ENABLE_RNNOISE)
+    target_sources(easyeffects PRIVATE
+        presets_rnnoise_manager.cpp
+        rnnoise.cpp
+        rnnoise_preset.cpp
+    )
+endif()
 
 target_include_directories(easyeffects SYSTEM PRIVATE
     ${LIBZITACONVOLVER_INCLUDE_DIRS}
@@ -260,7 +265,6 @@ target_link_libraries(easyeffects PRIVATE
     PkgConfig::LIBBS2B
     PkgConfig::LIBSAMPLERATE
     PkgConfig::LIBSNDFILE
-    PkgConfig::LIBRNNOISE
     PkgConfig::LIBSOUNDTOUCH
     PkgConfig::LIBPORTAL
     PkgConfig::LIBPORTALQT
@@ -268,6 +272,10 @@ target_link_libraries(easyeffects PRIVATE
     PkgConfig::LIBMYSOFA
     ${LIBZITACONVOLVER}
 )
+
+if(BUILD_FLATPAK OR ENABLE_RNNOISE)
+    target_link_libraries(easyeffects PRIVATE PkgConfig::LIBRNNOISE)
+endif()
 
 target_compile_definitions(easyeffects PRIVATE QT_NO_KEYWORDS=1)
 # target_compile_definitions(easyeffects PRIVATE QT_NO_KEYWORDS=1 QT_QML_DEBUG=1)
@@ -278,10 +286,10 @@ if(ENABLE_SANITIZER)
     target_link_options(easyeffects PRIVATE "-fsanitize=address")
 endif(ENABLE_SANITIZER)
 
-if(ENABLE_RNNOISE)
+if(BUILD_FLATPAK OR ENABLE_RNNOISE)
     MESSAGE(STATUS "Enabling rnnoise")
     target_compile_definitions(easyeffects PRIVATE ENABLE_RNNOISE=1)
-endif(ENABLE_RNNOISE)
+endif()
 
 if(ENABLE_LIBCPP_WORKAROUNDS)
     MESSAGE(STATUS "Enabling workarounds for lib++ systems")

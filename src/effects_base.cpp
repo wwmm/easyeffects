@@ -67,7 +67,9 @@
 #include "plugin_base.hpp"
 #include "pw_manager.hpp"
 #include "reverb.hpp"
+#if defined(ENABLE_RNNOISE) && ENABLE_RNNOISE == 1
 #include "rnnoise.hpp"
+#endif
 #include "spectrum.hpp"
 #include "speex.hpp"
 #include "stereo_tools.hpp"
@@ -192,8 +194,10 @@ void EffectsBase::create_filters_if_necessary() {
       filter = std::make_shared<Pitch>(log_tag, pm, pipeline_type, instance_id);
     } else if (name.startsWith(tags::plugin_name::BaseName::reverb)) {
       filter = std::make_shared<Reverb>(log_tag, pm, pipeline_type, instance_id);
+#if defined(ENABLE_RNNOISE) && ENABLE_RNNOISE == 1
     } else if (name.startsWith(tags::plugin_name::BaseName::rnnoise)) {
       filter = std::make_shared<RNNoise>(log_tag, pm, pipeline_type, instance_id);
+#endif
     } else if (name.startsWith(tags::plugin_name::BaseName::speex)) {
       filter = std::make_shared<Speex>(log_tag, pm, pipeline_type, instance_id);
     } else if (name.startsWith(tags::plugin_name::BaseName::stereoTools)) {
@@ -320,8 +324,10 @@ QVariant EffectsBase::getPluginInstance(const QString& pluginName) {
     return QVariant::fromValue(dynamic_cast<Pitch*>(p.get()));
   } else if (pluginName.startsWith(tags::plugin_name::BaseName::reverb)) {
     return QVariant::fromValue(dynamic_cast<Reverb*>(p.get()));
+#if defined(ENABLE_RNNOISE) && ENABLE_RNNOISE == 1
   } else if (pluginName.startsWith(tags::plugin_name::BaseName::rnnoise)) {
     return QVariant::fromValue(dynamic_cast<RNNoise*>(p.get()));
+#endif
   } else if (pluginName.startsWith(tags::plugin_name::BaseName::speex)) {
     return QVariant::fromValue(dynamic_cast<Speex*>(p.get()));
   } else if (pluginName.startsWith(tags::plugin_name::BaseName::stereoTools)) {

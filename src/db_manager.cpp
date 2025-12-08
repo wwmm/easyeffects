@@ -54,7 +54,9 @@
 #include "easyeffects_db_multiband_gate.h"
 #include "easyeffects_db_pitch.h"
 #include "easyeffects_db_reverb.h"
+#if defined(ENABLE_RNNOISE) && ENABLE_RNNOISE == 1
 #include "easyeffects_db_rnnoise.h"
+#endif
 #include "easyeffects_db_spectrum.h"
 #include "easyeffects_db_speex.h"
 #include "easyeffects_db_stereo_tools.h"
@@ -267,10 +269,10 @@ void Manager::create_plugin_db(const QString& parentGroup,
 
     } else if (name.startsWith(tags::plugin_name::BaseName::reverb)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::reverb, id), [&] { return new db::Reverb(parentGroup, id); });
-
+#if defined(ENABLE_RNNOISE) && ENABLE_RNNOISE == 1
     } else if (name.startsWith(tags::plugin_name::BaseName::rnnoise)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::rnnoise, id), [&] { return new db::RNNoise(parentGroup, id); });
-
+#endif
     } else if (name.startsWith(tags::plugin_name::BaseName::speex)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::speex, id), [&] { return new db::Speex(parentGroup, id); });
 

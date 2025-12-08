@@ -119,13 +119,17 @@ auto CommunityManager::import_addons_from_community_package(const PipelineType& 
   nlohmann::json json;
 
   const auto irs_ext = ".irs";
+#if defined(ENABLE_RNNOISE) && ENABLE_RNNOISE == 1
   const auto rnnn_ext = ".rnnn";
+#endif
 
   try {
     is >> json;
 
     std::vector<std::string> conv_irs;
+#if defined(ENABLE_RNNOISE) && ENABLE_RNNOISE == 1
     std::vector<std::string> rn_models;
+#endif
 
     const auto* pt_key = (pipeline_type == PipelineType::output) ? "output" : "input";
 
@@ -136,9 +140,11 @@ auto CommunityManager::import_addons_from_community_package(const PipelineType& 
         conv_irs.push_back(json.at(pt_key).at(plugin).at("kernel-name").get<std::string>() + irs_ext);
       }
 
+#if defined(ENABLE_RNNOISE) && ENABLE_RNNOISE == 1
       if (plugin.starts_with(tags::plugin_name::BaseName::rnnoise.toStdString())) {
         rn_models.push_back(json.at(pt_key).at(plugin).at("model-name").get<std::string>() + rnnn_ext);
       }
+#endif
     }
 
     // For every filename of both vectors, search the full path and copy the file locally.
@@ -171,6 +177,7 @@ auto CommunityManager::import_addons_from_community_package(const PipelineType& 
       }
     }
 
+#if defined(ENABLE_RNNOISE) && ENABLE_RNNOISE == 1
     for (const auto& model_name : rn_models) {
       std::string path;
 
@@ -199,6 +206,7 @@ auto CommunityManager::import_addons_from_community_package(const PipelineType& 
         return false;
       }
     }
+#endif
 
     return true;
   } catch (const std::exception& e) {
