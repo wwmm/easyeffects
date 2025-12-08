@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-12-07 16:47-0300\n"
 "PO-Revision-Date: 2025-12-08 21:00+0000\n"
-"Last-Translator: Володимир <vlzuykov@gmail.com>\n"
+"Last-Translator: Максим Горпиніч <gorpinicmaksim0@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
 "Language: uk\n"
@@ -832,9 +832,8 @@ msgid "Autogain"
 msgstr "Автоматичне підсилення"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:12
-#, fuzzy
 msgid "Target Orientation"
-msgstr "Орієнтація на тарет"
+msgstr "Орієнтація на ціль"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:23
 #: src/contents/ui/ConvolverSofaDialog.qml:117
