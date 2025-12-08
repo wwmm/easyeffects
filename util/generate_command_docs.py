@@ -51,6 +51,8 @@ def main():
         '<h1 class="title">Controllable plugin properties</h1>',
         '<p>The following properties can be modified via the local socket server using:</p>',
         '<pre class="code">set_property:&lt;pipeline&gt;:&lt;plugin_name&gt;:&lt;instance_id&gt;:&lt;property&gt;:&lt;value&gt;</pre>',
+        '<p>or queried with:</p>',
+        '<pre class="code">get_property:&lt;pipeline&gt;:&lt;plugin_name&gt;:&lt;instance_id&gt;:&lt;property&gt;</pre>',
         '<table><thead><tr><th>Plugin ID</th><th>Property</th><th>Type</th><th>Default</th></tr></thead><tbody>'
     ]
 
