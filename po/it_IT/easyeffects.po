@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-12-06 21:39-0300\n"
-"PO-Revision-Date: 2025-12-07 19:47+0000\n"
-"Last-Translator: albanobattistella <albanobattistella@gmail.com>\n"
+"PO-Revision-Date: 2025-12-08 21:00+0000\n"
+"Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
 "Language: it_IT\n"
@@ -3138,46 +3138,43 @@ msgstr "Effetti audio semplici"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:12
 msgid "Target Orientation"
-msgstr ""
+msgstr "Orientamento"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:23
 #: src/contents/ui/ConvolverSofaDialog.qml:117
 msgid "Azimuth"
-msgstr ""
+msgstr "Azimut"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:38
 #: src/contents/ui/ConvolverSofaDialog.qml:122
-#, fuzzy
 msgid "Elevation"
-msgstr "Reazione"
+msgstr "Altitudine"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:53
 #: src/contents/ui/ConvolverSofaDialog.qml:127
 msgid "Radius"
-msgstr ""
+msgstr "Raggio"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:69
-#, fuzzy
 msgid "Status"
 msgstr "Stato"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:89
 msgid "Measurements"
-msgstr ""
+msgstr "Misure"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:94
 msgid "Index"
-msgstr ""
+msgstr "Indice"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:152
 msgid "Apply"
-msgstr ""
+msgstr "Applica"
 
 #: src/units.hpp:71
-#, fuzzy
 msgctxt "degrees (angle)"
 msgid "°"
-msgstr "°C"
+msgstr "°"
 
 #~ msgctxt "frames per second"
 #~ msgid "fps"

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-12-07 16:47-0300\n"
-"PO-Revision-Date: 2025-12-03 09:00+0000\n"
+"PO-Revision-Date: 2025-12-08 08:00+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hant/>\n"
@@ -807,19 +807,18 @@ msgid "Channels"
 msgstr "聲道"
 
 #: src/contents/ui/Convolver.qml:381
-#, fuzzy
 msgid "Format"
-msgstr "正常"
+msgstr "格式"
 
 #: src/contents/ui/Convolver.qml:420 src/contents/ui/Convolver.qml:526
 msgctxt "The sofa audio file format"
 msgid "SOFA"
-msgstr ""
+msgstr "SOFA"
 
 #: src/contents/ui/Convolver.qml:420
 msgctxt "The wav audio format"
 msgid "WAV"
-msgstr ""
+msgstr "WAV"
 
 #: src/contents/ui/Convolver.qml:439
 msgid "Stereo width"
@@ -831,26 +830,24 @@ msgstr "自動增益"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:12
 msgid "Target Orientation"
-msgstr ""
+msgstr "目標定位"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:23
 #: src/contents/ui/ConvolverSofaDialog.qml:117
 msgid "Azimuth"
-msgstr ""
+msgstr "方位角"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:38
 #: src/contents/ui/ConvolverSofaDialog.qml:122
-#, fuzzy
 msgid "Elevation"
-msgstr "反應作用"
+msgstr "提昇"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:53
 #: src/contents/ui/ConvolverSofaDialog.qml:127
 msgid "Radius"
-msgstr ""
+msgstr "半徑"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:69
-#, fuzzy
 msgid "Status"
 msgstr "狀態"
 
@@ -861,15 +858,15 @@ msgstr "資料庫"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:89
 msgid "Measurements"
-msgstr ""
+msgstr "量測"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:94
 msgid "Index"
-msgstr ""
+msgstr "索引"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:152
 msgid "Apply"
-msgstr ""
+msgstr "套用"
 
 #: src/contents/ui/Crossfeed.qml:59
 msgid "Cutoff"
@@ -1486,112 +1483,90 @@ msgid "None"
 msgstr "無"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x2/16 bits"
 msgstr "Half x2/16 bit"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x2/24 bits"
 msgstr "Half x2/24 bit"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x3/16 bits"
 msgstr "Half x3/16 bit"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x3/24 bits"
 msgstr "Half x3/24 bit"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x4/16 bits"
 msgstr "Half x4/16 bit"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x4/24 bits"
 msgstr "Half x4/24 bit"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x6/16 bits"
 msgstr "Half x6/16 bit"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x6/24 bits"
 msgstr "Half x6/24 bit"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x8/16 bits"
 msgstr "Half x8/16 bit"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Half x8/24 bits"
 msgstr "Half x8/24 bit"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x2/16 bits"
 msgstr "Full x2/16 bit"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x2/24 bits"
 msgstr "Full x2/24 bit"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x3/16 bits"
 msgstr "Full x3/16 bit"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x3/24 bits"
 msgstr "Full x3/24 bit"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x4/16 bits"
 msgstr "Full x4/16 bit"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x4/24 bits"
 msgstr "Full x4/24 bit"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x6/16 bits"
 msgstr "Full x6/16 bit"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x6/24 bits"
 msgstr "Full x6/24 bit"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x8/16 bits"
 msgstr "Full x8/16 bit"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x8/24 bits"
 msgstr "Full x8/24 bit"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "True peak/16 bits"
 msgstr "True peak/16 bit"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "True peak/24 bits"
 msgstr "True peak/24 bit"
 
@@ -2156,9 +2131,8 @@ msgid "Inactivity timeout"
 msgstr "非作用時暫停"
 
 #: src/contents/ui/PreferencesSheet.qml:240
-#, fuzzy
 msgid "Level meters frame rate cap"
-msgstr "等級量表動畫持續時間"
+msgstr "等級量表影格速率上限"
 
 #: src/contents/ui/PreferencesSheet.qml:241
 msgid "Maximum level meter update rate."
@@ -2175,9 +2149,8 @@ msgid ""
 msgstr "當前等級低於最後最高等級時，更新等級量表標籤所需的時間。"
 
 #: src/contents/ui/PreferencesSheet.qml:273
-#, fuzzy
 msgid "Enable level meters animation"
-msgstr "啟用 / 停用此程式"
+msgstr "啟用等級量表動畫"
 
 #: src/contents/ui/PreferencesSheet.qml:282
 msgid "Level meters animation duration"
@@ -2232,9 +2205,8 @@ msgid "px"
 msgstr "px"
 
 #: src/contents/ui/PreferencesSheet.qml:409
-#, fuzzy
 msgid "Spectrum frame rate cap"
-msgstr "等級量表動畫持續時間"
+msgstr "頻譜影格速率上限"
 
 #: src/contents/ui/PreferencesSheet.qml:410
 msgid "Maximum spectrum update rate."
@@ -2346,10 +2318,9 @@ msgid "User"
 msgstr "使用者"
 
 #: src/contents/ui/PreferencesSheet.qml:588
-#, fuzzy
 msgctxt "@label"
 msgid "Background"
-msgstr "背景服務"
+msgstr "背景"
 
 #: src/contents/ui/PreferencesSheet.qml:597
 msgctxt "@label"
@@ -2377,9 +2348,8 @@ msgid "Border color"
 msgstr "邊框顏色"
 
 #: src/contents/ui/PreferencesSheet.qml:642
-#, fuzzy
 msgid "Line width"
-msgstr "Line 寬"
+msgstr "線條寬度"
 
 #: src/contents/ui/PreferencesSheet.qml:656
 msgid "Show grid lines"
@@ -3048,31 +3018,26 @@ msgid "Stereo Tools"
 msgstr "立體聲工具"
 
 #: src/units.hpp:56
-#, fuzzy
 msgctxt "left channel abbreviation (single letter)"
 msgid "L"
 msgstr "左"
 
 #: src/units.hpp:57
-#, fuzzy
 msgctxt "left channel abbreviation (single letter)"
 msgid "R"
 msgstr "右"
 
 #: src/units.hpp:58
-#, fuzzy
 msgctxt "decibel unit abbreviation"
 msgid "dB"
 msgstr "dB"
 
 #: src/units.hpp:59
-#, fuzzy
 msgctxt "decibel full scale unit abbreviation"
 msgid "dBFS"
 msgstr "dBFS"
 
 #: src/units.hpp:60
-#, fuzzy
 msgctxt "decibel per octaves unit abbreviation"
 msgid "dB/oct"
 msgstr "12 dB/oct"
@@ -3083,25 +3048,21 @@ msgid "k"
 msgstr "k"
 
 #: src/units.hpp:62
-#, fuzzy
 msgctxt "seconds unit abbreviation"
 msgid "s"
 msgstr "s"
 
 #: src/units.hpp:63
-#, fuzzy
 msgctxt "milliseconds unit abbreviation"
 msgid "ms"
 msgstr "ms"
 
 #: src/units.hpp:64
-#, fuzzy
 msgctxt "Hertz unit abbreviation"
 msgid "Hz"
 msgstr "Hz"
 
 #: src/units.hpp:65
-#, fuzzy
 msgctxt "kiloHertz unit abbreviation"
 msgid "kHz"
 msgstr "kHz"
@@ -3117,28 +3078,24 @@ msgid "LUFS"
 msgstr "LUFS"
 
 #: src/units.hpp:68
-#, fuzzy
 msgctxt "loudness unit abbreviation"
 msgid "LU"
-msgstr "左"
+msgstr "LU"
 
 #: src/units.hpp:69
-#, fuzzy
 msgctxt "meter unit abbreviation"
 msgid "m"
 msgstr "m"
 
 #: src/units.hpp:70
-#, fuzzy
 msgctxt "centimeter unit abbreviation"
 msgid "cm"
 msgstr "cm"
 
 #: src/units.hpp:71
-#, fuzzy
 msgctxt "degrees (angle)"
 msgid "°"
-msgstr "°C"
+msgstr "°"
 
 #: src/units.hpp:72
 msgctxt "degree Celsius unit abbreviation"
@@ -3151,13 +3108,11 @@ msgid "bits"
 msgstr "bits"
 
 #: src/units.hpp:74
-#, fuzzy
 msgctxt "frame unit (plural)"
 msgid "frames"
-msgstr "幀"
+msgstr "影格"
 
 #: src/units.hpp:75
-#, fuzzy
 msgctxt "frames per second abbreviation"
 msgid "fps"
 msgstr "fps"

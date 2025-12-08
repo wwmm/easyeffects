@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-12-07 16:47-0300\n"
-"PO-Revision-Date: 2025-12-02 15:32+0000\n"
+"PO-Revision-Date: 2025-12-08 21:00+0000\n"
 "Last-Translator: Максим Горпиніч <gorpinicmaksim0@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
@@ -810,19 +810,18 @@ msgid "Channels"
 msgstr "Канали"
 
 #: src/contents/ui/Convolver.qml:381
-#, fuzzy
 msgid "Format"
-msgstr "Нормальне"
+msgstr "Формат"
 
 #: src/contents/ui/Convolver.qml:420 src/contents/ui/Convolver.qml:526
 msgctxt "The sofa audio file format"
 msgid "SOFA"
-msgstr ""
+msgstr "SOFA"
 
 #: src/contents/ui/Convolver.qml:420
 msgctxt "The wav audio format"
 msgid "WAV"
-msgstr ""
+msgstr "WAV"
 
 #: src/contents/ui/Convolver.qml:439
 msgid "Stereo width"
@@ -834,28 +833,26 @@ msgstr "Автоматичне підсилення"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:12
 msgid "Target Orientation"
-msgstr ""
+msgstr "Орієнтація на ціль"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:23
 #: src/contents/ui/ConvolverSofaDialog.qml:117
 msgid "Azimuth"
-msgstr ""
+msgstr "Азимут"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:38
 #: src/contents/ui/ConvolverSofaDialog.qml:122
-#, fuzzy
 msgid "Elevation"
-msgstr "Реакція"
+msgstr "Підняття"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:53
 #: src/contents/ui/ConvolverSofaDialog.qml:127
 msgid "Radius"
-msgstr ""
+msgstr "Радіус"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:69
-#, fuzzy
 msgid "Status"
-msgstr "Стан"
+msgstr "Статус"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:84
 #: src/contents/ui/PreferencesSheet.qml:46
@@ -864,15 +861,15 @@ msgstr "База даних"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:89
 msgid "Measurements"
-msgstr ""
+msgstr "Вимірювання"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:94
 msgid "Index"
-msgstr ""
+msgstr "Індекс"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:152
 msgid "Apply"
-msgstr ""
+msgstr "Застосувати"
 
 #: src/contents/ui/Crossfeed.qml:59
 msgid "Cutoff"
@@ -1156,23 +1153,23 @@ msgstr "Вхід"
 #: src/contents/ui/MultibandCompressor.qml:911
 #: src/contents/ui/MultibandGate.qml:625 src/contents/ui/MultibandGate.qml:884
 msgid "Band"
-msgstr "Діапазон"
+msgstr "Смуга"
 
 #: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
 msgid "Bell"
-msgstr "Дзвоновий фільтр"
+msgstr "Дзвоновий фільтр (Peak)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
 msgid "High-shelf"
-msgstr "Полицевий ФВЧ"
+msgstr "Полицевий ФВЧ (High-shelf)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
 msgid "Low-shelf"
-msgstr "Полицевий ФНЧ"
+msgstr "Полицевий ФНЧ (Low-shelf)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
 msgid "Notch"
-msgstr "Режекторний фільтр"
+msgstr "Режекторний фільтр (Notch)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
 msgid "Resonance"
@@ -1180,19 +1177,19 @@ msgstr "Резонансний фільтр"
 
 #: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
 msgid "Allpass"
-msgstr "Фазовий фільтр"
+msgstr "Фазовий фільтр (Allpass)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
 msgid "Bandpass"
-msgstr "Смуговий фільтр"
+msgstr "Смуговий фільтр (Bandpass)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
 msgid "Ladder-pass"
-msgstr "Сходовий (пропуск)"
+msgstr "Сходовий (пропуск / Ladder-pass)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
 msgid "Ladder-rejection"
-msgstr "Сходовий (відхилення)"
+msgstr "Сходовий (відхилення / Ladder-rejection)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:44 src/contents/ui/Filter.qml:63
 msgid "RLC (BT)"
@@ -3121,10 +3118,9 @@ msgid "cm"
 msgstr "см"
 
 #: src/units.hpp:71
-#, fuzzy
 msgctxt "degrees (angle)"
 msgid "°"
-msgstr "°C"
+msgstr "°"
 
 #: src/units.hpp:72
 msgctxt "degree Celsius unit abbreviation"
@@ -3134,12 +3130,12 @@ msgstr "°C"
 #: src/units.hpp:73
 msgctxt "bit unit (plural)"
 msgid "bits"
-msgstr "біт(-а/-ів)"
+msgstr "біт"
 
 #: src/units.hpp:74
 msgctxt "frame unit (plural)"
 msgid "frames"
-msgstr "кадр(-а/-ів)"
+msgstr "кадр(-и/-ів)"
 
 #: src/units.hpp:75
 msgctxt "frames per second abbreviation"
