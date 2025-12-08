@@ -62,7 +62,7 @@ Kirigami.ScrollablePage {
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: expanderPage.pluginDB.mode
                         editable: false
-                        model: [i18n("Downward"), i18n("Upward")]// qmllint disable
+                        model: [i18n("Downward"), i18n("Upward")] // qmllint disable
                         onActivated: idx => {
                             expanderPage.pluginDB.mode = idx;
                         }
@@ -205,7 +205,7 @@ Kirigami.ScrollablePage {
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: expanderPage.pluginDB.sidechainType
                         editable: false
-                        model: [i18n("Internal"), i18n("External"), i18n("Link")]// qmllint disable
+                        model: [i18n("Internal"), i18n("External"), i18n("Link")] // qmllint disable
                         onActivated: idx => {
                             expanderPage.pluginDB.sidechainType = idx;
                         }
@@ -244,7 +244,7 @@ Kirigami.ScrollablePage {
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: expanderPage.pluginDB.sidechainMode
                         editable: false
-                        model: [i18n("Peak"), i18n("RMS"), i18n("Low-pass"), i18n("SMA")]// qmllint disable
+                        model: [i18n("Peak"), i18n("RMS"), i18n("Low-pass"), i18n("SMA")] // qmllint disable
                         onActivated: idx => {
                             expanderPage.pluginDB.sidechainMode = idx;
                         }
@@ -258,7 +258,7 @@ Kirigami.ScrollablePage {
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: expanderPage.pluginDB.sidechainSource
                         editable: false
-                        model: [i18n("Middle"), i18n("Side"), i18n("Left"), i18n("Right"), i18n("Min"), i18n("Max")]// qmllint disable
+                        model: [i18n("Middle"), i18n("Side"), i18n("Left"), i18n("Right"), i18n("Min"), i18n("Max")] // qmllint disable
                         visible: !expanderPage.pluginDB.stereoSplit
                         onActivated: idx => {
                             expanderPage.pluginDB.sidechainSource = idx;
@@ -273,7 +273,7 @@ Kirigami.ScrollablePage {
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: expanderPage.pluginDB.stereoSplitSource
                         editable: false
-                        model: [i18n("Left/Right"), i18n("Right/Left"), i18n("Mid/Side"), i18n("Side/Mid"), i18n("Min"), i18n("Max")]// qmllint disable
+                        model: [i18n("Left/Right"), i18n("Right/Left"), i18n("Mid/Side"), i18n("Side/Mid"), i18n("Min"), i18n("Max")] // qmllint disable
                         visible: expanderPage.pluginDB.stereoSplit
                         onActivated: idx => {
                             expanderPage.pluginDB.stereoSplitSource = idx;
@@ -351,7 +351,7 @@ Kirigami.ScrollablePage {
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: expanderPage.pluginDB.hpfMode
                         editable: false
-                        model: [i18n("Off"), `12 ${Units.dBoct}`, `24 ${Units.dBoct}`, `36 ${Units.dBoct}`]// qmllint disable
+                        model: [i18n("Off"), `12 ${Units.dBoct}`, `24 ${Units.dBoct}`, `36 ${Units.dBoct}`] // qmllint disable
                         onActivated: idx => {
                             expanderPage.pluginDB.hpfMode = idx;
                         }
@@ -365,7 +365,7 @@ Kirigami.ScrollablePage {
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: expanderPage.pluginDB.lpfMode
                         editable: false
-                        model: [i18n("Off"), `12 ${Units.dBoct}`, `24 ${Units.dBoct}`, `36 ${Units.dBoct}`]// qmllint disable
+                        model: [i18n("Off"), `12 ${Units.dBoct}`, `24 ${Units.dBoct}`, `36 ${Units.dBoct}`] // qmllint disable
                         onActivated: idx => {
                             expanderPage.pluginDB.lpfMode = idx;
                         }

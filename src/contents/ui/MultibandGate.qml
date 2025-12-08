@@ -4,7 +4,7 @@ import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import "Common.js" as Common
 import ee.pipewire as PW
-import ee.tags.plugin.name as TagsPluginName// qmllint disable
+import ee.tags.plugin.name as TagsPluginName // qmllint disable
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.delegates as Delegates
 import org.kde.kirigamiaddons.formcard as FormCard
@@ -380,7 +380,7 @@ Kirigami.ScrollablePage {
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
                     currentIndex: multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainType"]
                     editable: false
-                    model: [i18n("Internal"), i18n("External"), i18n("Link")]// qmllint disable
+                    model: [i18n("Internal"), i18n("External"), i18n("Link")] // qmllint disable
                     onActivated: idx => {
                         multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainType"] = idx;
                     }
@@ -391,7 +391,7 @@ Kirigami.ScrollablePage {
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
                     currentIndex: multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainMode"]
                     editable: false
-                    model: [i18n("Peak"), i18n("RMS"), i18n("Low-pass"), i18n("SMA")]// qmllint disable
+                    model: [i18n("Peak"), i18n("RMS"), i18n("Low-pass"), i18n("SMA")] // qmllint disable
                     onActivated: idx => {
                         multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainMode"] = idx;
                     }
@@ -402,7 +402,7 @@ Kirigami.ScrollablePage {
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
                     currentIndex: multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainSource"]
                     editable: false
-                    model: [i18n("Middle"), i18n("Side"), i18n("Left"), i18n("Right"), i18n("Min"), i18n("Max")]// qmllint disable
+                    model: [i18n("Middle"), i18n("Side"), i18n("Left"), i18n("Right"), i18n("Min"), i18n("Max")] // qmllint disable
                     visible: !multibandGatePage.pluginDB.stereoSplit
                     onActivated: idx => {
                         multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainSource"] = idx;
@@ -414,7 +414,7 @@ Kirigami.ScrollablePage {
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
                     currentIndex: multibandGatePage.pluginDB[multibandGatePage.bandId + "StereoSplitSource"]
                     editable: false
-                    model: [i18n("Left/Right"), i18n("Right/Left"), i18n("Mid/Side"), i18n("Side/Mid"), i18n("Min"), i18n("Max")]// qmllint disable
+                    model: [i18n("Left/Right"), i18n("Right/Left"), i18n("Mid/Side"), i18n("Side/Mid"), i18n("Min"), i18n("Max")] // qmllint disable
                     visible: multibandGatePage.pluginDB.stereoSplit
                     onActivated: idx => {
                         multibandGatePage.pluginDB[multibandGatePage.bandId + "StereoSplitSource"] = idx;
@@ -531,7 +531,7 @@ Kirigami.ScrollablePage {
                 displayMode: FormCard.FormComboBoxDelegate.ComboBox
                 currentIndex: multibandGatePage.pluginDB.gateMode
                 editable: false
-                model: [i18n("Classic"), i18n("Modern"), i18n("Linear phase")]// qmllint disable
+                model: [i18n("Classic"), i18n("Modern"), i18n("Linear phase")] // qmllint disable
                 onActivated: idx => {
                     multibandGatePage.pluginDB.gateMode = idx;
                 }
@@ -544,7 +544,7 @@ Kirigami.ScrollablePage {
                 displayMode: FormCard.FormComboBoxDelegate.ComboBox
                 currentIndex: multibandGatePage.pluginDB.envelopeBoost
                 editable: false
-                model: [i18n("None"), i18n("Pink BT"), i18n("Pink MT"), i18n("Brown BT"), i18n("Brown MT")]// qmllint disable
+                model: [i18n("None"), i18n("Pink BT"), i18n("Pink MT"), i18n("Brown BT"), i18n("Brown MT")] // qmllint disable
                 onActivated: idx => {
                     multibandGatePage.pluginDB.envelopeBoost = idx;
                 }
@@ -621,7 +621,7 @@ Kirigami.ScrollablePage {
 
                 header: RowLayout {
                     Kirigami.Heading {
-                        readonly property string bandTitleTag: multibandGatePage.pluginDB.viewSidechain ? " - " + i18n("Sidechain") : ""// qmllint disable
+                        readonly property string bandTitleTag: multibandGatePage.pluginDB.viewSidechain ? " - " + i18n("Sidechain") : "" // qmllint disable
                         text: i18n("Band") + " " + (bandsListview.currentIndex + 1) + bandTitleTag // qmllint disable
                         level: 2
                     }

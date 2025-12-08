@@ -2,7 +2,7 @@ import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import "Common.js" as Common
-import ee.tags.plugin.name as TagsPluginName// qmllint disable
+import ee.tags.plugin.name as TagsPluginName // qmllint disable
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
@@ -58,7 +58,7 @@ Kirigami.ScrollablePage {
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
                             currentIndex: deesserPage.pluginDB.detection
                             editable: false
-                            model: [i18n("RMS"), i18n("Peak")]// qmllint disable
+                            model: [i18n("RMS"), i18n("Peak")] // qmllint disable
                             onActivated: idx => {
                                 deesserPage.pluginDB.detection = idx;
                             }
@@ -71,7 +71,7 @@ Kirigami.ScrollablePage {
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
                             currentIndex: deesserPage.pluginDB.mode
                             editable: false
-                            model: [i18n("Wideband"), i18n("Split")]// qmllint disable
+                            model: [i18n("Wideband"), i18n("Split")] // qmllint disable
                             onActivated: idx => {
                                 deesserPage.pluginDB.mode = idx;
                             }

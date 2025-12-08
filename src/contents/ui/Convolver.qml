@@ -118,7 +118,7 @@ Kirigami.ScrollablePage {
         standardButtons: Kirigami.Dialog.NoButton
         focus: true
         modal: true
-        implicitWidth: Math.min(Kirigami.Units.gridUnit * 30, appWindow.width * 0.8)// qmllint disable
+        implicitWidth: Math.min(Kirigami.Units.gridUnit * 30, appWindow.width * 0.8) // qmllint disable
         bottomPadding: 1
         anchors.centerIn: parent
 

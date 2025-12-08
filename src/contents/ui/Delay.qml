@@ -1,7 +1,7 @@
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
-import ee.tags.plugin.name as TagsPluginName// qmllint disable
+import ee.tags.plugin.name as TagsPluginName // qmllint disable
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
@@ -52,7 +52,7 @@ Kirigami.ScrollablePage {
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: delayPage.pluginDB.modeL
                         editable: false
-                        model: [i18n("Samples"), i18n("Distance"), i18n("Time")]// qmllint disable
+                        model: [i18n("Samples"), i18n("Distance"), i18n("Time")] // qmllint disable
                         onActivated: idx => {
                             delayPage.pluginDB.modeL = idx;
                         }
@@ -205,7 +205,7 @@ Kirigami.ScrollablePage {
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: delayPage.pluginDB.modeR
                         editable: false
-                        model: [i18n("Samples"), i18n("Distance"), i18n("Time")]// qmllint disable
+                        model: [i18n("Samples"), i18n("Distance"), i18n("Time")] // qmllint disable
                         onActivated: idx => {
                             delayPage.pluginDB.modeR = idx;
                         }
