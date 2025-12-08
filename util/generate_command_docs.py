@@ -6,7 +6,7 @@ import xml.etree.ElementTree as ET
 
 TAGS_FILE = "src/tags_plugin_name.hpp"
 KCFG_DIR = "src/contents/kcfg"
-OUTPUT_FILE = "src/contents/help/plugin-properties.html"
+OUTPUT_FILE = "src/contents/help/plugins_properties.html"
 
 def get_tags():
     ids = []

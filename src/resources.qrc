@@ -32,6 +32,7 @@
         <file alias="multibandgate.html">contents/help/multibandgate.html</file>
         <file alias="pipewire.html">contents/help/pipewire.html</file>
         <file alias="pitch.html">contents/help/pitch.html</file>
+        <file alias="plugins_properties.html">contents/help/plugins_properties.html</file>
         <file alias="reverb.html">contents/help/reverb.html</file>
         <file alias="rnnoise.html">contents/help/rnnoise.html</file>
         <file alias="saturated.html">contents/help/saturated.html</file>
