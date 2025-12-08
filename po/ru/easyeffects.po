@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-12-06 21:39-0300\n"
-"PO-Revision-Date: 2025-12-07 19:47+0000\n"
+"PO-Revision-Date: 2025-12-08 08:00+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -3178,43 +3178,39 @@ msgstr "Применить"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:12
 msgid "Target Orientation"
-msgstr ""
+msgstr "Целевая ориентация"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:23
 #: src/contents/ui/ConvolverSofaDialog.qml:117
 msgid "Azimuth"
-msgstr ""
+msgstr "Азимут"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:38
 #: src/contents/ui/ConvolverSofaDialog.qml:122
-#, fuzzy
 msgid "Elevation"
-msgstr "Реакция"
+msgstr "Возвышение"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:53
 #: src/contents/ui/ConvolverSofaDialog.qml:127
 msgid "Radius"
-msgstr ""
+msgstr "Радиус"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:69
-#, fuzzy
 msgid "Status"
 msgstr "Состояние"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:89
-#, fuzzy
 msgid "Measurements"
-msgstr "Измерение шума"
+msgstr "Измерения"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:94
 msgid "Index"
-msgstr ""
+msgstr "Индекс"
 
 #: src/units.hpp:71
-#, fuzzy
 msgctxt "degrees (angle)"
 msgid "°"
-msgstr "°C"
+msgstr "°"
 
 #~ msgctxt "frames per second"
 #~ msgid "fps"
