@@ -37,10 +37,10 @@
 
 LocalServer::LocalServer(QObject* parent) : QObject(parent), server(std::make_unique<QLocalServer>(this)) {
   connect(server.get(), &QLocalServer::newConnection, [&]() {
-    clientSocket = server->nextPendingConnection();
+    auto* newSocket = server->nextPendingConnection();
 
-    connect(clientSocket, &QLocalSocket::readyRead, this, &LocalServer::onReadyRead);
-    connect(clientSocket, &QLocalSocket::disconnected, this, &LocalServer::onDisconnected);
+    connect(newSocket, &QLocalSocket::readyRead, this, &LocalServer::onReadyRead);
+    connect(newSocket, &QLocalSocket::disconnected, this, &LocalServer::onDisconnected);
 
     util::debug("Client connected");
   });
@@ -62,14 +62,16 @@ void LocalServer::startServer() {
 }
 
 void LocalServer::onReadyRead() {
-  if (!clientSocket) {
+  auto* socket = qobject_cast<QLocalSocket*>(sender());
+
+  if (!socket) {
     return;
   }
 
-  while (!clientSocket->atEnd()) {
+  while (!socket->atEnd()) {
     char buf[1024];
 
-    auto lineLength = clientSocket->readLine(buf, sizeof(buf));
+    auto lineLength = socket->readLine(buf, sizeof(buf));
 
     if (lineLength != -1) {
       if (std::strcmp(buf, tags::local_server::quit_app) == 0) {
@@ -160,24 +162,44 @@ void LocalServer::onReadyRead() {
 
           const auto value = get_property(pipeline, plugin_name, instance_id, property);
 
-          clientSocket->write(value.c_str());
+          socket->write(value.c_str());
+        }
+      } else if (std::strncmp(buf, tags::local_server::get_active_preset,
+                              strlen(tags::local_server::get_active_preset)) == 0) {
+        std::string msg = buf;
+
+        std::smatch matches;
+
+        static const auto re = std::regex("^get_active_preset:(input|output)\n$");
+
+        std::regex_search(msg, matches, re);
+
+        if (matches.size() == 2U) {
+          const auto& pipeline_str = matches[1].str();
+
+          QString preset_name =
+              (pipeline_str == "input") ? DbMain::lastLoadedInputPreset() : DbMain::lastLoadedOutputPreset();
+
+          if (preset_name.isEmpty())
+            preset_name = QStringLiteral("None");
+
+          socket->write(preset_name.toUtf8());
         }
       }
     }
   }
 
-  clientSocket->flush();
-
-  // Echo the data back to the client
-  // clientSocket->write("Server received: " + data);
+  socket->flush();
 }
 
 void LocalServer::onDisconnected() {
   util::debug("Client disconnected");
 
-  if (clientSocket) {
-    clientSocket->deleteLater();
-    clientSocket = nullptr;
+  auto* socket = qobject_cast<QLocalSocket*>(sender());
+
+  if (socket) {
+    socket->deleteLater();
+    socket = nullptr;
   }
 }
 
