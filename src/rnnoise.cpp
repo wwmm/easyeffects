@@ -112,6 +112,10 @@ RNNoise::RNNoise(const std::string& tag, pw::Manager* pipe_manager, PipelineType
   util::warning("The RNNoise library was not available at compilation time. The noise reduction filter won't work");
 
   settings->setEnableVad(false);
+
+  packageInstalled = false;
+
+  Q_EMIT packageInstalledChanged();
 #endif
 }
 
@@ -174,12 +178,19 @@ void RNNoise::process(std::span<float>& left_in,
     return;
   }
 
+#ifdef ENABLE_RNNOISE
   if (!rnnoise_ready) {
     std::ranges::fill(left_out, 0.0F);
     std::ranges::fill(right_out, 0.0F);
 
     return;
   }
+#else
+  std::ranges::copy(left_in, left_out.begin());
+  std::ranges::copy(right_in, right_out.begin());
+
+  return;
+#endif
 
   if (input_gain != 1.0F) {
     apply_gain(left_in, right_in, input_gain);

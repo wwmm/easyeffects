@@ -260,7 +260,6 @@ target_link_libraries(easyeffects PRIVATE
     PkgConfig::LIBBS2B
     PkgConfig::LIBSAMPLERATE
     PkgConfig::LIBSNDFILE
-    PkgConfig::LIBRNNOISE
     PkgConfig::LIBSOUNDTOUCH
     PkgConfig::LIBPORTAL
     PkgConfig::LIBPORTALQT
@@ -281,6 +280,7 @@ endif(ENABLE_SANITIZER)
 if(ENABLE_RNNOISE)
     MESSAGE(STATUS "Enabling rnnoise")
     target_compile_definitions(easyeffects PRIVATE ENABLE_RNNOISE=1)
+    target_link_libraries(easyeffects PRIVATE PkgConfig::LIBRNNOISE)
 endif(ENABLE_RNNOISE)
 
 if(ENABLE_LIBCPP_WORKAROUNDS)

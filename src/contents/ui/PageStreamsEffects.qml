@@ -163,6 +163,7 @@ Kirigami.Page {
                     [TagsPluginName.BaseName.bassLoudness]: TagsPluginName.Package.mda,
                     [TagsPluginName.BaseName.compressor]: TagsPluginName.Package.lsp,
                     [TagsPluginName.BaseName.crossfeed]: TagsPluginName.Package.bs2b,
+                    [TagsPluginName.BaseName.crystalizer]: TagsPluginName.Package.zita,
                     [TagsPluginName.BaseName.delay]: TagsPluginName.Package.lsp,
                     [TagsPluginName.BaseName.deepfilternet]: TagsPluginName.Package.deepfilternet,
                     [TagsPluginName.BaseName.deesser]: TagsPluginName.Package.calf,
@@ -177,6 +178,7 @@ Kirigami.Page {
                     [TagsPluginName.BaseName.multibandCompressor]: TagsPluginName.Package.lsp,
                     [TagsPluginName.BaseName.multibandGate]: TagsPluginName.Package.lsp,
                     [TagsPluginName.BaseName.reverb]: TagsPluginName.Package.calf,
+                    [TagsPluginName.BaseName.rnnoise]: TagsPluginName.Package.rnnoise,
                     [TagsPluginName.BaseName.stereoTools]: TagsPluginName.Package.calf
                 };
 
