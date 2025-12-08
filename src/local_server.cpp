@@ -180,8 +180,9 @@ void LocalServer::onReadyRead() {
           QString preset_name =
               (pipeline_str == "input") ? DbMain::lastLoadedInputPreset() : DbMain::lastLoadedOutputPreset();
 
-          if (preset_name.isEmpty())
+          if (preset_name.isEmpty()) {
             preset_name = QStringLiteral("None");
+          }
 
           socket->write(preset_name.toUtf8());
         }
@@ -214,10 +215,11 @@ void LocalServer::set_property(const std::string& pipeline,
   auto& mgr = db::Manager::self();
   QObject* db = nullptr;
 
-  if (type == PipelineType::input && mgr.siePluginsDB.contains(key))
+  if (type == PipelineType::input && mgr.siePluginsDB.contains(key)) {
     db = mgr.siePluginsDB.value(key).value<KConfigSkeleton*>();
-  else if (type == PipelineType::output && mgr.soePluginsDB.contains(key))
+  } else if (type == PipelineType::output && mgr.soePluginsDB.contains(key)) {
     db = mgr.soePluginsDB.value(key).value<KConfigSkeleton*>();
+  }
 
   if (!db) {
     util::warning(std::format("LocalServer: Plugin DB not found: {}", key.toStdString()));
@@ -225,6 +227,7 @@ void LocalServer::set_property(const std::string& pipeline,
   }
 
   QVariant current = db->property(property.c_str());
+
   if (!current.isValid()) {
     util::warning(std::format("LocalServer: Property '{}' invalid on {}", property, key.toStdString()));
     return;
@@ -233,25 +236,31 @@ void LocalServer::set_property(const std::string& pipeline,
   util::debug(std::format("LocalServer: Setting property '{}' to '{}' on {}", property, value, key.toStdString()));
 
   switch (current.typeId()) {
-    case QMetaType::Bool:
+    case QMetaType::Bool: {
       db->setProperty(property.c_str(), (value == "true" || value == "1" || value == "on"));
       break;
+    }
     case QMetaType::Int:
     case QMetaType::UInt:
-    case QMetaType::LongLong:
+    case QMetaType::LongLong: {
       try {
         db->setProperty(property.c_str(), std::stoi(value));
       } catch (...) {
         util::warning(std::format("LocalServer: Invalid integer value for {}", property));
       }
+
       break;
+    }
     case QMetaType::Double:
     case QMetaType::Float: {
       double v = 0.0;
-      if (util::str_to_num(value, v))
+
+      if (util::str_to_num(value, v)) {
         db->setProperty(property.c_str(), v);
-      else
+      } else {
         util::warning(std::format("LocalServer: Invalid float value for {}", property));
+      }
+
       break;
     }
     case QMetaType::QString:
@@ -272,17 +281,20 @@ auto LocalServer::get_property(const std::string& pipeline,
   auto& mgr = db::Manager::self();
   QObject* db = nullptr;
 
-  if (type == PipelineType::input && mgr.siePluginsDB.contains(key))
+  if (type == PipelineType::input && mgr.siePluginsDB.contains(key)) {
     db = mgr.siePluginsDB.value(key).value<KConfigSkeleton*>();
-  else if (type == PipelineType::output && mgr.soePluginsDB.contains(key))
+  } else if (type == PipelineType::output && mgr.soePluginsDB.contains(key)) {
     db = mgr.soePluginsDB.value(key).value<KConfigSkeleton*>();
+  }
 
-  if (!db)
+  if (!db) {
     return "error_plugin_not_found";
+  }
 
   QVariant val = db->property(property.c_str());
-  if (!val.isValid())
+  if (!val.isValid()) {
     return "error_property_not_found";
+  }
 
   return val.toString().toStdString();
 }
