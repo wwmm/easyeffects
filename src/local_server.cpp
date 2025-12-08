@@ -171,8 +171,10 @@ void LocalServer::onReadyRead() {
 void LocalServer::onDisconnected() {
   util::debug("Client disconnected");
 
-  clientSocket->deleteLater();
-  clientSocket = nullptr;
+  if (clientSocket) {
+    clientSocket->deleteLater();
+    clientSocket = nullptr;
+  }
 }
 
 void LocalServer::set_property(const std::string& pipeline,
