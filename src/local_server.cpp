@@ -62,6 +62,10 @@ void LocalServer::startServer() {
 }
 
 void LocalServer::onReadyRead() {
+  if (!clientSocket) {
+    return;
+  }
+
   while (!clientSocket->atEnd()) {
     char buf[1024];
 
