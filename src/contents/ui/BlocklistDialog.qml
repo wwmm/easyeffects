@@ -12,7 +12,7 @@ Kirigami.Dialog {
     required property var streamDB
 
     title: i18n("Excluded Applications") // qmllint disable
-    implicitWidth: Math.min(Kirigami.Units.gridUnit * 30, appWindow.width * 0.8)// qmllint disable
+    implicitWidth: Math.min(Kirigami.Units.gridUnit * 30, appWindow.width * 0.8) // qmllint disable
     implicitHeight: Math.min(Kirigami.Units.gridUnit * 40, Math.round(Controls.ApplicationWindow.window.height * 0.8))
     bottomPadding: 1
     anchors.centerIn: parent

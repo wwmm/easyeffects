@@ -91,8 +91,8 @@ KirigamiSettings.ConfigurationView {
 
                     label: i18n("Show the tray icon") // qmllint disable
                     maximumLineCount: -1
-                    isChecked: DbMain.showTrayIcon && canUseSysTray// qmllint disable
-                    enabled: canUseSysTray// qmllint disable
+                    isChecked: DbMain.showTrayIcon && canUseSysTray // qmllint disable
+                    enabled: canUseSysTray // qmllint disable
                     onCheckedChanged: {
                         if (isChecked !== DbMain.showTrayIcon)
                             DbMain.showTrayIcon = isChecked;
@@ -343,7 +343,7 @@ KirigamiSettings.ConfigurationView {
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
                     currentIndex: DbSpectrum.spectrumShape
                     editable: false
-                    model: [i18n("Bars"), i18n("Lines"), i18n("Dots"), i18n("Area")]// qmllint disable
+                    model: [i18n("Bars"), i18n("Lines"), i18n("Dots"), i18n("Area")] // qmllint disable
                     onActivated: idx => {
                         if (idx !== DbSpectrum.spectrumShape)
                             DbSpectrum.spectrumShape = idx;
@@ -562,7 +562,7 @@ KirigamiSettings.ConfigurationView {
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
                     currentIndex: DbGraph.colorScheme
                     editable: false
-                    model: [i18n("Automatic"), i18n("Light"), i18n("Dark")]// qmllint disable
+                    model: [i18n("Automatic"), i18n("Light"), i18n("Dark")] // qmllint disable
                     enabled: !graphFormCard.useUserTheme
                     onActivated: idx => {
                         if (idx !== DbGraph.colorScheme)
@@ -577,7 +577,7 @@ KirigamiSettings.ConfigurationView {
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
                     currentIndex: DbGraph.colorTheme
                     editable: false
-                    model: [i18n("Green"), i18n("Green neon"), i18n("Mix"), i18n("Orange"), i18n("Yellow"), i18n("Blue"), i18n("Purple"), i18n("Grey"), i18n("User")]// qmllint disable
+                    model: [i18n("Green"), i18n("Green neon"), i18n("Mix"), i18n("Orange"), i18n("Yellow"), i18n("Blue"), i18n("Purple"), i18n("Grey"), i18n("User")] // qmllint disable
                     onActivated: idx => {
                         if (idx !== DbGraph.colorTheme)
                             DbGraph.colorTheme = idx;

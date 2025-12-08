@@ -118,7 +118,7 @@ Kirigami.ScrollablePage {
         standardButtons: Kirigami.Dialog.NoButton
         focus: true
         modal: true
-        implicitWidth: Math.min(Kirigami.Units.gridUnit * 30, appWindow.width * 0.8)// qmllint disable
+        implicitWidth: Math.min(Kirigami.Units.gridUnit * 30, appWindow.width * 0.8) // qmllint disable
         bottomPadding: 1
         anchors.centerIn: parent
 
@@ -417,7 +417,7 @@ Kirigami.ScrollablePage {
                         id: irFormat
 
                         Layout.alignment: Qt.AlignHCenter
-                        text: (convolverPage.pluginBackend ? convolverPage.pluginBackend.kernelIsSofa : false) ? i18nc("The sofa audio file format", "SOFA") : i18nc("The wav audio format", "WAV")
+                        text: (convolverPage.pluginBackend ? convolverPage.pluginBackend.kernelIsSofa : false) ? Units.sofa : Units.wav
                         enabled: false
                     }
                 }
@@ -523,7 +523,7 @@ Kirigami.ScrollablePage {
                     }
                 },
                 Kirigami.Action {
-                    text: i18nc("The sofa audio file format", "SOFA")
+                    text: Units.sofa
                     icon.name: "waveform-symbolic"
                     onTriggered: {
                         sofaDialog.open();

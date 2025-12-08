@@ -76,8 +76,8 @@ Kirigami.Page {
                     anchors.centerIn: parent
                     width: parent.width - (Kirigami.Units.largeSpacing * 4)
                     visible: streamsListView.count === 0
-                    text: i18n("Empty List")// qmllint disable
-                    explanation: i18n("No audio application available")// qmllint disable
+                    text: i18n("Empty List") // qmllint disable
+                    explanation: i18n("No audio application available") // qmllint disable
                     icon.name: "folder-music-symbolic"
                 }
 
@@ -92,8 +92,8 @@ Kirigami.Page {
         Kirigami.ScrollablePage {
             Kirigami.PlaceholderMessage {
                 anchors.centerIn: parent
-                text: i18n("No Effects")// qmllint disable
-                explanation: i18n("Audio stream not modified")// qmllint disable
+                text: i18n("No Effects") // qmllint disable
+                explanation: i18n("Audio stream not modified") // qmllint disable
                 icon.name: "folder-music-symbolic"
             }
         }
@@ -406,7 +406,7 @@ Kirigami.Page {
 
                         icon.name: pageStreamsEffects.pageType === 0 ? "source-playlist-symbolic" : "audio-input-microphone-symbolic"
                         compact: DbMain.collapsePluginsList
-                        text: pageStreamsEffects.pageType === 0 ? i18n("Players") : i18n("Input device")// qmllint disable
+                        text: pageStreamsEffects.pageType === 0 ? i18n("Players") : i18n("Input device") // qmllint disable
                     }
 
                     footer: EeListSectionHeader {
@@ -415,7 +415,7 @@ Kirigami.Page {
 
                         icon.name: pageStreamsEffects.pageType === 0 ? "audio-speakers-symbolic" : "source-playlist-symbolic"
                         compact: DbMain.collapsePluginsList
-                        text: pageStreamsEffects.pageType === 0 ? i18n("Output device") : i18n("Recorders")// qmllint disable
+                        text: pageStreamsEffects.pageType === 0 ? i18n("Output device") : i18n("Recorders") // qmllint disable
                     }
                 }
             }
@@ -695,7 +695,7 @@ Kirigami.Page {
 
                 Controls.ToolButton {
                     icon.name: pageStreamsEffects.pageType === 0 ? "multimedia-player-symbolic" : "media-record-symbolic"
-                    text: pageStreamsEffects.pageType === 0 ? i18n("Players") : i18n("Recorders")// qmllint disable
+                    text: pageStreamsEffects.pageType === 0 ? i18n("Players") : i18n("Recorders") // qmllint disable
                     checkable: true
                     checked: pageStreamsEffects.streamDB.visiblePage === 0
                     display: segmentedButton.display
@@ -726,7 +726,7 @@ Kirigami.Page {
                 overflowIconName: "im-ban-kick-user-symbolic"
                 actions: [
                     Kirigami.Action {
-                        tooltip: i18n("Input monitoring")// qmllint disable
+                        tooltip: i18n("Input monitoring") // qmllint disable
                         icon.name: "audio-input-microphone-symbolic"
                         displayHint: Kirigami.DisplayHint.KeepVisible
                         visible: pageStreamsEffects.pageType === 1 && pageStreamsEffects.streamDB.visiblePage === 1
@@ -739,7 +739,7 @@ Kirigami.Page {
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Excluded apps")// qmllint disable
+                        text: i18n("Excluded apps") // qmllint disable
                         icon.name: "im-ban-kick-user-symbolic"
                         displayHint: Kirigami.DisplayHint.KeepVisible
                         visible: pageStreamsEffects.streamDB.visiblePage === 0

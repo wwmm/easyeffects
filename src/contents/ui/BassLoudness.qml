@@ -1,7 +1,7 @@
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
-import ee.tags.plugin.name as TagsPluginName// qmllint disable
+import ee.tags.plugin.name as TagsPluginName // qmllint disable
 import org.kde.kirigami as Kirigami
 
 Kirigami.ScrollablePage {
@@ -36,7 +36,7 @@ Kirigami.ScrollablePage {
                 id: cardControls
 
                 header: Kirigami.Heading {
-                    text: i18n("Controls")// qmllint disable
+                    text: i18n("Controls") // qmllint disable
                     level: 2
                 }
 
@@ -44,7 +44,7 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: loudness
 
-                        label: i18n("Loudness")// qmllint disable
+                        label: i18n("Loudness") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
                         from: bassLoudnessPage.pluginDB.getMinValue("loudness")
                         to: bassLoudnessPage.pluginDB.getMaxValue("loudness")
@@ -60,7 +60,7 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: output
 
-                        label: i18n("Output")// qmllint disable
+                        label: i18n("Output") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
                         from: bassLoudnessPage.pluginDB.getMinValue("output")
                         to: bassLoudnessPage.pluginDB.getMaxValue("output")
@@ -76,7 +76,7 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: link
 
-                        label: i18n("Link")// qmllint disable
+                        label: i18n("Link") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
                         from: bassLoudnessPage.pluginDB.getMinValue("link")
                         to: bassLoudnessPage.pluginDB.getMaxValue("link")
@@ -101,7 +101,7 @@ Kirigami.ScrollablePage {
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using %1", `<strong>${TagsPluginName.Package.mda}</strong>`)// qmllint disable
+            text: i18n("Using %1", `<strong>${TagsPluginName.Package.mda}</strong>`) // qmllint disable
             textFormat: Text.RichText
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter

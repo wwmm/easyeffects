@@ -1,7 +1,7 @@
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
-import ee.tags.plugin.name as TagsPluginName// qmllint disable
+import ee.tags.plugin.name as TagsPluginName // qmllint disable
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
@@ -96,7 +96,7 @@ Kirigami.ScrollablePage {
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: loudnessPage.pluginDB.iirApproximation
                         editable: false
-                        model: [i18n("Fastest"), i18n("Low"), i18n("Normal"), i18n("High"), i18n("Best")]// qmllint disable
+                        model: [i18n("Fastest"), i18n("Low"), i18n("Normal"), i18n("High"), i18n("Best")] // qmllint disable
                         visible: loudnessPage.pluginDB.mode == 1 ? true : false
                         onActivated: idx => {
                             loudnessPage.pluginDB.iirApproximation = idx;

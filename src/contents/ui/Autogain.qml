@@ -47,17 +47,17 @@ Kirigami.ScrollablePage {
 
                 implicitWidth: cardLayout.maximumColumnWidth
 
-                title: i18n("Controls")// qmllint disable
+                title: i18n("Controls") // qmllint disable
 
                 FormCard.FormComboBoxDelegate {
                     id: reference
 
-                    text: i18n("Reference")// qmllint disable
+                    text: i18n("Reference") // qmllint disable
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
                     verticalPadding: 0
                     currentIndex: autogainPage.pluginDB.reference
                     editable: false
-                    model: [i18n("Momentary"), i18n("Short-term"), i18n("Integrated"), i18n("Geometric mean (MSI)"), i18n("Geometric mean (MS)"), i18n("Geometric mean (MI)"), i18n("Geometric mean (SI)")]// qmllint disable
+                    model: [i18n("Momentary"), i18n("Short-term"), i18n("Integrated"), i18n("Geometric mean (MSI)"), i18n("Geometric mean (MS)"), i18n("Geometric mean (MI)"), i18n("Geometric mean (SI)")] // qmllint disable
                     onActivated: idx => {
                         autogainPage.pluginDB.reference = idx;
                     }
@@ -66,7 +66,7 @@ Kirigami.ScrollablePage {
                 EeSpinBox {
                     id: target
 
-                    label: i18n("Target")// qmllint disable
+                    label: i18n("Target") // qmllint disable
                     spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
                     from: autogainPage.pluginDB.getMinValue("target")
                     to: autogainPage.pluginDB.getMaxValue("target")
@@ -82,7 +82,7 @@ Kirigami.ScrollablePage {
                 EeSpinBox {
                     id: silenceThreshold
 
-                    label: i18n("Silence")// qmllint disable
+                    label: i18n("Silence") // qmllint disable
                     spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
                     from: autogainPage.pluginDB.getMinValue("silenceThreshold")
                     to: autogainPage.pluginDB.getMaxValue("silenceThreshold")
@@ -98,7 +98,7 @@ Kirigami.ScrollablePage {
                 EeSpinBox {
                     id: maximumHistory
 
-                    label: i18n("Maximum history")// qmllint disable
+                    label: i18n("Maximum history") // qmllint disable
                     spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
                     from: autogainPage.pluginDB.getMinValue("maximumHistory")
                     to: autogainPage.pluginDB.getMaxValue("maximumHistory")
@@ -121,12 +121,12 @@ Kirigami.ScrollablePage {
 
                 implicitWidth: cardLayout.maximumColumnWidth
 
-                title: i18n("Loudness")// qmllint disable
+                title: i18n("Loudness") // qmllint disable
 
                 EeProgressBar {
                     id: momentary
 
-                    label: i18n("Momentary")// qmllint disable
+                    label: i18n("Momentary") // qmllint disable
                     unit: Units.lufs
                     from: Common.minimumDecibelLevel
                     to: 10
@@ -136,7 +136,7 @@ Kirigami.ScrollablePage {
                 EeProgressBar {
                     id: shortterm
 
-                    label: i18n("Short-term")// qmllint disable
+                    label: i18n("Short-term") // qmllint disable
                     unit: Units.lufs
                     from: Common.minimumDecibelLevel
                     to: 10
@@ -146,7 +146,7 @@ Kirigami.ScrollablePage {
                 EeProgressBar {
                     id: integrated
 
-                    label: i18n("Integrated")// qmllint disable
+                    label: i18n("Integrated") // qmllint disable
                     unit: Units.lufs
                     from: Common.minimumDecibelLevel
                     to: 10
@@ -156,7 +156,7 @@ Kirigami.ScrollablePage {
                 EeProgressBar {
                     id: relative
 
-                    label: i18n("Relative")// qmllint disable
+                    label: i18n("Relative") // qmllint disable
                     unit: Units.lufs
                     from: Common.minimumDecibelLevel
                     to: 10
@@ -166,7 +166,7 @@ Kirigami.ScrollablePage {
                 EeProgressBar {
                     id: range
 
-                    label: i18n("Range")// qmllint disable
+                    label: i18n("Range") // qmllint disable
                     unit: Units.lu
                     from: 0
                     to: 50
@@ -176,7 +176,7 @@ Kirigami.ScrollablePage {
                 EeProgressBar {
                     id: loudness
 
-                    label: i18n("Loudness")// qmllint disable
+                    label: i18n("Loudness") // qmllint disable
                     unit: Units.lufs
                     from: Common.minimumDecibelLevel
                     to: 10
@@ -186,7 +186,7 @@ Kirigami.ScrollablePage {
                 EeProgressBar {
                     id: outputGain
 
-                    label: i18n("Output gain")// qmllint disable
+                    label: i18n("Output gain") // qmllint disable
                     unit: Units.dB
                     from: Common.minimumDecibelLevel
                     to: 20
@@ -209,7 +209,7 @@ Kirigami.ScrollablePage {
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using %1", `<strong>${TagsPluginName.Package.ebur128}</strong>`)// qmllint disable
+            text: i18n("Using %1", `<strong>${TagsPluginName.Package.ebur128}</strong>`) // qmllint disable
             textFormat: Text.RichText
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter
@@ -226,15 +226,15 @@ Kirigami.ScrollablePage {
             flat: true
             actions: [
                 Kirigami.Action {
-                    text: i18n("Reset history")// qmllint disable
+                    text: i18n("Reset history") // qmllint disable
                     icon.name: "edit-clear-history-symbolic"
                     onTriggered: {
                         autogainPage.pluginBackend.resetHistory();
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Force silence")// qmllint disable
-                    tooltip: i18n("Force silence when the level is below the silence threshold")// qmllint disable
+                    text: i18n("Force silence") // qmllint disable
+                    tooltip: i18n("Force silence when the level is below the silence threshold") // qmllint disable
                     icon.name: "audio-volume-muted-symbolic"
                     checkable: true
                     checked: autogainPage.pluginDB.forceSilence
@@ -246,7 +246,7 @@ Kirigami.ScrollablePage {
                 },
                 Kirigami.Action {
                     displayHint: Kirigami.DisplayHint.KeepVisible
-                    text: i18n("Reset settings")// qmllint disable
+                    text: i18n("Reset settings") // qmllint disable
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {
                         autogainPage.pluginBackend.reset();

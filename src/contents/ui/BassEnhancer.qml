@@ -34,7 +34,7 @@ Kirigami.ScrollablePage {
 
         Controls.Label {
             Layout.alignment: Qt.AlignHCenter
-            text: i18n("Blend harmonics")// qmllint disable
+            text: i18n("Blend harmonics") // qmllint disable
         }
 
         RowLayout {
@@ -43,7 +43,7 @@ Kirigami.ScrollablePage {
 
             Controls.Label {
                 Layout.alignment: Qt.AlignLeft
-                text: i18n("3rd")// qmllint disable
+                text: i18n("3rd") // qmllint disable
             }
 
             Controls.Slider {
@@ -65,7 +65,7 @@ Kirigami.ScrollablePage {
 
             Controls.Label {
                 Layout.alignment: Qt.AlignRight
-                text: i18n("2nd")// qmllint disable
+                text: i18n("2nd") // qmllint disable
             }
         }
 
@@ -83,12 +83,12 @@ Kirigami.ScrollablePage {
             EeCard {
                 id: cardControls
 
-                title: i18n("Controls")// qmllint disable
+                title: i18n("Controls") // qmllint disable
 
                 EeSpinBox {
                     id: amount
 
-                    label: i18n("Amount")// qmllint disable
+                    label: i18n("Amount") // qmllint disable
                     spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
                     from: bassEnchancerPage.pluginDB.getMinValue("amount")
                     to: bassEnchancerPage.pluginDB.getMaxValue("amount")
@@ -104,7 +104,7 @@ Kirigami.ScrollablePage {
                 EeSpinBox {
                     id: harmonics
 
-                    label: i18n("Harmonics")// qmllint disable
+                    label: i18n("Harmonics") // qmllint disable
                     spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
                     from: bassEnchancerPage.pluginDB.getMinValue("harmonics")
                     to: bassEnchancerPage.pluginDB.getMaxValue("harmonics")
@@ -119,7 +119,7 @@ Kirigami.ScrollablePage {
                 EeSpinBox {
                     id: scope
 
-                    label: i18n("Scope")// qmllint disable
+                    label: i18n("Scope") // qmllint disable
                     spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
                     from: bassEnchancerPage.pluginDB.getMinValue("scope")
                     to: bassEnchancerPage.pluginDB.getMaxValue("scope")
@@ -135,7 +135,7 @@ Kirigami.ScrollablePage {
                 EeSwitch {
                     id: floorActive
 
-                    label: i18n("Floor active")// qmllint disable
+                    label: i18n("Floor active") // qmllint disable
                     isChecked: bassEnchancerPage.pluginDB.floorActive
                     onCheckedChanged: {
                         if (isChecked !== bassEnchancerPage.pluginDB.floorActive)
@@ -146,7 +146,7 @@ Kirigami.ScrollablePage {
                 EeSpinBox {
                     id: floor
 
-                    label: i18n("Floor")// qmllint disable
+                    label: i18n("Floor") // qmllint disable
                     spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
                     from: bassEnchancerPage.pluginDB.getMinValue("floor")
                     to: bassEnchancerPage.pluginDB.getMaxValue("floor")
@@ -164,7 +164,7 @@ Kirigami.ScrollablePage {
                     id: harmonicsLevel
                     Layout.topMargin: Kirigami.Units.largeSpacing
 
-                    label: i18n("Harmonics")// qmllint disable
+                    label: i18n("Harmonics") // qmllint disable
                     from: Common.minimumDecibelLevel
                     to: 10
                     decimals: 0
@@ -181,7 +181,7 @@ Kirigami.ScrollablePage {
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using %1", `<strong>${TagsPluginName.Package.calf}</strong>`)// qmllint disable
+            text: i18n("Using %1", `<strong>${TagsPluginName.Package.calf}</strong>`) // qmllint disable
             textFormat: Text.RichText
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter
@@ -199,7 +199,7 @@ Kirigami.ScrollablePage {
             actions: [
                 Kirigami.Action {
                     displayHint: Kirigami.DisplayHint.KeepVisible
-                    text: i18n("Show native window")// qmllint disable
+                    text: i18n("Show native window") // qmllint disable
                     icon.name: "window-duplicate-symbolic"
                     enabled: DbMain.showNativePluginUi
                     checkable: true
@@ -212,7 +212,7 @@ Kirigami.ScrollablePage {
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Listen")// qmllint disable
+                    text: i18n("Listen") // qmllint disable
                     icon.name: "audio-headset-symbolic"
                     checkable: true
                     checked: bassEnchancerPage.pluginDB.listen
@@ -223,7 +223,7 @@ Kirigami.ScrollablePage {
                 },
                 Kirigami.Action {
                     displayHint: Kirigami.DisplayHint.KeepVisible
-                    text: i18n("Reset")// qmllint disable
+                    text: i18n("Reset") // qmllint disable
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {
                         bassEnchancerPage.pluginBackend.reset();

@@ -26,7 +26,7 @@ Kirigami.Dialog {
         return "";
     }
 
-    implicitWidth: Math.min(Kirigami.Units.gridUnit * 30, appWindow.width * 0.8)// qmllint disable
+    implicitWidth: Math.min(Kirigami.Units.gridUnit * 30, appWindow.width * 0.8) // qmllint disable
     implicitHeight: Math.min(Kirigami.Units.gridUnit * 40, Math.round(Controls.ApplicationWindow.window.height * 0.8))
     bottomPadding: 1
     anchors.centerIn: parent
@@ -132,7 +132,7 @@ Kirigami.Dialog {
                 visible: DbMain.visiblePresetSheetPage !== 2
                 text: {
                     if (Common.isEmpty(control.lastLoadedPresetName))
-                        return i18n("No preset loaded");// qmllint disable
+                        return i18n("No preset loaded"); // qmllint disable
 
                     const presetType = Common.isEmpty(lastLoadedCommunityPackage) ? i18n("Local") : i18n("Community"); // qmllint disable
 

@@ -3,7 +3,7 @@ import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import "Common.js" as Common
 import ee.pipewire as PW
-import ee.tags.plugin.name as TagsPluginName// qmllint disable
+import ee.tags.plugin.name as TagsPluginName // qmllint disable
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
@@ -55,7 +55,7 @@ Kirigami.ScrollablePage {
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: limiterPage.pluginDB.mode
                         editable: false
-                        model: [i18n("Herm thin"), i18n("Herm wide"), i18n("Herm tail"), i18n("Herm duck"), i18n("Exp thin"), i18n("Exp wide"), i18n("Exp tail"), i18n("Exp duck"), i18n("Line thin"), i18n("Line wide"), i18n("Line tail"), i18n("Line duck")]// qmllint disable
+                        model: [i18n("Herm thin"), i18n("Herm wide"), i18n("Herm tail"), i18n("Herm duck"), i18n("Exp thin"), i18n("Exp wide"), i18n("Exp tail"), i18n("Exp duck"), i18n("Line thin"), i18n("Line wide"), i18n("Line tail"), i18n("Line duck")] // qmllint disable
                         onActivated: idx => {
                             limiterPage.pluginDB.mode = idx;
                         }
@@ -69,7 +69,7 @@ Kirigami.ScrollablePage {
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: limiterPage.pluginDB.oversampling
                         editable: false
-                        model: [i18n("None"), i18n("Half x2/16 bits"), i18n("Half x2/24 bits"), i18n("Half x3/16 bits"), i18n("Half x3/24 bits"), i18n("Half x4/16 bits"), i18n("Half x4/24 bits"), i18n("Half x6/16 bits"), i18n("Half x6/24 bits"), i18n("Half x8/16 bits"), i18n("Half x8/24 bits"), i18n("Full x2/16 bits"), i18n("Full x2/24 bits"), i18n("Full x3/16 bits"), i18n("Full x3/24 bits"), i18n("Full x4/16 bits"), i18n("Full x4/24 bits"), i18n("Full x6/16 bits"), i18n("Full x6/24 bits"), i18n("Full x8/16 bits"), i18n("Full x8/24 bits"), i18n("True peak/16 bits"), i18n("True peak/24 bits")]// qmllint disable
+                        model: [i18n("None"), i18n("Half x2/16 bits"), i18n("Half x2/24 bits"), i18n("Half x3/16 bits"), i18n("Half x3/24 bits"), i18n("Half x4/16 bits"), i18n("Half x4/24 bits"), i18n("Half x6/16 bits"), i18n("Half x6/24 bits"), i18n("Half x8/16 bits"), i18n("Half x8/24 bits"), i18n("Full x2/16 bits"), i18n("Full x2/24 bits"), i18n("Full x3/16 bits"), i18n("Full x3/24 bits"), i18n("Full x4/16 bits"), i18n("Full x4/24 bits"), i18n("Full x6/16 bits"), i18n("Full x6/24 bits"), i18n("Full x8/16 bits"), i18n("Full x8/24 bits"), i18n("True peak/16 bits"), i18n("True peak/24 bits")] // qmllint disable
                         onActivated: idx => {
                             limiterPage.pluginDB.oversampling = idx;
                         }
@@ -196,7 +196,7 @@ Kirigami.ScrollablePage {
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
                             currentIndex: limiterPage.pluginDB.sidechainType
                             editable: false
-                            model: [i18n("Internal"), i18n("External"), i18n("Link")]// qmllint disable
+                            model: [i18n("Internal"), i18n("External"), i18n("Link")] // qmllint disable
                             onActivated: idx => {
                                 limiterPage.pluginDB.sidechainType = idx;
                             }

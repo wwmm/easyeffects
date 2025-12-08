@@ -103,7 +103,7 @@ Kirigami.ScrollablePage {
             flat: true
             actions: [
                 Kirigami.Action {
-                    text: i18n("Adaptive intensity")// qmllint disable
+                    text: i18n("Adaptive intensity") // qmllint disable
                     icon.name: "adjustlevels-symbolic"
                     checkable: true
                     checked: crystalizerPage.pluginDB.adaptiveIntensity

@@ -279,13 +279,13 @@ Kirigami.ApplicationWindow {
                 id: instantiatorInputPresets
 
                 delegate: MenuItem {
-                    text: modelData// qmllint disable
+                    text: modelData // qmllint disable
                     checkable: true
                     checked: DbMain.lastLoadedInputPreset === modelData
                     onTriggered: {
-                        Presets.Manager.loadLocalPresetFile(0, modelData);// qmllint disable
+                        Presets.Manager.loadLocalPresetFile(0, modelData); // qmllint disable
 
-                        tray.showMessage(i18n("Preset Loaded"), modelData, SystemTrayIcon.Information, 3000);// qmllint disable
+                        tray.showMessage(i18n("Preset Loaded"), modelData, SystemTrayIcon.Information, 3000); // qmllint disable
                     }
                 }
 
@@ -297,13 +297,13 @@ Kirigami.ApplicationWindow {
                 id: instantiatorOutputPresets
 
                 delegate: MenuItem {
-                    text: modelData// qmllint disable
+                    text: modelData // qmllint disable
                     checkable: true
                     checked: DbMain.lastLoadedOutputPreset === modelData
                     onTriggered: {
-                        Presets.Manager.loadLocalPresetFile(1, modelData);// qmllint disable
+                        Presets.Manager.loadLocalPresetFile(1, modelData); // qmllint disable
 
-                        tray.showMessage(i18n("Preset Loaded"), modelData, SystemTrayIcon.Information, 3000);// qmllint disable
+                        tray.showMessage(i18n("Preset Loaded"), modelData, SystemTrayIcon.Information, 3000); // qmllint disable
                     }
                 }
 

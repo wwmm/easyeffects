@@ -29,6 +29,7 @@ Kirigami.Dialog {
             decimals: 0
             stepSize: 1
             unit: Units.degrees
+            separateUnit: false
             onValueModified: v => {
                 sofaDialog.pluginDB.targetSofaAzimuth = v;
             }
@@ -44,6 +45,7 @@ Kirigami.Dialog {
             decimals: 0
             stepSize: 1
             unit: Units.degrees
+            separateUnit: false
             onValueModified: v => {
                 sofaDialog.pluginDB.targetSofaElevation = v;
             }
@@ -129,13 +131,13 @@ Kirigami.Dialog {
 
             Controls.Label {
                 Layout.alignment: Qt.AlignHCenter
-                text: Number(sofaDialog.pluginBackend ? sofaDialog.pluginBackend.sofaAzimuth : 0).toLocaleString(Qt.locale(), 'f', 0) + ` ${Units.degrees}`
+                text: Number(sofaDialog.pluginBackend ? sofaDialog.pluginBackend.sofaAzimuth : 0).toLocaleString(Qt.locale(), 'f', 0) + Units.degrees
                 enabled: false
             }
 
             Controls.Label {
                 Layout.alignment: Qt.AlignHCenter
-                text: Number(sofaDialog.pluginBackend ? sofaDialog.pluginBackend.sofaElevation : 0).toLocaleString(Qt.locale(), 'f', 0) + ` ${Units.degrees}`
+                text: Number(sofaDialog.pluginBackend ? sofaDialog.pluginBackend.sofaElevation : 0).toLocaleString(Qt.locale(), 'f', 0) + Units.degrees
                 enabled: false
             }
 

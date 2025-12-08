@@ -298,7 +298,7 @@ Kirigami.ScrollablePage {
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: compressorPage.pluginDB.sidechainSource
                         editable: false
-                        model: [i18n("Middle"), i18n("Side"), i18n("Left"), i18n("Right"), i18n("Min"), i18n("Max")]// qmllint disable
+                        model: [i18n("Middle"), i18n("Side"), i18n("Left"), i18n("Right"), i18n("Min"), i18n("Max")] // qmllint disable
                         visible: !compressorPage.pluginDB.stereoSplit
                         onActivated: idx => {
                             compressorPage.pluginDB.sidechainSource = idx;
@@ -313,7 +313,7 @@ Kirigami.ScrollablePage {
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: compressorPage.pluginDB.stereoSplitSource
                         editable: false
-                        model: [i18n("Left/Right"), i18n("Right/Left"), i18n("Mid/Side"), i18n("Side/Mid"), i18n("Min"), i18n("Max")]// qmllint disable
+                        model: [i18n("Left/Right"), i18n("Right/Left"), i18n("Mid/Side"), i18n("Side/Mid"), i18n("Min"), i18n("Max")] // qmllint disable
                         visible: compressorPage.pluginDB.stereoSplit
                         onActivated: idx => {
                             compressorPage.pluginDB.stereoSplitSource = idx;
@@ -409,7 +409,7 @@ Kirigami.ScrollablePage {
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: compressorPage.pluginDB.lpfMode
                         editable: false
-                        model: [i18n("Off"), `12 ${Units.dBoct}`, `24 ${Units.dBoct}`, `36 ${Units.dBoct}`]// qmllint disable
+                        model: [i18n("Off"), `12 ${Units.dBoct}`, `24 ${Units.dBoct}`, `36 ${Units.dBoct}`] // qmllint disable
                         onActivated: idx => {
                             compressorPage.pluginDB.lpfMode = idx;
                         }
