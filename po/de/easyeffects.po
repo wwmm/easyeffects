@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-12-07 16:47-0300\n"
-"PO-Revision-Date: 2025-11-14 15:51+0000\n"
-"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
+"PO-Revision-Date: 2025-12-08 21:58+0000\n"
+"Last-Translator: Henning <me@unbekannt3.eu>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/easyeffects/main/"
 "de/>\n"
 "Language: de\n"
@@ -25,6 +25,8 @@ msgid ""
 "Please allow \"Run in Background\" permission for Easy Effects in your "
 "system app settings."
 msgstr ""
+"Autostart kann nicht aktiviert werden. Du musst Easy Effects in deinen "
+"Systemeinstellungen das \"Ausführen im Hintergrund\" erlauben."
 
 #: src/command_line_parser.cpp:42
 msgid "Quit Easy Effects. Useful when running in service mode."
@@ -52,9 +54,8 @@ msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Lade ein Preset. Beispiel: easyeffects -l music"
 
 #: src/command_line_parser.cpp:46
-#, fuzzy
 msgid "preset-name"
-msgstr "Neuer Eingabe-Presetname"
+msgstr "Vorlagenname"
 
 #: src/command_line_parser.cpp:47
 msgid "Show available presets."
@@ -76,11 +77,11 @@ msgstr "Verfügbare Voreinstellungen anzeigen."
 
 #: src/command_line_parser.cpp:50
 msgid "Deprecated. Use --service-mode instead."
-msgstr ""
+msgstr "Veraltet. Benutze --service-mode stattdessen."
 
 #: src/command_line_parser.cpp:51
 msgid "Start the application with service mode turned on."
-msgstr ""
+msgstr "Startet das Programm mit aktiviertem service-mode."
 
 #: src/command_line_parser.cpp:52
 msgid "Enable debug messages."
@@ -88,7 +89,7 @@ msgstr "Debug-Meldungen aktivieren."
 
 #: src/command_line_parser.cpp:126
 msgid "Must specify preset type: input/output."
-msgstr ""
+msgstr "Vorlagentyp muss ausgewählt sein: Eingabe/Ausgabe."
 
 #: src/command_line_parser.cpp:166
 #, fuzzy
@@ -96,9 +97,8 @@ msgid "Output presets"
 msgstr "Ausgabe-Voreinstellungen"
 
 #: src/command_line_parser.cpp:168
-#, fuzzy
 msgid "No output presets."
-msgstr "Ausgabe-Voreinstellungen"
+msgstr "Keine Ausgabe-Voreinstellungen."
 
 #: src/command_line_parser.cpp:179
 #, fuzzy
@@ -106,20 +106,18 @@ msgid "Input presets"
 msgstr "Eingabe-Voreinstellungen"
 
 #: src/command_line_parser.cpp:181
-#, fuzzy
 msgid "No input presets."
-msgstr "Eingabe-Voreinstellungen"
+msgstr "Keine Eingabe-Voreinstellungen."
 
 #: src/command_line_parser.cpp:211
 msgid "Specified preset does not exist."
-msgstr ""
+msgstr "Ausgewählte Vorlage existiert nicht."
 
 #: src/command_line_parser.cpp:229
 msgid "Provided an invalid bypass state."
 msgstr ""
 
 #: src/contents/ui/AboutPage.qml:4
-#, fuzzy
 msgctxt "@action:button"
 msgid "About"
 msgstr "Über"
@@ -144,7 +142,6 @@ msgstr "Momentan"
 
 #: src/contents/ui/Autogain.qml:60 src/contents/ui/Autogain.qml:139
 #: src/contents/ui/LevelMeter.qml:149
-#, fuzzy
 msgid "Short-term"
 msgstr "Kurzzeitig"
 
@@ -154,22 +151,18 @@ msgid "Integrated"
 msgstr "Integriert"
 
 #: src/contents/ui/Autogain.qml:60
-#, fuzzy
 msgid "Geometric mean (MSI)"
 msgstr "Geometrisches Mittel (MSI)"
 
 #: src/contents/ui/Autogain.qml:60
-#, fuzzy
 msgid "Geometric mean (MS)"
 msgstr "Geometrisches Mittel (MS)"
 
 #: src/contents/ui/Autogain.qml:60
-#, fuzzy
 msgid "Geometric mean (MI)"
 msgstr "Geometrisches Mittel (MI)"
 
 #: src/contents/ui/Autogain.qml:60
-#, fuzzy
 msgid "Geometric mean (SI)"
 msgstr "Geometrisches Mittel (SI)"
 
@@ -182,7 +175,6 @@ msgid "Silence"
 msgstr "Ruhe"
 
 #: src/contents/ui/Autogain.qml:101
-#, fuzzy
 msgid "Maximum history"
 msgstr "Gesamter Verlauf"
 
@@ -201,7 +193,6 @@ msgid "Range"
 msgstr "Umfang"
 
 #: src/contents/ui/Autogain.qml:189
-#, fuzzy
 msgid "Output gain"
 msgstr "Ausgangsverstärkung"
 
@@ -227,7 +218,6 @@ msgstr "Nutzt {}"
 
 #: src/contents/ui/Autogain.qml:229 src/contents/ui/DeepFilterNet.qml:192
 #: src/contents/ui/LevelMeter.qml:213 src/contents/ui/Pitch.qml:263
-#, fuzzy
 msgid "Reset history"
 msgstr "Verlauf löschen"
 
@@ -238,13 +228,12 @@ msgstr "Ruhe"
 
 #: src/contents/ui/Autogain.qml:237
 msgid "Force silence when the level is below the silence threshold"
-msgstr ""
+msgstr "Ruhe erzwingen wenn der Pegel unter der Ruheschwelle liegt"
 
 #: src/contents/ui/Autogain.qml:249 src/contents/ui/DeepFilterNet.qml:200
 #: src/contents/ui/LevelMeter.qml:221 src/contents/ui/Pitch.qml:291
-#, fuzzy
 msgid "Reset settings"
-msgstr "_Einstellungen zurücksetzen"
+msgstr "Einstellungen zurücksetzen"
 
 #: src/contents/ui/BassEnhancer.qml:37 src/contents/ui/Exciter.qml:37
 #, fuzzy
@@ -331,7 +320,6 @@ msgid "Link"
 msgstr "Link"
 
 #: src/contents/ui/BlocklistDialog.qml:14
-#, fuzzy
 msgid "Excluded Applications"
 msgstr "Liste der ausgeschlossenen Anwendungen"
 
@@ -341,7 +329,6 @@ msgid "Application node name"
 msgstr "Anwendungen"
 
 #: src/contents/ui/BlocklistDialog.qml:46
-#, fuzzy
 msgid "Add to excluded applications"
 msgstr "Zu ausgeschlossenen Anwendungen hinzufügen"
 
@@ -356,18 +343,17 @@ msgid "Empty List"
 msgstr "Leere Liste"
 
 #: src/contents/ui/BlocklistDialog.qml:97
-#, fuzzy
 msgid "No application excluded"
-msgstr "Anwendungs-Lautstärke"
+msgstr "Keine Anwendungen ausgeschlossen"
 
 #: src/contents/ui/BlocklistDialog.qml:120
-#, fuzzy
 msgid "Remove Application"
-msgstr "Anwendung stummschalten"
+msgstr "Anwendung entfernen"
 
 #: src/contents/ui/BlocklistDialog.qml:121
 msgid "Are you sure you want to remove this application from the list?"
 msgstr ""
+"Bist du sicher, dass diese Anwendung von der Liste gelöscht werden soll?"
 
 #: src/contents/ui/BlocklistDialog.qml:151
 #, fuzzy
@@ -375,14 +361,14 @@ msgid "Remove this app"
 msgstr "Dieses Plugin entfernen"
 
 #: src/contents/ui/BlocklistDialog.qml:180
-#, fuzzy
 msgid "Show excluded apps"
-msgstr "Ausgeschlossene Anwendungen"
+msgstr "Ausgeschlossene Anwendungen anzeigen"
 
 #: src/contents/ui/BlocklistDialog.qml:181
-#, fuzzy
 msgid "Show excluded applications in the list of players/recorders"
-msgstr "Ausgeschlossene Anwendungen anzeigen"
+msgstr ""
+"Ausgeschlossene Anwendungen in der Liste der Wiedergabe-/Aufnahmegeräte "
+"anzeigen"
 
 #: src/contents/ui/Compressor.qml:49 src/tags_plugin_name.cpp:29
 msgid "Compressor"
@@ -437,9 +423,8 @@ msgid "Knee"
 msgstr "Übergang"
 
 #: src/contents/ui/Compressor.qml:151 src/contents/ui/Expander.qml:111
-#, fuzzy
 msgid "Threshold and Time"
-msgstr "Schwelle"
+msgstr "Schwelle und Zeit"
 
 #: src/contents/ui/Compressor.qml:161 src/contents/ui/Expander.qml:121
 #: src/contents/ui/Gate.qml:65 src/contents/ui/Gate.qml:838
@@ -493,7 +478,6 @@ msgstr "Extern"
 #: src/contents/ui/Compressor.qml:259 src/contents/ui/Expander.qml:219
 #: src/contents/ui/Gate.qml:237 src/contents/ui/Limiter.qml:209
 #: src/contents/ui/PageStreamsEffects.qml:409
-#, fuzzy
 msgid "Input device"
 msgstr "Eingabegerät"
 
@@ -633,7 +617,6 @@ msgstr "Ausblick"
 #: src/contents/ui/Compressor.qml:394 src/contents/ui/EqualizerBandMenu.qml:30
 #: src/contents/ui/Expander.qml:350 src/contents/ui/Filter.qml:49
 #: src/contents/ui/Gate.qml:369
-#, fuzzy
 msgid "High-pass"
 msgstr "Hochpass"
 
@@ -650,7 +633,6 @@ msgstr "Aus"
 #: src/contents/ui/MultibandCompressor.qml:607
 #: src/contents/ui/MultibandGate.qml:580 src/contents/ui/Pitch.qml:103
 #: src/contents/ui/Reverb.qml:169 src/contents/ui/StereoTools.qml:325
-#, fuzzy
 msgid "Dry"
 msgstr "Trocken"
 
@@ -752,9 +734,8 @@ msgid "Imported a new Convolver impulse file."
 msgstr "Impulsdatei importieren"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:33
-#, fuzzy
 msgid "Failed to import the Convolver impulse file."
-msgstr "Die Impulsdatei konnte nicht geladen werden"
+msgstr "Die Impulsdatei konnte nicht geladen werden."
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:47
 #: src/contents/ui/MenuAddPlugins.qml:168
@@ -764,13 +745,13 @@ msgid "Search"
 msgstr "Suche"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:90
-#, fuzzy
 msgid "Remove Impulse Response"
-msgstr "Impulsantwort"
+msgstr "Impulsantwort entfernen"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:91
 msgid "Are you sure you want to remove this impulse response from the list?"
 msgstr ""
+"Bist du sicher, dass du die Impulsantwort von der Liste entfernen willst?"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:95
 #, fuzzy
@@ -783,12 +764,10 @@ msgid "Failed to remove the %1 Convolver impulse."
 msgstr "Die Impulsdatei konnte nicht geladen werden"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:114
-#, fuzzy
 msgid "Delete this impulse"
 msgstr "Impuls entfernen"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:153
-#, fuzzy
 msgid "Import impulse"
 msgstr "Impuls importieren"
 
@@ -799,23 +778,22 @@ msgid "Close"
 msgstr "Schließen"
 
 #: src/contents/ui/Convolver.qml:48
-#, fuzzy
 msgid "Loaded the %1 Convolver impulse."
-msgstr "Die Impulsdatei konnte nicht geladen werden"
+msgstr "%1 Convolver Impuls geladen."
 
 #: src/contents/ui/Convolver.qml:50 src/contents/ui/Convolver.qml:324
-#, fuzzy
 msgid "Convolver impulse is not set"
-msgstr "Impulsantworten kombinieren"
+msgstr "Convolver Impuls nicht gesetzt"
 
 #: src/contents/ui/Convolver.qml:54
 msgid "The Convolver is in passthrough mode."
-msgstr ""
+msgstr "Der Convolver ist im Pass-Through-Modus."
 
 #: src/contents/ui/Convolver.qml:56
-#, fuzzy
 msgid "Failed to load the %1 impulse. The Convolver is in passthrough mode."
-msgstr "Die Impulsdatei konnte nicht geladen werden"
+msgstr ""
+"Der %1 Impuls konnte nicht geladen werden. Der Convolver ist im Pass-Through-"
+"Modus."
 
 #: src/contents/ui/Convolver.qml:133
 msgid "First"
@@ -839,7 +817,6 @@ msgid "Spectrum"
 msgstr "Spektrum"
 
 #: src/contents/ui/Convolver.qml:254
-#, fuzzy
 msgid "Log scale"
 msgstr "logarithmische Skala"
 
@@ -862,7 +839,6 @@ msgid "Channels"
 msgstr "Kanäle"
 
 #: src/contents/ui/Convolver.qml:381
-#, fuzzy
 msgid "Format"
 msgstr "Format"
 
@@ -877,7 +853,6 @@ msgid "WAV"
 msgstr ""
 
 #: src/contents/ui/Convolver.qml:439
-#, fuzzy
 msgid "Stereo width"
 msgstr "Stereo-Breite"
 
@@ -906,19 +881,17 @@ msgid "Radius"
 msgstr ""
 
 #: src/contents/ui/ConvolverSofaDialog.qml:69
-#, fuzzy
 msgid "Status"
 msgstr "Status"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:84
 #: src/contents/ui/PreferencesSheet.qml:46
 msgid "Database"
-msgstr ""
+msgstr "Datenbank"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:89
-#, fuzzy
 msgid "Measurements"
-msgstr "Rauschen messen"
+msgstr "Messungen"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:94
 msgid "Index"
@@ -937,9 +910,8 @@ msgid "Feed"
 msgstr "Speisung"
 
 #: src/contents/ui/Crossfeed.qml:94
-#, fuzzy
 msgid "Crossfeed Presets"
-msgstr "Crossfeed"
+msgstr "Crossfeed Vorlagen"
 
 #: src/contents/ui/Crossfeed.qml:98
 msgid "Default"
@@ -965,37 +937,30 @@ msgid "Bypass"
 msgstr "Umleiten"
 
 #: src/contents/ui/Crystalizer.qml:106
-#, fuzzy
 msgid "Adaptive intensity"
-msgstr "Adaptiv Digital"
+msgstr "Adaptive Intensität"
 
 #: src/contents/ui/DeepFilterNet.qml:32
-#, fuzzy
 msgid "Attenuation limit"
 msgstr "Dämpfungslimit"
 
 #: src/contents/ui/DeepFilterNet.qml:86
-#, fuzzy
 msgid "Minimum processing threshold"
-msgstr "Maximale ERB Verarbeitungsschwelle"
+msgstr "Minimale Verarbeitungsschwelle"
 
 #: src/contents/ui/DeepFilterNet.qml:102
-#, fuzzy
 msgid "Maximum ERB processing threshold"
 msgstr "Maximale ERB Verarbeitungsschwelle"
 
 #: src/contents/ui/DeepFilterNet.qml:118
-#, fuzzy
 msgid "Maximum DF processing threshold"
 msgstr "Maximale DF-Verarbeitungsschwelle"
 
 #: src/contents/ui/DeepFilterNet.qml:134
-#, fuzzy
 msgid "Minimum processing buffer"
-msgstr "Maximale DF-Verarbeitungsschwelle"
+msgstr "Minimaler Verarbeitungspuffer"
 
 #: src/contents/ui/DeepFilterNet.qml:150
-#, fuzzy
 msgid "Post filter Beta"
 msgstr "Post Filter Beta"
 
@@ -1035,7 +1000,6 @@ msgid "Filter"
 msgstr "Filter"
 
 #: src/contents/ui/Deesser.qml:165
-#, fuzzy
 msgid "F1 split"
 msgstr "F1 Teilen"
 
@@ -1045,15 +1009,13 @@ msgstr ""
 
 #: src/contents/ui/Deesser.qml:199
 msgid "F1 gain"
-msgstr ""
+msgstr "F1 Gain"
 
 #: src/contents/ui/Deesser.qml:216
-#, fuzzy
 msgid "F2 level"
 msgstr "F2 Level"
 
 #: src/contents/ui/Deesser.qml:234
-#, fuzzy
 msgid "F2 peak Q"
 msgstr "F2 Peak Q"
 
@@ -1068,7 +1030,7 @@ msgstr "Bandreduktion"
 
 #: src/contents/ui/Delay.qml:55 src/contents/ui/Delay.qml:208
 msgid "Distance"
-msgstr ""
+msgstr "Entfernung"
 
 #: src/contents/ui/Delay.qml:55 src/contents/ui/Delay.qml:84
 #: src/contents/ui/Delay.qml:208 src/contents/ui/Delay.qml:237
@@ -1079,30 +1041,26 @@ msgstr "Zeit"
 
 #: src/contents/ui/Delay.qml:102 src/contents/ui/Delay.qml:255
 msgid "Meters"
-msgstr ""
+msgstr "Meter"
 
 #: src/contents/ui/Delay.qml:120 src/contents/ui/Delay.qml:273
-#, fuzzy
 msgid "Centimeters"
-msgstr "Cent"
+msgstr "Zentimeter"
 
 #: src/contents/ui/Delay.qml:139 src/contents/ui/Delay.qml:292
 msgid "Temperature"
-msgstr ""
+msgstr "Temperatur"
 
 #: src/contents/ui/Delay.qml:371
-#, fuzzy
 msgid "Invert left"
-msgstr "Phase umkehren"
+msgstr "Links invertieren"
 
 #: src/contents/ui/Delay.qml:381
-#, fuzzy
 msgid "Invert right"
-msgstr "Phase umkehren"
+msgstr "Rechts invertieren"
 
 #: src/contents/ui/DelegateClientsList.qml:37
 #: src/contents/ui/DelegateModulesList.qml:37
-#, fuzzy
 msgctxt "@info:placeholder"
 msgid "Unknown"
 msgstr "Unbekannt"
@@ -1170,9 +1128,8 @@ msgid "Mobile mode"
 msgstr "Stereo Modus"
 
 #: src/contents/ui/EchoCanceller.qml:62
-#, fuzzy
 msgid "Enforce high-pass"
-msgstr "Hochpass"
+msgstr "Hochpass erzwingen"
 
 #: src/contents/ui/EchoCanceller.qml:74
 msgid "Noise Suppression"
@@ -1196,14 +1153,12 @@ msgid "High"
 msgstr "Hoch"
 
 #: src/contents/ui/EchoCanceller.qml:91
-#, fuzzy
 msgid "Very high"
 msgstr "Sehr hoch"
 
 #: src/contents/ui/EchoCanceller.qml:101
-#, fuzzy
 msgid "High-Pass Filter"
-msgstr "Hochpassfilter-Modus"
+msgstr "Hochpassfilter"
 
 #: src/contents/ui/EchoCanceller.qml:113
 #, fuzzy
@@ -1211,17 +1166,16 @@ msgid "Full band"
 msgstr "Subband"
 
 #: src/contents/ui/EchoCanceller.qml:153 src/contents/ui/Speex.qml:55
-#, fuzzy
 msgid "Automatic gain control"
-msgstr "Automatische Glättungsregelung"
+msgstr "Automatische Pegelregelung"
 
 #: src/contents/ui/EeInputOutputGain.qml:17
 msgid "Audio levels control"
-msgstr ""
+msgstr "Pegelsteuerung"
 
 #: src/contents/ui/EeInputOutputGain.qml:18
 msgid "Input and output gain controls with level meters"
-msgstr ""
+msgstr "Ein- und Ausgangsverstärkerregelung mit Pegelanzeigen"
 
 #: src/contents/ui/EeInputOutputGain.qml:111 src/contents/ui/Main.qml:506
 #: src/contents/ui/StereoTools.qml:39
@@ -1232,9 +1186,8 @@ msgstr "Eingabe"
 #: src/contents/ui/MultibandCompressor.qml:652
 #: src/contents/ui/MultibandCompressor.qml:911
 #: src/contents/ui/MultibandGate.qml:625 src/contents/ui/MultibandGate.qml:884
-#, fuzzy
 msgid "Band"
-msgstr "Bereiche"
+msgstr ""
 
 #: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
 msgid "Bell"
@@ -1259,14 +1212,12 @@ msgid "Resonance"
 msgstr "Resonanz"
 
 #: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
-#, fuzzy
 msgid "Allpass"
-msgstr "Umleiten"
+msgstr ""
 
 #: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
-#, fuzzy
 msgid "Bandpass"
-msgstr "Band Umleitung"
+msgstr ""
 
 #: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
 #, fuzzy
@@ -1274,9 +1225,8 @@ msgid "Ladder-pass"
 msgstr "Tiefpass"
 
 #: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
-#, fuzzy
 msgid "Ladder-rejection"
-msgstr "Bandreduktion"
+msgstr "Ladder-Sperre"
 
 #: src/contents/ui/EqualizerBandMenu.qml:44 src/contents/ui/Filter.qml:63
 msgid "RLC (BT)"
@@ -1331,9 +1281,8 @@ msgid "Width"
 msgstr "Breite"
 
 #: src/contents/ui/EqualizerBandMenu.qml:150
-#, fuzzy
 msgid "oct"
-msgstr "Hochpass-Filter"
+msgstr "Okt."
 
 #: src/contents/ui/EqualizerBandMenu.qml:178
 #: src/contents/ui/MultibandCompressor.qml:82
@@ -1342,70 +1291,64 @@ msgid "Solo"
 msgstr "Solo"
 
 #: src/contents/ui/Equalizer.qml:49 src/contents/ui/Equalizer.qml:89
-#, fuzzy
 msgid "APO preset"
 msgstr "APO Voreinstellungen"
 
 #: src/contents/ui/Equalizer.qml:52
-#, fuzzy
 msgid "Failed to import the Equalizer APO preset file."
-msgstr "APO Preset-Datei importieren"
+msgstr "Fehler beim Importieren der APO Preset-Datei."
 
 #: src/contents/ui/Equalizer.qml:57
-#, fuzzy
 msgid "Imported the Equalizer APO preset file."
-msgstr "APO Preset-Datei importieren"
+msgstr "APO Preset-Datei importiert."
 
 #: src/contents/ui/Equalizer.qml:59
-#, fuzzy
 msgid "Imported the Equalizer APO preset file into the left channel."
-msgstr "APO Preset-Datei importieren"
+msgstr "APO Preset-Datei in linken Kanal importiert."
 
 #: src/contents/ui/Equalizer.qml:61
-#, fuzzy
 msgid "Imported the Equalizer APO preset file into the right channel."
-msgstr "APO Preset-Datei importieren"
+msgstr "APO Preset-Datei in rechten Kanal importiert."
 
 #: src/contents/ui/Equalizer.qml:74
-#, fuzzy
 msgid "GraphicEQ preset"
 msgstr "GraphicEQ-Voreinstellungen"
 
 #: src/contents/ui/Equalizer.qml:77
-#, fuzzy
 msgid "Imported the GraphicEQ preset file."
-msgstr "GraphicEQ-Voreinstellungsdatei importieren"
+msgstr "GraphicEQ-Voreinstellungsdatei importiert."
 
 #: src/contents/ui/Equalizer.qml:79
-#, fuzzy
 msgid "Failed to import the GraphicEQ preset file."
-msgstr "GraphicEQ-Voreinstellungsdatei importieren"
+msgstr "Fehler beim importieren der GraphicEQ-Voreinstellungsdatei."
 
 #: src/contents/ui/Equalizer.qml:92
-#, fuzzy
 msgid ""
 "Failed to export the current Equalizer settings to an external APO preset "
 "file."
-msgstr "APO Preset-Datei importieren"
+msgstr ""
+"Fehler beim Exportieren der aktuellen Equalizer Einstellungen als APO "
+"Vorlagen-Datei."
 
 #: src/contents/ui/Equalizer.qml:97
-#, fuzzy
 msgid "Exported the current Equalizer settings to an external APO preset file."
-msgstr "APO Preset-Datei importieren"
+msgstr "Aktuelle Equalizer Einstellungen als APO Vorlagen-Datei exportiert."
 
 #: src/contents/ui/Equalizer.qml:99
-#, fuzzy
 msgid ""
 "Exported the current Equalizer settings of the left channel to an external "
 "APO preset file."
-msgstr "APO Preset-Datei importieren"
+msgstr ""
+"Aktuelle Equalizer Einstellungen des linken Kanals als APO Vorlagen-Datei "
+"exportiert."
 
 #: src/contents/ui/Equalizer.qml:101
-#, fuzzy
 msgid ""
 "Exported the current Equalizer settings of the right channel to an external "
 "APO preset file."
-msgstr "APO Preset-Datei importieren"
+msgstr ""
+"Aktuelle Equalizer Einstellungen des rechten Kanals als APO Vorlagen-Datei "
+"exportiert."
 
 #: src/contents/ui/Equalizer.qml:125 src/contents/ui/Filter.qml:77
 #: src/contents/ui/Loudness.qml:57
@@ -1422,9 +1365,8 @@ msgid "FFT"
 msgstr "FFT"
 
 #: src/contents/ui/Equalizer.qml:125 src/contents/ui/Filter.qml:77
-#, fuzzy
 msgid "SPM"
-msgstr "SPM"
+msgstr ""
 
 #: src/contents/ui/Equalizer.qml:134
 msgid "Bands"
@@ -1436,7 +1378,6 @@ msgid "Balance"
 msgstr "Balance"
 
 #: src/contents/ui/Equalizer.qml:167
-#, fuzzy
 msgid "Pitch left"
 msgstr "Tonhöhe links"
 
@@ -1445,27 +1386,22 @@ msgid "st"
 msgstr ""
 
 #: src/contents/ui/Equalizer.qml:184
-#, fuzzy
 msgid "Pitch right"
 msgstr "Tonhöhe Rechts"
 
 #: src/contents/ui/Equalizer.qml:314
-#, fuzzy
 msgid "Split channels"
 msgstr "Kanäle trennen"
 
 #: src/contents/ui/Equalizer.qml:324
-#, fuzzy
 msgid "Flat response"
 msgstr "Flacher Frequenzgang"
 
 #: src/contents/ui/Equalizer.qml:331
-#, fuzzy
 msgid "Calculate frequencies"
 msgstr "Frequenzen berechnen"
 
 #: src/contents/ui/Equalizer.qml:338
-#, fuzzy
 msgid "Sort bands"
 msgstr "Bänder sortieren"
 
@@ -2247,17 +2183,14 @@ msgid "Process all output streams"
 msgstr "Alle Ausgänge verarbeiten"
 
 #: src/contents/ui/PreferencesSheet.qml:138
-#, fuzzy
 msgid "Process all input streams"
 msgstr "Alle Eingänge verarbeiten"
 
 #: src/contents/ui/PreferencesSheet.qml:150
-#, fuzzy
 msgid "Ignore streams from monitor of devices"
 msgstr "Streams von Monitor-Geräten ignorieren"
 
 #: src/contents/ui/PreferencesSheet.qml:162
-#, fuzzy
 msgid "Use cubic volume"
 msgstr "Verwende kubische Lautstärke"
 
@@ -2267,10 +2200,13 @@ msgid ""
 "percentages results in a lower perceived volume while the loudness appears "
 "to change more evenly across the slider."
 msgstr ""
+"Kubische statt lineare Skalierung für die Stream-Lautstärke verwenden. "
+"Niedrige Werte ergeben eine geringere wahrgenommene Lautstärke, während sich "
+"die Lautheit gleichmäßiger über den gesamten Regler ändert."
 
 #: src/contents/ui/PreferencesSheet.qml:175
 msgid "Ignore system notifications"
-msgstr ""
+msgstr "System Benachrichtigungen ignorieren"
 
 #: src/contents/ui/PreferencesSheet.qml:176
 msgid ""
@@ -2278,18 +2214,20 @@ msgid ""
 "better to ignore them, but for some presets it may be recommended since they "
 "could sound too loud."
 msgstr ""
+"Die Verarbeitung von Systembenachrichtigungen kann Knistern verursachen und "
+"sollte daher ignoriert werden. Für manche Voreinstellungen ist die "
+"Verarbeitung jedoch ratsam, da Benachrichtigungen sonst zu laut klingen "
+"könnten."
 
 #: src/contents/ui/PreferencesSheet.qml:188
-#, fuzzy
 msgid "Enable/disable input monitoring"
-msgstr "Anwendung aktivieren/deaktivieren"
+msgstr "Eingangs-Monitoring aktivieren/deaktivieren"
 
 #: src/contents/ui/PreferencesSheet.qml:200
 msgid "Mic monitor plays to output effects pipeline"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:212
-#, fuzzy
 msgid "Enable the inactivity timeout"
 msgstr "Timeout durch Inaktivität"
 
@@ -2298,44 +2236,44 @@ msgid ""
 "When all streams are inactive, Easy Effects pipeline remains loaded for an "
 "extra amount of time."
 msgstr ""
+"Easy Effects Pipeline bleibt nach Inaktivität aller Streams für eine "
+"zusätzliche Zeit geladen."
 
 #: src/contents/ui/PreferencesSheet.qml:225
-#, fuzzy
 msgid "Inactivity timeout"
 msgstr "Timeout durch Inaktivität"
 
 #: src/contents/ui/PreferencesSheet.qml:240
-#, fuzzy
 msgid "Level meters frame rate cap"
-msgstr "Anwendung aktivieren/deaktivieren"
+msgstr "Bildrate der Pegelanzeigen begrenzen"
 
 #: src/contents/ui/PreferencesSheet.qml:241
 msgid "Maximum level meter update rate."
-msgstr ""
+msgstr "Maximale Aktualisierungsrate der Pegelanzeigen."
 
 #: src/contents/ui/PreferencesSheet.qml:255
-#, fuzzy
 msgid "Level meters label"
-msgstr "Ausgabegerät"
+msgstr "Beschriftung der Pegelanzeigen"
 
 #: src/contents/ui/PreferencesSheet.qml:256
 msgid ""
 "The time it takes for the level meter labels to be updated when the current "
 "level is below the last highest one."
 msgstr ""
+"Die Zeit, die benötigt wird, um die Beschriftungen der Pegelanzeigen zu "
+"aktualisieren, wenn der aktuelle Pegel unter den letzten Höchstwert fällt."
 
 #: src/contents/ui/PreferencesSheet.qml:273
-#, fuzzy
 msgid "Enable level meters animation"
-msgstr "Anwendung aktivieren/deaktivieren"
+msgstr "Pegelanzeigen animieren"
 
 #: src/contents/ui/PreferencesSheet.qml:282
 msgid "Level meters animation duration"
-msgstr ""
+msgstr "Pegelanzeigen Animationsdauer"
 
 #: src/contents/ui/PreferencesSheet.qml:320
 msgid "Audio delay compensation"
-msgstr ""
+msgstr "Audio Latenzausgleich"
 
 #: src/contents/ui/PreferencesSheet.qml:335
 msgid "Graph"
@@ -2359,16 +2297,15 @@ msgstr "Punkte"
 
 #: src/contents/ui/PreferencesSheet.qml:346
 msgid "Area"
-msgstr ""
+msgstr "Bereich"
 
 #: src/contents/ui/PreferencesSheet.qml:356
 msgid "Dynamic scale"
-msgstr ""
+msgstr "Dynamische Skala"
 
 #: src/contents/ui/PreferencesSheet.qml:368
-#, fuzzy
 msgid "Logarithmic frequency axis"
-msgstr "Teilfrequenz 2"
+msgstr "Logarithmische Frequenzachse"
 
 #: src/contents/ui/PreferencesSheet.qml:380
 msgid "Points"
@@ -2383,13 +2320,12 @@ msgid "px"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:409
-#, fuzzy
 msgid "Spectrum frame rate cap"
-msgstr "Anwendung aktivieren/deaktivieren"
+msgstr "Bildrate des Spektrums begrenzen"
 
 #: src/contents/ui/PreferencesSheet.qml:410
 msgid "Maximum spectrum update rate."
-msgstr ""
+msgstr "Maximale Aktualisierungsrate des Spektrums."
 
 #: src/contents/ui/PreferencesSheet.qml:425
 msgid "Frequency Range"
@@ -2408,23 +2344,24 @@ msgid "Database autosave interval"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:484
-#, fuzzy
 msgid "Most used presets"
-msgstr "Crossfeed"
+msgstr "Meistbenutze Vorlagen"
 
 #: src/contents/ui/PreferencesSheet.qml:502
 msgid "Window"
-msgstr ""
+msgstr "Fenster"
 
 #: src/contents/ui/PreferencesSheet.qml:511
 msgid "Force KDE's Breeze theme when Easy Effects starts"
-msgstr ""
+msgstr "Beim Starten von Easy Effects das Breeze Theme von KDE erzwingen"
 
 #: src/contents/ui/PreferencesSheet.qml:512
 msgid ""
 "It is necessary to restart the service for changes in this setting to take "
 "effect."
 msgstr ""
+"Der Easy Effects Dienst muss neugestartet werden damit die Änderungen "
+"übernommen werden."
 
 #: src/contents/ui/PreferencesSheet.qml:525
 msgid "Reduce effects list controls"
