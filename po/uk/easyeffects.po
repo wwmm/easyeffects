@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-12-07 16:47-0300\n"
 "PO-Revision-Date: 2025-12-08 08:00+0000\n"
-"Last-Translator: Володимир <vlzuykov@gmail.com>\n"
+"Last-Translator: Максим Горпиніч <gorpinicmaksim0@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
 "Language: uk\n"
@@ -810,19 +810,18 @@ msgid "Channels"
 msgstr "Канали"
 
 #: src/contents/ui/Convolver.qml:381
-#, fuzzy
 msgid "Format"
-msgstr "Нормальне"
+msgstr "Формат"
 
 #: src/contents/ui/Convolver.qml:420 src/contents/ui/Convolver.qml:526
 msgctxt "The sofa audio file format"
 msgid "SOFA"
-msgstr ""
+msgstr "SOFA"
 
 #: src/contents/ui/Convolver.qml:420
 msgctxt "The wav audio format"
 msgid "WAV"
-msgstr ""
+msgstr "WAV"
 
 #: src/contents/ui/Convolver.qml:439
 msgid "Stereo width"
@@ -834,28 +833,26 @@ msgstr "Автоматичне підсилення"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:12
 msgid "Target Orientation"
-msgstr ""
+msgstr "Орієнтація на ціль"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:23
 #: src/contents/ui/ConvolverSofaDialog.qml:117
 msgid "Azimuth"
-msgstr ""
+msgstr "Азимут"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:38
 #: src/contents/ui/ConvolverSofaDialog.qml:122
-#, fuzzy
 msgid "Elevation"
-msgstr "Реакція"
+msgstr "Елеватіон"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:53
 #: src/contents/ui/ConvolverSofaDialog.qml:127
 msgid "Radius"
-msgstr ""
+msgstr "Радіус"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:69
-#, fuzzy
 msgid "Status"
-msgstr "Стан"
+msgstr "Статус"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:84
 #: src/contents/ui/PreferencesSheet.qml:46
@@ -864,15 +861,15 @@ msgstr "База даних"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:89
 msgid "Measurements"
-msgstr ""
+msgstr "Вимірювання"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:94
 msgid "Index"
-msgstr ""
+msgstr "Індекс"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:152
 msgid "Apply"
-msgstr ""
+msgstr "Застосувати"
 
 #: src/contents/ui/Crossfeed.qml:59
 msgid "Cutoff"
@@ -3121,10 +3118,9 @@ msgid "cm"
 msgstr "см"
 
 #: src/units.hpp:71
-#, fuzzy
 msgctxt "degrees (angle)"
 msgid "°"
-msgstr "°C"
+msgstr "°"
 
 #: src/units.hpp:72
 msgctxt "degree Celsius unit abbreviation"
