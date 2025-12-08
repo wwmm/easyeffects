@@ -104,22 +104,18 @@ void CommandLineParser::process_events() {
 
     const auto value = parser->value("active-preset");
 
-    if (value == "input") {
-      auto preset = DbMain::lastLoadedInputPreset();
+    if (value == "input" || value == "output") {
+      if (is_primary) {  // no daemon running
+        auto preset = (value == "input") ? DbMain::lastLoadedInputPreset() : DbMain::lastLoadedOutputPreset();
 
-      if (preset.length() < 1) {
-        preset = QString("None");
+        if (preset.length() < 1) {
+          preset = QString("None");
+        }
+
+        std::cout << preset.toStdString() << '\n';
+      } else {
+        Q_EMIT onGetActivePreset((value == "input") ? PipelineType::input : PipelineType::output);
       }
-
-      std::cout << preset.toStdString() << '\n';
-    } else if (value == "output") {
-      auto preset = DbMain::lastLoadedOutputPreset();
-
-      if (preset.length() < 1) {
-        preset = QString("None");
-      }
-
-      std::cout << preset.toStdString() << '\n';
     } else {
       ok = false;
 

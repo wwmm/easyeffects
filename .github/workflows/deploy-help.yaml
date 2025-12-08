@@ -30,6 +30,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6.0.1
 
+      - name: Generate plugin properties HTML
+        run: python util/generate_command_docs.py
+
       - name: Setup Pages
         uses: actions/configure-pages@v5.0.0
 

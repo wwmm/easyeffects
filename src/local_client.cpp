@@ -63,3 +63,16 @@ void LocalClient::setGlobalBypass(const bool& state) {
   client->write(msg.c_str());
   client->flush();
 }
+
+auto LocalClient::getActivePreset(PipelineType pipeline_type) -> QString {
+  auto msg = std::format("{}:{}\n", tags::local_server::get_active_preset, static_cast<int>(pipeline_type));
+
+  client->write(msg.c_str());
+  client->flush();
+
+  if (client->waitForReadyRead(500)) {
+    return QString::fromUtf8(client->readAll());
+  }
+
+  return "None";
+}
