@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-12-07 16:47-0300\n"
-"PO-Revision-Date: 2025-12-08 21:58+0000\n"
+"PO-Revision-Date: 2025-12-08 23:43+0000\n"
 "Last-Translator: Henning <me@unbekannt3.eu>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/easyeffects/main/"
 "de/>\n"
@@ -2372,78 +2372,74 @@ msgid ""
 "Action buttons in the effects list are moved inside a context menu for a "
 "more compact view."
 msgstr ""
+"Die Action Buttons in der Effektsliste werden in das Kontextmenü verschoben "
+"für eine kompaktere Anzeige."
 
 #: src/contents/ui/PreferencesSheet.qml:537
 #: src/contents/ui/PreferencesSheet.qml:561
-#, fuzzy
 msgid "Color scheme"
-msgstr "Farbe"
+msgstr "Farbschema"
 
 #: src/contents/ui/PreferencesSheet.qml:550
 msgid "Graphs"
-msgstr ""
+msgstr "Graphen"
 
 #: src/contents/ui/PreferencesSheet.qml:565
-#, fuzzy
 msgid "Automatic"
-msgstr "Automatische Verstärkungsregelung"
+msgstr "Automatisch"
 
 #: src/contents/ui/PreferencesSheet.qml:565
-#, fuzzy
 msgid "Light"
-msgstr "Rechts"
+msgstr "Hell"
 
 #: src/contents/ui/PreferencesSheet.qml:565
 msgid "Dark"
-msgstr ""
+msgstr "Dunkel"
 
 #: src/contents/ui/PreferencesSheet.qml:576
-#, fuzzy
 msgid "Color theme"
-msgstr "Farbe"
+msgstr "Farbthema"
 
 #: src/contents/ui/PreferencesSheet.qml:580
 msgid "Green"
-msgstr ""
+msgstr "Grün"
 
 #: src/contents/ui/PreferencesSheet.qml:580
 msgid "Green neon"
-msgstr ""
+msgstr "Neon Grün"
 
 #: src/contents/ui/PreferencesSheet.qml:580
 msgid "Mix"
 msgstr "Gemischt"
 
 #: src/contents/ui/PreferencesSheet.qml:580
-#, fuzzy
 msgid "Orange"
-msgstr "Umfang"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:580
 msgid "Yellow"
-msgstr ""
+msgstr "Gelb"
 
 #: src/contents/ui/PreferencesSheet.qml:580
 msgid "Blue"
-msgstr ""
+msgstr "Blau"
 
 #: src/contents/ui/PreferencesSheet.qml:580
 msgid "Purple"
-msgstr ""
+msgstr "Lila"
 
 #: src/contents/ui/PreferencesSheet.qml:580
 msgid "Grey"
-msgstr ""
+msgstr "Grau"
 
 #: src/contents/ui/PreferencesSheet.qml:580
 msgid "User"
-msgstr ""
+msgstr "Benutzer"
 
 #: src/contents/ui/PreferencesSheet.qml:588
-#, fuzzy
 msgctxt "@label"
 msgid "Background"
-msgstr "Im Hintergrund ausführen"
+msgstr "Hintergrund"
 
 #: src/contents/ui/PreferencesSheet.qml:597
 msgctxt "@label"
@@ -2453,43 +2449,41 @@ msgstr ""
 #: src/contents/ui/PreferencesSheet.qml:606
 msgctxt "@label"
 msgid "Series colors"
-msgstr ""
+msgstr "Serienfarben"
 
 #: src/contents/ui/PreferencesSheet.qml:615
-#, fuzzy
 msgctxt "@label"
 msgid "Axis labels text color"
-msgstr "Achsentitel"
+msgstr "Textfarbe Achsenbeschriftung"
 
 #: src/contents/ui/PreferencesSheet.qml:624
 msgctxt "@label"
 msgid "Axis labels background color"
-msgstr ""
+msgstr "Hintergrundfarbe Achsenbeschriftung"
 
 #: src/contents/ui/PreferencesSheet.qml:633
-#, fuzzy
 msgctxt "@label"
 msgid "Border color"
-msgstr "Grenze"
+msgstr "Randfarbe"
 
 #: src/contents/ui/PreferencesSheet.qml:642
-#, fuzzy
 msgid "Line width"
 msgstr "Linienbreite"
 
 #: src/contents/ui/PreferencesSheet.qml:656
 msgid "Show grid lines"
-msgstr ""
+msgstr "Gitterlinien anzeigen"
 
 #: src/contents/ui/PreferencesSheet.qml:674
-#, fuzzy
 msgid "Autoload delay"
-msgstr "Automatische Verstärkungsregelung"
+msgstr "Autoload Verzögerung"
 
 #: src/contents/ui/PreferencesSheet.qml:675
 msgid ""
 "Delay between receiving a new device route and the call to autoload a preset."
 msgstr ""
+"Verzögerung zwischen dem Empfang einer neuen Geräteroute und dem "
+"automatischen Laden einer Vorlage."
 
 #: src/contents/ui/PreferencesSheet.qml:691
 #, fuzzy
@@ -2501,33 +2495,34 @@ msgid ""
 "If enabled, the list of excluded apps set in the loaded preset is ignored "
 "and does not replace the one set by the user."
 msgstr ""
+"Wenn aktiviert, wird die in der Vorlage festgelegte Liste ausgeschlossener "
+"Anwendungen ignoriert und die Liste des Benutzers nicht überschrieben."
 
 #: src/contents/ui/PreferencesSheet.qml:713
-#, fuzzy
 msgid "Global shortcuts"
 msgstr "_Tastenkürzel"
 
 #: src/contents/ui/PreferencesSheet.qml:714
 msgid "Enables support for XDG global shortcuts."
-msgstr ""
+msgstr "Aktiviert die Unterstützung für Globale XDG Tastenkürzel."
 
 #: src/contents/ui/PreferencesSheet.qml:726
-#, fuzzy
 msgid "Native window of effects"
-msgstr "Natives Fenster anzeigen"
+msgstr "Natives Effekt-Fenster"
 
 #: src/contents/ui/PreferencesSheet.qml:727
 msgid "Allows the native user interface of effects to be shown/hidden."
 msgstr ""
+"Ermöglicht das Anzeigen/Ausblenden der nativen Benutzeroberfläche der "
+"Effekte."
 
 #: src/contents/ui/PreferencesSheet.qml:739
-#, fuzzy
 msgid "Update frequency"
-msgstr "Teilfrequenz 1"
+msgstr "Aktualisierungsintervall"
 
 #: src/contents/ui/PreferencesSheet.qml:740
 msgid "Related to LV2 plugins."
-msgstr ""
+msgstr "Bezogen auf LV2 Plugins."
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:35
 #: src/contents/ui/PresetsAutoloadingPage.qml:171
@@ -2541,24 +2536,20 @@ msgstr ""
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:84
 #: src/contents/ui/PresetsAutoloadingPage.qml:229
-#, fuzzy
 msgid "Local preset"
-msgstr "Eingabe-Voreinstellungen"
+msgstr "Lokale Vorlagen"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:95
-#, fuzzy
 msgid "Create"
 msgstr "Erstellen"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:97
-#, fuzzy
 msgid "Create a new autoloading preset"
-msgstr "Voreinstellung automatisch laden"
+msgstr "Neue Autoload Vorlage erstellen"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:186
-#, fuzzy
 msgid "Remove this autoloading preset"
-msgstr "Voreinstellung automatisch laden"
+msgstr "Autoload Vorlage entfernen"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:200
 msgid "Description"
@@ -2566,26 +2557,25 @@ msgstr "Beschreibung"
 
 #: src/contents/ui/PresetsCommunityPage.qml:60
 msgid "Refresh"
-msgstr ""
+msgstr "Aktualisieren"
 
 #: src/contents/ui/PresetsCommunityPage.qml:119
-#, fuzzy
 msgid "Copy to local presets"
-msgstr "Eingabe-Voreinstellungen"
+msgstr "Zu lokalen Vorlagen kopieren"
 
 #: src/contents/ui/PresetsCommunityPage.qml:124
-#, fuzzy
 msgid "Imported the %1 community preset to the list of local presets."
-msgstr "Ausgabe-Preset suchen"
+msgstr "Community Vorlage %1 wurde zur Liste der lokalen Vorlagen importiert."
 
 #: src/contents/ui/PresetsCommunityPage.qml:126
-#, fuzzy
 msgid "Failed to import the %1 community preset to the list of local presets."
-msgstr "Ausgabe-Preset suchen"
+msgstr ""
+"Community Vorlage %1 konnte nicht zur lokalen Vorlagenliste importiert "
+"werden."
 
 #: src/contents/ui/PresetsDialog.qml:80 src/contents/ui/PresetsDialog.qml:137
 msgid "Local"
-msgstr ""
+msgstr "Lokal"
 
 #: src/contents/ui/PresetsDialog.qml:88 src/contents/ui/PresetsDialog.qml:137
 msgid "Community"
@@ -2597,95 +2587,80 @@ msgid "Autoloading"
 msgstr "Automatische Verstärkungsregelung"
 
 #: src/contents/ui/PresetsDialog.qml:135
-#, fuzzy
 msgid "No preset loaded"
-msgstr "Neuer Eingabe-Presetname"
+msgstr "Keine Vorlagen geladen"
 
 #: src/contents/ui/PresetsDialog.qml:155
 msgid "Fallback Preset"
-msgstr ""
+msgstr "Fallback Vorlage"
 
 #: src/contents/ui/PresetsLocalPage.qml:34
-#, fuzzy
 msgid "Imported a new local preset from an external file."
-msgstr "APO Preset-Datei importieren"
+msgstr "Neue lokale Vorlage aus Datei Importiert."
 
 #: src/contents/ui/PresetsLocalPage.qml:36
-#, fuzzy
 msgid "Failed to import a new local preset from an external file."
-msgstr "APO Preset-Datei importieren"
+msgstr "Vorlage aus Datei konnte nicht Importiert werden."
 
 #: src/contents/ui/PresetsLocalPage.qml:45
-#, fuzzy
 msgid "Export Presets"
-msgstr "Presets importieren"
+msgstr "Vorlagen Exportieren"
 
 #: src/contents/ui/PresetsLocalPage.qml:48
-#, fuzzy
 msgid "Exported all presets to an external folder."
-msgstr "APO Preset-Datei importieren"
+msgstr "Alle Vorlagen in Ordner exportiert."
 
 #: src/contents/ui/PresetsLocalPage.qml:50
-#, fuzzy
 msgid "Failed to export all presets to an external folder."
-msgstr "APO Preset-Datei importieren"
+msgstr "Vorlagen konnten nicht in Ordner exportiert werden."
 
 #: src/contents/ui/PresetsLocalPage.qml:65
-#, fuzzy
 msgid "New preset name"
-msgstr "Neuer Eingabe-Presetname"
+msgstr "Neuer Vorlagenname"
 
 #: src/contents/ui/PresetsLocalPage.qml:81
-#, fuzzy
 msgid "Import preset file"
-msgstr "APO Preset-Datei importieren"
+msgstr "Vorlagendatei Importieren"
 
 #: src/contents/ui/PresetsLocalPage.qml:90
-#, fuzzy
 msgid "Create new preset"
-msgstr "Eine neue Voreinstellung erstellen"
+msgstr "Neue Vorlage erstellen"
 
 #: src/contents/ui/PresetsLocalPage.qml:100
-#, fuzzy
 msgid "Created a new local preset: %1"
-msgstr "Eingabe-Preset suchen"
+msgstr "Neue lokale Vorlage erstellt: %1"
 
 #: src/contents/ui/PresetsLocalPage.qml:104
-#, fuzzy
 msgid "Failed to create a new local preset: %1"
-msgstr "Ausgabe-Preset suchen"
+msgstr "Lokale Vorlage \"%1\" konnte nicht erstellt werden"
 
 #: src/contents/ui/PresetsLocalPage.qml:132
-#, fuzzy
 msgid "Export presets"
-msgstr "Presets importieren"
+msgstr "Vorlagen exportieren"
 
 #: src/contents/ui/PresetsLocalPage.qml:193
-#, fuzzy
 msgid "Save Preset"
-msgstr "Eine neue Voreinstellung erstellen"
+msgstr "Vorlage Speichern"
 
 #: src/contents/ui/PresetsLocalPage.qml:194
-#, fuzzy
 msgid ""
 "Save current settings to the preset:\n"
 "%1"
-msgstr "Aktuelle Einstellungen in dieser Preset-Datei speichern"
+msgstr ""
+"Speichere aktuelle Einstellungen in die Vorlage:\n"
+"%1"
 
 #: src/contents/ui/PresetsLocalPage.qml:198
-#, fuzzy
 msgid "Saved the current settings to %1 local preset."
-msgstr "Aktuelle Einstellungen in dieser Preset-Datei speichern"
+msgstr "Aktuelle Einstellungen in die Vorlage %1 gespeichert."
 
 #: src/contents/ui/PresetsLocalPage.qml:200
-#, fuzzy
 msgid "Failed to save the current settings to %1 local preset."
-msgstr "Aktuelle Einstellungen in dieser Preset-Datei speichern"
+msgstr "Konnte aktuelle Einstellungen nicht in Vorlage %1 speichern."
 
 #: src/contents/ui/PresetsLocalPage.qml:208
-#, fuzzy
 msgid "Remove Preset"
-msgstr "Eine neue Voreinstellung erstellen"
+msgstr "Vorlage entfernen"
 
 #: src/contents/ui/PresetsLocalPage.qml:209
 msgid ""
@@ -2693,57 +2668,51 @@ msgid ""
 "%1\n"
 "from the list?"
 msgstr ""
+"Bist du sicher, dass du die Vorlage\n"
+"%1\n"
+"aus der Liste löschen möchtest?"
 
 #: src/contents/ui/PresetsLocalPage.qml:213
-#, fuzzy
 msgid "Removed the %1 local preset."
-msgstr "automatisch geladene Voreinstellung entfernen"
+msgstr "Lokale Vorlage %1 entfernt."
 
 #: src/contents/ui/PresetsLocalPage.qml:215
-#, fuzzy
 msgid "Failed to remove the %1 local preset."
-msgstr "APO Preset-Datei importieren"
+msgstr "Lokale Vorlage %1 konnte nicht entfernt werden."
 
 #: src/contents/ui/PresetsLocalPage.qml:223
-#, fuzzy
 msgid "Rename Preset"
-msgstr "Eine neue Voreinstellung erstellen"
+msgstr "Vorlage umbenennen"
 
 #: src/contents/ui/PresetsLocalPage.qml:228
 msgid "Rename"
-msgstr ""
+msgstr "Umbenennen"
 
 #: src/contents/ui/PresetsLocalPage.qml:237
-#, fuzzy
 msgid "Renamed the %1 local preset to %2"
-msgstr "Diese Preset-Datei entfernen"
+msgstr "Lokale Vorlage %1 zu %2 umbenannt"
 
 #: src/contents/ui/PresetsLocalPage.qml:240
-#, fuzzy
 msgid "Failed to rename the %1 local preset to %2"
-msgstr "Die Impulsdatei konnte nicht geladen werden"
+msgstr "Lokale Vorlage %1 konnte nicht zu %2 umbenannt werden"
 
 #: src/contents/ui/PresetsLocalPage.qml:248
 msgid "Cancel"
 msgstr "Abbrechen"
 
 #: src/contents/ui/PresetsLocalPage.qml:285
-#, fuzzy
 msgid "Save settings to this preset"
-msgstr "Aktuelle Einstellungen in dieser Preset-Datei speichern"
+msgstr "Aktuelle Einstellungen in dieser Vorlage speichern"
 
 #: src/contents/ui/PresetsLocalPage.qml:293
-#, fuzzy
 msgid "Rename this preset"
-msgstr "Diese Preset-Datei entfernen"
+msgstr "Diese Vorlage umbenennen"
 
 #: src/contents/ui/PresetsLocalPage.qml:301
-#, fuzzy
 msgid "Delete this preset"
-msgstr "Diese Preset-Datei entfernen"
+msgstr "Diese Vorlage löschen"
 
 #: src/contents/ui/Reverb.qml:47
-#, fuzzy
 msgid "Room size"
 msgstr "Raumgröße"
 
@@ -2773,12 +2742,10 @@ msgid "Experimental"
 msgstr "Experimentell"
 
 #: src/contents/ui/Reverb.qml:60
-#, fuzzy
 msgid "Decay time"
 msgstr "Abklingzeit"
 
 #: src/contents/ui/Reverb.qml:76
-#, fuzzy
 msgid "Pre delay"
 msgstr "Vorverzögerung"
 
@@ -2787,17 +2754,14 @@ msgid "Diffusion"
 msgstr "Verbreitung"
 
 #: src/contents/ui/Reverb.qml:118
-#, fuzzy
 msgid "High frequency damping"
 msgstr "Hochfrequenz-Dämpfung"
 
 #: src/contents/ui/Reverb.qml:135
-#, fuzzy
 msgid "Bass cut"
 msgstr "Bassschnitt"
 
 #: src/contents/ui/Reverb.qml:152
-#, fuzzy
 msgid "Treble cut"
 msgstr "Höhenschnitt"
 
@@ -2834,129 +2798,109 @@ msgid "Large occupied hall"
 msgstr "Große besetzte Halle"
 
 #: src/contents/ui/RNNoise.qml:44
-#, fuzzy
 msgid "Imported a new RNNoise model file."
-msgstr "Standard RNNoise-Modell"
+msgstr "Neue RNNoise-Modell Datei importiert."
 
 #: src/contents/ui/RNNoise.qml:46
-#, fuzzy
 msgid "Failed to import the RNNoise model file."
-msgstr "Modell-Datei importieren"
+msgstr "RRNoise Modell Datei konnte nicht importiert werden."
 
 #: src/contents/ui/RNNoise.qml:57 src/contents/ui/RNNoise.qml:68
 #: src/contents/ui/RNNoise.qml:282 src/contents/ui/RNNoise.qml:284
-#, fuzzy
 msgid "Standard RNNoise model"
 msgstr "Standard RNNoise-Modell"
 
 #: src/contents/ui/RNNoise.qml:59
-#, fuzzy
 msgid "Standard RNNoise model loaded."
-msgstr "Standard RNNoise-Modell"
+msgstr "Standard RNNoise-Modell geladen."
 
 #: src/contents/ui/RNNoise.qml:64 src/contents/ui/RNNoise.qml:286
-#, fuzzy
 msgid "Using %1 Model"
-msgstr "Nutzt {}"
+msgstr "Nutzt %1 Modell"
 
 #: src/contents/ui/RNNoise.qml:66
-#, fuzzy
 msgid "Loaded the %1 RNNoise model."
-msgstr "Standard RNNoise-Modell"
+msgstr "RNNoise-Modell %1 geladen."
 
 #: src/contents/ui/RNNoise.qml:70
-#, fuzzy
 msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
-msgstr "Die Impulsdatei konnte nicht geladen werden"
+msgstr ""
+"Fehler beim Laden von RRNoise-Modell %1. Fallback zum Standard RRNoise-"
+"Modell."
 
 #: src/contents/ui/RNNoise.qml:89 src/contents/ui/Speex.qml:98
-#, fuzzy
 msgid "Voice detection"
 msgstr "Spracherkennung"
 
 #: src/contents/ui/RNNoise.qml:126
-#, fuzzy
 msgid "Wet level"
 msgstr "Feuchtigkeit"
 
 #: src/contents/ui/RNNoise.qml:166
-#, fuzzy
 msgid "Use the Standard model"
-msgstr "Standard-Modell"
+msgstr "Nutze das Standard-Modell"
 
 #: src/contents/ui/RNNoise.qml:177
-#, fuzzy
 msgid "User Models"
-msgstr "RNNoise-Modelle"
+msgstr "Benutzer Modelle"
 
 #: src/contents/ui/RNNoise.qml:243
-#, fuzzy
 msgid "Delete this model"
 msgstr "diese Modell-Datei entfernen"
 
 #: src/contents/ui/RNNoise.qml:248
-#, fuzzy
 msgid "Removed the %1 RNNoise model."
-msgstr "Standard RNNoise-Modell"
+msgstr "RRNoise-Modell %1 entfernt."
 
 #: src/contents/ui/RNNoise.qml:250
-#, fuzzy
 msgid "Failed to remove the %1 RNNoise model."
-msgstr "Die Impulsdatei konnte nicht geladen werden"
+msgstr "RRNoise-Modell %1 konnte nicht entfernt werden."
 
 #: src/contents/ui/RNNoise.qml:319
-#, fuzzy
 msgid "Import model"
 msgstr "Modell importieren"
 
 #: src/contents/ui/ShortcutsSheet.qml:47
-#, fuzzy
 msgid "Show help"
 msgstr "Hilfe anzeigen"
 
 #: src/contents/ui/ShortcutsSheet.qml:60
 msgid "Toggle fullscreen"
-msgstr ""
+msgstr "Vollbild umschalten"
 
 #: src/contents/ui/ShortcutsSheet.qml:88 src/contents/ui/ShortcutsSheet.qml:311
 #: src/global_shortcuts.hpp:48
-#, fuzzy
 msgid "Toggle global bypass"
-msgstr "Globale Umleitung"
+msgstr "Globalen Bypass umschalten"
 
 #: src/contents/ui/ShortcutsSheet.qml:116
-#, fuzzy
 msgid "Close the window"
 msgstr "Fenster schließen"
 
 #: src/contents/ui/ShortcutsSheet.qml:144
-#, fuzzy
 msgid "Terminate Easy Effects service"
 msgstr "Easy Effects beenden"
 
 #: src/contents/ui/ShortcutsSheet.qml:184
-#, fuzzy
 msgid "Toggle process all inputs"
 msgstr "Alle Eingänge verarbeiten"
 
 #: src/contents/ui/ShortcutsSheet.qml:224
-#, fuzzy
 msgid "Toggle process all outputs"
 msgstr "Alle Ausgänge verarbeiten"
 
 #: src/contents/ui/ShortcutsSheet.qml:237
 #: src/contents/ui/ShortcutsSheet.qml:250
 msgid "Can be used on numeric controls"
-msgstr ""
+msgstr "Kann bei numerischen Kontrollen verwendet werden"
 
 #: src/contents/ui/ShortcutsSheet.qml:265
-#, fuzzy
 msgid "Global Shortcuts"
 msgstr "_Tastenkürzel"
 
 #: src/contents/ui/ShortcutsSheet.qml:351 src/global_shortcuts.hpp:50
 msgid "Toggle microphone monitoring"
-msgstr ""
+msgstr "Mic Monitoring umschalten"
 
 #: src/contents/ui/Speex.qml:44
 msgid "Denoise"
@@ -2967,7 +2911,6 @@ msgid "Dereverberation"
 msgstr "Enthallung"
 
 #: src/contents/ui/Speex.qml:77
-#, fuzzy
 msgid "Noise suppression"
 msgstr "Rauschunterdrückung"
 
@@ -2992,7 +2935,6 @@ msgid "Stereo Matrix"
 msgstr "Stereo-Matrix"
 
 #: src/contents/ui/StereoTools.qml:107
-#, fuzzy
 msgid "LR > LR (Stereo default)"
 msgstr "LR > LR (Stereo Standard)"
 
@@ -3005,47 +2947,38 @@ msgid "MS > LR (Mid-Side to Stereo)"
 msgstr "MS > LR (Mittelseite zu Stereo)"
 
 #: src/contents/ui/StereoTools.qml:107
-#, fuzzy
 msgid "LR > LL (Mono left channel)"
 msgstr "LR > LL (Linker Monokanal)"
 
 #: src/contents/ui/StereoTools.qml:107
-#, fuzzy
 msgid "LR > RR (Mono right channel)"
 msgstr "LR > RR (Rechter Monokanal)"
 
 #: src/contents/ui/StereoTools.qml:107
-#, fuzzy
 msgid "LR > L+R (Mono sum L+R)"
 msgstr "LR > L+R (Monosumme L+R)"
 
 #: src/contents/ui/StereoTools.qml:107
-#, fuzzy
 msgid "LR > RL (Stereo flip channels)"
 msgstr "LR > RL (Stereo Kanäle tauschen)"
 
 #: src/contents/ui/StereoTools.qml:116
-#, fuzzy
 msgid "Side level"
 msgstr "Seitenebene"
 
 #: src/contents/ui/StereoTools.qml:134
-#, fuzzy
 msgid "Side balance"
-msgstr "Seitenausgleich"
+msgstr "Seitenbalance"
 
 #: src/contents/ui/StereoTools.qml:150
-#, fuzzy
 msgid "Middle level"
-msgstr "Mittlere Ebene"
+msgstr "Mittenpegel"
 
 #: src/contents/ui/StereoTools.qml:168
-#, fuzzy
 msgid "Middle panorama"
-msgstr "Mittleres Panorama"
+msgstr "Mitten Panorama"
 
 #: src/contents/ui/StereoTools.qml:202 src/contents/ui/StereoTools.qml:234
-#, fuzzy
 msgid "Invert phase"
 msgstr "Phase umkehren"
 
@@ -3054,91 +2987,81 @@ msgid "Delay"
 msgstr "Verzögerung"
 
 #: src/contents/ui/StereoTools.qml:291
-#, fuzzy
 msgid "Stereo base"
 msgstr "Stereo Basis"
 
 #: src/contents/ui/StereoTools.qml:307
-#, fuzzy
 msgid "Stereo phase"
 msgstr "Stereo Phase"
 
 #: src/main.cpp:312
-#, fuzzy
 msgid "Global audio effects"
-msgstr "_Tastenkürzel"
+msgstr "_Tastenkürzel Toneffekte"
 
 #: src/main.cpp:313
 msgid "© 2017-2025 EasyEffects Team"
 msgstr ""
 
 #: src/main.cpp:315
-#, fuzzy
 msgid "Wellington Wallace"
-msgstr "Wellington Wallace"
+msgstr ""
 
 #: src/main.cpp:315
-#, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
-msgstr "Hüllkurve"
+msgstr "Entwickler"
 
 #: src/main.cpp:319
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
+msgstr "Deine Namen"
 
 #: src/main.cpp:319
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
+msgstr "Deine E-Mail Adressen"
 
 #: src/plugin_base.cpp:274
 msgid "(Mic)"
 msgstr ""
 
 #: src/plugin_base.cpp:277
-#, fuzzy
 msgid "(Speakers)"
-msgstr "Lautsprecher"
+msgstr "(Lautsprecher)"
 
 #: src/plugin_base.cpp:284
-#, fuzzy
 msgid "Output Level Meter"
-msgstr "Ausgabegerät"
+msgstr "Ausgangspegelanzeige"
 
 #: src/presets_manager.cpp:773 src/presets_manager.cpp:780
 #: src/presets_manager.cpp:790 src/presets_manager.cpp:797
 #: src/presets_manager.cpp:807 src/presets_manager.cpp:816
-#, fuzzy
 msgid "Preset not loaded correctly"
-msgstr "Neuer Eingabe-Presetname"
+msgstr "Vorlage nicht korrekt geladen"
 
 #: src/presets_manager.cpp:773
-#, fuzzy
 msgid "Wrong format in excluded apps list"
-msgstr "Liste der ausgeschlossenen Anwendungen"
+msgstr "Falsches Format in der Liste ausgeschlossener Anwendungen"
 
 #: src/presets_manager.cpp:781
 msgid "Generic error while loading excluded apps list"
-msgstr ""
+msgstr "Allgemeiner Fehler beim Laden der ausgeschlossenen Anwendungen"
 
 #: src/presets_manager.cpp:790
-#, fuzzy
 msgid "Wrong format in effects list"
-msgstr "Liste der ausgeschlossenen Anwendungen"
+msgstr "Falsches Format in der Effekt Liste"
 
 #: src/presets_manager.cpp:797
 msgid "Generic error while loading effects list"
-msgstr ""
+msgstr "Allgemeiner Fehler beim Laden der Effektliste"
 
 #: src/presets_manager.cpp:808
 msgid "One or more parameters have a wrong format"
-msgstr ""
+msgstr "Ein oder mehrere Parameter haben ein falsches Format"
 
 #: src/presets_manager.cpp:817
 msgid "Generic error while loading the effect"
-msgstr ""
+msgstr "Allgemeiner Fehler beim Laden des Effektes"
 
 #: src/pw_model_nodes.cpp:522
 msgid "Running"
@@ -3197,9 +3120,8 @@ msgid "Exciter"
 msgstr "Exciter"
 
 #: src/tags_plugin_name.cpp:42
-#, fuzzy
 msgid "Level Meter"
-msgstr "Ausgabegerät"
+msgstr "Pegelanzeige"
 
 #: src/tags_plugin_name.cpp:45
 msgid "Maximizer"
@@ -3230,13 +3152,11 @@ msgid "Stereo Tools"
 msgstr "Stereowerkzeuge"
 
 #: src/units.hpp:56
-#, fuzzy
 msgctxt "left channel abbreviation (single letter)"
 msgid "L"
 msgstr "L"
 
 #: src/units.hpp:57
-#, fuzzy
 msgctxt "left channel abbreviation (single letter)"
 msgid "R"
 msgstr "R"
@@ -3252,10 +3172,9 @@ msgid "dBFS"
 msgstr ""
 
 #: src/units.hpp:60
-#, fuzzy
 msgctxt "decibel per octaves unit abbreviation"
 msgid "dB/oct"
-msgstr "12 dB/okt"
+msgstr "dB/okt"
 
 #: src/units.hpp:61
 msgctxt "thousand abbreviation (single letter)"
@@ -3293,10 +3212,9 @@ msgid "LUFS"
 msgstr ""
 
 #: src/units.hpp:68
-#, fuzzy
 msgctxt "loudness unit abbreviation"
 msgid "LU"
-msgstr "L"
+msgstr ""
 
 #: src/units.hpp:69
 msgctxt "meter unit abbreviation"
@@ -3326,12 +3244,12 @@ msgstr ""
 #: src/units.hpp:74
 msgctxt "frame unit (plural)"
 msgid "frames"
-msgstr ""
+msgstr "Frames"
 
 #: src/units.hpp:75
 msgctxt "frames per second abbreviation"
 msgid "fps"
-msgstr ""
+msgstr "FPS"
 
 #: src/units.hpp:76
 msgctxt "minus infinity abbreviation"
@@ -3344,7 +3262,7 @@ msgstr "Equalizer, Kompressor und andere Audioeffekte"
 
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
-msgstr ""
+msgstr "Einfache Audioeffekte"
 
 #~ msgid "24 dB/oct"
 #~ msgstr "24 dB/okt"
