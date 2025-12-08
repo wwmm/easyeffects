@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-12-07 16:47-0300\n"
-"PO-Revision-Date: 2025-12-02 15:32+0000\n"
+"PO-Revision-Date: 2025-12-08 21:00+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ro/>\n"
@@ -814,19 +814,18 @@ msgid "Channels"
 msgstr "Canale"
 
 #: src/contents/ui/Convolver.qml:381
-#, fuzzy
 msgid "Format"
 msgstr "Format"
 
 #: src/contents/ui/Convolver.qml:420 src/contents/ui/Convolver.qml:526
 msgctxt "The sofa audio file format"
 msgid "SOFA"
-msgstr ""
+msgstr "SOFA"
 
 #: src/contents/ui/Convolver.qml:420
 msgctxt "The wav audio format"
 msgid "WAV"
-msgstr ""
+msgstr "WAV"
 
 #: src/contents/ui/Convolver.qml:439
 msgid "Stereo width"
@@ -838,28 +837,26 @@ msgstr "Câștig automat"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:12
 msgid "Target Orientation"
-msgstr ""
+msgstr "Orientarea către obiectiv"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:23
 #: src/contents/ui/ConvolverSofaDialog.qml:117
 msgid "Azimuth"
-msgstr ""
+msgstr "Azimut"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:38
 #: src/contents/ui/ConvolverSofaDialog.qml:122
-#, fuzzy
 msgid "Elevation"
-msgstr "Reacție"
+msgstr "Altitudine"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:53
 #: src/contents/ui/ConvolverSofaDialog.qml:127
 msgid "Radius"
-msgstr ""
+msgstr "Raza"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:69
-#, fuzzy
 msgid "Status"
-msgstr "Stare"
+msgstr "Starea"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:84
 #: src/contents/ui/PreferencesSheet.qml:46
@@ -867,13 +864,12 @@ msgid "Database"
 msgstr "Baza de date"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:89
-#, fuzzy
 msgid "Measurements"
-msgstr "Măsoară Zgomotul"
+msgstr "Măsurători"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:94
 msgid "Index"
-msgstr ""
+msgstr "Index"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:152
 msgid "Apply"
@@ -3139,10 +3135,9 @@ msgid "cm"
 msgstr "cm"
 
 #: src/units.hpp:71
-#, fuzzy
 msgctxt "degrees (angle)"
 msgid "°"
-msgstr "°C"
+msgstr "°"
 
 #: src/units.hpp:72
 msgctxt "degree Celsius unit abbreviation"

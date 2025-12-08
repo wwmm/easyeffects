@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-12-06 21:39-0300\n"
-"PO-Revision-Date: 2025-12-07 19:47+0000\n"
+"PO-Revision-Date: 2025-12-08 08:00+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hans/>\n"
@@ -3082,7 +3082,7 @@ msgstr "帧"
 #: src/units.hpp:73 src/units.hpp:75
 msgctxt "frames per second abbreviation"
 msgid "fps"
-msgstr "帧"
+msgstr "帧/秒"
 
 #: src/units.hpp:74 src/units.hpp:76
 msgctxt "minus infinity abbreviation"
@@ -3099,26 +3099,24 @@ msgstr "简易音效集锦"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:12
 msgid "Target Orientation"
-msgstr ""
+msgstr "指向"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:23
 #: src/contents/ui/ConvolverSofaDialog.qml:117
 msgid "Azimuth"
-msgstr ""
+msgstr "方位角"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:38
 #: src/contents/ui/ConvolverSofaDialog.qml:122
-#, fuzzy
 msgid "Elevation"
-msgstr "响应"
+msgstr "高度角"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:53
 #: src/contents/ui/ConvolverSofaDialog.qml:127
 msgid "Radius"
-msgstr ""
+msgstr "半径"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:69
-#, fuzzy
 msgid "Status"
 msgstr "状态"
 
@@ -3135,10 +3133,9 @@ msgid "Apply"
 msgstr ""
 
 #: src/units.hpp:71
-#, fuzzy
 msgctxt "degrees (angle)"
 msgid "°"
-msgstr "摄氏度"
+msgstr "度"
 
 #~ msgid "24 dB/oct"
 #~ msgstr "24 分贝每八度"
