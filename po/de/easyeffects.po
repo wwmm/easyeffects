@@ -28,36 +28,36 @@ msgstr ""
 "Autostart kann nicht aktiviert werden. Du musst Easy Effects in deinen "
 "Systemeinstellungen das \"Ausführen im Hintergrund\" erlauben."
 
-#: src/command_line_parser.cpp:42
+#: src/command_line_parser.cpp:42 src/command_line_parser.cpp:44
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "Easy Effects beenden. Nützlich bei der Ausführung im Dienstmodus."
 
-#: src/command_line_parser.cpp:43
+#: src/command_line_parser.cpp:43 src/command_line_parser.cpp:45
 msgid "Reset Easy Effects."
 msgstr "Easy Effects zurücksetzen."
 
-#: src/command_line_parser.cpp:44
+#: src/command_line_parser.cpp:44 src/command_line_parser.cpp:46
 #, fuzzy
 msgid "Hide the window."
 msgstr "Fenster verstecken."
 
-#: src/command_line_parser.cpp:45
+#: src/command_line_parser.cpp:45 src/command_line_parser.cpp:47
 msgid "Global bypass. 1 to enable and 2 to disable."
 msgstr "Globale Umleitung. 1 zum Aktivieren und 2 zum Deaktivieren."
 
-#: src/command_line_parser.cpp:45
+#: src/command_line_parser.cpp:45 src/command_line_parser.cpp:47
 msgid "bypass-state"
 msgstr ""
 
-#: src/command_line_parser.cpp:46
+#: src/command_line_parser.cpp:46 src/command_line_parser.cpp:48
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Lade ein Preset. Beispiel: easyeffects -l music"
 
-#: src/command_line_parser.cpp:46
+#: src/command_line_parser.cpp:46 src/command_line_parser.cpp:48
 msgid "preset-name"
 msgstr "Vorlagenname"
 
-#: src/command_line_parser.cpp:47
+#: src/command_line_parser.cpp:47 src/command_line_parser.cpp:49
 msgid "Show available presets."
 msgstr "Verfügbare Voreinstellungen anzeigen."
 
@@ -66,7 +66,7 @@ msgstr "Verfügbare Voreinstellungen anzeigen."
 msgid "Get the active input/output preset."
 msgstr "Verfügbare Voreinstellungen anzeigen."
 
-#: src/command_line_parser.cpp:48
+#: src/command_line_parser.cpp:48 src/command_line_parser.cpp:50
 msgid "preset-type"
 msgstr ""
 
@@ -75,45 +75,45 @@ msgstr ""
 msgid "Get the active input and output presets."
 msgstr "Verfügbare Voreinstellungen anzeigen."
 
-#: src/command_line_parser.cpp:50
+#: src/command_line_parser.cpp:50 src/command_line_parser.cpp:52
 msgid "Deprecated. Use --service-mode instead."
 msgstr "Veraltet. Benutze --service-mode stattdessen."
 
-#: src/command_line_parser.cpp:51
+#: src/command_line_parser.cpp:51 src/command_line_parser.cpp:53
 msgid "Start the application with service mode turned on."
 msgstr "Startet das Programm mit aktiviertem service-mode."
 
-#: src/command_line_parser.cpp:52
+#: src/command_line_parser.cpp:52 src/command_line_parser.cpp:54
 msgid "Enable debug messages."
 msgstr "Debug-Meldungen aktivieren."
 
-#: src/command_line_parser.cpp:126
+#: src/command_line_parser.cpp:126 src/command_line_parser.cpp:124
 msgid "Must specify preset type: input/output."
 msgstr "Vorlagentyp muss ausgewählt sein: Eingabe/Ausgabe."
 
-#: src/command_line_parser.cpp:166
+#: src/command_line_parser.cpp:166 src/command_line_parser.cpp:164
 #, fuzzy
 msgid "Output presets"
 msgstr "Ausgabe-Voreinstellungen"
 
-#: src/command_line_parser.cpp:168
+#: src/command_line_parser.cpp:168 src/command_line_parser.cpp:166
 msgid "No output presets."
 msgstr "Keine Ausgabe-Voreinstellungen."
 
-#: src/command_line_parser.cpp:179
+#: src/command_line_parser.cpp:179 src/command_line_parser.cpp:177
 #, fuzzy
 msgid "Input presets"
 msgstr "Eingabe-Voreinstellungen"
 
-#: src/command_line_parser.cpp:181
+#: src/command_line_parser.cpp:181 src/command_line_parser.cpp:179
 msgid "No input presets."
 msgstr "Keine Eingabe-Voreinstellungen."
 
-#: src/command_line_parser.cpp:211
+#: src/command_line_parser.cpp:211 src/command_line_parser.cpp:209
 msgid "Specified preset does not exist."
 msgstr "Ausgewählte Vorlage existiert nicht."
 
-#: src/command_line_parser.cpp:229
+#: src/command_line_parser.cpp:229 src/command_line_parser.cpp:227
 msgid "Provided an invalid bypass state."
 msgstr ""
 
@@ -478,6 +478,7 @@ msgstr "Extern"
 #: src/contents/ui/Compressor.qml:259 src/contents/ui/Expander.qml:219
 #: src/contents/ui/Gate.qml:237 src/contents/ui/Limiter.qml:209
 #: src/contents/ui/PageStreamsEffects.qml:409
+#: src/contents/ui/PageStreamsEffects.qml:411
 msgid "Input device"
 msgstr "Eingabegerät"
 
@@ -866,38 +867,48 @@ msgstr ""
 
 #: src/contents/ui/ConvolverSofaDialog.qml:23
 #: src/contents/ui/ConvolverSofaDialog.qml:117
+#: src/contents/ui/ConvolverSofaDialog.qml:119
 msgid "Azimuth"
 msgstr ""
 
 #: src/contents/ui/ConvolverSofaDialog.qml:38
 #: src/contents/ui/ConvolverSofaDialog.qml:122
+#: src/contents/ui/ConvolverSofaDialog.qml:39
+#: src/contents/ui/ConvolverSofaDialog.qml:124
 #, fuzzy
 msgid "Elevation"
 msgstr "Reaktion"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:53
 #: src/contents/ui/ConvolverSofaDialog.qml:127
+#: src/contents/ui/ConvolverSofaDialog.qml:55
+#: src/contents/ui/ConvolverSofaDialog.qml:129
 msgid "Radius"
 msgstr ""
 
 #: src/contents/ui/ConvolverSofaDialog.qml:69
+#: src/contents/ui/ConvolverSofaDialog.qml:71
 msgid "Status"
 msgstr "Status"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:84
 #: src/contents/ui/PreferencesSheet.qml:46
+#: src/contents/ui/ConvolverSofaDialog.qml:86
 msgid "Database"
 msgstr "Datenbank"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:89
+#: src/contents/ui/ConvolverSofaDialog.qml:91
 msgid "Measurements"
 msgstr "Messungen"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:94
+#: src/contents/ui/ConvolverSofaDialog.qml:96
 msgid "Index"
 msgstr ""
 
 #: src/contents/ui/ConvolverSofaDialog.qml:152
+#: src/contents/ui/ConvolverSofaDialog.qml:154
 msgid "Apply"
 msgstr "Anwenden"
 
@@ -1796,6 +1807,7 @@ msgid "Go back"
 msgstr "Zurückgehen"
 
 #: src/contents/ui/Main.qml:451 src/contents/ui/PageStreamsEffects.qml:711
+#: src/contents/ui/PageStreamsEffects.qml:713
 msgid "Effects"
 msgstr "Effekte"
 
@@ -1920,40 +1932,51 @@ msgid "Audio stream not modified"
 msgstr "Audio Stream nicht verändert"
 
 #: src/contents/ui/PageStreamsEffects.qml:344
+#: src/contents/ui/PageStreamsEffects.qml:346
 msgid "Add effect"
 msgstr "Effekt hinzufügen"
 
 #: src/contents/ui/PageStreamsEffects.qml:352
+#: src/contents/ui/PageStreamsEffects.qml:354
 msgid "Close"
 msgstr "Schließen"
 
 #: src/contents/ui/PageStreamsEffects.qml:356
+#: src/contents/ui/PageStreamsEffects.qml:358
 msgid "Expand the list of effects pipeline"
 msgstr ""
 
 #: src/contents/ui/PageStreamsEffects.qml:356
+#: src/contents/ui/PageStreamsEffects.qml:358
 msgid "Reduce the list of effects pipeline"
 msgstr ""
 
 #: src/contents/ui/PageStreamsEffects.qml:409
 #: src/contents/ui/PageStreamsEffects.qml:698
+#: src/contents/ui/PageStreamsEffects.qml:411
+#: src/contents/ui/PageStreamsEffects.qml:700
 msgid "Players"
 msgstr "Spieler"
 
 #: src/contents/ui/PageStreamsEffects.qml:418
+#: src/contents/ui/PageStreamsEffects.qml:420
 msgid "Output device"
 msgstr "Ausgabegerät"
 
 #: src/contents/ui/PageStreamsEffects.qml:418
 #: src/contents/ui/PageStreamsEffects.qml:698
+#: src/contents/ui/PageStreamsEffects.qml:420
+#: src/contents/ui/PageStreamsEffects.qml:700
 msgid "Recorders"
 msgstr "Rekorder"
 
 #: src/contents/ui/PageStreamsEffects.qml:729
+#: src/contents/ui/PageStreamsEffects.qml:731
 msgid "Input monitoring"
 msgstr "Eingangsüberwachung"
 
 #: src/contents/ui/PageStreamsEffects.qml:742
+#: src/contents/ui/PageStreamsEffects.qml:744
 msgid "Excluded apps"
 msgstr "Ausgeschlossene Apps"
 
@@ -2998,11 +3021,11 @@ msgstr "Stereo Phase"
 msgid "Global audio effects"
 msgstr "_Tastenkürzel Toneffekte"
 
-#: src/main.cpp:313
+#: src/main.cpp:313 src/main.cpp:320
 msgid "© 2017-2025 EasyEffects Team"
 msgstr ""
 
-#: src/main.cpp:315
+#: src/main.cpp:315 src/main.cpp:322
 msgid "Wellington Wallace"
 msgstr ""
 
@@ -3161,12 +3184,12 @@ msgctxt "left channel abbreviation (single letter)"
 msgid "R"
 msgstr "R"
 
-#: src/units.hpp:58
+#: src/units.hpp:58 src/units.hpp:67
 msgctxt "decibel unit abbreviation"
 msgid "dB"
 msgstr ""
 
-#: src/units.hpp:59
+#: src/units.hpp:59 src/units.hpp:68
 msgctxt "decibel full scale unit abbreviation"
 msgid "dBFS"
 msgstr ""
@@ -3176,52 +3199,52 @@ msgctxt "decibel per octaves unit abbreviation"
 msgid "dB/oct"
 msgstr "dB/okt"
 
-#: src/units.hpp:61
+#: src/units.hpp:61 src/units.hpp:84
 msgctxt "thousand abbreviation (single letter)"
 msgid "k"
 msgstr ""
 
-#: src/units.hpp:62
+#: src/units.hpp:62 src/units.hpp:70
 msgctxt "seconds unit abbreviation"
 msgid "s"
 msgstr ""
 
-#: src/units.hpp:63
+#: src/units.hpp:63 src/units.hpp:71
 msgctxt "milliseconds unit abbreviation"
 msgid "ms"
 msgstr ""
 
-#: src/units.hpp:64
+#: src/units.hpp:64 src/units.hpp:72
 msgctxt "Hertz unit abbreviation"
 msgid "Hz"
 msgstr ""
 
-#: src/units.hpp:65
+#: src/units.hpp:65 src/units.hpp:73
 msgctxt "kiloHertz unit abbreviation"
 msgid "kHz"
 msgstr ""
 
-#: src/units.hpp:66
+#: src/units.hpp:66 src/units.hpp:85
 msgctxt "percentage symbol"
 msgid "%"
 msgstr ""
 
-#: src/units.hpp:67
+#: src/units.hpp:67 src/units.hpp:74
 msgctxt "loudness full scale unit abbreviation"
 msgid "LUFS"
 msgstr ""
 
-#: src/units.hpp:68
+#: src/units.hpp:68 src/units.hpp:75
 msgctxt "loudness unit abbreviation"
 msgid "LU"
 msgstr ""
 
-#: src/units.hpp:69
+#: src/units.hpp:69 src/units.hpp:76
 msgctxt "meter unit abbreviation"
 msgid "m"
 msgstr ""
 
-#: src/units.hpp:70
+#: src/units.hpp:70 src/units.hpp:77
 msgctxt "centimeter unit abbreviation"
 msgid "cm"
 msgstr ""
@@ -3236,7 +3259,7 @@ msgctxt "degree Celsius unit abbreviation"
 msgid "°C"
 msgstr ""
 
-#: src/units.hpp:73
+#: src/units.hpp:73 src/units.hpp:79
 msgctxt "bit unit (plural)"
 msgid "bits"
 msgstr ""
@@ -3251,7 +3274,7 @@ msgctxt "frames per second abbreviation"
 msgid "fps"
 msgstr "FPS"
 
-#: src/units.hpp:76
+#: src/units.hpp:76 src/units.hpp:87
 msgctxt "minus infinity abbreviation"
 msgid "-inf"
 msgstr ""
@@ -3263,6 +3286,36 @@ msgstr "Equalizer, Kompressor und andere Audioeffekte"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "Einfache Audioeffekte"
+
+#: src/command_line_parser.cpp:50
+#, fuzzy
+msgid "Get the last loaded input/output preset."
+msgstr "Verfügbare Voreinstellungen anzeigen."
+
+#: src/command_line_parser.cpp:51
+#, fuzzy
+msgid "Get the last loaded input and output presets."
+msgstr "Verfügbare Voreinstellungen anzeigen."
+
+#: src/units.hpp:63
+msgctxt "The SOFA audio file format"
+msgid "SOFA"
+msgstr ""
+
+#: src/units.hpp:64
+msgctxt "The WAV audio file format"
+msgid "WAV"
+msgstr ""
+
+#: src/units.hpp:78
+msgctxt "degrees Celsius unit abbreviation"
+msgid "°C"
+msgstr ""
+
+#: src/units.hpp:86
+msgctxt "degrees (angle) symbol"
+msgid "°"
+msgstr ""
 
 #~ msgid "24 dB/oct"
 #~ msgstr "24 dB/okt"

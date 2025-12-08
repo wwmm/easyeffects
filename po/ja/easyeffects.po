@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-12-07 16:47-0300\n"
+"POT-Creation-Date: 2025-12-08 23:12+0000\n"
 "PO-Revision-Date: 2025-11-23 11:51+0000\n"
 "Last-Translator: Suu <suunya21@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
@@ -29,89 +29,91 @@ msgstr ""
 "ステムのアプリ設定で Easy Effects の「バックグラウンドでの実行」権限を許可し"
 "てください。"
 
-#: src/command_line_parser.cpp:42
+#: src/command_line_parser.cpp:44
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr ""
 "Easy Effects を終了します。サービスモードで動作しているときに便利です。"
 
-#: src/command_line_parser.cpp:43
+#: src/command_line_parser.cpp:45
 msgid "Reset Easy Effects."
 msgstr "Easy Effects をリセットします。"
 
-#: src/command_line_parser.cpp:44
+#: src/command_line_parser.cpp:46
 msgid "Hide the window."
 msgstr "ウィンドウを隠す。"
 
-#: src/command_line_parser.cpp:45
+#: src/command_line_parser.cpp:47
 msgid "Global bypass. 1 to enable and 2 to disable."
 msgstr ""
 "グローバルバイパス。1 を指定すると有効化し、2 を指定すると無効化します。"
 
-#: src/command_line_parser.cpp:45
+#: src/command_line_parser.cpp:47
 msgid "bypass-state"
 msgstr "bypass-state"
 
-#: src/command_line_parser.cpp:46
+#: src/command_line_parser.cpp:48
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "プリセットを読み込みます。例: easyeffects -l music"
 
-#: src/command_line_parser.cpp:46
+#: src/command_line_parser.cpp:48
 msgid "preset-name"
 msgstr "preset-name"
 
-#: src/command_line_parser.cpp:47
+#: src/command_line_parser.cpp:49
 msgid "Show available presets."
 msgstr "利用可能なプリセットを表示します。"
 
-#: src/command_line_parser.cpp:48
-msgid "Get the active input/output preset."
+#: src/command_line_parser.cpp:50
+#, fuzzy
+msgid "Get the last loaded input/output preset."
 msgstr "有効な入力/出力プリセットを取得します。"
 
-#: src/command_line_parser.cpp:48
+#: src/command_line_parser.cpp:50
 msgid "preset-type"
 msgstr "プリセットの種類"
 
-#: src/command_line_parser.cpp:49
-msgid "Get the active input and output presets."
+#: src/command_line_parser.cpp:51
+#, fuzzy
+msgid "Get the last loaded input and output presets."
 msgstr "有効な入力プリセットと出力プリセットを取得します。"
 
-#: src/command_line_parser.cpp:50
+#: src/command_line_parser.cpp:52
 msgid "Deprecated. Use --service-mode instead."
 msgstr "非推奨です。代わりに --service-mode を使用してください。"
 
-#: src/command_line_parser.cpp:51
+#: src/command_line_parser.cpp:53
 msgid "Start the application with service mode turned on."
 msgstr "サービスモードをオンにしてアプリケーションを起動します。"
 
-#: src/command_line_parser.cpp:52
+#: src/command_line_parser.cpp:54
 msgid "Enable debug messages."
 msgstr "デバッグメッセージを有効化します。"
 
-#: src/command_line_parser.cpp:126
+#: src/command_line_parser.cpp:124
 msgid "Must specify preset type: input/output."
 msgstr "プリセットタイプを指定してください: input/output。"
 
-#: src/command_line_parser.cpp:166
+#: src/command_line_parser.cpp:164
 msgid "Output presets"
 msgstr "出力プリセット"
 
-#: src/command_line_parser.cpp:168
+#: src/command_line_parser.cpp:166
 msgid "No output presets."
 msgstr "出力プリセットがありません。"
 
-#: src/command_line_parser.cpp:179
+#: src/command_line_parser.cpp:177
 msgid "Input presets"
 msgstr "入力プリセット"
 
-#: src/command_line_parser.cpp:181
+#: src/command_line_parser.cpp:179
 msgid "No input presets."
 msgstr "入力プリセットがありません。"
 
-#: src/command_line_parser.cpp:211
+#: src/command_line_parser.cpp:209
 msgid "Specified preset does not exist."
 msgstr "指定されたプリセットは存在しません。"
 
-#: src/command_line_parser.cpp:229
+#: src/command_line_parser.cpp:227
 msgid "Provided an invalid bypass state."
 msgstr "無効なバイパス状態が提供されました。"
 
@@ -206,9 +208,9 @@ msgstr "出力ゲイン"
 #: src/contents/ui/Loudness.qml:153 src/contents/ui/Maximizer.qml:100
 #: src/contents/ui/MultibandCompressor.qml:946
 #: src/contents/ui/MultibandGate.qml:919 src/contents/ui/Pitch.qml:246
-#: src/contents/ui/Reverb.qml:297 src/contents/ui/RNNoise.qml:57
-#: src/contents/ui/RNNoise.qml:68 src/contents/ui/RNNoise.qml:282
-#: src/contents/ui/RNNoise.qml:284 src/contents/ui/RNNoise.qml:302
+#: src/contents/ui/RNNoise.qml:57 src/contents/ui/RNNoise.qml:68
+#: src/contents/ui/RNNoise.qml:282 src/contents/ui/RNNoise.qml:284
+#: src/contents/ui/RNNoise.qml:302 src/contents/ui/Reverb.qml:297
 #: src/contents/ui/Speex.qml:155 src/contents/ui/StereoTools.qml:370
 msgid "Using %1"
 msgstr "%1 を使用中"
@@ -292,8 +294,8 @@ msgstr "聞く"
 #: src/contents/ui/Limiter.qml:622 src/contents/ui/Loudness.qml:195
 #: src/contents/ui/Main.qml:565 src/contents/ui/Maximizer.qml:132
 #: src/contents/ui/MultibandCompressor.qml:995
-#: src/contents/ui/MultibandGate.qml:968 src/contents/ui/Reverb.qml:337
-#: src/contents/ui/RNNoise.qml:327 src/contents/ui/Speex.qml:173
+#: src/contents/ui/MultibandGate.qml:968 src/contents/ui/RNNoise.qml:327
+#: src/contents/ui/Reverb.qml:337 src/contents/ui/Speex.qml:173
 #: src/contents/ui/StereoTools.qml:402
 msgid "Reset"
 msgstr "リセット"
@@ -364,8 +366,8 @@ msgstr "コンプレッサー"
 
 #: src/contents/ui/Compressor.qml:61 src/contents/ui/Compressor.qml:283
 #: src/contents/ui/Deesser.qml:70 src/contents/ui/Delay.qml:51
-#: src/contents/ui/Delay.qml:204 src/contents/ui/EqualizerBandMenu.qml:40
-#: src/contents/ui/Equalizer.qml:121 src/contents/ui/Expander.qml:61
+#: src/contents/ui/Delay.qml:204 src/contents/ui/Equalizer.qml:121
+#: src/contents/ui/EqualizerBandMenu.qml:40 src/contents/ui/Expander.qml:61
 #: src/contents/ui/Expander.qml:243 src/contents/ui/Gate.qml:261
 #: src/contents/ui/Limiter.qml:54 src/contents/ui/Loudness.qml:51
 #: src/contents/ui/MultibandCompressor.qml:417
@@ -463,7 +465,7 @@ msgstr "外部"
 
 #: src/contents/ui/Compressor.qml:259 src/contents/ui/Expander.qml:219
 #: src/contents/ui/Gate.qml:237 src/contents/ui/Limiter.qml:209
-#: src/contents/ui/PageStreamsEffects.qml:409
+#: src/contents/ui/PageStreamsEffects.qml:411
 msgid "Input device"
 msgstr "入力デバイス"
 
@@ -706,51 +708,6 @@ msgstr "エンベロープ"
 msgid "Stereo split"
 msgstr "ステレオ分割"
 
-#: src/contents/ui/ConvolverImpulseDialog.qml:31
-msgid "Imported a new Convolver impulse file."
-msgstr "新しいコンボルバーインパルスファイルをインポートしました。"
-
-#: src/contents/ui/ConvolverImpulseDialog.qml:33
-msgid "Failed to import the Convolver impulse file."
-msgstr "コンボルバーインパルスファイルのインポートに失敗しました。"
-
-#: src/contents/ui/ConvolverImpulseDialog.qml:47
-#: src/contents/ui/MenuAddPlugins.qml:168
-#: src/contents/ui/PresetsCommunityPage.qml:46
-#: src/contents/ui/PresetsLocalPage.qml:146
-msgid "Search"
-msgstr "検索"
-
-#: src/contents/ui/ConvolverImpulseDialog.qml:90
-msgid "Remove Impulse Response"
-msgstr "インパルスレスポンスを削除"
-
-#: src/contents/ui/ConvolverImpulseDialog.qml:91
-msgid "Are you sure you want to remove this impulse response from the list?"
-msgstr "このインパルスレスポンスを一覧から削除してもよろしいですか？"
-
-#: src/contents/ui/ConvolverImpulseDialog.qml:95
-msgid "Removed the %1 Convolver impulse."
-msgstr "コンボルバーインパルス「%1」を削除しました。"
-
-#: src/contents/ui/ConvolverImpulseDialog.qml:97
-msgid "Failed to remove the %1 Convolver impulse."
-msgstr "コンボルバーインパルス「%1」の削除に失敗しました。"
-
-#: src/contents/ui/ConvolverImpulseDialog.qml:114
-msgid "Delete this impulse"
-msgstr "このインパルスを削除"
-
-#: src/contents/ui/ConvolverImpulseDialog.qml:153
-msgid "Import impulse"
-msgstr "インパルスをインポート"
-
-#: src/contents/ui/ConvolverImpulseDialog.qml:163
-#: src/contents/ui/MenuAddPlugins.qml:184 src/contents/ui/PresetsDialog.qml:107
-msgctxt "@action:button"
-msgid "Close"
-msgstr "閉じる"
-
 #: src/contents/ui/Convolver.qml:48
 msgid "Loaded the %1 Convolver impulse."
 msgstr "コンボルバーインパルス「%1」を読み込みました。"
@@ -816,16 +773,6 @@ msgstr "チャンネル"
 msgid "Format"
 msgstr "フォルマント"
 
-#: src/contents/ui/Convolver.qml:420 src/contents/ui/Convolver.qml:526
-msgctxt "The sofa audio file format"
-msgid "SOFA"
-msgstr ""
-
-#: src/contents/ui/Convolver.qml:420
-msgctxt "The wav audio format"
-msgid "WAV"
-msgstr ""
-
 #: src/contents/ui/Convolver.qml:439
 msgid "Stereo width"
 msgstr "ステレオ幅"
@@ -834,45 +781,90 @@ msgstr "ステレオ幅"
 msgid "Autogain"
 msgstr "オートゲイン"
 
+#: src/contents/ui/ConvolverImpulseDialog.qml:31
+msgid "Imported a new Convolver impulse file."
+msgstr "新しいコンボルバーインパルスファイルをインポートしました。"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:33
+msgid "Failed to import the Convolver impulse file."
+msgstr "コンボルバーインパルスファイルのインポートに失敗しました。"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:47
+#: src/contents/ui/MenuAddPlugins.qml:168
+#: src/contents/ui/PresetsCommunityPage.qml:46
+#: src/contents/ui/PresetsLocalPage.qml:146
+msgid "Search"
+msgstr "検索"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:90
+msgid "Remove Impulse Response"
+msgstr "インパルスレスポンスを削除"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:91
+msgid "Are you sure you want to remove this impulse response from the list?"
+msgstr "このインパルスレスポンスを一覧から削除してもよろしいですか？"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:95
+msgid "Removed the %1 Convolver impulse."
+msgstr "コンボルバーインパルス「%1」を削除しました。"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:97
+msgid "Failed to remove the %1 Convolver impulse."
+msgstr "コンボルバーインパルス「%1」の削除に失敗しました。"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:114
+msgid "Delete this impulse"
+msgstr "このインパルスを削除"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:153
+msgid "Import impulse"
+msgstr "インパルスをインポート"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:163
+#: src/contents/ui/MenuAddPlugins.qml:184 src/contents/ui/PresetsDialog.qml:107
+msgctxt "@action:button"
+msgid "Close"
+msgstr "閉じる"
+
 #: src/contents/ui/ConvolverSofaDialog.qml:12
 msgid "Target Orientation"
 msgstr ""
 
 #: src/contents/ui/ConvolverSofaDialog.qml:23
-#: src/contents/ui/ConvolverSofaDialog.qml:117
+#: src/contents/ui/ConvolverSofaDialog.qml:119
 msgid "Azimuth"
 msgstr ""
 
-#: src/contents/ui/ConvolverSofaDialog.qml:38
-#: src/contents/ui/ConvolverSofaDialog.qml:122
+#: src/contents/ui/ConvolverSofaDialog.qml:39
+#: src/contents/ui/ConvolverSofaDialog.qml:124
 #, fuzzy
 msgid "Elevation"
 msgstr "反応"
 
-#: src/contents/ui/ConvolverSofaDialog.qml:53
-#: src/contents/ui/ConvolverSofaDialog.qml:127
+#: src/contents/ui/ConvolverSofaDialog.qml:55
+#: src/contents/ui/ConvolverSofaDialog.qml:129
 msgid "Radius"
 msgstr ""
 
-#: src/contents/ui/ConvolverSofaDialog.qml:69
+#: src/contents/ui/ConvolverSofaDialog.qml:71
 #, fuzzy
 msgid "Status"
 msgstr "状態"
 
-#: src/contents/ui/ConvolverSofaDialog.qml:84
+#: src/contents/ui/ConvolverSofaDialog.qml:86
 #: src/contents/ui/PreferencesSheet.qml:46
 msgid "Database"
 msgstr "データベース"
 
-#: src/contents/ui/ConvolverSofaDialog.qml:89
+#: src/contents/ui/ConvolverSofaDialog.qml:91
 msgid "Measurements"
 msgstr ""
 
-#: src/contents/ui/ConvolverSofaDialog.qml:94
+#: src/contents/ui/ConvolverSofaDialog.qml:96
 msgid "Index"
 msgstr ""
 
-#: src/contents/ui/ConvolverSofaDialog.qml:152
+#: src/contents/ui/ConvolverSofaDialog.qml:154
 msgid "Apply"
 msgstr ""
 
@@ -897,6 +889,10 @@ msgstr "デフォルト"
 msgid "Presets"
 msgstr "プリセット"
 
+#: src/contents/ui/Crystalizer.qml:106
+msgid "Adaptive intensity"
+msgstr "アダプティブ強度"
+
 #: src/contents/ui/CrystalizerBand.qml:39
 #: src/contents/ui/EqualizerBandMenu.qml:166
 #: src/contents/ui/MultibandCompressor.qml:73
@@ -910,10 +906,6 @@ msgstr "ミュート"
 #: src/contents/ui/MultibandGate.qml:91
 msgid "Bypass"
 msgstr "バイパス"
-
-#: src/contents/ui/Crystalizer.qml:106
-msgid "Adaptive intensity"
-msgstr "アダプティブ強度"
 
 #: src/contents/ui/DeepFilterNet.qml:32
 msgid "Attenuation limit"
@@ -1153,111 +1145,6 @@ msgstr "レベルメーター付き入出力ゲイン制御"
 msgid "Input"
 msgstr "入力"
 
-#: src/contents/ui/EqualizerBandMenu.qml:13
-#: src/contents/ui/MultibandCompressor.qml:652
-#: src/contents/ui/MultibandCompressor.qml:911
-#: src/contents/ui/MultibandGate.qml:625 src/contents/ui/MultibandGate.qml:884
-msgid "Band"
-msgstr "バンド"
-
-#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
-msgid "Bell"
-msgstr "ベル"
-
-#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
-msgid "High-shelf"
-msgstr "ハイシェルフ"
-
-#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
-msgid "Low-shelf"
-msgstr "ローシェルフ"
-
-#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
-msgid "Notch"
-msgstr "ノッチ"
-
-#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
-msgid "Resonance"
-msgstr "反響"
-
-#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
-msgid "Allpass"
-msgstr "オールパス"
-
-#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
-msgid "Bandpass"
-msgstr "バンドパス"
-
-#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
-msgid "Ladder-pass"
-msgstr "ラダーパス"
-
-#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
-msgid "Ladder-rejection"
-msgstr "ラダーリジェクション"
-
-#: src/contents/ui/EqualizerBandMenu.qml:44 src/contents/ui/Filter.qml:63
-msgid "RLC (BT)"
-msgstr "RLC (BT)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:44 src/contents/ui/Filter.qml:63
-msgid "RLC (MT)"
-msgstr "RLC (MT)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:44 src/contents/ui/Filter.qml:63
-msgid "BWC (BT)"
-msgstr "BWC (BT)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:44 src/contents/ui/Filter.qml:63
-msgid "BWC (MT)"
-msgstr "BWC (MT)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:44 src/contents/ui/Filter.qml:63
-msgid "LRX (BT)"
-msgstr "LRX (BT)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:44 src/contents/ui/Filter.qml:63
-msgid "LRX (MT)"
-msgstr "LRX (MT)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:44 src/contents/ui/Filter.qml:63
-msgid "APO (DR)"
-msgstr "APO (DR)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:54 src/contents/ui/Filter.qml:87
-msgid "Slope"
-msgstr "スロープ"
-
-#: src/contents/ui/EqualizerBandMenu.qml:75 src/contents/ui/Filter.qml:108
-#: src/contents/ui/MultibandCompressor.qml:182
-#: src/contents/ui/MultibandGate.qml:119 src/contents/ui/PipeWirePage.qml:396
-msgid "Frequency"
-msgstr "周波数"
-
-#: src/contents/ui/EqualizerBandMenu.qml:98 src/contents/ui/Filter.qml:139
-#: src/contents/ui/Limiter.qml:471 src/contents/ui/MultibandCompressor.qml:342
-#: src/contents/ui/MultibandGate.qml:228
-msgid "Gain"
-msgstr "ゲイン"
-
-#: src/contents/ui/EqualizerBandMenu.qml:121 src/contents/ui/Filter.qml:155
-msgid "Quality"
-msgstr "Q値"
-
-#: src/contents/ui/EqualizerBandMenu.qml:144 src/contents/ui/Filter.qml:124
-msgid "Width"
-msgstr "帯域幅"
-
-#: src/contents/ui/EqualizerBandMenu.qml:150
-msgid "oct"
-msgstr "oct"
-
-#: src/contents/ui/EqualizerBandMenu.qml:178
-#: src/contents/ui/MultibandCompressor.qml:82
-#: src/contents/ui/MultibandGate.qml:82
-msgid "Solo"
-msgstr "ソロ"
-
 #: src/contents/ui/Equalizer.qml:49 src/contents/ui/Equalizer.qml:89
 msgid "APO preset"
 msgstr "APO プリセット"
@@ -1385,6 +1272,111 @@ msgstr "APO (GraphicEQ) をインポート"
 #: src/contents/ui/Equalizer.qml:359
 msgid "Export APO"
 msgstr "APO をエクスポート"
+
+#: src/contents/ui/EqualizerBandMenu.qml:13
+#: src/contents/ui/MultibandCompressor.qml:652
+#: src/contents/ui/MultibandCompressor.qml:911
+#: src/contents/ui/MultibandGate.qml:625 src/contents/ui/MultibandGate.qml:884
+msgid "Band"
+msgstr "バンド"
+
+#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
+msgid "Bell"
+msgstr "ベル"
+
+#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
+msgid "High-shelf"
+msgstr "ハイシェルフ"
+
+#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
+msgid "Low-shelf"
+msgstr "ローシェルフ"
+
+#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
+msgid "Notch"
+msgstr "ノッチ"
+
+#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
+msgid "Resonance"
+msgstr "反響"
+
+#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
+msgid "Allpass"
+msgstr "オールパス"
+
+#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
+msgid "Bandpass"
+msgstr "バンドパス"
+
+#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
+msgid "Ladder-pass"
+msgstr "ラダーパス"
+
+#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
+msgid "Ladder-rejection"
+msgstr "ラダーリジェクション"
+
+#: src/contents/ui/EqualizerBandMenu.qml:44 src/contents/ui/Filter.qml:63
+msgid "RLC (BT)"
+msgstr "RLC (BT)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:44 src/contents/ui/Filter.qml:63
+msgid "RLC (MT)"
+msgstr "RLC (MT)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:44 src/contents/ui/Filter.qml:63
+msgid "BWC (BT)"
+msgstr "BWC (BT)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:44 src/contents/ui/Filter.qml:63
+msgid "BWC (MT)"
+msgstr "BWC (MT)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:44 src/contents/ui/Filter.qml:63
+msgid "LRX (BT)"
+msgstr "LRX (BT)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:44 src/contents/ui/Filter.qml:63
+msgid "LRX (MT)"
+msgstr "LRX (MT)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:44 src/contents/ui/Filter.qml:63
+msgid "APO (DR)"
+msgstr "APO (DR)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:54 src/contents/ui/Filter.qml:87
+msgid "Slope"
+msgstr "スロープ"
+
+#: src/contents/ui/EqualizerBandMenu.qml:75 src/contents/ui/Filter.qml:108
+#: src/contents/ui/MultibandCompressor.qml:182
+#: src/contents/ui/MultibandGate.qml:119 src/contents/ui/PipeWirePage.qml:396
+msgid "Frequency"
+msgstr "周波数"
+
+#: src/contents/ui/EqualizerBandMenu.qml:98 src/contents/ui/Filter.qml:139
+#: src/contents/ui/Limiter.qml:471 src/contents/ui/MultibandCompressor.qml:342
+#: src/contents/ui/MultibandGate.qml:228
+msgid "Gain"
+msgstr "ゲイン"
+
+#: src/contents/ui/EqualizerBandMenu.qml:121 src/contents/ui/Filter.qml:155
+msgid "Quality"
+msgstr "Q値"
+
+#: src/contents/ui/EqualizerBandMenu.qml:144 src/contents/ui/Filter.qml:124
+msgid "Width"
+msgstr "帯域幅"
+
+#: src/contents/ui/EqualizerBandMenu.qml:150
+msgid "oct"
+msgstr "oct"
+
+#: src/contents/ui/EqualizerBandMenu.qml:178
+#: src/contents/ui/MultibandCompressor.qml:82
+#: src/contents/ui/MultibandGate.qml:82
+msgid "Solo"
+msgstr "ソロ"
 
 #: src/contents/ui/Exciter.qml:142
 msgid "Ceil active"
@@ -1732,7 +1724,7 @@ msgstr "終了"
 msgid "Go back"
 msgstr "戻る"
 
-#: src/contents/ui/Main.qml:451 src/contents/ui/PageStreamsEffects.qml:711
+#: src/contents/ui/Main.qml:451 src/contents/ui/PageStreamsEffects.qml:713
 msgid "Effects"
 msgstr "エフェクト"
 
@@ -1853,41 +1845,41 @@ msgstr "エフェクトなし"
 msgid "Audio stream not modified"
 msgstr "オーディオストリームは変更されていません"
 
-#: src/contents/ui/PageStreamsEffects.qml:344
+#: src/contents/ui/PageStreamsEffects.qml:346
 msgid "Add effect"
 msgstr "エフェクト追加"
 
-#: src/contents/ui/PageStreamsEffects.qml:352
+#: src/contents/ui/PageStreamsEffects.qml:354
 msgid "Close"
 msgstr "閉じる"
 
-#: src/contents/ui/PageStreamsEffects.qml:356
+#: src/contents/ui/PageStreamsEffects.qml:358
 msgid "Expand the list of effects pipeline"
 msgstr "エフェクトパイプラインのリストを展開"
 
-#: src/contents/ui/PageStreamsEffects.qml:356
+#: src/contents/ui/PageStreamsEffects.qml:358
 msgid "Reduce the list of effects pipeline"
 msgstr "エフェクトパイプラインのリストを折りたたむ"
 
-#: src/contents/ui/PageStreamsEffects.qml:409
-#: src/contents/ui/PageStreamsEffects.qml:698
+#: src/contents/ui/PageStreamsEffects.qml:411
+#: src/contents/ui/PageStreamsEffects.qml:700
 msgid "Players"
 msgstr "プレーヤー"
 
-#: src/contents/ui/PageStreamsEffects.qml:418
+#: src/contents/ui/PageStreamsEffects.qml:420
 msgid "Output device"
 msgstr "出力デバイス"
 
-#: src/contents/ui/PageStreamsEffects.qml:418
-#: src/contents/ui/PageStreamsEffects.qml:698
+#: src/contents/ui/PageStreamsEffects.qml:420
+#: src/contents/ui/PageStreamsEffects.qml:700
 msgid "Recorders"
 msgstr "レコーダー"
 
-#: src/contents/ui/PageStreamsEffects.qml:729
+#: src/contents/ui/PageStreamsEffects.qml:731
 msgid "Input monitoring"
 msgstr "入力モニター"
 
-#: src/contents/ui/PageStreamsEffects.qml:742
+#: src/contents/ui/PageStreamsEffects.qml:744
 msgid "Excluded apps"
 msgstr "除外アプリ"
 
@@ -2641,6 +2633,69 @@ msgstr "このプリセットの名前を変更"
 msgid "Delete this preset"
 msgstr "このプリセットを削除"
 
+#: src/contents/ui/RNNoise.qml:44
+msgid "Imported a new RNNoise model file."
+msgstr "新しい RNNoise モデルファイルをインポートしました。"
+
+#: src/contents/ui/RNNoise.qml:46
+msgid "Failed to import the RNNoise model file."
+msgstr "RNNoise モデルファイルのインポートに失敗しました。"
+
+#: src/contents/ui/RNNoise.qml:57 src/contents/ui/RNNoise.qml:68
+#: src/contents/ui/RNNoise.qml:282 src/contents/ui/RNNoise.qml:284
+msgid "Standard RNNoise model"
+msgstr "標準 RNNoise モデル"
+
+#: src/contents/ui/RNNoise.qml:59
+msgid "Standard RNNoise model loaded."
+msgstr "標準 RNNoise モデルが読み込まれました。"
+
+#: src/contents/ui/RNNoise.qml:64 src/contents/ui/RNNoise.qml:286
+msgid "Using %1 Model"
+msgstr "%1 モデルを使用中"
+
+#: src/contents/ui/RNNoise.qml:66
+msgid "Loaded the %1 RNNoise model."
+msgstr "%1 RNNoise モデルを読み込みました。"
+
+#: src/contents/ui/RNNoise.qml:70
+msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
+msgstr ""
+"%1 モデルの読み込みに失敗しました。標準 RNNoise モデルにフォールバックしま"
+"す。"
+
+#: src/contents/ui/RNNoise.qml:89 src/contents/ui/Speex.qml:98
+msgid "Voice detection"
+msgstr "音声検出"
+
+#: src/contents/ui/RNNoise.qml:126
+msgid "Wet level"
+msgstr "ウェットレベル"
+
+#: src/contents/ui/RNNoise.qml:166
+msgid "Use the Standard model"
+msgstr "標準モデルを使用"
+
+#: src/contents/ui/RNNoise.qml:177
+msgid "User Models"
+msgstr "ユーザーモデル"
+
+#: src/contents/ui/RNNoise.qml:243
+msgid "Delete this model"
+msgstr "このモデルを削除"
+
+#: src/contents/ui/RNNoise.qml:248
+msgid "Removed the %1 RNNoise model."
+msgstr "%1 RNNoise モデルを削除しました。"
+
+#: src/contents/ui/RNNoise.qml:250
+msgid "Failed to remove the %1 RNNoise model."
+msgstr "%1 RNNoise モデルの削除に失敗しました。"
+
+#: src/contents/ui/RNNoise.qml:319
+msgid "Import model"
+msgstr "モデルをインポート"
+
 #: src/contents/ui/Reverb.qml:47
 msgid "Room size"
 msgstr "部屋のサイズ"
@@ -2720,69 +2775,6 @@ msgstr "ディスコ"
 #: src/contents/ui/Reverb.qml:278
 msgid "Large occupied hall"
 msgstr "人のいる大きなホール"
-
-#: src/contents/ui/RNNoise.qml:44
-msgid "Imported a new RNNoise model file."
-msgstr "新しい RNNoise モデルファイルをインポートしました。"
-
-#: src/contents/ui/RNNoise.qml:46
-msgid "Failed to import the RNNoise model file."
-msgstr "RNNoise モデルファイルのインポートに失敗しました。"
-
-#: src/contents/ui/RNNoise.qml:57 src/contents/ui/RNNoise.qml:68
-#: src/contents/ui/RNNoise.qml:282 src/contents/ui/RNNoise.qml:284
-msgid "Standard RNNoise model"
-msgstr "標準 RNNoise モデル"
-
-#: src/contents/ui/RNNoise.qml:59
-msgid "Standard RNNoise model loaded."
-msgstr "標準 RNNoise モデルが読み込まれました。"
-
-#: src/contents/ui/RNNoise.qml:64 src/contents/ui/RNNoise.qml:286
-msgid "Using %1 Model"
-msgstr "%1 モデルを使用中"
-
-#: src/contents/ui/RNNoise.qml:66
-msgid "Loaded the %1 RNNoise model."
-msgstr "%1 RNNoise モデルを読み込みました。"
-
-#: src/contents/ui/RNNoise.qml:70
-msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
-msgstr ""
-"%1 モデルの読み込みに失敗しました。標準 RNNoise モデルにフォールバックしま"
-"す。"
-
-#: src/contents/ui/RNNoise.qml:89 src/contents/ui/Speex.qml:98
-msgid "Voice detection"
-msgstr "音声検出"
-
-#: src/contents/ui/RNNoise.qml:126
-msgid "Wet level"
-msgstr "ウェットレベル"
-
-#: src/contents/ui/RNNoise.qml:166
-msgid "Use the Standard model"
-msgstr "標準モデルを使用"
-
-#: src/contents/ui/RNNoise.qml:177
-msgid "User Models"
-msgstr "ユーザーモデル"
-
-#: src/contents/ui/RNNoise.qml:243
-msgid "Delete this model"
-msgstr "このモデルを削除"
-
-#: src/contents/ui/RNNoise.qml:248
-msgid "Removed the %1 RNNoise model."
-msgstr "%1 RNNoise モデルを削除しました。"
-
-#: src/contents/ui/RNNoise.qml:250
-msgid "Failed to remove the %1 RNNoise model."
-msgstr "%1 RNNoise モデルの削除に失敗しました。"
-
-#: src/contents/ui/RNNoise.qml:319
-msgid "Import model"
-msgstr "モデルをインポート"
 
 #: src/contents/ui/ShortcutsSheet.qml:47
 msgid "Show help"
@@ -2918,29 +2910,29 @@ msgstr "ステレオベース"
 msgid "Stereo phase"
 msgstr "ステレオ位相"
 
-#: src/main.cpp:312
+#: src/main.cpp:319
 msgid "Global audio effects"
 msgstr "グローバルオーディオエフェクト"
 
-#: src/main.cpp:313
+#: src/main.cpp:320
 msgid "© 2017-2025 EasyEffects Team"
 msgstr "© 2017-2025 EasyEffects Team"
 
-#: src/main.cpp:315
+#: src/main.cpp:322
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:315
+#: src/main.cpp:322
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "開発者"
 
-#: src/main.cpp:319
+#: src/main.cpp:326
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Suu"
 
-#: src/main.cpp:319
+#: src/main.cpp:326
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "suunya21@gmail.com"
@@ -3075,120 +3067,130 @@ msgstr "スピーチプロセッサー"
 msgid "Stereo Tools"
 msgstr "ステレオツール"
 
-#: src/units.hpp:56
+#: src/units.hpp:59
 #, fuzzy
 msgctxt "left channel abbreviation (single letter)"
 msgid "L"
 msgstr "L"
 
-#: src/units.hpp:57
+#: src/units.hpp:60
 #, fuzzy
 msgctxt "left channel abbreviation (single letter)"
 msgid "R"
 msgstr "R"
 
-#: src/units.hpp:58
+#: src/units.hpp:63
+msgctxt "The SOFA audio file format"
+msgid "SOFA"
+msgstr ""
+
+#: src/units.hpp:64
+msgctxt "The WAV audio file format"
+msgid "WAV"
+msgstr ""
+
+#: src/units.hpp:67
 #, fuzzy
 msgctxt "decibel unit abbreviation"
 msgid "dB"
 msgstr "dB"
 
-#: src/units.hpp:59
+#: src/units.hpp:68
 #, fuzzy
 msgctxt "decibel full scale unit abbreviation"
 msgid "dBFS"
 msgstr "dBFS"
 
-#: src/units.hpp:60
+#: src/units.hpp:69
 #, fuzzy
 msgctxt "decibel per octaves unit abbreviation"
 msgid "dB/oct"
 msgstr "12 dB/oct"
 
-#: src/units.hpp:61
-msgctxt "thousand abbreviation (single letter)"
-msgid "k"
-msgstr ""
-
-#: src/units.hpp:62
+#: src/units.hpp:70
 #, fuzzy
 msgctxt "seconds unit abbreviation"
 msgid "s"
 msgstr "s"
 
-#: src/units.hpp:63
+#: src/units.hpp:71
 #, fuzzy
 msgctxt "milliseconds unit abbreviation"
 msgid "ms"
 msgstr "ms"
 
-#: src/units.hpp:64
+#: src/units.hpp:72
 #, fuzzy
 msgctxt "Hertz unit abbreviation"
 msgid "Hz"
 msgstr "Hz"
 
-#: src/units.hpp:65
+#: src/units.hpp:73
 #, fuzzy
 msgctxt "kiloHertz unit abbreviation"
 msgid "kHz"
 msgstr "kHz"
 
-#: src/units.hpp:66
-msgctxt "percentage symbol"
-msgid "%"
-msgstr ""
-
-#: src/units.hpp:67
+#: src/units.hpp:74
 msgctxt "loudness full scale unit abbreviation"
 msgid "LUFS"
 msgstr ""
 
-#: src/units.hpp:68
+#: src/units.hpp:75
 #, fuzzy
 msgctxt "loudness unit abbreviation"
 msgid "LU"
 msgstr "L"
 
-#: src/units.hpp:69
+#: src/units.hpp:76
 #, fuzzy
 msgctxt "meter unit abbreviation"
 msgid "m"
 msgstr "m"
 
-#: src/units.hpp:70
+#: src/units.hpp:77
 #, fuzzy
 msgctxt "centimeter unit abbreviation"
 msgid "cm"
 msgstr "cm"
 
-#: src/units.hpp:71
-msgctxt "degrees (angle)"
-msgid "°"
-msgstr ""
-
-#: src/units.hpp:72
-msgctxt "degree Celsius unit abbreviation"
+#: src/units.hpp:78
+msgctxt "degrees Celsius unit abbreviation"
 msgid "°C"
 msgstr ""
 
-#: src/units.hpp:73
+#: src/units.hpp:79
 msgctxt "bit unit (plural)"
 msgid "bits"
 msgstr ""
 
-#: src/units.hpp:74
+#: src/units.hpp:80
 #, fuzzy
 msgctxt "frame unit (plural)"
 msgid "frames"
 msgstr "フレーム"
 
-#: src/units.hpp:75
+#: src/units.hpp:81
 msgctxt "frames per second abbreviation"
 msgid "fps"
 msgstr ""
 
-#: src/units.hpp:76
+#: src/units.hpp:84
+msgctxt "thousand abbreviation (single letter)"
+msgid "k"
+msgstr ""
+
+#: src/units.hpp:85
+msgctxt "percentage symbol"
+msgid "%"
+msgstr ""
+
+#: src/units.hpp:86
+msgctxt "degrees (angle) symbol"
+msgid "°"
+msgstr ""
+
+#: src/units.hpp:87
 msgctxt "minus infinity abbreviation"
 msgid "-inf"
 msgstr "-inf"
