@@ -249,7 +249,7 @@ jobs:
         source ./PKGBUILD && pacman -Syu --noconfirm --needed --asdeps "${makedepends[@]}" "${depends[@]}"
 
     - name: Initialize CodeQL
-      uses: github/codeql-action/init@v4.31.6
+      uses: github/codeql-action/init@v4.31.7
       with:
         languages: cpp 
         build-mode: manual
@@ -260,7 +260,7 @@ jobs:
         cmake --build build
 
     - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v4.31.6
+      uses: github/codeql-action/analyze@v4.31.7
 
   clang-tidy:
     name: Clang Tidy
