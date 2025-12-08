@@ -32,7 +32,6 @@
 #include "pipeline_type.hpp"
 #include "presets_manager.hpp"
 #include "tags_local_server.hpp"
-#include "tags_plugin_name.hpp"
 #include "util.hpp"
 
 LocalServer::LocalServer(QObject* parent) : QObject(parent), server(std::make_unique<QLocalServer>(this)) {
