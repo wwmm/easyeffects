@@ -37,4 +37,6 @@ inline constexpr auto set_property = "set_property";
 
 inline constexpr auto get_property = "get_property";
 
+inline constexpr auto get_active_preset = "get_active_preset";
+
 }  // namespace tags::local_server

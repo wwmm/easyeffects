@@ -51,6 +51,7 @@
 #include "config.h"
 #include "db_manager.hpp"
 #include "global_shortcuts.hpp"
+#include "iostream"
 #include "kcolor_manager.hpp"
 #include "local_client.hpp"
 #include "local_server.hpp"
@@ -283,6 +284,12 @@ static int runSecondaryInstance(KAboutData& about, QApplication& app, CommandLin
 
   QObject::connect(&parser, &CommandLineParser::onSetGlobalBypass, [&](const bool& state) {
     local_client->setGlobalBypass(state);
+    show_window = false;
+  });
+
+  QObject::connect(&parser, &CommandLineParser::onGetActivePreset, [&](PipelineType type) {
+    auto preset = local_client->getActivePreset(type);
+    std::cout << preset.toStdString() << std::endl;
     show_window = false;
   });
 

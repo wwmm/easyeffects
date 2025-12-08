@@ -51,6 +51,8 @@ class CommandLineParser : public QObject {
 
   void onLoadPreset(PipelineType pipeline_type, QString preset_name);
 
+  void onGetActivePreset(PipelineType pipeline_type);
+
   void onSetGlobalBypass(bool state);
 
   void onInitQML();
