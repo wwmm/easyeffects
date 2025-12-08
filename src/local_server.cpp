@@ -204,6 +204,8 @@ void LocalServer::set_property(const std::string& pipeline,
     return;
   }
 
+  util::debug(std::format("LocalServer: Setting property '{}' to '{}' on {}", property, value, key.toStdString()));
+
   switch (current.typeId()) {
     case QMetaType::Bool:
       db->setProperty(property.c_str(), (value == "true" || value == "1" || value == "on"));
