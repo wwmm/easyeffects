@@ -60,6 +60,17 @@ void LocalServer::startServer() {
   }
 }
 
+auto LocalServer::pipeline_from(const std::string& str) -> PipelineType {
+  if (str == "input") {
+    return PipelineType::input;
+  } else if (str == "output") {
+    return PipelineType::output;
+  }
+
+  util::warning(std::format("LocalServer: Invalid pipeline '{}', defaulting to output", str));
+  return PipelineType::output;
+}
+
 void LocalServer::onReadyRead() {
   auto* socket = qobject_cast<QLocalSocket*>(sender());
 
@@ -100,19 +111,16 @@ void LocalServer::onReadyRead() {
 
         std::smatch matches;
 
-        static const auto re = std::regex("^load_preset:([0-9]+):([^\n]{1,100})\n$");
+        static const auto re = std::regex("^load_preset:(input|output):([^\n]{1,100})\n$");
 
         std::regex_search(msg, matches, re);
 
         if (matches.size() == 3U) {
-          int pipeline_type = 0;
-
-          util::str_to_num(std::string(matches[1]), pipeline_type);
+          auto pipeline_type = pipeline_from(matches[1].str());
 
           std::string preset_name = matches[2];
 
-          presets::Manager::self().loadLocalPresetFile(static_cast<PipelineType>(pipeline_type),
-                                                       QString::fromStdString(preset_name));
+          presets::Manager::self().loadLocalPresetFile(pipeline_type, QString::fromStdString(preset_name));
         }
       } else if (std::strncmp(buf, tags::local_server::set_property, strlen(tags::local_server::set_property)) == 0) {
         std::string msg = buf;
@@ -174,10 +182,10 @@ void LocalServer::onReadyRead() {
         std::regex_search(msg, matches, re);
 
         if (matches.size() == 2U) {
-          const auto& pipeline_str = matches[1].str();
+          auto pipeline_type = pipeline_from(matches[1].str());
 
-          QString preset_name =
-              (pipeline_str == "input") ? DbMain::lastLoadedInputPreset() : DbMain::lastLoadedOutputPreset();
+          QString preset_name = (pipeline_type == PipelineType::input) ? DbMain::lastLoadedInputPreset()
+                                                                       : DbMain::lastLoadedOutputPreset();
 
           socket->write(preset_name.toUtf8());
         }
@@ -204,7 +212,7 @@ void LocalServer::set_property(const std::string& pipeline,
                                const std::string& instance_id,
                                const std::string& property,
                                const std::string& value) {
-  PipelineType type = (pipeline == "input") ? PipelineType::input : PipelineType::output;
+  auto type = pipeline_from(pipeline);
   QString key = QString::fromStdString(plugin_name + "#" + instance_id);
 
   auto& mgr = db::Manager::self();

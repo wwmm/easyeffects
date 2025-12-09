@@ -25,6 +25,7 @@
 #include <QObject>
 #include <memory>
 #include <string>
+#include "pipeline_type.hpp"
 
 class LocalServer : public QObject {
   Q_OBJECT
@@ -47,6 +48,8 @@ class LocalServer : public QObject {
   std::unique_ptr<QLocalServer> server;
 
   QLocalSocket* clientSocket = nullptr;
+
+  static auto pipeline_from(const std::string& str) -> PipelineType;
 
   static void set_property(const std::string& pipeline,
                            const std::string& plugin_name,

@@ -51,7 +51,8 @@ void LocalClient::quit_app() {
 }
 
 void LocalClient::load_preset(PipelineType pipeline_type, std::string preset_name) {
-  auto msg = std::format("{}:{}:{}\n", tags::local_server::load_preset, static_cast<int>(pipeline_type), preset_name);
+  auto msg = std::format("{}:{}:{}\n", tags::local_server::load_preset,
+                         (pipeline_type == PipelineType::input ? "input" : "output"), preset_name);
 
   client->write(msg.c_str());
   client->flush();
@@ -66,7 +67,7 @@ void LocalClient::setGlobalBypass(const bool& state) {
 
 auto LocalClient::getLastLoadedPreset(PipelineType pipeline_type) -> QString {
   auto msg = std::format("{}:{}\n", tags::local_server::get_last_loaded_preset,
-                         pipeline_type == PipelineType::input ? "input" : "output");
+                         (pipeline_type == PipelineType::input ? "input" : "output"));
 
   client->write(msg.c_str());
   client->flush();
