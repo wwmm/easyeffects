@@ -75,5 +75,5 @@ auto LocalClient::getLastLoadedPreset(PipelineType pipeline_type) -> QString {
     return QString::fromUtf8(client->readAll());
   }
 
-  return "None";
+  return "";
 }

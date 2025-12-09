@@ -124,6 +124,8 @@ void CommandLineParser::process_events() {
       std::cout << i18n("Must specify preset type: input/output.").toStdString() << '\n';
     }
 
+    Q_EMIT onHideWindow();
+
     if (ok) {
       QCoreApplication::exit(EXIT_SUCCESS);
     } else {
@@ -132,11 +134,15 @@ void CommandLineParser::process_events() {
   }
 
   if (parser->isSet("last-loaded-presets")) {
-    auto input = DbMain::lastLoadedInputPreset();
-    auto output = DbMain::lastLoadedOutputPreset();
+    if (is_primary) {
+      auto input = DbMain::lastLoadedInputPreset();
+      auto output = DbMain::lastLoadedOutputPreset();
 
-    std::cout << "Input: " << input.toStdString() << '\n';
-    std::cout << "Output: " << output.toStdString() << '\n';
+      std::cout << "Input: " << input.toStdString() << '\n';
+      std::cout << "Output: " << output.toStdString() << '\n';
+    } else {
+      Q_EMIT onGetLastLoadedInputOutputPreset();
+    }
 
     QCoreApplication::exit(EXIT_SUCCESS);
   }

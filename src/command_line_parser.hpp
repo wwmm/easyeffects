@@ -53,6 +53,8 @@ class CommandLineParser : public QObject {
 
   void onGetLastLoadedPreset(PipelineType pipeline_type);
 
+  void onGetLastLoadedInputOutputPreset();
+
   void onSetGlobalBypass(bool state);
 
   void onInitQML();

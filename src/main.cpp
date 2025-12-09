@@ -293,6 +293,16 @@ static int runSecondaryInstance(KAboutData& about, QApplication& app, CommandLin
     show_window = false;
   });
 
+  QObject::connect(&parser, &CommandLineParser::onGetLastLoadedInputOutputPreset, [&]() {
+    auto input_preset = local_client->getLastLoadedPreset(PipelineType::input);
+    auto output_preset = local_client->getLastLoadedPreset(PipelineType::output);
+
+    std::cout << "input: " << input_preset.toStdString() << '\n';
+    std::cout << "output: " << output_preset.toStdString() << '\n';
+
+    show_window = false;
+  });
+
   parser.set_is_primary(false);
   parser.process(about, &app);
   parser.process_events();
