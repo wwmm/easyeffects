@@ -50,7 +50,6 @@ find_package(Qt${QT_MAJOR_VERSION} REQUIRED NO_MODULE COMPONENTS
     Quick
     QuickControls2
     Widgets
-    WebEngineQuick
 )
 
 find_package(KF6 REQUIRED COMPONENTS

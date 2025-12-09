@@ -242,7 +242,6 @@ target_link_libraries(easyeffects PRIVATE
     Qt::Quick
     Qt::QuickControls2
     Qt::Widgets
-    Qt::WebEngineQuick
     TBB::tbb
     GSL::gsl
     GSL::gslcblas
