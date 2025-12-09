@@ -20,6 +20,7 @@ The online documentation is automatically updated for each release, so it may be
 ## Guides
 
 - [Enhancing your internal notebook speakers without using an Equalizer](guides/guide_1.md)
+- [Local Server](user_interface/local_server.md)
 
 ---
 
