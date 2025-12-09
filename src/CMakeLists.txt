@@ -220,7 +220,6 @@ target_sources(easyeffects PRIVATE
     tags_plugin_name.cpp
     test_signals.cpp
     util.cpp
-    resources.qrc
 )
 
 target_include_directories(easyeffects SYSTEM PRIVATE
