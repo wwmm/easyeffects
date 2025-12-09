@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Gate - EasyEffects Manual</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Gate";
+        var mkdocs_page_input_path = "plugins/gate.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../index.html" class="icon icon-home"> EasyEffects Manual
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../index.html">Home</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EasyEffects Manual</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html" class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Gate</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/wwmm/easyeffects/edit/master/src/contents/docs/plugins/gate.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="gate">Gate</h1>
+<p>The Gate attenuates signals that register below a Threshold. This kind of signal processing is used to reduce disturbing noise between useful signals. Easy Effects uses the Stereo Sidechain Gate from Linux Studio Plugins.</p>
+<h2 id="gate-workflow">Gate Workflow</h2>
+<p>The Gate begins to open when the Sidechain level becomes above the Attack Zone Start level.</p>
+<p>The Gate fully opens when the Sidechain level becomes above the Attack Threshold level.</p>
+<p>The Gate begins to close when the Sidechain level becomes below the Release Zone Start level.</p>
+<p>The Gate fully closes when the Sidechain level becomes below the Release Threshold level.</p>
+<h2 id="gate-options">Gate Options</h2>
+<p><strong>Attack Time</strong><br />
+The length of time it takes to restore roughly two-thirds of the gain reduction.</p>
+<p><strong>Release Time</strong><br />
+The length of time it takes to apply roughly two-thirds of the gain reduction.</p>
+<p><strong>Curve Threshold</strong><br />
+The Gate fully opens upon the Sidechain level becoming above Curve Threshold (displayed as Attack Threshold level).</p>
+<p>If Hysteresis is not enabled, the Gate begins to close upon the Sidechain level becoming below Curve Threshold (displayed as Release Zone Start level).</p>
+<p><strong>Curve Zone Size</strong><br />
+The Gate begins to open upon the Sidechain level becoming above the Curve Threshold + Curve Zone (displayed as Attack Zone Start level).</p>
+<p>If Hysteresis is not enabled, the Gate fully closes upon the Sidechain level becoming below the Curve Threshold + Curve Zone (displayed as Release Threshold level).</p>
+<p><strong>Hysteresis</strong><br />
+When enabled, Curve Threshold and Curve Zone apply only to the opening Gate, and separate parameters can be configured for closing Gate.</p>
+<p><strong>Hysteresis Threshold</strong><br />
+If Hysteresis is enabled, the Gate begins to close upon the Sidechain level becoming below Curve Threshold + Hysteresis Threshold (displayed as Release Zone Start level).</p>
+<p><strong>Hysteresis Zone Size</strong><br />
+If Hysteresis is enabled, the Gate fully closes upon the Sidechain level becoming below the Curve Threshold + Hysteresis Threshold + Hysteresis Zone (displayed as Release Threshold level).</p>
+<p><strong>Dry Level</strong><br />
+Amount of unprocessed signal mixed in the output.</p>
+<p><strong>Wet Level</strong><br />
+Amount of processed signal mixed in the output.</p>
+<p><strong>Reduction</strong><br />
+If the value is negative, it acts as the amount of gain reduction to apply to the input signal when the Gate is fully closed. If the value is positive, the Gate operates in "Reverse Mode": It reduces the amplitude when the signal is above the threshold.</p>
+<p><strong>Makeup</strong><br />
+The gain to apply after the gating stage.</p>
+<h2 id="sidechain">Sidechain</h2>
+<p><strong>Listen</strong><br />
+Allows to listen the processed Sidechain signal.</p>
+<p><strong>Input Type</strong><br />
+Determines which signal is the Sidechain or, in other words, the signal that controls the gating stage.</p>
+<ul>
+<li><strong>Internal</strong> - The Sidechain is the Gate input signal (taken after applying the plugin input gain).</li>
+<li><strong>External</strong> - The Sidechain is an external source took by a specific input device (typically a microphone).</li>
+</ul>
+<p><strong>Input Device</strong><br />
+Select the device for the External Sidechain.</p>
+<p><strong>Mode</strong><br />
+Determines how the Sidechain is evaluated for the gating stage.</p>
+<ul>
+<li><strong>Peak</strong> - The Gate reacts according to the peaks.</li>
+<li><strong>RMS</strong> - The Gate reacts according to the average loudness measured by the root mean square.</li>
+<li><strong>Low-Pass Filter</strong> - The Gate reacts according to the signal processed by a recursive 1-pole Low-Pass filter.</li>
+<li><strong>Simple Moving Average</strong> - The Gate reacts according to the signal processed by the Simple Moving Average filter.</li>
+</ul>
+<p><strong>Source</strong><br />
+Determines which part of the Sidechain is taken into account for the gating stage.</p>
+<ul>
+<li><strong>Middle</strong> - The sum of left and right channels.</li>
+<li><strong>Side</strong> - The difference between left and right channels.</li>
+<li><strong>Left</strong> - Only left channel is used.</li>
+<li><strong>Right</strong> - Only right channel is used.</li>
+<li><strong>Min</strong> - The absolute minimum value is taken from stereo input.</li>
+<li><strong>Max</strong> - The absolute maximum value is taken from stereo input.</li>
+</ul>
+<p><strong>PreAmplification</strong><br />
+Gain applied to the Sidechain signal.</p>
+<p><strong>Reactivity</strong><br />
+The time that defines the number of samples used to process the Sidechain in RMS, Uniform and Low-Pass modes. Higher the value, more smooth the gating.</p>
+<p><strong>Lookahead</strong><br />
+The signal to gate is delayed by this amount of time, so that the gating will be applied earlier than it would be otherwise. The corresponding delay is reproduced on the output signal.</p>
+<h2 id="sidechain-filters">Sidechain Filters</h2>
+<p><strong>High-Pass Filter Mode</strong><br />
+Sets the type of the High-Pass filter applied to Sidechain signal.</p>
+<p><strong>High-Pass Frequency</strong><br />
+Sets the cut-off frequency of the High-Pass filter.</p>
+<p><strong>Low-Pass Filter Mode</strong><br />
+Sets the type of the Low-Pass filter applied to Sidechain signal.</p>
+<p><strong>Low-Pass Frequency</strong><br />
+Sets the cut-off frequency of the Low-Pass filter.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Dynamic_range_compression">Wikipedia Dynamic Range Compression</a></li>
+<li><a href="https://lsp-plug.in/?page=manuals&amp;section=sc_gate_stereo">LSP Sidechain Gate Stereo</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Noise_gate">Wikipedia Noise Gate</a></li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/wwmm/easyeffects" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
