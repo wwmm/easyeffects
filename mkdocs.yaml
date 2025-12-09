@@ -1,5 +1,6 @@
 site_name: EasyEffects Manual
 repo_url: https://github.com/wwmm/easyeffects
+repo_name: wwmm/easyeffects
 
 use_directory_urls: false
 
@@ -8,7 +9,30 @@ edit_uri: edit/master/src/contents/docs/
 site_dir: src/contents/site
 
 theme:
-  name: readthedocs
+  name: material
+  logo: images/com.github.wwmm.easyeffects.svg
+  features:
+    - navigation.indexes
+    - navigation.tabs
+    - navigation.footer
+  palette: 
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default 
 
-nav:
-  - Home: index.md
+
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference

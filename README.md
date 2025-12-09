@@ -38,13 +38,13 @@ This application was formerly known as **PulseEffects**, but it was renamed to *
 GStreamer usage was replaced by native PipeWire filters. And eventually the whole application was ported from GTK4 to
 a combination of Qt, QML and KDE/Kirigami frameworks.
 
-![GitHub Light](images/easyeffects-light-screenshot-1.png#gh-light-mode-only)
-![GitHub Light](images/easyeffects-light-screenshot-2.png#gh-light-mode-only)
-![GitHub Light](images/easyeffects-light-screenshot-3.png#gh-light-mode-only)
+![GitHub Light](src/contents/docs/images/easyeffects-light-screenshot-1.png#gh-light-mode-only)
+![GitHub Light](src/contents/docs/images/easyeffects-light-screenshot-2.png#gh-light-mode-only)
+![GitHub Light](src/contents/docs/images/easyeffects-light-screenshot-3.png#gh-light-mode-only)
 
-![GitHub Dark](images/easyeffects-dark-screenshot-1.png#gh-dark-mode-only)
-![GitHub Dark](images/easyeffects-dark-screenshot-2.png#gh-dark-mode-only)
-![GitHub Dark](images/easyeffects-dark-screenshot-3.png#gh-dark-mode-only)
+![GitHub Dark](src/contents/docs/images/easyeffects-dark-screenshot-1.png#gh-dark-mode-only)
+![GitHub Dark](src/contents/docs/images/easyeffects-dark-screenshot-2.png#gh-dark-mode-only)
+![GitHub Dark](src/contents/docs/images/easyeffects-dark-screenshot-3.png#gh-dark-mode-only)
 
 ## Effects available
 
@@ -153,7 +153,7 @@ The latest version of the help pages can also be read [here](https://wwmm.github
 
 ## Changelog
 
-For information about changes between versions, take a look at our [changelog](https://github.com/wwmm/easyeffects/blob/master/CHANGELOG.md)
+For information about changes between versions, take a look at our [changelog](src/contents/docs/community/CHANGELOG.md)
 
 ## Frequently asked questions
 
@@ -166,7 +166,7 @@ See the wiki: [Community presets](https://github.com/wwmm/easyeffects/wiki/Commu
 
 This page also has instructions for converting PulseEffects presets to Easy Effects presets.
 
-Guildelines for package maintainers: [Guidelines](COMMUNITY_PRESETS_GUIDELINES.md)
+Guildelines for package maintainers: [Guidelines](src/contents/docs/community/COMMUNITY_PRESETS_GUIDELINES.md)
 
 ## Command-line options
 

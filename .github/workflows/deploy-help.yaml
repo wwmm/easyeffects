@@ -39,8 +39,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install mkdocs
-          # If using Material theme: pip install mkdocs-material
+          pip install mkdocs mkdocs-material
 
       # 3. Generate plugin properties HTML
       - name: Generate plugin properties HTML

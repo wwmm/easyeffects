@@ -40,7 +40,7 @@ init() {
   readonly REPO_DIR="$(realpath "${CMD_DIR}"/..)"
   readonly DATA_DIR="${REPO_DIR}/${DATA_DIR}"
   readonly METAINFO_FILE="${DATA_DIR}/${APPLICATION_ID}.metainfo.xml.in"
-  readonly CHANGELOG_FILE="${REPO_DIR}/CHANGELOG.md"
+  readonly CHANGELOG_FILE="${REPO_DIR}/src/contents/docs/CHANGELOG.md"
   readonly NEWS_FILE="${REPO_DIR}/util/NEWS.yaml"
 
 
