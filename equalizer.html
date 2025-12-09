@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Equalizer - EasyEffects Manual</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Equalizer";
+        var mkdocs_page_input_path = "equalizer.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="index.html" class="icon icon-home"> EasyEffects Manual
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="index.html">Home</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">EasyEffects Manual</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html" class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Equalizer</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/wwmm/easyeffects/edit/master/src/contents/docs/equalizer.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="equalizer">Equalizer</h1>
+<p>The Equalization in sound recording and reproduction is the process of adjusting the volume of different frequency bands within an audio signal. Easy Effects uses the Parametric Equalizer from Linux Studio Plugins. The user can choose from 1 to 32 bands. Width and center frequency of each band can be customized as needed.</p>
+<h2 id="global-options">Global Options</h2>
+<p><strong>Bands</strong><br />
+The number of bands.</p>
+<p><strong>Mode</strong><br />
+- <strong>IIR</strong> - Infinite Impulse Response filters, nonlinear minimal phase. In most cases does not add noticeable latency to output signal.
+- <strong>FIR</strong> - Finite Impulse Response filters with linear phase, finite approximation of Equalizer's impulse response. Adds noticeable latency to output signal.
+- <strong>FFT</strong> - Fast Fourier Transform approximation of the frequency chart, linear phase. Adds noticeable latency to output signal.</p>
+<p><strong>Balance</strong><br />
+Balance between left and right output channels.</p>
+<p><strong>Pitch Left</strong><br />
+The frequency shift for all filters of the left channel, in semitones.</p>
+<p><strong>Pitch Right</strong><br />
+The frequency shift for all filters of the right channel, in semitones.</p>
+<p><strong>Split Channels</strong><br />
+When enabled it is possible to apply different configurations to left and right channels.</p>
+<p><strong>Flat Response</strong><br />
+This function sets each band gain to 0.</p>
+<p><strong>Calculate Frequencies</strong><br />
+This function calculates the center frequency and the width of each band using the current number of bands. Useful when the user wants fewer than 32 bands but has no idea about which frequencies should be chosen.</p>
+<h2 id="band-options">Band Options</h2>
+<p><strong>Type</strong><br />
+- <strong>Off</strong> - The filter is not working (turned off).
+- <strong>Bell</strong> - Bell filter with smooth peak/recess.
+- <strong>High Pass</strong> - High Pass filter with rejection of low frequencies.
+- <strong>High Shelf</strong> - Shelving filter with adjustment of high frequency range.
+- <strong>Low Pass</strong> - Low Pass filter with rejection of high frequencies.
+- <strong>Low Shelf</strong> - Shelving filter with adjustment of low frequency range.
+- <strong>Notch</strong> - Notch filter with full rejection of selected frequency.
+- <strong>Resonance</strong> - Resonance filter with sharp peak/recess.
+- <strong>All Pass</strong> - All Pass filter.</p>
+<p><strong>Mode</strong><br />
+- <strong>RLC</strong> - Very smooth filters based on similar cascades of RLC contours. Bilinear Z-transform (BT) or Matched Z-transform (MT) is used for pole/zero mapping.
+- <strong>BWC</strong> - Butterworth-Chebyshev-type-1 based filters. Does not affect Resonance and Notch filters. Bilinear Z-transform (BT) or Matched Z-transform (MT) is used for pole/zero mapping.
+- <strong>LRX</strong> - Linkwitz-Riley based filters. Does not affect Resonance and Notch filters. Bilinear Z-transform (BT) or Matched Z-transform (MT) is used for pole/zero mapping.
+- <strong>APO</strong> - Digital biquad filters derived from canonic analog biquad prototypes digitalized through Bilinear transform. These are <a href="https://shepazu.github.io/Audio-EQ-Cookbook/audio-eq-cookbook.html">textbook filters</a> which are implemented as in the <a href="https://equalizerapo.com/">Equalizer APO</a> software. Direct design (DR) is used to serve the digital filter coefficients directly in the digital domain, without performing transforms.</p>
+<p><strong>Slope</strong><br />
+The slope of the filter characteristics.</p>
+<p><strong>Solo</strong><br />
+Makes the selected band the only one active.</p>
+<p><strong>Mute</strong><br />
+Mutes the selected band.</p>
+<p><strong>Frequency</strong><br />
+Center frequency of the selected band.</p>
+<p><strong>Width</strong><br />
+Bandwidth calculated as <code>width = frequency / quality</code>.</p>
+<p><strong>Quality</strong><br />
+The quality factor of the filter used.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Equalization_(audio)">Wikipedia Equalization (audio)</a></li>
+<li><a href="http://lsp-plug.in/?page=manuals&amp;section=para_equalizer_x32_lr">LSP Parametric Equalizer x32 LeftRight</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Q_factor">Wikipedia Q Factor</a></li>
+<li><a href="https://howtoeq.wordpress.com/2010/10/07/q-factor-and-bandwidth-in-eq-what-it-all-means/">How to EQ - Q Factor and Bandwidth in EQ: What They Mean</a></li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/wwmm/easyeffects" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

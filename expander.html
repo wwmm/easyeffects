@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Expander - EasyEffects Manual</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Expander";
+        var mkdocs_page_input_path = "expander.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="index.html" class="icon icon-home"> EasyEffects Manual
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="index.html">Home</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">EasyEffects Manual</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html" class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Expander</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/wwmm/easyeffects/edit/master/src/contents/docs/expander.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="expander">Expander</h1>
+<p>An expander is an effect that works inversely to a compressor, further reducing the volume of quiet sounds below a certain level. This allows for natural suppression of background noise and unwanted whispers. For example, it is effective when air conditioning or other environmental sounds intrude into quiet scenes.</p>
+<p>This effect is similar to the gate, which is explained in another chapter, in that it blocks quiet sounds. However, while a gate completely cuts sound, an expander gradually reduces sound, resulting in a more natural and smooth decay characteristic. Its main uses are listed below:</p>
+<ul>
+<li>Reduce the prominence of quiet environmental noises (air conditioning, PC fans, clicks, etc.) during periods of silence</li>
+<li>Suppress noise in quiet sections while maintaining the clarity of narration and dialogue</li>
+<li>Emphasize the contours (punch) of sounds to create a more dynamic impression</li>
+</ul>
+<h2 id="expander-options">Expander Options</h2>
+<p>The following is an explanation of each parameter when the mode is set to "<strong>Downward</strong>."</p>
+<p><strong>Attack Time</strong>: This determines the time it takes for the expander to begin suppressing the sound after the sound volume drops below the threshold. Shorter values will reduce the volume immediately, quickly suppressing noise and other imperfections. Longer values will cause the processing to begin later, preserving the natural reverberation and nuances of soft sounds.</p>
+<p><strong>Release Time</strong>: This determines the time it takes for the expander to stop suppressing the volume and return to its original volume after the sound exceeds the threshold again and is determined to no longer require processing.</p>
+<p>Longer values will cause the sound to return more slowly, making it sound more natural.</p>
+<p>Shorter values will return the sound to its original volume quickly, making it sound clearer and tighter, but may sound unnatural in some cases.</p>
+<p><strong>Attack Threshold</strong>: The effect is only applied to sounds quieter than this value.</p>
+<p><strong>Release Threshold</strong>: This can be the same as the Attack Threshold, but setting it about -5dB lower than the Attack Threshold will enable the Hysteresis function, suppressing fluttering around the threshold and achieving more stable processing.</p>
+<p><strong>Ratio</strong>: This is an indicator of how much quieter (= how much) sounds below the threshold will be reduced. Set the value using the following as a guide:</p>
+<ul>
+<li>A setting of 1 passes the signal as is (same as Expander OFF)</li>
+<li>For light noise suppression (natural processing), use 1.5-3</li>
+<li>For clarity of dialogue and smoothing out quiet sections, use 4-8</li>
+<li>For complete noise reduction (gate-like behavior), use 20-100</li>
+</ul>
+<p>*Please note that setting the ratio too high can result in a choppy, unnatural sound.</p>
+<p><strong>Knee</strong>: This parameter adjusts how smoothly processing begins near the threshold. The name comes from the fact that the curve on the graph resembles a knee. See below for the relationship between the setting value and the curve.</p>
+<p>Knee Value Volume Curve Characteristics Processing Sensation</p>
+<p>0dB Abrupt bend (hard knee) The effect is applied suddenly (like an ON/OFF switch)</p>
+<p>-6dB Gradual bend Processing begins naturally</p>
+<p>-12dB and above Very smooth Processing is barely noticeable</p>
+<p><strong>Makeup</strong>: The gain applied after gating.</p>
+<p><strong>Dry Level</strong>: The amount of unprocessed signal mixed with the output.</p>
+<p><strong>Wet Level</strong>: The amount of processed signal mixed with the output.</p>
+<p>For information on how to set up sidechaining and sidechain filtering, see the chapter of Gate.</p>
+<p><em>When "</em><em>Upward</em>*" is selected in the mode setting, the expander will function to boost (increase the volume of) quieter sounds.</p>
+<p>This can be used in situations where dialogue or narration is too quiet to be heard, and is also effective when you want to bring out the subtle nuances of a musical performance (such as pianissimo).</p>
+<p>Rather than "lowering louder sounds" like a compressor, it is used to increase the average volume by "boosting quieter sounds," or to increase sound pressure while maintaining the punch and three-dimensionality of the original sound.</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/wwmm/easyeffects" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

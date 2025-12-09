@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Multiband Gate - EasyEffects Manual</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Multiband Gate";
+        var mkdocs_page_input_path = "multibandgate.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="index.html" class="icon icon-home"> EasyEffects Manual
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="index.html">Home</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">EasyEffects Manual</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html" class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Multiband Gate</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/wwmm/easyeffects/edit/master/src/contents/docs/multibandgate.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="multiband-gate">Multiband Gate</h1>
+<p>Easy Effects uses the Multiband Gate Stereo developed by Calf Studio Gear. Please refer to the <a href="gate.html">Gate</a> documentation to comprehend the basic functionality of the gating process.</p>
+<h2 id="global-options">Global Options</h2>
+<p><strong>Band Management</strong><br />
+This Gate allows to split the input signal up to 8 bands. Each band is not attached to its strict frequency and can be controlled by completely different frequency range that can be obtained by applying Low-Cut and Hi-Cut filters to the Sidechain signal.</p>
+<p>The first band is always enabled while the others can be activated if needed. When only the first band is enabled, the functionality is similar to the Singleband Sidechain Gate. Otherwise the signal is split in more bands and each band is processed individually. After the gating stage, the bands are mixed together to form the output result.</p>
+<p><strong>Operating Mode</strong><br />
+Determines how the input signal is split to obtain the different bands.</p>
+<ul>
+<li><strong>Classic</strong> - The original signal is split using crossover filters. After the gating stage, all bands become phase-compensated using All-Pass filters.</li>
+<li><strong>Modern</strong> - Each band is processed by a pair of dynamic shelving filters. This mode allows a better control over the gain of each band.</li>
+</ul>
+<p><strong>Sidechain Boost</strong><br />
+If enabled, it introduces a special mode for assigning the same weight for higher frequencies opposite to lower frequencies.</p>
+<p>When disabled, the frequency band is processed 'as is', but the usual audio signal has 3 dB/octave falloff in the frequency domain and could be compared with the pink noise. So lower frequencies take more effect on the Gate rather than higher frequencies.</p>
+<p>On the other hand the Sidechain Boost mode allows to compensate the -3 dB/octave falloff of the signal spectrum and, even more, makes the signal spectrum growing +3 dB/octave in the almost fully audible frequency range.</p>
+<p><strong>Pink</strong> applies +3 dB/octave while <strong>Brown</strong> applies +6 dB/octave Sidechain Boost. Each of them can use bilinear-transformed (BT) or matched-transformed (MT) shelving filter.</p>
+<p><strong>Sidechain Source</strong><br />
+If the External Sidechain is enabled inside at least one band, this combobox allows to select the input device as source.</p>
+<p><strong>Dry Level</strong><br />
+Amount of unprocessed signal mixed in the output.</p>
+<p><strong>Wet Level</strong><br />
+Amount of processed signal mixed in the output.</p>
+<h2 id="band-options">Band Options</h2>
+<p><strong>Band Start</strong><br />
+Allows to change the lower end split frequency of the selected band. This value is assigned to the Band End of the previous enabled band. It can be modified for all bands except the first one, which is always enabled and its value is 0 Hz.</p>
+<p><strong>Band End</strong><br />
+Specify the upper end split frequency of the selected band. It cannot be directly modified and assumes the same value of the Band Start of the next enabled band. For the last enabled band it is always 24.000 Hz.</p>
+<p><strong>External Sidechain</strong><br />
+The Sidechain is an external source took by a specific input device (typically a microphone).</p>
+<p><strong>Band Bypass</strong><br />
+If enabled, the selected band is not affected by the gating stage.</p>
+<p><strong>Solo</strong><br />
+Turns on the Solo mode to the selected band by applying -36 dB gain to the other non-soloing bands.</p>
+<p><strong>Mute</strong><br />
+Turns on the Mute mode applying -36 dB gain to to the selected band.</p>
+<p><strong>Attack Time</strong><br />
+The length of time it takes to apply roughly two-thirds of the gain reduction.</p>
+<p><strong>Release Time</strong><br />
+The length of time it takes to restore roughly two-thirds of the gain reduction.</p>
+<p><strong>Curve Threshold</strong><br />
+The Gate fully opens upon the Sidechain level becoming above Curve Threshold.</p>
+<p>If Hysteresis is not enabled, the Gate begins to close upon the Sidechain level becoming below Curve Threshold.</p>
+<p><strong>Curve Zone Size</strong><br />
+The Gate begins to open upon the Sidechain level becoming above the Curve Threshold + Curve Zone.</p>
+<p>If Hysteresis is not enabled, the Gate fully closes upon the Sidechain level becoming below the Curve Threshold + Curve Zone.</p>
+<p><strong>Hysteresis</strong><br />
+When enabled, Curve Threshold and Curve Zone apply only to the opening Gate, and separate parameters can be configured for closing Gate.</p>
+<p><strong>Hysteresis Threshold</strong><br />
+If Hysteresis is enabled, the Gate begins to close upon the Sidechain level becoming below Curve Threshold + Hysteresis Threshold.</p>
+<p><strong>Hysteresis Zone Size</strong><br />
+If Hysteresis is enabled, the Gate fully closes upon the Sidechain level becoming below the Curve Threshold + Hysteresis Threshold + Hysteresis Zone.</p>
+<p><strong>Reduction</strong><br />
+If the value is negative, it acts as the amount of gain reduction to apply to the input signal when the Gate is fully closed. If the value is positive, the Gate operates in "Reverse Mode": It reduces the amplitude when the signal is above the threshold.</p>
+<p><strong>Makeup</strong><br />
+The gain to apply after the gating stage.</p>
+<h2 id="band-sidechain-options">Band Sidechain Options</h2>
+<p><strong>Mode</strong><br />
+Determines how the Sidechain is evaluated for the gating stage.</p>
+<ul>
+<li><strong>Peak</strong> - The Gate reacts according to the peaks.</li>
+<li><strong>RMS</strong> - The Gate reacts according to the average loudness measured by the root mean square.</li>
+<li><strong>Low-Pass Filter</strong> - The Gate reacts according to the signal processed by a recursive 1-pole Low-Pass filter.</li>
+<li><strong>Simple Moving Average</strong> - The Gate reacts according to the signal processed by the Simple Moving Average filter.</li>
+</ul>
+<p><strong>Source</strong><br />
+Determines which part of the Sidechain is taken into account for the gating stage.</p>
+<ul>
+<li><strong>Middle</strong> - The sum of left and right channels.</li>
+<li><strong>Side</strong> - The difference between left and right channels.</li>
+<li><strong>Left</strong> - Only left channel is used.</li>
+<li><strong>Right</strong> - Only right channel is used.</li>
+<li><strong>Min</strong> - The absolute minimum value is taken from stereo input.</li>
+<li><strong>Max</strong> - The absolute maximum value is taken from stereo input.</li>
+</ul>
+<p><strong>Low-Cut Filter</strong><br />
+Enables a custom Low-Cut Filter for the selected band.</p>
+<p><strong>Low-Cut Frequency</strong><br />
+Sets the cut-off frequency of the custom Low-Cut filter. If it is disabled, the default Low-Cut filter assumes internally the Band Start frequency as the cut-off frequency.</p>
+<p><strong>Hight-Cut Filter</strong><br />
+Enables a custom High-Cut Filter for the selected band.</p>
+<p><strong>Hight-Cut Frequency</strong><br />
+Sets the cut-off frequency of the custom High-Cut filter. If it is disabled, the default High-Cut filter assumes internally the Band End frequency as the cut-off frequency.</p>
+<p><strong>PreAmp</strong><br />
+Gain applied to the Sidechain signal of the selected band.</p>
+<p><strong>Reactivity</strong><br />
+The time that defines the number of samples used to process the Sidechain in RMS, Uniform and Low-Pass modes. Higher the value, more smooth the gating.</p>
+<p><strong>Lookahead</strong><br />
+The band signal to gate is delayed by this amount of time, so that the gating will be applied earlier than it would be otherwise.</p>
+<p>Each band can have different Lookahead values. To avoid phase distortions in the mixing stage, all the bands are automatically delayed for an individually calculated period of time.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://lsp-plug.in/?page=manuals&amp;section=sc_mb_gate_stereo">LSP Sidechain Multiband Gate Stereo</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Noise_gate">Wikipedia Noise Gate</a></li>
+</ul>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/wwmm/easyeffects" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
