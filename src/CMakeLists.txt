@@ -58,7 +58,6 @@ qt_add_qml_module(easyeffects
         contents/ui/Expander.qml
         contents/ui/Filter.qml
         contents/ui/Gate.qml
-        contents/ui/HelpSheet.qml
         contents/ui/LevelMeter.qml
         contents/ui/Limiter.qml
         contents/ui/Loudness.qml

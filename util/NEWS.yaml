@@ -4,13 +4,16 @@ Date: UNRELEASED_DATE
 
 Description: 
 - Features∶
-- 
+- The plugins effects sidebar width can be changed.
+- The convolver plugin is now able to load sofa impulse files. IT also has a dialog that allows the target orientation to be set.
+- Our local server was improved and it is now possible for third party applications to set and get more parameters values.
+- Our manual has been converted to mkdocs. And now its available only in online mode.
 
 - Bug fixes∶
-- 
+- RNNoise is supposed to be optional. But that was not actually happening
 
 - Other notes∶
-- 
+- Now that the manual is just an ordinary Github's page the Qt WebEngineView is not used anymore. No need to keep its package as dependency.
 
 ---
 Version: 8.0.6

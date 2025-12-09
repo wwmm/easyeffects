@@ -224,10 +224,6 @@ Kirigami.ApplicationWindow {
         id: shortcutsSheet
     }
 
-    HelpSheet {
-        id: helpSheet
-    }
-
     Kirigami.PromptDialog {
         id: resetPromptDialog
 
@@ -405,9 +401,7 @@ Kirigami.ApplicationWindow {
                 text: i18n("Manual") // qmllint disable
                 icon.name: "help-contents-symbolic"
                 onTriggered: {
-                    appWindow.show();
-                    appWindow.raise();
-                    helpSheet.open();
+                    Qt.openUrlExternally("https://wwmm.github.io/easyeffects/");
                 }
             }
 
@@ -554,7 +548,7 @@ Kirigami.ApplicationWindow {
                         icon.name: "help-contents-symbolic"
                         displayHint: Kirigami.DisplayHint.AlwaysHide
                         onTriggered: {
-                            helpSheet.open();
+                            Qt.openUrlExternally("https://wwmm.github.io/easyeffects/");
                         }
                     },
                     Kirigami.Action {
