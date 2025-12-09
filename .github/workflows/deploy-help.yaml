@@ -27,20 +27,40 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-24.04
     steps:
+      # 1. Checkout the repo
       - name: Checkout
         uses: actions/checkout@v6.0.1
 
+      # 2. Install Python and MkDocs
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install dependencies
+        run: |
+          pip install mkdocs
+          # If using Material theme: pip install mkdocs-material
+
+      # 3. Generate plugin properties HTML
       - name: Generate plugin properties HTML
         run: python util/generate_command_docs.py
 
+      # 4. Build MkDocs site
+      - name: Build MkDocs site
+        run: mkdocs build
+
+      # 5. Setup GitHub Pages
       - name: Setup Pages
         uses: actions/configure-pages@v5.0.0
 
+      # 6. Upload the generated site (site_dir)
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4.0.0
         with:
-          path: src/contents/help
+          path: src/contents/site
 
+      # 7. Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4.0.5

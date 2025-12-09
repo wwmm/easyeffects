@@ -1,0 +1,14 @@
+site_name: EasyEffects Manual
+repo_url: https://github.com/wwmm/easyeffects
+
+use_directory_urls: false
+
+docs_dir: src/contents/docs
+edit_uri: edit/master/src/contents/docs/
+site_dir: src/contents/site
+
+theme:
+  name: readthedocs
+
+nav:
+  - Home: index.md

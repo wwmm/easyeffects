@@ -179,4 +179,4 @@ Sorry dude, this isn't done by simply loading a preset, since the community is n
 
 ## More Information
 
-- [Guides](index.html#guides)
+- [Guides](index.md#guides)
