@@ -40,15 +40,15 @@
   <screenshots>
     <screenshot type="default">
       <caption>The main page showing two audio output apps</caption>
-      <image type="source">https://raw.githubusercontent.com/wwmm/easyeffects/master/images/easyeffects-light-screenshot-1.png</image>
+      <image type="source">https://raw.githubusercontent.com/wwmm/easyeffects/master/src/contents/docs/images/easyeffects-light-screenshot-1.png</image>
     </screenshot>
     <screenshot>
       <caption>The bass enhancer page showing audio controls</caption>
-      <image type="source">https://raw.githubusercontent.com/wwmm/easyeffects/master/images/easyeffects-light-screenshot-2.png</image>
+      <image type="source">https://raw.githubusercontent.com/wwmm/easyeffects/master/src/contents/docs/images/easyeffects-light-screenshot-2.png</image>
     </screenshot>
     <screenshot>
       <caption>The convolver page showing audio controls</caption>
-      <image type="source">https://raw.githubusercontent.com/wwmm/easyeffects/master/images/easyeffects-light-screenshot-3.png</image>
+      <image type="source">https://raw.githubusercontent.com/wwmm/easyeffects/master/src/contents/docs/images/easyeffects-light-screenshot-3.png</image>
     </screenshot>
   </screenshots>
   <branding>
@@ -632,7 +632,7 @@
           <li>Bug fixes:</li>
           <li>More robust parsing to import APO presets saved with comma as thousands separator in central frequency band.</li>
           <li>Other notes:</li>
-          <li>The fmt library is a new dependency  At least while the c++ compilers do not implement its features. This is expected to happen in the next years.</li>
+          <li>The fmt library is a new dependency At least while the c++ compilers do not implement its features. This is expected to happen in the next years.</li>
           <li>GTKMM and GLIBMM are not a dependency anymore. We now use gtk4 directly.</li>
         </ul>
       </description>
@@ -748,7 +748,7 @@
       <description>
         <ul>
           <li>Features:</li>
-          <li>The Loudness plugin is being used again for the reasons described at issue 820. This means that  is an optional dependency again.</li>
+          <li>The Loudness plugin is being used again for the reasons described at issue 820. This means that is an optional dependency again.</li>
           <li>Bug fixes:</li>
           <li>Fixed a segmentation fault that happened when optional dependencies were not installed</li>
         </ul>
@@ -783,5 +783,5 @@
       </description>
     </release>
   </releases>
-  <content_rating type="oars-1.1"/>
+  <content_rating type="oars-1.1" />
 </component>
