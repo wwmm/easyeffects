@@ -101,10 +101,10 @@ void CommandLineParser::process_events() {
     Q_EMIT onHideWindow();
   }
 
-  if (parser->isSet("active-preset")) {
+  if (parser->isSet("last-loaded-preset")) {
     bool ok = true;
 
-    const auto value = parser->value("active-preset");
+    const auto value = parser->value("last-loaded-preset");
 
     if (value == "input" || value == "output") {
       if (is_primary) {  // no daemon running
@@ -133,7 +133,7 @@ void CommandLineParser::process_events() {
     }
   }
 
-  if (parser->isSet("active-presets")) {
+  if (parser->isSet("last-loaded-presets")) {
     auto input = DbMain::lastLoadedInputPreset();
     auto output = DbMain::lastLoadedOutputPreset();
 
