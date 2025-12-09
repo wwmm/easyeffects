@@ -163,13 +163,13 @@ void LocalServer::onReadyRead() {
 
           socket->write(value.c_str());
         }
-      } else if (std::strncmp(buf, tags::local_server::get_active_preset,
-                              strlen(tags::local_server::get_active_preset)) == 0) {
+      } else if (std::strncmp(buf, tags::local_server::get_last_loaded_preset,
+                              strlen(tags::local_server::get_last_loaded_preset)) == 0) {
         std::string msg = buf;
 
         std::smatch matches;
 
-        static const auto re = std::regex("^get_active_preset:(input|output)\n$");
+        static const auto re = std::regex("^get_last_loaded_preset:(input|output)\n$");
 
         std::regex_search(msg, matches, re);
 
@@ -178,10 +178,6 @@ void LocalServer::onReadyRead() {
 
           QString preset_name =
               (pipeline_str == "input") ? DbMain::lastLoadedInputPreset() : DbMain::lastLoadedOutputPreset();
-
-          if (preset_name.isEmpty()) {
-            preset_name = QStringLiteral("None");
-          }
 
           socket->write(preset_name.toUtf8());
         }
