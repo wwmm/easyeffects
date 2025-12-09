@@ -19,63 +19,61 @@ The online documentation is automatically updated for each release, so it may be
 
 ## Guides
 
-- [Enhancing your internal notebook speakers without using an Equalizer](guide_1.md)
+- [Enhancing your internal notebook speakers without using an Equalizer](guides/guide_1.md)
 
 ---
 
 ## User Interface
 
-- [Advanced Information](advancedinfo.md)  
-- [Applications Excluded](blocklist.md)  
-- [Changing Effects Order](effectsorder.md)  
-- [Creating and Importing User Presets](userpresets.md)  
-- [Enable or Disable an Application](enableapp.md)  
-- [PipeWire](pipewire.md)  
-- [Saturation Warning](saturated.md)  
-- [Settings Menu](settingsmenu.md)
+- [Advanced Information](user_interface/advancedinfo.md)  
+- [Applications Excluded](user_interface/blocklist.md)  
+- [Changing Effects Order](user_interface/effectsorder.md)  
+- [Creating and Importing User Presets](user_interface/userpresets.md)  
+- [Enable or Disable an Application](user_interface/enableapp.md)  
+- [PipeWire](user_interface/pipewire.md)  
+- [Saturation Warning](user_interface/saturated.md)  
+- [Settings Menu](user_interface/settingsmenu.md)
 
 ---
 
-## Plugins
+## Audio Effects
 
-### Audio Effects
+- [Auto Gain](plugins/autogain.md)  
+- [Bass Enhancer](plugins/bassenhancer.md)  
+- [Bass Loudness](plugins/bassloudness.md)  
+- [Compressor](plugins/compressor.md)  
+- [Convolver](plugins/convolver.md)  
+- [Crossfeed](plugins/crossfeed.md)  
+- [Crystalizer](plugins/crystalizer.md)  
+- [Deep Noise Remover](plugins/deepfilternet.md)  
+- [Deesser](plugins/deesser.md)  
+- [Delay](plugins/delay.md)  
+- [Echo Canceller](plugins/echocanceller.md)  
+- [Equalizer](plugins/equalizer.md)  
+- [Exciter](plugins/exciter.md)  
+- [Expander](plugins/expander.md)  
+- [Filter](plugins/filter.md)  
+- [Gate](plugins/gate.md)  
+- [Limiter](plugins/limiter.md)  
+- [Loudness](plugins/loudness.md)  
+- [Maximizer](plugins/maximizer.md)  
+- [Multiband Compressor](plugins/multibandcompressor.md)  
+- [Multiband Gate](plugins/multibandgate.md)  
+- [Pitch](plugins/pitch.md)  
+- [Reverberation](plugins/reverb.md)  
+- [Noise Reduction](plugins/rnnoise.md)  
+- [Speech Processor](plugins/speex.md)  
+- [Stereo Tools](plugins/stereotools.md)
 
-- [Auto Gain](autogain.md)  
-- [Bass Enhancer](bassenhancer.md)  
-- [Bass Loudness](bassloudness.md)  
-- [Compressor](compressor.md)  
-- [Convolver](convolver.md)  
-- [Crossfeed](crossfeed.md)  
-- [Crystalizer](crystalizer.md)  
-- [Deep Noise Remover](deepfilternet.md)  
-- [Deesser](deesser.md)  
-- [Delay](delay.md)  
-- [Echo Canceller](echocanceller.md)  
-- [Equalizer](equalizer.md)  
-- [Exciter](exciter.md)  
-- [Expander](expander.md)  
-- [Filter](filter.md)  
-- [Gate](gate.md)  
-- [Limiter](limiter.md)  
-- [Loudness](loudness.md)  
-- [Maximizer](maximizer.md)  
-- [Multiband Compressor](multibandcompressor.md)  
-- [Multiband Gate](multibandgate.md)  
-- [Pitch](pitch.md)  
-- [Reverberation](reverb.md)  
-- [Noise Reduction](rnnoise.md)  
-- [Speech Processor](speex.md)  
-- [Stereo Tools](stereotools.md)
+## Database
 
-### Plugin System
-
-- [Plugin Properties](plugins_properties.md)
+- [Plugin Properties](database/plugins_properties.md)
 
 ---
 
 ## Calibration
 
-- [Test Signal](testsignals.md)
+- [Test Signal](user_interface/testsignals.md)
 
 ---
 
