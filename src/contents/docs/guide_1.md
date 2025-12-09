@@ -1,0 +1,182 @@
+# Enhancing your internal notebook speakers without using an Equalizer
+
+This tutorial was written for PulseEffects by Markus Schmidt (schmidt@boomshop.net) on November 2019 and updated two years later for the new Easy Effects on PipeWire.
+
+## Introduction
+
+If you're a notebook user relying on your internal speakers and you - like me - own a model suffering from a tinny, clanging sound, Easy Effects is your salvation!
+
+Commercial operating systems on laptops these days often come with software like Dolby Theatre and the like to enhance the sound of lousy notebook speakers to something more substantial and acoustically rich. Under Linux, Easy Effects will do the job for you, although, compared to the commercial pendants, there's some manual tweaking required until the community sets up a database with presets for common machines.
+
+This DSP software comes with everything needed to fatten the sound of your laptop speakers with a flexibility never found in other operating systems. Unfortunately the drawback of this flexibility is that average users will get lost in the sheer amount of possibilities. That's why this tutorial was created.
+
+## Why no Equalizer?
+
+We will attack the problems one by one utilizing specific signal processors, deliberately renouncing Equalizers. Equalizers are not of any help here but tend to make these kinds of problems even worse. This is because of the nature of this processor, but also because users tend to add to the signal (additive equalization) instead of trying to eliminate problems by removing from the signal (subtractive equalization) like it is usually done in the professional world.
+
+But even subtractive equalization wouldn't be of any help since the amplifiers and speakers in a notebook are not loud enough by default, so trying to eliminate problems this way leads to a quiet and still castrated sound. And raising the volume afterwards generally leads to distorted sounds and other problems because the system was at its limits beforehand and just fiddling with the frequency response doesn't help at all.
+
+## Frequency Range
+
+We'll have to talk about the frequency range. For a better understanding and because of the way we will solve our problems I'll break it down to five ranges which are:
+
+- **Sub** – More or less vibrations up to something an ear can barely hear. Everything from 10 Hz to ~40 Hz.
+- **Low or Bass** – Where the whole fundament of a signal is located. Low end of bass drums, bass synthesizers and bass guitars are found here. Movies occupy this range with explosions, rumbling waters, thunder, heavy gun fire and the like. Absolutely missing on notebooks and tablets. Technically speaking it's ~60 Hz - ~200 Hz.
+- **Low-Mid** – Hit a 0.5 m³ cardboard box and you know what low-mids are. The "punch" of a sound is often located here, also the juice of snare drums and electric guitars. In Movies, roaring engines and shotguns are found in this range. We're talking about ~250 Hz - ~750 Hz.
+- **High-Mid** – This is the ears most important and sensitive range. The main information of any kind of signal is located here. Human voice, picking of guitars, attack of drums, the colour of a synthesizer - everything carrying the main information of sound. Something around ~1 kHz - ~4 kHz.
+- **Highs** – The air, the breathe, the sizzling, the splashing - this is the range of brightness. Everything around and above ~5 kHz.
+
+## Test Signal
+
+You definitely need a good signal for this job. I decided to use the song [G€LD](https://www.youtube.com/watch?v=OxAP6ieuDgI) by Seeed.
+
+It is quite snappy, has lots of well defined substance, clear and bright highs, present vocals, comes with a very balanced frequency response and is a great mix in combination with great mastering. Afterwards I tested against various movies and other stuff like talks, classical music and the like and was convinced of the result. Well produced, modern pop music (avoid the 80's and 90's stuff) is always a good test signal for this kind of job. Movies are way too dynamic, so is classical music, and they normally don't cover a steady, broad frequency range like this kind of signal.
+
+We will not be able to make the notebook bounce. What is the goal here is that everything contained in the mix gets audible in a well balanced manner and to gain a present, upfront, broad and hopefully rich sound.
+
+I assume you don't utilize a player or source which is able to produce levels above 0 dB. I also assume you don't use e.g. video players volume bar to lower the volume of your source. This approach works well for defined, mixed and mastered sound sources like music, movies, tv and the like, played back at 100% volume in the player. Set the desired volume directly on your hardware **after** the processing happened.
+
+## Problems
+
+Let's investigate the biggest problems first:
+
+**Bass**  
+The most obvious problem of notebook speakers is the tinny, pressure-free sound not reproducing any kind of low-end. This is because of the size of the membranes and the inadequate housing. Fortunately software can work around this issue at least a bit.
+
+**Highs**  
+Often the highs are quite bitchy, not representing the "air" but torturing the listener with searing sibilants. In order to fix that we need to equal this frequency range out.
+
+**Overall Frequency Response**  
+Normally the relation between the different frequency ranges low, low-mid, high-mid and height is quite out-of-bounds. This needs correction, although I promised a tutorial without EQ.
+
+**Distortion**  
+Because of the thin and neutered sound users tend to raise the volume or even add an Equalizer to raise missing frequency ranges. This normally leads to digital distortions because every signal above 0 dB at the sound card DAC will go from occasional crackling up to a totally distorted sound.
+
+**Dynamic range**  
+With movies, but music as well, those tiny transducers tend to wiping away low-level sounds but going ballistic on loud and bassy sounds. For this reason it's recommended to reduce the overall dynamic range so you don't need to press your ear onto the palm rest when the lady in the movie starts whispering.
+
+**Stereo Image**  
+The stereo base is quite narrow because of the positioning of the speakers inside the laptop which gives an impression of almost mono signals.
+
+## Solutions
+
+Let's start fixing the sound. The result will not come even close to something more substantial but at least we'll be able to get the best out of the physical boundaries of these transducers.
+
+Every parameter we are gonna set absolutely depends on your situation and the hardware you've got. Every notebook has its own frequency response and dynamic range so there's no panacea. But the audio signal processors, their order and their missions are well defined and reproducible.
+
+Don't care about clipping in the plugins level meters. The signal will be processed as 32 bit numbers internally (check title bar) which gives a non-clipping overhead of hundreds of decibels. The only thing that shouldn't happen is that there's clipping when the signal hits the sound card DAC (Digital-to-Analog Converter), which would result in digital distortion.
+
+Let's head over to the signal chain:
+
+**Limiter**  
+We will start with the **last** signal processor being used. As I explained earlier, as soon as the signal hits the sound card DAC it has to be below 0 dB, otherwise it will result in a distorted, messy sound.
+
+Delete already present processors in the list, then add the Limiter. You will not hear any difference, which is what we expect. It will hit in as soon as we start messing up the signal with all the other processors. Set PreAmp to 0 dB, Lookahead to 4 ms, Attack to 2 ms and Release to 8 ms.
+
+A Limiter monitors the signal in (nearly) realtime and detects peaks over a certain Threshold, in our case 0 dB. Set also Stereo Link to 100%, Oversampling to Half x4, disable External Sidechain and Auto Leveling and leave remaining options to their defaults.
+
+As soon as a peak is detected, it starts lowering the volume constantly (within the Lookahead) until the peak will be below Threshold. Afterwards it raises the volume again (within release time frame) until it is back to normal. This way we avoid signals above Threshold hitting the DAC without being noticed too much. If one tries to overdo limiting, it will definitely result in distortion and other side effects, but in our case it's just a fire-and-forget troubleshooter so we can concentrate on the results without trying to mess with levelling over and over again.
+
+Don't overdo things! This might render your overall sound experience worse than before.
+
+Let's look at the **real** processing now.
+
+**Filter**  
+First of all we should remove frequencies that cannot be heard because even if the speakers are unable to reproduce them a lot of energy will be wasted in the process. This will lead to problems like not being able to use the full dynamic range and the introduction of digital and physical distortions.
+
+Add the Filter to the list and place it on top, above the Limiter. Set the type to 36 dB High Pass (this will cut off everything below a frequency and will let everything above it pass) and the frequency to 50 Hz (which is definitely below your laptop's speakers abilities). Continuously raise the frequency by 10 Hz until you start hearing a change in the lower end of the audible signal, which should be around 130-160 Hz. Subtract 10% (or 15 Hz) and set it as the Filters frequency. On my machine it is 145 Hz, since the signal started being affected at 160 Hz.
+
+What happened is that we removed everything the speakers can't reproduce at all, leaving a little bit of signal just below this frequency, which is quite important for the next step.
+
+**Bass Enhancer**  
+Let's grow some testicles to the signal.
+
+Add the Bass Enhancer and place it at the second position, between the Filter and the Limiter. Set the Floor to 10 Hz and forget about it (we already removed everything below the Filter plugin cutoff frequency). Raise Harmonics to 10 and start with a Scope of 200 Hz. Now start raising the Amount continuously until the bass takes over the whole energy, which is definitely too much. For me it works best at +24 dB. Which is huge but my ThinkPad P1 has the worst speakers I've ever heard in a 2.8k € notebook.
+
+What happens is that the Bass Enhancer adds frequencies to the signal which weren't there before. While an Equalizer only raises stuff which is already in the signal, a Bass Enhancer improves the lower end by adding distortion to a specific frequency range. This kind of distortion adds so called Harmonics to the signal which is a multiple of existing frequencies. On the Blend slider you can choose seamlessly between 2nd and 3rd Harmonics, which means that a frequency of 100 Hz produces a new signal of 200/300/400/600/800/900 Hz... at varying (due to the Harmonics setting) and constantly decreasing levels. This means we're effectively raising the lower range into something better reproducible. It doesn't add or raise the **real** fundament (so your trousers won't start to flutter), but makes more audible signals that have been swallowed by the hardware before.
+
+Later on, in order to refine the result, you should play with the Amount parameter to define the level of bass and maybe with the Scope to define the upper end of our additional Harmonics.
+
+**Multiband Compressor**  
+This is the most demanding step in the chain. Even professionals have great respect for this signal processor since it's absolutely able to destroy your signals big time. But let's be honest, we're consumers and no one will hear the difference between 100 ms and 200 ms Attack time - even on notebook and tablet speakers. This means we can work with some reliable, well established defaults for the timing and frequency splits.
+
+The Multiband Compressor will solve several things for us. It will cut outstanding and annoying frequencies, lower the overall dynamic range and figure our overall frequency response. The latter is what most people try to achieve with an Equalizer. Thing is Equalizers aren't dynamic which will add to the problems instead of solving anything.
+
+Add the Multiband Compressor and place it at the third position, after the Bass Enhancer and before the Limiter.
+
+Since the Bass Enhancer really raised the energy and level of the signal, lower the Multiband Compressor input gain to -6 dB as a starting point. Enable bands 2, 3 and 4. Set Modern Operating Mode and disable the Sidechain Boost. Then let's set the split frequencies for the different bands:
+
+- Band 2 Start: 250 Hz 
+- Band 3 Start: 1250 Hz
+- Band 4 Start: 5000 Hz
+
+Afterwards let's set some defaults:
+
+- Band 1
+    - Attack Time: 150 ms
+    - Release Time: 300 ms
+    - Attack Threshold: -16 dB
+    - Ratio: 5
+    - Knee: -12 dB
+    - Makeup: 4 dB
+
+- Band 2
+    - Attack Time: 150 ms
+    - Release Time: 200 ms
+    - Attack Threshold: -24 dB
+    - Ratio: 3
+    - Knee: -9 dB
+    - Makeup: 4 dB
+
+- Band 3
+    - Attack Time: 100 ms
+    - Release Time: 150 ms
+    - Attack Threshold: -24 dB
+    - Ratio: 3
+    - Knee: -9 dB
+    - Makeup: 4 dB
+
+- Band 4
+    - Attack Time: 80 ms
+    - Release Time: 120 ms
+    - Attack Threshold: -24 dB
+    - Ratio: 4
+    - Knee: -9 dB
+    - Makeup: 4 dB
+
+Compression Mode for all enabled bands should be Downward. The remaining parameters can be left to their defaults. These values should be a good starting point.
+
+A Compressor lowers signal levels which appear above a certain Threshold. It adds a simple multiplication to the signal defined by the Ratio. If the Threshold is set to -24 dB and Ratio to 2, a signal of -12 dB would in fact become -18 dB. In this example one can then raise the Makeup parameter to 6 dB, since this is what went "lost". So first of all we're rendering loud signals quieter to then raise the overall volume, which leads to less dynamic range with quiet parts becoming more audible.
+
+The timing settings affect the "speed" of the compression. Attack means that a signal needs to go over Threshold for this amount of time until the Compressor reaches the full (negative) amplification. Release defines the amount of time the signal has to stay below Threshold until the amplification is back to 1 again.
+
+A Multiband Compressor splits the signal in various frequency ranges to work on them exclusively with dedicated compression stages. This means that a very loud bass drum would not affect a crash cymbal, since they are clearly located in different bands.
+
+Start playing around with these parameters:
+
+**Makeup** – This is probably most important setting in this concept. Makeup raises the signal after compression stage which means that it directly influences the perceived volume of every single band. Or in other words: **this is your Equalizer** :). Raise Makeup of single bands to make them louder or quieter. On my ThinkPad P1 I ended up with 4 dB, 3 dB, 6 dB and 6 dB respectively in band 1, 2, 3 and 4.
+
+**Input Level** – Set it to -6 dB by default, I ended up at -3 dB. What happens is that a higher input level pushes all bands of the Compressor equally, leading to a allegedly louder sound (well, the loudness was raised in fact) without tweaking every single band manually. This reduces the overall dynamic range, raising quiet parts and squeezing loud parts even more.
+
+**Stereo Tools**  
+After figuring our overall sound let's look for some icing on the cake.
+
+Add the Stereo Tools and place it at the fourth position, after Multiband Compressor and before Limiter. This tool has a lot of functionality but we only need just a single parameter. Switch to the "Output" tab and set the parameter Stereo Base to 0.25. That's it.
+
+Stereo Base acts on the two channels. It adds inverted signals crossover-wise. This way one can bring a full stereo signal down to mono seamlessly (by going negative values, -1 is fully mono) but also raise the stereo base by choosing positive numbers. This setting has lots of side effects, so avoid overdoing it! One of the bigger problems is that it reduces the bass range due to different effects, which is something we **definitely** don't want here.
+
+Play with Stereo Base to spread the appearance of your sound to a nice, broad stage without losing the center (vocals, snare drums, conversations in movies) or substance in the lower end. Most likely values between 0 and 0.5 will give some good results.
+
+## Aftermath
+
+Hopefully you ended up with a **better** sound than before. This signal processor chain is able to completely trash your sound if not done right but also can improve it to compete with some high class notebook speaker systems. All manufacturers put on the pants the same way and Dolby Theatre is no rocket science but just some presets on a presumably comparable set of signal processors set up in the presumably same way as this tutorial explained.
+
+When my notebook was new, I first ran the pre-installed Windows system in order to test if all hardware was working. Sound-wise I remembered the bad reputation of this machine in every test, so I tried some tunes on Youtube - and was quite convinced. After installing my Linux system the enthusiasm was totally gone - the sound turned into a squawking, pressure-less something. It became clear that all problems of the internal speakers where due to the missing sound chips DSP driver. But fortunately Wellington Wallace spent his spare-time casting the most important Calf and LSP plugins for this job into something usable on consumers systems. Thanks a bunch for that, mate!
+
+## tl;dr
+
+Sorry dude, this isn't done by simply loading a preset, since the community is not Apple, Lenovo or Dell offering high quality Dolby Theatre drivers for your particular machine.
+
+## More Information
+
+- [Guides](index.html#guides)
