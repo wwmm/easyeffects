@@ -496,7 +496,7 @@ void PluginBase::disconnect_from_pw() {
     std::this_thread::sleep_for(std::chrono::milliseconds(1));
   }
 
-  util::warning(std::format("{}{} is disconnected", log_tag, name.toStdString()));
+  util::debug(std::format("{}{} is disconnected", log_tag, name.toStdString()));
 }
 
 void PluginBase::setup() {}

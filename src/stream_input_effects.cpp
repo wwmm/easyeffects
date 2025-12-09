@@ -220,7 +220,7 @@ void StreamInputEffects::connect_filters(const bool& bypass) {
 
   int timeout = 0;
 
-  util::warning(std::format("Before: {} -> {}", input_device.id, input_device.name.toStdString()));
+  util::debug(std::format("Before: {} -> {}", input_device.id, input_device.name.toStdString()));
 
   while (pm->count_node_ports(input_device.id) < 1) {
     std::this_thread::sleep_for(std::chrono::milliseconds(1));

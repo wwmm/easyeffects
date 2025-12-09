@@ -154,7 +154,7 @@ static void initGlobalBypass(StreamInputEffects& sie, StreamOutputEffects& soe) 
     soe.set_bypass(DbMain::bypass());
     sie.set_bypass(DbMain::bypass());
 
-    util::info((DbMain::bypass() ? "Enabling global bypass" : "Disabling global bypass"));
+    util::debug((DbMain::bypass() ? "Enabling global bypass" : "Disabling global bypass"));
   };
 
   update_bypass_state();
@@ -164,7 +164,7 @@ static void initGlobalBypass(StreamInputEffects& sie, StreamOutputEffects& soe) 
 
 static void initGlobalShortcuts(GlobalShortcuts* shortcuts) {
   auto bind = [shortcuts]() {
-    util::info("XDG Global Shortcuts experimental feature is enabled for this session.");
+    util::debug("XDG Global Shortcuts experimental feature is enabled for this session.");
 
     const auto session = qEnvironmentVariable("XDG_SESSION_DESKTOP");
     const auto desktop = qEnvironmentVariable("XDG_CURRENT_DESKTOP");

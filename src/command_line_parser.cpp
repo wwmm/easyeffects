@@ -135,13 +135,6 @@ void CommandLineParser::process_events() {
     auto input = DbMain::lastLoadedInputPreset();
     auto output = DbMain::lastLoadedOutputPreset();
 
-    if (input.length() < 1) {
-      input = QString("None");
-    }
-    if (output.length() < 1) {
-      output = QString("None");
-    }
-
     std::cout << "Input: " << input.toStdString() << '\n';
     std::cout << "Output: " << output.toStdString() << '\n';
 
