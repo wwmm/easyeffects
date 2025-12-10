@@ -272,11 +272,11 @@ if(ENABLE_SANITIZER)
     target_link_options(easyeffects PRIVATE "-fsanitize=address")
 endif(ENABLE_SANITIZER)
 
-if(LIBRNNOISE_FOUND AND ENABLE_RNNOISE)
+if(ENABLE_RNNOISE)
     MESSAGE(STATUS "Enabling rnnoise")
     target_compile_definitions(easyeffects PRIVATE ENABLE_RNNOISE=1)
     target_link_libraries(easyeffects PRIVATE PkgConfig::LIBRNNOISE)
-endif(LIBRNNOISE_FOUND AND ENABLE_RNNOISE)
+endif(ENABLE_RNNOISE)
 
 if(LIBPORTAL_FOUND AND LIBPORTALQT_FOUND AND ENABLE_LIBPORTAL)
     MESSAGE(STATUS "Flatpak build")
