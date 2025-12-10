@@ -258,8 +258,6 @@ target_link_libraries(easyeffects PRIVATE
     PkgConfig::LIBSAMPLERATE
     PkgConfig::LIBSNDFILE
     PkgConfig::LIBSOUNDTOUCH
-    PkgConfig::LIBPORTAL
-    PkgConfig::LIBPORTALQT
     PkgConfig::LIBWEBRTC
     PkgConfig::LIBMYSOFA
     ${LIBZITACONVOLVER}
@@ -274,11 +272,17 @@ if(ENABLE_SANITIZER)
     target_link_options(easyeffects PRIVATE "-fsanitize=address")
 endif(ENABLE_SANITIZER)
 
-if(ENABLE_RNNOISE)
+if(LIBRNNOISE_FOUND AND ENABLE_RNNOISE)
     MESSAGE(STATUS "Enabling rnnoise")
     target_compile_definitions(easyeffects PRIVATE ENABLE_RNNOISE=1)
     target_link_libraries(easyeffects PRIVATE PkgConfig::LIBRNNOISE)
-endif(ENABLE_RNNOISE)
+endif(LIBRNNOISE_FOUND AND ENABLE_RNNOISE)
+
+if(LIBPORTAL_FOUND AND LIBPORTALQT_FOUND AND ENABLE_FLATPAK)
+    MESSAGE(STATUS "Flatpak build")
+    target_compile_definitions(easyeffects PRIVATE ENABLE_FLATPAK=1)
+    target_link_libraries(easyeffects PRIVATE PkgConfig::LIBPORTAL PkgConfig::LIBPORTALQT)
+endif(LIBPORTAL_FOUND AND LIBPORTALQT_FOUND AND ENABLE_FLATPAK)
 
 if(ENABLE_LIBCPP_WORKAROUNDS)
     MESSAGE(STATUS "Enabling workarounds for lib++ systems")

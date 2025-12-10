@@ -30,13 +30,16 @@ class Autostart : public QObject {
   explicit Autostart(QObject* parent = nullptr);
 
   void set_window(QWindow* window);
-  void update_background_portal();
 
  Q_SIGNALS:
   void error(const QString& msg);
 
  private:
   QWindow* window = nullptr;
+
+#ifdef ENABLE_FLATPAK
+  void update_background_portal();
+#endif
 
   static void fallback_enable_autostart(const bool& state);
 
