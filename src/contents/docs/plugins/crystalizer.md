@@ -11,6 +11,17 @@ When active the audio signal passing through the selected band is not modified.
 **Mute**  
 Mutes the selected band.
 
+**Adaptive Intensity**  
+When enabled the intensity value set by the band slider is continously scaled as audio is processed. The scaling may
+increase or decrease the intensity based on the geometric mean of the signal crest factor, kurtosis and spectral flux. In this
+mode an additional scaling proportional to the band frequency is also applied.  
+
+When using static intensity values it may happen that the crystalizer enhances high frequency audio too much. What leads
+to audible artifacts. The adaptive scaling removes this is most of the cases.
+
 ## References
 
-- [Wikipedia Dynamic Range](https://en.wikipedia.org/wiki/Dynamic_range)
+- [Wikipedia Dynamic Range](https://en.wikipedia.org/wiki/Dynamic_range)  
+- [Crest factor](https://en.wikipedia.org/wiki/Crest_factor)  
+- [Kurtosis](https://en.wikipedia.org/wiki/Kurtosis)  
+- [Spectral flux](https://en.wikipedia.org/wiki/Spectral_flux)
