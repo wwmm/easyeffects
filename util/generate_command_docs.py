@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 import os
 import re
-import glob
 import xml.etree.ElementTree as ET
 
 TAGS_FILE = "src/tags_plugin_name.hpp"
@@ -15,17 +14,15 @@ def get_tags():
         return ids
 
     regex = re.compile(r'CREATE_PROPERTY\s*\(\s*QString\s*,\s*\w+\s*,\s*QStringLiteral\s*\(\s*"([^"]+)"\s*\)\s*\)')
-
     with open(TAGS_FILE, 'r') as f:
         for line in f:
-            match = regex.search(line)
-            if match:
-                ids.append(match.group(1))
+            if m := regex.search(line):
+                ids.append(m.group(1))
     return sorted(ids)
 
 def main():
     if not os.path.exists(KCFG_DIR):
-        print(f"Error: Directory '{KCFG_DIR}' not found. Run this from the repo source root.")
+        print(f"Error: Directory '{KCFG_DIR}' not found.")
         exit(1)
 
     tags = get_tags()
@@ -48,42 +45,85 @@ def main():
 
     for tag in tags:
         kcfg_path = os.path.join(KCFG_DIR, f"easyeffects_db_{tag}.kcfg")
-
         if not os.path.exists(kcfg_path):
             continue
 
         try:
             tree = ET.parse(kcfg_path)
-            root = tree.getroot()
             ns = {"kcfg": "http://www.kde.org/standards/kcfg/1.0"}
 
             esc = lambda s: str(s).replace("|", r"\|") if s else ""
 
-            for group in root.findall("kcfg:group", ns):
-                for entry in group.findall("kcfg:entry", ns):
-                    prop_name = entry.get('name')
-                    prop_type = entry.get('type')
+            entries = {
+                entry.get('name'): entry
+                for group in tree.findall("kcfg:group", ns)
+                for entry in group.findall("kcfg:entry", ns)
+            }
 
+            enum_defs = {}
+
+            for name, entry in entries.items():
+                # case for StringList labels used with Int properties
+                if name.endswith("Labels") and entry.get('type') == 'StringList':
+                    base = name[:-6] # strip 'Labels'
                     default_node = entry.find("kcfg:default", ns)
-                    default_val = "-"
+                    if default_node is not None and default_node.text:
+                        enum_defs[base.lower()] = default_node.text.split(',')
 
-                    if default_node is not None:
-                        if default_node.get("code") == "true":
-                            default_val = "*calculated*"
-                        elif default_node.text:
-                            default_val = default_node.text
+                # case for Enum properties as is
+                if entry.get('type') == "Enum":
+                    choices_node = entry.find("kcfg:choices", ns)
+                    if choices_node is not None:
+                        labels = []
+                        for c in choices_node.findall("kcfg:choice", ns):
+                            lbl = c.find("kcfg:label", ns)
+                            text = lbl.text if (lbl is not None and lbl.text) else c.get("name")
+                            labels.append(text)
+                        enum_defs[name.lower()] = labels
 
-                    choices_html = ""
-                    if prop_type == "Enum":
-                        choices = entry.find("kcfg:choices", ns)
-                        if choices is not None:
-                            names = [c.get("name") for c in choices.findall("kcfg:choice", ns)]
-                            choices_html = f" <br><small>({', '.join(names)})</small>"
 
-                    row = f"| **{esc(tag)}** | `{esc(prop_name)}` | {esc(prop_type)}{choices_html} | `{esc(default_val)}` |"
-                    lines.append(row)
+            hidden_props = {
+                name for name in entries if name.lower()[:-6] in enum_defs and name.endswith("Labels")
+            }
+
+            for name, entry in entries.items():
+                if name in hidden_props:
+                    continue
+
+                prop_type = entry.get('type')
+
+                default_val = "-"
+                default_node = entry.find("kcfg:default", ns)
+                if default_node is not None:
+                    if default_node.get("code") == "true":
+                        default_val = "*calculated*"
+                    elif default_node.text:
+                        default_val = default_node.text
+
+                choices = []
+                if prop_type in ("Int", "Enum"):
+                    if name.lower() in enum_defs:
+                        choices = enum_defs[name.lower()]
+                    else:
+                        # suffix match among enums (longest wins) for banded props
+                        # e.g. band1StereoSplitSource -> StereoSplitSource Enum
+                        matches = [k for k in enum_defs if name.lower().endswith(k)]
+                        if matches:
+                            best_key = max(matches, key=len)
+                            choices = enum_defs[best_key]
+
+                def_col = f"`{esc(default_val)}`"
+
+                if choices:
+                    prop_type = "Enum"
+                    fmt_choices = [f"{i}: `{c}`" for i, c in enumerate(choices)]
+                    choices_str = ", ".join(fmt_choices)
+                    def_col += f" <br><small>(Choices: {choices_str})</small>"
+
+                lines.append(f"| **{esc(tag)}** | `{esc(name)}` | {esc(prop_type)} | {def_col} |")
 
             found_plugins += 1
+
         except Exception as e:
             print(f"Error parsing {kcfg_path}: {e}")
 
