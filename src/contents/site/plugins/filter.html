@@ -2130,19 +2130,48 @@
 
 
 <h1 id="filter">Filter</h1>
-<p>A Filter is used to amplify (boost), pass or attenuate (cut) defined parts of a frequency spectrum. Easy Effects uses the Filter from Calf Studio Gear.</p>
-<p><strong>Mode</strong><br />
-The type of the filter.</p>
+<p>A Filter is used to amplify (boost), pass or attenuate (cut) defined parts of a frequency spectrum. Easy Effects uses the Filter from Linux Studio Plugins.</p>
+<p><strong>Type</strong><br />
+- <strong>Low-pass</strong> - Low-pass filter with rejection of high frequencies.<br />
+- <strong>High-pass</strong> - High-pass filter with rejection of low frequencies.<br />
+- <strong>Low-shelf</strong> - Shelving filter with adjustment of low frequencies.<br />
+- <strong>High-shelf</strong> - Shelving filter with adjustment of high frequency range.<br />
+- <strong>Bell</strong> - Bell filter with smooth peak/recess.<br />
+- <strong>Bandpass</strong> - Bandpass filter.<br />
+- <strong>Notch</strong> - Notch filter with full rejection of selected frequency.<br />
+- <strong>Resonance</strong> - Resonance filter with sharp peak/recess.<br />
+- <strong>Ladder-pass</strong> - The filter that makes some ladder-passing in the spectrum domain.<br />
+- <strong>Ladder-rej</strong> - The filter that makes some ladder-rejection in the spectrum domain.<br />
+- <strong>Allpass</strong> - All-pass filter which only affects the phase of the audio signal at the specified frequency.  </p>
+<p><strong>Filter Mode</strong><br />
+- <strong>RLC</strong> - Very smooth filters based on similar cascades of RLC contours.<br />
+- <strong>BWC</strong> - Butterworth-Chebyshev-type-1 based filters. Does not affect Resonance and Notch filters.<br />
+- <strong>LRX</strong> - Linkwitz-Riley based filters. Does not affect Resonance and Notch filters.<br />
+- <strong>APO</strong> - Digital biquad filters derived from canonic analog biquad prototypes digitalized through Bilinear transform. These are textbook filters which are implemented as in the EqualizerAPO software.<br />
+- <strong>BT</strong> - Bilinear Z-transform is used for pole/zero mapping.<br />
+- <strong>MT</strong> - Matched Z-transform is used for pole/zero mapping.<br />
+- <strong>DR</strong> - Direct design is used to serve the digital filter coefficients directly in the digital domain, without performing transforms.  </p>
+<p><strong>Equalizer Mode</strong><br />
+- <strong>IIR</strong> - Infinite Impulse Response filters, nonlinear minimal phase. In most cases does not add noticeable latency to output signal.<br />
+- <strong>FIR</strong> - Finite Impulse Response filters with linear phase, finite approximation of equalizer's impulse response. Adds noticeable latency to output signal.<br />
+- <strong>FFT</strong> - Fast Fourier Transform approximation of the frequency chart, linear phase. Adds noticeable latency to output signal.<br />
+- <strong>SPM</strong> - Spectral Processor Mode of equalizer, equalizer transforms the magnitude of signal spectrum instead of applying impulse response to the signal.</p>
+<p><strong>Slope</strong><br />
+The slope of the filter characteristics.  </p>
 <p><strong>Frequency</strong><br />
-The center or cut-off frequency of the filter.</p>
-<p><strong>Resonance</strong><br />
-Add an accentuation to the center frequency. When used on a bandpass the surrounding frequencies are decreased in level and the band gets more narrow. A bandreject is narrowed down to a thin needle.</p>
-<p><strong>Inertia</strong><br />
-Smooths the jumps between frequencies.</p>
+The cutoff/resonance frequency of the filter or the middle frequency of the band.  </p>
+<p><strong>Width</strong><br />
+The width of the bandpass/ladder filters in octaves.  </p>
+<p><strong>Gain</strong><br />
+The gain of the filter. It is disabled for lo-pass/hi-pass/notch filters.  </p>
+<p><strong>Quality</strong><br />
+The quality factor of the filter.  </p>
+<p><strong>Balance</strong><br />
+The balance between left and right output channels.  </p>
 <h2 id="references">References</h2>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Audio_filter">Wikipedia Audio Filter</a></li>
-<li><a href="https://calf-studio-gear.org/doc/Filter.html">Calf Filter</a></li>
+<li><a href="https://lsp-plug.in/?page=manuals&amp;section=filter_stereo">Linux Studio Plugins Filter</a></li>
 </ul>
 
 
