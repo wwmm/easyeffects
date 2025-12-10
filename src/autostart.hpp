@@ -37,7 +37,7 @@ class Autostart : public QObject {
  private:
   QWindow* window = nullptr;
 
-#ifdef ENABLE_FLATPAK
+#ifdef ENABLE_LIBPORTAL
   void update_background_portal();
 #endif
 

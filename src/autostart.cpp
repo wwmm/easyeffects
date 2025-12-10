@@ -18,7 +18,7 @@
  */
 
 #include "autostart.hpp"
-#ifdef ENABLE_FLATPAK
+#ifdef ENABLE_LIBPORTAL
 #include <gio/gio.h>
 #include <glib-object.h>
 #include <glib.h>
@@ -43,7 +43,7 @@
 #include "tags_app.hpp"
 #include "util.hpp"
 
-#ifdef ENABLE_FLATPAK
+#ifdef ENABLE_LIBPORTAL
 namespace {
 
 void on_request_background_called([[maybe_unused]] GObject* source,
@@ -110,7 +110,7 @@ Autostart::Autostart(QObject* parent) : QObject(parent) {
 }
 
 void Autostart::update_state() {
-#ifdef ENABLE_FLATPAK
+#ifdef ENABLE_LIBPORTAL
   if (std::filesystem::exists("/.flatpak-info")) {
     update_background_portal();
 
@@ -125,7 +125,7 @@ void Autostart::set_window(QWindow* window) {
   this->window = window;
 }
 
-#ifdef ENABLE_FLATPAK
+#ifdef ENABLE_LIBPORTAL
 void Autostart::update_background_portal() {
   auto xdp_parent = xdp_parent_new_qt(window);
 
