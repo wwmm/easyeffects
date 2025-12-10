@@ -2326,9 +2326,13 @@
 <h3 id="set-property">Set property</h3>
 <p><strong>Format:</strong>
 <code>set_property:pipeline:plugin_id:instance_id:property_name:value</code></p>
-<p><strong>Example:</strong>
+<p><strong>Example 1:</strong>
 Set the compressor threshold on the output pipeline to -20dB:</p>
 <pre><code class="language-bash">echo &quot;set_property:output:compressor:0:threshold:-20&quot; | socat - UNIX-CONNECT:/tmp/EasyEffectsServer
+</code></pre>
+<p><strong>Example 2:</strong>
+Set the compressor <code>mode</code> to <code>Upward</code>. If <a href="../database/plugins_properties.html">Plugin Properties</a> show <code>1: Upward</code> in the choices list:</p>
+<pre><code class="language-bash">echo &quot;set_property:output:compressor:0:mode:1&quot; | socat - UNIX-CONNECT:/tmp/EasyEffectsServer
 </code></pre>
 <h3 id="get-property">Get property</h3>
 <p><strong>Format:</strong>

@@ -2105,15 +2105,9 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>autogain</strong></td>
-<td style="text-align: left;"><code>referenceLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>Momentary,Shortterm,Integrated,Geometric Mean (MSI),Geometric Mean (MS),Geometric Mean (MI),Geometric Mean (SI)</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>autogain</strong></td>
 <td style="text-align: left;"><code>reference</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>3</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>3</code> <br><small>(Choices: 0: <code>Momentary</code>, 1: <code>Shortterm</code>, 2: <code>Integrated</code>, 3: <code>Geometric Mean (MSI)</code>, 4: <code>Geometric Mean (MS)</code>, 5: <code>Geometric Mean (MI)</code>, 6: <code>Geometric Mean (SI)</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>autogain</strong></td>
@@ -2261,15 +2255,9 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>compressor</strong></td>
-<td style="text-align: left;"><code>modeLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>Downward,Upward,Boosting</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>compressor</strong></td>
 <td style="text-align: left;"><code>mode</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Downward</code>, 1: <code>Upward</code>, 2: <code>Boosting</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>compressor</strong></td>
@@ -2333,27 +2321,15 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>compressor</strong></td>
-<td style="text-align: left;"><code>sidechainTypeLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>Feed-forward,Feed-back,External,Link</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>compressor</strong></td>
 <td style="text-align: left;"><code>sidechainType</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>compressor</strong></td>
-<td style="text-align: left;"><code>sidechainModeLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>Peak,RMS,Low-Pass,SMA</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Feed-forward</code>, 1: <code>Feed-back</code>, 2: <code>External</code>, 3: <code>Link</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>compressor</strong></td>
 <td style="text-align: left;"><code>sidechainMode</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Peak</code>, 1: <code>RMS</code>, 2: <code>Low-Pass</code>, 3: <code>SMA</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>compressor</strong></td>
@@ -2363,27 +2339,15 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>compressor</strong></td>
-<td style="text-align: left;"><code>sidechainSourceLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>Middle,Side,Left,Right,Min,Max</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>compressor</strong></td>
 <td style="text-align: left;"><code>sidechainSource</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>compressor</strong></td>
-<td style="text-align: left;"><code>stereoSplitSourceLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>Left/Right,Right/Left,Mid/Side,Side/Mid,Min,Max</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Middle</code>, 1: <code>Side</code>, 2: <code>Left</code>, 3: <code>Right</code>, 4: <code>Min</code>, 5: <code>Max</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>compressor</strong></td>
 <td style="text-align: left;"><code>stereoSplitSource</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Left/Right</code>, 1: <code>Right/Left</code>, 2: <code>Mid/Side</code>, 3: <code>Side/Mid</code>, 4: <code>Min</code>, 5: <code>Max</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>compressor</strong></td>
@@ -2405,15 +2369,9 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>compressor</strong></td>
-<td style="text-align: left;"><code>hpfModeLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>Off,12 dB/oct,24 dB/oct,36 dB/oct</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>compressor</strong></td>
 <td style="text-align: left;"><code>hpfMode</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Off</code>, 1: <code>12 dB/oct</code>, 2: <code>24 dB/oct</code>, 3: <code>36 dB/oct</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>compressor</strong></td>
@@ -2423,15 +2381,9 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>compressor</strong></td>
-<td style="text-align: left;"><code>lpfModeLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>Off,12 dB/oct,24 dB/oct,36 dB/oct</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>compressor</strong></td>
 <td style="text-align: left;"><code>lpfMode</code></td>
 <td style="text-align: left;">Enum</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Off</code>, 1: <code>12 dB/oct</code>, 2: <code>24 dB/oct</code>, 3: <code>36 dB/oct</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>compressor</strong></td>
@@ -2909,27 +2861,15 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>deesser</strong></td>
-<td style="text-align: left;"><code>detectionLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>RMS,Peak</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>deesser</strong></td>
 <td style="text-align: left;"><code>detection</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>deesser</strong></td>
-<td style="text-align: left;"><code>modeLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>Wide,Split</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>RMS</code>, 1: <code>Peak</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>deesser</strong></td>
 <td style="text-align: left;"><code>mode</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Wide</code>, 1: <code>Split</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>deesser</strong></td>
@@ -3035,27 +2975,15 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>delay</strong></td>
-<td style="text-align: left;"><code>modeLLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>Samples,Distance,Time</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>delay</strong></td>
 <td style="text-align: left;"><code>modeL</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>2</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>delay</strong></td>
-<td style="text-align: left;"><code>modeRLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>Samples,Distance,Time</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>2</code> <br><small>(Choices: 0: <code>Samples</code>, 1: <code>Distance</code>, 2: <code>Time</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>delay</strong></td>
 <td style="text-align: left;"><code>modeR</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>2</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>2</code> <br><small>(Choices: 0: <code>Samples</code>, 1: <code>Distance</code>, 2: <code>Time</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>delay</strong></td>
@@ -3173,15 +3101,9 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>echo_canceller</strong></td>
-<td style="text-align: left;"><code>noiseSuppressionLevelLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>Low,Moderate,High,VeryHigh</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>echo_canceller</strong></td>
 <td style="text-align: left;"><code>noiseSuppressionLevel</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>1</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>1</code> <br><small>(Choices: 0: <code>Low</code>, 1: <code>Moderate</code>, 2: <code>High</code>, 3: <code>VeryHigh</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>echo_canceller</strong></td>
@@ -3227,15 +3149,9 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>equalizer</strong></td>
-<td style="text-align: left;"><code>modeLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>IIR,FIR,FFT,SPM</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>equalizer</strong></td>
 <td style="text-align: left;"><code>mode</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>IIR</code>, 1: <code>FIR</code>, 2: <code>FFT</code>, 3: <code>SPM</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>equalizer</strong></td>
@@ -3359,15 +3275,9 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>expander</strong></td>
-<td style="text-align: left;"><code>modeLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>Downward,Upward</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>expander</strong></td>
 <td style="text-align: left;"><code>mode</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>1</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>1</code> <br><small>(Choices: 0: <code>Downward</code>, 1: <code>Upward</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>expander</strong></td>
@@ -3419,27 +3329,15 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>expander</strong></td>
-<td style="text-align: left;"><code>sidechainTypeLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>Internal,External,Link</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>expander</strong></td>
 <td style="text-align: left;"><code>sidechainType</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>expander</strong></td>
-<td style="text-align: left;"><code>sidechainModeLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>Peak,RMS,Low-Pass,SMA</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Internal</code>, 1: <code>External</code>, 2: <code>Link</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>expander</strong></td>
 <td style="text-align: left;"><code>sidechainMode</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Peak</code>, 1: <code>RMS</code>, 2: <code>Low-Pass</code>, 3: <code>SMA</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>expander</strong></td>
@@ -3449,27 +3347,15 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>expander</strong></td>
-<td style="text-align: left;"><code>sidechainSourceLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>Middle,Side,Left,Right,Min,Max</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>expander</strong></td>
 <td style="text-align: left;"><code>sidechainSource</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>expander</strong></td>
-<td style="text-align: left;"><code>stereoSplitSourceLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>Left/Right,Right/Left,Mid/Side,Side/Mid,Min,Max</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Middle</code>, 1: <code>Side</code>, 2: <code>Left</code>, 3: <code>Right</code>, 4: <code>Min</code>, 5: <code>Max</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>expander</strong></td>
 <td style="text-align: left;"><code>stereoSplitSource</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Left/Right</code>, 1: <code>Right/Left</code>, 2: <code>Mid/Side</code>, 3: <code>Side/Mid</code>, 4: <code>Min</code>, 5: <code>Max</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>expander</strong></td>
@@ -3491,15 +3377,9 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>expander</strong></td>
-<td style="text-align: left;"><code>hpfModeLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>Off,12 dB/oct,24 dB/oct,36 dB/oct</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>expander</strong></td>
 <td style="text-align: left;"><code>hpfMode</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Off</code>, 1: <code>12 dB/oct</code>, 2: <code>24 dB/oct</code>, 3: <code>36 dB/oct</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>expander</strong></td>
@@ -3509,15 +3389,9 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>expander</strong></td>
-<td style="text-align: left;"><code>lpfModeLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>Off,12 dB/oct,24 dB/oct,36 dB/oct</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>expander</strong></td>
 <td style="text-align: left;"><code>lpfMode</code></td>
 <td style="text-align: left;">Enum</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Off</code>, 1: <code>12 dB/oct</code>, 2: <code>24 dB/oct</code>, 3: <code>36 dB/oct</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>expander</strong></td>
@@ -3587,51 +3461,27 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>filter</strong></td>
-<td style="text-align: left;"><code>typeLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>Low-pass,High-pass,Low-shelf,High-shelf,Bell,Band-pass,Notch,Resonance,Ladder-pass,Ladder-rejection,All-pass</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>filter</strong></td>
 <td style="text-align: left;"><code>type</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>filter</strong></td>
-<td style="text-align: left;"><code>equalModeLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>IIR,FIR,FFT,SPM</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Low-pass</code>, 1: <code>High-pass</code>, 2: <code>Low-shelf</code>, 3: <code>High-shelf</code>, 4: <code>Bell</code>, 5: <code>Band-pass</code>, 6: <code>Notch</code>, 7: <code>Resonance</code>, 8: <code>Ladder-pass</code>, 9: <code>Ladder-rejection</code>, 10: <code>All-pass</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>filter</strong></td>
 <td style="text-align: left;"><code>equalMode</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>filter</strong></td>
-<td style="text-align: left;"><code>modeLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>RLC (BT),RLC (MT),BWC (BT),BWC (MT),LRX (BT),LRX (MT),APO (DR)</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>IIR</code>, 1: <code>FIR</code>, 2: <code>FFT</code>, 3: <code>SPM</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>filter</strong></td>
 <td style="text-align: left;"><code>mode</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>filter</strong></td>
-<td style="text-align: left;"><code>slopeLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>x1,x2,x3,x4,x6,x8,x12,x16</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>RLC (BT)</code>, 1: <code>RLC (MT)</code>, 2: <code>BWC (BT)</code>, 3: <code>BWC (MT)</code>, 4: <code>LRX (BT)</code>, 5: <code>LRX (MT)</code>, 6: <code>APO (DR)</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>filter</strong></td>
 <td style="text-align: left;"><code>slope</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>x1</code>, 1: <code>x2</code>, 2: <code>x3</code>, 3: <code>x4</code>, 4: <code>x6</code>, 5: <code>x8</code>, 6: <code>x12</code>, 7: <code>x16</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>filter</strong></td>
@@ -3695,15 +3545,9 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>gate</strong></td>
-<td style="text-align: left;"><code>modeLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>Downward,Upward,Boosting</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>gate</strong></td>
 <td style="text-align: left;"><code>mode</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Downward</code>, 1: <code>Upward</code>, 2: <code>Boosting</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>gate</strong></td>
@@ -3767,27 +3611,15 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>gate</strong></td>
-<td style="text-align: left;"><code>sidechainTypeLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>Internal,External,Link</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>gate</strong></td>
 <td style="text-align: left;"><code>sidechainType</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>gate</strong></td>
-<td style="text-align: left;"><code>sidechainModeLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>Peak,RMS,Low-Pass,SMA</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Internal</code>, 1: <code>External</code>, 2: <code>Link</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>gate</strong></td>
 <td style="text-align: left;"><code>sidechainMode</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Peak</code>, 1: <code>RMS</code>, 2: <code>Low-Pass</code>, 3: <code>SMA</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>gate</strong></td>
@@ -3797,27 +3629,15 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>gate</strong></td>
-<td style="text-align: left;"><code>sidechainSourceLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>Middle,Side,Left,Right,Min,Max</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>gate</strong></td>
 <td style="text-align: left;"><code>sidechainSource</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>gate</strong></td>
-<td style="text-align: left;"><code>stereoSplitSourceLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>Left/Right,Right/Left,Mid/Side,Side/Mid,Min,Max</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Middle</code>, 1: <code>Side</code>, 2: <code>Left</code>, 3: <code>Right</code>, 4: <code>Min</code>, 5: <code>Max</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>gate</strong></td>
 <td style="text-align: left;"><code>stereoSplitSource</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Left/Right</code>, 1: <code>Right/Left</code>, 2: <code>Mid/Side</code>, 3: <code>Side/Mid</code>, 4: <code>Min</code>, 5: <code>Max</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>gate</strong></td>
@@ -3839,15 +3659,9 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>gate</strong></td>
-<td style="text-align: left;"><code>hpfModeLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>Off,12 dB/oct,24 dB/oct,36 dB/oct</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>gate</strong></td>
 <td style="text-align: left;"><code>hpfMode</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Off</code>, 1: <code>12 dB/oct</code>, 2: <code>24 dB/oct</code>, 3: <code>36 dB/oct</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>gate</strong></td>
@@ -3857,15 +3671,9 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>gate</strong></td>
-<td style="text-align: left;"><code>lpfModeLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>Off,12 dB/oct,24 dB/oct,36 dB/oct</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>gate</strong></td>
 <td style="text-align: left;"><code>lpfMode</code></td>
 <td style="text-align: left;">Enum</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Off</code>, 1: <code>12 dB/oct</code>, 2: <code>24 dB/oct</code>, 3: <code>36 dB/oct</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>gate</strong></td>
@@ -3941,51 +3749,27 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>limiter</strong></td>
-<td style="text-align: left;"><code>modeLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>Herm Thin,Herm Wide,Herm Tail,Herm Duck,Exp Thin,Exp Wide,Exp Tail,Exp Duck,Line Thin,Line Wide,Line Tail,Line Duck</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>limiter</strong></td>
 <td style="text-align: left;"><code>mode</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>limiter</strong></td>
-<td style="text-align: left;"><code>oversamplingLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>None,Half x2/16 bit,Half x2/24 bit,Half x3/16 bit,Half x3/24 bit,Half x4/16 bit,Half x4/24 bit,Half x6/16 bit,Half x6/24 bit,Half x8/16 bit,Half x8/24 bit,Full x2/16 bit,Full x2/24 bit,Full x3/16 bit,Full x3/24 bit,Full x4/16 bit,Full x4/24 bit,Full x6/16 bit,Full x6/24 bit,Full x8/16 bit,Full x8/24 bit,True Peak/16 bit,True Peak/24 bit</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Herm Thin</code>, 1: <code>Herm Wide</code>, 2: <code>Herm Tail</code>, 3: <code>Herm Duck</code>, 4: <code>Exp Thin</code>, 5: <code>Exp Wide</code>, 6: <code>Exp Tail</code>, 7: <code>Exp Duck</code>, 8: <code>Line Thin</code>, 9: <code>Line Wide</code>, 10: <code>Line Tail</code>, 11: <code>Line Duck</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>limiter</strong></td>
 <td style="text-align: left;"><code>oversampling</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>limiter</strong></td>
-<td style="text-align: left;"><code>ditheringLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>None,7bit,8bit,11bit,12bit,15bit,16bit,23bit,24bit</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>None</code>, 1: <code>Half x2/16 bit</code>, 2: <code>Half x2/24 bit</code>, 3: <code>Half x3/16 bit</code>, 4: <code>Half x3/24 bit</code>, 5: <code>Half x4/16 bit</code>, 6: <code>Half x4/24 bit</code>, 7: <code>Half x6/16 bit</code>, 8: <code>Half x6/24 bit</code>, 9: <code>Half x8/16 bit</code>, 10: <code>Half x8/24 bit</code>, 11: <code>Full x2/16 bit</code>, 12: <code>Full x2/24 bit</code>, 13: <code>Full x3/16 bit</code>, 14: <code>Full x3/24 bit</code>, 15: <code>Full x4/16 bit</code>, 16: <code>Full x4/24 bit</code>, 17: <code>Full x6/16 bit</code>, 18: <code>Full x6/24 bit</code>, 19: <code>Full x8/16 bit</code>, 20: <code>Full x8/24 bit</code>, 21: <code>True Peak/16 bit</code>, 22: <code>True Peak/24 bit</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>limiter</strong></td>
 <td style="text-align: left;"><code>dithering</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>limiter</strong></td>
-<td style="text-align: left;"><code>sidechainTypeLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>Internal,External,Link</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>None</code>, 1: <code>7bit</code>, 2: <code>8bit</code>, 3: <code>11bit</code>, 4: <code>12bit</code>, 5: <code>15bit</code>, 6: <code>16bit</code>, 7: <code>23bit</code>, 8: <code>24bit</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>limiter</strong></td>
 <td style="text-align: left;"><code>sidechainType</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Internal</code>, 1: <code>External</code>, 2: <code>Link</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>limiter</strong></td>
@@ -4115,39 +3899,21 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>loudness</strong></td>
-<td style="text-align: left;"><code>modeLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>FFT,IIR</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>loudness</strong></td>
 <td style="text-align: left;"><code>mode</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>loudness</strong></td>
-<td style="text-align: left;"><code>fftLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>256,512,1024,2048,4096,8192,16384</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>FFT</code>, 1: <code>IIR</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>loudness</strong></td>
 <td style="text-align: left;"><code>fft</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>4</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>loudness</strong></td>
-<td style="text-align: left;"><code>stdLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>Flat,ISO226-2003,Fletcher-Munson,Robinson-Dadson,ISO226-2023</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>4</code> <br><small>(Choices: 0: <code>256</code>, 1: <code>512</code>, 2: <code>1024</code>, 3: <code>2048</code>, 4: <code>4096</code>, 5: <code>8192</code>, 6: <code>16384</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>loudness</strong></td>
 <td style="text-align: left;"><code>std</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>4</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>4</code> <br><small>(Choices: 0: <code>Flat</code>, 1: <code>ISO226-2003</code>, 2: <code>Fletcher-Munson</code>, 3: <code>Robinson-Dadson</code>, 4: <code>ISO226-2023</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>loudness</strong></td>
@@ -4169,15 +3935,9 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>loudness</strong></td>
-<td style="text-align: left;"><code>iirApproximationLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>Fastest,Low,Normal,High,Best</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>loudness</strong></td>
 <td style="text-align: left;"><code>iirApproximation</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>2</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>2</code> <br><small>(Choices: 0: <code>Fastest</code>, 1: <code>Low</code>, 2: <code>Normal</code>, 3: <code>High</code>, 4: <code>Best</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>maximizer</strong></td>
@@ -4259,27 +4019,15 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_compressor</strong></td>
-<td style="text-align: left;"><code>compressorModeLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>Classic,Modern,Linear Phase</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>multiband_compressor</strong></td>
 <td style="text-align: left;"><code>compressorMode</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>1</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>multiband_compressor</strong></td>
-<td style="text-align: left;"><code>envelopeBoostLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>None,Pink BT,Pink MT,Brown BT,Brown MT</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>1</code> <br><small>(Choices: 0: <code>Classic</code>, 1: <code>Modern</code>, 2: <code>Linear Phase</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_compressor</strong></td>
 <td style="text-align: left;"><code>envelopeBoost</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>None</code>, 1: <code>Pink BT</code>, 2: <code>Pink MT</code>, 3: <code>Brown BT</code>, 4: <code>Brown MT</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_compressor</strong></td>
@@ -4409,219 +4157,195 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_compressor</strong></td>
-<td style="text-align: left;"><code>sidechainTypeLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>Internal,External,Link</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>multiband_compressor</strong></td>
 <td style="text-align: left;"><code>band0SidechainType</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Internal</code>, 1: <code>External</code>, 2: <code>Link</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_compressor</strong></td>
 <td style="text-align: left;"><code>band1SidechainType</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Internal</code>, 1: <code>External</code>, 2: <code>Link</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_compressor</strong></td>
 <td style="text-align: left;"><code>band2SidechainType</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Internal</code>, 1: <code>External</code>, 2: <code>Link</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_compressor</strong></td>
 <td style="text-align: left;"><code>band3SidechainType</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Internal</code>, 1: <code>External</code>, 2: <code>Link</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_compressor</strong></td>
 <td style="text-align: left;"><code>band4SidechainType</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Internal</code>, 1: <code>External</code>, 2: <code>Link</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_compressor</strong></td>
 <td style="text-align: left;"><code>band5SidechainType</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Internal</code>, 1: <code>External</code>, 2: <code>Link</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_compressor</strong></td>
 <td style="text-align: left;"><code>band6SidechainType</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Internal</code>, 1: <code>External</code>, 2: <code>Link</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_compressor</strong></td>
 <td style="text-align: left;"><code>band7SidechainType</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>multiband_compressor</strong></td>
-<td style="text-align: left;"><code>sidechainModeLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>Peak,RMS,LPF,SMA</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Internal</code>, 1: <code>External</code>, 2: <code>Link</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_compressor</strong></td>
 <td style="text-align: left;"><code>band0SidechainMode</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>1</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>1</code> <br><small>(Choices: 0: <code>Peak</code>, 1: <code>RMS</code>, 2: <code>LPF</code>, 3: <code>SMA</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_compressor</strong></td>
 <td style="text-align: left;"><code>band1SidechainMode</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>1</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>1</code> <br><small>(Choices: 0: <code>Peak</code>, 1: <code>RMS</code>, 2: <code>LPF</code>, 3: <code>SMA</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_compressor</strong></td>
 <td style="text-align: left;"><code>band2SidechainMode</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>1</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>1</code> <br><small>(Choices: 0: <code>Peak</code>, 1: <code>RMS</code>, 2: <code>LPF</code>, 3: <code>SMA</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_compressor</strong></td>
 <td style="text-align: left;"><code>band3SidechainMode</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>1</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>1</code> <br><small>(Choices: 0: <code>Peak</code>, 1: <code>RMS</code>, 2: <code>LPF</code>, 3: <code>SMA</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_compressor</strong></td>
 <td style="text-align: left;"><code>band4SidechainMode</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>1</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>1</code> <br><small>(Choices: 0: <code>Peak</code>, 1: <code>RMS</code>, 2: <code>LPF</code>, 3: <code>SMA</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_compressor</strong></td>
 <td style="text-align: left;"><code>band5SidechainMode</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>1</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>1</code> <br><small>(Choices: 0: <code>Peak</code>, 1: <code>RMS</code>, 2: <code>LPF</code>, 3: <code>SMA</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_compressor</strong></td>
 <td style="text-align: left;"><code>band6SidechainMode</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>1</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>1</code> <br><small>(Choices: 0: <code>Peak</code>, 1: <code>RMS</code>, 2: <code>LPF</code>, 3: <code>SMA</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_compressor</strong></td>
 <td style="text-align: left;"><code>band7SidechainMode</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>1</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>multiband_compressor</strong></td>
-<td style="text-align: left;"><code>sidechainSourceLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>Middle,Side,Left,Right,Min,Max</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>1</code> <br><small>(Choices: 0: <code>Peak</code>, 1: <code>RMS</code>, 2: <code>LPF</code>, 3: <code>SMA</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_compressor</strong></td>
 <td style="text-align: left;"><code>band0SidechainSource</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Middle</code>, 1: <code>Side</code>, 2: <code>Left</code>, 3: <code>Right</code>, 4: <code>Min</code>, 5: <code>Max</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_compressor</strong></td>
 <td style="text-align: left;"><code>band1SidechainSource</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Middle</code>, 1: <code>Side</code>, 2: <code>Left</code>, 3: <code>Right</code>, 4: <code>Min</code>, 5: <code>Max</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_compressor</strong></td>
 <td style="text-align: left;"><code>band2SidechainSource</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Middle</code>, 1: <code>Side</code>, 2: <code>Left</code>, 3: <code>Right</code>, 4: <code>Min</code>, 5: <code>Max</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_compressor</strong></td>
 <td style="text-align: left;"><code>band3SidechainSource</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Middle</code>, 1: <code>Side</code>, 2: <code>Left</code>, 3: <code>Right</code>, 4: <code>Min</code>, 5: <code>Max</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_compressor</strong></td>
 <td style="text-align: left;"><code>band4SidechainSource</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Middle</code>, 1: <code>Side</code>, 2: <code>Left</code>, 3: <code>Right</code>, 4: <code>Min</code>, 5: <code>Max</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_compressor</strong></td>
 <td style="text-align: left;"><code>band5SidechainSource</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Middle</code>, 1: <code>Side</code>, 2: <code>Left</code>, 3: <code>Right</code>, 4: <code>Min</code>, 5: <code>Max</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_compressor</strong></td>
 <td style="text-align: left;"><code>band6SidechainSource</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Middle</code>, 1: <code>Side</code>, 2: <code>Left</code>, 3: <code>Right</code>, 4: <code>Min</code>, 5: <code>Max</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_compressor</strong></td>
 <td style="text-align: left;"><code>band7SidechainSource</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>multiband_compressor</strong></td>
-<td style="text-align: left;"><code>stereoSplitSourceLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>Left/Right,Right/Left,Mid/Side,Side/Mid,Min,Max</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Middle</code>, 1: <code>Side</code>, 2: <code>Left</code>, 3: <code>Right</code>, 4: <code>Min</code>, 5: <code>Max</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_compressor</strong></td>
 <td style="text-align: left;"><code>band0StereoSplitSource</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Left/Right</code>, 1: <code>Right/Left</code>, 2: <code>Mid/Side</code>, 3: <code>Side/Mid</code>, 4: <code>Min</code>, 5: <code>Max</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_compressor</strong></td>
 <td style="text-align: left;"><code>band1StereoSplitSource</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Left/Right</code>, 1: <code>Right/Left</code>, 2: <code>Mid/Side</code>, 3: <code>Side/Mid</code>, 4: <code>Min</code>, 5: <code>Max</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_compressor</strong></td>
 <td style="text-align: left;"><code>band2StereoSplitSource</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Left/Right</code>, 1: <code>Right/Left</code>, 2: <code>Mid/Side</code>, 3: <code>Side/Mid</code>, 4: <code>Min</code>, 5: <code>Max</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_compressor</strong></td>
 <td style="text-align: left;"><code>band3StereoSplitSource</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Left/Right</code>, 1: <code>Right/Left</code>, 2: <code>Mid/Side</code>, 3: <code>Side/Mid</code>, 4: <code>Min</code>, 5: <code>Max</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_compressor</strong></td>
 <td style="text-align: left;"><code>band4StereoSplitSource</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Left/Right</code>, 1: <code>Right/Left</code>, 2: <code>Mid/Side</code>, 3: <code>Side/Mid</code>, 4: <code>Min</code>, 5: <code>Max</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_compressor</strong></td>
 <td style="text-align: left;"><code>band5StereoSplitSource</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Left/Right</code>, 1: <code>Right/Left</code>, 2: <code>Mid/Side</code>, 3: <code>Side/Mid</code>, 4: <code>Min</code>, 5: <code>Max</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_compressor</strong></td>
 <td style="text-align: left;"><code>band6StereoSplitSource</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Left/Right</code>, 1: <code>Right/Left</code>, 2: <code>Mid/Side</code>, 3: <code>Side/Mid</code>, 4: <code>Min</code>, 5: <code>Max</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_compressor</strong></td>
 <td style="text-align: left;"><code>band7StereoSplitSource</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Left/Right</code>, 1: <code>Right/Left</code>, 2: <code>Mid/Side</code>, 3: <code>Side/Mid</code>, 4: <code>Min</code>, 5: <code>Max</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_compressor</strong></td>
@@ -4961,57 +4685,51 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_compressor</strong></td>
-<td style="text-align: left;"><code>compressionModeLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>Downward,Upward,Boosting</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>multiband_compressor</strong></td>
 <td style="text-align: left;"><code>band0CompressionMode</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Downward</code>, 1: <code>Upward</code>, 2: <code>Boosting</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_compressor</strong></td>
 <td style="text-align: left;"><code>band1CompressionMode</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Downward</code>, 1: <code>Upward</code>, 2: <code>Boosting</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_compressor</strong></td>
 <td style="text-align: left;"><code>band2CompressionMode</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Downward</code>, 1: <code>Upward</code>, 2: <code>Boosting</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_compressor</strong></td>
 <td style="text-align: left;"><code>band3CompressionMode</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Downward</code>, 1: <code>Upward</code>, 2: <code>Boosting</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_compressor</strong></td>
 <td style="text-align: left;"><code>band4CompressionMode</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Downward</code>, 1: <code>Upward</code>, 2: <code>Boosting</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_compressor</strong></td>
 <td style="text-align: left;"><code>band5CompressionMode</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Downward</code>, 1: <code>Upward</code>, 2: <code>Boosting</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_compressor</strong></td>
 <td style="text-align: left;"><code>band6CompressionMode</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Downward</code>, 1: <code>Upward</code>, 2: <code>Boosting</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_compressor</strong></td>
 <td style="text-align: left;"><code>band7CompressionMode</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Downward</code>, 1: <code>Upward</code>, 2: <code>Boosting</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_compressor</strong></td>
@@ -5639,27 +5357,15 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_gate</strong></td>
-<td style="text-align: left;"><code>gateModeLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>Classic,Modern,Linear Phase</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>multiband_gate</strong></td>
 <td style="text-align: left;"><code>gateMode</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>1</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>multiband_gate</strong></td>
-<td style="text-align: left;"><code>envelopeBoostLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>None,Pink BT,Pink MT,Brown BT,Brown MT</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>1</code> <br><small>(Choices: 0: <code>Classic</code>, 1: <code>Modern</code>, 2: <code>Linear Phase</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_gate</strong></td>
 <td style="text-align: left;"><code>envelopeBoost</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>None</code>, 1: <code>Pink BT</code>, 2: <code>Pink MT</code>, 3: <code>Brown BT</code>, 4: <code>Brown MT</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_gate</strong></td>
@@ -5789,219 +5495,195 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_gate</strong></td>
-<td style="text-align: left;"><code>sidechainTypeLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>Internal,External,Link</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>multiband_gate</strong></td>
 <td style="text-align: left;"><code>band0SidechainType</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Internal</code>, 1: <code>External</code>, 2: <code>Link</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_gate</strong></td>
 <td style="text-align: left;"><code>band1SidechainType</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Internal</code>, 1: <code>External</code>, 2: <code>Link</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_gate</strong></td>
 <td style="text-align: left;"><code>band2SidechainType</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Internal</code>, 1: <code>External</code>, 2: <code>Link</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_gate</strong></td>
 <td style="text-align: left;"><code>band3SidechainType</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Internal</code>, 1: <code>External</code>, 2: <code>Link</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_gate</strong></td>
 <td style="text-align: left;"><code>band4SidechainType</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Internal</code>, 1: <code>External</code>, 2: <code>Link</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_gate</strong></td>
 <td style="text-align: left;"><code>band5SidechainType</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Internal</code>, 1: <code>External</code>, 2: <code>Link</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_gate</strong></td>
 <td style="text-align: left;"><code>band6SidechainType</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Internal</code>, 1: <code>External</code>, 2: <code>Link</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_gate</strong></td>
 <td style="text-align: left;"><code>band7SidechainType</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>multiband_gate</strong></td>
-<td style="text-align: left;"><code>sidechainModeLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>Peak,RMS,LPF,SMA</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Internal</code>, 1: <code>External</code>, 2: <code>Link</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_gate</strong></td>
 <td style="text-align: left;"><code>band0SidechainMode</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>1</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>1</code> <br><small>(Choices: 0: <code>Peak</code>, 1: <code>RMS</code>, 2: <code>LPF</code>, 3: <code>SMA</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_gate</strong></td>
 <td style="text-align: left;"><code>band1SidechainMode</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>1</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>1</code> <br><small>(Choices: 0: <code>Peak</code>, 1: <code>RMS</code>, 2: <code>LPF</code>, 3: <code>SMA</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_gate</strong></td>
 <td style="text-align: left;"><code>band2SidechainMode</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>1</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>1</code> <br><small>(Choices: 0: <code>Peak</code>, 1: <code>RMS</code>, 2: <code>LPF</code>, 3: <code>SMA</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_gate</strong></td>
 <td style="text-align: left;"><code>band3SidechainMode</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>1</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>1</code> <br><small>(Choices: 0: <code>Peak</code>, 1: <code>RMS</code>, 2: <code>LPF</code>, 3: <code>SMA</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_gate</strong></td>
 <td style="text-align: left;"><code>band4SidechainMode</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>1</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>1</code> <br><small>(Choices: 0: <code>Peak</code>, 1: <code>RMS</code>, 2: <code>LPF</code>, 3: <code>SMA</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_gate</strong></td>
 <td style="text-align: left;"><code>band5SidechainMode</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>1</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>1</code> <br><small>(Choices: 0: <code>Peak</code>, 1: <code>RMS</code>, 2: <code>LPF</code>, 3: <code>SMA</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_gate</strong></td>
 <td style="text-align: left;"><code>band6SidechainMode</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>1</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>1</code> <br><small>(Choices: 0: <code>Peak</code>, 1: <code>RMS</code>, 2: <code>LPF</code>, 3: <code>SMA</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_gate</strong></td>
 <td style="text-align: left;"><code>band7SidechainMode</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>1</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>multiband_gate</strong></td>
-<td style="text-align: left;"><code>sidechainSourceLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>Middle,Side,Left,Right,Min,Max</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>1</code> <br><small>(Choices: 0: <code>Peak</code>, 1: <code>RMS</code>, 2: <code>LPF</code>, 3: <code>SMA</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_gate</strong></td>
 <td style="text-align: left;"><code>band0SidechainSource</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Middle</code>, 1: <code>Side</code>, 2: <code>Left</code>, 3: <code>Right</code>, 4: <code>Min</code>, 5: <code>Max</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_gate</strong></td>
 <td style="text-align: left;"><code>band1SidechainSource</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Middle</code>, 1: <code>Side</code>, 2: <code>Left</code>, 3: <code>Right</code>, 4: <code>Min</code>, 5: <code>Max</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_gate</strong></td>
 <td style="text-align: left;"><code>band2SidechainSource</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Middle</code>, 1: <code>Side</code>, 2: <code>Left</code>, 3: <code>Right</code>, 4: <code>Min</code>, 5: <code>Max</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_gate</strong></td>
 <td style="text-align: left;"><code>band3SidechainSource</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Middle</code>, 1: <code>Side</code>, 2: <code>Left</code>, 3: <code>Right</code>, 4: <code>Min</code>, 5: <code>Max</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_gate</strong></td>
 <td style="text-align: left;"><code>band4SidechainSource</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Middle</code>, 1: <code>Side</code>, 2: <code>Left</code>, 3: <code>Right</code>, 4: <code>Min</code>, 5: <code>Max</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_gate</strong></td>
 <td style="text-align: left;"><code>band5SidechainSource</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Middle</code>, 1: <code>Side</code>, 2: <code>Left</code>, 3: <code>Right</code>, 4: <code>Min</code>, 5: <code>Max</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_gate</strong></td>
 <td style="text-align: left;"><code>band6SidechainSource</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Middle</code>, 1: <code>Side</code>, 2: <code>Left</code>, 3: <code>Right</code>, 4: <code>Min</code>, 5: <code>Max</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_gate</strong></td>
 <td style="text-align: left;"><code>band7SidechainSource</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>multiband_gate</strong></td>
-<td style="text-align: left;"><code>stereoSplitSourceLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>Left/Right,Right/Left,Mid/Side,Side/Mid,Min,Max</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Middle</code>, 1: <code>Side</code>, 2: <code>Left</code>, 3: <code>Right</code>, 4: <code>Min</code>, 5: <code>Max</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_gate</strong></td>
 <td style="text-align: left;"><code>band0StereoSplitSource</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Left/Right</code>, 1: <code>Right/Left</code>, 2: <code>Mid/Side</code>, 3: <code>Side/Mid</code>, 4: <code>Min</code>, 5: <code>Max</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_gate</strong></td>
 <td style="text-align: left;"><code>band1StereoSplitSource</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Left/Right</code>, 1: <code>Right/Left</code>, 2: <code>Mid/Side</code>, 3: <code>Side/Mid</code>, 4: <code>Min</code>, 5: <code>Max</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_gate</strong></td>
 <td style="text-align: left;"><code>band2StereoSplitSource</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Left/Right</code>, 1: <code>Right/Left</code>, 2: <code>Mid/Side</code>, 3: <code>Side/Mid</code>, 4: <code>Min</code>, 5: <code>Max</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_gate</strong></td>
 <td style="text-align: left;"><code>band3StereoSplitSource</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Left/Right</code>, 1: <code>Right/Left</code>, 2: <code>Mid/Side</code>, 3: <code>Side/Mid</code>, 4: <code>Min</code>, 5: <code>Max</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_gate</strong></td>
 <td style="text-align: left;"><code>band4StereoSplitSource</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Left/Right</code>, 1: <code>Right/Left</code>, 2: <code>Mid/Side</code>, 3: <code>Side/Mid</code>, 4: <code>Min</code>, 5: <code>Max</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_gate</strong></td>
 <td style="text-align: left;"><code>band5StereoSplitSource</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Left/Right</code>, 1: <code>Right/Left</code>, 2: <code>Mid/Side</code>, 3: <code>Side/Mid</code>, 4: <code>Min</code>, 5: <code>Max</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_gate</strong></td>
 <td style="text-align: left;"><code>band6StereoSplitSource</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Left/Right</code>, 1: <code>Right/Left</code>, 2: <code>Mid/Side</code>, 3: <code>Side/Mid</code>, 4: <code>Min</code>, 5: <code>Max</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_gate</strong></td>
 <td style="text-align: left;"><code>band7StereoSplitSource</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Left/Right</code>, 1: <code>Right/Left</code>, 2: <code>Mid/Side</code>, 3: <code>Side/Mid</code>, 4: <code>Min</code>, 5: <code>Max</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_gate</strong></td>
@@ -7025,15 +6707,9 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>reverb</strong></td>
-<td style="text-align: left;"><code>roomSizeLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>Small,Medium,Large,Tunnel-like,Large/smooth,Experimental</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>reverb</strong></td>
 <td style="text-align: left;"><code>roomSize</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>2</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>2</code> <br><small>(Choices: 0: <code>Small</code>, 1: <code>Medium</code>, 2: <code>Large</code>, 3: <code>Tunnel-like</code>, 4: <code>Large/smooth</code>, 5: <code>Experimental</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>reverb</strong></td>
@@ -7158,8 +6834,8 @@
 <tr>
 <td style="text-align: left;"><strong>spectrum</strong></td>
 <td style="text-align: left;"><code>spectrumShape</code></td>
-<td style="text-align: left;">Enum <br><small>(bars, lines, dots, area)</small></td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Bars</code>, 1: <code>Lines</code>, 2: <code>Dots</code>, 3: <code>Area</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>spectrum</strong></td>
@@ -7319,15 +6995,9 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>stereo_tools</strong></td>
-<td style="text-align: left;"><code>modeLabels</code></td>
-<td style="text-align: left;">StringList</td>
-<td style="text-align: left;"><code>LR &gt; LR (Stereo Default),LR &gt; MS (Stereo to Mid-Side),MS &gt; LR (Mid-Side to Stereo),LR &gt; LL (Mono Left Channel),LR &gt; RR (Mono Right Channel),LR &gt; L+R (Mono Sum L+R),LR &gt; RL (Stereo Flip Channels)</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>stereo_tools</strong></td>
 <td style="text-align: left;"><code>mode</code></td>
-<td style="text-align: left;">Int</td>
-<td style="text-align: left;"><code>0</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>LR &gt; LR (Stereo Default)</code>, 1: <code>LR &gt; MS (Stereo to Mid-Side)</code>, 2: <code>MS &gt; LR (Mid-Side to Stereo)</code>, 3: <code>LR &gt; LL (Mono Left Channel)</code>, 4: <code>LR &gt; RR (Mono Right Channel)</code>, 5: <code>LR &gt; L+R (Mono Sum L+R)</code>, 6: <code>LR &gt; RL (Stereo Flip Channels)</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>stereo_tools</strong></td>
