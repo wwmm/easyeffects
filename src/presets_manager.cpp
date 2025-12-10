@@ -365,6 +365,9 @@ bool Manager::add(const PipelineType& pipeline_type, const QString& name) {
 
   savePresetFile(pipeline_type, name);
 
+  // adding this here just to increase how frequently we update the most used presets list
+  update_used_presets_list(pipeline_type, "");
+
   return true;
 }
 
@@ -420,6 +423,8 @@ bool Manager::renameLocalPresetFile(const PipelineType& pipeline_type, const QSt
   std::filesystem::rename(preset_file, new_file);
 
   util::debug(std::format("Renamed preset: {} to {}", preset_file.string(), new_file.string()));
+
+  update_used_presets_list(pipeline_type, "");
 
   return true;
 }
@@ -549,6 +554,8 @@ bool Manager::loadLocalPresetFile(const PipelineType& pipeline_type, const QStri
   // Check preset existence
   if (!std::filesystem::exists(input_file)) {
     util::debug(std::format("Can't find the local preset \"{}\" on the filesystem", name.toStdString()));
+
+    update_used_presets_list(pipeline_type, "");
 
     return false;
   }
@@ -894,9 +901,12 @@ void Manager::update_used_presets_list(const PipelineType& pipeline_type, const 
 
   // removing from the list presets that are not installed anymore
 
-  names.removeIf([&](const QString& s) {
-    return std::ranges::none_of(dir_manager.getLocalPresetsPaths(pipeline_type),
-                                [&](const auto p) { return s.startsWith(QString::fromStdString(p.stem().string())); });
+  names.removeIf([&](const QString& name_and_count) {
+    return std::ranges::none_of(dir_manager.getLocalPresetsPaths(pipeline_type), [&](const auto p) {
+      auto name = name_and_count.split(":")[0];
+
+      return name == p.stem().string();
+    });
   });
 
   bool contains_name = false;

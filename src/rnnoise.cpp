@@ -227,7 +227,7 @@ void RNNoise::process(std::span<float>& left_in,
     util::copy_bulk(buf_out_L, left_out);
     util::copy_bulk(buf_out_R, right_out);
   } else {
-    const uint offset = 2U * (left_out.size() - buf_out_L.size());
+    const uint offset = left_out.size() - buf_out_L.size();
 
     if (offset != latency_n_frames) {
       latency_n_frames = offset;

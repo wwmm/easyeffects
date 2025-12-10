@@ -11,6 +11,7 @@ Description:
 
 - Bug fixes∶
 - RNNoise is supposed to be optional. But that was not actually happening
+- In some cases when a preset was removed the most used presets list was not being properly updated.
 
 - Other notes∶
 - Now that the manual is just an ordinary Github's page the Qt WebEngineView is not used anymore. No need to keep its package as dependency.
