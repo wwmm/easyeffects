@@ -61,7 +61,7 @@ The following properties can be modified or queried via the [local server](../us
 | **compressor** | `hpfFrequency` | Double | `10` |
 | **compressor** | `lpfMode` | Enum | `0` <br><small>(Choices: 0: `Off`, 1: `12 dB/oct`, 2: `24 dB/oct`, 3: `36 dB/oct`)</small> |
 | **compressor** | `lpfFrequency` | Double | `20000` |
-| **compressor** | `sidechainInputDevice` | String | *calculated* |
+| **compressor** | `sidechainInputDevice` | String | `*calculated*` |
 | **compressor** | `inputToSidechain` | Double | `0` |
 | **compressor** | `inputToLink` | Double | `0` |
 | **compressor** | `sidechainToInput` | Double | `0` |
@@ -229,7 +229,7 @@ The following properties can be modified or queried via the [local server](../us
 | **expander** | `hpfFrequency` | Double | `10` |
 | **expander** | `lpfMode` | Enum | `0` <br><small>(Choices: 0: `Off`, 1: `12 dB/oct`, 2: `24 dB/oct`, 3: `36 dB/oct`)</small> |
 | **expander** | `lpfFrequency` | Double | `20000` |
-| **expander** | `sidechainInputDevice` | String | *calculated* |
+| **expander** | `sidechainInputDevice` | String | `*calculated*` |
 | **expander** | `inputToSidechain` | Double | `0` |
 | **expander** | `inputToLink` | Double | `0` |
 | **expander** | `sidechainToInput` | Double | `0` |
@@ -276,7 +276,7 @@ The following properties can be modified or queried via the [local server](../us
 | **gate** | `hpfFrequency` | Double | `10` |
 | **gate** | `lpfMode` | Enum | `0` <br><small>(Choices: 0: `Off`, 1: `12 dB/oct`, 2: `24 dB/oct`, 3: `36 dB/oct`)</small> |
 | **gate** | `lpfFrequency` | Double | `20000` |
-| **gate** | `sidechainInputDevice` | String | *calculated* |
+| **gate** | `sidechainInputDevice` | String | `*calculated*` |
 | **gate** | `inputToSidechain` | Double | `0` |
 | **gate** | `inputToLink` | Double | `0` |
 | **gate** | `sidechainToInput` | Double | `0` |
@@ -302,7 +302,7 @@ The following properties can be modified or queried via the [local server](../us
 | **limiter** | `alrAttack` | Double | `5` |
 | **limiter** | `alrRelease` | Double | `50` |
 | **limiter** | `alrKnee` | Double | `0` |
-| **limiter** | `sidechainInputDevice` | String | *calculated* |
+| **limiter** | `sidechainInputDevice` | String | `*calculated*` |
 | **limiter** | `inputToSidechain` | Double | `0` |
 | **limiter** | `inputToLink` | Double | `0` |
 | **limiter** | `sidechainToInput` | Double | `0` |

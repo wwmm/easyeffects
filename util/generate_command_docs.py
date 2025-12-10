@@ -63,12 +63,14 @@ def main():
             enum_defs = {}
 
             for name, entry in entries.items():
+                # case for StringList labels used with Int properties
                 if name.endswith("Labels") and entry.get('type') == 'StringList':
                     base = name[:-6] # strip 'Labels'
                     default_node = entry.find("kcfg:default", ns)
                     if default_node is not None and default_node.text:
                         enum_defs[base.lower()] = default_node.text.split(',')
 
+                # case for Enum properties as is
                 if entry.get('type') == "Enum":
                     choices_node = entry.find("kcfg:choices", ns)
                     if choices_node is not None:
@@ -104,17 +106,13 @@ def main():
                         choices = enum_defs[name.lower()]
                     else:
                         # suffix match among enums (longest wins) for banded props
+                        # e.g. band1StereoSplitSource -> StereoSplitSource Enum
                         matches = [k for k in enum_defs if name.lower().endswith(k)]
                         if matches:
                             best_key = max(matches, key=len)
                             choices = enum_defs[best_key]
 
-                if default_val == "*calculated*":
-                    def_col = "*calculated*"
-                elif default_val == "-":
-                    def_col = "-"
-                else:
-                    def_col = f"`{esc(default_val)}`"
+                def_col = f"`{esc(default_val)}`"
 
                 if choices:
                     prop_type = "Enum"
