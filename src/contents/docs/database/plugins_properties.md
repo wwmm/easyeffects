@@ -13,8 +13,7 @@ The following properties can be modified or queried via the [local server](../us
 | **autogain** | `inputGain` | Double | `0` |
 | **autogain** | `outputGain` | Double | `0` |
 | **autogain** | `target` | Double | `-23` |
-| **autogain** | `referenceLabels` | StringList | `Momentary,Shortterm,Integrated,Geometric Mean (MSI),Geometric Mean (MS),Geometric Mean (MI),Geometric Mean (SI)` |
-| **autogain** | `reference` | Int | `3` |
+| **autogain** | `reference` | Enum | `3` <br><small>(Choices: 0: `Momentary`, 1: `Shortterm`, 2: `Integrated`, 3: `Geometric Mean (MSI)`, 4: `Geometric Mean (MS)`, 5: `Geometric Mean (MI)`, 6: `Geometric Mean (SI)`)</small> |
 | **autogain** | `maximumHistory` | Int | `15` |
 | **autogain** | `silenceThreshold` | Double | `-70` |
 | **autogain** | `forceSilence` | Bool | `false` |
@@ -39,8 +38,7 @@ The following properties can be modified or queried via the [local server](../us
 | **compressor** | `outputGain` | Double | `0` |
 | **compressor** | `dry` | Double | `-80.01` |
 | **compressor** | `wet` | Double | `0` |
-| **compressor** | `modeLabels` | StringList | `Downward,Upward,Boosting` |
-| **compressor** | `mode` | Int | `0` |
+| **compressor** | `mode` | Enum | `0` <br><small>(Choices: 0: `Downward`, 1: `Upward`, 2: `Boosting`)</small> |
 | **compressor** | `attack` | Double | `20` |
 | **compressor** | `release` | Double | `100` |
 | **compressor** | `releaseThreshold` | Double | `-80.01` |
@@ -51,25 +49,19 @@ The following properties can be modified or queried via the [local server](../us
 | **compressor** | `boostAmount` | Double | `6` |
 | **compressor** | `boostThreshold` | Double | `-72` |
 | **compressor** | `sidechainListen` | Bool | `false` |
-| **compressor** | `sidechainTypeLabels` | StringList | `Feed-forward,Feed-back,External,Link` |
-| **compressor** | `sidechainType` | Int | `0` |
-| **compressor** | `sidechainModeLabels` | StringList | `Peak,RMS,Low-Pass,SMA` |
-| **compressor** | `sidechainMode` | Int | `0` |
+| **compressor** | `sidechainType` | Enum | `0` <br><small>(Choices: 0: `Feed-forward`, 1: `Feed-back`, 2: `External`, 3: `Link`)</small> |
+| **compressor** | `sidechainMode` | Enum | `0` <br><small>(Choices: 0: `Peak`, 1: `RMS`, 2: `Low-Pass`, 3: `SMA`)</small> |
 | **compressor** | `stereoSplit` | Bool | `false` |
-| **compressor** | `sidechainSourceLabels` | StringList | `Middle,Side,Left,Right,Min,Max` |
-| **compressor** | `sidechainSource` | Int | `0` |
-| **compressor** | `stereoSplitSourceLabels` | StringList | `Left/Right,Right/Left,Mid/Side,Side/Mid,Min,Max` |
-| **compressor** | `stereoSplitSource` | Int | `0` |
+| **compressor** | `sidechainSource` | Enum | `0` <br><small>(Choices: 0: `Middle`, 1: `Side`, 2: `Left`, 3: `Right`, 4: `Min`, 5: `Max`)</small> |
+| **compressor** | `stereoSplitSource` | Enum | `0` <br><small>(Choices: 0: `Left/Right`, 1: `Right/Left`, 2: `Mid/Side`, 3: `Side/Mid`, 4: `Min`, 5: `Max`)</small> |
 | **compressor** | `sidechainPreamp` | Double | `0` |
 | **compressor** | `sidechainReactivity` | Double | `10` |
 | **compressor** | `sidechainLookahead` | Double | `0` |
-| **compressor** | `hpfModeLabels` | StringList | `Off,12 dB/oct,24 dB/oct,36 dB/oct` |
-| **compressor** | `hpfMode` | Int | `0` |
+| **compressor** | `hpfMode` | Enum | `0` <br><small>(Choices: 0: `Off`, 1: `12 dB/oct`, 2: `24 dB/oct`, 3: `36 dB/oct`)</small> |
 | **compressor** | `hpfFrequency` | Double | `10` |
-| **compressor** | `lpfModeLabels` | StringList | `Off,12 dB/oct,24 dB/oct,36 dB/oct` |
-| **compressor** | `lpfMode` | Enum | `0` |
+| **compressor** | `lpfMode` | Enum | `0` <br><small>(Choices: 0: `Off`, 1: `12 dB/oct`, 2: `24 dB/oct`, 3: `36 dB/oct`)</small> |
 | **compressor** | `lpfFrequency` | Double | `20000` |
-| **compressor** | `sidechainInputDevice` | String | `*calculated*` |
+| **compressor** | `sidechainInputDevice` | String | *calculated* |
 | **compressor** | `inputToSidechain` | Double | `0` |
 | **compressor** | `inputToLink` | Double | `0` |
 | **compressor** | `sidechainToInput` | Double | `0` |
@@ -147,10 +139,8 @@ The following properties can be modified or queried via the [local server](../us
 | **deesser** | `bypass` | Bool | `false` |
 | **deesser** | `inputGain` | Double | `0` |
 | **deesser** | `outputGain` | Double | `0` |
-| **deesser** | `detectionLabels` | StringList | `RMS,Peak` |
-| **deesser** | `detection` | Int | `0` |
-| **deesser** | `modeLabels` | StringList | `Wide,Split` |
-| **deesser** | `mode` | Int | `0` |
+| **deesser** | `detection` | Enum | `0` <br><small>(Choices: 0: `RMS`, 1: `Peak`)</small> |
+| **deesser** | `mode` | Enum | `0` <br><small>(Choices: 0: `Wide`, 1: `Split`)</small> |
 | **deesser** | `threshold` | Double | `-18` |
 | **deesser** | `ratio` | Double | `3` |
 | **deesser** | `laxity` | Int | `15` |
@@ -168,10 +158,8 @@ The following properties can be modified or queried via the [local server](../us
 | **delay** | `dryR` | Double | `-80.01` |
 | **delay** | `wetL` | Double | `0` |
 | **delay** | `wetR` | Double | `0` |
-| **delay** | `modeLLabels` | StringList | `Samples,Distance,Time` |
-| **delay** | `modeL` | Int | `2` |
-| **delay** | `modeRLabels` | StringList | `Samples,Distance,Time` |
-| **delay** | `modeR` | Int | `2` |
+| **delay** | `modeL` | Enum | `2` <br><small>(Choices: 0: `Samples`, 1: `Distance`, 2: `Time`)</small> |
+| **delay** | `modeR` | Enum | `2` <br><small>(Choices: 0: `Samples`, 1: `Distance`, 2: `Time`)</small> |
 | **delay** | `timeL` | Double | `0` |
 | **delay** | `timeR` | Double | `0` |
 | **delay** | `invertPhaseL` | Bool | `false` |
@@ -191,8 +179,7 @@ The following properties can be modified or queried via the [local server](../us
 | **echo_canceller** | `echoCancellerMobileMode` | Bool | `false` |
 | **echo_canceller** | `echoCancellerEnforceHighPass` | Bool | `true` |
 | **echo_canceller** | `enableNoiseSuppression` | Bool | `true` |
-| **echo_canceller** | `noiseSuppressionLevelLabels` | StringList | `Low,Moderate,High,VeryHigh` |
-| **echo_canceller** | `noiseSuppressionLevel` | Int | `1` |
+| **echo_canceller** | `noiseSuppressionLevel` | Enum | `1` <br><small>(Choices: 0: `Low`, 1: `Moderate`, 2: `High`, 3: `VeryHigh`)</small> |
 | **echo_canceller** | `enableHighPassFilter` | Bool | `true` |
 | **echo_canceller** | `highPassFilterFullBand` | Bool | `true` |
 | **echo_canceller** | `enableAGC` | Bool | `true` |
@@ -200,8 +187,7 @@ The following properties can be modified or queried via the [local server](../us
 | **equalizer** | `inputGain` | Double | `0` |
 | **equalizer** | `outputGain` | Double | `0` |
 | **equalizer** | `numBands` | Int | `32` |
-| **equalizer** | `modeLabels` | StringList | `IIR,FIR,FFT,SPM` |
-| **equalizer** | `mode` | Int | `0` |
+| **equalizer** | `mode` | Enum | `0` <br><small>(Choices: 0: `IIR`, 1: `FIR`, 2: `FFT`, 3: `SPM`)</small> |
 | **equalizer** | `splitChannels` | Bool | `false` |
 | **equalizer** | `balance` | Double | `0` |
 | **equalizer** | `pitchLeft` | Double | `0` |
@@ -222,8 +208,7 @@ The following properties can be modified or queried via the [local server](../us
 | **expander** | `outputGain` | Double | `0` |
 | **expander** | `dry` | Double | `-80.01` |
 | **expander** | `wet` | Double | `0` |
-| **expander** | `modeLabels` | StringList | `Downward,Upward` |
-| **expander** | `mode` | Int | `1` |
+| **expander** | `mode` | Enum | `1` <br><small>(Choices: 0: `Downward`, 1: `Upward`)</small> |
 | **expander** | `attack` | Double | `20` |
 | **expander** | `release` | Double | `100` |
 | **expander** | `releaseThreshold` | Double | `-80.01` |
@@ -232,25 +217,19 @@ The following properties can be modified or queried via the [local server](../us
 | **expander** | `knee` | Double | `-6` |
 | **expander** | `makeup` | Double | `0` |
 | **expander** | `sidechainListen` | Bool | `false` |
-| **expander** | `sidechainTypeLabels` | StringList | `Internal,External,Link` |
-| **expander** | `sidechainType` | Int | `0` |
-| **expander** | `sidechainModeLabels` | StringList | `Peak,RMS,Low-Pass,SMA` |
-| **expander** | `sidechainMode` | Int | `0` |
+| **expander** | `sidechainType` | Enum | `0` <br><small>(Choices: 0: `Internal`, 1: `External`, 2: `Link`)</small> |
+| **expander** | `sidechainMode` | Enum | `0` <br><small>(Choices: 0: `Peak`, 1: `RMS`, 2: `Low-Pass`, 3: `SMA`)</small> |
 | **expander** | `stereoSplit` | Bool | `false` |
-| **expander** | `sidechainSourceLabels` | StringList | `Middle,Side,Left,Right,Min,Max` |
-| **expander** | `sidechainSource` | Int | `0` |
-| **expander** | `stereoSplitSourceLabels` | StringList | `Left/Right,Right/Left,Mid/Side,Side/Mid,Min,Max` |
-| **expander** | `stereoSplitSource` | Int | `0` |
+| **expander** | `sidechainSource` | Enum | `0` <br><small>(Choices: 0: `Middle`, 1: `Side`, 2: `Left`, 3: `Right`, 4: `Min`, 5: `Max`)</small> |
+| **expander** | `stereoSplitSource` | Enum | `0` <br><small>(Choices: 0: `Left/Right`, 1: `Right/Left`, 2: `Mid/Side`, 3: `Side/Mid`, 4: `Min`, 5: `Max`)</small> |
 | **expander** | `sidechainPreamp` | Double | `0` |
 | **expander** | `sidechainReactivity` | Double | `10` |
 | **expander** | `sidechainLookahead` | Double | `0` |
-| **expander** | `hpfModeLabels` | StringList | `Off,12 dB/oct,24 dB/oct,36 dB/oct` |
-| **expander** | `hpfMode` | Int | `0` |
+| **expander** | `hpfMode` | Enum | `0` <br><small>(Choices: 0: `Off`, 1: `12 dB/oct`, 2: `24 dB/oct`, 3: `36 dB/oct`)</small> |
 | **expander** | `hpfFrequency` | Double | `10` |
-| **expander** | `lpfModeLabels` | StringList | `Off,12 dB/oct,24 dB/oct,36 dB/oct` |
-| **expander** | `lpfMode` | Enum | `0` |
+| **expander** | `lpfMode` | Enum | `0` <br><small>(Choices: 0: `Off`, 1: `12 dB/oct`, 2: `24 dB/oct`, 3: `36 dB/oct`)</small> |
 | **expander** | `lpfFrequency` | Double | `20000` |
-| **expander** | `sidechainInputDevice` | String | `*calculated*` |
+| **expander** | `sidechainInputDevice` | String | *calculated* |
 | **expander** | `inputToSidechain` | Double | `0` |
 | **expander** | `inputToLink` | Double | `0` |
 | **expander** | `sidechainToInput` | Double | `0` |
@@ -260,14 +239,10 @@ The following properties can be modified or queried via the [local server](../us
 | **filter** | `bypass` | Bool | `false` |
 | **filter** | `inputGain` | Double | `0` |
 | **filter** | `outputGain` | Double | `0` |
-| **filter** | `typeLabels` | StringList | `Low-pass,High-pass,Low-shelf,High-shelf,Bell,Band-pass,Notch,Resonance,Ladder-pass,Ladder-rejection,All-pass` |
-| **filter** | `type` | Int | `0` |
-| **filter** | `equalModeLabels` | StringList | `IIR,FIR,FFT,SPM` |
-| **filter** | `equalMode` | Int | `0` |
-| **filter** | `modeLabels` | StringList | `RLC (BT),RLC (MT),BWC (BT),BWC (MT),LRX (BT),LRX (MT),APO (DR)` |
-| **filter** | `mode` | Int | `0` |
-| **filter** | `slopeLabels` | StringList | `x1,x2,x3,x4,x6,x8,x12,x16` |
-| **filter** | `slope` | Int | `0` |
+| **filter** | `type` | Enum | `0` <br><small>(Choices: 0: `Low-pass`, 1: `High-pass`, 2: `Low-shelf`, 3: `High-shelf`, 4: `Bell`, 5: `Band-pass`, 6: `Notch`, 7: `Resonance`, 8: `Ladder-pass`, 9: `Ladder-rejection`, 10: `All-pass`)</small> |
+| **filter** | `equalMode` | Enum | `0` <br><small>(Choices: 0: `IIR`, 1: `FIR`, 2: `FFT`, 3: `SPM`)</small> |
+| **filter** | `mode` | Enum | `0` <br><small>(Choices: 0: `RLC (BT)`, 1: `RLC (MT)`, 2: `BWC (BT)`, 3: `BWC (MT)`, 4: `LRX (BT)`, 5: `LRX (MT)`, 6: `APO (DR)`)</small> |
+| **filter** | `slope` | Enum | `0` <br><small>(Choices: 0: `x1`, 1: `x2`, 2: `x3`, 3: `x4`, 4: `x6`, 5: `x8`, 6: `x12`, 7: `x16`)</small> |
 | **filter** | `frequency` | Double | `2000` |
 | **filter** | `width` | Double | `4.0` |
 | **filter** | `quality` | Double | `0.0` |
@@ -278,8 +253,7 @@ The following properties can be modified or queried via the [local server](../us
 | **gate** | `outputGain` | Double | `0` |
 | **gate** | `dry` | Double | `-80.01` |
 | **gate** | `wet` | Double | `0` |
-| **gate** | `modeLabels` | StringList | `Downward,Upward,Boosting` |
-| **gate** | `mode` | Int | `0` |
+| **gate** | `mode` | Enum | `0` <br><small>(Choices: 0: `Downward`, 1: `Upward`, 2: `Boosting`)</small> |
 | **gate** | `attack` | Double | `20` |
 | **gate** | `release` | Double | `100` |
 | **gate** | `curveThreshold` | Double | `-24` |
@@ -290,25 +264,19 @@ The following properties can be modified or queried via the [local server](../us
 | **gate** | `reduction` | Double | `-24` |
 | **gate** | `makeup` | Double | `0` |
 | **gate** | `sidechainListen` | Bool | `false` |
-| **gate** | `sidechainTypeLabels` | StringList | `Internal,External,Link` |
-| **gate** | `sidechainType` | Int | `0` |
-| **gate** | `sidechainModeLabels` | StringList | `Peak,RMS,Low-Pass,SMA` |
-| **gate** | `sidechainMode` | Int | `0` |
+| **gate** | `sidechainType` | Enum | `0` <br><small>(Choices: 0: `Internal`, 1: `External`, 2: `Link`)</small> |
+| **gate** | `sidechainMode` | Enum | `0` <br><small>(Choices: 0: `Peak`, 1: `RMS`, 2: `Low-Pass`, 3: `SMA`)</small> |
 | **gate** | `stereoSplit` | Bool | `false` |
-| **gate** | `sidechainSourceLabels` | StringList | `Middle,Side,Left,Right,Min,Max` |
-| **gate** | `sidechainSource` | Int | `0` |
-| **gate** | `stereoSplitSourceLabels` | StringList | `Left/Right,Right/Left,Mid/Side,Side/Mid,Min,Max` |
-| **gate** | `stereoSplitSource` | Int | `0` |
+| **gate** | `sidechainSource` | Enum | `0` <br><small>(Choices: 0: `Middle`, 1: `Side`, 2: `Left`, 3: `Right`, 4: `Min`, 5: `Max`)</small> |
+| **gate** | `stereoSplitSource` | Enum | `0` <br><small>(Choices: 0: `Left/Right`, 1: `Right/Left`, 2: `Mid/Side`, 3: `Side/Mid`, 4: `Min`, 5: `Max`)</small> |
 | **gate** | `sidechainPreamp` | Double | `0` |
 | **gate** | `sidechainReactivity` | Double | `10` |
 | **gate** | `sidechainLookahead` | Double | `0` |
-| **gate** | `hpfModeLabels` | StringList | `Off,12 dB/oct,24 dB/oct,36 dB/oct` |
-| **gate** | `hpfMode` | Int | `0` |
+| **gate** | `hpfMode` | Enum | `0` <br><small>(Choices: 0: `Off`, 1: `12 dB/oct`, 2: `24 dB/oct`, 3: `36 dB/oct`)</small> |
 | **gate** | `hpfFrequency` | Double | `10` |
-| **gate** | `lpfModeLabels` | StringList | `Off,12 dB/oct,24 dB/oct,36 dB/oct` |
-| **gate** | `lpfMode` | Enum | `0` |
+| **gate** | `lpfMode` | Enum | `0` <br><small>(Choices: 0: `Off`, 1: `12 dB/oct`, 2: `24 dB/oct`, 3: `36 dB/oct`)</small> |
 | **gate** | `lpfFrequency` | Double | `20000` |
-| **gate** | `sidechainInputDevice` | String | `*calculated*` |
+| **gate** | `sidechainInputDevice` | String | *calculated* |
 | **gate** | `inputToSidechain` | Double | `0` |
 | **gate** | `inputToLink` | Double | `0` |
 | **gate** | `sidechainToInput` | Double | `0` |
@@ -319,14 +287,10 @@ The following properties can be modified or queried via the [local server](../us
 | **limiter** | `bypass` | Bool | `false` |
 | **limiter** | `inputGain` | Double | `0` |
 | **limiter** | `outputGain` | Double | `0` |
-| **limiter** | `modeLabels` | StringList | `Herm Thin,Herm Wide,Herm Tail,Herm Duck,Exp Thin,Exp Wide,Exp Tail,Exp Duck,Line Thin,Line Wide,Line Tail,Line Duck` |
-| **limiter** | `mode` | Int | `0` |
-| **limiter** | `oversamplingLabels` | StringList | `None,Half x2/16 bit,Half x2/24 bit,Half x3/16 bit,Half x3/24 bit,Half x4/16 bit,Half x4/24 bit,Half x6/16 bit,Half x6/24 bit,Half x8/16 bit,Half x8/24 bit,Full x2/16 bit,Full x2/24 bit,Full x3/16 bit,Full x3/24 bit,Full x4/16 bit,Full x4/24 bit,Full x6/16 bit,Full x6/24 bit,Full x8/16 bit,Full x8/24 bit,True Peak/16 bit,True Peak/24 bit` |
-| **limiter** | `oversampling` | Int | `0` |
-| **limiter** | `ditheringLabels` | StringList | `None,7bit,8bit,11bit,12bit,15bit,16bit,23bit,24bit` |
-| **limiter** | `dithering` | Int | `0` |
-| **limiter** | `sidechainTypeLabels` | StringList | `Internal,External,Link` |
-| **limiter** | `sidechainType` | Int | `0` |
+| **limiter** | `mode` | Enum | `0` <br><small>(Choices: 0: `Herm Thin`, 1: `Herm Wide`, 2: `Herm Tail`, 3: `Herm Duck`, 4: `Exp Thin`, 5: `Exp Wide`, 6: `Exp Tail`, 7: `Exp Duck`, 8: `Line Thin`, 9: `Line Wide`, 10: `Line Tail`, 11: `Line Duck`)</small> |
+| **limiter** | `oversampling` | Enum | `0` <br><small>(Choices: 0: `None`, 1: `Half x2/16 bit`, 2: `Half x2/24 bit`, 3: `Half x3/16 bit`, 4: `Half x3/24 bit`, 5: `Half x4/16 bit`, 6: `Half x4/24 bit`, 7: `Half x6/16 bit`, 8: `Half x6/24 bit`, 9: `Half x8/16 bit`, 10: `Half x8/24 bit`, 11: `Full x2/16 bit`, 12: `Full x2/24 bit`, 13: `Full x3/16 bit`, 14: `Full x3/24 bit`, 15: `Full x4/16 bit`, 16: `Full x4/24 bit`, 17: `Full x6/16 bit`, 18: `Full x6/24 bit`, 19: `Full x8/16 bit`, 20: `Full x8/24 bit`, 21: `True Peak/16 bit`, 22: `True Peak/24 bit`)</small> |
+| **limiter** | `dithering` | Enum | `0` <br><small>(Choices: 0: `None`, 1: `7bit`, 2: `8bit`, 3: `11bit`, 4: `12bit`, 5: `15bit`, 6: `16bit`, 7: `23bit`, 8: `24bit`)</small> |
+| **limiter** | `sidechainType` | Enum | `0` <br><small>(Choices: 0: `Internal`, 1: `External`, 2: `Link`)</small> |
 | **limiter** | `lookahead` | Double | `5` |
 | **limiter** | `attack` | Double | `5` |
 | **limiter** | `release` | Double | `5` |
@@ -338,7 +302,7 @@ The following properties can be modified or queried via the [local server](../us
 | **limiter** | `alrAttack` | Double | `5` |
 | **limiter** | `alrRelease` | Double | `50` |
 | **limiter** | `alrKnee` | Double | `0` |
-| **limiter** | `sidechainInputDevice` | String | `*calculated*` |
+| **limiter** | `sidechainInputDevice` | String | *calculated* |
 | **limiter** | `inputToSidechain` | Double | `0` |
 | **limiter** | `inputToLink` | Double | `0` |
 | **limiter** | `sidechainToInput` | Double | `0` |
@@ -348,17 +312,13 @@ The following properties can be modified or queried via the [local server](../us
 | **loudness** | `bypass` | Bool | `false` |
 | **loudness** | `inputGain` | Double | `0` |
 | **loudness** | `outputGain` | Double | `0` |
-| **loudness** | `modeLabels` | StringList | `FFT,IIR` |
-| **loudness** | `mode` | Int | `0` |
-| **loudness** | `fftLabels` | StringList | `256,512,1024,2048,4096,8192,16384` |
-| **loudness** | `fft` | Int | `4` |
-| **loudness** | `stdLabels` | StringList | `Flat,ISO226-2003,Fletcher-Munson,Robinson-Dadson,ISO226-2023` |
-| **loudness** | `std` | Int | `4` |
+| **loudness** | `mode` | Enum | `0` <br><small>(Choices: 0: `FFT`, 1: `IIR`)</small> |
+| **loudness** | `fft` | Enum | `4` <br><small>(Choices: 0: `256`, 1: `512`, 2: `1024`, 3: `2048`, 4: `4096`, 5: `8192`, 6: `16384`)</small> |
+| **loudness** | `std` | Enum | `4` <br><small>(Choices: 0: `Flat`, 1: `ISO226-2003`, 2: `Fletcher-Munson`, 3: `Robinson-Dadson`, 4: `ISO226-2023`)</small> |
 | **loudness** | `volume` | Double | `0` |
 | **loudness** | `clipping` | Bool | `false` |
 | **loudness** | `clippingRange` | Double | `6` |
-| **loudness** | `iirApproximationLabels` | StringList | `Fastest,Low,Normal,High,Best` |
-| **loudness** | `iirApproximation` | Int | `2` |
+| **loudness** | `iirApproximation` | Enum | `2` <br><small>(Choices: 0: `Fastest`, 1: `Low`, 2: `Normal`, 3: `High`, 4: `Best`)</small> |
 | **maximizer** | `bypass` | Bool | `false` |
 | **maximizer** | `inputGain` | Double | `0` |
 | **maximizer** | `outputGain` | Double | `0` |
@@ -372,10 +332,8 @@ The following properties can be modified or queried via the [local server](../us
 | **multiband_compressor** | `viewSidechain` | Bool | `false` |
 | **multiband_compressor** | `externalSidechainEnabled` | Bool | `false` |
 | **multiband_compressor** | `stereoSplit` | Bool | `false` |
-| **multiband_compressor** | `compressorModeLabels` | StringList | `Classic,Modern,Linear Phase` |
-| **multiband_compressor** | `compressorMode` | Int | `1` |
-| **multiband_compressor** | `envelopeBoostLabels` | StringList | `None,Pink BT,Pink MT,Brown BT,Brown MT` |
-| **multiband_compressor** | `envelopeBoost` | Int | `0` |
+| **multiband_compressor** | `compressorMode` | Enum | `1` <br><small>(Choices: 0: `Classic`, 1: `Modern`, 2: `Linear Phase`)</small> |
+| **multiband_compressor** | `envelopeBoost` | Enum | `0` <br><small>(Choices: 0: `None`, 1: `Pink BT`, 2: `Pink MT`, 3: `Brown BT`, 4: `Brown MT`)</small> |
 | **multiband_compressor** | `inputToSidechain` | Double | `0` |
 | **multiband_compressor** | `inputToLink` | Double | `0` |
 | **multiband_compressor** | `sidechainToInput` | Double | `0` |
@@ -397,42 +355,38 @@ The following properties can be modified or queried via the [local server](../us
 | **multiband_compressor** | `band6SplitFrequency` | Double | `12000` |
 | **multiband_compressor** | `band7SplitFrequency` | Double | `16000` |
 | **multiband_compressor** | `sidechainInputDevice` | String | `""` |
-| **multiband_compressor** | `sidechainTypeLabels` | StringList | `Internal,External,Link` |
-| **multiband_compressor** | `band0SidechainType` | Int | `0` |
-| **multiband_compressor** | `band1SidechainType` | Int | `0` |
-| **multiband_compressor** | `band2SidechainType` | Int | `0` |
-| **multiband_compressor** | `band3SidechainType` | Int | `0` |
-| **multiband_compressor** | `band4SidechainType` | Int | `0` |
-| **multiband_compressor** | `band5SidechainType` | Int | `0` |
-| **multiband_compressor** | `band6SidechainType` | Int | `0` |
-| **multiband_compressor** | `band7SidechainType` | Int | `0` |
-| **multiband_compressor** | `sidechainModeLabels` | StringList | `Peak,RMS,LPF,SMA` |
-| **multiband_compressor** | `band0SidechainMode` | Int | `1` |
-| **multiband_compressor** | `band1SidechainMode` | Int | `1` |
-| **multiband_compressor** | `band2SidechainMode` | Int | `1` |
-| **multiband_compressor** | `band3SidechainMode` | Int | `1` |
-| **multiband_compressor** | `band4SidechainMode` | Int | `1` |
-| **multiband_compressor** | `band5SidechainMode` | Int | `1` |
-| **multiband_compressor** | `band6SidechainMode` | Int | `1` |
-| **multiband_compressor** | `band7SidechainMode` | Int | `1` |
-| **multiband_compressor** | `sidechainSourceLabels` | StringList | `Middle,Side,Left,Right,Min,Max` |
-| **multiband_compressor** | `band0SidechainSource` | Int | `0` |
-| **multiband_compressor** | `band1SidechainSource` | Int | `0` |
-| **multiband_compressor** | `band2SidechainSource` | Int | `0` |
-| **multiband_compressor** | `band3SidechainSource` | Int | `0` |
-| **multiband_compressor** | `band4SidechainSource` | Int | `0` |
-| **multiband_compressor** | `band5SidechainSource` | Int | `0` |
-| **multiband_compressor** | `band6SidechainSource` | Int | `0` |
-| **multiband_compressor** | `band7SidechainSource` | Int | `0` |
-| **multiband_compressor** | `stereoSplitSourceLabels` | StringList | `Left/Right,Right/Left,Mid/Side,Side/Mid,Min,Max` |
-| **multiband_compressor** | `band0StereoSplitSource` | Int | `0` |
-| **multiband_compressor** | `band1StereoSplitSource` | Int | `0` |
-| **multiband_compressor** | `band2StereoSplitSource` | Int | `0` |
-| **multiband_compressor** | `band3StereoSplitSource` | Int | `0` |
-| **multiband_compressor** | `band4StereoSplitSource` | Int | `0` |
-| **multiband_compressor** | `band5StereoSplitSource` | Int | `0` |
-| **multiband_compressor** | `band6StereoSplitSource` | Int | `0` |
-| **multiband_compressor** | `band7StereoSplitSource` | Int | `0` |
+| **multiband_compressor** | `band0SidechainType` | Enum | `0` <br><small>(Choices: 0: `Internal`, 1: `External`, 2: `Link`)</small> |
+| **multiband_compressor** | `band1SidechainType` | Enum | `0` <br><small>(Choices: 0: `Internal`, 1: `External`, 2: `Link`)</small> |
+| **multiband_compressor** | `band2SidechainType` | Enum | `0` <br><small>(Choices: 0: `Internal`, 1: `External`, 2: `Link`)</small> |
+| **multiband_compressor** | `band3SidechainType` | Enum | `0` <br><small>(Choices: 0: `Internal`, 1: `External`, 2: `Link`)</small> |
+| **multiband_compressor** | `band4SidechainType` | Enum | `0` <br><small>(Choices: 0: `Internal`, 1: `External`, 2: `Link`)</small> |
+| **multiband_compressor** | `band5SidechainType` | Enum | `0` <br><small>(Choices: 0: `Internal`, 1: `External`, 2: `Link`)</small> |
+| **multiband_compressor** | `band6SidechainType` | Enum | `0` <br><small>(Choices: 0: `Internal`, 1: `External`, 2: `Link`)</small> |
+| **multiband_compressor** | `band7SidechainType` | Enum | `0` <br><small>(Choices: 0: `Internal`, 1: `External`, 2: `Link`)</small> |
+| **multiband_compressor** | `band0SidechainMode` | Enum | `1` <br><small>(Choices: 0: `Peak`, 1: `RMS`, 2: `LPF`, 3: `SMA`)</small> |
+| **multiband_compressor** | `band1SidechainMode` | Enum | `1` <br><small>(Choices: 0: `Peak`, 1: `RMS`, 2: `LPF`, 3: `SMA`)</small> |
+| **multiband_compressor** | `band2SidechainMode` | Enum | `1` <br><small>(Choices: 0: `Peak`, 1: `RMS`, 2: `LPF`, 3: `SMA`)</small> |
+| **multiband_compressor** | `band3SidechainMode` | Enum | `1` <br><small>(Choices: 0: `Peak`, 1: `RMS`, 2: `LPF`, 3: `SMA`)</small> |
+| **multiband_compressor** | `band4SidechainMode` | Enum | `1` <br><small>(Choices: 0: `Peak`, 1: `RMS`, 2: `LPF`, 3: `SMA`)</small> |
+| **multiband_compressor** | `band5SidechainMode` | Enum | `1` <br><small>(Choices: 0: `Peak`, 1: `RMS`, 2: `LPF`, 3: `SMA`)</small> |
+| **multiband_compressor** | `band6SidechainMode` | Enum | `1` <br><small>(Choices: 0: `Peak`, 1: `RMS`, 2: `LPF`, 3: `SMA`)</small> |
+| **multiband_compressor** | `band7SidechainMode` | Enum | `1` <br><small>(Choices: 0: `Peak`, 1: `RMS`, 2: `LPF`, 3: `SMA`)</small> |
+| **multiband_compressor** | `band0SidechainSource` | Enum | `0` <br><small>(Choices: 0: `Middle`, 1: `Side`, 2: `Left`, 3: `Right`, 4: `Min`, 5: `Max`)</small> |
+| **multiband_compressor** | `band1SidechainSource` | Enum | `0` <br><small>(Choices: 0: `Middle`, 1: `Side`, 2: `Left`, 3: `Right`, 4: `Min`, 5: `Max`)</small> |
+| **multiband_compressor** | `band2SidechainSource` | Enum | `0` <br><small>(Choices: 0: `Middle`, 1: `Side`, 2: `Left`, 3: `Right`, 4: `Min`, 5: `Max`)</small> |
+| **multiband_compressor** | `band3SidechainSource` | Enum | `0` <br><small>(Choices: 0: `Middle`, 1: `Side`, 2: `Left`, 3: `Right`, 4: `Min`, 5: `Max`)</small> |
+| **multiband_compressor** | `band4SidechainSource` | Enum | `0` <br><small>(Choices: 0: `Middle`, 1: `Side`, 2: `Left`, 3: `Right`, 4: `Min`, 5: `Max`)</small> |
+| **multiband_compressor** | `band5SidechainSource` | Enum | `0` <br><small>(Choices: 0: `Middle`, 1: `Side`, 2: `Left`, 3: `Right`, 4: `Min`, 5: `Max`)</small> |
+| **multiband_compressor** | `band6SidechainSource` | Enum | `0` <br><small>(Choices: 0: `Middle`, 1: `Side`, 2: `Left`, 3: `Right`, 4: `Min`, 5: `Max`)</small> |
+| **multiband_compressor** | `band7SidechainSource` | Enum | `0` <br><small>(Choices: 0: `Middle`, 1: `Side`, 2: `Left`, 3: `Right`, 4: `Min`, 5: `Max`)</small> |
+| **multiband_compressor** | `band0StereoSplitSource` | Enum | `0` <br><small>(Choices: 0: `Left/Right`, 1: `Right/Left`, 2: `Mid/Side`, 3: `Side/Mid`, 4: `Min`, 5: `Max`)</small> |
+| **multiband_compressor** | `band1StereoSplitSource` | Enum | `0` <br><small>(Choices: 0: `Left/Right`, 1: `Right/Left`, 2: `Mid/Side`, 3: `Side/Mid`, 4: `Min`, 5: `Max`)</small> |
+| **multiband_compressor** | `band2StereoSplitSource` | Enum | `0` <br><small>(Choices: 0: `Left/Right`, 1: `Right/Left`, 2: `Mid/Side`, 3: `Side/Mid`, 4: `Min`, 5: `Max`)</small> |
+| **multiband_compressor** | `band3StereoSplitSource` | Enum | `0` <br><small>(Choices: 0: `Left/Right`, 1: `Right/Left`, 2: `Mid/Side`, 3: `Side/Mid`, 4: `Min`, 5: `Max`)</small> |
+| **multiband_compressor** | `band4StereoSplitSource` | Enum | `0` <br><small>(Choices: 0: `Left/Right`, 1: `Right/Left`, 2: `Mid/Side`, 3: `Side/Mid`, 4: `Min`, 5: `Max`)</small> |
+| **multiband_compressor** | `band5StereoSplitSource` | Enum | `0` <br><small>(Choices: 0: `Left/Right`, 1: `Right/Left`, 2: `Mid/Side`, 3: `Side/Mid`, 4: `Min`, 5: `Max`)</small> |
+| **multiband_compressor** | `band6StereoSplitSource` | Enum | `0` <br><small>(Choices: 0: `Left/Right`, 1: `Right/Left`, 2: `Mid/Side`, 3: `Side/Mid`, 4: `Min`, 5: `Max`)</small> |
+| **multiband_compressor** | `band7StereoSplitSource` | Enum | `0` <br><small>(Choices: 0: `Left/Right`, 1: `Right/Left`, 2: `Mid/Side`, 3: `Side/Mid`, 4: `Min`, 5: `Max`)</small> |
 | **multiband_compressor** | `band0SidechainLookahead` | Double | `0` |
 | **multiband_compressor** | `band1SidechainLookahead` | Double | `0` |
 | **multiband_compressor** | `band2SidechainLookahead` | Double | `0` |
@@ -489,15 +443,14 @@ The following properties can be modified or queried via the [local server](../us
 | **multiband_compressor** | `band5SidechainHighcutFrequency` | Double | `12000` |
 | **multiband_compressor** | `band6SidechainHighcutFrequency` | Double | `16000` |
 | **multiband_compressor** | `band7SidechainHighcutFrequency` | Double | `20000` |
-| **multiband_compressor** | `compressionModeLabels` | StringList | `Downward,Upward,Boosting` |
-| **multiband_compressor** | `band0CompressionMode` | Int | `0` |
-| **multiband_compressor** | `band1CompressionMode` | Int | `0` |
-| **multiband_compressor** | `band2CompressionMode` | Int | `0` |
-| **multiband_compressor** | `band3CompressionMode` | Int | `0` |
-| **multiband_compressor** | `band4CompressionMode` | Int | `0` |
-| **multiband_compressor** | `band5CompressionMode` | Int | `0` |
-| **multiband_compressor** | `band6CompressionMode` | Int | `0` |
-| **multiband_compressor** | `band7CompressionMode` | Int | `0` |
+| **multiband_compressor** | `band0CompressionMode` | Enum | `0` <br><small>(Choices: 0: `Downward`, 1: `Upward`, 2: `Boosting`)</small> |
+| **multiband_compressor** | `band1CompressionMode` | Enum | `0` <br><small>(Choices: 0: `Downward`, 1: `Upward`, 2: `Boosting`)</small> |
+| **multiband_compressor** | `band2CompressionMode` | Enum | `0` <br><small>(Choices: 0: `Downward`, 1: `Upward`, 2: `Boosting`)</small> |
+| **multiband_compressor** | `band3CompressionMode` | Enum | `0` <br><small>(Choices: 0: `Downward`, 1: `Upward`, 2: `Boosting`)</small> |
+| **multiband_compressor** | `band4CompressionMode` | Enum | `0` <br><small>(Choices: 0: `Downward`, 1: `Upward`, 2: `Boosting`)</small> |
+| **multiband_compressor** | `band5CompressionMode` | Enum | `0` <br><small>(Choices: 0: `Downward`, 1: `Upward`, 2: `Boosting`)</small> |
+| **multiband_compressor** | `band6CompressionMode` | Enum | `0` <br><small>(Choices: 0: `Downward`, 1: `Upward`, 2: `Boosting`)</small> |
+| **multiband_compressor** | `band7CompressionMode` | Enum | `0` <br><small>(Choices: 0: `Downward`, 1: `Upward`, 2: `Boosting`)</small> |
 | **multiband_compressor** | `band0CompressorEnable` | Bool | `true` |
 | **multiband_compressor** | `band1CompressorEnable` | Bool | `true` |
 | **multiband_compressor** | `band2CompressorEnable` | Bool | `true` |
@@ -602,10 +555,8 @@ The following properties can be modified or queried via the [local server](../us
 | **multiband_gate** | `viewSidechain` | Bool | `false` |
 | **multiband_gate** | `externalSidechainEnabled` | Bool | `false` |
 | **multiband_gate** | `stereoSplit` | Bool | `false` |
-| **multiband_gate** | `gateModeLabels` | StringList | `Classic,Modern,Linear Phase` |
-| **multiband_gate** | `gateMode` | Int | `1` |
-| **multiband_gate** | `envelopeBoostLabels` | StringList | `None,Pink BT,Pink MT,Brown BT,Brown MT` |
-| **multiband_gate** | `envelopeBoost` | Int | `0` |
+| **multiband_gate** | `gateMode` | Enum | `1` <br><small>(Choices: 0: `Classic`, 1: `Modern`, 2: `Linear Phase`)</small> |
+| **multiband_gate** | `envelopeBoost` | Enum | `0` <br><small>(Choices: 0: `None`, 1: `Pink BT`, 2: `Pink MT`, 3: `Brown BT`, 4: `Brown MT`)</small> |
 | **multiband_gate** | `inputToSidechain` | Double | `0` |
 | **multiband_gate** | `inputToLink` | Double | `0` |
 | **multiband_gate** | `sidechainToInput` | Double | `0` |
@@ -627,42 +578,38 @@ The following properties can be modified or queried via the [local server](../us
 | **multiband_gate** | `band6SplitFrequency` | Double | `12000` |
 | **multiband_gate** | `band7SplitFrequency` | Double | `16000` |
 | **multiband_gate** | `sidechainInputDevice` | String | `""` |
-| **multiband_gate** | `sidechainTypeLabels` | StringList | `Internal,External,Link` |
-| **multiband_gate** | `band0SidechainType` | Int | `0` |
-| **multiband_gate** | `band1SidechainType` | Int | `0` |
-| **multiband_gate** | `band2SidechainType` | Int | `0` |
-| **multiband_gate** | `band3SidechainType` | Int | `0` |
-| **multiband_gate** | `band4SidechainType` | Int | `0` |
-| **multiband_gate** | `band5SidechainType` | Int | `0` |
-| **multiband_gate** | `band6SidechainType` | Int | `0` |
-| **multiband_gate** | `band7SidechainType` | Int | `0` |
-| **multiband_gate** | `sidechainModeLabels` | StringList | `Peak,RMS,LPF,SMA` |
-| **multiband_gate** | `band0SidechainMode` | Int | `1` |
-| **multiband_gate** | `band1SidechainMode` | Int | `1` |
-| **multiband_gate** | `band2SidechainMode` | Int | `1` |
-| **multiband_gate** | `band3SidechainMode` | Int | `1` |
-| **multiband_gate** | `band4SidechainMode` | Int | `1` |
-| **multiband_gate** | `band5SidechainMode` | Int | `1` |
-| **multiband_gate** | `band6SidechainMode` | Int | `1` |
-| **multiband_gate** | `band7SidechainMode` | Int | `1` |
-| **multiband_gate** | `sidechainSourceLabels` | StringList | `Middle,Side,Left,Right,Min,Max` |
-| **multiband_gate** | `band0SidechainSource` | Int | `0` |
-| **multiband_gate** | `band1SidechainSource` | Int | `0` |
-| **multiband_gate** | `band2SidechainSource` | Int | `0` |
-| **multiband_gate** | `band3SidechainSource` | Int | `0` |
-| **multiband_gate** | `band4SidechainSource` | Int | `0` |
-| **multiband_gate** | `band5SidechainSource` | Int | `0` |
-| **multiband_gate** | `band6SidechainSource` | Int | `0` |
-| **multiband_gate** | `band7SidechainSource` | Int | `0` |
-| **multiband_gate** | `stereoSplitSourceLabels` | StringList | `Left/Right,Right/Left,Mid/Side,Side/Mid,Min,Max` |
-| **multiband_gate** | `band0StereoSplitSource` | Int | `0` |
-| **multiband_gate** | `band1StereoSplitSource` | Int | `0` |
-| **multiband_gate** | `band2StereoSplitSource` | Int | `0` |
-| **multiband_gate** | `band3StereoSplitSource` | Int | `0` |
-| **multiband_gate** | `band4StereoSplitSource` | Int | `0` |
-| **multiband_gate** | `band5StereoSplitSource` | Int | `0` |
-| **multiband_gate** | `band6StereoSplitSource` | Int | `0` |
-| **multiband_gate** | `band7StereoSplitSource` | Int | `0` |
+| **multiband_gate** | `band0SidechainType` | Enum | `0` <br><small>(Choices: 0: `Internal`, 1: `External`, 2: `Link`)</small> |
+| **multiband_gate** | `band1SidechainType` | Enum | `0` <br><small>(Choices: 0: `Internal`, 1: `External`, 2: `Link`)</small> |
+| **multiband_gate** | `band2SidechainType` | Enum | `0` <br><small>(Choices: 0: `Internal`, 1: `External`, 2: `Link`)</small> |
+| **multiband_gate** | `band3SidechainType` | Enum | `0` <br><small>(Choices: 0: `Internal`, 1: `External`, 2: `Link`)</small> |
+| **multiband_gate** | `band4SidechainType` | Enum | `0` <br><small>(Choices: 0: `Internal`, 1: `External`, 2: `Link`)</small> |
+| **multiband_gate** | `band5SidechainType` | Enum | `0` <br><small>(Choices: 0: `Internal`, 1: `External`, 2: `Link`)</small> |
+| **multiband_gate** | `band6SidechainType` | Enum | `0` <br><small>(Choices: 0: `Internal`, 1: `External`, 2: `Link`)</small> |
+| **multiband_gate** | `band7SidechainType` | Enum | `0` <br><small>(Choices: 0: `Internal`, 1: `External`, 2: `Link`)</small> |
+| **multiband_gate** | `band0SidechainMode` | Enum | `1` <br><small>(Choices: 0: `Peak`, 1: `RMS`, 2: `LPF`, 3: `SMA`)</small> |
+| **multiband_gate** | `band1SidechainMode` | Enum | `1` <br><small>(Choices: 0: `Peak`, 1: `RMS`, 2: `LPF`, 3: `SMA`)</small> |
+| **multiband_gate** | `band2SidechainMode` | Enum | `1` <br><small>(Choices: 0: `Peak`, 1: `RMS`, 2: `LPF`, 3: `SMA`)</small> |
+| **multiband_gate** | `band3SidechainMode` | Enum | `1` <br><small>(Choices: 0: `Peak`, 1: `RMS`, 2: `LPF`, 3: `SMA`)</small> |
+| **multiband_gate** | `band4SidechainMode` | Enum | `1` <br><small>(Choices: 0: `Peak`, 1: `RMS`, 2: `LPF`, 3: `SMA`)</small> |
+| **multiband_gate** | `band5SidechainMode` | Enum | `1` <br><small>(Choices: 0: `Peak`, 1: `RMS`, 2: `LPF`, 3: `SMA`)</small> |
+| **multiband_gate** | `band6SidechainMode` | Enum | `1` <br><small>(Choices: 0: `Peak`, 1: `RMS`, 2: `LPF`, 3: `SMA`)</small> |
+| **multiband_gate** | `band7SidechainMode` | Enum | `1` <br><small>(Choices: 0: `Peak`, 1: `RMS`, 2: `LPF`, 3: `SMA`)</small> |
+| **multiband_gate** | `band0SidechainSource` | Enum | `0` <br><small>(Choices: 0: `Middle`, 1: `Side`, 2: `Left`, 3: `Right`, 4: `Min`, 5: `Max`)</small> |
+| **multiband_gate** | `band1SidechainSource` | Enum | `0` <br><small>(Choices: 0: `Middle`, 1: `Side`, 2: `Left`, 3: `Right`, 4: `Min`, 5: `Max`)</small> |
+| **multiband_gate** | `band2SidechainSource` | Enum | `0` <br><small>(Choices: 0: `Middle`, 1: `Side`, 2: `Left`, 3: `Right`, 4: `Min`, 5: `Max`)</small> |
+| **multiband_gate** | `band3SidechainSource` | Enum | `0` <br><small>(Choices: 0: `Middle`, 1: `Side`, 2: `Left`, 3: `Right`, 4: `Min`, 5: `Max`)</small> |
+| **multiband_gate** | `band4SidechainSource` | Enum | `0` <br><small>(Choices: 0: `Middle`, 1: `Side`, 2: `Left`, 3: `Right`, 4: `Min`, 5: `Max`)</small> |
+| **multiband_gate** | `band5SidechainSource` | Enum | `0` <br><small>(Choices: 0: `Middle`, 1: `Side`, 2: `Left`, 3: `Right`, 4: `Min`, 5: `Max`)</small> |
+| **multiband_gate** | `band6SidechainSource` | Enum | `0` <br><small>(Choices: 0: `Middle`, 1: `Side`, 2: `Left`, 3: `Right`, 4: `Min`, 5: `Max`)</small> |
+| **multiband_gate** | `band7SidechainSource` | Enum | `0` <br><small>(Choices: 0: `Middle`, 1: `Side`, 2: `Left`, 3: `Right`, 4: `Min`, 5: `Max`)</small> |
+| **multiband_gate** | `band0StereoSplitSource` | Enum | `0` <br><small>(Choices: 0: `Left/Right`, 1: `Right/Left`, 2: `Mid/Side`, 3: `Side/Mid`, 4: `Min`, 5: `Max`)</small> |
+| **multiband_gate** | `band1StereoSplitSource` | Enum | `0` <br><small>(Choices: 0: `Left/Right`, 1: `Right/Left`, 2: `Mid/Side`, 3: `Side/Mid`, 4: `Min`, 5: `Max`)</small> |
+| **multiband_gate** | `band2StereoSplitSource` | Enum | `0` <br><small>(Choices: 0: `Left/Right`, 1: `Right/Left`, 2: `Mid/Side`, 3: `Side/Mid`, 4: `Min`, 5: `Max`)</small> |
+| **multiband_gate** | `band3StereoSplitSource` | Enum | `0` <br><small>(Choices: 0: `Left/Right`, 1: `Right/Left`, 2: `Mid/Side`, 3: `Side/Mid`, 4: `Min`, 5: `Max`)</small> |
+| **multiband_gate** | `band4StereoSplitSource` | Enum | `0` <br><small>(Choices: 0: `Left/Right`, 1: `Right/Left`, 2: `Mid/Side`, 3: `Side/Mid`, 4: `Min`, 5: `Max`)</small> |
+| **multiband_gate** | `band5StereoSplitSource` | Enum | `0` <br><small>(Choices: 0: `Left/Right`, 1: `Right/Left`, 2: `Mid/Side`, 3: `Side/Mid`, 4: `Min`, 5: `Max`)</small> |
+| **multiband_gate** | `band6StereoSplitSource` | Enum | `0` <br><small>(Choices: 0: `Left/Right`, 1: `Right/Left`, 2: `Mid/Side`, 3: `Side/Mid`, 4: `Min`, 5: `Max`)</small> |
+| **multiband_gate** | `band7StereoSplitSource` | Enum | `0` <br><small>(Choices: 0: `Left/Right`, 1: `Right/Left`, 2: `Mid/Side`, 3: `Side/Mid`, 4: `Min`, 5: `Max`)</small> |
 | **multiband_gate** | `band0SidechainLookahead` | Double | `0` |
 | **multiband_gate** | `band1SidechainLookahead` | Double | `0` |
 | **multiband_gate** | `band2SidechainLookahead` | Double | `0` |
@@ -833,8 +780,7 @@ The following properties can be modified or queried via the [local server](../us
 | **reverb** | `bypass` | Bool | `false` |
 | **reverb** | `inputGain` | Double | `0` |
 | **reverb** | `outputGain` | Double | `0` |
-| **reverb** | `roomSizeLabels` | StringList | `Small,Medium,Large,Tunnel-like,Large/smooth,Experimental` |
-| **reverb** | `roomSize` | Int | `2` |
+| **reverb** | `roomSize` | Enum | `2` <br><small>(Choices: 0: `Small`, 1: `Medium`, 2: `Large`, 3: `Tunnel-like`, 4: `Large/smooth`, 5: `Experimental`)</small> |
 | **reverb** | `decayTime` | Double | `1.5` |
 | **reverb** | `hfDamp` | Double | `5000` |
 | **reverb** | `diffusion` | Double | `0.5` |
@@ -855,7 +801,7 @@ The following properties can be modified or queried via the [local server](../us
 | **spectrum** | `state` | Bool | `true` |
 | **spectrum** | `dynamicYScale` | Bool | `true` |
 | **spectrum** | `logarithimicHorizontalAxis` | Bool | `true` |
-| **spectrum** | `spectrumShape` | Enum <br><small>(bars, lines, dots, area)</small> | `0` |
+| **spectrum** | `spectrumShape` | Enum | `0` <br><small>(Choices: 0: `Bars`, 1: `Lines`, 2: `Dots`, 3: `Area`)</small> |
 | **spectrum** | `nPoints` | Int | `100` |
 | **spectrum** | `height` | Int | `140` |
 | **spectrum** | `minimumFrequency` | Int | `20` |
@@ -882,8 +828,7 @@ The following properties can be modified or queried via the [local server](../us
 | **stereo_tools** | `muter` | Bool | `false` |
 | **stereo_tools** | `phasel` | Bool | `false` |
 | **stereo_tools** | `phaser` | Bool | `false` |
-| **stereo_tools** | `modeLabels` | StringList | `LR > LR (Stereo Default),LR > MS (Stereo to Mid-Side),MS > LR (Mid-Side to Stereo),LR > LL (Mono Left Channel),LR > RR (Mono Right Channel),LR > L+R (Mono Sum L+R),LR > RL (Stereo Flip Channels)` |
-| **stereo_tools** | `mode` | Int | `0` |
+| **stereo_tools** | `mode` | Enum | `0` <br><small>(Choices: 0: `LR > LR (Stereo Default)`, 1: `LR > MS (Stereo to Mid-Side)`, 2: `MS > LR (Mid-Side to Stereo)`, 3: `LR > LL (Mono Left Channel)`, 4: `LR > RR (Mono Right Channel)`, 5: `LR > L+R (Mono Sum L+R)`, 6: `LR > RL (Stereo Flip Channels)`)</small> |
 | **stereo_tools** | `slev` | Double | `0` |
 | **stereo_tools** | `sbal` | Double | `0` |
 | **stereo_tools** | `mlev` | Double | `0` |

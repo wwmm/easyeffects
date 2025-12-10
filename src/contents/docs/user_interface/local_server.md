@@ -48,10 +48,16 @@ You can modify individual plugin parameters on the fly using the `set_property` 
 **Format:**
 `set_property:pipeline:plugin_id:instance_id:property_name:value`
 
-**Example:**
+**Example 1:**
 Set the compressor threshold on the output pipeline to -20dB:
 ```bash
 echo "set_property:output:compressor:0:threshold:-20" | socat - UNIX-CONNECT:/tmp/EasyEffectsServer
+```
+
+**Example 2:**
+Set the compressor `mode` to `Upward`. If [Plugin Properties](../database/plugins_properties.md) show `1: Upward` in the choices list:
+```bash
+echo "set_property:output:compressor:0:mode:1" | socat - UNIX-CONNECT:/tmp/EasyEffectsServer
 ```
 
 ### Get property
@@ -64,4 +70,3 @@ Get the current output gain of the equalizer:
 ```bash
 echo "get_property:output:equalizer:0:outputGain" | socat - UNIX-CONNECT:/tmp/EasyEffectsServer
 ```
-
