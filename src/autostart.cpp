@@ -26,6 +26,7 @@
 #include <libportal-qt6/portal-qt6.h>
 #include <libportal/background.h>
 #include <libportal/parent.h>
+#include "tags_app.hpp"
 #endif
 #include <qobject.h>
 #include <qqml.h>
@@ -37,10 +38,8 @@
 #include <format>
 #include <fstream>
 #include <string>
-#include <sstream>
 #include "config.h"
 #include "db_manager.hpp"
-#include "tags_app.hpp"
 #include "util.hpp"
 
 #ifdef ENABLE_LIBPORTAL
@@ -109,7 +108,7 @@ Autostart::Autostart(QObject* parent) : QObject(parent) {
   connect(DbMain::self(), &DbMain::enableServiceModeChanged, [&]() { update_state(); });
 }
 
-void Autostart::update_state() {
+void Autostart::update_state() {  // NOLINT
 #ifdef ENABLE_LIBPORTAL
   if (std::filesystem::exists("/.flatpak-info")) {
     update_background_portal();

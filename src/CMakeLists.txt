@@ -278,11 +278,11 @@ if(ENABLE_RNNOISE)
     target_link_libraries(easyeffects PRIVATE PkgConfig::LIBRNNOISE)
 endif(ENABLE_RNNOISE)
 
-if(LIBPORTAL_FOUND AND LIBPORTALQT_FOUND AND ENABLE_LIBPORTAL)
+if(ENABLE_LIBPORTAL)
     MESSAGE(STATUS "Flatpak build")
     target_compile_definitions(easyeffects PRIVATE ENABLE_LIBPORTAL=1)
     target_link_libraries(easyeffects PRIVATE PkgConfig::LIBPORTAL PkgConfig::LIBPORTALQT)
-endif(LIBPORTAL_FOUND AND LIBPORTALQT_FOUND AND ENABLE_LIBPORTAL)
+endif(ENABLE_LIBPORTAL)
 
 if(ENABLE_LIBCPP_WORKAROUNDS)
     MESSAGE(STATUS "Enabling workarounds for lib++ systems")
