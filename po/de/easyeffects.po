@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-12-11 16:42-0300\n"
-"PO-Revision-Date: 2025-12-08 23:43+0000\n"
+"PO-Revision-Date: 2025-12-11 21:07+0000\n"
 "Last-Translator: Henning <me@unbekannt3.eu>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/easyeffects/main/"
 "de/>\n"
@@ -599,7 +599,7 @@ msgstr "Seite/Mitte"
 #: src/contents/ui/MultibandCompressor.qml:452
 #: src/contents/ui/MultibandGate.qml:425
 msgid "Preamp"
-msgstr ""
+msgstr "Vorverstärker"
 
 #: src/contents/ui/Compressor.qml:358 src/contents/ui/Expander.qml:314
 #: src/contents/ui/Gate.qml:333 src/contents/ui/MultibandCompressor.qml:468
@@ -852,18 +852,17 @@ msgstr "Automatische Verstärkungsregelung"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:12
 msgid "Target Orientation"
-msgstr ""
+msgstr "Zielausrichtung"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:23
 #: src/contents/ui/ConvolverSofaDialog.qml:119
 msgid "Azimuth"
-msgstr ""
+msgstr "Azimut"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:39
 #: src/contents/ui/ConvolverSofaDialog.qml:124
-#, fuzzy
 msgid "Elevation"
-msgstr "Reaktion"
+msgstr "Elevation"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:55
 #: src/contents/ui/ConvolverSofaDialog.qml:129
@@ -1018,9 +1017,8 @@ msgid "Level"
 msgstr "Stufe"
 
 #: src/contents/ui/Deesser.qml:278
-#, fuzzy
 msgid "Gain reduction"
-msgstr "Bandreduktion"
+msgstr "Pegelreduktion"
 
 #: src/contents/ui/Delay.qml:55 src/contents/ui/Delay.qml:208
 msgid "Distance"
@@ -1130,9 +1128,8 @@ msgid "Noise Suppression"
 msgstr "Rauschunterdrückung"
 
 #: src/contents/ui/EchoCanceller.qml:87
-#, fuzzy
 msgid "Strength"
-msgstr "Filterlänge"
+msgstr "Stärke"
 
 #: src/contents/ui/EchoCanceller.qml:91 src/contents/ui/Loudness.qml:99
 msgid "Low"
@@ -1155,9 +1152,8 @@ msgid "High-Pass Filter"
 msgstr "Hochpassfilter"
 
 #: src/contents/ui/EchoCanceller.qml:113
-#, fuzzy
 msgid "Full band"
-msgstr "Subband"
+msgstr "Breitband"
 
 #: src/contents/ui/EchoCanceller.qml:153 src/contents/ui/Speex.qml:55
 msgid "Automatic gain control"
