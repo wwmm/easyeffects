@@ -19,7 +19,6 @@
 
 #pragma once
 
-#include <samplerate.h>
 #include <speex/speex_resampler.h>
 #include <speex/speexdsp_config_types.h>
 #include <cmath>
@@ -34,6 +33,8 @@ class Resampler {
   Resampler(const Resampler&&) = delete;
   auto operator=(const Resampler&&) -> Resampler& = delete;
   ~Resampler();
+
+  void set_quality(const int& value);
 
   template <typename T>
   auto process(const T& input) -> const std::vector<float>& {
@@ -60,13 +61,7 @@ class Resampler {
  private:
   double resample_ratio = 1.0;
 
-  int quality = 10;
-
   SpeexResamplerState* state = nullptr;
-
-  SRC_STATE* src_state = nullptr;
-
-  SRC_DATA src_data{};
 
   std::vector<float> output;
 };

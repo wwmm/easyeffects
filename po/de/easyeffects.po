@@ -211,6 +211,7 @@ msgstr "Ausgangsverstärkung"
 #: src/contents/ui/RNNoise.qml:68 src/contents/ui/RNNoise.qml:282
 #: src/contents/ui/RNNoise.qml:284 src/contents/ui/RNNoise.qml:302
 #: src/contents/ui/Speex.qml:155 src/contents/ui/StereoTools.qml:370
+#: src/contents/ui/Crystalizer.qml:104
 #, fuzzy
 msgid "Using %1"
 msgstr "Nutzt %1"
@@ -298,7 +299,7 @@ msgstr "Zuhören"
 #: src/contents/ui/MultibandCompressor.qml:995
 #: src/contents/ui/MultibandGate.qml:968 src/contents/ui/Reverb.qml:337
 #: src/contents/ui/RNNoise.qml:327 src/contents/ui/Speex.qml:173
-#: src/contents/ui/StereoTools.qml:402
+#: src/contents/ui/StereoTools.qml:402 src/contents/ui/Crystalizer.qml:142
 msgid "Reset"
 msgstr "Zurücksetzen"
 
@@ -921,10 +922,11 @@ msgid "Bypass"
 msgstr "Umleiten"
 
 #: src/contents/ui/Crystalizer.qml:106 src/contents/ui/Limiter.qml:68
+#: src/contents/ui/Crystalizer.qml:121
 msgid "Oversampling"
 msgstr "Überabtastung"
 
-#: src/contents/ui/Crystalizer.qml:116
+#: src/contents/ui/Crystalizer.qml:116 src/contents/ui/Crystalizer.qml:131
 msgid "Adaptive intensity"
 msgstr "Adaptive Intensität"
 
@@ -3254,6 +3256,11 @@ msgstr "Equalizer, Kompressor und andere Audioeffekte"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "Einfache Audioeffekte"
+
+#: src/contents/ui/Crystalizer.qml:83
+#, fuzzy
+msgid "Oversampling quality"
+msgstr "Überabtastung"
 
 #, fuzzy
 #~ msgid "Get the active input/output preset."

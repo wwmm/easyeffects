@@ -2139,13 +2139,14 @@ When active the audio signal passing through the selected band is not modified.<
 Mutes the selected band.</p>
 <p><strong>Adaptive Intensity</strong><br />
 When enabled the intensity value set by the band slider is continously scaled as audio is processed. The scaling may
-increase or decrease the intensity based on the geometric mean of the signal crest factor, kurtosis and spectral flux. In this
-mode an additional scaling proportional to the band frequency is also applied.  </p>
+increase or decrease the intensity based on the geometric mean of the signal crest factor, kurtosis and spectral flux.</p>
 <p>When using static intensity values it may happen that the crystalizer enhances high frequency audio too much. What leads
 to audible artifacts. The adaptive scaling removes this is most of the cases.  </p>
 <p><strong>Oversampling</strong>
 Resamples the signal to double its sampling rate value and back to the orignal value after the plugins effects are applied.
-It improves the effects quality but it also increases CPU usage.</p>
+It improves the effects quality but it also increases CPU usage.  </p>
+<p><strong>Oversampling Quality</strong>
+Controls the resampling quality. Higher values require more CPU power.</p>
 <h2 id="references">References</h2>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Dynamic_range">Wikipedia Dynamic Range</a>  </li>

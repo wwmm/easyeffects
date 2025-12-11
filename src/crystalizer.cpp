@@ -108,6 +108,26 @@ Crystalizer::Crystalizer(const std::string& tag, pw::Manager* pipe_manager, Pipe
   BIND_BAND(12);
 
   connect(settings, &db::Crystalizer::oversamplingChanged, [&]() { setup(); });
+
+  connect(settings, &db::Crystalizer::oversamplingQualityChanged, [&]() {
+    std::scoped_lock<std::mutex> lock(data_mutex);
+
+    if (resampler_inL) {
+      resampler_inL->set_quality(settings->oversamplingQuality());
+    }
+
+    if (resampler_inR) {
+      resampler_inR->set_quality(settings->oversamplingQuality());
+    }
+
+    if (resampler_outL) {
+      resampler_outL->set_quality(settings->oversamplingQuality());
+    }
+
+    if (resampler_outR) {
+      resampler_outR->set_quality(settings->oversamplingQuality());
+    }
+  });
 }
 
 Crystalizer::~Crystalizer() {
@@ -227,6 +247,14 @@ void Crystalizer::setup() {
 
         resampler_outL = std::make_unique<Resampler>(2 * rate, rate);
         resampler_outR = std::make_unique<Resampler>(2 * rate, rate);
+
+        resampler_inL->set_quality(settings->oversamplingQuality());
+
+        resampler_inR->set_quality(settings->oversamplingQuality());
+
+        resampler_outL->set_quality(settings->oversamplingQuality());
+
+        resampler_outR->set_quality(settings->oversamplingQuality());
 
         std::scoped_lock<std::mutex> lock(data_mutex);
 
