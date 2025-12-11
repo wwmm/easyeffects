@@ -18,6 +18,7 @@
  */
 
 #include "autostart.hpp"
+#ifdef ENABLE_LIBPORTAL
 #include <gio/gio.h>
 #include <glib-object.h>
 #include <glib.h>
@@ -25,6 +26,7 @@
 #include <libportal-qt6/portal-qt6.h>
 #include <libportal/background.h>
 #include <libportal/parent.h>
+#endif
 #include <qobject.h>
 #include <qqml.h>
 #include <qstandardpaths.h>
@@ -35,11 +37,13 @@
 #include <format>
 #include <fstream>
 #include <string>
+#include <sstream>
 #include "config.h"
 #include "db_manager.hpp"
 #include "tags_app.hpp"
 #include "util.hpp"
 
+#ifdef ENABLE_LIBPORTAL
 namespace {
 
 void on_request_background_called([[maybe_unused]] GObject* source,
@@ -94,6 +98,7 @@ void on_request_background_called([[maybe_unused]] GObject* source,
 }
 
 }  // namespace
+#endif
 
 Autostart::Autostart(QObject* parent) : QObject(parent) {
   // NOLINTNEXTLINE(clang-analyzer-cplusplus.NewDelete)
@@ -105,19 +110,22 @@ Autostart::Autostart(QObject* parent) : QObject(parent) {
 }
 
 void Autostart::update_state() {
-  if (!std::filesystem::exists("/.flatpak-info")) {
-    fallback_enable_autostart(DbMain::autostartOnLogin());
+#ifdef ENABLE_LIBPORTAL
+  if (std::filesystem::exists("/.flatpak-info")) {
+    update_background_portal();
 
     return;
   }
+#endif
 
-  update_background_portal();
+  fallback_enable_autostart(DbMain::autostartOnLogin());
 }
 
 void Autostart::set_window(QWindow* window) {
   this->window = window;
 }
 
+#ifdef ENABLE_LIBPORTAL
 void Autostart::update_background_portal() {
   auto xdp_parent = xdp_parent_new_qt(window);
 
@@ -143,6 +151,7 @@ void Autostart::update_background_portal() {
 
   xdp_parent_free(xdp_parent);
 }
+#endif
 
 void Autostart::fallback_enable_autostart(const bool& state) {
   std::filesystem::path autostart_dir{QStandardPaths::writableLocation(QStandardPaths::ConfigLocation).toStdString() +
