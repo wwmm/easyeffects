@@ -125,14 +125,14 @@ void DeepFilterNet::setup() {
 
           std::vector<float> dummy(n_samples);
 
-          const auto resampled_inL = resampler_inL->process(dummy, false);
-          const auto resampled_inR = resampler_inR->process(dummy, false);
+          const auto resampled_inL = resampler_inL->process(dummy);
+          const auto resampled_inR = resampler_inR->process(dummy);
 
           resampled_outL.resize(resampled_inL.size());
           resampled_outR.resize(resampled_inR.size());
 
-          resampler_outL->process(resampled_inL, false);
-          resampler_outR->process(resampled_inR, false);
+          resampler_outL->process(resampled_inL);
+          resampler_outR->process(resampled_inR);
 
           carryover_l.clear();
           carryover_r.clear();
@@ -171,8 +171,8 @@ void DeepFilterNet::process(std::span<float>& left_in,
   }
 
   if (resample) {
-    const auto& resampled_inL = resampler_inL->process(left_in, false);
-    const auto& resampled_inR = resampler_inR->process(right_in, false);
+    const auto& resampled_inL = resampler_inL->process(left_in);
+    const auto& resampled_inR = resampler_inR->process(right_in);
 
     resampled_outL.resize(resampled_inL.size());
     resampled_outR.resize(resampled_inR.size());
@@ -186,8 +186,8 @@ void DeepFilterNet::process(std::span<float>& left_in,
   ladspa_wrapper->run();
 
   if (resample) {
-    const auto& outL = resampler_outL->process(resampled_outL, false);
-    const auto& outR = resampler_outR->process(resampled_outR, false);
+    const auto& outL = resampler_outL->process(resampled_outL);
+    const auto& outR = resampler_outR->process(resampled_outR);
 
     auto carryover_end_l = std::min(carryover_l.size(), left_out.size());
     auto carryover_end_r = std::min(carryover_r.size(), right_out.size());

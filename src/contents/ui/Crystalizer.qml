@@ -103,6 +103,16 @@ Kirigami.ScrollablePage {
             flat: true
             actions: [
                 Kirigami.Action {
+                    text: i18n("Oversampling") // qmllint disable
+                    icon.name: "waveform-symbolic"
+                    checkable: true
+                    checked: crystalizerPage.pluginDB.oversampling
+                    onTriggered: {
+                        if (crystalizerPage.pluginDB.oversampling != checked)
+                            crystalizerPage.pluginDB.oversampling = checked;
+                    }
+                },
+                Kirigami.Action {
                     text: i18n("Adaptive intensity") // qmllint disable
                     icon.name: "adjustlevels-symbolic"
                     checkable: true

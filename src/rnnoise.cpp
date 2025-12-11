@@ -198,8 +198,8 @@ void RNNoise::process(std::span<float>& left_in,
 
   if (resample) {
     if (resampler_ready) {
-      const auto resampled_inL = resampler_inL->process(left_in, false);
-      const auto resampled_inR = resampler_inR->process(right_in, false);
+      const auto resampled_inL = resampler_inL->process(left_in);
+      const auto resampled_inR = resampler_inR->process(right_in);
 
       resampled_data_L.resize(0U);
       resampled_data_R.resize(0U);
@@ -208,8 +208,8 @@ void RNNoise::process(std::span<float>& left_in,
       remove_noise(resampled_inL, resampled_inR, resampled_data_L, resampled_data_R);
 #endif
 
-      auto resampled_outL = resampler_outL->process(resampled_data_L, false);
-      auto resampled_outR = resampler_outR->process(resampled_data_R, false);
+      auto resampled_outL = resampler_outL->process(resampled_data_L);
+      auto resampled_outR = resampler_outR->process(resampled_data_R);
 
       buf_out_L.insert(buf_out_L.end(), resampled_outL.begin(), resampled_outL.end());
       buf_out_R.insert(buf_out_R.end(), resampled_outR.begin(), resampled_outR.end());

@@ -240,26 +240,26 @@ auto ConvolverKernelManager::resampleKernel(const KernelData& kernel, const uint
 
   auto resampler = std::make_unique<Resampler>(kernel.rate, target_rate);
 
-  resampled_kernel.channel_L = resampler->process(kernel.channel_L, true);
+  resampled_kernel.channel_L = resampler->process(kernel.channel_L);
 
   // Resample right channel
 
   resampler = std::make_unique<Resampler>(kernel.rate, target_rate);
 
-  resampled_kernel.channel_R = resampler->process(kernel.channel_R, true);
+  resampled_kernel.channel_R = resampler->process(kernel.channel_R);
 
   if (kernel.channels == 4) {
     // Resample LR channel
 
     resampler = std::make_unique<Resampler>(kernel.rate, target_rate);
 
-    resampled_kernel.channel_LR = resampler->process(kernel.channel_LR, true);
+    resampled_kernel.channel_LR = resampler->process(kernel.channel_LR);
 
     // Resample right channel
 
     resampler = std::make_unique<Resampler>(kernel.rate, target_rate);
 
-    resampled_kernel.channel_RL = resampler->process(kernel.channel_RL, true);
+    resampled_kernel.channel_RL = resampler->process(kernel.channel_RL);
   }
 
   return resampled_kernel;

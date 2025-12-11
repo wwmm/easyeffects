@@ -195,7 +195,6 @@ jobs:
         libebur128-devel
         pipewire-devel
         liblilv-0-devel
-        libsamplerate-devel
         libsndfile-devel
         zita-convolver-devel 
         rnnoise-devel

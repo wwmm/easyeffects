@@ -35,6 +35,7 @@
 #include "pipeline_type.hpp"
 #include "plugin_base.hpp"
 #include "pw_manager.hpp"
+#include "resampler.hpp"
 #include "util.hpp"
 
 class Crystalizer : public PluginBase {
@@ -77,6 +78,7 @@ class Crystalizer : public PluginBase {
   bool filters_are_ready = false;
   bool notify_latency = false;
   bool is_first_buffer = true;
+  bool do_oversampling = true;
 
   uint blocksize = 512U;
   uint latency_n_frames = 0U;
@@ -140,6 +142,9 @@ class Crystalizer : public PluginBase {
 
   std::vector<float> buf_in_L, buf_in_R;
   std::vector<float> buf_out_L, buf_out_R;
+
+  std::unique_ptr<Resampler> resampler_inL, resampler_outL;
+  std::unique_ptr<Resampler> resampler_inR, resampler_outR;
 
   QList<float> adaptive_intensities;
 

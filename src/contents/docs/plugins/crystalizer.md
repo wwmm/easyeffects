@@ -17,7 +17,11 @@ increase or decrease the intensity based on the geometric mean of the signal cre
 mode an additional scaling proportional to the band frequency is also applied.  
 
 When using static intensity values it may happen that the crystalizer enhances high frequency audio too much. What leads
-to audible artifacts. The adaptive scaling removes this is most of the cases.
+to audible artifacts. The adaptive scaling removes this is most of the cases.  
+
+**Oversampling**
+Resamples the signal to double its sampling rate value and back to the orignal value after the plugins effects are applied.
+It improves the effects quality but it also increases CPU usage.
 
 ## References
 

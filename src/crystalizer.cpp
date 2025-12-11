@@ -38,6 +38,7 @@
 #include "pipeline_type.hpp"
 #include "plugin_base.hpp"
 #include "pw_manager.hpp"
+#include "resampler.hpp"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
 
@@ -111,6 +112,8 @@ Crystalizer::Crystalizer(const std::string& tag, pw::Manager* pipe_manager, Pipe
   BIND_BAND(10);
   BIND_BAND(11);
   BIND_BAND(12);
+
+  connect(settings, &db::Crystalizer::oversamplingChanged, [&]() { setup(); });
 }
 
 Crystalizer::~Crystalizer() {
@@ -132,9 +135,14 @@ void Crystalizer::reset() {
 }
 
 void Crystalizer::setup() {
+  if (rate == 0 || n_samples == 0) {  // oversamplingChanged may be emitted before pipewire calls our setup function
+    return;
+  }
+
   std::scoped_lock<std::mutex> lock(data_mutex);
 
   filters_are_ready = false;
+  do_oversampling = settings->oversampling();
 
   block_time = static_cast<float>(n_samples) / static_cast<float>(rate);
 
@@ -159,13 +167,15 @@ void Crystalizer::setup() {
 
         blocksize = n_samples;
 
-        n_samples_is_power_of_2 = (n_samples & (n_samples - 1U)) == 0 && n_samples != 0U;
+        n_samples_is_power_of_2 = (blocksize & (blocksize - 1U)) == 0 && blocksize != 0U;
 
         if (!n_samples_is_power_of_2) {
           while ((blocksize & (blocksize - 1U)) != 0 && blocksize > 2U) {
             blocksize--;
           }
         }
+
+        blocksize = std::max<uint>(blocksize, 64);  // zita does not work with less than 64
 
         util::debug(std::format("{}{} blocksize: {}", log_tag, name.toStdString(), blocksize));
 
@@ -210,13 +220,19 @@ void Crystalizer::setup() {
 
         for (uint n = 0U; n < nbands; n++) {
           filters.at(n)->set_n_samples(blocksize);
-          filters.at(n)->set_rate(rate);
+          filters.at(n)->set_rate(do_oversampling ? 2 * rate : rate);
 
           filters.at(n)->set_min_frequency(frequencies.at(n));
           filters.at(n)->set_max_frequency(frequencies.at(n + 1U));
 
           filters.at(n)->setup();
         }
+
+        resampler_inL = std::make_unique<Resampler>(rate, 2 * rate);
+        resampler_inR = std::make_unique<Resampler>(rate, 2 * rate);
+
+        resampler_outL = std::make_unique<Resampler>(2 * rate, rate);
+        resampler_outR = std::make_unique<Resampler>(2 * rate, rate);
 
         std::scoped_lock<std::mutex> lock(data_mutex);
 
@@ -233,7 +249,7 @@ void Crystalizer::process(std::span<float>& left_in,
                           std::span<float>& right_out) {
   std::scoped_lock<std::mutex> lock(data_mutex);
 
-  if (bypass || !filters_are_ready) {
+  if (bypass) {
     std::ranges::copy(left_in, left_out.begin());
     std::ranges::copy(right_in, right_out.begin());
 
@@ -255,14 +271,24 @@ void Crystalizer::process(std::span<float>& left_in,
     return;
   }
 
-  if (n_samples_is_power_of_2 && blocksize == n_samples) {
+  if (n_samples_is_power_of_2 && blocksize == n_samples && !do_oversampling) {
     std::ranges::copy(left_in, left_out.begin());
     std::ranges::copy(right_in, right_out.begin());
 
     enhance_peaks(left_out, right_out);
   } else {
-    buf_in_L.insert(buf_in_L.end(), left_in.begin(), left_in.end());
-    buf_in_R.insert(buf_in_R.end(), right_in.begin(), right_in.end());
+    if (!do_oversampling) {
+      buf_in_L.insert(buf_in_L.end(), left_in.begin(), left_in.end());
+      buf_in_R.insert(buf_in_R.end(), right_in.begin(), right_in.end());
+    } else {
+      const auto resampled_inL = resampler_inL->process(left_in);
+      const auto resampled_inR = resampler_inR->process(right_in);
+
+      buf_in_L.insert(buf_in_L.end(), resampled_inL.begin(), resampled_inL.end());
+      buf_in_R.insert(buf_in_R.end(), resampled_inR.begin(), resampled_inR.end());
+    }
+
+    // util::warning(std::format("size 1: {}, size 2: {}, size 3: {}", buf_in_L.size(), left_in.size(), data_L.size()));
 
     while (buf_in_L.size() >= blocksize) {
       util::copy_bulk(buf_in_L, data_L);
@@ -270,8 +296,16 @@ void Crystalizer::process(std::span<float>& left_in,
 
       enhance_peaks(data_L, data_R);
 
-      buf_out_L.insert(buf_out_L.end(), data_L.begin(), data_L.end());
-      buf_out_R.insert(buf_out_R.end(), data_R.begin(), data_R.end());
+      if (!do_oversampling) {
+        buf_out_L.insert(buf_out_L.end(), data_L.begin(), data_L.end());
+        buf_out_R.insert(buf_out_R.end(), data_R.begin(), data_R.end());
+      } else {
+        auto resampled_outL = resampler_outL->process(data_L);
+        auto resampled_outR = resampler_outR->process(data_R);
+
+        buf_out_L.insert(buf_out_L.end(), resampled_outL.begin(), resampled_outL.end());
+        buf_out_R.insert(buf_out_R.end(), resampled_outR.begin(), resampled_outR.end());
+      }
     }
 
     // copying the processed samples to the output buffers

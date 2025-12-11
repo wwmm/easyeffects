@@ -19,15 +19,25 @@
 
 #include "resampler.hpp"
 #include <samplerate.h>
+#include <speex/speex_resampler.h>
+#include <format>
+#include "util.hpp"
 
-Resampler::Resampler(const int& input_rate, const int& output_rate) : output(1, 0) {
-  resample_ratio = static_cast<double>(output_rate) / static_cast<double>(input_rate);
+Resampler::Resampler(const int& input_rate, const int& output_rate)
+    : resample_ratio(static_cast<double>(output_rate) / static_cast<double>(input_rate)) {
+  int err = 0;
 
-  src_state = src_new(SRC_SINC_FASTEST, 1, nullptr);
+  state = speex_resampler_init(1, input_rate, output_rate,
+                               quality,  // quality: 0–10
+                               &err);
+
+  if (!state || err != RESAMPLER_ERR_SUCCESS) {
+    util::warning(std::format("error while initializing speex resampler: {}", speex_resampler_strerror(err)));
+  }
 }
 
 Resampler::~Resampler() {
-  if (src_state != nullptr) {
-    src_delete(src_state);
+  if (state) {
+    speex_resampler_destroy(state);
   }
 }

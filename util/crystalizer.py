@@ -34,6 +34,7 @@ fig = plt.figure()
 
 plt.plot(t, original, 'bo-', markersize=4, label='original')
 plt.plot(t, enhanced, 'ro-', markersize=4, label='enhanced')
+plt.plot(t, deriv2, 'go-', markersize=4, label='second derivative')
 
 fig.legend()
 

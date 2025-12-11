@@ -20,7 +20,10 @@
 #pragma once
 
 #include <samplerate.h>
+#include <speex/speex_resampler.h>
+#include <speex/speexdsp_config_types.h>
 #include <cmath>
+#include <cstddef>
 #include <vector>
 
 class Resampler {
@@ -33,36 +36,33 @@ class Resampler {
   ~Resampler();
 
   template <typename T>
-  auto process(const T& input, const bool& end_of_input) -> const std::vector<float>& {
-    output.resize(std::ceil(1.5 * resample_ratio * input.size()));
+  auto process(const T& input) -> const std::vector<float>& {
+    // https://deepwiki.com/xiph/speexdsp/2.3-resampler
 
-    // The number of frames of data pointed to by data_in
-    src_data.input_frames = input.size();
+    const size_t in_frames = input.size();
+    const size_t expected_out = std::ceil(in_frames * resample_ratio);
 
-    // A pointer to the input data samples
-    src_data.data_in = input.data();
+    output.resize(expected_out);
 
-    // Maximum number of frames pointed to by data_out
-    src_data.output_frames = static_cast<long>(output.size());
+    spx_uint32_t in_len = in_frames;
+    spx_uint32_t out_len = expected_out;
 
-    // A pointer to the output data samples
-    src_data.data_out = output.data();
+    speex_resampler_process_float(state,
+                                  0,  // channel index (mono)
+                                  input.data(), &in_len, output.data(), &out_len);
 
-    // Equal to output_sample_rate / input_sample_rate
-    src_data.src_ratio = resample_ratio;
-
-    // Equal to 0 if more input data is available and 1 otherwise
-    src_data.end_of_input = static_cast<int>(end_of_input);
-
-    src_process(src_state, &src_data);
-
-    output.resize(src_data.output_frames_gen);
+    // If fewer samples were produced for any reason, shrink
+    output.resize(out_len);
 
     return output;
   }
 
  private:
   double resample_ratio = 1.0;
+
+  int quality = 10;
+
+  SpeexResamplerState* state = nullptr;
 
   SRC_STATE* src_state = nullptr;
 

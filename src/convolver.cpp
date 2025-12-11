@@ -272,6 +272,8 @@ void Convolver::setup() {
           }
         }
 
+        blocksize = std::max<uint>(blocksize, 64);  // zita does not work with less than 64
+
         buf_in_L.clear();
         buf_in_R.clear();
         buf_out_L.clear();

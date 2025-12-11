@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-12-07 16:47-0300\n"
+"POT-Creation-Date: 2025-12-11 16:42-0300\n"
 "PO-Revision-Date: 2025-12-08 23:43+0000\n"
 "Last-Translator: Henning <me@unbekannt3.eu>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 5.15-dev\n"
 
-#: src/autostart.cpp:89
+#: src/autostart.cpp:92
 msgid ""
 "Cannot enable autostart option because background access has been denied. "
 "Please allow \"Run in Background\" permission for Easy Effects in your "
@@ -28,92 +28,92 @@ msgstr ""
 "Autostart kann nicht aktiviert werden. Du musst Easy Effects in deinen "
 "Systemeinstellungen das \"Ausführen im Hintergrund\" erlauben."
 
-#: src/command_line_parser.cpp:42 src/command_line_parser.cpp:44
+#: src/command_line_parser.cpp:44
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "Easy Effects beenden. Nützlich bei der Ausführung im Dienstmodus."
 
-#: src/command_line_parser.cpp:43 src/command_line_parser.cpp:45
+#: src/command_line_parser.cpp:45
 msgid "Reset Easy Effects."
 msgstr "Easy Effects zurücksetzen."
 
-#: src/command_line_parser.cpp:44 src/command_line_parser.cpp:46
+#: src/command_line_parser.cpp:46
 #, fuzzy
 msgid "Hide the window."
 msgstr "Fenster verstecken."
 
-#: src/command_line_parser.cpp:45 src/command_line_parser.cpp:47
+#: src/command_line_parser.cpp:47
 msgid "Global bypass. 1 to enable and 2 to disable."
 msgstr "Globale Umleitung. 1 zum Aktivieren und 2 zum Deaktivieren."
 
-#: src/command_line_parser.cpp:45 src/command_line_parser.cpp:47
+#: src/command_line_parser.cpp:47
 msgid "bypass-state"
 msgstr ""
 
-#: src/command_line_parser.cpp:46 src/command_line_parser.cpp:48
+#: src/command_line_parser.cpp:48
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Lade ein Preset. Beispiel: easyeffects -l music"
 
-#: src/command_line_parser.cpp:46 src/command_line_parser.cpp:48
+#: src/command_line_parser.cpp:48
 msgid "preset-name"
 msgstr "Vorlagenname"
 
-#: src/command_line_parser.cpp:47 src/command_line_parser.cpp:49
+#: src/command_line_parser.cpp:49
 msgid "Show available presets."
 msgstr "Verfügbare Voreinstellungen anzeigen."
 
-#: src/command_line_parser.cpp:48
+#: src/command_line_parser.cpp:50
 #, fuzzy
-msgid "Get the active input/output preset."
+msgid "Get the last loaded input/output preset."
 msgstr "Verfügbare Voreinstellungen anzeigen."
 
-#: src/command_line_parser.cpp:48 src/command_line_parser.cpp:50
+#: src/command_line_parser.cpp:50
 msgid "preset-type"
 msgstr ""
 
-#: src/command_line_parser.cpp:49
+#: src/command_line_parser.cpp:51
 #, fuzzy
-msgid "Get the active input and output presets."
+msgid "Get the last loaded input and output presets."
 msgstr "Verfügbare Voreinstellungen anzeigen."
 
-#: src/command_line_parser.cpp:50 src/command_line_parser.cpp:52
+#: src/command_line_parser.cpp:52
 msgid "Deprecated. Use --service-mode instead."
 msgstr "Veraltet. Benutze --service-mode stattdessen."
 
-#: src/command_line_parser.cpp:51 src/command_line_parser.cpp:53
+#: src/command_line_parser.cpp:53
 msgid "Start the application with service mode turned on."
 msgstr "Startet das Programm mit aktiviertem service-mode."
 
-#: src/command_line_parser.cpp:52 src/command_line_parser.cpp:54
+#: src/command_line_parser.cpp:54
 msgid "Enable debug messages."
 msgstr "Debug-Meldungen aktivieren."
 
-#: src/command_line_parser.cpp:126 src/command_line_parser.cpp:124
+#: src/command_line_parser.cpp:124
 msgid "Must specify preset type: input/output."
 msgstr "Vorlagentyp muss ausgewählt sein: Eingabe/Ausgabe."
 
-#: src/command_line_parser.cpp:166 src/command_line_parser.cpp:164
+#: src/command_line_parser.cpp:159
 #, fuzzy
 msgid "Output presets"
 msgstr "Ausgabe-Voreinstellungen"
 
-#: src/command_line_parser.cpp:168 src/command_line_parser.cpp:166
+#: src/command_line_parser.cpp:161
 msgid "No output presets."
 msgstr "Keine Ausgabe-Voreinstellungen."
 
-#: src/command_line_parser.cpp:179 src/command_line_parser.cpp:177
+#: src/command_line_parser.cpp:172
 #, fuzzy
 msgid "Input presets"
 msgstr "Eingabe-Voreinstellungen"
 
-#: src/command_line_parser.cpp:181 src/command_line_parser.cpp:179
+#: src/command_line_parser.cpp:174
 msgid "No input presets."
 msgstr "Keine Eingabe-Voreinstellungen."
 
-#: src/command_line_parser.cpp:211 src/command_line_parser.cpp:209
+#: src/command_line_parser.cpp:204
 msgid "Specified preset does not exist."
 msgstr "Ausgewählte Vorlage existiert nicht."
 
-#: src/command_line_parser.cpp:229 src/command_line_parser.cpp:227
+#: src/command_line_parser.cpp:222
 msgid "Provided an invalid bypass state."
 msgstr ""
 
@@ -291,13 +291,13 @@ msgstr "Zuhören"
 
 #: src/contents/ui/BassEnhancer.qml:226 src/contents/ui/BassLoudness.qml:122
 #: src/contents/ui/Compressor.qml:905 src/contents/ui/Convolver.qml:534
-#: src/contents/ui/Crossfeed.qml:154 src/contents/ui/Crystalizer.qml:117
+#: src/contents/ui/Crossfeed.qml:154 src/contents/ui/Crystalizer.qml:127
 #: src/contents/ui/Deesser.qml:340 src/contents/ui/Delay.qml:406
 #: src/contents/ui/EchoCanceller.qml:164 src/contents/ui/Equalizer.qml:367
 #: src/contents/ui/Exciter.qml:231 src/contents/ui/Expander.qml:855
 #: src/contents/ui/Filter.qml:230 src/contents/ui/Gate.qml:984
 #: src/contents/ui/Limiter.qml:622 src/contents/ui/Loudness.qml:195
-#: src/contents/ui/Main.qml:565 src/contents/ui/Maximizer.qml:132
+#: src/contents/ui/Main.qml:559 src/contents/ui/Maximizer.qml:132
 #: src/contents/ui/MultibandCompressor.qml:995
 #: src/contents/ui/MultibandGate.qml:968 src/contents/ui/Reverb.qml:337
 #: src/contents/ui/RNNoise.qml:327 src/contents/ui/Speex.qml:173
@@ -307,7 +307,7 @@ msgstr "Zurücksetzen"
 
 #: src/contents/ui/BassLoudness.qml:63 src/contents/ui/Compressor.qml:460
 #: src/contents/ui/EeInputOutputGain.qml:124 src/contents/ui/Expander.qml:420
-#: src/contents/ui/Gate.qml:435 src/contents/ui/Main.qml:493
+#: src/contents/ui/Gate.qml:435 src/contents/ui/Main.qml:487
 #: src/contents/ui/StereoTools.qml:248
 msgid "Output"
 msgstr "Ausgang"
@@ -477,7 +477,6 @@ msgstr "Extern"
 
 #: src/contents/ui/Compressor.qml:259 src/contents/ui/Expander.qml:219
 #: src/contents/ui/Gate.qml:237 src/contents/ui/Limiter.qml:209
-#: src/contents/ui/PageStreamsEffects.qml:409
 #: src/contents/ui/PageStreamsEffects.qml:411
 msgid "Input device"
 msgstr "Eingabegerät"
@@ -843,16 +842,6 @@ msgstr "Kanäle"
 msgid "Format"
 msgstr "Format"
 
-#: src/contents/ui/Convolver.qml:420 src/contents/ui/Convolver.qml:526
-msgctxt "The sofa audio file format"
-msgid "SOFA"
-msgstr ""
-
-#: src/contents/ui/Convolver.qml:420
-msgctxt "The wav audio format"
-msgid "WAV"
-msgstr ""
-
 #: src/contents/ui/Convolver.qml:439
 msgid "Stereo width"
 msgstr "Stereo-Breite"
@@ -866,48 +855,38 @@ msgid "Target Orientation"
 msgstr ""
 
 #: src/contents/ui/ConvolverSofaDialog.qml:23
-#: src/contents/ui/ConvolverSofaDialog.qml:117
 #: src/contents/ui/ConvolverSofaDialog.qml:119
 msgid "Azimuth"
 msgstr ""
 
-#: src/contents/ui/ConvolverSofaDialog.qml:38
-#: src/contents/ui/ConvolverSofaDialog.qml:122
 #: src/contents/ui/ConvolverSofaDialog.qml:39
 #: src/contents/ui/ConvolverSofaDialog.qml:124
 #, fuzzy
 msgid "Elevation"
 msgstr "Reaktion"
 
-#: src/contents/ui/ConvolverSofaDialog.qml:53
-#: src/contents/ui/ConvolverSofaDialog.qml:127
 #: src/contents/ui/ConvolverSofaDialog.qml:55
 #: src/contents/ui/ConvolverSofaDialog.qml:129
 msgid "Radius"
 msgstr ""
 
-#: src/contents/ui/ConvolverSofaDialog.qml:69
 #: src/contents/ui/ConvolverSofaDialog.qml:71
 msgid "Status"
 msgstr "Status"
 
-#: src/contents/ui/ConvolverSofaDialog.qml:84
-#: src/contents/ui/PreferencesSheet.qml:46
 #: src/contents/ui/ConvolverSofaDialog.qml:86
+#: src/contents/ui/PreferencesSheet.qml:46
 msgid "Database"
 msgstr "Datenbank"
 
-#: src/contents/ui/ConvolverSofaDialog.qml:89
 #: src/contents/ui/ConvolverSofaDialog.qml:91
 msgid "Measurements"
 msgstr "Messungen"
 
-#: src/contents/ui/ConvolverSofaDialog.qml:94
 #: src/contents/ui/ConvolverSofaDialog.qml:96
 msgid "Index"
 msgstr ""
 
-#: src/contents/ui/ConvolverSofaDialog.qml:152
 #: src/contents/ui/ConvolverSofaDialog.qml:154
 msgid "Apply"
 msgstr "Anwenden"
@@ -928,7 +907,7 @@ msgstr "Crossfeed Vorlagen"
 msgid "Default"
 msgstr "Standard"
 
-#: src/contents/ui/Crossfeed.qml:145 src/contents/ui/Main.qml:467
+#: src/contents/ui/Crossfeed.qml:145 src/contents/ui/Main.qml:461
 #: src/contents/ui/PreferencesSheet.qml:40 src/contents/ui/Reverb.qml:314
 msgid "Presets"
 msgstr "Voreinstellungen"
@@ -947,7 +926,11 @@ msgstr "Stummschalten"
 msgid "Bypass"
 msgstr "Umleiten"
 
-#: src/contents/ui/Crystalizer.qml:106
+#: src/contents/ui/Crystalizer.qml:106 src/contents/ui/Limiter.qml:68
+msgid "Oversampling"
+msgstr "Überabtastung"
+
+#: src/contents/ui/Crystalizer.qml:116
 msgid "Adaptive intensity"
 msgstr "Adaptive Intensität"
 
@@ -1188,7 +1171,7 @@ msgstr "Pegelsteuerung"
 msgid "Input and output gain controls with level meters"
 msgstr "Ein- und Ausgangsverstärkerregelung mit Pegelanzeigen"
 
-#: src/contents/ui/EeInputOutputGain.qml:111 src/contents/ui/Main.qml:506
+#: src/contents/ui/EeInputOutputGain.qml:111 src/contents/ui/Main.qml:500
 #: src/contents/ui/StereoTools.qml:39
 msgid "Input"
 msgstr "Eingabe"
@@ -1549,10 +1532,6 @@ msgstr "Line Thin"
 msgid "Line duck"
 msgstr "Line Wide"
 
-#: src/contents/ui/Limiter.qml:68
-msgid "Oversampling"
-msgstr "Überabtastung"
-
 #: src/contents/ui/Limiter.qml:72 src/contents/ui/Limiter.qml:86
 #: src/contents/ui/MultibandCompressor.qml:574
 #: src/contents/ui/MultibandGate.qml:547
@@ -1755,83 +1734,82 @@ msgstr "Kanalzuordnung"
 msgid "Clipping"
 msgstr "Kanalzuordnung"
 
-#: src/contents/ui/Main.qml:234
+#: src/contents/ui/Main.qml:230
 #, fuzzy
 msgid "Reset Settings?"
 msgstr "_Einstellungen zurücksetzen"
 
-#: src/contents/ui/Main.qml:235
+#: src/contents/ui/Main.qml:231
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr ""
 
-#: src/contents/ui/Main.qml:288 src/contents/ui/Main.qml:306
+#: src/contents/ui/Main.qml:284 src/contents/ui/Main.qml:302
 #, fuzzy
 msgid "Preset Loaded"
 msgstr "Neuer Eingabe-Presetname"
 
-#: src/contents/ui/Main.qml:317 src/contents/ui/Main.qml:329
+#: src/contents/ui/Main.qml:313 src/contents/ui/Main.qml:325
 msgid "Clear List"
 msgstr "Liste leeren"
 
-#: src/contents/ui/Main.qml:318 src/contents/ui/Main.qml:330
+#: src/contents/ui/Main.qml:314 src/contents/ui/Main.qml:326
 msgid "Are you sure you want to clear this list?"
 msgstr ""
 
-#: src/contents/ui/Main.qml:339
+#: src/contents/ui/Main.qml:335
 msgid "Input Presets"
 msgstr "Eingabe-Voreinstellungen"
 
-#: src/contents/ui/Main.qml:354
+#: src/contents/ui/Main.qml:350
 msgid "Output Presets"
 msgstr "Ausgabe-Voreinstellungen"
 
-#: src/contents/ui/Main.qml:385
+#: src/contents/ui/Main.qml:381
 msgid "Active"
 msgstr "Aktiv"
 
-#: src/contents/ui/Main.qml:396 src/contents/ui/Main.qml:545
+#: src/contents/ui/Main.qml:392 src/contents/ui/Main.qml:539
 #: src/contents/ui/ShortcutsSheet.qml:370
 msgid "Shortcuts"
 msgstr "Tastenkürzel"
 
-#: src/contents/ui/Main.qml:405 src/contents/ui/Main.qml:553
+#: src/contents/ui/Main.qml:401 src/contents/ui/Main.qml:547
 msgid "Manual"
 msgstr "Handbuch"
 
-#: src/contents/ui/Main.qml:417 src/contents/ui/Main.qml:585
+#: src/contents/ui/Main.qml:411 src/contents/ui/Main.qml:579
 msgid "Quit"
 msgstr "Beenden"
 
-#: src/contents/ui/Main.qml:441
+#: src/contents/ui/Main.qml:435
 msgid "Go back"
 msgstr "Zurückgehen"
 
-#: src/contents/ui/Main.qml:451 src/contents/ui/PageStreamsEffects.qml:711
-#: src/contents/ui/PageStreamsEffects.qml:713
+#: src/contents/ui/Main.qml:445 src/contents/ui/PageStreamsEffects.qml:713
 msgid "Effects"
 msgstr "Effekte"
 
-#: src/contents/ui/Main.qml:452
+#: src/contents/ui/Main.qml:446
 msgid "Turn effects on/off"
 msgstr "Effekte ein-/ausschalten"
 
-#: src/contents/ui/Main.qml:463
+#: src/contents/ui/Main.qml:457
 msgid "Audio effects are enabled."
 msgstr "Audioeffekte sind aktiviert."
 
-#: src/contents/ui/Main.qml:463
+#: src/contents/ui/Main.qml:457
 msgid "Audio effects are disabled."
 msgstr "Audioeffekte sind deaktiviert."
 
-#: src/contents/ui/Main.qml:519
+#: src/contents/ui/Main.qml:513
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/contents/ui/Main.qml:537
+#: src/contents/ui/Main.qml:531
 msgid "Preferences"
 msgstr "Einstellungen"
 
-#: src/contents/ui/Main.qml:577
+#: src/contents/ui/Main.qml:571
 msgid "About Easy Effects"
 msgstr "Über Easy Effects"
 
@@ -1931,51 +1909,40 @@ msgstr "Keine Effekte"
 msgid "Audio stream not modified"
 msgstr "Audio Stream nicht verändert"
 
-#: src/contents/ui/PageStreamsEffects.qml:344
 #: src/contents/ui/PageStreamsEffects.qml:346
 msgid "Add effect"
 msgstr "Effekt hinzufügen"
 
-#: src/contents/ui/PageStreamsEffects.qml:352
 #: src/contents/ui/PageStreamsEffects.qml:354
 msgid "Close"
 msgstr "Schließen"
 
-#: src/contents/ui/PageStreamsEffects.qml:356
 #: src/contents/ui/PageStreamsEffects.qml:358
 msgid "Expand the list of effects pipeline"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:356
 #: src/contents/ui/PageStreamsEffects.qml:358
 msgid "Reduce the list of effects pipeline"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:409
-#: src/contents/ui/PageStreamsEffects.qml:698
 #: src/contents/ui/PageStreamsEffects.qml:411
 #: src/contents/ui/PageStreamsEffects.qml:700
 msgid "Players"
 msgstr "Spieler"
 
-#: src/contents/ui/PageStreamsEffects.qml:418
 #: src/contents/ui/PageStreamsEffects.qml:420
 msgid "Output device"
 msgstr "Ausgabegerät"
 
-#: src/contents/ui/PageStreamsEffects.qml:418
-#: src/contents/ui/PageStreamsEffects.qml:698
 #: src/contents/ui/PageStreamsEffects.qml:420
 #: src/contents/ui/PageStreamsEffects.qml:700
 msgid "Recorders"
 msgstr "Rekorder"
 
-#: src/contents/ui/PageStreamsEffects.qml:729
 #: src/contents/ui/PageStreamsEffects.qml:731
 msgid "Input monitoring"
 msgstr "Eingangsüberwachung"
 
-#: src/contents/ui/PageStreamsEffects.qml:742
 #: src/contents/ui/PageStreamsEffects.qml:744
 msgid "Excluded apps"
 msgstr "Ausgeschlossene Apps"
@@ -3017,29 +2984,29 @@ msgstr "Stereo Basis"
 msgid "Stereo phase"
 msgstr "Stereo Phase"
 
-#: src/main.cpp:312
+#: src/main.cpp:329
 msgid "Global audio effects"
 msgstr "_Tastenkürzel Toneffekte"
 
-#: src/main.cpp:313 src/main.cpp:320
+#: src/main.cpp:330
 msgid "© 2017-2025 EasyEffects Team"
 msgstr ""
 
-#: src/main.cpp:315 src/main.cpp:322
+#: src/main.cpp:332
 msgid "Wellington Wallace"
 msgstr ""
 
-#: src/main.cpp:315
+#: src/main.cpp:332
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Entwickler"
 
-#: src/main.cpp:319
+#: src/main.cpp:336
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Deine Namen"
 
-#: src/main.cpp:319
+#: src/main.cpp:336
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "Deine E-Mail Adressen"
@@ -3056,33 +3023,33 @@ msgstr "(Lautsprecher)"
 msgid "Output Level Meter"
 msgstr "Ausgangspegelanzeige"
 
-#: src/presets_manager.cpp:773 src/presets_manager.cpp:780
-#: src/presets_manager.cpp:790 src/presets_manager.cpp:797
-#: src/presets_manager.cpp:807 src/presets_manager.cpp:816
+#: src/presets_manager.cpp:780 src/presets_manager.cpp:787
+#: src/presets_manager.cpp:797 src/presets_manager.cpp:804
+#: src/presets_manager.cpp:814 src/presets_manager.cpp:823
 msgid "Preset not loaded correctly"
 msgstr "Vorlage nicht korrekt geladen"
 
-#: src/presets_manager.cpp:773
+#: src/presets_manager.cpp:780
 msgid "Wrong format in excluded apps list"
 msgstr "Falsches Format in der Liste ausgeschlossener Anwendungen"
 
-#: src/presets_manager.cpp:781
+#: src/presets_manager.cpp:788
 msgid "Generic error while loading excluded apps list"
 msgstr "Allgemeiner Fehler beim Laden der ausgeschlossenen Anwendungen"
 
-#: src/presets_manager.cpp:790
+#: src/presets_manager.cpp:797
 msgid "Wrong format in effects list"
 msgstr "Falsches Format in der Effekt Liste"
 
-#: src/presets_manager.cpp:797
+#: src/presets_manager.cpp:804
 msgid "Generic error while loading effects list"
 msgstr "Allgemeiner Fehler beim Laden der Effektliste"
 
-#: src/presets_manager.cpp:808
+#: src/presets_manager.cpp:815
 msgid "One or more parameters have a wrong format"
 msgstr "Ein oder mehrere Parameter haben ein falsches Format"
 
-#: src/presets_manager.cpp:817
+#: src/presets_manager.cpp:824
 msgid "Generic error while loading the effect"
 msgstr "Allgemeiner Fehler beim Laden des Effektes"
 
@@ -3174,107 +3141,117 @@ msgstr "Sprachprozessor"
 msgid "Stereo Tools"
 msgstr "Stereowerkzeuge"
 
-#: src/units.hpp:56
+#: src/units.hpp:59
 msgctxt "left channel abbreviation (single letter)"
 msgid "L"
 msgstr "L"
 
-#: src/units.hpp:57
+#: src/units.hpp:60
 msgctxt "left channel abbreviation (single letter)"
 msgid "R"
 msgstr "R"
 
-#: src/units.hpp:58 src/units.hpp:67
+#: src/units.hpp:63
+msgctxt "The SOFA audio file format"
+msgid "SOFA"
+msgstr ""
+
+#: src/units.hpp:64
+msgctxt "The WAV audio file format"
+msgid "WAV"
+msgstr ""
+
+#: src/units.hpp:67
 msgctxt "decibel unit abbreviation"
 msgid "dB"
 msgstr ""
 
-#: src/units.hpp:59 src/units.hpp:68
+#: src/units.hpp:68
 msgctxt "decibel full scale unit abbreviation"
 msgid "dBFS"
 msgstr ""
 
-#: src/units.hpp:60
+#: src/units.hpp:69
 msgctxt "decibel per octaves unit abbreviation"
 msgid "dB/oct"
 msgstr "dB/okt"
 
-#: src/units.hpp:61 src/units.hpp:84
-msgctxt "thousand abbreviation (single letter)"
-msgid "k"
-msgstr ""
-
-#: src/units.hpp:62 src/units.hpp:70
+#: src/units.hpp:70
 msgctxt "seconds unit abbreviation"
 msgid "s"
 msgstr ""
 
-#: src/units.hpp:63 src/units.hpp:71
+#: src/units.hpp:71
 msgctxt "milliseconds unit abbreviation"
 msgid "ms"
 msgstr ""
 
-#: src/units.hpp:64 src/units.hpp:72
+#: src/units.hpp:72
 msgctxt "Hertz unit abbreviation"
 msgid "Hz"
 msgstr ""
 
-#: src/units.hpp:65 src/units.hpp:73
+#: src/units.hpp:73
 msgctxt "kiloHertz unit abbreviation"
 msgid "kHz"
 msgstr ""
 
-#: src/units.hpp:66 src/units.hpp:85
-msgctxt "percentage symbol"
-msgid "%"
-msgstr ""
-
-#: src/units.hpp:67 src/units.hpp:74
+#: src/units.hpp:74
 msgctxt "loudness full scale unit abbreviation"
 msgid "LUFS"
 msgstr ""
 
-#: src/units.hpp:68 src/units.hpp:75
+#: src/units.hpp:75
 msgctxt "loudness unit abbreviation"
 msgid "LU"
 msgstr ""
 
-#: src/units.hpp:69 src/units.hpp:76
+#: src/units.hpp:76
 msgctxt "meter unit abbreviation"
 msgid "m"
 msgstr ""
 
-#: src/units.hpp:70 src/units.hpp:77
+#: src/units.hpp:77
 msgctxt "centimeter unit abbreviation"
 msgid "cm"
 msgstr ""
 
-#: src/units.hpp:71
-msgctxt "degrees (angle)"
-msgid "°"
-msgstr ""
-
-#: src/units.hpp:72
-msgctxt "degree Celsius unit abbreviation"
+#: src/units.hpp:78
+msgctxt "degrees Celsius unit abbreviation"
 msgid "°C"
 msgstr ""
 
-#: src/units.hpp:73 src/units.hpp:79
+#: src/units.hpp:79
 msgctxt "bit unit (plural)"
 msgid "bits"
 msgstr ""
 
-#: src/units.hpp:74
+#: src/units.hpp:80
 msgctxt "frame unit (plural)"
 msgid "frames"
 msgstr "Frames"
 
-#: src/units.hpp:75
+#: src/units.hpp:81
 msgctxt "frames per second abbreviation"
 msgid "fps"
 msgstr "FPS"
 
-#: src/units.hpp:76 src/units.hpp:87
+#: src/units.hpp:84
+msgctxt "thousand abbreviation (single letter)"
+msgid "k"
+msgstr ""
+
+#: src/units.hpp:85
+msgctxt "percentage symbol"
+msgid "%"
+msgstr ""
+
+#: src/units.hpp:86
+msgctxt "degrees (angle) symbol"
+msgid "°"
+msgstr ""
+
+#: src/units.hpp:87
 msgctxt "minus infinity abbreviation"
 msgid "-inf"
 msgstr ""
@@ -3287,35 +3264,13 @@ msgstr "Equalizer, Kompressor und andere Audioeffekte"
 msgid "Simple audio effects"
 msgstr "Einfache Audioeffekte"
 
-#: src/command_line_parser.cpp:50
 #, fuzzy
-msgid "Get the last loaded input/output preset."
-msgstr "Verfügbare Voreinstellungen anzeigen."
+#~ msgid "Get the active input/output preset."
+#~ msgstr "Verfügbare Voreinstellungen anzeigen."
 
-#: src/command_line_parser.cpp:51
 #, fuzzy
-msgid "Get the last loaded input and output presets."
-msgstr "Verfügbare Voreinstellungen anzeigen."
-
-#: src/units.hpp:63
-msgctxt "The SOFA audio file format"
-msgid "SOFA"
-msgstr ""
-
-#: src/units.hpp:64
-msgctxt "The WAV audio file format"
-msgid "WAV"
-msgstr ""
-
-#: src/units.hpp:78
-msgctxt "degrees Celsius unit abbreviation"
-msgid "°C"
-msgstr ""
-
-#: src/units.hpp:86
-msgctxt "degrees (angle) symbol"
-msgid "°"
-msgstr ""
+#~ msgid "Get the active input and output presets."
+#~ msgstr "Verfügbare Voreinstellungen anzeigen."
 
 #~ msgid "24 dB/oct"
 #~ msgstr "24 dB/okt"

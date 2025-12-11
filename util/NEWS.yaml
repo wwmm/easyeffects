@@ -15,7 +15,8 @@ Description:
 
 - Other notes∶
 - Now that the manual is just an ordinary Github's page the Qt WebEngineView is not used anymore. No need to keep its package as dependency.
-- The library libportal-qt6 is only used by the Flatpak package and can be removed from native packages dependencies list. 
+- The library libportal-qt6 is only used by the Flatpak package and can be removed from native packages dependencies list.
+- Our resampler class is now based on speexdsp resampler. This means libsamplerate can be removed from our packages dependencies.
 
 ---
 Version: 8.0.6

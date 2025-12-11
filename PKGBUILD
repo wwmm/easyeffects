@@ -22,7 +22,6 @@ depends=(
   'qt6-graphs'
   'pipewire-pulse'
   'lilv'
-  'libsamplerate'
   'libsndfile'
   'zita-convolver'
   'libebur128'

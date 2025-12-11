@@ -27,6 +27,10 @@
             <label></label>
             <default>true</default>
         </entry>
+        <entry name="oversampling" type="Bool">
+            <label></label>
+            <default>true</default>
+        </entry>
 
         <entry name="intensityBand0" type="Double">
             <label></label>

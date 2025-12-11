@@ -255,7 +255,6 @@ target_link_libraries(easyeffects PRIVATE
     PkgConfig::LIBNLOHMANNJSON
     PkgConfig::LIBGSL
     PkgConfig::LIBBS2B
-    PkgConfig::LIBSAMPLERATE
     PkgConfig::LIBSNDFILE
     PkgConfig::LIBSOUNDTOUCH
     PkgConfig::LIBWEBRTC
