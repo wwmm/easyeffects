@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-12-11 16:42-0300\n"
+"POT-Creation-Date: 2025-12-11 18:06-0300\n"
 "PO-Revision-Date: 2025-11-21 11:51+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/easyeffects/"
@@ -207,7 +207,7 @@ msgstr "Pojačanje izlaza"
 #: src/contents/ui/Autogain.qml:212 src/contents/ui/BassEnhancer.qml:184
 #: src/contents/ui/BassLoudness.qml:104 src/contents/ui/Compressor.qml:853
 #: src/contents/ui/Convolver.qml:499 src/contents/ui/Crossfeed.qml:128
-#: src/contents/ui/Crystalizer.qml:89 src/contents/ui/DeepFilterNet.qml:175
+#: src/contents/ui/Crystalizer.qml:104 src/contents/ui/DeepFilterNet.qml:175
 #: src/contents/ui/Deesser.qml:298 src/contents/ui/Delay.qml:354
 #: src/contents/ui/EchoCanceller.qml:136 src/contents/ui/Equalizer.qml:283
 #: src/contents/ui/Exciter.qml:189 src/contents/ui/Expander.qml:803
@@ -301,7 +301,7 @@ msgstr "Poslušaj"
 
 #: src/contents/ui/BassEnhancer.qml:226 src/contents/ui/BassLoudness.qml:122
 #: src/contents/ui/Compressor.qml:905 src/contents/ui/Convolver.qml:534
-#: src/contents/ui/Crossfeed.qml:154 src/contents/ui/Crystalizer.qml:127
+#: src/contents/ui/Crossfeed.qml:154 src/contents/ui/Crystalizer.qml:142
 #: src/contents/ui/Deesser.qml:340 src/contents/ui/Delay.qml:406
 #: src/contents/ui/EchoCanceller.qml:164 src/contents/ui/Equalizer.qml:367
 #: src/contents/ui/Exciter.qml:231 src/contents/ui/Expander.qml:855
@@ -956,11 +956,16 @@ msgstr "Bezvučno"
 msgid "Bypass"
 msgstr "Premosnica"
 
-#: src/contents/ui/Crystalizer.qml:106 src/contents/ui/Limiter.qml:68
+#: src/contents/ui/Crystalizer.qml:83
+#, fuzzy
+msgid "Oversampling quality"
+msgstr "Jači sampling"
+
+#: src/contents/ui/Crystalizer.qml:121 src/contents/ui/Limiter.qml:68
 msgid "Oversampling"
 msgstr "Jači sampling"
 
-#: src/contents/ui/Crystalizer.qml:116
+#: src/contents/ui/Crystalizer.qml:131
 msgid "Adaptive intensity"
 msgstr "Adaptivni intenzitet"
 

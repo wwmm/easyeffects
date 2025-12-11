@@ -18,7 +18,6 @@
  */
 
 #include "resampler.hpp"
-#include <samplerate.h>
 #include <speex/speex_resampler.h>
 #include <format>
 #include "util.hpp"
@@ -28,7 +27,7 @@ Resampler::Resampler(const int& input_rate, const int& output_rate)
   int err = 0;
 
   state = speex_resampler_init(1, input_rate, output_rate,
-                               quality,  // quality: 0–10
+                               SPEEX_RESAMPLER_QUALITY_DESKTOP,  // quality: 0–10
                                &err);
 
   if (!state || err != RESAMPLER_ERR_SUCCESS) {
@@ -40,4 +39,8 @@ Resampler::~Resampler() {
   if (state) {
     speex_resampler_destroy(state);
   }
+}
+
+void Resampler::set_quality(const int& value) {
+  speex_resampler_set_quality(state, value);
 }

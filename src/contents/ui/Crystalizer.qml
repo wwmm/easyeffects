@@ -76,6 +76,21 @@ Kirigami.ScrollablePage {
                 }
             }
         }
+
+        EeSpinBox {
+            Layout.alignment: Qt.AlignHCenter
+            Layout.fillWidth: false
+            label: i18n("Oversampling quality") // qmllint disable
+            spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
+            from: crystalizerPage.pluginDB.getMinValue("oversamplingQuality")
+            to: crystalizerPage.pluginDB.getMaxValue("oversamplingQuality")
+            value: crystalizerPage.pluginDB.oversamplingQuality
+            decimals: 0
+            stepSize: 1
+            onValueModified: v => {
+                crystalizerPage.pluginDB.oversamplingQuality = v;
+            }
+        }
     }
 
     header: EeInputOutputGain {

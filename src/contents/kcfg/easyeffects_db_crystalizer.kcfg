@@ -31,6 +31,12 @@
             <label></label>
             <default>true</default>
         </entry>
+        <entry name="oversamplingQuality" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>10</max>
+            <default>5</default>
+        </entry>
 
         <entry name="intensityBand0" type="Double">
             <label></label>

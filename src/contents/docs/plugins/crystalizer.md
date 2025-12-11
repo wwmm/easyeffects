@@ -20,7 +20,10 @@ to audible artifacts. The adaptive scaling removes this is most of the cases.
 
 **Oversampling**
 Resamples the signal to double its sampling rate value and back to the orignal value after the plugins effects are applied.
-It improves the effects quality but it also increases CPU usage.
+It improves the effects quality but it also increases CPU usage.  
+
+**Oversampling Quality**
+Controls the resampling quality. Higher values require more CPU power.
 
 ## References
 
