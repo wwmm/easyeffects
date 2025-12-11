@@ -13,8 +13,7 @@ Mutes the selected band.
 
 **Adaptive Intensity**  
 When enabled the intensity value set by the band slider is continously scaled as audio is processed. The scaling may
-increase or decrease the intensity based on the geometric mean of the signal crest factor, kurtosis and spectral flux. In this
-mode an additional scaling proportional to the band frequency is also applied.  
+increase or decrease the intensity based on the geometric mean of the signal crest factor, kurtosis and spectral flux.
 
 When using static intensity values it may happen that the crystalizer enhances high frequency audio too much. What leads
 to audible artifacts. The adaptive scaling removes this is most of the cases.  

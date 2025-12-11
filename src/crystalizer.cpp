@@ -91,12 +91,6 @@ Crystalizer::Crystalizer(const std::string& tag, pw::Manager* pipe_manager, Pipe
     frequencies[n] = f_edges[n];
   }
 
-  for (uint n = 0; n < nbands; n++) {
-    freq_scaling[n] = std::sqrt(freq_ref / freq_centers[n]);
-    // freq_scaling[n] = std::cbrt(freq_ref / freq_centers[n]);
-    // freq_scaling[n] = freq_ref / freq_centers[n];
-  }
-
   init_common_controls<db::Crystalizer>(settings);
 
   BIND_BAND(0);
@@ -501,7 +495,7 @@ auto Crystalizer::compute_adaptive_intensity(const uint& band_index,
 
   // intensity calculation
 
-  auto intensity = base_intensity * std::cbrtf(crest_ratio * kurtosis_ratio * flux_ratio) * freq_scaling[band_index];
+  auto intensity = base_intensity * std::cbrtf(crest_ratio * kurtosis_ratio * flux_ratio);
 
   // util::warning(std::format("n = {}, intensity = {}, kurtosis_r = {}, crest_r = {}, flux_r = {}", band_index,
   // intensity,

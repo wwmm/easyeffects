@@ -118,7 +118,6 @@ class Crystalizer : public PluginBase {
 
   std::array<float, nbands + 1U> frequencies;
   std::array<float, nbands> freq_centers;
-  std::array<float, nbands> freq_scaling;
 
   std::array<float, nbands> band_intensity;
   std::array<float, nbands> band_previous_L;
