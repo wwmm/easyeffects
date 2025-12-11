@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects-news\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-28 14:40+0000\n"
-"PO-Revision-Date: 2025-12-06 12:00+0000\n"
-"Last-Translator: neko0xff <neko_0xff@protonmail.com>\n"
+"PO-Revision-Date: 2025-12-11 14:00+0000\n"
+"Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/changelog/zh_Hant/>\n"
 "Language: zh_Hant\n"
@@ -35,7 +35,7 @@ msgid ""
 msgstr ""
 "Easy Effects 是一個先進的音訊處理工具。其包含等化器(equalizer)、限制器 "
 "(limiter)、壓縮器(compressor) 和混響(reverberation)工具等。補註，它也有內建波"
-"譜(spectrum)分析器。"
+"形圖(spectrum)分析器。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:10
 msgid ""
@@ -244,7 +244,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:421
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:437
 msgid "Other notes:"
-msgstr "其他更新："
+msgstr "其他註記："
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:69
 msgid ""
@@ -313,7 +313,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:396
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:522
 msgid "Updated translations"
-msgstr "新的翻譯"
+msgstr "已經更新的翻譯"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:102
 msgid "The equalizer can export basic APO preset files"
@@ -351,13 +351,13 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:128
 msgid "The DeepFilterNet plugin can now be added to the preset file"
-msgstr "DeepFilterNet 現在可以被加入 Preset 中"
+msgstr "DeepFilterNet 外掛現在可以被加入至預設集檔案"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:137
 msgid ""
 "The spectrum has a new option that allows the dynamic vertical scale to be "
 "disabled."
-msgstr "波形圖現在可以隱藏垂直量表。"
+msgstr "波形圖有一個新的選項，允許停用動態垂直尺度。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:138
 msgid "Improved compatibility with the latest LSP releases."
