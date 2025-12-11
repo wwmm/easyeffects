@@ -33,7 +33,6 @@ depends=(
   'tbb' 
   'speexdsp'
   'gsl'
-  'libportal-qt6'
   'webrtc-audio-processing'
   'libmysofa'
 )
