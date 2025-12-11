@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-12-11 18:06-0300\n"
-"PO-Revision-Date: 2025-12-08 23:43+0000\n"
-"Last-Translator: Henning <me@unbekannt3.eu>\n"
+"POT-Creation-Date: 2025-12-11 16:42-0300\n"
+"PO-Revision-Date: 2025-12-11 21:07+0000\n"
+"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/easyeffects/main/"
 "de/>\n"
 "Language: de\n"
@@ -37,9 +37,8 @@ msgid "Reset Easy Effects."
 msgstr "Easy Effects zurücksetzen."
 
 #: src/command_line_parser.cpp:46
-#, fuzzy
 msgid "Hide the window."
-msgstr "Fenster verstecken."
+msgstr "Fenster ausblenden."
 
 #: src/command_line_parser.cpp:47
 msgid "Global bypass. 1 to enable and 2 to disable."
@@ -199,7 +198,7 @@ msgstr "Ausgangsverstärkung"
 #: src/contents/ui/Autogain.qml:212 src/contents/ui/BassEnhancer.qml:184
 #: src/contents/ui/BassLoudness.qml:104 src/contents/ui/Compressor.qml:853
 #: src/contents/ui/Convolver.qml:499 src/contents/ui/Crossfeed.qml:128
-#: src/contents/ui/Crystalizer.qml:104 src/contents/ui/DeepFilterNet.qml:175
+#: src/contents/ui/Crystalizer.qml:89 src/contents/ui/DeepFilterNet.qml:175
 #: src/contents/ui/Deesser.qml:298 src/contents/ui/Delay.qml:354
 #: src/contents/ui/EchoCanceller.qml:136 src/contents/ui/Equalizer.qml:283
 #: src/contents/ui/Exciter.qml:189 src/contents/ui/Expander.qml:803
@@ -212,9 +211,10 @@ msgstr "Ausgangsverstärkung"
 #: src/contents/ui/RNNoise.qml:68 src/contents/ui/RNNoise.qml:282
 #: src/contents/ui/RNNoise.qml:284 src/contents/ui/RNNoise.qml:302
 #: src/contents/ui/Speex.qml:155 src/contents/ui/StereoTools.qml:370
+#: src/contents/ui/Crystalizer.qml:104
 #, fuzzy
 msgid "Using %1"
-msgstr "Nutzt {}"
+msgstr "Nutzt %1"
 
 #: src/contents/ui/Autogain.qml:229 src/contents/ui/DeepFilterNet.qml:192
 #: src/contents/ui/LevelMeter.qml:213 src/contents/ui/Pitch.qml:263
@@ -222,9 +222,8 @@ msgid "Reset history"
 msgstr "Verlauf löschen"
 
 #: src/contents/ui/Autogain.qml:236
-#, fuzzy
 msgid "Force silence"
-msgstr "Ruhe"
+msgstr "Ruhe erzwingen"
 
 #: src/contents/ui/Autogain.qml:237
 msgid "Force silence when the level is below the silence threshold"
@@ -279,7 +278,6 @@ msgstr "Untere Grenze"
 #: src/contents/ui/MultibandCompressor.qml:964
 #: src/contents/ui/MultibandGate.qml:937 src/contents/ui/Reverb.qml:323
 #: src/contents/ui/StereoTools.qml:388
-#, fuzzy
 msgid "Show native window"
 msgstr "Natives Fenster anzeigen"
 
@@ -291,7 +289,7 @@ msgstr "Zuhören"
 
 #: src/contents/ui/BassEnhancer.qml:226 src/contents/ui/BassLoudness.qml:122
 #: src/contents/ui/Compressor.qml:905 src/contents/ui/Convolver.qml:534
-#: src/contents/ui/Crossfeed.qml:154 src/contents/ui/Crystalizer.qml:142
+#: src/contents/ui/Crossfeed.qml:154 src/contents/ui/Crystalizer.qml:127
 #: src/contents/ui/Deesser.qml:340 src/contents/ui/Delay.qml:406
 #: src/contents/ui/EchoCanceller.qml:164 src/contents/ui/Equalizer.qml:367
 #: src/contents/ui/Exciter.qml:231 src/contents/ui/Expander.qml:855
@@ -301,7 +299,7 @@ msgstr "Zuhören"
 #: src/contents/ui/MultibandCompressor.qml:995
 #: src/contents/ui/MultibandGate.qml:968 src/contents/ui/Reverb.qml:337
 #: src/contents/ui/RNNoise.qml:327 src/contents/ui/Speex.qml:173
-#: src/contents/ui/StereoTools.qml:402
+#: src/contents/ui/StereoTools.qml:402 src/contents/ui/Crystalizer.qml:142
 msgid "Reset"
 msgstr "Zurücksetzen"
 
@@ -324,9 +322,8 @@ msgid "Excluded Applications"
 msgstr "Liste der ausgeschlossenen Anwendungen"
 
 #: src/contents/ui/BlocklistDialog.qml:30
-#, fuzzy
 msgid "Application node name"
-msgstr "Anwendungen"
+msgstr "Anwendungsknotenname"
 
 #: src/contents/ui/BlocklistDialog.qml:46
 msgid "Add to excluded applications"
@@ -356,9 +353,8 @@ msgstr ""
 "Bist du sicher, dass diese Anwendung von der Liste gelöscht werden soll?"
 
 #: src/contents/ui/BlocklistDialog.qml:151
-#, fuzzy
 msgid "Remove this app"
-msgstr "Dieses Plugin entfernen"
+msgstr "Diese App entfernen"
 
 #: src/contents/ui/BlocklistDialog.qml:180
 msgid "Show excluded apps"
@@ -599,7 +595,7 @@ msgstr "Seite/Mitte"
 #: src/contents/ui/MultibandCompressor.qml:452
 #: src/contents/ui/MultibandGate.qml:425
 msgid "Preamp"
-msgstr ""
+msgstr "Vorverstärker"
 
 #: src/contents/ui/Compressor.qml:358 src/contents/ui/Expander.qml:314
 #: src/contents/ui/Gate.qml:333 src/contents/ui/MultibandCompressor.qml:468
@@ -852,23 +848,22 @@ msgstr "Automatische Verstärkungsregelung"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:12
 msgid "Target Orientation"
-msgstr ""
+msgstr "Zielausrichtung"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:23
 #: src/contents/ui/ConvolverSofaDialog.qml:119
 msgid "Azimuth"
-msgstr ""
+msgstr "Azimut"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:39
 #: src/contents/ui/ConvolverSofaDialog.qml:124
-#, fuzzy
 msgid "Elevation"
-msgstr "Reaktion"
+msgstr "Elevation"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:55
 #: src/contents/ui/ConvolverSofaDialog.qml:129
 msgid "Radius"
-msgstr ""
+msgstr "Radius"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:71
 msgid "Status"
@@ -885,7 +880,7 @@ msgstr "Messungen"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:96
 msgid "Index"
-msgstr ""
+msgstr "Index"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:154
 msgid "Apply"
@@ -926,16 +921,12 @@ msgstr "Stummschalten"
 msgid "Bypass"
 msgstr "Umleiten"
 
-#: src/contents/ui/Crystalizer.qml:83
-#, fuzzy
-msgid "Oversampling quality"
-msgstr "Überabtastung"
-
-#: src/contents/ui/Crystalizer.qml:121 src/contents/ui/Limiter.qml:68
+#: src/contents/ui/Crystalizer.qml:106 src/contents/ui/Limiter.qml:68
+#: src/contents/ui/Crystalizer.qml:121
 msgid "Oversampling"
 msgstr "Überabtastung"
 
-#: src/contents/ui/Crystalizer.qml:131
+#: src/contents/ui/Crystalizer.qml:116 src/contents/ui/Crystalizer.qml:131
 msgid "Adaptive intensity"
 msgstr "Adaptive Intensität"
 
@@ -1023,9 +1014,8 @@ msgid "Level"
 msgstr "Stufe"
 
 #: src/contents/ui/Deesser.qml:278
-#, fuzzy
 msgid "Gain reduction"
-msgstr "Bandreduktion"
+msgstr "Pegelreduktion"
 
 #: src/contents/ui/Delay.qml:55 src/contents/ui/Delay.qml:208
 msgid "Distance"
@@ -1135,9 +1125,8 @@ msgid "Noise Suppression"
 msgstr "Rauschunterdrückung"
 
 #: src/contents/ui/EchoCanceller.qml:87
-#, fuzzy
 msgid "Strength"
-msgstr "Filterlänge"
+msgstr "Stärke"
 
 #: src/contents/ui/EchoCanceller.qml:91 src/contents/ui/Loudness.qml:99
 msgid "Low"
@@ -1160,9 +1149,8 @@ msgid "High-Pass Filter"
 msgstr "Hochpassfilter"
 
 #: src/contents/ui/EchoCanceller.qml:113
-#, fuzzy
 msgid "Full band"
-msgstr "Subband"
+msgstr "Breitband"
 
 #: src/contents/ui/EchoCanceller.qml:153 src/contents/ui/Speex.qml:55
 msgid "Automatic gain control"
@@ -3268,6 +3256,11 @@ msgstr "Equalizer, Kompressor und andere Audioeffekte"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "Einfache Audioeffekte"
+
+#: src/contents/ui/Crystalizer.qml:83
+#, fuzzy
+msgid "Oversampling quality"
+msgstr "Überabtastung"
 
 #, fuzzy
 #~ msgid "Get the active input/output preset."
