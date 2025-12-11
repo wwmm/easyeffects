@@ -82,6 +82,7 @@
             "buildsystem": "cmake-ninja",
             "config-opts": [
                 "-DENABLE_DEVEL=1",
+                "-DENABLE_LIBPORTAL=1",
                 "-DCMAKE_BUILD_TYPE=Debug"
             ],
             "run-tests": true,
