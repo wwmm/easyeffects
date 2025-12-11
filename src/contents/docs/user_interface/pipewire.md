@@ -7,11 +7,6 @@ Choose between using default devices or select one of the connected devices mana
 
 PipeWire version, quantum values and sample rate are also reported inside the tab.
 
-**Presets Autoloading**  
-The list of autoloading presets associated to specific Devices and their Profile.
-
-The user can change their combination selecting between the available Presets and the connected Devices from the relative comboboxes.
-
 **Modules**  
 The list of PipeWire modules installed on the system.
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-12-11 18:06-0300\n"
+"POT-Creation-Date: 2025-12-11 19:26-0300\n"
 "PO-Revision-Date: 2025-12-09 17:00+0000\n"
 "Last-Translator: Максим Горпиніч <gorpinicmaksim0@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
@@ -327,7 +327,7 @@ msgstr "Додати до виключених застосунків"
 #: src/contents/ui/ConvolverImpulseDialog.qml:71
 #: src/contents/ui/MenuAddPlugins.qml:36
 #: src/contents/ui/PageStreamsEffects.qml:79
-#: src/contents/ui/PresetsAutoloadingPage.qml:135
+#: src/contents/ui/PresetsAutoloadPage.qml:135
 #: src/contents/ui/PresetsCommunityPage.qml:86
 #: src/contents/ui/PresetsLocalPage.qml:175 src/contents/ui/RNNoise.qml:212
 msgid "Empty List"
@@ -2419,34 +2419,36 @@ msgstr "Частота оновлення"
 msgid "Related to LV2 plugins."
 msgstr "Стосується плагінів LV2."
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:35
-#: src/contents/ui/PresetsAutoloadingPage.qml:171
+#: src/contents/ui/PresetsAutoloadPage.qml:35
+#: src/contents/ui/PresetsAutoloadPage.qml:171
 msgid "Device"
 msgstr "Пристрій"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:41
-#: src/contents/ui/PresetsAutoloadingPage.qml:215
+#: src/contents/ui/PresetsAutoloadPage.qml:41
+#: src/contents/ui/PresetsAutoloadPage.qml:215
 msgid "Route"
 msgstr "Маршрут"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:84
-#: src/contents/ui/PresetsAutoloadingPage.qml:229
+#: src/contents/ui/PresetsAutoloadPage.qml:84
+#: src/contents/ui/PresetsAutoloadPage.qml:229
 msgid "Local preset"
 msgstr "Локальний пресет"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:95
+#: src/contents/ui/PresetsAutoloadPage.qml:95
 msgid "Create"
 msgstr "Створити"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:97
-msgid "Create a new autoloading preset"
+#: src/contents/ui/PresetsAutoloadPage.qml:97
+#, fuzzy
+msgid "Create a new autoload preset"
 msgstr "Створити новий пресет, що завантажуватиметься автоматично"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:186
-msgid "Remove this autoloading preset"
+#: src/contents/ui/PresetsAutoloadPage.qml:186
+#, fuzzy
+msgid "Remove this autoload preset"
 msgstr "Вилучити цей пресет, що завантажується автоматично"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:200
+#: src/contents/ui/PresetsAutoloadPage.qml:200
 msgid "Description"
 msgstr "Опис"
 
@@ -2475,7 +2477,8 @@ msgid "Community"
 msgstr "Спільнота"
 
 #: src/contents/ui/PresetsDialog.qml:96
-msgid "Autoloading"
+#, fuzzy
+msgid "Autoload"
 msgstr "Автозавантаження"
 
 #: src/contents/ui/PresetsDialog.qml:135

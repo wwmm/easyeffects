@@ -53,7 +53,7 @@ class DirectoryManager {
   [[nodiscard]] auto systemDataDirRnnoise() const -> const std::vector<std::filesystem::path>&;
 
   [[nodiscard]] auto getLocalPresetsPaths(PipelineType type) const -> QList<std::filesystem::path>;
-  [[nodiscard]] auto getAutoloadingProfilesPaths(PipelineType type) const -> QList<std::filesystem::path>;
+  [[nodiscard]] auto getAutoloadProfilesPaths(PipelineType type) const -> QList<std::filesystem::path>;
   [[nodiscard]] auto getLocalIrsPaths() const -> QList<std::filesystem::path>;
   [[nodiscard]] auto getLocalRnnoisePaths() const -> QList<std::filesystem::path>;
 

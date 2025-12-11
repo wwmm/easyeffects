@@ -172,7 +172,7 @@ auto DirectoryManager::getLocalPresetsPaths(PipelineType type) const -> QList<st
   return searchPresetsPath(it, {json_ext});
 }
 
-auto DirectoryManager::getAutoloadingProfilesPaths(PipelineType type) const -> QList<std::filesystem::path> {
+auto DirectoryManager::getAutoloadProfilesPaths(PipelineType type) const -> QList<std::filesystem::path> {
   const auto& conf_dir = (type == PipelineType::output) ? autoload_output_dir : autoload_input_dir;
 
   auto it = std::filesystem::directory_iterator{conf_dir};

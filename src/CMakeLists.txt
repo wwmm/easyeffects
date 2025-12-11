@@ -73,7 +73,7 @@ qt_add_qml_module(easyeffects
         contents/ui/PreferencesSheet.qml
         contents/ui/LspPreMixDialog.qml
         contents/ui/PresetsDialog.qml
-        contents/ui/PresetsAutoloadingPage.qml
+        contents/ui/PresetsAutoloadPage.qml
         contents/ui/PresetsLocalPage.qml
         contents/ui/PresetsCommunityPage.qml
         contents/ui/Reverb.qml

@@ -49,7 +49,7 @@ ListModel::ListModel(QObject* parent, const ModelType& model_type)
       proxy->setFilterRole(static_cast<int>(Roles::Path));
       proxy->setSortRole(static_cast<int>(Roles::Path));
       break;
-    case ModelType::Autoloading:
+    case ModelType::Autoload:
       proxy->setFilterRole(static_cast<int>(Roles::DeviceDescription));
       proxy->setSortRole(static_cast<int>(Roles::DeviceDescription));
       break;
@@ -103,7 +103,7 @@ QVariant ListModel::data(const QModelIndex& index, int role) const {
     }
   }
 
-  if (model_type == ModelType::Autoloading) {
+  if (model_type == ModelType::Autoload) {
     nlohmann::json json;
 
     std::ifstream is(*it);

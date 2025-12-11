@@ -179,7 +179,7 @@ void Crystalizer::setup() {
           return;
         }
 
-        blocksize = n_samples;
+        blocksize = do_oversampling ? 2 * n_samples : n_samples;
 
         n_samples_is_power_of_2 = (blocksize & (blocksize - 1U)) == 0 && blocksize != 0U;
 

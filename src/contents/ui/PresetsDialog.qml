@@ -52,7 +52,7 @@ Kirigami.Dialog {
             case 1:
                 return Qt.resolvedUrl("PresetsCommunityPage.qml");
             case 2:
-                return Qt.resolvedUrl("PresetsAutoloadingPage.qml");
+                return Qt.resolvedUrl("PresetsAutoloadPage.qml");
             default:
                 return "";
             }
@@ -93,7 +93,7 @@ Kirigami.Dialog {
                     onTriggered: DbMain.visiblePresetSheetPage = 1
                 },
                 Kirigami.Action {
-                    text: i18n("Autoloading")
+                    text: i18n("Autoload")
                     icon.name: "task-recurring-symbolic"
                     checkable: true
                     checked: DbMain.visiblePresetSheetPage === 2

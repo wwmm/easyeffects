@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-12-11 18:06-0300\n"
+"POT-Creation-Date: 2025-12-11 19:26-0300\n"
 "PO-Revision-Date: 2025-11-26 10:51+0000\n"
 "Last-Translator: Lito Parra <lito.15@proton.me>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -330,7 +330,7 @@ msgstr "Añadir a las aplicaciones excluidas"
 #: src/contents/ui/ConvolverImpulseDialog.qml:71
 #: src/contents/ui/MenuAddPlugins.qml:36
 #: src/contents/ui/PageStreamsEffects.qml:79
-#: src/contents/ui/PresetsAutoloadingPage.qml:135
+#: src/contents/ui/PresetsAutoloadPage.qml:135
 #: src/contents/ui/PresetsCommunityPage.qml:86
 #: src/contents/ui/PresetsLocalPage.qml:175 src/contents/ui/RNNoise.qml:212
 msgid "Empty List"
@@ -2461,34 +2461,36 @@ msgstr "Intervalo de actualizaciones"
 msgid "Related to LV2 plugins."
 msgstr "Relacionado a los plugins LV2."
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:35
-#: src/contents/ui/PresetsAutoloadingPage.qml:171
+#: src/contents/ui/PresetsAutoloadPage.qml:35
+#: src/contents/ui/PresetsAutoloadPage.qml:171
 msgid "Device"
 msgstr "Dispositivo"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:41
-#: src/contents/ui/PresetsAutoloadingPage.qml:215
+#: src/contents/ui/PresetsAutoloadPage.qml:41
+#: src/contents/ui/PresetsAutoloadPage.qml:215
 msgid "Route"
 msgstr "Ruta"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:84
-#: src/contents/ui/PresetsAutoloadingPage.qml:229
+#: src/contents/ui/PresetsAutoloadPage.qml:84
+#: src/contents/ui/PresetsAutoloadPage.qml:229
 msgid "Local preset"
 msgstr "Perfil local"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:95
+#: src/contents/ui/PresetsAutoloadPage.qml:95
 msgid "Create"
 msgstr "Crear"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:97
-msgid "Create a new autoloading preset"
+#: src/contents/ui/PresetsAutoloadPage.qml:97
+#, fuzzy
+msgid "Create a new autoload preset"
 msgstr "Crear nueva regla de carga automática"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:186
-msgid "Remove this autoloading preset"
+#: src/contents/ui/PresetsAutoloadPage.qml:186
+#, fuzzy
+msgid "Remove this autoload preset"
 msgstr "Eliminar esta regla de carga automática"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:200
+#: src/contents/ui/PresetsAutoloadPage.qml:200
 msgid "Description"
 msgstr "Descripción"
 
@@ -2520,7 +2522,8 @@ msgid "Community"
 msgstr "Comunidad"
 
 #: src/contents/ui/PresetsDialog.qml:96
-msgid "Autoloading"
+#, fuzzy
+msgid "Autoload"
 msgstr "Carga automática de perfiles"
 
 #: src/contents/ui/PresetsDialog.qml:135

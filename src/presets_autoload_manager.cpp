@@ -41,8 +41,8 @@ namespace presets {
 
 AutoloadManager::AutoloadManager(DirectoryManager& directory_manager)
     : dir_manager(directory_manager),
-      input_model(new ListModel(this, ListModel::ModelType::Autoloading)),
-      output_model(new ListModel(this, ListModel::ModelType::Autoloading)) {
+      input_model(new ListModel(this, ListModel::ModelType::Autoload)),
+      output_model(new ListModel(this, ListModel::ModelType::Autoload)) {
   refreshListModels();
   prepareFilesystemWatchers();
 }
@@ -60,15 +60,15 @@ void AutoloadManager::prepareFilesystemWatchers() {
   output_watcher.addPath(QString::fromStdString(dir_manager.autoloadOutputDir().string()));
 
   connect(&input_watcher, &QFileSystemWatcher::directoryChanged,
-          [&]() { input_model->update(dir_manager.getAutoloadingProfilesPaths(PipelineType::input)); });
+          [&]() { input_model->update(dir_manager.getAutoloadProfilesPaths(PipelineType::input)); });
 
   connect(&output_watcher, &QFileSystemWatcher::directoryChanged,
-          [&]() { output_model->update(dir_manager.getAutoloadingProfilesPaths(PipelineType::output)); });
+          [&]() { output_model->update(dir_manager.getAutoloadProfilesPaths(PipelineType::output)); });
 }
 
 void AutoloadManager::refreshListModels() {
-  input_model->update(dir_manager.getAutoloadingProfilesPaths(PipelineType::input));
-  output_model->update(dir_manager.getAutoloadingProfilesPaths(PipelineType::output));
+  input_model->update(dir_manager.getAutoloadProfilesPaths(PipelineType::input));
+  output_model->update(dir_manager.getAutoloadProfilesPaths(PipelineType::output));
 }
 
 auto AutoloadManager::getFilePath(const PipelineType& pipeline_type, QString device_name, QString device_route)
@@ -180,8 +180,8 @@ void AutoloadManager::load(const PipelineType& pipeline_type, const QString& dev
     }
 
     if (!fallback.isEmpty()) {
-      util::debug(std::format("Autoloading fallback preset {} for device {}", fallback.toStdString(),
-                              device_name.toStdString()));
+      util::debug(
+          std::format("Autoload fallback preset {} for device {}", fallback.toStdString(), device_name.toStdString()));
 
       Q_EMIT loadFallbackPresetRequested(pipeline_type, fallback);
 
@@ -191,7 +191,7 @@ void AutoloadManager::load(const PipelineType& pipeline_type, const QString& dev
     return;
   }
 
-  util::debug(std::format("Autoloading local preset {} for device {}", name, device_name.toStdString()));
+  util::debug(std::format("Autoload local preset {} for device {}", name, device_name.toStdString()));
 
   Q_EMIT loadPresetRequested(pipeline_type, QString::fromStdString(name));
 }
