@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-12-11 18:06-0300\n"
-"PO-Revision-Date: 2025-12-12 11:00+0000\n"
+"PO-Revision-Date: 2025-12-12 16:01+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -3218,17 +3218,14 @@ msgid "Simple audio effects"
 msgstr "Простые звуковые эффекты"
 
 #: src/contents/ui/PresetsAutoloadPage.qml:97
-#, fuzzy
 msgid "Create a new autoload preset"
 msgstr "Создать новую предустановку автозагрузки"
 
 #: src/contents/ui/PresetsAutoloadPage.qml:186
-#, fuzzy
 msgid "Remove this autoload preset"
 msgstr "Удалить эту предустановку автозагрузки"
 
 #: src/contents/ui/PresetsDialog.qml:96
-#, fuzzy
 msgid "Autoload"
 msgstr "Автозагрузка"
 
