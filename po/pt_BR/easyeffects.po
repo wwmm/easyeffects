@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-12-11 18:06-0300\n"
-"PO-Revision-Date: 2025-12-08 21:56+0000\n"
+"PO-Revision-Date: 2025-12-12 11:00+0000\n"
 "Last-Translator: John Peter Sa <johnppetersa@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "easyeffects/main/pt_BR/>\n"
@@ -66,18 +66,16 @@ msgid "Show available presets."
 msgstr "Exibir as predefinições que estão disponíveis."
 
 #: src/command_line_parser.cpp:50
-#, fuzzy
 msgid "Get the last loaded input/output preset."
-msgstr "Obtenha a predefinição de entrada/saída ativa."
+msgstr "Obtenha a última predefinição de entrada/saída carregada."
 
 #: src/command_line_parser.cpp:50
 msgid "preset-type"
 msgstr "tipo predefinido"
 
 #: src/command_line_parser.cpp:51
-#, fuzzy
 msgid "Get the last loaded input and output presets."
-msgstr "Obtenha as predefinições de entrada e saída ativas."
+msgstr "Obtenha as últimas predefinições de entrada e saída carregadas."
 
 #: src/command_line_parser.cpp:52
 msgid "Deprecated. Use --service-mode instead."
@@ -845,9 +843,8 @@ msgid "Radius"
 msgstr "Raio"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:71
-#, fuzzy
 msgid "Status"
-msgstr "Estado"
+msgstr "Status"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:86
 #: src/contents/ui/PreferencesSheet.qml:46
@@ -855,13 +852,12 @@ msgid "Database"
 msgstr "Banco de dados"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:91
-#, fuzzy
 msgid "Measurements"
-msgstr "Medir Ruído"
+msgstr "Medições"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:96
 msgid "Index"
-msgstr ""
+msgstr "Índice"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:154
 msgid "Apply"
@@ -903,9 +899,8 @@ msgid "Bypass"
 msgstr "Ignorar"
 
 #: src/contents/ui/Crystalizer.qml:83
-#, fuzzy
 msgid "Oversampling quality"
-msgstr "Sobreamostragem"
+msgstr "Qualidade da sobreamostragem"
 
 #: src/contents/ui/Crystalizer.qml:121 src/contents/ui/Limiter.qml:68
 msgid "Oversampling"
@@ -1545,24 +1540,20 @@ msgid "Full x2/24 bits"
 msgstr "Completo x2/24 bits"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x3/16 bits"
-msgstr "Full x3/16 bit"
+msgstr "Bits completos x3/16"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x3/24 bits"
-msgstr "Full x3/24 bit"
+msgstr "Completo x3/24 bits"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x4/16 bits"
-msgstr "Full x4/16 bit"
+msgstr "Completo x4/16 bits"
 
 #: src/contents/ui/Limiter.qml:72
-#, fuzzy
 msgid "Full x4/24 bits"
-msgstr "Full x4/24 bit"
+msgstr "Completo x4/24 bits"
 
 #: src/contents/ui/Limiter.qml:72
 #, fuzzy
@@ -1607,14 +1598,12 @@ msgid "Stereo Link"
 msgstr "Ligação Estéreo"
 
 #: src/contents/ui/Limiter.qml:388 src/contents/ui/Limiter.qml:611
-#, fuzzy
 msgid "Automatic level"
 msgstr "Nível automático"
 
 #: src/contents/ui/Limiter.qml:601
-#, fuzzy
 msgid "Threshold boost"
-msgstr "Limite"
+msgstr "Aumento do limiar"
 
 #: src/contents/ui/Loudness.qml:67
 msgid "Contour"
@@ -1626,29 +1615,27 @@ msgstr "Plano"
 
 #: src/contents/ui/Loudness.qml:71
 msgid "ISO226-2003"
-msgstr ""
+msgstr "ISO226-2003"
 
 #: src/contents/ui/Loudness.qml:71
 msgid "Fletcher-Munson"
-msgstr ""
+msgstr "Fletcher-Munson"
 
 #: src/contents/ui/Loudness.qml:71
 msgid "Robinson-Dadson"
-msgstr ""
+msgstr "Robinson-Dadson"
 
 #: src/contents/ui/Loudness.qml:71
 msgid "ISO226-2023"
-msgstr ""
+msgstr "ISO226-2023"
 
 #: src/contents/ui/Loudness.qml:81
-#, fuzzy
 msgid "FFT size"
-msgstr "Tamanho do FFT"
+msgstr "tamanho da FFT"
 
 #: src/contents/ui/Loudness.qml:95
-#, fuzzy
 msgid "IIR approximation"
-msgstr "Aproximação IIR"
+msgstr "aproximação IIR"
 
 #: src/contents/ui/Loudness.qml:99
 msgid "Fastest"
@@ -1667,7 +1654,6 @@ msgid "Volume"
 msgstr "Volume"
 
 #: src/contents/ui/Loudness.qml:126
-#, fuzzy
 msgid "Clipping range"
 msgstr "Faixa de recorte"
 
@@ -1689,14 +1675,12 @@ msgid "Preset Loaded"
 msgstr "Predefinição carregada"
 
 #: src/contents/ui/Main.qml:313 src/contents/ui/Main.qml:325
-#, fuzzy
 msgid "Clear List"
-msgstr "Lista de Clientes"
+msgstr "Limpar lista"
 
 #: src/contents/ui/Main.qml:314 src/contents/ui/Main.qml:326
-#, fuzzy
 msgid "Are you sure you want to clear this list?"
-msgstr "Tem certeza de que deseja remover esta predefinição da lista?"
+msgstr "Tem certeza de que deseja limpar esta lista?"
 
 #: src/contents/ui/Main.qml:335
 msgid "Input Presets"
@@ -1725,24 +1709,23 @@ msgstr "Desistir"
 
 #: src/contents/ui/Main.qml:435
 msgid "Go back"
-msgstr ""
+msgstr "Volte"
 
 #: src/contents/ui/Main.qml:445 src/contents/ui/PageStreamsEffects.qml:713
 msgid "Effects"
 msgstr "Efeitos"
 
 #: src/contents/ui/Main.qml:446
-#, fuzzy
 msgid "Turn effects on/off"
 msgstr "Ativar/desativar efeitos"
 
 #: src/contents/ui/Main.qml:457
 msgid "Audio effects are enabled."
-msgstr ""
+msgstr "Os efeitos de áudio estão ativados."
 
 #: src/contents/ui/Main.qml:457
 msgid "Audio effects are disabled."
-msgstr ""
+msgstr "Os efeitos de áudio estão desativados."
 
 #: src/contents/ui/Main.qml:513
 msgid "PipeWire"
@@ -1758,17 +1741,15 @@ msgstr "Sobre o Easy Effects"
 
 #: src/contents/ui/MenuAddPlugins.qml:75
 msgid "Add %1"
-msgstr ""
+msgstr "Adicionar %1"
 
 #: src/contents/ui/MenuAddPlugins.qml:147
-#, fuzzy
 msgid "Added a new effect to the pipeline: %1"
 msgstr "Adicionado um novo efeito ao pipeline: %1"
 
 #: src/contents/ui/MultibandCompressor.qml:110
-#, fuzzy
 msgid "Compression mode"
-msgstr "Modo de Compressão"
+msgstr "Modo de compressão"
 
 #: src/contents/ui/MultibandCompressor.qml:217
 #: src/contents/ui/MultibandGate.qml:154
@@ -1777,21 +1758,18 @@ msgstr "Fim"
 
 #: src/contents/ui/MultibandCompressor.qml:500
 #: src/contents/ui/MultibandGate.qml:473
-#, fuzzy
 msgid "Low-cut"
-msgstr "Filtro Corte-Baixo"
+msgstr "corte baixo"
 
 #: src/contents/ui/MultibandCompressor.qml:525
 #: src/contents/ui/MultibandGate.qml:498
-#, fuzzy
 msgid "High-cut"
-msgstr "Filtro Corte-Alto"
+msgstr "Corte-Alto"
 
 #: src/contents/ui/MultibandCompressor.qml:557
 #: src/contents/ui/MultibandGate.qml:530
-#, fuzzy
 msgid "Operating mode"
-msgstr "Modo Operacional"
+msgstr "Modo de operação"
 
 #: src/contents/ui/MultibandCompressor.qml:561
 #: src/contents/ui/MultibandGate.qml:534
@@ -1805,15 +1783,13 @@ msgstr "Moderno"
 
 #: src/contents/ui/MultibandCompressor.qml:561
 #: src/contents/ui/MultibandGate.qml:534
-#, fuzzy
 msgid "Linear phase"
-msgstr "Fase Linear"
+msgstr "Fase linear"
 
 #: src/contents/ui/MultibandCompressor.qml:570
 #: src/contents/ui/MultibandGate.qml:543
-#, fuzzy
 msgid "Sidechain boost"
-msgstr "Impulso de Cadeia Lateral"
+msgstr "Aumento da cadeia lateral"
 
 #: src/contents/ui/MultibandCompressor.qml:574
 #: src/contents/ui/MultibandGate.qml:547
@@ -1837,32 +1813,28 @@ msgstr "Marrom MT"
 
 #: src/contents/ui/MultibandCompressor.qml:584
 #: src/contents/ui/MultibandGate.qml:557
-#, fuzzy
 msgid "Sidechain input device"
-msgstr "Dispositivo de entrada de cadeia lateral"
+msgstr "dispositivo de entrada de sidechain"
 
 #: src/contents/ui/MultibandGate.qml:180
 msgid "Reaction"
 msgstr "Reação"
 
 #: src/contents/ui/PageStreamsEffects.qml:80
-#, fuzzy
 msgid "No audio application available"
-msgstr "Nenhum aplicativo de áudio está disponível"
+msgstr "Não há aplicativo de áudio disponível"
 
 #: src/contents/ui/PageStreamsEffects.qml:95
 msgid "No Effects"
 msgstr "Sem Efeitos"
 
 #: src/contents/ui/PageStreamsEffects.qml:96
-#, fuzzy
 msgid "Audio stream not modified"
-msgstr "O Fluxo de Áudio Não Foi Alterado"
+msgstr "Fluxo de áudio não modificado"
 
 #: src/contents/ui/PageStreamsEffects.qml:346
-#, fuzzy
 msgid "Add effect"
-msgstr "Adicionar um Efeito"
+msgstr "Adicionar efeito"
 
 #: src/contents/ui/PageStreamsEffects.qml:354
 msgid "Close"
@@ -1870,11 +1842,11 @@ msgstr "Fechar"
 
 #: src/contents/ui/PageStreamsEffects.qml:358
 msgid "Expand the list of effects pipeline"
-msgstr ""
+msgstr "Expanda a lista de pipelines de efeitos"
 
 #: src/contents/ui/PageStreamsEffects.qml:358
 msgid "Reduce the list of effects pipeline"
-msgstr ""
+msgstr "Reduzir a lista de efeitos no pipeline"
 
 #: src/contents/ui/PageStreamsEffects.qml:411
 #: src/contents/ui/PageStreamsEffects.qml:700
@@ -1891,14 +1863,12 @@ msgid "Recorders"
 msgstr "Gravadores"
 
 #: src/contents/ui/PageStreamsEffects.qml:731
-#, fuzzy
 msgid "Input monitoring"
 msgstr "Monitoramento de entrada"
 
 #: src/contents/ui/PageStreamsEffects.qml:744
-#, fuzzy
 msgid "Excluded apps"
-msgstr "Aplicativos Excluídos"
+msgstr "Aplicativos excluídos"
 
 #: src/contents/ui/PipeWirePage.qml:25
 msgid "General"
@@ -1930,9 +1900,8 @@ msgstr ""
 "do Sistema Plasma)"
 
 #: src/contents/ui/PipeWirePage.qml:121
-#, fuzzy
 msgid "Use default input"
-msgstr "Utilizar a Entrada Padrão"
+msgstr "Usar entrada padrão"
 
 #: src/contents/ui/PipeWirePage.qml:135 src/contents/ui/PipeWirePage.qml:179
 msgid "Name"
@@ -1947,39 +1916,32 @@ msgid "Server Information"
 msgstr "Informações do Servidor"
 
 #: src/contents/ui/PipeWirePage.qml:208
-#, fuzzy
 msgid "Header version"
-msgstr "Versão do Cabeçalho"
+msgstr "Versão do cabeçalho"
 
 #: src/contents/ui/PipeWirePage.qml:213
-#, fuzzy
 msgid "Library version"
-msgstr "Versão da Biblioteca"
+msgstr "Versão para biblioteca"
 
 #: src/contents/ui/PipeWirePage.qml:218
-#, fuzzy
 msgid "Runtime version"
 msgstr "Versão de tempo de execução"
 
 #: src/contents/ui/PipeWirePage.qml:223
-#, fuzzy
 msgid "Default sampling rate"
 msgstr "Taxa de amostragem padrão"
 
 #: src/contents/ui/PipeWirePage.qml:228
-#, fuzzy
 msgid "Minimum quantum"
-msgstr "Quântico Mínimo"
+msgstr "Quantum mínimo"
 
 #: src/contents/ui/PipeWirePage.qml:233
-#, fuzzy
 msgid "Maximum quantum"
-msgstr "Quântico Máximo"
+msgstr "Quantum máximo"
 
 #: src/contents/ui/PipeWirePage.qml:238
-#, fuzzy
 msgid "Default quantum"
-msgstr "Quântico Padrão"
+msgstr "Quantum padrão"
 
 #: src/contents/ui/PipeWirePage.qml:260
 msgid "No Modules"
@@ -2008,34 +1970,28 @@ msgid "Waveform"
 msgstr "Forma de Onda"
 
 #: src/contents/ui/PipeWirePage.qml:363
-#, fuzzy
 msgid "Sine wave"
-msgstr "Onda Senoidal"
+msgstr "Onda senoidal"
 
 #: src/contents/ui/PipeWirePage.qml:374
-#, fuzzy
 msgid "White noise"
 msgstr "Ruído Branco"
 
 #: src/contents/ui/PipeWirePage.qml:385
-#, fuzzy
 msgid "Pink noise"
 msgstr "Ruído Rosa"
 
 #: src/contents/ui/Pitch.qml:50
-#, fuzzy
 msgid "Sequence length"
-msgstr "Escopo de Frequências"
+msgstr "Comprimento da sequência"
 
 #: src/contents/ui/Pitch.qml:67
-#, fuzzy
 msgid "Seek window"
 msgstr "Janela de Busca"
 
 #: src/contents/ui/Pitch.qml:85
-#, fuzzy
 msgid "Overlap length"
-msgstr "Comprimento do Filtro"
+msgstr "Comprimento de sobreposição"
 
 #: src/contents/ui/Pitch.qml:144 src/tags_plugin_name.cpp:48
 msgid "Pitch"
@@ -2054,17 +2010,14 @@ msgid "Semitones"
 msgstr "Semitons"
 
 #: src/contents/ui/Pitch.qml:203
-#, fuzzy
 msgid "Tempo difference"
-msgstr "Referência"
+msgstr "diferença de tempo"
 
 #: src/contents/ui/Pitch.qml:220
-#, fuzzy
 msgid "Rate difference"
-msgstr "Referência"
+msgstr "Diferença de taxas"
 
 #: src/contents/ui/Pitch.qml:270
-#, fuzzy
 msgid "Quick seek"
 msgstr "Busca Rápida"
 
@@ -2073,13 +2026,12 @@ msgid "Anti-aliasing"
 msgstr "Anti-Distorção"
 
 #: src/contents/ui/PluginNotAvailable.qml:14
-#, fuzzy
 msgid "Effect Not Available"
-msgstr "O Efeito {} Não Está Disponível"
+msgstr "Efeito não disponível"
 
 #: src/contents/ui/PluginNotAvailable.qml:15
 msgid "%1 cannot be used because %2 is not installed on the system."
-msgstr ""
+msgstr "%1 não pode ser usado porque %2 não está instalado no sistema."
 
 #: src/contents/ui/PreferencesSheet.qml:16
 msgid "Background Service"
@@ -2102,33 +2054,30 @@ msgid "Experimental Features"
 msgstr "Recursos Experimentais"
 
 #: src/contents/ui/PreferencesSheet.qml:65
-#, fuzzy
 msgid "Enable service mode"
-msgstr "Habilitar modo de serviço"
+msgstr "Ativar o modo de serviço"
 
 #: src/contents/ui/PreferencesSheet.qml:66
-#, fuzzy
 msgid "Easy Effects is active in background when the window is closed."
-msgstr "Easy Effects fica ativo em segundo plano quando a janela é fechada"
+msgstr ""
+"O Easy Effects permanece ativo em segundo plano mesmo quando a janela está "
+"fechada."
 
 #: src/contents/ui/PreferencesSheet.qml:78
-#, fuzzy
 msgid "Autostart on login"
-msgstr "Início automático no login"
+msgstr "Iniciar automaticamente ao iniciar sessão"
 
 #: src/contents/ui/PreferencesSheet.qml:79
-#, fuzzy
 msgid "Easy Effects is launched at user session startup."
-msgstr "Easy Effects é lançado na inicialização da sessão do usuário"
+msgstr "O Easy Effects é iniciado ao abrir a sessão do usuário."
 
 #: src/contents/ui/PreferencesSheet.qml:92
-#, fuzzy
 msgid "Show the tray icon"
 msgstr "Mostrar o ícone da bandeja"
 
 #: src/contents/ui/PreferencesSheet.qml:105
 msgid "Do not show the application window"
-msgstr ""
+msgstr "Não mostrar a janela do aplicativo"
 
 #: src/contents/ui/PreferencesSheet.qml:106
 msgid ""
@@ -2136,26 +2085,25 @@ msgid ""
 "should not be enabled. It is intended only as a workaround for systems that "
 "do not work well with the autostart of Easy Effects."
 msgstr ""
+"Não mostrar a janela ao iniciar o aplicativo. Em geral, esta opção não deve "
+"ser ativada. Ela serve apenas como uma solução alternativa para sistemas que "
+"não funcionam bem com a inicialização automática do Easy Effects."
 
 #: src/contents/ui/PreferencesSheet.qml:126
-#, fuzzy
 msgid "Process all output streams"
-msgstr "Processar Todos os Fluxos de Saídas"
+msgstr "Processar todos os fluxos de saída"
 
 #: src/contents/ui/PreferencesSheet.qml:138
-#, fuzzy
 msgid "Process all input streams"
-msgstr "Processar Todos os Fluxos de Entradas"
+msgstr "Processar todos os fluxos de entrada"
 
 #: src/contents/ui/PreferencesSheet.qml:150
-#, fuzzy
 msgid "Ignore streams from monitor of devices"
-msgstr "Ignorar os Fluxos do Monitor de Dispositivos"
+msgstr "Ignorar fluxos do monitor de dispositivos"
 
 #: src/contents/ui/PreferencesSheet.qml:162
-#, fuzzy
 msgid "Use cubic volume"
-msgstr "Utilizar o Volume Cúbico"
+msgstr "Use o volume cúbico"
 
 #: src/contents/ui/PreferencesSheet.qml:163
 msgid ""
@@ -2163,92 +2111,84 @@ msgid ""
 "percentages results in a lower perceived volume while the loudness appears "
 "to change more evenly across the slider."
 msgstr ""
+"Use uma escala cúbica para o volume do fluxo em vez da escala linear. "
+"Percentagens baixas resultam num volume percebido mais baixo, enquanto a "
+"intensidade sonora parece variar de forma mais uniforme ao longo do controle "
+"deslizante."
 
 #: src/contents/ui/PreferencesSheet.qml:175
-#, fuzzy
 msgid "Ignore system notifications"
-msgstr "Ignorar Notificações do Sistema"
+msgstr "Ignorar notificações do sistema"
 
 #: src/contents/ui/PreferencesSheet.qml:176
-#, fuzzy
 msgid ""
 "Processing system notifications may cause crackling sound, so it would be "
 "better to ignore them, but for some presets it may be recommended since they "
 "could sound too loud."
 msgstr ""
-"O processamento de notificações do sistema pode causar estalos no som, "
-"portanto, é melhor ignorá-las. No entanto, para alguns presets, pode ser "
-"recomendado ativá-las, já que elas poderiam soar muito altas."
+"O processamento de notificações do sistema pode causar ruídos estalados, "
+"portanto, é melhor ignorá-las, mas para algumas predefinições pode ser "
+"recomendável, já que o som pode ficar muito alto."
 
 #: src/contents/ui/PreferencesSheet.qml:188
-#, fuzzy
 msgid "Enable/disable input monitoring"
-msgstr "Habilitar/Desabilitar Monitoramento de Entrada"
+msgstr "Ativar/desativar monitoramento de entrada"
 
 #: src/contents/ui/PreferencesSheet.qml:200
-#, fuzzy
 msgid "Mic monitor plays to output effects pipeline"
-msgstr "Monitor de microfone reproduz efeitos de saída no pipeline"
+msgstr "O monitor de microfone reproduz o sinal na saída do pipeline de efeitos"
 
 #: src/contents/ui/PreferencesSheet.qml:212
-#, fuzzy
 msgid "Enable the inactivity timeout"
-msgstr "Habilitar o tempo limite de inatividade"
+msgstr "Ative o tempo limite de inatividade"
 
 #: src/contents/ui/PreferencesSheet.qml:213
-#, fuzzy
 msgid ""
 "When all streams are inactive, Easy Effects pipeline remains loaded for an "
 "extra amount of time."
 msgstr ""
-"Quando todos os fluxos estão inativos, o Easy Effects Pipeline permanece "
-"carregado por um período extra de tempo"
+"Quando todos os fluxos estão inativos, o pipeline do Easy Effects permanece "
+"carregado por um período adicional de tempo."
 
 #: src/contents/ui/PreferencesSheet.qml:225
-#, fuzzy
 msgid "Inactivity timeout"
-msgstr "Tempo Limite de Inatividade"
+msgstr "Tempo limite de inatividade"
 
 #: src/contents/ui/PreferencesSheet.qml:240
-#, fuzzy
 msgid "Level meters frame rate cap"
-msgstr "Ativar ou desativar este aplicativo"
+msgstr "medidores de nível limite de taxa de quadros"
 
 #: src/contents/ui/PreferencesSheet.qml:241
 msgid "Maximum level meter update rate."
-msgstr ""
+msgstr "Taxa máxima de atualização do medidor de nível."
 
 #: src/contents/ui/PreferencesSheet.qml:255
-#, fuzzy
 msgid "Level meters label"
 msgstr "Etiqueta dos medidores de nível"
 
 #: src/contents/ui/PreferencesSheet.qml:256
-#, fuzzy
 msgid ""
 "The time it takes for the level meter labels to be updated when the current "
 "level is below the last highest one."
 msgstr ""
-"O tempo que leva para os rótulos do medidor de nível serem atualizados "
-"quando o nível atual está abaixo do último mais alto"
+"O tempo necessário para que os rótulos do medidor de nível sejam atualizados "
+"quando o nível atual estiver abaixo do último nível mais alto."
 
 #: src/contents/ui/PreferencesSheet.qml:273
-#, fuzzy
 msgid "Enable level meters animation"
-msgstr "Ativar ou desativar este aplicativo"
+msgstr "Ativar animação dos medidores de nível"
 
 #: src/contents/ui/PreferencesSheet.qml:282
 msgid "Level meters animation duration"
-msgstr ""
+msgstr "duração da animação dos medidores de nível"
 
 #: src/contents/ui/PreferencesSheet.qml:320
-#, fuzzy
 msgid "Audio delay compensation"
 msgstr "Compensação de atraso de áudio"
 
 #: src/contents/ui/PreferencesSheet.qml:335
 msgid "Graph"
-msgstr ""
+msgstr "Gráfico"
 
 #: src/contents/ui/PreferencesSheet.qml:342
 msgid "Shape"
@@ -2271,12 +2211,10 @@ msgid "Area"
 msgstr "Área"
 
 #: src/contents/ui/PreferencesSheet.qml:356
-#, fuzzy
 msgid "Dynamic scale"
 msgstr "Escala Dinâmica"
 
 #: src/contents/ui/PreferencesSheet.qml:368
-#, fuzzy
 msgid "Logarithmic frequency axis"
 msgstr "Eixo de frequência logarítmica"
 
@@ -2290,16 +2228,15 @@ msgstr "Altura"
 
 #: src/contents/ui/PreferencesSheet.qml:402
 msgid "px"
-msgstr ""
+msgstr "px"
 
 #: src/contents/ui/PreferencesSheet.qml:409
-#, fuzzy
 msgid "Spectrum frame rate cap"
-msgstr "Ativar ou desativar este aplicativo"
+msgstr "Limite de taxa de quadros do espectro"
 
 #: src/contents/ui/PreferencesSheet.qml:410
 msgid "Maximum spectrum update rate."
-msgstr ""
+msgstr "Taxa máxima de atualização do espectro."
 
 #: src/contents/ui/PreferencesSheet.qml:425
 msgid "Frequency Range"
@@ -2314,49 +2251,49 @@ msgid "Maximum"
 msgstr "Máximo"
 
 #: src/contents/ui/PreferencesSheet.qml:470
-#, fuzzy
 msgid "Database autosave interval"
 msgstr "Intervalo de salvamento automático do banco de dados"
 
 #: src/contents/ui/PreferencesSheet.qml:484
-#, fuzzy
 msgid "Most used presets"
-msgstr "Predefinições de alimentação cruzada"
+msgstr "Predefinições mais usadas"
 
 #: src/contents/ui/PreferencesSheet.qml:502
 msgid "Window"
-msgstr ""
+msgstr "Janela"
 
 #: src/contents/ui/PreferencesSheet.qml:511
 msgid "Force KDE's Breeze theme when Easy Effects starts"
-msgstr ""
+msgstr "Forçar o tema KDE Breeze ao iniciar o Easyeffects"
 
 #: src/contents/ui/PreferencesSheet.qml:512
 msgid ""
 "It is necessary to restart the service for changes in this setting to take "
 "effect."
 msgstr ""
+"É necessário reiniciar o serviço para que as alterações nesta configuração "
+"entrem em vigor."
 
 #: src/contents/ui/PreferencesSheet.qml:525
-#, fuzzy
 msgid "Reduce effects list controls"
-msgstr "Exibir ou ocultar a lista de efeitos"
+msgstr "Reduzir controles da lista de efeitos"
 
 #: src/contents/ui/PreferencesSheet.qml:526
 msgid ""
 "Action buttons in the effects list are moved inside a context menu for a "
 "more compact view."
 msgstr ""
+"Os botões de ação na lista de efeitos foram movidos para dentro de um menu "
+"de contexto para uma visualização mais compacta."
 
 #: src/contents/ui/PreferencesSheet.qml:537
 #: src/contents/ui/PreferencesSheet.qml:561
-#, fuzzy
 msgid "Color scheme"
 msgstr "Esquema de cores"
 
 #: src/contents/ui/PreferencesSheet.qml:550
 msgid "Graphs"
-msgstr ""
+msgstr "Gráficos"
 
 #: src/contents/ui/PreferencesSheet.qml:565
 msgid "Automatic"
@@ -2371,7 +2308,6 @@ msgid "Dark"
 msgstr "Escuro"
 
 #: src/contents/ui/PreferencesSheet.qml:576
-#, fuzzy
 msgid "Color theme"
 msgstr "Tema de cores"
 
@@ -2380,7 +2316,6 @@ msgid "Green"
 msgstr "Verde"
 
 #: src/contents/ui/PreferencesSheet.qml:580
-#, fuzzy
 msgid "Green neon"
 msgstr "Neon Verde"
 
@@ -2410,49 +2345,45 @@ msgstr "Cinza"
 
 #: src/contents/ui/PreferencesSheet.qml:580
 msgid "User"
-msgstr ""
+msgstr "Usuário"
 
 #: src/contents/ui/PreferencesSheet.qml:588
-#, fuzzy
 msgctxt "@label"
 msgid "Background"
-msgstr "Serviço de fundo"
+msgstr "Fundo"
 
 #: src/contents/ui/PreferencesSheet.qml:597
 msgctxt "@label"
 msgid "Plot area background"
-msgstr ""
+msgstr "Fundo da área do terreno"
 
 #: src/contents/ui/PreferencesSheet.qml:606
 msgctxt "@label"
 msgid "Series colors"
-msgstr ""
+msgstr "Cores da série"
 
 #: src/contents/ui/PreferencesSheet.qml:615
-#, fuzzy
 msgctxt "@label"
 msgid "Axis labels text color"
-msgstr "Rótulos dos Eixos"
+msgstr "Cor do texto dos rótulos dos eixos"
 
 #: src/contents/ui/PreferencesSheet.qml:624
 msgctxt "@label"
 msgid "Axis labels background color"
-msgstr ""
+msgstr "Cor de fundo dos rótulos dos eixos"
 
 #: src/contents/ui/PreferencesSheet.qml:633
-#, fuzzy
 msgctxt "@label"
 msgid "Border color"
-msgstr "Borda"
+msgstr "Cor da borda"
 
 #: src/contents/ui/PreferencesSheet.qml:642
-#, fuzzy
 msgid "Line width"
-msgstr "Largura da Linha"
+msgstr "Largura da linha"
 
 #: src/contents/ui/PreferencesSheet.qml:656
 msgid "Show grid lines"
-msgstr ""
+msgstr "Mostrar linhas de grade"
 
 #: src/contents/ui/PreferencesSheet.qml:674
 msgid "Autoload delay"
@@ -2466,46 +2397,41 @@ msgstr ""
 "definição de carregamento automático."
 
 #: src/contents/ui/PreferencesSheet.qml:691
-#, fuzzy
 msgid "Ignore the blocklist from presets"
-msgstr "Adicionar à Lista de Bloqueio"
+msgstr "Ignore a lista de bloqueio das predefinições"
 
 #: src/contents/ui/PreferencesSheet.qml:692
 msgid ""
 "If enabled, the list of excluded apps set in the loaded preset is ignored "
 "and does not replace the one set by the user."
 msgstr ""
+"Se ativada, a lista de aplicativos excluídos definida na predefinição "
+"carregada é ignorada e não substitui a lista definida pelo usuário."
 
 #: src/contents/ui/PreferencesSheet.qml:713
-#, fuzzy
 msgid "Global shortcuts"
 msgstr "Atalhos globais"
 
 #: src/contents/ui/PreferencesSheet.qml:714
-#, fuzzy
 msgid "Enables support for XDG global shortcuts."
-msgstr "Habilita suporte para atalhos globais do XDG"
+msgstr "Habilita o suporte para atalhos globais XDG."
 
 #: src/contents/ui/PreferencesSheet.qml:726
-#, fuzzy
 msgid "Native window of effects"
 msgstr "Janela Nativa de Efeitos"
 
 #: src/contents/ui/PreferencesSheet.qml:727
-#, fuzzy
 msgid "Allows the native user interface of effects to be shown/hidden."
 msgstr ""
-"Permite que a interface nativa do usuário dos efeitos seja mostrada/ocultada"
+"Permite que a interface nativa do usuário com efeitos seja exibida/ocultada."
 
 #: src/contents/ui/PreferencesSheet.qml:739
-#, fuzzy
 msgid "Update frequency"
-msgstr "Frequência das Atualizações"
+msgstr "Frequência de atualização"
 
 #: src/contents/ui/PreferencesSheet.qml:740
-#, fuzzy
 msgid "Related to LV2 plugins."
-msgstr "Relacionado ao Módulo de Extensão LV2"
+msgstr "Relacionado aos plugins LV2."
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:35
 #: src/contents/ui/PresetsAutoloadingPage.qml:171
@@ -2515,11 +2441,10 @@ msgstr "Dispositivo"
 #: src/contents/ui/PresetsAutoloadingPage.qml:41
 #: src/contents/ui/PresetsAutoloadingPage.qml:215
 msgid "Route"
-msgstr ""
+msgstr "Rota"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:84
 #: src/contents/ui/PresetsAutoloadingPage.qml:229
-#, fuzzy
 msgid "Local preset"
 msgstr "Predefinição local"
 
@@ -2528,14 +2453,12 @@ msgid "Create"
 msgstr "Criar"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:97
-#, fuzzy
 msgid "Create a new autoloading preset"
-msgstr "Remover as Predefinições que Foram Carregadas Automaticamente"
+msgstr "Criar uma nova predefinição de carregamento automático"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:186
-#, fuzzy
 msgid "Remove this autoloading preset"
-msgstr "Remover as Predefinições que Foram Carregadas Automaticamente"
+msgstr "Remova esta predefinição de carregamento automático"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:200
 msgid "Description"
@@ -2546,19 +2469,16 @@ msgid "Refresh"
 msgstr "Atualizar"
 
 #: src/contents/ui/PresetsCommunityPage.qml:119
-#, fuzzy
 msgid "Copy to local presets"
-msgstr "Copiar para a lista local"
+msgstr "Copiar para predefinições locais"
 
 #: src/contents/ui/PresetsCommunityPage.qml:124
-#, fuzzy
 msgid "Imported the %1 community preset to the list of local presets."
 msgstr ""
-"Importou a Predefinição da Comunidade %1 para a Lista de Predefinições "
-"Locais."
+"A predefinição da comunidade %1 foi importada para a lista de predefinições "
+"locais."
 
 #: src/contents/ui/PresetsCommunityPage.qml:126
-#, fuzzy
 msgid "Failed to import the %1 community preset to the list of local presets."
 msgstr ""
 "Falha ao importar a predefinição da comunidade %1 para a lista de "
@@ -2577,21 +2497,18 @@ msgid "Autoloading"
 msgstr "Carregamento automático"
 
 #: src/contents/ui/PresetsDialog.qml:135
-#, fuzzy
 msgid "No preset loaded"
-msgstr "Nenhuma Predefinição Foi Carregada"
+msgstr "Nenhuma predefinição carregada"
 
 #: src/contents/ui/PresetsDialog.qml:155
 msgid "Fallback Preset"
 msgstr "Predefinição de fallback"
 
 #: src/contents/ui/PresetsLocalPage.qml:34
-#, fuzzy
 msgid "Imported a new local preset from an external file."
-msgstr "Importou uma nova predefinição local de um arquivo externo."
+msgstr "Importei uma nova predefinição local a partir de um arquivo externo."
 
 #: src/contents/ui/PresetsLocalPage.qml:36
-#, fuzzy
 msgid "Failed to import a new local preset from an external file."
 msgstr "Falha ao importar uma nova predefinição local de um arquivo externo."
 
@@ -2600,64 +2517,54 @@ msgid "Export Presets"
 msgstr "Exportar Predefinições"
 
 #: src/contents/ui/PresetsLocalPage.qml:48
-#, fuzzy
 msgid "Exported all presets to an external folder."
-msgstr "Exportar todas as predefinições para uma pasta externa."
+msgstr "Exporte todas as predefinições para uma pasta externa."
 
 #: src/contents/ui/PresetsLocalPage.qml:50
-#, fuzzy
 msgid "Failed to export all presets to an external folder."
 msgstr "Falha ao exportar todas as predefinições para uma pasta externa."
 
 #: src/contents/ui/PresetsLocalPage.qml:65
-#, fuzzy
 msgid "New preset name"
-msgstr "Novo Nome da Predefinição"
+msgstr "Novo nome predefinido"
 
 #: src/contents/ui/PresetsLocalPage.qml:81
-#, fuzzy
 msgid "Import preset file"
 msgstr "Importar arquivo predefinido"
 
 #: src/contents/ui/PresetsLocalPage.qml:90
-#, fuzzy
 msgid "Create new preset"
-msgstr "Criar predefinição"
+msgstr "Criar nova predefinição"
 
 #: src/contents/ui/PresetsLocalPage.qml:100
-#, fuzzy
 msgid "Created a new local preset: %1"
-msgstr "Criar uma nova predefinição local: %1"
+msgstr "Criada uma nova predefinição local: %1"
 
 #: src/contents/ui/PresetsLocalPage.qml:104
-#, fuzzy
 msgid "Failed to create a new local preset: %1"
 msgstr "Falha ao criar uma nova predefinição local: %1"
 
 #: src/contents/ui/PresetsLocalPage.qml:132
-#, fuzzy
 msgid "Export presets"
-msgstr "Exportar Predefinições"
+msgstr "Exportar predefinições"
 
 #: src/contents/ui/PresetsLocalPage.qml:193
-#, fuzzy
 msgid "Save Preset"
-msgstr "Remover predefinição"
+msgstr "Salvar predefinição"
 
 #: src/contents/ui/PresetsLocalPage.qml:194
-#, fuzzy
 msgid ""
 "Save current settings to the preset:\n"
 "%1"
-msgstr "Salvar configurações nesta predefinição"
+msgstr ""
+"Salvar as configurações atuais na predefinição:\n"
+"%1"
 
 #: src/contents/ui/PresetsLocalPage.qml:198
-#, fuzzy
 msgid "Saved the current settings to %1 local preset."
-msgstr "Salvou as configurações atuais em %1 Predefinição local."
+msgstr "As configurações atuais foram salvas na predefinição local %1."
 
 #: src/contents/ui/PresetsLocalPage.qml:200
-#, fuzzy
 msgid "Failed to save the current settings to %1 local preset."
 msgstr "Falha ao salvar as configurações atuais na predefinição local %1."
 
@@ -2666,20 +2573,20 @@ msgid "Remove Preset"
 msgstr "Remover predefinição"
 
 #: src/contents/ui/PresetsLocalPage.qml:209
-#, fuzzy
 msgid ""
 "Are you sure you want to remove the preset\n"
 "%1\n"
 "from the list?"
-msgstr "Tem certeza de que deseja remover esta predefinição da lista?"
+msgstr ""
+"Tem certeza de que deseja remover a predefinição\n"
+"%1\n"
+"da lista?"
 
 #: src/contents/ui/PresetsLocalPage.qml:213
-#, fuzzy
 msgid "Removed the %1 local preset."
-msgstr "Removida a predefinição local %1."
+msgstr "Removi a predefinição local %1."
 
 #: src/contents/ui/PresetsLocalPage.qml:215
-#, fuzzy
 msgid "Failed to remove the %1 local preset."
 msgstr "Falha ao remover a predefinição local %1."
 
@@ -2692,12 +2599,10 @@ msgid "Rename"
 msgstr "Renomear"
 
 #: src/contents/ui/PresetsLocalPage.qml:237
-#, fuzzy
 msgid "Renamed the %1 local preset to %2"
-msgstr "Renomeou a predefinição local %1 para %2"
+msgstr "Renomeei a predefinição local %1 para %2"
 
 #: src/contents/ui/PresetsLocalPage.qml:240
-#, fuzzy
 msgid "Failed to rename the %1 local preset to %2"
 msgstr "Falha ao renomear a predefinição local %1 para %2"
 
@@ -2706,22 +2611,18 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 #: src/contents/ui/PresetsLocalPage.qml:285
-#, fuzzy
 msgid "Save settings to this preset"
 msgstr "Salvar configurações nesta predefinição"
 
 #: src/contents/ui/PresetsLocalPage.qml:293
-#, fuzzy
 msgid "Rename this preset"
 msgstr "Renomear esta Predefinição"
 
 #: src/contents/ui/PresetsLocalPage.qml:301
-#, fuzzy
 msgid "Delete this preset"
 msgstr "Excluir esta predefinição"
 
 #: src/contents/ui/Reverb.qml:47
-#, fuzzy
 msgid "Room size"
 msgstr "Tamanho do Quarto"
 
@@ -2750,12 +2651,10 @@ msgid "Experimental"
 msgstr "Experimental"
 
 #: src/contents/ui/Reverb.qml:60
-#, fuzzy
 msgid "Decay time"
 msgstr "Tempo de Decaimento"
 
 #: src/contents/ui/Reverb.qml:76
-#, fuzzy
 msgid "Pre delay"
 msgstr "Pré Atraso"
 
@@ -2764,17 +2663,14 @@ msgid "Diffusion"
 msgstr "Difusão"
 
 #: src/contents/ui/Reverb.qml:118
-#, fuzzy
 msgid "High frequency damping"
 msgstr "Amortecimento de Alta Frequência"
 
 #: src/contents/ui/Reverb.qml:135
-#, fuzzy
 msgid "Bass cut"
 msgstr "Corte do Grave"
 
 #: src/contents/ui/Reverb.qml:152
-#, fuzzy
 msgid "Treble cut"
 msgstr "Corte do Agudo"
 
@@ -2787,7 +2683,6 @@ msgid "Ambience"
 msgstr "Ambiente"
 
 #: src/contents/ui/Reverb.qml:228
-#, fuzzy
 msgid "Empty walls"
 msgstr "Paredes Vazias"
 
@@ -2796,7 +2691,6 @@ msgid "Room"
 msgstr "Quarto"
 
 #: src/contents/ui/Reverb.qml:258
-#, fuzzy
 msgid "Large empty hall"
 msgstr "Grande Salão Vazio"
 
@@ -2805,28 +2699,23 @@ msgid "Disco"
 msgstr "Discoteca"
 
 #: src/contents/ui/Reverb.qml:278
-#, fuzzy
 msgid "Large occupied hall"
 msgstr "Grande Salão Ocupado"
 
 #: src/contents/ui/RNNoise.qml:44
-#, fuzzy
 msgid "Imported a new RNNoise model file."
 msgstr "Importou um novo arquivo de modelo RNNoise."
 
 #: src/contents/ui/RNNoise.qml:46
-#, fuzzy
 msgid "Failed to import the RNNoise model file."
 msgstr "Falha ao importar o arquivo do modelo RNNoise."
 
 #: src/contents/ui/RNNoise.qml:57 src/contents/ui/RNNoise.qml:68
 #: src/contents/ui/RNNoise.qml:282 src/contents/ui/RNNoise.qml:284
-#, fuzzy
 msgid "Standard RNNoise model"
-msgstr "Modelo Padrão de Ruído do RNNoise"
+msgstr "Modelo RNNoise padrão"
 
 #: src/contents/ui/RNNoise.qml:59
-#, fuzzy
 msgid "Standard RNNoise model loaded."
 msgstr "Modelo RNNoise padrão carregado."
 
@@ -2835,17 +2724,16 @@ msgid "Using %1 Model"
 msgstr "Usando o modelo %1"
 
 #: src/contents/ui/RNNoise.qml:66
-#, fuzzy
 msgid "Loaded the %1 RNNoise model."
-msgstr "Carregou o modelo %1 RNNoise."
+msgstr "O modelo RNNoise %1 foi carregado."
 
 #: src/contents/ui/RNNoise.qml:70
-#, fuzzy
 msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
-msgstr "Falha ao carregar o modelo %1. Retornar ao modelo RNNoise padrão."
+msgstr ""
+"Falha ao carregar o modelo %1. Utilizando o modelo RNNoise padrão como "
+"alternativa."
 
 #: src/contents/ui/RNNoise.qml:89 src/contents/ui/Speex.qml:98
-#, fuzzy
 msgid "Voice detection"
 msgstr "Detecção da Voz"
 
