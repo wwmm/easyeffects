@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-12-11 18:06-0300\n"
-"PO-Revision-Date: 2025-12-09 17:00+0000\n"
+"PO-Revision-Date: 2025-12-12 11:00+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hans/>\n"
@@ -852,7 +852,6 @@ msgid "Measurements"
 msgstr "测量"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:96
-#, fuzzy
 msgid "Index"
 msgstr "索引"
 
@@ -896,9 +895,8 @@ msgid "Bypass"
 msgstr "旁通"
 
 #: src/contents/ui/Crystalizer.qml:83
-#, fuzzy
 msgid "Oversampling quality"
-msgstr "超采样"
+msgstr "超采样质量"
 
 #: src/contents/ui/Crystalizer.qml:121 src/contents/ui/Limiter.qml:68
 msgid "Oversampling"
