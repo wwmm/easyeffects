@@ -13,6 +13,18 @@ Description:
 - 
 
 ---
+Version: 8.0.8
+Date: 2025-12-12
+
+Description: 
+- Features∶
+
+- Bug fixes∶
+- The last crystalizer changes could make EasyEffects crash when PipeWire used the maximum possible latency value. Almost never PipeWire actually does that but it is better to be in the safe side.
+
+- Other notes∶
+
+---
 Version: 8.0.7
 Date: 2025-12-12
 

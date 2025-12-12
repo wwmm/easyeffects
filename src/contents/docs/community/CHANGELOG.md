@@ -1,5 +1,17 @@
 # Changelog
  
+## 8.0.8
+### 2025-12-12
+
+ 
+### Features:
+
+### Bug fixes:
+- The last crystalizer changes could make EasyEffects crash when PipeWire used the maximum possible latency value. Almost never PipeWire actually does that but it is better to be in the safe side.
+
+### Other notes:
+
+ 
 ## 8.0.7
 ### 2025-12-12
 

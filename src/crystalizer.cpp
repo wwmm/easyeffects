@@ -189,7 +189,8 @@ void Crystalizer::setup() {
           }
         }
 
-        blocksize = std::max<uint>(blocksize, 64);  // zita does not work with less than 64
+        blocksize = std::max<uint>(blocksize, 64);    // zita does not work with less than 64
+        blocksize = std::min<uint>(blocksize, 8192);  // zita does not work with more that 8192
 
         util::debug(std::format("{}{} blocksize: {}", log_tag, name.toStdString(), blocksize));
 

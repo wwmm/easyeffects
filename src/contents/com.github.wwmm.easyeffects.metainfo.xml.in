@@ -56,6 +56,16 @@
     <color type="primary" scheme_preference="dark">#004079</color>
   </branding>
   <releases>
+    <release type="stable" version="8.0.8" date="2025-12-12T00:00:00Z">
+      <description>
+        <ul>
+          <li>Features:</li>
+          <li>Bug fixes:</li>
+          <li>The last crystalizer changes could make EasyEffects crash when PipeWire used the maximum possible latency value. Almost never PipeWire actually does that but it is better to be in the safe side.</li>
+          <li>Other notes:</li>
+        </ul>
+      </description>
+    </release>
     <release type="stable" version="8.0.7" date="2025-12-12T00:00:00Z">
       <description>
         <ul>
