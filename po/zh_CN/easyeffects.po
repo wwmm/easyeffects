@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-12-11 18:06-0300\n"
-"PO-Revision-Date: 2025-12-12 11:00+0000\n"
+"PO-Revision-Date: 2025-12-12 16:01+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hans/>\n"
@@ -3143,17 +3143,14 @@ msgid "Simple audio effects"
 msgstr "简易音效集锦"
 
 #: src/contents/ui/PresetsAutoloadPage.qml:97
-#, fuzzy
 msgid "Create a new autoload preset"
 msgstr "新建自动加载预设"
 
 #: src/contents/ui/PresetsAutoloadPage.qml:186
-#, fuzzy
 msgid "Remove this autoload preset"
 msgstr "移除此自动加载预设"
 
 #: src/contents/ui/PresetsDialog.qml:96
-#, fuzzy
 msgid "Autoload"
 msgstr "自动加载"
 
