@@ -333,6 +333,7 @@ msgstr "Adicionar aos aplicativos excluídos"
 #: src/contents/ui/PresetsAutoloadingPage.qml:135
 #: src/contents/ui/PresetsCommunityPage.qml:86
 #: src/contents/ui/PresetsLocalPage.qml:175 src/contents/ui/RNNoise.qml:212
+#: src/contents/ui/PresetsAutoloadPage.qml:135
 msgid "Empty List"
 msgstr "Lista Vazia"
 
@@ -2136,7 +2137,8 @@ msgstr "Ativar/desativar monitoramento de entrada"
 
 #: src/contents/ui/PreferencesSheet.qml:200
 msgid "Mic monitor plays to output effects pipeline"
-msgstr "O monitor de microfone reproduz o sinal na saída do pipeline de efeitos"
+msgstr ""
+"O monitor de microfone reproduz o sinal na saída do pipeline de efeitos"
 
 #: src/contents/ui/PreferencesSheet.qml:212
 msgid "Enable the inactivity timeout"
@@ -2435,6 +2437,8 @@ msgstr "Relacionado aos plugins LV2."
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:35
 #: src/contents/ui/PresetsAutoloadingPage.qml:171
+#: src/contents/ui/PresetsAutoloadPage.qml:35
+#: src/contents/ui/PresetsAutoloadPage.qml:171
 msgid "Device"
 msgstr "Dispositivo"
 
@@ -2449,6 +2453,7 @@ msgid "Local preset"
 msgstr "Predefinição local"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:95
+#: src/contents/ui/PresetsAutoloadPage.qml:95
 msgid "Create"
 msgstr "Criar"
 
@@ -2461,6 +2466,7 @@ msgid "Remove this autoloading preset"
 msgstr "Remova esta predefinição de carregamento automático"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:200
+#: src/contents/ui/PresetsAutoloadPage.qml:200
 msgid "Description"
 msgstr "Descrição"
 
@@ -3226,6 +3232,21 @@ msgstr "Equalizador, Compressor e Outros Efeitos de Áudio"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr ""
+
+#: src/contents/ui/PresetsAutoloadPage.qml:97
+#, fuzzy
+msgid "Create a new autoload preset"
+msgstr "Remover as Predefinições que Foram Carregadas Automaticamente"
+
+#: src/contents/ui/PresetsAutoloadPage.qml:186
+#, fuzzy
+msgid "Remove this autoload preset"
+msgstr "Remover as Predefinições que Foram Carregadas Automaticamente"
+
+#: src/contents/ui/PresetsDialog.qml:96
+#, fuzzy
+msgid "Autoload"
+msgstr "Carregamento automático"
 
 #~ msgid "24 dB/oct"
 #~ msgstr "24 dB/oct"

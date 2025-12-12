@@ -333,6 +333,7 @@ msgstr "Aggiungi alle applicazioni escluse"
 #: src/contents/ui/PresetsAutoloadingPage.qml:135
 #: src/contents/ui/PresetsCommunityPage.qml:86
 #: src/contents/ui/PresetsLocalPage.qml:175 src/contents/ui/RNNoise.qml:212
+#: src/contents/ui/PresetsAutoloadPage.qml:135
 msgid "Empty List"
 msgstr "Elenco Vuoto"
 
@@ -2427,20 +2428,27 @@ msgstr "Correlato ai plugin LV2."
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:35
 #: src/contents/ui/PresetsAutoloadingPage.qml:171
+#: src/contents/ui/PresetsAutoloadPage.qml:35
+#: src/contents/ui/PresetsAutoloadPage.qml:171
 msgid "Device"
 msgstr "Dispositivo Audio"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:41
 #: src/contents/ui/PresetsAutoloadingPage.qml:215
+#: src/contents/ui/PresetsAutoloadPage.qml:41
+#: src/contents/ui/PresetsAutoloadPage.qml:215
 msgid "Route"
 msgstr "Percorso"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:84
 #: src/contents/ui/PresetsAutoloadingPage.qml:229
+#: src/contents/ui/PresetsAutoloadPage.qml:84
+#: src/contents/ui/PresetsAutoloadPage.qml:229
 msgid "Local preset"
 msgstr "Profilo locale"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:95
+#: src/contents/ui/PresetsAutoloadPage.qml:95
 msgid "Create"
 msgstr "Crea"
 
@@ -2453,6 +2461,7 @@ msgid "Remove this autoloading preset"
 msgstr "Rimuovi questo profilo di auto caricamento"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:200
+#: src/contents/ui/PresetsAutoloadPage.qml:200
 msgid "Description"
 msgstr "Descrizione"
 
@@ -3171,6 +3180,21 @@ msgstr "Equalizzatore, Compressore e Altri Effetti Audio"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "Effetti audio semplici"
+
+#: src/contents/ui/PresetsAutoloadPage.qml:97
+#, fuzzy
+msgid "Create a new autoload preset"
+msgstr "Crea un nuovo profilo di auto caricamento"
+
+#: src/contents/ui/PresetsAutoloadPage.qml:186
+#, fuzzy
+msgid "Remove this autoload preset"
+msgstr "Rimuovi questo profilo di auto caricamento"
+
+#: src/contents/ui/PresetsDialog.qml:96
+#, fuzzy
+msgid "Autoload"
+msgstr "Auto Caricamento"
 
 #~ msgctxt "frames per second"
 #~ msgid "fps"

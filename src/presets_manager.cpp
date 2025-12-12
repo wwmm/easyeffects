@@ -120,11 +120,11 @@ void Manager::initialize_qml_types() {
                                                       community_manager.get_output_model()->getProxy());
 
   qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.presets", VERSION_MAJOR, VERSION_MINOR,
-                                                      "SortedAutoloadingInputListModel",
+                                                      "SortedAutoloadInputListModel",
                                                       autoload_manager.get_input_model()->getProxy());
 
   qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.presets", VERSION_MAJOR, VERSION_MINOR,
-                                                      "SortedAutoloadingOutputListModel",
+                                                      "SortedAutoloadOutputListModel",
                                                       autoload_manager.get_output_model()->getProxy());
 
   qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.presets", VERSION_MAJOR, VERSION_MINOR,

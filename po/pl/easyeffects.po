@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-12-11 18:06-0300\n"
+"POT-Creation-Date: 2025-12-11 19:26-0300\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Aleksander <olek_filip@wp.pl>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -351,7 +351,7 @@ msgstr "Dodaj do wykluczonych programów"
 #: src/contents/ui/ConvolverImpulseDialog.qml:71
 #: src/contents/ui/MenuAddPlugins.qml:36
 #: src/contents/ui/PageStreamsEffects.qml:79
-#: src/contents/ui/PresetsAutoloadingPage.qml:135
+#: src/contents/ui/PresetsAutoloadPage.qml:135
 #: src/contents/ui/PresetsCommunityPage.qml:86
 #: src/contents/ui/PresetsLocalPage.qml:175 src/contents/ui/RNNoise.qml:212
 msgid "Empty List"
@@ -2642,38 +2642,38 @@ msgstr "Częstotliwość aktualizacji"
 msgid "Related to LV2 plugins."
 msgstr "Powiązane z wtyczkami LV2"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:35
-#: src/contents/ui/PresetsAutoloadingPage.qml:171
+#: src/contents/ui/PresetsAutoloadPage.qml:35
+#: src/contents/ui/PresetsAutoloadPage.qml:171
 msgid "Device"
 msgstr "Urządzenie"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:41
-#: src/contents/ui/PresetsAutoloadingPage.qml:215
+#: src/contents/ui/PresetsAutoloadPage.qml:41
+#: src/contents/ui/PresetsAutoloadPage.qml:215
 msgid "Route"
 msgstr ""
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:84
-#: src/contents/ui/PresetsAutoloadingPage.qml:229
+#: src/contents/ui/PresetsAutoloadPage.qml:84
+#: src/contents/ui/PresetsAutoloadPage.qml:229
 #, fuzzy
 msgid "Local preset"
 msgstr "Lista szablonów lokalnych"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:95
+#: src/contents/ui/PresetsAutoloadPage.qml:95
 #, fuzzy
 msgid "Create"
 msgstr "Tworzenie"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:97
+#: src/contents/ui/PresetsAutoloadPage.qml:97
 #, fuzzy
-msgid "Create a new autoloading preset"
+msgid "Create a new autoload preset"
 msgstr "Usuń szablon automatycznego wczytywania"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:186
+#: src/contents/ui/PresetsAutoloadPage.qml:186
 #, fuzzy
-msgid "Remove this autoloading preset"
+msgid "Remove this autoload preset"
 msgstr "Usuń szablon automatycznego wczytywania"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:200
+#: src/contents/ui/PresetsAutoloadPage.qml:200
 msgid "Description"
 msgstr "Opis"
 
@@ -2706,7 +2706,7 @@ msgstr "Społeczność"
 
 #: src/contents/ui/PresetsDialog.qml:96
 #, fuzzy
-msgid "Autoloading"
+msgid "Autoload"
 msgstr "Autowzmocnienie"
 
 #: src/contents/ui/PresetsDialog.qml:135

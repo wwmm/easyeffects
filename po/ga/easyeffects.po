@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-12-11 18:06-0300\n"
+"POT-Creation-Date: 2025-12-11 19:26-0300\n"
 "PO-Revision-Date: 2025-12-09 17:00+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -328,7 +328,7 @@ msgstr "Cuir le hIarratais Eisiata"
 #: src/contents/ui/ConvolverImpulseDialog.qml:71
 #: src/contents/ui/MenuAddPlugins.qml:36
 #: src/contents/ui/PageStreamsEffects.qml:79
-#: src/contents/ui/PresetsAutoloadingPage.qml:135
+#: src/contents/ui/PresetsAutoloadPage.qml:135
 #: src/contents/ui/PresetsCommunityPage.qml:86
 #: src/contents/ui/PresetsLocalPage.qml:175 src/contents/ui/RNNoise.qml:212
 msgid "Empty List"
@@ -2429,34 +2429,35 @@ msgstr "Minicíocht nuashonraithe"
 msgid "Related to LV2 plugins."
 msgstr "Gaolmhar le breiseáin LV2."
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:35
-#: src/contents/ui/PresetsAutoloadingPage.qml:171
+#: src/contents/ui/PresetsAutoloadPage.qml:35
+#: src/contents/ui/PresetsAutoloadPage.qml:171
 msgid "Device"
 msgstr "Gléas"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:41
-#: src/contents/ui/PresetsAutoloadingPage.qml:215
+#: src/contents/ui/PresetsAutoloadPage.qml:41
+#: src/contents/ui/PresetsAutoloadPage.qml:215
 msgid "Route"
 msgstr "Bealach"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:84
-#: src/contents/ui/PresetsAutoloadingPage.qml:229
+#: src/contents/ui/PresetsAutoloadPage.qml:84
+#: src/contents/ui/PresetsAutoloadPage.qml:229
 msgid "Local preset"
 msgstr "Réamhshocrú áitiúil"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:95
+#: src/contents/ui/PresetsAutoloadPage.qml:95
 msgid "Create"
 msgstr "Cruthaigh"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:97
-msgid "Create a new autoloading preset"
+#: src/contents/ui/PresetsAutoloadPage.qml:97
+#, fuzzy
+msgid "Create a new autoload preset"
 msgstr "Cruthaigh réamhshocrú uathluchtaithe nua"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:186
-msgid "Remove this autoloading preset"
-msgstr "Bain an réamhshocrú uathlódála seo"
+#: src/contents/ui/PresetsAutoloadPage.qml:186
+msgid "Remove this autoload preset"
+msgstr "Bain an réamhshocrú uathluchtaithe seo"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:200
+#: src/contents/ui/PresetsAutoloadPage.qml:200
 msgid "Description"
 msgstr "Cur síos"
 
@@ -2489,7 +2490,8 @@ msgid "Community"
 msgstr "Pobal"
 
 #: src/contents/ui/PresetsDialog.qml:96
-msgid "Autoloading"
+#, fuzzy
+msgid "Autoload"
 msgstr "Uathlódáil"
 
 #: src/contents/ui/PresetsDialog.qml:135
@@ -3177,6 +3179,9 @@ msgstr "Cothromóir, Comhbhrúiteoir agus Éifeachtaí Fuaime Eile"
 msgid "Simple audio effects"
 msgstr "Éifeachtaí fuaime simplí"
 
+#~ msgid "Remove this autoloading preset"
+#~ msgstr "Bain an réamhshocrú uathlódála seo"
+
 #~ msgid "24 dB/oct"
 #~ msgstr "24 dB / Deireadh Fómhair"
 
@@ -3780,9 +3785,6 @@ msgstr "Éifeachtaí fuaime simplí"
 
 #~ msgid "Preset"
 #~ msgstr "Réamhshocraithe"
-
-#~ msgid "Remove this autoload preset"
-#~ msgstr "Bain an réamhshocrú uathluchtaithe seo"
 
 #~ msgid "Excluded Applications List"
 #~ msgstr "Liosta Iarratas Eisiata"

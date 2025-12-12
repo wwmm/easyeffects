@@ -328,6 +328,7 @@ msgstr "加入至排除的應用程式"
 #: src/contents/ui/PresetsAutoloadingPage.qml:135
 #: src/contents/ui/PresetsCommunityPage.qml:86
 #: src/contents/ui/PresetsLocalPage.qml:175 src/contents/ui/RNNoise.qml:212
+#: src/contents/ui/PresetsAutoloadPage.qml:135
 msgid "Empty List"
 msgstr "空白列表"
 
@@ -2396,20 +2397,27 @@ msgstr "與 LV2 插件相關。"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:35
 #: src/contents/ui/PresetsAutoloadingPage.qml:171
+#: src/contents/ui/PresetsAutoloadPage.qml:35
+#: src/contents/ui/PresetsAutoloadPage.qml:171
 msgid "Device"
 msgstr "裝置"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:41
 #: src/contents/ui/PresetsAutoloadingPage.qml:215
+#: src/contents/ui/PresetsAutoloadPage.qml:41
+#: src/contents/ui/PresetsAutoloadPage.qml:215
 msgid "Route"
 msgstr "路徑"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:84
 #: src/contents/ui/PresetsAutoloadingPage.qml:229
+#: src/contents/ui/PresetsAutoloadPage.qml:84
+#: src/contents/ui/PresetsAutoloadPage.qml:229
 msgid "Local preset"
 msgstr "本地預設集"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:95
+#: src/contents/ui/PresetsAutoloadPage.qml:95
 msgid "Create"
 msgstr "建立"
 
@@ -2422,6 +2430,7 @@ msgid "Remove this autoloading preset"
 msgstr "移除此自動載入預設集"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:200
+#: src/contents/ui/PresetsAutoloadPage.qml:200
 msgid "Description"
 msgstr "註釋"
 
@@ -3133,6 +3142,21 @@ msgstr "等化器、壓縮器、及其他音效處理"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "簡易音效處理"
+
+#: src/contents/ui/PresetsAutoloadPage.qml:97
+#, fuzzy
+msgid "Create a new autoload preset"
+msgstr "建立新的自動載入預設集"
+
+#: src/contents/ui/PresetsAutoloadPage.qml:186
+#, fuzzy
+msgid "Remove this autoload preset"
+msgstr "移除此自動載入預設集"
+
+#: src/contents/ui/PresetsDialog.qml:96
+#, fuzzy
+msgid "Autoload"
+msgstr "自動載入"
 
 #~ msgid "24 dB/oct"
 #~ msgstr "24 dB/oct"

@@ -94,7 +94,7 @@ ColumnLayout {
             Layout.margins: Kirigami.Units.smallSpacing
             text: i18n("Create") // qmllint disable
             icon.name: "list-add-symbolic"
-            Controls.ToolTip.text: i18n("Create a new autoloading preset")
+            Controls.ToolTip.text: i18n("Create a new autoload preset")
             Controls.ToolTip.visible: hovered
             onClicked: {
                 const deviceId = device.deviceId;
@@ -125,7 +125,7 @@ ColumnLayout {
             Layout.fillHeight: true
             clip: true
             reuseItems: true
-            model: DbMain.visiblePage === 0 ? Presets.SortedAutoloadingOutputListModel : Presets.SortedAutoloadingInputListModel
+            model: DbMain.visiblePage === 0 ? Presets.SortedAutoloadOutputListModel : Presets.SortedAutoloadInputListModel
             Controls.ScrollBar.vertical: listViewScrollBar
 
             Kirigami.PlaceholderMessage {
@@ -183,7 +183,7 @@ ColumnLayout {
                             Layout.alignment: Qt.AlignCenter | Qt.AlignRight
                             Layout.rowSpan: 4
                             icon.name: "delete"
-                            Controls.ToolTip.text: i18n("Remove this autoloading preset")
+                            Controls.ToolTip.text: i18n("Remove this autoload preset")
                             Controls.ToolTip.visible: hovered
                             onClicked: {
                                 if (DbMain.visiblePage === 0)

@@ -331,6 +331,7 @@ msgstr "Adăugați la aplicațiile excluse"
 #: src/contents/ui/PresetsAutoloadingPage.qml:135
 #: src/contents/ui/PresetsCommunityPage.qml:86
 #: src/contents/ui/PresetsLocalPage.qml:175 src/contents/ui/RNNoise.qml:212
+#: src/contents/ui/PresetsAutoloadPage.qml:135
 msgid "Empty List"
 msgstr "Listă goală"
 
@@ -2432,20 +2433,27 @@ msgstr "Relativ la modulele LV2."
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:35
 #: src/contents/ui/PresetsAutoloadingPage.qml:171
+#: src/contents/ui/PresetsAutoloadPage.qml:35
+#: src/contents/ui/PresetsAutoloadPage.qml:171
 msgid "Device"
 msgstr "Dispozitiv"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:41
 #: src/contents/ui/PresetsAutoloadingPage.qml:215
+#: src/contents/ui/PresetsAutoloadPage.qml:41
+#: src/contents/ui/PresetsAutoloadPage.qml:215
 msgid "Route"
 msgstr "Rută"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:84
 #: src/contents/ui/PresetsAutoloadingPage.qml:229
+#: src/contents/ui/PresetsAutoloadPage.qml:84
+#: src/contents/ui/PresetsAutoloadPage.qml:229
 msgid "Local preset"
 msgstr "Preconfigurare locală"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:95
+#: src/contents/ui/PresetsAutoloadPage.qml:95
 msgid "Create"
 msgstr "Creează"
 
@@ -2458,6 +2466,7 @@ msgid "Remove this autoloading preset"
 msgstr "Elimină această preconfigurare cu încărcare automată"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:200
+#: src/contents/ui/PresetsAutoloadPage.qml:200
 msgid "Description"
 msgstr "Descriere"
 
@@ -3176,6 +3185,20 @@ msgstr "Egalizator, compresor și alte efecte audio"
 msgid "Simple audio effects"
 msgstr "Efecte audio simple"
 
+#: src/contents/ui/PresetsAutoloadPage.qml:186
+msgid "Remove this autoload preset"
+msgstr "Elimină această preconfigurare cu încărcare automată"
+
+#: src/contents/ui/PresetsAutoloadPage.qml:97
+#, fuzzy
+msgid "Create a new autoload preset"
+msgstr "Creează o preconfigurare nouă cu încărcare automată"
+
+#: src/contents/ui/PresetsDialog.qml:96
+#, fuzzy
+msgid "Autoload"
+msgstr "Încărcare automată"
+
 #~ msgid "24 dB/oct"
 #~ msgstr "24 dB/oct"
 
@@ -3792,9 +3815,6 @@ msgstr "Efecte audio simple"
 
 #~ msgid "Preset"
 #~ msgstr "Preconfigurare"
-
-#~ msgid "Remove this autoload preset"
-#~ msgstr "Elimină această preconfigurare cu încărcare automată"
 
 #~ msgid "Attack Time"
 #~ msgstr "Timpul de atac"

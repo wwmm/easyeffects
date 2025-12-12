@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-12-11 16:42-0300\n"
+"POT-Creation-Date: 2025-12-11 19:26-0300\n"
 "PO-Revision-Date: 2025-12-11 21:07+0000\n"
 "Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -198,7 +198,7 @@ msgstr "Ausgangsverstärkung"
 #: src/contents/ui/Autogain.qml:212 src/contents/ui/BassEnhancer.qml:184
 #: src/contents/ui/BassLoudness.qml:104 src/contents/ui/Compressor.qml:853
 #: src/contents/ui/Convolver.qml:499 src/contents/ui/Crossfeed.qml:128
-#: src/contents/ui/Crystalizer.qml:89 src/contents/ui/DeepFilterNet.qml:175
+#: src/contents/ui/Crystalizer.qml:104 src/contents/ui/DeepFilterNet.qml:175
 #: src/contents/ui/Deesser.qml:298 src/contents/ui/Delay.qml:354
 #: src/contents/ui/EchoCanceller.qml:136 src/contents/ui/Equalizer.qml:283
 #: src/contents/ui/Exciter.qml:189 src/contents/ui/Expander.qml:803
@@ -211,7 +211,6 @@ msgstr "Ausgangsverstärkung"
 #: src/contents/ui/RNNoise.qml:68 src/contents/ui/RNNoise.qml:282
 #: src/contents/ui/RNNoise.qml:284 src/contents/ui/RNNoise.qml:302
 #: src/contents/ui/Speex.qml:155 src/contents/ui/StereoTools.qml:370
-#: src/contents/ui/Crystalizer.qml:104
 #, fuzzy
 msgid "Using %1"
 msgstr "Nutzt %1"
@@ -289,7 +288,7 @@ msgstr "Zuhören"
 
 #: src/contents/ui/BassEnhancer.qml:226 src/contents/ui/BassLoudness.qml:122
 #: src/contents/ui/Compressor.qml:905 src/contents/ui/Convolver.qml:534
-#: src/contents/ui/Crossfeed.qml:154 src/contents/ui/Crystalizer.qml:127
+#: src/contents/ui/Crossfeed.qml:154 src/contents/ui/Crystalizer.qml:142
 #: src/contents/ui/Deesser.qml:340 src/contents/ui/Delay.qml:406
 #: src/contents/ui/EchoCanceller.qml:164 src/contents/ui/Equalizer.qml:367
 #: src/contents/ui/Exciter.qml:231 src/contents/ui/Expander.qml:855
@@ -299,7 +298,7 @@ msgstr "Zuhören"
 #: src/contents/ui/MultibandCompressor.qml:995
 #: src/contents/ui/MultibandGate.qml:968 src/contents/ui/Reverb.qml:337
 #: src/contents/ui/RNNoise.qml:327 src/contents/ui/Speex.qml:173
-#: src/contents/ui/StereoTools.qml:402 src/contents/ui/Crystalizer.qml:142
+#: src/contents/ui/StereoTools.qml:402
 msgid "Reset"
 msgstr "Zurücksetzen"
 
@@ -333,7 +332,7 @@ msgstr "Zu ausgeschlossenen Anwendungen hinzufügen"
 #: src/contents/ui/ConvolverImpulseDialog.qml:71
 #: src/contents/ui/MenuAddPlugins.qml:36
 #: src/contents/ui/PageStreamsEffects.qml:79
-#: src/contents/ui/PresetsAutoloadingPage.qml:135
+#: src/contents/ui/PresetsAutoloadPage.qml:135
 #: src/contents/ui/PresetsCommunityPage.qml:86
 #: src/contents/ui/PresetsLocalPage.qml:175 src/contents/ui/RNNoise.qml:212
 msgid "Empty List"
@@ -921,12 +920,16 @@ msgstr "Stummschalten"
 msgid "Bypass"
 msgstr "Umleiten"
 
-#: src/contents/ui/Crystalizer.qml:106 src/contents/ui/Limiter.qml:68
-#: src/contents/ui/Crystalizer.qml:121
+#: src/contents/ui/Crystalizer.qml:83
+#, fuzzy
+msgid "Oversampling quality"
+msgstr "Überabtastung"
+
+#: src/contents/ui/Crystalizer.qml:121 src/contents/ui/Limiter.qml:68
 msgid "Oversampling"
 msgstr "Überabtastung"
 
-#: src/contents/ui/Crystalizer.qml:116 src/contents/ui/Crystalizer.qml:131
+#: src/contents/ui/Crystalizer.qml:131
 msgid "Adaptive intensity"
 msgstr "Adaptive Intensität"
 
@@ -2507,34 +2510,36 @@ msgstr "Aktualisierungsintervall"
 msgid "Related to LV2 plugins."
 msgstr "Bezogen auf LV2 Plugins."
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:35
-#: src/contents/ui/PresetsAutoloadingPage.qml:171
+#: src/contents/ui/PresetsAutoloadPage.qml:35
+#: src/contents/ui/PresetsAutoloadPage.qml:171
 msgid "Device"
 msgstr "Gerät"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:41
-#: src/contents/ui/PresetsAutoloadingPage.qml:215
+#: src/contents/ui/PresetsAutoloadPage.qml:41
+#: src/contents/ui/PresetsAutoloadPage.qml:215
 msgid "Route"
 msgstr ""
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:84
-#: src/contents/ui/PresetsAutoloadingPage.qml:229
+#: src/contents/ui/PresetsAutoloadPage.qml:84
+#: src/contents/ui/PresetsAutoloadPage.qml:229
 msgid "Local preset"
 msgstr "Lokale Vorlagen"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:95
+#: src/contents/ui/PresetsAutoloadPage.qml:95
 msgid "Create"
 msgstr "Erstellen"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:97
-msgid "Create a new autoloading preset"
+#: src/contents/ui/PresetsAutoloadPage.qml:97
+#, fuzzy
+msgid "Create a new autoload preset"
 msgstr "Neue Autoload Vorlage erstellen"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:186
-msgid "Remove this autoloading preset"
+#: src/contents/ui/PresetsAutoloadPage.qml:186
+#, fuzzy
+msgid "Remove this autoload preset"
 msgstr "Autoload Vorlage entfernen"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:200
+#: src/contents/ui/PresetsAutoloadPage.qml:200
 msgid "Description"
 msgstr "Beschreibung"
 
@@ -2566,7 +2571,7 @@ msgstr ""
 
 #: src/contents/ui/PresetsDialog.qml:96
 #, fuzzy
-msgid "Autoloading"
+msgid "Autoload"
 msgstr "Automatische Verstärkungsregelung"
 
 #: src/contents/ui/PresetsDialog.qml:135
@@ -3256,11 +3261,6 @@ msgstr "Equalizer, Kompressor und andere Audioeffekte"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "Einfache Audioeffekte"
-
-#: src/contents/ui/Crystalizer.qml:83
-#, fuzzy
-msgid "Oversampling quality"
-msgstr "Überabtastung"
 
 #, fuzzy
 #~ msgid "Get the active input/output preset."
