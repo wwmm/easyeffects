@@ -4,6 +4,20 @@ Date: UNRELEASED_DATE
 
 Description: 
 - Features∶
+- 
+
+- Bug fixes∶
+- 
+
+- Other notes∶
+- 
+
+---
+Version: 8.0.7
+Date: 2025-12-12
+
+Description: 
+- Features∶
 - The plugins effects sidebar width can be changed.
 - The convolver plugin is now able to load sofa impulse files. It also has a dialog that allows the target orientation to be set.
 - Our local server was improved and it is now possible for third party applications to set and get more parameters values.

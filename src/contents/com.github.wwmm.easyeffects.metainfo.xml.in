@@ -56,6 +56,24 @@
     <color type="primary" scheme_preference="dark">#004079</color>
   </branding>
   <releases>
+    <release type="stable" version="8.0.7" date="2025-12-12T00:00:00Z">
+      <description>
+        <ul>
+          <li>Features:</li>
+          <li>The plugins effects sidebar width can be changed.</li>
+          <li>The convolver plugin is now able to load sofa impulse files. It also has a dialog that allows the target orientation to be set.</li>
+          <li>Our local server was improved and it is now possible for third party applications to set and get more parameters values.</li>
+          <li>Our manual has been converted to mkdocs. And now its available only in online mode.</li>
+          <li>Bug fixes:</li>
+          <li>RNNoise is supposed to be optional. But that was not actually happening</li>
+          <li>In some cases when a preset was removed the most used presets list was not being properly updated.</li>
+          <li>Other notes:</li>
+          <li>Now that the manual is just an ordinary Github's page the Qt WebEngineView is not used anymore. No need to keep its package as dependency.</li>
+          <li>The library libportal-qt6 is only used by the Flatpak package and can be removed from native packages dependencies list.</li>
+          <li>Our resampler class is now based on speexdsp resampler. This means libsamplerate can be removed from our packages dependencies.</li>
+        </ul>
+      </description>
+    </release>
     <release type="stable" version="8.0.6" date="2025-12-02T00:00:00Z">
       <description>
         <ul>
@@ -632,7 +650,7 @@
           <li>Bug fixes:</li>
           <li>More robust parsing to import APO presets saved with comma as thousands separator in central frequency band.</li>
           <li>Other notes:</li>
-          <li>The fmt library is a new dependency At least while the c++ compilers do not implement its features. This is expected to happen in the next years.</li>
+          <li>The fmt library is a new dependency  At least while the c++ compilers do not implement its features. This is expected to happen in the next years.</li>
           <li>GTKMM and GLIBMM are not a dependency anymore. We now use gtk4 directly.</li>
         </ul>
       </description>
@@ -748,7 +766,7 @@
       <description>
         <ul>
           <li>Features:</li>
-          <li>The Loudness plugin is being used again for the reasons described at issue 820. This means that is an optional dependency again.</li>
+          <li>The Loudness plugin is being used again for the reasons described at issue 820. This means that  is an optional dependency again.</li>
           <li>Bug fixes:</li>
           <li>Fixed a segmentation fault that happened when optional dependencies were not installed</li>
         </ul>
@@ -783,5 +801,5 @@
       </description>
     </release>
   </releases>
-  <content_rating type="oars-1.1" />
+  <content_rating type="oars-1.1"/>
 </component>

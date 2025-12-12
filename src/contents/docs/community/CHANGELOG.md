@@ -1,5 +1,25 @@
 # Changelog
  
+## 8.0.7
+### 2025-12-12
+
+ 
+### Features:
+- The plugins effects sidebar width can be changed.
+- The convolver plugin is now able to load sofa impulse files. It also has a dialog that allows the target orientation to be set.
+- Our local server was improved and it is now possible for third party applications to set and get more parameters values.
+- Our manual has been converted to mkdocs. And now its available only in online mode.
+
+### Bug fixes:
+- RNNoise is supposed to be optional. But that was not actually happening
+- In some cases when a preset was removed the most used presets list was not being properly updated.
+
+### Other notes:
+- Now that the manual is just an ordinary Github's page the Qt WebEngineView is not used anymore. No need to keep its package as dependency.
+- The library libportal-qt6 is only used by the Flatpak package and can be removed from native packages dependencies list.
+- Our resampler class is now based on speexdsp resampler. This means libsamplerate can be removed from our packages dependencies.
+
+ 
 ## 8.0.6
 ### 2025-12-02
 
