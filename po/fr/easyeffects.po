@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-12-11 19:26-0300\n"
-"PO-Revision-Date: 2025-12-10 20:00+0000\n"
+"PO-Revision-Date: 2025-12-12 16:01+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -899,9 +899,8 @@ msgid "Bypass"
 msgstr "Contourner"
 
 #: src/contents/ui/Crystalizer.qml:83
-#, fuzzy
 msgid "Oversampling quality"
-msgstr "Sur-échantillonnage"
+msgstr "Qualité du suréchantillonnage"
 
 #: src/contents/ui/Crystalizer.qml:121 src/contents/ui/Limiter.qml:68
 msgid "Oversampling"
@@ -2452,9 +2451,8 @@ msgid "Create"
 msgstr "Créer"
 
 #: src/contents/ui/PresetsAutoloadPage.qml:97
-#, fuzzy
 msgid "Create a new autoload preset"
-msgstr "Créer un nouveau préréglage à chargement automatique"
+msgstr "Créer un nouveau préréglage de chargement automatique"
 
 #: src/contents/ui/PresetsAutoloadPage.qml:186
 msgid "Remove this autoload preset"
@@ -2493,9 +2491,8 @@ msgid "Community"
 msgstr "Communauté"
 
 #: src/contents/ui/PresetsDialog.qml:96
-#, fuzzy
 msgid "Autoload"
-msgstr "Chargement Automatique"
+msgstr "Chargement automatique"
 
 #: src/contents/ui/PresetsDialog.qml:135
 msgid "No preset loaded"
