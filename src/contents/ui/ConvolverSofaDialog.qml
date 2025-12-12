@@ -10,8 +10,8 @@ Kirigami.Dialog {
     required property var pluginBackend
 
     title: i18n("Target Orientation") // qmllint disable
-    leftPadding: Kirigami.Units.smallSpacing
-    rightPadding: Kirigami.Units.smallSpacing
+    leftPadding: Kirigami.Units.largeSpacing
+    rightPadding: Kirigami.Units.largeSpacing
     topPadding: Kirigami.Units.smallSpacing
     bottomPadding: Kirigami.Units.smallSpacing
 
