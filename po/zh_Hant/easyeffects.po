@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-12-11 19:26-0300\n"
-"PO-Revision-Date: 2025-12-11 14:00+0000\n"
-"Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
+"POT-Creation-Date: 2025-12-11 18:06-0300\n"
+"PO-Revision-Date: 2025-12-12 11:00+0000\n"
+"Last-Translator: Jeff Huang <s8321414@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hant/>\n"
 "Language: zh_Hant\n"
@@ -325,9 +325,10 @@ msgstr "加入至排除的應用程式"
 #: src/contents/ui/ConvolverImpulseDialog.qml:71
 #: src/contents/ui/MenuAddPlugins.qml:36
 #: src/contents/ui/PageStreamsEffects.qml:79
-#: src/contents/ui/PresetsAutoloadPage.qml:135
+#: src/contents/ui/PresetsAutoloadingPage.qml:135
 #: src/contents/ui/PresetsCommunityPage.qml:86
 #: src/contents/ui/PresetsLocalPage.qml:175 src/contents/ui/RNNoise.qml:212
+#: src/contents/ui/PresetsAutoloadPage.qml:135
 msgid "Empty List"
 msgstr "空白列表"
 
@@ -894,9 +895,8 @@ msgid "Bypass"
 msgstr "略過"
 
 #: src/contents/ui/Crystalizer.qml:83
-#, fuzzy
 msgid "Oversampling quality"
-msgstr "過度採樣"
+msgstr "過採樣品質"
 
 #: src/contents/ui/Crystalizer.qml:121 src/contents/ui/Limiter.qml:68
 msgid "Oversampling"
@@ -2395,35 +2395,41 @@ msgstr "更新頻率"
 msgid "Related to LV2 plugins."
 msgstr "與 LV2 插件相關。"
 
+#: src/contents/ui/PresetsAutoloadingPage.qml:35
+#: src/contents/ui/PresetsAutoloadingPage.qml:171
 #: src/contents/ui/PresetsAutoloadPage.qml:35
 #: src/contents/ui/PresetsAutoloadPage.qml:171
 msgid "Device"
 msgstr "裝置"
 
+#: src/contents/ui/PresetsAutoloadingPage.qml:41
+#: src/contents/ui/PresetsAutoloadingPage.qml:215
 #: src/contents/ui/PresetsAutoloadPage.qml:41
 #: src/contents/ui/PresetsAutoloadPage.qml:215
 msgid "Route"
 msgstr "路徑"
 
+#: src/contents/ui/PresetsAutoloadingPage.qml:84
+#: src/contents/ui/PresetsAutoloadingPage.qml:229
 #: src/contents/ui/PresetsAutoloadPage.qml:84
 #: src/contents/ui/PresetsAutoloadPage.qml:229
 msgid "Local preset"
 msgstr "本地預設集"
 
+#: src/contents/ui/PresetsAutoloadingPage.qml:95
 #: src/contents/ui/PresetsAutoloadPage.qml:95
 msgid "Create"
 msgstr "建立"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:97
-#, fuzzy
-msgid "Create a new autoload preset"
+#: src/contents/ui/PresetsAutoloadingPage.qml:97
+msgid "Create a new autoloading preset"
 msgstr "建立新的自動載入預設集"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:186
-#, fuzzy
-msgid "Remove this autoload preset"
+#: src/contents/ui/PresetsAutoloadingPage.qml:186
+msgid "Remove this autoloading preset"
 msgstr "移除此自動載入預設集"
 
+#: src/contents/ui/PresetsAutoloadingPage.qml:200
 #: src/contents/ui/PresetsAutoloadPage.qml:200
 msgid "Description"
 msgstr "註釋"
@@ -2453,8 +2459,7 @@ msgid "Community"
 msgstr "社群"
 
 #: src/contents/ui/PresetsDialog.qml:96
-#, fuzzy
-msgid "Autoload"
+msgid "Autoloading"
 msgstr "自動載入"
 
 #: src/contents/ui/PresetsDialog.qml:135
@@ -3026,13 +3031,11 @@ msgid "R"
 msgstr "右"
 
 #: src/units.hpp:63
-#, fuzzy
 msgctxt "The SOFA audio file format"
 msgid "SOFA"
 msgstr "SOFA"
 
 #: src/units.hpp:64
-#, fuzzy
 msgctxt "The WAV audio file format"
 msgid "WAV"
 msgstr "WAV"
@@ -3093,7 +3096,6 @@ msgid "cm"
 msgstr "cm"
 
 #: src/units.hpp:78
-#, fuzzy
 msgctxt "degrees Celsius unit abbreviation"
 msgid "°C"
 msgstr "°C"
@@ -3124,7 +3126,6 @@ msgid "%"
 msgstr "%"
 
 #: src/units.hpp:86
-#, fuzzy
 msgctxt "degrees (angle) symbol"
 msgid "°"
 msgstr "°"
@@ -3141,6 +3142,21 @@ msgstr "等化器、壓縮器、及其他音效處理"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "簡易音效處理"
+
+#: src/contents/ui/PresetsAutoloadPage.qml:97
+#, fuzzy
+msgid "Create a new autoload preset"
+msgstr "建立新的自動載入預設集"
+
+#: src/contents/ui/PresetsAutoloadPage.qml:186
+#, fuzzy
+msgid "Remove this autoload preset"
+msgstr "移除此自動載入預設集"
+
+#: src/contents/ui/PresetsDialog.qml:96
+#, fuzzy
+msgid "Autoload"
+msgstr "自動載入"
 
 #~ msgid "24 dB/oct"
 #~ msgstr "24 dB/oct"
