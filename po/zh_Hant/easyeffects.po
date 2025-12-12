@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-12-11 18:06-0300\n"
-"PO-Revision-Date: 2025-12-11 14:00+0000\n"
-"Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
+"PO-Revision-Date: 2025-12-12 11:00+0000\n"
+"Last-Translator: Jeff Huang <s8321414@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hant/>\n"
 "Language: zh_Hant\n"
@@ -894,9 +894,8 @@ msgid "Bypass"
 msgstr "略過"
 
 #: src/contents/ui/Crystalizer.qml:83
-#, fuzzy
 msgid "Oversampling quality"
-msgstr "過度採樣"
+msgstr "過採樣品質"
 
 #: src/contents/ui/Crystalizer.qml:121 src/contents/ui/Limiter.qml:68
 msgid "Oversampling"
@@ -3023,13 +3022,11 @@ msgid "R"
 msgstr "右"
 
 #: src/units.hpp:63
-#, fuzzy
 msgctxt "The SOFA audio file format"
 msgid "SOFA"
 msgstr "SOFA"
 
 #: src/units.hpp:64
-#, fuzzy
 msgctxt "The WAV audio file format"
 msgid "WAV"
 msgstr "WAV"
@@ -3090,7 +3087,6 @@ msgid "cm"
 msgstr "cm"
 
 #: src/units.hpp:78
-#, fuzzy
 msgctxt "degrees Celsius unit abbreviation"
 msgid "°C"
 msgstr "°C"
@@ -3121,7 +3117,6 @@ msgid "%"
 msgstr "%"
 
 #: src/units.hpp:86
-#, fuzzy
 msgctxt "degrees (angle) symbol"
 msgid "°"
 msgstr "°"
