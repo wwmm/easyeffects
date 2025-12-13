@@ -8,24 +8,25 @@ msgstr ""
 "Project-Id-Version: easyeffects-news\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-28 14:40+0000\n"
-"PO-Revision-Date: 2025-08-30 00:58+0000\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2025-12-13 14:00+0000\n"
+"Last-Translator: SloppyPuppy <momo.injac@gmail.com>\n"
+"Language-Team: Serbian <https://hosted.weblate.org/projects/easyeffects/"
+"changelog/sr/>\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.13.1-dev\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Weblate 5.15-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
-msgstr ""
+msgstr "Лаки Ефекти"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
 msgid "Audio Effects for PipeWire Applications"
-msgstr ""
+msgstr "Аудио ефекти за ПајпВајер апликације"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:9
 msgid ""
@@ -33,12 +34,17 @@ msgid ""
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
 "few. To complement this there is also a built in spectrum analyzer."
 msgstr ""
+"Лаки-Ефекти је алат за напредно манипулисање аудија. Садржи еквилајзер, "
+"лимитер, компресор и алат за реверб, ако само набрајамо пар. Комплиментарно "
+"овоме је уграђен спектрални анализатор."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:10
 msgid ""
 "Easy Effects is the successor to PulseEffects. Easy Effects only supports "
 "PipeWire's audio server. PulseAudio users should instead use PulseEffects."
 msgstr ""
+"Лаки-Ефекти су настали од ПулсЕфекта. Лаки-Ефекти само подржавају ПајпВајер "
+"аудио сервер. ПулсАудио корисници би тебали да уместо користе ПулсЕфекте."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:11
 msgid ""
@@ -46,6 +52,9 @@ msgid ""
 "with most, if not all, applications you use. All supported applications are "
 "presented in the main window, where each can be enabled individually."
 msgstr ""
+"Зато што Лаки-Ефекти користе главни ПајпВајер аудио сервер, радиће са "
+"већином, ако не свим апликацијама које Ви користите. Све подржане апликације "
+"су представљене у гланом прозору, где се појединачно могу омогућити."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
 msgid ""
@@ -53,6 +62,9 @@ msgid ""
 "an input device, such as a microphone. This is, for example, useful in audio "
 "recording, but it also works well during voice conversations."
 msgstr ""
+"Поред тога што може да манипулише излазним аудиом, Лаки-Ефекти могу да "
+"примене ефекте на улазне уређаје, попут микрофона. Ово је, на пример, "
+"корисно у снимању аудија, али такође добро ради услед разговора."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:13
 msgid ""
@@ -60,23 +72,25 @@ msgid ""
 "configuration used in the last session. It is also possible to save all the "
 "current settings as profiles."
 msgstr ""
+"Када се Лаки-Ефекти покрену они памте подешавања од предходне сесије. Такође "
+"можете да сачувате сва тренутна подшавања као профил за поновну употребу."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:16
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:18
 msgid "Wellington Wallace"
-msgstr ""
+msgstr "Велингтон Волес"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
 msgid "The main page showing two audio output apps"
-msgstr ""
+msgstr "Главна страница показује две излазне аудио апликације"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:47
 msgid "The bass enhancer page showing audio controls"
-msgstr ""
+msgstr "Страница за појачивач баса показује аудио контроле"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:51
 msgid "The convolver page showing audio controls"
-msgstr ""
+msgstr "Конволвер страница показује аудио контроле"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:77
@@ -116,7 +130,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:547
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:560
 msgid "Features:"
-msgstr ""
+msgstr "Могућности:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
 msgid ""
