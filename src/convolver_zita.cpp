@@ -64,7 +64,7 @@ auto ConvolverZita::init(ConvolverKernelManager::KernelData data,
                          uint bufferSize,
                          const int& ir_width,
                          const bool& apply_autogain) -> bool {
-  std::lock_guard<std::mutex> lock(util::fftw_lock());
+  std::scoped_lock<std::mutex> lock(util::fftw_lock());
 
   ready = false;
 
@@ -161,7 +161,7 @@ auto ConvolverZita::process(std::span<float> left, std::span<float> right) -> bo
   std::ranges::copy(left, convLeftIn.begin());
   std::ranges::copy(right, convRightIn.begin());
 
-  std::lock_guard<std::mutex> lock(util::fftw_lock());
+  std::scoped_lock<std::mutex> lock(util::fftw_lock());
 
   if (auto ret = conv->process(true); ret != 0) {
     util::warning(std::format("Zita: process failed: {}", ret));
