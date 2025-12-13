@@ -115,7 +115,7 @@ auto ConvolverKernelFFT::apply_hanning_window(std::vector<float>& signal) -> voi
 }
 
 auto ConvolverKernelFFT::compute_fft_magnitude(std::vector<float>& kernel) -> std::vector<double> {
-  std::lock_guard<std::mutex> lock(util::fftw_lock());
+  std::scoped_lock<std::mutex> lock(util::fftw_lock());
 
   if (kernel.empty() || kernel.size() < 2) {
     return {};
