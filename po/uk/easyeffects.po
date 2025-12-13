@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-12-11 19:26-0300\n"
-"PO-Revision-Date: 2025-12-09 17:00+0000\n"
+"PO-Revision-Date: 2025-12-13 01:43+0000\n"
 "Last-Translator: Максим Горпиніч <gorpinicmaksim0@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
@@ -897,9 +897,8 @@ msgid "Bypass"
 msgstr "Обійти"
 
 #: src/contents/ui/Crystalizer.qml:83
-#, fuzzy
 msgid "Oversampling quality"
-msgstr "Передискретизація"
+msgstr "Якість передискретизації"
 
 #: src/contents/ui/Crystalizer.qml:121 src/contents/ui/Limiter.qml:68
 msgid "Oversampling"
@@ -2439,14 +2438,12 @@ msgid "Create"
 msgstr "Створити"
 
 #: src/contents/ui/PresetsAutoloadPage.qml:97
-#, fuzzy
 msgid "Create a new autoload preset"
-msgstr "Створити новий пресет, що завантажуватиметься автоматично"
+msgstr "Створення нового пресету автозавантаження"
 
 #: src/contents/ui/PresetsAutoloadPage.qml:186
-#, fuzzy
 msgid "Remove this autoload preset"
-msgstr "Вилучити цей пресет, що завантажується автоматично"
+msgstr "Вилучити цей пресет автозавантаження"
 
 #: src/contents/ui/PresetsAutoloadPage.qml:200
 msgid "Description"
@@ -2477,7 +2474,6 @@ msgid "Community"
 msgstr "Спільнота"
 
 #: src/contents/ui/PresetsDialog.qml:96
-#, fuzzy
 msgid "Autoload"
 msgstr "Автозавантаження"
 
