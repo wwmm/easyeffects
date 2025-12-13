@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-12-11 18:06-0300\n"
-"PO-Revision-Date: 2025-12-12 11:00+0000\n"
+"PO-Revision-Date: 2025-12-13 01:43+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -3182,17 +3182,14 @@ msgid "Simple audio effects"
 msgstr "Effetti audio semplici"
 
 #: src/contents/ui/PresetsAutoloadPage.qml:97
-#, fuzzy
 msgid "Create a new autoload preset"
 msgstr "Crea un nuovo profilo di auto caricamento"
 
 #: src/contents/ui/PresetsAutoloadPage.qml:186
-#, fuzzy
 msgid "Remove this autoload preset"
 msgstr "Rimuovi questo profilo di auto caricamento"
 
 #: src/contents/ui/PresetsDialog.qml:96
-#, fuzzy
 msgid "Autoload"
 msgstr "Auto Caricamento"
 
