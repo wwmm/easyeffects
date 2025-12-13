@@ -26,6 +26,7 @@
 #include <cmath>
 #include <cstddef>
 #include <format>
+#include <mutex>
 #include <numbers>
 #include <string>
 #include <thread>
@@ -146,6 +147,8 @@ auto FirFilterBase::create_lowpass_kernel(const float& cutoff, const float& tran
 }
 
 void FirFilterBase::setup_zita() {
+  std::lock_guard<std::mutex> lock(util::fftw_lock());
+
   zita_ready = false;
 
   if (n_samples == 0U || kernel.empty()) {

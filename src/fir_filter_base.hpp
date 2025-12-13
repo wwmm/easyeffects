@@ -23,6 +23,7 @@
 #include <zita-convolver.h>
 #include <algorithm>
 #include <format>
+#include <mutex>
 #include <span>
 #include <string>
 #include <vector>
@@ -65,6 +66,8 @@ class FirFilterBase {
     std::copy(data_right.begin(), data_right.end(), conv_right_in.begin());
 
     if (zita_ready) {
+      std::lock_guard<std::mutex> lock(util::fftw_lock());
+
       const int& ret = conv->process(true);  // thread sync mode set to true
 
       if (ret != 0) {

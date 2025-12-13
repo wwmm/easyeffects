@@ -30,6 +30,7 @@
 #include <filesystem>
 #include <limits>
 #include <memory>
+#include <mutex>
 #include <source_location>
 #include <span>
 #include <string>
@@ -83,6 +84,11 @@ auto spa_dict_get_bool(const spa_dict* props, const char* key, bool& b) -> bool;
 auto interpolate(const std::vector<double>& x_source,
                  const std::vector<double>& y_source,
                  const std::vector<double>& x_new) -> std::vector<double>;
+
+inline std::mutex& fftw_lock() {
+  static std::mutex fftw_mutex;
+  return fftw_mutex;
+}
 
 template <typename T>
 void print_type(T v) {
