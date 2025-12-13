@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-12-11 18:06-0300\n"
-"PO-Revision-Date: 2025-12-12 11:00+0000\n"
+"PO-Revision-Date: 2025-12-13 15:00+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ro/>\n"
@@ -3190,12 +3190,10 @@ msgid "Remove this autoload preset"
 msgstr "Elimină această preconfigurare cu încărcare automată"
 
 #: src/contents/ui/PresetsAutoloadPage.qml:97
-#, fuzzy
 msgid "Create a new autoload preset"
 msgstr "Creează o preconfigurare nouă cu încărcare automată"
 
 #: src/contents/ui/PresetsDialog.qml:96
-#, fuzzy
 msgid "Autoload"
 msgstr "Încărcare automată"
 
