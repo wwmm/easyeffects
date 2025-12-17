@@ -336,8 +336,8 @@ Kirigami.Page {
                 GridLayout {
                     columns: DbMain.collapsePluginsList === true ? 1 : 2
                     Layout.fillWidth: true
-                    Layout.topMargin: Kirigami.Units.largeSpacing
-                    Layout.bottomMargin: Kirigami.Units.largeSpacing
+                    Layout.topMargin: Kirigami.Units.mediumSpacing
+                    Layout.bottomMargin: Kirigami.Units.mediumSpacing
                     Layout.leftMargin: Kirigami.Units.smallSpacing
                     Layout.rightMargin: Kirigami.Units.smallSpacing
                     Layout.alignment: Qt.AlignCenter
