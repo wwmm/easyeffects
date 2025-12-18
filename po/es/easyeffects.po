@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-12-11 19:26-0300\n"
-"PO-Revision-Date: 2025-11-26 10:51+0000\n"
-"Last-Translator: Lito Parra <lito.15@proton.me>\n"
+"PO-Revision-Date: 2025-12-18 00:00+0000\n"
+"Last-Translator: \"Jose l. Azagra\" <azagramac@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
 "es/>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.15-dev\n"
+"X-Generator: Weblate 5.15.1-dev\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -66,7 +66,7 @@ msgstr "Mostrar los perfiles disponibles."
 #: src/command_line_parser.cpp:50
 #, fuzzy
 msgid "Get the last loaded input/output preset."
-msgstr "Mostrar los perfiles activos."
+msgstr "Obtener el último preset de entrada/salida cargado."
 
 #: src/command_line_parser.cpp:50
 msgid "preset-type"
@@ -829,12 +829,12 @@ msgstr "Ganancia automática"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:12
 msgid "Target Orientation"
-msgstr ""
+msgstr "Orientación de destino"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:23
 #: src/contents/ui/ConvolverSofaDialog.qml:119
 msgid "Azimuth"
-msgstr ""
+msgstr "Azimuth"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:39
 #: src/contents/ui/ConvolverSofaDialog.qml:124
@@ -845,7 +845,7 @@ msgstr "Reacción"
 #: src/contents/ui/ConvolverSofaDialog.qml:55
 #: src/contents/ui/ConvolverSofaDialog.qml:129
 msgid "Radius"
-msgstr ""
+msgstr "Radio"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:71
 #, fuzzy
@@ -859,15 +859,15 @@ msgstr "Base de datos"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:91
 msgid "Measurements"
-msgstr ""
+msgstr "Medidas"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:96
 msgid "Index"
-msgstr ""
+msgstr "Indice"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:154
 msgid "Apply"
-msgstr ""
+msgstr "Aplicar"
 
 #: src/contents/ui/Crossfeed.qml:59
 msgid "Cutoff"
@@ -2184,7 +2184,7 @@ msgstr "Activar/desactivar esta aplicación"
 
 #: src/contents/ui/PreferencesSheet.qml:241
 msgid "Maximum level meter update rate."
-msgstr ""
+msgstr "Tasa de actualización del medidor de nivel máximo."
 
 #: src/contents/ui/PreferencesSheet.qml:255
 msgid "Level meters label"
@@ -2205,7 +2205,7 @@ msgstr "Activar/desactivar esta aplicación"
 
 #: src/contents/ui/PreferencesSheet.qml:282
 msgid "Level meters animation duration"
-msgstr ""
+msgstr "Duración de la animación de los indicadores de nivel"
 
 #: src/contents/ui/PreferencesSheet.qml:320
 msgid "Audio delay compensation"
@@ -2213,7 +2213,7 @@ msgstr "Compensación de latencia de audio"
 
 #: src/contents/ui/PreferencesSheet.qml:335
 msgid "Graph"
-msgstr ""
+msgstr "Gráfico"
 
 #: src/contents/ui/PreferencesSheet.qml:342
 msgid "Shape"
@@ -2262,7 +2262,7 @@ msgstr "Activar/desactivar esta aplicación"
 
 #: src/contents/ui/PreferencesSheet.qml:410
 msgid "Maximum spectrum update rate."
-msgstr ""
+msgstr "Frecuencia máxima de actualización del espectro"
 
 #: src/contents/ui/PreferencesSheet.qml:425
 msgid "Frequency Range"
@@ -2286,7 +2286,7 @@ msgstr "Perfiles más utilizados"
 
 #: src/contents/ui/PreferencesSheet.qml:502
 msgid "Window"
-msgstr ""
+msgstr "Ventana"
 
 #: src/contents/ui/PreferencesSheet.qml:511
 msgid "Force KDE's Breeze theme when Easy Effects starts"
@@ -2319,7 +2319,7 @@ msgstr "Esquema de colores"
 
 #: src/contents/ui/PreferencesSheet.qml:550
 msgid "Graphs"
-msgstr ""
+msgstr "Gráfico"
 
 #: src/contents/ui/PreferencesSheet.qml:565
 msgid "Automatic"
@@ -2371,7 +2371,7 @@ msgstr "Gris"
 
 #: src/contents/ui/PreferencesSheet.qml:580
 msgid "User"
-msgstr ""
+msgstr "Usuario"
 
 #: src/contents/ui/PreferencesSheet.qml:588
 #, fuzzy
@@ -2382,7 +2382,7 @@ msgstr "Servicio en segundo plano"
 #: src/contents/ui/PreferencesSheet.qml:597
 msgctxt "@label"
 msgid "Plot area background"
-msgstr ""
+msgstr "Fondo del área de trazado"
 
 #: src/contents/ui/PreferencesSheet.qml:606
 msgctxt "@label"
@@ -2403,7 +2403,7 @@ msgstr ""
 #: src/contents/ui/PreferencesSheet.qml:633
 msgctxt "@label"
 msgid "Border color"
-msgstr ""
+msgstr "Color del borde"
 
 #: src/contents/ui/PreferencesSheet.qml:642
 #, fuzzy
@@ -2412,7 +2412,7 @@ msgstr "Ancho de la línea"
 
 #: src/contents/ui/PreferencesSheet.qml:656
 msgid "Show grid lines"
-msgstr ""
+msgstr "Mostrar líneas de la cuadrícula"
 
 #: src/contents/ui/PreferencesSheet.qml:674
 msgid "Autoload delay"
@@ -3099,12 +3099,12 @@ msgstr "R"
 #: src/units.hpp:63
 msgctxt "The SOFA audio file format"
 msgid "SOFA"
-msgstr ""
+msgstr "SOFA"
 
 #: src/units.hpp:64
 msgctxt "The WAV audio file format"
 msgid "WAV"
-msgstr ""
+msgstr "WAV"
 
 #: src/units.hpp:67
 #, fuzzy
@@ -3151,7 +3151,7 @@ msgstr "kHz"
 #: src/units.hpp:74
 msgctxt "loudness full scale unit abbreviation"
 msgid "LUFS"
-msgstr ""
+msgstr "LUFS"
 
 #: src/units.hpp:75
 #, fuzzy
@@ -3174,12 +3174,12 @@ msgstr "cm"
 #: src/units.hpp:78
 msgctxt "degrees Celsius unit abbreviation"
 msgid "°C"
-msgstr ""
+msgstr "°C"
 
 #: src/units.hpp:79
 msgctxt "bit unit (plural)"
 msgid "bits"
-msgstr ""
+msgstr "bits"
 
 #: src/units.hpp:80
 #, fuzzy
@@ -3190,22 +3190,22 @@ msgstr "cuadros"
 #: src/units.hpp:81
 msgctxt "frames per second abbreviation"
 msgid "fps"
-msgstr ""
+msgstr "fps"
 
 #: src/units.hpp:84
 msgctxt "thousand abbreviation (single letter)"
 msgid "k"
-msgstr ""
+msgstr "k"
 
 #: src/units.hpp:85
 msgctxt "percentage symbol"
 msgid "%"
-msgstr ""
+msgstr "%"
 
 #: src/units.hpp:86
 msgctxt "degrees (angle) symbol"
 msgid "°"
-msgstr ""
+msgstr "°"
 
 #: src/units.hpp:87
 msgctxt "minus infinity abbreviation"

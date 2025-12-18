@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-12-11 19:26-0300\n"
-"PO-Revision-Date: 2025-12-07 19:47+0000\n"
+"PO-Revision-Date: 2025-12-18 00:00+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/easyeffects/main/"
 "nl/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.15-dev\n"
+"X-Generator: Weblate 5.15.1-dev\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -68,7 +68,7 @@ msgstr "Toon de actieve invoer-/uitvoer­voorinstelling."
 
 #: src/command_line_parser.cpp:50
 msgid "preset-type"
-msgstr "voor­instellingstype"
+msgstr "voorinstellings­type"
 
 #: src/command_line_parser.cpp:51
 #, fuzzy
@@ -829,21 +829,19 @@ msgstr ""
 #: src/contents/ui/ConvolverSofaDialog.qml:23
 #: src/contents/ui/ConvolverSofaDialog.qml:119
 msgid "Azimuth"
-msgstr ""
+msgstr "Azimut"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:39
 #: src/contents/ui/ConvolverSofaDialog.qml:124
-#, fuzzy
 msgid "Elevation"
-msgstr "Vermindering"
+msgstr "Hoogte"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:55
 #: src/contents/ui/ConvolverSofaDialog.qml:129
 msgid "Radius"
-msgstr ""
+msgstr "Straal"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:71
-#, fuzzy
 msgid "Status"
 msgstr "Status"
 
@@ -853,13 +851,12 @@ msgid "Database"
 msgstr "Database"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:91
-#, fuzzy
 msgid "Measurements"
-msgstr "Ruisniveau meten"
+msgstr "Metingen"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:96
 msgid "Index"
-msgstr ""
+msgstr "Index"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:154
 msgid "Apply"
@@ -2494,7 +2491,6 @@ msgid "Community"
 msgstr "Gemeenschap"
 
 #: src/contents/ui/PresetsDialog.qml:96
-#, fuzzy
 msgid "Autoload"
 msgstr "Automatisch laden"
 
@@ -3068,13 +3064,11 @@ msgid "R"
 msgstr "R"
 
 #: src/units.hpp:63
-#, fuzzy
 msgctxt "The SOFA audio file format"
 msgid "SOFA"
 msgstr "SOFA"
 
 #: src/units.hpp:64
-#, fuzzy
 msgctxt "The WAV audio file format"
 msgid "WAV"
 msgstr "WAV"
@@ -3135,7 +3129,6 @@ msgid "cm"
 msgstr "cm"
 
 #: src/units.hpp:78
-#, fuzzy
 msgctxt "degrees Celsius unit abbreviation"
 msgid "°C"
 msgstr "°C"
@@ -3166,10 +3159,9 @@ msgid "%"
 msgstr "%"
 
 #: src/units.hpp:86
-#, fuzzy
 msgctxt "degrees (angle) symbol"
 msgid "°"
-msgstr "°C"
+msgstr "°"
 
 #: src/units.hpp:87
 msgctxt "minus infinity abbreviation"
