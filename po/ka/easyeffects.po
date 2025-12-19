@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-12-11 19:26-0300\n"
-"PO-Revision-Date: 2025-07-20 18:39+0000\n"
+"PO-Revision-Date: 2025-12-19 18:00+0000\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ka/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.13-dev\n"
+"X-Generator: Weblate 5.15.1\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -87,24 +87,20 @@ msgid "Must specify preset type: input/output."
 msgstr ""
 
 #: src/command_line_parser.cpp:159
-#, fuzzy
 msgid "Output presets"
-msgstr "გამოტანის პრესეტი"
+msgstr "გამოტანის პრესეტები"
 
 #: src/command_line_parser.cpp:161
-#, fuzzy
 msgid "No output presets."
-msgstr "გამოტანის პრესეტი"
+msgstr "გამოტანის პრესეტების გარეშე."
 
 #: src/command_line_parser.cpp:172
-#, fuzzy
 msgid "Input presets"
-msgstr "შეყვანის პრესეტი"
+msgstr "შეყვანის პრესეტები"
 
 #: src/command_line_parser.cpp:174
-#, fuzzy
 msgid "No input presets."
-msgstr "შეყვანის პრესეტი"
+msgstr "შეყვანის პრესეტების გარეშე."
 
 #: src/command_line_parser.cpp:204
 msgid "Specified preset does not exist."
@@ -139,9 +135,8 @@ msgstr "მომენტალური გაზომვა"
 
 #: src/contents/ui/Autogain.qml:60 src/contents/ui/Autogain.qml:139
 #: src/contents/ui/LevelMeter.qml:149
-#, fuzzy
 msgid "Short-term"
-msgstr "მოკლევადიანი გაზომვა"
+msgstr "მოკლევადიანი"
 
 #: src/contents/ui/Autogain.qml:60 src/contents/ui/Autogain.qml:149
 #: src/contents/ui/LevelMeter.qml:159
@@ -173,9 +168,8 @@ msgid "Silence"
 msgstr "სიჩუმე"
 
 #: src/contents/ui/Autogain.qml:101
-#, fuzzy
 msgid "Maximum history"
-msgstr "მაქსიმუმი"
+msgstr "მაქსიმალური ისტორია"
 
 #: src/contents/ui/Autogain.qml:124 src/contents/ui/Autogain.qml:179
 #: src/contents/ui/BassLoudness.qml:47 src/contents/ui/LevelMeter.qml:127
@@ -192,7 +186,6 @@ msgid "Range"
 msgstr "დიაპაზონი"
 
 #: src/contents/ui/Autogain.qml:189
-#, fuzzy
 msgid "Output gain"
 msgstr "გამოტანის გაძლიერება"
 
@@ -212,9 +205,8 @@ msgstr "გამოტანის გაძლიერება"
 #: src/contents/ui/RNNoise.qml:68 src/contents/ui/RNNoise.qml:282
 #: src/contents/ui/RNNoise.qml:284 src/contents/ui/RNNoise.qml:302
 #: src/contents/ui/Speex.qml:155 src/contents/ui/StereoTools.qml:370
-#, fuzzy
 msgid "Using %1"
-msgstr "ვიყენებ {}"
+msgstr "ვიყენებ %1"
 
 #: src/contents/ui/Autogain.qml:229 src/contents/ui/DeepFilterNet.qml:192
 #: src/contents/ui/LevelMeter.qml:213 src/contents/ui/Pitch.qml:263
@@ -222,9 +214,8 @@ msgid "Reset history"
 msgstr ""
 
 #: src/contents/ui/Autogain.qml:236
-#, fuzzy
 msgid "Force silence"
-msgstr "სიჩუმე"
+msgstr "ნაძალადევი სიჩუმე"
 
 #: src/contents/ui/Autogain.qml:237
 msgid "Force silence when the level is below the silence threshold"
@@ -730,14 +721,12 @@ msgid "Stereo split"
 msgstr "სტერეოს გაყოფა"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:31
-#, fuzzy
 msgid "Imported a new Convolver impulse file."
-msgstr "საზოგადო პრესეტის ძებნა"
+msgstr "შემოტანილია ახალი Convolver Impulse-ის ფაილი."
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:33
-#, fuzzy
 msgid "Failed to import the Convolver impulse file."
-msgstr "საზოგადო პრესეტის ძებნა"
+msgstr "Convolver impulse-ის ფაილის შემოტანის შეცდომა."
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:47
 #: src/contents/ui/MenuAddPlugins.qml:168
@@ -755,14 +744,12 @@ msgid "Are you sure you want to remove this impulse response from the list?"
 msgstr ""
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:95
-#, fuzzy
 msgid "Removed the %1 Convolver impulse."
-msgstr "საზოგადო პრესეტის ძებნა"
+msgstr "წაიშალა %1 Convolver impulse."
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:97
-#, fuzzy
 msgid "Failed to remove the %1 Convolver impulse."
-msgstr "საზოგადო პრესეტის ძებნა"
+msgstr "%1 Convolver impulse-ის წაშლის შეცდომა."
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:114
 #, fuzzy
@@ -781,9 +768,8 @@ msgid "Close"
 msgstr ""
 
 #: src/contents/ui/Convolver.qml:48
-#, fuzzy
 msgid "Loaded the %1 Convolver impulse."
-msgstr "საზოგადო პრესეტის ძებნა"
+msgstr "ჩაიტვირთა %1 Convolver impulse."
 
 #: src/contents/ui/Convolver.qml:50 src/contents/ui/Convolver.qml:324
 msgid "Convolver impulse is not set"
@@ -794,9 +780,8 @@ msgid "The Convolver is in passthrough mode."
 msgstr ""
 
 #: src/contents/ui/Convolver.qml:56
-#, fuzzy
 msgid "Failed to load the %1 impulse. The Convolver is in passthrough mode."
-msgstr "საზოგადო პრესეტის ძებნა"
+msgstr "%1 Convolver impulse-ის ჩატვირთვა ჩავარდა. Convolver გამჭოლ რეჟიმშია."
 
 #: src/contents/ui/Convolver.qml:133
 msgid "First"
@@ -1316,24 +1301,20 @@ msgid "APO preset"
 msgstr "შაბლონი"
 
 #: src/contents/ui/Equalizer.qml:52
-#, fuzzy
 msgid "Failed to import the Equalizer APO preset file."
-msgstr "საზოგადო პრესეტის ძებნა"
+msgstr "ეკვალიზერის APO პრესეტის ფაილის შემოტანა ჩავარდა."
 
 #: src/contents/ui/Equalizer.qml:57
-#, fuzzy
 msgid "Imported the Equalizer APO preset file."
-msgstr "ეკვალაიზერიAPI-ის პრესეტები"
+msgstr "ეკვალაიზერის APO პრესეტის ფაილი შემოტანილია."
 
 #: src/contents/ui/Equalizer.qml:59
-#, fuzzy
 msgid "Imported the Equalizer APO preset file into the left channel."
-msgstr "ეკვალაიზერიAPI-ის პრესეტები"
+msgstr "შემოტანილია ეკვალაიზერის APO პრესეტის ფაილი მარცხენა არხში."
 
 #: src/contents/ui/Equalizer.qml:61
-#, fuzzy
 msgid "Imported the Equalizer APO preset file into the right channel."
-msgstr "ეკვალაიზერიAPI-ის პრესეტები"
+msgstr "შემოტანილია ეკვალაიზერის APO პრესეტის ფაილი მარჯვენა არხში."
 
 #: src/contents/ui/Equalizer.qml:74
 #, fuzzy
@@ -1341,40 +1322,41 @@ msgid "GraphicEQ preset"
 msgstr "პრესეტის შემოტანა"
 
 #: src/contents/ui/Equalizer.qml:77
-#, fuzzy
 msgid "Imported the GraphicEQ preset file."
-msgstr "პრესეტის შემოტანა"
+msgstr "შემოტანილია GraphicsEQ-ის პრესეტის ფაილი."
 
 #: src/contents/ui/Equalizer.qml:79
-#, fuzzy
 msgid "Failed to import the GraphicEQ preset file."
-msgstr "პრესეტის შემოტანა"
+msgstr "GraphicsEQ-ის პრესეტის ფაილის შემოტანა ჩავარდა."
 
 #: src/contents/ui/Equalizer.qml:92
-#, fuzzy
 msgid ""
 "Failed to export the current Equalizer settings to an external APO preset "
 "file."
-msgstr "საზოგადო პრესეტის ძებნა"
+msgstr ""
+"ეკვალაიზერის მიმდინარე პარამეტრების გარე APO პრესეტის ფაილში გატანა ჩავარდა."
 
 #: src/contents/ui/Equalizer.qml:97
-#, fuzzy
 msgid "Exported the current Equalizer settings to an external APO preset file."
-msgstr "ეკვალაიზერიAPI-ის პრესეტები"
+msgstr ""
+"ეკვალაიზერის მიმდინარე პარამეტრების გატანა გარე APO პრესეტის ფაილში "
+"წარმატებულია."
 
 #: src/contents/ui/Equalizer.qml:99
-#, fuzzy
 msgid ""
 "Exported the current Equalizer settings of the left channel to an external "
 "APO preset file."
-msgstr "ეკვალაიზერიAPI-ის პრესეტები"
+msgstr ""
+"მიმდინარე ეკვალაიზერის პარამეტრების გარე APO პრესეტის ფაილის მარცხენა არხში "
+"გატანა წარმატებით დასრულდა."
 
 #: src/contents/ui/Equalizer.qml:101
-#, fuzzy
 msgid ""
 "Exported the current Equalizer settings of the right channel to an external "
 "APO preset file."
-msgstr "ეკვალაიზერიAPI-ის პრესეტები"
+msgstr ""
+"მიმდინარე ეკვალაიზერის პარამეტრების გარე APO პრესეტის ფაილის მარჯვენა არხში "
+"გატანა წარმატებით დასრულდა."
 
 #: src/contents/ui/Equalizer.qml:125 src/contents/ui/Filter.qml:77
 #: src/contents/ui/Loudness.qml:57
@@ -2089,7 +2071,7 @@ msgstr ""
 
 #: src/contents/ui/Pitch.qml:144 src/tags_plugin_name.cpp:48
 msgid "Pitch"
-msgstr "Pitch"
+msgstr "ხმის ტონი"
 
 #: src/contents/ui/Pitch.qml:155
 msgid "Octaves"
@@ -2562,14 +2544,13 @@ msgid "Copy to local presets"
 msgstr "ლოკალური პრესეტების სია"
 
 #: src/contents/ui/PresetsCommunityPage.qml:124
-#, fuzzy
 msgid "Imported the %1 community preset to the list of local presets."
-msgstr "საზოგადო პრესეტის ძებნა"
+msgstr "%1-ის საზოგადოების პრესეტი შემოტანილია ლოკალური პრესეტების სიაში."
 
 #: src/contents/ui/PresetsCommunityPage.qml:126
-#, fuzzy
 msgid "Failed to import the %1 community preset to the list of local presets."
-msgstr "საზოგადო პრესეტის ძებნა"
+msgstr ""
+"%1-ის საზოგადოების სპრესეტის ლოკალური პრესეტების სიაში შემოტანა ჩავარდა."
 
 #: src/contents/ui/PresetsDialog.qml:80 src/contents/ui/PresetsDialog.qml:137
 msgid "Local"
@@ -2593,14 +2574,12 @@ msgid "Fallback Preset"
 msgstr ""
 
 #: src/contents/ui/PresetsLocalPage.qml:34
-#, fuzzy
 msgid "Imported a new local preset from an external file."
-msgstr "საზოგადო პრესეტის ძებნა"
+msgstr "ახალი ლოკალური პრესეტი შემოტანილია გარე ფაილიდან."
 
 #: src/contents/ui/PresetsLocalPage.qml:36
-#, fuzzy
 msgid "Failed to import a new local preset from an external file."
-msgstr "საზოგადო პრესეტის ძებნა"
+msgstr "ახალი ლოკალური პრესეტის გარე ფაილიდან შემოტანა ჩავარდა."
 
 #: src/contents/ui/PresetsLocalPage.qml:45
 #, fuzzy
@@ -2608,14 +2587,12 @@ msgid "Export Presets"
 msgstr "შეყვანის პრესეტი"
 
 #: src/contents/ui/PresetsLocalPage.qml:48
-#, fuzzy
 msgid "Exported all presets to an external folder."
-msgstr "საზოგადო პრესეტის ძებნა"
+msgstr "ყველა პრესეტი გატანილია გარე საქაღალდეში."
 
 #: src/contents/ui/PresetsLocalPage.qml:50
-#, fuzzy
 msgid "Failed to export all presets to an external folder."
-msgstr "საზოგადო პრესეტის ძებნა"
+msgstr "ყველა პრესეტის გარე საქაღალდეში გატანა ჩავარდა."
 
 #: src/contents/ui/PresetsLocalPage.qml:65
 msgid "New preset name"
@@ -2658,14 +2635,12 @@ msgid ""
 msgstr ""
 
 #: src/contents/ui/PresetsLocalPage.qml:198
-#, fuzzy
 msgid "Saved the current settings to %1 local preset."
-msgstr "საზოგადო პრესეტის ძებნა"
+msgstr "მიმდინარე პარამეტრები შენახულია %1-ის ლოკალურ პრესეტში."
 
 #: src/contents/ui/PresetsLocalPage.qml:200
-#, fuzzy
 msgid "Failed to save the current settings to %1 local preset."
-msgstr "საზოგადო პრესეტის ძებნა"
+msgstr "მიმდინარე პარამეტრების %1-ის ლოკალურ პრესეტში შენახვა ჩავარდა."
 
 #: src/contents/ui/PresetsLocalPage.qml:208
 #, fuzzy
@@ -2680,14 +2655,12 @@ msgid ""
 msgstr ""
 
 #: src/contents/ui/PresetsLocalPage.qml:213
-#, fuzzy
 msgid "Removed the %1 local preset."
-msgstr "ლოკალური პრესეტების ძებნა"
+msgstr "%1-ის ლოკალური პრესეტი წაიშალა."
 
 #: src/contents/ui/PresetsLocalPage.qml:215
-#, fuzzy
 msgid "Failed to remove the %1 local preset."
-msgstr "საზოგადო პრესეტის ძებნა"
+msgstr "%1-ის ლოკალური პრესეტის წაშლის შეცდომა."
 
 #: src/contents/ui/PresetsLocalPage.qml:223
 #, fuzzy
@@ -2812,14 +2785,12 @@ msgid "Large occupied hall"
 msgstr ""
 
 #: src/contents/ui/RNNoise.qml:44
-#, fuzzy
 msgid "Imported a new RNNoise model file."
-msgstr "საზოგადო პრესეტის ძებნა"
+msgstr "RNNoise-ის ახალი მოდელის ფაილი შემოტანილია."
 
 #: src/contents/ui/RNNoise.qml:46
-#, fuzzy
 msgid "Failed to import the RNNoise model file."
-msgstr "საზოგადო პრესეტის ძებნა"
+msgstr "RNNoise-ის მოდელის ფაილის შემოტანა ჩავარდა."
 
 #: src/contents/ui/RNNoise.qml:57 src/contents/ui/RNNoise.qml:68
 #: src/contents/ui/RNNoise.qml:282 src/contents/ui/RNNoise.qml:284
@@ -2837,14 +2808,12 @@ msgid "Using %1 Model"
 msgstr "ვიყენებ {}"
 
 #: src/contents/ui/RNNoise.qml:66
-#, fuzzy
 msgid "Loaded the %1 RNNoise model."
-msgstr "საზოგადო პრესეტის ძებნა"
+msgstr "%1-ის RNNoise მოდელი ჩატვირთულია."
 
 #: src/contents/ui/RNNoise.qml:70
-#, fuzzy
 msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
-msgstr "საზოგადო პრესეტის ძებნა"
+msgstr "%1 მოდელის ჩატვირთვა ჩავარდა. გადართვა სტანდარტულ RNNoise მოდელზე."
 
 #: src/contents/ui/RNNoise.qml:89 src/contents/ui/Speex.qml:98
 #, fuzzy
@@ -2871,14 +2840,12 @@ msgid "Delete this model"
 msgstr "პრესეტის შემოტანა"
 
 #: src/contents/ui/RNNoise.qml:248
-#, fuzzy
 msgid "Removed the %1 RNNoise model."
-msgstr "საზოგადო პრესეტის ძებნა"
+msgstr "წაიშალა %1 RNNoise მოდელი."
 
 #: src/contents/ui/RNNoise.qml:250
-#, fuzzy
 msgid "Failed to remove the %1 RNNoise model."
-msgstr "საზოგადო პრესეტის ძებნა"
+msgstr "%1 RNNoise მოდელის წაშლა ჩავარდა."
 
 #: src/contents/ui/RNNoise.qml:319
 #, fuzzy
