@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-12-11 19:26-0300\n"
-"PO-Revision-Date: 2025-12-18 00:00+0000\n"
+"PO-Revision-Date: 2025-12-19 18:00+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/easyeffects/main/"
 "nl/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.15.1-dev\n"
+"X-Generator: Weblate 5.15.1\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -824,7 +824,7 @@ msgstr "Automatisch versterken"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:12
 msgid "Target Orientation"
-msgstr ""
+msgstr "Doel­oriëntatie"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:23
 #: src/contents/ui/ConvolverSofaDialog.qml:119
@@ -1948,7 +1948,7 @@ msgstr "Geen cliënten"
 #: src/contents/ui/PipeWirePage.qml:296
 #: src/contents/ui/PreferencesSheet.qml:301
 msgid "State"
-msgstr "Status"
+msgstr "Staat"
 
 #: src/contents/ui/PipeWirePage.qml:303
 #: src/contents/ui/PreferencesSheet.qml:308
