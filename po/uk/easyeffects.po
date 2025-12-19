@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-12-11 19:26-0300\n"
-"PO-Revision-Date: 2025-12-19 03:00+0000\n"
+"PO-Revision-Date: 2025-12-19 18:00+0000\n"
 "Last-Translator: Володимир <vlzuykov@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
@@ -2439,7 +2439,7 @@ msgstr "Створити"
 
 #: src/contents/ui/PresetsAutoloadPage.qml:97
 msgid "Create a new autoload preset"
-msgstr "Створення нового пресету автозавантаження"
+msgstr "Створити новий пресет автозавантаження"
 
 #: src/contents/ui/PresetsAutoloadPage.qml:186
 msgid "Remove this autoload preset"
