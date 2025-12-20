@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-12-11 19:26-0300\n"
-"PO-Revision-Date: 2025-12-19 03:00+0000\n"
+"PO-Revision-Date: 2025-12-20 12:36+0000\n"
 "Last-Translator: Lito Parra <lito.15@proton.me>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
 "es/>\n"
@@ -26,8 +26,8 @@ msgid ""
 "system app settings."
 msgstr ""
 "No se pudo activar el inicio automático porque el acceso en segundo plano "
-"está restringido por el sistema. Habilita la ejecución en segundo plano para "
-"Easy Effects desde la configuración del sistema."
+"está restringido por el sistema. Permite que Easy Effects se ejecute en "
+"segundo plano desde la configuración del sistema."
 
 #: src/command_line_parser.cpp:44
 msgid "Quit Easy Effects. Useful when running in service mode."
@@ -401,7 +401,7 @@ msgstr "Cantidad de aumento de ganancia"
 #: src/contents/ui/Compressor.qml:114 src/contents/ui/Deesser.qml:100
 #: src/contents/ui/Expander.qml:74 src/contents/ui/MultibandCompressor.qml:346
 msgid "Ratio"
-msgstr "Ratio (n:1)"
+msgstr "Ratio"
 
 #: src/contents/ui/Compressor.qml:130 src/contents/ui/Expander.qml:90
 #: src/contents/ui/Limiter.qml:433 src/contents/ui/MultibandCompressor.qml:361
@@ -986,7 +986,7 @@ msgstr "Ganancia F1"
 
 #: src/contents/ui/Deesser.qml:216
 msgid "F2 level"
-msgstr "Ganancia F2"
+msgstr "Nivel F2"
 
 #: src/contents/ui/Deesser.qml:234
 msgid "F2 peak Q"
@@ -2098,7 +2098,7 @@ msgstr "Ignorar los flujos del monitor de dispositivos"
 
 #: src/contents/ui/PreferencesSheet.qml:162
 msgid "Use cubic volume"
-msgstr "Usar volumen cúbico"
+msgstr "Volumen cúbico"
 
 #: src/contents/ui/PreferencesSheet.qml:163
 msgid ""
@@ -2106,7 +2106,7 @@ msgid ""
 "percentages results in a lower perceived volume while the loudness appears "
 "to change more evenly across the slider."
 msgstr ""
-"Utilizar escala cúbica en lugar de escala linear para el volumen del sonido. "
+"Usar la escala cúbica en lugar de escala linear para el volumen del sonido. "
 "Un porcentaje más bajo resulta en menor volumen percibido y este cambia con "
 "más consistencia a medida que se mueve el deslizador."
 
