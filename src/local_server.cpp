@@ -187,8 +187,8 @@ void LocalServer::onReadyRead() {
         if (matches.size() == 2U) {
           auto pipeline_type = pipeline_from(matches[1].str());
 
-          QString preset_name = (pipeline_type == PipelineType::input) ? DbMain::lastLoadedInputPreset()
-                                                                       : DbMain::lastLoadedOutputPreset();
+          QString preset_name = (pipeline_type == PipelineType::input) ? DbMain::lastLoadedInputPreset() + "\n"
+                                                                       : DbMain::lastLoadedOutputPreset() + "\n";
 
           socket->write(preset_name.toUtf8());
         }
