@@ -20,6 +20,7 @@
 #include "local_client.hpp"
 #include <qlocalsocket.h>
 #include <qobject.h>
+#include <qstandardpaths.h>
 #include <format>
 #include <memory>
 #include <string>
@@ -28,7 +29,9 @@
 #include "util.hpp"
 
 LocalClient::LocalClient(QObject* parent) : QObject(parent), client(std::make_unique<QLocalSocket>(this)) {
-  client->connectToServer(tags::local_server::server_name);
+  auto path = QStandardPaths::writableLocation(QStandardPaths::RuntimeLocation) + "/" + tags::local_server::server_name;
+
+  client->connectToServer(path);
 
   if (!client->waitForConnected()) {
     util::debug("Could not connect to the local server");

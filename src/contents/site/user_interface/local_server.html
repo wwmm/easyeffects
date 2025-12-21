@@ -2269,9 +2269,9 @@
 <h2 id="sending-commands">Sending commands</h2>
 <p>You can send commands to the server using <code>socat</code> or to the socket directly with the programming language of your choice.</p>
 <h3 id="example">Example</h3>
-<pre><code class="language-bash">echo &quot;load_preset:output:MyPresetName&quot; | socat - UNIX-CONNECT:/tmp/EasyEffectsServer
+<pre><code class="language-bash">echo &quot;load_preset:output:MyPresetName&quot; | socat - UNIX-CONNECT:/run/user/1000/EasyEffectsServer
 </code></pre>
-<p><em>Note: The socket location might vary.</em></p>
+<p><em>Note: The <code>1000</code> in the server path is an id number that will change from one user to another.</em></p>
 <h2 id="general-commands">General commands</h2>
 <table>
 <thead>
@@ -2328,18 +2328,18 @@
 <code>set_property:pipeline:plugin_id:instance_id:property_name:value</code></p>
 <p><strong>Example 1:</strong>
 Set the compressor threshold on the output pipeline to -20dB:</p>
-<pre><code class="language-bash">echo &quot;set_property:output:compressor:0:threshold:-20&quot; | socat - UNIX-CONNECT:/tmp/EasyEffectsServer
+<pre><code class="language-bash">echo &quot;set_property:output:compressor:0:threshold:-20&quot; | socat - UNIX-CONNECT:/run/user/1000/EasyEffectsServer
 </code></pre>
 <p><strong>Example 2:</strong>
 Set the compressor <code>mode</code> to <code>Upward</code>. If <a href="../database/plugins_properties.html">Plugin Properties</a> show <code>1: Upward</code> in the choices list:</p>
-<pre><code class="language-bash">echo &quot;set_property:output:compressor:0:mode:1&quot; | socat - UNIX-CONNECT:/tmp/EasyEffectsServer
+<pre><code class="language-bash">echo &quot;set_property:output:compressor:0:mode:1&quot; | socat - UNIX-CONNECT:/run/user/1000/EasyEffectsServer
 </code></pre>
 <h3 id="get-property">Get property</h3>
 <p><strong>Format:</strong>
 <code>get_property:pipeline:plugin_id:instance_id:property_name</code></p>
 <p><strong>Example:</strong>
 Get the current output gain of the equalizer:</p>
-<pre><code class="language-bash">echo &quot;get_property:output:equalizer:0:outputGain&quot; | socat - UNIX-CONNECT:/tmp/EasyEffectsServer
+<pre><code class="language-bash">echo &quot;get_property:output:equalizer:0:outputGain&quot; | socat - UNIX-CONNECT:/run/user/1000/EasyEffectsServer
 </code></pre>
 
 

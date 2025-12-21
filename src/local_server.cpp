@@ -20,6 +20,7 @@
 #include "local_server.hpp"
 #include <kconfigskeleton.h>
 #include <qobject.h>
+#include <qstandardpaths.h>
 #include <qtmetamacros.h>
 #include <QLocalServer>
 #include <QMetaType>
@@ -50,9 +51,11 @@ LocalServer::~LocalServer() {
 }
 
 void LocalServer::startServer() {
-  QLocalServer::removeServer(tags::local_server::server_name);
+  auto path = QStandardPaths::writableLocation(QStandardPaths::RuntimeLocation) + "/" + tags::local_server::server_name;
 
-  if (server->listen(tags::local_server::server_name)) {
+  QLocalServer::removeServer(path);
+
+  if (server->listen(path)) {
     util::debug(std::format("Local socket server started. Listening on the name: {}", tags::local_server::server_name));
 
   } else {

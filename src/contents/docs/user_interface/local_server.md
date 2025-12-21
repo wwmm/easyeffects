@@ -11,10 +11,10 @@ You can send commands to the server using `socat` or to the socket directly with
 ### Example
 
 ```bash
-echo "load_preset:output:MyPresetName" | socat - UNIX-CONNECT:/tmp/EasyEffectsServer
+echo "load_preset:output:MyPresetName" | socat - UNIX-CONNECT:/run/user/1000/EasyEffectsServer
 ```
 
-*Note: The socket location might vary.*
+*Note: The `1000` in the server path is an id number that will change from one user to another.*
 
 ## General commands
 
@@ -51,13 +51,13 @@ You can modify individual plugin parameters on the fly using the `set_property` 
 **Example 1:**
 Set the compressor threshold on the output pipeline to -20dB:
 ```bash
-echo "set_property:output:compressor:0:threshold:-20" | socat - UNIX-CONNECT:/tmp/EasyEffectsServer
+echo "set_property:output:compressor:0:threshold:-20" | socat - UNIX-CONNECT:/run/user/1000/EasyEffectsServer
 ```
 
 **Example 2:**
 Set the compressor `mode` to `Upward`. If [Plugin Properties](../database/plugins_properties.md) show `1: Upward` in the choices list:
 ```bash
-echo "set_property:output:compressor:0:mode:1" | socat - UNIX-CONNECT:/tmp/EasyEffectsServer
+echo "set_property:output:compressor:0:mode:1" | socat - UNIX-CONNECT:/run/user/1000/EasyEffectsServer
 ```
 
 ### Get property
@@ -68,5 +68,5 @@ echo "set_property:output:compressor:0:mode:1" | socat - UNIX-CONNECT:/tmp/EasyE
 **Example:**
 Get the current output gain of the equalizer:
 ```bash
-echo "get_property:output:equalizer:0:outputGain" | socat - UNIX-CONNECT:/tmp/EasyEffectsServer
+echo "get_property:output:equalizer:0:outputGain" | socat - UNIX-CONNECT:/run/user/1000/EasyEffectsServer
 ```
