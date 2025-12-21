@@ -172,7 +172,7 @@ void LocalServer::onReadyRead() {
 
           const auto value = get_property(pipeline, plugin_name, instance_id, property);
 
-          socket->write(value.c_str());
+          socket->write((value + "\n").c_str());
         }
       } else if (std::strncmp(buf, tags::local_server::get_last_loaded_preset,
                               strlen(tags::local_server::get_last_loaded_preset)) == 0) {
