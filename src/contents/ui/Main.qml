@@ -161,7 +161,7 @@ Kirigami.ApplicationWindow {
     Shortcut {
         sequences: ["F1"]
         onActivated: {
-            helpSheet.open();
+            Qt.openUrlExternally("https://wwmm.github.io/easyeffects/");
         }
     }
 
