@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-12-11 19:26-0300\n"
-"PO-Revision-Date: 2025-12-20 12:36+0000\n"
+"PO-Revision-Date: 2025-12-21 09:00+0000\n"
 "Last-Translator: Lito Parra <lito.15@proton.me>\n"
 "Language-Team: Spanish (Mexico) <https://hosted.weblate.org/projects/"
 "easyeffects/main/es_MX/>\n"
@@ -899,38 +899,32 @@ msgid "Bypass"
 msgstr "Bypass"
 
 #: src/contents/ui/Crystalizer.qml:83
-#, fuzzy
 msgid "Oversampling quality"
-msgstr "Sobre Muestreo"
+msgstr "Calidad de sobremuestreo"
 
 #: src/contents/ui/Crystalizer.qml:121 src/contents/ui/Limiter.qml:68
 msgid "Oversampling"
 msgstr "Sobre Muestreo"
 
 #: src/contents/ui/Crystalizer.qml:131
-#, fuzzy
 msgid "Adaptive intensity"
-msgstr "Adaptado Digital"
+msgstr "Intensidad adaptable"
 
 #: src/contents/ui/DeepFilterNet.qml:32
-#, fuzzy
 msgid "Attenuation limit"
-msgstr "Atenuación"
+msgstr "Límite de reducción de ganancia"
 
 #: src/contents/ui/DeepFilterNet.qml:86
-#, fuzzy
 msgid "Minimum processing threshold"
 msgstr "Umbral mínimo de procesamiento"
 
 #: src/contents/ui/DeepFilterNet.qml:102
-#, fuzzy
 msgid "Maximum ERB processing threshold"
-msgstr "Umbral máximo de procesamiento de ERB"
+msgstr "Umbral máximo de procesamiento ERB"
 
 #: src/contents/ui/DeepFilterNet.qml:118
-#, fuzzy
 msgid "Maximum DF processing threshold"
-msgstr "Umbral máximo de procesamiento de DF"
+msgstr "Umbral máximo de procesamiento DF"
 
 #: src/contents/ui/DeepFilterNet.qml:134
 msgid "Minimum processing buffer"
@@ -1335,7 +1329,7 @@ msgstr "FFT"
 
 #: src/contents/ui/Equalizer.qml:125 src/contents/ui/Filter.qml:77
 msgid "SPM"
-msgstr ""
+msgstr "SPM"
 
 #: src/contents/ui/Equalizer.qml:134
 msgid "Bands"
@@ -1352,7 +1346,7 @@ msgstr "Desplazamiento de frecuencias (izquierda)"
 
 #: src/contents/ui/Equalizer.qml:175 src/contents/ui/Equalizer.qml:192
 msgid "st"
-msgstr ""
+msgstr "st"
 
 #: src/contents/ui/Equalizer.qml:184
 msgid "Pitch right"
@@ -1441,35 +1435,35 @@ msgstr "Pico real"
 
 #: src/contents/ui/Limiter.qml:58
 msgid "Herm thin"
-msgstr ""
+msgstr "Herm thin"
 
 #: src/contents/ui/Limiter.qml:58
 msgid "Herm wide"
-msgstr ""
+msgstr "Herm wide"
 
 #: src/contents/ui/Limiter.qml:58
 msgid "Herm tail"
-msgstr ""
+msgstr "Herm tail"
 
 #: src/contents/ui/Limiter.qml:58
 msgid "Herm duck"
-msgstr ""
+msgstr "Herm duck"
 
 #: src/contents/ui/Limiter.qml:58
 msgid "Exp thin"
-msgstr ""
+msgstr "Exp thin"
 
 #: src/contents/ui/Limiter.qml:58
 msgid "Exp wide"
-msgstr ""
+msgstr "Exp wide"
 
 #: src/contents/ui/Limiter.qml:58
 msgid "Exp tail"
-msgstr ""
+msgstr "Exp tail"
 
 #: src/contents/ui/Limiter.qml:58
 msgid "Exp duck"
-msgstr ""
+msgstr "Exp duck"
 
 #: src/contents/ui/Limiter.qml:58
 msgid "Line thin"
@@ -1611,19 +1605,19 @@ msgstr "Plano"
 
 #: src/contents/ui/Loudness.qml:71
 msgid "ISO226-2003"
-msgstr ""
+msgstr "ISO226-2003"
 
 #: src/contents/ui/Loudness.qml:71
 msgid "Fletcher-Munson"
-msgstr ""
+msgstr "Fletcher-Munson"
 
 #: src/contents/ui/Loudness.qml:71
 msgid "Robinson-Dadson"
-msgstr ""
+msgstr "Robinson-Dadson"
 
 #: src/contents/ui/Loudness.qml:71
 msgid "ISO226-2023"
-msgstr ""
+msgstr "ISO226-2023"
 
 #: src/contents/ui/Loudness.qml:81
 msgid "FFT size"
@@ -1639,7 +1633,7 @@ msgstr "El más rápido"
 
 #: src/contents/ui/Loudness.qml:99
 msgid "Normal"
-msgstr ""
+msgstr "Normal"
 
 #: src/contents/ui/Loudness.qml:99
 msgid "Best"
@@ -1697,7 +1691,7 @@ msgstr "Atajos"
 
 #: src/contents/ui/Main.qml:401 src/contents/ui/Main.qml:547
 msgid "Manual"
-msgstr ""
+msgstr "Manual"
 
 #: src/contents/ui/Main.qml:411 src/contents/ui/Main.qml:579
 msgid "Quit"
@@ -1725,7 +1719,7 @@ msgstr "Los efectos de audio están desactivados."
 
 #: src/contents/ui/Main.qml:513
 msgid "PipeWire"
-msgstr ""
+msgstr "PipeWire"
 
 #: src/contents/ui/Main.qml:531
 msgid "Preferences"
@@ -2056,22 +2050,25 @@ msgstr "Modo servicio"
 #: src/contents/ui/PreferencesSheet.qml:66
 msgid "Easy Effects is active in background when the window is closed."
 msgstr ""
+"Easy Effect se mantendrá corriendo en segundo plano mientras la ventana esté "
+"cerrada."
 
 #: src/contents/ui/PreferencesSheet.qml:78
 msgid "Autostart on login"
-msgstr ""
+msgstr "Ejecutar automáticamente al iniciar sesión"
 
 #: src/contents/ui/PreferencesSheet.qml:79
 msgid "Easy Effects is launched at user session startup."
 msgstr ""
+"Easy Effects se ejecutará automáticamente después de que inicies sesión."
 
 #: src/contents/ui/PreferencesSheet.qml:92
 msgid "Show the tray icon"
-msgstr ""
+msgstr "Mostrar el ícono en la bandeja del sistema"
 
 #: src/contents/ui/PreferencesSheet.qml:105
 msgid "Do not show the application window"
-msgstr ""
+msgstr "No mostrar la ventana de la aplicación"
 
 #: src/contents/ui/PreferencesSheet.qml:106
 msgid ""
@@ -2079,24 +2076,25 @@ msgid ""
 "should not be enabled. It is intended only as a workaround for systems that "
 "do not work well with the autostart of Easy Effects."
 msgstr ""
+"No mostrar la ventana de la aplicación al lanzarla. En general, esta opción "
+"no debería ser activada. Solo es usada como una solución provisional en "
+"sistemas donde el inicio automático de Easy Effects no funciona como debería."
 
 #: src/contents/ui/PreferencesSheet.qml:126
-#, fuzzy
 msgid "Process all output streams"
-msgstr "Procesar Todas las Salidas"
+msgstr "Procesar todos los flujos de salida"
 
 #: src/contents/ui/PreferencesSheet.qml:138
-#, fuzzy
 msgid "Process all input streams"
-msgstr "Procesar Todas las Entradas"
+msgstr "Procesar todos los flujos de entrada"
 
 #: src/contents/ui/PreferencesSheet.qml:150
 msgid "Ignore streams from monitor of devices"
-msgstr ""
+msgstr "Ignorar flujos de los monitores de los dispositivos"
 
 #: src/contents/ui/PreferencesSheet.qml:162
 msgid "Use cubic volume"
-msgstr ""
+msgstr "Volumen cúbico"
 
 #: src/contents/ui/PreferencesSheet.qml:163
 msgid ""
@@ -2104,10 +2102,14 @@ msgid ""
 "percentages results in a lower perceived volume while the loudness appears "
 "to change more evenly across the slider."
 msgstr ""
+"Usar la escala cúbica en lugar de la escala lineal para el volumen de cada "
+"flujo. Mientras más bajo sea el porcentaje, más bajo será el volumen "
+"percibido, y el volumen cambia de forma más pareja a medida que mueves el "
+"deslizador."
 
 #: src/contents/ui/PreferencesSheet.qml:175
 msgid "Ignore system notifications"
-msgstr ""
+msgstr "Ignorar notificaciones del sistema"
 
 #: src/contents/ui/PreferencesSheet.qml:176
 msgid ""
@@ -2115,11 +2117,13 @@ msgid ""
 "better to ignore them, but for some presets it may be recommended since they "
 "could sound too loud."
 msgstr ""
+"Procesar las notificaciones del sistema puede provocar un sonido "
+"entrecortado, por lo que puede ser mejor ignorarlas, pero para algunos "
+"perfiles se recomienda activarlo ya que podrían sonar demasiado fuertes."
 
 #: src/contents/ui/PreferencesSheet.qml:188
-#, fuzzy
 msgid "Enable/disable input monitoring"
-msgstr "Habilitar/deshabilitar esta aplicación"
+msgstr "Activar/desactivar el monitor de entradas"
 
 #: src/contents/ui/PreferencesSheet.qml:200
 msgid "Mic monitor plays to output effects pipeline"
@@ -2716,9 +2720,8 @@ msgid "Room"
 msgstr "Habitación"
 
 #: src/contents/ui/Reverb.qml:258
-#, fuzzy
 msgid "Large empty hall"
-msgstr "Habitación Vacía Grande"
+msgstr "Gran sala vacía"
 
 #: src/contents/ui/Reverb.qml:268
 msgid "Disco"
@@ -2968,7 +2971,6 @@ msgid "© 2017-2025 EasyEffects Team"
 msgstr ""
 
 #: src/main.cpp:332
-#, fuzzy
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
