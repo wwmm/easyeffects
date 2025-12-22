@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects-news\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-28 14:40+0000\n"
-"PO-Revision-Date: 2025-08-30 00:58+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2025-12-22 03:01+0000\n"
+"Last-Translator: \"Tinde (Joke)\" <jouko.tiilikainen@gmail.com>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/fi/>\n"
 "Language: fi\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.13.1-dev\n"
+"X-Generator: Weblate 5.15.1\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -25,7 +25,7 @@ msgstr "Easy Effects"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
 msgid "Audio Effects for PipeWire Applications"
-msgstr ""
+msgstr "Äänitehosteet PipeWire sovelluksiin"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:9
 msgid ""
@@ -33,12 +33,18 @@ msgid ""
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
 "few. To complement this there is also a built in spectrum analyzer."
 msgstr ""
+"Easy Effects on edistynyt äänenmuokkaustyökalu. Se sisältää muun muassa "
+"taajuuskorjaimen, rajoittimen, kompressorin ja jälkikaiuntatyökalun. Näitä "
+"täydentää myös sisäänrakennettu spektrianalysaattori."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:10
 msgid ""
 "Easy Effects is the successor to PulseEffects. Easy Effects only supports "
 "PipeWire's audio server. PulseAudio users should instead use PulseEffects."
 msgstr ""
+"Easy Effects on Pulse Effectsin seuraaja. Easyeffects tukee vain PipeWire-"
+"äänipalvelinta. PulseAudio-käyttäjien tulisi käyttää sen sijaan "
+"PulseEffectsiä."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:11
 msgid ""
@@ -46,6 +52,10 @@ msgid ""
 "with most, if not all, applications you use. All supported applications are "
 "presented in the main window, where each can be enabled individually."
 msgstr ""
+"Koska Easy Effects käyttää oletusarvoista PipeWire-äänipalvelinta, se toimii "
+"useimpien, ellei kaikkien, käyttämiesi sovellusten kanssa. Kaikki tuetut "
+"sovellukset näkyvät pääikkunassa, jossa jokainen voidaan ottaa käyttöön "
+"erikseen."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
 msgid ""
@@ -53,6 +63,9 @@ msgid ""
 "an input device, such as a microphone. This is, for example, useful in audio "
 "recording, but it also works well during voice conversations."
 msgstr ""
+"Äänen tuoton muokkaamisen lisäksi Easy Effects pystyy lisäämään tehosteita "
+"syöttölaitteeseen, kuten mikrofoniin. Tämä on hyödyllistä esimerkiksi äänen "
+"tallennuksessa, mutta se toimii hyvin myös äänikeskusteluissa."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:13
 msgid ""
@@ -60,23 +73,27 @@ msgid ""
 "configuration used in the last session. It is also possible to save all the "
 "current settings as profiles."
 msgstr ""
+"Kun Easy Effects käynnistetään, se muistaa kätevästi edellisessä istunnossa "
+"käytetyt asetukset. Voit myös tallentaa kaikki nykyiset asetukset "
+"profiileina."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:16
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:18
+#, fuzzy
 msgid "Wellington Wallace"
-msgstr ""
+msgstr "Wellington Wallace"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
 msgid "The main page showing two audio output apps"
-msgstr ""
+msgstr "Pääsivu, jossa näkyy kaksi äänilähtösovellusta"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:47
 msgid "The bass enhancer page showing audio controls"
-msgstr ""
+msgstr "Bassovahvistimen sivu, jossa näkyvät äänisäätimet"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:51
 msgid "The convolver page showing audio controls"
-msgstr ""
+msgstr "Äänisäätimiä näyttävä konvolverisivu"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:77
@@ -127,22 +144,31 @@ msgid ""
 "volunteers. You can search them on the repositories of your favorite "
 "distribution."
 msgstr ""
+"Yhteisön esiasetukset on otettu käyttöön. Käyttäjät voivat asentaa "
+"paketteja, jotka sisältävät useita Easy Effects -esiasetuksia tuotavaksi ja "
+"käytettäväksi sovelluksessa. Vapaaehtoiset ylläpitävät ja toimittavat näitä "
+"paketteja. Voit etsiä niitä suosikkijakelusi arkistoista."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
 msgid ""
 "Added the ability of collapsing the sidebar to hide the effects list and "
 "expand the area of the effects user interface."
 msgstr ""
+"Lisätty mahdollisuus kutistaa sivupalkki tehosteluettelon piilottamiseksi ja "
+"tehosteiden käyttöliittymän alueen laajentamiseksi."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
 msgid ""
 "EasyEffects won't touch streams that define PW_KEY_TARGET_OBJECT to an "
 "output device that is different from the one EasyEffects is using."
 msgstr ""
+"EasyEffects ei koske striimejä, jotka määrittävät PW_KEY_TARGET_OBJECT-"
+"muuttujalle eri tulostuslaitteelle kuin EasyEffectsin käyttämä."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:63
 msgid "Equalizer APO import feature can now apply Band-Pass filters."
 msgstr ""
+"Taajuuskorjaimen APO-tuontitoiminto voi nyt käyttää kaistanpäästösuodattimia."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:64
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:79
@@ -188,6 +214,8 @@ msgid ""
 "A change in GTK 4.14.1 prevented to apply the values inserted into the text "
 "field of our SpinButton widgets. This issue is now resolved."
 msgstr ""
+"GTK 4.14.1 -version muutos esti SpinButton-widgetien tekstikenttiin "
+"lisättyjen arvojen soveltamisen. Tämä ongelma on nyt ratkaistu."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:66
 msgid ""
@@ -195,12 +223,17 @@ msgid ""
 "anymore. So we removed it from our user interface (you can use the plugin "
 "input gain to retrieve the same functionality)."
 msgstr ""
+"Uusimmissa Maximizer-lisäosissa ei enää ole kattosäätöä. Siksi poistimme sen "
+"käyttöliittymästämme (voit käyttää lisäosan tulovahvistusta saadaksesi saman "
+"toiminnallisuuden)."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:67
 msgid ""
 "Equalizer APO import feature does not crash anymore on Flatpak when invalid "
 "values are provided."
 msgstr ""
+"Taajuuskorjaimen APO-tuontitoiminto ei enää kaadu Flatpakissa, kun annetaan "
+"virheellisiä arvoja."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:68
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:81
@@ -224,7 +257,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:421
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:437
 msgid "Other notes:"
-msgstr ""
+msgstr "Muita huomioita:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:69
 msgid ""
@@ -232,6 +265,8 @@ msgid ""
 "invited to read and follow the guidelines linked inside the README of "
 "EasyEffects master branch."
 msgstr ""
+"Jotta yhteisön esiasetukset toimitetaan oikein, paketteja pyydetään lukemaan "
+"ja noudattamaan EasyEffectsin päähaaran README-tiedostossa olevia ohjeita."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:70
 msgid ""
@@ -239,6 +274,10 @@ msgid ""
 "before 7.2.0 version are deprecated. Please reload the irs/model file inside "
 "the Convolver/RNNoise UI and resave the preset."
 msgstr ""
+"Ennen versiota 7.2.0 luodut konvolveri- ja/tai kohinanvaimennustehosteita "
+"(RNNoise) sisältävät esiasetukset ovat vanhentuneita. Lataa irs/model-"
+"tiedosto uudelleen konvolveri/RNNoise-käyttöliittymässä ja tallenna "
+"esiasetus uudelleen."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:78
 msgid ""
@@ -246,12 +285,17 @@ msgid ""
 "before the limiter even if the last two plugins in the pipeline are a "
 "limiter followed by a level meter."
 msgstr ""
+"Parannettu putken hallintajärjestelmää. Ei-limitteriset efektit sijoitetaan "
+"ennen limitteriä, vaikka kaksi viimeistä putken pluginia olisivatkin "
+"limiteri ja sitä seuraava tasomittari."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:80
 msgid ""
 "Fixed a regression that prevented the level meters to be updated under "
 "certain conditions."
 msgstr ""
+"Korjattu regressio, joka esti tasomittareiden päivittämisen tietyissä "
+"olosuhteissa."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:89
 msgid ""
@@ -259,6 +303,9 @@ msgid ""
 "allow latency offset to be properly applied by video players when PipeWire "
 "&gt; 1.0.3 is released."
 msgstr ""
+"Asetamme nyt virtuaalilaitteissamme monitor.passthrough = true. Tämä "
+"mahdollistaa viiveen offsetin oikean soveltamisen videosoittimissa, kun "
+"PipeWire > 1.0.3 julkaistaan."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:90
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:237
@@ -272,6 +319,10 @@ msgid ""
 "EE is recording from. THe stream has to be started when EE is already "
 "running for this logic to take effect."
 msgstr ""
+"EasyEffects yrittää välttää siirtymistä virtuaalisiin lähdevirtoihin, joille "
+"käyttäjä on asettanut mukautetun target.object-objektin, joka on eri kuin "
+"mikrofoni, josta EE tallentaa. Virta on käynnistettävä, kun EE on jo "
+"käynnissä, jotta tämä logiikka tulee voimaan."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:101
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:115
@@ -285,34 +336,40 @@ msgstr "Päivitetty käännöksiä."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:102
 msgid "The equalizer can export basic APO preset files"
-msgstr ""
+msgstr "Taajuuskorjain voi viedä APO-esiasetustiedostoja"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:103
 msgid ""
 "Our players/recorders tab will show the audio client binary name in the "
 "cases were no app name is defined."
 msgstr ""
+"Soittimet/tallentimet-välilehdellämme näkyy ääniasiakkaan binäärinimi "
+"tapauksissa, joissa sovelluksen nimeä ei ole määritetty."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:104
 msgid ""
 "EasyEffects version can be shown in the command line through the option --"
 "version"
-msgstr ""
+msgstr "EasyEffectsin version voi näyttää komentorivillä valitsimella --version"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:106
 msgid ""
 "A workaround for a bug in gtk4 GtkLevelBar was implemented and will be kept "
 "in place until gtk developers fiz things on their side"
 msgstr ""
+"gtk4:n GtkLevelBar-virheen kiertotapa on toteutettu ja sitä pidetään "
+"käytössä, kunnes gtk-kehittäjät saavat asiat kuntoon"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:117
 msgid ""
 "Fixed a regression introduced in 7.1.2 that could cause EasyEffects to crash"
 msgstr ""
+"Korjattu versiossa 7.1.2 esitelty regressio-ongelma, joka saattoi aiheuttaa "
+"EasyEffectsin kaatumisen"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:128
 msgid "The DeepFilterNet plugin can now be added to the preset file"
-msgstr ""
+msgstr "DeepFilterNet-laajennus voidaan nyt lisätä esiasetettuun tiedostoon"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:137
 msgid ""
