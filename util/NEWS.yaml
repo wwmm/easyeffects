@@ -9,6 +9,7 @@ Description:
 - Bug fixes∶
 - The F1 shortcut was broken and was not opening our manual.
 - A crash could happen when using multiple convolver or crystalizer instances. As well as using the convolver and the crystalizer in the same pipeline.
+- Super long preset names could make the corresponding menu button to not be visible.
 
 - Other notes∶
 - 

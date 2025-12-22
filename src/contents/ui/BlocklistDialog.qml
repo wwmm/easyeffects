@@ -128,11 +128,12 @@ Kirigami.Dialog {
                     }
 
                     contentItem: RowLayout {
-                        Layout.maximumWidth: listView.width
+                        Layout.maximumWidth: listItemDelegate.width
 
                         Controls.Label {
                             Layout.alignment: Qt.AlignLeft
                             Layout.fillWidth: true
+                            Layout.maximumWidth: listItemDelegate.width
                             Layout.horizontalStretchFactor: 1
                             text: listItemDelegate.name
                             elide: Text.ElideRight
