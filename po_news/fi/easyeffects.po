@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects-news\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-28 14:40+0000\n"
-"PO-Revision-Date: 2025-12-22 03:01+0000\n"
+"PO-Revision-Date: 2025-12-23 03:00+0000\n"
 "Last-Translator: \"Tinde (Joke)\" <jouko.tiilikainen@gmail.com>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/fi/>\n"
@@ -441,10 +441,12 @@ msgid ""
 "Added the ability to select and load multiple files in the opening dialogs "
 "for presets, Convolver impulse responses and RNNoise models."
 msgstr ""
+"Lisätty mahdollisuus valita ja ladata useita tiedostoja avausikkunoihin "
+"esiasetuksille, konvolveriimpulssivasteille ja RNNoise-malleille."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:187
 msgid "Fixed the Solo button in the Equalizer band settings."
-msgstr ""
+msgstr "Korjattu Solo-painike taajuuskorjaimen kaistan asetuksissa."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:189
 msgid ""
@@ -454,21 +456,30 @@ msgid ""
 "future we will implement a new system to install, manage and import "
 "Community Presets."
 msgstr ""
+"Easy Effects -kansiot /etc-hakemistossa on poistettu käytöstä, eikä siellä "
+"olevia esiasetuksia enää ladata. Tällä hetkellä vain paikalliset ~/.config/"
+"easyeffects-kansion esiasetukset ladataan automaattisesti Presets-valikkoon. "
+"Tulevaisuudessa otamme käyttöön uuden järjestelmän yhteisön esiasetusten "
+"asentamiseen, hallintaan ja tuontiin."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:197
 msgid ""
 "An \"Experimental Features\" section was added to our preferences window."
-msgstr ""
+msgstr "Asetusikkunaamme lisättiin \"Kokeelliset ominaisuudet\" -osio."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:198
 msgid ""
 "The native window of the LSP plugins can be used. This is an experimental "
 "feature intended only for advanced users. So expect some bugs."
 msgstr ""
+"LSP-liitännäisten natiivia ikkunaa voidaan käyttää. Tämä on kokeellinen "
+"ominaisuus, joka on tarkoitettu vain edistyneille käyttäjille. Joten "
+"odotettavissa on joitakin virheitä."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:199
 msgid "Fractional semitone values can now be used in the Pitch Shift effect."
 msgstr ""
+"Puolisävelaskelten murtolukuja voidaan nyt käyttää Pitch Shift -tehosteessa."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:201
 msgid ""
@@ -476,10 +487,13 @@ msgid ""
 "system default device changes and Use Default is enabled. This fixes issue "
 "issue 1989."
 msgstr ""
+"PipeWire-välilehden Tulo-/lähtölaite-alasvetovalikko päivittyy, kun "
+"järjestelmän oletuslaite muuttuu ja Käytä oletusta -asetus on käytössä. Tämä "
+"korjaa ongelman numerossa 1989."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:210
 msgid "A new Level Meter plugin based on libebur128 has been added."
-msgstr ""
+msgstr "Uusi libebur128:aan perustuva Level Meter -laajennus on lisätty."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:211
 msgid ""
