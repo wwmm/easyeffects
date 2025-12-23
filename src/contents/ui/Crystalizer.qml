@@ -80,6 +80,7 @@ Kirigami.ScrollablePage {
         EeSpinBox {
             Layout.alignment: Qt.AlignHCenter
             Layout.fillWidth: false
+            enabled: crystalizerPage.pluginDB.oversampling
             label: i18n("Oversampling quality") // qmllint disable
             spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
             from: crystalizerPage.pluginDB.getMinValue("oversamplingQuality")
