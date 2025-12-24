@@ -234,11 +234,6 @@ Manager::Manager()
 
   connect(&node_manager, &NodeManager::sinkAdded, [&](NodeInfo node) { Q_EMIT sinkAdded(node); });
 
-  connect(&node_manager, &NodeManager::sourceProfileNameChanged,
-          [&](NodeInfo node) { Q_EMIT sourceRouteChanged(node); });
-
-  connect(&node_manager, &NodeManager::sinkProfileNameChanged, [&](NodeInfo node) { Q_EMIT sinkRouteChanged(node); });
-
   connect(&link_manager, &LinkManager::linkChanged, [&](LinkInfo link) { Q_EMIT linkChanged(link); });
 
   connect(&device_manager, &DeviceManager::inputRouteChanged, [&](DeviceInfo device) {

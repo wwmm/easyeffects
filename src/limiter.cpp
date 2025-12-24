@@ -74,6 +74,7 @@ Limiter::Limiter(const std::string& tag, pw::Manager* pipe_manager, PipelineType
   BIND_LV2_PORT("alr", alr, setAlr, db::Limiter::alrChanged);
   BIND_LV2_PORT("alr_at", alrAttack, setAlrAttack, db::Limiter::alrAttackChanged);
   BIND_LV2_PORT("alr_rt", alrRelease, setAlrRelease, db::Limiter::alrReleaseChanged);
+  BIND_LV2_PORT("smooth", alrKneeSmooth, setAlrKneeSmooth, db::Limiter::alrKneeSmoothChanged);
   BIND_LV2_PORT("extsc", sidechainType, setSidechainType, db::Limiter::sidechainTypeChanged);
   BIND_LV2_PORT_DB("th", threshold, setThreshold, db::Limiter::thresholdChanged, false);
   BIND_LV2_PORT_DB("knee", alrKnee, setAlrKnee, db::Limiter::alrKneeChanged, false);

@@ -442,6 +442,23 @@ Kirigami.ScrollablePage {
                             limiterPage.pluginDB.alrKnee = v;
                         }
                     }
+
+                    EeSpinBox {
+                        id: alrKneeSmooth
+
+                        Layout.alignment: Qt.AlignTop
+                        label: i18n("Smooth") // qmllint disable
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
+                        from: limiterPage.pluginDB.getMinValue("alrKneeSmooth")
+                        to: limiterPage.pluginDB.getMaxValue("alrKneeSmooth")
+                        value: limiterPage.pluginDB.alrKneeSmooth
+                        decimals: 2
+                        stepSize: 0.01
+                        unit: Units.dB
+                        onValueModified: v => {
+                            limiterPage.pluginDB.alrKneeSmooth = v;
+                        }
+                    }
                 }
             }
         }

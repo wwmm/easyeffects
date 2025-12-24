@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-12-11 19:26-0300\n"
+"POT-Creation-Date: 2025-12-24 13:24-0300\n"
 "PO-Revision-Date: 2025-12-20 12:36+0000\n"
 "Last-Translator: Lito Parra <lito.15@proton.me>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -197,12 +197,12 @@ msgstr "Ganancia de salida"
 #: src/contents/ui/Autogain.qml:212 src/contents/ui/BassEnhancer.qml:184
 #: src/contents/ui/BassLoudness.qml:104 src/contents/ui/Compressor.qml:853
 #: src/contents/ui/Convolver.qml:499 src/contents/ui/Crossfeed.qml:128
-#: src/contents/ui/Crystalizer.qml:104 src/contents/ui/DeepFilterNet.qml:175
+#: src/contents/ui/Crystalizer.qml:105 src/contents/ui/DeepFilterNet.qml:175
 #: src/contents/ui/Deesser.qml:298 src/contents/ui/Delay.qml:354
 #: src/contents/ui/EchoCanceller.qml:136 src/contents/ui/Equalizer.qml:283
 #: src/contents/ui/Exciter.qml:189 src/contents/ui/Expander.qml:803
 #: src/contents/ui/Filter.qml:198 src/contents/ui/Gate.qml:932
-#: src/contents/ui/LevelMeter.qml:196 src/contents/ui/Limiter.qml:570
+#: src/contents/ui/LevelMeter.qml:196 src/contents/ui/Limiter.qml:587
 #: src/contents/ui/Loudness.qml:153 src/contents/ui/Maximizer.qml:100
 #: src/contents/ui/MultibandCompressor.qml:946
 #: src/contents/ui/MultibandGate.qml:919 src/contents/ui/Pitch.qml:246
@@ -268,7 +268,7 @@ msgstr "Límite inferior"
 #: src/contents/ui/Deesser.qml:316 src/contents/ui/Delay.qml:392
 #: src/contents/ui/Equalizer.qml:301 src/contents/ui/Exciter.qml:207
 #: src/contents/ui/Expander.qml:821 src/contents/ui/Filter.qml:216
-#: src/contents/ui/Gate.qml:950 src/contents/ui/Limiter.qml:588
+#: src/contents/ui/Gate.qml:950 src/contents/ui/Limiter.qml:605
 #: src/contents/ui/Loudness.qml:171 src/contents/ui/Maximizer.qml:118
 #: src/contents/ui/MultibandCompressor.qml:964
 #: src/contents/ui/MultibandGate.qml:937 src/contents/ui/Reverb.qml:323
@@ -284,12 +284,12 @@ msgstr "Escuchar"
 
 #: src/contents/ui/BassEnhancer.qml:226 src/contents/ui/BassLoudness.qml:122
 #: src/contents/ui/Compressor.qml:905 src/contents/ui/Convolver.qml:534
-#: src/contents/ui/Crossfeed.qml:154 src/contents/ui/Crystalizer.qml:142
+#: src/contents/ui/Crossfeed.qml:154 src/contents/ui/Crystalizer.qml:143
 #: src/contents/ui/Deesser.qml:340 src/contents/ui/Delay.qml:406
 #: src/contents/ui/EchoCanceller.qml:164 src/contents/ui/Equalizer.qml:367
 #: src/contents/ui/Exciter.qml:231 src/contents/ui/Expander.qml:855
 #: src/contents/ui/Filter.qml:230 src/contents/ui/Gate.qml:984
-#: src/contents/ui/Limiter.qml:622 src/contents/ui/Loudness.qml:195
+#: src/contents/ui/Limiter.qml:639 src/contents/ui/Loudness.qml:195
 #: src/contents/ui/Main.qml:559 src/contents/ui/Maximizer.qml:132
 #: src/contents/ui/MultibandCompressor.qml:995
 #: src/contents/ui/MultibandGate.qml:968 src/contents/ui/Reverb.qml:337
@@ -346,15 +346,15 @@ msgstr "Quitar aplicación"
 msgid "Are you sure you want to remove this application from the list?"
 msgstr "¿Estás seguro de que quieres quitar esta aplicación de la lista?"
 
-#: src/contents/ui/BlocklistDialog.qml:151
+#: src/contents/ui/BlocklistDialog.qml:152
 msgid "Remove this app"
 msgstr "Eliminar esta aplicación"
 
-#: src/contents/ui/BlocklistDialog.qml:180
+#: src/contents/ui/BlocklistDialog.qml:181
 msgid "Show excluded apps"
 msgstr "Mostrar aplicaciones excluidas"
 
-#: src/contents/ui/BlocklistDialog.qml:181
+#: src/contents/ui/BlocklistDialog.qml:182
 msgid "Show excluded applications in the list of players/recorders"
 msgstr "Mostrar aplicaciones excluidas en la lista de reproductores/grabadores"
 
@@ -433,7 +433,7 @@ msgstr "Release"
 #: src/contents/ui/Expander.qml:286 src/contents/ui/Expander.qml:617
 #: src/contents/ui/Gate.qml:209 src/contents/ui/Gate.qml:304
 #: src/contents/ui/Gate.qml:643 src/contents/ui/Limiter.qml:179
-#: src/contents/ui/Limiter.qml:480 src/contents/ui/MultibandCompressor.qml:651
+#: src/contents/ui/Limiter.qml:497 src/contents/ui/MultibandCompressor.qml:651
 #: src/contents/ui/MultibandGate.qml:624
 msgid "Sidechain"
 msgstr "Cadena lateral"
@@ -899,15 +899,15 @@ msgstr "Silenciar"
 msgid "Bypass"
 msgstr "Supresión"
 
-#: src/contents/ui/Crystalizer.qml:83
+#: src/contents/ui/Crystalizer.qml:84
 msgid "Oversampling quality"
 msgstr "Calidad de sobremuestreo"
 
-#: src/contents/ui/Crystalizer.qml:121 src/contents/ui/Limiter.qml:68
+#: src/contents/ui/Crystalizer.qml:122 src/contents/ui/Limiter.qml:68
 msgid "Oversampling"
 msgstr "Sobremuestreo"
 
-#: src/contents/ui/Crystalizer.qml:131
+#: src/contents/ui/Crystalizer.qml:132
 msgid "Adaptive intensity"
 msgstr "Intensidad adaptable"
 
@@ -1233,7 +1233,7 @@ msgid "Frequency"
 msgstr "Frecuencia"
 
 #: src/contents/ui/EqualizerBandMenu.qml:98 src/contents/ui/Filter.qml:139
-#: src/contents/ui/Limiter.qml:471 src/contents/ui/MultibandCompressor.qml:342
+#: src/contents/ui/Limiter.qml:488 src/contents/ui/MultibandCompressor.qml:342
 #: src/contents/ui/MultibandGate.qml:228
 msgid "Gain"
 msgstr "Ganancia"
@@ -1592,11 +1592,15 @@ msgstr "Limitador"
 msgid "Stereo Link"
 msgstr "Enlace estéreo"
 
-#: src/contents/ui/Limiter.qml:388 src/contents/ui/Limiter.qml:611
+#: src/contents/ui/Limiter.qml:388 src/contents/ui/Limiter.qml:628
 msgid "Automatic level"
 msgstr "Nivel automático"
 
-#: src/contents/ui/Limiter.qml:601
+#: src/contents/ui/Limiter.qml:450
+msgid "Smooth"
+msgstr "Suavizados"
+
+#: src/contents/ui/Limiter.qml:618
 msgid "Threshold boost"
 msgstr "Aumento del umbral"
 
@@ -2462,16 +2466,16 @@ msgstr "Descripción"
 msgid "Refresh"
 msgstr "Refrescar"
 
-#: src/contents/ui/PresetsCommunityPage.qml:119
+#: src/contents/ui/PresetsCommunityPage.qml:121
 msgid "Copy to local presets"
 msgstr "Copiar a perfiles locales"
 
-#: src/contents/ui/PresetsCommunityPage.qml:124
+#: src/contents/ui/PresetsCommunityPage.qml:126
 msgid "Imported the %1 community preset to the list of local presets."
 msgstr ""
 "Se importó el perfil de la comunidad %1 a la lista de perfiles locales."
 
-#: src/contents/ui/PresetsCommunityPage.qml:126
+#: src/contents/ui/PresetsCommunityPage.qml:128
 msgid "Failed to import the %1 community preset to the list of local presets."
 msgstr ""
 "No se pudo importar el perfil de la comunidad %1 a la lista de perfiles "
@@ -2603,15 +2607,15 @@ msgstr "No se pudo renombrar el perfil local %1 a %2"
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: src/contents/ui/PresetsLocalPage.qml:285
+#: src/contents/ui/PresetsLocalPage.qml:287
 msgid "Save settings to this preset"
 msgstr "Guardar ajustes en este perfil"
 
-#: src/contents/ui/PresetsLocalPage.qml:293
+#: src/contents/ui/PresetsLocalPage.qml:295
 msgid "Rename this preset"
 msgstr "Renombrar este perfil"
 
-#: src/contents/ui/PresetsLocalPage.qml:301
+#: src/contents/ui/PresetsLocalPage.qml:303
 msgid "Delete this preset"
 msgstr "Eliminar este perfil"
 
@@ -4098,9 +4102,6 @@ msgstr "Efectos de audio simples"
 
 #~ msgid "Mixed"
 #~ msgstr "Intermedios"
-
-#~ msgid "Smooth"
-#~ msgstr "Suavizados"
 
 #~ msgid "Detector"
 #~ msgstr "Detección"

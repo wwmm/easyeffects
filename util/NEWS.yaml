@@ -4,7 +4,7 @@ Date: UNRELEASED_DATE
 
 Description: 
 - Features∶
-- Our local server was using /tmp as path. What is not the most secure thing to do. It now uses /run/user/user_id as path.
+- Our local server was using /tmp as path. What is not the most secure thing to do. It now uses /run/user/user_id.
 
 - Bug fixes∶
 - The F1 shortcut was broken and was not opening our manual.
@@ -12,7 +12,6 @@ Description:
 - Super long preset names could make the corresponding menu button to not be visible.
 
 - Other notes∶
-- 
 
 ---
 Version: 8.0.8

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-12-11 18:06-0300\n"
+"POT-Creation-Date: 2025-12-24 13:24-0300\n"
 "PO-Revision-Date: 2025-12-13 15:00+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
@@ -197,12 +197,12 @@ msgstr "Câștig de ieșire"
 #: src/contents/ui/Autogain.qml:212 src/contents/ui/BassEnhancer.qml:184
 #: src/contents/ui/BassLoudness.qml:104 src/contents/ui/Compressor.qml:853
 #: src/contents/ui/Convolver.qml:499 src/contents/ui/Crossfeed.qml:128
-#: src/contents/ui/Crystalizer.qml:104 src/contents/ui/DeepFilterNet.qml:175
+#: src/contents/ui/Crystalizer.qml:105 src/contents/ui/DeepFilterNet.qml:175
 #: src/contents/ui/Deesser.qml:298 src/contents/ui/Delay.qml:354
 #: src/contents/ui/EchoCanceller.qml:136 src/contents/ui/Equalizer.qml:283
 #: src/contents/ui/Exciter.qml:189 src/contents/ui/Expander.qml:803
 #: src/contents/ui/Filter.qml:198 src/contents/ui/Gate.qml:932
-#: src/contents/ui/LevelMeter.qml:196 src/contents/ui/Limiter.qml:570
+#: src/contents/ui/LevelMeter.qml:196 src/contents/ui/Limiter.qml:587
 #: src/contents/ui/Loudness.qml:153 src/contents/ui/Maximizer.qml:100
 #: src/contents/ui/MultibandCompressor.qml:946
 #: src/contents/ui/MultibandGate.qml:919 src/contents/ui/Pitch.qml:246
@@ -268,7 +268,7 @@ msgstr "Limita inferioară"
 #: src/contents/ui/Deesser.qml:316 src/contents/ui/Delay.qml:392
 #: src/contents/ui/Equalizer.qml:301 src/contents/ui/Exciter.qml:207
 #: src/contents/ui/Expander.qml:821 src/contents/ui/Filter.qml:216
-#: src/contents/ui/Gate.qml:950 src/contents/ui/Limiter.qml:588
+#: src/contents/ui/Gate.qml:950 src/contents/ui/Limiter.qml:605
 #: src/contents/ui/Loudness.qml:171 src/contents/ui/Maximizer.qml:118
 #: src/contents/ui/MultibandCompressor.qml:964
 #: src/contents/ui/MultibandGate.qml:937 src/contents/ui/Reverb.qml:323
@@ -284,12 +284,12 @@ msgstr "Ascultă"
 
 #: src/contents/ui/BassEnhancer.qml:226 src/contents/ui/BassLoudness.qml:122
 #: src/contents/ui/Compressor.qml:905 src/contents/ui/Convolver.qml:534
-#: src/contents/ui/Crossfeed.qml:154 src/contents/ui/Crystalizer.qml:142
+#: src/contents/ui/Crossfeed.qml:154 src/contents/ui/Crystalizer.qml:143
 #: src/contents/ui/Deesser.qml:340 src/contents/ui/Delay.qml:406
 #: src/contents/ui/EchoCanceller.qml:164 src/contents/ui/Equalizer.qml:367
 #: src/contents/ui/Exciter.qml:231 src/contents/ui/Expander.qml:855
 #: src/contents/ui/Filter.qml:230 src/contents/ui/Gate.qml:984
-#: src/contents/ui/Limiter.qml:622 src/contents/ui/Loudness.qml:195
+#: src/contents/ui/Limiter.qml:639 src/contents/ui/Loudness.qml:195
 #: src/contents/ui/Main.qml:559 src/contents/ui/Maximizer.qml:132
 #: src/contents/ui/MultibandCompressor.qml:995
 #: src/contents/ui/MultibandGate.qml:968 src/contents/ui/Reverb.qml:337
@@ -328,10 +328,9 @@ msgstr "Adăugați la aplicațiile excluse"
 #: src/contents/ui/ConvolverImpulseDialog.qml:71
 #: src/contents/ui/MenuAddPlugins.qml:36
 #: src/contents/ui/PageStreamsEffects.qml:79
-#: src/contents/ui/PresetsAutoloadingPage.qml:135
+#: src/contents/ui/PresetsAutoloadPage.qml:135
 #: src/contents/ui/PresetsCommunityPage.qml:86
 #: src/contents/ui/PresetsLocalPage.qml:175 src/contents/ui/RNNoise.qml:212
-#: src/contents/ui/PresetsAutoloadPage.qml:135
 msgid "Empty List"
 msgstr "Listă goală"
 
@@ -347,15 +346,15 @@ msgstr "Elimină aplicația"
 msgid "Are you sure you want to remove this application from the list?"
 msgstr "Sunteți sigur că doriți să eliminați această aplicație din listă?"
 
-#: src/contents/ui/BlocklistDialog.qml:151
+#: src/contents/ui/BlocklistDialog.qml:152
 msgid "Remove this app"
 msgstr "Elimină această aplicație"
 
-#: src/contents/ui/BlocklistDialog.qml:180
+#: src/contents/ui/BlocklistDialog.qml:181
 msgid "Show excluded apps"
 msgstr "Afișează aplicațiile excluse"
 
-#: src/contents/ui/BlocklistDialog.qml:181
+#: src/contents/ui/BlocklistDialog.qml:182
 msgid "Show excluded applications in the list of players/recorders"
 msgstr ""
 "Afișează aplicațiile excluse din lista software-ului de redare/înregistrare"
@@ -435,7 +434,7 @@ msgstr "Eliberare"
 #: src/contents/ui/Expander.qml:286 src/contents/ui/Expander.qml:617
 #: src/contents/ui/Gate.qml:209 src/contents/ui/Gate.qml:304
 #: src/contents/ui/Gate.qml:643 src/contents/ui/Limiter.qml:179
-#: src/contents/ui/Limiter.qml:480 src/contents/ui/MultibandCompressor.qml:651
+#: src/contents/ui/Limiter.qml:497 src/contents/ui/MultibandCompressor.qml:651
 #: src/contents/ui/MultibandGate.qml:624
 msgid "Sidechain"
 msgstr "Lanț lateral"
@@ -901,15 +900,15 @@ msgstr "Dezactivare sunet"
 msgid "Bypass"
 msgstr "Derivare"
 
-#: src/contents/ui/Crystalizer.qml:83
+#: src/contents/ui/Crystalizer.qml:84
 msgid "Oversampling quality"
 msgstr "Calitatea supraeșantionării"
 
-#: src/contents/ui/Crystalizer.qml:121 src/contents/ui/Limiter.qml:68
+#: src/contents/ui/Crystalizer.qml:122 src/contents/ui/Limiter.qml:68
 msgid "Oversampling"
 msgstr "Supraeșantionare"
 
-#: src/contents/ui/Crystalizer.qml:131
+#: src/contents/ui/Crystalizer.qml:132
 msgid "Adaptive intensity"
 msgstr "Intensitate adaptativă"
 
@@ -1235,7 +1234,7 @@ msgid "Frequency"
 msgstr "Frecvență"
 
 #: src/contents/ui/EqualizerBandMenu.qml:98 src/contents/ui/Filter.qml:139
-#: src/contents/ui/Limiter.qml:471 src/contents/ui/MultibandCompressor.qml:342
+#: src/contents/ui/Limiter.qml:488 src/contents/ui/MultibandCompressor.qml:342
 #: src/contents/ui/MultibandGate.qml:228
 msgid "Gain"
 msgstr "Câștig"
@@ -1598,11 +1597,15 @@ msgstr "Limitator"
 msgid "Stereo Link"
 msgstr "Legătură stereo"
 
-#: src/contents/ui/Limiter.qml:388 src/contents/ui/Limiter.qml:611
+#: src/contents/ui/Limiter.qml:388 src/contents/ui/Limiter.qml:628
 msgid "Automatic level"
 msgstr "Nivel automat"
 
-#: src/contents/ui/Limiter.qml:601
+#: src/contents/ui/Limiter.qml:450
+msgid "Smooth"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:618
 msgid "Threshold boost"
 msgstr "Pragul de intensificare"
 
@@ -2431,41 +2434,33 @@ msgstr "Frecvența de actualizare"
 msgid "Related to LV2 plugins."
 msgstr "Relativ la modulele LV2."
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:35
-#: src/contents/ui/PresetsAutoloadingPage.qml:171
 #: src/contents/ui/PresetsAutoloadPage.qml:35
 #: src/contents/ui/PresetsAutoloadPage.qml:171
 msgid "Device"
 msgstr "Dispozitiv"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:41
-#: src/contents/ui/PresetsAutoloadingPage.qml:215
 #: src/contents/ui/PresetsAutoloadPage.qml:41
 #: src/contents/ui/PresetsAutoloadPage.qml:215
 msgid "Route"
 msgstr "Rută"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:84
-#: src/contents/ui/PresetsAutoloadingPage.qml:229
 #: src/contents/ui/PresetsAutoloadPage.qml:84
 #: src/contents/ui/PresetsAutoloadPage.qml:229
 msgid "Local preset"
 msgstr "Preconfigurare locală"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:95
 #: src/contents/ui/PresetsAutoloadPage.qml:95
 msgid "Create"
 msgstr "Creează"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:97
-msgid "Create a new autoloading preset"
+#: src/contents/ui/PresetsAutoloadPage.qml:97
+msgid "Create a new autoload preset"
 msgstr "Creează o preconfigurare nouă cu încărcare automată"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:186
-msgid "Remove this autoloading preset"
+#: src/contents/ui/PresetsAutoloadPage.qml:186
+msgid "Remove this autoload preset"
 msgstr "Elimină această preconfigurare cu încărcare automată"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:200
 #: src/contents/ui/PresetsAutoloadPage.qml:200
 msgid "Description"
 msgstr "Descriere"
@@ -2474,17 +2469,17 @@ msgstr "Descriere"
 msgid "Refresh"
 msgstr "Actualizare"
 
-#: src/contents/ui/PresetsCommunityPage.qml:119
+#: src/contents/ui/PresetsCommunityPage.qml:121
 msgid "Copy to local presets"
 msgstr "Copiază în lista de preconfigurări locale"
 
-#: src/contents/ui/PresetsCommunityPage.qml:124
+#: src/contents/ui/PresetsCommunityPage.qml:126
 msgid "Imported the %1 community preset to the list of local presets."
 msgstr ""
 "A fost importată preconfigurarea de la comunitate %1 în lista de "
 "preconfigurări locale."
 
-#: src/contents/ui/PresetsCommunityPage.qml:126
+#: src/contents/ui/PresetsCommunityPage.qml:128
 msgid "Failed to import the %1 community preset to the list of local presets."
 msgstr ""
 "Importarea preconfigurării de la comunitate %1 în lista de preconfigurări "
@@ -2499,7 +2494,7 @@ msgid "Community"
 msgstr "Comunitate"
 
 #: src/contents/ui/PresetsDialog.qml:96
-msgid "Autoloading"
+msgid "Autoload"
 msgstr "Încărcare automată"
 
 #: src/contents/ui/PresetsDialog.qml:135
@@ -2617,15 +2612,15 @@ msgstr "Redenumirea preconfigurării locale %1 în %2 a eșuat"
 msgid "Cancel"
 msgstr "Anulare"
 
-#: src/contents/ui/PresetsLocalPage.qml:285
+#: src/contents/ui/PresetsLocalPage.qml:287
 msgid "Save settings to this preset"
 msgstr "Salvează parametrii în această preconfigurare"
 
-#: src/contents/ui/PresetsLocalPage.qml:293
+#: src/contents/ui/PresetsLocalPage.qml:295
 msgid "Rename this preset"
 msgstr "Redenumește această preconfigurare"
 
-#: src/contents/ui/PresetsLocalPage.qml:301
+#: src/contents/ui/PresetsLocalPage.qml:303
 msgid "Delete this preset"
 msgstr "Șterge această preconfigurare"
 
@@ -3185,17 +3180,14 @@ msgstr "Egalizator, compresor și alte efecte audio"
 msgid "Simple audio effects"
 msgstr "Efecte audio simple"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:186
-msgid "Remove this autoload preset"
-msgstr "Elimină această preconfigurare cu încărcare automată"
+#~ msgid "Create a new autoloading preset"
+#~ msgstr "Creează o preconfigurare nouă cu încărcare automată"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:97
-msgid "Create a new autoload preset"
-msgstr "Creează o preconfigurare nouă cu încărcare automată"
+#~ msgid "Remove this autoloading preset"
+#~ msgstr "Elimină această preconfigurare cu încărcare automată"
 
-#: src/contents/ui/PresetsDialog.qml:96
-msgid "Autoload"
-msgstr "Încărcare automată"
+#~ msgid "Autoloading"
+#~ msgstr "Încărcare automată"
 
 #~ msgid "24 dB/oct"
 #~ msgstr "24 dB/oct"

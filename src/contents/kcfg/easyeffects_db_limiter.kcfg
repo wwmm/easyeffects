@@ -113,6 +113,12 @@
             <max>12</max>
             <default>0</default>
         </entry>
+        <entry name="alrKneeSmooth" type="Double">
+            <label></label>
+            <min>-48</min>
+            <max>0</max>
+            <default>-5</default>
+        </entry>
         <entry name="sidechainInputDevice" type="String">
             <label></label>
             <default code="true">""</default>

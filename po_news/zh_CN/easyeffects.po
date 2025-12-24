@@ -34,8 +34,8 @@ msgid ""
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
 "few. To complement this there is also a built in spectrum analyzer."
 msgstr ""
-"Easy Effects 是一款高级音频处理工具。 它包括均衡器、限制器、压缩器和混响工具"
-"，仅举几例。 作为补充，它还有内置频谱分析仪。"
+"Easy Effects 是一款高级音频处理工具。 它包括均衡器、限制器、压缩器和混响工"
+"具，仅举几例。 作为补充，它还有内置频谱分析仪。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:10
 msgid ""
@@ -51,8 +51,8 @@ msgid ""
 "with most, if not all, applications you use. All supported applications are "
 "presented in the main window, where each can be enabled individually."
 msgstr ""
-"因为 Easy Effects 使用默认的 PipeWire 声音服务器，所以它适用于你使用的全部（"
-"至少是大部分）应用程序。 所有支持的应用程序都显示在主窗口中，可以单独启用。"
+"因为 Easy Effects 使用默认的 PipeWire 声音服务器，所以它适用于你使用的全部"
+"（至少是大部分）应用程序。 所有支持的应用程序都显示在主窗口中，可以单独启用。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
 msgid ""

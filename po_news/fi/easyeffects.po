@@ -350,7 +350,8 @@ msgstr ""
 msgid ""
 "EasyEffects version can be shown in the command line through the option --"
 "version"
-msgstr "EasyEffectsin version voi näyttää komentorivillä valitsimella --version"
+msgstr ""
+"EasyEffectsin version voi näyttää komentorivillä valitsimella --version"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:106
 msgid ""

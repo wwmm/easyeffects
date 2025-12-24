@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-12-11 18:06-0300\n"
+"POT-Creation-Date: 2025-12-24 13:24-0300\n"
 "PO-Revision-Date: 2025-12-12 16:01+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -202,12 +202,12 @@ msgstr "Усиление выхода"
 #: src/contents/ui/Autogain.qml:212 src/contents/ui/BassEnhancer.qml:184
 #: src/contents/ui/BassLoudness.qml:104 src/contents/ui/Compressor.qml:853
 #: src/contents/ui/Convolver.qml:499 src/contents/ui/Crossfeed.qml:128
-#: src/contents/ui/Crystalizer.qml:104 src/contents/ui/DeepFilterNet.qml:175
+#: src/contents/ui/Crystalizer.qml:105 src/contents/ui/DeepFilterNet.qml:175
 #: src/contents/ui/Deesser.qml:298 src/contents/ui/Delay.qml:354
 #: src/contents/ui/EchoCanceller.qml:136 src/contents/ui/Equalizer.qml:283
 #: src/contents/ui/Exciter.qml:189 src/contents/ui/Expander.qml:803
 #: src/contents/ui/Filter.qml:198 src/contents/ui/Gate.qml:932
-#: src/contents/ui/LevelMeter.qml:196 src/contents/ui/Limiter.qml:570
+#: src/contents/ui/LevelMeter.qml:196 src/contents/ui/Limiter.qml:587
 #: src/contents/ui/Loudness.qml:153 src/contents/ui/Maximizer.qml:100
 #: src/contents/ui/MultibandCompressor.qml:946
 #: src/contents/ui/MultibandGate.qml:919 src/contents/ui/Pitch.qml:246
@@ -275,7 +275,7 @@ msgstr "Нижний порог"
 #: src/contents/ui/Deesser.qml:316 src/contents/ui/Delay.qml:392
 #: src/contents/ui/Equalizer.qml:301 src/contents/ui/Exciter.qml:207
 #: src/contents/ui/Expander.qml:821 src/contents/ui/Filter.qml:216
-#: src/contents/ui/Gate.qml:950 src/contents/ui/Limiter.qml:588
+#: src/contents/ui/Gate.qml:950 src/contents/ui/Limiter.qml:605
 #: src/contents/ui/Loudness.qml:171 src/contents/ui/Maximizer.qml:118
 #: src/contents/ui/MultibandCompressor.qml:964
 #: src/contents/ui/MultibandGate.qml:937 src/contents/ui/Reverb.qml:323
@@ -291,12 +291,12 @@ msgstr "Прослушать"
 
 #: src/contents/ui/BassEnhancer.qml:226 src/contents/ui/BassLoudness.qml:122
 #: src/contents/ui/Compressor.qml:905 src/contents/ui/Convolver.qml:534
-#: src/contents/ui/Crossfeed.qml:154 src/contents/ui/Crystalizer.qml:142
+#: src/contents/ui/Crossfeed.qml:154 src/contents/ui/Crystalizer.qml:143
 #: src/contents/ui/Deesser.qml:340 src/contents/ui/Delay.qml:406
 #: src/contents/ui/EchoCanceller.qml:164 src/contents/ui/Equalizer.qml:367
 #: src/contents/ui/Exciter.qml:231 src/contents/ui/Expander.qml:855
 #: src/contents/ui/Filter.qml:230 src/contents/ui/Gate.qml:984
-#: src/contents/ui/Limiter.qml:622 src/contents/ui/Loudness.qml:195
+#: src/contents/ui/Limiter.qml:639 src/contents/ui/Loudness.qml:195
 #: src/contents/ui/Main.qml:559 src/contents/ui/Maximizer.qml:132
 #: src/contents/ui/MultibandCompressor.qml:995
 #: src/contents/ui/MultibandGate.qml:968 src/contents/ui/Reverb.qml:337
@@ -335,10 +335,9 @@ msgstr "Добавить в исключённые приложения"
 #: src/contents/ui/ConvolverImpulseDialog.qml:71
 #: src/contents/ui/MenuAddPlugins.qml:36
 #: src/contents/ui/PageStreamsEffects.qml:79
-#: src/contents/ui/PresetsAutoloadingPage.qml:135
+#: src/contents/ui/PresetsAutoloadPage.qml:135
 #: src/contents/ui/PresetsCommunityPage.qml:86
 #: src/contents/ui/PresetsLocalPage.qml:175 src/contents/ui/RNNoise.qml:212
-#: src/contents/ui/PresetsAutoloadPage.qml:135
 msgid "Empty List"
 msgstr "Список пуст"
 
@@ -354,15 +353,15 @@ msgstr "Убрать приложение"
 msgid "Are you sure you want to remove this application from the list?"
 msgstr "Уверены, что хотите убрать это приложение из списка?"
 
-#: src/contents/ui/BlocklistDialog.qml:151
+#: src/contents/ui/BlocklistDialog.qml:152
 msgid "Remove this app"
 msgstr "Убрать это приложение"
 
-#: src/contents/ui/BlocklistDialog.qml:180
+#: src/contents/ui/BlocklistDialog.qml:181
 msgid "Show excluded apps"
 msgstr "Показать исключённые приложения"
 
-#: src/contents/ui/BlocklistDialog.qml:181
+#: src/contents/ui/BlocklistDialog.qml:182
 msgid "Show excluded applications in the list of players/recorders"
 msgstr "Показать исключённые приложения в списке проигрывателей/рекордеров"
 
@@ -442,7 +441,7 @@ msgstr "Восстановление"
 #: src/contents/ui/Expander.qml:286 src/contents/ui/Expander.qml:617
 #: src/contents/ui/Gate.qml:209 src/contents/ui/Gate.qml:304
 #: src/contents/ui/Gate.qml:643 src/contents/ui/Limiter.qml:179
-#: src/contents/ui/Limiter.qml:480 src/contents/ui/MultibandCompressor.qml:651
+#: src/contents/ui/Limiter.qml:497 src/contents/ui/MultibandCompressor.qml:651
 #: src/contents/ui/MultibandGate.qml:624
 msgid "Sidechain"
 msgstr "Боковая цепь"
@@ -916,16 +915,16 @@ msgstr "Приглушить"
 msgid "Bypass"
 msgstr "Обход"
 
-#: src/contents/ui/Crystalizer.qml:83
+#: src/contents/ui/Crystalizer.qml:84
 msgid "Oversampling quality"
 msgstr "Качество передискретизации"
 
-#: src/contents/ui/Crystalizer.qml:121 src/contents/ui/Limiter.qml:68
+#: src/contents/ui/Crystalizer.qml:122 src/contents/ui/Limiter.qml:68
 msgid "Oversampling"
 msgstr "Передискретизация"
 
 # # TODO: Mode/Режим заменить на "Режим сжатия"
-#: src/contents/ui/Crystalizer.qml:131
+#: src/contents/ui/Crystalizer.qml:132
 msgid "Adaptive intensity"
 msgstr "Адаптивная интенсивность"
 
@@ -1260,7 +1259,7 @@ msgid "Frequency"
 msgstr "Частота"
 
 #: src/contents/ui/EqualizerBandMenu.qml:98 src/contents/ui/Filter.qml:139
-#: src/contents/ui/Limiter.qml:471 src/contents/ui/MultibandCompressor.qml:342
+#: src/contents/ui/Limiter.qml:488 src/contents/ui/MultibandCompressor.qml:342
 #: src/contents/ui/MultibandGate.qml:228
 msgid "Gain"
 msgstr "Усиление"
@@ -1624,11 +1623,15 @@ msgstr "Ограничитель (лимитер)"
 msgid "Stereo Link"
 msgstr "Стереосвязка"
 
-#: src/contents/ui/Limiter.qml:388 src/contents/ui/Limiter.qml:611
+#: src/contents/ui/Limiter.qml:388 src/contents/ui/Limiter.qml:628
 msgid "Automatic level"
 msgstr "Автоматический уровень"
 
-#: src/contents/ui/Limiter.qml:601
+#: src/contents/ui/Limiter.qml:450
+msgid "Smooth"
+msgstr "Гладкий"
+
+#: src/contents/ui/Limiter.qml:618
 msgid "Threshold boost"
 msgstr "Повышение порога"
 
@@ -2460,41 +2463,33 @@ msgid "Related to LV2 plugins."
 msgstr "Относится к плагинам LV2."
 
 # #, fuzzy
-#: src/contents/ui/PresetsAutoloadingPage.qml:35
-#: src/contents/ui/PresetsAutoloadingPage.qml:171
 #: src/contents/ui/PresetsAutoloadPage.qml:35
 #: src/contents/ui/PresetsAutoloadPage.qml:171
 msgid "Device"
 msgstr "Устройство"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:41
-#: src/contents/ui/PresetsAutoloadingPage.qml:215
 #: src/contents/ui/PresetsAutoloadPage.qml:41
 #: src/contents/ui/PresetsAutoloadPage.qml:215
 msgid "Route"
 msgstr "Маршрут"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:84
-#: src/contents/ui/PresetsAutoloadingPage.qml:229
 #: src/contents/ui/PresetsAutoloadPage.qml:84
 #: src/contents/ui/PresetsAutoloadPage.qml:229
 msgid "Local preset"
 msgstr "Локальная предустановка"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:95
 #: src/contents/ui/PresetsAutoloadPage.qml:95
 msgid "Create"
 msgstr "Создать"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:97
-msgid "Create a new autoloading preset"
+#: src/contents/ui/PresetsAutoloadPage.qml:97
+msgid "Create a new autoload preset"
 msgstr "Создать новую предустановку автозагрузки"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:186
-msgid "Remove this autoloading preset"
+#: src/contents/ui/PresetsAutoloadPage.qml:186
+msgid "Remove this autoload preset"
 msgstr "Удалить эту предустановку автозагрузки"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:200
 #: src/contents/ui/PresetsAutoloadPage.qml:200
 msgid "Description"
 msgstr "Описание"
@@ -2503,17 +2498,17 @@ msgstr "Описание"
 msgid "Refresh"
 msgstr "Обновить"
 
-#: src/contents/ui/PresetsCommunityPage.qml:119
+#: src/contents/ui/PresetsCommunityPage.qml:121
 msgid "Copy to local presets"
 msgstr "Копировать в локальные предустановки"
 
-#: src/contents/ui/PresetsCommunityPage.qml:124
+#: src/contents/ui/PresetsCommunityPage.qml:126
 msgid "Imported the %1 community preset to the list of local presets."
 msgstr ""
 "Импортирована предустановка от сообщества %1 в список локальных "
 "предустановок."
 
-#: src/contents/ui/PresetsCommunityPage.qml:126
+#: src/contents/ui/PresetsCommunityPage.qml:128
 msgid "Failed to import the %1 community preset to the list of local presets."
 msgstr ""
 "Не удалось импортировать предустановку от сообщества %1 в список локальных "
@@ -2528,7 +2523,7 @@ msgid "Community"
 msgstr "Сообщество"
 
 #: src/contents/ui/PresetsDialog.qml:96
-msgid "Autoloading"
+msgid "Autoload"
 msgstr "Автозагрузка"
 
 #: src/contents/ui/PresetsDialog.qml:135
@@ -2646,15 +2641,15 @@ msgstr "Не удалось переименовать локальную пре
 msgid "Cancel"
 msgstr "Отмена"
 
-#: src/contents/ui/PresetsLocalPage.qml:285
+#: src/contents/ui/PresetsLocalPage.qml:287
 msgid "Save settings to this preset"
 msgstr "Сохранить настройки в эту предустановку"
 
-#: src/contents/ui/PresetsLocalPage.qml:293
+#: src/contents/ui/PresetsLocalPage.qml:295
 msgid "Rename this preset"
 msgstr "Переименовать эту предустановку"
 
-#: src/contents/ui/PresetsLocalPage.qml:301
+#: src/contents/ui/PresetsLocalPage.qml:303
 msgid "Delete this preset"
 msgstr "Удалить эту предустановку"
 
@@ -3217,17 +3212,14 @@ msgstr "Эквалайзер, компрессор и прочие звуков�
 msgid "Simple audio effects"
 msgstr "Простые звуковые эффекты"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:97
-msgid "Create a new autoload preset"
-msgstr "Создать новую предустановку автозагрузки"
+#~ msgid "Create a new autoloading preset"
+#~ msgstr "Создать новую предустановку автозагрузки"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:186
-msgid "Remove this autoload preset"
-msgstr "Удалить эту предустановку автозагрузки"
+#~ msgid "Remove this autoloading preset"
+#~ msgstr "Удалить эту предустановку автозагрузки"
 
-#: src/contents/ui/PresetsDialog.qml:96
-msgid "Autoload"
-msgstr "Автозагрузка"
+#~ msgid "Autoloading"
+#~ msgstr "Автозагрузка"
 
 #~ msgctxt "frames per second"
 #~ msgid "fps"
@@ -4194,9 +4186,6 @@ msgstr "Автозагрузка"
 
 #~ msgid "Mixed"
 #~ msgstr "Смешанный"
-
-#~ msgid "Smooth"
-#~ msgstr "Гладкий"
 
 #~ msgid "Detector"
 #~ msgstr "Детектор"

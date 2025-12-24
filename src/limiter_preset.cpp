@@ -66,6 +66,8 @@ void LimiterPreset::save(nlohmann::json& json) {
 
   json[section][instance_name]["alr-knee"] = settings->alrKnee();
 
+  json[section][instance_name]["alr-knee-smooth"] = settings->alrKneeSmooth();
+
   json[section][instance_name]["alr"] = settings->alr();
 
   json[section][instance_name]["gain-boost"] = settings->gainBoost();
@@ -96,6 +98,7 @@ void LimiterPreset::load(const nlohmann::json& json) {
   UPDATE_PROPERTY("alr-attack", AlrAttack);
   UPDATE_PROPERTY("alr-release", AlrRelease);
   UPDATE_PROPERTY("alr-knee", AlrKnee);
+  UPDATE_PROPERTY("alr-knee-smooth", AlrKneeSmooth);
   UPDATE_PROPERTY("alr", Alr);
   UPDATE_PROPERTY("gain-boost", GainBoost);
   UPDATE_PROPERTY("input-to-sidechain", InputToSidechain);

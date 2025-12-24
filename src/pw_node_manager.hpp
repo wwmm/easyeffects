@@ -79,9 +79,6 @@ class NodeManager : public QObject {
   void sourceAdded(NodeInfo node);
   void sinkAdded(NodeInfo node);
 
-  void sinkProfileNameChanged(NodeInfo node);
-  void sourceProfileNameChanged(NodeInfo node);
-
  private:
   struct NodeData {
     NodeManager* nm = nullptr;
