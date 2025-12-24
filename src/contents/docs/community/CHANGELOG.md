@@ -1,5 +1,20 @@
 # Changelog
  
+## 8.0.9
+### 2025-12-24
+
+ 
+### Features:
+- Our local server was using /tmp as path. What is not the most secure thing to do. It now uses /run/user/user_id.
+
+### Bug fixes:
+- The F1 shortcut was broken and was not opening our manual.
+- A crash could happen when using multiple convolver or crystalizer instances. As well as using the convolver and the crystalizer in the same pipeline.
+- Super long preset names could make the corresponding menu button to not be visible.
+
+### Other notes:
+
+ 
 ## 8.0.8
 ### 2025-12-12
 

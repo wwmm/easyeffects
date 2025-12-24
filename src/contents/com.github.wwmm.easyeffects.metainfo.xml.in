@@ -56,6 +56,19 @@
     <color type="primary" scheme_preference="dark">#004079</color>
   </branding>
   <releases>
+    <release type="stable" version="8.0.9" date="2025-12-24T00:00:00Z">
+      <description>
+        <ul>
+          <li>Features:</li>
+          <li>Our local server was using /tmp as path. What is not the most secure thing to do. It now uses /run/user/user_id.</li>
+          <li>Bug fixes:</li>
+          <li>The F1 shortcut was broken and was not opening our manual.</li>
+          <li>A crash could happen when using multiple convolver or crystalizer instances. As well as using the convolver and the crystalizer in the same pipeline.</li>
+          <li>Super long preset names could make the corresponding menu button to not be visible.</li>
+          <li>Other notes:</li>
+        </ul>
+      </description>
+    </release>
     <release type="stable" version="8.0.8" date="2025-12-12T00:00:00Z">
       <description>
         <ul>
