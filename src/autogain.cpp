@@ -88,8 +88,6 @@ auto Autogain::init_ebur128() -> bool {
     return false;
   }
 
-  internal_output_gain = 1.0;
-
   if (ebur_state != nullptr) {
     ebur128_destroy(&ebur_state);
 
@@ -377,5 +375,7 @@ float Autogain::getOutputGainLevel() const {
 }
 
 void Autogain::resetHistory() {
+  internal_output_gain = 1.0;
+
   setup();
 }
