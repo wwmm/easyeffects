@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-12-24 13:30-0300\n"
-"PO-Revision-Date: 2025-12-13 15:00+0000\n"
+"PO-Revision-Date: 2025-12-26 22:02+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ro/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
-"X-Generator: Weblate 5.15-dev\n"
+"X-Generator: Weblate 5.15.1\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -1603,7 +1603,7 @@ msgstr "Nivel automat"
 
 #: src/contents/ui/Limiter.qml:450
 msgid "Smooth"
-msgstr ""
+msgstr "Netezire"
 
 #: src/contents/ui/Limiter.qml:618
 msgid "Threshold boost"
