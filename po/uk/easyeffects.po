@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-12-24 13:30-0300\n"
-"PO-Revision-Date: 2025-12-25 07:00+0000\n"
-"Last-Translator: Максим Горпиніч <gorpinicmaksim0@gmail.com>\n"
+"PO-Revision-Date: 2025-12-26 03:00+0000\n"
+"Last-Translator: Володимир <vlzuykov@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
 "Language: uk\n"
@@ -487,7 +487,7 @@ msgstr "RMS"
 #: src/contents/ui/MultibandCompressor.qml:421
 #: src/contents/ui/MultibandGate.qml:394
 msgid "Low-pass"
-msgstr "ФНЧ"
+msgstr "ФНЧ (Low-pass)"
 
 #: src/contents/ui/Compressor.qml:287 src/contents/ui/Expander.qml:247
 #: src/contents/ui/Gate.qml:265 src/contents/ui/MultibandCompressor.qml:421
@@ -602,7 +602,7 @@ msgstr "Випередження"
 #: src/contents/ui/Expander.qml:350 src/contents/ui/Filter.qml:49
 #: src/contents/ui/Gate.qml:369
 msgid "High-pass"
-msgstr "ФВЧ"
+msgstr "ФВЧ (High-pass)"
 
 #: src/contents/ui/Compressor.qml:398 src/contents/ui/Compressor.qml:412
 #: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Expander.qml:354
@@ -1235,7 +1235,7 @@ msgstr "Підсилення"
 
 #: src/contents/ui/EqualizerBandMenu.qml:121 src/contents/ui/Filter.qml:155
 msgid "Quality"
-msgstr "Діапазон"
+msgstr "Добротність"
 
 #: src/contents/ui/EqualizerBandMenu.qml:144 src/contents/ui/Filter.qml:124
 msgid "Width"
