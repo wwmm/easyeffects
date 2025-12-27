@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-12-27 18:41+0000\n"
-"PO-Revision-Date: 2025-12-13 01:43+0000\n"
+"PO-Revision-Date: 2025-12-28 00:41+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.15-dev\n"
+"X-Generator: Weblate 5.15.1\n"
 "Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 
 #: src/autostart.cpp:92
@@ -2136,7 +2136,7 @@ msgstr "Monitoraggio microfono riproduce sulla pipeline di uscita"
 
 #: src/contents/ui/PreferencesSheet.qml:212
 msgid "Copy the input audio buffer"
-msgstr ""
+msgstr "Copia il buffer dell'audio in ingresso"
 
 #: src/contents/ui/PreferencesSheet.qml:213
 msgid ""
@@ -2145,6 +2145,10 @@ msgid ""
 "can happen when external applications are recording from our virtual devices "
 "monitors."
 msgstr ""
+"Usa la copia del buffer in ingresso mentre l'audio viene processato nei "
+"plugin di Easy Effects. Questa opzione rimuove i disturbi all'audio che si "
+"possono presentare quando applicazioni esterne registrano dai dispositivi "
+"virtuali di Easy Effects."
 
 #: src/contents/ui/PreferencesSheet.qml:225
 msgid "Enable the inactivity timeout"
