@@ -207,6 +207,19 @@ KirigamiSettings.ConfigurationView {
                 }
 
                 EeSwitch {
+                    id: processAllcopyFilterInputBuffersOutputs
+
+                    label: i18n("Copy the input audio buffer") // qmllint disable
+                    subtitle: i18n("Use a copy of the input audio buffer given by the sound server when processing audio inside EasyEffects plugins. This fixes audio glitches that can happen when external applications are recording from our virtual devices monitors.") // qmllint disable
+                    maximumLineCount: -1
+                    isChecked: DbMain.copyFilterInputBuffers
+                    onCheckedChanged: {
+                        if (isChecked !== DbMain.copyFilterInputBuffers)
+                            DbMain.copyFilterInputBuffers = isChecked;
+                    }
+                }
+
+                EeSwitch {
                     id: inactivityTimerEnable
 
                     label: i18n("Enable the inactivity timeout") // qmllint disable

@@ -229,6 +229,10 @@
             <max>240</max>
             <default>60</default>
         </entry>
+        <entry name="copyFilterInputBuffers" type="Bool">
+            <label>Use a copy of the input buffer given by PipeWire when applying effects inside each audio plugin. This fixes audio glitches that can happen when external applications are recording from our virtual devices monitors.</label>
+            <default>false</default>
+        </entry>
     </group>
     <group name="NativePluginWindow">
         <entry name="showNativePluginUi" type="Bool">

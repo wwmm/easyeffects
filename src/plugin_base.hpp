@@ -123,7 +123,7 @@ class PluginBase : public QObject {
 
   bool updateLevelMeters = false;
 
-  std::vector<float> dummy_left, dummy_right;
+  std::vector<float> dummy_left, dummy_right, copy_left_in, copy_right_in;
 
   [[nodiscard]] auto get_node_id() const -> uint;
 

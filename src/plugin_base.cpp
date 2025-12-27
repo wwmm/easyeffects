@@ -83,6 +83,11 @@ void on_process(void* userdata, spa_io_position* position) {
     std::ranges::fill(d->pb->dummy_right, 0.0F);
   }
 
+  if (DbMain::copyFilterInputBuffers() && d->pb->copy_left_in.size() != n_samples) {
+    d->pb->copy_left_in.resize(n_samples);
+    d->pb->copy_right_in.resize(n_samples);
+  }
+
   if (rate != d->pb->rate || n_samples != d->pb->n_samples) {
     d->pb->rate = rate;
     d->pb->n_samples = n_samples;
@@ -111,6 +116,11 @@ void on_process(void* userdata, spa_io_position* position) {
 
   if (in_left != nullptr) {
     left_in = std::span(in_left, n_samples);
+
+    if (DbMain::copyFilterInputBuffers()) {
+      std::ranges::copy(left_in, d->pb->copy_left_in.begin());
+    }
+
   } else {
     if (!d->pb->got_null_left_in) {
       util::warning("Processing: we received a null left_in pointer. Using the dummy array instead.");
@@ -123,6 +133,11 @@ void on_process(void* userdata, spa_io_position* position) {
 
   if (in_right != nullptr) {
     right_in = std::span(in_right, n_samples);
+
+    if (DbMain::copyFilterInputBuffers()) {
+      std::ranges::copy(right_in, d->pb->copy_right_in.begin());
+    }
+
   } else {
     if (!d->pb->got_null_right_in) {
       util::warning("Processing: we received a null right_in pointer. Using the dummy array instead.");
@@ -158,7 +173,15 @@ void on_process(void* userdata, spa_io_position* position) {
   }
 
   if (!d->pb->enable_probe) {
-    d->pb->process(left_in, right_in, left_out, right_out);
+    if (DbMain::copyFilterInputBuffers()) {
+      auto copy_left_in = std::span(d->pb->copy_left_in);
+      auto copy_right_in = std::span(d->pb->copy_right_in);
+
+      d->pb->process(copy_left_in, copy_right_in, left_out, right_out);
+    } else {
+      d->pb->process(left_in, right_in, left_out, right_out);
+    }
+
   } else {
     auto* probe_left = static_cast<float*>(pw_filter_get_dsp_buffer(d->probe_left, n_samples));
     auto* probe_right = static_cast<float*>(pw_filter_get_dsp_buffer(d->probe_right, n_samples));
@@ -173,12 +196,27 @@ void on_process(void* userdata, spa_io_position* position) {
       std::span l(d->pb->dummy_left.data(), n_samples);
       std::span r(d->pb->dummy_right.data(), n_samples);
 
-      d->pb->process(left_in, right_in, left_out, right_out, l, r);
+      if (DbMain::copyFilterInputBuffers()) {
+        auto copy_left_in = std::span(d->pb->copy_left_in);
+        auto copy_right_in = std::span(d->pb->copy_right_in);
+
+        d->pb->process(copy_left_in, copy_right_in, left_out, right_out, l, r);
+      } else {
+        d->pb->process(left_in, right_in, left_out, right_out, l, r);
+      }
+
     } else {
       std::span l(probe_left, n_samples);
       std::span r(probe_right, n_samples);
 
-      d->pb->process(left_in, right_in, left_out, right_out, l, r);
+      if (DbMain::copyFilterInputBuffers()) {
+        auto copy_left_in = std::span(d->pb->copy_left_in);
+        auto copy_right_in = std::span(d->pb->copy_right_in);
+
+        d->pb->process(copy_left_in, copy_right_in, left_out, right_out, l, r);
+      } else {
+        d->pb->process(left_in, right_in, left_out, right_out, l, r);
+      }
     }
   }
 }
