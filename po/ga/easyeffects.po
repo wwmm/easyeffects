@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-12-27 21:40-0300\n"
-"PO-Revision-Date: 2025-12-12 16:01+0000\n"
+"PO-Revision-Date: 2025-12-28 20:00+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
 "ga/>\n"
@@ -16,9 +16,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :"
-"(n>6 && n<11) ? 3 : 4;\n"
-"X-Generator: Weblate 5.15-dev\n"
+"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :(n>"
+"6 && n<11) ? 3 : 4;\n"
+"X-Generator: Weblate 5.15.1\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -545,7 +545,7 @@ msgstr "Ceart"
 #: src/contents/ui/MultibandCompressor.qml:444
 #: src/contents/ui/MultibandGate.qml:405 src/contents/ui/MultibandGate.qml:417
 msgid "Min"
-msgstr "Min"
+msgstr "Íos"
 
 #: src/contents/ui/Compressor.qml:301 src/contents/ui/Compressor.qml:316
 #: src/contents/ui/Expander.qml:261 src/contents/ui/Expander.qml:276
@@ -1600,7 +1600,7 @@ msgstr "Leibhéal uathoibríoch"
 
 #: src/contents/ui/Limiter.qml:450
 msgid "Smooth"
-msgstr ""
+msgstr "Réidh"
 
 #: src/contents/ui/Limiter.qml:618
 msgid "Threshold boost"
@@ -1737,7 +1737,7 @@ msgstr "Roghanna"
 
 #: src/contents/ui/Main.qml:571
 msgid "About Easy Effects"
-msgstr "Maidir le hÉifeachtaí Éasca"
+msgstr "Maidir le Easy Effects"
 
 #: src/contents/ui/MenuAddPlugins.qml:75
 msgid "Add %1"
@@ -2137,7 +2137,7 @@ msgstr "Seinneann monatóir micreafóin chuig píblíne éifeachtaí aschuir"
 
 #: src/contents/ui/PreferencesSheet.qml:212
 msgid "Copy the input audio buffer"
-msgstr ""
+msgstr "Cóipeáil an maolán fuaime ionchuir"
 
 #: src/contents/ui/PreferencesSheet.qml:213
 msgid ""
@@ -2146,6 +2146,10 @@ msgid ""
 "can happen when external applications are recording from Easy Effects "
 "virtual devices monitors."
 msgstr ""
+"Bain úsáid as cóip den mhaolán fuaime ionchuir a thugann an freastalaí "
+"fuaime agus fuaim á próiseáil laistigh de bhreiseáin Easy Effects. Deisíonn "
+"sé seo fabhtanna fuaime a d'fhéadfadh tarlú nuair a bhíonn feidhmchláir "
+"sheachtracha ag taifeadadh ó mhonatóirí gléasanna fíorúla Easy Effects."
 
 #: src/contents/ui/PreferencesSheet.qml:225
 msgid "Enable the inactivity timeout"
@@ -2932,12 +2936,12 @@ msgstr "Forbróir"
 #: src/main.cpp:336
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Do ainmneacha"
+msgstr "Aindriú Mac Giolla Eoin"
 
 #: src/main.cpp:336
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "Do ríomhphoist"
+msgstr "aindriu80@gmail.com"
 
 #: src/plugin_base.cpp:312
 msgid "(Mic)"
