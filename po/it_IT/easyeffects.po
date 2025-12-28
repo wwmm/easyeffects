@@ -3192,6 +3192,14 @@ msgstr "Equalizzatore, Compressore e Altri Effetti Audio"
 msgid "Simple audio effects"
 msgstr "Effetti audio semplici"
 
+#: src/contents/ui/PreferencesSheet.qml:213
+msgid ""
+"Use a copy of the input audio buffer given by the sound server when "
+"processing audio inside Easy Effects plugins. This fixes audio glitches that "
+"can happen when external applications are recording from Easy Effects "
+"virtual devices monitors."
+msgstr ""
+
 #~ msgid "Create a new autoloading preset"
 #~ msgstr "Crea un nuovo profilo di auto caricamento"
 
