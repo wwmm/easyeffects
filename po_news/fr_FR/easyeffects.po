@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-28 14:40+0000\n"
-"PO-Revision-Date: 2025-10-31 16:04+0000\n"
+"PO-Revision-Date: 2025-12-29 09:00+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/fr/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.14.1-dev\n"
+"X-Generator: Weblate 5.15.1\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -86,7 +86,7 @@ msgstr "Wellington Wallace"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
 msgid "The main page showing two audio output apps"
-msgstr "La page principale affichant deux applications en sortie audio"
+msgstr "La page principale affichant deux applications de sortie audio"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:47
 msgid "The bass enhancer page showing audio controls"
@@ -531,7 +531,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:210
 msgid "A new Level Meter plugin based on libebur128 has been added."
 msgstr ""
-"Un nouveau greffon Indicateur de niveau basé sur libebur128 a été ajouté."
+"Un nouveau greffon Indicateur de Niveau basé sur libebur128 a été ajouté."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:211
 msgid ""
@@ -658,7 +658,7 @@ msgid ""
 "The update interval used by level meters and the spectrum can be customized "
 "by the user."
 msgstr ""
-"L'intervalle de mise à jour utilisé par les indicateurs de niveau et le "
+"L'intervalle de mise à jour utilisé par les indicateurs de niveau et du "
 "spectre peut être personnalisé par l'utilisateur."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:263
@@ -1328,7 +1328,7 @@ msgid ""
 "stack, new plugins are added at the second to last position in order to "
 "prevent hardware damage on eventually high output level."
 msgstr ""
-"Si le limiteur ou le maximiseur sont placés à la dernière position de la "
+"Si le Limiteur ou le Maximiseur sont placés à la dernière position de la "
 "liste des greffons, les nouveaux greffons sont ajoutés à l’avant-dernière "
 "position afin d’éviter des dommages matériels dû à un niveau de sortie "
 "potentiellement élevé."
