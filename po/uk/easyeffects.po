@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-12-27 21:40-0300\n"
-"PO-Revision-Date: 2025-12-26 03:00+0000\n"
-"Last-Translator: Володимир <vlzuykov@gmail.com>\n"
+"PO-Revision-Date: 2025-12-29 09:00+0000\n"
+"Last-Translator: Максим Горпиніч <gorpinicmaksim0@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
 "Language: uk\n"
@@ -2130,7 +2130,7 @@ msgstr "Прослуховування мікрофона через вихід�
 
 #: src/contents/ui/PreferencesSheet.qml:212
 msgid "Copy the input audio buffer"
-msgstr ""
+msgstr "Копіювати вхідний аудіобуфер"
 
 #: src/contents/ui/PreferencesSheet.qml:213
 msgid ""
@@ -2139,6 +2139,10 @@ msgid ""
 "can happen when external applications are recording from Easy Effects "
 "virtual devices monitors."
 msgstr ""
+"Використовувати копію вхідного аудіобуфера, наданого звуковим сервером, під "
+"час обробки аудіо всередині плагінів Easy Effects. Це виправляє аудіозбої, "
+"які можуть виникати, коли зовнішні програми записують з моніторів "
+"віртуальних пристроїв Easy Effects."
 
 #: src/contents/ui/PreferencesSheet.qml:225
 msgid "Enable the inactivity timeout"

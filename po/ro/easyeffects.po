@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-12-27 21:40-0300\n"
-"PO-Revision-Date: 2025-12-26 22:02+0000\n"
+"PO-Revision-Date: 2025-12-29 09:00+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ro/>\n"
@@ -2142,7 +2142,7 @@ msgstr "Monitorul de microfon redă pe canalul(pipeline) de ieșire al efectelor
 
 #: src/contents/ui/PreferencesSheet.qml:212
 msgid "Copy the input audio buffer"
-msgstr ""
+msgstr "Copiază memoria tampon audio de intrare"
 
 #: src/contents/ui/PreferencesSheet.qml:213
 msgid ""
@@ -2151,6 +2151,10 @@ msgid ""
 "can happen when external applications are recording from Easy Effects "
 "virtual devices monitors."
 msgstr ""
+"Utilizează o copie a memoriei tampon audio de intrare furnizată de serverul "
+"de sunet atunci când procesează audio în cadrul modulelor Easy Effects. "
+"Aceasta remediază problemele audio care pot apărea atunci când aplicațiile "
+"externe înregistrează de pe monitoarele dispozitivelor virtuale Easy Effects."
 
 #: src/contents/ui/PreferencesSheet.qml:225
 msgid "Enable the inactivity timeout"
