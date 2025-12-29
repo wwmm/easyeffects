@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-12-27 21:40-0300\n"
-"PO-Revision-Date: 2025-12-12 16:01+0000\n"
+"PO-Revision-Date: 2025-12-29 09:00+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.15-dev\n"
+"X-Generator: Weblate 5.15.1\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -1141,7 +1141,7 @@ msgstr "Contrôle des niveaux audio"
 
 #: src/contents/ui/EeInputOutputGain.qml:18
 msgid "Input and output gain controls with level meters"
-msgstr "Contrôles de gain d'entrée et de sortie avec indicateurs de niveau"
+msgstr "Contrôles du gain entrant et sortant avec indicateurs de niveau"
 
 #: src/contents/ui/EeInputOutputGain.qml:111 src/contents/ui/Main.qml:500
 #: src/contents/ui/StereoTools.qml:39
@@ -2092,11 +2092,11 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:126
 msgid "Process all output streams"
-msgstr "Traiter tous les flux de sortie"
+msgstr "Traiter tous les flux sortants"
 
 #: src/contents/ui/PreferencesSheet.qml:138
 msgid "Process all input streams"
-msgstr "Traiter tous les flux d’entrée"
+msgstr "Traiter tous les flux entrants"
 
 #: src/contents/ui/PreferencesSheet.qml:150
 msgid "Ignore streams from monitor of devices"
@@ -2141,7 +2141,7 @@ msgstr "Le moniteur du micro lit vers le pipeline des effets de sortie"
 
 #: src/contents/ui/PreferencesSheet.qml:212
 msgid "Copy the input audio buffer"
-msgstr ""
+msgstr "Copier le tampon audio entrant"
 
 #: src/contents/ui/PreferencesSheet.qml:213
 msgid ""
@@ -2150,6 +2150,11 @@ msgid ""
 "can happen when external applications are recording from Easy Effects "
 "virtual devices monitors."
 msgstr ""
+"Utiliser une copie du tampon audio entrant fourni par le serveur de sons "
+"lors du traitement audio dans les greffons d'Easy Effects. Ce correctif "
+"résout les problèmes audio pouvant survenir lorsque des applications "
+"externes enregistrent à partir des moniteurs de périphériques virtuels "
+"d'Easy Effects."
 
 #: src/contents/ui/PreferencesSheet.qml:225
 msgid "Enable the inactivity timeout"
@@ -2955,7 +2960,7 @@ msgstr "(Haut-Parleurs)"
 
 #: src/plugin_base.cpp:322
 msgid "Output Level Meter"
-msgstr "Indicateur Niveau de Sortie"
+msgstr "Indicateur de Niveau en Sortie"
 
 #: src/presets_manager.cpp:780 src/presets_manager.cpp:787
 #: src/presets_manager.cpp:797 src/presets_manager.cpp:804
