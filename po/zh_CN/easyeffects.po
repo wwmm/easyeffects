@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-12-27 21:40-0300\n"
-"PO-Revision-Date: 2025-12-12 16:01+0000\n"
+"PO-Revision-Date: 2025-12-29 09:00+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hans/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.15-dev\n"
+"X-Generator: Weblate 5.15.1\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -2116,7 +2116,7 @@ msgstr "麦克风监听导向输出音效管线"
 
 #: src/contents/ui/PreferencesSheet.qml:212
 msgid "Copy the input audio buffer"
-msgstr ""
+msgstr "复制输入音频缓冲"
 
 #: src/contents/ui/PreferencesSheet.qml:213
 msgid ""
@@ -2125,6 +2125,8 @@ msgid ""
 "can happen when external applications are recording from Easy Effects "
 "virtual devices monitors."
 msgstr ""
+"在Easy Effects插件内使用音频服务器提供的输入音频缓冲复制。外部应用从Easy "
+"Effects虚拟设备监视器录制时将不再产生音频故障。"
 
 #: src/contents/ui/PreferencesSheet.qml:225
 msgid "Enable the inactivity timeout"
