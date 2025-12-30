@@ -56,5 +56,9 @@
             <label>Width of the plugins list column.</label>
             <default>0</default>
         </entry>
+        <entry name="linkToVirtualSource" type="Bool">
+            <label>This links the output of the output effects pipeline to the input of our virtual source. This allows users to share their desktop audio (that is processed by EasyEffects) to people listening to what comes from EasyEffects virtual source.</label>
+            <default>false</default>
+        </entry>
     </group>
 </kcfg>

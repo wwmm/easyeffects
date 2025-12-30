@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-12-27 21:40-0300\n"
+"POT-Creation-Date: 2025-12-30 14:23-0300\n"
 "PO-Revision-Date: 2025-12-12 16:01+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1895,12 +1895,16 @@ msgid "Recorders"
 msgstr "Рекордеры"
 
 #: src/contents/ui/PageStreamsEffects.qml:731
+msgid "Excluded apps"
+msgstr "Исключённые приложения"
+
+#: src/contents/ui/PageStreamsEffects.qml:740
 msgid "Input monitoring"
 msgstr "Мониторинг входа"
 
-#: src/contents/ui/PageStreamsEffects.qml:744
-msgid "Excluded apps"
-msgstr "Исключённые приложения"
+#: src/contents/ui/PageStreamsEffects.qml:753
+msgid "Send audio to the virtual source"
+msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:25
 msgid "General"

@@ -115,6 +115,10 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
       },
       Qt::QueuedConnection);
 
+  connect(
+      DbStreamOutputs::self(), &DbStreamOutputs::linkToVirtualSourceChanged, this, [&]() { set_bypass(false); },
+      Qt::QueuedConnection);
+
   connect(pm, &pw::Manager::linkChanged, this, &StreamOutputEffects::on_link_changed, Qt::QueuedConnection);
 
   connect(
@@ -342,6 +346,20 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
 
   if (links.size() < 2U) {
     util::warning(std::format("Link from easyeffecst sink {} to node {} failed", prev_node_id, next_node_id));
+  }
+
+  // Also send audio to the virtual source if the user enabled that
+
+  if (DbStreamOutputs::linkToVirtualSource()) {
+    links = pm->link_nodes(output_level->get_node_id(), pm->ee_source_node.id);
+
+    for (auto* link : links) {
+      list_proxies.push_back(link);
+    }
+
+    if (links.size() < 2U) {
+      util::warning("Link from easyeffecst output level meter to our virtual source failed");
+    }
   }
 
   /*

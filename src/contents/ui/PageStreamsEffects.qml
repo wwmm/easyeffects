@@ -728,10 +728,19 @@ Kirigami.Page {
                 overflowIconName: "im-ban-kick-user-symbolic"
                 actions: [
                     Kirigami.Action {
+                        text: i18n("Excluded apps") // qmllint disable
+                        icon.name: "im-ban-kick-user-symbolic"
+                        displayHint: Kirigami.DisplayHint.KeepVisible
+                        visible: pageStreamsEffects.streamDB.visiblePage === 0
+                        onTriggered: {
+                            blocklistDialog.open();
+                        }
+                    },
+                    Kirigami.Action {
                         tooltip: i18n("Input monitoring") // qmllint disable
                         icon.name: "audio-input-microphone-symbolic"
                         displayHint: Kirigami.DisplayHint.KeepVisible
-                        visible: pageStreamsEffects.pageType === 1 && pageStreamsEffects.streamDB.visiblePage === 1
+                        visible: pageStreamsEffects.pageType === 1
                         checkable: true
                         checked: DbStreamInputs.listenToMic
                         onTriggered: {
@@ -741,12 +750,16 @@ Kirigami.Page {
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Excluded apps") // qmllint disable
-                        icon.name: "im-ban-kick-user-symbolic"
+                        tooltip: i18n("Send audio to the virtual source") // qmllint disable
+                        icon.name: "emblem-shared-symbolic"
                         displayHint: Kirigami.DisplayHint.KeepVisible
-                        visible: pageStreamsEffects.streamDB.visiblePage === 0
+                        visible: pageStreamsEffects.pageType === 0
+                        checkable: true
+                        checked: DbStreamOutputs.linkToVirtualSource
                         onTriggered: {
-                            blocklistDialog.open();
+                            if (checked !== DbStreamOutputs.linkToVirtualSource) {
+                                DbStreamOutputs.linkToVirtualSource = checked;
+                            }
                         }
                     }
                 ]

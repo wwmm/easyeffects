@@ -4,10 +4,10 @@ Date: UNRELEASED_DATE
 
 Description: 
 - Features∶
-- 
+- It is now possible to link the output of the output effects pipeline to the input of EasyEffects virtual source device. This allows users to, for example, send the audio being played in their desktops to the people talking to them in a conference room.
 
 - Bug fixes∶
-- 
+- EasyEffects level meters were clamping the displayed value to zero decibel.
 
 - Other notes∶
 - 

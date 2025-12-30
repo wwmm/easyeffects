@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-12-27 21:40-0300\n"
+"POT-Creation-Date: 2025-12-30 14:23-0300\n"
 "PO-Revision-Date: 2025-12-11 21:07+0000\n"
 "Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1940,12 +1940,16 @@ msgid "Recorders"
 msgstr "Rekorder"
 
 #: src/contents/ui/PageStreamsEffects.qml:731
+msgid "Excluded apps"
+msgstr "Ausgeschlossene Apps"
+
+#: src/contents/ui/PageStreamsEffects.qml:740
 msgid "Input monitoring"
 msgstr "Eingangsüberwachung"
 
-#: src/contents/ui/PageStreamsEffects.qml:744
-msgid "Excluded apps"
-msgstr "Ausgeschlossene Apps"
+#: src/contents/ui/PageStreamsEffects.qml:753
+msgid "Send audio to the virtual source"
+msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:25
 msgid "General"
