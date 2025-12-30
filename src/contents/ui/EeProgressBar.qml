@@ -17,8 +17,8 @@ Rectangle {
     property int wrapMode: Text.Wrap
     property bool rightToLeft: false
     property bool convertDecibelToLinear: false
+    property real value: 0
     property real clampedValue: 0
-    property real displayValue: 0
     readonly property real liFrom: Common.dbToLinear(from)
     readonly property real liTo: Common.dbToLinear(to)
     readonly property real decimalFactor: Math.pow(10, -decimals)
@@ -39,12 +39,12 @@ Rectangle {
     clip: true
 
     function setValue(value) {
-        const newC = Common.clamp(value, control.from, control.to);
 
         // Only update if meaningfully different
 
-        if (Math.abs(newC - control.clampedValue) >= decimalFactor) {
-            control.clampedValue = newC;
+        if (Math.abs(value - control.value) >= decimalFactor) {
+            control.value = value;
+            control.clampedValue = Common.clamp(value, control.from, control.to);
         } else {
             return;
         }
@@ -52,9 +52,9 @@ Rectangle {
         let newDisplayValue;
 
         if (control.rightToLeft === false) {
-            newDisplayValue = control.clampedValue > sampleTimer.value ? control.clampedValue : sampleTimer.value;
+            newDisplayValue = value > sampleTimer.value ? value : sampleTimer.value;
         } else {
-            newDisplayValue = control.clampedValue < sampleTimer.value ? control.clampedValue : sampleTimer.value;
+            newDisplayValue = value < sampleTimer.value ? value : sampleTimer.value;
         }
 
         const normalizedClampedValue = (control.clampedValue - control.from) / (control.to - control.from);
@@ -62,6 +62,10 @@ Rectangle {
 
         const rlNormalizedClampedValue = (control.clampedValue - control.to) / (control.from - control.to);
         const rlNormalizedClampedValueLinear = (Common.dbToLinear(control.clampedValue) - control.liTo) / (control.liFrom - control.liTo);
+
+        //label
+
+        valueLabel.text = Number(newDisplayValue).toLocaleString(Qt.locale(), 'f', control.decimals) + unitSuffix;
 
         // level rect
 
@@ -71,26 +75,30 @@ Rectangle {
             levelScale.xScale = control.rightToLeft === false ? normalizedClampedValue : rlNormalizedClampedValue;
         }
 
-        if (newDisplayValue !== control.displayValue) {
-            control.displayValue = newDisplayValue;
+        const clampedNewDisplayValue = Common.clamp(newDisplayValue, control.from, control.to);
 
-            const normalizedDisplayValue = (control.displayValue - control.from) / (control.to - control.from);
-            const normalizedDisplayValueLinear = (Common.dbToLinear(control.displayValue) - control.liFrom) / (control.liTo - control.liFrom);
+        const normalizedDisplayValue = (clampedNewDisplayValue - control.from) / (control.to - control.from);
+        const normalizedDisplayValueLinear = (Common.dbToLinear(clampedNewDisplayValue) - control.liFrom) / (control.liTo - control.liFrom);
 
-            const rlNormalizedDisplayValue = (control.displayValue - control.to) / (control.from - control.to);
-            const rlNormalizedDisplayValueLinear = (Common.dbToLinear(control.displayValue) - control.liTo) / (control.liFrom - control.liTo);
+        const rlNormalizedDisplayValue = (newDisplayValue - control.to) / (control.from - control.to);
+        const rlNormalizedDisplayValueLinear = (Common.dbToLinear(clampedNewDisplayValue) - control.liTo) / (control.liFrom - control.liTo);
 
-            // hist rect
+        // hist rect
 
-            if (control.convertDecibelToLinear) {
-                histScale.x = control.rightToLeft === false ? normalizedDisplayValueLinear * control.width : control.width - rlNormalizedDisplayValueLinear * control.width;
-            } else {
-                histScale.x = control.rightToLeft === false ? normalizedDisplayValue * control.width : control.width - rlNormalizedDisplayValue * control.width;
-            }
+        let newHistPosition;
 
-            //label
+        if (control.convertDecibelToLinear) {
+            newHistPosition = control.rightToLeft === false ? normalizedDisplayValueLinear * control.width : control.width - rlNormalizedDisplayValueLinear * control.width;
+        } else {
+            newHistPosition = control.rightToLeft === false ? normalizedDisplayValue * control.width : control.width - rlNormalizedDisplayValue * control.width;
+        }
 
-            valueLabel.text = Number(control.displayValue).toLocaleString(Qt.locale(), 'f', control.decimals) + unitSuffix;
+        if (newHistPosition >= control.width) {
+            newHistPosition -= histRect.width;
+        }
+
+        if (histScale.x !== newHistPosition) {
+            histScale.x = newHistPosition;
         }
     }
 
@@ -186,14 +194,14 @@ Rectangle {
     Timer {
         id: sampleTimer
 
-        property real value: control.clampedValue
+        property real value: control.value
 
         interval: DbMain.levelMetersLabelTimer
         repeat: true
         running: control.visible
 
         onTriggered: {
-            value = control.clampedValue;
+            value = control.value;
         }
     }
 }

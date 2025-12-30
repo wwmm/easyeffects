@@ -13,8 +13,8 @@ Rectangle {
     readonly property real liFrom: Common.dbToLinear(from)
     readonly property real liTo: Common.dbToLinear(to)
     readonly property real decimalFactor: Math.pow(10, -decimals)
+    property real value: 0
     property real clampedValue: 0
-    property real displayValue: 0
 
     Kirigami.Theme.colorSet: Kirigami.Theme.View
     implicitWidth: valueLabel.implicitWidth + Kirigami.Units.largeSpacing
@@ -26,12 +26,11 @@ Rectangle {
     border.color: Kirigami.ColorUtils.linearInterpolation(Kirigami.Theme.backgroundColor, Kirigami.Theme.textColor, Kirigami.Theme.frameContrast)
 
     function setValue(value) {
-        const newC = Common.clamp(value, root.from, root.to);
-
         // Only update if meaningfully different
 
-        if (Math.abs(newC - root.clampedValue) >= root.decimalFactor) {
-            root.clampedValue = newC;
+        if (Math.abs(value - root.value) >= root.decimalFactor) {
+            root.value = value;
+            root.clampedValue = Common.clamp(value, root.from, root.to);
         } else {
             return;
         }
@@ -39,10 +38,14 @@ Rectangle {
         let newDisplayValue;
 
         if (root.topToBottom === false) {
-            newDisplayValue = root.clampedValue > sampleTimer.value ? root.clampedValue : sampleTimer.value;
+            newDisplayValue = value > sampleTimer.value ? value : sampleTimer.value;
         } else {
-            newDisplayValue = root.clampedValue < sampleTimer.value ? root.clampedValue : sampleTimer.value;
+            newDisplayValue = value < sampleTimer.value ? value : sampleTimer.value;
         }
+
+        // label
+
+        valueLabel.text = Number(newDisplayValue).toLocaleString(Qt.locale(), 'f', root.decimals);
 
         // level rect
 
@@ -52,23 +55,17 @@ Rectangle {
             levelScale.yScale = root.topToBottom === false ? (root.clampedValue - root.from) / (root.to - root.from) : (root.clampedValue - root.to) / (root.from - root.to);
         }
 
-        if (newDisplayValue !== root.displayValue) {
-            root.displayValue = newDisplayValue;
+        //hist rect
 
-            //hist rect
+        const clampedNewDisplayValue = Common.clamp(newDisplayValue, root.from, root.to);
 
-            const liFrac = (Common.dbToLinear(root.displayValue) - root.liFrom) / (root.liTo - root.liFrom);
-            const frac = (root.displayValue - root.from) / (root.to - root.from);
+        const liFrac = (Common.dbToLinear(clampedNewDisplayValue) - root.liFrom) / (root.liTo - root.liFrom);
+        const frac = (clampedNewDisplayValue - root.from) / (root.to - root.from);
 
-            if (root.convertDecibelToLinear) {
-                histScale.y = root.height * (1.0 - liFrac);
-            } else {
-                histScale.y = root.height * (1.0 - frac);
-            }
-
-            // label
-
-            valueLabel.text = Number(root.displayValue).toLocaleString(Qt.locale(), 'f', root.decimals);
+        if (root.convertDecibelToLinear) {
+            histScale.y = root.height * (1.0 - liFrac);
+        } else {
+            histScale.y = root.height * (1.0 - frac);
         }
     }
 
@@ -134,14 +131,14 @@ Rectangle {
     Timer {
         id: sampleTimer
 
-        property real value: root.clampedValue
+        property real value: root.value
 
         interval: DbMain.levelMetersLabelTimer
         repeat: true
         running: root.visible
 
         onTriggered: {
-            value = root.clampedValue;
+            value = root.value;
         }
     }
 }
