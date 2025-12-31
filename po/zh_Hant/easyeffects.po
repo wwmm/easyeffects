@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-12-30 14:23-0300\n"
-"PO-Revision-Date: 2025-12-29 09:00+0000\n"
+"PO-Revision-Date: 2025-12-31 13:01+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hant/>\n"
@@ -1854,7 +1854,7 @@ msgstr "輸入監控"
 
 #: src/contents/ui/PageStreamsEffects.qml:753
 msgid "Send audio to the virtual source"
-msgstr ""
+msgstr "將音訊傳送到虛擬來源"
 
 #: src/contents/ui/PipeWirePage.qml:25
 msgid "General"
