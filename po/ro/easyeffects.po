@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-12-30 14:23-0300\n"
-"PO-Revision-Date: 2025-12-29 09:00+0000\n"
+"PO-Revision-Date: 2025-12-31 13:01+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ro/>\n"
@@ -1876,7 +1876,7 @@ msgstr "Monitorizarea intrării"
 
 #: src/contents/ui/PageStreamsEffects.qml:753
 msgid "Send audio to the virtual source"
-msgstr ""
+msgstr "Trimite audio către sursa virtuală"
 
 #: src/contents/ui/PipeWirePage.qml:25
 msgid "General"
