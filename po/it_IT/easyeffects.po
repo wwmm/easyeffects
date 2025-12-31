@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-12-30 14:23-0300\n"
-"PO-Revision-Date: 2025-12-28 20:00+0000\n"
+"PO-Revision-Date: 2025-12-31 13:01+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -1870,7 +1870,7 @@ msgstr "Monitoraggio Input"
 
 #: src/contents/ui/PageStreamsEffects.qml:753
 msgid "Send audio to the virtual source"
-msgstr ""
+msgstr "Invia audio al registratore virtuale"
 
 #: src/contents/ui/PipeWirePage.qml:25
 msgid "General"
