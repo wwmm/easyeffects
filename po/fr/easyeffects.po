@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-12-30 14:23-0300\n"
-"PO-Revision-Date: 2025-12-29 09:00+0000\n"
+"PO-Revision-Date: 2026-01-02 02:01+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -1873,7 +1873,7 @@ msgstr "Surveillance de l'entrée"
 
 #: src/contents/ui/PageStreamsEffects.qml:753
 msgid "Send audio to the virtual source"
-msgstr ""
+msgstr "Envoyer l'audio vers la source virtuelle"
 
 #: src/contents/ui/PipeWirePage.qml:25
 msgid "General"
