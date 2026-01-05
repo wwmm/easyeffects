@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-12-30 14:23-0300\n"
+"POT-Creation-Date: 2026-01-05 15:10+0000\n"
 "PO-Revision-Date: 2025-07-20 18:40+0000\n"
 "Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -219,9 +219,9 @@ msgstr "வெளியீட்டு ஆதாயம்"
 #: src/contents/ui/Loudness.qml:153 src/contents/ui/Maximizer.qml:100
 #: src/contents/ui/MultibandCompressor.qml:946
 #: src/contents/ui/MultibandGate.qml:919 src/contents/ui/Pitch.qml:246
-#: src/contents/ui/Reverb.qml:297 src/contents/ui/RNNoise.qml:57
-#: src/contents/ui/RNNoise.qml:68 src/contents/ui/RNNoise.qml:282
-#: src/contents/ui/RNNoise.qml:284 src/contents/ui/RNNoise.qml:302
+#: src/contents/ui/RNNoise.qml:57 src/contents/ui/RNNoise.qml:68
+#: src/contents/ui/RNNoise.qml:282 src/contents/ui/RNNoise.qml:284
+#: src/contents/ui/RNNoise.qml:302 src/contents/ui/Reverb.qml:297
 #: src/contents/ui/Speex.qml:155 src/contents/ui/StereoTools.qml:370
 #, fuzzy
 msgid "Using %1"
@@ -312,8 +312,8 @@ msgstr "கேளுங்கள்"
 #: src/contents/ui/Limiter.qml:639 src/contents/ui/Loudness.qml:195
 #: src/contents/ui/Main.qml:559 src/contents/ui/Maximizer.qml:132
 #: src/contents/ui/MultibandCompressor.qml:995
-#: src/contents/ui/MultibandGate.qml:968 src/contents/ui/Reverb.qml:337
-#: src/contents/ui/RNNoise.qml:327 src/contents/ui/Speex.qml:173
+#: src/contents/ui/MultibandGate.qml:968 src/contents/ui/RNNoise.qml:327
+#: src/contents/ui/Reverb.qml:337 src/contents/ui/Speex.qml:173
 #: src/contents/ui/StereoTools.qml:402
 msgid "Reset"
 msgstr "மீட்டமை"
@@ -392,8 +392,8 @@ msgstr "காற்றமுக்கி"
 
 #: src/contents/ui/Compressor.qml:61 src/contents/ui/Compressor.qml:283
 #: src/contents/ui/Deesser.qml:70 src/contents/ui/Delay.qml:51
-#: src/contents/ui/Delay.qml:204 src/contents/ui/EqualizerBandMenu.qml:40
-#: src/contents/ui/Equalizer.qml:121 src/contents/ui/Expander.qml:61
+#: src/contents/ui/Delay.qml:204 src/contents/ui/Equalizer.qml:121
+#: src/contents/ui/EqualizerBandMenu.qml:40 src/contents/ui/Expander.qml:61
 #: src/contents/ui/Expander.qml:243 src/contents/ui/Gate.qml:261
 #: src/contents/ui/Limiter.qml:54 src/contents/ui/Loudness.qml:51
 #: src/contents/ui/MultibandCompressor.qml:417
@@ -748,58 +748,6 @@ msgstr "உறை"
 msgid "Stereo split"
 msgstr "ச்டீரியோ பிளவு"
 
-#: src/contents/ui/ConvolverImpulseDialog.qml:31
-#, fuzzy
-msgid "Imported a new Convolver impulse file."
-msgstr "உந்துவிசை கோப்பை இறக்குமதி செய்யுங்கள்"
-
-#: src/contents/ui/ConvolverImpulseDialog.qml:33
-#, fuzzy
-msgid "Failed to import the Convolver impulse file."
-msgstr "உந்துவிசை கோப்பை ஏற்றுவதில் தோல்வி"
-
-#: src/contents/ui/ConvolverImpulseDialog.qml:47
-#: src/contents/ui/MenuAddPlugins.qml:168
-#: src/contents/ui/PresetsCommunityPage.qml:46
-#: src/contents/ui/PresetsLocalPage.qml:146
-msgid "Search"
-msgstr "தேடல்"
-
-#: src/contents/ui/ConvolverImpulseDialog.qml:90
-#, fuzzy
-msgid "Remove Impulse Response"
-msgstr "கணத்தாக்க மறுமொழி"
-
-#: src/contents/ui/ConvolverImpulseDialog.qml:91
-msgid "Are you sure you want to remove this impulse response from the list?"
-msgstr ""
-
-#: src/contents/ui/ConvolverImpulseDialog.qml:95
-#, fuzzy
-msgid "Removed the %1 Convolver impulse."
-msgstr "உந்துவிசை கோப்பை ஏற்றுவதில் தோல்வி"
-
-#: src/contents/ui/ConvolverImpulseDialog.qml:97
-#, fuzzy
-msgid "Failed to remove the %1 Convolver impulse."
-msgstr "உந்துவிசை கோப்பை ஏற்றுவதில் தோல்வி"
-
-#: src/contents/ui/ConvolverImpulseDialog.qml:114
-#, fuzzy
-msgid "Delete this impulse"
-msgstr "தூண்டுதலை அகற்று"
-
-#: src/contents/ui/ConvolverImpulseDialog.qml:153
-#, fuzzy
-msgid "Import impulse"
-msgstr "உந்துவிசை இறக்குமதி செய்யுங்கள்"
-
-#: src/contents/ui/ConvolverImpulseDialog.qml:163
-#: src/contents/ui/MenuAddPlugins.qml:184 src/contents/ui/PresetsDialog.qml:107
-msgctxt "@action:button"
-msgid "Close"
-msgstr ""
-
 #: src/contents/ui/Convolver.qml:48
 #, fuzzy
 msgid "Loaded the %1 Convolver impulse."
@@ -876,6 +824,58 @@ msgstr "ச்டீரியோ அகலம்"
 msgid "Autogain"
 msgstr "ஆட்டோகெயின்"
 
+#: src/contents/ui/ConvolverImpulseDialog.qml:31
+#, fuzzy
+msgid "Imported a new Convolver impulse file."
+msgstr "உந்துவிசை கோப்பை இறக்குமதி செய்யுங்கள்"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:33
+#, fuzzy
+msgid "Failed to import the Convolver impulse file."
+msgstr "உந்துவிசை கோப்பை ஏற்றுவதில் தோல்வி"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:47
+#: src/contents/ui/MenuAddPlugins.qml:168
+#: src/contents/ui/PresetsCommunityPage.qml:46
+#: src/contents/ui/PresetsLocalPage.qml:146
+msgid "Search"
+msgstr "தேடல்"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:90
+#, fuzzy
+msgid "Remove Impulse Response"
+msgstr "கணத்தாக்க மறுமொழி"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:91
+msgid "Are you sure you want to remove this impulse response from the list?"
+msgstr ""
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:95
+#, fuzzy
+msgid "Removed the %1 Convolver impulse."
+msgstr "உந்துவிசை கோப்பை ஏற்றுவதில் தோல்வி"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:97
+#, fuzzy
+msgid "Failed to remove the %1 Convolver impulse."
+msgstr "உந்துவிசை கோப்பை ஏற்றுவதில் தோல்வி"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:114
+#, fuzzy
+msgid "Delete this impulse"
+msgstr "தூண்டுதலை அகற்று"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:153
+#, fuzzy
+msgid "Import impulse"
+msgstr "உந்துவிசை இறக்குமதி செய்யுங்கள்"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:163
+#: src/contents/ui/MenuAddPlugins.qml:184 src/contents/ui/PresetsDialog.qml:107
+msgctxt "@action:button"
+msgid "Close"
+msgstr ""
+
 #: src/contents/ui/ConvolverSofaDialog.qml:12
 msgid "Target Orientation"
 msgstr ""
@@ -940,6 +940,19 @@ msgstr "இயல்புநிலை"
 msgid "Presets"
 msgstr "முன்னமைவுகள்"
 
+#: src/contents/ui/Crystalizer.qml:84
+#, fuzzy
+msgid "Oversampling quality"
+msgstr "மிகைப்படுத்தல்"
+
+#: src/contents/ui/Crystalizer.qml:122 src/contents/ui/Limiter.qml:68
+msgid "Oversampling"
+msgstr "மிகைப்படுத்தல்"
+
+#: src/contents/ui/Crystalizer.qml:132
+msgid "Adaptive intensity"
+msgstr ""
+
 #: src/contents/ui/CrystalizerBand.qml:39
 #: src/contents/ui/EqualizerBandMenu.qml:166
 #: src/contents/ui/MultibandCompressor.qml:73
@@ -953,19 +966,6 @@ msgstr "முடக்கு"
 #: src/contents/ui/MultibandGate.qml:91
 msgid "Bypass"
 msgstr "பைபாச்"
-
-#: src/contents/ui/Crystalizer.qml:84
-#, fuzzy
-msgid "Oversampling quality"
-msgstr "மிகைப்படுத்தல்"
-
-#: src/contents/ui/Crystalizer.qml:122 src/contents/ui/Limiter.qml:68
-msgid "Oversampling"
-msgstr "மிகைப்படுத்தல்"
-
-#: src/contents/ui/Crystalizer.qml:132
-msgid "Adaptive intensity"
-msgstr ""
 
 #: src/contents/ui/DeepFilterNet.qml:32
 #, fuzzy
@@ -1236,119 +1236,6 @@ msgstr ""
 msgid "Input"
 msgstr "உள்ளீடு"
 
-#: src/contents/ui/EqualizerBandMenu.qml:13
-#: src/contents/ui/MultibandCompressor.qml:652
-#: src/contents/ui/MultibandCompressor.qml:911
-#: src/contents/ui/MultibandGate.qml:625 src/contents/ui/MultibandGate.qml:884
-#, fuzzy
-msgid "Band"
-msgstr "பட்டைகள்"
-
-#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
-msgid "Bell"
-msgstr "மணி"
-
-#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
-#, fuzzy
-msgid "High-shelf"
-msgstr "உயர்-அலமாரியில்"
-
-#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
-#, fuzzy
-msgid "Low-shelf"
-msgstr "குறைந்த-அலமாரியில்"
-
-#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
-msgid "Notch"
-msgstr "உச்சநிலை"
-
-#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
-msgid "Resonance"
-msgstr "ஒத்திசை"
-
-#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
-#, fuzzy
-msgid "Allpass"
-msgstr "பைபாச்"
-
-#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
-#, fuzzy
-msgid "Bandpass"
-msgstr "பேண்ட் பைபாச்"
-
-#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
-#, fuzzy
-msgid "Ladder-pass"
-msgstr "ஏணி-பாச்"
-
-#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
-#, fuzzy
-msgid "Ladder-rejection"
-msgstr "ஏணி-நிராகரிப்பு"
-
-#: src/contents/ui/EqualizerBandMenu.qml:44 src/contents/ui/Filter.qml:63
-msgid "RLC (BT)"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:44 src/contents/ui/Filter.qml:63
-msgid "RLC (MT)"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:44 src/contents/ui/Filter.qml:63
-msgid "BWC (BT)"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:44 src/contents/ui/Filter.qml:63
-msgid "BWC (MT)"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:44 src/contents/ui/Filter.qml:63
-msgid "LRX (BT)"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:44 src/contents/ui/Filter.qml:63
-msgid "LRX (MT)"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:44 src/contents/ui/Filter.qml:63
-msgid "APO (DR)"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:54 src/contents/ui/Filter.qml:87
-msgid "Slope"
-msgstr "சாய்வு"
-
-#: src/contents/ui/EqualizerBandMenu.qml:75 src/contents/ui/Filter.qml:108
-#: src/contents/ui/MultibandCompressor.qml:182
-#: src/contents/ui/MultibandGate.qml:119 src/contents/ui/PipeWirePage.qml:396
-msgid "Frequency"
-msgstr "மீடிறன், மீள்திறன், நிகழ்வெண், நிகழ்வு"
-
-#: src/contents/ui/EqualizerBandMenu.qml:98 src/contents/ui/Filter.qml:139
-#: src/contents/ui/Limiter.qml:488 src/contents/ui/MultibandCompressor.qml:342
-#: src/contents/ui/MultibandGate.qml:228
-msgid "Gain"
-msgstr "பெருக்கம்"
-
-#: src/contents/ui/EqualizerBandMenu.qml:121 src/contents/ui/Filter.qml:155
-msgid "Quality"
-msgstr "தகுதி"
-
-#: src/contents/ui/EqualizerBandMenu.qml:144 src/contents/ui/Filter.qml:124
-msgid "Width"
-msgstr "அகலம்"
-
-#: src/contents/ui/EqualizerBandMenu.qml:150
-#, fuzzy
-msgid "oct"
-msgstr "குறைந்த வெட்டு"
-
-#: src/contents/ui/EqualizerBandMenu.qml:178
-#: src/contents/ui/MultibandCompressor.qml:82
-#: src/contents/ui/MultibandGate.qml:82
-msgid "Solo"
-msgstr "தனி"
-
 #: src/contents/ui/Equalizer.qml:49 src/contents/ui/Equalizer.qml:89
 #, fuzzy
 msgid "APO preset"
@@ -1490,6 +1377,119 @@ msgstr "கிராஃபிசெக் முன்னமைக்கப்�
 #, fuzzy
 msgid "Export APO"
 msgstr "ஏற்றுமதி முன்னமைவு"
+
+#: src/contents/ui/EqualizerBandMenu.qml:13
+#: src/contents/ui/MultibandCompressor.qml:652
+#: src/contents/ui/MultibandCompressor.qml:911
+#: src/contents/ui/MultibandGate.qml:625 src/contents/ui/MultibandGate.qml:884
+#, fuzzy
+msgid "Band"
+msgstr "பட்டைகள்"
+
+#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
+msgid "Bell"
+msgstr "மணி"
+
+#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
+#, fuzzy
+msgid "High-shelf"
+msgstr "உயர்-அலமாரியில்"
+
+#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
+#, fuzzy
+msgid "Low-shelf"
+msgstr "குறைந்த-அலமாரியில்"
+
+#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
+msgid "Notch"
+msgstr "உச்சநிலை"
+
+#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
+msgid "Resonance"
+msgstr "ஒத்திசை"
+
+#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
+#, fuzzy
+msgid "Allpass"
+msgstr "பைபாச்"
+
+#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
+#, fuzzy
+msgid "Bandpass"
+msgstr "பேண்ட் பைபாச்"
+
+#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
+#, fuzzy
+msgid "Ladder-pass"
+msgstr "ஏணி-பாச்"
+
+#: src/contents/ui/EqualizerBandMenu.qml:30 src/contents/ui/Filter.qml:49
+#, fuzzy
+msgid "Ladder-rejection"
+msgstr "ஏணி-நிராகரிப்பு"
+
+#: src/contents/ui/EqualizerBandMenu.qml:44 src/contents/ui/Filter.qml:63
+msgid "RLC (BT)"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:44 src/contents/ui/Filter.qml:63
+msgid "RLC (MT)"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:44 src/contents/ui/Filter.qml:63
+msgid "BWC (BT)"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:44 src/contents/ui/Filter.qml:63
+msgid "BWC (MT)"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:44 src/contents/ui/Filter.qml:63
+msgid "LRX (BT)"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:44 src/contents/ui/Filter.qml:63
+msgid "LRX (MT)"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:44 src/contents/ui/Filter.qml:63
+msgid "APO (DR)"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:54 src/contents/ui/Filter.qml:87
+msgid "Slope"
+msgstr "சாய்வு"
+
+#: src/contents/ui/EqualizerBandMenu.qml:75 src/contents/ui/Filter.qml:108
+#: src/contents/ui/MultibandCompressor.qml:182
+#: src/contents/ui/MultibandGate.qml:119 src/contents/ui/PipeWirePage.qml:396
+msgid "Frequency"
+msgstr "மீடிறன், மீள்திறன், நிகழ்வெண், நிகழ்வு"
+
+#: src/contents/ui/EqualizerBandMenu.qml:98 src/contents/ui/Filter.qml:139
+#: src/contents/ui/Limiter.qml:488 src/contents/ui/MultibandCompressor.qml:342
+#: src/contents/ui/MultibandGate.qml:228
+msgid "Gain"
+msgstr "பெருக்கம்"
+
+#: src/contents/ui/EqualizerBandMenu.qml:121 src/contents/ui/Filter.qml:155
+msgid "Quality"
+msgstr "தகுதி"
+
+#: src/contents/ui/EqualizerBandMenu.qml:144 src/contents/ui/Filter.qml:124
+msgid "Width"
+msgstr "அகலம்"
+
+#: src/contents/ui/EqualizerBandMenu.qml:150
+#, fuzzy
+msgid "oct"
+msgstr "குறைந்த வெட்டு"
+
+#: src/contents/ui/EqualizerBandMenu.qml:178
+#: src/contents/ui/MultibandCompressor.qml:82
+#: src/contents/ui/MultibandGate.qml:82
+msgid "Solo"
+msgstr "தனி"
 
 #: src/contents/ui/Exciter.qml:142
 #, fuzzy
@@ -2862,6 +2862,82 @@ msgstr "இந்த முன்னமைக்கப்பட்ட கோப�
 msgid "Delete this preset"
 msgstr "இந்த முன்னமைக்கப்பட்ட கோப்பை அகற்று"
 
+#: src/contents/ui/RNNoise.qml:44
+#, fuzzy
+msgid "Imported a new RNNoise model file."
+msgstr "நிலையான Rnnoise மாதிரி"
+
+#: src/contents/ui/RNNoise.qml:46
+#, fuzzy
+msgid "Failed to import the RNNoise model file."
+msgstr "மாதிரி கோப்பை இறக்குமதி செய்யுங்கள்"
+
+#: src/contents/ui/RNNoise.qml:57 src/contents/ui/RNNoise.qml:68
+#: src/contents/ui/RNNoise.qml:282 src/contents/ui/RNNoise.qml:284
+#, fuzzy
+msgid "Standard RNNoise model"
+msgstr "நிலையான Rnnoise மாதிரி"
+
+#: src/contents/ui/RNNoise.qml:59
+#, fuzzy
+msgid "Standard RNNoise model loaded."
+msgstr "நிலையான Rnnoise மாதிரி"
+
+#: src/contents/ui/RNNoise.qml:64 src/contents/ui/RNNoise.qml:286
+#, fuzzy
+msgid "Using %1 Model"
+msgstr "{} ஐப் பயன்படுத்துதல்"
+
+#: src/contents/ui/RNNoise.qml:66
+#, fuzzy
+msgid "Loaded the %1 RNNoise model."
+msgstr "நிலையான Rnnoise மாதிரி"
+
+#: src/contents/ui/RNNoise.qml:70
+#, fuzzy
+msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
+msgstr "உந்துவிசை கோப்பை ஏற்றுவதில் தோல்வி"
+
+#: src/contents/ui/RNNoise.qml:89 src/contents/ui/Speex.qml:98
+#, fuzzy
+msgid "Voice detection"
+msgstr "குரல் கண்டறிதல்"
+
+#: src/contents/ui/RNNoise.qml:126
+#, fuzzy
+msgid "Wet level"
+msgstr "ஈரமான நிலை"
+
+#: src/contents/ui/RNNoise.qml:166
+#, fuzzy
+msgid "Use the Standard model"
+msgstr "நிலையான மாதிரி"
+
+#: src/contents/ui/RNNoise.qml:177
+#, fuzzy
+msgid "User Models"
+msgstr "Rnnoise மாதிரிகள்"
+
+#: src/contents/ui/RNNoise.qml:243
+#, fuzzy
+msgid "Delete this model"
+msgstr "இந்த மாதிரி கோப்பை அகற்று"
+
+#: src/contents/ui/RNNoise.qml:248
+#, fuzzy
+msgid "Removed the %1 RNNoise model."
+msgstr "நிலையான Rnnoise மாதிரி"
+
+#: src/contents/ui/RNNoise.qml:250
+#, fuzzy
+msgid "Failed to remove the %1 RNNoise model."
+msgstr "உந்துவிசை கோப்பை ஏற்றுவதில் தோல்வி"
+
+#: src/contents/ui/RNNoise.qml:319
+#, fuzzy
+msgid "Import model"
+msgstr "இறக்குமதி மாதிரி"
+
 #: src/contents/ui/Reverb.qml:47
 #, fuzzy
 msgid "Room size"
@@ -2952,82 +3028,6 @@ msgstr "டிச்கோ"
 #, fuzzy
 msgid "Large occupied hall"
 msgstr "பெரிய ஆக்கிரமிக்கப்பட்ட மண்டபம்"
-
-#: src/contents/ui/RNNoise.qml:44
-#, fuzzy
-msgid "Imported a new RNNoise model file."
-msgstr "நிலையான Rnnoise மாதிரி"
-
-#: src/contents/ui/RNNoise.qml:46
-#, fuzzy
-msgid "Failed to import the RNNoise model file."
-msgstr "மாதிரி கோப்பை இறக்குமதி செய்யுங்கள்"
-
-#: src/contents/ui/RNNoise.qml:57 src/contents/ui/RNNoise.qml:68
-#: src/contents/ui/RNNoise.qml:282 src/contents/ui/RNNoise.qml:284
-#, fuzzy
-msgid "Standard RNNoise model"
-msgstr "நிலையான Rnnoise மாதிரி"
-
-#: src/contents/ui/RNNoise.qml:59
-#, fuzzy
-msgid "Standard RNNoise model loaded."
-msgstr "நிலையான Rnnoise மாதிரி"
-
-#: src/contents/ui/RNNoise.qml:64 src/contents/ui/RNNoise.qml:286
-#, fuzzy
-msgid "Using %1 Model"
-msgstr "{} ஐப் பயன்படுத்துதல்"
-
-#: src/contents/ui/RNNoise.qml:66
-#, fuzzy
-msgid "Loaded the %1 RNNoise model."
-msgstr "நிலையான Rnnoise மாதிரி"
-
-#: src/contents/ui/RNNoise.qml:70
-#, fuzzy
-msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
-msgstr "உந்துவிசை கோப்பை ஏற்றுவதில் தோல்வி"
-
-#: src/contents/ui/RNNoise.qml:89 src/contents/ui/Speex.qml:98
-#, fuzzy
-msgid "Voice detection"
-msgstr "குரல் கண்டறிதல்"
-
-#: src/contents/ui/RNNoise.qml:126
-#, fuzzy
-msgid "Wet level"
-msgstr "ஈரமான நிலை"
-
-#: src/contents/ui/RNNoise.qml:166
-#, fuzzy
-msgid "Use the Standard model"
-msgstr "நிலையான மாதிரி"
-
-#: src/contents/ui/RNNoise.qml:177
-#, fuzzy
-msgid "User Models"
-msgstr "Rnnoise மாதிரிகள்"
-
-#: src/contents/ui/RNNoise.qml:243
-#, fuzzy
-msgid "Delete this model"
-msgstr "இந்த மாதிரி கோப்பை அகற்று"
-
-#: src/contents/ui/RNNoise.qml:248
-#, fuzzy
-msgid "Removed the %1 RNNoise model."
-msgstr "நிலையான Rnnoise மாதிரி"
-
-#: src/contents/ui/RNNoise.qml:250
-#, fuzzy
-msgid "Failed to remove the %1 RNNoise model."
-msgstr "உந்துவிசை கோப்பை ஏற்றுவதில் தோல்வி"
-
-#: src/contents/ui/RNNoise.qml:319
-#, fuzzy
-msgid "Import model"
-msgstr "இறக்குமதி மாதிரி"
 
 #: src/contents/ui/ShortcutsSheet.qml:47
 #, fuzzy
@@ -3190,7 +3190,7 @@ msgid "Global audio effects"
 msgstr "_SHORTCUTS"
 
 #: src/main.cpp:330
-msgid "© 2017-2025 EasyEffects Team"
+msgid "© 2017-2026 EasyEffects Team"
 msgstr ""
 
 #: src/main.cpp:332
