@@ -1,0 +1,12 @@
+File=easyeffects_db_crusher.kcfg
+NameSpace=db
+ClassName=Crusher
+Inherits=KConfigBaseEE
+IncludeFiles=\"kconfig_base_ee.hpp\"
+Mutators=true
+Notifiers=true
+DefaultValueGetters=true
+Singleton=false
+GenerateProperties=true
+QmlUncreatable=true
+QmlRegistration=true
