@@ -1,4 +1,30 @@
 /**
+ * Copyright © 2025-2026 Wellington Wallace
+ *
+ * This file is part of Easy Effects.
+ *
+ * Easy Effects is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Easy Effects is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
+ */
+
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
+import "Common.js" as Common
+import org.kde.kirigami as Kirigami
+import org.kde.kirigamiaddons.formcard as FormCard
+
+/**
  * It is really bizarre that QML does not have a dedicated double spinbox...
  * It is necessary to do a hack solution based on the int spinbox...
  * Our custom spinbox code was inspired by:
@@ -9,13 +35,6 @@
  * https://github.com/KDE/kirigami-addons/blob/master/src/formcard/FormSpinBoxDelegate.qml
  * https://bugreports.qt.io/browse/QTBUG-67349
  */
-
-import QtQuick
-import QtQuick.Controls
-import QtQuick.Layouts
-import "Common.js" as Common
-import org.kde.kirigami as Kirigami
-import org.kde.kirigamiaddons.formcard as FormCard
 
 FormCard.AbstractFormDelegate {
     id: control
