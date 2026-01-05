@@ -1,5 +1,5 @@
 /**
- * Copyright © 2017-2025 Wellington Wallace
+ * Copyright © 2017-2026 Wellington Wallace
  *
  * This file is part of Easy Effects.
  *
@@ -327,7 +327,7 @@ int main(int argc, char* argv[]) {
 
   KAboutData about(QStringLiteral(APPLICATION_DOMAIN), QStringLiteral(APPLICATION_NAME),
                    QStringLiteral(PROJECT_VERSION), i18n("Global audio effects"), KAboutLicense::GPL_V3,
-                   i18n("© 2017-2025 EasyEffects Team"));
+                   i18n("© 2017-2026 EasyEffects Team"));
 
   about.addAuthor(i18n("Wellington Wallace"), i18nc("@info:credit", "Developer"),
                   QStringLiteral("wellingtonwallace@gmail.com"));

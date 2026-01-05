@@ -1,5 +1,5 @@
 /**
- * Copyright © 2023 Torge Matthies
+ * Copyright © 2023-2026 Torge Matthies
  *
  * This file is part of Easy Effects.
  *
