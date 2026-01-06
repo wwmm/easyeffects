@@ -44,9 +44,9 @@
         </entry>
         <entry name="dc" type="Double">
             <label></label>
-            <min>0.25</min>
-            <max>4</max>
-            <default>1</default>
+            <min>-12.041</min>
+            <max>12.041</max>
+            <default>0</default>
         </entry>
         <entry name="antiAliasing" type="Double">
             <label></label>

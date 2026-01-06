@@ -72,6 +72,7 @@ class BaseName : public QObject {
   CREATE_PROPERTY(QString, compressor, QStringLiteral("compressor"));
   CREATE_PROPERTY(QString, convolver, QStringLiteral("convolver"));
   CREATE_PROPERTY(QString, crossfeed, QStringLiteral("crossfeed"));
+  CREATE_PROPERTY(QString, crusher, QStringLiteral("crusher"));
   CREATE_PROPERTY(QString, crystalizer, QStringLiteral("crystalizer"));
   CREATE_PROPERTY(QString, deepfilternet, QStringLiteral("deepfilternet"));
   CREATE_PROPERTY(QString, deesser, QStringLiteral("deesser"));
