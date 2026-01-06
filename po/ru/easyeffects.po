@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-01-05 15:10+0000\n"
-"PO-Revision-Date: 2026-01-05 08:04+0000\n"
+"PO-Revision-Date: 2026-01-06 13:01+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -2955,9 +2955,8 @@ msgid "Global audio effects"
 msgstr "Глобальные эффекты звука"
 
 #: src/main.cpp:330
-#, fuzzy
 msgid "© 2017-2026 EasyEffects Team"
-msgstr "© 2017-2025 Команда EasyEffects"
+msgstr "© 2017-2026 Команда EasyEffects"
 
 #: src/main.cpp:332
 msgid "Wellington Wallace"
