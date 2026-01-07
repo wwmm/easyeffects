@@ -29,6 +29,7 @@ Model::Model(QObject* parent)
                 {BaseName::compressor, i18n("Compressor")},
                 {BaseName::convolver, i18n("Convolver")},
                 {BaseName::crossfeed, i18n("Crossfeed")},
+                {BaseName::crusher, i18n("Crusher")},
                 {BaseName::crystalizer, i18n("Crystalizer")},
                 {BaseName::deepfilternet, i18n("Deep Noise Remover")},
                 {BaseName::deesser, i18n("Deesser")},

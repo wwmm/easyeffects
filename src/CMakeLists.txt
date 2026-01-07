@@ -33,6 +33,7 @@ qt_add_qml_module(easyeffects
         contents/ui/ConvolverImpulseDialog.qml
         contents/ui/ConvolverSofaDialog.qml
         contents/ui/Crossfeed.qml
+        contents/ui/Crusher.qml
         contents/ui/Crystalizer.qml
         contents/ui/CrystalizerBand.qml
         contents/ui/Deesser.qml
@@ -135,6 +136,8 @@ target_sources(easyeffects PRIVATE
     convolver_zita.cpp
     crossfeed.cpp
     crossfeed_preset.cpp
+    crusher.cpp
+    crusher_preset.cpp
     crystalizer.cpp
     crystalizer_preset.cpp
     db_manager.cpp

@@ -1,12 +1,14 @@
 Steps:
 
 - Creat the database file at: src/contents/kcfg/
+- Add to the "BaseName" class defined in the file "tags_plugin_name.hpp" a new member
+- In the file "tags_plugin_name.cpp" add one more entry to "modelMap"
 - Inherit from the class "PluginBase" when creating the plugin class that will wrap the LV2/LADSPA library or any other necessary for the audio processing
 - Make the call "settings->disconnect();" in the plugin class destructor
 - Override PluginBase's reset method and call inside it "settings->setDefaults();"
 - Create the plugin class instance inside "EffectsBase::create_filters_if_necessary()"
 - Pass the plugin instance pointer inside "EffectsBase::getPluginInstance(const QString& pluginName)"
 - Create the plugin qml file inside src/contents/ui/
-- Add the qml file to "src/resources.qrc"
+- Add the qml file to the "qt_add_qml_module" call in our cmake file
 - Create the plugin qml window instance inside the function "createPluginStack" defined in the file "src/contents/ui/PageStreamsEffects.qml"
-- Create the plugin preset wrapper inside "Manager::create_wrapper"
+- Create the plugin preset wrapper inside the "Manager::create_wrapper" member function defined in the file "presets_manager.cpp"

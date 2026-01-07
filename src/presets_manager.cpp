@@ -51,6 +51,7 @@
 #include "config.h"
 #include "convolver_preset.hpp"
 #include "crossfeed_preset.hpp"
+#include "crusher_preset.hpp"
 #include "crystalizer_preset.hpp"
 #include "deepfilternet_preset.hpp"
 #include "deesser_preset.hpp"
@@ -844,6 +845,8 @@ auto Manager::create_wrapper(const PipelineType& pipeline_type, const QString& f
     return std::make_unique<ConvolverPreset>(pipeline_type, filter_name.toStdString());
   } else if (filter_name.startsWith(tags::plugin_name::BaseName::crossfeed)) {
     return std::make_unique<CrossfeedPreset>(pipeline_type, filter_name.toStdString());
+  } else if (filter_name.startsWith(tags::plugin_name::BaseName::crusher)) {
+    return std::make_unique<CrusherPreset>(pipeline_type, filter_name.toStdString());
   } else if (filter_name.startsWith(tags::plugin_name::BaseName::crystalizer)) {
     return std::make_unique<CrystalizerPreset>(pipeline_type, filter_name.toStdString());
   } else if (filter_name.startsWith(tags::plugin_name::BaseName::deesser)) {

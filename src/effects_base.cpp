@@ -44,6 +44,7 @@
 #include "compressor.hpp"
 #include "convolver.hpp"
 #include "crossfeed.hpp"
+#include "crusher.hpp"
 #include "crystalizer.hpp"
 #include "db_manager.hpp"
 #include "deepfilternet.hpp"
@@ -156,6 +157,8 @@ void EffectsBase::create_filters_if_necessary() {
       filter = std::make_shared<Convolver>(log_tag, pm, pipeline_type, instance_id);
     } else if (name.startsWith(tags::plugin_name::BaseName::crossfeed)) {
       filter = std::make_shared<Crossfeed>(log_tag, pm, pipeline_type, instance_id);
+    } else if (name.startsWith(tags::plugin_name::BaseName::crusher)) {
+      filter = std::make_shared<Crusher>(log_tag, pm, pipeline_type, instance_id);
     } else if (name.startsWith(tags::plugin_name::BaseName::crystalizer)) {
       filter = std::make_shared<Crystalizer>(log_tag, pm, pipeline_type, instance_id);
     } else if (name.startsWith(tags::plugin_name::BaseName::deepfilternet)) {
@@ -284,6 +287,8 @@ QVariant EffectsBase::getPluginInstance(const QString& pluginName) {
     return QVariant::fromValue(dynamic_cast<Convolver*>(p.get()));
   } else if (pluginName.startsWith(tags::plugin_name::BaseName::crossfeed)) {
     return QVariant::fromValue(dynamic_cast<Crossfeed*>(p.get()));
+  } else if (pluginName.startsWith(tags::plugin_name::BaseName::crusher)) {
+    return QVariant::fromValue(dynamic_cast<Crusher*>(p.get()));
   } else if (pluginName.startsWith(tags::plugin_name::BaseName::crystalizer)) {
     return QVariant::fromValue(dynamic_cast<Crystalizer*>(p.get()));
   } else if (pluginName.startsWith(tags::plugin_name::BaseName::delay)) {

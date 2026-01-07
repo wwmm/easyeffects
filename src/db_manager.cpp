@@ -35,6 +35,7 @@
 #include "easyeffects_db_compressor.h"
 #include "easyeffects_db_convolver.h"
 #include "easyeffects_db_crossfeed.h"
+#include "easyeffects_db_crusher.h"
 #include "easyeffects_db_crystalizer.h"
 #include "easyeffects_db_deepfilternet.h"
 #include "easyeffects_db_deesser.h"
@@ -199,6 +200,9 @@ void Manager::create_plugin_db(const QString& parentGroup,
     } else if (name.startsWith(tags::plugin_name::BaseName::crossfeed)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::crossfeed, id),
                    [&] { return new db::Crossfeed(parentGroup, id); });
+
+    } else if (name.startsWith(tags::plugin_name::BaseName::crusher)) {
+      ensureExists(makeKey(tags::plugin_name::BaseName::crusher, id), [&] { return new db::Crusher(parentGroup, id); });
 
     } else if (name.startsWith(tags::plugin_name::BaseName::crystalizer)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::crystalizer, id),
