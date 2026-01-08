@@ -25,6 +25,7 @@
 #include <algorithm>
 #include <climits>
 #include <cstddef>
+#include <cstdio>
 #include <memory>
 #include <span>
 #include <string>
@@ -113,6 +114,8 @@ class RNNoise : public PluginBase {
   std::unique_ptr<Resampler> resampler_inR, resampler_outR;
 
 #ifdef ENABLE_RNNOISE
+
+  FILE* model_file = nullptr;
 
   RNNModel* model = nullptr;
 

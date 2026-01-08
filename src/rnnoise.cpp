@@ -21,6 +21,7 @@
 #include <qstandardpaths.h>
 #include <qtmetamacros.h>
 #include <algorithm>
+#include <cstdio>
 #include <filesystem>
 #include <format>
 #include "easyeffects_db_rnnoise.h"
@@ -340,7 +341,15 @@ auto RNNoise::get_model_from_name() -> RNNModel* {
   // Try to load a Custom Model (fallback to Standard Model on error).
   util::debug(std::format("{}loading custom model {} from path: {}", log_tag, name, path));
 
-  RNNModel* m = rnnoise_model_from_filename(path.c_str());
+  RNNModel* m = nullptr;
+
+  if (model_file != nullptr) {
+    fclose(model_file);
+  }
+
+  if (model_file = fopen(path.c_str(), "rb"); model_file != nullptr) {
+    m = rnnoise_model_from_file(model_file);
+  }
 
   standard_model = (m == nullptr);
 
@@ -391,9 +400,14 @@ void RNNoise::free_rnnoise() {
     rnnoise_model_free(model);
   }
 
+  if (model_file != nullptr) {
+    fclose(model_file);
+  }
+
   state_left = nullptr;
   state_right = nullptr;
   model = nullptr;
+  model_file = nullptr;
 }
 
 #endif
