@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-01-07 18:42-0300\n"
-"PO-Revision-Date: 2025-12-31 13:01+0000\n"
+"PO-Revision-Date: 2026-01-08 02:30+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hant/>\n"
@@ -2882,9 +2882,8 @@ msgid "Global audio effects"
 msgstr "整體音效處理"
 
 #: src/main.cpp:330
-#, fuzzy
 msgid "© 2017-2026 Easy Effects Team"
-msgstr "© 2017-2025 EasyEffects 團隊"
+msgstr "© 2017-2026 Easy Effects 團隊"
 
 #: src/main.cpp:332
 msgid "Wellington Wallace"
