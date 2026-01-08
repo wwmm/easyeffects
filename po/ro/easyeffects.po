@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-01-07 22:29+0000\n"
-"PO-Revision-Date: 2026-01-08 08:03+0000\n"
-"Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
+"PO-Revision-Date: 2026-01-08 16:32+0000\n"
+"Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ro/>\n"
 "Language: ro\n"
@@ -893,7 +893,7 @@ msgstr "Preconfigurări"
 
 #: src/contents/ui/Crusher.qml:118
 msgid "Low frequency oscillator"
-msgstr ""
+msgstr "Oscilator de joasă frecvență"
 
 #: src/contents/ui/Crystalizer.qml:103
 msgid "Oversampling quality"
@@ -2954,7 +2954,7 @@ msgstr "Remus-Gabriel Chelu"
 #: src/main.cpp:336
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "remusgabriel.chelu@disroot.org, 2025"
+msgstr "remusgabriel.chelu@disroot.org, 2025, 2026"
 
 #: src/plugin_base.cpp:312
 msgid "(Mic)"
@@ -3040,7 +3040,7 @@ msgstr "Flux încrucișat"
 
 #: src/tags_plugin_name.cpp:32
 msgid "Crusher"
-msgstr ""
+msgstr "Concasor"
 
 #: src/tags_plugin_name.cpp:33
 msgid "Crystalizer"
