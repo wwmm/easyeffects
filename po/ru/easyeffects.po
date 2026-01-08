@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-01-07 18:42-0300\n"
-"PO-Revision-Date: 2026-01-08 02:30+0000\n"
+"PO-Revision-Date: 2026-01-08 08:03+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -3262,11 +3262,11 @@ msgstr "Простые звуковые эффекты"
 
 #: src/contents/ui/Crusher.qml:118
 msgid "Low frequency oscillator"
-msgstr ""
+msgstr "Низкочастотный генератор"
 
 #: src/tags_plugin_name.cpp:32
 msgid "Crusher"
-msgstr ""
+msgstr "Биткрашер"
 
 #~ msgid "Create a new autoloading preset"
 #~ msgstr "Создать новую предустановку автозагрузки"
