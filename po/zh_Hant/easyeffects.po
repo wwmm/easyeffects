@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-01-07 18:42-0300\n"
-"PO-Revision-Date: 2026-01-08 02:30+0000\n"
-"Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
+"PO-Revision-Date: 2026-01-08 08:03+0000\n"
+"Last-Translator: Jeff Huang <jeff.huang@ossii.com.tw>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hant/>\n"
 "Language: zh_Hant\n"
@@ -3186,11 +3186,11 @@ msgstr "簡易音效處理"
 
 #: src/contents/ui/Crusher.qml:118
 msgid "Low frequency oscillator"
-msgstr ""
+msgstr "低頻振盪器"
 
 #: src/tags_plugin_name.cpp:32
 msgid "Crusher"
-msgstr ""
+msgstr "Crusher"
 
 #~ msgid "Create a new autoloading preset"
 #~ msgstr "建立新的自動載入預設集"

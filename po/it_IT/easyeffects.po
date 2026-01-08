@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-01-07 22:29+0000\n"
-"PO-Revision-Date: 2025-12-31 13:01+0000\n"
+"PO-Revision-Date: 2026-01-08 08:03+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -894,7 +894,7 @@ msgstr "Profili"
 
 #: src/contents/ui/Crusher.qml:118
 msgid "Low frequency oscillator"
-msgstr ""
+msgstr "Oscillatore basse frequenze"
 
 #: src/contents/ui/Crystalizer.qml:103
 msgid "Oversampling quality"
@@ -2930,9 +2930,8 @@ msgid "Global audio effects"
 msgstr "Effetti audio globali"
 
 #: src/main.cpp:330
-#, fuzzy
 msgid "© 2017-2026 Easy Effects Team"
-msgstr "© 2017-2025 Il Team di EasyEffects"
+msgstr "© 2017-2026 Il Team di Easy Effects"
 
 #: src/main.cpp:332
 msgid "Wellington Wallace"
@@ -3037,7 +3036,7 @@ msgstr "Crossfeed"
 
 #: src/tags_plugin_name.cpp:32
 msgid "Crusher"
-msgstr ""
+msgstr "Crusher"
 
 #: src/tags_plugin_name.cpp:33
 msgid "Crystalizer"
