@@ -23,6 +23,7 @@ import QtQuick.Layouts
 import "Common.js" as Common
 import ee.tags.plugin.name as TagsPluginName // qmllint disable
 import org.kde.kirigami as Kirigami
+import org.kde.kirigamiaddons.formcard as FormCard
 
 Kirigami.ScrollablePage {
     id: crusherPage
@@ -64,92 +65,138 @@ Kirigami.ScrollablePage {
                     level: 2
                 }
 
-                contentItem:
-                // EeSpinBox {
-                //     id: amount
+                contentItem: ColumnLayout {
+                    FormCard.FormComboBoxDelegate {
+                        id: mode
 
-                //     label: i18n("Amount") // qmllint disable
-                //     spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
-                //     from: crusherPage.pluginDB.getMinValue("amount")
-                //     to: crusherPage.pluginDB.getMaxValue("amount")
-                //     value: crusherPage.pluginDB.amount
-                //     decimals: 2
-                //     stepSize: 0.1
-                //     unit: Units.dB
-                //     onValueModified: v => {
-                //         crusherPage.pluginDB.amount = v;
-                //     }
-                // }
-
-                // EeSpinBox {
-                //     id: harmonics
-
-                //     label: i18n("Harmonics") // qmllint disable
-                //     spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
-                //     from: crusherPage.pluginDB.getMinValue("harmonics")
-                //     to: crusherPage.pluginDB.getMaxValue("harmonics")
-                //     value: crusherPage.pluginDB.harmonics
-                //     decimals: 1
-                //     stepSize: 0.1
-                //     onValueModified: v => {
-                //         crusherPage.pluginDB.harmonics = v;
-                //     }
-                // }
-
-                // EeSpinBox {
-                //     id: scope
-
-                //     label: i18n("Scope") // qmllint disable
-                //     spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
-                //     from: crusherPage.pluginDB.getMinValue("scope")
-                //     to: crusherPage.pluginDB.getMaxValue("scope")
-                //     value: crusherPage.pluginDB.scope
-                //     decimals: 0
-                //     stepSize: 1
-                //     unit: Units.hz
-                //     onValueModified: v => {
-                //         crusherPage.pluginDB.scope = v;
-                //     }
-                // }
-
-                EeSwitch {
-                    id: lfoActive
-
-                    label: i18n("Low frequency oscillator") // qmllint disable
-                    isChecked: crusherPage.pluginDB.lfoActive
-                    onCheckedChanged: {
-                        if (isChecked !== crusherPage.pluginDB.lfoActive)
-                            crusherPage.pluginDB.lfoActive = isChecked;
+                        Layout.alignment: Qt.AlignHCenter
+                        Layout.fillWidth: false
+                        text: i18n("Mode") // qmllint disable
+                        displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                        currentIndex: crusherPage.pluginDB.mode
+                        editable: false
+                        model: [i18n("Linear"), i18n("Logarithmic")] // qmllint disable
+                        onActivated: idx => {
+                            crusherPage.pluginDB.mode = idx;
+                        }
                     }
+
+                    EeSpinBox {
+                        id: bitReduction
+
+                        label: i18n("Bit Reduction") // qmllint disable
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
+                        from: crusherPage.pluginDB.getMinValue("bitReduction")
+                        to: crusherPage.pluginDB.getMaxValue("bitReduction")
+                        value: crusherPage.pluginDB.bitReduction
+                        decimals: 0
+                        stepSize: 1
+                        onValueModified: v => {
+                            crusherPage.pluginDB.bitReduction = v;
+                        }
+                    }
+
+                    EeSpinBox {
+                        id: dc
+
+                        label: i18n("DC offset") // qmllint disable
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
+                        from: crusherPage.pluginDB.getMinValue("dc")
+                        to: crusherPage.pluginDB.getMaxValue("dc")
+                        value: crusherPage.pluginDB.dc
+                        decimals: 1
+                        stepSize: 0.1
+                        unit: Units.dB
+                        onValueModified: v => {
+                            crusherPage.pluginDB.dc = v;
+                        }
+                    }
+
+                    EeSpinBox {
+                        id: antiAliasing
+
+                        label: i18n("Anti-aliasing") // qmllint disable
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
+                        from: crusherPage.pluginDB.getMinValue("antiAliasing")
+                        to: crusherPage.pluginDB.getMaxValue("antiAliasing") * 100
+                        value: crusherPage.pluginDB.antiAliasing * 100
+                        decimals: 0
+                        stepSize: 1
+                        unit: Units.percent
+                        onValueModified: v => {
+                            crusherPage.pluginDB.antiAliasing = v * 0.01;
+                        }
+                    }
+
+                    EeSpinBox {
+                        id: morph
+
+                        label: i18n("Mix") // qmllint disable
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
+                        from: crusherPage.pluginDB.getMinValue("morph")
+                        to: crusherPage.pluginDB.getMaxValue("morph") * 100
+                        value: crusherPage.pluginDB.morph * 100
+                        decimals: 0
+                        stepSize: 1
+                        unit: Units.percent
+                        onValueModified: v => {
+                            crusherPage.pluginDB.morph = v * 0.01;
+                        }
+                    }
+
+                    EeSpinBox {
+                        id: sampleReduction
+
+                        label: i18n("Sample Reduction") // qmllint disable
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
+                        from: crusherPage.pluginDB.getMinValue("sampleReduction")
+                        to: crusherPage.pluginDB.getMaxValue("sampleReduction")
+                        value: crusherPage.pluginDB.sampleReduction
+                        decimals: 0
+                        stepSize: 1
+                        onValueModified: v => {
+                            crusherPage.pluginDB.sampleReduction = v;
+                        }
+                    }
+
+                    EeSwitch {
+                        id: lfoActive
+
+                        label: i18n("Low frequency oscillator") // qmllint disable
+                        isChecked: crusherPage.pluginDB.lfoActive
+                        onCheckedChanged: {
+                            if (isChecked !== crusherPage.pluginDB.lfoActive)
+                                crusherPage.pluginDB.lfoActive = isChecked;
+                        }
+                    }
+
+                    // EeSpinBox {
+                    //     id: ceil
+
+                    //     label: i18n("Ceil") // qmllint disable
+                    //     spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
+                    //     from: crusherPage.pluginDB.getMinValue("ceil")
+                    //     to: crusherPage.pluginDB.getMaxValue("ceil")
+                    //     value: crusherPage.pluginDB.ceil
+                    //     decimals: 0
+                    //     stepSize: 1
+                    //     unit: Units.hz
+                    //     enabled: ceilActive.isChecked
+                    //     onValueModified: v => {
+                    //         crusherPage.pluginDB.ceil = v;
+                    //     }
+                    // }
+
+                    // EeProgressBar {
+                    //     id: harmonicsLevel
+                    //     Layout.topMargin: Kirigami.Units.largeSpacing
+
+                    //     label: i18n("Harmonics") // qmllint disable
+                    //     from: Common.minimumDecibelLevel
+                    //     to: 10
+                    //     decimals: 0
+                    // }
                 }
-
-                // EeSpinBox {
-                //     id: ceil
-
-                //     label: i18n("Ceil") // qmllint disable
-                //     spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
-                //     from: crusherPage.pluginDB.getMinValue("ceil")
-                //     to: crusherPage.pluginDB.getMaxValue("ceil")
-                //     value: crusherPage.pluginDB.ceil
-                //     decimals: 0
-                //     stepSize: 1
-                //     unit: Units.hz
-                //     enabled: ceilActive.isChecked
-                //     onValueModified: v => {
-                //         crusherPage.pluginDB.ceil = v;
-                //     }
-                // }
-
-                // EeProgressBar {
-                //     id: harmonicsLevel
-                //     Layout.topMargin: Kirigami.Units.largeSpacing
-
-                //     label: i18n("Harmonics") // qmllint disable
-                //     from: Common.minimumDecibelLevel
-                //     to: 10
-                //     decimals: 0
-                // }
-                ColumnLayout {}
             }
         }
     }

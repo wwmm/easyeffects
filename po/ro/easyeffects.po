@@ -126,7 +126,7 @@ msgstr "Despre"
 #: src/contents/ui/Exciter.qml:106 src/contents/ui/Filter.qml:58
 #: src/contents/ui/Loudness.qml:58 src/contents/ui/Maximizer.qml:59
 #: src/contents/ui/Pitch.qml:59 src/contents/ui/Reverb.qml:59
-#: src/contents/ui/Speex.qml:58
+#: src/contents/ui/Speex.qml:58 src/contents/ui/Crusher.qml:64
 msgid "Controls"
 msgstr "Controale"
 
@@ -212,6 +212,7 @@ msgstr "Câștig de ieșire"
 #: src/contents/ui/RNNoise.qml:301 src/contents/ui/RNNoise.qml:303
 #: src/contents/ui/RNNoise.qml:321 src/contents/ui/Reverb.qml:316
 #: src/contents/ui/Speex.qml:174 src/contents/ui/StereoTools.qml:389
+#: src/contents/ui/Crusher.qml:212
 msgid "Using %1"
 msgstr "Utilizând %1"
 
@@ -275,7 +276,7 @@ msgstr "Limita inferioară"
 #: src/contents/ui/Maximizer.qml:137
 #: src/contents/ui/MultibandCompressor.qml:983
 #: src/contents/ui/MultibandGate.qml:956 src/contents/ui/Reverb.qml:342
-#: src/contents/ui/StereoTools.qml:407
+#: src/contents/ui/StereoTools.qml:407 src/contents/ui/Crusher.qml:230
 msgid "Show native window"
 msgstr "Afișează fereastra nativă"
 
@@ -298,7 +299,7 @@ msgstr "Ascultă"
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/RNNoise.qml:346
 #: src/contents/ui/Reverb.qml:356 src/contents/ui/Speex.qml:192
-#: src/contents/ui/StereoTools.qml:421
+#: src/contents/ui/StereoTools.qml:421 src/contents/ui/Crusher.qml:244
 msgid "Reset"
 msgstr "Restabilește"
 
@@ -375,6 +376,7 @@ msgstr "Compresor"
 #: src/contents/ui/Limiter.qml:73 src/contents/ui/Loudness.qml:70
 #: src/contents/ui/MultibandCompressor.qml:436
 #: src/contents/ui/MultibandGate.qml:409 src/contents/ui/StereoTools.qml:122
+#: src/contents/ui/Crusher.qml:74
 msgid "Mode"
 msgstr "Mod"
 
@@ -2038,7 +2040,7 @@ msgstr "Diferența de frecvență"
 msgid "Quick seek"
 msgstr "Căutare rapidă"
 
-#: src/contents/ui/Pitch.qml:299
+#: src/contents/ui/Pitch.qml:299 src/contents/ui/Crusher.qml:118
 msgid "Anti-aliasing"
 msgstr "Netezire"
 
@@ -2350,7 +2352,7 @@ msgstr "Verde"
 msgid "Green neon"
 msgstr "Verde neon"
 
-#: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:612 src/contents/ui/Crusher.qml:134
 msgid "Mix"
 msgstr "Mixare"
 
@@ -3212,6 +3214,29 @@ msgstr "Egalizator, compresor și alte efecte audio"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "Efecte audio simple"
+
+#: src/contents/ui/Crusher.qml:78
+#, fuzzy
+msgid "Linear"
+msgstr "Linii"
+
+#: src/contents/ui/Crusher.qml:78
+msgid "Logarithmic"
+msgstr ""
+
+#: src/contents/ui/Crusher.qml:87
+#, fuzzy
+msgid "Bit Reduction"
+msgstr "Reducere"
+
+#: src/contents/ui/Crusher.qml:102
+msgid "DC offset"
+msgstr ""
+
+#: src/contents/ui/Crusher.qml:150
+#, fuzzy
+msgid "Sample Reduction"
+msgstr "Reducere"
 
 #~ msgid "Create a new autoloading preset"
 #~ msgstr "Creează o preconfigurare nouă cu încărcare automată"

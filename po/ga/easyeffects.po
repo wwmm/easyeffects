@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :(n>"
-"6 && n<11) ? 3 : 4;\n"
+"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :"
+"(n>6 && n<11) ? 3 : 4;\n"
 "X-Generator: Weblate 5.15.1\n"
 
 #: src/autostart.cpp:92
@@ -125,7 +125,7 @@ msgstr "Maidir"
 #: src/contents/ui/Exciter.qml:106 src/contents/ui/Filter.qml:58
 #: src/contents/ui/Loudness.qml:58 src/contents/ui/Maximizer.qml:59
 #: src/contents/ui/Pitch.qml:59 src/contents/ui/Reverb.qml:59
-#: src/contents/ui/Speex.qml:58
+#: src/contents/ui/Speex.qml:58 src/contents/ui/Crusher.qml:64
 msgid "Controls"
 msgstr "Rialuithe"
 
@@ -211,6 +211,7 @@ msgstr "Gnóthachan Aschuir"
 #: src/contents/ui/RNNoise.qml:301 src/contents/ui/RNNoise.qml:303
 #: src/contents/ui/RNNoise.qml:321 src/contents/ui/Reverb.qml:316
 #: src/contents/ui/Speex.qml:174 src/contents/ui/StereoTools.qml:389
+#: src/contents/ui/Crusher.qml:212
 msgid "Using %1"
 msgstr "Ag baint úsáide as %1"
 
@@ -275,7 +276,7 @@ msgstr "Urlár"
 #: src/contents/ui/Maximizer.qml:137
 #: src/contents/ui/MultibandCompressor.qml:983
 #: src/contents/ui/MultibandGate.qml:956 src/contents/ui/Reverb.qml:342
-#: src/contents/ui/StereoTools.qml:407
+#: src/contents/ui/StereoTools.qml:407 src/contents/ui/Crusher.qml:230
 msgid "Show native window"
 msgstr "Taispeáin Fuinneog Dhúchasach"
 
@@ -298,7 +299,7 @@ msgstr "Éist"
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/RNNoise.qml:346
 #: src/contents/ui/Reverb.qml:356 src/contents/ui/Speex.qml:192
-#: src/contents/ui/StereoTools.qml:421
+#: src/contents/ui/StereoTools.qml:421 src/contents/ui/Crusher.qml:244
 msgid "Reset"
 msgstr "Athshocraigh"
 
@@ -375,6 +376,7 @@ msgstr "Comhbhrúiteoir"
 #: src/contents/ui/Limiter.qml:73 src/contents/ui/Loudness.qml:70
 #: src/contents/ui/MultibandCompressor.qml:436
 #: src/contents/ui/MultibandGate.qml:409 src/contents/ui/StereoTools.qml:122
+#: src/contents/ui/Crusher.qml:74
 msgid "Mode"
 msgstr "Mód"
 
@@ -2033,7 +2035,7 @@ msgstr "Difríocht ráta"
 msgid "Quick seek"
 msgstr "Cuardach tapa"
 
-#: src/contents/ui/Pitch.qml:299
+#: src/contents/ui/Pitch.qml:299 src/contents/ui/Crusher.qml:118
 msgid "Anti-aliasing"
 msgstr "Frithailiasáil"
 
@@ -2345,7 +2347,7 @@ msgstr "Glas"
 msgid "Green neon"
 msgstr "Neon glas"
 
-#: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:612 src/contents/ui/Crusher.qml:134
 msgid "Mix"
 msgstr "Measc"
 
@@ -3212,6 +3214,29 @@ msgstr "Cothromóir, Comhbhrúiteoir agus Éifeachtaí Fuaime Eile"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "Éifeachtaí fuaime simplí"
+
+#: src/contents/ui/Crusher.qml:78
+#, fuzzy
+msgid "Linear"
+msgstr "Línte"
+
+#: src/contents/ui/Crusher.qml:78
+msgid "Logarithmic"
+msgstr ""
+
+#: src/contents/ui/Crusher.qml:87
+#, fuzzy
+msgid "Bit Reduction"
+msgstr "Laghdú"
+
+#: src/contents/ui/Crusher.qml:102
+msgid "DC offset"
+msgstr ""
+
+#: src/contents/ui/Crusher.qml:150
+#, fuzzy
+msgid "Sample Reduction"
+msgstr "Laghdú"
 
 #~ msgid "© 2017-2026 EasyEffects Team"
 #~ msgstr "© 2017-2026 Foireann EasyEffects"
