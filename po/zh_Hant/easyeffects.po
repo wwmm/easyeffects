@@ -123,6 +123,7 @@ msgstr "關於"
 #: src/contents/ui/Filter.qml:58 src/contents/ui/Loudness.qml:58
 #: src/contents/ui/Maximizer.qml:59 src/contents/ui/Pitch.qml:59
 #: src/contents/ui/Reverb.qml:59 src/contents/ui/Speex.qml:58
+#: src/contents/ui/Crusher.qml:63
 msgid "Controls"
 msgstr "控制"
 
@@ -175,7 +176,7 @@ msgstr "最大化歷史記錄"
 
 #: src/contents/ui/Autogain.qml:143 src/contents/ui/Autogain.qml:198
 #: src/contents/ui/BassLoudness.qml:66 src/contents/ui/LevelMeter.qml:146
-#: src/tags_plugin_name.cpp:44
+#: src/tags_plugin_name.cpp:44 src/tags_plugin_name.cpp:45
 msgid "Loudness"
 msgstr "音量"
 
@@ -207,6 +208,7 @@ msgstr "輸出增益 (Gain)"
 #: src/contents/ui/RNNoise.qml:87 src/contents/ui/RNNoise.qml:301
 #: src/contents/ui/RNNoise.qml:303 src/contents/ui/RNNoise.qml:321
 #: src/contents/ui/Speex.qml:174 src/contents/ui/StereoTools.qml:389
+#: src/contents/ui/Crusher.qml:165
 msgid "Using %1"
 msgstr "使用 %1"
 
@@ -269,7 +271,7 @@ msgstr "基底 (Floor)"
 #: src/contents/ui/Loudness.qml:190 src/contents/ui/Maximizer.qml:137
 #: src/contents/ui/MultibandCompressor.qml:983
 #: src/contents/ui/MultibandGate.qml:956 src/contents/ui/Reverb.qml:342
-#: src/contents/ui/StereoTools.qml:407
+#: src/contents/ui/StereoTools.qml:407 src/contents/ui/Crusher.qml:183
 msgid "Show native window"
 msgstr "顯示原生視窗"
 
@@ -291,7 +293,7 @@ msgstr "聆聽"
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:356
 #: src/contents/ui/RNNoise.qml:346 src/contents/ui/Speex.qml:192
-#: src/contents/ui/StereoTools.qml:421
+#: src/contents/ui/StereoTools.qml:421 src/contents/ui/Crusher.qml:197
 msgid "Reset"
 msgstr "重設"
 
@@ -461,6 +463,7 @@ msgstr "外部"
 #: src/contents/ui/Compressor.qml:278 src/contents/ui/Expander.qml:238
 #: src/contents/ui/Gate.qml:256 src/contents/ui/Limiter.qml:228
 #: src/contents/ui/PageStreamsEffects.qml:430
+#: src/contents/ui/PageStreamsEffects.qml:432
 msgid "Input device"
 msgstr "輸入裝置"
 
@@ -931,6 +934,7 @@ msgid "Post filter Beta"
 msgstr "後置篩選器 Beta"
 
 #: src/contents/ui/Deesser.qml:63 src/tags_plugin_name.cpp:34
+#: src/tags_plugin_name.cpp:35
 msgid "Deesser"
 msgstr "嘶聲消除器"
 
@@ -962,6 +966,7 @@ msgstr "鬆弛"
 
 #: src/contents/ui/Deesser.qml:171 src/contents/ui/Filter.qml:122
 #: src/contents/ui/Reverb.qml:126 src/tags_plugin_name.cpp:40
+#: src/tags_plugin_name.cpp:41
 msgid "Filter"
 msgstr "篩選"
 
@@ -1084,6 +1089,7 @@ msgid "Add %1 to excluded applications"
 msgstr "添加 %1 至已經排除的應用程式"
 
 #: src/contents/ui/EchoCanceller.qml:60 src/tags_plugin_name.cpp:36
+#: src/tags_plugin_name.cpp:37
 msgid "Echo Canceller"
 msgstr "回音消除"
 
@@ -1379,6 +1385,7 @@ msgid "Ceil"
 msgstr "上限 (Ceil)"
 
 #: src/contents/ui/Expander.qml:68 src/tags_plugin_name.cpp:39
+#: src/tags_plugin_name.cpp:40
 msgid "Expander"
 msgstr "擴展"
 
@@ -1397,6 +1404,7 @@ msgid "Equalizer mode"
 msgstr "等化器模式"
 
 #: src/contents/ui/Gate.qml:72 src/tags_plugin_name.cpp:41
+#: src/tags_plugin_name.cpp:42
 msgid "Gate"
 msgstr "閘門 (Gate)"
 
@@ -1570,6 +1578,7 @@ msgid "Dithering"
 msgstr "抖動"
 
 #: src/contents/ui/Limiter.qml:117 src/tags_plugin_name.cpp:43
+#: src/tags_plugin_name.cpp:44
 msgid "Limiter"
 msgstr "限制器"
 
@@ -1695,6 +1704,7 @@ msgid "Go back"
 msgstr "返回"
 
 #: src/contents/ui/Main.qml:464 src/contents/ui/PageStreamsEffects.qml:732
+#: src/contents/ui/PageStreamsEffects.qml:734
 msgid "Effects"
 msgstr "音效"
 
@@ -1816,44 +1826,56 @@ msgid "Audio stream not modified"
 msgstr "音訊串流並未修改"
 
 #: src/contents/ui/PageStreamsEffects.qml:365
+#: src/contents/ui/PageStreamsEffects.qml:367
 msgid "Add effect"
 msgstr "添加音效"
 
 #: src/contents/ui/PageStreamsEffects.qml:373
+#: src/contents/ui/PageStreamsEffects.qml:375
 msgid "Close"
 msgstr "關閉"
 
 #: src/contents/ui/PageStreamsEffects.qml:377
+#: src/contents/ui/PageStreamsEffects.qml:379
 msgid "Expand the list of effects pipeline"
 msgstr "展開音效管道列表"
 
 #: src/contents/ui/PageStreamsEffects.qml:377
+#: src/contents/ui/PageStreamsEffects.qml:379
 msgid "Reduce the list of effects pipeline"
 msgstr "減少音效管道列表"
 
 #: src/contents/ui/PageStreamsEffects.qml:430
 #: src/contents/ui/PageStreamsEffects.qml:719
+#: src/contents/ui/PageStreamsEffects.qml:432
+#: src/contents/ui/PageStreamsEffects.qml:721
 msgid "Players"
 msgstr "播放器"
 
 #: src/contents/ui/PageStreamsEffects.qml:439
+#: src/contents/ui/PageStreamsEffects.qml:441
 msgid "Output device"
 msgstr "輸出裝置"
 
 #: src/contents/ui/PageStreamsEffects.qml:439
 #: src/contents/ui/PageStreamsEffects.qml:719
+#: src/contents/ui/PageStreamsEffects.qml:441
+#: src/contents/ui/PageStreamsEffects.qml:721
 msgid "Recorders"
 msgstr "錄音器"
 
 #: src/contents/ui/PageStreamsEffects.qml:750
+#: src/contents/ui/PageStreamsEffects.qml:752
 msgid "Excluded apps"
 msgstr "已經排除的應用程式"
 
 #: src/contents/ui/PageStreamsEffects.qml:759
+#: src/contents/ui/PageStreamsEffects.qml:761
 msgid "Input monitoring"
 msgstr "輸入監控"
 
 #: src/contents/ui/PageStreamsEffects.qml:772
+#: src/contents/ui/PageStreamsEffects.qml:774
 msgid "Send audio to the virtual source"
 msgstr "將音訊傳送到虛擬來源"
 
@@ -1980,6 +2002,7 @@ msgid "Overlap length"
 msgstr "重疊長度"
 
 #: src/contents/ui/Pitch.qml:163 src/tags_plugin_name.cpp:48
+#: src/tags_plugin_name.cpp:49
 msgid "Pitch"
 msgstr "音高"
 
@@ -2866,6 +2889,7 @@ msgid "Invert phase"
 msgstr "反轉階段"
 
 #: src/contents/ui/StereoTools.qml:293 src/tags_plugin_name.cpp:35
+#: src/tags_plugin_name.cpp:36
 msgid "Delay"
 msgstr "延遲"
 
@@ -2919,30 +2943,33 @@ msgstr "輸出等級量表"
 #: src/presets_manager.cpp:780 src/presets_manager.cpp:787
 #: src/presets_manager.cpp:797 src/presets_manager.cpp:804
 #: src/presets_manager.cpp:814 src/presets_manager.cpp:823
+#: src/presets_manager.cpp:781 src/presets_manager.cpp:788
+#: src/presets_manager.cpp:798 src/presets_manager.cpp:805
+#: src/presets_manager.cpp:815 src/presets_manager.cpp:824
 msgid "Preset not loaded correctly"
 msgstr "預設集未正確載入"
 
-#: src/presets_manager.cpp:780
+#: src/presets_manager.cpp:780 src/presets_manager.cpp:781
 msgid "Wrong format in excluded apps list"
 msgstr "已經排除的應用程序列表中的錯誤格式"
 
-#: src/presets_manager.cpp:788
+#: src/presets_manager.cpp:788 src/presets_manager.cpp:789
 msgid "Generic error while loading excluded apps list"
 msgstr "載入排除的應用程序列表時出現一般錯誤"
 
-#: src/presets_manager.cpp:797
+#: src/presets_manager.cpp:797 src/presets_manager.cpp:798
 msgid "Wrong format in effects list"
 msgstr "音效列表錯誤格式"
 
-#: src/presets_manager.cpp:804
+#: src/presets_manager.cpp:804 src/presets_manager.cpp:805
 msgid "Generic error while loading effects list"
 msgstr "載入音效列表時出現一般錯誤"
 
-#: src/presets_manager.cpp:815
+#: src/presets_manager.cpp:815 src/presets_manager.cpp:816
 msgid "One or more parameters have a wrong format"
 msgstr "一個或多個參數有錯誤格式"
 
-#: src/presets_manager.cpp:824
+#: src/presets_manager.cpp:824 src/presets_manager.cpp:825
 msgid "Generic error while loading the effect"
 msgstr "載入音效時出現一般錯誤"
 
@@ -2986,51 +3013,51 @@ msgstr "卷積混響器"
 msgid "Crossfeed"
 msgstr "交叉饋送"
 
-#: src/tags_plugin_name.cpp:32
+#: src/tags_plugin_name.cpp:32 src/tags_plugin_name.cpp:33
 msgid "Crystalizer"
 msgstr "水晶音質器"
 
-#: src/tags_plugin_name.cpp:33
+#: src/tags_plugin_name.cpp:33 src/tags_plugin_name.cpp:34
 msgid "Deep Noise Remover"
 msgstr "深度噪音移除器"
 
-#: src/tags_plugin_name.cpp:37
+#: src/tags_plugin_name.cpp:37 src/tags_plugin_name.cpp:38
 msgid "Equalizer"
 msgstr "等化器"
 
-#: src/tags_plugin_name.cpp:38
+#: src/tags_plugin_name.cpp:38 src/tags_plugin_name.cpp:39
 msgid "Exciter"
 msgstr "激勵器"
 
-#: src/tags_plugin_name.cpp:42
+#: src/tags_plugin_name.cpp:42 src/tags_plugin_name.cpp:43
 msgid "Level Meter"
 msgstr "等級量表"
 
-#: src/tags_plugin_name.cpp:45
+#: src/tags_plugin_name.cpp:45 src/tags_plugin_name.cpp:46
 msgid "Maximizer"
 msgstr "放大器"
 
-#: src/tags_plugin_name.cpp:46
+#: src/tags_plugin_name.cpp:46 src/tags_plugin_name.cpp:47
 msgid "Multiband Compressor"
 msgstr "多頻段壓縮器"
 
-#: src/tags_plugin_name.cpp:47
+#: src/tags_plugin_name.cpp:47 src/tags_plugin_name.cpp:48
 msgid "Multiband Gate"
 msgstr "多頻段閘門"
 
-#: src/tags_plugin_name.cpp:49
+#: src/tags_plugin_name.cpp:49 src/tags_plugin_name.cpp:50
 msgid "Reverberation"
 msgstr "混響"
 
-#: src/tags_plugin_name.cpp:50
+#: src/tags_plugin_name.cpp:50 src/tags_plugin_name.cpp:51
 msgid "Noise Reduction"
 msgstr "噪音抑制"
 
-#: src/tags_plugin_name.cpp:51
+#: src/tags_plugin_name.cpp:51 src/tags_plugin_name.cpp:52
 msgid "Speech Processor"
 msgstr "語音處理器"
 
-#: src/tags_plugin_name.cpp:52
+#: src/tags_plugin_name.cpp:52 src/tags_plugin_name.cpp:53
 msgid "Stereo Tools"
 msgstr "立體聲工具"
 
@@ -3156,6 +3183,14 @@ msgstr "等化器、壓縮器、及其他音效處理"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "簡易音效處理"
+
+#: src/contents/ui/Crusher.qml:118
+msgid "Low frequency oscillator"
+msgstr ""
+
+#: src/tags_plugin_name.cpp:32
+msgid "Crusher"
+msgstr ""
 
 #~ msgid "Create a new autoloading preset"
 #~ msgstr "建立新的自動載入預設集"

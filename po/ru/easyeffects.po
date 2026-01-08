@@ -125,6 +125,7 @@ msgstr "О программе"
 #: src/contents/ui/Filter.qml:58 src/contents/ui/Loudness.qml:58
 #: src/contents/ui/Maximizer.qml:59 src/contents/ui/Pitch.qml:59
 #: src/contents/ui/Reverb.qml:59 src/contents/ui/Speex.qml:58
+#: src/contents/ui/Crusher.qml:63
 msgid "Controls"
 msgstr "Элементы управления"
 
@@ -182,7 +183,7 @@ msgstr "Исторический максимум"
 
 #: src/contents/ui/Autogain.qml:143 src/contents/ui/Autogain.qml:198
 #: src/contents/ui/BassLoudness.qml:66 src/contents/ui/LevelMeter.qml:146
-#: src/tags_plugin_name.cpp:44
+#: src/tags_plugin_name.cpp:44 src/tags_plugin_name.cpp:45
 msgid "Loudness"
 msgstr "Громкость"
 
@@ -215,6 +216,7 @@ msgstr "Усиление выхода"
 #: src/contents/ui/RNNoise.qml:87 src/contents/ui/RNNoise.qml:301
 #: src/contents/ui/RNNoise.qml:303 src/contents/ui/RNNoise.qml:321
 #: src/contents/ui/Speex.qml:174 src/contents/ui/StereoTools.qml:389
+#: src/contents/ui/Crusher.qml:165
 msgid "Using %1"
 msgstr "Используется %1"
 
@@ -279,7 +281,7 @@ msgstr "Нижний порог"
 #: src/contents/ui/Loudness.qml:190 src/contents/ui/Maximizer.qml:137
 #: src/contents/ui/MultibandCompressor.qml:983
 #: src/contents/ui/MultibandGate.qml:956 src/contents/ui/Reverb.qml:342
-#: src/contents/ui/StereoTools.qml:407
+#: src/contents/ui/StereoTools.qml:407 src/contents/ui/Crusher.qml:183
 msgid "Show native window"
 msgstr "Показать встроенное окно"
 
@@ -301,7 +303,7 @@ msgstr "Прослушать"
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:356
 #: src/contents/ui/RNNoise.qml:346 src/contents/ui/Speex.qml:192
-#: src/contents/ui/StereoTools.qml:421
+#: src/contents/ui/StereoTools.qml:421 src/contents/ui/Crusher.qml:197
 msgid "Reset"
 msgstr "Сброс"
 
@@ -473,6 +475,7 @@ msgstr "Внешний"
 #: src/contents/ui/Compressor.qml:278 src/contents/ui/Expander.qml:238
 #: src/contents/ui/Gate.qml:256 src/contents/ui/Limiter.qml:228
 #: src/contents/ui/PageStreamsEffects.qml:430
+#: src/contents/ui/PageStreamsEffects.qml:432
 msgid "Input device"
 msgstr "Устройство ввода"
 
@@ -955,6 +958,7 @@ msgstr "Бета-регулировка постфильтра"
 
 # http://wikisound.org/Деэссер; предназначен для уменьшения или устранения избыточно шипящих звуков в записи человеческого голоса
 #: src/contents/ui/Deesser.qml:63 src/tags_plugin_name.cpp:34
+#: src/tags_plugin_name.cpp:35
 msgid "Deesser"
 msgstr "Антишипение (деэссер)"
 
@@ -986,6 +990,7 @@ msgstr "Допуск"
 
 #: src/contents/ui/Deesser.qml:171 src/contents/ui/Filter.qml:122
 #: src/contents/ui/Reverb.qml:126 src/tags_plugin_name.cpp:40
+#: src/tags_plugin_name.cpp:41
 msgid "Filter"
 msgstr "Фильтр"
 
@@ -1108,6 +1113,7 @@ msgid "Add %1 to excluded applications"
 msgstr "Добавить %1 в исключённые приложения"
 
 #: src/contents/ui/EchoCanceller.qml:60 src/tags_plugin_name.cpp:36
+#: src/tags_plugin_name.cpp:37
 msgid "Echo Canceller"
 msgstr "Эхоподавитель"
 
@@ -1423,6 +1429,7 @@ msgid "Ceil"
 msgstr "Потолок"
 
 #: src/contents/ui/Expander.qml:68 src/tags_plugin_name.cpp:39
+#: src/tags_plugin_name.cpp:40
 msgid "Expander"
 msgstr "Расширитель"
 
@@ -1442,6 +1449,7 @@ msgstr "Режим эквалайзера"
 
 # http://wikisound.org/Гейт: шумовой гейт или просто гейт — это электронное устройство или плагин динамической обработки, который используется для контроля уровня звукового сигнала. Гейт пропускает или глушит сигнал в зависимости от установленного порогового значения. Он очень часто используется для подавления шума в паузах.
 #: src/contents/ui/Gate.qml:72 src/tags_plugin_name.cpp:41
+#: src/tags_plugin_name.cpp:42
 msgid "Gate"
 msgstr "Гейт"
 
@@ -1616,6 +1624,7 @@ msgid "Dithering"
 msgstr "Дизеринг (зашумление)"
 
 #: src/contents/ui/Limiter.qml:117 src/tags_plugin_name.cpp:43
+#: src/tags_plugin_name.cpp:44
 msgid "Limiter"
 msgstr "Ограничитель (лимитер)"
 
@@ -1743,6 +1752,7 @@ msgid "Go back"
 msgstr "Назад"
 
 #: src/contents/ui/Main.qml:464 src/contents/ui/PageStreamsEffects.qml:732
+#: src/contents/ui/PageStreamsEffects.qml:734
 msgid "Effects"
 msgstr "Эффекты"
 
@@ -1866,44 +1876,56 @@ msgid "Audio stream not modified"
 msgstr "Аудиопоток не изменён"
 
 #: src/contents/ui/PageStreamsEffects.qml:365
+#: src/contents/ui/PageStreamsEffects.qml:367
 msgid "Add effect"
 msgstr "Добавить эффект"
 
 #: src/contents/ui/PageStreamsEffects.qml:373
+#: src/contents/ui/PageStreamsEffects.qml:375
 msgid "Close"
 msgstr "Закрыть"
 
 #: src/contents/ui/PageStreamsEffects.qml:377
+#: src/contents/ui/PageStreamsEffects.qml:379
 msgid "Expand the list of effects pipeline"
 msgstr "Развернуть список эффектов канала обработки"
 
 #: src/contents/ui/PageStreamsEffects.qml:377
+#: src/contents/ui/PageStreamsEffects.qml:379
 msgid "Reduce the list of effects pipeline"
 msgstr "Свернуть список эффектов канала обработки"
 
 #: src/contents/ui/PageStreamsEffects.qml:430
 #: src/contents/ui/PageStreamsEffects.qml:719
+#: src/contents/ui/PageStreamsEffects.qml:432
+#: src/contents/ui/PageStreamsEffects.qml:721
 msgid "Players"
 msgstr "Проигрыватели"
 
 #: src/contents/ui/PageStreamsEffects.qml:439
+#: src/contents/ui/PageStreamsEffects.qml:441
 msgid "Output device"
 msgstr "Устройство вывода"
 
 #: src/contents/ui/PageStreamsEffects.qml:439
 #: src/contents/ui/PageStreamsEffects.qml:719
+#: src/contents/ui/PageStreamsEffects.qml:441
+#: src/contents/ui/PageStreamsEffects.qml:721
 msgid "Recorders"
 msgstr "Рекордеры"
 
 #: src/contents/ui/PageStreamsEffects.qml:750
+#: src/contents/ui/PageStreamsEffects.qml:752
 msgid "Excluded apps"
 msgstr "Исключённые приложения"
 
 #: src/contents/ui/PageStreamsEffects.qml:759
+#: src/contents/ui/PageStreamsEffects.qml:761
 msgid "Input monitoring"
 msgstr "Мониторинг входа"
 
 #: src/contents/ui/PageStreamsEffects.qml:772
+#: src/contents/ui/PageStreamsEffects.qml:774
 msgid "Send audio to the virtual source"
 msgstr "Отправить аудио на виртуальный источник"
 
@@ -2031,6 +2053,7 @@ msgid "Overlap length"
 msgstr "Длина перекрытия"
 
 #: src/contents/ui/Pitch.qml:163 src/tags_plugin_name.cpp:48
+#: src/tags_plugin_name.cpp:49
 msgid "Pitch"
 msgstr "Высота тона"
 
@@ -2940,6 +2963,7 @@ msgid "Invert phase"
 msgstr "Обратить фазу"
 
 #: src/contents/ui/StereoTools.qml:293 src/tags_plugin_name.cpp:35
+#: src/tags_plugin_name.cpp:36
 msgid "Delay"
 msgstr "Задержка"
 
@@ -2993,30 +3017,33 @@ msgstr "Уровнемер выхода"
 #: src/presets_manager.cpp:780 src/presets_manager.cpp:787
 #: src/presets_manager.cpp:797 src/presets_manager.cpp:804
 #: src/presets_manager.cpp:814 src/presets_manager.cpp:823
+#: src/presets_manager.cpp:781 src/presets_manager.cpp:788
+#: src/presets_manager.cpp:798 src/presets_manager.cpp:805
+#: src/presets_manager.cpp:815 src/presets_manager.cpp:824
 msgid "Preset not loaded correctly"
 msgstr "Предустановка загружена неправильно"
 
-#: src/presets_manager.cpp:780
+#: src/presets_manager.cpp:780 src/presets_manager.cpp:781
 msgid "Wrong format in excluded apps list"
 msgstr "Неверный формат в списке исключённых приложений"
 
-#: src/presets_manager.cpp:788
+#: src/presets_manager.cpp:788 src/presets_manager.cpp:789
 msgid "Generic error while loading excluded apps list"
 msgstr "Общая ошибка при загрузке списка исключённых приложений"
 
-#: src/presets_manager.cpp:797
+#: src/presets_manager.cpp:797 src/presets_manager.cpp:798
 msgid "Wrong format in effects list"
 msgstr "Неверный формат в списке эффектов"
 
-#: src/presets_manager.cpp:804
+#: src/presets_manager.cpp:804 src/presets_manager.cpp:805
 msgid "Generic error while loading effects list"
 msgstr "Общая ошибка при загрузке списка эффектов"
 
-#: src/presets_manager.cpp:815
+#: src/presets_manager.cpp:815 src/presets_manager.cpp:816
 msgid "One or more parameters have a wrong format"
 msgstr "Один или несколько параметров содержат неверный формат"
 
-#: src/presets_manager.cpp:824
+#: src/presets_manager.cpp:824 src/presets_manager.cpp:825
 msgid "Generic error while loading the effect"
 msgstr "Общая ошибка при загрузке эффекта"
 
@@ -3062,51 +3089,51 @@ msgstr "Конвольвер"
 msgid "Crossfeed"
 msgstr "Перекрёстная подача"
 
-#: src/tags_plugin_name.cpp:32
+#: src/tags_plugin_name.cpp:32 src/tags_plugin_name.cpp:33
 msgid "Crystalizer"
 msgstr "Кристаллизатор"
 
-#: src/tags_plugin_name.cpp:33
+#: src/tags_plugin_name.cpp:33 src/tags_plugin_name.cpp:34
 msgid "Deep Noise Remover"
 msgstr "Глубокий шумоподавитель"
 
-#: src/tags_plugin_name.cpp:37
+#: src/tags_plugin_name.cpp:37 src/tags_plugin_name.cpp:38
 msgid "Equalizer"
 msgstr "Эквалайзер"
 
-#: src/tags_plugin_name.cpp:38
+#: src/tags_plugin_name.cpp:38 src/tags_plugin_name.cpp:39
 msgid "Exciter"
 msgstr "Гармонический возбудитель"
 
-#: src/tags_plugin_name.cpp:42
+#: src/tags_plugin_name.cpp:42 src/tags_plugin_name.cpp:43
 msgid "Level Meter"
 msgstr "Уровнемер"
 
-#: src/tags_plugin_name.cpp:45
+#: src/tags_plugin_name.cpp:45 src/tags_plugin_name.cpp:46
 msgid "Maximizer"
 msgstr "Максимизатор"
 
-#: src/tags_plugin_name.cpp:46
+#: src/tags_plugin_name.cpp:46 src/tags_plugin_name.cpp:47
 msgid "Multiband Compressor"
 msgstr "Многополосный компрессор"
 
-#: src/tags_plugin_name.cpp:47
+#: src/tags_plugin_name.cpp:47 src/tags_plugin_name.cpp:48
 msgid "Multiband Gate"
 msgstr "Многополосный гейт"
 
-#: src/tags_plugin_name.cpp:49
+#: src/tags_plugin_name.cpp:49 src/tags_plugin_name.cpp:50
 msgid "Reverberation"
 msgstr "Реверберация"
 
-#: src/tags_plugin_name.cpp:50
+#: src/tags_plugin_name.cpp:50 src/tags_plugin_name.cpp:51
 msgid "Noise Reduction"
 msgstr "Подавление шума"
 
-#: src/tags_plugin_name.cpp:51
+#: src/tags_plugin_name.cpp:51 src/tags_plugin_name.cpp:52
 msgid "Speech Processor"
 msgstr "Речевой процессор"
 
-#: src/tags_plugin_name.cpp:52
+#: src/tags_plugin_name.cpp:52 src/tags_plugin_name.cpp:53
 msgid "Stereo Tools"
 msgstr "Наладчики стерео"
 
@@ -3232,6 +3259,14 @@ msgstr "Эквалайзер, компрессор и прочие звуков�
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "Простые звуковые эффекты"
+
+#: src/contents/ui/Crusher.qml:118
+msgid "Low frequency oscillator"
+msgstr ""
+
+#: src/tags_plugin_name.cpp:32
+msgid "Crusher"
+msgstr ""
 
 #~ msgid "Create a new autoloading preset"
 #~ msgstr "Создать новую предустановку автозагрузки"
