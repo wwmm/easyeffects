@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-01-07 22:29+0000\n"
-"PO-Revision-Date: 2026-01-08 08:03+0000\n"
-"Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
+"PO-Revision-Date: 2026-01-08 16:32+0000\n"
+"Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
 "ga/>\n"
 "Language: ga\n"
@@ -892,7 +892,7 @@ msgstr "Réamhshocruithe"
 
 #: src/contents/ui/Crusher.qml:118
 msgid "Low frequency oscillator"
-msgstr ""
+msgstr "Oscailteoir minicíochta íseal"
 
 #: src/contents/ui/Crystalizer.qml:103
 msgid "Oversampling quality"
@@ -3040,7 +3040,7 @@ msgstr "Crosaire"
 
 #: src/tags_plugin_name.cpp:32
 msgid "Crusher"
-msgstr ""
+msgstr "Brúiteoir"
 
 #: src/tags_plugin_name.cpp:33
 msgid "Crystalizer"
