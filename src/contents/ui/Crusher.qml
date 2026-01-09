@@ -156,7 +156,7 @@ Kirigami.ScrollablePage {
             EeCard {
                 id: cardRate
 
-                title: i18n("Sample rate") // qmllint disable
+                title: i18n("Sample Rate") // qmllint disable
 
                 contentItem: ColumnLayout {
                     EeSpinBox {
