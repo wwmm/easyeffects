@@ -84,7 +84,7 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: bitReduction
 
-                        label: i18n("Bit Reduction") // qmllint disable
+                        label: i18n("Bit reduction") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
                         from: crusherPage.pluginDB.getMinValue("bitReduction")
                         to: crusherPage.pluginDB.getMaxValue("bitReduction")
@@ -147,7 +147,7 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: sampleReduction
 
-                        label: i18n("Sample Reduction") // qmllint disable
+                        label: i18n("Sample reduction") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
                         from: crusherPage.pluginDB.getMinValue("sampleReduction")
                         to: crusherPage.pluginDB.getMaxValue("sampleReduction")
