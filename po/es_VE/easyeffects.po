@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-01-08 13:31-0300\n"
+"POT-Creation-Date: 2026-01-09 12:58-0300\n"
 "PO-Revision-Date: 2025-07-20 18:38+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Spanish (Venezuela) <https://hosted.weblate.org/projects/"
@@ -132,11 +132,10 @@ msgstr "Acerca de"
 
 #: src/contents/ui/Autogain.qml:69 src/contents/ui/BassEnhancer.qml:105
 #: src/contents/ui/BassLoudness.qml:58 src/contents/ui/Crossfeed.qml:73
-#: src/contents/ui/Crusher.qml:64 src/contents/ui/DeepFilterNet.qml:93
-#: src/contents/ui/Exciter.qml:106 src/contents/ui/Filter.qml:58
-#: src/contents/ui/Loudness.qml:58 src/contents/ui/Maximizer.qml:59
-#: src/contents/ui/Pitch.qml:59 src/contents/ui/Reverb.qml:59
-#: src/contents/ui/Speex.qml:58
+#: src/contents/ui/DeepFilterNet.qml:93 src/contents/ui/Exciter.qml:106
+#: src/contents/ui/Filter.qml:58 src/contents/ui/Loudness.qml:58
+#: src/contents/ui/Maximizer.qml:59 src/contents/ui/Pitch.qml:59
+#: src/contents/ui/Reverb.qml:59 src/contents/ui/Speex.qml:58
 msgid "Controls"
 msgstr ""
 
@@ -203,7 +202,8 @@ msgstr "Loudness"
 msgid "Relative"
 msgstr "Reativo"
 
-#: src/contents/ui/Autogain.qml:188 src/contents/ui/LevelMeter.qml:198
+#: src/contents/ui/Autogain.qml:188 src/contents/ui/Crusher.qml:191
+#: src/contents/ui/LevelMeter.qml:198
 msgid "Range"
 msgstr "Rango"
 
@@ -215,7 +215,7 @@ msgstr "Ganancia de Entrada"
 #: src/contents/ui/Autogain.qml:231 src/contents/ui/BassEnhancer.qml:203
 #: src/contents/ui/BassLoudness.qml:123 src/contents/ui/Compressor.qml:872
 #: src/contents/ui/Convolver.qml:518 src/contents/ui/Crossfeed.qml:147
-#: src/contents/ui/Crusher.qml:212 src/contents/ui/Crystalizer.qml:124
+#: src/contents/ui/Crusher.qml:233 src/contents/ui/Crystalizer.qml:124
 #: src/contents/ui/DeepFilterNet.qml:194 src/contents/ui/Deesser.qml:317
 #: src/contents/ui/Delay.qml:373 src/contents/ui/EchoCanceller.qml:155
 #: src/contents/ui/Equalizer.qml:302 src/contents/ui/Exciter.qml:208
@@ -289,7 +289,7 @@ msgid "Floor"
 msgstr "Fondo"
 
 #: src/contents/ui/BassEnhancer.qml:221 src/contents/ui/Compressor.qml:890
-#: src/contents/ui/Crusher.qml:230 src/contents/ui/Deesser.qml:335
+#: src/contents/ui/Crusher.qml:251 src/contents/ui/Deesser.qml:335
 #: src/contents/ui/Delay.qml:411 src/contents/ui/Equalizer.qml:320
 #: src/contents/ui/Exciter.qml:226 src/contents/ui/Expander.qml:840
 #: src/contents/ui/Filter.qml:235 src/contents/ui/Gate.qml:969
@@ -310,13 +310,13 @@ msgstr "Escuchar"
 
 #: src/contents/ui/BassEnhancer.qml:245 src/contents/ui/BassLoudness.qml:141
 #: src/contents/ui/Compressor.qml:924 src/contents/ui/Convolver.qml:553
-#: src/contents/ui/Crossfeed.qml:173 src/contents/ui/Crusher.qml:244
+#: src/contents/ui/Crossfeed.qml:173 src/contents/ui/Crusher.qml:265
 #: src/contents/ui/Crystalizer.qml:162 src/contents/ui/Deesser.qml:359
 #: src/contents/ui/Delay.qml:425 src/contents/ui/EchoCanceller.qml:183
 #: src/contents/ui/Equalizer.qml:386 src/contents/ui/Exciter.qml:250
 #: src/contents/ui/Expander.qml:874 src/contents/ui/Filter.qml:249
 #: src/contents/ui/Gate.qml:1003 src/contents/ui/Limiter.qml:658
-#: src/contents/ui/Loudness.qml:214 src/contents/ui/Main.qml:578
+#: src/contents/ui/Loudness.qml:214 src/contents/ui/Main.qml:600
 #: src/contents/ui/Maximizer.qml:151
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:356
@@ -327,7 +327,7 @@ msgstr "Restablecer"
 
 #: src/contents/ui/BassLoudness.qml:82 src/contents/ui/Compressor.qml:479
 #: src/contents/ui/EeInputOutputGain.qml:143 src/contents/ui/Expander.qml:439
-#: src/contents/ui/Gate.qml:454 src/contents/ui/Main.qml:506
+#: src/contents/ui/Gate.qml:454 src/contents/ui/Main.qml:528
 #: src/contents/ui/StereoTools.qml:267
 msgid "Output"
 msgstr "Salida"
@@ -399,7 +399,7 @@ msgid "Compressor"
 msgstr "Compresor"
 
 #: src/contents/ui/Compressor.qml:80 src/contents/ui/Compressor.qml:302
-#: src/contents/ui/Crusher.qml:74 src/contents/ui/Deesser.qml:89
+#: src/contents/ui/Crusher.qml:96 src/contents/ui/Deesser.qml:89
 #: src/contents/ui/Delay.qml:70 src/contents/ui/Delay.qml:223
 #: src/contents/ui/EqualizerBandMenu.qml:59 src/contents/ui/Equalizer.qml:140
 #: src/contents/ui/Expander.qml:80 src/contents/ui/Expander.qml:262
@@ -738,9 +738,9 @@ msgstr "Cadena Lateral"
 msgid "Link to input"
 msgstr "Cadena Lateral"
 
-#: src/contents/ui/Compressor.qml:675 src/contents/ui/Expander.qml:627
-#: src/contents/ui/Gate.qml:119 src/contents/ui/Gate.qml:653
-#: src/contents/ui/Maximizer.qml:100
+#: src/contents/ui/Compressor.qml:675 src/contents/ui/Crusher.qml:165
+#: src/contents/ui/Expander.qml:627 src/contents/ui/Gate.qml:119
+#: src/contents/ui/Gate.qml:653 src/contents/ui/Maximizer.qml:100
 #: src/contents/ui/MultibandCompressor.qml:747
 #: src/contents/ui/MultibandGate.qml:251 src/contents/ui/MultibandGate.qml:720
 #, fuzzy
@@ -864,7 +864,7 @@ msgstr "Espectro"
 msgid "Log scale"
 msgstr "Escala"
 
-#: src/contents/ui/Convolver.qml:380
+#: src/contents/ui/Convolver.qml:380 src/contents/ui/Crusher.qml:207
 msgid "Rate"
 msgstr "Tasa"
 
@@ -957,43 +957,47 @@ msgstr "Crossfeed"
 msgid "Default"
 msgstr "Predeterminado"
 
-#: src/contents/ui/Crossfeed.qml:164 src/contents/ui/Main.qml:480
+#: src/contents/ui/Crossfeed.qml:164 src/contents/ui/Main.qml:502
 #: src/contents/ui/PreferencesSheet.qml:59 src/contents/ui/Reverb.qml:333
 msgid "Presets"
 msgstr "Perfiles"
 
-#: src/contents/ui/Crusher.qml:78
-#, fuzzy
-msgid "Linear"
-msgstr "Lineas"
-
-#: src/contents/ui/Crusher.qml:78
-msgid "Logarithmic"
-msgstr ""
-
-#: src/contents/ui/Crusher.qml:87
+#: src/contents/ui/Crusher.qml:55
 #, fuzzy
 msgid "Bit Reduction"
 msgstr "Reducción"
 
-#: src/contents/ui/Crusher.qml:102
+#: src/contents/ui/Crusher.qml:90 src/contents/ui/PreferencesSheet.qml:374
+msgid "Shape"
+msgstr ""
+
+#: src/contents/ui/Crusher.qml:100
+#, fuzzy
+msgid "Linear"
+msgstr "Lineas"
+
+#: src/contents/ui/Crusher.qml:100
+msgid "Logarithmic"
+msgstr ""
+
+#: src/contents/ui/Crusher.qml:109
 msgid "DC offset"
 msgstr ""
 
-#: src/contents/ui/Crusher.qml:118 src/contents/ui/Pitch.qml:299
+#: src/contents/ui/Crusher.qml:125 src/contents/ui/Pitch.qml:299
 msgid "Anti-aliasing"
 msgstr ""
 
-#: src/contents/ui/Crusher.qml:134 src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/Crusher.qml:141 src/contents/ui/PreferencesSheet.qml:612
 msgid "Mix"
 msgstr ""
 
-#: src/contents/ui/Crusher.qml:150
+#: src/contents/ui/Crusher.qml:159
 #, fuzzy
-msgid "Sample Reduction"
+msgid "Sample Rate"
 msgstr "Reducción"
 
-#: src/contents/ui/Crusher.qml:165
+#: src/contents/ui/Crusher.qml:180
 msgid "Low frequency oscillator"
 msgstr ""
 
@@ -1284,7 +1288,7 @@ msgstr ""
 msgid "Input and output gain controls with level meters"
 msgstr ""
 
-#: src/contents/ui/EeInputOutputGain.qml:130 src/contents/ui/Main.qml:519
+#: src/contents/ui/EeInputOutputGain.qml:130 src/contents/ui/Main.qml:541
 #: src/contents/ui/StereoTools.qml:58
 msgid "Input"
 msgstr "Entrada"
@@ -1848,87 +1852,87 @@ msgstr "Mapa de Canales"
 msgid "Clipping"
 msgstr "Mapa de Canales"
 
-#: src/contents/ui/Main.qml:249
+#: src/contents/ui/Main.qml:271
 #, fuzzy
 msgid "Reset Settings?"
 msgstr "Ajustes"
 
-#: src/contents/ui/Main.qml:250
+#: src/contents/ui/Main.qml:272
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr ""
 
-#: src/contents/ui/Main.qml:303 src/contents/ui/Main.qml:321
+#: src/contents/ui/Main.qml:325 src/contents/ui/Main.qml:343
 #, fuzzy
 msgid "Preset Loaded"
 msgstr "Perfiles de Dispositivos de Entrada: "
 
-#: src/contents/ui/Main.qml:332 src/contents/ui/Main.qml:344
+#: src/contents/ui/Main.qml:354 src/contents/ui/Main.qml:366
 #, fuzzy
 msgid "Clear List"
 msgstr "Clientes"
 
-#: src/contents/ui/Main.qml:333 src/contents/ui/Main.qml:345
+#: src/contents/ui/Main.qml:355 src/contents/ui/Main.qml:367
 msgid "Are you sure you want to clear this list?"
 msgstr ""
 
-#: src/contents/ui/Main.qml:354
+#: src/contents/ui/Main.qml:376
 #, fuzzy
 msgid "Input Presets"
 msgstr "Perfiles de Dispositivos de Entrada: "
 
-#: src/contents/ui/Main.qml:369
+#: src/contents/ui/Main.qml:391
 #, fuzzy
 msgid "Output Presets"
 msgstr "Perfiles de Dispositivos de Salida: "
 
-#: src/contents/ui/Main.qml:400
+#: src/contents/ui/Main.qml:422
 #, fuzzy
 msgid "Active"
 msgstr "Modo Agresivo"
 
-#: src/contents/ui/Main.qml:411 src/contents/ui/Main.qml:558
+#: src/contents/ui/Main.qml:433 src/contents/ui/Main.qml:580
 #: src/contents/ui/ShortcutsSheet.qml:389
 msgid "Shortcuts"
 msgstr ""
 
-#: src/contents/ui/Main.qml:420 src/contents/ui/Main.qml:566
+#: src/contents/ui/Main.qml:442 src/contents/ui/Main.qml:588
 msgid "Manual"
 msgstr ""
 
-#: src/contents/ui/Main.qml:430 src/contents/ui/Main.qml:598
+#: src/contents/ui/Main.qml:452 src/contents/ui/Main.qml:620
 msgid "Quit"
 msgstr ""
 
-#: src/contents/ui/Main.qml:454
+#: src/contents/ui/Main.qml:476
 msgid "Go back"
 msgstr ""
 
-#: src/contents/ui/Main.qml:464 src/contents/ui/PageStreamsEffects.qml:734
+#: src/contents/ui/Main.qml:486 src/contents/ui/PageStreamsEffects.qml:734
 #, fuzzy
 msgid "Effects"
 msgstr "EasyEffects"
 
-#: src/contents/ui/Main.qml:465
+#: src/contents/ui/Main.qml:487
 msgid "Turn effects on/off"
 msgstr ""
 
-#: src/contents/ui/Main.qml:476
+#: src/contents/ui/Main.qml:498
 msgid "Audio effects are enabled."
 msgstr ""
 
-#: src/contents/ui/Main.qml:476
+#: src/contents/ui/Main.qml:498
 msgid "Audio effects are disabled."
 msgstr ""
 
-#: src/contents/ui/Main.qml:532
+#: src/contents/ui/Main.qml:554
 msgid "PipeWire"
 msgstr ""
 
-#: src/contents/ui/Main.qml:550
+#: src/contents/ui/Main.qml:572
 msgid "Preferences"
 msgstr ""
 
-#: src/contents/ui/Main.qml:590
+#: src/contents/ui/Main.qml:612
 #, fuzzy
 msgid "About Easy Effects"
 msgstr "EasyEffects"
@@ -2421,10 +2425,6 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:367
 msgid "Graph"
-msgstr ""
-
-#: src/contents/ui/PreferencesSheet.qml:374
-msgid "Shape"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:378

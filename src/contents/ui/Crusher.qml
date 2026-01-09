@@ -20,7 +20,6 @@
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
-import "Common.js" as Common
 import ee.tags.plugin.name as TagsPluginName // qmllint disable
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
@@ -51,26 +50,49 @@ Kirigami.ScrollablePage {
         Layout.fillWidth: true
         Layout.fillHeight: true
 
+        Controls.Label {
+            Layout.alignment: Qt.AlignHCenter
+            text: i18n("Bit Reduction") // qmllint disable
+        }
+
+        Controls.Slider {
+            id: bitReduction
+
+            Layout.alignment: Qt.AlignHCenter
+            Layout.maximumWidth: 2 * cardLayout.maximumColumnWidth
+            Layout.fillWidth: true
+            orientation: Qt.Horizontal
+            snapMode: Controls.Slider.SnapAlways
+            value: crusherPage.pluginDB.bitReduction
+            from: crusherPage.pluginDB.getMinValue("bitReduction")
+            to: crusherPage.pluginDB.getMaxValue("bitReduction")
+            stepSize: 1
+            onValueChanged: () => {
+                if (value !== crusherPage.pluginDB.bitReduction)
+                    crusherPage.pluginDB.bitReduction = value;
+            }
+        }
+
+        Controls.Label {
+            Layout.alignment: Qt.AlignHCenter
+            text: bitReduction.value
+        }
+
         Kirigami.CardsLayout {
             id: cardLayout
 
             Layout.fillWidth: true
             Layout.topMargin: Kirigami.Units.largeSpacing
 
-            Kirigami.Card {
-                id: cardControls
+            EeCard {
+                id: cardShape
 
-                header: Kirigami.Heading {
-                    text: i18n("Controls") // qmllint disable
-                    level: 2
-                }
+                title: i18n("Shape") // qmllint disable
 
                 contentItem: ColumnLayout {
                     FormCard.FormComboBoxDelegate {
                         id: mode
 
-                        Layout.alignment: Qt.AlignHCenter
-                        Layout.fillWidth: false
                         text: i18n("Mode") // qmllint disable
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: crusherPage.pluginDB.mode
@@ -78,21 +100,6 @@ Kirigami.ScrollablePage {
                         model: [i18n("Linear"), i18n("Logarithmic")] // qmllint disable
                         onActivated: idx => {
                             crusherPage.pluginDB.mode = idx;
-                        }
-                    }
-
-                    EeSpinBox {
-                        id: bitReduction
-
-                        label: i18n("Bit reduction") // qmllint disable
-                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
-                        from: crusherPage.pluginDB.getMinValue("bitReduction")
-                        to: crusherPage.pluginDB.getMaxValue("bitReduction")
-                        value: crusherPage.pluginDB.bitReduction
-                        decimals: 0
-                        stepSize: 1
-                        onValueModified: v => {
-                            crusherPage.pluginDB.bitReduction = v;
                         }
                     }
 
@@ -143,11 +150,19 @@ Kirigami.ScrollablePage {
                             crusherPage.pluginDB.morph = v * 0.01;
                         }
                     }
+                }
+            }
 
+            EeCard {
+                id: cardRate
+
+                title: i18n("Sample Rate") // qmllint disable
+
+                contentItem: ColumnLayout {
                     EeSpinBox {
                         id: sampleReduction
 
-                        label: i18n("Sample reduction") // qmllint disable
+                        label: i18n("Reduction") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
                         from: crusherPage.pluginDB.getMinValue("sampleReduction")
                         to: crusherPage.pluginDB.getMaxValue("sampleReduction")
@@ -167,6 +182,39 @@ Kirigami.ScrollablePage {
                         onCheckedChanged: {
                             if (isChecked !== crusherPage.pluginDB.lfoActive)
                                 crusherPage.pluginDB.lfoActive = isChecked;
+                        }
+                    }
+
+                    EeSpinBox {
+                        id: lfoRange
+
+                        label: i18n("Range") // qmllint disable
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
+                        from: crusherPage.pluginDB.getMinValue("lfoRange")
+                        to: crusherPage.pluginDB.getMaxValue("lfoRange")
+                        value: crusherPage.pluginDB.lfoRange
+                        decimals: 0
+                        stepSize: 1
+                        enabled: lfoActive.isChecked
+                        onValueModified: v => {
+                            crusherPage.pluginDB.lfoRange = v;
+                        }
+                    }
+
+                    EeSpinBox {
+                        id: lfoRate
+
+                        label: i18n("Rate") // qmllint disable
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
+                        from: crusherPage.pluginDB.getMinValue("lfoRate")
+                        to: crusherPage.pluginDB.getMaxValue("lfoRate")
+                        value: crusherPage.pluginDB.lfoRate
+                        decimals: 1
+                        stepSize: 0.1
+                        enabled: lfoActive.isChecked
+                        unit: Units.hz
+                        onValueModified: v => {
+                            crusherPage.pluginDB.lfoRate = v;
                         }
                     }
                 }
