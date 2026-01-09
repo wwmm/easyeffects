@@ -32,6 +32,8 @@ import org.kde.kirigami as Kirigami
 Kirigami.ApplicationWindow {
     id: appWindow
 
+    // We need to set visible to false in order to fix an issue related to
+    // --hide-window option. See #4491.
     visible: false
     width: DbMain.width
     height: DbMain.height
@@ -64,11 +66,15 @@ Kirigami.ApplicationWindow {
 
     onVisibleChanged: {
         if (appWindow.visible) {
-            /*
-             * When the window is reopened, its state is irritatingly lost.
-             * This happens both after restarting the application and when switching its visibility through the tray.
-             * Until this issue is fixed with xx-session-restore-v1/etc, we can use the approach used in the qBittorrent:
-             * save the window properties to a file when hiding it and restore it when showing it.
+            /**
+             * When the window is reopened, its state (maximized, minimized,
+             * fullscreen, etc.) is lost.
+             * This happens both after restarting the application and when
+             * switching its visibility through the tray.
+             * Until this issue is fixed with a proper Wayland protocol, we can
+             * adopt the approach used in qBittorrent: save the visibility
+             * property into the database when hiding the window and restore
+             * its value when the window is shown.
              */
             appWindow.visibility = DbMain.visibility;
 
