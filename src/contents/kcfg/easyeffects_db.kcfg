@@ -11,6 +11,10 @@
             <label>Height of the main window.</label>
             <default>600</default>
         </entry>
+        <entry name="windowState" type="Int">
+            <label>WindowState of the main window.</label>
+            <default>Qt::WindowState::WindowNoState</default>
+        </entry>
         <entry name="enableServiceMode" type="Bool">
             <label>Enable Service Mode</label>
             <default>true</default>
