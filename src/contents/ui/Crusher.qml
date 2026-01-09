@@ -58,10 +58,10 @@ Kirigami.ScrollablePage {
             Layout.topMargin: Kirigami.Units.largeSpacing
 
             Kirigami.Card {
-                id: cardControls
+                id: cardShape
 
                 header: Kirigami.Heading {
-                    text: i18n("Controls") // qmllint disable
+                    text: i18n("Shape") // qmllint disable
                     level: 2
                 }
 
@@ -69,8 +69,6 @@ Kirigami.ScrollablePage {
                     FormCard.FormComboBoxDelegate {
                         id: mode
 
-                        Layout.alignment: Qt.AlignHCenter
-                        Layout.fillWidth: false
                         text: i18n("Mode") // qmllint disable
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: crusherPage.pluginDB.mode
@@ -143,7 +141,18 @@ Kirigami.ScrollablePage {
                             crusherPage.pluginDB.morph = v * 0.01;
                         }
                     }
+                }
+            }
 
+            Kirigami.Card {
+                id: cardRate
+
+                header: Kirigami.Heading {
+                    text: i18n("Sampling Rate") // qmllint disable
+                    level: 2
+                }
+
+                contentItem: ColumnLayout {
                     EeSpinBox {
                         id: sampleReduction
 
