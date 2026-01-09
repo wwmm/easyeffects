@@ -169,33 +169,6 @@ Kirigami.ScrollablePage {
                                 crusherPage.pluginDB.lfoActive = isChecked;
                         }
                     }
-
-                    // EeSpinBox {
-                    //     id: ceil
-
-                    //     label: i18n("Ceil") // qmllint disable
-                    //     spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
-                    //     from: crusherPage.pluginDB.getMinValue("ceil")
-                    //     to: crusherPage.pluginDB.getMaxValue("ceil")
-                    //     value: crusherPage.pluginDB.ceil
-                    //     decimals: 0
-                    //     stepSize: 1
-                    //     unit: Units.hz
-                    //     enabled: ceilActive.isChecked
-                    //     onValueModified: v => {
-                    //         crusherPage.pluginDB.ceil = v;
-                    //     }
-                    // }
-
-                    // EeProgressBar {
-                    //     id: harmonicsLevel
-                    //     Layout.topMargin: Kirigami.Units.largeSpacing
-
-                    //     label: i18n("Harmonics") // qmllint disable
-                    //     from: Common.minimumDecibelLevel
-                    //     to: 10
-                    //     decimals: 0
-                    // }
                 }
             }
         }
