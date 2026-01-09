@@ -32,6 +32,7 @@ import org.kde.kirigami as Kirigami
 Kirigami.ApplicationWindow {
     id: appWindow
 
+    visible: false
     width: DbMain.width
     height: DbMain.height
     title: applicationName
