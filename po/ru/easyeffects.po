@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-01-09 12:58-0300\n"
-"PO-Revision-Date: 2026-01-08 08:03+0000\n"
+"PO-Revision-Date: 2026-01-10 05:01+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -907,26 +907,24 @@ msgid "Presets"
 msgstr "Предустановки"
 
 #: src/contents/ui/Crusher.qml:55
-#, fuzzy
 msgid "Bit Reduction"
-msgstr "Ослабление"
+msgstr "Понижение разрядности"
 
 #: src/contents/ui/Crusher.qml:90 src/contents/ui/PreferencesSheet.qml:374
 msgid "Shape"
 msgstr "Форма"
 
 #: src/contents/ui/Crusher.qml:100
-#, fuzzy
 msgid "Linear"
-msgstr "Линии"
+msgstr "Линейный"
 
 #: src/contents/ui/Crusher.qml:100
 msgid "Logarithmic"
-msgstr ""
+msgstr "Логарифмический"
 
 #: src/contents/ui/Crusher.qml:109
 msgid "DC offset"
-msgstr ""
+msgstr "Смещение нулевого уровня"
 
 #: src/contents/ui/Crusher.qml:125 src/contents/ui/Pitch.qml:299
 msgid "Anti-aliasing"
@@ -937,9 +935,8 @@ msgid "Mix"
 msgstr "Микс"
 
 #: src/contents/ui/Crusher.qml:159
-#, fuzzy
 msgid "Sample Rate"
-msgstr "Максимум подавления"
+msgstr "Частота дискретизации"
 
 #: src/contents/ui/Crusher.qml:180
 msgid "Low frequency oscillator"
