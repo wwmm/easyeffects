@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-01-07 22:29+0000\n"
-"PO-Revision-Date: 2026-01-08 16:32+0000\n"
+"PO-Revision-Date: 2026-01-09 15:59+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
 "ga/>\n"
@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :"
-"(n>6 && n<11) ? 3 : 4;\n"
+"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :(n>"
+"6 && n<11) ? 3 : 4;\n"
 "X-Generator: Weblate 5.15.1\n"
 
 #: src/autostart.cpp:92
@@ -3216,27 +3216,24 @@ msgid "Simple audio effects"
 msgstr "Éifeachtaí fuaime simplí"
 
 #: src/contents/ui/Crusher.qml:78
-#, fuzzy
 msgid "Linear"
-msgstr "Línte"
+msgstr "Líneach"
 
 #: src/contents/ui/Crusher.qml:78
 msgid "Logarithmic"
-msgstr ""
+msgstr "Logartamach"
 
 #: src/contents/ui/Crusher.qml:87
-#, fuzzy
 msgid "Bit Reduction"
-msgstr "Laghdú"
+msgstr "Laghdú Giotán"
 
 #: src/contents/ui/Crusher.qml:102
 msgid "DC offset"
-msgstr ""
+msgstr "Fritháireamh DC"
 
 #: src/contents/ui/Crusher.qml:150
-#, fuzzy
 msgid "Sample Reduction"
-msgstr "Laghdú"
+msgstr "Laghdú Samplach"
 
 #~ msgid "© 2017-2026 EasyEffects Team"
 #~ msgstr "© 2017-2026 Foireann EasyEffects"
