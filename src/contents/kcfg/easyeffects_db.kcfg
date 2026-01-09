@@ -11,6 +11,10 @@
             <label>Height of the main window.</label>
             <default>600</default>
         </entry>
+        <entry name="visibility" type="Int">
+            <label>Visibility of the main window.</label>
+            <default>1</default>
+        </entry>
         <entry name="enableServiceMode" type="Bool">
             <label>Enable Service Mode</label>
             <default>true</default>
