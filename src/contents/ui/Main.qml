@@ -85,6 +85,18 @@ Kirigami.ApplicationWindow {
     }
 
     onClosing: {
+        onCloseWindow();
+    }
+
+    Component.onDestruction: {
+        onCloseWindow();
+    }
+
+    function onCloseWindow() {
+        DbMain.visibility = appWindow.visibility;
+
+        DB.Manager.saveAll();
+
         DB.Manager.enableAutosave(false);
     }
 
