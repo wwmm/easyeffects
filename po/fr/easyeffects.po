@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-01-08 13:31-0300\n"
-"PO-Revision-Date: 2026-01-08 08:03+0000\n"
-"Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
+"PO-Revision-Date: 2026-01-09 09:01+0000\n"
+"Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
 "Language: fr\n"
@@ -890,22 +890,20 @@ msgid "Presets"
 msgstr "Préréglages"
 
 #: src/contents/ui/Crusher.qml:78
-#, fuzzy
 msgid "Linear"
-msgstr "Lignes"
+msgstr "Linéaire"
 
 #: src/contents/ui/Crusher.qml:78
 msgid "Logarithmic"
-msgstr ""
+msgstr "Logarithmique"
 
 #: src/contents/ui/Crusher.qml:87
-#, fuzzy
 msgid "Bit Reduction"
-msgstr "Réduction"
+msgstr "Réduction de Bits"
 
 #: src/contents/ui/Crusher.qml:102
 msgid "DC offset"
-msgstr ""
+msgstr "Décalage CC"
 
 #: src/contents/ui/Crusher.qml:118 src/contents/ui/Pitch.qml:299
 msgid "Anti-aliasing"
@@ -916,13 +914,12 @@ msgid "Mix"
 msgstr "Mix"
 
 #: src/contents/ui/Crusher.qml:150
-#, fuzzy
 msgid "Sample Reduction"
-msgstr "Atténuation maximale"
+msgstr "Réduction d'Échantillon"
 
 #: src/contents/ui/Crusher.qml:165
 msgid "Low frequency oscillator"
-msgstr ""
+msgstr "Oscillateur basse fréquence"
 
 #: src/contents/ui/CrystalizerBand.qml:58
 #: src/contents/ui/EqualizerBandMenu.qml:185
@@ -3071,7 +3068,7 @@ msgstr "Flux Croisé"
 
 #: src/tags_plugin_name.cpp:32
 msgid "Crusher"
-msgstr ""
+msgstr "Crusher"
 
 #: src/tags_plugin_name.cpp:33
 msgid "Crystalizer"
