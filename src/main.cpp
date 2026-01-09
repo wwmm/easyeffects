@@ -194,28 +194,6 @@ static void initGlobalShortcuts(GlobalShortcuts* shortcuts) {
   });
 }
 
-// NOTE: When the window is reopened, its state is irritatingly lost.
-//       This happens both after restarting the application and when switching its visibility through the tray.
-//       Until this issue is fixed with xx-session-restore-v1/etc, we can use the approach used in the qBittorrent:
-//       save the window properties to a file when hiding it and restore it when showing it.
-class MainWindowPropertySaver : public QObject {
- public:
-  explicit MainWindowPropertySaver(QObject* parent = nullptr) : QObject(parent) { }
-
-  bool eventFilter(QObject* object, QEvent* event) override {
-    if (auto* window = qobject_cast<QQuickWindow*>(object)) {
-      if (event->type() == QEvent::Show) {
-        window->setWindowState(static_cast<Qt::WindowState>(DbMain::windowState()));
-      } else if (event->type() == QEvent::Hide) {
-        DbMain::setWindowState(window->windowState());
-        DbMain::self()->save();
-      }
-    }
-
-    return QObject::eventFilter(object, event);
-  }
-};
-
 static void initQml(QQmlApplicationEngine& engine,
                     Autostart& autostart,
                     LocalServer& server,
@@ -230,7 +208,6 @@ static void initQml(QQmlApplicationEngine& engine,
   QObject::connect(&engine, &QQmlApplicationEngine::objectCreated, [&](QObject* object, const QUrl& url) {
     if (url.toString() == "qrc:/qt/qml/ee/ui/contents/ui/Main.qml") {
       ui.window = qobject_cast<QQuickWindow*>(object);
-      ui.window->installEventFilter(new MainWindowPropertySaver);
 
       if (ui.window) {
         ui.window->setPersistentGraphics(false);
