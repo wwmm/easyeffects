@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-01-07 22:29+0000\n"
+"POT-Creation-Date: 2026-01-09 12:58-0300\n"
 "PO-Revision-Date: 2026-01-08 16:32+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -121,11 +121,10 @@ msgstr "Maidir"
 
 #: src/contents/ui/Autogain.qml:69 src/contents/ui/BassEnhancer.qml:105
 #: src/contents/ui/BassLoudness.qml:58 src/contents/ui/Crossfeed.qml:73
-#: src/contents/ui/Crusher.qml:63 src/contents/ui/DeepFilterNet.qml:93
-#: src/contents/ui/Exciter.qml:106 src/contents/ui/Filter.qml:58
-#: src/contents/ui/Loudness.qml:58 src/contents/ui/Maximizer.qml:59
-#: src/contents/ui/Pitch.qml:59 src/contents/ui/Reverb.qml:59
-#: src/contents/ui/Speex.qml:58 src/contents/ui/Crusher.qml:64
+#: src/contents/ui/DeepFilterNet.qml:93 src/contents/ui/Exciter.qml:106
+#: src/contents/ui/Filter.qml:58 src/contents/ui/Loudness.qml:58
+#: src/contents/ui/Maximizer.qml:59 src/contents/ui/Pitch.qml:59
+#: src/contents/ui/Reverb.qml:59 src/contents/ui/Speex.qml:58
 msgid "Controls"
 msgstr "Rialuithe"
 
@@ -186,7 +185,8 @@ msgstr "Treise"
 msgid "Relative"
 msgstr "Gaol"
 
-#: src/contents/ui/Autogain.qml:188 src/contents/ui/LevelMeter.qml:198
+#: src/contents/ui/Autogain.qml:188 src/contents/ui/Crusher.qml:191
+#: src/contents/ui/LevelMeter.qml:198
 msgid "Range"
 msgstr "Raon"
 
@@ -197,7 +197,7 @@ msgstr "Gnóthachan Aschuir"
 #: src/contents/ui/Autogain.qml:231 src/contents/ui/BassEnhancer.qml:203
 #: src/contents/ui/BassLoudness.qml:123 src/contents/ui/Compressor.qml:872
 #: src/contents/ui/Convolver.qml:518 src/contents/ui/Crossfeed.qml:147
-#: src/contents/ui/Crusher.qml:165 src/contents/ui/Crystalizer.qml:124
+#: src/contents/ui/Crusher.qml:233 src/contents/ui/Crystalizer.qml:124
 #: src/contents/ui/DeepFilterNet.qml:194 src/contents/ui/Deesser.qml:317
 #: src/contents/ui/Delay.qml:373 src/contents/ui/EchoCanceller.qml:155
 #: src/contents/ui/Equalizer.qml:302 src/contents/ui/Exciter.qml:208
@@ -207,11 +207,10 @@ msgstr "Gnóthachan Aschuir"
 #: src/contents/ui/Maximizer.qml:119
 #: src/contents/ui/MultibandCompressor.qml:965
 #: src/contents/ui/MultibandGate.qml:938 src/contents/ui/Pitch.qml:265
-#: src/contents/ui/RNNoise.qml:76 src/contents/ui/RNNoise.qml:87
-#: src/contents/ui/RNNoise.qml:301 src/contents/ui/RNNoise.qml:303
-#: src/contents/ui/RNNoise.qml:321 src/contents/ui/Reverb.qml:316
+#: src/contents/ui/Reverb.qml:316 src/contents/ui/RNNoise.qml:76
+#: src/contents/ui/RNNoise.qml:87 src/contents/ui/RNNoise.qml:301
+#: src/contents/ui/RNNoise.qml:303 src/contents/ui/RNNoise.qml:321
 #: src/contents/ui/Speex.qml:174 src/contents/ui/StereoTools.qml:389
-#: src/contents/ui/Crusher.qml:212
 msgid "Using %1"
 msgstr "Ag baint úsáide as %1"
 
@@ -268,7 +267,7 @@ msgid "Floor"
 msgstr "Urlár"
 
 #: src/contents/ui/BassEnhancer.qml:221 src/contents/ui/Compressor.qml:890
-#: src/contents/ui/Crusher.qml:183 src/contents/ui/Deesser.qml:335
+#: src/contents/ui/Crusher.qml:251 src/contents/ui/Deesser.qml:335
 #: src/contents/ui/Delay.qml:411 src/contents/ui/Equalizer.qml:320
 #: src/contents/ui/Exciter.qml:226 src/contents/ui/Expander.qml:840
 #: src/contents/ui/Filter.qml:235 src/contents/ui/Gate.qml:969
@@ -276,7 +275,7 @@ msgstr "Urlár"
 #: src/contents/ui/Maximizer.qml:137
 #: src/contents/ui/MultibandCompressor.qml:983
 #: src/contents/ui/MultibandGate.qml:956 src/contents/ui/Reverb.qml:342
-#: src/contents/ui/StereoTools.qml:407 src/contents/ui/Crusher.qml:230
+#: src/contents/ui/StereoTools.qml:407
 msgid "Show native window"
 msgstr "Taispeáin Fuinneog Dhúchasach"
 
@@ -288,24 +287,24 @@ msgstr "Éist"
 
 #: src/contents/ui/BassEnhancer.qml:245 src/contents/ui/BassLoudness.qml:141
 #: src/contents/ui/Compressor.qml:924 src/contents/ui/Convolver.qml:553
-#: src/contents/ui/Crossfeed.qml:173 src/contents/ui/Crusher.qml:197
+#: src/contents/ui/Crossfeed.qml:173 src/contents/ui/Crusher.qml:265
 #: src/contents/ui/Crystalizer.qml:162 src/contents/ui/Deesser.qml:359
 #: src/contents/ui/Delay.qml:425 src/contents/ui/EchoCanceller.qml:183
 #: src/contents/ui/Equalizer.qml:386 src/contents/ui/Exciter.qml:250
 #: src/contents/ui/Expander.qml:874 src/contents/ui/Filter.qml:249
 #: src/contents/ui/Gate.qml:1003 src/contents/ui/Limiter.qml:658
-#: src/contents/ui/Loudness.qml:214 src/contents/ui/Main.qml:578
+#: src/contents/ui/Loudness.qml:214 src/contents/ui/Main.qml:600
 #: src/contents/ui/Maximizer.qml:151
 #: src/contents/ui/MultibandCompressor.qml:1014
-#: src/contents/ui/MultibandGate.qml:987 src/contents/ui/RNNoise.qml:346
-#: src/contents/ui/Reverb.qml:356 src/contents/ui/Speex.qml:192
-#: src/contents/ui/StereoTools.qml:421 src/contents/ui/Crusher.qml:244
+#: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:356
+#: src/contents/ui/RNNoise.qml:346 src/contents/ui/Speex.qml:192
+#: src/contents/ui/StereoTools.qml:421
 msgid "Reset"
 msgstr "Athshocraigh"
 
 #: src/contents/ui/BassLoudness.qml:82 src/contents/ui/Compressor.qml:479
 #: src/contents/ui/EeInputOutputGain.qml:143 src/contents/ui/Expander.qml:439
-#: src/contents/ui/Gate.qml:454 src/contents/ui/Main.qml:506
+#: src/contents/ui/Gate.qml:454 src/contents/ui/Main.qml:528
 #: src/contents/ui/StereoTools.qml:267
 msgid "Output"
 msgstr "Aschur"
@@ -369,14 +368,13 @@ msgid "Compressor"
 msgstr "Comhbhrúiteoir"
 
 #: src/contents/ui/Compressor.qml:80 src/contents/ui/Compressor.qml:302
-#: src/contents/ui/Deesser.qml:89 src/contents/ui/Delay.qml:70
-#: src/contents/ui/Delay.qml:223 src/contents/ui/Equalizer.qml:140
-#: src/contents/ui/EqualizerBandMenu.qml:59 src/contents/ui/Expander.qml:80
-#: src/contents/ui/Expander.qml:262 src/contents/ui/Gate.qml:280
-#: src/contents/ui/Limiter.qml:73 src/contents/ui/Loudness.qml:70
-#: src/contents/ui/MultibandCompressor.qml:436
+#: src/contents/ui/Crusher.qml:96 src/contents/ui/Deesser.qml:89
+#: src/contents/ui/Delay.qml:70 src/contents/ui/Delay.qml:223
+#: src/contents/ui/EqualizerBandMenu.qml:59 src/contents/ui/Equalizer.qml:140
+#: src/contents/ui/Expander.qml:80 src/contents/ui/Expander.qml:262
+#: src/contents/ui/Gate.qml:280 src/contents/ui/Limiter.qml:73
+#: src/contents/ui/Loudness.qml:70 src/contents/ui/MultibandCompressor.qml:436
 #: src/contents/ui/MultibandGate.qml:409 src/contents/ui/StereoTools.qml:122
-#: src/contents/ui/Crusher.qml:74
 msgid "Mode"
 msgstr "Mód"
 
@@ -688,9 +686,9 @@ msgstr "Nasc chuig an slabhra taobh"
 msgid "Link to input"
 msgstr "Nasc chuig ionchur"
 
-#: src/contents/ui/Compressor.qml:675 src/contents/ui/Expander.qml:627
-#: src/contents/ui/Gate.qml:119 src/contents/ui/Gate.qml:653
-#: src/contents/ui/Maximizer.qml:100
+#: src/contents/ui/Compressor.qml:675 src/contents/ui/Crusher.qml:165
+#: src/contents/ui/Expander.qml:627 src/contents/ui/Gate.qml:119
+#: src/contents/ui/Gate.qml:653 src/contents/ui/Maximizer.qml:100
 #: src/contents/ui/MultibandCompressor.qml:747
 #: src/contents/ui/MultibandGate.qml:251 src/contents/ui/MultibandGate.qml:720
 msgid "Reduction"
@@ -713,76 +711,6 @@ msgstr "Clúdach litreach"
 #: src/contents/ui/MultibandGate.qml:969
 msgid "Stereo split"
 msgstr "Scoilt steirió"
-
-#: src/contents/ui/Convolver.qml:67
-msgid "Loaded the %1 Convolver impulse."
-msgstr "Luchtaíodh an impulse Convolver %1."
-
-#: src/contents/ui/Convolver.qml:69 src/contents/ui/Convolver.qml:343
-msgid "Convolver impulse is not set"
-msgstr "Níl an impulse comhbholgaire socraithe"
-
-#: src/contents/ui/Convolver.qml:73
-msgid "The Convolver is in passthrough mode."
-msgstr "Tá an Convolver i mód pasáiste."
-
-#: src/contents/ui/Convolver.qml:75
-msgid "Failed to load the %1 impulse. The Convolver is in passthrough mode."
-msgstr "Theip ar luchtú an impulse %1. Tá an Convolver i mód pasáiste."
-
-#: src/contents/ui/Convolver.qml:152
-msgid "First"
-msgstr "Ar dtús"
-
-#: src/contents/ui/Convolver.qml:165
-msgid "Second"
-msgstr "Dara"
-
-#: src/contents/ui/Convolver.qml:197 src/contents/ui/Convolver.qml:232
-msgid "Combine"
-msgstr "Comhcheangail"
-
-#: src/contents/ui/Convolver.qml:225
-msgid "Impulses"
-msgstr "Impulsaí"
-
-#: src/contents/ui/Convolver.qml:241 src/plugin_base.cpp:324
-msgid "Spectrum"
-msgstr "Speictream"
-
-#: src/contents/ui/Convolver.qml:273
-msgid "Log scale"
-msgstr "Scála loga"
-
-#: src/contents/ui/Convolver.qml:380
-msgid "Rate"
-msgstr "Ráta"
-
-#: src/contents/ui/Convolver.qml:385 src/contents/ui/Delay.qml:74
-#: src/contents/ui/Delay.qml:85 src/contents/ui/Delay.qml:227
-#: src/contents/ui/Delay.qml:238
-msgid "Samples"
-msgstr "Samplaí"
-
-#: src/contents/ui/Convolver.qml:390
-msgid "Duration"
-msgstr "Fad ama"
-
-#: src/contents/ui/Convolver.qml:395 src/contents/ui/PipeWirePage.qml:332
-msgid "Channels"
-msgstr "Cainéil"
-
-#: src/contents/ui/Convolver.qml:400
-msgid "Format"
-msgstr "Formáid"
-
-#: src/contents/ui/Convolver.qml:458
-msgid "Stereo width"
-msgstr "Leithead steirió"
-
-#: src/contents/ui/Convolver.qml:535 src/tags_plugin_name.cpp:26
-msgid "Autogain"
-msgstr "Uathghnóthachan"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:50
 msgid "Imported a new Convolver impulse file."
@@ -830,6 +758,76 @@ msgstr "Iompórtáil Impulse"
 msgctxt "@action:button"
 msgid "Close"
 msgstr "Dún"
+
+#: src/contents/ui/Convolver.qml:67
+msgid "Loaded the %1 Convolver impulse."
+msgstr "Luchtaíodh an impulse Convolver %1."
+
+#: src/contents/ui/Convolver.qml:69 src/contents/ui/Convolver.qml:343
+msgid "Convolver impulse is not set"
+msgstr "Níl an impulse comhbholgaire socraithe"
+
+#: src/contents/ui/Convolver.qml:73
+msgid "The Convolver is in passthrough mode."
+msgstr "Tá an Convolver i mód pasáiste."
+
+#: src/contents/ui/Convolver.qml:75
+msgid "Failed to load the %1 impulse. The Convolver is in passthrough mode."
+msgstr "Theip ar luchtú an impulse %1. Tá an Convolver i mód pasáiste."
+
+#: src/contents/ui/Convolver.qml:152
+msgid "First"
+msgstr "Ar dtús"
+
+#: src/contents/ui/Convolver.qml:165
+msgid "Second"
+msgstr "Dara"
+
+#: src/contents/ui/Convolver.qml:197 src/contents/ui/Convolver.qml:232
+msgid "Combine"
+msgstr "Comhcheangail"
+
+#: src/contents/ui/Convolver.qml:225
+msgid "Impulses"
+msgstr "Impulsaí"
+
+#: src/contents/ui/Convolver.qml:241 src/plugin_base.cpp:324
+msgid "Spectrum"
+msgstr "Speictream"
+
+#: src/contents/ui/Convolver.qml:273
+msgid "Log scale"
+msgstr "Scála loga"
+
+#: src/contents/ui/Convolver.qml:380 src/contents/ui/Crusher.qml:207
+msgid "Rate"
+msgstr "Ráta"
+
+#: src/contents/ui/Convolver.qml:385 src/contents/ui/Delay.qml:74
+#: src/contents/ui/Delay.qml:85 src/contents/ui/Delay.qml:227
+#: src/contents/ui/Delay.qml:238
+msgid "Samples"
+msgstr "Samplaí"
+
+#: src/contents/ui/Convolver.qml:390
+msgid "Duration"
+msgstr "Fad ama"
+
+#: src/contents/ui/Convolver.qml:395 src/contents/ui/PipeWirePage.qml:332
+msgid "Channels"
+msgstr "Cainéil"
+
+#: src/contents/ui/Convolver.qml:400
+msgid "Format"
+msgstr "Formáid"
+
+#: src/contents/ui/Convolver.qml:458
+msgid "Stereo width"
+msgstr "Leithead steirió"
+
+#: src/contents/ui/Convolver.qml:535 src/tags_plugin_name.cpp:26
+msgid "Autogain"
+msgstr "Uathghnóthachan"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:31
 msgid "Target Orientation"
@@ -887,26 +885,49 @@ msgstr "Réamhshocruithe Trasbheathú"
 msgid "Default"
 msgstr "Réamhshocrú"
 
-#: src/contents/ui/Crossfeed.qml:164 src/contents/ui/Main.qml:480
+#: src/contents/ui/Crossfeed.qml:164 src/contents/ui/Main.qml:502
 #: src/contents/ui/PreferencesSheet.qml:59 src/contents/ui/Reverb.qml:333
 msgid "Presets"
 msgstr "Réamhshocruithe"
 
-#: src/contents/ui/Crusher.qml:118
+#: src/contents/ui/Crusher.qml:55
+#, fuzzy
+msgid "Bit Reduction"
+msgstr "Laghdú"
+
+#: src/contents/ui/Crusher.qml:90 src/contents/ui/PreferencesSheet.qml:374
+msgid "Shape"
+msgstr "Cruth"
+
+#: src/contents/ui/Crusher.qml:100
+#, fuzzy
+msgid "Linear"
+msgstr "Línte"
+
+#: src/contents/ui/Crusher.qml:100
+msgid "Logarithmic"
+msgstr ""
+
+#: src/contents/ui/Crusher.qml:109
+msgid "DC offset"
+msgstr ""
+
+#: src/contents/ui/Crusher.qml:125 src/contents/ui/Pitch.qml:299
+msgid "Anti-aliasing"
+msgstr "Frithailiasáil"
+
+#: src/contents/ui/Crusher.qml:141 src/contents/ui/PreferencesSheet.qml:612
+msgid "Mix"
+msgstr "Measc"
+
+#: src/contents/ui/Crusher.qml:159
+#, fuzzy
+msgid "Sample Rate"
+msgstr "Laghdú"
+
+#: src/contents/ui/Crusher.qml:180
 msgid "Low frequency oscillator"
 msgstr "Oscailteoir minicíochta íseal"
-
-#: src/contents/ui/Crystalizer.qml:103
-msgid "Oversampling quality"
-msgstr "Cáilíocht róshamplála"
-
-#: src/contents/ui/Crystalizer.qml:141 src/contents/ui/Limiter.qml:87
-msgid "Oversampling"
-msgstr "Róshampláil"
-
-#: src/contents/ui/Crystalizer.qml:151
-msgid "Adaptive intensity"
-msgstr "Déine oiriúnaitheach"
 
 #: src/contents/ui/CrystalizerBand.qml:58
 #: src/contents/ui/EqualizerBandMenu.qml:185
@@ -921,6 +942,18 @@ msgstr "MuteName"
 #: src/contents/ui/MultibandGate.qml:110
 msgid "Bypass"
 msgstr "Seachbhóthar"
+
+#: src/contents/ui/Crystalizer.qml:103
+msgid "Oversampling quality"
+msgstr "Cáilíocht róshamplála"
+
+#: src/contents/ui/Crystalizer.qml:141 src/contents/ui/Limiter.qml:87
+msgid "Oversampling"
+msgstr "Róshampláil"
+
+#: src/contents/ui/Crystalizer.qml:151
+msgid "Adaptive intensity"
+msgstr "Déine oiriúnaitheach"
 
 #: src/contents/ui/DeepFilterNet.qml:51
 msgid "Attenuation limit"
@@ -1155,10 +1188,115 @@ msgstr "Rialú leibhéil fuaime"
 msgid "Input and output gain controls with level meters"
 msgstr "Rialuithe gnóthachain ionchuir agus aschuir le méadair leibhéal"
 
-#: src/contents/ui/EeInputOutputGain.qml:130 src/contents/ui/Main.qml:519
+#: src/contents/ui/EeInputOutputGain.qml:130 src/contents/ui/Main.qml:541
 #: src/contents/ui/StereoTools.qml:58
 msgid "Input"
 msgstr "Ionchur"
+
+#: src/contents/ui/EqualizerBandMenu.qml:32
+#: src/contents/ui/MultibandCompressor.qml:671
+#: src/contents/ui/MultibandCompressor.qml:930
+#: src/contents/ui/MultibandGate.qml:644 src/contents/ui/MultibandGate.qml:903
+msgid "Band"
+msgstr "Banna"
+
+#: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:68
+msgid "Bell"
+msgstr "Cloigín"
+
+#: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:68
+msgid "High-shelf"
+msgstr "Ard-seilf"
+
+#: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:68
+msgid "Low-shelf"
+msgstr "Seilf íseal"
+
+#: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:68
+msgid "Notch"
+msgstr "NotchName"
+
+#: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:68
+msgid "Resonance"
+msgstr "Athshondas"
+
+#: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:68
+msgid "Allpass"
+msgstr "Allpass"
+
+#: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:68
+msgid "Bandpass"
+msgstr "Bandpass"
+
+#: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:68
+msgid "Ladder-pass"
+msgstr "Pas-dréimire"
+
+#: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:68
+msgid "Ladder-rejection"
+msgstr "Diúltú-dréimire"
+
+#: src/contents/ui/EqualizerBandMenu.qml:63 src/contents/ui/Filter.qml:82
+msgid "RLC (BT)"
+msgstr "RLC (BT)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:63 src/contents/ui/Filter.qml:82
+msgid "RLC (MT)"
+msgstr "RLC (MT)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:63 src/contents/ui/Filter.qml:82
+msgid "BWC (BT)"
+msgstr "BWC (BT)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:63 src/contents/ui/Filter.qml:82
+msgid "BWC (MT)"
+msgstr "BWC (MT)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:63 src/contents/ui/Filter.qml:82
+msgid "LRX (BT)"
+msgstr "LRX (BT)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:63 src/contents/ui/Filter.qml:82
+msgid "LRX (MT)"
+msgstr "LRX (MT)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:63 src/contents/ui/Filter.qml:82
+msgid "APO (DR)"
+msgstr "APO (DR)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:73 src/contents/ui/Filter.qml:106
+msgid "Slope"
+msgstr "Fána"
+
+#: src/contents/ui/EqualizerBandMenu.qml:94 src/contents/ui/Filter.qml:127
+#: src/contents/ui/MultibandCompressor.qml:201
+#: src/contents/ui/MultibandGate.qml:138 src/contents/ui/PipeWirePage.qml:415
+msgid "Frequency"
+msgstr "Minicíocht"
+
+#: src/contents/ui/EqualizerBandMenu.qml:117 src/contents/ui/Filter.qml:158
+#: src/contents/ui/Limiter.qml:507 src/contents/ui/MultibandCompressor.qml:361
+#: src/contents/ui/MultibandGate.qml:247
+msgid "Gain"
+msgstr "Gnóthachan"
+
+#: src/contents/ui/EqualizerBandMenu.qml:140 src/contents/ui/Filter.qml:174
+msgid "Quality"
+msgstr "Cáilíocht"
+
+#: src/contents/ui/EqualizerBandMenu.qml:163 src/contents/ui/Filter.qml:143
+msgid "Width"
+msgstr "Leithead"
+
+#: src/contents/ui/EqualizerBandMenu.qml:169
+msgid "oct"
+msgstr "oct"
+
+#: src/contents/ui/EqualizerBandMenu.qml:197
+#: src/contents/ui/MultibandCompressor.qml:101
+#: src/contents/ui/MultibandGate.qml:101
+msgid "Solo"
+msgstr "Níl ann ach"
 
 #: src/contents/ui/Equalizer.qml:68 src/contents/ui/Equalizer.qml:108
 msgid "APO preset"
@@ -1292,111 +1430,6 @@ msgstr "Iompórtáil APO (GraphicEQ)"
 #: src/contents/ui/Equalizer.qml:378
 msgid "Export APO"
 msgstr "Easpórtáil APO"
-
-#: src/contents/ui/EqualizerBandMenu.qml:32
-#: src/contents/ui/MultibandCompressor.qml:671
-#: src/contents/ui/MultibandCompressor.qml:930
-#: src/contents/ui/MultibandGate.qml:644 src/contents/ui/MultibandGate.qml:903
-msgid "Band"
-msgstr "Banna"
-
-#: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:68
-msgid "Bell"
-msgstr "Cloigín"
-
-#: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:68
-msgid "High-shelf"
-msgstr "Ard-seilf"
-
-#: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:68
-msgid "Low-shelf"
-msgstr "Seilf íseal"
-
-#: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:68
-msgid "Notch"
-msgstr "NotchName"
-
-#: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:68
-msgid "Resonance"
-msgstr "Athshondas"
-
-#: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:68
-msgid "Allpass"
-msgstr "Allpass"
-
-#: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:68
-msgid "Bandpass"
-msgstr "Bandpass"
-
-#: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:68
-msgid "Ladder-pass"
-msgstr "Pas-dréimire"
-
-#: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:68
-msgid "Ladder-rejection"
-msgstr "Diúltú-dréimire"
-
-#: src/contents/ui/EqualizerBandMenu.qml:63 src/contents/ui/Filter.qml:82
-msgid "RLC (BT)"
-msgstr "RLC (BT)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:63 src/contents/ui/Filter.qml:82
-msgid "RLC (MT)"
-msgstr "RLC (MT)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:63 src/contents/ui/Filter.qml:82
-msgid "BWC (BT)"
-msgstr "BWC (BT)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:63 src/contents/ui/Filter.qml:82
-msgid "BWC (MT)"
-msgstr "BWC (MT)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:63 src/contents/ui/Filter.qml:82
-msgid "LRX (BT)"
-msgstr "LRX (BT)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:63 src/contents/ui/Filter.qml:82
-msgid "LRX (MT)"
-msgstr "LRX (MT)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:63 src/contents/ui/Filter.qml:82
-msgid "APO (DR)"
-msgstr "APO (DR)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:73 src/contents/ui/Filter.qml:106
-msgid "Slope"
-msgstr "Fána"
-
-#: src/contents/ui/EqualizerBandMenu.qml:94 src/contents/ui/Filter.qml:127
-#: src/contents/ui/MultibandCompressor.qml:201
-#: src/contents/ui/MultibandGate.qml:138 src/contents/ui/PipeWirePage.qml:415
-msgid "Frequency"
-msgstr "Minicíocht"
-
-#: src/contents/ui/EqualizerBandMenu.qml:117 src/contents/ui/Filter.qml:158
-#: src/contents/ui/Limiter.qml:507 src/contents/ui/MultibandCompressor.qml:361
-#: src/contents/ui/MultibandGate.qml:247
-msgid "Gain"
-msgstr "Gnóthachan"
-
-#: src/contents/ui/EqualizerBandMenu.qml:140 src/contents/ui/Filter.qml:174
-msgid "Quality"
-msgstr "Cáilíocht"
-
-#: src/contents/ui/EqualizerBandMenu.qml:163 src/contents/ui/Filter.qml:143
-msgid "Width"
-msgstr "Leithead"
-
-#: src/contents/ui/EqualizerBandMenu.qml:169
-msgid "oct"
-msgstr "oct"
-
-#: src/contents/ui/EqualizerBandMenu.qml:197
-#: src/contents/ui/MultibandCompressor.qml:101
-#: src/contents/ui/MultibandGate.qml:101
-msgid "Solo"
-msgstr "Níl ann ach"
 
 #: src/contents/ui/Exciter.qml:161
 msgid "Ceil active"
@@ -1673,80 +1706,80 @@ msgstr "Raon gearrtha"
 msgid "Clipping"
 msgstr "Bearradh"
 
-#: src/contents/ui/Main.qml:249
+#: src/contents/ui/Main.qml:271
 msgid "Reset Settings?"
 msgstr "Athshocraigh Socruithe?"
 
-#: src/contents/ui/Main.qml:250
+#: src/contents/ui/Main.qml:272
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr "An bhfuil tú cinnte gur mian leat gach socrú Easy Effects a athshocrú?"
 
-#: src/contents/ui/Main.qml:303 src/contents/ui/Main.qml:321
+#: src/contents/ui/Main.qml:325 src/contents/ui/Main.qml:343
 msgid "Preset Loaded"
 msgstr "Réamhshocrú Luchtaithe"
 
-#: src/contents/ui/Main.qml:332 src/contents/ui/Main.qml:344
+#: src/contents/ui/Main.qml:354 src/contents/ui/Main.qml:366
 msgid "Clear List"
 msgstr "Glan an Liosta"
 
-#: src/contents/ui/Main.qml:333 src/contents/ui/Main.qml:345
+#: src/contents/ui/Main.qml:355 src/contents/ui/Main.qml:367
 msgid "Are you sure you want to clear this list?"
 msgstr "An bhfuil tú cinnte gur mian leat an liosta seo a ghlanadh?"
 
-#: src/contents/ui/Main.qml:354
+#: src/contents/ui/Main.qml:376
 msgid "Input Presets"
 msgstr "Réamhshocruithe Ionchurtha"
 
-#: src/contents/ui/Main.qml:369
+#: src/contents/ui/Main.qml:391
 msgid "Output Presets"
 msgstr "Réamhshocruithe Aschurtha"
 
-#: src/contents/ui/Main.qml:400
+#: src/contents/ui/Main.qml:422
 msgid "Active"
 msgstr "Gníomhach"
 
-#: src/contents/ui/Main.qml:411 src/contents/ui/Main.qml:558
+#: src/contents/ui/Main.qml:433 src/contents/ui/Main.qml:580
 #: src/contents/ui/ShortcutsSheet.qml:389
 msgid "Shortcuts"
 msgstr "Aicearraí"
 
-#: src/contents/ui/Main.qml:420 src/contents/ui/Main.qml:566
+#: src/contents/ui/Main.qml:442 src/contents/ui/Main.qml:588
 msgid "Manual"
 msgstr "Lámhleabhar"
 
-#: src/contents/ui/Main.qml:430 src/contents/ui/Main.qml:598
+#: src/contents/ui/Main.qml:452 src/contents/ui/Main.qml:620
 msgid "Quit"
 msgstr "Scoir"
 
-#: src/contents/ui/Main.qml:454
+#: src/contents/ui/Main.qml:476
 msgid "Go back"
 msgstr "Téigh ar ais"
 
-#: src/contents/ui/Main.qml:464 src/contents/ui/PageStreamsEffects.qml:734
+#: src/contents/ui/Main.qml:486 src/contents/ui/PageStreamsEffects.qml:734
 msgid "Effects"
 msgstr "Éifeachtaí"
 
-#: src/contents/ui/Main.qml:465
+#: src/contents/ui/Main.qml:487
 msgid "Turn effects on/off"
 msgstr "Cas éifeachtaí ar/as"
 
-#: src/contents/ui/Main.qml:476
+#: src/contents/ui/Main.qml:498
 msgid "Audio effects are enabled."
 msgstr "Tá éifeachtaí fuaime cumasaithe."
 
-#: src/contents/ui/Main.qml:476
+#: src/contents/ui/Main.qml:498
 msgid "Audio effects are disabled."
 msgstr "Tá éifeachtaí fuaime díchumasaithe."
 
-#: src/contents/ui/Main.qml:532
+#: src/contents/ui/Main.qml:554
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/contents/ui/Main.qml:550
+#: src/contents/ui/Main.qml:572
 msgid "Preferences"
 msgstr "Roghanna"
 
-#: src/contents/ui/Main.qml:590
+#: src/contents/ui/Main.qml:612
 msgid "About Easy Effects"
 msgstr "Maidir le Easy Effects"
 
@@ -2035,10 +2068,6 @@ msgstr "Difríocht ráta"
 msgid "Quick seek"
 msgstr "Cuardach tapa"
 
-#: src/contents/ui/Pitch.qml:299 src/contents/ui/Crusher.qml:118
-msgid "Anti-aliasing"
-msgstr "Frithailiasáil"
-
 #: src/contents/ui/PluginNotAvailable.qml:33
 msgid "Effect Not Available"
 msgstr "Éifeacht Gan Fáil"
@@ -2218,10 +2247,6 @@ msgstr "Cúiteamh moille fuaime"
 msgid "Graph"
 msgstr "Graf"
 
-#: src/contents/ui/PreferencesSheet.qml:374
-msgid "Shape"
-msgstr "Cruth"
-
 #: src/contents/ui/PreferencesSheet.qml:378
 msgid "Bars"
 msgstr "Barraí"
@@ -2346,10 +2371,6 @@ msgstr "Glas"
 #: src/contents/ui/PreferencesSheet.qml:612
 msgid "Green neon"
 msgstr "Neon glas"
-
-#: src/contents/ui/PreferencesSheet.qml:612 src/contents/ui/Crusher.qml:134
-msgid "Mix"
-msgstr "Measc"
 
 #: src/contents/ui/PreferencesSheet.qml:612
 msgid "Orange"
@@ -2654,69 +2675,6 @@ msgstr "Athainmnigh an réamhshocrú seo"
 msgid "Delete this preset"
 msgstr "Scrios an réamhshocrú seo"
 
-#: src/contents/ui/RNNoise.qml:63
-msgid "Imported a new RNNoise model file."
-msgstr "Iompórtáladh comhad samhail RNNoise nua."
-
-#: src/contents/ui/RNNoise.qml:65
-msgid "Failed to import the RNNoise model file."
-msgstr "Theip ar iompórtáil an chomhaid mhúnla RNNoise."
-
-#: src/contents/ui/RNNoise.qml:76 src/contents/ui/RNNoise.qml:87
-#: src/contents/ui/RNNoise.qml:301 src/contents/ui/RNNoise.qml:303
-msgid "Standard RNNoise model"
-msgstr "Múnla caighdeánach RNNoise"
-
-#: src/contents/ui/RNNoise.qml:78
-msgid "Standard RNNoise model loaded."
-msgstr "Luchtaithe samhail chaighdeánach RNNoise."
-
-#: src/contents/ui/RNNoise.qml:83 src/contents/ui/RNNoise.qml:305
-msgid "Using %1 Model"
-msgstr "Ag baint úsáide as Múnla %1"
-
-#: src/contents/ui/RNNoise.qml:85
-msgid "Loaded the %1 RNNoise model."
-msgstr "Luchtaíodh an tsamhail %1 RNNoise."
-
-#: src/contents/ui/RNNoise.qml:89
-msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
-msgstr ""
-"Theip ar an tsamhail %1 a luchtú. Úsáid samhail chaighdeánach RNNoise mar "
-"rogha eile."
-
-#: src/contents/ui/RNNoise.qml:108 src/contents/ui/Speex.qml:117
-msgid "Voice detection"
-msgstr "Braiteadh gutha"
-
-#: src/contents/ui/RNNoise.qml:145
-msgid "Wet level"
-msgstr "Leibhéal fliuch"
-
-#: src/contents/ui/RNNoise.qml:185
-msgid "Use the Standard model"
-msgstr "Úsáid an tsamhail chaighdeánach"
-
-#: src/contents/ui/RNNoise.qml:196
-msgid "User Models"
-msgstr "Samhlacha Úsáideora"
-
-#: src/contents/ui/RNNoise.qml:262
-msgid "Delete this model"
-msgstr "Scrios an tsamhail seo"
-
-#: src/contents/ui/RNNoise.qml:267
-msgid "Removed the %1 RNNoise model."
-msgstr "Baineadh an tsamhail %1 RNNoise."
-
-#: src/contents/ui/RNNoise.qml:269
-msgid "Failed to remove the %1 RNNoise model."
-msgstr "Theip ar bhaint an tsamhail %1 RNNoise."
-
-#: src/contents/ui/RNNoise.qml:338
-msgid "Import model"
-msgstr "Múnla allmhairithe"
-
 #: src/contents/ui/Reverb.qml:66
 msgid "Room size"
 msgstr "Méid an tseomra"
@@ -2796,6 +2754,69 @@ msgstr "Diosca"
 #: src/contents/ui/Reverb.qml:297
 msgid "Large occupied hall"
 msgstr "Halla mór lánúin"
+
+#: src/contents/ui/RNNoise.qml:63
+msgid "Imported a new RNNoise model file."
+msgstr "Iompórtáladh comhad samhail RNNoise nua."
+
+#: src/contents/ui/RNNoise.qml:65
+msgid "Failed to import the RNNoise model file."
+msgstr "Theip ar iompórtáil an chomhaid mhúnla RNNoise."
+
+#: src/contents/ui/RNNoise.qml:76 src/contents/ui/RNNoise.qml:87
+#: src/contents/ui/RNNoise.qml:301 src/contents/ui/RNNoise.qml:303
+msgid "Standard RNNoise model"
+msgstr "Múnla caighdeánach RNNoise"
+
+#: src/contents/ui/RNNoise.qml:78
+msgid "Standard RNNoise model loaded."
+msgstr "Luchtaithe samhail chaighdeánach RNNoise."
+
+#: src/contents/ui/RNNoise.qml:83 src/contents/ui/RNNoise.qml:305
+msgid "Using %1 Model"
+msgstr "Ag baint úsáide as Múnla %1"
+
+#: src/contents/ui/RNNoise.qml:85
+msgid "Loaded the %1 RNNoise model."
+msgstr "Luchtaíodh an tsamhail %1 RNNoise."
+
+#: src/contents/ui/RNNoise.qml:89
+msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
+msgstr ""
+"Theip ar an tsamhail %1 a luchtú. Úsáid samhail chaighdeánach RNNoise mar "
+"rogha eile."
+
+#: src/contents/ui/RNNoise.qml:108 src/contents/ui/Speex.qml:117
+msgid "Voice detection"
+msgstr "Braiteadh gutha"
+
+#: src/contents/ui/RNNoise.qml:145
+msgid "Wet level"
+msgstr "Leibhéal fliuch"
+
+#: src/contents/ui/RNNoise.qml:185
+msgid "Use the Standard model"
+msgstr "Úsáid an tsamhail chaighdeánach"
+
+#: src/contents/ui/RNNoise.qml:196
+msgid "User Models"
+msgstr "Samhlacha Úsáideora"
+
+#: src/contents/ui/RNNoise.qml:262
+msgid "Delete this model"
+msgstr "Scrios an tsamhail seo"
+
+#: src/contents/ui/RNNoise.qml:267
+msgid "Removed the %1 RNNoise model."
+msgstr "Baineadh an tsamhail %1 RNNoise."
+
+#: src/contents/ui/RNNoise.qml:269
+msgid "Failed to remove the %1 RNNoise model."
+msgstr "Theip ar bhaint an tsamhail %1 RNNoise."
+
+#: src/contents/ui/RNNoise.qml:338
+msgid "Import model"
+msgstr "Múnla allmhairithe"
 
 #: src/contents/ui/ShortcutsSheet.qml:66
 msgid "Show help"
@@ -3214,29 +3235,6 @@ msgstr "Cothromóir, Comhbhrúiteoir agus Éifeachtaí Fuaime Eile"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "Éifeachtaí fuaime simplí"
-
-#: src/contents/ui/Crusher.qml:78
-#, fuzzy
-msgid "Linear"
-msgstr "Línte"
-
-#: src/contents/ui/Crusher.qml:78
-msgid "Logarithmic"
-msgstr ""
-
-#: src/contents/ui/Crusher.qml:87
-#, fuzzy
-msgid "Bit Reduction"
-msgstr "Laghdú"
-
-#: src/contents/ui/Crusher.qml:102
-msgid "DC offset"
-msgstr ""
-
-#: src/contents/ui/Crusher.qml:150
-#, fuzzy
-msgid "Sample Reduction"
-msgstr "Laghdú"
 
 #~ msgid "© 2017-2026 EasyEffects Team"
 #~ msgstr "© 2017-2026 Foireann EasyEffects"
