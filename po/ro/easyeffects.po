@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-01-09 12:58-0300\n"
-"PO-Revision-Date: 2026-01-09 09:01+0000\n"
+"PO-Revision-Date: 2026-01-10 05:01+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ro/>\n"
@@ -920,9 +920,8 @@ msgid "Mix"
 msgstr "Mixare"
 
 #: src/contents/ui/Crusher.qml:159
-#, fuzzy
 msgid "Sample Rate"
-msgstr "Reducere eșantion"
+msgstr "Frecvența de eșantionare"
 
 #: src/contents/ui/Crusher.qml:180
 msgid "Low frequency oscillator"
