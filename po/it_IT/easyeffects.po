@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-01-08 13:31-0300\n"
-"PO-Revision-Date: 2026-01-08 08:03+0000\n"
+"PO-Revision-Date: 2026-01-09 15:59+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -893,13 +893,12 @@ msgid "Presets"
 msgstr "Profili"
 
 #: src/contents/ui/Crusher.qml:78
-#, fuzzy
 msgid "Linear"
-msgstr "Linee"
+msgstr "Lineare"
 
 #: src/contents/ui/Crusher.qml:78
 msgid "Logarithmic"
-msgstr ""
+msgstr "Logaritmico"
 
 #: src/contents/ui/Crusher.qml:87
 #, fuzzy
@@ -908,7 +907,7 @@ msgstr "Riduzione"
 
 #: src/contents/ui/Crusher.qml:102
 msgid "DC offset"
-msgstr ""
+msgstr "Offset DC"
 
 #: src/contents/ui/Crusher.qml:118 src/contents/ui/Pitch.qml:299
 msgid "Anti-aliasing"
