@@ -76,13 +76,20 @@ Kirigami.ApplicationWindow {
              * property into the database when hiding the window and restore
              * its value when the window is shown.
              */
-            appWindow.visibility = DbMain.visibility;
+
+            /**
+             * The idea was doing what is described above. But for some reason Qt sometimes shows a warning about
+             * visible conflicting with visibility. And in the worse cases the window may never be shown. It does not
+             * matter how many times we restart EE. So for now letś disable the visibility management.
+             */
+
+            // appWindow.visibility = DbMain.visibility;
 
             DB.Manager.enableAutosave(true);
 
             openMappedPage(DbMain.visiblePage);
         } else {
-            DbMain.visibility = appWindow.visibility;
+            // DbMain.visibility = appWindow.visibility;
 
             DB.Manager.saveAll();
 
@@ -99,7 +106,7 @@ Kirigami.ApplicationWindow {
     }
 
     function onCloseWindow() {
-        DbMain.visibility = appWindow.visibility;
+        // DbMain.visibility = appWindow.visibility;
 
         DB.Manager.saveAll();
 
