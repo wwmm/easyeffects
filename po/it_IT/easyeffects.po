@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-01-08 13:31-0300\n"
-"PO-Revision-Date: 2026-01-09 15:59+0000\n"
+"PO-Revision-Date: 2026-01-10 05:01+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -907,9 +907,8 @@ msgid "Logarithmic"
 msgstr "Logaritmico"
 
 #: src/contents/ui/Crusher.qml:87 src/contents/ui/Crusher.qml:55
-#, fuzzy
 msgid "Bit Reduction"
-msgstr "Riduzione"
+msgstr "Riduzione Bit"
 
 #: src/contents/ui/Crusher.qml:102
 msgid "DC offset"
@@ -926,9 +925,8 @@ msgid "Mix"
 msgstr "Mix"
 
 #: src/contents/ui/Crusher.qml:150
-#, fuzzy
 msgid "Sample Reduction"
-msgstr "Max Riduzione"
+msgstr "Riduzione Campionamento"
 
 #: src/contents/ui/Crusher.qml:165 src/contents/ui/Crusher.qml:180
 msgid "Low frequency oscillator"
@@ -3247,9 +3245,8 @@ msgid "Simple audio effects"
 msgstr "Effetti audio semplici"
 
 #: src/contents/ui/Crusher.qml:159
-#, fuzzy
 msgid "Sample Rate"
-msgstr "Max Riduzione"
+msgstr "Campionamento"
 
 #~ msgid ""
 #~ "Use a copy of the input audio buffer given by the sound server when "
