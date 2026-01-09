@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-01-08 13:31-0300\n"
-"PO-Revision-Date: 2026-01-06 13:01+0000\n"
+"PO-Revision-Date: 2026-01-09 09:01+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hans/>\n"
@@ -886,22 +886,20 @@ msgid "Presets"
 msgstr "预设"
 
 #: src/contents/ui/Crusher.qml:78
-#, fuzzy
 msgid "Linear"
-msgstr "线型"
+msgstr "线性"
 
 #: src/contents/ui/Crusher.qml:78
 msgid "Logarithmic"
-msgstr ""
+msgstr "对数"
 
 #: src/contents/ui/Crusher.qml:87
-#, fuzzy
 msgid "Bit Reduction"
-msgstr "衰减"
+msgstr "位衰减"
 
 #: src/contents/ui/Crusher.qml:102
 msgid "DC offset"
-msgstr ""
+msgstr "DC 偏移"
 
 #: src/contents/ui/Crusher.qml:118 src/contents/ui/Pitch.qml:299
 msgid "Anti-aliasing"
@@ -912,13 +910,12 @@ msgid "Mix"
 msgstr "混合"
 
 #: src/contents/ui/Crusher.qml:150
-#, fuzzy
 msgid "Sample Reduction"
-msgstr "最大衰减"
+msgstr "采样衰减"
 
 #: src/contents/ui/Crusher.qml:165
 msgid "Low frequency oscillator"
-msgstr ""
+msgstr "低频振荡器"
 
 #: src/contents/ui/CrystalizerBand.qml:58
 #: src/contents/ui/EqualizerBandMenu.qml:185
@@ -2912,7 +2909,6 @@ msgid "Global audio effects"
 msgstr "全局音频效果"
 
 #: src/main.cpp:330
-#, fuzzy
 msgid "© 2017-2026 Easy Effects Team"
 msgstr "© 2017–2026 Easy Effects 开发团队"
 
@@ -3019,7 +3015,7 @@ msgstr "交叉反馈"
 
 #: src/tags_plugin_name.cpp:32
 msgid "Crusher"
-msgstr ""
+msgstr "粉碎器"
 
 #: src/tags_plugin_name.cpp:33
 msgid "Crystalizer"

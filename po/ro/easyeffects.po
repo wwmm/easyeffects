@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-01-07 22:29+0000\n"
-"PO-Revision-Date: 2026-01-08 16:32+0000\n"
+"PO-Revision-Date: 2026-01-09 09:01+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ro/>\n"
@@ -3216,27 +3216,24 @@ msgid "Simple audio effects"
 msgstr "Efecte audio simple"
 
 #: src/contents/ui/Crusher.qml:78
-#, fuzzy
 msgid "Linear"
-msgstr "Linii"
+msgstr "Liniar"
 
 #: src/contents/ui/Crusher.qml:78
 msgid "Logarithmic"
-msgstr ""
+msgstr "Logaritmic"
 
 #: src/contents/ui/Crusher.qml:87
-#, fuzzy
 msgid "Bit Reduction"
-msgstr "Reducere"
+msgstr "Reducere biți"
 
 #: src/contents/ui/Crusher.qml:102
 msgid "DC offset"
-msgstr ""
+msgstr "Decalaj DC"
 
 #: src/contents/ui/Crusher.qml:150
-#, fuzzy
 msgid "Sample Reduction"
-msgstr "Reducere"
+msgstr "Reducere eșantion"
 
 #~ msgid "Create a new autoloading preset"
 #~ msgstr "Creează o preconfigurare nouă cu încărcare automată"

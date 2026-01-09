@@ -64,10 +64,20 @@ Kirigami.ApplicationWindow {
 
     onVisibleChanged: {
         if (appWindow.visible) {
+            /*
+             * When the window is reopened, its state is irritatingly lost.
+             * This happens both after restarting the application and when switching its visibility through the tray.
+             * Until this issue is fixed with xx-session-restore-v1/etc, we can use the approach used in the qBittorrent:
+             * save the window properties to a file when hiding it and restore it when showing it.
+             */
+            appWindow.visibility = DbMain.visibility;
+
             DB.Manager.enableAutosave(true);
 
             openMappedPage(DbMain.visiblePage);
         } else {
+            DbMain.visibility = appWindow.visibility;
+
             DB.Manager.saveAll();
 
             pageStack.clear();
