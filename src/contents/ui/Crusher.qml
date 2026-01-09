@@ -52,7 +52,7 @@ Kirigami.ScrollablePage {
 
         Controls.Label {
             Layout.alignment: Qt.AlignHCenter
-            text: i18n("Bit Reduction") // qmllint disable
+            text: i18n("Bit reduction") // qmllint disable
         }
 
         Controls.Slider {
