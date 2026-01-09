@@ -32,6 +32,8 @@ import org.kde.kirigami as Kirigami
 Kirigami.ApplicationWindow {
     id: appWindow
 
+    // We need to set visible to false in order to fix an issue related to
+    // --hide-window option. See #4491.
     visible: false
     width: DbMain.width
     height: DbMain.height
