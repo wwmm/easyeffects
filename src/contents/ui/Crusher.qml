@@ -52,7 +52,7 @@ Kirigami.ScrollablePage {
 
         Controls.Label {
             Layout.alignment: Qt.AlignHCenter
-            text: i18n("Bit Reduction") // qmllint disable
+            text: i18n("Bit reduction") // qmllint disable
         }
 
         Controls.Slider {
@@ -156,7 +156,7 @@ Kirigami.ScrollablePage {
             EeCard {
                 id: cardRate
 
-                title: i18n("Sample Rate") // qmllint disable
+                title: i18n("Sample rate") // qmllint disable
 
                 contentItem: ColumnLayout {
                     EeSpinBox {
