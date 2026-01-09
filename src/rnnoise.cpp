@@ -347,6 +347,15 @@ auto RNNoise::get_model_from_name() -> RNNModel* {
     fclose(model_file);
   }
 
+  /**
+   * We prefer using "rnnoise_model_from_file" because it's more robust than
+   * "rnnoise_model_from_filename". Indeed, when an invalid model is loaded, it
+   * does not crash and automatically switches to the Standard Model.
+   *
+   * Note that from RNNoise v0.1.1 a new binary model format is used, so the old
+   * format may not work even if the file is correctly loaded (the signal does
+   * not change like in a passthrough mode). See issue #4748.
+   */
   if (model_file = fopen(path.c_str(), "rb"); model_file != nullptr) {
     m = rnnoise_model_from_file(model_file);
   }
