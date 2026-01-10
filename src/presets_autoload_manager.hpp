@@ -78,7 +78,6 @@ class AutoloadManager : public QObject {
 
  Q_SIGNALS:
   void loadPresetRequested(const PipelineType& pipeline_type, const QString& preset_name);
-  void loadFallbackPresetRequested(const PipelineType& pipeline_type, const QString& preset_name);
 
  private:
   DirectoryManager& dir_manager;

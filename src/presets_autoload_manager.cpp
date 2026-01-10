@@ -183,7 +183,7 @@ void AutoloadManager::load(const PipelineType& pipeline_type, const QString& dev
       util::debug(
           std::format("Autoload fallback preset {} for device {}", fallback.toStdString(), device_name.toStdString()));
 
-      Q_EMIT loadFallbackPresetRequested(pipeline_type, fallback);
+      Q_EMIT loadPresetRequested(pipeline_type, fallback);
 
       return;
     }

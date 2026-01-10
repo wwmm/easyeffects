@@ -99,7 +99,6 @@ Manager::Manager() : outputListModel(new ListModel(this)), inputListModel(new Li
   prepare_last_used_preset_key(PipelineType::output);
 
   connect(&autoload_manager, &AutoloadManager::loadPresetRequested, this, &Manager::loadLocalPresetFile);
-  connect(&autoload_manager, &AutoloadManager::loadFallbackPresetRequested, this, &Manager::loadLocalPresetFile);
 }
 
 void Manager::initialize_qml_types() {
