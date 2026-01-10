@@ -31,6 +31,10 @@
             <label>Never show our window after the application initialization when running in service mode.</label>
             <default>false</default>
         </entry>
+        <entry name="englishLanguage" type="Bool">
+            <label>Do not translate the user interface and show the application in the original English language.</label>
+            <default>false</default>
+        </entry>
         <entry name="reducePluginsListControls" type="Bool">
             <label>Effect controls in the plugins list are shown inside a context menu</label>
             <default>false</default>
