@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="compressor.html">
+        <link rel="prev" href="crossfeed.html">
       
       
-        <link rel="next" href="crossfeed.html">
+        <link rel="next" href="crystalizer.html">
       
       
         
@@ -23,7 +23,7 @@
     
     
       
-        <title>Convolver - Easy Effects Manual</title>
+        <title>Crusher - Easy Effects Manual</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#convolver" class="md-skip">
+        <a href="#crusher" class="md-skip">
           Skip to content
         </a>
       
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Convolver
+              Crusher
             
           </span>
         </div>
@@ -980,6 +980,62 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="convolver.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Convolver
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="crossfeed.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Crossfeed
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -999,7 +1055,7 @@
   <span class="md-ellipsis">
     
   
-    Convolver
+    Crusher
   
 
     
@@ -1010,14 +1066,14 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="convolver.html" class="md-nav__link md-nav__link--active">
+      <a href="crusher.html" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
     
   
-    Convolver
+    Crusher
   
 
     
@@ -1057,62 +1113,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="crossfeed.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Crossfeed
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="crusher.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Crusher
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -2159,22 +2159,34 @@
   
 
 
-<h1 id="convolver">Convolver</h1>
-<p>The Convolver creates a simulation of an audio environment using a pre-recorded audio sample of the impulse response of the space being modeled. This feature is based on the "convolution": a process through which the sonic characteristics of one signal are used to alter the character of another.</p>
-<p>Easy Effects Convolver offers the opportunity to apply multiple impulse responses by combining them in one file.</p>
-<p><strong>Impulses</strong><br />
-Manage impulse response files. This menu allows to load a specific impulse or add/remove files from the Easy Effects configuration directory.</p>
-<p><strong>Combine</strong><br />
-Select two impulse responses to combine into a single file to be saved under the Easy Effects configuration directory.</p>
-<p><strong>Stereo Width</strong><br />
-Modify the impulse response stereo image width.</p>
-<p><strong>Spectrum</strong><br />
-Visualize the frequency spectrum of the selected channel.</p>
+<h1 id="crusher">Crusher</h1>
+<p>A bitcrusher reduces the resolution or bandwidth of digital audio data. Audio reduced in bit depth sounds more harsh and "digital". 
+In the bitcrusher from Calf Studio Gear used in EasyEffects reduction can be done in a linear or logarithmic way.
+According to the plugin authors the logarithmic way results in a much smoother sound in low volume signals. </p>
+<p><strong>Mode</strong><br />
+- <strong>Linear</strong> - Linear distance between bits.
+- <strong>Logarithmic</strong> - Logarithmic distances between bits. The result is a much more "natural" sounding crusher which doesn't gate low signals. </p>
+<p><strong>Bit reduction</strong><br />
+To do. </p>
+<p><strong>DC offset</strong><br />
+This offset causes different crushing of the lower and the upper half of the signal. </p>
+<p><strong>Anti-aliasing</strong><br />
+Controls the softness of the crushing sounds. </p>
+<p><strong>Mix</strong><br />
+To do. </p>
+<p><strong>Reduction</strong><br />
+To do. </p>
+<p><strong>Low frequency oscillator active</strong><br />
+Enable the low frequency oscillator. </p>
+<p><strong>Low frequency oscillator range</strong><br />
+To do. </p>
+<p><strong>Low frequency oscillator rate</strong><br />
+To do. </p>
 <h2 id="references">References</h2>
 <ul>
-<li><a href="https://en.wikipedia.org/wiki/Reverb_effect">Wikipedia Reverb Effect</a></li>
-<li><a href="https://cmtext.indiana.edu/synthesis/chapter4_convolution.php">Indiana University - Convolution: A Form of Cross-Synthesis</a></li>
-<li><a href="https://designingsound.org/2012/12/29/recording-impulse-responses/">Designing Sound - Recording Impulse Responses</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Bitcrusher">Wikipedia Bit Crusher</a></li>
+<li><a href="https://calf-studio-gear.org">Calf Crusher</a></li>
+<li><a href="https://calf-studio-gear.org/doc/Crusher.html">Calf Crusher Documentation</a></li>
 </ul>
 
 
@@ -2205,7 +2217,7 @@ Visualize the frequency spectrum of the selected channel.</p>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="compressor.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Compressor">
+          <a href="crossfeed.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Crossfeed">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2215,20 +2227,20 @@ Visualize the frequency spectrum of the selected channel.</p>
                 Previous
               </span>
               <div class="md-ellipsis">
-                Compressor
+                Crossfeed
               </div>
             </div>
           </a>
         
         
           
-          <a href="crossfeed.html" class="md-footer__link md-footer__link--next" aria-label="Next: Crossfeed">
+          <a href="crystalizer.html" class="md-footer__link md-footer__link--next" aria-label="Next: Crystalizer">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Crossfeed
+                Crystalizer
               </div>
             </div>
             <div class="md-footer__button md-icon">
