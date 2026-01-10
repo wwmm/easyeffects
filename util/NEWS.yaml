@@ -4,10 +4,13 @@ Date: UNRELEASED_DATE
 
 Description: 
 - Features∶
-- It is now possible to link the output of the output effects pipeline to the input of EasyEffects virtual source device. This allows users to, for example, send the audio being played in their desktops to the people talking to them in a conference room.
+- The Crusher plugin by Calf Studio Gear is now available as a new effect for input and output processing pipelines.
+- It is now possible to link the output of the output effects pipeline to the input of Easy Effects virtual source device. This allows users to, for example, send the audio being played in their desktops to the people talking to them in a conference room.
+- English language can be forced in case the user does not want to translate the labels into the application.
 
 - Bug fixes∶
-- EasyEffects level meters were clamping the displayed value to zero decibel.
+- Easy Effects level meters were clamping the displayed value to zero decibel. Now higher values are correctly shown.
+- Noise Reduction effect is not crashing anymore when an invalid model is loaded.
 
 - Other notes∶
 - 

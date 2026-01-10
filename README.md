@@ -54,6 +54,7 @@ a combination of Qt, QML and KDE/Kirigami frameworks.
 - Compressor
 - Convolver
 - Crossfeed
+- Crusher
 - Crystalizer
 - De-esser
 - Delay
