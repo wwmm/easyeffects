@@ -166,18 +166,24 @@ void AutoloadManager::load(const PipelineType& pipeline_type, const QString& dev
   const auto name = find(pipeline_type, device_name, device_route);
 
   if (name.empty()) {
-    QString fallback;
+    bool use_fallback = pipeline_type == PipelineType::input ? DbMain::inputAutoloadingUsesFallback()
+                                                             : DbMain::outputAutoloadingUsesFallback();
 
-    switch (pipeline_type) {
-      case PipelineType::input: {
-        fallback = DbMain::inputAutoloadingUsesFallback() ? DbMain::inputAutoloadingFallbackPreset() : "";
-        break;
-      }
-      case PipelineType::output: {
-        fallback = DbMain::outputAutoloadingUsesFallback() ? DbMain::outputAutoloadingFallbackPreset() : "";
-        break;
-      }
+    util::debug(
+        std::format("Could not find an autoload profile for the device {} and route {}. And the user did not enable "
+                    "the fallback preset. No autoload will be done.",
+                    device_name.toStdString(), device_route.toStdString()));
+
+    if (!use_fallback) {
+      return;
     }
+
+    util::debug(std::format(
+        "Could not find an autoload profile for the device {} and route {}. We will try to load the fallback preset.",
+        device_name.toStdString(), device_route.toStdString()));
+
+    QString fallback = pipeline_type == PipelineType::input ? DbMain::inputAutoloadingFallbackPreset()
+                                                            : DbMain::outputAutoloadingFallbackPreset();
 
     if (!fallback.isEmpty()) {
       util::debug(
@@ -187,6 +193,10 @@ void AutoloadManager::load(const PipelineType& pipeline_type, const QString& dev
 
       return;
     }
+
+    util::debug(std::format(
+        "The {} fallback preset name is empty. No preset will be autoloaded for the device {} and route {}",
+        pipeline_type == PipelineType::input ? "input" : "output", fallback.toStdString(), device_name.toStdString()));
 
     return;
   }
