@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-01-09 18:11+0000\n"
+"POT-Creation-Date: 2026-01-10 17:50+0000\n"
 "PO-Revision-Date: 2025-12-12 11:00+0000\n"
 "Last-Translator: John Peter Sa <johnppetersa@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -915,7 +915,7 @@ msgstr ""
 msgid "Anti-aliasing"
 msgstr "Anti-Distorção"
 
-#: src/contents/ui/Crusher.qml:141 src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/Crusher.qml:141 src/contents/ui/PreferencesSheet.qml:625
 msgid "Mix"
 msgstr "Mistura"
 
@@ -2344,116 +2344,127 @@ msgstr ""
 "de contexto para uma visualização mais compacta."
 
 #: src/contents/ui/PreferencesSheet.qml:569
-#: src/contents/ui/PreferencesSheet.qml:593
+#: src/contents/ui/PreferencesSheet.qml:606
 msgid "Color scheme"
 msgstr "Esquema de cores"
 
-#: src/contents/ui/PreferencesSheet.qml:582
+#: src/contents/ui/PreferencesSheet.qml:583
+msgid "Force English language"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:584
+msgid ""
+"Do not translate the user interface and show text in English language. "
+"Useful if the translation in the local language is incomplete or "
+"incomprehensible. A restart of the service is required to apply this option."
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:595
 msgid "Graphs"
 msgstr "Gráficos"
 
-#: src/contents/ui/PreferencesSheet.qml:597
+#: src/contents/ui/PreferencesSheet.qml:610
 msgid "Automatic"
 msgstr "Automático"
 
-#: src/contents/ui/PreferencesSheet.qml:597
+#: src/contents/ui/PreferencesSheet.qml:610
 msgid "Light"
 msgstr "Claro"
 
-#: src/contents/ui/PreferencesSheet.qml:597
+#: src/contents/ui/PreferencesSheet.qml:610
 msgid "Dark"
 msgstr "Escuro"
 
-#: src/contents/ui/PreferencesSheet.qml:608
+#: src/contents/ui/PreferencesSheet.qml:621
 msgid "Color theme"
 msgstr "Tema de cores"
 
-#: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:625
 msgid "Green"
 msgstr "Verde"
 
-#: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:625
 msgid "Green neon"
 msgstr "Neon Verde"
 
-#: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:625
 msgid "Orange"
 msgstr "Laranja"
 
-#: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:625
 msgid "Yellow"
 msgstr "Amarelo"
 
-#: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:625
 msgid "Blue"
 msgstr "Azul"
 
-#: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:625
 msgid "Purple"
 msgstr "Roxo"
 
-#: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:625
 msgid "Grey"
 msgstr "Cinza"
 
-#: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:625
 msgid "User"
 msgstr "Usuário"
 
-#: src/contents/ui/PreferencesSheet.qml:620
+#: src/contents/ui/PreferencesSheet.qml:633
 msgctxt "@label"
 msgid "Background"
 msgstr "Fundo"
 
-#: src/contents/ui/PreferencesSheet.qml:629
+#: src/contents/ui/PreferencesSheet.qml:642
 msgctxt "@label"
 msgid "Plot area background"
 msgstr "Fundo da área do terreno"
 
-#: src/contents/ui/PreferencesSheet.qml:638
+#: src/contents/ui/PreferencesSheet.qml:651
 msgctxt "@label"
 msgid "Series colors"
 msgstr "Cores da série"
 
-#: src/contents/ui/PreferencesSheet.qml:647
+#: src/contents/ui/PreferencesSheet.qml:660
 msgctxt "@label"
 msgid "Axis labels text color"
 msgstr "Cor do texto dos rótulos dos eixos"
 
-#: src/contents/ui/PreferencesSheet.qml:656
+#: src/contents/ui/PreferencesSheet.qml:669
 msgctxt "@label"
 msgid "Axis labels background color"
 msgstr "Cor de fundo dos rótulos dos eixos"
 
-#: src/contents/ui/PreferencesSheet.qml:665
+#: src/contents/ui/PreferencesSheet.qml:678
 msgctxt "@label"
 msgid "Border color"
 msgstr "Cor da borda"
 
-#: src/contents/ui/PreferencesSheet.qml:674
+#: src/contents/ui/PreferencesSheet.qml:687
 msgid "Line width"
 msgstr "Largura da linha"
 
-#: src/contents/ui/PreferencesSheet.qml:688
+#: src/contents/ui/PreferencesSheet.qml:701
 msgid "Show grid lines"
 msgstr "Mostrar linhas de grade"
 
-#: src/contents/ui/PreferencesSheet.qml:706
+#: src/contents/ui/PreferencesSheet.qml:719
 msgid "Autoload delay"
 msgstr "Atraso do carregamento automático"
 
-#: src/contents/ui/PreferencesSheet.qml:707
+#: src/contents/ui/PreferencesSheet.qml:720
 msgid ""
 "Delay between receiving a new device route and the call to autoload a preset."
 msgstr ""
 "Atraso entre o recebimento de um novo dispositivo e a invocação de uma pré-"
 "definição de carregamento automático."
 
-#: src/contents/ui/PreferencesSheet.qml:723
+#: src/contents/ui/PreferencesSheet.qml:736
 msgid "Ignore the blocklist from presets"
 msgstr "Ignore a lista de bloqueio das predefinições"
 
-#: src/contents/ui/PreferencesSheet.qml:724
+#: src/contents/ui/PreferencesSheet.qml:737
 msgid ""
 "If enabled, the list of excluded apps set in the loaded preset is ignored "
 "and does not replace the one set by the user."
@@ -2461,28 +2472,28 @@ msgstr ""
 "Se ativada, a lista de aplicativos excluídos definida na predefinição "
 "carregada é ignorada e não substitui a lista definida pelo usuário."
 
-#: src/contents/ui/PreferencesSheet.qml:745
+#: src/contents/ui/PreferencesSheet.qml:758
 msgid "Global shortcuts"
 msgstr "Atalhos globais"
 
-#: src/contents/ui/PreferencesSheet.qml:746
+#: src/contents/ui/PreferencesSheet.qml:759
 msgid "Enables support for XDG global shortcuts."
 msgstr "Habilita o suporte para atalhos globais XDG."
 
-#: src/contents/ui/PreferencesSheet.qml:758
+#: src/contents/ui/PreferencesSheet.qml:771
 msgid "Native window of effects"
 msgstr "Janela Nativa de Efeitos"
 
-#: src/contents/ui/PreferencesSheet.qml:759
+#: src/contents/ui/PreferencesSheet.qml:772
 msgid "Allows the native user interface of effects to be shown/hidden."
 msgstr ""
 "Permite que a interface nativa do usuário com efeitos seja exibida/ocultada."
 
-#: src/contents/ui/PreferencesSheet.qml:771
+#: src/contents/ui/PreferencesSheet.qml:784
 msgid "Update frequency"
 msgstr "Frequência de atualização"
 
-#: src/contents/ui/PreferencesSheet.qml:772
+#: src/contents/ui/PreferencesSheet.qml:785
 msgid "Related to LV2 plugins."
 msgstr "Relacionado aos plugins LV2."
 
@@ -2983,32 +2994,32 @@ msgstr "Base Estéreo"
 msgid "Stereo phase"
 msgstr "Fase Estéreo"
 
-#: src/main.cpp:329
+#: src/main.cpp:333
 #, fuzzy
 msgid "Global audio effects"
 msgstr "Atalhos globais"
 
-#: src/main.cpp:330
+#: src/main.cpp:334
 msgid "© 2017-2026 Easy Effects Team"
 msgstr ""
 
-#: src/main.cpp:332
+#: src/main.cpp:336
 #, fuzzy
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:332
+#: src/main.cpp:336
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Desenvolvedor"
 
-#: src/main.cpp:336
+#: src/main.cpp:340
 #, fuzzy
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "quadros"
 
-#: src/main.cpp:336
+#: src/main.cpp:340
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
@@ -3025,39 +3036,39 @@ msgstr "(Oradores)"
 msgid "Output Level Meter"
 msgstr "Medidor do Nível de Saída"
 
-#: src/presets_manager.cpp:781 src/presets_manager.cpp:788
-#: src/presets_manager.cpp:798 src/presets_manager.cpp:805
-#: src/presets_manager.cpp:815 src/presets_manager.cpp:824
+#: src/presets_manager.cpp:780 src/presets_manager.cpp:787
+#: src/presets_manager.cpp:797 src/presets_manager.cpp:804
+#: src/presets_manager.cpp:814 src/presets_manager.cpp:823
 #, fuzzy
 msgid "Preset not loaded correctly"
 msgstr "A Predefinição Não Foi Carregada Corretamente"
 
-#: src/presets_manager.cpp:781
+#: src/presets_manager.cpp:780
 #, fuzzy
 msgid "Wrong format in excluded apps list"
 msgstr "O Formato Está Errado na Lista dos Aplicativos Excluídos"
 
-#: src/presets_manager.cpp:789
+#: src/presets_manager.cpp:788
 #, fuzzy
 msgid "Generic error while loading excluded apps list"
 msgstr "Ocorreu um Erro Genérico ao Carregar a Lista dos Aplicativos Excluídos"
 
-#: src/presets_manager.cpp:798
+#: src/presets_manager.cpp:797
 #, fuzzy
 msgid "Wrong format in effects list"
 msgstr "O Formato Está Errado na Lista dos Efeitos"
 
-#: src/presets_manager.cpp:805
+#: src/presets_manager.cpp:804
 #, fuzzy
 msgid "Generic error while loading effects list"
 msgstr "Ocorreu um Erro Genérico ao Carregar a Lista dos Efeitos"
 
-#: src/presets_manager.cpp:816
+#: src/presets_manager.cpp:815
 #, fuzzy
 msgid "One or more parameters have a wrong format"
 msgstr "Um ou Mais Parâmetros Estão com o Formato Errado"
 
-#: src/presets_manager.cpp:825
+#: src/presets_manager.cpp:824
 #, fuzzy
 msgid "Generic error while loading the effect"
 msgstr "Ocorreu um Erro Genérico ao Carregar o Efeito"

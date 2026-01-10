@@ -921,7 +921,7 @@ msgid "Anti-aliasing"
 msgstr "Anti-aliasing"
 
 #: src/contents/ui/Crusher.qml:134 src/contents/ui/PreferencesSheet.qml:612
-#: src/contents/ui/Crusher.qml:141
+#: src/contents/ui/Crusher.qml:141 src/contents/ui/PreferencesSheet.qml:625
 msgid "Mix"
 msgstr "Mix"
 
@@ -2372,104 +2372,128 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:569
 #: src/contents/ui/PreferencesSheet.qml:593
+#: src/contents/ui/PreferencesSheet.qml:606
 msgid "Color scheme"
 msgstr "Schema colori"
 
 #: src/contents/ui/PreferencesSheet.qml:582
+#: src/contents/ui/PreferencesSheet.qml:595
 msgid "Graphs"
 msgstr "Grafici"
 
 #: src/contents/ui/PreferencesSheet.qml:597
+#: src/contents/ui/PreferencesSheet.qml:610
 msgid "Automatic"
 msgstr "Automatico"
 
 #: src/contents/ui/PreferencesSheet.qml:597
+#: src/contents/ui/PreferencesSheet.qml:610
 msgid "Light"
 msgstr "Chiaro"
 
 #: src/contents/ui/PreferencesSheet.qml:597
+#: src/contents/ui/PreferencesSheet.qml:610
 msgid "Dark"
 msgstr "Scuro"
 
 #: src/contents/ui/PreferencesSheet.qml:608
+#: src/contents/ui/PreferencesSheet.qml:621
 msgid "Color theme"
 msgstr "Tema colori"
 
 #: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:625
 msgid "Green"
 msgstr "Verde"
 
 #: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:625
 msgid "Green neon"
 msgstr "Verde neon"
 
 #: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:625
 msgid "Orange"
 msgstr "Arancione"
 
 #: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:625
 msgid "Yellow"
 msgstr "Giallo"
 
 #: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:625
 msgid "Blue"
 msgstr "Blu"
 
 #: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:625
 msgid "Purple"
 msgstr "Viola"
 
 #: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:625
 msgid "Grey"
 msgstr "Grigio"
 
 #: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:625
 msgid "User"
 msgstr "Utente"
 
 #: src/contents/ui/PreferencesSheet.qml:620
+#: src/contents/ui/PreferencesSheet.qml:633
 msgctxt "@label"
 msgid "Background"
 msgstr "Sfondo"
 
 #: src/contents/ui/PreferencesSheet.qml:629
+#: src/contents/ui/PreferencesSheet.qml:642
 msgctxt "@label"
 msgid "Plot area background"
 msgstr "Sfondo dell'area del grafico"
 
 #: src/contents/ui/PreferencesSheet.qml:638
+#: src/contents/ui/PreferencesSheet.qml:651
 msgctxt "@label"
 msgid "Series colors"
 msgstr "Serie di colori"
 
 #: src/contents/ui/PreferencesSheet.qml:647
+#: src/contents/ui/PreferencesSheet.qml:660
 msgctxt "@label"
 msgid "Axis labels text color"
 msgstr "Colore delle etichette sulle assi"
 
 #: src/contents/ui/PreferencesSheet.qml:656
+#: src/contents/ui/PreferencesSheet.qml:669
 msgctxt "@label"
 msgid "Axis labels background color"
 msgstr "Sfondo delle etichette sulle assi"
 
 #: src/contents/ui/PreferencesSheet.qml:665
+#: src/contents/ui/PreferencesSheet.qml:678
 msgctxt "@label"
 msgid "Border color"
 msgstr "Colore del bordo"
 
 #: src/contents/ui/PreferencesSheet.qml:674
+#: src/contents/ui/PreferencesSheet.qml:687
 msgid "Line width"
 msgstr "Spessore delle linee"
 
 #: src/contents/ui/PreferencesSheet.qml:688
+#: src/contents/ui/PreferencesSheet.qml:701
 msgid "Show grid lines"
 msgstr "Mostra linee nella griglia"
 
 #: src/contents/ui/PreferencesSheet.qml:706
+#: src/contents/ui/PreferencesSheet.qml:719
 msgid "Autoload delay"
 msgstr "Ritardo del caricamento automatico"
 
 #: src/contents/ui/PreferencesSheet.qml:707
+#: src/contents/ui/PreferencesSheet.qml:720
 msgid ""
 "Delay between receiving a new device route and the call to autoload a preset."
 msgstr ""
@@ -2477,10 +2501,12 @@ msgstr ""
 "chiamata del caricamento automatico del profilo."
 
 #: src/contents/ui/PreferencesSheet.qml:723
+#: src/contents/ui/PreferencesSheet.qml:736
 msgid "Ignore the blocklist from presets"
 msgstr "Ignora le app escluse dai profili"
 
 #: src/contents/ui/PreferencesSheet.qml:724
+#: src/contents/ui/PreferencesSheet.qml:737
 msgid ""
 "If enabled, the list of excluded apps set in the loaded preset is ignored "
 "and does not replace the one set by the user."
@@ -2489,27 +2515,33 @@ msgstr ""
 "ignorata, mentre quella impostata dall'utente continua a rimanere in vigore."
 
 #: src/contents/ui/PreferencesSheet.qml:745
+#: src/contents/ui/PreferencesSheet.qml:758
 msgid "Global shortcuts"
 msgstr "Scorciatoie globali"
 
 #: src/contents/ui/PreferencesSheet.qml:746
+#: src/contents/ui/PreferencesSheet.qml:759
 msgid "Enables support for XDG global shortcuts."
 msgstr "Abilita il supporto alle scorciatoie globali XDG."
 
 #: src/contents/ui/PreferencesSheet.qml:758
+#: src/contents/ui/PreferencesSheet.qml:771
 msgid "Native window of effects"
 msgstr "Mostra interfaccia nativa degli effetti"
 
 #: src/contents/ui/PreferencesSheet.qml:759
+#: src/contents/ui/PreferencesSheet.qml:772
 msgid "Allows the native user interface of effects to be shown/hidden."
 msgstr ""
 "Permette di visualizzare o nascondere le finestre native degli effetti."
 
 #: src/contents/ui/PreferencesSheet.qml:771
+#: src/contents/ui/PreferencesSheet.qml:784
 msgid "Update frequency"
 msgstr "Frequenza di aggiornamento"
 
 #: src/contents/ui/PreferencesSheet.qml:772
+#: src/contents/ui/PreferencesSheet.qml:785
 msgid "Related to LV2 plugins."
 msgstr "Correlato ai plugin LV2."
 
@@ -2980,29 +3012,29 @@ msgstr "Base stereo"
 msgid "Stereo phase"
 msgstr "Fase stereo"
 
-#: src/main.cpp:329
+#: src/main.cpp:329 src/main.cpp:333
 msgid "Global audio effects"
 msgstr "Effetti audio globali"
 
-#: src/main.cpp:330
+#: src/main.cpp:330 src/main.cpp:334
 msgid "© 2017-2026 Easy Effects Team"
 msgstr "© 2017-2026 Il Team di Easy Effects"
 
-#: src/main.cpp:332
+#: src/main.cpp:332 src/main.cpp:336
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:332
+#: src/main.cpp:332 src/main.cpp:336
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Sviluppatore"
 
-#: src/main.cpp:336
+#: src/main.cpp:336 src/main.cpp:340
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Digit@lone1"
 
-#: src/main.cpp:336
+#: src/main.cpp:336 src/main.cpp:340
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "kurmikon@yahoo.com"
@@ -3022,30 +3054,33 @@ msgstr "Misuratore Livello Uscita"
 #: src/presets_manager.cpp:781 src/presets_manager.cpp:788
 #: src/presets_manager.cpp:798 src/presets_manager.cpp:805
 #: src/presets_manager.cpp:815 src/presets_manager.cpp:824
+#: src/presets_manager.cpp:780 src/presets_manager.cpp:787
+#: src/presets_manager.cpp:797 src/presets_manager.cpp:804
+#: src/presets_manager.cpp:814 src/presets_manager.cpp:823
 msgid "Preset not loaded correctly"
 msgstr "Profilo non caricato correttamente"
 
-#: src/presets_manager.cpp:781
+#: src/presets_manager.cpp:781 src/presets_manager.cpp:780
 msgid "Wrong format in excluded apps list"
 msgstr "Formato errato nella lista delle applicazioni escluse"
 
-#: src/presets_manager.cpp:789
+#: src/presets_manager.cpp:789 src/presets_manager.cpp:788
 msgid "Generic error while loading excluded apps list"
 msgstr "Errore generico nel caricamento della lista delle applicazioni escluse"
 
-#: src/presets_manager.cpp:798
+#: src/presets_manager.cpp:798 src/presets_manager.cpp:797
 msgid "Wrong format in effects list"
 msgstr "Formato errato nella lista degli effetti"
 
-#: src/presets_manager.cpp:805
+#: src/presets_manager.cpp:805 src/presets_manager.cpp:804
 msgid "Generic error while loading effects list"
 msgstr "Errore generico nel caricamento della lista degli effetti"
 
-#: src/presets_manager.cpp:816
+#: src/presets_manager.cpp:816 src/presets_manager.cpp:815
 msgid "One or more parameters have a wrong format"
 msgstr "Uno o più parametri hanno un formato errato"
 
-#: src/presets_manager.cpp:825
+#: src/presets_manager.cpp:825 src/presets_manager.cpp:824
 msgid "Generic error while loading the effect"
 msgstr "Errore generico nel caricamento dell'effetto"
 
@@ -3271,6 +3306,17 @@ msgstr "Campionamento"
 #: src/contents/ui/Crusher.qml:55
 msgid "Bit reduction"
 msgstr "Riduzione bit"
+
+#: src/contents/ui/PreferencesSheet.qml:583
+msgid "Force English language"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:584
+msgid ""
+"Do not translate the user interface and show text in English language. "
+"Useful if the translation in the local language is incomplete or "
+"incomprehensible. A restart of the service is required to apply this option."
+msgstr ""
 
 #~ msgid ""
 #~ "Use a copy of the input audio buffer given by the sound server when "

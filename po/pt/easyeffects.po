@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-01-09 18:11+0000\n"
+"POT-Creation-Date: 2026-01-10 17:50+0000\n"
 "PO-Revision-Date: 2025-07-20 18:40+0000\n"
 "Last-Translator: raffyll <raffyl.dev@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/easyeffects/"
@@ -973,7 +973,7 @@ msgstr ""
 msgid "Anti-aliasing"
 msgstr "Anti-Distorção"
 
-#: src/contents/ui/Crusher.qml:141 src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/Crusher.qml:141 src/contents/ui/PreferencesSheet.qml:625
 msgid "Mix"
 msgstr "Mistura"
 
@@ -2534,152 +2534,163 @@ msgid ""
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:569
-#: src/contents/ui/PreferencesSheet.qml:593
+#: src/contents/ui/PreferencesSheet.qml:606
 #, fuzzy
 msgid "Color scheme"
 msgstr "Cor"
 
-#: src/contents/ui/PreferencesSheet.qml:582
+#: src/contents/ui/PreferencesSheet.qml:583
+msgid "Force English language"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:584
+msgid ""
+"Do not translate the user interface and show text in English language. "
+"Useful if the translation in the local language is incomplete or "
+"incomprehensible. A restart of the service is required to apply this option."
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:595
 msgid "Graphs"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:597
+#: src/contents/ui/PreferencesSheet.qml:610
 #, fuzzy
 msgid "Automatic"
 msgstr "Ganho Automático"
 
-#: src/contents/ui/PreferencesSheet.qml:597
+#: src/contents/ui/PreferencesSheet.qml:610
 #, fuzzy
 msgid "Light"
 msgstr "Direita"
 
-#: src/contents/ui/PreferencesSheet.qml:597
+#: src/contents/ui/PreferencesSheet.qml:610
 msgid "Dark"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:608
+#: src/contents/ui/PreferencesSheet.qml:621
 #, fuzzy
 msgid "Color theme"
 msgstr "Cor"
 
-#: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:625
 msgid "Green"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:625
 msgid "Green neon"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:625
 #, fuzzy
 msgid "Orange"
 msgstr "Alcance"
 
-#: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:625
 msgid "Yellow"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:625
 msgid "Blue"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:625
 msgid "Purple"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:625
 msgid "Grey"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:625
 msgid "User"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:620
+#: src/contents/ui/PreferencesSheet.qml:633
 msgctxt "@label"
 msgid "Background"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:629
+#: src/contents/ui/PreferencesSheet.qml:642
 msgctxt "@label"
 msgid "Plot area background"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:638
+#: src/contents/ui/PreferencesSheet.qml:651
 msgctxt "@label"
 msgid "Series colors"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:647
+#: src/contents/ui/PreferencesSheet.qml:660
 #, fuzzy
 msgctxt "@label"
 msgid "Axis labels text color"
 msgstr "Rótulos dos Eixos"
 
-#: src/contents/ui/PreferencesSheet.qml:656
+#: src/contents/ui/PreferencesSheet.qml:669
 msgctxt "@label"
 msgid "Axis labels background color"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:665
+#: src/contents/ui/PreferencesSheet.qml:678
 msgctxt "@label"
 msgid "Border color"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:674
+#: src/contents/ui/PreferencesSheet.qml:687
 #, fuzzy
 msgid "Line width"
 msgstr "Largura da Linha"
 
-#: src/contents/ui/PreferencesSheet.qml:688
+#: src/contents/ui/PreferencesSheet.qml:701
 msgid "Show grid lines"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:706
+#: src/contents/ui/PreferencesSheet.qml:719
 #, fuzzy
 msgid "Autoload delay"
 msgstr "Ganho Automático"
 
-#: src/contents/ui/PreferencesSheet.qml:707
+#: src/contents/ui/PreferencesSheet.qml:720
 msgid ""
 "Delay between receiving a new device route and the call to autoload a preset."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:723
+#: src/contents/ui/PreferencesSheet.qml:736
 msgid "Ignore the blocklist from presets"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:724
+#: src/contents/ui/PreferencesSheet.qml:737
 msgid ""
 "If enabled, the list of excluded apps set in the loaded preset is ignored "
 "and does not replace the one set by the user."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:745
+#: src/contents/ui/PreferencesSheet.qml:758
 #, fuzzy
 msgid "Global shortcuts"
 msgstr "_Atalhos"
 
-#: src/contents/ui/PreferencesSheet.qml:746
+#: src/contents/ui/PreferencesSheet.qml:759
 msgid "Enables support for XDG global shortcuts."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:758
+#: src/contents/ui/PreferencesSheet.qml:771
 #, fuzzy
 msgid "Native window of effects"
 msgstr "Exibir a Janela Nativa"
 
-#: src/contents/ui/PreferencesSheet.qml:759
+#: src/contents/ui/PreferencesSheet.qml:772
 #, fuzzy
 msgid "Allows the native user interface of effects to be shown/hidden."
 msgstr "Permite exibir ou oculta a janela nativa do módulo de extensão"
 
-#: src/contents/ui/PreferencesSheet.qml:771
+#: src/contents/ui/PreferencesSheet.qml:784
 #, fuzzy
 msgid "Update frequency"
 msgstr "Frequência de atualizações"
 
-#: src/contents/ui/PreferencesSheet.qml:772
+#: src/contents/ui/PreferencesSheet.qml:785
 #, fuzzy
 msgid "Related to LV2 plugins."
 msgstr "Relacionado com Plugins LV2"
@@ -3221,31 +3232,31 @@ msgstr "Base Estéreo"
 msgid "Stereo phase"
 msgstr "Fase Estéreo"
 
-#: src/main.cpp:329
+#: src/main.cpp:333
 #, fuzzy
 msgid "Global audio effects"
 msgstr "_Atalhos"
 
-#: src/main.cpp:330
+#: src/main.cpp:334
 msgid "© 2017-2026 Easy Effects Team"
 msgstr ""
 
-#: src/main.cpp:332
+#: src/main.cpp:336
 msgid "Wellington Wallace"
 msgstr ""
 
-#: src/main.cpp:332
+#: src/main.cpp:336
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Modulação"
 
-#: src/main.cpp:336
+#: src/main.cpp:340
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 
-#: src/main.cpp:336
+#: src/main.cpp:340
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
@@ -3262,39 +3273,39 @@ msgstr ""
 msgid "Output Level Meter"
 msgstr "Medidor do Nível de Saída"
 
-#: src/presets_manager.cpp:781 src/presets_manager.cpp:788
-#: src/presets_manager.cpp:798 src/presets_manager.cpp:805
-#: src/presets_manager.cpp:815 src/presets_manager.cpp:824
+#: src/presets_manager.cpp:780 src/presets_manager.cpp:787
+#: src/presets_manager.cpp:797 src/presets_manager.cpp:804
+#: src/presets_manager.cpp:814 src/presets_manager.cpp:823
 #, fuzzy
 msgid "Preset not loaded correctly"
 msgstr "Predefinição não carregada corretamente"
 
-#: src/presets_manager.cpp:781
+#: src/presets_manager.cpp:780
 #, fuzzy
 msgid "Wrong format in excluded apps list"
 msgstr "Formato errado na lista de apps excluídas"
 
-#: src/presets_manager.cpp:789
+#: src/presets_manager.cpp:788
 #, fuzzy
 msgid "Generic error while loading excluded apps list"
 msgstr "Erro genérico ao carregar a lista de apps excluídos"
 
-#: src/presets_manager.cpp:798
+#: src/presets_manager.cpp:797
 #, fuzzy
 msgid "Wrong format in effects list"
 msgstr "Formato errado na lista de efeitos"
 
-#: src/presets_manager.cpp:805
+#: src/presets_manager.cpp:804
 #, fuzzy
 msgid "Generic error while loading effects list"
 msgstr "Erro genérico ao carregar a lista de efeitos"
 
-#: src/presets_manager.cpp:816
+#: src/presets_manager.cpp:815
 #, fuzzy
 msgid "One or more parameters have a wrong format"
 msgstr "Um ou mais parâmetros tem um formato errado"
 
-#: src/presets_manager.cpp:825
+#: src/presets_manager.cpp:824
 #, fuzzy
 msgid "Generic error while loading the effect"
 msgstr "Erro genérico ao carregar o efeito"

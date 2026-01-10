@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-01-09 18:11+0000\n"
+"POT-Creation-Date: 2026-01-10 17:50+0000\n"
 "PO-Revision-Date: 2025-11-23 11:51+0000\n"
 "Last-Translator: Suu <suunya21@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
@@ -920,7 +920,7 @@ msgstr ""
 msgid "Anti-aliasing"
 msgstr "アンチエイリアス"
 
-#: src/contents/ui/Crusher.qml:141 src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/Crusher.qml:141 src/contents/ui/PreferencesSheet.qml:625
 msgid "Mix"
 msgstr "ミックス"
 
@@ -2360,145 +2360,156 @@ msgstr ""
 "トメニュー内に移動されます。"
 
 #: src/contents/ui/PreferencesSheet.qml:569
-#: src/contents/ui/PreferencesSheet.qml:593
+#: src/contents/ui/PreferencesSheet.qml:606
 msgid "Color scheme"
 msgstr "カラースキーム"
 
-#: src/contents/ui/PreferencesSheet.qml:582
+#: src/contents/ui/PreferencesSheet.qml:583
+msgid "Force English language"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:584
+msgid ""
+"Do not translate the user interface and show text in English language. "
+"Useful if the translation in the local language is incomplete or "
+"incomprehensible. A restart of the service is required to apply this option."
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:595
 msgid "Graphs"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:597
+#: src/contents/ui/PreferencesSheet.qml:610
 msgid "Automatic"
 msgstr "自動"
 
-#: src/contents/ui/PreferencesSheet.qml:597
+#: src/contents/ui/PreferencesSheet.qml:610
 msgid "Light"
 msgstr "ライト"
 
-#: src/contents/ui/PreferencesSheet.qml:597
+#: src/contents/ui/PreferencesSheet.qml:610
 msgid "Dark"
 msgstr "ダーク"
 
-#: src/contents/ui/PreferencesSheet.qml:608
+#: src/contents/ui/PreferencesSheet.qml:621
 msgid "Color theme"
 msgstr "カラーテーマ"
 
-#: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:625
 msgid "Green"
 msgstr "グリーン"
 
-#: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:625
 msgid "Green neon"
 msgstr "グリーンネオン"
 
-#: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:625
 msgid "Orange"
 msgstr "オレンジ"
 
-#: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:625
 msgid "Yellow"
 msgstr "イエロー"
 
-#: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:625
 msgid "Blue"
 msgstr "ブルー"
 
-#: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:625
 msgid "Purple"
 msgstr "パープル"
 
-#: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:625
 msgid "Grey"
 msgstr "グレー"
 
-#: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:625
 msgid "User"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:620
+#: src/contents/ui/PreferencesSheet.qml:633
 #, fuzzy
 msgctxt "@label"
 msgid "Background"
 msgstr "バックグラウンドサービス"
 
-#: src/contents/ui/PreferencesSheet.qml:629
+#: src/contents/ui/PreferencesSheet.qml:642
 msgctxt "@label"
 msgid "Plot area background"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:638
+#: src/contents/ui/PreferencesSheet.qml:651
 msgctxt "@label"
 msgid "Series colors"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:647
+#: src/contents/ui/PreferencesSheet.qml:660
 #, fuzzy
 msgctxt "@label"
 msgid "Axis labels text color"
 msgstr "軸ラベル"
 
-#: src/contents/ui/PreferencesSheet.qml:656
+#: src/contents/ui/PreferencesSheet.qml:669
 msgctxt "@label"
 msgid "Axis labels background color"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:665
+#: src/contents/ui/PreferencesSheet.qml:678
 msgctxt "@label"
 msgid "Border color"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:674
+#: src/contents/ui/PreferencesSheet.qml:687
 #, fuzzy
 msgid "Line width"
 msgstr "線幅"
 
-#: src/contents/ui/PreferencesSheet.qml:688
+#: src/contents/ui/PreferencesSheet.qml:701
 msgid "Show grid lines"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:706
+#: src/contents/ui/PreferencesSheet.qml:719
 msgid "Autoload delay"
 msgstr "自動読み込み遅延"
 
-#: src/contents/ui/PreferencesSheet.qml:707
+#: src/contents/ui/PreferencesSheet.qml:720
 msgid ""
 "Delay between receiving a new device route and the call to autoload a preset."
 msgstr ""
 "新しいデバイスルートを受信してからプリセットを自動読み込みするまでの遅延。"
 
-#: src/contents/ui/PreferencesSheet.qml:723
+#: src/contents/ui/PreferencesSheet.qml:736
 #, fuzzy
 msgid "Ignore the blocklist from presets"
 msgstr "ブロックリストを無視"
 
-#: src/contents/ui/PreferencesSheet.qml:724
+#: src/contents/ui/PreferencesSheet.qml:737
 msgid ""
 "If enabled, the list of excluded apps set in the loaded preset is ignored "
 "and does not replace the one set by the user."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:745
+#: src/contents/ui/PreferencesSheet.qml:758
 msgid "Global shortcuts"
 msgstr "グローバルショートカット"
 
-#: src/contents/ui/PreferencesSheet.qml:746
+#: src/contents/ui/PreferencesSheet.qml:759
 msgid "Enables support for XDG global shortcuts."
 msgstr "XDG グローバルショートカットのサポートを有効にします。"
 
-#: src/contents/ui/PreferencesSheet.qml:758
+#: src/contents/ui/PreferencesSheet.qml:771
 msgid "Native window of effects"
 msgstr "エフェクトのネイティブウィンドウ"
 
-#: src/contents/ui/PreferencesSheet.qml:759
+#: src/contents/ui/PreferencesSheet.qml:772
 msgid "Allows the native user interface of effects to be shown/hidden."
 msgstr "エフェクトのネイティブウィンドウの表示/非表示を許可します。"
 
-#: src/contents/ui/PreferencesSheet.qml:771
+#: src/contents/ui/PreferencesSheet.qml:784
 msgid "Update frequency"
 msgstr "更新頻度"
 
-#: src/contents/ui/PreferencesSheet.qml:772
+#: src/contents/ui/PreferencesSheet.qml:785
 msgid "Related to LV2 plugins."
 msgstr "LV2 プラグインに影響します。"
 
@@ -2970,30 +2981,30 @@ msgstr "ステレオベース"
 msgid "Stereo phase"
 msgstr "ステレオ位相"
 
-#: src/main.cpp:329
+#: src/main.cpp:333
 msgid "Global audio effects"
 msgstr "グローバルオーディオエフェクト"
 
-#: src/main.cpp:330
+#: src/main.cpp:334
 #, fuzzy
 msgid "© 2017-2026 Easy Effects Team"
 msgstr "© 2017-2025 EasyEffects Team"
 
-#: src/main.cpp:332
+#: src/main.cpp:336
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:332
+#: src/main.cpp:336
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "開発者"
 
-#: src/main.cpp:336
+#: src/main.cpp:340
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Suu"
 
-#: src/main.cpp:336
+#: src/main.cpp:340
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "suunya21@gmail.com"
@@ -3010,33 +3021,33 @@ msgstr "(スピーカー)"
 msgid "Output Level Meter"
 msgstr "出力レベルメーター"
 
-#: src/presets_manager.cpp:781 src/presets_manager.cpp:788
-#: src/presets_manager.cpp:798 src/presets_manager.cpp:805
-#: src/presets_manager.cpp:815 src/presets_manager.cpp:824
+#: src/presets_manager.cpp:780 src/presets_manager.cpp:787
+#: src/presets_manager.cpp:797 src/presets_manager.cpp:804
+#: src/presets_manager.cpp:814 src/presets_manager.cpp:823
 msgid "Preset not loaded correctly"
 msgstr "プリセットが正しく読み込まれていません"
 
-#: src/presets_manager.cpp:781
+#: src/presets_manager.cpp:780
 msgid "Wrong format in excluded apps list"
 msgstr "間違った形式の除外されたアプリ一覧"
 
-#: src/presets_manager.cpp:789
+#: src/presets_manager.cpp:788
 msgid "Generic error while loading excluded apps list"
 msgstr "除外されたアプリ一覧の読み込み中に発生した一般的なエラー"
 
-#: src/presets_manager.cpp:798
+#: src/presets_manager.cpp:797
 msgid "Wrong format in effects list"
 msgstr "エフェクト一覧の間違った形式"
 
-#: src/presets_manager.cpp:805
+#: src/presets_manager.cpp:804
 msgid "Generic error while loading effects list"
 msgstr "エフェクト一覧の読み込み中に発生した一般的なエラー"
 
-#: src/presets_manager.cpp:816
+#: src/presets_manager.cpp:815
 msgid "One or more parameters have a wrong format"
 msgstr "1つ以上のパラメータに間違った形式が設定されています"
 
-#: src/presets_manager.cpp:825
+#: src/presets_manager.cpp:824
 msgid "Generic error while loading the effect"
 msgstr "エフェクトの読み込み中に発生した一般的なエラー"
 

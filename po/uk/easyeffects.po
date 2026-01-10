@@ -913,6 +913,7 @@ msgid "Anti-aliasing"
 msgstr "Згладжування"
 
 #: src/contents/ui/Crusher.qml:141 src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:625
 msgid "Mix"
 msgstr "Змішана"
 
@@ -2339,104 +2340,128 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:569
 #: src/contents/ui/PreferencesSheet.qml:593
+#: src/contents/ui/PreferencesSheet.qml:606
 msgid "Color scheme"
 msgstr "Колірна схема"
 
 #: src/contents/ui/PreferencesSheet.qml:582
+#: src/contents/ui/PreferencesSheet.qml:595
 msgid "Graphs"
 msgstr "Графіки"
 
 #: src/contents/ui/PreferencesSheet.qml:597
+#: src/contents/ui/PreferencesSheet.qml:610
 msgid "Automatic"
 msgstr "Автоматична"
 
 #: src/contents/ui/PreferencesSheet.qml:597
+#: src/contents/ui/PreferencesSheet.qml:610
 msgid "Light"
 msgstr "Світла"
 
 #: src/contents/ui/PreferencesSheet.qml:597
+#: src/contents/ui/PreferencesSheet.qml:610
 msgid "Dark"
 msgstr "Темна"
 
 #: src/contents/ui/PreferencesSheet.qml:608
+#: src/contents/ui/PreferencesSheet.qml:621
 msgid "Color theme"
 msgstr "Колірна тема"
 
 #: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:625
 msgid "Green"
 msgstr "Зелена"
 
 #: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:625
 msgid "Green neon"
 msgstr "Зелений неон"
 
 #: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:625
 msgid "Orange"
 msgstr "Помаранчева"
 
 #: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:625
 msgid "Yellow"
 msgstr "Жовта"
 
 #: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:625
 msgid "Blue"
 msgstr "Синя"
 
 #: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:625
 msgid "Purple"
 msgstr "Фіолетова"
 
 #: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:625
 msgid "Grey"
 msgstr "Сіра"
 
 #: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:625
 msgid "User"
 msgstr "Користувач"
 
 #: src/contents/ui/PreferencesSheet.qml:620
+#: src/contents/ui/PreferencesSheet.qml:633
 msgctxt "@label"
 msgid "Background"
 msgstr "Фон"
 
 #: src/contents/ui/PreferencesSheet.qml:629
+#: src/contents/ui/PreferencesSheet.qml:642
 msgctxt "@label"
 msgid "Plot area background"
 msgstr "Фон площі ділянки"
 
 #: src/contents/ui/PreferencesSheet.qml:638
+#: src/contents/ui/PreferencesSheet.qml:651
 msgctxt "@label"
 msgid "Series colors"
 msgstr "Кольори лінійки"
 
 #: src/contents/ui/PreferencesSheet.qml:647
+#: src/contents/ui/PreferencesSheet.qml:660
 msgctxt "@label"
 msgid "Axis labels text color"
 msgstr "Колір тексту міток осей"
 
 #: src/contents/ui/PreferencesSheet.qml:656
+#: src/contents/ui/PreferencesSheet.qml:669
 msgctxt "@label"
 msgid "Axis labels background color"
 msgstr "Колір фону міток осей"
 
 #: src/contents/ui/PreferencesSheet.qml:665
+#: src/contents/ui/PreferencesSheet.qml:678
 msgctxt "@label"
 msgid "Border color"
 msgstr "Колір контурів"
 
 #: src/contents/ui/PreferencesSheet.qml:674
+#: src/contents/ui/PreferencesSheet.qml:687
 msgid "Line width"
 msgstr "Ширина лінії"
 
 #: src/contents/ui/PreferencesSheet.qml:688
+#: src/contents/ui/PreferencesSheet.qml:701
 msgid "Show grid lines"
 msgstr "Показувати лінії сітки"
 
 #: src/contents/ui/PreferencesSheet.qml:706
+#: src/contents/ui/PreferencesSheet.qml:719
 msgid "Autoload delay"
 msgstr "Затримка автозавантаження"
 
 #: src/contents/ui/PreferencesSheet.qml:707
+#: src/contents/ui/PreferencesSheet.qml:720
 msgid ""
 "Delay between receiving a new device route and the call to autoload a preset."
 msgstr ""
@@ -2444,10 +2469,12 @@ msgstr ""
 "автозавантаження пресету."
 
 #: src/contents/ui/PreferencesSheet.qml:723
+#: src/contents/ui/PreferencesSheet.qml:736
 msgid "Ignore the blocklist from presets"
 msgstr "Ігнорувати список блокування з пресетів"
 
 #: src/contents/ui/PreferencesSheet.qml:724
+#: src/contents/ui/PreferencesSheet.qml:737
 msgid ""
 "If enabled, the list of excluded apps set in the loaded preset is ignored "
 "and does not replace the one set by the user."
@@ -2456,26 +2483,32 @@ msgstr ""
 "пресеті, ігнорується та не замінює той, що встановлений користувачем."
 
 #: src/contents/ui/PreferencesSheet.qml:745
+#: src/contents/ui/PreferencesSheet.qml:758
 msgid "Global shortcuts"
 msgstr "Глобальні скорочення"
 
 #: src/contents/ui/PreferencesSheet.qml:746
+#: src/contents/ui/PreferencesSheet.qml:759
 msgid "Enables support for XDG global shortcuts."
 msgstr "Увімкнути підтримку глобальних скорочень XDG."
 
 #: src/contents/ui/PreferencesSheet.qml:758
+#: src/contents/ui/PreferencesSheet.qml:771
 msgid "Native window of effects"
 msgstr "Рідне вікно ефектів"
 
 #: src/contents/ui/PreferencesSheet.qml:759
+#: src/contents/ui/PreferencesSheet.qml:772
 msgid "Allows the native user interface of effects to be shown/hidden."
 msgstr "Дозволяє показувати/приховувати власний інтерфейс користувача ефектів."
 
 #: src/contents/ui/PreferencesSheet.qml:771
+#: src/contents/ui/PreferencesSheet.qml:784
 msgid "Update frequency"
 msgstr "Частота оновлення"
 
 #: src/contents/ui/PreferencesSheet.qml:772
+#: src/contents/ui/PreferencesSheet.qml:785
 msgid "Related to LV2 plugins."
 msgstr "Стосується плагінів LV2."
 
@@ -2940,29 +2973,29 @@ msgstr "База стерео"
 msgid "Stereo phase"
 msgstr "Фаза стерео"
 
-#: src/main.cpp:329
+#: src/main.cpp:329 src/main.cpp:333
 msgid "Global audio effects"
 msgstr "Глобальні звукові ефекти"
 
-#: src/main.cpp:330
+#: src/main.cpp:330 src/main.cpp:334
 msgid "© 2017-2026 Easy Effects Team"
 msgstr "© 2017-2026 Команда Easy Effects"
 
-#: src/main.cpp:332
+#: src/main.cpp:332 src/main.cpp:336
 msgid "Wellington Wallace"
 msgstr "Веллінгтон Воллес"
 
-#: src/main.cpp:332
+#: src/main.cpp:332 src/main.cpp:336
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Розробник"
 
-#: src/main.cpp:336
+#: src/main.cpp:336 src/main.cpp:340
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Ваші імена"
 
-#: src/main.cpp:336
+#: src/main.cpp:336 src/main.cpp:340
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "Ваші електронні адреси"
@@ -2982,30 +3015,33 @@ msgstr "Індикатор рівня вихідного сигналу"
 #: src/presets_manager.cpp:781 src/presets_manager.cpp:788
 #: src/presets_manager.cpp:798 src/presets_manager.cpp:805
 #: src/presets_manager.cpp:815 src/presets_manager.cpp:824
+#: src/presets_manager.cpp:780 src/presets_manager.cpp:787
+#: src/presets_manager.cpp:797 src/presets_manager.cpp:804
+#: src/presets_manager.cpp:814 src/presets_manager.cpp:823
 msgid "Preset not loaded correctly"
 msgstr "Пресет завантажено неправильно"
 
-#: src/presets_manager.cpp:781
+#: src/presets_manager.cpp:781 src/presets_manager.cpp:780
 msgid "Wrong format in excluded apps list"
 msgstr "Неправильний формат у списку виключених застосунків"
 
-#: src/presets_manager.cpp:789
+#: src/presets_manager.cpp:789 src/presets_manager.cpp:788
 msgid "Generic error while loading excluded apps list"
 msgstr "Загальна помилка під час завантаження списку виключених застосунків"
 
-#: src/presets_manager.cpp:798
+#: src/presets_manager.cpp:798 src/presets_manager.cpp:797
 msgid "Wrong format in effects list"
 msgstr "Неправильний формат у списку ефектів"
 
-#: src/presets_manager.cpp:805
+#: src/presets_manager.cpp:805 src/presets_manager.cpp:804
 msgid "Generic error while loading effects list"
 msgstr "Загальна помилка під час завантаження списку ефектів"
 
-#: src/presets_manager.cpp:816
+#: src/presets_manager.cpp:816 src/presets_manager.cpp:815
 msgid "One or more parameters have a wrong format"
 msgstr "Один або кілька параметрів мають неправильний формат"
 
-#: src/presets_manager.cpp:825
+#: src/presets_manager.cpp:825 src/presets_manager.cpp:824
 msgid "Generic error while loading the effect"
 msgstr "Загальна помилка під час завантаження ефекту"
 
@@ -3227,6 +3263,17 @@ msgstr "Прості звукові ефекти"
 #: src/contents/ui/Crusher.qml:55
 msgid "Bit reduction"
 msgstr "Зменшення Бітів"
+
+#: src/contents/ui/PreferencesSheet.qml:583
+msgid "Force English language"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:584
+msgid ""
+"Do not translate the user interface and show text in English language. "
+"Useful if the translation in the local language is incomplete or "
+"incomprehensible. A restart of the service is required to apply this option."
+msgstr ""
 
 #~ msgid "24 dB/oct"
 #~ msgstr "24 дБ/окт"

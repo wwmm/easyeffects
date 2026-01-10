@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-01-09 18:11+0000\n"
+"POT-Creation-Date: 2026-01-10 17:50+0000\n"
 "PO-Revision-Date: 2025-11-05 00:44+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -972,7 +972,7 @@ msgstr ""
 msgid "Anti-aliasing"
 msgstr "Vyrovnávání obrazu"
 
-#: src/contents/ui/Crusher.qml:141 src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/Crusher.qml:141 src/contents/ui/PreferencesSheet.qml:625
 msgid "Mix"
 msgstr "Mix"
 
@@ -2535,154 +2535,165 @@ msgid ""
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:569
-#: src/contents/ui/PreferencesSheet.qml:593
+#: src/contents/ui/PreferencesSheet.qml:606
 #, fuzzy
 msgid "Color scheme"
 msgstr "Barva"
 
-#: src/contents/ui/PreferencesSheet.qml:582
+#: src/contents/ui/PreferencesSheet.qml:583
+msgid "Force English language"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:584
+msgid ""
+"Do not translate the user interface and show text in English language. "
+"Useful if the translation in the local language is incomplete or "
+"incomprehensible. A restart of the service is required to apply this option."
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:595
 msgid "Graphs"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:597
+#: src/contents/ui/PreferencesSheet.qml:610
 #, fuzzy
 msgid "Automatic"
 msgstr "Autogain"
 
-#: src/contents/ui/PreferencesSheet.qml:597
+#: src/contents/ui/PreferencesSheet.qml:610
 #, fuzzy
 msgid "Light"
 msgstr "Pravý"
 
-#: src/contents/ui/PreferencesSheet.qml:597
+#: src/contents/ui/PreferencesSheet.qml:610
 msgid "Dark"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:608
+#: src/contents/ui/PreferencesSheet.qml:621
 #, fuzzy
 msgid "Color theme"
 msgstr "Barva"
 
-#: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:625
 msgid "Green"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:625
 msgid "Green neon"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:625
 #, fuzzy
 msgid "Orange"
 msgstr "Rozsah"
 
-#: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:625
 msgid "Yellow"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:625
 msgid "Blue"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:625
 msgid "Purple"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:625
 msgid "Grey"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:612
+#: src/contents/ui/PreferencesSheet.qml:625
 msgid "User"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:620
+#: src/contents/ui/PreferencesSheet.qml:633
 msgctxt "@label"
 msgid "Background"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:629
+#: src/contents/ui/PreferencesSheet.qml:642
 msgctxt "@label"
 msgid "Plot area background"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:638
+#: src/contents/ui/PreferencesSheet.qml:651
 msgctxt "@label"
 msgid "Series colors"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:647
+#: src/contents/ui/PreferencesSheet.qml:660
 #, fuzzy
 msgctxt "@label"
 msgid "Axis labels text color"
 msgstr "Štítky os"
 
-#: src/contents/ui/PreferencesSheet.qml:656
+#: src/contents/ui/PreferencesSheet.qml:669
 msgctxt "@label"
 msgid "Axis labels background color"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:665
+#: src/contents/ui/PreferencesSheet.qml:678
 #, fuzzy
 msgctxt "@label"
 msgid "Border color"
 msgstr "Okraj"
 
-#: src/contents/ui/PreferencesSheet.qml:674
+#: src/contents/ui/PreferencesSheet.qml:687
 #, fuzzy
 msgid "Line width"
 msgstr "Šířka čáry"
 
-#: src/contents/ui/PreferencesSheet.qml:688
+#: src/contents/ui/PreferencesSheet.qml:701
 msgid "Show grid lines"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:706
+#: src/contents/ui/PreferencesSheet.qml:719
 #, fuzzy
 msgid "Autoload delay"
 msgstr "Autogain"
 
-#: src/contents/ui/PreferencesSheet.qml:707
+#: src/contents/ui/PreferencesSheet.qml:720
 msgid ""
 "Delay between receiving a new device route and the call to autoload a preset."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:723
+#: src/contents/ui/PreferencesSheet.qml:736
 #, fuzzy
 msgid "Ignore the blocklist from presets"
 msgstr "Černá listina"
 
-#: src/contents/ui/PreferencesSheet.qml:724
+#: src/contents/ui/PreferencesSheet.qml:737
 msgid ""
 "If enabled, the list of excluded apps set in the loaded preset is ignored "
 "and does not replace the one set by the user."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:745
+#: src/contents/ui/PreferencesSheet.qml:758
 #, fuzzy
 msgid "Global shortcuts"
 msgstr "_Klávesové zkratky"
 
-#: src/contents/ui/PreferencesSheet.qml:746
+#: src/contents/ui/PreferencesSheet.qml:759
 msgid "Enables support for XDG global shortcuts."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:758
+#: src/contents/ui/PreferencesSheet.qml:771
 #, fuzzy
 msgid "Native window of effects"
 msgstr "Zobrazit nativní okno"
 
-#: src/contents/ui/PreferencesSheet.qml:759
+#: src/contents/ui/PreferencesSheet.qml:772
 #, fuzzy
 msgid "Allows the native user interface of effects to be shown/hidden."
 msgstr "Umožňuje zobrazit/skrýt okno nativního pluginu"
 
-#: src/contents/ui/PreferencesSheet.qml:771
+#: src/contents/ui/PreferencesSheet.qml:784
 #, fuzzy
 msgid "Update frequency"
 msgstr "Frekvence aktualizací"
 
-#: src/contents/ui/PreferencesSheet.qml:772
+#: src/contents/ui/PreferencesSheet.qml:785
 #, fuzzy
 msgid "Related to LV2 plugins."
 msgstr "Související se zásuvnými moduly LV2"
@@ -3221,32 +3232,32 @@ msgstr "Základ sterea"
 msgid "Stereo phase"
 msgstr "Fáze sterea"
 
-#: src/main.cpp:329
+#: src/main.cpp:333
 #, fuzzy
 msgid "Global audio effects"
 msgstr "_Klávesové zkratky"
 
-#: src/main.cpp:330
+#: src/main.cpp:334
 msgid "© 2017-2026 Easy Effects Team"
 msgstr ""
 
-#: src/main.cpp:332
+#: src/main.cpp:336
 #, fuzzy
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:332
+#: src/main.cpp:336
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Obálka"
 
-#: src/main.cpp:336
+#: src/main.cpp:340
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 
-#: src/main.cpp:336
+#: src/main.cpp:340
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
@@ -3263,39 +3274,39 @@ msgstr ""
 msgid "Output Level Meter"
 msgstr "Měřič výstupní úrovně"
 
-#: src/presets_manager.cpp:781 src/presets_manager.cpp:788
-#: src/presets_manager.cpp:798 src/presets_manager.cpp:805
-#: src/presets_manager.cpp:815 src/presets_manager.cpp:824
+#: src/presets_manager.cpp:780 src/presets_manager.cpp:787
+#: src/presets_manager.cpp:797 src/presets_manager.cpp:804
+#: src/presets_manager.cpp:814 src/presets_manager.cpp:823
 #, fuzzy
 msgid "Preset not loaded correctly"
 msgstr "Předvolba není načtena správně"
 
-#: src/presets_manager.cpp:781
+#: src/presets_manager.cpp:780
 #, fuzzy
 msgid "Wrong format in excluded apps list"
 msgstr "Nesprávný formát v seznamu vyloučených aplikací"
 
-#: src/presets_manager.cpp:789
+#: src/presets_manager.cpp:788
 #, fuzzy
 msgid "Generic error while loading excluded apps list"
 msgstr "Obecná chyba při načítání seznamu vyloučených aplikací"
 
-#: src/presets_manager.cpp:798
+#: src/presets_manager.cpp:797
 #, fuzzy
 msgid "Wrong format in effects list"
 msgstr "Chybný formát v seznamu efektů"
 
-#: src/presets_manager.cpp:805
+#: src/presets_manager.cpp:804
 #, fuzzy
 msgid "Generic error while loading effects list"
 msgstr "Obecná chyba při načítání seznamu efektů"
 
-#: src/presets_manager.cpp:816
+#: src/presets_manager.cpp:815
 #, fuzzy
 msgid "One or more parameters have a wrong format"
 msgstr "Jeden nebo více parametrů má nesprávný formát"
 
-#: src/presets_manager.cpp:825
+#: src/presets_manager.cpp:824
 #, fuzzy
 msgid "Generic error while loading the effect"
 msgstr "Obecná chyba při načítání efektu"
