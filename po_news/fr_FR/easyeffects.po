@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-28 14:40+0000\n"
-"PO-Revision-Date: 2025-12-29 09:00+0000\n"
+"PO-Revision-Date: 2026-01-10 14:01+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/fr/>\n"
@@ -1431,7 +1431,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:506
 msgid "The echo canceller sampling rate is now properly set."
 msgstr ""
-"Le taux d’échantillonnage de l’annulateur d’écho est maintenant correctement "
+"La taux d’échantillonnage de l’annulateur d’écho est maintenant correctement "
 "réglé."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:507
