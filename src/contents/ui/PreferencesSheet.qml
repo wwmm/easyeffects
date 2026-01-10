@@ -576,6 +576,19 @@ KirigamiSettings.ConfigurationView {
                         KColorManager.activateScheme(idx);
                     }
                 }
+
+                EeSwitch {
+                    id: englishLanguage
+
+                    label: i18n("Force English language") // qmllint disable
+                    subtitle: i18n("Do not translate the user interface and show text in English language. Useful if the translation in the local language is incomplete or incomprehensible. A restart of the service is required to apply this option.") // qmllint disable
+                    maximumLineCount: -1
+                    isChecked: DbMain.englishLanguage // qmllint disable
+                    onCheckedChanged: {
+                        if (isChecked !== DbMain.englishLanguage)
+                            DbMain.englishLanguage = isChecked;
+                    }
+                }
             }
 
             FormCard.FormHeader {

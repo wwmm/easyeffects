@@ -323,6 +323,10 @@ int main(int argc, char* argv[]) {
 
   SignalHandler signalHandler;
 
+  if (DbMain::englishLanguage()) {
+    KLocalizedString::setLanguages({QStringLiteral("C")});
+  }
+
   KLocalizedString::setApplicationDomain(APPLICATION_DOMAIN);
 
   KAboutData about(QStringLiteral(APPLICATION_DOMAIN), QStringLiteral(APPLICATION_NAME),
