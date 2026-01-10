@@ -295,14 +295,14 @@ msgstr "聆聽"
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:356
 #: src/contents/ui/RNNoise.qml:346 src/contents/ui/Speex.qml:192
-#: src/contents/ui/StereoTools.qml:421
+#: src/contents/ui/StereoTools.qml:421 src/contents/ui/Main.qml:613
 msgid "Reset"
 msgstr "重設"
 
 #: src/contents/ui/BassLoudness.qml:82 src/contents/ui/Compressor.qml:479
 #: src/contents/ui/EeInputOutputGain.qml:143 src/contents/ui/Expander.qml:439
 #: src/contents/ui/Gate.qml:454 src/contents/ui/Main.qml:528
-#: src/contents/ui/StereoTools.qml:267
+#: src/contents/ui/StereoTools.qml:267 src/contents/ui/Main.qml:541
 msgid "Output"
 msgstr "輸出"
 
@@ -881,6 +881,7 @@ msgstr "預設"
 
 #: src/contents/ui/Crossfeed.qml:164 src/contents/ui/Main.qml:502
 #: src/contents/ui/PreferencesSheet.qml:59 src/contents/ui/Reverb.qml:333
+#: src/contents/ui/Main.qml:515
 msgid "Presets"
 msgstr "預設集"
 
@@ -1183,7 +1184,7 @@ msgid "Input and output gain controls with level meters"
 msgstr "使用等級量表的輸入和輸出增益控制"
 
 #: src/contents/ui/EeInputOutputGain.qml:130 src/contents/ui/Main.qml:541
-#: src/contents/ui/StereoTools.qml:58
+#: src/contents/ui/StereoTools.qml:58 src/contents/ui/Main.qml:554
 msgid "Input"
 msgstr "輸入"
 
@@ -1688,80 +1689,87 @@ msgstr "消波範圍"
 msgid "Clipping"
 msgstr "消波"
 
-#: src/contents/ui/Main.qml:271
+#: src/contents/ui/Main.qml:271 src/contents/ui/Main.qml:284
 msgid "Reset Settings?"
 msgstr "重置設定？"
 
-#: src/contents/ui/Main.qml:272
+#: src/contents/ui/Main.qml:272 src/contents/ui/Main.qml:285
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr "確定要重新設定全部 Easy Effects 設定嗎？"
 
 #: src/contents/ui/Main.qml:325 src/contents/ui/Main.qml:343
+#: src/contents/ui/Main.qml:338 src/contents/ui/Main.qml:356
 msgid "Preset Loaded"
 msgstr "預設集已經載入"
 
 #: src/contents/ui/Main.qml:354 src/contents/ui/Main.qml:366
+#: src/contents/ui/Main.qml:367 src/contents/ui/Main.qml:379
 msgid "Clear List"
 msgstr "清除列表"
 
 #: src/contents/ui/Main.qml:355 src/contents/ui/Main.qml:367
+#: src/contents/ui/Main.qml:368 src/contents/ui/Main.qml:380
 msgid "Are you sure you want to clear this list?"
 msgstr "確定要清除此列表？"
 
-#: src/contents/ui/Main.qml:376
+#: src/contents/ui/Main.qml:376 src/contents/ui/Main.qml:389
 msgid "Input Presets"
 msgstr "輸入預設集"
 
-#: src/contents/ui/Main.qml:391
+#: src/contents/ui/Main.qml:391 src/contents/ui/Main.qml:404
 msgid "Output Presets"
 msgstr "輸出預設集"
 
-#: src/contents/ui/Main.qml:422
+#: src/contents/ui/Main.qml:422 src/contents/ui/Main.qml:435
 msgid "Active"
 msgstr "作用"
 
 #: src/contents/ui/Main.qml:433 src/contents/ui/Main.qml:580
-#: src/contents/ui/ShortcutsSheet.qml:389
+#: src/contents/ui/ShortcutsSheet.qml:389 src/contents/ui/Main.qml:446
+#: src/contents/ui/Main.qml:593
 msgid "Shortcuts"
 msgstr "快速鍵"
 
 #: src/contents/ui/Main.qml:442 src/contents/ui/Main.qml:588
+#: src/contents/ui/Main.qml:455 src/contents/ui/Main.qml:601
 msgid "Manual"
 msgstr "手冊"
 
 #: src/contents/ui/Main.qml:452 src/contents/ui/Main.qml:620
+#: src/contents/ui/Main.qml:465 src/contents/ui/Main.qml:633
 msgid "Quit"
 msgstr "退出"
 
-#: src/contents/ui/Main.qml:476
+#: src/contents/ui/Main.qml:476 src/contents/ui/Main.qml:489
 msgid "Go back"
 msgstr "返回"
 
 #: src/contents/ui/Main.qml:486 src/contents/ui/PageStreamsEffects.qml:734
+#: src/contents/ui/Main.qml:499
 msgid "Effects"
 msgstr "音效"
 
-#: src/contents/ui/Main.qml:487
+#: src/contents/ui/Main.qml:487 src/contents/ui/Main.qml:500
 msgid "Turn effects on/off"
 msgstr "將音效開啟/關閉"
 
-#: src/contents/ui/Main.qml:498
+#: src/contents/ui/Main.qml:498 src/contents/ui/Main.qml:511
 msgid "Audio effects are enabled."
 msgstr "音效處理已經啟用。"
 
-#: src/contents/ui/Main.qml:498
+#: src/contents/ui/Main.qml:498 src/contents/ui/Main.qml:511
 msgid "Audio effects are disabled."
 msgstr "音效處理已經停用。"
 
-#: src/contents/ui/Main.qml:554
+#: src/contents/ui/Main.qml:554 src/contents/ui/Main.qml:567
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/contents/ui/Main.qml:572
+#: src/contents/ui/Main.qml:572 src/contents/ui/Main.qml:585
 msgid "Preferences"
 msgstr "偏好設定"
 
-#: src/contents/ui/Main.qml:612
+#: src/contents/ui/Main.qml:612 src/contents/ui/Main.qml:625
 msgid "About Easy Effects"
 msgstr "關於 Easy Effects"
 
@@ -3191,6 +3199,11 @@ msgstr "等化器、壓縮器、及其他音效處理"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "簡易音效處理"
+
+#: src/contents/ui/Crusher.qml:55
+#, fuzzy
+msgid "Bit reduction"
+msgstr "衰減"
 
 #~ msgid "Create a new autoloading preset"
 #~ msgstr "建立新的自動載入預設集"

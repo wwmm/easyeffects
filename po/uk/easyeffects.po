@@ -297,14 +297,14 @@ msgstr "Слухати"
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:356
 #: src/contents/ui/RNNoise.qml:346 src/contents/ui/Speex.qml:192
-#: src/contents/ui/StereoTools.qml:421
+#: src/contents/ui/StereoTools.qml:421 src/contents/ui/Main.qml:613
 msgid "Reset"
 msgstr "Скинути"
 
 #: src/contents/ui/BassLoudness.qml:82 src/contents/ui/Compressor.qml:479
 #: src/contents/ui/EeInputOutputGain.qml:143 src/contents/ui/Expander.qml:439
 #: src/contents/ui/Gate.qml:454 src/contents/ui/Main.qml:528
-#: src/contents/ui/StereoTools.qml:267
+#: src/contents/ui/StereoTools.qml:267 src/contents/ui/Main.qml:541
 msgid "Output"
 msgstr "Вихід"
 
@@ -884,6 +884,7 @@ msgstr "За замовчуванням"
 
 #: src/contents/ui/Crossfeed.qml:164 src/contents/ui/Main.qml:502
 #: src/contents/ui/PreferencesSheet.qml:59 src/contents/ui/Reverb.qml:333
+#: src/contents/ui/Main.qml:515
 msgid "Presets"
 msgstr "Пресети"
 
@@ -1183,7 +1184,7 @@ msgid "Input and output gain controls with level meters"
 msgstr "Регулятори підсилення входу та виходу з індикаторами рівня"
 
 #: src/contents/ui/EeInputOutputGain.qml:130 src/contents/ui/Main.qml:541
-#: src/contents/ui/StereoTools.qml:58
+#: src/contents/ui/StereoTools.qml:58 src/contents/ui/Main.qml:554
 msgid "Input"
 msgstr "Вхід"
 
@@ -1696,80 +1697,87 @@ msgstr "Діапазон відсікання"
 msgid "Clipping"
 msgstr "Відсікання"
 
-#: src/contents/ui/Main.qml:271
+#: src/contents/ui/Main.qml:271 src/contents/ui/Main.qml:284
 msgid "Reset Settings?"
 msgstr "Скинути налаштування?"
 
-#: src/contents/ui/Main.qml:272
+#: src/contents/ui/Main.qml:272 src/contents/ui/Main.qml:285
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr "Ви впевнені, що хочете скинути всі налаштування Easy Effects?"
 
 #: src/contents/ui/Main.qml:325 src/contents/ui/Main.qml:343
+#: src/contents/ui/Main.qml:338 src/contents/ui/Main.qml:356
 msgid "Preset Loaded"
 msgstr "Пресет завантажено"
 
 #: src/contents/ui/Main.qml:354 src/contents/ui/Main.qml:366
+#: src/contents/ui/Main.qml:367 src/contents/ui/Main.qml:379
 msgid "Clear List"
 msgstr "Очистити список"
 
 #: src/contents/ui/Main.qml:355 src/contents/ui/Main.qml:367
+#: src/contents/ui/Main.qml:368 src/contents/ui/Main.qml:380
 msgid "Are you sure you want to clear this list?"
 msgstr "Ви впевнені, що хочете очистити цей список?"
 
-#: src/contents/ui/Main.qml:376
+#: src/contents/ui/Main.qml:376 src/contents/ui/Main.qml:389
 msgid "Input Presets"
 msgstr "Пресети для входу"
 
-#: src/contents/ui/Main.qml:391
+#: src/contents/ui/Main.qml:391 src/contents/ui/Main.qml:404
 msgid "Output Presets"
 msgstr "Пресети для виходу"
 
-#: src/contents/ui/Main.qml:422
+#: src/contents/ui/Main.qml:422 src/contents/ui/Main.qml:435
 msgid "Active"
 msgstr "Активний"
 
 #: src/contents/ui/Main.qml:433 src/contents/ui/Main.qml:580
-#: src/contents/ui/ShortcutsSheet.qml:389
+#: src/contents/ui/ShortcutsSheet.qml:389 src/contents/ui/Main.qml:446
+#: src/contents/ui/Main.qml:593
 msgid "Shortcuts"
 msgstr "Клавіатурні скорочення"
 
 #: src/contents/ui/Main.qml:442 src/contents/ui/Main.qml:588
+#: src/contents/ui/Main.qml:455 src/contents/ui/Main.qml:601
 msgid "Manual"
 msgstr "Довідка"
 
 #: src/contents/ui/Main.qml:452 src/contents/ui/Main.qml:620
+#: src/contents/ui/Main.qml:465 src/contents/ui/Main.qml:633
 msgid "Quit"
 msgstr "Вийти"
 
-#: src/contents/ui/Main.qml:476
+#: src/contents/ui/Main.qml:476 src/contents/ui/Main.qml:489
 msgid "Go back"
 msgstr "Назад"
 
 #: src/contents/ui/Main.qml:486 src/contents/ui/PageStreamsEffects.qml:734
+#: src/contents/ui/Main.qml:499
 msgid "Effects"
 msgstr "Ефекти"
 
-#: src/contents/ui/Main.qml:487
+#: src/contents/ui/Main.qml:487 src/contents/ui/Main.qml:500
 msgid "Turn effects on/off"
 msgstr "Увімкнення/вимкнення ефектів"
 
-#: src/contents/ui/Main.qml:498
+#: src/contents/ui/Main.qml:498 src/contents/ui/Main.qml:511
 msgid "Audio effects are enabled."
 msgstr "Звукові ефекти увімкнені."
 
-#: src/contents/ui/Main.qml:498
+#: src/contents/ui/Main.qml:498 src/contents/ui/Main.qml:511
 msgid "Audio effects are disabled."
 msgstr "Звукові ефекти вимкнені."
 
-#: src/contents/ui/Main.qml:554
+#: src/contents/ui/Main.qml:554 src/contents/ui/Main.qml:567
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/contents/ui/Main.qml:572
+#: src/contents/ui/Main.qml:572 src/contents/ui/Main.qml:585
 msgid "Preferences"
 msgstr "Параметри"
 
-#: src/contents/ui/Main.qml:612
+#: src/contents/ui/Main.qml:612 src/contents/ui/Main.qml:625
 msgid "About Easy Effects"
 msgstr "Про Easy Effects"
 
@@ -3215,6 +3223,11 @@ msgstr "Еквалайзер, компресор та інші звукові е
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "Прості звукові ефекти"
+
+#: src/contents/ui/Crusher.qml:55
+#, fuzzy
+msgid "Bit reduction"
+msgstr "Зменшення бітів"
 
 #~ msgid "24 dB/oct"
 #~ msgstr "24 дБ/окт"

@@ -303,7 +303,7 @@ msgstr "Ascolta"
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:356
 #: src/contents/ui/RNNoise.qml:346 src/contents/ui/Speex.qml:192
 #: src/contents/ui/StereoTools.qml:421 src/contents/ui/Crusher.qml:265
-#: src/contents/ui/Main.qml:600
+#: src/contents/ui/Main.qml:600 src/contents/ui/Main.qml:613
 msgid "Reset"
 msgstr "Reimposta"
 
@@ -311,6 +311,7 @@ msgstr "Reimposta"
 #: src/contents/ui/EeInputOutputGain.qml:143 src/contents/ui/Expander.qml:439
 #: src/contents/ui/Gate.qml:454 src/contents/ui/Main.qml:506
 #: src/contents/ui/StereoTools.qml:267 src/contents/ui/Main.qml:528
+#: src/contents/ui/Main.qml:541
 msgid "Output"
 msgstr "Uscita"
 
@@ -894,15 +895,15 @@ msgstr "Predefinito"
 
 #: src/contents/ui/Crossfeed.qml:164 src/contents/ui/Main.qml:480
 #: src/contents/ui/PreferencesSheet.qml:59 src/contents/ui/Reverb.qml:333
-#: src/contents/ui/Main.qml:502
+#: src/contents/ui/Main.qml:502 src/contents/ui/Main.qml:515
 msgid "Presets"
 msgstr "Profili"
 
-#: src/contents/ui/Crusher.qml:78
+#: src/contents/ui/Crusher.qml:78 src/contents/ui/Crusher.qml:100
 msgid "Linear"
 msgstr "Lineare"
 
-#: src/contents/ui/Crusher.qml:78
+#: src/contents/ui/Crusher.qml:78 src/contents/ui/Crusher.qml:100
 msgid "Logarithmic"
 msgstr "Logaritmico"
 
@@ -910,7 +911,7 @@ msgstr "Logaritmico"
 msgid "Bit Reduction"
 msgstr "Riduzione Bit"
 
-#: src/contents/ui/Crusher.qml:102
+#: src/contents/ui/Crusher.qml:102 src/contents/ui/Crusher.qml:109
 msgid "DC offset"
 msgstr "Offset DC"
 
@@ -1193,6 +1194,7 @@ msgstr "Regolatori del guadagno di input e output con i misuratori di livello"
 
 #: src/contents/ui/EeInputOutputGain.qml:130 src/contents/ui/Main.qml:519
 #: src/contents/ui/StereoTools.qml:58 src/contents/ui/Main.qml:541
+#: src/contents/ui/Main.qml:554
 msgid "Input"
 msgstr "Ingresso"
 
@@ -1706,86 +1708,104 @@ msgid "Clipping"
 msgstr "Clipping"
 
 #: src/contents/ui/Main.qml:249 src/contents/ui/Main.qml:271
+#: src/contents/ui/Main.qml:284
 msgid "Reset Settings?"
 msgstr "Reset delle Impostazioni?"
 
 #: src/contents/ui/Main.qml:250 src/contents/ui/Main.qml:272
+#: src/contents/ui/Main.qml:285
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr "Vuoi davvero reimpostare tutte le opzioni di Easy Effects?"
 
 #: src/contents/ui/Main.qml:303 src/contents/ui/Main.qml:321
 #: src/contents/ui/Main.qml:325 src/contents/ui/Main.qml:343
+#: src/contents/ui/Main.qml:338 src/contents/ui/Main.qml:356
 msgid "Preset Loaded"
 msgstr "Profilo Caricato"
 
 #: src/contents/ui/Main.qml:332 src/contents/ui/Main.qml:344
 #: src/contents/ui/Main.qml:354 src/contents/ui/Main.qml:366
+#: src/contents/ui/Main.qml:367 src/contents/ui/Main.qml:379
 msgid "Clear List"
 msgstr "Svuota Lista"
 
 #: src/contents/ui/Main.qml:333 src/contents/ui/Main.qml:345
 #: src/contents/ui/Main.qml:355 src/contents/ui/Main.qml:367
+#: src/contents/ui/Main.qml:368 src/contents/ui/Main.qml:380
 msgid "Are you sure you want to clear this list?"
 msgstr "Vuoi davvero svuotare questa lista?"
 
 #: src/contents/ui/Main.qml:354 src/contents/ui/Main.qml:376
+#: src/contents/ui/Main.qml:389
 msgid "Input Presets"
 msgstr "Profili di Ingresso"
 
 #: src/contents/ui/Main.qml:369 src/contents/ui/Main.qml:391
+#: src/contents/ui/Main.qml:404
 msgid "Output Presets"
 msgstr "Profili di Uscita"
 
 #: src/contents/ui/Main.qml:400 src/contents/ui/Main.qml:422
+#: src/contents/ui/Main.qml:435
 msgid "Active"
 msgstr "Attivo"
 
 #: src/contents/ui/Main.qml:411 src/contents/ui/Main.qml:558
 #: src/contents/ui/ShortcutsSheet.qml:389 src/contents/ui/Main.qml:433
-#: src/contents/ui/Main.qml:580
+#: src/contents/ui/Main.qml:580 src/contents/ui/Main.qml:446
+#: src/contents/ui/Main.qml:593
 msgid "Shortcuts"
 msgstr "Scorciatoie"
 
 #: src/contents/ui/Main.qml:420 src/contents/ui/Main.qml:566
 #: src/contents/ui/Main.qml:442 src/contents/ui/Main.qml:588
+#: src/contents/ui/Main.qml:455 src/contents/ui/Main.qml:601
 msgid "Manual"
 msgstr "Manuale"
 
 #: src/contents/ui/Main.qml:430 src/contents/ui/Main.qml:598
 #: src/contents/ui/Main.qml:452 src/contents/ui/Main.qml:620
+#: src/contents/ui/Main.qml:465 src/contents/ui/Main.qml:633
 msgid "Quit"
 msgstr "Esci"
 
 #: src/contents/ui/Main.qml:454 src/contents/ui/Main.qml:476
+#: src/contents/ui/Main.qml:489
 msgid "Go back"
 msgstr "Torna indietro"
 
 #: src/contents/ui/Main.qml:464 src/contents/ui/PageStreamsEffects.qml:734
-#: src/contents/ui/Main.qml:486
+#: src/contents/ui/Main.qml:486 src/contents/ui/Main.qml:499
 msgid "Effects"
 msgstr "Effetti"
 
 #: src/contents/ui/Main.qml:465 src/contents/ui/Main.qml:487
+#: src/contents/ui/Main.qml:500
 msgid "Turn effects on/off"
 msgstr "Abilita/disabilita gli effetti"
 
 #: src/contents/ui/Main.qml:476 src/contents/ui/Main.qml:498
+#: src/contents/ui/Main.qml:511
 msgid "Audio effects are enabled."
 msgstr "Gli effetti per l'audio sono abilitati."
 
 #: src/contents/ui/Main.qml:476 src/contents/ui/Main.qml:498
+#: src/contents/ui/Main.qml:511
 msgid "Audio effects are disabled."
 msgstr "Gli effetti per l'audio sono disabilitati."
 
 #: src/contents/ui/Main.qml:532 src/contents/ui/Main.qml:554
+#: src/contents/ui/Main.qml:567
 msgid "PipeWire"
 msgstr "PipeWire"
 
 #: src/contents/ui/Main.qml:550 src/contents/ui/Main.qml:572
+#: src/contents/ui/Main.qml:585
 msgid "Preferences"
 msgstr "Preferenze"
 
 #: src/contents/ui/Main.qml:590 src/contents/ui/Main.qml:612
+#: src/contents/ui/Main.qml:625
 msgid "About Easy Effects"
 msgstr "Info su Easy Effects"
 
@@ -3247,6 +3267,11 @@ msgstr "Effetti audio semplici"
 #: src/contents/ui/Crusher.qml:159
 msgid "Sample Rate"
 msgstr "Campionamento"
+
+#: src/contents/ui/Crusher.qml:55
+#, fuzzy
+msgid "Bit reduction"
+msgstr "Riduzione"
 
 #~ msgid ""
 #~ "Use a copy of the input audio buffer given by the sound server when "

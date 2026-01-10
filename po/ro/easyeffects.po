@@ -298,14 +298,14 @@ msgstr "Ascultă"
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:356
 #: src/contents/ui/RNNoise.qml:346 src/contents/ui/Speex.qml:192
-#: src/contents/ui/StereoTools.qml:421
+#: src/contents/ui/StereoTools.qml:421 src/contents/ui/Main.qml:613
 msgid "Reset"
 msgstr "Restabilește"
 
 #: src/contents/ui/BassLoudness.qml:82 src/contents/ui/Compressor.qml:479
 #: src/contents/ui/EeInputOutputGain.qml:143 src/contents/ui/Expander.qml:439
 #: src/contents/ui/Gate.qml:454 src/contents/ui/Main.qml:528
-#: src/contents/ui/StereoTools.qml:267
+#: src/contents/ui/StereoTools.qml:267 src/contents/ui/Main.qml:541
 msgid "Output"
 msgstr "Ieșire"
 
@@ -888,6 +888,7 @@ msgstr "Implicit"
 
 #: src/contents/ui/Crossfeed.qml:164 src/contents/ui/Main.qml:502
 #: src/contents/ui/PreferencesSheet.qml:59 src/contents/ui/Reverb.qml:333
+#: src/contents/ui/Main.qml:515
 msgid "Presets"
 msgstr "Preconfigurări"
 
@@ -1189,7 +1190,7 @@ msgstr ""
 "(vumetre)"
 
 #: src/contents/ui/EeInputOutputGain.qml:130 src/contents/ui/Main.qml:541
-#: src/contents/ui/StereoTools.qml:58
+#: src/contents/ui/StereoTools.qml:58 src/contents/ui/Main.qml:554
 msgid "Input"
 msgstr "Intrare"
 
@@ -1706,81 +1707,88 @@ msgstr "Interval de decupare"
 msgid "Clipping"
 msgstr "Decupare"
 
-#: src/contents/ui/Main.qml:271
+#: src/contents/ui/Main.qml:271 src/contents/ui/Main.qml:284
 msgid "Reset Settings?"
 msgstr "Reinițializați parametrii?"
 
-#: src/contents/ui/Main.qml:272
+#: src/contents/ui/Main.qml:272 src/contents/ui/Main.qml:285
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr ""
 "Sunteți sigur că doriți să reinițializați toți parametrii Easy Effects?"
 
 #: src/contents/ui/Main.qml:325 src/contents/ui/Main.qml:343
+#: src/contents/ui/Main.qml:338 src/contents/ui/Main.qml:356
 msgid "Preset Loaded"
 msgstr "Preconfigurare încărcată"
 
 #: src/contents/ui/Main.qml:354 src/contents/ui/Main.qml:366
+#: src/contents/ui/Main.qml:367 src/contents/ui/Main.qml:379
 msgid "Clear List"
 msgstr "Golește lista"
 
 #: src/contents/ui/Main.qml:355 src/contents/ui/Main.qml:367
+#: src/contents/ui/Main.qml:368 src/contents/ui/Main.qml:380
 msgid "Are you sure you want to clear this list?"
 msgstr "Sunteți sigur că doriți să goliți această listă?"
 
-#: src/contents/ui/Main.qml:376
+#: src/contents/ui/Main.qml:376 src/contents/ui/Main.qml:389
 msgid "Input Presets"
 msgstr "Preconfigurări de intrare"
 
-#: src/contents/ui/Main.qml:391
+#: src/contents/ui/Main.qml:391 src/contents/ui/Main.qml:404
 msgid "Output Presets"
 msgstr "Preconfigurări de ieșire"
 
-#: src/contents/ui/Main.qml:422
+#: src/contents/ui/Main.qml:422 src/contents/ui/Main.qml:435
 msgid "Active"
 msgstr "Activ"
 
 #: src/contents/ui/Main.qml:433 src/contents/ui/Main.qml:580
-#: src/contents/ui/ShortcutsSheet.qml:389
+#: src/contents/ui/ShortcutsSheet.qml:389 src/contents/ui/Main.qml:446
+#: src/contents/ui/Main.qml:593
 msgid "Shortcuts"
 msgstr "Taste de comenzi rapide"
 
 #: src/contents/ui/Main.qml:442 src/contents/ui/Main.qml:588
+#: src/contents/ui/Main.qml:455 src/contents/ui/Main.qml:601
 msgid "Manual"
 msgstr "Manual"
 
 #: src/contents/ui/Main.qml:452 src/contents/ui/Main.qml:620
+#: src/contents/ui/Main.qml:465 src/contents/ui/Main.qml:633
 msgid "Quit"
 msgstr "Ieșire"
 
-#: src/contents/ui/Main.qml:476
+#: src/contents/ui/Main.qml:476 src/contents/ui/Main.qml:489
 msgid "Go back"
 msgstr "Înapoi"
 
 #: src/contents/ui/Main.qml:486 src/contents/ui/PageStreamsEffects.qml:734
+#: src/contents/ui/Main.qml:499
 msgid "Effects"
 msgstr "Efecte"
 
-#: src/contents/ui/Main.qml:487
+#: src/contents/ui/Main.qml:487 src/contents/ui/Main.qml:500
 msgid "Turn effects on/off"
 msgstr "Activează/dezactivează efectele"
 
-#: src/contents/ui/Main.qml:498
+#: src/contents/ui/Main.qml:498 src/contents/ui/Main.qml:511
 msgid "Audio effects are enabled."
 msgstr "Efectele audio sunt activate."
 
-#: src/contents/ui/Main.qml:498
+#: src/contents/ui/Main.qml:498 src/contents/ui/Main.qml:511
 msgid "Audio effects are disabled."
 msgstr "Efectele audio sunt dezactivate."
 
-#: src/contents/ui/Main.qml:554
+#: src/contents/ui/Main.qml:554 src/contents/ui/Main.qml:567
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/contents/ui/Main.qml:572
+#: src/contents/ui/Main.qml:572 src/contents/ui/Main.qml:585
 msgid "Preferences"
 msgstr "Preferințe"
 
-#: src/contents/ui/Main.qml:612
+#: src/contents/ui/Main.qml:612 src/contents/ui/Main.qml:625
 msgid "About Easy Effects"
 msgstr "Despre Easy Effects"
 
@@ -3232,6 +3240,11 @@ msgstr "Egalizator, compresor și alte efecte audio"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "Efecte audio simple"
+
+#: src/contents/ui/Crusher.qml:55
+#, fuzzy
+msgid "Bit reduction"
+msgstr "Reducere biți"
 
 #~ msgid "Create a new autoloading preset"
 #~ msgstr "Creează o preconfigurare nouă cu încărcare automată"
