@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-01-09 12:58-0300\n"
-"PO-Revision-Date: 2026-01-09 09:01+0000\n"
+"PO-Revision-Date: 2026-01-10 05:01+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -918,9 +918,8 @@ msgid "Mix"
 msgstr "Mix"
 
 #: src/contents/ui/Crusher.qml:159
-#, fuzzy
 msgid "Sample Rate"
-msgstr "Réduction d'Échantillon"
+msgstr "Taux d'Échantillonnage"
 
 #: src/contents/ui/Crusher.qml:180
 msgid "Low frequency oscillator"
@@ -2062,7 +2061,7 @@ msgstr "Différence de tempo"
 
 #: src/contents/ui/Pitch.qml:239
 msgid "Rate difference"
-msgstr "Différence de débit"
+msgstr "Différence de taux"
 
 #: src/contents/ui/Pitch.qml:289
 msgid "Quick seek"
