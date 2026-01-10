@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-01-08 13:31-0300\n"
-"PO-Revision-Date: 2026-01-10 05:01+0000\n"
+"PO-Revision-Date: 2026-01-10 17:50+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -3269,9 +3269,8 @@ msgid "Sample Rate"
 msgstr "Campionamento"
 
 #: src/contents/ui/Crusher.qml:55
-#, fuzzy
 msgid "Bit reduction"
-msgstr "Riduzione"
+msgstr "Riduzione bit"
 
 #~ msgid ""
 #~ "Use a copy of the input audio buffer given by the sound server when "
