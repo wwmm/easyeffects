@@ -66,7 +66,7 @@ Kirigami.ScrollablePage {
             value: crusherPage.pluginDB.bitReduction
             from: crusherPage.pluginDB.getMinValue("bitReduction")
             to: crusherPage.pluginDB.getMaxValue("bitReduction")
-            stepSize: 1
+            stepSize: 0.1
             onValueChanged: () => {
                 if (value !== crusherPage.pluginDB.bitReduction)
                     crusherPage.pluginDB.bitReduction = value;
@@ -75,7 +75,7 @@ Kirigami.ScrollablePage {
 
         Controls.Label {
             Layout.alignment: Qt.AlignHCenter
-            text: bitReduction.value
+            text: Number(bitReduction.value).toLocaleString(Qt.locale(), 'f', 1)
         }
 
         Kirigami.CardsLayout {

@@ -30,11 +30,11 @@
             <label>Mode</label>
             <default>0</default>
         </entry>
-        <entry name="bitReduction" type="Int">
+        <entry name="bitReduction" type="Double">
             <label></label>
-            <min>1</min>
-            <max>16</max>
-            <default>4</default>
+            <min>1.0</min>
+            <max>16.0</max>
+            <default>4.0</default>
         </entry>
         <entry name="morph" type="Double">
             <label></label>
