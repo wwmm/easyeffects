@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-01-10 17:50+0000\n"
-"PO-Revision-Date: 2026-01-10 05:01+0000\n"
+"PO-Revision-Date: 2026-01-11 07:01+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -890,9 +890,8 @@ msgid "Presets"
 msgstr "Préréglages"
 
 #: src/contents/ui/Crusher.qml:55
-#, fuzzy
 msgid "Bit reduction"
-msgstr "Réduction de Bits"
+msgstr "Réduction de bits"
 
 #: src/contents/ui/Crusher.qml:90 src/contents/ui/PreferencesSheet.qml:374
 msgid "Shape"
@@ -2350,7 +2349,7 @@ msgstr "Schéma des couleurs"
 
 #: src/contents/ui/PreferencesSheet.qml:583
 msgid "Force English language"
-msgstr ""
+msgstr "Forcer la langue Anglaise"
 
 #: src/contents/ui/PreferencesSheet.qml:584
 msgid ""
@@ -2358,6 +2357,9 @@ msgid ""
 "Useful if the translation in the local language is incomplete or "
 "incomprehensible. A restart of the service is required to apply this option."
 msgstr ""
+"Ne pas traduire l'interface utilisateur et afficher le texte en Anglais. "
+"Utile si la traduction en langue local est incomplète ou incompréhensible. "
+"Un redémarrage du service est requis pour appliquer cette option."
 
 #: src/contents/ui/PreferencesSheet.qml:595
 msgid "Graphs"

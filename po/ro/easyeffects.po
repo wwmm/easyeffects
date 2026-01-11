@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-01-10 17:50+0000\n"
-"PO-Revision-Date: 2026-01-10 05:01+0000\n"
+"PO-Revision-Date: 2026-01-11 07:01+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ro/>\n"
@@ -892,7 +892,6 @@ msgid "Presets"
 msgstr "Preconfigurări"
 
 #: src/contents/ui/Crusher.qml:55
-#, fuzzy
 msgid "Bit reduction"
 msgstr "Reducere biți"
 
@@ -2349,7 +2348,7 @@ msgstr "Schema de culori"
 
 #: src/contents/ui/PreferencesSheet.qml:583
 msgid "Force English language"
-msgstr ""
+msgstr "Forțează utilizarea interfeței în limba engleză"
 
 #: src/contents/ui/PreferencesSheet.qml:584
 msgid ""
@@ -2357,6 +2356,10 @@ msgid ""
 "Useful if the translation in the local language is incomplete or "
 "incomprehensible. A restart of the service is required to apply this option."
 msgstr ""
+"Nu se traduce interfața utilizatorului și se afișează textul în limba "
+"engleză. Util dacă traducerea în limba maternă este incompletă sau "
+"incomprehensibil. Pentru a aplica această opțiune, este necesară repornirea "
+"serviciului."
 
 #: src/contents/ui/PreferencesSheet.qml:595
 msgid "Graphs"

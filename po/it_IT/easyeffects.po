@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-01-08 13:31-0300\n"
-"PO-Revision-Date: 2026-01-10 17:50+0000\n"
+"PO-Revision-Date: 2026-01-11 07:01+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -3309,7 +3309,7 @@ msgstr "Riduzione bit"
 
 #: src/contents/ui/PreferencesSheet.qml:583
 msgid "Force English language"
-msgstr ""
+msgstr "Forza la lingua inglese"
 
 #: src/contents/ui/PreferencesSheet.qml:584
 msgid ""
@@ -3317,6 +3317,9 @@ msgid ""
 "Useful if the translation in the local language is incomplete or "
 "incomprehensible. A restart of the service is required to apply this option."
 msgstr ""
+"Non traduce l'interfaccia e mostra il testo nella lingua inglese. Utile se "
+"la traduzione nella propria lingua è incompleta o incomprensibile. Il "
+"riavvio del servizio è necessario per l'applicazione di questa impostazione."
 
 #~ msgid ""
 #~ "Use a copy of the input audio buffer given by the sound server when "
