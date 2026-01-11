@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-01-10 17:50+0000\n"
-"PO-Revision-Date: 2026-01-09 15:59+0000\n"
+"PO-Revision-Date: 2026-01-11 15:46+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
 "ga/>\n"
@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :"
-"(n>6 && n<11) ? 3 : 4;\n"
+"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :(n>"
+"6 && n<11) ? 3 : 4;\n"
 "X-Generator: Weblate 5.15.1\n"
 
 #: src/autostart.cpp:92
@@ -891,9 +891,8 @@ msgid "Presets"
 msgstr "Réamhshocruithe"
 
 #: src/contents/ui/Crusher.qml:55
-#, fuzzy
 msgid "Bit reduction"
-msgstr "Laghdú Giotán"
+msgstr "Laghdú giotán"
 
 #: src/contents/ui/Crusher.qml:90 src/contents/ui/PreferencesSheet.qml:374
 msgid "Shape"
@@ -920,9 +919,8 @@ msgid "Mix"
 msgstr "Measc"
 
 #: src/contents/ui/Crusher.qml:159
-#, fuzzy
 msgid "Sample Rate"
-msgstr "Laghdú"
+msgstr "Ráta Samplála"
 
 #: src/contents/ui/Crusher.qml:180
 msgid "Low frequency oscillator"
@@ -2345,7 +2343,7 @@ msgstr "Scéim dathanna"
 
 #: src/contents/ui/PreferencesSheet.qml:583
 msgid "Force English language"
-msgstr ""
+msgstr "Fórsa an Bhéarla"
 
 #: src/contents/ui/PreferencesSheet.qml:584
 msgid ""
@@ -2353,6 +2351,9 @@ msgid ""
 "Useful if the translation in the local language is incomplete or "
 "incomprehensible. A restart of the service is required to apply this option."
 msgstr ""
+"Ná haistrigh an comhéadan úsáideora agus taispeáin téacs i mBéarla. "
+"Úsáideach mura bhfuil an t-aistriúchán sa teanga áitiúil iomlán nó "
+"dothuigthe. Tá gá le hatosú na seirbhíse chun an rogha seo a chur i bhfeidhm."
 
 #: src/contents/ui/PreferencesSheet.qml:595
 msgid "Graphs"
