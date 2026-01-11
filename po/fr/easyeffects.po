@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-01-10 17:50+0000\n"
-"PO-Revision-Date: 2026-01-10 05:01+0000\n"
-"Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
+"PO-Revision-Date: 2026-01-11 07:01+0000\n"
+"Last-Translator: clauteur <abdouhoudhoiy@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
 "Language: fr\n"
@@ -2349,15 +2349,20 @@ msgid "Color scheme"
 msgstr "Schéma des couleurs"
 
 #: src/contents/ui/PreferencesSheet.qml:583
+#, fuzzy
 msgid "Force English language"
-msgstr ""
+msgstr "Forcer la langue anglaise"
 
 #: src/contents/ui/PreferencesSheet.qml:584
+#, fuzzy
 msgid ""
 "Do not translate the user interface and show text in English language. "
 "Useful if the translation in the local language is incomplete or "
 "incomprehensible. A restart of the service is required to apply this option."
 msgstr ""
+"Ne pas traduire l'interface utilisateur et montrer le texte en anglais. "
+"Utile si la traduction en langue local est incomplète ou incompréhensible. "
+"Le redémarrage du service est requis pour appliquer cette option."
 
 #: src/contents/ui/PreferencesSheet.qml:595
 msgid "Graphs"
