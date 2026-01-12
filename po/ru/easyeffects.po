@@ -3283,6 +3283,11 @@ msgstr "Эквалайзер, компрессор и прочие звуков�
 msgid "Simple audio effects"
 msgstr "Простые звуковые эффекты"
 
+#: src/contents/ui/Crystalizer.qml:161
+#, fuzzy
+msgid "Fixed quantum"
+msgstr "Минимальное квантование"
+
 #~ msgid "Bit Reduction"
 #~ msgstr "Понижение разрядности"
 
