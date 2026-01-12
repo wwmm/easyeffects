@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-01-12 14:25-0300\n"
-"PO-Revision-Date: 2026-01-10 05:01+0000\n"
+"PO-Revision-Date: 2026-01-12 23:57+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Weblate 5.15.1\n"
+"X-Generator: Weblate 5.15.2-dev\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -907,9 +907,8 @@ msgid "Presets"
 msgstr "Предустановки"
 
 #: src/contents/ui/Crusher.qml:55
-#, fuzzy
 msgid "Bit reduction"
-msgstr "Ослабление"
+msgstr "Понижение разрядности"
 
 #: src/contents/ui/Crusher.qml:90 src/contents/ui/PreferencesSheet.qml:374
 msgid "Shape"
@@ -972,7 +971,7 @@ msgstr "Адаптивная интенсивность"
 
 #: src/contents/ui/Crystalizer.qml:161
 msgid "Fixed Quantum"
-msgstr ""
+msgstr "Фиксированный квант"
 
 #: src/contents/ui/DeepFilterNet.qml:51
 msgid "Attenuation limit"
@@ -2379,7 +2378,7 @@ msgstr "Цветовая схема"
 
 #: src/contents/ui/PreferencesSheet.qml:583
 msgid "Force English language"
-msgstr ""
+msgstr "Принудительно применить английский язык"
 
 #: src/contents/ui/PreferencesSheet.qml:584
 msgid ""
@@ -2387,6 +2386,9 @@ msgid ""
 "Useful if the translation in the local language is incomplete or "
 "incomprehensible. A restart of the service is required to apply this option."
 msgstr ""
+"Не переводить пользовательский интерфейс и отображать текст на английском "
+"языке. Полезно, если перевод на местный язык неполный или непонятный. Для "
+"применения этой настройки требуется перезапуск службы."
 
 #: src/contents/ui/PreferencesSheet.qml:595
 msgid "Graphs"
