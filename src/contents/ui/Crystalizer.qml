@@ -158,7 +158,7 @@ Kirigami.ScrollablePage {
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Fixed Quantum") // qmllint disable
+                    text: i18n("Fixed quantum") // qmllint disable
                     icon.name: crystalizerPage.pluginDB.useFixedQuantum ? "object-locked-symbolic" : "unlock-symbolic"
                     checkable: true
                     checked: crystalizerPage.pluginDB.useFixedQuantum
