@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-01-11 12:44-0300\n"
-"PO-Revision-Date: 2026-01-09 09:01+0000\n"
+"PO-Revision-Date: 2026-01-12 14:01+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hans/>\n"
@@ -886,7 +886,6 @@ msgid "Presets"
 msgstr "预设"
 
 #: src/contents/ui/Crusher.qml:55
-#, fuzzy
 msgid "Bit reduction"
 msgstr "位衰减"
 
@@ -915,9 +914,8 @@ msgid "Mix"
 msgstr "混合"
 
 #: src/contents/ui/Crusher.qml:159
-#, fuzzy
 msgid "Sample Rate"
-msgstr "采样衰减"
+msgstr "采样率"
 
 #: src/contents/ui/Crusher.qml:180
 msgid "Low frequency oscillator"
@@ -2314,7 +2312,7 @@ msgstr "颜色方案"
 
 #: src/contents/ui/PreferencesSheet.qml:583
 msgid "Force English language"
-msgstr ""
+msgstr "强制使用英文"
 
 #: src/contents/ui/PreferencesSheet.qml:584
 msgid ""
@@ -2322,6 +2320,8 @@ msgid ""
 "Useful if the translation in the local language is incomplete or "
 "incomprehensible. A restart of the service is required to apply this option."
 msgstr ""
+"不翻译用户界面，以英文显示文本。用于本地翻译不完整或不好理解时。重启服务以应"
+"用此选项。"
 
 #: src/contents/ui/PreferencesSheet.qml:595
 msgid "Graphs"

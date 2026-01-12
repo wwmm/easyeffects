@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-01-11 12:44-0300\n"
-"PO-Revision-Date: 2026-01-10 05:01+0000\n"
+"PO-Revision-Date: 2026-01-12 14:01+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hant/>\n"
@@ -2315,7 +2315,7 @@ msgstr "配色方案"
 
 #: src/contents/ui/PreferencesSheet.qml:583
 msgid "Force English language"
-msgstr ""
+msgstr "强制使用英文"
 
 #: src/contents/ui/PreferencesSheet.qml:584
 msgid ""
@@ -2323,6 +2323,8 @@ msgid ""
 "Useful if the translation in the local language is incomplete or "
 "incomprehensible. A restart of the service is required to apply this option."
 msgstr ""
+"使用者介面文字不使用翻譯而以英語顯示。若是當地語言翻譯不太完善或難以理解，則"
+"相當有用。需要重新啟動服務才能套用此選項。"
 
 #: src/contents/ui/PreferencesSheet.qml:595
 msgid "Graphs"
