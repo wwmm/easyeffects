@@ -117,6 +117,19 @@ void Autogain::set_maximum_history(const int& seconds) {
 void Autogain::setup() {
   std::scoped_lock<std::mutex> lock(data_mutex);
 
+  block_time = static_cast<double>(n_samples) / static_cast<double>(rate);
+
+  attack_coeff = std::exp(-block_time / attack_time);
+  release_coeff = std::exp(-block_time / release_time);
+
+  /*
+   * There is no need to reset libebur128 when n_samples change. Only rante chagnes matter for it.
+   */
+
+  if (ebur128_ready && rate == old_rate) {
+    return;
+  }
+
   ebur128_ready = false;
 
   // NOLINTBEGIN(clang-analyzer-cplusplus.NewDeleteLeaks)
@@ -130,11 +143,6 @@ void Autogain::setup() {
         if (2U * static_cast<size_t>(n_samples) != data.size()) {
           data.resize(static_cast<size_t>(n_samples) * 2U);
         }
-
-        block_time = static_cast<double>(n_samples) / static_cast<double>(rate);
-
-        attack_coeff = std::exp(-block_time / attack_time);
-        release_coeff = std::exp(-block_time / release_time);
 
         auto status = true;
 
@@ -376,6 +384,12 @@ float Autogain::getOutputGainLevel() const {
 
 void Autogain::resetHistory() {
   internal_output_gain = 1.0;
+
+  data_mutex.lock();
+
+  ebur128_ready = false;
+
+  data_mutex.unlock();
 
   setup();
 }
