@@ -23,8 +23,11 @@ Resamples the signal to double its sampling rate value and back to the orignal v
 It improves the effects quality but it also increases CPU usage.  
 
 **Oversampling Quality**
-Controls the resampling quality. Higher values require more CPU power.
+Controls the resampling quality. Higher values require more CPU power.  
 
+**Fixed Quantum**
+Forces the plugin to use a fixed audio buffer size to process audio. This helps to avoid noises when the sound server switches latency on the fly.
+But it has the downside of introducing unneded latency in some cases. And increased CPU usage in cases where higher latency could be used.
 ## References
 
 - [Wikipedia Dynamic Range](https://en.wikipedia.org/wiki/Dynamic_range)  

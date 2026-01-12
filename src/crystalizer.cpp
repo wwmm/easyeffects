@@ -107,6 +107,8 @@ Crystalizer::Crystalizer(const std::string& tag, pw::Manager* pipe_manager, Pipe
   BIND_BAND(11);
   BIND_BAND(12);
 
+  connect(settings, &db::Crystalizer::useFixedQuantumChanged, [&]() { setup(); });
+
   connect(settings, &db::Crystalizer::oversamplingChanged, [&]() { setup(); });
 
   connect(settings, &db::Crystalizer::oversamplingQualityChanged, [&]() {
@@ -155,13 +157,13 @@ void Crystalizer::setup() {
 
   std::scoped_lock<std::mutex> lock(data_mutex);
 
+  auto same_blocksize = settings->useFixedQuantum() ? n_samples == default_quantum : n_samples == blocksize;
+
+  if (filters_are_ready && rate == current_rate && same_blocksize) {
+    return;
+  }
+
   filters_are_ready = false;
-  do_oversampling = settings->oversampling();
-
-  block_time = static_cast<float>(n_samples) / static_cast<float>(rate);
-
-  attack_coeff = std::exp(-block_time / attack_time);
-  release_coeff = std::exp(-block_time / release_time);
 
   /**
    * As zita uses fftw we have to be careful when reinitializing it.
@@ -179,7 +181,20 @@ void Crystalizer::setup() {
           return;
         }
 
+        current_rate = rate;
+
+        do_oversampling = settings->oversampling();
+
+        block_time = static_cast<float>(n_samples) / static_cast<float>(rate);
+
+        attack_coeff = std::exp(-block_time / attack_time);
+        release_coeff = std::exp(-block_time / release_time);
+
+        auto blockrate = do_oversampling ? 2 * rate : rate;
+
         blocksize = do_oversampling ? 2 * n_samples : n_samples;
+
+        blocksize = settings->useFixedQuantum() ? default_quantum : blocksize;
 
         n_samples_is_power_of_2 = (blocksize & (blocksize - 1U)) == 0 && blocksize != 0U;
 
@@ -235,7 +250,7 @@ void Crystalizer::setup() {
 
         for (uint n = 0U; n < nbands; n++) {
           filters.at(n)->set_n_samples(blocksize);
-          filters.at(n)->set_rate(do_oversampling ? 2 * rate : rate);
+          filters.at(n)->set_rate(blockrate);
 
           filters.at(n)->set_min_frequency(frequencies.at(n));
           filters.at(n)->set_max_frequency(frequencies.at(n + 1U));

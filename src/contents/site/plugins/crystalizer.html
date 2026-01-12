@@ -2176,7 +2176,10 @@ to audible artifacts. The adaptive scaling removes this is most of the cases.  <
 Resamples the signal to double its sampling rate value and back to the orignal value after the plugins effects are applied.
 It improves the effects quality but it also increases CPU usage.  </p>
 <p><strong>Oversampling Quality</strong>
-Controls the resampling quality. Higher values require more CPU power.</p>
+Controls the resampling quality. Higher values require more CPU power.  </p>
+<p><strong>Fixed Quantum</strong>
+Forces the plugin to use a fixed audio buffer size to process audio. This helps to avoid noises when the sound server switches latency on the fly.
+But it has the downside of introducing unneded latency in some cases. And increased CPU usage in cases where higher latency could be used.</p>
 <h2 id="references">References</h2>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Dynamic_range">Wikipedia Dynamic Range</a>  </li>

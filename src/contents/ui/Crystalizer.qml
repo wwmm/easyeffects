@@ -158,6 +158,16 @@ Kirigami.ScrollablePage {
                     }
                 },
                 Kirigami.Action {
+                    text: i18n("Fixed Quantum") // qmllint disable
+                    icon.name: crystalizerPage.pluginDB.useFixedQuantum ? "object-locked-symbolic" : "unlock-symbolic"
+                    checkable: true
+                    checked: crystalizerPage.pluginDB.useFixedQuantum
+                    onTriggered: {
+                        if (crystalizerPage.pluginDB.useFixedQuantum != checked)
+                            crystalizerPage.pluginDB.useFixedQuantum = checked;
+                    }
+                },
+                Kirigami.Action {
                     displayHint: Kirigami.DisplayHint.KeepVisible
                     text: i18n("Reset") // qmllint disable
                     icon.name: "edit-reset-symbolic"

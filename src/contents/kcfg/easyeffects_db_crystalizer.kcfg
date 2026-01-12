@@ -37,6 +37,10 @@
             <max>10</max>
             <default>5</default>
         </entry>
+        <entry name="useFixedQuantum" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
 
         <entry name="intensityBand0" type="Double">
             <label></label>

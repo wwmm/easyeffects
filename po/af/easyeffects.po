@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-01-11 12:44-0300\n"
+"POT-Creation-Date: 2026-01-12 14:25-0300\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Ebert Matthee <weblate@ecmatthee.com>\n"
 "Language-Team: Afrikaans <https://hosted.weblate.org/projects/easyeffects/"
@@ -285,7 +285,7 @@ msgstr ""
 #: src/contents/ui/BassEnhancer.qml:245 src/contents/ui/BassLoudness.qml:141
 #: src/contents/ui/Compressor.qml:924 src/contents/ui/Convolver.qml:553
 #: src/contents/ui/Crossfeed.qml:173 src/contents/ui/Crusher.qml:265
-#: src/contents/ui/Crystalizer.qml:162 src/contents/ui/Deesser.qml:359
+#: src/contents/ui/Crystalizer.qml:172 src/contents/ui/Deesser.qml:359
 #: src/contents/ui/Delay.qml:425 src/contents/ui/EchoCanceller.qml:183
 #: src/contents/ui/Equalizer.qml:386 src/contents/ui/Exciter.qml:250
 #: src/contents/ui/Expander.qml:874 src/contents/ui/Filter.qml:249
@@ -948,6 +948,10 @@ msgstr ""
 
 #: src/contents/ui/Crystalizer.qml:151
 msgid "Adaptive intensity"
+msgstr ""
+
+#: src/contents/ui/Crystalizer.qml:161
+msgid "Fixed Quantum"
 msgstr ""
 
 #: src/contents/ui/DeepFilterNet.qml:51

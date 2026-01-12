@@ -80,10 +80,12 @@ class Crystalizer : public PluginBase {
   bool is_first_buffer = true;
   bool do_oversampling = true;
 
-  uint blocksize = 512U;
-  uint latency_n_frames = 0U;
-
+  static constexpr uint default_quantum = 1024U;
   static constexpr uint nbands = 13U;
+
+  uint blocksize = 1024U;
+  uint current_rate = 0U;
+  uint latency_n_frames = 0U;
 
   static constexpr float freq_ref = 1000.0F;
 

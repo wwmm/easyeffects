@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-01-11 12:44-0300\n"
+"POT-Creation-Date: 2026-01-12 14:25-0300\n"
 "PO-Revision-Date: 2025-11-05 00:44+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -305,7 +305,7 @@ msgstr "Poslouchat"
 #: src/contents/ui/BassEnhancer.qml:245 src/contents/ui/BassLoudness.qml:141
 #: src/contents/ui/Compressor.qml:924 src/contents/ui/Convolver.qml:553
 #: src/contents/ui/Crossfeed.qml:173 src/contents/ui/Crusher.qml:265
-#: src/contents/ui/Crystalizer.qml:162 src/contents/ui/Deesser.qml:359
+#: src/contents/ui/Crystalizer.qml:172 src/contents/ui/Deesser.qml:359
 #: src/contents/ui/Delay.qml:425 src/contents/ui/EchoCanceller.qml:183
 #: src/contents/ui/Equalizer.qml:386 src/contents/ui/Exciter.qml:250
 #: src/contents/ui/Expander.qml:874 src/contents/ui/Filter.qml:249
@@ -1012,6 +1012,10 @@ msgstr "Převzorkování"
 #, fuzzy
 msgid "Adaptive intensity"
 msgstr "Přizpůsobivý digitální"
+
+#: src/contents/ui/Crystalizer.qml:161
+msgid "Fixed Quantum"
+msgstr ""
 
 #: src/contents/ui/DeepFilterNet.qml:51
 #, fuzzy
