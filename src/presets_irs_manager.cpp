@@ -83,10 +83,21 @@ auto IrsManager::import_irs_file(const std::string& file_path) -> ImportState {
     }
   }
 
-  auto out_path = dir_manager.userIrsDir() / p.filename();
+  auto base_name = p.stem().string();
 
-  if (out_path.extension().string() != DirectoryManager::sofa_ext) {
-    out_path.replace_extension(DirectoryManager::irs_ext);
+  auto extension =
+      (p.extension().string() == DirectoryManager::sofa_ext) ? DirectoryManager::sofa_ext : DirectoryManager::irs_ext;
+
+  auto out_path = dir_manager.userIrsDir() / (base_name + extension);
+
+  // Collision Handling: Check if file exists and increment suffix
+
+  int counter = 1;
+
+  while (std::filesystem::exists(out_path)) {
+    // Generates names like "filename (1).irs", "filename (2).irs", etc.
+
+    out_path = dir_manager.userIrsDir() / std::format("{} ({}){}", base_name, counter++, extension);
   }
 
   std::filesystem::copy_file(p, out_path, std::filesystem::copy_options::overwrite_existing);
