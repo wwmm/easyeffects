@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-01-12 23:56+0000\n"
-"PO-Revision-Date: 2026-01-11 07:01+0000\n"
+"PO-Revision-Date: 2026-01-13 18:19+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ro/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
-"X-Generator: Weblate 5.15.1\n"
+"X-Generator: Weblate 5.15.2-dev\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -940,9 +940,8 @@ msgid "Adaptive intensity"
 msgstr "Intensitate adaptativă"
 
 #: src/contents/ui/Crystalizer.qml:161
-#, fuzzy
 msgid "Fixed quantum"
-msgstr "Cuantum minim"
+msgstr "Cuantum fix"
 
 #: src/contents/ui/CrystalizerBand.qml:58
 #: src/contents/ui/EqualizerBandMenu.qml:185
