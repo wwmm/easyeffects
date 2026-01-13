@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-01-12 23:56+0000\n"
 "PO-Revision-Date: 2026-01-13 18:19+0000\n"
-"Last-Translator: Максим Горпиніч <gorpinicmaksim0@gmail.com>\n"
+"Last-Translator: Володимир <vlzuykov@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
 "Language: uk\n"
@@ -889,7 +889,7 @@ msgstr "Пресети"
 
 #: src/contents/ui/Crusher.qml:55
 msgid "Bit reduction"
-msgstr "Зменшення Бітів"
+msgstr "Зменшення бітності"
 
 #: src/contents/ui/Crusher.qml:90 src/contents/ui/PreferencesSheet.qml:374
 msgid "Shape"
@@ -905,7 +905,7 @@ msgstr "Логарифмічний"
 
 #: src/contents/ui/Crusher.qml:109
 msgid "DC offset"
-msgstr "Зсув постійного струму"
+msgstr "Зсув нульвого рівня"
 
 #: src/contents/ui/Crusher.qml:125 src/contents/ui/Pitch.qml:299
 msgid "Anti-aliasing"
@@ -2348,9 +2348,9 @@ msgid ""
 "Useful if the translation in the local language is incomplete or "
 "incomprehensible. A restart of the service is required to apply this option."
 msgstr ""
-"Не перекладайте інтерфейс користувача та не показуйте текст англійською "
-"мовою. Корисно, якщо переклад на місцеву мову неповний або незрозумілий. Для "
-"застосування цієї опції необхідно перезапустити послугу."
+"Не перекладати інтерфейс користувача та показувати текст англійською мовою. "
+"Корисно, якщо переклад на місцеву мову неповний або незрозумілий. Для "
+"застосування цієї опції необхідно перезапустити службу."
 
 #: src/contents/ui/PreferencesSheet.qml:595
 msgid "Graphs"
@@ -2970,7 +2970,7 @@ msgstr "Розробник"
 #: src/main.cpp:340
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Ваші імена"
+msgstr "reallystate"
 
 #: src/main.cpp:340
 msgctxt "EMAIL OF TRANSLATORS"
@@ -3061,7 +3061,7 @@ msgstr "Кросфід (підмішування)"
 
 #: src/tags_plugin_name.cpp:32
 msgid "Crusher"
-msgstr "Дробарка"
+msgstr "Біткрашер"
 
 #: src/tags_plugin_name.cpp:33
 msgid "Crystalizer"
