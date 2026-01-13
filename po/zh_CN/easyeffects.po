@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-01-12 23:56+0000\n"
-"PO-Revision-Date: 2026-01-12 14:01+0000\n"
+"PO-Revision-Date: 2026-01-13 12:17+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hans/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.15.1\n"
+"X-Generator: Weblate 5.15.2-dev\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -934,9 +934,8 @@ msgid "Adaptive intensity"
 msgstr "自适应强度"
 
 #: src/contents/ui/Crystalizer.qml:161
-#, fuzzy
 msgid "Fixed quantum"
-msgstr "最小音频帧 (Quantum)"
+msgstr "固定音频帧 (Quantum)"
 
 #: src/contents/ui/CrystalizerBand.qml:58
 #: src/contents/ui/EqualizerBandMenu.qml:185
