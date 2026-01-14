@@ -122,6 +122,10 @@ void Autogain::setup() {
   attack_coeff = std::exp(-block_time / attack_time);
   release_coeff = std::exp(-block_time / release_time);
 
+  if (2U * static_cast<size_t>(n_samples) != data.size()) {
+    data.resize(static_cast<size_t>(n_samples) * 2U);
+  }
+
   /*
    * There is no need to reset libebur128 when n_samples change. Only rante chagnes matter for it.
    */
@@ -138,10 +142,6 @@ void Autogain::setup() {
       [this] {
         if (ebur128_ready) {
           return;
-        }
-
-        if (2U * static_cast<size_t>(n_samples) != data.size()) {
-          data.resize(static_cast<size_t>(n_samples) * 2U);
         }
 
         auto status = true;
