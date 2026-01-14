@@ -189,27 +189,23 @@ void DeviceManager::on_device_event_param(void* object,
     }
 
     if (direction == SPA_DIRECTION_INPUT) {
-      if (name != device.input_route_name || available != device.input_route_available) {
-        device.input_route_name = name;
-        device.input_route_description = description;
-        device.input_route_available = available;
+      device.input_route_name = name;
+      device.input_route_description = description;
+      device.input_route_available = available;
 
-        Q_EMIT dd->dm->inputRouteChanged(device);
+      Q_EMIT dd->dm->inputRouteChanged(device);
 
-        util::debug(std::format("new {} input route: {}", device.description.toStdString(),
-                                device.input_route_description.toStdString()));
-      }
+      util::debug(std::format("new {} input route: {}", device.description.toStdString(),
+                              device.input_route_description.toStdString()));
     } else if (direction == SPA_DIRECTION_OUTPUT) {
-      if (name != device.output_route_name || available != device.output_route_available) {
-        device.output_route_name = name;
-        device.output_route_description = description;
-        device.output_route_available = available;
+      device.output_route_name = name;
+      device.output_route_description = description;
+      device.output_route_available = available;
 
-        Q_EMIT dd->dm->outputRouteChanged(device);
+      Q_EMIT dd->dm->outputRouteChanged(device);
 
-        util::debug(std::format("new {} output route: {}", device.description.toStdString(),
-                                device.output_route_description.toStdString()));
-      }
+      util::debug(std::format("new {} output route: {}", device.description.toStdString(),
+                              device.output_route_description.toStdString()));
     }
 
     break;

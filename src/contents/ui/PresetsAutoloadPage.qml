@@ -79,6 +79,8 @@ ColumnLayout {
                     device.deviceRouteDescription = device.updateRouteDescription();
                 }
                 function onRowsRemoved() {
+                    device.currentIndex = 0;
+
                     device.deviceRouteDescription = device.updateRouteDescription();
                 }
                 function onDataChanged() {
