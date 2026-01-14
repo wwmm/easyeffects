@@ -379,11 +379,13 @@ msgid "Remove this app"
 msgstr "Kompresor"
 
 #: src/contents/ui/BlocklistDialog.qml:200
+#: src/contents/ui/BlocklistDialog.qml:212
 #, fuzzy
 msgid "Show excluded apps"
 msgstr "Wykluczone aplikacje"
 
 #: src/contents/ui/BlocklistDialog.qml:201
+#: src/contents/ui/BlocklistDialog.qml:213
 #, fuzzy
 msgid "Show excluded applications in the list of players/recorders"
 msgstr "Pokazuj wykluczone programy"
@@ -3322,27 +3324,27 @@ msgstr "Jeden lub więcej parametrów ma zły format"
 msgid "Generic error while loading the effect"
 msgstr "Błąd ogólny w trakcie ładowania efektu"
 
-#: src/pw_model_nodes.cpp:522
+#: src/pw_model_nodes.cpp:522 src/pw_model_nodes.cpp:500
 msgid "Running"
 msgstr "Działające"
 
-#: src/pw_model_nodes.cpp:524
+#: src/pw_model_nodes.cpp:524 src/pw_model_nodes.cpp:502
 msgid "Suspended"
 msgstr "Zawieszone"
 
-#: src/pw_model_nodes.cpp:526
+#: src/pw_model_nodes.cpp:526 src/pw_model_nodes.cpp:504
 msgid "Idle"
 msgstr "Spoczynek"
 
-#: src/pw_model_nodes.cpp:528
+#: src/pw_model_nodes.cpp:528 src/pw_model_nodes.cpp:506
 msgid "Creating"
 msgstr "Tworzenie"
 
-#: src/pw_model_nodes.cpp:530
+#: src/pw_model_nodes.cpp:530 src/pw_model_nodes.cpp:508
 msgid "Error"
 msgstr "Błąd"
 
-#: src/pw_model_nodes.cpp:532
+#: src/pw_model_nodes.cpp:532 src/pw_model_nodes.cpp:510
 msgid "Unknown"
 msgstr "Nieznane"
 
@@ -3540,6 +3542,16 @@ msgstr "Korektor, kompresor i inne efekty audio"
 
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
+msgstr ""
+
+#: src/contents/ui/BlocklistDialog.qml:200
+msgid "Use media name"
+msgstr ""
+
+#: src/contents/ui/BlocklistDialog.qml:201
+msgid ""
+"Also use a combination of node and media name when deciding if a stream "
+"should be blocked"
 msgstr ""
 
 #~ msgid "24 dB/oct"

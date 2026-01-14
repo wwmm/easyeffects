@@ -24,6 +24,10 @@
             <label>Show Blocked Streams in the Streams Tab</label>
             <default>false</default>
         </entry>
+        <entry name="blocklistUsesMediaName" type="Bool">
+            <label>When enabled the blocklist will also consider the combination of node name and media name when blocking.</label>
+            <default>false</default>
+        </entry>
         <entry name="showPluginsList" type="Bool">
             <label>Show the List of Plugins</label>
             <default>true</default>

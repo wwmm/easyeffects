@@ -399,8 +399,22 @@ void NodeManager::onNodeInfo(void* object, const pw_node_info* info) {
 
   util::spa_dict_get_num(info->props, PW_KEY_DEVICE_ID, nd->nd_info->device_id);
 
-  // sometimes PipeWire destroys the pointer before signal_idle is called,
-  // therefore we make a copy
+  // Now that we know the media name we check the blocklist again
+
+  bool blocklisted_media_name = false;
+
+  const auto blocklist_uses_media_name = (nd->nd_info->media_class == tags::pipewire::media_class::output_stream)
+                                             ? DbStreamOutputs::blocklistUsesMediaName()
+                                             : DbStreamInputs::blocklistUsesMediaName();
+
+  if (blocklist_uses_media_name) {
+    const auto user_blocklist = (nd->nd_info->media_class == tags::pipewire::media_class::output_stream)
+                                    ? DbStreamOutputs::blocklist()
+                                    : DbStreamInputs::blocklist();
+
+    blocklisted_media_name =
+        std::ranges::find(user_blocklist, nd->nd_info->name + ":" + nd->nd_info->media_name) != user_blocklist.end();
+  }
 
   if (nd->nd_info->connected != nm->stream_is_connected(info->id, nd->nd_info->media_class)) {
     nd->nd_info->connected = !nd->nd_info->connected;
@@ -463,7 +477,8 @@ void NodeManager::onNodeInfo(void* object, const pw_node_info* info) {
     }
 
   } else {
-    nd->nd_info->is_blocklisted = nm->model_nodes.get_node_by_id(nd->nd_info->id).is_blocklisted;
+    nd->nd_info->is_blocklisted =
+        blocklisted_media_name ? true : nm->model_nodes.get_node_by_id(nd->nd_info->id).is_blocklisted;
 
     /*
      * This information is updated elsewhere through the device object event

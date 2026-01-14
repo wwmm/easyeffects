@@ -132,56 +132,20 @@ Nodes::Nodes(QObject* parent)
   }
 
   connect(
-      DbStreamOutputs::self(), &DbStreamOutputs::blocklistChanged, this,
-      [this]() {
-        const auto blocklist = DbStreamOutputs::blocklist();
-
-        for (qsizetype n = 0; n < list.size(); n++) {
-          if (list[n].media_class != tags::pipewire::media_class::output_stream) {
-            continue;
-          }
-
-          if (blocklist.contains(list[n].name) || blocklist.contains(list[n].application_id) ||
-              blocklist.contains(list[n].app_process_binary)) {
-            update_field(n, Roles::IsBlocklisted, true);
-
-            pw::Manager::self().disconnectStream(list[n].id);
-          } else {
-            update_field(n, Roles::IsBlocklisted, false);
-
-            if (DbMain::processAllOutputs()) {
-              pw::Manager::self().connectStreamOutput(list[n].id);
-            }
-          }
-        }
-      },
+      DbStreamOutputs::self(), &DbStreamOutputs::blocklistChanged, this, [&]() { onOutputBlocklistChanged(); },
       Qt::QueuedConnection);
 
   connect(
-      DbStreamInputs::self(), &DbStreamInputs::blocklistChanged, this,
-      [this]() {
-        const auto blocklist = DbStreamInputs::blocklist();
+      DbStreamOutputs::self(), &DbStreamOutputs::blocklistUsesMediaNameChanged, this,
+      [&]() { onOutputBlocklistChanged(); }, Qt::QueuedConnection);
 
-        for (qsizetype n = 0; n < list.size(); n++) {
-          if (list[n].media_class != tags::pipewire::media_class::input_stream) {
-            continue;
-          }
-
-          if (blocklist.contains(list[n].name) || blocklist.contains(list[n].application_id) ||
-              blocklist.contains(list[n].app_process_binary)) {
-            update_field(n, Roles::IsBlocklisted, true);
-
-            pw::Manager::self().disconnectStream(list[n].id);
-          } else {
-            update_field(n, Roles::IsBlocklisted, false);
-
-            if (DbMain::processAllInputs()) {
-              pw::Manager::self().connectStreamInput(list[n].id);
-            }
-          }
-        }
-      },
+  connect(
+      DbStreamInputs::self(), &DbStreamInputs::blocklistChanged, this, [&]() { onInputBlocklistChanged(); },
       Qt::QueuedConnection);
+
+  connect(
+      DbStreamInputs::self(), &DbStreamInputs::blocklistUsesMediaNameChanged, this,
+      [&]() { onInputBlocklistChanged(); }, Qt::QueuedConnection);
 }
 
 int Nodes::rowCount(const QModelIndex& /* parent */) const {
@@ -310,7 +274,12 @@ bool Nodes::setData(const QModelIndex& index, const QVariant& value, int role) {
             auto blocklist = DbStreamOutputs::blocklist();
 
             if (blocklist.indexOf(it->name) == -1) {
-              blocklist.append(it->name);
+              if (DbStreamOutputs::blocklistUsesMediaName()) {
+                blocklist.append(it->name + ":" + it->media_name);
+              } else {
+                blocklist.append(it->name);
+              }
+
               DbStreamOutputs::setBlocklist(blocklist);
             }
 
@@ -318,7 +287,12 @@ bool Nodes::setData(const QModelIndex& index, const QVariant& value, int role) {
             auto blocklist = DbStreamInputs::blocklist();
 
             if (blocklist.indexOf(it->name) == -1) {
-              blocklist.append(it->name);
+              if (DbStreamInputs::blocklistUsesMediaName()) {
+                blocklist.append(it->name + ":" + it->media_name);
+              } else {
+                blocklist.append(it->name);
+              }
+
               DbStreamInputs::setBlocklist(blocklist);
             }
           }
@@ -329,6 +303,8 @@ bool Nodes::setData(const QModelIndex& index, const QVariant& value, int role) {
             auto idx = blocklist.indexOf(it->name);
 
             idx = (idx == -1) ? blocklist.indexOf(it->application_id) : idx;
+
+            idx = (idx == -1) ? blocklist.indexOf(it->name + ":" + it->media_name) : idx;
 
             if (idx != -1) {
               blocklist.removeAt(idx);
@@ -341,6 +317,8 @@ bool Nodes::setData(const QModelIndex& index, const QVariant& value, int role) {
             auto idx = blocklist.indexOf(it->name);
 
             idx = (idx == -1) ? blocklist.indexOf(it->application_id) : idx;
+
+            idx = (idx == -1) ? blocklist.indexOf(it->name + ":" + it->media_name) : idx;
 
             if (idx != -1) {
               blocklist.removeAt(idx);
@@ -625,6 +603,64 @@ auto Nodes::get_nodes_by_device_id(const uint& id) -> QList<NodeInfo> {
   }
 
   return nodes;
+}
+
+void Nodes::onOutputBlocklistChanged() {
+  const auto blocklist = DbStreamOutputs::blocklist();
+
+  for (qsizetype n = 0; n < list.size(); n++) {
+    if (list[n].media_class != tags::pipewire::media_class::output_stream) {
+      continue;
+    }
+
+    auto is_blocklisted = blocklist.contains(list[n].name) || blocklist.contains(list[n].application_id) ||
+                          blocklist.contains(list[n].app_process_binary);
+
+    if (DbStreamOutputs::blocklistUsesMediaName()) {
+      is_blocklisted = is_blocklisted || blocklist.contains(list[n].name + ":" + list[n].media_name);
+    }
+
+    if (is_blocklisted) {
+      update_field(n, Roles::IsBlocklisted, true);
+
+      pw::Manager::self().disconnectStream(list[n].id);
+    } else {
+      update_field(n, Roles::IsBlocklisted, false);
+
+      if (DbMain::processAllOutputs()) {
+        pw::Manager::self().connectStreamOutput(list[n].id);
+      }
+    }
+  }
+}
+
+void Nodes::onInputBlocklistChanged() {
+  const auto blocklist = DbStreamInputs::blocklist();
+
+  for (qsizetype n = 0; n < list.size(); n++) {
+    if (list[n].media_class != tags::pipewire::media_class::input_stream) {
+      continue;
+    }
+
+    auto is_blocklisted = blocklist.contains(list[n].name) || blocklist.contains(list[n].application_id) ||
+                          blocklist.contains(list[n].app_process_binary);
+
+    if (DbStreamInputs::blocklistUsesMediaName()) {
+      is_blocklisted = is_blocklisted || blocklist.contains(list[n].name + ":" + list[n].media_name);
+    }
+
+    if (is_blocklisted) {
+      update_field(n, Roles::IsBlocklisted, true);
+
+      pw::Manager::self().disconnectStream(list[n].id);
+    } else {
+      update_field(n, Roles::IsBlocklisted, false);
+
+      if (DbMain::processAllInputs()) {
+        pw::Manager::self().connectStreamInput(list[n].id);
+      }
+    }
+  }
 }
 
 }  // namespace pw::models
