@@ -85,6 +85,8 @@ auto interpolate(const std::vector<double>& x_source,
                  const std::vector<double>& y_source,
                  const std::vector<double>& x_new) -> std::vector<double>;
 
+auto mysofa_error_to_string(const int& error) -> const char*;
+
 inline std::mutex& fftw_lock() {
   static std::mutex fftw_mutex;
   return fftw_mutex;

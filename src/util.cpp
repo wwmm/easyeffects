@@ -20,6 +20,7 @@
 #include "util.hpp"
 #include <gsl/gsl_interp.h>
 #include <gsl/gsl_spline.h>
+#include <mysofa.h>
 #include <qdebug.h>
 #include <qlockfile.h>
 #include <qlogging.h>
@@ -370,6 +371,25 @@ auto interpolate(const std::vector<double>& x_source,
   gsl_interp_accel_free(acc);
 
   return output;
+}
+
+auto mysofa_error_to_string(const int& error) -> const char* {
+  switch (error) {
+    case MYSOFA_OK:
+      return "No error";
+    case MYSOFA_INVALID_FORMAT:
+      return "Invalid SOFA file format";
+    case MYSOFA_READ_ERROR:
+      return "Read error while loading SOFA file";
+    case MYSOFA_INTERNAL_ERROR:
+      return "Internal libmysofa error";
+    case MYSOFA_NO_MEMORY:
+      return "Out of memory";
+    case MYSOFA_UNSUPPORTED_FORMAT:
+      return "Unsupported format";
+    default:
+      return "Unknown libmysofa error";
+  }
 }
 
 }  // namespace util

@@ -544,6 +544,10 @@ auto ConvolverKernelManager::readSofaKernelFile(const std::string& file_path) ->
 
     struct MYSOFA_HRTF* hrtf = mysofa_load(file_path.c_str(), &error);
 
+    if (error != MYSOFA_OK) {
+      util::warning(std::format("Error while trying to load the sofa file: {}", util::mysofa_error_to_string(error)));
+    }
+
     if (!hrtf) {
       util::warning(std::format("Failed to load SOFA file: {} - Error: {}", file_path, error));
       return kernel_data;

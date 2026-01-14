@@ -59,6 +59,10 @@ auto IrsManager::import_irs_file(const std::string& file_path) -> ImportState {
   int error = 0;
   struct MYSOFA_HRTF* sofa = mysofa_load(file_path.c_str(), &error);
 
+  if (error != MYSOFA_OK) {
+    util::warning(std::format("Error while trying to load the sofa file: {}", util::mysofa_error_to_string(error)));
+  }
+
   bool is_sofa = error == MYSOFA_OK && sofa != nullptr;
 
   if (sofa != nullptr) {
