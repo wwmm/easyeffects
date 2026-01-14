@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-01-12 23:56+0000\n"
-"PO-Revision-Date: 2025-07-20 18:39+0000\n"
-"Last-Translator: Aleksander <olek_filip@wp.pl>\n"
+"PO-Revision-Date: 2026-01-14 16:34+0000\n"
+"Last-Translator: Miłosz <miloszwiktor58@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/main/"
 "pl/>\n"
 "Language: pl\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.13-dev\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -26,6 +26,9 @@ msgid ""
 "Please allow \"Run in Background\" permission for Easy Effects in your "
 "system app settings."
 msgstr ""
+"Nie można włączyć opcji automatycznego uruchamiania, ponieważ odmówiono "
+"dostępu w tle. Proszę zezwolić na „Uruchamianie w tle” dla aplikacji Easy "
+"Effects w ustawieniach aplikacji systemowej."
 
 #: src/command_line_parser.cpp:44
 msgid "Quit Easy Effects. Useful when running in service mode."
@@ -41,26 +44,24 @@ msgid "Hide the window."
 msgstr "Schowaj okno."
 
 #: src/command_line_parser.cpp:47
-#, fuzzy
 msgid "Global bypass. 1 to enable and 2 to disable."
-msgstr "Globalny bypass. 1 by włączyć, 2 by wyłączyć oraz 3 by otrzymać status"
+msgstr "Globalny bypass. 1 by włączyć, 2 by wyłączyć."
 
 #: src/command_line_parser.cpp:47
 msgid "bypass-state"
-msgstr ""
+msgstr "Stan bypassu"
 
 #: src/command_line_parser.cpp:48
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Załaduj profil. Przykład: easyeffects -l music"
 
 #: src/command_line_parser.cpp:48
-#, fuzzy
 msgid "preset-name"
-msgstr "Nazwa nowego profilu"
+msgstr "Nazwa nowego szablonu"
 
 #: src/command_line_parser.cpp:49
 msgid "Show available presets."
-msgstr "Pokaż dostępne profile."
+msgstr "Pokaż dostępne szablony."
 
 #: src/command_line_parser.cpp:50
 #, fuzzy
@@ -69,7 +70,7 @@ msgstr "Pokaż aktywne szablony."
 
 #: src/command_line_parser.cpp:50
 msgid "preset-type"
-msgstr ""
+msgstr "Rodzaj szablonu"
 
 #: src/command_line_parser.cpp:51
 #, fuzzy
@@ -78,19 +79,19 @@ msgstr "Pokaż aktywne szablony."
 
 #: src/command_line_parser.cpp:52
 msgid "Deprecated. Use --service-mode instead."
-msgstr ""
+msgstr "Przestarzałe. Zamiast tego użyj --service-mode."
 
 #: src/command_line_parser.cpp:53
 msgid "Start the application with service mode turned on."
-msgstr ""
+msgstr "Uruchom aplikację w trybie serwisowym."
 
 #: src/command_line_parser.cpp:54
 msgid "Enable debug messages."
-msgstr ""
+msgstr "Włącz komunikaty debugowania."
 
 #: src/command_line_parser.cpp:124
 msgid "Must specify preset type: input/output."
-msgstr ""
+msgstr "Musisz wybrać typ szablonu: wejście/wyjście."
 
 #: src/command_line_parser.cpp:159
 #, fuzzy
@@ -98,32 +99,29 @@ msgid "Output presets"
 msgstr "Szablony wyjściowe"
 
 #: src/command_line_parser.cpp:161
-#, fuzzy
 msgid "No output presets."
-msgstr "Szablony wyjściowe"
+msgstr "Brak szablonów wyjścia."
 
 #: src/command_line_parser.cpp:172
-#, fuzzy
 msgid "Input presets"
-msgstr "Profile wejścia"
+msgstr "Szablony wejścia"
 
 #: src/command_line_parser.cpp:174
-#, fuzzy
 msgid "No input presets."
-msgstr "Profile wejścia"
+msgstr "Brak szablonów wejścia."
 
 #: src/command_line_parser.cpp:204
 msgid "Specified preset does not exist."
-msgstr ""
+msgstr "Wybrany szablon nie istnieje."
 
 #: src/command_line_parser.cpp:222
 msgid "Provided an invalid bypass state."
-msgstr ""
+msgstr "Otrzymano nieprawidłowy stan bypass."
 
 #: src/contents/ui/AboutPage.qml:23
 msgctxt "@action:button"
 msgid "About"
-msgstr ""
+msgstr "Więcej informacji"
 
 #: src/contents/ui/Autogain.qml:69 src/contents/ui/BassEnhancer.qml:105
 #: src/contents/ui/BassLoudness.qml:58 src/contents/ui/Crossfeed.qml:73
@@ -241,7 +239,7 @@ msgstr "Cisza"
 
 #: src/contents/ui/Autogain.qml:256
 msgid "Force silence when the level is below the silence threshold"
-msgstr ""
+msgstr "Wymuś ciszę, kiedy poziom jest poniżej progu ciszy"
 
 #: src/contents/ui/Autogain.qml:268 src/contents/ui/DeepFilterNet.qml:219
 #: src/contents/ui/LevelMeter.qml:240 src/contents/ui/Pitch.qml:310
@@ -373,7 +371,7 @@ msgstr "Wycisz aplikację"
 
 #: src/contents/ui/BlocklistDialog.qml:140
 msgid "Are you sure you want to remove this application from the list?"
-msgstr ""
+msgstr "Czy na pewno chcesz usunąć tą aplikację z listy?"
 
 #: src/contents/ui/BlocklistDialog.qml:171
 #, fuzzy
@@ -623,7 +621,7 @@ msgstr "Strona/Środek"
 #: src/contents/ui/MultibandCompressor.qml:471
 #: src/contents/ui/MultibandGate.qml:444
 msgid "Preamp"
-msgstr ""
+msgstr "Przedwzmacniacz"
 
 #: src/contents/ui/Compressor.qml:377 src/contents/ui/Expander.qml:333
 #: src/contents/ui/Gate.qml:352 src/contents/ui/MultibandCompressor.qml:487
@@ -688,7 +686,7 @@ msgstr "Wzmocnienie"
 #: src/contents/ui/MultibandCompressor.qml:1006
 #: src/contents/ui/MultibandGate.qml:979
 msgid "Pre-Mix"
-msgstr ""
+msgstr "Wstępny miks"
 
 #: src/contents/ui/Compressor.qml:551 src/contents/ui/Expander.qml:507
 #: src/contents/ui/Gate.qml:528 src/contents/ui/Limiter.qml:303
@@ -771,7 +769,7 @@ msgstr "Złączenie charakterystyki impulsów"
 
 #: src/contents/ui/Convolver.qml:73
 msgid "The Convolver is in passthrough mode."
-msgstr ""
+msgstr "Convolver pracuje w trybie przepustowym."
 
 #: src/contents/ui/Convolver.qml:75
 #, fuzzy
