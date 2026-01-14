@@ -9,6 +9,7 @@ Description:
 - English language can be forced in case the user does not want to translate the labels into the application.
 - Repeated names are now automatically handled when importing convolver impulse files.
 - The blocklist has a new option that allows the stream media name to be taken into account when blocking streams.
+- Added a new option for the Crystalizer effect which gives the ability to set a fixed Pipewire quantum.
 
 - Bug fixes∶
 - Easy Effects level meters were clamping the displayed value to zero decibel. Now higher values are correctly shown.
