@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-01-12 14:25-0300\n"
+"POT-Creation-Date: 2026-01-14 13:16-0300\n"
 "PO-Revision-Date: 2026-01-12 23:57+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -362,10 +362,20 @@ msgid "Remove this app"
 msgstr "Убрать это приложение"
 
 #: src/contents/ui/BlocklistDialog.qml:200
+msgid "Use media name"
+msgstr ""
+
+#: src/contents/ui/BlocklistDialog.qml:201
+msgid ""
+"Also use a combination of node and media name when deciding if a stream "
+"should be blocked"
+msgstr ""
+
+#: src/contents/ui/BlocklistDialog.qml:212
 msgid "Show excluded apps"
 msgstr "Показать исключённые приложения"
 
-#: src/contents/ui/BlocklistDialog.qml:201
+#: src/contents/ui/BlocklistDialog.qml:213
 msgid "Show excluded applications in the list of players/recorders"
 msgstr "Показать исключённые приложения в списке проигрывателей/рекордеров"
 
@@ -970,8 +980,9 @@ msgid "Adaptive intensity"
 msgstr "Адаптивная интенсивность"
 
 #: src/contents/ui/Crystalizer.qml:161
-msgid "Fixed Quantum"
-msgstr "Фиксированный квант"
+#, fuzzy
+msgid "Fixed quantum"
+msgstr "Минимальное квантование"
 
 #: src/contents/ui/DeepFilterNet.qml:51
 msgid "Attenuation limit"
@@ -3066,27 +3077,27 @@ msgstr "Один или несколько параметров содержат
 msgid "Generic error while loading the effect"
 msgstr "Общая ошибка при загрузке эффекта"
 
-#: src/pw_model_nodes.cpp:522
+#: src/pw_model_nodes.cpp:500
 msgid "Running"
 msgstr "Работает"
 
-#: src/pw_model_nodes.cpp:524
+#: src/pw_model_nodes.cpp:502
 msgid "Suspended"
 msgstr "Приостановлено"
 
-#: src/pw_model_nodes.cpp:526
+#: src/pw_model_nodes.cpp:504
 msgid "Idle"
 msgstr "Простаивает"
 
-#: src/pw_model_nodes.cpp:528
+#: src/pw_model_nodes.cpp:506
 msgid "Creating"
 msgstr "Создание"
 
-#: src/pw_model_nodes.cpp:530
+#: src/pw_model_nodes.cpp:508
 msgid "Error"
 msgstr "Ошибка"
 
-#: src/pw_model_nodes.cpp:532
+#: src/pw_model_nodes.cpp:510
 msgid "Unknown"
 msgstr "Неизвестно"
 
@@ -3283,10 +3294,8 @@ msgstr "Эквалайзер, компрессор и прочие звуков�
 msgid "Simple audio effects"
 msgstr "Простые звуковые эффекты"
 
-#: src/contents/ui/Crystalizer.qml:161
-#, fuzzy
-msgid "Fixed quantum"
-msgstr "Минимальное квантование"
+#~ msgid "Fixed Quantum"
+#~ msgstr "Фиксированный квант"
 
 #~ msgid "Bit Reduction"
 #~ msgstr "Понижение разрядности"

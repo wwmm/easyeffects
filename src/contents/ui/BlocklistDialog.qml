@@ -197,6 +197,18 @@ Kirigami.Dialog {
             Layout.margins: Kirigami.Units.smallSpacing
             actions: [
                 Kirigami.Action {
+                    text: i18n("Use media name") // qmllint disable
+                    tooltip: i18n("Also use a combination of node and media name when deciding if a stream should be blocked") // qmllint disable
+                    icon.name: "applications-multimedia-symbolic"
+                    displayHint: Kirigami.DisplayHint.KeepVisible
+                    checkable: true
+                    checked: control.streamDB.blocklistUsesMediaName
+                    onTriggered: {
+                        if (checked !== control.streamDB.blocklistUsesMediaName)
+                            control.streamDB.blocklistUsesMediaName = checked;
+                    }
+                },
+                Kirigami.Action {
                     text: i18n("Show excluded apps") // qmllint disable
                     tooltip: i18n("Show excluded applications in the list of players/recorders") // qmllint disable
                     icon.name: "applications-all-symbolic"
