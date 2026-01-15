@@ -29,11 +29,12 @@ Rectangle {
     property int decimals: 2
     property bool convertDecibelToLinear: false
     property bool topToBottom: false
+    property real value: 0
+    property real clampedValue: 0
     readonly property real liFrom: Common.dbToLinear(from)
     readonly property real liTo: Common.dbToLinear(to)
     readonly property real decimalFactor: Math.pow(10, -decimals)
-    property real value: 0
-    property real clampedValue: 0
+    readonly property var resetManager: EeMetersReset
 
     Kirigami.Theme.colorSet: Kirigami.Theme.View
     implicitWidth: valueLabel.implicitWidth + Kirigami.Units.largeSpacing
@@ -43,6 +44,18 @@ Rectangle {
     clip: true
     color: Kirigami.Theme.neutralBackgroundColor
     border.color: Kirigami.ColorUtils.linearInterpolation(Kirigami.Theme.backgroundColor, Kirigami.Theme.textColor, Kirigami.Theme.frameContrast)
+
+    Connections {
+        target: resetManager
+
+        function onReset() {
+            root.setValue(0);
+
+            sampleTimer.value = 0;
+
+            valueLabel.text = Number(0).toLocaleString(Qt.locale(), 'f', root.decimals);
+        }
+    }
 
     function setValue(value) {
         // Only update if meaningfully different

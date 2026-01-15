@@ -321,6 +321,12 @@ Kirigami.Page {
                     pagePluginsGrid.populatePluginsStack();
                 }
 
+                function onFiltersLinkedChanged() {
+                    if (pipelineInstance.filtersLinked === false) {
+                        EeMetersReset.reset();
+                    }
+                }
+
                 target: pageStreamsEffects.pipelineInstance
             }
 

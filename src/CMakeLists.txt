@@ -10,7 +10,9 @@ kconfig_add_kcfg_files(easyeffects GENERATE_MOC ${KCFGC_FILES})
 
 # install(FILES ${KCFG_FILES} DESTINATION ${KDE_INSTALL_KCFGDIR})
 
-set_source_files_properties(contents/ui/Validators.qml
+set_source_files_properties(
+    contents/ui/EeMetersReset.qml
+    contents/ui/Validators.qml
     PROPERTIES QT_QML_SINGLETON_TYPE TRUE)
 
 qt_policy(SET QTP0004 NEW)
@@ -49,6 +51,7 @@ qt_add_qml_module(easyeffects
         contents/ui/EeAudioLevel.qml
         contents/ui/EeInputOutputGain.qml
         contents/ui/EeListSectionHeader.qml
+        contents/ui/EeMetersReset.qml
         contents/ui/EeProgressBar.qml
         contents/ui/EeSpinBox.qml
         contents/ui/EeSwitch.qml

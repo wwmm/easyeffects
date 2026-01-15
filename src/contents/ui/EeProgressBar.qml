@@ -41,6 +41,7 @@ Rectangle {
     readonly property real liFrom: Common.dbToLinear(from)
     readonly property real liTo: Common.dbToLinear(to)
     readonly property real decimalFactor: Math.pow(10, -decimals)
+    readonly property var resetManager: EeMetersReset
 
     readonly property string unitSuffix: if (!Common.isEmpty(control.unit)) {
         const split = control.separateUnit ? ' ' : '';
@@ -56,6 +57,18 @@ Rectangle {
     color: Kirigami.Theme.neutralBackgroundColor
     radius: 0
     clip: true
+
+    Connections {
+        target: resetManager
+
+        function onReset() {
+            control.setValue(0);
+
+            sampleTimer.value = 0;
+
+            valueLabel.text = Number(0).toLocaleString(Qt.locale(), 'f', control.decimals);
+        }
+    }
 
     function setValue(value) {
 
