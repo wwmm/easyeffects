@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-01-14 13:16-0300\n"
-"PO-Revision-Date: 2026-01-13 12:17+0000\n"
+"PO-Revision-Date: 2026-01-15 22:01+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hans/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.15.2-dev\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -354,13 +354,13 @@ msgstr "移除此应用程序"
 
 #: src/contents/ui/BlocklistDialog.qml:200
 msgid "Use media name"
-msgstr ""
+msgstr "使用媒体名称"
 
 #: src/contents/ui/BlocklistDialog.qml:201
 msgid ""
 "Also use a combination of node and media name when deciding if a stream "
 "should be blocked"
-msgstr ""
+msgstr "在决定是否拦截音频流时同时考虑节点和媒体名的组合"
 
 #: src/contents/ui/BlocklistDialog.qml:212
 msgid "Show excluded apps"
@@ -1938,7 +1938,7 @@ msgid ""
 "external applications (e.g. Gnome Settings and Plasma System Settings)"
 msgstr ""
 "强烈建议不要在外部应用程序 (如 GNOME 设置或 Plasma 系统设置) 中将 Easy "
-"Effects 槽/源设为默认设备。"
+"Effects 槽/源设为默认设备"
 
 #: src/contents/ui/PipeWirePage.qml:140
 msgid "Use default input"
