@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-01-14 13:16-0300\n"
-"PO-Revision-Date: 2026-01-11 07:01+0000\n"
+"PO-Revision-Date: 2026-01-15 07:01+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.15.1\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -355,13 +355,15 @@ msgstr "Supprimer cette application"
 
 #: src/contents/ui/BlocklistDialog.qml:200
 msgid "Use media name"
-msgstr ""
+msgstr "Utiliser le nom du média"
 
 #: src/contents/ui/BlocklistDialog.qml:201
 msgid ""
 "Also use a combination of node and media name when deciding if a stream "
 "should be blocked"
 msgstr ""
+"Utilisez également une combinaison du nom du nœud et du nom du média pour "
+"décider si un flux doit être bloqué"
 
 #: src/contents/ui/BlocklistDialog.qml:212
 msgid "Show excluded apps"
@@ -962,9 +964,8 @@ msgid "Adaptive intensity"
 msgstr "Intensité adaptative"
 
 #: src/contents/ui/Crystalizer.qml:161
-#, fuzzy
 msgid "Fixed quantum"
-msgstr "Quantum minimal"
+msgstr "Quantum fixe"
 
 #: src/contents/ui/DeepFilterNet.qml:51
 msgid "Attenuation limit"
