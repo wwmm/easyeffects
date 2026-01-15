@@ -73,9 +73,13 @@ ColumnLayout {
                 target: device.model
 
                 function onModelReset() {
+                    device.currentIndex = 0;
+
                     device.deviceRouteDescription = device.updateRouteDescription();
                 }
                 function onRowsInserted() {
+                    device.currentIndex = 0;
+
                     device.deviceRouteDescription = device.updateRouteDescription();
                 }
                 function onRowsRemoved() {
@@ -84,6 +88,8 @@ ColumnLayout {
                     device.deviceRouteDescription = device.updateRouteDescription();
                 }
                 function onDataChanged() {
+                    device.currentIndex = 0;
+
                     device.deviceRouteDescription = device.updateRouteDescription();
                 }
             }
