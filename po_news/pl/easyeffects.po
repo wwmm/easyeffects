@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-28 14:40+0000\n"
-"PO-Revision-Date: 2025-08-30 00:58+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2026-01-16 10:01+0000\n"
+"Last-Translator: Miłosz <miloszwiktor58@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/pl/>\n"
 "Language: pl\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.13.1-dev\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -81,7 +81,6 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:16
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:18
-#, fuzzy
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
@@ -134,7 +133,6 @@ msgstr "Strona konwolwera przedstawiająca elementy sterujące dźwiękiem"
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:537
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:547
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:560
-#, fuzzy
 msgid "Features:"
 msgstr "Funkcje:"
 
@@ -1186,12 +1184,11 @@ msgid ""
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:527
-#, fuzzy
 msgid ""
 "Fixed a bug that could make the pitch plugin to not be properly initialized"
 msgstr ""
 "Naprawiono błąd we wtyczce krystalizatora, gdzie wartości nie były poprawnie "
-"zastosowywane."
+"zastosowywane"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:528
 msgid "The saturation warning should not displace its neighbor widgets anymore"
