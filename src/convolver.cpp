@@ -32,6 +32,7 @@
 #include <sndfile.h>
 #include <sys/types.h>
 #include <zita-convolver.h>
+#include <QApplication>
 #include <QString>
 #include <algorithm>
 #include <cstddef>
@@ -93,7 +94,7 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
 
   // Preparing the worker thread
 
-  worker->moveToThread(&workerThread);
+  worker->moveToThread(QApplication::instance()->thread());
 
   connect(&workerThread, &QThread::finished, worker, &QObject::deleteLater);
 

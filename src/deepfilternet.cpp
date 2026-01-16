@@ -20,6 +20,7 @@
 #include "deepfilternet.hpp"
 #include <qnamespace.h>
 #include <qobject.h>
+#include <QApplication>
 #include <algorithm>
 #include <format>
 #include <memory>
@@ -106,7 +107,7 @@ void DeepFilterNet::setup() {
   // NOLINTBEGIN(clang-analyzer-cplusplus.NewDeleteLeaks)
 
   QMetaObject::invokeMethod(
-      baseWorker,
+      QApplication::instance(),
       [this] {
         if (ladspa_wrapper->has_instance()) {
           ladspa_wrapper->deactivate();
