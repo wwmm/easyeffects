@@ -76,6 +76,8 @@ class Expander : public PluginBase {
  private:
   db::Expander* settings = nullptr;
 
+  bool ready = false;
+
   uint latency_n_frames = 0U;
 
   float reduction_left = 0.0F, reduction_right = 0.0F;
