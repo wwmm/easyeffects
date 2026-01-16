@@ -4,6 +4,20 @@ Date: UNRELEASED_DATE
 
 Description: 
 - Features∶
+- 
+
+- Bug fixes∶
+- 
+
+- Other notes∶
+- 
+
+---
+Version: 8.1.0
+Date: 2026-01-16
+
+Description: 
+- Features∶
 - The Crusher plugin by Calf Studio Gear is now available as a new effect for input and output processing pipelines.
 - It is now possible to link the output of the output effects pipeline to the input of Easy Effects virtual source device. This allows users to, for example, send the audio being played in their desktops to the people talking to them in a conference room.
 - English language can be forced in case the user does not want to translate the labels into the application.
@@ -17,7 +31,6 @@ Description:
 - Noise Reduction effect is not crashing anymore when an invalid model is loaded.
 
 - Other notes∶
-- 
 
 ---
 Version: 8.0.9

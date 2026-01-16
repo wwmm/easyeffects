@@ -1,5 +1,25 @@
 # Changelog
  
+## 8.1.0
+### 2026-01-16
+
+ 
+### Features:
+- The Crusher plugin by Calf Studio Gear is now available as a new effect for input and output processing pipelines.
+- It is now possible to link the output of the output effects pipeline to the input of Easy Effects virtual source device. This allows users to, for example, send the audio being played in their desktops to the people talking to them in a conference room.
+- English language can be forced in case the user does not want to translate the labels into the application.
+- Repeated names are now automatically handled when importing convolver impulse files.
+- The blocklist has a new option that allows the stream media name to be taken into account when blocking streams.
+- Added a new option for the Crystalizer effect which gives the ability to set a fixed Pipewire quantum.
+- Audio level meters are reset when our pipeline is not linked.
+
+### Bug fixes:
+- Easy Effects level meters were clamping the displayed value to zero decibel. Now higher values are correctly shown.
+- Noise Reduction effect is not crashing anymore when an invalid model is loaded.
+
+### Other notes:
+
+ 
 ## 8.0.9
 ### 2025-12-24
 

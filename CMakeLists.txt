@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.28)
 
-project(easyeffects VERSION 8.0.9 LANGUAGES CXX C)
+project(easyeffects VERSION 8.1.0 LANGUAGES CXX C)
 
 set(APPLICATION_DOMAIN "easyeffects")
 set(COMPONENT_NAME "easyeffects")
