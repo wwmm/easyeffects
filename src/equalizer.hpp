@@ -79,6 +79,8 @@ class Equalizer : public PluginBase {
   db::Equalizer* settings = nullptr;
   db::EqualizerChannel *settings_left = nullptr, *settings_right = nullptr;
 
+  bool ready = false;
+
   uint latency_n_frames = 0U;
 
   std::vector<QMetaObject::Connection> unified_mode_connections;
