@@ -59,4 +59,6 @@ class Reverb : public PluginBase {
 
  private:
   db::Reverb* settings = nullptr;
+
+  bool ready = false;
 };

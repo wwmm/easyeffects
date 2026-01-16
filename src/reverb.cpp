@@ -19,6 +19,7 @@
 
 #include "reverb.hpp"
 #include <qobject.h>
+#include <QApplication>
 #include <algorithm>
 #include <memory>
 #include <span>
@@ -83,14 +84,29 @@ void Reverb::reset() {
 }
 
 void Reverb::setup() {
+  std::scoped_lock<std::mutex> lock(data_mutex);
+
   if (!lv2_wrapper->found_plugin) {
     return;
   }
 
+  ready = false;
+
   lv2_wrapper->set_n_samples(n_samples);
 
   if (lv2_wrapper->get_rate() != rate) {
-    lv2_wrapper->create_instance(rate);
+    // NOLINTBEGIN(clang-analyzer-cplusplus.NewDeleteLeaks)
+    QMetaObject::invokeMethod(
+        QApplication::instance(),
+        [this] {
+          lv2_wrapper->create_instance(rate);
+
+          std::scoped_lock<std::mutex> lock(data_mutex);
+
+          ready = true;
+        },
+        Qt::QueuedConnection);
+    // NOLINTEND(clang-analyzer-cplusplus.NewDeleteLeaks)
   }
 }
 
@@ -98,9 +114,22 @@ void Reverb::process(std::span<float>& left_in,
                      std::span<float>& right_in,
                      std::span<float>& left_out,
                      std::span<float>& right_out) {
-  if (!lv2_wrapper->found_plugin || !lv2_wrapper->has_instance() || bypass) {
+  std::scoped_lock<std::mutex> lock(data_mutex);
+
+  if (bypass) {
     std::ranges::copy(left_in, left_out.begin());
     std::ranges::copy(right_in, right_out.begin());
+
+    return;
+  }
+
+  if (!ready) {
+    std::ranges::copy(left_in, left_out.begin());
+    std::ranges::copy(right_in, right_out.begin());
+
+    if (output_gain != 1.0F) {
+      apply_gain(left_out, right_out, output_gain);
+    }
 
     return;
   }
