@@ -61,5 +61,7 @@ class Delay : public PluginBase {
  private:
   db::Delay* settings = nullptr;
 
+  bool ready = false;
+
   uint latency_n_frames = 0U;
 };
