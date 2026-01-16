@@ -75,6 +75,8 @@ class Limiter : public PluginBase {
   float sidechain_l_port_value = 0.0F;
   float sidechain_r_port_value = 0.0F;
 
+  bool ready = false;
+
   db::Limiter* settings = nullptr;
 
   std::vector<pw_proxy*> list_proxies;
