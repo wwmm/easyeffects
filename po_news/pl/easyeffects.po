@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-28 14:40+0000\n"
-"PO-Revision-Date: 2026-01-16 10:01+0000\n"
+"PO-Revision-Date: 2026-01-16 23:01+0000\n"
 "Last-Translator: Grzegorz Leks <ayats.bravo@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/pl/>\n"
@@ -278,6 +278,9 @@ msgid ""
 "before 7.2.0 version are deprecated. Please reload the irs/model file inside "
 "the Convolver/RNNoise UI and resave the preset."
 msgstr ""
+"Szablony zawierające efekty Convolvera i/lub redukcję szumu (RNNoise) "
+"stworzone przed wersją 7.2.0 są zdeprecjonowane. Prosimy, by przeładować "
+"plik irs/modelu wewnątrz Convolvera/RNNoise UI i zapisać szablon ponownie."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:78
 msgid ""
@@ -298,6 +301,9 @@ msgid ""
 "allow latency offset to be properly applied by video players when PipeWire "
 "&gt; 1.0.3 is released."
 msgstr ""
+"Obecnie ustawiamy monitor.passthroufh = true w naszych wirtualnych "
+"urządzeniach. Pozwala to odpowiednio zastosować przesunięcie opóźnienia w "
+"odtwarzaczach filmów gdy PipeWire &gt; 1.0.3 zostanie wydane."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:90
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:237
@@ -311,6 +317,11 @@ msgid ""
 "EE is recording from. THe stream has to be started when EE is already "
 "running for this logic to take effect."
 msgstr ""
+"Aplikacja EasyEffects stara się unikać używania swoich wirtualnych strumieni "
+"źródła dla których użytkownik ustawił własny target.object, który różni się "
+"od mikrofonu wykorzystywanego przez aplikację do nagrywania. Strumień musi "
+"rozpocząć przesyłanie danych gdy EE już działa, by ta logika miała "
+"zastosowanie."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:101
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:115
