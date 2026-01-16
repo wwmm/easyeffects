@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-28 14:40+0000\n"
 "PO-Revision-Date: 2026-01-16 10:01+0000\n"
-"Last-Translator: Miłosz <miloszwiktor58@gmail.com>\n"
+"Last-Translator: Grzegorz Leks <ayats.bravo@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/pl/>\n"
 "Language: pl\n"
@@ -144,22 +144,34 @@ msgid ""
 "volunteers. You can search them on the repositories of your favorite "
 "distribution."
 msgstr ""
+"Zastosowano wtyczki społeczności. Użytkownicy mogą instalować paczki "
+"zawierające wiele wtyczek aplikacji EasyEffects, które później można "
+"importować i używać w aplikacji. Paczki te są wspierane i dostarczane przez "
+"wolontariuszy. Znaleźć je możesz w repozytoriach twojej ulubionej "
+"dystrybucji."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
 msgid ""
 "Added the ability of collapsing the sidebar to hide the effects list and "
 "expand the area of the effects user interface."
 msgstr ""
+"Dodano możliwość zwijania panelu bocznego w celu ukrycia listy efektów i "
+"rozszerzenia obszaru interfejsu efektów."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
 msgid ""
 "EasyEffects won't touch streams that define PW_KEY_TARGET_OBJECT to an "
 "output device that is different from the one EasyEffects is using."
 msgstr ""
+"Aplikacja EasyEffects nie zmienia strumieni definiujących "
+"PW_KEY_TARGET_OBJECT do urządzenia wyjściowego innego niż to, które jest "
+"aktualnie używane przez aplikację EasyEffects."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:63
 msgid "Equalizer APO import feature can now apply Band-Pass filters."
 msgstr ""
+"Funkcjonalność importu Equalizera APO może obecnie aplikować filtry Band-"
+"Pass."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:64
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:79
@@ -205,6 +217,8 @@ msgid ""
 "A change in GTK 4.14.1 prevented to apply the values inserted into the text "
 "field of our SpinButton widgets. This issue is now resolved."
 msgstr ""
+"Zmiana w GTK 4.14.1 uniemożliwiała zastosowanie wartości wpisanych w pole "
+"tekstowego naszych widżetów SpinButton. Problem został już rozwiązany."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:66
 msgid ""
@@ -212,12 +226,17 @@ msgid ""
 "anymore. So we removed it from our user interface (you can use the plugin "
 "input gain to retrieve the same functionality)."
 msgstr ""
+"Najnowsze wydania wtyczki Maximizera nie posiadają już funkcjonalności "
+"\"ceiling control\". Usunęliśmy je z naszego interfejsu użytkownika (możesz "
+"użyć wtyczki \"wzmocnienia wejścia\", by uzyskać ten sam efekt)."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:67
 msgid ""
 "Equalizer APO import feature does not crash anymore on Flatpak when invalid "
 "values are provided."
 msgstr ""
+"Podanie błędnych wartość dla funkcjonalności importu Equalizera APO nie "
+"powoduje zamknięcia aplikacji w wersji Flatpak."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:68
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:81
@@ -249,6 +268,9 @@ msgid ""
 "invited to read and follow the guidelines linked inside the README of "
 "EasyEffects master branch."
 msgstr ""
+"Aby poprawnie dostarczać Wtyczki Społeczności, zachęcamy twórców do "
+"zapoznania się z i postępowania według poradnika podlinkowanego w pliku "
+"README na głównej gałęzi kodu aplikacji EasyEffects."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:70
 msgid ""
