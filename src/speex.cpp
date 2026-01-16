@@ -20,6 +20,7 @@
 #include "speex.hpp"
 #include <speex/speex_preprocess.h>
 #include <speex/speexdsp_config_types.h>
+#include <QApplication>
 #include <algorithm>
 #include <climits>
 #include <cstddef>
@@ -181,44 +182,53 @@ void Speex::setup() {
   data_L.resize(n_samples);
   data_R.resize(n_samples);
 
-  if (state_left != nullptr) {
-    speex_preprocess_state_destroy(state_left);
-  }
+  // NOLINTBEGIN(clang-analyzer-cplusplus.NewDeleteLeaks)
+  QMetaObject::invokeMethod(
+      QApplication::instance(),
+      [this] {
+        if (state_left != nullptr) {
+          speex_preprocess_state_destroy(state_left);
+        }
 
-  if (state_right != nullptr) {
-    speex_preprocess_state_destroy(state_right);
-  }
+        if (state_right != nullptr) {
+          speex_preprocess_state_destroy(state_right);
+        }
 
-  state_left = speex_preprocess_state_init(static_cast<int>(n_samples), static_cast<int>(rate));
-  state_right = speex_preprocess_state_init(static_cast<int>(n_samples), static_cast<int>(rate));
+        state_left = speex_preprocess_state_init(static_cast<int>(n_samples), static_cast<int>(rate));
+        state_right = speex_preprocess_state_init(static_cast<int>(n_samples), static_cast<int>(rate));
 
-  if (state_left != nullptr) {
-    speex_preprocess_ctl(state_left, SPEEX_PREPROCESS_SET_DENOISE, &enable_denoise);
-    speex_preprocess_ctl(state_left, SPEEX_PREPROCESS_SET_NOISE_SUPPRESS, &noise_suppression);
+        if (state_left != nullptr) {
+          speex_preprocess_ctl(state_left, SPEEX_PREPROCESS_SET_DENOISE, &enable_denoise);
+          speex_preprocess_ctl(state_left, SPEEX_PREPROCESS_SET_NOISE_SUPPRESS, &noise_suppression);
 
-    speex_preprocess_ctl(state_left, SPEEX_PREPROCESS_SET_AGC, &enable_agc);
+          speex_preprocess_ctl(state_left, SPEEX_PREPROCESS_SET_AGC, &enable_agc);
 
-    speex_preprocess_ctl(state_left, SPEEX_PREPROCESS_SET_VAD, &enable_vad);
-    speex_preprocess_ctl(state_left, SPEEX_PREPROCESS_SET_PROB_START, &vad_probability_start);
-    speex_preprocess_ctl(state_left, SPEEX_PREPROCESS_SET_PROB_CONTINUE, &vad_probability_continue);
+          speex_preprocess_ctl(state_left, SPEEX_PREPROCESS_SET_VAD, &enable_vad);
+          speex_preprocess_ctl(state_left, SPEEX_PREPROCESS_SET_PROB_START, &vad_probability_start);
+          speex_preprocess_ctl(state_left, SPEEX_PREPROCESS_SET_PROB_CONTINUE, &vad_probability_continue);
 
-    speex_preprocess_ctl(state_left, SPEEX_PREPROCESS_SET_DEREVERB, &enable_dereverb);
-  }
+          speex_preprocess_ctl(state_left, SPEEX_PREPROCESS_SET_DEREVERB, &enable_dereverb);
+        }
 
-  if (state_right != nullptr) {
-    speex_preprocess_ctl(state_right, SPEEX_PREPROCESS_SET_DENOISE, &enable_denoise);
-    speex_preprocess_ctl(state_right, SPEEX_PREPROCESS_SET_NOISE_SUPPRESS, &noise_suppression);
+        if (state_right != nullptr) {
+          speex_preprocess_ctl(state_right, SPEEX_PREPROCESS_SET_DENOISE, &enable_denoise);
+          speex_preprocess_ctl(state_right, SPEEX_PREPROCESS_SET_NOISE_SUPPRESS, &noise_suppression);
 
-    speex_preprocess_ctl(state_right, SPEEX_PREPROCESS_SET_AGC, &enable_agc);
+          speex_preprocess_ctl(state_right, SPEEX_PREPROCESS_SET_AGC, &enable_agc);
 
-    speex_preprocess_ctl(state_right, SPEEX_PREPROCESS_SET_VAD, &enable_vad);
-    speex_preprocess_ctl(state_right, SPEEX_PREPROCESS_SET_PROB_START, &vad_probability_start);
-    speex_preprocess_ctl(state_right, SPEEX_PREPROCESS_SET_PROB_CONTINUE, &vad_probability_continue);
+          speex_preprocess_ctl(state_right, SPEEX_PREPROCESS_SET_VAD, &enable_vad);
+          speex_preprocess_ctl(state_right, SPEEX_PREPROCESS_SET_PROB_START, &vad_probability_start);
+          speex_preprocess_ctl(state_right, SPEEX_PREPROCESS_SET_PROB_CONTINUE, &vad_probability_continue);
 
-    speex_preprocess_ctl(state_right, SPEEX_PREPROCESS_SET_DEREVERB, &enable_dereverb);
-  }
+          speex_preprocess_ctl(state_right, SPEEX_PREPROCESS_SET_DEREVERB, &enable_dereverb);
+        }
 
-  speex_ready = true;
+        std::scoped_lock<std::mutex> lock(data_mutex);
+
+        speex_ready = true;
+      },
+      Qt::QueuedConnection);
+  // NOLINTEND(clang-analyzer-cplusplus.NewDeleteLeaks)
 }
 
 void Speex::process(std::span<float>& left_in,
