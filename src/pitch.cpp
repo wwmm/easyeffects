@@ -20,6 +20,7 @@
 #include "pitch.hpp"
 #include <qnamespace.h>
 #include <qobject.h>
+#include <QApplication>
 #include <soundtouch/STTypes.h>
 #include <soundtouch/SoundTouch.h>
 #include <algorithm>
@@ -106,7 +107,7 @@ void Pitch::setup() {
   soundtouch_ready = false;
 
   QMetaObject::invokeMethod(
-      baseWorker,
+      QApplication::instance(),
       [this] {
         if (soundtouch_ready) {
           return;
@@ -338,7 +339,7 @@ auto Pitch::get_latency_seconds() -> float {
 void Pitch::resetHistory() {
   // NOLINTBEGIN(clang-analyzer-cplusplus.NewDeleteLeaks)
 
-  QMetaObject::invokeMethod(baseWorker, [this] { setup(); }, Qt::QueuedConnection);
+  QMetaObject::invokeMethod(QApplication::instance(), [this] { setup(); }, Qt::QueuedConnection);
 
   // NOLINTEND(clang-analyzer-cplusplus.NewDeleteLeaks)
 }

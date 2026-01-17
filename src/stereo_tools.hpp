@@ -60,6 +60,8 @@ class StereoTools : public PluginBase {
   double correlation_port_value = 0.0;
 
  private:
+  bool ready = false;
+
   float dry = 0.0F, wet = 1.0F;
 
   db::StereoTools* settings = nullptr;

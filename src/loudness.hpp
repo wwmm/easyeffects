@@ -61,5 +61,7 @@ class Loudness : public PluginBase {
  private:
   db::Loudness* settings = nullptr;
 
+  bool ready = false;
+
   uint latency_n_frames = 0U;
 };

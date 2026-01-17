@@ -21,6 +21,7 @@
 #include <ebur128.h>
 #include <qnamespace.h>
 #include <qobject.h>
+#include <QApplication>
 #include <algorithm>
 #include <cstddef>
 #include <format>
@@ -99,7 +100,7 @@ void LevelMeter::setup() {
 
   // NOLINTBEGIN(clang-analyzer-cplusplus.NewDeleteLeaks)
   QMetaObject::invokeMethod(
-      baseWorker,
+      QApplication::instance(),
       [this] {
         if (ebur128_ready) {
           return;

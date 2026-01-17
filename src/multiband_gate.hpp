@@ -78,6 +78,8 @@ class MultibandGate : public PluginBase {
  private:
   uint latency_n_frames = 0U;
 
+  bool ready = false;
+
   static constexpr uint n_bands = tags::multiband_gate::n_bands;
 
   db::MultibandGate* settings = nullptr;

@@ -92,6 +92,8 @@ class Gate : public PluginBase {
   float release_zone_start = 0.0F;
   float release_threshold = 0.0F;
 
+  bool ready = false;
+
   db::Gate* settings = nullptr;
 
   std::vector<pw_proxy*> list_proxies;

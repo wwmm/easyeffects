@@ -78,6 +78,8 @@ class MultibandCompressor : public PluginBase {
  private:
   uint latency_n_frames = 0U;
 
+  bool ready = false;
+
   static constexpr uint n_bands = tags::multiband_compressor::n_bands;
 
   db::MultibandCompressor* settings = nullptr;

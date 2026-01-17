@@ -59,4 +59,6 @@ class BassLoudness : public PluginBase {
 
  private:
   db::BassLoudness* settings = nullptr;
+
+  bool ready = false;
 };

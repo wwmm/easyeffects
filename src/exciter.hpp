@@ -60,6 +60,8 @@ class Exciter : public PluginBase {
   Q_INVOKABLE [[nodiscard]] float getHarmonicsLevel() const;
 
  private:
+  bool ready = false;
+
   float harmonics_port_value = 0.0;
 
   db::Exciter* settings = nullptr;

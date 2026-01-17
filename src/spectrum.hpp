@@ -74,6 +74,8 @@ class Spectrum : public PluginBase {
 
   static constexpr uint n_bands = 8192U;
 
+  bool ready = false;
+
   std::array<float, n_bands> real_input;
 
   QList<double> output = QList<double>(((n_bands / 2U) + 1U));
