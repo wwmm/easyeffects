@@ -18,9 +18,13 @@
  */
 
 #include "crusher.hpp"
+#include <qapplication.h>
+#include <qnamespace.h>
+#include <qobjectdefs.h>
 #include <algorithm>
 #include <format>
 #include <memory>
+#include <mutex>
 #include <span>
 #include <string>
 #include "db_manager.hpp"
@@ -83,6 +87,10 @@ void Crusher::reset() {
 }
 
 void Crusher::setup() {
+  std::scoped_lock<std::mutex> lock(data_mutex);
+
+  ready = false;
+
   if (!lv2_wrapper->found_plugin) {
     return;
   }
@@ -90,7 +98,18 @@ void Crusher::setup() {
   lv2_wrapper->set_n_samples(n_samples);
 
   if (lv2_wrapper->get_rate() != rate) {
-    lv2_wrapper->create_instance(rate);
+    // NOLINTBEGIN(clang-analyzer-cplusplus.NewDeleteLeaks)
+    QMetaObject::invokeMethod(
+        QApplication::instance(),
+        [this] {
+          lv2_wrapper->create_instance(rate);
+
+          std::scoped_lock<std::mutex> lock(data_mutex);
+
+          ready = true;
+        },
+        Qt::QueuedConnection);
+    // NOLINTEND(clang-analyzer-cplusplus.NewDeleteLeaks)
   }
 }
 
@@ -98,15 +117,22 @@ void Crusher::process(std::span<float>& left_in,
                       std::span<float>& right_in,
                       std::span<float>& left_out,
                       std::span<float>& right_out) {
-  if (!lv2_wrapper->found_plugin || !lv2_wrapper->has_instance() || bypass) {
+  if (bypass) {
     std::ranges::copy(left_in, left_out.begin());
     std::ranges::copy(right_in, right_out.begin());
 
     return;
   }
 
-  if (input_gain != 1.0F) {
-    apply_gain(left_in, right_in, input_gain);
+  if (!ready) {
+    std::ranges::copy(left_in, left_out.begin());
+    std::ranges::copy(right_in, right_out.begin());
+
+    if (output_gain != 1.0F) {
+      apply_gain(left_out, right_out, output_gain);
+    }
+
+    return;
   }
 
   lv2_wrapper->connect_data_ports(left_in, right_in, left_out, right_out);

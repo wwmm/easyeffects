@@ -18,9 +18,13 @@
  */
 
 #include "exciter.hpp"
+#include <qnamespace.h>
+#include <qobjectdefs.h>
 #include <QApplication>
 #include <algorithm>
+#include <format>
 #include <memory>
+#include <mutex>
 #include <span>
 #include <string>
 #include "db_manager.hpp"

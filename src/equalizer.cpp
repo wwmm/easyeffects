@@ -19,15 +19,17 @@
 
 #include "equalizer.hpp"
 #include <qlist.h>
+#include <qnamespace.h>
 #include <qobject.h>
-#include <QApplication>
 #include <sys/types.h>
+#include <QApplication>
 #include <algorithm>
 #include <cmath>
 #include <filesystem>
 #include <format>
 #include <map>
 #include <memory>
+#include <mutex>
 #include <span>
 #include <string>
 #include <utility>

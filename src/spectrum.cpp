@@ -20,9 +20,11 @@
 #include "spectrum.hpp"
 #include <fftw3.h>
 #include <qlist.h>
+#include <qnamespace.h>
+#include <qobjectdefs.h>
 #include <qtypes.h>
-#include <QString>
 #include <QApplication>
+#include <QString>
 #include <algorithm>
 #include <cassert>
 #include <cmath>

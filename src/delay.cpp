@@ -18,12 +18,14 @@
  */
 
 #include "delay.hpp"
+#include <qnamespace.h>
 #include <qobject.h>
-#include <QApplication>
 #include <sys/types.h>
+#include <QApplication>
 #include <algorithm>
 #include <format>
 #include <memory>
+#include <mutex>
 #include <span>
 #include <string>
 #include "db_manager.hpp"

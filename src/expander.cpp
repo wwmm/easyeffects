@@ -18,13 +18,15 @@
  */
 
 #include "expander.hpp"
+#include <qnamespace.h>
 #include <qobject.h>
-#include <QApplication>
 #include <spa/utils/defs.h>
 #include <sys/types.h>
+#include <QApplication>
 #include <algorithm>
 #include <format>
 #include <memory>
+#include <mutex>
 #include <span>
 #include <string>
 #include "db_manager.hpp"

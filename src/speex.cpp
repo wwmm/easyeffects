@@ -18,12 +18,15 @@
  */
 
 #include "speex.hpp"
+#include <qnamespace.h>
+#include <qobjectdefs.h>
 #include <speex/speex_preprocess.h>
 #include <speex/speexdsp_config_types.h>
 #include <QApplication>
 #include <algorithm>
 #include <climits>
 #include <cstddef>
+#include <format>
 #include <mutex>
 #include <span>
 #include <string>

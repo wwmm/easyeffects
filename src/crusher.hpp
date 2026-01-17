@@ -59,4 +59,6 @@ class Crusher : public PluginBase {
 
  private:
   db::Crusher* settings = nullptr;
+
+  bool ready = false;
 };

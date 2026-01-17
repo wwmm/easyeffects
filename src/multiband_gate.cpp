@@ -19,13 +19,16 @@
 
 #include "multiband_gate.hpp"
 #include <qlist.h>
+#include <qnamespace.h>
+#include <qobjectdefs.h>
 #include <qtypes.h>
-#include <QApplication>
 #include <spa/utils/defs.h>
+#include <QApplication>
 #include <QString>
 #include <algorithm>
 #include <format>
 #include <memory>
+#include <mutex>
 #include <span>
 #include <string>
 #include "db_manager.hpp"

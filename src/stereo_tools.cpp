@@ -18,11 +18,14 @@
  */
 
 #include "stereo_tools.hpp"
+#include <qnamespace.h>
+#include <qobjectdefs.h>
 #include <QApplication>
 #include <algorithm>
 #include <cstddef>
 #include <format>
 #include <memory>
+#include <mutex>
 #include <span>
 #include <string>
 #include "db_manager.hpp"
