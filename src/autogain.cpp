@@ -22,7 +22,6 @@
 #include <qnamespace.h>
 #include <qobjectdefs.h>
 #include <qtypes.h>
-#include <QApplication>
 #include <algorithm>
 #include <cmath>
 #include <cstddef>
@@ -139,7 +138,7 @@ void Autogain::setup() {
 
   // NOLINTBEGIN(clang-analyzer-cplusplus.NewDeleteLeaks)
   QMetaObject::invokeMethod(
-      QApplication::instance(),
+      baseWorker,
       [this] {
         if (ebur128_ready) {
           return;

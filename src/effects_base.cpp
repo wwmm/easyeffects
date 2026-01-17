@@ -28,7 +28,6 @@
 #include <qtmetamacros.h>
 #include <qtypes.h>
 #include <spa/utils/defs.h>
-#include <QApplication>
 #include <QSharedPointer>
 #include <QString>
 #include <algorithm>

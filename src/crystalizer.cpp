@@ -22,7 +22,6 @@
 #include <qnamespace.h>
 #include <qobjectdefs.h>
 #include <qtypes.h>
-#include <QApplication>
 #include <algorithm>
 #include <array>
 #include <cmath>
@@ -176,7 +175,7 @@ void Crystalizer::setup() {
   // NOLINTBEGIN(clang-analyzer-cplusplus.NewDeleteLeaks)
 
   QMetaObject::invokeMethod(
-      QApplication::instance(),
+      baseWorker,
       [this] {
         if (filters_are_ready) {
           return;
