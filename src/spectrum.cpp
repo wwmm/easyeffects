@@ -134,21 +134,20 @@ void Spectrum::setup() {
 
   ready = false;
 
-  if (lv2_wrapper->get_rate() != rate) {
-    // NOLINTBEGIN(clang-analyzer-cplusplus.NewDeleteLeaks)
-    QMetaObject::invokeMethod(
-        QApplication::instance(),
-        [this] {
-          util::debug(std::format("{} creating instance of comp delay x2 stereo for spectrum A/V sync", log_tag));
-          lv2_wrapper->create_instance(rate);
+  // NOLINTBEGIN(clang-analyzer-cplusplus.NewDeleteLeaks)
+  QMetaObject::invokeMethod(
+      QApplication::instance(),
+      [this] {
+        util::debug(std::format("{} creating instance of comp delay x2 stereo for spectrum A/V sync", log_tag));
 
-          std::scoped_lock<std::mutex> lock(data_mutex);
+        lv2_wrapper->create_instance(rate);
 
-          ready = true;
-        },
-        Qt::QueuedConnection);
-    // NOLINTEND(clang-analyzer-cplusplus.NewDeleteLeaks)
-  }
+        std::scoped_lock<std::mutex> lock(data_mutex);
+
+        ready = true;
+      },
+      Qt::QueuedConnection);
+  // NOLINTEND(clang-analyzer-cplusplus.NewDeleteLeaks)
 }
 
 void Spectrum::process(std::span<float>& left_in,

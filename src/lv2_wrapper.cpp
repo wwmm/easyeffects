@@ -236,6 +236,10 @@ void Lv2Wrapper::create_ports() {
 }
 
 auto Lv2Wrapper::create_instance(const uint& rate) -> bool {
+  if (instance != nullptr && this->rate == rate) {
+    return true;
+  }
+
   this->rate = rate;
 
   if (instance != nullptr) {

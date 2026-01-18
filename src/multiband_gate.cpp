@@ -186,20 +186,18 @@ void MultibandGate::setup() {
 
   lv2_wrapper->set_n_samples(n_samples);
 
-  if (lv2_wrapper->get_rate() != rate) {
-    // NOLINTBEGIN(clang-analyzer-cplusplus.NewDeleteLeaks)
-    QMetaObject::invokeMethod(
-        QApplication::instance(),
-        [this] {
-          lv2_wrapper->create_instance(rate);
+  // NOLINTBEGIN(clang-analyzer-cplusplus.NewDeleteLeaks)
+  QMetaObject::invokeMethod(
+      QApplication::instance(),
+      [this] {
+        lv2_wrapper->create_instance(rate);
 
-          std::scoped_lock<std::mutex> lock(data_mutex);
+        std::scoped_lock<std::mutex> lock(data_mutex);
 
-          ready = true;
-        },
-        Qt::QueuedConnection);
-    // NOLINTEND(clang-analyzer-cplusplus.NewDeleteLeaks)
-  }
+        ready = true;
+      },
+      Qt::QueuedConnection);
+  // NOLINTEND(clang-analyzer-cplusplus.NewDeleteLeaks)
 }
 
 void MultibandGate::process([[maybe_unused]] std::span<float>& left_in,
