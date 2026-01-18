@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-01-17 21:17-0300\n"
+"POT-Creation-Date: 2026-01-18 19:04-0300\n"
 "PO-Revision-Date: 2026-01-15 22:01+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
@@ -121,9 +121,10 @@ msgstr "关于"
 #: src/contents/ui/Autogain.qml:69 src/contents/ui/BassEnhancer.qml:105
 #: src/contents/ui/BassLoudness.qml:58 src/contents/ui/Crossfeed.qml:73
 #: src/contents/ui/DeepFilterNet.qml:93 src/contents/ui/Exciter.qml:106
-#: src/contents/ui/Filter.qml:58 src/contents/ui/Loudness.qml:58
-#: src/contents/ui/Maximizer.qml:59 src/contents/ui/Pitch.qml:59
-#: src/contents/ui/Reverb.qml:59 src/contents/ui/Speex.qml:58
+#: src/contents/ui/Filter.qml:58 src/contents/ui/Karaoke.qml:57
+#: src/contents/ui/Loudness.qml:58 src/contents/ui/Maximizer.qml:59
+#: src/contents/ui/Pitch.qml:59 src/contents/ui/Reverb.qml:59
+#: src/contents/ui/Speex.qml:58
 msgid "Controls"
 msgstr "控制项"
 
@@ -176,7 +177,7 @@ msgstr "最长历史记录"
 
 #: src/contents/ui/Autogain.qml:143 src/contents/ui/Autogain.qml:198
 #: src/contents/ui/BassLoudness.qml:66 src/contents/ui/LevelMeter.qml:146
-#: src/tags_plugin_name.cpp:45
+#: src/tags_plugin_name.cpp:46
 msgid "Loudness"
 msgstr "响度"
 
@@ -201,9 +202,9 @@ msgstr "输出增益"
 #: src/contents/ui/Delay.qml:373 src/contents/ui/EchoCanceller.qml:155
 #: src/contents/ui/Equalizer.qml:302 src/contents/ui/Exciter.qml:208
 #: src/contents/ui/Expander.qml:822 src/contents/ui/Filter.qml:217
-#: src/contents/ui/Gate.qml:951 src/contents/ui/LevelMeter.qml:215
-#: src/contents/ui/Limiter.qml:606 src/contents/ui/Loudness.qml:172
-#: src/contents/ui/Maximizer.qml:119
+#: src/contents/ui/Gate.qml:951 src/contents/ui/Karaoke.qml:85
+#: src/contents/ui/LevelMeter.qml:215 src/contents/ui/Limiter.qml:606
+#: src/contents/ui/Loudness.qml:172 src/contents/ui/Maximizer.qml:119
 #: src/contents/ui/MultibandCompressor.qml:965
 #: src/contents/ui/MultibandGate.qml:938 src/contents/ui/Pitch.qml:265
 #: src/contents/ui/Reverb.qml:316 src/contents/ui/RNNoise.qml:76
@@ -290,9 +291,9 @@ msgstr "聆听"
 #: src/contents/ui/Delay.qml:425 src/contents/ui/EchoCanceller.qml:183
 #: src/contents/ui/Equalizer.qml:386 src/contents/ui/Exciter.qml:250
 #: src/contents/ui/Expander.qml:874 src/contents/ui/Filter.qml:249
-#: src/contents/ui/Gate.qml:1003 src/contents/ui/Limiter.qml:658
-#: src/contents/ui/Loudness.qml:214 src/contents/ui/Main.qml:613
-#: src/contents/ui/Maximizer.qml:151
+#: src/contents/ui/Gate.qml:1003 src/contents/ui/Karaoke.qml:103
+#: src/contents/ui/Limiter.qml:658 src/contents/ui/Loudness.qml:214
+#: src/contents/ui/Main.qml:613 src/contents/ui/Maximizer.qml:151
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:356
 #: src/contents/ui/RNNoise.qml:346 src/contents/ui/Speex.qml:192
@@ -475,7 +476,7 @@ msgstr "外部输入"
 
 #: src/contents/ui/Compressor.qml:278 src/contents/ui/Expander.qml:238
 #: src/contents/ui/Gate.qml:256 src/contents/ui/Limiter.qml:228
-#: src/contents/ui/PageStreamsEffects.qml:438
+#: src/contents/ui/PageStreamsEffects.qml:440
 msgid "Input device"
 msgstr "输入设备"
 
@@ -1628,7 +1629,7 @@ msgstr "实际峰值/24 位输出"
 msgid "Dithering"
 msgstr "抖动"
 
-#: src/contents/ui/Limiter.qml:117 src/tags_plugin_name.cpp:44
+#: src/contents/ui/Limiter.qml:117 src/tags_plugin_name.cpp:45
 msgid "Limiter"
 msgstr "限幅器"
 
@@ -1753,7 +1754,7 @@ msgstr "退出"
 msgid "Go back"
 msgstr "返回"
 
-#: src/contents/ui/Main.qml:499 src/contents/ui/PageStreamsEffects.qml:740
+#: src/contents/ui/Main.qml:499 src/contents/ui/PageStreamsEffects.qml:742
 msgid "Effects"
 msgstr "音效"
 
@@ -1874,45 +1875,45 @@ msgstr "无音效"
 msgid "Audio stream not modified"
 msgstr "音频流未修改"
 
-#: src/contents/ui/PageStreamsEffects.qml:373
+#: src/contents/ui/PageStreamsEffects.qml:375
 msgid "Add effect"
 msgstr "添加音效"
 
-#: src/contents/ui/PageStreamsEffects.qml:381
+#: src/contents/ui/PageStreamsEffects.qml:383
 msgid "Close"
 msgstr "关闭"
 
-#: src/contents/ui/PageStreamsEffects.qml:385
+#: src/contents/ui/PageStreamsEffects.qml:387
 msgid "Expand the list of effects pipeline"
 msgstr "展开音效管线列表"
 
-#: src/contents/ui/PageStreamsEffects.qml:385
+#: src/contents/ui/PageStreamsEffects.qml:387
 msgid "Reduce the list of effects pipeline"
 msgstr "收起音效管线列表"
 
-#: src/contents/ui/PageStreamsEffects.qml:438
-#: src/contents/ui/PageStreamsEffects.qml:727
+#: src/contents/ui/PageStreamsEffects.qml:440
+#: src/contents/ui/PageStreamsEffects.qml:729
 msgid "Players"
 msgstr "播放器"
 
-#: src/contents/ui/PageStreamsEffects.qml:447
+#: src/contents/ui/PageStreamsEffects.qml:449
 msgid "Output device"
 msgstr "输出设备"
 
-#: src/contents/ui/PageStreamsEffects.qml:447
-#: src/contents/ui/PageStreamsEffects.qml:727
+#: src/contents/ui/PageStreamsEffects.qml:449
+#: src/contents/ui/PageStreamsEffects.qml:729
 msgid "Recorders"
 msgstr "录音器"
 
-#: src/contents/ui/PageStreamsEffects.qml:758
+#: src/contents/ui/PageStreamsEffects.qml:760
 msgid "Excluded apps"
 msgstr "已排除的应用程序"
 
-#: src/contents/ui/PageStreamsEffects.qml:767
+#: src/contents/ui/PageStreamsEffects.qml:769
 msgid "Input monitoring"
 msgstr "输入监听"
 
-#: src/contents/ui/PageStreamsEffects.qml:780
+#: src/contents/ui/PageStreamsEffects.qml:782
 msgid "Send audio to the virtual source"
 msgstr "发送音频至虚拟源"
 
@@ -2038,7 +2039,7 @@ msgstr "查找窗口"
 msgid "Overlap length"
 msgstr "重叠长度"
 
-#: src/contents/ui/Pitch.qml:163 src/tags_plugin_name.cpp:49
+#: src/contents/ui/Pitch.qml:163 src/tags_plugin_name.cpp:50
 msgid "Pitch"
 msgstr "音高"
 
@@ -2974,33 +2975,33 @@ msgstr "(扬声器)"
 msgid "Output Level Meter"
 msgstr "输出电平表"
 
-#: src/presets_manager.cpp:780 src/presets_manager.cpp:787
-#: src/presets_manager.cpp:797 src/presets_manager.cpp:804
-#: src/presets_manager.cpp:814 src/presets_manager.cpp:823
+#: src/presets_manager.cpp:781 src/presets_manager.cpp:788
+#: src/presets_manager.cpp:798 src/presets_manager.cpp:805
+#: src/presets_manager.cpp:815 src/presets_manager.cpp:824
 msgid "Preset not loaded correctly"
 msgstr "未正确加载预设"
 
-#: src/presets_manager.cpp:780
+#: src/presets_manager.cpp:781
 msgid "Wrong format in excluded apps list"
 msgstr "已排除应用程序列表存在格式错误"
 
-#: src/presets_manager.cpp:788
+#: src/presets_manager.cpp:789
 msgid "Generic error while loading excluded apps list"
 msgstr "加载已排除应用程序列表时发生常规错误"
 
-#: src/presets_manager.cpp:797
+#: src/presets_manager.cpp:798
 msgid "Wrong format in effects list"
 msgstr "音效列表存在格式错误"
 
-#: src/presets_manager.cpp:804
+#: src/presets_manager.cpp:805
 msgid "Generic error while loading effects list"
 msgstr "加载音效列表时发生常规错误"
 
-#: src/presets_manager.cpp:815
+#: src/presets_manager.cpp:816
 msgid "One or more parameters have a wrong format"
 msgstr "一个或多个参数存在格式错误"
 
-#: src/presets_manager.cpp:824
+#: src/presets_manager.cpp:825
 msgid "Generic error while loading the effect"
 msgstr "加载音效时发生常规错误"
 
@@ -3065,34 +3066,38 @@ msgid "Exciter"
 msgstr "激励器"
 
 #: src/tags_plugin_name.cpp:43
+msgid "Karaoke"
+msgstr ""
+
+#: src/tags_plugin_name.cpp:44
 msgid "Level Meter"
 msgstr "电平表"
 
-#: src/tags_plugin_name.cpp:46
+#: src/tags_plugin_name.cpp:47
 msgid "Maximizer"
 msgstr "放大器"
 
-#: src/tags_plugin_name.cpp:47
+#: src/tags_plugin_name.cpp:48
 msgid "Multiband Compressor"
 msgstr "多频带压缩器"
 
-#: src/tags_plugin_name.cpp:48
+#: src/tags_plugin_name.cpp:49
 msgid "Multiband Gate"
 msgstr "多频带门限"
 
-#: src/tags_plugin_name.cpp:50
+#: src/tags_plugin_name.cpp:51
 msgid "Reverberation"
 msgstr "混响"
 
-#: src/tags_plugin_name.cpp:51
+#: src/tags_plugin_name.cpp:52
 msgid "Noise Reduction"
 msgstr "降噪"
 
-#: src/tags_plugin_name.cpp:52
+#: src/tags_plugin_name.cpp:53
 msgid "Speech Processor"
 msgstr "人声处理器"
 
-#: src/tags_plugin_name.cpp:53
+#: src/tags_plugin_name.cpp:54
 msgid "Stereo Tools"
 msgstr "立体声工具"
 

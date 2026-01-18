@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-01-17 21:17-0300\n"
+"POT-Creation-Date: 2026-01-18 19:04-0300\n"
 "PO-Revision-Date: 2025-11-23 11:51+0000\n"
 "Last-Translator: Suu <suunya21@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
@@ -125,9 +125,10 @@ msgstr "概要"
 #: src/contents/ui/Autogain.qml:69 src/contents/ui/BassEnhancer.qml:105
 #: src/contents/ui/BassLoudness.qml:58 src/contents/ui/Crossfeed.qml:73
 #: src/contents/ui/DeepFilterNet.qml:93 src/contents/ui/Exciter.qml:106
-#: src/contents/ui/Filter.qml:58 src/contents/ui/Loudness.qml:58
-#: src/contents/ui/Maximizer.qml:59 src/contents/ui/Pitch.qml:59
-#: src/contents/ui/Reverb.qml:59 src/contents/ui/Speex.qml:58
+#: src/contents/ui/Filter.qml:58 src/contents/ui/Karaoke.qml:57
+#: src/contents/ui/Loudness.qml:58 src/contents/ui/Maximizer.qml:59
+#: src/contents/ui/Pitch.qml:59 src/contents/ui/Reverb.qml:59
+#: src/contents/ui/Speex.qml:58
 msgid "Controls"
 msgstr "コントロール"
 
@@ -180,7 +181,7 @@ msgstr "最大履歴"
 
 #: src/contents/ui/Autogain.qml:143 src/contents/ui/Autogain.qml:198
 #: src/contents/ui/BassLoudness.qml:66 src/contents/ui/LevelMeter.qml:146
-#: src/tags_plugin_name.cpp:45
+#: src/tags_plugin_name.cpp:46
 msgid "Loudness"
 msgstr "ラウドネス"
 
@@ -205,9 +206,9 @@ msgstr "出力ゲイン"
 #: src/contents/ui/Delay.qml:373 src/contents/ui/EchoCanceller.qml:155
 #: src/contents/ui/Equalizer.qml:302 src/contents/ui/Exciter.qml:208
 #: src/contents/ui/Expander.qml:822 src/contents/ui/Filter.qml:217
-#: src/contents/ui/Gate.qml:951 src/contents/ui/LevelMeter.qml:215
-#: src/contents/ui/Limiter.qml:606 src/contents/ui/Loudness.qml:172
-#: src/contents/ui/Maximizer.qml:119
+#: src/contents/ui/Gate.qml:951 src/contents/ui/Karaoke.qml:85
+#: src/contents/ui/LevelMeter.qml:215 src/contents/ui/Limiter.qml:606
+#: src/contents/ui/Loudness.qml:172 src/contents/ui/Maximizer.qml:119
 #: src/contents/ui/MultibandCompressor.qml:965
 #: src/contents/ui/MultibandGate.qml:938 src/contents/ui/Pitch.qml:265
 #: src/contents/ui/Reverb.qml:316 src/contents/ui/RNNoise.qml:76
@@ -294,9 +295,9 @@ msgstr "聞く"
 #: src/contents/ui/Delay.qml:425 src/contents/ui/EchoCanceller.qml:183
 #: src/contents/ui/Equalizer.qml:386 src/contents/ui/Exciter.qml:250
 #: src/contents/ui/Expander.qml:874 src/contents/ui/Filter.qml:249
-#: src/contents/ui/Gate.qml:1003 src/contents/ui/Limiter.qml:658
-#: src/contents/ui/Loudness.qml:214 src/contents/ui/Main.qml:613
-#: src/contents/ui/Maximizer.qml:151
+#: src/contents/ui/Gate.qml:1003 src/contents/ui/Karaoke.qml:103
+#: src/contents/ui/Limiter.qml:658 src/contents/ui/Loudness.qml:214
+#: src/contents/ui/Main.qml:613 src/contents/ui/Maximizer.qml:151
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:356
 #: src/contents/ui/RNNoise.qml:346 src/contents/ui/Speex.qml:192
@@ -479,7 +480,7 @@ msgstr "外部"
 
 #: src/contents/ui/Compressor.qml:278 src/contents/ui/Expander.qml:238
 #: src/contents/ui/Gate.qml:256 src/contents/ui/Limiter.qml:228
-#: src/contents/ui/PageStreamsEffects.qml:438
+#: src/contents/ui/PageStreamsEffects.qml:440
 msgid "Input device"
 msgstr "入力デバイス"
 
@@ -1671,7 +1672,7 @@ msgstr "トゥルーピーク/24 bit"
 msgid "Dithering"
 msgstr "ディザリング"
 
-#: src/contents/ui/Limiter.qml:117 src/tags_plugin_name.cpp:44
+#: src/contents/ui/Limiter.qml:117 src/tags_plugin_name.cpp:45
 msgid "Limiter"
 msgstr "リミッター"
 
@@ -1796,7 +1797,7 @@ msgstr "終了"
 msgid "Go back"
 msgstr "戻る"
 
-#: src/contents/ui/Main.qml:499 src/contents/ui/PageStreamsEffects.qml:740
+#: src/contents/ui/Main.qml:499 src/contents/ui/PageStreamsEffects.qml:742
 msgid "Effects"
 msgstr "エフェクト"
 
@@ -1917,45 +1918,45 @@ msgstr "エフェクトなし"
 msgid "Audio stream not modified"
 msgstr "オーディオストリームは変更されていません"
 
-#: src/contents/ui/PageStreamsEffects.qml:373
+#: src/contents/ui/PageStreamsEffects.qml:375
 msgid "Add effect"
 msgstr "エフェクト追加"
 
-#: src/contents/ui/PageStreamsEffects.qml:381
+#: src/contents/ui/PageStreamsEffects.qml:383
 msgid "Close"
 msgstr "閉じる"
 
-#: src/contents/ui/PageStreamsEffects.qml:385
+#: src/contents/ui/PageStreamsEffects.qml:387
 msgid "Expand the list of effects pipeline"
 msgstr "エフェクトパイプラインのリストを展開"
 
-#: src/contents/ui/PageStreamsEffects.qml:385
+#: src/contents/ui/PageStreamsEffects.qml:387
 msgid "Reduce the list of effects pipeline"
 msgstr "エフェクトパイプラインのリストを折りたたむ"
 
-#: src/contents/ui/PageStreamsEffects.qml:438
-#: src/contents/ui/PageStreamsEffects.qml:727
+#: src/contents/ui/PageStreamsEffects.qml:440
+#: src/contents/ui/PageStreamsEffects.qml:729
 msgid "Players"
 msgstr "プレーヤー"
 
-#: src/contents/ui/PageStreamsEffects.qml:447
+#: src/contents/ui/PageStreamsEffects.qml:449
 msgid "Output device"
 msgstr "出力デバイス"
 
-#: src/contents/ui/PageStreamsEffects.qml:447
-#: src/contents/ui/PageStreamsEffects.qml:727
+#: src/contents/ui/PageStreamsEffects.qml:449
+#: src/contents/ui/PageStreamsEffects.qml:729
 msgid "Recorders"
 msgstr "レコーダー"
 
-#: src/contents/ui/PageStreamsEffects.qml:758
+#: src/contents/ui/PageStreamsEffects.qml:760
 msgid "Excluded apps"
 msgstr "除外アプリ"
 
-#: src/contents/ui/PageStreamsEffects.qml:767
+#: src/contents/ui/PageStreamsEffects.qml:769
 msgid "Input monitoring"
 msgstr "入力モニター"
 
-#: src/contents/ui/PageStreamsEffects.qml:780
+#: src/contents/ui/PageStreamsEffects.qml:782
 msgid "Send audio to the virtual source"
 msgstr ""
 
@@ -2081,7 +2082,7 @@ msgstr "ウィンドウシーク"
 msgid "Overlap length"
 msgstr "オーバーラップ長"
 
-#: src/contents/ui/Pitch.qml:163 src/tags_plugin_name.cpp:49
+#: src/contents/ui/Pitch.qml:163 src/tags_plugin_name.cpp:50
 msgid "Pitch"
 msgstr "ピッチ"
 
@@ -3040,33 +3041,33 @@ msgstr "(スピーカー)"
 msgid "Output Level Meter"
 msgstr "出力レベルメーター"
 
-#: src/presets_manager.cpp:780 src/presets_manager.cpp:787
-#: src/presets_manager.cpp:797 src/presets_manager.cpp:804
-#: src/presets_manager.cpp:814 src/presets_manager.cpp:823
+#: src/presets_manager.cpp:781 src/presets_manager.cpp:788
+#: src/presets_manager.cpp:798 src/presets_manager.cpp:805
+#: src/presets_manager.cpp:815 src/presets_manager.cpp:824
 msgid "Preset not loaded correctly"
 msgstr "プリセットが正しく読み込まれていません"
 
-#: src/presets_manager.cpp:780
+#: src/presets_manager.cpp:781
 msgid "Wrong format in excluded apps list"
 msgstr "間違った形式の除外されたアプリ一覧"
 
-#: src/presets_manager.cpp:788
+#: src/presets_manager.cpp:789
 msgid "Generic error while loading excluded apps list"
 msgstr "除外されたアプリ一覧の読み込み中に発生した一般的なエラー"
 
-#: src/presets_manager.cpp:797
+#: src/presets_manager.cpp:798
 msgid "Wrong format in effects list"
 msgstr "エフェクト一覧の間違った形式"
 
-#: src/presets_manager.cpp:804
+#: src/presets_manager.cpp:805
 msgid "Generic error while loading effects list"
 msgstr "エフェクト一覧の読み込み中に発生した一般的なエラー"
 
-#: src/presets_manager.cpp:815
+#: src/presets_manager.cpp:816
 msgid "One or more parameters have a wrong format"
 msgstr "1つ以上のパラメータに間違った形式が設定されています"
 
-#: src/presets_manager.cpp:824
+#: src/presets_manager.cpp:825
 msgid "Generic error while loading the effect"
 msgstr "エフェクトの読み込み中に発生した一般的なエラー"
 
@@ -3131,34 +3132,38 @@ msgid "Exciter"
 msgstr "エキサイター"
 
 #: src/tags_plugin_name.cpp:43
+msgid "Karaoke"
+msgstr ""
+
+#: src/tags_plugin_name.cpp:44
 msgid "Level Meter"
 msgstr "レベルメーター"
 
-#: src/tags_plugin_name.cpp:46
+#: src/tags_plugin_name.cpp:47
 msgid "Maximizer"
 msgstr "マキシマイザー"
 
-#: src/tags_plugin_name.cpp:47
+#: src/tags_plugin_name.cpp:48
 msgid "Multiband Compressor"
 msgstr "マルチバンドコンプレッサー"
 
-#: src/tags_plugin_name.cpp:48
+#: src/tags_plugin_name.cpp:49
 msgid "Multiband Gate"
 msgstr "マルチバンドゲート"
 
-#: src/tags_plugin_name.cpp:50
+#: src/tags_plugin_name.cpp:51
 msgid "Reverberation"
 msgstr "リバーブ"
 
-#: src/tags_plugin_name.cpp:51
+#: src/tags_plugin_name.cpp:52
 msgid "Noise Reduction"
 msgstr "ノイズリダクション"
 
-#: src/tags_plugin_name.cpp:52
+#: src/tags_plugin_name.cpp:53
 msgid "Speech Processor"
 msgstr "スピーチプロセッサー"
 
-#: src/tags_plugin_name.cpp:53
+#: src/tags_plugin_name.cpp:54
 msgid "Stereo Tools"
 msgstr "ステレオツール"
 

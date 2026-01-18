@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-01-17 21:17-0300\n"
+"POT-Creation-Date: 2026-01-18 19:04-0300\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -126,9 +126,10 @@ msgstr ""
 #: src/contents/ui/Autogain.qml:69 src/contents/ui/BassEnhancer.qml:105
 #: src/contents/ui/BassLoudness.qml:58 src/contents/ui/Crossfeed.qml:73
 #: src/contents/ui/DeepFilterNet.qml:93 src/contents/ui/Exciter.qml:106
-#: src/contents/ui/Filter.qml:58 src/contents/ui/Loudness.qml:58
-#: src/contents/ui/Maximizer.qml:59 src/contents/ui/Pitch.qml:59
-#: src/contents/ui/Reverb.qml:59 src/contents/ui/Speex.qml:58
+#: src/contents/ui/Filter.qml:58 src/contents/ui/Karaoke.qml:57
+#: src/contents/ui/Loudness.qml:58 src/contents/ui/Maximizer.qml:59
+#: src/contents/ui/Pitch.qml:59 src/contents/ui/Reverb.qml:59
+#: src/contents/ui/Speex.qml:58
 msgid "Controls"
 msgstr ""
 
@@ -187,7 +188,7 @@ msgstr "최대 히스토리"
 
 #: src/contents/ui/Autogain.qml:143 src/contents/ui/Autogain.qml:198
 #: src/contents/ui/BassLoudness.qml:66 src/contents/ui/LevelMeter.qml:146
-#: src/tags_plugin_name.cpp:45
+#: src/tags_plugin_name.cpp:46
 msgid "Loudness"
 msgstr "소리의 세기"
 
@@ -213,9 +214,9 @@ msgstr "아웃풋 게인"
 #: src/contents/ui/Delay.qml:373 src/contents/ui/EchoCanceller.qml:155
 #: src/contents/ui/Equalizer.qml:302 src/contents/ui/Exciter.qml:208
 #: src/contents/ui/Expander.qml:822 src/contents/ui/Filter.qml:217
-#: src/contents/ui/Gate.qml:951 src/contents/ui/LevelMeter.qml:215
-#: src/contents/ui/Limiter.qml:606 src/contents/ui/Loudness.qml:172
-#: src/contents/ui/Maximizer.qml:119
+#: src/contents/ui/Gate.qml:951 src/contents/ui/Karaoke.qml:85
+#: src/contents/ui/LevelMeter.qml:215 src/contents/ui/Limiter.qml:606
+#: src/contents/ui/Loudness.qml:172 src/contents/ui/Maximizer.qml:119
 #: src/contents/ui/MultibandCompressor.qml:965
 #: src/contents/ui/MultibandGate.qml:938 src/contents/ui/Pitch.qml:265
 #: src/contents/ui/Reverb.qml:316 src/contents/ui/RNNoise.qml:76
@@ -308,9 +309,9 @@ msgstr "듣기"
 #: src/contents/ui/Delay.qml:425 src/contents/ui/EchoCanceller.qml:183
 #: src/contents/ui/Equalizer.qml:386 src/contents/ui/Exciter.qml:250
 #: src/contents/ui/Expander.qml:874 src/contents/ui/Filter.qml:249
-#: src/contents/ui/Gate.qml:1003 src/contents/ui/Limiter.qml:658
-#: src/contents/ui/Loudness.qml:214 src/contents/ui/Main.qml:613
-#: src/contents/ui/Maximizer.qml:151
+#: src/contents/ui/Gate.qml:1003 src/contents/ui/Karaoke.qml:103
+#: src/contents/ui/Limiter.qml:658 src/contents/ui/Loudness.qml:214
+#: src/contents/ui/Main.qml:613 src/contents/ui/Maximizer.qml:151
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:356
 #: src/contents/ui/RNNoise.qml:346 src/contents/ui/Speex.qml:192
@@ -505,7 +506,7 @@ msgstr "외부"
 
 #: src/contents/ui/Compressor.qml:278 src/contents/ui/Expander.qml:238
 #: src/contents/ui/Gate.qml:256 src/contents/ui/Limiter.qml:228
-#: src/contents/ui/PageStreamsEffects.qml:438
+#: src/contents/ui/PageStreamsEffects.qml:440
 #, fuzzy
 msgid "Input device"
 msgstr "입력 장치"
@@ -1741,7 +1742,7 @@ msgstr "주파수 2 피크"
 msgid "Dithering"
 msgstr ""
 
-#: src/contents/ui/Limiter.qml:117 src/tags_plugin_name.cpp:44
+#: src/contents/ui/Limiter.qml:117 src/tags_plugin_name.cpp:45
 msgid "Limiter"
 msgstr "리미터"
 
@@ -1876,7 +1877,7 @@ msgstr "종료(_Q)"
 msgid "Go back"
 msgstr ""
 
-#: src/contents/ui/Main.qml:499 src/contents/ui/PageStreamsEffects.qml:740
+#: src/contents/ui/Main.qml:499 src/contents/ui/PageStreamsEffects.qml:742
 msgid "Effects"
 msgstr "효과음"
 
@@ -2007,49 +2008,49 @@ msgstr "효과 없음"
 msgid "Audio stream not modified"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:373
+#: src/contents/ui/PageStreamsEffects.qml:375
 #, fuzzy
 msgid "Add effect"
 msgstr "효과 추가하기"
 
-#: src/contents/ui/PageStreamsEffects.qml:381
+#: src/contents/ui/PageStreamsEffects.qml:383
 msgid "Close"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:385
+#: src/contents/ui/PageStreamsEffects.qml:387
 msgid "Expand the list of effects pipeline"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:385
+#: src/contents/ui/PageStreamsEffects.qml:387
 msgid "Reduce the list of effects pipeline"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:438
-#: src/contents/ui/PageStreamsEffects.qml:727
+#: src/contents/ui/PageStreamsEffects.qml:440
+#: src/contents/ui/PageStreamsEffects.qml:729
 msgid "Players"
 msgstr "재생기"
 
-#: src/contents/ui/PageStreamsEffects.qml:447
+#: src/contents/ui/PageStreamsEffects.qml:449
 #, fuzzy
 msgid "Output device"
 msgstr "출력 장치"
 
-#: src/contents/ui/PageStreamsEffects.qml:447
-#: src/contents/ui/PageStreamsEffects.qml:727
+#: src/contents/ui/PageStreamsEffects.qml:449
+#: src/contents/ui/PageStreamsEffects.qml:729
 msgid "Recorders"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:758
+#: src/contents/ui/PageStreamsEffects.qml:760
 #, fuzzy
 msgid "Excluded apps"
 msgstr "제외된 응용프로그램에 추가하기"
 
-#: src/contents/ui/PageStreamsEffects.qml:767
+#: src/contents/ui/PageStreamsEffects.qml:769
 #, fuzzy
 msgid "Input monitoring"
 msgstr "이 응용프로그램 활성화/비활성화"
 
-#: src/contents/ui/PageStreamsEffects.qml:780
+#: src/contents/ui/PageStreamsEffects.qml:782
 msgid "Send audio to the virtual source"
 msgstr ""
 
@@ -2184,7 +2185,7 @@ msgstr "탐색 창"
 msgid "Overlap length"
 msgstr "오버랩 길이"
 
-#: src/contents/ui/Pitch.qml:163 src/tags_plugin_name.cpp:49
+#: src/contents/ui/Pitch.qml:163 src/tags_plugin_name.cpp:50
 msgid "Pitch"
 msgstr "피치"
 
@@ -3189,36 +3190,36 @@ msgstr ""
 msgid "Output Level Meter"
 msgstr "출력 레벨 미터"
 
-#: src/presets_manager.cpp:780 src/presets_manager.cpp:787
-#: src/presets_manager.cpp:797 src/presets_manager.cpp:804
-#: src/presets_manager.cpp:814 src/presets_manager.cpp:823
+#: src/presets_manager.cpp:781 src/presets_manager.cpp:788
+#: src/presets_manager.cpp:798 src/presets_manager.cpp:805
+#: src/presets_manager.cpp:815 src/presets_manager.cpp:824
 #, fuzzy
 msgid "Preset not loaded correctly"
 msgstr "새 프리셋 이름"
 
-#: src/presets_manager.cpp:780
+#: src/presets_manager.cpp:781
 #, fuzzy
 msgid "Wrong format in excluded apps list"
 msgstr "제외된 프로그램 목록"
 
-#: src/presets_manager.cpp:788
+#: src/presets_manager.cpp:789
 msgid "Generic error while loading excluded apps list"
 msgstr ""
 
-#: src/presets_manager.cpp:797
+#: src/presets_manager.cpp:798
 #, fuzzy
 msgid "Wrong format in effects list"
 msgstr "제외된 프로그램 목록"
 
-#: src/presets_manager.cpp:804
+#: src/presets_manager.cpp:805
 msgid "Generic error while loading effects list"
 msgstr ""
 
-#: src/presets_manager.cpp:815
+#: src/presets_manager.cpp:816
 msgid "One or more parameters have a wrong format"
 msgstr ""
 
-#: src/presets_manager.cpp:824
+#: src/presets_manager.cpp:825
 msgid "Generic error while loading the effect"
 msgstr ""
 
@@ -3283,34 +3284,38 @@ msgid "Exciter"
 msgstr "익사이터"
 
 #: src/tags_plugin_name.cpp:43
+msgid "Karaoke"
+msgstr ""
+
+#: src/tags_plugin_name.cpp:44
 msgid "Level Meter"
 msgstr "레벨 미터"
 
-#: src/tags_plugin_name.cpp:46
+#: src/tags_plugin_name.cpp:47
 msgid "Maximizer"
 msgstr "맥시마이저"
 
-#: src/tags_plugin_name.cpp:47
+#: src/tags_plugin_name.cpp:48
 msgid "Multiband Compressor"
 msgstr "멀티밴드 컴프레서"
 
-#: src/tags_plugin_name.cpp:48
+#: src/tags_plugin_name.cpp:49
 msgid "Multiband Gate"
 msgstr "멀티밴드 게이트"
 
-#: src/tags_plugin_name.cpp:50
+#: src/tags_plugin_name.cpp:51
 msgid "Reverberation"
 msgstr "리버버레이션"
 
-#: src/tags_plugin_name.cpp:51
+#: src/tags_plugin_name.cpp:52
 msgid "Noise Reduction"
 msgstr "노이즈 저감"
 
-#: src/tags_plugin_name.cpp:52
+#: src/tags_plugin_name.cpp:53
 msgid "Speech Processor"
 msgstr "음성 프로세서"
 
-#: src/tags_plugin_name.cpp:53
+#: src/tags_plugin_name.cpp:54
 msgid "Stereo Tools"
 msgstr "스테레오 도구"
 
