@@ -47,6 +47,7 @@
 #include "easyeffects_db_expander.h"
 #include "easyeffects_db_filter.h"
 #include "easyeffects_db_gate.h"
+#include "easyeffects_db_karaoke.h"
 #include "easyeffects_db_level_meter.h"
 #include "easyeffects_db_limiter.h"
 #include "easyeffects_db_loudness.h"
@@ -242,6 +243,9 @@ void Manager::create_plugin_db(const QString& parentGroup,
 
     } else if (name.startsWith(tags::plugin_name::BaseName::gate)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::gate, id), [&] { return new db::Gate(parentGroup, id); });
+
+    } else if (name.startsWith(tags::plugin_name::BaseName::karaoke)) {
+      ensureExists(makeKey(tags::plugin_name::BaseName::karaoke, id), [&] { return new db::Karaoke(parentGroup, id); });
 
     } else if (name.startsWith(tags::plugin_name::BaseName::levelMeter)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::levelMeter, id),

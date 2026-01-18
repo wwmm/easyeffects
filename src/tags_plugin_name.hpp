@@ -83,6 +83,7 @@ class BaseName : public QObject {
   CREATE_PROPERTY(QString, expander, QStringLiteral("expander"));
   CREATE_PROPERTY(QString, filter, QStringLiteral("filter"));
   CREATE_PROPERTY(QString, gate, QStringLiteral("gate"));
+  CREATE_PROPERTY(QString, karaoke, QStringLiteral("karaoke"));
   CREATE_PROPERTY(QString, levelMeter, QStringLiteral("level_meter"));
   CREATE_PROPERTY(QString, limiter, QStringLiteral("limiter"));
   CREATE_PROPERTY(QString, loudness, QStringLiteral("loudness"));

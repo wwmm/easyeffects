@@ -56,6 +56,7 @@
 #include "expander.hpp"
 #include "filter.hpp"
 #include "gate.hpp"
+#include "karaoke.hpp"
 #include "level_meter.hpp"
 #include "limiter.hpp"
 #include "loudness.hpp"
@@ -147,58 +148,88 @@ void EffectsBase::create_filters_if_necessary() {
 
     if (name.startsWith(tags::plugin_name::BaseName::autogain)) {
       filter = std::make_shared<Autogain>(log_tag, pm, pipeline_type, instance_id);
+
     } else if (name.startsWith(tags::plugin_name::BaseName::bassEnhancer)) {
       filter = std::make_shared<BassEnhancer>(log_tag, pm, pipeline_type, instance_id);
+
     } else if (name.startsWith(tags::plugin_name::BaseName::bassLoudness)) {
       filter = std::make_shared<BassLoudness>(log_tag, pm, pipeline_type, instance_id);
+
     } else if (name.startsWith(tags::plugin_name::BaseName::compressor)) {
       filter = std::make_shared<Compressor>(log_tag, pm, pipeline_type, instance_id);
+
     } else if (name.startsWith(tags::plugin_name::BaseName::convolver)) {
       filter = std::make_shared<Convolver>(log_tag, pm, pipeline_type, instance_id);
+
     } else if (name.startsWith(tags::plugin_name::BaseName::crossfeed)) {
       filter = std::make_shared<Crossfeed>(log_tag, pm, pipeline_type, instance_id);
+
     } else if (name.startsWith(tags::plugin_name::BaseName::crusher)) {
       filter = std::make_shared<Crusher>(log_tag, pm, pipeline_type, instance_id);
+
     } else if (name.startsWith(tags::plugin_name::BaseName::crystalizer)) {
       filter = std::make_shared<Crystalizer>(log_tag, pm, pipeline_type, instance_id);
+
     } else if (name.startsWith(tags::plugin_name::BaseName::deepfilternet)) {
       filter = std::make_shared<DeepFilterNet>(log_tag, pm, pipeline_type, instance_id);
+
     } else if (name.startsWith(tags::plugin_name::BaseName::deesser)) {
       filter = std::make_shared<Deesser>(log_tag, pm, pipeline_type, instance_id);
+
     } else if (name.startsWith(tags::plugin_name::BaseName::delay)) {
       filter = std::make_shared<Delay>(log_tag, pm, pipeline_type, instance_id);
+
     } else if (name.startsWith(tags::plugin_name::BaseName::echoCanceller)) {
       filter = std::make_shared<EchoCanceller>(log_tag, pm, pipeline_type, instance_id);
+
     } else if (name.startsWith(tags::plugin_name::BaseName::exciter)) {
       filter = std::make_shared<Exciter>(log_tag, pm, pipeline_type, instance_id);
+
     } else if (name.startsWith(tags::plugin_name::BaseName::expander)) {
       filter = std::make_shared<Expander>(log_tag, pm, pipeline_type, instance_id);
+
     } else if (name.startsWith(tags::plugin_name::BaseName::equalizer)) {
       filter = std::make_shared<Equalizer>(log_tag, pm, pipeline_type, instance_id);
+
     } else if (name.startsWith(tags::plugin_name::BaseName::filter)) {
       filter = std::make_shared<Filter>(log_tag, pm, pipeline_type, instance_id);
+
     } else if (name.startsWith(tags::plugin_name::BaseName::gate)) {
       filter = std::make_shared<Gate>(log_tag, pm, pipeline_type, instance_id);
+
+    } else if (name.startsWith(tags::plugin_name::BaseName::karaoke)) {
+      filter = std::make_shared<Karaoke>(log_tag, pm, pipeline_type, instance_id);
+
     } else if (name.startsWith(tags::plugin_name::BaseName::levelMeter)) {
       filter = std::make_shared<LevelMeter>(log_tag, pm, pipeline_type, instance_id);
+
     } else if (name.startsWith(tags::plugin_name::BaseName::limiter)) {
       filter = std::make_shared<Limiter>(log_tag, pm, pipeline_type, instance_id);
+
     } else if (name.startsWith(tags::plugin_name::BaseName::loudness)) {
       filter = std::make_shared<Loudness>(log_tag, pm, pipeline_type, instance_id);
+
     } else if (name.startsWith(tags::plugin_name::BaseName::maximizer)) {
       filter = std::make_shared<Maximizer>(log_tag, pm, pipeline_type, instance_id);
+
     } else if (name.startsWith(tags::plugin_name::BaseName::multibandCompressor)) {
       filter = std::make_shared<MultibandCompressor>(log_tag, pm, pipeline_type, instance_id);
+
     } else if (name.startsWith(tags::plugin_name::BaseName::multibandGate)) {
       filter = std::make_shared<MultibandGate>(log_tag, pm, pipeline_type, instance_id);
+
     } else if (name.startsWith(tags::plugin_name::BaseName::pitch)) {
       filter = std::make_shared<Pitch>(log_tag, pm, pipeline_type, instance_id);
+
     } else if (name.startsWith(tags::plugin_name::BaseName::reverb)) {
       filter = std::make_shared<Reverb>(log_tag, pm, pipeline_type, instance_id);
+
     } else if (name.startsWith(tags::plugin_name::BaseName::rnnoise)) {
       filter = std::make_shared<RNNoise>(log_tag, pm, pipeline_type, instance_id);
+
     } else if (name.startsWith(tags::plugin_name::BaseName::speex)) {
       filter = std::make_shared<Speex>(log_tag, pm, pipeline_type, instance_id);
+
     } else if (name.startsWith(tags::plugin_name::BaseName::stereoTools)) {
       filter = std::make_shared<StereoTools>(log_tag, pm, pipeline_type, instance_id);
     }
@@ -277,58 +308,88 @@ QVariant EffectsBase::getPluginInstance(const QString& pluginName) {
 
   if (pluginName.startsWith(tags::plugin_name::BaseName::autogain)) {
     return QVariant::fromValue(dynamic_cast<Autogain*>(p.get()));
+
   } else if (pluginName.startsWith(tags::plugin_name::BaseName::bassEnhancer)) {
     return QVariant::fromValue(dynamic_cast<BassEnhancer*>(p.get()));
+
   } else if (pluginName.startsWith(tags::plugin_name::BaseName::bassLoudness)) {
     return QVariant::fromValue(dynamic_cast<BassLoudness*>(p.get()));
+
   } else if (pluginName.startsWith(tags::plugin_name::BaseName::compressor)) {
     return QVariant::fromValue(dynamic_cast<Compressor*>(p.get()));
+
   } else if (pluginName.startsWith(tags::plugin_name::BaseName::convolver)) {
     return QVariant::fromValue(dynamic_cast<Convolver*>(p.get()));
+
   } else if (pluginName.startsWith(tags::plugin_name::BaseName::crossfeed)) {
     return QVariant::fromValue(dynamic_cast<Crossfeed*>(p.get()));
+
   } else if (pluginName.startsWith(tags::plugin_name::BaseName::crusher)) {
     return QVariant::fromValue(dynamic_cast<Crusher*>(p.get()));
+
   } else if (pluginName.startsWith(tags::plugin_name::BaseName::crystalizer)) {
     return QVariant::fromValue(dynamic_cast<Crystalizer*>(p.get()));
+
   } else if (pluginName.startsWith(tags::plugin_name::BaseName::delay)) {
     return QVariant::fromValue(dynamic_cast<Delay*>(p.get()));
+
   } else if (pluginName.startsWith(tags::plugin_name::BaseName::deepfilternet)) {
     return QVariant::fromValue(dynamic_cast<DeepFilterNet*>(p.get()));
+
   } else if (pluginName.startsWith(tags::plugin_name::BaseName::deesser)) {
     return QVariant::fromValue(dynamic_cast<Deesser*>(p.get()));
+
   } else if (pluginName.startsWith(tags::plugin_name::BaseName::echoCanceller)) {
     return QVariant::fromValue(dynamic_cast<EchoCanceller*>(p.get()));
+
   } else if (pluginName.startsWith(tags::plugin_name::BaseName::equalizer)) {
     return QVariant::fromValue(dynamic_cast<Equalizer*>(p.get()));
+
   } else if (pluginName.startsWith(tags::plugin_name::BaseName::exciter)) {
     return QVariant::fromValue(dynamic_cast<Exciter*>(p.get()));
+
   } else if (pluginName.startsWith(tags::plugin_name::BaseName::expander)) {
     return QVariant::fromValue(dynamic_cast<Expander*>(p.get()));
+
   } else if (pluginName.startsWith(tags::plugin_name::BaseName::filter)) {
     return QVariant::fromValue(dynamic_cast<Filter*>(p.get()));
+
   } else if (pluginName.startsWith(tags::plugin_name::BaseName::gate)) {
     return QVariant::fromValue(dynamic_cast<Gate*>(p.get()));
+
+  } else if (pluginName.startsWith(tags::plugin_name::BaseName::karaoke)) {
+    return QVariant::fromValue(dynamic_cast<Karaoke*>(p.get()));
+
   } else if (pluginName.startsWith(tags::plugin_name::BaseName::levelMeter)) {
     return QVariant::fromValue(dynamic_cast<LevelMeter*>(p.get()));
+
   } else if (pluginName.startsWith(tags::plugin_name::BaseName::limiter)) {
     return QVariant::fromValue(dynamic_cast<Limiter*>(p.get()));
+
   } else if (pluginName.startsWith(tags::plugin_name::BaseName::loudness)) {
     return QVariant::fromValue(dynamic_cast<Loudness*>(p.get()));
+
   } else if (pluginName.startsWith(tags::plugin_name::BaseName::maximizer)) {
     return QVariant::fromValue(dynamic_cast<Maximizer*>(p.get()));
+
   } else if (pluginName.startsWith(tags::plugin_name::BaseName::multibandCompressor)) {
     return QVariant::fromValue(dynamic_cast<MultibandCompressor*>(p.get()));
+
   } else if (pluginName.startsWith(tags::plugin_name::BaseName::multibandGate)) {
     return QVariant::fromValue(dynamic_cast<MultibandGate*>(p.get()));
+
   } else if (pluginName.startsWith(tags::plugin_name::BaseName::pitch)) {
     return QVariant::fromValue(dynamic_cast<Pitch*>(p.get()));
+
   } else if (pluginName.startsWith(tags::plugin_name::BaseName::reverb)) {
     return QVariant::fromValue(dynamic_cast<Reverb*>(p.get()));
+
   } else if (pluginName.startsWith(tags::plugin_name::BaseName::rnnoise)) {
     return QVariant::fromValue(dynamic_cast<RNNoise*>(p.get()));
+
   } else if (pluginName.startsWith(tags::plugin_name::BaseName::speex)) {
     return QVariant::fromValue(dynamic_cast<Speex*>(p.get()));
+
   } else if (pluginName.startsWith(tags::plugin_name::BaseName::stereoTools)) {
     return QVariant::fromValue(dynamic_cast<StereoTools*>(p.get()));
   }
