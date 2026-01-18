@@ -63,6 +63,8 @@ void CrystalizerPreset::save(nlohmann::json& json) {
 
   json[section][instance_name]["fixed-quantum"] = settings->useFixedQuantum();
 
+  json[section][instance_name]["transition-band"] = settings->transitionBand();
+
   json[section][instance_name]["oversampling"] = settings->oversampling();
 
   json[section][instance_name]["oversampling-quality"] = settings->oversamplingQuality();
@@ -88,6 +90,7 @@ void CrystalizerPreset::load(const nlohmann::json& json) {
   UPDATE_PROPERTY("output-gain", OutputGain);
   UPDATE_PROPERTY("adaptive-intensity", AdaptiveIntensity);
   UPDATE_PROPERTY("fixed-quantum", UseFixedQuantum);
+  UPDATE_PROPERTY("transition-band", TransitionBand);
   UPDATE_PROPERTY("oversampling", Oversampling);
   UPDATE_PROPERTY("oversampling-quality", OversamplingQuality);
 

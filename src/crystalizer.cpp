@@ -111,6 +111,8 @@ Crystalizer::Crystalizer(const std::string& tag, pw::Manager* pipe_manager, Pipe
 
   connect(settings, &db::Crystalizer::oversamplingChanged, [&]() { setup(); });
 
+  connect(settings, &db::Crystalizer::transitionBandChanged, [&]() { setup(); });
+
   connect(settings, &db::Crystalizer::oversamplingQualityChanged, [&]() {
     std::scoped_lock<std::mutex> lock(data_mutex);
 
@@ -251,10 +253,9 @@ void Crystalizer::setup() {
         for (uint n = 0U; n < nbands; n++) {
           filters.at(n)->set_n_samples(blocksize);
           filters.at(n)->set_rate(blockrate);
-
           filters.at(n)->set_min_frequency(frequencies.at(n));
           filters.at(n)->set_max_frequency(frequencies.at(n + 1U));
-
+          filters.at(n)->set_transition_band(settings->transitionBand());
           filters.at(n)->setup();
         }
 

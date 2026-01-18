@@ -41,6 +41,12 @@
             <label></label>
             <default>false</default>
         </entry>
+        <entry name="transitionBand" type="Double">
+            <label></label>
+            <min>10</min>
+            <max>1000</max>
+            <default>120</default>
+        </entry>
 
         <entry name="intensityBand0" type="Double">
             <label></label>

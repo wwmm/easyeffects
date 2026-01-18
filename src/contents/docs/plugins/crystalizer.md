@@ -18,16 +18,20 @@ increase or decrease the intensity based on the geometric mean of the signal cre
 When using static intensity values it may happen that the crystalizer enhances high frequency audio too much. What leads
 to audible artifacts. The adaptive scaling removes this is most of the cases.  
 
-**Oversampling**
+**Oversampling**  
 Resamples the signal to double its sampling rate value and back to the orignal value after the plugins effects are applied.
 It improves the effects quality but it also increases CPU usage.  
 
-**Oversampling Quality**
+**Oversampling Quality**  
 Controls the resampling quality. Higher values require more CPU power.  
 
-**Fixed Quantum**
+**Fixed Quantum**  
 Forces the plugin to use a fixed audio buffer size to process audio. This helps to avoid noises when the sound server switches latency on the fly.
-But it has the downside of introducing unneded latency in some cases. And increased CPU usage in cases where higher latency could be used.
+But it has the downside of introducing unneded latency in some cases. And increased CPU usage in cases where higher latency could be used.  
+
+**Transition Band**  
+Controls the width of the transition band of the bandpass filters used to split the signal in several bands. Higher values will use less CPU. But will result in more overlap between the bands.  
+
 ## References
 
 - [Wikipedia Dynamic Range](https://en.wikipedia.org/wiki/Dynamic_range)  

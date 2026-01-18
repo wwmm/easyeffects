@@ -96,19 +96,48 @@ Kirigami.ScrollablePage {
             }
         }
 
-        EeSpinBox {
-            Layout.alignment: Qt.AlignHCenter
-            Layout.fillWidth: false
-            enabled: crystalizerPage.pluginDB.oversampling
-            label: i18n("Oversampling quality") // qmllint disable
-            spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
-            from: crystalizerPage.pluginDB.getMinValue("oversamplingQuality")
-            to: crystalizerPage.pluginDB.getMaxValue("oversamplingQuality")
-            value: crystalizerPage.pluginDB.oversamplingQuality
-            decimals: 0
-            stepSize: 1
-            onValueModified: v => {
-                crystalizerPage.pluginDB.oversamplingQuality = v;
+        Kirigami.CardsLayout {
+            Layout.topMargin: Kirigami.Units.largeSpacing
+            Layout.leftMargin: 3 * Kirigami.Units.mediumSpacing
+            Layout.rightMargin: 3 * Kirigami.Units.mediumSpacing
+            Layout.fillHeight: false
+            uniformCellWidths: true
+
+            EeSpinBox {
+                Layout.alignment: Qt.AlignHCenter
+                Layout.fillWidth: false
+                enabled: crystalizerPage.pluginDB.oversampling
+                label: i18n("Oversampling quality") // qmllint disable
+                labelFillWidth: true
+                labelAbove: true
+                spinboxLayoutFillWidth: true
+                from: crystalizerPage.pluginDB.getMinValue("oversamplingQuality")
+                to: crystalizerPage.pluginDB.getMaxValue("oversamplingQuality")
+                value: crystalizerPage.pluginDB.oversamplingQuality
+                decimals: 0
+                stepSize: 1
+                onValueModified: v => {
+                    crystalizerPage.pluginDB.oversamplingQuality = v;
+                }
+            }
+
+            EeSpinBox {
+                Layout.alignment: Qt.AlignHCenter
+                Layout.fillWidth: false
+                enabled: crystalizerPage.pluginDB.transitionBand
+                label: i18n("Transition band") // qmllint disable
+                labelFillWidth: true
+                labelAbove: true
+                spinboxLayoutFillWidth: true
+                from: crystalizerPage.pluginDB.getMinValue("transitionBand")
+                to: crystalizerPage.pluginDB.getMaxValue("transitionBand")
+                value: crystalizerPage.pluginDB.transitionBand
+                decimals: 0
+                stepSize: 1
+                unit: Units.hz
+                onValueModified: v => {
+                    crystalizerPage.pluginDB.transitionBand = v;
+                }
             }
         }
     }
