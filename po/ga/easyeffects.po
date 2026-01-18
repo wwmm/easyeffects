@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-01-14 13:16-0300\n"
+"POT-Creation-Date: 2026-01-17 21:17-0300\n"
 "PO-Revision-Date: 2026-01-17 22:01+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :(n>"
-"6 && n<11) ? 3 : 4;\n"
+"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :"
+"(n>6 && n<11) ? 3 : 4;\n"
 "X-Generator: Weblate 5.15.2\n"
 
 #: src/autostart.cpp:92
@@ -197,7 +197,7 @@ msgstr "Gnóthachan Aschuir"
 #: src/contents/ui/Autogain.qml:231 src/contents/ui/BassEnhancer.qml:203
 #: src/contents/ui/BassLoudness.qml:123 src/contents/ui/Compressor.qml:872
 #: src/contents/ui/Convolver.qml:518 src/contents/ui/Crossfeed.qml:147
-#: src/contents/ui/Crusher.qml:233 src/contents/ui/Crystalizer.qml:124
+#: src/contents/ui/Crusher.qml:233 src/contents/ui/Crystalizer.qml:153
 #: src/contents/ui/DeepFilterNet.qml:194 src/contents/ui/Deesser.qml:317
 #: src/contents/ui/Delay.qml:373 src/contents/ui/EchoCanceller.qml:155
 #: src/contents/ui/Equalizer.qml:302 src/contents/ui/Exciter.qml:208
@@ -288,7 +288,7 @@ msgstr "Éist"
 #: src/contents/ui/BassEnhancer.qml:245 src/contents/ui/BassLoudness.qml:141
 #: src/contents/ui/Compressor.qml:924 src/contents/ui/Convolver.qml:553
 #: src/contents/ui/Crossfeed.qml:173 src/contents/ui/Crusher.qml:265
-#: src/contents/ui/Crystalizer.qml:172 src/contents/ui/Deesser.qml:359
+#: src/contents/ui/Crystalizer.qml:201 src/contents/ui/Deesser.qml:359
 #: src/contents/ui/Delay.qml:425 src/contents/ui/EchoCanceller.qml:183
 #: src/contents/ui/Equalizer.qml:386 src/contents/ui/Exciter.qml:250
 #: src/contents/ui/Expander.qml:874 src/contents/ui/Filter.qml:249
@@ -332,7 +332,7 @@ msgstr "Cuir le hIarratais Eisiata"
 #: src/contents/ui/ConvolverImpulseDialog.qml:90
 #: src/contents/ui/MenuAddPlugins.qml:55
 #: src/contents/ui/PageStreamsEffects.qml:98
-#: src/contents/ui/PresetsAutoloadPage.qml:154
+#: src/contents/ui/PresetsAutoloadPage.qml:162
 #: src/contents/ui/PresetsCommunityPage.qml:105
 #: src/contents/ui/PresetsLocalPage.qml:194 src/contents/ui/RNNoise.qml:231
 msgid "Empty List"
@@ -480,7 +480,7 @@ msgstr "Seachtrach"
 
 #: src/contents/ui/Compressor.qml:278 src/contents/ui/Expander.qml:238
 #: src/contents/ui/Gate.qml:256 src/contents/ui/Limiter.qml:228
-#: src/contents/ui/PageStreamsEffects.qml:432
+#: src/contents/ui/PageStreamsEffects.qml:438
 msgid "Input device"
 msgstr "Gléas ionchuir"
 
@@ -952,19 +952,23 @@ msgstr "MuteName"
 msgid "Bypass"
 msgstr "Seachbhóthar"
 
-#: src/contents/ui/Crystalizer.qml:103
+#: src/contents/ui/Crystalizer.qml:110
 msgid "Oversampling quality"
 msgstr "Cáilíocht róshamplála"
 
-#: src/contents/ui/Crystalizer.qml:141 src/contents/ui/Limiter.qml:87
+#: src/contents/ui/Crystalizer.qml:128
+msgid "Transition band"
+msgstr ""
+
+#: src/contents/ui/Crystalizer.qml:170 src/contents/ui/Limiter.qml:87
 msgid "Oversampling"
 msgstr "Róshampláil"
 
-#: src/contents/ui/Crystalizer.qml:151
+#: src/contents/ui/Crystalizer.qml:180
 msgid "Adaptive intensity"
 msgstr "Déine oiriúnaitheach"
 
-#: src/contents/ui/Crystalizer.qml:161
+#: src/contents/ui/Crystalizer.qml:190
 msgid "Fixed quantum"
 msgstr "Candamach seasta"
 
@@ -1768,7 +1772,7 @@ msgstr "Scoir"
 msgid "Go back"
 msgstr "Téigh ar ais"
 
-#: src/contents/ui/Main.qml:499 src/contents/ui/PageStreamsEffects.qml:734
+#: src/contents/ui/Main.qml:499 src/contents/ui/PageStreamsEffects.qml:740
 msgid "Effects"
 msgstr "Éifeachtaí"
 
@@ -1889,45 +1893,45 @@ msgstr "Gan Éifeachtaí"
 msgid "Audio stream not modified"
 msgstr "Níor athraíodh an sruth fuaime"
 
-#: src/contents/ui/PageStreamsEffects.qml:367
+#: src/contents/ui/PageStreamsEffects.qml:373
 msgid "Add effect"
 msgstr "Cuir éifeacht leis"
 
-#: src/contents/ui/PageStreamsEffects.qml:375
+#: src/contents/ui/PageStreamsEffects.qml:381
 msgid "Close"
 msgstr "Dún"
 
-#: src/contents/ui/PageStreamsEffects.qml:379
+#: src/contents/ui/PageStreamsEffects.qml:385
 msgid "Expand the list of effects pipeline"
 msgstr "Leathnaigh an liosta de phíblíne éifeachtaí"
 
-#: src/contents/ui/PageStreamsEffects.qml:379
+#: src/contents/ui/PageStreamsEffects.qml:385
 msgid "Reduce the list of effects pipeline"
 msgstr "Laghdaigh an liosta éifeachtaí píblíne"
 
-#: src/contents/ui/PageStreamsEffects.qml:432
-#: src/contents/ui/PageStreamsEffects.qml:721
+#: src/contents/ui/PageStreamsEffects.qml:438
+#: src/contents/ui/PageStreamsEffects.qml:727
 msgid "Players"
 msgstr "Imreoirí"
 
-#: src/contents/ui/PageStreamsEffects.qml:441
+#: src/contents/ui/PageStreamsEffects.qml:447
 msgid "Output device"
 msgstr "Gléas aschuir"
 
-#: src/contents/ui/PageStreamsEffects.qml:441
-#: src/contents/ui/PageStreamsEffects.qml:721
+#: src/contents/ui/PageStreamsEffects.qml:447
+#: src/contents/ui/PageStreamsEffects.qml:727
 msgid "Recorders"
 msgstr "Taifeadáin"
 
-#: src/contents/ui/PageStreamsEffects.qml:752
+#: src/contents/ui/PageStreamsEffects.qml:758
 msgid "Excluded apps"
 msgstr "Aipeanna eisiata"
 
-#: src/contents/ui/PageStreamsEffects.qml:761
+#: src/contents/ui/PageStreamsEffects.qml:767
 msgid "Input monitoring"
 msgstr "Monatóireacht ionchuir"
 
-#: src/contents/ui/PageStreamsEffects.qml:774
+#: src/contents/ui/PageStreamsEffects.qml:780
 msgid "Send audio to the virtual source"
 msgstr "Seol fuaim chuig an bhfoinse fhíorúil"
 
@@ -2512,33 +2516,33 @@ msgid "Related to LV2 plugins."
 msgstr "Gaolmhar le breiseáin LV2."
 
 #: src/contents/ui/PresetsAutoloadPage.qml:54
-#: src/contents/ui/PresetsAutoloadPage.qml:190
+#: src/contents/ui/PresetsAutoloadPage.qml:198
 msgid "Device"
 msgstr "Gléas"
 
 #: src/contents/ui/PresetsAutoloadPage.qml:60
-#: src/contents/ui/PresetsAutoloadPage.qml:234
+#: src/contents/ui/PresetsAutoloadPage.qml:242
 msgid "Route"
 msgstr "Bealach"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:103
-#: src/contents/ui/PresetsAutoloadPage.qml:248
+#: src/contents/ui/PresetsAutoloadPage.qml:111
+#: src/contents/ui/PresetsAutoloadPage.qml:256
 msgid "Local preset"
 msgstr "Réamhshocrú áitiúil"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:114
+#: src/contents/ui/PresetsAutoloadPage.qml:122
 msgid "Create"
 msgstr "Cruthaigh"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:116
+#: src/contents/ui/PresetsAutoloadPage.qml:124
 msgid "Create a new autoload preset"
 msgstr "Cruthaigh réamhshocrú uathluchtaithe nua"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:205
+#: src/contents/ui/PresetsAutoloadPage.qml:213
 msgid "Remove this autoload preset"
 msgstr "Bain an réamhshocrú uathluchtaithe seo"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:219
+#: src/contents/ui/PresetsAutoloadPage.qml:227
 msgid "Description"
 msgstr "Cur síos"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-01-14 13:16-0300\n"
+"POT-Creation-Date: 2026-01-17 21:17-0300\n"
 "PO-Revision-Date: 2025-12-12 11:00+0000\n"
 "Last-Translator: John Peter Sa <johnppetersa@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -200,7 +200,7 @@ msgstr "Ganho de saída"
 #: src/contents/ui/Autogain.qml:231 src/contents/ui/BassEnhancer.qml:203
 #: src/contents/ui/BassLoudness.qml:123 src/contents/ui/Compressor.qml:872
 #: src/contents/ui/Convolver.qml:518 src/contents/ui/Crossfeed.qml:147
-#: src/contents/ui/Crusher.qml:233 src/contents/ui/Crystalizer.qml:124
+#: src/contents/ui/Crusher.qml:233 src/contents/ui/Crystalizer.qml:153
 #: src/contents/ui/DeepFilterNet.qml:194 src/contents/ui/Deesser.qml:317
 #: src/contents/ui/Delay.qml:373 src/contents/ui/EchoCanceller.qml:155
 #: src/contents/ui/Equalizer.qml:302 src/contents/ui/Exciter.qml:208
@@ -290,7 +290,7 @@ msgstr "Ouvir"
 #: src/contents/ui/BassEnhancer.qml:245 src/contents/ui/BassLoudness.qml:141
 #: src/contents/ui/Compressor.qml:924 src/contents/ui/Convolver.qml:553
 #: src/contents/ui/Crossfeed.qml:173 src/contents/ui/Crusher.qml:265
-#: src/contents/ui/Crystalizer.qml:172 src/contents/ui/Deesser.qml:359
+#: src/contents/ui/Crystalizer.qml:201 src/contents/ui/Deesser.qml:359
 #: src/contents/ui/Delay.qml:425 src/contents/ui/EchoCanceller.qml:183
 #: src/contents/ui/Equalizer.qml:386 src/contents/ui/Exciter.qml:250
 #: src/contents/ui/Expander.qml:874 src/contents/ui/Filter.qml:249
@@ -334,7 +334,7 @@ msgstr "Adicionar aos aplicativos excluídos"
 #: src/contents/ui/ConvolverImpulseDialog.qml:90
 #: src/contents/ui/MenuAddPlugins.qml:55
 #: src/contents/ui/PageStreamsEffects.qml:98
-#: src/contents/ui/PresetsAutoloadPage.qml:154
+#: src/contents/ui/PresetsAutoloadPage.qml:162
 #: src/contents/ui/PresetsCommunityPage.qml:105
 #: src/contents/ui/PresetsLocalPage.qml:194 src/contents/ui/RNNoise.qml:231
 msgid "Empty List"
@@ -479,7 +479,7 @@ msgstr "Externo"
 
 #: src/contents/ui/Compressor.qml:278 src/contents/ui/Expander.qml:238
 #: src/contents/ui/Gate.qml:256 src/contents/ui/Limiter.qml:228
-#: src/contents/ui/PageStreamsEffects.qml:432
+#: src/contents/ui/PageStreamsEffects.qml:438
 msgid "Input device"
 msgstr "Dispositivo de entrada"
 
@@ -952,19 +952,23 @@ msgstr "Mudo"
 msgid "Bypass"
 msgstr "Ignorar"
 
-#: src/contents/ui/Crystalizer.qml:103
+#: src/contents/ui/Crystalizer.qml:110
 msgid "Oversampling quality"
 msgstr "Qualidade da sobreamostragem"
 
-#: src/contents/ui/Crystalizer.qml:141 src/contents/ui/Limiter.qml:87
+#: src/contents/ui/Crystalizer.qml:128
+msgid "Transition band"
+msgstr ""
+
+#: src/contents/ui/Crystalizer.qml:170 src/contents/ui/Limiter.qml:87
 msgid "Oversampling"
 msgstr "Sobreamostragem"
 
-#: src/contents/ui/Crystalizer.qml:151
+#: src/contents/ui/Crystalizer.qml:180
 msgid "Adaptive intensity"
 msgstr "Intensidade Adaptativa"
 
-#: src/contents/ui/Crystalizer.qml:161
+#: src/contents/ui/Crystalizer.qml:190
 #, fuzzy
 msgid "Fixed quantum"
 msgstr "Quantum mínimo"
@@ -1774,7 +1778,7 @@ msgstr "Desistir"
 msgid "Go back"
 msgstr "Volte"
 
-#: src/contents/ui/Main.qml:499 src/contents/ui/PageStreamsEffects.qml:734
+#: src/contents/ui/Main.qml:499 src/contents/ui/PageStreamsEffects.qml:740
 msgid "Effects"
 msgstr "Efeitos"
 
@@ -1895,45 +1899,45 @@ msgstr "Sem Efeitos"
 msgid "Audio stream not modified"
 msgstr "Fluxo de áudio não modificado"
 
-#: src/contents/ui/PageStreamsEffects.qml:367
+#: src/contents/ui/PageStreamsEffects.qml:373
 msgid "Add effect"
 msgstr "Adicionar efeito"
 
-#: src/contents/ui/PageStreamsEffects.qml:375
+#: src/contents/ui/PageStreamsEffects.qml:381
 msgid "Close"
 msgstr "Fechar"
 
-#: src/contents/ui/PageStreamsEffects.qml:379
+#: src/contents/ui/PageStreamsEffects.qml:385
 msgid "Expand the list of effects pipeline"
 msgstr "Expanda a lista de pipelines de efeitos"
 
-#: src/contents/ui/PageStreamsEffects.qml:379
+#: src/contents/ui/PageStreamsEffects.qml:385
 msgid "Reduce the list of effects pipeline"
 msgstr "Reduzir a lista de efeitos no pipeline"
 
-#: src/contents/ui/PageStreamsEffects.qml:432
-#: src/contents/ui/PageStreamsEffects.qml:721
+#: src/contents/ui/PageStreamsEffects.qml:438
+#: src/contents/ui/PageStreamsEffects.qml:727
 msgid "Players"
 msgstr "Reprodutores"
 
-#: src/contents/ui/PageStreamsEffects.qml:441
+#: src/contents/ui/PageStreamsEffects.qml:447
 msgid "Output device"
 msgstr "Dispositivo de saída"
 
-#: src/contents/ui/PageStreamsEffects.qml:441
-#: src/contents/ui/PageStreamsEffects.qml:721
+#: src/contents/ui/PageStreamsEffects.qml:447
+#: src/contents/ui/PageStreamsEffects.qml:727
 msgid "Recorders"
 msgstr "Gravadores"
 
-#: src/contents/ui/PageStreamsEffects.qml:752
+#: src/contents/ui/PageStreamsEffects.qml:758
 msgid "Excluded apps"
 msgstr "Aplicativos excluídos"
 
-#: src/contents/ui/PageStreamsEffects.qml:761
+#: src/contents/ui/PageStreamsEffects.qml:767
 msgid "Input monitoring"
 msgstr "Monitoramento de entrada"
 
-#: src/contents/ui/PageStreamsEffects.qml:774
+#: src/contents/ui/PageStreamsEffects.qml:780
 msgid "Send audio to the virtual source"
 msgstr ""
 
@@ -2513,35 +2517,35 @@ msgid "Related to LV2 plugins."
 msgstr "Relacionado aos plugins LV2."
 
 #: src/contents/ui/PresetsAutoloadPage.qml:54
-#: src/contents/ui/PresetsAutoloadPage.qml:190
+#: src/contents/ui/PresetsAutoloadPage.qml:198
 msgid "Device"
 msgstr "Dispositivo"
 
 #: src/contents/ui/PresetsAutoloadPage.qml:60
-#: src/contents/ui/PresetsAutoloadPage.qml:234
+#: src/contents/ui/PresetsAutoloadPage.qml:242
 msgid "Route"
 msgstr "Rota"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:103
-#: src/contents/ui/PresetsAutoloadPage.qml:248
+#: src/contents/ui/PresetsAutoloadPage.qml:111
+#: src/contents/ui/PresetsAutoloadPage.qml:256
 msgid "Local preset"
 msgstr "Predefinição local"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:114
+#: src/contents/ui/PresetsAutoloadPage.qml:122
 msgid "Create"
 msgstr "Criar"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:116
+#: src/contents/ui/PresetsAutoloadPage.qml:124
 #, fuzzy
 msgid "Create a new autoload preset"
 msgstr "Remover as Predefinições que Foram Carregadas Automaticamente"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:205
+#: src/contents/ui/PresetsAutoloadPage.qml:213
 #, fuzzy
 msgid "Remove this autoload preset"
 msgstr "Remover as Predefinições que Foram Carregadas Automaticamente"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:219
+#: src/contents/ui/PresetsAutoloadPage.qml:227
 msgid "Description"
 msgstr "Descrição"
 

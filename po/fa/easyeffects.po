@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-01-14 13:16-0300\n"
+"POT-Creation-Date: 2026-01-17 21:17-0300\n"
 "PO-Revision-Date: 2025-09-23 14:01+0000\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -209,7 +209,7 @@ msgstr "افزایش خروجی"
 #: src/contents/ui/Autogain.qml:231 src/contents/ui/BassEnhancer.qml:203
 #: src/contents/ui/BassLoudness.qml:123 src/contents/ui/Compressor.qml:872
 #: src/contents/ui/Convolver.qml:518 src/contents/ui/Crossfeed.qml:147
-#: src/contents/ui/Crusher.qml:233 src/contents/ui/Crystalizer.qml:124
+#: src/contents/ui/Crusher.qml:233 src/contents/ui/Crystalizer.qml:153
 #: src/contents/ui/DeepFilterNet.qml:194 src/contents/ui/Deesser.qml:317
 #: src/contents/ui/Delay.qml:373 src/contents/ui/EchoCanceller.qml:155
 #: src/contents/ui/Equalizer.qml:302 src/contents/ui/Exciter.qml:208
@@ -306,7 +306,7 @@ msgstr "گوش کن"
 #: src/contents/ui/BassEnhancer.qml:245 src/contents/ui/BassLoudness.qml:141
 #: src/contents/ui/Compressor.qml:924 src/contents/ui/Convolver.qml:553
 #: src/contents/ui/Crossfeed.qml:173 src/contents/ui/Crusher.qml:265
-#: src/contents/ui/Crystalizer.qml:172 src/contents/ui/Deesser.qml:359
+#: src/contents/ui/Crystalizer.qml:201 src/contents/ui/Deesser.qml:359
 #: src/contents/ui/Delay.qml:425 src/contents/ui/EchoCanceller.qml:183
 #: src/contents/ui/Equalizer.qml:386 src/contents/ui/Exciter.qml:250
 #: src/contents/ui/Expander.qml:874 src/contents/ui/Filter.qml:249
@@ -353,7 +353,7 @@ msgstr "به برنامه‌های حذف‌شده اضافه کنید"
 #: src/contents/ui/ConvolverImpulseDialog.qml:90
 #: src/contents/ui/MenuAddPlugins.qml:55
 #: src/contents/ui/PageStreamsEffects.qml:98
-#: src/contents/ui/PresetsAutoloadPage.qml:154
+#: src/contents/ui/PresetsAutoloadPage.qml:162
 #: src/contents/ui/PresetsCommunityPage.qml:105
 #: src/contents/ui/PresetsLocalPage.qml:194 src/contents/ui/RNNoise.qml:231
 msgid "Empty List"
@@ -506,7 +506,7 @@ msgstr "خارجی"
 
 #: src/contents/ui/Compressor.qml:278 src/contents/ui/Expander.qml:238
 #: src/contents/ui/Gate.qml:256 src/contents/ui/Limiter.qml:228
-#: src/contents/ui/PageStreamsEffects.qml:432
+#: src/contents/ui/PageStreamsEffects.qml:438
 #, fuzzy
 msgid "Input device"
 msgstr "دستگاه ورودی"
@@ -1006,20 +1006,24 @@ msgstr "بی صدا"
 msgid "Bypass"
 msgstr "دور زدن"
 
-#: src/contents/ui/Crystalizer.qml:103
+#: src/contents/ui/Crystalizer.qml:110
 #, fuzzy
 msgid "Oversampling quality"
 msgstr "نمونه برداری بیش از حد"
 
-#: src/contents/ui/Crystalizer.qml:141 src/contents/ui/Limiter.qml:87
+#: src/contents/ui/Crystalizer.qml:128
+msgid "Transition band"
+msgstr ""
+
+#: src/contents/ui/Crystalizer.qml:170 src/contents/ui/Limiter.qml:87
 msgid "Oversampling"
 msgstr "نمونه برداری بیش از حد"
 
-#: src/contents/ui/Crystalizer.qml:151
+#: src/contents/ui/Crystalizer.qml:180
 msgid "Adaptive intensity"
 msgstr ""
 
-#: src/contents/ui/Crystalizer.qml:161
+#: src/contents/ui/Crystalizer.qml:190
 #, fuzzy
 msgid "Fixed quantum"
 msgstr "حداقل کوانتومی"
@@ -1924,7 +1928,7 @@ msgstr "_خروج"
 msgid "Go back"
 msgstr ""
 
-#: src/contents/ui/Main.qml:499 src/contents/ui/PageStreamsEffects.qml:734
+#: src/contents/ui/Main.qml:499 src/contents/ui/PageStreamsEffects.qml:740
 msgid "Effects"
 msgstr "جلوه ها"
 
@@ -2058,49 +2062,49 @@ msgstr "بدون افکت"
 msgid "Audio stream not modified"
 msgstr "جریان صوتی تغییر نکرده است"
 
-#: src/contents/ui/PageStreamsEffects.qml:367
+#: src/contents/ui/PageStreamsEffects.qml:373
 #, fuzzy
 msgid "Add effect"
 msgstr "افزودن افکت"
 
-#: src/contents/ui/PageStreamsEffects.qml:375
+#: src/contents/ui/PageStreamsEffects.qml:381
 msgid "Close"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:379
+#: src/contents/ui/PageStreamsEffects.qml:385
 msgid "Expand the list of effects pipeline"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:379
+#: src/contents/ui/PageStreamsEffects.qml:385
 msgid "Reduce the list of effects pipeline"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:432
-#: src/contents/ui/PageStreamsEffects.qml:721
+#: src/contents/ui/PageStreamsEffects.qml:438
+#: src/contents/ui/PageStreamsEffects.qml:727
 msgid "Players"
 msgstr "پلیرها"
 
-#: src/contents/ui/PageStreamsEffects.qml:441
+#: src/contents/ui/PageStreamsEffects.qml:447
 #, fuzzy
 msgid "Output device"
 msgstr "دستگاه خروجی"
 
-#: src/contents/ui/PageStreamsEffects.qml:441
-#: src/contents/ui/PageStreamsEffects.qml:721
+#: src/contents/ui/PageStreamsEffects.qml:447
+#: src/contents/ui/PageStreamsEffects.qml:727
 msgid "Recorders"
 msgstr "ضبط کننده ها"
 
-#: src/contents/ui/PageStreamsEffects.qml:752
+#: src/contents/ui/PageStreamsEffects.qml:758
 #, fuzzy
 msgid "Excluded apps"
 msgstr "برنامه های مستثنی شده"
 
-#: src/contents/ui/PageStreamsEffects.qml:761
+#: src/contents/ui/PageStreamsEffects.qml:767
 #, fuzzy
 msgid "Input monitoring"
 msgstr "فعال‌سازی پایش ورودی"
 
-#: src/contents/ui/PageStreamsEffects.qml:774
+#: src/contents/ui/PageStreamsEffects.qml:780
 msgid "Send audio to the virtual source"
 msgstr ""
 
@@ -2704,37 +2708,37 @@ msgid "Related to LV2 plugins."
 msgstr "مرتبط با افزونه‌های LV2"
 
 #: src/contents/ui/PresetsAutoloadPage.qml:54
-#: src/contents/ui/PresetsAutoloadPage.qml:190
+#: src/contents/ui/PresetsAutoloadPage.qml:198
 msgid "Device"
 msgstr "دستگاه"
 
 #: src/contents/ui/PresetsAutoloadPage.qml:60
-#: src/contents/ui/PresetsAutoloadPage.qml:234
+#: src/contents/ui/PresetsAutoloadPage.qml:242
 msgid "Route"
 msgstr ""
 
-#: src/contents/ui/PresetsAutoloadPage.qml:103
-#: src/contents/ui/PresetsAutoloadPage.qml:248
+#: src/contents/ui/PresetsAutoloadPage.qml:111
+#: src/contents/ui/PresetsAutoloadPage.qml:256
 #, fuzzy
 msgid "Local preset"
 msgstr "فهرست پیش‌تنظیم‌های محلی"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:114
+#: src/contents/ui/PresetsAutoloadPage.qml:122
 #, fuzzy
 msgid "Create"
 msgstr "در حال ایجاد"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:116
+#: src/contents/ui/PresetsAutoloadPage.qml:124
 #, fuzzy
 msgid "Create a new autoload preset"
 msgstr "حذف پیش‌تنظیم بارگذاری خودکار"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:205
+#: src/contents/ui/PresetsAutoloadPage.qml:213
 #, fuzzy
 msgid "Remove this autoload preset"
 msgstr "حذف پیش‌تنظیم بارگذاری خودکار"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:219
+#: src/contents/ui/PresetsAutoloadPage.qml:227
 msgid "Description"
 msgstr "توضیحات"
 
