@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-01-12 23:56+0000\n"
-"PO-Revision-Date: 2026-01-17 22:01+0000\n"
+"PO-Revision-Date: 2026-01-18 00:13+0000\n"
 "Last-Translator: Miłosz <miloszwiktor58@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/main/"
 "pl/>\n"
@@ -1630,9 +1630,8 @@ msgid "True peak/24 bits"
 msgstr "Rzeczywisty szczyt/24 bitów"
 
 #: src/contents/ui/Limiter.qml:101
-#, fuzzy
 msgid "Dithering"
-msgstr "Szum (Dither)"
+msgstr "Dithering"
 
 #: src/contents/ui/Limiter.qml:117 src/tags_plugin_name.cpp:44
 msgid "Limiter"
@@ -1643,23 +1642,20 @@ msgid "Stereo Link"
 msgstr "Powiązanie stereo"
 
 #: src/contents/ui/Limiter.qml:407 src/contents/ui/Limiter.qml:647
-#, fuzzy
 msgid "Automatic level"
-msgstr "Automatyczne poziomowanie"
+msgstr "Automatyczny poziom"
 
 #: src/contents/ui/Limiter.qml:469
 msgid "Smooth"
 msgstr "Gładko"
 
 #: src/contents/ui/Limiter.qml:637
-#, fuzzy
 msgid "Threshold boost"
-msgstr "Próg"
+msgstr "Zwiększenie progu"
 
 #: src/contents/ui/Loudness.qml:86
-#, fuzzy
 msgid "Contour"
-msgstr "Sterowanie"
+msgstr "Kontur"
 
 #: src/contents/ui/Loudness.qml:90
 msgid "Flat"
@@ -1682,24 +1678,20 @@ msgid "ISO226-2023"
 msgstr "ISO226-2023"
 
 #: src/contents/ui/Loudness.qml:100
-#, fuzzy
 msgid "FFT size"
 msgstr "Rozmiar FFT"
 
 #: src/contents/ui/Loudness.qml:114
-#, fuzzy
 msgid "IIR approximation"
-msgstr "Wycisz aplikację"
+msgstr "Aproksymacja IIR"
 
 #: src/contents/ui/Loudness.qml:118
-#, fuzzy
 msgid "Fastest"
-msgstr "Szybszy"
+msgstr "Najszybszy"
 
 #: src/contents/ui/Loudness.qml:118
-#, fuzzy
 msgid "Normal"
-msgstr "Format"
+msgstr "Normalny"
 
 #: src/contents/ui/Loudness.qml:118
 msgid "Best"
@@ -1710,9 +1702,8 @@ msgid "Volume"
 msgstr "Głośność"
 
 #: src/contents/ui/Loudness.qml:145
-#, fuzzy
 msgid "Clipping range"
-msgstr "Przesterowanie (Clipping)"
+msgstr "Zakres przesterowania"
 
 #: src/contents/ui/Loudness.qml:203
 msgid "Clipping"
@@ -1727,14 +1718,12 @@ msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr "Czy na pewno chcesz zresetować wszystkie ustawienia Easy Effects?"
 
 #: src/contents/ui/Main.qml:338 src/contents/ui/Main.qml:356
-#, fuzzy
 msgid "Preset Loaded"
-msgstr "Nie załadowano szablonu"
+msgstr "Szablon załadowany"
 
 #: src/contents/ui/Main.qml:367 src/contents/ui/Main.qml:379
-#, fuzzy
 msgid "Clear List"
-msgstr "Lista klientów"
+msgstr "Wyczyść listę"
 
 #: src/contents/ui/Main.qml:368 src/contents/ui/Main.qml:380
 msgid "Are you sure you want to clear this list?"
@@ -1749,25 +1738,21 @@ msgid "Output Presets"
 msgstr "Szablony wyjściowe"
 
 #: src/contents/ui/Main.qml:435
-#, fuzzy
 msgid "Active"
-msgstr "Kompresor"
+msgstr "Aktywny"
 
 #: src/contents/ui/Main.qml:446 src/contents/ui/Main.qml:593
 #: src/contents/ui/ShortcutsSheet.qml:389
-#, fuzzy
 msgid "Shortcuts"
-msgstr "_Skróty"
+msgstr "Skróty"
 
 #: src/contents/ui/Main.qml:455 src/contents/ui/Main.qml:601
-#, fuzzy
 msgid "Manual"
-msgstr "_Instrukcja"
+msgstr "Instrukcja"
 
 #: src/contents/ui/Main.qml:465 src/contents/ui/Main.qml:633
-#, fuzzy
 msgid "Quit"
-msgstr "_Wyjdź"
+msgstr "Wyjdź"
 
 #: src/contents/ui/Main.qml:489
 msgid "Go back"
@@ -1790,19 +1775,16 @@ msgid "Audio effects are disabled."
 msgstr "Efekty dźwiękowe są wyłączone."
 
 #: src/contents/ui/Main.qml:567
-#, fuzzy
 msgid "PipeWire"
-msgstr "_PipeWire"
+msgstr "PipeWire"
 
 #: src/contents/ui/Main.qml:585
-#, fuzzy
 msgid "Preferences"
-msgstr "_Ustawienia"
+msgstr "Ustawienia"
 
 #: src/contents/ui/Main.qml:625
-#, fuzzy
 msgid "About Easy Effects"
-msgstr "_O EasyEffects"
+msgstr "O EasyEffects"
 
 #: src/contents/ui/MenuAddPlugins.qml:94
 msgid "Add %1"
@@ -1813,33 +1795,28 @@ msgid "Added a new effect to the pipeline: %1"
 msgstr "Dodano nowy efekt do ścieżki przetwarzania: %1"
 
 #: src/contents/ui/MultibandCompressor.qml:129
-#, fuzzy
 msgid "Compression mode"
 msgstr "Tryb kompresji"
 
 #: src/contents/ui/MultibandCompressor.qml:236
 #: src/contents/ui/MultibandGate.qml:173
-#, fuzzy
 msgid "End"
-msgstr "Drugie"
+msgstr "Zakończ"
 
 #: src/contents/ui/MultibandCompressor.qml:519
 #: src/contents/ui/MultibandGate.qml:492
-#, fuzzy
 msgid "Low-cut"
-msgstr "Górnoprzepustowy (Low-Cut)"
+msgstr "Dolne odcięcie"
 
 #: src/contents/ui/MultibandCompressor.qml:544
 #: src/contents/ui/MultibandGate.qml:517
-#, fuzzy
 msgid "High-cut"
-msgstr "Filtr dolnoprzepustowy (High-Cut)"
+msgstr "Górne odcięcie"
 
 #: src/contents/ui/MultibandCompressor.qml:576
 #: src/contents/ui/MultibandGate.qml:549
-#, fuzzy
 msgid "Operating mode"
-msgstr "Tryb Operacji"
+msgstr "Tryb operacji"
 
 #: src/contents/ui/MultibandCompressor.qml:580
 #: src/contents/ui/MultibandGate.qml:553
@@ -1853,15 +1830,13 @@ msgstr "Nowoczesne"
 
 #: src/contents/ui/MultibandCompressor.qml:580
 #: src/contents/ui/MultibandGate.qml:553
-#, fuzzy
 msgid "Linear phase"
-msgstr "Faza linearna"
+msgstr "Faza liniowa"
 
 #: src/contents/ui/MultibandCompressor.qml:589
 #: src/contents/ui/MultibandGate.qml:562
-#, fuzzy
 msgid "Sidechain boost"
-msgstr "Boost Sidechain"
+msgstr "Wzmocnienie Sidechain"
 
 #: src/contents/ui/MultibandCompressor.qml:593
 #: src/contents/ui/MultibandGate.qml:566
@@ -1885,19 +1860,16 @@ msgstr "Brązowy MT"
 
 #: src/contents/ui/MultibandCompressor.qml:603
 #: src/contents/ui/MultibandGate.qml:576
-#, fuzzy
 msgid "Sidechain input device"
-msgstr "Urządzenie wejściowe"
+msgstr "Urządzenie wejściowe Sidechain"
 
 #: src/contents/ui/MultibandGate.qml:199
-#, fuzzy
 msgid "Reaction"
-msgstr "Redukcja"
+msgstr "Reakcja"
 
 #: src/contents/ui/PageStreamsEffects.qml:99
-#, fuzzy
 msgid "No audio application available"
-msgstr "Brak aplikacji audio"
+msgstr "Brak dostępnej aplikacji audio"
 
 #: src/contents/ui/PageStreamsEffects.qml:114
 msgid "No Effects"
