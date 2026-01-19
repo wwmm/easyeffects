@@ -4,6 +4,7 @@ Date: UNRELEASED_DATE
 
 Description: 
 - Features∶
+- Added aa new plugin that can be used to suppress voice.
 - The transition band of the bandpass filters used by the crystalizer plugin can be customized. Higher values will use less CPU. But cause more overlap between the bands.
 
 - Bug fixes∶

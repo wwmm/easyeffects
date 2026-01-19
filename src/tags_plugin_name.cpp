@@ -40,7 +40,6 @@ Model::Model(QObject* parent)
                 {BaseName::expander, i18n("Expander")},
                 {BaseName::filter, i18n("Filter")},
                 {BaseName::gate, i18n("Gate")},
-                {BaseName::karaoke, i18n("Karaoke")},
                 {BaseName::levelMeter, i18n("Level Meter")},
                 {BaseName::limiter, i18n("Limiter")},
                 {BaseName::loudness, i18n("Loudness")},
@@ -51,7 +50,8 @@ Model::Model(QObject* parent)
                 {BaseName::reverb, i18n("Reverberation")},
                 {BaseName::rnnoise, i18n("Noise Reduction")},
                 {BaseName::speex, i18n("Speech Processor")},
-                {BaseName::stereoTools, i18n("Stereo Tools")}}) {
+                {BaseName::stereoTools, i18n("Stereo Tools")},
+                {BaseName::voiceSuppressor, i18n("Voice Suppressor")}}) {
   auto* proxyModel = new QSortFilterProxyModel(this);
 
   proxyModel->setSourceModel(this);

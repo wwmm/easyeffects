@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0 http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
+    <kcfgfile name="easyeffects/db/voicesuppressorrc">
+        <parameter name="masterGroup" />
+        <parameter name="instanceIndex" />
+    </kcfgfile>
+    <group parentGroupName="$(masterGroup)" name="VoiceSuppressor#$(instanceIndex)">
+        <entry name="bypass" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="inputGain" type="Double">
+            <label></label>
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="outputGain" type="Double">
+            <label></label>
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="freqStart" type="Double">
+            <label></label>
+            <min>20</min>
+            <max>22000</max>
+            <default>120</default>
+        </entry>
+        <entry name="freqEnd" type="Double">
+            <label></label>
+            <min>20</min>
+            <max>22000</max>
+            <default>12000</default>
+        </entry>
+        <entry name="correlation" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>100</max>
+            <default>95</default>
+        </entry>
+        <entry name="phaseDifference" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>360</max>
+            <default>20</default>
+        </entry>
+    </group>
+</kcfg>

@@ -56,7 +56,6 @@
 #include "expander.hpp"
 #include "filter.hpp"
 #include "gate.hpp"
-#include "karaoke.hpp"
 #include "level_meter.hpp"
 #include "limiter.hpp"
 #include "loudness.hpp"
@@ -75,6 +74,7 @@
 #include "stereo_tools.hpp"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
+#include "voice_suppressor.hpp"
 
 EffectsBase::EffectsBase(pw::Manager* pipe_manager, PipelineType pipe_type)
     : log_tag(pipe_type == PipelineType::output ? "soe: " : "sie: "),
@@ -197,8 +197,8 @@ void EffectsBase::create_filters_if_necessary() {
     } else if (name.startsWith(tags::plugin_name::BaseName::gate)) {
       filter = std::make_shared<Gate>(log_tag, pm, pipeline_type, instance_id);
 
-    } else if (name.startsWith(tags::plugin_name::BaseName::karaoke)) {
-      filter = std::make_shared<Karaoke>(log_tag, pm, pipeline_type, instance_id);
+    } else if (name.startsWith(tags::plugin_name::BaseName::voiceSuppressor)) {
+      filter = std::make_shared<VoiceSuppressor>(log_tag, pm, pipeline_type, instance_id);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::levelMeter)) {
       filter = std::make_shared<LevelMeter>(log_tag, pm, pipeline_type, instance_id);
@@ -357,8 +357,8 @@ QVariant EffectsBase::getPluginInstance(const QString& pluginName) {
   } else if (pluginName.startsWith(tags::plugin_name::BaseName::gate)) {
     return QVariant::fromValue(dynamic_cast<Gate*>(p.get()));
 
-  } else if (pluginName.startsWith(tags::plugin_name::BaseName::karaoke)) {
-    return QVariant::fromValue(dynamic_cast<Karaoke*>(p.get()));
+  } else if (pluginName.startsWith(tags::plugin_name::BaseName::voiceSuppressor)) {
+    return QVariant::fromValue(dynamic_cast<VoiceSuppressor*>(p.get()));
 
   } else if (pluginName.startsWith(tags::plugin_name::BaseName::levelMeter)) {
     return QVariant::fromValue(dynamic_cast<LevelMeter*>(p.get()));

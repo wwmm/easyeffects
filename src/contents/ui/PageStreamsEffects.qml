@@ -165,7 +165,6 @@ Kirigami.Page {
                     [TagsPluginName.BaseName.expander]: Qt.resolvedUrl("Expander.qml"),
                     [TagsPluginName.BaseName.filter]: Qt.resolvedUrl("Filter.qml"),
                     [TagsPluginName.BaseName.gate]: Qt.resolvedUrl("Gate.qml"),
-                    [TagsPluginName.BaseName.karaoke]: Qt.resolvedUrl("Karaoke.qml"),
                     [TagsPluginName.BaseName.levelMeter]: Qt.resolvedUrl("LevelMeter.qml"),
                     [TagsPluginName.BaseName.limiter]: Qt.resolvedUrl("Limiter.qml"),
                     [TagsPluginName.BaseName.loudness]: Qt.resolvedUrl("Loudness.qml"),
@@ -176,7 +175,8 @@ Kirigami.Page {
                     [TagsPluginName.BaseName.reverb]: Qt.resolvedUrl("Reverb.qml"),
                     [TagsPluginName.BaseName.rnnoise]: Qt.resolvedUrl("RNNoise.qml"),
                     [TagsPluginName.BaseName.speex]: Qt.resolvedUrl("Speex.qml"),
-                    [TagsPluginName.BaseName.stereoTools]: Qt.resolvedUrl("StereoTools.qml")
+                    [TagsPluginName.BaseName.stereoTools]: Qt.resolvedUrl("StereoTools.qml"),
+                    [TagsPluginName.BaseName.voiceSuppressor]: Qt.resolvedUrl("VoiceSuppressor.qml")
                 };
 
                 const packageMap = {
@@ -194,7 +194,6 @@ Kirigami.Page {
                     [TagsPluginName.BaseName.expander]: TagsPluginName.Package.lsp,
                     [TagsPluginName.BaseName.filter]: TagsPluginName.Package.lsp,
                     [TagsPluginName.BaseName.gate]: TagsPluginName.Package.lsp,
-                    [TagsPluginName.BaseName.karaoke]: TagsPluginName.Package.ee,
                     [TagsPluginName.BaseName.limiter]: TagsPluginName.Package.lsp,
                     [TagsPluginName.BaseName.loudness]: TagsPluginName.Package.lsp,
                     [TagsPluginName.BaseName.maximizer]: TagsPluginName.Package.zam,
@@ -202,7 +201,8 @@ Kirigami.Page {
                     [TagsPluginName.BaseName.multibandGate]: TagsPluginName.Package.lsp,
                     [TagsPluginName.BaseName.reverb]: TagsPluginName.Package.calf,
                     [TagsPluginName.BaseName.rnnoise]: TagsPluginName.Package.rnnoise,
-                    [TagsPluginName.BaseName.stereoTools]: TagsPluginName.Package.calf
+                    [TagsPluginName.BaseName.stereoTools]: TagsPluginName.Package.calf,
+                    [TagsPluginName.BaseName.voiceSuppressor]: TagsPluginName.Package.ee
                 };
 
                 const componentUrl = pluginMap[baseName];

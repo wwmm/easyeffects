@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-01-18 19:04-0300\n"
+"POT-Creation-Date: 2026-01-19 17:12-0300\n"
 "PO-Revision-Date: 2025-12-12 11:00+0000\n"
 "Last-Translator: John Peter Sa <johnppetersa@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -125,10 +125,10 @@ msgstr "Sobre"
 #: src/contents/ui/Autogain.qml:69 src/contents/ui/BassEnhancer.qml:105
 #: src/contents/ui/BassLoudness.qml:58 src/contents/ui/Crossfeed.qml:73
 #: src/contents/ui/DeepFilterNet.qml:93 src/contents/ui/Exciter.qml:106
-#: src/contents/ui/Filter.qml:58 src/contents/ui/Karaoke.qml:57
-#: src/contents/ui/Loudness.qml:58 src/contents/ui/Maximizer.qml:59
-#: src/contents/ui/Pitch.qml:59 src/contents/ui/Reverb.qml:59
-#: src/contents/ui/Speex.qml:58
+#: src/contents/ui/Filter.qml:58 src/contents/ui/Loudness.qml:58
+#: src/contents/ui/Maximizer.qml:59 src/contents/ui/Pitch.qml:59
+#: src/contents/ui/Reverb.qml:59 src/contents/ui/Speex.qml:58
+#: src/contents/ui/VoiceSuppressor.qml:57
 msgid "Controls"
 msgstr "Controles"
 
@@ -181,7 +181,7 @@ msgstr "Histórico Máximo"
 
 #: src/contents/ui/Autogain.qml:143 src/contents/ui/Autogain.qml:198
 #: src/contents/ui/BassLoudness.qml:66 src/contents/ui/LevelMeter.qml:146
-#: src/tags_plugin_name.cpp:46
+#: src/tags_plugin_name.cpp:45
 msgid "Loudness"
 msgstr "Intensidade"
 
@@ -206,15 +206,16 @@ msgstr "Ganho de saída"
 #: src/contents/ui/Delay.qml:373 src/contents/ui/EchoCanceller.qml:155
 #: src/contents/ui/Equalizer.qml:302 src/contents/ui/Exciter.qml:208
 #: src/contents/ui/Expander.qml:822 src/contents/ui/Filter.qml:217
-#: src/contents/ui/Gate.qml:951 src/contents/ui/Karaoke.qml:85
-#: src/contents/ui/LevelMeter.qml:215 src/contents/ui/Limiter.qml:606
-#: src/contents/ui/Loudness.qml:172 src/contents/ui/Maximizer.qml:119
+#: src/contents/ui/Gate.qml:951 src/contents/ui/LevelMeter.qml:215
+#: src/contents/ui/Limiter.qml:606 src/contents/ui/Loudness.qml:172
+#: src/contents/ui/Maximizer.qml:119
 #: src/contents/ui/MultibandCompressor.qml:965
 #: src/contents/ui/MultibandGate.qml:938 src/contents/ui/Pitch.qml:265
 #: src/contents/ui/Reverb.qml:316 src/contents/ui/RNNoise.qml:76
 #: src/contents/ui/RNNoise.qml:87 src/contents/ui/RNNoise.qml:301
 #: src/contents/ui/RNNoise.qml:303 src/contents/ui/RNNoise.qml:321
 #: src/contents/ui/Speex.qml:174 src/contents/ui/StereoTools.qml:389
+#: src/contents/ui/VoiceSuppressor.qml:134
 msgid "Using %1"
 msgstr "Usando %1"
 
@@ -295,13 +296,13 @@ msgstr "Ouvir"
 #: src/contents/ui/Delay.qml:425 src/contents/ui/EchoCanceller.qml:183
 #: src/contents/ui/Equalizer.qml:386 src/contents/ui/Exciter.qml:250
 #: src/contents/ui/Expander.qml:874 src/contents/ui/Filter.qml:249
-#: src/contents/ui/Gate.qml:1003 src/contents/ui/Karaoke.qml:103
-#: src/contents/ui/Limiter.qml:658 src/contents/ui/Loudness.qml:214
-#: src/contents/ui/Main.qml:613 src/contents/ui/Maximizer.qml:151
+#: src/contents/ui/Gate.qml:1003 src/contents/ui/Limiter.qml:658
+#: src/contents/ui/Loudness.qml:214 src/contents/ui/Main.qml:613
+#: src/contents/ui/Maximizer.qml:151
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:356
 #: src/contents/ui/RNNoise.qml:346 src/contents/ui/Speex.qml:192
-#: src/contents/ui/StereoTools.qml:421
+#: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:152
 msgid "Reset"
 msgstr "Reiniciar"
 
@@ -1490,6 +1491,7 @@ msgstr "Atraso"
 #: src/contents/ui/Gate.qml:917 src/contents/ui/Gate.qml:930
 #: src/contents/ui/MultibandCompressor.qml:216
 #: src/contents/ui/MultibandGate.qml:153 src/contents/ui/Speex.qml:129
+#: src/contents/ui/VoiceSuppressor.qml:62
 msgid "Start"
 msgstr "Iniciar"
 
@@ -1653,7 +1655,7 @@ msgstr "Pico Verdadeiro"
 msgid "Dithering"
 msgstr "ditherização"
 
-#: src/contents/ui/Limiter.qml:117 src/tags_plugin_name.cpp:45
+#: src/contents/ui/Limiter.qml:117 src/tags_plugin_name.cpp:44
 msgid "Limiter"
 msgstr "Limitador"
 
@@ -1820,7 +1822,7 @@ msgid "Compression mode"
 msgstr "Modo de compressão"
 
 #: src/contents/ui/MultibandCompressor.qml:236
-#: src/contents/ui/MultibandGate.qml:173
+#: src/contents/ui/MultibandGate.qml:173 src/contents/ui/VoiceSuppressor.qml:78
 msgid "End"
 msgstr "Fim"
 
@@ -2065,7 +2067,7 @@ msgstr "Janela de Busca"
 msgid "Overlap length"
 msgstr "Comprimento de sobreposição"
 
-#: src/contents/ui/Pitch.qml:163 src/tags_plugin_name.cpp:50
+#: src/contents/ui/Pitch.qml:163 src/tags_plugin_name.cpp:49
 msgid "Pitch"
 msgstr "Altura"
 
@@ -3014,6 +3016,16 @@ msgstr "Base Estéreo"
 msgid "Stereo phase"
 msgstr "Fase Estéreo"
 
+#: src/contents/ui/VoiceSuppressor.qml:94
+#, fuzzy
+msgid "Correlation"
+msgstr "Configuração"
+
+#: src/contents/ui/VoiceSuppressor.qml:110
+#, fuzzy
+msgid "Phase difference"
+msgstr "Diferença de taxas"
+
 #: src/main.cpp:333
 #, fuzzy
 msgid "Global audio effects"
@@ -3154,40 +3166,41 @@ msgid "Exciter"
 msgstr "Excitador"
 
 #: src/tags_plugin_name.cpp:43
-msgid "Karaoke"
-msgstr ""
-
-#: src/tags_plugin_name.cpp:44
 msgid "Level Meter"
 msgstr "Medidor do Nível da Saída"
 
-#: src/tags_plugin_name.cpp:47
+#: src/tags_plugin_name.cpp:46
 msgid "Maximizer"
 msgstr "Maximizador"
 
-#: src/tags_plugin_name.cpp:48
+#: src/tags_plugin_name.cpp:47
 msgid "Multiband Compressor"
 msgstr "Compressor de Multibanda"
 
-#: src/tags_plugin_name.cpp:49
+#: src/tags_plugin_name.cpp:48
 msgid "Multiband Gate"
 msgstr "Porta para as Multibandas"
 
-#: src/tags_plugin_name.cpp:51
+#: src/tags_plugin_name.cpp:50
 msgid "Reverberation"
 msgstr "Reverberação"
 
-#: src/tags_plugin_name.cpp:52
+#: src/tags_plugin_name.cpp:51
 msgid "Noise Reduction"
 msgstr "Redução de Ruído"
 
-#: src/tags_plugin_name.cpp:53
+#: src/tags_plugin_name.cpp:52
 msgid "Speech Processor"
 msgstr "Processador de Fala"
 
-#: src/tags_plugin_name.cpp:54
+#: src/tags_plugin_name.cpp:53
 msgid "Stereo Tools"
 msgstr "Ferramentas Estéreo"
+
+#: src/tags_plugin_name.cpp:54
+#, fuzzy
+msgid "Voice Suppressor"
+msgstr "Supressão de Ruído"
 
 #: src/units.hpp:59
 #, fuzzy
@@ -5102,9 +5115,6 @@ msgstr ""
 
 #~ msgid "File"
 #~ msgstr "Arquivo"
-
-#~ msgid "Configuration"
-#~ msgstr "Configuração"
 
 #, fuzzy
 #~ msgid "server"

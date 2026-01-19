@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-01-18 19:04-0300\n"
+"POT-Creation-Date: 2026-01-19 17:12-0300\n"
 "PO-Revision-Date: 2026-01-19 11:01+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :(n>"
-"6 && n<11) ? 3 : 4;\n"
+"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :"
+"(n>6 && n<11) ? 3 : 4;\n"
 "X-Generator: Weblate 5.16-dev\n"
 
 #: src/autostart.cpp:92
@@ -122,10 +122,10 @@ msgstr "Maidir"
 #: src/contents/ui/Autogain.qml:69 src/contents/ui/BassEnhancer.qml:105
 #: src/contents/ui/BassLoudness.qml:58 src/contents/ui/Crossfeed.qml:73
 #: src/contents/ui/DeepFilterNet.qml:93 src/contents/ui/Exciter.qml:106
-#: src/contents/ui/Filter.qml:58 src/contents/ui/Karaoke.qml:57
-#: src/contents/ui/Loudness.qml:58 src/contents/ui/Maximizer.qml:59
-#: src/contents/ui/Pitch.qml:59 src/contents/ui/Reverb.qml:59
-#: src/contents/ui/Speex.qml:58
+#: src/contents/ui/Filter.qml:58 src/contents/ui/Loudness.qml:58
+#: src/contents/ui/Maximizer.qml:59 src/contents/ui/Pitch.qml:59
+#: src/contents/ui/Reverb.qml:59 src/contents/ui/Speex.qml:58
+#: src/contents/ui/VoiceSuppressor.qml:57
 msgid "Controls"
 msgstr "Rialuithe"
 
@@ -178,7 +178,7 @@ msgstr "Stair Uasta"
 
 #: src/contents/ui/Autogain.qml:143 src/contents/ui/Autogain.qml:198
 #: src/contents/ui/BassLoudness.qml:66 src/contents/ui/LevelMeter.qml:146
-#: src/tags_plugin_name.cpp:46
+#: src/tags_plugin_name.cpp:45
 msgid "Loudness"
 msgstr "Treise"
 
@@ -203,15 +203,16 @@ msgstr "Gnóthachan Aschuir"
 #: src/contents/ui/Delay.qml:373 src/contents/ui/EchoCanceller.qml:155
 #: src/contents/ui/Equalizer.qml:302 src/contents/ui/Exciter.qml:208
 #: src/contents/ui/Expander.qml:822 src/contents/ui/Filter.qml:217
-#: src/contents/ui/Gate.qml:951 src/contents/ui/Karaoke.qml:85
-#: src/contents/ui/LevelMeter.qml:215 src/contents/ui/Limiter.qml:606
-#: src/contents/ui/Loudness.qml:172 src/contents/ui/Maximizer.qml:119
+#: src/contents/ui/Gate.qml:951 src/contents/ui/LevelMeter.qml:215
+#: src/contents/ui/Limiter.qml:606 src/contents/ui/Loudness.qml:172
+#: src/contents/ui/Maximizer.qml:119
 #: src/contents/ui/MultibandCompressor.qml:965
 #: src/contents/ui/MultibandGate.qml:938 src/contents/ui/Pitch.qml:265
 #: src/contents/ui/Reverb.qml:316 src/contents/ui/RNNoise.qml:76
 #: src/contents/ui/RNNoise.qml:87 src/contents/ui/RNNoise.qml:301
 #: src/contents/ui/RNNoise.qml:303 src/contents/ui/RNNoise.qml:321
 #: src/contents/ui/Speex.qml:174 src/contents/ui/StereoTools.qml:389
+#: src/contents/ui/VoiceSuppressor.qml:134
 msgid "Using %1"
 msgstr "Ag baint úsáide as %1"
 
@@ -293,13 +294,13 @@ msgstr "Éist"
 #: src/contents/ui/Delay.qml:425 src/contents/ui/EchoCanceller.qml:183
 #: src/contents/ui/Equalizer.qml:386 src/contents/ui/Exciter.qml:250
 #: src/contents/ui/Expander.qml:874 src/contents/ui/Filter.qml:249
-#: src/contents/ui/Gate.qml:1003 src/contents/ui/Karaoke.qml:103
-#: src/contents/ui/Limiter.qml:658 src/contents/ui/Loudness.qml:214
-#: src/contents/ui/Main.qml:613 src/contents/ui/Maximizer.qml:151
+#: src/contents/ui/Gate.qml:1003 src/contents/ui/Limiter.qml:658
+#: src/contents/ui/Loudness.qml:214 src/contents/ui/Main.qml:613
+#: src/contents/ui/Maximizer.qml:151
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:356
 #: src/contents/ui/RNNoise.qml:346 src/contents/ui/Speex.qml:192
-#: src/contents/ui/StereoTools.qml:421
+#: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:152
 msgid "Reset"
 msgstr "Athshocraigh"
 
@@ -1491,6 +1492,7 @@ msgstr "Histéiréis"
 #: src/contents/ui/Gate.qml:917 src/contents/ui/Gate.qml:930
 #: src/contents/ui/MultibandCompressor.qml:216
 #: src/contents/ui/MultibandGate.qml:153 src/contents/ui/Speex.qml:129
+#: src/contents/ui/VoiceSuppressor.qml:62
 msgid "Start"
 msgstr "Tosaigh"
 
@@ -1648,7 +1650,7 @@ msgstr "Fíor-bhuaic/24 giotán"
 msgid "Dithering"
 msgstr "Díthráil"
 
-#: src/contents/ui/Limiter.qml:117 src/tags_plugin_name.cpp:45
+#: src/contents/ui/Limiter.qml:117 src/tags_plugin_name.cpp:44
 msgid "Limiter"
 msgstr "Teorainn"
 
@@ -1814,7 +1816,7 @@ msgid "Compression mode"
 msgstr "Mód comhbhrúite"
 
 #: src/contents/ui/MultibandCompressor.qml:236
-#: src/contents/ui/MultibandGate.qml:173
+#: src/contents/ui/MultibandGate.qml:173 src/contents/ui/VoiceSuppressor.qml:78
 msgid "End"
 msgstr "Deireadh"
 
@@ -2058,7 +2060,7 @@ msgstr "Fuinneog cuardaigh"
 msgid "Overlap length"
 msgstr "Fad forluí"
 
-#: src/contents/ui/Pitch.qml:163 src/tags_plugin_name.cpp:50
+#: src/contents/ui/Pitch.qml:163 src/tags_plugin_name.cpp:49
 msgid "Pitch"
 msgstr "Páirc Imeartha"
 
@@ -2984,6 +2986,16 @@ msgstr "Bonn steirió"
 msgid "Stereo phase"
 msgstr "Céim steiréó"
 
+#: src/contents/ui/VoiceSuppressor.qml:94
+#, fuzzy
+msgid "Correlation"
+msgstr "Fad ama"
+
+#: src/contents/ui/VoiceSuppressor.qml:110
+#, fuzzy
+msgid "Phase difference"
+msgstr "Difríocht ráta"
+
 #: src/main.cpp:333
 msgid "Global audio effects"
 msgstr "Éifeachtaí fuaime domhanda"
@@ -3114,40 +3126,41 @@ msgid "Exciter"
 msgstr "Spreagfaidh sé"
 
 #: src/tags_plugin_name.cpp:43
-msgid "Karaoke"
-msgstr "Karaoke"
-
-#: src/tags_plugin_name.cpp:44
 msgid "Level Meter"
 msgstr "Méadar Leibhéal"
 
-#: src/tags_plugin_name.cpp:47
+#: src/tags_plugin_name.cpp:46
 msgid "Maximizer"
 msgstr "Uasmhéadaitheoir"
 
-#: src/tags_plugin_name.cpp:48
+#: src/tags_plugin_name.cpp:47
 msgid "Multiband Compressor"
 msgstr "Comhbhrúiteoir Ilbhanda"
 
-#: src/tags_plugin_name.cpp:49
+#: src/tags_plugin_name.cpp:48
 msgid "Multiband Gate"
 msgstr "Geata Ilbhanda"
 
-#: src/tags_plugin_name.cpp:51
+#: src/tags_plugin_name.cpp:50
 msgid "Reverberation"
 msgstr "Aisfhuaimniú"
 
-#: src/tags_plugin_name.cpp:52
+#: src/tags_plugin_name.cpp:51
 msgid "Noise Reduction"
 msgstr "Laghdú Torainn"
 
-#: src/tags_plugin_name.cpp:53
+#: src/tags_plugin_name.cpp:52
 msgid "Speech Processor"
 msgstr "Próiseálaí Urlabhra"
 
-#: src/tags_plugin_name.cpp:54
+#: src/tags_plugin_name.cpp:53
 msgid "Stereo Tools"
 msgstr "Uirlisí Steirió"
+
+#: src/tags_plugin_name.cpp:54
+#, fuzzy
+msgid "Voice Suppressor"
+msgstr "Cur faoi chois torainn"
 
 #: src/units.hpp:59
 msgctxt "left channel abbreviation (single letter)"
@@ -3271,6 +3284,9 @@ msgstr "Cothromóir, Comhbhrúiteoir agus Éifeachtaí Fuaime Eile"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "Éifeachtaí fuaime simplí"
+
+#~ msgid "Karaoke"
+#~ msgstr "Karaoke"
 
 #~ msgid "Sample Reduction"
 #~ msgstr "Laghdú Samplach"
