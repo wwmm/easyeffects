@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-01-19 17:12-0300\n"
-"PO-Revision-Date: 2026-01-16 23:01+0000\n"
+"POT-Creation-Date: 2026-01-18 19:04-0300\n"
+"PO-Revision-Date: 2026-01-19 20:13+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Weblate 5.15.2\n"
+"X-Generator: Weblate 5.16-dev\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -122,10 +122,10 @@ msgstr "О программе"
 #: src/contents/ui/Autogain.qml:69 src/contents/ui/BassEnhancer.qml:105
 #: src/contents/ui/BassLoudness.qml:58 src/contents/ui/Crossfeed.qml:73
 #: src/contents/ui/DeepFilterNet.qml:93 src/contents/ui/Exciter.qml:106
-#: src/contents/ui/Filter.qml:58 src/contents/ui/Loudness.qml:58
-#: src/contents/ui/Maximizer.qml:59 src/contents/ui/Pitch.qml:59
-#: src/contents/ui/Reverb.qml:59 src/contents/ui/Speex.qml:58
-#: src/contents/ui/VoiceSuppressor.qml:57
+#: src/contents/ui/Filter.qml:58 src/contents/ui/Karaoke.qml:57
+#: src/contents/ui/Loudness.qml:58 src/contents/ui/Maximizer.qml:59
+#: src/contents/ui/Pitch.qml:59 src/contents/ui/Reverb.qml:59
+#: src/contents/ui/Speex.qml:58 src/contents/ui/VoiceSuppressor.qml:57
 msgid "Controls"
 msgstr "Элементы управления"
 
@@ -183,7 +183,7 @@ msgstr "Исторический максимум"
 
 #: src/contents/ui/Autogain.qml:143 src/contents/ui/Autogain.qml:198
 #: src/contents/ui/BassLoudness.qml:66 src/contents/ui/LevelMeter.qml:146
-#: src/tags_plugin_name.cpp:45
+#: src/tags_plugin_name.cpp:46 src/tags_plugin_name.cpp:45
 msgid "Loudness"
 msgstr "Громкость"
 
@@ -209,9 +209,9 @@ msgstr "Усиление выхода"
 #: src/contents/ui/Delay.qml:373 src/contents/ui/EchoCanceller.qml:155
 #: src/contents/ui/Equalizer.qml:302 src/contents/ui/Exciter.qml:208
 #: src/contents/ui/Expander.qml:822 src/contents/ui/Filter.qml:217
-#: src/contents/ui/Gate.qml:951 src/contents/ui/LevelMeter.qml:215
-#: src/contents/ui/Limiter.qml:606 src/contents/ui/Loudness.qml:172
-#: src/contents/ui/Maximizer.qml:119
+#: src/contents/ui/Gate.qml:951 src/contents/ui/Karaoke.qml:85
+#: src/contents/ui/LevelMeter.qml:215 src/contents/ui/Limiter.qml:606
+#: src/contents/ui/Loudness.qml:172 src/contents/ui/Maximizer.qml:119
 #: src/contents/ui/MultibandCompressor.qml:965
 #: src/contents/ui/MultibandGate.qml:938 src/contents/ui/Pitch.qml:265
 #: src/contents/ui/Reverb.qml:316 src/contents/ui/RNNoise.qml:76
@@ -301,9 +301,9 @@ msgstr "Прослушать"
 #: src/contents/ui/Delay.qml:425 src/contents/ui/EchoCanceller.qml:183
 #: src/contents/ui/Equalizer.qml:386 src/contents/ui/Exciter.qml:250
 #: src/contents/ui/Expander.qml:874 src/contents/ui/Filter.qml:249
-#: src/contents/ui/Gate.qml:1003 src/contents/ui/Limiter.qml:658
-#: src/contents/ui/Loudness.qml:214 src/contents/ui/Main.qml:613
-#: src/contents/ui/Maximizer.qml:151
+#: src/contents/ui/Gate.qml:1003 src/contents/ui/Karaoke.qml:103
+#: src/contents/ui/Limiter.qml:658 src/contents/ui/Loudness.qml:214
+#: src/contents/ui/Main.qml:613 src/contents/ui/Maximizer.qml:151
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:356
 #: src/contents/ui/RNNoise.qml:346 src/contents/ui/Speex.qml:192
@@ -976,7 +976,7 @@ msgstr "Качество передискретизации"
 
 #: src/contents/ui/Crystalizer.qml:128
 msgid "Transition band"
-msgstr ""
+msgstr "Переходная полоса"
 
 #: src/contents/ui/Crystalizer.qml:170 src/contents/ui/Limiter.qml:87
 msgid "Oversampling"
@@ -1678,7 +1678,8 @@ msgstr "Истинный пик/24 бита"
 msgid "Dithering"
 msgstr "Дизеринг (зашумление)"
 
-#: src/contents/ui/Limiter.qml:117 src/tags_plugin_name.cpp:44
+#: src/contents/ui/Limiter.qml:117 src/tags_plugin_name.cpp:45
+#: src/tags_plugin_name.cpp:44
 msgid "Limiter"
 msgstr "Ограничитель (лимитер)"
 
@@ -2093,7 +2094,8 @@ msgstr "Окно перемотки"
 msgid "Overlap length"
 msgstr "Длина перекрытия"
 
-#: src/contents/ui/Pitch.qml:163 src/tags_plugin_name.cpp:49
+#: src/contents/ui/Pitch.qml:163 src/tags_plugin_name.cpp:50
+#: src/tags_plugin_name.cpp:49
 msgid "Pitch"
 msgstr "Высота тона"
 
@@ -3016,16 +3018,6 @@ msgstr "База стерео"
 msgid "Stereo phase"
 msgstr "Фаза стерео"
 
-#: src/contents/ui/VoiceSuppressor.qml:94
-#, fuzzy
-msgid "Correlation"
-msgstr "Корреляция фазы"
-
-#: src/contents/ui/VoiceSuppressor.qml:110
-#, fuzzy
-msgid "Phase difference"
-msgstr "Разница частоты"
-
 #: src/main.cpp:333
 msgid "Global audio effects"
 msgstr "Глобальные эффекты звука"
@@ -3158,41 +3150,40 @@ msgid "Exciter"
 msgstr "Гармонический возбудитель"
 
 #: src/tags_plugin_name.cpp:43
+msgid "Karaoke"
+msgstr "Караоке"
+
+#: src/tags_plugin_name.cpp:44 src/tags_plugin_name.cpp:43
 msgid "Level Meter"
 msgstr "Уровнемер"
 
-#: src/tags_plugin_name.cpp:46
+#: src/tags_plugin_name.cpp:47 src/tags_plugin_name.cpp:46
 msgid "Maximizer"
 msgstr "Максимизатор"
 
-#: src/tags_plugin_name.cpp:47
+#: src/tags_plugin_name.cpp:48 src/tags_plugin_name.cpp:47
 msgid "Multiband Compressor"
 msgstr "Многополосный компрессор"
 
-#: src/tags_plugin_name.cpp:48
+#: src/tags_plugin_name.cpp:49 src/tags_plugin_name.cpp:48
 msgid "Multiband Gate"
 msgstr "Многополосный гейт"
 
-#: src/tags_plugin_name.cpp:50
+#: src/tags_plugin_name.cpp:51 src/tags_plugin_name.cpp:50
 msgid "Reverberation"
 msgstr "Реверберация"
 
-#: src/tags_plugin_name.cpp:51
+#: src/tags_plugin_name.cpp:52 src/tags_plugin_name.cpp:51
 msgid "Noise Reduction"
 msgstr "Подавление шума"
 
-#: src/tags_plugin_name.cpp:52
+#: src/tags_plugin_name.cpp:53 src/tags_plugin_name.cpp:52
 msgid "Speech Processor"
 msgstr "Речевой процессор"
 
-#: src/tags_plugin_name.cpp:53
+#: src/tags_plugin_name.cpp:54 src/tags_plugin_name.cpp:53
 msgid "Stereo Tools"
 msgstr "Наладчики стерео"
-
-#: src/tags_plugin_name.cpp:54
-#, fuzzy
-msgid "Voice Suppressor"
-msgstr "Простой шумодав"
 
 #: src/units.hpp:59
 msgctxt "left channel abbreviation (single letter)"
@@ -3316,6 +3307,21 @@ msgstr "Эквалайзер, компрессор и прочие звуков�
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "Простые звуковые эффекты"
+
+#: src/contents/ui/VoiceSuppressor.qml:94
+#, fuzzy
+msgid "Correlation"
+msgstr "Корреляция фазы"
+
+#: src/contents/ui/VoiceSuppressor.qml:110
+#, fuzzy
+msgid "Phase difference"
+msgstr "Разница частоты"
+
+#: src/tags_plugin_name.cpp:54
+#, fuzzy
+msgid "Voice Suppressor"
+msgstr "Простой шумодав"
 
 #~ msgid "Fixed Quantum"
 #~ msgstr "Фиксированный квант"
@@ -5323,6 +5329,9 @@ msgstr "Простые звуковые эффекты"
 #~ msgid "Maximum Gain Reduction"
 #~ msgstr "Увеличение ослабления"
 
+#~ msgid "Phase Correlation"
+#~ msgstr "Корреляция фазы"
+
 #~ msgid "Short Term"
 #~ msgstr "Короткие измерения"
 
@@ -5530,6 +5539,9 @@ msgstr "Простые звуковые эффекты"
 
 #~ msgid "Red Noise"
 #~ msgstr "Красный шум"
+
+#~ msgid "Noise Suppressor"
+#~ msgstr "Простой шумодав"
 
 #~ msgid "Voice Detector"
 #~ msgstr "Обнаруживатель голоса"
