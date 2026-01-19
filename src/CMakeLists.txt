@@ -62,7 +62,6 @@ qt_add_qml_module(easyeffects
         contents/ui/Expander.qml
         contents/ui/Filter.qml
         contents/ui/Gate.qml
-        contents/ui/Karaoke.qml
         contents/ui/LevelMeter.qml
         contents/ui/Limiter.qml
         contents/ui/Loudness.qml
@@ -87,6 +86,7 @@ qt_add_qml_module(easyeffects
         contents/ui/Speex.qml
         contents/ui/StereoTools.qml
         contents/ui/Validators.qml
+        contents/ui/VoiceSuppressor.qml
         contents/ui/Common.js
 )
 
@@ -170,8 +170,6 @@ target_sources(easyeffects PRIVATE
     gate.cpp
     gate_preset.cpp
     global_shortcuts.cpp
-    karaoke.cpp
-    karaoke_preset.cpp
     kconfig_base_ee.cpp
     kcolor_manager.cpp
     ladspa_wrapper.cpp
@@ -229,6 +227,8 @@ target_sources(easyeffects PRIVATE
     tags_plugin_name.cpp
     test_signals.cpp
     util.cpp
+    voice_suppressor.cpp
+    voice_suppressor_preset.cpp
 )
 
 target_include_directories(easyeffects SYSTEM PRIVATE

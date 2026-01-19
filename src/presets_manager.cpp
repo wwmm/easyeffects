@@ -65,7 +65,6 @@
 #include "expander_preset.hpp"
 #include "filter_preset.hpp"
 #include "gate_preset.hpp"
-#include "karaoke_preset.hpp"
 #include "level_meter_preset.hpp"
 #include "limiter_preset.hpp"
 #include "loudness_preset.hpp"
@@ -86,6 +85,7 @@
 #include "stereo_tools_preset.hpp"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
+#include "voice_suppressor_preset.hpp"
 
 namespace presets {
 
@@ -884,8 +884,8 @@ auto Manager::create_wrapper(const PipelineType& pipeline_type, const QString& f
   } else if (filter_name.startsWith(tags::plugin_name::BaseName::gate)) {
     return std::make_unique<GatePreset>(pipeline_type, filter_name.toStdString());
 
-  } else if (filter_name.startsWith(tags::plugin_name::BaseName::karaoke)) {
-    return std::make_unique<KaraokePreset>(pipeline_type, filter_name.toStdString());
+  } else if (filter_name.startsWith(tags::plugin_name::BaseName::voiceSuppressor)) {
+    return std::make_unique<VoiceSuppressorPreset>(pipeline_type, filter_name.toStdString());
 
   } else if (filter_name.startsWith(tags::plugin_name::BaseName::levelMeter)) {
     return std::make_unique<LevelMeterPreset>(pipeline_type, filter_name.toStdString());

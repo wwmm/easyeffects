@@ -270,4 +270,13 @@ void copy_bulk(std::vector<T>& input, std::span<T>& output) {
   input.resize(input.size() - output.size());
 }
 
+template <typename T>
+void copy_bulk_remove_half(std::vector<T>& input, std::vector<T>& output) {
+  std::copy_n(input.begin(), output.size(), output.begin());
+
+  std::move(input.begin() + output.size() / 2, input.end(), input.begin());
+
+  input.resize(input.size() - (output.size() / 2));
+}
+
 }  // namespace util

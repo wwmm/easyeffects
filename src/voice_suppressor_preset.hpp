@@ -21,16 +21,16 @@
 
 #include <nlohmann/json_fwd.hpp>
 #include <string>
-#include "easyeffects_db_karaoke.h"
+#include "easyeffects_db_voice_suppressor.h"
 #include "pipeline_type.hpp"
 #include "plugin_preset_base.hpp"
 
-class KaraokePreset : public PluginPresetBase {
+class VoiceSuppressorPreset : public PluginPresetBase {
  public:
-  explicit KaraokePreset(PipelineType pipeline_type, const std::string& instance_name);
+  explicit VoiceSuppressorPreset(PipelineType pipeline_type, const std::string& instance_name);
 
  private:
-  db::Karaoke* settings = nullptr;
+  db::VoiceSuppressor* settings = nullptr;
 
   void save(nlohmann::json& json) override;
 

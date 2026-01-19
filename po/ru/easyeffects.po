@@ -125,7 +125,7 @@ msgstr "О программе"
 #: src/contents/ui/Filter.qml:58 src/contents/ui/Karaoke.qml:57
 #: src/contents/ui/Loudness.qml:58 src/contents/ui/Maximizer.qml:59
 #: src/contents/ui/Pitch.qml:59 src/contents/ui/Reverb.qml:59
-#: src/contents/ui/Speex.qml:58
+#: src/contents/ui/Speex.qml:58 src/contents/ui/VoiceSuppressor.qml:57
 msgid "Controls"
 msgstr "Элементы управления"
 
@@ -183,7 +183,7 @@ msgstr "Исторический максимум"
 
 #: src/contents/ui/Autogain.qml:143 src/contents/ui/Autogain.qml:198
 #: src/contents/ui/BassLoudness.qml:66 src/contents/ui/LevelMeter.qml:146
-#: src/tags_plugin_name.cpp:46
+#: src/tags_plugin_name.cpp:46 src/tags_plugin_name.cpp:45
 msgid "Loudness"
 msgstr "Громкость"
 
@@ -218,6 +218,7 @@ msgstr "Усиление выхода"
 #: src/contents/ui/RNNoise.qml:87 src/contents/ui/RNNoise.qml:301
 #: src/contents/ui/RNNoise.qml:303 src/contents/ui/RNNoise.qml:321
 #: src/contents/ui/Speex.qml:174 src/contents/ui/StereoTools.qml:389
+#: src/contents/ui/VoiceSuppressor.qml:134
 msgid "Using %1"
 msgstr "Используется %1"
 
@@ -306,7 +307,7 @@ msgstr "Прослушать"
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:356
 #: src/contents/ui/RNNoise.qml:346 src/contents/ui/Speex.qml:192
-#: src/contents/ui/StereoTools.qml:421
+#: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:152
 msgid "Reset"
 msgstr "Сброс"
 
@@ -1518,6 +1519,7 @@ msgstr "Отставание"
 #: src/contents/ui/Gate.qml:917 src/contents/ui/Gate.qml:930
 #: src/contents/ui/MultibandCompressor.qml:216
 #: src/contents/ui/MultibandGate.qml:153 src/contents/ui/Speex.qml:129
+#: src/contents/ui/VoiceSuppressor.qml:62
 msgid "Start"
 msgstr "Начало"
 
@@ -1677,6 +1679,7 @@ msgid "Dithering"
 msgstr "Дизеринг (зашумление)"
 
 #: src/contents/ui/Limiter.qml:117 src/tags_plugin_name.cpp:45
+#: src/tags_plugin_name.cpp:44
 msgid "Limiter"
 msgstr "Ограничитель (лимитер)"
 
@@ -1844,7 +1847,7 @@ msgid "Compression mode"
 msgstr "Режим сжатия"
 
 #: src/contents/ui/MultibandCompressor.qml:236
-#: src/contents/ui/MultibandGate.qml:173
+#: src/contents/ui/MultibandGate.qml:173 src/contents/ui/VoiceSuppressor.qml:78
 msgid "End"
 msgstr "Конец"
 
@@ -2092,6 +2095,7 @@ msgid "Overlap length"
 msgstr "Длина перекрытия"
 
 #: src/contents/ui/Pitch.qml:163 src/tags_plugin_name.cpp:50
+#: src/tags_plugin_name.cpp:49
 msgid "Pitch"
 msgstr "Высота тона"
 
@@ -3149,35 +3153,35 @@ msgstr "Гармонический возбудитель"
 msgid "Karaoke"
 msgstr "Караоке"
 
-#: src/tags_plugin_name.cpp:44
+#: src/tags_plugin_name.cpp:44 src/tags_plugin_name.cpp:43
 msgid "Level Meter"
 msgstr "Уровнемер"
 
-#: src/tags_plugin_name.cpp:47
+#: src/tags_plugin_name.cpp:47 src/tags_plugin_name.cpp:46
 msgid "Maximizer"
 msgstr "Максимизатор"
 
-#: src/tags_plugin_name.cpp:48
+#: src/tags_plugin_name.cpp:48 src/tags_plugin_name.cpp:47
 msgid "Multiband Compressor"
 msgstr "Многополосный компрессор"
 
-#: src/tags_plugin_name.cpp:49
+#: src/tags_plugin_name.cpp:49 src/tags_plugin_name.cpp:48
 msgid "Multiband Gate"
 msgstr "Многополосный гейт"
 
-#: src/tags_plugin_name.cpp:51
+#: src/tags_plugin_name.cpp:51 src/tags_plugin_name.cpp:50
 msgid "Reverberation"
 msgstr "Реверберация"
 
-#: src/tags_plugin_name.cpp:52
+#: src/tags_plugin_name.cpp:52 src/tags_plugin_name.cpp:51
 msgid "Noise Reduction"
 msgstr "Подавление шума"
 
-#: src/tags_plugin_name.cpp:53
+#: src/tags_plugin_name.cpp:53 src/tags_plugin_name.cpp:52
 msgid "Speech Processor"
 msgstr "Речевой процессор"
 
-#: src/tags_plugin_name.cpp:54
+#: src/tags_plugin_name.cpp:54 src/tags_plugin_name.cpp:53
 msgid "Stereo Tools"
 msgstr "Наладчики стерео"
 
@@ -3303,6 +3307,21 @@ msgstr "Эквалайзер, компрессор и прочие звуков�
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "Простые звуковые эффекты"
+
+#: src/contents/ui/VoiceSuppressor.qml:94
+#, fuzzy
+msgid "Correlation"
+msgstr "Корреляция фазы"
+
+#: src/contents/ui/VoiceSuppressor.qml:110
+#, fuzzy
+msgid "Phase difference"
+msgstr "Разница частоты"
+
+#: src/tags_plugin_name.cpp:54
+#, fuzzy
+msgid "Voice Suppressor"
+msgstr "Простой шумодав"
 
 #~ msgid "Fixed Quantum"
 #~ msgstr "Фиксированный квант"

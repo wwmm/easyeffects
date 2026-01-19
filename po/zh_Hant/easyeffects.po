@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-01-18 19:04-0300\n"
+"POT-Creation-Date: 2026-01-19 17:12-0300\n"
 "PO-Revision-Date: 2026-01-19 11:01+0000\n"
 "Last-Translator: Jeff Huang <s8321414@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
@@ -120,10 +120,10 @@ msgstr "關於"
 #: src/contents/ui/Autogain.qml:69 src/contents/ui/BassEnhancer.qml:105
 #: src/contents/ui/BassLoudness.qml:58 src/contents/ui/Crossfeed.qml:73
 #: src/contents/ui/DeepFilterNet.qml:93 src/contents/ui/Exciter.qml:106
-#: src/contents/ui/Filter.qml:58 src/contents/ui/Karaoke.qml:57
-#: src/contents/ui/Loudness.qml:58 src/contents/ui/Maximizer.qml:59
-#: src/contents/ui/Pitch.qml:59 src/contents/ui/Reverb.qml:59
-#: src/contents/ui/Speex.qml:58
+#: src/contents/ui/Filter.qml:58 src/contents/ui/Loudness.qml:58
+#: src/contents/ui/Maximizer.qml:59 src/contents/ui/Pitch.qml:59
+#: src/contents/ui/Reverb.qml:59 src/contents/ui/Speex.qml:58
+#: src/contents/ui/VoiceSuppressor.qml:57
 msgid "Controls"
 msgstr "控制"
 
@@ -176,7 +176,7 @@ msgstr "最大化歷史記錄"
 
 #: src/contents/ui/Autogain.qml:143 src/contents/ui/Autogain.qml:198
 #: src/contents/ui/BassLoudness.qml:66 src/contents/ui/LevelMeter.qml:146
-#: src/tags_plugin_name.cpp:46
+#: src/tags_plugin_name.cpp:45
 msgid "Loudness"
 msgstr "音量"
 
@@ -201,15 +201,16 @@ msgstr "輸出增益 (Gain)"
 #: src/contents/ui/Delay.qml:373 src/contents/ui/EchoCanceller.qml:155
 #: src/contents/ui/Equalizer.qml:302 src/contents/ui/Exciter.qml:208
 #: src/contents/ui/Expander.qml:822 src/contents/ui/Filter.qml:217
-#: src/contents/ui/Gate.qml:951 src/contents/ui/Karaoke.qml:85
-#: src/contents/ui/LevelMeter.qml:215 src/contents/ui/Limiter.qml:606
-#: src/contents/ui/Loudness.qml:172 src/contents/ui/Maximizer.qml:119
+#: src/contents/ui/Gate.qml:951 src/contents/ui/LevelMeter.qml:215
+#: src/contents/ui/Limiter.qml:606 src/contents/ui/Loudness.qml:172
+#: src/contents/ui/Maximizer.qml:119
 #: src/contents/ui/MultibandCompressor.qml:965
 #: src/contents/ui/MultibandGate.qml:938 src/contents/ui/Pitch.qml:265
 #: src/contents/ui/Reverb.qml:316 src/contents/ui/RNNoise.qml:76
 #: src/contents/ui/RNNoise.qml:87 src/contents/ui/RNNoise.qml:301
 #: src/contents/ui/RNNoise.qml:303 src/contents/ui/RNNoise.qml:321
 #: src/contents/ui/Speex.qml:174 src/contents/ui/StereoTools.qml:389
+#: src/contents/ui/VoiceSuppressor.qml:134
 msgid "Using %1"
 msgstr "使用 %1"
 
@@ -290,13 +291,13 @@ msgstr "聆聽"
 #: src/contents/ui/Delay.qml:425 src/contents/ui/EchoCanceller.qml:183
 #: src/contents/ui/Equalizer.qml:386 src/contents/ui/Exciter.qml:250
 #: src/contents/ui/Expander.qml:874 src/contents/ui/Filter.qml:249
-#: src/contents/ui/Gate.qml:1003 src/contents/ui/Karaoke.qml:103
-#: src/contents/ui/Limiter.qml:658 src/contents/ui/Loudness.qml:214
-#: src/contents/ui/Main.qml:613 src/contents/ui/Maximizer.qml:151
+#: src/contents/ui/Gate.qml:1003 src/contents/ui/Limiter.qml:658
+#: src/contents/ui/Loudness.qml:214 src/contents/ui/Main.qml:613
+#: src/contents/ui/Maximizer.qml:151
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:356
 #: src/contents/ui/RNNoise.qml:346 src/contents/ui/Speex.qml:192
-#: src/contents/ui/StereoTools.qml:421
+#: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:152
 msgid "Reset"
 msgstr "重設"
 
@@ -1471,6 +1472,7 @@ msgstr "遲滯"
 #: src/contents/ui/Gate.qml:917 src/contents/ui/Gate.qml:930
 #: src/contents/ui/MultibandCompressor.qml:216
 #: src/contents/ui/MultibandGate.qml:153 src/contents/ui/Speex.qml:129
+#: src/contents/ui/VoiceSuppressor.qml:62
 msgid "Start"
 msgstr "開始"
 
@@ -1628,7 +1630,7 @@ msgstr "True peak/24 bit"
 msgid "Dithering"
 msgstr "抖動"
 
-#: src/contents/ui/Limiter.qml:117 src/tags_plugin_name.cpp:45
+#: src/contents/ui/Limiter.qml:117 src/tags_plugin_name.cpp:44
 msgid "Limiter"
 msgstr "限制器"
 
@@ -1794,7 +1796,7 @@ msgid "Compression mode"
 msgstr "壓縮模式"
 
 #: src/contents/ui/MultibandCompressor.qml:236
-#: src/contents/ui/MultibandGate.qml:173
+#: src/contents/ui/MultibandGate.qml:173 src/contents/ui/VoiceSuppressor.qml:78
 msgid "End"
 msgstr "終止"
 
@@ -2038,7 +2040,7 @@ msgstr "尋找視窗"
 msgid "Overlap length"
 msgstr "重疊長度"
 
-#: src/contents/ui/Pitch.qml:163 src/tags_plugin_name.cpp:50
+#: src/contents/ui/Pitch.qml:163 src/tags_plugin_name.cpp:49
 msgid "Pitch"
 msgstr "音高"
 
@@ -2937,6 +2939,16 @@ msgstr "立體聲低音"
 msgid "Stereo phase"
 msgstr "立體聲階段"
 
+#: src/contents/ui/VoiceSuppressor.qml:94
+#, fuzzy
+msgid "Correlation"
+msgstr "持續期間"
+
+#: src/contents/ui/VoiceSuppressor.qml:110
+#, fuzzy
+msgid "Phase difference"
+msgstr "速率差異"
+
 #: src/main.cpp:333
 msgid "Global audio effects"
 msgstr "整體音效處理"
@@ -3067,40 +3079,41 @@ msgid "Exciter"
 msgstr "激勵器"
 
 #: src/tags_plugin_name.cpp:43
-msgid "Karaoke"
-msgstr "卡啦 OK"
-
-#: src/tags_plugin_name.cpp:44
 msgid "Level Meter"
 msgstr "等級量表"
 
-#: src/tags_plugin_name.cpp:47
+#: src/tags_plugin_name.cpp:46
 msgid "Maximizer"
 msgstr "放大器"
 
-#: src/tags_plugin_name.cpp:48
+#: src/tags_plugin_name.cpp:47
 msgid "Multiband Compressor"
 msgstr "多頻段壓縮器"
 
-#: src/tags_plugin_name.cpp:49
+#: src/tags_plugin_name.cpp:48
 msgid "Multiband Gate"
 msgstr "多頻段閘門"
 
-#: src/tags_plugin_name.cpp:51
+#: src/tags_plugin_name.cpp:50
 msgid "Reverberation"
 msgstr "混響"
 
-#: src/tags_plugin_name.cpp:52
+#: src/tags_plugin_name.cpp:51
 msgid "Noise Reduction"
 msgstr "噪音抑制"
 
-#: src/tags_plugin_name.cpp:53
+#: src/tags_plugin_name.cpp:52
 msgid "Speech Processor"
 msgstr "語音處理器"
 
-#: src/tags_plugin_name.cpp:54
+#: src/tags_plugin_name.cpp:53
 msgid "Stereo Tools"
 msgstr "立體聲工具"
+
+#: src/tags_plugin_name.cpp:54
+#, fuzzy
+msgid "Voice Suppressor"
+msgstr "噪音抑制"
 
 #: src/units.hpp:59
 msgctxt "left channel abbreviation (single letter)"
@@ -3224,6 +3237,9 @@ msgstr "等化器、壓縮器、及其他音效處理"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "簡易音效處理"
+
+#~ msgid "Karaoke"
+#~ msgstr "卡啦 OK"
 
 #, fuzzy
 #~ msgid "Bit Reduction"

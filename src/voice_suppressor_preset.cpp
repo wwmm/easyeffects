@@ -17,32 +17,41 @@
  * along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
  */
 
-#include "karaoke_preset.hpp"
+#include "voice_suppressor_preset.hpp"
 #include <nlohmann/json_fwd.hpp>
 #include <string>
-#include "easyeffects_db_karaoke.h"
+#include "easyeffects_db_voice_suppressor.h"
 #include "pipeline_type.hpp"
 #include "plugin_preset_base.hpp"
 #include "presets_macros.hpp"
 
-KaraokePreset::KaraokePreset(PipelineType pipeline_type, const std::string& instance_name)
+VoiceSuppressorPreset::VoiceSuppressorPreset(PipelineType pipeline_type, const std::string& instance_name)
     : PluginPresetBase(pipeline_type, instance_name) {
-  settings = get_db_instance<db::Karaoke>(pipeline_type);
+  settings = get_db_instance<db::VoiceSuppressor>(pipeline_type);
 }
 
-void KaraokePreset::save(nlohmann::json& json) {
+void VoiceSuppressorPreset::save(nlohmann::json& json) {
   json[section][instance_name]["bypass"] = settings->bypass();
 
   json[section][instance_name]["input-gain"] = settings->inputGain();
 
   json[section][instance_name]["output-gain"] = settings->outputGain();
 
-  // json[section][instance_name]["strength"] = settings->strength();
+  json[section][instance_name]["freq-start"] = settings->freqStart();
+
+  json[section][instance_name]["freq-end"] = settings->freqEnd();
+
+  json[section][instance_name]["correlation"] = settings->correlation();
+
+  json[section][instance_name]["phase-difference"] = settings->phaseDifference();
 }
 
-void KaraokePreset::load(const nlohmann::json& json) {
+void VoiceSuppressorPreset::load(const nlohmann::json& json) {
   UPDATE_PROPERTY("bypass", Bypass);
   UPDATE_PROPERTY("input-gain", InputGain);
   UPDATE_PROPERTY("output-gain", OutputGain);
-  // UPDATE_PROPERTY("strength", Strength);
+  UPDATE_PROPERTY("freq-start", FreqStart);
+  UPDATE_PROPERTY("freq-end", FreqEnd);
+  UPDATE_PROPERTY("correlation", Correlation);
+  UPDATE_PROPERTY("phase-difference", PhaseDifference);
 }

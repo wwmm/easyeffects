@@ -1,6 +1,6 @@
-File=easyeffects_db_karaoke.kcfg
+File=easyeffects_db_voice_suppressor.kcfg
 NameSpace=db
-ClassName=Karaoke
+ClassName=VoiceSuppressor
 Inherits=KConfigBaseEE
 IncludeFiles=\"kconfig_base_ee.hpp\"
 Mutators=true

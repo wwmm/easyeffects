@@ -24,7 +24,7 @@ import ee.tags.plugin.name as TagsPluginName // qmllint disable
 import org.kde.kirigami as Kirigami
 
 Kirigami.ScrollablePage {
-    id: karaokePage
+    id: voiceSuppressorPage
 
     required property string name
     required property var pluginDB
@@ -56,20 +56,69 @@ Kirigami.ScrollablePage {
 
                 title: i18n("Controls") // qmllint disable
 
-                // EeSpinBox {
-                //     id: strength
+                EeSpinBox {
+                    id: freqStart
 
-                //     label: i18n("Start") // qmllint disable
-                //     spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
-                //     from: karaokePage.pluginDB.getMinValue("strength")
-                //     to: karaokePage.pluginDB.getMaxValue("strength")
-                //     value: karaokePage.pluginDB.strength
-                //     decimals: 2
-                //     stepSize: 0.01
-                //     onValueModified: v => {
-                //         karaokePage.pluginDB.strength = v;
-                //     }
-                // }
+                    label: i18n("Start") // qmllint disable
+                    spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
+                    from: voiceSuppressorPage.pluginDB.getMinValue("freqStart")
+                    to: voiceSuppressorPage.pluginDB.getMaxValue("freqStart")
+                    value: voiceSuppressorPage.pluginDB.freqStart
+                    decimals: 0
+                    stepSize: 1
+                    unit: Units.hz
+                    onValueModified: v => {
+                        voiceSuppressorPage.pluginDB.freqStart = v;
+                    }
+                }
+
+                EeSpinBox {
+                    id: freqEnd
+
+                    label: i18n("End") // qmllint disable
+                    spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
+                    from: voiceSuppressorPage.pluginDB.getMinValue("freqEnd")
+                    to: voiceSuppressorPage.pluginDB.getMaxValue("freqEnd")
+                    value: voiceSuppressorPage.pluginDB.freqEnd
+                    decimals: 0
+                    stepSize: 1
+                    unit: Units.hz
+                    onValueModified: v => {
+                        voiceSuppressorPage.pluginDB.freqEnd = v;
+                    }
+                }
+
+                EeSpinBox {
+                    id: correlation
+
+                    label: i18n("Correlation") // qmllint disable
+                    spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
+                    from: voiceSuppressorPage.pluginDB.getMinValue("correlation")
+                    to: voiceSuppressorPage.pluginDB.getMaxValue("correlation")
+                    value: voiceSuppressorPage.pluginDB.correlation
+                    decimals: 0
+                    stepSize: 1
+                    unit: Units.percent
+                    onValueModified: v => {
+                        voiceSuppressorPage.pluginDB.correlation = v;
+                    }
+                }
+
+                EeSpinBox {
+                    id: phaseDifference
+
+                    label: i18n("Phase difference") // qmllint disable
+                    spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
+                    from: voiceSuppressorPage.pluginDB.getMinValue("phaseDifference")
+                    to: voiceSuppressorPage.pluginDB.getMaxValue("phaseDifference")
+                    value: voiceSuppressorPage.pluginDB.phaseDifference
+                    decimals: 0
+                    stepSize: 1
+                    unit: Units.degrees
+                    onValueModified: v => {
+                        voiceSuppressorPage.pluginDB.phaseDifference = v;
+                    }
+                }
             }
         }
     }
@@ -77,7 +126,7 @@ Kirigami.ScrollablePage {
     header: EeInputOutputGain {
         id: inputOutputLevels
 
-        pluginDB: karaokePage.pluginDB
+        pluginDB: voiceSuppressorPage.pluginDB
     }
 
     footer: RowLayout {
@@ -103,7 +152,7 @@ Kirigami.ScrollablePage {
                     text: i18n("Reset") // qmllint disable
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {
-                        karaokePage.pluginBackend.reset();
+                        voiceSuppressorPage.pluginBackend.reset();
                     }
                 }
             ]

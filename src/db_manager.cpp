@@ -47,7 +47,6 @@
 #include "easyeffects_db_expander.h"
 #include "easyeffects_db_filter.h"
 #include "easyeffects_db_gate.h"
-#include "easyeffects_db_karaoke.h"
 #include "easyeffects_db_level_meter.h"
 #include "easyeffects_db_limiter.h"
 #include "easyeffects_db_loudness.h"
@@ -62,6 +61,7 @@
 #include "easyeffects_db_stereo_tools.h"
 #include "easyeffects_db_streaminputs.h"
 #include "easyeffects_db_streamoutputs.h"
+#include "easyeffects_db_voice_suppressor.h"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
 
@@ -244,8 +244,9 @@ void Manager::create_plugin_db(const QString& parentGroup,
     } else if (name.startsWith(tags::plugin_name::BaseName::gate)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::gate, id), [&] { return new db::Gate(parentGroup, id); });
 
-    } else if (name.startsWith(tags::plugin_name::BaseName::karaoke)) {
-      ensureExists(makeKey(tags::plugin_name::BaseName::karaoke, id), [&] { return new db::Karaoke(parentGroup, id); });
+    } else if (name.startsWith(tags::plugin_name::BaseName::voiceSuppressor)) {
+      ensureExists(makeKey(tags::plugin_name::BaseName::voiceSuppressor, id),
+                   [&] { return new db::VoiceSuppressor(parentGroup, id); });
 
     } else if (name.startsWith(tags::plugin_name::BaseName::levelMeter)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::levelMeter, id),

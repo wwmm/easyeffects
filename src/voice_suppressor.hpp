@@ -19,28 +19,28 @@
 
 #pragma once
 
-#include <bs2bclass.h>
 #include <fftw3.h>
 #include <qtmetamacros.h>
 #include <qtypes.h>
 #include <QString>
 #include <span>
 #include <string>
-#include "easyeffects_db_karaoke.h"
+#include <vector>
+#include "easyeffects_db_voice_suppressor.h"
 #include "pipeline_type.hpp"
 #include "plugin_base.hpp"
 #include "pw_manager.hpp"
 
-class Karaoke : public PluginBase {
+class VoiceSuppressor : public PluginBase {
   Q_OBJECT
 
  public:
-  Karaoke(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id);
-  Karaoke(const Karaoke&) = delete;
-  auto operator=(const Karaoke&) -> Karaoke& = delete;
-  Karaoke(const Karaoke&&) = delete;
-  auto operator=(const Karaoke&&) -> Karaoke& = delete;
-  ~Karaoke() override;
+  VoiceSuppressor(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id);
+  VoiceSuppressor(const VoiceSuppressor&) = delete;
+  auto operator=(const VoiceSuppressor&) -> VoiceSuppressor& = delete;
+  VoiceSuppressor(const VoiceSuppressor&&) = delete;
+  auto operator=(const VoiceSuppressor&&) -> VoiceSuppressor& = delete;
+  ~VoiceSuppressor() override;
 
   void reset() override;
 
@@ -61,5 +61,39 @@ class Karaoke : public PluginBase {
   auto get_latency_seconds() -> float override;
 
  private:
-  db::Karaoke* settings = nullptr;
+  db::VoiceSuppressor* settings = nullptr;
+
+  bool ready = false;
+  bool notify_latency = false;
+
+  uint fft_size = 0U;
+  uint hop = 0U;
+  uint latency_n_frames = 0U;
+
+  double* realL = nullptr;
+  double* realR = nullptr;
+
+  fftw_complex* complexL = nullptr;
+  fftw_complex* complexR = nullptr;
+
+  fftw_plan_s* planL = nullptr;
+  fftw_plan_s* planR = nullptr;
+
+  fftw_plan_s* planInvL = nullptr;
+  fftw_plan_s* planInvR = nullptr;
+
+  std::vector<float> freqs;
+
+  std::vector<double> hanning_window;
+
+  std::vector<float> buf_in_L, buf_in_R;
+  std::vector<float> buf_out_L, buf_out_R;
+
+  std::vector<float> data_L;
+  std::vector<float> data_R;
+
+  std::vector<float> ola_L;
+  std::vector<float> ola_R;
+
+  void free_fftw();
 };
