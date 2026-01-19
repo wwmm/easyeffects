@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-01-18 19:04-0300\n"
-"PO-Revision-Date: 2026-01-18 18:01+0000\n"
+"PO-Revision-Date: 2026-01-19 11:01+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ro/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
-"X-Generator: Weblate 5.15.2\n"
+"X-Generator: Weblate 5.16-dev\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -3116,7 +3116,7 @@ msgstr "Excitator"
 
 #: src/tags_plugin_name.cpp:43
 msgid "Karaoke"
-msgstr ""
+msgstr "Karaoke"
 
 #: src/tags_plugin_name.cpp:44
 msgid "Level Meter"
