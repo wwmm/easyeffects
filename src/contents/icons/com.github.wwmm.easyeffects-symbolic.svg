@@ -3,7 +3,7 @@
     <defs id="defs3051">
         <style type="text/css" id="current-color-scheme">.ColorScheme-Text { color: #fcfcfc; } </style>
     </defs>
-    <g class="ColorScheme-Text" style="fill:currentColor;fill-opacity:1;stroke:none">
+    <g class="ColorScheme-Text" style="fill:currentColor;fill-opacity:1;stroke:#000000;stroke-opacity:1;stroke-width:0.5">
         <rect x="7.5" y="2" width="1" height="12" ry=".5"/>
         <rect x="12" y="4" width="1" height="8" ry=".5"/>
         <rect x="3" y="4" width="1" height="8" ry=".5"/>
