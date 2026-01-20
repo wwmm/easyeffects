@@ -290,7 +290,7 @@ auto import_apo_preset(db::Equalizer* settings,
     settings_channels.push_back(settings_left);
     settings_channels.push_back(settings_right);
   } else {
-    settings->setNumBands(std::max(settings->numBands(), std::min(apo_bands, max_bands)));
+    settings->setNumBands(std::clamp(apo_bands, settings->numBands(), max_bands));
 
     if (settings->viewLeftChannel()) {
       settings_channels.push_back(settings_left);
@@ -502,7 +502,7 @@ auto import_graphiceq_preset(db::Equalizer* settings,
     settings_channels.push_back(settings_left);
     settings_channels.push_back(settings_right);
   } else {
-    settings->setNumBands(std::max(settings->numBands(), std::min(geq_bands, max_bands)));
+    settings->setNumBands(std::clamp(geq_bands, settings->numBands(), max_bands));
 
     if (settings->viewLeftChannel()) {
       settings_channels.push_back(settings_left);
