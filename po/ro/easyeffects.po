@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-01-19 17:12-0300\n"
-"PO-Revision-Date: 2026-01-19 11:01+0000\n"
+"PO-Revision-Date: 2026-01-20 09:01+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ro/>\n"
@@ -2988,14 +2988,12 @@ msgid "Stereo phase"
 msgstr "Fază Stereo"
 
 #: src/contents/ui/VoiceSuppressor.qml:94
-#, fuzzy
 msgid "Correlation"
-msgstr "Configurare"
+msgstr "Corelare"
 
 #: src/contents/ui/VoiceSuppressor.qml:110
-#, fuzzy
 msgid "Phase difference"
-msgstr "Diferența de frecvență"
+msgstr "Diferența de fază"
 
 #: src/main.cpp:333
 msgid "Global audio effects"
@@ -3159,9 +3157,8 @@ msgid "Stereo Tools"
 msgstr "Unelte stereo"
 
 #: src/tags_plugin_name.cpp:54
-#, fuzzy
 msgid "Voice Suppressor"
-msgstr "Suprimarea zgomotului"
+msgstr "Suprimare voce"
 
 #: src/units.hpp:59
 msgctxt "left channel abbreviation (single letter)"

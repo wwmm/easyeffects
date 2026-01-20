@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-01-18 19:04-0300\n"
-"PO-Revision-Date: 2026-01-19 20:13+0000\n"
+"PO-Revision-Date: 2026-01-20 09:01+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -3309,19 +3309,16 @@ msgid "Simple audio effects"
 msgstr "Простые звуковые эффекты"
 
 #: src/contents/ui/VoiceSuppressor.qml:94
-#, fuzzy
 msgid "Correlation"
-msgstr "Корреляция фазы"
+msgstr "Корреляция"
 
 #: src/contents/ui/VoiceSuppressor.qml:110
-#, fuzzy
 msgid "Phase difference"
-msgstr "Разница частоты"
+msgstr "Сдвиг фаз"
 
 #: src/tags_plugin_name.cpp:54
-#, fuzzy
 msgid "Voice Suppressor"
-msgstr "Простой шумодав"
+msgstr "Подавитель голоса"
 
 #~ msgid "Fixed Quantum"
 #~ msgstr "Фиксированный квант"
