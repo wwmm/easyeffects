@@ -205,9 +205,9 @@ void ConvolverZita::apply_kernel_autogain() {
     }
   }
 
-  float power = std::max({power_LL, power_RR, power_LR, power_RL});
+  const float power = std::max({power_LL, power_RR, power_LR, power_RL});
 
-  float autogain = std::min(1.0F, 1.0F / std::sqrt(power));
+  const float autogain = std::min(1.0F, 1.0F / std::sqrt(power));
 
   util::debug(std::format("autogain factor: {}", autogain));
 

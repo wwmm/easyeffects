@@ -324,11 +324,7 @@ static inline LADSPA_Data clamp_port_value(const LADSPA_Descriptor* descriptor,
 
   get_port_bounds(descriptor, port, rate, min, max);
 
-  val = std::max(val, min);
-
-  val = std::min(val, max);
-
-  return val;
+  return std::clamp(val, min, max);
 }
 
 static inline LADSPA_Data get_port_default(const LADSPA_Descriptor* descriptor, unsigned long port, uint rate) {

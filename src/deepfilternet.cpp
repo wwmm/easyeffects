@@ -189,16 +189,16 @@ void DeepFilterNet::process(std::span<float>& left_in,
     const auto& outL = resampler_outL->process(resampled_outL);
     const auto& outR = resampler_outR->process(resampled_outR);
 
-    auto carryover_end_l = std::min(carryover_l.size(), left_out.size());
-    auto carryover_end_r = std::min(carryover_r.size(), right_out.size());
+    const auto carryover_end_l = std::min(carryover_l.size(), left_out.size());
+    const auto carryover_end_r = std::min(carryover_r.size(), right_out.size());
 
-    auto left_offset =
+    const auto left_offset =
         carryover_end_l + outL.size() > left_out.size() ? carryover_end_l : left_out.size() - outL.size();
-    auto right_offset =
+    const auto right_offset =
         carryover_end_r + outR.size() > right_out.size() ? carryover_end_r : right_out.size() - outR.size();
 
-    auto left_count = std::min(outL.size(), left_out.size() - left_offset);
-    auto right_count = std::min(outR.size(), right_out.size() - right_offset);
+    const auto left_count = std::min(outL.size(), left_out.size() - left_offset);
+    const auto right_count = std::min(outR.size(), right_out.size() - right_offset);
 
     std::copy(carryover_l.begin(), carryover_l.begin() + carryover_end_l, left_out.begin());
     std::copy(carryover_r.begin(), carryover_r.begin() + carryover_end_r, right_out.begin());
