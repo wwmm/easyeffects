@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-01-19 17:12-0300\n"
-"PO-Revision-Date: 2026-01-15 07:01+0000\n"
+"PO-Revision-Date: 2026-01-20 09:01+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.15.2\n"
+"X-Generator: Weblate 5.16-dev\n"
 "Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 
 #: src/autostart.cpp:92
@@ -962,7 +962,7 @@ msgstr "Qualità sovracampionamento"
 
 #: src/contents/ui/Crystalizer.qml:128
 msgid "Transition band"
-msgstr ""
+msgstr "Banda di transizione"
 
 #: src/contents/ui/Crystalizer.qml:170 src/contents/ui/Limiter.qml:87
 msgid "Oversampling"
@@ -2983,14 +2983,12 @@ msgid "Stereo phase"
 msgstr "Fase stereo"
 
 #: src/contents/ui/VoiceSuppressor.qml:94
-#, fuzzy
 msgid "Correlation"
-msgstr "Durata"
+msgstr "Correlazione"
 
 #: src/contents/ui/VoiceSuppressor.qml:110
-#, fuzzy
 msgid "Phase difference"
-msgstr "Differenza di frequenza"
+msgstr "Differenza di fase"
 
 #: src/main.cpp:333
 msgid "Global audio effects"
@@ -3154,9 +3152,8 @@ msgid "Stereo Tools"
 msgstr "Strumenti Stereo"
 
 #: src/tags_plugin_name.cpp:54
-#, fuzzy
 msgid "Voice Suppressor"
-msgstr "Soppressione Rumore"
+msgstr "Soppressione Voce"
 
 #: src/units.hpp:59
 msgctxt "left channel abbreviation (single letter)"
