@@ -69,8 +69,8 @@ auto ConvolverKernelFFT::calculate_fft(std::vector<float> kernel_L,
   auto linear_spectrum_R = util::interpolate(freq_axis, spectrum_R, linear_freq_axis);
 
   // Initialize logarithmic frequency axis
-  auto max_freq = std::ranges::max(freq_axis);
-  auto min_freq = std::ranges::min(freq_axis);
+  const auto max_freq = std::ranges::max(freq_axis);
+  const auto min_freq = std::ranges::min(freq_axis);
 
   util::debug(std::format("Min fft frequency: {}", min_freq));
   util::debug(std::format("Max fft frequency: {}", max_freq));
@@ -176,8 +176,8 @@ auto ConvolverKernelFFT::normalize_spectrum(std::vector<double>& spectrum) -> vo
     return;
   }
 
-  auto min_val = std::ranges::min(spectrum);
-  auto max_val = std::ranges::max(spectrum);
+  const auto min_val = std::ranges::min(spectrum);
+  const auto max_val = std::ranges::max(spectrum);
 
   if (max_val > min_val) {
     for (auto& value : spectrum) {
