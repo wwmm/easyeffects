@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-01-19 17:12-0300\n"
 "PO-Revision-Date: 2026-01-20 23:45+0000\n"
-"Last-Translator: Володимир <vlzuykov@gmail.com>\n"
+"Last-Translator: Максим Горпиніч <gorpinicmaksim0@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
 "Language: uk\n"
@@ -2970,14 +2970,12 @@ msgid "Stereo phase"
 msgstr "Фаза стерео"
 
 #: src/contents/ui/VoiceSuppressor.qml:94
-#, fuzzy
 msgid "Correlation"
-msgstr "Тривалість"
+msgstr "Кореляція"
 
 #: src/contents/ui/VoiceSuppressor.qml:110
-#, fuzzy
 msgid "Phase difference"
-msgstr "Різниця швидкості"
+msgstr "Різниця фаз"
 
 #: src/main.cpp:333
 msgid "Global audio effects"
@@ -3141,9 +3139,8 @@ msgid "Stereo Tools"
 msgstr "Стерео інструменти"
 
 #: src/tags_plugin_name.cpp:54
-#, fuzzy
 msgid "Voice Suppressor"
-msgstr "Придушення шуму"
+msgstr "Приглушувач голосу"
 
 #: src/units.hpp:59
 msgctxt "left channel abbreviation (single letter)"
