@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-01-19 17:12-0300\n"
-"PO-Revision-Date: 2026-01-19 11:01+0000\n"
+"PO-Revision-Date: 2026-01-20 23:45+0000\n"
 "Last-Translator: Володимир <vlzuykov@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
@@ -1689,7 +1689,7 @@ msgstr "ISO 226:2023"
 
 #: src/contents/ui/Loudness.qml:100
 msgid "FFT size"
-msgstr "Розмір кадру"
+msgstr "Розмір ШПФ (FFT)"
 
 #: src/contents/ui/Loudness.qml:114
 msgid "IIR approximation"
