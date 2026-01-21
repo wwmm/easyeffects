@@ -54,6 +54,12 @@ VoiceSuppressor::VoiceSuppressor(const std::string& tag,
   // bypass, input and output gain controls
 
   init_common_controls<db::VoiceSuppressor>(settings);
+
+  connect(settings, &db::VoiceSuppressor::attackTimeChanged,
+          [&]() { attack_coeff = std::exp(-block_time / settings->attackTime()); });
+
+  connect(settings, &db::VoiceSuppressor::releaseTimeChanged,
+          [&]() { release_coeff = std::exp(-block_time / settings->releaseTime()); });
 }
 
 VoiceSuppressor::~VoiceSuppressor() {
@@ -93,6 +99,11 @@ void VoiceSuppressor::setup() {
 
         std::scoped_lock<std::mutex> lock(data_mutex);
 
+        block_time = static_cast<float>(n_samples) / static_cast<float>(rate);
+
+        attack_coeff = std::exp(-block_time / settings->attackTime());
+        release_coeff = std::exp(-block_time / settings->releaseTime());
+
         buf_in_L.clear();
         buf_in_R.clear();
         buf_out_L.clear();
@@ -123,8 +134,10 @@ void VoiceSuppressor::setup() {
         planInvR = fftw_plan_dft_c2r_1d(static_cast<int>(n_samples), complexR, realR, FFTW_ESTIMATE);
 
         freqs.resize(fft_size);
-
+        env_mask.resize(fft_size);
         hanning_window.resize(n_samples);
+
+        std::ranges::fill(env_mask, 1.0F);
 
         for (uint k = 0; k < fft_size; k++) {
           freqs[k] = k * static_cast<float>(rate) / n_samples;
@@ -205,27 +218,47 @@ void VoiceSuppressor::process(std::span<float>& left_in,
       // Correlation
 
       float cross_mag = std::sqrt((cross_real * cross_real) + (cross_imag * cross_imag));
-      float correlation = cross_mag / sqrt((P_L * P_R) + 1e-10);
+      float correlation = cross_mag / std::sqrt((P_L * P_R) + 1e-9);
 
       // Phase difference
 
       float phase_diff = std::atan2(cross_imag, cross_real);
+      float abs_phase_diff = std::abs(phase_diff);
 
-      float mask = 0.0F;
+      // Deciding if we should attenuate the frequency
 
       bool freq_cond = (freqs[k] >= settings->freqStart()) && (freqs[k] <= settings->freqEnd());
+      bool corr_cond = correlation >= settings->correlation() * 0.01F;
+      bool phase_cond = abs_phase_diff <= settings->phaseDifference() * std::numbers::pi_v<float> / 180.0F;
 
-      bool correlation_cond = correlation >= 0.01F * settings->correlation();
+      if (freq_cond && corr_cond && phase_cond) {
+        float phase_norm = 1.0F - (abs_phase_diff / std::numbers::pi_v<float>);
 
-      bool phase_cond = std::abs(phase_diff) <= (settings->phaseDifference() * std::numbers::pi_v<float> / 180.0F);
+        float mask = 1.0F - std::sqrt(correlation * phase_norm);
 
-      if (freq_cond && correlation_cond && phase_cond) {
-        // util::warning(std::format("k = {}, freq = {}, corr = {}, phase diff = {}", k, freqs[k], coherence,
-        // phase_diff));
-        complexL[k][0] *= mask;
-        complexL[k][1] *= mask;
-        complexR[k][0] *= mask;
-        complexR[k][1] *= mask;
+        // smoothing the correlation
+
+        auto& e_mask = env_mask[k];
+
+        float alpha_mask = (mask < e_mask) ? attack_coeff : release_coeff;
+
+        e_mask = (alpha_mask * e_mask) + ((1.0F - alpha_mask) * mask);
+
+        float Mr = 0.5F * (Lr + Rr);
+        float Mi = 0.5F * (Li + Ri);
+        float Sr = 0.5F * (Lr - Rr);
+        float Si = 0.5F * (Li - Ri);
+
+        Mr *= e_mask;
+        Mi *= e_mask;
+
+        complexL[k][0] = Mr + Sr;
+        complexL[k][1] = Mi + Si;
+        complexR[k][0] = Mr - Sr;
+        complexR[k][1] = Mi - Si;
+
+        // util::warning(
+        //     std::format("f = {}, coor = {}, phase = {}, mask = {}", freqs[k], correlation, phase_diff, e_mask));
       }
     }
 

@@ -70,6 +70,10 @@ class VoiceSuppressor : public PluginBase {
   uint hop = 0U;
   uint latency_n_frames = 0U;
 
+  float block_time = 0.0;
+  float attack_coeff = 1.0F;
+  float release_coeff = 1.0F;
+
   double* realL = nullptr;
   double* realR = nullptr;
 
@@ -94,6 +98,8 @@ class VoiceSuppressor : public PluginBase {
 
   std::vector<float> ola_L;
   std::vector<float> ola_R;
+
+  std::vector<float> env_mask;
 
   void free_fftw();
 };

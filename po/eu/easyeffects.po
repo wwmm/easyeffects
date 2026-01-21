@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-01-19 17:12-0300\n"
+"POT-Creation-Date: 2026-01-20 22:23-0300\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Asier Saratsua Garmendia <asier.sarasua@gmail.com>\n"
 "Language-Team: Basque <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -219,7 +219,7 @@ msgstr "Irteerako irabazia"
 #: src/contents/ui/RNNoise.qml:87 src/contents/ui/RNNoise.qml:301
 #: src/contents/ui/RNNoise.qml:303 src/contents/ui/RNNoise.qml:321
 #: src/contents/ui/Speex.qml:174 src/contents/ui/StereoTools.qml:389
-#: src/contents/ui/VoiceSuppressor.qml:134
+#: src/contents/ui/VoiceSuppressor.qml:166
 msgid "Using %1"
 msgstr ""
 
@@ -311,7 +311,7 @@ msgstr "Entzun"
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:356
 #: src/contents/ui/RNNoise.qml:346 src/contents/ui/Speex.qml:192
-#: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:152
+#: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:184
 msgid "Reset"
 msgstr "Berrezarri"
 
@@ -3129,6 +3129,16 @@ msgstr "Iraupena"
 msgid "Phase difference"
 msgstr "Erreferentzia"
 
+#: src/contents/ui/VoiceSuppressor.qml:126
+#, fuzzy
+msgid "Attack time"
+msgstr "Eraso-denbora"
+
+#: src/contents/ui/VoiceSuppressor.qml:142
+#, fuzzy
+msgid "Release time"
+msgstr "Askatze-denbora"
+
 #: src/main.cpp:333
 #, fuzzy
 msgid "Global audio effects"
@@ -3581,14 +3591,8 @@ msgstr ""
 #~ msgid "Plugin Output Gain"
 #~ msgstr "Irteerako irabaziaren plugina"
 
-#~ msgid "Attack Time"
-#~ msgstr "Eraso-denbora"
-
 #~ msgid "Attack Threshold"
 #~ msgstr "Eraso-atalasea"
-
-#~ msgid "Release Time"
-#~ msgstr "Askatze-denbora"
 
 #~ msgid "Release Threshold"
 #~ msgstr "Askatze-atalasea"

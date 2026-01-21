@@ -219,6 +219,7 @@ msgstr "Усиление выхода"
 #: src/contents/ui/RNNoise.qml:303 src/contents/ui/RNNoise.qml:321
 #: src/contents/ui/Speex.qml:174 src/contents/ui/StereoTools.qml:389
 #: src/contents/ui/VoiceSuppressor.qml:134
+#: src/contents/ui/VoiceSuppressor.qml:166
 msgid "Using %1"
 msgstr "Используется %1"
 
@@ -308,6 +309,7 @@ msgstr "Прослушать"
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:356
 #: src/contents/ui/RNNoise.qml:346 src/contents/ui/Speex.qml:192
 #: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:152
+#: src/contents/ui/VoiceSuppressor.qml:184
 msgid "Reset"
 msgstr "Сброс"
 
@@ -3319,6 +3321,16 @@ msgstr "Сдвиг фаз"
 #: src/tags_plugin_name.cpp:54
 msgid "Voice Suppressor"
 msgstr "Подавитель голоса"
+
+#: src/contents/ui/VoiceSuppressor.qml:126
+#, fuzzy
+msgid "Attack time"
+msgstr "Время атаки"
+
+#: src/contents/ui/VoiceSuppressor.qml:142
+#, fuzzy
+msgid "Release time"
+msgstr "Время восстановления"
 
 #~ msgid "Fixed Quantum"
 #~ msgstr "Фиксированный квант"

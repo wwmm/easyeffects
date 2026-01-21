@@ -18,3 +18,8 @@ Frequencies are attenuated only if the correlation between left and right channe
 **Phase Difference**  
 
 Frequencies are not attenuated when the magnitude of phase difference between left and right channel is above this value.  
+
+**Attack and Release Time**  
+
+They control the smoothing of the attenuation factor applied to the signal that fits the criteria set by the parameters above.
+A smaller attack time makes the attenation to be increased faster. Londer release times makes the current suppresion to stay for longer.

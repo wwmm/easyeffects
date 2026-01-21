@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-01-19 17:12-0300\n"
+"POT-Creation-Date: 2026-01-20 22:23-0300\n"
 "PO-Revision-Date: 2026-01-19 11:01+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -212,7 +212,7 @@ msgstr "Gnóthachan Aschuir"
 #: src/contents/ui/RNNoise.qml:87 src/contents/ui/RNNoise.qml:301
 #: src/contents/ui/RNNoise.qml:303 src/contents/ui/RNNoise.qml:321
 #: src/contents/ui/Speex.qml:174 src/contents/ui/StereoTools.qml:389
-#: src/contents/ui/VoiceSuppressor.qml:134
+#: src/contents/ui/VoiceSuppressor.qml:166
 msgid "Using %1"
 msgstr "Ag baint úsáide as %1"
 
@@ -300,7 +300,7 @@ msgstr "Éist"
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:356
 #: src/contents/ui/RNNoise.qml:346 src/contents/ui/Speex.qml:192
-#: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:152
+#: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:184
 msgid "Reset"
 msgstr "Athshocraigh"
 
@@ -2996,6 +2996,16 @@ msgstr "Fad ama"
 msgid "Phase difference"
 msgstr "Difríocht ráta"
 
+#: src/contents/ui/VoiceSuppressor.qml:126
+#, fuzzy
+msgid "Attack time"
+msgstr "Am Ionsaí"
+
+#: src/contents/ui/VoiceSuppressor.qml:142
+#, fuzzy
+msgid "Release time"
+msgstr "Am Scaoilte"
+
 #: src/main.cpp:333
 msgid "Global audio effects"
 msgstr "Éifeachtaí fuaime domhanda"
@@ -3904,14 +3914,8 @@ msgstr "Éifeachtaí fuaime simplí"
 #~ msgid "Excluded Applications List"
 #~ msgstr "Liosta Iarratas Eisiata"
 
-#~ msgid "Attack Time"
-#~ msgstr "Am Ionsaí"
-
 #~ msgid "Attack Threshold"
 #~ msgstr "Tairseach Ionsaithe"
-
-#~ msgid "Release Time"
-#~ msgstr "Am Scaoilte"
 
 #~ msgid "Release Threshold"
 #~ msgstr "Tairseach Scaoilte"

@@ -27,25 +27,37 @@
             <label></label>
             <min>20</min>
             <max>22000</max>
-            <default>120</default>
+            <default>20</default>
         </entry>
         <entry name="freqEnd" type="Double">
             <label></label>
             <min>20</min>
             <max>22000</max>
-            <default>12000</default>
+            <default>22000</default>
         </entry>
         <entry name="correlation" type="Double">
             <label></label>
-            <min>0</min>
+            <min>1</min>
             <max>100</max>
             <default>95</default>
         </entry>
         <entry name="phaseDifference" type="Double">
             <label></label>
+            <min>1</min>
+            <max>180</max>
+            <default>30</default>
+        </entry>
+        <entry name="attackTime" type="Double">
+            <label></label>
             <min>0</min>
-            <max>360</max>
-            <default>20</default>
+            <max>10.0</max>
+            <default>0.01</default>
+        </entry>
+        <entry name="releaseTime" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>10.0</max>
+            <default>10.0</default>
         </entry>
     </group>
 </kcfg>
