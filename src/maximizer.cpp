@@ -80,6 +80,16 @@ void Maximizer::reset() {
   settings->setDefaults();
 }
 
+void Maximizer::clear_data() {
+  {
+    std::scoped_lock<std::mutex> lock(data_mutex);
+
+    lv2_wrapper->destroy_instance();
+  }
+
+  setup();
+}
+
 void Maximizer::setup() {
   std::scoped_lock<std::mutex> lock(data_mutex);
 

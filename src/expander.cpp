@@ -112,6 +112,16 @@ void Expander::reset() {
   settings->setDefaults();
 }
 
+void Expander::clear_data() {
+  {
+    std::scoped_lock<std::mutex> lock(data_mutex);
+
+    lv2_wrapper->destroy_instance();
+  }
+
+  setup();
+}
+
 void Expander::setup() {
   std::scoped_lock<std::mutex> lock(data_mutex);
 

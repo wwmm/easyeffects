@@ -193,6 +193,16 @@ void EchoCanceller::reset() {
   settings->setDefaults();
 }
 
+void EchoCanceller::clear_data() {
+  {
+    std::scoped_lock<std::mutex> lock(data_mutex);
+
+    lv2_wrapper->destroy_instance();
+  }
+
+  setup();
+}
+
 void EchoCanceller::setup() {
   std::scoped_lock<std::mutex> lock(data_mutex);
 

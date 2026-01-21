@@ -114,6 +114,16 @@ Spectrum::~Spectrum() {
 
 void Spectrum::reset() {}
 
+void Spectrum::clear_data() {
+  {
+    std::scoped_lock<std::mutex> lock(data_mutex);
+
+    lv2_wrapper->destroy_instance();
+  }
+
+  setup();
+}
+
 void Spectrum::setup() {
   std::scoped_lock<std::mutex> lock(data_mutex);
 

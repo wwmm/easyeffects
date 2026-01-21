@@ -83,6 +83,10 @@ void Autogain::reset() {
   settings->setDefaults();
 }
 
+void Autogain::clear_data() {
+  setup();
+}
+
 auto Autogain::init_ebur128() -> bool {
   if (n_samples == 0U || rate == 0U) {
     return false;

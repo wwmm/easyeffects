@@ -100,6 +100,10 @@ void Pitch::reset() {
   settings->setDefaults();
 }
 
+void Pitch::clear_data() {
+  setup();
+}
+
 void Pitch::setup() {
   std::scoped_lock<std::mutex> lock(data_mutex);
 

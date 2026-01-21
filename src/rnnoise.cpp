@@ -142,6 +142,10 @@ void RNNoise::reset() {
   settings->setDefaults();
 }
 
+void RNNoise::clear_data() {
+  setup();
+}
+
 void RNNoise::setup() {
   std::scoped_lock<std::mutex> lock(data_mutex);
 

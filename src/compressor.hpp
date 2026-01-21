@@ -44,6 +44,8 @@ class Compressor : public PluginBase {
 
   void reset() override;
 
+  void clear_data() override;
+
   void setup() override;
 
   void process(std::span<float>& left_in,

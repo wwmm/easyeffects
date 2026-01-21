@@ -108,6 +108,16 @@ void StereoTools::reset() {
   settings->setDefaults();
 }
 
+void StereoTools::clear_data() {
+  {
+    std::scoped_lock<std::mutex> lock(data_mutex);
+
+    lv2_wrapper->destroy_instance();
+  }
+
+  setup();
+}
+
 void StereoTools::setup() {
   std::scoped_lock<std::mutex> lock(data_mutex);
 

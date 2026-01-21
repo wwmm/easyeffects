@@ -122,6 +122,16 @@ void MultibandCompressor::reset() {
   settings->setDefaults();
 }
 
+void MultibandCompressor::clear_data() {
+  {
+    std::scoped_lock<std::mutex> lock(data_mutex);
+
+    lv2_wrapper->destroy_instance();
+  }
+
+  setup();
+}
+
 // NOLINTNEXTLINE(readability-function-size,hicpp-function-size)
 void MultibandCompressor::bind_bands() {
   using namespace tags::multiband_compressor;

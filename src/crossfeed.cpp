@@ -75,6 +75,10 @@ void Crossfeed::reset() {
   settings->setDefaults();
 }
 
+void Crossfeed::clear_data() {
+  setup();
+}
+
 void Crossfeed::setup() {
   std::scoped_lock<std::mutex> lock(data_mutex);
 

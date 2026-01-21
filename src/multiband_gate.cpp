@@ -120,6 +120,16 @@ void MultibandGate::reset() {
   settings->setDefaults();
 }
 
+void MultibandGate::clear_data() {
+  {
+    std::scoped_lock<std::mutex> lock(data_mutex);
+
+    lv2_wrapper->destroy_instance();
+  }
+
+  setup();
+}
+
 // NOLINTNEXTLINE(readability-function-size,hicpp-function-size)
 void MultibandGate::bind_bands() {
   using namespace tags::multiband_gate;

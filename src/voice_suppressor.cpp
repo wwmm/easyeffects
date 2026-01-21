@@ -80,6 +80,10 @@ void VoiceSuppressor::reset() {
   settings->setDefaults();
 }
 
+void VoiceSuppressor::clear_data() {
+  setup();
+}
+
 void VoiceSuppressor::setup() {
   std::scoped_lock<std::mutex> lock(data_mutex);
 

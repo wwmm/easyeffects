@@ -115,6 +115,16 @@ void Gate::reset() {
   settings->setDefaults();
 }
 
+void Gate::clear_data() {
+  {
+    std::scoped_lock<std::mutex> lock(data_mutex);
+
+    lv2_wrapper->destroy_instance();
+  }
+
+  setup();
+}
+
 void Gate::setup() {
   std::scoped_lock<std::mutex> lock(data_mutex);
 

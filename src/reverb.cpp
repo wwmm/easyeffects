@@ -86,6 +86,16 @@ void Reverb::reset() {
   settings->setDefaults();
 }
 
+void Reverb::clear_data() {
+  {
+    std::scoped_lock<std::mutex> lock(data_mutex);
+
+    lv2_wrapper->destroy_instance();
+  }
+
+  setup();
+}
+
 void Reverb::setup() {
   std::scoped_lock<std::mutex> lock(data_mutex);
 

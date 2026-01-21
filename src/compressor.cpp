@@ -117,6 +117,16 @@ void Compressor::reset() {
   settings->setDefaults();
 }
 
+void Compressor::clear_data() {
+  {
+    std::scoped_lock<std::mutex> lock(data_mutex);
+
+    lv2_wrapper->destroy_instance();
+  }
+
+  setup();
+}
+
 void Compressor::setup() {
   std::scoped_lock<std::mutex> lock(data_mutex);
 

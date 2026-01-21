@@ -41,6 +41,16 @@ OutputLevel::~OutputLevel() {
 
 void OutputLevel::reset() {}
 
+void OutputLevel::clear_data() {
+  {
+    std::scoped_lock<std::mutex> lock(data_mutex);
+
+    lv2_wrapper->destroy_instance();
+  }
+
+  setup();
+}
+
 void OutputLevel::setup() {
   util::debug(std::format("{}{}: PipeWire blocksize: {}", log_tag, name.toStdString(), n_samples));
   util::debug(std::format("{}{}: PipeWire sampling rate: {}", log_tag, name.toStdString(), rate));

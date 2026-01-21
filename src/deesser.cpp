@@ -86,6 +86,16 @@ void Deesser::reset() {
   settings->setDefaults();
 }
 
+void Deesser::clear_data() {
+  {
+    std::scoped_lock<std::mutex> lock(data_mutex);
+
+    lv2_wrapper->destroy_instance();
+  }
+
+  setup();
+}
+
 void Deesser::setup() {
   std::scoped_lock<std::mutex> lock(data_mutex);
 

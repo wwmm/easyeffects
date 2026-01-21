@@ -91,6 +91,12 @@ void DeepFilterNet::reset() {
   settings->setDefaults();
 }
 
+void DeepFilterNet::clear_data() {
+  // TODO: Implement a destroy_instance for LADSPA wrapper.
+
+  setup();
+}
+
 void DeepFilterNet::setup() {
   std::scoped_lock<std::mutex> lock(data_mutex);
 

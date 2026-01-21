@@ -72,6 +72,10 @@ void LevelMeter::reset() {
   settings->setDefaults();
 }
 
+void LevelMeter::clear_data() {
+  setup();
+}
+
 auto LevelMeter::init_ebur128() -> bool {
   if (n_samples == 0U || rate == 0U) {
     return false;

@@ -83,6 +83,16 @@ void Loudness::reset() {
   settings->setDefaults();
 }
 
+void Loudness::clear_data() {
+  {
+    std::scoped_lock<std::mutex> lock(data_mutex);
+
+    lv2_wrapper->destroy_instance();
+  }
+
+  setup();
+}
+
 void Loudness::setup() {
   std::scoped_lock<std::mutex> lock(data_mutex);
 

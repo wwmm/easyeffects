@@ -175,6 +175,10 @@ void Speex::reset() {
   settings->setDefaults();
 }
 
+void Speex::clear_data() {
+  setup();
+}
+
 void Speex::setup() {
   std::scoped_lock<std::mutex> lock(data_mutex);
 
