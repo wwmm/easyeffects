@@ -64,7 +64,7 @@ class Maximizer : public PluginBase {
 
   float reduction_port_value = 0.0F;
 
-   bool ready = false;
+  bool ready = false;
 
   db::Maximizer* settings = nullptr;
 
