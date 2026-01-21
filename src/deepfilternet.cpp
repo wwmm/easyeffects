@@ -92,7 +92,11 @@ void DeepFilterNet::reset() {
 }
 
 void DeepFilterNet::clear_data() {
-  // TODO: Implement a destroy_instance for LADSPA wrapper.
+  if (ladspa_wrapper->has_instance()) {
+    ladspa_wrapper->deactivate();
+
+    ladspa_wrapper = std::make_unique<ladspa::LadspaWrapper>("libdeep_filter_ladspa.so", "deep_filter_stereo");
+  }
 
   setup();
 }
