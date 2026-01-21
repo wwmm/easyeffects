@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-01-20 22:23-0300\n"
-"PO-Revision-Date: 2026-01-20 23:45+0000\n"
+"POT-Creation-Date: 2026-01-18 19:04-0300\n"
+"PO-Revision-Date: 2026-01-21 01:24+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -122,10 +122,10 @@ msgstr "О программе"
 #: src/contents/ui/Autogain.qml:69 src/contents/ui/BassEnhancer.qml:105
 #: src/contents/ui/BassLoudness.qml:58 src/contents/ui/Crossfeed.qml:73
 #: src/contents/ui/DeepFilterNet.qml:93 src/contents/ui/Exciter.qml:106
-#: src/contents/ui/Filter.qml:58 src/contents/ui/Loudness.qml:58
-#: src/contents/ui/Maximizer.qml:59 src/contents/ui/Pitch.qml:59
-#: src/contents/ui/Reverb.qml:59 src/contents/ui/Speex.qml:58
-#: src/contents/ui/VoiceSuppressor.qml:57
+#: src/contents/ui/Filter.qml:58 src/contents/ui/Karaoke.qml:57
+#: src/contents/ui/Loudness.qml:58 src/contents/ui/Maximizer.qml:59
+#: src/contents/ui/Pitch.qml:59 src/contents/ui/Reverb.qml:59
+#: src/contents/ui/Speex.qml:58 src/contents/ui/VoiceSuppressor.qml:57
 msgid "Controls"
 msgstr "Элементы управления"
 
@@ -183,7 +183,7 @@ msgstr "Исторический максимум"
 
 #: src/contents/ui/Autogain.qml:143 src/contents/ui/Autogain.qml:198
 #: src/contents/ui/BassLoudness.qml:66 src/contents/ui/LevelMeter.qml:146
-#: src/tags_plugin_name.cpp:45
+#: src/tags_plugin_name.cpp:46 src/tags_plugin_name.cpp:45
 msgid "Loudness"
 msgstr "Громкость"
 
@@ -209,15 +209,16 @@ msgstr "Усиление выхода"
 #: src/contents/ui/Delay.qml:373 src/contents/ui/EchoCanceller.qml:155
 #: src/contents/ui/Equalizer.qml:302 src/contents/ui/Exciter.qml:208
 #: src/contents/ui/Expander.qml:822 src/contents/ui/Filter.qml:217
-#: src/contents/ui/Gate.qml:951 src/contents/ui/LevelMeter.qml:215
-#: src/contents/ui/Limiter.qml:606 src/contents/ui/Loudness.qml:172
-#: src/contents/ui/Maximizer.qml:119
+#: src/contents/ui/Gate.qml:951 src/contents/ui/Karaoke.qml:85
+#: src/contents/ui/LevelMeter.qml:215 src/contents/ui/Limiter.qml:606
+#: src/contents/ui/Loudness.qml:172 src/contents/ui/Maximizer.qml:119
 #: src/contents/ui/MultibandCompressor.qml:965
 #: src/contents/ui/MultibandGate.qml:938 src/contents/ui/Pitch.qml:265
 #: src/contents/ui/Reverb.qml:316 src/contents/ui/RNNoise.qml:76
 #: src/contents/ui/RNNoise.qml:87 src/contents/ui/RNNoise.qml:301
 #: src/contents/ui/RNNoise.qml:303 src/contents/ui/RNNoise.qml:321
 #: src/contents/ui/Speex.qml:174 src/contents/ui/StereoTools.qml:389
+#: src/contents/ui/VoiceSuppressor.qml:134
 #: src/contents/ui/VoiceSuppressor.qml:166
 msgid "Using %1"
 msgstr "Используется %1"
@@ -301,13 +302,14 @@ msgstr "Прослушать"
 #: src/contents/ui/Delay.qml:425 src/contents/ui/EchoCanceller.qml:183
 #: src/contents/ui/Equalizer.qml:386 src/contents/ui/Exciter.qml:250
 #: src/contents/ui/Expander.qml:874 src/contents/ui/Filter.qml:249
-#: src/contents/ui/Gate.qml:1003 src/contents/ui/Limiter.qml:658
-#: src/contents/ui/Loudness.qml:214 src/contents/ui/Main.qml:613
-#: src/contents/ui/Maximizer.qml:151
+#: src/contents/ui/Gate.qml:1003 src/contents/ui/Karaoke.qml:103
+#: src/contents/ui/Limiter.qml:658 src/contents/ui/Loudness.qml:214
+#: src/contents/ui/Main.qml:613 src/contents/ui/Maximizer.qml:151
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:356
 #: src/contents/ui/RNNoise.qml:346 src/contents/ui/Speex.qml:192
-#: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:184
+#: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:152
+#: src/contents/ui/VoiceSuppressor.qml:184
 msgid "Reset"
 msgstr "Сброс"
 
@@ -323,7 +325,7 @@ msgstr "Выход"
 #: src/contents/ui/Limiter.qml:218 src/contents/ui/MultibandCompressor.qml:429
 #: src/contents/ui/MultibandGate.qml:402
 msgid "Link"
-msgstr "Указатель"
+msgstr "Связь"
 
 #: src/contents/ui/BlocklistDialog.qml:33
 msgid "Excluded Applications"
@@ -349,7 +351,7 @@ msgstr "Список пуст"
 
 #: src/contents/ui/BlocklistDialog.qml:116
 msgid "No application excluded"
-msgstr "Ни одно приложение не исключено"
+msgstr "Нет исключённых приложений"
 
 #: src/contents/ui/BlocklistDialog.qml:139
 msgid "Remove Application"
@@ -687,7 +689,7 @@ msgstr "Вход в боковую цепь"
 #: src/contents/ui/Gate.qml:544 src/contents/ui/Limiter.qml:319
 #: src/contents/ui/LspPreMixDialog.qml:54
 msgid "Input to link"
-msgstr "Вход в указатель"
+msgstr "Вход в связь"
 
 # #, fuzzy
 #: src/contents/ui/Compressor.qml:583 src/contents/ui/Expander.qml:539
@@ -701,21 +703,21 @@ msgstr "Боковая цепь во вход"
 #: src/contents/ui/Gate.qml:576 src/contents/ui/Limiter.qml:351
 #: src/contents/ui/LspPreMixDialog.qml:86
 msgid "Sidechain to link"
-msgstr "Боковая цепь в указатель"
+msgstr "Боковая цепь в связь"
 
 # #, fuzzy
 #: src/contents/ui/Compressor.qml:615 src/contents/ui/Expander.qml:571
 #: src/contents/ui/Gate.qml:592 src/contents/ui/Limiter.qml:367
 #: src/contents/ui/LspPreMixDialog.qml:102
 msgid "Link to sidechain"
-msgstr "Указатель в боковую цепь"
+msgstr "Связь в боковую цепь"
 
 # #, fuzzy
 #: src/contents/ui/Compressor.qml:631 src/contents/ui/Expander.qml:587
 #: src/contents/ui/Gate.qml:608 src/contents/ui/Limiter.qml:383
 #: src/contents/ui/LspPreMixDialog.qml:118
 msgid "Link to input"
-msgstr "Указатель во вход"
+msgstr "Связь во вход"
 
 #: src/contents/ui/Compressor.qml:675 src/contents/ui/Crusher.qml:165
 #: src/contents/ui/Expander.qml:627 src/contents/ui/Gate.qml:119
@@ -1458,11 +1460,11 @@ msgstr "Линейная АЧХ"
 
 #: src/contents/ui/Equalizer.qml:350
 msgid "Calculate frequencies"
-msgstr "Рассчитать частоты"
+msgstr "Расчёт частот"
 
 #: src/contents/ui/Equalizer.qml:357
 msgid "Sort bands"
-msgstr "Сортировать полосы"
+msgstr "Сортировка полос"
 
 #: src/contents/ui/Equalizer.qml:364
 msgid "Import APO"
@@ -1678,7 +1680,8 @@ msgstr "Истинный пик/24 бита"
 msgid "Dithering"
 msgstr "Дизеринг (зашумление)"
 
-#: src/contents/ui/Limiter.qml:117 src/tags_plugin_name.cpp:44
+#: src/contents/ui/Limiter.qml:117 src/tags_plugin_name.cpp:45
+#: src/tags_plugin_name.cpp:44
 msgid "Limiter"
 msgstr "Ограничитель (лимитер)"
 
@@ -1922,11 +1925,11 @@ msgstr "Нет доступных звуковых приложений"
 
 #: src/contents/ui/PageStreamsEffects.qml:114
 msgid "No Effects"
-msgstr "Без эффектов"
+msgstr "Нет эффектов"
 
 #: src/contents/ui/PageStreamsEffects.qml:115
 msgid "Audio stream not modified"
-msgstr "Аудиопоток не изменён"
+msgstr "Аудиопоток без изменений"
 
 #: src/contents/ui/PageStreamsEffects.qml:375
 msgid "Add effect"
@@ -2093,7 +2096,8 @@ msgstr "Окно перемотки"
 msgid "Overlap length"
 msgstr "Длина перекрытия"
 
-#: src/contents/ui/Pitch.qml:163 src/tags_plugin_name.cpp:49
+#: src/contents/ui/Pitch.qml:163 src/tags_plugin_name.cpp:50
+#: src/tags_plugin_name.cpp:49
 msgid "Pitch"
 msgstr "Высота тона"
 
@@ -2127,7 +2131,7 @@ msgstr "Эффект недоступен"
 
 #: src/contents/ui/PluginNotAvailable.qml:34
 msgid "%1 cannot be used because %2 is not installed on the system."
-msgstr "%1 нельзя использовать, поскольку %2 не установлен в системе."
+msgstr "«%1» нельзя использовать, поскольку %2 не установлен в системе."
 
 #: src/contents/ui/PreferencesSheet.qml:35
 msgid "Background Service"
@@ -3016,24 +3020,6 @@ msgstr "База стерео"
 msgid "Stereo phase"
 msgstr "Фаза стерео"
 
-#: src/contents/ui/VoiceSuppressor.qml:94
-msgid "Correlation"
-msgstr "Корреляция"
-
-#: src/contents/ui/VoiceSuppressor.qml:110
-msgid "Phase difference"
-msgstr "Сдвиг фаз"
-
-#: src/contents/ui/VoiceSuppressor.qml:126
-#, fuzzy
-msgid "Attack time"
-msgstr "Время атаки"
-
-#: src/contents/ui/VoiceSuppressor.qml:142
-#, fuzzy
-msgid "Release time"
-msgstr "Время восстановления"
-
 #: src/main.cpp:333
 msgid "Global audio effects"
 msgstr "Глобальные эффекты звука"
@@ -3166,40 +3152,40 @@ msgid "Exciter"
 msgstr "Гармонический возбудитель"
 
 #: src/tags_plugin_name.cpp:43
+msgid "Karaoke"
+msgstr "Караоке"
+
+#: src/tags_plugin_name.cpp:44 src/tags_plugin_name.cpp:43
 msgid "Level Meter"
 msgstr "Уровнемер"
 
-#: src/tags_plugin_name.cpp:46
+#: src/tags_plugin_name.cpp:47 src/tags_plugin_name.cpp:46
 msgid "Maximizer"
-msgstr "Максимизатор"
+msgstr "Максимайзер"
 
-#: src/tags_plugin_name.cpp:47
+#: src/tags_plugin_name.cpp:48 src/tags_plugin_name.cpp:47
 msgid "Multiband Compressor"
 msgstr "Многополосный компрессор"
 
-#: src/tags_plugin_name.cpp:48
+#: src/tags_plugin_name.cpp:49 src/tags_plugin_name.cpp:48
 msgid "Multiband Gate"
 msgstr "Многополосный гейт"
 
-#: src/tags_plugin_name.cpp:50
+#: src/tags_plugin_name.cpp:51 src/tags_plugin_name.cpp:50
 msgid "Reverberation"
 msgstr "Реверберация"
 
-#: src/tags_plugin_name.cpp:51
+#: src/tags_plugin_name.cpp:52 src/tags_plugin_name.cpp:51
 msgid "Noise Reduction"
 msgstr "Подавление шума"
 
-#: src/tags_plugin_name.cpp:52
+#: src/tags_plugin_name.cpp:53 src/tags_plugin_name.cpp:52
 msgid "Speech Processor"
 msgstr "Речевой процессор"
 
-#: src/tags_plugin_name.cpp:53
+#: src/tags_plugin_name.cpp:54 src/tags_plugin_name.cpp:53
 msgid "Stereo Tools"
 msgstr "Наладчики стерео"
-
-#: src/tags_plugin_name.cpp:54
-msgid "Voice Suppressor"
-msgstr "Подавитель голоса"
 
 #: src/units.hpp:59
 msgctxt "left channel abbreviation (single letter)"
@@ -3324,8 +3310,27 @@ msgstr "Эквалайзер, компрессор и прочие звуков�
 msgid "Simple audio effects"
 msgstr "Простые звуковые эффекты"
 
-#~ msgid "Karaoke"
-#~ msgstr "Караоке"
+#: src/contents/ui/VoiceSuppressor.qml:94
+msgid "Correlation"
+msgstr "Корреляция"
+
+#: src/contents/ui/VoiceSuppressor.qml:110
+msgid "Phase difference"
+msgstr "Сдвиг фаз"
+
+#: src/tags_plugin_name.cpp:54
+msgid "Voice Suppressor"
+msgstr "Подавитель голоса"
+
+#: src/contents/ui/VoiceSuppressor.qml:126
+#, fuzzy
+msgid "Attack time"
+msgstr "Время атаки"
+
+#: src/contents/ui/VoiceSuppressor.qml:142
+#, fuzzy
+msgid "Release time"
+msgstr "Время восстановления"
 
 #~ msgid "Fixed Quantum"
 #~ msgstr "Фиксированный квант"
@@ -3647,8 +3652,14 @@ msgstr "Простые звуковые эффекты"
 #~ msgid "Preset"
 #~ msgstr "Предустановка"
 
+#~ msgid "Attack Time"
+#~ msgstr "Время атаки"
+
 #~ msgid "Attack Threshold"
 #~ msgstr "Порог атаки"
+
+#~ msgid "Release Time"
+#~ msgstr "Время восстановления"
 
 #~ msgid "Release Threshold"
 #~ msgstr "Порог восстановления"
