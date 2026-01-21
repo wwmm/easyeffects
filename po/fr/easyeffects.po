@@ -168,7 +168,7 @@ msgstr "Moyenne géométrique (SI)"
 msgid "Target"
 msgstr "Cible"
 
-#: src/contents/ui/Autogain.qml:104
+#: src/contents/ui/Autogain.qml:104 src/contents/ui/PipeWirePage.qml:415
 msgid "Silence"
 msgstr "Silence"
 
@@ -1289,6 +1289,7 @@ msgstr "Pente"
 #: src/contents/ui/EqualizerBandMenu.qml:94 src/contents/ui/Filter.qml:127
 #: src/contents/ui/MultibandCompressor.qml:201
 #: src/contents/ui/MultibandGate.qml:138 src/contents/ui/PipeWirePage.qml:415
+#: src/contents/ui/PipeWirePage.qml:426
 msgid "Frequency"
 msgstr "Fréquence"
 

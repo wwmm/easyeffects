@@ -166,7 +166,7 @@ msgstr "幾何平均值 (SI)"
 msgid "Target"
 msgstr "目標"
 
-#: src/contents/ui/Autogain.qml:104
+#: src/contents/ui/Autogain.qml:104 src/contents/ui/PipeWirePage.qml:415
 msgid "Silence"
 msgstr "安靜"
 
@@ -1282,6 +1282,7 @@ msgstr "傾斜"
 #: src/contents/ui/EqualizerBandMenu.qml:94 src/contents/ui/Filter.qml:127
 #: src/contents/ui/MultibandCompressor.qml:201
 #: src/contents/ui/MultibandGate.qml:138 src/contents/ui/PipeWirePage.qml:415
+#: src/contents/ui/PipeWirePage.qml:426
 msgid "Frequency"
 msgstr "頻率"
 
