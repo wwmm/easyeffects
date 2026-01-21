@@ -52,6 +52,11 @@ void OutputLevel::clear_data() {
 }
 
 void OutputLevel::setup() {
+  if (rate == 0 || n_samples == 0) {
+    // Some signals may be emitted before PipeWire calls our setup function
+    return;
+  }
+
   util::debug(std::format("{}{}: PipeWire blocksize: {}", log_tag, name.toStdString(), n_samples));
   util::debug(std::format("{}{}: PipeWire sampling rate: {}", log_tag, name.toStdString(), rate));
 }

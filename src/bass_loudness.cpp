@@ -92,6 +92,11 @@ void BassLoudness::clear_data() {
 }
 
 void BassLoudness::setup() {
+  if (rate == 0 || n_samples == 0) {
+    // Some signals may be emitted before PipeWire calls our setup function
+    return;
+  }
+
   std::scoped_lock<std::mutex> lock(data_mutex);
 
   if (!lv2_wrapper->found_plugin) {

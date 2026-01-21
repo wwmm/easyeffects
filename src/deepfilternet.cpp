@@ -98,11 +98,12 @@ void DeepFilterNet::clear_data() {
 }
 
 void DeepFilterNet::setup() {
-  std::scoped_lock<std::mutex> lock(data_mutex);
-
-  if (rate == 0 || n_samples == 0) {  // some database signals may be emitted before pipewire calls our setup function
+  if (rate == 0 || n_samples == 0) {
+    // Some signals may be emitted before PipeWire calls our setup function
     return;
   }
+
+  std::scoped_lock<std::mutex> lock(data_mutex);
 
   ready = false;
 

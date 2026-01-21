@@ -119,6 +119,11 @@ void Autogain::set_maximum_history(const int& seconds) {
 }
 
 void Autogain::setup() {
+  if (rate == 0 || n_samples == 0) {
+    // Some signals may be emitted before PipeWire calls our setup function
+    return;
+  }
+
   std::scoped_lock<std::mutex> lock(data_mutex);
 
   block_time = static_cast<double>(n_samples) / static_cast<double>(rate);

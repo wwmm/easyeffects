@@ -123,6 +123,11 @@ void Expander::clear_data() {
 }
 
 void Expander::setup() {
+  if (rate == 0 || n_samples == 0) {
+    // Some signals may be emitted before PipeWire calls our setup function
+    return;
+  }
+
   std::scoped_lock<std::mutex> lock(data_mutex);
 
   if (!lv2_wrapper->found_plugin) {
