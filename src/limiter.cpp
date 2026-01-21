@@ -118,7 +118,8 @@ void Limiter::clear_data() {
 }
 
 void Limiter::setup() {
-  if (rate == 0 || n_samples == 0) {  // Some signals may be emitted before pipewire calls our setup function
+  if (rate == 0 || n_samples == 0) {
+    // Some signals may be emitted before PipeWire calls our setup function
     return;
   }
 

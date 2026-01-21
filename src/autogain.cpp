@@ -83,6 +83,10 @@ void Autogain::reset() {
   settings->setDefaults();
 }
 
+void Autogain::clear_data() {
+  setup();
+}
+
 auto Autogain::init_ebur128() -> bool {
   if (n_samples == 0U || rate == 0U) {
     return false;
@@ -115,6 +119,11 @@ void Autogain::set_maximum_history(const int& seconds) {
 }
 
 void Autogain::setup() {
+  if (rate == 0 || n_samples == 0) {
+    // Some signals may be emitted before PipeWire calls our setup function
+    return;
+  }
+
   std::scoped_lock<std::mutex> lock(data_mutex);
 
   block_time = static_cast<double>(n_samples) / static_cast<double>(rate);
@@ -126,9 +135,8 @@ void Autogain::setup() {
     data.resize(static_cast<size_t>(n_samples) * 2U);
   }
 
-  /*
-   * There is no need to reset libebur128 when n_samples change. Only rante chagnes matter for it.
-   */
+  // There is no need to reset libebur128 when n_samples change.
+  // Only rate changes matter for it.
 
   if (ebur128_ready && rate == old_rate) {
     return;

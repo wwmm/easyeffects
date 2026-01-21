@@ -157,7 +157,8 @@ void Crystalizer::clear_data() {
 }
 
 void Crystalizer::setup() {
-  if (rate == 0 || n_samples == 0) {  // oversamplingChanged may be emitted before pipewire calls our setup function
+  if (rate == 0 || n_samples == 0) {
+    // Some signals may be emitted before PipeWire calls our setup function
     return;
   }
 

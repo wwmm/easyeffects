@@ -72,6 +72,10 @@ void LevelMeter::reset() {
   settings->setDefaults();
 }
 
+void LevelMeter::clear_data() {
+  setup();
+}
+
 auto LevelMeter::init_ebur128() -> bool {
   if (n_samples == 0U || rate == 0U) {
     return false;
@@ -93,6 +97,11 @@ auto LevelMeter::init_ebur128() -> bool {
 }
 
 void LevelMeter::setup() {
+  if (rate == 0 || n_samples == 0) {
+    // Some signals may be emitted before PipeWire calls our setup function
+    return;
+  }
+
   std::scoped_lock<std::mutex> lock(data_mutex);
 
   ebur128_ready = false;
