@@ -91,12 +91,23 @@ void DeepFilterNet::reset() {
   settings->setDefaults();
 }
 
-void DeepFilterNet::setup() {
-  std::scoped_lock<std::mutex> lock(data_mutex);
+void DeepFilterNet::clear_data() {
+  if (ladspa_wrapper->has_instance()) {
+    ladspa_wrapper->deactivate();
 
-  if (rate == 0 || n_samples == 0) {  // some database signals may be emitted before pipewire calls our setup function
+    ladspa_wrapper = std::make_unique<ladspa::LadspaWrapper>("libdeep_filter_ladspa.so", "deep_filter_stereo");
+  }
+
+  setup();
+}
+
+void DeepFilterNet::setup() {
+  if (rate == 0 || n_samples == 0) {
+    // Some signals may be emitted before PipeWire calls our setup function
     return;
   }
+
+  std::scoped_lock<std::mutex> lock(data_mutex);
 
   ready = false;
 

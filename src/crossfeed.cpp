@@ -75,7 +75,16 @@ void Crossfeed::reset() {
   settings->setDefaults();
 }
 
+void Crossfeed::clear_data() {
+  setup();
+}
+
 void Crossfeed::setup() {
+  if (rate == 0 || n_samples == 0) {
+    // Some signals may be emitted before PipeWire calls our setup function
+    return;
+  }
+
   std::scoped_lock<std::mutex> lock(data_mutex);
 
   data.resize(2U * static_cast<size_t>(n_samples));

@@ -120,6 +120,16 @@ void MultibandGate::reset() {
   settings->setDefaults();
 }
 
+void MultibandGate::clear_data() {
+  {
+    std::scoped_lock<std::mutex> lock(data_mutex);
+
+    lv2_wrapper->destroy_instance();
+  }
+
+  setup();
+}
+
 // NOLINTNEXTLINE(readability-function-size,hicpp-function-size)
 void MultibandGate::bind_bands() {
   using namespace tags::multiband_gate;
@@ -176,6 +186,11 @@ void MultibandGate::bind_bands() {
 }
 
 void MultibandGate::setup() {
+  if (rate == 0 || n_samples == 0) {
+    // Some signals may be emitted before PipeWire calls our setup function
+    return;
+  }
+
   std::scoped_lock<std::mutex> lock(data_mutex);
 
   if (!lv2_wrapper->found_plugin) {

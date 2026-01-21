@@ -175,7 +175,16 @@ void Speex::reset() {
   settings->setDefaults();
 }
 
+void Speex::clear_data() {
+  setup();
+}
+
 void Speex::setup() {
+  if (rate == 0 || n_samples == 0) {
+    // Some signals may be emitted before PipeWire calls our setup function
+    return;
+  }
+
   std::scoped_lock<std::mutex> lock(data_mutex);
 
   latency_n_frames = 0U;
