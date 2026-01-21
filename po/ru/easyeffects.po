@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-01-18 19:04-0300\n"
-"PO-Revision-Date: 2026-01-20 23:45+0000\n"
+"PO-Revision-Date: 2026-01-21 01:24+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -323,7 +323,7 @@ msgstr "Выход"
 #: src/contents/ui/Limiter.qml:218 src/contents/ui/MultibandCompressor.qml:429
 #: src/contents/ui/MultibandGate.qml:402
 msgid "Link"
-msgstr "Указатель"
+msgstr "Связь"
 
 #: src/contents/ui/BlocklistDialog.qml:33
 msgid "Excluded Applications"
@@ -349,7 +349,7 @@ msgstr "Список пуст"
 
 #: src/contents/ui/BlocklistDialog.qml:116
 msgid "No application excluded"
-msgstr "Ни одно приложение не исключено"
+msgstr "Нет исключённых приложений"
 
 #: src/contents/ui/BlocklistDialog.qml:139
 msgid "Remove Application"
@@ -687,7 +687,7 @@ msgstr "Вход в боковую цепь"
 #: src/contents/ui/Gate.qml:544 src/contents/ui/Limiter.qml:319
 #: src/contents/ui/LspPreMixDialog.qml:54
 msgid "Input to link"
-msgstr "Вход в указатель"
+msgstr "Вход в связь"
 
 # #, fuzzy
 #: src/contents/ui/Compressor.qml:583 src/contents/ui/Expander.qml:539
@@ -701,21 +701,21 @@ msgstr "Боковая цепь во вход"
 #: src/contents/ui/Gate.qml:576 src/contents/ui/Limiter.qml:351
 #: src/contents/ui/LspPreMixDialog.qml:86
 msgid "Sidechain to link"
-msgstr "Боковая цепь в указатель"
+msgstr "Боковая цепь в связь"
 
 # #, fuzzy
 #: src/contents/ui/Compressor.qml:615 src/contents/ui/Expander.qml:571
 #: src/contents/ui/Gate.qml:592 src/contents/ui/Limiter.qml:367
 #: src/contents/ui/LspPreMixDialog.qml:102
 msgid "Link to sidechain"
-msgstr "Указатель в боковую цепь"
+msgstr "Связь в боковую цепь"
 
 # #, fuzzy
 #: src/contents/ui/Compressor.qml:631 src/contents/ui/Expander.qml:587
 #: src/contents/ui/Gate.qml:608 src/contents/ui/Limiter.qml:383
 #: src/contents/ui/LspPreMixDialog.qml:118
 msgid "Link to input"
-msgstr "Указатель во вход"
+msgstr "Связь во вход"
 
 #: src/contents/ui/Compressor.qml:675 src/contents/ui/Crusher.qml:165
 #: src/contents/ui/Expander.qml:627 src/contents/ui/Gate.qml:119
@@ -1458,11 +1458,11 @@ msgstr "Линейная АЧХ"
 
 #: src/contents/ui/Equalizer.qml:350
 msgid "Calculate frequencies"
-msgstr "Рассчитать частоты"
+msgstr "Расчёт частот"
 
 #: src/contents/ui/Equalizer.qml:357
 msgid "Sort bands"
-msgstr "Сортировать полосы"
+msgstr "Сортировка полос"
 
 #: src/contents/ui/Equalizer.qml:364
 msgid "Import APO"
@@ -1923,11 +1923,11 @@ msgstr "Нет доступных звуковых приложений"
 
 #: src/contents/ui/PageStreamsEffects.qml:114
 msgid "No Effects"
-msgstr "Без эффектов"
+msgstr "Нет эффектов"
 
 #: src/contents/ui/PageStreamsEffects.qml:115
 msgid "Audio stream not modified"
-msgstr "Аудиопоток не изменён"
+msgstr "Аудиопоток без изменений"
 
 #: src/contents/ui/PageStreamsEffects.qml:375
 msgid "Add effect"
@@ -2129,7 +2129,7 @@ msgstr "Эффект недоступен"
 
 #: src/contents/ui/PluginNotAvailable.qml:34
 msgid "%1 cannot be used because %2 is not installed on the system."
-msgstr "%1 нельзя использовать, поскольку %2 не установлен в системе."
+msgstr "«%1» нельзя использовать, поскольку %2 не установлен в системе."
 
 #: src/contents/ui/PreferencesSheet.qml:35
 msgid "Background Service"
@@ -3159,7 +3159,7 @@ msgstr "Уровнемер"
 
 #: src/tags_plugin_name.cpp:47 src/tags_plugin_name.cpp:46
 msgid "Maximizer"
-msgstr "Максимизатор"
+msgstr "Максимайзер"
 
 #: src/tags_plugin_name.cpp:48 src/tags_plugin_name.cpp:47
 msgid "Multiband Compressor"
