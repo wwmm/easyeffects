@@ -144,94 +144,94 @@ void EffectsBase::create_filters_if_necessary() {
 
     auto instance_id = tags::plugin_name::get_id(name);
 
-    std::shared_ptr<PluginBase> filter = nullptr;
+    std::unique_ptr<PluginBase> filter = nullptr;
 
     if (name.startsWith(tags::plugin_name::BaseName::autogain)) {
-      filter = std::make_shared<Autogain>(log_tag, pm, pipeline_type, instance_id);
+      filter = std::make_unique<Autogain>(log_tag, pm, pipeline_type, instance_id);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::bassEnhancer)) {
-      filter = std::make_shared<BassEnhancer>(log_tag, pm, pipeline_type, instance_id);
+      filter = std::make_unique<BassEnhancer>(log_tag, pm, pipeline_type, instance_id);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::bassLoudness)) {
-      filter = std::make_shared<BassLoudness>(log_tag, pm, pipeline_type, instance_id);
+      filter = std::make_unique<BassLoudness>(log_tag, pm, pipeline_type, instance_id);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::compressor)) {
-      filter = std::make_shared<Compressor>(log_tag, pm, pipeline_type, instance_id);
+      filter = std::make_unique<Compressor>(log_tag, pm, pipeline_type, instance_id);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::convolver)) {
-      filter = std::make_shared<Convolver>(log_tag, pm, pipeline_type, instance_id);
+      filter = std::make_unique<Convolver>(log_tag, pm, pipeline_type, instance_id);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::crossfeed)) {
-      filter = std::make_shared<Crossfeed>(log_tag, pm, pipeline_type, instance_id);
+      filter = std::make_unique<Crossfeed>(log_tag, pm, pipeline_type, instance_id);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::crusher)) {
-      filter = std::make_shared<Crusher>(log_tag, pm, pipeline_type, instance_id);
+      filter = std::make_unique<Crusher>(log_tag, pm, pipeline_type, instance_id);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::crystalizer)) {
-      filter = std::make_shared<Crystalizer>(log_tag, pm, pipeline_type, instance_id);
+      filter = std::make_unique<Crystalizer>(log_tag, pm, pipeline_type, instance_id);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::deepfilternet)) {
-      filter = std::make_shared<DeepFilterNet>(log_tag, pm, pipeline_type, instance_id);
+      filter = std::make_unique<DeepFilterNet>(log_tag, pm, pipeline_type, instance_id);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::deesser)) {
-      filter = std::make_shared<Deesser>(log_tag, pm, pipeline_type, instance_id);
+      filter = std::make_unique<Deesser>(log_tag, pm, pipeline_type, instance_id);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::delay)) {
-      filter = std::make_shared<Delay>(log_tag, pm, pipeline_type, instance_id);
+      filter = std::make_unique<Delay>(log_tag, pm, pipeline_type, instance_id);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::echoCanceller)) {
-      filter = std::make_shared<EchoCanceller>(log_tag, pm, pipeline_type, instance_id);
+      filter = std::make_unique<EchoCanceller>(log_tag, pm, pipeline_type, instance_id);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::exciter)) {
-      filter = std::make_shared<Exciter>(log_tag, pm, pipeline_type, instance_id);
+      filter = std::make_unique<Exciter>(log_tag, pm, pipeline_type, instance_id);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::expander)) {
-      filter = std::make_shared<Expander>(log_tag, pm, pipeline_type, instance_id);
+      filter = std::make_unique<Expander>(log_tag, pm, pipeline_type, instance_id);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::equalizer)) {
-      filter = std::make_shared<Equalizer>(log_tag, pm, pipeline_type, instance_id);
+      filter = std::make_unique<Equalizer>(log_tag, pm, pipeline_type, instance_id);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::filter)) {
-      filter = std::make_shared<Filter>(log_tag, pm, pipeline_type, instance_id);
+      filter = std::make_unique<Filter>(log_tag, pm, pipeline_type, instance_id);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::gate)) {
-      filter = std::make_shared<Gate>(log_tag, pm, pipeline_type, instance_id);
+      filter = std::make_unique<Gate>(log_tag, pm, pipeline_type, instance_id);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::voiceSuppressor)) {
-      filter = std::make_shared<VoiceSuppressor>(log_tag, pm, pipeline_type, instance_id);
+      filter = std::make_unique<VoiceSuppressor>(log_tag, pm, pipeline_type, instance_id);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::levelMeter)) {
-      filter = std::make_shared<LevelMeter>(log_tag, pm, pipeline_type, instance_id);
+      filter = std::make_unique<LevelMeter>(log_tag, pm, pipeline_type, instance_id);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::limiter)) {
-      filter = std::make_shared<Limiter>(log_tag, pm, pipeline_type, instance_id);
+      filter = std::make_unique<Limiter>(log_tag, pm, pipeline_type, instance_id);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::loudness)) {
-      filter = std::make_shared<Loudness>(log_tag, pm, pipeline_type, instance_id);
+      filter = std::make_unique<Loudness>(log_tag, pm, pipeline_type, instance_id);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::maximizer)) {
-      filter = std::make_shared<Maximizer>(log_tag, pm, pipeline_type, instance_id);
+      filter = std::make_unique<Maximizer>(log_tag, pm, pipeline_type, instance_id);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::multibandCompressor)) {
-      filter = std::make_shared<MultibandCompressor>(log_tag, pm, pipeline_type, instance_id);
+      filter = std::make_unique<MultibandCompressor>(log_tag, pm, pipeline_type, instance_id);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::multibandGate)) {
-      filter = std::make_shared<MultibandGate>(log_tag, pm, pipeline_type, instance_id);
+      filter = std::make_unique<MultibandGate>(log_tag, pm, pipeline_type, instance_id);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::pitch)) {
-      filter = std::make_shared<Pitch>(log_tag, pm, pipeline_type, instance_id);
+      filter = std::make_unique<Pitch>(log_tag, pm, pipeline_type, instance_id);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::reverb)) {
-      filter = std::make_shared<Reverb>(log_tag, pm, pipeline_type, instance_id);
+      filter = std::make_unique<Reverb>(log_tag, pm, pipeline_type, instance_id);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::rnnoise)) {
-      filter = std::make_shared<RNNoise>(log_tag, pm, pipeline_type, instance_id);
+      filter = std::make_unique<RNNoise>(log_tag, pm, pipeline_type, instance_id);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::speex)) {
-      filter = std::make_shared<Speex>(log_tag, pm, pipeline_type, instance_id);
+      filter = std::make_unique<Speex>(log_tag, pm, pipeline_type, instance_id);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::stereoTools)) {
-      filter = std::make_shared<StereoTools>(log_tag, pm, pipeline_type, instance_id);
+      filter = std::make_unique<StereoTools>(log_tag, pm, pipeline_type, instance_id);
     }
 
     if (filter != nullptr) {
@@ -245,7 +245,7 @@ void EffectsBase::create_filters_if_necessary() {
       filter->setParent(this);
     }
 
-    plugins.insert(std::make_pair(name, filter));
+    plugins.insert(std::make_pair(name, std::move(filter)));
   }
 }
 
@@ -262,7 +262,8 @@ void EffectsBase::remove_unused_filters() {
     auto key = it->first;
 
     if (std::ranges::find(list, key) == list.end()) {
-      auto plugin = it->second;
+      // auto plugin = it->second;
+      auto plugin = std::move(it->second);  // Move the unique_ptr
 
       if (plugin == nullptr) {
         it = plugins.erase(it);
@@ -295,7 +296,7 @@ void EffectsBase::deactivate_filters() {
   }
 }
 
-auto EffectsBase::get_plugins_map() -> std::map<QString, std::shared_ptr<PluginBase>> {
+auto EffectsBase::get_plugins_map() -> std::map<QString, std::unique_ptr<PluginBase>>& {
   return plugins;
 }
 
@@ -304,7 +305,7 @@ QVariant EffectsBase::getPluginInstance(const QString& pluginName) {
     return {};
   }
 
-  auto p = plugins[pluginName];
+  auto& p = plugins[pluginName];
 
   if (pluginName.startsWith(tags::plugin_name::BaseName::autogain)) {
     return QVariant::fromValue(dynamic_cast<Autogain*>(p.get()));

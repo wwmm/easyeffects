@@ -63,7 +63,7 @@ class EffectsBase : public QObject {
   std::shared_ptr<OutputLevel> output_level;
   std::shared_ptr<Spectrum> spectrum;
 
-  auto get_plugins_map() -> std::map<QString, std::shared_ptr<PluginBase>>;
+  auto get_plugins_map() -> std::map<QString, std::unique_ptr<PluginBase>>&;
 
   Q_INVOKABLE QVariant getPluginInstance(const QString& pluginName);
 
@@ -89,7 +89,7 @@ class EffectsBase : public QObject {
  protected:
   bool filtersLinked = false;
 
-  std::map<QString, std::shared_ptr<PluginBase>> plugins;
+  std::map<QString, std::unique_ptr<PluginBase>> plugins;
 
   std::vector<pw_proxy*> list_proxies, list_proxies_listen_mic;
 
