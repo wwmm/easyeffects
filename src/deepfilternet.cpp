@@ -94,6 +94,10 @@ void DeepFilterNet::reset() {
 void DeepFilterNet::setup() {
   std::scoped_lock<std::mutex> lock(data_mutex);
 
+  if (rate == 0 || n_samples == 0) {  // some database signals may be emitted before pipewire calls our setup function
+    return;
+  }
+
   ready = false;
 
   if (!ladspa_wrapper->found_plugin()) {
