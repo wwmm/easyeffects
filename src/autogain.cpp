@@ -126,9 +126,8 @@ void Autogain::setup() {
     data.resize(static_cast<size_t>(n_samples) * 2U);
   }
 
-  /*
-   * There is no need to reset libebur128 when n_samples change. Only rante chagnes matter for it.
-   */
+  // There is no need to reset libebur128 when n_samples change.
+  // Only rate changes matter for it.
 
   if (ebur128_ready && rate == old_rate) {
     return;
