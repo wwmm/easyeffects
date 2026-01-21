@@ -134,7 +134,14 @@ void VoiceSuppressor::setup() {
         planInvR = fftw_plan_dft_c2r_1d(static_cast<int>(n_samples), complexR, realR, FFTW_ESTIMATE);
 
         freqs.resize(fft_size);
+
         env_mask.resize(fft_size);
+
+        fft_mag_L.resize(fft_size, 0.0);
+        fft_mag_R.resize(fft_size, 0.0);
+        old_fft_mag_L.resize(fft_size, 0.0);
+        old_fft_mag_R.resize(fft_size, 0.0);
+
         hanning_window.resize(n_samples);
 
         std::ranges::fill(env_mask, 1.0F);
@@ -199,6 +206,22 @@ void VoiceSuppressor::process(std::span<float>& left_in,
     fftw_execute(planL);
     fftw_execute(planR);
 
+    // for (uint k = 0; k < fft_size; k++) {
+    //   float Lr = complexL[k][0];
+    //   float Li = complexL[k][1];
+    //   float Rr = complexR[k][0];
+    //   float Ri = complexR[k][1];
+
+    //   float P_L = (Lr * Lr) + (Li * Li);
+    //   float P_R = (Rr * Rr) + (Ri * Ri);
+
+    //   fft_mag_L[k] = P_L;
+    //   fft_mag_R[k] = P_R;
+    // }
+
+    // auto flux_L = compute_spectral_flux(fft_mag_L.data(), old_fft_mag_L.data());
+    // auto flux_R = compute_spectral_flux(fft_mag_R.data(), old_fft_mag_R.data());
+
     for (uint k = 0; k < fft_size; k++) {
       float Lr = complexL[k][0];
       float Li = complexL[k][1];
@@ -207,47 +230,50 @@ void VoiceSuppressor::process(std::span<float>& left_in,
 
       // Power spectra
 
-      float P_L = (Lr * Lr) + (Li * Li);
-      float P_R = (Rr * Rr) + (Ri * Ri);
+      double P_L = (Lr * Lr) + (Li * Li);
+      double P_R = (Rr * Rr) + (Ri * Ri);
 
       // Inner product between the left channel and the complexity conjugated of the right channel
 
-      float cross_real = (Lr * Rr) + (Li * Ri);
-      float cross_imag = (Li * Rr) - (Lr * Ri);
+      double cross_real = (Lr * Rr) + (Li * Ri);
+      double cross_imag = (Li * Rr) - (Lr * Ri);
 
       // Correlation
 
-      float cross_mag = std::sqrt((cross_real * cross_real) + (cross_imag * cross_imag));
-      float correlation = cross_mag / std::sqrt((P_L * P_R) + 1e-9);
+      double cross_mag = std::sqrt((cross_real * cross_real) + (cross_imag * cross_imag));
+      double correlation = cross_mag / std::sqrt((P_L * P_R) + 1e-9);
 
       // Phase difference
 
-      float phase_diff = std::atan2(cross_imag, cross_real);
-      float abs_phase_diff = std::abs(phase_diff);
+      double phase_diff = std::atan2(cross_imag, cross_real);
+      double abs_phase_diff = std::abs(phase_diff);
 
       // Deciding if we should attenuate the frequency
 
       bool freq_cond = (freqs[k] >= settings->freqStart()) && (freqs[k] <= settings->freqEnd());
-      bool corr_cond = correlation >= settings->correlation() * 0.01F;
-      bool phase_cond = abs_phase_diff <= settings->phaseDifference() * std::numbers::pi_v<float> / 180.0F;
+      bool corr_cond = correlation >= settings->correlation() * 0.01;
+      bool phase_cond = abs_phase_diff <= settings->phaseDifference() * std::numbers::pi_v<double> / 180.0;
 
       if (freq_cond && corr_cond && phase_cond) {
-        float phase_norm = 1.0F - (abs_phase_diff / std::numbers::pi_v<float>);
+        // double norm_flux_L = std::abs(fft_mag_L[k] - old_fft_mag_L[k]) / flux_L;
+        // double norm_flux_R = std::abs(fft_mag_R[k] - old_fft_mag_R[k]) / flux_R;
 
-        float mask = 1.0F - std::sqrt(correlation * phase_norm);
+        double phase_norm = 1.0 - (abs_phase_diff / std::numbers::pi_v<double>);
+
+        double mask = 1.0 - std::sqrt(correlation * phase_norm);
 
         // smoothing the correlation
 
         auto& e_mask = env_mask[k];
 
-        float alpha_mask = (mask < e_mask) ? attack_coeff : release_coeff;
+        double alpha_mask = (mask < e_mask) ? attack_coeff : release_coeff;
 
         e_mask = (alpha_mask * e_mask) + ((1.0F - alpha_mask) * mask);
 
-        float Mr = 0.5F * (Lr + Rr);
-        float Mi = 0.5F * (Li + Ri);
-        float Sr = 0.5F * (Lr - Rr);
-        float Si = 0.5F * (Li - Ri);
+        double Mr = 0.5 * (Lr + Rr);
+        double Mi = 0.5 * (Li + Ri);
+        double Sr = 0.5 * (Lr - Rr);
+        double Si = 0.5 * (Li - Ri);
 
         Mr *= e_mask;
         Mi *= e_mask;
@@ -259,7 +285,14 @@ void VoiceSuppressor::process(std::span<float>& left_in,
 
         // util::warning(
         //     std::format("f = {}, coor = {}, phase = {}, mask = {}", freqs[k], correlation, phase_diff, e_mask));
+
+        // util::warning(std::format("f = {}, flux L = {}, flux R = {}", freqs[k], norm_flux_L, norm_flux_R));
       }
+    }
+
+    for (uint i = 0; i < fft_size; i++) {
+      old_fft_mag_L[i] = fft_mag_L[i];
+      old_fft_mag_R[i] = fft_mag_R[i];
     }
 
     fftw_execute(planInvL);
@@ -360,4 +393,16 @@ void VoiceSuppressor::free_fftw() {
   if (planInvR != nullptr) {
     fftw_destroy_plan(planInvR);
   }
+}
+
+auto VoiceSuppressor::compute_spectral_flux(double* data, double* previous_data) const -> double {
+  double flux = 0.0;
+
+  for (uint i = 0; i < fft_size; i++) {
+    flux += std::abs(data[i] - previous_data[i]);
+  }
+
+  flux /= fft_size;
+
+  return flux > 1e-6 ? flux : 1.0;
 }
