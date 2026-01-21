@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-01-20 22:23-0300\n"
+"POT-Creation-Date: 2026-01-21 11:49-0300\n"
 "PO-Revision-Date: 2025-05-26 11:48+0200\n"
 "Last-Translator: Noel <chatenium@gmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/easyeffects/"
@@ -173,7 +173,7 @@ msgstr "Geometriai Átlag (SI)"
 msgid "Target"
 msgstr "Cél"
 
-#: src/contents/ui/Autogain.qml:104
+#: src/contents/ui/Autogain.qml:104 src/contents/ui/PipeWirePage.qml:415
 msgid "Silence"
 msgstr "Csend"
 
@@ -1370,7 +1370,7 @@ msgstr "Lejtés"
 
 #: src/contents/ui/EqualizerBandMenu.qml:94 src/contents/ui/Filter.qml:127
 #: src/contents/ui/MultibandCompressor.qml:201
-#: src/contents/ui/MultibandGate.qml:138 src/contents/ui/PipeWirePage.qml:415
+#: src/contents/ui/MultibandGate.qml:138 src/contents/ui/PipeWirePage.qml:426
 msgid "Frequency"
 msgstr "Frekvencia"
 

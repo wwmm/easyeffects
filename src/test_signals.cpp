@@ -99,6 +99,9 @@ void on_process(void* userdata, spa_io_position* position) {
 
         break;
       }
+      case TestSignalType::silence: {
+        break;
+      }
     }
 
     if (d->ts->create_left_channel) {

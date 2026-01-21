@@ -30,7 +30,7 @@
 #include <vector>
 #include "pw_manager.hpp"
 
-enum class TestSignalType { sine_wave, gaussian, pink };
+enum class TestSignalType { sine_wave, gaussian, pink, silence };
 
 class TestSignals : public QObject {
   Q_OBJECT

@@ -409,6 +409,17 @@ Kirigami.Page {
                     }
                 }
 
+                FormCard.FormRadioDelegate {
+                    id: silence
+
+                    text: i18n("Silence") // qmllint disable
+                    checked: DbTestSignals.signalType === 3
+                    onCheckedChanged: {
+                        if (checked !== DbTestSignals.signalType)
+                            DbTestSignals.signalType = 3;
+                    }
+                }
+
                 EeSpinBox {
                     id: frequency
 
