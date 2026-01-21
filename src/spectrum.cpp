@@ -115,6 +115,10 @@ Spectrum::~Spectrum() {
 void Spectrum::reset() {}
 
 void Spectrum::clear_data() {
+  if (lv2_wrapper == nullptr) {
+    return;
+  }
+
   {
     std::scoped_lock<std::mutex> lock(data_mutex);
 
@@ -151,7 +155,7 @@ void Spectrum::setup() {
 
   // NOLINTBEGIN(clang-analyzer-cplusplus.NewDeleteLeaks)
   QMetaObject::invokeMethod(
-      QApplication::instance(),
+      baseWorker,
       [this] {
         util::debug(std::format("{} creating instance of comp delay x2 stereo for spectrum A/V sync", log_tag));
 

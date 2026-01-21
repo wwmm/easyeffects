@@ -104,6 +104,10 @@ void Delay::reset() {
 }
 
 void Delay::clear_data() {
+  if (lv2_wrapper == nullptr) {
+    return;
+  }
+
   {
     std::scoped_lock<std::mutex> lock(data_mutex);
 
@@ -131,7 +135,7 @@ void Delay::setup() {
 
   // NOLINTBEGIN(clang-analyzer-cplusplus.NewDeleteLeaks)
   QMetaObject::invokeMethod(
-      QApplication::instance(),
+      baseWorker,
       [this] {
         lv2_wrapper->create_instance(rate);
 

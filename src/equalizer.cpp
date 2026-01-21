@@ -189,6 +189,10 @@ void Equalizer::on_split_channels() {
 }
 
 void Equalizer::clear_data() {
+  if (lv2_wrapper == nullptr) {
+    return;
+  }
+
   {
     std::scoped_lock<std::mutex> lock(data_mutex);
 
@@ -216,7 +220,7 @@ void Equalizer::setup() {
 
   // NOLINTBEGIN(clang-analyzer-cplusplus.NewDeleteLeaks)
   QMetaObject::invokeMethod(
-      QApplication::instance(),
+      baseWorker,
       [this] {
         lv2_wrapper->create_instance(rate);
 

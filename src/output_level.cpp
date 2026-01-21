@@ -42,6 +42,10 @@ OutputLevel::~OutputLevel() {
 void OutputLevel::reset() {}
 
 void OutputLevel::clear_data() {
+  if (lv2_wrapper == nullptr) {
+    return;
+  }
+
   {
     std::scoped_lock<std::mutex> lock(data_mutex);
 

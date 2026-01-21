@@ -194,6 +194,10 @@ void EchoCanceller::reset() {
 }
 
 void EchoCanceller::clear_data() {
+  if (lv2_wrapper == nullptr) {
+    return;
+  }
+
   {
     std::scoped_lock<std::mutex> lock(data_mutex);
 

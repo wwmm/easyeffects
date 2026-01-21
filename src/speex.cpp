@@ -196,7 +196,7 @@ void Speex::setup() {
 
   // NOLINTBEGIN(clang-analyzer-cplusplus.NewDeleteLeaks)
   QMetaObject::invokeMethod(
-      QApplication::instance(),
+      baseWorker,
       [this] {
         if (state_left != nullptr) {
           speex_preprocess_state_destroy(state_left);
