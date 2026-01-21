@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-01-21 11:49-0300\n"
-"PO-Revision-Date: 2026-01-19 11:01+0000\n"
+"POT-Creation-Date: 2026-01-20 22:23-0300\n"
+"PO-Revision-Date: 2026-01-21 14:50+0000\n"
 "Last-Translator: Jeff Huang <s8321414@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hant/>\n"
@@ -1281,7 +1281,8 @@ msgstr "傾斜"
 
 #: src/contents/ui/EqualizerBandMenu.qml:94 src/contents/ui/Filter.qml:127
 #: src/contents/ui/MultibandCompressor.qml:201
-#: src/contents/ui/MultibandGate.qml:138 src/contents/ui/PipeWirePage.qml:426
+#: src/contents/ui/MultibandGate.qml:138 src/contents/ui/PipeWirePage.qml:415
+#: src/contents/ui/PipeWirePage.qml:426
 msgid "Frequency"
 msgstr "頻率"
 
@@ -2940,24 +2941,20 @@ msgid "Stereo phase"
 msgstr "立體聲階段"
 
 #: src/contents/ui/VoiceSuppressor.qml:94
-#, fuzzy
 msgid "Correlation"
-msgstr "持續期間"
+msgstr "相關性"
 
 #: src/contents/ui/VoiceSuppressor.qml:110
-#, fuzzy
 msgid "Phase difference"
-msgstr "速率差異"
+msgstr "相位差"
 
 #: src/contents/ui/VoiceSuppressor.qml:126
-#, fuzzy
 msgid "Attack time"
-msgstr "起音(Attack)"
+msgstr "起動時間"
 
 #: src/contents/ui/VoiceSuppressor.qml:142
-#, fuzzy
 msgid "Release time"
-msgstr "釋出時間"
+msgstr "釋放時間"
 
 #: src/main.cpp:333
 msgid "Global audio effects"
@@ -3121,7 +3118,6 @@ msgid "Stereo Tools"
 msgstr "立體聲工具"
 
 #: src/tags_plugin_name.cpp:54
-#, fuzzy
 msgid "Voice Suppressor"
 msgstr "噪音抑制"
 
