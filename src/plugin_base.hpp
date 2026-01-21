@@ -135,6 +135,8 @@ class PluginBase : public QObject {
 
   void set_native_ui_update_frequency(const uint& value);
 
+  virtual void clear_data();
+
   virtual void setup();
 
   virtual void process(std::span<float>& left_in,

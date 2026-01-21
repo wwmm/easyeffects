@@ -240,15 +240,9 @@ auto Lv2Wrapper::create_instance(const uint& rate) -> bool {
     return true;
   }
 
+  destroy_instance();
+
   this->rate = rate;
-
-  if (instance != nullptr) {
-    deactivate();
-
-    lilv_instance_free(instance);
-
-    instance = nullptr;
-  }
 
   LV2_Log_Log lv2_log = {this, &lv2_printf,
                          []([[maybe_unused]] LV2_Log_Handle handle, [[maybe_unused]] LV2_URID type, const char* fmt,
@@ -317,6 +311,16 @@ auto Lv2Wrapper::create_instance(const uint& rate) -> bool {
   activate();
 
   return true;
+}
+
+void Lv2Wrapper::destroy_instance() {
+  if (instance != nullptr) {
+    deactivate();
+
+    lilv_instance_free(instance);
+
+    instance = nullptr;
+  }
 }
 
 auto Lv2Wrapper::get_instance() -> LilvInstance* {

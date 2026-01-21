@@ -262,7 +262,6 @@ void EffectsBase::remove_unused_filters() {
     auto key = it->first;
 
     if (std::ranges::find(list, key) == list.end()) {
-      // auto plugin = it->second;
       auto plugin = std::move(it->second);  // Move the unique_ptr
 
       if (plugin == nullptr) {

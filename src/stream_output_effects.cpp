@@ -178,7 +178,7 @@ void StreamOutputEffects::on_link_changed(const pw::LinkInfo link_info) {
       util::debug("At least one app linked to our device wants to play. Linking our filters.");
 
       connect_filters();
-    };
+    }
   } else {
     if (DbMain::inactivityTimerEnable()) {
       // if the timer is enabled, wait for the timeout, then unlink plugin pipeline
@@ -395,6 +395,8 @@ void StreamOutputEffects::disconnect_filters() {
         plugin->disconnect_from_pw();
       }
     }
+
+    plugin->clear_data();
   }
 
   for (const auto& link : pm->get_links()) {

@@ -537,6 +537,8 @@ void PluginBase::disconnect_from_pw() {
   util::debug(std::format("{}{} is disconnected", log_tag, name.toStdString()));
 }
 
+void PluginBase::clear_data() {}
+
 void PluginBase::setup() {}
 
 void PluginBase::process([[maybe_unused]] std::span<float>& left_in,

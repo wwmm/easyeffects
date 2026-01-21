@@ -92,6 +92,8 @@ class Lv2Wrapper {
 
   auto create_instance(const uint& rate) -> bool;
 
+  void destroy_instance();
+
   void set_n_samples(const uint& value);
 
   [[nodiscard]] auto get_n_samples() const -> uint;

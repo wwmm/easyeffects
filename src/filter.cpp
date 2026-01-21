@@ -86,7 +86,21 @@ void Filter::reset() {
   settings->setDefaults();
 }
 
+void Filter::clear_data() {
+  {
+    std::scoped_lock<std::mutex> lock(data_mutex);
+
+    lv2_wrapper->destroy_instance();
+  }
+
+  setup();
+}
+
 void Filter::setup() {
+  if (rate == 0 || n_samples == 0) {  // Some signals may be emitted before pipewire calls our setup function
+    return;
+  }
+
   std::scoped_lock<std::mutex> lock(data_mutex);
 
   if (!lv2_wrapper->found_plugin) {

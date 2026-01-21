@@ -87,7 +87,21 @@ void BassEnhancer::reset() {
   settings->setDefaults();
 }
 
+void BassEnhancer::clear_data() {
+  {
+    std::scoped_lock<std::mutex> lock(data_mutex);
+
+    lv2_wrapper->destroy_instance();
+  }
+
+  setup();
+}
+
 void BassEnhancer::setup() {
+  if (rate == 0 || n_samples == 0) {  // Some signals may be emitted before pipewire calls our setup function
+    return;
+  }
+
   std::scoped_lock<std::mutex> lock(data_mutex);
 
   if (!lv2_wrapper->found_plugin) {

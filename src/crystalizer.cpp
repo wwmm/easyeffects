@@ -152,6 +152,10 @@ void Crystalizer::reset() {
   settings->setDefaults();
 }
 
+void Crystalizer::clear_data() {
+  setup();
+}
+
 void Crystalizer::setup() {
   if (rate == 0 || n_samples == 0) {  // oversamplingChanged may be emitted before pipewire calls our setup function
     return;
