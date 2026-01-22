@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-01-21 11:49-0300\n"
-"PO-Revision-Date: 2026-01-20 09:01+0000\n"
+"PO-Revision-Date: 2026-01-22 06:01+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ro/>\n"
@@ -2996,14 +2996,12 @@ msgid "Phase difference"
 msgstr "Diferența de fază"
 
 #: src/contents/ui/VoiceSuppressor.qml:126
-#, fuzzy
 msgid "Attack time"
-msgstr "Timpul de atac"
+msgstr "Timpul de răspuns"
 
 #: src/contents/ui/VoiceSuppressor.qml:142
-#, fuzzy
 msgid "Release time"
-msgstr "Timpul de eliberare"
+msgstr "Timpul de așteptare(întârziere)"
 
 #: src/main.cpp:333
 msgid "Global audio effects"

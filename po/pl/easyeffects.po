@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-01-21 11:49-0300\n"
-"PO-Revision-Date: 2026-01-18 00:13+0000\n"
-"Last-Translator: Miłosz <miloszwiktor58@gmail.com>\n"
+"PO-Revision-Date: 2026-01-22 14:20+0000\n"
+"Last-Translator: Grzegorz Leks <ayats.bravo@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/main/"
 "pl/>\n"
 "Language: pl\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.15.2\n"
+"X-Generator: Weblate 5.16-dev\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -358,13 +358,15 @@ msgstr "Usuń tą aplikację"
 
 #: src/contents/ui/BlocklistDialog.qml:200
 msgid "Use media name"
-msgstr ""
+msgstr "Użyj nazwy urządzenia"
 
 #: src/contents/ui/BlocklistDialog.qml:201
 msgid ""
 "Also use a combination of node and media name when deciding if a stream "
 "should be blocked"
 msgstr ""
+"Użyj także kombinacji nazwy węzła i urządzenia w momencie decydowania czy "
+"strumień danych powinien być zablokowany"
 
 #: src/contents/ui/BlocklistDialog.qml:212
 msgid "Show excluded apps"
@@ -962,7 +964,7 @@ msgstr "Jakość nadpróbkowania"
 
 #: src/contents/ui/Crystalizer.qml:128
 msgid "Transition band"
-msgstr ""
+msgstr "Pasmo przejściowe"
 
 #: src/contents/ui/Crystalizer.qml:170 src/contents/ui/Limiter.qml:87
 msgid "Oversampling"
@@ -1891,12 +1893,10 @@ msgid "No Effects"
 msgstr "Brak efektów"
 
 #: src/contents/ui/PageStreamsEffects.qml:115
-#, fuzzy
 msgid "Audio stream not modified"
-msgstr "Źródło audio niezmodyfikowane"
+msgstr "Strumień audio niezmodyfikowany"
 
 #: src/contents/ui/PageStreamsEffects.qml:375
-#, fuzzy
 msgid "Add effect"
 msgstr "Dodaj efekt"
 
@@ -1918,7 +1918,6 @@ msgid "Players"
 msgstr "Odtwarzacze"
 
 #: src/contents/ui/PageStreamsEffects.qml:449
-#, fuzzy
 msgid "Output device"
 msgstr "Urządzenie wyjściowe"
 
@@ -1928,14 +1927,12 @@ msgid "Recorders"
 msgstr "Rejestratory"
 
 #: src/contents/ui/PageStreamsEffects.qml:760
-#, fuzzy
 msgid "Excluded apps"
 msgstr "Wykluczone aplikacje"
 
 #: src/contents/ui/PageStreamsEffects.qml:769
-#, fuzzy
 msgid "Input monitoring"
-msgstr "Włącz/wyłącz monitorowanie wejścia"
+msgstr "Monitorowanie wejścia"
 
 #: src/contents/ui/PageStreamsEffects.qml:782
 msgid "Send audio to the virtual source"
@@ -1980,7 +1977,6 @@ msgid "Name"
 msgstr "Nazwa"
 
 #: src/contents/ui/PipeWirePage.qml:183
-#, fuzzy
 msgid "Use default output"
 msgstr "Użyj domyślnego wyjścia"
 
@@ -1989,12 +1985,10 @@ msgid "Server Information"
 msgstr "Informacje o serwerze"
 
 #: src/contents/ui/PipeWirePage.qml:227
-#, fuzzy
 msgid "Header version"
 msgstr "Wersja nagłówka"
 
 #: src/contents/ui/PipeWirePage.qml:232
-#, fuzzy
 msgid "Library version"
 msgstr "Wersja biblioteki"
 
@@ -2004,34 +1998,28 @@ msgid "Runtime version"
 msgstr "Wersja podstawowa"
 
 #: src/contents/ui/PipeWirePage.qml:242
-#, fuzzy
 msgid "Default sampling rate"
-msgstr "Próbkowanie"
+msgstr "Domyślny poziom próbkowania"
 
 #: src/contents/ui/PipeWirePage.qml:247
-#, fuzzy
 msgid "Minimum quantum"
 msgstr "Minimalne Quantum"
 
 #: src/contents/ui/PipeWirePage.qml:252
-#, fuzzy
 msgid "Maximum quantum"
 msgstr "Maksymalne Quantum"
 
 #: src/contents/ui/PipeWirePage.qml:257
-#, fuzzy
 msgid "Default quantum"
 msgstr "Domyślne Quantum"
 
 #: src/contents/ui/PipeWirePage.qml:279
-#, fuzzy
 msgid "No Modules"
-msgstr "Moduły"
+msgstr "Brak Modułów"
 
 #: src/contents/ui/PipeWirePage.qml:302
-#, fuzzy
 msgid "No Clients"
-msgstr "Klienci"
+msgstr "Brak Klientów"
 
 #: src/contents/ui/PipeWirePage.qml:315
 #: src/contents/ui/PreferencesSheet.qml:333
@@ -2067,17 +2055,14 @@ msgid "Pink noise"
 msgstr "Różowy szum"
 
 #: src/contents/ui/Pitch.qml:69
-#, fuzzy
 msgid "Sequence length"
 msgstr "Długość sekwencji"
 
 #: src/contents/ui/Pitch.qml:86
-#, fuzzy
 msgid "Seek window"
 msgstr "Okno podglądu"
 
 #: src/contents/ui/Pitch.qml:104
-#, fuzzy
 msgid "Overlap length"
 msgstr "Długość nachodzenia (Overlap)"
 
@@ -2098,24 +2083,20 @@ msgid "Semitones"
 msgstr "Półtony"
 
 #: src/contents/ui/Pitch.qml:222
-#, fuzzy
 msgid "Tempo difference"
 msgstr "Różnica tempa"
 
 #: src/contents/ui/Pitch.qml:239
-#, fuzzy
 msgid "Rate difference"
 msgstr "Różnica częstotliwości"
 
 #: src/contents/ui/Pitch.qml:289
-#, fuzzy
 msgid "Quick seek"
 msgstr "Szybkie wyszukiwanie"
 
 #: src/contents/ui/PluginNotAvailable.qml:33
-#, fuzzy
 msgid "Effect Not Available"
-msgstr "{} jest niedostępne"
+msgstr "Efekt niedostępny"
 
 #: src/contents/ui/PluginNotAvailable.qml:34
 msgid "%1 cannot be used because %2 is not installed on the system."
@@ -2130,9 +2111,8 @@ msgid "Audio"
 msgstr "Audio"
 
 #: src/contents/ui/PreferencesSheet.qml:47
-#, fuzzy
 msgid "Spectrum Analyzer"
-msgstr "Widmo"
+msgstr "Analizator widma"
 
 #: src/contents/ui/PreferencesSheet.qml:53
 msgid "Style"
@@ -2143,9 +2123,8 @@ msgid "Experimental Features"
 msgstr "Funkcje eksperymentalne"
 
 #: src/contents/ui/PreferencesSheet.qml:84
-#, fuzzy
 msgid "Enable service mode"
-msgstr "Tryb korektora"
+msgstr "Włącz tryb serwisowy"
 
 #: src/contents/ui/PreferencesSheet.qml:85
 msgid "Easy Effects is active in background when the window is closed."
@@ -2153,19 +2132,19 @@ msgstr "Easy Effects działa w tle, gdy okno jest zamknięte."
 
 #: src/contents/ui/PreferencesSheet.qml:97
 msgid "Autostart on login"
-msgstr ""
+msgstr "Uruchom przy zalogowaniu"
 
 #: src/contents/ui/PreferencesSheet.qml:98
 msgid "Easy Effects is launched at user session startup."
-msgstr ""
+msgstr "Aplikacja Easy Effects zostanie uruchomiona przy zalogowaniu się."
 
 #: src/contents/ui/PreferencesSheet.qml:111
 msgid "Show the tray icon"
-msgstr ""
+msgstr "Pokaż ikonkę w pasku zadań"
 
 #: src/contents/ui/PreferencesSheet.qml:124
 msgid "Do not show the application window"
-msgstr ""
+msgstr "Nie pokazuj okna aplikacji"
 
 #: src/contents/ui/PreferencesSheet.qml:125
 msgid ""
@@ -2173,6 +2152,9 @@ msgid ""
 "should not be enabled. It is intended only as a workaround for systems that "
 "do not work well with the autostart of Easy Effects."
 msgstr ""
+"Nie pokazuj okna gdy aplikacja się uruchamia. Nie zalecamy włączania tej "
+"opcji. Jej celem jest obejście problemu z systemami, które nie radzą sobie z "
+"automatycznym uruchamianiem aplikacji Easy Effects."
 
 #: src/contents/ui/PreferencesSheet.qml:145
 #, fuzzy
@@ -2180,17 +2162,14 @@ msgid "Process all output streams"
 msgstr "Przetwarzaj wszystkie strumienie wyjściowe"
 
 #: src/contents/ui/PreferencesSheet.qml:157
-#, fuzzy
 msgid "Process all input streams"
 msgstr "Przetwarzaj wszystkie strumienie wejściowe"
 
 #: src/contents/ui/PreferencesSheet.qml:169
-#, fuzzy
 msgid "Ignore streams from monitor of devices"
 msgstr "Ignoruj źródła z monitora urządzeń"
 
 #: src/contents/ui/PreferencesSheet.qml:181
-#, fuzzy
 msgid "Use cubic volume"
 msgstr "Używaj głośności Cubic"
 
