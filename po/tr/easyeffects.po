@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-01-21 11:49-0300\n"
+"POT-Creation-Date: 2026-01-23 14:50-0300\n"
 "PO-Revision-Date: 2025-11-30 19:51+0000\n"
 "Last-Translator: Cagatay Coban <cagataycobande@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -226,7 +226,7 @@ msgstr "Çıktı Kazancı"
 #: src/contents/ui/RNNoise.qml:87 src/contents/ui/RNNoise.qml:301
 #: src/contents/ui/RNNoise.qml:303 src/contents/ui/RNNoise.qml:321
 #: src/contents/ui/Speex.qml:174 src/contents/ui/StereoTools.qml:389
-#: src/contents/ui/VoiceSuppressor.qml:166
+#: src/contents/ui/VoiceSuppressor.qml:149
 #, fuzzy
 msgid "Using %1"
 msgstr "{} Kullanıyor"
@@ -320,7 +320,7 @@ msgstr "Liste"
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:356
 #: src/contents/ui/RNNoise.qml:346 src/contents/ui/Speex.qml:192
-#: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:184
+#: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:167
 msgid "Reset"
 msgstr "Sıfırla"
 
@@ -3268,13 +3268,8 @@ msgstr "Oran Farkı"
 
 #: src/contents/ui/VoiceSuppressor.qml:126
 #, fuzzy
-msgid "Attack time"
-msgstr "Atak Zamanı"
-
-#: src/contents/ui/VoiceSuppressor.qml:142
-#, fuzzy
-msgid "Release time"
-msgstr "Bırakma Zamanı"
+msgid "Minimum kurtosis"
+msgstr "Asgari Kuantum"
 
 #: src/main.cpp:333
 #, fuzzy
@@ -3356,27 +3351,27 @@ msgstr "Bir veya Daha Fazla Parametre Yanlış Biçime Sahip"
 msgid "Generic error while loading the effect"
 msgstr "Efekt Yüklenirken Genel Hata"
 
-#: src/pw_model_nodes.cpp:500
+#: src/pw_model_nodes.cpp:504
 msgid "Running"
 msgstr "Çalışıyor"
 
-#: src/pw_model_nodes.cpp:502
+#: src/pw_model_nodes.cpp:506
 msgid "Suspended"
 msgstr "Askıya alındı"
 
-#: src/pw_model_nodes.cpp:504
+#: src/pw_model_nodes.cpp:508
 msgid "Idle"
 msgstr "Boşta"
 
-#: src/pw_model_nodes.cpp:506
+#: src/pw_model_nodes.cpp:510
 msgid "Creating"
 msgstr "Oluşturuluyor"
 
-#: src/pw_model_nodes.cpp:508
+#: src/pw_model_nodes.cpp:512
 msgid "Error"
 msgstr "Hata"
 
-#: src/pw_model_nodes.cpp:510
+#: src/pw_model_nodes.cpp:514
 msgid "Unknown"
 msgstr "Bilinmiyor"
 
@@ -3580,6 +3575,14 @@ msgstr "Ekolayzır, Sıkıştırıcı ve Diğer Ses Efektleri"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Attack time"
+#~ msgstr "Atak Zamanı"
+
+#, fuzzy
+#~ msgid "Release time"
+#~ msgstr "Bırakma Zamanı"
 
 #~ msgid "24 dB/oct"
 #~ msgstr "24 dB/oct"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-01-21 11:49-0300\n"
+"POT-Creation-Date: 2026-01-23 14:50-0300\n"
 "PO-Revision-Date: 2025-11-23 11:51+0000\n"
 "Last-Translator: Suu <suunya21@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
@@ -215,7 +215,7 @@ msgstr "出力ゲイン"
 #: src/contents/ui/RNNoise.qml:87 src/contents/ui/RNNoise.qml:301
 #: src/contents/ui/RNNoise.qml:303 src/contents/ui/RNNoise.qml:321
 #: src/contents/ui/Speex.qml:174 src/contents/ui/StereoTools.qml:389
-#: src/contents/ui/VoiceSuppressor.qml:166
+#: src/contents/ui/VoiceSuppressor.qml:149
 msgid "Using %1"
 msgstr "%1 を使用中"
 
@@ -302,7 +302,7 @@ msgstr "聞く"
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:356
 #: src/contents/ui/RNNoise.qml:346 src/contents/ui/Speex.qml:192
-#: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:184
+#: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:167
 msgid "Reset"
 msgstr "リセット"
 
@@ -3015,13 +3015,8 @@ msgstr "速度の変化"
 
 #: src/contents/ui/VoiceSuppressor.qml:126
 #, fuzzy
-msgid "Attack time"
-msgstr "アタック時間"
-
-#: src/contents/ui/VoiceSuppressor.qml:142
-#, fuzzy
-msgid "Release time"
-msgstr "リリース時間"
+msgid "Minimum kurtosis"
+msgstr "最小クォンタム"
 
 #: src/main.cpp:333
 msgid "Global audio effects"
@@ -3093,27 +3088,27 @@ msgstr "1つ以上のパラメータに間違った形式が設定されてい�
 msgid "Generic error while loading the effect"
 msgstr "エフェクトの読み込み中に発生した一般的なエラー"
 
-#: src/pw_model_nodes.cpp:500
+#: src/pw_model_nodes.cpp:504
 msgid "Running"
 msgstr "実行中"
 
-#: src/pw_model_nodes.cpp:502
+#: src/pw_model_nodes.cpp:506
 msgid "Suspended"
 msgstr "停止"
 
-#: src/pw_model_nodes.cpp:504
+#: src/pw_model_nodes.cpp:508
 msgid "Idle"
 msgstr "アイドル"
 
-#: src/pw_model_nodes.cpp:506
+#: src/pw_model_nodes.cpp:510
 msgid "Creating"
 msgstr "作成中"
 
-#: src/pw_model_nodes.cpp:508
+#: src/pw_model_nodes.cpp:512
 msgid "Error"
 msgstr "エラー"
 
-#: src/pw_model_nodes.cpp:510
+#: src/pw_model_nodes.cpp:514
 msgid "Unknown"
 msgstr "不明"
 
@@ -3325,6 +3320,14 @@ msgstr "イコライザー、コンプレッサーなどのオーディオエフ
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "シンプルなオーディオエフェクト"
+
+#, fuzzy
+#~ msgid "Attack time"
+#~ msgstr "アタック時間"
+
+#, fuzzy
+#~ msgid "Release time"
+#~ msgstr "リリース時間"
 
 #~ msgid "24 dB/oct"
 #~ msgstr "24 dB/oct"

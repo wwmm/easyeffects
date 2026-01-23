@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-01-21 11:49-0300\n"
+"POT-Creation-Date: 2026-01-23 14:50-0300\n"
 "PO-Revision-Date: 2026-01-19 11:01+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
@@ -211,7 +211,7 @@ msgstr "输出增益"
 #: src/contents/ui/RNNoise.qml:87 src/contents/ui/RNNoise.qml:301
 #: src/contents/ui/RNNoise.qml:303 src/contents/ui/RNNoise.qml:321
 #: src/contents/ui/Speex.qml:174 src/contents/ui/StereoTools.qml:389
-#: src/contents/ui/VoiceSuppressor.qml:166
+#: src/contents/ui/VoiceSuppressor.qml:149
 msgid "Using %1"
 msgstr "正在使用 %1"
 
@@ -298,7 +298,7 @@ msgstr "聆听"
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:356
 #: src/contents/ui/RNNoise.qml:346 src/contents/ui/Speex.qml:192
-#: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:184
+#: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:167
 msgid "Reset"
 msgstr "重置"
 
@@ -2950,13 +2950,8 @@ msgstr "速率差"
 
 #: src/contents/ui/VoiceSuppressor.qml:126
 #, fuzzy
-msgid "Attack time"
-msgstr "建立时间"
-
-#: src/contents/ui/VoiceSuppressor.qml:142
-#, fuzzy
-msgid "Release time"
-msgstr "释放时间"
+msgid "Minimum kurtosis"
+msgstr "最小音频帧 (Quantum)"
 
 #: src/main.cpp:333
 msgid "Global audio effects"
@@ -3027,27 +3022,27 @@ msgstr "一个或多个参数存在格式错误"
 msgid "Generic error while loading the effect"
 msgstr "加载音效时发生常规错误"
 
-#: src/pw_model_nodes.cpp:500
+#: src/pw_model_nodes.cpp:504
 msgid "Running"
 msgstr "运行中"
 
-#: src/pw_model_nodes.cpp:502
+#: src/pw_model_nodes.cpp:506
 msgid "Suspended"
 msgstr "已暂停"
 
-#: src/pw_model_nodes.cpp:504
+#: src/pw_model_nodes.cpp:508
 msgid "Idle"
 msgstr "空闲"
 
-#: src/pw_model_nodes.cpp:506
+#: src/pw_model_nodes.cpp:510
 msgid "Creating"
 msgstr "新建中"
 
-#: src/pw_model_nodes.cpp:508
+#: src/pw_model_nodes.cpp:512
 msgid "Error"
 msgstr "错误"
 
-#: src/pw_model_nodes.cpp:510
+#: src/pw_model_nodes.cpp:514
 msgid "Unknown"
 msgstr "未知"
 
@@ -3246,6 +3241,14 @@ msgstr "均衡器、压缩器与其他音效"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "简易音效集锦"
+
+#, fuzzy
+#~ msgid "Attack time"
+#~ msgstr "建立时间"
+
+#, fuzzy
+#~ msgid "Release time"
+#~ msgstr "释放时间"
 
 #~ msgid "Karaoke"
 #~ msgstr "卡拉 OK"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-01-21 11:49-0300\n"
+"POT-Creation-Date: 2026-01-23 14:50-0300\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
@@ -225,7 +225,7 @@ msgstr "Utgangs Forsterkning"
 #: src/contents/ui/RNNoise.qml:87 src/contents/ui/RNNoise.qml:301
 #: src/contents/ui/RNNoise.qml:303 src/contents/ui/RNNoise.qml:321
 #: src/contents/ui/Speex.qml:174 src/contents/ui/StereoTools.qml:389
-#: src/contents/ui/VoiceSuppressor.qml:166
+#: src/contents/ui/VoiceSuppressor.qml:149
 #, fuzzy
 msgid "Using %1"
 msgstr "Bruker {}"
@@ -319,7 +319,7 @@ msgstr "Lytt"
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:356
 #: src/contents/ui/RNNoise.qml:346 src/contents/ui/Speex.qml:192
-#: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:184
+#: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:167
 msgid "Reset"
 msgstr "Tilbakestill"
 
@@ -3190,13 +3190,8 @@ msgid "Phase difference"
 msgstr "Referanse"
 
 #: src/contents/ui/VoiceSuppressor.qml:126
-msgid "Attack time"
+msgid "Minimum kurtosis"
 msgstr ""
-
-#: src/contents/ui/VoiceSuppressor.qml:142
-#, fuzzy
-msgid "Release time"
-msgstr "frigjøring grense"
 
 #: src/main.cpp:333
 #, fuzzy
@@ -3275,28 +3270,28 @@ msgstr ""
 msgid "Generic error while loading the effect"
 msgstr ""
 
-#: src/pw_model_nodes.cpp:500
+#: src/pw_model_nodes.cpp:504
 msgid "Running"
 msgstr ""
 
-#: src/pw_model_nodes.cpp:502
+#: src/pw_model_nodes.cpp:506
 msgid "Suspended"
 msgstr ""
 
-#: src/pw_model_nodes.cpp:504
+#: src/pw_model_nodes.cpp:508
 msgid "Idle"
 msgstr ""
 
-#: src/pw_model_nodes.cpp:506
+#: src/pw_model_nodes.cpp:510
 msgid "Creating"
 msgstr ""
 
-#: src/pw_model_nodes.cpp:508
+#: src/pw_model_nodes.cpp:512
 #, fuzzy
 msgid "Error"
 msgstr "feil"
 
-#: src/pw_model_nodes.cpp:510
+#: src/pw_model_nodes.cpp:514
 #, fuzzy
 msgid "Unknown"
 msgstr "ukjent"
@@ -3509,6 +3504,10 @@ msgstr "Tonekontroll, kompressor og andre lydeffekter"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Release time"
+#~ msgstr "frigjøring grense"
 
 #~ msgid "24 dB/oct"
 #~ msgstr "24 dB/okt"

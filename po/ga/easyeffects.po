@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-01-21 11:49-0300\n"
+"POT-Creation-Date: 2026-01-23 14:50-0300\n"
 "PO-Revision-Date: 2026-01-22 06:01+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :(n>"
-"6 && n<11) ? 3 : 4;\n"
+"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :"
+"(n>6 && n<11) ? 3 : 4;\n"
 "X-Generator: Weblate 5.16-dev\n"
 
 #: src/autostart.cpp:92
@@ -212,7 +212,7 @@ msgstr "Gnóthachan Aschuir"
 #: src/contents/ui/RNNoise.qml:87 src/contents/ui/RNNoise.qml:301
 #: src/contents/ui/RNNoise.qml:303 src/contents/ui/RNNoise.qml:321
 #: src/contents/ui/Speex.qml:174 src/contents/ui/StereoTools.qml:389
-#: src/contents/ui/VoiceSuppressor.qml:166
+#: src/contents/ui/VoiceSuppressor.qml:149
 msgid "Using %1"
 msgstr "Ag baint úsáide as %1"
 
@@ -300,7 +300,7 @@ msgstr "Éist"
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:356
 #: src/contents/ui/RNNoise.qml:346 src/contents/ui/Speex.qml:192
-#: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:184
+#: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:167
 msgid "Reset"
 msgstr "Athshocraigh"
 
@@ -2995,12 +2995,9 @@ msgid "Phase difference"
 msgstr "Difríocht céime"
 
 #: src/contents/ui/VoiceSuppressor.qml:126
-msgid "Attack time"
-msgstr "Am ionsaithe"
-
-#: src/contents/ui/VoiceSuppressor.qml:142
-msgid "Release time"
-msgstr "Am scaoilte"
+#, fuzzy
+msgid "Minimum kurtosis"
+msgstr "Íosmhéid chandamach"
 
 #: src/main.cpp:333
 msgid "Global audio effects"
@@ -3071,27 +3068,27 @@ msgstr "Tá formáid mhícheart ag paraiméadar amháin nó níos mó"
 msgid "Generic error while loading the effect"
 msgstr "Earráid ghinearálta agus an éifeacht á luchtú"
 
-#: src/pw_model_nodes.cpp:500
+#: src/pw_model_nodes.cpp:504
 msgid "Running"
 msgstr "Ag rith"
 
-#: src/pw_model_nodes.cpp:502
+#: src/pw_model_nodes.cpp:506
 msgid "Suspended"
 msgstr "Ar fionraí"
 
-#: src/pw_model_nodes.cpp:504
+#: src/pw_model_nodes.cpp:508
 msgid "Idle"
 msgstr "Díomhaoin"
 
-#: src/pw_model_nodes.cpp:506
+#: src/pw_model_nodes.cpp:510
 msgid "Creating"
 msgstr "Cruthú"
 
-#: src/pw_model_nodes.cpp:508
+#: src/pw_model_nodes.cpp:512
 msgid "Error"
 msgstr "Earráid"
 
-#: src/pw_model_nodes.cpp:510
+#: src/pw_model_nodes.cpp:514
 msgid "Unknown"
 msgstr "Neamhaithnid"
 
@@ -3289,6 +3286,12 @@ msgstr "Cothromóir, Comhbhrúiteoir agus Éifeachtaí Fuaime Eile"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "Éifeachtaí fuaime simplí"
+
+#~ msgid "Attack time"
+#~ msgstr "Am ionsaithe"
+
+#~ msgid "Release time"
+#~ msgstr "Am scaoilte"
 
 #~ msgid "Karaoke"
 #~ msgstr "Karaoke"
