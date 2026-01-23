@@ -29,7 +29,7 @@ jobs:
     steps:
       # 1. Checkout the repo
       - name: Checkout
-        uses: actions/checkout@v6.0.1
+        uses: actions/checkout@v6.0.2
 
       # 2. Install Python and MkDocs
       - name: Set up Python
