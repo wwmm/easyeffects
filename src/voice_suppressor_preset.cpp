@@ -45,9 +45,7 @@ void VoiceSuppressorPreset::save(nlohmann::json& json) {
 
   json[section][instance_name]["phase-difference"] = settings->phaseDifference();
 
-  json[section][instance_name]["attack-time"] = settings->attackTime();
-
-  json[section][instance_name]["release-time"] = settings->releaseTime();
+  json[section][instance_name]["minimum-kurtosis"] = settings->minKurtosis();
 }
 
 void VoiceSuppressorPreset::load(const nlohmann::json& json) {
@@ -58,6 +56,5 @@ void VoiceSuppressorPreset::load(const nlohmann::json& json) {
   UPDATE_PROPERTY("freq-end", FreqEnd);
   UPDATE_PROPERTY("correlation", Correlation);
   UPDATE_PROPERTY("phase-difference", PhaseDifference);
-  UPDATE_PROPERTY("attack-time", AttackTime);
-  UPDATE_PROPERTY("release-time", ReleaseTime);
+  UPDATE_PROPERTY("minimum-kurtosis", MinKurtosis);
 }

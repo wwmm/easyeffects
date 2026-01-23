@@ -72,9 +72,7 @@ class VoiceSuppressor : public PluginBase {
   uint hop = 0U;
   uint latency_n_frames = 0U;
 
-  float block_time = 0.0;
-  float attack_coeff = 1.0F;
-  float release_coeff = 1.0F;
+  double block_time = 0.0;
 
   double* realL = nullptr;
   double* realR = nullptr;
@@ -101,12 +99,16 @@ class VoiceSuppressor : public PluginBase {
   std::vector<float> ola_L;
   std::vector<float> ola_R;
 
-  std::vector<float> env_mask;
-
   std::vector<double> fft_mag_L, fft_mag_R;
-  std::vector<double> old_fft_mag_L, old_fft_mag_R;
+
+  std::vector<double> prev_wrapped_L, prev_unwrapped_L;
+  std::vector<double> prev_wrapped_R, prev_unwrapped_R;
 
   void free_fftw();
 
-  auto compute_spectral_flux(double* data, double* previous_data) const -> double;
+  auto compute_spectral_flatness(double* magnitude_spectrum) const -> double;
+
+  auto compute_local_kurtosis(int k, double* magnitude_spectrum) const -> double;
+
+  auto compute_local_crest(int k, double* magnitude_spectrum) const -> double;
 };

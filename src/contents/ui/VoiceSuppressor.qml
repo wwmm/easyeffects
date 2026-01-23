@@ -121,34 +121,17 @@ Kirigami.ScrollablePage {
                 }
 
                 EeSpinBox {
-                    id: attackTime
+                    id: minKurtosis
 
-                    label: i18n("Attack time") // qmllint disable
+                    label: i18n("Minimum kurtosis") // qmllint disable
                     spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
-                    from: voiceSuppressorPage.pluginDB.getMinValue("attackTime")
-                    to: voiceSuppressorPage.pluginDB.getMaxValue("attackTime")
-                    value: voiceSuppressorPage.pluginDB.attackTime
-                    decimals: 3
-                    stepSize: 0.001
-                    unit: Units.s
+                    from: voiceSuppressorPage.pluginDB.getMinValue("minKurtosis")
+                    to: voiceSuppressorPage.pluginDB.getMaxValue("minKurtosis")
+                    value: voiceSuppressorPage.pluginDB.minKurtosis
+                    decimals: 1
+                    stepSize: 0.1
                     onValueModified: v => {
-                        voiceSuppressorPage.pluginDB.attackTime = v;
-                    }
-                }
-
-                EeSpinBox {
-                    id: releaseTime
-
-                    label: i18n("Release time") // qmllint disable
-                    spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
-                    from: voiceSuppressorPage.pluginDB.getMinValue("releaseTime")
-                    to: voiceSuppressorPage.pluginDB.getMaxValue("releaseTime")
-                    value: voiceSuppressorPage.pluginDB.releaseTime
-                    decimals: 3
-                    stepSize: 0.001
-                    unit: Units.s
-                    onValueModified: v => {
-                        voiceSuppressorPage.pluginDB.releaseTime = v;
+                        voiceSuppressorPage.pluginDB.minKurtosis = v;
                     }
                 }
             }

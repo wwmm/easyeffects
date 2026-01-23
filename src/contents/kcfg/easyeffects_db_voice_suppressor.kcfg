@@ -39,7 +39,7 @@
             <label></label>
             <min>1</min>
             <max>100</max>
-            <default>95</default>
+            <default>98</default>
         </entry>
         <entry name="phaseDifference" type="Double">
             <label></label>
@@ -47,17 +47,11 @@
             <max>180</max>
             <default>30</default>
         </entry>
-        <entry name="attackTime" type="Double">
+        <entry name="minKurtosis" type="Double">
             <label></label>
             <min>0</min>
             <max>10.0</max>
-            <default>0.01</default>
-        </entry>
-        <entry name="releaseTime" type="Double">
-            <label></label>
-            <min>0</min>
-            <max>10.0</max>
-            <default>10.0</default>
+            <default>1</default>
         </entry>
     </group>
 </kcfg>

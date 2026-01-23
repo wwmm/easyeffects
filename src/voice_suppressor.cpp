@@ -54,12 +54,6 @@ VoiceSuppressor::VoiceSuppressor(const std::string& tag,
   // bypass, input and output gain controls
 
   init_common_controls<db::VoiceSuppressor>(settings);
-
-  connect(settings, &db::VoiceSuppressor::attackTimeChanged,
-          [&]() { attack_coeff = std::exp(-block_time / settings->attackTime()); });
-
-  connect(settings, &db::VoiceSuppressor::releaseTimeChanged,
-          [&]() { release_coeff = std::exp(-block_time / settings->releaseTime()); });
 }
 
 VoiceSuppressor::~VoiceSuppressor() {
@@ -92,10 +86,6 @@ void VoiceSuppressor::setup() {
 
   std::scoped_lock<std::mutex> lock(data_mutex);
 
-  if (rate == 0 || n_samples == 0) {  // some database signals may be emitted before pipewire calls our setup function
-    return;
-  }
-
   ready = false;
 
   // NOLINTBEGIN(clang-analyzer-cplusplus.NewDeleteLeaks)
@@ -108,10 +98,7 @@ void VoiceSuppressor::setup() {
 
         std::scoped_lock<std::mutex> lock(data_mutex);
 
-        block_time = static_cast<float>(n_samples) / static_cast<float>(rate);
-
-        attack_coeff = std::exp(-block_time / settings->attackTime());
-        release_coeff = std::exp(-block_time / settings->releaseTime());
+        block_time = static_cast<double>(n_samples) / static_cast<double>(rate);
 
         buf_in_L.clear();
         buf_in_R.clear();
@@ -144,16 +131,15 @@ void VoiceSuppressor::setup() {
 
         freqs.resize(fft_size);
 
-        env_mask.resize(fft_size);
+        prev_wrapped_L.resize(fft_size, 0.0);
+        prev_wrapped_R.resize(fft_size, 0.0);
+        prev_unwrapped_L.resize(fft_size, 0.0);
+        prev_unwrapped_R.resize(fft_size, 0.0);
 
         fft_mag_L.resize(fft_size, 0.0);
         fft_mag_R.resize(fft_size, 0.0);
-        old_fft_mag_L.resize(fft_size, 0.0);
-        old_fft_mag_R.resize(fft_size, 0.0);
 
         hanning_window.resize(n_samples);
-
-        std::ranges::fill(env_mask, 1.0F);
 
         for (uint k = 0; k < fft_size; k++) {
           freqs[k] = k * static_cast<float>(rate) / n_samples;
@@ -208,28 +194,27 @@ void VoiceSuppressor::process(std::span<float>& left_in,
     util::copy_bulk_remove_half(buf_in_R, data_R);
 
     for (uint n = 0; n < n_samples; n++) {
-      realL[n] = hanning_window[n] * static_cast<double>(data_L[n]);
-      realR[n] = hanning_window[n] * static_cast<double>(data_R[n]);
+      realL[n] = static_cast<double>(data_L[n]);
+      realR[n] = static_cast<double>(data_R[n]);
     }
 
     fftw_execute(planL);
     fftw_execute(planR);
 
-    // for (uint k = 0; k < fft_size; k++) {
-    //   float Lr = complexL[k][0];
-    //   float Li = complexL[k][1];
-    //   float Rr = complexR[k][0];
-    //   float Ri = complexR[k][1];
+    for (uint k = 0; k < fft_size; k++) {
+      float Lr = complexL[k][0];
+      float Li = complexL[k][1];
+      float Rr = complexR[k][0];
+      float Ri = complexR[k][1];
 
-    //   float P_L = (Lr * Lr) + (Li * Li);
-    //   float P_R = (Rr * Rr) + (Ri * Ri);
+      fft_mag_L[k] = std::hypot(Lr, Li);
+      fft_mag_R[k] = std::hypot(Rr, Ri);
+    }
 
-    //   fft_mag_L[k] = P_L;
-    //   fft_mag_R[k] = P_R;
-    // }
+    // double flatness_L = compute_spectral_flatness(fft_mag_L.data());
+    // double flatness_R = compute_spectral_flatness(fft_mag_R.data());
 
-    // auto flux_L = compute_spectral_flux(fft_mag_L.data(), old_fft_mag_L.data());
-    // auto flux_R = compute_spectral_flux(fft_mag_R.data(), old_fft_mag_R.data());
+    // double flatness = std::max(flatness_L, flatness_R);
 
     for (uint k = 0; k < fft_size; k++) {
       float Lr = complexL[k][0];
@@ -255,53 +240,83 @@ void VoiceSuppressor::process(std::span<float>& left_in,
       // Phase difference
 
       double phase_diff = std::atan2(cross_imag, cross_real);
+
       double abs_phase_diff = std::abs(phase_diff);
+
+      // Local kurtosis
+
+      double kurtosis_L = compute_local_kurtosis(k, fft_mag_L.data());
+      double kurtosis_R = compute_local_kurtosis(k, fft_mag_R.data());
+      double kurtosis = std::sqrt(kurtosis_L * kurtosis_R);
+
+      // Local crest
+
+      // double crest_L = compute_local_crest(k, fft_mag_L.data());
+      // double crest_R = compute_local_crest(k, fft_mag_R.data());
+      // double crest = std::sqrt(crest_L * crest_R);
+
+      // double wrapped_L = std::atan2(Li, Lr);
+      // double wrapped_R = std::atan2(Ri, Rr);
+
+      // --- unwrap left
+      // double delta_L = wrapped_L - prev_wrapped_L[k];
+      // if (delta_L > std::numbers::pi_v<double>) {
+      //   delta_L -= 2.0 * std::numbers::pi_v<double>;
+      // }
+      // if (delta_L < -std::numbers::pi_v<double>) {
+      //   delta_L += 2.0 * std::numbers::pi_v<double>;
+      // }
+
+      // double unwrapped_L = prev_unwrapped_L[k] + delta_L;
+
+      // --- unwrap right
+      // double delta_R = wrapped_R - prev_wrapped_R[k];
+      // if (delta_R > std::numbers::pi_v<double>) {
+      //   delta_R -= 2.0 * std::numbers::pi_v<double>;
+      // }
+      // if (delta_R < -std::numbers::pi_v<double>) {
+      //   delta_R += 2.0 * std::numbers::pi_v<double>;
+      // }
+
+      // double unwrapped_R = prev_unwrapped_R[k] + delta_R;
+
+      // --- instantaneous frequency
+      // double inst_freq_L = delta_L / (2.0 * std::numbers::pi_v<double> * block_time);
+      // double inst_freq_R = delta_R / (2.0 * std::numbers::pi_v<double> * block_time);
+      // double freq_diff = std::abs(inst_freq_L - inst_freq_R);
+
+      // --- store state
+      // prev_wrapped_L[k] = wrapped_L;
+      // prev_unwrapped_L[k] = unwrapped_L;
+      // prev_wrapped_R[k] = wrapped_R;
+      // prev_unwrapped_R[k] = unwrapped_R;
+
+      // util::warning(std::format("f = {}, coor = {}, kurtosis = {}, crest = {}, freq_diff = {}", freqs[k],
+      // correlation,
+      //                           kurtosis, crest, freq_diff));
 
       // Deciding if we should attenuate the frequency
 
       bool freq_cond = (freqs[k] >= settings->freqStart()) && (freqs[k] <= settings->freqEnd());
       bool corr_cond = correlation >= settings->correlation() * 0.01;
       bool phase_cond = abs_phase_diff <= settings->phaseDifference() * std::numbers::pi_v<double> / 180.0;
+      // bool flatness_cond = flatness <= settings->maxFlatness();
+      bool kurtosis_cond = kurtosis >= settings->minKurtosis();
+      // bool crest_cond = crest >= settings->minKurtosis();
 
-      if (freq_cond && corr_cond && phase_cond) {
-        // double norm_flux_L = std::abs(fft_mag_L[k] - old_fft_mag_L[k]) / flux_L;
-        // double norm_flux_R = std::abs(fft_mag_R[k] - old_fft_mag_R[k]) / flux_R;
+      double mask = 0;
 
-        double phase_norm = 1.0 - (abs_phase_diff / std::numbers::pi_v<double>);
+      if (freq_cond && corr_cond && phase_cond && kurtosis_cond) {
+        complexL[k][0] *= mask;
+        complexL[k][1] *= mask;
+        complexR[k][0] *= mask;
+        complexR[k][1] *= mask;
 
-        double mask = 1.0 - std::sqrt(correlation * phase_norm);
+        // util::warning(std::format("f = {}, coor = {}, phase = {}", freqs[k], correlation, phase_diff));
 
-        // smoothing the correlation
-
-        auto& e_mask = env_mask[k];
-
-        double alpha_mask = (mask < e_mask) ? attack_coeff : release_coeff;
-
-        e_mask = (alpha_mask * e_mask) + ((1.0F - alpha_mask) * mask);
-
-        double Mr = 0.5 * (Lr + Rr);
-        double Mi = 0.5 * (Li + Ri);
-        double Sr = 0.5 * (Lr - Rr);
-        double Si = 0.5 * (Li - Ri);
-
-        Mr *= e_mask;
-        Mi *= e_mask;
-
-        complexL[k][0] = Mr + Sr;
-        complexL[k][1] = Mi + Si;
-        complexR[k][0] = Mr - Sr;
-        complexR[k][1] = Mi - Si;
-
-        // util::warning(
-        //     std::format("f = {}, coor = {}, phase = {}, mask = {}", freqs[k], correlation, phase_diff, e_mask));
-
-        // util::warning(std::format("f = {}, flux L = {}, flux R = {}", freqs[k], norm_flux_L, norm_flux_R));
+        // util::warning(std::format("f = {}, flat_L = {}, flat_R = {}, env_flatness = {}", freqs[k], flatness_L,
+        //                           flatness_R, env_flatness));
       }
-    }
-
-    for (uint i = 0; i < fft_size; i++) {
-      old_fft_mag_L[i] = fft_mag_L[i];
-      old_fft_mag_R[i] = fft_mag_R[i];
     }
 
     fftw_execute(planInvL);
@@ -310,8 +325,8 @@ void VoiceSuppressor::process(std::span<float>& left_in,
     float norm = 1.0F / n_samples;
 
     for (uint n = 0; n < n_samples; n++) {
-      data_L[n] = realL[n] * norm;
-      data_R[n] = realR[n] * norm;
+      data_L[n] = hanning_window[n] * realL[n] * norm;
+      data_R[n] = hanning_window[n] * realR[n] * norm;
     }
 
     // ----- Overlap-add into OLA buffer
@@ -404,14 +419,89 @@ void VoiceSuppressor::free_fftw() {
   }
 }
 
-auto VoiceSuppressor::compute_spectral_flux(double* data, double* previous_data) const -> double {
-  double flux = 0.0;
+auto VoiceSuppressor::compute_spectral_flatness(double* magnitude_spectrum) const -> double {
+  uint count = 0;
+  double log_sum = 0.0;
+  double linear_sum = 0.0;
+
+  constexpr double epsilon = 1e-10;  // Small value to avoid log(0)
 
   for (uint i = 0; i < fft_size; i++) {
-    flux += std::abs(data[i] - previous_data[i]);
+    bool freq_cond = (freqs[i] >= settings->freqStart()) && (freqs[i] <= settings->freqEnd());
+
+    if (!freq_cond) {
+      continue;
+    }
+
+    double mag = magnitude_spectrum[i] + epsilon;
+
+    log_sum += std::log(mag);
+
+    linear_sum += mag;
+
+    count++;
   }
 
-  flux /= fft_size;
+  if (linear_sum <= epsilon) {
+    return 0.0;
+  }
 
-  return flux > 1e-6 ? flux : 1.0;
+  count = count == 0 ? 1 : count;
+
+  // Geometric mean: exp( (1/N) * Σ log(magnitude) )
+  double geometric_mean = std::exp(log_sum / count);
+
+  // Arithmetic mean: (1/N) * Σ magnitude
+  double arithmetic_mean = linear_sum / count;
+
+  // Spectral flatness: geometric mean / arithmetic mean
+  return geometric_mean / arithmetic_mean;
+}
+
+auto VoiceSuppressor::compute_local_kurtosis(int k, double* magnitude_spectrum) const -> double {
+  uint W = 6;
+  double mean = 0;
+  double var = 0;
+  double fourth = 0;
+
+  for (uint i = k - W; i <= k + W; ++i) {
+    if (i > 0 && i < fft_size) {
+      mean += magnitude_spectrum[i];
+    }
+  }
+
+  mean /= ((2 * W) + 1);
+
+  for (uint i = k - W; i <= k + W; ++i) {
+    if (i > 0 && i < fft_size) {
+      double d = magnitude_spectrum[i] - mean;
+      var += d * d;
+      fourth += d * d * d * d;
+    }
+  }
+
+  var /= ((2 * W) + 1);
+  fourth /= ((2 * W) + 1);
+
+  return fourth / (var * var + 1e-9);
+}
+
+auto VoiceSuppressor::compute_local_crest(int k, double* magnitude_spectrum) const -> double {
+  uint W = 6;
+  double rms = 0;
+  double peak = 0;
+
+  for (uint i = k - W; i <= k + W; ++i) {
+    if (i > 0 && i < fft_size) {
+      auto v = std::fabs(magnitude_spectrum[i]);
+
+      rms += v * v;
+
+      peak = std::max(v, peak);
+    }
+  }
+
+  rms = sqrt(rms / ((2 * W) + 1));
+
+  return (rms > 1e-6) ? (peak / rms) : 1.0;
 }

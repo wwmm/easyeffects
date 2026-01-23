@@ -148,7 +148,7 @@ auto NodeManager::registerNode(pw_registry* registry, uint32_t id, const char* t
   constexpr auto class_array =
       std::to_array({tags::pipewire::media_class::output_stream, tags::pipewire::media_class::input_stream,
                      tags::pipewire::media_class::sink, tags::pipewire::media_class::source,
-                     tags::pipewire::media_class::virtual_source});
+                     tags::pipewire::media_class::virtual_source, tags::pipewire::media_class::virtual_sink});
 
   if (!is_ee_filter && !std::ranges::any_of(class_array, [&](const auto& str) { return str == media_class; })) {
     return false;
@@ -420,14 +420,16 @@ void NodeManager::onNodeInfo(void* object, const pw_node_info* info) {
     nd->nd_info->connected = !nd->nd_info->connected;
   }
 
-  if (nd->nd_info->media_class == tags::pipewire::media_class::source) {
+  if (nd->nd_info->media_class == tags::pipewire::media_class::source ||
+      nd->nd_info->media_class == tags::pipewire::media_class::virtual_source) {
     const auto nd_info_copy = *nd->nd_info;
 
     if (nd_info_copy.serial == nm->ee_source_node.serial) {
       nm->ee_source_node = nd_info_copy;
     }
 
-  } else if (nd->nd_info->media_class == tags::pipewire::media_class::sink) {
+  } else if (nd->nd_info->media_class == tags::pipewire::media_class::sink ||
+             nd->nd_info->media_class == tags::pipewire::media_class::virtual_sink) {
     const auto nd_info_copy = *nd->nd_info;
 
     if (nd_info_copy.serial == nm->ee_sink_node.serial) {
@@ -464,10 +466,12 @@ void NodeManager::onNodeInfo(void* object, const pw_node_info* info) {
 
     auto nd_info_copy = *nd->nd_info;
 
-    if (nd_info_copy.media_class == tags::pipewire::media_class::source &&
+    if ((nd_info_copy.media_class == tags::pipewire::media_class::source ||
+         nd_info_copy.media_class == tags::pipewire::media_class::virtual_source) &&
         nd_info_copy.name != tags::pipewire::ee_source_name) {
       Q_EMIT nm->sourceAdded(nd_info_copy);
-    } else if (nd_info_copy.media_class == tags::pipewire::media_class::sink &&
+    } else if ((nd_info_copy.media_class == tags::pipewire::media_class::sink ||
+                nd_info_copy.media_class == tags::pipewire::media_class::virtual_sink) &&
                nd_info_copy.name != tags::pipewire::ee_sink_name) {
       Q_EMIT nm->sinkAdded(nd_info_copy);
     } else if (nd_info_copy.media_class == tags::pipewire::media_class::output_stream) {

@@ -246,7 +246,8 @@ Manager::Manager()
       }
 
       for (auto& node : nodes) {
-        if (node.media_class == tags::pipewire::media_class::source) {
+        if (node.media_class == tags::pipewire::media_class::source ||
+            node.media_class == tags::pipewire::media_class::virtual_source) {
           if (node.device_route_name != device.input_route_name ||
               node.device_route_description != device.input_route_description) {
             node.device_route_name = device.input_route_name;
@@ -271,7 +272,8 @@ Manager::Manager()
       }
 
       for (auto& node : nodes) {
-        if (node.media_class == tags::pipewire::media_class::sink) {
+        if (node.media_class == tags::pipewire::media_class::sink ||
+            node.media_class == tags::pipewire::media_class::virtual_sink) {
           if (node.device_route_name != device.output_route_name ||
               node.device_route_description != device.output_route_description) {
             node.device_route_name = device.output_route_name;

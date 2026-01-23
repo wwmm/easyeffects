@@ -37,6 +37,8 @@ inline constexpr auto source = "Audio/Source";
 
 inline constexpr auto virtual_source = "Audio/Source/Virtual";
 
+inline constexpr auto virtual_sink = "Audio/Sink/Virtual";
+
 inline constexpr auto input_stream = "Stream/Input/Audio";
 
 inline constexpr auto output_stream = "Stream/Output/Audio";
