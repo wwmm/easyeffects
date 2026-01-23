@@ -15,12 +15,12 @@ jobs:
         run: pacman -Syu --noconfirm git
     
       - name: Checkout
-        uses: actions/checkout@v6.0.1
+        uses: actions/checkout@v6.0.2
         with:
           path: master-head
 
       - name: Checkout
-        uses: actions/checkout@v6.0.1
+        uses: actions/checkout@v6.0.2
         with:
           path: master-latest-po-change
           # grab all commits and all repo data

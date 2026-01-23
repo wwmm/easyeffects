@@ -19,7 +19,7 @@ jobs:
       github_commit_desc: ${{ steps.get_commit_desc.outputs.github_commit_desc }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v6.0.1
+        uses: actions/checkout@v6.0.2
         with:
           fetch-depth: 0
 
@@ -62,7 +62,7 @@ jobs:
     runs-on: ${{ matrix.variant.runner }}
     steps:
     - name: Checkout
-      uses: actions/checkout@v6.0.1
+      uses: actions/checkout@v6.0.2
 
     - name: Enable errors on warnings
       run: |
@@ -85,7 +85,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
     - name: Checkout
-      uses: actions/checkout@v6.0.1
+      uses: actions/checkout@v6.0.2
   
     # this just validates, actual update PRs are done in flatpak-update.yaml
     - name: Verify flatpak external data checker metadata
@@ -110,7 +110,7 @@ jobs:
     needs: prepare
     steps:
     - name: Checkout
-      uses: actions/checkout@v6.0.1
+      uses: actions/checkout@v6.0.2
       with:
         # needed for getting git describe info for pkgver() in pkgbuild
         fetch-depth: 0
@@ -146,7 +146,7 @@ jobs:
       image: opensuse/tumbleweed
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v6.0.1
+      uses: actions/checkout@v6.0.2
 
     - name: Install deps
       run: |
@@ -235,7 +235,7 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v6.0.1
+      uses: actions/checkout@v6.0.2
 
     - name: Install deps
       run: |
@@ -266,7 +266,7 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v6.0.1
+      uses: actions/checkout@v6.0.2
 
     - name: Install deps
       run: |
@@ -330,7 +330,7 @@ jobs:
       image: archlinux
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6.0.1
+        uses: actions/checkout@v6.0.2
       
       - name: Install deps
         run: | 
@@ -349,7 +349,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6.0.1
+        uses: actions/checkout@v6.0.2
 
       - name: Run KCFG numeric-defaults checker
         run: ./util/check-kcfg-numeric-defaults.sh
@@ -365,7 +365,7 @@ jobs:
         run: pacman -Syu --noconfirm qt6-declarative git
 
       - name: Checkout code
-        uses: actions/checkout@v6.0.1
+        uses: actions/checkout@v6.0.2
 
       - name: Set git permissions
         # workarounds the permission differences due to this being run in a container
@@ -384,7 +384,7 @@ jobs:
       image: archlinux
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6.0.1
+        uses: actions/checkout@v6.0.2
 
       - name: Install deps
         run: pacman -Syu --noconfirm qt6-declarative
