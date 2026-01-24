@@ -228,18 +228,14 @@ void VoiceSuppressor::process(std::span<float>& left_in,
         auto cross_mag = std::hypot(fft_cross_real[k], fft_cross_img[k]);
         auto correlation = cross_mag / ((fft_mag_L[k] * fft_mag_R[k]) + 1e-10);
 
-        auto x = correlation / (settings->correlation() * 0.01);
-
-        corr_gain = sigmoid(x);
+        corr_gain = sigmoid(correlation / (settings->correlation() * 0.01));
       }
 
       // Phase difference
       {
         auto phase_diff = std::abs(std::atan2(fft_cross_img[k], fft_cross_real[k]));
 
-        auto x = phase_diff / (settings->phaseDifference() * std::numbers::pi_v<double> / 180.0);
-
-        phase_gain = sigmoid(x);
+        phase_gain = sigmoid(phase_diff / (settings->phaseDifference() * std::numbers::pi_v<double> / 180.0));
       }
 
       // Local kurtosis
@@ -248,26 +244,19 @@ void VoiceSuppressor::process(std::span<float>& left_in,
         auto kurtosis_R = compute_local_kurtosis(k, fft_mag_R.data());
         auto kurtosis = std::max(kurtosis_L, kurtosis_R);
 
-        auto x = kurtosis / settings->minKurtosis();
-
-        kurtosis_gain = sigmoid(x);
+        kurtosis_gain = sigmoid(kurtosis / settings->minKurtosis());
       }
 
       // Instantaneous frequency
       {
-        auto inst_freq_L = calc_instantaneous_frequency(k);
-        auto freq_diff = std::abs(inst_freq_L);
+        auto freq_diff = std::abs(calc_instantaneous_frequency(k));
 
-        auto x = freq_diff / settings->minKurtosis();
-
-        inst_freq_gain = sigmoid(x);
+        inst_freq_gain = sigmoid(freq_diff / settings->maxInstFreq());
       }
 
       // Deciding if we should attenuate the frequency
 
-      bool freq_cond = (freqs[k] >= settings->freqStart()) && (freqs[k] <= settings->freqEnd());
-
-      if (freq_cond) {
+      if ((freqs[k] >= settings->freqStart()) && (freqs[k] <= settings->freqEnd())) {
         auto gain = phase_gain * corr_gain * kurtosis_gain * inst_freq_gain;
 
         complexL[k][0] *= gain;
