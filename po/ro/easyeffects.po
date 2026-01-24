@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-01-23 14:50-0300\n"
-"PO-Revision-Date: 2026-01-22 06:01+0000\n"
+"PO-Revision-Date: 2026-01-24 14:01+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ro/>\n"
@@ -2996,9 +2996,8 @@ msgid "Phase difference"
 msgstr "Diferența de fază"
 
 #: src/contents/ui/VoiceSuppressor.qml:126
-#, fuzzy
 msgid "Minimum kurtosis"
-msgstr "Cuantum minim"
+msgstr "Kurtosis minimă"
 
 #: src/main.cpp:333
 msgid "Global audio effects"
