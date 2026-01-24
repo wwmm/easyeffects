@@ -101,14 +101,16 @@ class VoiceSuppressor : public PluginBase {
 
   std::vector<double> fft_mag_L, fft_mag_R;
 
-  std::vector<double> prev_wrapped_L, prev_unwrapped_L;
-  std::vector<double> prev_wrapped_R, prev_unwrapped_R;
+  std::vector<double> fft_cross_real;
+  std::vector<double> fft_cross_img;
+
+  std::vector<double> previous_wrapped, previous_unwrapped;
 
   void free_fftw();
 
-  auto compute_spectral_flatness(double* magnitude_spectrum) const -> double;
-
   auto compute_local_kurtosis(int k, double* magnitude_spectrum) const -> double;
 
-  auto compute_local_crest(int k, double* magnitude_spectrum) const -> double;
+  auto calc_instantaneous_frequency(const int& k) -> double;
+
+  static auto sigmoid(const double& x) -> double;
 };

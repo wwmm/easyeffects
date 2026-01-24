@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-01-23 14:50-0300\n"
+"POT-Creation-Date: 2026-01-24 20:14-0300\n"
 "PO-Revision-Date: 2025-11-05 00:44+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -223,7 +223,7 @@ msgstr "Výstupní zesílení"
 #: src/contents/ui/RNNoise.qml:87 src/contents/ui/RNNoise.qml:301
 #: src/contents/ui/RNNoise.qml:303 src/contents/ui/RNNoise.qml:321
 #: src/contents/ui/Speex.qml:174 src/contents/ui/StereoTools.qml:389
-#: src/contents/ui/VoiceSuppressor.qml:149
+#: src/contents/ui/VoiceSuppressor.qml:165
 #, fuzzy
 msgid "Using %1"
 msgstr "Používá {}"
@@ -317,7 +317,7 @@ msgstr "Poslouchat"
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:356
 #: src/contents/ui/RNNoise.qml:346 src/contents/ui/Speex.qml:192
-#: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:167
+#: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:183
 msgid "Reset"
 msgstr "Vrátit na výchozí"
 
@@ -3269,6 +3269,11 @@ msgstr "Rozdíl kmitočtu"
 msgid "Minimum kurtosis"
 msgstr "Minimální Kvantum"
 
+#: src/contents/ui/VoiceSuppressor.qml:141
+#, fuzzy
+msgid "Maximum instantaneous frequency"
+msgstr "Maximální Kmitočet"
+
 #: src/main.cpp:333
 #, fuzzy
 msgid "Global audio effects"
@@ -5035,10 +5040,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Minimum Frequency"
 #~ msgstr "Minimální Kmitočet"
-
-#, fuzzy
-#~ msgid "Maximum Frequency"
-#~ msgstr "Maximální Kmitočet"
 
 #~ msgid "Reconnect the microphone to apply new changes made to the Blocklist"
 #~ msgstr "Znovu připojit mikrofon pro použití změn provedených v Blocklistu"

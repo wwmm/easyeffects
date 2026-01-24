@@ -128,10 +128,26 @@ Kirigami.ScrollablePage {
                     from: voiceSuppressorPage.pluginDB.getMinValue("minKurtosis")
                     to: voiceSuppressorPage.pluginDB.getMaxValue("minKurtosis")
                     value: voiceSuppressorPage.pluginDB.minKurtosis
-                    decimals: 1
-                    stepSize: 0.1
+                    decimals: 2
+                    stepSize: 0.01
                     onValueModified: v => {
                         voiceSuppressorPage.pluginDB.minKurtosis = v;
+                    }
+                }
+
+                EeSpinBox {
+                    id: maxInstFreq
+
+                    label: i18n("Maximum instantaneous frequency") // qmllint disable
+                    spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
+                    from: voiceSuppressorPage.pluginDB.getMinValue("maxInstFreq")
+                    to: voiceSuppressorPage.pluginDB.getMaxValue("maxInstFreq")
+                    value: voiceSuppressorPage.pluginDB.maxInstFreq
+                    decimals: 2
+                    stepSize: 0.01
+                    unit: Units.hz
+                    onValueModified: v => {
+                        voiceSuppressorPage.pluginDB.maxInstFreq = v;
                     }
                 }
             }

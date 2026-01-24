@@ -213,6 +213,7 @@ msgstr "Вихідне підсилення"
 #: src/contents/ui/RNNoise.qml:303 src/contents/ui/RNNoise.qml:321
 #: src/contents/ui/Speex.qml:174 src/contents/ui/StereoTools.qml:389
 #: src/contents/ui/VoiceSuppressor.qml:149
+#: src/contents/ui/VoiceSuppressor.qml:165
 msgid "Using %1"
 msgstr "Використовується %1"
 
@@ -300,6 +301,7 @@ msgstr "Слухати"
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:356
 #: src/contents/ui/RNNoise.qml:346 src/contents/ui/Speex.qml:192
 #: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:167
+#: src/contents/ui/VoiceSuppressor.qml:183
 msgid "Reset"
 msgstr "Скинути"
 
@@ -3268,6 +3270,11 @@ msgstr "Еквалайзер, компресор та інші звукові е
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "Прості звукові ефекти"
+
+#: src/contents/ui/VoiceSuppressor.qml:141
+#, fuzzy
+msgid "Maximum instantaneous frequency"
+msgstr "Тривалість історії (максимальна)"
 
 #~ msgid "Attack time"
 #~ msgstr "Час атаки"

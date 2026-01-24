@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-01-23 14:50-0300\n"
+"POT-Creation-Date: 2026-01-24 20:14-0300\n"
 "PO-Revision-Date: 2026-01-24 14:01+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
@@ -213,7 +213,7 @@ msgstr "Câștig de ieșire"
 #: src/contents/ui/RNNoise.qml:87 src/contents/ui/RNNoise.qml:301
 #: src/contents/ui/RNNoise.qml:303 src/contents/ui/RNNoise.qml:321
 #: src/contents/ui/Speex.qml:174 src/contents/ui/StereoTools.qml:389
-#: src/contents/ui/VoiceSuppressor.qml:149
+#: src/contents/ui/VoiceSuppressor.qml:165
 msgid "Using %1"
 msgstr "Utilizând %1"
 
@@ -300,7 +300,7 @@ msgstr "Ascultă"
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:356
 #: src/contents/ui/RNNoise.qml:346 src/contents/ui/Speex.qml:192
-#: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:167
+#: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:183
 msgid "Reset"
 msgstr "Restabilește"
 
@@ -2999,6 +2999,11 @@ msgstr "Diferența de fază"
 msgid "Minimum kurtosis"
 msgstr "Kurtosis minimă"
 
+#: src/contents/ui/VoiceSuppressor.qml:141
+#, fuzzy
+msgid "Maximum instantaneous frequency"
+msgstr "Frecvență Maximă"
+
 #: src/main.cpp:333
 msgid "Global audio effects"
 msgstr "Efecte audio globale"
@@ -5032,9 +5037,6 @@ msgstr "Efecte audio simple"
 
 #~ msgid "Sampling"
 #~ msgstr "Sampling"
-
-#~ msgid "Maximum Frequency"
-#~ msgstr "Frecvență Maximă"
 
 #~ msgid "Spectrum Color"
 #~ msgstr "Culoare Spectru"

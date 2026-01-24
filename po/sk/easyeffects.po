@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-01-23 14:50-0300\n"
+"POT-Creation-Date: 2026-01-24 20:14-0300\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Meti Cease <sockargrande@gmail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -231,7 +231,7 @@ msgstr "Výstupný Zisk"
 #: src/contents/ui/RNNoise.qml:87 src/contents/ui/RNNoise.qml:301
 #: src/contents/ui/RNNoise.qml:303 src/contents/ui/RNNoise.qml:321
 #: src/contents/ui/Speex.qml:174 src/contents/ui/StereoTools.qml:389
-#: src/contents/ui/VoiceSuppressor.qml:149
+#: src/contents/ui/VoiceSuppressor.qml:165
 msgid "Using %1"
 msgstr ""
 
@@ -324,7 +324,7 @@ msgstr "Počúvať"
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:356
 #: src/contents/ui/RNNoise.qml:346 src/contents/ui/Speex.qml:192
-#: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:167
+#: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:183
 msgid "Reset"
 msgstr "Obnoviť pôvodné hodnoty"
 
@@ -3265,6 +3265,11 @@ msgstr "Referenčný Signál"
 msgid "Minimum kurtosis"
 msgstr "Minimálna frekvencia"
 
+#: src/contents/ui/VoiceSuppressor.qml:141
+#, fuzzy
+msgid "Maximum instantaneous frequency"
+msgstr "Maximálna frekvencia"
+
 #: src/main.cpp:333
 #, fuzzy
 msgid "Global audio effects"
@@ -4845,9 +4850,6 @@ msgstr ""
 
 #~ msgid "Sampling"
 #~ msgstr "Vzorkovanie"
-
-#~ msgid "Maximum Frequency"
-#~ msgstr "Maximálna frekvencia"
 
 #~ msgid "Gradient Color"
 #~ msgstr "Farba prechodu"

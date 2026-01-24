@@ -2133,9 +2133,12 @@ the frequency domain. Frequencies whose correlation and phase difference are bey
 <p>Frequencies are attenuated only if the correlation between left and right channel is at least equal to this value.  </p>
 <p><strong>Phase Difference</strong>  </p>
 <p>Frequencies are not attenuated when the magnitude of phase difference between left and right channel is above this value.  </p>
-<p><strong>Attack and Release Time</strong>  </p>
-<p>They control the smoothing of the attenuation factor applied to the signal that fits the criteria set by the parameters above.
-A smaller attack time makes the attenation to be increased faster. Londer release times makes the current suppresion to stay for longer.</p>
+<p><strong>Minimum Kurtosis</strong>  </p>
+<p>Frequencies with local kurtosis below this value are attenuated.  </p>
+<p><strong>Maximum Instantaneous Frequency</strong>  </p>
+<p>This is related to the frequency of rotation of the complex vector that represents the correlation between the left and right channel at a given frequency.
+In other words this measures how fast the phase difference between the left and right channels changes at a given frequency bin in the Fourier transform.
+More attenuation is applied to the channels samples that have rotation frequency below this parameter value.</p>
 
 
 
