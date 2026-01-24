@@ -131,13 +131,14 @@ void VoiceSuppressor::setup() {
 
         freqs.resize(fft_size);
 
-        prev_wrapped_L.resize(fft_size, 0.0);
-        prev_wrapped_R.resize(fft_size, 0.0);
-        prev_unwrapped_L.resize(fft_size, 0.0);
-        prev_unwrapped_R.resize(fft_size, 0.0);
+        previous_wrapped.resize(fft_size, 0.0);
+        previous_unwrapped.resize(fft_size, 0.0);
 
         fft_mag_L.resize(fft_size, 0.0);
         fft_mag_R.resize(fft_size, 0.0);
+
+        fft_cross_real.resize(fft_size, 0.0);
+        fft_cross_img.resize(fft_size, 0.0);
 
         hanning_window.resize(n_samples);
 
@@ -209,114 +210,73 @@ void VoiceSuppressor::process(std::span<float>& left_in,
 
       fft_mag_L[k] = std::hypot(Lr, Li);
       fft_mag_R[k] = std::hypot(Rr, Ri);
-    }
-
-    // double flatness_L = compute_spectral_flatness(fft_mag_L.data());
-    // double flatness_R = compute_spectral_flatness(fft_mag_R.data());
-
-    // double flatness = std::max(flatness_L, flatness_R);
-
-    for (uint k = 0; k < fft_size; k++) {
-      float Lr = complexL[k][0];
-      float Li = complexL[k][1];
-      float Rr = complexR[k][0];
-      float Ri = complexR[k][1];
-
-      // Power spectra
-
-      double P_L = (Lr * Lr) + (Li * Li);
-      double P_R = (Rr * Rr) + (Ri * Ri);
 
       // Inner product between the left channel and the complexity conjugated of the right channel
 
-      double cross_real = (Lr * Rr) + (Li * Ri);
-      double cross_imag = (Li * Rr) - (Lr * Ri);
+      fft_cross_real[k] = (Lr * Rr) + (Li * Ri);
+      fft_cross_img[k] = (Li * Rr) - (Lr * Ri);
+    }
+
+    for (uint k = 0; k < fft_size; k++) {
+      double phase_gain = 1.0;
+      double corr_gain = 1.0;
+      double inst_freq_gain = 1.0;
+      double kurtosis_gain = 1.0;
 
       // Correlation
+      {
+        auto cross_mag = std::hypot(fft_cross_real[k], fft_cross_img[k]);
+        auto correlation = cross_mag / ((fft_mag_L[k] * fft_mag_R[k]) + 1e-10);
 
-      double cross_mag = std::sqrt((cross_real * cross_real) + (cross_imag * cross_imag));
-      double correlation = cross_mag / std::sqrt((P_L * P_R) + 1e-9);
+        auto x = correlation / (settings->correlation() * 0.01);
+
+        corr_gain = x / std::sqrt(1.0 + (x * x));
+      }
 
       // Phase difference
+      {
+        auto phase_diff = std::abs(std::atan2(fft_cross_img[k], fft_cross_real[k]));
 
-      double phase_diff = std::atan2(cross_imag, cross_real);
+        auto x = phase_diff / (settings->phaseDifference() * std::numbers::pi_v<double> / 180.0);
 
-      double abs_phase_diff = std::abs(phase_diff);
+        phase_gain = x / std::sqrt(1.0 + (x * x));
+      }
 
       // Local kurtosis
+      {
+        auto kurtosis_L = compute_local_kurtosis(k, fft_mag_L.data());
+        auto kurtosis_R = compute_local_kurtosis(k, fft_mag_R.data());
+        auto kurtosis = std::max(kurtosis_L, kurtosis_R);
 
-      double kurtosis_L = compute_local_kurtosis(k, fft_mag_L.data());
-      double kurtosis_R = compute_local_kurtosis(k, fft_mag_R.data());
-      double kurtosis = std::sqrt(kurtosis_L * kurtosis_R);
+        auto x = kurtosis / settings->minKurtosis();
 
-      // Local crest
+        kurtosis_gain = x / std::sqrt(1.0 + (x * x));
+      }
 
-      // double crest_L = compute_local_crest(k, fft_mag_L.data());
-      // double crest_R = compute_local_crest(k, fft_mag_R.data());
-      // double crest = std::sqrt(crest_L * crest_R);
+      // Instantaneous frequency
+      {
+        auto inst_freq_L = calc_instantaneous_frequency(k);
+        auto freq_diff = std::abs(inst_freq_L);
 
-      // double wrapped_L = std::atan2(Li, Lr);
-      // double wrapped_R = std::atan2(Ri, Rr);
+        auto x = freq_diff / settings->minKurtosis();
 
-      // --- unwrap left
-      // double delta_L = wrapped_L - prev_wrapped_L[k];
-      // if (delta_L > std::numbers::pi_v<double>) {
-      //   delta_L -= 2.0 * std::numbers::pi_v<double>;
-      // }
-      // if (delta_L < -std::numbers::pi_v<double>) {
-      //   delta_L += 2.0 * std::numbers::pi_v<double>;
-      // }
-
-      // double unwrapped_L = prev_unwrapped_L[k] + delta_L;
-
-      // --- unwrap right
-      // double delta_R = wrapped_R - prev_wrapped_R[k];
-      // if (delta_R > std::numbers::pi_v<double>) {
-      //   delta_R -= 2.0 * std::numbers::pi_v<double>;
-      // }
-      // if (delta_R < -std::numbers::pi_v<double>) {
-      //   delta_R += 2.0 * std::numbers::pi_v<double>;
-      // }
-
-      // double unwrapped_R = prev_unwrapped_R[k] + delta_R;
-
-      // --- instantaneous frequency
-      // double inst_freq_L = delta_L / (2.0 * std::numbers::pi_v<double> * block_time);
-      // double inst_freq_R = delta_R / (2.0 * std::numbers::pi_v<double> * block_time);
-      // double freq_diff = std::abs(inst_freq_L - inst_freq_R);
-
-      // --- store state
-      // prev_wrapped_L[k] = wrapped_L;
-      // prev_unwrapped_L[k] = unwrapped_L;
-      // prev_wrapped_R[k] = wrapped_R;
-      // prev_unwrapped_R[k] = unwrapped_R;
-
-      // util::warning(std::format("f = {}, coor = {}, kurtosis = {}, crest = {}, freq_diff = {}", freqs[k],
-      // correlation,
-      //                           kurtosis, crest, freq_diff));
+        inst_freq_gain = x / std::sqrt(1.0 + (x * x));
+      }
 
       // Deciding if we should attenuate the frequency
 
       bool freq_cond = (freqs[k] >= settings->freqStart()) && (freqs[k] <= settings->freqEnd());
-      bool corr_cond = correlation >= settings->correlation() * 0.01;
-      bool phase_cond = abs_phase_diff <= settings->phaseDifference() * std::numbers::pi_v<double> / 180.0;
-      // bool flatness_cond = flatness <= settings->maxFlatness();
-      bool kurtosis_cond = kurtosis >= settings->minKurtosis();
-      // bool crest_cond = crest >= settings->minKurtosis();
 
-      double mask = 0;
+      if (freq_cond) {
+        auto gain = phase_gain * corr_gain * kurtosis_gain * inst_freq_gain;
 
-      if (freq_cond && corr_cond && phase_cond && kurtosis_cond) {
-        complexL[k][0] *= mask;
-        complexL[k][1] *= mask;
-        complexR[k][0] *= mask;
-        complexR[k][1] *= mask;
-
-        // util::warning(std::format("f = {}, coor = {}, phase = {}", freqs[k], correlation, phase_diff));
-
-        // util::warning(std::format("f = {}, flat_L = {}, flat_R = {}, env_flatness = {}", freqs[k], flatness_L,
-        //                           flatness_R, env_flatness));
+        complexL[k][0] *= gain;
+        complexL[k][1] *= gain;
+        complexR[k][0] *= gain;
+        complexR[k][1] *= gain;
       }
+
+      // util::warning(std::format("f = {}, coor_gain = {}, phase_gain = {}", freqs[k], corr_gain, phase_gain));
     }
 
     fftw_execute(planInvL);
@@ -419,62 +379,24 @@ void VoiceSuppressor::free_fftw() {
   }
 }
 
-auto VoiceSuppressor::compute_spectral_flatness(double* magnitude_spectrum) const -> double {
-  uint count = 0;
-  double log_sum = 0.0;
-  double linear_sum = 0.0;
-
-  constexpr double epsilon = 1e-10;  // Small value to avoid log(0)
-
-  for (uint i = 0; i < fft_size; i++) {
-    bool freq_cond = (freqs[i] >= settings->freqStart()) && (freqs[i] <= settings->freqEnd());
-
-    if (!freq_cond) {
-      continue;
-    }
-
-    double mag = magnitude_spectrum[i] + epsilon;
-
-    log_sum += std::log(mag);
-
-    linear_sum += mag;
-
-    count++;
-  }
-
-  if (linear_sum <= epsilon) {
-    return 0.0;
-  }
-
-  count = count == 0 ? 1 : count;
-
-  // Geometric mean: exp( (1/N) * Σ log(magnitude) )
-  double geometric_mean = std::exp(log_sum / count);
-
-  // Arithmetic mean: (1/N) * Σ magnitude
-  double arithmetic_mean = linear_sum / count;
-
-  // Spectral flatness: geometric mean / arithmetic mean
-  return geometric_mean / arithmetic_mean;
-}
-
 auto VoiceSuppressor::compute_local_kurtosis(int k, double* magnitude_spectrum) const -> double {
-  uint W = 6;
+  int W = 1;
   double mean = 0;
   double var = 0;
   double fourth = 0;
 
-  for (uint i = k - W; i <= k + W; ++i) {
-    if (i > 0 && i < fft_size) {
+  for (int i = k - W; i <= k + W; i++) {
+    if (i >= 0 && i < static_cast<int>(fft_size)) {
       mean += magnitude_spectrum[i];
     }
   }
 
   mean /= ((2 * W) + 1);
 
-  for (uint i = k - W; i <= k + W; ++i) {
-    if (i > 0 && i < fft_size) {
+  for (int i = k - W; i <= k + W; i++) {
+    if (i >= 0 && i < static_cast<int>(fft_size)) {
       double d = magnitude_spectrum[i] - mean;
+
       var += d * d;
       fourth += d * d * d * d;
     }
@@ -486,22 +408,29 @@ auto VoiceSuppressor::compute_local_kurtosis(int k, double* magnitude_spectrum) 
   return fourth / (var * var + 1e-9);
 }
 
-auto VoiceSuppressor::compute_local_crest(int k, double* magnitude_spectrum) const -> double {
-  uint W = 6;
-  double rms = 0;
-  double peak = 0;
+auto VoiceSuppressor::calc_instantaneous_frequency(const int& k) -> double {
+  double wrapped = std::atan2(fft_cross_img[k], fft_cross_real[k]);
 
-  for (uint i = k - W; i <= k + W; ++i) {
-    if (i > 0 && i < fft_size) {
-      auto v = std::fabs(magnitude_spectrum[i]);
+  // --- unwrap
 
-      rms += v * v;
+  double delta = wrapped - previous_wrapped[k];
 
-      peak = std::max(v, peak);
-    }
+  if (delta > std::numbers::pi_v<double>) {
+    delta -= 2.0 * std::numbers::pi_v<double>;
   }
 
-  rms = sqrt(rms / ((2 * W) + 1));
+  if (delta < -std::numbers::pi_v<double>) {
+    delta += 2.0 * std::numbers::pi_v<double>;
+  }
 
-  return (rms > 1e-6) ? (peak / rms) : 1.0;
+  double unwrapped = previous_unwrapped[k] + delta;
+
+  double dphi = unwrapped - previous_unwrapped[k];
+
+  previous_wrapped[k] = wrapped;
+  previous_unwrapped[k] = unwrapped;
+
+  // Instantaneous frequency. This is the frequency at which the channel phase is changing
+
+  return dphi / (2.0 * std::numbers::pi_v<double> * block_time);
 }

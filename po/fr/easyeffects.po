@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-01-23 14:50-0300\n"
+"POT-Creation-Date: 2026-01-24 19:37-0300\n"
 "PO-Revision-Date: 2026-01-21 14:50+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -212,7 +212,7 @@ msgstr "Gain de sortie"
 #: src/contents/ui/RNNoise.qml:87 src/contents/ui/RNNoise.qml:301
 #: src/contents/ui/RNNoise.qml:303 src/contents/ui/RNNoise.qml:321
 #: src/contents/ui/Speex.qml:174 src/contents/ui/StereoTools.qml:389
-#: src/contents/ui/VoiceSuppressor.qml:149
+#: src/contents/ui/VoiceSuppressor.qml:164
 msgid "Using %1"
 msgstr "Utilisation de %1"
 
@@ -299,7 +299,7 @@ msgstr "Écouter"
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:356
 #: src/contents/ui/RNNoise.qml:346 src/contents/ui/Speex.qml:192
-#: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:167
+#: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:182
 msgid "Reset"
 msgstr "Réinitialiser"
 
@@ -3005,6 +3005,11 @@ msgstr "Différence de phase"
 #, fuzzy
 msgid "Minimum kurtosis"
 msgstr "Quantum minimal"
+
+#: src/contents/ui/VoiceSuppressor.qml:141
+#, fuzzy
+msgid "Maximum instantaneous frequency"
+msgstr "Historique maximal"
 
 #: src/main.cpp:333
 msgid "Global audio effects"

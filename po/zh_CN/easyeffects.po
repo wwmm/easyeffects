@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-01-23 14:50-0300\n"
+"POT-Creation-Date: 2026-01-24 19:37-0300\n"
 "PO-Revision-Date: 2026-01-19 11:01+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
@@ -211,7 +211,7 @@ msgstr "输出增益"
 #: src/contents/ui/RNNoise.qml:87 src/contents/ui/RNNoise.qml:301
 #: src/contents/ui/RNNoise.qml:303 src/contents/ui/RNNoise.qml:321
 #: src/contents/ui/Speex.qml:174 src/contents/ui/StereoTools.qml:389
-#: src/contents/ui/VoiceSuppressor.qml:149
+#: src/contents/ui/VoiceSuppressor.qml:164
 msgid "Using %1"
 msgstr "正在使用 %1"
 
@@ -298,7 +298,7 @@ msgstr "聆听"
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:356
 #: src/contents/ui/RNNoise.qml:346 src/contents/ui/Speex.qml:192
-#: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:167
+#: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:182
 msgid "Reset"
 msgstr "重置"
 
@@ -2952,6 +2952,11 @@ msgstr "速率差"
 #, fuzzy
 msgid "Minimum kurtosis"
 msgstr "最小音频帧 (Quantum)"
+
+#: src/contents/ui/VoiceSuppressor.qml:141
+#, fuzzy
+msgid "Maximum instantaneous frequency"
+msgstr "最长历史记录"
 
 #: src/main.cpp:333
 msgid "Global audio effects"
