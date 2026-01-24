@@ -230,7 +230,7 @@ void VoiceSuppressor::process(std::span<float>& left_in,
 
         auto x = correlation / (settings->correlation() * 0.01);
 
-        corr_gain = x / std::sqrt(1.0 + (x * x));
+        corr_gain = sigmoid(x);
       }
 
       // Phase difference
@@ -239,7 +239,7 @@ void VoiceSuppressor::process(std::span<float>& left_in,
 
         auto x = phase_diff / (settings->phaseDifference() * std::numbers::pi_v<double> / 180.0);
 
-        phase_gain = x / std::sqrt(1.0 + (x * x));
+        phase_gain = sigmoid(x);
       }
 
       // Local kurtosis
@@ -250,7 +250,7 @@ void VoiceSuppressor::process(std::span<float>& left_in,
 
         auto x = kurtosis / settings->minKurtosis();
 
-        kurtosis_gain = x / std::sqrt(1.0 + (x * x));
+        kurtosis_gain = sigmoid(x);
       }
 
       // Instantaneous frequency
@@ -260,7 +260,7 @@ void VoiceSuppressor::process(std::span<float>& left_in,
 
         auto x = freq_diff / settings->minKurtosis();
 
-        inst_freq_gain = x / std::sqrt(1.0 + (x * x));
+        inst_freq_gain = sigmoid(x);
       }
 
       // Deciding if we should attenuate the frequency
@@ -433,4 +433,8 @@ auto VoiceSuppressor::calc_instantaneous_frequency(const int& k) -> double {
   // Instantaneous frequency. This is the frequency at which the channel phase is changing
 
   return dphi / (2.0 * std::numbers::pi_v<double> * block_time);
+}
+
+auto VoiceSuppressor::sigmoid(const double& x) -> double {
+  return x / (1.0 + std::abs(x));
 }

@@ -39,13 +39,13 @@
             <label></label>
             <min>1</min>
             <max>100</max>
-            <default>98</default>
+            <default>95</default>
         </entry>
         <entry name="phaseDifference" type="Double">
             <label></label>
             <min>1</min>
             <max>180</max>
-            <default>30</default>
+            <default>20</default>
         </entry>
         <entry name="minKurtosis" type="Double">
             <label></label>

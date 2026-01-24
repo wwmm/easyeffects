@@ -111,4 +111,6 @@ class VoiceSuppressor : public PluginBase {
   auto compute_local_kurtosis(int k, double* magnitude_spectrum) const -> double;
 
   auto calc_instantaneous_frequency(const int& k) -> double;
+
+  static auto sigmoid(const double& x) -> double;
 };

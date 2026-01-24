@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-01-24 19:37-0300\n"
+"POT-Creation-Date: 2026-01-24 20:14-0300\n"
 "PO-Revision-Date: 2025-12-21 09:00+0000\n"
 "Last-Translator: Lito Parra <lito.15@proton.me>\n"
 "Language-Team: Spanish (Mexico) <https://hosted.weblate.org/projects/"
@@ -213,7 +213,7 @@ msgstr "Ganancia de salida"
 #: src/contents/ui/RNNoise.qml:87 src/contents/ui/RNNoise.qml:301
 #: src/contents/ui/RNNoise.qml:303 src/contents/ui/RNNoise.qml:321
 #: src/contents/ui/Speex.qml:174 src/contents/ui/StereoTools.qml:389
-#: src/contents/ui/VoiceSuppressor.qml:164
+#: src/contents/ui/VoiceSuppressor.qml:165
 msgid "Using %1"
 msgstr "Usando %1"
 
@@ -300,7 +300,7 @@ msgstr "Escuchar"
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:356
 #: src/contents/ui/RNNoise.qml:346 src/contents/ui/Speex.qml:192
-#: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:182
+#: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:183
 msgid "Reset"
 msgstr "Restablecer"
 

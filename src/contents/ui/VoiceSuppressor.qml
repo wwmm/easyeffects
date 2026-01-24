@@ -145,6 +145,7 @@ Kirigami.ScrollablePage {
                     value: voiceSuppressorPage.pluginDB.maxInstFreq
                     decimals: 2
                     stepSize: 0.01
+                    unit: Units.hz
                     onValueModified: v => {
                         voiceSuppressorPage.pluginDB.maxInstFreq = v;
                     }
