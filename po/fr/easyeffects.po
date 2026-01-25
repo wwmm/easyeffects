@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-01-25 02:22-0300\n"
-"PO-Revision-Date: 2026-01-21 14:50+0000\n"
+"PO-Revision-Date: 2026-01-25 10:40+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -3002,19 +3002,16 @@ msgid "Phase difference"
 msgstr "Différence de phase"
 
 #: src/contents/ui/VoiceSuppressor.qml:126
-#, fuzzy
 msgid "Minimum kurtosis"
-msgstr "Quantum minimal"
+msgstr "Kurtosis minimal"
 
 #: src/contents/ui/VoiceSuppressor.qml:141
-#, fuzzy
 msgid "Maximum instantaneous frequency"
-msgstr "Historique maximal"
+msgstr "Fréquence instantanée maximale"
 
 #: src/contents/ui/VoiceSuppressor.qml:182
-#, fuzzy
 msgid "Inverted mode"
-msgstr "Inverser à gauche"
+msgstr "Mode inversé"
 
 #: src/main.cpp:333
 msgid "Global audio effects"
