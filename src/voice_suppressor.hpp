@@ -77,6 +77,8 @@ class VoiceSuppressor : public PluginBase {
   double* realL = nullptr;
   double* realR = nullptr;
 
+  static constexpr auto epsilon = 1e-12;
+
   fftw_complex* complexL = nullptr;
   fftw_complex* complexR = nullptr;
 

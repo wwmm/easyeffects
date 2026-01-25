@@ -226,12 +226,12 @@ void VoiceSuppressor::process(std::span<float>& left_in,
       // Correlation
       {
         auto cross_mag = std::hypot(fft_cross_real[k], fft_cross_img[k]);
-        auto correlation = cross_mag / ((fft_mag_L[k] * fft_mag_R[k]) + 1e-10);
+        auto correlation = cross_mag / ((fft_mag_L[k] * fft_mag_R[k]) + epsilon);
 
         if (!settings->invertedMode()) {
           corr_gain = sigmoid(correlation / (settings->correlation() * 0.01));
         } else {
-          corr_gain = sigmoid((settings->correlation() * 0.01) / correlation);
+          corr_gain = sigmoid((settings->correlation() * 0.01) / std::max(correlation, epsilon));
         }
       }
 
@@ -242,7 +242,8 @@ void VoiceSuppressor::process(std::span<float>& left_in,
         if (!settings->invertedMode()) {
           phase_gain = sigmoid(phase_diff / (settings->phaseDifference() * std::numbers::pi_v<double> / 180.0));
         } else {
-          phase_gain = sigmoid((settings->phaseDifference() * std::numbers::pi_v<double> / 180.0) / phase_diff);
+          phase_gain = sigmoid((settings->phaseDifference() * std::numbers::pi_v<double> / 180.0) /
+                               std::max(phase_diff, epsilon));
         }
       }
 
@@ -255,7 +256,7 @@ void VoiceSuppressor::process(std::span<float>& left_in,
         if (!settings->invertedMode()) {
           kurtosis_gain = sigmoid(kurtosis / settings->minKurtosis());
         } else {
-          kurtosis_gain = sigmoid(settings->minKurtosis() / kurtosis);
+          kurtosis_gain = sigmoid(settings->minKurtosis() / std::max(kurtosis, epsilon));
         }
       }
 
@@ -266,7 +267,7 @@ void VoiceSuppressor::process(std::span<float>& left_in,
         if (!settings->invertedMode()) {
           inst_freq_gain = sigmoid(freq_diff / settings->maxInstFreq());
         } else {
-          inst_freq_gain = sigmoid(settings->maxInstFreq() / freq_diff);
+          inst_freq_gain = sigmoid(settings->maxInstFreq() / std::max(freq_diff, epsilon));
         }
       }
 
@@ -410,7 +411,7 @@ auto VoiceSuppressor::compute_local_kurtosis(int k, double* magnitude_spectrum) 
   var /= ((2 * W) + 1);
   fourth /= ((2 * W) + 1);
 
-  return fourth / (var * var + 1e-9);
+  return fourth / (var * var + epsilon);
 }
 
 auto VoiceSuppressor::calc_instantaneous_frequency(const int& k) -> double {
