@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-01-24 20:14-0300\n"
+"POT-Creation-Date: 2026-01-25 02:22-0300\n"
 "PO-Revision-Date: 2026-01-24 14:01+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -307,7 +307,7 @@ msgstr "Прослушать"
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:356
 #: src/contents/ui/RNNoise.qml:346 src/contents/ui/Speex.qml:192
-#: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:183
+#: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:193
 msgid "Reset"
 msgstr "Сброс"
 
@@ -3032,6 +3032,11 @@ msgstr "Минимальный эксцесс"
 #, fuzzy
 msgid "Maximum instantaneous frequency"
 msgstr "Частота"
+
+#: src/contents/ui/VoiceSuppressor.qml:182
+#, fuzzy
+msgid "Inverted mode"
+msgstr "Обратить левый канал"
 
 #: src/main.cpp:333
 msgid "Global audio effects"

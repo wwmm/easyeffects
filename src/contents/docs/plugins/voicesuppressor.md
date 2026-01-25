@@ -27,4 +27,7 @@ Frequencies with local kurtosis below this value are attenuated.
 
 This is related to the frequency of rotation of the complex vector that represents the correlation between the left and right channel at a given frequency.
 In other words this measures how fast the phase difference between the left and right channels changes at a given frequency bin in the Fourier transform.
-More attenuation is applied to the channels samples that have rotation frequency below this parameter value.
+More attenuation is applied to the channels samples that have rotation frequency below this parameter value.  
+
+**Inverted Mode**  
+Instead of suppressing voice the plugin will try to suppress the background and keep the voice.  

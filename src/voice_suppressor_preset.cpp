@@ -48,6 +48,8 @@ void VoiceSuppressorPreset::save(nlohmann::json& json) {
   json[section][instance_name]["minimum-kurtosis"] = settings->minKurtosis();
 
   json[section][instance_name]["maximum-instantaneous-frequency"] = settings->maxInstFreq();
+
+  json[section][instance_name]["inverted-mode"] = settings->invertedMode();
 }
 
 void VoiceSuppressorPreset::load(const nlohmann::json& json) {
@@ -60,4 +62,5 @@ void VoiceSuppressorPreset::load(const nlohmann::json& json) {
   UPDATE_PROPERTY("phase-difference", PhaseDifference);
   UPDATE_PROPERTY("minimum-kurtosis", MinKurtosis);
   UPDATE_PROPERTY("maximum-instantaneous-frequency", MaxInstFreq);
+  UPDATE_PROPERTY("inverted-mode", InvertedMode);
 }

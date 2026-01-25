@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-01-24 20:14-0300\n"
+"POT-Creation-Date: 2026-01-25 02:22-0300\n"
 "PO-Revision-Date: 2025-07-20 18:38+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Spanish (Venezuela) <https://hosted.weblate.org/projects/"
@@ -323,7 +323,7 @@ msgstr "Escuchar"
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:356
 #: src/contents/ui/RNNoise.qml:346 src/contents/ui/Speex.qml:192
-#: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:183
+#: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:193
 msgid "Reset"
 msgstr "Restablecer"
 
@@ -3251,6 +3251,11 @@ msgstr "Ganancia Máxima"
 #, fuzzy
 msgid "Maximum instantaneous frequency"
 msgstr "Máximo"
+
+#: src/contents/ui/VoiceSuppressor.qml:182
+#, fuzzy
+msgid "Inverted mode"
+msgstr "Invertir Fase"
 
 #: src/main.cpp:333
 msgid "Global audio effects"
