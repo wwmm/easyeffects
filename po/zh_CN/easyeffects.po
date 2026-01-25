@@ -299,6 +299,7 @@ msgstr "聆听"
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:356
 #: src/contents/ui/RNNoise.qml:346 src/contents/ui/Speex.qml:192
 #: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:183
+#: src/contents/ui/VoiceSuppressor.qml:193
 msgid "Reset"
 msgstr "重置"
 
@@ -3241,6 +3242,11 @@ msgstr "均衡器、压缩器与其他音效"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "简易音效集锦"
+
+#: src/contents/ui/VoiceSuppressor.qml:182
+#, fuzzy
+msgid "Inverted mode"
+msgstr "反转左声道相位"
 
 #, fuzzy
 #~ msgid "Attack time"

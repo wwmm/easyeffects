@@ -228,14 +228,22 @@ void VoiceSuppressor::process(std::span<float>& left_in,
         auto cross_mag = std::hypot(fft_cross_real[k], fft_cross_img[k]);
         auto correlation = cross_mag / ((fft_mag_L[k] * fft_mag_R[k]) + 1e-10);
 
-        corr_gain = sigmoid(correlation / (settings->correlation() * 0.01));
+        if (!settings->invertedMode()) {
+          corr_gain = sigmoid(correlation / (settings->correlation() * 0.01));
+        } else {
+          corr_gain = sigmoid((settings->correlation() * 0.01) / correlation);
+        }
       }
 
       // Phase difference
       {
         auto phase_diff = std::abs(std::atan2(fft_cross_img[k], fft_cross_real[k]));
 
-        phase_gain = sigmoid(phase_diff / (settings->phaseDifference() * std::numbers::pi_v<double> / 180.0));
+        if (!settings->invertedMode()) {
+          phase_gain = sigmoid(phase_diff / (settings->phaseDifference() * std::numbers::pi_v<double> / 180.0));
+        } else {
+          phase_gain = sigmoid((settings->phaseDifference() * std::numbers::pi_v<double> / 180.0) / phase_diff);
+        }
       }
 
       // Local kurtosis
@@ -244,14 +252,22 @@ void VoiceSuppressor::process(std::span<float>& left_in,
         auto kurtosis_R = compute_local_kurtosis(k, fft_mag_R.data());
         auto kurtosis = std::max(kurtosis_L, kurtosis_R);
 
-        kurtosis_gain = sigmoid(kurtosis / settings->minKurtosis());
+        if (!settings->invertedMode()) {
+          kurtosis_gain = sigmoid(kurtosis / settings->minKurtosis());
+        } else {
+          kurtosis_gain = sigmoid(settings->minKurtosis() / kurtosis);
+        }
       }
 
       // Instantaneous frequency
       {
         auto freq_diff = std::abs(calc_instantaneous_frequency(k));
 
-        inst_freq_gain = sigmoid(freq_diff / settings->maxInstFreq());
+        if (!settings->invertedMode()) {
+          inst_freq_gain = sigmoid(freq_diff / settings->maxInstFreq());
+        } else {
+          inst_freq_gain = sigmoid(settings->maxInstFreq() / freq_diff);
+        }
       }
 
       // Deciding if we should attenuate the frequency

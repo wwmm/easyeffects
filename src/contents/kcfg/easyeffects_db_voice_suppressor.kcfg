@@ -59,5 +59,9 @@
             <max>100.0</max>
             <default>1</default>
         </entry>
+        <entry name="invertedMode" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
     </group>
 </kcfg>
