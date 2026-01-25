@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-01-24 20:14-0300\n"
-"PO-Revision-Date: 2026-01-19 11:01+0000\n"
+"PO-Revision-Date: 2026-01-25 05:23+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hans/>\n"
@@ -2939,24 +2939,20 @@ msgid "Stereo phase"
 msgstr "立体声相位"
 
 #: src/contents/ui/VoiceSuppressor.qml:94
-#, fuzzy
 msgid "Correlation"
 msgstr "相位相关"
 
 #: src/contents/ui/VoiceSuppressor.qml:110
-#, fuzzy
 msgid "Phase difference"
-msgstr "速率差"
+msgstr "相位差"
 
 #: src/contents/ui/VoiceSuppressor.qml:126
-#, fuzzy
 msgid "Minimum kurtosis"
-msgstr "最小音频帧 (Quantum)"
+msgstr "最小峰度"
 
 #: src/contents/ui/VoiceSuppressor.qml:141
-#, fuzzy
 msgid "Maximum instantaneous frequency"
-msgstr "最长历史记录"
+msgstr "最长瞬态频率"
 
 #: src/main.cpp:333
 msgid "Global audio effects"
@@ -3113,16 +3109,15 @@ msgstr "降噪"
 
 #: src/tags_plugin_name.cpp:52
 msgid "Speech Processor"
-msgstr "人声处理器"
+msgstr "语音处理器"
 
 #: src/tags_plugin_name.cpp:53
 msgid "Stereo Tools"
 msgstr "立体声工具"
 
 #: src/tags_plugin_name.cpp:54
-#, fuzzy
 msgid "Voice Suppressor"
-msgstr "噪音抑制"
+msgstr "人声抑制器"
 
 #: src/units.hpp:59
 msgctxt "left channel abbreviation (single letter)"
