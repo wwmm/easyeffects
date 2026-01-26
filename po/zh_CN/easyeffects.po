@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-01-24 20:14-0300\n"
-"PO-Revision-Date: 2026-01-25 05:23+0000\n"
+"PO-Revision-Date: 2026-01-26 04:32+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hans/>\n"
@@ -3244,9 +3244,8 @@ msgid "Simple audio effects"
 msgstr "简易音效集锦"
 
 #: src/contents/ui/VoiceSuppressor.qml:182
-#, fuzzy
 msgid "Inverted mode"
-msgstr "反转左声道相位"
+msgstr "反转模式"
 
 #, fuzzy
 #~ msgid "Attack time"
