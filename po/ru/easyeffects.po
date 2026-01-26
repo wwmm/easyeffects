@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-01-25 02:22-0300\n"
-"PO-Revision-Date: 2026-01-24 14:01+0000\n"
+"PO-Revision-Date: 2026-01-26 20:01+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -3029,14 +3029,12 @@ msgid "Minimum kurtosis"
 msgstr "Минимальный эксцесс"
 
 #: src/contents/ui/VoiceSuppressor.qml:141
-#, fuzzy
 msgid "Maximum instantaneous frequency"
-msgstr "Частота"
+msgstr "Максимальная мгновенная частота"
 
 #: src/contents/ui/VoiceSuppressor.qml:182
-#, fuzzy
 msgid "Inverted mode"
-msgstr "Обратить левый канал"
+msgstr "Инверсный режим"
 
 #: src/main.cpp:333
 msgid "Global audio effects"
