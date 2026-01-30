@@ -25,7 +25,6 @@
 #include <QString>
 #include <algorithm>
 #include <array>
-#include <cmath>
 #include <memory>
 #include <span>
 #include <string>
