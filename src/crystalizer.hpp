@@ -288,14 +288,6 @@ class Crystalizer : public PluginBase {
           float newL = bandn_L[m] - (intensity_L * d2L);
           float newR = bandn_R[m] - (intensity_R * d2R);
 
-          if (std::fabsf(newL) > 0.7F) {
-            newL = std::tanh(newL);
-          }
-
-          if (std::fabsf(newR) > 0.7F) {
-            newR = std::tanh(newR);
-          }
-
           bandn_L[m] = newL;
           bandn_R[m] = newR;
         }
