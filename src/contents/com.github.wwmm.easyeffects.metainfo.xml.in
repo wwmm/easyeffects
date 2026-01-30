@@ -56,6 +56,19 @@
     <color type="primary" scheme_preference="dark">#004079</color>
   </branding>
   <releases>
+    <release type="stable" version="8.1.1" date="2026-01-30T00:00:00Z">
+      <description>
+        <ul>
+          <li>Features:</li>
+          <li>Added a new plugin that can be used to suppress voice.</li>
+          <li>The transition band of the bandpass filters used by the crystalizer plugin can be customized. Higher values will use less CPU. But cause more overlap between the bands.</li>
+          <li>The internal state of some plugins are now reset after the inactivity timeout triggers the unlinking of the filters. This should remove the presence of old audio data in the playback when easyeffects resumes operation after a new audio player becomes active.</li>
+          <li>Bug fixes:</li>
+          <li>Fixed a regression in the crystalizer plugin that caused noises in some situations</li>
+          <li>Other notes:</li>
+        </ul>
+      </description>
+    </release>
     <release type="stable" version="8.1.0" date="2026-01-16T00:00:00Z">
       <description>
         <ul>

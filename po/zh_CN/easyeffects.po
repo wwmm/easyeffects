@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-01-24 20:14-0300\n"
+"POT-Creation-Date: 2026-01-30 14:16-0300\n"
 "PO-Revision-Date: 2026-01-26 04:32+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
@@ -298,8 +298,7 @@ msgstr "聆听"
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:356
 #: src/contents/ui/RNNoise.qml:346 src/contents/ui/Speex.qml:192
-#: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:183
-#: src/contents/ui/VoiceSuppressor.qml:193
+#: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:193
 msgid "Reset"
 msgstr "重置"
 
@@ -2955,6 +2954,10 @@ msgstr "最小峰度"
 msgid "Maximum instantaneous frequency"
 msgstr "最长瞬态频率"
 
+#: src/contents/ui/VoiceSuppressor.qml:182
+msgid "Inverted mode"
+msgstr "反转模式"
+
 #: src/main.cpp:333
 msgid "Global audio effects"
 msgstr "全局音频效果"
@@ -3242,10 +3245,6 @@ msgstr "均衡器、压缩器与其他音效"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "简易音效集锦"
-
-#: src/contents/ui/VoiceSuppressor.qml:182
-msgid "Inverted mode"
-msgstr "反转模式"
 
 #, fuzzy
 #~ msgid "Attack time"
