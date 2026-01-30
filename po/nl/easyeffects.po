@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-01-25 02:22-0300\n"
-"PO-Revision-Date: 2025-12-19 18:00+0000\n"
-"Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
+"PO-Revision-Date: 2026-01-30 12:01+0000\n"
+"Last-Translator: Anton Woolvy <antong2106@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/easyeffects/main/"
 "nl/>\n"
 "Language: nl\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.15.1\n"
+"X-Generator: Weblate 5.16-dev\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -25,9 +25,9 @@ msgid ""
 "Please allow \"Run in Background\" permission for Easy Effects in your "
 "system app settings."
 msgstr ""
-"Kan de autostart-optie niet inschakelen omdat toegang tot de achtergrond is "
-"geweigerd. Sta 'Op de achtergrond uitvoeren' toe voor Easy Effects in de app­"
-"instellingen van uw systeem."
+"Kan de autostart-optie niet inschakelen omdat uw systeem dit niet toestaat. "
+"Ga naar Instellingen - Toepassingen - Easy Effects en zet 'Op de achtergrond "
+"uitvoeren' aan om dit te verhelpen."
 
 #: src/command_line_parser.cpp:44
 msgid "Quit Easy Effects. Useful when running in service mode."
@@ -358,13 +358,15 @@ msgstr "Deze app verwijderen"
 
 #: src/contents/ui/BlocklistDialog.qml:200
 msgid "Use media name"
-msgstr ""
+msgstr "Gebruik media naam"
 
 #: src/contents/ui/BlocklistDialog.qml:201
 msgid ""
 "Also use a combination of node and media name when deciding if a stream "
 "should be blocked"
 msgstr ""
+"Gebruik ook een combinatie van knooppunt- en medianaam om te bepalen of een "
+"stream geblokkeerd moet worden"
 
 #: src/contents/ui/BlocklistDialog.qml:212
 msgid "Show excluded apps"
@@ -916,11 +918,11 @@ msgstr "Lijnen"
 
 #: src/contents/ui/Crusher.qml:100
 msgid "Logarithmic"
-msgstr ""
+msgstr "Logaritmisch"
 
 #: src/contents/ui/Crusher.qml:109
 msgid "DC offset"
-msgstr ""
+msgstr "DC compensatie"
 
 #: src/contents/ui/Crusher.qml:125 src/contents/ui/Pitch.qml:299
 msgid "Anti-aliasing"
@@ -937,7 +939,7 @@ msgstr "Verlaging"
 
 #: src/contents/ui/Crusher.qml:180
 msgid "Low frequency oscillator"
-msgstr ""
+msgstr "Laagfrequente oscillator"
 
 #: src/contents/ui/CrystalizerBand.qml:58
 #: src/contents/ui/EqualizerBandMenu.qml:185
@@ -960,7 +962,7 @@ msgstr "Oversamplen"
 
 #: src/contents/ui/Crystalizer.qml:128
 msgid "Transition band"
-msgstr ""
+msgstr "Overgangsband"
 
 #: src/contents/ui/Crystalizer.qml:170 src/contents/ui/Limiter.qml:87
 msgid "Oversampling"
@@ -1166,7 +1168,7 @@ msgstr "High-pass afdwingen"
 
 #: src/contents/ui/EchoCanceller.qml:93
 msgid "Noise Suppression"
-msgstr "Ruis­onderdrukking"
+msgstr "Ruis­ Onderdrukking"
 
 #: src/contents/ui/EchoCanceller.qml:106
 msgid "Strength"
@@ -1936,7 +1938,7 @@ msgstr "Invoer­monitoring"
 
 #: src/contents/ui/PageStreamsEffects.qml:782
 msgid "Send audio to the virtual source"
-msgstr ""
+msgstr "Stuur geluid naar de virtuele bron"
 
 #: src/contents/ui/PipeWirePage.qml:44
 msgid "General"
@@ -2204,7 +2206,7 @@ msgstr "Microfoon­monitor speelt via uitvoereffecten­pijplijn"
 
 #: src/contents/ui/PreferencesSheet.qml:231
 msgid "Copy the input audio buffer"
-msgstr ""
+msgstr "Kopieer de invoer-audiobuffer"
 
 #: src/contents/ui/PreferencesSheet.qml:232
 msgid ""
@@ -2213,6 +2215,10 @@ msgid ""
 "can happen when external applications are recording from Easy Effects "
 "virtual devices monitors."
 msgstr ""
+"Gebruik een kopie van de audiobuffer die door de geluidsserver wordt "
+"aangeleverd bij het verwerken van audio in Easy Effects-plug-ins. Dit "
+"verhelpt audiostoringen die kunnen optreden wanneer externe applicaties "
+"opnemen van virtuele Easy Effects-monitoren."
 
 #: src/contents/ui/PreferencesSheet.qml:244
 msgid "Enable the inactivity timeout"
@@ -2365,7 +2371,7 @@ msgstr "Kleuren­schema"
 
 #: src/contents/ui/PreferencesSheet.qml:583
 msgid "Force English language"
-msgstr ""
+msgstr "Forceer Engelse taal"
 
 #: src/contents/ui/PreferencesSheet.qml:584
 msgid ""
@@ -2373,6 +2379,9 @@ msgid ""
 "Useful if the translation in the local language is incomplete or "
 "incomprehensible. A restart of the service is required to apply this option."
 msgstr ""
+"De gebruikersinterface niet vertalen en tekst in het Engels weergeven. "
+"Handig als de vertaling in de lokale taal onvolledig of onbegrijpelijk is. "
+"De service moet opnieuw worden opgestart om deze optie toe te passen."
 
 #: src/contents/ui/PreferencesSheet.qml:595
 msgid "Graphs"
@@ -2899,7 +2908,7 @@ msgstr "Nagalm weg­filteren"
 
 #: src/contents/ui/Speex.qml:96
 msgid "Noise suppression"
-msgstr "Ruis­onderdrukking"
+msgstr "Ruis­ onderdrukking"
 
 #: src/contents/ui/Speex.qml:112
 msgid "Voice Activity Probability"
@@ -3118,7 +3127,7 @@ msgstr "Crossfeed"
 
 #: src/tags_plugin_name.cpp:32
 msgid "Crusher"
-msgstr ""
+msgstr "Vermaler"
 
 #: src/tags_plugin_name.cpp:33
 msgid "Crystalizer"
@@ -3158,7 +3167,7 @@ msgstr "Nagalm"
 
 #: src/tags_plugin_name.cpp:51
 msgid "Noise Reduction"
-msgstr "Ruis­vermindering"
+msgstr "Ruis­afname"
 
 #: src/tags_plugin_name.cpp:52
 msgid "Speech Processor"
