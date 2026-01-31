@@ -10,15 +10,7 @@
                     "url": "https://github.com/qt/qtgraphs.git",
                     "tag": "v6.10.1",
                     "commit": "b50b4e3b46940e5aa3cf31babb4ff1c9454ab473",
-                    "x-checker-data": {
-                        "type": "git",
-                        "tag-pattern": "^v([\\d.]+)$",
-                        "//": "make sure version matches kde runtime version of org.kde.Platform",
-                        "versions": {
-                            ">=": "v6.10",
-                            "<": "v6.11"
-                        }
-                    }
+                    "//": "We cannot use x-checker-data here as this version has to match the qt/kde runtime"
                 }
             ],
             "post-install": [
