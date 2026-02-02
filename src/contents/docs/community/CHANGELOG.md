@@ -1,5 +1,18 @@
 # Changelog
  
+## 8.1.2
+### 2026-02-02
+
+ 
+### Features:
+
+### Bug fixes:
+- Fixed a regression that could cause some plugins to create loud sounds when PipeWire changed latency
+- Fixed a random crash caused by use after free in some plugins while they were being removed from the pipeline.
+
+### Other notes:
+
+ 
 ## 8.1.1
 ### 2026-01-30
 

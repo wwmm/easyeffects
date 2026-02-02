@@ -56,6 +56,17 @@
     <color type="primary" scheme_preference="dark">#004079</color>
   </branding>
   <releases>
+    <release type="stable" version="8.1.2" date="2026-02-02T00:00:00Z">
+      <description>
+        <ul>
+          <li>Features:</li>
+          <li>Bug fixes:</li>
+          <li>Fixed a regression that could cause some plugins to create loud sounds when PipeWire changed latency</li>
+          <li>Fixed a random crash caused by use after free in some plugins while they were being removed from the pipeline.</li>
+          <li>Other notes:</li>
+        </ul>
+      </description>
+    </release>
     <release type="stable" version="8.1.1" date="2026-01-30T00:00:00Z">
       <description>
         <ul>
