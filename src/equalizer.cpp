@@ -113,6 +113,8 @@ Equalizer::Equalizer(const std::string& tag, pw::Manager* pipe_manager, Pipeline
 }
 
 Equalizer::~Equalizer() {
+  stop_worker();
+
   if (connected_to_pw) {
     disconnect_from_pw();
   }
@@ -214,9 +216,13 @@ void Equalizer::setup() {
     return;
   }
 
-  ready = false;
-
   lv2_wrapper->set_n_samples(n_samples);
+
+  if (lv2_wrapper->has_instance() && rate == lv2_wrapper->get_rate()) {
+    return;
+  }
+
+  ready = false;
 
   // NOLINTBEGIN(clang-analyzer-cplusplus.NewDeleteLeaks)
   QMetaObject::invokeMethod(

@@ -62,6 +62,8 @@ Autogain::Autogain(const std::string& tag, pw::Manager* pipe_manager, PipelineTy
 }
 
 Autogain::~Autogain() {
+  stop_worker();
+
   std::scoped_lock<std::mutex> lock(data_mutex);
 
   ebur128_ready = false;

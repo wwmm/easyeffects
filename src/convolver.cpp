@@ -221,6 +221,8 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
 }
 
 Convolver::~Convolver() {
+  stop_worker();
+
   std::scoped_lock<std::mutex> lock(data_mutex);
 
   destructor_called = true;

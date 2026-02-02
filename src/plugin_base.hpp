@@ -205,6 +205,8 @@ class PluginBase : public QObject {
 
   void update_filter_params();
 
+  void stop_worker();
+
   template <typename dbClass>
   void init_common_controls(dbClass* settings) {
     bypass = settings->bypass();

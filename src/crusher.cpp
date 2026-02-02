@@ -73,6 +73,8 @@ Crusher::Crusher(const std::string& tag, pw::Manager* pipe_manager, PipelineType
 }
 
 Crusher::~Crusher() {
+  stop_worker();
+
   if (connected_to_pw) {
     disconnect_from_pw();
   }

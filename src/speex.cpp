@@ -158,6 +158,8 @@ Speex::Speex(const std::string& tag, pw::Manager* pipe_manager, PipelineType pip
 }
 
 Speex::~Speex() {
+  stop_worker();
+
   if (connected_to_pw) {
     disconnect_from_pw();
   }

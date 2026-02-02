@@ -121,6 +121,8 @@ RNNoise::RNNoise(const std::string& tag, pw::Manager* pipe_manager, PipelineType
 }
 
 RNNoise::~RNNoise() {
+  stop_worker();
+
   if (connected_to_pw) {
     disconnect_from_pw();
   }

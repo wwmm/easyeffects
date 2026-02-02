@@ -78,6 +78,8 @@ DeepFilterNet::DeepFilterNet(const std::string& tag,
 }
 
 DeepFilterNet::~DeepFilterNet() {
+  stop_worker();
+
   if (connected_to_pw) {
     disconnect_from_pw();
   }

@@ -446,6 +446,10 @@ PluginBase::~PluginBase() {
 
   pm->sync_wait_unlock();
 
+  stop_worker();
+}
+
+void PluginBase::stop_worker() {
   workerThread.quit();
   workerThread.wait();
 }

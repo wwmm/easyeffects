@@ -93,6 +93,8 @@ Spectrum::Spectrum(const std::string& tag, pw::Manager* pipe_manager, PipelineTy
 }
 
 Spectrum::~Spectrum() {
+  stop_worker();
+
   std::scoped_lock<std::mutex> lock(data_mutex);
 
   if (connected_to_pw) {

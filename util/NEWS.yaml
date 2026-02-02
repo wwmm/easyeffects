@@ -4,13 +4,12 @@ Date: UNRELEASED_DATE
 
 Description: 
 - Features∶
-- 
 
 - Bug fixes∶
-- 
+- Fixed a regression that could cause some plugins to create loud sounds when PipeWire changed latency
+- Fixed a random crash caused by use after free in some plugins while they were being removed from the pipeline.
 
 - Other notes∶
-- 
 
 ---
 Version: 8.1.1
