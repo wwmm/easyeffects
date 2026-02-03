@@ -317,8 +317,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/hoene/libmysofa.git",
-                    "tag": "v1.3.3",
-                    "commit": "444d2c1d7ececf5cc2d96d3b17b209047b02318d",
+                    "tag": "v1.3.4",
+                    "commit": "7a0c07111a3d7230ec534e08925c24a7525f33c0",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^v([\\d.]+)$"
