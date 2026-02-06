@@ -38,6 +38,97 @@ namespace apo {
 
 using namespace tags::equalizer;
 
+static auto stringToApoFilter(const std::string& s) -> ApoFilter {
+  if (s == "OFF")
+    return ApoFilter::OFF;
+  else if (s == "PK")
+    return ApoFilter::PK;
+  else if (s == "MODAL")
+    return ApoFilter::MODAL;
+  else if (s == "PEQ")
+    return ApoFilter::PEQ;
+  else if (s == "LP")
+    return ApoFilter::LP;
+  else if (s == "LPQ")
+    return ApoFilter::LPQ;
+  else if (s == "HP")
+    return ApoFilter::HP;
+  else if (s == "HPQ")
+    return ApoFilter::HPQ;
+  else if (s == "BP")
+    return ApoFilter::BP;
+  else if (s == "LS")
+    return ApoFilter::LS;
+  else if (s == "LSC")
+    return ApoFilter::LSC;
+  else if (s == "LS 6DB")
+    return ApoFilter::LS_6DB;
+  else if (s == "LS 12DB")
+    return ApoFilter::LS_12DB;
+  else if (s == "HS")
+    return ApoFilter::HS;
+  else if (s == "HSC")
+    return ApoFilter::HSC;
+  else if (s == "HS 6DB")
+    return ApoFilter::HS_6DB;
+  else if (s == "HS 12DB")
+    return ApoFilter::HS_12DB;
+  else if (s == "NO")
+    return ApoFilter::NO;
+  else if (s == "AP")
+    return ApoFilter::AP;
+
+  return ApoFilter::UNKNOWN;
+}
+
+static auto apoFilterToString(const ApoFilter& f) -> std::string {
+  switch (f) {
+    case ApoFilter::OFF:
+      return "OFF";
+    case ApoFilter::PK:
+      return "PK";
+    case ApoFilter::MODAL:
+      // The following is the only one not fully uppercase.
+      return "Modal";
+    case ApoFilter::PEQ:
+      return "PEQ";
+    case ApoFilter::LP:
+      return "LP";
+    case ApoFilter::LPQ:
+      return "LPQ";
+    case ApoFilter::HP:
+      return "HP";
+    case ApoFilter::HPQ:
+      return "HPQ";
+    case ApoFilter::BP:
+      return "BP";
+    case ApoFilter::LS:
+      return "LS";
+    case ApoFilter::LSC:
+      return "LSC";
+    case ApoFilter::LS_6DB:
+      return "LS 6DB";
+    case ApoFilter::LS_12DB:
+      return "LS 12DB";
+    case ApoFilter::HS:
+      return "HS";
+    case ApoFilter::HSC:
+      return "HSC";
+    case ApoFilter::HS_6DB:
+      return "HS 6DB";
+    case ApoFilter::HS_12DB:
+      return "HS 12DB";
+    case ApoFilter::NO:
+      return "NO";
+    case ApoFilter::AP:
+      return "AP";
+    case ApoFilter::UNKNOWN:
+      return "OFF";
+  }
+
+  return "OFF";
+}
+
 static auto parse_apo_preamp(const std::string& line, double& preamp) -> bool {
   std::smatch matches;
 
@@ -62,7 +153,7 @@ static auto parse_apo_filter_type(const std::string& line, struct APO_Band& filt
 
   if (matches_off.size() == 1U) {
     // If the APO filter is disabled, we assume the "OFF" type.
-    filter.type = "OFF";
+    filter.type = ApoFilter::OFF;
 
     return true;
   }
@@ -80,12 +171,14 @@ static auto parse_apo_filter_type(const std::string& line, struct APO_Band& filt
   }
 
   // Possible multiple whitespaces are replaced by a single space
-  filter.type = std::regex_replace(matches_filter.str(1), std::regex(R"(\s+)"), " ");
+  std::string filter_type = std::regex_replace(matches_filter.str(1), std::regex(R"(\s+)"), " ");
 
-  // Filter string needed in uppercase for lookup in map
-  std::ranges::transform(filter.type, filter.type.begin(), [](unsigned char c) { return std::toupper(c); });
+  // Filter string needed in uppercase for the conversion to enum
+  std::ranges::transform(filter_type, filter_type.begin(), [](unsigned char c) { return std::toupper(c); });
 
-  return !filter.type.empty();
+  filter.type = stringToApoFilter(filter_type);
+
+  return true;
 }
 
 static auto parse_apo_frequency(const std::string& line, struct APO_Band& filter) -> bool {
@@ -147,79 +240,102 @@ static auto parse_apo_config_line(const std::string& line, struct APO_Band& filt
   /**
    * The following has been inspired by the function
    * "para_equalizer_ui::import_rew_file(const LSPString*)"
-   * inside 'lsp-plugins/src/ui/plugins/para_equalizer_ui.cpp' at
-   * https://github.com/sadko4u/lsp-plugins
+   * inside 'lsp-plugins-para-equalizer/src/main/ui/para_equalizer.cpp' at
+   * https://github.com/lsp-plugins/lsp-plugins-para-equalizer
    *
    * Retrieve gain and/or quality parameters based on a specific filter type.
    * Calculate frequency/quality if needed.
-   * If the APO filter type is different than the ones specified below,
-   * it's set as "Off" and default values are assumed since
-   * it may not be supported by LSP Equalizer.
    */
-  if (filter.type == "OFF") {
-    // On disabled filter state, we still try to retrieve gain and quality,
-    // even if the band won't be processed by LSP equalizer.
-    parse_apo_gain(line, filter);
 
-    parse_apo_quality(line, filter);
-  } else if (filter.type == "PK" || filter.type == "MODAL" || filter.type == "PEQ") {
-    // Peak/Bell filter
-    parse_apo_gain(line, filter);
+  switch (filter.type) {
+    case ApoFilter::PK:
+    case ApoFilter::MODAL:
+    case ApoFilter::PEQ:
+      // Peak/Bell filter
+      parse_apo_gain(line, filter);
+      parse_apo_quality(line, filter);
+      break;
 
-    parse_apo_quality(line, filter);
-  } else if (filter.type == "LP" || filter.type == "LPQ" || filter.type == "HP" || filter.type == "HPQ" ||
-             filter.type == "BP") {
-    // Low-pass, High-pass and Band-pass filters,
-    // (LSP does not import Band-pass, but we do it anyway).
-    parse_apo_quality(line, filter);
-  } else if (filter.type == "LS" || filter.type == "LSC" || filter.type == "HS" || filter.type == "HSC") {
-    // Low-shelf and High-shelf filters (with center freq., x dB per oct.)
-    parse_apo_gain(line, filter);
+    case ApoFilter::LP:
+    case ApoFilter::LPQ:
+    case ApoFilter::HP:
+    case ApoFilter::HPQ:
+    case ApoFilter::BP:
+      // Low-pass, High-pass and Band-pass filters,
+      // (LSP does not import Band-pass, but we do it anyway).
+      parse_apo_quality(line, filter);
+      break;
 
-    // Q value is optional for these filters according to APO config documentation,
-    // but LSP import function always sets it to 2/3.
-    filter.quality = 2.0F / 3.0F;
-  } else if (filter.type == "LS 6DB") {
-    // Low-shelf filter (6 dB per octave with corner freq.)
-    parse_apo_gain(line, filter);
+    case ApoFilter::LS:
+    case ApoFilter::LSC:
+    case ApoFilter::HS:
+    case ApoFilter::HSC:
+      /**
+       * Low-shelf and High-shelf filters (with center freq., x dB per oct.).
+       * Q value is optional for these filters according to APO config
+       * documentation, but LSP import function always sets it to 2/3.
+       */
+      parse_apo_gain(line, filter);
+      filter.quality = 2.0F / 3.0F;
+      break;
 
-    // LSP import function sets custom freq and quality for this filter.
-    filter.freq = filter.freq * 2.0F / 3.0F;
-    filter.quality = std::numbers::sqrt2_v<float> / 3.0F;
-  } else if (filter.type == "LS 12DB") {
-    // Low-shelf filter (12 dB per octave with corner freq.)
-    parse_apo_gain(line, filter);
+    case ApoFilter::LS_6DB:
+      // Low-shelf filter (6 dB per octave with corner freq.).
+      // LSP import function sets custom freq and quality for this filter.
+      parse_apo_gain(line, filter);
+      filter.freq = filter.freq * 2.0F / 3.0F;
+      filter.quality = std::numbers::sqrt2_v<float> / 3.0F;
+      break;
 
-    // LSP import function sets custom freq for this filter.
-    filter.freq = filter.freq * 3.0F / 2.0F;
-  } else if (filter.type == "HS 6DB") {
-    // High-shelf filter (6 dB per octave with corner freq.)
-    parse_apo_gain(line, filter);
+    case ApoFilter::LS_12DB:
+      // Low-shelf filter (12 dB per octave with corner freq.).
+      // LSP import function sets custom freq for this filter.
+      parse_apo_gain(line, filter);
+      filter.freq = filter.freq * 3.0F / 2.0F;
+      break;
 
-    // LSP import function sets custom freq and quality for this filter.
-    filter.freq = filter.freq / (1.0F / std::numbers::sqrt2_v<float>);
-    filter.quality = std::numbers::sqrt2_v<float> / 3.0F;
-  } else if (filter.type == "HS 12DB") {
-    // High-shelf filter (12 dB per octave with corner freq.)
-    parse_apo_gain(line, filter);
+    case ApoFilter::HS_6DB:
+      // High-shelf filter (6 dB per octave with corner freq.).
+      // LSP import function sets custom freq and quality for this filter.
+      parse_apo_gain(line, filter);
+      filter.freq = filter.freq / (1.0F / std::numbers::sqrt2_v<float>);
+      filter.quality = std::numbers::sqrt2_v<float> / 3.0F;
+      break;
 
-    // LSP import function sets custom freq for this filter.
-    filter.freq = filter.freq * (1.0F / std::numbers::sqrt2_v<float>);
-  } else if (filter.type == "NO") {
-    /**
-     * Notch filter
-     * Q value is optional for this filter according to APO config
-     * documentation, but LSP import function always sets it to 100/3.
-     */
-    filter.quality = 100.0F / 3.0F;
-  } else if (filter.type == "AP") {
-    /**
-     * All-pass filter
-     * Q value is mandatory for this filter according to APO config
-     * documentation, but LSP import function always sets it to 0,
-     * no matter which quality value the APO config has.
-     */
-    filter.quality = 0.0F;
+    case ApoFilter::HS_12DB:
+      // High-shelf filter (12 dB per octave with corner freq.).
+      // LSP import function sets custom freq for this filter.
+      parse_apo_gain(line, filter);
+      filter.freq = filter.freq * (1.0F / std::numbers::sqrt2_v<float>);
+      break;
+
+    case ApoFilter::NO:
+      /**
+       * Notch filter.
+       * Q value is optional for this filter according to APO config
+       * documentation, but LSP import function always sets it to 100/3.
+       */
+      filter.quality = 100.0F / 3.0F;
+      break;
+
+    case ApoFilter::AP:
+      /**
+       * All-pass filter.
+       * Q value is mandatory for this filter according to APO config
+       * documentation, but LSP import function always sets it to 0,
+       * no matter which quality value the APO config has.
+       */
+      filter.quality = 0.0F;
+      break;
+
+    case ApoFilter::OFF:
+    case ApoFilter::UNKNOWN:
+    default:
+      // On disabled or unknown filters, we still try to retrieve gain and
+      // quality, even if the band won't be processed by LSP equalizer.
+      parse_apo_gain(line, filter);
+      parse_apo_quality(line, filter);
+      break;
   }
 
   return true;
@@ -309,15 +425,15 @@ auto import_apo_preset(db::Equalizer* settings,
             bands[n].freq <= channel->getMaxValue(band_frequency[n].data()).value<float>()) {
           channel->setProperty(band_frequency[n].data(), bands[n].freq);
 
-          std::string curr_band_type;
+          std::string current_band_type;
 
           try {
-            curr_band_type = ApoToEasyEffectsFilter.at(bands[n].type);
+            current_band_type = ApoToEqualizerFilter.at(bands[n].type);
           } catch (std::out_of_range const&) {
-            curr_band_type = "Off";
+            current_band_type = "Off";
           }
 
-          channel->setProperty(band_type[n].data(), channel->bandTypeLabels().indexOf(curr_band_type));
+          channel->setProperty(band_type[n].data(), channel->bandTypeLabels().indexOf(current_band_type));
 
         } else {
           // If the frequency is not in the valid range, we assume the filter is
@@ -576,10 +692,10 @@ auto export_apo_preset(db::Equalizer* settings,
   }
 
   for (int i = 0, k = 1; i < settings->numBands(); ++i) {
-    const auto curr_band_type =
+    const auto current_band_type =
         settings_channel->bandTypeLabels()[settings_channel->property(band_type[i].data()).value<int>()];
 
-    if (curr_band_type == "Off") {
+    if (current_band_type == "Off") {
       // Skip disabled filters, we only export active ones.
       continue;
     }
@@ -587,20 +703,20 @@ auto export_apo_preset(db::Equalizer* settings,
     APO_Band apo_band;
 
     try {
-      apo_band.type = EasyEffectsToApoFilter.at(curr_band_type.toStdString());
+      apo_band.type = EqualizerToApoFilter.at(current_band_type.toStdString());
     } catch (std::out_of_range const&) {
       // LSP filters not supported in APO defaults to Peak/Bell (see ticket #3882)
-      apo_band.type = "PK";
+      apo_band.type = ApoFilter::PK;
     }
 
     apo_band.freq = settings_channel->property(band_frequency[i].data()).value<float>();
     apo_band.gain = settings_channel->property(band_gain[i].data()).value<float>();
     apo_band.quality = settings_channel->property(band_q[i].data()).value<float>();
 
-    write_buffer << "Filter " << util::to_string(k++) << ": ON " << apo_band.type << " Fc "
+    write_buffer << "Filter " << util::to_string(k++) << ": ON " << apoFilterToString(apo_band.type) << " Fc "
                  << util::to_string(apo_band.freq) << " Hz";
 
-    if (curr_band_type == "Bell" || curr_band_type == "Lo-shelf" || curr_band_type == "Hi-shelf") {
+    if (current_band_type == "Bell" || current_band_type == "Lo-shelf" || current_band_type == "Hi-shelf") {
       // According to APO config documentation, gain value should only be
       // defined for Peak, Low-shelf and High-shelf filters.
       write_buffer << " Gain " << util::to_string(apo_band.gain) << " dB";
