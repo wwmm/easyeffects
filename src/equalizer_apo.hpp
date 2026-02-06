@@ -29,8 +29,31 @@ namespace apo {
 
 enum class Channel { left, right };
 
+enum class ApoFilter {
+  OFF,
+  PK,
+  MODAL,
+  PEQ,
+  LP,
+  LPQ,
+  HP,
+  HPQ,
+  BP,
+  LS,
+  LSC,
+  LS_6DB,
+  LS_12DB,
+  HS,
+  HSC,
+  HS_6DB,
+  HS_12DB,
+  NO,
+  AP,
+  UNKNOWN
+};
+
 struct APO_Band {
-  std::string type;
+  ApoFilter type;
   float freq = 1000.0F;
   float gain = 0.0F;
   float quality = (1.0F / std::numbers::sqrt2_v<float>);  // default in LSP APO import
@@ -41,15 +64,19 @@ struct GraphicEQ_Band {
   float gain = 0.0F;
 };
 
-std::map<std::string, std::string> const ApoToEasyEffectsFilter = {
-    {"OFF", "Off"},         {"PK", "Bell"},          {"MODAL", "Bell"},       {"PEQ", "Bell"},    {"LP", "Lo-pass"},
-    {"LPQ", "Lo-pass"},     {"HP", "Hi-pass"},       {"HPQ", "Hi-pass"},      {"BP", "Bandpass"}, {"LS", "Lo-shelf"},
-    {"LSC", "Lo-shelf"},    {"LS 6DB", "Lo-shelf"},  {"LS 12DB", "Lo-shelf"}, {"HS", "Hi-shelf"}, {"HSC", "Hi-shelf"},
-    {"HS 6DB", "Hi-shelf"}, {"HS 12DB", "Hi-shelf"}, {"NO", "Notch"},         {"AP", "Allpass"}};
+std::map<ApoFilter, std::string> const ApoToEqualizerFilter = {
+    {ApoFilter::OFF, "Off"},          {ApoFilter::PK, "Bell"},          {ApoFilter::MODAL, "Bell"},
+    {ApoFilter::PEQ, "Bell"},         {ApoFilter::LP, "Lo-pass"},       {ApoFilter::LPQ, "Lo-pass"},
+    {ApoFilter::HP, "Hi-pass"},       {ApoFilter::HPQ, "Hi-pass"},      {ApoFilter::BP, "Bandpass"},
+    {ApoFilter::LS, "Lo-shelf"},      {ApoFilter::LSC, "Lo-shelf"},     {ApoFilter::LS_6DB, "Lo-shelf"},
+    {ApoFilter::LS_12DB, "Lo-shelf"}, {ApoFilter::HS, "Hi-shelf"},      {ApoFilter::HSC, "Hi-shelf"},
+    {ApoFilter::HS_6DB, "Hi-shelf"},  {ApoFilter::HS_12DB, "Hi-shelf"}, {ApoFilter::NO, "Notch"},
+    {ApoFilter::AP, "Allpass"},       {ApoFilter::UNKNOWN, "Off"}};
 
-std::map<std::string, std::string> const EasyEffectsToApoFilter = {
-    {"Bell", "PK"},      {"Lo-pass", "LPQ"}, {"Hi-pass", "HPQ"}, {"Lo-shelf", "LSC"},
-    {"Hi-shelf", "HSC"}, {"Notch", "NO"},    {"Allpass", "AP"},  {"Bandpass", "BP"}};
+std::map<std::string, ApoFilter> const EqualizerToApoFilter = {
+    {"Bell", ApoFilter::PK},      {"Lo-pass", ApoFilter::LPQ},  {"Hi-pass", ApoFilter::HPQ},
+    {"Lo-shelf", ApoFilter::LSC}, {"Hi-shelf", ApoFilter::HSC}, {"Notch", ApoFilter::NO},
+    {"Allpass", ApoFilter::AP},   {"Bandpass", ApoFilter::BP}};
 
 auto import_apo_preset(db::Equalizer* settings,
                        db::EqualizerChannel* settings_left,
