@@ -267,16 +267,25 @@ static auto parse_apo_config_line(const std::string& line, struct APO_Band& filt
       break;
 
     case ApoFilter::LS:
-    case ApoFilter::LSC:
     case ApoFilter::HS:
-    case ApoFilter::HSC:
       /**
-       * Low-shelf and High-shelf filters (with center freq., x dB per oct.).
+       * Low-shelf and High-shelf filters.
        * Q value is optional for these filters according to APO config
        * documentation, but LSP import function always sets it to 2/3.
        */
       parse_apo_gain(line, filter);
       filter.quality = 2.0F / 3.0F;
+      break;
+
+    case ApoFilter::LSC:
+    case ApoFilter::HSC:
+      /**
+       * Low-shelf and High-shelf filters (with center freq., x dB per oct.).
+       * LSP imports the quality for this variant of Low/High shelf filters.
+       ° See ticket #4843.
+       */
+      parse_apo_gain(line, filter);
+      parse_apo_quality(line, filter);
       break;
 
     case ApoFilter::LS_6DB:
