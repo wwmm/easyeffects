@@ -8,8 +8,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/qt/qtgraphs.git",
-                    "tag": "v6.10.1",
-                    "commit": "b50b4e3b46940e5aa3cf31babb4ff1c9454ab473",
+                    "tag": "v6.10.2",
+                    "commit": "6cd2b17ad3828029520c5b590060bff91ac43ceb",
                     "//": "We cannot use x-checker-data here as this version has to match the qt/kde runtime"
                 }
             ],
