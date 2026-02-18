@@ -275,18 +275,6 @@
             "build-commands": [
                 "install -m 644 libdeep_filter_ladspa.so $FLATPAK_DEST/lib/ladspa/"
             ]
-        },
-        {
-            "name": "webrtc-audio-processing",
-            "buildsystem": "meson",
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://gitlab.freedesktop.org/pulseaudio/webrtc-audio-processing.git",
-                    "commit": "bc838790eeb6066d30f019c2a3516bd2b824a5c8",
-                    "//": "use latest commit for gcc 15 support"
-                }
-            ]
         }
     ]
 }
