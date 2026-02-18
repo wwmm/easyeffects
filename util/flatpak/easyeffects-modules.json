@@ -113,22 +113,6 @@
                     "cleanup": [
                         "/bin"
                     ]
-                },
-                {
-                    "name": "speexdsp",
-                    "buildsystem": "autotools",
-                    "sources": [
-                        {
-                            "type": "git",
-                            "url": "https://github.com/xiph/speexdsp",
-                            "tag": "SpeexDSP-1.2.1",
-                            "commit": "1b28a0f61bc31162979e1f26f3981fc3637095c8",
-                            "x-checker-data": {
-                                "type": "git",
-                                "tag-pattern": "^SpeexDSP-([\\d.]+)"
-                            }
-                        }
-                    ]
                 }
             ]
         },
