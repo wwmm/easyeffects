@@ -303,28 +303,6 @@
                     "//": "use latest commit for gcc 15 support"
                 }
             ]
-        },
-        {
-            "name": "libmysofa",
-            "buildsystem": "cmake-ninja",
-            "config-opts": [
-                "-DCMAKE_BUILD_TYPE=Release",
-                "-DCODE_COVERAGE=OFF",
-                "-DBUILD_TESTS=OFF",
-                "-Wno-dev"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/hoene/libmysofa.git",
-                    "tag": "v1.3.4",
-                    "commit": "7a0c07111a3d7230ec534e08925c24a7525f33c0",
-                    "x-checker-data": {
-                        "type": "git",
-                        "tag-pattern": "^v([\\d.]+)$"
-                    }
-                }
-            ]
         }
     ]
 }
