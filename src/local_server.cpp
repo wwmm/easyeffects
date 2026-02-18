@@ -110,7 +110,7 @@ void LocalServer::onReadyRead() {
 
         util::str_to_num(std::string(matches[1]), state);
 
-        DbMain::setBypass(state == 0 ? false : true);
+        DbMain::setBypass(state != 0);
       }
     } else if (std::strncmp(buf, tags::local_server::load_preset, strlen(tags::local_server::load_preset)) == 0) {
       std::string msg = buf;
