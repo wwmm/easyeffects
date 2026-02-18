@@ -197,6 +197,9 @@ void LocalServer::onReadyRead() {
       }
     } else if (std::strcmp(buf, tags::local_server::get_global_bypass) == 0) {
       socket->write(DbMain::bypass() ? "1" : "2");
+    } else if (std::strncmp(buf, tags::local_server::toggle_global_bypass,
+                            strlen(tags::local_server::toggle_global_bypass)) == 0) {
+      DbMain::setBypass(!DbMain::bypass());
     }
   }
 

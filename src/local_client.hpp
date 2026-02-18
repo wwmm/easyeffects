@@ -42,6 +42,8 @@ class LocalClient : public QObject {
 
   auto getGlobalBypass() -> QString;
 
+  void toggleGlobalBypass();
+
   auto getLastLoadedPreset(PipelineType pipeline_type) -> QString;
 
  private:
