@@ -33,6 +33,8 @@ inline constexpr auto load_preset = "load_preset";
 
 inline constexpr auto global_bypass = "global_bypass";
 
+inline constexpr auto get_global_bypass = "get_global_bypass\n";
+
 inline constexpr auto set_property = "set_property";
 
 inline constexpr auto get_property = "get_property";

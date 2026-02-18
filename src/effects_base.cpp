@@ -502,6 +502,11 @@ void EffectsBase::requestSpectrumData() {
           } else {
             v = util::minimum_db_level;
           }
+
+          // From Qt 6.11 onwards Qt Graphs draws inverted bars for negative values. So we sum the modulus of our
+          // minimum decibel value
+
+          v -= util::minimum_db_level;
         });
 
         QList<QPointF> output_data(spectrum_mag.size());

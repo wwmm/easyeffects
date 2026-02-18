@@ -2590,6 +2590,78 @@
 <td style="text-align: left;"><code>4.5</code></td>
 </tr>
 <tr>
+<td style="text-align: left;"><strong>crusher</strong></td>
+<td style="text-align: left;"><code>bypass</code></td>
+<td style="text-align: left;">Bool</td>
+<td style="text-align: left;"><code>false</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>crusher</strong></td>
+<td style="text-align: left;"><code>inputGain</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>crusher</strong></td>
+<td style="text-align: left;"><code>outputGain</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>crusher</strong></td>
+<td style="text-align: left;"><code>mode</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Linear</code>, 1: <code>Logarithmic</code>)</small></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>crusher</strong></td>
+<td style="text-align: left;"><code>bitReduction</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>4.0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>crusher</strong></td>
+<td style="text-align: left;"><code>morph</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>0.5</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>crusher</strong></td>
+<td style="text-align: left;"><code>dc</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>crusher</strong></td>
+<td style="text-align: left;"><code>antiAliasing</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>0.5</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>crusher</strong></td>
+<td style="text-align: left;"><code>sampleReduction</code></td>
+<td style="text-align: left;">Int</td>
+<td style="text-align: left;"><code>1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>crusher</strong></td>
+<td style="text-align: left;"><code>lfoActive</code></td>
+<td style="text-align: left;">Bool</td>
+<td style="text-align: left;"><code>false</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>crusher</strong></td>
+<td style="text-align: left;"><code>lfoRange</code></td>
+<td style="text-align: left;">Int</td>
+<td style="text-align: left;"><code>20</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>crusher</strong></td>
+<td style="text-align: left;"><code>lfoRate</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>0.3</code></td>
+</tr>
+<tr>
 <td style="text-align: left;"><strong>crystalizer</strong></td>
 <td style="text-align: left;"><code>bypass</code></td>
 <td style="text-align: left;">Bool</td>
@@ -2612,6 +2684,30 @@
 <td style="text-align: left;"><code>adaptiveIntensity</code></td>
 <td style="text-align: left;">Bool</td>
 <td style="text-align: left;"><code>true</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>crystalizer</strong></td>
+<td style="text-align: left;"><code>oversampling</code></td>
+<td style="text-align: left;">Bool</td>
+<td style="text-align: left;"><code>true</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>crystalizer</strong></td>
+<td style="text-align: left;"><code>oversamplingQuality</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>5</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>crystalizer</strong></td>
+<td style="text-align: left;"><code>useFixedQuantum</code></td>
+<td style="text-align: left;">Bool</td>
+<td style="text-align: left;"><code>false</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>crystalizer</strong></td>
+<td style="text-align: left;"><code>transitionBand</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>120</code></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>crystalizer</strong></td>
@@ -3896,6 +3992,12 @@
 <td style="text-align: left;"><code>alrKnee</code></td>
 <td style="text-align: left;">Double</td>
 <td style="text-align: left;"><code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>limiter</strong></td>
+<td style="text-align: left;"><code>alrKneeSmooth</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>-5</code></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>limiter</strong></td>
@@ -7118,6 +7220,66 @@
 <td style="text-align: left;"><code>wet</code></td>
 <td style="text-align: left;">Double</td>
 <td style="text-align: left;"><code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>voice_suppressor</strong></td>
+<td style="text-align: left;"><code>bypass</code></td>
+<td style="text-align: left;">Bool</td>
+<td style="text-align: left;"><code>false</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>voice_suppressor</strong></td>
+<td style="text-align: left;"><code>inputGain</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>voice_suppressor</strong></td>
+<td style="text-align: left;"><code>outputGain</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>voice_suppressor</strong></td>
+<td style="text-align: left;"><code>freqStart</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>20</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>voice_suppressor</strong></td>
+<td style="text-align: left;"><code>freqEnd</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>22000</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>voice_suppressor</strong></td>
+<td style="text-align: left;"><code>correlation</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>95</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>voice_suppressor</strong></td>
+<td style="text-align: left;"><code>phaseDifference</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>20</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>voice_suppressor</strong></td>
+<td style="text-align: left;"><code>minKurtosis</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>voice_suppressor</strong></td>
+<td style="text-align: left;"><code>maxInstFreq</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>voice_suppressor</strong></td>
+<td style="text-align: left;"><code>invertedMode</code></td>
+<td style="text-align: left;">Bool</td>
+<td style="text-align: left;"><code>false</code></td>
 </tr>
 </tbody>
 </table>

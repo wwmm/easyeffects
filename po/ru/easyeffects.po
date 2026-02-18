@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-01-30 14:16-0300\n"
+"POT-Creation-Date: 2026-02-17 21:17-0300\n"
 "PO-Revision-Date: 2026-01-26 20:01+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -42,75 +42,77 @@ msgstr "Сбросить Easy Effects."
 msgid "Hide the window."
 msgstr "Скрыть окно."
 
-#: src/command_line_parser.cpp:47
-msgid "Global bypass. 1 to enable and 2 to disable."
+#: src/command_line_parser.cpp:48
+#, fuzzy
+msgid ""
+"Global bypass. 1 to enable, 2 to disable and 3 to get the current state."
 msgstr "Глобальный обход. Включить — 1, отключить — 2."
 
-#: src/command_line_parser.cpp:47
+#: src/command_line_parser.cpp:49
 msgid "bypass-state"
 msgstr "состояние-обхода"
 
-#: src/command_line_parser.cpp:48
+#: src/command_line_parser.cpp:50
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Загрузить предустановку. Пример: easyeffects -l music"
 
-#: src/command_line_parser.cpp:48
+#: src/command_line_parser.cpp:50
 msgid "preset-name"
 msgstr "имя-предустановки"
 
-#: src/command_line_parser.cpp:49
+#: src/command_line_parser.cpp:51
 msgid "Show available presets."
 msgstr "Показать доступные предустановки."
 
-#: src/command_line_parser.cpp:50
+#: src/command_line_parser.cpp:52
 msgid "Get the last loaded input/output preset."
 msgstr "Получить последнюю загруженную предустановку входа/выхода."
 
-#: src/command_line_parser.cpp:50
+#: src/command_line_parser.cpp:52
 msgid "preset-type"
 msgstr "тип-предустановки"
 
-#: src/command_line_parser.cpp:51
+#: src/command_line_parser.cpp:53
 msgid "Get the last loaded input and output presets."
 msgstr "Получить последние загруженные предустановки входа и выхода."
 
-#: src/command_line_parser.cpp:52
+#: src/command_line_parser.cpp:54
 msgid "Deprecated. Use --service-mode instead."
 msgstr "Устарело. Используйте вместо этого --service-mode."
 
-#: src/command_line_parser.cpp:53
+#: src/command_line_parser.cpp:55
 msgid "Start the application with service mode turned on."
 msgstr "Запустить приложение с включённым режимом службы."
 
-#: src/command_line_parser.cpp:54
+#: src/command_line_parser.cpp:56
 msgid "Enable debug messages."
 msgstr "Включить отладочные сообщения."
 
-#: src/command_line_parser.cpp:124
+#: src/command_line_parser.cpp:126
 msgid "Must specify preset type: input/output."
 msgstr "Необходимо указать тип предустановки: вход/выход."
 
-#: src/command_line_parser.cpp:159
+#: src/command_line_parser.cpp:161
 msgid "Output presets"
 msgstr "Предустановки выхода"
 
-#: src/command_line_parser.cpp:161
+#: src/command_line_parser.cpp:163
 msgid "No output presets."
 msgstr "Нет предустановок выхода."
 
-#: src/command_line_parser.cpp:172
+#: src/command_line_parser.cpp:174
 msgid "Input presets"
 msgstr "Предустановки входа"
 
-#: src/command_line_parser.cpp:174
+#: src/command_line_parser.cpp:176
 msgid "No input presets."
 msgstr "Нет предустановок входа."
 
-#: src/command_line_parser.cpp:204
+#: src/command_line_parser.cpp:206
 msgid "Specified preset does not exist."
 msgstr "Указанная предустановка не существует."
 
-#: src/command_line_parser.cpp:222
+#: src/command_line_parser.cpp:226
 msgid "Provided an invalid bypass state."
 msgstr "Указано недопустимое состояние обхода."
 
@@ -3036,29 +3038,29 @@ msgstr "Максимальная мгновенная частота"
 msgid "Inverted mode"
 msgstr "Инверсный режим"
 
-#: src/main.cpp:333
+#: src/main.cpp:339
 msgid "Global audio effects"
 msgstr "Глобальные эффекты звука"
 
-#: src/main.cpp:334
+#: src/main.cpp:340
 msgid "© 2017-2026 Easy Effects Team"
 msgstr "© 2017-2026 Команда Easy Effects"
 
-#: src/main.cpp:336
+#: src/main.cpp:342
 msgid "Wellington Wallace"
 msgstr "Веллингтон Уоллис"
 
-#: src/main.cpp:336
+#: src/main.cpp:342
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Разработчик"
 
-#: src/main.cpp:340
+#: src/main.cpp:346
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Андрей Степанов"
 
-#: src/main.cpp:340
+#: src/main.cpp:346
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "adem4ik@gmail.com"

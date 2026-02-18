@@ -287,7 +287,7 @@ Item {
             AreaSeries {
                 id: areaSeries
                 visible: widgetRoot.seriesType === 3
-                upperSeries: LineSeries {
+                upperSeries: SplineSeries {
                     id: areaLineSeries
 
                     width: DbGraph.lineWidth

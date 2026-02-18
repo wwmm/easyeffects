@@ -57,6 +57,8 @@ class CommandLineParser : public QObject {
 
   void onSetGlobalBypass(bool state);
 
+  void onGetGlobalBypass();
+
   void onInitQML();
 
  private:

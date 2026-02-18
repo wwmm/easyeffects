@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-01-30 14:16-0300\n"
+"POT-Creation-Date: 2026-02-17 21:17-0300\n"
 "PO-Revision-Date: 2026-01-26 03:47+0000\n"
 "Last-Translator: Jeff Huang <s8321414@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
@@ -40,75 +40,77 @@ msgstr "重新設定 Easy Effects。"
 msgid "Hide the window."
 msgstr "隱藏視窗。"
 
-#: src/command_line_parser.cpp:47
-msgid "Global bypass. 1 to enable and 2 to disable."
-msgstr "整體略過。 1 啟用；2 停用；3 取得狀態。"
+#: src/command_line_parser.cpp:48
+#, fuzzy
+msgid ""
+"Global bypass. 1 to enable, 2 to disable and 3 to get the current state."
+msgstr "整體略過。 1 啟用；2 停用；3 取得狀態"
 
-#: src/command_line_parser.cpp:47
+#: src/command_line_parser.cpp:49
 msgid "bypass-state"
 msgstr "略過-狀態"
 
-#: src/command_line_parser.cpp:48
+#: src/command_line_parser.cpp:50
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "載入預設集。例如： easyeffects -l music"
 
-#: src/command_line_parser.cpp:48
+#: src/command_line_parser.cpp:50
 msgid "preset-name"
 msgstr "預設集-名稱"
 
-#: src/command_line_parser.cpp:49
+#: src/command_line_parser.cpp:51
 msgid "Show available presets."
 msgstr "顯示可用預設集。"
 
-#: src/command_line_parser.cpp:50
+#: src/command_line_parser.cpp:52
 msgid "Get the last loaded input/output preset."
 msgstr "取得上次載入的輸入/輸出預設集。"
 
-#: src/command_line_parser.cpp:50
+#: src/command_line_parser.cpp:52
 msgid "preset-type"
 msgstr "預設集-型式"
 
-#: src/command_line_parser.cpp:51
+#: src/command_line_parser.cpp:53
 msgid "Get the last loaded input and output presets."
 msgstr "取得上次載入的輸入及輸出預設集。"
 
-#: src/command_line_parser.cpp:52
+#: src/command_line_parser.cpp:54
 msgid "Deprecated. Use --service-mode instead."
 msgstr "已經棄用。使用 --service-mode 取代。"
 
-#: src/command_line_parser.cpp:53
+#: src/command_line_parser.cpp:55
 msgid "Start the application with service mode turned on."
 msgstr "啟動應用程式並已經開啟服務模式。"
 
-#: src/command_line_parser.cpp:54
+#: src/command_line_parser.cpp:56
 msgid "Enable debug messages."
 msgstr "啟用除錯訊息。"
 
-#: src/command_line_parser.cpp:124
+#: src/command_line_parser.cpp:126
 msgid "Must specify preset type: input/output."
 msgstr "必須指定預設集型式：輸入/輸出。"
 
-#: src/command_line_parser.cpp:159
+#: src/command_line_parser.cpp:161
 msgid "Output presets"
 msgstr "輸出預設集"
 
-#: src/command_line_parser.cpp:161
+#: src/command_line_parser.cpp:163
 msgid "No output presets."
 msgstr "無輸出預設集。"
 
-#: src/command_line_parser.cpp:172
+#: src/command_line_parser.cpp:174
 msgid "Input presets"
 msgstr "輸入預設集"
 
-#: src/command_line_parser.cpp:174
+#: src/command_line_parser.cpp:176
 msgid "No input presets."
 msgstr "無輸入預設集。"
 
-#: src/command_line_parser.cpp:204
+#: src/command_line_parser.cpp:206
 msgid "Specified preset does not exist."
 msgstr "所指定的預設集並不存在。"
 
-#: src/command_line_parser.cpp:222
+#: src/command_line_parser.cpp:226
 msgid "Provided an invalid bypass state."
 msgstr "提供了無效的略過狀態。"
 
@@ -2959,29 +2961,29 @@ msgstr "最大瞬時頻率"
 msgid "Inverted mode"
 msgstr "反向模式"
 
-#: src/main.cpp:333
+#: src/main.cpp:339
 msgid "Global audio effects"
 msgstr "整體音效處理"
 
-#: src/main.cpp:334
+#: src/main.cpp:340
 msgid "© 2017-2026 Easy Effects Team"
 msgstr "© 2017-2026 Easy Effects 團隊"
 
-#: src/main.cpp:336
+#: src/main.cpp:342
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:336
+#: src/main.cpp:342
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "開發人員"
 
-#: src/main.cpp:340
+#: src/main.cpp:346
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "BigELK176 ≡"
 
-#: src/main.cpp:340
+#: src/main.cpp:346
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "．略．"
@@ -3247,6 +3249,9 @@ msgstr "等化器、壓縮器、及其他音效處理"
 msgid "Simple audio effects"
 msgstr "簡易音效處理"
 
+#~ msgid "Global bypass. 1 to enable and 2 to disable."
+#~ msgstr "整體略過。 1 啟用；2 停用；3 取得狀態。"
+
 #~ msgid "Attack time"
 #~ msgstr "起動時間"
 
@@ -3331,9 +3336,6 @@ msgstr "簡易音效處理"
 
 #~ msgid "∞"
 #~ msgstr "∞"
-
-#~ msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
-#~ msgstr "整體略過。 1 啟用；2 停用；3 取得狀態"
 
 #~ msgid "Id"
 #~ msgstr "ID"

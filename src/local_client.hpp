@@ -40,6 +40,8 @@ class LocalClient : public QObject {
 
   void setGlobalBypass(const bool& state);
 
+  auto getGlobalBypass() -> QString;
+
   auto getLastLoadedPreset(PipelineType pipeline_type) -> QString;
 
  private:

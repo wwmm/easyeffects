@@ -86,113 +86,117 @@ void LocalServer::onReadyRead() {
 
     auto lineLength = socket->readLine(buf, sizeof(buf));
 
-    if (lineLength != -1) {
-      if (std::strcmp(buf, tags::local_server::quit_app) == 0) {
-        Q_EMIT onQuitApp();
-      } else if (std::strcmp(buf, tags::local_server::show_window) == 0) {
-        Q_EMIT onShowWindow();
-      } else if (std::strcmp(buf, tags::local_server::hide_window) == 0) {
-        Q_EMIT onHideWindow();
-      } else if (std::strncmp(buf, tags::local_server::global_bypass, strlen(tags::local_server::global_bypass)) == 0) {
-        std::string msg = buf;
+    if (lineLength == -1) {
+      continue;
+    }
 
-        std::smatch matches;
+    if (std::strcmp(buf, tags::local_server::quit_app) == 0) {
+      Q_EMIT onQuitApp();
+    } else if (std::strcmp(buf, tags::local_server::show_window) == 0) {
+      Q_EMIT onShowWindow();
+    } else if (std::strcmp(buf, tags::local_server::hide_window) == 0) {
+      Q_EMIT onHideWindow();
+    } else if (std::strncmp(buf, tags::local_server::global_bypass, strlen(tags::local_server::global_bypass)) == 0) {
+      std::string msg = buf;
 
-        static const auto re = std::regex("^global_bypass:([01])\n$");
+      std::smatch matches;
 
-        std::regex_search(msg, matches, re);
+      static const auto re = std::regex("^global_bypass:([01])\n$");
 
-        if (matches.size() == 2U) {
-          int state = 0;
+      std::regex_search(msg, matches, re);
 
-          util::str_to_num(std::string(matches[1]), state);
+      if (matches.size() == 2U) {
+        int state = 0;
 
-          DbMain::setBypass(state);
-        }
-      } else if (std::strncmp(buf, tags::local_server::load_preset, strlen(tags::local_server::load_preset)) == 0) {
-        std::string msg = buf;
+        util::str_to_num(std::string(matches[1]), state);
 
-        std::smatch matches;
-
-        static const auto re = std::regex("^load_preset:(input|output):([^\n]{1,100})\n$");
-
-        std::regex_search(msg, matches, re);
-
-        if (matches.size() == 3U) {
-          auto pipeline_type = pipeline_from(matches[1].str());
-
-          std::string preset_name = matches[2];
-
-          presets::Manager::self().loadLocalPresetFile(pipeline_type, QString::fromStdString(preset_name));
-        }
-      } else if (std::strncmp(buf, tags::local_server::set_property, strlen(tags::local_server::set_property)) == 0) {
-        std::string msg = buf;
-
-        std::smatch matches;
-
-        /**
-         * Original regex:
-         * ^set_property:(input|output):([^:]+):([0-9]+):([^:]+):(.+)\n$
-         *
-         * Since the dot matches any character except line terminators, there's
-         * no need to search for final new line and end of line position.
-         */
-        static const auto re = std::regex("^set_property:(input|output):([^:]+):([0-9]+):([^:]+):([^\n]+)");
-
-        std::regex_search(msg, matches, re);
-
-        if (matches.size() == 6U) {
-          const auto& pipeline = matches[1].str();
-          const auto& plugin_name = matches[2].str();
-          const auto& instance_id = matches[3].str();
-          const auto& property = matches[4].str();
-          const auto& value = matches[5].str();
-
-          set_property(pipeline, plugin_name, instance_id, property, value);
-        }
-      } else if (std::strncmp(buf, tags::local_server::get_property, strlen(tags::local_server::get_property)) == 0) {
-        /**
-         * Example of client write that should be done:
-         * client->write(std::format("{}:output:loudness:0:volume\n", tags::local_server::get_property).c_str());
-         */
-
-        std::string msg = buf;
-
-        std::smatch matches;
-
-        static const auto re = std::regex("^get_property:(input|output):([^:]+):([0-9]+):([^\n]+)");
-
-        std::regex_search(msg, matches, re);
-
-        if (matches.size() == 5U) {
-          const auto& pipeline = matches[1].str();
-          const auto& plugin_name = matches[2].str();
-          const auto& instance_id = matches[3].str();
-          const auto& property = matches[4].str();
-
-          const auto value = get_property(pipeline, plugin_name, instance_id, property);
-
-          socket->write((value + "\n").c_str());
-        }
-      } else if (std::strncmp(buf, tags::local_server::get_last_loaded_preset,
-                              strlen(tags::local_server::get_last_loaded_preset)) == 0) {
-        std::string msg = buf;
-
-        std::smatch matches;
-
-        static const auto re = std::regex("^get_last_loaded_preset:(input|output)\n$");
-
-        std::regex_search(msg, matches, re);
-
-        if (matches.size() == 2U) {
-          auto pipeline_type = pipeline_from(matches[1].str());
-
-          QString preset_name = (pipeline_type == PipelineType::input) ? DbMain::lastLoadedInputPreset() + "\n"
-                                                                       : DbMain::lastLoadedOutputPreset() + "\n";
-
-          socket->write(preset_name.toUtf8());
-        }
+        DbMain::setBypass(state);
       }
+    } else if (std::strncmp(buf, tags::local_server::load_preset, strlen(tags::local_server::load_preset)) == 0) {
+      std::string msg = buf;
+
+      std::smatch matches;
+
+      static const auto re = std::regex("^load_preset:(input|output):([^\n]{1,100})\n$");
+
+      std::regex_search(msg, matches, re);
+
+      if (matches.size() == 3U) {
+        auto pipeline_type = pipeline_from(matches[1].str());
+
+        std::string preset_name = matches[2];
+
+        presets::Manager::self().loadLocalPresetFile(pipeline_type, QString::fromStdString(preset_name));
+      }
+    } else if (std::strncmp(buf, tags::local_server::set_property, strlen(tags::local_server::set_property)) == 0) {
+      std::string msg = buf;
+
+      std::smatch matches;
+
+      /**
+       * Original regex:
+       * ^set_property:(input|output):([^:]+):([0-9]+):([^:]+):(.+)\n$
+       *
+       * Since the dot matches any character except line terminators, there's
+       * no need to search for final new line and end of line position.
+       */
+      static const auto re = std::regex("^set_property:(input|output):([^:]+):([0-9]+):([^:]+):([^\n]+)");
+
+      std::regex_search(msg, matches, re);
+
+      if (matches.size() == 6U) {
+        const auto& pipeline = matches[1].str();
+        const auto& plugin_name = matches[2].str();
+        const auto& instance_id = matches[3].str();
+        const auto& property = matches[4].str();
+        const auto& value = matches[5].str();
+
+        set_property(pipeline, plugin_name, instance_id, property, value);
+      }
+    } else if (std::strncmp(buf, tags::local_server::get_property, strlen(tags::local_server::get_property)) == 0) {
+      /**
+       * Example of client write that should be done:
+       * client->write(std::format("{}:output:loudness:0:volume\n", tags::local_server::get_property).c_str());
+       */
+
+      std::string msg = buf;
+
+      std::smatch matches;
+
+      static const auto re = std::regex("^get_property:(input|output):([^:]+):([0-9]+):([^\n]+)");
+
+      std::regex_search(msg, matches, re);
+
+      if (matches.size() == 5U) {
+        const auto& pipeline = matches[1].str();
+        const auto& plugin_name = matches[2].str();
+        const auto& instance_id = matches[3].str();
+        const auto& property = matches[4].str();
+
+        const auto value = get_property(pipeline, plugin_name, instance_id, property);
+
+        socket->write((value + "\n").c_str());
+      }
+    } else if (std::strncmp(buf, tags::local_server::get_last_loaded_preset,
+                            strlen(tags::local_server::get_last_loaded_preset)) == 0) {
+      std::string msg = buf;
+
+      std::smatch matches;
+
+      static const auto re = std::regex("^get_last_loaded_preset:(input|output)\n$");
+
+      std::regex_search(msg, matches, re);
+
+      if (matches.size() == 2U) {
+        auto pipeline_type = pipeline_from(matches[1].str());
+
+        QString preset_name = (pipeline_type == PipelineType::input) ? DbMain::lastLoadedInputPreset() + "\n"
+                                                                     : DbMain::lastLoadedOutputPreset() + "\n";
+
+        socket->write(preset_name.toUtf8());
+      }
+    } else if (std::strcmp(buf, tags::local_server::get_global_bypass) == 0) {
+      socket->write(DbMain::bypass() ? "1" : "2");
     }
   }
 

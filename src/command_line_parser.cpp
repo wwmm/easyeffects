@@ -44,7 +44,9 @@ CommandLineParser::CommandLineParser(KAboutData& about, QObject* parent)
       {{{"q", "quit"}, i18n("Quit Easy Effects. Useful when running in service mode.")},
        {{"r", "reset"}, i18n("Reset Easy Effects.")},
        {{"w", "hide-window"}, i18n("Hide the window.")},
-       {{"b", "bypass"}, i18n("Global bypass. 1 to enable and 2 to disable."), i18n("bypass-state")},
+       {{"b", "bypass"},
+        i18n("Global bypass. 1 to enable, 2 to disable and 3 to get the current state."),
+        i18n("bypass-state")},
        {{"l", "load-preset"}, i18n("Load a preset. Example: easyeffects -l music"), i18n("preset-name")},
        {{"p", "presets"}, i18n("Show available presets.")},
        {{"a", "last-loaded-preset"}, i18n("Get the last loaded input/output preset."), i18n("preset-type")},
@@ -216,6 +218,8 @@ void CommandLineParser::process_events() {
       Q_EMIT onSetGlobalBypass(true);
     } else if (value == "2") {
       Q_EMIT onSetGlobalBypass(false);
+    } else if (value == "3") {
+      Q_EMIT onGetGlobalBypass();
     } else {
       ok = false;
 
