@@ -503,8 +503,11 @@ void EffectsBase::requestSpectrumData() {
             v = util::minimum_db_level;
           }
 
-          // From Qt 6.11 onwards Qt Graphs draws inverted bars for negative values. So we sum the modulus of our
-          // minimum decibel value
+          /**
+           * From Qt 6.11 onwards Qt Graphs draws inverted bars for negative values. So we sum the modulus of our
+           * minimum decibel value to make all te values positive. From a signal processing point of view this does
+           * not make sense here. But as we do not know the spectrum amplitude to the user it is fine to do that.
+           */
 
           v -= util::minimum_db_level;
         });

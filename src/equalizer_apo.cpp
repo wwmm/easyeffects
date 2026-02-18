@@ -28,6 +28,8 @@
 #include <regex>
 #include <stdexcept>
 #include <string>
+#include <string_view>
+#include <unordered_map>
 #include <vector>
 #include "easyeffects_db_equalizer.h"
 #include "easyeffects_db_equalizer_channel.h"
@@ -39,46 +41,29 @@ namespace apo {
 using namespace tags::equalizer;
 
 static auto stringToApoFilter(const std::string& s) -> ApoFilter {
-  if (s == "OFF")
-    return ApoFilter::OFF;
-  else if (s == "PK")
-    return ApoFilter::PK;
-  else if (s == "MODAL")
-    return ApoFilter::MODAL;
-  else if (s == "PEQ")
-    return ApoFilter::PEQ;
-  else if (s == "LP")
-    return ApoFilter::LP;
-  else if (s == "LPQ")
-    return ApoFilter::LPQ;
-  else if (s == "HP")
-    return ApoFilter::HP;
-  else if (s == "HPQ")
-    return ApoFilter::HPQ;
-  else if (s == "BP")
-    return ApoFilter::BP;
-  else if (s == "LS")
-    return ApoFilter::LS;
-  else if (s == "LSC")
-    return ApoFilter::LSC;
-  else if (s == "LS 6DB")
-    return ApoFilter::LS_6DB;
-  else if (s == "LS 12DB")
-    return ApoFilter::LS_12DB;
-  else if (s == "HS")
-    return ApoFilter::HS;
-  else if (s == "HSC")
-    return ApoFilter::HSC;
-  else if (s == "HS 6DB")
-    return ApoFilter::HS_6DB;
-  else if (s == "HS 12DB")
-    return ApoFilter::HS_12DB;
-  else if (s == "NO")
-    return ApoFilter::NO;
-  else if (s == "AP")
-    return ApoFilter::AP;
+  static const std::unordered_map<std::string_view, ApoFilter> filterMap = {{"OFF", ApoFilter::OFF},
+                                                                            {"PK", ApoFilter::PK},
+                                                                            {"MODAL", ApoFilter::MODAL},
+                                                                            {"PEQ", ApoFilter::PEQ},
+                                                                            {"LP", ApoFilter::LP},
+                                                                            {"LPQ", ApoFilter::LPQ},
+                                                                            {"HP", ApoFilter::HP},
+                                                                            {"HPQ", ApoFilter::HPQ},
+                                                                            {"BP", ApoFilter::BP},
+                                                                            {"LS", ApoFilter::LS},
+                                                                            {"LSC", ApoFilter::LSC},
+                                                                            {"LS 6DB", ApoFilter::LS_6DB},
+                                                                            {"LS 12DB", ApoFilter::LS_12DB},
+                                                                            {"HS", ApoFilter::HS},
+                                                                            {"HSC", ApoFilter::HSC},
+                                                                            {"HS 6DB", ApoFilter::HS_6DB},
+                                                                            {"HS 12DB", ApoFilter::HS_12DB},
+                                                                            {"NO", ApoFilter::NO},
+                                                                            {"AP", ApoFilter::AP}};
 
-  return ApoFilter::UNKNOWN;
+  auto it = filterMap.find(s);
+
+  return (it != filterMap.end()) ? it->second : ApoFilter::UNKNOWN;
 }
 
 static auto apoFilterToString(const ApoFilter& f) -> std::string {
