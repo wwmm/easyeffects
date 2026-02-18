@@ -113,22 +113,6 @@
                     "cleanup": [
                         "/bin"
                     ]
-                },
-                {
-                    "name": "speexdsp",
-                    "buildsystem": "autotools",
-                    "sources": [
-                        {
-                            "type": "git",
-                            "url": "https://github.com/xiph/speexdsp",
-                            "tag": "SpeexDSP-1.2.1",
-                            "commit": "1b28a0f61bc31162979e1f26f3981fc3637095c8",
-                            "x-checker-data": {
-                                "type": "git",
-                                "tag-pattern": "^SpeexDSP-([\\d.]+)"
-                            }
-                        }
-                    ]
                 }
             ]
         },
@@ -290,40 +274,6 @@
             "buildsystem": "simple",
             "build-commands": [
                 "install -m 644 libdeep_filter_ladspa.so $FLATPAK_DEST/lib/ladspa/"
-            ]
-        },
-        {
-            "name": "webrtc-audio-processing",
-            "buildsystem": "meson",
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://gitlab.freedesktop.org/pulseaudio/webrtc-audio-processing.git",
-                    "commit": "bc838790eeb6066d30f019c2a3516bd2b824a5c8",
-                    "//": "use latest commit for gcc 15 support"
-                }
-            ]
-        },
-        {
-            "name": "libmysofa",
-            "buildsystem": "cmake-ninja",
-            "config-opts": [
-                "-DCMAKE_BUILD_TYPE=Release",
-                "-DCODE_COVERAGE=OFF",
-                "-DBUILD_TESTS=OFF",
-                "-Wno-dev"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/hoene/libmysofa.git",
-                    "tag": "v1.3.4",
-                    "commit": "7a0c07111a3d7230ec534e08925c24a7525f33c0",
-                    "x-checker-data": {
-                        "type": "git",
-                        "tag-pattern": "^v([\\d.]+)$"
-                    }
-                }
             ]
         }
     ]
