@@ -4,7 +4,8 @@ Date: UNRELEASED_DATE
 
 Description: 
 - Features∶
-- 
+- The bypass state can be retrieved from the command line as we could do with the former GTK version.
+- Added a new command line option to toggle the bypass. This could be bound to a custom shortcut key and used on desktop environments that do not support XDG Global Shortcuts protocol.
 
 - Bug fixes∶
 - 

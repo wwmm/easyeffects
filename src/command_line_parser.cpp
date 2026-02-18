@@ -47,6 +47,7 @@ CommandLineParser::CommandLineParser(KAboutData& about, QObject* parent)
        {{"b", "bypass"},
         i18n("Global bypass. 1 to enable, 2 to disable and 3 to get the current state."),
         i18n("bypass-state")},
+       {"bypass-toggle", i18n("Toggle the state of the global bypass.")},
        {{"l", "load-preset"}, i18n("Load a preset. Example: easyeffects -l music"), i18n("preset-name")},
        {{"p", "presets"}, i18n("Show available presets.")},
        {{"a", "last-loaded-preset"}, i18n("Get the last loaded input/output preset."), i18n("preset-type")},
@@ -233,6 +234,22 @@ void CommandLineParser::process_events() {
     } else {
       QCoreApplication::exit(EXIT_FAILURE);
     }
+  }
+
+  if (parser->isSet("bypass-toggle")) {
+    /**
+     * This is useful for those DE that does not support the XDG Global Shortcut
+     * protocol and can't use the "toggle bypass" feature that we offer.
+     * The command line option can be specified in the system settings with a
+     * custom shortcut key chosen by the user.
+     * Useful also for those DE that implement the XDG Global Shortcut protocol
+     * in the wrong way and does not allow the shortcut key to be customized.
+     */
+    Q_EMIT onToggleGlobalBypass();
+
+    Q_EMIT onHideWindow();
+
+    QCoreApplication::exit(EXIT_SUCCESS);
   }
 
   if (is_primary) {
