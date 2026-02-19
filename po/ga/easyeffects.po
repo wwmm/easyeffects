@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-02-18 19:44+0000\n"
-"PO-Revision-Date: 2026-01-25 13:16+0000\n"
+"PO-Revision-Date: 2026-02-19 10:09+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
 "ga/>\n"
@@ -16,9 +16,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :"
-"(n>6 && n<11) ? 3 : 4;\n"
-"X-Generator: Weblate 5.16-dev\n"
+"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :(n>"
+"6 && n<11) ? 3 : 4;\n"
+"X-Generator: Weblate 5.16.1-dev\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -43,19 +43,19 @@ msgid "Hide the window."
 msgstr "Folaigh an fhuinneog."
 
 #: src/command_line_parser.cpp:48
-#, fuzzy
 msgid ""
 "Global bypass. 1 to enable, 2 to disable and 3 to get the current state."
-msgstr "Seachbhóthar domhanda. 1 chun a chumasú agus 2 chun a dhíchumasú."
+msgstr ""
+"Seachbhóthar domhanda. 1 chun a chumasú, 2 chun a dhíchumasú agus 3 chun an "
+"staid reatha a fháil."
 
 #: src/command_line_parser.cpp:49
 msgid "bypass-state"
 msgstr "staid-sheachbhóthar"
 
 #: src/command_line_parser.cpp:50
-#, fuzzy
 msgid "Toggle the state of the global bypass."
-msgstr "Scoránaigh seachbhóthar domhanda"
+msgstr "Athraigh staid an sheachbhóthair dhomhanda."
 
 #: src/command_line_parser.cpp:51
 msgid "Load a preset. Example: easyeffects -l music"

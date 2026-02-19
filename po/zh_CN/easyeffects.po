@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-02-18 19:44+0000\n"
-"PO-Revision-Date: 2026-01-26 04:32+0000\n"
+"PO-Revision-Date: 2026-02-19 10:09+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hans/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.16-dev\n"
+"X-Generator: Weblate 5.16.1-dev\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -42,19 +42,17 @@ msgid "Hide the window."
 msgstr "隐藏窗口。"
 
 #: src/command_line_parser.cpp:48
-#, fuzzy
 msgid ""
 "Global bypass. 1 to enable, 2 to disable and 3 to get the current state."
-msgstr "全局旁通。1以启用，2以禁用，3以获取状态"
+msgstr "全局旁通。1以启用，2以禁用，3以获取状态。"
 
 #: src/command_line_parser.cpp:49
 msgid "bypass-state"
 msgstr "旁通状态"
 
 #: src/command_line_parser.cpp:50
-#, fuzzy
 msgid "Toggle the state of the global bypass."
-msgstr "切换全局旁通"
+msgstr "切换全局旁通状态。"
 
 #: src/command_line_parser.cpp:51
 msgid "Load a preset. Example: easyeffects -l music"
@@ -2985,7 +2983,7 @@ msgstr "开发者"
 #: src/main.cpp:351
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "ramdomPTM"
+msgstr "Gerald Chen"
 
 #: src/main.cpp:351
 msgctxt "EMAIL OF TRANSLATORS"
