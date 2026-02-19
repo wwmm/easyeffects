@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-02-18 19:44+0000\n"
-"PO-Revision-Date: 2026-01-26 20:01+0000\n"
+"PO-Revision-Date: 2026-02-19 10:09+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ro/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
-"X-Generator: Weblate 5.16-dev\n"
+"X-Generator: Weblate 5.16.1-dev\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -44,19 +44,19 @@ msgid "Hide the window."
 msgstr "Ascunde fereastra."
 
 #: src/command_line_parser.cpp:48
-#, fuzzy
 msgid ""
 "Global bypass. 1 to enable, 2 to disable and 3 to get the current state."
-msgstr "Ocolire globală. 1 pentru a activași 2 pentru a dezactiva."
+msgstr ""
+"Deviere globală. 1 pentru activare, 2 pentru dezactivare și 3 pentru "
+"afișarea stării curente."
 
 #: src/command_line_parser.cpp:49
 msgid "bypass-state"
 msgstr "starea de ocolire"
 
 #: src/command_line_parser.cpp:50
-#, fuzzy
 msgid "Toggle the state of the global bypass."
-msgstr "Activează/dezactivează devierea globală"
+msgstr "Activează/dezactivează starea devierii globale."
 
 #: src/command_line_parser.cpp:51
 msgid "Load a preset. Example: easyeffects -l music"
