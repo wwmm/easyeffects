@@ -35,6 +35,7 @@ Controls.ItemDelegate {
     height: ListView.view.height
 
     contentItem: ColumnLayout {
+        anchors.fill: parent
 
         Controls.Label {
             Layout.alignment: Qt.AlignHCenter

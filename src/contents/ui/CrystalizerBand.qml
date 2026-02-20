@@ -78,6 +78,8 @@ Controls.ItemDelegate {
     }
 
     contentItem: ColumnLayout {
+        anchors.fill: parent
+
         Controls.Button {
             id: menuButton
 
