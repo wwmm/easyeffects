@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-02-20 11:43-0300\n"
+"POT-Creation-Date: 2026-02-20 11:59-0300\n"
 "PO-Revision-Date: 2026-02-19 10:09+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
@@ -701,8 +701,8 @@ msgid "Link to input"
 msgstr "共享内存链接到输入"
 
 #: src/contents/ui/Compressor.qml:675 src/contents/ui/EqualizerBandMenu.qml:117
-#: src/contents/ui/Filter.qml:158 src/contents/ui/Limiter.qml:507
-#: src/contents/ui/MultibandCompressor.qml:361
+#: src/contents/ui/Expander.qml:627 src/contents/ui/Filter.qml:158
+#: src/contents/ui/Limiter.qml:507 src/contents/ui/MultibandCompressor.qml:361
 #: src/contents/ui/MultibandCompressor.qml:747
 #: src/contents/ui/MultibandGate.qml:247
 msgid "Gain"
@@ -934,10 +934,9 @@ msgstr "混合"
 msgid "Sample Rate"
 msgstr "采样率"
 
-#: src/contents/ui/Crusher.qml:165 src/contents/ui/Expander.qml:627
-#: src/contents/ui/Gate.qml:119 src/contents/ui/Gate.qml:653
-#: src/contents/ui/Maximizer.qml:100 src/contents/ui/MultibandGate.qml:251
-#: src/contents/ui/MultibandGate.qml:720
+#: src/contents/ui/Crusher.qml:165 src/contents/ui/Gate.qml:119
+#: src/contents/ui/Gate.qml:653 src/contents/ui/Maximizer.qml:100
+#: src/contents/ui/MultibandGate.qml:251 src/contents/ui/MultibandGate.qml:720
 msgid "Reduction"
 msgstr "衰减"
 
