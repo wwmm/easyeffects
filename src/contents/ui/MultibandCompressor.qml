@@ -744,7 +744,7 @@ Kirigami.ScrollablePage {
                                 Layout.alignment: Qt.AlignHCenter
                                 topPadding: Kirigami.Units.smallSpacing
                                 horizontalAlignment: Text.AlignHCenter
-                                text: i18n("Reduction") // qmllint disable
+                                text: i18n("Gain") // qmllint disable
                             }
 
                             EeAudioLevel {
