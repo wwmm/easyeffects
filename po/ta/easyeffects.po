@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-02-20 11:59-0300\n"
-"PO-Revision-Date: 2025-07-20 18:40+0000\n"
-"Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
+"PO-Revision-Date: 2026-02-24 06:09+0000\n"
+"Last-Translator: தமிழ்நேரம் <tamilneram247@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/easyeffects/main/"
 "ta/>\n"
 "Language: ta\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.13-dev\n"
+"X-Generator: Weblate 5.16.1-dev\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -25,6 +25,9 @@ msgid ""
 "Please allow \"Run in Background\" permission for Easy Effects in your "
 "system app settings."
 msgstr ""
+"பின்னணி அணுகல் மறுக்கப்பட்டுள்ளதால், ஆட்டோச்டார்ட் விருப்பத்தை இயக்க முடியாது. உங்கள் கணினி "
+"பயன்பாட்டு அமைப்புகளில் எளிதான விளைவுகளுக்கு \"பின்னணியில் இயக்கவும்\" அனுமதியை "
+"அனுமதிக்கவும்."
 
 #: src/command_line_parser.cpp:44
 msgid "Quit Easy Effects. Useful when running in service mode."
@@ -37,100 +40,91 @@ msgid "Reset Easy Effects."
 msgstr "எளிதான விளைவுகளை மீட்டமைக்கவும்."
 
 #: src/command_line_parser.cpp:46
-#, fuzzy
 msgid "Hide the window."
-msgstr "சாளரத்தை மறைக்கவும்."
+msgstr "சாளரத்தை மறை."
 
 #: src/command_line_parser.cpp:48
-#, fuzzy
 msgid ""
 "Global bypass. 1 to enable, 2 to disable and 3 to get the current state."
-msgstr "உலகளாவிய பைபாச். 1 இயக்க, 2 முடக்க மற்றும் 3 நிலையைப் பெற 3"
+msgstr ""
+"உலகளாவிய பைபாச். 1 இயக்கவும், 2 முடக்கவும் மற்றும் 3 தற்போதைய நிலையைப் பெறவும்."
 
 #: src/command_line_parser.cpp:49
 msgid "bypass-state"
-msgstr ""
+msgstr "புறவழி-நிலை"
 
 #: src/command_line_parser.cpp:50
-#, fuzzy
 msgid "Toggle the state of the global bypass."
-msgstr "உலகளாவிய பைபாச்"
+msgstr "உலகளாவிய பைபாசின் நிலையை மாற்றவும்."
 
 #: src/command_line_parser.cpp:51
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "முன்னமைவை ஏற்றவும். எடுத்துக்காட்டு: ஈசி எஃபெக்ட்ச் -எல் இசை"
 
 #: src/command_line_parser.cpp:51
-#, fuzzy
 msgid "preset-name"
-msgstr "புதிய முன்னமைக்கப்பட்ட பெயர்"
+msgstr "முன்னமைக்கப்பட்ட பெயர்"
 
 #: src/command_line_parser.cpp:52
 msgid "Show available presets."
 msgstr "கிடைக்கக்கூடிய முன்னமைவுகளைக் காட்டு."
 
 #: src/command_line_parser.cpp:53
-#, fuzzy
 msgid "Get the last loaded input/output preset."
-msgstr "செயலில் உள்ள முன்னமைவுகளைக் காட்டு."
+msgstr "கடைசியாக ஏற்றப்பட்ட உள்ளீடு/வெளியீடு முன்னமைவைப் பெறவும்."
 
 #: src/command_line_parser.cpp:53
 msgid "preset-type"
-msgstr ""
+msgstr "முன்னமைக்கப்பட்ட வகை"
 
 #: src/command_line_parser.cpp:54
-#, fuzzy
 msgid "Get the last loaded input and output presets."
-msgstr "செயலில் உள்ள முன்னமைவுகளைக் காட்டு."
+msgstr "கடைசியாக ஏற்றப்பட்ட உள்ளீடு மற்றும் வெளியீட்டு முன்னமைவுகளைப் பெறவும்."
 
 #: src/command_line_parser.cpp:55
 msgid "Deprecated. Use --service-mode instead."
-msgstr ""
+msgstr "நிராகரிக்கப்பட்டது. அதற்கு பதிலாக --service-mode ஐப் பயன்படுத்தவும்."
 
 #: src/command_line_parser.cpp:56
 msgid "Start the application with service mode turned on."
-msgstr ""
+msgstr "பணி பயன்முறையை இயக்கியவுடன் பயன்பாட்டைத் தொடங்கவும்."
 
 #: src/command_line_parser.cpp:57
 msgid "Enable debug messages."
-msgstr ""
+msgstr "பிழைத்திருத்த செய்திகளை இயக்கு."
 
 #: src/command_line_parser.cpp:127
 msgid "Must specify preset type: input/output."
-msgstr ""
+msgstr "முன்னமைக்கப்பட்ட வகையைக் குறிப்பிட வேண்டும்: உள்ளீடு/வெளியீடு."
 
 #: src/command_line_parser.cpp:162
-#, fuzzy
 msgid "Output presets"
 msgstr "வெளியீட்டு முன்னமைவுகள்"
 
 #: src/command_line_parser.cpp:164
-#, fuzzy
 msgid "No output presets."
-msgstr "வெளியீட்டு முன்னமைவுகள்"
+msgstr "வெளியீட்டு முன்னமைவுகள் இல்லை."
 
 #: src/command_line_parser.cpp:175
-#, fuzzy
 msgid "Input presets"
-msgstr "உள்ளீட்டு முன்னமைவுகள்"
+msgstr "உள்ளீடு முன்னமைவுகள்"
 
 #: src/command_line_parser.cpp:177
-#, fuzzy
 msgid "No input presets."
-msgstr "உள்ளீட்டு முன்னமைவுகள்"
+msgstr "உள்ளீடு முன்னமைவுகள் இல்லை."
 
 #: src/command_line_parser.cpp:207
 msgid "Specified preset does not exist."
-msgstr ""
+msgstr "குறிப்பிட்ட முன்னமைவு இல்லை."
 
 #: src/command_line_parser.cpp:227
 msgid "Provided an invalid bypass state."
-msgstr ""
+msgstr "தவறான பைபாச் நிலை வழங்கப்பட்டது."
 
 #: src/contents/ui/AboutPage.qml:23
 msgctxt "@action:button"
 msgid "About"
-msgstr ""
+msgstr "பற்றி"
 
 #: src/contents/ui/Autogain.qml:69 src/contents/ui/BassEnhancer.qml:105
 #: src/contents/ui/BassLoudness.qml:58 src/contents/ui/Crossfeed.qml:73
@@ -153,7 +147,6 @@ msgstr "கணம்"
 
 #: src/contents/ui/Autogain.qml:79 src/contents/ui/Autogain.qml:158
 #: src/contents/ui/LevelMeter.qml:168
-#, fuzzy
 msgid "Short-term"
 msgstr "குறுகிய கால"
 
@@ -163,24 +156,20 @@ msgid "Integrated"
 msgstr "ஒருங்கிணைந்த"
 
 #: src/contents/ui/Autogain.qml:79
-#, fuzzy
 msgid "Geometric mean (MSI)"
-msgstr "வடிவியல் சராசரி (எம்.எச்.ஐ)"
+msgstr "வடிவியல் சராசரி (MSI)"
 
 #: src/contents/ui/Autogain.qml:79
-#, fuzzy
 msgid "Geometric mean (MS)"
-msgstr "வடிவியல் சராசரி (எம்.எச்)"
+msgstr "வடிவியல் சராசரி (MS)"
 
 #: src/contents/ui/Autogain.qml:79
-#, fuzzy
 msgid "Geometric mean (MI)"
-msgstr "வடிவியல் சராசரி (எம்ஐ)"
+msgstr "வடிவியல் சராசரி (MI)"
 
 #: src/contents/ui/Autogain.qml:79
-#, fuzzy
 msgid "Geometric mean (SI)"
-msgstr "வடிவியல் சராசரி (எச்.ஐ)"
+msgstr "வடிவியல் சராசரி (SI)"
 
 #: src/contents/ui/Autogain.qml:88
 msgid "Target"
@@ -191,7 +180,6 @@ msgid "Silence"
 msgstr "ம .னம்"
 
 #: src/contents/ui/Autogain.qml:120
-#, fuzzy
 msgid "Maximum history"
 msgstr "அதிகபட்ச வரலாறு"
 
@@ -211,9 +199,8 @@ msgid "Range"
 msgstr "வீச்சு"
 
 #: src/contents/ui/Autogain.qml:208
-#, fuzzy
 msgid "Output gain"
-msgstr "வெளியீட்டு ஆதாயம்"
+msgstr "வெளியீடு ஆதாயம்"
 
 #: src/contents/ui/Autogain.qml:231 src/contents/ui/BassEnhancer.qml:203
 #: src/contents/ui/BassLoudness.qml:123 src/contents/ui/Compressor.qml:872
@@ -233,33 +220,28 @@ msgstr "வெளியீட்டு ஆதாயம்"
 #: src/contents/ui/RNNoise.qml:303 src/contents/ui/RNNoise.qml:321
 #: src/contents/ui/Speex.qml:174 src/contents/ui/StereoTools.qml:389
 #: src/contents/ui/VoiceSuppressor.qml:165
-#, fuzzy
 msgid "Using %1"
-msgstr "{} ஐப் பயன்படுத்துதல்"
+msgstr "% 1 ஐப் பயன்படுத்துகிறது"
 
 #: src/contents/ui/Autogain.qml:248 src/contents/ui/DeepFilterNet.qml:211
 #: src/contents/ui/LevelMeter.qml:232 src/contents/ui/Pitch.qml:282
-#, fuzzy
 msgid "Reset history"
-msgstr "வரலாற்றை மீட்டமை"
+msgstr "வரலாற்றை மீட்டமைக்கவும்"
 
 #: src/contents/ui/Autogain.qml:255
-#, fuzzy
 msgid "Force silence"
-msgstr "ம .னம்"
+msgstr "கட்டாய அமைதி"
 
 #: src/contents/ui/Autogain.qml:256
 msgid "Force silence when the level is below the silence threshold"
-msgstr ""
+msgstr "நிசப்த வாசலுக்குக் கீழே நிலை இருக்கும்போது அமைதியைக் கட்டாயப்படுத்தவும்"
 
 #: src/contents/ui/Autogain.qml:268 src/contents/ui/DeepFilterNet.qml:219
 #: src/contents/ui/LevelMeter.qml:240 src/contents/ui/Pitch.qml:310
-#, fuzzy
 msgid "Reset settings"
-msgstr "_ ரெசெட் அமைப்புகள்"
+msgstr "அமைப்புகளை மீட்டமைக்கவும்"
 
 #: src/contents/ui/BassEnhancer.qml:56 src/contents/ui/Exciter.qml:56
-#, fuzzy
 msgid "Blend harmonics"
 msgstr "ஆர்மோனிக்ச் கலக்கவும்"
 
@@ -285,9 +267,8 @@ msgid "Scope"
 msgstr "நோக்கம்"
 
 #: src/contents/ui/BassEnhancer.qml:157
-#, fuzzy
 msgid "Floor active"
-msgstr "தரையில் மதிப்பு"
+msgstr "தளம் செயலில் உள்ளது"
 
 #: src/contents/ui/BassEnhancer.qml:168
 msgid "Floor"
@@ -303,7 +284,6 @@ msgstr "தளம்"
 #: src/contents/ui/MultibandCompressor.qml:983
 #: src/contents/ui/MultibandGate.qml:956 src/contents/ui/Reverb.qml:342
 #: src/contents/ui/StereoTools.qml:407
-#, fuzzy
 msgid "Show native window"
 msgstr "சொந்த சாளரத்தைக் காட்டு"
 
@@ -345,17 +325,14 @@ msgid "Link"
 msgstr "இணைப்பு"
 
 #: src/contents/ui/BlocklistDialog.qml:33
-#, fuzzy
 msgid "Excluded Applications"
-msgstr "விலக்கப்பட்ட பயன்பாடுகள் பட்டியல்"
+msgstr "விலக்கப்பட்ட பயன்பாடுகள்"
 
 #: src/contents/ui/BlocklistDialog.qml:49
-#, fuzzy
 msgid "Application node name"
-msgstr "பயன்பாட்டு பெயர்"
+msgstr "பயன்பாட்டு முனையின் பெயர்"
 
 #: src/contents/ui/BlocklistDialog.qml:65
-#, fuzzy
 msgid "Add to excluded applications"
 msgstr "விலக்கப்பட்ட பயன்பாடுகளில் சேர்க்கவும்"
 
@@ -370,43 +347,41 @@ msgid "Empty List"
 msgstr "வெற்று பட்டியல்"
 
 #: src/contents/ui/BlocklistDialog.qml:116
-#, fuzzy
 msgid "No application excluded"
-msgstr "பயன்பாட்டு தொகுதி"
+msgstr "எந்த விண்ணப்பமும் விலக்கப்படவில்லை"
 
 #: src/contents/ui/BlocklistDialog.qml:139
-#, fuzzy
 msgid "Remove Application"
-msgstr "முடக்கு பயன்பாடு"
+msgstr "விண்ணப்பத்தை அகற்று"
 
 #: src/contents/ui/BlocklistDialog.qml:140
 msgid "Are you sure you want to remove this application from the list?"
-msgstr ""
+msgstr "பட்டியலிலிருந்து இந்தப் பயன்பாட்டை நிச்சயமாக அகற்ற விரும்புகிறீர்களா?"
 
 #: src/contents/ui/BlocklistDialog.qml:171
-#, fuzzy
 msgid "Remove this app"
-msgstr "இந்த விளைவை அகற்று"
+msgstr "இந்த பயன்பாட்டை அகற்று"
 
 #: src/contents/ui/BlocklistDialog.qml:200
 msgid "Use media name"
-msgstr ""
+msgstr "மீடியா பெயரைப் பயன்படுத்தவும்"
 
 #: src/contents/ui/BlocklistDialog.qml:201
 msgid ""
 "Also use a combination of node and media name when deciding if a stream "
 "should be blocked"
 msgstr ""
+"ஒரு ச்ட்ரீம் தடுக்கப்பட வேண்டுமா என்பதை தீர்மானிக்கும் போது முனை மற்றும் மீடியா பெயரின் கலவையைப் "
+"பயன்படுத்தவும்"
 
 #: src/contents/ui/BlocklistDialog.qml:212
-#, fuzzy
 msgid "Show excluded apps"
-msgstr "விலக்கப்பட்ட பயன்பாடுகள்"
+msgstr "விலக்கப்பட்ட பயன்பாடுகளைக் காட்டு"
 
 #: src/contents/ui/BlocklistDialog.qml:213
-#, fuzzy
 msgid "Show excluded applications in the list of players/recorders"
-msgstr "விலக்கப்பட்ட பயன்பாடுகளைக் காட்டு"
+msgstr ""
+"பிளேயர்கள்/ரெக்கார்டர்களின் பட்டியலில் விலக்கப்பட்ட பயன்பாடுகளைக் காட்டு"
 
 #: src/contents/ui/Compressor.qml:68 src/tags_plugin_name.cpp:29
 msgid "Compressor"
@@ -440,15 +415,13 @@ msgstr "அதிகரிக்கும்"
 
 #: src/contents/ui/Compressor.qml:94
 #: src/contents/ui/MultibandCompressor.qml:142
-#, fuzzy
 msgid "Boost threshold"
-msgstr "வாசலை அதிகரிக்கும்"
+msgstr "பூச்ட் வாசல்"
 
 #: src/contents/ui/Compressor.qml:114
 #: src/contents/ui/MultibandCompressor.qml:161
-#, fuzzy
 msgid "Boost amount"
-msgstr "தொகையை அதிகரிக்கும்"
+msgstr "அதிகரிக்கும் தொகை"
 
 #: src/contents/ui/Compressor.qml:133 src/contents/ui/Deesser.qml:119
 #: src/contents/ui/Expander.qml:93 src/contents/ui/MultibandCompressor.qml:365
@@ -461,9 +434,8 @@ msgid "Knee"
 msgstr "முழங்கால்"
 
 #: src/contents/ui/Compressor.qml:170 src/contents/ui/Expander.qml:130
-#, fuzzy
 msgid "Threshold and Time"
-msgstr "வாசல்"
+msgstr "வாசல் மற்றும் நேரம்"
 
 #: src/contents/ui/Compressor.qml:180 src/contents/ui/Expander.qml:140
 #: src/contents/ui/Gate.qml:84 src/contents/ui/Gate.qml:857
@@ -517,7 +489,6 @@ msgstr "வெளிப்புறம்"
 #: src/contents/ui/Compressor.qml:278 src/contents/ui/Expander.qml:238
 #: src/contents/ui/Gate.qml:256 src/contents/ui/Limiter.qml:228
 #: src/contents/ui/PageStreamsEffects.qml:440
-#, fuzzy
 msgid "Input device"
 msgstr "உள்ளீட்டு சாதனம்"
 
@@ -541,15 +512,14 @@ msgstr "Rms"
 #: src/contents/ui/Gate.qml:284 src/contents/ui/Gate.qml:402
 #: src/contents/ui/MultibandCompressor.qml:440
 #: src/contents/ui/MultibandGate.qml:413
-#, fuzzy
 msgid "Low-pass"
-msgstr "குறைந்த பாச்"
+msgstr "லோ-பாச்"
 
 #: src/contents/ui/Compressor.qml:306 src/contents/ui/Expander.qml:266
 #: src/contents/ui/Gate.qml:284 src/contents/ui/MultibandCompressor.qml:440
 #: src/contents/ui/MultibandGate.qml:413
 msgid "SMA"
-msgstr ""
+msgstr "எச்எம்ஏ"
 
 #: src/contents/ui/Compressor.qml:316 src/contents/ui/Compressor.qml:331
 #: src/contents/ui/Expander.qml:276 src/contents/ui/Expander.qml:291
@@ -639,7 +609,7 @@ msgstr "பக்க/நடுப்பகுதி"
 #: src/contents/ui/MultibandCompressor.qml:471
 #: src/contents/ui/MultibandGate.qml:444
 msgid "Preamp"
-msgstr ""
+msgstr "முன்பெருக்கி"
 
 #: src/contents/ui/Compressor.qml:377 src/contents/ui/Expander.qml:333
 #: src/contents/ui/Gate.qml:352 src/contents/ui/MultibandCompressor.qml:487
@@ -657,9 +627,8 @@ msgstr "லுக்எட்"
 #: src/contents/ui/Compressor.qml:413 src/contents/ui/EqualizerBandMenu.qml:49
 #: src/contents/ui/Expander.qml:369 src/contents/ui/Filter.qml:68
 #: src/contents/ui/Gate.qml:388
-#, fuzzy
 msgid "High-pass"
-msgstr "உயர்-பாச்"
+msgstr "உயர் பாச்"
 
 #: src/contents/ui/Compressor.qml:417 src/contents/ui/Compressor.qml:431
 #: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Expander.qml:373
@@ -674,9 +643,8 @@ msgstr "அணை"
 #: src/contents/ui/MultibandCompressor.qml:626
 #: src/contents/ui/MultibandGate.qml:599 src/contents/ui/Pitch.qml:122
 #: src/contents/ui/Reverb.qml:188 src/contents/ui/StereoTools.qml:344
-#, fuzzy
 msgid "Dry"
-msgstr "முயற்சிக்கவும்"
+msgstr "உலர்"
 
 #: src/contents/ui/Compressor.qml:504 src/contents/ui/Convolver.qml:493
 #: src/contents/ui/Delay.qml:193 src/contents/ui/Delay.qml:346
@@ -685,7 +653,7 @@ msgstr "முயற்சிக்கவும்"
 #: src/contents/ui/MultibandGate.qml:617 src/contents/ui/Pitch.qml:141
 #: src/contents/ui/Reverb.qml:206 src/contents/ui/StereoTools.qml:362
 msgid "Wet"
-msgstr ""
+msgstr "ஈரமானது"
 
 #: src/contents/ui/Compressor.qml:523 src/contents/ui/Deesser.qml:135
 #: src/contents/ui/Expander.qml:483 src/contents/ui/Gate.qml:498
@@ -700,49 +668,43 @@ msgstr "ஒப்பனை"
 #: src/contents/ui/MultibandCompressor.qml:1006
 #: src/contents/ui/MultibandGate.qml:979
 msgid "Pre-Mix"
-msgstr ""
+msgstr "முன் கலக்கவும்"
 
 #: src/contents/ui/Compressor.qml:551 src/contents/ui/Expander.qml:507
 #: src/contents/ui/Gate.qml:528 src/contents/ui/Limiter.qml:303
 #: src/contents/ui/LspPreMixDialog.qml:38
-#, fuzzy
 msgid "Input to sidechain"
-msgstr "சிட்செயின்"
+msgstr "சைட்செயினுக்கு உள்ளீடு"
 
 #: src/contents/ui/Compressor.qml:567 src/contents/ui/Expander.qml:523
 #: src/contents/ui/Gate.qml:544 src/contents/ui/Limiter.qml:319
 #: src/contents/ui/LspPreMixDialog.qml:54
-#, fuzzy
 msgid "Input to link"
-msgstr "உள்ளீட்டு கண்காணிப்பை இயக்கவும்/முடக்கவும்"
+msgstr "இணைப்பிற்கு உள்ளீடு"
 
 #: src/contents/ui/Compressor.qml:583 src/contents/ui/Expander.qml:539
 #: src/contents/ui/Gate.qml:560 src/contents/ui/Limiter.qml:335
 #: src/contents/ui/LspPreMixDialog.qml:70
-#, fuzzy
 msgid "Sidechain to input"
-msgstr "உள்ளீட்டு சாதனம்"
+msgstr "உள்ளீட்டிற்கான பக்க சங்கிலி"
 
 #: src/contents/ui/Compressor.qml:599 src/contents/ui/Expander.qml:555
 #: src/contents/ui/Gate.qml:576 src/contents/ui/Limiter.qml:351
 #: src/contents/ui/LspPreMixDialog.qml:86
-#, fuzzy
 msgid "Sidechain to link"
-msgstr "பக்கவாட்டு பயன்முறை"
+msgstr "இணைக்க பக்க சங்கிலி"
 
 #: src/contents/ui/Compressor.qml:615 src/contents/ui/Expander.qml:571
 #: src/contents/ui/Gate.qml:592 src/contents/ui/Limiter.qml:367
 #: src/contents/ui/LspPreMixDialog.qml:102
-#, fuzzy
 msgid "Link to sidechain"
-msgstr "சைட்செயினைக் கேளுங்கள்"
+msgstr "பக்க சங்கிலிக்கான இணைப்பு"
 
 #: src/contents/ui/Compressor.qml:631 src/contents/ui/Expander.qml:587
 #: src/contents/ui/Gate.qml:608 src/contents/ui/Limiter.qml:383
 #: src/contents/ui/LspPreMixDialog.qml:118
-#, fuzzy
 msgid "Link to input"
-msgstr "சைட்செயினைக் கேளுங்கள்"
+msgstr "உள்ளீட்டிற்கான இணைப்பு"
 
 #: src/contents/ui/Compressor.qml:675 src/contents/ui/EqualizerBandMenu.qml:117
 #: src/contents/ui/Expander.qml:627 src/contents/ui/Filter.qml:158
@@ -767,19 +729,16 @@ msgstr "உறை"
 #: src/contents/ui/Compressor.qml:913 src/contents/ui/Expander.qml:863
 #: src/contents/ui/Gate.qml:992 src/contents/ui/MultibandCompressor.qml:996
 #: src/contents/ui/MultibandGate.qml:969
-#, fuzzy
 msgid "Stereo split"
 msgstr "ச்டீரியோ பிளவு"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:50
-#, fuzzy
 msgid "Imported a new Convolver impulse file."
-msgstr "உந்துவிசை கோப்பை இறக்குமதி செய்யுங்கள்"
+msgstr "ஒரு புதிய கன்வால்வர் இம்பல்ச் கோப்பு இறக்குமதி செய்யப்பட்டது."
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:52
-#, fuzzy
 msgid "Failed to import the Convolver impulse file."
-msgstr "உந்துவிசை கோப்பை ஏற்றுவதில் தோல்வி"
+msgstr "கன்வால்வர் இம்பல்ச் கோப்பை இறக்குமதி செய்ய முடியவில்லை."
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:66
 #: src/contents/ui/MenuAddPlugins.qml:187
@@ -789,67 +748,60 @@ msgid "Search"
 msgstr "தேடல்"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:109
-#, fuzzy
 msgid "Remove Impulse Response"
-msgstr "கணத்தாக்க மறுமொழி"
+msgstr "இம்பல்ச் ரெச்பான்சை அகற்று"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:110
 msgid "Are you sure you want to remove this impulse response from the list?"
 msgstr ""
+"பட்டியலிலிருந்து இந்த தூண்டுதல் பதிலை நிச்சயமாக அகற்ற விரும்புகிறீர்களா?"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:114
-#, fuzzy
 msgid "Removed the %1 Convolver impulse."
-msgstr "உந்துவிசை கோப்பை ஏற்றுவதில் தோல்வி"
+msgstr "% 1 கன்வால்வர் தூண்டுதல் அகற்றப்பட்டது."
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:116
-#, fuzzy
 msgid "Failed to remove the %1 Convolver impulse."
-msgstr "உந்துவிசை கோப்பை ஏற்றுவதில் தோல்வி"
+msgstr "% 1 கன்வால்வர் தூண்டுதலை அகற்றுவதில் தோல்வி."
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:133
-#, fuzzy
 msgid "Delete this impulse"
-msgstr "தூண்டுதலை அகற்று"
+msgstr "இந்த தூண்டுதலை நீக்கு"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:172
-#, fuzzy
 msgid "Import impulse"
-msgstr "உந்துவிசை இறக்குமதி செய்யுங்கள்"
+msgstr "இறக்குமதி தூண்டுதல்"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:182
 #: src/contents/ui/MenuAddPlugins.qml:203 src/contents/ui/PresetsDialog.qml:126
 msgctxt "@action:button"
 msgid "Close"
-msgstr ""
+msgstr "மூடு"
 
 #: src/contents/ui/Convolver.qml:67
-#, fuzzy
 msgid "Loaded the %1 Convolver impulse."
-msgstr "உந்துவிசை கோப்பை ஏற்றுவதில் தோல்வி"
+msgstr "% 1 கன்வால்வர் உந்துவிசை ஏற்றப்பட்டது."
 
 #: src/contents/ui/Convolver.qml:69 src/contents/ui/Convolver.qml:343
-#, fuzzy
 msgid "Convolver impulse is not set"
-msgstr "உந்துவிசை பதில்களை இணைக்கவும்"
+msgstr "கன்வால்வர் தூண்டுதல் அமைக்கப்படவில்லை"
 
 #: src/contents/ui/Convolver.qml:73
 msgid "The Convolver is in passthrough mode."
-msgstr ""
+msgstr "கன்வால்வர் பாச்த்ரூ பயன்முறையில் உள்ளது."
 
 #: src/contents/ui/Convolver.qml:75
-#, fuzzy
 msgid "Failed to load the %1 impulse. The Convolver is in passthrough mode."
-msgstr "உந்துவிசை கோப்பை ஏற்றுவதில் தோல்வி"
+msgstr ""
+"% 1 தூண்டுதலை ஏற்றுவதில் தோல்வி. கன்வால்வர் பாச்த்ரூ பயன்முறையில் உள்ளது."
 
 #: src/contents/ui/Convolver.qml:152
 msgid "First"
-msgstr ""
+msgstr "முதலில்"
 
 #: src/contents/ui/Convolver.qml:165
-#, fuzzy
 msgid "Second"
-msgstr "இரண்டாவது கர்னல்"
+msgstr "இரண்டாவது"
 
 #: src/contents/ui/Convolver.qml:197 src/contents/ui/Convolver.qml:232
 msgid "Combine"
@@ -864,9 +816,8 @@ msgid "Spectrum"
 msgstr "நிறமாலை"
 
 #: src/contents/ui/Convolver.qml:273
-#, fuzzy
 msgid "Log scale"
-msgstr "பதிவு அளவு"
+msgstr "பதிவு அளவுகோல்"
 
 #: src/contents/ui/Convolver.qml:380 src/contents/ui/Crusher.qml:207
 msgid "Rate"
@@ -888,10 +839,9 @@ msgstr "சேனல்கள்"
 
 #: src/contents/ui/Convolver.qml:400
 msgid "Format"
-msgstr ""
+msgstr "வடிவம்"
 
 #: src/contents/ui/Convolver.qml:458
-#, fuzzy
 msgid "Stereo width"
 msgstr "ச்டீரியோ அகலம்"
 
@@ -901,45 +851,43 @@ msgstr "ஆட்டோகெயின்"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:31
 msgid "Target Orientation"
-msgstr ""
+msgstr "இலக்கு நோக்குநிலை"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:42
 #: src/contents/ui/ConvolverSofaDialog.qml:138
 msgid "Azimuth"
-msgstr ""
+msgstr "திசை கோடு"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:58
 #: src/contents/ui/ConvolverSofaDialog.qml:143
-#, fuzzy
 msgid "Elevation"
-msgstr "குறைப்பு"
+msgstr "உயர்வு ரேகை"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:74
 #: src/contents/ui/ConvolverSofaDialog.qml:148
 msgid "Radius"
-msgstr ""
+msgstr "ஆரம்"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:90
-#, fuzzy
 msgid "Status"
-msgstr "மாநிலம்"
+msgstr "நிலை"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:105
 #: src/contents/ui/PreferencesSheet.qml:65
 msgid "Database"
-msgstr ""
+msgstr "தரவுத்தளம்"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:110
 msgid "Measurements"
-msgstr ""
+msgstr "அளவீடுகள்"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:115
 msgid "Index"
-msgstr ""
+msgstr "குறியெண்"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:173
 msgid "Apply"
-msgstr ""
+msgstr "இடு"
 
 #: src/contents/ui/Crossfeed.qml:78
 msgid "Cutoff"
@@ -950,9 +898,8 @@ msgid "Feed"
 msgstr "தீவனம்"
 
 #: src/contents/ui/Crossfeed.qml:113
-#, fuzzy
 msgid "Crossfeed Presets"
-msgstr "குறுக்குவெட்டு"
+msgstr "கிராச்ஃபீட் முன்னமைவுகள்"
 
 #: src/contents/ui/Crossfeed.qml:117
 msgid "Default"
@@ -964,26 +911,24 @@ msgid "Presets"
 msgstr "முன்னமைவுகள்"
 
 #: src/contents/ui/Crusher.qml:55
-#, fuzzy
 msgid "Bit reduction"
-msgstr "குறைப்பு"
+msgstr "பிட் குறைப்பு"
 
 #: src/contents/ui/Crusher.qml:90 src/contents/ui/PreferencesSheet.qml:374
 msgid "Shape"
 msgstr "வடிவம்"
 
 #: src/contents/ui/Crusher.qml:100
-#, fuzzy
 msgid "Linear"
-msgstr "வரிகள்"
+msgstr "நேரியல்"
 
 #: src/contents/ui/Crusher.qml:100
 msgid "Logarithmic"
-msgstr ""
+msgstr "மடக்கை"
 
 #: src/contents/ui/Crusher.qml:109
 msgid "DC offset"
-msgstr ""
+msgstr "நேர்மின்னழுத்தம் ஆஃப்செட்"
 
 #: src/contents/ui/Crusher.qml:125 src/contents/ui/Pitch.qml:299
 msgid "Anti-aliasing"
@@ -994,9 +939,8 @@ msgid "Mix"
 msgstr "கலக்க"
 
 #: src/contents/ui/Crusher.qml:159
-#, fuzzy
 msgid "Sample Rate"
-msgstr "குறைப்பு"
+msgstr "மாதிரி விகிதம்"
 
 #: src/contents/ui/Crusher.qml:165 src/contents/ui/Gate.qml:119
 #: src/contents/ui/Gate.qml:653 src/contents/ui/Maximizer.qml:100
@@ -1006,7 +950,7 @@ msgstr "குறைப்பு"
 
 #: src/contents/ui/Crusher.qml:180
 msgid "Low frequency oscillator"
-msgstr ""
+msgstr "குறைந்த அதிர்வெண் ஆசிலேட்டர்"
 
 #: src/contents/ui/CrystalizerBand.qml:58
 #: src/contents/ui/EqualizerBandMenu.qml:185
@@ -1023,13 +967,12 @@ msgid "Bypass"
 msgstr "பைபாச்"
 
 #: src/contents/ui/Crystalizer.qml:110
-#, fuzzy
 msgid "Oversampling quality"
-msgstr "மிகைப்படுத்தல்"
+msgstr "மிகை மாதிரி தகுதி"
 
 #: src/contents/ui/Crystalizer.qml:128
 msgid "Transition band"
-msgstr ""
+msgstr "டிரான்சிசன் பேண்ட்"
 
 #: src/contents/ui/Crystalizer.qml:170 src/contents/ui/Limiter.qml:87
 msgid "Oversampling"
@@ -1037,42 +980,35 @@ msgstr "மிகைப்படுத்தல்"
 
 #: src/contents/ui/Crystalizer.qml:180
 msgid "Adaptive intensity"
-msgstr ""
+msgstr "தழுவல் தீவிரம்"
 
 #: src/contents/ui/Crystalizer.qml:190
-#, fuzzy
 msgid "Fixed quantum"
-msgstr "குறைந்தபட்ச தொகை"
+msgstr "நிலையான குவாண்டம்"
 
 #: src/contents/ui/DeepFilterNet.qml:51
-#, fuzzy
 msgid "Attenuation limit"
-msgstr "விழிப்புணர்வு வரம்பு"
+msgstr "குறைப்பு வரம்பு"
 
 #: src/contents/ui/DeepFilterNet.qml:105
-#, fuzzy
 msgid "Minimum processing threshold"
-msgstr "குறைந்தபட்ச செயலாக்க வாசல்"
+msgstr "குறைந்தபட்ச செயலாக்க வரம்பு"
 
 #: src/contents/ui/DeepFilterNet.qml:121
-#, fuzzy
 msgid "Maximum ERB processing threshold"
-msgstr "அதிகபட்ச ஈஆர்பி செயலாக்க வாசல்"
+msgstr "அதிகபட்ச ERB செயலாக்க வரம்பு"
 
 #: src/contents/ui/DeepFilterNet.qml:137
-#, fuzzy
 msgid "Maximum DF processing threshold"
-msgstr "அதிகபட்ச டி.எஃப் செயலாக்க வாசல்"
+msgstr "அதிகபட்ச DF செயலாக்க வரம்பு"
 
 #: src/contents/ui/DeepFilterNet.qml:153
-#, fuzzy
 msgid "Minimum processing buffer"
-msgstr "குறைந்தபட்ச செயலாக்க இடையகம்"
+msgstr "குறைந்தபட்ச செயலாக்க தாங்கல்"
 
 #: src/contents/ui/DeepFilterNet.qml:169
-#, fuzzy
 msgid "Post filter Beta"
-msgstr "வடிகட்டி பீட்டாவை இடுங்கள்"
+msgstr "பிந்தைய வடிகட்டி பீட்டா"
 
 #: src/contents/ui/Deesser.qml:63 src/tags_plugin_name.cpp:35
 msgid "Deesser"
@@ -1083,9 +1019,8 @@ msgid "Detection"
 msgstr "கண்டறிதல்"
 
 #: src/contents/ui/Deesser.qml:93
-#, fuzzy
 msgid "Wideband"
-msgstr "அகலமான"
+msgstr "வைட்பேண்ட்"
 
 #: src/contents/ui/Deesser.qml:93
 msgid "Split"
@@ -1111,40 +1046,36 @@ msgid "Filter"
 msgstr "வடிப்பி"
 
 #: src/contents/ui/Deesser.qml:184
-#, fuzzy
 msgid "F1 split"
-msgstr "எஃப் 1 பிளவு"
+msgstr "F1 பிளவு"
 
 #: src/contents/ui/Deesser.qml:201
 msgid "F2 peak"
-msgstr ""
+msgstr "F2 உச்சம்"
 
 #: src/contents/ui/Deesser.qml:218
 msgid "F1 gain"
-msgstr ""
+msgstr "F1 ஆதாயம்"
 
 #: src/contents/ui/Deesser.qml:235
-#, fuzzy
 msgid "F2 level"
-msgstr "எஃப் 2 நிலை"
+msgstr "F2 நிலை"
 
 #: src/contents/ui/Deesser.qml:253
-#, fuzzy
 msgid "F2 peak Q"
-msgstr "F2 உச்ச Q"
+msgstr "F2 உச்சம் கே"
 
 #: src/contents/ui/Deesser.qml:276
 msgid "Level"
 msgstr "நிலை"
 
 #: src/contents/ui/Deesser.qml:297
-#, fuzzy
 msgid "Gain reduction"
-msgstr "இசைக்குழு குறைப்பு"
+msgstr "குறைப்பு கிடைக்கும்"
 
 #: src/contents/ui/Delay.qml:74 src/contents/ui/Delay.qml:227
 msgid "Distance"
-msgstr ""
+msgstr "தூரம்"
 
 #: src/contents/ui/Delay.qml:74 src/contents/ui/Delay.qml:103
 #: src/contents/ui/Delay.qml:227 src/contents/ui/Delay.qml:256
@@ -1155,74 +1086,65 @@ msgstr "நேரம்"
 
 #: src/contents/ui/Delay.qml:121 src/contents/ui/Delay.qml:274
 msgid "Meters"
-msgstr ""
+msgstr "மீட்டர்கள்"
 
 #: src/contents/ui/Delay.qml:139 src/contents/ui/Delay.qml:292
-#, fuzzy
 msgid "Centimeters"
-msgstr "சென்ட்கள்"
+msgstr "சென்டிமீட்டர்கள்"
 
 #: src/contents/ui/Delay.qml:158 src/contents/ui/Delay.qml:311
 msgid "Temperature"
-msgstr ""
+msgstr "வெப்பநிலை"
 
 #: src/contents/ui/Delay.qml:390
-#, fuzzy
 msgid "Invert left"
-msgstr "தலைகீழ் கட்டம்"
+msgstr "இடதுபுறமாக தலைகீழாக மாற்றவும்"
 
 #: src/contents/ui/Delay.qml:400
-#, fuzzy
 msgid "Invert right"
-msgstr "தலைகீழ் கட்டம்"
+msgstr "வலதுபுறமாக மாற்றவும்"
 
 #: src/contents/ui/DelegateClientsList.qml:56
 #: src/contents/ui/DelegateModulesList.qml:56
-#, fuzzy
 msgctxt "@info:placeholder"
 msgid "Unknown"
 msgstr "தெரியவில்லை"
 
 #: src/contents/ui/DelegateClientsList.qml:60
 msgid "(id: %1)"
-msgstr ""
+msgstr "(ஐடி:% 1)"
 
 #: src/contents/ui/DelegateClientsList.qml:66
-#, fuzzy
 msgid "Access: %1"
-msgstr "அணுகல்"
+msgstr "அணுகல்:% 1"
 
 #: src/contents/ui/DelegateClientsList.qml:73
 msgid "API: %1"
-msgstr ""
+msgstr "API: % 1"
 
 #: src/contents/ui/DelegateModulesList.qml:60
 msgctxt "@info:placeholder"
 msgid "Not set"
-msgstr ""
+msgstr "அமைக்கப்படவில்லை"
 
 #: src/contents/ui/DelegateModulesList.qml:60
 msgid "(id: %1, version: %2)"
-msgstr ""
+msgstr "(ஐடி: %1, பதிப்பு: %2)"
 
 #: src/contents/ui/DelegateModulesList.qml:66
-#, fuzzy
 msgctxt "@info:placeholder"
 msgid "No description set"
-msgstr "விவரம்"
+msgstr "விளக்கம் எதுவும் அமைக்கப்படவில்லை"
 
 #: src/contents/ui/DelegatePluginsList.qml:118
-#, fuzzy
 msgid "Toggle this effect"
-msgstr "இந்த விளைவை இயக்கவும்/முடக்கவும்"
+msgstr "இந்த விளைவை மாற்றவும்"
 
 #: src/contents/ui/DelegatePluginsList.qml:126
-#, fuzzy
 msgid "Remove this effect"
-msgstr "இந்த விளைவை அகற்று"
+msgstr "இந்த விளைவை அகற்றவும்"
 
 #: src/contents/ui/DelegateStreamsList.qml:96
-#, fuzzy
 msgid "channels"
 msgstr "சேனல்கள்"
 
@@ -1238,75 +1160,64 @@ msgid "Exclude"
 msgstr "விலக்கு"
 
 #: src/contents/ui/DelegateStreamsList.qml:130
-#, fuzzy
 msgid "Add %1 to excluded applications"
-msgstr "விலக்கப்பட்ட பயன்பாடுகளில் சேர்க்கவும்"
+msgstr "விலக்கப்பட்ட பயன்பாடுகளில் %1ஐச் சேர்க்கவும்"
 
 #: src/contents/ui/EchoCanceller.qml:60 src/tags_plugin_name.cpp:37
 msgid "Echo Canceller"
 msgstr "எக்கோ ரத்துசெய்தல்"
 
 #: src/contents/ui/EchoCanceller.qml:72
-#, fuzzy
 msgid "Mobile mode"
-msgstr "ச்டீரியோ பயன்முறை"
+msgstr "மொபைல் பயன்முறை"
 
 #: src/contents/ui/EchoCanceller.qml:81
-#, fuzzy
 msgid "Enforce high-pass"
-msgstr "உயர்-பாச்"
+msgstr "உயர்-பாசை அமல்படுத்தவும்"
 
 #: src/contents/ui/EchoCanceller.qml:93
 msgid "Noise Suppression"
 msgstr "இரைச்சல் நீக்கம்"
 
 #: src/contents/ui/EchoCanceller.qml:106
-#, fuzzy
 msgid "Strength"
-msgstr "வடிகட்டி நீளம்"
+msgstr "வலிமை"
 
 #: src/contents/ui/EchoCanceller.qml:110 src/contents/ui/Loudness.qml:118
-#, fuzzy
 msgid "Low"
-msgstr "குறைந்த வெட்டு"
+msgstr "குறைந்த"
 
 #: src/contents/ui/EchoCanceller.qml:110
-#, fuzzy
 msgid "Moderate"
-msgstr "நவீன"
+msgstr "மிதமான"
 
 #: src/contents/ui/EchoCanceller.qml:110 src/contents/ui/Loudness.qml:118
-#, fuzzy
 msgid "High"
-msgstr "உயர் வெட்டு"
+msgstr "உயர்"
 
 #: src/contents/ui/EchoCanceller.qml:110
-#, fuzzy
 msgid "Very high"
-msgstr "உயர் வெட்டு"
+msgstr "மிக உயர்ந்தது"
 
 #: src/contents/ui/EchoCanceller.qml:120
-#, fuzzy
 msgid "High-Pass Filter"
-msgstr "உயர்-பாச் வடிகட்டி முறை"
+msgstr "ஐ-பாச் வடிகட்டி"
 
 #: src/contents/ui/EchoCanceller.qml:132
-#, fuzzy
 msgid "Full band"
-msgstr "பட்டைகள்"
+msgstr "முழு இசைக்குழு"
 
 #: src/contents/ui/EchoCanceller.qml:172 src/contents/ui/Speex.qml:74
-#, fuzzy
 msgid "Automatic gain control"
 msgstr "தானியங்கு மிகைப்பு கட்டுப்பாடு"
 
 #: src/contents/ui/EeInputOutputGain.qml:36
 msgid "Audio levels control"
-msgstr ""
+msgstr "ஆடியோ நிலை கட்டுப்பாடு"
 
 #: src/contents/ui/EeInputOutputGain.qml:37
 msgid "Input and output gain controls with level meters"
-msgstr ""
+msgstr "நிலை மீட்டர்களுடன் உள்ளீடு மற்றும் வெளியீடு ஆதாயக் கட்டுப்பாடுகள்"
 
 #: src/contents/ui/EeInputOutputGain.qml:130 src/contents/ui/Main.qml:554
 #: src/contents/ui/StereoTools.qml:58
@@ -1317,23 +1228,20 @@ msgstr "உள்ளீடு"
 #: src/contents/ui/MultibandCompressor.qml:671
 #: src/contents/ui/MultibandCompressor.qml:930
 #: src/contents/ui/MultibandGate.qml:644 src/contents/ui/MultibandGate.qml:903
-#, fuzzy
 msgid "Band"
-msgstr "பட்டைகள்"
+msgstr "பட்டை"
 
 #: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:68
 msgid "Bell"
 msgstr "மணி"
 
 #: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:68
-#, fuzzy
 msgid "High-shelf"
-msgstr "உயர்-அலமாரியில்"
+msgstr "உயர் அலமாரி"
 
 #: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:68
-#, fuzzy
 msgid "Low-shelf"
-msgstr "குறைந்த-அலமாரியில்"
+msgstr "குறைந்த அலமாரி"
 
 #: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:68
 msgid "Notch"
@@ -1344,52 +1252,48 @@ msgid "Resonance"
 msgstr "ஒத்திசை"
 
 #: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:68
-#, fuzzy
 msgid "Allpass"
-msgstr "பைபாச்"
+msgstr "ஆல்பாச்"
 
 #: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:68
-#, fuzzy
 msgid "Bandpass"
-msgstr "பேண்ட் பைபாச்"
+msgstr "பட்டைவிடு"
 
 #: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:68
-#, fuzzy
 msgid "Ladder-pass"
-msgstr "ஏணி-பாச்"
+msgstr "ஏணி-கடவு"
 
 #: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:68
-#, fuzzy
 msgid "Ladder-rejection"
 msgstr "ஏணி-நிராகரிப்பு"
 
 #: src/contents/ui/EqualizerBandMenu.qml:63 src/contents/ui/Filter.qml:82
 msgid "RLC (BT)"
-msgstr ""
+msgstr "RLC (BT)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:63 src/contents/ui/Filter.qml:82
 msgid "RLC (MT)"
-msgstr ""
+msgstr "RLC (MT)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:63 src/contents/ui/Filter.qml:82
 msgid "BWC (BT)"
-msgstr ""
+msgstr "BWC (BT)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:63 src/contents/ui/Filter.qml:82
 msgid "BWC (MT)"
-msgstr ""
+msgstr "BWC (MT)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:63 src/contents/ui/Filter.qml:82
 msgid "LRX (BT)"
-msgstr ""
+msgstr "LRX (BT)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:63 src/contents/ui/Filter.qml:82
 msgid "LRX (MT)"
-msgstr ""
+msgstr "LRX (MT)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:63 src/contents/ui/Filter.qml:82
 msgid "APO (DR)"
-msgstr ""
+msgstr "இலிருந்து (DR)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:73 src/contents/ui/Filter.qml:106
 msgid "Slope"
@@ -1410,9 +1314,8 @@ msgid "Width"
 msgstr "அகலம்"
 
 #: src/contents/ui/EqualizerBandMenu.qml:169
-#, fuzzy
 msgid "oct"
-msgstr "குறைந்த வெட்டு"
+msgstr "அக்"
 
 #: src/contents/ui/EqualizerBandMenu.qml:197
 #: src/contents/ui/MultibandCompressor.qml:101
@@ -1421,88 +1324,86 @@ msgid "Solo"
 msgstr "தனி"
 
 #: src/contents/ui/Equalizer.qml:68 src/contents/ui/Equalizer.qml:108
-#, fuzzy
 msgid "APO preset"
-msgstr "அப்போ முன்னமைவுகள்"
+msgstr "APO முன்னமைவு"
 
 #: src/contents/ui/Equalizer.qml:71
-#, fuzzy
 msgid "Failed to import the Equalizer APO preset file."
-msgstr "அப்போ முன்னமைக்கப்பட்ட கோப்பை இறக்குமதி செய்யுங்கள்"
+msgstr "Equalizer APO முன்னமைக்கப்பட்ட கோப்பை இறக்குமதி செய்ய முடியவில்லை."
 
 #: src/contents/ui/Equalizer.qml:76
-#, fuzzy
 msgid "Imported the Equalizer APO preset file."
-msgstr "சமநிலைப்படுத்தி முன்னமைக்கப்பட்ட கோப்பை ஏற்றுமதி செய்யுங்கள்"
+msgstr "Equalizer APO முன்னமைக்கப்பட்ட கோப்பு இறக்குமதி செய்யப்பட்டது."
 
 #: src/contents/ui/Equalizer.qml:78
-#, fuzzy
 msgid "Imported the Equalizer APO preset file into the left channel."
-msgstr "சமநிலைப்படுத்தி முன்னமைக்கப்பட்ட கோப்பை ஏற்றுமதி செய்யுங்கள்"
+msgstr ""
+"Equalizer APO முன்னமைக்கப்பட்ட கோப்பை இடது சேனலில் இறக்குமதி செய்யப்பட்டது."
 
 #: src/contents/ui/Equalizer.qml:80
-#, fuzzy
 msgid "Imported the Equalizer APO preset file into the right channel."
-msgstr "சமநிலைப்படுத்தி முன்னமைக்கப்பட்ட கோப்பை ஏற்றுமதி செய்யுங்கள்"
+msgstr ""
+"Equalizer APO முன்னமைக்கப்பட்ட கோப்பை சரியான சேனலில் இறக்குமதி செய்யப்பட்டது."
 
 #: src/contents/ui/Equalizer.qml:93
-#, fuzzy
 msgid "GraphicEQ preset"
-msgstr "கிராஃபிசெக் முன்னமைவுகள்"
+msgstr "GraphicEQ முன்னமைவு"
 
 #: src/contents/ui/Equalizer.qml:96
-#, fuzzy
 msgid "Imported the GraphicEQ preset file."
-msgstr "கிராஃபிசெக் முன்னமைக்கப்பட்ட கோப்பை இறக்குமதி செய்யுங்கள்"
+msgstr "GraphicEQ முன்னமைக்கப்பட்ட கோப்பு இறக்குமதி செய்யப்பட்டது."
 
 #: src/contents/ui/Equalizer.qml:98
-#, fuzzy
 msgid "Failed to import the GraphicEQ preset file."
-msgstr "கிராஃபிசெக் முன்னமைக்கப்பட்ட கோப்பை இறக்குமதி செய்யுங்கள்"
+msgstr "GraphicEQ முன்னமைக்கப்பட்ட கோப்பை இறக்குமதி செய்ய முடியவில்லை."
 
 #: src/contents/ui/Equalizer.qml:111
-#, fuzzy
 msgid ""
 "Failed to export the current Equalizer settings to an external APO preset "
 "file."
-msgstr "அப்போ முன்னமைக்கப்பட்ட கோப்பை இறக்குமதி செய்யுங்கள்"
+msgstr ""
+"தற்போதைய Equalizer அமைப்புகளை வெளிப்புற APO முன்னமைக்கப்பட்ட கோப்பிற்கு ஏற்றுமதி செய்ய "
+"முடியவில்லை."
 
 #: src/contents/ui/Equalizer.qml:116
-#, fuzzy
 msgid "Exported the current Equalizer settings to an external APO preset file."
-msgstr "சமநிலைப்படுத்தி முன்னமைக்கப்பட்ட கோப்பை ஏற்றுமதி செய்யுங்கள்"
+msgstr ""
+"தற்போதைய Equalizer அமைப்புகளை வெளிப்புற APO முன்னமைக்கப்பட்ட கோப்பிற்கு ஏற்றுமதி "
+"செய்தது."
 
 #: src/contents/ui/Equalizer.qml:118
-#, fuzzy
 msgid ""
 "Exported the current Equalizer settings of the left channel to an external "
 "APO preset file."
-msgstr "சமநிலைப்படுத்தி முன்னமைக்கப்பட்ட கோப்பை ஏற்றுமதி செய்யுங்கள்"
+msgstr ""
+"இடது சேனலின் தற்போதைய ஈக்வலைசர் அமைப்புகளை வெளிப்புற APO முன்னமைக்கப்பட்ட கோப்பிற்கு "
+"ஏற்றுமதி செய்தது."
 
 #: src/contents/ui/Equalizer.qml:120
-#, fuzzy
 msgid ""
 "Exported the current Equalizer settings of the right channel to an external "
 "APO preset file."
-msgstr "சமநிலைப்படுத்தி முன்னமைக்கப்பட்ட கோப்பை ஏற்றுமதி செய்யுங்கள்"
+msgstr ""
+"வலது சேனலின் தற்போதைய ஈக்வலைசர் அமைப்புகளை வெளிப்புற APO முன்னமைக்கப்பட்ட கோப்பிற்கு "
+"ஏற்றப்பட்டது."
 
 #: src/contents/ui/Equalizer.qml:144 src/contents/ui/Filter.qml:96
 #: src/contents/ui/Loudness.qml:76
 msgid "IIR"
-msgstr ""
+msgstr "ஐ.ஐ.ஆர்"
 
 #: src/contents/ui/Equalizer.qml:144 src/contents/ui/Filter.qml:96
 msgid "FIR"
-msgstr ""
+msgstr "FIR"
 
 #: src/contents/ui/Equalizer.qml:144 src/contents/ui/Filter.qml:96
 #: src/contents/ui/Loudness.qml:76
 msgid "FFT"
-msgstr ""
+msgstr "FFT"
 
 #: src/contents/ui/Equalizer.qml:144 src/contents/ui/Filter.qml:96
 msgid "SPM"
-msgstr ""
+msgstr "SPM"
 
 #: src/contents/ui/Equalizer.qml:153
 msgid "Bands"
@@ -1514,58 +1415,48 @@ msgid "Balance"
 msgstr "இருப்பு"
 
 #: src/contents/ui/Equalizer.qml:186
-#, fuzzy
 msgid "Pitch left"
-msgstr "சுருதி இடது"
+msgstr "பிட்ச் இடது"
 
 #: src/contents/ui/Equalizer.qml:194 src/contents/ui/Equalizer.qml:211
 msgid "st"
-msgstr ""
+msgstr "செயின்ட்"
 
 #: src/contents/ui/Equalizer.qml:203
-#, fuzzy
 msgid "Pitch right"
 msgstr "சுருதி வலது"
 
 #: src/contents/ui/Equalizer.qml:333
-#, fuzzy
 msgid "Split channels"
-msgstr "பிளவு சேனல்கள்"
+msgstr "சேனல்களைப் பிரிக்கவும்"
 
 #: src/contents/ui/Equalizer.qml:343
-#, fuzzy
 msgid "Flat response"
 msgstr "தட்டையான பதில்"
 
 #: src/contents/ui/Equalizer.qml:350
-#, fuzzy
 msgid "Calculate frequencies"
 msgstr "அதிர்வெண்களைக் கணக்கிடுங்கள்"
 
 #: src/contents/ui/Equalizer.qml:357
-#, fuzzy
 msgid "Sort bands"
-msgstr "பட்டைகள் வரிசைப்படுத்துங்கள்"
+msgstr "பட்டைகளை வரிசைப்படுத்துங்கள்"
 
 #: src/contents/ui/Equalizer.qml:364
-#, fuzzy
 msgid "Import APO"
-msgstr "இறக்குமதி"
+msgstr "இருந்து இறக்குமதி"
 
 #: src/contents/ui/Equalizer.qml:371
-#, fuzzy
 msgid "Import APO (GraphicEQ)"
-msgstr "கிராஃபிசெக் முன்னமைக்கப்பட்ட கோப்பை இறக்குமதி செய்யுங்கள்"
+msgstr "இறக்குமதி APO (GraphicEQ)"
 
 #: src/contents/ui/Equalizer.qml:378
-#, fuzzy
 msgid "Export APO"
-msgstr "ஏற்றுமதி முன்னமைவு"
+msgstr "ஏற்றுமதி APO"
 
 #: src/contents/ui/Exciter.qml:161
-#, fuzzy
 msgid "Ceil active"
-msgstr "உறவினர்"
+msgstr "செல் செயலில்"
 
 #: src/contents/ui/Exciter.qml:172
 msgid "Ceil"
@@ -1582,14 +1473,12 @@ msgid "Internal"
 msgstr "உள்"
 
 #: src/contents/ui/Filter.qml:78
-#, fuzzy
 msgid "Filter mode"
-msgstr "ச்டீரியோ பயன்முறை"
+msgstr "வடிகட்டி முறை"
 
 #: src/contents/ui/Filter.qml:92
-#, fuzzy
 msgid "Equalizer mode"
-msgstr "சமநிலைப்படுத்தி பயன்முறை"
+msgstr "சமநிலை முறை"
 
 #: src/contents/ui/Gate.qml:72 src/tags_plugin_name.cpp:42
 msgid "Gate"
@@ -1612,71 +1501,58 @@ msgid "Start"
 msgstr "தொடங்கு"
 
 #: src/contents/ui/LevelMeter.qml:67
-#, fuzzy
 msgid "Input Level"
-msgstr "உள்ளீட்டு சாதனம்"
+msgstr "உள்ளீடு நிலை"
 
 #: src/contents/ui/LevelMeter.qml:106
 msgid "True Peak"
 msgstr "உண்மையான உச்சநிலை"
 
 #: src/contents/ui/Limiter.qml:77
-#, fuzzy
 msgid "Herm thin"
 msgstr "எர்ம் மெல்லிய"
 
 #: src/contents/ui/Limiter.qml:77
-#, fuzzy
 msgid "Herm wide"
 msgstr "எர்ம் அகலம்"
 
 #: src/contents/ui/Limiter.qml:77
-#, fuzzy
 msgid "Herm tail"
 msgstr "எர்ம் வால்"
 
 #: src/contents/ui/Limiter.qml:77
-#, fuzzy
 msgid "Herm duck"
 msgstr "எர்ம் வாத்து"
 
 #: src/contents/ui/Limiter.qml:77
-#, fuzzy
 msgid "Exp thin"
-msgstr "எக்ச்ப் மெல்லிய"
+msgstr "ஃச் மெல்லிய"
 
 #: src/contents/ui/Limiter.qml:77
-#, fuzzy
 msgid "Exp wide"
-msgstr "எக்ச்ப் அகலம்"
+msgstr "அகலம்"
 
 #: src/contents/ui/Limiter.qml:77
-#, fuzzy
 msgid "Exp tail"
-msgstr "எக்ச்ப் வால்"
+msgstr "ஃச் வால்"
 
 #: src/contents/ui/Limiter.qml:77
-#, fuzzy
 msgid "Exp duck"
 msgstr "எக்ச்ப் வாத்து"
 
 #: src/contents/ui/Limiter.qml:77
-#, fuzzy
 msgid "Line thin"
-msgstr "வரி மெல்லிய"
+msgstr "மெல்லிய கோடு"
 
 #: src/contents/ui/Limiter.qml:77
-#, fuzzy
 msgid "Line wide"
-msgstr "வரி அகலம்"
+msgstr "கோடு அகலம்"
 
 #: src/contents/ui/Limiter.qml:77
-#, fuzzy
 msgid "Line tail"
-msgstr "வரி வால்"
+msgstr "கோடு வால்"
 
 #: src/contents/ui/Limiter.qml:77
-#, fuzzy
 msgid "Line duck"
 msgstr "வரி வாத்து"
 
@@ -1687,119 +1563,96 @@ msgid "None"
 msgstr "எதுவுமில்லை"
 
 #: src/contents/ui/Limiter.qml:91
-#, fuzzy
 msgid "Half x2/16 bits"
-msgstr "தேர்தல் (சொல்லுங்கள்)"
+msgstr "அரை x2/16 பிட்கள்"
 
 #: src/contents/ui/Limiter.qml:91
-#, fuzzy
 msgid "Half x2/24 bits"
-msgstr "தேர்தல் (சொல்லுங்கள்)"
+msgstr "அரை x2/24 பிட்கள்"
 
 #: src/contents/ui/Limiter.qml:91
-#, fuzzy
 msgid "Half x3/16 bits"
-msgstr "கச்சா (சொல்லுங்கள்)"
+msgstr "அரை x3/16 பிட்கள்"
 
 #: src/contents/ui/Limiter.qml:91
-#, fuzzy
 msgid "Half x3/24 bits"
-msgstr "கச்சா (சொல்லுங்கள்)"
+msgstr "அரை x3/24 பிட்கள்"
 
 #: src/contents/ui/Limiter.qml:91
-#, fuzzy
 msgid "Half x4/16 bits"
-msgstr "அரை ஃச் 4 (சொல்லுங்கள்)"
+msgstr "அரை x4/16 பிட்கள்"
 
 #: src/contents/ui/Limiter.qml:91
-#, fuzzy
 msgid "Half x4/24 bits"
-msgstr "அரை ஃச் 4 (சொல்லுங்கள்)"
+msgstr "அரை x4/24 பிட்கள்"
 
 #: src/contents/ui/Limiter.qml:91
-#, fuzzy
 msgid "Half x6/16 bits"
-msgstr "அரை ஃச் 6 (2 எல்)"
+msgstr "அரை x6/16 பிட்கள்"
 
 #: src/contents/ui/Limiter.qml:91
-#, fuzzy
 msgid "Half x6/24 bits"
-msgstr "அரை ஃச் 6 (2 எல்)"
+msgstr "அரை x6/24 பிட்கள்"
 
 #: src/contents/ui/Limiter.qml:91
-#, fuzzy
 msgid "Half x8/16 bits"
-msgstr "அரை ஃச் 8 (2 எல்)"
+msgstr "அரை x8/16 பிட்கள்"
 
 #: src/contents/ui/Limiter.qml:91
-#, fuzzy
 msgid "Half x8/24 bits"
-msgstr "அரை ஃச் 8 (2 எல்)"
+msgstr "அரை x8/24 பிட்கள்"
 
 #: src/contents/ui/Limiter.qml:91
-#, fuzzy
 msgid "Full x2/16 bits"
-msgstr "முழு ஃச் 2 (2 எல்)"
+msgstr "முழு x2/16 பிட்கள்"
 
 #: src/contents/ui/Limiter.qml:91
-#, fuzzy
 msgid "Full x2/24 bits"
-msgstr "முழு ஃச் 2 (2 எல்)"
+msgstr "முழு x2/24 பிட்கள்"
 
 #: src/contents/ui/Limiter.qml:91
-#, fuzzy
 msgid "Full x3/16 bits"
-msgstr "முழு ஃச் 3 (2 எல்)"
+msgstr "முழு x3/16 பிட்கள்"
 
 #: src/contents/ui/Limiter.qml:91
-#, fuzzy
 msgid "Full x3/24 bits"
-msgstr "முழு ஃச் 3 (2 எல்)"
+msgstr "முழு x3/24 பிட்கள்"
 
 #: src/contents/ui/Limiter.qml:91
-#, fuzzy
 msgid "Full x4/16 bits"
-msgstr "முழு ஃச் 4 (2 எல்)"
+msgstr "முழு x4/16 பிட்கள்"
 
 #: src/contents/ui/Limiter.qml:91
-#, fuzzy
 msgid "Full x4/24 bits"
-msgstr "முழு ஃச் 4 (2 எல்)"
+msgstr "முழு x4/24 பிட்கள்"
 
 #: src/contents/ui/Limiter.qml:91
-#, fuzzy
 msgid "Full x6/16 bits"
-msgstr "முழு ஃச் 6 (2 எல்)"
+msgstr "முழு x6/16 பிட்கள்"
 
 #: src/contents/ui/Limiter.qml:91
-#, fuzzy
 msgid "Full x6/24 bits"
-msgstr "முழு ஃச் 6 (2 எல்)"
+msgstr "முழு x6/24 பிட்கள்"
 
 #: src/contents/ui/Limiter.qml:91
-#, fuzzy
 msgid "Full x8/16 bits"
-msgstr "முழு ஃச் 8 (2 எல்)"
+msgstr "முழு x8/16 பிட்கள்"
 
 #: src/contents/ui/Limiter.qml:91
-#, fuzzy
 msgid "Full x8/24 bits"
-msgstr "முழு ஃச் 8 (2 எல்)"
+msgstr "முழு x8/24 பிட்கள்"
 
 #: src/contents/ui/Limiter.qml:91
-#, fuzzy
 msgid "True peak/16 bits"
-msgstr "உண்மையான உச்சநிலை"
+msgstr "உண்மையான உச்சம்/16 பிட்கள்"
 
 #: src/contents/ui/Limiter.qml:91
-#, fuzzy
 msgid "True peak/24 bits"
-msgstr "உண்மையான உச்சநிலை"
+msgstr "உண்மையான உச்சம்/24 பிட்கள்"
 
 #: src/contents/ui/Limiter.qml:101
-#, fuzzy
 msgid "Dithering"
-msgstr "இன்று"
+msgstr "டித்தரிங்"
 
 #: src/contents/ui/Limiter.qml:117 src/tags_plugin_name.cpp:44
 msgid "Limiter"
@@ -1810,23 +1663,20 @@ msgid "Stereo Link"
 msgstr "ச்டீரியோ இணைப்பு"
 
 #: src/contents/ui/Limiter.qml:407 src/contents/ui/Limiter.qml:647
-#, fuzzy
 msgid "Automatic level"
-msgstr "ஆட்டோ சமநிலை"
+msgstr "தானியங்கி நிலை"
 
 #: src/contents/ui/Limiter.qml:469
 msgid "Smooth"
-msgstr ""
+msgstr "மென்மையானது"
 
 #: src/contents/ui/Limiter.qml:637
-#, fuzzy
 msgid "Threshold boost"
-msgstr "வாசல்"
+msgstr "வரம்பு அதிகரிப்பு"
 
 #: src/contents/ui/Loudness.qml:86
-#, fuzzy
 msgid "Contour"
-msgstr "கட்டுப்பாடுகள்"
+msgstr "விளிம்பு"
 
 #: src/contents/ui/Loudness.qml:90
 msgid "Flat"
@@ -1834,78 +1684,72 @@ msgstr "கிடைவளைவு"
 
 #: src/contents/ui/Loudness.qml:90
 msgid "ISO226-2003"
-msgstr ""
+msgstr "ISO226-2003"
 
 #: src/contents/ui/Loudness.qml:90
 msgid "Fletcher-Munson"
-msgstr ""
+msgstr "பிளெட்சர்-முன்சன்"
 
 #: src/contents/ui/Loudness.qml:90
 msgid "Robinson-Dadson"
-msgstr ""
+msgstr "ராபின்சன்-டாட்சன்"
 
 #: src/contents/ui/Loudness.qml:90
 msgid "ISO226-2023"
-msgstr ""
+msgstr "ISO226-2023"
 
 #: src/contents/ui/Loudness.qml:100
-#, fuzzy
 msgid "FFT size"
 msgstr "FFT அளவு"
 
 #: src/contents/ui/Loudness.qml:114
-#, fuzzy
 msgid "IIR approximation"
-msgstr "முடக்கு பயன்பாடு"
+msgstr "IIR தோராயம்"
 
 #: src/contents/ui/Loudness.qml:118
 msgid "Fastest"
-msgstr ""
+msgstr "வேகமான"
 
 #: src/contents/ui/Loudness.qml:118
 msgid "Normal"
-msgstr ""
+msgstr "இயல்பானது"
 
 #: src/contents/ui/Loudness.qml:118
 msgid "Best"
-msgstr ""
+msgstr "சிறந்த"
 
 #: src/contents/ui/Loudness.qml:128
-#, fuzzy
 msgid "Volume"
-msgstr "வெளியீட்டு தொகுதி"
+msgstr "தொகுதி"
 
 #: src/contents/ui/Loudness.qml:145
-#, fuzzy
 msgid "Clipping range"
-msgstr "கிளிப்பிங்"
+msgstr "கிளிப்பிங் வரம்பு"
 
 #: src/contents/ui/Loudness.qml:203
 msgid "Clipping"
 msgstr "கிளிப்பிங்"
 
 #: src/contents/ui/Main.qml:284
-#, fuzzy
 msgid "Reset Settings?"
-msgstr "_ ரெசெட் அமைப்புகள்"
+msgstr "அமைப்புகளை மீட்டமைக்கவா?"
 
 #: src/contents/ui/Main.qml:285
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr ""
+"அனைத்து Easy Effects அமைப்புகளையும் நிச்சயமாக மீட்டமைக்க விரும்புகிறீர்களா?"
 
 #: src/contents/ui/Main.qml:338 src/contents/ui/Main.qml:356
-#, fuzzy
 msgid "Preset Loaded"
-msgstr "முன்னமைவு ஏற்றப்படவில்லை"
+msgstr "முன்னமைவு ஏற்றப்பட்டது"
 
 #: src/contents/ui/Main.qml:367 src/contents/ui/Main.qml:379
-#, fuzzy
 msgid "Clear List"
-msgstr "வாடிக்கையாளர்கள் பட்டியல்"
+msgstr "பட்டியலை அழி"
 
 #: src/contents/ui/Main.qml:368 src/contents/ui/Main.qml:380
 msgid "Are you sure you want to clear this list?"
-msgstr ""
+msgstr "இந்தப் பட்டியலை நிச்சயமாக அழிக்க விரும்புகிறீர்களா?"
 
 #: src/contents/ui/Main.qml:389
 msgid "Input Presets"
@@ -1916,28 +1760,25 @@ msgid "Output Presets"
 msgstr "வெளியீட்டு முன்னமைவுகள்"
 
 #: src/contents/ui/Main.qml:435
-#, fuzzy
 msgid "Active"
-msgstr "செயலில் மாதிரி"
+msgstr "செயலில்"
 
 #: src/contents/ui/Main.qml:446 src/contents/ui/Main.qml:593
 #: src/contents/ui/ShortcutsSheet.qml:389
-#, fuzzy
 msgid "Shortcuts"
-msgstr "_SHORTCUTS"
+msgstr "குறுக்குவழிகள்"
 
 #: src/contents/ui/Main.qml:455 src/contents/ui/Main.qml:601
 msgid "Manual"
-msgstr ""
+msgstr "கையேடு"
 
 #: src/contents/ui/Main.qml:465 src/contents/ui/Main.qml:633
-#, fuzzy
 msgid "Quit"
 msgstr "வெளியேறு"
 
 #: src/contents/ui/Main.qml:489
 msgid "Go back"
-msgstr ""
+msgstr "திரும்பி போ"
 
 #: src/contents/ui/Main.qml:499 src/contents/ui/PageStreamsEffects.qml:742
 msgid "Effects"
@@ -1945,65 +1786,57 @@ msgstr "விளைவுகள்"
 
 #: src/contents/ui/Main.qml:500
 msgid "Turn effects on/off"
-msgstr ""
+msgstr "விளைவுகளை இயக்கவும்/முடக்கவும்"
 
 #: src/contents/ui/Main.qml:511
 msgid "Audio effects are enabled."
-msgstr ""
+msgstr "ஆடியோ விளைவுகள் இயக்கப்பட்டுள்ளன."
 
 #: src/contents/ui/Main.qml:511
 msgid "Audio effects are disabled."
-msgstr ""
+msgstr "ஆடியோ விளைவுகள் முடக்கப்பட்டுள்ளன."
 
 #: src/contents/ui/Main.qml:567
-#, fuzzy
 msgid "PipeWire"
-msgstr "_ பிபிபீயர்"
+msgstr "குழாய் கம்பி"
 
 #: src/contents/ui/Main.qml:585
-#, fuzzy
 msgid "Preferences"
-msgstr "_ முனைகள்"
+msgstr "விருப்பத்தேர்வுகள்"
 
 #: src/contents/ui/Main.qml:625
-#, fuzzy
 msgid "About Easy Effects"
-msgstr "_ எளிதான விளைவுகள்"
+msgstr "எளிதான விளைவுகள் பற்றி"
 
 #: src/contents/ui/MenuAddPlugins.qml:94
 msgid "Add %1"
-msgstr ""
+msgstr "% 1ஐ சேர்க்கவும்"
 
 #: src/contents/ui/MenuAddPlugins.qml:166
 msgid "Added a new effect to the pipeline: %1"
-msgstr ""
+msgstr "பைப்லைனில் ஒரு புதிய விளைவு சேர்க்கப்பட்டது:% 1"
 
 #: src/contents/ui/MultibandCompressor.qml:129
-#, fuzzy
 msgid "Compression mode"
 msgstr "சுருக்க முறை"
 
 #: src/contents/ui/MultibandCompressor.qml:236
 #: src/contents/ui/MultibandGate.qml:173 src/contents/ui/VoiceSuppressor.qml:78
-#, fuzzy
 msgid "End"
-msgstr "பேரிக்காய்"
+msgstr "முடிவு"
 
 #: src/contents/ui/MultibandCompressor.qml:519
 #: src/contents/ui/MultibandGate.qml:492
-#, fuzzy
 msgid "Low-cut"
 msgstr "குறைந்த வெட்டு"
 
 #: src/contents/ui/MultibandCompressor.qml:544
 #: src/contents/ui/MultibandGate.qml:517
-#, fuzzy
 msgid "High-cut"
 msgstr "உயர் வெட்டு"
 
 #: src/contents/ui/MultibandCompressor.qml:576
 #: src/contents/ui/MultibandGate.qml:549
-#, fuzzy
 msgid "Operating mode"
 msgstr "இயக்க முறை"
 
@@ -2019,13 +1852,11 @@ msgstr "நவீன"
 
 #: src/contents/ui/MultibandCompressor.qml:580
 #: src/contents/ui/MultibandGate.qml:553
-#, fuzzy
 msgid "Linear phase"
 msgstr "நேரியல் கட்டம்"
 
 #: src/contents/ui/MultibandCompressor.qml:589
 #: src/contents/ui/MultibandGate.qml:562
-#, fuzzy
 msgid "Sidechain boost"
 msgstr "சைட்செயின் பூச்ட்"
 
@@ -2051,45 +1882,40 @@ msgstr "பிரவுன் எம்டி"
 
 #: src/contents/ui/MultibandCompressor.qml:603
 #: src/contents/ui/MultibandGate.qml:576
-#, fuzzy
 msgid "Sidechain input device"
-msgstr "உள்ளீட்டு சாதனம்"
+msgstr "பக்க சங்கிலி உள்ளீட்டு சாதனம்"
 
 #: src/contents/ui/MultibandGate.qml:199
-#, fuzzy
 msgid "Reaction"
-msgstr "குறைப்பு"
+msgstr "எதிர்வினை"
 
 #: src/contents/ui/PageStreamsEffects.qml:99
-#, fuzzy
 msgid "No audio application available"
-msgstr "ஆடியோ பயன்பாடு எதுவும் கிடைக்கவில்லை"
+msgstr "ஆடியோ பயன்பாடு இல்லை"
 
 #: src/contents/ui/PageStreamsEffects.qml:114
 msgid "No Effects"
 msgstr "விளைவுகள் இல்லை"
 
 #: src/contents/ui/PageStreamsEffects.qml:115
-#, fuzzy
 msgid "Audio stream not modified"
 msgstr "ஆடியோ ச்ட்ரீம் மாற்றப்படவில்லை"
 
 #: src/contents/ui/PageStreamsEffects.qml:375
-#, fuzzy
 msgid "Add effect"
 msgstr "விளைவைச் சேர்க்கவும்"
 
 #: src/contents/ui/PageStreamsEffects.qml:383
 msgid "Close"
-msgstr ""
+msgstr "மூடு"
 
 #: src/contents/ui/PageStreamsEffects.qml:387
 msgid "Expand the list of effects pipeline"
-msgstr ""
+msgstr "விளைவுகளின் பட்டியலை விரிவாக்கவும்"
 
 #: src/contents/ui/PageStreamsEffects.qml:387
 msgid "Reduce the list of effects pipeline"
-msgstr ""
+msgstr "விளைவு பைப்லைன் பட்டியலைக் குறைக்கவும்"
 
 #: src/contents/ui/PageStreamsEffects.qml:440
 #: src/contents/ui/PageStreamsEffects.qml:729
@@ -2097,7 +1923,6 @@ msgid "Players"
 msgstr "வீரர்கள்"
 
 #: src/contents/ui/PageStreamsEffects.qml:449
-#, fuzzy
 msgid "Output device"
 msgstr "வெளியீட்டு சாதனம்"
 
@@ -2107,18 +1932,16 @@ msgid "Recorders"
 msgstr "ரெக்கார்டர்கள்"
 
 #: src/contents/ui/PageStreamsEffects.qml:760
-#, fuzzy
 msgid "Excluded apps"
 msgstr "விலக்கப்பட்ட பயன்பாடுகள்"
 
 #: src/contents/ui/PageStreamsEffects.qml:769
-#, fuzzy
 msgid "Input monitoring"
-msgstr "உள்ளீட்டு கண்காணிப்பை இயக்கவும்/முடக்கவும்"
+msgstr "உள்ளீடு கண்காணிப்பு"
 
 #: src/contents/ui/PageStreamsEffects.qml:782
 msgid "Send audio to the virtual source"
-msgstr ""
+msgstr "மெய்நிகர் மூலத்திற்கு ஆடியோவை அனுப்பவும்"
 
 #: src/contents/ui/PipeWirePage.qml:44
 msgid "General"
@@ -2141,25 +1964,22 @@ msgid "Device Management"
 msgstr "சாதன மேலாண்மை"
 
 #: src/contents/ui/PipeWirePage.qml:133
-#, fuzzy
 msgid ""
 "It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
 "external applications (e.g. Gnome Settings and Plasma System Settings)"
 msgstr ""
-"வெளிப்புற பயன்பாடுகளில் (எ.கா. க்னோம் அமைப்புகள் மற்றும் பிளாச்மா கணினி அமைப்புகள்) "
-"எளிதான விளைவுகள் மூழ்கி/மூலமாக இயல்புநிலை சாதனமாக அமைக்க வேண்டாம்."
+"வெளிப்புற பயன்பாடுகளில் (எ.கா. க்னோம் அமைப்புகள் மற்றும் பிளாச்மா சிச்டம் அமைப்புகள்) Easy "
+"Effects Sink/Source ஐ இயல்புநிலை சாதனமாக அமைக்க வேண்டாமெனப் பரிந்துரைக்கப்படுகிறது"
 
 #: src/contents/ui/PipeWirePage.qml:140
-#, fuzzy
 msgid "Use default input"
-msgstr "இயல்புநிலை உள்ளீட்டைப் பயன்படுத்தவும்"
+msgstr "இயல்பு உள்ளீட்டைப் பயன்படுத்தவும்"
 
 #: src/contents/ui/PipeWirePage.qml:154 src/contents/ui/PipeWirePage.qml:198
 msgid "Name"
 msgstr "பெயர்"
 
 #: src/contents/ui/PipeWirePage.qml:183
-#, fuzzy
 msgid "Use default output"
 msgstr "இயல்புநிலை வெளியீட்டைப் பயன்படுத்தவும்"
 
@@ -2168,49 +1988,40 @@ msgid "Server Information"
 msgstr "சேவையக செய்தி"
 
 #: src/contents/ui/PipeWirePage.qml:227
-#, fuzzy
 msgid "Header version"
 msgstr "தலைப்பு பதிப்பு"
 
 #: src/contents/ui/PipeWirePage.qml:232
-#, fuzzy
 msgid "Library version"
 msgstr "நூலக பதிப்பு"
 
 #: src/contents/ui/PipeWirePage.qml:237
-#, fuzzy
 msgid "Runtime version"
-msgstr "மைய பதிப்பு"
+msgstr "இயக்க நேர பதிப்பு"
 
 #: src/contents/ui/PipeWirePage.qml:242
-#, fuzzy
 msgid "Default sampling rate"
-msgstr "மாதிரி வீதம்"
+msgstr "இயல்புநிலை மாதிரி விகிதம்"
 
 #: src/contents/ui/PipeWirePage.qml:247
-#, fuzzy
 msgid "Minimum quantum"
-msgstr "குறைந்தபட்ச தொகை"
+msgstr "ஒரு சிறிய தொகை"
 
 #: src/contents/ui/PipeWirePage.qml:252
-#, fuzzy
 msgid "Maximum quantum"
 msgstr "அதிகபட்ச தொகை"
 
 #: src/contents/ui/PipeWirePage.qml:257
-#, fuzzy
 msgid "Default quantum"
 msgstr "இயல்புநிலை குவாண்டம்"
 
 #: src/contents/ui/PipeWirePage.qml:279
-#, fuzzy
 msgid "No Modules"
-msgstr "தொகுதிகள்"
+msgstr "தொகுதிகள் இல்லை"
 
 #: src/contents/ui/PipeWirePage.qml:302
-#, fuzzy
 msgid "No Clients"
-msgstr "வாடிக்கையாளர்கள்"
+msgstr "வாடிக்கையாளர்கள் இல்லை"
 
 #: src/contents/ui/PipeWirePage.qml:315
 #: src/contents/ui/PreferencesSheet.qml:333
@@ -2231,32 +2042,26 @@ msgid "Waveform"
 msgstr "அலைவடிவம், அலைப்படம்"
 
 #: src/contents/ui/PipeWirePage.qml:382
-#, fuzzy
 msgid "Sine wave"
 msgstr "சைன் அலை"
 
 #: src/contents/ui/PipeWirePage.qml:393
-#, fuzzy
 msgid "White noise"
 msgstr "வெண்ணிறைச்சல்"
 
 #: src/contents/ui/PipeWirePage.qml:404
-#, fuzzy
 msgid "Pink noise"
-msgstr "வெண்ணிறைச்சல்"
+msgstr "இளஞ்செவ்விரைச்சல்"
 
 #: src/contents/ui/Pitch.qml:69
-#, fuzzy
 msgid "Sequence length"
 msgstr "வரிசை நீளம்"
 
 #: src/contents/ui/Pitch.qml:86
-#, fuzzy
 msgid "Seek window"
-msgstr "சாளரத்தைத் தேடுங்கள்"
+msgstr "தேடு சாளரம்"
 
 #: src/contents/ui/Pitch.qml:104
-#, fuzzy
 msgid "Overlap length"
 msgstr "ஒன்றுடன் ஒன்று நீளம்"
 
@@ -2277,41 +2082,36 @@ msgid "Semitones"
 msgstr "செமிடெச்"
 
 #: src/contents/ui/Pitch.qml:222
-#, fuzzy
 msgid "Tempo difference"
 msgstr "டெம்போ வேறுபாடு"
 
 #: src/contents/ui/Pitch.qml:239
-#, fuzzy
 msgid "Rate difference"
-msgstr "வீத வேறுபாடு"
+msgstr "விகித வேறுபாடு"
 
 #: src/contents/ui/Pitch.qml:289
-#, fuzzy
 msgid "Quick seek"
-msgstr "விரைவான தேடல்"
+msgstr "விரைவான தேடுதல்"
 
 #: src/contents/ui/PluginNotAvailable.qml:33
-#, fuzzy
 msgid "Effect Not Available"
-msgstr "{} கிடைக்கவில்லை"
+msgstr "விளைவு கிடைக்கவில்லை"
 
 #: src/contents/ui/PluginNotAvailable.qml:34
 msgid "%1 cannot be used because %2 is not installed on the system."
-msgstr ""
+msgstr "கணினியில் %2 நிறுவப்படாததால் %1ஐப் பயன்படுத்த முடியாது."
 
 #: src/contents/ui/PreferencesSheet.qml:35
 msgid "Background Service"
-msgstr ""
+msgstr "பின்னணி பணி"
 
 #: src/contents/ui/PreferencesSheet.qml:41
 msgid "Audio"
 msgstr "ஆடியோ"
 
 #: src/contents/ui/PreferencesSheet.qml:47
-#, fuzzy
 msgid "Spectrum Analyzer"
-msgstr "நிறமாலை"
+msgstr "நிறமாலைப் பகுப்பி"
 
 #: src/contents/ui/PreferencesSheet.qml:53
 msgid "Style"
@@ -2322,29 +2122,28 @@ msgid "Experimental Features"
 msgstr "சோதனை நற்பொருத்தங்கள்"
 
 #: src/contents/ui/PreferencesSheet.qml:84
-#, fuzzy
 msgid "Enable service mode"
-msgstr "சமநிலைப்படுத்தி பயன்முறை"
+msgstr "பணி பயன்முறையை இயக்கவும்"
 
 #: src/contents/ui/PreferencesSheet.qml:85
 msgid "Easy Effects is active in background when the window is closed."
-msgstr ""
+msgstr "சாளரம் மூடப்படும் போது ஈசி எஃபெக்ட்ச் பின்னணியில் செயலில் இருக்கும்."
 
 #: src/contents/ui/PreferencesSheet.qml:97
 msgid "Autostart on login"
-msgstr ""
+msgstr "ஆட்டோச்டார்ட் என்பது உள்நுழைவு"
 
 #: src/contents/ui/PreferencesSheet.qml:98
 msgid "Easy Effects is launched at user session startup."
-msgstr ""
+msgstr "பயனர் அமர்வு தொடக்கத்தில் ஈசி எஃபெக்ட்ச் தொடங்கப்பட்டது."
 
 #: src/contents/ui/PreferencesSheet.qml:111
 msgid "Show the tray icon"
-msgstr ""
+msgstr "தட்டு ஐகானைக் காட்டு"
 
 #: src/contents/ui/PreferencesSheet.qml:124
 msgid "Do not show the application window"
-msgstr ""
+msgstr "பயன்பாட்டு சாளரத்தைக் காட்ட வேண்டாம்"
 
 #: src/contents/ui/PreferencesSheet.qml:125
 msgid ""
@@ -2352,24 +2151,22 @@ msgid ""
 "should not be enabled. It is intended only as a workaround for systems that "
 "do not work well with the autostart of Easy Effects."
 msgstr ""
+"பயன்பாடு தொடங்கும் போது சாளரத்தைக் காட்ட வேண்டாம். பொதுவாக இந்த விருப்பம் இயக்கப்படக்கூடாது. இது "
+"ஈசி எஃபெக்ட்ச் ஆட்டோச்டார்ட்டுடன் சரியாக வேலை செய்யாத அமைப்புகளுக்கு ஒரு தீர்வாக மட்டுமே உள்ளது."
 
 #: src/contents/ui/PreferencesSheet.qml:145
-#, fuzzy
 msgid "Process all output streams"
-msgstr "அனைத்து வெளியீட்டு நீரோடைகளையும் செயலாக்கவும்"
+msgstr "அனைத்து வெளியீட்டு ச்ட்ரீம்களையும் செயலாக்கவும்"
 
 #: src/contents/ui/PreferencesSheet.qml:157
-#, fuzzy
 msgid "Process all input streams"
-msgstr "அனைத்து உள்ளீட்டு நீரோடைகளையும் செயலாக்கவும்"
+msgstr "அனைத்து உள்ளீட்டு ச்ட்ரீம்களையும் செயலாக்கவும்"
 
 #: src/contents/ui/PreferencesSheet.qml:169
-#, fuzzy
 msgid "Ignore streams from monitor of devices"
-msgstr "சாதனங்களின் மானிட்டரிலிருந்து நீரோடைகளை புறக்கணிக்கவும்"
+msgstr "சாதனங்களின் மானிட்டரிலிருந்து ச்ட்ரீம்களைப் புறக்கணிக்கவும்"
 
 #: src/contents/ui/PreferencesSheet.qml:181
-#, fuzzy
 msgid "Use cubic volume"
 msgstr "கன அளவைப் பயன்படுத்தவும்"
 
@@ -2379,10 +2176,12 @@ msgid ""
 "percentages results in a lower perceived volume while the loudness appears "
 "to change more evenly across the slider."
 msgstr ""
+"நேரியல் அளவைக் காட்டிலும் ச்ட்ரீம் தொகுதிக்கு கன அளவைப் பயன்படுத்தவும். ச்லைடர் முழுவதும் ஒலி "
+"மிகவும் சீராக மாறும்போது குறைந்த சதவீதங்கள் குறைந்த உணரப்பட்ட ஒலியளவை ஏற்படுத்துகின்றன."
 
 #: src/contents/ui/PreferencesSheet.qml:194
 msgid "Ignore system notifications"
-msgstr ""
+msgstr "கணினி அறிவிப்புகளைப் புறக்கணிக்கவும்"
 
 #: src/contents/ui/PreferencesSheet.qml:195
 msgid ""
@@ -2390,19 +2189,21 @@ msgid ""
 "better to ignore them, but for some presets it may be recommended since they "
 "could sound too loud."
 msgstr ""
+"செயலாக்க முறைமை அறிவிப்புகள் வெடிக்கும் ஒலியை ஏற்படுத்தக்கூடும், எனவே அவற்றைப் "
+"புறக்கணிப்பது நல்லது, ஆனால் சில முன்னமைவுகளுக்கு அவை மிகவும் சத்தமாக ஒலிக்கும் என்பதால் "
+"பரிந்துரைக்கப்படலாம்."
 
 #: src/contents/ui/PreferencesSheet.qml:207
-#, fuzzy
 msgid "Enable/disable input monitoring"
-msgstr "உள்ளீட்டு கண்காணிப்பை இயக்கவும்/முடக்கவும்"
+msgstr "உள்ளீடு கண்காணிப்பை இயக்கு/முடக்கு"
 
 #: src/contents/ui/PreferencesSheet.qml:219
 msgid "Mic monitor plays to output effects pipeline"
-msgstr ""
+msgstr "மைக் மானிட்டர் அவுட்புட் எஃபெக்ட் பைப்லைனை இயக்குகிறது"
 
 #: src/contents/ui/PreferencesSheet.qml:231
 msgid "Copy the input audio buffer"
-msgstr ""
+msgstr "உள்ளீட்டு ஆடியோ இடையகத்தை நகலெடுக்கவும்"
 
 #: src/contents/ui/PreferencesSheet.qml:232
 msgid ""
@@ -2411,59 +2212,62 @@ msgid ""
 "can happen when external applications are recording from Easy Effects "
 "virtual devices monitors."
 msgstr ""
+"Easy Effects செருகுநிரல்களுக்குள் ஆடியோவை செயலாக்கும்போது, ஒலி சேவையகம் வழங்கிய "
+"உள்ளீட்டு ஆடியோ இடையகத்தின் நகலைப் பயன்படுத்தவும். Easy Effects மெய்நிகர் சாதன "
+"மானிட்டர்களில் இருந்து வெளிப்புற பயன்பாடுகள் பதிவு செய்யும் போது ஏற்படும் ஆடியோ "
+"குறைபாடுகளை இது சரிசெய்கிறது."
 
 #: src/contents/ui/PreferencesSheet.qml:244
-#, fuzzy
 msgid "Enable the inactivity timeout"
-msgstr "செயலற்ற நேரம் முடிந்தது"
+msgstr "செயலற்ற காலக்கெடுவை இயக்கவும்"
 
 #: src/contents/ui/PreferencesSheet.qml:245
 msgid ""
 "When all streams are inactive, Easy Effects pipeline remains loaded for an "
 "extra amount of time."
 msgstr ""
+"அனைத்து ச்ட்ரீம்களும் செயலற்ற நிலையில் இருக்கும்போது, ஈசி எஃபெக்ட்ச் பைப்லைன் கூடுதல் "
+"நேரத்திற்கு ஏற்றப்படும்."
 
 #: src/contents/ui/PreferencesSheet.qml:257
-#, fuzzy
 msgid "Inactivity timeout"
-msgstr "செயலற்ற நேரம் முடிந்தது"
+msgstr "செயலற்ற காலக்கெடு"
 
 #: src/contents/ui/PreferencesSheet.qml:272
-#, fuzzy
 msgid "Level meters frame rate cap"
-msgstr "இந்த பயன்பாட்டை இயக்கவும்/முடக்கவும்"
+msgstr "லெவல் மீட்டர் பிரேம் வீத தொப்பி"
 
 #: src/contents/ui/PreferencesSheet.qml:273
 msgid "Maximum level meter update rate."
-msgstr ""
+msgstr "அதிகபட்ச நிலை மீட்டர் புதுப்பிப்பு விகிதம்."
 
 #: src/contents/ui/PreferencesSheet.qml:287
-#, fuzzy
 msgid "Level meters label"
-msgstr "நிலை மீட்டர்"
+msgstr "லெவல் மீட்டர் சிட்டை"
 
 #: src/contents/ui/PreferencesSheet.qml:288
 msgid ""
 "The time it takes for the level meter labels to be updated when the current "
 "level is below the last highest one."
 msgstr ""
+"தற்போதைய நிலை, கடந்த அதிகபட்ச அளவை விட குறைவாக இருக்கும்போது, லெவல் மீட்டர் லேபிள்கள் "
+"புதுப்பிக்கப்படும் நேரம்."
 
 #: src/contents/ui/PreferencesSheet.qml:305
-#, fuzzy
 msgid "Enable level meters animation"
-msgstr "இந்த பயன்பாட்டை இயக்கவும்/முடக்கவும்"
+msgstr "நிலை மீட்டர் அனிமேசனை இயக்கு"
 
 #: src/contents/ui/PreferencesSheet.qml:314
 msgid "Level meters animation duration"
-msgstr ""
+msgstr "நிலை மீட்டர் அனிமேசன் காலம்"
 
 #: src/contents/ui/PreferencesSheet.qml:352
 msgid "Audio delay compensation"
-msgstr ""
+msgstr "ஆடியோ தாமத இழப்பீடு"
 
 #: src/contents/ui/PreferencesSheet.qml:367
 msgid "Graph"
-msgstr ""
+msgstr "வரைபடம்"
 
 #: src/contents/ui/PreferencesSheet.qml:378
 msgid "Bars"
@@ -2479,16 +2283,15 @@ msgstr "புள்ளிகள்"
 
 #: src/contents/ui/PreferencesSheet.qml:378
 msgid "Area"
-msgstr ""
+msgstr "பகுதி"
 
 #: src/contents/ui/PreferencesSheet.qml:388
-#, fuzzy
 msgid "Dynamic scale"
-msgstr "மாறும் அளவு"
+msgstr "மாறும் அளவுகோல்"
 
 #: src/contents/ui/PreferencesSheet.qml:400
 msgid "Logarithmic frequency axis"
-msgstr ""
+msgstr "மடக்கை அதிர்வெண் அச்சு"
 
 #: src/contents/ui/PreferencesSheet.qml:412
 msgid "Points"
@@ -2500,16 +2303,15 @@ msgstr "உயரம்"
 
 #: src/contents/ui/PreferencesSheet.qml:434
 msgid "px"
-msgstr ""
+msgstr "px"
 
 #: src/contents/ui/PreferencesSheet.qml:441
-#, fuzzy
 msgid "Spectrum frame rate cap"
-msgstr "இந்த பயன்பாட்டை இயக்கவும்/முடக்கவும்"
+msgstr "ச்பெக்ட்ரம் பிரேம் வீத தொப்பி"
 
 #: src/contents/ui/PreferencesSheet.qml:442
 msgid "Maximum spectrum update rate."
-msgstr ""
+msgstr "அதிகபட்ச ச்பெக்ட்ரம் புதுப்பிப்பு விகிதம்."
 
 #: src/contents/ui/PreferencesSheet.qml:457
 msgid "Frequency Range"
@@ -2525,47 +2327,47 @@ msgstr "பெருமம்"
 
 #: src/contents/ui/PreferencesSheet.qml:502
 msgid "Database autosave interval"
-msgstr ""
+msgstr "தரவுத்தள தானியங்கு சேமிப்பு இடைவெளி"
 
 #: src/contents/ui/PreferencesSheet.qml:516
-#, fuzzy
 msgid "Most used presets"
-msgstr "குறுக்குவெட்டு"
+msgstr "மிகவும் பயன்படுத்தப்படும் முன்னமைவுகள்"
 
 #: src/contents/ui/PreferencesSheet.qml:534
 msgid "Window"
-msgstr ""
+msgstr "சாளரம்"
 
 #: src/contents/ui/PreferencesSheet.qml:543
 msgid "Force KDE's Breeze theme when Easy Effects starts"
-msgstr ""
+msgstr "ஈசி எஃபெக்ட்ச் தொடங்கும் போது கேடிஇ ப்ரீச் தீமை கட்டாயப்படுத்தவும்"
 
 #: src/contents/ui/PreferencesSheet.qml:544
 msgid ""
 "It is necessary to restart the service for changes in this setting to take "
 "effect."
 msgstr ""
+"இந்த அமைப்பில் மாற்றங்கள் நடைமுறைக்கு வர, சேவையை மறுதொடக்கம் செய்வது தேவை."
 
 #: src/contents/ui/PreferencesSheet.qml:557
-#, fuzzy
 msgid "Reduce effects list controls"
-msgstr "விளைவுகள் பட்டியலைக் காட்டு/மறைக்கவும்"
+msgstr "விளைவுகள் பட்டியல் கட்டுப்பாடுகளைக் குறைக்கவும்"
 
 #: src/contents/ui/PreferencesSheet.qml:558
 msgid ""
 "Action buttons in the effects list are moved inside a context menu for a "
 "more compact view."
 msgstr ""
+"விளைவுகள் பட்டியலில் உள்ள செயல் பொத்தான்கள் மிகவும் கச்சிதமான பார்வைக்காக சூழல் மெனுவிற்குள் "
+"நகர்த்தப்படும்."
 
 #: src/contents/ui/PreferencesSheet.qml:569
 #: src/contents/ui/PreferencesSheet.qml:606
-#, fuzzy
 msgid "Color scheme"
-msgstr "நிறம்"
+msgstr "வண்ணத் திட்டம்"
 
 #: src/contents/ui/PreferencesSheet.qml:583
 msgid "Force English language"
-msgstr ""
+msgstr "ஆங்கில மொழியை கட்டாயப்படுத்துங்கள்"
 
 #: src/contents/ui/PreferencesSheet.qml:584
 msgid ""
@@ -2573,151 +2375,146 @@ msgid ""
 "Useful if the translation in the local language is incomplete or "
 "incomprehensible. A restart of the service is required to apply this option."
 msgstr ""
+"பயனர் இடைமுகத்தை மொழிபெயர்த்து ஆங்கிலத்தில் உரையைக் காட்ட வேண்டாம். உள்ளக மொழியில் "
+"மொழிபெயர்ப்பு முழுமையடையாமல் அல்லது புரிந்துகொள்ள முடியாததாக இருந்தால் பயனுள்ளதாக இருக்கும். "
+"இந்த விருப்பத்தைப் பயன்படுத்த, சேவையை மறுதொடக்கம் செய்ய வேண்டும்."
 
 #: src/contents/ui/PreferencesSheet.qml:595
 msgid "Graphs"
-msgstr ""
+msgstr "வரைபடங்கள்"
 
 #: src/contents/ui/PreferencesSheet.qml:610
-#, fuzzy
 msgid "Automatic"
-msgstr "ஆட்டோகெயின்"
+msgstr "தானியங்கி"
 
 #: src/contents/ui/PreferencesSheet.qml:610
-#, fuzzy
 msgid "Light"
-msgstr "வலது"
+msgstr "ஒளி"
 
 #: src/contents/ui/PreferencesSheet.qml:610
 msgid "Dark"
-msgstr ""
+msgstr "இருள்"
 
 #: src/contents/ui/PreferencesSheet.qml:621
-#, fuzzy
 msgid "Color theme"
-msgstr "நிறம்"
+msgstr "வண்ண கருப்பொருள்"
 
 #: src/contents/ui/PreferencesSheet.qml:625
 msgid "Green"
-msgstr ""
+msgstr "பச்சை"
 
 #: src/contents/ui/PreferencesSheet.qml:625
 msgid "Green neon"
-msgstr ""
+msgstr "பச்சை நியான்"
 
 #: src/contents/ui/PreferencesSheet.qml:625
-#, fuzzy
 msgid "Orange"
-msgstr "வீச்சு"
+msgstr "ஆரஞ்சு"
 
 #: src/contents/ui/PreferencesSheet.qml:625
 msgid "Yellow"
-msgstr ""
+msgstr "மஞ்சள்"
 
 #: src/contents/ui/PreferencesSheet.qml:625
 msgid "Blue"
-msgstr ""
+msgstr "நீலம்"
 
 #: src/contents/ui/PreferencesSheet.qml:625
 msgid "Purple"
-msgstr ""
+msgstr "ஊதா"
 
 #: src/contents/ui/PreferencesSheet.qml:625
 msgid "Grey"
-msgstr ""
+msgstr "சாம்பல்"
 
 #: src/contents/ui/PreferencesSheet.qml:625
 msgid "User"
-msgstr ""
+msgstr "பயனர்"
 
 #: src/contents/ui/PreferencesSheet.qml:633
 msgctxt "@label"
 msgid "Background"
-msgstr ""
+msgstr "பின்னணி"
 
 #: src/contents/ui/PreferencesSheet.qml:642
 msgctxt "@label"
 msgid "Plot area background"
-msgstr ""
+msgstr "சூழ்ச்சி பகுதி பின்னணி"
 
 #: src/contents/ui/PreferencesSheet.qml:651
 msgctxt "@label"
 msgid "Series colors"
-msgstr ""
+msgstr "தொடர் நிறங்கள்"
 
 #: src/contents/ui/PreferencesSheet.qml:660
-#, fuzzy
 msgctxt "@label"
 msgid "Axis labels text color"
-msgstr "அச்சு லேபிள்கள்"
+msgstr "அச்சு லேபிள்கள் உரை வண்ணம்"
 
 #: src/contents/ui/PreferencesSheet.qml:669
 msgctxt "@label"
 msgid "Axis labels background color"
-msgstr ""
+msgstr "அச்சு லேபிள்கள் பின்னணி வண்ணம்"
 
 #: src/contents/ui/PreferencesSheet.qml:678
 msgctxt "@label"
 msgid "Border color"
-msgstr ""
+msgstr "பார்டர் நிறம்"
 
 #: src/contents/ui/PreferencesSheet.qml:687
-#, fuzzy
 msgid "Line width"
 msgstr "வரி அகலம்"
 
 #: src/contents/ui/PreferencesSheet.qml:701
 msgid "Show grid lines"
-msgstr ""
+msgstr "கட்டக் கோடுகளைக் காட்டு"
 
 #: src/contents/ui/PreferencesSheet.qml:719
-#, fuzzy
 msgid "Autoload delay"
-msgstr "ஆட்டோகெயின்"
+msgstr "ஆட்டோலோட் நேரந்தவறுகை"
 
 #: src/contents/ui/PreferencesSheet.qml:720
 msgid ""
 "Delay between receiving a new device route and the call to autoload a preset."
 msgstr ""
+"புதிய சாதன வழியைப் பெறுவதற்கும் முன்னமைவைத் தானாக ஏற்றுவதற்கான அழைப்பிற்கும் இடையே "
+"நேரந்தவறுகை."
 
 #: src/contents/ui/PreferencesSheet.qml:736
 msgid "Ignore the blocklist from presets"
-msgstr ""
+msgstr "முன்னமைவுகளிலிருந்து தடுப்புப்பட்டியலைப் புறக்கணிக்கவும்"
 
 #: src/contents/ui/PreferencesSheet.qml:737
 msgid ""
 "If enabled, the list of excluded apps set in the loaded preset is ignored "
 "and does not replace the one set by the user."
 msgstr ""
+"இயக்கப்பட்டால், ஏற்றப்பட்ட முன்னமைவில் அமைக்கப்பட்ட விலக்கப்பட்ட பயன்பாடுகளின் பட்டியல் "
+"புறக்கணிக்கப்படும் மற்றும் பயனரால் அமைக்கப்பட்ட ஒன்றை மாற்றாது."
 
 #: src/contents/ui/PreferencesSheet.qml:758
-#, fuzzy
 msgid "Global shortcuts"
-msgstr "_SHORTCUTS"
+msgstr "உலகளாவிய குறுக்குவழிகள்"
 
 #: src/contents/ui/PreferencesSheet.qml:759
 msgid "Enables support for XDG global shortcuts."
-msgstr ""
+msgstr "XDG உலகளாவிய குறுக்குவழிகளுக்கான ஆதரவை இயக்குகிறது."
 
 #: src/contents/ui/PreferencesSheet.qml:771
-#, fuzzy
 msgid "Native window of effects"
-msgstr "சொந்த சாளரத்தைக் காட்டு"
+msgstr "விளைவுகளின் சொந்த சாளரம்"
 
 #: src/contents/ui/PreferencesSheet.qml:772
-#, fuzzy
 msgid "Allows the native user interface of effects to be shown/hidden."
-msgstr "சொந்த சொருகி சாளரத்தை காட்ட/மறைக்க அனுமதிக்கிறது"
+msgstr "விளைவுகளின் சொந்த பயனர் இடைமுகத்தைக் காட்ட/மறைக்க அனுமதிக்கிறது."
 
 #: src/contents/ui/PreferencesSheet.qml:784
-#, fuzzy
 msgid "Update frequency"
 msgstr "புதுப்பிப்பு அதிர்வெண்"
 
 #: src/contents/ui/PreferencesSheet.qml:785
-#, fuzzy
 msgid "Related to LV2 plugins."
-msgstr "எல்வி 2 செருகுநிரல்கள் தொடர்பானது"
+msgstr "LV2 செருகுநிரல்களுடன் தொடர்புடையது."
 
 #: src/contents/ui/PresetsAutoloadPage.qml:54
 #: src/contents/ui/PresetsAutoloadPage.qml:198
@@ -2727,28 +2524,24 @@ msgstr "சாதனம்"
 #: src/contents/ui/PresetsAutoloadPage.qml:60
 #: src/contents/ui/PresetsAutoloadPage.qml:242
 msgid "Route"
-msgstr ""
+msgstr "பாதை"
 
 #: src/contents/ui/PresetsAutoloadPage.qml:111
 #: src/contents/ui/PresetsAutoloadPage.qml:256
-#, fuzzy
 msgid "Local preset"
-msgstr "உள்ளக முன்னமைவுகள் பட்டியல்"
+msgstr "உள்ளக முன்னமைவு"
 
 #: src/contents/ui/PresetsAutoloadPage.qml:122
-#, fuzzy
 msgid "Create"
-msgstr "உருவாக்குதல்"
+msgstr "உருவாக்கு"
 
 #: src/contents/ui/PresetsAutoloadPage.qml:124
-#, fuzzy
 msgid "Create a new autoload preset"
-msgstr "ஆட்டோலோடிங் முன்னமைவை அகற்று"
+msgstr "புதிய ஆட்டோலோட் முன்னமைவை உருவாக்கவும்"
 
 #: src/contents/ui/PresetsAutoloadPage.qml:213
-#, fuzzy
 msgid "Remove this autoload preset"
-msgstr "ஆட்டோலோடிங் முன்னமைவை அகற்று"
+msgstr "இந்த ஆட்டோலோட் முன்னமைவை அகற்றவும்"
 
 #: src/contents/ui/PresetsAutoloadPage.qml:227
 msgid "Description"
@@ -2759,19 +2552,18 @@ msgid "Refresh"
 msgstr "புதுப்பிப்பு"
 
 #: src/contents/ui/PresetsCommunityPage.qml:140
-#, fuzzy
 msgid "Copy to local presets"
-msgstr "உள்ளக முன்னமைவுகள் பட்டியல்"
+msgstr "உள்ளக முன்னமைவுகளுக்கு நகலெடுக்கவும்"
 
 #: src/contents/ui/PresetsCommunityPage.qml:145
-#, fuzzy
 msgid "Imported the %1 community preset to the list of local presets."
-msgstr "இந்த சமூக முன்னமைவை உள்ளக முன்னமைவு பட்டியலில் இறக்குமதி செய்யுங்கள்"
+msgstr ""
+"உள்ளக முன்னமைவுகளின் பட்டியலில் % 1 சமூக முன்னமைவு இறக்குமதி செய்யப்பட்டது."
 
 #: src/contents/ui/PresetsCommunityPage.qml:147
-#, fuzzy
 msgid "Failed to import the %1 community preset to the list of local presets."
-msgstr "சமூக முன்னமைவைத் தேடுங்கள்"
+msgstr ""
+"% 1 சமூக முன்னமைவை உள்ளக முன்னமைவுகளின் பட்டியலில் இறக்குமதி செய்ய முடியவில்லை."
 
 #: src/contents/ui/PresetsDialog.qml:99 src/contents/ui/PresetsDialog.qml:156
 msgid "Local"
@@ -2782,100 +2574,86 @@ msgid "Community"
 msgstr "சமூகம்"
 
 #: src/contents/ui/PresetsDialog.qml:115
-#, fuzzy
 msgid "Autoload"
-msgstr "ஆட்டோகெயின்"
+msgstr "தானாக ஏற்றவும்"
 
 #: src/contents/ui/PresetsDialog.qml:154
-#, fuzzy
 msgid "No preset loaded"
 msgstr "முன்னமைவு ஏற்றப்படவில்லை"
 
 #: src/contents/ui/PresetsDialog.qml:174
 msgid "Fallback Preset"
-msgstr ""
+msgstr "ஃபால்பேக் முன்னமைவு"
 
 #: src/contents/ui/PresetsLocalPage.qml:53
-#, fuzzy
 msgid "Imported a new local preset from an external file."
-msgstr "அப்போ முன்னமைக்கப்பட்ட கோப்பை இறக்குமதி செய்யுங்கள்"
+msgstr "வெளிப்புற கோப்பிலிருந்து புதிய உள்ளக முன்னமைவு இறக்குமதி செய்யப்பட்டது."
 
 #: src/contents/ui/PresetsLocalPage.qml:55
-#, fuzzy
 msgid "Failed to import a new local preset from an external file."
-msgstr "அப்போ முன்னமைக்கப்பட்ட கோப்பை இறக்குமதி செய்யுங்கள்"
+msgstr ""
+"வெளிப்புற கோப்பிலிருந்து புதிய உள்ளக முன்னமைவை இறக்குமதி செய்ய முடியவில்லை."
 
 #: src/contents/ui/PresetsLocalPage.qml:64
-#, fuzzy
 msgid "Export Presets"
-msgstr "முன்னமைக்கப்பட்ட இறக்குமதி"
+msgstr "ஏற்றுமதி முன்னமைவுகள்"
 
 #: src/contents/ui/PresetsLocalPage.qml:67
-#, fuzzy
 msgid "Exported all presets to an external folder."
-msgstr "அப்போ முன்னமைக்கப்பட்ட கோப்பை இறக்குமதி செய்யுங்கள்"
+msgstr "அனைத்து முன்னமைவுகளும் வெளிப்புற கோப்புறைக்கு ஏற்றுமதி செய்யப்பட்டன."
 
 #: src/contents/ui/PresetsLocalPage.qml:69
-#, fuzzy
 msgid "Failed to export all presets to an external folder."
-msgstr "அப்போ முன்னமைக்கப்பட்ட கோப்பை இறக்குமதி செய்யுங்கள்"
+msgstr ""
+"அனைத்து முன்னமைவுகளையும் வெளிப்புற கோப்புறைக்கு ஏற்றுமதி செய்ய முடியவில்லை."
 
 #: src/contents/ui/PresetsLocalPage.qml:84
-#, fuzzy
 msgid "New preset name"
 msgstr "புதிய முன்னமைக்கப்பட்ட பெயர்"
 
 #: src/contents/ui/PresetsLocalPage.qml:100
-#, fuzzy
 msgid "Import preset file"
-msgstr "அப்போ முன்னமைக்கப்பட்ட கோப்பை இறக்குமதி செய்யுங்கள்"
+msgstr "முன்னமைக்கப்பட்ட கோப்பை இறக்குமதி செய்யவும்"
 
 #: src/contents/ui/PresetsLocalPage.qml:109
-#, fuzzy
 msgid "Create new preset"
 msgstr "புதிய முன்னமைவை உருவாக்கவும்"
 
 #: src/contents/ui/PresetsLocalPage.qml:119
-#, fuzzy
 msgid "Created a new local preset: %1"
-msgstr "உள்ளக முன்னமைவைத் தேடுங்கள்"
+msgstr "புதிய உள்ளக முன்னமைவு உருவாக்கப்பட்டது: % 1"
 
 #: src/contents/ui/PresetsLocalPage.qml:123
-#, fuzzy
 msgid "Failed to create a new local preset: %1"
-msgstr "சமூக முன்னமைவைத் தேடுங்கள்"
+msgstr "புதிய உள்ளக முன்னமைவை உருவாக்குவதில் தோல்வி: % 1"
 
 #: src/contents/ui/PresetsLocalPage.qml:151
-#, fuzzy
 msgid "Export presets"
-msgstr "முன்னமைக்கப்பட்ட இறக்குமதி"
+msgstr "முன்னமைவுகளை ஏற்றுமதி செய்யவும்"
 
 #: src/contents/ui/PresetsLocalPage.qml:212
-#, fuzzy
 msgid "Save Preset"
-msgstr "புதிய முன்னமைவை உருவாக்கவும்"
+msgstr "முன்னமைவை சேமிக்கவும்"
 
 #: src/contents/ui/PresetsLocalPage.qml:213
-#, fuzzy
 msgid ""
 "Save current settings to the preset:\n"
 "%1"
-msgstr "இந்த முன்னமைக்கப்பட்ட கோப்பில் தற்போதைய அமைப்புகளை சேமிக்கவும்"
+msgstr ""
+"தற்போதைய அமைப்புகளை முன்னமைவில் சேமிக்கவும்: \n"
+"% 1"
 
 #: src/contents/ui/PresetsLocalPage.qml:217
-#, fuzzy
 msgid "Saved the current settings to %1 local preset."
-msgstr "தற்போதைய அமைப்புகளை நிராகரித்து இந்த முன்னமைவை ஏற்றவும்"
+msgstr "தற்போதைய அமைப்புகளை %1 உள்ளக முன்னமைவில் சேமிக்கப்பட்டது."
 
 #: src/contents/ui/PresetsLocalPage.qml:219
-#, fuzzy
 msgid "Failed to save the current settings to %1 local preset."
-msgstr "தற்போதைய அமைப்புகளை நிராகரித்து இந்த முன்னமைவை ஏற்றவும்"
+msgstr "தற்போதைய அமைப்புகளை %1 உள்ளக முன்னமைவில் சேமிக்க முடியவில்லை."
 
 #: src/contents/ui/PresetsLocalPage.qml:227
-#, fuzzy
 msgid "Remove Preset"
-msgstr "புதிய முன்னமைவை உருவாக்கவும்"
+msgstr "முன்னமைவை அகற்று"
 
 #: src/contents/ui/PresetsLocalPage.qml:228
 msgid ""
@@ -2883,58 +2661,51 @@ msgid ""
 "%1\n"
 "from the list?"
 msgstr ""
+"முன்னமைவை அகற்ற விரும்புகிறீர்களா? \n"
+"% 1 \n"
+"பட்டியலில் இருந்து?"
 
 #: src/contents/ui/PresetsLocalPage.qml:232
-#, fuzzy
 msgid "Removed the %1 local preset."
-msgstr "இந்த ஆட்டோலோட் முன்னமைவை அகற்று"
+msgstr "% 1 உள்ளக முன்னமைவு நீக்கப்பட்டது."
 
 #: src/contents/ui/PresetsLocalPage.qml:234
-#, fuzzy
 msgid "Failed to remove the %1 local preset."
-msgstr "அப்போ முன்னமைக்கப்பட்ட கோப்பை இறக்குமதி செய்யுங்கள்"
+msgstr "% 1 உள்ளக முன்னமைவை அகற்றுவதில் தோல்வி."
 
 #: src/contents/ui/PresetsLocalPage.qml:242
-#, fuzzy
 msgid "Rename Preset"
-msgstr "புதிய முன்னமைவை உருவாக்கவும்"
+msgstr "முன்னமைவை மறுபெயரிடவும்"
 
 #: src/contents/ui/PresetsLocalPage.qml:247
 msgid "Rename"
-msgstr ""
+msgstr "மறுபெயரிடவும்"
 
 #: src/contents/ui/PresetsLocalPage.qml:256
-#, fuzzy
 msgid "Renamed the %1 local preset to %2"
-msgstr "இந்த முன்னமைக்கப்பட்ட கோப்பை அகற்று"
+msgstr "% 1 உள்ளக முன்னமைவை % 2 என மறுபெயரிடப்பட்டது"
 
 #: src/contents/ui/PresetsLocalPage.qml:259
-#, fuzzy
 msgid "Failed to rename the %1 local preset to %2"
-msgstr "உந்துவிசை கோப்பை ஏற்றுவதில் தோல்வி"
+msgstr "%1 உள்ளக முன்னமைவை %2 என மறுபெயரிடுவதில் தோல்வி"
 
 #: src/contents/ui/PresetsLocalPage.qml:267
-#, fuzzy
 msgid "Cancel"
-msgstr "இருப்பு"
+msgstr "ரத்துசெய்"
 
 #: src/contents/ui/PresetsLocalPage.qml:306
-#, fuzzy
 msgid "Save settings to this preset"
-msgstr "இந்த முன்னமைக்கப்பட்ட கோப்பில் தற்போதைய அமைப்புகளை சேமிக்கவும்"
+msgstr "இந்த முன்னமைவில் அமைப்புகளைச் சேமிக்கவும்"
 
 #: src/contents/ui/PresetsLocalPage.qml:314
-#, fuzzy
 msgid "Rename this preset"
-msgstr "இந்த முன்னமைக்கப்பட்ட கோப்பை அகற்று"
+msgstr "இந்த முன்னமைவை மறுபெயரிடவும்"
 
 #: src/contents/ui/PresetsLocalPage.qml:322
-#, fuzzy
 msgid "Delete this preset"
-msgstr "இந்த முன்னமைக்கப்பட்ட கோப்பை அகற்று"
+msgstr "இந்த முன்னமைவை நீக்கவும்"
 
 #: src/contents/ui/Reverb.qml:66
-#, fuzzy
 msgid "Room size"
 msgstr "அறை அளவு"
 
@@ -2951,9 +2722,8 @@ msgid "Large"
 msgstr "பெரிய"
 
 #: src/contents/ui/Reverb.qml:70
-#, fuzzy
 msgid "Tunnel-like"
-msgstr "சுரங்கப்பாதை"
+msgstr "சுரங்கப்பாதை போன்றது"
 
 #: src/contents/ui/Reverb.qml:70
 msgid "Large/smooth"
@@ -2964,12 +2734,10 @@ msgid "Experimental"
 msgstr "சோதனை"
 
 #: src/contents/ui/Reverb.qml:79
-#, fuzzy
 msgid "Decay time"
 msgstr "சிதைவு நேரம்"
 
 #: src/contents/ui/Reverb.qml:95
-#, fuzzy
 msgid "Pre delay"
 msgstr "முன் நேரந்தவறுகை"
 
@@ -2978,31 +2746,26 @@ msgid "Diffusion"
 msgstr "விரவல்"
 
 #: src/contents/ui/Reverb.qml:137
-#, fuzzy
 msgid "High frequency damping"
-msgstr "அதிக அதிர்வெண் ஈரமாக்குதல்"
+msgstr "உயர் அதிர்வெண் தணிப்பு"
 
 #: src/contents/ui/Reverb.qml:154
-#, fuzzy
 msgid "Bass cut"
-msgstr "பாச் வெட்டு"
+msgstr "பாச் கட்"
 
 #: src/contents/ui/Reverb.qml:171
-#, fuzzy
 msgid "Treble cut"
-msgstr "ட்ரெபிள் வெட்டு"
+msgstr "மும்மடங்கு வெட்டு"
 
 #: src/contents/ui/Reverb.qml:228
-#, fuzzy
 msgid "Reverberation Presets"
-msgstr "எதிரொலித்தல்"
+msgstr "எதிரொலி முன்னமைவுகள்"
 
 #: src/contents/ui/Reverb.qml:232
 msgid "Ambience"
 msgstr "சூழல்"
 
 #: src/contents/ui/Reverb.qml:247
-#, fuzzy
 msgid "Empty walls"
 msgstr "வெற்று சுவர்கள்"
 
@@ -3011,143 +2774,119 @@ msgid "Room"
 msgstr "அறை"
 
 #: src/contents/ui/Reverb.qml:277
-#, fuzzy
 msgid "Large empty hall"
-msgstr "பெரிய வெற்று மண்டபம்"
+msgstr "பெரிய வெறுமை மண்டபம்"
 
 #: src/contents/ui/Reverb.qml:287
 msgid "Disco"
 msgstr "டிச்கோ"
 
 #: src/contents/ui/Reverb.qml:297
-#, fuzzy
 msgid "Large occupied hall"
-msgstr "பெரிய ஆக்கிரமிக்கப்பட்ட மண்டபம்"
+msgstr "பெரிய வன்கவர்வு மண்டபம்"
 
 #: src/contents/ui/RNNoise.qml:63
-#, fuzzy
 msgid "Imported a new RNNoise model file."
-msgstr "நிலையான Rnnoise மாதிரி"
+msgstr "புதிய RNNoise மாதிரி கோப்பு இறக்குமதி செய்யப்பட்டது."
 
 #: src/contents/ui/RNNoise.qml:65
-#, fuzzy
 msgid "Failed to import the RNNoise model file."
-msgstr "மாதிரி கோப்பை இறக்குமதி செய்யுங்கள்"
+msgstr "RNNoise மாதிரி கோப்பை இறக்குமதி செய்வதில் தோல்வி."
 
 #: src/contents/ui/RNNoise.qml:76 src/contents/ui/RNNoise.qml:87
 #: src/contents/ui/RNNoise.qml:301 src/contents/ui/RNNoise.qml:303
-#, fuzzy
 msgid "Standard RNNoise model"
-msgstr "நிலையான Rnnoise மாதிரி"
+msgstr "நிலையான RNNoise மாதிரி"
 
 #: src/contents/ui/RNNoise.qml:78
-#, fuzzy
 msgid "Standard RNNoise model loaded."
-msgstr "நிலையான Rnnoise மாதிரி"
+msgstr "நிலையான RNNoise மாதிரி ஏற்றப்பட்டது."
 
 #: src/contents/ui/RNNoise.qml:83 src/contents/ui/RNNoise.qml:305
-#, fuzzy
 msgid "Using %1 Model"
-msgstr "{} ஐப் பயன்படுத்துதல்"
+msgstr "% 1 மாதிரியைப் பயன்படுத்துகிறது"
 
 #: src/contents/ui/RNNoise.qml:85
-#, fuzzy
 msgid "Loaded the %1 RNNoise model."
-msgstr "நிலையான Rnnoise மாதிரி"
+msgstr "%1 RNNoise மாதிரி ஏற்றப்பட்டது."
 
 #: src/contents/ui/RNNoise.qml:89
-#, fuzzy
 msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
-msgstr "உந்துவிசை கோப்பை ஏற்றுவதில் தோல்வி"
+msgstr "% 1 மாதிரியை ஏற்றுவதில் தோல்வி. நிலையான RNNoise மாதிரிக்கு திரும்பவும்."
 
 #: src/contents/ui/RNNoise.qml:108 src/contents/ui/Speex.qml:117
-#, fuzzy
 msgid "Voice detection"
 msgstr "குரல் கண்டறிதல்"
 
 #: src/contents/ui/RNNoise.qml:145
-#, fuzzy
 msgid "Wet level"
 msgstr "ஈரமான நிலை"
 
 #: src/contents/ui/RNNoise.qml:185
-#, fuzzy
 msgid "Use the Standard model"
-msgstr "நிலையான மாதிரி"
+msgstr "நிலையான மாதிரியைப் பயன்படுத்தவும்"
 
 #: src/contents/ui/RNNoise.qml:196
-#, fuzzy
 msgid "User Models"
-msgstr "Rnnoise மாதிரிகள்"
+msgstr "பயனர் மாதிரிகள்"
 
 #: src/contents/ui/RNNoise.qml:262
-#, fuzzy
 msgid "Delete this model"
-msgstr "இந்த மாதிரி கோப்பை அகற்று"
+msgstr "இந்த மாதிரியை நீக்கவும்"
 
 #: src/contents/ui/RNNoise.qml:267
-#, fuzzy
 msgid "Removed the %1 RNNoise model."
-msgstr "நிலையான Rnnoise மாதிரி"
+msgstr "% 1 RNNoise மாதிரி அகற்றப்பட்டது."
 
 #: src/contents/ui/RNNoise.qml:269
-#, fuzzy
 msgid "Failed to remove the %1 RNNoise model."
-msgstr "உந்துவிசை கோப்பை ஏற்றுவதில் தோல்வி"
+msgstr "%1 RNNoise மாதிரியை அகற்றுவதில் தோல்வி."
 
 #: src/contents/ui/RNNoise.qml:338
-#, fuzzy
 msgid "Import model"
 msgstr "இறக்குமதி மாதிரி"
 
 #: src/contents/ui/ShortcutsSheet.qml:66
-#, fuzzy
 msgid "Show help"
-msgstr "உதவியைக் காட்டு"
+msgstr "உதவி காட்டு"
 
 #: src/contents/ui/ShortcutsSheet.qml:79
 msgid "Toggle fullscreen"
-msgstr ""
+msgstr "மாற்று முழுத்திரை"
 
 #: src/contents/ui/ShortcutsSheet.qml:107
 #: src/contents/ui/ShortcutsSheet.qml:330 src/global_shortcuts.hpp:48
-#, fuzzy
 msgid "Toggle global bypass"
-msgstr "உலகளாவிய பைபாச்"
+msgstr "உலகளாவிய பைபாசை நிலைமாற்று"
 
 #: src/contents/ui/ShortcutsSheet.qml:135
-#, fuzzy
 msgid "Close the window"
 msgstr "சாளரத்தை மூடு"
 
 #: src/contents/ui/ShortcutsSheet.qml:163
-#, fuzzy
 msgid "Terminate Easy Effects service"
-msgstr "ஈசி எஃபெக்ட்ச் பதிப்பை அச்சிடுக"
+msgstr "ஈசி எஃபெக்ட்ச் சேவையை நிறுத்துங்கள்"
 
 #: src/contents/ui/ShortcutsSheet.qml:203
-#, fuzzy
 msgid "Toggle process all inputs"
-msgstr "அனைத்து உள்ளீட்டு நீரோடைகளையும் செயலாக்கவும்"
+msgstr "அனைத்து உள்ளீடுகளையும் செயலாக்க மாற்றவும்"
 
 #: src/contents/ui/ShortcutsSheet.qml:243
-#, fuzzy
 msgid "Toggle process all outputs"
-msgstr "அனைத்து வெளியீட்டு நீரோடைகளையும் செயலாக்கவும்"
+msgstr "அனைத்து வெளியீடுகளையும் செயலாக்க மாற்றவும்"
 
 #: src/contents/ui/ShortcutsSheet.qml:256
 #: src/contents/ui/ShortcutsSheet.qml:269
 msgid "Can be used on numeric controls"
-msgstr ""
+msgstr "எண் கட்டுப்பாடுகளில் பயன்படுத்தலாம்"
 
 #: src/contents/ui/ShortcutsSheet.qml:284
-#, fuzzy
 msgid "Global Shortcuts"
-msgstr "_SHORTCUTS"
+msgstr "உலகளாவிய குறுக்குவழிகள்"
 
 #: src/contents/ui/ShortcutsSheet.qml:370 src/global_shortcuts.hpp:50
 msgid "Toggle microphone monitoring"
-msgstr ""
+msgstr "மைக்ரோஃபோன் கண்காணிப்பை நிலைமாற்று"
 
 #: src/contents/ui/Speex.qml:63
 msgid "Denoise"
@@ -3158,7 +2897,6 @@ msgid "Dereverberation"
 msgstr "எதிரொலிக்காத"
 
 #: src/contents/ui/Speex.qml:96
-#, fuzzy
 msgid "Noise suppression"
 msgstr "இரைச்சல் நீக்கம்"
 
@@ -3175,18 +2913,16 @@ msgid "Softclip"
 msgstr "சாப்ட் கிளிப்"
 
 #: src/contents/ui/StereoTools.qml:93
-#, fuzzy
 msgid "S/C Level"
-msgstr "பக்க நிலை"
+msgstr "S/C நிலை"
 
 #: src/contents/ui/StereoTools.qml:109
 msgid "Stereo Matrix"
 msgstr "ச்டீரியோ மேட்ரிக்ச்"
 
 #: src/contents/ui/StereoTools.qml:126
-#, fuzzy
 msgid "LR > LR (Stereo default)"
-msgstr "Lr> lr (ச்டீரியோ இயல்புநிலை)"
+msgstr "LR > LR (ச்டீரியோ இயல்புநிலை)"
 
 #: src/contents/ui/StereoTools.qml:126
 msgid "LR > MS (Stereo to Mid-Side)"
@@ -3197,47 +2933,38 @@ msgid "MS > LR (Mid-Side to Stereo)"
 msgstr "MS> LR (ச்டீரியோவுக்கு நடுப்பகுதி)"
 
 #: src/contents/ui/StereoTools.qml:126
-#, fuzzy
 msgid "LR > LL (Mono left channel)"
-msgstr "Lr> ll (மோனோ இடது சேனல்)"
+msgstr "LR > LL (மோனோ இடது சேனல்)"
 
 #: src/contents/ui/StereoTools.qml:126
-#, fuzzy
 msgid "LR > RR (Mono right channel)"
-msgstr "Lr> rr (மோனோ வலது சேனல்)"
+msgstr "LR > RR (மோனோ வலது சேனல்)"
 
 #: src/contents/ui/StereoTools.qml:126
-#, fuzzy
 msgid "LR > L+R (Mono sum L+R)"
-msgstr "Lr> l+r (மோனோ சம் எல்+ஆர்)"
+msgstr "LR > L+R (மோனோ தொகை L+R)"
 
 #: src/contents/ui/StereoTools.qml:126
-#, fuzzy
 msgid "LR > RL (Stereo flip channels)"
-msgstr "Lr> rl (ச்டீரியோ ஃபிளிப் சேனல்கள்)"
+msgstr "LR > RL (ச்டீரியோ ஃபிளிப் சேனல்கள்)"
 
 #: src/contents/ui/StereoTools.qml:135
-#, fuzzy
 msgid "Side level"
 msgstr "பக்க நிலை"
 
 #: src/contents/ui/StereoTools.qml:153
-#, fuzzy
 msgid "Side balance"
-msgstr "பக்க இருப்பு"
+msgstr "பக்க சமநிலை"
 
 #: src/contents/ui/StereoTools.qml:169
-#, fuzzy
 msgid "Middle level"
 msgstr "நடுத்தர நிலை"
 
 #: src/contents/ui/StereoTools.qml:187
-#, fuzzy
 msgid "Middle panorama"
 msgstr "நடுத்தர பனோரமா"
 
 #: src/contents/ui/StereoTools.qml:221 src/contents/ui/StereoTools.qml:253
-#, fuzzy
 msgid "Invert phase"
 msgstr "தலைகீழ் கட்டம்"
 
@@ -3246,76 +2973,67 @@ msgid "Delay"
 msgstr "சுணக்கம்"
 
 #: src/contents/ui/StereoTools.qml:310
-#, fuzzy
 msgid "Stereo base"
 msgstr "ச்டீரியோ அடிப்படை"
 
 #: src/contents/ui/StereoTools.qml:326
-#, fuzzy
 msgid "Stereo phase"
 msgstr "ச்டீரியோ கட்டம்"
 
 #: src/contents/ui/VoiceSuppressor.qml:94
-#, fuzzy
 msgid "Correlation"
-msgstr "காலம்"
+msgstr "ஒட்டுறவு"
 
 #: src/contents/ui/VoiceSuppressor.qml:110
-#, fuzzy
 msgid "Phase difference"
-msgstr "வீத வேறுபாடு"
+msgstr "கட்ட வேறுபாடு"
 
 #: src/contents/ui/VoiceSuppressor.qml:126
-#, fuzzy
 msgid "Minimum kurtosis"
-msgstr "குறைந்தபட்ச தொகை"
+msgstr "குறைந்தபட்ச குர்டோசிச்"
 
 #: src/contents/ui/VoiceSuppressor.qml:141
-#, fuzzy
 msgid "Maximum instantaneous frequency"
-msgstr "அதிகபட்ச வரலாறு"
+msgstr "அதிகபட்ச உடனடி அதிர்வெண்"
 
 #: src/contents/ui/VoiceSuppressor.qml:182
-#, fuzzy
 msgid "Inverted mode"
-msgstr "தலைகீழ் கட்டம்"
+msgstr "தலைகீழ் முறை"
 
 #: src/main.cpp:344
-#, fuzzy
 msgid "Global audio effects"
-msgstr "_SHORTCUTS"
+msgstr "உலகளாவிய ஆடியோ விளைவுகள்"
 
 #: src/main.cpp:345
 msgid "© 2017-2026 Easy Effects Team"
-msgstr ""
+msgstr "© 2017-2026 ஈசி எஃபெக்ட்ச் குழு"
 
 #: src/main.cpp:347
 msgid "Wellington Wallace"
-msgstr ""
+msgstr "வெலிங்டன் வாலச்"
 
 #: src/main.cpp:347
-#, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
-msgstr "உறை"
+msgstr "உருவாக்குநர்"
 
 #: src/main.cpp:351
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
+msgstr "உங்கள் பெயர்கள்"
 
 #: src/main.cpp:351
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
+msgstr "உங்கள் மின்னஞ்சல்கள்"
 
 #: src/plugin_base.cpp:312
 msgid "(Mic)"
-msgstr ""
+msgstr "(மைக்)"
 
 #: src/plugin_base.cpp:315
 msgid "(Speakers)"
-msgstr ""
+msgstr "(பேச்சாளர்கள்)"
 
 #: src/plugin_base.cpp:322
 msgid "Output Level Meter"
@@ -3324,37 +3042,30 @@ msgstr "வெளியீட்டு நிலை மீட்டர்"
 #: src/presets_manager.cpp:781 src/presets_manager.cpp:788
 #: src/presets_manager.cpp:798 src/presets_manager.cpp:805
 #: src/presets_manager.cpp:815 src/presets_manager.cpp:824
-#, fuzzy
 msgid "Preset not loaded correctly"
 msgstr "முன்னமைவு சரியாக ஏற்றப்படவில்லை"
 
 #: src/presets_manager.cpp:781
-#, fuzzy
 msgid "Wrong format in excluded apps list"
-msgstr "விலக்கப்பட்ட பயன்பாடுகள் பட்டியலில் தவறான வடிவம்"
+msgstr "விலக்கப்பட்ட ஆப்ச் பட்டியலில் தவறான வடிவம்"
 
 #: src/presets_manager.cpp:789
-#, fuzzy
 msgid "Generic error while loading excluded apps list"
-msgstr "விலக்கப்பட்ட பயன்பாடுகள் பட்டியலை ஏற்றும்போது பொதுவான பிழை"
+msgstr "விலக்கப்பட்ட ஆப்ச் பட்டியலை ஏற்றும்போது பொதுவான பிழை"
 
 #: src/presets_manager.cpp:798
-#, fuzzy
 msgid "Wrong format in effects list"
 msgstr "விளைவுகள் பட்டியலில் தவறான வடிவம்"
 
 #: src/presets_manager.cpp:805
-#, fuzzy
 msgid "Generic error while loading effects list"
 msgstr "விளைவுகள் பட்டியலை ஏற்றும்போது பொதுவான பிழை"
 
 #: src/presets_manager.cpp:816
-#, fuzzy
 msgid "One or more parameters have a wrong format"
-msgstr "ஒன்று அல்லது அதற்கு மேற்பட்ட அளவுருக்கள் தவறான வடிவத்தைக் கொண்டுள்ளன"
+msgstr "ஒன்று அல்லது அதற்கு மேற்பட்ட அளவுருக்கள் தவறான வடிவமைப்பைக் கொண்டுள்ளன"
 
 #: src/presets_manager.cpp:825
-#, fuzzy
 msgid "Generic error while loading the effect"
 msgstr "விளைவை ஏற்றும்போது பொதுவான பிழை"
 
@@ -3400,7 +3111,7 @@ msgstr "குறுக்குவெட்டு"
 
 #: src/tags_plugin_name.cpp:32
 msgid "Crusher"
-msgstr ""
+msgstr "நொறுக்கி"
 
 #: src/tags_plugin_name.cpp:33
 msgid "Crystalizer"
@@ -3451,129 +3162,123 @@ msgid "Stereo Tools"
 msgstr "ச்டீரியோ கருவிகள்"
 
 #: src/tags_plugin_name.cpp:54
-#, fuzzy
 msgid "Voice Suppressor"
-msgstr "இரைச்சல் நீக்கம்"
+msgstr "குரல் அடக்கி"
 
 #: src/units.hpp:59
-#, fuzzy
 msgctxt "left channel abbreviation (single letter)"
 msgid "L"
 msgstr "எல்"
 
 #: src/units.hpp:60
-#, fuzzy
 msgctxt "left channel abbreviation (single letter)"
 msgid "R"
-msgstr "R"
+msgstr "ஆர்"
 
 #: src/units.hpp:63
 msgctxt "The SOFA audio file format"
 msgid "SOFA"
-msgstr ""
+msgstr "சோஃபா"
 
 #: src/units.hpp:64
 msgctxt "The WAV audio file format"
 msgid "WAV"
-msgstr ""
+msgstr "WAV"
 
 #: src/units.hpp:67
 msgctxt "decibel unit abbreviation"
 msgid "dB"
-msgstr ""
+msgstr "dB"
 
 #: src/units.hpp:68
 msgctxt "decibel full scale unit abbreviation"
 msgid "dBFS"
-msgstr ""
+msgstr "dBFS"
 
 #: src/units.hpp:69
-#, fuzzy
 msgctxt "decibel per octaves unit abbreviation"
 msgid "dB/oct"
-msgstr "12 டி.பி./அக்"
+msgstr "dB/oct"
 
 #: src/units.hpp:70
 msgctxt "seconds unit abbreviation"
 msgid "s"
-msgstr ""
+msgstr "கள்"
 
 #: src/units.hpp:71
 msgctxt "milliseconds unit abbreviation"
 msgid "ms"
-msgstr ""
+msgstr "ms"
 
 #: src/units.hpp:72
 msgctxt "Hertz unit abbreviation"
 msgid "Hz"
-msgstr ""
+msgstr "எர்ட்ச்"
 
 #: src/units.hpp:73
 msgctxt "kiloHertz unit abbreviation"
 msgid "kHz"
-msgstr ""
+msgstr "kHz"
 
 #: src/units.hpp:74
 msgctxt "loudness full scale unit abbreviation"
 msgid "LUFS"
-msgstr ""
+msgstr "LUFS"
 
 #: src/units.hpp:75
-#, fuzzy
 msgctxt "loudness unit abbreviation"
 msgid "LU"
-msgstr "எல்"
+msgstr "LU"
 
 #: src/units.hpp:76
 msgctxt "meter unit abbreviation"
 msgid "m"
-msgstr ""
+msgstr "மீ"
 
 #: src/units.hpp:77
 msgctxt "centimeter unit abbreviation"
 msgid "cm"
-msgstr ""
+msgstr "செ.மீ"
 
 #: src/units.hpp:78
 msgctxt "degrees Celsius unit abbreviation"
 msgid "°C"
-msgstr ""
+msgstr "°C"
 
 #: src/units.hpp:79
 msgctxt "bit unit (plural)"
 msgid "bits"
-msgstr ""
+msgstr "பிட்கள்"
 
 #: src/units.hpp:80
 msgctxt "frame unit (plural)"
 msgid "frames"
-msgstr ""
+msgstr "சட்டங்கள்"
 
 #: src/units.hpp:81
 msgctxt "frames per second abbreviation"
 msgid "fps"
-msgstr ""
+msgstr "fps"
 
 #: src/units.hpp:84
 msgctxt "thousand abbreviation (single letter)"
 msgid "k"
-msgstr ""
+msgstr "கே"
 
 #: src/units.hpp:85
 msgctxt "percentage symbol"
 msgid "%"
-msgstr ""
+msgstr "%"
 
 #: src/units.hpp:86
 msgctxt "degrees (angle) symbol"
 msgid "°"
-msgstr ""
+msgstr "°"
 
 #: src/units.hpp:87
-#, fuzzy
 msgctxt "minus infinity abbreviation"
 msgid "-inf"
-msgstr "-இன்ஃப்"
+msgstr "-முடிவிலா"
 
 #: com.github.wwmm.easyeffects.desktop.in.template.h:1
 msgid "Equalizer, Compressor and Other Audio Effects"
@@ -3581,7 +3286,7 @@ msgstr "சமநிலைப்படுத்தி, அமுக்கி ம
 
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
-msgstr ""
+msgstr "எளிய ஆடியோ விளைவுகள்"
 
 #, fuzzy
 #~ msgid "Attack time"
