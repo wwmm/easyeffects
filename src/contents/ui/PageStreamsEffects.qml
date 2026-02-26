@@ -537,9 +537,11 @@ Kirigami.Page {
             xMax: DbSpectrum.maximumFrequency
             yMin: -100
             yMax: 0
+            yDataOffset: -Common.minimumDecibelLevel
             logarithimicHorizontalAxis: DbSpectrum.logarithimicHorizontalAxis
             dynamicYScale: DbSpectrum.dynamicYScale
             xUnit: Units.hz
+            yUnit: Units.dB
             visible: DbSpectrum.state
 
             Component.onDestruction: {

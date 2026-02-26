@@ -358,6 +358,7 @@ Kirigami.ScrollablePage {
                     colorTheme: DbGraph.colorTheme
                     xUnit: Units.s
                     xAxisDecimals: 2
+                    yAxisDecimals: 3
                     logarithimicHorizontalAxis: false
                     onWidthChanged: {
                         if (convolverPage.pluginBackend)

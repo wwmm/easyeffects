@@ -39,7 +39,10 @@ Item {
     property real yMin: 0
     property real yMax: 1
     property string xUnit: ""
+    property string yUnit: ""
     property int xAxisDecimals: 0
+    property int yAxisDecimals: 0
+    property real yDataOffset: 0
     readonly property real xMinLog: Math.log10(xMin)
     readonly property real xMaxLog: Math.log10(xMax)
     readonly property real yMinLog: Math.log10(yMin)
@@ -83,13 +86,18 @@ Item {
             return;
         }
 
+        //We do not want the object received as argument to be modified here
+        let processedData = Array.from(inputData);
+
         let minX = Number.POSITIVE_INFINITY;
         let maxX = Number.NEGATIVE_INFINITY;
         let minY = Number.POSITIVE_INFINITY;
         let maxY = Number.NEGATIVE_INFINITY;
 
-        for (let n = 0; n < inputData.length; n++) {
-            const point = inputData[n];
+        for (let n = 0; n < processedData.length; n++) {
+            processedData[n].y += yDataOffset;
+
+            const point = processedData[n];
 
             minX = Math.min(minX, point.x);
             maxX = Math.max(maxX, point.x);
@@ -113,11 +121,8 @@ Item {
             yMax = Math.max(maxY, yMax);
         }
 
-        //We do not want the object received as argument to be modified here
-        let processedData = Array.from(inputData);
-
         for (let n = 0; n < processedData.length; n++) {
-            const point = inputData[n];
+            const point = processedData[n];
 
             processedData[n].x = logarithimicHorizontalAxis ? Math.log10(point.x) : point.x;
             processedData[n].y = logarithimicVerticalAxis ? Math.log10(point.y) : point.y;
@@ -404,10 +409,10 @@ Item {
             coordinateLabel.y = labelY;
 
             const dataX = widgetRoot.mapToValueX(mouse.x);
-            // const dataY = widgetRoot.mapToValueY(mouse.y);
+            const dataY = widgetRoot.mapToValueY(mouse.y) - widgetRoot.yDataOffset;
 
-            const newText = `${Number(dataX).toLocaleString(Qt.locale(), 'f', widgetRoot.xAxisDecimals)} ${widgetRoot.xUnit}`;
-            // const newText = `x: ${Number(dataX).toLocaleString(Qt.locale(), 'f', widgetRoot.xAxisDecimals)} ${Units.hz}, y: ${Number(dataY).toLocaleString(locale, 'f', widgetRoot.xAxisDecimals)}`;
+            // const newText = `${Number(dataX).toLocaleString(Qt.locale(), 'f', widgetRoot.xAxisDecimals)} ${widgetRoot.xUnit}`;
+            const newText = `x: ${Number(dataX).toLocaleString(Qt.locale(), 'f', widgetRoot.xAxisDecimals)} ${widgetRoot.xUnit}, y: ${Number(dataY).toLocaleString(locale, 'f', widgetRoot.yAxisDecimals)} ${widgetRoot.yUnit}`;
 
             if (coordinateLabel.text !== newText) {
                 coordinateLabel.text = newText;
