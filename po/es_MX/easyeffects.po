@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-02-20 11:59-0300\n"
-"PO-Revision-Date: 2025-12-21 09:00+0000\n"
+"PO-Revision-Date: 2026-02-27 13:09+0000\n"
 "Last-Translator: Lito Parra <lito.15@proton.me>\n"
 "Language-Team: Spanish (Mexico) <https://hosted.weblate.org/projects/"
 "easyeffects/main/es_MX/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.15.1\n"
+"X-Generator: Weblate 5.16.1-dev\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -42,21 +42,19 @@ msgid "Hide the window."
 msgstr "Esconder ventana."
 
 #: src/command_line_parser.cpp:48
-#, fuzzy
 msgid ""
 "Global bypass. 1 to enable, 2 to disable and 3 to get the current state."
 msgstr ""
 "Supresión global (desactivar todos los efectos). 1 para habilitar, 2 para "
-"deshabilitar."
+"deshabilitar y 3 para mostrar el estado actual."
 
 #: src/command_line_parser.cpp:49
 msgid "bypass-state"
 msgstr "Estado de supresión"
 
 #: src/command_line_parser.cpp:50
-#, fuzzy
 msgid "Toggle the state of the global bypass."
-msgstr "Bypass Global"
+msgstr "Activar o desactivar la supresión global."
 
 #: src/command_line_parser.cpp:51
 msgid "Load a preset. Example: easyeffects -l music"
@@ -365,13 +363,15 @@ msgstr "Quitar esta aplicación"
 
 #: src/contents/ui/BlocklistDialog.qml:200
 msgid "Use media name"
-msgstr ""
+msgstr "Usar nombre del medio"
 
 #: src/contents/ui/BlocklistDialog.qml:201
 msgid ""
 "Also use a combination of node and media name when deciding if a stream "
 "should be blocked"
 msgstr ""
+"También usar una combinación del nombre de la fuente y del medio para "
+"decidir si un flujo debe ser bloqueado"
 
 #: src/contents/ui/BlocklistDialog.qml:212
 msgid "Show excluded apps"

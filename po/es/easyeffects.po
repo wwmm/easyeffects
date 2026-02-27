@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-02-20 11:59-0300\n"
-"PO-Revision-Date: 2026-01-08 08:03+0000\n"
-"Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
+"PO-Revision-Date: 2026-02-27 13:09+0000\n"
+"Last-Translator: Lito Parra <lito.15@proton.me>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
 "es/>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.15.1\n"
+"X-Generator: Weblate 5.16.1-dev\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -42,21 +42,19 @@ msgid "Hide the window."
 msgstr "Oculta la ventana."
 
 #: src/command_line_parser.cpp:48
-#, fuzzy
 msgid ""
 "Global bypass. 1 to enable, 2 to disable and 3 to get the current state."
 msgstr ""
 "Supresión global (desactivar todos los efectos). 1 para habilitar, 2 para "
-"deshabilitar."
+"deshabilitar y 3 para mostrar el estado actual."
 
 #: src/command_line_parser.cpp:49
 msgid "bypass-state"
 msgstr "Estado de supresión"
 
 #: src/command_line_parser.cpp:50
-#, fuzzy
 msgid "Toggle the state of the global bypass."
-msgstr "Alternar la supresión global"
+msgstr "Activar o desactivar la supresión global."
 
 #: src/command_line_parser.cpp:51
 msgid "Load a preset. Example: easyeffects -l music"
@@ -365,13 +363,15 @@ msgstr "Eliminar esta aplicación"
 
 #: src/contents/ui/BlocklistDialog.qml:200
 msgid "Use media name"
-msgstr ""
+msgstr "Usar nombre del medio"
 
 #: src/contents/ui/BlocklistDialog.qml:201
 msgid ""
 "Also use a combination of node and media name when deciding if a stream "
 "should be blocked"
 msgstr ""
+"También utilizar una combinación del nombre de la fuente y del medio para "
+"decidir si un flujo de audio debe ser bloqueado"
 
 #: src/contents/ui/BlocklistDialog.qml:212
 msgid "Show excluded apps"
@@ -910,26 +910,24 @@ msgid "Presets"
 msgstr "Perfiles"
 
 #: src/contents/ui/Crusher.qml:55
-#, fuzzy
 msgid "Bit reduction"
-msgstr "Reducción"
+msgstr "Reducción de profundidad de bits"
 
 #: src/contents/ui/Crusher.qml:90 src/contents/ui/PreferencesSheet.qml:374
 msgid "Shape"
 msgstr "Forma"
 
 #: src/contents/ui/Crusher.qml:100
-#, fuzzy
 msgid "Linear"
-msgstr "Líneas"
+msgstr "Lineal"
 
 #: src/contents/ui/Crusher.qml:100
 msgid "Logarithmic"
-msgstr ""
+msgstr "Logarítmico"
 
 #: src/contents/ui/Crusher.qml:109
 msgid "DC offset"
-msgstr ""
+msgstr "Desplazamiento de CC"
 
 #: src/contents/ui/Crusher.qml:125 src/contents/ui/Pitch.qml:299
 msgid "Anti-aliasing"
@@ -940,9 +938,8 @@ msgid "Mix"
 msgstr "Mezcla"
 
 #: src/contents/ui/Crusher.qml:159
-#, fuzzy
 msgid "Sample Rate"
-msgstr "Atenuación máxima"
+msgstr "Frecuencia de muestreo"
 
 #: src/contents/ui/Crusher.qml:165 src/contents/ui/Gate.qml:119
 #: src/contents/ui/Gate.qml:653 src/contents/ui/Maximizer.qml:100
@@ -952,7 +949,7 @@ msgstr "Reducción"
 
 #: src/contents/ui/Crusher.qml:180
 msgid "Low frequency oscillator"
-msgstr ""
+msgstr "Oscilador de baja frecuencia"
 
 #: src/contents/ui/CrystalizerBand.qml:58
 #: src/contents/ui/EqualizerBandMenu.qml:185
@@ -974,7 +971,7 @@ msgstr "Calidad de sobremuestreo"
 
 #: src/contents/ui/Crystalizer.qml:128
 msgid "Transition band"
-msgstr ""
+msgstr "Banda de transición"
 
 #: src/contents/ui/Crystalizer.qml:170 src/contents/ui/Limiter.qml:87
 msgid "Oversampling"
@@ -985,9 +982,8 @@ msgid "Adaptive intensity"
 msgstr "Intensidad adaptable"
 
 #: src/contents/ui/Crystalizer.qml:190
-#, fuzzy
 msgid "Fixed quantum"
-msgstr "Tamaño de bloque mínimo"
+msgstr "Tamaño de bloque fijo"
 
 #: src/contents/ui/DeepFilterNet.qml:51
 msgid "Attenuation limit"
@@ -1944,7 +1940,7 @@ msgstr "Monitorización de entradas"
 
 #: src/contents/ui/PageStreamsEffects.qml:782
 msgid "Send audio to the virtual source"
-msgstr ""
+msgstr "Enviar audio a la fuente virtual"
 
 #: src/contents/ui/PipeWirePage.qml:44
 msgid "General"
@@ -2212,7 +2208,7 @@ msgstr "Enviar el monitoreo del micrófono a la cadena de efectos de salida"
 
 #: src/contents/ui/PreferencesSheet.qml:231
 msgid "Copy the input audio buffer"
-msgstr ""
+msgstr "Copiar búfer del audio de entrada"
 
 #: src/contents/ui/PreferencesSheet.qml:232
 msgid ""
@@ -2221,6 +2217,10 @@ msgid ""
 "can happen when external applications are recording from Easy Effects "
 "virtual devices monitors."
 msgstr ""
+"Utilizar una copia del búfer de audio de entrada proporcionado por el "
+"servidor de sonido al procesar audio en los plugins de Easy Effects. Esto "
+"corrige fallos de audio que pueden suceder cuando aplicaciones externas "
+"graban desde los monitores virtuales de Easy Effects."
 
 #: src/contents/ui/PreferencesSheet.qml:244
 msgid "Enable the inactivity timeout"
@@ -2373,7 +2373,7 @@ msgstr "Esquema de colores"
 
 #: src/contents/ui/PreferencesSheet.qml:583
 msgid "Force English language"
-msgstr ""
+msgstr "Forzar interfaz en inglés"
 
 #: src/contents/ui/PreferencesSheet.qml:584
 msgid ""
@@ -2381,6 +2381,9 @@ msgid ""
 "Useful if the translation in the local language is incomplete or "
 "incomprehensible. A restart of the service is required to apply this option."
 msgstr ""
+"No traducir la interfaz de usuario y mostrar el texto en inglés. Es útil si "
+"la traducción en el idioma local es incompleta o incomprensible. Se debe "
+"reiniciar el servicio para aplicar esta opción."
 
 #: src/contents/ui/PreferencesSheet.qml:595
 msgid "Graphs"
@@ -2892,7 +2895,7 @@ msgstr "Cambiar el monitoreo del micrófono"
 
 #: src/contents/ui/Speex.qml:63
 msgid "Denoise"
-msgstr "Denoise AI"
+msgstr "Eliminar ruido"
 
 #: src/contents/ui/Speex.qml:85
 msgid "Dereverberation"
@@ -2983,29 +2986,24 @@ msgid "Stereo phase"
 msgstr "Fase estéreo"
 
 #: src/contents/ui/VoiceSuppressor.qml:94
-#, fuzzy
 msgid "Correlation"
-msgstr "Duración"
+msgstr "Correlación"
 
 #: src/contents/ui/VoiceSuppressor.qml:110
-#, fuzzy
 msgid "Phase difference"
-msgstr "Diferencia de frecuencia de muestreo"
+msgstr "Diferencia de fase"
 
 #: src/contents/ui/VoiceSuppressor.qml:126
-#, fuzzy
 msgid "Minimum kurtosis"
-msgstr "Tamaño de bloque mínimo"
+msgstr "Curtosis míninma"
 
 #: src/contents/ui/VoiceSuppressor.qml:141
-#, fuzzy
 msgid "Maximum instantaneous frequency"
-msgstr "Límite del historial"
+msgstr "Frecuencia instantánea máxima"
 
 #: src/contents/ui/VoiceSuppressor.qml:182
-#, fuzzy
 msgid "Inverted mode"
-msgstr "Invertir fase izquierda"
+msgstr "Modo invertido"
 
 #: src/main.cpp:344
 msgid "Global audio effects"
@@ -3118,7 +3116,7 @@ msgstr "Mezcla cruzada"
 
 #: src/tags_plugin_name.cpp:32
 msgid "Crusher"
-msgstr ""
+msgstr "Reductor de bits"
 
 #: src/tags_plugin_name.cpp:33
 msgid "Crystalizer"
@@ -3169,9 +3167,8 @@ msgid "Stereo Tools"
 msgstr "Herramientas estéreo"
 
 #: src/tags_plugin_name.cpp:54
-#, fuzzy
 msgid "Voice Suppressor"
-msgstr "Supresión del ruido"
+msgstr "Supresor de voz"
 
 #: src/units.hpp:59
 msgctxt "left channel abbreviation (single letter)"
