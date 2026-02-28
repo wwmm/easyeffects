@@ -23,6 +23,7 @@ import QtQuick.Layouts
 import ee.pipewire as PW
 import ee.presets as Presets
 import org.kde.kirigami as Kirigami
+import org.kde.kirigamiaddons.delegates as Delegates
 import org.kde.kirigamiaddons.formcard as FormCard
 
 ColumnLayout {
@@ -58,6 +59,19 @@ ColumnLayout {
             editable: false
             model: DbMain.visiblePage === 0 ? PW.ModelSinkDevices : PW.ModelSourceDevices
             description: `${i18n("Route")}: ${deviceRouteDescription}` // qmllint disable
+
+            comboBoxDelegate: Delegates.RoundedItemDelegate {
+                required property var model
+                required property int index
+
+                implicitWidth: ListView.view ? ListView.view.width : Kirigami.Units.gridUnit * 16
+                text: model[device.textRole]
+                highlighted: device.highlightedIndex === index
+
+                Controls.ToolTip.text: model[device.textRole]
+                Controls.ToolTip.visible: hovered && contentItem.labelItem.truncated
+                Controls.ToolTip.delay: Kirigami.Units.toolTipDelay
+            }
 
             function updateRouteDescription() {
                 const proxyIndex = model.index(currentIndex, 0);
@@ -184,10 +198,12 @@ ColumnLayout {
                 }
 
                 contentItem: Kirigami.FlexColumn {
+                    maximumWidth: Kirigami.Units.gridUnit * 40
 
                     GridLayout {
                         id: delegateLayout
 
+                        Layout.fillWidth: true
                         columns: 3
                         rows: 4
 
@@ -200,8 +216,7 @@ ColumnLayout {
 
                         Controls.Label {
                             Layout.fillWidth: true
-                            wrapMode: Text.NoWrap
-                            elide: Text.ElideRight
+                            wrapMode: Text.Wrap
                             text: listItemDelegate.deviceName
                             color: Kirigami.Theme.disabledTextColor
                         }
@@ -229,8 +244,7 @@ ColumnLayout {
 
                         Controls.Label {
                             Layout.fillWidth: true
-                            wrapMode: Text.NoWrap
-                            elide: Text.ElideRight
+                            wrapMode: Text.Wrap
                             text: listItemDelegate.deviceDescription
                             color: Kirigami.Theme.disabledTextColor
                         }
@@ -244,8 +258,7 @@ ColumnLayout {
 
                         Controls.Label {
                             Layout.fillWidth: true
-                            wrapMode: Text.NoWrap
-                            elide: Text.ElideRight
+                            wrapMode: Text.Wrap
                             text: listItemDelegate.deviceProfile
                             color: Kirigami.Theme.disabledTextColor
                         }
@@ -258,8 +271,7 @@ ColumnLayout {
 
                         Controls.Label {
                             Layout.fillWidth: true
-                            wrapMode: Text.NoWrap
-                            elide: Text.ElideRight
+                            wrapMode: Text.Wrap
                             text: listItemDelegate.devicePreset
                             color: Kirigami.Theme.disabledTextColor
                         }
