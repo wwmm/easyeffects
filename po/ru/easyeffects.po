@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-02-20 11:59-0300\n"
-"PO-Revision-Date: 2026-02-19 10:09+0000\n"
+"PO-Revision-Date: 2026-03-01 08:09+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -1700,7 +1700,7 @@ msgstr "Автоматический уровень"
 
 #: src/contents/ui/Limiter.qml:469
 msgid "Smooth"
-msgstr "Гладкий"
+msgstr "Плавность"
 
 #: src/contents/ui/Limiter.qml:637
 msgid "Threshold boost"
