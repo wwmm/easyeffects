@@ -120,6 +120,8 @@ Kirigami.Dialog {
 
                     contentItem: RowLayout {
                         Controls.Label {
+                            Layout.fillWidth: true
+                            Layout.maximumWidth: listItemDelegate.width
                             text: listItemDelegate.name
                             elide: Text.ElideRight
                             wrapMode: Text.WrapAnywhere
