@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-03-02 01:24-0300\n"
-"PO-Revision-Date: 2026-03-01 08:09+0000\n"
+"PO-Revision-Date: 2026-03-02 17:09+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Weblate 5.16.1-dev\n"
+"X-Generator: Weblate 5.17-dev\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -782,9 +782,8 @@ msgid "Failed to remove the %1 Convolver impulse."
 msgstr "Не удалось удалить импульс конвольвера %1."
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:124
-#, fuzzy
 msgid "Rename Impulse"
-msgstr "Убранный импульс: %1"
+msgstr "Переименовать импульс"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:129
 #: src/contents/ui/PresetsLocalPage.qml:247
@@ -792,14 +791,12 @@ msgid "Rename"
 msgstr "Переименовать"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:137
-#, fuzzy
 msgid "Renamed the %1 impulse to %2"
-msgstr "Переименована локальная предустановка %1 в %2"
+msgstr "Переименован импульс %1 в %2"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:140
-#, fuzzy
 msgid "Failed to rename the %1 impulse to %2"
-msgstr "Не удалось переименовать локальную предустановку %1 в %2"
+msgstr "Не удалось переименовать импульс %1 в %2"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:148
 #: src/contents/ui/PresetsLocalPage.qml:267
@@ -807,9 +804,8 @@ msgid "Cancel"
 msgstr "Отмена"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:187
-#, fuzzy
 msgid "Rename this impulse"
-msgstr "Переименовать эту предустановку"
+msgstr "Переименовать этот импульс"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:195
 msgid "Delete this impulse"
