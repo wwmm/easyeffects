@@ -118,6 +118,58 @@ Kirigami.Dialog {
                         }
                     }
 
+                    Kirigami.PromptDialog {
+                        id: renameDialog
+
+                        title: i18n("Rename Impulse") // qmllint disable
+
+                        standardButtons: Kirigami.Dialog.NoButton
+                        customFooterActions: [
+                            Kirigami.Action {
+                                text: i18n("Rename") // qmllint disable
+                                icon.name: "dialog-ok"
+                                onTriggered: {
+                                    const newName = newNameTextField.text;
+
+                                    // trim to exclude names containing only multiple spaces
+                                    if (!Common.isEmpty(newName.trim())) {
+                                        if (Presets.Manager.renameImpulseFile(listItemDelegate.name, newName) === true) {
+                                            appWindow.showStatus(i18n("Renamed the %1 impulse to %2", `<strong>${listItemDelegate.name}</strong>`, `<strong>${newName}</strong>`), Kirigami.MessageType.Positive); // qmllint disable
+
+                                        } else {
+                                            appWindow.showStatus(i18n("Failed to rename the %1 impulse to %2", `<strong>${listItemDelegate.name}</strong>`, `<strong>${newName}</strong>`), Kirigami.MessageType.Error, false); // qmllint disable
+                                        }
+                                    }
+
+                                    renameDialog.close();
+                                }
+                            },
+                            Kirigami.Action {
+                                text: i18n("Cancel") // qmllint disable
+                                icon.name: "dialog-cancel"
+                                onTriggered: {
+                                    renameDialog.close();
+                                }
+                            }
+                        ]
+                        onVisibleChanged: {
+                            if (visible) {
+                                newNameTextField.forceActiveFocus();
+                            }
+                        }
+
+                        ColumnLayout {
+                            Controls.TextField {
+                                id: newNameTextField
+
+                                Layout.fillWidth: true
+                                text: listItemDelegate.name
+
+                                validator: Validators.validFileNameRegex
+                            }
+                        }
+                    }
+
                     contentItem: RowLayout {
                         Controls.Label {
                             Layout.fillWidth: true
@@ -131,6 +183,14 @@ Kirigami.Dialog {
                         Kirigami.ActionToolBar {
                             alignment: Qt.AlignRight
                             actions: [
+                                Kirigami.Action {
+                                    text: i18n("Rename this impulse") // qmllint disable
+                                    icon.name: "edit-entry-symbolic"
+                                    displayHint: Kirigami.DisplayHint.AlwaysHide
+                                    onTriggered: {
+                                        renameDialog.open();
+                                    }
+                                },
                                 Kirigami.Action {
                                     text: i18n("Delete this impulse") // qmllint disable
                                     icon.name: "delete"

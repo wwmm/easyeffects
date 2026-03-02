@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-02-20 11:59-0300\n"
+"POT-Creation-Date: 2026-03-02 01:24-0300\n"
 "PO-Revision-Date: 2026-02-19 10:09+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -204,7 +204,7 @@ msgstr "Gnóthachan Aschuir"
 
 #: src/contents/ui/Autogain.qml:231 src/contents/ui/BassEnhancer.qml:203
 #: src/contents/ui/BassLoudness.qml:123 src/contents/ui/Compressor.qml:872
-#: src/contents/ui/Convolver.qml:518 src/contents/ui/Crossfeed.qml:147
+#: src/contents/ui/Convolver.qml:519 src/contents/ui/Crossfeed.qml:147
 #: src/contents/ui/Crusher.qml:233 src/contents/ui/Crystalizer.qml:153
 #: src/contents/ui/DeepFilterNet.qml:194 src/contents/ui/Deesser.qml:317
 #: src/contents/ui/Delay.qml:373 src/contents/ui/EchoCanceller.qml:155
@@ -295,7 +295,7 @@ msgid "Listen"
 msgstr "Éist"
 
 #: src/contents/ui/BassEnhancer.qml:245 src/contents/ui/BassLoudness.qml:141
-#: src/contents/ui/Compressor.qml:924 src/contents/ui/Convolver.qml:553
+#: src/contents/ui/Compressor.qml:924 src/contents/ui/Convolver.qml:554
 #: src/contents/ui/Crossfeed.qml:173 src/contents/ui/Crusher.qml:265
 #: src/contents/ui/Crystalizer.qml:201 src/contents/ui/Deesser.qml:359
 #: src/contents/ui/Delay.qml:425 src/contents/ui/EchoCanceller.qml:183
@@ -341,7 +341,7 @@ msgstr "Cuir le hIarratais Eisiata"
 #: src/contents/ui/ConvolverImpulseDialog.qml:90
 #: src/contents/ui/MenuAddPlugins.qml:55
 #: src/contents/ui/PageStreamsEffects.qml:98
-#: src/contents/ui/PresetsAutoloadPage.qml:162
+#: src/contents/ui/PresetsAutoloadPage.qml:176
 #: src/contents/ui/PresetsCommunityPage.qml:105
 #: src/contents/ui/PresetsLocalPage.qml:194 src/contents/ui/RNNoise.qml:231
 msgid "Empty List"
@@ -638,7 +638,7 @@ msgstr "Ard-phas"
 msgid "Off"
 msgstr "As"
 
-#: src/contents/ui/Compressor.qml:485 src/contents/ui/Convolver.qml:475
+#: src/contents/ui/Compressor.qml:485 src/contents/ui/Convolver.qml:476
 #: src/contents/ui/Delay.qml:175 src/contents/ui/Delay.qml:328
 #: src/contents/ui/Expander.qml:445 src/contents/ui/Gate.qml:460
 #: src/contents/ui/MultibandCompressor.qml:626
@@ -647,7 +647,7 @@ msgstr "As"
 msgid "Dry"
 msgstr "Tirim"
 
-#: src/contents/ui/Compressor.qml:504 src/contents/ui/Convolver.qml:493
+#: src/contents/ui/Compressor.qml:504 src/contents/ui/Convolver.qml:494
 #: src/contents/ui/Delay.qml:193 src/contents/ui/Delay.qml:346
 #: src/contents/ui/Expander.qml:464 src/contents/ui/Gate.qml:479
 #: src/contents/ui/MultibandCompressor.qml:644
@@ -766,15 +766,45 @@ msgstr "Baineadh an impulse Convolver %1."
 msgid "Failed to remove the %1 Convolver impulse."
 msgstr "Theip ar an bíog Convolver %1 a bhaint."
 
-#: src/contents/ui/ConvolverImpulseDialog.qml:133
+#: src/contents/ui/ConvolverImpulseDialog.qml:124
+#, fuzzy
+msgid "Rename Impulse"
+msgstr "Impuls Bainte: %1"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:129
+#: src/contents/ui/PresetsLocalPage.qml:247
+msgid "Rename"
+msgstr "Athainmnigh"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:137
+#, fuzzy
+msgid "Renamed the %1 impulse to %2"
+msgstr "Athainmníodh an réamhshocrú áitiúil %1 go %2"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:140
+#, fuzzy
+msgid "Failed to rename the %1 impulse to %2"
+msgstr "Theip ar athainmniú réamhshocraithe áitiúil %1 go %2"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:148
+#: src/contents/ui/PresetsLocalPage.qml:267
+msgid "Cancel"
+msgstr "Cealaigh"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:187
+#, fuzzy
+msgid "Rename this impulse"
+msgstr "Athainmnigh an réamhshocrú seo"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:195
 msgid "Delete this impulse"
 msgstr "Scrios an spreagadh seo"
 
-#: src/contents/ui/ConvolverImpulseDialog.qml:172
+#: src/contents/ui/ConvolverImpulseDialog.qml:234
 msgid "Import impulse"
 msgstr "Iompórtáil Impulse"
 
-#: src/contents/ui/ConvolverImpulseDialog.qml:182
+#: src/contents/ui/ConvolverImpulseDialog.qml:244
 #: src/contents/ui/MenuAddPlugins.qml:203 src/contents/ui/PresetsDialog.qml:126
 msgctxt "@action:button"
 msgid "Close"
@@ -820,33 +850,33 @@ msgstr "Speictream"
 msgid "Log scale"
 msgstr "Scála loga"
 
-#: src/contents/ui/Convolver.qml:380 src/contents/ui/Crusher.qml:207
+#: src/contents/ui/Convolver.qml:381 src/contents/ui/Crusher.qml:207
 msgid "Rate"
 msgstr "Ráta"
 
-#: src/contents/ui/Convolver.qml:385 src/contents/ui/Delay.qml:74
+#: src/contents/ui/Convolver.qml:386 src/contents/ui/Delay.qml:74
 #: src/contents/ui/Delay.qml:85 src/contents/ui/Delay.qml:227
 #: src/contents/ui/Delay.qml:238
 msgid "Samples"
 msgstr "Samplaí"
 
-#: src/contents/ui/Convolver.qml:390
+#: src/contents/ui/Convolver.qml:391
 msgid "Duration"
 msgstr "Fad ama"
 
-#: src/contents/ui/Convolver.qml:395 src/contents/ui/PipeWirePage.qml:332
+#: src/contents/ui/Convolver.qml:396 src/contents/ui/PipeWirePage.qml:332
 msgid "Channels"
 msgstr "Cainéil"
 
-#: src/contents/ui/Convolver.qml:400
+#: src/contents/ui/Convolver.qml:401
 msgid "Format"
 msgstr "Formáid"
 
-#: src/contents/ui/Convolver.qml:458
+#: src/contents/ui/Convolver.qml:459
 msgid "Stereo width"
 msgstr "Leithead steirió"
 
-#: src/contents/ui/Convolver.qml:535 src/tags_plugin_name.cpp:26
+#: src/contents/ui/Convolver.qml:536 src/tags_plugin_name.cpp:26
 msgid "Autogain"
 msgstr "Uathghnóthachan"
 
@@ -1782,7 +1812,7 @@ msgstr "Scoir"
 msgid "Go back"
 msgstr "Téigh ar ais"
 
-#: src/contents/ui/Main.qml:499 src/contents/ui/PageStreamsEffects.qml:742
+#: src/contents/ui/Main.qml:499 src/contents/ui/PageStreamsEffects.qml:744
 msgid "Effects"
 msgstr "Éifeachtaí"
 
@@ -1920,7 +1950,7 @@ msgid "Reduce the list of effects pipeline"
 msgstr "Laghdaigh an liosta éifeachtaí píblíne"
 
 #: src/contents/ui/PageStreamsEffects.qml:440
-#: src/contents/ui/PageStreamsEffects.qml:729
+#: src/contents/ui/PageStreamsEffects.qml:731
 msgid "Players"
 msgstr "Imreoirí"
 
@@ -1929,19 +1959,19 @@ msgid "Output device"
 msgstr "Gléas aschuir"
 
 #: src/contents/ui/PageStreamsEffects.qml:449
-#: src/contents/ui/PageStreamsEffects.qml:729
+#: src/contents/ui/PageStreamsEffects.qml:731
 msgid "Recorders"
 msgstr "Taifeadáin"
 
-#: src/contents/ui/PageStreamsEffects.qml:760
+#: src/contents/ui/PageStreamsEffects.qml:762
 msgid "Excluded apps"
 msgstr "Aipeanna eisiata"
 
-#: src/contents/ui/PageStreamsEffects.qml:769
+#: src/contents/ui/PageStreamsEffects.qml:771
 msgid "Input monitoring"
 msgstr "Monatóireacht ionchuir"
 
-#: src/contents/ui/PageStreamsEffects.qml:782
+#: src/contents/ui/PageStreamsEffects.qml:784
 msgid "Send audio to the virtual source"
 msgstr "Seol fuaim chuig an bhfoinse fhíorúil"
 
@@ -2525,34 +2555,34 @@ msgstr "Minicíocht nuashonraithe"
 msgid "Related to LV2 plugins."
 msgstr "Gaolmhar le breiseáin LV2."
 
-#: src/contents/ui/PresetsAutoloadPage.qml:54
-#: src/contents/ui/PresetsAutoloadPage.qml:198
+#: src/contents/ui/PresetsAutoloadPage.qml:55
+#: src/contents/ui/PresetsAutoloadPage.qml:214
 msgid "Device"
 msgstr "Gléas"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:60
-#: src/contents/ui/PresetsAutoloadPage.qml:242
+#: src/contents/ui/PresetsAutoloadPage.qml:61
+#: src/contents/ui/PresetsAutoloadPage.qml:256
 msgid "Route"
 msgstr "Bealach"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:111
-#: src/contents/ui/PresetsAutoloadPage.qml:256
+#: src/contents/ui/PresetsAutoloadPage.qml:125
+#: src/contents/ui/PresetsAutoloadPage.qml:269
 msgid "Local preset"
 msgstr "Réamhshocrú áitiúil"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:122
+#: src/contents/ui/PresetsAutoloadPage.qml:136
 msgid "Create"
 msgstr "Cruthaigh"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:124
+#: src/contents/ui/PresetsAutoloadPage.qml:138
 msgid "Create a new autoload preset"
 msgstr "Cruthaigh réamhshocrú uathluchtaithe nua"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:213
+#: src/contents/ui/PresetsAutoloadPage.qml:228
 msgid "Remove this autoload preset"
 msgstr "Bain an réamhshocrú uathluchtaithe seo"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:227
+#: src/contents/ui/PresetsAutoloadPage.qml:242
 msgid "Description"
 msgstr "Cur síos"
 
@@ -2688,10 +2718,6 @@ msgstr "Theip ar an réamhshocrú áitiúil %1 a bhaint."
 msgid "Rename Preset"
 msgstr "Athainmnigh Réamhshocrú"
 
-#: src/contents/ui/PresetsLocalPage.qml:247
-msgid "Rename"
-msgstr "Athainmnigh"
-
 #: src/contents/ui/PresetsLocalPage.qml:256
 msgid "Renamed the %1 local preset to %2"
 msgstr "Athainmníodh an réamhshocrú áitiúil %1 go %2"
@@ -2699,10 +2725,6 @@ msgstr "Athainmníodh an réamhshocrú áitiúil %1 go %2"
 #: src/contents/ui/PresetsLocalPage.qml:259
 msgid "Failed to rename the %1 local preset to %2"
 msgstr "Theip ar athainmniú réamhshocraithe áitiúil %1 go %2"
-
-#: src/contents/ui/PresetsLocalPage.qml:267
-msgid "Cancel"
-msgstr "Cealaigh"
 
 #: src/contents/ui/PresetsLocalPage.qml:306
 msgid "Save settings to this preset"
@@ -3052,33 +3074,33 @@ msgstr "(Cainteoirí)"
 msgid "Output Level Meter"
 msgstr "Méadar Leibhéal Aschurtha"
 
-#: src/presets_manager.cpp:781 src/presets_manager.cpp:788
-#: src/presets_manager.cpp:798 src/presets_manager.cpp:805
-#: src/presets_manager.cpp:815 src/presets_manager.cpp:824
+#: src/presets_manager.cpp:822 src/presets_manager.cpp:829
+#: src/presets_manager.cpp:839 src/presets_manager.cpp:846
+#: src/presets_manager.cpp:856 src/presets_manager.cpp:865
 msgid "Preset not loaded correctly"
 msgstr "Níor lódáileadh an réamhshocrú i gceart"
 
-#: src/presets_manager.cpp:781
+#: src/presets_manager.cpp:822
 msgid "Wrong format in excluded apps list"
 msgstr "Formáid mhícheart i liosta na n-aipeanna eisiata"
 
-#: src/presets_manager.cpp:789
+#: src/presets_manager.cpp:830
 msgid "Generic error while loading excluded apps list"
 msgstr "Earráid ghinearálta agus liosta na n-aipeanna eisiata á luchtú"
 
-#: src/presets_manager.cpp:798
+#: src/presets_manager.cpp:839
 msgid "Wrong format in effects list"
 msgstr "Formáid mhícheart sa liosta éifeachtaí"
 
-#: src/presets_manager.cpp:805
+#: src/presets_manager.cpp:846
 msgid "Generic error while loading effects list"
 msgstr "Earráid ghinearálta agus liosta na n-éifeachtaí á luchtú"
 
-#: src/presets_manager.cpp:816
+#: src/presets_manager.cpp:857
 msgid "One or more parameters have a wrong format"
 msgstr "Tá formáid mhícheart ag paraiméadar amháin nó níos mó"
 
-#: src/presets_manager.cpp:825
+#: src/presets_manager.cpp:866
 msgid "Generic error while loading the effect"
 msgstr "Earráid ghinearálta agus an éifeacht á luchtú"
 
@@ -3742,9 +3764,6 @@ msgstr "Éifeachtaí fuaime simplí"
 
 #~ msgid "Loaded Impulse: %1"
 #~ msgstr "Impuls Luchtaithe: %1"
-
-#~ msgid "Removed Impulse: %1"
-#~ msgstr "Impuls Bainte: %1"
 
 #~ msgid "Failed to Remove the Impulse: %1"
 #~ msgstr "Theip ar an Impulse a Bhaint: %1"

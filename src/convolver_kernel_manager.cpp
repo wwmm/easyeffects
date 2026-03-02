@@ -184,8 +184,6 @@ auto ConvolverKernelManager::searchKernelPath(const std::string& name) -> std::s
 
       auto local_kernel_file = std::filesystem::path{path};
 
-      util::warning(local_kernel_file);
-
       if (std::filesystem::exists(local_kernel_file)) {
         kernel_full_path = local_kernel_file.string();
 

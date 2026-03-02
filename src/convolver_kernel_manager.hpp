@@ -30,6 +30,9 @@
 
 class ConvolverKernelManager {
  public:
+  static constexpr std::string irs_ext = ".irs";
+  static constexpr std::string sofa_ext = ".sofa";
+
   struct KernelData {
     bool is_sofa = false;
 
@@ -90,9 +93,6 @@ class ConvolverKernelManager {
 
  private:
   db::Convolver* settings = nullptr;
-
-  static constexpr std::string irs_ext = ".irs";
-  static constexpr std::string sofa_ext = ".sofa";
 
   PipelineType pipeline_type;
 

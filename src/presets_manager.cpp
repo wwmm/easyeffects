@@ -49,6 +49,7 @@
 #include "bass_loudness_preset.hpp"
 #include "compressor_preset.hpp"
 #include "config.h"
+#include "convolver_kernel_manager.hpp"
 #include "convolver_preset.hpp"
 #include "crossfeed_preset.hpp"
 #include "crusher_preset.hpp"
@@ -674,6 +675,46 @@ int Manager::importRNNoiseModel(const QList<QString>& url_list) {
 
 bool Manager::removeImpulseFile(const QString& filePath) {
   return IrsManager::remove_impulse_file(filePath);
+}
+
+bool Manager::renameImpulseFile(const QString& name, const QString& newName) {
+  const std::vector<std::string> extensions = {ConvolverKernelManager::irs_ext, ConvolverKernelManager::sofa_ext};
+
+  std::filesystem::path current_path;
+
+  for (const auto& ext : extensions) {
+    std::string path = dir_manager.userIrsDir().string();
+
+    path.append("/");
+    path.append(name.toStdString());
+    path.append(ext);
+
+    auto impulse_file = std::filesystem::path{path};
+
+    if (std::filesystem::exists(impulse_file)) {
+      current_path = impulse_file;
+
+      break;
+    }
+  }
+
+  if (!std::filesystem::exists(current_path)) {
+    util::debug(std::format("Could not find any impulse file named: {}. Renaming aobrted!", name.toStdString()));
+
+    return false;
+  }
+
+  std::filesystem::path new_file;
+
+  new_file = dir_manager.userIrsDir() / std::filesystem::path{newName.toStdString()};
+
+  new_file.replace_extension(current_path.extension());
+
+  std::filesystem::rename(current_path, new_file);
+
+  util::debug(std::format("Renamed impulse: {} to {}", current_path.string(), new_file.string()));
+
+  return true;
 }
 
 bool Manager::removeRNNoiseModel(const QString& filePath) {

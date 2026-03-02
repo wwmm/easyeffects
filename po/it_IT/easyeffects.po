@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-02-20 11:59-0300\n"
+"POT-Creation-Date: 2026-03-02 01:24-0300\n"
 "PO-Revision-Date: 2026-02-19 10:09+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -206,7 +206,7 @@ msgstr "Guadagno in uscita"
 
 #: src/contents/ui/Autogain.qml:231 src/contents/ui/BassEnhancer.qml:203
 #: src/contents/ui/BassLoudness.qml:123 src/contents/ui/Compressor.qml:872
-#: src/contents/ui/Convolver.qml:518 src/contents/ui/Crossfeed.qml:147
+#: src/contents/ui/Convolver.qml:519 src/contents/ui/Crossfeed.qml:147
 #: src/contents/ui/Crusher.qml:233 src/contents/ui/Crystalizer.qml:153
 #: src/contents/ui/DeepFilterNet.qml:194 src/contents/ui/Deesser.qml:317
 #: src/contents/ui/Delay.qml:373 src/contents/ui/EchoCanceller.qml:155
@@ -297,7 +297,7 @@ msgid "Listen"
 msgstr "Ascolta"
 
 #: src/contents/ui/BassEnhancer.qml:245 src/contents/ui/BassLoudness.qml:141
-#: src/contents/ui/Compressor.qml:924 src/contents/ui/Convolver.qml:553
+#: src/contents/ui/Compressor.qml:924 src/contents/ui/Convolver.qml:554
 #: src/contents/ui/Crossfeed.qml:173 src/contents/ui/Crusher.qml:265
 #: src/contents/ui/Crystalizer.qml:201 src/contents/ui/Deesser.qml:359
 #: src/contents/ui/Delay.qml:425 src/contents/ui/EchoCanceller.qml:183
@@ -343,7 +343,7 @@ msgstr "Aggiungi alle applicazioni escluse"
 #: src/contents/ui/ConvolverImpulseDialog.qml:90
 #: src/contents/ui/MenuAddPlugins.qml:55
 #: src/contents/ui/PageStreamsEffects.qml:98
-#: src/contents/ui/PresetsAutoloadPage.qml:162
+#: src/contents/ui/PresetsAutoloadPage.qml:176
 #: src/contents/ui/PresetsCommunityPage.qml:105
 #: src/contents/ui/PresetsLocalPage.qml:194 src/contents/ui/RNNoise.qml:231
 msgid "Empty List"
@@ -639,7 +639,7 @@ msgstr "Passa-alto"
 msgid "Off"
 msgstr "Off"
 
-#: src/contents/ui/Compressor.qml:485 src/contents/ui/Convolver.qml:475
+#: src/contents/ui/Compressor.qml:485 src/contents/ui/Convolver.qml:476
 #: src/contents/ui/Delay.qml:175 src/contents/ui/Delay.qml:328
 #: src/contents/ui/Expander.qml:445 src/contents/ui/Gate.qml:460
 #: src/contents/ui/MultibandCompressor.qml:626
@@ -648,7 +648,7 @@ msgstr "Off"
 msgid "Dry"
 msgstr "Dry"
 
-#: src/contents/ui/Compressor.qml:504 src/contents/ui/Convolver.qml:493
+#: src/contents/ui/Compressor.qml:504 src/contents/ui/Convolver.qml:494
 #: src/contents/ui/Delay.qml:193 src/contents/ui/Delay.qml:346
 #: src/contents/ui/Expander.qml:464 src/contents/ui/Gate.qml:479
 #: src/contents/ui/MultibandCompressor.qml:644
@@ -766,15 +766,45 @@ msgstr "Rimosso l'impulso %1 del Convolver."
 msgid "Failed to remove the %1 Convolver impulse."
 msgstr "Rimozione dell'impulso %1 del Convolver non riuscita."
 
-#: src/contents/ui/ConvolverImpulseDialog.qml:133
+#: src/contents/ui/ConvolverImpulseDialog.qml:124
+#, fuzzy
+msgid "Rename Impulse"
+msgstr "Impulso Rimosso: %1"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:129
+#: src/contents/ui/PresetsLocalPage.qml:247
+msgid "Rename"
+msgstr "Rinomina"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:137
+#, fuzzy
+msgid "Renamed the %1 impulse to %2"
+msgstr "Modificato il profilo locale %1 in %2"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:140
+#, fuzzy
+msgid "Failed to rename the %1 impulse to %2"
+msgstr "Modifica del profilo locale %1 in %2 non riuscita"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:148
+#: src/contents/ui/PresetsLocalPage.qml:267
+msgid "Cancel"
+msgstr "Annulla"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:187
+#, fuzzy
+msgid "Rename this impulse"
+msgstr "Rinomina questo profilo"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:195
 msgid "Delete this impulse"
 msgstr "Elimina questo impulso"
 
-#: src/contents/ui/ConvolverImpulseDialog.qml:172
+#: src/contents/ui/ConvolverImpulseDialog.qml:234
 msgid "Import impulse"
 msgstr "Importa impulso"
 
-#: src/contents/ui/ConvolverImpulseDialog.qml:182
+#: src/contents/ui/ConvolverImpulseDialog.qml:244
 #: src/contents/ui/MenuAddPlugins.qml:203 src/contents/ui/PresetsDialog.qml:126
 msgctxt "@action:button"
 msgid "Close"
@@ -822,33 +852,33 @@ msgstr "Spettro"
 msgid "Log scale"
 msgstr "Scala logaritmica"
 
-#: src/contents/ui/Convolver.qml:380 src/contents/ui/Crusher.qml:207
+#: src/contents/ui/Convolver.qml:381 src/contents/ui/Crusher.qml:207
 msgid "Rate"
 msgstr "Frequenza"
 
-#: src/contents/ui/Convolver.qml:385 src/contents/ui/Delay.qml:74
+#: src/contents/ui/Convolver.qml:386 src/contents/ui/Delay.qml:74
 #: src/contents/ui/Delay.qml:85 src/contents/ui/Delay.qml:227
 #: src/contents/ui/Delay.qml:238
 msgid "Samples"
 msgstr "Campioni"
 
-#: src/contents/ui/Convolver.qml:390
+#: src/contents/ui/Convolver.qml:391
 msgid "Duration"
 msgstr "Durata"
 
-#: src/contents/ui/Convolver.qml:395 src/contents/ui/PipeWirePage.qml:332
+#: src/contents/ui/Convolver.qml:396 src/contents/ui/PipeWirePage.qml:332
 msgid "Channels"
 msgstr "Canali"
 
-#: src/contents/ui/Convolver.qml:400
+#: src/contents/ui/Convolver.qml:401
 msgid "Format"
 msgstr "Formato"
 
-#: src/contents/ui/Convolver.qml:458
+#: src/contents/ui/Convolver.qml:459
 msgid "Stereo width"
 msgstr "Ampiezza stereo"
 
-#: src/contents/ui/Convolver.qml:535 src/tags_plugin_name.cpp:26
+#: src/contents/ui/Convolver.qml:536 src/tags_plugin_name.cpp:26
 msgid "Autogain"
 msgstr "Guadagno Automatico"
 
@@ -1780,7 +1810,7 @@ msgstr "Esci"
 msgid "Go back"
 msgstr "Torna indietro"
 
-#: src/contents/ui/Main.qml:499 src/contents/ui/PageStreamsEffects.qml:742
+#: src/contents/ui/Main.qml:499 src/contents/ui/PageStreamsEffects.qml:744
 msgid "Effects"
 msgstr "Effetti"
 
@@ -1918,7 +1948,7 @@ msgid "Reduce the list of effects pipeline"
 msgstr "Riduci la lista della pipeline degli effetti"
 
 #: src/contents/ui/PageStreamsEffects.qml:440
-#: src/contents/ui/PageStreamsEffects.qml:729
+#: src/contents/ui/PageStreamsEffects.qml:731
 msgid "Players"
 msgstr "Riproduttori"
 
@@ -1927,19 +1957,19 @@ msgid "Output device"
 msgstr "Dispositivo di uscita"
 
 #: src/contents/ui/PageStreamsEffects.qml:449
-#: src/contents/ui/PageStreamsEffects.qml:729
+#: src/contents/ui/PageStreamsEffects.qml:731
 msgid "Recorders"
 msgstr "Registratori"
 
-#: src/contents/ui/PageStreamsEffects.qml:760
+#: src/contents/ui/PageStreamsEffects.qml:762
 msgid "Excluded apps"
 msgstr "App escluse"
 
-#: src/contents/ui/PageStreamsEffects.qml:769
+#: src/contents/ui/PageStreamsEffects.qml:771
 msgid "Input monitoring"
 msgstr "Monitoraggio Input"
 
-#: src/contents/ui/PageStreamsEffects.qml:782
+#: src/contents/ui/PageStreamsEffects.qml:784
 msgid "Send audio to the virtual source"
 msgstr "Invia audio al registratore virtuale"
 
@@ -2522,34 +2552,34 @@ msgstr "Frequenza di aggiornamento"
 msgid "Related to LV2 plugins."
 msgstr "Correlato ai plugin LV2."
 
-#: src/contents/ui/PresetsAutoloadPage.qml:54
-#: src/contents/ui/PresetsAutoloadPage.qml:198
+#: src/contents/ui/PresetsAutoloadPage.qml:55
+#: src/contents/ui/PresetsAutoloadPage.qml:214
 msgid "Device"
 msgstr "Dispositivo Audio"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:60
-#: src/contents/ui/PresetsAutoloadPage.qml:242
+#: src/contents/ui/PresetsAutoloadPage.qml:61
+#: src/contents/ui/PresetsAutoloadPage.qml:256
 msgid "Route"
 msgstr "Percorso"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:111
-#: src/contents/ui/PresetsAutoloadPage.qml:256
+#: src/contents/ui/PresetsAutoloadPage.qml:125
+#: src/contents/ui/PresetsAutoloadPage.qml:269
 msgid "Local preset"
 msgstr "Profilo locale"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:122
+#: src/contents/ui/PresetsAutoloadPage.qml:136
 msgid "Create"
 msgstr "Crea"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:124
+#: src/contents/ui/PresetsAutoloadPage.qml:138
 msgid "Create a new autoload preset"
 msgstr "Crea un nuovo profilo di auto caricamento"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:213
+#: src/contents/ui/PresetsAutoloadPage.qml:228
 msgid "Remove this autoload preset"
 msgstr "Rimuovi questo profilo di auto caricamento"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:227
+#: src/contents/ui/PresetsAutoloadPage.qml:242
 msgid "Description"
 msgstr "Descrizione"
 
@@ -2684,10 +2714,6 @@ msgstr "Rimozione del profilo locale %1 non riuscita."
 msgid "Rename Preset"
 msgstr "Rinomina Profilo"
 
-#: src/contents/ui/PresetsLocalPage.qml:247
-msgid "Rename"
-msgstr "Rinomina"
-
 #: src/contents/ui/PresetsLocalPage.qml:256
 msgid "Renamed the %1 local preset to %2"
 msgstr "Modificato il profilo locale %1 in %2"
@@ -2695,10 +2721,6 @@ msgstr "Modificato il profilo locale %1 in %2"
 #: src/contents/ui/PresetsLocalPage.qml:259
 msgid "Failed to rename the %1 local preset to %2"
 msgstr "Modifica del profilo locale %1 in %2 non riuscita"
-
-#: src/contents/ui/PresetsLocalPage.qml:267
-msgid "Cancel"
-msgstr "Annulla"
 
 #: src/contents/ui/PresetsLocalPage.qml:306
 msgid "Save settings to this preset"
@@ -3048,33 +3070,33 @@ msgstr "(Altoparlanti)"
 msgid "Output Level Meter"
 msgstr "Misuratore Livello Uscita"
 
-#: src/presets_manager.cpp:781 src/presets_manager.cpp:788
-#: src/presets_manager.cpp:798 src/presets_manager.cpp:805
-#: src/presets_manager.cpp:815 src/presets_manager.cpp:824
+#: src/presets_manager.cpp:822 src/presets_manager.cpp:829
+#: src/presets_manager.cpp:839 src/presets_manager.cpp:846
+#: src/presets_manager.cpp:856 src/presets_manager.cpp:865
 msgid "Preset not loaded correctly"
 msgstr "Profilo non caricato correttamente"
 
-#: src/presets_manager.cpp:781
+#: src/presets_manager.cpp:822
 msgid "Wrong format in excluded apps list"
 msgstr "Formato errato nella lista delle applicazioni escluse"
 
-#: src/presets_manager.cpp:789
+#: src/presets_manager.cpp:830
 msgid "Generic error while loading excluded apps list"
 msgstr "Errore generico nel caricamento della lista delle applicazioni escluse"
 
-#: src/presets_manager.cpp:798
+#: src/presets_manager.cpp:839
 msgid "Wrong format in effects list"
 msgstr "Formato errato nella lista degli effetti"
 
-#: src/presets_manager.cpp:805
+#: src/presets_manager.cpp:846
 msgid "Generic error while loading effects list"
 msgstr "Errore generico nel caricamento della lista degli effetti"
 
-#: src/presets_manager.cpp:816
+#: src/presets_manager.cpp:857
 msgid "One or more parameters have a wrong format"
 msgstr "Uno o più parametri hanno un formato errato"
 
-#: src/presets_manager.cpp:825
+#: src/presets_manager.cpp:866
 msgid "Generic error while loading the effect"
 msgstr "Errore generico nel caricamento dell'effetto"
 
@@ -3512,9 +3534,6 @@ msgstr "Effetti audio semplici"
 
 #~ msgid "Loaded Impulse: %1"
 #~ msgstr "Impulso Caricato: %1"
-
-#~ msgid "Removed Impulse: %1"
-#~ msgstr "Impulso Rimosso: %1"
 
 #~ msgid "APO Preset File Imported."
 #~ msgstr "File di Profilo APO Importato."

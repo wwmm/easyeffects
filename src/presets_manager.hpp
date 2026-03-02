@@ -95,6 +95,8 @@ class Manager : public QObject {
 
   Q_INVOKABLE static bool removeImpulseFile(const QString& filePath);
 
+  Q_INVOKABLE bool renameImpulseFile(const QString& name, const QString& newName);
+
   Q_INVOKABLE static bool removeRNNoiseModel(const QString& filePath);
 
   Q_INVOKABLE void refreshCommunityPresets(const PipelineType& pipeline_type);

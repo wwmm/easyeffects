@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-02-20 11:59-0300\n"
+"POT-Creation-Date: 2026-03-02 01:24-0300\n"
 "PO-Revision-Date: 2026-01-30 12:01+0000\n"
 "Last-Translator: Anton Woolvy <antong2106@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -205,7 +205,7 @@ msgstr "Uitvoer­versterking"
 
 #: src/contents/ui/Autogain.qml:231 src/contents/ui/BassEnhancer.qml:203
 #: src/contents/ui/BassLoudness.qml:123 src/contents/ui/Compressor.qml:872
-#: src/contents/ui/Convolver.qml:518 src/contents/ui/Crossfeed.qml:147
+#: src/contents/ui/Convolver.qml:519 src/contents/ui/Crossfeed.qml:147
 #: src/contents/ui/Crusher.qml:233 src/contents/ui/Crystalizer.qml:153
 #: src/contents/ui/DeepFilterNet.qml:194 src/contents/ui/Deesser.qml:317
 #: src/contents/ui/Delay.qml:373 src/contents/ui/EchoCanceller.qml:155
@@ -295,7 +295,7 @@ msgid "Listen"
 msgstr "Beluisteren"
 
 #: src/contents/ui/BassEnhancer.qml:245 src/contents/ui/BassLoudness.qml:141
-#: src/contents/ui/Compressor.qml:924 src/contents/ui/Convolver.qml:553
+#: src/contents/ui/Compressor.qml:924 src/contents/ui/Convolver.qml:554
 #: src/contents/ui/Crossfeed.qml:173 src/contents/ui/Crusher.qml:265
 #: src/contents/ui/Crystalizer.qml:201 src/contents/ui/Deesser.qml:359
 #: src/contents/ui/Delay.qml:425 src/contents/ui/EchoCanceller.qml:183
@@ -341,7 +341,7 @@ msgstr "Toevoegen aan uitgesloten apps"
 #: src/contents/ui/ConvolverImpulseDialog.qml:90
 #: src/contents/ui/MenuAddPlugins.qml:55
 #: src/contents/ui/PageStreamsEffects.qml:98
-#: src/contents/ui/PresetsAutoloadPage.qml:162
+#: src/contents/ui/PresetsAutoloadPage.qml:176
 #: src/contents/ui/PresetsCommunityPage.qml:105
 #: src/contents/ui/PresetsLocalPage.qml:194 src/contents/ui/RNNoise.qml:231
 msgid "Empty List"
@@ -637,7 +637,7 @@ msgstr "High-pass"
 msgid "Off"
 msgstr "Uit"
 
-#: src/contents/ui/Compressor.qml:485 src/contents/ui/Convolver.qml:475
+#: src/contents/ui/Compressor.qml:485 src/contents/ui/Convolver.qml:476
 #: src/contents/ui/Delay.qml:175 src/contents/ui/Delay.qml:328
 #: src/contents/ui/Expander.qml:445 src/contents/ui/Gate.qml:460
 #: src/contents/ui/MultibandCompressor.qml:626
@@ -646,7 +646,7 @@ msgstr "Uit"
 msgid "Dry"
 msgstr "Droog"
 
-#: src/contents/ui/Compressor.qml:504 src/contents/ui/Convolver.qml:493
+#: src/contents/ui/Compressor.qml:504 src/contents/ui/Convolver.qml:494
 #: src/contents/ui/Delay.qml:193 src/contents/ui/Delay.qml:346
 #: src/contents/ui/Expander.qml:464 src/contents/ui/Gate.qml:479
 #: src/contents/ui/MultibandCompressor.qml:644
@@ -763,15 +763,45 @@ msgstr "De Convolver-impuls %1 is verwijderd."
 msgid "Failed to remove the %1 Convolver impulse."
 msgstr "Kan de Convolver-impuls %1 niet verwijderen."
 
-#: src/contents/ui/ConvolverImpulseDialog.qml:133
+#: src/contents/ui/ConvolverImpulseDialog.qml:124
+#, fuzzy
+msgid "Rename Impulse"
+msgstr "Impuls verwijderen"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:129
+#: src/contents/ui/PresetsLocalPage.qml:247
+msgid "Rename"
+msgstr "Hernoemen"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:137
+#, fuzzy
+msgid "Renamed the %1 impulse to %2"
+msgstr "Lokale voor­instelling %1 hernoemd naar %2"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:140
+#, fuzzy
+msgid "Failed to rename the %1 impulse to %2"
+msgstr "Hernoemen van lokale voor­instelling %1 naar %2 mislukt"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:148
+#: src/contents/ui/PresetsLocalPage.qml:267
+msgid "Cancel"
+msgstr "Annuleren"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:187
+#, fuzzy
+msgid "Rename this impulse"
+msgstr "Deze voor­instelling hernoemen"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:195
 msgid "Delete this impulse"
 msgstr "Deze impuls verwijderen"
 
-#: src/contents/ui/ConvolverImpulseDialog.qml:172
+#: src/contents/ui/ConvolverImpulseDialog.qml:234
 msgid "Import impulse"
 msgstr "Impuls importeren"
 
-#: src/contents/ui/ConvolverImpulseDialog.qml:182
+#: src/contents/ui/ConvolverImpulseDialog.qml:244
 #: src/contents/ui/MenuAddPlugins.qml:203 src/contents/ui/PresetsDialog.qml:126
 msgctxt "@action:button"
 msgid "Close"
@@ -818,33 +848,33 @@ msgstr "Spectrum"
 msgid "Log scale"
 msgstr "Logaritmische schaal"
 
-#: src/contents/ui/Convolver.qml:380 src/contents/ui/Crusher.qml:207
+#: src/contents/ui/Convolver.qml:381 src/contents/ui/Crusher.qml:207
 msgid "Rate"
 msgstr "Snelheid"
 
-#: src/contents/ui/Convolver.qml:385 src/contents/ui/Delay.qml:74
+#: src/contents/ui/Convolver.qml:386 src/contents/ui/Delay.qml:74
 #: src/contents/ui/Delay.qml:85 src/contents/ui/Delay.qml:227
 #: src/contents/ui/Delay.qml:238
 msgid "Samples"
 msgstr "Monsters"
 
-#: src/contents/ui/Convolver.qml:390
+#: src/contents/ui/Convolver.qml:391
 msgid "Duration"
 msgstr "Duur"
 
-#: src/contents/ui/Convolver.qml:395 src/contents/ui/PipeWirePage.qml:332
+#: src/contents/ui/Convolver.qml:396 src/contents/ui/PipeWirePage.qml:332
 msgid "Channels"
 msgstr "Kanalen"
 
-#: src/contents/ui/Convolver.qml:400
+#: src/contents/ui/Convolver.qml:401
 msgid "Format"
 msgstr "Formaat"
 
-#: src/contents/ui/Convolver.qml:458
+#: src/contents/ui/Convolver.qml:459
 msgid "Stereo width"
 msgstr "Stereo­breedte"
 
-#: src/contents/ui/Convolver.qml:535 src/tags_plugin_name.cpp:26
+#: src/contents/ui/Convolver.qml:536 src/tags_plugin_name.cpp:26
 msgid "Autogain"
 msgstr "Automatisch versterken"
 
@@ -1784,7 +1814,7 @@ msgstr "Afsluiten"
 msgid "Go back"
 msgstr "Terug"
 
-#: src/contents/ui/Main.qml:499 src/contents/ui/PageStreamsEffects.qml:742
+#: src/contents/ui/Main.qml:499 src/contents/ui/PageStreamsEffects.qml:744
 msgid "Effects"
 msgstr "Effecten"
 
@@ -1922,7 +1952,7 @@ msgid "Reduce the list of effects pipeline"
 msgstr "Lijst met effectenpijplijn invouwen"
 
 #: src/contents/ui/PageStreamsEffects.qml:440
-#: src/contents/ui/PageStreamsEffects.qml:729
+#: src/contents/ui/PageStreamsEffects.qml:731
 msgid "Players"
 msgstr "Spelers"
 
@@ -1931,19 +1961,19 @@ msgid "Output device"
 msgstr "Uitvoer­apparaat"
 
 #: src/contents/ui/PageStreamsEffects.qml:449
-#: src/contents/ui/PageStreamsEffects.qml:729
+#: src/contents/ui/PageStreamsEffects.qml:731
 msgid "Recorders"
 msgstr "Opname­apparaten"
 
-#: src/contents/ui/PageStreamsEffects.qml:760
+#: src/contents/ui/PageStreamsEffects.qml:762
 msgid "Excluded apps"
 msgstr "Uitgesloten apps"
 
-#: src/contents/ui/PageStreamsEffects.qml:769
+#: src/contents/ui/PageStreamsEffects.qml:771
 msgid "Input monitoring"
 msgstr "Invoer­monitoring"
 
-#: src/contents/ui/PageStreamsEffects.qml:782
+#: src/contents/ui/PageStreamsEffects.qml:784
 msgid "Send audio to the virtual source"
 msgstr "Stuur geluid naar de virtuele bron"
 
@@ -2530,36 +2560,36 @@ msgstr "Vernieuwings­frequentie"
 msgid "Related to LV2 plugins."
 msgstr "Gerelateerd aan LV2-plug-ins."
 
-#: src/contents/ui/PresetsAutoloadPage.qml:54
-#: src/contents/ui/PresetsAutoloadPage.qml:198
+#: src/contents/ui/PresetsAutoloadPage.qml:55
+#: src/contents/ui/PresetsAutoloadPage.qml:214
 msgid "Device"
 msgstr "Apparaat"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:60
-#: src/contents/ui/PresetsAutoloadPage.qml:242
+#: src/contents/ui/PresetsAutoloadPage.qml:61
+#: src/contents/ui/PresetsAutoloadPage.qml:256
 msgid "Route"
 msgstr "Route"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:111
-#: src/contents/ui/PresetsAutoloadPage.qml:256
+#: src/contents/ui/PresetsAutoloadPage.qml:125
+#: src/contents/ui/PresetsAutoloadPage.qml:269
 msgid "Local preset"
 msgstr "Lokale voor­instelling"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:122
+#: src/contents/ui/PresetsAutoloadPage.qml:136
 msgid "Create"
 msgstr "Maken"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:124
+#: src/contents/ui/PresetsAutoloadPage.qml:138
 #, fuzzy
 msgid "Create a new autoload preset"
 msgstr "Maak een nieuwe automatisch te laden voor­instelling"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:213
+#: src/contents/ui/PresetsAutoloadPage.qml:228
 #, fuzzy
 msgid "Remove this autoload preset"
 msgstr "Verwijder deze automatisch te laden voor­instelling"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:227
+#: src/contents/ui/PresetsAutoloadPage.qml:242
 msgid "Description"
 msgstr "Omschrijving"
 
@@ -2694,10 +2724,6 @@ msgstr "Verwijderen van lokale voor­instelling %1 mislukt."
 msgid "Rename Preset"
 msgstr "Voor­instelling hernoemen"
 
-#: src/contents/ui/PresetsLocalPage.qml:247
-msgid "Rename"
-msgstr "Hernoemen"
-
 #: src/contents/ui/PresetsLocalPage.qml:256
 msgid "Renamed the %1 local preset to %2"
 msgstr "Lokale voor­instelling %1 hernoemd naar %2"
@@ -2705,10 +2731,6 @@ msgstr "Lokale voor­instelling %1 hernoemd naar %2"
 #: src/contents/ui/PresetsLocalPage.qml:259
 msgid "Failed to rename the %1 local preset to %2"
 msgstr "Hernoemen van lokale voor­instelling %1 naar %2 mislukt"
-
-#: src/contents/ui/PresetsLocalPage.qml:267
-msgid "Cancel"
-msgstr "Annuleren"
 
 #: src/contents/ui/PresetsLocalPage.qml:306
 msgid "Save settings to this preset"
@@ -3062,33 +3084,33 @@ msgstr "(Luidsprekers)"
 msgid "Output Level Meter"
 msgstr "Uitvoerniveau­meter"
 
-#: src/presets_manager.cpp:781 src/presets_manager.cpp:788
-#: src/presets_manager.cpp:798 src/presets_manager.cpp:805
-#: src/presets_manager.cpp:815 src/presets_manager.cpp:824
+#: src/presets_manager.cpp:822 src/presets_manager.cpp:829
+#: src/presets_manager.cpp:839 src/presets_manager.cpp:846
+#: src/presets_manager.cpp:856 src/presets_manager.cpp:865
 msgid "Preset not loaded correctly"
 msgstr "Voor­instelling niet correct geladen"
 
-#: src/presets_manager.cpp:781
+#: src/presets_manager.cpp:822
 msgid "Wrong format in excluded apps list"
 msgstr "Verkeerd formaat in lijst met uitgesloten apps"
 
-#: src/presets_manager.cpp:789
+#: src/presets_manager.cpp:830
 msgid "Generic error while loading excluded apps list"
 msgstr "Algemene fout bij laden van lijst met uitgesloten apps"
 
-#: src/presets_manager.cpp:798
+#: src/presets_manager.cpp:839
 msgid "Wrong format in effects list"
 msgstr "Verkeerd formaat in effecten­lijst"
 
-#: src/presets_manager.cpp:805
+#: src/presets_manager.cpp:846
 msgid "Generic error while loading effects list"
 msgstr "Algemene fout bij laden van effecten­lijst"
 
-#: src/presets_manager.cpp:816
+#: src/presets_manager.cpp:857
 msgid "One or more parameters have a wrong format"
 msgstr "Een of meer parameters hebben een verkeerd formaat"
 
-#: src/presets_manager.cpp:825
+#: src/presets_manager.cpp:866
 msgid "Generic error while loading the effect"
 msgstr "Algemene fout bij laden van het effect"
 
@@ -3427,10 +3449,6 @@ msgstr "Eenvoudige audio-effecten"
 #, fuzzy
 #~ msgid "Loaded Impulse: %1"
 #~ msgstr "Impuls laden"
-
-#, fuzzy
-#~ msgid "Removed Impulse: %1"
-#~ msgstr "Impuls verwijderen"
 
 #, fuzzy
 #~ msgid "APO Preset File Imported."
