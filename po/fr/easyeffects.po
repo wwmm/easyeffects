@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-03-02 01:24-0300\n"
-"PO-Revision-Date: 2026-02-19 10:09+0000\n"
+"PO-Revision-Date: 2026-03-02 17:09+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.16.1-dev\n"
+"X-Generator: Weblate 5.17-dev\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -765,9 +765,8 @@ msgid "Failed to remove the %1 Convolver impulse."
 msgstr "Échec de la suppression de l'impulsion %1 du Convolver."
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:124
-#, fuzzy
 msgid "Rename Impulse"
-msgstr "Supprimer l’Impulsion : %1"
+msgstr "Renommer l’Impulsion"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:129
 #: src/contents/ui/PresetsLocalPage.qml:247
@@ -775,14 +774,12 @@ msgid "Rename"
 msgstr "Renommer"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:137
-#, fuzzy
 msgid "Renamed the %1 impulse to %2"
-msgstr "Renommage du préréglage local %1 en %2"
+msgstr "L'impulsion %1 a été renommée %2"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:140
-#, fuzzy
 msgid "Failed to rename the %1 impulse to %2"
-msgstr "Échec pour renommer le préréglage local %1 en %2"
+msgstr "Échec du renommage de l'impulsion %1 en %2"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:148
 #: src/contents/ui/PresetsLocalPage.qml:267
@@ -790,9 +787,8 @@ msgid "Cancel"
 msgstr "Annuler"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:187
-#, fuzzy
 msgid "Rename this impulse"
-msgstr "Renommer ce préréglage"
+msgstr "Renommer cette impulsion"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:195
 msgid "Delete this impulse"
