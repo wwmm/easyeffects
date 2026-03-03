@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-03-02 01:24-0300\n"
-"PO-Revision-Date: 2026-02-20 14:10+0000\n"
+"PO-Revision-Date: 2026-03-03 13:09+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hant/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.16.1-dev\n"
+"X-Generator: Weblate 5.17-dev\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -661,7 +661,7 @@ msgstr "補償"
 #: src/contents/ui/MultibandCompressor.qml:1006
 #: src/contents/ui/MultibandGate.qml:979
 msgid "Pre-Mix"
-msgstr "預先-混合"
+msgstr "預先混合"
 
 #: src/contents/ui/Compressor.qml:551 src/contents/ui/Expander.qml:507
 #: src/contents/ui/Gate.qml:528 src/contents/ui/Limiter.qml:303
@@ -757,9 +757,8 @@ msgid "Failed to remove the %1 Convolver impulse."
 msgstr "移除 %1 Convolver 脈衝失敗。"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:124
-#, fuzzy
 msgid "Rename Impulse"
-msgstr "重新命名預設集"
+msgstr "重新命名脈衝響應"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:129
 #: src/contents/ui/PresetsLocalPage.qml:247
@@ -767,14 +766,12 @@ msgid "Rename"
 msgstr "重新命名"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:137
-#, fuzzy
 msgid "Renamed the %1 impulse to %2"
-msgstr "重新命名 %1 本地預設集至 %2"
+msgstr "重新命名 %1 本地脈衝響應至 %2"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:140
-#, fuzzy
 msgid "Failed to rename the %1 impulse to %2"
-msgstr "重新命名 %1 本地預設集至 %2 失敗"
+msgstr "重新命名 %1 本地脈衝響應至 %2 失敗"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:148
 #: src/contents/ui/PresetsLocalPage.qml:267
@@ -782,9 +779,8 @@ msgid "Cancel"
 msgstr "取消"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:187
-#, fuzzy
 msgid "Rename this impulse"
-msgstr "重新命名此預設集"
+msgstr "重新命名此脈衝響應"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:195
 msgid "Delete this impulse"
