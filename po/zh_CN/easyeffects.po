@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-03-02 01:24-0300\n"
-"PO-Revision-Date: 2026-02-19 10:09+0000\n"
+"PO-Revision-Date: 2026-03-04 15:09+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hans/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.16.1-dev\n"
+"X-Generator: Weblate 5.17-dev\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -758,9 +758,8 @@ msgid "Failed to remove the %1 Convolver impulse."
 msgstr "无法移除卷积脉冲响应 %1。"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:124
-#, fuzzy
 msgid "Rename Impulse"
-msgstr "删除脉冲"
+msgstr "重命名脉冲响应"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:129
 #: src/contents/ui/PresetsLocalPage.qml:247
@@ -768,14 +767,12 @@ msgid "Rename"
 msgstr "重命名"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:137
-#, fuzzy
 msgid "Renamed the %1 impulse to %2"
-msgstr "已将本地预设 %1 重命名为 %2"
+msgstr "已将脉冲响应 %1 重命名为 %2"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:140
-#, fuzzy
 msgid "Failed to rename the %1 impulse to %2"
-msgstr "无法将本地预设 %1 重命名为 %2"
+msgstr "无法将脉冲响应 %1 重命名为 %2"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:148
 #: src/contents/ui/PresetsLocalPage.qml:267
@@ -783,9 +780,8 @@ msgid "Cancel"
 msgstr "取消"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:187
-#, fuzzy
 msgid "Rename this impulse"
-msgstr "重命名此预设"
+msgstr "重命名此脉冲响应"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:195
 msgid "Delete this impulse"
