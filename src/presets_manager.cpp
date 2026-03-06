@@ -66,6 +66,7 @@
 #include "expander_preset.hpp"
 #include "filter_preset.hpp"
 #include "gate_preset.hpp"
+#include "immersive_surround_preset.hpp"
 #include "level_meter_preset.hpp"
 #include "limiter_preset.hpp"
 #include "loudness_preset.hpp"
@@ -924,6 +925,9 @@ auto Manager::create_wrapper(const PipelineType& pipeline_type, const QString& f
 
   } else if (filter_name.startsWith(tags::plugin_name::BaseName::gate)) {
     return std::make_unique<GatePreset>(pipeline_type, filter_name.toStdString());
+
+  } else if (filter_name.startsWith(tags::plugin_name::BaseName::immersiveSurround)) {
+    return std::make_unique<ImmersiveSurroundPreset>(pipeline_type, filter_name.toStdString());
 
   } else if (filter_name.startsWith(tags::plugin_name::BaseName::voiceSuppressor)) {
     return std::make_unique<VoiceSuppressorPreset>(pipeline_type, filter_name.toStdString());

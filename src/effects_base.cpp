@@ -56,6 +56,7 @@
 #include "expander.hpp"
 #include "filter.hpp"
 #include "gate.hpp"
+#include "immersive_surround.hpp"
 #include "level_meter.hpp"
 #include "limiter.hpp"
 #include "loudness.hpp"
@@ -196,6 +197,9 @@ void EffectsBase::create_filters_if_necessary() {
 
     } else if (name.startsWith(tags::plugin_name::BaseName::gate)) {
       filter = std::make_unique<Gate>(log_tag, pm, pipeline_type, instance_id);
+
+    } else if (name.startsWith(tags::plugin_name::BaseName::immersiveSurround)) {
+      filter = std::make_unique<ImmersiveSurround>(log_tag, pm, pipeline_type, instance_id);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::voiceSuppressor)) {
       filter = std::make_unique<VoiceSuppressor>(log_tag, pm, pipeline_type, instance_id);
@@ -356,6 +360,9 @@ QVariant EffectsBase::getPluginInstance(const QString& pluginName) {
 
   } else if (pluginName.startsWith(tags::plugin_name::BaseName::gate)) {
     return QVariant::fromValue(dynamic_cast<Gate*>(p.get()));
+
+  } else if (pluginName.startsWith(tags::plugin_name::BaseName::immersiveSurround)) {
+    return QVariant::fromValue(dynamic_cast<ImmersiveSurround*>(p.get()));
 
   } else if (pluginName.startsWith(tags::plugin_name::BaseName::voiceSuppressor)) {
     return QVariant::fromValue(dynamic_cast<VoiceSuppressor*>(p.get()));

@@ -47,6 +47,7 @@
 #include "easyeffects_db_expander.h"
 #include "easyeffects_db_filter.h"
 #include "easyeffects_db_gate.h"
+#include "easyeffects_db_immersive_surround.h"
 #include "easyeffects_db_level_meter.h"
 #include "easyeffects_db_limiter.h"
 #include "easyeffects_db_loudness.h"
@@ -243,6 +244,10 @@ void Manager::create_plugin_db(const QString& parentGroup,
 
     } else if (name.startsWith(tags::plugin_name::BaseName::gate)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::gate, id), [&] { return new db::Gate(parentGroup, id); });
+
+    } else if (name.startsWith(tags::plugin_name::BaseName::immersiveSurround)) {
+      ensureExists(makeKey(tags::plugin_name::BaseName::immersiveSurround, id),
+                   [&] { return new db::ImmersiveSurround(parentGroup, id); });
 
     } else if (name.startsWith(tags::plugin_name::BaseName::voiceSuppressor)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::voiceSuppressor, id),
