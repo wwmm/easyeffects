@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-03-02 01:24-0300\n"
-"PO-Revision-Date: 2025-11-21 11:51+0000\n"
+"PO-Revision-Date: 2026-03-07 07:09+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/easyeffects/"
 "main/hr/>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.15-dev\n"
+"X-Generator: Weblate 5.17-dev\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -37,7 +37,6 @@ msgid "Reset Easy Effects."
 msgstr "Resetiraj Easy Effects."
 
 #: src/command_line_parser.cpp:46
-#, fuzzy
 msgid "Hide the window."
 msgstr "Sakrij prozor."
 
@@ -60,9 +59,8 @@ msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Učitaj predložak. Primjer: easyeffects -l music"
 
 #: src/command_line_parser.cpp:51
-#, fuzzy
 msgid "preset-name"
-msgstr "Ime novog predloška"
+msgstr "ime predloška"
 
 #: src/command_line_parser.cpp:52
 msgid "Show available presets."
@@ -75,7 +73,7 @@ msgstr "Prikaži aktivne predloške."
 
 #: src/command_line_parser.cpp:53
 msgid "preset-type"
-msgstr ""
+msgstr "vrsta predloška"
 
 #: src/command_line_parser.cpp:54
 #, fuzzy
@@ -3420,10 +3418,9 @@ msgid "WAV"
 msgstr ""
 
 #: src/units.hpp:67
-#, fuzzy
 msgctxt "decibel unit abbreviation"
 msgid "dB"
-msgstr "dBFS"
+msgstr "dB"
 
 #: src/units.hpp:68
 #, fuzzy
