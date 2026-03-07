@@ -608,8 +608,10 @@ void NodeManager::onNodeParam(void* data,
       case SPA_PROP_channelVolumes: {
         std::array<float, SPA_AUDIO_MAX_CHANNELS> volumes{};
 
+        // NOLINTBEGIN(readability-simplify-subscript-expr)
         const auto n_volumes =
             spa_pod_copy_array(&pod_prop->value, SPA_TYPE_Float, volumes.data(), SPA_AUDIO_MAX_CHANNELS);
+        // NOLINTEND(readability-simplify-subscript-expr)
 
         float max = 0.0F;
 
