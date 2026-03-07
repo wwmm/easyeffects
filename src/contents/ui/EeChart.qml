@@ -380,6 +380,22 @@ Item {
         }
     }
 
+    // Coordinate display label
+    Controls.Label {
+        id: coordinateLabel
+        visible: false
+        padding: Kirigami.Units.smallSpacing
+        background: Rectangle {
+            color: Kirigami.Theme.backgroundColor
+            border.color: Kirigami.Theme.textColor
+            border.width: 1
+            radius: Kirigami.Units.smallSpacing
+            opacity: 0.9
+        }
+        color: Kirigami.Theme.textColor
+        font.pointSize: Kirigami.Theme.smallFont.pointSize
+    }
+
     MouseArea {
         anchors.fill: parent
         hoverEnabled: true
@@ -423,21 +439,5 @@ Item {
         onExited: {
             coordinateLabel.visible = false;
         }
-    }
-
-    // Coordinate display label
-    Controls.Label {
-        id: coordinateLabel
-        visible: false
-        padding: Kirigami.Units.smallSpacing
-        background: Rectangle {
-            color: Kirigami.Theme.backgroundColor
-            border.color: Kirigami.Theme.textColor
-            border.width: 1
-            radius: Kirigami.Units.smallSpacing
-            opacity: 0.9
-        }
-        color: Kirigami.Theme.textColor
-        font.pointSize: Kirigami.Theme.smallFont.pointSize
     }
 }
