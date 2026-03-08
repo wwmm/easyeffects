@@ -116,7 +116,7 @@ class NodeManager : public QObject {
       std::to_array({"Easy Effects", "EasyEffects", "easyeffects", "pwvucontrol-peak-detect", "speech-dispatcher",
                      "speech-dispatcher-dummy", "speech-dispatcher-espeak-ng"});
 
-  std::array<std::string, 2U> blocklist_app_id = {"org.PulseAudio.pavucontrol"};
+  std::array<std::string, 2U> blocklist_app_id = {"org.PulseAudio.pavucontrol", "org.kde.plasma-pa"};
 
   std::array<std::string, 2U> blocklist_media_role = {"event", "Notification"};
 
