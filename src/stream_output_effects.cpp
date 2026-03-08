@@ -121,6 +121,8 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
 
   connect(pm, &pw::Manager::linkChanged, this, &StreamOutputEffects::on_link_changed, Qt::QueuedConnection);
 
+  connect(pm, &pw::Manager::linkRemoved, this, &StreamOutputEffects::on_link_removed, Qt::QueuedConnection);
+
   connect(
       pm, &pw::Manager::sinkRouteChanged, this,
       [](pw::NodeInfo node) {
@@ -198,6 +200,16 @@ void StreamOutputEffects::on_link_changed(const pw::LinkInfo link_info) {
       }
     }
   }
+}
+
+void StreamOutputEffects::on_link_removed() {
+  QTimer::singleShot(DbMain::inactivityTimeout() * 1000, this, [&]() {
+    if (!apps_want_to_play() && !list_proxies.empty()) {
+      util::debug("No app linked to our device wants to play. Unlinking our filters.");
+
+      disconnect_filters();
+    }
+  });
 }
 
 void StreamOutputEffects::connect_filters(const bool& bypass) {

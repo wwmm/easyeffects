@@ -160,6 +160,7 @@ class Manager : public QObject {
   void sourceRouteChanged(NodeInfo node);
 
   void linkChanged(LinkInfo link);
+  void linkRemoved();
 
  private:
   pw_context* context = nullptr;

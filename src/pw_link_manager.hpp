@@ -58,7 +58,7 @@ class LinkManager : public QObject {
   auto link_nodes(const uint& output_node_id,
                   const uint& input_node_id,
                   const bool& probe_link = false,
-                  const bool& link_passive = true) -> std::vector<pw_proxy*>;
+                  const bool& link_passive = false) -> std::vector<pw_proxy*>;
 
   static void destroy_links(const std::vector<pw_proxy*>& list);
 
@@ -70,10 +70,9 @@ class LinkManager : public QObject {
 
   [[nodiscard]] auto get_node_ports(const uint& node_id, const QString& direction = "") const -> std::vector<PortInfo>;
 
-  void update_link_state(uint64_t serial, pw_link_state state);
-
  Q_SIGNALS:
   void linkChanged(LinkInfo link);
+  void linkRemoved();
 
  private:
   struct proxy_data {

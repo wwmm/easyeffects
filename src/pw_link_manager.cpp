@@ -218,6 +218,8 @@ void LinkManager::on_destroy_link_proxy(void* data) {
   auto it = std::ranges::remove_if(ld->lm->list_links, [=](const auto& n) { return n.serial == ld->serial; });
 
   ld->lm->list_links.erase(it.begin(), it.end());
+
+  Q_EMIT ld->lm->linkRemoved();
 }
 
 void LinkManager::on_destroy_port_proxy(void* data) {
@@ -319,18 +321,6 @@ auto LinkManager::get_node_ports(const uint& node_id, const QString& direction) 
     }
   }
   return result;
-}
-
-void LinkManager::update_link_state(uint64_t serial, pw_link_state state) {
-  for (auto& link : list_links) {
-    if (link.serial == serial) {
-      link.state = state;
-
-      Q_EMIT linkChanged(link);
-
-      break;
-    }
-  }
 }
 
 auto LinkManager::find_matching_ports(const std::vector<PortInfo>& output_ports,

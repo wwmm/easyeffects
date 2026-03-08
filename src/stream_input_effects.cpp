@@ -107,6 +107,8 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
 
   connect(pm, &pw::Manager::linkChanged, this, &StreamInputEffects::on_link_changed, Qt::QueuedConnection);
 
+  connect(pm, &pw::Manager::linkRemoved, this, &StreamInputEffects::on_link_removed, Qt::QueuedConnection);
+
   connect(
       pm, &pw::Manager::sourceRouteChanged, this,
       [](pw::NodeInfo node) {
@@ -133,8 +135,6 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
   }
 
   connect_filters();
-
-  set_listen_to_mic(DbStreamInputs::listenToMic());
 }
 
 StreamInputEffects::~StreamInputEffects() {
@@ -143,7 +143,10 @@ StreamInputEffects::~StreamInputEffects() {
 
 auto StreamInputEffects::apps_want_to_play() -> bool {
   return std::ranges::any_of(pm->get_links(), [&](const auto& link) {
-    return (link.output_node_id == pm->ee_source_node.id) && (link.state == PW_LINK_STATE_ACTIVE);
+    // If the destination node is not in our node list it is probably because it is blocklisted
+    auto blocklisted = pm->model_nodes.get_node_by_id(link.input_node_id).id == SPA_ID_INVALID;
+
+    return (link.output_node_id == pm->ee_source_node.id) && (link.state == PW_LINK_STATE_ACTIVE) && !blocklisted;
   });
 
   return false;
@@ -192,6 +195,16 @@ void StreamInputEffects::on_link_changed(const pw::LinkInfo link_info) {
       }
     }
   }
+}
+
+void StreamInputEffects::on_link_removed() {
+  QTimer::singleShot(DbMain::inactivityTimeout() * 1000, this, [&]() {
+    if (!apps_want_to_play() && !list_proxies.empty()) {
+      util::debug("No app linked to our device wants to play. Unlinking our filters.");
+
+      disconnect_filters();
+    }
+  });
 }
 
 void StreamInputEffects::connect_filters(const bool& bypass) {
@@ -310,6 +323,8 @@ void StreamInputEffects::connect_filters(const bool& bypass) {
     }
   }
 
+  set_listen_to_mic(DbStreamInputs::listenToMic());
+
   /*
    * The correct thing to do would be to check if at least one pair of filters are actually linked. But filtersLinked
    * is used only to enable or disable qml frame animation. So let's keep the approach simple.
@@ -362,6 +377,8 @@ void StreamInputEffects::disconnect_filters() {
 
   list_proxies.clear();
 
+  set_listen_to_mic(false);
+
   remove_unused_filters();
 
   filtersLinked = false;
@@ -378,6 +395,12 @@ void StreamInputEffects::set_bypass(const bool& state) {
 }
 
 void StreamInputEffects::set_listen_to_mic(const bool& state) {
+  if (!list_proxies_listen_mic.empty()) {
+    pm->destroy_links(list_proxies_listen_mic);
+
+    list_proxies_listen_mic.clear();
+  }
+
   if (state) {
     auto output_device = !DbStreamInputs::listenToMicIncludesOutputEffects()
                              ? pm->model_nodes.get_node_by_name(DbStreamOutputs::outputDevice())
@@ -386,9 +409,5 @@ void StreamInputEffects::set_listen_to_mic(const bool& state) {
     for (const auto& link : pm->link_nodes(pm->ee_source_node.id, output_device.id, false, false)) {
       list_proxies_listen_mic.push_back(link);
     }
-  } else {
-    pm->destroy_links(list_proxies_listen_mic);
-
-    list_proxies_listen_mic.clear();
   }
 }

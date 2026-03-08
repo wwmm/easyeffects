@@ -236,6 +236,8 @@ Manager::Manager()
 
   connect(&link_manager, &LinkManager::linkChanged, [&](LinkInfo link) { Q_EMIT linkChanged(link); });
 
+  connect(&link_manager, &LinkManager::linkRemoved, [&]() { Q_EMIT linkRemoved(); });
+
   connect(&device_manager, &DeviceManager::inputRouteChanged, [&](DeviceInfo device) {
     QTimer::singleShot(DbMain::presetsAutoloadInterval(), this, [&, device]() {
       auto nodes = model_nodes.get_nodes_by_device_id(device.id);

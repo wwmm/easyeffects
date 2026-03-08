@@ -120,6 +120,8 @@ class NodeManager : public QObject {
 
   std::array<std::string, 2U> blocklist_media_role = {"event", "Notification"};
 
+  // std::array<std::string, 2U> blocklist_media_name = {"PlasmaPA-VolumeMeter"};
+
   constexpr static auto blocklist_notification_nodes =
       std::to_array({"libcanberra", "org.gnome.VolumeControl", "GNOME Shell", "Mutter", "gsd-media-keys"});
 

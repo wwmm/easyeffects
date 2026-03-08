@@ -339,7 +339,7 @@ PluginBase::PluginBase(std::string tag,
   pw_properties_set(props_filter, PW_KEY_MEDIA_TYPE, "Audio");
   pw_properties_set(props_filter, PW_KEY_MEDIA_CATEGORY, "Filter");
   pw_properties_set(props_filter, PW_KEY_MEDIA_ROLE, "DSP");
-  pw_properties_set(props_filter, PW_KEY_NODE_PASSIVE, "true");
+  pw_properties_set(props_filter, PW_KEY_NODE_PASSIVE, "false");
 
   filter = pw_filter_new(pm->core, filter_name.c_str(), props_filter);
 
