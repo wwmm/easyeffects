@@ -1,5 +1,20 @@
 # Changelog
  
+## 8.1.3
+### 2026-03-08
+
+ 
+### Features:
+- The bypass state can be retrieved from the command line as we could do with the former GTK version.
+- Added a new command line option to toggle the bypass. This could be bound to a custom shortcut key and used on desktop environments that do not support XDG Global Shortcuts protocol.
+- The convolver window now allows impulse files to be renamed.
+
+### Bug fixes:
+- The tray icon changes done in the last releases were reverted. They caused more problems than solutions.
+
+### Other notes:
+
+ 
 ## 8.1.2
 ### 2026-02-02
 
