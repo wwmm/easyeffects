@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-03-02 01:24-0300\n"
-"PO-Revision-Date: 2026-02-27 13:09+0000\n"
+"PO-Revision-Date: 2026-03-09 14:09+0000\n"
 "Last-Translator: Lito Parra <lito.15@proton.me>\n"
 "Language-Team: Spanish (Mexico) <https://hosted.weblate.org/projects/"
 "easyeffects/main/es_MX/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.16.1-dev\n"
+"X-Generator: Weblate 5.17-dev\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -763,24 +763,21 @@ msgid "Failed to remove the %1 Convolver impulse."
 msgstr "No se pudo quitar la respuesta a impulsos %1 del Convolver."
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:124
-#, fuzzy
 msgid "Rename Impulse"
-msgstr "Importar Archivo Impulse"
+msgstr "Renombrar impulso"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:129
 #: src/contents/ui/PresetsLocalPage.qml:247
 msgid "Rename"
-msgstr ""
+msgstr "Renombrar"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:137
-#, fuzzy
 msgid "Renamed the %1 impulse to %2"
-msgstr "Borrar este perfil"
+msgstr "Se renombró el impulso %1 a %2"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:140
-#, fuzzy
 msgid "Failed to rename the %1 impulse to %2"
-msgstr "No se pudo encontrar el archivo Impulse"
+msgstr "No se pudo renombrar el impulso %1 a %2"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:148
 #: src/contents/ui/PresetsLocalPage.qml:267
@@ -788,9 +785,8 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:187
-#, fuzzy
 msgid "Rename this impulse"
-msgstr "Borrar este perfil"
+msgstr "Renombrar este impulso"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:195
 msgid "Delete this impulse"
@@ -939,26 +935,24 @@ msgid "Presets"
 msgstr "Perfiles"
 
 #: src/contents/ui/Crusher.qml:55
-#, fuzzy
 msgid "Bit reduction"
-msgstr "Reducción"
+msgstr "Reducción de bits"
 
 #: src/contents/ui/Crusher.qml:90 src/contents/ui/PreferencesSheet.qml:374
 msgid "Shape"
 msgstr "Forma"
 
 #: src/contents/ui/Crusher.qml:100
-#, fuzzy
 msgid "Linear"
-msgstr "Lineas"
+msgstr "Lineal"
 
 #: src/contents/ui/Crusher.qml:100
 msgid "Logarithmic"
-msgstr ""
+msgstr "Logarítmico"
 
 #: src/contents/ui/Crusher.qml:109
 msgid "DC offset"
-msgstr ""
+msgstr "Desplazamiento de CC"
 
 #: src/contents/ui/Crusher.qml:125 src/contents/ui/Pitch.qml:299
 msgid "Anti-aliasing"
@@ -969,9 +963,8 @@ msgid "Mix"
 msgstr "Mezcla"
 
 #: src/contents/ui/Crusher.qml:159
-#, fuzzy
 msgid "Sample Rate"
-msgstr "Reducción"
+msgstr "Frecuencia de muestreo"
 
 #: src/contents/ui/Crusher.qml:165 src/contents/ui/Gate.qml:119
 #: src/contents/ui/Gate.qml:653 src/contents/ui/Maximizer.qml:100
@@ -981,7 +974,7 @@ msgstr "Reducción"
 
 #: src/contents/ui/Crusher.qml:180
 msgid "Low frequency oscillator"
-msgstr ""
+msgstr "Oscilador de baja frecuencia"
 
 #: src/contents/ui/CrystalizerBand.qml:58
 #: src/contents/ui/EqualizerBandMenu.qml:185
@@ -1003,7 +996,7 @@ msgstr "Calidad de sobremuestreo"
 
 #: src/contents/ui/Crystalizer.qml:128
 msgid "Transition band"
-msgstr ""
+msgstr "Banda de transición"
 
 #: src/contents/ui/Crystalizer.qml:170 src/contents/ui/Limiter.qml:87
 msgid "Oversampling"
@@ -1014,9 +1007,8 @@ msgid "Adaptive intensity"
 msgstr "Intensidad adaptable"
 
 #: src/contents/ui/Crystalizer.qml:190
-#, fuzzy
 msgid "Fixed quantum"
-msgstr "Tamaño de bloque mínimo"
+msgstr "Tamaño de bloque fijo"
 
 #: src/contents/ui/DeepFilterNet.qml:51
 msgid "Attenuation limit"
@@ -1696,7 +1688,7 @@ msgstr "Nivel automático"
 
 #: src/contents/ui/Limiter.qml:469
 msgid "Smooth"
-msgstr ""
+msgstr "Suave"
 
 #: src/contents/ui/Limiter.qml:637
 msgid "Threshold boost"
@@ -1969,7 +1961,7 @@ msgstr "Monitoreo de entrada"
 
 #: src/contents/ui/PageStreamsEffects.qml:784
 msgid "Send audio to the virtual source"
-msgstr ""
+msgstr "Enviar audio a la fuente virtual"
 
 #: src/contents/ui/PipeWirePage.qml:44
 msgid "General"
@@ -2234,11 +2226,11 @@ msgstr "Activar/desactivar el monitor de entradas"
 
 #: src/contents/ui/PreferencesSheet.qml:219
 msgid "Mic monitor plays to output effects pipeline"
-msgstr ""
+msgstr "Enviar el monitoreo del micrófono a la cadena de efectos de salida"
 
 #: src/contents/ui/PreferencesSheet.qml:231
 msgid "Copy the input audio buffer"
-msgstr ""
+msgstr "Copiar búfer del audio de entrada"
 
 #: src/contents/ui/PreferencesSheet.qml:232
 msgid ""
@@ -2247,57 +2239,62 @@ msgid ""
 "can happen when external applications are recording from Easy Effects "
 "virtual devices monitors."
 msgstr ""
+"Usar una copia del búfer de audio de entrada proporcionado por el servidor "
+"de sonido cuando se procese el audio en los plugins de Easy Effects. Esto "
+"arregla errores de audio que pueden suceder cuando aplicaciones externas "
+"graban desde los monitores virtuales de los dispositivos de Easy Effects."
 
 #: src/contents/ui/PreferencesSheet.qml:244
 msgid "Enable the inactivity timeout"
-msgstr ""
+msgstr "Activar límite de tiempo de inactividad"
 
 #: src/contents/ui/PreferencesSheet.qml:245
 msgid ""
 "When all streams are inactive, Easy Effects pipeline remains loaded for an "
 "extra amount of time."
 msgstr ""
+"Cuando todos los flujos estén inactivos, la cadena de efectos de Easy "
+"Effects permanece cargada por una cantidad de tiempo extra."
 
 #: src/contents/ui/PreferencesSheet.qml:257
 msgid "Inactivity timeout"
-msgstr ""
+msgstr "Límite de tiempo de inactividad"
 
 #: src/contents/ui/PreferencesSheet.qml:272
-#, fuzzy
 msgid "Level meters frame rate cap"
-msgstr "Habilitar/deshabilitar esta aplicación"
+msgstr "Límite de tasa de cuadros de los medidores de nivel"
 
 #: src/contents/ui/PreferencesSheet.qml:273
 msgid "Maximum level meter update rate."
-msgstr ""
+msgstr "Tasa de actualización máxima del medidor de nivel."
 
 #: src/contents/ui/PreferencesSheet.qml:287
-#, fuzzy
 msgid "Level meters label"
-msgstr "Efectos de Salida"
+msgstr "Etiqueta de medidores de nivel"
 
 #: src/contents/ui/PreferencesSheet.qml:288
 msgid ""
 "The time it takes for the level meter labels to be updated when the current "
 "level is below the last highest one."
 msgstr ""
+"El tiempo que les toma a las etiquetas de los medidores de nivel para "
+"actualizarse cuando el nivel actual es menor que el último pico."
 
 #: src/contents/ui/PreferencesSheet.qml:305
-#, fuzzy
 msgid "Enable level meters animation"
-msgstr "Habilitar/deshabilitar esta aplicación"
+msgstr "Activar animaciones de los medidores de nivel"
 
 #: src/contents/ui/PreferencesSheet.qml:314
 msgid "Level meters animation duration"
-msgstr ""
+msgstr "Duración de las animaciones de los medidores de nivel"
 
 #: src/contents/ui/PreferencesSheet.qml:352
 msgid "Audio delay compensation"
-msgstr ""
+msgstr "Compensación de latencia de audio"
 
 #: src/contents/ui/PreferencesSheet.qml:367
 msgid "Graph"
-msgstr ""
+msgstr "Gráfico"
 
 #: src/contents/ui/PreferencesSheet.qml:378
 msgid "Bars"
@@ -2309,20 +2306,19 @@ msgstr "Lineas"
 
 #: src/contents/ui/PreferencesSheet.qml:378
 msgid "Dots"
-msgstr ""
+msgstr "Puntos"
 
 #: src/contents/ui/PreferencesSheet.qml:378
 msgid "Area"
-msgstr ""
+msgstr "Área"
 
 #: src/contents/ui/PreferencesSheet.qml:388
 msgid "Dynamic scale"
-msgstr ""
+msgstr "Escala dinámica"
 
 #: src/contents/ui/PreferencesSheet.qml:400
-#, fuzzy
 msgid "Logarithmic frequency axis"
-msgstr "Frecuencia"
+msgstr "Frecuencia en escala logarítmica"
 
 #: src/contents/ui/PreferencesSheet.qml:412
 msgid "Points"
@@ -2337,18 +2333,16 @@ msgid "px"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:441
-#, fuzzy
 msgid "Spectrum frame rate cap"
-msgstr "Habilitar/deshabilitar esta aplicación"
+msgstr "Límite de tasa de cuadros del espectro"
 
 #: src/contents/ui/PreferencesSheet.qml:442
 msgid "Maximum spectrum update rate."
-msgstr ""
+msgstr "Tasa de actualización máxima del espectro."
 
 #: src/contents/ui/PreferencesSheet.qml:457
-#, fuzzy
 msgid "Frequency Range"
-msgstr "Frecuencia"
+msgstr "Rango de frecuencias"
 
 #: src/contents/ui/PreferencesSheet.qml:464
 msgid "Minimum"
@@ -2360,30 +2354,31 @@ msgstr "Máximo"
 
 #: src/contents/ui/PreferencesSheet.qml:502
 msgid "Database autosave interval"
-msgstr ""
+msgstr "Frecuencia de autoguardado"
 
 #: src/contents/ui/PreferencesSheet.qml:516
-#, fuzzy
 msgid "Most used presets"
-msgstr "Crossfeed"
+msgstr "Perfiles más usados"
 
 #: src/contents/ui/PreferencesSheet.qml:534
 msgid "Window"
-msgstr ""
+msgstr "Ventana"
 
 #: src/contents/ui/PreferencesSheet.qml:543
 msgid "Force KDE's Breeze theme when Easy Effects starts"
-msgstr ""
+msgstr "Forzar el tema Breeze de KDE al iniciar Easy Effects"
 
 #: src/contents/ui/PreferencesSheet.qml:544
 msgid ""
 "It is necessary to restart the service for changes in this setting to take "
 "effect."
 msgstr ""
+"Es necesario reiniciar el servicio para que los cambios de este ajuste "
+"tengan efecto."
 
 #: src/contents/ui/PreferencesSheet.qml:557
 msgid "Reduce effects list controls"
-msgstr ""
+msgstr "Colapsar controles de la lista de efectos"
 
 #: src/contents/ui/PreferencesSheet.qml:558
 msgid ""
