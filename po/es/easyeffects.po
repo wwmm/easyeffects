@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-03-02 01:24-0300\n"
-"PO-Revision-Date: 2026-03-02 17:09+0000\n"
+"PO-Revision-Date: 2026-03-09 14:09+0000\n"
 "Last-Translator: Lito Parra <lito.15@proton.me>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
 "es/>\n"
@@ -2270,7 +2270,7 @@ msgstr "Límite de tasa de cuadros de los medidores de nivel"
 
 #: src/contents/ui/PreferencesSheet.qml:273
 msgid "Maximum level meter update rate."
-msgstr "Tasa de actualización del medidor de nivel máximo."
+msgstr "Tasa de actualización máxima del medidor de nivel."
 
 #: src/contents/ui/PreferencesSheet.qml:287
 msgid "Level meters label"
@@ -2290,7 +2290,7 @@ msgstr "Activar la animación de los medidores de nivel"
 
 #: src/contents/ui/PreferencesSheet.qml:314
 msgid "Level meters animation duration"
-msgstr "Duración de la animación de los indicadores de nivel"
+msgstr "Duración de las animaciones de los medidores de nivel"
 
 #: src/contents/ui/PreferencesSheet.qml:352
 msgid "Audio delay compensation"
