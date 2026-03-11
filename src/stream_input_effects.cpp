@@ -401,7 +401,14 @@ void StreamInputEffects::set_listen_to_mic(const bool& state) {
     list_proxies_listen_mic.clear();
   }
 
+  /**
+   * From PipeWire 1.6 onward passive links and node activation work slightly different. For the microphone
+   * monitor to work we have to force active link before the link is done.
+   */
+
   if (state) {
+    output_level->set_node_passive("");
+
     auto output_device = !DbStreamInputs::listenToMicIncludesOutputEffects()
                              ? pm->model_nodes.get_node_by_name(DbStreamOutputs::outputDevice())
                              : pm->ee_sink_node;
@@ -409,5 +416,7 @@ void StreamInputEffects::set_listen_to_mic(const bool& state) {
     for (const auto& link : pm->link_nodes(pm->ee_source_node.id, output_device.id, false, false)) {
       list_proxies_listen_mic.push_back(link);
     }
+  } else {
+    output_level->set_node_passive("true");
   }
 }

@@ -36,6 +36,7 @@
 #include <spa/pod/pod.h>
 #include <spa/support/loop.h>
 #include <spa/utils/defs.h>
+#include <spa/utils/dict.h>
 #include <spa/utils/hook.h>
 #include <sys/types.h>
 #include <KLocalizedString>
@@ -339,7 +340,7 @@ PluginBase::PluginBase(std::string tag,
   pw_properties_set(props_filter, PW_KEY_MEDIA_TYPE, "Audio");
   pw_properties_set(props_filter, PW_KEY_MEDIA_CATEGORY, "Filter");
   pw_properties_set(props_filter, PW_KEY_MEDIA_ROLE, "DSP");
-  pw_properties_set(props_filter, PW_KEY_NODE_PASSIVE, "false");
+  pw_properties_set(props_filter, PW_KEY_NODE_PASSIVE, "true");
 
   filter = pw_filter_new(pm->core, filter_name.c_str(), props_filter);
 
@@ -514,6 +515,20 @@ auto PluginBase::get_node_id() const -> uint {
 
 void PluginBase::set_active(const bool& state) const {
   pw_filter_set_active(filter, state);
+}
+
+void PluginBase::set_node_passive(const std::string& value) const {
+  struct spa_dict_item items[1];
+
+  items[0] = SPA_DICT_ITEM_INIT(PW_KEY_NODE_PASSIVE, value.c_str());
+
+  struct spa_dict dict = SPA_DICT_INIT(items, 1);
+
+  pm->lock();
+
+  pw_filter_update_properties(filter, nullptr, &dict);
+
+  pm->unlock();
 }
 
 void PluginBase::disconnect_from_pw() {

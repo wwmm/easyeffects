@@ -129,6 +129,8 @@ class PluginBase : public QObject {
 
   void set_active(const bool& state) const;
 
+  void set_node_passive(const std::string& value) const;
+
   auto connect_to_pw() -> bool;
 
   void disconnect_from_pw();

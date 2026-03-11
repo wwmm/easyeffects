@@ -172,7 +172,6 @@ TestSignals::TestSignals(pw::Manager* pipe_manager) : pm(pipe_manager), random_g
   pw_properties_set(props_filter, PW_KEY_MEDIA_TYPE, "Audio");
   pw_properties_set(props_filter, PW_KEY_MEDIA_CATEGORY, "Source");
   pw_properties_set(props_filter, PW_KEY_MEDIA_ROLE, "DSP");
-  // pw_properties_set(props_filter, PW_KEY_MEDIA_CLASS, tags::pipewire::media_class::output_stream);
 
   filter = pw_filter_new(pm->core, filter_name, props_filter);
 

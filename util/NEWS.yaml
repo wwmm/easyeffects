@@ -13,6 +13,19 @@ Description:
 - 
 
 ---
+Version: 8.1.4
+Date: 2026-03-11
+
+Description: 
+- Features∶
+- Improved compatibility with PipeWire >= 1.6. Dynamic sampling rateswitching should be working again.
+- Updated translations
+
+- Bug fixes∶
+
+- Other notes∶
+
+---
 Version: 8.1.3
 Date: 2026-03-08
 
