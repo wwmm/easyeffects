@@ -240,10 +240,8 @@ auto LinkManager::get_ports() const -> const std::vector<PortInfo>& {
   return list_ports;
 }
 
-auto LinkManager::link_nodes(const uint& output_node_id,
-                             const uint& input_node_id,
-                             const bool& probe_link,
-                             const bool& link_passive) -> std::vector<pw_proxy*> {
+auto LinkManager::link_nodes(const uint& output_node_id, const uint& input_node_id, const bool& probe_link)
+    -> std::vector<pw_proxy*> {
   std::vector<pw_proxy*> list;
 
   auto output_ports = get_node_ports(output_node_id, "out");
@@ -266,7 +264,6 @@ auto LinkManager::link_nodes(const uint& output_node_id,
   for (const auto& [outp, inp] : matching_port_pairs) {
     pw_properties* props = pw_properties_new(nullptr, nullptr);
 
-    pw_properties_set(props, PW_KEY_LINK_PASSIVE, (link_passive) ? "true" : "false");
     pw_properties_set(props, PW_KEY_OBJECT_LINGER, "false");
     pw_properties_set(props, PW_KEY_LINK_OUTPUT_NODE, util::to_string(output_node_id).c_str());
     pw_properties_set(props, PW_KEY_LINK_OUTPUT_PORT, util::to_string(outp.id).c_str());

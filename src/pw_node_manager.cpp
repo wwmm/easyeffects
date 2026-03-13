@@ -687,6 +687,8 @@ auto NodeManager::load_virtual_devices(pw_core* core) -> std::pair<pw_proxy*, pw
   pw_properties_set(props_sink, "monitor.channel-volumes", "false");
   pw_properties_set(props_sink, "monitor.passthrough", "true");
   pw_properties_set(props_sink, "priority.session", "0");
+  pw_properties_set(props_sink, PW_KEY_NODE_GROUP, "ee_sink_group");
+  // pw_properties_set(props_sink, PW_KEY_NODE_PASSIVE, "true");
 
   auto proxy_stream_output_sink = static_cast<pw_proxy*>(
       pw_core_create_object(core, "adapter", PW_TYPE_INTERFACE_Node, PW_VERSION_NODE, &props_sink->dict, 0));
@@ -707,6 +709,7 @@ auto NodeManager::load_virtual_devices(pw_core* core) -> std::pair<pw_proxy*, pw
   pw_properties_set(props_source, "monitor.channel-volumes", "false");
   pw_properties_set(props_source, "monitor.passthrough", "true");
   pw_properties_set(props_source, "priority.session", "0");
+  pw_properties_set(props_source, PW_KEY_NODE_GROUP, "ee_source_group");
 
   auto proxy_stream_input_source = static_cast<pw_proxy*>(
       pw_core_create_object(core, "adapter", PW_TYPE_INTERFACE_Node, PW_VERSION_NODE, &props_source->dict, 0));

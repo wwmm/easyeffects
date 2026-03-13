@@ -407,16 +407,16 @@ void StreamInputEffects::set_listen_to_mic(const bool& state) {
    */
 
   if (state) {
-    output_level->set_node_passive("");
+    // output_level->set_node_passive("");
 
     auto output_device = !DbStreamInputs::listenToMicIncludesOutputEffects()
                              ? pm->model_nodes.get_node_by_name(DbStreamOutputs::outputDevice())
                              : pm->ee_sink_node;
 
-    for (const auto& link : pm->link_nodes(pm->ee_source_node.id, output_device.id, false, false)) {
+    for (const auto& link : pm->link_nodes(pm->ee_source_node.id, output_device.id, false)) {
       list_proxies_listen_mic.push_back(link);
     }
   } else {
-    output_level->set_node_passive("true");
+    // output_level->set_node_passive("true");
   }
 }

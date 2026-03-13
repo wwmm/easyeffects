@@ -489,11 +489,9 @@ auto Manager::count_node_ports(const uint& node_id) const -> uint {
   return link_manager.count_node_ports(node_id);
 }
 
-auto Manager::link_nodes(const uint& output_node_id,
-                         const uint& input_node_id,
-                         const bool& probe_link,
-                         const bool& link_passive) -> std::vector<pw_proxy*> {
-  return link_manager.link_nodes(output_node_id, input_node_id, probe_link, link_passive);
+auto Manager::link_nodes(const uint& output_node_id, const uint& input_node_id, const bool& probe_link)
+    -> std::vector<pw_proxy*> {
+  return link_manager.link_nodes(output_node_id, input_node_id, probe_link);
 }
 
 void Manager::lock() const {

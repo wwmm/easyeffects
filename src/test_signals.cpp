@@ -265,7 +265,7 @@ void TestSignals::set_state(const bool& state) {
   pink_b0 = pink_b1 = pink_b2 = 0.0F;
 
   if (state) {
-    for (const auto& link : pm->link_nodes(node_id, pm->ee_sink_node.id, false, false)) {
+    for (const auto& link : pm->link_nodes(node_id, pm->ee_sink_node.id, false)) {
       list_proxies.push_back(link);
     }
   } else {

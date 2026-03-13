@@ -55,10 +55,8 @@ class LinkManager : public QObject {
 
   auto register_port(pw_registry* registry, uint32_t id, const char* type, const spa_dict* props) -> bool;
 
-  auto link_nodes(const uint& output_node_id,
-                  const uint& input_node_id,
-                  const bool& probe_link = false,
-                  const bool& link_passive = false) -> std::vector<pw_proxy*>;
+  auto link_nodes(const uint& output_node_id, const uint& input_node_id, const bool& probe_link = false)
+      -> std::vector<pw_proxy*>;
 
   static void destroy_links(const std::vector<pw_proxy*>& list);
 
