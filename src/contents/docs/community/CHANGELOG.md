@@ -1,11 +1,24 @@
 # Changelog
  
+## 8.1.5
+### 2026-03-17
+
+ 
+### Features:
+- Improved compatibility with PipeWire >= 1.6. Dynamic sampling rate switching should be fully working this time at least in the output effects pipeline.
+- Updated translations
+
+### Bug fixes:
+
+### Other notes:
+
+ 
 ## 8.1.4
 ### 2026-03-11
 
  
 ### Features:
-- Improved compatibility with PipeWire >= 1.6. Dynamic sampling rateswitching should be working again.
+- Improved compatibility with PipeWire >= 1.6. Dynamic sampling rate switching should be working again.
 - Updated translations
 
 ### Bug fixes:

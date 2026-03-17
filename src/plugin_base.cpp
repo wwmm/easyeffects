@@ -338,10 +338,10 @@ PluginBase::PluginBase(std::string tag,
   pw_properties_set(props_filter, PW_KEY_NODE_NICK, name.toStdString().c_str());
   pw_properties_set(props_filter, PW_KEY_NODE_DESCRIPTION, description.toStdString().c_str());
   pw_properties_set(props_filter, PW_KEY_MEDIA_TYPE, "Audio");
-  pw_properties_set(props_filter, PW_KEY_MEDIA_CATEGORY, "Filter");
+  pw_properties_set(props_filter, PW_KEY_MEDIA_CATEGORY, "Duplex");
   pw_properties_set(props_filter, PW_KEY_MEDIA_ROLE, "DSP");
   pw_properties_set(props_filter, PW_KEY_NODE_GROUP, log_tag == "soe: " ? "ee_sink_group" : "ee_source_group");
-  // pw_properties_set(props_filter, PW_KEY_NODE_PASSIVE, "true");
+  pw_properties_set(props_filter, PW_KEY_NODE_PASSIVE, log_tag == "soe: " ? "true" : "false");
 
   filter = pw_filter_new(pm->core, filter_name.c_str(), props_filter);
 

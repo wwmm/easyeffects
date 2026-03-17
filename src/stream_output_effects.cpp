@@ -345,32 +345,9 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
     }
   }
 
-  /**
-   * Link the EasyEffects sink to the first plugin (or the spectrum in case no plugins are used).
-   * From PipeWire 1.6 onward passive links do and node activation interaction is a littel different. As result the
-   * first plugin in the pipeline has to set node.passive = "" before it is linked to the null-sink. As the user is free
-   * to change the plugins order we have to reset node.passive back to true after the link is done.
-   */
-
-  // if (!list.empty()) {
-  //   if (plugins.contains(list.front())) {
-  //     plugins[list.front()]->set_node_passive("");
-  //   }
-  // } else {
-  //   spectrum->set_node_passive("");
-  // }
-
   prev_node_id = pm->ee_sink_node.id;
 
   links = pm->link_nodes(prev_node_id, next_node_id);
-
-  // if (!list.empty()) {
-  //   if (plugins.contains(list.front())) {
-  //     plugins[list.front()]->set_node_passive("true");
-  //   }
-  // } else {
-  //   spectrum->set_node_passive("true");
-  // }
 
   for (auto* link : links) {
     list_proxies.push_back(link);
