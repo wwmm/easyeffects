@@ -43,6 +43,7 @@ class Package : public QObject {
   Q_OBJECT
 
  public:
+  // NOLINTBEGIN(bugprone-throwing-static-initialization)
   CREATE_PROPERTY(QString, bs2b, QStringLiteral("bs2b"));
   CREATE_PROPERTY(QString, calf, QStringLiteral("Calf Studio Gear"));
   CREATE_PROPERTY(QString, deepfilternet, QStringLiteral("DeepFilterNet"));
@@ -56,6 +57,7 @@ class Package : public QObject {
   CREATE_PROPERTY(QString, webrtc, QStringLiteral("WebRTC"));
   CREATE_PROPERTY(QString, zam, QStringLiteral("ZamAudio"));
   CREATE_PROPERTY(QString, zita, QStringLiteral("Zita"));
+  // NOLINTEND(bugprone-throwing-static-initialization)
 };
 
 }  // namespace tags::plugin_package
@@ -66,6 +68,7 @@ class BaseName : public QObject {
   Q_OBJECT
 
  public:
+  // NOLINTBEGIN(bugprone-throwing-static-initialization)
   CREATE_PROPERTY(QString, autogain, QStringLiteral("autogain"));
   CREATE_PROPERTY(QString, bassEnhancer, QStringLiteral("bass_enhancer"));
   CREATE_PROPERTY(QString, bassLoudness, QStringLiteral("bass_loudness"));
@@ -97,6 +100,7 @@ class BaseName : public QObject {
   CREATE_PROPERTY(QString, reverb, QStringLiteral("reverb"));
   CREATE_PROPERTY(QString, rnnoise, QStringLiteral("rnnoise"));
   CREATE_PROPERTY(QString, stereoTools, QStringLiteral("stereo_tools"));
+  // NOLINTEND(bugprone-throwing-static-initialization)
 };
 
 class Model : public QAbstractListModel {
