@@ -121,11 +121,11 @@ void NativeUi::load() {
         continue;
       }
 
-      const LV2_Feature lv2_log_feature = {LV2_LOG__log, &lv2_log};
+      const LV2_Feature lv2_log_feature = {.URI = LV2_LOG__log, .data = &lv2_log};
 
-      const LV2_Feature lv2_map_feature = {LV2_URID__map, &lv2_map};
+      const LV2_Feature lv2_map_feature = {.URI = LV2_URID__map, .data = &lv2_map};
 
-      const LV2_Feature lv2_unmap_feature = {LV2_URID__unmap, &lv2_unmap};
+      const LV2_Feature lv2_unmap_feature = {.URI = LV2_URID__unmap, .data = &lv2_unmap};
 
       const auto rate = wrapper->get_rate();
       const auto n_samples = wrapper->get_n_samples();
@@ -161,21 +161,22 @@ void NativeUi::load() {
 
       LV2_Extension_Data_Feature extension_data = {wrapper->get_instance()->lv2_descriptor->extension_data};
 
-      const LV2_Feature feature_dataAccess = {LV2_DATA_ACCESS_URI, &extension_data};
+      const LV2_Feature feature_dataAccess = {.URI = LV2_DATA_ACCESS_URI, .data = &extension_data};
 
-      const LV2_Feature feature_instAccess = {LV2_INSTANCE_ACCESS_URI, wrapper->get_instance()->lv2_handle};
+      const LV2_Feature feature_instAccess = {.URI = LV2_INSTANCE_ACCESS_URI,
+                                              .data = wrapper->get_instance()->lv2_handle};
 
-      const LV2_Feature idle_feature = {LV2_UI__idleInterface, nullptr};
+      const LV2_Feature idle_feature = {.URI = LV2_UI__idleInterface, .data = nullptr};
 
-      const LV2_Feature parent_feature = {LV2_UI__parent, nullptr};
+      const LV2_Feature parent_feature = {.URI = LV2_UI__parent, .data = nullptr};
 
-      const LV2_Feature fixed_size_feature = {LV2_UI__fixedSize, nullptr};
+      const LV2_Feature fixed_size_feature = {.URI = LV2_UI__fixedSize, .data = nullptr};
 
-      const LV2_Feature no_user_resize_feature = {LV2_UI__noUserResize, nullptr};
+      const LV2_Feature no_user_resize_feature = {.URI = LV2_UI__noUserResize, .data = nullptr};
 
-      const LV2_Feature make_resident_feature = {LV2_UI_makeResident, nullptr};
+      const LV2_Feature make_resident_feature = {.URI = LV2_UI_makeResident, .data = nullptr};
 
-      const LV2_Feature make_soname_resident_feature = {LV2_UI_makeSONameResident, nullptr};
+      const LV2_Feature make_soname_resident_feature = {.URI = LV2_UI_makeSONameResident, .data = nullptr};
 
       const auto features = std::to_array<const LV2_Feature*>(
           {&lv2_log_feature, &lv2_map_feature, &lv2_unmap_feature, &feature_options, wrapper->static_features.data(),

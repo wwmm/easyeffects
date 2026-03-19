@@ -141,7 +141,7 @@ void DeviceManager::on_device_info(void* object, const struct pw_device_info* in
         }
 
         if (const auto id = param.id; id == SPA_PARAM_Route) {
-          pw_device_enum_params((struct pw_device*)dd->proxy, 0, id, 0, -1, nullptr);
+          pw_device_enum_params(reinterpret_cast<pw_device*>(dd->proxy), 0, id, 0, -1, nullptr);
         }
       }
     }
