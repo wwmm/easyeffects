@@ -531,7 +531,7 @@ void NodeManager::onNodeParam(void* data,
   }
 
   spa_pod_prop* pod_prop = nullptr;
-  auto* obj = (spa_pod_object*)param;
+  auto* obj = reinterpret_cast<const spa_pod_object*>(param);
 
   SPA_POD_OBJECT_FOREACH(obj, pod_prop) {
     switch (pod_prop->key) {
