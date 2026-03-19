@@ -68,6 +68,8 @@
 #include <malloc.h>
 #endif
 
+namespace {
+
 class SignalHandler {
  public:
   SignalHandler() {
@@ -148,6 +150,8 @@ struct CoreServices {
 struct UiState {
   QQuickWindow* window = nullptr;
 };
+
+}  // namespace
 
 static void initGlobalBypass(StreamInputEffects& sie, StreamOutputEffects& soe) {
   auto update_bypass_state = [&]() {

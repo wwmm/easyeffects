@@ -81,9 +81,9 @@ void NodeManager::setNodeMute(uint64_t serial, bool state) {
     auto builder = SPA_POD_BUILDER_INIT(buffer.data(), sizeof(buffer));  // NOLINT
 
     // NOLINTNEXTLINE
-    pw_node_set_param((pw_node*)proxy, SPA_PARAM_Props, 0,
-                      (spa_pod*)spa_pod_builder_add_object(&builder, SPA_TYPE_OBJECT_Props, SPA_PARAM_Props,
-                                                           SPA_PROP_mute, SPA_POD_Bool(state)));
+    pw_node_set_param(reinterpret_cast<pw_node*>(proxy), SPA_PARAM_Props, 0,
+                      reinterpret_cast<spa_pod*>(spa_pod_builder_add_object(
+                          &builder, SPA_TYPE_OBJECT_Props, SPA_PARAM_Props, SPA_PROP_mute, SPA_POD_Bool(state))));
   }
 }
 
@@ -99,10 +99,10 @@ void NodeManager::setNodeVolume(uint64_t serial, uint n_vol_ch, float value) {
     auto builder = SPA_POD_BUILDER_INIT(buffer.data(), sizeof(buffer));  // NOLINT
 
     // NOLINTNEXTLINE
-    pw_node_set_param(
-        (struct pw_node*)proxy, SPA_PARAM_Props, 0,
-        (spa_pod*)spa_pod_builder_add_object(&builder, SPA_TYPE_OBJECT_Props, SPA_PARAM_Props, SPA_PROP_channelVolumes,
-                                             SPA_POD_Array(sizeof(float), SPA_TYPE_Float, n_vol_ch, volumes.data())));
+    pw_node_set_param(reinterpret_cast<pw_node*>(proxy), SPA_PARAM_Props, 0,
+                      reinterpret_cast<spa_pod*>(spa_pod_builder_add_object(
+                          &builder, SPA_TYPE_OBJECT_Props, SPA_PARAM_Props, SPA_PROP_channelVolumes,
+                          SPA_POD_Array(sizeof(float), SPA_TYPE_Float, n_vol_ch, volumes.data()))));
   }
 }
 

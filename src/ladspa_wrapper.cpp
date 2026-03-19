@@ -161,7 +161,7 @@ LadspaWrapper::LadspaWrapper(const std::string& plugin_filename, const std::stri
 
     dlhandle h(dl_handle);
 
-    auto func = (LADSPA_Descriptor_Function)dlsym(dl_handle, "ladspa_descriptor");
+    auto func = reinterpret_cast<LADSPA_Descriptor_Function>(dlsym(dl_handle, "ladspa_descriptor"));
 
     if (func == nullptr) {
       continue;

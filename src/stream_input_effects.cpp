@@ -225,7 +225,7 @@ void StreamInputEffects::connect_filters(const bool& bypass) {
     return;
   }
 
-  const auto list = (bypass) ? QStringList() : DbStreamInputs::plugins();
+  const auto list = bypass ? QStringList() : DbStreamInputs::plugins();
 
   auto mic_linked = false;
 

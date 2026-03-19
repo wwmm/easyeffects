@@ -138,7 +138,7 @@ void MetadataManager::destroy_metadata() {
   if (metadata != nullptr) {
     util::debug("Destroying PipeWire metadata...");
 
-    pw_proxy_destroy((struct pw_proxy*)metadata);
+    pw_proxy_destroy(reinterpret_cast<pw_proxy*>(metadata));
   }
 }
 
