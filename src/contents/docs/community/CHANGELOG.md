@@ -1,5 +1,18 @@
 # Changelog
  
+## 8.1.6
+### 2026-03-19
+
+ 
+### Features:
+- Updated translations
+
+### Bug fixes:
+- Fixed a regression that made applications like PipeWeaver not work properly together with EasyEffects
+
+### Other notes:
+
+ 
 ## 8.1.5
 ### 2026-03-17
 

@@ -56,6 +56,17 @@
     <color type="primary" scheme_preference="dark">#004079</color>
   </branding>
   <releases>
+    <release type="stable" version="8.1.6" date="2026-03-19T00:00:00Z">
+      <description>
+        <ul>
+          <li>Features:</li>
+          <li>Updated translations</li>
+          <li>Bug fixes:</li>
+          <li>Fixed a regression that made applications like PipeWeaver not work properly together with EasyEffects</li>
+          <li>Other notes:</li>
+        </ul>
+      </description>
+    </release>
     <release type="stable" version="8.1.5" date="2026-03-17T00:00:00Z">
       <description>
         <ul>
