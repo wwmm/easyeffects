@@ -411,7 +411,7 @@ auto VoiceSuppressor::compute_local_kurtosis(int k, double* magnitude_spectrum) 
   var /= ((2 * W) + 1);
   fourth /= ((2 * W) + 1);
 
-  return fourth / (var * var + epsilon);
+  return fourth / ((var * var) + epsilon);
 }
 
 auto VoiceSuppressor::calc_instantaneous_frequency(const int& k) -> double {
