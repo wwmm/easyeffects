@@ -64,6 +64,8 @@ struct GraphicEQ_Band {
   float gain = 0.0F;
 };
 
+// NOLINTBEGIN(bugprone-throwing-static-initialization)
+
 std::map<ApoFilter, std::string> const ApoToEqualizerFilter = {
     {ApoFilter::OFF, "Off"},          {ApoFilter::PK, "Bell"},          {ApoFilter::MODAL, "Bell"},
     {ApoFilter::PEQ, "Bell"},         {ApoFilter::LP, "Lo-pass"},       {ApoFilter::LPQ, "Lo-pass"},
@@ -77,6 +79,8 @@ std::map<std::string, ApoFilter> const EqualizerToApoFilter = {
     {"Bell", ApoFilter::PK},      {"Lo-pass", ApoFilter::LPQ},  {"Hi-pass", ApoFilter::HPQ},
     {"Lo-shelf", ApoFilter::LSC}, {"Hi-shelf", ApoFilter::HSC}, {"Notch", ApoFilter::NO},
     {"Allpass", ApoFilter::AP},   {"Bandpass", ApoFilter::BP}};
+
+// NOLINTEND(bugprone-throwing-static-initialization)
 
 auto import_apo_preset(db::Equalizer* settings,
                        db::EqualizerChannel* settings_left,

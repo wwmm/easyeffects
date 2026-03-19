@@ -300,7 +300,7 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
 
   next_node_id = prev_node_id;
 
-  const auto list = (bypass) ? QStringList() : DbStreamOutputs::plugins();
+  const auto list = bypass ? QStringList() : DbStreamOutputs::plugins();
 
   if (!list.empty()) {
     for (const auto& name : std::ranges::reverse_view(list)) {

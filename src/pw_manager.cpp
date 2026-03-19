@@ -407,7 +407,7 @@ Manager::~Manager() {
   pw_proxy_destroy(proxy_stream_input_source);
 
   util::debug("Destroying PipeWire registry...");
-  pw_proxy_destroy((struct pw_proxy*)registry);
+  pw_proxy_destroy(reinterpret_cast<pw_proxy*>(registry));
 
   util::debug("Disconnecting PipeWire core...");
   pw_core_disconnect(core);

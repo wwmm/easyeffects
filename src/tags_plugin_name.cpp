@@ -15,6 +15,7 @@
 
 namespace {
 
+// NOLINTNEXTLINE(bugprone-throwing-static-initialization)
 const QRegularExpression id_regex(R"(#(\d+)$)");
 
 }  // namespace

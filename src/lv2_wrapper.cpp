@@ -98,6 +98,7 @@ Lv2Wrapper::~Lv2Wrapper() {
   }
 }
 
+// NOLINTBEGIN(modernize-avoid-variadic-functions)
 auto Lv2Wrapper::lv2_printf([[maybe_unused]] LV2_Log_Handle handle,
                             [[maybe_unused]] LV2_URID type,
                             const char* format,
@@ -112,6 +113,7 @@ auto Lv2Wrapper::lv2_printf([[maybe_unused]] LV2_Log_Handle handle,
 
   return r;
 }
+// NOLINTEND(modernize-avoid-variadic-functions)
 
 void Lv2Wrapper::check_required_features() {
   LilvNodes* required_features = lilv_plugin_get_required_features(plugin);

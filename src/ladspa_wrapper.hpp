@@ -84,7 +84,7 @@ class LadspaWrapper {
 
   LADSPA_Handle instance = nullptr;
 
-  static constexpr unsigned long null_ul = (unsigned long)-1L;
+  static constexpr unsigned long null_ul = static_cast<unsigned long>(-1L);
 
   bool found = false;
   bool active = false;

@@ -35,17 +35,7 @@
 #include "config.h"
 #include "util.hpp"
 
-namespace ladspa {
-
-static inline const char* get_ladspa_path() {
-  const char* path = std::getenv("LADSPA_PATH");
-
-  if (path == nullptr || path[0] == '\0') {
-    path = "/usr/local/lib/ladspa/:" LIB_DIR "/ladspa/:/usr/lib/ladspa/:/usr/lib64/ladspa/";
-  }
-
-  return path;
-}
+namespace {
 
 struct dlhandle {
   dlhandle(void* handle) : dl_handle(handle) {}
@@ -67,6 +57,50 @@ struct dlhandle {
   void disable() { dl_handle = nullptr; }
   void* dl_handle;
 };
+
+struct ladspahandle {
+  ladspahandle(LADSPA_Handle instance, void (*cleanup)(LADSPA_Handle)) : instance(instance), cleanup(cleanup) {}
+
+  ~ladspahandle() {
+    if (instance != nullptr) {
+      cleanup(instance);
+    }
+  }
+
+  ladspahandle(const ladspahandle&) = delete;
+
+  auto operator=(const ladspahandle&) -> ladspahandle& = delete;
+
+  ladspahandle(ladspahandle&& other) noexcept
+      : instance(std::exchange(other.instance, nullptr)), cleanup(other.cleanup) {}
+
+  auto operator=(ladspahandle&& other) noexcept -> ladspahandle& {
+    std::swap(instance, other.instance);
+    std::swap(cleanup, other.cleanup);
+
+    return *this;
+  }
+
+  void disable() { instance = nullptr; }
+
+  void* instance;
+
+  void (*cleanup)(LADSPA_Handle);
+};
+
+}  // namespace
+
+namespace ladspa {
+
+static inline const char* get_ladspa_path() {
+  const char* path = std::getenv("LADSPA_PATH");
+
+  if (path == nullptr || path[0] == '\0') {
+    path = "/usr/local/lib/ladspa/:" LIB_DIR "/ladspa/:/usr/lib/ladspa/:/usr/lib64/ladspa/";
+  }
+
+  return path;
+}
 
 static inline bool validate_ports(const LADSPA_Descriptor* descriptor) {
   unsigned long count_input = 0UL;
@@ -204,36 +238,6 @@ LadspaWrapper::~LadspaWrapper() {
     dlclose(std::exchange(dl_handle, nullptr));
   }
 }
-
-struct ladspahandle {
-  ladspahandle(LADSPA_Handle instance, void (*cleanup)(LADSPA_Handle)) : instance(instance), cleanup(cleanup) {}
-
-  ~ladspahandle() {
-    if (instance != nullptr) {
-      cleanup(instance);
-    }
-  }
-
-  ladspahandle(const ladspahandle&) = delete;
-
-  auto operator=(const ladspahandle&) -> ladspahandle& = delete;
-
-  ladspahandle(ladspahandle&& other) noexcept
-      : instance(std::exchange(other.instance, nullptr)), cleanup(other.cleanup) {}
-
-  auto operator=(ladspahandle&& other) noexcept -> ladspahandle& {
-    std::swap(instance, other.instance);
-    std::swap(cleanup, other.cleanup);
-
-    return *this;
-  }
-
-  void disable() { instance = nullptr; }
-
-  void* instance;
-
-  void (*cleanup)(LADSPA_Handle);
-};
 
 static inline void get_port_bounds(const LADSPA_Descriptor* descriptor,
                                    unsigned long port,
@@ -414,7 +418,7 @@ static inline int stricmp(const char* str1, const char* str2) {
       }
     }
   } while (c1 != '\0');
-  return (int)c1 - c2;
+  return static_cast<int>(c1) - c2;
 }
 
 template <std::size_t N>
@@ -508,7 +512,7 @@ static inline char* stristr(const char* haystack, const char* needle) {
 
   while (nlen <= hlen) {
     if (stricmp(haystack, needle) == 0) {
-      return (char*)haystack;
+      return const_cast<char*>(haystack);
     }
 
     haystack++;
@@ -700,7 +704,7 @@ static inline unsigned long cp_to_port_idx(const LADSPA_Descriptor* descriptor, 
     }
   }
 
-  return (unsigned long)-1L;
+  return static_cast<unsigned long>(-1L);
 }
 
 auto LadspaWrapper::get_control_port_name(uint index) const -> std::string {
