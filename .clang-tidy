@@ -44,6 +44,7 @@ Checks: 'bugprone-*,cert-*,clang-analyzer-*,concurrency-*,cppcoreguidelines-*,hi
   -misc-include-cleaner,
   -misc-non-private-member-variables-in-classes,
   -misc-no-recursion,
+  -misc-override-with-different-visibility,
   -misc-unused-parameters,
   -misc-use-anonymous-namespace,
   -modernize-avoid-c-arrays,
