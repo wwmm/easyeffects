@@ -145,15 +145,6 @@ auto NodeManager::registerNode(pw_registry* registry, uint32_t id, const char* t
     media_role = key_media_role;
   }
 
-  constexpr auto class_array =
-      std::to_array({tags::pipewire::media_class::output_stream, tags::pipewire::media_class::input_stream,
-                     tags::pipewire::media_class::sink, tags::pipewire::media_class::source,
-                     tags::pipewire::media_class::virtual_source, tags::pipewire::media_class::virtual_sink});
-
-  if (!is_ee_filter && !std::ranges::any_of(class_array, [&](const auto& str) { return str == media_class; })) {
-    return false;
-  }
-
   QString node_name;
 
   util::spa_dict_get_string(props, PW_KEY_NODE_NAME, node_name);
