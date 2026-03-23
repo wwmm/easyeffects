@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-03-02 01:24-0300\n"
-"PO-Revision-Date: 2026-03-09 14:09+0000\n"
+"PO-Revision-Date: 2026-03-23 19:09+0000\n"
 "Last-Translator: Lito Parra <lito.15@proton.me>\n"
 "Language-Team: Spanish (Mexico) <https://hosted.weblate.org/projects/"
 "easyeffects/main/es_MX/>\n"
@@ -2096,7 +2096,7 @@ msgstr "Octavas"
 
 #: src/contents/ui/Pitch.qml:190
 msgid "Cents"
-msgstr "Acentos"
+msgstr "Centésimas"
 
 #: src/contents/ui/Pitch.qml:206
 msgid "Semitones"
