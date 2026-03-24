@@ -55,7 +55,7 @@ Item {
     implicitWidth: columnLayout.implicitWidth
     Kirigami.Theme.colorSet: Kirigami.Theme.View
 
-    readonly property var linearTicks: {
+    readonly property list<real> linearTicks: {
         const step = (xMax - xMin) / targetTicks;
 
         const start = xMin;
@@ -69,7 +69,7 @@ Item {
         return ticks;
     }
 
-    readonly property var logTicks: {
+    readonly property list<real> logTicks: {
         const step = (xMaxLog - xMinLog) / targetTicks;
 
         const ticks = [];
@@ -81,7 +81,7 @@ Item {
         return ticks;
     }
 
-    function updateData(inputData) {
+    function updateData(inputData: list<point>) {
         if (!inputData || inputData.length === 0) {
             return;
         }
@@ -153,7 +153,7 @@ Item {
         areaLineSeries.clear();
     }
 
-    function mapToValueX(mouseX) {
+    function mapToValueX(mouseX: real): real {
         if (chart.plotArea.width <= 0) {
             return 0;
         }
@@ -167,7 +167,7 @@ Item {
         }
     }
 
-    function mapToValueY(mouseY) {
+    function mapToValueY(mouseY: real): real {
         if (chart.plotArea.height <= 0) {
             return 0;
         }

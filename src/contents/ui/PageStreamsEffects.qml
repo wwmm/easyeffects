@@ -124,7 +124,7 @@ Kirigami.Page {
         GridLayout {
             id: pagePluginsGrid
 
-            function populatePluginsListModel(plugins) {
+            function populatePluginsListModel(plugins: list<string>) {
                 let baseNames = TagsPluginName.PluginsNameModel.getBaseNames();
                 pluginsListModel.clear();
 
@@ -143,7 +143,7 @@ Kirigami.Page {
                 }
             }
 
-            function createPluginStack(name, baseName, pluginDB) {
+            function createPluginStack(name: string, baseName: string, pluginDB) {
                 while (pluginsStack.depth > 1)
                     pluginsStack.pop();
 
@@ -574,7 +574,7 @@ Kirigami.Page {
             }
 
             Connections {
-                function onNewSpectrumData(newData) {
+                function onNewSpectrumData(newData: list<point>) {
                     spectrumChart.updateData(newData);
                 }
 

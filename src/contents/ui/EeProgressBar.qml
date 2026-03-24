@@ -70,7 +70,7 @@ Rectangle {
         }
     }
 
-    function setValue(value) {
+    function setValue(value: real) {
 
         // Only update if meaningfully different
 
