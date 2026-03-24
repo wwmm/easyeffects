@@ -535,8 +535,8 @@ Kirigami.Page {
             colorTheme: DbGraph.colorTheme
             xMin: DbSpectrum.minimumFrequency
             xMax: DbSpectrum.maximumFrequency
-            yMin: -100
-            yMax: 0
+            yMin: 0
+            yMax: -Common.minimumDecibelLevel
             yDataOffset: -Common.minimumDecibelLevel
             logarithimicHorizontalAxis: DbSpectrum.logarithimicHorizontalAxis
             dynamicYScale: DbSpectrum.dynamicYScale
