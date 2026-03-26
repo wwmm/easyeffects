@@ -51,7 +51,7 @@ jobs:
 
       # 5. Setup GitHub Pages
       - name: Setup Pages
-        uses: actions/configure-pages@v5.0.0
+        uses: actions/configure-pages@v6.0.0
 
       # 6. Upload the generated site (site_dir)
       - name: Upload artifact
