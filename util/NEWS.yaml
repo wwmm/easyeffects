@@ -4,7 +4,7 @@ Date: UNRELEASED_DATE
 
 Description: 
 - Features∶
-- 
+- The ratio control of some plugins can be set with more precision
 
 - Bug fixes∶
 - The default Pre-mix control values of the compressor, gate, expander, multiband compressor and multiband gate were incorrectly set to 0 dB when it should be -Inf. Users will need to manually update their presets in case they do not have set custom pre-mix values.

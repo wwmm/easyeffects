@@ -122,8 +122,8 @@ Kirigami.ScrollablePage {
                             from: deesserPage.pluginDB.getMinValue("ratio")
                             to: deesserPage.pluginDB.getMaxValue("ratio")
                             value: deesserPage.pluginDB.ratio
-                            decimals: 0
-                            stepSize: 1
+                            decimals: 2
+                            stepSize: 0.01
                             onValueModified: v => {
                                 deesserPage.pluginDB.ratio = v;
                             }

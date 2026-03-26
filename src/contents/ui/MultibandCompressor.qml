@@ -369,8 +369,8 @@ Kirigami.ScrollablePage {
                             from: multibandCompressorPage.pluginDB.getMinValue(multibandCompressorPage.bandId + "Ratio")
                             to: multibandCompressorPage.pluginDB.getMaxValue(multibandCompressorPage.bandId + "Ratio")
                             value: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "Ratio"]
-                            decimals: 1
-                            stepSize: 0.1
+                            decimals: 2
+                            stepSize: 0.01
                             onValueModified: v => {
                                 multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "Ratio"] = v;
                             }
