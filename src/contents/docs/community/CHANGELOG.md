@@ -1,5 +1,21 @@
 # Changelog
  
+## 8.1.7
+### 2026-03-26
+
+ 
+### Features:
+- The ratio control of some plugins can be set with more precision
+- The frequency control of some plugins can be set with more precision
+- Updated translations
+
+### Bug fixes:
+- The default Pre-mix control values of the compressor, gate, expander, multiband compressor and multiband gate were incorrectly set to 0 dB when it should be -Inf. Users will need to manually update their presets in case they do not have set custom pre-mix values.
+- We now create Qt's lock file inside QStandardPaths::RuntimeLocation. This should avoid problems with multi user setups.
+
+### Other notes:
+
+ 
 ## 8.1.6
 ### 2026-03-19
 

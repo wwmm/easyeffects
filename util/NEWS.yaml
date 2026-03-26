@@ -4,6 +4,20 @@ Date: UNRELEASED_DATE
 
 Description: 
 - Features∶
+- 
+
+- Bug fixes∶
+- 
+
+- Other notes∶
+- 
+
+---
+Version: 8.1.7
+Date: 2026-03-26
+
+Description: 
+- Features∶
 - The ratio control of some plugins can be set with more precision
 - The frequency control of some plugins can be set with more precision
 - Updated translations
@@ -13,7 +27,6 @@ Description:
 - We now create Qt's lock file inside QStandardPaths::RuntimeLocation. This should avoid problems with multi user setups.
 
 - Other notes∶
-- 
 
 ---
 Version: 8.1.6
