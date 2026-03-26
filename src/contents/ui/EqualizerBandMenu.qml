@@ -95,8 +95,8 @@ Kirigami.Dialog {
                 from: bandMenu.bandDB.getMinValue(bandName)
                 to: bandMenu.bandDB.getMaxValue(bandName)
                 value: bandMenu.bandDB[bandName]
-                decimals: 0
-                stepSize: 1
+                decimals: 2
+                stepSize: 0.01
                 unit: Units.hz
                 onValueModified: v => {
                     bandMenu.bandDB[bandName] = v;
