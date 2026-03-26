@@ -93,6 +93,8 @@ struct CoreServices {
   std::unique_ptr<StreamOutputEffects> soe;
 
   CoreServices(bool is_primary) {
+    util::debug(std::format("easyffects version: {}.{}.{}", VERSION_MAJOR, VERSION_MINOR, VERSION_PATCH));
+
     if (is_primary) {
       extra_lv2_paths();
 
@@ -332,6 +334,7 @@ static int runSecondaryInstance(KAboutData& about, QApplication& app, CommandLin
 int main(int argc, char* argv[]) {
   QCoreApplication::setAttribute(Qt::AA_ShareOpenGLContexts);
   QLoggingCategory::setFilterRules("easyeffects.debug=false");
+
   KIconTheme::initTheme();
 
   QApplication app(argc, argv);

@@ -124,7 +124,7 @@ void on_process(void* userdata, spa_io_position* position) {
 
   } else {
     if (!d->pb->got_null_left_in) {
-      util::warning("Processing: we received a null left_in pointer. Using the dummy array instead.");
+      util::debug("Processing: we received a null left_in pointer. Using the dummy array instead.");
 
       d->pb->got_null_left_in = true;
     }
@@ -141,7 +141,7 @@ void on_process(void* userdata, spa_io_position* position) {
 
   } else {
     if (!d->pb->got_null_right_in) {
-      util::warning("Processing: we received a null right_in pointer. Using the dummy array instead.");
+      util::debug("Processing: we received a null right_in pointer. Using the dummy array instead.");
 
       d->pb->got_null_right_in = true;
     }
@@ -153,7 +153,7 @@ void on_process(void* userdata, spa_io_position* position) {
     left_out = std::span(out_left, n_samples);
   } else {
     if (!d->pb->got_null_left_out) {
-      util::warning("Processing: we received a null left_out pointer. Using the dummy array instead.");
+      util::debug("Processing: we received a null left_out pointer. Using the dummy array instead.");
 
       d->pb->got_null_left_out = true;
     }
@@ -165,7 +165,7 @@ void on_process(void* userdata, spa_io_position* position) {
     right_out = std::span(out_right, n_samples);
   } else {
     if (!d->pb->got_null_right_out) {
-      util::warning("Processing: we received a null right_out pointer. Using the dummy array instead.");
+      util::debug("Processing: we received a null right_out pointer. Using the dummy array instead.");
 
       d->pb->got_null_right_out = true;
     }
