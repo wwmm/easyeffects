@@ -172,37 +172,37 @@
             <label></label>
             <min>-80.01</min>
             <max>40</max>
-            <default>0</default>
+            <default>-80.01</default>
         </entry>
         <entry name="inputToLink" type="Double">
             <label></label>
             <min>-80.01</min>
             <max>40</max>
-            <default>0</default>
+            <default>-80.01</default>
         </entry>
         <entry name="sidechainToInput" type="Double">
             <label></label>
             <min>-80.01</min>
             <max>40</max>
-            <default>0</default>
+            <default>-80.01</default>
         </entry>
         <entry name="sidechainToLink" type="Double">
             <label></label>
             <min>-80.01</min>
             <max>40</max>
-            <default>0</default>
+            <default>-80.01</default>
         </entry>
         <entry name="linkToSidechain" type="Double">
             <label></label>
             <min>-80.01</min>
             <max>40</max>
-            <default>0</default>
+            <default>-80.01</default>
         </entry>
         <entry name="linkToInput" type="Double">
             <label></label>
             <min>-80.01</min>
             <max>40</max>
-            <default>0</default>
+            <default>-80.01</default>
         </entry>
     </group>
 </kcfg>

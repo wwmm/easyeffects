@@ -246,12 +246,12 @@ The following properties can be modified or queried via the [local server](../us
 | **expander** | `lpfMode` | Enum | `0` <br><small>(Choices: 0: `Off`, 1: `12 dB/oct`, 2: `24 dB/oct`, 3: `36 dB/oct`)</small> |
 | **expander** | `lpfFrequency` | Double | `20000` |
 | **expander** | `sidechainInputDevice` | String | `*calculated*` |
-| **expander** | `inputToSidechain` | Double | `0` |
-| **expander** | `inputToLink` | Double | `0` |
-| **expander** | `sidechainToInput` | Double | `0` |
-| **expander** | `sidechainToLink` | Double | `0` |
-| **expander** | `linkToSidechain` | Double | `0` |
-| **expander** | `linkToInput` | Double | `0` |
+| **expander** | `inputToSidechain` | Double | `-80.01` |
+| **expander** | `inputToLink` | Double | `-80.01` |
+| **expander** | `sidechainToInput` | Double | `-80.01` |
+| **expander** | `sidechainToLink` | Double | `-80.01` |
+| **expander** | `linkToSidechain` | Double | `-80.01` |
+| **expander** | `linkToInput` | Double | `-80.01` |
 | **filter** | `bypass` | Bool | `false` |
 | **filter** | `inputGain` | Double | `0` |
 | **filter** | `outputGain` | Double | `0` |
@@ -293,12 +293,12 @@ The following properties can be modified or queried via the [local server](../us
 | **gate** | `lpfMode` | Enum | `0` <br><small>(Choices: 0: `Off`, 1: `12 dB/oct`, 2: `24 dB/oct`, 3: `36 dB/oct`)</small> |
 | **gate** | `lpfFrequency` | Double | `20000` |
 | **gate** | `sidechainInputDevice` | String | `*calculated*` |
-| **gate** | `inputToSidechain` | Double | `0` |
-| **gate** | `inputToLink` | Double | `0` |
-| **gate** | `sidechainToInput` | Double | `0` |
-| **gate** | `sidechainToLink` | Double | `0` |
-| **gate** | `linkToSidechain` | Double | `0` |
-| **gate** | `linkToInput` | Double | `0` |
+| **gate** | `inputToSidechain` | Double | `-80.01` |
+| **gate** | `inputToLink` | Double | `-80.01` |
+| **gate** | `sidechainToInput` | Double | `-80.01` |
+| **gate** | `sidechainToLink` | Double | `-80.01` |
+| **gate** | `linkToSidechain` | Double | `-80.01` |
+| **gate** | `linkToInput` | Double | `-80.01` |
 | **level_meter** | `bypass` | Bool | `false` |
 | **limiter** | `bypass` | Bool | `false` |
 | **limiter** | `inputGain` | Double | `0` |
@@ -320,12 +320,12 @@ The following properties can be modified or queried via the [local server](../us
 | **limiter** | `alrKnee` | Double | `0` |
 | **limiter** | `alrKneeSmooth` | Double | `-5` |
 | **limiter** | `sidechainInputDevice` | String | `*calculated*` |
-| **limiter** | `inputToSidechain` | Double | `0` |
-| **limiter** | `inputToLink` | Double | `0` |
-| **limiter** | `sidechainToInput` | Double | `0` |
-| **limiter** | `sidechainToLink` | Double | `0` |
-| **limiter** | `linkToSidechain` | Double | `0` |
-| **limiter** | `linkToInput` | Double | `0` |
+| **limiter** | `inputToSidechain` | Double | `-80.01` |
+| **limiter** | `inputToLink` | Double | `-80.01` |
+| **limiter** | `sidechainToInput` | Double | `-80.01` |
+| **limiter** | `sidechainToLink` | Double | `-80.01` |
+| **limiter** | `linkToSidechain` | Double | `-80.01` |
+| **limiter** | `linkToInput` | Double | `-80.01` |
 | **loudness** | `bypass` | Bool | `false` |
 | **loudness** | `inputGain` | Double | `0` |
 | **loudness** | `outputGain` | Double | `0` |
@@ -351,12 +351,12 @@ The following properties can be modified or queried via the [local server](../us
 | **multiband_compressor** | `stereoSplit` | Bool | `false` |
 | **multiband_compressor** | `compressorMode` | Enum | `1` <br><small>(Choices: 0: `Classic`, 1: `Modern`, 2: `Linear Phase`)</small> |
 | **multiband_compressor** | `envelopeBoost` | Enum | `0` <br><small>(Choices: 0: `None`, 1: `Pink BT`, 2: `Pink MT`, 3: `Brown BT`, 4: `Brown MT`)</small> |
-| **multiband_compressor** | `inputToSidechain` | Double | `0` |
-| **multiband_compressor** | `inputToLink` | Double | `0` |
-| **multiband_compressor** | `sidechainToInput` | Double | `0` |
-| **multiband_compressor** | `sidechainToLink` | Double | `0` |
-| **multiband_compressor** | `linkToSidechain` | Double | `0` |
-| **multiband_compressor** | `linkToInput` | Double | `0` |
+| **multiband_compressor** | `inputToSidechain` | Double | `-80.01` |
+| **multiband_compressor** | `inputToLink` | Double | `-80.01` |
+| **multiband_compressor** | `sidechainToInput` | Double | `-80.01` |
+| **multiband_compressor** | `sidechainToLink` | Double | `-80.01` |
+| **multiband_compressor** | `linkToSidechain` | Double | `-80.01` |
+| **multiband_compressor** | `linkToInput` | Double | `-80.01` |
 | **multiband_compressor** | `band1Enable` | Bool | `true` |
 | **multiband_compressor** | `band2Enable` | Bool | `true` |
 | **multiband_compressor** | `band3Enable` | Bool | `true` |
@@ -574,12 +574,12 @@ The following properties can be modified or queried via the [local server](../us
 | **multiband_gate** | `stereoSplit` | Bool | `false` |
 | **multiband_gate** | `gateMode` | Enum | `1` <br><small>(Choices: 0: `Classic`, 1: `Modern`, 2: `Linear Phase`)</small> |
 | **multiband_gate** | `envelopeBoost` | Enum | `0` <br><small>(Choices: 0: `None`, 1: `Pink BT`, 2: `Pink MT`, 3: `Brown BT`, 4: `Brown MT`)</small> |
-| **multiband_gate** | `inputToSidechain` | Double | `0` |
-| **multiband_gate** | `inputToLink` | Double | `0` |
-| **multiband_gate** | `sidechainToInput` | Double | `0` |
-| **multiband_gate** | `sidechainToLink` | Double | `0` |
-| **multiband_gate** | `linkToSidechain` | Double | `0` |
-| **multiband_gate** | `linkToInput` | Double | `0` |
+| **multiband_gate** | `inputToSidechain` | Double | `-80.01` |
+| **multiband_gate** | `inputToLink` | Double | `-80.01` |
+| **multiband_gate** | `sidechainToInput` | Double | `-80.01` |
+| **multiband_gate** | `sidechainToLink` | Double | `-80.01` |
+| **multiband_gate** | `linkToSidechain` | Double | `-80.01` |
+| **multiband_gate** | `linkToInput` | Double | `-80.01` |
 | **multiband_gate** | `band1Enable` | Bool | `true` |
 | **multiband_gate** | `band2Enable` | Bool | `true` |
 | **multiband_gate** | `band3Enable` | Bool | `true` |
