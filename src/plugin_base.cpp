@@ -129,6 +129,8 @@ void on_process(void* userdata, spa_io_position* position) {
       d->pb->got_null_left_in = true;
     }
 
+    std::ranges::fill(d->pb->dummy_left, 0.0F);
+
     left_in = d->pb->dummy_left;
   }
 
@@ -146,6 +148,8 @@ void on_process(void* userdata, spa_io_position* position) {
       d->pb->got_null_right_in = true;
     }
 
+    std::ranges::fill(d->pb->dummy_right, 0.0F);
+
     right_in = d->pb->dummy_right;
   }
 
@@ -158,6 +162,8 @@ void on_process(void* userdata, spa_io_position* position) {
       d->pb->got_null_left_out = true;
     }
 
+    std::ranges::fill(d->pb->dummy_left, 0.0F);
+
     left_out = d->pb->dummy_left;
   }
 
@@ -169,6 +175,8 @@ void on_process(void* userdata, spa_io_position* position) {
 
       d->pb->got_null_right_out = true;
     }
+
+    std::ranges::fill(d->pb->dummy_right, 0.0F);
 
     right_out = d->pb->dummy_right;
   }
@@ -193,6 +201,9 @@ void on_process(void* userdata, spa_io_position* position) {
 
         d->pb->got_null_probe = true;
       }
+
+      std::ranges::fill(d->pb->dummy_left, 0.0F);
+      std::ranges::fill(d->pb->dummy_right, 0.0F);
 
       std::span l(d->pb->dummy_left.data(), n_samples);
       std::span r(d->pb->dummy_right.data(), n_samples);

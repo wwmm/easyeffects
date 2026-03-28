@@ -13,6 +13,18 @@ Description:
 - 
 
 ---
+Version: 8.1.8
+Date: 2026-03-28
+
+Description: 
+- Features∶
+
+- Bug fixes∶
+- Better handling of the occasions where pipewire sends us null port pointers. This should avoid noises in some situations
+
+- Other notes∶
+
+---
 Version: 8.1.7
 Date: 2026-03-26
 

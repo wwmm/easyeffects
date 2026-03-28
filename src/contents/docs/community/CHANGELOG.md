@@ -1,5 +1,17 @@
 # Changelog
  
+## 8.1.8
+### 2026-03-28
+
+ 
+### Features:
+
+### Bug fixes:
+- Better handling of the occasions where pipewire sends us null port pointers. This should avoid noises in some situations
+
+### Other notes:
+
+ 
 ## 8.1.7
 ### 2026-03-26
 
