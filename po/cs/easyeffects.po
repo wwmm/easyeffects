@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-03-02 01:24-0300\n"
-"PO-Revision-Date: 2025-11-05 00:44+0000\n"
+"PO-Revision-Date: 2026-03-28 02:09+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
 "cs/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2);\n"
-"X-Generator: Weblate 5.14.1-dev\n"
+"X-Generator: Weblate 5.17-dev\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -24,6 +24,9 @@ msgid ""
 "Please allow \"Run in Background\" permission for Easy Effects in your "
 "system app settings."
 msgstr ""
+"Nelze povolit možnost automatického spuštění, protože byl odepřen přístup na "
+"pozadí. Povolte prosím v nastavení systémových aplikací oprávnění „Spustit "
+"na pozadí“ pro aplikaci Easy Effects."
 
 #: src/command_line_parser.cpp:44
 msgid "Quit Easy Effects. Useful when running in service mode."
@@ -34,9 +37,8 @@ msgid "Reset Easy Effects."
 msgstr "Obnovit EasyEffects."
 
 #: src/command_line_parser.cpp:46
-#, fuzzy
 msgid "Hide the window."
-msgstr "Skrýt Okno."
+msgstr "Skrýt okno."
 
 #: src/command_line_parser.cpp:48
 #, fuzzy
