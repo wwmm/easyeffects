@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-03-02 01:24-0300\n"
+"POT-Creation-Date: 2026-03-29 16:26-0300\n"
 "PO-Revision-Date: 2026-03-02 17:09+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
@@ -186,7 +186,7 @@ msgstr "Istoric maxim"
 
 #: src/contents/ui/Autogain.qml:143 src/contents/ui/Autogain.qml:198
 #: src/contents/ui/BassLoudness.qml:66 src/contents/ui/LevelMeter.qml:146
-#: src/tags_plugin_name.cpp:45
+#: src/tags_plugin_name.cpp:46
 msgid "Loudness"
 msgstr "Intensitate sonoră"
 
@@ -384,7 +384,7 @@ msgid "Show excluded applications in the list of players/recorders"
 msgstr ""
 "Afișează aplicațiile excluse din lista software-ului de redare/înregistrare"
 
-#: src/contents/ui/Compressor.qml:68 src/tags_plugin_name.cpp:29
+#: src/contents/ui/Compressor.qml:68 src/tags_plugin_name.cpp:30
 msgid "Compressor"
 msgstr "Compresor"
 
@@ -839,7 +839,7 @@ msgstr "Combinare"
 msgid "Impulses"
 msgstr "Impulsuri"
 
-#: src/contents/ui/Convolver.qml:241 src/plugin_base.cpp:324
+#: src/contents/ui/Convolver.qml:241 src/plugin_base.cpp:336
 msgid "Spectrum"
 msgstr "Spectru"
 
@@ -873,7 +873,7 @@ msgstr "Format"
 msgid "Stereo width"
 msgstr "Amplitudine stereo"
 
-#: src/contents/ui/Convolver.qml:536 src/tags_plugin_name.cpp:26
+#: src/contents/ui/Convolver.qml:536 src/tags_plugin_name.cpp:27
 msgid "Autogain"
 msgstr "Câștig automat"
 
@@ -1038,7 +1038,7 @@ msgstr "Memoria tampon minimă de procesare"
 msgid "Post filter Beta"
 msgstr "Filtru posterior beta"
 
-#: src/contents/ui/Deesser.qml:63 src/tags_plugin_name.cpp:35
+#: src/contents/ui/Deesser.qml:63 src/tags_plugin_name.cpp:36
 msgid "Deesser"
 msgstr "Deesser"
 
@@ -1069,7 +1069,7 @@ msgid "Laxity"
 msgstr "Laxitate"
 
 #: src/contents/ui/Deesser.qml:171 src/contents/ui/Filter.qml:122
-#: src/contents/ui/Reverb.qml:126 src/tags_plugin_name.cpp:41
+#: src/contents/ui/Reverb.qml:126 src/tags_plugin_name.cpp:42
 msgid "Filter"
 msgstr "Filtru"
 
@@ -1191,7 +1191,7 @@ msgstr "Exclude"
 msgid "Add %1 to excluded applications"
 msgstr "Adăugați %1 la aplicațiile excluse"
 
-#: src/contents/ui/EchoCanceller.qml:60 src/tags_plugin_name.cpp:37
+#: src/contents/ui/EchoCanceller.qml:60 src/tags_plugin_name.cpp:38
 msgid "Echo Canceller"
 msgstr "Anulator de ecou"
 
@@ -1494,7 +1494,7 @@ msgstr "Plafonare activă"
 msgid "Ceil"
 msgstr "Plafonare"
 
-#: src/contents/ui/Expander.qml:68 src/tags_plugin_name.cpp:40
+#: src/contents/ui/Expander.qml:68 src/tags_plugin_name.cpp:41
 msgid "Expander"
 msgstr "Expandare"
 
@@ -1512,7 +1512,7 @@ msgstr "Modul de filtrare"
 msgid "Equalizer mode"
 msgstr "Modul egalizator"
 
-#: src/contents/ui/Gate.qml:72 src/tags_plugin_name.cpp:42
+#: src/contents/ui/Gate.qml:72 src/tags_plugin_name.cpp:43
 msgid "Gate"
 msgstr "Nivel de trecere (poartă)"
 
@@ -1686,7 +1686,7 @@ msgstr "Vârful real/24 biți"
 msgid "Dithering"
 msgstr "Reducere distorsiuni"
 
-#: src/contents/ui/Limiter.qml:117 src/tags_plugin_name.cpp:44
+#: src/contents/ui/Limiter.qml:117 src/tags_plugin_name.cpp:45
 msgid "Limiter"
 msgstr "Limitator"
 
@@ -2098,7 +2098,7 @@ msgstr "Fereastra de căutare"
 msgid "Overlap length"
 msgstr "Durata suprapunerii"
 
-#: src/contents/ui/Pitch.qml:163 src/tags_plugin_name.cpp:49
+#: src/contents/ui/Pitch.qml:163 src/tags_plugin_name.cpp:50
 msgid "Pitch"
 msgstr "Înălțime tonalitate"
 
@@ -3000,7 +3000,7 @@ msgstr "Panoramă mijloc"
 msgid "Invert phase"
 msgstr "Inversează faza"
 
-#: src/contents/ui/StereoTools.qml:293 src/tags_plugin_name.cpp:36
+#: src/contents/ui/StereoTools.qml:293 src/tags_plugin_name.cpp:37
 msgid "Delay"
 msgstr "Întârziere"
 
@@ -3032,42 +3032,42 @@ msgstr "Frecvența instantanee maximă"
 msgid "Inverted mode"
 msgstr "Mod inversat"
 
-#: src/main.cpp:344
+#: src/main.cpp:351
 msgid "Global audio effects"
 msgstr "Efecte audio globale"
 
-#: src/main.cpp:345
+#: src/main.cpp:352
 msgid "© 2017-2026 Easy Effects Team"
 msgstr "© 2017-2026 Echipa Easy Effects"
 
-#: src/main.cpp:347
+#: src/main.cpp:354
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:347
+#: src/main.cpp:354
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Dezvoltator"
 
-#: src/main.cpp:351
+#: src/main.cpp:358
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Remus-Gabriel Chelu"
 
-#: src/main.cpp:351
+#: src/main.cpp:358
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "remusgabriel.chelu@disroot.org, 2025, 2026"
 
-#: src/plugin_base.cpp:312
+#: src/plugin_base.cpp:324
 msgid "(Mic)"
 msgstr "(Mic)"
 
-#: src/plugin_base.cpp:315
+#: src/plugin_base.cpp:327
 msgid "(Speakers)"
 msgstr "(Difuzoare)"
 
-#: src/plugin_base.cpp:322
+#: src/plugin_base.cpp:334
 msgid "Output Level Meter"
 msgstr "Vumetru de ieșire"
 
@@ -3125,75 +3125,75 @@ msgstr "Eroare"
 msgid "Unknown"
 msgstr "Necunoscut"
 
-#: src/tags_plugin_name.cpp:27
+#: src/tags_plugin_name.cpp:28
 msgid "Bass Enhancer"
 msgstr "Amplificator de bas"
 
-#: src/tags_plugin_name.cpp:28
+#: src/tags_plugin_name.cpp:29
 msgid "Bass Loudness"
 msgstr "Intensitate bas"
 
-#: src/tags_plugin_name.cpp:30
+#: src/tags_plugin_name.cpp:31
 msgid "Convolver"
 msgstr "Convolver (algoritm de convoluție)"
 
-#: src/tags_plugin_name.cpp:31
+#: src/tags_plugin_name.cpp:32
 msgid "Crossfeed"
 msgstr "Flux încrucișat"
 
-#: src/tags_plugin_name.cpp:32
+#: src/tags_plugin_name.cpp:33
 msgid "Crusher"
 msgstr "Concasor"
 
-#: src/tags_plugin_name.cpp:33
+#: src/tags_plugin_name.cpp:34
 msgid "Crystalizer"
 msgstr "Cristalizator"
 
-#: src/tags_plugin_name.cpp:34
+#: src/tags_plugin_name.cpp:35
 msgid "Deep Noise Remover"
 msgstr "Eliminator al zgomotului profund"
 
-#: src/tags_plugin_name.cpp:38
+#: src/tags_plugin_name.cpp:39
 msgid "Equalizer"
 msgstr "Egalizator"
 
-#: src/tags_plugin_name.cpp:39
+#: src/tags_plugin_name.cpp:40
 msgid "Exciter"
 msgstr "Excitator"
 
-#: src/tags_plugin_name.cpp:43
+#: src/tags_plugin_name.cpp:44
 msgid "Level Meter"
 msgstr "Vumetru"
 
-#: src/tags_plugin_name.cpp:46
+#: src/tags_plugin_name.cpp:47
 msgid "Maximizer"
 msgstr "Maximizator"
 
-#: src/tags_plugin_name.cpp:47
+#: src/tags_plugin_name.cpp:48
 msgid "Multiband Compressor"
 msgstr "Compresor multibandă"
 
-#: src/tags_plugin_name.cpp:48
+#: src/tags_plugin_name.cpp:49
 msgid "Multiband Gate"
 msgstr "Poartă multibandă"
 
-#: src/tags_plugin_name.cpp:50
+#: src/tags_plugin_name.cpp:51
 msgid "Reverberation"
 msgstr "Reverberație"
 
-#: src/tags_plugin_name.cpp:51
+#: src/tags_plugin_name.cpp:52
 msgid "Noise Reduction"
 msgstr "Reducere zgomot"
 
-#: src/tags_plugin_name.cpp:52
+#: src/tags_plugin_name.cpp:53
 msgid "Speech Processor"
 msgstr "Procesor de vorbire"
 
-#: src/tags_plugin_name.cpp:53
+#: src/tags_plugin_name.cpp:54
 msgid "Stereo Tools"
 msgstr "Unelte stereo"
 
-#: src/tags_plugin_name.cpp:54
+#: src/tags_plugin_name.cpp:55
 msgid "Voice Suppressor"
 msgstr "Suprimare voce"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-03-02 01:24-0300\n"
+"POT-Creation-Date: 2026-03-29 16:26-0300\n"
 "PO-Revision-Date: 2026-03-14 02:09+0000\n"
 "Last-Translator: Володимир <vlzuykov@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
@@ -184,7 +184,7 @@ msgstr "Тривалість історії (максимальна)"
 
 #: src/contents/ui/Autogain.qml:143 src/contents/ui/Autogain.qml:198
 #: src/contents/ui/BassLoudness.qml:66 src/contents/ui/LevelMeter.qml:146
-#: src/tags_plugin_name.cpp:45
+#: src/tags_plugin_name.cpp:46
 msgid "Loudness"
 msgstr "Гучність"
 
@@ -381,7 +381,7 @@ msgstr "Показати виключені застосунки"
 msgid "Show excluded applications in the list of players/recorders"
 msgstr "Показувати виключені застосунки у списку потоків"
 
-#: src/contents/ui/Compressor.qml:68 src/tags_plugin_name.cpp:29
+#: src/contents/ui/Compressor.qml:68 src/tags_plugin_name.cpp:30
 msgid "Compressor"
 msgstr "Компресор"
 
@@ -835,7 +835,7 @@ msgstr "Об'єднати"
 msgid "Impulses"
 msgstr "Імпульси"
 
-#: src/contents/ui/Convolver.qml:241 src/plugin_base.cpp:324
+#: src/contents/ui/Convolver.qml:241 src/plugin_base.cpp:336
 msgid "Spectrum"
 msgstr "Спектр"
 
@@ -869,7 +869,7 @@ msgstr "Формат"
 msgid "Stereo width"
 msgstr "Ширина стерео"
 
-#: src/contents/ui/Convolver.qml:536 src/tags_plugin_name.cpp:26
+#: src/contents/ui/Convolver.qml:536 src/tags_plugin_name.cpp:27
 msgid "Autogain"
 msgstr "Автоматичне підсилення"
 
@@ -1034,7 +1034,7 @@ msgstr "Мінімальний буфер обробки"
 msgid "Post filter Beta"
 msgstr "Інтенсивність фільтра постобробки"
 
-#: src/contents/ui/Deesser.qml:63 src/tags_plugin_name.cpp:35
+#: src/contents/ui/Deesser.qml:63 src/tags_plugin_name.cpp:36
 msgid "Deesser"
 msgstr "Деесер (зменшення сибілянтів)"
 
@@ -1065,7 +1065,7 @@ msgid "Laxity"
 msgstr "М'якість"
 
 #: src/contents/ui/Deesser.qml:171 src/contents/ui/Filter.qml:122
-#: src/contents/ui/Reverb.qml:126 src/tags_plugin_name.cpp:41
+#: src/contents/ui/Reverb.qml:126 src/tags_plugin_name.cpp:42
 msgid "Filter"
 msgstr "Фільтр"
 
@@ -1187,7 +1187,7 @@ msgstr "Виключити"
 msgid "Add %1 to excluded applications"
 msgstr "Додати %1 до виключених застосунків"
 
-#: src/contents/ui/EchoCanceller.qml:60 src/tags_plugin_name.cpp:37
+#: src/contents/ui/EchoCanceller.qml:60 src/tags_plugin_name.cpp:38
 msgid "Echo Canceller"
 msgstr "Приглушення відлуння"
 
@@ -1484,7 +1484,7 @@ msgstr "Обмеження"
 msgid "Ceil"
 msgstr "Частота обмеження"
 
-#: src/contents/ui/Expander.qml:68 src/tags_plugin_name.cpp:40
+#: src/contents/ui/Expander.qml:68 src/tags_plugin_name.cpp:41
 msgid "Expander"
 msgstr "Експандер"
 
@@ -1502,7 +1502,7 @@ msgstr "Режим фільтра"
 msgid "Equalizer mode"
 msgstr "Режим еквалайзера"
 
-#: src/contents/ui/Gate.qml:72 src/tags_plugin_name.cpp:42
+#: src/contents/ui/Gate.qml:72 src/tags_plugin_name.cpp:43
 msgid "Gate"
 msgstr "Гейт"
 
@@ -1676,7 +1676,7 @@ msgstr "Справжній пік (24 біти)"
 msgid "Dithering"
 msgstr "Дитеринг (згладжування)"
 
-#: src/contents/ui/Limiter.qml:117 src/tags_plugin_name.cpp:44
+#: src/contents/ui/Limiter.qml:117 src/tags_plugin_name.cpp:45
 msgid "Limiter"
 msgstr "Лімітер"
 
@@ -2087,7 +2087,7 @@ msgstr "Вікно пошуку"
 msgid "Overlap length"
 msgstr "Довжина перекриття"
 
-#: src/contents/ui/Pitch.qml:163 src/tags_plugin_name.cpp:49
+#: src/contents/ui/Pitch.qml:163 src/tags_plugin_name.cpp:50
 msgid "Pitch"
 msgstr "Висота тону"
 
@@ -2982,7 +2982,7 @@ msgstr "Панорама суми"
 msgid "Invert phase"
 msgstr "Інвертувати фазу"
 
-#: src/contents/ui/StereoTools.qml:293 src/tags_plugin_name.cpp:36
+#: src/contents/ui/StereoTools.qml:293 src/tags_plugin_name.cpp:37
 msgid "Delay"
 msgstr "Затримка"
 
@@ -3014,42 +3014,42 @@ msgstr "Максимальна миттєва частота"
 msgid "Inverted mode"
 msgstr "Інвертований режим"
 
-#: src/main.cpp:344
+#: src/main.cpp:351
 msgid "Global audio effects"
 msgstr "Глобальні звукові ефекти"
 
-#: src/main.cpp:345
+#: src/main.cpp:352
 msgid "© 2017-2026 Easy Effects Team"
 msgstr "© 2017-2026 Команда Easy Effects"
 
-#: src/main.cpp:347
+#: src/main.cpp:354
 msgid "Wellington Wallace"
 msgstr "Веллінгтон Воллес"
 
-#: src/main.cpp:347
+#: src/main.cpp:354
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Розробник"
 
-#: src/main.cpp:351
+#: src/main.cpp:358
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "reallystate"
 
-#: src/main.cpp:351
+#: src/main.cpp:358
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "Ваші електронні адреси"
 
-#: src/plugin_base.cpp:312
+#: src/plugin_base.cpp:324
 msgid "(Mic)"
 msgstr "(Мікрофон)"
 
-#: src/plugin_base.cpp:315
+#: src/plugin_base.cpp:327
 msgid "(Speakers)"
 msgstr "(Колонки)"
 
-#: src/plugin_base.cpp:322
+#: src/plugin_base.cpp:334
 msgid "Output Level Meter"
 msgstr "Індикатор рівня вихідного сигналу"
 
@@ -3107,75 +3107,75 @@ msgstr "Помилка"
 msgid "Unknown"
 msgstr "Невідомий"
 
-#: src/tags_plugin_name.cpp:27
+#: src/tags_plugin_name.cpp:28
 msgid "Bass Enhancer"
 msgstr "Підсилення НЧ (басів)"
 
-#: src/tags_plugin_name.cpp:28
+#: src/tags_plugin_name.cpp:29
 msgid "Bass Loudness"
 msgstr "Гучність НЧ (басів)"
 
-#: src/tags_plugin_name.cpp:30
+#: src/tags_plugin_name.cpp:31
 msgid "Convolver"
 msgstr "Конвольвер"
 
-#: src/tags_plugin_name.cpp:31
+#: src/tags_plugin_name.cpp:32
 msgid "Crossfeed"
 msgstr "Кросфід (підмішування)"
 
-#: src/tags_plugin_name.cpp:32
+#: src/tags_plugin_name.cpp:33
 msgid "Crusher"
 msgstr "Біткрашер"
 
-#: src/tags_plugin_name.cpp:33
+#: src/tags_plugin_name.cpp:34
 msgid "Crystalizer"
 msgstr "Кристалізатор"
 
-#: src/tags_plugin_name.cpp:34
+#: src/tags_plugin_name.cpp:35
 msgid "Deep Noise Remover"
 msgstr "Глибоке усунення шуму"
 
-#: src/tags_plugin_name.cpp:38
+#: src/tags_plugin_name.cpp:39
 msgid "Equalizer"
 msgstr "Еквалайзер"
 
-#: src/tags_plugin_name.cpp:39
+#: src/tags_plugin_name.cpp:40
 msgid "Exciter"
 msgstr "Ексайтер (збудник)"
 
-#: src/tags_plugin_name.cpp:43
+#: src/tags_plugin_name.cpp:44
 msgid "Level Meter"
 msgstr "Вимірювання рівня"
 
-#: src/tags_plugin_name.cpp:46
+#: src/tags_plugin_name.cpp:47
 msgid "Maximizer"
 msgstr "Максимізатор"
 
-#: src/tags_plugin_name.cpp:47
+#: src/tags_plugin_name.cpp:48
 msgid "Multiband Compressor"
 msgstr "Багатосмуговий компресор"
 
-#: src/tags_plugin_name.cpp:48
+#: src/tags_plugin_name.cpp:49
 msgid "Multiband Gate"
 msgstr "Багатосмуговий гейт"
 
-#: src/tags_plugin_name.cpp:50
+#: src/tags_plugin_name.cpp:51
 msgid "Reverberation"
 msgstr "Реверберація"
 
-#: src/tags_plugin_name.cpp:51
+#: src/tags_plugin_name.cpp:52
 msgid "Noise Reduction"
 msgstr "Зменшення шуму"
 
-#: src/tags_plugin_name.cpp:52
+#: src/tags_plugin_name.cpp:53
 msgid "Speech Processor"
 msgstr "Шумозаглушення (Speex)"
 
-#: src/tags_plugin_name.cpp:53
+#: src/tags_plugin_name.cpp:54
 msgid "Stereo Tools"
 msgstr "Стерео інструменти"
 
-#: src/tags_plugin_name.cpp:54
+#: src/tags_plugin_name.cpp:55
 msgid "Voice Suppressor"
 msgstr "Приглушувач голосу"
 

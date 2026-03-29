@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-03-02 01:24-0300\n"
+"POT-Creation-Date: 2026-03-29 16:26-0300\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Meti Cease <sockargrande@gmail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -202,7 +202,7 @@ msgstr "Maximálna"
 
 #: src/contents/ui/Autogain.qml:143 src/contents/ui/Autogain.qml:198
 #: src/contents/ui/BassLoudness.qml:66 src/contents/ui/LevelMeter.qml:146
-#: src/tags_plugin_name.cpp:45
+#: src/tags_plugin_name.cpp:46
 msgid "Loudness"
 msgstr "Hlasitosť"
 
@@ -413,7 +413,7 @@ msgstr "Zobraziť aplikácie zo zoznamu blokovaných na hlavnej karte"
 msgid "Show excluded applications in the list of players/recorders"
 msgstr "Zobraziť aplikácie zo zoznamu blokovaných na hlavnej karte"
 
-#: src/contents/ui/Compressor.qml:68 src/tags_plugin_name.cpp:29
+#: src/contents/ui/Compressor.qml:68 src/tags_plugin_name.cpp:30
 msgid "Compressor"
 msgstr "Kompresor"
 
@@ -903,7 +903,7 @@ msgstr ""
 msgid "Impulses"
 msgstr "Odpoveď impulzu"
 
-#: src/contents/ui/Convolver.qml:241 src/plugin_base.cpp:324
+#: src/contents/ui/Convolver.qml:241 src/plugin_base.cpp:336
 msgid "Spectrum"
 msgstr "Spektrum"
 
@@ -940,7 +940,7 @@ msgstr "Formát"
 msgid "Stereo width"
 msgstr "Šírka sterea"
 
-#: src/contents/ui/Convolver.qml:536 src/tags_plugin_name.cpp:26
+#: src/contents/ui/Convolver.qml:536 src/tags_plugin_name.cpp:27
 #, fuzzy
 msgid "Autogain"
 msgstr "Automatická hlasitosť"
@@ -1119,7 +1119,7 @@ msgstr ""
 msgid "Post filter Beta"
 msgstr "Filter"
 
-#: src/contents/ui/Deesser.qml:63 src/tags_plugin_name.cpp:35
+#: src/contents/ui/Deesser.qml:63 src/tags_plugin_name.cpp:36
 msgid "Deesser"
 msgstr "Deesser"
 
@@ -1151,7 +1151,7 @@ msgid "Laxity"
 msgstr "Nedbanlivosť"
 
 #: src/contents/ui/Deesser.qml:171 src/contents/ui/Filter.qml:122
-#: src/contents/ui/Reverb.qml:126 src/tags_plugin_name.cpp:41
+#: src/contents/ui/Reverb.qml:126 src/tags_plugin_name.cpp:42
 msgid "Filter"
 msgstr "Filter"
 
@@ -1289,7 +1289,7 @@ msgstr ""
 msgid "Add %1 to excluded applications"
 msgstr "Zobraziť aplikácie zo zoznamu blokovaných na hlavnej karte"
 
-#: src/contents/ui/EchoCanceller.qml:60 src/tags_plugin_name.cpp:37
+#: src/contents/ui/EchoCanceller.qml:60 src/tags_plugin_name.cpp:38
 msgid "Echo Canceller"
 msgstr "Rušenie ozveny"
 
@@ -1617,7 +1617,7 @@ msgstr "Aktívny model"
 msgid "Ceil"
 msgstr "Strop"
 
-#: src/contents/ui/Expander.qml:68 src/tags_plugin_name.cpp:40
+#: src/contents/ui/Expander.qml:68 src/tags_plugin_name.cpp:41
 msgid "Expander"
 msgstr ""
 
@@ -1638,7 +1638,7 @@ msgstr "Režim sterea"
 msgid "Equalizer mode"
 msgstr "Ekvalizér"
 
-#: src/contents/ui/Gate.qml:72 src/tags_plugin_name.cpp:42
+#: src/contents/ui/Gate.qml:72 src/tags_plugin_name.cpp:43
 msgid "Gate"
 msgstr "Brána"
 
@@ -1828,7 +1828,7 @@ msgstr "Frekvencia"
 msgid "Dithering"
 msgstr ""
 
-#: src/contents/ui/Limiter.qml:117 src/tags_plugin_name.cpp:44
+#: src/contents/ui/Limiter.qml:117 src/tags_plugin_name.cpp:45
 msgid "Limiter"
 msgstr "Obmedzovač"
 
@@ -2293,7 +2293,7 @@ msgstr "Okno"
 msgid "Overlap length"
 msgstr "Filter"
 
-#: src/contents/ui/Pitch.qml:163 src/tags_plugin_name.cpp:49
+#: src/contents/ui/Pitch.qml:163 src/tags_plugin_name.cpp:50
 msgid "Pitch"
 msgstr "Výška tónu"
 
@@ -3264,7 +3264,7 @@ msgstr "Stredná paronáma"
 msgid "Invert phase"
 msgstr "Preklopiť fázu"
 
-#: src/contents/ui/StereoTools.qml:293 src/tags_plugin_name.cpp:36
+#: src/contents/ui/StereoTools.qml:293 src/tags_plugin_name.cpp:37
 msgid "Delay"
 msgstr "Oneskorenie"
 
@@ -3303,45 +3303,45 @@ msgstr "Maximálna frekvencia"
 msgid "Inverted mode"
 msgstr "Preklopiť fázu"
 
-#: src/main.cpp:344
+#: src/main.cpp:351
 #, fuzzy
 msgid "Global audio effects"
 msgstr "Krátkodobá"
 
-#: src/main.cpp:345
+#: src/main.cpp:352
 msgid "© 2017-2026 Easy Effects Team"
 msgstr ""
 
-#: src/main.cpp:347
+#: src/main.cpp:354
 #, fuzzy
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:347
+#: src/main.cpp:354
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Sklon"
 
-#: src/main.cpp:351
+#: src/main.cpp:358
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 
-#: src/main.cpp:351
+#: src/main.cpp:358
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
 
-#: src/plugin_base.cpp:312
+#: src/plugin_base.cpp:324
 msgid "(Mic)"
 msgstr ""
 
-#: src/plugin_base.cpp:315
+#: src/plugin_base.cpp:327
 msgid "(Speakers)"
 msgstr ""
 
-#: src/plugin_base.cpp:322
+#: src/plugin_base.cpp:334
 #, fuzzy
 msgid "Output Level Meter"
 msgstr "Výstupné efekty"
@@ -3407,78 +3407,78 @@ msgstr "chyba"
 msgid "Unknown"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:27
+#: src/tags_plugin_name.cpp:28
 msgid "Bass Enhancer"
 msgstr "Vylepšovač hĺbok"
 
-#: src/tags_plugin_name.cpp:28
+#: src/tags_plugin_name.cpp:29
 #, fuzzy
 msgid "Bass Loudness"
 msgstr "Hlasitosť"
 
-#: src/tags_plugin_name.cpp:30
+#: src/tags_plugin_name.cpp:31
 msgid "Convolver"
 msgstr "Zbaľovač"
 
-#: src/tags_plugin_name.cpp:31
+#: src/tags_plugin_name.cpp:32
 msgid "Crossfeed"
 msgstr "Prelínanie kanálov"
 
-#: src/tags_plugin_name.cpp:32
+#: src/tags_plugin_name.cpp:33
 msgid "Crusher"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:33
+#: src/tags_plugin_name.cpp:34
 msgid "Crystalizer"
 msgstr "Kryštalizátor"
 
-#: src/tags_plugin_name.cpp:34
+#: src/tags_plugin_name.cpp:35
 msgid "Deep Noise Remover"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:38
+#: src/tags_plugin_name.cpp:39
 msgid "Equalizer"
 msgstr "Ekvalizér"
 
-#: src/tags_plugin_name.cpp:39
+#: src/tags_plugin_name.cpp:40
 msgid "Exciter"
 msgstr "Budič"
 
-#: src/tags_plugin_name.cpp:43
+#: src/tags_plugin_name.cpp:44
 #, fuzzy
 msgid "Level Meter"
 msgstr "Výstupné efekty"
 
-#: src/tags_plugin_name.cpp:46
+#: src/tags_plugin_name.cpp:47
 msgid "Maximizer"
 msgstr "Zosilňovač"
 
-#: src/tags_plugin_name.cpp:47
+#: src/tags_plugin_name.cpp:48
 msgid "Multiband Compressor"
 msgstr "Viacpásmový kompresor"
 
-#: src/tags_plugin_name.cpp:48
+#: src/tags_plugin_name.cpp:49
 msgid "Multiband Gate"
 msgstr "Viacpásmová brána"
 
-#: src/tags_plugin_name.cpp:50
+#: src/tags_plugin_name.cpp:51
 #, fuzzy
 msgid "Reverberation"
 msgstr "Ozvena (reverb)"
 
-#: src/tags_plugin_name.cpp:51
+#: src/tags_plugin_name.cpp:52
 msgid "Noise Reduction"
 msgstr "Redukcia šumu"
 
-#: src/tags_plugin_name.cpp:52
+#: src/tags_plugin_name.cpp:53
 msgid "Speech Processor"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:53
+#: src/tags_plugin_name.cpp:54
 msgid "Stereo Tools"
 msgstr "Stereo nástroje"
 
-#: src/tags_plugin_name.cpp:54
+#: src/tags_plugin_name.cpp:55
 #, fuzzy
 msgid "Voice Suppressor"
 msgstr "Potlačenie šumu"

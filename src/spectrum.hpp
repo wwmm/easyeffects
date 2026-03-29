@@ -63,7 +63,7 @@ class Spectrum : public PluginBase {
 
   auto get_latency_seconds() -> float override;
 
-  auto compute_magnitudes() -> std::tuple<uint, QList<double>>;  // rate, magnitudes
+  auto compute_magnitudes() -> std::tuple<uint, float, QList<double>>;  // rate, magnitudes
 
  private:
   DbSpectrum* settings = nullptr;
@@ -77,6 +77,8 @@ class Spectrum : public PluginBase {
   static constexpr uint n_bands = 8192U;
 
   bool ready = false;
+
+  float bin_hz = 0.0F;
 
   std::array<float, n_bands> real_input;
 

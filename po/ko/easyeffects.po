@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-03-02 01:24-0300\n"
+"POT-Creation-Date: 2026-03-29 16:26-0300\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -194,7 +194,7 @@ msgstr "최대 히스토리"
 
 #: src/contents/ui/Autogain.qml:143 src/contents/ui/Autogain.qml:198
 #: src/contents/ui/BassLoudness.qml:66 src/contents/ui/LevelMeter.qml:146
-#: src/tags_plugin_name.cpp:45
+#: src/tags_plugin_name.cpp:46
 msgid "Loudness"
 msgstr "소리의 세기"
 
@@ -404,7 +404,7 @@ msgstr "제외된 응용프로그램에 추가하기"
 msgid "Show excluded applications in the list of players/recorders"
 msgstr "제외된 프로그램 보기"
 
-#: src/contents/ui/Compressor.qml:68 src/tags_plugin_name.cpp:29
+#: src/contents/ui/Compressor.qml:68 src/tags_plugin_name.cpp:30
 msgid "Compressor"
 msgstr "컴프레서"
 
@@ -885,7 +885,7 @@ msgstr "결합하기"
 msgid "Impulses"
 msgstr "임펄스"
 
-#: src/contents/ui/Convolver.qml:241 src/plugin_base.cpp:324
+#: src/contents/ui/Convolver.qml:241 src/plugin_base.cpp:336
 msgid "Spectrum"
 msgstr "스펙트럼"
 
@@ -922,7 +922,7 @@ msgstr "포멧"
 msgid "Stereo width"
 msgstr "스테레오 너비"
 
-#: src/contents/ui/Convolver.qml:536 src/tags_plugin_name.cpp:26
+#: src/contents/ui/Convolver.qml:536 src/tags_plugin_name.cpp:27
 msgid "Autogain"
 msgstr "오토게인"
 
@@ -1094,7 +1094,7 @@ msgstr ""
 msgid "Post filter Beta"
 msgstr "포스트 필터 베타"
 
-#: src/contents/ui/Deesser.qml:63 src/tags_plugin_name.cpp:35
+#: src/contents/ui/Deesser.qml:63 src/tags_plugin_name.cpp:36
 msgid "Deesser"
 msgstr "디이저"
 
@@ -1127,7 +1127,7 @@ msgid "Laxity"
 msgstr "Laxity"
 
 #: src/contents/ui/Deesser.qml:171 src/contents/ui/Filter.qml:122
-#: src/contents/ui/Reverb.qml:126 src/tags_plugin_name.cpp:41
+#: src/contents/ui/Reverb.qml:126 src/tags_plugin_name.cpp:42
 msgid "Filter"
 msgstr ""
 
@@ -1261,7 +1261,7 @@ msgstr "제외하기"
 msgid "Add %1 to excluded applications"
 msgstr "제외된 응용프로그램에 추가하기"
 
-#: src/contents/ui/EchoCanceller.qml:60 src/tags_plugin_name.cpp:37
+#: src/contents/ui/EchoCanceller.qml:60 src/tags_plugin_name.cpp:38
 msgid "Echo Canceller"
 msgstr "에코 캔슬러"
 
@@ -1583,7 +1583,7 @@ msgstr "상대적"
 msgid "Ceil"
 msgstr ""
 
-#: src/contents/ui/Expander.qml:68 src/tags_plugin_name.cpp:40
+#: src/contents/ui/Expander.qml:68 src/tags_plugin_name.cpp:41
 msgid "Expander"
 msgstr ""
 
@@ -1603,7 +1603,7 @@ msgstr "스테레오 모드"
 msgid "Equalizer mode"
 msgstr "이퀄라이저"
 
-#: src/contents/ui/Gate.qml:72 src/tags_plugin_name.cpp:42
+#: src/contents/ui/Gate.qml:72 src/tags_plugin_name.cpp:43
 msgid "Gate"
 msgstr ""
 
@@ -1780,7 +1780,7 @@ msgstr "주파수 2 피크"
 msgid "Dithering"
 msgstr ""
 
-#: src/contents/ui/Limiter.qml:117 src/tags_plugin_name.cpp:44
+#: src/contents/ui/Limiter.qml:117 src/tags_plugin_name.cpp:45
 msgid "Limiter"
 msgstr "리미터"
 
@@ -2223,7 +2223,7 @@ msgstr "탐색 창"
 msgid "Overlap length"
 msgstr "오버랩 길이"
 
-#: src/contents/ui/Pitch.qml:163 src/tags_plugin_name.cpp:49
+#: src/contents/ui/Pitch.qml:163 src/tags_plugin_name.cpp:50
 msgid "Pitch"
 msgstr "피치"
 
@@ -3164,7 +3164,7 @@ msgstr ""
 msgid "Invert phase"
 msgstr "좌측/우측"
 
-#: src/contents/ui/StereoTools.qml:293 src/tags_plugin_name.cpp:36
+#: src/contents/ui/StereoTools.qml:293 src/tags_plugin_name.cpp:37
 msgid "Delay"
 msgstr "지연시간"
 
@@ -3202,45 +3202,45 @@ msgstr "최대 히스토리"
 msgid "Inverted mode"
 msgstr "좌측/우측"
 
-#: src/main.cpp:344
+#: src/main.cpp:351
 #, fuzzy
 msgid "Global audio effects"
 msgstr "단축키(_S)"
 
-#: src/main.cpp:345
+#: src/main.cpp:352
 msgid "© 2017-2026 Easy Effects Team"
 msgstr ""
 
-#: src/main.cpp:347
+#: src/main.cpp:354
 #, fuzzy
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:347
+#: src/main.cpp:354
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "엔벌로프"
 
-#: src/main.cpp:351
+#: src/main.cpp:358
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 
-#: src/main.cpp:351
+#: src/main.cpp:358
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
 
-#: src/plugin_base.cpp:312
+#: src/plugin_base.cpp:324
 msgid "(Mic)"
 msgstr ""
 
-#: src/plugin_base.cpp:315
+#: src/plugin_base.cpp:327
 msgid "(Speakers)"
 msgstr ""
 
-#: src/plugin_base.cpp:322
+#: src/plugin_base.cpp:334
 msgid "Output Level Meter"
 msgstr "출력 레벨 미터"
 
@@ -3301,75 +3301,75 @@ msgstr "오류"
 msgid "Unknown"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:27
+#: src/tags_plugin_name.cpp:28
 msgid "Bass Enhancer"
 msgstr "베이스 인핸서"
 
-#: src/tags_plugin_name.cpp:28
+#: src/tags_plugin_name.cpp:29
 msgid "Bass Loudness"
 msgstr "베이스 음량"
 
-#: src/tags_plugin_name.cpp:30
+#: src/tags_plugin_name.cpp:31
 msgid "Convolver"
 msgstr "콘벌버"
 
-#: src/tags_plugin_name.cpp:31
+#: src/tags_plugin_name.cpp:32
 msgid "Crossfeed"
 msgstr "크로스피드"
 
-#: src/tags_plugin_name.cpp:32
+#: src/tags_plugin_name.cpp:33
 msgid "Crusher"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:33
+#: src/tags_plugin_name.cpp:34
 msgid "Crystalizer"
 msgstr "크리스탈라이저"
 
-#: src/tags_plugin_name.cpp:34
+#: src/tags_plugin_name.cpp:35
 msgid "Deep Noise Remover"
 msgstr "딥 노이즈 리무버"
 
-#: src/tags_plugin_name.cpp:38
+#: src/tags_plugin_name.cpp:39
 msgid "Equalizer"
 msgstr "이퀄라이저"
 
-#: src/tags_plugin_name.cpp:39
+#: src/tags_plugin_name.cpp:40
 msgid "Exciter"
 msgstr "익사이터"
 
-#: src/tags_plugin_name.cpp:43
+#: src/tags_plugin_name.cpp:44
 msgid "Level Meter"
 msgstr "레벨 미터"
 
-#: src/tags_plugin_name.cpp:46
+#: src/tags_plugin_name.cpp:47
 msgid "Maximizer"
 msgstr "맥시마이저"
 
-#: src/tags_plugin_name.cpp:47
+#: src/tags_plugin_name.cpp:48
 msgid "Multiband Compressor"
 msgstr "멀티밴드 컴프레서"
 
-#: src/tags_plugin_name.cpp:48
+#: src/tags_plugin_name.cpp:49
 msgid "Multiband Gate"
 msgstr "멀티밴드 게이트"
 
-#: src/tags_plugin_name.cpp:50
+#: src/tags_plugin_name.cpp:51
 msgid "Reverberation"
 msgstr "리버버레이션"
 
-#: src/tags_plugin_name.cpp:51
+#: src/tags_plugin_name.cpp:52
 msgid "Noise Reduction"
 msgstr "노이즈 저감"
 
-#: src/tags_plugin_name.cpp:52
+#: src/tags_plugin_name.cpp:53
 msgid "Speech Processor"
 msgstr "음성 프로세서"
 
-#: src/tags_plugin_name.cpp:53
+#: src/tags_plugin_name.cpp:54
 msgid "Stereo Tools"
 msgstr "스테레오 도구"
 
-#: src/tags_plugin_name.cpp:54
+#: src/tags_plugin_name.cpp:55
 #, fuzzy
 msgid "Voice Suppressor"
 msgstr "노이즈 저감"

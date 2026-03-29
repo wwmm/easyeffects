@@ -58,7 +58,7 @@ Spectrum::Spectrum(const std::string& tag, pw::Manager* pipe_manager, PipelineTy
         (1.0F - std::cos(2.0F * std::numbers::pi_v<float> * static_cast<float>(n) / static_cast<float>(n_bands - 1)));
   }
 
-  complex_output = fftwf_alloc_complex(n_bands);
+  complex_output = fftwf_alloc_complex(output.size());
 
   plan = fftwf_plan_dft_r2c_1d(static_cast<int>(n_bands), real_input.data(), complex_output, FFTW_ESTIMATE);
 
@@ -148,6 +148,8 @@ void Spectrum::setup() {
   right_delayed = std::span<float>(right_delayed_vector);
 
   lv2_wrapper->set_n_samples(n_samples);
+
+  bin_hz = static_cast<float>(rate) / n_bands;
 
   if (!lv2_wrapper->found_plugin) {
     return;
@@ -282,14 +284,14 @@ void Spectrum::process(std::span<float>& left_in,
   db_control.store(index | static_cast<int>(DB_BIT::NEWDATA));
 }
 
-auto Spectrum::compute_magnitudes() -> std::tuple<uint, QList<double>> {
+auto Spectrum::compute_magnitudes() -> std::tuple<uint, float, QList<double>> {
   std::scoped_lock<std::mutex> lock(data_mutex);
 
   // Early return if no new data is available, ie if process() has not been
   // called since our last compute_magnitudes() call.
   int curr_control = db_control.load();
   if (!fftw_ready || !(curr_control & static_cast<int>(DB_BIT::NEWDATA))) {
-    return {0, {}};
+    return {0, bin_hz, {}};
   }
 
   // CAS loop to toggle the buffer used and remove NEWDATA flag, waiting for !BUSY.
@@ -311,14 +313,25 @@ auto Spectrum::compute_magnitudes() -> std::tuple<uint, QList<double>> {
   fftwf_execute(plan);
 
   for (uint i = 0U; i < output.size(); i++) {
-    float sqr = (complex_output[i][0] * complex_output[i][0]) + (complex_output[i][1] * complex_output[i][1]);
+    float real = complex_output[i][0];
+    float img = complex_output[i][1];
 
-    sqr /= static_cast<float>(output.size() * output.size());
+    float mag = std::sqrt((real * real) + (img * img));
 
-    output[i] = static_cast<double>(sqr);
+    mag /= static_cast<float>(n_bands);
+
+    // Compensate Hann window
+    mag *= 2.0F;
+
+    // Single-sided correction
+    if (i == 0 || i == n_bands / 2) {
+      mag *= 0.5F;
+    }
+
+    output[i] = static_cast<double>(util::linear_to_db(mag));
   }
 
-  return {rate, output};
+  return {rate, bin_hz, output};
 }
 
 void Spectrum::process([[maybe_unused]] std::span<float>& left_in,

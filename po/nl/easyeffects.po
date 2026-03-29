@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-03-02 01:24-0300\n"
+"POT-Creation-Date: 2026-03-29 16:26-0300\n"
 "PO-Revision-Date: 2026-01-30 12:01+0000\n"
 "Last-Translator: Anton Woolvy <antong2106@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -186,7 +186,7 @@ msgstr "Maximale geschiedenis"
 
 #: src/contents/ui/Autogain.qml:143 src/contents/ui/Autogain.qml:198
 #: src/contents/ui/BassLoudness.qml:66 src/contents/ui/LevelMeter.qml:146
-#: src/tags_plugin_name.cpp:45
+#: src/tags_plugin_name.cpp:46
 msgid "Loudness"
 msgstr "Hardheid"
 
@@ -383,7 +383,7 @@ msgstr "Uitgesloten apps tonen"
 msgid "Show excluded applications in the list of players/recorders"
 msgstr "Uitgesloten apps tonen in de lijst met spelers/opname­apparaten"
 
-#: src/contents/ui/Compressor.qml:68 src/tags_plugin_name.cpp:29
+#: src/contents/ui/Compressor.qml:68 src/tags_plugin_name.cpp:30
 msgid "Compressor"
 msgstr "Compressor"
 
@@ -840,7 +840,7 @@ msgstr "Combineren"
 msgid "Impulses"
 msgstr "Impulsen"
 
-#: src/contents/ui/Convolver.qml:241 src/plugin_base.cpp:324
+#: src/contents/ui/Convolver.qml:241 src/plugin_base.cpp:336
 msgid "Spectrum"
 msgstr "Spectrum"
 
@@ -874,7 +874,7 @@ msgstr "Formaat"
 msgid "Stereo width"
 msgstr "Stereo­breedte"
 
-#: src/contents/ui/Convolver.qml:536 src/tags_plugin_name.cpp:26
+#: src/contents/ui/Convolver.qml:536 src/tags_plugin_name.cpp:27
 msgid "Autogain"
 msgstr "Automatisch versterken"
 
@@ -1044,7 +1044,7 @@ msgstr "Minimale verwerkings­buffer"
 msgid "Post filter Beta"
 msgstr "Postfilter­bèta"
 
-#: src/contents/ui/Deesser.qml:63 src/tags_plugin_name.cpp:35
+#: src/contents/ui/Deesser.qml:63 src/tags_plugin_name.cpp:36
 msgid "Deesser"
 msgstr "Deesser"
 
@@ -1075,7 +1075,7 @@ msgid "Laxity"
 msgstr "Laxiteit"
 
 #: src/contents/ui/Deesser.qml:171 src/contents/ui/Filter.qml:122
-#: src/contents/ui/Reverb.qml:126 src/tags_plugin_name.cpp:41
+#: src/contents/ui/Reverb.qml:126 src/tags_plugin_name.cpp:42
 msgid "Filter"
 msgstr "Filter"
 
@@ -1197,7 +1197,7 @@ msgstr "Uitsluiten"
 msgid "Add %1 to excluded applications"
 msgstr "%1 toevoegen aan uitgesloten apps"
 
-#: src/contents/ui/EchoCanceller.qml:60 src/tags_plugin_name.cpp:37
+#: src/contents/ui/EchoCanceller.qml:60 src/tags_plugin_name.cpp:38
 msgid "Echo Canceller"
 msgstr "Echo-onderdrukking"
 
@@ -1497,7 +1497,7 @@ msgstr "Plafond actief"
 msgid "Ceil"
 msgstr "Plafond"
 
-#: src/contents/ui/Expander.qml:68 src/tags_plugin_name.cpp:40
+#: src/contents/ui/Expander.qml:68 src/tags_plugin_name.cpp:41
 msgid "Expander"
 msgstr "Uitbreider"
 
@@ -1515,7 +1515,7 @@ msgstr "Filter­modus"
 msgid "Equalizer mode"
 msgstr "Equalizer-modus"
 
-#: src/contents/ui/Gate.qml:72 src/tags_plugin_name.cpp:42
+#: src/contents/ui/Gate.qml:72 src/tags_plugin_name.cpp:43
 msgid "Gate"
 msgstr "Gate"
 
@@ -1689,7 +1689,7 @@ msgstr "Echte piek/24 bits"
 msgid "Dithering"
 msgstr "Dithering"
 
-#: src/contents/ui/Limiter.qml:117 src/tags_plugin_name.cpp:44
+#: src/contents/ui/Limiter.qml:117 src/tags_plugin_name.cpp:45
 msgid "Limiter"
 msgstr "Limiter"
 
@@ -2100,7 +2100,7 @@ msgstr "Zoek­venster"
 msgid "Overlap length"
 msgstr "Overlaps­lengte"
 
-#: src/contents/ui/Pitch.qml:163 src/tags_plugin_name.cpp:49
+#: src/contents/ui/Pitch.qml:163 src/tags_plugin_name.cpp:50
 msgid "Pitch"
 msgstr "Toonhoogte"
 
@@ -3007,7 +3007,7 @@ msgstr "Midden­panorama"
 msgid "Invert phase"
 msgstr "Fase omkeren"
 
-#: src/contents/ui/StereoTools.qml:293 src/tags_plugin_name.cpp:36
+#: src/contents/ui/StereoTools.qml:293 src/tags_plugin_name.cpp:37
 msgid "Delay"
 msgstr "Vertraging"
 
@@ -3044,43 +3044,43 @@ msgstr "Maximale frequentie"
 msgid "Inverted mode"
 msgstr "Links omkeren"
 
-#: src/main.cpp:344
+#: src/main.cpp:351
 msgid "Global audio effects"
 msgstr "Globale audio-effecten"
 
-#: src/main.cpp:345
+#: src/main.cpp:352
 #, fuzzy
 msgid "© 2017-2026 Easy Effects Team"
 msgstr "© 2017-2025 EasyEffects-team"
 
-#: src/main.cpp:347
+#: src/main.cpp:354
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:347
+#: src/main.cpp:354
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Ontwikkelaar"
 
-#: src/main.cpp:351
+#: src/main.cpp:358
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Philip Goto"
 
-#: src/main.cpp:351
+#: src/main.cpp:358
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "philip.goto@gmail.com"
 
-#: src/plugin_base.cpp:312
+#: src/plugin_base.cpp:324
 msgid "(Mic)"
 msgstr "(Microfoon)"
 
-#: src/plugin_base.cpp:315
+#: src/plugin_base.cpp:327
 msgid "(Speakers)"
 msgstr "(Luidsprekers)"
 
-#: src/plugin_base.cpp:322
+#: src/plugin_base.cpp:334
 msgid "Output Level Meter"
 msgstr "Uitvoerniveau­meter"
 
@@ -3138,75 +3138,75 @@ msgstr "Fout"
 msgid "Unknown"
 msgstr "Onbekend"
 
-#: src/tags_plugin_name.cpp:27
+#: src/tags_plugin_name.cpp:28
 msgid "Bass Enhancer"
 msgstr "Basversterker"
 
-#: src/tags_plugin_name.cpp:28
+#: src/tags_plugin_name.cpp:29
 msgid "Bass Loudness"
 msgstr "Hardheid van bas"
 
-#: src/tags_plugin_name.cpp:30
+#: src/tags_plugin_name.cpp:31
 msgid "Convolver"
 msgstr "Convolutie"
 
-#: src/tags_plugin_name.cpp:31
+#: src/tags_plugin_name.cpp:32
 msgid "Crossfeed"
 msgstr "Crossfeed"
 
-#: src/tags_plugin_name.cpp:32
+#: src/tags_plugin_name.cpp:33
 msgid "Crusher"
 msgstr "Vermaler"
 
-#: src/tags_plugin_name.cpp:33
+#: src/tags_plugin_name.cpp:34
 msgid "Crystalizer"
 msgstr "Kristalliseerder"
 
-#: src/tags_plugin_name.cpp:34
+#: src/tags_plugin_name.cpp:35
 msgid "Deep Noise Remover"
 msgstr "Diepe ruis-verwijderaar"
 
-#: src/tags_plugin_name.cpp:38
+#: src/tags_plugin_name.cpp:39
 msgid "Equalizer"
 msgstr "Equalizer"
 
-#: src/tags_plugin_name.cpp:39
+#: src/tags_plugin_name.cpp:40
 msgid "Exciter"
 msgstr "Exciter"
 
-#: src/tags_plugin_name.cpp:43
+#: src/tags_plugin_name.cpp:44
 msgid "Level Meter"
 msgstr "Niveau­meter"
 
-#: src/tags_plugin_name.cpp:46
+#: src/tags_plugin_name.cpp:47
 msgid "Maximizer"
 msgstr "Maximizer"
 
-#: src/tags_plugin_name.cpp:47
+#: src/tags_plugin_name.cpp:48
 msgid "Multiband Compressor"
 msgstr "Multiband-compressor"
 
-#: src/tags_plugin_name.cpp:48
+#: src/tags_plugin_name.cpp:49
 msgid "Multiband Gate"
 msgstr "Multiband-gate"
 
-#: src/tags_plugin_name.cpp:50
+#: src/tags_plugin_name.cpp:51
 msgid "Reverberation"
 msgstr "Nagalm"
 
-#: src/tags_plugin_name.cpp:51
+#: src/tags_plugin_name.cpp:52
 msgid "Noise Reduction"
 msgstr "Ruis­afname"
 
-#: src/tags_plugin_name.cpp:52
+#: src/tags_plugin_name.cpp:53
 msgid "Speech Processor"
 msgstr "Spraak­verwerker"
 
-#: src/tags_plugin_name.cpp:53
+#: src/tags_plugin_name.cpp:54
 msgid "Stereo Tools"
 msgstr "Stereo­bediening"
 
-#: src/tags_plugin_name.cpp:54
+#: src/tags_plugin_name.cpp:55
 #, fuzzy
 msgid "Voice Suppressor"
 msgstr "Ruis­onderdrukking"

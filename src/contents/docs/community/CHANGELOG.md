@@ -1,13 +1,15 @@
 # Changelog
  
 ## 8.1.8
-### 2026-03-28
+### 2026-03-29
 
  
 ### Features:
 
 ### Bug fixes:
 - Better handling of the occasions where pipewire sends us null port pointers. This should avoid noises in some situations
+- Fixed small mistakes in the spectrum frequency axis calculation
+- Added a workaround to avoid graphical artifacts when the spectrum is using area mode.
 
 ### Other notes:
 

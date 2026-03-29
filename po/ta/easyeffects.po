@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-03-02 01:24-0300\n"
+"POT-Creation-Date: 2026-03-29 16:26-0300\n"
 "PO-Revision-Date: 2026-02-24 06:09+0000\n"
 "Last-Translator: தமிழ்நேரம் <tamilneram247@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -184,7 +184,7 @@ msgstr "அதிகபட்ச வரலாறு"
 
 #: src/contents/ui/Autogain.qml:143 src/contents/ui/Autogain.qml:198
 #: src/contents/ui/BassLoudness.qml:66 src/contents/ui/LevelMeter.qml:146
-#: src/tags_plugin_name.cpp:45
+#: src/tags_plugin_name.cpp:46
 msgid "Loudness"
 msgstr "உரித்தல்"
 
@@ -381,7 +381,7 @@ msgstr "விலக்கப்பட்ட பயன்பாடுகளை�
 msgid "Show excluded applications in the list of players/recorders"
 msgstr "பிளேயர்கள்/ரெக்கார்டர்களின் பட்டியலில் விலக்கப்பட்ட பயன்பாடுகளைக் காட்டு"
 
-#: src/contents/ui/Compressor.qml:68 src/tags_plugin_name.cpp:29
+#: src/contents/ui/Compressor.qml:68 src/tags_plugin_name.cpp:30
 msgid "Compressor"
 msgstr "காற்றமுக்கி"
 
@@ -837,7 +837,7 @@ msgstr "இணைக்கவும்"
 msgid "Impulses"
 msgstr "தூண்டுதல்கள்"
 
-#: src/contents/ui/Convolver.qml:241 src/plugin_base.cpp:324
+#: src/contents/ui/Convolver.qml:241 src/plugin_base.cpp:336
 msgid "Spectrum"
 msgstr "நிறமாலை"
 
@@ -871,7 +871,7 @@ msgstr "வடிவம்"
 msgid "Stereo width"
 msgstr "ச்டீரியோ அகலம்"
 
-#: src/contents/ui/Convolver.qml:536 src/tags_plugin_name.cpp:26
+#: src/contents/ui/Convolver.qml:536 src/tags_plugin_name.cpp:27
 msgid "Autogain"
 msgstr "ஆட்டோகெயின்"
 
@@ -1036,7 +1036,7 @@ msgstr "குறைந்தபட்ச செயலாக்க தாங்�
 msgid "Post filter Beta"
 msgstr "பிந்தைய வடிகட்டி பீட்டா"
 
-#: src/contents/ui/Deesser.qml:63 src/tags_plugin_name.cpp:35
+#: src/contents/ui/Deesser.qml:63 src/tags_plugin_name.cpp:36
 msgid "Deesser"
 msgstr "டீசர்"
 
@@ -1067,7 +1067,7 @@ msgid "Laxity"
 msgstr "மெழுகுவர்த்தி"
 
 #: src/contents/ui/Deesser.qml:171 src/contents/ui/Filter.qml:122
-#: src/contents/ui/Reverb.qml:126 src/tags_plugin_name.cpp:41
+#: src/contents/ui/Reverb.qml:126 src/tags_plugin_name.cpp:42
 msgid "Filter"
 msgstr "வடிப்பி"
 
@@ -1189,7 +1189,7 @@ msgstr "விலக்கு"
 msgid "Add %1 to excluded applications"
 msgstr "விலக்கப்பட்ட பயன்பாடுகளில் %1ஐச் சேர்க்கவும்"
 
-#: src/contents/ui/EchoCanceller.qml:60 src/tags_plugin_name.cpp:37
+#: src/contents/ui/EchoCanceller.qml:60 src/tags_plugin_name.cpp:38
 msgid "Echo Canceller"
 msgstr "எக்கோ ரத்துசெய்தல்"
 
@@ -1486,7 +1486,7 @@ msgstr "செல் செயலில்"
 msgid "Ceil"
 msgstr "சீல்"
 
-#: src/contents/ui/Expander.qml:68 src/tags_plugin_name.cpp:40
+#: src/contents/ui/Expander.qml:68 src/tags_plugin_name.cpp:41
 msgid "Expander"
 msgstr "விரிவாக்க"
 
@@ -1504,7 +1504,7 @@ msgstr "வடிகட்டி முறை"
 msgid "Equalizer mode"
 msgstr "சமநிலை முறை"
 
-#: src/contents/ui/Gate.qml:72 src/tags_plugin_name.cpp:42
+#: src/contents/ui/Gate.qml:72 src/tags_plugin_name.cpp:43
 msgid "Gate"
 msgstr "வாயில்"
 
@@ -1678,7 +1678,7 @@ msgstr "உண்மையான உச்சம்/24 பிட்கள்"
 msgid "Dithering"
 msgstr "டித்தரிங்"
 
-#: src/contents/ui/Limiter.qml:117 src/tags_plugin_name.cpp:44
+#: src/contents/ui/Limiter.qml:117 src/tags_plugin_name.cpp:45
 msgid "Limiter"
 msgstr "லிமிட்டர்"
 
@@ -2088,7 +2088,7 @@ msgstr "தேடு சாளரம்"
 msgid "Overlap length"
 msgstr "ஒன்றுடன் ஒன்று நீளம்"
 
-#: src/contents/ui/Pitch.qml:163 src/tags_plugin_name.cpp:49
+#: src/contents/ui/Pitch.qml:163 src/tags_plugin_name.cpp:50
 msgid "Pitch"
 msgstr "குனிவு"
 
@@ -2980,7 +2980,7 @@ msgstr "நடுத்தர பனோரமா"
 msgid "Invert phase"
 msgstr "தலைகீழ் கட்டம்"
 
-#: src/contents/ui/StereoTools.qml:293 src/tags_plugin_name.cpp:36
+#: src/contents/ui/StereoTools.qml:293 src/tags_plugin_name.cpp:37
 msgid "Delay"
 msgstr "சுணக்கம்"
 
@@ -3012,42 +3012,42 @@ msgstr "அதிகபட்ச உடனடி அதிர்வெண்"
 msgid "Inverted mode"
 msgstr "தலைகீழ் முறை"
 
-#: src/main.cpp:344
+#: src/main.cpp:351
 msgid "Global audio effects"
 msgstr "உலகளாவிய ஆடியோ விளைவுகள்"
 
-#: src/main.cpp:345
+#: src/main.cpp:352
 msgid "© 2017-2026 Easy Effects Team"
 msgstr "© 2017-2026 ஈசி எஃபெக்ட்ச் குழு"
 
-#: src/main.cpp:347
+#: src/main.cpp:354
 msgid "Wellington Wallace"
 msgstr "வெலிங்டன் வாலச்"
 
-#: src/main.cpp:347
+#: src/main.cpp:354
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "உருவாக்குநர்"
 
-#: src/main.cpp:351
+#: src/main.cpp:358
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "உங்கள் பெயர்கள்"
 
-#: src/main.cpp:351
+#: src/main.cpp:358
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "உங்கள் மின்னஞ்சல்கள்"
 
-#: src/plugin_base.cpp:312
+#: src/plugin_base.cpp:324
 msgid "(Mic)"
 msgstr "(மைக்)"
 
-#: src/plugin_base.cpp:315
+#: src/plugin_base.cpp:327
 msgid "(Speakers)"
 msgstr "(பேச்சாளர்கள்)"
 
-#: src/plugin_base.cpp:322
+#: src/plugin_base.cpp:334
 msgid "Output Level Meter"
 msgstr "வெளியீட்டு நிலை மீட்டர்"
 
@@ -3105,75 +3105,75 @@ msgstr "பிழை"
 msgid "Unknown"
 msgstr "தெரியவில்லை"
 
-#: src/tags_plugin_name.cpp:27
+#: src/tags_plugin_name.cpp:28
 msgid "Bass Enhancer"
 msgstr "பாச் மேம்படுத்துபவர்"
 
-#: src/tags_plugin_name.cpp:28
+#: src/tags_plugin_name.cpp:29
 msgid "Bass Loudness"
 msgstr "பாச் ஒலி"
 
-#: src/tags_plugin_name.cpp:30
+#: src/tags_plugin_name.cpp:31
 msgid "Convolver"
 msgstr "கான்வால்வர்"
 
-#: src/tags_plugin_name.cpp:31
+#: src/tags_plugin_name.cpp:32
 msgid "Crossfeed"
 msgstr "குறுக்குவெட்டு"
 
-#: src/tags_plugin_name.cpp:32
+#: src/tags_plugin_name.cpp:33
 msgid "Crusher"
 msgstr "நொறுக்கி"
 
-#: src/tags_plugin_name.cpp:33
+#: src/tags_plugin_name.cpp:34
 msgid "Crystalizer"
 msgstr "படிகதாரர்"
 
-#: src/tags_plugin_name.cpp:34
+#: src/tags_plugin_name.cpp:35
 msgid "Deep Noise Remover"
 msgstr "ஆழமான இரைச்சல் நீக்கி"
 
-#: src/tags_plugin_name.cpp:38
+#: src/tags_plugin_name.cpp:39
 msgid "Equalizer"
 msgstr "சமநிலைப்படுத்தி"
 
-#: src/tags_plugin_name.cpp:39
+#: src/tags_plugin_name.cpp:40
 msgid "Exciter"
 msgstr "ஊக்கம்"
 
-#: src/tags_plugin_name.cpp:43
+#: src/tags_plugin_name.cpp:44
 msgid "Level Meter"
 msgstr "நிலை மீட்டர்"
 
-#: src/tags_plugin_name.cpp:46
+#: src/tags_plugin_name.cpp:47
 msgid "Maximizer"
 msgstr "அதிகபட்சம்"
 
-#: src/tags_plugin_name.cpp:47
+#: src/tags_plugin_name.cpp:48
 msgid "Multiband Compressor"
 msgstr "மல்டிபாண்ட் அமுக்கி"
 
-#: src/tags_plugin_name.cpp:48
+#: src/tags_plugin_name.cpp:49
 msgid "Multiband Gate"
 msgstr "மல்டிபாண்ட் கேட்"
 
-#: src/tags_plugin_name.cpp:50
+#: src/tags_plugin_name.cpp:51
 msgid "Reverberation"
 msgstr "எதிரொலித்தல்"
 
-#: src/tags_plugin_name.cpp:51
+#: src/tags_plugin_name.cpp:52
 msgid "Noise Reduction"
 msgstr "ஒலி குறைப்பு"
 
-#: src/tags_plugin_name.cpp:52
+#: src/tags_plugin_name.cpp:53
 msgid "Speech Processor"
 msgstr "பேச்சு செயலி"
 
-#: src/tags_plugin_name.cpp:53
+#: src/tags_plugin_name.cpp:54
 msgid "Stereo Tools"
 msgstr "ச்டீரியோ கருவிகள்"
 
-#: src/tags_plugin_name.cpp:54
+#: src/tags_plugin_name.cpp:55
 msgid "Voice Suppressor"
 msgstr "குரல் அடக்கி"
 

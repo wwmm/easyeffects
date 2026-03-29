@@ -56,12 +56,14 @@
     <color type="primary" scheme_preference="dark">#004079</color>
   </branding>
   <releases>
-    <release type="stable" version="8.1.8" date="2026-03-28T00:00:00Z">
+    <release type="stable" version="8.1.8" date="2026-03-29T00:00:00Z">
       <description>
         <ul>
           <li>Features:</li>
           <li>Bug fixes:</li>
           <li>Better handling of the occasions where pipewire sends us null port pointers. This should avoid noises in some situations</li>
+          <li>Fixed small mistakes in the spectrum frequency axis calculation</li>
+          <li>Added a workaround to avoid graphical artifacts when the spectrum is using area mode.</li>
           <li>Other notes:</li>
         </ul>
       </description>

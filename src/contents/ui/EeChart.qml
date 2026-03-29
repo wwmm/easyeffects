@@ -135,8 +135,20 @@ Item {
         if (scatterSeries.visible === true)
             scatterSeries.replace(processedData);
 
-        if (areaSeries.visible === true)
+        if (areaSeries.visible === true) {
             areaLineSeries.replace(processedData);
+
+            // For some reason letting QtGraphs use a baseline over the x axis causes graphical artifacts
+
+            let baseline = [];
+            for (let n = 0; n < processedData.length; n++) {
+                baseline.push({
+                    x: processedData[n].x,
+                    y: logarithimicVerticalAxis ? Math.log10(1e-12) : -2
+                });
+            }
+            areaBaseline.replace(baseline);
+        }
 
         if (barSeries.visible === true) {
             barSeriesSet.clear();
@@ -296,6 +308,10 @@ Item {
                     id: areaLineSeries
 
                     width: DbGraph.lineWidth
+                }
+
+                lowerSeries: LineSeries {
+                    id: areaBaseline
                 }
             }
 

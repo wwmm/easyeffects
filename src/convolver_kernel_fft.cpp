@@ -54,8 +54,11 @@ auto ConvolverKernelFFT::calculate_fft(std::vector<float> kernel_L,
 
   // Initialize frequency axis
   std::vector<double> freq_axis(spectrum_L.size());
+
+  float bin_hz = kernel_rate / float(kernel_L.size());
+
   for (uint n = 0U; n < freq_axis.size(); n++) {
-    freq_axis[n] = 0.5F * kernel_rate * static_cast<float>(n) / static_cast<float>(freq_axis.size());
+    freq_axis[n] = static_cast<float>(n) * bin_hz;
   }
 
   // Remove DC component at f = 0 Hz
@@ -159,9 +162,22 @@ auto ConvolverKernelFFT::compute_fft_magnitude(std::vector<float>& kernel) -> st
   fftw_execute(plan);
 
   for (uint i = 0U; i < spectrum.size(); i++) {
-    double sqr = (complex_output[i][0] * complex_output[i][0]) + (complex_output[i][1] * complex_output[i][1]);
-    sqr /= static_cast<double>(spectrum.size() * spectrum.size());
-    spectrum[i] = sqr;
+    float real = complex_output[i][0];
+    float img = complex_output[i][1];
+
+    float mag = std::sqrt((real * real) + (img * img));
+
+    mag /= static_cast<float>(kernel.size());
+
+    // Compensate Hann window
+    mag *= 2.0F;
+
+    // Single-sided correction
+    if (i == 0 || i == kernel.size() / 2) {
+      mag *= 0.5F;
+    }
+
+    spectrum[i] = static_cast<double>(util::linear_to_db(mag));
   }
 
   fftw_destroy_plan(plan);

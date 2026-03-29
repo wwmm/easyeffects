@@ -127,6 +127,14 @@ EffectsBase::~EffectsBase() {
   workerThread.quit();
   workerThread.wait();
 
+  if (gsl_acc != nullptr) {
+    gsl_interp_accel_free(gsl_acc);
+  }
+
+  if (spline != nullptr) {
+    gsl_spline_free(spline);
+  }
+
   util::debug("effects_base: destroyed");
 }
 
@@ -451,7 +459,7 @@ void EffectsBase::requestSpectrumData() {
   QMetaObject::invokeMethod(
       baseWorker,
       [this] {
-        auto [rate, list] = spectrum->compute_magnitudes();
+        auto [rate, bin_hz, list] = spectrum->compute_magnitudes();
 
         if (list.empty() || rate == 0) {
           return;
@@ -462,7 +470,7 @@ void EffectsBase::requestSpectrumData() {
         QList<double> frequencies(n_bands);
 
         for (qsizetype n = 0; n < n_bands; n++) {
-          frequencies[n] = 0.5F * static_cast<float>(rate) * static_cast<float>(n) / static_cast<float>(n_bands);
+          frequencies[n] = static_cast<float>(n) * bin_hz;
         }
 
         const auto min_freq = static_cast<float>(DbSpectrum::minimumFrequency());
@@ -480,29 +488,18 @@ void EffectsBase::requestSpectrumData() {
           x_axis = util::linspace(min_freq, max_freq, DbSpectrum::nPoints());
         }
 
-        auto* acc = gsl_interp_accel_alloc();
-        auto* spline = gsl_spline_alloc(gsl_interp_steffen, n_bands);
+        if (spline == nullptr) {
+          // The spectrum plugin sends arrays that always have the same size. So we can do this only once.
+          spline = gsl_spline_alloc(gsl_interp_steffen, n_bands);
+        }
 
         gsl_spline_init(spline, frequencies.data(), list.data(), n_bands);
 
         QList<double> spectrum_mag(x_axis.size());
 
         for (size_t n = 0; n < x_axis.size(); n++) {
-          spectrum_mag[n] = gsl_spline_eval(spline, x_axis[n], acc);
+          spectrum_mag[n] = gsl_spline_eval(spline, x_axis[n], gsl_acc);
         }
-
-        gsl_spline_free(spline);
-        gsl_interp_accel_free(acc);
-
-        std::ranges::for_each(spectrum_mag, [](auto& v) {
-          v = 10.0F * std::log10(v);
-
-          if (!std::isinf(v)) {
-            v = (v > util::minimum_db_level) ? v : util::minimum_db_level;
-          } else {
-            v = util::minimum_db_level;
-          }
-        });
 
         QList<QPointF> output_data(spectrum_mag.size());
 

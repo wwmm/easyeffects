@@ -19,6 +19,8 @@
 
 #pragma once
 
+#include <gsl/gsl_interp.h>
+#include <gsl/gsl_spline.h>
 #include <kconfigskeleton.h>
 #include <pipewire/proxy.h>
 #include <qlist.h>
@@ -104,4 +106,8 @@ class EffectsBase : public QObject {
   void activate_filters();
 
   void deactivate_filters();
+
+ private:
+  gsl_interp_accel* gsl_acc = gsl_interp_accel_alloc();
+  gsl_spline* spline = nullptr;
 };
