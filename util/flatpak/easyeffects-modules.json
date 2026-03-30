@@ -143,8 +143,8 @@
                 {
                     "type": "git",
                     "url": "https://codeberg.org/soundtouch/soundtouch.git",
-                    "tag": "2.4.0",
-                    "commit": "d994965fbbcf0f6ceeed0e72516968130c2912f0",
+                    "tag": "2.4.1",
+                    "commit": "0047e0b1ecfceb041348579119bf79b73a322a3a",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^([\\d.]+)$",
