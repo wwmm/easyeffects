@@ -30,7 +30,7 @@ class AutoGainPreset : public PluginPresetBase {
   explicit AutoGainPreset(PipelineType pipeline_type, const std::string& instance_name);
 
  private:
-  db::Autogain* settings = nullptr;
+  DbAutogain* settings = nullptr;
 
   void save(nlohmann::json& json) override;
 

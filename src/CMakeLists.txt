@@ -24,6 +24,7 @@ qt_add_qml_module(easyeffects
         presets_list_model.cpp
         presets_list_model.hpp
         units.hpp
+        autogain.hpp
     QML_FILES
         contents/ui/AboutPage.qml
         contents/ui/Autogain.qml

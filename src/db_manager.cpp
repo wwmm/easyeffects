@@ -179,8 +179,7 @@ void Manager::create_plugin_db(const QString& parentGroup,
     auto id = tags::plugin_name::get_id(name);
 
     if (name.startsWith(tags::plugin_name::BaseName::autogain)) {
-      ensureExists(makeKey(tags::plugin_name::BaseName::autogain, id),
-                   [&] { return new db::Autogain(parentGroup, id); });
+      ensureExists(makeKey(tags::plugin_name::BaseName::autogain, id), [&] { return new DbAutogain(parentGroup, id); });
 
     } else if (name.startsWith(tags::plugin_name::BaseName::bassEnhancer)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::bassEnhancer, id),

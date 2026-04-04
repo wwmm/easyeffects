@@ -46,15 +46,15 @@ Autogain::Autogain(const std::string& tag, pw::Manager* pipe_manager, PipelineTy
                  pipe_manager,
                  pipe_type),
       settings(
-          db::Manager::self().get_plugin_db<db::Autogain>(pipe_type,
-                                                          tags::plugin_name::BaseName::autogain + "#" + instance_id)) {
+          db::Manager::self().get_plugin_db<DbAutogain>(pipe_type,
+                                                        tags::plugin_name::BaseName::autogain + "#" + instance_id)) {
   // bypass, input and output gain controls
 
-  init_common_controls<db::Autogain>(settings);
+  init_common_controls<DbAutogain>(settings);
 
   // specific plugin controls
 
-  connect(settings, &db::Autogain::maximumHistoryChanged, [&]() {
+  connect(settings, &DbAutogain::maximumHistoryChanged, [&]() {
     std::scoped_lock<std::mutex> lock(data_mutex);
 
     set_maximum_history(settings->maximumHistory());

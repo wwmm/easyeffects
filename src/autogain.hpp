@@ -20,6 +20,7 @@
 #pragma once
 
 #include <ebur128.h>
+#include <qqmlintegration.h>
 #include <qtmetamacros.h>
 #include <sys/types.h>
 #include <QString>
@@ -33,6 +34,8 @@
 
 class Autogain : public PluginBase {
   Q_OBJECT
+  QML_ELEMENT
+  QML_UNCREATABLE("Use the c++ instance")
 
  public:
   Autogain(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id);
@@ -101,7 +104,7 @@ class Autogain : public PluginBase {
 
   ebur128_state* ebur_state = nullptr;
 
-  db::Autogain* settings = nullptr;
+  DbAutogain* settings = nullptr;
 
   auto init_ebur128() -> bool;
 

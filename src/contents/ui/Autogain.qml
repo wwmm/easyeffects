@@ -22,6 +22,7 @@ import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import "Common.js" as Common
 import ee.tags.plugin.name as TagsPluginName // qmllint disable
+import ee.ui
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
@@ -29,25 +30,25 @@ Kirigami.ScrollablePage {
     id: autogainPage
 
     required property string name
-    required property var pluginDB
+    required property DbAutogain pluginDB
     required property var pipelineInstance
-    property var pluginBackend
+    property Autogain pluginBackend
 
     function updateMeters() {
-        if (!pluginBackend)
+        if (!autogainPage.pluginBackend)
             return;
 
-        momentary.setValue(pluginBackend.getMomentaryLevel());
-        shortterm.setValue(pluginBackend.getShorttermLevel());
-        integrated.setValue(pluginBackend.getIntegratedLevel());
-        relative.setValue(pluginBackend.getRelativeLevel());
-        range.setValue(pluginBackend.getRangeLevel());
-        loudness.setValue(pluginBackend.getLoudnessLevel());
-        outputGain.setValue(pluginBackend.getOutputGainLevel());
-        inputOutputLevels.setInputLevelLeft(pluginBackend.getInputLevelLeft());
-        inputOutputLevels.setInputLevelRight(pluginBackend.getInputLevelRight());
-        inputOutputLevels.setOutputLevelLeft(pluginBackend.getOutputLevelLeft());
-        inputOutputLevels.setOutputLevelRight(pluginBackend.getOutputLevelRight());
+        momentary.setValue(autogainPage.pluginBackend.getMomentaryLevel());
+        shortterm.setValue(autogainPage.pluginBackend.getShorttermLevel());
+        integrated.setValue(autogainPage.pluginBackend.getIntegratedLevel());
+        relative.setValue(autogainPage.pluginBackend.getRelativeLevel());
+        range.setValue(autogainPage.pluginBackend.getRangeLevel());
+        loudness.setValue(autogainPage.pluginBackend.getLoudnessLevel());
+        outputGain.setValue(autogainPage.pluginBackend.getOutputGainLevel());
+        inputOutputLevels.setInputLevelLeft(autogainPage.pluginBackend.getInputLevelLeft());
+        inputOutputLevels.setInputLevelRight(autogainPage.pluginBackend.getInputLevelRight());
+        inputOutputLevels.setOutputLevelLeft(autogainPage.pluginBackend.getOutputLevelLeft());
+        inputOutputLevels.setOutputLevelRight(autogainPage.pluginBackend.getOutputLevelRight());
     }
 
     Component.onCompleted: {
