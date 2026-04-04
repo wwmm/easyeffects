@@ -20,6 +20,7 @@
 #pragma once
 
 #include <qlist.h>
+#include <qqmlintegration.h>
 #include <qtmetamacros.h>
 #include <sys/types.h>
 #include <QString>
@@ -39,6 +40,8 @@
 
 class Crystalizer : public PluginBase {
   Q_OBJECT
+  QML_ELEMENT
+  QML_UNCREATABLE("Use the c++ instance")
 
   Q_PROPERTY(int numBands MEMBER nbands CONSTANT)
 

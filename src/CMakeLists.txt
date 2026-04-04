@@ -25,6 +25,33 @@ qt_add_qml_module(easyeffects
         presets_list_model.hpp
         units.hpp
         autogain.hpp
+        bass_enhancer.hpp
+        bass_loudness.hpp
+        compressor.hpp
+        convolver.hpp
+        crossfeed.hpp
+        crusher.hpp
+        crystalizer.hpp
+        deepfilternet.hpp
+        deesser.hpp
+        delay.hpp
+        equalizer.hpp
+        exciter.hpp
+        expander.hpp
+        filter.hpp
+        gate.hpp
+        level_meter.hpp
+        limiter.hpp
+        loudness.hpp
+        maximizer.hpp
+        multiband_compressor.hpp
+        multiband_gate.hpp
+        pitch.hpp
+        reverb.hpp
+        rnnoise.hpp
+        speex.hpp
+        stereo_tools.hpp
+        voice_suppressor.hpp
     QML_FILES
         contents/ui/AboutPage.qml
         contents/ui/Autogain.qml

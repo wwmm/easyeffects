@@ -20,6 +20,7 @@
 #pragma once
 
 #include <qobject.h>
+#include <qqmlintegration.h>
 #include <qtmetamacros.h>
 #include <span>
 #include <string>
@@ -30,6 +31,8 @@
 
 class Deesser : public PluginBase {
   Q_OBJECT
+  QML_ELEMENT
+  QML_UNCREATABLE("Use the c++ instance")
 
  public:
   Deesser(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id);

@@ -19,6 +19,7 @@
 
 #pragma once
 
+#include <qqmlintegration.h>
 #include <qtmetamacros.h>
 #include <speex/speex_preprocess.h>
 #include <speex/speexdsp_config_types.h>
@@ -35,6 +36,8 @@
 
 class Speex : public PluginBase {
   Q_OBJECT
+  QML_ELEMENT
+  QML_UNCREATABLE("Use the c++ instance")
 
  public:
   Speex(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id);

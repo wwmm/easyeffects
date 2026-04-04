@@ -20,6 +20,7 @@
 #pragma once
 
 #include <bs2bclass.h>
+#include <qqmlintegration.h>
 #include <qtmetamacros.h>
 #include <QString>
 #include <span>
@@ -32,6 +33,8 @@
 
 class Crossfeed : public PluginBase {
   Q_OBJECT
+  QML_ELEMENT
+  QML_UNCREATABLE("Use the c++ instance")
 
  public:
   Crossfeed(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id);

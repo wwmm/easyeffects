@@ -21,6 +21,7 @@
 
 #include <qlist.h>
 #include <qobject.h>
+#include <qqmlintegration.h>
 #include <qtmetamacros.h>
 #include <sys/types.h>
 #include <span>
@@ -34,6 +35,8 @@
 
 class Equalizer : public PluginBase {
   Q_OBJECT
+  QML_ELEMENT
+  QML_UNCREATABLE("Use the c++ instance")
 
  public:
   Equalizer(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id);

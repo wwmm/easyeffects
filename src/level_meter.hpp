@@ -21,6 +21,7 @@
 
 #include <ebur128.h>
 #include <qobject.h>
+#include <qqmlintegration.h>
 #include <qtmetamacros.h>
 #include <sys/types.h>
 #include <span>
@@ -33,6 +34,8 @@
 
 class LevelMeter : public PluginBase {
   Q_OBJECT
+  QML_ELEMENT
+  QML_UNCREATABLE("Use the c++ instance")
 
  public:
   LevelMeter(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_i);

@@ -19,6 +19,7 @@
 
 #pragma once
 
+#include <qqmlintegration.h>
 #include <qtmetamacros.h>
 #include <sys/types.h>
 #include <QString>
@@ -42,6 +43,8 @@
 
 class RNNoise : public PluginBase {
   Q_OBJECT
+  QML_ELEMENT
+  QML_UNCREATABLE("Use the c++ instance")
 
   Q_PROPERTY(bool usingStandardModel MEMBER standard_model NOTIFY usingStandardModelChanged)
 

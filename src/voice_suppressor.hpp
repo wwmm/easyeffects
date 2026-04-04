@@ -20,6 +20,7 @@
 #pragma once
 
 #include <fftw3.h>
+#include <qqmlintegration.h>
 #include <qtmetamacros.h>
 #include <qtypes.h>
 #include <QString>
@@ -33,6 +34,8 @@
 
 class VoiceSuppressor : public PluginBase {
   Q_OBJECT
+  QML_ELEMENT
+  QML_UNCREATABLE("Use the c++ instance")
 
  public:
   VoiceSuppressor(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id);

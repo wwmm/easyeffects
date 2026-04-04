@@ -19,7 +19,9 @@
 
 #pragma once
 
+#include <qqmlintegration.h>
 #include <qtmetamacros.h>
+#include <qtypes.h>
 #include <QString>
 #include <span>
 #include <string>
@@ -30,6 +32,8 @@
 
 class Maximizer : public PluginBase {
   Q_OBJECT
+  QML_ELEMENT
+  QML_UNCREATABLE("Use the c++ instance")
 
  public:
   Maximizer(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id);
