@@ -202,7 +202,7 @@ void Manager::create_plugin_db(const QString& parentGroup,
                    [&] { return new DbCrossfeed(parentGroup, id); });
 
     } else if (name.startsWith(tags::plugin_name::BaseName::crusher)) {
-      ensureExists(makeKey(tags::plugin_name::BaseName::crusher, id), [&] { return new db::Crusher(parentGroup, id); });
+      ensureExists(makeKey(tags::plugin_name::BaseName::crusher, id), [&] { return new DbCrusher(parentGroup, id); });
 
     } else if (name.startsWith(tags::plugin_name::BaseName::crystalizer)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::crystalizer, id),

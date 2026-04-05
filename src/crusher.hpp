@@ -63,7 +63,7 @@ class Crusher : public PluginBase {
   auto get_latency_seconds() -> float override;
 
  private:
-  db::Crusher* settings = nullptr;
+  DbCrusher* settings = nullptr;
 
   bool ready = false;
 };

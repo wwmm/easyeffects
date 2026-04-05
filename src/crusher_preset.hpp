@@ -30,7 +30,7 @@ class CrusherPreset : public PluginPresetBase {
   explicit CrusherPreset(PipelineType pipeline_type, const std::string& instance_name);
 
  private:
-  db::Crusher* settings = nullptr;
+  DbCrusher* settings = nullptr;
 
   void save(nlohmann::json& json) override;
 

@@ -1,6 +1,5 @@
 File=easyeffects_db_crusher.kcfg
-NameSpace=db
-ClassName=Crusher
+ClassName=DbCrusher
 Inherits=KConfigBaseEE
 IncludeFiles=\"kconfig_base_ee.hpp\"
 Mutators=true

@@ -44,9 +44,8 @@ Crusher::Crusher(const std::string& tag, pw::Manager* pipe_manager, PipelineType
                  instance_id,
                  pipe_manager,
                  pipe_type),
-      settings(
-          db::Manager::self().get_plugin_db<db::Crusher>(pipe_type,
-                                                         tags::plugin_name::BaseName::crusher + "#" + instance_id)) {
+      settings(db::Manager::self().get_plugin_db<DbCrusher>(pipe_type,
+                                                            tags::plugin_name::BaseName::crusher + "#" + instance_id)) {
   const auto lv2_plugin_uri = "http://calf.sourceforge.net/plugins/Crusher";
 
   lv2_wrapper = std::make_unique<lv2::Lv2Wrapper>(lv2_plugin_uri);
@@ -57,19 +56,19 @@ Crusher::Crusher(const std::string& tag, pw::Manager* pipe_manager, PipelineType
     util::debug(std::format("{}{} is not installed", log_tag, lv2_plugin_uri));
   }
 
-  init_common_controls<db::Crusher>(settings);
+  init_common_controls<DbCrusher>(settings);
 
   // specific plugin controls
 
-  BIND_LV2_PORT("mode", mode, setMode, db::Crusher::modeChanged);
-  BIND_LV2_PORT("bits", bitReduction, setBitReduction, db::Crusher::bitReductionChanged);
-  BIND_LV2_PORT("morph", morph, setMorph, db::Crusher::morphChanged);
-  BIND_LV2_PORT("anti_aliasing", antiAliasing, setAntiAliasing, db::Crusher::antiAliasingChanged);
-  BIND_LV2_PORT("samples", sampleReduction, setSampleReduction, db::Crusher::sampleReductionChanged);
-  BIND_LV2_PORT("lfo", lfoActive, setLfoActive, db::Crusher::lfoActiveChanged);
-  BIND_LV2_PORT("lforange", lfoRange, setLfoRange, db::Crusher::lfoRangeChanged);
-  BIND_LV2_PORT("lforate", lfoRate, setLfoRate, db::Crusher::lfoRateChanged);
-  BIND_LV2_PORT_DB("dc", dc, setDc, db::Crusher::dcChanged, false);
+  BIND_LV2_PORT("mode", mode, setMode, DbCrusher::modeChanged);
+  BIND_LV2_PORT("bits", bitReduction, setBitReduction, DbCrusher::bitReductionChanged);
+  BIND_LV2_PORT("morph", morph, setMorph, DbCrusher::morphChanged);
+  BIND_LV2_PORT("anti_aliasing", antiAliasing, setAntiAliasing, DbCrusher::antiAliasingChanged);
+  BIND_LV2_PORT("samples", sampleReduction, setSampleReduction, DbCrusher::sampleReductionChanged);
+  BIND_LV2_PORT("lfo", lfoActive, setLfoActive, DbCrusher::lfoActiveChanged);
+  BIND_LV2_PORT("lforange", lfoRange, setLfoRange, DbCrusher::lfoRangeChanged);
+  BIND_LV2_PORT("lforate", lfoRate, setLfoRate, DbCrusher::lfoRateChanged);
+  BIND_LV2_PORT_DB("dc", dc, setDc, DbCrusher::dcChanged, false);
 }
 
 Crusher::~Crusher() {
