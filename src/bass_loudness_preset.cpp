@@ -28,7 +28,7 @@
 
 BassLoudnessPreset::BassLoudnessPreset(PipelineType pipeline_type, const std::string& instance_name)
     : PluginPresetBase(pipeline_type, instance_name) {
-  settings = get_db_instance<db::BassLoudness>(pipeline_type);
+  settings = get_db_instance<DbBassLoudness>(pipeline_type);
 }
 
 void BassLoudnessPreset::save(nlohmann::json& json) {

@@ -47,7 +47,7 @@ BassLoudness::BassLoudness(const std::string& tag,
                  instance_id,
                  pipe_manager,
                  pipe_type),
-      settings(db::Manager::self().get_plugin_db<db::BassLoudness>(
+      settings(db::Manager::self().get_plugin_db<DbBassLoudness>(
           pipe_type,
           tags::plugin_name::BaseName::bassLoudness + "#" + instance_id)) {
   const auto lv2_plugin_uri = "http://drobilla.net/plugins/mda/Loudness";
@@ -60,11 +60,11 @@ BassLoudness::BassLoudness(const std::string& tag,
     util::debug(std::format("{}{} is not installed", log_tag, lv2_plugin_uri));
   }
 
-  init_common_controls<db::BassLoudness>(settings);
+  init_common_controls<DbBassLoudness>(settings);
 
-  BIND_LV2_PORT_DB("loudness", loudness, setLoudness, db::BassLoudness::loudnessChanged, false);
-  BIND_LV2_PORT_DB("output", output, setOutput, db::BassLoudness::outputChanged, false);
-  BIND_LV2_PORT_DB("link", link, setLink, db::BassLoudness::linkChanged, false);
+  BIND_LV2_PORT_DB("loudness", loudness, setLoudness, DbBassLoudness::loudnessChanged, false);
+  BIND_LV2_PORT_DB("output", output, setOutput, DbBassLoudness::outputChanged, false);
+  BIND_LV2_PORT_DB("link", link, setLink, DbBassLoudness::linkChanged, false);
 }
 
 BassLoudness::~BassLoudness() {

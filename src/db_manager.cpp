@@ -187,7 +187,7 @@ void Manager::create_plugin_db(const QString& parentGroup,
 
     } else if (name.startsWith(tags::plugin_name::BaseName::bassLoudness)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::bassLoudness, id),
-                   [&] { return new db::BassLoudness(parentGroup, id); });
+                   [&] { return new DbBassLoudness(parentGroup, id); });
 
     } else if (name.startsWith(tags::plugin_name::BaseName::compressor)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::compressor, id),
