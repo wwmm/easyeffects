@@ -39,7 +39,7 @@ Kirigami.AbstractCard {
     required property string appIconName
     required property string mediaName
     required property string mediaClass
-    required property string state
+    required property string nodeState
     required property string format
     required property real rate
     required property real latency
@@ -93,7 +93,7 @@ Kirigami.AbstractCard {
                             const rate = root.rate.toLocaleString(Qt.locale(), 'f', 1);
                             const latency = root.latency.toLocaleString(Qt.locale(), 'f', 1);
 
-                            return `${root.state} · ${root.format} · ${rate} ${Units.kHz} · ${root.nVolumeChannels} ${i18n("channels")} · ${latency} ${Units.ms}`; // qmllint disable
+                            return `${root.nodeState} · ${root.format} · ${rate} ${Units.kHz} · ${root.nVolumeChannels} ${i18n("channels")} · ${latency} ${Units.ms}`; // qmllint disable
                         }
                         color: Kirigami.Theme.disabledTextColor
                     }

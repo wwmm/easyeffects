@@ -174,7 +174,7 @@ QHash<int, QByteArray> Nodes::roleNames() const {
           {static_cast<int>(Roles::Format), "format"},
           {static_cast<int>(Roles::ApplicationId), "applicationId"},
           {static_cast<int>(Roles::Priority), "priority"},
-          {static_cast<int>(Roles::State), "state"},
+          {static_cast<int>(Roles::State), "nodeState"},
           {static_cast<int>(Roles::Mute), "mute"},
           {static_cast<int>(Roles::Connected), "connected"},
           {static_cast<int>(Roles::NinputPorts), "nInputPorts"},

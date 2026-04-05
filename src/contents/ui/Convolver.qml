@@ -114,7 +114,7 @@ Kirigami.ScrollablePage {
                 convolverChart.updateData(convolverPage.pluginBackend.chartMagRfftLog);
         }
 
-        target: convolverPage.pluginBackend
+        target: convolverPage.pluginBackend // qmllint disable
     }
 
     ConvolverImpulseDialog {
