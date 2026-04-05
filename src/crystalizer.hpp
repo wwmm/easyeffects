@@ -108,7 +108,7 @@ class Crystalizer : public PluginBase {
   float global_previous_L = 0.0F;
   float global_previous_R = 0.0F;
 
-  db::Crystalizer* settings = nullptr;
+  DbCrystalizer* settings = nullptr;
 
   std::vector<float> data_L;
   std::vector<float> data_R;

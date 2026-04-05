@@ -206,7 +206,7 @@ void Manager::create_plugin_db(const QString& parentGroup,
 
     } else if (name.startsWith(tags::plugin_name::BaseName::crystalizer)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::crystalizer, id),
-                   [&] { return new db::Crystalizer(parentGroup, id); });
+                   [&] { return new DbCrystalizer(parentGroup, id); });
 
     } else if (name.startsWith(tags::plugin_name::BaseName::delay)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::delay, id), [&] { return new db::Delay(parentGroup, id); });

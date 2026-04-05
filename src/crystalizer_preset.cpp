@@ -49,7 +49,7 @@
 
 CrystalizerPreset::CrystalizerPreset(PipelineType pipeline_type, const std::string& instance_name)
     : PluginPresetBase(pipeline_type, instance_name) {
-  settings = get_db_instance<db::Crystalizer>(pipeline_type);
+  settings = get_db_instance<DbCrystalizer>(pipeline_type);
 }
 
 void CrystalizerPreset::save(nlohmann::json& json) {

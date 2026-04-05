@@ -30,7 +30,7 @@ class CrystalizerPreset : public PluginPresetBase {
   explicit CrystalizerPreset(PipelineType pipeline_type, const std::string& instance_name);
 
  private:
-  db::Crystalizer* settings = nullptr;
+  DbCrystalizer* settings = nullptr;
 
   void save(nlohmann::json& json) override;
 

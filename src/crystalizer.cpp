@@ -48,11 +48,11 @@
     band_intensity.at(index) = util::db_to_linear(settings->intensityBand##index());                        \
     band_mute.at(index) = settings->muteBand##index();                                                      \
     band_bypass.at(index) = settings->bypassBand##index();                                                  \
-    connect(settings, &db::Crystalizer::intensityBand##index##Changed,                                      \
+    connect(settings, &DbCrystalizer::intensityBand##index##Changed,                                        \
             [this]() { band_intensity.at(index) = util::db_to_linear(settings->intensityBand##index()); }); \
-    connect(settings, &db::Crystalizer::muteBand##index##Changed,                                           \
+    connect(settings, &DbCrystalizer::muteBand##index##Changed,                                             \
             [this]() { band_mute.at(index) = settings->muteBand##index(); });                               \
-    connect(settings, &db::Crystalizer::bypassBand##index##Changed,                                         \
+    connect(settings, &DbCrystalizer::bypassBand##index##Changed,                                           \
             [this]() { band_bypass.at(index) = settings->bypassBand##index(); });                           \
   }
 
@@ -63,7 +63,7 @@ Crystalizer::Crystalizer(const std::string& tag, pw::Manager* pipe_manager, Pipe
                  instance_id,
                  pipe_manager,
                  pipe_type),
-      settings(db::Manager::self().get_plugin_db<db::Crystalizer>(
+      settings(db::Manager::self().get_plugin_db<DbCrystalizer>(
           pipe_type,
           tags::plugin_name::BaseName::crystalizer + "#" + instance_id)),
       adaptive_intensities(nbands, 1.0F) {
@@ -91,7 +91,7 @@ Crystalizer::Crystalizer(const std::string& tag, pw::Manager* pipe_manager, Pipe
     frequencies[n] = f_edges[n];
   }
 
-  init_common_controls<db::Crystalizer>(settings);
+  init_common_controls<DbCrystalizer>(settings);
 
   BIND_BAND(0);
   BIND_BAND(1);
@@ -107,13 +107,13 @@ Crystalizer::Crystalizer(const std::string& tag, pw::Manager* pipe_manager, Pipe
   BIND_BAND(11);
   BIND_BAND(12);
 
-  connect(settings, &db::Crystalizer::useFixedQuantumChanged, [&]() { setup(); });
+  connect(settings, &DbCrystalizer::useFixedQuantumChanged, [&]() { setup(); });
 
-  connect(settings, &db::Crystalizer::oversamplingChanged, [&]() { setup(); });
+  connect(settings, &DbCrystalizer::oversamplingChanged, [&]() { setup(); });
 
-  connect(settings, &db::Crystalizer::transitionBandChanged, [&]() { setup(); });
+  connect(settings, &DbCrystalizer::transitionBandChanged, [&]() { setup(); });
 
-  connect(settings, &db::Crystalizer::oversamplingQualityChanged, [&]() {
+  connect(settings, &DbCrystalizer::oversamplingQualityChanged, [&]() {
     std::scoped_lock<std::mutex> lock(data_mutex);
 
     if (resampler_inL) {

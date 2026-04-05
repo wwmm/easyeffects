@@ -29,9 +29,9 @@ Kirigami.ScrollablePage {
     id: crystalizerPage
 
     required property string name
-    required property var pluginDB
+    required property DbCrystalizer pluginDB
     required property var pipelineInstance
-    property var pluginBackend
+    property Crystalizer pluginBackend: null
 
     function updateMeters() {
         if (!pluginBackend)

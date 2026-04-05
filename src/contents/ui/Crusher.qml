@@ -30,7 +30,7 @@ Kirigami.ScrollablePage {
     required property string name
     required property DbCrusher pluginDB
     required property var pipelineInstance
-    property Crusher pluginBackend
+    property Crusher pluginBackend: null
 
     function updateMeters() {
         if (!pluginBackend)
