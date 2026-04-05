@@ -27,7 +27,7 @@
 
 BassEnhancerPreset::BassEnhancerPreset(PipelineType pipeline_type, const std::string& instance_name)
     : PluginPresetBase(pipeline_type, instance_name) {
-  settings = get_db_instance<db::BassEnhancer>(pipeline_type);
+  settings = get_db_instance<DbBassEnhancer>(pipeline_type);
 }
 
 void BassEnhancerPreset::save(nlohmann::json& json) {

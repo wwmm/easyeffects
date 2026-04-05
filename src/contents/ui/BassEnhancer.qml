@@ -22,15 +22,16 @@ import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import "Common.js" as Common
 import ee.tags.plugin.name as TagsPluginName // qmllint disable
+import ee.ui
 import org.kde.kirigami as Kirigami
 
 Kirigami.ScrollablePage {
-    id: bassEnchancerPage
+    id: bassEnhancerPage
 
     required property string name
-    required property var pluginDB
+    required property DbBassEnhancer pluginDB
     required property var pipelineInstance
-    property var pluginBackend
+    property BassEnhancer pluginBackend
 
     function updateMeters() {
         if (!pluginBackend)
@@ -72,13 +73,13 @@ Kirigami.ScrollablePage {
                 Layout.fillWidth: true
                 orientation: Qt.Horizontal
                 snapMode: Controls.Slider.SnapAlways
-                value: bassEnchancerPage.pluginDB.blend
-                from: bassEnchancerPage.pluginDB.getMinValue("blend")
-                to: bassEnchancerPage.pluginDB.getMaxValue("blend")
+                value: bassEnhancerPage.pluginDB.blend
+                from: bassEnhancerPage.pluginDB.getMinValue("blend")
+                to: bassEnhancerPage.pluginDB.getMaxValue("blend")
                 stepSize: 1
                 onValueChanged: () => {
-                    if (value !== bassEnchancerPage.pluginDB.blend)
-                        bassEnchancerPage.pluginDB.blend = value;
+                    if (value !== bassEnhancerPage.pluginDB.blend)
+                        bassEnhancerPage.pluginDB.blend = value;
                 }
             }
 
@@ -109,14 +110,14 @@ Kirigami.ScrollablePage {
 
                     label: i18n("Amount") // qmllint disable
                     spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
-                    from: bassEnchancerPage.pluginDB.getMinValue("amount")
-                    to: bassEnchancerPage.pluginDB.getMaxValue("amount")
-                    value: bassEnchancerPage.pluginDB.amount
+                    from: bassEnhancerPage.pluginDB.getMinValue("amount")
+                    to: bassEnhancerPage.pluginDB.getMaxValue("amount")
+                    value: bassEnhancerPage.pluginDB.amount
                     decimals: 2
                     stepSize: 0.1
                     unit: Units.dB
                     onValueModified: v => {
-                        bassEnchancerPage.pluginDB.amount = v;
+                        bassEnhancerPage.pluginDB.amount = v;
                     }
                 }
 
@@ -125,13 +126,13 @@ Kirigami.ScrollablePage {
 
                     label: i18n("Harmonics") // qmllint disable
                     spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
-                    from: bassEnchancerPage.pluginDB.getMinValue("harmonics")
-                    to: bassEnchancerPage.pluginDB.getMaxValue("harmonics")
-                    value: bassEnchancerPage.pluginDB.harmonics
+                    from: bassEnhancerPage.pluginDB.getMinValue("harmonics")
+                    to: bassEnhancerPage.pluginDB.getMaxValue("harmonics")
+                    value: bassEnhancerPage.pluginDB.harmonics
                     decimals: 1
                     stepSize: 0.1
                     onValueModified: v => {
-                        bassEnchancerPage.pluginDB.harmonics = v;
+                        bassEnhancerPage.pluginDB.harmonics = v;
                     }
                 }
 
@@ -140,14 +141,14 @@ Kirigami.ScrollablePage {
 
                     label: i18n("Scope") // qmllint disable
                     spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
-                    from: bassEnchancerPage.pluginDB.getMinValue("scope")
-                    to: bassEnchancerPage.pluginDB.getMaxValue("scope")
-                    value: bassEnchancerPage.pluginDB.scope
+                    from: bassEnhancerPage.pluginDB.getMinValue("scope")
+                    to: bassEnhancerPage.pluginDB.getMaxValue("scope")
+                    value: bassEnhancerPage.pluginDB.scope
                     decimals: 0
                     stepSize: 1
                     unit: Units.hz
                     onValueModified: v => {
-                        bassEnchancerPage.pluginDB.scope = v;
+                        bassEnhancerPage.pluginDB.scope = v;
                     }
                 }
 
@@ -155,10 +156,10 @@ Kirigami.ScrollablePage {
                     id: floorActive
 
                     label: i18n("Floor active") // qmllint disable
-                    isChecked: bassEnchancerPage.pluginDB.floorActive
+                    isChecked: bassEnhancerPage.pluginDB.floorActive
                     onCheckedChanged: {
-                        if (isChecked !== bassEnchancerPage.pluginDB.floorActive)
-                            bassEnchancerPage.pluginDB.floorActive = isChecked;
+                        if (isChecked !== bassEnhancerPage.pluginDB.floorActive)
+                            bassEnhancerPage.pluginDB.floorActive = isChecked;
                     }
                 }
 
@@ -167,15 +168,15 @@ Kirigami.ScrollablePage {
 
                     label: i18n("Floor") // qmllint disable
                     spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
-                    from: bassEnchancerPage.pluginDB.getMinValue("floor")
-                    to: bassEnchancerPage.pluginDB.getMaxValue("floor")
-                    value: bassEnchancerPage.pluginDB.floor
+                    from: bassEnhancerPage.pluginDB.getMinValue("floor")
+                    to: bassEnhancerPage.pluginDB.getMaxValue("floor")
+                    value: bassEnhancerPage.pluginDB.floor
                     decimals: 0
                     stepSize: 1
                     unit: Units.hz
                     enabled: floorActive.isChecked
                     onValueModified: v => {
-                        bassEnchancerPage.pluginDB.floor = v;
+                        bassEnhancerPage.pluginDB.floor = v;
                     }
                 }
 
@@ -195,7 +196,7 @@ Kirigami.ScrollablePage {
     header: EeInputOutputGain {
         id: inputOutputLevels
 
-        pluginDB: bassEnchancerPage.pluginDB
+        pluginDB: bassEnhancerPage.pluginDB
     }
 
     footer: RowLayout {
@@ -222,22 +223,22 @@ Kirigami.ScrollablePage {
                     icon.name: "window-duplicate-symbolic"
                     enabled: DbMain.showNativePluginUi
                     checkable: true
-                    checked: bassEnchancerPage.pluginBackend ? bassEnchancerPage.pluginBackend.hasNativeUi() : false
+                    checked: bassEnhancerPage.pluginBackend ? bassEnhancerPage.pluginBackend.hasNativeUi() : false
                     onTriggered: {
                         if (checked)
-                            bassEnchancerPage.pluginBackend.showNativeUi();
+                            bassEnhancerPage.pluginBackend.showNativeUi();
                         else
-                            bassEnchancerPage.pluginBackend.closeNativeUi();
+                            bassEnhancerPage.pluginBackend.closeNativeUi();
                     }
                 },
                 Kirigami.Action {
                     text: i18n("Listen") // qmllint disable
                     icon.name: "audio-headset-symbolic"
                     checkable: true
-                    checked: bassEnchancerPage.pluginDB.listen
+                    checked: bassEnhancerPage.pluginDB.listen
                     onTriggered: {
-                        if (bassEnchancerPage.pluginDB.listen != checked)
-                            bassEnchancerPage.pluginDB.listen = checked;
+                        if (bassEnhancerPage.pluginDB.listen != checked)
+                            bassEnhancerPage.pluginDB.listen = checked;
                     }
                 },
                 Kirigami.Action {
@@ -245,7 +246,7 @@ Kirigami.ScrollablePage {
                     text: i18n("Reset") // qmllint disable
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {
-                        bassEnchancerPage.pluginBackend.reset();
+                        bassEnhancerPage.pluginBackend.reset();
                     }
                 }
             ]

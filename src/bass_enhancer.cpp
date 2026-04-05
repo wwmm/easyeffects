@@ -47,7 +47,7 @@ BassEnhancer::BassEnhancer(const std::string& tag,
                  instance_id,
                  pipe_manager,
                  pipe_type),
-      settings(db::Manager::self().get_plugin_db<db::BassEnhancer>(
+      settings(db::Manager::self().get_plugin_db<DbBassEnhancer>(
           pipe_type,
           tags::plugin_name::BaseName::bassEnhancer + "#" + instance_id)) {
   const auto lv2_plugin_uri = "http://calf.sourceforge.net/plugins/BassEnhancer";
@@ -60,17 +60,17 @@ BassEnhancer::BassEnhancer(const std::string& tag,
     util::debug(std::format("{}{} is not installed", log_tag, lv2_plugin_uri));
   }
 
-  init_common_controls<db::BassEnhancer>(settings);
+  init_common_controls<DbBassEnhancer>(settings);
 
   // specific plugin controls
 
-  BIND_LV2_PORT("listen", listen, setListen, db::BassEnhancer::listenChanged);
-  BIND_LV2_PORT_DB("amount", amount, setAmount, db::BassEnhancer::amountChanged, false);
-  BIND_LV2_PORT("drive", harmonics, setHarmonics, db::BassEnhancer::harmonicsChanged);
-  BIND_LV2_PORT("freq", scope, setScope, db::BassEnhancer::scopeChanged);
-  BIND_LV2_PORT("floor", floor, setFloor, db::BassEnhancer::floorChanged);
-  BIND_LV2_PORT("blend", blend, setBlend, db::BassEnhancer::blendChanged);
-  BIND_LV2_PORT("floor_active", floorActive, setFloorActive, db::BassEnhancer::floorActiveChanged);
+  BIND_LV2_PORT("listen", listen, setListen, DbBassEnhancer::listenChanged);
+  BIND_LV2_PORT_DB("amount", amount, setAmount, DbBassEnhancer::amountChanged, false);
+  BIND_LV2_PORT("drive", harmonics, setHarmonics, DbBassEnhancer::harmonicsChanged);
+  BIND_LV2_PORT("freq", scope, setScope, DbBassEnhancer::scopeChanged);
+  BIND_LV2_PORT("floor", floor, setFloor, DbBassEnhancer::floorChanged);
+  BIND_LV2_PORT("blend", blend, setBlend, DbBassEnhancer::blendChanged);
+  BIND_LV2_PORT("floor_active", floorActive, setFloorActive, DbBassEnhancer::floorActiveChanged);
 }
 
 BassEnhancer::~BassEnhancer() {

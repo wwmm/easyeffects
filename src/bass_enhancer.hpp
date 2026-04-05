@@ -69,5 +69,5 @@ class BassEnhancer : public PluginBase {
 
   float harmonics_port_value = 0.0;
 
-  db::BassEnhancer* settings = nullptr;
+  DbBassEnhancer* settings = nullptr;
 };

@@ -183,7 +183,7 @@ void Manager::create_plugin_db(const QString& parentGroup,
 
     } else if (name.startsWith(tags::plugin_name::BaseName::bassEnhancer)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::bassEnhancer, id),
-                   [&] { return new db::BassEnhancer(parentGroup, id); });
+                   [&] { return new DbBassEnhancer(parentGroup, id); });
 
     } else if (name.startsWith(tags::plugin_name::BaseName::bassLoudness)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::bassLoudness, id),

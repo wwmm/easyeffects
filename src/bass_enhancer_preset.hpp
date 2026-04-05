@@ -30,7 +30,7 @@ class BassEnhancerPreset : public PluginPresetBase {
   explicit BassEnhancerPreset(PipelineType pipeline_type, const std::string& instance_name);
 
  private:
-  db::BassEnhancer* settings = nullptr;
+  DbBassEnhancer* settings = nullptr;
 
   void save(nlohmann::json& json) override;
 
