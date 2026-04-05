@@ -27,7 +27,7 @@
 
 DeesserPreset::DeesserPreset(PipelineType pipeline_type, const std::string& instance_name)
     : PluginPresetBase(pipeline_type, instance_name) {
-  settings = get_db_instance<db::Deesser>(pipeline_type);
+  settings = get_db_instance<DbDeesser>(pipeline_type);
 }
 
 void DeesserPreset::save(nlohmann::json& json) {

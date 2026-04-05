@@ -30,7 +30,7 @@ class DeesserPreset : public PluginPresetBase {
   explicit DeesserPreset(PipelineType pipeline_type, const std::string& instance_name);
 
  private:
-  db::Deesser* settings = nullptr;
+  DbDeesser* settings = nullptr;
 
   void save(nlohmann::json& json) override;
 

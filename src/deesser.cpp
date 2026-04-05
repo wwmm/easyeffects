@@ -44,9 +44,8 @@ Deesser::Deesser(const std::string& tag, pw::Manager* pipe_manager, PipelineType
                  instance_id,
                  pipe_manager,
                  pipe_type),
-      settings(
-          db::Manager::self().get_plugin_db<db::Deesser>(pipe_type,
-                                                         tags::plugin_name::BaseName::deesser + "#" + instance_id)) {
+      settings(db::Manager::self().get_plugin_db<DbDeesser>(pipe_type,
+                                                            tags::plugin_name::BaseName::deesser + "#" + instance_id)) {
   const auto lv2_plugin_uri = "http://calf.sourceforge.net/plugins/Deesser";
 
   lv2_wrapper = std::make_unique<lv2::Lv2Wrapper>(lv2_plugin_uri);
@@ -57,20 +56,20 @@ Deesser::Deesser(const std::string& tag, pw::Manager* pipe_manager, PipelineType
     util::debug(std::format("{}{} is not installed", log_tag, lv2_plugin_uri));
   }
 
-  init_common_controls<db::Deesser>(settings);
+  init_common_controls<DbDeesser>(settings);
 
-  BIND_LV2_PORT("mode", mode, setMode, db::Deesser::modeChanged);
-  BIND_LV2_PORT("detection", detection, setDetection, db::Deesser::detectionChanged);
-  BIND_LV2_PORT("ratio", ratio, setRatio, db::Deesser::ratioChanged);
-  BIND_LV2_PORT("f1_freq", f1Freq, setF1Freq, db::Deesser::f1FreqChanged);
-  BIND_LV2_PORT("f2_freq", f2Freq, setF2Freq, db::Deesser::f2FreqChanged);
-  BIND_LV2_PORT("f2_q", f2Q, setF2Q, db::Deesser::f2QChanged);
-  BIND_LV2_PORT("laxity", laxity, setLaxity, db::Deesser::laxityChanged);
-  BIND_LV2_PORT("sc_listen", scListen, setScListen, db::Deesser::scListenChanged);
-  BIND_LV2_PORT_DB("threshold", threshold, setThreshold, db::Deesser::thresholdChanged, false);
-  BIND_LV2_PORT_DB("makeup", makeup, setMakeup, db::Deesser::makeupChanged, false);
-  BIND_LV2_PORT_DB("f1_level", f1Level, setF1Level, db::Deesser::f1LevelChanged, false);
-  BIND_LV2_PORT_DB("f2_level", f2Level, setF2Level, db::Deesser::f2LevelChanged, false);
+  BIND_LV2_PORT("mode", mode, setMode, DbDeesser::modeChanged);
+  BIND_LV2_PORT("detection", detection, setDetection, DbDeesser::detectionChanged);
+  BIND_LV2_PORT("ratio", ratio, setRatio, DbDeesser::ratioChanged);
+  BIND_LV2_PORT("f1_freq", f1Freq, setF1Freq, DbDeesser::f1FreqChanged);
+  BIND_LV2_PORT("f2_freq", f2Freq, setF2Freq, DbDeesser::f2FreqChanged);
+  BIND_LV2_PORT("f2_q", f2Q, setF2Q, DbDeesser::f2QChanged);
+  BIND_LV2_PORT("laxity", laxity, setLaxity, DbDeesser::laxityChanged);
+  BIND_LV2_PORT("sc_listen", scListen, setScListen, DbDeesser::scListenChanged);
+  BIND_LV2_PORT_DB("threshold", threshold, setThreshold, DbDeesser::thresholdChanged, false);
+  BIND_LV2_PORT_DB("makeup", makeup, setMakeup, DbDeesser::makeupChanged, false);
+  BIND_LV2_PORT_DB("f1_level", f1Level, setF1Level, DbDeesser::f1LevelChanged, false);
+  BIND_LV2_PORT_DB("f2_level", f2Level, setF2Level, DbDeesser::f2LevelChanged, false);
 }
 
 Deesser::~Deesser() {

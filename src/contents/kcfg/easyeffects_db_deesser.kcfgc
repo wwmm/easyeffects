@@ -1,6 +1,5 @@
 File=easyeffects_db_deesser.kcfg
-NameSpace=db
-ClassName=Deesser
+ClassName=DbDeesser
 Inherits=KConfigBaseEE
 IncludeFiles=\"kconfig_base_ee.hpp\"
 Mutators=true

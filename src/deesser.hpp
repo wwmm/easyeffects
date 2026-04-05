@@ -66,7 +66,7 @@ class Deesser : public PluginBase {
   Q_INVOKABLE [[nodiscard]] float getDetectedLevel() const;
 
  private:
-  db::Deesser* settings = nullptr;
+  DbDeesser* settings = nullptr;
 
   bool ready = false;
 
