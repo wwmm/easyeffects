@@ -25,6 +25,7 @@
 #include <QLocalServer>
 #include <QMetaType>
 #include <cstring>
+#include <filesystem>
 #include <format>
 #include <memory>
 #include <regex>
@@ -51,7 +52,10 @@ LocalServer::~LocalServer() {
 }
 
 void LocalServer::startServer() {
-  auto path = QStandardPaths::writableLocation(QStandardPaths::RuntimeLocation) + "/" + tags::local_server::server_name;
+  auto sys_path =
+      std::filesystem::exists("/.flatpak-info") ? QStandardPaths::AppDataLocation : QStandardPaths::RuntimeLocation;
+
+  auto path = QStandardPaths::writableLocation(sys_path) + "/" + tags::local_server::server_name;
 
   QLocalServer::removeServer(path);
 

@@ -310,8 +310,11 @@ auto compare_versions(const std::string& v0, const std::string& v1) -> int {
 }
 
 auto get_lock_file() -> std::unique_ptr<QLockFile> {
-  auto lockFile = std::make_unique<QLockFile>(QString::fromStdString(
-      QStandardPaths::writableLocation(QStandardPaths::RuntimeLocation).toStdString() + "/easyeffects.lock"));
+  auto sys_path =
+      std::filesystem::exists("/.flatpak-info") ? QStandardPaths::AppDataLocation : QStandardPaths::RuntimeLocation;
+
+  auto lockFile = std::make_unique<QLockFile>(
+      QString::fromStdString(QStandardPaths::writableLocation(sys_path).toStdString() + "/easyeffects.lock"));
 
   lockFile->setStaleLockTime(0);
 

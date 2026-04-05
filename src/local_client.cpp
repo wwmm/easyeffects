@@ -21,6 +21,7 @@
 #include <qlocalsocket.h>
 #include <qobject.h>
 #include <qstandardpaths.h>
+#include <filesystem>
 #include <format>
 #include <memory>
 #include <string>
@@ -29,7 +30,10 @@
 #include "util.hpp"
 
 LocalClient::LocalClient(QObject* parent) : QObject(parent), client(std::make_unique<QLocalSocket>(this)) {
-  auto path = QStandardPaths::writableLocation(QStandardPaths::RuntimeLocation) + "/" + tags::local_server::server_name;
+  auto sys_path =
+      std::filesystem::exists("/.flatpak-info") ? QStandardPaths::AppDataLocation : QStandardPaths::RuntimeLocation;
+
+  auto path = QStandardPaths::writableLocation(sys_path) + "/" + tags::local_server::server_name;
 
   client->connectToServer(path);
 
