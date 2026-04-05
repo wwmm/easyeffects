@@ -30,7 +30,7 @@ class CrossfeedPreset : public PluginPresetBase {
   explicit CrossfeedPreset(PipelineType pipeline_type, const std::string& instance_name);
 
  private:
-  db::Crossfeed* settings = nullptr;
+  DbCrossfeed* settings = nullptr;
 
   void save(nlohmann::json& json) override;
 

@@ -27,7 +27,7 @@
 
 CrossfeedPreset::CrossfeedPreset(PipelineType pipeline_type, const std::string& instance_name)
     : PluginPresetBase(pipeline_type, instance_name) {
-  settings = get_db_instance<db::Crossfeed>(pipeline_type);
+  settings = get_db_instance<DbCrossfeed>(pipeline_type);
 }
 
 void CrossfeedPreset::save(nlohmann::json& json) {

@@ -27,9 +27,9 @@ Kirigami.ScrollablePage {
     id: crossfeedPage
 
     required property string name
-    required property var pluginDB
+    required property DbCrossfeed pluginDB
     required property var pipelineInstance
-    property var pluginBackend
+    property Crossfeed pluginBackend: null
 
     function updateMeters() {
         if (!pluginBackend)

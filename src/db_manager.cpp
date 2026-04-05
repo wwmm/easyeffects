@@ -199,7 +199,7 @@ void Manager::create_plugin_db(const QString& parentGroup,
 
     } else if (name.startsWith(tags::plugin_name::BaseName::crossfeed)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::crossfeed, id),
-                   [&] { return new db::Crossfeed(parentGroup, id); });
+                   [&] { return new DbCrossfeed(parentGroup, id); });
 
     } else if (name.startsWith(tags::plugin_name::BaseName::crusher)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::crusher, id), [&] { return new db::Crusher(parentGroup, id); });

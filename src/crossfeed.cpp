@@ -39,22 +39,22 @@ Crossfeed::Crossfeed(const std::string& tag, pw::Manager* pipe_manager, Pipeline
                  instance_id,
                  pipe_manager,
                  pipe_type),
-      settings(db::Manager::self().get_plugin_db<db::Crossfeed>(
-          pipe_type,
-          tags::plugin_name::BaseName::crossfeed + "#" + instance_id)) {
+      settings(
+          db::Manager::self().get_plugin_db<DbCrossfeed>(pipe_type,
+                                                         tags::plugin_name::BaseName::crossfeed + "#" + instance_id)) {
   // bypass, input and output gain controls
 
-  init_common_controls<db::Crossfeed>(settings);
+  init_common_controls<DbCrossfeed>(settings);
 
   // specific plugin controls
 
-  connect(settings, &db::Crossfeed::fcutChanged, [&]() {
+  connect(settings, &DbCrossfeed::fcutChanged, [&]() {
     std::scoped_lock<std::mutex> lock(data_mutex);
 
     bs2b.set_level_feed(settings->fcut());
   });
 
-  connect(settings, &db::Crossfeed::feedChanged, [&]() {
+  connect(settings, &DbCrossfeed::feedChanged, [&]() {
     std::scoped_lock<std::mutex> lock(data_mutex);
 
     bs2b.set_level_feed(10 * static_cast<int>(settings->feed()));

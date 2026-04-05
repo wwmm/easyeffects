@@ -69,5 +69,5 @@ class Crossfeed : public PluginBase {
 
   bs2b_base bs2b;
 
-  db::Crossfeed* settings = nullptr;
+  DbCrossfeed* settings = nullptr;
 };
