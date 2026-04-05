@@ -48,7 +48,7 @@ Compressor::Compressor(const std::string& tag, pw::Manager* pipe_manager, Pipeli
                  pipe_manager,
                  pipe_type,
                  true),
-      settings(db::Manager::self().get_plugin_db<db::Compressor>(
+      settings(db::Manager::self().get_plugin_db<DbCompressor>(
           pipe_type,
           tags::plugin_name::BaseName::compressor + "#" + instance_id)) {
   const auto lv2_plugin_uri = "http://lsp-plug.in/plugins/lv2/sc_compressor_stereo";
@@ -61,46 +61,46 @@ Compressor::Compressor(const std::string& tag, pw::Manager* pipe_manager, Pipeli
     util::debug(std::format("{}{} is not installed", log_tag, lv2_plugin_uri));
   }
 
-  init_common_controls<db::Compressor>(settings);
+  init_common_controls<DbCompressor>(settings);
 
   // specific plugin controls
 
-  connect(settings, &db::Compressor::sidechainTypeChanged, [&]() { update_sidechain_links(); });
-  connect(settings, &db::Compressor::sidechainInputDeviceChanged, [&]() { update_sidechain_links(); });
+  connect(settings, &DbCompressor::sidechainTypeChanged, [&]() { update_sidechain_links(); });
+  connect(settings, &DbCompressor::sidechainInputDeviceChanged, [&]() { update_sidechain_links(); });
 
-  BIND_LV2_PORT("cm", mode, setMode, db::Compressor::modeChanged);
-  BIND_LV2_PORT("sct", sidechainType, setSidechainType, db::Compressor::sidechainTypeChanged);
-  BIND_LV2_PORT("scm", sidechainMode, setSidechainMode, db::Compressor::sidechainModeChanged);
-  BIND_LV2_PORT("scl", sidechainListen, setSidechainListen, db::Compressor::sidechainListenChanged);
-  BIND_LV2_PORT("scs", sidechainSource, setSidechainSource, db::Compressor::sidechainSourceChanged);
-  BIND_LV2_PORT("sscs", stereoSplitSource, setStereoSplitSource, db::Compressor::stereoSplitSourceChanged);
-  BIND_LV2_PORT("ssplit", stereoSplit, setStereoSplit, db::Compressor::stereoSplitChanged);
-  BIND_LV2_PORT("scr", sidechainReactivity, setSidechainReactivity, db::Compressor::sidechainReactivityChanged);
-  BIND_LV2_PORT("sla", sidechainLookahead, setSidechainLookahead, db::Compressor::sidechainLookaheadChanged);
-  BIND_LV2_PORT("shpm", hpfMode, setHpfMode, db::Compressor::hpfModeChanged);
-  BIND_LV2_PORT("slpm", lpfMode, setLpfMode, db::Compressor::lpfModeChanged);
-  BIND_LV2_PORT("shpf", hpfFrequency, setHpfFrequency, db::Compressor::hpfFrequencyChanged);
-  BIND_LV2_PORT("slpf", lpfFrequency, setLpfFrequency, db::Compressor::lpfFrequencyChanged);
-  BIND_LV2_PORT("cr", ratio, setRatio, db::Compressor::ratioChanged);
-  BIND_LV2_PORT("at", attack, setAttack, db::Compressor::attackChanged);
-  BIND_LV2_PORT("rt", release, setRelease, db::Compressor::releaseChanged);
-  BIND_LV2_PORT_DB("bth", boostThreshold, setBoostThreshold, db::Compressor::boostThresholdChanged, false);
-  BIND_LV2_PORT_DB("bsa", boostAmount, setBoostAmount, db::Compressor::boostAmountChanged, false);
-  BIND_LV2_PORT_DB("kn", knee, setKnee, db::Compressor::kneeChanged, false);
-  BIND_LV2_PORT_DB("mk", makeup, setMakeup, db::Compressor::makeupChanged, false);
-  BIND_LV2_PORT_DB("al", threshold, setThreshold, db::Compressor::thresholdChanged, false);
+  BIND_LV2_PORT("cm", mode, setMode, DbCompressor::modeChanged);
+  BIND_LV2_PORT("sct", sidechainType, setSidechainType, DbCompressor::sidechainTypeChanged);
+  BIND_LV2_PORT("scm", sidechainMode, setSidechainMode, DbCompressor::sidechainModeChanged);
+  BIND_LV2_PORT("scl", sidechainListen, setSidechainListen, DbCompressor::sidechainListenChanged);
+  BIND_LV2_PORT("scs", sidechainSource, setSidechainSource, DbCompressor::sidechainSourceChanged);
+  BIND_LV2_PORT("sscs", stereoSplitSource, setStereoSplitSource, DbCompressor::stereoSplitSourceChanged);
+  BIND_LV2_PORT("ssplit", stereoSplit, setStereoSplit, DbCompressor::stereoSplitChanged);
+  BIND_LV2_PORT("scr", sidechainReactivity, setSidechainReactivity, DbCompressor::sidechainReactivityChanged);
+  BIND_LV2_PORT("sla", sidechainLookahead, setSidechainLookahead, DbCompressor::sidechainLookaheadChanged);
+  BIND_LV2_PORT("shpm", hpfMode, setHpfMode, DbCompressor::hpfModeChanged);
+  BIND_LV2_PORT("slpm", lpfMode, setLpfMode, DbCompressor::lpfModeChanged);
+  BIND_LV2_PORT("shpf", hpfFrequency, setHpfFrequency, DbCompressor::hpfFrequencyChanged);
+  BIND_LV2_PORT("slpf", lpfFrequency, setLpfFrequency, DbCompressor::lpfFrequencyChanged);
+  BIND_LV2_PORT("cr", ratio, setRatio, DbCompressor::ratioChanged);
+  BIND_LV2_PORT("at", attack, setAttack, DbCompressor::attackChanged);
+  BIND_LV2_PORT("rt", release, setRelease, DbCompressor::releaseChanged);
+  BIND_LV2_PORT_DB("bth", boostThreshold, setBoostThreshold, DbCompressor::boostThresholdChanged, false);
+  BIND_LV2_PORT_DB("bsa", boostAmount, setBoostAmount, DbCompressor::boostAmountChanged, false);
+  BIND_LV2_PORT_DB("kn", knee, setKnee, DbCompressor::kneeChanged, false);
+  BIND_LV2_PORT_DB("mk", makeup, setMakeup, DbCompressor::makeupChanged, false);
+  BIND_LV2_PORT_DB("al", threshold, setThreshold, DbCompressor::thresholdChanged, false);
 
   // dB controls with -inf mode.
-  BIND_LV2_PORT_DB("rrl", releaseThreshold, setReleaseThreshold, db::Compressor::releaseThresholdChanged, true);
-  BIND_LV2_PORT_DB("scp", sidechainPreamp, setSidechainPreamp, db::Compressor::sidechainPreampChanged, true);
-  BIND_LV2_PORT_DB("cdr", dry, setDry, db::Compressor::dryChanged, true);
-  BIND_LV2_PORT_DB("cwt", wet, setWet, db::Compressor::wetChanged, true);
-  BIND_LV2_PORT_DB("in2lk", inputToLink, setInputToLink, db::Compressor::inputToLinkChanged, true);
-  BIND_LV2_PORT_DB("in2sc", inputToSidechain, setInputToSidechain, db::Compressor::inputToSidechainChanged, true);
-  BIND_LV2_PORT_DB("sc2in", sidechainToInput, setSidechainToInput, db::Compressor::sidechainToInputChanged, true);
-  BIND_LV2_PORT_DB("sc2lk", sidechainToLink, setSidechainToLink, db::Compressor::sidechainToLinkChanged, true);
-  BIND_LV2_PORT_DB("lk2sc", linkToSidechain, setLinkToSidechain, db::Compressor::linkToSidechainChanged, true);
-  BIND_LV2_PORT_DB("lk2in", linkToInput, setLinkToInput, db::Compressor::linkToInputChanged, true);
+  BIND_LV2_PORT_DB("rrl", releaseThreshold, setReleaseThreshold, DbCompressor::releaseThresholdChanged, true);
+  BIND_LV2_PORT_DB("scp", sidechainPreamp, setSidechainPreamp, DbCompressor::sidechainPreampChanged, true);
+  BIND_LV2_PORT_DB("cdr", dry, setDry, DbCompressor::dryChanged, true);
+  BIND_LV2_PORT_DB("cwt", wet, setWet, DbCompressor::wetChanged, true);
+  BIND_LV2_PORT_DB("in2lk", inputToLink, setInputToLink, DbCompressor::inputToLinkChanged, true);
+  BIND_LV2_PORT_DB("in2sc", inputToSidechain, setInputToSidechain, DbCompressor::inputToSidechainChanged, true);
+  BIND_LV2_PORT_DB("sc2in", sidechainToInput, setSidechainToInput, DbCompressor::sidechainToInputChanged, true);
+  BIND_LV2_PORT_DB("sc2lk", sidechainToLink, setSidechainToLink, DbCompressor::sidechainToLinkChanged, true);
+  BIND_LV2_PORT_DB("lk2sc", linkToSidechain, setLinkToSidechain, DbCompressor::linkToSidechainChanged, true);
+  BIND_LV2_PORT_DB("lk2in", linkToInput, setLinkToInput, DbCompressor::linkToInputChanged, true);
 }
 
 Compressor::~Compressor() {

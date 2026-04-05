@@ -27,7 +27,7 @@
 
 CompressorPreset::CompressorPreset(PipelineType pipeline_type, const std::string& instance_name)
     : PluginPresetBase(pipeline_type, instance_name) {
-  settings = get_db_instance<db::Compressor>(pipeline_type);
+  settings = get_db_instance<DbCompressor>(pipeline_type);
 }
 
 void CompressorPreset::save(nlohmann::json& json) {

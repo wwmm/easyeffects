@@ -1,6 +1,5 @@
 File=easyeffects_db_compressor.kcfg
-NameSpace=db
-ClassName=Compressor
+ClassName=DbCompressor
 Inherits=KConfigBaseEE
 IncludeFiles=\"kconfig_base_ee.hpp\"
 Mutators=true

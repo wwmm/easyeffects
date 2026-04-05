@@ -191,7 +191,7 @@ void Manager::create_plugin_db(const QString& parentGroup,
 
     } else if (name.startsWith(tags::plugin_name::BaseName::compressor)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::compressor, id),
-                   [&] { return new db::Compressor(parentGroup, id); });
+                   [&] { return new DbCompressor(parentGroup, id); });
 
     } else if (name.startsWith(tags::plugin_name::BaseName::convolver)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::convolver, id),

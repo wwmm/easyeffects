@@ -89,7 +89,7 @@ class Compressor : public PluginBase {
   float curve_left = 0.0F, curve_right = 0.0F;
   float envelope_left = 0.0F, envelope_right = 0.0F;
 
-  db::Compressor* settings = nullptr;
+  DbCompressor* settings = nullptr;
 
   std::vector<pw_proxy*> list_proxies;
 

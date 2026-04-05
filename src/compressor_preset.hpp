@@ -30,7 +30,7 @@ class CompressorPreset : public PluginPresetBase {
   explicit CompressorPreset(PipelineType pipeline_type, const std::string& instance_name);
 
  private:
-  db::Compressor* settings = nullptr;
+  DbCompressor* settings = nullptr;
 
   void save(nlohmann::json& json) override;
 
