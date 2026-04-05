@@ -28,7 +28,7 @@
 
 DelayPreset::DelayPreset(PipelineType pipeline_type, const std::string& instance_name)
     : PluginPresetBase(pipeline_type, instance_name) {
-  settings = get_db_instance<db::Delay>(pipeline_type);
+  settings = get_db_instance<DbDelay>(pipeline_type);
 }
 
 void DelayPreset::save(nlohmann::json& json) {

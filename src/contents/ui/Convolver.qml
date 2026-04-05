@@ -23,6 +23,7 @@ import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import ee.presets as Presets
 import ee.tags.plugin.name as TagsPluginName // qmllint disable
+import ee.ui
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
@@ -32,7 +33,7 @@ Kirigami.ScrollablePage {
     required property string name
     required property DbConvolver pluginDB
     required property var pipelineInstance
-    property Convolver pluginBackend: null
+    property Convolver pluginBackend
 
     function updateMeters() {
         if (!pluginBackend)

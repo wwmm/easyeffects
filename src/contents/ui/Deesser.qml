@@ -22,6 +22,7 @@ import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import "Common.js" as Common
 import ee.tags.plugin.name as TagsPluginName // qmllint disable
+import ee.ui
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 

@@ -1,6 +1,5 @@
 File=easyeffects_db_delay.kcfg
-NameSpace=db
-ClassName=Delay
+ClassName=DbDelay
 Inherits=KConfigBaseEE
 IncludeFiles=\"kconfig_base_ee.hpp\"
 Mutators=true

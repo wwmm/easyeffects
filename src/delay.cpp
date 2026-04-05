@@ -45,8 +45,8 @@ Delay::Delay(const std::string& tag, pw::Manager* pipe_manager, PipelineType pip
                  instance_id,
                  pipe_manager,
                  pipe_type),
-      settings(db::Manager::self().get_plugin_db<db::Delay>(pipe_type,
-                                                            tags::plugin_name::BaseName::delay + "#" + instance_id)) {
+      settings(db::Manager::self().get_plugin_db<DbDelay>(pipe_type,
+                                                          tags::plugin_name::BaseName::delay + "#" + instance_id)) {
   const auto lv2_plugin_uri = "http://lsp-plug.in/plugins/lv2/comp_delay_x2_stereo";
 
   lv2_wrapper = std::make_unique<lv2::Lv2Wrapper>(lv2_plugin_uri);
@@ -57,36 +57,36 @@ Delay::Delay(const std::string& tag, pw::Manager* pipe_manager, PipelineType pip
     util::debug(std::format("{}{} is not installed", log_tag, lv2_plugin_uri));
   }
 
-  init_common_controls<db::Delay>(settings);
+  init_common_controls<DbDelay>(settings);
 
-  BIND_LV2_PORT("mode_l", modeL, setModeL, db::Delay::modeLChanged);
-  BIND_LV2_PORT("mode_r", modeR, setModeR, db::Delay::modeRChanged);
+  BIND_LV2_PORT("mode_l", modeL, setModeL, DbDelay::modeLChanged);
+  BIND_LV2_PORT("mode_r", modeR, setModeR, DbDelay::modeRChanged);
 
-  BIND_LV2_PORT("time_l", timeL, setTimeL, db::Delay::timeLChanged);
-  BIND_LV2_PORT("time_r", timeR, setTimeR, db::Delay::timeRChanged);
+  BIND_LV2_PORT("time_l", timeL, setTimeL, DbDelay::timeLChanged);
+  BIND_LV2_PORT("time_r", timeR, setTimeR, DbDelay::timeRChanged);
 
-  BIND_LV2_PORT("samp_l", sampleL, setSampleL, db::Delay::sampleLChanged);
-  BIND_LV2_PORT("samp_r", sampleR, setSampleR, db::Delay::sampleRChanged);
+  BIND_LV2_PORT("samp_l", sampleL, setSampleL, DbDelay::sampleLChanged);
+  BIND_LV2_PORT("samp_r", sampleR, setSampleR, DbDelay::sampleRChanged);
 
-  BIND_LV2_PORT("m_l", metersL, setMetersL, db::Delay::metersLChanged);
-  BIND_LV2_PORT("m_r", metersR, setMetersR, db::Delay::metersRChanged);
+  BIND_LV2_PORT("m_l", metersL, setMetersL, DbDelay::metersLChanged);
+  BIND_LV2_PORT("m_r", metersR, setMetersR, DbDelay::metersRChanged);
 
-  BIND_LV2_PORT("cm_l", centimetersL, setCentimetersL, db::Delay::centimetersLChanged);
-  BIND_LV2_PORT("cm_r", centimetersR, setCentimetersR, db::Delay::centimetersRChanged);
+  BIND_LV2_PORT("cm_l", centimetersL, setCentimetersL, DbDelay::centimetersLChanged);
+  BIND_LV2_PORT("cm_r", centimetersR, setCentimetersR, DbDelay::centimetersRChanged);
 
-  BIND_LV2_PORT("t_l", temperatureL, setTemperatureL, db::Delay::temperatureLChanged);
-  BIND_LV2_PORT("t_r", temperatureR, setTemperatureR, db::Delay::temperatureRChanged);
+  BIND_LV2_PORT("t_l", temperatureL, setTemperatureL, DbDelay::temperatureLChanged);
+  BIND_LV2_PORT("t_r", temperatureR, setTemperatureR, DbDelay::temperatureRChanged);
 
-  BIND_LV2_PORT("phase_l", invertPhaseL, setInvertPhaseL, db::Delay::invertPhaseLChanged);
-  BIND_LV2_PORT("phase_r", invertPhaseR, setInvertPhaseR, db::Delay::invertPhaseRChanged);
+  BIND_LV2_PORT("phase_l", invertPhaseL, setInvertPhaseL, DbDelay::invertPhaseLChanged);
+  BIND_LV2_PORT("phase_r", invertPhaseR, setInvertPhaseR, DbDelay::invertPhaseRChanged);
 
   // dB controls with -inf mode.
 
-  BIND_LV2_PORT_DB("dry_l", dryL, setDryL, db::Delay::dryLChanged, true);
-  BIND_LV2_PORT_DB("dry_r", dryR, setDryR, db::Delay::dryRChanged, true);
+  BIND_LV2_PORT_DB("dry_l", dryL, setDryL, DbDelay::dryLChanged, true);
+  BIND_LV2_PORT_DB("dry_r", dryR, setDryR, DbDelay::dryRChanged, true);
 
-  BIND_LV2_PORT_DB("wet_l", wetL, setWetL, db::Delay::wetLChanged, true);
-  BIND_LV2_PORT_DB("wet_r", wetR, setWetR, db::Delay::wetRChanged, true);
+  BIND_LV2_PORT_DB("wet_l", wetL, setWetL, DbDelay::wetLChanged, true);
+  BIND_LV2_PORT_DB("wet_r", wetR, setWetR, DbDelay::wetRChanged, true);
 }
 
 Delay::~Delay() {

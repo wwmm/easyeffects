@@ -30,7 +30,7 @@ class DelayPreset : public PluginPresetBase {
   explicit DelayPreset(PipelineType pipeline_type, const std::string& instance_name);
 
  private:
-  db::Delay* settings = nullptr;
+  DbDelay* settings = nullptr;
 
   void save(nlohmann::json& json) override;
 

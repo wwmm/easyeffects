@@ -32,7 +32,7 @@ Kirigami.ScrollablePage {
     required property string name
     required property DbAutogain pluginDB
     required property var pipelineInstance
-    property Autogain pluginBackend: null
+    property Autogain pluginBackend
 
     function updateMeters() {
         if (!autogainPage.pluginBackend)

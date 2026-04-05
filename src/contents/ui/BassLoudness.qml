@@ -21,6 +21,7 @@ import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import ee.tags.plugin.name as TagsPluginName // qmllint disable
+import ee.ui
 import org.kde.kirigami as Kirigami
 
 Kirigami.ScrollablePage {
@@ -29,7 +30,7 @@ Kirigami.ScrollablePage {
     required property string name
     required property DbBassLoudness pluginDB
     required property var pipelineInstance
-    property BassLoudness pluginBackend: null
+    property BassLoudness pluginBackend
 
     function updateMeters() {
         if (!pluginBackend)

@@ -23,6 +23,7 @@ import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import ee.tags.plugin.name as TagsPluginName // qmllint disable
+import ee.ui
 import org.kde.kirigami as Kirigami
 
 Kirigami.ScrollablePage {
@@ -31,7 +32,7 @@ Kirigami.ScrollablePage {
     required property string name
     required property DbCrystalizer pluginDB
     required property var pipelineInstance
-    property Crystalizer pluginBackend: null
+    property Crystalizer pluginBackend
 
     function updateMeters() {
         if (!pluginBackend)

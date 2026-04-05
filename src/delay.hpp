@@ -64,7 +64,7 @@ class Delay : public PluginBase {
   auto get_latency_seconds() -> float override;
 
  private:
-  db::Delay* settings = nullptr;
+  DbDelay* settings = nullptr;
 
   bool ready = false;
 

@@ -28,9 +28,9 @@ Kirigami.ScrollablePage {
     id: delayPage
 
     required property string name
-    required property var pluginDB
+    required property DbDelay pluginDB
     required property var pipelineInstance
-    property var pluginBackend
+    property Delay pluginBackend
 
     function updateMeters() {
         if (!pluginBackend)

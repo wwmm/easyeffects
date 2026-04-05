@@ -209,7 +209,7 @@ void Manager::create_plugin_db(const QString& parentGroup,
                    [&] { return new DbCrystalizer(parentGroup, id); });
 
     } else if (name.startsWith(tags::plugin_name::BaseName::delay)) {
-      ensureExists(makeKey(tags::plugin_name::BaseName::delay, id), [&] { return new db::Delay(parentGroup, id); });
+      ensureExists(makeKey(tags::plugin_name::BaseName::delay, id), [&] { return new DbDelay(parentGroup, id); });
 
     } else if (name.startsWith(tags::plugin_name::BaseName::deepfilternet)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::deepfilternet, id),

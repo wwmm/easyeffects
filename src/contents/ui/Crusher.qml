@@ -21,6 +21,7 @@ import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import ee.tags.plugin.name as TagsPluginName // qmllint disable
+import ee.ui
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
@@ -30,7 +31,7 @@ Kirigami.ScrollablePage {
     required property string name
     required property DbCrusher pluginDB
     required property var pipelineInstance
-    property Crusher pluginBackend: null
+    property Crusher pluginBackend
 
     function updateMeters() {
         if (!pluginBackend)
