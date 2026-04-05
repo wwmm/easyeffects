@@ -8,6 +8,13 @@ kde_target_enable_exceptions(easyeffects PRIVATE)
 
 kconfig_add_kcfg_files(easyeffects GENERATE_MOC ${KCFGC_FILES})
 
+# set(KCONFIG_GENERATED_SOURCES
+#     ${CMAKE_CURRENT_BINARY_DIR}/easyeffects_db_autogain.h
+#     ${CMAKE_CURRENT_BINARY_DIR}/easyeffects_db_autogain.cpp
+# )
+
+# MESSAGE(STATUS ${KCONFIG_GENERATED_SOURCES})
+
 # install(FILES ${KCFG_FILES} DESTINATION ${KDE_INSTALL_KCFGDIR})
 
 set_source_files_properties(
@@ -21,6 +28,7 @@ qt_add_qml_module(easyeffects
     URI ee.ui
     VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
     SOURCES
+        # ${KCONFIG_GENERATED_SOURCES}
         presets_list_model.cpp
         presets_list_model.hpp
         units.hpp

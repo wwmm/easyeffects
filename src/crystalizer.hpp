@@ -40,7 +40,7 @@
 
 class Crystalizer : public PluginBase {
   Q_OBJECT
-  QML_ELEMENT
+  QML_NAMED_ELEMENT(BackendCrystalizer)
   QML_UNCREATABLE("Use the c++ instance")
 
   Q_PROPERTY(int numBands MEMBER nbands CONSTANT)

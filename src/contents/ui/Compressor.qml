@@ -33,7 +33,7 @@ Kirigami.ScrollablePage {
     required property string name
     required property DbCompressor pluginDB
     required property var pipelineInstance
-    property Compressor pluginBackend
+    property BackendCompressor pluginBackend
 
     function updateMeters() {
         if (!pluginBackend)

@@ -35,7 +35,7 @@
 
 class DeepFilterNet : public PluginBase {
   Q_OBJECT
-  QML_ELEMENT
+  QML_NAMED_ELEMENT(BackendDeepFilterNet)
   QML_UNCREATABLE("Use the c++ instance")
 
  public:

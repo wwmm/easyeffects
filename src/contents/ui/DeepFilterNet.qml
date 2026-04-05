@@ -30,7 +30,7 @@ Kirigami.ScrollablePage {
     required property string name
     required property DbDeepFilterNet pluginDB
     required property var pipelineInstance
-    property DeepFilterNet pluginBackend
+    property BackendDeepFilterNet pluginBackend
 
     function updateMeters() {
         if (!pluginBackend)

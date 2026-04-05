@@ -54,7 +54,7 @@ class ConvolverWorker : public QObject {
 
 class Convolver : public PluginBase {
   Q_OBJECT
-  QML_ELEMENT
+  QML_NAMED_ELEMENT(BackendConvolver)
   QML_UNCREATABLE("Use the c++ instance")
 
   Q_PROPERTY(bool kernelIsInitialized MEMBER kernel_is_initialized NOTIFY kernelInitializedChanged)

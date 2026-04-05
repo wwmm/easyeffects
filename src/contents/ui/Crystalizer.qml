@@ -32,7 +32,7 @@ Kirigami.ScrollablePage {
     required property string name
     required property DbCrystalizer pluginDB
     required property var pipelineInstance
-    property Crystalizer pluginBackend
+    property BackendCrystalizer pluginBackend
 
     function updateMeters() {
         if (!pluginBackend)

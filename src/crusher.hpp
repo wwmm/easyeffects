@@ -31,7 +31,7 @@
 
 class Crusher : public PluginBase {
   Q_OBJECT
-  QML_ELEMENT
+  QML_NAMED_ELEMENT(BackendCrusher)
   QML_UNCREATABLE("Use the c++ instance")
 
  public:
