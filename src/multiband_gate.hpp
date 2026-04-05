@@ -36,7 +36,7 @@
 
 class MultibandGate : public PluginBase {
   Q_OBJECT
-  QML_ELEMENT
+  QML_NAMED_ELEMENT(BackendMultibandGate)
   QML_UNCREATABLE("Use the c++ instance")
 
  public:

@@ -34,13 +34,13 @@ Kirigami.ScrollablePage {
     property BackendDelay pluginBackend
 
     function updateMeters() {
-        if (!pluginBackend)
+        if (!delayPage.pluginBackend)
             return;
 
-        inputOutputLevels.setInputLevelLeft(pluginBackend.getInputLevelLeft());
-        inputOutputLevels.setInputLevelRight(pluginBackend.getInputLevelRight());
-        inputOutputLevels.setOutputLevelLeft(pluginBackend.getOutputLevelLeft());
-        inputOutputLevels.setOutputLevelRight(pluginBackend.getOutputLevelRight());
+        inputOutputLevels.setInputLevelLeft(delayPage.pluginBackend.getInputLevelLeft());
+        inputOutputLevels.setInputLevelRight(delayPage.pluginBackend.getInputLevelRight());
+        inputOutputLevels.setOutputLevelLeft(delayPage.pluginBackend.getOutputLevelLeft());
+        inputOutputLevels.setOutputLevelRight(delayPage.pluginBackend.getOutputLevelRight());
     }
 
     Component.onCompleted: {

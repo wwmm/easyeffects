@@ -36,13 +36,13 @@ Kirigami.ScrollablePage {
     property BackendConvolver pluginBackend
 
     function updateMeters() {
-        if (!pluginBackend)
+        if (!convolverPage.pluginBackend)
             return;
 
-        inputOutputLevels.setInputLevelLeft(pluginBackend.getInputLevelLeft());
-        inputOutputLevels.setInputLevelRight(pluginBackend.getInputLevelRight());
-        inputOutputLevels.setOutputLevelLeft(pluginBackend.getOutputLevelLeft());
-        inputOutputLevels.setOutputLevelRight(pluginBackend.getOutputLevelRight());
+        inputOutputLevels.setInputLevelLeft(convolverPage.pluginBackend.getInputLevelLeft());
+        inputOutputLevels.setInputLevelRight(convolverPage.pluginBackend.getInputLevelRight());
+        inputOutputLevels.setOutputLevelLeft(convolverPage.pluginBackend.getOutputLevelLeft());
+        inputOutputLevels.setOutputLevelRight(convolverPage.pluginBackend.getOutputLevelRight());
     }
 
     function validChartMag(chartMag) {

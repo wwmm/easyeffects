@@ -31,7 +31,7 @@
 
 class Exciter : public PluginBase {
   Q_OBJECT
-  QML_ELEMENT
+  QML_NAMED_ELEMENT(BackendExciter)
   QML_UNCREATABLE("Use the c++ instance")
 
  public:

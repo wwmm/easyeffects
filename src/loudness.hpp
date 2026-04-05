@@ -32,7 +32,7 @@
 
 class Loudness : public PluginBase {
   Q_OBJECT
-  QML_ELEMENT
+  QML_NAMED_ELEMENT(BackendLoudness)
   QML_UNCREATABLE("Use the c++ instance")
 
  public:

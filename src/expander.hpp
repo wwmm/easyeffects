@@ -34,7 +34,7 @@
 
 class Expander : public PluginBase {
   Q_OBJECT
-  QML_ELEMENT
+  QML_NAMED_ELEMENT(BackendExpander)
   QML_UNCREATABLE("Use the c++ instance")
 
  public:

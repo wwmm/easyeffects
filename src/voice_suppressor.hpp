@@ -34,7 +34,7 @@
 
 class VoiceSuppressor : public PluginBase {
   Q_OBJECT
-  QML_ELEMENT
+  QML_NAMED_ELEMENT(BackendVoiceSuppressor)
   QML_UNCREATABLE("Use the c++ instance")
 
  public:

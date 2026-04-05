@@ -36,7 +36,7 @@
 
 class MultibandCompressor : public PluginBase {
   Q_OBJECT
-  QML_ELEMENT
+  QML_NAMED_ELEMENT(BackendMultibandCompressor)
   QML_UNCREATABLE("Use the c++ instance")
 
  public:

@@ -43,7 +43,7 @@
 
 class RNNoise : public PluginBase {
   Q_OBJECT
-  QML_ELEMENT
+  QML_NAMED_ELEMENT(BackendRNNoise)
   QML_UNCREATABLE("Use the c++ instance")
 
   Q_PROPERTY(bool usingStandardModel MEMBER standard_model NOTIFY usingStandardModelChanged)

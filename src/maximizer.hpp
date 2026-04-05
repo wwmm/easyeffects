@@ -32,7 +32,7 @@
 
 class Maximizer : public PluginBase {
   Q_OBJECT
-  QML_ELEMENT
+  QML_NAMED_ELEMENT(BackendMaximizer)
   QML_UNCREATABLE("Use the c++ instance")
 
  public:

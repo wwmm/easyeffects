@@ -33,13 +33,13 @@ Kirigami.ScrollablePage {
     property BackendBassLoudness pluginBackend
 
     function updateMeters() {
-        if (!pluginBackend)
+        if (!bassLoudnessPage.pluginBackend)
             return;
 
-        inputOutputLevels.setInputLevelLeft(pluginBackend.getInputLevelLeft());
-        inputOutputLevels.setInputLevelRight(pluginBackend.getInputLevelRight());
-        inputOutputLevels.setOutputLevelLeft(pluginBackend.getOutputLevelLeft());
-        inputOutputLevels.setOutputLevelRight(pluginBackend.getOutputLevelRight());
+        inputOutputLevels.setInputLevelLeft(bassLoudnessPage.pluginBackend.getInputLevelLeft());
+        inputOutputLevels.setInputLevelRight(bassLoudnessPage.pluginBackend.getInputLevelRight());
+        inputOutputLevels.setOutputLevelLeft(bassLoudnessPage.pluginBackend.getOutputLevelLeft());
+        inputOutputLevels.setOutputLevelRight(bassLoudnessPage.pluginBackend.getOutputLevelRight());
     }
 
     Component.onCompleted: {

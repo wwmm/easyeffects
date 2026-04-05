@@ -22,6 +22,8 @@
 #include <api/audio/audio_processing.h>
 #include <api/scoped_refptr.h>
 #include <qobject.h>
+#include <qqmlintegration.h>
+#include <qtmetamacros.h>
 #include <qtypes.h>
 #include <span>
 #include <string>
@@ -32,6 +34,10 @@
 #include "pw_manager.hpp"
 
 class EchoCanceller : public PluginBase {
+  Q_OBJECT
+  QML_NAMED_ELEMENT(BackendEchoCanceller)
+  QML_UNCREATABLE("Use the c++ instance")
+
  public:
   EchoCanceller(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id);
   EchoCanceller(const EchoCanceller&) = delete;
