@@ -30,7 +30,7 @@ class DeepFilterNetPreset : public PluginPresetBase {
   explicit DeepFilterNetPreset(PipelineType pipeline_type, const std::string& instance_name);
 
  private:
-  db::DeepFilterNet* settings = nullptr;
+  DbDeepFilterNet* settings = nullptr;
 
   void save(nlohmann::json& json) override;
 

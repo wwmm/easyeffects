@@ -1,6 +1,5 @@
 File=easyeffects_db_deepfilternet.kcfg
-NameSpace=db
-ClassName=DeepFilterNet
+ClassName=DbDeepFilterNet
 Inherits=KConfigBaseEE
 IncludeFiles=\"kconfig_base_ee.hpp\"
 Mutators=true

@@ -48,7 +48,7 @@ DeepFilterNet::DeepFilterNet(const std::string& tag,
                  instance_id,
                  pipe_manager,
                  pipe_type),
-      settings(db::Manager::self().get_plugin_db<db::DeepFilterNet>(
+      settings(db::Manager::self().get_plugin_db<DbDeepFilterNet>(
           pipe_type,
           tags::plugin_name::BaseName::deepfilternet + "#" + instance_id)) {
   ladspa_wrapper = std::make_unique<ladspa::LadspaWrapper>("libdeep_filter_ladspa.so", "deep_filter_stereo");
@@ -59,22 +59,21 @@ DeepFilterNet::DeepFilterNet(const std::string& tag,
     util::debug(std::format("{}libdeep_filter_ladspa is not installed", log_tag));
   }
 
-  init_common_controls<db::DeepFilterNet>(settings);
+  init_common_controls<DbDeepFilterNet>(settings);
 
-  BIND_LADSPA_PORT("Post Filter Beta", postFilterBeta, setPostFilterBeta, db::DeepFilterNet::postFilterBetaChanged);
+  BIND_LADSPA_PORT("Post Filter Beta", postFilterBeta, setPostFilterBeta, DbDeepFilterNet::postFilterBetaChanged);
   BIND_LADSPA_PORT("Min Processing Buffer (frames)", minProcessingBuffer, setMinProcessingBuffer,
-                   db::DeepFilterNet::minProcessingBufferChanged);
+                   DbDeepFilterNet::minProcessingBufferChanged);
 
   BIND_LADSPA_PORT_DB_EXPONENTIAL("Attenuation Limit (dB)", attenuationLimit, setAttenuationLimit,
-                                  db::DeepFilterNet::attenuationLimitChanged, false);
+                                  DbDeepFilterNet::attenuationLimitChanged, false);
   BIND_LADSPA_PORT_DB_EXPONENTIAL("Min processing threshold (dB)", minProcessingThreshold, setMinProcessingThreshold,
-                                  db::DeepFilterNet::minProcessingThresholdChanged, false);
+                                  DbDeepFilterNet::minProcessingThresholdChanged, false);
   BIND_LADSPA_PORT_DB_EXPONENTIAL("Max ERB processing threshold (dB)", maxErbProcessingThreshold,
-                                  setMaxErbProcessingThreshold, db::DeepFilterNet::maxErbProcessingThresholdChanged,
+                                  setMaxErbProcessingThreshold, DbDeepFilterNet::maxErbProcessingThresholdChanged,
                                   false);
   BIND_LADSPA_PORT_DB_EXPONENTIAL("Max DF processing threshold (dB)", maxDfProcessingThreshold,
-                                  setMaxDfProcessingThreshold, db::DeepFilterNet::maxDfProcessingThresholdChanged,
-                                  false);
+                                  setMaxDfProcessingThreshold, DbDeepFilterNet::maxDfProcessingThresholdChanged, false);
 }
 
 DeepFilterNet::~DeepFilterNet() {

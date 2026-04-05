@@ -69,7 +69,7 @@ class DeepFilterNet : public PluginBase {
   Q_INVOKABLE void resetHistory();
 
  private:
-  db::DeepFilterNet* settings = nullptr;
+  DbDeepFilterNet* settings = nullptr;
 
   std::unique_ptr<ladspa::LadspaWrapper> ladspa_wrapper;
 

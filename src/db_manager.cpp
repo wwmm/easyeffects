@@ -213,7 +213,7 @@ void Manager::create_plugin_db(const QString& parentGroup,
 
     } else if (name.startsWith(tags::plugin_name::BaseName::deepfilternet)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::deepfilternet, id),
-                   [&] { return new db::DeepFilterNet(parentGroup, id); });
+                   [&] { return new DbDeepFilterNet(parentGroup, id); });
 
     } else if (name.startsWith(tags::plugin_name::BaseName::deesser)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::deesser, id), [&] { return new db::Deesser(parentGroup, id); });
