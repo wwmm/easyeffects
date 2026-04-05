@@ -59,34 +59,34 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
                  pipe_manager,
                  pipe_type),
       settings(
-          db::Manager::self().get_plugin_db<db::Convolver>(pipe_type,
-                                                           tags::plugin_name::BaseName::convolver + "#" + instance_id)),
+          db::Manager::self().get_plugin_db<DbConvolver>(pipe_type,
+                                                         tags::plugin_name::BaseName::convolver + "#" + instance_id)),
       kernel_manager(ConvolverKernelManager(settings, pipe_type)),
       worker(new ConvolverWorker) {
-  init_common_controls<db::Convolver>(settings);
+  init_common_controls<DbConvolver>(settings);
 
   dry = (settings->dry() <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(settings->dry()));
 
   wet = (settings->wet() <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(settings->wet()));
 
-  connect(settings, &db::Convolver::kernelNameChanged, [&]() { load_kernel_file(true, rate); });
+  connect(settings, &DbConvolver::kernelNameChanged, [&]() { load_kernel_file(true, rate); });
 
-  connect(settings, &db::Convolver::irWidthChanged, [&]() {
+  connect(settings, &DbConvolver::irWidthChanged, [&]() {
     std::scoped_lock<std::mutex> lock(data_mutex);
     zita.update_ir_width_and_autogain(settings->irWidth(), settings->autogain(), true);
   });
 
-  connect(settings, &db::Convolver::autogainChanged, [&]() {
+  connect(settings, &DbConvolver::autogainChanged, [&]() {
     std::scoped_lock<std::mutex> lock(data_mutex);
     zita.update_ir_width_and_autogain(settings->irWidth(), settings->autogain(), true);
   });
 
-  connect(settings, &db::Convolver::dryChanged, [&]() {
+  connect(settings, &DbConvolver::dryChanged, [&]() {
     dry =
         (settings->dry() <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(settings->dry()));
   });
 
-  connect(settings, &db::Convolver::wetChanged, [&]() {
+  connect(settings, &DbConvolver::wetChanged, [&]() {
     wet =
         (settings->wet() <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(settings->wet()));
   });

@@ -195,7 +195,7 @@ void Manager::create_plugin_db(const QString& parentGroup,
 
     } else if (name.startsWith(tags::plugin_name::BaseName::convolver)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::convolver, id),
-                   [&] { return new db::Convolver(parentGroup, id); });
+                   [&] { return new DbConvolver(parentGroup, id); });
 
     } else if (name.startsWith(tags::plugin_name::BaseName::crossfeed)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::crossfeed, id),

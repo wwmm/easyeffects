@@ -31,7 +31,7 @@ Kirigami.ScrollablePage {
     required property string name
     required property DbBassEnhancer pluginDB
     required property var pipelineInstance
-    property BassEnhancer pluginBackend
+    property BassEnhancer pluginBackend: null
 
     function updateMeters() {
         if (!pluginBackend)

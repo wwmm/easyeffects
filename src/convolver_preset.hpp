@@ -30,7 +30,7 @@ class ConvolverPreset : public PluginPresetBase {
   explicit ConvolverPreset(PipelineType pipeline_type, const std::string& instance_name);
 
  private:
-  db::Convolver* settings = nullptr;
+  DbConvolver* settings = nullptr;
 
   void save(nlohmann::json& json) override;
 

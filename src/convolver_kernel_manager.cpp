@@ -43,7 +43,7 @@
 #include "tags_app.hpp"
 #include "util.hpp"
 
-ConvolverKernelManager::ConvolverKernelManager(db::Convolver* settings, const PipelineType& pipeline_type)
+ConvolverKernelManager::ConvolverKernelManager(DbConvolver* settings, const PipelineType& pipeline_type)
     : settings(settings),
       pipeline_type(pipeline_type),
       app_data_dir(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation).toStdString()),

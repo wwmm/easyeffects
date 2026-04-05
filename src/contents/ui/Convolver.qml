@@ -30,9 +30,9 @@ Kirigami.ScrollablePage {
     id: convolverPage
 
     required property string name
-    required property var pluginDB
+    required property DbConvolver pluginDB
     required property var pipelineInstance
-    property var pluginBackend: null
+    property Convolver pluginBackend: null
 
     function updateMeters() {
         if (!pluginBackend)

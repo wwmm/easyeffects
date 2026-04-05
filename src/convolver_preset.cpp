@@ -31,7 +31,7 @@
 
 ConvolverPreset::ConvolverPreset(PipelineType pipeline_type, const std::string& instance_name)
     : PluginPresetBase(pipeline_type, instance_name) {
-  settings = get_db_instance<db::Convolver>(pipeline_type);
+  settings = get_db_instance<DbConvolver>(pipeline_type);
 }
 
 void ConvolverPreset::save(nlohmann::json& json) {

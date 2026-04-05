@@ -74,7 +74,7 @@ class ConvolverKernelManager {
     [[nodiscard]] auto sampleCount() const -> size_t;
   };
 
-  ConvolverKernelManager(db::Convolver* settings, const PipelineType& pipeline_type);
+  ConvolverKernelManager(DbConvolver* settings, const PipelineType& pipeline_type);
 
   auto loadKernel(const std::string& name) -> KernelData;
 
@@ -92,7 +92,7 @@ class ConvolverKernelManager {
   auto readSofaKernelFile(const std::string& file_path) -> KernelData;
 
  private:
-  db::Convolver* settings = nullptr;
+  DbConvolver* settings = nullptr;
 
   PipelineType pipeline_type;
 

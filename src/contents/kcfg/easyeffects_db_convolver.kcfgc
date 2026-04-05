@@ -1,6 +1,5 @@
 File=easyeffects_db_convolver.kcfg
-NameSpace=db
-ClassName=Convolver
+ClassName=DbConvolver
 Inherits=KConfigBaseEE
 IncludeFiles=\"kconfig_base_ee.hpp\"
 Mutators=true

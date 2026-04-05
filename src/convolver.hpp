@@ -156,7 +156,7 @@ class Convolver : public PluginBase {
   void kernelCombinationStopped();
 
  private:
-  db::Convolver* settings = nullptr;
+  DbConvolver* settings = nullptr;
 
   bool kernel_is_initialized = false;
   bool kernelIsSofa = false;
