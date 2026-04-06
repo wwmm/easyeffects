@@ -30,7 +30,7 @@ class ExpanderPreset : public PluginPresetBase {
   explicit ExpanderPreset(PipelineType pipeline_type, const std::string& instance_name);
 
  private:
-  db::Expander* settings = nullptr;
+  DbExpander* settings = nullptr;
 
   void save(nlohmann::json& json) override;
 

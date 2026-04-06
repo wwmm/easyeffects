@@ -234,8 +234,7 @@ void Manager::create_plugin_db(const QString& parentGroup,
       ensureExists(makeKey(tags::plugin_name::BaseName::exciter, id), [&] { return new DbExciter(parentGroup, id); });
 
     } else if (name.startsWith(tags::plugin_name::BaseName::expander)) {
-      ensureExists(makeKey(tags::plugin_name::BaseName::expander, id),
-                   [&] { return new db::Expander(parentGroup, id); });
+      ensureExists(makeKey(tags::plugin_name::BaseName::expander, id), [&] { return new DbExpander(parentGroup, id); });
 
     } else if (name.startsWith(tags::plugin_name::BaseName::filter)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::filter, id), [&] { return new db::Filter(parentGroup, id); });

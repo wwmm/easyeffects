@@ -27,7 +27,7 @@
 
 ExpanderPreset::ExpanderPreset(PipelineType pipeline_type, const std::string& instance_name)
     : PluginPresetBase(pipeline_type, instance_name) {
-  settings = get_db_instance<db::Expander>(pipeline_type);
+  settings = get_db_instance<DbExpander>(pipeline_type);
 }
 
 void ExpanderPreset::save(nlohmann::json& json) {

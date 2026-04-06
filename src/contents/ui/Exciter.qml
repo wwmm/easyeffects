@@ -34,13 +34,13 @@ Kirigami.ScrollablePage {
     property BackendExciter pluginBackend
 
     function updateMeters() {
-        if (!pluginBackend)
+        if (!exciterPage.pluginBackend)
             return;
 
-        inputOutputLevels.setInputLevelLeft(pluginBackend.getInputLevelLeft());
-        inputOutputLevels.setInputLevelRight(pluginBackend.getInputLevelRight());
-        inputOutputLevels.setOutputLevelLeft(pluginBackend.getOutputLevelLeft());
-        inputOutputLevels.setOutputLevelRight(pluginBackend.getOutputLevelRight());
+        inputOutputLevels.setInputLevelLeft(exciterPage.pluginBackend.getInputLevelLeft());
+        inputOutputLevels.setInputLevelRight(exciterPage.pluginBackend.getInputLevelRight());
+        inputOutputLevels.setOutputLevelLeft(exciterPage.pluginBackend.getOutputLevelLeft());
+        inputOutputLevels.setOutputLevelRight(exciterPage.pluginBackend.getOutputLevelRight());
         harmonicsLevel.setValue(exciterPage.pluginBackend.getHarmonicsLevel());
     }
 

@@ -48,8 +48,8 @@ Expander::Expander(const std::string& tag, pw::Manager* pipe_manager, PipelineTy
                  pipe_type,
                  true),
       settings(
-          db::Manager::self().get_plugin_db<db::Expander>(pipe_type,
-                                                          tags::plugin_name::BaseName::expander + "#" + instance_id)) {
+          db::Manager::self().get_plugin_db<DbExpander>(pipe_type,
+                                                        tags::plugin_name::BaseName::expander + "#" + instance_id)) {
   const auto lv2_plugin_uri = "http://lsp-plug.in/plugins/lv2/sc_expander_stereo";
 
   lv2_wrapper = std::make_unique<lv2::Lv2Wrapper>(lv2_plugin_uri);
@@ -60,42 +60,42 @@ Expander::Expander(const std::string& tag, pw::Manager* pipe_manager, PipelineTy
     util::debug(std::format("{}{} is not installed", log_tag, lv2_plugin_uri));
   }
 
-  init_common_controls<db::Expander>(settings);
+  init_common_controls<DbExpander>(settings);
 
-  connect(settings, &db::Expander::sidechainTypeChanged, [&]() { update_sidechain_links(); });
-  connect(settings, &db::Expander::sidechainInputDeviceChanged, [&]() { update_sidechain_links(); });
+  connect(settings, &DbExpander::sidechainTypeChanged, [&]() { update_sidechain_links(); });
+  connect(settings, &DbExpander::sidechainInputDeviceChanged, [&]() { update_sidechain_links(); });
 
-  BIND_LV2_PORT("em", mode, setMode, db::Expander::modeChanged);
-  BIND_LV2_PORT("sci", sidechainType, setSidechainType, db::Expander::sidechainTypeChanged);
-  BIND_LV2_PORT("scm", sidechainMode, setSidechainMode, db::Expander::sidechainModeChanged);
-  BIND_LV2_PORT("scs", sidechainSource, setSidechainSource, db::Expander::sidechainSourceChanged);
-  BIND_LV2_PORT("sscs", stereoSplitSource, setStereoSplitSource, db::Expander::stereoSplitSourceChanged);
-  BIND_LV2_PORT("shpm", hpfMode, setHpfMode, db::Expander::hpfModeChanged);
-  BIND_LV2_PORT("slpm", lpfMode, setLpfMode, db::Expander::lpfModeChanged);
-  BIND_LV2_PORT("ssplit", stereoSplit, setStereoSplit, db::Expander::stereoSplitChanged);
-  BIND_LV2_PORT("scl", sidechainListen, setSidechainListen, db::Expander::sidechainListenChanged);
-  BIND_LV2_PORT("at", attack, setAttack, db::Expander::attackChanged);
-  BIND_LV2_PORT("rt", release, setRelease, db::Expander::releaseChanged);
-  BIND_LV2_PORT("er", ratio, setRatio, db::Expander::ratioChanged);
-  BIND_LV2_PORT("scr", sidechainReactivity, setSidechainReactivity, db::Expander::sidechainReactivityChanged);
-  BIND_LV2_PORT("sla", sidechainLookahead, setSidechainLookahead, db::Expander::sidechainLookaheadChanged);
-  BIND_LV2_PORT_DB("al", threshold, setThreshold, db::Expander::thresholdChanged, false);
-  BIND_LV2_PORT_DB("kn", knee, setKnee, db::Expander::kneeChanged, false);
-  BIND_LV2_PORT_DB("mk", makeup, setMakeup, db::Expander::makeupChanged, false);
-  BIND_LV2_PORT("shpf", hpfFrequency, setHpfFrequency, db::Expander::hpfFrequencyChanged);
-  BIND_LV2_PORT("slpf", lpfFrequency, setLpfFrequency, db::Expander::lpfFrequencyChanged);
+  BIND_LV2_PORT("em", mode, setMode, DbExpander::modeChanged);
+  BIND_LV2_PORT("sci", sidechainType, setSidechainType, DbExpander::sidechainTypeChanged);
+  BIND_LV2_PORT("scm", sidechainMode, setSidechainMode, DbExpander::sidechainModeChanged);
+  BIND_LV2_PORT("scs", sidechainSource, setSidechainSource, DbExpander::sidechainSourceChanged);
+  BIND_LV2_PORT("sscs", stereoSplitSource, setStereoSplitSource, DbExpander::stereoSplitSourceChanged);
+  BIND_LV2_PORT("shpm", hpfMode, setHpfMode, DbExpander::hpfModeChanged);
+  BIND_LV2_PORT("slpm", lpfMode, setLpfMode, DbExpander::lpfModeChanged);
+  BIND_LV2_PORT("ssplit", stereoSplit, setStereoSplit, DbExpander::stereoSplitChanged);
+  BIND_LV2_PORT("scl", sidechainListen, setSidechainListen, DbExpander::sidechainListenChanged);
+  BIND_LV2_PORT("at", attack, setAttack, DbExpander::attackChanged);
+  BIND_LV2_PORT("rt", release, setRelease, DbExpander::releaseChanged);
+  BIND_LV2_PORT("er", ratio, setRatio, DbExpander::ratioChanged);
+  BIND_LV2_PORT("scr", sidechainReactivity, setSidechainReactivity, DbExpander::sidechainReactivityChanged);
+  BIND_LV2_PORT("sla", sidechainLookahead, setSidechainLookahead, DbExpander::sidechainLookaheadChanged);
+  BIND_LV2_PORT_DB("al", threshold, setThreshold, DbExpander::thresholdChanged, false);
+  BIND_LV2_PORT_DB("kn", knee, setKnee, DbExpander::kneeChanged, false);
+  BIND_LV2_PORT_DB("mk", makeup, setMakeup, DbExpander::makeupChanged, false);
+  BIND_LV2_PORT("shpf", hpfFrequency, setHpfFrequency, DbExpander::hpfFrequencyChanged);
+  BIND_LV2_PORT("slpf", lpfFrequency, setLpfFrequency, DbExpander::lpfFrequencyChanged);
 
   // dB controls with -inf mode.
-  BIND_LV2_PORT_DB("rrl", releaseThreshold, setReleaseThreshold, db::Expander::releaseThresholdChanged, true);
-  BIND_LV2_PORT_DB("cdr", dry, setDry, db::Expander::dryChanged, true);
-  BIND_LV2_PORT_DB("cwt", wet, setWet, db::Expander::wetChanged, true);
-  BIND_LV2_PORT_DB("scp", sidechainPreamp, setSidechainPreamp, db::Expander::sidechainPreampChanged, true);
-  BIND_LV2_PORT_DB("in2lk", inputToLink, setInputToLink, db::Expander::inputToLinkChanged, true);
-  BIND_LV2_PORT_DB("in2sc", inputToSidechain, setInputToSidechain, db::Expander::inputToSidechainChanged, true);
-  BIND_LV2_PORT_DB("sc2in", sidechainToInput, setSidechainToInput, db::Expander::sidechainToInputChanged, true);
-  BIND_LV2_PORT_DB("sc2lk", sidechainToLink, setSidechainToLink, db::Expander::sidechainToLinkChanged, true);
-  BIND_LV2_PORT_DB("lk2sc", linkToSidechain, setLinkToSidechain, db::Expander::linkToSidechainChanged, true);
-  BIND_LV2_PORT_DB("lk2in", linkToInput, setLinkToInput, db::Expander::linkToInputChanged, true);
+  BIND_LV2_PORT_DB("rrl", releaseThreshold, setReleaseThreshold, DbExpander::releaseThresholdChanged, true);
+  BIND_LV2_PORT_DB("cdr", dry, setDry, DbExpander::dryChanged, true);
+  BIND_LV2_PORT_DB("cwt", wet, setWet, DbExpander::wetChanged, true);
+  BIND_LV2_PORT_DB("scp", sidechainPreamp, setSidechainPreamp, DbExpander::sidechainPreampChanged, true);
+  BIND_LV2_PORT_DB("in2lk", inputToLink, setInputToLink, DbExpander::inputToLinkChanged, true);
+  BIND_LV2_PORT_DB("in2sc", inputToSidechain, setInputToSidechain, DbExpander::inputToSidechainChanged, true);
+  BIND_LV2_PORT_DB("sc2in", sidechainToInput, setSidechainToInput, DbExpander::sidechainToInputChanged, true);
+  BIND_LV2_PORT_DB("sc2lk", sidechainToLink, setSidechainToLink, DbExpander::sidechainToLinkChanged, true);
+  BIND_LV2_PORT_DB("lk2sc", linkToSidechain, setLinkToSidechain, DbExpander::linkToSidechainChanged, true);
+  BIND_LV2_PORT_DB("lk2in", linkToInput, setLinkToInput, DbExpander::linkToInputChanged, true);
 }
 
 Expander::~Expander() {

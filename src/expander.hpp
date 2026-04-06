@@ -79,7 +79,7 @@ class Expander : public PluginBase {
   Q_INVOKABLE [[nodiscard]] float getEnvelopeLevelRight() const;
 
  private:
-  db::Expander* settings = nullptr;
+  DbExpander* settings = nullptr;
 
   bool ready = false;
 

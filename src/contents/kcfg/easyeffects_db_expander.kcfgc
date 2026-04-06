@@ -1,6 +1,5 @@
 File=easyeffects_db_expander.kcfg
-NameSpace=db
-ClassName=Expander
+ClassName=DbExpander
 Inherits=KConfigBaseEE
 IncludeFiles=\"kconfig_base_ee.hpp\"
 Mutators=true
