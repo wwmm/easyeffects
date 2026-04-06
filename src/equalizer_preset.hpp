@@ -31,17 +31,17 @@ class EqualizerPreset : public PluginPresetBase {
   explicit EqualizerPreset(PipelineType pipeline_type, const std::string& instance_name);
 
  private:
-  db::Equalizer* settings = nullptr;
-  db::EqualizerChannel *input_settings_left = nullptr, *input_settings_right = nullptr;
-  db::EqualizerChannel *output_settings_left = nullptr, *output_settings_right = nullptr;
+  DbEqualizer* settings = nullptr;
+  DbEqualizerChannel *input_settings_left = nullptr, *input_settings_right = nullptr;
+  DbEqualizerChannel *output_settings_left = nullptr, *output_settings_right = nullptr;
 
   void save(nlohmann::json& json) override;
 
   void load(const nlohmann::json& json) override;
 
-  static void save_channel(nlohmann::json& json, db::EqualizerChannel* settings, const int& nbands);
+  static void save_channel(nlohmann::json& json, DbEqualizerChannel* settings, const int& nbands);
 
-  static void load_channel(const nlohmann::json& json, db::EqualizerChannel* settings, const int& nbands);
+  static void load_channel(const nlohmann::json& json, DbEqualizerChannel* settings, const int& nbands);
 
   void load_legacy_preset();
 };

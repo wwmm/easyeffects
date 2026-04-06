@@ -1,6 +1,5 @@
 File=easyeffects_db_equalizer.kcfg
-NameSpace=db
-ClassName=Equalizer
+ClassName=DbEqualizer
 Inherits=KConfigBaseEE
 IncludeFiles=\"kconfig_base_ee.hpp\"
 Mutators=true

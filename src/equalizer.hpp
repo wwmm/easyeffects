@@ -81,8 +81,8 @@ class Equalizer : public PluginBase {
   static constexpr int max_bands = 32;
 
  private:
-  db::Equalizer* settings = nullptr;
-  db::EqualizerChannel *settings_left = nullptr, *settings_right = nullptr;
+  DbEqualizer* settings = nullptr;
+  DbEqualizerChannel *settings_left = nullptr, *settings_right = nullptr;
 
   bool ready = false;
 

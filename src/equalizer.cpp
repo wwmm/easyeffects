@@ -58,12 +58,12 @@ Equalizer::Equalizer(const std::string& tag, pw::Manager* pipe_manager, Pipeline
                  pipe_manager,
                  pipe_type),
       settings(
-          db::Manager::self().get_plugin_db<db::Equalizer>(pipe_type,
-                                                           tags::plugin_name::BaseName::equalizer + "#" + instance_id)),
-      settings_left(db::Manager::self().get_plugin_db<db::EqualizerChannel>(
+          db::Manager::self().get_plugin_db<DbEqualizer>(pipe_type,
+                                                         tags::plugin_name::BaseName::equalizer + "#" + instance_id)),
+      settings_left(db::Manager::self().get_plugin_db<DbEqualizerChannel>(
           pipe_type,
           tags::plugin_name::BaseName::equalizer + "#" + instance_id + "#left")),
-      settings_right(db::Manager::self().get_plugin_db<db::EqualizerChannel>(
+      settings_right(db::Manager::self().get_plugin_db<DbEqualizerChannel>(
           pipe_type,
           tags::plugin_name::BaseName::equalizer + "#" + instance_id + "#right")) {
   const auto lv2_plugin_uri = "http://lsp-plug.in/plugins/lv2/para_equalizer_x32_lr";
@@ -76,14 +76,14 @@ Equalizer::Equalizer(const std::string& tag, pw::Manager* pipe_manager, Pipeline
     util::debug(std::format("{}{} is not installed", log_tag, lv2_plugin_uri));
   }
 
-  init_common_controls<db::Equalizer>(settings);
+  init_common_controls<DbEqualizer>(settings);
 
-  BIND_LV2_PORT("mode", mode, setMode, db::Equalizer::modeChanged);
-  BIND_LV2_PORT("bal", balance, setBalance, db::Equalizer::balanceChanged);
-  BIND_LV2_PORT("frqs_l", pitchLeft, setPitchLeft, db::Equalizer::pitchLeftChanged);
-  BIND_LV2_PORT("frqs_r", pitchRight, setPitchRight, db::Equalizer::pitchRightChanged);
+  BIND_LV2_PORT("mode", mode, setMode, DbEqualizer::modeChanged);
+  BIND_LV2_PORT("bal", balance, setBalance, DbEqualizer::balanceChanged);
+  BIND_LV2_PORT("frqs_l", pitchLeft, setPitchLeft, DbEqualizer::pitchLeftChanged);
+  BIND_LV2_PORT("frqs_r", pitchRight, setPitchRight, DbEqualizer::pitchRightChanged);
 
-  BIND_LV2_PORT_INVERTED_BOOL("clink", splitChannels, setSplitChannels, db::Equalizer::splitChannelsChanged);
+  BIND_LV2_PORT_INVERTED_BOOL("clink", splitChannels, setSplitChannels, DbEqualizer::splitChannelsChanged);
 
   bind_left_bands();
   bind_right_bands();
@@ -97,7 +97,7 @@ Equalizer::Equalizer(const std::string& tag, pw::Manager* pipe_manager, Pipeline
    * But it is the easiest thing to do in the case below.
    */
 
-  connect(settings, &db::Equalizer::numBandsChanged, [&]() {
+  connect(settings, &DbEqualizer::numBandsChanged, [&]() {
     for (int n = 0; n < max_bands; n++) {
       if (n >= settings->numBands()) {  // turn off unused bands
         settings_left->setProperty(tags::equalizer::band_type[n].data(), 0);
@@ -109,7 +109,7 @@ Equalizer::Equalizer(const std::string& tag, pw::Manager* pipe_manager, Pipeline
     }
   });
 
-  connect(settings, &db::Equalizer::splitChannelsChanged, [&]() { on_split_channels(); });
+  connect(settings, &DbEqualizer::splitChannelsChanged, [&]() { on_split_channels(); });
 }
 
 Equalizer::~Equalizer() {
@@ -317,7 +317,7 @@ void Equalizer::sortBands() {
     return;
   }
 
-  std::vector<db::EqualizerChannel*> settings_channels{settings_left};
+  std::vector<DbEqualizerChannel*> settings_channels{settings_left};
 
   if (settings->splitChannels()) {
     settings_channels.push_back(settings_right);

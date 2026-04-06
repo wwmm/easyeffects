@@ -224,11 +224,11 @@ void Manager::create_plugin_db(const QString& parentGroup,
 
     } else if (name.startsWith(tags::plugin_name::BaseName::equalizer)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::equalizer, id),
-                   [&] { return new db::Equalizer(parentGroup, id); });
+                   [&] { return new DbEqualizer(parentGroup, id); });
       ensureExists(makeKey(tags::plugin_name::BaseName::equalizer, id, "left"),
-                   [&] { return new db::EqualizerChannel(parentGroup, id, "left"); });
+                   [&] { return new DbEqualizerChannel(parentGroup, id, "left"); });
       ensureExists(makeKey(tags::plugin_name::BaseName::equalizer, id, "right"),
-                   [&] { return new db::EqualizerChannel(parentGroup, id, "right"); });
+                   [&] { return new DbEqualizerChannel(parentGroup, id, "right"); });
 
     } else if (name.startsWith(tags::plugin_name::BaseName::exciter)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::exciter, id), [&] { return new db::Exciter(parentGroup, id); });

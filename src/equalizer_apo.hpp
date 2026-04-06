@@ -82,19 +82,19 @@ std::map<std::string, ApoFilter> const EqualizerToApoFilter = {
 
 // NOLINTEND(bugprone-throwing-static-initialization)
 
-auto import_apo_preset(db::Equalizer* settings,
-                       db::EqualizerChannel* settings_left,
-                       db::EqualizerChannel* settings_right,
+auto import_apo_preset(DbEqualizer* settings,
+                       DbEqualizerChannel* settings_left,
+                       DbEqualizerChannel* settings_right,
                        const std::string& file_path) -> bool;
 
-auto import_graphiceq_preset(db::Equalizer* settings,
-                             db::EqualizerChannel* settings_left,
-                             db::EqualizerChannel* settings_right,
+auto import_graphiceq_preset(DbEqualizer* settings,
+                             DbEqualizerChannel* settings_left,
+                             DbEqualizerChannel* settings_right,
                              const std::string& file_path) -> bool;
 
-auto export_apo_preset(db::Equalizer* settings,
-                       db::EqualizerChannel* settings_left,
-                       db::EqualizerChannel* settings_right,
+auto export_apo_preset(DbEqualizer* settings,
+                       DbEqualizerChannel* settings_left,
+                       DbEqualizerChannel* settings_right,
                        const std::string& file_path) -> bool;
 
 }  // namespace apo

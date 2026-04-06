@@ -337,9 +337,9 @@ static auto parse_apo_config_line(const std::string& line, struct APO_Band& filt
   return true;
 }
 
-auto import_apo_preset(db::Equalizer* settings,
-                       db::EqualizerChannel* settings_left,
-                       db::EqualizerChannel* settings_right,
+auto import_apo_preset(DbEqualizer* settings,
+                       DbEqualizerChannel* settings_left,
+                       DbEqualizerChannel* settings_right,
                        const std::string& file_path) -> bool {
   std::filesystem::path p{file_path};
 
@@ -382,7 +382,7 @@ auto import_apo_preset(db::Equalizer* settings,
   // Apply APO parameters obtained
   settings->setInputGain(preamp);
 
-  std::vector<db::EqualizerChannel*> settings_channels;
+  std::vector<DbEqualizerChannel*> settings_channels;
 
   /**
    * When split channel mode is disabled, we can:
@@ -562,9 +562,9 @@ static auto parse_graphiceq_config(const std::string& str, std::vector<struct Gr
   return !bands.empty();
 }
 
-auto import_graphiceq_preset(db::Equalizer* settings,
-                             db::EqualizerChannel* settings_left,
-                             db::EqualizerChannel* settings_right,
+auto import_graphiceq_preset(DbEqualizer* settings,
+                             DbEqualizerChannel* settings_left,
+                             DbEqualizerChannel* settings_right,
                              const std::string& file_path) -> bool {
   std::filesystem::path p{file_path};
 
@@ -605,7 +605,7 @@ auto import_graphiceq_preset(db::Equalizer* settings,
 
   // Apply GraphicEQ parameters obtained
 
-  std::vector<db::EqualizerChannel*> settings_channels;
+  std::vector<DbEqualizerChannel*> settings_channels;
 
   // Whether to apply the parameters to both channels or the selected one only
   if (!settings->splitChannels()) {
@@ -667,9 +667,9 @@ auto import_graphiceq_preset(db::Equalizer* settings,
   return true;
 }
 
-auto export_apo_preset(db::Equalizer* settings,
-                       db::EqualizerChannel* settings_left,
-                       db::EqualizerChannel* settings_right,
+auto export_apo_preset(DbEqualizer* settings,
+                       DbEqualizerChannel* settings_left,
+                       DbEqualizerChannel* settings_right,
                        const std::string& file_path) -> bool {
   std::ofstream write_buffer(file_path);
 
@@ -678,7 +678,7 @@ auto export_apo_preset(db::Equalizer* settings,
   write_buffer << "Preamp: " << util::to_string(preamp) << " db"
                << "\n";
 
-  db::EqualizerChannel* settings_channel = nullptr;
+  DbEqualizerChannel* settings_channel = nullptr;
 
   // Whether to export the parameters from the left or the right channel.
   if (!settings->splitChannels()) {

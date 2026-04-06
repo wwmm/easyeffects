@@ -35,17 +35,17 @@ using namespace tags::equalizer;
 
 EqualizerPreset::EqualizerPreset(PipelineType pipeline_type, const std::string& instance_name)
     : PluginPresetBase(pipeline_type, instance_name) {
-  settings = get_db_instance<db::Equalizer>(pipeline_type);
+  settings = get_db_instance<DbEqualizer>(pipeline_type);
 
   if (settings != nullptr) {
-    input_settings_left = db::Manager::self().get_plugin_db<db::EqualizerChannel>(
+    input_settings_left = db::Manager::self().get_plugin_db<DbEqualizerChannel>(
         pipeline_type, QString::fromStdString(instance_name + "#left"));
-    input_settings_right = db::Manager::self().get_plugin_db<db::EqualizerChannel>(
+    input_settings_right = db::Manager::self().get_plugin_db<DbEqualizerChannel>(
         pipeline_type, QString::fromStdString(instance_name + "#right"));
 
-    output_settings_left = db::Manager::self().get_plugin_db<db::EqualizerChannel>(
+    output_settings_left = db::Manager::self().get_plugin_db<DbEqualizerChannel>(
         pipeline_type, QString::fromStdString(instance_name + "#left"));
-    output_settings_right = db::Manager::self().get_plugin_db<db::EqualizerChannel>(
+    output_settings_right = db::Manager::self().get_plugin_db<DbEqualizerChannel>(
         pipeline_type, QString::fromStdString(instance_name + "#right"));
   }
 }
@@ -80,7 +80,7 @@ void EqualizerPreset::save(nlohmann::json& json) {
   }
 }
 
-void EqualizerPreset::save_channel(nlohmann::json& json, db::EqualizerChannel* settings, const int& nbands) {
+void EqualizerPreset::save_channel(nlohmann::json& json, DbEqualizerChannel* settings, const int& nbands) {
   for (int n = 0; n < nbands; n++) {
     const auto* const bandn = band_id[n];
 
@@ -130,7 +130,7 @@ void EqualizerPreset::load(const nlohmann::json& json) {
   }
 }
 
-void EqualizerPreset::load_channel(const nlohmann::json& json, db::EqualizerChannel* settings, const int& nbands) {
+void EqualizerPreset::load_channel(const nlohmann::json& json, DbEqualizerChannel* settings, const int& nbands) {
   for (int n = 0; n < nbands; n++) {
     const auto bandn = "band" + util::to_string(n);
 

@@ -32,11 +32,11 @@ Kirigami.ScrollablePage {
     id: equalizerPage
 
     required property string name
-    required property var pluginDB
-    required property var leftDB
-    required property var rightDB
+    required property DbEqualizer pluginDB
+    required property DbEqualizerChannel leftDB
+    required property DbEqualizerChannel rightDB
     required property var pipelineInstance
-    property var pluginBackend
+    property BackendEqualizer pluginBackend
 
     function updateMeters() {
         if (!pluginBackend)
