@@ -34,8 +34,8 @@ class KConfigBaseEE : public KConfigSkeleton {
   KConfigBaseEE(const QString& configname = QString(), QObject* parent = nullptr);
   KConfigBaseEE(KSharedConfig::Ptr config, QObject* parent = nullptr);
 
-  Q_INVOKABLE QVariant getMinValue(const QString& itemName);
-  Q_INVOKABLE QVariant getMaxValue(const QString& itemName);
+  Q_INVOKABLE double getMinValue(const QString& itemName);
+  Q_INVOKABLE double getMaxValue(const QString& itemName);
 
   Q_INVOKABLE void resetProperty(const QString& itemName);
 

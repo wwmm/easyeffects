@@ -35,7 +35,7 @@ Kirigami.ScrollablePage {
     property BackendCrystalizer pluginBackend
 
     function updateMeters() {
-        if (!pluginBackend)
+        if (!crystalizerPage.pluginBackend)
             return;
 
         inputOutputLevels.setInputLevelLeft(crystalizerPage.pluginBackend.getInputLevelLeft());
@@ -43,7 +43,7 @@ Kirigami.ScrollablePage {
         inputOutputLevels.setOutputLevelLeft(crystalizerPage.pluginBackend.getOutputLevelLeft());
         inputOutputLevels.setOutputLevelRight(crystalizerPage.pluginBackend.getOutputLevelRight());
 
-        const newData = pluginBackend.getAdaptiveIntensities();
+        const newData = crystalizerPage.pluginBackend.getAdaptiveIntensities();
 
         for (let n = 0; n < crystalizerPage.pluginBackend.numBands; n++) {
             listModel.setProperty(n, "adaptiveIntensity", newData[n]);

@@ -35,15 +35,15 @@ Kirigami.ScrollablePage {
     property BackendDeesser pluginBackend
 
     function updateMeters() {
-        if (!pluginBackend)
+        if (!deesserPage.pluginBackend)
             return;
 
-        inputOutputLevels.setInputLevelLeft(pluginBackend.getInputLevelLeft());
-        inputOutputLevels.setInputLevelRight(pluginBackend.getInputLevelRight());
-        inputOutputLevels.setOutputLevelLeft(pluginBackend.getOutputLevelLeft());
-        inputOutputLevels.setOutputLevelRight(pluginBackend.getOutputLevelRight());
-        detectionLevel.setValue(pluginBackend.getDetectedLevel());
-        gainReduction.setValue(pluginBackend.getCompressionLevel());
+        inputOutputLevels.setInputLevelLeft(deesserPage.pluginBackend.getInputLevelLeft());
+        inputOutputLevels.setInputLevelRight(deesserPage.pluginBackend.getInputLevelRight());
+        inputOutputLevels.setOutputLevelLeft(deesserPage.pluginBackend.getOutputLevelLeft());
+        inputOutputLevels.setOutputLevelRight(deesserPage.pluginBackend.getOutputLevelRight());
+        detectionLevel.setValue(deesserPage.pluginBackend.getDetectedLevel());
+        gainReduction.setValue(deesserPage.pluginBackend.getCompressionLevel());
     }
 
     Component.onCompleted: {

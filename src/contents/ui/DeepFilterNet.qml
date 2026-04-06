@@ -33,13 +33,13 @@ Kirigami.ScrollablePage {
     property BackendDeepFilterNet pluginBackend
 
     function updateMeters() {
-        if (!pluginBackend)
+        if (!deepfilternetPage.pluginBackend)
             return;
 
-        inputOutputLevels.setInputLevelLeft(pluginBackend.getInputLevelLeft());
-        inputOutputLevels.setInputLevelRight(pluginBackend.getInputLevelRight());
-        inputOutputLevels.setOutputLevelLeft(pluginBackend.getOutputLevelLeft());
-        inputOutputLevels.setOutputLevelRight(pluginBackend.getOutputLevelRight());
+        inputOutputLevels.setInputLevelLeft(deepfilternetPage.pluginBackend.getInputLevelLeft());
+        inputOutputLevels.setInputLevelRight(deepfilternetPage.pluginBackend.getInputLevelRight());
+        inputOutputLevels.setOutputLevelLeft(deepfilternetPage.pluginBackend.getOutputLevelLeft());
+        inputOutputLevels.setOutputLevelRight(deepfilternetPage.pluginBackend.getOutputLevelRight());
     }
 
     Component.onCompleted: {

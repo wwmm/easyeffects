@@ -28,28 +28,28 @@ KConfigBaseEE::KConfigBaseEE([[maybe_unused]] const QString& configname, [[maybe
 
 KConfigBaseEE::KConfigBaseEE([[maybe_unused]] KSharedConfig::Ptr config, [[maybe_unused]] QObject* parent) {}
 
-QVariant KConfigBaseEE::getMinValue(const QString& itemName) {
+double KConfigBaseEE::getMinValue(const QString& itemName) {
   if (itemName.isEmpty()) {
-    return {};
+    return 0.0;
   }
 
   if (auto item = findItem(itemName); item != nullptr) {
-    return item->minValue();
+    return item->minValue().value<double>();
   }
 
-  return {};
+  return 0.0;
 }
 
-QVariant KConfigBaseEE::getMaxValue(const QString& itemName) {
+double KConfigBaseEE::getMaxValue(const QString& itemName) {
   if (itemName.isEmpty()) {
-    return {};
+    return 0.0;
   }
 
   if (auto item = findItem(itemName); item != nullptr) {
-    return item->maxValue();
+    return item->maxValue().value<double>();
   }
 
-  return {};
+  return 0.0;
 }
 
 void KConfigBaseEE::resetProperty(const QString& itemName) {
