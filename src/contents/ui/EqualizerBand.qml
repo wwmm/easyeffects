@@ -21,12 +21,13 @@ import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import "Common.js" as Common
+import ee.ui
 
 Controls.ItemDelegate {
     id: delegate
 
     required property int index
-    required property var bandDB
+    required property DbEqualizerChannel bandDB
     required property var menu
     readonly property string bandTypeName: `band${index}Type`
 

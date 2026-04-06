@@ -44,9 +44,8 @@ Exciter::Exciter(const std::string& tag, pw::Manager* pipe_manager, PipelineType
                  instance_id,
                  pipe_manager,
                  pipe_type),
-      settings(
-          db::Manager::self().get_plugin_db<db::Exciter>(pipe_type,
-                                                         tags::plugin_name::BaseName::exciter + "#" + instance_id)) {
+      settings(db::Manager::self().get_plugin_db<DbExciter>(pipe_type,
+                                                            tags::plugin_name::BaseName::exciter + "#" + instance_id)) {
   const auto lv2_plugin_uri = "http://calf.sourceforge.net/plugins/Exciter";
 
   lv2_wrapper = std::make_unique<lv2::Lv2Wrapper>(lv2_plugin_uri);
@@ -57,17 +56,17 @@ Exciter::Exciter(const std::string& tag, pw::Manager* pipe_manager, PipelineType
     util::debug(std::format("{}{} is not installed", log_tag, lv2_plugin_uri));
   }
 
-  init_common_controls<db::Exciter>(settings);
+  init_common_controls<DbExciter>(settings);
 
   // specific plugin controls
 
-  BIND_LV2_PORT("listen", listen, setListen, db::Exciter::listenChanged);
-  BIND_LV2_PORT_DB("amount", amount, setAmount, db::Exciter::amountChanged, false);
-  BIND_LV2_PORT("drive", harmonics, setHarmonics, db::Exciter::harmonicsChanged);
-  BIND_LV2_PORT("freq", scope, setScope, db::Exciter::scopeChanged);
-  BIND_LV2_PORT("ceil", ceil, setCeil, db::Exciter::ceilChanged);
-  BIND_LV2_PORT("blend", blend, setBlend, db::Exciter::blendChanged);
-  BIND_LV2_PORT("ceil_active", ceilActive, setCeilActive, db::Exciter::ceilActiveChanged);
+  BIND_LV2_PORT("listen", listen, setListen, DbExciter::listenChanged);
+  BIND_LV2_PORT_DB("amount", amount, setAmount, DbExciter::amountChanged, false);
+  BIND_LV2_PORT("drive", harmonics, setHarmonics, DbExciter::harmonicsChanged);
+  BIND_LV2_PORT("freq", scope, setScope, DbExciter::scopeChanged);
+  BIND_LV2_PORT("ceil", ceil, setCeil, DbExciter::ceilChanged);
+  BIND_LV2_PORT("blend", blend, setBlend, DbExciter::blendChanged);
+  BIND_LV2_PORT("ceil_active", ceilActive, setCeilActive, DbExciter::ceilActiveChanged);
 }
 
 Exciter::~Exciter() {

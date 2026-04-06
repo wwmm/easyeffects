@@ -19,6 +19,7 @@
 
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
+import ee.ui
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
@@ -27,7 +28,7 @@ Kirigami.Dialog {
 
     property int index: 0
     property var menuButton: null
-    required property var bandDB
+    required property DbEqualizerChannel bandDB
 
     title: `${i18n("Band")} ${bandMenu.index + 1}` // qmllint disable
 

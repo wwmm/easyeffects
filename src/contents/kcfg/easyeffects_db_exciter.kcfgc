@@ -1,6 +1,5 @@
 File=easyeffects_db_exciter.kcfg
-NameSpace=db
-ClassName=Exciter
+ClassName=DbExciter
 Inherits=KConfigBaseEE
 IncludeFiles=\"kconfig_base_ee.hpp\"
 Mutators=true

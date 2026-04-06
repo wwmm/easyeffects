@@ -27,7 +27,7 @@
 
 ExciterPreset::ExciterPreset(PipelineType pipeline_type, const std::string& instance_name)
     : PluginPresetBase(pipeline_type, instance_name) {
-  settings = get_db_instance<db::Exciter>(pipeline_type);
+  settings = get_db_instance<DbExciter>(pipeline_type);
 }
 
 void ExciterPreset::save(nlohmann::json& json) {

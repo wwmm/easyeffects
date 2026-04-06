@@ -231,7 +231,7 @@ void Manager::create_plugin_db(const QString& parentGroup,
                    [&] { return new DbEqualizerChannel(parentGroup, id, "right"); });
 
     } else if (name.startsWith(tags::plugin_name::BaseName::exciter)) {
-      ensureExists(makeKey(tags::plugin_name::BaseName::exciter, id), [&] { return new db::Exciter(parentGroup, id); });
+      ensureExists(makeKey(tags::plugin_name::BaseName::exciter, id), [&] { return new DbExciter(parentGroup, id); });
 
     } else if (name.startsWith(tags::plugin_name::BaseName::expander)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::expander, id),

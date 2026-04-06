@@ -30,7 +30,7 @@ class ExciterPreset : public PluginPresetBase {
   explicit ExciterPreset(PipelineType pipeline_type, const std::string& instance_name);
 
  private:
-  db::Exciter* settings = nullptr;
+  DbExciter* settings = nullptr;
 
   void save(nlohmann::json& json) override;
 
