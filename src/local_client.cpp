@@ -31,7 +31,7 @@
 
 LocalClient::LocalClient(QObject* parent) : QObject(parent), client(std::make_unique<QLocalSocket>(this)) {
   auto sys_path =
-      std::filesystem::exists("/.flatpak-info") ? QStandardPaths::AppDataLocation : QStandardPaths::RuntimeLocation;
+      std::filesystem::exists("/.flatpak-info") ? QStandardPaths::TempLocation : QStandardPaths::RuntimeLocation;
 
   auto path = QStandardPaths::writableLocation(sys_path) + "/" + tags::local_server::server_name;
 
