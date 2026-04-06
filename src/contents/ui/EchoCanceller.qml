@@ -21,6 +21,7 @@ import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import ee.tags.plugin.name as TagsPluginName // qmllint disable
+import ee.ui
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
@@ -28,18 +29,18 @@ Kirigami.ScrollablePage {
     id: echoCancellerPage
 
     required property string name
-    required property var pluginDB
+    required property DbEchoCanceller pluginDB
     required property var pipelineInstance
-    property var pluginBackend
+    property BackendEchoCanceller pluginBackend
 
     function updateMeters() {
-        if (!pluginBackend)
+        if (!echoCancellerPage.pluginBackend)
             return;
 
-        inputOutputLevels.setInputLevelLeft(pluginBackend.getInputLevelLeft());
-        inputOutputLevels.setInputLevelRight(pluginBackend.getInputLevelRight());
-        inputOutputLevels.setOutputLevelLeft(pluginBackend.getOutputLevelLeft());
-        inputOutputLevels.setOutputLevelRight(pluginBackend.getOutputLevelRight());
+        inputOutputLevels.setInputLevelLeft(echoCancellerPage.pluginBackend.getInputLevelLeft());
+        inputOutputLevels.setInputLevelRight(echoCancellerPage.pluginBackend.getInputLevelRight());
+        inputOutputLevels.setOutputLevelLeft(echoCancellerPage.pluginBackend.getOutputLevelLeft());
+        inputOutputLevels.setOutputLevelRight(echoCancellerPage.pluginBackend.getOutputLevelRight());
     }
 
     Component.onCompleted: {

@@ -30,7 +30,7 @@ class EchoCancellerPreset : public PluginPresetBase {
   explicit EchoCancellerPreset(PipelineType pipeline_type, const std::string& instance_name);
 
  private:
-  db::EchoCanceller* settings = nullptr;
+  DbEchoCanceller* settings = nullptr;
 
   void save(nlohmann::json& json) override;
 

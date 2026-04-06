@@ -220,7 +220,7 @@ void Manager::create_plugin_db(const QString& parentGroup,
 
     } else if (name.startsWith(tags::plugin_name::BaseName::echoCanceller)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::echoCanceller, id),
-                   [&] { return new db::EchoCanceller(parentGroup, id); });
+                   [&] { return new DbEchoCanceller(parentGroup, id); });
 
     } else if (name.startsWith(tags::plugin_name::BaseName::equalizer)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::equalizer, id),

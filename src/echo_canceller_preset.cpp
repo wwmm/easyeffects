@@ -27,7 +27,7 @@
 
 EchoCancellerPreset::EchoCancellerPreset(PipelineType pipeline_type, const std::string& instance_name)
     : PluginPresetBase(pipeline_type, instance_name) {
-  settings = get_db_instance<db::EchoCanceller>(pipeline_type);
+  settings = get_db_instance<DbEchoCanceller>(pipeline_type);
 }
 
 void EchoCancellerPreset::save(nlohmann::json& json) {

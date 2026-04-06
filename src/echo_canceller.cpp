@@ -46,10 +46,10 @@ EchoCanceller::EchoCanceller(const std::string& tag,
                  pipe_manager,
                  pipe_type,
                  true),
-      settings(db::Manager::self().get_plugin_db<db::EchoCanceller>(
+      settings(db::Manager::self().get_plugin_db<DbEchoCanceller>(
           pipe_type,
           tags::plugin_name::BaseName::echoCanceller + "#" + instance_id)) {
-  init_common_controls<db::EchoCanceller>(settings);
+  init_common_controls<DbEchoCanceller>(settings);
 
   ap_cfg.pipeline.multi_channel_render = true;
   ap_cfg.pipeline.multi_channel_capture = true;
@@ -69,7 +69,7 @@ EchoCanceller::EchoCanceller(const std::string& tag,
 
   // Echo Canceller
 
-  connect(settings, &db::EchoCanceller::enableEchoCancellerChanged, [&]() {
+  connect(settings, &DbEchoCanceller::enableEchoCancellerChanged, [&]() {
     if (!ap_builder) {
       return;
     }
@@ -81,7 +81,7 @@ EchoCanceller::EchoCanceller(const std::string& tag,
     ap_builder->ApplyConfig(ap_cfg);
   });
 
-  connect(settings, &db::EchoCanceller::echoCancellerMobileModeChanged, [&]() {
+  connect(settings, &DbEchoCanceller::echoCancellerMobileModeChanged, [&]() {
     if (!ap_builder) {
       return;
     }
@@ -93,7 +93,7 @@ EchoCanceller::EchoCanceller(const std::string& tag,
     ap_builder->ApplyConfig(ap_cfg);
   });
 
-  connect(settings, &db::EchoCanceller::echoCancellerEnforceHighPassChanged, [&]() {
+  connect(settings, &DbEchoCanceller::echoCancellerEnforceHighPassChanged, [&]() {
     if (!ap_builder) {
       return;
     }
@@ -107,7 +107,7 @@ EchoCanceller::EchoCanceller(const std::string& tag,
 
   // Noise Suppression
 
-  connect(settings, &db::EchoCanceller::enableNoiseSuppressionChanged, [&]() {
+  connect(settings, &DbEchoCanceller::enableNoiseSuppressionChanged, [&]() {
     if (!ap_builder) {
       return;
     }
@@ -119,7 +119,7 @@ EchoCanceller::EchoCanceller(const std::string& tag,
     ap_builder->ApplyConfig(ap_cfg);
   });
 
-  connect(settings, &db::EchoCanceller::noiseSuppressionLevelChanged, [&]() {
+  connect(settings, &DbEchoCanceller::noiseSuppressionLevelChanged, [&]() {
     if (!ap_builder) {
       return;
     }
@@ -134,7 +134,7 @@ EchoCanceller::EchoCanceller(const std::string& tag,
 
   // High-pass Filter
 
-  connect(settings, &db::EchoCanceller::enableHighPassFilterChanged, [&]() {
+  connect(settings, &DbEchoCanceller::enableHighPassFilterChanged, [&]() {
     if (!ap_builder) {
       return;
     }
@@ -146,7 +146,7 @@ EchoCanceller::EchoCanceller(const std::string& tag,
     ap_builder->ApplyConfig(ap_cfg);
   });
 
-  connect(settings, &db::EchoCanceller::highPassFilterFullBandChanged, [&]() {
+  connect(settings, &DbEchoCanceller::highPassFilterFullBandChanged, [&]() {
     if (!ap_builder) {
       return;
     }
@@ -160,7 +160,7 @@ EchoCanceller::EchoCanceller(const std::string& tag,
 
   // Automatic gain control
 
-  connect(settings, &db::EchoCanceller::enableAGCChanged, [&]() {
+  connect(settings, &DbEchoCanceller::enableAGCChanged, [&]() {
     if (!ap_builder) {
       return;
     }

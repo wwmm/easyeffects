@@ -1,6 +1,5 @@
 File=easyeffects_db_echo_canceller.kcfg
-NameSpace=db
-ClassName=EchoCanceller
+ClassName=DbEchoCanceller
 Inherits=KConfigBaseEE
 IncludeFiles=\"kconfig_base_ee.hpp\"
 Mutators=true

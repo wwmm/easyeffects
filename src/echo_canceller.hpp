@@ -67,7 +67,7 @@ class EchoCanceller : public PluginBase {
   auto get_latency_seconds() -> float override;
 
  private:
-  db::EchoCanceller* settings = nullptr;
+  DbEchoCanceller* settings = nullptr;
 
   bool notify_latency = false;
   bool ready = false;
