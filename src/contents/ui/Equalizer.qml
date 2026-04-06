@@ -56,9 +56,7 @@ Kirigami.ScrollablePage {
     EqualizerBandMenu {
         id: bandMenu
 
-        bandDB: {
-            equalizerPage.pluginDB.splitChannels ? (equalizerPage.pluginDB.viewLeftChannel ? equalizerPage.leftDB : equalizerPage.rightDB) : equalizerPage.leftDB;
-        }
+        bandDB: equalizerPage.pluginDB.splitChannels ? (equalizerPage.pluginDB.viewLeftChannel ? equalizerPage.leftDB : equalizerPage.rightDB) : equalizerPage.leftDB // qmllint disable
     }
 
     FileDialog {
@@ -281,9 +279,8 @@ Kirigami.ScrollablePage {
                     Controls.ScrollBar.horizontal: listViewScrollBar
 
                     delegate: EqualizerBand {
-                        bandDB: {
-                            equalizerPage.pluginDB.splitChannels ? (equalizerPage.pluginDB.viewLeftChannel ? equalizerPage.leftDB : equalizerPage.rightDB) : equalizerPage.leftDB;
-                        }
+                        bandDB: equalizerPage.pluginDB.splitChannels ? (equalizerPage.pluginDB.viewLeftChannel ? equalizerPage.leftDB : equalizerPage.rightDB) : equalizerPage.leftDB // qmllint disable
+
                         menu: bandMenu
                     }
                 }
