@@ -266,7 +266,7 @@ void Manager::create_plugin_db(const QString& parentGroup,
 
     } else if (name.startsWith(tags::plugin_name::BaseName::multibandGate)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::multibandGate, id),
-                   [&] { return new db::MultibandGate(parentGroup, id); });
+                   [&] { return new DbMultibandGate(parentGroup, id); });
 
     } else if (name.startsWith(tags::plugin_name::BaseName::pitch)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::pitch, id), [&] { return new db::Pitch(parentGroup, id); });

@@ -54,7 +54,7 @@ MultibandGate::MultibandGate(const std::string& tag,
                  pipe_manager,
                  pipe_type,
                  true),
-      settings(db::Manager::self().get_plugin_db<db::MultibandGate>(
+      settings(db::Manager::self().get_plugin_db<DbMultibandGate>(
           pipe_type,
           tags::plugin_name::BaseName::multibandGate + "#" + instance_id)),
       frequency_range_end(n_bands),
@@ -74,34 +74,34 @@ MultibandGate::MultibandGate(const std::string& tag,
     util::debug(std::format("{}{} is not installed", log_tag, lv2_plugin_uri));
   }
 
-  init_common_controls<db::MultibandGate>(settings);
+  init_common_controls<DbMultibandGate>(settings);
 
   // specific plugin controls
 
-  connect(settings, &db::MultibandGate::sidechainInputDeviceChanged, [&]() { update_sidechain_links(); });
+  connect(settings, &DbMultibandGate::sidechainInputDeviceChanged, [&]() { update_sidechain_links(); });
 
-  connect(settings, &db::MultibandGate::band0SidechainTypeChanged, [&]() { update_sidechain_links(); });
-  connect(settings, &db::MultibandGate::band1SidechainTypeChanged, [&]() { update_sidechain_links(); });
-  connect(settings, &db::MultibandGate::band2SidechainTypeChanged, [&]() { update_sidechain_links(); });
-  connect(settings, &db::MultibandGate::band3SidechainTypeChanged, [&]() { update_sidechain_links(); });
-  connect(settings, &db::MultibandGate::band4SidechainTypeChanged, [&]() { update_sidechain_links(); });
-  connect(settings, &db::MultibandGate::band5SidechainTypeChanged, [&]() { update_sidechain_links(); });
-  connect(settings, &db::MultibandGate::band6SidechainTypeChanged, [&]() { update_sidechain_links(); });
-  connect(settings, &db::MultibandGate::band7SidechainTypeChanged, [&]() { update_sidechain_links(); });
+  connect(settings, &DbMultibandGate::band0SidechainTypeChanged, [&]() { update_sidechain_links(); });
+  connect(settings, &DbMultibandGate::band1SidechainTypeChanged, [&]() { update_sidechain_links(); });
+  connect(settings, &DbMultibandGate::band2SidechainTypeChanged, [&]() { update_sidechain_links(); });
+  connect(settings, &DbMultibandGate::band3SidechainTypeChanged, [&]() { update_sidechain_links(); });
+  connect(settings, &DbMultibandGate::band4SidechainTypeChanged, [&]() { update_sidechain_links(); });
+  connect(settings, &DbMultibandGate::band5SidechainTypeChanged, [&]() { update_sidechain_links(); });
+  connect(settings, &DbMultibandGate::band6SidechainTypeChanged, [&]() { update_sidechain_links(); });
+  connect(settings, &DbMultibandGate::band7SidechainTypeChanged, [&]() { update_sidechain_links(); });
 
-  BIND_LV2_PORT("mode", gateMode, setGateMode, db::MultibandGate::gateModeChanged);
-  BIND_LV2_PORT("envb", envelopeBoost, setEnvelopeBoost, db::MultibandGate::envelopeBoostChanged);
-  BIND_LV2_PORT("ssplit", stereoSplit, setStereoSplit, db::MultibandGate::stereoSplitChanged);
+  BIND_LV2_PORT("mode", gateMode, setGateMode, DbMultibandGate::gateModeChanged);
+  BIND_LV2_PORT("envb", envelopeBoost, setEnvelopeBoost, DbMultibandGate::envelopeBoostChanged);
+  BIND_LV2_PORT("ssplit", stereoSplit, setStereoSplit, DbMultibandGate::stereoSplitChanged);
 
   // dB controls with -inf mode.
-  BIND_LV2_PORT_DB("g_dry", dry, setDry, db::MultibandGate::dryChanged, true);
-  BIND_LV2_PORT_DB("g_wet", wet, setWet, db::MultibandGate::wetChanged, true);
-  BIND_LV2_PORT_DB("in2lk", inputToLink, setInputToLink, db::MultibandGate::inputToLinkChanged, true);
-  BIND_LV2_PORT_DB("in2sc", inputToSidechain, setInputToSidechain, db::MultibandGate::inputToSidechainChanged, true);
-  BIND_LV2_PORT_DB("sc2in", sidechainToInput, setSidechainToInput, db::MultibandGate::sidechainToInputChanged, true);
-  BIND_LV2_PORT_DB("sc2lk", sidechainToLink, setSidechainToLink, db::MultibandGate::sidechainToLinkChanged, true);
-  BIND_LV2_PORT_DB("lk2sc", linkToSidechain, setLinkToSidechain, db::MultibandGate::linkToSidechainChanged, true);
-  BIND_LV2_PORT_DB("lk2in", linkToInput, setLinkToInput, db::MultibandGate::linkToInputChanged, true);
+  BIND_LV2_PORT_DB("g_dry", dry, setDry, DbMultibandGate::dryChanged, true);
+  BIND_LV2_PORT_DB("g_wet", wet, setWet, DbMultibandGate::wetChanged, true);
+  BIND_LV2_PORT_DB("in2lk", inputToLink, setInputToLink, DbMultibandGate::inputToLinkChanged, true);
+  BIND_LV2_PORT_DB("in2sc", inputToSidechain, setInputToSidechain, DbMultibandGate::inputToSidechainChanged, true);
+  BIND_LV2_PORT_DB("sc2in", sidechainToInput, setSidechainToInput, DbMultibandGate::sidechainToInputChanged, true);
+  BIND_LV2_PORT_DB("sc2lk", sidechainToLink, setSidechainToLink, DbMultibandGate::sidechainToLinkChanged, true);
+  BIND_LV2_PORT_DB("lk2sc", linkToSidechain, setLinkToSidechain, DbMultibandGate::linkToSidechainChanged, true);
+  BIND_LV2_PORT_DB("lk2in", linkToInput, setLinkToInput, DbMultibandGate::linkToInputChanged, true);
 
   bind_bands();
 }
@@ -140,55 +140,48 @@ void MultibandGate::clear_data() {
 void MultibandGate::bind_bands() {
   using namespace tags::multiband_gate;
 
-  BIND_LV2_PORT(cbe[1].data(), band1Enable, setBand1Enable, db::MultibandGate::band1EnableChanged);
-  BIND_LV2_PORT(cbe[2].data(), band2Enable, setBand2Enable, db::MultibandGate::band2EnableChanged);
-  BIND_LV2_PORT(cbe[3].data(), band3Enable, setBand3Enable, db::MultibandGate::band3EnableChanged);
-  BIND_LV2_PORT(cbe[4].data(), band4Enable, setBand4Enable, db::MultibandGate::band4EnableChanged);
-  BIND_LV2_PORT(cbe[5].data(), band5Enable, setBand5Enable, db::MultibandGate::band5EnableChanged);
-  BIND_LV2_PORT(cbe[6].data(), band6Enable, setBand6Enable, db::MultibandGate::band6EnableChanged);
-  BIND_LV2_PORT(cbe[7].data(), band7Enable, setBand7Enable, db::MultibandGate::band7EnableChanged);
+  BIND_LV2_PORT(cbe[1].data(), band1Enable, setBand1Enable, DbMultibandGate::band1EnableChanged);
+  BIND_LV2_PORT(cbe[2].data(), band2Enable, setBand2Enable, DbMultibandGate::band2EnableChanged);
+  BIND_LV2_PORT(cbe[3].data(), band3Enable, setBand3Enable, DbMultibandGate::band3EnableChanged);
+  BIND_LV2_PORT(cbe[4].data(), band4Enable, setBand4Enable, DbMultibandGate::band4EnableChanged);
+  BIND_LV2_PORT(cbe[5].data(), band5Enable, setBand5Enable, DbMultibandGate::band5EnableChanged);
+  BIND_LV2_PORT(cbe[6].data(), band6Enable, setBand6Enable, DbMultibandGate::band6EnableChanged);
+  BIND_LV2_PORT(cbe[7].data(), band7Enable, setBand7Enable, DbMultibandGate::band7EnableChanged);
 
-  BIND_LV2_PORT(sf[1].data(), band1SplitFrequency, setBand1SplitFrequency,
-                db::MultibandGate::band1SplitFrequencyChanged);
-  BIND_LV2_PORT(sf[2].data(), band2SplitFrequency, setBand2SplitFrequency,
-                db::MultibandGate::band2SplitFrequencyChanged);
-  BIND_LV2_PORT(sf[3].data(), band3SplitFrequency, setBand3SplitFrequency,
-                db::MultibandGate::band3SplitFrequencyChanged);
-  BIND_LV2_PORT(sf[4].data(), band4SplitFrequency, setBand4SplitFrequency,
-                db::MultibandGate::band4SplitFrequencyChanged);
-  BIND_LV2_PORT(sf[5].data(), band5SplitFrequency, setBand5SplitFrequency,
-                db::MultibandGate::band5SplitFrequencyChanged);
-  BIND_LV2_PORT(sf[6].data(), band6SplitFrequency, setBand6SplitFrequency,
-                db::MultibandGate::band6SplitFrequencyChanged);
-  BIND_LV2_PORT(sf[7].data(), band7SplitFrequency, setBand7SplitFrequency,
-                db::MultibandGate::band7SplitFrequencyChanged);
+  BIND_LV2_PORT(sf[1].data(), band1SplitFrequency, setBand1SplitFrequency, DbMultibandGate::band1SplitFrequencyChanged);
+  BIND_LV2_PORT(sf[2].data(), band2SplitFrequency, setBand2SplitFrequency, DbMultibandGate::band2SplitFrequencyChanged);
+  BIND_LV2_PORT(sf[3].data(), band3SplitFrequency, setBand3SplitFrequency, DbMultibandGate::band3SplitFrequencyChanged);
+  BIND_LV2_PORT(sf[4].data(), band4SplitFrequency, setBand4SplitFrequency, DbMultibandGate::band4SplitFrequencyChanged);
+  BIND_LV2_PORT(sf[5].data(), band5SplitFrequency, setBand5SplitFrequency, DbMultibandGate::band5SplitFrequencyChanged);
+  BIND_LV2_PORT(sf[6].data(), band6SplitFrequency, setBand6SplitFrequency, DbMultibandGate::band6SplitFrequencyChanged);
+  BIND_LV2_PORT(sf[7].data(), band7SplitFrequency, setBand7SplitFrequency, DbMultibandGate::band7SplitFrequencyChanged);
 
-  BIND_BANDS_PROPERTY(ce, GateEnable, db::MultibandGate);
-  BIND_BANDS_PROPERTY(bs, Solo, db::MultibandGate);
-  BIND_BANDS_PROPERTY(bm, Mute, db::MultibandGate);
-  BIND_BANDS_PROPERTY(gh, Hysteresis, db::MultibandGate);
-  BIND_BANDS_PROPERTY(sce, SidechainType, db::MultibandGate);
-  BIND_BANDS_PROPERTY(sclc, SidechainCustomLowcutFilter, db::MultibandGate);
-  BIND_BANDS_PROPERTY(schc, SidechainCustomHighcutFilter, db::MultibandGate);
-  BIND_BANDS_PROPERTY(sscs, StereoSplitSource, db::MultibandGate);
-  BIND_BANDS_PROPERTY(scs, SidechainSource, db::MultibandGate);
-  BIND_BANDS_PROPERTY(scm, SidechainMode, db::MultibandGate);
-  BIND_BANDS_PROPERTY(at, AttackTime, db::MultibandGate);
-  BIND_BANDS_PROPERTY(rt, ReleaseTime, db::MultibandGate);
-  BIND_BANDS_PROPERTY(sclf, SidechainLowcutFrequency, db::MultibandGate);
-  BIND_BANDS_PROPERTY(schf, SidechainHighcutFrequency, db::MultibandGate);
-  BIND_BANDS_PROPERTY(sla, SidechainLookahead, db::MultibandGate);
-  BIND_BANDS_PROPERTY(scr, SidechainReactivity, db::MultibandGate);
+  BIND_BANDS_PROPERTY(ce, GateEnable, DbMultibandGate);
+  BIND_BANDS_PROPERTY(bs, Solo, DbMultibandGate);
+  BIND_BANDS_PROPERTY(bm, Mute, DbMultibandGate);
+  BIND_BANDS_PROPERTY(gh, Hysteresis, DbMultibandGate);
+  BIND_BANDS_PROPERTY(sce, SidechainType, DbMultibandGate);
+  BIND_BANDS_PROPERTY(sclc, SidechainCustomLowcutFilter, DbMultibandGate);
+  BIND_BANDS_PROPERTY(schc, SidechainCustomHighcutFilter, DbMultibandGate);
+  BIND_BANDS_PROPERTY(sscs, StereoSplitSource, DbMultibandGate);
+  BIND_BANDS_PROPERTY(scs, SidechainSource, DbMultibandGate);
+  BIND_BANDS_PROPERTY(scm, SidechainMode, DbMultibandGate);
+  BIND_BANDS_PROPERTY(at, AttackTime, DbMultibandGate);
+  BIND_BANDS_PROPERTY(rt, ReleaseTime, DbMultibandGate);
+  BIND_BANDS_PROPERTY(sclf, SidechainLowcutFrequency, DbMultibandGate);
+  BIND_BANDS_PROPERTY(schf, SidechainHighcutFrequency, DbMultibandGate);
+  BIND_BANDS_PROPERTY(sla, SidechainLookahead, DbMultibandGate);
+  BIND_BANDS_PROPERTY(scr, SidechainReactivity, DbMultibandGate);
 
-  BIND_BANDS_PROPERTY_DB(ht, HysteresisThreshold, db::MultibandGate, false);
-  BIND_BANDS_PROPERTY_DB(hz, HysteresisZone, db::MultibandGate, false);
-  BIND_BANDS_PROPERTY_DB(gt, CurveThreshold, db::MultibandGate, false);
-  BIND_BANDS_PROPERTY_DB(gz, CurveZone, db::MultibandGate, false);
-  BIND_BANDS_PROPERTY_DB(gr, Reduction, db::MultibandGate, false);
-  BIND_BANDS_PROPERTY_DB(mk, Makeup, db::MultibandGate, false);
+  BIND_BANDS_PROPERTY_DB(ht, HysteresisThreshold, DbMultibandGate, false);
+  BIND_BANDS_PROPERTY_DB(hz, HysteresisZone, DbMultibandGate, false);
+  BIND_BANDS_PROPERTY_DB(gt, CurveThreshold, DbMultibandGate, false);
+  BIND_BANDS_PROPERTY_DB(gz, CurveZone, DbMultibandGate, false);
+  BIND_BANDS_PROPERTY_DB(gr, Reduction, DbMultibandGate, false);
+  BIND_BANDS_PROPERTY_DB(mk, Makeup, DbMultibandGate, false);
 
   // dB controls with -inf mode.
-  BIND_BANDS_PROPERTY_DB(scp, SidechainPreamp, db::MultibandGate, true);
+  BIND_BANDS_PROPERTY_DB(scp, SidechainPreamp, DbMultibandGate, true);
 }
 
 void MultibandGate::setup() {

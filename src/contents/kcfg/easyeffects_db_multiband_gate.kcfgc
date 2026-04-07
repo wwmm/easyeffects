@@ -1,6 +1,5 @@
 File=easyeffects_db_multiband_gate.kcfg
-NameSpace=db
-ClassName=MultibandGate
+ClassName=DbMultibandGate
 Inherits=KConfigBaseEE
 IncludeFiles=\"kconfig_base_ee.hpp\"
 Mutators=true

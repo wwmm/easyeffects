@@ -87,7 +87,7 @@ class MultibandGate : public PluginBase {
 
   static constexpr uint n_bands = tags::multiband_gate::n_bands;
 
-  db::MultibandGate* settings = nullptr;
+  DbMultibandGate* settings = nullptr;
 
   QList<float> frequency_range_end, envelope_left, envelope_right, curve_left, curve_right, reduction_left,
       reduction_right;

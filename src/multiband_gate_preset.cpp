@@ -30,7 +30,7 @@
 
 MultibandGatePreset::MultibandGatePreset(PipelineType pipeline_type, const std::string& instance_name)
     : PluginPresetBase(pipeline_type, instance_name) {
-  settings = get_db_instance<db::MultibandGate>(pipeline_type);
+  settings = get_db_instance<DbMultibandGate>(pipeline_type);
 }
 
 void MultibandGatePreset::save(nlohmann::json& json) {
