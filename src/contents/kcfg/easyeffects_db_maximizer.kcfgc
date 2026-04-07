@@ -1,6 +1,5 @@
 File=easyeffects_db_maximizer.kcfg
-NameSpace=db
-ClassName=Maximizer
+ClassName=DbMaximizer
 Inherits=KConfigBaseEE
 IncludeFiles=\"kconfig_base_ee.hpp\"
 Mutators=true

@@ -258,7 +258,7 @@ void Manager::create_plugin_db(const QString& parentGroup,
 
     } else if (name.startsWith(tags::plugin_name::BaseName::maximizer)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::maximizer, id),
-                   [&] { return new db::Maximizer(parentGroup, id); });
+                   [&] { return new DbMaximizer(parentGroup, id); });
 
     } else if (name.startsWith(tags::plugin_name::BaseName::multibandCompressor)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::multibandCompressor, id),

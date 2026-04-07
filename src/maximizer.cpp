@@ -45,9 +45,9 @@ Maximizer::Maximizer(const std::string& tag, pw::Manager* pipe_manager, Pipeline
                  instance_id,
                  pipe_manager,
                  pipe_type),
-      settings(db::Manager::self().get_plugin_db<db::Maximizer>(
-          pipe_type,
-          tags::plugin_name::BaseName::maximizer + "#" + instance_id)) {
+      settings(
+          db::Manager::self().get_plugin_db<DbMaximizer>(pipe_type,
+                                                         tags::plugin_name::BaseName::maximizer + "#" + instance_id)) {
   const auto lv2_plugin_uri = "urn:zamaudio:ZaMaximX2";
 
   lv2_wrapper = std::make_unique<lv2::Lv2Wrapper>(lv2_plugin_uri);
@@ -58,12 +58,12 @@ Maximizer::Maximizer(const std::string& tag, pw::Manager* pipe_manager, Pipeline
     util::debug(std::format("{}{} is not installed", log_tag, lv2_plugin_uri));
   }
 
-  init_common_controls<db::Maximizer>(settings);
+  init_common_controls<DbMaximizer>(settings);
 
   // specific plugin controls
 
-  BIND_LV2_PORT("rel", release, setRelease, db::Maximizer::releaseChanged);
-  BIND_LV2_PORT("thresh", threshold, setThreshold, db::Maximizer::thresholdChanged);
+  BIND_LV2_PORT("rel", release, setRelease, DbMaximizer::releaseChanged);
+  BIND_LV2_PORT("thresh", threshold, setThreshold, DbMaximizer::thresholdChanged);
 }
 
 Maximizer::~Maximizer() {

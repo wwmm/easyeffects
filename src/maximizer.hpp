@@ -72,7 +72,7 @@ class Maximizer : public PluginBase {
 
   bool ready = false;
 
-  db::Maximizer* settings = nullptr;
+  DbMaximizer* settings = nullptr;
 
   void update_sidechain_links();
 };
