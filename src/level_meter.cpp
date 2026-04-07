@@ -42,12 +42,12 @@ LevelMeter::LevelMeter(const std::string& tag, pw::Manager* pipe_manager, Pipeli
                  instance_id,
                  pipe_manager,
                  pipe_type),
-      settings(db::Manager::self().get_plugin_db<db::LevelMeter>(
+      settings(db::Manager::self().get_plugin_db<DbLevelMeter>(
           pipe_type,
           tags::plugin_name::BaseName::levelMeter + "#" + instance_id)) {
   bypass = settings->bypass();
 
-  connect(settings, &db::LevelMeter::bypassChanged, [&]() { bypass = settings->bypass(); });
+  connect(settings, &DbLevelMeter::bypassChanged, [&]() { bypass = settings->bypass(); });
 }
 
 LevelMeter::~LevelMeter() {

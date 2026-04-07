@@ -27,7 +27,7 @@
 
 FilterPreset::FilterPreset(PipelineType pipeline_type, const std::string& instance_name)
     : PluginPresetBase(pipeline_type, instance_name) {
-  settings = get_db_instance<db::Filter>(pipeline_type);
+  settings = get_db_instance<DbFilter>(pipeline_type);
 }
 
 void FilterPreset::save(nlohmann::json& json) {

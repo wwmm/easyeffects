@@ -30,7 +30,7 @@ class GatePreset : public PluginPresetBase {
   explicit GatePreset(PipelineType pipeline_type, const std::string& instance_name);
 
  private:
-  db::Gate* settings = nullptr;
+  DbGate* settings = nullptr;
 
   void save(nlohmann::json& json) override;
 

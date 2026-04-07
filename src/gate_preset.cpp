@@ -28,7 +28,7 @@
 
 GatePreset::GatePreset(PipelineType pipeline_type, const std::string& instance_name)
     : PluginPresetBase(pipeline_type, instance_name) {
-  settings = get_db_instance<db::Gate>(pipeline_type);
+  settings = get_db_instance<DbGate>(pipeline_type);
 }
 
 void GatePreset::save(nlohmann::json& json) {

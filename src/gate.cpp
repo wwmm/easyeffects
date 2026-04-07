@@ -48,8 +48,8 @@ Gate::Gate(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_
                  pipe_manager,
                  pipe_type,
                  true),
-      settings(db::Manager::self().get_plugin_db<db::Gate>(pipe_type,
-                                                           tags::plugin_name::BaseName::gate + "#" + instance_id)) {
+      settings(
+          db::Manager::self().get_plugin_db<DbGate>(pipe_type, tags::plugin_name::BaseName::gate + "#" + instance_id)) {
   const auto lv2_plugin_uri = "http://lsp-plug.in/plugins/lv2/sc_gate_stereo";
 
   lv2_wrapper = std::make_unique<lv2::Lv2Wrapper>(lv2_plugin_uri);
@@ -60,45 +60,45 @@ Gate::Gate(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_
     util::debug(std::format("{}{} is not installed", log_tag, lv2_plugin_uri));
   }
 
-  init_common_controls<db::Gate>(settings);
+  init_common_controls<DbGate>(settings);
 
   // specific plugin controls
 
-  connect(settings, &db::Gate::sidechainTypeChanged, [&]() { update_sidechain_links(); });
-  connect(settings, &db::Gate::sidechainInputDeviceChanged, [&]() { update_sidechain_links(); });
+  connect(settings, &DbGate::sidechainTypeChanged, [&]() { update_sidechain_links(); });
+  connect(settings, &DbGate::sidechainInputDeviceChanged, [&]() { update_sidechain_links(); });
 
-  BIND_LV2_PORT("sci", sidechainType, setSidechainType, db::Gate::sidechainTypeChanged);
-  BIND_LV2_PORT("scm", sidechainMode, setSidechainMode, db::Gate::sidechainModeChanged);
-  BIND_LV2_PORT("scl", sidechainListen, setSidechainListen, db::Gate::sidechainListenChanged);
-  BIND_LV2_PORT("scs", sidechainSource, setSidechainSource, db::Gate::sidechainSourceChanged);
-  BIND_LV2_PORT("sscs", stereoSplitSource, setStereoSplitSource, db::Gate::stereoSplitSourceChanged);
-  BIND_LV2_PORT("ssplit", stereoSplit, setStereoSplit, db::Gate::stereoSplitChanged);
-  BIND_LV2_PORT("scr", sidechainReactivity, setSidechainReactivity, db::Gate::sidechainReactivityChanged);
-  BIND_LV2_PORT("sla", sidechainLookahead, setSidechainLookahead, db::Gate::sidechainLookaheadChanged);
-  BIND_LV2_PORT("shpm", hpfMode, setHpfMode, db::Gate::hpfModeChanged);
-  BIND_LV2_PORT("slpm", lpfMode, setLpfMode, db::Gate::lpfModeChanged);
-  BIND_LV2_PORT("shpf", hpfFrequency, setHpfFrequency, db::Gate::hpfFrequencyChanged);
-  BIND_LV2_PORT("slpf", lpfFrequency, setLpfFrequency, db::Gate::lpfFrequencyChanged);
-  BIND_LV2_PORT("at", attack, setAttack, db::Gate::attackChanged);
-  BIND_LV2_PORT("rt", release, setRelease, db::Gate::releaseChanged);
-  BIND_LV2_PORT("gh", hysteresis, setHysteresis, db::Gate::hysteresisChanged);
-  BIND_LV2_PORT_DB("mk", makeup, setMakeup, db::Gate::makeupChanged, false);
-  BIND_LV2_PORT_DB("gr", reduction, setReduction, db::Gate::reductionChanged, false);
-  BIND_LV2_PORT_DB("gt", curveThreshold, setCurveThreshold, db::Gate::curveThresholdChanged, false);
-  BIND_LV2_PORT_DB("gz", curveZone, setCurveZone, db::Gate::curveZoneChanged, false);
-  BIND_LV2_PORT_DB("ht", hysteresisThreshold, setHysteresisThreshold, db::Gate::hysteresisThresholdChanged, false);
-  BIND_LV2_PORT_DB("hz", hysteresisZone, setHysteresisZone, db::Gate::hysteresisZoneChanged, false);
+  BIND_LV2_PORT("sci", sidechainType, setSidechainType, DbGate::sidechainTypeChanged);
+  BIND_LV2_PORT("scm", sidechainMode, setSidechainMode, DbGate::sidechainModeChanged);
+  BIND_LV2_PORT("scl", sidechainListen, setSidechainListen, DbGate::sidechainListenChanged);
+  BIND_LV2_PORT("scs", sidechainSource, setSidechainSource, DbGate::sidechainSourceChanged);
+  BIND_LV2_PORT("sscs", stereoSplitSource, setStereoSplitSource, DbGate::stereoSplitSourceChanged);
+  BIND_LV2_PORT("ssplit", stereoSplit, setStereoSplit, DbGate::stereoSplitChanged);
+  BIND_LV2_PORT("scr", sidechainReactivity, setSidechainReactivity, DbGate::sidechainReactivityChanged);
+  BIND_LV2_PORT("sla", sidechainLookahead, setSidechainLookahead, DbGate::sidechainLookaheadChanged);
+  BIND_LV2_PORT("shpm", hpfMode, setHpfMode, DbGate::hpfModeChanged);
+  BIND_LV2_PORT("slpm", lpfMode, setLpfMode, DbGate::lpfModeChanged);
+  BIND_LV2_PORT("shpf", hpfFrequency, setHpfFrequency, DbGate::hpfFrequencyChanged);
+  BIND_LV2_PORT("slpf", lpfFrequency, setLpfFrequency, DbGate::lpfFrequencyChanged);
+  BIND_LV2_PORT("at", attack, setAttack, DbGate::attackChanged);
+  BIND_LV2_PORT("rt", release, setRelease, DbGate::releaseChanged);
+  BIND_LV2_PORT("gh", hysteresis, setHysteresis, DbGate::hysteresisChanged);
+  BIND_LV2_PORT_DB("mk", makeup, setMakeup, DbGate::makeupChanged, false);
+  BIND_LV2_PORT_DB("gr", reduction, setReduction, DbGate::reductionChanged, false);
+  BIND_LV2_PORT_DB("gt", curveThreshold, setCurveThreshold, DbGate::curveThresholdChanged, false);
+  BIND_LV2_PORT_DB("gz", curveZone, setCurveZone, DbGate::curveZoneChanged, false);
+  BIND_LV2_PORT_DB("ht", hysteresisThreshold, setHysteresisThreshold, DbGate::hysteresisThresholdChanged, false);
+  BIND_LV2_PORT_DB("hz", hysteresisZone, setHysteresisZone, DbGate::hysteresisZoneChanged, false);
 
   // dB controls with -inf mode.
-  BIND_LV2_PORT_DB("cdr", dry, setDry, db::Gate::dryChanged, true);
-  BIND_LV2_PORT_DB("cwt", wet, setWet, db::Gate::wetChanged, true);
-  BIND_LV2_PORT_DB("scp", sidechainPreamp, setSidechainPreamp, db::Gate::sidechainPreampChanged, true);
-  BIND_LV2_PORT_DB("in2lk", inputToLink, setInputToLink, db::Gate::inputToLinkChanged, true);
-  BIND_LV2_PORT_DB("in2sc", inputToSidechain, setInputToSidechain, db::Gate::inputToSidechainChanged, true);
-  BIND_LV2_PORT_DB("sc2in", sidechainToInput, setSidechainToInput, db::Gate::sidechainToInputChanged, true);
-  BIND_LV2_PORT_DB("sc2lk", sidechainToLink, setSidechainToLink, db::Gate::sidechainToLinkChanged, true);
-  BIND_LV2_PORT_DB("lk2sc", linkToSidechain, setLinkToSidechain, db::Gate::linkToSidechainChanged, true);
-  BIND_LV2_PORT_DB("lk2in", linkToInput, setLinkToInput, db::Gate::linkToInputChanged, true);
+  BIND_LV2_PORT_DB("cdr", dry, setDry, DbGate::dryChanged, true);
+  BIND_LV2_PORT_DB("cwt", wet, setWet, DbGate::wetChanged, true);
+  BIND_LV2_PORT_DB("scp", sidechainPreamp, setSidechainPreamp, DbGate::sidechainPreampChanged, true);
+  BIND_LV2_PORT_DB("in2lk", inputToLink, setInputToLink, DbGate::inputToLinkChanged, true);
+  BIND_LV2_PORT_DB("in2sc", inputToSidechain, setInputToSidechain, DbGate::inputToSidechainChanged, true);
+  BIND_LV2_PORT_DB("sc2in", sidechainToInput, setSidechainToInput, DbGate::sidechainToInputChanged, true);
+  BIND_LV2_PORT_DB("sc2lk", sidechainToLink, setSidechainToLink, DbGate::sidechainToLinkChanged, true);
+  BIND_LV2_PORT_DB("lk2sc", linkToSidechain, setLinkToSidechain, DbGate::linkToSidechainChanged, true);
+  BIND_LV2_PORT_DB("lk2in", linkToInput, setLinkToInput, DbGate::linkToInputChanged, true);
 }
 
 Gate::~Gate() {

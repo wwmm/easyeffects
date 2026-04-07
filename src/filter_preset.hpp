@@ -30,7 +30,7 @@ class FilterPreset : public PluginPresetBase {
   explicit FilterPreset(PipelineType pipeline_type, const std::string& instance_name);
 
  private:
-  db::Filter* settings = nullptr;
+  DbFilter* settings = nullptr;
 
   void save(nlohmann::json& json) override;
 

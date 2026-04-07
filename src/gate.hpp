@@ -99,7 +99,7 @@ class Gate : public PluginBase {
 
   bool ready = false;
 
-  db::Gate* settings = nullptr;
+  DbGate* settings = nullptr;
 
   std::vector<pw_proxy*> list_proxies;
 

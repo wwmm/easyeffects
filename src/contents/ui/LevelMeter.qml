@@ -22,15 +22,16 @@ import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import "Common.js" as Common
 import ee.tags.plugin.name as TagsPluginName // qmllint disable
+import ee.ui
 import org.kde.kirigami as Kirigami
 
 Kirigami.ScrollablePage {
     id: levelMeterPage
 
     required property string name
-    required property var pluginDB
+    required property DbLevelMeter pluginDB
     required property var pipelineInstance
-    property var pluginBackend
+    property BackendLevelMeter pluginBackend
 
     function updateMeters() {
         if (!levelMeterPage.pluginBackend)

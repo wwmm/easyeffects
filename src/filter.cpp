@@ -45,8 +45,8 @@ Filter::Filter(const std::string& tag, pw::Manager* pipe_manager, PipelineType p
                  instance_id,
                  pipe_manager,
                  pipe_type),
-      settings(db::Manager::self().get_plugin_db<db::Filter>(pipe_type,
-                                                             tags::plugin_name::BaseName::filter + "#" + instance_id)) {
+      settings(db::Manager::self().get_plugin_db<DbFilter>(pipe_type,
+                                                           tags::plugin_name::BaseName::filter + "#" + instance_id)) {
   const auto lv2_plugin_uri = "http://lsp-plug.in/plugins/lv2/filter_stereo";
 
   lv2_wrapper = std::make_unique<lv2::Lv2Wrapper>(lv2_plugin_uri);
@@ -57,19 +57,19 @@ Filter::Filter(const std::string& tag, pw::Manager* pipe_manager, PipelineType p
     util::debug(std::format("{}{} is not installed", log_tag, lv2_plugin_uri));
   }
 
-  init_common_controls<db::Filter>(settings);
+  init_common_controls<DbFilter>(settings);
 
   // specific plugin controls
 
-  BIND_LV2_PORT("f", frequency, setFrequency, db::Filter::frequencyChanged);
-  BIND_LV2_PORT("w", width, setWidth, db::Filter::widthChanged);
-  BIND_LV2_PORT("q", quality, setQuality, db::Filter::qualityChanged);
-  BIND_LV2_PORT("bal", balance, setBalance, db::Filter::balanceChanged);
-  BIND_LV2_PORT_DB("g", gain, setGain, db::Filter::gainChanged, false);
-  BIND_LV2_PORT("ft", type, setType, db::Filter::typeChanged);
-  BIND_LV2_PORT("fm", mode, setMode, db::Filter::modeChanged);
-  BIND_LV2_PORT("mode", equalMode, setEqualMode, db::Filter::equalModeChanged);
-  BIND_LV2_PORT("s", slope, setSlope, db::Filter::slopeChanged);
+  BIND_LV2_PORT("f", frequency, setFrequency, DbFilter::frequencyChanged);
+  BIND_LV2_PORT("w", width, setWidth, DbFilter::widthChanged);
+  BIND_LV2_PORT("q", quality, setQuality, DbFilter::qualityChanged);
+  BIND_LV2_PORT("bal", balance, setBalance, DbFilter::balanceChanged);
+  BIND_LV2_PORT_DB("g", gain, setGain, DbFilter::gainChanged, false);
+  BIND_LV2_PORT("ft", type, setType, DbFilter::typeChanged);
+  BIND_LV2_PORT("fm", mode, setMode, DbFilter::modeChanged);
+  BIND_LV2_PORT("mode", equalMode, setEqualMode, DbFilter::equalModeChanged);
+  BIND_LV2_PORT("s", slope, setSlope, DbFilter::slopeChanged);
 }
 
 Filter::~Filter() {

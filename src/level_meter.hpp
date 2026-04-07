@@ -82,7 +82,7 @@ class LevelMeter : public PluginBase {
   Q_INVOKABLE void resetHistory();
 
  private:
-  db::LevelMeter* settings = nullptr;
+  DbLevelMeter* settings = nullptr;
 
   bool ebur128_ready = false;
 

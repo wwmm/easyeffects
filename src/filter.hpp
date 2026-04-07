@@ -66,7 +66,7 @@ class Filter : public PluginBase {
  private:
   uint latency_n_frames = 0U;
 
-  db::Filter* settings = nullptr;
+  DbFilter* settings = nullptr;
 
   bool ready = false;
 };

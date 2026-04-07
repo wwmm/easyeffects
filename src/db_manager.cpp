@@ -237,10 +237,10 @@ void Manager::create_plugin_db(const QString& parentGroup,
       ensureExists(makeKey(tags::plugin_name::BaseName::expander, id), [&] { return new DbExpander(parentGroup, id); });
 
     } else if (name.startsWith(tags::plugin_name::BaseName::filter)) {
-      ensureExists(makeKey(tags::plugin_name::BaseName::filter, id), [&] { return new db::Filter(parentGroup, id); });
+      ensureExists(makeKey(tags::plugin_name::BaseName::filter, id), [&] { return new DbFilter(parentGroup, id); });
 
     } else if (name.startsWith(tags::plugin_name::BaseName::gate)) {
-      ensureExists(makeKey(tags::plugin_name::BaseName::gate, id), [&] { return new db::Gate(parentGroup, id); });
+      ensureExists(makeKey(tags::plugin_name::BaseName::gate, id), [&] { return new DbGate(parentGroup, id); });
 
     } else if (name.startsWith(tags::plugin_name::BaseName::voiceSuppressor)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::voiceSuppressor, id),
@@ -248,7 +248,7 @@ void Manager::create_plugin_db(const QString& parentGroup,
 
     } else if (name.startsWith(tags::plugin_name::BaseName::levelMeter)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::levelMeter, id),
-                   [&] { return new db::LevelMeter(parentGroup, id); });
+                   [&] { return new DbLevelMeter(parentGroup, id); });
 
     } else if (name.startsWith(tags::plugin_name::BaseName::limiter)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::limiter, id), [&] { return new db::Limiter(parentGroup, id); });

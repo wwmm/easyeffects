@@ -1,6 +1,5 @@
 File=easyeffects_db_gate.kcfg
-NameSpace=db
-ClassName=Gate
+ClassName=DbGate
 Inherits=KConfigBaseEE
 IncludeFiles=\"kconfig_base_ee.hpp\"
 Mutators=true

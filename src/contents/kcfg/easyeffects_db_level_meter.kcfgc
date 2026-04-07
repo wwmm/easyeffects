@@ -1,6 +1,5 @@
 File=easyeffects_db_level_meter.kcfg
-NameSpace=db
-ClassName=LevelMeter
+ClassName=DbLevelMeter
 Inherits=KConfigBaseEE
 IncludeFiles=\"kconfig_base_ee.hpp\"
 Mutators=true
