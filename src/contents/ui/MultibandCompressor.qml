@@ -24,6 +24,7 @@ import QtQuick.Layouts
 import "Common.js" as Common
 import ee.pipewire as PW
 import ee.tags.plugin.name as TagsPluginName // qmllint disable
+import ee.ui
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.delegates as Delegates
 import org.kde.kirigamiaddons.formcard as FormCard
@@ -32,9 +33,9 @@ Kirigami.ScrollablePage {
     id: multibandCompressorPage
 
     required property string name
-    required property var pluginDB
+    required property DbMultibandCompressor pluginDB
     required property var pipelineInstance
-    property var pluginBackend
+    property BackendMultibandCompressor pluginBackend
     readonly property string bandId: "band" + bandsListview.currentIndex
     property list<real> bandFrequencyEnd: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
     property list<real> bandReductionLevelLeft: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]

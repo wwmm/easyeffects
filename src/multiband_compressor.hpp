@@ -87,7 +87,7 @@ class MultibandCompressor : public PluginBase {
 
   static constexpr uint n_bands = tags::multiband_compressor::n_bands;
 
-  db::MultibandCompressor* settings = nullptr;
+  DbMultibandCompressor* settings = nullptr;
 
   QList<float> frequency_range_end, envelope_left, envelope_right, curve_left, curve_right, reduction_left,
       reduction_right;

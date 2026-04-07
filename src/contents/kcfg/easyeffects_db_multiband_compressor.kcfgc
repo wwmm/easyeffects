@@ -1,6 +1,5 @@
 File=easyeffects_db_multiband_compressor.kcfg
-NameSpace=db
-ClassName=MultibandCompressor
+ClassName=DbMultibandCompressor
 Inherits=KConfigBaseEE
 IncludeFiles=\"kconfig_base_ee.hpp\"
 Mutators=true

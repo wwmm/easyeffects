@@ -54,7 +54,7 @@ MultibandCompressor::MultibandCompressor(const std::string& tag,
                  pipe_manager,
                  pipe_type,
                  true),
-      settings(db::Manager::self().get_plugin_db<db::MultibandCompressor>(
+      settings(db::Manager::self().get_plugin_db<DbMultibandCompressor>(
           pipe_type,
           tags::plugin_name::BaseName::multibandCompressor + "#" + instance_id)),
       frequency_range_end(n_bands),
@@ -74,36 +74,36 @@ MultibandCompressor::MultibandCompressor(const std::string& tag,
     util::debug(std::format("{}{} is not installed", log_tag, lv2_plugin_uri));
   }
 
-  init_common_controls<db::MultibandCompressor>(settings);
+  init_common_controls<DbMultibandCompressor>(settings);
 
   // specific plugin controls
 
-  connect(settings, &db::MultibandCompressor::sidechainInputDeviceChanged, [&]() { update_sidechain_links(); });
+  connect(settings, &DbMultibandCompressor::sidechainInputDeviceChanged, [&]() { update_sidechain_links(); });
 
-  connect(settings, &db::MultibandCompressor::band0SidechainTypeChanged, [&]() { update_sidechain_links(); });
-  connect(settings, &db::MultibandCompressor::band1SidechainTypeChanged, [&]() { update_sidechain_links(); });
-  connect(settings, &db::MultibandCompressor::band2SidechainTypeChanged, [&]() { update_sidechain_links(); });
-  connect(settings, &db::MultibandCompressor::band3SidechainTypeChanged, [&]() { update_sidechain_links(); });
-  connect(settings, &db::MultibandCompressor::band4SidechainTypeChanged, [&]() { update_sidechain_links(); });
-  connect(settings, &db::MultibandCompressor::band5SidechainTypeChanged, [&]() { update_sidechain_links(); });
-  connect(settings, &db::MultibandCompressor::band6SidechainTypeChanged, [&]() { update_sidechain_links(); });
-  connect(settings, &db::MultibandCompressor::band7SidechainTypeChanged, [&]() { update_sidechain_links(); });
+  connect(settings, &DbMultibandCompressor::band0SidechainTypeChanged, [&]() { update_sidechain_links(); });
+  connect(settings, &DbMultibandCompressor::band1SidechainTypeChanged, [&]() { update_sidechain_links(); });
+  connect(settings, &DbMultibandCompressor::band2SidechainTypeChanged, [&]() { update_sidechain_links(); });
+  connect(settings, &DbMultibandCompressor::band3SidechainTypeChanged, [&]() { update_sidechain_links(); });
+  connect(settings, &DbMultibandCompressor::band4SidechainTypeChanged, [&]() { update_sidechain_links(); });
+  connect(settings, &DbMultibandCompressor::band5SidechainTypeChanged, [&]() { update_sidechain_links(); });
+  connect(settings, &DbMultibandCompressor::band6SidechainTypeChanged, [&]() { update_sidechain_links(); });
+  connect(settings, &DbMultibandCompressor::band7SidechainTypeChanged, [&]() { update_sidechain_links(); });
 
-  BIND_LV2_PORT("mode", compressorMode, setCompressorMode, db::MultibandCompressor::compressorModeChanged);
-  BIND_LV2_PORT("envb", envelopeBoost, setEnvelopeBoost, db::MultibandCompressor::envelopeBoostChanged);
-  BIND_LV2_PORT("ssplit", stereoSplit, setStereoSplit, db::MultibandCompressor::stereoSplitChanged);
+  BIND_LV2_PORT("mode", compressorMode, setCompressorMode, DbMultibandCompressor::compressorModeChanged);
+  BIND_LV2_PORT("envb", envelopeBoost, setEnvelopeBoost, DbMultibandCompressor::envelopeBoostChanged);
+  BIND_LV2_PORT("ssplit", stereoSplit, setStereoSplit, DbMultibandCompressor::stereoSplitChanged);
 
   // dB controls with -inf mode.
-  BIND_LV2_PORT_DB("g_dry", dry, setDry, db::MultibandCompressor::dryChanged, true);
-  BIND_LV2_PORT_DB("g_wet", wet, setWet, db::MultibandCompressor::wetChanged, true);
-  BIND_LV2_PORT_DB("in2lk", inputToLink, setInputToLink, db::MultibandCompressor::inputToLinkChanged, true);
-  BIND_LV2_PORT_DB("in2sc", inputToSidechain, setInputToSidechain, db::MultibandCompressor::inputToSidechainChanged,
+  BIND_LV2_PORT_DB("g_dry", dry, setDry, DbMultibandCompressor::dryChanged, true);
+  BIND_LV2_PORT_DB("g_wet", wet, setWet, DbMultibandCompressor::wetChanged, true);
+  BIND_LV2_PORT_DB("in2lk", inputToLink, setInputToLink, DbMultibandCompressor::inputToLinkChanged, true);
+  BIND_LV2_PORT_DB("in2sc", inputToSidechain, setInputToSidechain, DbMultibandCompressor::inputToSidechainChanged,
                    true);
-  BIND_LV2_PORT_DB("sc2in", sidechainToInput, setSidechainToInput, db::MultibandCompressor::sidechainToInputChanged,
+  BIND_LV2_PORT_DB("sc2in", sidechainToInput, setSidechainToInput, DbMultibandCompressor::sidechainToInputChanged,
                    true);
-  BIND_LV2_PORT_DB("sc2lk", sidechainToLink, setSidechainToLink, db::MultibandCompressor::sidechainToLinkChanged, true);
-  BIND_LV2_PORT_DB("lk2sc", linkToSidechain, setLinkToSidechain, db::MultibandCompressor::linkToSidechainChanged, true);
-  BIND_LV2_PORT_DB("lk2in", linkToInput, setLinkToInput, db::MultibandCompressor::linkToInputChanged, true);
+  BIND_LV2_PORT_DB("sc2lk", sidechainToLink, setSidechainToLink, DbMultibandCompressor::sidechainToLinkChanged, true);
+  BIND_LV2_PORT_DB("lk2sc", linkToSidechain, setLinkToSidechain, DbMultibandCompressor::linkToSidechainChanged, true);
+  BIND_LV2_PORT_DB("lk2in", linkToInput, setLinkToInput, DbMultibandCompressor::linkToInputChanged, true);
 
   bind_bands();
 }
@@ -142,56 +142,56 @@ void MultibandCompressor::clear_data() {
 void MultibandCompressor::bind_bands() {
   using namespace tags::multiband_compressor;
 
-  BIND_LV2_PORT(cbe[1].data(), band1Enable, setBand1Enable, db::MultibandCompressor::band1EnableChanged);
-  BIND_LV2_PORT(cbe[2].data(), band2Enable, setBand2Enable, db::MultibandCompressor::band2EnableChanged);
-  BIND_LV2_PORT(cbe[3].data(), band3Enable, setBand3Enable, db::MultibandCompressor::band3EnableChanged);
-  BIND_LV2_PORT(cbe[4].data(), band4Enable, setBand4Enable, db::MultibandCompressor::band4EnableChanged);
-  BIND_LV2_PORT(cbe[5].data(), band5Enable, setBand5Enable, db::MultibandCompressor::band5EnableChanged);
-  BIND_LV2_PORT(cbe[6].data(), band6Enable, setBand6Enable, db::MultibandCompressor::band6EnableChanged);
-  BIND_LV2_PORT(cbe[7].data(), band7Enable, setBand7Enable, db::MultibandCompressor::band7EnableChanged);
+  BIND_LV2_PORT(cbe[1].data(), band1Enable, setBand1Enable, DbMultibandCompressor::band1EnableChanged);
+  BIND_LV2_PORT(cbe[2].data(), band2Enable, setBand2Enable, DbMultibandCompressor::band2EnableChanged);
+  BIND_LV2_PORT(cbe[3].data(), band3Enable, setBand3Enable, DbMultibandCompressor::band3EnableChanged);
+  BIND_LV2_PORT(cbe[4].data(), band4Enable, setBand4Enable, DbMultibandCompressor::band4EnableChanged);
+  BIND_LV2_PORT(cbe[5].data(), band5Enable, setBand5Enable, DbMultibandCompressor::band5EnableChanged);
+  BIND_LV2_PORT(cbe[6].data(), band6Enable, setBand6Enable, DbMultibandCompressor::band6EnableChanged);
+  BIND_LV2_PORT(cbe[7].data(), band7Enable, setBand7Enable, DbMultibandCompressor::band7EnableChanged);
 
   BIND_LV2_PORT(sf[1].data(), band1SplitFrequency, setBand1SplitFrequency,
-                db::MultibandCompressor::band1SplitFrequencyChanged);
+                DbMultibandCompressor::band1SplitFrequencyChanged);
   BIND_LV2_PORT(sf[2].data(), band2SplitFrequency, setBand2SplitFrequency,
-                db::MultibandCompressor::band2SplitFrequencyChanged);
+                DbMultibandCompressor::band2SplitFrequencyChanged);
   BIND_LV2_PORT(sf[3].data(), band3SplitFrequency, setBand3SplitFrequency,
-                db::MultibandCompressor::band3SplitFrequencyChanged);
+                DbMultibandCompressor::band3SplitFrequencyChanged);
   BIND_LV2_PORT(sf[4].data(), band4SplitFrequency, setBand4SplitFrequency,
-                db::MultibandCompressor::band4SplitFrequencyChanged);
+                DbMultibandCompressor::band4SplitFrequencyChanged);
   BIND_LV2_PORT(sf[5].data(), band5SplitFrequency, setBand5SplitFrequency,
-                db::MultibandCompressor::band5SplitFrequencyChanged);
+                DbMultibandCompressor::band5SplitFrequencyChanged);
   BIND_LV2_PORT(sf[6].data(), band6SplitFrequency, setBand6SplitFrequency,
-                db::MultibandCompressor::band6SplitFrequencyChanged);
+                DbMultibandCompressor::band6SplitFrequencyChanged);
   BIND_LV2_PORT(sf[7].data(), band7SplitFrequency, setBand7SplitFrequency,
-                db::MultibandCompressor::band7SplitFrequencyChanged);
+                DbMultibandCompressor::band7SplitFrequencyChanged);
 
-  BIND_BANDS_PROPERTY(sce, SidechainType, db::MultibandCompressor);
-  BIND_BANDS_PROPERTY(sclc, SidechainCustomLowcutFilter, db::MultibandCompressor);
-  BIND_BANDS_PROPERTY(schc, SidechainCustomHighcutFilter, db::MultibandCompressor);
-  BIND_BANDS_PROPERTY(ce, CompressorEnable, db::MultibandCompressor);
-  BIND_BANDS_PROPERTY(bs, Solo, db::MultibandCompressor);
-  BIND_BANDS_PROPERTY(bm, Mute, db::MultibandCompressor);
-  BIND_BANDS_PROPERTY(sscs, StereoSplitSource, db::MultibandCompressor);
-  BIND_BANDS_PROPERTY(scs, SidechainSource, db::MultibandCompressor);
-  BIND_BANDS_PROPERTY(scm, SidechainMode, db::MultibandCompressor);
-  BIND_BANDS_PROPERTY(cm, CompressionMode, db::MultibandCompressor);
-  BIND_BANDS_PROPERTY(sla, SidechainLookahead, db::MultibandCompressor);
-  BIND_BANDS_PROPERTY(scr, SidechainReactivity, db::MultibandCompressor);
-  BIND_BANDS_PROPERTY(sclf, SidechainLowcutFrequency, db::MultibandCompressor);
-  BIND_BANDS_PROPERTY(schf, SidechainHighcutFrequency, db::MultibandCompressor);
-  BIND_BANDS_PROPERTY(at, AttackTime, db::MultibandCompressor);
-  BIND_BANDS_PROPERTY(rt, ReleaseTime, db::MultibandCompressor);
-  BIND_BANDS_PROPERTY(cr, Ratio, db::MultibandCompressor);
+  BIND_BANDS_PROPERTY(sce, SidechainType, DbMultibandCompressor);
+  BIND_BANDS_PROPERTY(sclc, SidechainCustomLowcutFilter, DbMultibandCompressor);
+  BIND_BANDS_PROPERTY(schc, SidechainCustomHighcutFilter, DbMultibandCompressor);
+  BIND_BANDS_PROPERTY(ce, CompressorEnable, DbMultibandCompressor);
+  BIND_BANDS_PROPERTY(bs, Solo, DbMultibandCompressor);
+  BIND_BANDS_PROPERTY(bm, Mute, DbMultibandCompressor);
+  BIND_BANDS_PROPERTY(sscs, StereoSplitSource, DbMultibandCompressor);
+  BIND_BANDS_PROPERTY(scs, SidechainSource, DbMultibandCompressor);
+  BIND_BANDS_PROPERTY(scm, SidechainMode, DbMultibandCompressor);
+  BIND_BANDS_PROPERTY(cm, CompressionMode, DbMultibandCompressor);
+  BIND_BANDS_PROPERTY(sla, SidechainLookahead, DbMultibandCompressor);
+  BIND_BANDS_PROPERTY(scr, SidechainReactivity, DbMultibandCompressor);
+  BIND_BANDS_PROPERTY(sclf, SidechainLowcutFrequency, DbMultibandCompressor);
+  BIND_BANDS_PROPERTY(schf, SidechainHighcutFrequency, DbMultibandCompressor);
+  BIND_BANDS_PROPERTY(at, AttackTime, DbMultibandCompressor);
+  BIND_BANDS_PROPERTY(rt, ReleaseTime, DbMultibandCompressor);
+  BIND_BANDS_PROPERTY(cr, Ratio, DbMultibandCompressor);
 
-  BIND_BANDS_PROPERTY_DB(al, AttackThreshold, db::MultibandCompressor, false);
-  BIND_BANDS_PROPERTY_DB(kn, Knee, db::MultibandCompressor, false);
-  BIND_BANDS_PROPERTY_DB(bth, BoostThreshold, db::MultibandCompressor, false);
-  BIND_BANDS_PROPERTY_DB(bsa, BoostAmount, db::MultibandCompressor, false);
-  BIND_BANDS_PROPERTY_DB(mk, Makeup, db::MultibandCompressor, false);
+  BIND_BANDS_PROPERTY_DB(al, AttackThreshold, DbMultibandCompressor, false);
+  BIND_BANDS_PROPERTY_DB(kn, Knee, DbMultibandCompressor, false);
+  BIND_BANDS_PROPERTY_DB(bth, BoostThreshold, DbMultibandCompressor, false);
+  BIND_BANDS_PROPERTY_DB(bsa, BoostAmount, DbMultibandCompressor, false);
+  BIND_BANDS_PROPERTY_DB(mk, Makeup, DbMultibandCompressor, false);
 
   // dB controls with -inf mode.
-  BIND_BANDS_PROPERTY_DB(rrl, ReleaseThreshold, db::MultibandCompressor, true);
-  BIND_BANDS_PROPERTY_DB(scp, SidechainPreamp, db::MultibandCompressor, true);
+  BIND_BANDS_PROPERTY_DB(rrl, ReleaseThreshold, DbMultibandCompressor, true);
+  BIND_BANDS_PROPERTY_DB(scp, SidechainPreamp, DbMultibandCompressor, true);
 }
 
 void MultibandCompressor::setup() {

@@ -30,7 +30,7 @@
 
 MultibandCompressorPreset::MultibandCompressorPreset(PipelineType pipeline_type, const std::string& instance_name)
     : PluginPresetBase(pipeline_type, instance_name) {
-  settings = get_db_instance<db::MultibandCompressor>(pipeline_type);
+  settings = get_db_instance<DbMultibandCompressor>(pipeline_type);
 }
 
 void MultibandCompressorPreset::save(nlohmann::json& json) {

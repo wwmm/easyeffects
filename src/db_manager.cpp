@@ -262,7 +262,7 @@ void Manager::create_plugin_db(const QString& parentGroup,
 
     } else if (name.startsWith(tags::plugin_name::BaseName::multibandCompressor)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::multibandCompressor, id),
-                   [&] { return new db::MultibandCompressor(parentGroup, id); });
+                   [&] { return new DbMultibandCompressor(parentGroup, id); });
 
     } else if (name.startsWith(tags::plugin_name::BaseName::multibandGate)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::multibandGate, id),
