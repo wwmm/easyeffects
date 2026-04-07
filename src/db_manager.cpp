@@ -251,7 +251,7 @@ void Manager::create_plugin_db(const QString& parentGroup,
                    [&] { return new DbLevelMeter(parentGroup, id); });
 
     } else if (name.startsWith(tags::plugin_name::BaseName::limiter)) {
-      ensureExists(makeKey(tags::plugin_name::BaseName::limiter, id), [&] { return new db::Limiter(parentGroup, id); });
+      ensureExists(makeKey(tags::plugin_name::BaseName::limiter, id), [&] { return new DbLimiter(parentGroup, id); });
 
     } else if (name.startsWith(tags::plugin_name::BaseName::loudness)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::loudness, id),

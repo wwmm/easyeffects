@@ -30,7 +30,7 @@ class LimiterPreset : public PluginPresetBase {
   explicit LimiterPreset(PipelineType pipeline_type, const std::string& instance_name);
 
  private:
-  db::Limiter* settings = nullptr;
+  DbLimiter* settings = nullptr;
 
   void save(nlohmann::json& json) override;
 

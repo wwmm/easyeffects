@@ -27,7 +27,7 @@
 
 LimiterPreset::LimiterPreset(PipelineType pipeline_type, const std::string& instance_name)
     : PluginPresetBase(pipeline_type, instance_name) {
-  settings = get_db_instance<db::Limiter>(pipeline_type);
+  settings = get_db_instance<DbLimiter>(pipeline_type);
 }
 
 void LimiterPreset::save(nlohmann::json& json) {

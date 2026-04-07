@@ -47,9 +47,8 @@ Limiter::Limiter(const std::string& tag, pw::Manager* pipe_manager, PipelineType
                  pipe_manager,
                  pipe_type,
                  true),
-      settings(
-          db::Manager::self().get_plugin_db<db::Limiter>(pipe_type,
-                                                         tags::plugin_name::BaseName::limiter + "#" + instance_id)) {
+      settings(db::Manager::self().get_plugin_db<DbLimiter>(pipe_type,
+                                                            tags::plugin_name::BaseName::limiter + "#" + instance_id)) {
   const auto lv2_plugin_uri = "http://lsp-plug.in/plugins/lv2/sc_limiter_stereo";
 
   lv2_wrapper = std::make_unique<lv2::Lv2Wrapper>(lv2_plugin_uri);
@@ -60,37 +59,37 @@ Limiter::Limiter(const std::string& tag, pw::Manager* pipe_manager, PipelineType
     util::debug(std::format("{}{} is not installed", log_tag, lv2_plugin_uri));
   }
 
-  init_common_controls<db::Limiter>(settings);
+  init_common_controls<DbLimiter>(settings);
 
   // specific plugin controls
 
-  connect(settings, &db::Limiter::sidechainTypeChanged, [&]() { update_sidechain_links(); });
-  connect(settings, &db::Limiter::sidechainInputDeviceChanged, [&]() { update_sidechain_links(); });
+  connect(settings, &DbLimiter::sidechainTypeChanged, [&]() { update_sidechain_links(); });
+  connect(settings, &DbLimiter::sidechainInputDeviceChanged, [&]() { update_sidechain_links(); });
 
-  BIND_LV2_PORT("mode", mode, setMode, db::Limiter::modeChanged);
-  BIND_LV2_PORT("ovs", oversampling, setOversampling, db::Limiter::oversamplingChanged);
-  BIND_LV2_PORT("dith", dithering, setDithering, db::Limiter::ditheringChanged);
-  BIND_LV2_PORT("lk", lookahead, setLookahead, db::Limiter::lookaheadChanged);
-  BIND_LV2_PORT("at", attack, setAttack, db::Limiter::attackChanged);
-  BIND_LV2_PORT("rt", release, setRelease, db::Limiter::releaseChanged);
-  BIND_LV2_PORT("boost", gainBoost, setGainBoost, db::Limiter::gainBoostChanged);
-  BIND_LV2_PORT("slink", stereoLink, setStereoLink, db::Limiter::stereoLinkChanged);
-  BIND_LV2_PORT("alr", alr, setAlr, db::Limiter::alrChanged);
-  BIND_LV2_PORT("alr_at", alrAttack, setAlrAttack, db::Limiter::alrAttackChanged);
-  BIND_LV2_PORT("alr_rt", alrRelease, setAlrRelease, db::Limiter::alrReleaseChanged);
-  BIND_LV2_PORT("smooth", alrKneeSmooth, setAlrKneeSmooth, db::Limiter::alrKneeSmoothChanged);
-  BIND_LV2_PORT("extsc", sidechainType, setSidechainType, db::Limiter::sidechainTypeChanged);
-  BIND_LV2_PORT_DB("th", threshold, setThreshold, db::Limiter::thresholdChanged, false);
-  BIND_LV2_PORT_DB("knee", alrKnee, setAlrKnee, db::Limiter::alrKneeChanged, false);
+  BIND_LV2_PORT("mode", mode, setMode, DbLimiter::modeChanged);
+  BIND_LV2_PORT("ovs", oversampling, setOversampling, DbLimiter::oversamplingChanged);
+  BIND_LV2_PORT("dith", dithering, setDithering, DbLimiter::ditheringChanged);
+  BIND_LV2_PORT("lk", lookahead, setLookahead, DbLimiter::lookaheadChanged);
+  BIND_LV2_PORT("at", attack, setAttack, DbLimiter::attackChanged);
+  BIND_LV2_PORT("rt", release, setRelease, DbLimiter::releaseChanged);
+  BIND_LV2_PORT("boost", gainBoost, setGainBoost, DbLimiter::gainBoostChanged);
+  BIND_LV2_PORT("slink", stereoLink, setStereoLink, DbLimiter::stereoLinkChanged);
+  BIND_LV2_PORT("alr", alr, setAlr, DbLimiter::alrChanged);
+  BIND_LV2_PORT("alr_at", alrAttack, setAlrAttack, DbLimiter::alrAttackChanged);
+  BIND_LV2_PORT("alr_rt", alrRelease, setAlrRelease, DbLimiter::alrReleaseChanged);
+  BIND_LV2_PORT("smooth", alrKneeSmooth, setAlrKneeSmooth, DbLimiter::alrKneeSmoothChanged);
+  BIND_LV2_PORT("extsc", sidechainType, setSidechainType, DbLimiter::sidechainTypeChanged);
+  BIND_LV2_PORT_DB("th", threshold, setThreshold, DbLimiter::thresholdChanged, false);
+  BIND_LV2_PORT_DB("knee", alrKnee, setAlrKnee, DbLimiter::alrKneeChanged, false);
 
   // dB controls with -inf mode.
-  BIND_LV2_PORT_DB("scp", sidechainPreamp, setSidechainPreamp, db::Limiter::sidechainPreampChanged, true);
-  BIND_LV2_PORT_DB("in2lk", inputToLink, setInputToLink, db::Limiter::inputToLinkChanged, true);
-  BIND_LV2_PORT_DB("in2sc", inputToSidechain, setInputToSidechain, db::Limiter::inputToSidechainChanged, true);
-  BIND_LV2_PORT_DB("sc2in", sidechainToInput, setSidechainToInput, db::Limiter::sidechainToInputChanged, true);
-  BIND_LV2_PORT_DB("sc2lk", sidechainToLink, setSidechainToLink, db::Limiter::sidechainToLinkChanged, true);
-  BIND_LV2_PORT_DB("lk2sc", linkToSidechain, setLinkToSidechain, db::Limiter::linkToSidechainChanged, true);
-  BIND_LV2_PORT_DB("lk2in", linkToInput, setLinkToInput, db::Limiter::linkToInputChanged, true);
+  BIND_LV2_PORT_DB("scp", sidechainPreamp, setSidechainPreamp, DbLimiter::sidechainPreampChanged, true);
+  BIND_LV2_PORT_DB("in2lk", inputToLink, setInputToLink, DbLimiter::inputToLinkChanged, true);
+  BIND_LV2_PORT_DB("in2sc", inputToSidechain, setInputToSidechain, DbLimiter::inputToSidechainChanged, true);
+  BIND_LV2_PORT_DB("sc2in", sidechainToInput, setSidechainToInput, DbLimiter::sidechainToInputChanged, true);
+  BIND_LV2_PORT_DB("sc2lk", sidechainToLink, setSidechainToLink, DbLimiter::sidechainToLinkChanged, true);
+  BIND_LV2_PORT_DB("lk2sc", linkToSidechain, setLinkToSidechain, DbLimiter::linkToSidechainChanged, true);
+  BIND_LV2_PORT_DB("lk2in", linkToInput, setLinkToInput, DbLimiter::linkToInputChanged, true);
 }
 
 Limiter::~Limiter() {

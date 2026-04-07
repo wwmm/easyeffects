@@ -23,6 +23,7 @@ import QtQuick.Layouts
 import "Common.js" as Common
 import ee.pipewire as PW
 import ee.tags.plugin.name as TagsPluginName // qmllint disable
+import ee.ui
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
@@ -30,9 +31,9 @@ Kirigami.ScrollablePage {
     id: limiterPage
 
     required property string name
-    required property var pluginDB
+    required property DbLimiter pluginDB
     required property var pipelineInstance
-    property var pluginBackend
+    property BackendLimiter pluginBackend
 
     function updateMeters() {
         if (!limiterPage.pluginBackend)

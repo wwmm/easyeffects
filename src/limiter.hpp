@@ -82,7 +82,7 @@ class Limiter : public PluginBase {
 
   bool ready = false;
 
-  db::Limiter* settings = nullptr;
+  DbLimiter* settings = nullptr;
 
   std::vector<pw_proxy*> list_proxies;
 

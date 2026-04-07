@@ -1,6 +1,5 @@
 File=easyeffects_db_limiter.kcfg
-NameSpace=db
-ClassName=Limiter
+ClassName=DbLimiter
 Inherits=KConfigBaseEE
 IncludeFiles=\"kconfig_base_ee.hpp\"
 Mutators=true
