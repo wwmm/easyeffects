@@ -46,8 +46,8 @@ Loudness::Loudness(const std::string& tag, pw::Manager* pipe_manager, PipelineTy
                  pipe_manager,
                  pipe_type),
       settings(
-          db::Manager::self().get_plugin_db<db::Loudness>(pipe_type,
-                                                          tags::plugin_name::BaseName::loudness + "#" + instance_id)) {
+          db::Manager::self().get_plugin_db<DbLoudness>(pipe_type,
+                                                        tags::plugin_name::BaseName::loudness + "#" + instance_id)) {
   const auto lv2_plugin_uri = "http://lsp-plug.in/plugins/lv2/loud_comp_stereo";
 
   lv2_wrapper = std::make_unique<lv2::Lv2Wrapper>(lv2_plugin_uri);
@@ -58,15 +58,15 @@ Loudness::Loudness(const std::string& tag, pw::Manager* pipe_manager, PipelineTy
     util::debug(std::format("{}{} is not installed", log_tag, lv2_plugin_uri));
   }
 
-  init_common_controls<db::Loudness>(settings);
+  init_common_controls<DbLoudness>(settings);
 
-  BIND_LV2_PORT("mode", mode, setMode, db::Loudness::modeChanged);
-  BIND_LV2_PORT("std", std, setStd, db::Loudness::stdChanged);
-  BIND_LV2_PORT("fft", fft, setFft, db::Loudness::fftChanged);
-  BIND_LV2_PORT("approx", iirApproximation, setIirApproximation, db::Loudness::iirApproximationChanged);
-  BIND_LV2_PORT("volume", volume, setVolume, db::Loudness::volumeChanged);
-  BIND_LV2_PORT("hclip", clipping, setClipping, db::Loudness::clippingChanged);
-  BIND_LV2_PORT("hcrange", clippingRange, setClippingRange, db::Loudness::clippingRangeChanged);
+  BIND_LV2_PORT("mode", mode, setMode, DbLoudness::modeChanged);
+  BIND_LV2_PORT("std", std, setStd, DbLoudness::stdChanged);
+  BIND_LV2_PORT("fft", fft, setFft, DbLoudness::fftChanged);
+  BIND_LV2_PORT("approx", iirApproximation, setIirApproximation, DbLoudness::iirApproximationChanged);
+  BIND_LV2_PORT("volume", volume, setVolume, DbLoudness::volumeChanged);
+  BIND_LV2_PORT("hclip", clipping, setClipping, DbLoudness::clippingChanged);
+  BIND_LV2_PORT("hcrange", clippingRange, setClippingRange, DbLoudness::clippingRangeChanged);
 }
 
 Loudness::~Loudness() {

@@ -30,7 +30,7 @@ class LoudnessPreset : public PluginPresetBase {
   explicit LoudnessPreset(PipelineType pipeline_type, const std::string& instance_name);
 
  private:
-  db::Loudness* settings = nullptr;
+  DbLoudness* settings = nullptr;
 
   void save(nlohmann::json& json) override;
 

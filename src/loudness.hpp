@@ -64,7 +64,7 @@ class Loudness : public PluginBase {
   auto get_latency_seconds() -> float override;
 
  private:
-  db::Loudness* settings = nullptr;
+  DbLoudness* settings = nullptr;
 
   bool ready = false;
 
