@@ -278,7 +278,7 @@ void Manager::create_plugin_db(const QString& parentGroup,
       ensureExists(makeKey(tags::plugin_name::BaseName::rnnoise, id), [&] { return new DbRNNoise(parentGroup, id); });
 
     } else if (name.startsWith(tags::plugin_name::BaseName::speex)) {
-      ensureExists(makeKey(tags::plugin_name::BaseName::speex, id), [&] { return new db::Speex(parentGroup, id); });
+      ensureExists(makeKey(tags::plugin_name::BaseName::speex, id), [&] { return new DbSpeex(parentGroup, id); });
 
     } else if (name.startsWith(tags::plugin_name::BaseName::stereoTools)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::stereoTools, id),

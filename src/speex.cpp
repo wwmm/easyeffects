@@ -45,8 +45,8 @@ Speex::Speex(const std::string& tag, pw::Manager* pipe_manager, PipelineType pip
                  instance_id,
                  pipe_manager,
                  pipe_type),
-      settings(db::Manager::self().get_plugin_db<db::Speex>(pipe_type,
-                                                            tags::plugin_name::BaseName::speex + "#" + instance_id)),
+      settings(db::Manager::self().get_plugin_db<DbSpeex>(pipe_type,
+                                                          tags::plugin_name::BaseName::speex + "#" + instance_id)),
       enable_denoise(settings->enableDenoise()),
       noise_suppression(settings->noiseSuppression()),
       enable_agc(settings->enableAgc()),
@@ -54,11 +54,11 @@ Speex::Speex(const std::string& tag, pw::Manager* pipe_manager, PipelineType pip
       vad_probability_start(settings->vadProbabilityStart()),
       vad_probability_continue(settings->vadProbabilityContinue()),
       enable_dereverb(settings->enableDereverb()) {
-  init_common_controls<db::Speex>(settings);
+  init_common_controls<DbSpeex>(settings);
 
   // specific plugin controls
 
-  connect(settings, &db::Speex::enableDenoiseChanged, [&]() {
+  connect(settings, &DbSpeex::enableDenoiseChanged, [&]() {
     std::scoped_lock<std::mutex> lock(data_mutex);
 
     enable_denoise = settings->enableDenoise();
@@ -72,7 +72,7 @@ Speex::Speex(const std::string& tag, pw::Manager* pipe_manager, PipelineType pip
     }
   });
 
-  connect(settings, &db::Speex::noiseSuppressionChanged, [&]() {
+  connect(settings, &DbSpeex::noiseSuppressionChanged, [&]() {
     std::scoped_lock<std::mutex> lock(data_mutex);
 
     noise_suppression = settings->noiseSuppression();
@@ -86,7 +86,7 @@ Speex::Speex(const std::string& tag, pw::Manager* pipe_manager, PipelineType pip
     }
   });
 
-  connect(settings, &db::Speex::enableAgcChanged, [&]() {
+  connect(settings, &DbSpeex::enableAgcChanged, [&]() {
     std::scoped_lock<std::mutex> lock(data_mutex);
 
     enable_agc = settings->enableAgc();
@@ -100,7 +100,7 @@ Speex::Speex(const std::string& tag, pw::Manager* pipe_manager, PipelineType pip
     }
   });
 
-  connect(settings, &db::Speex::enableVadChanged, [&]() {
+  connect(settings, &DbSpeex::enableVadChanged, [&]() {
     std::scoped_lock<std::mutex> lock(data_mutex);
 
     enable_vad = settings->enableVad();
@@ -114,7 +114,7 @@ Speex::Speex(const std::string& tag, pw::Manager* pipe_manager, PipelineType pip
     }
   });
 
-  connect(settings, &db::Speex::vadProbabilityStartChanged, [&]() {
+  connect(settings, &DbSpeex::vadProbabilityStartChanged, [&]() {
     std::scoped_lock<std::mutex> lock(data_mutex);
 
     vad_probability_start = settings->vadProbabilityStart();
@@ -128,7 +128,7 @@ Speex::Speex(const std::string& tag, pw::Manager* pipe_manager, PipelineType pip
     }
   });
 
-  connect(settings, &db::Speex::vadProbabilityContinueChanged, [&]() {
+  connect(settings, &DbSpeex::vadProbabilityContinueChanged, [&]() {
     std::scoped_lock<std::mutex> lock(data_mutex);
 
     vad_probability_continue = settings->vadProbabilityContinue();
@@ -142,7 +142,7 @@ Speex::Speex(const std::string& tag, pw::Manager* pipe_manager, PipelineType pip
     }
   });
 
-  connect(settings, &db::Speex::enableDereverbChanged, [&]() {
+  connect(settings, &DbSpeex::enableDereverbChanged, [&]() {
     std::scoped_lock<std::mutex> lock(data_mutex);
 
     enable_dereverb = settings->enableDereverb();

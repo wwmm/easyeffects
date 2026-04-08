@@ -21,15 +21,16 @@ import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import ee.tags.plugin.name as TagsPluginName // qmllint disable
+import ee.ui
 import org.kde.kirigami as Kirigami
 
 Kirigami.ScrollablePage {
     id: speexPage
 
     required property string name
-    required property var pluginDB
+    required property DbSpeex pluginDB
     required property var pipelineInstance
-    property var pluginBackend
+    property BackendSpeex pluginBackend
 
     function updateMeters() {
         if (!speexPage.pluginBackend)

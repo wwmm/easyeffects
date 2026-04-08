@@ -68,7 +68,7 @@ class Speex : public PluginBase {
   auto get_latency_seconds() -> float override;
 
  private:
-  db::Speex* settings = nullptr;
+  DbSpeex* settings = nullptr;
 
   bool speex_ready = false;
 

@@ -30,7 +30,7 @@ class SpeexPreset : public PluginPresetBase {
   explicit SpeexPreset(PipelineType pipeline_type, const std::string& instance_name);
 
  private:
-  db::Speex* settings = nullptr;
+  DbSpeex* settings = nullptr;
 
   void save(nlohmann::json& json) override;
 

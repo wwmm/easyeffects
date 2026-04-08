@@ -28,7 +28,7 @@
 
 SpeexPreset::SpeexPreset(PipelineType pipeline_type, const std::string& instance_name)
     : PluginPresetBase(pipeline_type, instance_name) {
-  settings = get_db_instance<db::Speex>(pipeline_type);
+  settings = get_db_instance<DbSpeex>(pipeline_type);
 }
 
 void SpeexPreset::save(nlohmann::json& json) {
