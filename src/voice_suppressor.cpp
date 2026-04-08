@@ -48,12 +48,12 @@ VoiceSuppressor::VoiceSuppressor(const std::string& tag,
                  instance_id,
                  pipe_manager,
                  pipe_type),
-      settings(db::Manager::self().get_plugin_db<db::VoiceSuppressor>(
+      settings(db::Manager::self().get_plugin_db<DbVoiceSuppressor>(
           pipe_type,
           tags::plugin_name::BaseName::voiceSuppressor + "#" + instance_id)) {
   // bypass, input and output gain controls
 
-  init_common_controls<db::VoiceSuppressor>(settings);
+  init_common_controls<DbVoiceSuppressor>(settings);
 }
 
 VoiceSuppressor::~VoiceSuppressor() {

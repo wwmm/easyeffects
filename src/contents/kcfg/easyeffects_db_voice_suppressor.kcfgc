@@ -1,6 +1,5 @@
 File=easyeffects_db_voice_suppressor.kcfg
-NameSpace=db
-ClassName=VoiceSuppressor
+ClassName=DbVoiceSuppressor
 Inherits=KConfigBaseEE
 IncludeFiles=\"kconfig_base_ee.hpp\"
 Mutators=true

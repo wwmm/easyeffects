@@ -66,7 +66,7 @@ class VoiceSuppressor : public PluginBase {
   auto get_latency_seconds() -> float override;
 
  private:
-  db::VoiceSuppressor* settings = nullptr;
+  DbVoiceSuppressor* settings = nullptr;
 
   bool ready = false;
   bool notify_latency = false;

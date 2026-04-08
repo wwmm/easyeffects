@@ -244,7 +244,7 @@ void Manager::create_plugin_db(const QString& parentGroup,
 
     } else if (name.startsWith(tags::plugin_name::BaseName::voiceSuppressor)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::voiceSuppressor, id),
-                   [&] { return new db::VoiceSuppressor(parentGroup, id); });
+                   [&] { return new DbVoiceSuppressor(parentGroup, id); });
 
     } else if (name.startsWith(tags::plugin_name::BaseName::levelMeter)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::levelMeter, id),

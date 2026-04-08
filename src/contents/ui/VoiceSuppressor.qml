@@ -21,24 +21,25 @@ import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import ee.tags.plugin.name as TagsPluginName // qmllint disable
+import ee.ui
 import org.kde.kirigami as Kirigami
 
 Kirigami.ScrollablePage {
     id: voiceSuppressorPage
 
     required property string name
-    required property var pluginDB
+    required property DbVoiceSuppressor pluginDB
     required property var pipelineInstance
-    property var pluginBackend
+    property BackendVoiceSuppressor pluginBackend
 
     function updateMeters() {
-        if (!pluginBackend)
+        if (!voiceSuppressorPage.pluginBackend)
             return;
 
-        inputOutputLevels.setInputLevelLeft(pluginBackend.getInputLevelLeft());
-        inputOutputLevels.setInputLevelRight(pluginBackend.getInputLevelRight());
-        inputOutputLevels.setOutputLevelLeft(pluginBackend.getOutputLevelLeft());
-        inputOutputLevels.setOutputLevelRight(pluginBackend.getOutputLevelRight());
+        inputOutputLevels.setInputLevelLeft(voiceSuppressorPage.pluginBackend.getInputLevelLeft());
+        inputOutputLevels.setInputLevelRight(voiceSuppressorPage.pluginBackend.getInputLevelRight());
+        inputOutputLevels.setOutputLevelLeft(voiceSuppressorPage.pluginBackend.getOutputLevelLeft());
+        inputOutputLevels.setOutputLevelRight(voiceSuppressorPage.pluginBackend.getOutputLevelRight());
     }
 
     Component.onCompleted: {
