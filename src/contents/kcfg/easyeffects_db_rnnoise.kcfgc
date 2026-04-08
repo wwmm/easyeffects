@@ -1,6 +1,5 @@
 File=easyeffects_db_rnnoise.kcfg
-NameSpace=db
-ClassName=RNNoise
+ClassName=DbRNNoise
 Inherits=KConfigBaseEE
 IncludeFiles=\"kconfig_base_ee.hpp\"
 Mutators=true

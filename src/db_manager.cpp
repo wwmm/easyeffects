@@ -275,7 +275,7 @@ void Manager::create_plugin_db(const QString& parentGroup,
       ensureExists(makeKey(tags::plugin_name::BaseName::reverb, id), [&] { return new DbReverb(parentGroup, id); });
 
     } else if (name.startsWith(tags::plugin_name::BaseName::rnnoise)) {
-      ensureExists(makeKey(tags::plugin_name::BaseName::rnnoise, id), [&] { return new db::RNNoise(parentGroup, id); });
+      ensureExists(makeKey(tags::plugin_name::BaseName::rnnoise, id), [&] { return new DbRNNoise(parentGroup, id); });
 
     } else if (name.startsWith(tags::plugin_name::BaseName::speex)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::speex, id), [&] { return new db::Speex(parentGroup, id); });

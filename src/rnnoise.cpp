@@ -50,9 +50,8 @@ RNNoise::RNNoise(const std::string& tag, pw::Manager* pipe_manager, PipelineType
                  instance_id,
                  pipe_manager,
                  pipe_type),
-      settings(
-          db::Manager::self().get_plugin_db<db::RNNoise>(pipe_type,
-                                                         tags::plugin_name::BaseName::rnnoise + "#" + instance_id)),
+      settings(db::Manager::self().get_plugin_db<DbRNNoise>(pipe_type,
+                                                            tags::plugin_name::BaseName::rnnoise + "#" + instance_id)),
       app_data_dir(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation).toStdString()),
       data_L(0),
       data_R(0) {
@@ -60,7 +59,7 @@ RNNoise::RNNoise(const std::string& tag, pw::Manager* pipe_manager, PipelineType
   data_R.reserve(blocksize);
   data_tmp.reserve(blocksize);
 
-  init_common_controls<db::RNNoise>(settings);
+  init_common_controls<DbRNNoise>(settings);
 
   // Initialize directories for local and community models
   local_dir_rnnoise = app_data_dir + "/rnnoise";
@@ -85,16 +84,16 @@ RNNoise::RNNoise(const std::string& tag, pw::Manager* pipe_manager, PipelineType
   wet_ratio =
       (settings->wet() <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(settings->wet()));
 
-  connect(settings, &db::RNNoise::useStandardModelChanged, [&]() { prepare_model(); });
+  connect(settings, &DbRNNoise::useStandardModelChanged, [&]() { prepare_model(); });
 
-  connect(settings, &db::RNNoise::modelNameChanged, [&]() { prepare_model(); });
+  connect(settings, &DbRNNoise::modelNameChanged, [&]() { prepare_model(); });
 
-  connect(settings, &db::RNNoise::wetChanged, [&]() {
+  connect(settings, &DbRNNoise::wetChanged, [&]() {
     wet_ratio =
         (settings->wet() <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(settings->wet()));
   });
 
-  connect(settings, &db::RNNoise::releaseChanged, [&]() { init_release(); });
+  connect(settings, &DbRNNoise::releaseChanged, [&]() { init_release(); });
 
   auto* m = get_model_from_name();
 

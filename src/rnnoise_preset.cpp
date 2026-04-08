@@ -32,7 +32,7 @@
 
 RNNoisePreset::RNNoisePreset(PipelineType pipeline_type, const std::string& instance_name)
     : PluginPresetBase(pipeline_type, instance_name) {
-  settings = get_db_instance<db::RNNoise>(pipeline_type);
+  settings = get_db_instance<DbRNNoise>(pipeline_type);
 }
 
 void RNNoisePreset::save(nlohmann::json& json) {

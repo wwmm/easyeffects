@@ -90,7 +90,7 @@ class RNNoise : public PluginBase {
   void usingStandardModelChanged();
 
  private:
-  db::RNNoise* settings = nullptr;
+  DbRNNoise* settings = nullptr;
 
   std::string app_data_dir;
   std::string local_dir_rnnoise;

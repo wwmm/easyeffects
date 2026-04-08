@@ -34,9 +34,9 @@ Kirigami.ScrollablePage {
     id: rnnoisePage
 
     required property string name
-    required property var pluginDB
+    required property DbRNNoise pluginDB
     required property var pipelineInstance
-    property var pluginBackend
+    property BackendRNNoise pluginBackend
 
     function updateMeters() {
         if (!rnnoisePage.pluginBackend)
