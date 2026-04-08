@@ -30,7 +30,7 @@ class PitchPreset : public PluginPresetBase {
   explicit PitchPreset(PipelineType pipeline_type, const std::string& instance_name);
 
  private:
-  db::Pitch* settings = nullptr;
+  DbPitch* settings = nullptr;
 
   void save(nlohmann::json& json) override;
 

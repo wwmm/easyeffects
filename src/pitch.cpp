@@ -43,9 +43,9 @@ Pitch::Pitch(const std::string& tag, pw::Manager* pipe_manager, PipelineType pip
                  instance_id,
                  pipe_manager,
                  pipe_type),
-      settings(db::Manager::self().get_plugin_db<db::Pitch>(pipe_type,
-                                                            tags::plugin_name::BaseName::pitch + "#" + instance_id)) {
-  init_common_controls<db::Pitch>(settings);
+      settings(db::Manager::self().get_plugin_db<DbPitch>(pipe_type,
+                                                          tags::plugin_name::BaseName::pitch + "#" + instance_id)) {
+  init_common_controls<DbPitch>(settings);
 
   dry = (settings->dry() <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(settings->dry()));
 
@@ -53,34 +53,34 @@ Pitch::Pitch(const std::string& tag, pw::Manager* pipe_manager, PipelineType pip
 
   // resetting soundtouch when bypass is pressed so its internal data is discarded
 
-  connect(settings, &db::Pitch::bypassChanged, [&]() { resetHistory(); });
+  connect(settings, &DbPitch::bypassChanged, [&]() { resetHistory(); });
 
-  connect(settings, &db::Pitch::quickSeekChanged, [&]() { set_quick_seek(); });
+  connect(settings, &DbPitch::quickSeekChanged, [&]() { set_quick_seek(); });
 
-  connect(settings, &db::Pitch::antiAliasChanged, [&]() { set_anti_alias(); });
+  connect(settings, &DbPitch::antiAliasChanged, [&]() { set_anti_alias(); });
 
-  connect(settings, &db::Pitch::sequenceLengthChanged, [&]() { set_sequence_length(); });
+  connect(settings, &DbPitch::sequenceLengthChanged, [&]() { set_sequence_length(); });
 
-  connect(settings, &db::Pitch::seekWindowChanged, [&]() { set_seek_window(); });
+  connect(settings, &DbPitch::seekWindowChanged, [&]() { set_seek_window(); });
 
-  connect(settings, &db::Pitch::overlapLengthChanged, [&]() { set_overlap_length(); });
+  connect(settings, &DbPitch::overlapLengthChanged, [&]() { set_overlap_length(); });
 
-  connect(settings, &db::Pitch::tempoDifferenceChanged, [&]() { set_tempo_difference(); });
+  connect(settings, &DbPitch::tempoDifferenceChanged, [&]() { set_tempo_difference(); });
 
-  connect(settings, &db::Pitch::rateDifferenceChanged, [&]() { set_rate_difference(); });
+  connect(settings, &DbPitch::rateDifferenceChanged, [&]() { set_rate_difference(); });
 
-  connect(settings, &db::Pitch::octavesChanged, [&]() { set_semitones(); });
+  connect(settings, &DbPitch::octavesChanged, [&]() { set_semitones(); });
 
-  connect(settings, &db::Pitch::semitonesChanged, [&]() { set_semitones(); });
+  connect(settings, &DbPitch::semitonesChanged, [&]() { set_semitones(); });
 
-  connect(settings, &db::Pitch::centsChanged, [&]() { set_semitones(); });
+  connect(settings, &DbPitch::centsChanged, [&]() { set_semitones(); });
 
-  connect(settings, &db::Pitch::dryChanged, [&]() {
+  connect(settings, &DbPitch::dryChanged, [&]() {
     dry =
         (settings->dry() <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(settings->dry()));
   });
 
-  connect(settings, &db::Pitch::wetChanged, [&]() {
+  connect(settings, &DbPitch::wetChanged, [&]() {
     wet =
         (settings->wet() <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(settings->wet()));
   });

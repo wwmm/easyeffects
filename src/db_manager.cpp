@@ -269,7 +269,7 @@ void Manager::create_plugin_db(const QString& parentGroup,
                    [&] { return new DbMultibandGate(parentGroup, id); });
 
     } else if (name.startsWith(tags::plugin_name::BaseName::pitch)) {
-      ensureExists(makeKey(tags::plugin_name::BaseName::pitch, id), [&] { return new db::Pitch(parentGroup, id); });
+      ensureExists(makeKey(tags::plugin_name::BaseName::pitch, id), [&] { return new DbPitch(parentGroup, id); });
 
     } else if (name.startsWith(tags::plugin_name::BaseName::reverb)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::reverb, id), [&] { return new db::Reverb(parentGroup, id); });

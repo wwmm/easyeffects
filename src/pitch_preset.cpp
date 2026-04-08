@@ -27,7 +27,7 @@
 
 PitchPreset::PitchPreset(PipelineType pipeline_type, const std::string& instance_name)
     : PluginPresetBase(pipeline_type, instance_name) {
-  settings = get_db_instance<db::Pitch>(pipeline_type);
+  settings = get_db_instance<DbPitch>(pipeline_type);
 }
 
 void PitchPreset::save(nlohmann::json& json) {

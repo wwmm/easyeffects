@@ -76,7 +76,7 @@ class Pitch : public PluginBase {
   Q_INVOKABLE void resetHistory();
 
  private:
-  db::Pitch* settings = nullptr;
+  DbPitch* settings = nullptr;
 
   bool soundtouch_ready = false;
   bool notify_latency = false;
