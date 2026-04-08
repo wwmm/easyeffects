@@ -69,5 +69,5 @@ class StereoTools : public PluginBase {
 
   float dry = 0.0F, wet = 1.0F;
 
-  db::StereoTools* settings = nullptr;
+  DbStereoTools* settings = nullptr;
 };

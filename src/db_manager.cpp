@@ -282,7 +282,7 @@ void Manager::create_plugin_db(const QString& parentGroup,
 
     } else if (name.startsWith(tags::plugin_name::BaseName::stereoTools)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::stereoTools, id),
-                   [&] { return new db::StereoTools(parentGroup, id); });
+                   [&] { return new DbStereoTools(parentGroup, id); });
     }
   }
 

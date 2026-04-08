@@ -45,7 +45,7 @@ StereoTools::StereoTools(const std::string& tag, pw::Manager* pipe_manager, Pipe
                  instance_id,
                  pipe_manager,
                  pipe_type),
-      settings(db::Manager::self().get_plugin_db<db::StereoTools>(
+      settings(db::Manager::self().get_plugin_db<DbStereoTools>(
           pipe_type,
           tags::plugin_name::BaseName::stereoTools + "#" + instance_id)) {
   const auto lv2_plugin_uri = "http://calf.sourceforge.net/plugins/StereoTools";
@@ -58,37 +58,37 @@ StereoTools::StereoTools(const std::string& tag, pw::Manager* pipe_manager, Pipe
     util::debug(std::format("{}{} is not installed", log_tag, lv2_plugin_uri));
   }
 
-  init_common_controls<db::StereoTools>(settings);
+  init_common_controls<DbStereoTools>(settings);
 
   // specific plugin controls
 
-  BIND_LV2_PORT("mode", mode, setMode, db::StereoTools::modeChanged);
-  BIND_LV2_PORT("balance_in", balanceIn, setBalanceIn, db::StereoTools::balanceInChanged);
-  BIND_LV2_PORT("balance_out", balanceOut, setBalanceOut, db::StereoTools::balanceOutChanged);
-  BIND_LV2_PORT("sbal", sbal, setSbal, db::StereoTools::sbalChanged);
-  BIND_LV2_PORT("mpan", mpan, setMpan, db::StereoTools::mpanChanged);
-  BIND_LV2_PORT("stereo_base", stereoBase, setStereoBase, db::StereoTools::stereoBaseChanged);
-  BIND_LV2_PORT("delay", delay, setDelay, db::StereoTools::delayChanged);
-  BIND_LV2_PORT("sc_level", scLevel, setScLevel, db::StereoTools::scLevelChanged);
-  BIND_LV2_PORT("stereo_phase", stereoPhase, setStereoPhase, db::StereoTools::stereoPhaseChanged);
-  BIND_LV2_PORT("softclip", softclip, setSoftclip, db::StereoTools::softclipChanged);
-  BIND_LV2_PORT("mutel", mutel, setMutel, db::StereoTools::mutelChanged);
-  BIND_LV2_PORT("muter", muter, setMuter, db::StereoTools::muterChanged);
-  BIND_LV2_PORT("phasel", phasel, setPhasel, db::StereoTools::phaselChanged);
-  BIND_LV2_PORT("phaser", phaser, setPhaser, db::StereoTools::phaserChanged);
-  BIND_LV2_PORT_DB("slev", slev, setSlev, db::StereoTools::slevChanged, false);
-  BIND_LV2_PORT_DB("mlev", mlev, setMlev, db::StereoTools::mlevChanged, false);
+  BIND_LV2_PORT("mode", mode, setMode, DbStereoTools::modeChanged);
+  BIND_LV2_PORT("balance_in", balanceIn, setBalanceIn, DbStereoTools::balanceInChanged);
+  BIND_LV2_PORT("balance_out", balanceOut, setBalanceOut, DbStereoTools::balanceOutChanged);
+  BIND_LV2_PORT("sbal", sbal, setSbal, DbStereoTools::sbalChanged);
+  BIND_LV2_PORT("mpan", mpan, setMpan, DbStereoTools::mpanChanged);
+  BIND_LV2_PORT("stereo_base", stereoBase, setStereoBase, DbStereoTools::stereoBaseChanged);
+  BIND_LV2_PORT("delay", delay, setDelay, DbStereoTools::delayChanged);
+  BIND_LV2_PORT("sc_level", scLevel, setScLevel, DbStereoTools::scLevelChanged);
+  BIND_LV2_PORT("stereo_phase", stereoPhase, setStereoPhase, DbStereoTools::stereoPhaseChanged);
+  BIND_LV2_PORT("softclip", softclip, setSoftclip, DbStereoTools::softclipChanged);
+  BIND_LV2_PORT("mutel", mutel, setMutel, DbStereoTools::mutelChanged);
+  BIND_LV2_PORT("muter", muter, setMuter, DbStereoTools::muterChanged);
+  BIND_LV2_PORT("phasel", phasel, setPhasel, DbStereoTools::phaselChanged);
+  BIND_LV2_PORT("phaser", phaser, setPhaser, DbStereoTools::phaserChanged);
+  BIND_LV2_PORT_DB("slev", slev, setSlev, DbStereoTools::slevChanged, false);
+  BIND_LV2_PORT_DB("mlev", mlev, setMlev, DbStereoTools::mlevChanged, false);
 
   dry = (settings->dry() <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(settings->dry()));
 
   wet = (settings->wet() <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(settings->wet()));
 
-  connect(settings, &db::StereoTools::dryChanged, [&]() {
+  connect(settings, &DbStereoTools::dryChanged, [&]() {
     dry =
         (settings->dry() <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(settings->dry()));
   });
 
-  connect(settings, &db::StereoTools::wetChanged, [&]() {
+  connect(settings, &DbStereoTools::wetChanged, [&]() {
     wet =
         (settings->wet() <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(settings->wet()));
   });

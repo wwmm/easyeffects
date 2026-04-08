@@ -21,6 +21,7 @@ import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import ee.tags.plugin.name as TagsPluginName // qmllint disable
+import ee.ui
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
@@ -28,9 +29,9 @@ Kirigami.ScrollablePage {
     id: stereoToolsPage
 
     required property string name
-    required property var pluginDB
+    required property DbStereoTools pluginDB
     required property var pipelineInstance
-    property var pluginBackend
+    property BackendStereoTools pluginBackend
 
     function updateMeters() {
         if (!stereoToolsPage.pluginBackend)

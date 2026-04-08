@@ -30,7 +30,7 @@ class StereoToolsPreset : public PluginPresetBase {
   explicit StereoToolsPreset(PipelineType pipeline_type, const std::string& instance_name);
 
  private:
-  db::StereoTools* settings = nullptr;
+  DbStereoTools* settings = nullptr;
 
   void save(nlohmann::json& json) override;
 

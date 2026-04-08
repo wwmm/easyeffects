@@ -1,6 +1,5 @@
 File=easyeffects_db_stereo_tools.kcfg
-NameSpace=db
-ClassName=StereoTools
+ClassName=DbStereoTools
 Inherits=KConfigBaseEE
 IncludeFiles=\"kconfig_base_ee.hpp\"
 Mutators=true
