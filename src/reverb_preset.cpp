@@ -27,7 +27,7 @@
 
 ReverbPreset::ReverbPreset(PipelineType pipeline_type, const std::string& instance_name)
     : PluginPresetBase(pipeline_type, instance_name) {
-  settings = get_db_instance<db::Reverb>(pipeline_type);
+  settings = get_db_instance<DbReverb>(pipeline_type);
 }
 
 void ReverbPreset::save(nlohmann::json& json) {

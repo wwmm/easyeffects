@@ -63,7 +63,7 @@ class Reverb : public PluginBase {
   auto get_latency_seconds() -> float override;
 
  private:
-  db::Reverb* settings = nullptr;
+  DbReverb* settings = nullptr;
 
   bool ready = false;
 };

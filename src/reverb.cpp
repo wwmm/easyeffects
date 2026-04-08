@@ -44,8 +44,8 @@ Reverb::Reverb(const std::string& tag, pw::Manager* pipe_manager, PipelineType p
                  instance_id,
                  pipe_manager,
                  pipe_type),
-      settings(db::Manager::self().get_plugin_db<db::Reverb>(pipe_type,
-                                                             tags::plugin_name::BaseName::reverb + "#" + instance_id)) {
+      settings(db::Manager::self().get_plugin_db<DbReverb>(pipe_type,
+                                                           tags::plugin_name::BaseName::reverb + "#" + instance_id)) {
   const auto lv2_plugin_uri = "http://calf.sourceforge.net/plugins/Reverb";
 
   lv2_wrapper = std::make_unique<lv2::Lv2Wrapper>(lv2_plugin_uri);
@@ -56,20 +56,20 @@ Reverb::Reverb(const std::string& tag, pw::Manager* pipe_manager, PipelineType p
     util::debug(std::format("{}{} is not installed", log_tag, lv2_plugin_uri));
   }
 
-  init_common_controls<db::Reverb>(settings);
+  init_common_controls<DbReverb>(settings);
 
-  BIND_LV2_PORT("decay_time", decayTime, setDecayTime, db::Reverb::decayTimeChanged);
-  BIND_LV2_PORT("hf_damp", hfDamp, setHfDamp, db::Reverb::hfDampChanged);
-  BIND_LV2_PORT("diffusion", diffusion, setDiffusion, db::Reverb::diffusionChanged);
-  BIND_LV2_PORT("predelay", predelay, setPredelay, db::Reverb::predelayChanged);
-  BIND_LV2_PORT("bass_cut", bassCut, setBassCut, db::Reverb::bassCutChanged);
-  BIND_LV2_PORT("treble_cut", trebleCut, setTrebleCut, db::Reverb::trebleCutChanged);
-  BIND_LV2_PORT("room_size", roomSize, setRoomSize, db::Reverb::roomSizeChanged);
+  BIND_LV2_PORT("decay_time", decayTime, setDecayTime, DbReverb::decayTimeChanged);
+  BIND_LV2_PORT("hf_damp", hfDamp, setHfDamp, DbReverb::hfDampChanged);
+  BIND_LV2_PORT("diffusion", diffusion, setDiffusion, DbReverb::diffusionChanged);
+  BIND_LV2_PORT("predelay", predelay, setPredelay, DbReverb::predelayChanged);
+  BIND_LV2_PORT("bass_cut", bassCut, setBassCut, DbReverb::bassCutChanged);
+  BIND_LV2_PORT("treble_cut", trebleCut, setTrebleCut, DbReverb::trebleCutChanged);
+  BIND_LV2_PORT("room_size", roomSize, setRoomSize, DbReverb::roomSizeChanged);
 
   // dB controls with -inf mode.
 
-  BIND_LV2_PORT_DB("amount", amount, setAmount, db::Reverb::amountChanged, true);
-  BIND_LV2_PORT_DB("dry", dry, setDry, db::Reverb::dryChanged, true);
+  BIND_LV2_PORT_DB("amount", amount, setAmount, DbReverb::amountChanged, true);
+  BIND_LV2_PORT_DB("dry", dry, setDry, DbReverb::dryChanged, true);
 }
 
 Reverb::~Reverb() {

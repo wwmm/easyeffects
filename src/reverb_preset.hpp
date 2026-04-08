@@ -30,7 +30,7 @@ class ReverbPreset : public PluginPresetBase {
   explicit ReverbPreset(PipelineType pipeline_type, const std::string& instance_name);
 
  private:
-  db::Reverb* settings = nullptr;
+  DbReverb* settings = nullptr;
 
   void save(nlohmann::json& json) override;
 
