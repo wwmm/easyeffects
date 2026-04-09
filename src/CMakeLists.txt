@@ -15,6 +15,10 @@ set_source_files_properties(
     contents/ui/Validators.qml
     PROPERTIES QT_QML_SINGLETON_TYPE TRUE)
 
+set_target_properties(easyeffects PROPERTIES
+    QT_QMLCACHEGEN_DIRECT_CALLS ON
+)
+
 qt_policy(SET QTP0004 NEW)
 
 qt_add_qml_module(easyeffects
