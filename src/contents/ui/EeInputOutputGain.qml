@@ -21,6 +21,7 @@ pragma ComponentBehavior: Bound
 import QtQuick
 import QtQuick.Layouts
 import "Common.js" as Common
+import ee.ui
 import org.kde.kirigami as Kirigami
 
 Item {
@@ -36,23 +37,24 @@ Item {
     Accessible.name: i18n("Audio levels control") // qmllint disable
     Accessible.description: i18n("Input and output gain controls with level meters") // qmllint disable
 
-    function setInputLevelLeft(value) {
+    function setInputLevelLeft(value: real) {
         inputRow.setLevelLeft(value);
     }
 
-    function setInputLevelRight(value) {
+    function setInputLevelRight(value: real) {
         inputRow.setLevelRight(value);
     }
 
-    function setOutputLevelLeft(value) {
+    function setOutputLevelLeft(value: real) {
         outputRow.setLevelLeft(value);
     }
 
-    function setOutputLevelRight(value) {
+    function setOutputLevelRight(value: real) {
         outputRow.setLevelRight(value);
     }
 
     component GainRow: RowLayout {
+        id: gainRowLayout
 
         property alias label: gain.label
         property alias unit: gain.unit
@@ -62,11 +64,11 @@ Item {
 
         signal gainChanged(real v)
 
-        function setLevelLeft(value) {
+        function setLevelLeft(value: real) {
             left.setValue(value);
         }
 
-        function setLevelRight(value) {
+        function setLevelRight(value: real) {
             right.setValue(value);
         }
 
@@ -82,7 +84,7 @@ Item {
             stepSize: 0.1
             boxWidth: 5 * Kirigami.Units.gridUnit
             onValueModified: v => {
-                parent.gainChanged(v);
+                gainRowLayout.gainChanged(v);
             }
         }
 
