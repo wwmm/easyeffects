@@ -1,3 +1,22 @@
+/**
+ * Copyright © 2017-2026 Wellington Wallace
+ *
+ * This file is part of Easy Effects.
+ *
+ * Easy Effects is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Easy Effects is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
+ */
+
 #include "tags_plugin_name.hpp"
 #include <qabstractitemmodel.h>
 #include <qhash.h>
@@ -62,11 +81,6 @@ Model::Model(QObject* parent)
   proxyModel->sort(0);
 
   // NOLINTBEGIN(clang-analyzer-cplusplus.NewDelete)
-  qmlRegisterSingletonInstance<BaseName>("ee.tags.plugin.name", VERSION_MAJOR, VERSION_MINOR, "BaseName", &base_name);
-
-  qmlRegisterSingletonInstance<tags::plugin_package::Package>("ee.tags.plugin.name", VERSION_MAJOR, VERSION_MINOR,
-                                                              "Package", &package);
-
   qmlRegisterSingletonInstance<Model>("ee.tags.plugin.name", VERSION_MAJOR, VERSION_MINOR, "PluginsNameModel", this);
 
   qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.tags.plugin.name", VERSION_MAJOR, VERSION_MINOR,

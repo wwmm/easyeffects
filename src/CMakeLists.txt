@@ -55,6 +55,7 @@ qt_add_qml_module(easyeffects
         rnnoise.hpp
         speex.hpp
         stereo_tools.hpp
+        tags_plugin_name.hpp
         voice_suppressor.hpp
     QML_FILES
         contents/ui/AboutPage.qml

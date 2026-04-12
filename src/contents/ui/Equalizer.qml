@@ -24,7 +24,6 @@ import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Dialogs
 import QtQuick.Layouts
-import ee.tags.plugin.name as TagsPluginName // qmllint disable
 import ee.ui
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
@@ -297,7 +296,7 @@ Kirigami.ScrollablePage {
     footer: ColumnLayout {
         RowLayout {
             Controls.Label {
-                text: i18n("Using %1", `<strong>${TagsPluginName.Package.lsp}</strong>`) // qmllint disable
+                text: i18n("Using %1", `<strong>${PluginsPackage.lsp}</strong>`) // qmllint disable
                 textFormat: Text.RichText
                 horizontalAlignment: Qt.AlignLeft
                 verticalAlignment: Qt.AlignVCenter

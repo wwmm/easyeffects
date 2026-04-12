@@ -21,7 +21,6 @@ import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import "Common.js" as Common
-import ee.tags.plugin.name as TagsPluginName // qmllint disable
 import ee.ui
 import org.kde.kirigami as Kirigami
 
@@ -213,7 +212,7 @@ Kirigami.ScrollablePage {
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using %1", `<strong>${TagsPluginName.Package.ebur128}</strong>`) // qmllint disable
+            text: i18n("Using %1", `<strong>${PluginsPackage.ebur128}</strong>`) // qmllint disable
             textFormat: Text.RichText
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter

@@ -133,8 +133,8 @@ Kirigami.Dialog {
                          * plugins are a limiter followed by a meter.
                          */
 
-                        const limiters_and_meters = [TagsPluginName.BaseName.limiter, TagsPluginName.BaseName.maximizer, TagsPluginName.BaseName.level_meter];
-                        const limiters = [TagsPluginName.BaseName.limiter, TagsPluginName.BaseName.maximizer];
+                        const limiters_and_meters = [PluginsBaseName.limiter, PluginsBaseName.maximizer, PluginsBaseName.level_meter];
+                        const limiters = [PluginsBaseName.limiter, PluginsBaseName.maximizer];
 
                         if (plugins.length === 0) {
                             plugins.push(new_name);
@@ -146,7 +146,7 @@ Kirigami.Dialog {
                             return plugins[plugins.length - 1].startsWith(v);
                         })) {
                             plugins.splice(-1, 0, new_name);
-                        } else if (plugins[plugins.length - 1].startsWith(TagsPluginName.BaseName.level_meter)) {
+                        } else if (plugins[plugins.length - 1].startsWith(PluginsBaseName.level_meter)) {
                             if (plugins.length >= 2) {
                                 if (limiters.some(v => {
                                     return plugins[plugins.length - 2].startsWith(v);

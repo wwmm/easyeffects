@@ -23,7 +23,6 @@ import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import "Common.js" as Common
 import ee.pipewire as PW
-import ee.tags.plugin.name as TagsPluginName // qmllint disable
 import ee.ui
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.delegates as Delegates
@@ -936,7 +935,7 @@ Kirigami.ScrollablePage {
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using %1", `<strong>${TagsPluginName.Package.lsp}</strong>`) // qmllint disable
+            text: i18n("Using %1", `<strong>${PluginsPackage.lsp}</strong>`) // qmllint disable
             textFormat: Text.RichText
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter

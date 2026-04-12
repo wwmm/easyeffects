@@ -25,6 +25,7 @@
 #include <qlist.h>
 #include <qnamespace.h>
 #include <qobject.h>
+#include <qqmlengine.h>
 #include <qqmlintegration.h>
 #include <qstringliteral.h>
 #include <qstringview.h>
@@ -41,8 +42,30 @@ namespace tags::plugin_package {
 
 class Package : public QObject {
   Q_OBJECT
+  QML_NAMED_ELEMENT(PluginsPackage)
+  QML_SINGLETON
 
  public:
+  static Package& self() {
+    static Package m;
+    return m;
+  }
+
+  // Singleton provider for QML
+  static Package* create(QQmlEngine* qmlEngine, QJSEngine* jsEngine) {
+    Q_UNUSED(jsEngine)
+
+    // The engine has to have the same thread affinity as the singleton.
+
+    Q_ASSERT(qmlEngine->thread() == self().thread());
+
+    // Explicitly specify C++ ownership so that the engine doesn't delete the instance.
+
+    QJSEngine::setObjectOwnership(&self(), QJSEngine::CppOwnership);
+
+    return &self();
+  }
+
   // NOLINTBEGIN(bugprone-throwing-static-initialization)
   CREATE_PROPERTY(QString, bs2b, QStringLiteral("bs2b"));
   CREATE_PROPERTY(QString, calf, QStringLiteral("Calf Studio Gear"));
@@ -66,8 +89,30 @@ namespace tags::plugin_name {
 
 class BaseName : public QObject {
   Q_OBJECT
+  QML_NAMED_ELEMENT(PluginsBaseName)
+  QML_SINGLETON
 
  public:
+  static BaseName& self() {
+    static BaseName m;
+    return m;
+  }
+
+  // Singleton provider for QML
+  static BaseName* create(QQmlEngine* qmlEngine, QJSEngine* jsEngine) {
+    Q_UNUSED(jsEngine)
+
+    // The engine has to have the same thread affinity as the singleton.
+
+    Q_ASSERT(qmlEngine->thread() == self().thread());
+
+    // Explicitly specify C++ ownership so that the engine doesn't delete the instance.
+
+    QJSEngine::setObjectOwnership(&self(), QJSEngine::CppOwnership);
+
+    return &self();
+  }
+
   // NOLINTBEGIN(bugprone-throwing-static-initialization)
   CREATE_PROPERTY(QString, autogain, QStringLiteral("autogain"));
   CREATE_PROPERTY(QString, bassEnhancer, QStringLiteral("bass_enhancer"));
@@ -136,9 +181,6 @@ class Model : public QAbstractListModel {
 
  private:
   const QMap<QString, QString> modelMap;
-
-  BaseName base_name;
-  plugin_package::Package package;
 };
 
 auto get_id(const QString& name) -> QString;
