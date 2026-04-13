@@ -56,6 +56,18 @@
     <color type="primary" scheme_preference="dark">#004079</color>
   </branding>
   <releases>
+    <release type="stable" version="8.1.9" date="2026-04-13T00:00:00Z">
+      <description>
+        <ul>
+          <li>Features:</li>
+          <li>Small performance improvements to our QML code</li>
+          <li>Updated translations</li>
+          <li>Bug fixes:</li>
+          <li>When running inside Flatpakś sandbox we create Qt's lock and server file in the folder QStandardPaths::TempLocation. This seems to avoid the application not being able to start after a unclean exit.</li>
+          <li>Other notes:</li>
+        </ul>
+      </description>
+    </release>
     <release type="stable" version="8.1.8" date="2026-03-29T00:00:00Z">
       <description>
         <ul>
