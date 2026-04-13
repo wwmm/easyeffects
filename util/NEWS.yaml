@@ -22,7 +22,7 @@ Description:
 - Updated translations
 
 - Bug fixes∶
-- When running inside Flatpakś sandbox we create Qt's lock and server file in the folder QStandardPaths::TempLocation. This seems to avoid the application not being able to start after a unclean exit.
+- When running inside Flatpak's sandbox we create Qt's lock and server file in the folder QStandardPaths::TempLocation. This seems to avoid the application not being able to start after a unclean exit.
 
 - Other notes∶
 
