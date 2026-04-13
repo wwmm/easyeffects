@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-03-29 16:26-0300\n"
-"PO-Revision-Date: 2026-04-13 22:09+0000\n"
+"PO-Revision-Date: 2026-04-13 08:59+0000\n"
 "Last-Translator: Володимир <vlzuykov@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
@@ -156,11 +156,11 @@ msgstr "Інтегрована"
 
 #: src/contents/ui/Autogain.qml:79
 msgid "Geometric mean (MSI)"
-msgstr "Середнє геометричне (MSI)"
+msgstr "Середнє геометричне (МКІ)"
 
 #: src/contents/ui/Autogain.qml:79
 msgid "Geometric mean (MS)"
-msgstr "Середнє геометричне (MS)"
+msgstr "Середнє геометричне (МК)"
 
 #: src/contents/ui/Autogain.qml:79
 msgid "Geometric mean (MI)"
@@ -168,7 +168,7 @@ msgstr "Середнє геометричне (МІ)"
 
 #: src/contents/ui/Autogain.qml:79
 msgid "Geometric mean (SI)"
-msgstr "Середнє геометричне (SI)"
+msgstr "Середнє геометричне (КІ)"
 
 #: src/contents/ui/Autogain.qml:88
 msgid "Target"
@@ -784,8 +784,9 @@ msgid "Cancel"
 msgstr "Скасувати"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:187
+#, fuzzy
 msgid "Rename this impulse"
-msgstr "Перейменувати цей імпульс"
+msgstr "Перейменувати цей пресет"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:195
 msgid "Delete this impulse"
@@ -1725,7 +1726,7 @@ msgstr "Розмір ШПФ (FFT)"
 
 #: src/contents/ui/Loudness.qml:114
 msgid "IIR approximation"
-msgstr "Апроксимація НІХ (IIR)"
+msgstr "Наближення"
 
 #: src/contents/ui/Loudness.qml:118
 msgid "Fastest"
@@ -3168,11 +3169,11 @@ msgstr "Зменшення шуму"
 
 #: src/tags_plugin_name.cpp:53
 msgid "Speech Processor"
-msgstr "Мовний процесор (Speex)"
+msgstr "Шумозаглушення (Speex)"
 
 #: src/tags_plugin_name.cpp:54
 msgid "Stereo Tools"
-msgstr "Стереоінструменти"
+msgstr "Стерео інструменти"
 
 #: src/tags_plugin_name.cpp:55
 msgid "Voice Suppressor"
@@ -3241,7 +3242,7 @@ msgstr "LUFS"
 #: src/units.hpp:75
 msgctxt "loudness unit abbreviation"
 msgid "LU"
-msgstr "LU"
+msgstr "ОГ (LU)"
 
 #: src/units.hpp:76
 msgctxt "meter unit abbreviation"
