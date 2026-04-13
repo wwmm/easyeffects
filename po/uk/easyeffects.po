@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-03-29 16:26-0300\n"
-"PO-Revision-Date: 2026-03-14 02:09+0000\n"
+"PO-Revision-Date: 2026-04-13 08:59+0000\n"
 "Last-Translator: Володимир <vlzuykov@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
@@ -3237,7 +3237,7 @@ msgstr "кГц"
 #: src/units.hpp:74
 msgctxt "loudness full scale unit abbreviation"
 msgid "LUFS"
-msgstr "ОГПШ (LUFS)"
+msgstr "LUFS"
 
 #: src/units.hpp:75
 msgctxt "loudness unit abbreviation"
