@@ -7,7 +7,7 @@ Description:
 - 
 
 - Bug fixes∶
-- 
+- Fixed a regression in the deep noise remover plugin. When the plugin was restarted its settigns were not being reapplied.
 
 - Other notes∶
 - 

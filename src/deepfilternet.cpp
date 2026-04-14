@@ -61,19 +61,7 @@ DeepFilterNet::DeepFilterNet(const std::string& tag,
 
   init_common_controls<DbDeepFilterNet>(settings);
 
-  BIND_LADSPA_PORT("Post Filter Beta", postFilterBeta, setPostFilterBeta, DbDeepFilterNet::postFilterBetaChanged);
-  BIND_LADSPA_PORT("Min Processing Buffer (frames)", minProcessingBuffer, setMinProcessingBuffer,
-                   DbDeepFilterNet::minProcessingBufferChanged);
-
-  BIND_LADSPA_PORT_DB_EXPONENTIAL("Attenuation Limit (dB)", attenuationLimit, setAttenuationLimit,
-                                  DbDeepFilterNet::attenuationLimitChanged, false);
-  BIND_LADSPA_PORT_DB_EXPONENTIAL("Min processing threshold (dB)", minProcessingThreshold, setMinProcessingThreshold,
-                                  DbDeepFilterNet::minProcessingThresholdChanged, false);
-  BIND_LADSPA_PORT_DB_EXPONENTIAL("Max ERB processing threshold (dB)", maxErbProcessingThreshold,
-                                  setMaxErbProcessingThreshold, DbDeepFilterNet::maxErbProcessingThresholdChanged,
-                                  false);
-  BIND_LADSPA_PORT_DB_EXPONENTIAL("Max DF processing threshold (dB)", maxDfProcessingThreshold,
-                                  setMaxDfProcessingThreshold, DbDeepFilterNet::maxDfProcessingThresholdChanged, false);
+  bind_properties();
 }
 
 DeepFilterNet::~DeepFilterNet() {
@@ -92,11 +80,31 @@ void DeepFilterNet::reset() {
   settings->setDefaults();
 }
 
+void DeepFilterNet::bind_properties() {
+  BIND_LADSPA_PORT("Post Filter Beta", postFilterBeta, setPostFilterBeta, DbDeepFilterNet::postFilterBetaChanged);
+  BIND_LADSPA_PORT("Min Processing Buffer (frames)", minProcessingBuffer, setMinProcessingBuffer,
+                   DbDeepFilterNet::minProcessingBufferChanged);
+
+  BIND_LADSPA_PORT_DB_EXPONENTIAL("Attenuation Limit (dB)", attenuationLimit, setAttenuationLimit,
+                                  DbDeepFilterNet::attenuationLimitChanged, false);
+  BIND_LADSPA_PORT_DB_EXPONENTIAL("Min processing threshold (dB)", minProcessingThreshold, setMinProcessingThreshold,
+                                  DbDeepFilterNet::minProcessingThresholdChanged, false);
+  BIND_LADSPA_PORT_DB_EXPONENTIAL("Max ERB processing threshold (dB)", maxErbProcessingThreshold,
+                                  setMaxErbProcessingThreshold, DbDeepFilterNet::maxErbProcessingThresholdChanged,
+                                  false);
+  BIND_LADSPA_PORT_DB_EXPONENTIAL("Max DF processing threshold (dB)", maxDfProcessingThreshold,
+                                  setMaxDfProcessingThreshold, DbDeepFilterNet::maxDfProcessingThresholdChanged, false);
+}
+
 void DeepFilterNet::clear_data() {
   if (ladspa_wrapper->has_instance()) {
     ladspa_wrapper->deactivate();
 
+    settings->disconnect();
+
     ladspa_wrapper = std::make_unique<ladspa::LadspaWrapper>("libdeep_filter_ladspa.so", "deep_filter_stereo");
+
+    bind_properties();
   }
 
   setup();
@@ -127,7 +135,11 @@ void DeepFilterNet::setup() {
         if (ladspa_wrapper->has_instance()) {
           ladspa_wrapper->deactivate();
 
+          settings->disconnect();
+
           ladspa_wrapper = std::make_unique<ladspa::LadspaWrapper>("libdeep_filter_ladspa.so", "deep_filter_stereo");
+
+          bind_properties();
         }
 
         ladspa_wrapper->n_samples = n_samples;

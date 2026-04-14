@@ -82,4 +82,6 @@ class DeepFilterNet : public PluginBase {
 
   std::vector<float> resampled_outL, resampled_outR;
   std::vector<float> carryover_l, carryover_r;
+
+  void bind_properties();
 };
