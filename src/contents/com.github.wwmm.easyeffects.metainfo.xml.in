@@ -56,6 +56,16 @@
     <color type="primary" scheme_preference="dark">#004079</color>
   </branding>
   <releases>
+    <release type="stable" version="8.2.0" date="2026-04-14T00:00:00Z">
+      <description>
+        <ul>
+          <li>Features:</li>
+          <li>Bug fixes:</li>
+          <li>Fixed a regression in the deep noise remover plugin. When the plugin was restarted its settings were not being reapplied.</li>
+          <li>Other notes:</li>
+        </ul>
+      </description>
+    </release>
     <release type="stable" version="8.1.9" date="2026-04-13T00:00:00Z">
       <description>
         <ul>
@@ -63,7 +73,7 @@
           <li>Small performance improvements to our QML code</li>
           <li>Updated translations</li>
           <li>Bug fixes:</li>
-          <li>When running inside Flatpakś sandbox we create Qt's lock and server file in the folder QStandardPaths::TempLocation. This seems to avoid the application not being able to start after a unclean exit.</li>
+          <li>When running inside Flatpak's sandbox we create Qt's lock and server file in the folder QStandardPaths::TempLocation. This seems to avoid the application not being able to start after a unclean exit.</li>
           <li>Other notes:</li>
         </ul>
       </description>
