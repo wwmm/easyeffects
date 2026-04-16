@@ -1,0 +1,20 @@
+[codespell]
+# Skip directories and files that should not be checked
+skip = ./.git,./po,./po_news,./_build,./build,./build-dir,./locale,./node_modules,./.vscode,./.cache,./.flatpak,./.flatpak-builder,./util/flatpak/repo,./debian/changelog,./debian/changelog.tpl,./src/contents/site/assets,./util/flatpak/shared-modules,./util/flatpak/patch,./src/contents/schemas,./src/contents/icons,*.min.js,*.min.js.map,*.mo,*.pyc,*.patch,*.directory,*.png,*.svg,*.gschema.xml,*.json,compile_commands.json
+
+# File types to check
+# Include common source file types
+check-filenames =
+
+# Ignore words that are false positives (variable names, technical terms, etc.)
+# sie - German word commonly used in code comments
+# nd - part of variable names like 'band', 'round', etc.
+# realL - variable name in voice_suppressor
+# sord - technical term in lilv library
+ignore-words-list = sie,nd,realL,sord
+
+# Quiet level to reduce noise
+quiet-level = 2
+
+# Show suggestions for fixes
+# count = true
