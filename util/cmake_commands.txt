@@ -4,4 +4,4 @@ cmake -DCMAKE_INSTALL_PREFIX=/usr/local -G Ninja .. // configuring the build dir
 
 cmake -DCMAKE_INSTALL_PREFIX=/usr/local -DENABLE_SANITIZER=1 -G Ninja ..
 
-ninja all_aotstats // Show statistics about the convertion of qml code to c++
+ninja all_aotstats // Show statistics about the conversion of qml code to c++
