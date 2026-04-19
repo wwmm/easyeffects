@@ -36,6 +36,7 @@
 #include "pw_manager.hpp"
 #ifdef ENABLE_RNNOISE
 #include <rnnoise.h>
+#include <functional>
 #endif
 
 #include "plugin_base.hpp"
@@ -119,20 +120,45 @@ class RNNoise : public PluginBase {
   std::unique_ptr<Resampler> resampler_inR, resampler_outR;
 
 #ifdef ENABLE_RNNOISE
-
+  
   FILE* model_file = nullptr;
-
+  
   RNNModel* model = nullptr;
-
+  
   DenoiseState *state_left = nullptr, *state_right = nullptr;
-
+  
   float vad_prob_left, vad_prob_right;
   int vad_grace_left, vad_grace_right;
-
+  
+  // Custom deleter for RNNModel to ensure proper cleanup
+  struct RNNModelDeleter {
+    void operator()(RNNModel* m) const {
+      if (m != nullptr) {
+        rnnoise_model_free(m);
+      }
+    }
+  };
+  
+  // Custom deleter for DenoiseState to ensure proper cleanup
+  struct DenoiseStateDeleter {
+    void operator()(DenoiseState* s) const {
+      if (s != nullptr) {
+        rnnoise_destroy(s);
+      }
+    }
+  };
+  
+  using RNNModelPtr = std::unique_ptr<RNNModel, RNNModelDeleter>;
+  using DenoiseStatePtr = std::unique_ptr<DenoiseState, DenoiseStateDeleter>;
+  
+  RNNModelPtr model_ptr;
+  DenoiseStatePtr state_left_ptr;
+  DenoiseStatePtr state_right_ptr;
+  
   auto get_model_from_name() -> RNNModel*;
-
+  
   void prepare_model();
-
+  
   void free_rnnoise();
 
   template <typename T1, typename T2>

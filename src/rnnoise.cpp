@@ -97,10 +97,24 @@ RNNoise::RNNoise(const std::string& tag, pw::Manager* pipe_manager, PipelineType
 
   auto* m = get_model_from_name();
 
-  model = m;
+  // Use smart pointers for automatic memory management
+  if (m != nullptr) {
+    model_ptr.reset(m);
+    model = m;
+  } else {
+    model = nullptr;
+  }
 
   state_left = rnnoise_create(model);
   state_right = rnnoise_create(model);
+
+  // Ensure states are properly managed
+  if (state_left != nullptr) {
+    state_left_ptr.reset(state_left);
+  }
+  if (state_right != nullptr) {
+    state_right_ptr.reset(state_right);
+  }
 
   vad_prob_left = 1.0F;
   vad_prob_right = 1.0F;
@@ -396,10 +410,24 @@ void RNNoise::prepare_model() {
 
   auto* m = get_model_from_name();
 
-  model = m;
+  // Use smart pointers for automatic memory management
+  if (m != nullptr) {
+    model_ptr.reset(m);
+    model = m;
+  } else {
+    model = nullptr;
+  }
 
   state_left = rnnoise_create(model);
   state_right = rnnoise_create(model);
+
+  // Ensure states are properly managed
+  if (state_left != nullptr) {
+    state_left_ptr.reset(state_left);
+  }
+  if (state_right != nullptr) {
+    state_right_ptr.reset(state_right);
+  }
 
   rnnoise_ready = true;
 }
@@ -407,26 +435,20 @@ void RNNoise::prepare_model() {
 void RNNoise::free_rnnoise() {
   rnnoise_ready = false;
 
-  if (state_left != nullptr) {
-    rnnoise_destroy(state_left);
-  }
+  // Smart pointers will automatically handle cleanup when reset or destroyed
+  state_left_ptr.reset();
+  state_right_ptr.reset();
+  model_ptr.reset();
 
-  if (state_right != nullptr) {
-    rnnoise_destroy(state_right);
-  }
-
-  if (model != nullptr) {
-    rnnoise_model_free(model);
-  }
-
-  if (model_file != nullptr) {
-    fclose(model_file);
-  }
-
+  // Also nullify raw pointers for backward compatibility with existing code
   state_left = nullptr;
   state_right = nullptr;
   model = nullptr;
-  model_file = nullptr;
+
+  if (model_file != nullptr) {
+    fclose(model_file);
+    model_file = nullptr;
+  }
 }
 
 #endif

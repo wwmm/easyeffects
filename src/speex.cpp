@@ -200,17 +200,21 @@ void Speex::setup() {
   QMetaObject::invokeMethod(
       baseWorker,
       [this] {
+        // Check for null before destroying to prevent undefined behavior
         if (state_left != nullptr) {
           speex_preprocess_state_destroy(state_left);
+          state_left = nullptr;
         }
 
         if (state_right != nullptr) {
           speex_preprocess_state_destroy(state_right);
+          state_right = nullptr;
         }
 
         state_left = speex_preprocess_state_init(static_cast<int>(n_samples), static_cast<int>(rate));
         state_right = speex_preprocess_state_init(static_cast<int>(n_samples), static_cast<int>(rate));
 
+        // Add null checks before using the states
         if (state_left != nullptr) {
           speex_preprocess_ctl(state_left, SPEEX_PREPROCESS_SET_DENOISE, &enable_denoise);
           speex_preprocess_ctl(state_left, SPEEX_PREPROCESS_SET_NOISE_SUPPRESS, &noise_suppression);
@@ -222,6 +226,8 @@ void Speex::setup() {
           speex_preprocess_ctl(state_left, SPEEX_PREPROCESS_SET_PROB_CONTINUE, &vad_probability_continue);
 
           speex_preprocess_ctl(state_left, SPEEX_PREPROCESS_SET_DEREVERB, &enable_dereverb);
+        } else {
+          util::warning("Failed to initialize Speex state for left channel");
         }
 
         if (state_right != nullptr) {
@@ -235,6 +241,8 @@ void Speex::setup() {
           speex_preprocess_ctl(state_right, SPEEX_PREPROCESS_SET_PROB_CONTINUE, &vad_probability_continue);
 
           speex_preprocess_ctl(state_right, SPEEX_PREPROCESS_SET_DEREVERB, &enable_dereverb);
+        } else {
+          util::warning("Failed to initialize Speex state for right channel");
         }
 
         std::scoped_lock<std::mutex> lock(util::fftw_lock());

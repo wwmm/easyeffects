@@ -102,6 +102,8 @@ void DeepFilterNet::clear_data() {
 
     settings->disconnect();
 
+    // Properly reset the wrapper before creating a new one
+    ladspa_wrapper.reset();
     ladspa_wrapper = std::make_unique<ladspa::LadspaWrapper>("libdeep_filter_ladspa.so", "deep_filter_stereo");
 
     bind_properties();
@@ -137,6 +139,8 @@ void DeepFilterNet::setup() {
 
           settings->disconnect();
 
+          // Properly reset the wrapper before creating a new one
+          ladspa_wrapper.reset();
           ladspa_wrapper = std::make_unique<ladspa::LadspaWrapper>("libdeep_filter_ladspa.so", "deep_filter_stereo");
 
           bind_properties();
