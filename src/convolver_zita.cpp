@@ -82,6 +82,11 @@ auto ConvolverZita::init(ConvolverKernelManager::KernelData data,
 
   conv = new Convproc();
 
+  if (conv == nullptr) {
+    util::warning("Zita: failed to allocate Convproc object");
+    return false;
+  }
+
   conv->set_options(0);
 
   kernel = data;
@@ -96,18 +101,27 @@ auto ConvolverZita::init(ConvolverKernelManager::KernelData data,
   if (auto ret = conv->configure(2, 2, kernel.sampleCount(), bufferSize, bufferSize, Convproc::MAXPART, density);
       ret != 0) {
     util::warning(std::format("Zita: configure failed: {}", ret));
+
     return false;
   }
 
   if (auto ret = conv->impdata_create(0, 0, 1, kernel.channel_L.data(), 0, static_cast<int>(kernel.sampleCount()));
       ret != 0) {
     util::warning(std::format("Zita: left impdata_create failed: {}", ret));
+
+    delete conv;
+    conv = nullptr;
+
     return false;
   }
 
   if (auto ret = conv->impdata_create(1, 1, 1, kernel.channel_R.data(), 0, static_cast<int>(kernel.sampleCount()));
       ret != 0) {
     util::warning(std::format("Zita: right impdata_create failed: {}", ret));
+
+    delete conv;
+    conv = nullptr;
+
     return false;
   }
 
@@ -115,12 +129,20 @@ auto ConvolverZita::init(ConvolverKernelManager::KernelData data,
     if (auto ret = conv->impdata_create(0, 1, 1, kernel.channel_LR.data(), 0, static_cast<int>(kernel.sampleCount()));
         ret != 0) {
       util::warning(std::format("Zita: LR impdata_create failed: {}", ret));
+
+      delete conv;
+      conv = nullptr;
+
       return false;
     }
 
     if (auto ret = conv->impdata_create(1, 0, 1, kernel.channel_RL.data(), 0, static_cast<int>(kernel.sampleCount()));
         ret != 0) {
       util::warning(std::format("Zita: RL impdata_create failed: {}", ret));
+
+      delete conv;
+      conv = nullptr;
+
       return false;
     }
   }
@@ -129,6 +151,9 @@ auto ConvolverZita::init(ConvolverKernelManager::KernelData data,
     util::warning(std::format("Zita: start_process failed: {}", ret));
 
     conv->cleanup();
+
+    delete conv;
+    conv = nullptr;
 
     return false;
   }
