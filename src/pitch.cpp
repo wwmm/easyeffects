@@ -95,6 +95,9 @@ Pitch::~Pitch() {
 
   settings->disconnect();
 
+  delete snd_touch;
+  snd_touch = nullptr;
+
   util::debug(std::format("{}{} destroyed", log_tag, name.toStdString()));
 }
 
@@ -328,6 +331,11 @@ void Pitch::init_soundtouch() {
   delete snd_touch;
 
   snd_touch = new soundtouch::SoundTouch();
+
+  if (snd_touch == nullptr) {
+    util::warning(std::format("{} failed to allocate SoundTouch object", log_tag));
+    return;
+  }
 
   snd_touch->setSampleRate(rate);
   snd_touch->setChannels(2);

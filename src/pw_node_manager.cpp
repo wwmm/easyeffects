@@ -641,16 +641,18 @@ void NodeManager::onDestroyNodeProxy(void* data) {
 
   spa_hook_remove(&nd->proxy_listener);
 
-  nd->nd_info->proxy = nullptr;
+  if (nd->nd_info != nullptr) {
+    nd->nd_info->proxy = nullptr;
 
-  nm->model_nodes.remove_by_serial(nd->nd_info->serial);
+    nm->model_nodes.remove_by_serial(nd->nd_info->serial);
 
-  util::debug(std::format("{} {} {} has been removed", nd->nd_info->media_class.toStdString(), nd->nd_info->id,
-                          nd->nd_info->name.toStdString()));
+    util::debug(std::format("{} {} {} has been removed", nd->nd_info->media_class.toStdString(), nd->nd_info->id,
+                            nd->nd_info->name.toStdString()));
 
-  delete nd->nd_info;
+    delete nd->nd_info;
 
-  nd->nd_info = nullptr;
+    nd->nd_info = nullptr;
+  }
 }
 
 void NodeManager::onRemovedNodeProxy(void* data) {
@@ -660,6 +662,20 @@ void NodeManager::onRemovedNodeProxy(void* data) {
 
   if (nd->proxy != nullptr) {
     pw_proxy_destroy(nd->proxy);
+  }
+
+  // Fallback cleanup in case onDestroyNodeProxy was not called first
+  if (nd->nd_info != nullptr) {
+    auto* const nm = nd->nm;
+
+    nm->model_nodes.remove_by_serial(nd->nd_info->serial);
+
+    util::debug(std::format("{} {} {} has been removed (onRemoved)", nd->nd_info->media_class.toStdString(),
+                            nd->nd_info->id, nd->nd_info->name.toStdString()));
+
+    delete nd->nd_info;
+
+    nd->nd_info = nullptr;
   }
 }
 
