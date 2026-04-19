@@ -42,6 +42,8 @@ class LadspaWrapper {
 
   auto create_instance(uint rate) -> bool;
 
+  void destroy_instance();
+
   void connect_data_ports(const std::span<const float>& left_in,
                           const std::span<const float>& right_in,
                           const std::span<float>& left_out,

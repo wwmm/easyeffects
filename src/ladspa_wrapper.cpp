@@ -216,15 +216,7 @@ LadspaWrapper::LadspaWrapper(const std::string& plugin_filename, const std::stri
 }
 
 LadspaWrapper::~LadspaWrapper() {
-  if (active) {
-    deactivate();
-  }
-
-  LADSPA_Handle instance = std::exchange(this->instance, nullptr);
-
-  if (instance != nullptr && descriptor->cleanup != nullptr) {
-    descriptor->cleanup(instance);
-  }
+  destroy_instance();
 
   if (control_ports_initialized) {
     delete[] std::exchange(control_ports_initialized, nullptr);
@@ -232,10 +224,6 @@ LadspaWrapper::~LadspaWrapper() {
 
   if (control_ports) {
     delete[] std::exchange(control_ports, nullptr);
-  }
-
-  if (dl_handle != nullptr) {
-    dlclose(std::exchange(dl_handle, nullptr));
   }
 }
 
@@ -394,6 +382,22 @@ auto LadspaWrapper::create_instance(uint rate) -> bool {
   activate();
 
   return true;
+}
+
+void LadspaWrapper::destroy_instance() {
+  if (active) {
+    deactivate();
+  }
+
+  LADSPA_Handle instance = std::exchange(this->instance, nullptr);
+
+  if (instance != nullptr && descriptor->cleanup != nullptr) {
+    descriptor->cleanup(instance);
+  }
+
+  if (dl_handle != nullptr) {
+    dlclose(std::exchange(dl_handle, nullptr));
+  }
 }
 
 static inline int stricmp(const char* str1, const char* str2) {
