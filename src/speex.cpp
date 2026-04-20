@@ -200,6 +200,8 @@ void Speex::setup() {
   QMetaObject::invokeMethod(
       baseWorker,
       [this] {
+        std::scoped_lock<std::mutex> lock(util::fftw_lock());
+
         if (state_left != nullptr) {
           speex_preprocess_state_destroy(state_left);
         }
@@ -236,8 +238,6 @@ void Speex::setup() {
 
           speex_preprocess_ctl(state_right, SPEEX_PREPROCESS_SET_DEREVERB, &enable_dereverb);
         }
-
-        std::scoped_lock<std::mutex> lock(util::fftw_lock());
 
         speex_ready = true;
       },
