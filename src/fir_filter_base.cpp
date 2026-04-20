@@ -45,6 +45,8 @@ constexpr auto CONVPROC_SCHEDULER_CLASS = SCHED_FIFO;
 FirFilterBase::FirFilterBase(std::string tag) : log_tag(std::move(tag)) {}
 
 FirFilterBase::~FirFilterBase() {
+  std::scoped_lock<std::mutex> lock(util::fftw_lock());
+
   zita_ready = false;
 
   free_zita();

@@ -49,6 +49,8 @@ ConvolverZita::~ConvolverZita() {
 }
 
 void ConvolverZita::stop() {
+  std::scoped_lock<std::mutex> lock(util::fftw_lock());
+
   ready = false;
 
   if (conv) {
