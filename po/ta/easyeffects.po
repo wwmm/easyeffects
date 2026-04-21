@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-04-14 17:12-0300\n"
+"POT-Creation-Date: 2026-04-21 14:08-0300\n"
 "PO-Revision-Date: 2026-02-24 06:09+0000\n"
 "Last-Translator: தமிழ்நேரம் <tamilneram247@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -300,7 +300,7 @@ msgstr "கேளுங்கள்"
 #: src/contents/ui/Equalizer.qml:383 src/contents/ui/Exciter.qml:250
 #: src/contents/ui/Expander.qml:874 src/contents/ui/Filter.qml:249
 #: src/contents/ui/Gate.qml:1003 src/contents/ui/Limiter.qml:658
-#: src/contents/ui/Loudness.qml:214 src/contents/ui/Main.qml:613
+#: src/contents/ui/Loudness.qml:214 src/contents/ui/Main.qml:443
 #: src/contents/ui/Maximizer.qml:151
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:356
@@ -311,7 +311,7 @@ msgstr "மீட்டமை"
 
 #: src/contents/ui/BassLoudness.qml:82 src/contents/ui/Compressor.qml:479
 #: src/contents/ui/EeInputOutputGain.qml:145 src/contents/ui/Expander.qml:439
-#: src/contents/ui/Gate.qml:454 src/contents/ui/Main.qml:541
+#: src/contents/ui/Gate.qml:454 src/contents/ui/Main.qml:371
 #: src/contents/ui/StereoTools.qml:267
 msgid "Output"
 msgstr "வெளியீடு"
@@ -931,7 +931,7 @@ msgstr "கிராச்ஃபீட் முன்னமைவுகள்"
 msgid "Default"
 msgstr "இயல்புநிலை"
 
-#: src/contents/ui/Crossfeed.qml:164 src/contents/ui/Main.qml:515
+#: src/contents/ui/Crossfeed.qml:164 src/contents/ui/Main.qml:345
 #: src/contents/ui/PreferencesSheet.qml:59 src/contents/ui/Reverb.qml:333
 msgid "Presets"
 msgstr "முன்னமைவுகள்"
@@ -1245,7 +1245,7 @@ msgstr "ஆடியோ நிலை கட்டுப்பாடு"
 msgid "Input and output gain controls with level meters"
 msgstr "நிலை மீட்டர்களுடன் உள்ளீடு மற்றும் வெளியீடு ஆதாயக் கட்டுப்பாடுகள்"
 
-#: src/contents/ui/EeInputOutputGain.qml:132 src/contents/ui/Main.qml:554
+#: src/contents/ui/EeInputOutputGain.qml:132 src/contents/ui/Main.qml:384
 #: src/contents/ui/StereoTools.qml:58
 msgid "Input"
 msgstr "உள்ளீடு"
@@ -1754,82 +1754,58 @@ msgstr "கிளிப்பிங் வரம்பு"
 msgid "Clipping"
 msgstr "கிளிப்பிங்"
 
-#: src/contents/ui/Main.qml:284
+#: src/contents/ui/Main.qml:296
 msgid "Reset Settings?"
 msgstr "அமைப்புகளை மீட்டமைக்கவா?"
 
-#: src/contents/ui/Main.qml:285
+#: src/contents/ui/Main.qml:297
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr "அனைத்து Easy Effects அமைப்புகளையும் நிச்சயமாக மீட்டமைக்க விரும்புகிறீர்களா?"
 
-#: src/contents/ui/Main.qml:338 src/contents/ui/Main.qml:356
-msgid "Preset Loaded"
-msgstr "முன்னமைவு ஏற்றப்பட்டது"
-
-#: src/contents/ui/Main.qml:367 src/contents/ui/Main.qml:379
-msgid "Clear List"
-msgstr "பட்டியலை அழி"
-
-#: src/contents/ui/Main.qml:368 src/contents/ui/Main.qml:380
-msgid "Are you sure you want to clear this list?"
-msgstr "இந்தப் பட்டியலை நிச்சயமாக அழிக்க விரும்புகிறீர்களா?"
-
-#: src/contents/ui/Main.qml:389
-msgid "Input Presets"
-msgstr "உள்ளீட்டு முன்னமைவுகள்"
-
-#: src/contents/ui/Main.qml:404
-msgid "Output Presets"
-msgstr "வெளியீட்டு முன்னமைவுகள்"
-
-#: src/contents/ui/Main.qml:435
-msgid "Active"
-msgstr "செயலில்"
-
-#: src/contents/ui/Main.qml:446 src/contents/ui/Main.qml:593
-#: src/contents/ui/ShortcutsSheet.qml:389
-msgid "Shortcuts"
-msgstr "குறுக்குவழிகள்"
-
-#: src/contents/ui/Main.qml:455 src/contents/ui/Main.qml:601
-msgid "Manual"
-msgstr "கையேடு"
-
-#: src/contents/ui/Main.qml:465 src/contents/ui/Main.qml:633
-msgid "Quit"
-msgstr "வெளியேறு"
-
-#: src/contents/ui/Main.qml:489
+#: src/contents/ui/Main.qml:319
 msgid "Go back"
 msgstr "திரும்பி போ"
 
-#: src/contents/ui/Main.qml:499 src/contents/ui/PageStreamsEffects.qml:745
+#: src/contents/ui/Main.qml:329 src/contents/ui/PageStreamsEffects.qml:745
 msgid "Effects"
 msgstr "விளைவுகள்"
 
-#: src/contents/ui/Main.qml:500
+#: src/contents/ui/Main.qml:330
 msgid "Turn effects on/off"
 msgstr "விளைவுகளை இயக்கவும்/முடக்கவும்"
 
-#: src/contents/ui/Main.qml:511
+#: src/contents/ui/Main.qml:341
 msgid "Audio effects are enabled."
 msgstr "ஆடியோ விளைவுகள் இயக்கப்பட்டுள்ளன."
 
-#: src/contents/ui/Main.qml:511
+#: src/contents/ui/Main.qml:341
 msgid "Audio effects are disabled."
 msgstr "ஆடியோ விளைவுகள் முடக்கப்பட்டுள்ளன."
 
-#: src/contents/ui/Main.qml:567
+#: src/contents/ui/Main.qml:397
 msgid "PipeWire"
 msgstr "குழாய் கம்பி"
 
-#: src/contents/ui/Main.qml:585
+#: src/contents/ui/Main.qml:415
 msgid "Preferences"
 msgstr "விருப்பத்தேர்வுகள்"
 
-#: src/contents/ui/Main.qml:625
+#: src/contents/ui/Main.qml:423 src/contents/ui/ShortcutsSheet.qml:389
+#: src/contents/ui/TrayIcon.qml:190
+msgid "Shortcuts"
+msgstr "குறுக்குவழிகள்"
+
+#: src/contents/ui/Main.qml:431 src/contents/ui/TrayIcon.qml:199
+msgid "Manual"
+msgstr "கையேடு"
+
+#: src/contents/ui/Main.qml:455
 msgid "About Easy Effects"
 msgstr "எளிதான விளைவுகள் பற்றி"
+
+#: src/contents/ui/Main.qml:463 src/contents/ui/TrayIcon.qml:209
+msgid "Quit"
+msgstr "வெளியேறு"
 
 #: src/contents/ui/MenuAddPlugins.qml:94
 msgid "Add %1"
@@ -2991,6 +2967,30 @@ msgstr "ச்டீரியோ அடிப்படை"
 #: src/contents/ui/StereoTools.qml:326
 msgid "Stereo phase"
 msgstr "ச்டீரியோ கட்டம்"
+
+#: src/contents/ui/TrayIcon.qml:82 src/contents/ui/TrayIcon.qml:100
+msgid "Preset Loaded"
+msgstr "முன்னமைவு ஏற்றப்பட்டது"
+
+#: src/contents/ui/TrayIcon.qml:111 src/contents/ui/TrayIcon.qml:123
+msgid "Clear List"
+msgstr "பட்டியலை அழி"
+
+#: src/contents/ui/TrayIcon.qml:112 src/contents/ui/TrayIcon.qml:124
+msgid "Are you sure you want to clear this list?"
+msgstr "இந்தப் பட்டியலை நிச்சயமாக அழிக்க விரும்புகிறீர்களா?"
+
+#: src/contents/ui/TrayIcon.qml:133
+msgid "Input Presets"
+msgstr "உள்ளீட்டு முன்னமைவுகள்"
+
+#: src/contents/ui/TrayIcon.qml:148
+msgid "Output Presets"
+msgstr "வெளியீட்டு முன்னமைவுகள்"
+
+#: src/contents/ui/TrayIcon.qml:179
+msgid "Active"
+msgstr "செயலில்"
 
 #: src/contents/ui/VoiceSuppressor.qml:94
 msgid "Correlation"

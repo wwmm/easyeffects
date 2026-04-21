@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-04-14 17:12-0300\n"
+"POT-Creation-Date: 2026-04-21 14:08-0300\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -309,7 +309,7 @@ msgstr "Lyssna"
 #: src/contents/ui/Equalizer.qml:383 src/contents/ui/Exciter.qml:250
 #: src/contents/ui/Expander.qml:874 src/contents/ui/Filter.qml:249
 #: src/contents/ui/Gate.qml:1003 src/contents/ui/Limiter.qml:658
-#: src/contents/ui/Loudness.qml:214 src/contents/ui/Main.qml:613
+#: src/contents/ui/Loudness.qml:214 src/contents/ui/Main.qml:443
 #: src/contents/ui/Maximizer.qml:151
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:356
@@ -320,7 +320,7 @@ msgstr "Återställ"
 
 #: src/contents/ui/BassLoudness.qml:82 src/contents/ui/Compressor.qml:479
 #: src/contents/ui/EeInputOutputGain.qml:145 src/contents/ui/Expander.qml:439
-#: src/contents/ui/Gate.qml:454 src/contents/ui/Main.qml:541
+#: src/contents/ui/Gate.qml:454 src/contents/ui/Main.qml:371
 #: src/contents/ui/StereoTools.qml:267
 msgid "Output"
 msgstr "Utgång"
@@ -978,7 +978,7 @@ msgstr ""
 msgid "Default"
 msgstr ""
 
-#: src/contents/ui/Crossfeed.qml:164 src/contents/ui/Main.qml:515
+#: src/contents/ui/Crossfeed.qml:164 src/contents/ui/Main.qml:345
 #: src/contents/ui/PreferencesSheet.qml:59 src/contents/ui/Reverb.qml:333
 msgid "Presets"
 msgstr "Profiler"
@@ -1318,7 +1318,7 @@ msgstr ""
 msgid "Input and output gain controls with level meters"
 msgstr ""
 
-#: src/contents/ui/EeInputOutputGain.qml:132 src/contents/ui/Main.qml:554
+#: src/contents/ui/EeInputOutputGain.qml:132 src/contents/ui/Main.qml:384
 #: src/contents/ui/StereoTools.qml:58
 msgid "Input"
 msgstr "Ingång"
@@ -1863,87 +1863,60 @@ msgstr "Klippning"
 msgid "Clipping"
 msgstr "Klippning"
 
-#: src/contents/ui/Main.qml:284
+#: src/contents/ui/Main.qml:296
 #, fuzzy
 msgid "Reset Settings?"
 msgstr "_Återställ inställningar"
 
-#: src/contents/ui/Main.qml:285
+#: src/contents/ui/Main.qml:297
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr ""
 
-#: src/contents/ui/Main.qml:338 src/contents/ui/Main.qml:356
-#, fuzzy
-msgid "Preset Loaded"
-msgstr "Nytt namn på förinställd ingång"
-
-#: src/contents/ui/Main.qml:367 src/contents/ui/Main.qml:379
-#, fuzzy
-msgid "Clear List"
-msgstr "Lista över band"
-
-#: src/contents/ui/Main.qml:368 src/contents/ui/Main.qml:380
-msgid "Are you sure you want to clear this list?"
-msgstr ""
-
-#: src/contents/ui/Main.qml:389
-msgid "Input Presets"
-msgstr "Ingångsförinställningar"
-
-#: src/contents/ui/Main.qml:404
-msgid "Output Presets"
-msgstr "Utgångsförinställningar"
-
-#: src/contents/ui/Main.qml:435
-#, fuzzy
-msgid "Active"
-msgstr "Ingen komprimering"
-
-#: src/contents/ui/Main.qml:446 src/contents/ui/Main.qml:593
-#: src/contents/ui/ShortcutsSheet.qml:389
-msgid "Shortcuts"
-msgstr ""
-
-#: src/contents/ui/Main.qml:455 src/contents/ui/Main.qml:601
-msgid "Manual"
-msgstr ""
-
-#: src/contents/ui/Main.qml:465 src/contents/ui/Main.qml:633
-msgid "Quit"
-msgstr ""
-
-#: src/contents/ui/Main.qml:489
+#: src/contents/ui/Main.qml:319
 msgid "Go back"
 msgstr ""
 
-#: src/contents/ui/Main.qml:499 src/contents/ui/PageStreamsEffects.qml:745
+#: src/contents/ui/Main.qml:329 src/contents/ui/PageStreamsEffects.qml:745
 msgid "Effects"
 msgstr "Effekter"
 
-#: src/contents/ui/Main.qml:500
+#: src/contents/ui/Main.qml:330
 msgid "Turn effects on/off"
 msgstr ""
 
-#: src/contents/ui/Main.qml:511
+#: src/contents/ui/Main.qml:341
 msgid "Audio effects are enabled."
 msgstr ""
 
-#: src/contents/ui/Main.qml:511
+#: src/contents/ui/Main.qml:341
 msgid "Audio effects are disabled."
 msgstr ""
 
-#: src/contents/ui/Main.qml:567
+#: src/contents/ui/Main.qml:397
 msgid "PipeWire"
 msgstr ""
 
-#: src/contents/ui/Main.qml:585
+#: src/contents/ui/Main.qml:415
 msgid "Preferences"
 msgstr ""
 
-#: src/contents/ui/Main.qml:625
+#: src/contents/ui/Main.qml:423 src/contents/ui/ShortcutsSheet.qml:389
+#: src/contents/ui/TrayIcon.qml:190
+msgid "Shortcuts"
+msgstr ""
+
+#: src/contents/ui/Main.qml:431 src/contents/ui/TrayIcon.qml:199
+msgid "Manual"
+msgstr ""
+
+#: src/contents/ui/Main.qml:455
 #, fuzzy
 msgid "About Easy Effects"
 msgstr "_Om Easy Effects"
+
+#: src/contents/ui/Main.qml:463 src/contents/ui/TrayIcon.qml:209
+msgid "Quit"
+msgstr ""
 
 #: src/contents/ui/MenuAddPlugins.qml:94
 msgid "Add %1"
@@ -3181,6 +3154,33 @@ msgstr "Stereobas"
 #, fuzzy
 msgid "Stereo phase"
 msgstr "Stereofas"
+
+#: src/contents/ui/TrayIcon.qml:82 src/contents/ui/TrayIcon.qml:100
+#, fuzzy
+msgid "Preset Loaded"
+msgstr "Nytt namn på förinställd ingång"
+
+#: src/contents/ui/TrayIcon.qml:111 src/contents/ui/TrayIcon.qml:123
+#, fuzzy
+msgid "Clear List"
+msgstr "Lista över band"
+
+#: src/contents/ui/TrayIcon.qml:112 src/contents/ui/TrayIcon.qml:124
+msgid "Are you sure you want to clear this list?"
+msgstr ""
+
+#: src/contents/ui/TrayIcon.qml:133
+msgid "Input Presets"
+msgstr "Ingångsförinställningar"
+
+#: src/contents/ui/TrayIcon.qml:148
+msgid "Output Presets"
+msgstr "Utgångsförinställningar"
+
+#: src/contents/ui/TrayIcon.qml:179
+#, fuzzy
+msgid "Active"
+msgstr "Ingen komprimering"
 
 #: src/contents/ui/VoiceSuppressor.qml:94
 #, fuzzy

@@ -601,8 +601,8 @@ msgstr "Parannettu suorituskyky avaimien palauttamisen yhteydessä."
 msgid ""
 "Fixed the \"Large Empty Hall\" preset selection in the Reverberation effect."
 msgstr ""
-"Korjattiin \"Large Empty Hall\" -asetuksen valintaa Reverberation -"
-"vaikutuksessa."
+"Korjattiin \"Large Empty Hall\" -asetuksen valintaa Reverberation "
+"-vaikutuksessa."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:251
 msgid ""
