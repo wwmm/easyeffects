@@ -22,6 +22,7 @@ import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import ee.tags.plugin.name as TagsPluginName // qmllint disable
 import org.kde.kirigami as Kirigami
+import org.kde.kirigamiaddons.formcard as FormCard
 
 Kirigami.ScrollablePage {
     id: lccPage
@@ -56,10 +57,11 @@ Kirigami.ScrollablePage {
 
                 title: i18n("Controls") // qmllint disable
 
-                Controls.CheckBox {
+                FormCard.FormCheckDelegate {
                     id: phantom_center_only
 
                     text: i18n("Process only phantom center") // qmllint disable
+
                     checked: pluginDB.phantomCenterOnly
                     onCheckedChanged: {
                         pluginDB.phantomCenterOnly = checked;
