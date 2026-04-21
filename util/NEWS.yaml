@@ -4,7 +4,7 @@ Date: UNRELEASED_DATE
 
 Description: 
 - Features∶
-- 
+- A new plugin for crosstalk attenuation is available
 
 - Bug fixes∶
 - In some distributions like NixOS the speexdsp library is compiled with the fftw backend. So we need to make our speex proecssor plugin to use our global fftw mutex. Otherwise using it together with the convolver or the crystalizer plugin can lead to random crashes. 

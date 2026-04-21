@@ -44,6 +44,7 @@
 #include "compressor.hpp"
 #include "convolver.hpp"
 #include "crossfeed.hpp"
+#include "crosstalk_canceller.hpp"
 #include "crusher.hpp"
 #include "crystalizer.hpp"
 #include "db_manager.hpp"
@@ -56,7 +57,6 @@
 #include "expander.hpp"
 #include "filter.hpp"
 #include "gate.hpp"
-#include "lcc.hpp"
 #include "level_meter.hpp"
 #include "limiter.hpp"
 #include "loudness.hpp"
@@ -209,8 +209,8 @@ void EffectsBase::create_filters_if_necessary() {
     } else if (name.startsWith(tags::plugin_name::BaseName::voiceSuppressor)) {
       filter = std::make_unique<VoiceSuppressor>(log_tag, pm, pipeline_type, instance_id);
 
-    } else if (name.startsWith(tags::plugin_name::BaseName::lcc)) {
-      filter = std::make_unique<Lcc>(log_tag, pm, pipeline_type, instance_id);
+    } else if (name.startsWith(tags::plugin_name::BaseName::crosstalkCanceller)) {
+      filter = std::make_unique<CrosstalkCanceller>(log_tag, pm, pipeline_type, instance_id);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::levelMeter)) {
       filter = std::make_unique<LevelMeter>(log_tag, pm, pipeline_type, instance_id);
@@ -372,8 +372,8 @@ QVariant EffectsBase::getPluginInstance(const QString& pluginName) {
   } else if (pluginName.startsWith(tags::plugin_name::BaseName::voiceSuppressor)) {
     return QVariant::fromValue(dynamic_cast<VoiceSuppressor*>(p.get()));
 
-  } else if (pluginName.startsWith(tags::plugin_name::BaseName::lcc)) {
-    return QVariant::fromValue(dynamic_cast<Lcc*>(p.get()));
+  } else if (pluginName.startsWith(tags::plugin_name::BaseName::crosstalkCanceller)) {
+    return QVariant::fromValue(dynamic_cast<CrosstalkCanceller*>(p.get()));
 
   } else if (pluginName.startsWith(tags::plugin_name::BaseName::levelMeter)) {
     return QVariant::fromValue(dynamic_cast<LevelMeter*>(p.get()));

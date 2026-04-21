@@ -26,7 +26,7 @@ import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
 Kirigami.ScrollablePage {
-    id: lccPage
+    id: crosstalkPage
 
     required property string name
     required property var pluginDB
@@ -34,17 +34,17 @@ Kirigami.ScrollablePage {
     property var pluginBackend
 
     function updateMeters() {
-        if (!lccPage.pluginBackend)
+        if (!crosstalkPage.pluginBackend)
             return;
 
-        inputOutputLevels.setInputLevelLeft(lccPage.pluginBackend.getInputLevelLeft());
-        inputOutputLevels.setInputLevelRight(lccPage.pluginBackend.getInputLevelRight());
-        inputOutputLevels.setOutputLevelLeft(lccPage.pluginBackend.getOutputLevelLeft());
-        inputOutputLevels.setOutputLevelRight(lccPage.pluginBackend.getOutputLevelRight());
+        inputOutputLevels.setInputLevelLeft(crosstalkPage.pluginBackend.getInputLevelLeft());
+        inputOutputLevels.setInputLevelRight(crosstalkPage.pluginBackend.getInputLevelRight());
+        inputOutputLevels.setOutputLevelLeft(crosstalkPage.pluginBackend.getOutputLevelLeft());
+        inputOutputLevels.setOutputLevelRight(crosstalkPage.pluginBackend.getOutputLevelRight());
     }
 
     Component.onCompleted: {
-        lccPage.pluginBackend = lccPage.pipelineInstance.getPluginInstance(name);
+        crosstalkPage.pluginBackend = crosstalkPage.pipelineInstance.getPluginInstance(name);
     }
 
     ColumnLayout {
@@ -63,9 +63,9 @@ Kirigami.ScrollablePage {
 
                     text: i18n("Process only phantom center") // qmllint disable
 
-                    checked: lccPage.pluginDB.phantomCenterOnly
+                    checked: crosstalkPage.pluginDB.phantomCenterOnly
                     onCheckedChanged: {
-                        lccPage.pluginDB.phantomCenterOnly = checked;
+                        crosstalkPage.pluginDB.phantomCenterOnly = checked;
                     }
                 }
 
@@ -74,14 +74,14 @@ Kirigami.ScrollablePage {
 
                     label: i18n("Delay") // qmllint disable
                     spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
-                    from: lccPage.pluginDB.getMinValue("delayUs")
-                    to: lccPage.pluginDB.getMaxValue("delayUs")
-                    value: lccPage.pluginDB.delayUs
+                    from: crosstalkPage.pluginDB.getMinValue("delayUs")
+                    to: crosstalkPage.pluginDB.getMaxValue("delayUs")
+                    value: crosstalkPage.pluginDB.delayUs
                     decimals: 0
                     stepSize: 1
                     unit: Units.us
                     onValueModified: v => {
-                        lccPage.pluginDB.delayUs = v;
+                        crosstalkPage.pluginDB.delayUs = v;
                     }
                 }
 
@@ -90,14 +90,14 @@ Kirigami.ScrollablePage {
 
                     label: i18n("Decay") // qmllint disable
                     spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
-                    from: lccPage.pluginDB.getMinValue("decayDb")
-                    to: lccPage.pluginDB.getMaxValue("decayDb")
-                    value: lccPage.pluginDB.decayDb
+                    from: crosstalkPage.pluginDB.getMinValue("decayDb")
+                    to: crosstalkPage.pluginDB.getMaxValue("decayDb")
+                    value: crosstalkPage.pluginDB.decayDb
                     decimals: 1
                     stepSize: 0.1
                     unit: Units.dB
                     onValueModified: v => {
-                        lccPage.pluginDB.decayDb = v;
+                        crosstalkPage.pluginDB.decayDb = v;
                     }
                 }
             }
@@ -107,7 +107,7 @@ Kirigami.ScrollablePage {
     header: EeInputOutputGain {
         id: inputOutputLevels
 
-        pluginDB: lccPage.pluginDB
+        pluginDB: crosstalkPage.pluginDB
     }
 
     footer: RowLayout {
@@ -122,7 +122,7 @@ Kirigami.ScrollablePage {
                     text: i18n("Reset") // qmllint disable
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {
-                        lccPage.pluginBackend.reset();
+                        crosstalkPage.pluginBackend.reset();
                     }
                 }
             ]

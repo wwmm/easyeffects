@@ -24,7 +24,7 @@
 #include <span>
 #include <string>
 #include <vector>
-#include "easyeffects_db_lcc.h"
+#include "easyeffects_db_crosstalk_canceller.h"
 #include "pipeline_type.hpp"
 #include "plugin_base.hpp"
 #include "pw_manager.hpp"
@@ -207,16 +207,16 @@ class FilterState {
   }
 };
 
-class Lcc : public PluginBase {
+class CrosstalkCanceller : public PluginBase {
   Q_OBJECT
 
  public:
-  Lcc(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id);
-  Lcc(const Lcc&) = delete;
-  auto operator=(const Lcc&) -> Lcc& = delete;
-  Lcc(const Lcc&&) = delete;
-  auto operator=(const Lcc&&) -> Lcc& = delete;
-  ~Lcc() override;
+  CrosstalkCanceller(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id);
+  CrosstalkCanceller(const CrosstalkCanceller&) = delete;
+  auto operator=(const CrosstalkCanceller&) -> CrosstalkCanceller& = delete;
+  CrosstalkCanceller(const CrosstalkCanceller&&) = delete;
+  auto operator=(const CrosstalkCanceller&&) -> CrosstalkCanceller& = delete;
+  ~CrosstalkCanceller() override;
 
   void reset() override;
 
@@ -244,5 +244,5 @@ class Lcc : public PluginBase {
   FilterState a;
   FilterState b;
 
-  db::Lcc* settings = nullptr;
+  DbCrosstalkCanceller* settings = nullptr;
 };

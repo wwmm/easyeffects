@@ -1,6 +1,5 @@
-File=easyeffects_db_lcc.kcfg
-NameSpace=db
-ClassName=Lcc
+File=easyeffects_db_crosstalk_canceller.kcfg
+ClassName=DbCrosstalkCanceller
 Inherits=KConfigBaseEE
 IncludeFiles=\"kconfig_base_ee.hpp\"
 Mutators=true

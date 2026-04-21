@@ -18,7 +18,7 @@
  * along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
  */
 
-#include "lcc.hpp"
+#include "crosstalk_canceller.hpp"
 #include <algorithm>
 #include <cstddef>
 #include <format>
@@ -26,49 +26,41 @@
 #include <span>
 #include <string>
 #include "db_manager.hpp"
-#include "easyeffects_db_lcc.h"
+#include "easyeffects_db_crosstalk_canceller.h"
 #include "pipeline_type.hpp"
 #include "plugin_base.hpp"
 #include "pw_manager.hpp"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
 
-Lcc::Lcc(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id)
+CrosstalkCanceller::CrosstalkCanceller(const std::string& tag,
+                                       pw::Manager* pipe_manager,
+                                       PipelineType pipe_type,
+                                       QString instance_id)
     : PluginBase(tag,
-                 tags::plugin_name::BaseName::lcc,
+                 tags::plugin_name::BaseName::crosstalkCanceller,
                  tags::plugin_package::Package::ee,
                  instance_id,
                  pipe_manager,
                  pipe_type),
-      settings(
-          db::Manager::self().get_plugin_db<db::Lcc>(pipe_type, tags::plugin_name::BaseName::lcc + "#" + instance_id)) {
+      settings(db::Manager::self().get_plugin_db<DbCrosstalkCanceller>(
+          pipe_type,
+          tags::plugin_name::BaseName::crosstalkCanceller + "#" + instance_id)) {
   // bypass, input and output gain controls
 
-  init_common_controls<db::Lcc>(settings);
+  init_common_controls<DbCrosstalkCanceller>(settings);
 
   // specific plugin controls
 
-  connect(settings, &db::Lcc::phantomCenterOnlyChanged, [&]() {
-    std::scoped_lock<std::mutex> lock(data_mutex);
-
-    // phantom center only mode change doesn't require reconfiguration
-  });
-
-  connect(settings, &db::Lcc::delayUsChanged, [&]() {
+  connect(settings, &DbCrosstalkCanceller::delayUsChanged, [&]() {
     std::scoped_lock<std::mutex> lock(data_mutex);
 
     a.configure(settings->delayUs(), rate);
     b.configure(settings->delayUs(), rate);
   });
-
-  connect(settings, &db::Lcc::decayDbChanged, [&]() {
-    std::scoped_lock<std::mutex> lock(data_mutex);
-
-    // decay change is applied on-the-fly in process
-  });
 }
 
-Lcc::~Lcc() {
+CrosstalkCanceller::~CrosstalkCanceller() {
   if (connected_to_pw) {
     disconnect_from_pw();
   }
@@ -78,15 +70,15 @@ Lcc::~Lcc() {
   util::debug(std::format("{}{} destroyed", log_tag, name.toStdString()));
 }
 
-void Lcc::reset() {
+void CrosstalkCanceller::reset() {
   settings->setDefaults();
 }
 
-void Lcc::clear_data() {
+void CrosstalkCanceller::clear_data() {
   setup();
 }
 
-void Lcc::setup() {
+void CrosstalkCanceller::setup() {
   if (rate == 0 || n_samples == 0) {
     // Some signals may be emitted before PipeWire calls our setup function
     return;
@@ -100,10 +92,10 @@ void Lcc::setup() {
   b.configure(settings->delayUs(), rate);
 }
 
-void Lcc::process(std::span<float>& left_in,
-                  std::span<float>& right_in,
-                  std::span<float>& left_out,
-                  std::span<float>& right_out) {
+void CrosstalkCanceller::process(std::span<float>& left_in,
+                                 std::span<float>& right_in,
+                                 std::span<float>& left_out,
+                                 std::span<float>& right_out) {
   std::scoped_lock<std::mutex> lock(data_mutex);
 
   if (bypass) {
@@ -150,13 +142,13 @@ void Lcc::process(std::span<float>& left_in,
   }
 }
 
-void Lcc::process([[maybe_unused]] std::span<float>& left_in,
-                  [[maybe_unused]] std::span<float>& right_in,
-                  [[maybe_unused]] std::span<float>& left_out,
-                  [[maybe_unused]] std::span<float>& right_out,
-                  [[maybe_unused]] std::span<float>& probe_left,
-                  [[maybe_unused]] std::span<float>& probe_right) {}
+void CrosstalkCanceller::process([[maybe_unused]] std::span<float>& left_in,
+                                 [[maybe_unused]] std::span<float>& right_in,
+                                 [[maybe_unused]] std::span<float>& left_out,
+                                 [[maybe_unused]] std::span<float>& right_out,
+                                 [[maybe_unused]] std::span<float>& probe_left,
+                                 [[maybe_unused]] std::span<float>& probe_right) {}
 
-auto Lcc::get_latency_seconds() -> float {
+auto CrosstalkCanceller::get_latency_seconds() -> float {
   return 0.0F;
 }

@@ -22,16 +22,16 @@
 
 #include <nlohmann/json_fwd.hpp>
 #include <string>
-#include "easyeffects_db_lcc.h"
+#include "easyeffects_db_crosstalk_canceller.h"
 #include "pipeline_type.hpp"
 #include "plugin_preset_base.hpp"
 
-class LccPreset : public PluginPresetBase {
+class CrosstalkCancellerPreset : public PluginPresetBase {
  public:
-  explicit LccPreset(PipelineType pipeline_type, const std::string& instance_name);
+  explicit CrosstalkCancellerPreset(PipelineType pipeline_type, const std::string& instance_name);
 
  private:
-  db::Lcc* settings = nullptr;
+  DbCrosstalkCanceller* settings = nullptr;
 
   void save(nlohmann::json& json) override;
 

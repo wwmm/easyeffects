@@ -18,20 +18,20 @@
  * along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
  */
 
-#include "lcc_preset.hpp"
+#include "crosstalk_canceller_preset.hpp"
 #include <nlohmann/json_fwd.hpp>
 #include <string>
-#include "easyeffects_db_lcc.h"
+#include "easyeffects_db_crosstalk_canceller.h"
 #include "pipeline_type.hpp"
 #include "plugin_preset_base.hpp"
 #include "presets_macros.hpp"
 
-LccPreset::LccPreset(PipelineType pipeline_type, const std::string& instance_name)
+CrosstalkCancellerPreset::CrosstalkCancellerPreset(PipelineType pipeline_type, const std::string& instance_name)
     : PluginPresetBase(pipeline_type, instance_name) {
-  settings = get_db_instance<db::Lcc>(pipeline_type);
+  settings = get_db_instance<DbCrosstalkCanceller>(pipeline_type);
 }
 
-void LccPreset::save(nlohmann::json& json) {
+void CrosstalkCancellerPreset::save(nlohmann::json& json) {
   json[section][instance_name]["bypass"] = settings->bypass();
 
   json[section][instance_name]["input-gain"] = settings->inputGain();
@@ -45,7 +45,7 @@ void LccPreset::save(nlohmann::json& json) {
   json[section][instance_name]["decay-db"] = settings->decayDb();
 }
 
-void LccPreset::load(const nlohmann::json& json) {
+void CrosstalkCancellerPreset::load(const nlohmann::json& json) {
   UPDATE_PROPERTY("bypass", Bypass);
   UPDATE_PROPERTY("input-gain", InputGain);
   UPDATE_PROPERTY("output-gain", OutputGain);

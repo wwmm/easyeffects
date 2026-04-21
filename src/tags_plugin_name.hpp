@@ -132,7 +132,7 @@ class BaseName : public QObject {
   CREATE_PROPERTY(QString, filter, QStringLiteral("filter"));
   CREATE_PROPERTY(QString, gate, QStringLiteral("gate"));
   CREATE_PROPERTY(QString, voiceSuppressor, QStringLiteral("voice_suppressor"));
-  CREATE_PROPERTY(QString, lcc, QStringLiteral("lcc"));
+  CREATE_PROPERTY(QString, crosstalkCanceller, QStringLiteral("crosstalk_canceller"));
   CREATE_PROPERTY(QString, levelMeter, QStringLiteral("level_meter"));
   CREATE_PROPERTY(QString, limiter, QStringLiteral("limiter"));
   CREATE_PROPERTY(QString, loudness, QStringLiteral("loudness"));
