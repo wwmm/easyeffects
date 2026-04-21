@@ -40,9 +40,8 @@ Lcc::Lcc(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_ty
                  instance_id,
                  pipe_manager,
                  pipe_type),
-      settings(db::Manager::self().get_plugin_db<db::Lcc>(
-          pipe_type,
-          tags::plugin_name::BaseName::lcc + "#" + instance_id)) {
+      settings(
+          db::Manager::self().get_plugin_db<db::Lcc>(pipe_type, tags::plugin_name::BaseName::lcc + "#" + instance_id)) {
   // bypass, input and output gain controls
 
   init_common_controls<db::Lcc>(settings);
@@ -124,7 +123,7 @@ void Lcc::process(std::span<float>& left_in,
     for (size_t n = 0U; n < left_in.size(); n++) {
       float middle = left_in[n] + right_in[n];
       float side = left_in[n] - right_in[n];
-      auto mo = middle - decay_gain * a.get_sample();
+      auto mo = middle - (decay_gain * a.get_sample());
       auto so = side;
       left_out[n] = (mo + so) * .5f;
       right_out[n] = (mo - so) * .5f;
@@ -133,8 +132,8 @@ void Lcc::process(std::span<float>& left_in,
     }
   } else {
     for (size_t n = 0U; n < left_in.size(); n++) {
-      auto ao = left_in[n] - decay_gain * b.get_sample();
-      auto bo = right_in[n] - decay_gain * a.get_sample();
+      auto ao = left_in[n] - (decay_gain * b.get_sample());
+      auto bo = right_in[n] - (decay_gain * a.get_sample());
       left_out[n] = ao;
       right_out[n] = bo;
       a.put_sample(ao);

@@ -97,12 +97,12 @@ class Biquad {
     auto A = std::pow(10, db_gain / 40);
     auto alpha = std::sin(w0) / (2 * quality);
 
-    auto b0 = A * ((A + 1) + (A - 1) * std::cos(w0) + 2 * std::sqrt(A) * alpha);
-    auto b1 = -2 * A * ((A - 1) + (A + 1) * std::cos(w0));
-    auto b2 = A * ((A + 1) + (A - 1) * std::cos(w0) - 2 * std::sqrt(A) * alpha);
-    auto a0 = (A + 1) - (A - 1) * std::cos(w0) + 2 * std::sqrt(A) * alpha;
-    auto a1 = 2 * ((A - 1) - (A + 1) * std::cos(w0));
-    auto a2 = (A + 1) - (A - 1) * std::cos(w0) - 2 * std::sqrt(A) * alpha;
+    auto b0 = A * ((A + 1) + ((A - 1) * std::cos(w0)) + (2 * std::sqrt(A) * alpha));
+    auto b1 = -2 * A * ((A - 1) + ((A + 1) * std::cos(w0)));
+    auto b2 = A * ((A + 1) + ((A - 1) * std::cos(w0)) - (2 * std::sqrt(A) * alpha));
+    auto a0 = (A + 1) - ((A - 1) * std::cos(w0)) + (2 * std::sqrt(A) * alpha);
+    auto a1 = 2 * ((A - 1) - ((A + 1) * std::cos(w0)));
+    auto a2 = (A + 1) - ((A - 1) * std::cos(w0)) - (2 * std::sqrt(A) * alpha);
     set_coefficients(a0, a1, a2, b0, b1, b2);
   }
 
@@ -111,17 +111,17 @@ class Biquad {
     auto A = std::pow(10, db_gain / 40);
     auto alpha = std::sin(w0) / (2 * quality);
 
-    auto b0 = 1 + alpha * A;
+    auto b0 = 1 + (alpha * A);
     auto b1 = -2 * std::cos(w0);
-    auto b2 = 1 - alpha * A;
-    auto a0 = 1 + alpha / A;
+    auto b2 = 1 - (alpha * A);
+    auto a0 = 1 + (alpha / A);
     auto a1 = -2 * std::cos(w0);
-    auto a2 = 1 - alpha / A;
+    auto a2 = 1 - (alpha / A);
     set_coefficients(a0, a1, a2, b0, b1, b2);
   }
 
   float process(float x0) {
-    auto y0 = fb0 * x0 + fb1 * x1 + fb2 * x2 - y1 * fa1 - y2 * fa2;
+    auto y0 = (fb0 * x0) + (fb1 * x1) + (fb2 * x2) - (y1 * fa1) - (y2 * fa2);
 
     y2 = y1;
     y1 = y0;
@@ -188,9 +188,7 @@ class FilterState {
    *
    * @return historical sample from delay line
    */
-  float get_sample() {
-    return data[data_index];
-  }
+  float get_sample() { return data[data_index]; }
 
   /**
    * Put a new sample into the delay line
