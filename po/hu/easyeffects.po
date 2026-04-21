@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-04-21 14:08-0300\n"
+"POT-Creation-Date: 2026-04-21 18:23+0000\n"
 "PO-Revision-Date: 2025-05-26 11:48+0200\n"
 "Last-Translator: Noel <chatenium@gmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/easyeffects/"
@@ -128,10 +128,10 @@ msgstr ""
 #: src/contents/ui/Autogain.qml:69 src/contents/ui/BassEnhancer.qml:105
 #: src/contents/ui/BassLoudness.qml:58 src/contents/ui/Crossfeed.qml:73
 #: src/contents/ui/DeepFilterNet.qml:93 src/contents/ui/Exciter.qml:106
-#: src/contents/ui/Filter.qml:58 src/contents/ui/Loudness.qml:58
-#: src/contents/ui/Maximizer.qml:59 src/contents/ui/Pitch.qml:59
-#: src/contents/ui/Reverb.qml:59 src/contents/ui/Speex.qml:58
-#: src/contents/ui/VoiceSuppressor.qml:57
+#: src/contents/ui/Filter.qml:58 src/contents/ui/Lcc.qml:57
+#: src/contents/ui/Loudness.qml:58 src/contents/ui/Maximizer.qml:59
+#: src/contents/ui/Pitch.qml:59 src/contents/ui/Reverb.qml:59
+#: src/contents/ui/Speex.qml:58 src/contents/ui/VoiceSuppressor.qml:57
 msgid "Controls"
 msgstr "Vezérlők"
 
@@ -190,7 +190,7 @@ msgstr "Maximális Előzmény"
 
 #: src/contents/ui/Autogain.qml:143 src/contents/ui/Autogain.qml:198
 #: src/contents/ui/BassLoudness.qml:66 src/contents/ui/LevelMeter.qml:146
-#: src/tags_plugin_name.cpp:65
+#: src/tags_plugin_name.cpp:66
 msgid "Loudness"
 msgstr "Hangerő"
 
@@ -216,14 +216,14 @@ msgstr "Kimeneti Erősítés"
 #: src/contents/ui/Delay.qml:373 src/contents/ui/EchoCanceller.qml:155
 #: src/contents/ui/Equalizer.qml:299 src/contents/ui/Exciter.qml:208
 #: src/contents/ui/Expander.qml:822 src/contents/ui/Filter.qml:217
-#: src/contents/ui/Gate.qml:951 src/contents/ui/LevelMeter.qml:215
-#: src/contents/ui/Limiter.qml:606 src/contents/ui/Loudness.qml:172
-#: src/contents/ui/Maximizer.qml:119
+#: src/contents/ui/Gate.qml:951 src/contents/ui/Lcc.qml:112
+#: src/contents/ui/LevelMeter.qml:215 src/contents/ui/Limiter.qml:606
+#: src/contents/ui/Loudness.qml:172 src/contents/ui/Maximizer.qml:119
 #: src/contents/ui/MultibandCompressor.qml:965
 #: src/contents/ui/MultibandGate.qml:938 src/contents/ui/Pitch.qml:265
-#: src/contents/ui/Reverb.qml:316 src/contents/ui/RNNoise.qml:75
-#: src/contents/ui/RNNoise.qml:86 src/contents/ui/RNNoise.qml:300
-#: src/contents/ui/RNNoise.qml:302 src/contents/ui/RNNoise.qml:320
+#: src/contents/ui/RNNoise.qml:75 src/contents/ui/RNNoise.qml:86
+#: src/contents/ui/RNNoise.qml:300 src/contents/ui/RNNoise.qml:302
+#: src/contents/ui/RNNoise.qml:320 src/contents/ui/Reverb.qml:316
 #: src/contents/ui/Speex.qml:174 src/contents/ui/StereoTools.qml:389
 #: src/contents/ui/VoiceSuppressor.qml:165
 msgid "Using %1"
@@ -312,12 +312,12 @@ msgstr "Meghallgat"
 #: src/contents/ui/Delay.qml:425 src/contents/ui/EchoCanceller.qml:183
 #: src/contents/ui/Equalizer.qml:383 src/contents/ui/Exciter.qml:250
 #: src/contents/ui/Expander.qml:874 src/contents/ui/Filter.qml:249
-#: src/contents/ui/Gate.qml:1003 src/contents/ui/Limiter.qml:658
-#: src/contents/ui/Loudness.qml:214 src/contents/ui/Main.qml:443
-#: src/contents/ui/Maximizer.qml:151
+#: src/contents/ui/Gate.qml:1003 src/contents/ui/Lcc.qml:130
+#: src/contents/ui/Limiter.qml:658 src/contents/ui/Loudness.qml:214
+#: src/contents/ui/Main.qml:443 src/contents/ui/Maximizer.qml:151
 #: src/contents/ui/MultibandCompressor.qml:1014
-#: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:356
-#: src/contents/ui/RNNoise.qml:345 src/contents/ui/Speex.qml:192
+#: src/contents/ui/MultibandGate.qml:987 src/contents/ui/RNNoise.qml:345
+#: src/contents/ui/Reverb.qml:356 src/contents/ui/Speex.qml:192
 #: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:193
 msgid "Reset"
 msgstr "Alaphelyzet"
@@ -407,7 +407,7 @@ msgstr "Kompreszzor"
 #: src/contents/ui/Compressor.qml:80 src/contents/ui/Compressor.qml:302
 #: src/contents/ui/Crusher.qml:96 src/contents/ui/Deesser.qml:89
 #: src/contents/ui/Delay.qml:70 src/contents/ui/Delay.qml:223
-#: src/contents/ui/EqualizerBandMenu.qml:60 src/contents/ui/Equalizer.qml:138
+#: src/contents/ui/Equalizer.qml:138 src/contents/ui/EqualizerBandMenu.qml:60
 #: src/contents/ui/Expander.qml:80 src/contents/ui/Expander.qml:262
 #: src/contents/ui/Gate.qml:280 src/contents/ui/Limiter.qml:73
 #: src/contents/ui/Loudness.qml:70 src/contents/ui/MultibandCompressor.qml:436
@@ -508,7 +508,7 @@ msgstr "Külső"
 
 #: src/contents/ui/Compressor.qml:278 src/contents/ui/Expander.qml:238
 #: src/contents/ui/Gate.qml:256 src/contents/ui/Limiter.qml:228
-#: src/contents/ui/PageStreamsEffects.qml:441
+#: src/contents/ui/PageStreamsEffects.qml:443
 #, fuzzy
 msgid "Input device"
 msgstr "Bemeneti Eszköz"
@@ -762,6 +762,82 @@ msgstr "Burkológörbe"
 msgid "Stereo split"
 msgstr "Sztereó Osztott Mód"
 
+#: src/contents/ui/Convolver.qml:67
+#, fuzzy
+msgid "Loaded the %1 Convolver impulse."
+msgstr "Impulzus Fájl Keresése"
+
+#: src/contents/ui/Convolver.qml:69 src/contents/ui/Convolver.qml:343
+#, fuzzy
+msgid "Convolver impulse is not set"
+msgstr "Impulzus Válaszok Kombinálása"
+
+#: src/contents/ui/Convolver.qml:73
+msgid "The Convolver is in passthrough mode."
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:75
+#, fuzzy
+msgid "Failed to load the %1 impulse. The Convolver is in passthrough mode."
+msgstr "Impulzus Fájl Keresése"
+
+#: src/contents/ui/Convolver.qml:152
+msgid "First"
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:165
+#, fuzzy
+msgid "Second"
+msgstr "Második Kernel"
+
+#: src/contents/ui/Convolver.qml:197 src/contents/ui/Convolver.qml:232
+msgid "Combine"
+msgstr "Egyesít"
+
+#: src/contents/ui/Convolver.qml:225
+msgid "Impulses"
+msgstr "Impulzusok"
+
+#: src/contents/ui/Convolver.qml:241 src/plugin_base.cpp:336
+msgid "Spectrum"
+msgstr "Spectrum"
+
+#: src/contents/ui/Convolver.qml:273
+#, fuzzy
+msgid "Log scale"
+msgstr "Napló Skála"
+
+#: src/contents/ui/Convolver.qml:381 src/contents/ui/Crusher.qml:207
+msgid "Rate"
+msgstr "Arány"
+
+#: src/contents/ui/Convolver.qml:386 src/contents/ui/Delay.qml:74
+#: src/contents/ui/Delay.qml:85 src/contents/ui/Delay.qml:227
+#: src/contents/ui/Delay.qml:238
+msgid "Samples"
+msgstr "Minták"
+
+#: src/contents/ui/Convolver.qml:391
+msgid "Duration"
+msgstr "Időtartam"
+
+#: src/contents/ui/Convolver.qml:396 src/contents/ui/PipeWirePage.qml:332
+msgid "Channels"
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:401
+msgid "Format"
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:459
+#, fuzzy
+msgid "Stereo width"
+msgstr "Sztereó Szélesség"
+
+#: src/contents/ui/Convolver.qml:536 src/tags_plugin_name.cpp:46
+msgid "Autogain"
+msgstr "Autóerősítés"
+
 #: src/contents/ui/ConvolverImpulseDialog.qml:50
 #, fuzzy
 msgid "Imported a new Convolver impulse file."
@@ -844,82 +920,6 @@ msgstr "Impulzus Importálása"
 msgctxt "@action:button"
 msgid "Close"
 msgstr ""
-
-#: src/contents/ui/Convolver.qml:67
-#, fuzzy
-msgid "Loaded the %1 Convolver impulse."
-msgstr "Impulzus Fájl Keresése"
-
-#: src/contents/ui/Convolver.qml:69 src/contents/ui/Convolver.qml:343
-#, fuzzy
-msgid "Convolver impulse is not set"
-msgstr "Impulzus Válaszok Kombinálása"
-
-#: src/contents/ui/Convolver.qml:73
-msgid "The Convolver is in passthrough mode."
-msgstr ""
-
-#: src/contents/ui/Convolver.qml:75
-#, fuzzy
-msgid "Failed to load the %1 impulse. The Convolver is in passthrough mode."
-msgstr "Impulzus Fájl Keresése"
-
-#: src/contents/ui/Convolver.qml:152
-msgid "First"
-msgstr ""
-
-#: src/contents/ui/Convolver.qml:165
-#, fuzzy
-msgid "Second"
-msgstr "Második Kernel"
-
-#: src/contents/ui/Convolver.qml:197 src/contents/ui/Convolver.qml:232
-msgid "Combine"
-msgstr "Egyesít"
-
-#: src/contents/ui/Convolver.qml:225
-msgid "Impulses"
-msgstr "Impulzusok"
-
-#: src/contents/ui/Convolver.qml:241 src/plugin_base.cpp:336
-msgid "Spectrum"
-msgstr "Spectrum"
-
-#: src/contents/ui/Convolver.qml:273
-#, fuzzy
-msgid "Log scale"
-msgstr "Napló Skála"
-
-#: src/contents/ui/Convolver.qml:381 src/contents/ui/Crusher.qml:207
-msgid "Rate"
-msgstr "Arány"
-
-#: src/contents/ui/Convolver.qml:386 src/contents/ui/Delay.qml:74
-#: src/contents/ui/Delay.qml:85 src/contents/ui/Delay.qml:227
-#: src/contents/ui/Delay.qml:238
-msgid "Samples"
-msgstr "Minták"
-
-#: src/contents/ui/Convolver.qml:391
-msgid "Duration"
-msgstr "Időtartam"
-
-#: src/contents/ui/Convolver.qml:396 src/contents/ui/PipeWirePage.qml:332
-msgid "Channels"
-msgstr ""
-
-#: src/contents/ui/Convolver.qml:401
-msgid "Format"
-msgstr ""
-
-#: src/contents/ui/Convolver.qml:459
-#, fuzzy
-msgid "Stereo width"
-msgstr "Sztereó Szélesség"
-
-#: src/contents/ui/Convolver.qml:536 src/tags_plugin_name.cpp:46
-msgid "Autogain"
-msgstr "Autóerősítés"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:31
 msgid "Target Orientation"
@@ -1028,20 +1028,6 @@ msgstr "Csökkentés"
 msgid "Low frequency oscillator"
 msgstr ""
 
-#: src/contents/ui/CrystalizerBand.qml:58
-#: src/contents/ui/EqualizerBandMenu.qml:186
-#: src/contents/ui/MultibandCompressor.qml:92
-#: src/contents/ui/MultibandGate.qml:92 src/contents/ui/StereoTools.qml:209
-#: src/contents/ui/StereoTools.qml:241
-msgid "Mute"
-msgstr "Némít"
-
-#: src/contents/ui/CrystalizerBand.qml:69
-#: src/contents/ui/MultibandCompressor.qml:110
-#: src/contents/ui/MultibandGate.qml:110
-msgid "Bypass"
-msgstr "Kiiktat"
-
 #: src/contents/ui/Crystalizer.qml:110
 #, fuzzy
 msgid "Oversampling quality"
@@ -1063,6 +1049,20 @@ msgstr ""
 #, fuzzy
 msgid "Fixed quantum"
 msgstr "Maximális Előzmény"
+
+#: src/contents/ui/CrystalizerBand.qml:58
+#: src/contents/ui/EqualizerBandMenu.qml:186
+#: src/contents/ui/MultibandCompressor.qml:92
+#: src/contents/ui/MultibandGate.qml:92 src/contents/ui/StereoTools.qml:209
+#: src/contents/ui/StereoTools.qml:241
+msgid "Mute"
+msgstr "Némít"
+
+#: src/contents/ui/CrystalizerBand.qml:69
+#: src/contents/ui/MultibandCompressor.qml:110
+#: src/contents/ui/MultibandGate.qml:110
+msgid "Bypass"
+msgstr "Kiiktat"
 
 #: src/contents/ui/DeepFilterNet.qml:51
 #, fuzzy
@@ -1329,112 +1329,6 @@ msgstr ""
 msgid "Input"
 msgstr "Bemenet"
 
-#: src/contents/ui/EqualizerBandMenu.qml:33
-#: src/contents/ui/MultibandCompressor.qml:671
-#: src/contents/ui/MultibandCompressor.qml:930
-#: src/contents/ui/MultibandGate.qml:644 src/contents/ui/MultibandGate.qml:903
-#, fuzzy
-msgid "Band"
-msgstr "Sáv"
-
-#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
-msgid "Bell"
-msgstr "Harang"
-
-#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
-#, fuzzy
-msgid "High-shelf"
-msgstr "Magas-Perem"
-
-#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
-#, fuzzy
-msgid "Low-shelf"
-msgstr "Alacsony-Perem"
-
-#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
-msgid "Notch"
-msgstr "Fok"
-
-#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
-msgid "Resonance"
-msgstr "Rezonancia"
-
-#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
-#, fuzzy
-msgid "Allpass"
-msgstr "Kiiktat"
-
-#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
-#, fuzzy
-msgid "Bandpass"
-msgstr "Sáv-Átadás"
-
-#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
-#, fuzzy
-msgid "Ladder-pass"
-msgstr "Lefutás-Átadás"
-
-#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
-#, fuzzy
-msgid "Ladder-rejection"
-msgstr "Lefutás-Elutasítás"
-
-#: src/contents/ui/EqualizerBandMenu.qml:64 src/contents/ui/Filter.qml:82
-msgid "RLC (BT)"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:64 src/contents/ui/Filter.qml:82
-msgid "RLC (MT)"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:64 src/contents/ui/Filter.qml:82
-msgid "BWC (BT)"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:64 src/contents/ui/Filter.qml:82
-msgid "BWC (MT)"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:64 src/contents/ui/Filter.qml:82
-msgid "LRX (BT)"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:64 src/contents/ui/Filter.qml:82
-msgid "LRX (MT)"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:64 src/contents/ui/Filter.qml:82
-msgid "APO (DR)"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:74 src/contents/ui/Filter.qml:106
-msgid "Slope"
-msgstr "Lejtés"
-
-#: src/contents/ui/EqualizerBandMenu.qml:95 src/contents/ui/Filter.qml:127
-#: src/contents/ui/MultibandCompressor.qml:201
-#: src/contents/ui/MultibandGate.qml:138 src/contents/ui/PipeWirePage.qml:426
-msgid "Frequency"
-msgstr "Frekvencia"
-
-#: src/contents/ui/EqualizerBandMenu.qml:141 src/contents/ui/Filter.qml:174
-msgid "Quality"
-msgstr "Minőség"
-
-#: src/contents/ui/EqualizerBandMenu.qml:164 src/contents/ui/Filter.qml:143
-msgid "Width"
-msgstr "Széles"
-
-#: src/contents/ui/EqualizerBandMenu.qml:170
-msgid "oct"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:198
-#: src/contents/ui/MultibandCompressor.qml:101
-#: src/contents/ui/MultibandGate.qml:101
-msgid "Solo"
-msgstr "Egyedül"
-
 #: src/contents/ui/Equalizer.qml:66 src/contents/ui/Equalizer.qml:106
 #, fuzzy
 msgid "APO preset"
@@ -1576,6 +1470,112 @@ msgstr ""
 msgid "Export APO"
 msgstr "Beállítás Exportálása"
 
+#: src/contents/ui/EqualizerBandMenu.qml:33
+#: src/contents/ui/MultibandCompressor.qml:671
+#: src/contents/ui/MultibandCompressor.qml:930
+#: src/contents/ui/MultibandGate.qml:644 src/contents/ui/MultibandGate.qml:903
+#, fuzzy
+msgid "Band"
+msgstr "Sáv"
+
+#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
+msgid "Bell"
+msgstr "Harang"
+
+#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
+#, fuzzy
+msgid "High-shelf"
+msgstr "Magas-Perem"
+
+#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
+#, fuzzy
+msgid "Low-shelf"
+msgstr "Alacsony-Perem"
+
+#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
+msgid "Notch"
+msgstr "Fok"
+
+#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
+msgid "Resonance"
+msgstr "Rezonancia"
+
+#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
+#, fuzzy
+msgid "Allpass"
+msgstr "Kiiktat"
+
+#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
+#, fuzzy
+msgid "Bandpass"
+msgstr "Sáv-Átadás"
+
+#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
+#, fuzzy
+msgid "Ladder-pass"
+msgstr "Lefutás-Átadás"
+
+#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
+#, fuzzy
+msgid "Ladder-rejection"
+msgstr "Lefutás-Elutasítás"
+
+#: src/contents/ui/EqualizerBandMenu.qml:64 src/contents/ui/Filter.qml:82
+msgid "RLC (BT)"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:64 src/contents/ui/Filter.qml:82
+msgid "RLC (MT)"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:64 src/contents/ui/Filter.qml:82
+msgid "BWC (BT)"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:64 src/contents/ui/Filter.qml:82
+msgid "BWC (MT)"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:64 src/contents/ui/Filter.qml:82
+msgid "LRX (BT)"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:64 src/contents/ui/Filter.qml:82
+msgid "LRX (MT)"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:64 src/contents/ui/Filter.qml:82
+msgid "APO (DR)"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:74 src/contents/ui/Filter.qml:106
+msgid "Slope"
+msgstr "Lejtés"
+
+#: src/contents/ui/EqualizerBandMenu.qml:95 src/contents/ui/Filter.qml:127
+#: src/contents/ui/MultibandCompressor.qml:201
+#: src/contents/ui/MultibandGate.qml:138 src/contents/ui/PipeWirePage.qml:426
+msgid "Frequency"
+msgstr "Frekvencia"
+
+#: src/contents/ui/EqualizerBandMenu.qml:141 src/contents/ui/Filter.qml:174
+msgid "Quality"
+msgstr "Minőség"
+
+#: src/contents/ui/EqualizerBandMenu.qml:164 src/contents/ui/Filter.qml:143
+msgid "Width"
+msgstr "Széles"
+
+#: src/contents/ui/EqualizerBandMenu.qml:170
+msgid "oct"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:198
+#: src/contents/ui/MultibandCompressor.qml:101
+#: src/contents/ui/MultibandGate.qml:101
+msgid "Solo"
+msgstr "Egyedül"
+
 #: src/contents/ui/Exciter.qml:161
 #, fuzzy
 msgid "Ceil active"
@@ -1623,6 +1623,19 @@ msgstr "Hysteresis"
 #: src/contents/ui/MultibandGate.qml:153 src/contents/ui/Speex.qml:129
 #: src/contents/ui/VoiceSuppressor.qml:62
 msgid "Start"
+msgstr ""
+
+#: src/contents/ui/Lcc.qml:62
+msgid "Process only phantom center"
+msgstr ""
+
+#: src/contents/ui/Lcc.qml:72 src/contents/ui/StereoTools.qml:293
+#: src/tags_plugin_name.cpp:56
+msgid "Delay"
+msgstr "Késleltetés"
+
+#: src/contents/ui/Lcc.qml:88
+msgid "Decay"
 msgstr ""
 
 #: src/contents/ui/LevelMeter.qml:67
@@ -1815,7 +1828,7 @@ msgstr "Valós Csúcs"
 msgid "Dithering"
 msgstr "Remeg"
 
-#: src/contents/ui/Limiter.qml:117 src/tags_plugin_name.cpp:64
+#: src/contents/ui/Limiter.qml:117 src/tags_plugin_name.cpp:65
 msgid "Limiter"
 msgstr ""
 
@@ -1908,7 +1921,7 @@ msgstr ""
 msgid "Go back"
 msgstr ""
 
-#: src/contents/ui/Main.qml:329 src/contents/ui/PageStreamsEffects.qml:745
+#: src/contents/ui/Main.qml:329 src/contents/ui/PageStreamsEffects.qml:747
 msgid "Effects"
 msgstr ""
 
@@ -2054,48 +2067,48 @@ msgstr ""
 msgid "Audio stream not modified"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:376
+#: src/contents/ui/PageStreamsEffects.qml:378
 msgid "Add effect"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:384
+#: src/contents/ui/PageStreamsEffects.qml:386
 msgid "Close"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:388
+#: src/contents/ui/PageStreamsEffects.qml:390
 msgid "Expand the list of effects pipeline"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:388
+#: src/contents/ui/PageStreamsEffects.qml:390
 msgid "Reduce the list of effects pipeline"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:441
-#: src/contents/ui/PageStreamsEffects.qml:732
+#: src/contents/ui/PageStreamsEffects.qml:443
+#: src/contents/ui/PageStreamsEffects.qml:734
 msgid "Players"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:450
+#: src/contents/ui/PageStreamsEffects.qml:452
 #, fuzzy
 msgid "Output device"
 msgstr "Bemeneti Eszköz"
 
-#: src/contents/ui/PageStreamsEffects.qml:450
-#: src/contents/ui/PageStreamsEffects.qml:732
+#: src/contents/ui/PageStreamsEffects.qml:452
+#: src/contents/ui/PageStreamsEffects.qml:734
 msgid "Recorders"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:763
+#: src/contents/ui/PageStreamsEffects.qml:765
 #, fuzzy
 msgid "Excluded apps"
 msgstr "Kizárt Alkalmazások"
 
-#: src/contents/ui/PageStreamsEffects.qml:772
+#: src/contents/ui/PageStreamsEffects.qml:774
 #, fuzzy
 msgid "Input monitoring"
 msgstr "Bemenet figyelés engedélyezése/letiltása"
 
-#: src/contents/ui/PageStreamsEffects.qml:785
+#: src/contents/ui/PageStreamsEffects.qml:787
 msgid "Send audio to the virtual source"
 msgstr ""
 
@@ -2222,7 +2235,7 @@ msgstr ""
 msgid "Overlap length"
 msgstr "Túlmintavételezés"
 
-#: src/contents/ui/Pitch.qml:163 src/tags_plugin_name.cpp:69
+#: src/contents/ui/Pitch.qml:163 src/tags_plugin_name.cpp:70
 msgid "Pitch"
 msgstr ""
 
@@ -2868,6 +2881,78 @@ msgstr "Beállítás Importálás"
 msgid "Delete this preset"
 msgstr "Beállítás Importálás"
 
+#: src/contents/ui/RNNoise.qml:62
+#, fuzzy
+msgid "Imported a new RNNoise model file."
+msgstr "Impulzus Fájl Keresése"
+
+#: src/contents/ui/RNNoise.qml:64
+#, fuzzy
+msgid "Failed to import the RNNoise model file."
+msgstr "Impulzus Fájl Keresése"
+
+#: src/contents/ui/RNNoise.qml:75 src/contents/ui/RNNoise.qml:86
+#: src/contents/ui/RNNoise.qml:300 src/contents/ui/RNNoise.qml:302
+#, fuzzy
+msgid "Standard RNNoise model"
+msgstr "Impulzus Fájl Keresése"
+
+#: src/contents/ui/RNNoise.qml:77
+msgid "Standard RNNoise model loaded."
+msgstr ""
+
+#: src/contents/ui/RNNoise.qml:82 src/contents/ui/RNNoise.qml:304
+msgid "Using %1 Model"
+msgstr ""
+
+#: src/contents/ui/RNNoise.qml:84
+#, fuzzy
+msgid "Loaded the %1 RNNoise model."
+msgstr "Impulzus Fájl Keresése"
+
+#: src/contents/ui/RNNoise.qml:88
+#, fuzzy
+msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
+msgstr "Impulzus Fájl Keresése"
+
+#: src/contents/ui/RNNoise.qml:107 src/contents/ui/Speex.qml:117
+#, fuzzy
+msgid "Voice detection"
+msgstr "Észlelés"
+
+#: src/contents/ui/RNNoise.qml:144
+#, fuzzy
+msgid "Wet level"
+msgstr "Nedves Szint"
+
+#: src/contents/ui/RNNoise.qml:184
+msgid "Use the Standard model"
+msgstr ""
+
+#: src/contents/ui/RNNoise.qml:195
+msgid "User Models"
+msgstr ""
+
+#: src/contents/ui/RNNoise.qml:261
+#, fuzzy
+msgid "Delete this model"
+msgstr "Ennek a modell fájlnak az eltávolítása"
+
+#: src/contents/ui/RNNoise.qml:266
+#, fuzzy
+msgid "Removed the %1 RNNoise model."
+msgstr "Impulzus Fájl Keresése"
+
+#: src/contents/ui/RNNoise.qml:268
+#, fuzzy
+msgid "Failed to remove the %1 RNNoise model."
+msgstr "Impulzus Fájl Keresése"
+
+#: src/contents/ui/RNNoise.qml:337
+#, fuzzy
+msgid "Import model"
+msgstr "Impulzus Importálása"
+
 #: src/contents/ui/Reverb.qml:66
 msgid "Room size"
 msgstr ""
@@ -2949,78 +3034,6 @@ msgstr ""
 #: src/contents/ui/Reverb.qml:297
 msgid "Large occupied hall"
 msgstr ""
-
-#: src/contents/ui/RNNoise.qml:62
-#, fuzzy
-msgid "Imported a new RNNoise model file."
-msgstr "Impulzus Fájl Keresése"
-
-#: src/contents/ui/RNNoise.qml:64
-#, fuzzy
-msgid "Failed to import the RNNoise model file."
-msgstr "Impulzus Fájl Keresése"
-
-#: src/contents/ui/RNNoise.qml:75 src/contents/ui/RNNoise.qml:86
-#: src/contents/ui/RNNoise.qml:300 src/contents/ui/RNNoise.qml:302
-#, fuzzy
-msgid "Standard RNNoise model"
-msgstr "Impulzus Fájl Keresése"
-
-#: src/contents/ui/RNNoise.qml:77
-msgid "Standard RNNoise model loaded."
-msgstr ""
-
-#: src/contents/ui/RNNoise.qml:82 src/contents/ui/RNNoise.qml:304
-msgid "Using %1 Model"
-msgstr ""
-
-#: src/contents/ui/RNNoise.qml:84
-#, fuzzy
-msgid "Loaded the %1 RNNoise model."
-msgstr "Impulzus Fájl Keresése"
-
-#: src/contents/ui/RNNoise.qml:88
-#, fuzzy
-msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
-msgstr "Impulzus Fájl Keresése"
-
-#: src/contents/ui/RNNoise.qml:107 src/contents/ui/Speex.qml:117
-#, fuzzy
-msgid "Voice detection"
-msgstr "Észlelés"
-
-#: src/contents/ui/RNNoise.qml:144
-#, fuzzy
-msgid "Wet level"
-msgstr "Nedves Szint"
-
-#: src/contents/ui/RNNoise.qml:184
-msgid "Use the Standard model"
-msgstr ""
-
-#: src/contents/ui/RNNoise.qml:195
-msgid "User Models"
-msgstr ""
-
-#: src/contents/ui/RNNoise.qml:261
-#, fuzzy
-msgid "Delete this model"
-msgstr "Ennek a modell fájlnak az eltávolítása"
-
-#: src/contents/ui/RNNoise.qml:266
-#, fuzzy
-msgid "Removed the %1 RNNoise model."
-msgstr "Impulzus Fájl Keresése"
-
-#: src/contents/ui/RNNoise.qml:268
-#, fuzzy
-msgid "Failed to remove the %1 RNNoise model."
-msgstr "Impulzus Fájl Keresése"
-
-#: src/contents/ui/RNNoise.qml:337
-#, fuzzy
-msgid "Import model"
-msgstr "Impulzus Importálása"
 
 #: src/contents/ui/ShortcutsSheet.qml:66
 msgid "Show help"
@@ -3151,10 +3164,6 @@ msgstr ""
 #, fuzzy
 msgid "Invert phase"
 msgstr "Invertált Fázis"
-
-#: src/contents/ui/StereoTools.qml:293 src/tags_plugin_name.cpp:56
-msgid "Delay"
-msgstr "Késleltetés"
 
 #: src/contents/ui/StereoTools.qml:310
 #, fuzzy
@@ -3348,38 +3357,42 @@ msgid "Exciter"
 msgstr ""
 
 #: src/tags_plugin_name.cpp:63
+msgid "Localization Cue Correction"
+msgstr ""
+
+#: src/tags_plugin_name.cpp:64
 msgid "Level Meter"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:66
+#: src/tags_plugin_name.cpp:67
 msgid "Maximizer"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:67
+#: src/tags_plugin_name.cpp:68
 msgid "Multiband Compressor"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:68
+#: src/tags_plugin_name.cpp:69
 msgid "Multiband Gate"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:70
+#: src/tags_plugin_name.cpp:71
 msgid "Reverberation"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:71
+#: src/tags_plugin_name.cpp:72
 msgid "Noise Reduction"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:72
+#: src/tags_plugin_name.cpp:73
 msgid "Speech Processor"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:73
+#: src/tags_plugin_name.cpp:74
 msgid "Stereo Tools"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:74
+#: src/tags_plugin_name.cpp:75
 #, fuzzy
 msgid "Voice Suppressor"
 msgstr "Vég Közel Visszhang Elnyomása"

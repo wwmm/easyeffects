@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-04-21 14:08-0300\n"
+"POT-Creation-Date: 2026-04-21 18:23+0000\n"
 "PO-Revision-Date: 2025-12-11 21:07+0000\n"
 "Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -131,10 +131,10 @@ msgstr "Über"
 #: src/contents/ui/Autogain.qml:69 src/contents/ui/BassEnhancer.qml:105
 #: src/contents/ui/BassLoudness.qml:58 src/contents/ui/Crossfeed.qml:73
 #: src/contents/ui/DeepFilterNet.qml:93 src/contents/ui/Exciter.qml:106
-#: src/contents/ui/Filter.qml:58 src/contents/ui/Loudness.qml:58
-#: src/contents/ui/Maximizer.qml:59 src/contents/ui/Pitch.qml:59
-#: src/contents/ui/Reverb.qml:59 src/contents/ui/Speex.qml:58
-#: src/contents/ui/VoiceSuppressor.qml:57
+#: src/contents/ui/Filter.qml:58 src/contents/ui/Lcc.qml:57
+#: src/contents/ui/Loudness.qml:58 src/contents/ui/Maximizer.qml:59
+#: src/contents/ui/Pitch.qml:59 src/contents/ui/Reverb.qml:59
+#: src/contents/ui/Speex.qml:58 src/contents/ui/VoiceSuppressor.qml:57
 msgid "Controls"
 msgstr "Steuerung"
 
@@ -187,7 +187,7 @@ msgstr "Gesamter Verlauf"
 
 #: src/contents/ui/Autogain.qml:143 src/contents/ui/Autogain.qml:198
 #: src/contents/ui/BassLoudness.qml:66 src/contents/ui/LevelMeter.qml:146
-#: src/tags_plugin_name.cpp:65
+#: src/tags_plugin_name.cpp:66
 msgid "Loudness"
 msgstr "Lautstärke"
 
@@ -212,14 +212,14 @@ msgstr "Ausgangsverstärkung"
 #: src/contents/ui/Delay.qml:373 src/contents/ui/EchoCanceller.qml:155
 #: src/contents/ui/Equalizer.qml:299 src/contents/ui/Exciter.qml:208
 #: src/contents/ui/Expander.qml:822 src/contents/ui/Filter.qml:217
-#: src/contents/ui/Gate.qml:951 src/contents/ui/LevelMeter.qml:215
-#: src/contents/ui/Limiter.qml:606 src/contents/ui/Loudness.qml:172
-#: src/contents/ui/Maximizer.qml:119
+#: src/contents/ui/Gate.qml:951 src/contents/ui/Lcc.qml:112
+#: src/contents/ui/LevelMeter.qml:215 src/contents/ui/Limiter.qml:606
+#: src/contents/ui/Loudness.qml:172 src/contents/ui/Maximizer.qml:119
 #: src/contents/ui/MultibandCompressor.qml:965
 #: src/contents/ui/MultibandGate.qml:938 src/contents/ui/Pitch.qml:265
-#: src/contents/ui/Reverb.qml:316 src/contents/ui/RNNoise.qml:75
-#: src/contents/ui/RNNoise.qml:86 src/contents/ui/RNNoise.qml:300
-#: src/contents/ui/RNNoise.qml:302 src/contents/ui/RNNoise.qml:320
+#: src/contents/ui/RNNoise.qml:75 src/contents/ui/RNNoise.qml:86
+#: src/contents/ui/RNNoise.qml:300 src/contents/ui/RNNoise.qml:302
+#: src/contents/ui/RNNoise.qml:320 src/contents/ui/Reverb.qml:316
 #: src/contents/ui/Speex.qml:174 src/contents/ui/StereoTools.qml:389
 #: src/contents/ui/VoiceSuppressor.qml:165
 #, fuzzy
@@ -305,12 +305,12 @@ msgstr "Zuhören"
 #: src/contents/ui/Delay.qml:425 src/contents/ui/EchoCanceller.qml:183
 #: src/contents/ui/Equalizer.qml:383 src/contents/ui/Exciter.qml:250
 #: src/contents/ui/Expander.qml:874 src/contents/ui/Filter.qml:249
-#: src/contents/ui/Gate.qml:1003 src/contents/ui/Limiter.qml:658
-#: src/contents/ui/Loudness.qml:214 src/contents/ui/Main.qml:443
-#: src/contents/ui/Maximizer.qml:151
+#: src/contents/ui/Gate.qml:1003 src/contents/ui/Lcc.qml:130
+#: src/contents/ui/Limiter.qml:658 src/contents/ui/Loudness.qml:214
+#: src/contents/ui/Main.qml:443 src/contents/ui/Maximizer.qml:151
 #: src/contents/ui/MultibandCompressor.qml:1014
-#: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:356
-#: src/contents/ui/RNNoise.qml:345 src/contents/ui/Speex.qml:192
+#: src/contents/ui/MultibandGate.qml:987 src/contents/ui/RNNoise.qml:345
+#: src/contents/ui/Reverb.qml:356 src/contents/ui/Speex.qml:192
 #: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:193
 msgid "Reset"
 msgstr "Zurücksetzen"
@@ -395,7 +395,7 @@ msgstr "Kompressor"
 #: src/contents/ui/Compressor.qml:80 src/contents/ui/Compressor.qml:302
 #: src/contents/ui/Crusher.qml:96 src/contents/ui/Deesser.qml:89
 #: src/contents/ui/Delay.qml:70 src/contents/ui/Delay.qml:223
-#: src/contents/ui/EqualizerBandMenu.qml:60 src/contents/ui/Equalizer.qml:138
+#: src/contents/ui/Equalizer.qml:138 src/contents/ui/EqualizerBandMenu.qml:60
 #: src/contents/ui/Expander.qml:80 src/contents/ui/Expander.qml:262
 #: src/contents/ui/Gate.qml:280 src/contents/ui/Limiter.qml:73
 #: src/contents/ui/Loudness.qml:70 src/contents/ui/MultibandCompressor.qml:436
@@ -495,7 +495,7 @@ msgstr "Extern"
 
 #: src/contents/ui/Compressor.qml:278 src/contents/ui/Expander.qml:238
 #: src/contents/ui/Gate.qml:256 src/contents/ui/Limiter.qml:228
-#: src/contents/ui/PageStreamsEffects.qml:441
+#: src/contents/ui/PageStreamsEffects.qml:443
 msgid "Input device"
 msgstr "Eingabegerät"
 
@@ -747,6 +747,79 @@ msgstr "Hüllkurve"
 msgid "Stereo split"
 msgstr "Stereo Modus"
 
+#: src/contents/ui/Convolver.qml:67
+msgid "Loaded the %1 Convolver impulse."
+msgstr "%1 Convolver Impuls geladen."
+
+#: src/contents/ui/Convolver.qml:69 src/contents/ui/Convolver.qml:343
+msgid "Convolver impulse is not set"
+msgstr "Convolver Impuls nicht gesetzt"
+
+#: src/contents/ui/Convolver.qml:73
+msgid "The Convolver is in passthrough mode."
+msgstr "Der Convolver ist im Pass-Through-Modus."
+
+#: src/contents/ui/Convolver.qml:75
+msgid "Failed to load the %1 impulse. The Convolver is in passthrough mode."
+msgstr ""
+"Der %1 Impuls konnte nicht geladen werden. Der Convolver ist im Pass-Through-"
+"Modus."
+
+#: src/contents/ui/Convolver.qml:152
+msgid "First"
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:165
+#, fuzzy
+msgid "Second"
+msgstr "Zweiter Kernel"
+
+#: src/contents/ui/Convolver.qml:197 src/contents/ui/Convolver.qml:232
+msgid "Combine"
+msgstr "Kombinieren"
+
+#: src/contents/ui/Convolver.qml:225
+msgid "Impulses"
+msgstr "Impulse"
+
+#: src/contents/ui/Convolver.qml:241 src/plugin_base.cpp:336
+msgid "Spectrum"
+msgstr "Spektrum"
+
+#: src/contents/ui/Convolver.qml:273
+msgid "Log scale"
+msgstr "logarithmische Skala"
+
+#: src/contents/ui/Convolver.qml:381 src/contents/ui/Crusher.qml:207
+msgid "Rate"
+msgstr "Rate"
+
+#: src/contents/ui/Convolver.qml:386 src/contents/ui/Delay.qml:74
+#: src/contents/ui/Delay.qml:85 src/contents/ui/Delay.qml:227
+#: src/contents/ui/Delay.qml:238
+msgid "Samples"
+msgstr "Probenahme"
+
+#: src/contents/ui/Convolver.qml:391
+msgid "Duration"
+msgstr "Dauer"
+
+#: src/contents/ui/Convolver.qml:396 src/contents/ui/PipeWirePage.qml:332
+msgid "Channels"
+msgstr "Kanäle"
+
+#: src/contents/ui/Convolver.qml:401
+msgid "Format"
+msgstr "Format"
+
+#: src/contents/ui/Convolver.qml:459
+msgid "Stereo width"
+msgstr "Stereo-Breite"
+
+#: src/contents/ui/Convolver.qml:536 src/tags_plugin_name.cpp:46
+msgid "Autogain"
+msgstr "Automatische Verstärkungsregelung"
+
 #: src/contents/ui/ConvolverImpulseDialog.qml:50
 #, fuzzy
 msgid "Imported a new Convolver impulse file."
@@ -825,79 +898,6 @@ msgstr "Impuls importieren"
 msgctxt "@action:button"
 msgid "Close"
 msgstr "Schließen"
-
-#: src/contents/ui/Convolver.qml:67
-msgid "Loaded the %1 Convolver impulse."
-msgstr "%1 Convolver Impuls geladen."
-
-#: src/contents/ui/Convolver.qml:69 src/contents/ui/Convolver.qml:343
-msgid "Convolver impulse is not set"
-msgstr "Convolver Impuls nicht gesetzt"
-
-#: src/contents/ui/Convolver.qml:73
-msgid "The Convolver is in passthrough mode."
-msgstr "Der Convolver ist im Pass-Through-Modus."
-
-#: src/contents/ui/Convolver.qml:75
-msgid "Failed to load the %1 impulse. The Convolver is in passthrough mode."
-msgstr ""
-"Der %1 Impuls konnte nicht geladen werden. Der Convolver ist im Pass-Through-"
-"Modus."
-
-#: src/contents/ui/Convolver.qml:152
-msgid "First"
-msgstr ""
-
-#: src/contents/ui/Convolver.qml:165
-#, fuzzy
-msgid "Second"
-msgstr "Zweiter Kernel"
-
-#: src/contents/ui/Convolver.qml:197 src/contents/ui/Convolver.qml:232
-msgid "Combine"
-msgstr "Kombinieren"
-
-#: src/contents/ui/Convolver.qml:225
-msgid "Impulses"
-msgstr "Impulse"
-
-#: src/contents/ui/Convolver.qml:241 src/plugin_base.cpp:336
-msgid "Spectrum"
-msgstr "Spektrum"
-
-#: src/contents/ui/Convolver.qml:273
-msgid "Log scale"
-msgstr "logarithmische Skala"
-
-#: src/contents/ui/Convolver.qml:381 src/contents/ui/Crusher.qml:207
-msgid "Rate"
-msgstr "Rate"
-
-#: src/contents/ui/Convolver.qml:386 src/contents/ui/Delay.qml:74
-#: src/contents/ui/Delay.qml:85 src/contents/ui/Delay.qml:227
-#: src/contents/ui/Delay.qml:238
-msgid "Samples"
-msgstr "Probenahme"
-
-#: src/contents/ui/Convolver.qml:391
-msgid "Duration"
-msgstr "Dauer"
-
-#: src/contents/ui/Convolver.qml:396 src/contents/ui/PipeWirePage.qml:332
-msgid "Channels"
-msgstr "Kanäle"
-
-#: src/contents/ui/Convolver.qml:401
-msgid "Format"
-msgstr "Format"
-
-#: src/contents/ui/Convolver.qml:459
-msgid "Stereo width"
-msgstr "Stereo-Breite"
-
-#: src/contents/ui/Convolver.qml:536 src/tags_plugin_name.cpp:46
-msgid "Autogain"
-msgstr "Automatische Verstärkungsregelung"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:31
 msgid "Target Orientation"
@@ -1005,20 +1005,6 @@ msgstr "Senkung"
 msgid "Low frequency oscillator"
 msgstr ""
 
-#: src/contents/ui/CrystalizerBand.qml:58
-#: src/contents/ui/EqualizerBandMenu.qml:186
-#: src/contents/ui/MultibandCompressor.qml:92
-#: src/contents/ui/MultibandGate.qml:92 src/contents/ui/StereoTools.qml:209
-#: src/contents/ui/StereoTools.qml:241
-msgid "Mute"
-msgstr "Stummschalten"
-
-#: src/contents/ui/CrystalizerBand.qml:69
-#: src/contents/ui/MultibandCompressor.qml:110
-#: src/contents/ui/MultibandGate.qml:110
-msgid "Bypass"
-msgstr "Umleiten"
-
 #: src/contents/ui/Crystalizer.qml:110
 #, fuzzy
 msgid "Oversampling quality"
@@ -1040,6 +1026,20 @@ msgstr "Adaptive Intensität"
 #, fuzzy
 msgid "Fixed quantum"
 msgstr "Minimales Quantum"
+
+#: src/contents/ui/CrystalizerBand.qml:58
+#: src/contents/ui/EqualizerBandMenu.qml:186
+#: src/contents/ui/MultibandCompressor.qml:92
+#: src/contents/ui/MultibandGate.qml:92 src/contents/ui/StereoTools.qml:209
+#: src/contents/ui/StereoTools.qml:241
+msgid "Mute"
+msgstr "Stummschalten"
+
+#: src/contents/ui/CrystalizerBand.qml:69
+#: src/contents/ui/MultibandCompressor.qml:110
+#: src/contents/ui/MultibandGate.qml:110
+msgid "Bypass"
+msgstr "Umleiten"
 
 #: src/contents/ui/DeepFilterNet.qml:51
 msgid "Attenuation limit"
@@ -1280,108 +1280,6 @@ msgstr "Ein- und Ausgangsverstärkerregelung mit Pegelanzeigen"
 msgid "Input"
 msgstr "Eingabe"
 
-#: src/contents/ui/EqualizerBandMenu.qml:33
-#: src/contents/ui/MultibandCompressor.qml:671
-#: src/contents/ui/MultibandCompressor.qml:930
-#: src/contents/ui/MultibandGate.qml:644 src/contents/ui/MultibandGate.qml:903
-msgid "Band"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
-msgid "Bell"
-msgstr "Glocke"
-
-#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
-#, fuzzy
-msgid "High-shelf"
-msgstr "Höhen-Kuhschwanzfilter"
-
-#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
-#, fuzzy
-msgid "Low-shelf"
-msgstr "Tiefen-Kuhschwanzfilter"
-
-#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
-msgid "Notch"
-msgstr "Badewannenfilter"
-
-#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
-msgid "Resonance"
-msgstr "Resonanz"
-
-#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
-msgid "Allpass"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
-msgid "Bandpass"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
-#, fuzzy
-msgid "Ladder-pass"
-msgstr "Tiefpass"
-
-#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
-msgid "Ladder-rejection"
-msgstr "Ladder-Sperre"
-
-#: src/contents/ui/EqualizerBandMenu.qml:64 src/contents/ui/Filter.qml:82
-msgid "RLC (BT)"
-msgstr "RLC (BT)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:64 src/contents/ui/Filter.qml:82
-msgid "RLC (MT)"
-msgstr "RLC (MT)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:64 src/contents/ui/Filter.qml:82
-msgid "BWC (BT)"
-msgstr "BWC (BT)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:64 src/contents/ui/Filter.qml:82
-msgid "BWC (MT)"
-msgstr "BWC (MT)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:64 src/contents/ui/Filter.qml:82
-msgid "LRX (BT)"
-msgstr "LRX (BT)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:64 src/contents/ui/Filter.qml:82
-msgid "LRX (MT)"
-msgstr "LRX (MT)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:64 src/contents/ui/Filter.qml:82
-msgid "APO (DR)"
-msgstr "APO (DR)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:74 src/contents/ui/Filter.qml:106
-msgid "Slope"
-msgstr "Steigung"
-
-#: src/contents/ui/EqualizerBandMenu.qml:95 src/contents/ui/Filter.qml:127
-#: src/contents/ui/MultibandCompressor.qml:201
-#: src/contents/ui/MultibandGate.qml:138 src/contents/ui/PipeWirePage.qml:426
-msgid "Frequency"
-msgstr "Frequenz"
-
-#: src/contents/ui/EqualizerBandMenu.qml:141 src/contents/ui/Filter.qml:174
-msgid "Quality"
-msgstr "Qualität"
-
-#: src/contents/ui/EqualizerBandMenu.qml:164 src/contents/ui/Filter.qml:143
-msgid "Width"
-msgstr "Breite"
-
-#: src/contents/ui/EqualizerBandMenu.qml:170
-msgid "oct"
-msgstr "Okt."
-
-#: src/contents/ui/EqualizerBandMenu.qml:198
-#: src/contents/ui/MultibandCompressor.qml:101
-#: src/contents/ui/MultibandGate.qml:101
-msgid "Solo"
-msgstr "Solo"
-
 #: src/contents/ui/Equalizer.qml:66 src/contents/ui/Equalizer.qml:106
 msgid "APO preset"
 msgstr "APO Voreinstellungen"
@@ -1512,6 +1410,108 @@ msgstr "GraphicEQ-Voreinstellungsdatei importieren"
 msgid "Export APO"
 msgstr "Voreinstellung exportieren"
 
+#: src/contents/ui/EqualizerBandMenu.qml:33
+#: src/contents/ui/MultibandCompressor.qml:671
+#: src/contents/ui/MultibandCompressor.qml:930
+#: src/contents/ui/MultibandGate.qml:644 src/contents/ui/MultibandGate.qml:903
+msgid "Band"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
+msgid "Bell"
+msgstr "Glocke"
+
+#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
+#, fuzzy
+msgid "High-shelf"
+msgstr "Höhen-Kuhschwanzfilter"
+
+#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
+#, fuzzy
+msgid "Low-shelf"
+msgstr "Tiefen-Kuhschwanzfilter"
+
+#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
+msgid "Notch"
+msgstr "Badewannenfilter"
+
+#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
+msgid "Resonance"
+msgstr "Resonanz"
+
+#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
+msgid "Allpass"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
+msgid "Bandpass"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
+#, fuzzy
+msgid "Ladder-pass"
+msgstr "Tiefpass"
+
+#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
+msgid "Ladder-rejection"
+msgstr "Ladder-Sperre"
+
+#: src/contents/ui/EqualizerBandMenu.qml:64 src/contents/ui/Filter.qml:82
+msgid "RLC (BT)"
+msgstr "RLC (BT)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:64 src/contents/ui/Filter.qml:82
+msgid "RLC (MT)"
+msgstr "RLC (MT)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:64 src/contents/ui/Filter.qml:82
+msgid "BWC (BT)"
+msgstr "BWC (BT)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:64 src/contents/ui/Filter.qml:82
+msgid "BWC (MT)"
+msgstr "BWC (MT)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:64 src/contents/ui/Filter.qml:82
+msgid "LRX (BT)"
+msgstr "LRX (BT)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:64 src/contents/ui/Filter.qml:82
+msgid "LRX (MT)"
+msgstr "LRX (MT)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:64 src/contents/ui/Filter.qml:82
+msgid "APO (DR)"
+msgstr "APO (DR)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:74 src/contents/ui/Filter.qml:106
+msgid "Slope"
+msgstr "Steigung"
+
+#: src/contents/ui/EqualizerBandMenu.qml:95 src/contents/ui/Filter.qml:127
+#: src/contents/ui/MultibandCompressor.qml:201
+#: src/contents/ui/MultibandGate.qml:138 src/contents/ui/PipeWirePage.qml:426
+msgid "Frequency"
+msgstr "Frequenz"
+
+#: src/contents/ui/EqualizerBandMenu.qml:141 src/contents/ui/Filter.qml:174
+msgid "Quality"
+msgstr "Qualität"
+
+#: src/contents/ui/EqualizerBandMenu.qml:164 src/contents/ui/Filter.qml:143
+msgid "Width"
+msgstr "Breite"
+
+#: src/contents/ui/EqualizerBandMenu.qml:170
+msgid "oct"
+msgstr "Okt."
+
+#: src/contents/ui/EqualizerBandMenu.qml:198
+#: src/contents/ui/MultibandCompressor.qml:101
+#: src/contents/ui/MultibandGate.qml:101
+msgid "Solo"
+msgstr "Solo"
+
 #: src/contents/ui/Exciter.qml:161
 #, fuzzy
 msgid "Ceil active"
@@ -1560,6 +1560,20 @@ msgstr "Hysterese"
 #: src/contents/ui/VoiceSuppressor.qml:62
 msgid "Start"
 msgstr "Beginn"
+
+#: src/contents/ui/Lcc.qml:62
+msgid "Process only phantom center"
+msgstr ""
+
+#: src/contents/ui/Lcc.qml:72 src/contents/ui/StereoTools.qml:293
+#: src/tags_plugin_name.cpp:56
+msgid "Delay"
+msgstr "Verzögerung"
+
+#: src/contents/ui/Lcc.qml:88
+#, fuzzy
+msgid "Decay"
+msgstr "Abklingzeit"
 
 #: src/contents/ui/LevelMeter.qml:67
 #, fuzzy
@@ -1751,7 +1765,7 @@ msgstr "Frequenz 2 Peak"
 msgid "Dithering"
 msgstr ""
 
-#: src/contents/ui/Limiter.qml:117 src/tags_plugin_name.cpp:64
+#: src/contents/ui/Limiter.qml:117 src/tags_plugin_name.cpp:65
 msgid "Limiter"
 msgstr "Limiter"
 
@@ -1850,7 +1864,7 @@ msgstr ""
 msgid "Go back"
 msgstr "Zurückgehen"
 
-#: src/contents/ui/Main.qml:329 src/contents/ui/PageStreamsEffects.qml:745
+#: src/contents/ui/Main.qml:329 src/contents/ui/PageStreamsEffects.qml:747
 msgid "Effects"
 msgstr "Effekte"
 
@@ -1987,45 +2001,45 @@ msgstr "Keine Effekte"
 msgid "Audio stream not modified"
 msgstr "Audio Stream nicht verändert"
 
-#: src/contents/ui/PageStreamsEffects.qml:376
+#: src/contents/ui/PageStreamsEffects.qml:378
 msgid "Add effect"
 msgstr "Effekt hinzufügen"
 
-#: src/contents/ui/PageStreamsEffects.qml:384
+#: src/contents/ui/PageStreamsEffects.qml:386
 msgid "Close"
 msgstr "Schließen"
 
-#: src/contents/ui/PageStreamsEffects.qml:388
+#: src/contents/ui/PageStreamsEffects.qml:390
 msgid "Expand the list of effects pipeline"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:388
+#: src/contents/ui/PageStreamsEffects.qml:390
 msgid "Reduce the list of effects pipeline"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:441
-#: src/contents/ui/PageStreamsEffects.qml:732
+#: src/contents/ui/PageStreamsEffects.qml:443
+#: src/contents/ui/PageStreamsEffects.qml:734
 msgid "Players"
 msgstr "Spieler"
 
-#: src/contents/ui/PageStreamsEffects.qml:450
+#: src/contents/ui/PageStreamsEffects.qml:452
 msgid "Output device"
 msgstr "Ausgabegerät"
 
-#: src/contents/ui/PageStreamsEffects.qml:450
-#: src/contents/ui/PageStreamsEffects.qml:732
+#: src/contents/ui/PageStreamsEffects.qml:452
+#: src/contents/ui/PageStreamsEffects.qml:734
 msgid "Recorders"
 msgstr "Rekorder"
 
-#: src/contents/ui/PageStreamsEffects.qml:763
+#: src/contents/ui/PageStreamsEffects.qml:765
 msgid "Excluded apps"
 msgstr "Ausgeschlossene Apps"
 
-#: src/contents/ui/PageStreamsEffects.qml:772
+#: src/contents/ui/PageStreamsEffects.qml:774
 msgid "Input monitoring"
 msgstr "Eingangsüberwachung"
 
-#: src/contents/ui/PageStreamsEffects.qml:785
+#: src/contents/ui/PageStreamsEffects.qml:787
 msgid "Send audio to the virtual source"
 msgstr ""
 
@@ -2153,7 +2167,7 @@ msgstr "Suchfenster"
 msgid "Overlap length"
 msgstr "Filterlänge"
 
-#: src/contents/ui/Pitch.qml:163 src/tags_plugin_name.cpp:69
+#: src/contents/ui/Pitch.qml:163 src/tags_plugin_name.cpp:70
 msgid "Pitch"
 msgstr "Tonhöhe"
 
@@ -2789,6 +2803,69 @@ msgstr "Diese Vorlage umbenennen"
 msgid "Delete this preset"
 msgstr "Diese Vorlage löschen"
 
+#: src/contents/ui/RNNoise.qml:62
+msgid "Imported a new RNNoise model file."
+msgstr "Neue RNNoise-Modell Datei importiert."
+
+#: src/contents/ui/RNNoise.qml:64
+msgid "Failed to import the RNNoise model file."
+msgstr "RRNoise Modell Datei konnte nicht importiert werden."
+
+#: src/contents/ui/RNNoise.qml:75 src/contents/ui/RNNoise.qml:86
+#: src/contents/ui/RNNoise.qml:300 src/contents/ui/RNNoise.qml:302
+msgid "Standard RNNoise model"
+msgstr "Standard RNNoise-Modell"
+
+#: src/contents/ui/RNNoise.qml:77
+msgid "Standard RNNoise model loaded."
+msgstr "Standard RNNoise-Modell geladen."
+
+#: src/contents/ui/RNNoise.qml:82 src/contents/ui/RNNoise.qml:304
+msgid "Using %1 Model"
+msgstr "Nutzt %1 Modell"
+
+#: src/contents/ui/RNNoise.qml:84
+msgid "Loaded the %1 RNNoise model."
+msgstr "RNNoise-Modell %1 geladen."
+
+#: src/contents/ui/RNNoise.qml:88
+msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
+msgstr ""
+"Fehler beim Laden von RRNoise-Modell %1. Fallback zum Standard RRNoise-"
+"Modell."
+
+#: src/contents/ui/RNNoise.qml:107 src/contents/ui/Speex.qml:117
+msgid "Voice detection"
+msgstr "Spracherkennung"
+
+#: src/contents/ui/RNNoise.qml:144
+msgid "Wet level"
+msgstr "Feuchtigkeit"
+
+#: src/contents/ui/RNNoise.qml:184
+msgid "Use the Standard model"
+msgstr "Nutze das Standard-Modell"
+
+#: src/contents/ui/RNNoise.qml:195
+msgid "User Models"
+msgstr "Benutzer Modelle"
+
+#: src/contents/ui/RNNoise.qml:261
+msgid "Delete this model"
+msgstr "diese Modell-Datei entfernen"
+
+#: src/contents/ui/RNNoise.qml:266
+msgid "Removed the %1 RNNoise model."
+msgstr "RRNoise-Modell %1 entfernt."
+
+#: src/contents/ui/RNNoise.qml:268
+msgid "Failed to remove the %1 RNNoise model."
+msgstr "RRNoise-Modell %1 konnte nicht entfernt werden."
+
+#: src/contents/ui/RNNoise.qml:337
+msgid "Import model"
+msgstr "Modell importieren"
+
 #: src/contents/ui/Reverb.qml:66
 msgid "Room size"
 msgstr "Raumgröße"
@@ -2873,69 +2950,6 @@ msgstr "Disco"
 #, fuzzy
 msgid "Large occupied hall"
 msgstr "Große besetzte Halle"
-
-#: src/contents/ui/RNNoise.qml:62
-msgid "Imported a new RNNoise model file."
-msgstr "Neue RNNoise-Modell Datei importiert."
-
-#: src/contents/ui/RNNoise.qml:64
-msgid "Failed to import the RNNoise model file."
-msgstr "RRNoise Modell Datei konnte nicht importiert werden."
-
-#: src/contents/ui/RNNoise.qml:75 src/contents/ui/RNNoise.qml:86
-#: src/contents/ui/RNNoise.qml:300 src/contents/ui/RNNoise.qml:302
-msgid "Standard RNNoise model"
-msgstr "Standard RNNoise-Modell"
-
-#: src/contents/ui/RNNoise.qml:77
-msgid "Standard RNNoise model loaded."
-msgstr "Standard RNNoise-Modell geladen."
-
-#: src/contents/ui/RNNoise.qml:82 src/contents/ui/RNNoise.qml:304
-msgid "Using %1 Model"
-msgstr "Nutzt %1 Modell"
-
-#: src/contents/ui/RNNoise.qml:84
-msgid "Loaded the %1 RNNoise model."
-msgstr "RNNoise-Modell %1 geladen."
-
-#: src/contents/ui/RNNoise.qml:88
-msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
-msgstr ""
-"Fehler beim Laden von RRNoise-Modell %1. Fallback zum Standard RRNoise-"
-"Modell."
-
-#: src/contents/ui/RNNoise.qml:107 src/contents/ui/Speex.qml:117
-msgid "Voice detection"
-msgstr "Spracherkennung"
-
-#: src/contents/ui/RNNoise.qml:144
-msgid "Wet level"
-msgstr "Feuchtigkeit"
-
-#: src/contents/ui/RNNoise.qml:184
-msgid "Use the Standard model"
-msgstr "Nutze das Standard-Modell"
-
-#: src/contents/ui/RNNoise.qml:195
-msgid "User Models"
-msgstr "Benutzer Modelle"
-
-#: src/contents/ui/RNNoise.qml:261
-msgid "Delete this model"
-msgstr "diese Modell-Datei entfernen"
-
-#: src/contents/ui/RNNoise.qml:266
-msgid "Removed the %1 RNNoise model."
-msgstr "RRNoise-Modell %1 entfernt."
-
-#: src/contents/ui/RNNoise.qml:268
-msgid "Failed to remove the %1 RNNoise model."
-msgstr "RRNoise-Modell %1 konnte nicht entfernt werden."
-
-#: src/contents/ui/RNNoise.qml:337
-msgid "Import model"
-msgstr "Modell importieren"
 
 #: src/contents/ui/ShortcutsSheet.qml:66
 msgid "Show help"
@@ -3058,10 +3072,6 @@ msgstr "Mitten Panorama"
 #: src/contents/ui/StereoTools.qml:221 src/contents/ui/StereoTools.qml:253
 msgid "Invert phase"
 msgstr "Phase umkehren"
-
-#: src/contents/ui/StereoTools.qml:293 src/tags_plugin_name.cpp:56
-msgid "Delay"
-msgstr "Verzögerung"
 
 #: src/contents/ui/StereoTools.qml:310
 msgid "Stereo base"
@@ -3251,38 +3261,42 @@ msgid "Exciter"
 msgstr "Exciter"
 
 #: src/tags_plugin_name.cpp:63
+msgid "Localization Cue Correction"
+msgstr ""
+
+#: src/tags_plugin_name.cpp:64
 msgid "Level Meter"
 msgstr "Pegelanzeige"
 
-#: src/tags_plugin_name.cpp:66
+#: src/tags_plugin_name.cpp:67
 msgid "Maximizer"
 msgstr "Maximierer"
 
-#: src/tags_plugin_name.cpp:67
+#: src/tags_plugin_name.cpp:68
 msgid "Multiband Compressor"
 msgstr "Multiband-Kompressor"
 
-#: src/tags_plugin_name.cpp:68
+#: src/tags_plugin_name.cpp:69
 msgid "Multiband Gate"
 msgstr "Multiband Gate"
 
-#: src/tags_plugin_name.cpp:70
+#: src/tags_plugin_name.cpp:71
 msgid "Reverberation"
 msgstr "Nachhall"
 
-#: src/tags_plugin_name.cpp:71
+#: src/tags_plugin_name.cpp:72
 msgid "Noise Reduction"
 msgstr "Rauschreduzierung"
 
-#: src/tags_plugin_name.cpp:72
+#: src/tags_plugin_name.cpp:73
 msgid "Speech Processor"
 msgstr "Sprachprozessor"
 
-#: src/tags_plugin_name.cpp:73
+#: src/tags_plugin_name.cpp:74
 msgid "Stereo Tools"
 msgstr "Stereowerkzeuge"
 
-#: src/tags_plugin_name.cpp:74
+#: src/tags_plugin_name.cpp:75
 #, fuzzy
 msgid "Voice Suppressor"
 msgstr "Rauschunterdrückung"

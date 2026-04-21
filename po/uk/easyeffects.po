@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-04-21 14:08-0300\n"
+"POT-Creation-Date: 2026-04-21 18:23+0000\n"
 "PO-Revision-Date: 2026-04-14 20:13+0000\n"
 "Last-Translator: Володимир <vlzuykov@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
@@ -128,10 +128,10 @@ msgstr "Про нас"
 #: src/contents/ui/Autogain.qml:69 src/contents/ui/BassEnhancer.qml:105
 #: src/contents/ui/BassLoudness.qml:58 src/contents/ui/Crossfeed.qml:73
 #: src/contents/ui/DeepFilterNet.qml:93 src/contents/ui/Exciter.qml:106
-#: src/contents/ui/Filter.qml:58 src/contents/ui/Loudness.qml:58
-#: src/contents/ui/Maximizer.qml:59 src/contents/ui/Pitch.qml:59
-#: src/contents/ui/Reverb.qml:59 src/contents/ui/Speex.qml:58
-#: src/contents/ui/VoiceSuppressor.qml:57
+#: src/contents/ui/Filter.qml:58 src/contents/ui/Lcc.qml:57
+#: src/contents/ui/Loudness.qml:58 src/contents/ui/Maximizer.qml:59
+#: src/contents/ui/Pitch.qml:59 src/contents/ui/Reverb.qml:59
+#: src/contents/ui/Speex.qml:58 src/contents/ui/VoiceSuppressor.qml:57
 msgid "Controls"
 msgstr "Елементи керування"
 
@@ -184,7 +184,7 @@ msgstr "Тривалість історії (максимальна)"
 
 #: src/contents/ui/Autogain.qml:143 src/contents/ui/Autogain.qml:198
 #: src/contents/ui/BassLoudness.qml:66 src/contents/ui/LevelMeter.qml:146
-#: src/tags_plugin_name.cpp:65
+#: src/tags_plugin_name.cpp:66
 msgid "Loudness"
 msgstr "Гучність"
 
@@ -209,14 +209,14 @@ msgstr "Вихідне підсилення"
 #: src/contents/ui/Delay.qml:373 src/contents/ui/EchoCanceller.qml:155
 #: src/contents/ui/Equalizer.qml:299 src/contents/ui/Exciter.qml:208
 #: src/contents/ui/Expander.qml:822 src/contents/ui/Filter.qml:217
-#: src/contents/ui/Gate.qml:951 src/contents/ui/LevelMeter.qml:215
-#: src/contents/ui/Limiter.qml:606 src/contents/ui/Loudness.qml:172
-#: src/contents/ui/Maximizer.qml:119
+#: src/contents/ui/Gate.qml:951 src/contents/ui/Lcc.qml:112
+#: src/contents/ui/LevelMeter.qml:215 src/contents/ui/Limiter.qml:606
+#: src/contents/ui/Loudness.qml:172 src/contents/ui/Maximizer.qml:119
 #: src/contents/ui/MultibandCompressor.qml:965
 #: src/contents/ui/MultibandGate.qml:938 src/contents/ui/Pitch.qml:265
-#: src/contents/ui/Reverb.qml:316 src/contents/ui/RNNoise.qml:75
-#: src/contents/ui/RNNoise.qml:86 src/contents/ui/RNNoise.qml:300
-#: src/contents/ui/RNNoise.qml:302 src/contents/ui/RNNoise.qml:320
+#: src/contents/ui/RNNoise.qml:75 src/contents/ui/RNNoise.qml:86
+#: src/contents/ui/RNNoise.qml:300 src/contents/ui/RNNoise.qml:302
+#: src/contents/ui/RNNoise.qml:320 src/contents/ui/Reverb.qml:316
 #: src/contents/ui/Speex.qml:174 src/contents/ui/StereoTools.qml:389
 #: src/contents/ui/VoiceSuppressor.qml:165
 msgid "Using %1"
@@ -299,12 +299,12 @@ msgstr "Слухати"
 #: src/contents/ui/Delay.qml:425 src/contents/ui/EchoCanceller.qml:183
 #: src/contents/ui/Equalizer.qml:383 src/contents/ui/Exciter.qml:250
 #: src/contents/ui/Expander.qml:874 src/contents/ui/Filter.qml:249
-#: src/contents/ui/Gate.qml:1003 src/contents/ui/Limiter.qml:658
-#: src/contents/ui/Loudness.qml:214 src/contents/ui/Main.qml:443
-#: src/contents/ui/Maximizer.qml:151
+#: src/contents/ui/Gate.qml:1003 src/contents/ui/Lcc.qml:130
+#: src/contents/ui/Limiter.qml:658 src/contents/ui/Loudness.qml:214
+#: src/contents/ui/Main.qml:443 src/contents/ui/Maximizer.qml:151
 #: src/contents/ui/MultibandCompressor.qml:1014
-#: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:356
-#: src/contents/ui/RNNoise.qml:345 src/contents/ui/Speex.qml:192
+#: src/contents/ui/MultibandGate.qml:987 src/contents/ui/RNNoise.qml:345
+#: src/contents/ui/Reverb.qml:356 src/contents/ui/Speex.qml:192
 #: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:193
 msgid "Reset"
 msgstr "Скинути"
@@ -388,7 +388,7 @@ msgstr "Компресор"
 #: src/contents/ui/Compressor.qml:80 src/contents/ui/Compressor.qml:302
 #: src/contents/ui/Crusher.qml:96 src/contents/ui/Deesser.qml:89
 #: src/contents/ui/Delay.qml:70 src/contents/ui/Delay.qml:223
-#: src/contents/ui/EqualizerBandMenu.qml:60 src/contents/ui/Equalizer.qml:138
+#: src/contents/ui/Equalizer.qml:138 src/contents/ui/EqualizerBandMenu.qml:60
 #: src/contents/ui/Expander.qml:80 src/contents/ui/Expander.qml:262
 #: src/contents/ui/Gate.qml:280 src/contents/ui/Limiter.qml:73
 #: src/contents/ui/Loudness.qml:70 src/contents/ui/MultibandCompressor.qml:436
@@ -486,7 +486,7 @@ msgstr "Зовнішній"
 
 #: src/contents/ui/Compressor.qml:278 src/contents/ui/Expander.qml:238
 #: src/contents/ui/Gate.qml:256 src/contents/ui/Limiter.qml:228
-#: src/contents/ui/PageStreamsEffects.qml:441
+#: src/contents/ui/PageStreamsEffects.qml:443
 msgid "Input device"
 msgstr "Пристрій введення"
 
@@ -730,77 +730,6 @@ msgstr "Огинаюча"
 msgid "Stereo split"
 msgstr "Розділити стерео"
 
-#: src/contents/ui/ConvolverImpulseDialog.qml:50
-msgid "Imported a new Convolver impulse file."
-msgstr "Імпортовано новий файл імпульсу конвольвера."
-
-#: src/contents/ui/ConvolverImpulseDialog.qml:52
-msgid "Failed to import the Convolver impulse file."
-msgstr "Не вдалося імпортувати файл імпульсу конвольвера."
-
-#: src/contents/ui/ConvolverImpulseDialog.qml:66
-#: src/contents/ui/MenuAddPlugins.qml:187
-#: src/contents/ui/PresetsCommunityPage.qml:65
-#: src/contents/ui/PresetsLocalPage.qml:165
-msgid "Search"
-msgstr "Пошук"
-
-#: src/contents/ui/ConvolverImpulseDialog.qml:109
-msgid "Remove Impulse Response"
-msgstr "Вилучити імпульсний відгук"
-
-#: src/contents/ui/ConvolverImpulseDialog.qml:110
-msgid "Are you sure you want to remove this impulse response from the list?"
-msgstr "Ви впевнені, що хочете вилучити цей імпульсний відгук зі списку?"
-
-#: src/contents/ui/ConvolverImpulseDialog.qml:114
-msgid "Removed the %1 Convolver impulse."
-msgstr "Вилучено імпульс конвольвера %1."
-
-#: src/contents/ui/ConvolverImpulseDialog.qml:116
-msgid "Failed to remove the %1 Convolver impulse."
-msgstr "Не вдалося вилучити імпульс конвольвера %1."
-
-#: src/contents/ui/ConvolverImpulseDialog.qml:124
-msgid "Rename Impulse"
-msgstr "Перейменувати імпульс"
-
-#: src/contents/ui/ConvolverImpulseDialog.qml:129
-#: src/contents/ui/PresetsLocalPage.qml:247
-msgid "Rename"
-msgstr "Перейменувати"
-
-#: src/contents/ui/ConvolverImpulseDialog.qml:137
-msgid "Renamed the %1 impulse to %2"
-msgstr "Імпульс «%1» перейменовано в «%2»"
-
-#: src/contents/ui/ConvolverImpulseDialog.qml:140
-msgid "Failed to rename the %1 impulse to %2"
-msgstr "Не вдалося перейменувати імпульс «%1» в «%2»"
-
-#: src/contents/ui/ConvolverImpulseDialog.qml:148
-#: src/contents/ui/PresetsLocalPage.qml:267
-msgid "Cancel"
-msgstr "Скасувати"
-
-#: src/contents/ui/ConvolverImpulseDialog.qml:187
-msgid "Rename this impulse"
-msgstr "Перейменувати цей імпульс"
-
-#: src/contents/ui/ConvolverImpulseDialog.qml:195
-msgid "Delete this impulse"
-msgstr "Видалити цей імпульс"
-
-#: src/contents/ui/ConvolverImpulseDialog.qml:234
-msgid "Import impulse"
-msgstr "Імпортувати імпульс"
-
-#: src/contents/ui/ConvolverImpulseDialog.qml:244
-#: src/contents/ui/MenuAddPlugins.qml:203 src/contents/ui/PresetsDialog.qml:126
-msgctxt "@action:button"
-msgid "Close"
-msgstr "Закрити"
-
 #: src/contents/ui/Convolver.qml:67
 msgid "Loaded the %1 Convolver impulse."
 msgstr "Завантажено імпульс конвольвера %1."
@@ -871,6 +800,77 @@ msgstr "Ширина стерео"
 #: src/contents/ui/Convolver.qml:536 src/tags_plugin_name.cpp:46
 msgid "Autogain"
 msgstr "Автоматичне підсилення"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:50
+msgid "Imported a new Convolver impulse file."
+msgstr "Імпортовано новий файл імпульсу конвольвера."
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:52
+msgid "Failed to import the Convolver impulse file."
+msgstr "Не вдалося імпортувати файл імпульсу конвольвера."
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:66
+#: src/contents/ui/MenuAddPlugins.qml:187
+#: src/contents/ui/PresetsCommunityPage.qml:65
+#: src/contents/ui/PresetsLocalPage.qml:165
+msgid "Search"
+msgstr "Пошук"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:109
+msgid "Remove Impulse Response"
+msgstr "Вилучити імпульсний відгук"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:110
+msgid "Are you sure you want to remove this impulse response from the list?"
+msgstr "Ви впевнені, що хочете вилучити цей імпульсний відгук зі списку?"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:114
+msgid "Removed the %1 Convolver impulse."
+msgstr "Вилучено імпульс конвольвера %1."
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:116
+msgid "Failed to remove the %1 Convolver impulse."
+msgstr "Не вдалося вилучити імпульс конвольвера %1."
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:124
+msgid "Rename Impulse"
+msgstr "Перейменувати імпульс"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:129
+#: src/contents/ui/PresetsLocalPage.qml:247
+msgid "Rename"
+msgstr "Перейменувати"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:137
+msgid "Renamed the %1 impulse to %2"
+msgstr "Імпульс «%1» перейменовано в «%2»"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:140
+msgid "Failed to rename the %1 impulse to %2"
+msgstr "Не вдалося перейменувати імпульс «%1» в «%2»"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:148
+#: src/contents/ui/PresetsLocalPage.qml:267
+msgid "Cancel"
+msgstr "Скасувати"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:187
+msgid "Rename this impulse"
+msgstr "Перейменувати цей імпульс"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:195
+msgid "Delete this impulse"
+msgstr "Видалити цей імпульс"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:234
+msgid "Import impulse"
+msgstr "Імпортувати імпульс"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:244
+#: src/contents/ui/MenuAddPlugins.qml:203 src/contents/ui/PresetsDialog.qml:126
+msgctxt "@action:button"
+msgid "Close"
+msgstr "Закрити"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:31
 msgid "Target Orientation"
@@ -975,20 +975,6 @@ msgstr "Зменшення"
 msgid "Low frequency oscillator"
 msgstr "Низькочастотний генератор"
 
-#: src/contents/ui/CrystalizerBand.qml:58
-#: src/contents/ui/EqualizerBandMenu.qml:186
-#: src/contents/ui/MultibandCompressor.qml:92
-#: src/contents/ui/MultibandGate.qml:92 src/contents/ui/StereoTools.qml:209
-#: src/contents/ui/StereoTools.qml:241
-msgid "Mute"
-msgstr "Приглушити"
-
-#: src/contents/ui/CrystalizerBand.qml:69
-#: src/contents/ui/MultibandCompressor.qml:110
-#: src/contents/ui/MultibandGate.qml:110
-msgid "Bypass"
-msgstr "Обійти"
-
 #: src/contents/ui/Crystalizer.qml:110
 msgid "Oversampling quality"
 msgstr "Якість передискретизації"
@@ -1008,6 +994,20 @@ msgstr "Адаптивна інтенсивність"
 #: src/contents/ui/Crystalizer.qml:190
 msgid "Fixed quantum"
 msgstr "Фіксований квант"
+
+#: src/contents/ui/CrystalizerBand.qml:58
+#: src/contents/ui/EqualizerBandMenu.qml:186
+#: src/contents/ui/MultibandCompressor.qml:92
+#: src/contents/ui/MultibandGate.qml:92 src/contents/ui/StereoTools.qml:209
+#: src/contents/ui/StereoTools.qml:241
+msgid "Mute"
+msgstr "Приглушити"
+
+#: src/contents/ui/CrystalizerBand.qml:69
+#: src/contents/ui/MultibandCompressor.qml:110
+#: src/contents/ui/MultibandGate.qml:110
+msgid "Bypass"
+msgstr "Обійти"
 
 #: src/contents/ui/DeepFilterNet.qml:51
 msgid "Attenuation limit"
@@ -1247,105 +1247,6 @@ msgstr "Регулятори підсилення входу та виходу �
 msgid "Input"
 msgstr "Вхід"
 
-#: src/contents/ui/EqualizerBandMenu.qml:33
-#: src/contents/ui/MultibandCompressor.qml:671
-#: src/contents/ui/MultibandCompressor.qml:930
-#: src/contents/ui/MultibandGate.qml:644 src/contents/ui/MultibandGate.qml:903
-msgid "Band"
-msgstr "Смуга"
-
-#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
-msgid "Bell"
-msgstr "Дзвоновий фільтр (Peak)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
-msgid "High-shelf"
-msgstr "Полицевий ФВЧ (High-shelf)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
-msgid "Low-shelf"
-msgstr "Полицевий ФНЧ (Low-shelf)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
-msgid "Notch"
-msgstr "Режекторний фільтр (Notch)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
-msgid "Resonance"
-msgstr "Резонансний фільтр"
-
-#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
-msgid "Allpass"
-msgstr "Фазовий фільтр (Allpass)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
-msgid "Bandpass"
-msgstr "Смуговий фільтр (Bandpass)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
-msgid "Ladder-pass"
-msgstr "Сходовий (пропуск / Ladder-pass)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
-msgid "Ladder-rejection"
-msgstr "Сходовий (відхилення / Ladder-rejection)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:64 src/contents/ui/Filter.qml:82
-msgid "RLC (BT)"
-msgstr "RLC (BT)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:64 src/contents/ui/Filter.qml:82
-msgid "RLC (MT)"
-msgstr "RLC (MT)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:64 src/contents/ui/Filter.qml:82
-msgid "BWC (BT)"
-msgstr "BWC (BT)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:64 src/contents/ui/Filter.qml:82
-msgid "BWC (MT)"
-msgstr "BWC (MT)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:64 src/contents/ui/Filter.qml:82
-msgid "LRX (BT)"
-msgstr "LRX (BT)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:64 src/contents/ui/Filter.qml:82
-msgid "LRX (MT)"
-msgstr "LRX (MT)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:64 src/contents/ui/Filter.qml:82
-msgid "APO (DR)"
-msgstr "APO (DR)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:74 src/contents/ui/Filter.qml:106
-msgid "Slope"
-msgstr "Нахил"
-
-#: src/contents/ui/EqualizerBandMenu.qml:95 src/contents/ui/Filter.qml:127
-#: src/contents/ui/MultibandCompressor.qml:201
-#: src/contents/ui/MultibandGate.qml:138 src/contents/ui/PipeWirePage.qml:426
-msgid "Frequency"
-msgstr "Частота"
-
-#: src/contents/ui/EqualizerBandMenu.qml:141 src/contents/ui/Filter.qml:174
-msgid "Quality"
-msgstr "Добротність"
-
-#: src/contents/ui/EqualizerBandMenu.qml:164 src/contents/ui/Filter.qml:143
-msgid "Width"
-msgstr "Ширина"
-
-#: src/contents/ui/EqualizerBandMenu.qml:170
-msgid "oct"
-msgstr "окт"
-
-#: src/contents/ui/EqualizerBandMenu.qml:198
-#: src/contents/ui/MultibandCompressor.qml:101
-#: src/contents/ui/MultibandGate.qml:101
-msgid "Solo"
-msgstr "Ізолювати"
-
 #: src/contents/ui/Equalizer.qml:66 src/contents/ui/Equalizer.qml:106
 msgid "APO preset"
 msgstr "Пресети APO"
@@ -1475,6 +1376,105 @@ msgstr "Імпорт APO (графічний)"
 msgid "Export APO"
 msgstr "Експорт APO"
 
+#: src/contents/ui/EqualizerBandMenu.qml:33
+#: src/contents/ui/MultibandCompressor.qml:671
+#: src/contents/ui/MultibandCompressor.qml:930
+#: src/contents/ui/MultibandGate.qml:644 src/contents/ui/MultibandGate.qml:903
+msgid "Band"
+msgstr "Смуга"
+
+#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
+msgid "Bell"
+msgstr "Дзвоновий фільтр (Peak)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
+msgid "High-shelf"
+msgstr "Полицевий ФВЧ (High-shelf)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
+msgid "Low-shelf"
+msgstr "Полицевий ФНЧ (Low-shelf)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
+msgid "Notch"
+msgstr "Режекторний фільтр (Notch)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
+msgid "Resonance"
+msgstr "Резонансний фільтр"
+
+#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
+msgid "Allpass"
+msgstr "Фазовий фільтр (Allpass)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
+msgid "Bandpass"
+msgstr "Смуговий фільтр (Bandpass)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
+msgid "Ladder-pass"
+msgstr "Сходовий (пропуск / Ladder-pass)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:50 src/contents/ui/Filter.qml:68
+msgid "Ladder-rejection"
+msgstr "Сходовий (відхилення / Ladder-rejection)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:64 src/contents/ui/Filter.qml:82
+msgid "RLC (BT)"
+msgstr "RLC (BT)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:64 src/contents/ui/Filter.qml:82
+msgid "RLC (MT)"
+msgstr "RLC (MT)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:64 src/contents/ui/Filter.qml:82
+msgid "BWC (BT)"
+msgstr "BWC (BT)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:64 src/contents/ui/Filter.qml:82
+msgid "BWC (MT)"
+msgstr "BWC (MT)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:64 src/contents/ui/Filter.qml:82
+msgid "LRX (BT)"
+msgstr "LRX (BT)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:64 src/contents/ui/Filter.qml:82
+msgid "LRX (MT)"
+msgstr "LRX (MT)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:64 src/contents/ui/Filter.qml:82
+msgid "APO (DR)"
+msgstr "APO (DR)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:74 src/contents/ui/Filter.qml:106
+msgid "Slope"
+msgstr "Нахил"
+
+#: src/contents/ui/EqualizerBandMenu.qml:95 src/contents/ui/Filter.qml:127
+#: src/contents/ui/MultibandCompressor.qml:201
+#: src/contents/ui/MultibandGate.qml:138 src/contents/ui/PipeWirePage.qml:426
+msgid "Frequency"
+msgstr "Частота"
+
+#: src/contents/ui/EqualizerBandMenu.qml:141 src/contents/ui/Filter.qml:174
+msgid "Quality"
+msgstr "Добротність"
+
+#: src/contents/ui/EqualizerBandMenu.qml:164 src/contents/ui/Filter.qml:143
+msgid "Width"
+msgstr "Ширина"
+
+#: src/contents/ui/EqualizerBandMenu.qml:170
+msgid "oct"
+msgstr "окт"
+
+#: src/contents/ui/EqualizerBandMenu.qml:198
+#: src/contents/ui/MultibandCompressor.qml:101
+#: src/contents/ui/MultibandGate.qml:101
+msgid "Solo"
+msgstr "Ізолювати"
+
 #: src/contents/ui/Exciter.qml:161
 msgid "Ceil active"
 msgstr "Обмеження"
@@ -1520,6 +1520,20 @@ msgstr "Гістерезис"
 #: src/contents/ui/VoiceSuppressor.qml:62
 msgid "Start"
 msgstr "Початок"
+
+#: src/contents/ui/Lcc.qml:62
+msgid "Process only phantom center"
+msgstr ""
+
+#: src/contents/ui/Lcc.qml:72 src/contents/ui/StereoTools.qml:293
+#: src/tags_plugin_name.cpp:56
+msgid "Delay"
+msgstr "Затримка"
+
+#: src/contents/ui/Lcc.qml:88
+#, fuzzy
+msgid "Decay"
+msgstr "Час затухання"
 
 #: src/contents/ui/LevelMeter.qml:67
 msgid "Input Level"
@@ -1675,7 +1689,7 @@ msgstr "Справжній пік (24 біти)"
 msgid "Dithering"
 msgstr "Дитеринг (згладжування)"
 
-#: src/contents/ui/Limiter.qml:117 src/tags_plugin_name.cpp:64
+#: src/contents/ui/Limiter.qml:117 src/tags_plugin_name.cpp:65
 msgid "Limiter"
 msgstr "Лімітер"
 
@@ -1763,7 +1777,7 @@ msgstr "Ви впевнені, що хочете скинути всі нала�
 msgid "Go back"
 msgstr "Назад"
 
-#: src/contents/ui/Main.qml:329 src/contents/ui/PageStreamsEffects.qml:745
+#: src/contents/ui/Main.qml:329 src/contents/ui/PageStreamsEffects.qml:747
 msgid "Effects"
 msgstr "Ефекти"
 
@@ -1897,45 +1911,45 @@ msgstr "Без ефектів"
 msgid "Audio stream not modified"
 msgstr "Аудіопотік не змінено"
 
-#: src/contents/ui/PageStreamsEffects.qml:376
+#: src/contents/ui/PageStreamsEffects.qml:378
 msgid "Add effect"
 msgstr "Додати ефект"
 
-#: src/contents/ui/PageStreamsEffects.qml:384
+#: src/contents/ui/PageStreamsEffects.qml:386
 msgid "Close"
 msgstr "Закрити"
 
-#: src/contents/ui/PageStreamsEffects.qml:388
+#: src/contents/ui/PageStreamsEffects.qml:390
 msgid "Expand the list of effects pipeline"
 msgstr "Розгорнути список ефектів конвеєра"
 
-#: src/contents/ui/PageStreamsEffects.qml:388
+#: src/contents/ui/PageStreamsEffects.qml:390
 msgid "Reduce the list of effects pipeline"
 msgstr "Згорнути список ефектів конвеєра"
 
-#: src/contents/ui/PageStreamsEffects.qml:441
-#: src/contents/ui/PageStreamsEffects.qml:732
+#: src/contents/ui/PageStreamsEffects.qml:443
+#: src/contents/ui/PageStreamsEffects.qml:734
 msgid "Players"
 msgstr "Відтворення"
 
-#: src/contents/ui/PageStreamsEffects.qml:450
+#: src/contents/ui/PageStreamsEffects.qml:452
 msgid "Output device"
 msgstr "Пристрій виведення"
 
-#: src/contents/ui/PageStreamsEffects.qml:450
-#: src/contents/ui/PageStreamsEffects.qml:732
+#: src/contents/ui/PageStreamsEffects.qml:452
+#: src/contents/ui/PageStreamsEffects.qml:734
 msgid "Recorders"
 msgstr "Запис"
 
-#: src/contents/ui/PageStreamsEffects.qml:763
+#: src/contents/ui/PageStreamsEffects.qml:765
 msgid "Excluded apps"
 msgstr "Виключені програми"
 
-#: src/contents/ui/PageStreamsEffects.qml:772
+#: src/contents/ui/PageStreamsEffects.qml:774
 msgid "Input monitoring"
 msgstr "Прослуховування входу"
 
-#: src/contents/ui/PageStreamsEffects.qml:785
+#: src/contents/ui/PageStreamsEffects.qml:787
 msgid "Send audio to the virtual source"
 msgstr "Надіслати аудіо до віртуального джерела"
 
@@ -2062,7 +2076,7 @@ msgstr "Вікно пошуку"
 msgid "Overlap length"
 msgstr "Довжина перекриття"
 
-#: src/contents/ui/Pitch.qml:163 src/tags_plugin_name.cpp:69
+#: src/contents/ui/Pitch.qml:163 src/tags_plugin_name.cpp:70
 msgid "Pitch"
 msgstr "Висота тону"
 
@@ -2693,6 +2707,68 @@ msgstr "Перейменувати цей пресет"
 msgid "Delete this preset"
 msgstr "Видалити цей пресет"
 
+#: src/contents/ui/RNNoise.qml:62
+msgid "Imported a new RNNoise model file."
+msgstr "Імпортовано новий файл моделі RNNoise."
+
+#: src/contents/ui/RNNoise.qml:64
+msgid "Failed to import the RNNoise model file."
+msgstr "Не вдалося імпортувати файл моделі RNNoise."
+
+#: src/contents/ui/RNNoise.qml:75 src/contents/ui/RNNoise.qml:86
+#: src/contents/ui/RNNoise.qml:300 src/contents/ui/RNNoise.qml:302
+msgid "Standard RNNoise model"
+msgstr "Стандартна модель RNNoise"
+
+#: src/contents/ui/RNNoise.qml:77
+msgid "Standard RNNoise model loaded."
+msgstr "Завантажено стандартну модель RNNoise."
+
+#: src/contents/ui/RNNoise.qml:82 src/contents/ui/RNNoise.qml:304
+msgid "Using %1 Model"
+msgstr "Використовується модель %1"
+
+#: src/contents/ui/RNNoise.qml:84
+msgid "Loaded the %1 RNNoise model."
+msgstr "Завантажено RNNoise модель %1."
+
+#: src/contents/ui/RNNoise.qml:88
+msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
+msgstr ""
+"Не вдалося завантажити модель %1. Повернення до стандартної моделі RNNoise."
+
+#: src/contents/ui/RNNoise.qml:107 src/contents/ui/Speex.qml:117
+msgid "Voice detection"
+msgstr "Виявлення голосу"
+
+#: src/contents/ui/RNNoise.qml:144
+msgid "Wet level"
+msgstr "Оброблений рівень"
+
+#: src/contents/ui/RNNoise.qml:184
+msgid "Use the Standard model"
+msgstr "Стандартна модель"
+
+#: src/contents/ui/RNNoise.qml:195
+msgid "User Models"
+msgstr "Моделі користувачів"
+
+#: src/contents/ui/RNNoise.qml:261
+msgid "Delete this model"
+msgstr "Видалити цю модель"
+
+#: src/contents/ui/RNNoise.qml:266
+msgid "Removed the %1 RNNoise model."
+msgstr "Вилучено RNNoise модель %1."
+
+#: src/contents/ui/RNNoise.qml:268
+msgid "Failed to remove the %1 RNNoise model."
+msgstr "Не вдалося вилучити RNNoise модель %1."
+
+#: src/contents/ui/RNNoise.qml:337
+msgid "Import model"
+msgstr "Імпортувати модель"
+
 #: src/contents/ui/Reverb.qml:66
 msgid "Room size"
 msgstr "Розмір кімнати"
@@ -2772,68 +2848,6 @@ msgstr "Диско"
 #: src/contents/ui/Reverb.qml:297
 msgid "Large occupied hall"
 msgstr "Великий заповнений зал"
-
-#: src/contents/ui/RNNoise.qml:62
-msgid "Imported a new RNNoise model file."
-msgstr "Імпортовано новий файл моделі RNNoise."
-
-#: src/contents/ui/RNNoise.qml:64
-msgid "Failed to import the RNNoise model file."
-msgstr "Не вдалося імпортувати файл моделі RNNoise."
-
-#: src/contents/ui/RNNoise.qml:75 src/contents/ui/RNNoise.qml:86
-#: src/contents/ui/RNNoise.qml:300 src/contents/ui/RNNoise.qml:302
-msgid "Standard RNNoise model"
-msgstr "Стандартна модель RNNoise"
-
-#: src/contents/ui/RNNoise.qml:77
-msgid "Standard RNNoise model loaded."
-msgstr "Завантажено стандартну модель RNNoise."
-
-#: src/contents/ui/RNNoise.qml:82 src/contents/ui/RNNoise.qml:304
-msgid "Using %1 Model"
-msgstr "Використовується модель %1"
-
-#: src/contents/ui/RNNoise.qml:84
-msgid "Loaded the %1 RNNoise model."
-msgstr "Завантажено RNNoise модель %1."
-
-#: src/contents/ui/RNNoise.qml:88
-msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
-msgstr ""
-"Не вдалося завантажити модель %1. Повернення до стандартної моделі RNNoise."
-
-#: src/contents/ui/RNNoise.qml:107 src/contents/ui/Speex.qml:117
-msgid "Voice detection"
-msgstr "Виявлення голосу"
-
-#: src/contents/ui/RNNoise.qml:144
-msgid "Wet level"
-msgstr "Оброблений рівень"
-
-#: src/contents/ui/RNNoise.qml:184
-msgid "Use the Standard model"
-msgstr "Стандартна модель"
-
-#: src/contents/ui/RNNoise.qml:195
-msgid "User Models"
-msgstr "Моделі користувачів"
-
-#: src/contents/ui/RNNoise.qml:261
-msgid "Delete this model"
-msgstr "Видалити цю модель"
-
-#: src/contents/ui/RNNoise.qml:266
-msgid "Removed the %1 RNNoise model."
-msgstr "Вилучено RNNoise модель %1."
-
-#: src/contents/ui/RNNoise.qml:268
-msgid "Failed to remove the %1 RNNoise model."
-msgstr "Не вдалося вилучити RNNoise модель %1."
-
-#: src/contents/ui/RNNoise.qml:337
-msgid "Import model"
-msgstr "Імпортувати модель"
 
 #: src/contents/ui/ShortcutsSheet.qml:66
 msgid "Show help"
@@ -2956,10 +2970,6 @@ msgstr "Панорама суми"
 #: src/contents/ui/StereoTools.qml:221 src/contents/ui/StereoTools.qml:253
 msgid "Invert phase"
 msgstr "Інвертувати фазу"
-
-#: src/contents/ui/StereoTools.qml:293 src/tags_plugin_name.cpp:56
-msgid "Delay"
-msgstr "Затримка"
 
 #: src/contents/ui/StereoTools.qml:310
 msgid "Stereo base"
@@ -3143,38 +3153,42 @@ msgid "Exciter"
 msgstr "Ексайтер (збудник)"
 
 #: src/tags_plugin_name.cpp:63
+msgid "Localization Cue Correction"
+msgstr ""
+
+#: src/tags_plugin_name.cpp:64
 msgid "Level Meter"
 msgstr "Вимірювання рівня"
 
-#: src/tags_plugin_name.cpp:66
+#: src/tags_plugin_name.cpp:67
 msgid "Maximizer"
 msgstr "Максимізатор"
 
-#: src/tags_plugin_name.cpp:67
+#: src/tags_plugin_name.cpp:68
 msgid "Multiband Compressor"
 msgstr "Багатосмуговий компресор"
 
-#: src/tags_plugin_name.cpp:68
+#: src/tags_plugin_name.cpp:69
 msgid "Multiband Gate"
 msgstr "Багатосмуговий гейт"
 
-#: src/tags_plugin_name.cpp:70
+#: src/tags_plugin_name.cpp:71
 msgid "Reverberation"
 msgstr "Реверберація"
 
-#: src/tags_plugin_name.cpp:71
+#: src/tags_plugin_name.cpp:72
 msgid "Noise Reduction"
 msgstr "Зменшення шуму"
 
-#: src/tags_plugin_name.cpp:72
+#: src/tags_plugin_name.cpp:73
 msgid "Speech Processor"
 msgstr "Мовний процесор (Speex)"
 
-#: src/tags_plugin_name.cpp:73
+#: src/tags_plugin_name.cpp:74
 msgid "Stereo Tools"
 msgstr "Стереоінструменти"
 
-#: src/tags_plugin_name.cpp:74
+#: src/tags_plugin_name.cpp:75
 msgid "Voice Suppressor"
 msgstr "Приглушувач голосу"
 
