@@ -66,6 +66,7 @@
 #include "expander_preset.hpp"
 #include "filter_preset.hpp"
 #include "gate_preset.hpp"
+#include "lcc_preset.hpp"
 #include "level_meter_preset.hpp"
 #include "limiter_preset.hpp"
 #include "loudness_preset.hpp"
@@ -927,6 +928,9 @@ auto Manager::create_wrapper(const PipelineType& pipeline_type, const QString& f
 
   } else if (filter_name.startsWith(tags::plugin_name::BaseName::voiceSuppressor)) {
     return std::make_unique<VoiceSuppressorPreset>(pipeline_type, filter_name.toStdString());
+
+  } else if (filter_name.startsWith(tags::plugin_name::BaseName::lcc)) {
+    return std::make_unique<LccPreset>(pipeline_type, filter_name.toStdString());
 
   } else if (filter_name.startsWith(tags::plugin_name::BaseName::levelMeter)) {
     return std::make_unique<LevelMeterPreset>(pipeline_type, filter_name.toStdString());
