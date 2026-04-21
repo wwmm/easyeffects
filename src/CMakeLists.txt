@@ -34,6 +34,7 @@ qt_add_qml_module(easyeffects
         compressor.hpp
         convolver.hpp
         crossfeed.hpp
+        crosstalk_canceller.hpp
         crusher.hpp
         crystalizer.hpp
         deepfilternet.hpp

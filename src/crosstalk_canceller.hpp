@@ -209,6 +209,8 @@ class FilterState {
 
 class CrosstalkCanceller : public PluginBase {
   Q_OBJECT
+  QML_NAMED_ELEMENT(BackendCrosstalkCanceller)
+  QML_UNCREATABLE("Use the c++ instance")
 
  public:
   CrosstalkCanceller(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id);

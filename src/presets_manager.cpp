@@ -893,6 +893,9 @@ auto Manager::create_wrapper(const PipelineType& pipeline_type, const QString& f
   } else if (filter_name.startsWith(tags::plugin_name::BaseName::crossfeed)) {
     return std::make_unique<CrossfeedPreset>(pipeline_type, filter_name.toStdString());
 
+  } else if (filter_name.startsWith(tags::plugin_name::BaseName::crosstalkCanceller)) {
+    return std::make_unique<CrosstalkCancellerPreset>(pipeline_type, filter_name.toStdString());
+
   } else if (filter_name.startsWith(tags::plugin_name::BaseName::crusher)) {
     return std::make_unique<CrusherPreset>(pipeline_type, filter_name.toStdString());
 
@@ -926,12 +929,6 @@ auto Manager::create_wrapper(const PipelineType& pipeline_type, const QString& f
   } else if (filter_name.startsWith(tags::plugin_name::BaseName::gate)) {
     return std::make_unique<GatePreset>(pipeline_type, filter_name.toStdString());
 
-  } else if (filter_name.startsWith(tags::plugin_name::BaseName::voiceSuppressor)) {
-    return std::make_unique<VoiceSuppressorPreset>(pipeline_type, filter_name.toStdString());
-
-  } else if (filter_name.startsWith(tags::plugin_name::BaseName::crosstalkCanceller)) {
-    return std::make_unique<CrosstalkCancellerPreset>(pipeline_type, filter_name.toStdString());
-
   } else if (filter_name.startsWith(tags::plugin_name::BaseName::levelMeter)) {
     return std::make_unique<LevelMeterPreset>(pipeline_type, filter_name.toStdString());
 
@@ -964,6 +961,8 @@ auto Manager::create_wrapper(const PipelineType& pipeline_type, const QString& f
 
   } else if (filter_name.startsWith(tags::plugin_name::BaseName::stereoTools)) {
     return std::make_unique<StereoToolsPreset>(pipeline_type, filter_name.toStdString());
+  } else if (filter_name.startsWith(tags::plugin_name::BaseName::voiceSuppressor)) {
+    return std::make_unique<VoiceSuppressorPreset>(pipeline_type, filter_name.toStdString());
   }
 
   util::warning(std::format("The filter name {} base name could not be recognized", filter_name.toStdString()));

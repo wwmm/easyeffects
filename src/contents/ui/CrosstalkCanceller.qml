@@ -29,9 +29,9 @@ Kirigami.ScrollablePage {
     id: crosstalkPage
 
     required property string name
-    required property var pluginDB
+    required property DbCrosstalkCanceller pluginDB
     required property var pipelineInstance
-    property var pluginBackend
+    property BackendCrosstalkCanceller pluginBackend
 
     function updateMeters() {
         if (!crosstalkPage.pluginBackend)
