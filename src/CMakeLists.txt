@@ -118,6 +118,7 @@ qt_add_qml_module(easyeffects
         contents/ui/ShortcutsSheet.qml
         contents/ui/Speex.qml
         contents/ui/StereoTools.qml
+        contents/ui/TrayIcon.qml
         contents/ui/Validators.qml
         contents/ui/VoiceSuppressor.qml
         contents/ui/Common.js
