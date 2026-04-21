@@ -48,6 +48,7 @@
 #include "easyeffects_db_filter.h"
 #include "easyeffects_db_gate.h"
 #include "easyeffects_db_level_meter.h"
+#include "easyeffects_db_lcc.h"
 #include "easyeffects_db_limiter.h"
 #include "easyeffects_db_loudness.h"
 #include "easyeffects_db_maximizer.h"
@@ -245,6 +246,10 @@ void Manager::create_plugin_db(const QString& parentGroup,
     } else if (name.startsWith(tags::plugin_name::BaseName::voiceSuppressor)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::voiceSuppressor, id),
                    [&] { return new DbVoiceSuppressor(parentGroup, id); });
+
+    } else if (name.startsWith(tags::plugin_name::BaseName::lcc)) {
+      ensureExists(makeKey(tags::plugin_name::BaseName::lcc, id),
+                   [&] { return new db::Lcc(parentGroup, id); });
 
     } else if (name.startsWith(tags::plugin_name::BaseName::levelMeter)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::levelMeter, id),
