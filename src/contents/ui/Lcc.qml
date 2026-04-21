@@ -21,6 +21,7 @@ import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import ee.tags.plugin.name as TagsPluginName // qmllint disable
+import ee.ui
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
@@ -33,17 +34,17 @@ Kirigami.ScrollablePage {
     property var pluginBackend
 
     function updateMeters() {
-        if (!pluginBackend)
+        if (!lccPage.pluginBackend)
             return;
 
-        inputOutputLevels.setInputLevelLeft(pluginBackend.getInputLevelLeft());
-        inputOutputLevels.setInputLevelRight(pluginBackend.getInputLevelRight());
-        inputOutputLevels.setOutputLevelLeft(pluginBackend.getOutputLevelLeft());
-        inputOutputLevels.setOutputLevelRight(pluginBackend.getOutputLevelRight());
+        inputOutputLevels.setInputLevelLeft(lccPage.pluginBackend.getInputLevelLeft());
+        inputOutputLevels.setInputLevelRight(lccPage.pluginBackend.getInputLevelRight());
+        inputOutputLevels.setOutputLevelLeft(lccPage.pluginBackend.getOutputLevelLeft());
+        inputOutputLevels.setOutputLevelRight(lccPage.pluginBackend.getOutputLevelRight());
     }
 
     Component.onCompleted: {
-        pluginBackend = pipelineInstance.getPluginInstance(name);
+        lccPage.pluginBackend = lccPage.pipelineInstance.getPluginInstance(name);
     }
 
     ColumnLayout {
@@ -62,9 +63,9 @@ Kirigami.ScrollablePage {
 
                     text: i18n("Process only phantom center") // qmllint disable
 
-                    checked: pluginDB.phantomCenterOnly
+                    checked: lccPage.pluginDB.phantomCenterOnly
                     onCheckedChanged: {
-                        pluginDB.phantomCenterOnly = checked;
+                        lccPage.pluginDB.phantomCenterOnly = checked;
                     }
                 }
 
@@ -73,14 +74,14 @@ Kirigami.ScrollablePage {
 
                     label: i18n("Delay") // qmllint disable
                     spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
-                    from: pluginDB.getMinValue("delayUs")
-                    to: pluginDB.getMaxValue("delayUs")
-                    value: pluginDB.delayUs
+                    from: lccPage.pluginDB.getMinValue("delayUs")
+                    to: lccPage.pluginDB.getMaxValue("delayUs")
+                    value: lccPage.pluginDB.delayUs
                     decimals: 0
                     stepSize: 1
                     unit: Units.us
                     onValueModified: v => {
-                        pluginDB.delayUs = v;
+                        lccPage.pluginDB.delayUs = v;
                     }
                 }
 
@@ -89,14 +90,14 @@ Kirigami.ScrollablePage {
 
                     label: i18n("Decay") // qmllint disable
                     spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
-                    from: pluginDB.getMinValue("decayDb")
-                    to: pluginDB.getMaxValue("decayDb")
-                    value: pluginDB.decayDb
+                    from: lccPage.pluginDB.getMinValue("decayDb")
+                    to: lccPage.pluginDB.getMaxValue("decayDb")
+                    value: lccPage.pluginDB.decayDb
                     decimals: 1
                     stepSize: 0.1
                     unit: Units.dB
                     onValueModified: v => {
-                        pluginDB.decayDb = v;
+                        lccPage.pluginDB.decayDb = v;
                     }
                 }
             }
@@ -106,7 +107,7 @@ Kirigami.ScrollablePage {
     header: EeInputOutputGain {
         id: inputOutputLevels
 
-        pluginDB: pluginDB
+        pluginDB: lccPage.pluginDB
     }
 
     footer: RowLayout {
@@ -121,7 +122,7 @@ Kirigami.ScrollablePage {
                     text: i18n("Reset") // qmllint disable
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {
-                        pluginBackend.reset();
+                        lccPage.pluginBackend.reset();
                     }
                 }
             ]

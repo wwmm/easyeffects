@@ -38,6 +38,7 @@ class Units : public QObject {
   Q_PROPERTY(QString dBoct MEMBER dBoct CONSTANT)
   Q_PROPERTY(QString s MEMBER s CONSTANT)
   Q_PROPERTY(QString ms MEMBER ms CONSTANT)
+  Q_PROPERTY(QString us MEMBER us CONSTANT)
   Q_PROPERTY(QString hz MEMBER hz CONSTANT)
   Q_PROPERTY(QString kHz MEMBER kHz CONSTANT)
   Q_PROPERTY(QString lufs MEMBER lufs CONSTANT)
@@ -69,6 +70,7 @@ class Units : public QObject {
     dBoct = ki18nc("decibel per octaves unit abbreviation", "dB/oct").toString();
     s = ki18nc("seconds unit abbreviation", "s").toString();
     ms = ki18nc("milliseconds unit abbreviation", "ms").toString();
+    us = ki18nc("milliseconds unit abbreviation", "us").toString();
     hz = ki18nc("Hertz unit abbreviation", "Hz").toString();
     kHz = ki18nc("kiloHertz unit abbreviation", "kHz").toString();
     lufs = ki18nc("loudness full scale unit abbreviation", "LUFS").toString();
@@ -97,6 +99,7 @@ class Units : public QObject {
   QString dBoct;
   QString s;
   QString ms;
+  QString us;
   QString hz;
   QString kHz;
   QString lufs;
