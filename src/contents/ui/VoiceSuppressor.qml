@@ -161,17 +161,6 @@ Kirigami.ScrollablePage {
     }
 
     footer: RowLayout {
-        Controls.Label {
-            text: i18n("Using %1", `<strong>${PluginsPackage.bs2b}</strong>`) // qmllint disable
-            textFormat: Text.RichText
-            horizontalAlignment: Qt.AlignLeft
-            verticalAlignment: Qt.AlignVCenter
-            Layout.fillWidth: false
-            Layout.leftMargin: Kirigami.Units.mediumSpacing * 2
-            Layout.rightMargin: Kirigami.Units.largeSpacing * 8
-            color: Kirigami.Theme.disabledTextColor
-        }
-
         Kirigami.ActionToolBar {
             Layout.margins: Kirigami.Units.smallSpacing
             alignment: Qt.AlignRight
