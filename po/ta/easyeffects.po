@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-04-21 14:08-0300\n"
+"POT-Creation-Date: 2026-04-21 16:35-0300\n"
 "PO-Revision-Date: 2026-02-24 06:09+0000\n"
 "Last-Translator: தமிழ்நேரம் <tamilneram247@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -127,6 +127,7 @@ msgstr "பற்றி"
 
 #: src/contents/ui/Autogain.qml:69 src/contents/ui/BassEnhancer.qml:105
 #: src/contents/ui/BassLoudness.qml:58 src/contents/ui/Crossfeed.qml:73
+#: src/contents/ui/CrosstalkCanceller.qml:59
 #: src/contents/ui/DeepFilterNet.qml:93 src/contents/ui/Exciter.qml:106
 #: src/contents/ui/Filter.qml:58 src/contents/ui/Loudness.qml:58
 #: src/contents/ui/Maximizer.qml:59 src/contents/ui/Pitch.qml:59
@@ -184,7 +185,7 @@ msgstr "அதிகபட்ச வரலாறு"
 
 #: src/contents/ui/Autogain.qml:143 src/contents/ui/Autogain.qml:198
 #: src/contents/ui/BassLoudness.qml:66 src/contents/ui/LevelMeter.qml:146
-#: src/tags_plugin_name.cpp:65
+#: src/tags_plugin_name.cpp:66
 msgid "Loudness"
 msgstr "உரித்தல்"
 
@@ -218,7 +219,6 @@ msgstr "வெளியீடு ஆதாயம்"
 #: src/contents/ui/RNNoise.qml:86 src/contents/ui/RNNoise.qml:300
 #: src/contents/ui/RNNoise.qml:302 src/contents/ui/RNNoise.qml:320
 #: src/contents/ui/Speex.qml:174 src/contents/ui/StereoTools.qml:389
-#: src/contents/ui/VoiceSuppressor.qml:165
 msgid "Using %1"
 msgstr "% 1 ஐப் பயன்படுத்துகிறது"
 
@@ -294,18 +294,18 @@ msgstr "கேளுங்கள்"
 
 #: src/contents/ui/BassEnhancer.qml:245 src/contents/ui/BassLoudness.qml:141
 #: src/contents/ui/Compressor.qml:924 src/contents/ui/Convolver.qml:554
-#: src/contents/ui/Crossfeed.qml:173 src/contents/ui/Crusher.qml:265
-#: src/contents/ui/Crystalizer.qml:201 src/contents/ui/Deesser.qml:359
-#: src/contents/ui/Delay.qml:425 src/contents/ui/EchoCanceller.qml:183
-#: src/contents/ui/Equalizer.qml:383 src/contents/ui/Exciter.qml:250
-#: src/contents/ui/Expander.qml:874 src/contents/ui/Filter.qml:249
-#: src/contents/ui/Gate.qml:1003 src/contents/ui/Limiter.qml:658
-#: src/contents/ui/Loudness.qml:214 src/contents/ui/Main.qml:443
-#: src/contents/ui/Maximizer.qml:151
+#: src/contents/ui/Crossfeed.qml:173 src/contents/ui/CrosstalkCanceller.qml:122
+#: src/contents/ui/Crusher.qml:265 src/contents/ui/Crystalizer.qml:201
+#: src/contents/ui/Deesser.qml:359 src/contents/ui/Delay.qml:425
+#: src/contents/ui/EchoCanceller.qml:183 src/contents/ui/Equalizer.qml:383
+#: src/contents/ui/Exciter.qml:250 src/contents/ui/Expander.qml:874
+#: src/contents/ui/Filter.qml:249 src/contents/ui/Gate.qml:1003
+#: src/contents/ui/Limiter.qml:658 src/contents/ui/Loudness.qml:214
+#: src/contents/ui/Main.qml:443 src/contents/ui/Maximizer.qml:151
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:356
 #: src/contents/ui/RNNoise.qml:345 src/contents/ui/Speex.qml:192
-#: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:193
+#: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:182
 msgid "Reset"
 msgstr "மீட்டமை"
 
@@ -486,7 +486,7 @@ msgstr "வெளிப்புறம்"
 
 #: src/contents/ui/Compressor.qml:278 src/contents/ui/Expander.qml:238
 #: src/contents/ui/Gate.qml:256 src/contents/ui/Limiter.qml:228
-#: src/contents/ui/PageStreamsEffects.qml:441
+#: src/contents/ui/PageStreamsEffects.qml:443
 msgid "Input device"
 msgstr "உள்ளீட்டு சாதனம்"
 
@@ -936,6 +936,20 @@ msgstr "இயல்புநிலை"
 msgid "Presets"
 msgstr "முன்னமைவுகள்"
 
+#: src/contents/ui/CrosstalkCanceller.qml:64
+msgid "Process only phantom center"
+msgstr ""
+
+#: src/contents/ui/CrosstalkCanceller.qml:75
+#: src/contents/ui/StereoTools.qml:293 src/tags_plugin_name.cpp:57
+msgid "Delay"
+msgstr "சுணக்கம்"
+
+#: src/contents/ui/CrosstalkCanceller.qml:91
+#, fuzzy
+msgid "Decay"
+msgstr "சிதைவு நேரம்"
+
 #: src/contents/ui/Crusher.qml:55
 msgid "Bit reduction"
 msgstr "பிட் குறைப்பு"
@@ -1036,7 +1050,7 @@ msgstr "குறைந்தபட்ச செயலாக்க தாங்�
 msgid "Post filter Beta"
 msgstr "பிந்தைய வடிகட்டி பீட்டா"
 
-#: src/contents/ui/Deesser.qml:63 src/tags_plugin_name.cpp:55
+#: src/contents/ui/Deesser.qml:63 src/tags_plugin_name.cpp:56
 msgid "Deesser"
 msgstr "டீசர்"
 
@@ -1067,7 +1081,7 @@ msgid "Laxity"
 msgstr "மெழுகுவர்த்தி"
 
 #: src/contents/ui/Deesser.qml:171 src/contents/ui/Filter.qml:122
-#: src/contents/ui/Reverb.qml:126 src/tags_plugin_name.cpp:61
+#: src/contents/ui/Reverb.qml:126 src/tags_plugin_name.cpp:62
 msgid "Filter"
 msgstr "வடிப்பி"
 
@@ -1189,7 +1203,7 @@ msgstr "விலக்கு"
 msgid "Add %1 to excluded applications"
 msgstr "விலக்கப்பட்ட பயன்பாடுகளில் %1ஐச் சேர்க்கவும்"
 
-#: src/contents/ui/EchoCanceller.qml:60 src/tags_plugin_name.cpp:57
+#: src/contents/ui/EchoCanceller.qml:60 src/tags_plugin_name.cpp:58
 msgid "Echo Canceller"
 msgstr "எக்கோ ரத்துசெய்தல்"
 
@@ -1486,7 +1500,7 @@ msgstr "செல் செயலில்"
 msgid "Ceil"
 msgstr "சீல்"
 
-#: src/contents/ui/Expander.qml:68 src/tags_plugin_name.cpp:60
+#: src/contents/ui/Expander.qml:68 src/tags_plugin_name.cpp:61
 msgid "Expander"
 msgstr "விரிவாக்க"
 
@@ -1504,7 +1518,7 @@ msgstr "வடிகட்டி முறை"
 msgid "Equalizer mode"
 msgstr "சமநிலை முறை"
 
-#: src/contents/ui/Gate.qml:72 src/tags_plugin_name.cpp:62
+#: src/contents/ui/Gate.qml:72 src/tags_plugin_name.cpp:63
 msgid "Gate"
 msgstr "வாயில்"
 
@@ -1678,7 +1692,7 @@ msgstr "உண்மையான உச்சம்/24 பிட்கள்"
 msgid "Dithering"
 msgstr "டித்தரிங்"
 
-#: src/contents/ui/Limiter.qml:117 src/tags_plugin_name.cpp:64
+#: src/contents/ui/Limiter.qml:117 src/tags_plugin_name.cpp:65
 msgid "Limiter"
 msgstr "லிமிட்டர்"
 
@@ -1766,7 +1780,7 @@ msgstr "அனைத்து Easy Effects அமைப்புகளையு�
 msgid "Go back"
 msgstr "திரும்பி போ"
 
-#: src/contents/ui/Main.qml:329 src/contents/ui/PageStreamsEffects.qml:745
+#: src/contents/ui/Main.qml:329 src/contents/ui/PageStreamsEffects.qml:747
 msgid "Effects"
 msgstr "விளைவுகள்"
 
@@ -1900,45 +1914,45 @@ msgstr "விளைவுகள் இல்லை"
 msgid "Audio stream not modified"
 msgstr "ஆடியோ ச்ட்ரீம் மாற்றப்படவில்லை"
 
-#: src/contents/ui/PageStreamsEffects.qml:376
+#: src/contents/ui/PageStreamsEffects.qml:378
 msgid "Add effect"
 msgstr "விளைவைச் சேர்க்கவும்"
 
-#: src/contents/ui/PageStreamsEffects.qml:384
+#: src/contents/ui/PageStreamsEffects.qml:386
 msgid "Close"
 msgstr "மூடு"
 
-#: src/contents/ui/PageStreamsEffects.qml:388
+#: src/contents/ui/PageStreamsEffects.qml:390
 msgid "Expand the list of effects pipeline"
 msgstr "விளைவுகளின் பட்டியலை விரிவாக்கவும்"
 
-#: src/contents/ui/PageStreamsEffects.qml:388
+#: src/contents/ui/PageStreamsEffects.qml:390
 msgid "Reduce the list of effects pipeline"
 msgstr "விளைவு பைப்லைன் பட்டியலைக் குறைக்கவும்"
 
-#: src/contents/ui/PageStreamsEffects.qml:441
-#: src/contents/ui/PageStreamsEffects.qml:732
+#: src/contents/ui/PageStreamsEffects.qml:443
+#: src/contents/ui/PageStreamsEffects.qml:734
 msgid "Players"
 msgstr "வீரர்கள்"
 
-#: src/contents/ui/PageStreamsEffects.qml:450
+#: src/contents/ui/PageStreamsEffects.qml:452
 msgid "Output device"
 msgstr "வெளியீட்டு சாதனம்"
 
-#: src/contents/ui/PageStreamsEffects.qml:450
-#: src/contents/ui/PageStreamsEffects.qml:732
+#: src/contents/ui/PageStreamsEffects.qml:452
+#: src/contents/ui/PageStreamsEffects.qml:734
 msgid "Recorders"
 msgstr "ரெக்கார்டர்கள்"
 
-#: src/contents/ui/PageStreamsEffects.qml:763
+#: src/contents/ui/PageStreamsEffects.qml:765
 msgid "Excluded apps"
 msgstr "விலக்கப்பட்ட பயன்பாடுகள்"
 
-#: src/contents/ui/PageStreamsEffects.qml:772
+#: src/contents/ui/PageStreamsEffects.qml:774
 msgid "Input monitoring"
 msgstr "உள்ளீடு கண்காணிப்பு"
 
-#: src/contents/ui/PageStreamsEffects.qml:785
+#: src/contents/ui/PageStreamsEffects.qml:787
 msgid "Send audio to the virtual source"
 msgstr "மெய்நிகர் மூலத்திற்கு ஆடியோவை அனுப்பவும்"
 
@@ -2064,7 +2078,7 @@ msgstr "தேடு சாளரம்"
 msgid "Overlap length"
 msgstr "ஒன்றுடன் ஒன்று நீளம்"
 
-#: src/contents/ui/Pitch.qml:163 src/tags_plugin_name.cpp:69
+#: src/contents/ui/Pitch.qml:163 src/tags_plugin_name.cpp:70
 msgid "Pitch"
 msgstr "குனிவு"
 
@@ -2956,10 +2970,6 @@ msgstr "நடுத்தர பனோரமா"
 msgid "Invert phase"
 msgstr "தலைகீழ் கட்டம்"
 
-#: src/contents/ui/StereoTools.qml:293 src/tags_plugin_name.cpp:56
-msgid "Delay"
-msgstr "சுணக்கம்"
-
 #: src/contents/ui/StereoTools.qml:310
 msgid "Stereo base"
 msgstr "ச்டீரியோ அடிப்படை"
@@ -3008,7 +3018,7 @@ msgstr "குறைந்தபட்ச குர்டோசிச்"
 msgid "Maximum instantaneous frequency"
 msgstr "அதிகபட்ச உடனடி அதிர்வெண்"
 
-#: src/contents/ui/VoiceSuppressor.qml:182
+#: src/contents/ui/VoiceSuppressor.qml:171
 msgid "Inverted mode"
 msgstr "தலைகீழ் முறை"
 
@@ -3051,33 +3061,33 @@ msgstr "(பேச்சாளர்கள்)"
 msgid "Output Level Meter"
 msgstr "வெளியீட்டு நிலை மீட்டர்"
 
-#: src/presets_manager.cpp:822 src/presets_manager.cpp:829
-#: src/presets_manager.cpp:839 src/presets_manager.cpp:846
-#: src/presets_manager.cpp:856 src/presets_manager.cpp:865
+#: src/presets_manager.cpp:823 src/presets_manager.cpp:830
+#: src/presets_manager.cpp:840 src/presets_manager.cpp:847
+#: src/presets_manager.cpp:857 src/presets_manager.cpp:866
 msgid "Preset not loaded correctly"
 msgstr "முன்னமைவு சரியாக ஏற்றப்படவில்லை"
 
-#: src/presets_manager.cpp:822
+#: src/presets_manager.cpp:823
 msgid "Wrong format in excluded apps list"
 msgstr "விலக்கப்பட்ட ஆப்ச் பட்டியலில் தவறான வடிவம்"
 
-#: src/presets_manager.cpp:830
+#: src/presets_manager.cpp:831
 msgid "Generic error while loading excluded apps list"
 msgstr "விலக்கப்பட்ட ஆப்ச் பட்டியலை ஏற்றும்போது பொதுவான பிழை"
 
-#: src/presets_manager.cpp:839
+#: src/presets_manager.cpp:840
 msgid "Wrong format in effects list"
 msgstr "விளைவுகள் பட்டியலில் தவறான வடிவம்"
 
-#: src/presets_manager.cpp:846
+#: src/presets_manager.cpp:847
 msgid "Generic error while loading effects list"
 msgstr "விளைவுகள் பட்டியலை ஏற்றும்போது பொதுவான பிழை"
 
-#: src/presets_manager.cpp:857
+#: src/presets_manager.cpp:858
 msgid "One or more parameters have a wrong format"
 msgstr "ஒன்று அல்லது அதற்கு மேற்பட்ட அளவுருக்கள் தவறான வடிவமைப்பைக் கொண்டுள்ளன"
 
-#: src/presets_manager.cpp:866
+#: src/presets_manager.cpp:867
 msgid "Generic error while loading the effect"
 msgstr "விளைவை ஏற்றும்போது பொதுவான பிழை"
 
@@ -3122,172 +3132,183 @@ msgid "Crossfeed"
 msgstr "குறுக்குவெட்டு"
 
 #: src/tags_plugin_name.cpp:52
+#, fuzzy
+msgid "Crosstalk Canceller"
+msgstr "எக்கோ ரத்துசெய்தல்"
+
+#: src/tags_plugin_name.cpp:53
 msgid "Crusher"
 msgstr "நொறுக்கி"
 
-#: src/tags_plugin_name.cpp:53
+#: src/tags_plugin_name.cpp:54
 msgid "Crystalizer"
 msgstr "படிகதாரர்"
 
-#: src/tags_plugin_name.cpp:54
+#: src/tags_plugin_name.cpp:55
 msgid "Deep Noise Remover"
 msgstr "ஆழமான இரைச்சல் நீக்கி"
 
-#: src/tags_plugin_name.cpp:58
+#: src/tags_plugin_name.cpp:59
 msgid "Equalizer"
 msgstr "சமநிலைப்படுத்தி"
 
-#: src/tags_plugin_name.cpp:59
+#: src/tags_plugin_name.cpp:60
 msgid "Exciter"
 msgstr "ஊக்கம்"
 
-#: src/tags_plugin_name.cpp:63
+#: src/tags_plugin_name.cpp:64
 msgid "Level Meter"
 msgstr "நிலை மீட்டர்"
 
-#: src/tags_plugin_name.cpp:66
+#: src/tags_plugin_name.cpp:67
 msgid "Maximizer"
 msgstr "அதிகபட்சம்"
 
-#: src/tags_plugin_name.cpp:67
+#: src/tags_plugin_name.cpp:68
 msgid "Multiband Compressor"
 msgstr "மல்டிபாண்ட் அமுக்கி"
 
-#: src/tags_plugin_name.cpp:68
+#: src/tags_plugin_name.cpp:69
 msgid "Multiband Gate"
 msgstr "மல்டிபாண்ட் கேட்"
 
-#: src/tags_plugin_name.cpp:70
+#: src/tags_plugin_name.cpp:71
 msgid "Reverberation"
 msgstr "எதிரொலித்தல்"
 
-#: src/tags_plugin_name.cpp:71
+#: src/tags_plugin_name.cpp:72
 msgid "Noise Reduction"
 msgstr "ஒலி குறைப்பு"
 
-#: src/tags_plugin_name.cpp:72
+#: src/tags_plugin_name.cpp:73
 msgid "Speech Processor"
 msgstr "பேச்சு செயலி"
 
-#: src/tags_plugin_name.cpp:73
+#: src/tags_plugin_name.cpp:74
 msgid "Stereo Tools"
 msgstr "ச்டீரியோ கருவிகள்"
 
-#: src/tags_plugin_name.cpp:74
+#: src/tags_plugin_name.cpp:75
 msgid "Voice Suppressor"
 msgstr "குரல் அடக்கி"
 
-#: src/units.hpp:59
+#: src/units.hpp:60
 msgctxt "left channel abbreviation (single letter)"
 msgid "L"
 msgstr "எல்"
 
-#: src/units.hpp:60
+#: src/units.hpp:61
 msgctxt "left channel abbreviation (single letter)"
 msgid "R"
 msgstr "ஆர்"
 
-#: src/units.hpp:63
+#: src/units.hpp:64
 msgctxt "The SOFA audio file format"
 msgid "SOFA"
 msgstr "சோஃபா"
 
-#: src/units.hpp:64
+#: src/units.hpp:65
 msgctxt "The WAV audio file format"
 msgid "WAV"
 msgstr "WAV"
 
-#: src/units.hpp:67
+#: src/units.hpp:68
 msgctxt "decibel unit abbreviation"
 msgid "dB"
 msgstr "dB"
 
-#: src/units.hpp:68
+#: src/units.hpp:69
 msgctxt "decibel full scale unit abbreviation"
 msgid "dBFS"
 msgstr "dBFS"
 
-#: src/units.hpp:69
+#: src/units.hpp:70
 msgctxt "decibel per octaves unit abbreviation"
 msgid "dB/oct"
 msgstr "dB/oct"
 
-#: src/units.hpp:70
+#: src/units.hpp:71
 msgctxt "seconds unit abbreviation"
 msgid "s"
 msgstr "கள்"
 
-#: src/units.hpp:71
+#: src/units.hpp:72
 msgctxt "milliseconds unit abbreviation"
 msgid "ms"
 msgstr "ms"
 
-#: src/units.hpp:72
+#: src/units.hpp:73
+#, fuzzy
+msgctxt "milliseconds unit abbreviation"
+msgid "us"
+msgstr "கள்"
+
+#: src/units.hpp:74
 msgctxt "Hertz unit abbreviation"
 msgid "Hz"
 msgstr "எர்ட்ச்"
 
-#: src/units.hpp:73
+#: src/units.hpp:75
 msgctxt "kiloHertz unit abbreviation"
 msgid "kHz"
 msgstr "kHz"
 
-#: src/units.hpp:74
+#: src/units.hpp:76
 msgctxt "loudness full scale unit abbreviation"
 msgid "LUFS"
 msgstr "LUFS"
 
-#: src/units.hpp:75
+#: src/units.hpp:77
 msgctxt "loudness unit abbreviation"
 msgid "LU"
 msgstr "LU"
 
-#: src/units.hpp:76
+#: src/units.hpp:78
 msgctxt "meter unit abbreviation"
 msgid "m"
 msgstr "மீ"
 
-#: src/units.hpp:77
+#: src/units.hpp:79
 msgctxt "centimeter unit abbreviation"
 msgid "cm"
 msgstr "செ.மீ"
 
-#: src/units.hpp:78
+#: src/units.hpp:80
 msgctxt "degrees Celsius unit abbreviation"
 msgid "°C"
 msgstr "°C"
 
-#: src/units.hpp:79
+#: src/units.hpp:81
 msgctxt "bit unit (plural)"
 msgid "bits"
 msgstr "பிட்கள்"
 
-#: src/units.hpp:80
+#: src/units.hpp:82
 msgctxt "frame unit (plural)"
 msgid "frames"
 msgstr "சட்டங்கள்"
 
-#: src/units.hpp:81
+#: src/units.hpp:83
 msgctxt "frames per second abbreviation"
 msgid "fps"
 msgstr "fps"
 
-#: src/units.hpp:84
+#: src/units.hpp:86
 msgctxt "thousand abbreviation (single letter)"
 msgid "k"
 msgstr "கே"
 
-#: src/units.hpp:85
+#: src/units.hpp:87
 msgctxt "percentage symbol"
 msgid "%"
 msgstr "%"
 
-#: src/units.hpp:86
+#: src/units.hpp:88
 msgctxt "degrees (angle) symbol"
 msgid "°"
 msgstr "°"
 
-#: src/units.hpp:87
+#: src/units.hpp:89
 msgctxt "minus infinity abbreviation"
 msgid "-inf"
 msgstr "-முடிவிலா"

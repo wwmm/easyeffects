@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-04-21 14:08-0300\n"
+"POT-Creation-Date: 2026-04-21 16:35-0300\n"
 "PO-Revision-Date: 2026-03-02 17:09+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -128,6 +128,7 @@ msgstr "À propos"
 
 #: src/contents/ui/Autogain.qml:69 src/contents/ui/BassEnhancer.qml:105
 #: src/contents/ui/BassLoudness.qml:58 src/contents/ui/Crossfeed.qml:73
+#: src/contents/ui/CrosstalkCanceller.qml:59
 #: src/contents/ui/DeepFilterNet.qml:93 src/contents/ui/Exciter.qml:106
 #: src/contents/ui/Filter.qml:58 src/contents/ui/Loudness.qml:58
 #: src/contents/ui/Maximizer.qml:59 src/contents/ui/Pitch.qml:59
@@ -185,7 +186,7 @@ msgstr "Historique maximal"
 
 #: src/contents/ui/Autogain.qml:143 src/contents/ui/Autogain.qml:198
 #: src/contents/ui/BassLoudness.qml:66 src/contents/ui/LevelMeter.qml:146
-#: src/tags_plugin_name.cpp:65
+#: src/tags_plugin_name.cpp:66
 msgid "Loudness"
 msgstr "Sonie"
 
@@ -219,7 +220,6 @@ msgstr "Gain de sortie"
 #: src/contents/ui/RNNoise.qml:86 src/contents/ui/RNNoise.qml:300
 #: src/contents/ui/RNNoise.qml:302 src/contents/ui/RNNoise.qml:320
 #: src/contents/ui/Speex.qml:174 src/contents/ui/StereoTools.qml:389
-#: src/contents/ui/VoiceSuppressor.qml:165
 msgid "Using %1"
 msgstr "Utilisation de %1"
 
@@ -295,18 +295,18 @@ msgstr "Écouter"
 
 #: src/contents/ui/BassEnhancer.qml:245 src/contents/ui/BassLoudness.qml:141
 #: src/contents/ui/Compressor.qml:924 src/contents/ui/Convolver.qml:554
-#: src/contents/ui/Crossfeed.qml:173 src/contents/ui/Crusher.qml:265
-#: src/contents/ui/Crystalizer.qml:201 src/contents/ui/Deesser.qml:359
-#: src/contents/ui/Delay.qml:425 src/contents/ui/EchoCanceller.qml:183
-#: src/contents/ui/Equalizer.qml:383 src/contents/ui/Exciter.qml:250
-#: src/contents/ui/Expander.qml:874 src/contents/ui/Filter.qml:249
-#: src/contents/ui/Gate.qml:1003 src/contents/ui/Limiter.qml:658
-#: src/contents/ui/Loudness.qml:214 src/contents/ui/Main.qml:443
-#: src/contents/ui/Maximizer.qml:151
+#: src/contents/ui/Crossfeed.qml:173 src/contents/ui/CrosstalkCanceller.qml:122
+#: src/contents/ui/Crusher.qml:265 src/contents/ui/Crystalizer.qml:201
+#: src/contents/ui/Deesser.qml:359 src/contents/ui/Delay.qml:425
+#: src/contents/ui/EchoCanceller.qml:183 src/contents/ui/Equalizer.qml:383
+#: src/contents/ui/Exciter.qml:250 src/contents/ui/Expander.qml:874
+#: src/contents/ui/Filter.qml:249 src/contents/ui/Gate.qml:1003
+#: src/contents/ui/Limiter.qml:658 src/contents/ui/Loudness.qml:214
+#: src/contents/ui/Main.qml:443 src/contents/ui/Maximizer.qml:151
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:356
 #: src/contents/ui/RNNoise.qml:345 src/contents/ui/Speex.qml:192
-#: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:193
+#: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:182
 msgid "Reset"
 msgstr "Réinitialiser"
 
@@ -488,7 +488,7 @@ msgstr "Externe"
 
 #: src/contents/ui/Compressor.qml:278 src/contents/ui/Expander.qml:238
 #: src/contents/ui/Gate.qml:256 src/contents/ui/Limiter.qml:228
-#: src/contents/ui/PageStreamsEffects.qml:441
+#: src/contents/ui/PageStreamsEffects.qml:443
 msgid "Input device"
 msgstr "Périphérique d’entrée"
 
@@ -936,6 +936,20 @@ msgstr "Par défaut"
 msgid "Presets"
 msgstr "Préréglages"
 
+#: src/contents/ui/CrosstalkCanceller.qml:64
+msgid "Process only phantom center"
+msgstr ""
+
+#: src/contents/ui/CrosstalkCanceller.qml:75
+#: src/contents/ui/StereoTools.qml:293 src/tags_plugin_name.cpp:57
+msgid "Delay"
+msgstr "Retard"
+
+#: src/contents/ui/CrosstalkCanceller.qml:91
+#, fuzzy
+msgid "Decay"
+msgstr "Temps de déclin"
+
 #: src/contents/ui/Crusher.qml:55
 msgid "Bit reduction"
 msgstr "Réduction de bits"
@@ -1036,7 +1050,7 @@ msgstr "Tampon du traitement minimal"
 msgid "Post filter Beta"
 msgstr "Post-filtre Beta"
 
-#: src/contents/ui/Deesser.qml:63 src/tags_plugin_name.cpp:55
+#: src/contents/ui/Deesser.qml:63 src/tags_plugin_name.cpp:56
 msgid "Deesser"
 msgstr "Déesseur"
 
@@ -1067,7 +1081,7 @@ msgid "Laxity"
 msgstr "Laxité"
 
 #: src/contents/ui/Deesser.qml:171 src/contents/ui/Filter.qml:122
-#: src/contents/ui/Reverb.qml:126 src/tags_plugin_name.cpp:61
+#: src/contents/ui/Reverb.qml:126 src/tags_plugin_name.cpp:62
 msgid "Filter"
 msgstr "Filtre"
 
@@ -1189,7 +1203,7 @@ msgstr "Exclure"
 msgid "Add %1 to excluded applications"
 msgstr "Ajouter %1 aux applications exclues"
 
-#: src/contents/ui/EchoCanceller.qml:60 src/tags_plugin_name.cpp:57
+#: src/contents/ui/EchoCanceller.qml:60 src/tags_plugin_name.cpp:58
 msgid "Echo Canceller"
 msgstr "Annulateur d’Écho"
 
@@ -1490,7 +1504,7 @@ msgstr "Plafond actif"
 msgid "Ceil"
 msgstr "Plafonner"
 
-#: src/contents/ui/Expander.qml:68 src/tags_plugin_name.cpp:60
+#: src/contents/ui/Expander.qml:68 src/tags_plugin_name.cpp:61
 msgid "Expander"
 msgstr "Expanseur"
 
@@ -1508,7 +1522,7 @@ msgstr "Mode filtre"
 msgid "Equalizer mode"
 msgstr "Mode égaliseur"
 
-#: src/contents/ui/Gate.qml:72 src/tags_plugin_name.cpp:62
+#: src/contents/ui/Gate.qml:72 src/tags_plugin_name.cpp:63
 msgid "Gate"
 msgstr "Porte"
 
@@ -1682,7 +1696,7 @@ msgstr "Pic réel/24 bits"
 msgid "Dithering"
 msgstr "Tramage"
 
-#: src/contents/ui/Limiter.qml:117 src/tags_plugin_name.cpp:64
+#: src/contents/ui/Limiter.qml:117 src/tags_plugin_name.cpp:65
 msgid "Limiter"
 msgstr "Limiteur"
 
@@ -1772,7 +1786,7 @@ msgstr ""
 msgid "Go back"
 msgstr "Revenir en arrière"
 
-#: src/contents/ui/Main.qml:329 src/contents/ui/PageStreamsEffects.qml:745
+#: src/contents/ui/Main.qml:329 src/contents/ui/PageStreamsEffects.qml:747
 msgid "Effects"
 msgstr "Effets"
 
@@ -1906,45 +1920,45 @@ msgstr "Aucun Effet"
 msgid "Audio stream not modified"
 msgstr "Flux audio non modifié"
 
-#: src/contents/ui/PageStreamsEffects.qml:376
+#: src/contents/ui/PageStreamsEffects.qml:378
 msgid "Add effect"
 msgstr "Ajouter un effet"
 
-#: src/contents/ui/PageStreamsEffects.qml:384
+#: src/contents/ui/PageStreamsEffects.qml:386
 msgid "Close"
 msgstr "Fermer"
 
-#: src/contents/ui/PageStreamsEffects.qml:388
+#: src/contents/ui/PageStreamsEffects.qml:390
 msgid "Expand the list of effects pipeline"
 msgstr "Développer la liste des effets du pipeline"
 
-#: src/contents/ui/PageStreamsEffects.qml:388
+#: src/contents/ui/PageStreamsEffects.qml:390
 msgid "Reduce the list of effects pipeline"
 msgstr "Réduire la liste des effects du pipeline"
 
-#: src/contents/ui/PageStreamsEffects.qml:441
-#: src/contents/ui/PageStreamsEffects.qml:732
+#: src/contents/ui/PageStreamsEffects.qml:443
+#: src/contents/ui/PageStreamsEffects.qml:734
 msgid "Players"
 msgstr "Lecteurs"
 
-#: src/contents/ui/PageStreamsEffects.qml:450
+#: src/contents/ui/PageStreamsEffects.qml:452
 msgid "Output device"
 msgstr "Périphérique de sortie"
 
-#: src/contents/ui/PageStreamsEffects.qml:450
-#: src/contents/ui/PageStreamsEffects.qml:732
+#: src/contents/ui/PageStreamsEffects.qml:452
+#: src/contents/ui/PageStreamsEffects.qml:734
 msgid "Recorders"
 msgstr "Enregistreurs"
 
-#: src/contents/ui/PageStreamsEffects.qml:763
+#: src/contents/ui/PageStreamsEffects.qml:765
 msgid "Excluded apps"
 msgstr "Applications exclues"
 
-#: src/contents/ui/PageStreamsEffects.qml:772
+#: src/contents/ui/PageStreamsEffects.qml:774
 msgid "Input monitoring"
 msgstr "Surveillance de l'entrée"
 
-#: src/contents/ui/PageStreamsEffects.qml:785
+#: src/contents/ui/PageStreamsEffects.qml:787
 msgid "Send audio to the virtual source"
 msgstr "Envoyer l'audio vers la source virtuelle"
 
@@ -2071,7 +2085,7 @@ msgstr "Fenêtre de recherche"
 msgid "Overlap length"
 msgstr "Longueur de recouvrement"
 
-#: src/contents/ui/Pitch.qml:163 src/tags_plugin_name.cpp:69
+#: src/contents/ui/Pitch.qml:163 src/tags_plugin_name.cpp:70
 msgid "Pitch"
 msgstr "Hauteur"
 
@@ -2982,10 +2996,6 @@ msgstr "Panorama central"
 msgid "Invert phase"
 msgstr "Inverser la phase"
 
-#: src/contents/ui/StereoTools.qml:293 src/tags_plugin_name.cpp:56
-msgid "Delay"
-msgstr "Retard"
-
 #: src/contents/ui/StereoTools.qml:310
 msgid "Stereo base"
 msgstr "Base stéréo"
@@ -3034,7 +3044,7 @@ msgstr "Kurtosis minimal"
 msgid "Maximum instantaneous frequency"
 msgstr "Fréquence instantanée maximale"
 
-#: src/contents/ui/VoiceSuppressor.qml:182
+#: src/contents/ui/VoiceSuppressor.qml:171
 msgid "Inverted mode"
 msgstr "Mode inversé"
 
@@ -3077,34 +3087,34 @@ msgstr "(Haut-Parleurs)"
 msgid "Output Level Meter"
 msgstr "Indicateur de Niveau en Sortie"
 
-#: src/presets_manager.cpp:822 src/presets_manager.cpp:829
-#: src/presets_manager.cpp:839 src/presets_manager.cpp:846
-#: src/presets_manager.cpp:856 src/presets_manager.cpp:865
+#: src/presets_manager.cpp:823 src/presets_manager.cpp:830
+#: src/presets_manager.cpp:840 src/presets_manager.cpp:847
+#: src/presets_manager.cpp:857 src/presets_manager.cpp:866
 msgid "Preset not loaded correctly"
 msgstr "Le préréglage n'a pas été chargé correctement"
 
-#: src/presets_manager.cpp:822
+#: src/presets_manager.cpp:823
 msgid "Wrong format in excluded apps list"
 msgstr "Format incorrect dans la liste des applications exclues"
 
-#: src/presets_manager.cpp:830
+#: src/presets_manager.cpp:831
 msgid "Generic error while loading excluded apps list"
 msgstr ""
 "Erreur générique lors du chargement de la liste des applications exclues"
 
-#: src/presets_manager.cpp:839
+#: src/presets_manager.cpp:840
 msgid "Wrong format in effects list"
 msgstr "Format incorrect dans la liste des effets"
 
-#: src/presets_manager.cpp:846
+#: src/presets_manager.cpp:847
 msgid "Generic error while loading effects list"
 msgstr "Erreur générique lors du chargement de la liste des effets"
 
-#: src/presets_manager.cpp:857
+#: src/presets_manager.cpp:858
 msgid "One or more parameters have a wrong format"
 msgstr "Un ou plusieurs paramètres ont un format incorrect"
 
-#: src/presets_manager.cpp:866
+#: src/presets_manager.cpp:867
 msgid "Generic error while loading the effect"
 msgstr "Erreur générique lors du chargement de l'effet"
 
@@ -3149,172 +3159,183 @@ msgid "Crossfeed"
 msgstr "Flux Croisé"
 
 #: src/tags_plugin_name.cpp:52
+#, fuzzy
+msgid "Crosstalk Canceller"
+msgstr "Annulateur d’Écho"
+
+#: src/tags_plugin_name.cpp:53
 msgid "Crusher"
 msgstr "Crusher"
 
-#: src/tags_plugin_name.cpp:53
+#: src/tags_plugin_name.cpp:54
 msgid "Crystalizer"
 msgstr "Cristallisateur"
 
-#: src/tags_plugin_name.cpp:54
+#: src/tags_plugin_name.cpp:55
 msgid "Deep Noise Remover"
 msgstr "Enlèvement du Bruit Profond"
 
-#: src/tags_plugin_name.cpp:58
+#: src/tags_plugin_name.cpp:59
 msgid "Equalizer"
 msgstr "Égaliseur"
 
-#: src/tags_plugin_name.cpp:59
+#: src/tags_plugin_name.cpp:60
 msgid "Exciter"
 msgstr "Excitateur"
 
-#: src/tags_plugin_name.cpp:63
+#: src/tags_plugin_name.cpp:64
 msgid "Level Meter"
 msgstr "Indicateur de Niveau"
 
-#: src/tags_plugin_name.cpp:66
+#: src/tags_plugin_name.cpp:67
 msgid "Maximizer"
 msgstr "Maximiseur"
 
-#: src/tags_plugin_name.cpp:67
+#: src/tags_plugin_name.cpp:68
 msgid "Multiband Compressor"
 msgstr "Compresseur Multibande"
 
-#: src/tags_plugin_name.cpp:68
+#: src/tags_plugin_name.cpp:69
 msgid "Multiband Gate"
 msgstr "Porte Multibande"
 
-#: src/tags_plugin_name.cpp:70
+#: src/tags_plugin_name.cpp:71
 msgid "Reverberation"
 msgstr "Réverbération"
 
-#: src/tags_plugin_name.cpp:71
+#: src/tags_plugin_name.cpp:72
 msgid "Noise Reduction"
 msgstr "Réduction du Bruit"
 
-#: src/tags_plugin_name.cpp:72
+#: src/tags_plugin_name.cpp:73
 msgid "Speech Processor"
 msgstr "Processeur Vocal"
 
-#: src/tags_plugin_name.cpp:73
+#: src/tags_plugin_name.cpp:74
 msgid "Stereo Tools"
 msgstr "Outils Stéréo"
 
-#: src/tags_plugin_name.cpp:74
+#: src/tags_plugin_name.cpp:75
 msgid "Voice Suppressor"
 msgstr "Suppresseur de Voix"
 
-#: src/units.hpp:59
+#: src/units.hpp:60
 msgctxt "left channel abbreviation (single letter)"
 msgid "L"
 msgstr "G"
 
-#: src/units.hpp:60
+#: src/units.hpp:61
 msgctxt "left channel abbreviation (single letter)"
 msgid "R"
 msgstr "D"
 
-#: src/units.hpp:63
+#: src/units.hpp:64
 msgctxt "The SOFA audio file format"
 msgid "SOFA"
 msgstr "SOFA"
 
-#: src/units.hpp:64
+#: src/units.hpp:65
 msgctxt "The WAV audio file format"
 msgid "WAV"
 msgstr "WAV"
 
-#: src/units.hpp:67
+#: src/units.hpp:68
 msgctxt "decibel unit abbreviation"
 msgid "dB"
 msgstr "dB"
 
-#: src/units.hpp:68
+#: src/units.hpp:69
 msgctxt "decibel full scale unit abbreviation"
 msgid "dBFS"
 msgstr "dB FS"
 
-#: src/units.hpp:69
+#: src/units.hpp:70
 msgctxt "decibel per octaves unit abbreviation"
 msgid "dB/oct"
 msgstr "dB/oct"
 
-#: src/units.hpp:70
+#: src/units.hpp:71
 msgctxt "seconds unit abbreviation"
 msgid "s"
 msgstr "s"
 
-#: src/units.hpp:71
+#: src/units.hpp:72
 msgctxt "milliseconds unit abbreviation"
 msgid "ms"
 msgstr "ms"
 
-#: src/units.hpp:72
+#: src/units.hpp:73
+#, fuzzy
+msgctxt "milliseconds unit abbreviation"
+msgid "us"
+msgstr "s"
+
+#: src/units.hpp:74
 msgctxt "Hertz unit abbreviation"
 msgid "Hz"
 msgstr "Hz"
 
-#: src/units.hpp:73
+#: src/units.hpp:75
 msgctxt "kiloHertz unit abbreviation"
 msgid "kHz"
 msgstr "kHz"
 
-#: src/units.hpp:74
+#: src/units.hpp:76
 msgctxt "loudness full scale unit abbreviation"
 msgid "LUFS"
 msgstr "LUFS"
 
-#: src/units.hpp:75
+#: src/units.hpp:77
 msgctxt "loudness unit abbreviation"
 msgid "LU"
 msgstr "LU"
 
-#: src/units.hpp:76
+#: src/units.hpp:78
 msgctxt "meter unit abbreviation"
 msgid "m"
 msgstr "m"
 
-#: src/units.hpp:77
+#: src/units.hpp:79
 msgctxt "centimeter unit abbreviation"
 msgid "cm"
 msgstr "cm"
 
-#: src/units.hpp:78
+#: src/units.hpp:80
 msgctxt "degrees Celsius unit abbreviation"
 msgid "°C"
 msgstr "°C"
 
-#: src/units.hpp:79
+#: src/units.hpp:81
 msgctxt "bit unit (plural)"
 msgid "bits"
 msgstr "bits"
 
-#: src/units.hpp:80
+#: src/units.hpp:82
 msgctxt "frame unit (plural)"
 msgid "frames"
 msgstr "images"
 
-#: src/units.hpp:81
+#: src/units.hpp:83
 msgctxt "frames per second abbreviation"
 msgid "fps"
 msgstr "ips"
 
-#: src/units.hpp:84
+#: src/units.hpp:86
 msgctxt "thousand abbreviation (single letter)"
 msgid "k"
 msgstr "m"
 
-#: src/units.hpp:85
+#: src/units.hpp:87
 msgctxt "percentage symbol"
 msgid "%"
 msgstr "%"
 
-#: src/units.hpp:86
+#: src/units.hpp:88
 msgctxt "degrees (angle) symbol"
 msgid "°"
 msgstr "°"
 
-#: src/units.hpp:87
+#: src/units.hpp:89
 msgctxt "minus infinity abbreviation"
 msgid "-inf"
 msgstr "-inf"

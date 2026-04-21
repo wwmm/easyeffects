@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-04-21 14:08-0300\n"
+"POT-Creation-Date: 2026-04-21 16:35-0300\n"
 "PO-Revision-Date: 2026-03-03 13:09+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
@@ -124,6 +124,7 @@ msgstr "關於"
 
 #: src/contents/ui/Autogain.qml:69 src/contents/ui/BassEnhancer.qml:105
 #: src/contents/ui/BassLoudness.qml:58 src/contents/ui/Crossfeed.qml:73
+#: src/contents/ui/CrosstalkCanceller.qml:59
 #: src/contents/ui/DeepFilterNet.qml:93 src/contents/ui/Exciter.qml:106
 #: src/contents/ui/Filter.qml:58 src/contents/ui/Loudness.qml:58
 #: src/contents/ui/Maximizer.qml:59 src/contents/ui/Pitch.qml:59
@@ -181,7 +182,7 @@ msgstr "最大化歷史記錄"
 
 #: src/contents/ui/Autogain.qml:143 src/contents/ui/Autogain.qml:198
 #: src/contents/ui/BassLoudness.qml:66 src/contents/ui/LevelMeter.qml:146
-#: src/tags_plugin_name.cpp:65
+#: src/tags_plugin_name.cpp:66
 msgid "Loudness"
 msgstr "音量"
 
@@ -215,7 +216,6 @@ msgstr "輸出增益 (Gain)"
 #: src/contents/ui/RNNoise.qml:86 src/contents/ui/RNNoise.qml:300
 #: src/contents/ui/RNNoise.qml:302 src/contents/ui/RNNoise.qml:320
 #: src/contents/ui/Speex.qml:174 src/contents/ui/StereoTools.qml:389
-#: src/contents/ui/VoiceSuppressor.qml:165
 msgid "Using %1"
 msgstr "使用 %1"
 
@@ -291,18 +291,18 @@ msgstr "聆聽"
 
 #: src/contents/ui/BassEnhancer.qml:245 src/contents/ui/BassLoudness.qml:141
 #: src/contents/ui/Compressor.qml:924 src/contents/ui/Convolver.qml:554
-#: src/contents/ui/Crossfeed.qml:173 src/contents/ui/Crusher.qml:265
-#: src/contents/ui/Crystalizer.qml:201 src/contents/ui/Deesser.qml:359
-#: src/contents/ui/Delay.qml:425 src/contents/ui/EchoCanceller.qml:183
-#: src/contents/ui/Equalizer.qml:383 src/contents/ui/Exciter.qml:250
-#: src/contents/ui/Expander.qml:874 src/contents/ui/Filter.qml:249
-#: src/contents/ui/Gate.qml:1003 src/contents/ui/Limiter.qml:658
-#: src/contents/ui/Loudness.qml:214 src/contents/ui/Main.qml:443
-#: src/contents/ui/Maximizer.qml:151
+#: src/contents/ui/Crossfeed.qml:173 src/contents/ui/CrosstalkCanceller.qml:122
+#: src/contents/ui/Crusher.qml:265 src/contents/ui/Crystalizer.qml:201
+#: src/contents/ui/Deesser.qml:359 src/contents/ui/Delay.qml:425
+#: src/contents/ui/EchoCanceller.qml:183 src/contents/ui/Equalizer.qml:383
+#: src/contents/ui/Exciter.qml:250 src/contents/ui/Expander.qml:874
+#: src/contents/ui/Filter.qml:249 src/contents/ui/Gate.qml:1003
+#: src/contents/ui/Limiter.qml:658 src/contents/ui/Loudness.qml:214
+#: src/contents/ui/Main.qml:443 src/contents/ui/Maximizer.qml:151
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:356
 #: src/contents/ui/RNNoise.qml:345 src/contents/ui/Speex.qml:192
-#: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:193
+#: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:182
 msgid "Reset"
 msgstr "重設"
 
@@ -481,7 +481,7 @@ msgstr "外部"
 
 #: src/contents/ui/Compressor.qml:278 src/contents/ui/Expander.qml:238
 #: src/contents/ui/Gate.qml:256 src/contents/ui/Limiter.qml:228
-#: src/contents/ui/PageStreamsEffects.qml:441
+#: src/contents/ui/PageStreamsEffects.qml:443
 msgid "Input device"
 msgstr "輸入裝置"
 
@@ -927,6 +927,20 @@ msgstr "預設"
 msgid "Presets"
 msgstr "預設集"
 
+#: src/contents/ui/CrosstalkCanceller.qml:64
+msgid "Process only phantom center"
+msgstr ""
+
+#: src/contents/ui/CrosstalkCanceller.qml:75
+#: src/contents/ui/StereoTools.qml:293 src/tags_plugin_name.cpp:57
+msgid "Delay"
+msgstr "延遲"
+
+#: src/contents/ui/CrosstalkCanceller.qml:91
+#, fuzzy
+msgid "Decay"
+msgstr "衰減時間"
+
 #: src/contents/ui/Crusher.qml:55
 msgid "Bit reduction"
 msgstr "位元縮減"
@@ -1027,7 +1041,7 @@ msgstr "最小化處理緩衝"
 msgid "Post filter Beta"
 msgstr "後置篩選器 Beta"
 
-#: src/contents/ui/Deesser.qml:63 src/tags_plugin_name.cpp:55
+#: src/contents/ui/Deesser.qml:63 src/tags_plugin_name.cpp:56
 msgid "Deesser"
 msgstr "嘶聲消除器"
 
@@ -1058,7 +1072,7 @@ msgid "Laxity"
 msgstr "鬆弛"
 
 #: src/contents/ui/Deesser.qml:171 src/contents/ui/Filter.qml:122
-#: src/contents/ui/Reverb.qml:126 src/tags_plugin_name.cpp:61
+#: src/contents/ui/Reverb.qml:126 src/tags_plugin_name.cpp:62
 msgid "Filter"
 msgstr "篩選"
 
@@ -1180,7 +1194,7 @@ msgstr "略過"
 msgid "Add %1 to excluded applications"
 msgstr "添加 %1 至已經排除的應用程式"
 
-#: src/contents/ui/EchoCanceller.qml:60 src/tags_plugin_name.cpp:57
+#: src/contents/ui/EchoCanceller.qml:60 src/tags_plugin_name.cpp:58
 msgid "Echo Canceller"
 msgstr "回音消除"
 
@@ -1469,7 +1483,7 @@ msgstr "上限(Ceil)作用"
 msgid "Ceil"
 msgstr "上限 (Ceil)"
 
-#: src/contents/ui/Expander.qml:68 src/tags_plugin_name.cpp:60
+#: src/contents/ui/Expander.qml:68 src/tags_plugin_name.cpp:61
 msgid "Expander"
 msgstr "擴展"
 
@@ -1487,7 +1501,7 @@ msgstr "篩選模式"
 msgid "Equalizer mode"
 msgstr "等化器模式"
 
-#: src/contents/ui/Gate.qml:72 src/tags_plugin_name.cpp:62
+#: src/contents/ui/Gate.qml:72 src/tags_plugin_name.cpp:63
 msgid "Gate"
 msgstr "閘門 (Gate)"
 
@@ -1661,7 +1675,7 @@ msgstr "True peak/24 bit"
 msgid "Dithering"
 msgstr "抖動"
 
-#: src/contents/ui/Limiter.qml:117 src/tags_plugin_name.cpp:64
+#: src/contents/ui/Limiter.qml:117 src/tags_plugin_name.cpp:65
 msgid "Limiter"
 msgstr "限制器"
 
@@ -1749,7 +1763,7 @@ msgstr "確定要重新設定全部 Easy Effects 設定嗎？"
 msgid "Go back"
 msgstr "返回"
 
-#: src/contents/ui/Main.qml:329 src/contents/ui/PageStreamsEffects.qml:745
+#: src/contents/ui/Main.qml:329 src/contents/ui/PageStreamsEffects.qml:747
 msgid "Effects"
 msgstr "音效"
 
@@ -1883,45 +1897,45 @@ msgstr "無音效"
 msgid "Audio stream not modified"
 msgstr "音訊串流並未修改"
 
-#: src/contents/ui/PageStreamsEffects.qml:376
+#: src/contents/ui/PageStreamsEffects.qml:378
 msgid "Add effect"
 msgstr "添加音效"
 
-#: src/contents/ui/PageStreamsEffects.qml:384
+#: src/contents/ui/PageStreamsEffects.qml:386
 msgid "Close"
 msgstr "關閉"
 
-#: src/contents/ui/PageStreamsEffects.qml:388
+#: src/contents/ui/PageStreamsEffects.qml:390
 msgid "Expand the list of effects pipeline"
 msgstr "展開音效管道列表"
 
-#: src/contents/ui/PageStreamsEffects.qml:388
+#: src/contents/ui/PageStreamsEffects.qml:390
 msgid "Reduce the list of effects pipeline"
 msgstr "減少音效管道列表"
 
-#: src/contents/ui/PageStreamsEffects.qml:441
-#: src/contents/ui/PageStreamsEffects.qml:732
+#: src/contents/ui/PageStreamsEffects.qml:443
+#: src/contents/ui/PageStreamsEffects.qml:734
 msgid "Players"
 msgstr "播放器"
 
-#: src/contents/ui/PageStreamsEffects.qml:450
+#: src/contents/ui/PageStreamsEffects.qml:452
 msgid "Output device"
 msgstr "輸出裝置"
 
-#: src/contents/ui/PageStreamsEffects.qml:450
-#: src/contents/ui/PageStreamsEffects.qml:732
+#: src/contents/ui/PageStreamsEffects.qml:452
+#: src/contents/ui/PageStreamsEffects.qml:734
 msgid "Recorders"
 msgstr "錄音器"
 
-#: src/contents/ui/PageStreamsEffects.qml:763
+#: src/contents/ui/PageStreamsEffects.qml:765
 msgid "Excluded apps"
 msgstr "已經排除的應用程式"
 
-#: src/contents/ui/PageStreamsEffects.qml:772
+#: src/contents/ui/PageStreamsEffects.qml:774
 msgid "Input monitoring"
 msgstr "輸入監控"
 
-#: src/contents/ui/PageStreamsEffects.qml:785
+#: src/contents/ui/PageStreamsEffects.qml:787
 msgid "Send audio to the virtual source"
 msgstr "將音訊傳送到虛擬來源"
 
@@ -2047,7 +2061,7 @@ msgstr "尋找視窗"
 msgid "Overlap length"
 msgstr "重疊長度"
 
-#: src/contents/ui/Pitch.qml:163 src/tags_plugin_name.cpp:69
+#: src/contents/ui/Pitch.qml:163 src/tags_plugin_name.cpp:70
 msgid "Pitch"
 msgstr "音高"
 
@@ -2926,10 +2940,6 @@ msgstr "中間全景"
 msgid "Invert phase"
 msgstr "反轉階段"
 
-#: src/contents/ui/StereoTools.qml:293 src/tags_plugin_name.cpp:56
-msgid "Delay"
-msgstr "延遲"
-
 #: src/contents/ui/StereoTools.qml:310
 msgid "Stereo base"
 msgstr "立體聲低音"
@@ -2978,7 +2988,7 @@ msgstr "最小峰度"
 msgid "Maximum instantaneous frequency"
 msgstr "最大瞬時頻率"
 
-#: src/contents/ui/VoiceSuppressor.qml:182
+#: src/contents/ui/VoiceSuppressor.qml:171
 msgid "Inverted mode"
 msgstr "反向模式"
 
@@ -3021,33 +3031,33 @@ msgstr "(喇叭)"
 msgid "Output Level Meter"
 msgstr "輸出等級量表"
 
-#: src/presets_manager.cpp:822 src/presets_manager.cpp:829
-#: src/presets_manager.cpp:839 src/presets_manager.cpp:846
-#: src/presets_manager.cpp:856 src/presets_manager.cpp:865
+#: src/presets_manager.cpp:823 src/presets_manager.cpp:830
+#: src/presets_manager.cpp:840 src/presets_manager.cpp:847
+#: src/presets_manager.cpp:857 src/presets_manager.cpp:866
 msgid "Preset not loaded correctly"
 msgstr "預設集未正確載入"
 
-#: src/presets_manager.cpp:822
+#: src/presets_manager.cpp:823
 msgid "Wrong format in excluded apps list"
 msgstr "已經排除的應用程序列表中的錯誤格式"
 
-#: src/presets_manager.cpp:830
+#: src/presets_manager.cpp:831
 msgid "Generic error while loading excluded apps list"
 msgstr "載入排除的應用程序列表時出現一般錯誤"
 
-#: src/presets_manager.cpp:839
+#: src/presets_manager.cpp:840
 msgid "Wrong format in effects list"
 msgstr "音效列表錯誤格式"
 
-#: src/presets_manager.cpp:846
+#: src/presets_manager.cpp:847
 msgid "Generic error while loading effects list"
 msgstr "載入音效列表時出現一般錯誤"
 
-#: src/presets_manager.cpp:857
+#: src/presets_manager.cpp:858
 msgid "One or more parameters have a wrong format"
 msgstr "一個或多個參數有錯誤格式"
 
-#: src/presets_manager.cpp:866
+#: src/presets_manager.cpp:867
 msgid "Generic error while loading the effect"
 msgstr "載入音效時出現一般錯誤"
 
@@ -3092,172 +3102,183 @@ msgid "Crossfeed"
 msgstr "交叉饋送"
 
 #: src/tags_plugin_name.cpp:52
+#, fuzzy
+msgid "Crosstalk Canceller"
+msgstr "回音消除"
+
+#: src/tags_plugin_name.cpp:53
 msgid "Crusher"
 msgstr "Crusher"
 
-#: src/tags_plugin_name.cpp:53
+#: src/tags_plugin_name.cpp:54
 msgid "Crystalizer"
 msgstr "水晶音質器"
 
-#: src/tags_plugin_name.cpp:54
+#: src/tags_plugin_name.cpp:55
 msgid "Deep Noise Remover"
 msgstr "深度噪音移除器"
 
-#: src/tags_plugin_name.cpp:58
+#: src/tags_plugin_name.cpp:59
 msgid "Equalizer"
 msgstr "等化器"
 
-#: src/tags_plugin_name.cpp:59
+#: src/tags_plugin_name.cpp:60
 msgid "Exciter"
 msgstr "激勵器"
 
-#: src/tags_plugin_name.cpp:63
+#: src/tags_plugin_name.cpp:64
 msgid "Level Meter"
 msgstr "等級量表"
 
-#: src/tags_plugin_name.cpp:66
+#: src/tags_plugin_name.cpp:67
 msgid "Maximizer"
 msgstr "放大器"
 
-#: src/tags_plugin_name.cpp:67
+#: src/tags_plugin_name.cpp:68
 msgid "Multiband Compressor"
 msgstr "多頻段壓縮器"
 
-#: src/tags_plugin_name.cpp:68
+#: src/tags_plugin_name.cpp:69
 msgid "Multiband Gate"
 msgstr "多頻段閘門"
 
-#: src/tags_plugin_name.cpp:70
+#: src/tags_plugin_name.cpp:71
 msgid "Reverberation"
 msgstr "混響"
 
-#: src/tags_plugin_name.cpp:71
+#: src/tags_plugin_name.cpp:72
 msgid "Noise Reduction"
 msgstr "噪音抑制"
 
-#: src/tags_plugin_name.cpp:72
+#: src/tags_plugin_name.cpp:73
 msgid "Speech Processor"
 msgstr "語音處理器"
 
-#: src/tags_plugin_name.cpp:73
+#: src/tags_plugin_name.cpp:74
 msgid "Stereo Tools"
 msgstr "立體聲工具"
 
-#: src/tags_plugin_name.cpp:74
+#: src/tags_plugin_name.cpp:75
 msgid "Voice Suppressor"
 msgstr "噪音抑制"
 
-#: src/units.hpp:59
+#: src/units.hpp:60
 msgctxt "left channel abbreviation (single letter)"
 msgid "L"
 msgstr "左"
 
-#: src/units.hpp:60
+#: src/units.hpp:61
 msgctxt "left channel abbreviation (single letter)"
 msgid "R"
 msgstr "右"
 
-#: src/units.hpp:63
+#: src/units.hpp:64
 msgctxt "The SOFA audio file format"
 msgid "SOFA"
 msgstr "SOFA"
 
-#: src/units.hpp:64
+#: src/units.hpp:65
 msgctxt "The WAV audio file format"
 msgid "WAV"
 msgstr "WAV"
 
-#: src/units.hpp:67
+#: src/units.hpp:68
 msgctxt "decibel unit abbreviation"
 msgid "dB"
 msgstr "dB"
 
-#: src/units.hpp:68
+#: src/units.hpp:69
 msgctxt "decibel full scale unit abbreviation"
 msgid "dBFS"
 msgstr "dBFS"
 
-#: src/units.hpp:69
+#: src/units.hpp:70
 msgctxt "decibel per octaves unit abbreviation"
 msgid "dB/oct"
 msgstr "12 dB/oct"
 
-#: src/units.hpp:70
+#: src/units.hpp:71
 msgctxt "seconds unit abbreviation"
 msgid "s"
 msgstr "s"
 
-#: src/units.hpp:71
+#: src/units.hpp:72
 msgctxt "milliseconds unit abbreviation"
 msgid "ms"
 msgstr "ms"
 
-#: src/units.hpp:72
+#: src/units.hpp:73
+#, fuzzy
+msgctxt "milliseconds unit abbreviation"
+msgid "us"
+msgstr "s"
+
+#: src/units.hpp:74
 msgctxt "Hertz unit abbreviation"
 msgid "Hz"
 msgstr "Hz"
 
-#: src/units.hpp:73
+#: src/units.hpp:75
 msgctxt "kiloHertz unit abbreviation"
 msgid "kHz"
 msgstr "kHz"
 
-#: src/units.hpp:74
+#: src/units.hpp:76
 msgctxt "loudness full scale unit abbreviation"
 msgid "LUFS"
 msgstr "LUFS"
 
-#: src/units.hpp:75
+#: src/units.hpp:77
 msgctxt "loudness unit abbreviation"
 msgid "LU"
 msgstr "LU"
 
-#: src/units.hpp:76
+#: src/units.hpp:78
 msgctxt "meter unit abbreviation"
 msgid "m"
 msgstr "m"
 
-#: src/units.hpp:77
+#: src/units.hpp:79
 msgctxt "centimeter unit abbreviation"
 msgid "cm"
 msgstr "cm"
 
-#: src/units.hpp:78
+#: src/units.hpp:80
 msgctxt "degrees Celsius unit abbreviation"
 msgid "°C"
 msgstr "°C"
 
-#: src/units.hpp:79
+#: src/units.hpp:81
 msgctxt "bit unit (plural)"
 msgid "bits"
 msgstr "bits"
 
-#: src/units.hpp:80
+#: src/units.hpp:82
 msgctxt "frame unit (plural)"
 msgid "frames"
 msgstr "影格"
 
-#: src/units.hpp:81
+#: src/units.hpp:83
 msgctxt "frames per second abbreviation"
 msgid "fps"
 msgstr "fps"
 
-#: src/units.hpp:84
+#: src/units.hpp:86
 msgctxt "thousand abbreviation (single letter)"
 msgid "k"
 msgstr "k"
 
-#: src/units.hpp:85
+#: src/units.hpp:87
 msgctxt "percentage symbol"
 msgid "%"
 msgstr "%"
 
-#: src/units.hpp:86
+#: src/units.hpp:88
 msgctxt "degrees (angle) symbol"
 msgid "°"
 msgstr "°"
 
-#: src/units.hpp:87
+#: src/units.hpp:89
 msgctxt "minus infinity abbreviation"
 msgid "-inf"
 msgstr "-inf"

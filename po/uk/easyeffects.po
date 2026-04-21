@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-04-21 14:08-0300\n"
+"POT-Creation-Date: 2026-04-21 16:35-0300\n"
 "PO-Revision-Date: 2026-04-14 20:13+0000\n"
 "Last-Translator: Володимир <vlzuykov@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
@@ -127,6 +127,7 @@ msgstr "Про нас"
 
 #: src/contents/ui/Autogain.qml:69 src/contents/ui/BassEnhancer.qml:105
 #: src/contents/ui/BassLoudness.qml:58 src/contents/ui/Crossfeed.qml:73
+#: src/contents/ui/CrosstalkCanceller.qml:59
 #: src/contents/ui/DeepFilterNet.qml:93 src/contents/ui/Exciter.qml:106
 #: src/contents/ui/Filter.qml:58 src/contents/ui/Loudness.qml:58
 #: src/contents/ui/Maximizer.qml:59 src/contents/ui/Pitch.qml:59
@@ -184,7 +185,7 @@ msgstr "Тривалість історії (максимальна)"
 
 #: src/contents/ui/Autogain.qml:143 src/contents/ui/Autogain.qml:198
 #: src/contents/ui/BassLoudness.qml:66 src/contents/ui/LevelMeter.qml:146
-#: src/tags_plugin_name.cpp:65
+#: src/tags_plugin_name.cpp:66
 msgid "Loudness"
 msgstr "Гучність"
 
@@ -218,7 +219,6 @@ msgstr "Вихідне підсилення"
 #: src/contents/ui/RNNoise.qml:86 src/contents/ui/RNNoise.qml:300
 #: src/contents/ui/RNNoise.qml:302 src/contents/ui/RNNoise.qml:320
 #: src/contents/ui/Speex.qml:174 src/contents/ui/StereoTools.qml:389
-#: src/contents/ui/VoiceSuppressor.qml:165
 msgid "Using %1"
 msgstr "Використовується %1"
 
@@ -294,18 +294,18 @@ msgstr "Слухати"
 
 #: src/contents/ui/BassEnhancer.qml:245 src/contents/ui/BassLoudness.qml:141
 #: src/contents/ui/Compressor.qml:924 src/contents/ui/Convolver.qml:554
-#: src/contents/ui/Crossfeed.qml:173 src/contents/ui/Crusher.qml:265
-#: src/contents/ui/Crystalizer.qml:201 src/contents/ui/Deesser.qml:359
-#: src/contents/ui/Delay.qml:425 src/contents/ui/EchoCanceller.qml:183
-#: src/contents/ui/Equalizer.qml:383 src/contents/ui/Exciter.qml:250
-#: src/contents/ui/Expander.qml:874 src/contents/ui/Filter.qml:249
-#: src/contents/ui/Gate.qml:1003 src/contents/ui/Limiter.qml:658
-#: src/contents/ui/Loudness.qml:214 src/contents/ui/Main.qml:443
-#: src/contents/ui/Maximizer.qml:151
+#: src/contents/ui/Crossfeed.qml:173 src/contents/ui/CrosstalkCanceller.qml:122
+#: src/contents/ui/Crusher.qml:265 src/contents/ui/Crystalizer.qml:201
+#: src/contents/ui/Deesser.qml:359 src/contents/ui/Delay.qml:425
+#: src/contents/ui/EchoCanceller.qml:183 src/contents/ui/Equalizer.qml:383
+#: src/contents/ui/Exciter.qml:250 src/contents/ui/Expander.qml:874
+#: src/contents/ui/Filter.qml:249 src/contents/ui/Gate.qml:1003
+#: src/contents/ui/Limiter.qml:658 src/contents/ui/Loudness.qml:214
+#: src/contents/ui/Main.qml:443 src/contents/ui/Maximizer.qml:151
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:356
 #: src/contents/ui/RNNoise.qml:345 src/contents/ui/Speex.qml:192
-#: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:193
+#: src/contents/ui/StereoTools.qml:421 src/contents/ui/VoiceSuppressor.qml:182
 msgid "Reset"
 msgstr "Скинути"
 
@@ -486,7 +486,7 @@ msgstr "Зовнішній"
 
 #: src/contents/ui/Compressor.qml:278 src/contents/ui/Expander.qml:238
 #: src/contents/ui/Gate.qml:256 src/contents/ui/Limiter.qml:228
-#: src/contents/ui/PageStreamsEffects.qml:441
+#: src/contents/ui/PageStreamsEffects.qml:443
 msgid "Input device"
 msgstr "Пристрій введення"
 
@@ -933,6 +933,20 @@ msgstr "За замовчуванням"
 msgid "Presets"
 msgstr "Пресети"
 
+#: src/contents/ui/CrosstalkCanceller.qml:64
+msgid "Process only phantom center"
+msgstr ""
+
+#: src/contents/ui/CrosstalkCanceller.qml:75
+#: src/contents/ui/StereoTools.qml:293 src/tags_plugin_name.cpp:57
+msgid "Delay"
+msgstr "Затримка"
+
+#: src/contents/ui/CrosstalkCanceller.qml:91
+#, fuzzy
+msgid "Decay"
+msgstr "Час затухання"
+
 #: src/contents/ui/Crusher.qml:55
 msgid "Bit reduction"
 msgstr "Зменшення бітності"
@@ -1033,7 +1047,7 @@ msgstr "Мінімальний буфер обробки"
 msgid "Post filter Beta"
 msgstr "Інтенсивність фільтра постобробки"
 
-#: src/contents/ui/Deesser.qml:63 src/tags_plugin_name.cpp:55
+#: src/contents/ui/Deesser.qml:63 src/tags_plugin_name.cpp:56
 msgid "Deesser"
 msgstr "Деесер (зменшення сибілянтів)"
 
@@ -1064,7 +1078,7 @@ msgid "Laxity"
 msgstr "М'якість"
 
 #: src/contents/ui/Deesser.qml:171 src/contents/ui/Filter.qml:122
-#: src/contents/ui/Reverb.qml:126 src/tags_plugin_name.cpp:61
+#: src/contents/ui/Reverb.qml:126 src/tags_plugin_name.cpp:62
 msgid "Filter"
 msgstr "Фільтр"
 
@@ -1186,7 +1200,7 @@ msgstr "Виключити"
 msgid "Add %1 to excluded applications"
 msgstr "Додати %1 до виключених застосунків"
 
-#: src/contents/ui/EchoCanceller.qml:60 src/tags_plugin_name.cpp:57
+#: src/contents/ui/EchoCanceller.qml:60 src/tags_plugin_name.cpp:58
 msgid "Echo Canceller"
 msgstr "Приглушення відлуння"
 
@@ -1483,7 +1497,7 @@ msgstr "Обмеження"
 msgid "Ceil"
 msgstr "Частота обмеження"
 
-#: src/contents/ui/Expander.qml:68 src/tags_plugin_name.cpp:60
+#: src/contents/ui/Expander.qml:68 src/tags_plugin_name.cpp:61
 msgid "Expander"
 msgstr "Експандер"
 
@@ -1501,7 +1515,7 @@ msgstr "Режим фільтра"
 msgid "Equalizer mode"
 msgstr "Режим еквалайзера"
 
-#: src/contents/ui/Gate.qml:72 src/tags_plugin_name.cpp:62
+#: src/contents/ui/Gate.qml:72 src/tags_plugin_name.cpp:63
 msgid "Gate"
 msgstr "Гейт"
 
@@ -1675,7 +1689,7 @@ msgstr "Справжній пік (24 біти)"
 msgid "Dithering"
 msgstr "Дитеринг (згладжування)"
 
-#: src/contents/ui/Limiter.qml:117 src/tags_plugin_name.cpp:64
+#: src/contents/ui/Limiter.qml:117 src/tags_plugin_name.cpp:65
 msgid "Limiter"
 msgstr "Лімітер"
 
@@ -1763,7 +1777,7 @@ msgstr "Ви впевнені, що хочете скинути всі нала�
 msgid "Go back"
 msgstr "Назад"
 
-#: src/contents/ui/Main.qml:329 src/contents/ui/PageStreamsEffects.qml:745
+#: src/contents/ui/Main.qml:329 src/contents/ui/PageStreamsEffects.qml:747
 msgid "Effects"
 msgstr "Ефекти"
 
@@ -1897,45 +1911,45 @@ msgstr "Без ефектів"
 msgid "Audio stream not modified"
 msgstr "Аудіопотік не змінено"
 
-#: src/contents/ui/PageStreamsEffects.qml:376
+#: src/contents/ui/PageStreamsEffects.qml:378
 msgid "Add effect"
 msgstr "Додати ефект"
 
-#: src/contents/ui/PageStreamsEffects.qml:384
+#: src/contents/ui/PageStreamsEffects.qml:386
 msgid "Close"
 msgstr "Закрити"
 
-#: src/contents/ui/PageStreamsEffects.qml:388
+#: src/contents/ui/PageStreamsEffects.qml:390
 msgid "Expand the list of effects pipeline"
 msgstr "Розгорнути список ефектів конвеєра"
 
-#: src/contents/ui/PageStreamsEffects.qml:388
+#: src/contents/ui/PageStreamsEffects.qml:390
 msgid "Reduce the list of effects pipeline"
 msgstr "Згорнути список ефектів конвеєра"
 
-#: src/contents/ui/PageStreamsEffects.qml:441
-#: src/contents/ui/PageStreamsEffects.qml:732
+#: src/contents/ui/PageStreamsEffects.qml:443
+#: src/contents/ui/PageStreamsEffects.qml:734
 msgid "Players"
 msgstr "Відтворення"
 
-#: src/contents/ui/PageStreamsEffects.qml:450
+#: src/contents/ui/PageStreamsEffects.qml:452
 msgid "Output device"
 msgstr "Пристрій виведення"
 
-#: src/contents/ui/PageStreamsEffects.qml:450
-#: src/contents/ui/PageStreamsEffects.qml:732
+#: src/contents/ui/PageStreamsEffects.qml:452
+#: src/contents/ui/PageStreamsEffects.qml:734
 msgid "Recorders"
 msgstr "Запис"
 
-#: src/contents/ui/PageStreamsEffects.qml:763
+#: src/contents/ui/PageStreamsEffects.qml:765
 msgid "Excluded apps"
 msgstr "Виключені програми"
 
-#: src/contents/ui/PageStreamsEffects.qml:772
+#: src/contents/ui/PageStreamsEffects.qml:774
 msgid "Input monitoring"
 msgstr "Прослуховування входу"
 
-#: src/contents/ui/PageStreamsEffects.qml:785
+#: src/contents/ui/PageStreamsEffects.qml:787
 msgid "Send audio to the virtual source"
 msgstr "Надіслати аудіо до віртуального джерела"
 
@@ -2062,7 +2076,7 @@ msgstr "Вікно пошуку"
 msgid "Overlap length"
 msgstr "Довжина перекриття"
 
-#: src/contents/ui/Pitch.qml:163 src/tags_plugin_name.cpp:69
+#: src/contents/ui/Pitch.qml:163 src/tags_plugin_name.cpp:70
 msgid "Pitch"
 msgstr "Висота тону"
 
@@ -2957,10 +2971,6 @@ msgstr "Панорама суми"
 msgid "Invert phase"
 msgstr "Інвертувати фазу"
 
-#: src/contents/ui/StereoTools.qml:293 src/tags_plugin_name.cpp:56
-msgid "Delay"
-msgstr "Затримка"
-
 #: src/contents/ui/StereoTools.qml:310
 msgid "Stereo base"
 msgstr "База стерео"
@@ -3009,7 +3019,7 @@ msgstr "Мінімальний ексцес"
 msgid "Maximum instantaneous frequency"
 msgstr "Максимальна миттєва частота"
 
-#: src/contents/ui/VoiceSuppressor.qml:182
+#: src/contents/ui/VoiceSuppressor.qml:171
 msgid "Inverted mode"
 msgstr "Інвертований режим"
 
@@ -3052,33 +3062,33 @@ msgstr "(Колонки)"
 msgid "Output Level Meter"
 msgstr "Індикатор рівня вихідного сигналу"
 
-#: src/presets_manager.cpp:822 src/presets_manager.cpp:829
-#: src/presets_manager.cpp:839 src/presets_manager.cpp:846
-#: src/presets_manager.cpp:856 src/presets_manager.cpp:865
+#: src/presets_manager.cpp:823 src/presets_manager.cpp:830
+#: src/presets_manager.cpp:840 src/presets_manager.cpp:847
+#: src/presets_manager.cpp:857 src/presets_manager.cpp:866
 msgid "Preset not loaded correctly"
 msgstr "Пресет завантажено неправильно"
 
-#: src/presets_manager.cpp:822
+#: src/presets_manager.cpp:823
 msgid "Wrong format in excluded apps list"
 msgstr "Неправильний формат у списку виключених застосунків"
 
-#: src/presets_manager.cpp:830
+#: src/presets_manager.cpp:831
 msgid "Generic error while loading excluded apps list"
 msgstr "Загальна помилка під час завантаження списку виключених застосунків"
 
-#: src/presets_manager.cpp:839
+#: src/presets_manager.cpp:840
 msgid "Wrong format in effects list"
 msgstr "Неправильний формат у списку ефектів"
 
-#: src/presets_manager.cpp:846
+#: src/presets_manager.cpp:847
 msgid "Generic error while loading effects list"
 msgstr "Загальна помилка під час завантаження списку ефектів"
 
-#: src/presets_manager.cpp:857
+#: src/presets_manager.cpp:858
 msgid "One or more parameters have a wrong format"
 msgstr "Один або кілька параметрів мають неправильний формат"
 
-#: src/presets_manager.cpp:866
+#: src/presets_manager.cpp:867
 msgid "Generic error while loading the effect"
 msgstr "Загальна помилка під час завантаження ефекту"
 
@@ -3123,172 +3133,183 @@ msgid "Crossfeed"
 msgstr "Кросфід (підмішування)"
 
 #: src/tags_plugin_name.cpp:52
+#, fuzzy
+msgid "Crosstalk Canceller"
+msgstr "Приглушення відлуння"
+
+#: src/tags_plugin_name.cpp:53
 msgid "Crusher"
 msgstr "Біткрашер"
 
-#: src/tags_plugin_name.cpp:53
+#: src/tags_plugin_name.cpp:54
 msgid "Crystalizer"
 msgstr "Кристалізатор"
 
-#: src/tags_plugin_name.cpp:54
+#: src/tags_plugin_name.cpp:55
 msgid "Deep Noise Remover"
 msgstr "Глибоке усунення шуму"
 
-#: src/tags_plugin_name.cpp:58
+#: src/tags_plugin_name.cpp:59
 msgid "Equalizer"
 msgstr "Еквалайзер"
 
-#: src/tags_plugin_name.cpp:59
+#: src/tags_plugin_name.cpp:60
 msgid "Exciter"
 msgstr "Ексайтер (збудник)"
 
-#: src/tags_plugin_name.cpp:63
+#: src/tags_plugin_name.cpp:64
 msgid "Level Meter"
 msgstr "Вимірювання рівня"
 
-#: src/tags_plugin_name.cpp:66
+#: src/tags_plugin_name.cpp:67
 msgid "Maximizer"
 msgstr "Максимізатор"
 
-#: src/tags_plugin_name.cpp:67
+#: src/tags_plugin_name.cpp:68
 msgid "Multiband Compressor"
 msgstr "Багатосмуговий компресор"
 
-#: src/tags_plugin_name.cpp:68
+#: src/tags_plugin_name.cpp:69
 msgid "Multiband Gate"
 msgstr "Багатосмуговий гейт"
 
-#: src/tags_plugin_name.cpp:70
+#: src/tags_plugin_name.cpp:71
 msgid "Reverberation"
 msgstr "Реверберація"
 
-#: src/tags_plugin_name.cpp:71
+#: src/tags_plugin_name.cpp:72
 msgid "Noise Reduction"
 msgstr "Зменшення шуму"
 
-#: src/tags_plugin_name.cpp:72
+#: src/tags_plugin_name.cpp:73
 msgid "Speech Processor"
 msgstr "Мовний процесор (Speex)"
 
-#: src/tags_plugin_name.cpp:73
+#: src/tags_plugin_name.cpp:74
 msgid "Stereo Tools"
 msgstr "Стереоінструменти"
 
-#: src/tags_plugin_name.cpp:74
+#: src/tags_plugin_name.cpp:75
 msgid "Voice Suppressor"
 msgstr "Приглушувач голосу"
 
-#: src/units.hpp:59
+#: src/units.hpp:60
 msgctxt "left channel abbreviation (single letter)"
 msgid "L"
 msgstr "Л"
 
-#: src/units.hpp:60
+#: src/units.hpp:61
 msgctxt "left channel abbreviation (single letter)"
 msgid "R"
 msgstr "П"
 
-#: src/units.hpp:63
+#: src/units.hpp:64
 msgctxt "The SOFA audio file format"
 msgid "SOFA"
 msgstr "SOFA"
 
-#: src/units.hpp:64
+#: src/units.hpp:65
 msgctxt "The WAV audio file format"
 msgid "WAV"
 msgstr "WAV"
 
-#: src/units.hpp:67
+#: src/units.hpp:68
 msgctxt "decibel unit abbreviation"
 msgid "dB"
 msgstr "дБ"
 
-#: src/units.hpp:68
+#: src/units.hpp:69
 msgctxt "decibel full scale unit abbreviation"
 msgid "dBFS"
 msgstr "дБПШ (dBFS)"
 
-#: src/units.hpp:69
+#: src/units.hpp:70
 msgctxt "decibel per octaves unit abbreviation"
 msgid "dB/oct"
 msgstr "дБ/окт"
 
-#: src/units.hpp:70
+#: src/units.hpp:71
 msgctxt "seconds unit abbreviation"
 msgid "s"
 msgstr "с"
 
-#: src/units.hpp:71
+#: src/units.hpp:72
 msgctxt "milliseconds unit abbreviation"
 msgid "ms"
 msgstr "мс"
 
-#: src/units.hpp:72
+#: src/units.hpp:73
+#, fuzzy
+msgctxt "milliseconds unit abbreviation"
+msgid "us"
+msgstr "с"
+
+#: src/units.hpp:74
 msgctxt "Hertz unit abbreviation"
 msgid "Hz"
 msgstr "Гц"
 
-#: src/units.hpp:73
+#: src/units.hpp:75
 msgctxt "kiloHertz unit abbreviation"
 msgid "kHz"
 msgstr "кГц"
 
-#: src/units.hpp:74
+#: src/units.hpp:76
 msgctxt "loudness full scale unit abbreviation"
 msgid "LUFS"
 msgstr "LUFS"
 
-#: src/units.hpp:75
+#: src/units.hpp:77
 msgctxt "loudness unit abbreviation"
 msgid "LU"
 msgstr "LU"
 
-#: src/units.hpp:76
+#: src/units.hpp:78
 msgctxt "meter unit abbreviation"
 msgid "m"
 msgstr "м"
 
-#: src/units.hpp:77
+#: src/units.hpp:79
 msgctxt "centimeter unit abbreviation"
 msgid "cm"
 msgstr "см"
 
-#: src/units.hpp:78
+#: src/units.hpp:80
 msgctxt "degrees Celsius unit abbreviation"
 msgid "°C"
 msgstr "°C"
 
-#: src/units.hpp:79
+#: src/units.hpp:81
 msgctxt "bit unit (plural)"
 msgid "bits"
 msgstr "біт"
 
-#: src/units.hpp:80
+#: src/units.hpp:82
 msgctxt "frame unit (plural)"
 msgid "frames"
 msgstr "кадр(-и/-ів)"
 
-#: src/units.hpp:81
+#: src/units.hpp:83
 msgctxt "frames per second abbreviation"
 msgid "fps"
 msgstr "fps"
 
-#: src/units.hpp:84
+#: src/units.hpp:86
 msgctxt "thousand abbreviation (single letter)"
 msgid "k"
 msgstr "к"
 
-#: src/units.hpp:85
+#: src/units.hpp:87
 msgctxt "percentage symbol"
 msgid "%"
 msgstr "%"
 
-#: src/units.hpp:86
+#: src/units.hpp:88
 msgctxt "degrees (angle) symbol"
 msgid "°"
 msgstr "°"
 
-#: src/units.hpp:87
+#: src/units.hpp:89
 msgctxt "minus infinity abbreviation"
 msgid "-inf"
 msgstr "-∞"

@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="loudness.html">
+        <link rel="prev" href="crossfeed.html">
       
       
-        <link rel="next" href="multibandcompressor.html">
+        <link rel="next" href="crusher.html">
       
       
         
@@ -23,7 +23,7 @@
     
     
       
-        <title>Maximizer - Easy Effects Manual</title>
+        <title>Crosstalk Canceller - Easy Effects Manual</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#maximizer" class="md-skip">
+        <a href="#crosstalk-canceller" class="md-skip">
           Skip to content
         </a>
       
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Maximizer
+              Crosstalk Canceller
             
           </span>
         </div>
@@ -1040,10 +1040,19 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="crosstalkcanceller.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="crosstalkcanceller.html" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1059,6 +1068,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -1432,37 +1442,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Maximizer
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="maximizer.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="maximizer.html" class="md-nav__link">
         
   
   
@@ -1478,37 +1461,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        References
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2182,25 +2134,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        References
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -2219,22 +2152,7 @@
   
 
 
-<h1 id="maximizer">Maximizer</h1>
-<p>The Maximizer is a special type of <a href="limiter.html">Limiter</a> that does not only prevent the signal to exceed a specified target level, but also adjusts the average Loudness of the audio track.</p>
-<p>Easy Effects uses the Maximizer developed by ZamAudio. It acts like an Amplifier that feeds a brick-wall Limiter with a fixed Lookahead of 10 ms adding the corresponding delay to the output signal.</p>
-<p><strong>Threshold</strong><br />
-This parameter represents the ideal amplification level needed by the signal.</p>
-<p>It contributes along with the Ceiling to determine the amount of gain to apply to the signal before the limiting stage. The gain is calculated by <code>(-Threshold) - (-Ceiling)</code>.</p>
-<p>For example, on Threshold -6 dB and Ceiling -2 dB, the signal is amplified by 4 dB and limited to not exceed -2 dB output level.</p>
-<p><strong>Ceiling</strong><br />
-This parameter represents the ideal attenuation level needed by the signal and the maximum allowed output level.</p>
-<p>When the Threshold is set to 0 dB, the Ceiling is simply the gain reduction. When the Threshold is lowered, the signal is boosted without overtaking the Ceiling value.</p>
-<p><strong>Release</strong><br />
-Sets the release of the internal brick-wall Limiter. Lower values may introduce small artifacts.</p>
-<h2 id="references">References</h2>
-<ul>
-<li><a href="https://www.sonarworks.com/soundid-reference/blog/learn/what-is-a-maximizer/">Sonarworks Blog - What Is A Maximizer?</a></li>
-</ul>
+<h1 id="crosstalk-canceller">Crosstalk Canceller</h1>
 
 
 
@@ -2264,7 +2182,7 @@ Sets the release of the internal brick-wall Limiter. Lower values may introduce 
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="loudness.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Loudness">
+          <a href="crossfeed.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Crossfeed">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2274,20 +2192,20 @@ Sets the release of the internal brick-wall Limiter. Lower values may introduce 
                 Previous
               </span>
               <div class="md-ellipsis">
-                Loudness
+                Crossfeed
               </div>
             </div>
           </a>
         
         
           
-          <a href="multibandcompressor.html" class="md-footer__link md-footer__link--next" aria-label="Next: Multiband Compressor">
+          <a href="crusher.html" class="md-footer__link md-footer__link--next" aria-label="Next: Crusher">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Multiband Compressor
+                Crusher
               </div>
             </div>
             <div class="md-footer__button md-icon">
