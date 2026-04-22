@@ -70,7 +70,7 @@ class Units : public QObject {
     dBoct = ki18nc("decibel per octaves unit abbreviation", "dB/oct").toString();
     s = ki18nc("seconds unit abbreviation", "s").toString();
     ms = ki18nc("milliseconds unit abbreviation", "ms").toString();
-    us = ki18nc("milliseconds unit abbreviation", "us").toString();
+    us = ki18nc("microseconds unit abbreviation", "μs").toString();
     hz = ki18nc("Hertz unit abbreviation", "Hz").toString();
     kHz = ki18nc("kiloHertz unit abbreviation", "kHz").toString();
     lufs = ki18nc("loudness full scale unit abbreviation", "LUFS").toString();
