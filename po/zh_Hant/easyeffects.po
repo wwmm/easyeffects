@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-04-21 16:35-0300\n"
-"PO-Revision-Date: 2026-03-03 13:09+0000\n"
+"PO-Revision-Date: 2026-04-22 12:09+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hant/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.17-dev\n"
+"X-Generator: Weblate 5.17.1-dev\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -929,7 +929,7 @@ msgstr "預設集"
 
 #: src/contents/ui/CrosstalkCanceller.qml:64
 msgid "Process only phantom center"
-msgstr ""
+msgstr "僅處理幻像中心"
 
 #: src/contents/ui/CrosstalkCanceller.qml:75
 #: src/contents/ui/StereoTools.qml:293 src/tags_plugin_name.cpp:57
@@ -937,9 +937,8 @@ msgid "Delay"
 msgstr "延遲"
 
 #: src/contents/ui/CrosstalkCanceller.qml:91
-#, fuzzy
 msgid "Decay"
-msgstr "衰減時間"
+msgstr "衰減"
 
 #: src/contents/ui/Crusher.qml:55
 msgid "Bit reduction"
@@ -3102,9 +3101,8 @@ msgid "Crossfeed"
 msgstr "交叉饋送"
 
 #: src/tags_plugin_name.cpp:52
-#, fuzzy
 msgid "Crosstalk Canceller"
-msgstr "回音消除"
+msgstr "串擾消除器"
 
 #: src/tags_plugin_name.cpp:53
 msgid "Crusher"
@@ -3208,10 +3206,9 @@ msgid "ms"
 msgstr "ms"
 
 #: src/units.hpp:73
-#, fuzzy
 msgctxt "milliseconds unit abbreviation"
 msgid "us"
-msgstr "s"
+msgstr "us"
 
 #: src/units.hpp:74
 msgctxt "Hertz unit abbreviation"
