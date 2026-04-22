@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-04-21 16:35-0300\n"
-"PO-Revision-Date: 2026-03-03 13:09+0000\n"
+"PO-Revision-Date: 2026-04-22 12:09+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.17-dev\n"
+"X-Generator: Weblate 5.17.1-dev\n"
 "Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 
 #: src/autostart.cpp:92
@@ -941,7 +941,7 @@ msgstr "Profili"
 
 #: src/contents/ui/CrosstalkCanceller.qml:64
 msgid "Process only phantom center"
-msgstr ""
+msgstr "Processa solo il centro fantasma"
 
 #: src/contents/ui/CrosstalkCanceller.qml:75
 #: src/contents/ui/StereoTools.qml:293 src/tags_plugin_name.cpp:57
@@ -949,9 +949,8 @@ msgid "Delay"
 msgstr "Delay"
 
 #: src/contents/ui/CrosstalkCanceller.qml:91
-#, fuzzy
 msgid "Decay"
-msgstr "Tempo decay"
+msgstr "Declino"
 
 #: src/contents/ui/Crusher.qml:55
 msgid "Bit reduction"
@@ -2750,7 +2749,7 @@ msgstr "Sperimentale"
 
 #: src/contents/ui/Reverb.qml:79
 msgid "Decay time"
-msgstr "Tempo decay"
+msgstr "Tempo di declino"
 
 #: src/contents/ui/Reverb.qml:95
 msgid "Pre delay"
@@ -3147,9 +3146,8 @@ msgid "Crossfeed"
 msgstr "Crossfeed"
 
 #: src/tags_plugin_name.cpp:52
-#, fuzzy
 msgid "Crosstalk Canceller"
-msgstr "Rimozione Eco"
+msgstr "Rimozione Crosstalk"
 
 #: src/tags_plugin_name.cpp:53
 msgid "Crusher"
@@ -3253,10 +3251,9 @@ msgid "ms"
 msgstr "ms"
 
 #: src/units.hpp:73
-#, fuzzy
 msgctxt "milliseconds unit abbreviation"
 msgid "us"
-msgstr "s"
+msgstr "us"
 
 #: src/units.hpp:74
 msgctxt "Hertz unit abbreviation"

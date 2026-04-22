@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-04-21 16:35-0300\n"
-"PO-Revision-Date: 2026-03-02 17:09+0000\n"
+"PO-Revision-Date: 2026-04-22 12:09+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ro/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
-"X-Generator: Weblate 5.17-dev\n"
+"X-Generator: Weblate 5.17.1-dev\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -940,7 +940,7 @@ msgstr "Preconfigurări"
 
 #: src/contents/ui/CrosstalkCanceller.qml:64
 msgid "Process only phantom center"
-msgstr ""
+msgstr "Procesează doar centrul fantomă"
 
 #: src/contents/ui/CrosstalkCanceller.qml:75
 #: src/contents/ui/StereoTools.qml:293 src/tags_plugin_name.cpp:57
@@ -948,7 +948,6 @@ msgid "Delay"
 msgstr "Întârziere"
 
 #: src/contents/ui/CrosstalkCanceller.qml:91
-#, fuzzy
 msgid "Decay"
 msgstr "Timpul de declin"
 
@@ -3152,9 +3151,8 @@ msgid "Crossfeed"
 msgstr "Flux încrucișat"
 
 #: src/tags_plugin_name.cpp:52
-#, fuzzy
 msgid "Crosstalk Canceller"
-msgstr "Anulator de ecou"
+msgstr "Anulator de diafonie"
 
 #: src/tags_plugin_name.cpp:53
 msgid "Crusher"
@@ -3258,10 +3256,9 @@ msgid "ms"
 msgstr "ms"
 
 #: src/units.hpp:73
-#, fuzzy
 msgctxt "milliseconds unit abbreviation"
 msgid "us"
-msgstr "s"
+msgstr "𝝁s"
 
 #: src/units.hpp:74
 msgctxt "Hertz unit abbreviation"
