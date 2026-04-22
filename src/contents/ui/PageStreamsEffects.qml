@@ -68,17 +68,27 @@ Kirigami.Page {
         id: pluginsListModel
     }
 
-    MenuAddPlugins {
-        id: menuAddPlugins
+    Loader {
+        id: menuAddPluginsLoader
+        active: false
 
-        parent: pageStreamsEffects.Controls.Overlay.overlay
-        streamDB: pageStreamsEffects.streamDB
+        sourceComponent: Component {
+            MenuAddPlugins {
+                parent: pageStreamsEffects.Controls.Overlay.overlay
+                streamDB: pageStreamsEffects.streamDB
+            }
+        }
     }
 
-    BlocklistDialog {
-        id: blocklistDialog
+    Loader {
+        id: blocklistDialogLoader
+        active: false
 
-        streamDB: pageStreamsEffects.streamDB
+        sourceComponent: Component {
+            BlocklistDialog {
+                streamDB: pageStreamsEffects.streamDB
+            }
+        }
     }
 
     Component {
@@ -378,7 +388,12 @@ Kirigami.Page {
                         text: i18n("Add effect") // qmllint disable
                         display: DbMain.collapsePluginsList === true ? Controls.Button.IconOnly : Controls.Button.TextBesideIcon
                         icon.name: "list-add"
-                        onClicked: menuAddPlugins.open()
+                        onClicked: {
+                            if (!menuAddPluginsLoader.active) {
+                                menuAddPluginsLoader.active = true;
+                            }
+                            menuAddPluginsLoader.item.open();
+                        }
                         Layout.fillWidth: DbMain.collapsePluginsList === true
                     }
 
@@ -767,7 +782,10 @@ Kirigami.Page {
                         displayHint: Kirigami.DisplayHint.KeepVisible
                         visible: pageStreamsEffects.streamDB.visiblePage === 0
                         onTriggered: {
-                            blocklistDialog.open();
+                            if (!blocklistDialogLoader.active) {
+                                blocklistDialogLoader.active = true;
+                            }
+                            blocklistDialogLoader.item.open();
                         }
                     },
                     Kirigami.Action {
