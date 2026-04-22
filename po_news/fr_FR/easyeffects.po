@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-28 14:40+0000\n"
-"PO-Revision-Date: 2026-01-10 14:01+0000\n"
+"PO-Revision-Date: 2026-04-22 21:09+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/fr/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.15.1\n"
+"X-Generator: Weblate 5.17.1-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -704,8 +704,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:276
 msgid "Improved compatibility with Linux Studio Plugins 1.2.3."
-msgstr ""
-"Amélioration de la compatibilité avec les greffons Linux Studio (LSP) 1.2.3."
+msgstr "Compatibilité améliorée avec Linux Studio Plugins 1.2.3."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:277
 msgid "GraphicEQ presets can be imported into the Equalizer effect."
@@ -830,8 +829,8 @@ msgstr ""
 msgid ""
 "The preset autoloading code compatibility with usb devices has been improved."
 msgstr ""
-"Le code du chargement automatique des préréglages a été amélioré pour les "
-"périphériques USB."
+"La compatibilité du code de chargement automatique des préréglages avec les "
+"périphériques usb a été améliorée."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:324
 msgid ""
