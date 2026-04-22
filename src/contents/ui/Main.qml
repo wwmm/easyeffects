@@ -277,13 +277,24 @@ Kirigami.ApplicationWindow {
         }
     }
 
-    PreferencesSheet {
-        id: preferencesSheet
-        window: appWindow
+    Loader {
+        id: preferencesSheetLoader
+        active: false
+
+        sourceComponent: Component {
+            PreferencesSheet {
+                window: appWindow
+            }
+        }
     }
 
-    PresetsDialog {
-        id: presetsDialog
+    Loader {
+        id: presetsDialogLoader
+        active: false
+
+        sourceComponent: Component {
+            PresetsDialog {}
+        }
     }
 
     ShortcutsSheet {
@@ -347,7 +358,11 @@ Kirigami.ApplicationWindow {
                         displayHint: Kirigami.DisplayHint.KeepVisible
                         visible: DbMain.visiblePage !== 2
                         onTriggered: {
-                            presetsDialog.open();
+                            if (!presetsDialogLoader.active) {
+                                presetsDialogLoader.active = true;
+                            }
+
+                            presetsDialogLoader.item.open();
                         }
                     }
                 ]
@@ -416,7 +431,10 @@ Kirigami.ApplicationWindow {
                         icon.name: "gtk-preferences-symbolic"
                         displayHint: Kirigami.DisplayHint.AlwaysHide
                         onTriggered: {
-                            preferencesSheet.open();
+                            if (!preferencesSheetLoader.active) {
+                                preferencesSheetLoader.active = true;
+                            }
+                            preferencesSheetLoader.item.open();
                         }
                     },
                     Kirigami.Action {
