@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-04-22 23:50-0300\n"
-"PO-Revision-Date: 2026-02-24 06:09+0000\n"
+"PO-Revision-Date: 2026-04-23 16:12+0000\n"
 "Last-Translator: தமிழ்நேரம் <tamilneram247@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/easyeffects/main/"
 "ta/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.16.1-dev\n"
+"X-Generator: Weblate 5.17.1-dev\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -762,9 +762,8 @@ msgid "Failed to remove the %1 Convolver impulse."
 msgstr "% 1 கன்வால்வர் தூண்டுதலை அகற்றுவதில் தோல்வி."
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:124
-#, fuzzy
 msgid "Rename Impulse"
-msgstr "தூண்டுதலை அகற்று"
+msgstr "தூண்டுதலை மறுபெயரிடு"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:129
 #: src/contents/ui/PresetsLocalPage.qml:247
@@ -772,14 +771,12 @@ msgid "Rename"
 msgstr "மறுபெயரிடவும்"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:137
-#, fuzzy
 msgid "Renamed the %1 impulse to %2"
-msgstr "% 1 உள்ளக முன்னமைவை % 2 என மறுபெயரிடப்பட்டது"
+msgstr "%1 தூண்டுதலை %2 என மறுபெயரிடப்பட்டது"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:140
-#, fuzzy
 msgid "Failed to rename the %1 impulse to %2"
-msgstr "%1 உள்ளக முன்னமைவை %2 என மறுபெயரிடுவதில் தோல்வி"
+msgstr "%1 தூண்டுதலை %2 என மறுபெயரிடுவதில் தோல்வி"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:148
 #: src/contents/ui/PresetsLocalPage.qml:267
@@ -787,9 +784,8 @@ msgid "Cancel"
 msgstr "ரத்துசெய்"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:187
-#, fuzzy
 msgid "Rename this impulse"
-msgstr "இந்த முன்னமைவை மறுபெயரிடவும்"
+msgstr "இந்தத் தூண்டுதலை மறுபெயரிடு"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:195
 msgid "Delete this impulse"
@@ -938,7 +934,7 @@ msgstr "முன்னமைவுகள்"
 
 #: src/contents/ui/CrosstalkCanceller.qml:64
 msgid "Process only phantom center"
-msgstr ""
+msgstr "பாண்டம் மையத்தை மட்டும் செயலாக்கவும்"
 
 #: src/contents/ui/CrosstalkCanceller.qml:75
 #: src/contents/ui/StereoTools.qml:293 src/tags_plugin_name.cpp:57
@@ -946,9 +942,8 @@ msgid "Delay"
 msgstr "சுணக்கம்"
 
 #: src/contents/ui/CrosstalkCanceller.qml:91
-#, fuzzy
 msgid "Decay"
-msgstr "சிதைவு நேரம்"
+msgstr "சிதைவு"
 
 #: src/contents/ui/Crusher.qml:55
 msgid "Bit reduction"
@@ -3132,9 +3127,8 @@ msgid "Crossfeed"
 msgstr "குறுக்குவெட்டு"
 
 #: src/tags_plugin_name.cpp:52
-#, fuzzy
 msgid "Crosstalk Canceller"
-msgstr "எக்கோ ரத்துசெய்தல்"
+msgstr "குறுக்கிடு நீக்குதல்"
 
 #: src/tags_plugin_name.cpp:53
 msgid "Crusher"
@@ -3240,7 +3234,7 @@ msgstr "ms"
 #: src/units.hpp:73
 msgctxt "microseconds unit abbreviation"
 msgid "μs"
-msgstr ""
+msgstr "மைநொ"
 
 #: src/units.hpp:74
 msgctxt "Hertz unit abbreviation"
