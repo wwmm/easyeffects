@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-04-21 16:35-0300\n"
+"POT-Creation-Date: 2026-04-22 23:50-0300\n"
 "PO-Revision-Date: 2026-01-30 12:01+0000\n"
 "Last-Translator: Anton Woolvy <antong2106@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -303,7 +303,7 @@ msgstr "Beluisteren"
 #: src/contents/ui/Exciter.qml:250 src/contents/ui/Expander.qml:874
 #: src/contents/ui/Filter.qml:249 src/contents/ui/Gate.qml:1003
 #: src/contents/ui/Limiter.qml:658 src/contents/ui/Loudness.qml:214
-#: src/contents/ui/Main.qml:443 src/contents/ui/Maximizer.qml:151
+#: src/contents/ui/Main.qml:461 src/contents/ui/Maximizer.qml:151
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:356
 #: src/contents/ui/RNNoise.qml:345 src/contents/ui/Speex.qml:192
@@ -313,7 +313,7 @@ msgstr "Standaard­waarden"
 
 #: src/contents/ui/BassLoudness.qml:82 src/contents/ui/Compressor.qml:479
 #: src/contents/ui/EeInputOutputGain.qml:145 src/contents/ui/Expander.qml:439
-#: src/contents/ui/Gate.qml:454 src/contents/ui/Main.qml:371
+#: src/contents/ui/Gate.qml:454 src/contents/ui/Main.qml:386
 #: src/contents/ui/StereoTools.qml:267
 msgid "Output"
 msgstr "Uitvoer"
@@ -340,7 +340,7 @@ msgstr "Toevoegen aan uitgesloten apps"
 #: src/contents/ui/BlocklistDialog.qml:115
 #: src/contents/ui/ConvolverImpulseDialog.qml:90
 #: src/contents/ui/MenuAddPlugins.qml:55
-#: src/contents/ui/PageStreamsEffects.qml:99
+#: src/contents/ui/PageStreamsEffects.qml:109
 #: src/contents/ui/PresetsAutoloadPage.qml:176
 #: src/contents/ui/PresetsCommunityPage.qml:105
 #: src/contents/ui/PresetsLocalPage.qml:194 src/contents/ui/RNNoise.qml:230
@@ -488,7 +488,7 @@ msgstr "Extern"
 
 #: src/contents/ui/Compressor.qml:278 src/contents/ui/Expander.qml:238
 #: src/contents/ui/Gate.qml:256 src/contents/ui/Limiter.qml:228
-#: src/contents/ui/PageStreamsEffects.qml:443
+#: src/contents/ui/PageStreamsEffects.qml:458
 msgid "Input device"
 msgstr "Invoer­apparaat"
 
@@ -934,7 +934,7 @@ msgstr "Crossfeed-voor­instellingen"
 msgid "Default"
 msgstr "Standaard"
 
-#: src/contents/ui/Crossfeed.qml:164 src/contents/ui/Main.qml:345
+#: src/contents/ui/Crossfeed.qml:164 src/contents/ui/Main.qml:356
 #: src/contents/ui/PreferencesSheet.qml:59 src/contents/ui/Reverb.qml:333
 msgid "Presets"
 msgstr "Voor­instellingen"
@@ -1267,7 +1267,7 @@ msgstr "Audio­niveau­regeling"
 msgid "Input and output gain controls with level meters"
 msgstr "Invoer- en uitvoer­versterkingsregeling met niveau­meters"
 
-#: src/contents/ui/EeInputOutputGain.qml:132 src/contents/ui/Main.qml:384
+#: src/contents/ui/EeInputOutputGain.qml:132 src/contents/ui/Main.qml:399
 #: src/contents/ui/StereoTools.qml:58
 msgid "Input"
 msgstr "Invoer"
@@ -1779,56 +1779,56 @@ msgstr "Knip­bereik"
 msgid "Clipping"
 msgstr "Knippen"
 
-#: src/contents/ui/Main.qml:296
+#: src/contents/ui/Main.qml:307
 msgid "Reset Settings?"
 msgstr "Instellingen herstellen?"
 
-#: src/contents/ui/Main.qml:297
+#: src/contents/ui/Main.qml:308
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr "Weet u zeker dat u alle instellingen van Easy Effects wilt herstellen?"
 
-#: src/contents/ui/Main.qml:319
+#: src/contents/ui/Main.qml:330
 msgid "Go back"
 msgstr "Terug"
 
-#: src/contents/ui/Main.qml:329 src/contents/ui/PageStreamsEffects.qml:747
+#: src/contents/ui/Main.qml:340 src/contents/ui/PageStreamsEffects.qml:762
 msgid "Effects"
 msgstr "Effecten"
 
-#: src/contents/ui/Main.qml:330
+#: src/contents/ui/Main.qml:341
 msgid "Turn effects on/off"
 msgstr "Effecten in-/uitschakelen"
 
-#: src/contents/ui/Main.qml:341
+#: src/contents/ui/Main.qml:352
 msgid "Audio effects are enabled."
 msgstr "Audio-effecten zijn ingeschakeld."
 
-#: src/contents/ui/Main.qml:341
+#: src/contents/ui/Main.qml:352
 msgid "Audio effects are disabled."
 msgstr "Audio-effecten zijn uitgeschakeld."
 
-#: src/contents/ui/Main.qml:397
+#: src/contents/ui/Main.qml:412
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/contents/ui/Main.qml:415
+#: src/contents/ui/Main.qml:430
 msgid "Preferences"
 msgstr "Voorkeuren"
 
-#: src/contents/ui/Main.qml:423 src/contents/ui/ShortcutsSheet.qml:389
+#: src/contents/ui/Main.qml:441 src/contents/ui/ShortcutsSheet.qml:389
 #: src/contents/ui/TrayIcon.qml:190
 msgid "Shortcuts"
 msgstr "Snel­toetsen"
 
-#: src/contents/ui/Main.qml:431 src/contents/ui/TrayIcon.qml:199
+#: src/contents/ui/Main.qml:449 src/contents/ui/TrayIcon.qml:199
 msgid "Manual"
 msgstr "Hand­leiding"
 
-#: src/contents/ui/Main.qml:455
+#: src/contents/ui/Main.qml:473
 msgid "About Easy Effects"
 msgstr "Over Easy Effects"
 
-#: src/contents/ui/Main.qml:463 src/contents/ui/TrayIcon.qml:209
+#: src/contents/ui/Main.qml:481 src/contents/ui/TrayIcon.qml:209
 msgid "Quit"
 msgstr "Afsluiten"
 
@@ -1913,57 +1913,57 @@ msgstr "Zijketen-invoer­apparaat"
 msgid "Reaction"
 msgstr "Reactie"
 
-#: src/contents/ui/PageStreamsEffects.qml:100
+#: src/contents/ui/PageStreamsEffects.qml:110
 msgid "No audio application available"
 msgstr "Geen audio-app beschikbaar"
 
-#: src/contents/ui/PageStreamsEffects.qml:115
+#: src/contents/ui/PageStreamsEffects.qml:125
 msgid "No Effects"
 msgstr "Geen effecten"
 
-#: src/contents/ui/PageStreamsEffects.qml:116
+#: src/contents/ui/PageStreamsEffects.qml:126
 msgid "Audio stream not modified"
 msgstr "Audio-stream onbewerkt"
 
-#: src/contents/ui/PageStreamsEffects.qml:378
+#: src/contents/ui/PageStreamsEffects.qml:388
 msgid "Add effect"
 msgstr "Effect toevoegen"
 
-#: src/contents/ui/PageStreamsEffects.qml:386
+#: src/contents/ui/PageStreamsEffects.qml:401
 msgid "Close"
 msgstr "Sluiten"
 
-#: src/contents/ui/PageStreamsEffects.qml:390
+#: src/contents/ui/PageStreamsEffects.qml:405
 msgid "Expand the list of effects pipeline"
 msgstr "Lijst met effectenpijplijn uitvouwen"
 
-#: src/contents/ui/PageStreamsEffects.qml:390
+#: src/contents/ui/PageStreamsEffects.qml:405
 msgid "Reduce the list of effects pipeline"
 msgstr "Lijst met effectenpijplijn invouwen"
 
-#: src/contents/ui/PageStreamsEffects.qml:443
-#: src/contents/ui/PageStreamsEffects.qml:734
+#: src/contents/ui/PageStreamsEffects.qml:458
+#: src/contents/ui/PageStreamsEffects.qml:749
 msgid "Players"
 msgstr "Spelers"
 
-#: src/contents/ui/PageStreamsEffects.qml:452
+#: src/contents/ui/PageStreamsEffects.qml:467
 msgid "Output device"
 msgstr "Uitvoer­apparaat"
 
-#: src/contents/ui/PageStreamsEffects.qml:452
-#: src/contents/ui/PageStreamsEffects.qml:734
+#: src/contents/ui/PageStreamsEffects.qml:467
+#: src/contents/ui/PageStreamsEffects.qml:749
 msgid "Recorders"
 msgstr "Opname­apparaten"
 
-#: src/contents/ui/PageStreamsEffects.qml:765
+#: src/contents/ui/PageStreamsEffects.qml:780
 msgid "Excluded apps"
 msgstr "Uitgesloten apps"
 
-#: src/contents/ui/PageStreamsEffects.qml:774
+#: src/contents/ui/PageStreamsEffects.qml:792
 msgid "Input monitoring"
 msgstr "Invoer­monitoring"
 
-#: src/contents/ui/PageStreamsEffects.qml:787
+#: src/contents/ui/PageStreamsEffects.qml:805
 msgid "Send audio to the virtual source"
 msgstr "Stuur geluid naar de virtuele bron"
 
@@ -3272,10 +3272,9 @@ msgid "ms"
 msgstr "ms"
 
 #: src/units.hpp:73
-#, fuzzy
-msgctxt "milliseconds unit abbreviation"
-msgid "us"
-msgstr "s"
+msgctxt "microseconds unit abbreviation"
+msgid "μs"
+msgstr ""
 
 #: src/units.hpp:74
 msgctxt "Hertz unit abbreviation"
@@ -3354,6 +3353,11 @@ msgstr "Equalizer, compressor en overige audio-effecten"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "Eenvoudige audio-effecten"
+
+#, fuzzy
+#~ msgctxt "milliseconds unit abbreviation"
+#~ msgid "us"
+#~ msgstr "s"
 
 #, fuzzy
 #~ msgid "Attack time"

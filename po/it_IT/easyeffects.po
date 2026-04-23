@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-04-21 16:35-0300\n"
+"POT-Creation-Date: 2026-04-22 23:50-0300\n"
 "PO-Revision-Date: 2026-04-22 12:09+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -305,7 +305,7 @@ msgstr "Ascolta"
 #: src/contents/ui/Exciter.qml:250 src/contents/ui/Expander.qml:874
 #: src/contents/ui/Filter.qml:249 src/contents/ui/Gate.qml:1003
 #: src/contents/ui/Limiter.qml:658 src/contents/ui/Loudness.qml:214
-#: src/contents/ui/Main.qml:443 src/contents/ui/Maximizer.qml:151
+#: src/contents/ui/Main.qml:461 src/contents/ui/Maximizer.qml:151
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:356
 #: src/contents/ui/RNNoise.qml:345 src/contents/ui/Speex.qml:192
@@ -315,7 +315,7 @@ msgstr "Reimposta"
 
 #: src/contents/ui/BassLoudness.qml:82 src/contents/ui/Compressor.qml:479
 #: src/contents/ui/EeInputOutputGain.qml:145 src/contents/ui/Expander.qml:439
-#: src/contents/ui/Gate.qml:454 src/contents/ui/Main.qml:371
+#: src/contents/ui/Gate.qml:454 src/contents/ui/Main.qml:386
 #: src/contents/ui/StereoTools.qml:267
 msgid "Output"
 msgstr "Uscita"
@@ -342,7 +342,7 @@ msgstr "Aggiungi alle applicazioni escluse"
 #: src/contents/ui/BlocklistDialog.qml:115
 #: src/contents/ui/ConvolverImpulseDialog.qml:90
 #: src/contents/ui/MenuAddPlugins.qml:55
-#: src/contents/ui/PageStreamsEffects.qml:99
+#: src/contents/ui/PageStreamsEffects.qml:109
 #: src/contents/ui/PresetsAutoloadPage.qml:176
 #: src/contents/ui/PresetsCommunityPage.qml:105
 #: src/contents/ui/PresetsLocalPage.qml:194 src/contents/ui/RNNoise.qml:230
@@ -490,7 +490,7 @@ msgstr "Esterna"
 
 #: src/contents/ui/Compressor.qml:278 src/contents/ui/Expander.qml:238
 #: src/contents/ui/Gate.qml:256 src/contents/ui/Limiter.qml:228
-#: src/contents/ui/PageStreamsEffects.qml:443
+#: src/contents/ui/PageStreamsEffects.qml:458
 msgid "Input device"
 msgstr "Dispositivo di ingresso"
 
@@ -934,7 +934,7 @@ msgstr "Profili di Crossfeed"
 msgid "Default"
 msgstr "Predefinito"
 
-#: src/contents/ui/Crossfeed.qml:164 src/contents/ui/Main.qml:345
+#: src/contents/ui/Crossfeed.qml:164 src/contents/ui/Main.qml:356
 #: src/contents/ui/PreferencesSheet.qml:59 src/contents/ui/Reverb.qml:333
 msgid "Presets"
 msgstr "Profili"
@@ -1261,7 +1261,7 @@ msgstr "Regolatore livelli audio"
 msgid "Input and output gain controls with level meters"
 msgstr "Regolatori del guadagno di input e output con i misuratori di livello"
 
-#: src/contents/ui/EeInputOutputGain.qml:132 src/contents/ui/Main.qml:384
+#: src/contents/ui/EeInputOutputGain.qml:132 src/contents/ui/Main.qml:399
 #: src/contents/ui/StereoTools.qml:58
 msgid "Input"
 msgstr "Ingresso"
@@ -1770,56 +1770,56 @@ msgstr "Intervallo di clipping"
 msgid "Clipping"
 msgstr "Clipping"
 
-#: src/contents/ui/Main.qml:296
+#: src/contents/ui/Main.qml:307
 msgid "Reset Settings?"
 msgstr "Reset delle Impostazioni?"
 
-#: src/contents/ui/Main.qml:297
+#: src/contents/ui/Main.qml:308
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr "Vuoi davvero reimpostare tutte le opzioni di Easy Effects?"
 
-#: src/contents/ui/Main.qml:319
+#: src/contents/ui/Main.qml:330
 msgid "Go back"
 msgstr "Torna indietro"
 
-#: src/contents/ui/Main.qml:329 src/contents/ui/PageStreamsEffects.qml:747
+#: src/contents/ui/Main.qml:340 src/contents/ui/PageStreamsEffects.qml:762
 msgid "Effects"
 msgstr "Effetti"
 
-#: src/contents/ui/Main.qml:330
+#: src/contents/ui/Main.qml:341
 msgid "Turn effects on/off"
 msgstr "Abilita/disabilita gli effetti"
 
-#: src/contents/ui/Main.qml:341
+#: src/contents/ui/Main.qml:352
 msgid "Audio effects are enabled."
 msgstr "Gli effetti per l'audio sono abilitati."
 
-#: src/contents/ui/Main.qml:341
+#: src/contents/ui/Main.qml:352
 msgid "Audio effects are disabled."
 msgstr "Gli effetti per l'audio sono disabilitati."
 
-#: src/contents/ui/Main.qml:397
+#: src/contents/ui/Main.qml:412
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/contents/ui/Main.qml:415
+#: src/contents/ui/Main.qml:430
 msgid "Preferences"
 msgstr "Preferenze"
 
-#: src/contents/ui/Main.qml:423 src/contents/ui/ShortcutsSheet.qml:389
+#: src/contents/ui/Main.qml:441 src/contents/ui/ShortcutsSheet.qml:389
 #: src/contents/ui/TrayIcon.qml:190
 msgid "Shortcuts"
 msgstr "Scorciatoie"
 
-#: src/contents/ui/Main.qml:431 src/contents/ui/TrayIcon.qml:199
+#: src/contents/ui/Main.qml:449 src/contents/ui/TrayIcon.qml:199
 msgid "Manual"
 msgstr "Manuale"
 
-#: src/contents/ui/Main.qml:455
+#: src/contents/ui/Main.qml:473
 msgid "About Easy Effects"
 msgstr "Info su Easy Effects"
 
-#: src/contents/ui/Main.qml:463 src/contents/ui/TrayIcon.qml:209
+#: src/contents/ui/Main.qml:481 src/contents/ui/TrayIcon.qml:209
 msgid "Quit"
 msgstr "Esci"
 
@@ -1904,57 +1904,57 @@ msgstr "Dispositivo di ingresso sidechain"
 msgid "Reaction"
 msgstr "Reazione"
 
-#: src/contents/ui/PageStreamsEffects.qml:100
+#: src/contents/ui/PageStreamsEffects.qml:110
 msgid "No audio application available"
 msgstr "Nessuna applicazione audio disponibile"
 
-#: src/contents/ui/PageStreamsEffects.qml:115
+#: src/contents/ui/PageStreamsEffects.qml:125
 msgid "No Effects"
 msgstr "Nessun Effetto"
 
-#: src/contents/ui/PageStreamsEffects.qml:116
+#: src/contents/ui/PageStreamsEffects.qml:126
 msgid "Audio stream not modified"
 msgstr "Flusso audio non alterato"
 
-#: src/contents/ui/PageStreamsEffects.qml:378
+#: src/contents/ui/PageStreamsEffects.qml:388
 msgid "Add effect"
 msgstr "Aggiungi effetto"
 
-#: src/contents/ui/PageStreamsEffects.qml:386
+#: src/contents/ui/PageStreamsEffects.qml:401
 msgid "Close"
 msgstr "Chiudi"
 
-#: src/contents/ui/PageStreamsEffects.qml:390
+#: src/contents/ui/PageStreamsEffects.qml:405
 msgid "Expand the list of effects pipeline"
 msgstr "Espandi la lista della pipeline degli effetti"
 
-#: src/contents/ui/PageStreamsEffects.qml:390
+#: src/contents/ui/PageStreamsEffects.qml:405
 msgid "Reduce the list of effects pipeline"
 msgstr "Riduci la lista della pipeline degli effetti"
 
-#: src/contents/ui/PageStreamsEffects.qml:443
-#: src/contents/ui/PageStreamsEffects.qml:734
+#: src/contents/ui/PageStreamsEffects.qml:458
+#: src/contents/ui/PageStreamsEffects.qml:749
 msgid "Players"
 msgstr "Riproduttori"
 
-#: src/contents/ui/PageStreamsEffects.qml:452
+#: src/contents/ui/PageStreamsEffects.qml:467
 msgid "Output device"
 msgstr "Dispositivo di uscita"
 
-#: src/contents/ui/PageStreamsEffects.qml:452
-#: src/contents/ui/PageStreamsEffects.qml:734
+#: src/contents/ui/PageStreamsEffects.qml:467
+#: src/contents/ui/PageStreamsEffects.qml:749
 msgid "Recorders"
 msgstr "Registratori"
 
-#: src/contents/ui/PageStreamsEffects.qml:765
+#: src/contents/ui/PageStreamsEffects.qml:780
 msgid "Excluded apps"
 msgstr "App escluse"
 
-#: src/contents/ui/PageStreamsEffects.qml:774
+#: src/contents/ui/PageStreamsEffects.qml:792
 msgid "Input monitoring"
 msgstr "Monitoraggio Input"
 
-#: src/contents/ui/PageStreamsEffects.qml:787
+#: src/contents/ui/PageStreamsEffects.qml:805
 msgid "Send audio to the virtual source"
 msgstr "Invia audio al registratore virtuale"
 
@@ -3251,9 +3251,9 @@ msgid "ms"
 msgstr "ms"
 
 #: src/units.hpp:73
-msgctxt "milliseconds unit abbreviation"
-msgid "us"
-msgstr "us"
+msgctxt "microseconds unit abbreviation"
+msgid "μs"
+msgstr ""
 
 #: src/units.hpp:74
 msgctxt "Hertz unit abbreviation"
@@ -3332,6 +3332,10 @@ msgstr "Equalizzatore, Compressore e Altri Effetti Audio"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "Effetti audio semplici"
+
+#~ msgctxt "milliseconds unit abbreviation"
+#~ msgid "us"
+#~ msgstr "us"
 
 #~ msgid "Attack time"
 #~ msgstr "Tempo di attacco"

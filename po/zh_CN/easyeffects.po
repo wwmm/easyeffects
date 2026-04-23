@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-04-21 16:35-0300\n"
+"POT-Creation-Date: 2026-04-22 23:50-0300\n"
 "PO-Revision-Date: 2026-03-04 15:09+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
@@ -299,7 +299,7 @@ msgstr "聆听"
 #: src/contents/ui/Exciter.qml:250 src/contents/ui/Expander.qml:874
 #: src/contents/ui/Filter.qml:249 src/contents/ui/Gate.qml:1003
 #: src/contents/ui/Limiter.qml:658 src/contents/ui/Loudness.qml:214
-#: src/contents/ui/Main.qml:443 src/contents/ui/Maximizer.qml:151
+#: src/contents/ui/Main.qml:461 src/contents/ui/Maximizer.qml:151
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:356
 #: src/contents/ui/RNNoise.qml:345 src/contents/ui/Speex.qml:192
@@ -309,7 +309,7 @@ msgstr "重置"
 
 #: src/contents/ui/BassLoudness.qml:82 src/contents/ui/Compressor.qml:479
 #: src/contents/ui/EeInputOutputGain.qml:145 src/contents/ui/Expander.qml:439
-#: src/contents/ui/Gate.qml:454 src/contents/ui/Main.qml:371
+#: src/contents/ui/Gate.qml:454 src/contents/ui/Main.qml:386
 #: src/contents/ui/StereoTools.qml:267
 msgid "Output"
 msgstr "输出"
@@ -336,7 +336,7 @@ msgstr "添加到已排除的应用程序"
 #: src/contents/ui/BlocklistDialog.qml:115
 #: src/contents/ui/ConvolverImpulseDialog.qml:90
 #: src/contents/ui/MenuAddPlugins.qml:55
-#: src/contents/ui/PageStreamsEffects.qml:99
+#: src/contents/ui/PageStreamsEffects.qml:109
 #: src/contents/ui/PresetsAutoloadPage.qml:176
 #: src/contents/ui/PresetsCommunityPage.qml:105
 #: src/contents/ui/PresetsLocalPage.qml:194 src/contents/ui/RNNoise.qml:230
@@ -482,7 +482,7 @@ msgstr "外部输入"
 
 #: src/contents/ui/Compressor.qml:278 src/contents/ui/Expander.qml:238
 #: src/contents/ui/Gate.qml:256 src/contents/ui/Limiter.qml:228
-#: src/contents/ui/PageStreamsEffects.qml:443
+#: src/contents/ui/PageStreamsEffects.qml:458
 msgid "Input device"
 msgstr "输入设备"
 
@@ -923,7 +923,7 @@ msgstr "交叉反馈预设"
 msgid "Default"
 msgstr "默认"
 
-#: src/contents/ui/Crossfeed.qml:164 src/contents/ui/Main.qml:345
+#: src/contents/ui/Crossfeed.qml:164 src/contents/ui/Main.qml:356
 #: src/contents/ui/PreferencesSheet.qml:59 src/contents/ui/Reverb.qml:333
 msgid "Presets"
 msgstr "预设"
@@ -1251,7 +1251,7 @@ msgstr "音频电平控制"
 msgid "Input and output gain controls with level meters"
 msgstr "带电平表的输入输出增益控制"
 
-#: src/contents/ui/EeInputOutputGain.qml:132 src/contents/ui/Main.qml:384
+#: src/contents/ui/EeInputOutputGain.qml:132 src/contents/ui/Main.qml:399
 #: src/contents/ui/StereoTools.qml:58
 msgid "Input"
 msgstr "输入"
@@ -1752,56 +1752,56 @@ msgstr "削波范围"
 msgid "Clipping"
 msgstr "削波"
 
-#: src/contents/ui/Main.qml:296
+#: src/contents/ui/Main.qml:307
 msgid "Reset Settings?"
 msgstr "重置设置？"
 
-#: src/contents/ui/Main.qml:297
+#: src/contents/ui/Main.qml:308
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr "确定要重置所有 Easy Effects 设置吗？"
 
-#: src/contents/ui/Main.qml:319
+#: src/contents/ui/Main.qml:330
 msgid "Go back"
 msgstr "返回"
 
-#: src/contents/ui/Main.qml:329 src/contents/ui/PageStreamsEffects.qml:747
+#: src/contents/ui/Main.qml:340 src/contents/ui/PageStreamsEffects.qml:762
 msgid "Effects"
 msgstr "音效"
 
-#: src/contents/ui/Main.qml:330
+#: src/contents/ui/Main.qml:341
 msgid "Turn effects on/off"
 msgstr "开关音效"
 
-#: src/contents/ui/Main.qml:341
+#: src/contents/ui/Main.qml:352
 msgid "Audio effects are enabled."
 msgstr "已启用音效。"
 
-#: src/contents/ui/Main.qml:341
+#: src/contents/ui/Main.qml:352
 msgid "Audio effects are disabled."
 msgstr "已禁用音效。"
 
-#: src/contents/ui/Main.qml:397
+#: src/contents/ui/Main.qml:412
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/contents/ui/Main.qml:415
+#: src/contents/ui/Main.qml:430
 msgid "Preferences"
 msgstr "首选项"
 
-#: src/contents/ui/Main.qml:423 src/contents/ui/ShortcutsSheet.qml:389
+#: src/contents/ui/Main.qml:441 src/contents/ui/ShortcutsSheet.qml:389
 #: src/contents/ui/TrayIcon.qml:190
 msgid "Shortcuts"
 msgstr "快捷键"
 
-#: src/contents/ui/Main.qml:431 src/contents/ui/TrayIcon.qml:199
+#: src/contents/ui/Main.qml:449 src/contents/ui/TrayIcon.qml:199
 msgid "Manual"
 msgstr "使用手册"
 
-#: src/contents/ui/Main.qml:455
+#: src/contents/ui/Main.qml:473
 msgid "About Easy Effects"
 msgstr "关于 Easy Effects"
 
-#: src/contents/ui/Main.qml:463 src/contents/ui/TrayIcon.qml:209
+#: src/contents/ui/Main.qml:481 src/contents/ui/TrayIcon.qml:209
 msgid "Quit"
 msgstr "退出"
 
@@ -1886,57 +1886,57 @@ msgstr "侧链输入设备"
 msgid "Reaction"
 msgstr "响应"
 
-#: src/contents/ui/PageStreamsEffects.qml:100
+#: src/contents/ui/PageStreamsEffects.qml:110
 msgid "No audio application available"
 msgstr "无可用的音频应用程序"
 
-#: src/contents/ui/PageStreamsEffects.qml:115
+#: src/contents/ui/PageStreamsEffects.qml:125
 msgid "No Effects"
 msgstr "无音效"
 
-#: src/contents/ui/PageStreamsEffects.qml:116
+#: src/contents/ui/PageStreamsEffects.qml:126
 msgid "Audio stream not modified"
 msgstr "音频流未修改"
 
-#: src/contents/ui/PageStreamsEffects.qml:378
+#: src/contents/ui/PageStreamsEffects.qml:388
 msgid "Add effect"
 msgstr "添加音效"
 
-#: src/contents/ui/PageStreamsEffects.qml:386
+#: src/contents/ui/PageStreamsEffects.qml:401
 msgid "Close"
 msgstr "关闭"
 
-#: src/contents/ui/PageStreamsEffects.qml:390
+#: src/contents/ui/PageStreamsEffects.qml:405
 msgid "Expand the list of effects pipeline"
 msgstr "展开音效管线列表"
 
-#: src/contents/ui/PageStreamsEffects.qml:390
+#: src/contents/ui/PageStreamsEffects.qml:405
 msgid "Reduce the list of effects pipeline"
 msgstr "收起音效管线列表"
 
-#: src/contents/ui/PageStreamsEffects.qml:443
-#: src/contents/ui/PageStreamsEffects.qml:734
+#: src/contents/ui/PageStreamsEffects.qml:458
+#: src/contents/ui/PageStreamsEffects.qml:749
 msgid "Players"
 msgstr "播放器"
 
-#: src/contents/ui/PageStreamsEffects.qml:452
+#: src/contents/ui/PageStreamsEffects.qml:467
 msgid "Output device"
 msgstr "输出设备"
 
-#: src/contents/ui/PageStreamsEffects.qml:452
-#: src/contents/ui/PageStreamsEffects.qml:734
+#: src/contents/ui/PageStreamsEffects.qml:467
+#: src/contents/ui/PageStreamsEffects.qml:749
 msgid "Recorders"
 msgstr "录音器"
 
-#: src/contents/ui/PageStreamsEffects.qml:765
+#: src/contents/ui/PageStreamsEffects.qml:780
 msgid "Excluded apps"
 msgstr "已排除的应用程序"
 
-#: src/contents/ui/PageStreamsEffects.qml:774
+#: src/contents/ui/PageStreamsEffects.qml:792
 msgid "Input monitoring"
 msgstr "输入监听"
 
-#: src/contents/ui/PageStreamsEffects.qml:787
+#: src/contents/ui/PageStreamsEffects.qml:805
 msgid "Send audio to the virtual source"
 msgstr "发送音频至虚拟源"
 
@@ -3207,10 +3207,9 @@ msgid "ms"
 msgstr "ms"
 
 #: src/units.hpp:73
-#, fuzzy
-msgctxt "milliseconds unit abbreviation"
-msgid "us"
-msgstr "s"
+msgctxt "microseconds unit abbreviation"
+msgid "μs"
+msgstr ""
 
 #: src/units.hpp:74
 msgctxt "Hertz unit abbreviation"
@@ -3289,6 +3288,11 @@ msgstr "均衡器、压缩器与其他音效"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "简易音效集锦"
+
+#, fuzzy
+#~ msgctxt "milliseconds unit abbreviation"
+#~ msgid "us"
+#~ msgstr "s"
 
 #~ msgid "Global bypass. 1 to enable and 2 to disable."
 #~ msgstr "全局旁通。1 以启用，2 以禁用。"
