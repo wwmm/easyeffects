@@ -206,10 +206,10 @@ static void initQml(QQmlApplicationEngine& engine,
                     UiState& ui,
                     bool& show_window) {
   engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
-  engine.rootContext()->setContextProperty("canUseSysTray", QSystemTrayIcon::isSystemTrayAvailable());
-  engine.rootContext()->setContextProperty("projectVersion", PROJECT_VERSION);
-  engine.rootContext()->setContextProperty("applicationId", APPLICATION_ID);
-  engine.rootContext()->setContextProperty("applicationName", APPLICATION_NAME);
+
+  engine.setInitialProperties({{"applicationName", APPLICATION_NAME},
+                               {"applicationId", APPLICATION_ID},
+                               {"canUseSysTray", QSystemTrayIcon::isSystemTrayAvailable()}});
 
   QObject::connect(&engine, &QQmlApplicationEngine::objectCreated, [&](QObject* object, const QUrl& url) {
     if (url.toString() == "qrc:/qt/qml/ee/ui/contents/ui/Main.qml") {
@@ -232,6 +232,8 @@ static void initQml(QQmlApplicationEngine& engine,
         QObject::connect(ui.window, &QQuickWindow::visibleChanged, [&](bool visible) {
           if (!visible) {
             util::debug("Asking Qt to clear QML's engine cache");
+
+            ui.window->close();
 
             ui.window->releaseResources();
 

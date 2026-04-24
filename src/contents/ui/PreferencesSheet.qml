@@ -28,6 +28,8 @@ import org.kde.kirigamiaddons.settings as KirigamiSettings
 KirigamiSettings.ConfigurationView {
     id: preferencesSheet
 
+    required property bool canUseSysTray
+
     modules: [
         KirigamiSettings.ConfigurationModule {
             moduleId: "appearance"

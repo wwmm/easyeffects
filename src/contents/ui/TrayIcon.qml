@@ -26,12 +26,15 @@ import org.kde.kirigami as Kirigami
 SystemTrayIcon {
     id: tray
 
+    required property string applicationName
+    required property string applicationId
+    required property bool canUseSysTray
+    required property ShortcutsSheet shortcuts
+    property Main mainWindow: null
+
     visible: DbMain.showTrayIcon && canUseSysTray
     icon.name: applicationId + "-symbolic"
     tooltip: applicationName
-
-    required property ShortcutsSheet shortcuts
-    property Main mainWindow: null
 
     onActivated: {
         if (mainWindow && !mainWindow.visible) {
