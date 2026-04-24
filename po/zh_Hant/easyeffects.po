@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-04-22 23:50-0300\n"
-"PO-Revision-Date: 2026-04-22 12:09+0000\n"
+"PO-Revision-Date: 2026-04-24 07:09+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hant/>\n"
@@ -3208,7 +3208,7 @@ msgstr "ms"
 #: src/units.hpp:73
 msgctxt "microseconds unit abbreviation"
 msgid "μs"
-msgstr ""
+msgstr "μs"
 
 #: src/units.hpp:74
 msgctxt "Hertz unit abbreviation"

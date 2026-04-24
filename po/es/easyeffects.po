@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-04-22 23:50-0300\n"
-"PO-Revision-Date: 2026-03-23 19:09+0000\n"
+"PO-Revision-Date: 2026-04-24 07:09+0000\n"
 "Last-Translator: Lito Parra <lito.15@proton.me>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
 "es/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.17-dev\n"
+"X-Generator: Weblate 5.17.1-dev\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -937,7 +937,7 @@ msgstr "Perfiles"
 
 #: src/contents/ui/CrosstalkCanceller.qml:64
 msgid "Process only phantom center"
-msgstr ""
+msgstr "Procesar solo el centro fantasma"
 
 #: src/contents/ui/CrosstalkCanceller.qml:75
 #: src/contents/ui/StereoTools.qml:293 src/tags_plugin_name.cpp:57
@@ -945,9 +945,8 @@ msgid "Delay"
 msgstr "Retraso"
 
 #: src/contents/ui/CrosstalkCanceller.qml:91
-#, fuzzy
 msgid "Decay"
-msgstr "Tiempo de decaimiento"
+msgstr "Atenuación"
 
 #: src/contents/ui/Crusher.qml:55
 msgid "Bit reduction"
@@ -3142,9 +3141,8 @@ msgid "Crossfeed"
 msgstr "Mezcla cruzada"
 
 #: src/tags_plugin_name.cpp:52
-#, fuzzy
 msgid "Crosstalk Canceller"
-msgstr "Cancelación de eco"
+msgstr "Cancelador de diafonía (crosstalk)"
 
 #: src/tags_plugin_name.cpp:53
 msgid "Crusher"
@@ -3250,7 +3248,7 @@ msgstr "ms"
 #: src/units.hpp:73
 msgctxt "microseconds unit abbreviation"
 msgid "μs"
-msgstr ""
+msgstr "μs"
 
 #: src/units.hpp:74
 msgctxt "Hertz unit abbreviation"
