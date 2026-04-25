@@ -6,34 +6,31 @@ QtObject {
     readonly property real minimumDecibelLevel: -100.0
 
     function isEmpty(v: string): bool {
-        if (v === undefined || v === null)
+        if (v === undefined || v === null) {
             return true;
+        }
 
-        const type = typeof v;
-        if (type === "string")
-            return v.length === 0;
-        if (type === "number")
-            return isNaN(v);
-        if (type === "object")
-            return v === null;
-        return false;
+        return v.length === 0;
     }
 
-    function isNullOrUndefined(v: any): bool {
+    function isNullOrUndefined(v: var): bool {
         return v === null || v === undefined;
     }
 
-    function equalArrays(a: Array, b: Array): bool {
+    function equalStringArrays(a: var, b: var): bool {
         if (!a || !b) {
             return false;
         }
 
-        if (a.length !== b.length) {
+        const A = Array.from(a);
+        const B = Array.from(b);
+
+        if (A.length !== B.length) {
             return false;
         }
 
-        for (let i = 0; i < a.length; ++i) {
-            if (a[i] !== b[i]) {
+        for (let i = 0; i < A.length; i++) {
+            if (A[i] !== B[i]) {
                 return false;
             }
         }
@@ -46,21 +43,12 @@ QtObject {
     }
 
     function regExpEscape(str: string): string {
-        // Pre-compile regex for better performance
         const regex = /[\\/^$*+?.()|[\]{}\-]/g;
         return str.replace(regex, '\\$&');
     }
 
     function linearTodb(value: real): real {
         let n = value;
-
-        if (typeof value !== "number") {
-            n = Number(value);
-
-            if (isNaN(n)) {
-                return minimumDecibelLevel;
-            }
-        }
 
         if (n >= minimumLinearLevel) {
             return 20.0 * Math.log10(n);
@@ -72,14 +60,6 @@ QtObject {
     function dbToLinear(dbValue: real): real {
         let n = dbValue;
 
-        if (typeof dbValue !== "number") {
-            n = Number(dbValue);
-
-            if (isNaN(n)) {
-                return minimumLinearLevel;
-            }
-        }
-
         if (n >= minimumDecibelLevel) {
             return Math.exp((n / 20.0) * Math.LN10);
         }
@@ -87,7 +67,7 @@ QtObject {
         return minimumLinearLevel;
     }
 
-    function printObjectProperties(obj: any): void {
+    function printObjectProperties(obj: var): void {
         if (!obj)
             return;
 
@@ -97,17 +77,8 @@ QtObject {
         }
     }
 
-    function toLocaleLabel(num: real, decimal = 0, unit = null): string {
+    function toLocaleLabel(num: real, decimal: int, unit: string): string {
         let n = num;
-
-        if (typeof num !== "number") {
-            n = Number(num);
-
-            if (isNaN(n)) {
-                console.error("Cannot convert " + num + " to locale format.");
-                return "";
-            }
-        }
 
         const result = n.toLocaleString(Qt.locale(), 'f', decimal);
 

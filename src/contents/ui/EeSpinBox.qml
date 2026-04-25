@@ -126,7 +126,7 @@ FormCard.AbstractFormDelegate {
 
             readonly property real decimalFactor: Math.pow(10, control.decimals)
 
-            function decimalToInt(decimal) {
+            function decimalToInt(decimal: real): int {
                 return Math.round(decimal * decimalFactor);
             }
 

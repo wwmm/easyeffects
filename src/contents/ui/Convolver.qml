@@ -44,9 +44,9 @@ Kirigami.ScrollablePage {
         inputOutputLevels.setOutputLevelRight(convolverPage.pluginBackend.getOutputLevelRight());
     }
 
-    function validChartMag(chartMag) {
-        // Determine if chartMag is a non-empty QList.
-        return chartMag?.length > 0;
+    function validChartMag(chartMag: var): bool {
+        const A = Array.from(chartMag);
+        return A.length > 0;
     }
 
     Component.onCompleted: {
@@ -60,7 +60,7 @@ Kirigami.ScrollablePage {
     }
 
     Connections {
-        function onNewKernelLoaded(name, success) {
+        function onNewKernelLoaded(name: string, success: bool) {
             if (success) {
                 convolverChartContainer.banner.title = name;
 

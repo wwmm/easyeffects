@@ -352,7 +352,7 @@ Kirigami.Page {
                         newList.push(pluginsListModel.get(n).name);
                     }
 
-                    if (!Common.equalArrays(pageStreamsEffects.streamDB.plugins, newList))
+                    if (!Common.equalStringArrays(pageStreamsEffects.streamDB.plugins, newList))
                         pageStreamsEffects.streamDB.plugins = newList;
 
                     if (newList.length === 0) {
