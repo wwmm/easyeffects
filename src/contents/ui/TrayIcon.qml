@@ -17,6 +17,7 @@
  * along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
  */
 
+pragma ComponentBehavior: Bound
 import Qt.labs.platform
 import QtQuick
 import ee.pipewire as PW
@@ -76,13 +77,15 @@ SystemTrayIcon {
             id: instantiatorInputPresets
 
             delegate: MenuItem {
-                text: modelData // qmllint disable
+                required property string modelData
+
+                text: modelData
                 checkable: true
                 checked: DbMain.lastLoadedInputPreset === modelData
                 onTriggered: {
-                    Presets.Manager.loadLocalPresetFile(0, modelData); // qmllint disable
+                    Presets.Manager.loadLocalPresetFile(0, modelData);
 
-                    tray.showMessage(i18n("Preset Loaded"), modelData, SystemTrayIcon.Information, 3000); // qmllint disable
+                    tray.showMessage(i18n("Preset Loaded"), modelData, SystemTrayIcon.Information, 3000);
                 }
             }
 
@@ -94,13 +97,15 @@ SystemTrayIcon {
             id: instantiatorOutputPresets
 
             delegate: MenuItem {
-                text: modelData // qmllint disable
+                required property string modelData
+
+                text: modelData
                 checkable: true
                 checked: DbMain.lastLoadedOutputPreset === modelData
                 onTriggered: {
-                    Presets.Manager.loadLocalPresetFile(1, modelData); // qmllint disable
+                    Presets.Manager.loadLocalPresetFile(1, modelData);
 
-                    tray.showMessage(i18n("Preset Loaded"), modelData, SystemTrayIcon.Information, 3000); // qmllint disable
+                    tray.showMessage(i18n("Preset Loaded"), modelData, SystemTrayIcon.Information, 3000);
                 }
             }
 
