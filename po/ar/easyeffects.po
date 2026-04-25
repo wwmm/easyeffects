@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-04-22 23:50-0300\n"
-"PO-Revision-Date: 2025-11-10 22:39+0000\n"
+"PO-Revision-Date: 2026-04-25 04:09+0000\n"
 "Last-Translator: Abdullah Albaroty <albaroty@gmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/easyeffects/main/"
 "ar/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 5.15-dev\n"
+"X-Generator: Weblate 5.17.1-dev\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -26,6 +26,8 @@ msgid ""
 "Please allow \"Run in Background\" permission for Easy Effects in your "
 "system app settings."
 msgstr ""
+"لا يمكن تفعيل خيار التشغيل التلقائي لأن الوصول إلى الخلفية مرفوض. يرجى منح "
+"Easy Effects إذن \"العمل في الخلفية\" من خلال إعدادات التطبيق في نظامك."
 
 #: src/command_line_parser.cpp:44
 msgid "Quit Easy Effects. Useful when running in service mode."
@@ -41,19 +43,17 @@ msgid "Hide the window."
 msgstr "اخفِ النافذة."
 
 #: src/command_line_parser.cpp:48
-#, fuzzy
 msgid ""
 "Global bypass. 1 to enable, 2 to disable and 3 to get the current state."
-msgstr "التجاوز العام. 1 للتفعيل، 2 للتعطيل، 3لعرض الحالة"
+msgstr "التجاوز العام. 1 للتفعيل، 2 للتعطيل، و3 للاطلاع على الحالة الحالية."
 
 #: src/command_line_parser.cpp:49
 msgid "bypass-state"
-msgstr ""
+msgstr "حالة-التجاوز"
 
 #: src/command_line_parser.cpp:50
-#, fuzzy
 msgid "Toggle the state of the global bypass."
-msgstr "تجاهل المؤثرات العامة"
+msgstr "تبديل حالة التجاوز العام."
 
 #: src/command_line_parser.cpp:51
 msgid "Load a preset. Example: easyeffects -l music"
@@ -103,9 +103,8 @@ msgid "Output presets"
 msgstr "إعدادات الخرج المسبقة"
 
 #: src/command_line_parser.cpp:164
-#, fuzzy
 msgid "No output presets."
-msgstr "إعدادات الخرج المسبقة"
+msgstr "لا يوجد إعداد مسبق للخرج."
 
 #: src/command_line_parser.cpp:175
 #, fuzzy
@@ -113,9 +112,8 @@ msgid "Input presets"
 msgstr "الإعدادات المسبقة للدخل"
 
 #: src/command_line_parser.cpp:177
-#, fuzzy
 msgid "No input presets."
-msgstr "الإعدادات المسبقة للدخل"
+msgstr "لا يوجد إعداد مسبق للدخل."
 
 #: src/command_line_parser.cpp:207
 msgid "Specified preset does not exist."
@@ -123,7 +121,7 @@ msgstr ""
 
 #: src/command_line_parser.cpp:227
 msgid "Provided an invalid bypass state."
-msgstr ""
+msgstr "توفر حالة تجاوز غير صالحة."
 
 #: src/contents/ui/AboutPage.qml:23
 msgctxt "@action:button"
@@ -762,14 +760,12 @@ msgid "Stereo split"
 msgstr ""
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:50
-#, fuzzy
 msgid "Imported a new Convolver impulse file."
-msgstr "ابحث عن ملف استجابة نبضية"
+msgstr "استوردَ ملف استجابة نبضية جديد لـConvolver."
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:52
-#, fuzzy
 msgid "Failed to import the Convolver impulse file."
-msgstr "ابحث عن ملف استجابة نبضية"
+msgstr "فشل استيراد ملف الاستجابة النبضية لـConvolver."
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:66
 #: src/contents/ui/MenuAddPlugins.qml:187
@@ -788,14 +784,12 @@ msgid "Are you sure you want to remove this impulse response from the list?"
 msgstr ""
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:114
-#, fuzzy
 msgid "Removed the %1 Convolver impulse."
-msgstr "ابحث عن ملف استجابة نبضية"
+msgstr "أزيلت الاستجابة النبضية %1 من Convolver."
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:116
-#, fuzzy
 msgid "Failed to remove the %1 Convolver impulse."
-msgstr "ابحث عن ملف استجابة نبضية"
+msgstr "فشل حذف الاستجابة النبضية %1 لConvolver."
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:124
 #, fuzzy
@@ -1050,7 +1044,7 @@ msgstr "كتم"
 #: src/contents/ui/MultibandCompressor.qml:110
 #: src/contents/ui/MultibandGate.qml:110
 msgid "Bypass"
-msgstr "تخطي"
+msgstr "تجاوز"
 
 #: src/contents/ui/Crystalizer.qml:110
 msgid "Oversampling quality"
@@ -1434,7 +1428,7 @@ msgstr "فشل استيراد ملف الاعداد المسبق لمعادل AP
 
 #: src/contents/ui/Equalizer.qml:74
 msgid "Imported the Equalizer APO preset file."
-msgstr "يستورد ملف الاعداد المسبق لمعادل APO"
+msgstr "استورد ملف الاعداد المسبق لمعادل APO."
 
 #: src/contents/ui/Equalizer.qml:76
 #, fuzzy
@@ -1843,9 +1837,8 @@ msgid "Clipping"
 msgstr ""
 
 #: src/contents/ui/Main.qml:307
-#, fuzzy
 msgid "Reset Settings?"
-msgstr "أعد ضبط الإعدادات"
+msgstr "أعادة ضبط الإعدادات؟"
 
 #: src/contents/ui/Main.qml:308
 msgid "Are you sure you want to reset all Easy Effects settings?"
@@ -2753,11 +2746,12 @@ msgid "Save Preset"
 msgstr "أنشئ إعدادًا مسبقًا جديدًا"
 
 #: src/contents/ui/PresetsLocalPage.qml:213
-#, fuzzy
 msgid ""
 "Save current settings to the preset:\n"
 "%1"
-msgstr "احفظ الإعدادات الحالية في مِلَفّ الإعداد المسبق هذا"
+msgstr ""
+"احفظ الإعدادات الحالية في مِلَفّ الإعداد المسبق:\n"
+"%1"
 
 #: src/contents/ui/PresetsLocalPage.qml:217
 #, fuzzy
@@ -2987,9 +2981,8 @@ msgstr ""
 
 #: src/contents/ui/ShortcutsSheet.qml:107
 #: src/contents/ui/ShortcutsSheet.qml:330 src/global_shortcuts.hpp:48
-#, fuzzy
 msgid "Toggle global bypass"
-msgstr "تجاهل المؤثرات العامة"
+msgstr "تبديل التجاوز العام"
 
 #: src/contents/ui/ShortcutsSheet.qml:135
 #, fuzzy
@@ -3176,7 +3169,7 @@ msgstr ""
 
 #: src/main.cpp:354
 msgid "Wellington Wallace"
-msgstr ""
+msgstr "Wellington Wallace"
 
 #: src/main.cpp:354
 msgctxt "@info:credit"
