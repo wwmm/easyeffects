@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects-news\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-28 14:40+0000\n"
-"PO-Revision-Date: 2025-09-22 07:01+0000\n"
-"Last-Translator: Abdelrahman Ehab Elsaied Hassan <s3409663@hotmail.com>\n"
+"PO-Revision-Date: 2026-04-25 10:09+0000\n"
+"Last-Translator: Abdullah Albaroty <albaroty@gmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/ar/>\n"
 "Language: ar\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 5.14-dev\n"
+"X-Generator: Weblate 5.17.1-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -90,9 +90,8 @@ msgid "The bass enhancer page showing audio controls"
 msgstr "صفحة معزِّز الـ bass وعناصر التحكم الصوتي"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:51
-#, fuzzy
 msgid "The convolver page showing audio controls"
-msgstr "صفحة معالج الالتفاف وعناصر التحكم الصوتي."
+msgstr "صفحة convolver التي تعرض أدوات التحكم بالصوت"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:77
@@ -371,7 +370,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:128
 msgid "The DeepFilterNet plugin can now be added to the preset file"
-msgstr "يمكن الآن إضافة 'إضافة DeepFilterNet' إلى ملف الإعداد المسبق"
+msgstr "يمكن الآن إضافة المكون الإضافي DeepFilterNet إلى ملف الإعداد المسبق"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:137
 msgid ""
@@ -463,9 +462,9 @@ msgid ""
 "Added the ability to select and load multiple files in the opening dialogs "
 "for presets, Convolver impulse responses and RNNoise models."
 msgstr ""
-"تمت إضافة إمكانية تحديد وتحميل ملفات متعددة في وقت واحد، وذلك في مربعات "
-"الحوار الخاصة بفتح ملفات الإعدادات المسبقة، وملفات الاستجابة النبضية لمعالج "
-"الالتفاف (Convolver)، ونماذج RNNoise."
+"أضيفت إمكانية تحديد وتحميل ملفات متعددة في وقت واحد، وذلك في مربعات الحوار "
+"الخاصة بفتح ملفات الإعدادات المسبقة، وملفات الاستجابة النبضية لمعالج الالتفاف "
+"(Convolver)، ونماذج RNNoise."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:187
 msgid "Fixed the Solo button in the Equalizer band settings."
@@ -519,9 +518,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:210
 msgid "A new Level Meter plugin based on libebur128 has been added."
-msgstr ""
-"تمت إضافة 'إضافة مقياس مستوى' (Level Meter) جديدة، وهي تعتمد على مكتبة "
-"libebur128."
+msgstr "أضيف مكون إضافي جديد لمقياس المستوى يعتمد على مكتبة libebur128."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:211
 msgid ""
@@ -739,6 +736,8 @@ msgid ""
 "The bypass state can be saved to the preset file. The reasons why this was "
 "done can be seen at issue 1039"
 msgstr ""
+"يمكن حفظ حالة التجاوز في ملف الإعداد المسبق. ويمكن الاطلاع على أسباب ذلك في "
+"المشكلة رقم 1039"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:323
 msgid ""
@@ -891,7 +890,7 @@ msgstr ""
 msgid ""
 "The command line option that returns the global bypass state is working "
 "again."
-msgstr ""
+msgstr "عاد خيار سطر الأوامر الذي يعرض حالة التجاوز العام إلى العمل مرة أخرى."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:382
 msgid ""
@@ -1132,6 +1131,7 @@ msgid ""
 "Now the status of the global bypass button is correctly updated when "
 "changing plugin stack."
 msgstr ""
+"زر حال التجاوز العام يتحدث الآن بشكل صحيح عند تغيير مكدس المكونات الإضافية."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:490
 msgid ""
