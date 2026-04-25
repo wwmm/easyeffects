@@ -56,6 +56,20 @@
     <color type="primary" scheme_preference="dark">#004079</color>
   </branding>
   <releases>
+    <release type="stable" version="8.2.1" date="2026-04-25T00:00:00Z">
+      <description>
+        <ul>
+          <li>Features:</li>
+          <li>A new plugin for crosstalk attenuation is available</li>
+          <li>Updated translations</li>
+          <li>Small QML performance optimizations</li>
+          <li>Bug fixes:</li>
+          <li>In some distributions like NixOS the speexdsp library is compiled with the fftw backend. So we need to make our speex proecssor plugin to use our global fftw mutex. Otherwise using it together with the convolver or the crystalizer plugin can lead to random crashes.</li>
+          <li>The inactivity timeout switch value was not being checked in some cases.</li>
+          <li>Other notes:</li>
+        </ul>
+      </description>
+    </release>
     <release type="stable" version="8.2.0" date="2026-04-14T00:00:00Z">
       <description>
         <ul>

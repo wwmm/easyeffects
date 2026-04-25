@@ -1,5 +1,21 @@
 # Changelog
  
+## 8.2.1
+### 2026-04-25
+
+ 
+### Features:
+- A new plugin for crosstalk attenuation is available
+- Updated translations
+- Small QML performance optimizations
+
+### Bug fixes:
+- In some distributions like NixOS the speexdsp library is compiled with the fftw backend. So we need to make our speex proecssor plugin to use our global fftw mutex. Otherwise using it together with the convolver or the crystalizer plugin can lead to random crashes.
+- The inactivity timeout switch value was not being checked in some cases.
+
+### Other notes:
+
+ 
 ## 8.2.0
 ### 2026-04-14
 

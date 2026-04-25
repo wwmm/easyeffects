@@ -4,6 +4,20 @@ Date: UNRELEASED_DATE
 
 Description: 
 - Features∶
+- 
+
+- Bug fixes∶
+- 
+
+- Other notes∶
+- 
+
+---
+Version: 8.2.1
+Date: 2026-04-25
+
+Description: 
+- Features∶
 - A new plugin for crosstalk attenuation is available
 - Updated translations
 - Small QML performance optimizations
@@ -13,7 +27,6 @@ Description:
 - The inactivity timeout switch value was not being checked in some cases.
 
 - Other notes∶
-- 
 
 ---
 Version: 8.2.0
