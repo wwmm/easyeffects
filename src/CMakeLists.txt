@@ -11,6 +11,7 @@ kconfig_add_kcfg_files(easyeffects GENERATE_MOC ${KCFGC_FILES})
 # install(FILES ${KCFG_FILES} DESTINATION ${KDE_INSTALL_KCFGDIR})
 
 set_source_files_properties(
+    contents/ui/Common.qml
     contents/ui/EeMetersReset.qml
     contents/ui/Validators.qml
     PROPERTIES QT_QML_SINGLETON_TYPE TRUE)
@@ -64,6 +65,7 @@ qt_add_qml_module(easyeffects
         contents/ui/BassEnhancer.qml
         contents/ui/BassLoudness.qml
         contents/ui/BlocklistDialog.qml
+        contents/ui/Common.qml
         contents/ui/Compressor.qml
         contents/ui/Convolver.qml
         contents/ui/ConvolverImpulseDialog.qml
@@ -123,7 +125,6 @@ qt_add_qml_module(easyeffects
         contents/ui/TrayIcon.qml
         contents/ui/Validators.qml
         contents/ui/VoiceSuppressor.qml
-        contents/ui/Common.js
 )
 
 # The module definitions below are to help the qml linter

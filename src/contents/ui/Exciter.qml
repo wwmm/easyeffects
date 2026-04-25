@@ -20,7 +20,6 @@
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
-import "Common.js" as Common
 import ee.ui
 import org.kde.kirigami as Kirigami
 

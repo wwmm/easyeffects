@@ -18,7 +18,6 @@
  */
 
 import QtQuick
-import "Common.js" as Common
 import org.kde.kirigami as Kirigami
 
 Rectangle {

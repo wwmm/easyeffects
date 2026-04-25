@@ -20,7 +20,6 @@
 pragma ComponentBehavior: Bound
 import QtQuick
 import QtQuick.Layouts
-import "Common.js" as Common
 import ee.ui
 import org.kde.kirigami as Kirigami
 
