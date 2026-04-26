@@ -46,7 +46,12 @@ class Biquad {
   float y1 = 0;
   float y2 = 0;
 
-  void set_coefficients(double a0, double a1, double a2, double b0, double b1, double b2) {
+  void set_coefficients(const double a0,
+                        const double a1,
+                        const double a2,
+                        const double b0,
+                        const double b1,
+                        const double b2) {
     fa1 = static_cast<float>(a1 / a0);
     fa2 = static_cast<float>(a2 / a0);
     fb0 = static_cast<float>(b0 / a0);
@@ -55,73 +60,79 @@ class Biquad {
   }
 
  public:
-  void set_allpass(double center_frequency, double sampling_frequency, double quality) {
-    auto w0 = 2 * M_PI * center_frequency / sampling_frequency;
-    auto alpha = std::sin(w0) / (2 * quality);
-    auto b0 = 1 - alpha;
-    auto b1 = -2 * std::cos(w0);
-    auto b2 = 1 + alpha;
-    auto a0 = 1 + alpha;
-    auto a1 = -2 * std::cos(w0);
-    auto a2 = 1 - alpha;
+  void set_allpass(const double center_frequency, const double sampling_frequency, const double quality) {
+    const auto w0 = 2 * M_PI * center_frequency / sampling_frequency;
+    const auto alpha = std::sin(w0) / (2 * quality);
+    const auto b0 = 1 - alpha;
+    const auto b1 = -2 * std::cos(w0);
+    const auto b2 = 1 + alpha;
+    const auto a0 = 1 + alpha;
+    const auto a1 = -2 * std::cos(w0);
+    const auto a2 = 1 - alpha;
     set_coefficients(a0, a1, a2, b0, b1, b2);
   }
 
-  void set_low_pass(double center_frequency, double sampling_frequency, double quality) {
-    auto w0 = 2 * M_PI * center_frequency / sampling_frequency;
-    auto alpha = std::sin(w0) / (2 * quality);
+  void set_low_pass(const double center_frequency, const double sampling_frequency, const double quality) {
+    const auto w0 = 2 * M_PI * center_frequency / sampling_frequency;
+    const auto alpha = std::sin(w0) / (2 * quality);
 
-    auto b0 = (1 - std::cos(w0)) / 2;
-    auto b1 = 1 - std::cos(w0);
-    auto b2 = (1 - std::cos(w0)) / 2;
-    auto a0 = 1 + alpha;
-    auto a1 = -2 * std::cos(w0);
-    auto a2 = 1 - alpha;
+    const auto b0 = (1 - std::cos(w0)) / 2;
+    const auto b1 = 1 - std::cos(w0);
+    const auto b2 = (1 - std::cos(w0)) / 2;
+    const auto a0 = 1 + alpha;
+    const auto a1 = -2 * std::cos(w0);
+    const auto a2 = 1 - alpha;
     set_coefficients(a0, a1, a2, b0, b1, b2);
   }
 
-  void set_high_pass(double center_frequency, double sampling_frequency, double quality) {
-    auto w0 = 2 * M_PI * center_frequency / sampling_frequency;
-    auto alpha = std::sin(w0) / (2 * quality);
-    auto b0 = (1 + std::cos(w0)) / 2;
-    auto b1 = -(1 + std::cos(w0));
-    auto b2 = (1 + std::cos(w0)) / 2;
-    auto a0 = 1 + alpha;
-    auto a1 = -2 * std::cos(w0);
-    auto a2 = 1 - alpha;
+  void set_high_pass(const double center_frequency, const double sampling_frequency, const double quality) {
+    const auto w0 = 2 * M_PI * center_frequency / sampling_frequency;
+    const auto alpha = std::sin(w0) / (2 * quality);
+    const auto b0 = (1 + std::cos(w0)) / 2;
+    const auto b1 = -(1 + std::cos(w0));
+    const auto b2 = (1 + std::cos(w0)) / 2;
+    const auto a0 = 1 + alpha;
+    const auto a1 = -2 * std::cos(w0);
+    const auto a2 = 1 - alpha;
     set_coefficients(a0, a1, a2, b0, b1, b2);
   }
 
-  void set_high_shelf(double center_frequency, double sampling_frequency, double db_gain, double quality) {
-    auto w0 = 2 * M_PI * center_frequency / sampling_frequency;
-    auto A = std::pow(10, db_gain / 40);
-    auto alpha = std::sin(w0) / (2 * quality);
+  void set_high_shelf(const double center_frequency,
+                      const double sampling_frequency,
+                      const double db_gain,
+                      const double quality) {
+    const auto w0 = 2 * M_PI * center_frequency / sampling_frequency;
+    const auto A = std::pow(10, db_gain / 40);
+    const auto alpha = std::sin(w0) / (2 * quality);
 
-    auto b0 = A * ((A + 1) + ((A - 1) * std::cos(w0)) + (2 * std::sqrt(A) * alpha));
-    auto b1 = -2 * A * ((A - 1) + ((A + 1) * std::cos(w0)));
-    auto b2 = A * ((A + 1) + ((A - 1) * std::cos(w0)) - (2 * std::sqrt(A) * alpha));
-    auto a0 = (A + 1) - ((A - 1) * std::cos(w0)) + (2 * std::sqrt(A) * alpha);
-    auto a1 = 2 * ((A - 1) - ((A + 1) * std::cos(w0)));
-    auto a2 = (A + 1) - ((A - 1) * std::cos(w0)) - (2 * std::sqrt(A) * alpha);
+    const auto b0 = A * ((A + 1) + ((A - 1) * std::cos(w0)) + (2 * std::sqrt(A) * alpha));
+    const auto b1 = -2 * A * ((A - 1) + ((A + 1) * std::cos(w0)));
+    const auto b2 = A * ((A + 1) + ((A - 1) * std::cos(w0)) - (2 * std::sqrt(A) * alpha));
+    const auto a0 = (A + 1) - ((A - 1) * std::cos(w0)) + (2 * std::sqrt(A) * alpha);
+    const auto a1 = 2 * ((A - 1) - ((A + 1) * std::cos(w0)));
+    const auto a2 = (A + 1) - ((A - 1) * std::cos(w0)) - (2 * std::sqrt(A) * alpha);
     set_coefficients(a0, a1, a2, b0, b1, b2);
   }
 
-  void set_peaking_band(double center_frequency, double sampling_frequency, double db_gain, double quality) {
-    auto w0 = 2 * M_PI * center_frequency / sampling_frequency;
-    auto A = std::pow(10, db_gain / 40);
-    auto alpha = std::sin(w0) / (2 * quality);
+  void set_peaking_band(const double center_frequency,
+                        const double sampling_frequency,
+                        const double db_gain,
+                        const double quality) {
+    const auto w0 = 2 * M_PI * center_frequency / sampling_frequency;
+    const auto A = std::pow(10, db_gain / 40);
+    const auto alpha = std::sin(w0) / (2 * quality);
 
-    auto b0 = 1 + (alpha * A);
-    auto b1 = -2 * std::cos(w0);
-    auto b2 = 1 - (alpha * A);
-    auto a0 = 1 + (alpha / A);
-    auto a1 = -2 * std::cos(w0);
-    auto a2 = 1 - (alpha / A);
+    const auto b0 = 1 + (alpha * A);
+    const auto b1 = -2 * std::cos(w0);
+    const auto b2 = 1 - (alpha * A);
+    const auto a0 = 1 + (alpha / A);
+    const auto a1 = -2 * std::cos(w0);
+    const auto a2 = 1 - (alpha / A);
     set_coefficients(a0, a1, a2, b0, b1, b2);
   }
 
-  float process(float x0) {
-    auto y0 = (fb0 * x0) + (fb1 * x1) + (fb2 * x2) - (y1 * fa1) - (y2 * fa2);
+  float process(const float x0) {
+    const auto y0 = (fb0 * x0) + (fb1 * x1) + (fb2 * x2) - (y1 * fa1) - (y2 * fa2);
 
     y2 = y1;
     y1 = y0;
@@ -150,9 +161,9 @@ class FilterState {
   /**
    * Set up filtering line for specific delay and configure filters with sample rate.
    */
-  void configure(double delay_us, double rate) {
+  void configure(const double delay_us, const double rate) {
     /* Configure delay line for the appropriate length (full sample precision only) */
-    if (auto samples = static_cast<size_t>(std::round(delay_us / 1.0e6 * rate)); data.size() != samples) {
+    if (const auto samples = static_cast<size_t>(std::round(delay_us / 1.0e6 * rate)); data.size() != samples) {
       data.resize(samples);
       data_index = 0;
     }
