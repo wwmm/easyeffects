@@ -50,9 +50,9 @@ namespace util {
 static Q_LOGGING_CATEGORY(ee_logs, "easyeffects");
 
 static auto prepare_debug_message(const std::string& message, source_location location) -> std::string {
-  auto file_path = std::filesystem::path{location.file_name()};
+  const auto file_path = std::filesystem::path{location.file_name()};
 
-  std::string msg = file_path.filename().string() + ":" + to_string(location.line()) + "\t" + message;
+  const std::string msg = file_path.filename().string() + ":" + to_string(location.line()) + "\t" + message;
 
   return msg;
 }
@@ -318,7 +318,7 @@ auto get_lock_file() -> std::unique_ptr<QLockFile> {
 
   lockFile->setStaleLockTime(0);
 
-  bool status = lockFile->tryLock(100);
+  const bool status = lockFile->tryLock(100);
 
   if (!status) {
     util::debug(std::format("Could not lock the file: {}", lockFile->fileName().toStdString()));

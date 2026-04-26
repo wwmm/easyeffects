@@ -105,7 +105,7 @@ auto str_to_num(const std::string& str, T& num) -> bool {
   // A left trim is performed on strings so that the conversion could success
   // even if there are leading whitespaces and/or the plus sign.
 
-  auto first_char = str.find_first_not_of(" +\n\r\t\v\f");
+  const auto first_char = str.find_first_not_of(" +\n\r\t\v\f");
 
   if (first_char == std::string::npos) {
     return false;
@@ -160,13 +160,14 @@ auto to_string(const T& num, const std::string def = "0") -> std::string {
    * all distinct values of the type T (meaningful only for real numbers) +
    * room for other characters such as "+-e,."
    */
-  const size_t max = std::numeric_limits<T>::digits10 + std::numeric_limits<T>::max_digits10 + 10U;
+  static constexpr size_t max = std::numeric_limits<T>::digits10 + std::numeric_limits<T>::max_digits10 + 10U;
 
-  std::array<char, max> buffer;
+  static std::array<char, max> buffer;
 
-  const auto p_init = buffer.data();
+  static constexpr auto p_init = buffer.data();
+  static constexpr auto p_end = p_init + max;
 
-  const auto result = std::to_chars(p_init, p_init + max, num);
+  const auto result = std::to_chars(p_init, p_end, num);
 
   return (result.ec == std::errc()) ? std::string(p_init, result.ptr - p_init) : def;
 }
@@ -182,8 +183,8 @@ auto logspace(const T& start, const T& stop, const uint& npoints) -> std::vector
     return output;
   }
 
-  auto log10_start = std::log10(start);
-  auto log10_stop = std::log10(stop);
+  const auto log10_start = std::log10(start);
+  const auto log10_stop = std::log10(stop);
 
   const T delta = (log10_stop - log10_start) / static_cast<T>(npoints - 1);
 
