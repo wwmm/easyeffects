@@ -35,13 +35,13 @@ Kirigami.ScrollablePage {
     property BackendConvolver pluginBackend
 
     function updateMeters() {
-        if (!convolverPage.pluginBackend)
+        if (!pluginBackend)
             return;
 
-        inputOutputLevels.setInputLevelLeft(convolverPage.pluginBackend.getInputLevelLeft());
-        inputOutputLevels.setInputLevelRight(convolverPage.pluginBackend.getInputLevelRight());
-        inputOutputLevels.setOutputLevelLeft(convolverPage.pluginBackend.getOutputLevelLeft());
-        inputOutputLevels.setOutputLevelRight(convolverPage.pluginBackend.getOutputLevelRight());
+        inputOutputLevels.setInputLevelLeft(pluginBackend.getInputLevelLeft());
+        inputOutputLevels.setInputLevelRight(pluginBackend.getInputLevelRight());
+        inputOutputLevels.setOutputLevelLeft(pluginBackend.getOutputLevelLeft());
+        inputOutputLevels.setOutputLevelRight(pluginBackend.getOutputLevelRight());
     }
 
     function validChartMag(chartMag: var): bool {
@@ -508,11 +508,13 @@ Kirigami.ScrollablePage {
         }
     }
 
-    header: EeInputOutputGain {
+    EeInputOutputGain {
         id: inputOutputLevels
 
         pluginDB: convolverPage.pluginDB
     }
+
+    header: inputOutputLevels
 
     footer: RowLayout {
         Controls.Label {

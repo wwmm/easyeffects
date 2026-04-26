@@ -33,13 +33,13 @@ Kirigami.ScrollablePage {
     property BackendCrossfeed pluginBackend
 
     function updateMeters() {
-        if (!crossfeedPage.pluginBackend)
+        if (!pluginBackend)
             return;
 
-        inputOutputLevels.setInputLevelLeft(crossfeedPage.pluginBackend.getInputLevelLeft());
-        inputOutputLevels.setInputLevelRight(crossfeedPage.pluginBackend.getInputLevelRight());
-        inputOutputLevels.setOutputLevelLeft(crossfeedPage.pluginBackend.getOutputLevelLeft());
-        inputOutputLevels.setOutputLevelRight(crossfeedPage.pluginBackend.getOutputLevelRight());
+        inputOutputLevels.setInputLevelLeft(pluginBackend.getInputLevelLeft());
+        inputOutputLevels.setInputLevelRight(pluginBackend.getInputLevelRight());
+        inputOutputLevels.setOutputLevelLeft(pluginBackend.getOutputLevelLeft());
+        inputOutputLevels.setOutputLevelRight(pluginBackend.getOutputLevelRight());
     }
 
     function applyPreset(name) {
@@ -137,11 +137,13 @@ Kirigami.ScrollablePage {
         ]
     }
 
-    header: EeInputOutputGain {
+    EeInputOutputGain {
         id: inputOutputLevels
 
         pluginDB: crossfeedPage.pluginDB
     }
+
+    header: inputOutputLevels
 
     footer: RowLayout {
         Controls.Label {

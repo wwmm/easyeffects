@@ -35,21 +35,21 @@ Kirigami.ScrollablePage {
     property BackendCompressor pluginBackend
 
     function updateMeters() {
-        if (!compressorPage.pluginBackend)
+        if (!pluginBackend)
             return;
 
-        inputOutputLevels.setInputLevelLeft(compressorPage.pluginBackend.getInputLevelLeft());
-        inputOutputLevels.setInputLevelRight(compressorPage.pluginBackend.getInputLevelRight());
-        inputOutputLevels.setOutputLevelLeft(compressorPage.pluginBackend.getOutputLevelLeft());
-        inputOutputLevels.setOutputLevelRight(compressorPage.pluginBackend.getOutputLevelRight());
-        reductionLevelLeft.setValue(compressorPage.pluginBackend.getReductionLevelLeft());
-        reductionLevelRight.setValue(compressorPage.pluginBackend.getReductionLevelRight());
-        sideChainLevelLeft.setValue(compressorPage.pluginBackend.getSideChainLevelLeft());
-        sideChainLevelRight.setValue(compressorPage.pluginBackend.getSideChainLevelRight());
-        curveLevelLeft.setValue(compressorPage.pluginBackend.getCurveLevelLeft());
-        curveLevelRight.setValue(compressorPage.pluginBackend.getCurveLevelRight());
-        envelopeLevelLeft.setValue(compressorPage.pluginBackend.getEnvelopeLevelLeft());
-        envelopeLevelRight.setValue(compressorPage.pluginBackend.getEnvelopeLevelRight());
+        inputOutputLevels.setInputLevelLeft(pluginBackend.getInputLevelLeft());
+        inputOutputLevels.setInputLevelRight(pluginBackend.getInputLevelRight());
+        inputOutputLevels.setOutputLevelLeft(pluginBackend.getOutputLevelLeft());
+        inputOutputLevels.setOutputLevelRight(pluginBackend.getOutputLevelRight());
+        reductionLevelLeft.setValue(pluginBackend.getReductionLevelLeft());
+        reductionLevelRight.setValue(pluginBackend.getReductionLevelRight());
+        sideChainLevelLeft.setValue(pluginBackend.getSideChainLevelLeft());
+        sideChainLevelRight.setValue(pluginBackend.getSideChainLevelRight());
+        curveLevelLeft.setValue(pluginBackend.getCurveLevelLeft());
+        curveLevelRight.setValue(pluginBackend.getCurveLevelRight());
+        envelopeLevelLeft.setValue(pluginBackend.getEnvelopeLevelLeft());
+        envelopeLevelRight.setValue(pluginBackend.getEnvelopeLevelRight());
     }
 
     Component.onCompleted: {
@@ -861,11 +861,13 @@ Kirigami.ScrollablePage {
         }
     }
 
-    header: EeInputOutputGain {
+    EeInputOutputGain {
         id: inputOutputLevels
 
         pluginDB: compressorPage.pluginDB
     }
+
+    header: inputOutputLevels
 
     footer: RowLayout {
         Controls.Label {

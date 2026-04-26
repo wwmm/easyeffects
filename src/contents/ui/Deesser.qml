@@ -34,15 +34,15 @@ Kirigami.ScrollablePage {
     property BackendDeesser pluginBackend
 
     function updateMeters() {
-        if (!deesserPage.pluginBackend)
+        if (!pluginBackend)
             return;
 
-        inputOutputLevels.setInputLevelLeft(deesserPage.pluginBackend.getInputLevelLeft());
-        inputOutputLevels.setInputLevelRight(deesserPage.pluginBackend.getInputLevelRight());
-        inputOutputLevels.setOutputLevelLeft(deesserPage.pluginBackend.getOutputLevelLeft());
-        inputOutputLevels.setOutputLevelRight(deesserPage.pluginBackend.getOutputLevelRight());
-        detectionLevel.setValue(deesserPage.pluginBackend.getDetectedLevel());
-        gainReduction.setValue(deesserPage.pluginBackend.getCompressionLevel());
+        inputOutputLevels.setInputLevelLeft(pluginBackend.getInputLevelLeft());
+        inputOutputLevels.setInputLevelRight(pluginBackend.getInputLevelRight());
+        inputOutputLevels.setOutputLevelLeft(pluginBackend.getOutputLevelLeft());
+        inputOutputLevels.setOutputLevelRight(pluginBackend.getOutputLevelRight());
+        detectionLevel.setValue(pluginBackend.getDetectedLevel());
+        gainReduction.setValue(pluginBackend.getCompressionLevel());
     }
 
     Component.onCompleted: {
@@ -306,11 +306,13 @@ Kirigami.ScrollablePage {
         }
     }
 
-    header: EeInputOutputGain {
+    EeInputOutputGain {
         id: inputOutputLevels
 
         pluginDB: deesserPage.pluginDB
     }
+
+    header: inputOutputLevels
 
     footer: RowLayout {
         Controls.Label {

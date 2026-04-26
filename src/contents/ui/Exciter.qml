@@ -33,14 +33,14 @@ Kirigami.ScrollablePage {
     property BackendExciter pluginBackend
 
     function updateMeters() {
-        if (!exciterPage.pluginBackend)
+        if (!pluginBackend)
             return;
 
-        inputOutputLevels.setInputLevelLeft(exciterPage.pluginBackend.getInputLevelLeft());
-        inputOutputLevels.setInputLevelRight(exciterPage.pluginBackend.getInputLevelRight());
-        inputOutputLevels.setOutputLevelLeft(exciterPage.pluginBackend.getOutputLevelLeft());
-        inputOutputLevels.setOutputLevelRight(exciterPage.pluginBackend.getOutputLevelRight());
-        harmonicsLevel.setValue(exciterPage.pluginBackend.getHarmonicsLevel());
+        inputOutputLevels.setInputLevelLeft(pluginBackend.getInputLevelLeft());
+        inputOutputLevels.setInputLevelRight(pluginBackend.getInputLevelRight());
+        inputOutputLevels.setOutputLevelLeft(pluginBackend.getOutputLevelLeft());
+        inputOutputLevels.setOutputLevelRight(pluginBackend.getOutputLevelRight());
+        harmonicsLevel.setValue(pluginBackend.getHarmonicsLevel());
     }
 
     Component.onCompleted: {
@@ -197,11 +197,13 @@ Kirigami.ScrollablePage {
         }
     }
 
-    header: EeInputOutputGain {
+    EeInputOutputGain {
         id: inputOutputLevels
 
         pluginDB: exciterPage.pluginDB
     }
+
+    header: inputOutputLevels
 
     footer: RowLayout {
         Controls.Label {

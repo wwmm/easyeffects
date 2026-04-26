@@ -35,13 +35,13 @@ Kirigami.ScrollablePage {
     property BackendCrosstalkCanceller pluginBackend
 
     function updateMeters() {
-        if (!crosstalkPage.pluginBackend)
+        if (!pluginBackend)
             return;
 
-        inputOutputLevels.setInputLevelLeft(crosstalkPage.pluginBackend.getInputLevelLeft());
-        inputOutputLevels.setInputLevelRight(crosstalkPage.pluginBackend.getInputLevelRight());
-        inputOutputLevels.setOutputLevelLeft(crosstalkPage.pluginBackend.getOutputLevelLeft());
-        inputOutputLevels.setOutputLevelRight(crosstalkPage.pluginBackend.getOutputLevelRight());
+        inputOutputLevels.setInputLevelLeft(pluginBackend.getInputLevelLeft());
+        inputOutputLevels.setInputLevelRight(pluginBackend.getInputLevelRight());
+        inputOutputLevels.setOutputLevelLeft(pluginBackend.getOutputLevelLeft());
+        inputOutputLevels.setOutputLevelRight(pluginBackend.getOutputLevelRight());
     }
 
     Component.onCompleted: {
@@ -105,11 +105,13 @@ Kirigami.ScrollablePage {
         }
     }
 
-    header: EeInputOutputGain {
+    EeInputOutputGain {
         id: inputOutputLevels
 
         pluginDB: crosstalkPage.pluginDB
     }
+
+    header: inputOutputLevels
 
     footer: RowLayout {
         Kirigami.ActionToolBar {

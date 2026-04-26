@@ -287,11 +287,13 @@ Kirigami.ScrollablePage {
         }
     }
 
-    header: EeInputOutputGain {
+    EeInputOutputGain {
         id: inputOutputLevels
 
         pluginDB: equalizerPage.pluginDB
     }
+
+    header: inputOutputLevels
 
     footer: ColumnLayout {
         RowLayout {

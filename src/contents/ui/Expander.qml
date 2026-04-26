@@ -35,21 +35,21 @@ Kirigami.ScrollablePage {
     property BackendExpander pluginBackend
 
     function updateMeters() {
-        if (!expanderPage.pluginBackend)
+        if (!pluginBackend)
             return;
 
-        inputOutputLevels.setInputLevelLeft(expanderPage.pluginBackend.getInputLevelLeft());
-        inputOutputLevels.setInputLevelRight(expanderPage.pluginBackend.getInputLevelRight());
-        inputOutputLevels.setOutputLevelLeft(expanderPage.pluginBackend.getOutputLevelLeft());
-        inputOutputLevels.setOutputLevelRight(expanderPage.pluginBackend.getOutputLevelRight());
-        reductionLevelLeft.setValue(expanderPage.pluginBackend.getReductionLevelLeft());
-        reductionLevelRight.setValue(expanderPage.pluginBackend.getReductionLevelRight());
-        sideChainLevelLeft.setValue(expanderPage.pluginBackend.getSideChainLevelLeft());
-        sideChainLevelRight.setValue(expanderPage.pluginBackend.getSideChainLevelRight());
-        curveLevelLeft.setValue(expanderPage.pluginBackend.getCurveLevelLeft());
-        curveLevelRight.setValue(expanderPage.pluginBackend.getCurveLevelRight());
-        envelopeLevelLeft.setValue(expanderPage.pluginBackend.getEnvelopeLevelLeft());
-        envelopeLevelRight.setValue(expanderPage.pluginBackend.getEnvelopeLevelRight());
+        inputOutputLevels.setInputLevelLeft(pluginBackend.getInputLevelLeft());
+        inputOutputLevels.setInputLevelRight(pluginBackend.getInputLevelRight());
+        inputOutputLevels.setOutputLevelLeft(pluginBackend.getOutputLevelLeft());
+        inputOutputLevels.setOutputLevelRight(pluginBackend.getOutputLevelRight());
+        reductionLevelLeft.setValue(pluginBackend.getReductionLevelLeft());
+        reductionLevelRight.setValue(pluginBackend.getReductionLevelRight());
+        sideChainLevelLeft.setValue(pluginBackend.getSideChainLevelLeft());
+        sideChainLevelRight.setValue(pluginBackend.getSideChainLevelRight());
+        curveLevelLeft.setValue(pluginBackend.getCurveLevelLeft());
+        curveLevelRight.setValue(pluginBackend.getCurveLevelRight());
+        envelopeLevelLeft.setValue(pluginBackend.getEnvelopeLevelLeft());
+        envelopeLevelRight.setValue(pluginBackend.getEnvelopeLevelRight());
     }
 
     Component.onCompleted: {
@@ -811,11 +811,13 @@ Kirigami.ScrollablePage {
         }
     }
 
-    header: EeInputOutputGain {
+    EeInputOutputGain {
         id: inputOutputLevels
 
         pluginDB: expanderPage.pluginDB
     }
+
+    header: inputOutputLevels
 
     footer: RowLayout {
         Controls.Label {

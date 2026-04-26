@@ -34,17 +34,17 @@ Kirigami.ScrollablePage {
     property BackendCrystalizer pluginBackend
 
     function updateMeters() {
-        if (!crystalizerPage.pluginBackend)
+        if (!pluginBackend)
             return;
 
-        inputOutputLevels.setInputLevelLeft(crystalizerPage.pluginBackend.getInputLevelLeft());
-        inputOutputLevels.setInputLevelRight(crystalizerPage.pluginBackend.getInputLevelRight());
-        inputOutputLevels.setOutputLevelLeft(crystalizerPage.pluginBackend.getOutputLevelLeft());
-        inputOutputLevels.setOutputLevelRight(crystalizerPage.pluginBackend.getOutputLevelRight());
+        inputOutputLevels.setInputLevelLeft(pluginBackend.getInputLevelLeft());
+        inputOutputLevels.setInputLevelRight(pluginBackend.getInputLevelRight());
+        inputOutputLevels.setOutputLevelLeft(pluginBackend.getOutputLevelLeft());
+        inputOutputLevels.setOutputLevelRight(pluginBackend.getOutputLevelRight());
 
-        const newData = crystalizerPage.pluginBackend.getAdaptiveIntensities();
+        const newData = pluginBackend.getAdaptiveIntensities();
 
-        for (let n = 0; n < crystalizerPage.pluginBackend.numBands; n++) {
+        for (let n = 0; n < pluginBackend.numBands; n++) {
             listModel.setProperty(n, "adaptiveIntensity", newData[n]);
         }
     }
@@ -142,11 +142,13 @@ Kirigami.ScrollablePage {
         }
     }
 
-    header: EeInputOutputGain {
+    EeInputOutputGain {
         id: inputOutputLevels
 
         pluginDB: crystalizerPage.pluginDB
     }
+
+    header: inputOutputLevels
 
     footer: RowLayout {
         Controls.Label {

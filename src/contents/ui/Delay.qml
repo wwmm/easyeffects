@@ -34,13 +34,13 @@ Kirigami.ScrollablePage {
     property BackendDelay pluginBackend
 
     function updateMeters() {
-        if (!delayPage.pluginBackend)
+        if (!pluginBackend)
             return;
 
-        inputOutputLevels.setInputLevelLeft(delayPage.pluginBackend.getInputLevelLeft());
-        inputOutputLevels.setInputLevelRight(delayPage.pluginBackend.getInputLevelRight());
-        inputOutputLevels.setOutputLevelLeft(delayPage.pluginBackend.getOutputLevelLeft());
-        inputOutputLevels.setOutputLevelRight(delayPage.pluginBackend.getOutputLevelRight());
+        inputOutputLevels.setInputLevelLeft(pluginBackend.getInputLevelLeft());
+        inputOutputLevels.setInputLevelRight(pluginBackend.getInputLevelRight());
+        inputOutputLevels.setOutputLevelLeft(pluginBackend.getOutputLevelLeft());
+        inputOutputLevels.setOutputLevelRight(pluginBackend.getOutputLevelRight());
     }
 
     Component.onCompleted: {
@@ -363,11 +363,13 @@ Kirigami.ScrollablePage {
         }
     }
 
-    header: EeInputOutputGain {
+    EeInputOutputGain {
         id: inputOutputLevels
 
         pluginDB: delayPage.pluginDB
     }
+
+    header: inputOutputLevels
 
     footer: RowLayout {
         Controls.Label {

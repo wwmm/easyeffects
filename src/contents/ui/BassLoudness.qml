@@ -33,13 +33,13 @@ Kirigami.ScrollablePage {
     property BackendBassLoudness pluginBackend
 
     function updateMeters() {
-        if (!bassLoudnessPage.pluginBackend)
+        if (!pluginBackend)
             return;
 
-        inputOutputLevels.setInputLevelLeft(bassLoudnessPage.pluginBackend.getInputLevelLeft());
-        inputOutputLevels.setInputLevelRight(bassLoudnessPage.pluginBackend.getInputLevelRight());
-        inputOutputLevels.setOutputLevelLeft(bassLoudnessPage.pluginBackend.getOutputLevelLeft());
-        inputOutputLevels.setOutputLevelRight(bassLoudnessPage.pluginBackend.getOutputLevelRight());
+        inputOutputLevels.setInputLevelLeft(pluginBackend.getInputLevelLeft());
+        inputOutputLevels.setInputLevelRight(pluginBackend.getInputLevelRight());
+        inputOutputLevels.setOutputLevelLeft(pluginBackend.getOutputLevelLeft());
+        inputOutputLevels.setOutputLevelRight(pluginBackend.getOutputLevelRight());
     }
 
     Component.onCompleted: {
@@ -113,11 +113,13 @@ Kirigami.ScrollablePage {
         }
     }
 
-    header: EeInputOutputGain {
+    EeInputOutputGain {
         id: inputOutputLevels
 
         pluginDB: bassLoudnessPage.pluginDB
     }
+
+    header: inputOutputLevels
 
     footer: RowLayout {
         Controls.Label {

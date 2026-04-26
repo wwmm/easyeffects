@@ -34,20 +34,20 @@ Kirigami.ScrollablePage {
     property BackendAutogain pluginBackend
 
     function updateMeters() {
-        if (!autogainPage.pluginBackend)
+        if (!pluginBackend)
             return;
 
-        momentary.setValue(autogainPage.pluginBackend.getMomentaryLevel());
-        shortterm.setValue(autogainPage.pluginBackend.getShorttermLevel());
-        integrated.setValue(autogainPage.pluginBackend.getIntegratedLevel());
-        relative.setValue(autogainPage.pluginBackend.getRelativeLevel());
-        range.setValue(autogainPage.pluginBackend.getRangeLevel());
-        loudness.setValue(autogainPage.pluginBackend.getLoudnessLevel());
-        outputGain.setValue(autogainPage.pluginBackend.getOutputGainLevel());
-        inputOutputLevels.setInputLevelLeft(autogainPage.pluginBackend.getInputLevelLeft());
-        inputOutputLevels.setInputLevelRight(autogainPage.pluginBackend.getInputLevelRight());
-        inputOutputLevels.setOutputLevelLeft(autogainPage.pluginBackend.getOutputLevelLeft());
-        inputOutputLevels.setOutputLevelRight(autogainPage.pluginBackend.getOutputLevelRight());
+        momentary.setValue(pluginBackend.getMomentaryLevel());
+        shortterm.setValue(pluginBackend.getShorttermLevel());
+        integrated.setValue(pluginBackend.getIntegratedLevel());
+        relative.setValue(pluginBackend.getRelativeLevel());
+        range.setValue(pluginBackend.getRangeLevel());
+        loudness.setValue(pluginBackend.getLoudnessLevel());
+        outputGain.setValue(pluginBackend.getOutputGainLevel());
+        inputOutputLevels.setInputLevelLeft(pluginBackend.getInputLevelLeft());
+        inputOutputLevels.setInputLevelRight(pluginBackend.getInputLevelRight());
+        inputOutputLevels.setOutputLevelLeft(pluginBackend.getOutputLevelLeft());
+        inputOutputLevels.setOutputLevelRight(pluginBackend.getOutputLevelRight());
     }
 
     Component.onCompleted: {
@@ -220,11 +220,13 @@ Kirigami.ScrollablePage {
         }
     }
 
-    header: EeInputOutputGain {
+    EeInputOutputGain {
         id: inputOutputLevels
 
         pluginDB: autogainPage.pluginDB
     }
+
+    header: inputOutputLevels
 
     footer: RowLayout {
         Controls.Label {

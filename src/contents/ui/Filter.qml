@@ -34,13 +34,13 @@ Kirigami.ScrollablePage {
     property BackendFilter pluginBackend
 
     function updateMeters() {
-        if (!filterPage.pluginBackend)
+        if (!pluginBackend)
             return;
 
-        inputOutputLevels.setInputLevelLeft(filterPage.pluginBackend.getInputLevelLeft());
-        inputOutputLevels.setInputLevelRight(filterPage.pluginBackend.getInputLevelRight());
-        inputOutputLevels.setOutputLevelLeft(filterPage.pluginBackend.getOutputLevelLeft());
-        inputOutputLevels.setOutputLevelRight(filterPage.pluginBackend.getOutputLevelRight());
+        inputOutputLevels.setInputLevelLeft(pluginBackend.getInputLevelLeft());
+        inputOutputLevels.setInputLevelRight(pluginBackend.getInputLevelRight());
+        inputOutputLevels.setOutputLevelLeft(pluginBackend.getOutputLevelLeft());
+        inputOutputLevels.setOutputLevelRight(pluginBackend.getOutputLevelRight());
     }
 
     Component.onCompleted: {
@@ -207,11 +207,13 @@ Kirigami.ScrollablePage {
         }
     }
 
-    header: EeInputOutputGain {
+    EeInputOutputGain {
         id: inputOutputLevels
 
         pluginDB: filterPage.pluginDB
     }
+
+    header: inputOutputLevels
 
     footer: RowLayout {
         Controls.Label {
