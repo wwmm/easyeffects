@@ -37,17 +37,17 @@ Kirigami.ScrollablePage {
     property BackendRNNoise pluginBackend
 
     function updateMeters() {
-        if (!rnnoisePage.pluginBackend)
+        if (!pluginBackend)
             return;
 
-        inputOutputLevels.setInputLevelLeft(rnnoisePage.pluginBackend.getInputLevelLeft());
-        inputOutputLevels.setInputLevelRight(rnnoisePage.pluginBackend.getInputLevelRight());
-        inputOutputLevels.setOutputLevelLeft(rnnoisePage.pluginBackend.getOutputLevelLeft());
-        inputOutputLevels.setOutputLevelRight(rnnoisePage.pluginBackend.getOutputLevelRight());
+        inputOutputLevels.setInputLevelLeft(pluginBackend.getInputLevelLeft());
+        inputOutputLevels.setInputLevelRight(pluginBackend.getInputLevelRight());
+        inputOutputLevels.setOutputLevelLeft(pluginBackend.getOutputLevelLeft());
+        inputOutputLevels.setOutputLevelRight(pluginBackend.getOutputLevelRight());
     }
 
     Component.onCompleted: {
-        rnnoisePage.pluginBackend = rnnoisePage.pipelineInstance.getPluginInstance(name);
+        pluginBackend = pipelineInstance.getPluginInstance(name);
     }
 
     FileDialog {
@@ -307,11 +307,13 @@ Kirigami.ScrollablePage {
         }
     }
 
-    header: EeInputOutputGain {
+    EeInputOutputGain {
         id: inputOutputLevels
 
         pluginDB: rnnoisePage.pluginDB
     }
+
+    header: inputOutputLevels
 
     footer: ColumnLayout {
         RowLayout {

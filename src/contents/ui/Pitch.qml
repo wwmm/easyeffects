@@ -33,17 +33,17 @@ Kirigami.ScrollablePage {
     property BackendPitch pluginBackend
 
     function updateMeters() {
-        if (!pitchPage.pluginBackend)
+        if (!pluginBackend)
             return;
 
-        inputOutputLevels.setInputLevelLeft(pitchPage.pluginBackend.getInputLevelLeft());
-        inputOutputLevels.setInputLevelRight(pitchPage.pluginBackend.getInputLevelRight());
-        inputOutputLevels.setOutputLevelLeft(pitchPage.pluginBackend.getOutputLevelLeft());
-        inputOutputLevels.setOutputLevelRight(pitchPage.pluginBackend.getOutputLevelRight());
+        inputOutputLevels.setInputLevelLeft(pluginBackend.getInputLevelLeft());
+        inputOutputLevels.setInputLevelRight(pluginBackend.getInputLevelRight());
+        inputOutputLevels.setOutputLevelLeft(pluginBackend.getOutputLevelLeft());
+        inputOutputLevels.setOutputLevelRight(pluginBackend.getOutputLevelRight());
     }
 
     Component.onCompleted: {
-        pitchPage.pluginBackend = pitchPage.pipelineInstance.getPluginInstance(name);
+        pluginBackend = pipelineInstance.getPluginInstance(name);
     }
 
     ColumnLayout {
@@ -255,11 +255,13 @@ Kirigami.ScrollablePage {
         }
     }
 
-    header: EeInputOutputGain {
+    EeInputOutputGain {
         id: inputOutputLevels
 
         pluginDB: pitchPage.pluginDB
     }
+
+    header: inputOutputLevels
 
     footer: RowLayout {
         Controls.Label {

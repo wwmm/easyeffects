@@ -69,16 +69,16 @@ class MultibandCompressor : public PluginBase {
 
   void update_probe_links() override;
 
-  Q_INVOKABLE [[nodiscard]] QList<float> getFrequencyRangeEnd() const;
+  Q_INVOKABLE [[nodiscard]] QList<double> getFrequencyRangeEnd() const;
 
-  Q_INVOKABLE [[nodiscard]] QList<float> getEnvelopeLevelLeft() const;
-  Q_INVOKABLE [[nodiscard]] QList<float> getEnvelopeLevelRight() const;
+  Q_INVOKABLE [[nodiscard]] QList<double> getEnvelopeLevelLeft() const;
+  Q_INVOKABLE [[nodiscard]] QList<double> getEnvelopeLevelRight() const;
 
-  Q_INVOKABLE [[nodiscard]] QList<float> getCurveLevelLeft() const;
-  Q_INVOKABLE [[nodiscard]] QList<float> getCurveLevelRight() const;
+  Q_INVOKABLE [[nodiscard]] QList<double> getCurveLevelLeft() const;
+  Q_INVOKABLE [[nodiscard]] QList<double> getCurveLevelRight() const;
 
-  Q_INVOKABLE [[nodiscard]] QList<float> getReductionLevelLeft() const;
-  Q_INVOKABLE [[nodiscard]] QList<float> getReductionLevelRight() const;
+  Q_INVOKABLE [[nodiscard]] QList<double> getReductionLevelLeft() const;
+  Q_INVOKABLE [[nodiscard]] QList<double> getReductionLevelRight() const;
 
  private:
   uint latency_n_frames = 0U;
@@ -89,7 +89,8 @@ class MultibandCompressor : public PluginBase {
 
   DbMultibandCompressor* settings = nullptr;
 
-  QList<float> frequency_range_end, envelope_left, envelope_right, curve_left, curve_right, reduction_left,
+  // Using double instead of float helps qml replace JS by c++ calls in the plugin updateMeters() function
+  QList<double> frequency_range_end, envelope_left, envelope_right, curve_left, curve_right, reduction_left,
       reduction_right;
 
   std::vector<pw_proxy*> list_proxies;

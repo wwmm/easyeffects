@@ -33,13 +33,13 @@ Kirigami.ScrollablePage {
     property BackendVoiceSuppressor pluginBackend
 
     function updateMeters() {
-        if (!voiceSuppressorPage.pluginBackend)
+        if (!pluginBackend)
             return;
 
-        inputOutputLevels.setInputLevelLeft(voiceSuppressorPage.pluginBackend.getInputLevelLeft());
-        inputOutputLevels.setInputLevelRight(voiceSuppressorPage.pluginBackend.getInputLevelRight());
-        inputOutputLevels.setOutputLevelLeft(voiceSuppressorPage.pluginBackend.getOutputLevelLeft());
-        inputOutputLevels.setOutputLevelRight(voiceSuppressorPage.pluginBackend.getOutputLevelRight());
+        inputOutputLevels.setInputLevelLeft(pluginBackend.getInputLevelLeft());
+        inputOutputLevels.setInputLevelRight(pluginBackend.getInputLevelRight());
+        inputOutputLevels.setOutputLevelLeft(pluginBackend.getOutputLevelLeft());
+        inputOutputLevels.setOutputLevelRight(pluginBackend.getOutputLevelRight());
     }
 
     Component.onCompleted: {
@@ -155,11 +155,13 @@ Kirigami.ScrollablePage {
         }
     }
 
-    header: EeInputOutputGain {
+    EeInputOutputGain {
         id: inputOutputLevels
 
         pluginDB: voiceSuppressorPage.pluginDB
     }
+
+    header: inputOutputLevels
 
     footer: RowLayout {
         Kirigami.ActionToolBar {

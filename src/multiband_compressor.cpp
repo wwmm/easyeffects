@@ -347,30 +347,30 @@ auto MultibandCompressor::get_latency_seconds() -> float {
   return this->latency_value;
 }
 
-QList<float> MultibandCompressor::getFrequencyRangeEnd() const {
+QList<double> MultibandCompressor::getFrequencyRangeEnd() const {
   return frequency_range_end;
 }
 
-QList<float> MultibandCompressor::getEnvelopeLevelLeft() const {
+QList<double> MultibandCompressor::getEnvelopeLevelLeft() const {
   return envelope_left;
 }
 
-QList<float> MultibandCompressor::getEnvelopeLevelRight() const {
+QList<double> MultibandCompressor::getEnvelopeLevelRight() const {
   return envelope_right;
 }
 
-QList<float> MultibandCompressor::getCurveLevelLeft() const {
+QList<double> MultibandCompressor::getCurveLevelLeft() const {
   return curve_left;
 }
 
-QList<float> MultibandCompressor::getCurveLevelRight() const {
+QList<double> MultibandCompressor::getCurveLevelRight() const {
   return curve_right;
 }
 
-QList<float> MultibandCompressor::getReductionLevelLeft() const {
+QList<double> MultibandCompressor::getReductionLevelLeft() const {
   return reduction_left;
 }
 
-QList<float> MultibandCompressor::getReductionLevelRight() const {
+QList<double> MultibandCompressor::getReductionLevelRight() const {
   return reduction_right;
 }

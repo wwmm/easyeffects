@@ -33,18 +33,18 @@ Kirigami.ScrollablePage {
     property BackendMaximizer pluginBackend
 
     function updateMeters() {
-        if (!maximizerPage.pluginBackend)
+        if (!pluginBackend)
             return;
 
-        inputOutputLevels.setInputLevelLeft(maximizerPage.pluginBackend.getInputLevelLeft());
-        inputOutputLevels.setInputLevelRight(maximizerPage.pluginBackend.getInputLevelRight());
-        inputOutputLevels.setOutputLevelLeft(maximizerPage.pluginBackend.getOutputLevelLeft());
-        inputOutputLevels.setOutputLevelRight(maximizerPage.pluginBackend.getOutputLevelRight());
-        reductionLevel.setValue(maximizerPage.pluginBackend.getReductionLevel());
+        inputOutputLevels.setInputLevelLeft(pluginBackend.getInputLevelLeft());
+        inputOutputLevels.setInputLevelRight(pluginBackend.getInputLevelRight());
+        inputOutputLevels.setOutputLevelLeft(pluginBackend.getOutputLevelLeft());
+        inputOutputLevels.setOutputLevelRight(pluginBackend.getOutputLevelRight());
+        reductionLevel.setValue(pluginBackend.getReductionLevel());
     }
 
     Component.onCompleted: {
-        maximizerPage.pluginBackend = maximizerPage.pipelineInstance.getPluginInstance(name);
+        pluginBackend = pipelineInstance.getPluginInstance(name);
     }
 
     ColumnLayout {
@@ -109,11 +109,13 @@ Kirigami.ScrollablePage {
         }
     }
 
-    header: EeInputOutputGain {
+    EeInputOutputGain {
         id: inputOutputLevels
 
         pluginDB: maximizerPage.pluginDB
     }
+
+    header: inputOutputLevels
 
     footer: RowLayout {
         Controls.Label {

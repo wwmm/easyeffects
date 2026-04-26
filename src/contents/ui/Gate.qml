@@ -35,25 +35,25 @@ Kirigami.ScrollablePage {
     property BackendGate pluginBackend
 
     function updateMeters() {
-        if (!gatePage.pluginBackend)
+        if (!pluginBackend)
             return;
 
-        inputOutputLevels.setInputLevelLeft(gatePage.pluginBackend.getInputLevelLeft());
-        inputOutputLevels.setInputLevelRight(gatePage.pluginBackend.getInputLevelRight());
-        inputOutputLevels.setOutputLevelLeft(gatePage.pluginBackend.getOutputLevelLeft());
-        inputOutputLevels.setOutputLevelRight(gatePage.pluginBackend.getOutputLevelRight());
-        reductionLevelLeft.setValue(gatePage.pluginBackend.getReductionLevelLeft());
-        reductionLevelRight.setValue(gatePage.pluginBackend.getReductionLevelRight());
-        sideChainLevelLeft.setValue(gatePage.pluginBackend.getSideChainLevelLeft());
-        sideChainLevelRight.setValue(gatePage.pluginBackend.getSideChainLevelRight());
-        curveLevelLeft.setValue(gatePage.pluginBackend.getCurveLevelLeft());
-        curveLevelRight.setValue(gatePage.pluginBackend.getCurveLevelRight());
-        envelopeLevelLeft.setValue(gatePage.pluginBackend.getEnvelopeLevelLeft());
-        envelopeLevelRight.setValue(gatePage.pluginBackend.getEnvelopeLevelRight());
-        attackZoneStart.setValue(gatePage.pluginBackend.getAttackZoneStart());
-        attackThreshold.setValue(gatePage.pluginBackend.getAttackThreshold());
-        releaseZoneStart.setValue(gatePage.pluginBackend.getReleaseZoneStart());
-        releaseThreshold.setValue(gatePage.pluginBackend.getReleaseThreshold());
+        inputOutputLevels.setInputLevelLeft(pluginBackend.getInputLevelLeft());
+        inputOutputLevels.setInputLevelRight(pluginBackend.getInputLevelRight());
+        inputOutputLevels.setOutputLevelLeft(pluginBackend.getOutputLevelLeft());
+        inputOutputLevels.setOutputLevelRight(pluginBackend.getOutputLevelRight());
+        reductionLevelLeft.setValue(pluginBackend.getReductionLevelLeft());
+        reductionLevelRight.setValue(pluginBackend.getReductionLevelRight());
+        sideChainLevelLeft.setValue(pluginBackend.getSideChainLevelLeft());
+        sideChainLevelRight.setValue(pluginBackend.getSideChainLevelRight());
+        curveLevelLeft.setValue(pluginBackend.getCurveLevelLeft());
+        curveLevelRight.setValue(pluginBackend.getCurveLevelRight());
+        envelopeLevelLeft.setValue(pluginBackend.getEnvelopeLevelLeft());
+        envelopeLevelRight.setValue(pluginBackend.getEnvelopeLevelRight());
+        attackZoneStart.setValue(pluginBackend.getAttackZoneStart());
+        attackThreshold.setValue(pluginBackend.getAttackThreshold());
+        releaseZoneStart.setValue(pluginBackend.getReleaseZoneStart());
+        releaseThreshold.setValue(pluginBackend.getReleaseThreshold());
     }
 
     Component.onCompleted: {
@@ -940,11 +940,13 @@ Kirigami.ScrollablePage {
         }
     }
 
-    header: EeInputOutputGain {
+    EeInputOutputGain {
         id: inputOutputLevels
 
         pluginDB: gatePage.pluginDB
     }
+
+    header: inputOutputLevels
 
     footer: RowLayout {
         Controls.Label {

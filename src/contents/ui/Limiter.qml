@@ -35,21 +35,21 @@ Kirigami.ScrollablePage {
     property BackendLimiter pluginBackend
 
     function updateMeters() {
-        if (!limiterPage.pluginBackend)
+        if (!pluginBackend)
             return;
 
-        inputOutputLevels.setInputLevelLeft(limiterPage.pluginBackend.getInputLevelLeft());
-        inputOutputLevels.setInputLevelRight(limiterPage.pluginBackend.getInputLevelRight());
-        inputOutputLevels.setOutputLevelLeft(limiterPage.pluginBackend.getOutputLevelLeft());
-        inputOutputLevels.setOutputLevelRight(limiterPage.pluginBackend.getOutputLevelRight());
-        gainLevelLeft.setValue(limiterPage.pluginBackend.getGainLevelLeft());
-        gainLevelRight.setValue(limiterPage.pluginBackend.getGainLevelRight());
-        sideChainLevelLeft.setValue(limiterPage.pluginBackend.getSideChainLevelLeft());
-        sideChainLevelRight.setValue(limiterPage.pluginBackend.getSideChainLevelRight());
+        inputOutputLevels.setInputLevelLeft(pluginBackend.getInputLevelLeft());
+        inputOutputLevels.setInputLevelRight(pluginBackend.getInputLevelRight());
+        inputOutputLevels.setOutputLevelLeft(pluginBackend.getOutputLevelLeft());
+        inputOutputLevels.setOutputLevelRight(pluginBackend.getOutputLevelRight());
+        gainLevelLeft.setValue(pluginBackend.getGainLevelLeft());
+        gainLevelRight.setValue(pluginBackend.getGainLevelRight());
+        sideChainLevelLeft.setValue(pluginBackend.getSideChainLevelLeft());
+        sideChainLevelRight.setValue(pluginBackend.getSideChainLevelRight());
     }
 
     Component.onCompleted: {
-        limiterPage.pluginBackend = pipelineInstance.getPluginInstance(name);
+        pluginBackend = pipelineInstance.getPluginInstance(name);
     }
 
     ColumnLayout {
@@ -595,11 +595,13 @@ Kirigami.ScrollablePage {
         }
     }
 
-    header: EeInputOutputGain {
+    EeInputOutputGain {
         id: inputOutputLevels
 
         pluginDB: limiterPage.pluginDB
     }
+
+    header: inputOutputLevels
 
     footer: RowLayout {
         Controls.Label {

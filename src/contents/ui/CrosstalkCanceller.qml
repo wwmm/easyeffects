@@ -45,7 +45,7 @@ Kirigami.ScrollablePage {
     }
 
     Component.onCompleted: {
-        crosstalkPage.pluginBackend = crosstalkPage.pipelineInstance.getPluginInstance(name);
+        pluginBackend = pipelineInstance.getPluginInstance(name);
     }
 
     ColumnLayout {

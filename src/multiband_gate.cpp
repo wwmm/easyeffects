@@ -338,30 +338,30 @@ auto MultibandGate::get_latency_seconds() -> float {
   return this->latency_value;
 }
 
-QList<float> MultibandGate::getFrequencyRangeEnd() const {
+QList<double> MultibandGate::getFrequencyRangeEnd() const {
   return frequency_range_end;
 }
 
-QList<float> MultibandGate::getEnvelopeLevelLeft() const {
+QList<double> MultibandGate::getEnvelopeLevelLeft() const {
   return envelope_left;
 }
 
-QList<float> MultibandGate::getEnvelopeLevelRight() const {
+QList<double> MultibandGate::getEnvelopeLevelRight() const {
   return envelope_right;
 }
 
-QList<float> MultibandGate::getCurveLevelLeft() const {
+QList<double> MultibandGate::getCurveLevelLeft() const {
   return curve_left;
 }
 
-QList<float> MultibandGate::getCurveLevelRight() const {
+QList<double> MultibandGate::getCurveLevelRight() const {
   return curve_right;
 }
 
-QList<float> MultibandGate::getReductionLevelLeft() const {
+QList<double> MultibandGate::getReductionLevelLeft() const {
   return reduction_left;
 }
 
-QList<float> MultibandGate::getReductionLevelRight() const {
+QList<double> MultibandGate::getReductionLevelRight() const {
   return reduction_right;
 }

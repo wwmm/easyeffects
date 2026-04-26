@@ -33,22 +33,22 @@ Kirigami.ScrollablePage {
     property BackendLevelMeter pluginBackend
 
     function updateMeters() {
-        if (!levelMeterPage.pluginBackend)
+        if (!pluginBackend)
             return;
 
-        momentary.setValue(levelMeterPage.pluginBackend.getMomentaryLevel());
-        shortterm.setValue(levelMeterPage.pluginBackend.getShorttermLevel());
-        integrated.setValue(levelMeterPage.pluginBackend.getIntegratedLevel());
-        relative.setValue(levelMeterPage.pluginBackend.getRelativeLevel());
-        range.setValue(levelMeterPage.pluginBackend.getRangeLevel());
-        truePeakL.setValue(levelMeterPage.pluginBackend.getTruePeakL());
-        truePeakR.setValue(levelMeterPage.pluginBackend.getTruePeakR());
-        inputL.setValue(levelMeterPage.pluginBackend.getInputLevelLeft());
-        inputR.setValue(levelMeterPage.pluginBackend.getInputLevelRight());
+        momentary.setValue(pluginBackend.getMomentaryLevel());
+        shortterm.setValue(pluginBackend.getShorttermLevel());
+        integrated.setValue(pluginBackend.getIntegratedLevel());
+        relative.setValue(pluginBackend.getRelativeLevel());
+        range.setValue(pluginBackend.getRangeLevel());
+        truePeakL.setValue(pluginBackend.getTruePeakL());
+        truePeakR.setValue(pluginBackend.getTruePeakR());
+        inputL.setValue(pluginBackend.getInputLevelLeft());
+        inputR.setValue(pluginBackend.getInputLevelRight());
     }
 
     Component.onCompleted: {
-        levelMeterPage.pluginBackend = levelMeterPage.pipelineInstance.getPluginInstance(name);
+        pluginBackend = pipelineInstance.getPluginInstance(name);
     }
 
     ColumnLayout {

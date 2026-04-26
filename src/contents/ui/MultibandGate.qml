@@ -45,33 +45,33 @@ Kirigami.ScrollablePage {
     readonly property real radius: 2.5 * Kirigami.Units.gridUnit
 
     function updateMeters() {
-        if (!multibandGatePage.pluginBackend)
+        if (!pluginBackend)
             return;
 
-        inputOutputLevels.setInputLevelLeft(multibandGatePage.pluginBackend.getInputLevelLeft());
-        inputOutputLevels.setInputLevelRight(multibandGatePage.pluginBackend.getInputLevelRight());
-        inputOutputLevels.setOutputLevelLeft(multibandGatePage.pluginBackend.getOutputLevelLeft());
-        inputOutputLevels.setOutputLevelRight(multibandGatePage.pluginBackend.getOutputLevelRight());
-        bandFrequencyEnd = multibandGatePage.pluginBackend.getFrequencyRangeEnd();
-        bandReductionLevelLeft = multibandGatePage.pluginBackend.getReductionLevelLeft();
-        bandReductionLevelRight = multibandGatePage.pluginBackend.getReductionLevelRight();
-        bandEnvelopeLevelLeft = multibandGatePage.pluginBackend.getEnvelopeLevelLeft();
-        bandEnvelopeLevelRight = multibandGatePage.pluginBackend.getEnvelopeLevelRight();
-        bandCurveLevelLeft = multibandGatePage.pluginBackend.getCurveLevelLeft();
-        bandCurveLevelRight = multibandGatePage.pluginBackend.getCurveLevelRight();
+        inputOutputLevels.setInputLevelLeft(pluginBackend.getInputLevelLeft());
+        inputOutputLevels.setInputLevelRight(pluginBackend.getInputLevelRight());
+        inputOutputLevels.setOutputLevelLeft(pluginBackend.getOutputLevelLeft());
+        inputOutputLevels.setOutputLevelRight(pluginBackend.getOutputLevelRight());
+        bandFrequencyEnd = pluginBackend.getFrequencyRangeEnd();
+        bandReductionLevelLeft = pluginBackend.getReductionLevelLeft();
+        bandReductionLevelRight = pluginBackend.getReductionLevelRight();
+        bandEnvelopeLevelLeft = pluginBackend.getEnvelopeLevelLeft();
+        bandEnvelopeLevelRight = pluginBackend.getEnvelopeLevelRight();
+        bandCurveLevelLeft = pluginBackend.getCurveLevelLeft();
+        bandCurveLevelRight = pluginBackend.getCurveLevelRight();
 
-        reductionLevelLeft.setValue(Common.toLocaleLabel(multibandGatePage.bandReductionLevelLeft[bandsListview.currentIndex] ?? 0, 0, ""));
-        reductionLevelRight.setValue(Common.toLocaleLabel(multibandGatePage.bandReductionLevelRight[bandsListview.currentIndex] ?? 0, 0, ""));
+        reductionLevelLeft.setValue(Common.toLocaleLabel(bandReductionLevelLeft[bandsListview.currentIndex] ?? 0, 0, ""));
+        reductionLevelRight.setValue(Common.toLocaleLabel(bandReductionLevelRight[bandsListview.currentIndex] ?? 0, 0, ""));
 
-        envelopeLevelLeft.setValue(Common.toLocaleLabel(multibandGatePage.bandEnvelopeLevelLeft[bandsListview.currentIndex] ?? 0, 0, ""));
-        envelopeLevelRight.setValue(Common.toLocaleLabel(multibandGatePage.bandEnvelopeLevelRight[bandsListview.currentIndex] ?? 0, 0, ""));
+        envelopeLevelLeft.setValue(Common.toLocaleLabel(bandEnvelopeLevelLeft[bandsListview.currentIndex] ?? 0, 0, ""));
+        envelopeLevelRight.setValue(Common.toLocaleLabel(bandEnvelopeLevelRight[bandsListview.currentIndex] ?? 0, 0, ""));
 
-        curveLevelLeft.setValue(Common.toLocaleLabel(multibandGatePage.bandCurveLevelLeft[bandsListview.currentIndex] ?? 0, 0, ""));
-        curveLevelRight.setValue(Common.toLocaleLabel(multibandGatePage.bandCurveLevelRight[bandsListview.currentIndex] ?? 0, 0, ""));
+        curveLevelLeft.setValue(Common.toLocaleLabel(bandCurveLevelLeft[bandsListview.currentIndex] ?? 0, 0, ""));
+        curveLevelRight.setValue(Common.toLocaleLabel(bandCurveLevelRight[bandsListview.currentIndex] ?? 0, 0, ""));
     }
 
     Component.onCompleted: {
-        multibandGatePage.pluginBackend = multibandGatePage.pipelineInstance.getPluginInstance(name);
+        pluginBackend = pipelineInstance.getPluginInstance(name);
     }
 
     Component {
@@ -926,11 +926,13 @@ Kirigami.ScrollablePage {
         pluginDB: multibandGatePage.pluginDB
     }
 
-    header: EeInputOutputGain {
+    EeInputOutputGain {
         id: inputOutputLevels
 
         pluginDB: multibandGatePage.pluginDB
     }
+
+    header: inputOutputLevels
 
     footer: RowLayout {
         Controls.Label {
