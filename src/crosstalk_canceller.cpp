@@ -109,14 +109,14 @@ void CrosstalkCanceller::process(std::span<float>& left_in,
     apply_gain(left_in, right_in, input_gain);
   }
 
-  auto decay_gain = static_cast<float>(std::pow(10, settings->decayDb() / 20));
+  const auto decay_gain = static_cast<float>(std::pow(10, settings->decayDb() / 20));
 
   if (settings->phantomCenterOnly()) {
     for (size_t n = 0U; n < left_in.size(); n++) {
-      float middle = left_in[n] + right_in[n];
-      float side = left_in[n] - right_in[n];
-      auto mo = middle - (decay_gain * a.get_sample());
-      auto so = side;
+      const float middle = left_in[n] + right_in[n];
+      const float side = left_in[n] - right_in[n];
+      const auto mo = middle - (decay_gain * a.get_sample());
+      const auto so = side;
       left_out[n] = (mo + so) * .5f;
       right_out[n] = (mo - so) * .5f;
       a.put_sample(mo);
@@ -124,8 +124,8 @@ void CrosstalkCanceller::process(std::span<float>& left_in,
     }
   } else {
     for (size_t n = 0U; n < left_in.size(); n++) {
-      auto ao = left_in[n] - (decay_gain * b.get_sample());
-      auto bo = right_in[n] - (decay_gain * a.get_sample());
+      const auto ao = left_in[n] - (decay_gain * b.get_sample());
+      const auto bo = right_in[n] - (decay_gain * a.get_sample());
       left_out[n] = ao;
       right_out[n] = bo;
       a.put_sample(ao);

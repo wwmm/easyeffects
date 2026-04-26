@@ -84,6 +84,7 @@ Controls.ItemDelegate {
             id: menuButton
 
             Layout.alignment: Qt.AlignCenter
+            Layout.topMargin: Kirigami.Units.largeSpacing * 2
             icon.name: "emblem-system-symbolic"
             checkable: true
             checked: false
