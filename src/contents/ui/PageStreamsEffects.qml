@@ -32,7 +32,7 @@ Kirigami.Page {
     required property int pageType // 0 for output and 1 for input
     required property var streamDB
     required property var pluginsDB
-    required property var pipelineInstance
+    required property EffectsBase pipelineInstance
     property string logTag: "PageStreamsEffects"
     property int minLeftLevel: -99
     property int minRightLevel: -99

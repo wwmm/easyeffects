@@ -29,7 +29,7 @@ Kirigami.ScrollablePage {
 
     required property string name
     required property DbSpeex pluginDB
-    required property var pipelineInstance
+    required property EffectsBase pipelineInstance
     property BackendSpeex pluginBackend
 
     function updateMeters() {

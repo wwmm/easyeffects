@@ -29,7 +29,7 @@ Kirigami.ScrollablePage {
 
     required property string name
     required property DbBassLoudness pluginDB
-    required property var pipelineInstance
+    required property EffectsBase pipelineInstance
     property BackendBassLoudness pluginBackend
 
     function updateMeters() {

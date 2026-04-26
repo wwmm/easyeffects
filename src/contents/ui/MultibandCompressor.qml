@@ -32,7 +32,7 @@ Kirigami.ScrollablePage {
 
     required property string name
     required property DbMultibandCompressor pluginDB
-    required property var pipelineInstance
+    required property EffectsBase pipelineInstance
     property BackendMultibandCompressor pluginBackend
     readonly property string bandId: "band" + bandsListview.currentIndex
     property list<real> bandFrequencyEnd: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]

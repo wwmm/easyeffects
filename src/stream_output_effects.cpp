@@ -48,8 +48,7 @@
 #include "util.hpp"
 
 StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBase(pipe_manager, PipelineType::output) {
-  // NOLINTNEXTLINE(clang-analyzer-cplusplus.NewDelete)
-  qmlRegisterSingletonInstance<StreamOutputEffects>("ee.pipeline", VERSION_MAJOR, VERSION_MINOR, "Output", this);
+  singletonInstance = this;
 
   connect(
       pm, &pw::Manager::sinkAdded, this,

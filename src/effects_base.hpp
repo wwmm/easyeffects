@@ -45,6 +45,8 @@ class EffectsBaseWorker : public QObject {
 
 class EffectsBase : public QObject {
   Q_OBJECT
+  QML_ELEMENT
+  QML_UNCREATABLE("Use the c++ instance")
 
   Q_PROPERTY(bool filtersLinked MEMBER filtersLinked NOTIFY filtersLinkedChanged)
 

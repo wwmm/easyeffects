@@ -31,7 +31,7 @@ Kirigami.ScrollablePage {
 
     required property string name
     required property DbExpander pluginDB
-    required property var pipelineInstance
+    required property EffectsBase pipelineInstance
     property BackendExpander pluginBackend
 
     function updateMeters() {

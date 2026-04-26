@@ -29,7 +29,7 @@ Kirigami.ScrollablePage {
 
     required property string name
     required property DbVoiceSuppressor pluginDB
-    required property var pipelineInstance
+    required property EffectsBase pipelineInstance
     property BackendVoiceSuppressor pluginBackend
 
     function updateMeters() {

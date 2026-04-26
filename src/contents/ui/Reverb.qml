@@ -30,7 +30,7 @@ Kirigami.ScrollablePage {
 
     required property string name
     required property DbReverb pluginDB
-    required property var pipelineInstance
+    required property EffectsBase pipelineInstance
     property BackendReverb pluginBackend
 
     function updateMeters() {

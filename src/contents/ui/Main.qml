@@ -23,7 +23,6 @@ import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import ee.autostart //qmllint disable
 import ee.database as DB
-import ee.pipeline as Pipeline
 import ee.presets as Presets
 import ee.ui
 import org.kde.kirigami as Kirigami
@@ -50,13 +49,13 @@ Kirigami.ApplicationWindow {
             page: Qt.resolvedUrl("./PageStreamsEffects.qml"),
             pageType: 0,
             streamDB: DbStreamOutputs,
-            pipelineInstance: Pipeline.Output
+            pipelineInstance: StreamOutputEffects
         },
         1: {
             page: Qt.resolvedUrl("./PageStreamsEffects.qml"),
             pageType: 1,
             streamDB: DbStreamInputs,
-            pipelineInstance: Pipeline.Input
+            pipelineInstance: StreamInputEffects
         },
         2: {
             page: Qt.resolvedUrl("./PipeWirePage.qml"),

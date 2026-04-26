@@ -25,6 +25,11 @@
 #include "pw_objects.hpp"
 
 class StreamOutputEffects : public EffectsBase {
+  Q_OBJECT
+  QML_ELEMENT
+  QML_SINGLETON
+  QML_UNCREATABLE("Use the c++ instance")
+
  public:
   StreamOutputEffects(pw::Manager* pipe_manager);
   StreamOutputEffects(const StreamOutputEffects&) = delete;
@@ -32,6 +37,26 @@ class StreamOutputEffects : public EffectsBase {
   StreamOutputEffects(const StreamOutputEffects&&) = delete;
   auto operator=(const StreamOutputEffects&&) -> StreamOutputEffects& = delete;
   ~StreamOutputEffects() override;
+
+  inline static StreamOutputEffects* singletonInstance = nullptr;
+
+  // Singleton provider for QML
+  static StreamOutputEffects* create(QQmlEngine* qmlEngine, QJSEngine* jsEngine) {
+    Q_UNUSED(jsEngine)
+
+    // The instance has to exist before it is used. We cannot replace it.
+    Q_ASSERT(singletonInstance);
+
+    // The engine has to have the same thread affinity as the singleton.
+
+    Q_ASSERT(qmlEngine->thread() == singletonInstance->thread());
+
+    // Explicitly specify C++ ownership so that the engine doesn't delete the instance.
+
+    QJSEngine::setObjectOwnership(singletonInstance, QJSEngine::CppOwnership);
+
+    return singletonInstance;
+  }
 
   void set_bypass(const bool& state);
 

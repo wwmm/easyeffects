@@ -41,6 +41,7 @@ qt_add_qml_module(easyeffects
         deepfilternet.hpp
         deesser.hpp
         delay.hpp
+        effects_base.hpp
         equalizer.hpp
         exciter.hpp
         expander.hpp
@@ -57,6 +58,8 @@ qt_add_qml_module(easyeffects
         rnnoise.hpp
         speex.hpp
         stereo_tools.hpp
+        stream_input_effects.hpp
+        stream_output_effects.hpp
         tags_plugin_name.hpp
         voice_suppressor.hpp
     QML_FILES
@@ -146,11 +149,6 @@ qt_add_qml_module(ee_database
 
 qt_add_qml_module(ee_presets
     URI ee.presets
-    VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
-)
-
-qt_add_qml_module(ee_pipeline
-    URI ee.pipeline
     VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
 )
 
