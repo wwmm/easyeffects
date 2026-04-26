@@ -73,20 +73,13 @@ Model::Model(QObject* parent)
                 {BaseName::speex, i18n("Speech Processor")},
                 {BaseName::stereoTools, i18n("Stereo Tools")},
                 {BaseName::voiceSuppressor, i18n("Voice Suppressor")}}) {
-  auto* proxyModel = new QSortFilterProxyModel(this);
+  proxyModel = new QSortFilterProxyModel(this);
 
   proxyModel->setSourceModel(this);
   proxyModel->setFilterRole(static_cast<int>(Model::Roles::TranslatedName));
   proxyModel->setSortRole(static_cast<int>(Model::Roles::TranslatedName));
   proxyModel->setDynamicSortFilter(true);
   proxyModel->sort(0);
-
-  // NOLINTBEGIN(clang-analyzer-cplusplus.NewDelete)
-  qmlRegisterSingletonInstance<Model>("ee.tags.plugin.name", VERSION_MAJOR, VERSION_MINOR, "PluginsNameModel", this);
-
-  qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.tags.plugin.name", VERSION_MAJOR, VERSION_MINOR,
-                                                      "SortedNameModel", proxyModel);
-  // NOLINTEND(clang-analyzer-cplusplus.NewDelete)
 }
 
 int Model::rowCount(const QModelIndex& /* parent */) const {

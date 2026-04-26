@@ -21,7 +21,7 @@ pragma ComponentBehavior: Bound
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
-import ee.tags.plugin.name as TagsPluginName
+import ee.ui
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.delegates as Delegates
 
@@ -45,7 +45,7 @@ Kirigami.Dialog {
         clip: true
         delegate: listDelegate
         reuseItems: true
-        model: TagsPluginName.SortedNameModel
+        model: PluginsNameModel.sortedNameModel
 
         Kirigami.PlaceholderMessage {
             anchors.centerIn: parent
@@ -187,7 +187,7 @@ Kirigami.Dialog {
                 autoAccept: false
                 onTextChanged: {
                     const re = Common.regExpEscape(search.text);
-                    TagsPluginName.SortedNameModel.filterRegularExpression = RegExp(re, "i");
+                    PluginsNameModel.sortedNameModel.filterRegularExpression = RegExp(re, "i");
                 }
 
                 onAccepted: {

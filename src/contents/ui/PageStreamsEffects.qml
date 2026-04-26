@@ -22,7 +22,6 @@ import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import ee.pipewire as PW
-import ee.tags.plugin.name as TagsPluginName
 import ee.ui
 import org.kde.kirigami as Kirigami
 
@@ -135,7 +134,7 @@ Kirigami.Page {
             id: pagePluginsGrid
 
             function populatePluginsListModel(plugins: list<string>) {
-                let baseNames = TagsPluginName.PluginsNameModel.getBaseNames();
+                let baseNames = PluginsNameModel.getBaseNames();
                 pluginsListModel.clear();
 
                 for (let n = 0; n < plugins.length; n++) {
@@ -144,7 +143,7 @@ Kirigami.Page {
                             pluginsListModel.append({
                                 "name": plugins[n],
                                 "baseName": baseNames[k],
-                                "translatedName": TagsPluginName.PluginsNameModel.translate(baseNames[k]),
+                                "translatedName": PluginsNameModel.translate(baseNames[k]),
                                 "pluginDB": pageStreamsEffects.pluginsDB[plugins[n]]
                             });
                             break;
@@ -232,7 +231,7 @@ Kirigami.Page {
                 if (pluginBackend.packageInstalled === false) {
                     pluginsStack.push(Qt.resolvedUrl("PluginNotAvailable.qml"), {
                         packageName: packageMap[baseName],
-                        translatedName: TagsPluginName.PluginsNameModel.translate(baseName)
+                        translatedName: PluginsNameModel.translate(baseName)
                     });
 
                     return;
@@ -267,7 +266,7 @@ Kirigami.Page {
                     return v === pageStreamsEffects.streamDB.visiblePlugin;
                 });
 
-                const baseNames = TagsPluginName.PluginsNameModel.getBaseNames();
+                const baseNames = PluginsNameModel.getBaseNames();
 
                 for (let k = 0; k < baseNames.length; k++) {
                     if (pageStreamsEffects.streamDB.visiblePlugin.startsWith(baseNames[k])) {

@@ -132,11 +132,6 @@ qt_add_qml_module(easyeffects
 
 # The module definitions below are to help the qml linter
 
-qt_add_qml_module(ee_tags_plugin_name
-    URI ee.tags.plugin.name
-    VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
-)
-
 qt_add_qml_module(ee_pipewire
     URI ee.pipewire
     VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}

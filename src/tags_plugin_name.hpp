@@ -27,6 +27,7 @@
 #include <qobject.h>
 #include <qqmlengine.h>
 #include <qqmlintegration.h>
+#include <qsortfilterproxymodel.h>
 #include <qstringliteral.h>
 #include <qstringview.h>
 #include <qtmetamacros.h>
@@ -151,6 +152,11 @@ class BaseName : public QObject {
 
 class Model : public QAbstractListModel {
   Q_OBJECT
+  QML_NAMED_ELEMENT(PluginsNameModel)
+  QML_SINGLETON
+  QML_UNCREATABLE("Use the c++ instance")
+
+  Q_PROPERTY(QSortFilterProxyModel* sortedNameModel MEMBER proxyModel CONSTANT)
 
  public:
   explicit Model(QObject* parent = nullptr);
@@ -163,6 +169,21 @@ class Model : public QAbstractListModel {
   static Model& self() {
     static Model m;
     return m;
+  }
+
+  // Singleton provider for QML
+  static Model* create(QQmlEngine* qmlEngine, QJSEngine* jsEngine) {
+    Q_UNUSED(jsEngine)
+
+    // The engine has to have the same thread affinity as the singleton.
+
+    Q_ASSERT(qmlEngine->thread() == self().thread());
+
+    // Explicitly specify C++ ownership so that the engine doesn't delete the instance.
+
+    QJSEngine::setObjectOwnership(&self(), QJSEngine::CppOwnership);
+
+    return &self();
   }
 
   enum class Roles { Name = Qt::UserRole, TranslatedName };
@@ -182,6 +203,8 @@ class Model : public QAbstractListModel {
 
  private:
   const QMap<QString, QString> modelMap;
+
+  QSortFilterProxyModel* proxyModel = nullptr;
 };
 
 auto get_id(const QString& name) -> QString;
