@@ -463,8 +463,8 @@ msgid ""
 "for presets, Convolver impulse responses and RNNoise models."
 msgstr ""
 "أضيفت إمكانية تحديد وتحميل ملفات متعددة في وقت واحد، وذلك في مربعات الحوار "
-"الخاصة بفتح ملفات الإعدادات المسبقة، وملفات الاستجابة النبضية لمعالج الالتفاف "
-"(Convolver)، ونماذج RNNoise."
+"الخاصة بفتح ملفات الإعدادات المسبقة، وملفات الاستجابة النبضية لمعالج "
+"الالتفاف (Convolver)، ونماذج RNNoise."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:187
 msgid "Fixed the Solo button in the Equalizer band settings."
