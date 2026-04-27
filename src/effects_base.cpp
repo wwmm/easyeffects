@@ -325,6 +325,9 @@ QVariant EffectsBase::getPluginInstance(const QString& pluginName) {
   if (pluginName.startsWith(tags::plugin_name::BaseName::autogain)) {
     return QVariant::fromValue(dynamic_cast<Autogain*>(p.get()));
 
+  } else if (pluginName.startsWith(tags::plugin_name::BaseName::autotune)) {
+    return QVariant::fromValue(dynamic_cast<Autotune*>(p.get()));
+
   } else if (pluginName.startsWith(tags::plugin_name::BaseName::bassEnhancer)) {
     return QVariant::fromValue(dynamic_cast<BassEnhancer*>(p.get()));
 

@@ -19,6 +19,7 @@
 
 #pragma once
 
+#include <lv2/atom/atom.h>
 #include <qqmlintegration.h>
 #include <qtmetamacros.h>
 #include <qtypes.h>
@@ -77,6 +78,13 @@ class Autotune : public PluginBase {
   float pitch_bend = 0.0F;
 
   std::vector<float> mono_buffer;
+
+  // Empty MIDI atom sequence buffer for the fat1 MIDI input port
+  struct {
+    LV2_Atom_Sequence seq;
+  } midi_in_buf{};
+
+  uint midi_port_index = 0U;
 
   DbAutotune* settings = nullptr;
 };
