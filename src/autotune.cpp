@@ -81,7 +81,7 @@ Autotune::Autotune(const std::string& tag, pw::Manager* pipe_manager, PipelineTy
       settings->setMode(lv2_mode >= 1.5F ? 1 : 0);
     });
     connect(settings, &DbAutotune::modeChanged, [this]() {
-      if (this == nullptr || settings == nullptr || lv2_wrapper == nullptr) {
+      if (this == nullptr || settings == nullptr || lv2_wrapper == nullptr) {  // NOLINT
         return;
       }
       lv2_wrapper->set_control_port_value("mode", settings->mode() == 0 ? 0.0F : 2.0F);
