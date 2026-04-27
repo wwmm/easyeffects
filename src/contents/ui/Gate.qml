@@ -21,7 +21,6 @@ pragma ComponentBehavior: Bound
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
-import ee.pipewire as PW
 import ee.ui
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
@@ -256,18 +255,18 @@ Kirigami.ScrollablePage {
                         text: i18n("Input device") // qmllint disable
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         editable: false
-                        model: PW.ModelNodes
+                        model: ModelNodes
                         textRole: "description"
                         enabled: sidechainType.currentIndex === 1
                         currentIndex: {
-                            for (let n = 0; n < PW.ModelNodes.rowCount(); n++) {
-                                if (PW.ModelNodes.getNodeName(n) === gatePage.pluginDB.sidechainInputDevice)
+                            for (let n = 0; n < ModelNodes.rowCount(); n++) {
+                                if (ModelNodes.getNodeName(n) === gatePage.pluginDB.sidechainInputDevice)
                                     return n;
                             }
                             return 0;
                         }
                         onActivated: idx => {
-                            let selectedName = PW.ModelNodes.getNodeName(idx);
+                            let selectedName = ModelNodes.getNodeName(idx);
                             if (selectedName !== gatePage.pluginDB.sidechainInputDevice)
                                 gatePage.pluginDB.sidechainInputDevice = selectedName;
                         }

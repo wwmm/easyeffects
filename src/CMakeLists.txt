@@ -54,6 +54,7 @@ qt_add_qml_module(easyeffects
         multiband_compressor.hpp
         multiband_gate.hpp
         pitch.hpp
+        pw_model_nodes.hpp
         reverb.hpp
         rnnoise.hpp
         speex.hpp

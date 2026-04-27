@@ -21,7 +21,6 @@ pragma ComponentBehavior: Bound
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
-import ee.pipewire as PW
 import ee.ui
 import org.kde.kirigami as Kirigami
 
@@ -98,7 +97,7 @@ Kirigami.Page {
 
                 clip: true
                 reuseItems: true
-                model: pageStreamsEffects.pageType === 0 ? PW.ModelOutputStreams : PW.ModelInputStreams
+                model: pageStreamsEffects.pageType === 0 ? ModelNodes.outputStreams : ModelNodes.inputStreams
 
                 Kirigami.PlaceholderMessage {
                     anchors.centerIn: parent

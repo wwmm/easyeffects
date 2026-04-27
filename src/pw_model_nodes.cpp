@@ -47,92 +47,78 @@ namespace pw::models {
 
 Nodes::Nodes(QObject* parent)
     : QAbstractListModel(parent),
-      proxy_input_streams(QSortFilterProxyModel(this)),
-      proxy_output_streams(QSortFilterProxyModel(this)),
-      proxy_sink_devices(QSortFilterProxyModel(this)),
-      proxy_source_devices(QSortFilterProxyModel(this)) {
+      proxy_input_streams(new QSortFilterProxyModel(this)),
+      proxy_output_streams(new QSortFilterProxyModel(this)),
+      proxy_sink_devices(new QSortFilterProxyModel(this)),
+      proxy_source_devices(new QSortFilterProxyModel(this)) {
+  singletonInstance = this;
+
   // Output streams model
 
   {
-    proxy_output_streams.setSourceModel(this);
-    proxy_output_streams.setFilterRole(static_cast<int>(Roles::MediaClass));
-    proxy_output_streams.setSortRole(static_cast<int>(Roles::AppName));
-    proxy_output_streams.setSortCaseSensitivity(Qt::CaseInsensitive);
-    proxy_output_streams.setDynamicSortFilter(true);
+    proxy_output_streams->setSourceModel(this);
+    proxy_output_streams->setFilterRole(static_cast<int>(Roles::MediaClass));
+    proxy_output_streams->setSortRole(static_cast<int>(Roles::AppName));
+    proxy_output_streams->setSortCaseSensitivity(Qt::CaseInsensitive);
+    proxy_output_streams->setDynamicSortFilter(true);
 
     auto pattern = "^" + QString(tags::pipewire::media_class::output_stream) + "$";
-    proxy_output_streams.setFilterRegularExpression(
+    proxy_output_streams->setFilterRegularExpression(
         QRegularExpression(pattern, QRegularExpression::CaseInsensitiveOption));
 
-    proxy_output_streams.sort(0, Qt::AscendingOrder);
-
-    // NOLINTNEXTLINE(clang-analyzer-cplusplus.NewDelete)
-    qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.pipewire", VERSION_MAJOR, VERSION_MINOR,
-                                                        "ModelOutputStreams", &proxy_output_streams);
+    proxy_output_streams->sort(0, Qt::AscendingOrder);
   }
 
   // Input streams model
 
   {
-    proxy_input_streams.setSourceModel(this);
-    proxy_input_streams.setFilterRole(static_cast<int>(Roles::MediaClass));
-    proxy_input_streams.setSortRole(static_cast<int>(Roles::AppName));
-    proxy_input_streams.setSortCaseSensitivity(Qt::CaseInsensitive);
-    proxy_input_streams.setDynamicSortFilter(true);
+    proxy_input_streams->setSourceModel(this);
+    proxy_input_streams->setFilterRole(static_cast<int>(Roles::MediaClass));
+    proxy_input_streams->setSortRole(static_cast<int>(Roles::AppName));
+    proxy_input_streams->setSortCaseSensitivity(Qt::CaseInsensitive);
+    proxy_input_streams->setDynamicSortFilter(true);
 
     auto pattern = "^" + QString(tags::pipewire::media_class::input_stream) + "$";
-    proxy_input_streams.setFilterRegularExpression(
+    proxy_input_streams->setFilterRegularExpression(
         QRegularExpression(pattern, QRegularExpression::CaseInsensitiveOption));
 
-    proxy_input_streams.sort(0, Qt::AscendingOrder);
-
-    // NOLINTNEXTLINE(clang-analyzer-cplusplus.NewDelete)
-    qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.pipewire", VERSION_MAJOR, VERSION_MINOR,
-                                                        "ModelInputStreams", &proxy_input_streams);
+    proxy_input_streams->sort(0, Qt::AscendingOrder);
   }
 
   // Source devices model
 
   {
-    proxy_source_devices.setSourceModel(this);
-    proxy_source_devices.setSortRole(static_cast<int>(Roles::Description));
-    proxy_source_devices.setSortCaseSensitivity(Qt::CaseInsensitive);
-    proxy_source_devices.setFilterRole(static_cast<int>(Roles::MediaClass));
-    proxy_source_devices.setDynamicSortFilter(true);
+    proxy_source_devices->setSourceModel(this);
+    proxy_source_devices->setSortRole(static_cast<int>(Roles::Description));
+    proxy_source_devices->setSortCaseSensitivity(Qt::CaseInsensitive);
+    proxy_source_devices->setFilterRole(static_cast<int>(Roles::MediaClass));
+    proxy_source_devices->setDynamicSortFilter(true);
 
     auto pattern = "^(" + QString(tags::pipewire::media_class::source) + "|" +
                    QString(tags::pipewire::media_class::virtual_source) + ")$";
 
-    proxy_source_devices.setFilterRegularExpression(
+    proxy_source_devices->setFilterRegularExpression(
         QRegularExpression(pattern, QRegularExpression::CaseInsensitiveOption));
 
-    proxy_source_devices.sort(0, Qt::AscendingOrder);
-
-    // NOLINTNEXTLINE(clang-analyzer-cplusplus.NewDelete)
-    qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.pipewire", VERSION_MAJOR, VERSION_MINOR,
-                                                        "ModelSourceDevices", &proxy_source_devices);
+    proxy_source_devices->sort(0, Qt::AscendingOrder);
   }
 
   // Output devices model
 
   {
-    proxy_sink_devices.setSourceModel(this);
-    proxy_sink_devices.setSortRole(static_cast<int>(Roles::Description));
-    proxy_sink_devices.setSortCaseSensitivity(Qt::CaseInsensitive);
-    proxy_sink_devices.setFilterRole(static_cast<int>(Roles::MediaClass));
-    proxy_sink_devices.setDynamicSortFilter(true);
+    proxy_sink_devices->setSourceModel(this);
+    proxy_sink_devices->setSortRole(static_cast<int>(Roles::Description));
+    proxy_sink_devices->setSortCaseSensitivity(Qt::CaseInsensitive);
+    proxy_sink_devices->setFilterRole(static_cast<int>(Roles::MediaClass));
+    proxy_sink_devices->setDynamicSortFilter(true);
 
     auto pattern = "^(" + QString(tags::pipewire::media_class::sink) + "|" +
                    QString(tags::pipewire::media_class::virtual_sink) + ")$";
 
-    proxy_sink_devices.setFilterRegularExpression(
+    proxy_sink_devices->setFilterRegularExpression(
         QRegularExpression(pattern, QRegularExpression::CaseInsensitiveOption));
 
-    proxy_sink_devices.sort(0, Qt::AscendingOrder);
-
-    // NOLINTNEXTLINE(clang-analyzer-cplusplus.NewDelete)
-    qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.pipewire", VERSION_MAJOR, VERSION_MINOR, "ModelSinkDevices",
-                                                        &proxy_sink_devices);
+    proxy_sink_devices->sort(0, Qt::AscendingOrder);
   }
 
   connect(

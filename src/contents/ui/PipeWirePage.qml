@@ -86,7 +86,7 @@ Kirigami.Page {
 
             function comboFindRow(model, nodeName) {
                 let row = -1;
-                const nodeIndex = PW.ModelNodes.getModelIndexByName(nodeName);
+                const nodeIndex = ModelNodes.getModelIndexByName(nodeName);
                 const modelRow = model.mapFromSource(nodeIndex).row;
                 if (modelRow >= 0)
                     row = modelRow;
@@ -96,14 +96,14 @@ Kirigami.Page {
 
             function updateInputDevComboSelection() {
                 const deviceName = useDefaultInputDevice.isChecked ? PW.Manager.defaultInputDeviceName : DbStreamInputs.inputDevice;
-                const comboRow = comboFindRow(PW.ModelSourceDevices, deviceName);
+                const comboRow = comboFindRow(ModelNodes.sourceDevices, deviceName);
                 if (comboRow !== -1)
                     comboInputDevice.currentIndex = comboRow;
             }
 
             function updateOutputDevComboSelection() {
                 const deviceName = useDefaultOutputDevice.isChecked ? PW.Manager.defaultOutputDeviceName : DbStreamOutputs.outputDevice;
-                const comboRow = comboFindRow(PW.ModelSinkDevices, deviceName);
+                const comboRow = comboFindRow(ModelNodes.sinkDevices, deviceName);
                 if (comboRow !== -1)
                     comboOutputDevice.currentIndex = comboRow;
             }
@@ -113,7 +113,7 @@ Kirigami.Page {
                     generalFormCard.updateInputDevComboSelection();
                 }
 
-                target: PW.ModelSourceDevices
+                target: ModelNodes.sourceDevices
             }
 
             Connections {
@@ -121,7 +121,7 @@ Kirigami.Page {
                     generalFormCard.updateOutputDevComboSelection();
                 }
 
-                target: PW.ModelSinkDevices
+                target: ModelNodes.sinkDevices
             }
 
             FormCard.FormHeader {
@@ -153,14 +153,14 @@ Kirigami.Page {
                     text: i18n("Name") // qmllint disable
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
                     editable: false
-                    model: PW.ModelSourceDevices
+                    model: ModelNodes.sourceDevices
                     textRole: "description"
                     enabled: !DbStreamInputs.useDefaultInputDevice
 
                     onActivated: idx => {
-                        const proxyIndex = PW.ModelSourceDevices.index(idx, 0);
-                        const sourceIndex = PW.ModelSourceDevices.mapToSource(proxyIndex);
-                        const nodeName = PW.ModelNodes.getNodeName(sourceIndex.row);
+                        const proxyIndex = ModelNodes.sourceDevices.index(idx, 0);
+                        const sourceIndex = ModelNodes.sourceDevices.mapToSource(proxyIndex);
+                        const nodeName = ModelNodes.getNodeName(sourceIndex.row);
                         if (DbStreamInputs.inputDevice !== nodeName) {
                             if (!Common.isEmpty(nodeName))
                                 DbStreamInputs.inputDevice = nodeName;
@@ -197,14 +197,14 @@ Kirigami.Page {
                     text: i18n("Name") // qmllint disable
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
                     editable: false
-                    model: PW.ModelSinkDevices
+                    model: ModelNodes.sinkDevices
                     textRole: "description"
                     enabled: !DbStreamOutputs.useDefaultOutputDevice
 
                     onActivated: idx => {
-                        const proxyIndex = PW.ModelSinkDevices.index(idx, 0);
-                        const sourceIndex = PW.ModelSinkDevices.mapToSource(proxyIndex);
-                        const nodeName = PW.ModelNodes.getNodeName(sourceIndex.row);
+                        const proxyIndex = ModelNodes.sinkDevices.index(idx, 0);
+                        const sourceIndex = ModelNodes.sinkDevices.mapToSource(proxyIndex);
+                        const nodeName = ModelNodes.getNodeName(sourceIndex.row);
                         if (DbStreamOutputs.outputDevice !== nodeName) {
                             if (!Common.isEmpty(nodeName))
                                 DbStreamOutputs.outputDevice = nodeName;

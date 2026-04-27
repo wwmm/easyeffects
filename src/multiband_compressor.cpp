@@ -305,13 +305,14 @@ void MultibandCompressor::process(std::span<float>& left_in,
 }
 
 void MultibandCompressor::update_sidechain_links() {
+  using namespace tags::multiband_compressor;
+
   auto external_sidechain_enabled = false;
 
   for (uint n = 0U; !external_sidechain_enabled && n < n_bands; n++) {
-    const auto band_name = "sidechainType" + util::to_string(n);
-
     external_sidechain_enabled =
-        settings->defaultSidechainTypeLabelsValue()[settings->property(band_name.c_str()).value<int>()] == "External";
+        settings->defaultSidechainTypeLabelsValue()[settings->property(band_sidechain_type[n].data()).value<int>()] ==
+        "External";
   }
 
   settings->setExternalSidechainEnabled(external_sidechain_enabled);

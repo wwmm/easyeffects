@@ -27,6 +27,8 @@
 #include <qlist.h>
 #include <qnamespace.h>
 #include <qobject.h>
+#include <qqmlengine.h>
+#include <qqmlintegration.h>
 #include <qsortfilterproxymodel.h>
 #include <qstringview.h>
 #include <qtmetamacros.h>
@@ -42,9 +44,48 @@ namespace pw::models {
 
 class Nodes : public QAbstractListModel {
   Q_OBJECT
+  QML_NAMED_ELEMENT(ModelNodes)
+  QML_SINGLETON
+  QML_UNCREATABLE("Use the c++ instance")
+
+  Q_PROPERTY(QSortFilterProxyModel* inputStreams MEMBER proxy_input_streams CONSTANT)
+  Q_PROPERTY(QSortFilterProxyModel* outputStreams MEMBER proxy_output_streams CONSTANT)
+  Q_PROPERTY(QSortFilterProxyModel* sinkDevices MEMBER proxy_sink_devices CONSTANT)
+  Q_PROPERTY(QSortFilterProxyModel* sourceDevices MEMBER proxy_source_devices CONSTANT)
 
  public:
   explicit Nodes(QObject* parent = nullptr);
+
+  /**
+   * Deleting the default constructor because we nwant Qt to call our custom create method.
+   * If this is not done qml will create its own class instance.
+   */
+  Nodes() = delete;
+
+  Nodes(const Nodes&) = delete;
+  Nodes(Nodes&&) = delete;
+  Nodes& operator=(const Nodes&) = delete;
+  Nodes& operator=(Nodes&&) = delete;
+
+  inline static Nodes* singletonInstance = nullptr;
+
+  // Singleton provider for QML
+  static Nodes* create(QQmlEngine* qmlEngine, QJSEngine* jsEngine) {
+    Q_UNUSED(jsEngine)
+
+    // The instance has to exist before it is used. We cannot replace it.
+    Q_ASSERT(singletonInstance);
+
+    // The engine has to have the same thread affinity as the singleton.
+
+    Q_ASSERT(qmlEngine->thread() == singletonInstance->thread());
+
+    // Explicitly specify C++ ownership so that the engine doesn't delete the instance.
+
+    QJSEngine::setObjectOwnership(singletonInstance, QJSEngine::CppOwnership);
+
+    return singletonInstance;
+  }
 
   enum class Roles {
     Id = Qt::UserRole,
@@ -339,10 +380,10 @@ class Nodes : public QAbstractListModel {
  private:
   QList<NodeInfo> list;
 
-  QSortFilterProxyModel proxy_input_streams;
-  QSortFilterProxyModel proxy_output_streams;
-  QSortFilterProxyModel proxy_sink_devices;
-  QSortFilterProxyModel proxy_source_devices;
+  QSortFilterProxyModel* proxy_input_streams = nullptr;
+  QSortFilterProxyModel* proxy_output_streams = nullptr;
+  QSortFilterProxyModel* proxy_sink_devices = nullptr;
+  QSortFilterProxyModel* proxy_source_devices = nullptr;
 
   constexpr static auto icon_map =
       std::to_array<std::pair<const char*, const char*>>({{"chromium-browser", "chromium"},

@@ -20,8 +20,8 @@
 pragma ComponentBehavior: Bound
 import Qt.labs.platform
 import QtQuick
-import ee.pipewire as PW
 import ee.presets as Presets
+import ee.ui
 import org.kde.kirigami as Kirigami
 
 SystemTrayIcon {
@@ -62,15 +62,15 @@ SystemTrayIcon {
             instantiatorOutputPresets.model = DbStreamOutputs.mostUsedPresets;
 
             /**
-                 * Although it is possible to make a binding to the text property so it is automatically updated,
-                 * it is possible that the menu is constructed before the description is available for the node name. In
-                 * this situation we can have an empty string coming from getNodeDescription, and it will stay empty
-                 * until something forces the database device name property to be changed. It is more reliable
-                 * to read the description when the user opens the tray icon menu.
-                 */
+             * Although it is possible to make a binding to the text property so it is automatically updated,
+             * it is possible that the menu is constructed before the description is available for the node name. In
+             * this situation we can have an empty string coming from getNodeDescription, and it will stay empty
+             * until something forces the database device name property to be changed. It is more reliable
+             * to read the description when the user opens the tray icon menu.
+             */
 
-            inputDeviceMenuItem.text = PW.ModelNodes.getNodeDescription(DbStreamInputs.inputDevice);
-            outputDeviceMenuItem.text = PW.ModelNodes.getNodeDescription(DbStreamOutputs.outputDevice);
+            inputDeviceMenuItem.text = ModelNodes.getNodeDescription(DbStreamInputs.inputDevice);
+            outputDeviceMenuItem.text = ModelNodes.getNodeDescription(DbStreamOutputs.outputDevice);
         }
 
         Instantiator {

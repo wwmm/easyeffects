@@ -161,13 +161,20 @@ class Model : public QAbstractListModel {
  public:
   explicit Model(QObject* parent = nullptr);
 
+  /**
+   * Deleting the default constructor because we nwant Qt to call our custom create method.
+   * If this is not done qml will create its own class instance. For this class it is not a big deal. But it is for
+   * others.
+   */
+  Model() = delete;
+
   Model(const Model&) = delete;
   Model(Model&&) = delete;
   Model& operator=(const Model&) = delete;
   Model& operator=(Model&&) = delete;
 
   static Model& self() {
-    static Model m;
+    static Model m(nullptr);
     return m;
   }
 

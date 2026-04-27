@@ -42,11 +42,11 @@ ColumnLayout {
 
             readonly property int deviceId: {
                 const proxyIndex = model.index(currentIndex, 0);
-                return model.data(proxyIndex, PW.ModelNodes.DeviceId);
+                return model.data(proxyIndex, ModelNodes.DeviceId);
             }
             readonly property string deviceName: {
                 const proxyIndex = model.index(currentIndex, 0);
-                return model.data(proxyIndex, PW.ModelNodes.Name);
+                return model.data(proxyIndex, ModelNodes.Name);
             }
 
             property string deviceRouteDescription
@@ -58,7 +58,7 @@ ColumnLayout {
             currentIndex: 0
             textRole: "description"
             editable: false
-            model: DbMain.visiblePage === 0 ? PW.ModelSinkDevices : PW.ModelSourceDevices
+            model: DbMain.visiblePage === 0 ? ModelNodes.sinkDevices : ModelNodes.sourceDevices
             description: `${i18n("Route")}: ${deviceRouteDescription}` // qmllint disable
 
             comboBoxDelegate: Delegates.RoundedItemDelegate {
@@ -77,7 +77,7 @@ ColumnLayout {
             function updateRouteDescription() {
                 const proxyIndex = model.index(currentIndex, 0);
 
-                return model.data(proxyIndex, PW.ModelNodes.DeviceRouteDescription);
+                return model.data(proxyIndex, ModelNodes.DeviceRouteDescription);
             }
 
             onCurrentIndexChanged: {

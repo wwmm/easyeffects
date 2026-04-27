@@ -203,6 +203,7 @@ namespace pw {
 Manager::Manager()
     : headerVersion(pw_get_headers_version()),
       libraryVersion(pw_get_library_version()),
+      model_nodes(pw::models::Nodes(this)),
       node_manager(NodeManager(model_nodes, metadata_manager, ee_sink_node, ee_source_node, list_links)),
       link_manager(LinkManager(core, thread_loop, model_nodes, list_links)),
       module_manager(ModuleManager(core, thread_loop, model_modules)),
@@ -427,9 +428,6 @@ Manager::~Manager() {
 void Manager::register_models() {
   // NOLINTBEGIN(clang-analyzer-cplusplus.NewDelete)
   qmlRegisterSingletonInstance<pw::Manager>("ee.pipewire", VERSION_MAJOR, VERSION_MINOR, "Manager", this);
-
-  qmlRegisterSingletonInstance<pw::models::Nodes>("ee.pipewire", VERSION_MAJOR, VERSION_MINOR, "ModelNodes",
-                                                  &model_nodes);
 
   qmlRegisterSingletonInstance<pw::models::Modules>("ee.pipewire", VERSION_MAJOR, VERSION_MINOR, "ModelModules",
                                                     &model_modules);
