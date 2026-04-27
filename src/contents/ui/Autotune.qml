@@ -33,6 +33,37 @@ Kirigami.ScrollablePage {
     required property EffectsBase pipelineInstance
     property BackendAutotune pluginBackend
 
+    // Scale definitions: each is an array of 12 booleans [C, C#, D, D#, E, F, F#, G, G#, A, A#, B]
+    readonly property var scalePatterns: {
+        // Major: W-W-H-W-W-W-H
+        const major = [1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1];
+        // Minor (natural): W-H-W-W-H-W-W
+        const minor = [1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0];
+        return { "major": major, "minor": minor };
+    }
+
+    readonly property var noteNames: ["C", "Db", "D", "Eb", "E", "F", "F#", "G", "Ab", "A", "Bb", "B"]
+
+    function applyScale(rootIndex: int, scaleType: string) {
+        const pattern = scalePatterns[scaleType];
+        const notes = [];
+        for (let i = 0; i < 12; i++) {
+            notes.push(pattern[(12 + i - rootIndex) % 12] === 1);
+        }
+        pluginDB.noteC = notes[0];
+        pluginDB.noteCSharp = notes[1];
+        pluginDB.noteD = notes[2];
+        pluginDB.noteDSharp = notes[3];
+        pluginDB.noteE = notes[4];
+        pluginDB.noteF = notes[5];
+        pluginDB.noteFSharp = notes[6];
+        pluginDB.noteG = notes[7];
+        pluginDB.noteGSharp = notes[8];
+        pluginDB.noteA = notes[9];
+        pluginDB.noteASharp = notes[10];
+        pluginDB.noteB = notes[11];
+    }
+
     function updateMeters() {
         if (!pluginBackend)
             return;
@@ -53,255 +84,311 @@ Kirigami.ScrollablePage {
         Kirigami.CardsLayout {
             id: cardLayout
 
-            Layout.fillWidth: true
             minimumColumnWidth: Kirigami.Units.gridUnit * 17
-            maximumColumns: 6
             uniformCellWidths: true
 
-            EeCard {
-                title: i18n("Tuning") // qmllint disable
+            Kirigami.Card {
 
-                GridLayout {
-                    columns: 2
-                    uniformCellWidths: true
-                    rowSpacing: 0
+                header: Kirigami.Heading {
+                    text: i18n("Tuning") // qmllint disable
+                    level: 2
+                }
 
-                    FormCard.FormComboBoxDelegate {
-                        id: mode
+                contentItem: ColumnLayout {
+                    GridLayout {
+                        columns: 2
+                        uniformCellWidths: true
+                        Layout.alignment: Qt.AlignTop
 
-                        Layout.columnSpan: 2
-                        verticalPadding: Kirigami.Units.largeSpacing
-                        text: i18n("Mode") // qmllint disable
-                        displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                        currentIndex: autotunePage.pluginDB.mode
-                        editable: false
-                        model: [i18n("Auto"), i18n("MIDI"), i18n("Manual")] //qmllint disable
-                        onActivated: idx => {
-                            autotunePage.pluginDB.mode = idx;
+                        FormCard.FormComboBoxDelegate {
+                            id: mode
+
+                            Layout.columnSpan: 2
+                            verticalPadding: Kirigami.Units.largeSpacing
+                            text: i18n("Mode") // qmllint disable
+                            displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                            currentIndex: autotunePage.pluginDB.mode
+                            editable: false
+                            model: [i18n("Auto"), i18n("MIDI"), i18n("Manual")] //qmllint disable
+                            onActivated: idx => {
+                                autotunePage.pluginDB.mode = idx;
+                            }
                         }
-                    }
 
-                    EeSpinBox {
-                        id: tuning
+                        EeSpinBox {
+                            id: tuning
 
-                        label: i18n("Tuning") // qmllint disable
-                        labelAbove: true
-                        spinboxLayoutFillWidth: true
-                        from: autotunePage.pluginDB.getMinValue("tuning")
-                        to: autotunePage.pluginDB.getMaxValue("tuning")
-                        value: autotunePage.pluginDB.tuning
-                        decimals: 1
-                        stepSize: 0.5
-                        unit: Units.hz
-                        onValueModified: v => {
-                            autotunePage.pluginDB.tuning = v;
+                            label: i18n("Tuning") // qmllint disable
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: autotunePage.pluginDB.getMinValue("tuning")
+                            to: autotunePage.pluginDB.getMaxValue("tuning")
+                            value: autotunePage.pluginDB.tuning
+                            decimals: 1
+                            stepSize: 0.5
+                            unit: Units.hz
+                            onValueModified: v => {
+                                autotunePage.pluginDB.tuning = v;
+                            }
                         }
-                    }
 
-                    EeSpinBox {
-                        id: correction
+                        EeSpinBox {
+                            id: correction
 
-                        label: i18n("Correction") // qmllint disable
-                        labelAbove: true
-                        spinboxLayoutFillWidth: true
-                        from: autotunePage.pluginDB.getMinValue("correction")
-                        to: autotunePage.pluginDB.getMaxValue("correction")
-                        value: autotunePage.pluginDB.correction
-                        decimals: 2
-                        stepSize: 0.01
-                        onValueModified: v => {
-                            autotunePage.pluginDB.correction = v;
+                            label: i18n("Correction") // qmllint disable
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: autotunePage.pluginDB.getMinValue("correction")
+                            to: autotunePage.pluginDB.getMaxValue("correction")
+                            value: autotunePage.pluginDB.correction
+                            decimals: 2
+                            stepSize: 0.01
+                            onValueModified: v => {
+                                autotunePage.pluginDB.correction = v;
+                            }
                         }
-                    }
 
-                    EeSpinBox {
-                        id: bias
+                        EeSpinBox {
+                            id: bias
 
-                        label: i18n("Bias") // qmllint disable
-                        labelAbove: true
-                        spinboxLayoutFillWidth: true
-                        from: autotunePage.pluginDB.getMinValue("bias")
-                        to: autotunePage.pluginDB.getMaxValue("bias")
-                        value: autotunePage.pluginDB.bias
-                        decimals: 2
-                        stepSize: 0.01
-                        onValueModified: v => {
-                            autotunePage.pluginDB.bias = v;
+                            label: i18n("Bias") // qmllint disable
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: autotunePage.pluginDB.getMinValue("bias")
+                            to: autotunePage.pluginDB.getMaxValue("bias")
+                            value: autotunePage.pluginDB.bias
+                            decimals: 2
+                            stepSize: 0.01
+                            onValueModified: v => {
+                                autotunePage.pluginDB.bias = v;
+                            }
                         }
-                    }
 
-                    EeSpinBox {
-                        id: filterControl
+                        EeSpinBox {
+                            id: filterControl
 
-                        label: i18n("Filter") // qmllint disable
-                        labelAbove: true
-                        spinboxLayoutFillWidth: true
-                        from: autotunePage.pluginDB.getMinValue("filter")
-                        to: autotunePage.pluginDB.getMaxValue("filter")
-                        value: autotunePage.pluginDB.filter
-                        decimals: 2
-                        stepSize: 0.01
-                        onValueModified: v => {
-                            autotunePage.pluginDB.filter = v;
+                            label: i18n("Filter") // qmllint disable
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: autotunePage.pluginDB.getMinValue("filter")
+                            to: autotunePage.pluginDB.getMaxValue("filter")
+                            value: autotunePage.pluginDB.filter
+                            decimals: 2
+                            stepSize: 0.01
+                            onValueModified: v => {
+                                autotunePage.pluginDB.filter = v;
+                            }
                         }
-                    }
 
-                    EeSpinBox {
-                        id: offset
+                        EeSpinBox {
+                            id: offset
 
-                        label: i18n("Offset") // qmllint disable
-                        labelAbove: true
-                        spinboxLayoutFillWidth: true
-                        from: autotunePage.pluginDB.getMinValue("offset")
-                        to: autotunePage.pluginDB.getMaxValue("offset")
-                        value: autotunePage.pluginDB.offset
-                        decimals: 2
-                        stepSize: 0.01
-                        onValueModified: v => {
-                            autotunePage.pluginDB.offset = v;
+                            label: i18n("Offset") // qmllint disable
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: autotunePage.pluginDB.getMinValue("offset")
+                            to: autotunePage.pluginDB.getMaxValue("offset")
+                            value: autotunePage.pluginDB.offset
+                            decimals: 2
+                            stepSize: 0.01
+                            onValueModified: v => {
+                                autotunePage.pluginDB.offset = v;
+                            }
                         }
-                    }
 
-                    EeSpinBox {
-                        id: bendRange
+                        EeSpinBox {
+                            id: bendRange
 
-                        label: i18n("Pitch bend range") // qmllint disable
-                        labelAbove: true
-                        spinboxLayoutFillWidth: true
-                        from: autotunePage.pluginDB.getMinValue("bendRange")
-                        to: autotunePage.pluginDB.getMaxValue("bendRange")
-                        value: autotunePage.pluginDB.bendRange
-                        decimals: 1
-                        stepSize: 0.5
-                        onValueModified: v => {
-                            autotunePage.pluginDB.bendRange = v;
+                            label: i18n("Pitch bend range") // qmllint disable
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: autotunePage.pluginDB.getMinValue("bendRange")
+                            to: autotunePage.pluginDB.getMaxValue("bendRange")
+                            value: autotunePage.pluginDB.bendRange
+                            decimals: 1
+                            stepSize: 0.5
+                            onValueModified: v => {
+                                autotunePage.pluginDB.bendRange = v;
+                            }
                         }
                     }
                 }
             }
 
-            EeCard {
-                title: i18n("Notes") // qmllint disable
+            Kirigami.Card {
 
-                GridLayout {
-                    columns: 2
-                    uniformCellWidths: true
-                    rowSpacing: 0
+                header: Kirigami.Heading {
+                    text: i18n("Scale") // qmllint disable
+                    level: 2
+                }
 
-                    EeSwitch {
-                        label: "C"
-                        isChecked: autotunePage.pluginDB.noteC
-                        onCheckedChanged: {
-                            if (isChecked !== autotunePage.pluginDB.noteC)
-                                autotunePage.pluginDB.noteC = isChecked;
+                contentItem: ColumnLayout {
+                    GridLayout {
+                        columns: 2
+                        uniformCellWidths: true
+                        Layout.alignment: Qt.AlignTop
+
+                        FormCard.FormComboBoxDelegate {
+                            id: scaleRoot
+
+                            text: i18n("Root note") // qmllint disable
+                            displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                            currentIndex: 0
+                            editable: false
+                            model: autotunePage.noteNames
+                        }
+
+                        FormCard.FormComboBoxDelegate {
+                            id: scaleType
+
+                            text: i18n("Scale type") // qmllint disable
+                            displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                            currentIndex: 0
+                            editable: false
+                            model: [i18n("Major"), i18n("Minor")] // qmllint disable
+                        }
+
+                        Controls.Button {
+                            Layout.columnSpan: 2
+                            Layout.fillWidth: true
+                            text: i18n("Apply scale") // qmllint disable
+                            icon.name: "dialog-ok-apply-symbolic"
+                            onClicked: {
+                                autotunePage.applyScale(scaleRoot.currentIndex, scaleType.currentIndex === 0 ? "major" : "minor");
+                            }
                         }
                     }
 
-                    EeSwitch {
-                        label: "C#"
-                        isChecked: autotunePage.pluginDB.noteCSharp
-                        onCheckedChanged: {
-                            if (isChecked !== autotunePage.pluginDB.noteCSharp)
-                                autotunePage.pluginDB.noteCSharp = isChecked;
-                        }
-                    }
+                    GridLayout {
+                        columns: 2
+                        uniformCellWidths: true
+                        rowSpacing: 0
 
-                    EeSwitch {
-                        label: "D"
-                        isChecked: autotunePage.pluginDB.noteD
-                        onCheckedChanged: {
-                            if (isChecked !== autotunePage.pluginDB.noteD)
-                                autotunePage.pluginDB.noteD = isChecked;
+                        EeSwitch {
+                            label: "C"
+                            isChecked: autotunePage.pluginDB.noteC
+                            onCheckedChanged: {
+                                if (isChecked !== autotunePage.pluginDB.noteC)
+                                    autotunePage.pluginDB.noteC = isChecked;
+                            }
                         }
-                    }
 
-                    EeSwitch {
-                        label: "D#"
-                        isChecked: autotunePage.pluginDB.noteDSharp
-                        onCheckedChanged: {
-                            if (isChecked !== autotunePage.pluginDB.noteDSharp)
-                                autotunePage.pluginDB.noteDSharp = isChecked;
+                        EeSwitch {
+                            label: "C#"
+                            isChecked: autotunePage.pluginDB.noteCSharp
+                            onCheckedChanged: {
+                                if (isChecked !== autotunePage.pluginDB.noteCSharp)
+                                    autotunePage.pluginDB.noteCSharp = isChecked;
+                            }
                         }
-                    }
 
-                    EeSwitch {
-                        label: "E"
-                        isChecked: autotunePage.pluginDB.noteE
-                        onCheckedChanged: {
-                            if (isChecked !== autotunePage.pluginDB.noteE)
-                                autotunePage.pluginDB.noteE = isChecked;
+                        EeSwitch {
+                            label: "D"
+                            isChecked: autotunePage.pluginDB.noteD
+                            onCheckedChanged: {
+                                if (isChecked !== autotunePage.pluginDB.noteD)
+                                    autotunePage.pluginDB.noteD = isChecked;
+                            }
                         }
-                    }
 
-                    EeSwitch {
-                        label: "F"
-                        isChecked: autotunePage.pluginDB.noteF
-                        onCheckedChanged: {
-                            if (isChecked !== autotunePage.pluginDB.noteF)
-                                autotunePage.pluginDB.noteF = isChecked;
+                        EeSwitch {
+                            label: "D#"
+                            isChecked: autotunePage.pluginDB.noteDSharp
+                            onCheckedChanged: {
+                                if (isChecked !== autotunePage.pluginDB.noteDSharp)
+                                    autotunePage.pluginDB.noteDSharp = isChecked;
+                            }
                         }
-                    }
 
-                    EeSwitch {
-                        label: "F#"
-                        isChecked: autotunePage.pluginDB.noteFSharp
-                        onCheckedChanged: {
-                            if (isChecked !== autotunePage.pluginDB.noteFSharp)
-                                autotunePage.pluginDB.noteFSharp = isChecked;
+                        EeSwitch {
+                            label: "E"
+                            isChecked: autotunePage.pluginDB.noteE
+                            onCheckedChanged: {
+                                if (isChecked !== autotunePage.pluginDB.noteE)
+                                    autotunePage.pluginDB.noteE = isChecked;
+                            }
                         }
-                    }
 
-                    EeSwitch {
-                        label: "G"
-                        isChecked: autotunePage.pluginDB.noteG
-                        onCheckedChanged: {
-                            if (isChecked !== autotunePage.pluginDB.noteG)
-                                autotunePage.pluginDB.noteG = isChecked;
+                        EeSwitch {
+                            label: "F"
+                            isChecked: autotunePage.pluginDB.noteF
+                            onCheckedChanged: {
+                                if (isChecked !== autotunePage.pluginDB.noteF)
+                                    autotunePage.pluginDB.noteF = isChecked;
+                            }
                         }
-                    }
 
-                    EeSwitch {
-                        label: "G#"
-                        isChecked: autotunePage.pluginDB.noteGSharp
-                        onCheckedChanged: {
-                            if (isChecked !== autotunePage.pluginDB.noteGSharp)
-                                autotunePage.pluginDB.noteGSharp = isChecked;
+                        EeSwitch {
+                            label: "F#"
+                            isChecked: autotunePage.pluginDB.noteFSharp
+                            onCheckedChanged: {
+                                if (isChecked !== autotunePage.pluginDB.noteFSharp)
+                                    autotunePage.pluginDB.noteFSharp = isChecked;
+                            }
                         }
-                    }
 
-                    EeSwitch {
-                        label: "A"
-                        isChecked: autotunePage.pluginDB.noteA
-                        onCheckedChanged: {
-                            if (isChecked !== autotunePage.pluginDB.noteA)
-                                autotunePage.pluginDB.noteA = isChecked;
+                        EeSwitch {
+                            label: "G"
+                            isChecked: autotunePage.pluginDB.noteG
+                            onCheckedChanged: {
+                                if (isChecked !== autotunePage.pluginDB.noteG)
+                                    autotunePage.pluginDB.noteG = isChecked;
+                            }
                         }
-                    }
 
-                    EeSwitch {
-                        label: "A#"
-                        isChecked: autotunePage.pluginDB.noteASharp
-                        onCheckedChanged: {
-                            if (isChecked !== autotunePage.pluginDB.noteASharp)
-                                autotunePage.pluginDB.noteASharp = isChecked;
+                        EeSwitch {
+                            label: "G#"
+                            isChecked: autotunePage.pluginDB.noteGSharp
+                            onCheckedChanged: {
+                                if (isChecked !== autotunePage.pluginDB.noteGSharp)
+                                    autotunePage.pluginDB.noteGSharp = isChecked;
+                            }
                         }
-                    }
 
-                    EeSwitch {
-                        label: "B"
-                        isChecked: autotunePage.pluginDB.noteB
-                        onCheckedChanged: {
-                            if (isChecked !== autotunePage.pluginDB.noteB)
-                                autotunePage.pluginDB.noteB = isChecked;
+                        EeSwitch {
+                            label: "A"
+                            isChecked: autotunePage.pluginDB.noteA
+                            onCheckedChanged: {
+                                if (isChecked !== autotunePage.pluginDB.noteA)
+                                    autotunePage.pluginDB.noteA = isChecked;
+                            }
+                        }
+
+                        EeSwitch {
+                            label: "A#"
+                            isChecked: autotunePage.pluginDB.noteASharp
+                            onCheckedChanged: {
+                                if (isChecked !== autotunePage.pluginDB.noteASharp)
+                                    autotunePage.pluginDB.noteASharp = isChecked;
+                            }
+                        }
+
+                        EeSwitch {
+                            label: "B"
+                            isChecked: autotunePage.pluginDB.noteB
+                            onCheckedChanged: {
+                                if (isChecked !== autotunePage.pluginDB.noteB)
+                                    autotunePage.pluginDB.noteB = isChecked;
+                            }
                         }
                     }
                 }
             }
+        }
 
-            EeCard {
-                title: i18n("Meters") // qmllint disable
+        RowLayout {
+            Kirigami.Card {
+                Layout.topMargin: Kirigami.Units.smallSpacing
 
-                ColumnLayout {
+                header: Kirigami.Heading {
+                    text: i18n("Level") // qmllint disable
+                    level: 2
+                }
+
+                contentItem: ColumnLayout {
+                    anchors.fill: parent
+                    spacing: Kirigami.Units.gridUnit
+
                     EeProgressBar {
                         id: pitchErrorMeter
 

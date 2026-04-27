@@ -139,13 +139,13 @@ void Autotune::setup() {
 
   lv2_wrapper->set_n_samples(n_samples);
 
+  mono_buffer.resize(n_samples);
+
   if (lv2_wrapper->has_instance() && rate == lv2_wrapper->get_rate()) {
     return;
   }
 
   ready = false;
-
-  mono_buffer.resize(n_samples);
 
   // NOLINTBEGIN(clang-analyzer-cplusplus.NewDeleteLeaks)
   QMetaObject::invokeMethod(
