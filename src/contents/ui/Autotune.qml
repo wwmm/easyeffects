@@ -33,16 +33,18 @@ Kirigami.ScrollablePage {
     required property EffectsBase pipelineInstance
     property BackendAutotune pluginBackend
 
-    readonly property var scalePatterns: {
-        const major = [1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1];
-        const minor = [1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0];
-        return { "major": major, "minor": minor };
-    }
+    readonly property var majorPattern: [1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1]
+    readonly property var minorPattern: [1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0]
 
-    readonly property var noteNames: ["C", "Db", "D", "Eb", "E", "F", "F#", "G", "Ab", "A", "Bb", "B"]
+    // Semitone index for each natural note: C=0, D=2, E=4, F=5, G=7, A=9, B=11
+    readonly property var naturalNoteIndex: [0, 2, 4, 5, 7, 9, 11]
 
-    function applyScale(rootIndex: int, scaleType: string) {
-        const pattern = scalePatterns[scaleType];
+    function applyCurrentScale() {
+        const baseIndex = naturalNoteIndex[scaleRoot.currentIndex];
+        const accidental = scaleAccidental.currentIndex; // 0=natural, 1=sharp, 2=flat
+        const offset = accidental === 1 ? 1 : (accidental === 2 ? -1 : 0);
+        const rootIndex = (baseIndex + offset + 12) % 12;
+        const pattern = scaleType.currentIndex === 0 ? majorPattern : minorPattern;
         const notes = [];
         for (let i = 0; i < 12; i++) {
             notes.push(pattern[(12 + i - rootIndex) % 12] === 1);
@@ -205,33 +207,46 @@ Kirigami.ScrollablePage {
 
                 contentItem: ColumnLayout {
                     GridLayout {
-                        columns: 2
+                        columns: 3
                         uniformCellWidths: true
                         Layout.alignment: Qt.AlignTop
 
                         FormCard.FormComboBoxDelegate {
                             id: scaleRoot
 
-                            text: i18n("Root note") // qmllint disable
+                            text: i18n("Root") // qmllint disable
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
                             currentIndex: 0
                             editable: false
-                            model: autotunePage.noteNames
+                            model: ["C", "D", "E", "F", "G", "A", "B"]
                             onActivated: {
-                                autotunePage.applyScale(scaleRoot.currentIndex, scaleType.currentIndex === 0 ? "major" : "minor");
+                                autotunePage.applyCurrentScale();
+                            }
+                        }
+
+                        FormCard.FormComboBoxDelegate {
+                            id: scaleAccidental
+
+                            text: i18n("Accidental") // qmllint disable
+                            displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                            currentIndex: 0
+                            editable: false
+                            model: ["♮", "♯", "♭"]
+                            onActivated: {
+                                autotunePage.applyCurrentScale();
                             }
                         }
 
                         FormCard.FormComboBoxDelegate {
                             id: scaleType
 
-                            text: i18n("Scale type") // qmllint disable
+                            text: i18n("Scale") // qmllint disable
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
                             currentIndex: 0
                             editable: false
                             model: [i18n("Major"), i18n("Minor")] // qmllint disable
                             onActivated: {
-                                autotunePage.applyScale(scaleRoot.currentIndex, scaleType.currentIndex === 0 ? "major" : "minor");
+                                autotunePage.applyCurrentScale();
                             }
                         }
                     }
