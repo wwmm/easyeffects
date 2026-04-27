@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-04-22 23:50-0300\n"
-"PO-Revision-Date: 2026-04-14 20:13+0000\n"
+"PO-Revision-Date: 2026-04-27 07:09+0000\n"
 "Last-Translator: Володимир <vlzuykov@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.17-dev\n"
+"X-Generator: Weblate 5.17.1-dev\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -935,7 +935,7 @@ msgstr "Пресети"
 
 #: src/contents/ui/CrosstalkCanceller.qml:64
 msgid "Process only phantom center"
-msgstr ""
+msgstr "Оброблювати тільки фантомний центр"
 
 #: src/contents/ui/CrosstalkCanceller.qml:75
 #: src/contents/ui/StereoTools.qml:293 src/tags_plugin_name.cpp:57
@@ -943,9 +943,8 @@ msgid "Delay"
 msgstr "Затримка"
 
 #: src/contents/ui/CrosstalkCanceller.qml:91
-#, fuzzy
 msgid "Decay"
-msgstr "Час затухання"
+msgstr "Загасання"
 
 #: src/contents/ui/Crusher.qml:55
 msgid "Bit reduction"
@@ -3133,9 +3132,8 @@ msgid "Crossfeed"
 msgstr "Кросфід (підмішування)"
 
 #: src/tags_plugin_name.cpp:52
-#, fuzzy
 msgid "Crosstalk Canceller"
-msgstr "Приглушення відлуння"
+msgstr "Компенсатор перехресних перешкод"
 
 #: src/tags_plugin_name.cpp:53
 msgid "Crusher"
@@ -3241,7 +3239,7 @@ msgstr "мс"
 #: src/units.hpp:73
 msgctxt "microseconds unit abbreviation"
 msgid "μs"
-msgstr ""
+msgstr "мкс"
 
 #: src/units.hpp:74
 msgctxt "Hertz unit abbreviation"
