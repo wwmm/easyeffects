@@ -107,7 +107,7 @@ Kirigami.ScrollablePage {
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
                             currentIndex: autotunePage.pluginDB.mode
                             editable: false
-                            model: [i18n("Auto"), i18n("MIDI"), i18n("Manual")] //qmllint disable
+                            model: [i18n("Auto"), i18n("Manual")] //qmllint disable
                             onActivated: idx => {
                                 autotunePage.pluginDB.mode = idx;
                             }

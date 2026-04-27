@@ -72,7 +72,17 @@ Autotune::Autotune(const std::string& tag, pw::Manager* pipe_manager, PipelineTy
     }
   }
 
-  BIND_LV2_PORT("mode", mode, setMode, DbAutotune::modeChanged);
+  // UI mode: 0=Auto, 1=Manual. LV2 mode: 0=Auto, 1=MIDI, 2=Manual.
+  {
+    const float lv2_mode = settings->mode() == 0 ? 0.0F : 2.0F;
+    lv2_wrapper->set_control_port_value("mode", lv2_mode);
+    connect(settings, &DbAutotune::modeChanged, [this]() {
+      if (this == nullptr || settings == nullptr || lv2_wrapper == nullptr) {
+        return;
+      }
+      lv2_wrapper->set_control_port_value("mode", settings->mode() == 0 ? 0.0F : 2.0F);
+    });
+  }
   BIND_LV2_PORT("channelf", channelFilter, setChannelFilter, DbAutotune::channelFilterChanged);
   BIND_LV2_PORT("tuning", tuning, setTuning, DbAutotune::tuningChanged);
   BIND_LV2_PORT("bias", bias, setBias, DbAutotune::biasChanged);

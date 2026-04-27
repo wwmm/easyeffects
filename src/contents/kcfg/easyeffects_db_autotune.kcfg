@@ -24,7 +24,7 @@
             <default>0</default>
         </entry>
         <entry name="modeLabels" type="StringList">
-            <default>Auto,MIDI,Manual</default>
+            <default>Auto,Manual</default>
         </entry>
         <entry name="mode" type="Int">
             <label>Mode</label>
