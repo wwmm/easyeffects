@@ -39,8 +39,6 @@ void AutotunePreset::save(nlohmann::json& json) {
 
   json[section][instance_name]["mode"] = settings->defaultModeLabelsValue()[settings->mode()].toStdString();
 
-  json[section][instance_name]["channel-filter"] = settings->channelFilter();
-
   json[section][instance_name]["tuning"] = settings->tuning();
 
   json[section][instance_name]["bias"] = settings->bias();
@@ -50,8 +48,6 @@ void AutotunePreset::save(nlohmann::json& json) {
   json[section][instance_name]["correction"] = settings->correction();
 
   json[section][instance_name]["offset"] = settings->offset();
-
-  json[section][instance_name]["bend-range"] = settings->bendRange();
 
   json[section][instance_name]["fast-mode"] = settings->fastMode();
 
@@ -84,13 +80,11 @@ void AutotunePreset::load(const nlohmann::json& json) {
   UPDATE_PROPERTY("bypass", Bypass);
   UPDATE_PROPERTY("input-gain", InputGain);
   UPDATE_PROPERTY("output-gain", OutputGain);
-  UPDATE_PROPERTY("channel-filter", ChannelFilter);
   UPDATE_PROPERTY("tuning", Tuning);
   UPDATE_PROPERTY("bias", Bias);
   UPDATE_PROPERTY("filter", Filter);
   UPDATE_PROPERTY("correction", Correction);
   UPDATE_PROPERTY("offset", Offset);
-  UPDATE_PROPERTY("bend-range", BendRange);
   UPDATE_PROPERTY("fast-mode", FastMode);
   UPDATE_PROPERTY("note-c", NoteC);
   UPDATE_PROPERTY("note-c-sharp", NoteCSharp);

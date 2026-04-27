@@ -33,11 +33,8 @@ Kirigami.ScrollablePage {
     required property EffectsBase pipelineInstance
     property BackendAutotune pluginBackend
 
-    // Scale definitions: each is an array of 12 booleans [C, C#, D, D#, E, F, F#, G, G#, A, A#, B]
     readonly property var scalePatterns: {
-        // Major: W-W-H-W-W-W-H
         const major = [1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1];
-        // Minor (natural): W-H-W-W-H-W-W
         const minor = [1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0];
         return { "major": major, "minor": minor };
     }
@@ -73,7 +70,6 @@ Kirigami.ScrollablePage {
         inputOutputLevels.setOutputLevelLeft(pluginBackend.getOutputLevelLeft());
         inputOutputLevels.setOutputLevelRight(pluginBackend.getOutputLevelRight());
         pitchErrorMeter.setValue(pluginBackend.getPitchError());
-        pitchBendMeter.setValue(pluginBackend.getPitchBend());
     }
 
     Component.onCompleted: {
@@ -125,7 +121,7 @@ Kirigami.ScrollablePage {
                             to: autotunePage.pluginDB.getMaxValue("tuning")
                             value: autotunePage.pluginDB.tuning
                             decimals: 1
-                            stepSize: 0.5
+                            stepSize: 0.2
                             unit: Units.hz
                             onValueModified: v => {
                                 autotunePage.pluginDB.tuning = v;
@@ -183,6 +179,7 @@ Kirigami.ScrollablePage {
                         EeSpinBox {
                             id: offset
 
+                            Layout.columnSpan: 2
                             label: i18n("Offset") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
@@ -193,22 +190,6 @@ Kirigami.ScrollablePage {
                             stepSize: 0.01
                             onValueModified: v => {
                                 autotunePage.pluginDB.offset = v;
-                            }
-                        }
-
-                        EeSpinBox {
-                            id: bendRange
-
-                            label: i18n("Pitch bend range") // qmllint disable
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: autotunePage.pluginDB.getMinValue("bendRange")
-                            to: autotunePage.pluginDB.getMaxValue("bendRange")
-                            value: autotunePage.pluginDB.bendRange
-                            decimals: 1
-                            stepSize: 0.5
-                            onValueModified: v => {
-                                autotunePage.pluginDB.bendRange = v;
                             }
                         }
                     }
@@ -236,6 +217,9 @@ Kirigami.ScrollablePage {
                             currentIndex: 0
                             editable: false
                             model: autotunePage.noteNames
+                            onActivated: {
+                                autotunePage.applyScale(scaleRoot.currentIndex, scaleType.currentIndex === 0 ? "major" : "minor");
+                            }
                         }
 
                         FormCard.FormComboBoxDelegate {
@@ -246,14 +230,7 @@ Kirigami.ScrollablePage {
                             currentIndex: 0
                             editable: false
                             model: [i18n("Major"), i18n("Minor")] // qmllint disable
-                        }
-
-                        Controls.Button {
-                            Layout.columnSpan: 2
-                            Layout.fillWidth: true
-                            text: i18n("Apply scale") // qmllint disable
-                            icon.name: "dialog-ok-apply-symbolic"
-                            onClicked: {
+                            onActivated: {
                                 autotunePage.applyScale(scaleRoot.currentIndex, scaleType.currentIndex === 0 ? "major" : "minor");
                             }
                         }
@@ -393,15 +370,6 @@ Kirigami.ScrollablePage {
                         id: pitchErrorMeter
 
                         label: i18n("Pitch error") // qmllint disable
-                        from: -1
-                        to: 1
-                        decimals: 2
-                    }
-
-                    EeProgressBar {
-                        id: pitchBendMeter
-
-                        label: i18n("Pitch bend") // qmllint disable
                         from: -1
                         to: 1
                         decimals: 2

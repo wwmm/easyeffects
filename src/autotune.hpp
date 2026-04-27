@@ -67,15 +67,12 @@ class Autotune : public PluginBase {
 
   Q_INVOKABLE [[nodiscard]] float getPitchError() const;
 
-  Q_INVOKABLE [[nodiscard]] float getPitchBend() const;
-
  private:
   bool ready = false;
 
   uint latency_n_frames = 0U;
 
   float pitch_error = 0.0F;
-  float pitch_bend = 0.0F;
 
   std::vector<float> mono_buffer;
 

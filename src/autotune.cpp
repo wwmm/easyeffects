@@ -229,7 +229,6 @@ void Autotune::process(std::span<float>& left_in,
     get_peaks(left_in, right_in, left_out, right_out);
 
     pitch_error = lv2_wrapper->get_control_port_value("error");
-    pitch_bend = lv2_wrapper->get_control_port_value("bend");
   }
 }
 
@@ -246,8 +245,4 @@ auto Autotune::get_latency_seconds() -> float {
 
 float Autotune::getPitchError() const {
   return pitch_error;
-}
-
-float Autotune::getPitchBend() const {
-  return pitch_bend;
 }
