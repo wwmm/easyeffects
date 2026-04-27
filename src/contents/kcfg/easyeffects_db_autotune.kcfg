@@ -31,7 +31,7 @@
             <default>0</default>
         </entry>
         <entry name="channelFilter" type="Int">
-            <label>MIDI Filter Channel</label>
+            <label>Filter Channel</label>
             <min>0</min>
             <max>16</max>
             <default>0</default>
@@ -67,7 +67,7 @@
             <default>0.0</default>
         </entry>
         <entry name="bendRange" type="Double">
-            <label>Pitch Bend Range</label>
+            <label>Bend Range</label>
             <min>0.0</min>
             <max>7.0</max>
             <default>2.0</default>

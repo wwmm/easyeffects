@@ -76,12 +76,11 @@ class Autotune : public PluginBase {
 
   std::vector<float> mono_buffer;
 
-  // Empty MIDI atom sequence buffer for the fat1 MIDI input port
   struct {
     LV2_Atom_Sequence seq;
-  } midi_in_buf{};
+  } atom_in_buf{};
 
-  uint midi_port_index = 0U;
+  uint atom_port_index = 0U;
 
   DbAutotune* settings = nullptr;
 };

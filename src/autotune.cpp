@@ -64,10 +64,9 @@ Autotune::Autotune(const std::string& tag, pw::Manager* pipe_manager, PipelineTy
 
   init_common_controls<DbAutotune>(settings);
 
-  // Find the MIDI atom input port index
   for (const auto& port : lv2_wrapper->ports) {
     if (port.type == lv2::PortType::TYPE_ATOM && port.is_input) {
-      midi_port_index = port.index;
+      atom_port_index = port.index;
       break;
     }
   }
@@ -210,12 +209,12 @@ void Autotune::process(std::span<float>& left_in,
 
   auto mono_span = std::span<float>(mono_buffer);
 
-  // Provide an empty MIDI atom sequence for the fat1 MIDI input port
-  midi_in_buf.seq.atom.size = sizeof(LV2_Atom_Sequence_Body);
-  midi_in_buf.seq.atom.type = lv2_wrapper->map_urid(LV2_ATOM__Sequence);
-  midi_in_buf.seq.body.unit = 0;
-  midi_in_buf.seq.body.pad = 0;
-  lilv_instance_connect_port(lv2_wrapper->get_instance(), midi_port_index, &midi_in_buf);
+  // fat1 requires its atom input port to be connected
+  atom_in_buf.seq.atom.size = sizeof(LV2_Atom_Sequence_Body);
+  atom_in_buf.seq.atom.type = lv2_wrapper->map_urid(LV2_ATOM__Sequence);
+  atom_in_buf.seq.body.unit = 0;
+  atom_in_buf.seq.body.pad = 0;
+  lilv_instance_connect_port(lv2_wrapper->get_instance(), atom_port_index, &atom_in_buf);
 
   lv2_wrapper->connect_data_ports(mono_span, right_in, left_out, right_out);
   lv2_wrapper->run();
