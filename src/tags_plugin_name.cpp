@@ -44,6 +44,7 @@ namespace tags::plugin_name {
 Model::Model(QObject* parent)
     : QAbstractListModel(parent),
       modelMap({{BaseName::autogain, i18n("Autogain")},
+                {BaseName::autotune, i18n("Autotune")},
                 {BaseName::bassEnhancer, i18n("Bass Enhancer")},
                 {BaseName::bassLoudness, i18n("Bass Loudness")},
                 {BaseName::compressor, i18n("Compressor")},

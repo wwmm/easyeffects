@@ -71,6 +71,7 @@ class Package : public QObject {
   CREATE_PROPERTY(QString, bs2b, QStringLiteral("bs2b"));
   CREATE_PROPERTY(QString, calf, QStringLiteral("Calf Studio Gear"));
   CREATE_PROPERTY(QString, deepfilternet, QStringLiteral("DeepFilterNet"));
+  CREATE_PROPERTY(QString, x42, QStringLiteral("x42"));
   CREATE_PROPERTY(QString, ebur128, QStringLiteral("libebur128"));
   CREATE_PROPERTY(QString, ee, QStringLiteral("Easy Effects"));
   CREATE_PROPERTY(QString, lsp, QStringLiteral("Linux Studio Plugins"));
@@ -116,6 +117,7 @@ class BaseName : public QObject {
 
   // NOLINTBEGIN(bugprone-throwing-static-initialization)
   CREATE_PROPERTY(QString, autogain, QStringLiteral("autogain"));
+  CREATE_PROPERTY(QString, autotune, QStringLiteral("autotune"));
   CREATE_PROPERTY(QString, bassEnhancer, QStringLiteral("bass_enhancer"));
   CREATE_PROPERTY(QString, bassLoudness, QStringLiteral("bass_loudness"));
   CREATE_PROPERTY(QString, compressor, QStringLiteral("compressor"));

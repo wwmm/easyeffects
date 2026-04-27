@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0 http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
+    <kcfgfile name="easyeffects/db/autotunerc">
+        <parameter name="masterGroup" />
+        <parameter name="instanceIndex" />
+    </kcfgfile>
+    <group parentGroupName="$(masterGroup)" name="Autotune#$(instanceIndex)">
+        <entry name="bypass" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="inputGain" type="Double">
+            <label></label>
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="outputGain" type="Double">
+            <label></label>
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="modeLabels" type="StringList">
+            <default>Auto,MIDI,Manual</default>
+        </entry>
+        <entry name="mode" type="Int">
+            <label>Mode</label>
+            <default>0</default>
+        </entry>
+        <entry name="channelFilter" type="Int">
+            <label>MIDI Filter Channel</label>
+            <min>0</min>
+            <max>16</max>
+            <default>0</default>
+        </entry>
+        <entry name="tuning" type="Double">
+            <label>Tuning frequency</label>
+            <min>400.0</min>
+            <max>480.0</max>
+            <default>440.0</default>
+        </entry>
+        <entry name="bias" type="Double">
+            <label>Bias</label>
+            <min>0.0</min>
+            <max>1.0</max>
+            <default>0.5</default>
+        </entry>
+        <entry name="filter" type="Double">
+            <label>Filter</label>
+            <min>0.02</min>
+            <max>0.5</max>
+            <default>0.1</default>
+        </entry>
+        <entry name="correction" type="Double">
+            <label>Correction</label>
+            <min>0.0</min>
+            <max>1.0</max>
+            <default>1.0</default>
+        </entry>
+        <entry name="offset" type="Double">
+            <label>Offset</label>
+            <min>-2.0</min>
+            <max>2.0</max>
+            <default>0.0</default>
+        </entry>
+        <entry name="bendRange" type="Double">
+            <label>Pitch Bend Range</label>
+            <min>0.0</min>
+            <max>7.0</max>
+            <default>2.0</default>
+        </entry>
+        <entry name="fastMode" type="Bool">
+            <label>Fast Correction</label>
+            <default>false</default>
+        </entry>
+        <entry name="noteC" type="Bool">
+            <label></label>
+            <default>true</default>
+        </entry>
+        <entry name="noteCSharp" type="Bool">
+            <label></label>
+            <default>true</default>
+        </entry>
+        <entry name="noteD" type="Bool">
+            <label></label>
+            <default>true</default>
+        </entry>
+        <entry name="noteDSharp" type="Bool">
+            <label></label>
+            <default>true</default>
+        </entry>
+        <entry name="noteE" type="Bool">
+            <label></label>
+            <default>true</default>
+        </entry>
+        <entry name="noteF" type="Bool">
+            <label></label>
+            <default>true</default>
+        </entry>
+        <entry name="noteFSharp" type="Bool">
+            <label></label>
+            <default>true</default>
+        </entry>
+        <entry name="noteG" type="Bool">
+            <label></label>
+            <default>true</default>
+        </entry>
+        <entry name="noteGSharp" type="Bool">
+            <label></label>
+            <default>true</default>
+        </entry>
+        <entry name="noteA" type="Bool">
+            <label></label>
+            <default>true</default>
+        </entry>
+        <entry name="noteASharp" type="Bool">
+            <label></label>
+            <default>true</default>
+        </entry>
+        <entry name="noteB" type="Bool">
+            <label></label>
+            <default>true</default>
+        </entry>
+    </group>
+</kcfg>

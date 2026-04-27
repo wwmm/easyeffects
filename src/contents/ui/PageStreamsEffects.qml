@@ -157,6 +157,7 @@ Kirigami.Page {
 
                 const pluginMap = {
                     [PluginsBaseName.autogain]: Qt.resolvedUrl("Autogain.qml"),
+                    [PluginsBaseName.autotune]: Qt.resolvedUrl("Autotune.qml"),
                     [PluginsBaseName.bassEnhancer]: Qt.resolvedUrl("BassEnhancer.qml"),
                     [PluginsBaseName.bassLoudness]: Qt.resolvedUrl("BassLoudness.qml"),
                     [PluginsBaseName.compressor]: Qt.resolvedUrl("Compressor.qml"),
@@ -189,6 +190,7 @@ Kirigami.Page {
                 };
 
                 const packageMap = {
+                    [PluginsBaseName.autotune]: PluginsPackage.x42,
                     [PluginsBaseName.bassEnhancer]: PluginsPackage.calf,
                     [PluginsBaseName.bassLoudness]: PluginsPackage.mda,
                     [PluginsBaseName.compressor]: PluginsPackage.lsp,
