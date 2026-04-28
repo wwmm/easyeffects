@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-04-27 20:05-0300\n"
+"POT-Creation-Date: 2026-04-27 22:38-0300\n"
 "PO-Revision-Date: 2026-04-23 16:12+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
@@ -233,7 +233,7 @@ msgstr "强制静音"
 msgid "Force silence when the level is below the silence threshold"
 msgstr "当电平低于静音阈值时强制静音"
 
-#: src/contents/ui/Autogain.qml:270 src/contents/ui/Autotune.qml:449
+#: src/contents/ui/Autogain.qml:270 src/contents/ui/Autotune.qml:435
 #: src/contents/ui/DeepFilterNet.qml:222 src/contents/ui/LevelMeter.qml:240
 #: src/contents/ui/Pitch.qml:313
 msgid "Reset settings"
@@ -261,8 +261,8 @@ msgstr "模式"
 msgid "Auto"
 msgstr "自动增益"
 
-#: src/contents/ui/Autotune.qml:110 src/contents/ui/Main.qml:457
-#: src/contents/ui/TrayIcon.qml:207
+#: src/contents/ui/Autotune.qml:110 src/contents/ui/Main.qml:456
+#: src/contents/ui/TrayIcon.qml:206
 msgid "Manual"
 msgstr "使用手册"
 
@@ -320,19 +320,6 @@ msgstr "左声道音高"
 msgid "Fast correction"
 msgstr "位衰减"
 
-#: src/contents/ui/Autotune.qml:435 src/contents/ui/BassEnhancer.qml:223
-#: src/contents/ui/Compressor.qml:891 src/contents/ui/Crusher.qml:254
-#: src/contents/ui/Deesser.qml:337 src/contents/ui/Delay.qml:414
-#: src/contents/ui/Equalizer.qml:319 src/contents/ui/Exciter.qml:228
-#: src/contents/ui/Expander.qml:841 src/contents/ui/Filter.qml:238
-#: src/contents/ui/Gate.qml:970 src/contents/ui/Limiter.qml:625
-#: src/contents/ui/Loudness.qml:193 src/contents/ui/Maximizer.qml:140
-#: src/contents/ui/MultibandCompressor.qml:983
-#: src/contents/ui/MultibandGate.qml:956 src/contents/ui/Reverb.qml:344
-#: src/contents/ui/StereoTools.qml:410
-msgid "Show native window"
-msgstr "显示原生插件窗口"
-
 #: src/contents/ui/BassEnhancer.qml:56 src/contents/ui/Exciter.qml:56
 msgid "Blend harmonics"
 msgstr "谐波注入"
@@ -366,6 +353,19 @@ msgstr "激活下限"
 msgid "Floor"
 msgstr "下限"
 
+#: src/contents/ui/BassEnhancer.qml:223 src/contents/ui/Compressor.qml:891
+#: src/contents/ui/Crusher.qml:254 src/contents/ui/Deesser.qml:337
+#: src/contents/ui/Delay.qml:414 src/contents/ui/Equalizer.qml:319
+#: src/contents/ui/Exciter.qml:228 src/contents/ui/Expander.qml:841
+#: src/contents/ui/Filter.qml:238 src/contents/ui/Gate.qml:970
+#: src/contents/ui/Limiter.qml:625 src/contents/ui/Loudness.qml:193
+#: src/contents/ui/Maximizer.qml:140
+#: src/contents/ui/MultibandCompressor.qml:983
+#: src/contents/ui/MultibandGate.qml:956 src/contents/ui/Reverb.qml:344
+#: src/contents/ui/StereoTools.qml:410
+msgid "Show native window"
+msgstr "显示原生插件窗口"
+
 #: src/contents/ui/BassEnhancer.qml:236 src/contents/ui/Compressor.qml:904
 #: src/contents/ui/Deesser.qml:350 src/contents/ui/Exciter.qml:241
 #: src/contents/ui/Expander.qml:854 src/contents/ui/Gate.qml:983
@@ -381,7 +381,7 @@ msgstr "聆听"
 #: src/contents/ui/Exciter.qml:252 src/contents/ui/Expander.qml:875
 #: src/contents/ui/Filter.qml:252 src/contents/ui/Gate.qml:1004
 #: src/contents/ui/Limiter.qml:659 src/contents/ui/Loudness.qml:217
-#: src/contents/ui/Main.qml:469 src/contents/ui/Maximizer.qml:154
+#: src/contents/ui/Main.qml:468 src/contents/ui/Maximizer.qml:154
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:358
 #: src/contents/ui/RNNoise.qml:346 src/contents/ui/Speex.qml:195
@@ -391,7 +391,7 @@ msgstr "重置"
 
 #: src/contents/ui/BassLoudness.qml:83 src/contents/ui/Compressor.qml:478
 #: src/contents/ui/EeInputOutputGain.qml:144 src/contents/ui/Expander.qml:438
-#: src/contents/ui/Gate.qml:453 src/contents/ui/Main.qml:394
+#: src/contents/ui/Gate.qml:453 src/contents/ui/Main.qml:393
 #: src/contents/ui/StereoTools.qml:268
 msgid "Output"
 msgstr "输出"
@@ -419,7 +419,7 @@ msgstr "添加到已排除的应用程序"
 #: src/contents/ui/ConvolverImpulseDialog.qml:89
 #: src/contents/ui/MenuAddPlugins.qml:54
 #: src/contents/ui/PageStreamsEffects.qml:106
-#: src/contents/ui/PresetsAutoloadPage.qml:177
+#: src/contents/ui/PresetsAutoloadPage.qml:176
 #: src/contents/ui/PresetsCommunityPage.qml:104
 #: src/contents/ui/PresetsLocalPage.qml:193 src/contents/ui/RNNoise.qml:229
 msgid "Empty List"
@@ -994,7 +994,7 @@ msgstr "交叉反馈预设"
 msgid "Default"
 msgstr "默认"
 
-#: src/contents/ui/Crossfeed.qml:167 src/contents/ui/Main.qml:364
+#: src/contents/ui/Crossfeed.qml:167 src/contents/ui/Main.qml:363
 #: src/contents/ui/PreferencesSheet.qml:62 src/contents/ui/Reverb.qml:335
 msgid "Presets"
 msgstr "预设"
@@ -1237,22 +1237,22 @@ msgstr "开关此音效"
 msgid "Remove this effect"
 msgstr "移除此音效"
 
-#: src/contents/ui/DelegateStreamsList.qml:97
+#: src/contents/ui/DelegateStreamsList.qml:96
 msgid "channels"
 msgstr "声道"
 
-#: src/contents/ui/DelegateStreamsList.qml:108
+#: src/contents/ui/DelegateStreamsList.qml:107
 #: src/contents/ui/EchoCanceller.qml:64 src/contents/ui/EchoCanceller.qml:97
 #: src/contents/ui/EchoCanceller.qml:124 src/contents/ui/Gate.qml:175
 #: src/contents/ui/RNNoise.qml:116
 msgid "Enable"
 msgstr "启用"
 
-#: src/contents/ui/DelegateStreamsList.qml:129
+#: src/contents/ui/DelegateStreamsList.qml:128
 msgid "Exclude"
 msgstr "排除"
 
-#: src/contents/ui/DelegateStreamsList.qml:131
+#: src/contents/ui/DelegateStreamsList.qml:130
 msgid "Add %1 to excluded applications"
 msgstr "将 %1 添加到排除的应用程序"
 
@@ -1312,7 +1312,7 @@ msgstr "音频电平控制"
 msgid "Input and output gain controls with level meters"
 msgstr "带电平表的输入输出增益控制"
 
-#: src/contents/ui/EeInputOutputGain.qml:131 src/contents/ui/Main.qml:407
+#: src/contents/ui/EeInputOutputGain.qml:131 src/contents/ui/Main.qml:406
 #: src/contents/ui/StereoTools.qml:59
 msgid "Input"
 msgstr "输入"
@@ -1813,52 +1813,52 @@ msgstr "削波范围"
 msgid "Clipping"
 msgstr "削波"
 
-#: src/contents/ui/Main.qml:315
+#: src/contents/ui/Main.qml:314
 msgid "Reset Settings?"
 msgstr "重置设置？"
 
-#: src/contents/ui/Main.qml:316
+#: src/contents/ui/Main.qml:315
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr "确定要重置所有 Easy Effects 设置吗？"
 
-#: src/contents/ui/Main.qml:338
+#: src/contents/ui/Main.qml:337
 msgid "Go back"
 msgstr "返回"
 
-#: src/contents/ui/Main.qml:348 src/contents/ui/PageStreamsEffects.qml:761
+#: src/contents/ui/Main.qml:347 src/contents/ui/PageStreamsEffects.qml:761
 msgid "Effects"
 msgstr "音效"
 
-#: src/contents/ui/Main.qml:349
+#: src/contents/ui/Main.qml:348
 msgid "Turn effects on/off"
 msgstr "开关音效"
 
-#: src/contents/ui/Main.qml:360
+#: src/contents/ui/Main.qml:359
 msgid "Audio effects are enabled."
 msgstr "已启用音效。"
 
-#: src/contents/ui/Main.qml:360
+#: src/contents/ui/Main.qml:359
 msgid "Audio effects are disabled."
 msgstr "已禁用音效。"
 
-#: src/contents/ui/Main.qml:420
+#: src/contents/ui/Main.qml:419
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/contents/ui/Main.qml:438
+#: src/contents/ui/Main.qml:437
 msgid "Preferences"
 msgstr "首选项"
 
-#: src/contents/ui/Main.qml:449 src/contents/ui/ShortcutsSheet.qml:390
-#: src/contents/ui/TrayIcon.qml:198
+#: src/contents/ui/Main.qml:448 src/contents/ui/ShortcutsSheet.qml:390
+#: src/contents/ui/TrayIcon.qml:197
 msgid "Shortcuts"
 msgstr "快捷键"
 
-#: src/contents/ui/Main.qml:481
+#: src/contents/ui/Main.qml:480
 msgid "About Easy Effects"
 msgstr "关于 Easy Effects"
 
-#: src/contents/ui/Main.qml:489 src/contents/ui/TrayIcon.qml:217
+#: src/contents/ui/Main.qml:488 src/contents/ui/TrayIcon.qml:216
 msgid "Quit"
 msgstr "退出"
 
@@ -2556,34 +2556,34 @@ msgstr "更新频率"
 msgid "Related to LV2 plugins."
 msgstr "影响 LV2 插件。"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:56
-#: src/contents/ui/PresetsAutoloadPage.qml:215
+#: src/contents/ui/PresetsAutoloadPage.qml:55
+#: src/contents/ui/PresetsAutoloadPage.qml:214
 msgid "Device"
 msgstr "设备"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:62
-#: src/contents/ui/PresetsAutoloadPage.qml:257
+#: src/contents/ui/PresetsAutoloadPage.qml:61
+#: src/contents/ui/PresetsAutoloadPage.qml:256
 msgid "Route"
 msgstr "路由"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:126
-#: src/contents/ui/PresetsAutoloadPage.qml:270
+#: src/contents/ui/PresetsAutoloadPage.qml:125
+#: src/contents/ui/PresetsAutoloadPage.qml:269
 msgid "Local preset"
 msgstr "本地预设"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:137
+#: src/contents/ui/PresetsAutoloadPage.qml:136
 msgid "Create"
 msgstr "新建"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:139
+#: src/contents/ui/PresetsAutoloadPage.qml:138
 msgid "Create a new autoload preset"
 msgstr "新建自动加载预设"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:229
+#: src/contents/ui/PresetsAutoloadPage.qml:228
 msgid "Remove this autoload preset"
 msgstr "移除此自动加载预设"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:243
+#: src/contents/ui/PresetsAutoloadPage.qml:242
 msgid "Description"
 msgstr "描述"
 
@@ -3004,27 +3004,27 @@ msgstr "立体声基线"
 msgid "Stereo phase"
 msgstr "立体声相位"
 
-#: src/contents/ui/TrayIcon.qml:88 src/contents/ui/TrayIcon.qml:108
+#: src/contents/ui/TrayIcon.qml:87 src/contents/ui/TrayIcon.qml:107
 msgid "Preset Loaded"
 msgstr "已加载预设"
 
-#: src/contents/ui/TrayIcon.qml:119 src/contents/ui/TrayIcon.qml:131
+#: src/contents/ui/TrayIcon.qml:118 src/contents/ui/TrayIcon.qml:130
 msgid "Clear List"
 msgstr "清空列表"
 
-#: src/contents/ui/TrayIcon.qml:120 src/contents/ui/TrayIcon.qml:132
+#: src/contents/ui/TrayIcon.qml:119 src/contents/ui/TrayIcon.qml:131
 msgid "Are you sure you want to clear this list?"
 msgstr "确定要清空列表吗？"
 
-#: src/contents/ui/TrayIcon.qml:141
+#: src/contents/ui/TrayIcon.qml:140
 msgid "Input Presets"
 msgstr "输入预设"
 
-#: src/contents/ui/TrayIcon.qml:156
+#: src/contents/ui/TrayIcon.qml:155
 msgid "Output Presets"
 msgstr "输出预设"
 
-#: src/contents/ui/TrayIcon.qml:187
+#: src/contents/ui/TrayIcon.qml:186
 msgid "Active"
 msgstr "激活"
 
@@ -3087,33 +3087,33 @@ msgstr "(扬声器)"
 msgid "Output Level Meter"
 msgstr "输出电平表"
 
-#: src/presets_manager.cpp:824 src/presets_manager.cpp:831
-#: src/presets_manager.cpp:841 src/presets_manager.cpp:848
-#: src/presets_manager.cpp:858 src/presets_manager.cpp:867
+#: src/presets_manager.cpp:823 src/presets_manager.cpp:830
+#: src/presets_manager.cpp:840 src/presets_manager.cpp:847
+#: src/presets_manager.cpp:857 src/presets_manager.cpp:866
 msgid "Preset not loaded correctly"
 msgstr "未正确加载预设"
 
-#: src/presets_manager.cpp:824
+#: src/presets_manager.cpp:823
 msgid "Wrong format in excluded apps list"
 msgstr "已排除应用程序列表存在格式错误"
 
-#: src/presets_manager.cpp:832
+#: src/presets_manager.cpp:831
 msgid "Generic error while loading excluded apps list"
 msgstr "加载已排除应用程序列表时发生常规错误"
 
-#: src/presets_manager.cpp:841
+#: src/presets_manager.cpp:840
 msgid "Wrong format in effects list"
 msgstr "音效列表存在格式错误"
 
-#: src/presets_manager.cpp:848
+#: src/presets_manager.cpp:847
 msgid "Generic error while loading effects list"
 msgstr "加载音效列表时发生常规错误"
 
-#: src/presets_manager.cpp:859
+#: src/presets_manager.cpp:858
 msgid "One or more parameters have a wrong format"
 msgstr "一个或多个参数存在格式错误"
 
-#: src/presets_manager.cpp:868
+#: src/presets_manager.cpp:867
 msgid "Generic error while loading the effect"
 msgstr "加载音效时发生常规错误"
 

@@ -200,17 +200,18 @@ const struct pw_registry_events registry_events = {.version = 0,
 
 namespace pw {
 
-Manager::Manager()
-    : headerVersion(pw_get_headers_version()),
+Manager::Manager(QObject* parent)
+    : QObject(parent),
+      headerVersion(pw_get_headers_version()),
       libraryVersion(pw_get_library_version()),
       model_nodes(pw::models::Nodes(this)),
+      model_modules(pw::models::Modules(this)),
+      model_clients(pw::models::Clients(this)),
       node_manager(NodeManager(model_nodes, metadata_manager, ee_sink_node, ee_source_node, list_links)),
       link_manager(LinkManager(core, thread_loop, model_nodes, list_links)),
       module_manager(ModuleManager(core, thread_loop, model_modules)),
       client_manager(ClientManager(core, thread_loop, model_clients)),
       device_manager(DeviceManager(list_devices)) {
-  register_models();
-
   connect(&metadata_manager, &MetadataManager::defaultSourceChanged, [&](const QString& name) {
     defaultInputDeviceName = name;
 
@@ -423,18 +424,6 @@ Manager::~Manager() {
 
   util::debug("Destroying PipeWire's loop...");
   pw_thread_loop_destroy(thread_loop);
-}
-
-void Manager::register_models() {
-  // NOLINTBEGIN(clang-analyzer-cplusplus.NewDelete)
-  qmlRegisterSingletonInstance<pw::Manager>("ee.pipewire", VERSION_MAJOR, VERSION_MINOR, "Manager", this);
-
-  qmlRegisterSingletonInstance<pw::models::Modules>("ee.pipewire", VERSION_MAJOR, VERSION_MINOR, "ModelModules",
-                                                    &model_modules);
-
-  qmlRegisterSingletonInstance<pw::models::Clients>("ee.pipewire", VERSION_MAJOR, VERSION_MINOR, "ModelClients",
-                                                    &model_clients);
-  // NOLINTEND(clang-analyzer-cplusplus.NewDelete)
 }
 
 void Manager::connectStreamOutput(const uint& id) const {

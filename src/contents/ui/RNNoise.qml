@@ -57,7 +57,7 @@ Kirigami.ScrollablePage {
         currentFolder: StandardPaths.standardLocations(StandardPaths.DownloadLocation)[0]
         nameFilters: ["RNNoise (*.rnnn)"]
         onAccepted: {
-            if (Presets.Manager.importRNNoiseModel(fileDialog.selectedFiles) === 0) {
+            if (PresetsManager.importRNNoiseModel(fileDialog.selectedFiles) === 0) {
                 appWindow.showStatus(i18n("Imported a new RNNoise model file."), Kirigami.MessageType.Positive); // qmllint disable
             } else {
                 appWindow.showStatus(i18n("Failed to import the RNNoise model file."), Kirigami.MessageType.Error, false); // qmllint disable
@@ -261,7 +261,7 @@ Kirigami.ScrollablePage {
                                             icon.name: "delete"
                                             displayHint: Kirigami.DisplayHint.AlwaysHide
                                             onTriggered: {
-                                                if (Presets.Manager.removeRNNoiseModel(listItemDelegate.path) === true) {
+                                                if (PresetsManager.removeRNNoiseModel(listItemDelegate.path) === true) {
                                                     appWindow.showStatus(i18n("Removed the %1 RNNoise model.", `<strong>${listItemDelegate.name}</strong>`), Kirigami.MessageType.Positive); // qmllint disable
                                                 } else {
                                                     appWindow.showStatus(i18n("Failed to remove the %1 RNNoise model.", `<strong>${listItemDelegate.name}</strong>`), Kirigami.MessageType.Error, false); // qmllint disable

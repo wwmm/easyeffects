@@ -22,7 +22,6 @@ import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import ee.autostart //qmllint disable
-import ee.database as DB
 import ee.presets as Presets
 import ee.ui
 import org.kde.kirigami as Kirigami
@@ -89,13 +88,13 @@ Kirigami.ApplicationWindow {
 
             // appWindow.visibility = DbMain.visibility;
 
-            DB.Manager.enableAutosave(true);
+            DatabaseManager.enableAutosave(true);
 
             openMappedPage(DbMain.visiblePage);
         } else {
             // DbMain.visibility = appWindow.visibility;
 
-            DB.Manager.saveAll();
+            DatabaseManager.saveAll();
 
             pageStack.clear();
         }
@@ -127,9 +126,9 @@ Kirigami.ApplicationWindow {
     function onCloseWindow() {
         // DbMain.visibility = appWindow.visibility;
 
-        DB.Manager.saveAll();
+        DatabaseManager.saveAll();
 
-        DB.Manager.enableAutosave(false);
+        DatabaseManager.enableAutosave(false);
     }
 
     function openMappedPage(index) {
@@ -146,9 +145,9 @@ Kirigami.ApplicationWindow {
 
             args.pluginsDB = index === 0 ? Qt.binding(function () {
                 // QMap used as property is viewed as a JS object and not a QObject. So binding needs Qt.binding
-                return DB.Manager.soePluginsDB;
+                return DatabaseManager.soePluginsDB;
             }) : Qt.binding(function () {
-                return DB.Manager.siePluginsDB;
+                return DatabaseManager.siePluginsDB;
             });
 
             args.pipelineInstance = info.pipelineInstance;
@@ -196,7 +195,7 @@ Kirigami.ApplicationWindow {
     }
 
     Connections {
-        target: Presets.Manager
+        target: PresetsManager
 
         function onPresetLoadError(title, description) {
             appWindow.showStatus(`${title}. ${description}.`, Kirigami.MessageType.Error, false);
@@ -315,7 +314,7 @@ Kirigami.ApplicationWindow {
         title: i18n("Reset Settings?") // qmllint disable
         subtitle: i18n("Are you sure you want to reset all Easy Effects settings?") // qmllint disable
         standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
-        onAccepted: DB.Manager.resetAll()
+        onAccepted: DatabaseManager.resetAll()
     }
 
     header: Kirigami.AbstractApplicationHeader {

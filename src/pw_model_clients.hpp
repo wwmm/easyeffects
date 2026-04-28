@@ -25,6 +25,8 @@
 #include <qlist.h>
 #include <qnamespace.h>
 #include <qobject.h>
+#include <qqmlengine.h>
+#include <qqmlintegration.h>
 #include <qstringview.h>
 #include <qtmetamacros.h>
 #include <qtypes.h>
@@ -37,9 +39,43 @@ namespace pw::models {
 
 class Clients : public QAbstractListModel {
   Q_OBJECT
+  QML_NAMED_ELEMENT(PwModelClients)
+  QML_SINGLETON
+  QML_UNCREATABLE("Use the c++ instance")
 
  public:
   explicit Clients(QObject* parent = nullptr);
+
+  /**
+   * Deleting the default constructor because we want Qt to call our custom create method.
+   * If this is not done qml will create its own class instance.
+   */
+  Clients() = delete;
+
+  Clients(const Clients&) = delete;
+  Clients(Clients&&) = delete;
+  Clients& operator=(const Clients&) = delete;
+  Clients& operator=(Clients&&) = delete;
+
+  inline static Clients* singletonInstance = nullptr;
+
+  // Singleton provider for QML
+  static Clients* create(QQmlEngine* qmlEngine, QJSEngine* jsEngine) {
+    Q_UNUSED(jsEngine)
+
+    // The instance has to exist before it is used. We cannot replace it.
+    Q_ASSERT(singletonInstance);
+
+    // The engine has to have the same thread affinity as the singleton.
+
+    Q_ASSERT(qmlEngine->thread() == singletonInstance->thread());
+
+    // Explicitly specify C++ ownership so that the engine doesn't delete the instance.
+
+    QJSEngine::setObjectOwnership(singletonInstance, QJSEngine::CppOwnership);
+
+    return singletonInstance;
+  }
 
   enum class Roles { Id = Qt::UserRole, Serial, Name, Access, Api };
 

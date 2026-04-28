@@ -69,22 +69,22 @@
 
 namespace db {
 
-Manager::Manager()
-    : graph(DbGraph::self()),
+Manager::Manager(QObject* parent)
+    : QObject(parent),
+      graph(DbGraph::self()),
       main(DbMain::self()),
       spectrum(DbSpectrum::self()),
       streamInputs(DbStreamInputs::self()),
       streamOutputs(DbStreamOutputs::self()),
       testSignals(DbTestSignals::self()),
       timer(new QTimer(this)) {
+  singletonInstance = this;
+
   // creating our database directory if it does not exist
 
   auto db_dir_path = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation).append("/easyeffects/db");
 
   util::create_user_directory(db_dir_path.toStdString());
-
-  // NOLINTNEXTLINE(clang-analyzer-cplusplus.NewDelete)
-  qmlRegisterSingletonInstance<db::Manager>("ee.database", VERSION_MAJOR, VERSION_MINOR, "Manager", this);
 
   QApplication::setQuitOnLastWindowClosed(!DbMain::enableServiceMode());
 

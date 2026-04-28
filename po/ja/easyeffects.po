@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-04-27 20:05-0300\n"
+"POT-Creation-Date: 2026-04-27 22:38-0300\n"
 "PO-Revision-Date: 2025-11-23 11:51+0000\n"
 "Last-Translator: Suu <suunya21@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
@@ -239,7 +239,7 @@ msgstr "無音化"
 msgid "Force silence when the level is below the silence threshold"
 msgstr "レベルがしきい値を下回った場合に強制的に無音化します"
 
-#: src/contents/ui/Autogain.qml:270 src/contents/ui/Autotune.qml:449
+#: src/contents/ui/Autogain.qml:270 src/contents/ui/Autotune.qml:435
 #: src/contents/ui/DeepFilterNet.qml:222 src/contents/ui/LevelMeter.qml:240
 #: src/contents/ui/Pitch.qml:313
 msgid "Reset settings"
@@ -267,8 +267,8 @@ msgstr "モード"
 msgid "Auto"
 msgstr "オートゲイン"
 
-#: src/contents/ui/Autotune.qml:110 src/contents/ui/Main.qml:457
-#: src/contents/ui/TrayIcon.qml:207
+#: src/contents/ui/Autotune.qml:110 src/contents/ui/Main.qml:456
+#: src/contents/ui/TrayIcon.qml:206
 msgid "Manual"
 msgstr "マニュアル"
 
@@ -325,19 +325,6 @@ msgstr "左ピッチ"
 msgid "Fast correction"
 msgstr "減少"
 
-#: src/contents/ui/Autotune.qml:435 src/contents/ui/BassEnhancer.qml:223
-#: src/contents/ui/Compressor.qml:891 src/contents/ui/Crusher.qml:254
-#: src/contents/ui/Deesser.qml:337 src/contents/ui/Delay.qml:414
-#: src/contents/ui/Equalizer.qml:319 src/contents/ui/Exciter.qml:228
-#: src/contents/ui/Expander.qml:841 src/contents/ui/Filter.qml:238
-#: src/contents/ui/Gate.qml:970 src/contents/ui/Limiter.qml:625
-#: src/contents/ui/Loudness.qml:193 src/contents/ui/Maximizer.qml:140
-#: src/contents/ui/MultibandCompressor.qml:983
-#: src/contents/ui/MultibandGate.qml:956 src/contents/ui/Reverb.qml:344
-#: src/contents/ui/StereoTools.qml:410
-msgid "Show native window"
-msgstr "ネイティブウィンドウを表示"
-
 #: src/contents/ui/BassEnhancer.qml:56 src/contents/ui/Exciter.qml:56
 msgid "Blend harmonics"
 msgstr "倍音ブレンド"
@@ -371,6 +358,19 @@ msgstr "フロアを有効化"
 msgid "Floor"
 msgstr "下限"
 
+#: src/contents/ui/BassEnhancer.qml:223 src/contents/ui/Compressor.qml:891
+#: src/contents/ui/Crusher.qml:254 src/contents/ui/Deesser.qml:337
+#: src/contents/ui/Delay.qml:414 src/contents/ui/Equalizer.qml:319
+#: src/contents/ui/Exciter.qml:228 src/contents/ui/Expander.qml:841
+#: src/contents/ui/Filter.qml:238 src/contents/ui/Gate.qml:970
+#: src/contents/ui/Limiter.qml:625 src/contents/ui/Loudness.qml:193
+#: src/contents/ui/Maximizer.qml:140
+#: src/contents/ui/MultibandCompressor.qml:983
+#: src/contents/ui/MultibandGate.qml:956 src/contents/ui/Reverb.qml:344
+#: src/contents/ui/StereoTools.qml:410
+msgid "Show native window"
+msgstr "ネイティブウィンドウを表示"
+
 #: src/contents/ui/BassEnhancer.qml:236 src/contents/ui/Compressor.qml:904
 #: src/contents/ui/Deesser.qml:350 src/contents/ui/Exciter.qml:241
 #: src/contents/ui/Expander.qml:854 src/contents/ui/Gate.qml:983
@@ -386,7 +386,7 @@ msgstr "聞く"
 #: src/contents/ui/Exciter.qml:252 src/contents/ui/Expander.qml:875
 #: src/contents/ui/Filter.qml:252 src/contents/ui/Gate.qml:1004
 #: src/contents/ui/Limiter.qml:659 src/contents/ui/Loudness.qml:217
-#: src/contents/ui/Main.qml:469 src/contents/ui/Maximizer.qml:154
+#: src/contents/ui/Main.qml:468 src/contents/ui/Maximizer.qml:154
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:358
 #: src/contents/ui/RNNoise.qml:346 src/contents/ui/Speex.qml:195
@@ -396,7 +396,7 @@ msgstr "リセット"
 
 #: src/contents/ui/BassLoudness.qml:83 src/contents/ui/Compressor.qml:478
 #: src/contents/ui/EeInputOutputGain.qml:144 src/contents/ui/Expander.qml:438
-#: src/contents/ui/Gate.qml:453 src/contents/ui/Main.qml:394
+#: src/contents/ui/Gate.qml:453 src/contents/ui/Main.qml:393
 #: src/contents/ui/StereoTools.qml:268
 msgid "Output"
 msgstr "出力"
@@ -424,7 +424,7 @@ msgstr "除外アプリケーションに追加"
 #: src/contents/ui/ConvolverImpulseDialog.qml:89
 #: src/contents/ui/MenuAddPlugins.qml:54
 #: src/contents/ui/PageStreamsEffects.qml:106
-#: src/contents/ui/PresetsAutoloadPage.qml:177
+#: src/contents/ui/PresetsAutoloadPage.qml:176
 #: src/contents/ui/PresetsCommunityPage.qml:104
 #: src/contents/ui/PresetsLocalPage.qml:193 src/contents/ui/RNNoise.qml:229
 msgid "Empty List"
@@ -1008,7 +1008,7 @@ msgstr "クロスフィードプリセット"
 msgid "Default"
 msgstr "デフォルト"
 
-#: src/contents/ui/Crossfeed.qml:167 src/contents/ui/Main.qml:364
+#: src/contents/ui/Crossfeed.qml:167 src/contents/ui/Main.qml:363
 #: src/contents/ui/PreferencesSheet.qml:62 src/contents/ui/Reverb.qml:335
 msgid "Presets"
 msgstr "プリセット"
@@ -1257,22 +1257,22 @@ msgstr "このエフェクトの有効化/無効化"
 msgid "Remove this effect"
 msgstr "このエフェクトを削除"
 
-#: src/contents/ui/DelegateStreamsList.qml:97
+#: src/contents/ui/DelegateStreamsList.qml:96
 msgid "channels"
 msgstr "チャンネル"
 
-#: src/contents/ui/DelegateStreamsList.qml:108
+#: src/contents/ui/DelegateStreamsList.qml:107
 #: src/contents/ui/EchoCanceller.qml:64 src/contents/ui/EchoCanceller.qml:97
 #: src/contents/ui/EchoCanceller.qml:124 src/contents/ui/Gate.qml:175
 #: src/contents/ui/RNNoise.qml:116
 msgid "Enable"
 msgstr "有効"
 
-#: src/contents/ui/DelegateStreamsList.qml:129
+#: src/contents/ui/DelegateStreamsList.qml:128
 msgid "Exclude"
 msgstr "除外"
 
-#: src/contents/ui/DelegateStreamsList.qml:131
+#: src/contents/ui/DelegateStreamsList.qml:130
 msgid "Add %1 to excluded applications"
 msgstr "%1 を除外アプリケーションに追加"
 
@@ -1332,7 +1332,7 @@ msgstr "オーディオレベル制御"
 msgid "Input and output gain controls with level meters"
 msgstr "レベルメーター付き入出力ゲイン制御"
 
-#: src/contents/ui/EeInputOutputGain.qml:131 src/contents/ui/Main.qml:407
+#: src/contents/ui/EeInputOutputGain.qml:131 src/contents/ui/Main.qml:406
 #: src/contents/ui/StereoTools.qml:59
 msgid "Input"
 msgstr "入力"
@@ -1862,52 +1862,52 @@ msgstr "クリッピング範囲"
 msgid "Clipping"
 msgstr "クリッピング"
 
-#: src/contents/ui/Main.qml:315
+#: src/contents/ui/Main.qml:314
 msgid "Reset Settings?"
 msgstr "設定をリセットしますか？"
 
-#: src/contents/ui/Main.qml:316
+#: src/contents/ui/Main.qml:315
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr "すべての Easy Effects の設定をリセットしてもよろしいですか？"
 
-#: src/contents/ui/Main.qml:338
+#: src/contents/ui/Main.qml:337
 msgid "Go back"
 msgstr "戻る"
 
-#: src/contents/ui/Main.qml:348 src/contents/ui/PageStreamsEffects.qml:761
+#: src/contents/ui/Main.qml:347 src/contents/ui/PageStreamsEffects.qml:761
 msgid "Effects"
 msgstr "エフェクト"
 
-#: src/contents/ui/Main.qml:349
+#: src/contents/ui/Main.qml:348
 msgid "Turn effects on/off"
 msgstr "エフェクトのオン/オフ"
 
-#: src/contents/ui/Main.qml:360
+#: src/contents/ui/Main.qml:359
 msgid "Audio effects are enabled."
 msgstr "オーディオエフェクトが有効です。"
 
-#: src/contents/ui/Main.qml:360
+#: src/contents/ui/Main.qml:359
 msgid "Audio effects are disabled."
 msgstr "オーディオエフェクトが無効です。"
 
-#: src/contents/ui/Main.qml:420
+#: src/contents/ui/Main.qml:419
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/contents/ui/Main.qml:438
+#: src/contents/ui/Main.qml:437
 msgid "Preferences"
 msgstr "環境設定"
 
-#: src/contents/ui/Main.qml:449 src/contents/ui/ShortcutsSheet.qml:390
-#: src/contents/ui/TrayIcon.qml:198
+#: src/contents/ui/Main.qml:448 src/contents/ui/ShortcutsSheet.qml:390
+#: src/contents/ui/TrayIcon.qml:197
 msgid "Shortcuts"
 msgstr "ショートカット"
 
-#: src/contents/ui/Main.qml:481
+#: src/contents/ui/Main.qml:480
 msgid "About Easy Effects"
 msgstr "Easy Effects について"
 
-#: src/contents/ui/Main.qml:489 src/contents/ui/TrayIcon.qml:217
+#: src/contents/ui/Main.qml:488 src/contents/ui/TrayIcon.qml:216
 msgid "Quit"
 msgstr "終了"
 
@@ -2619,36 +2619,36 @@ msgstr "更新頻度"
 msgid "Related to LV2 plugins."
 msgstr "LV2 プラグインに影響します。"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:56
-#: src/contents/ui/PresetsAutoloadPage.qml:215
+#: src/contents/ui/PresetsAutoloadPage.qml:55
+#: src/contents/ui/PresetsAutoloadPage.qml:214
 msgid "Device"
 msgstr "デバイス"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:62
-#: src/contents/ui/PresetsAutoloadPage.qml:257
+#: src/contents/ui/PresetsAutoloadPage.qml:61
+#: src/contents/ui/PresetsAutoloadPage.qml:256
 msgid "Route"
 msgstr "ルート"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:126
-#: src/contents/ui/PresetsAutoloadPage.qml:270
+#: src/contents/ui/PresetsAutoloadPage.qml:125
+#: src/contents/ui/PresetsAutoloadPage.qml:269
 msgid "Local preset"
 msgstr "ローカルプリセット"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:137
+#: src/contents/ui/PresetsAutoloadPage.qml:136
 msgid "Create"
 msgstr "作成"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:139
+#: src/contents/ui/PresetsAutoloadPage.qml:138
 #, fuzzy
 msgid "Create a new autoload preset"
 msgstr "新しい自動読み込みプリセットを作成"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:229
+#: src/contents/ui/PresetsAutoloadPage.qml:228
 #, fuzzy
 msgid "Remove this autoload preset"
 msgstr "自動読み込みプリセットを削除"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:243
+#: src/contents/ui/PresetsAutoloadPage.qml:242
 msgid "Description"
 msgstr "説明"
 
@@ -3075,27 +3075,27 @@ msgstr "ステレオベース"
 msgid "Stereo phase"
 msgstr "ステレオ位相"
 
-#: src/contents/ui/TrayIcon.qml:88 src/contents/ui/TrayIcon.qml:108
+#: src/contents/ui/TrayIcon.qml:87 src/contents/ui/TrayIcon.qml:107
 msgid "Preset Loaded"
 msgstr "プリセットを読み込みました"
 
-#: src/contents/ui/TrayIcon.qml:119 src/contents/ui/TrayIcon.qml:131
+#: src/contents/ui/TrayIcon.qml:118 src/contents/ui/TrayIcon.qml:130
 msgid "Clear List"
 msgstr "一覧をクリア"
 
-#: src/contents/ui/TrayIcon.qml:120 src/contents/ui/TrayIcon.qml:132
+#: src/contents/ui/TrayIcon.qml:119 src/contents/ui/TrayIcon.qml:131
 msgid "Are you sure you want to clear this list?"
 msgstr "この一覧をクリアしてもよろしいですか？"
 
-#: src/contents/ui/TrayIcon.qml:141
+#: src/contents/ui/TrayIcon.qml:140
 msgid "Input Presets"
 msgstr "入力プリセット"
 
-#: src/contents/ui/TrayIcon.qml:156
+#: src/contents/ui/TrayIcon.qml:155
 msgid "Output Presets"
 msgstr "出力プリセット"
 
-#: src/contents/ui/TrayIcon.qml:187
+#: src/contents/ui/TrayIcon.qml:186
 msgid "Active"
 msgstr "有効"
 
@@ -3164,33 +3164,33 @@ msgstr "(スピーカー)"
 msgid "Output Level Meter"
 msgstr "出力レベルメーター"
 
-#: src/presets_manager.cpp:824 src/presets_manager.cpp:831
-#: src/presets_manager.cpp:841 src/presets_manager.cpp:848
-#: src/presets_manager.cpp:858 src/presets_manager.cpp:867
+#: src/presets_manager.cpp:823 src/presets_manager.cpp:830
+#: src/presets_manager.cpp:840 src/presets_manager.cpp:847
+#: src/presets_manager.cpp:857 src/presets_manager.cpp:866
 msgid "Preset not loaded correctly"
 msgstr "プリセットが正しく読み込まれていません"
 
-#: src/presets_manager.cpp:824
+#: src/presets_manager.cpp:823
 msgid "Wrong format in excluded apps list"
 msgstr "間違った形式の除外されたアプリ一覧"
 
-#: src/presets_manager.cpp:832
+#: src/presets_manager.cpp:831
 msgid "Generic error while loading excluded apps list"
 msgstr "除外されたアプリ一覧の読み込み中に発生した一般的なエラー"
 
-#: src/presets_manager.cpp:841
+#: src/presets_manager.cpp:840
 msgid "Wrong format in effects list"
 msgstr "エフェクト一覧の間違った形式"
 
-#: src/presets_manager.cpp:848
+#: src/presets_manager.cpp:847
 msgid "Generic error while loading effects list"
 msgstr "エフェクト一覧の読み込み中に発生した一般的なエラー"
 
-#: src/presets_manager.cpp:859
+#: src/presets_manager.cpp:858
 msgid "One or more parameters have a wrong format"
 msgstr "1つ以上のパラメータに間違った形式が設定されています"
 
-#: src/presets_manager.cpp:868
+#: src/presets_manager.cpp:867
 msgid "Generic error while loading the effect"
 msgstr "エフェクトの読み込み中に発生した一般的なエラー"
 

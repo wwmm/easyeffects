@@ -92,7 +92,8 @@
 
 namespace presets {
 
-Manager::Manager() : outputListModel(new ListModel(this)), inputListModel(new ListModel(this)) {
+Manager::Manager(QObject* parent)
+    : QObject(parent), outputListModel(new ListModel(this)), inputListModel(new ListModel(this)) {
   initialize_qml_types();
 
   refresh_list_models();
@@ -107,8 +108,6 @@ Manager::Manager() : outputListModel(new ListModel(this)), inputListModel(new Li
 
 void Manager::initialize_qml_types() {
   // NOLINTBEGIN(clang-analyzer-cplusplus.NewDelete)
-  qmlRegisterSingletonInstance<presets::Manager>("ee.presets", VERSION_MAJOR, VERSION_MINOR, "Manager", this);
-
   qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.presets", VERSION_MAJOR, VERSION_MINOR,
                                                       "SortedInputListModel", inputListModel->getProxy());
 

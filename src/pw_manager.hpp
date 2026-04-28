@@ -46,6 +46,9 @@ namespace pw {
 
 class Manager : public QObject {
   Q_OBJECT
+  QML_NAMED_ELEMENT(PwManager)
+  QML_SINGLETON
+  QML_UNCREATABLE("Use the c++ instance")
 
   Q_PROPERTY(QString headerVersion MEMBER headerVersion NOTIFY headerVersionChanged)
   Q_PROPERTY(QString libraryVersion MEMBER libraryVersion NOTIFY libraryVersionChanged)
@@ -59,7 +62,15 @@ class Manager : public QObject {
   Q_PROPERTY(QString defaultInputDeviceName MEMBER defaultInputDeviceName NOTIFY defaultInputDeviceNameChanged)
 
  public:
-  Manager();
+  explicit Manager(QObject* parent = nullptr);
+
+  /**
+   * Deleting the default constructor because we want Qt to call our custom create method.
+   * If this is not done qml will create its own class instance.
+   */
+
+  Manager() = delete;
+
   Manager(const Manager&) = delete;
   auto operator=(const Manager&) -> Manager& = delete;
   Manager(const Manager&&) = delete;
@@ -67,8 +78,23 @@ class Manager : public QObject {
   ~Manager() override;
 
   static Manager& self() {
-    static Manager pm;
+    static Manager pm(nullptr);
     return pm;
+  }
+
+  // Singleton provider for QML
+  static Manager* create(QQmlEngine* qmlEngine, QJSEngine* jsEngine) {
+    Q_UNUSED(jsEngine)
+
+    // The engine has to have the same thread affinity as the singleton.
+
+    Q_ASSERT(qmlEngine->thread() == self().thread());
+
+    // Explicitly specify C++ ownership so that the engine doesn't delete the instance.
+
+    QJSEngine::setObjectOwnership(&self(), QJSEngine::CppOwnership);
+
+    return &self();
   }
 
   pw_thread_loop* thread_loop = nullptr;
@@ -169,7 +195,6 @@ class Manager : public QObject {
   std::vector<LinkInfo> list_links;
   std::vector<DeviceInfo> list_devices;
 
-  void register_models();
   void set_metadata_target_node(const uint& origin_id, const uint& target_id, const uint64_t& target_serial) const;
 };
 

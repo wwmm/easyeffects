@@ -20,7 +20,6 @@
 pragma ComponentBehavior: Bound
 import Qt.labs.platform
 import QtQuick
-import ee.presets as Presets
 import ee.ui
 import org.kde.kirigami as Kirigami
 
@@ -83,7 +82,7 @@ SystemTrayIcon {
                 checkable: true
                 checked: DbMain.lastLoadedInputPreset === modelData
                 onTriggered: {
-                    Presets.Manager.loadLocalPresetFile(0, modelData);
+                    PresetsManager.loadLocalPresetFile(0, modelData);
 
                     tray.showMessage(i18n("Preset Loaded"), modelData, SystemTrayIcon.Information, 3000);
                 }
@@ -103,7 +102,7 @@ SystemTrayIcon {
                 checkable: true
                 checked: DbMain.lastLoadedOutputPreset === modelData
                 onTriggered: {
-                    Presets.Manager.loadLocalPresetFile(1, modelData);
+                    PresetsManager.loadLocalPresetFile(1, modelData);
 
                     tray.showMessage(i18n("Preset Loaded"), modelData, SystemTrayIcon.Information, 3000);
                 }
