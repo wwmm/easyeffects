@@ -2,15 +2,6 @@
 
 Autotune is a pitch correction effect that automatically adjusts the pitch of an audio signal to the nearest target note. It can be used to subtly correct vocal intonation or to create the characteristic "auto-tune effect" heard in modern music. Easy Effects uses the fat1 plugin from x42 LV2 Plugins.
 
-## Requirements
-
-The Autotune plugin requires the x42 LV2 Plugins to be installed:
-
-- **Native packages:** Install `x42-plugins` from your distribution's package manager.
-- **Flatpak:** Install `org.freedesktop.LinuxAudio.Plugins.x42Plugins` from Flathub.
-
-If the plugin is not found, the Autotune effect will show an unavailable message in the pipeline.
-
 ## Tuning Options
 
 **Mode**  
