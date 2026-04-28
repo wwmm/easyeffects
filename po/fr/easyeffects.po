@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-04-27 22:38-0300\n"
-"PO-Revision-Date: 2026-04-23 16:12+0000\n"
+"PO-Revision-Date: 2026-04-28 19:09+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -243,9 +243,8 @@ msgid "Reset settings"
 msgstr "Réinitialiser les paramètres"
 
 #: src/contents/ui/Autotune.qml:91 src/contents/ui/Autotune.qml:119
-#, fuzzy
 msgid "Tuning"
-msgstr "En cours"
+msgstr "Réglage"
 
 #: src/contents/ui/Autotune.qml:106 src/contents/ui/Compressor.qml:79
 #: src/contents/ui/Compressor.qml:301 src/contents/ui/Crusher.qml:97
@@ -260,9 +259,8 @@ msgid "Mode"
 msgstr "Mode"
 
 #: src/contents/ui/Autotune.qml:110
-#, fuzzy
 msgid "Auto"
-msgstr "Gain Automatique"
+msgstr "Auto"
 
 #: src/contents/ui/Autotune.qml:110 src/contents/ui/Main.qml:456
 #: src/contents/ui/TrayIcon.qml:206
@@ -270,13 +268,12 @@ msgid "Manual"
 msgstr "Manuel"
 
 #: src/contents/ui/Autotune.qml:136
-#, fuzzy
 msgid "Correction"
-msgstr "Corrélation"
+msgstr "Correction"
 
 #: src/contents/ui/Autotune.qml:152
 msgid "Bias"
-msgstr ""
+msgstr "Polarisation"
 
 #: src/contents/ui/Autotune.qml:168 src/contents/ui/Deesser.qml:171
 #: src/contents/ui/Filter.qml:123 src/contents/ui/Reverb.qml:126
@@ -285,43 +282,40 @@ msgid "Filter"
 msgstr "Filtre"
 
 #: src/contents/ui/Autotune.qml:185
-#, fuzzy
 msgid "Offset"
-msgstr "Décalage CC"
+msgstr "Décalage"
 
 #: src/contents/ui/Autotune.qml:204 src/contents/ui/Autotune.qml:243
 msgid "Scale"
-msgstr ""
+msgstr "Échelle"
 
 #: src/contents/ui/Autotune.qml:217
 msgid "Root"
-msgstr ""
+msgstr "Racine"
 
 #: src/contents/ui/Autotune.qml:230
 msgid "Accidental"
-msgstr ""
+msgstr "Accidentel"
 
 #: src/contents/ui/Autotune.qml:247
 msgid "Major"
-msgstr ""
+msgstr "Majeur"
 
 #: src/contents/ui/Autotune.qml:247
 msgid "Minor"
-msgstr ""
+msgstr "Mineur"
 
 #: src/contents/ui/Autotune.qml:376 src/contents/ui/Deesser.qml:276
 msgid "Level"
 msgstr "Niveau"
 
 #: src/contents/ui/Autotune.qml:387
-#, fuzzy
 msgid "Pitch error"
-msgstr "Hauteur gauche"
+msgstr "Erreur de hauteur"
 
 #: src/contents/ui/Autotune.qml:424
-#, fuzzy
 msgid "Fast correction"
-msgstr "Réduction de bits"
+msgstr "Correction rapide"
 
 #: src/contents/ui/BassEnhancer.qml:56 src/contents/ui/Exciter.qml:56
 msgid "Blend harmonics"
@@ -731,7 +725,7 @@ msgstr "Humide"
 #: src/contents/ui/MultibandCompressor.qml:395
 #: src/contents/ui/MultibandGate.qml:265
 msgid "Makeup"
-msgstr "Correction"
+msgstr "Retouche"
 
 #: src/contents/ui/Compressor.qml:542 src/contents/ui/Expander.qml:498
 #: src/contents/ui/Gate.qml:517 src/contents/ui/Limiter.qml:289
@@ -3200,9 +3194,8 @@ msgid "Unknown"
 msgstr "Inconnu"
 
 #: src/tags_plugin_name.cpp:47
-#, fuzzy
 msgid "Autotune"
-msgstr "Gain Automatique"
+msgstr "Autotune"
 
 #: src/tags_plugin_name.cpp:48
 msgid "Bass Enhancer"
