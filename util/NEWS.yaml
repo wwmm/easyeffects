@@ -4,13 +4,13 @@ Date: UNRELEASED_DATE
 
 Description: 
 - Features∶
-- The autotune plugin from the x42 plugins is now available in EasyEffects. It can be used to correct the pitch of the input signal in real time.
+- A new Autotune effect (by x42-plugins) has been added. It can be used to correct the pitch of the input signal in real time.
 
 - Bug fixes∶
 - 
 
 - Other notes∶
-- 
+- Package maintainers should include the LV2 module of x42-plugins in order to make the new Autotune effect available.
 
 ---
 Version: 8.2.1
