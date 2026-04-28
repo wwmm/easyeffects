@@ -74,6 +74,14 @@
             "merge-dirs": "lv2",
             "autodelete": false,
             "subdirectories": true
+        },
+        "org.freedesktop.LinuxAudio.Plugins.x42Plugins": {
+            "directory": "extensions/Plugins/x42Plugins",
+            "version": "25.08",
+            "add-ld-path": "lib",
+            "merge-dirs": "lv2",
+            "autodelete": false,
+            "subdirectories": true
         }
     },
     "modules": [
