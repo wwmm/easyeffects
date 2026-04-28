@@ -19,15 +19,51 @@
 
 #pragma once
 
+#include <qqmlengine.h>
+#include <qqmlintegration.h>
 #include <qtmetamacros.h>
 #include <QObject>
 #include <QWindow>
 
 class Autostart : public QObject {
   Q_OBJECT
+  QML_ELEMENT
+  QML_SINGLETON
+  QML_UNCREATABLE("Use the c++ instance")
 
  public:
   explicit Autostart(QObject* parent = nullptr);
+
+  /**
+   * Deleting the default constructor because we want Qt to call our custom create method.
+   * If this is not done qml will create its own class instance.
+   */
+  Autostart() = delete;
+
+  Autostart(const Autostart&) = delete;
+  Autostart(Autostart&&) = delete;
+  Autostart& operator=(const Autostart&) = delete;
+  Autostart& operator=(Autostart&&) = delete;
+
+  inline static Autostart* singletonInstance = nullptr;
+
+  // Singleton provider for QML
+  static Autostart* create(QQmlEngine* qmlEngine, QJSEngine* jsEngine) {
+    Q_UNUSED(jsEngine)
+
+    // The instance has to exist before it is used. We cannot replace it.
+    Q_ASSERT(singletonInstance);
+
+    // The engine has to have the same thread affinity as the singleton.
+
+    Q_ASSERT(qmlEngine->thread() == singletonInstance->thread());
+
+    // Explicitly specify C++ ownership so that the engine doesn't delete the instance.
+
+    QJSEngine::setObjectOwnership(singletonInstance, QJSEngine::CppOwnership);
+
+    return singletonInstance;
+  }
 
   void set_window(QWindow* window);
 

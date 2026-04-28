@@ -100,8 +100,7 @@ void on_request_background_called([[maybe_unused]] GObject* source,
 #endif
 
 Autostart::Autostart(QObject* parent) : QObject(parent) {
-  // NOLINTNEXTLINE(clang-analyzer-cplusplus.NewDelete)
-  qmlRegisterSingletonInstance<Autostart>("ee.autostart", VERSION_MAJOR, VERSION_MINOR, "Autostart", this);
+  singletonInstance = this;
 
   connect(DbMain::self(), &DbMain::autostartOnLoginChanged, [&]() { update_state(); });
 

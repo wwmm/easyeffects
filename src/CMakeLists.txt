@@ -30,6 +30,7 @@ qt_add_qml_module(easyeffects
         presets_list_model.hpp
         units.hpp
         autogain.hpp
+        autostart.hpp
         autotune.hpp
         bass_enhancer.hpp
         bass_loudness.hpp
@@ -134,13 +135,6 @@ qt_add_qml_module(easyeffects
         contents/ui/TrayIcon.qml
         contents/ui/Validators.qml
         contents/ui/VoiceSuppressor.qml
-)
-
-# The module definitions below are to help the qml linter
-
-qt_add_qml_module(ee_autostart
-    URI ee.autostart
-    VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
 )
 
 target_sources(easyeffects PRIVATE

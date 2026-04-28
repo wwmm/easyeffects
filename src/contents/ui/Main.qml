@@ -21,7 +21,6 @@ pragma ComponentBehavior: Bound
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
-import ee.autostart //qmllint disable
 import ee.ui
 import org.kde.kirigami as Kirigami
 

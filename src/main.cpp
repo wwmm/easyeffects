@@ -399,7 +399,7 @@ int main(int argc, char* argv[]) {
   // Main instance services
   auto local_server = std::make_unique<LocalServer>();
   auto global_shortcuts = std::make_unique<GlobalShortcuts>();
-  auto autostart = std::make_unique<Autostart>();
+  auto autostart = std::make_unique<Autostart>(nullptr);
   auto color_manager = std::make_unique<KColorManager>();
 
   // theme initialization
