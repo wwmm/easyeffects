@@ -398,14 +398,14 @@ KirigamiSettings.ConfigurationView {
                 }
 
                 EeSwitch {
-                    id: logarithimicHorizontalAxis
+                    id: logarithmicHorizontalAxis
 
                     label: i18n("Logarithmic frequency axis") // qmllint disable
                     maximumLineCount: -1
-                    isChecked: DbSpectrum.logarithimicHorizontalAxis
+                    isChecked: DbSpectrum.logarithmicHorizontalAxis
                     onCheckedChanged: {
-                        if (isChecked !== DbSpectrum.logarithimicHorizontalAxis)
-                            DbSpectrum.logarithimicHorizontalAxis = isChecked;
+                        if (isChecked !== DbSpectrum.logarithmicHorizontalAxis)
+                            DbSpectrum.logarithmicHorizontalAxis = isChecked;
                     }
                 }
 

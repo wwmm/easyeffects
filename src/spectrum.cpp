@@ -138,8 +138,16 @@ void Spectrum::setup() {
 
   std::scoped_lock<std::mutex> lock(data_mutex);
 
+  bin_hz = static_cast<float>(rate) / n_bands;
+
   std::ranges::fill(real_input, 0.0F);
   std::ranges::fill(latest_samples_mono, 0.0F);
+
+  if (!lv2_wrapper->found_plugin) {
+    ready = true;  // THe spectrum works without the delay compensation
+
+    return;
+  }
 
   left_delayed_vector.resize(n_samples, 0.0F);
   right_delayed_vector.resize(n_samples, 0.0F);
@@ -148,12 +156,6 @@ void Spectrum::setup() {
   right_delayed = std::span<float>(right_delayed_vector);
 
   lv2_wrapper->set_n_samples(n_samples);
-
-  bin_hz = static_cast<float>(rate) / n_bands;
-
-  if (!lv2_wrapper->found_plugin) {
-    return;
-  }
 
   ready = false;
 

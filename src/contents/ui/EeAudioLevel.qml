@@ -51,7 +51,7 @@ Rectangle {
     border.color: Kirigami.ColorUtils.linearInterpolation(Kirigami.Theme.backgroundColor, Kirigami.Theme.textColor, Kirigami.Theme.frameContrast)
 
     Connections {
-        target: EeMetersReset
+        target: EeMetersReset // qmllint disable
 
         function onReset() {
             root.setValue(0);

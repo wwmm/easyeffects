@@ -481,10 +481,13 @@ void EffectsBase::requestSpectrumData() {
 
         const qsizetype n_bands = list.size();
 
-        QList<double> frequencies(n_bands);
+        // Reuse or resize frequency cache based on band count
+        if (cached_spectrum_frequencies.size() != n_bands) {
+          cached_spectrum_frequencies.resize(n_bands);
 
-        for (qsizetype n = 0; n < n_bands; n++) {
-          frequencies[n] = static_cast<float>(n) * bin_hz;
+          for (qsizetype n = 0; n < n_bands; n++) {
+            cached_spectrum_frequencies[n] = static_cast<float>(n) * bin_hz;
+          }
         }
 
         const auto min_freq = static_cast<float>(DbSpectrum::minimumFrequency());
@@ -494,12 +497,24 @@ void EffectsBase::requestSpectrumData() {
           return;
         }
 
-        std::vector<float> x_axis;
+        const int npoints = DbSpectrum::nPoints();
+        const bool log_axis = DbSpectrum::logarithmicHorizontalAxis();
 
-        if (DbSpectrum::logarithimicHorizontalAxis()) {
-          x_axis = util::logspace(min_freq, max_freq, DbSpectrum::nPoints());
-        } else {
-          x_axis = util::linspace(min_freq, max_freq, DbSpectrum::nPoints());
+        const bool axis_settings_changed =
+            (cached_spectrum_min_freq != min_freq || cached_spectrum_max_freq != max_freq ||
+             cached_spectrum_npoints != npoints || cached_spectrum_log_axis != log_axis);
+
+        if (axis_settings_changed) {
+          if (log_axis) {
+            cached_spectrum_x_axis = util::logspace(min_freq, max_freq, npoints);
+          } else {
+            cached_spectrum_x_axis = util::linspace(min_freq, max_freq, npoints);
+          }
+
+          cached_spectrum_min_freq = min_freq;
+          cached_spectrum_max_freq = max_freq;
+          cached_spectrum_npoints = npoints;
+          cached_spectrum_log_axis = log_axis;
         }
 
         if (spline == nullptr) {
@@ -507,18 +522,22 @@ void EffectsBase::requestSpectrumData() {
           spline = gsl_spline_alloc(gsl_interp_steffen, n_bands);
         }
 
-        gsl_spline_init(spline, frequencies.data(), list.data(), n_bands);
+        gsl_spline_init(spline, cached_spectrum_frequencies.data(), list.data(), n_bands);
 
-        QList<double> spectrum_mag(x_axis.size());
-
-        for (size_t n = 0; n < x_axis.size(); n++) {
-          spectrum_mag[n] = gsl_spline_eval(spline, x_axis[n], gsl_acc);
+        // Reuse or resize magnitude cache
+        if (cached_spectrum_mag.size() != static_cast<int>(cached_spectrum_x_axis.size())) {
+          cached_spectrum_mag.resize(cached_spectrum_x_axis.size());
         }
 
-        QList<QPointF> output_data(spectrum_mag.size());
+        for (size_t n = 0; n < cached_spectrum_x_axis.size(); n++) {
+          cached_spectrum_mag[n] = gsl_spline_eval(spline, cached_spectrum_x_axis[n], gsl_acc);
+        }
 
-        for (qsizetype n = 0; n < spectrum_mag.size(); n++) {
-          output_data[n] = QPointF(x_axis[n], spectrum_mag[n]);
+        // Build output without extra temporary allocations
+        QList<QPointF> output_data(cached_spectrum_mag.size());
+
+        for (qsizetype n = 0; n < cached_spectrum_mag.size(); n++) {
+          output_data[n] = QPointF(cached_spectrum_x_axis[n], cached_spectrum_mag[n]);
         }
 
         Q_EMIT newSpectrumData(output_data);

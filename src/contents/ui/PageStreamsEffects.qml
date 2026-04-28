@@ -555,7 +555,7 @@ Kirigami.Page {
             yMin: 0
             yMax: -Common.minimumDecibelLevel
             yDataOffset: -Common.minimumDecibelLevel
-            logarithimicHorizontalAxis: DbSpectrum.logarithimicHorizontalAxis
+            logarithmicHorizontalAxis: DbSpectrum.logarithmicHorizontalAxis
             dynamicYScale: DbSpectrum.dynamicYScale
             xUnit: Units.hz
             yUnit: Units.dB

@@ -110,6 +110,16 @@ class EffectsBase : public QObject {
   void deactivate_filters();
 
  private:
+  int cached_spectrum_npoints = -1;
+  float cached_spectrum_min_freq = -1.0F;
+  float cached_spectrum_max_freq = -1.0F;
+  bool cached_spectrum_log_axis = false;
+
   gsl_interp_accel* gsl_acc = gsl_interp_accel_alloc();
   gsl_spline* spline = nullptr;
+
+  QList<double> cached_spectrum_frequencies;
+  QList<double> cached_spectrum_mag;
+
+  std::vector<float> cached_spectrum_x_axis;
 };

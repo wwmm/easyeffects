@@ -12,7 +12,7 @@
             <label>Enable Dynamic Scaling for the Vertical Axis</label>
             <default>true</default>
         </entry>
-        <entry name="logarithimicHorizontalAxis" type="Bool">
+        <entry name="logarithmicHorizontalAxis" type="Bool">
             <label>Enable logarithmic scale for the Frequency Axis</label>
             <default>true</default>
         </entry>

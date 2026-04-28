@@ -63,7 +63,7 @@ Rectangle {
     clip: true
 
     Connections {
-        target: EeMetersReset
+        target: EeMetersReset // qmllint disable
 
         function onReset() {
             control.setValue(0);

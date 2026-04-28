@@ -817,7 +817,7 @@ The following properties can be modified or queried via the [local server](../us
 | **rnnoise** | `release` | Double | `20.0` |
 | **spectrum** | `state` | Bool | `true` |
 | **spectrum** | `dynamicYScale` | Bool | `true` |
-| **spectrum** | `logarithimicHorizontalAxis` | Bool | `true` |
+| **spectrum** | `logarithmicHorizontalAxis` | Bool | `true` |
 | **spectrum** | `spectrumShape` | Enum | `0` <br><small>(Choices: 0: `Bars`, 1: `Lines`, 2: `Dots`, 3: `Area`)</small> |
 | **spectrum** | `nPoints` | Int | `100` |
 | **spectrum** | `height` | Int | `140` |

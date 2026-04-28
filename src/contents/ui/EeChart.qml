@@ -30,19 +30,22 @@ Item {
     property int seriesType: 0
     property int colorScheme: GraphsTheme.ColorScheme.Dark
     property int colorTheme: GraphsTheme.Theme.QtGreenNeon
-    property bool logarithimicHorizontalAxis: true
-    property bool logarithimicVerticalAxis: false
+    property int xAxisDecimals: 0
+    property int yAxisDecimals: 0
+    property bool logarithmicHorizontalAxis: true
+    property bool logarithmicVerticalAxis: false
     property bool dynamicXScale: true
     property bool dynamicYScale: true
+    property bool baselineLogMode: false
     property real xMin: 0
     property real xMax: 1
     property real yMin: 0
     property real yMax: 1
+    property real yDataOffset: 0
     property string xUnit: ""
     property string yUnit: ""
-    property int xAxisDecimals: 0
-    property int yAxisDecimals: 0
-    property real yDataOffset: 0
+    property list<point> baselineCache: []
+
     readonly property real xMinLog: Math.log10(xMin)
     readonly property real xMaxLog: Math.log10(xMax)
     readonly property real yMinLog: Math.log10(yMin)
@@ -86,46 +89,70 @@ Item {
             return;
         }
 
-        //We do not want the object received as argument to be modified here
-        let processedData = Array.from(inputData);
-
         let minX = Number.POSITIVE_INFINITY;
         let maxX = Number.NEGATIVE_INFINITY;
         let minY = Number.POSITIVE_INFINITY;
         let maxY = Number.NEGATIVE_INFINITY;
 
-        for (let n = 0; n < processedData.length; n++) {
-            processedData[n].y += yDataOffset;
+        let processedData = [];
+        processedData.length = inputData.length;
 
-            const point = processedData[n];
+        for (let n = 0; n < inputData.length; n++) {
+            let y = inputData[n].y + yDataOffset;
+            let x = inputData[n].x;
 
-            minX = Math.min(minX, point.x);
-            maxX = Math.max(maxX, point.x);
-            minY = Math.min(minY, point.y);
-            maxY = Math.max(maxY, point.y);
+            minX = Math.min(minX, x);
+            maxX = Math.max(maxX, x);
+            minY = Math.min(minY, y);
+            maxY = Math.max(maxY, y);
+
+            processedData[n] = Qt.point(widgetRoot.logarithmicHorizontalAxis ? Math.log10(x) : x, widgetRoot.logarithmicVerticalAxis ? Math.log10(y) : y);
         }
 
+        // Avoid tiny changes triggering expensive relayouts
+        const epsilon = 0.01; // 1% threshold
+        const xRange = (maxX - minX) || 1;
+        const yRange = (maxY - minY) || 1;
+
         if (dynamicXScale) {
-            xMin = minX;
-            xMax = maxX;
+            if (Math.abs(minX - xMin) / xRange > epsilon) {
+                xMin = minX;
+            }
+
+            if (Math.abs(maxX - xMax) / xRange > epsilon) {
+                xMax = maxX;
+            }
         } else {
-            xMin = Math.min(minX, xMin);
-            xMax = Math.max(maxX, xMax);
+            const newXMin = Math.min(minX, xMin);
+            const newXMax = Math.max(maxX, xMax);
+
+            if (Math.abs(newXMin - xMin) / xRange > epsilon) {
+                xMin = newXMin;
+            }
+
+            if (Math.abs(newXMax - xMax) / xRange > epsilon) {
+                xMax = newXMax;
+            }
         }
 
         if (dynamicYScale) {
-            yMin = minY;
-            yMax = maxY;
+            if (Math.abs(minY - yMin) / yRange > epsilon) {
+                yMin = minY;
+            }
+
+            if (Math.abs(maxY - yMax) / yRange > epsilon) {
+                yMax = maxY;
+            }
         } else {
-            yMin = Math.min(minY, yMin);
-            yMax = Math.max(maxY, yMax);
-        }
+            const newYMin = Math.min(minY, yMin);
+            const newYMax = Math.max(maxY, yMax);
 
-        for (let n = 0; n < processedData.length; n++) {
-            const point = processedData[n];
-
-            processedData[n].x = logarithimicHorizontalAxis ? Math.log10(point.x) : point.x;
-            processedData[n].y = logarithimicVerticalAxis ? Math.log10(point.y) : point.y;
+            if (Math.abs(newYMin - yMin) / yRange > epsilon) {
+                yMin = newYMin;
+            }
+            if (Math.abs(newYMax - yMax) / yRange > epsilon) {
+                yMax = newYMax;
+            }
         }
 
         if (splineSeries.visible === true) {
@@ -139,15 +166,24 @@ Item {
             areaLineSeries.replace(processedData);
 
             // For some reason letting QtGraphs use a baseline over the x axis causes graphical artifacts
+            // Reuse baseline array, only regenerate when size or log mode changes
 
-            let baseline = [];
-            for (let n = 0; n < processedData.length; n++) {
-                baseline.push({
-                    x: processedData[n].x,
-                    y: logarithimicVerticalAxis ? Math.log10(1e-12) : -2
-                });
+            if (!widgetRoot.baselineCache || widgetRoot.baselineCache.length !== processedData.length || widgetRoot.baselineLogMode !== widgetRoot.logarithmicVerticalAxis) {
+                let baseline = [];
+
+                baseline.length = processedData.length;
+
+                const baselineY = widgetRoot.logarithmicVerticalAxis ? Math.log10(1e-12) : -2;
+
+                for (let n = 0; n < processedData.length; n++) {
+                    baseline[n] = Qt.point(processedData[n].x, baselineY);
+                }
+
+                widgetRoot.baselineCache = baseline;
+                widgetRoot.baselineLogMode = widgetRoot.logarithmicVerticalAxis;
             }
-            areaBaseline.replace(baseline);
+
+            areaBaseline.replace(widgetRoot.baselineCache);
         }
 
         if (barSeries.visible === true) {
@@ -172,7 +208,7 @@ Item {
 
         const normalizedX = (mouseX - chart.plotArea.x) / chart.plotArea.width;
 
-        if (logarithimicHorizontalAxis) {
+        if (logarithmicHorizontalAxis) {
             return Math.pow(10, horizontalAxis.min + normalizedX * (horizontalAxis.max - horizontalAxis.min));
         } else {
             return horizontalAxis.min + normalizedX * (horizontalAxis.max - horizontalAxis.min);
@@ -186,7 +222,7 @@ Item {
 
         const normalizedY = 1 - (mouseY - chart.plotArea.y) / chart.plotArea.height;
 
-        if (logarithimicVerticalAxis) {
+        if (logarithmicVerticalAxis) {
             return Math.pow(10, verticalAxis.min + normalizedY * (verticalAxis.max - verticalAxis.min));
         } else {
             return verticalAxis.min + normalizedY * (verticalAxis.max - verticalAxis.min);
@@ -318,8 +354,8 @@ Item {
             ValueAxis {
                 id: horizontalAxis
                 labelFormat: "%.1f"
-                min: widgetRoot.logarithimicHorizontalAxis !== true ? widgetRoot.xMin : widgetRoot.xMinLog
-                max: widgetRoot.logarithimicHorizontalAxis !== true ? widgetRoot.xMax : widgetRoot.xMaxLog
+                min: widgetRoot.logarithmicHorizontalAxis !== true ? widgetRoot.xMin : widgetRoot.xMinLog
+                max: widgetRoot.logarithmicHorizontalAxis !== true ? widgetRoot.xMax : widgetRoot.xMaxLog
                 gridVisible: DbGraph.gridVisible
                 subGridVisible: DbGraph.gridVisible
                 lineVisible: false
@@ -345,8 +381,8 @@ Item {
                 visible: false
                 labelsVisible: false
                 titleVisible: false
-                min: widgetRoot.logarithimicVerticalAxis !== true ? widgetRoot.yMin : widgetRoot.yMinLog
-                max: widgetRoot.logarithimicVerticalAxis !== true ? widgetRoot.yMax : widgetRoot.yMaxLog
+                min: widgetRoot.logarithmicVerticalAxis !== true ? widgetRoot.yMin : widgetRoot.yMinLog
+                max: widgetRoot.logarithmicVerticalAxis !== true ? widgetRoot.yMax : widgetRoot.yMaxLog
             }
 
             theme: widgetRoot.colorTheme !== GraphsTheme.Theme.UserDefined ? qtTheme : userTheme
@@ -368,7 +404,7 @@ Item {
                 Repeater {
                     id: axisRepeater
 
-                    readonly property var tickValues: widgetRoot.logarithimicHorizontalAxis ? widgetRoot.logTicks : widgetRoot.linearTicks
+                    readonly property var tickValues: widgetRoot.logarithmicHorizontalAxis ? widgetRoot.logTicks : widgetRoot.linearTicks
 
                     model: tickValues.length
 
