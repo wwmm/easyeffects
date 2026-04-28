@@ -19,8 +19,8 @@
 
 pragma ComponentBehavior: Bound
 import QtQuick
-import QtQuick.Controls
 import QtQuick.Layouts
+import ee.ui
 import org.kde.kirigami as Kirigami
 
 Rectangle {
@@ -46,7 +46,6 @@ Rectangle {
     readonly property real invLiRange: liTo !== liFrom ? 1.0 / (liTo - liFrom) : 0
     readonly property real invLiReverseRange: liFrom !== liTo ? 1.0 / (liFrom - liTo) : 0
     readonly property real decimalFactor: Math.pow(10, -decimals)
-    readonly property var resetManager: EeMetersReset
 
     readonly property string unitSuffix: if (!Common.isEmpty(control.unit)) {
         const split = control.separateUnit ? ' ' : '';
@@ -64,7 +63,7 @@ Rectangle {
     clip: true
 
     Connections {
-        target: resetManager
+        target: EeMetersReset
 
         function onReset() {
             control.setValue(0);
@@ -72,7 +71,7 @@ Rectangle {
             sampleTimer.value = 0;
             control.latestDisplayValue = 0;
 
-            valueLabel.text = Number(0).toLocaleString(Qt.locale(), 'f', control.decimals);
+            valueLabel.text = Number(0).toLocaleString(Qt.locale(), 'f', control.decimals) + control.unitSuffix;
         }
     }
 
@@ -96,7 +95,7 @@ Rectangle {
         }
 
         if (newDisplayValue > control.latestDisplayValue) {
-            valueLabel.text = Number(control.latestDisplayValue).toLocaleString(Qt.locale(), 'f', control.decimals) + unitSuffix;
+            valueLabel.text = Number(control.latestDisplayValue).toLocaleString(Qt.locale(), 'f', control.decimals) + control.unitSuffix;
         }
 
         control.latestDisplayValue = newDisplayValue;
@@ -196,7 +195,7 @@ Rectangle {
         anchors.fill: parent
         implicitHeight: valueLabel.implicitHeight
 
-        Label {
+        Text {
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter
             text: control.label
@@ -212,12 +211,12 @@ Rectangle {
             }
         }
 
-        Label {
+        Text {
             id: valueLabel
 
             horizontalAlignment: Qt.AlignRight
             verticalAlignment: Qt.AlignVCenter
-            text: Number(0).toLocaleString(Qt.locale(), 'f', control.decimals) + unitSuffix
+            text: Number(0).toLocaleString(Qt.locale(), 'f', control.decimals) + control.unitSuffix
             elide: control.elide
             color: control.enabled ? Kirigami.Theme.textColor : Kirigami.Theme.disabledTextColor
             wrapMode: control.wrapMode
@@ -240,9 +239,9 @@ Rectangle {
         repeat: true
         running: control.visible
 
-        onTriggered: {
+        onTriggered: function (): void {
             value = control.value;
-            valueLabel.text = Number(control.latestDisplayValue).toLocaleString(Qt.locale(), 'f', control.decimals) + unitSuffix;
+            valueLabel.text = Number(control.latestDisplayValue).toLocaleString(Qt.locale(), 'f', control.decimals) + control.unitSuffix;
         }
     }
 }

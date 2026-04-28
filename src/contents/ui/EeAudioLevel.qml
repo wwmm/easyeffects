@@ -19,6 +19,7 @@
 
 pragma ComponentBehavior: Bound
 import QtQuick
+import ee.ui
 import org.kde.kirigami as Kirigami
 
 Rectangle {
@@ -39,7 +40,6 @@ Rectangle {
     readonly property real invLiRange: liTo !== liFrom ? 1.0 / (liTo - liFrom) : 0
     readonly property real invLiReverseRange: liFrom !== liTo ? 1.0 / (liFrom - liTo) : 0
     readonly property real decimalFactor: Math.pow(10, -decimals)
-    readonly property var resetManager: EeMetersReset
 
     Kirigami.Theme.colorSet: Kirigami.Theme.View
     implicitWidth: valueLabel.implicitWidth + Kirigami.Units.largeSpacing
@@ -51,7 +51,7 @@ Rectangle {
     border.color: Kirigami.ColorUtils.linearInterpolation(Kirigami.Theme.backgroundColor, Kirigami.Theme.textColor, Kirigami.Theme.frameContrast)
 
     Connections {
-        target: resetManager
+        target: EeMetersReset
 
         function onReset() {
             root.setValue(0);
@@ -183,7 +183,7 @@ Rectangle {
         repeat: true
         running: root.visible
 
-        onTriggered: {
+        onTriggered: function (): void {
             value = root.value;
             valueLabel.text = Number(root.latestDisplayValue).toLocaleString(Qt.locale(), 'f', root.decimals);
         }
