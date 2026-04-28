@@ -39,6 +39,7 @@ qt_add_qml_module(easyeffects
         crosstalk_canceller.hpp
         crusher.hpp
         crystalizer.hpp
+        db_manager.hpp
         deepfilternet.hpp
         deesser.hpp
         delay.hpp
@@ -55,6 +56,7 @@ qt_add_qml_module(easyeffects
         multiband_compressor.hpp
         multiband_gate.hpp
         pitch.hpp
+        presets_manager.hpp
         pw_manager.hpp
         pw_model_nodes.hpp
         reverb.hpp
@@ -135,11 +137,6 @@ qt_add_qml_module(easyeffects
 )
 
 # The module definitions below are to help the qml linter
-
-qt_add_qml_module(ee_database
-    URI ee.database
-    VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
-)
 
 qt_add_qml_module(ee_presets
     URI ee.presets

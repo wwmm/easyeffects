@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-04-27 20:05-0300\n"
+"POT-Creation-Date: 2026-04-27 22:38-0300\n"
 "PO-Revision-Date: 2026-04-24 07:09+0000\n"
 "Last-Translator: Lito Parra <lito.15@proton.me>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -235,7 +235,7 @@ msgstr "Silencio forzado"
 msgid "Force silence when the level is below the silence threshold"
 msgstr "Silenciar cuando el nivel esté por debajo del umbral de silencio"
 
-#: src/contents/ui/Autogain.qml:270 src/contents/ui/Autotune.qml:449
+#: src/contents/ui/Autogain.qml:270 src/contents/ui/Autotune.qml:435
 #: src/contents/ui/DeepFilterNet.qml:222 src/contents/ui/LevelMeter.qml:240
 #: src/contents/ui/Pitch.qml:313
 msgid "Reset settings"
@@ -263,8 +263,8 @@ msgstr "Modo"
 msgid "Auto"
 msgstr "Ganancia automática"
 
-#: src/contents/ui/Autotune.qml:110 src/contents/ui/Main.qml:457
-#: src/contents/ui/TrayIcon.qml:207
+#: src/contents/ui/Autotune.qml:110 src/contents/ui/Main.qml:456
+#: src/contents/ui/TrayIcon.qml:206
 msgid "Manual"
 msgstr "Manual"
 
@@ -322,19 +322,6 @@ msgstr "Desplazamiento de frecuencias (izquierda)"
 msgid "Fast correction"
 msgstr "Reducción de profundidad de bits"
 
-#: src/contents/ui/Autotune.qml:435 src/contents/ui/BassEnhancer.qml:223
-#: src/contents/ui/Compressor.qml:891 src/contents/ui/Crusher.qml:254
-#: src/contents/ui/Deesser.qml:337 src/contents/ui/Delay.qml:414
-#: src/contents/ui/Equalizer.qml:319 src/contents/ui/Exciter.qml:228
-#: src/contents/ui/Expander.qml:841 src/contents/ui/Filter.qml:238
-#: src/contents/ui/Gate.qml:970 src/contents/ui/Limiter.qml:625
-#: src/contents/ui/Loudness.qml:193 src/contents/ui/Maximizer.qml:140
-#: src/contents/ui/MultibandCompressor.qml:983
-#: src/contents/ui/MultibandGate.qml:956 src/contents/ui/Reverb.qml:344
-#: src/contents/ui/StereoTools.qml:410
-msgid "Show native window"
-msgstr "Mostrar la ventana nativa"
-
 #: src/contents/ui/BassEnhancer.qml:56 src/contents/ui/Exciter.qml:56
 msgid "Blend harmonics"
 msgstr "Mezclar armónicos"
@@ -368,6 +355,19 @@ msgstr "Aplicar límite inferior"
 msgid "Floor"
 msgstr "Límite inferior"
 
+#: src/contents/ui/BassEnhancer.qml:223 src/contents/ui/Compressor.qml:891
+#: src/contents/ui/Crusher.qml:254 src/contents/ui/Deesser.qml:337
+#: src/contents/ui/Delay.qml:414 src/contents/ui/Equalizer.qml:319
+#: src/contents/ui/Exciter.qml:228 src/contents/ui/Expander.qml:841
+#: src/contents/ui/Filter.qml:238 src/contents/ui/Gate.qml:970
+#: src/contents/ui/Limiter.qml:625 src/contents/ui/Loudness.qml:193
+#: src/contents/ui/Maximizer.qml:140
+#: src/contents/ui/MultibandCompressor.qml:983
+#: src/contents/ui/MultibandGate.qml:956 src/contents/ui/Reverb.qml:344
+#: src/contents/ui/StereoTools.qml:410
+msgid "Show native window"
+msgstr "Mostrar la ventana nativa"
+
 #: src/contents/ui/BassEnhancer.qml:236 src/contents/ui/Compressor.qml:904
 #: src/contents/ui/Deesser.qml:350 src/contents/ui/Exciter.qml:241
 #: src/contents/ui/Expander.qml:854 src/contents/ui/Gate.qml:983
@@ -383,7 +383,7 @@ msgstr "Escuchar"
 #: src/contents/ui/Exciter.qml:252 src/contents/ui/Expander.qml:875
 #: src/contents/ui/Filter.qml:252 src/contents/ui/Gate.qml:1004
 #: src/contents/ui/Limiter.qml:659 src/contents/ui/Loudness.qml:217
-#: src/contents/ui/Main.qml:469 src/contents/ui/Maximizer.qml:154
+#: src/contents/ui/Main.qml:468 src/contents/ui/Maximizer.qml:154
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:358
 #: src/contents/ui/RNNoise.qml:346 src/contents/ui/Speex.qml:195
@@ -393,7 +393,7 @@ msgstr "Restablecer"
 
 #: src/contents/ui/BassLoudness.qml:83 src/contents/ui/Compressor.qml:478
 #: src/contents/ui/EeInputOutputGain.qml:144 src/contents/ui/Expander.qml:438
-#: src/contents/ui/Gate.qml:453 src/contents/ui/Main.qml:394
+#: src/contents/ui/Gate.qml:453 src/contents/ui/Main.qml:393
 #: src/contents/ui/StereoTools.qml:268
 msgid "Output"
 msgstr "Salida"
@@ -421,7 +421,7 @@ msgstr "Añadir a las aplicaciones excluidas"
 #: src/contents/ui/ConvolverImpulseDialog.qml:89
 #: src/contents/ui/MenuAddPlugins.qml:54
 #: src/contents/ui/PageStreamsEffects.qml:106
-#: src/contents/ui/PresetsAutoloadPage.qml:177
+#: src/contents/ui/PresetsAutoloadPage.qml:176
 #: src/contents/ui/PresetsCommunityPage.qml:104
 #: src/contents/ui/PresetsLocalPage.qml:193 src/contents/ui/RNNoise.qml:229
 msgid "Empty List"
@@ -1001,7 +1001,7 @@ msgstr "Perfiles de mezcla cruzada"
 msgid "Default"
 msgstr "Predeterminado"
 
-#: src/contents/ui/Crossfeed.qml:167 src/contents/ui/Main.qml:364
+#: src/contents/ui/Crossfeed.qml:167 src/contents/ui/Main.qml:363
 #: src/contents/ui/PreferencesSheet.qml:62 src/contents/ui/Reverb.qml:335
 msgid "Presets"
 msgstr "Perfiles"
@@ -1246,22 +1246,22 @@ msgstr "Alternar este efecto"
 msgid "Remove this effect"
 msgstr "Quitar este efecto"
 
-#: src/contents/ui/DelegateStreamsList.qml:97
+#: src/contents/ui/DelegateStreamsList.qml:96
 msgid "channels"
 msgstr "canales"
 
-#: src/contents/ui/DelegateStreamsList.qml:108
+#: src/contents/ui/DelegateStreamsList.qml:107
 #: src/contents/ui/EchoCanceller.qml:64 src/contents/ui/EchoCanceller.qml:97
 #: src/contents/ui/EchoCanceller.qml:124 src/contents/ui/Gate.qml:175
 #: src/contents/ui/RNNoise.qml:116
 msgid "Enable"
 msgstr "Activar"
 
-#: src/contents/ui/DelegateStreamsList.qml:129
+#: src/contents/ui/DelegateStreamsList.qml:128
 msgid "Exclude"
 msgstr "Excluir"
 
-#: src/contents/ui/DelegateStreamsList.qml:131
+#: src/contents/ui/DelegateStreamsList.qml:130
 msgid "Add %1 to excluded applications"
 msgstr "Añadir %1 a las aplicaciones excluidas"
 
@@ -1321,7 +1321,7 @@ msgstr "Control de niveles de audio"
 msgid "Input and output gain controls with level meters"
 msgstr "Controles de ganancia de entrada y salida con medidores de nivel"
 
-#: src/contents/ui/EeInputOutputGain.qml:131 src/contents/ui/Main.qml:407
+#: src/contents/ui/EeInputOutputGain.qml:131 src/contents/ui/Main.qml:406
 #: src/contents/ui/StereoTools.qml:59
 msgid "Input"
 msgstr "Entrada"
@@ -1830,53 +1830,53 @@ msgstr "Rango de corte"
 msgid "Clipping"
 msgstr "Recorte"
 
-#: src/contents/ui/Main.qml:315
+#: src/contents/ui/Main.qml:314
 msgid "Reset Settings?"
 msgstr "¿Restablecer ajustes?"
 
-#: src/contents/ui/Main.qml:316
+#: src/contents/ui/Main.qml:315
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr ""
 "¿Estás seguro de que quieres restablecer todos los ajustes de Easy Effects?"
 
-#: src/contents/ui/Main.qml:338
+#: src/contents/ui/Main.qml:337
 msgid "Go back"
 msgstr "Regresar"
 
-#: src/contents/ui/Main.qml:348 src/contents/ui/PageStreamsEffects.qml:761
+#: src/contents/ui/Main.qml:347 src/contents/ui/PageStreamsEffects.qml:761
 msgid "Effects"
 msgstr "Efectos"
 
-#: src/contents/ui/Main.qml:349
+#: src/contents/ui/Main.qml:348
 msgid "Turn effects on/off"
 msgstr "Apagar/encender efectos"
 
-#: src/contents/ui/Main.qml:360
+#: src/contents/ui/Main.qml:359
 msgid "Audio effects are enabled."
 msgstr "Los efectos de audio están activados."
 
-#: src/contents/ui/Main.qml:360
+#: src/contents/ui/Main.qml:359
 msgid "Audio effects are disabled."
 msgstr "Los efectos de audio están desactivados."
 
-#: src/contents/ui/Main.qml:420
+#: src/contents/ui/Main.qml:419
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/contents/ui/Main.qml:438
+#: src/contents/ui/Main.qml:437
 msgid "Preferences"
 msgstr "Preferencias"
 
-#: src/contents/ui/Main.qml:449 src/contents/ui/ShortcutsSheet.qml:390
-#: src/contents/ui/TrayIcon.qml:198
+#: src/contents/ui/Main.qml:448 src/contents/ui/ShortcutsSheet.qml:390
+#: src/contents/ui/TrayIcon.qml:197
 msgid "Shortcuts"
 msgstr "Atajos"
 
-#: src/contents/ui/Main.qml:481
+#: src/contents/ui/Main.qml:480
 msgid "About Easy Effects"
 msgstr "Acerca de Easy Effects"
 
-#: src/contents/ui/Main.qml:489 src/contents/ui/TrayIcon.qml:217
+#: src/contents/ui/Main.qml:488 src/contents/ui/TrayIcon.qml:216
 msgid "Quit"
 msgstr "Salir"
 
@@ -2594,34 +2594,34 @@ msgstr "Intervalo de actualizaciones"
 msgid "Related to LV2 plugins."
 msgstr "Relacionado a los plugins LV2."
 
-#: src/contents/ui/PresetsAutoloadPage.qml:56
-#: src/contents/ui/PresetsAutoloadPage.qml:215
+#: src/contents/ui/PresetsAutoloadPage.qml:55
+#: src/contents/ui/PresetsAutoloadPage.qml:214
 msgid "Device"
 msgstr "Dispositivo"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:62
-#: src/contents/ui/PresetsAutoloadPage.qml:257
+#: src/contents/ui/PresetsAutoloadPage.qml:61
+#: src/contents/ui/PresetsAutoloadPage.qml:256
 msgid "Route"
 msgstr "Ruta"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:126
-#: src/contents/ui/PresetsAutoloadPage.qml:270
+#: src/contents/ui/PresetsAutoloadPage.qml:125
+#: src/contents/ui/PresetsAutoloadPage.qml:269
 msgid "Local preset"
 msgstr "Perfil local"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:137
+#: src/contents/ui/PresetsAutoloadPage.qml:136
 msgid "Create"
 msgstr "Crear"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:139
+#: src/contents/ui/PresetsAutoloadPage.qml:138
 msgid "Create a new autoload preset"
 msgstr "Crear nuevo perfil de carga automática"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:229
+#: src/contents/ui/PresetsAutoloadPage.qml:228
 msgid "Remove this autoload preset"
 msgstr "Eliminar este perfil de carga automática"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:243
+#: src/contents/ui/PresetsAutoloadPage.qml:242
 msgid "Description"
 msgstr "Descripción"
 
@@ -3045,27 +3045,27 @@ msgstr "Base estéreo"
 msgid "Stereo phase"
 msgstr "Fase estéreo"
 
-#: src/contents/ui/TrayIcon.qml:88 src/contents/ui/TrayIcon.qml:108
+#: src/contents/ui/TrayIcon.qml:87 src/contents/ui/TrayIcon.qml:107
 msgid "Preset Loaded"
 msgstr "Perfil cargado"
 
-#: src/contents/ui/TrayIcon.qml:119 src/contents/ui/TrayIcon.qml:131
+#: src/contents/ui/TrayIcon.qml:118 src/contents/ui/TrayIcon.qml:130
 msgid "Clear List"
 msgstr "Vaciar lista"
 
-#: src/contents/ui/TrayIcon.qml:120 src/contents/ui/TrayIcon.qml:132
+#: src/contents/ui/TrayIcon.qml:119 src/contents/ui/TrayIcon.qml:131
 msgid "Are you sure you want to clear this list?"
 msgstr "¿Estás seguro de que quieres vaciar esta lista?"
 
-#: src/contents/ui/TrayIcon.qml:141
+#: src/contents/ui/TrayIcon.qml:140
 msgid "Input Presets"
 msgstr "Perfiles de entrada"
 
-#: src/contents/ui/TrayIcon.qml:156
+#: src/contents/ui/TrayIcon.qml:155
 msgid "Output Presets"
 msgstr "Perfiles de salida"
 
-#: src/contents/ui/TrayIcon.qml:187
+#: src/contents/ui/TrayIcon.qml:186
 msgid "Active"
 msgstr "Activo"
 
@@ -3128,33 +3128,33 @@ msgstr "(Altavoces)"
 msgid "Output Level Meter"
 msgstr "Medidor del nivel de salida"
 
-#: src/presets_manager.cpp:824 src/presets_manager.cpp:831
-#: src/presets_manager.cpp:841 src/presets_manager.cpp:848
-#: src/presets_manager.cpp:858 src/presets_manager.cpp:867
+#: src/presets_manager.cpp:823 src/presets_manager.cpp:830
+#: src/presets_manager.cpp:840 src/presets_manager.cpp:847
+#: src/presets_manager.cpp:857 src/presets_manager.cpp:866
 msgid "Preset not loaded correctly"
 msgstr "El perfil no se cargó correctamente"
 
-#: src/presets_manager.cpp:824
+#: src/presets_manager.cpp:823
 msgid "Wrong format in excluded apps list"
 msgstr "Formato incorrecto en la lista de aplicaciones excluidas"
 
-#: src/presets_manager.cpp:832
+#: src/presets_manager.cpp:831
 msgid "Generic error while loading excluded apps list"
 msgstr "Error genérico al cargar la lista de aplicaciones excluidas"
 
-#: src/presets_manager.cpp:841
+#: src/presets_manager.cpp:840
 msgid "Wrong format in effects list"
 msgstr "Formato incorrecto en la lista de efectos"
 
-#: src/presets_manager.cpp:848
+#: src/presets_manager.cpp:847
 msgid "Generic error while loading effects list"
 msgstr "Error genérico al cargar la lista de efectos"
 
-#: src/presets_manager.cpp:859
+#: src/presets_manager.cpp:858
 msgid "One or more parameters have a wrong format"
 msgstr "Uno o más parámetros tienen un formato incorrecto"
 
-#: src/presets_manager.cpp:868
+#: src/presets_manager.cpp:867
 msgid "Generic error while loading the effect"
 msgstr "Error genérico al cargar el efecto"
 

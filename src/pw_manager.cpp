@@ -212,10 +212,6 @@ Manager::Manager(QObject* parent)
       module_manager(ModuleManager(core, thread_loop, model_modules)),
       client_manager(ClientManager(core, thread_loop, model_clients)),
       device_manager(DeviceManager(list_devices)) {
-  singletonInstance = this;
-
-  register_models();
-
   connect(&metadata_manager, &MetadataManager::defaultSourceChanged, [&](const QString& name) {
     defaultInputDeviceName = name;
 
@@ -428,16 +424,6 @@ Manager::~Manager() {
 
   util::debug("Destroying PipeWire's loop...");
   pw_thread_loop_destroy(thread_loop);
-}
-
-void Manager::register_models() {
-  // NOLINTBEGIN(clang-analyzer-cplusplus.NewDelete)
-  qmlRegisterSingletonInstance<pw::models::Modules>("ee.pipewire", VERSION_MAJOR, VERSION_MINOR, "ModelModules",
-                                                    &model_modules);
-
-  qmlRegisterSingletonInstance<pw::models::Clients>("ee.pipewire", VERSION_MAJOR, VERSION_MINOR, "ModelClients",
-                                                    &model_clients);
-  // NOLINTEND(clang-analyzer-cplusplus.NewDelete)
 }
 
 void Manager::connectStreamOutput(const uint& id) const {

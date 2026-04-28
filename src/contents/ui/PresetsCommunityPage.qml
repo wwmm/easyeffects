@@ -79,7 +79,7 @@ ColumnLayout {
             Controls.ToolTip.visible: hovered
             icon.name: "view-refresh-symbolic"
             onClicked: {
-                Presets.Manager.refreshCommunityPresets(columnLayout.pipeline);
+                PresetsManager.refreshCommunityPresets(columnLayout.pipeline);
             }
         }
     }
@@ -114,7 +114,7 @@ ColumnLayout {
                 hoverEnabled: true
                 highlighted: false
                 width: listView.width
-                onClicked: Presets.Manager.loadCommunityPresetFile(columnLayout.pipeline, path, presetPackage)
+                onClicked: PresetsManager.loadCommunityPresetFile(columnLayout.pipeline, path, presetPackage)
 
                 contentItem: RowLayout {
                     Controls.Label {
@@ -140,7 +140,7 @@ ColumnLayout {
                                 icon.name: "document-import-symbolic"
                                 displayHint: Kirigami.DisplayHint.AlwaysHide
                                 onTriggered: {
-                                    if (Presets.Manager.importFromCommunityPackage(columnLayout.pipeline, listItemDelegate.path, listItemDelegate.presetPackage) === true) {
+                                    if (PresetsManager.importFromCommunityPackage(columnLayout.pipeline, listItemDelegate.path, listItemDelegate.presetPackage) === true) {
                                         appWindow.showStatus(i18n("Imported the %1 community preset to the list of local presets.", `<strong>${listItemDelegate.name}</strong>`), Kirigami.MessageType.Positive); // qmllint disable
                                     } else {
                                         appWindow.showStatus(i18n("Failed to import the %1 community preset to the list of local presets.", `<strong>${listItemDelegate.name}</strong>`), Kirigami.MessageType.Error, false); // qmllint disable

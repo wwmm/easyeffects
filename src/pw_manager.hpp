@@ -82,24 +82,19 @@ class Manager : public QObject {
     return pm;
   }
 
-  inline static Manager* singletonInstance = nullptr;
-
   // Singleton provider for QML
   static Manager* create(QQmlEngine* qmlEngine, QJSEngine* jsEngine) {
     Q_UNUSED(jsEngine)
 
-    // The instance has to exist before it is used. We cannot replace it.
-    Q_ASSERT(singletonInstance);
-
     // The engine has to have the same thread affinity as the singleton.
 
-    Q_ASSERT(qmlEngine->thread() == singletonInstance->thread());
+    Q_ASSERT(qmlEngine->thread() == self().thread());
 
     // Explicitly specify C++ ownership so that the engine doesn't delete the instance.
 
-    QJSEngine::setObjectOwnership(singletonInstance, QJSEngine::CppOwnership);
+    QJSEngine::setObjectOwnership(&self(), QJSEngine::CppOwnership);
 
-    return singletonInstance;
+    return &self();
   }
 
   pw_thread_loop* thread_loop = nullptr;
@@ -200,7 +195,6 @@ class Manager : public QObject {
   std::vector<LinkInfo> list_links;
   std::vector<DeviceInfo> list_devices;
 
-  void register_models();
   void set_metadata_target_node(const uint& origin_id, const uint& target_id, const uint64_t& target_serial) const;
 };
 

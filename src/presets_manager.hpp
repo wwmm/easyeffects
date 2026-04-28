@@ -44,9 +44,19 @@ namespace presets {
 
 class Manager : public QObject {
   Q_OBJECT
+  QML_NAMED_ELEMENT(PresetsManager)
+  QML_SINGLETON
+  QML_UNCREATABLE("C++ singleton - use PresetsManager.instance")
 
  public:
-  Manager();
+  explicit Manager(QObject* parent = nullptr);
+
+  /**
+   * Deleting the default constructor because we want Qt to call our custom create method.
+   * If this is not done qml will create its own class instance.
+   */
+  Manager() = delete;
+
   Manager(const Manager&) = delete;
   auto operator=(const Manager&) -> Manager& = delete;
   Manager(const Manager&&) = delete;
@@ -54,8 +64,23 @@ class Manager : public QObject {
   ~Manager() override = default;
 
   static Manager& self() {
-    static Manager pm;
+    static Manager pm(nullptr);
     return pm;
+  }
+
+  // Singleton provider for QML
+  static Manager* create(QQmlEngine* qmlEngine, QJSEngine* jsEngine) {
+    Q_UNUSED(jsEngine)
+
+    // The engine has to have the same thread affinity as the singleton.
+
+    Q_ASSERT(qmlEngine->thread() == self().thread());
+
+    // Explicitly specify C++ ownership so that the engine doesn't delete the instance.
+
+    QJSEngine::setObjectOwnership(&self(), QJSEngine::CppOwnership);
+
+    return &self();
   }
 
   enum class PresetError {

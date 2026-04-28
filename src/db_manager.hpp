@@ -48,7 +48,14 @@ class Manager : public QObject {
   Q_PROPERTY(QMap<QString, QVariant> siePluginsDB MEMBER siePluginsDB NOTIFY siePluginsDBChanged)
 
  public:
-  Manager();
+  explicit Manager(QObject* parent = nullptr);
+
+  /**
+   * Deleting the default constructor because we want Qt to call our custom create method.
+   * If this is not done qml will create its own class instance.
+   */
+  Manager() = delete;
+
   Manager(const Manager&) = delete;
   auto operator=(const Manager&) -> Manager& = delete;
   Manager(const Manager&&) = delete;
@@ -56,9 +63,11 @@ class Manager : public QObject {
   ~Manager() override;
 
   static Manager& self() {
-    static Manager m;
+    static Manager m(nullptr);
     return m;
   }
+
+  inline static Manager* singletonInstance = nullptr;
 
   // Singleton provider for QML
   static Manager* create(QQmlEngine* qmlEngine, QJSEngine* jsEngine) {

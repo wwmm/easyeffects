@@ -21,7 +21,6 @@ pragma ComponentBehavior: Bound
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
-import ee.pipewire as PW
 import ee.presets as Presets
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.delegates as Delegates
@@ -150,9 +149,9 @@ ColumnLayout {
                 }
 
                 if (DbMain.visiblePage === 0)
-                    Presets.Manager.addAutoload(1, presetName, deviceName, deviceDescription, deviceRoute);
+                    PresetsManager.addAutoload(1, presetName, deviceName, deviceDescription, deviceRoute);
                 else if (DbMain.visiblePage === 1)
-                    Presets.Manager.addAutoload(0, presetName, deviceName, deviceDescription, deviceRoute);
+                    PresetsManager.addAutoload(0, presetName, deviceName, deviceDescription, deviceRoute);
             }
         }
     }
@@ -230,9 +229,9 @@ ColumnLayout {
                             Controls.ToolTip.visible: hovered
                             onClicked: {
                                 if (DbMain.visiblePage === 0)
-                                    Presets.Manager.removeAutoload(1, listItemDelegate.devicePreset, listItemDelegate.deviceName, listItemDelegate.deviceProfile);
+                                    PresetsManager.removeAutoload(1, listItemDelegate.devicePreset, listItemDelegate.deviceName, listItemDelegate.deviceProfile);
                                 else if (DbMain.visiblePage === 1)
-                                    Presets.Manager.removeAutoload(0, listItemDelegate.devicePreset, listItemDelegate.deviceName, listItemDelegate.deviceProfile);
+                                    PresetsManager.removeAutoload(0, listItemDelegate.devicePreset, listItemDelegate.deviceName, listItemDelegate.deviceProfile);
                             }
                         }
 

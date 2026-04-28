@@ -45,7 +45,7 @@ Kirigami.Dialog {
         currentFolder: StandardPaths.standardLocations(StandardPaths.DownloadLocation)[0]
         nameFilters: ["IRS (*.irs)", "WAVE (*.wav)", "SOFA (*.sofa)"]
         onAccepted: {
-            if (Presets.Manager.importImpulses(fileDialog.selectedFiles) === 0) {
+            if (PresetsManager.importImpulses(fileDialog.selectedFiles) === 0) {
                 appWindow.showStatus(i18n("Imported a new Convolver impulse file."), Kirigami.MessageType.Positive); // qmllint disable
             } else {
                 appWindow.showStatus(i18n("Failed to import the Convolver impulse file."), Kirigami.MessageType.Error, false); // qmllint disable
@@ -109,7 +109,7 @@ Kirigami.Dialog {
                         subtitle: i18n("Are you sure you want to remove this impulse response from the list?") // qmllint disable
                         standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
                         onAccepted: {
-                            if (Presets.Manager.removeImpulseFile(listItemDelegate.path) === true) {
+                            if (PresetsManager.removeImpulseFile(listItemDelegate.path) === true) {
                                 appWindow.showStatus(i18n("Removed the %1 Convolver impulse.", `<strong>${listItemDelegate.name}</strong>`), Kirigami.MessageType.Positive); // qmllint disable
                             } else {
                                 appWindow.showStatus(i18n("Failed to remove the %1 Convolver impulse.", `<strong>${listItemDelegate.name}</strong>`), Kirigami.MessageType.Error, false);  // qmllint disable
@@ -132,7 +132,7 @@ Kirigami.Dialog {
 
                                     // trim to exclude names containing only multiple spaces
                                     if (!Common.isEmpty(newName.trim())) {
-                                        if (Presets.Manager.renameImpulseFile(listItemDelegate.name, newName) === true) {
+                                        if (PresetsManager.renameImpulseFile(listItemDelegate.name, newName) === true) {
                                             appWindow.showStatus(i18n("Renamed the %1 impulse to %2", `<strong>${listItemDelegate.name}</strong>`, `<strong>${newName}</strong>`), Kirigami.MessageType.Positive); // qmllint disable
 
                                         } else {

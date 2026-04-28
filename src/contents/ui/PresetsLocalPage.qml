@@ -48,7 +48,7 @@ ColumnLayout {
         currentFolder: StandardPaths.standardLocations(StandardPaths.DownloadLocation)[0]
         nameFilters: ["JSON file (*.json)"]
         onAccepted: {
-            if (Presets.Manager.importPresets(columnLayout.pipeline, fileDialogImport.selectedFiles) === true) {
+            if (PresetsManager.importPresets(columnLayout.pipeline, fileDialogImport.selectedFiles) === true) {
                 appWindow.showStatus(i18n("Imported a new local preset from an external file."), Kirigami.MessageType.Positive); // qmllint disable
             } else {
                 appWindow.showStatus(i18n("Failed to import a new local preset from an external file."), Kirigami.MessageType.Error, false); // qmllint disable
@@ -62,7 +62,7 @@ ColumnLayout {
         currentFolder: StandardPaths.standardLocations(StandardPaths.DownloadLocation)[0]
         acceptLabel: i18n("Export Presets") // qmllint disable
         onAccepted: {
-            if (Presets.Manager.exportPresets(columnLayout.pipeline, fileDialogExport.selectedFolder) === true) {
+            if (PresetsManager.exportPresets(columnLayout.pipeline, fileDialogExport.selectedFolder) === true) {
                 appWindow.showStatus(i18n("Exported all presets to an external folder."), Kirigami.MessageType.Positive); // qmllint disable
             } else {
                 appWindow.showStatus(i18n("Failed to export all presets to an external folder."), Kirigami.MessageType.Error, false); // qmllint disable
@@ -112,7 +112,7 @@ ColumnLayout {
                         const newName = newPresetName.text.replace(Validators.removeExtRegex, "");
                         // trim to exclude names containing only multiple spaces
                         if (!Common.isEmpty(newName.trim())) {
-                            if (Presets.Manager.add(columnLayout.pipeline, newName) === true) {
+                            if (PresetsManager.add(columnLayout.pipeline, newName) === true) {
                                 newPresetName.accepted();
 
                                 appWindow.showStatus(i18n("Created a new local preset: %1", `<strong>${newName}</strong>`), Kirigami.MessageType.Positive); // qmllint disable
@@ -202,7 +202,7 @@ ColumnLayout {
                 highlighted: false
                 width: listView.width
                 onClicked: {
-                    Presets.Manager.loadLocalPresetFile(columnLayout.pipeline, name);
+                    PresetsManager.loadLocalPresetFile(columnLayout.pipeline, name);
                 }
 
                 Kirigami.PromptDialog {
@@ -212,7 +212,7 @@ ColumnLayout {
                     subtitle: i18n("Save current settings to the preset:\n%1", listItemDelegate.name) // qmllint disable
                     standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
                     onAccepted: {
-                        if (Presets.Manager.savePresetFile(columnLayout.pipeline, listItemDelegate.name) === true) {
+                        if (PresetsManager.savePresetFile(columnLayout.pipeline, listItemDelegate.name) === true) {
                             appWindow.showStatus(i18n("Saved the current settings to %1 local preset.", `<strong>${listItemDelegate.name}</strong>`), Kirigami.MessageType.Positive); // qmllint disable
                         } else {
                             appWindow.showStatus(i18n("Failed to save the current settings to %1 local preset.", `<strong>${listItemDelegate.name}</strong>`), Kirigami.MessageType.Error, false); // qmllint disable
@@ -227,7 +227,7 @@ ColumnLayout {
                     subtitle: i18n("Are you sure you want to remove the preset\n%1\nfrom the list?", listItemDelegate.name) // qmllint disable
                     standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
                     onAccepted: {
-                        if (Presets.Manager.remove(columnLayout.pipeline, listItemDelegate.name) === true) {
+                        if (PresetsManager.remove(columnLayout.pipeline, listItemDelegate.name) === true) {
                             appWindow.showStatus(i18n("Removed the %1 local preset.", `<strong>${name}</strong>`), Kirigami.MessageType.Positive); // qmllint disable
                         } else {
                             appWindow.showStatus(i18n("Failed to remove the %1 local preset.", `<strong>${name}</strong>`), Kirigami.MessageType.Error, false); // qmllint disable
@@ -251,7 +251,7 @@ ColumnLayout {
 
                                 // trim to exclude names containing only multiple spaces
                                 if (!Common.isEmpty(newName.trim())) {
-                                    if (Presets.Manager.renameLocalPresetFile(columnLayout.pipeline, listItemDelegate.name, newName) === true) {
+                                    if (PresetsManager.renameLocalPresetFile(columnLayout.pipeline, listItemDelegate.name, newName) === true) {
                                         appWindow.showStatus(i18n("Renamed the %1 local preset to %2", `<strong>${listItemDelegate.name}</strong>`, `<strong>${newName}</strong>`), Kirigami.MessageType.Positive); // qmllint disable
 
                                     } else {

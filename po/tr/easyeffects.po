@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-04-27 20:05-0300\n"
+"POT-Creation-Date: 2026-04-27 22:38-0300\n"
 "PO-Revision-Date: 2025-11-30 19:51+0000\n"
 "Last-Translator: Cagatay Coban <cagataycobande@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -252,7 +252,7 @@ msgstr "Sessizlik"
 msgid "Force silence when the level is below the silence threshold"
 msgstr ""
 
-#: src/contents/ui/Autogain.qml:270 src/contents/ui/Autotune.qml:449
+#: src/contents/ui/Autogain.qml:270 src/contents/ui/Autotune.qml:435
 #: src/contents/ui/DeepFilterNet.qml:222 src/contents/ui/LevelMeter.qml:240
 #: src/contents/ui/Pitch.qml:313
 #, fuzzy
@@ -281,8 +281,8 @@ msgstr "Kip"
 msgid "Auto"
 msgstr "Otomatik Kazanç"
 
-#: src/contents/ui/Autotune.qml:110 src/contents/ui/Main.qml:457
-#: src/contents/ui/TrayIcon.qml:207
+#: src/contents/ui/Autotune.qml:110 src/contents/ui/Main.qml:456
+#: src/contents/ui/TrayIcon.qml:206
 #, fuzzy
 msgid "Manual"
 msgstr "_Kılavuz"
@@ -340,20 +340,6 @@ msgstr "Sol Perde"
 msgid "Fast correction"
 msgstr "Azaltma"
 
-#: src/contents/ui/Autotune.qml:435 src/contents/ui/BassEnhancer.qml:223
-#: src/contents/ui/Compressor.qml:891 src/contents/ui/Crusher.qml:254
-#: src/contents/ui/Deesser.qml:337 src/contents/ui/Delay.qml:414
-#: src/contents/ui/Equalizer.qml:319 src/contents/ui/Exciter.qml:228
-#: src/contents/ui/Expander.qml:841 src/contents/ui/Filter.qml:238
-#: src/contents/ui/Gate.qml:970 src/contents/ui/Limiter.qml:625
-#: src/contents/ui/Loudness.qml:193 src/contents/ui/Maximizer.qml:140
-#: src/contents/ui/MultibandCompressor.qml:983
-#: src/contents/ui/MultibandGate.qml:956 src/contents/ui/Reverb.qml:344
-#: src/contents/ui/StereoTools.qml:410
-#, fuzzy
-msgid "Show native window"
-msgstr "Yerel Pencereyi Göster"
-
 #: src/contents/ui/BassEnhancer.qml:56 src/contents/ui/Exciter.qml:56
 #, fuzzy
 msgid "Blend harmonics"
@@ -389,6 +375,20 @@ msgstr "Zemin Değeri"
 msgid "Floor"
 msgstr "Zemin"
 
+#: src/contents/ui/BassEnhancer.qml:223 src/contents/ui/Compressor.qml:891
+#: src/contents/ui/Crusher.qml:254 src/contents/ui/Deesser.qml:337
+#: src/contents/ui/Delay.qml:414 src/contents/ui/Equalizer.qml:319
+#: src/contents/ui/Exciter.qml:228 src/contents/ui/Expander.qml:841
+#: src/contents/ui/Filter.qml:238 src/contents/ui/Gate.qml:970
+#: src/contents/ui/Limiter.qml:625 src/contents/ui/Loudness.qml:193
+#: src/contents/ui/Maximizer.qml:140
+#: src/contents/ui/MultibandCompressor.qml:983
+#: src/contents/ui/MultibandGate.qml:956 src/contents/ui/Reverb.qml:344
+#: src/contents/ui/StereoTools.qml:410
+#, fuzzy
+msgid "Show native window"
+msgstr "Yerel Pencereyi Göster"
+
 #: src/contents/ui/BassEnhancer.qml:236 src/contents/ui/Compressor.qml:904
 #: src/contents/ui/Deesser.qml:350 src/contents/ui/Exciter.qml:241
 #: src/contents/ui/Expander.qml:854 src/contents/ui/Gate.qml:983
@@ -404,7 +404,7 @@ msgstr "Liste"
 #: src/contents/ui/Exciter.qml:252 src/contents/ui/Expander.qml:875
 #: src/contents/ui/Filter.qml:252 src/contents/ui/Gate.qml:1004
 #: src/contents/ui/Limiter.qml:659 src/contents/ui/Loudness.qml:217
-#: src/contents/ui/Main.qml:469 src/contents/ui/Maximizer.qml:154
+#: src/contents/ui/Main.qml:468 src/contents/ui/Maximizer.qml:154
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:358
 #: src/contents/ui/RNNoise.qml:346 src/contents/ui/Speex.qml:195
@@ -414,7 +414,7 @@ msgstr "Sıfırla"
 
 #: src/contents/ui/BassLoudness.qml:83 src/contents/ui/Compressor.qml:478
 #: src/contents/ui/EeInputOutputGain.qml:144 src/contents/ui/Expander.qml:438
-#: src/contents/ui/Gate.qml:453 src/contents/ui/Main.qml:394
+#: src/contents/ui/Gate.qml:453 src/contents/ui/Main.qml:393
 #: src/contents/ui/StereoTools.qml:268
 msgid "Output"
 msgstr "Çıktı"
@@ -445,7 +445,7 @@ msgstr "Hariç Tutulan Uygulamalara Ekle"
 #: src/contents/ui/ConvolverImpulseDialog.qml:89
 #: src/contents/ui/MenuAddPlugins.qml:54
 #: src/contents/ui/PageStreamsEffects.qml:106
-#: src/contents/ui/PresetsAutoloadPage.qml:177
+#: src/contents/ui/PresetsAutoloadPage.qml:176
 #: src/contents/ui/PresetsCommunityPage.qml:104
 #: src/contents/ui/PresetsLocalPage.qml:193 src/contents/ui/RNNoise.qml:229
 msgid "Empty List"
@@ -1063,7 +1063,7 @@ msgstr "Çapraz Besleme"
 msgid "Default"
 msgstr "Öntanımlı"
 
-#: src/contents/ui/Crossfeed.qml:167 src/contents/ui/Main.qml:364
+#: src/contents/ui/Crossfeed.qml:167 src/contents/ui/Main.qml:363
 #: src/contents/ui/PreferencesSheet.qml:62 src/contents/ui/Reverb.qml:335
 msgid "Presets"
 msgstr "Ön Ayarlar"
@@ -1332,23 +1332,23 @@ msgstr "Bu efekti etkinleştir/devre dışı bırak"
 msgid "Remove this effect"
 msgstr "Bu efekti kaldır"
 
-#: src/contents/ui/DelegateStreamsList.qml:97
+#: src/contents/ui/DelegateStreamsList.qml:96
 #, fuzzy
 msgid "channels"
 msgstr "kanallar"
 
-#: src/contents/ui/DelegateStreamsList.qml:108
+#: src/contents/ui/DelegateStreamsList.qml:107
 #: src/contents/ui/EchoCanceller.qml:64 src/contents/ui/EchoCanceller.qml:97
 #: src/contents/ui/EchoCanceller.qml:124 src/contents/ui/Gate.qml:175
 #: src/contents/ui/RNNoise.qml:116
 msgid "Enable"
 msgstr "Etkinleştir"
 
-#: src/contents/ui/DelegateStreamsList.qml:129
+#: src/contents/ui/DelegateStreamsList.qml:128
 msgid "Exclude"
 msgstr "Hariç tut"
 
-#: src/contents/ui/DelegateStreamsList.qml:131
+#: src/contents/ui/DelegateStreamsList.qml:130
 #, fuzzy
 msgid "Add %1 to excluded applications"
 msgstr "Hariç Tutulan Uygulamalara Ekle"
@@ -1416,7 +1416,7 @@ msgstr ""
 msgid "Input and output gain controls with level meters"
 msgstr ""
 
-#: src/contents/ui/EeInputOutputGain.qml:131 src/contents/ui/Main.qml:407
+#: src/contents/ui/EeInputOutputGain.qml:131 src/contents/ui/Main.qml:406
 #: src/contents/ui/StereoTools.qml:59
 msgid "Input"
 msgstr "Girdi"
@@ -1994,57 +1994,57 @@ msgstr "Kırpma"
 msgid "Clipping"
 msgstr "Kırpma"
 
-#: src/contents/ui/Main.qml:315
+#: src/contents/ui/Main.qml:314
 #, fuzzy
 msgid "Reset Settings?"
 msgstr "Ayarları _Sıfırla"
 
-#: src/contents/ui/Main.qml:316
+#: src/contents/ui/Main.qml:315
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr ""
 
-#: src/contents/ui/Main.qml:338
+#: src/contents/ui/Main.qml:337
 msgid "Go back"
 msgstr ""
 
-#: src/contents/ui/Main.qml:348 src/contents/ui/PageStreamsEffects.qml:761
+#: src/contents/ui/Main.qml:347 src/contents/ui/PageStreamsEffects.qml:761
 msgid "Effects"
 msgstr "Efektler"
 
-#: src/contents/ui/Main.qml:349
+#: src/contents/ui/Main.qml:348
 msgid "Turn effects on/off"
 msgstr ""
 
-#: src/contents/ui/Main.qml:360
+#: src/contents/ui/Main.qml:359
 msgid "Audio effects are enabled."
 msgstr ""
 
-#: src/contents/ui/Main.qml:360
+#: src/contents/ui/Main.qml:359
 msgid "Audio effects are disabled."
 msgstr ""
 
-#: src/contents/ui/Main.qml:420
+#: src/contents/ui/Main.qml:419
 #, fuzzy
 msgid "PipeWire"
 msgstr "_PipeWire"
 
-#: src/contents/ui/Main.qml:438
+#: src/contents/ui/Main.qml:437
 #, fuzzy
 msgid "Preferences"
 msgstr "_Tercihler"
 
-#: src/contents/ui/Main.qml:449 src/contents/ui/ShortcutsSheet.qml:390
-#: src/contents/ui/TrayIcon.qml:198
+#: src/contents/ui/Main.qml:448 src/contents/ui/ShortcutsSheet.qml:390
+#: src/contents/ui/TrayIcon.qml:197
 #, fuzzy
 msgid "Shortcuts"
 msgstr "Kısa_yollar"
 
-#: src/contents/ui/Main.qml:481
+#: src/contents/ui/Main.qml:480
 #, fuzzy
 msgid "About Easy Effects"
 msgstr "Easy Effects _Hakkında"
 
-#: src/contents/ui/Main.qml:489 src/contents/ui/TrayIcon.qml:217
+#: src/contents/ui/Main.qml:488 src/contents/ui/TrayIcon.qml:216
 #, fuzzy
 msgid "Quit"
 msgstr "_Çık"
@@ -2802,38 +2802,38 @@ msgstr "Güncelleme Sıklığı"
 msgid "Related to LV2 plugins."
 msgstr "LV2 Eklentileri ile ilgili"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:56
-#: src/contents/ui/PresetsAutoloadPage.qml:215
+#: src/contents/ui/PresetsAutoloadPage.qml:55
+#: src/contents/ui/PresetsAutoloadPage.qml:214
 msgid "Device"
 msgstr "Aygıt"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:62
-#: src/contents/ui/PresetsAutoloadPage.qml:257
+#: src/contents/ui/PresetsAutoloadPage.qml:61
+#: src/contents/ui/PresetsAutoloadPage.qml:256
 msgid "Route"
 msgstr ""
 
-#: src/contents/ui/PresetsAutoloadPage.qml:126
-#: src/contents/ui/PresetsAutoloadPage.qml:270
+#: src/contents/ui/PresetsAutoloadPage.qml:125
+#: src/contents/ui/PresetsAutoloadPage.qml:269
 #, fuzzy
 msgid "Local preset"
 msgstr "Yerel Ön Ayarlar Listesi"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:137
+#: src/contents/ui/PresetsAutoloadPage.qml:136
 #, fuzzy
 msgid "Create"
 msgstr "Oluşturuluyor"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:139
+#: src/contents/ui/PresetsAutoloadPage.qml:138
 #, fuzzy
 msgid "Create a new autoload preset"
 msgstr "Otomatik Yükleme Ön Ayarını Kaldır"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:229
+#: src/contents/ui/PresetsAutoloadPage.qml:228
 #, fuzzy
 msgid "Remove this autoload preset"
 msgstr "Otomatik Yükleme Ön Ayarını Kaldır"
 
-#: src/contents/ui/PresetsAutoloadPage.qml:243
+#: src/contents/ui/PresetsAutoloadPage.qml:242
 msgid "Description"
 msgstr "Açıklama"
 
@@ -3324,29 +3324,29 @@ msgstr "Stereo Taban"
 msgid "Stereo phase"
 msgstr "Stereo Faz"
 
-#: src/contents/ui/TrayIcon.qml:88 src/contents/ui/TrayIcon.qml:108
+#: src/contents/ui/TrayIcon.qml:87 src/contents/ui/TrayIcon.qml:107
 #, fuzzy
 msgid "Preset Loaded"
 msgstr "Ön Ayar Yüklü Değil"
 
-#: src/contents/ui/TrayIcon.qml:119 src/contents/ui/TrayIcon.qml:131
+#: src/contents/ui/TrayIcon.qml:118 src/contents/ui/TrayIcon.qml:130
 #, fuzzy
 msgid "Clear List"
 msgstr "İstemci Listesi"
 
-#: src/contents/ui/TrayIcon.qml:120 src/contents/ui/TrayIcon.qml:132
+#: src/contents/ui/TrayIcon.qml:119 src/contents/ui/TrayIcon.qml:131
 msgid "Are you sure you want to clear this list?"
 msgstr ""
 
-#: src/contents/ui/TrayIcon.qml:141
+#: src/contents/ui/TrayIcon.qml:140
 msgid "Input Presets"
 msgstr "Giriş Ön Ayarları"
 
-#: src/contents/ui/TrayIcon.qml:156
+#: src/contents/ui/TrayIcon.qml:155
 msgid "Output Presets"
 msgstr "Çıkış Ön Ayarları"
 
-#: src/contents/ui/TrayIcon.qml:187
+#: src/contents/ui/TrayIcon.qml:186
 #, fuzzy
 msgid "Active"
 msgstr "Etkin Model"
@@ -3419,39 +3419,39 @@ msgstr "Hoparlörler"
 msgid "Output Level Meter"
 msgstr "Çıktı Düzey Ölçer"
 
-#: src/presets_manager.cpp:824 src/presets_manager.cpp:831
-#: src/presets_manager.cpp:841 src/presets_manager.cpp:848
-#: src/presets_manager.cpp:858 src/presets_manager.cpp:867
+#: src/presets_manager.cpp:823 src/presets_manager.cpp:830
+#: src/presets_manager.cpp:840 src/presets_manager.cpp:847
+#: src/presets_manager.cpp:857 src/presets_manager.cpp:866
 #, fuzzy
 msgid "Preset not loaded correctly"
 msgstr "Ön Ayar Doğru Yüklenmedi"
 
-#: src/presets_manager.cpp:824
+#: src/presets_manager.cpp:823
 #, fuzzy
 msgid "Wrong format in excluded apps list"
 msgstr "Hariç Tutulan Uygulamalar Listesinde Yanlış Biçim"
 
-#: src/presets_manager.cpp:832
+#: src/presets_manager.cpp:831
 #, fuzzy
 msgid "Generic error while loading excluded apps list"
 msgstr "Hariç Tutulan Uygulamalar Listesi Yüklenirken Genel Hata"
 
-#: src/presets_manager.cpp:841
+#: src/presets_manager.cpp:840
 #, fuzzy
 msgid "Wrong format in effects list"
 msgstr "Efektler Listesinde Yanlış Biçim"
 
-#: src/presets_manager.cpp:848
+#: src/presets_manager.cpp:847
 #, fuzzy
 msgid "Generic error while loading effects list"
 msgstr "Efekt Listesi Yüklenirken Genel Hata"
 
-#: src/presets_manager.cpp:859
+#: src/presets_manager.cpp:858
 #, fuzzy
 msgid "One or more parameters have a wrong format"
 msgstr "Bir veya Daha Fazla Parametre Yanlış Biçime Sahip"
 
-#: src/presets_manager.cpp:868
+#: src/presets_manager.cpp:867
 #, fuzzy
 msgid "Generic error while loading the effect"
 msgstr "Efekt Yüklenirken Genel Hata"
