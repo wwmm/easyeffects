@@ -38,8 +38,13 @@ Rectangle {
     property bool convertDecibelToLinear: false
     property real value: 0
     property real clampedValue: 0
+    property real latestDisplayValue: 0
     readonly property real liFrom: Common.dbToLinear(from)
     readonly property real liTo: Common.dbToLinear(to)
+    readonly property real invRange: to !== from ? 1.0 / (to - from) : 0
+    readonly property real invReverseRange: from !== to ? 1.0 / (from - to) : 0
+    readonly property real invLiRange: liTo !== liFrom ? 1.0 / (liTo - liFrom) : 0
+    readonly property real invLiReverseRange: liFrom !== liTo ? 1.0 / (liFrom - liTo) : 0
     readonly property real decimalFactor: Math.pow(10, -decimals)
     readonly property var resetManager: EeMetersReset
 
@@ -65,6 +70,7 @@ Rectangle {
             control.setValue(0);
 
             sampleTimer.value = 0;
+            control.latestDisplayValue = 0;
 
             valueLabel.text = Number(0).toLocaleString(Qt.locale(), 'f', control.decimals);
         }
@@ -89,31 +95,33 @@ Rectangle {
             newDisplayValue = value < sampleTimer.value ? value : sampleTimer.value;
         }
 
-        const normalizedClampedValue = (control.clampedValue - control.from) / (control.to - control.from);
-        const normalizedClampedValueLinear = (Common.dbToLinear(control.clampedValue) - control.liFrom) / (control.liTo - control.liFrom);
+        if (newDisplayValue > control.latestDisplayValue) {
+            valueLabel.text = Number(control.latestDisplayValue).toLocaleString(Qt.locale(), 'f', control.decimals) + unitSuffix;
+        }
 
-        const rlNormalizedClampedValue = (control.clampedValue - control.to) / (control.from - control.to);
-        const rlNormalizedClampedValueLinear = (Common.dbToLinear(control.clampedValue) - control.liTo) / (control.liFrom - control.liTo);
+        control.latestDisplayValue = newDisplayValue;
 
-        //label
+        const normalizedClampedValue = (control.clampedValue - control.from) * control.invRange;
+        const normalizedClampedValueLinear = (Common.dbToLinear(control.clampedValue) - control.liFrom) * control.invLiRange;
 
-        valueLabel.text = Number(newDisplayValue).toLocaleString(Qt.locale(), 'f', control.decimals) + unitSuffix;
+        const rlNormalizedClampedValue = (control.clampedValue - control.to) * control.invReverseRange;
+        const rlNormalizedClampedValueLinear = (Common.dbToLinear(control.clampedValue) - control.liTo) * control.invLiReverseRange;
 
         // level rect
 
-        if (control.convertDecibelToLinear) {
-            levelScale.xScale = control.rightToLeft === false ? normalizedClampedValueLinear : rlNormalizedClampedValueLinear;
-        } else {
-            levelScale.xScale = control.rightToLeft === false ? normalizedClampedValue : rlNormalizedClampedValue;
+        const newXScale = control.convertDecibelToLinear ? (control.rightToLeft === false ? normalizedClampedValueLinear : rlNormalizedClampedValueLinear) : (control.rightToLeft === false ? normalizedClampedValue : rlNormalizedClampedValue);
+
+        if (Math.abs(levelScale.xScale - newXScale) >= 1.0e-3) {
+            levelScale.xScale = newXScale;
         }
 
         const clampedNewDisplayValue = Common.clamp(newDisplayValue, control.from, control.to);
 
-        const normalizedDisplayValue = (clampedNewDisplayValue - control.from) / (control.to - control.from);
-        const normalizedDisplayValueLinear = (Common.dbToLinear(clampedNewDisplayValue) - control.liFrom) / (control.liTo - control.liFrom);
+        const normalizedDisplayValue = (clampedNewDisplayValue - control.from) * invRange;
+        const normalizedDisplayValueLinear = (Common.dbToLinear(clampedNewDisplayValue) - control.liFrom) * invLiRange;
 
-        const rlNormalizedDisplayValue = (newDisplayValue - control.to) / (control.from - control.to);
-        const rlNormalizedDisplayValueLinear = (Common.dbToLinear(clampedNewDisplayValue) - control.liTo) / (control.liFrom - control.liTo);
+        const rlNormalizedDisplayValue = (clampedNewDisplayValue - control.to) * invReverseRange;
+        const rlNormalizedDisplayValueLinear = (Common.dbToLinear(clampedNewDisplayValue) - control.liTo) * invLiReverseRange;
 
         // hist rect
 
@@ -234,6 +242,7 @@ Rectangle {
 
         onTriggered: {
             value = control.value;
+            valueLabel.text = Number(control.latestDisplayValue).toLocaleString(Qt.locale(), 'f', control.decimals) + unitSuffix;
         }
     }
 }

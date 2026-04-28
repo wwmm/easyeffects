@@ -31,8 +31,13 @@ Rectangle {
     property bool topToBottom: false
     property real value: 0
     property real clampedValue: 0
+    property real latestDisplayValue: 0
     readonly property real liFrom: Common.dbToLinear(from)
     readonly property real liTo: Common.dbToLinear(to)
+    readonly property real invRange: to !== from ? 1.0 / (to - from) : 0
+    readonly property real invReverseRange: from !== to ? 1.0 / (from - to) : 0
+    readonly property real invLiRange: liTo !== liFrom ? 1.0 / (liTo - liFrom) : 0
+    readonly property real invLiReverseRange: liFrom !== liTo ? 1.0 / (liFrom - liTo) : 0
     readonly property real decimalFactor: Math.pow(10, -decimals)
     readonly property var resetManager: EeMetersReset
 
@@ -52,6 +57,7 @@ Rectangle {
             root.setValue(0);
 
             sampleTimer.value = 0;
+            root.latestDisplayValue = 0;
 
             valueLabel.text = Number(0).toLocaleString(Qt.locale(), 'f', root.decimals);
         }
@@ -75,24 +81,32 @@ Rectangle {
             newDisplayValue = value < sampleTimer.value ? value : sampleTimer.value;
         }
 
-        // label
+        if (newDisplayValue > root.latestDisplayValue) {
+            valueLabel.text = Number(root.latestDisplayValue).toLocaleString(Qt.locale(), 'f', root.decimals);
+        }
 
-        valueLabel.text = Number(newDisplayValue).toLocaleString(Qt.locale(), 'f', root.decimals);
+        root.latestDisplayValue = newDisplayValue;
 
         // level rect
 
-        if (root.convertDecibelToLinear) {
-            levelScale.yScale = root.topToBottom === false ? (Common.dbToLinear(root.clampedValue) - root.liFrom) / (root.liTo - root.liFrom) : (Common.dbToLinear(root.clampedValue) - root.liTo) / (root.liFrom - root.liTo);
-        } else {
-            levelScale.yScale = root.topToBottom === false ? (root.clampedValue - root.from) / (root.to - root.from) : (root.clampedValue - root.to) / (root.from - root.to);
+        const normalizedClampedValue = (root.clampedValue - root.from) * root.invRange;
+        const normalizedClampedValueLinear = (Common.dbToLinear(root.clampedValue) - root.liFrom) * root.invLiRange;
+
+        const reversedNormalizedClampedValue = (root.clampedValue - root.to) * root.invReverseRange;
+        const reversedNormalizedClampedValueLinear = (Common.dbToLinear(root.clampedValue) - root.liTo) * root.invLiReverseRange;
+
+        const newYScale = root.convertDecibelToLinear ? (root.topToBottom === false ? normalizedClampedValueLinear : reversedNormalizedClampedValueLinear) : (root.topToBottom === false ? normalizedClampedValue : reversedNormalizedClampedValue);
+
+        if (Math.abs(levelScale.yScale - newYScale) >= 1.0e-3) {
+            levelScale.yScale = newYScale;
         }
 
         //hist rect
 
         const clampedNewDisplayValue = Common.clamp(newDisplayValue, root.from, root.to);
 
-        const liFrac = (Common.dbToLinear(clampedNewDisplayValue) - root.liFrom) / (root.liTo - root.liFrom);
-        const frac = (clampedNewDisplayValue - root.from) / (root.to - root.from);
+        const liFrac = (Common.dbToLinear(clampedNewDisplayValue) - root.liFrom) * root.invLiRange;
+        const frac = (clampedNewDisplayValue - root.from) * root.invRange;
 
         if (root.convertDecibelToLinear) {
             histScale.y = root.height * (1.0 - liFrac);
@@ -171,6 +185,7 @@ Rectangle {
 
         onTriggered: {
             value = root.value;
+            valueLabel.text = Number(root.latestDisplayValue).toLocaleString(Qt.locale(), 'f', root.decimals);
         }
     }
 }

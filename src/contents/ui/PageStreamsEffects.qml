@@ -669,10 +669,28 @@ Kirigami.Page {
                     footerFrameAnimation.stop();
                 }
 
+                Timer {
+                    id: sampleTimer
+
+                    property real leftValue: 0
+                    property real rightValue: 0
+
+                    interval: DbMain.levelMetersLabelTimer
+                    repeat: true
+                    running: footerFrameAnimation.running
+
+                    onTriggered: {
+                        leftValue = footerFrameAnimation.leftValue;
+                        rightValue = footerFrameAnimation.rightValue;
+                    }
+                }
+
                 FrameAnimation {
                     id: footerFrameAnimation
 
-                    property var timeDiff: 0
+                    property real timeDiff: 0
+                    property real leftValue: 0
+                    property real rightValue: 0
                     readonly property real invFps: 1.0 / DbMain.levelMetersFpsCap
 
                     running: pageStreamsEffects.pageType !== 2 && appWindow.visible && pipelineInstance.filtersLinked // qmllint disable
@@ -690,8 +708,16 @@ Kirigami.Page {
 
                         footerFrameAnimation.timeDiff = 0;
 
-                        let left = Number(pageStreamsEffects.pipelineInstance.getOutputLevelLeft());
-                        let right = Number(pageStreamsEffects.pipelineInstance.getOutputLevelRight());
+                        leftValue = Number(pageStreamsEffects.pipelineInstance.getOutputLevelLeft());
+                        rightValue = Number(pageStreamsEffects.pipelineInstance.getOutputLevelRight());
+
+                        if (leftValue <= sampleTimer.leftValue || rightValue <= sampleTimer.rightValue) {
+                            return;
+                        }
+
+                        let left = leftValue > sampleTimer.leftValue ? leftValue : sampleTimer.leftValue;
+                        let right = rightValue > sampleTimer.rightValue ? rightValue : sampleTimer.rightValue;
+
                         if (Number.isNaN(left) || left < pageStreamsEffects.minLeftLevel)
                             left = pageStreamsEffects.minLeftLevel;
 
