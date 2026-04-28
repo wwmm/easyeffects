@@ -432,20 +432,6 @@ Kirigami.ScrollablePage {
                 },
                 Kirigami.Action {
                     displayHint: Kirigami.DisplayHint.KeepVisible
-                    text: i18n("Show native window") // qmllint disable
-                    icon.name: "window-duplicate-symbolic"
-                    enabled: DbMain.showNativePluginUi
-                    checkable: true
-                    checked: autotunePage.pluginBackend ? autotunePage.pluginBackend.hasNativeUi() : false
-                    onTriggered: {
-                        if (checked)
-                            autotunePage.pluginBackend.showNativeUi();
-                        else
-                            autotunePage.pluginBackend.closeNativeUi();
-                    }
-                },
-                Kirigami.Action {
-                    displayHint: Kirigami.DisplayHint.KeepVisible
                     text: i18n("Reset settings") // qmllint disable
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {
