@@ -21,7 +21,6 @@ pragma ComponentBehavior: Bound
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
-import ee.presets as Presets
 import ee.ui
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.components as Components
@@ -186,7 +185,7 @@ Kirigami.Dialog {
                     textRole: "name"
                     editable: false
                     enabled: DbMain.visiblePage === 0 ? DbMain.outputAutoloadingUsesFallback : DbMain.inputAutoloadingUsesFallback
-                    model: DbMain.visiblePage === 0 ? Presets.SortedOutputListModel : Presets.SortedInputListModel
+                    model: DbMain.visiblePage === 0 ? PresetsManager.sortedOutputListModel : PresetsManager.sortedInputListModel
                     onActivated: idx => {
                         if (DbMain.visiblePage === 0)
                             DbMain.outputAutoloadingFallbackPreset = currentText;

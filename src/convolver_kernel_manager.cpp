@@ -149,8 +149,15 @@ auto ConvolverKernelManager::combineKernels(const std::string& kernel1_name,
   KernelData combined_kernel;
 
   combined_kernel.rate = target_rate;
+  combined_kernel.channels = resampled_kernel1.channels;
   combined_kernel.channel_L = std::move(combined_kernel_L);
   combined_kernel.channel_R = std::move(combined_kernel_R);
+
+  if (combined_kernel.channels == 4) {
+    combined_kernel.channel_LR = directConvolution(resampled_kernel1.channel_LR, resampled_kernel2.channel_LR);
+    combined_kernel.channel_RL = directConvolution(resampled_kernel1.channel_RL, resampled_kernel2.channel_RL);
+  }
+
   combined_kernel.name = QString::fromStdString(output_name);
 
   // Save the combined kernel

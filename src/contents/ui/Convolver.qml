@@ -21,7 +21,6 @@ pragma ComponentBehavior: Bound
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
-import ee.presets as Presets
 import ee.ui
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
@@ -154,7 +153,7 @@ Kirigami.ScrollablePage {
                 currentIndex: 0
                 editable: false
                 textRole: "name"
-                model: Presets.SortedImpulseListModel
+                model: PresetsManager.sortedImpulseListModel
             }
 
             FormCard.FormComboBoxDelegate {
@@ -167,7 +166,7 @@ Kirigami.ScrollablePage {
                 currentIndex: 0
                 editable: false
                 textRole: "name"
-                model: Presets.SortedImpulseListModel
+                model: PresetsManager.sortedImpulseListModel
             }
 
             FormCard.FormTextFieldDelegate {

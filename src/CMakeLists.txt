@@ -138,11 +138,6 @@ qt_add_qml_module(easyeffects
 
 # The module definitions below are to help the qml linter
 
-qt_add_qml_module(ee_presets
-    URI ee.presets
-    VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
-)
-
 qt_add_qml_module(ee_autostart
     URI ee.autostart
     VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}

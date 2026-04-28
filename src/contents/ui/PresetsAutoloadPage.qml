@@ -21,7 +21,7 @@ pragma ComponentBehavior: Bound
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
-import ee.presets as Presets
+import ee.ui
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.delegates as Delegates
 import org.kde.kirigamiaddons.formcard as FormCard
@@ -127,7 +127,7 @@ ColumnLayout {
             currentIndex: 0
             textRole: "name"
             editable: false
-            model: DbMain.visiblePage === 0 ? Presets.SortedOutputListModel : Presets.SortedInputListModel
+            model: DbMain.visiblePage === 0 ? PresetsManager.sortedOutputListModel : PresetsManager.sortedInputListModel
         }
 
         Controls.Button {
@@ -166,7 +166,7 @@ ColumnLayout {
             Layout.fillHeight: true
             clip: true
             reuseItems: true
-            model: DbMain.visiblePage === 0 ? Presets.SortedAutoloadOutputListModel : Presets.SortedAutoloadInputListModel
+            model: DbMain.visiblePage === 0 ? PresetsManager.sortedAutoloadOutputListModel : PresetsManager.sortedAutoloadInputListModel
             Controls.ScrollBar.vertical: listViewScrollBar
 
             Kirigami.PlaceholderMessage {

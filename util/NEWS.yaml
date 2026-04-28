@@ -7,7 +7,7 @@ Description:
 - A new Autotune effect (by x42-plugins) has been added. It can be used to correct the pitch of the input signal in real time.
 
 - Bug fixes∶
-- 
+- The convolver feature that combines impulse response files was not working. Regression fixed.
 
 - Other notes∶
 - Package maintainers should include the LV2 module of x42-plugins in order to make the new Autotune effect available.

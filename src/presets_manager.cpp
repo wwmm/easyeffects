@@ -93,9 +93,17 @@
 namespace presets {
 
 Manager::Manager(QObject* parent)
-    : QObject(parent), outputListModel(new ListModel(this)), inputListModel(new ListModel(this)) {
-  initialize_qml_types();
-
+    : QObject(parent),
+      outputListModel(new ListModel(this)),
+      inputListModel(new ListModel(this)),
+      proxyInputListModel(inputListModel->getProxy()),
+      proxyOutputListModel(outputListModel->getProxy()),
+      proxyCommunityInputListModel(community_manager.get_input_model()->getProxy()),
+      proxyCommunityOutputListModel(community_manager.get_output_model()->getProxy()),
+      proxyAutoloadInputListModel(autoload_manager.get_input_model()->getProxy()),
+      proxyAutoloadOutputListModel(autoload_manager.get_output_model()->getProxy()),
+      proxyImpulseListModel(irs_manager.get_model()->getProxy()),
+      proxyRNNoiseListModel(rnnoise_manager.get_model()->getProxy()) {
   refresh_list_models();
 
   prepare_filesystem_watchers();
@@ -104,38 +112,6 @@ Manager::Manager(QObject* parent)
   prepare_last_used_preset_key(PipelineType::output);
 
   connect(&autoload_manager, &AutoloadManager::loadPresetRequested, this, &Manager::loadLocalPresetFile);
-}
-
-void Manager::initialize_qml_types() {
-  // NOLINTBEGIN(clang-analyzer-cplusplus.NewDelete)
-  qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.presets", VERSION_MAJOR, VERSION_MINOR,
-                                                      "SortedInputListModel", inputListModel->getProxy());
-
-  qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.presets", VERSION_MAJOR, VERSION_MINOR,
-                                                      "SortedOutputListModel", outputListModel->getProxy());
-
-  qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.presets", VERSION_MAJOR, VERSION_MINOR,
-                                                      "SortedCommunityInputListModel",
-                                                      community_manager.get_input_model()->getProxy());
-
-  qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.presets", VERSION_MAJOR, VERSION_MINOR,
-                                                      "SortedCommunityOutputListModel",
-                                                      community_manager.get_output_model()->getProxy());
-
-  qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.presets", VERSION_MAJOR, VERSION_MINOR,
-                                                      "SortedAutoloadInputListModel",
-                                                      autoload_manager.get_input_model()->getProxy());
-
-  qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.presets", VERSION_MAJOR, VERSION_MINOR,
-                                                      "SortedAutoloadOutputListModel",
-                                                      autoload_manager.get_output_model()->getProxy());
-
-  qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.presets", VERSION_MAJOR, VERSION_MINOR,
-                                                      "SortedImpulseListModel", irs_manager.get_model()->getProxy());
-
-  qmlRegisterSingletonInstance<QSortFilterProxyModel>(
-      "ee.presets", VERSION_MAJOR, VERSION_MINOR, "SortedRNNoiseListModel", rnnoise_manager.get_model()->getProxy());
-  // NOLINTEND(clang-analyzer-cplusplus.NewDelete)
 }
 
 void Manager::refresh_list_models() {

@@ -23,7 +23,7 @@ import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Dialogs
 import QtQuick.Layouts
-import ee.presets as Presets
+import ee.ui
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.delegates as Delegates
 
@@ -65,7 +65,7 @@ Kirigami.Dialog {
             placeholderText: i18n("Search") // qmllint disable
             onAccepted: {
                 const re = Common.regExpEscape(search.text);
-                Presets.SortedImpulseListModel.filterRegularExpression = RegExp(re, "i");
+                PresetsManager.sortedImpulseListModel.filterRegularExpression = RegExp(re, "i");
             }
         }
 
@@ -77,7 +77,7 @@ Kirigami.Dialog {
 
                 clip: true
                 reuseItems: true
-                model: Presets.SortedImpulseListModel
+                model: PresetsManager.sortedImpulseListModel
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 Controls.ScrollBar.vertical: listViewScrollBar

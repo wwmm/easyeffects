@@ -23,7 +23,6 @@ import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Dialogs
 import QtQuick.Layouts
-import ee.presets as Presets
 import ee.ui
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.delegates as Delegates
@@ -206,7 +205,7 @@ Kirigami.ScrollablePage {
 
                         clip: true
                         reuseItems: true
-                        model: Presets.SortedRNNoiseListModel
+                        model: PresetsManager.sortedRNNoiseListModel
                         Layout.fillWidth: true
                         Layout.fillHeight: true
                         enabled: !rnnoisePage.pluginDB.useStandardModel

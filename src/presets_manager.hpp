@@ -48,6 +48,19 @@ class Manager : public QObject {
   QML_SINGLETON
   QML_UNCREATABLE("C++ singleton - use PresetsManager.instance")
 
+  Q_PROPERTY(QSortFilterProxyModel* sortedInputListModel MEMBER proxyInputListModel CONSTANT)
+  Q_PROPERTY(QSortFilterProxyModel* sortedOutputListModel MEMBER proxyOutputListModel CONSTANT)
+
+  Q_PROPERTY(QSortFilterProxyModel* sortedCommunityInputListModel MEMBER proxyCommunityInputListModel CONSTANT)
+  Q_PROPERTY(QSortFilterProxyModel* sortedCommunityOutputListModel MEMBER proxyCommunityOutputListModel CONSTANT)
+
+  Q_PROPERTY(QSortFilterProxyModel* sortedAutoloadInputListModel MEMBER proxyAutoloadInputListModel CONSTANT)
+  Q_PROPERTY(QSortFilterProxyModel* sortedAutoloadOutputListModel MEMBER proxyAutoloadOutputListModel CONSTANT)
+
+  Q_PROPERTY(QSortFilterProxyModel* sortedImpulseListModel MEMBER proxyImpulseListModel CONSTANT)
+
+  Q_PROPERTY(QSortFilterProxyModel* sortedRNNoiseListModel MEMBER proxyRNNoiseListModel CONSTANT)
+
  public:
   explicit Manager(QObject* parent = nullptr);
 
@@ -162,9 +175,12 @@ class Manager : public QObject {
 
   QFileSystemWatcher user_output_watcher, user_input_watcher;
 
-  ListModel *outputListModel, *inputListModel;
+  ListModel *outputListModel = nullptr, *inputListModel = nullptr;
 
-  void initialize_qml_types();
+  QSortFilterProxyModel *proxyInputListModel = nullptr, *proxyOutputListModel = nullptr,
+                        *proxyCommunityInputListModel = nullptr, *proxyCommunityOutputListModel = nullptr,
+                        *proxyAutoloadInputListModel = nullptr, *proxyAutoloadOutputListModel = nullptr,
+                        *proxyImpulseListModel = nullptr, *proxyRNNoiseListModel = nullptr;
 
   void refresh_list_models();
 

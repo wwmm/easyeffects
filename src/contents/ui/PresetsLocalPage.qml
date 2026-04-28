@@ -23,7 +23,7 @@ import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Dialogs
 import QtQuick.Layouts
-import ee.presets as Presets
+import ee.ui
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.delegates as Delegates
 
@@ -157,7 +157,7 @@ ColumnLayout {
         Kirigami.SearchField {
             id: search
 
-            readonly property var sortedListModel: DbMain.visiblePage === 0 ? Presets.SortedOutputListModel : Presets.SortedInputListModel
+            readonly property var sortedListModel: DbMain.visiblePage === 0 ? PresetsManager.sortedOutputListModel : PresetsManager.sortedInputListModel
 
             Layout.fillWidth: true
             Layout.margins: Kirigami.Units.smallSpacing
@@ -183,7 +183,7 @@ ColumnLayout {
             Layout.fillHeight: true
             clip: true
             reuseItems: true
-            model: DbMain.visiblePage === 0 ? Presets.SortedOutputListModel : Presets.SortedInputListModel
+            model: DbMain.visiblePage === 0 ? PresetsManager.sortedOutputListModel : PresetsManager.sortedInputListModel
             Controls.ScrollBar.vertical: listViewScrollBar
 
             Kirigami.PlaceholderMessage {

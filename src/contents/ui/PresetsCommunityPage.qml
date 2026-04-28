@@ -21,7 +21,7 @@ pragma ComponentBehavior: Bound
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
-import ee.presets as Presets
+import ee.ui
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.delegates as Delegates
 
@@ -57,7 +57,7 @@ ColumnLayout {
         Kirigami.SearchField {
             id: search
 
-            readonly property var sortedListModel: DbMain.visiblePage === 0 ? Presets.SortedCommunityOutputListModel : Presets.SortedCommunityInputListModel
+            readonly property var sortedListModel: DbMain.visiblePage === 0 ? PresetsManager.sortedCommunityOutputListModel : PresetsManager.sortedCommunityInputListModel
 
             Layout.fillWidth: true
             Layout.margins: Kirigami.Units.smallSpacing
@@ -94,7 +94,7 @@ ColumnLayout {
             Layout.fillHeight: true
             clip: true
             reuseItems: true
-            model: DbMain.visiblePage === 0 ? Presets.SortedCommunityOutputListModel : Presets.SortedCommunityInputListModel
+            model: DbMain.visiblePage === 0 ? PresetsManager.sortedCommunityOutputListModel : PresetsManager.sortedCommunityInputListModel
             Controls.ScrollBar.vertical: listViewScrollBar
 
             Kirigami.PlaceholderMessage {
