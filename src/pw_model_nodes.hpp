@@ -57,7 +57,7 @@ class Nodes : public QAbstractListModel {
   explicit Nodes(QObject* parent = nullptr);
 
   /**
-   * Deleting the default constructor because we nwant Qt to call our custom create method.
+   * Deleting the default constructor because we want Qt to call our custom create method.
    * If this is not done qml will create its own class instance.
    */
   Nodes() = delete;

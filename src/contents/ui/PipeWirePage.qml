@@ -21,7 +21,7 @@ pragma ComponentBehavior: Bound
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
-import ee.pipewire as PW
+import ee.ui
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.delegates as Delegates
 import org.kde.kirigamiaddons.formcard as FormCard
@@ -95,14 +95,14 @@ Kirigami.Page {
             }
 
             function updateInputDevComboSelection() {
-                const deviceName = useDefaultInputDevice.isChecked ? PW.Manager.defaultInputDeviceName : DbStreamInputs.inputDevice;
+                const deviceName = useDefaultInputDevice.isChecked ? PwManager.defaultInputDeviceName : DbStreamInputs.inputDevice;
                 const comboRow = comboFindRow(ModelNodes.sourceDevices, deviceName);
                 if (comboRow !== -1)
                     comboInputDevice.currentIndex = comboRow;
             }
 
             function updateOutputDevComboSelection() {
-                const deviceName = useDefaultOutputDevice.isChecked ? PW.Manager.defaultOutputDeviceName : DbStreamOutputs.outputDevice;
+                const deviceName = useDefaultOutputDevice.isChecked ? PwManager.defaultOutputDeviceName : DbStreamOutputs.outputDevice;
                 const comboRow = comboFindRow(ModelNodes.sinkDevices, deviceName);
                 if (comboRow !== -1)
                     comboOutputDevice.currentIndex = comboRow;
@@ -224,37 +224,37 @@ Kirigami.Page {
             FormCard.FormCard {
                 FormCard.FormTextDelegate {
                     text: i18n("Header version") // qmllint disable
-                    description: PW.Manager.headerVersion
+                    description: PwManager.headerVersion
                 }
 
                 FormCard.FormTextDelegate {
                     text: i18n("Library version") // qmllint disable
-                    description: PW.Manager.libraryVersion
+                    description: PwManager.libraryVersion
                 }
 
                 FormCard.FormTextDelegate {
                     text: i18n("Runtime version") // qmllint disable
-                    description: PW.Manager.runtimeVersion
+                    description: PwManager.runtimeVersion
                 }
 
                 FormCard.FormTextDelegate {
                     text: i18n("Default sampling rate") // qmllint disable
-                    description: `${PW.Manager.defaultClockRate} ${Units.hz}`
+                    description: `${PwManager.defaultClockRate} ${Units.hz}`
                 }
 
                 FormCard.FormTextDelegate {
                     text: i18n("Minimum quantum") // qmllint disable
-                    description: PW.Manager.defaultMinQuantum
+                    description: PwManager.defaultMinQuantum
                 }
 
                 FormCard.FormTextDelegate {
                     text: i18n("Maximum quantum") // qmllint disable
-                    description: PW.Manager.defaultMaxQuantum
+                    description: PwManager.defaultMaxQuantum
                 }
 
                 FormCard.FormTextDelegate {
                     text: i18n("Default quantum") // qmllint disable
-                    description: PW.Manager.defaultQuantum
+                    description: PwManager.defaultQuantum
                 }
             }
         }
@@ -269,7 +269,7 @@ Kirigami.Page {
 
                 clip: true
                 reuseItems: true
-                model: PW.ModelModules
+                model: PwModelModules
 
                 Kirigami.PlaceholderMessage {
                     anchors.centerIn: parent
@@ -292,7 +292,7 @@ Kirigami.Page {
 
                 clip: true
                 reuseItems: true
-                model: PW.ModelClients
+                model: PwModelClients
 
                 Kirigami.PlaceholderMessage {
                     anchors.centerIn: parent

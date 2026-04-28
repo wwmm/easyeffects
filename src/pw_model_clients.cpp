@@ -31,7 +31,9 @@
 
 namespace pw::models {
 
-Clients::Clients(QObject* parent) : QAbstractListModel(parent) {}
+Clients::Clients(QObject* parent) : QAbstractListModel(parent) {
+  singletonInstance = this;
+}
 
 int Clients::rowCount(const QModelIndex& /* parent */) const {
   return list.size();

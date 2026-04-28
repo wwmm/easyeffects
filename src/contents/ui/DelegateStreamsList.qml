@@ -21,7 +21,6 @@ pragma ComponentBehavior: Bound
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
-import ee.pipewire as PW
 import ee.ui
 import org.kde.kirigami as Kirigami
 
@@ -116,11 +115,11 @@ Kirigami.AbstractCard {
                     onCheckedChanged: {
                         if (checked === true && !root.isBlocklisted) {
                             if (root.mediaClass === "Stream/Output/Audio")
-                                PW.Manager.connectStreamOutput(root.id);
+                                PwManager.connectStreamOutput(root.id);
                             else if (root.mediaClass === "Stream/Input/Audio")
-                                PW.Manager.connectStreamInput(root.id);
+                                PwManager.connectStreamInput(root.id);
                         } else if (checked === false || root.isBlocklisted) {
-                            PW.Manager.disconnectStream(root.id);
+                            PwManager.disconnectStream(root.id);
                         }
                     }
                 }
@@ -148,7 +147,7 @@ Kirigami.AbstractCard {
                     checked: root.mute
                     onCheckedChanged: {
                         if (checked !== root.mute)
-                            PW.Manager.setNodeMute(root.serial, checked);
+                            PwManager.setNodeMute(root.serial, checked);
                     }
                 }
 
@@ -171,7 +170,7 @@ Kirigami.AbstractCard {
                         if (value !== prepareVolumeValue(root.volume)) {
                             let v = value / 100;
                             v = DbMain.useCubicVolumes === false ? v : v * v * v;
-                            PW.Manager.setNodeVolume(root.serial, root.nVolumeChannels, v);
+                            PwManager.setNodeVolume(root.serial, root.nVolumeChannels, v);
                         }
                     }
                 }

@@ -31,7 +31,9 @@
 
 namespace pw::models {
 
-Modules::Modules(QObject* parent) : QAbstractListModel(parent) {}
+Modules::Modules(QObject* parent) : QAbstractListModel(parent) {
+  singletonInstance = this;
+}
 
 int Modules::rowCount(const QModelIndex& /* parent */) const {
   return list.size();
