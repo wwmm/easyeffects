@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-04-27 22:38-0300\n"
-"PO-Revision-Date: 2026-04-23 16:12+0000\n"
+"PO-Revision-Date: 2026-04-29 23:14+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hans/>\n"
@@ -240,9 +240,8 @@ msgid "Reset settings"
 msgstr "重置设置"
 
 #: src/contents/ui/Autotune.qml:91 src/contents/ui/Autotune.qml:119
-#, fuzzy
 msgid "Tuning"
-msgstr "运行中"
+msgstr "调音中"
 
 #: src/contents/ui/Autotune.qml:106 src/contents/ui/Compressor.qml:79
 #: src/contents/ui/Compressor.qml:301 src/contents/ui/Crusher.qml:97
@@ -257,9 +256,8 @@ msgid "Mode"
 msgstr "模式"
 
 #: src/contents/ui/Autotune.qml:110
-#, fuzzy
 msgid "Auto"
-msgstr "自动增益"
+msgstr "自动"
 
 #: src/contents/ui/Autotune.qml:110 src/contents/ui/Main.qml:456
 #: src/contents/ui/TrayIcon.qml:206
@@ -267,13 +265,12 @@ msgid "Manual"
 msgstr "使用手册"
 
 #: src/contents/ui/Autotune.qml:136
-#, fuzzy
 msgid "Correction"
-msgstr "相位相关"
+msgstr "矫正"
 
 #: src/contents/ui/Autotune.qml:152
 msgid "Bias"
-msgstr ""
+msgstr "偏差"
 
 #: src/contents/ui/Autotune.qml:168 src/contents/ui/Deesser.qml:171
 #: src/contents/ui/Filter.qml:123 src/contents/ui/Reverb.qml:126
@@ -282,43 +279,40 @@ msgid "Filter"
 msgstr "滤波器"
 
 #: src/contents/ui/Autotune.qml:185
-#, fuzzy
 msgid "Offset"
-msgstr "DC 偏移"
+msgstr "偏移"
 
 #: src/contents/ui/Autotune.qml:204 src/contents/ui/Autotune.qml:243
 msgid "Scale"
-msgstr ""
+msgstr "范围"
 
 #: src/contents/ui/Autotune.qml:217
 msgid "Root"
-msgstr ""
+msgstr "根音"
 
 #: src/contents/ui/Autotune.qml:230
 msgid "Accidental"
-msgstr ""
+msgstr "偶发"
 
 #: src/contents/ui/Autotune.qml:247
 msgid "Major"
-msgstr ""
+msgstr "大调"
 
 #: src/contents/ui/Autotune.qml:247
 msgid "Minor"
-msgstr ""
+msgstr "小调"
 
 #: src/contents/ui/Autotune.qml:376 src/contents/ui/Deesser.qml:276
 msgid "Level"
 msgstr "电平"
 
 #: src/contents/ui/Autotune.qml:387
-#, fuzzy
 msgid "Pitch error"
-msgstr "左声道音高"
+msgstr "音调误差"
 
 #: src/contents/ui/Autotune.qml:424
-#, fuzzy
 msgid "Fast correction"
-msgstr "位衰减"
+msgstr "快速矫正"
 
 #: src/contents/ui/BassEnhancer.qml:56 src/contents/ui/Exciter.qml:56
 msgid "Blend harmonics"
@@ -3142,9 +3136,8 @@ msgid "Unknown"
 msgstr "未知"
 
 #: src/tags_plugin_name.cpp:47
-#, fuzzy
 msgid "Autotune"
-msgstr "自动增益"
+msgstr "自动调音"
 
 #: src/tags_plugin_name.cpp:48
 msgid "Bass Enhancer"
