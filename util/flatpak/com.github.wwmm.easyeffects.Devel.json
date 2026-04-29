@@ -23,9 +23,17 @@
         "/bin/applyplugin",
         "/bin/listplugins",
         "/include",
+        "/lib/aarch64-linux-gnu/cmake",
+        "/lib/cmake",
         "/lib/pkgconfig",
         "/lib/python*",
-        "/share/info"
+        "/mkspecs",
+        "/share/aclocal",
+        "/share/cmake",
+        "/share/doc",
+        "/share/info",
+        "/share/man",
+        "/share/pkgconfig"
     ],
     "add-extensions": {
         "io.github.wwmm.easyeffects.Presets": {
