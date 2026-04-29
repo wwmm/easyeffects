@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-04-27 22:38-0300\n"
-"PO-Revision-Date: 2026-04-23 16:12+0000\n"
+"PO-Revision-Date: 2026-04-29 19:09+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ro/>\n"
@@ -244,9 +244,8 @@ msgid "Reset settings"
 msgstr "Restaurare valori"
 
 #: src/contents/ui/Autotune.qml:91 src/contents/ui/Autotune.qml:119
-#, fuzzy
 msgid "Tuning"
-msgstr "În execuție"
+msgstr "Reglare"
 
 #: src/contents/ui/Autotune.qml:106 src/contents/ui/Compressor.qml:79
 #: src/contents/ui/Compressor.qml:301 src/contents/ui/Crusher.qml:97
@@ -261,9 +260,8 @@ msgid "Mode"
 msgstr "Mod"
 
 #: src/contents/ui/Autotune.qml:110
-#, fuzzy
 msgid "Auto"
-msgstr "Câștig automat"
+msgstr "Auto"
 
 #: src/contents/ui/Autotune.qml:110 src/contents/ui/Main.qml:456
 #: src/contents/ui/TrayIcon.qml:206
@@ -271,13 +269,12 @@ msgid "Manual"
 msgstr "Manual"
 
 #: src/contents/ui/Autotune.qml:136
-#, fuzzy
 msgid "Correction"
-msgstr "Corelare"
+msgstr "Corectare"
 
 #: src/contents/ui/Autotune.qml:152
 msgid "Bias"
-msgstr ""
+msgstr "Deviație (balans)"
 
 #: src/contents/ui/Autotune.qml:168 src/contents/ui/Deesser.qml:171
 #: src/contents/ui/Filter.qml:123 src/contents/ui/Reverb.qml:126
@@ -286,43 +283,40 @@ msgid "Filter"
 msgstr "Filtru"
 
 #: src/contents/ui/Autotune.qml:185
-#, fuzzy
 msgid "Offset"
-msgstr "Decalaj DC"
+msgstr "Decalaj"
 
 #: src/contents/ui/Autotune.qml:204 src/contents/ui/Autotune.qml:243
 msgid "Scale"
-msgstr ""
+msgstr "Scală"
 
 #: src/contents/ui/Autotune.qml:217
 msgid "Root"
-msgstr ""
+msgstr "Rădăcina"
 
 #: src/contents/ui/Autotune.qml:230
 msgid "Accidental"
-msgstr ""
+msgstr "Accidental"
 
 #: src/contents/ui/Autotune.qml:247
 msgid "Major"
-msgstr ""
+msgstr "Major"
 
 #: src/contents/ui/Autotune.qml:247
 msgid "Minor"
-msgstr ""
+msgstr "Minor"
 
 #: src/contents/ui/Autotune.qml:376 src/contents/ui/Deesser.qml:276
 msgid "Level"
 msgstr "Nivel"
 
 #: src/contents/ui/Autotune.qml:387
-#, fuzzy
 msgid "Pitch error"
-msgstr "Înclinare spre stânga"
+msgstr "Eroare de tonalitate"
 
 #: src/contents/ui/Autotune.qml:424
-#, fuzzy
 msgid "Fast correction"
-msgstr "Reducere biți"
+msgstr "Corectare rapidă"
 
 #: src/contents/ui/BassEnhancer.qml:56 src/contents/ui/Exciter.qml:56
 msgid "Blend harmonics"
@@ -3193,9 +3187,8 @@ msgid "Unknown"
 msgstr "Necunoscut"
 
 #: src/tags_plugin_name.cpp:47
-#, fuzzy
 msgid "Autotune"
-msgstr "Câștig automat"
+msgstr "Reglare automată"
 
 #: src/tags_plugin_name.cpp:48
 msgid "Bass Enhancer"
