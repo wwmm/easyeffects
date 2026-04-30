@@ -162,10 +162,12 @@ auto to_string(const T& num, const std::string def = "0") -> std::string {
    */
   static constexpr size_t max = std::numeric_limits<T>::digits10 + std::numeric_limits<T>::max_digits10 + 10U;
 
-  static std::array<char, max> buffer;
+  // Avoid static storage on the buffer since we do not want to access to
+  // the same one from different threads.
+  std::array<char, max> buffer;
 
-  static constexpr auto p_init = buffer.data();
-  static constexpr auto p_end = p_init + max;
+  const auto p_init = buffer.data();
+  const auto p_end = p_init + max;
 
   const auto result = std::to_chars(p_init, p_end, num);
 
