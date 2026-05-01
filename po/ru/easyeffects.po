@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-04-27 20:05-0300\n"
-"PO-Revision-Date: 2026-04-28 01:40+0000\n"
+"PO-Revision-Date: 2026-05-01 01:10+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Weblate 5.17.1-dev\n"
+"X-Generator: Weblate 5.17.1\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -452,7 +452,7 @@ msgstr "Убрать это приложение"
 
 #: src/contents/ui/BlocklistDialog.qml:199
 msgid "Use media name"
-msgstr "Использовать название медиа"
+msgstr "Использовать имя медиа"
 
 #: src/contents/ui/BlocklistDialog.qml:200
 msgid ""
