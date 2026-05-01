@@ -48,12 +48,21 @@ a combination of Qt, QML and KDE/Kirigami frameworks.
 
 ## Effects available
 
-- Auto gain
+The user has full control over the effects order. Just use the up/down arrows
+next to the effect labels on the left side.
+
+<details>
+<summary>See the full list of available effects</summary>
+<p>
+
+- Autogain
+- Autotune
 - Bass enhancer
 - Bass loudness
 - Compressor
 - Convolver
 - Crossfeed
+- Crosstalk canceller
 - Crusher
 - Crystalizer
 - De-esser
@@ -76,15 +85,17 @@ a combination of Qt, QML and KDE/Kirigami frameworks.
 - Reverberation
 - Speech processor
 - Stereo tools
+- Voice Suppressor
 
-The user has full control over the effects order. Just use the up/down arrows
-next to the effect labels on the left side.
+</p>
+</details>
 
 Some packages do not provide all plugin packages by default. In case some effects are not available,
 ensure you have the following installed on your system:
 
 <details>
 <summary>Dependencies</summary>
+<p>
 
 Plugins needed for effects:
 
@@ -98,16 +109,19 @@ Plugins needed for effects:
 - [SoundTouch](https://www.surina.net/soundtouch/). For Pitch shift.
 - [RNNoise](https://gitlab.xiph.org/xiph/rnnoise). For Noise reduction.
 - [DeepFilterNet](https://github.com/Rikorose/DeepFilterNet). For Deep noise remover.
+- [x42-plugins](https://x42-plugins.com/) For Autotune.
 
 Other dependencies include:
+
 - [libsamplerate](http://www.mega-nerd.com/SRC/index.html)
 - [libsndfile](http://www.mega-nerd.com/libsndfile/)
 - [libbs2b](https://sourceforge.net/projects/bs2b/files/libbs2b/)
+- [libmysofa](https://github.com/hoene/libmysofa/)
 - [fftw](https://fftw.org/)
-- [speexdsp](https://www.speex.org/)
 - [nlohmann json](https://github.com/nlohmann/json)
 - [tbb](https://www.threadingbuildingblocks.org)
 
+</p>
 </details>
 
 ## Donate
