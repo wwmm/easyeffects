@@ -5,6 +5,7 @@ Date: UNRELEASED_DATE
 Description: 
 - Features∶
 - A new Autotune effect (by x42-plugins) has been added. It can be used to correct the pitch of the input signal in real time.
+- The shortcut "Shift + Mouse Wheel" can now be used to change the value of a control in larger steps. Similarly to what is already possible with the page up and down keys.
 
 - Bug fixes∶
 - The convolver feature that combines impulse response files was not working. Regression fixed.

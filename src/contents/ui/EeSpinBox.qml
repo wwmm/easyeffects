@@ -97,7 +97,7 @@ FormCard.AbstractFormDelegate {
         ColumnLayout {
             id: labelColumn
 
-            Label {
+            Text {
                 id: label
 
                 Layout.fillWidth: control.labelFillWidth
@@ -109,7 +109,7 @@ FormCard.AbstractFormDelegate {
                 horizontalAlignment: control.labelAlignment
             }
 
-            Label {
+            Text {
                 id: subtitle
 
                 Layout.fillWidth: control.labelFillWidth
@@ -218,6 +218,25 @@ FormCard.AbstractFormDelegate {
                     console.warn(`Spinbox locale number conversion failed with text "${text}" and captured number "${num}".`);
                     console.warn(e?.message ?? "");
                     return spinbox.value;
+                }
+            }
+
+            WheelHandler {
+                acceptedDevices: PointerDevice.Mouse | PointerDevice.TouchPad
+                acceptedModifiers: Qt.ShiftModifier
+
+                onWheel: function (event: WheelEvent) {
+                    const delta = event.angleDelta.y !== 0 ? event.angleDelta.y : event.angleDelta.x;
+
+                    if (delta === 0) {
+                        return;
+                    }
+
+                    const pageDelta = pageSteps * stepSize;
+                    const newValue = control.value + (delta > 0 ? pageDelta : -pageDelta);
+
+                    control.valueModified(Common.clamp(newValue, control.from, control.to));
+                    event.accepted = true;
                 }
             }
 

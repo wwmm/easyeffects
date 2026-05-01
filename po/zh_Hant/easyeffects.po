@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-04-27 22:38-0300\n"
+"POT-Creation-Date: 2026-05-01 19:02-0300\n"
 "PO-Revision-Date: 2026-04-28 19:09+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
@@ -199,9 +199,9 @@ msgstr "範圍"
 msgid "Output gain"
 msgstr "輸出增益 (Gain)"
 
-#: src/contents/ui/Autogain.qml:233 src/contents/ui/Autotune.qml:407
+#: src/contents/ui/Autogain.qml:233 src/contents/ui/Autotune.qml:408
 #: src/contents/ui/BassEnhancer.qml:205 src/contents/ui/BassLoudness.qml:126
-#: src/contents/ui/Compressor.qml:873 src/contents/ui/Convolver.qml:521
+#: src/contents/ui/Compressor.qml:873 src/contents/ui/Convolver.qml:520
 #: src/contents/ui/Crossfeed.qml:150 src/contents/ui/Crusher.qml:236
 #: src/contents/ui/Crystalizer.qml:155 src/contents/ui/DeepFilterNet.qml:197
 #: src/contents/ui/Deesser.qml:319 src/contents/ui/Delay.qml:376
@@ -212,9 +212,9 @@ msgstr "輸出增益 (Gain)"
 #: src/contents/ui/Loudness.qml:175 src/contents/ui/Maximizer.qml:122
 #: src/contents/ui/MultibandCompressor.qml:965
 #: src/contents/ui/MultibandGate.qml:938 src/contents/ui/Pitch.qml:268
-#: src/contents/ui/Reverb.qml:318 src/contents/ui/RNNoise.qml:74
-#: src/contents/ui/RNNoise.qml:85 src/contents/ui/RNNoise.qml:299
-#: src/contents/ui/RNNoise.qml:301 src/contents/ui/RNNoise.qml:321
+#: src/contents/ui/Reverb.qml:318 src/contents/ui/RNNoise.qml:73
+#: src/contents/ui/RNNoise.qml:84 src/contents/ui/RNNoise.qml:298
+#: src/contents/ui/RNNoise.qml:300 src/contents/ui/RNNoise.qml:320
 #: src/contents/ui/Speex.qml:177 src/contents/ui/StereoTools.qml:392
 msgid "Using %1"
 msgstr "使用 %1"
@@ -232,17 +232,17 @@ msgstr "強制安靜"
 msgid "Force silence when the level is below the silence threshold"
 msgstr "當低於安靜閾值時強制安靜"
 
-#: src/contents/ui/Autogain.qml:270 src/contents/ui/Autotune.qml:435
+#: src/contents/ui/Autogain.qml:270 src/contents/ui/Autotune.qml:436
 #: src/contents/ui/DeepFilterNet.qml:222 src/contents/ui/LevelMeter.qml:240
 #: src/contents/ui/Pitch.qml:313
 msgid "Reset settings"
 msgstr "重設設定值"
 
-#: src/contents/ui/Autotune.qml:91 src/contents/ui/Autotune.qml:119
+#: src/contents/ui/Autotune.qml:92 src/contents/ui/Autotune.qml:120
 msgid "Tuning"
 msgstr "調整中"
 
-#: src/contents/ui/Autotune.qml:106 src/contents/ui/Compressor.qml:79
+#: src/contents/ui/Autotune.qml:107 src/contents/ui/Compressor.qml:79
 #: src/contents/ui/Compressor.qml:301 src/contents/ui/Crusher.qml:97
 #: src/contents/ui/Deesser.qml:89 src/contents/ui/Delay.qml:71
 #: src/contents/ui/Delay.qml:224 src/contents/ui/EqualizerBandMenu.qml:61
@@ -254,62 +254,62 @@ msgstr "調整中"
 msgid "Mode"
 msgstr "模式"
 
-#: src/contents/ui/Autotune.qml:110
+#: src/contents/ui/Autotune.qml:111
 msgid "Auto"
 msgstr "自動"
 
-#: src/contents/ui/Autotune.qml:110 src/contents/ui/Main.qml:456
+#: src/contents/ui/Autotune.qml:111 src/contents/ui/Main.qml:454
 #: src/contents/ui/TrayIcon.qml:206
 msgid "Manual"
 msgstr "手冊"
 
-#: src/contents/ui/Autotune.qml:136
+#: src/contents/ui/Autotune.qml:137
 msgid "Correction"
 msgstr "修正"
 
-#: src/contents/ui/Autotune.qml:152
+#: src/contents/ui/Autotune.qml:153
 msgid "Bias"
 msgstr "偏壓"
 
-#: src/contents/ui/Autotune.qml:168 src/contents/ui/Deesser.qml:171
+#: src/contents/ui/Autotune.qml:169 src/contents/ui/Deesser.qml:171
 #: src/contents/ui/Filter.qml:123 src/contents/ui/Reverb.qml:126
 #: src/tags_plugin_name.cpp:63
 msgid "Filter"
 msgstr "篩選"
 
-#: src/contents/ui/Autotune.qml:185
+#: src/contents/ui/Autotune.qml:186
 msgid "Offset"
 msgstr "偏移"
 
-#: src/contents/ui/Autotune.qml:204 src/contents/ui/Autotune.qml:243
+#: src/contents/ui/Autotune.qml:205 src/contents/ui/Autotune.qml:244
 msgid "Scale"
 msgstr "大小"
 
-#: src/contents/ui/Autotune.qml:217
+#: src/contents/ui/Autotune.qml:218
 msgid "Root"
 msgstr "根"
 
-#: src/contents/ui/Autotune.qml:230
+#: src/contents/ui/Autotune.qml:231
 msgid "Accidental"
 msgstr "偶發的"
 
-#: src/contents/ui/Autotune.qml:247
+#: src/contents/ui/Autotune.qml:248
 msgid "Major"
 msgstr "主要的"
 
-#: src/contents/ui/Autotune.qml:247
+#: src/contents/ui/Autotune.qml:248
 msgid "Minor"
 msgstr "次要的"
 
-#: src/contents/ui/Autotune.qml:376 src/contents/ui/Deesser.qml:276
+#: src/contents/ui/Autotune.qml:377 src/contents/ui/Deesser.qml:276
 msgid "Level"
 msgstr "等級"
 
-#: src/contents/ui/Autotune.qml:387
+#: src/contents/ui/Autotune.qml:388
 msgid "Pitch error"
 msgstr "音調錯誤"
 
-#: src/contents/ui/Autotune.qml:424
+#: src/contents/ui/Autotune.qml:425
 msgid "Fast correction"
 msgstr "快速修正"
 
@@ -366,7 +366,7 @@ msgid "Listen"
 msgstr "聆聽"
 
 #: src/contents/ui/BassEnhancer.qml:247 src/contents/ui/BassLoudness.qml:144
-#: src/contents/ui/Compressor.qml:925 src/contents/ui/Convolver.qml:556
+#: src/contents/ui/Compressor.qml:925 src/contents/ui/Convolver.qml:555
 #: src/contents/ui/Crossfeed.qml:176 src/contents/ui/CrosstalkCanceller.qml:124
 #: src/contents/ui/Crusher.qml:268 src/contents/ui/Crystalizer.qml:203
 #: src/contents/ui/Deesser.qml:361 src/contents/ui/Delay.qml:428
@@ -374,17 +374,17 @@ msgstr "聆聽"
 #: src/contents/ui/Exciter.qml:252 src/contents/ui/Expander.qml:875
 #: src/contents/ui/Filter.qml:252 src/contents/ui/Gate.qml:1004
 #: src/contents/ui/Limiter.qml:659 src/contents/ui/Loudness.qml:217
-#: src/contents/ui/Main.qml:468 src/contents/ui/Maximizer.qml:154
+#: src/contents/ui/Main.qml:466 src/contents/ui/Maximizer.qml:154
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:358
-#: src/contents/ui/RNNoise.qml:346 src/contents/ui/Speex.qml:195
+#: src/contents/ui/RNNoise.qml:345 src/contents/ui/Speex.qml:195
 #: src/contents/ui/StereoTools.qml:424 src/contents/ui/VoiceSuppressor.qml:185
 msgid "Reset"
 msgstr "重設"
 
 #: src/contents/ui/BassLoudness.qml:83 src/contents/ui/Compressor.qml:478
 #: src/contents/ui/EeInputOutputGain.qml:144 src/contents/ui/Expander.qml:438
-#: src/contents/ui/Gate.qml:453 src/contents/ui/Main.qml:393
+#: src/contents/ui/Gate.qml:453 src/contents/ui/Main.qml:391
 #: src/contents/ui/StereoTools.qml:268
 msgid "Output"
 msgstr "輸出"
@@ -414,7 +414,7 @@ msgstr "加入至排除的應用程式"
 #: src/contents/ui/PageStreamsEffects.qml:106
 #: src/contents/ui/PresetsAutoloadPage.qml:176
 #: src/contents/ui/PresetsCommunityPage.qml:104
-#: src/contents/ui/PresetsLocalPage.qml:193 src/contents/ui/RNNoise.qml:229
+#: src/contents/ui/PresetsLocalPage.qml:193 src/contents/ui/RNNoise.qml:228
 msgid "Empty List"
 msgstr "空白列表"
 
@@ -507,7 +507,7 @@ msgstr "起音(Attack)"
 #: src/contents/ui/Gate.qml:100 src/contents/ui/Gate.qml:865
 #: src/contents/ui/Limiter.qml:161 src/contents/ui/Limiter.qml:434
 #: src/contents/ui/Maximizer.qml:68 src/contents/ui/MultibandCompressor.qml:308
-#: src/contents/ui/MultibandGate.qml:216 src/contents/ui/RNNoise.qml:159
+#: src/contents/ui/MultibandGate.qml:216 src/contents/ui/RNNoise.qml:158
 msgid "Release"
 msgstr "釋出"
 
@@ -600,7 +600,7 @@ msgstr "中間"
 msgid "Side"
 msgstr "側邊"
 
-#: src/contents/ui/Compressor.qml:319 src/contents/ui/Convolver.qml:302
+#: src/contents/ui/Compressor.qml:319 src/contents/ui/Convolver.qml:301
 #: src/contents/ui/Delay.qml:59 src/contents/ui/Equalizer.qml:230
 #: src/contents/ui/Expander.qml:279 src/contents/ui/Gate.qml:297
 #: src/contents/ui/LevelMeter.qml:79 src/contents/ui/LevelMeter.qml:118
@@ -610,7 +610,7 @@ msgstr "側邊"
 msgid "Left"
 msgstr "左"
 
-#: src/contents/ui/Compressor.qml:319 src/contents/ui/Convolver.qml:320
+#: src/contents/ui/Compressor.qml:319 src/contents/ui/Convolver.qml:319
 #: src/contents/ui/Delay.qml:212 src/contents/ui/Equalizer.qml:230
 #: src/contents/ui/Expander.qml:279 src/contents/ui/Gate.qml:297
 #: src/contents/ui/LevelMeter.qml:89 src/contents/ui/LevelMeter.qml:128
@@ -695,7 +695,7 @@ msgstr "高通"
 msgid "Off"
 msgstr "關閉"
 
-#: src/contents/ui/Compressor.qml:484 src/contents/ui/Convolver.qml:476
+#: src/contents/ui/Compressor.qml:484 src/contents/ui/Convolver.qml:475
 #: src/contents/ui/Delay.qml:176 src/contents/ui/Delay.qml:329
 #: src/contents/ui/Expander.qml:444 src/contents/ui/Gate.qml:459
 #: src/contents/ui/MultibandCompressor.qml:624
@@ -704,7 +704,7 @@ msgstr "關閉"
 msgid "Dry"
 msgstr "乾"
 
-#: src/contents/ui/Compressor.qml:503 src/contents/ui/Convolver.qml:494
+#: src/contents/ui/Compressor.qml:503 src/contents/ui/Convolver.qml:493
 #: src/contents/ui/Delay.qml:194 src/contents/ui/Delay.qml:347
 #: src/contents/ui/Expander.qml:463 src/contents/ui/Gate.qml:478
 #: src/contents/ui/MultibandCompressor.qml:642
@@ -856,78 +856,78 @@ msgid "Import impulse"
 msgstr "匯入脈衝"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:243
-#: src/contents/ui/MenuAddPlugins.qml:202 src/contents/ui/PresetsDialog.qml:126
+#: src/contents/ui/MenuAddPlugins.qml:202 src/contents/ui/PresetsDialog.qml:125
 msgctxt "@action:button"
 msgid "Close"
 msgstr "關閉"
 
-#: src/contents/ui/Convolver.qml:67
+#: src/contents/ui/Convolver.qml:66
 msgid "Loaded the %1 Convolver impulse."
 msgstr "已經載入 %1 Convolver 脈衝。"
 
-#: src/contents/ui/Convolver.qml:69 src/contents/ui/Convolver.qml:343
+#: src/contents/ui/Convolver.qml:68 src/contents/ui/Convolver.qml:342
 msgid "Convolver impulse is not set"
 msgstr "Convolver 脈衝並未設定"
 
-#: src/contents/ui/Convolver.qml:73
+#: src/contents/ui/Convolver.qml:72
 msgid "The Convolver is in passthrough mode."
 msgstr "Convolver 處於直通模式。"
 
-#: src/contents/ui/Convolver.qml:75
+#: src/contents/ui/Convolver.qml:74
 msgid "Failed to load the %1 impulse. The Convolver is in passthrough mode."
 msgstr "載入 %1 脈衝失敗。 Convolver 處於直通模式。"
 
-#: src/contents/ui/Convolver.qml:152
+#: src/contents/ui/Convolver.qml:151
 msgid "First"
 msgstr "第一"
 
-#: src/contents/ui/Convolver.qml:165
+#: src/contents/ui/Convolver.qml:164
 msgid "Second"
 msgstr "第二"
 
-#: src/contents/ui/Convolver.qml:197 src/contents/ui/Convolver.qml:232
+#: src/contents/ui/Convolver.qml:196 src/contents/ui/Convolver.qml:231
 msgid "Combine"
 msgstr "混合"
 
-#: src/contents/ui/Convolver.qml:225
+#: src/contents/ui/Convolver.qml:224
 msgid "Impulses"
 msgstr "脈衝"
 
-#: src/contents/ui/Convolver.qml:241 src/plugin_base.cpp:336
+#: src/contents/ui/Convolver.qml:240 src/plugin_base.cpp:336
 msgid "Spectrum"
 msgstr "波譜"
 
-#: src/contents/ui/Convolver.qml:273
+#: src/contents/ui/Convolver.qml:272
 msgid "Log scale"
 msgstr "對數刻度"
 
-#: src/contents/ui/Convolver.qml:381 src/contents/ui/Crusher.qml:208
+#: src/contents/ui/Convolver.qml:380 src/contents/ui/Crusher.qml:208
 msgid "Rate"
 msgstr "速率"
 
-#: src/contents/ui/Convolver.qml:386 src/contents/ui/Delay.qml:75
+#: src/contents/ui/Convolver.qml:385 src/contents/ui/Delay.qml:75
 #: src/contents/ui/Delay.qml:86 src/contents/ui/Delay.qml:228
 #: src/contents/ui/Delay.qml:239
 msgid "Samples"
 msgstr "樣本"
 
-#: src/contents/ui/Convolver.qml:391
+#: src/contents/ui/Convolver.qml:390
 msgid "Duration"
 msgstr "持續期間"
 
-#: src/contents/ui/Convolver.qml:396 src/contents/ui/PipeWirePage.qml:331
+#: src/contents/ui/Convolver.qml:395 src/contents/ui/PipeWirePage.qml:331
 msgid "Channels"
 msgstr "聲道"
 
-#: src/contents/ui/Convolver.qml:401
+#: src/contents/ui/Convolver.qml:400
 msgid "Format"
 msgstr "格式"
 
-#: src/contents/ui/Convolver.qml:459
+#: src/contents/ui/Convolver.qml:458
 msgid "Stereo width"
 msgstr "立體聲寬度"
 
-#: src/contents/ui/Convolver.qml:538 src/tags_plugin_name.cpp:46
+#: src/contents/ui/Convolver.qml:537 src/tags_plugin_name.cpp:46
 msgid "Autogain"
 msgstr "自動增益"
 
@@ -987,7 +987,7 @@ msgstr "交叉饋送預設集"
 msgid "Default"
 msgstr "預設"
 
-#: src/contents/ui/Crossfeed.qml:167 src/contents/ui/Main.qml:363
+#: src/contents/ui/Crossfeed.qml:167 src/contents/ui/Main.qml:361
 #: src/contents/ui/PreferencesSheet.qml:62 src/contents/ui/Reverb.qml:335
 msgid "Presets"
 msgstr "預設集"
@@ -1127,7 +1127,7 @@ msgstr "分割"
 #: src/contents/ui/Maximizer.qml:84 src/contents/ui/MultibandCompressor.qml:279
 #: src/contents/ui/MultibandCompressor.qml:327
 #: src/contents/ui/MultibandGate.qml:298 src/contents/ui/MultibandGate.qml:352
-#: src/contents/ui/RNNoise.qml:127
+#: src/contents/ui/RNNoise.qml:126
 msgid "Threshold"
 msgstr "閾值"
 
@@ -1237,7 +1237,7 @@ msgstr "聲道"
 #: src/contents/ui/DelegateStreamsList.qml:107
 #: src/contents/ui/EchoCanceller.qml:64 src/contents/ui/EchoCanceller.qml:97
 #: src/contents/ui/EchoCanceller.qml:124 src/contents/ui/Gate.qml:175
-#: src/contents/ui/RNNoise.qml:116
+#: src/contents/ui/RNNoise.qml:115
 msgid "Enable"
 msgstr "啟用"
 
@@ -1305,7 +1305,7 @@ msgstr "音訊等級控制"
 msgid "Input and output gain controls with level meters"
 msgstr "使用等級量表的輸入和輸出增益控制"
 
-#: src/contents/ui/EeInputOutputGain.qml:131 src/contents/ui/Main.qml:406
+#: src/contents/ui/EeInputOutputGain.qml:131 src/contents/ui/Main.qml:404
 #: src/contents/ui/StereoTools.qml:59
 msgid "Input"
 msgstr "輸入"
@@ -1806,52 +1806,52 @@ msgstr "消波範圍"
 msgid "Clipping"
 msgstr "消波"
 
-#: src/contents/ui/Main.qml:314
+#: src/contents/ui/Main.qml:312
 msgid "Reset Settings?"
 msgstr "重置設定？"
 
-#: src/contents/ui/Main.qml:315
+#: src/contents/ui/Main.qml:313
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr "確定要重新設定全部 Easy Effects 設定嗎？"
 
-#: src/contents/ui/Main.qml:337
+#: src/contents/ui/Main.qml:335
 msgid "Go back"
 msgstr "返回"
 
-#: src/contents/ui/Main.qml:347 src/contents/ui/PageStreamsEffects.qml:761
+#: src/contents/ui/Main.qml:345 src/contents/ui/PageStreamsEffects.qml:787
 msgid "Effects"
 msgstr "音效"
 
-#: src/contents/ui/Main.qml:348
+#: src/contents/ui/Main.qml:346
 msgid "Turn effects on/off"
 msgstr "將音效開啟/關閉"
 
-#: src/contents/ui/Main.qml:359
+#: src/contents/ui/Main.qml:357
 msgid "Audio effects are enabled."
 msgstr "音效處理已經啟用。"
 
-#: src/contents/ui/Main.qml:359
+#: src/contents/ui/Main.qml:357
 msgid "Audio effects are disabled."
 msgstr "音效處理已經停用。"
 
-#: src/contents/ui/Main.qml:419
+#: src/contents/ui/Main.qml:417
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/contents/ui/Main.qml:437
+#: src/contents/ui/Main.qml:435
 msgid "Preferences"
 msgstr "偏好設定"
 
-#: src/contents/ui/Main.qml:448 src/contents/ui/ShortcutsSheet.qml:390
+#: src/contents/ui/Main.qml:446 src/contents/ui/ShortcutsSheet.qml:418
 #: src/contents/ui/TrayIcon.qml:197
 msgid "Shortcuts"
 msgstr "快速鍵"
 
-#: src/contents/ui/Main.qml:480
+#: src/contents/ui/Main.qml:478
 msgid "About Easy Effects"
 msgstr "關於 Easy Effects"
 
-#: src/contents/ui/Main.qml:488 src/contents/ui/TrayIcon.qml:216
+#: src/contents/ui/Main.qml:486 src/contents/ui/TrayIcon.qml:216
 msgid "Quit"
 msgstr "退出"
 
@@ -1965,7 +1965,7 @@ msgid "Reduce the list of effects pipeline"
 msgstr "減少音效管道列表"
 
 #: src/contents/ui/PageStreamsEffects.qml:457
-#: src/contents/ui/PageStreamsEffects.qml:748
+#: src/contents/ui/PageStreamsEffects.qml:774
 msgid "Players"
 msgstr "播放器"
 
@@ -1974,19 +1974,19 @@ msgid "Output device"
 msgstr "輸出裝置"
 
 #: src/contents/ui/PageStreamsEffects.qml:466
-#: src/contents/ui/PageStreamsEffects.qml:748
+#: src/contents/ui/PageStreamsEffects.qml:774
 msgid "Recorders"
 msgstr "錄音器"
 
-#: src/contents/ui/PageStreamsEffects.qml:779
+#: src/contents/ui/PageStreamsEffects.qml:805
 msgid "Excluded apps"
 msgstr "已經排除的應用程式"
 
-#: src/contents/ui/PageStreamsEffects.qml:791
+#: src/contents/ui/PageStreamsEffects.qml:817
 msgid "Input monitoring"
 msgstr "輸入監控"
 
-#: src/contents/ui/PageStreamsEffects.qml:804
+#: src/contents/ui/PageStreamsEffects.qml:830
 msgid "Send audio to the virtual source"
 msgstr "將音訊傳送到虛擬來源"
 
@@ -2598,23 +2598,23 @@ msgstr "已經匯入 %1 社群預設集至本地預設集列表中。"
 msgid "Failed to import the %1 community preset to the list of local presets."
 msgstr "匯入 %1 社區預設集至本地預設集列表失敗。"
 
-#: src/contents/ui/PresetsDialog.qml:99 src/contents/ui/PresetsDialog.qml:156
+#: src/contents/ui/PresetsDialog.qml:98 src/contents/ui/PresetsDialog.qml:155
 msgid "Local"
 msgstr "本地"
 
-#: src/contents/ui/PresetsDialog.qml:107 src/contents/ui/PresetsDialog.qml:156
+#: src/contents/ui/PresetsDialog.qml:106 src/contents/ui/PresetsDialog.qml:155
 msgid "Community"
 msgstr "社群"
 
-#: src/contents/ui/PresetsDialog.qml:115
+#: src/contents/ui/PresetsDialog.qml:114
 msgid "Autoload"
 msgstr "自動載入"
 
-#: src/contents/ui/PresetsDialog.qml:154
+#: src/contents/ui/PresetsDialog.qml:153
 msgid "No preset loaded"
 msgstr "無預設集載入"
 
-#: src/contents/ui/PresetsDialog.qml:174
+#: src/contents/ui/PresetsDialog.qml:173
 msgid "Fallback Preset"
 msgstr "退回備用預設集"
 
@@ -2808,64 +2808,64 @@ msgstr "迪斯可"
 msgid "Large occupied hall"
 msgstr "大型寬倘演廳"
 
-#: src/contents/ui/RNNoise.qml:61
+#: src/contents/ui/RNNoise.qml:60
 msgid "Imported a new RNNoise model file."
 msgstr "已經匯入新的 RNNoise 模型檔案。"
 
-#: src/contents/ui/RNNoise.qml:63
+#: src/contents/ui/RNNoise.qml:62
 msgid "Failed to import the RNNoise model file."
 msgstr "匯入 RNNoise 模型檔案失敗。"
 
-#: src/contents/ui/RNNoise.qml:74 src/contents/ui/RNNoise.qml:85
-#: src/contents/ui/RNNoise.qml:299 src/contents/ui/RNNoise.qml:301
+#: src/contents/ui/RNNoise.qml:73 src/contents/ui/RNNoise.qml:84
+#: src/contents/ui/RNNoise.qml:298 src/contents/ui/RNNoise.qml:300
 msgid "Standard RNNoise model"
 msgstr "標準 RNNoise 模型"
 
-#: src/contents/ui/RNNoise.qml:76
+#: src/contents/ui/RNNoise.qml:75
 msgid "Standard RNNoise model loaded."
 msgstr "標準 RNNoise 模型已經載入。"
 
-#: src/contents/ui/RNNoise.qml:81 src/contents/ui/RNNoise.qml:303
+#: src/contents/ui/RNNoise.qml:80 src/contents/ui/RNNoise.qml:302
 msgid "Using %1 Model"
 msgstr "使用 %1 模型"
 
-#: src/contents/ui/RNNoise.qml:83
+#: src/contents/ui/RNNoise.qml:82
 msgid "Loaded the %1 RNNoise model."
 msgstr "已經載入 %1 RNNoise 模型。"
 
-#: src/contents/ui/RNNoise.qml:87
+#: src/contents/ui/RNNoise.qml:86
 msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
 msgstr "載入 %1 模型失敗。 退回備用標準 RNNoise 模型。"
 
-#: src/contents/ui/RNNoise.qml:106 src/contents/ui/Speex.qml:118
+#: src/contents/ui/RNNoise.qml:105 src/contents/ui/Speex.qml:118
 msgid "Voice detection"
 msgstr "語音偵測"
 
-#: src/contents/ui/RNNoise.qml:143
+#: src/contents/ui/RNNoise.qml:142
 msgid "Wet level"
 msgstr "濕等級"
 
-#: src/contents/ui/RNNoise.qml:183
+#: src/contents/ui/RNNoise.qml:182
 msgid "Use the Standard model"
 msgstr "使用標準模型"
 
-#: src/contents/ui/RNNoise.qml:194
+#: src/contents/ui/RNNoise.qml:193
 msgid "User Models"
 msgstr "使用者模型"
 
-#: src/contents/ui/RNNoise.qml:260
+#: src/contents/ui/RNNoise.qml:259
 msgid "Delete this model"
 msgstr "刪除此模型"
 
-#: src/contents/ui/RNNoise.qml:265
+#: src/contents/ui/RNNoise.qml:264
 msgid "Removed the %1 RNNoise model."
 msgstr "移除 %1 RNNoise 模型。"
 
-#: src/contents/ui/RNNoise.qml:267
+#: src/contents/ui/RNNoise.qml:266
 msgid "Failed to remove the %1 RNNoise model."
 msgstr "移除 %1 RNNoise 模型失敗。"
 
-#: src/contents/ui/RNNoise.qml:338
+#: src/contents/ui/RNNoise.qml:337
 msgid "Import model"
 msgstr "匯入模型"
 
@@ -2878,7 +2878,7 @@ msgid "Toggle fullscreen"
 msgstr "切換全螢幕"
 
 #: src/contents/ui/ShortcutsSheet.qml:108
-#: src/contents/ui/ShortcutsSheet.qml:331 src/global_shortcuts.hpp:48
+#: src/contents/ui/ShortcutsSheet.qml:359 src/global_shortcuts.hpp:48
 msgid "Toggle global bypass"
 msgstr "切換整體略過"
 
@@ -2900,14 +2900,19 @@ msgstr "切換處理全部的輸出"
 
 #: src/contents/ui/ShortcutsSheet.qml:257
 #: src/contents/ui/ShortcutsSheet.qml:270
+#: src/contents/ui/ShortcutsSheet.qml:298
 msgid "Can be used on numeric controls"
 msgstr "可用於數字控制"
 
-#: src/contents/ui/ShortcutsSheet.qml:285
+#: src/contents/ui/ShortcutsSheet.qml:289
+msgid "Wheel"
+msgstr ""
+
+#: src/contents/ui/ShortcutsSheet.qml:313
 msgid "Global Shortcuts"
 msgstr "整體快速鍵"
 
-#: src/contents/ui/ShortcutsSheet.qml:371 src/global_shortcuts.hpp:50
+#: src/contents/ui/ShortcutsSheet.qml:399 src/global_shortcuts.hpp:50
 msgid "Toggle microphone monitoring"
 msgstr "切換麥克風監聽"
 
@@ -3082,33 +3087,33 @@ msgstr "(喇叭)"
 msgid "Output Level Meter"
 msgstr "輸出等級量表"
 
-#: src/presets_manager.cpp:823 src/presets_manager.cpp:830
-#: src/presets_manager.cpp:840 src/presets_manager.cpp:847
-#: src/presets_manager.cpp:857 src/presets_manager.cpp:866
+#: src/presets_manager.cpp:799 src/presets_manager.cpp:806
+#: src/presets_manager.cpp:816 src/presets_manager.cpp:823
+#: src/presets_manager.cpp:833 src/presets_manager.cpp:842
 msgid "Preset not loaded correctly"
 msgstr "預設集未正確載入"
 
-#: src/presets_manager.cpp:823
+#: src/presets_manager.cpp:799
 msgid "Wrong format in excluded apps list"
 msgstr "已經排除的應用程序列表中的錯誤格式"
 
-#: src/presets_manager.cpp:831
+#: src/presets_manager.cpp:807
 msgid "Generic error while loading excluded apps list"
 msgstr "載入排除的應用程序列表時出現一般錯誤"
 
-#: src/presets_manager.cpp:840
+#: src/presets_manager.cpp:816
 msgid "Wrong format in effects list"
 msgstr "音效列表錯誤格式"
 
-#: src/presets_manager.cpp:847
+#: src/presets_manager.cpp:823
 msgid "Generic error while loading effects list"
 msgstr "載入音效列表時出現一般錯誤"
 
-#: src/presets_manager.cpp:858
+#: src/presets_manager.cpp:834
 msgid "One or more parameters have a wrong format"
 msgstr "一個或多個參數有錯誤格式"
 
-#: src/presets_manager.cpp:867
+#: src/presets_manager.cpp:843
 msgid "Generic error while loading the effect"
 msgstr "載入音效時出現一般錯誤"
 

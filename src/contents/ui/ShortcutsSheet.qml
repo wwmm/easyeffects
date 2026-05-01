@@ -270,6 +270,34 @@ Kirigami.OverlaySheet {
                     text: i18n("Can be used on numeric controls") // qmllint disable
                 }
 
+                RowLayout {
+                    Layout.alignment: Qt.AlignRight
+
+                    Kirigami.Chip {
+                        text: "Shift"
+                        closable: false
+                        checkable: false
+                        down: false
+                        hoverEnabled: false
+                    }
+
+                    Controls.Label {
+                        text: "+"
+                    }
+
+                    Kirigami.Chip {
+                        text: i18n("Wheel")
+                        closable: false
+                        checkable: false
+                        down: false
+                        hoverEnabled: false
+                    }
+                }
+
+                Controls.Label {
+                    text: i18n("Can be used on numeric controls") // qmllint disable
+                }
+
                 Item {
                     implicitHeight: Kirigami.Units.gridUnit
                 }
