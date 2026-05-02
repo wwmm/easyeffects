@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-05-01 19:02-0300\n"
-"PO-Revision-Date: 2026-05-01 01:10+0000\n"
+"PO-Revision-Date: 2026-05-02 11:09+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -2986,7 +2986,7 @@ msgstr "Для изменения значений в числовых поля�
 
 #: src/contents/ui/ShortcutsSheet.qml:289
 msgid "Wheel"
-msgstr ""
+msgstr "Колесо"
 
 #: src/contents/ui/ShortcutsSheet.qml:313
 msgid "Global Shortcuts"
