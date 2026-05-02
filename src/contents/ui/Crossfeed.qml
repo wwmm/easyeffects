@@ -146,7 +146,7 @@ Kirigami.ScrollablePage {
     header: inputOutputLevels
 
     footer: RowLayout {
-        Text {
+        Controls.Label {
             text: i18n("Using %1", `<strong>${PluginsPackage.bs2b}</strong>`) // qmllint disable
             textFormat: Text.RichText
             horizontalAlignment: Qt.AlignLeft

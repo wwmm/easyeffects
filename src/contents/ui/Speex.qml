@@ -173,7 +173,7 @@ Kirigami.ScrollablePage {
     header: inputOutputLevels
 
     footer: RowLayout {
-        Text {
+        Controls.Label {
             text: i18n("Using %1", `<strong>${PluginsPackage.speex}</b>`) // qmllint disable
             textFormat: Text.RichText
             horizontalAlignment: Qt.AlignLeft
