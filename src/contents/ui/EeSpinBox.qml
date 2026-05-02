@@ -97,7 +97,7 @@ FormCard.AbstractFormDelegate {
         ColumnLayout {
             id: labelColumn
 
-            Text {
+            Label {
                 id: label
 
                 Layout.fillWidth: control.labelFillWidth
@@ -109,7 +109,7 @@ FormCard.AbstractFormDelegate {
                 horizontalAlignment: control.labelAlignment
             }
 
-            Text {
+            Label {
                 id: subtitle
 
                 Layout.fillWidth: control.labelFillWidth

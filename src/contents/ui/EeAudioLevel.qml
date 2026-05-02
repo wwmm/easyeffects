@@ -19,6 +19,7 @@
 
 pragma ComponentBehavior: Bound
 import QtQuick
+import QtQuick.Controls
 import ee.ui
 import org.kde.kirigami as Kirigami
 
@@ -166,7 +167,7 @@ Rectangle {
         }
     }
 
-    Text {
+    Label {
         id: valueLabel
 
         anchors.centerIn: parent

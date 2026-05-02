@@ -19,6 +19,7 @@
 
 pragma ComponentBehavior: Bound
 import QtQuick
+import QtQuick.Controls
 import QtQuick.Layouts
 import ee.ui
 import org.kde.kirigami as Kirigami
@@ -195,7 +196,7 @@ Rectangle {
         anchors.fill: parent
         implicitHeight: valueLabel.implicitHeight
 
-        Text {
+        Label {
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter
             text: control.label
@@ -211,7 +212,7 @@ Rectangle {
             }
         }
 
-        Text {
+        Label {
             id: valueLabel
 
             horizontalAlignment: Qt.AlignRight
