@@ -286,7 +286,7 @@ Kirigami.OverlaySheet {
                     }
 
                     Kirigami.Chip {
-                        text: i18n("Wheel")
+                        text: i18n("Mouse wheel")
                         closable: false
                         checkable: false
                         down: false
