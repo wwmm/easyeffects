@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-05-01 19:02-0300\n"
-"PO-Revision-Date: 2026-03-20 15:09+0000\n"
+"PO-Revision-Date: 2026-05-03 15:09+0000\n"
 "Last-Translator: Arif Budiman <arifpedia@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/easyeffects/"
 "main/id/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.17-dev\n"
+"X-Generator: Weblate 5.17.1\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -242,9 +242,8 @@ msgid "Reset settings"
 msgstr "Atur ulang pengaturan"
 
 #: src/contents/ui/Autotune.qml:92 src/contents/ui/Autotune.qml:120
-#, fuzzy
 msgid "Tuning"
-msgstr "Berjalan"
+msgstr "Penyetelan"
 
 #: src/contents/ui/Autotune.qml:107 src/contents/ui/Compressor.qml:79
 #: src/contents/ui/Compressor.qml:301 src/contents/ui/Crusher.qml:97
@@ -259,9 +258,8 @@ msgid "Mode"
 msgstr "Mode"
 
 #: src/contents/ui/Autotune.qml:111
-#, fuzzy
 msgid "Auto"
-msgstr "Penguatan otomatis"
+msgstr "Otomatis"
 
 #: src/contents/ui/Autotune.qml:111 src/contents/ui/Main.qml:454
 #: src/contents/ui/TrayIcon.qml:206
@@ -269,13 +267,12 @@ msgid "Manual"
 msgstr "Manual"
 
 #: src/contents/ui/Autotune.qml:137
-#, fuzzy
 msgid "Correction"
-msgstr "Korelasi"
+msgstr "Koreksi"
 
 #: src/contents/ui/Autotune.qml:153
 msgid "Bias"
-msgstr ""
+msgstr "Bias"
 
 #: src/contents/ui/Autotune.qml:169 src/contents/ui/Deesser.qml:171
 #: src/contents/ui/Filter.qml:123 src/contents/ui/Reverb.qml:126
@@ -284,43 +281,40 @@ msgid "Filter"
 msgstr "Filter"
 
 #: src/contents/ui/Autotune.qml:186
-#, fuzzy
 msgid "Offset"
-msgstr "Offset DC"
+msgstr "Offset"
 
 #: src/contents/ui/Autotune.qml:205 src/contents/ui/Autotune.qml:244
 msgid "Scale"
-msgstr ""
+msgstr "Skala"
 
 #: src/contents/ui/Autotune.qml:218
 msgid "Root"
-msgstr ""
+msgstr "Nada Dasar"
 
 #: src/contents/ui/Autotune.qml:231
 msgid "Accidental"
-msgstr ""
+msgstr "Aksidental"
 
 #: src/contents/ui/Autotune.qml:248
 msgid "Major"
-msgstr ""
+msgstr "Mayor"
 
 #: src/contents/ui/Autotune.qml:248
 msgid "Minor"
-msgstr ""
+msgstr "Minor"
 
 #: src/contents/ui/Autotune.qml:377 src/contents/ui/Deesser.qml:276
 msgid "Level"
 msgstr "Level"
 
 #: src/contents/ui/Autotune.qml:388
-#, fuzzy
 msgid "Pitch error"
-msgstr "Nada kiri"
+msgstr "Kesalahan nada"
 
 #: src/contents/ui/Autotune.qml:425
-#, fuzzy
 msgid "Fast correction"
-msgstr "Reduksi bit"
+msgstr "Koreksi cepat"
 
 #: src/contents/ui/BassEnhancer.qml:56 src/contents/ui/Exciter.qml:56
 msgid "Blend harmonics"
@@ -1005,7 +999,7 @@ msgstr "Preset"
 
 #: src/contents/ui/CrosstalkCanceller.qml:64
 msgid "Process only phantom center"
-msgstr ""
+msgstr "Proses hanya pusat phantom"
 
 #: src/contents/ui/CrosstalkCanceller.qml:75
 #: src/contents/ui/StereoTools.qml:294 src/tags_plugin_name.cpp:58
@@ -1013,9 +1007,8 @@ msgid "Delay"
 msgstr "Penundaan"
 
 #: src/contents/ui/CrosstalkCanceller.qml:91
-#, fuzzy
 msgid "Decay"
-msgstr "Waktu peluruhan"
+msgstr "Peluruhan"
 
 #: src/contents/ui/Crusher.qml:56
 msgid "Bit reduction"
@@ -2940,7 +2933,7 @@ msgstr "Dapat digunakan pada kontrol numerik"
 
 #: src/contents/ui/ShortcutsSheet.qml:289
 msgid "Wheel"
-msgstr ""
+msgstr "Roda"
 
 #: src/contents/ui/ShortcutsSheet.qml:313
 msgid "Global Shortcuts"
@@ -3176,9 +3169,8 @@ msgid "Unknown"
 msgstr "Tidak diketahui"
 
 #: src/tags_plugin_name.cpp:47
-#, fuzzy
 msgid "Autotune"
-msgstr "Penguatan otomatis"
+msgstr "Autotune"
 
 #: src/tags_plugin_name.cpp:48
 msgid "Bass Enhancer"
@@ -3197,9 +3189,8 @@ msgid "Crossfeed"
 msgstr "Crossfeed"
 
 #: src/tags_plugin_name.cpp:53
-#, fuzzy
 msgid "Crosstalk Canceller"
-msgstr "Pembatal Gema"
+msgstr "Pembatal Bicara Silang"
 
 #: src/tags_plugin_name.cpp:54
 msgid "Crusher"
@@ -3305,7 +3296,7 @@ msgstr "md"
 #: src/units.hpp:73
 msgctxt "microseconds unit abbreviation"
 msgid "μs"
-msgstr ""
+msgstr "μs"
 
 #: src/units.hpp:74
 msgctxt "Hertz unit abbreviation"
