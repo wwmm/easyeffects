@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-05-01 19:02-0300\n"
-"PO-Revision-Date: 2025-12-11 21:07+0000\n"
+"PO-Revision-Date: 2026-05-03 02:09+0000\n"
 "Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/easyeffects/main/"
 "de/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.15-dev\n"
+"X-Generator: Weblate 5.17.1\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -2654,7 +2654,7 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:761
 msgid "Global shortcuts"
-msgstr "_Tastenkürzel"
+msgstr "Globale Tastenkürzel"
 
 #: src/contents/ui/PreferencesSheet.qml:762
 msgid "Enables support for XDG global shortcuts."
@@ -3045,15 +3045,15 @@ msgstr "Kann bei numerischen Kontrollen verwendet werden"
 
 #: src/contents/ui/ShortcutsSheet.qml:289
 msgid "Wheel"
-msgstr ""
+msgstr "Rad"
 
 #: src/contents/ui/ShortcutsSheet.qml:313
 msgid "Global Shortcuts"
-msgstr "_Tastenkürzel"
+msgstr "Globale Tastenkürzel"
 
 #: src/contents/ui/ShortcutsSheet.qml:399 src/global_shortcuts.hpp:50
 msgid "Toggle microphone monitoring"
-msgstr "Mic Monitoring umschalten"
+msgstr "Mikrofonüberwachung umschalten"
 
 #: src/contents/ui/Speex.qml:64
 msgid "Denoise"
