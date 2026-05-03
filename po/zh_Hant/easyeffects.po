@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-05-01 19:02-0300\n"
+"POT-Creation-Date: 2026-05-03 13:16-0300\n"
 "PO-Revision-Date: 2026-05-02 11:09+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
@@ -2905,8 +2905,8 @@ msgid "Can be used on numeric controls"
 msgstr "可用於數字控制"
 
 #: src/contents/ui/ShortcutsSheet.qml:289
-msgid "Wheel"
-msgstr "滾輪"
+msgid "Mouse wheel"
+msgstr ""
 
 #: src/contents/ui/ShortcutsSheet.qml:313
 msgid "Global Shortcuts"
@@ -3348,6 +3348,9 @@ msgstr "等化器、壓縮器、及其他音效處理"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "簡易音效處理"
+
+#~ msgid "Wheel"
+#~ msgstr "滾輪"
 
 #~ msgctxt "milliseconds unit abbreviation"
 #~ msgid "us"

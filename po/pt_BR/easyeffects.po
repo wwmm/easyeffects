@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-05-01 19:02-0300\n"
+"POT-Creation-Date: 2026-05-03 13:16-0300\n"
 "PO-Revision-Date: 2025-12-12 11:00+0000\n"
 "Last-Translator: John Peter Sa <johnppetersa@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -2980,7 +2980,7 @@ msgid "Can be used on numeric controls"
 msgstr "Pode ser usado em controles numéricos"
 
 #: src/contents/ui/ShortcutsSheet.qml:289
-msgid "Wheel"
+msgid "Mouse wheel"
 msgstr ""
 
 #: src/contents/ui/ShortcutsSheet.qml:313

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-05-01 19:02-0300\n"
+"POT-Creation-Date: 2026-05-03 13:16-0300\n"
 "PO-Revision-Date: 2026-05-03 15:09+0000\n"
 "Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2950,8 +2950,8 @@ msgid "Can be used on numeric controls"
 msgstr "Può essere usato sui parametri numerici"
 
 #: src/contents/ui/ShortcutsSheet.qml:289
-msgid "Wheel"
-msgstr "Ruota"
+msgid "Mouse wheel"
+msgstr ""
 
 #: src/contents/ui/ShortcutsSheet.qml:313
 msgid "Global Shortcuts"
@@ -3393,6 +3393,9 @@ msgstr "Equalizzatore, Compressore e Altri Effetti Audio"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "Effetti audio semplici"
+
+#~ msgid "Wheel"
+#~ msgstr "Ruota"
 
 #~ msgctxt "milliseconds unit abbreviation"
 #~ msgid "us"

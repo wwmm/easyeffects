@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-05-01 19:02-0300\n"
+"POT-Creation-Date: 2026-05-03 13:16-0300\n"
 "PO-Revision-Date: 2026-05-03 15:09+0000\n"
 "Last-Translator: Arif Budiman <arifpedia@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/easyeffects/"
@@ -2932,8 +2932,8 @@ msgid "Can be used on numeric controls"
 msgstr "Dapat digunakan pada kontrol numerik"
 
 #: src/contents/ui/ShortcutsSheet.qml:289
-msgid "Wheel"
-msgstr "Roda"
+msgid "Mouse wheel"
+msgstr ""
 
 #: src/contents/ui/ShortcutsSheet.qml:313
 msgid "Global Shortcuts"
@@ -3375,6 +3375,9 @@ msgstr "Equalizer, Kompresor dan Efek Audio Lainnya"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "Efek audio sederhana"
+
+#~ msgid "Wheel"
+#~ msgstr "Roda"
 
 #, fuzzy
 #~ msgctxt "milliseconds unit abbreviation"
