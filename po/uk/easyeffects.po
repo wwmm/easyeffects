@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-05-03 13:16-0300\n"
-"PO-Revision-Date: 2026-05-04 10:29+0000\n"
+"PO-Revision-Date: 2026-05-04 23:09+0000\n"
 "Last-Translator: Володимир <vlzuykov@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
@@ -259,9 +259,8 @@ msgid "Mode"
 msgstr "Режим"
 
 #: src/contents/ui/Autotune.qml:111
-#, fuzzy
 msgid "Auto"
-msgstr "Автоматичне підсилення"
+msgstr "Авто"
 
 #: src/contents/ui/Autotune.qml:111 src/contents/ui/Main.qml:454
 #: src/contents/ui/TrayIcon.qml:206
@@ -284,9 +283,8 @@ msgid "Filter"
 msgstr "Фільтр"
 
 #: src/contents/ui/Autotune.qml:186
-#, fuzzy
 msgid "Offset"
-msgstr "Зсув нульвого рівня"
+msgstr "Зсув"
 
 #: src/contents/ui/Autotune.qml:205 src/contents/ui/Autotune.qml:244
 msgid "Scale"
@@ -298,29 +296,27 @@ msgstr ""
 
 #: src/contents/ui/Autotune.qml:231
 msgid "Accidental"
-msgstr ""
+msgstr "Альтерація"
 
 #: src/contents/ui/Autotune.qml:248
 msgid "Major"
-msgstr ""
+msgstr "Мажор"
 
 #: src/contents/ui/Autotune.qml:248
 msgid "Minor"
-msgstr ""
+msgstr "Мінор"
 
 #: src/contents/ui/Autotune.qml:377 src/contents/ui/Deesser.qml:276
 msgid "Level"
 msgstr "Рівень"
 
 #: src/contents/ui/Autotune.qml:388
-#, fuzzy
 msgid "Pitch error"
-msgstr "Зміна висоти тону лівого каналу"
+msgstr "Помилка висоти тону"
 
 #: src/contents/ui/Autotune.qml:425
-#, fuzzy
 msgid "Fast correction"
-msgstr "Зменшення бітності"
+msgstr "Швидка корекція"
 
 #: src/contents/ui/BassEnhancer.qml:56 src/contents/ui/Exciter.qml:56
 msgid "Blend harmonics"
@@ -3179,9 +3175,8 @@ msgid "Unknown"
 msgstr "Невідомий"
 
 #: src/tags_plugin_name.cpp:47
-#, fuzzy
 msgid "Autotune"
-msgstr "Автоматичне підсилення"
+msgstr "Автотюн"
 
 #: src/tags_plugin_name.cpp:48
 msgid "Bass Enhancer"
