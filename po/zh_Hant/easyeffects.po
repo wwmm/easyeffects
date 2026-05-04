@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-05-03 13:16-0300\n"
-"PO-Revision-Date: 2026-05-02 11:09+0000\n"
+"PO-Revision-Date: 2026-05-04 05:09+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hant/>\n"
@@ -2906,7 +2906,7 @@ msgstr "可用於數字控制"
 
 #: src/contents/ui/ShortcutsSheet.qml:289
 msgid "Mouse wheel"
-msgstr ""
+msgstr "滑鼠滾輪"
 
 #: src/contents/ui/ShortcutsSheet.qml:313
 msgid "Global Shortcuts"
