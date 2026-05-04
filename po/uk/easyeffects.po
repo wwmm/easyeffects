@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-05-03 13:16-0300\n"
-"PO-Revision-Date: 2026-04-27 07:09+0000\n"
+"PO-Revision-Date: 2026-05-04 10:29+0000\n"
 "Last-Translator: Володимир <vlzuykov@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.17.1-dev\n"
+"X-Generator: Weblate 5.17.1\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -2943,15 +2943,15 @@ msgstr "Можна використовувати з числовими регу
 
 #: src/contents/ui/ShortcutsSheet.qml:289
 msgid "Mouse wheel"
-msgstr ""
+msgstr "Коліщатко миші"
 
 #: src/contents/ui/ShortcutsSheet.qml:313
 msgid "Global Shortcuts"
-msgstr "Глобальні скорочення"
+msgstr "Глобальні клавіатурні скорочення"
 
 #: src/contents/ui/ShortcutsSheet.qml:399 src/global_shortcuts.hpp:50
 msgid "Toggle microphone monitoring"
-msgstr "Увімкнути/вимкнути прослуховування мікрофона"
+msgstr "Увімкнути/вимкнути моніторинг мікрофона"
 
 #: src/contents/ui/Speex.qml:64
 msgid "Denoise"
