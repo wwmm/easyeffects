@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-05-03 13:16-0300\n"
+"POT-Creation-Date: 2026-05-05 14:41-0300\n"
 "PO-Revision-Date: 2026-03-28 02:09+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -281,7 +281,7 @@ msgid "Auto"
 msgstr "Autogain"
 
 #: src/contents/ui/Autotune.qml:111 src/contents/ui/Main.qml:454
-#: src/contents/ui/TrayIcon.qml:206
+#: src/contents/ui/TrayIcon.qml:218
 #, fuzzy
 msgid "Manual"
 msgstr "_Manuál"
@@ -2034,7 +2034,7 @@ msgid "Preferences"
 msgstr "_Nastavení"
 
 #: src/contents/ui/Main.qml:446 src/contents/ui/ShortcutsSheet.qml:418
-#: src/contents/ui/TrayIcon.qml:197
+#: src/contents/ui/TrayIcon.qml:209
 #, fuzzy
 msgid "Shortcuts"
 msgstr "_Klávesové zkratky"
@@ -2044,7 +2044,7 @@ msgstr "_Klávesové zkratky"
 msgid "About Easy Effects"
 msgstr "_O EasyEffects"
 
-#: src/contents/ui/Main.qml:486 src/contents/ui/TrayIcon.qml:216
+#: src/contents/ui/Main.qml:486 src/contents/ui/TrayIcon.qml:228
 #, fuzzy
 msgid "Quit"
 msgstr "_Ukončit"
@@ -3184,7 +3184,7 @@ msgid "Toggle fullscreen"
 msgstr ""
 
 #: src/contents/ui/ShortcutsSheet.qml:108
-#: src/contents/ui/ShortcutsSheet.qml:359 src/global_shortcuts.hpp:48
+#: src/contents/ui/ShortcutsSheet.qml:359 src/global_shortcuts.hpp:83
 #, fuzzy
 msgid "Toggle global bypass"
 msgstr "Globální bypass"
@@ -3224,7 +3224,7 @@ msgstr ""
 msgid "Global Shortcuts"
 msgstr "_Klávesové zkratky"
 
-#: src/contents/ui/ShortcutsSheet.qml:399 src/global_shortcuts.hpp:50
+#: src/contents/ui/ShortcutsSheet.qml:399 src/global_shortcuts.hpp:85
 msgid "Toggle microphone monitoring"
 msgstr ""
 
@@ -3329,29 +3329,39 @@ msgstr "Základ sterea"
 msgid "Stereo phase"
 msgstr "Fáze sterea"
 
-#: src/contents/ui/TrayIcon.qml:87 src/contents/ui/TrayIcon.qml:107
+#: src/contents/ui/TrayIcon.qml:58
+#, fuzzy
+msgid "Effects disabled"
+msgstr "Povolit"
+
+#: src/contents/ui/TrayIcon.qml:60
+#, fuzzy
+msgid "Effects enabled"
+msgstr "Efekty"
+
+#: src/contents/ui/TrayIcon.qml:99 src/contents/ui/TrayIcon.qml:119
 #, fuzzy
 msgid "Preset Loaded"
 msgstr "Není načtena žádná předvolba"
 
-#: src/contents/ui/TrayIcon.qml:118 src/contents/ui/TrayIcon.qml:130
+#: src/contents/ui/TrayIcon.qml:130 src/contents/ui/TrayIcon.qml:142
 #, fuzzy
 msgid "Clear List"
 msgstr "seznam klientů"
 
-#: src/contents/ui/TrayIcon.qml:119 src/contents/ui/TrayIcon.qml:131
+#: src/contents/ui/TrayIcon.qml:131 src/contents/ui/TrayIcon.qml:143
 msgid "Are you sure you want to clear this list?"
 msgstr ""
 
-#: src/contents/ui/TrayIcon.qml:140
+#: src/contents/ui/TrayIcon.qml:152
 msgid "Input Presets"
 msgstr "Vstupní předvolby"
 
-#: src/contents/ui/TrayIcon.qml:155
+#: src/contents/ui/TrayIcon.qml:167
 msgid "Output Presets"
 msgstr "Výstupní předvolby"
 
-#: src/contents/ui/TrayIcon.qml:186
+#: src/contents/ui/TrayIcon.qml:198
 #, fuzzy
 msgid "Active"
 msgstr "Agresivní režim"
@@ -3381,32 +3391,32 @@ msgstr "Maximální Kmitočet"
 msgid "Inverted mode"
 msgstr "Obrátit fázi"
 
-#: src/main.cpp:353
+#: src/main.cpp:360
 #, fuzzy
 msgid "Global audio effects"
 msgstr "_Klávesové zkratky"
 
-#: src/main.cpp:354
+#: src/main.cpp:361
 msgid "© 2017-2026 Easy Effects Team"
 msgstr ""
 
-#: src/main.cpp:356
+#: src/main.cpp:363
 #, fuzzy
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:356
+#: src/main.cpp:363
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Obálka"
 
-#: src/main.cpp:360
+#: src/main.cpp:367
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 
-#: src/main.cpp:360
+#: src/main.cpp:367
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
@@ -4921,10 +4931,6 @@ msgstr ""
 
 #, fuzzy
 #~ msgid "enabled"
-#~ msgstr "Povolit"
-
-#, fuzzy
-#~ msgid "disabled"
 #~ msgstr "Povolit"
 
 #~ msgid "Latency"

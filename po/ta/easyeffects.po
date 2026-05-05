@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-05-03 13:16-0300\n"
+"POT-Creation-Date: 2026-05-05 14:41-0300\n"
 "PO-Revision-Date: 2026-04-23 16:12+0000\n"
 "Last-Translator: தமிழ்நேரம் <tamilneram247@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -264,7 +264,7 @@ msgid "Auto"
 msgstr "ஆட்டோகெயின்"
 
 #: src/contents/ui/Autotune.qml:111 src/contents/ui/Main.qml:454
-#: src/contents/ui/TrayIcon.qml:206
+#: src/contents/ui/TrayIcon.qml:218
 msgid "Manual"
 msgstr "கையேடு"
 
@@ -1862,7 +1862,7 @@ msgid "Preferences"
 msgstr "விருப்பத்தேர்வுகள்"
 
 #: src/contents/ui/Main.qml:446 src/contents/ui/ShortcutsSheet.qml:418
-#: src/contents/ui/TrayIcon.qml:197
+#: src/contents/ui/TrayIcon.qml:209
 msgid "Shortcuts"
 msgstr "குறுக்குவழிகள்"
 
@@ -1870,7 +1870,7 @@ msgstr "குறுக்குவழிகள்"
 msgid "About Easy Effects"
 msgstr "எளிதான விளைவுகள் பற்றி"
 
-#: src/contents/ui/Main.qml:486 src/contents/ui/TrayIcon.qml:216
+#: src/contents/ui/Main.qml:486 src/contents/ui/TrayIcon.qml:228
 msgid "Quit"
 msgstr "வெளியேறு"
 
@@ -2910,7 +2910,7 @@ msgid "Toggle fullscreen"
 msgstr "மாற்று முழுத்திரை"
 
 #: src/contents/ui/ShortcutsSheet.qml:108
-#: src/contents/ui/ShortcutsSheet.qml:359 src/global_shortcuts.hpp:48
+#: src/contents/ui/ShortcutsSheet.qml:359 src/global_shortcuts.hpp:83
 msgid "Toggle global bypass"
 msgstr "உலகளாவிய பைபாசை நிலைமாற்று"
 
@@ -2944,7 +2944,7 @@ msgstr ""
 msgid "Global Shortcuts"
 msgstr "உலகளாவிய குறுக்குவழிகள்"
 
-#: src/contents/ui/ShortcutsSheet.qml:399 src/global_shortcuts.hpp:50
+#: src/contents/ui/ShortcutsSheet.qml:399 src/global_shortcuts.hpp:85
 msgid "Toggle microphone monitoring"
 msgstr "மைக்ரோஃபோன் கண்காணிப்பை நிலைமாற்று"
 
@@ -3036,27 +3036,37 @@ msgstr "ச்டீரியோ அடிப்படை"
 msgid "Stereo phase"
 msgstr "ச்டீரியோ கட்டம்"
 
-#: src/contents/ui/TrayIcon.qml:87 src/contents/ui/TrayIcon.qml:107
+#: src/contents/ui/TrayIcon.qml:58
+#, fuzzy
+msgid "Effects disabled"
+msgstr "ஆடியோ விளைவுகள் முடக்கப்பட்டுள்ளன."
+
+#: src/contents/ui/TrayIcon.qml:60
+#, fuzzy
+msgid "Effects enabled"
+msgstr "ஆடியோ விளைவுகள் இயக்கப்பட்டுள்ளன."
+
+#: src/contents/ui/TrayIcon.qml:99 src/contents/ui/TrayIcon.qml:119
 msgid "Preset Loaded"
 msgstr "முன்னமைவு ஏற்றப்பட்டது"
 
-#: src/contents/ui/TrayIcon.qml:118 src/contents/ui/TrayIcon.qml:130
+#: src/contents/ui/TrayIcon.qml:130 src/contents/ui/TrayIcon.qml:142
 msgid "Clear List"
 msgstr "பட்டியலை அழி"
 
-#: src/contents/ui/TrayIcon.qml:119 src/contents/ui/TrayIcon.qml:131
+#: src/contents/ui/TrayIcon.qml:131 src/contents/ui/TrayIcon.qml:143
 msgid "Are you sure you want to clear this list?"
 msgstr "இந்தப் பட்டியலை நிச்சயமாக அழிக்க விரும்புகிறீர்களா?"
 
-#: src/contents/ui/TrayIcon.qml:140
+#: src/contents/ui/TrayIcon.qml:152
 msgid "Input Presets"
 msgstr "உள்ளீட்டு முன்னமைவுகள்"
 
-#: src/contents/ui/TrayIcon.qml:155
+#: src/contents/ui/TrayIcon.qml:167
 msgid "Output Presets"
 msgstr "வெளியீட்டு முன்னமைவுகள்"
 
-#: src/contents/ui/TrayIcon.qml:186
+#: src/contents/ui/TrayIcon.qml:198
 msgid "Active"
 msgstr "செயலில்"
 
@@ -3080,29 +3090,29 @@ msgstr "அதிகபட்ச உடனடி அதிர்வெண்"
 msgid "Inverted mode"
 msgstr "தலைகீழ் முறை"
 
-#: src/main.cpp:353
+#: src/main.cpp:360
 msgid "Global audio effects"
 msgstr "உலகளாவிய ஆடியோ விளைவுகள்"
 
-#: src/main.cpp:354
+#: src/main.cpp:361
 msgid "© 2017-2026 Easy Effects Team"
 msgstr "© 2017-2026 ஈசி எஃபெக்ட்ச் குழு"
 
-#: src/main.cpp:356
+#: src/main.cpp:363
 msgid "Wellington Wallace"
 msgstr "வெலிங்டன் வாலச்"
 
-#: src/main.cpp:356
+#: src/main.cpp:363
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "உருவாக்குநர்"
 
-#: src/main.cpp:360
+#: src/main.cpp:367
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "உங்கள் பெயர்கள்"
 
-#: src/main.cpp:360
+#: src/main.cpp:367
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "உங்கள் மின்னஞ்சல்கள்"

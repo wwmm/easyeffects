@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-05-03 13:16-0300\n"
+"POT-Creation-Date: 2026-05-05 14:41-0300\n"
 "PO-Revision-Date: 2026-03-07 07:09+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/easyeffects/"
@@ -277,7 +277,7 @@ msgid "Auto"
 msgstr "Automatsko pojačanje"
 
 #: src/contents/ui/Autotune.qml:111 src/contents/ui/Main.qml:454
-#: src/contents/ui/TrayIcon.qml:206
+#: src/contents/ui/TrayIcon.qml:218
 msgid "Manual"
 msgstr "Priručnik"
 
@@ -1992,7 +1992,7 @@ msgid "Preferences"
 msgstr "Postavke"
 
 #: src/contents/ui/Main.qml:446 src/contents/ui/ShortcutsSheet.qml:418
-#: src/contents/ui/TrayIcon.qml:197
+#: src/contents/ui/TrayIcon.qml:209
 msgid "Shortcuts"
 msgstr "Prečaci"
 
@@ -2000,7 +2000,7 @@ msgstr "Prečaci"
 msgid "About Easy Effects"
 msgstr "O aplikaciji EasyEffects"
 
-#: src/contents/ui/Main.qml:486 src/contents/ui/TrayIcon.qml:216
+#: src/contents/ui/Main.qml:486 src/contents/ui/TrayIcon.qml:228
 msgid "Quit"
 msgstr "Prekini"
 
@@ -3099,7 +3099,7 @@ msgid "Toggle fullscreen"
 msgstr ""
 
 #: src/contents/ui/ShortcutsSheet.qml:108
-#: src/contents/ui/ShortcutsSheet.qml:359 src/global_shortcuts.hpp:48
+#: src/contents/ui/ShortcutsSheet.qml:359 src/global_shortcuts.hpp:83
 #, fuzzy
 msgid "Toggle global bypass"
 msgstr "Premosnica"
@@ -3137,7 +3137,7 @@ msgstr ""
 msgid "Global Shortcuts"
 msgstr "Kratkoročno"
 
-#: src/contents/ui/ShortcutsSheet.qml:399 src/global_shortcuts.hpp:50
+#: src/contents/ui/ShortcutsSheet.qml:399 src/global_shortcuts.hpp:85
 msgid "Toggle microphone monitoring"
 msgstr ""
 
@@ -3239,29 +3239,39 @@ msgstr "Stereo baza"
 msgid "Stereo phase"
 msgstr "Stereo faza"
 
-#: src/contents/ui/TrayIcon.qml:87 src/contents/ui/TrayIcon.qml:107
+#: src/contents/ui/TrayIcon.qml:58
+#, fuzzy
+msgid "Effects disabled"
+msgstr "Audio efekti su deaktivirani."
+
+#: src/contents/ui/TrayIcon.qml:60
+#, fuzzy
+msgid "Effects enabled"
+msgstr "Audio efekti su aktivirani."
+
+#: src/contents/ui/TrayIcon.qml:99 src/contents/ui/TrayIcon.qml:119
 #, fuzzy
 msgid "Preset Loaded"
 msgstr "Učitaj predloške"
 
-#: src/contents/ui/TrayIcon.qml:118 src/contents/ui/TrayIcon.qml:130
+#: src/contents/ui/TrayIcon.qml:130 src/contents/ui/TrayIcon.qml:142
 msgid "Clear List"
 msgstr "Isprazni popis"
 
-#: src/contents/ui/TrayIcon.qml:119 src/contents/ui/TrayIcon.qml:131
+#: src/contents/ui/TrayIcon.qml:131 src/contents/ui/TrayIcon.qml:143
 msgid "Are you sure you want to clear this list?"
 msgstr "Jeste li sigurni da želite isprazniti ovaj popis?"
 
-#: src/contents/ui/TrayIcon.qml:140
+#: src/contents/ui/TrayIcon.qml:152
 #, fuzzy
 msgid "Input Presets"
 msgstr "Učitaj predloške"
 
-#: src/contents/ui/TrayIcon.qml:155
+#: src/contents/ui/TrayIcon.qml:167
 msgid "Output Presets"
 msgstr "Unaprijed postavljene postavke ispisa"
 
-#: src/contents/ui/TrayIcon.qml:186
+#: src/contents/ui/TrayIcon.qml:198
 msgid "Active"
 msgstr "Aktivni"
 
@@ -3290,31 +3300,31 @@ msgstr "Frekvencija"
 msgid "Inverted mode"
 msgstr "Invertiraj lijevo"
 
-#: src/main.cpp:353
+#: src/main.cpp:360
 #, fuzzy
 msgid "Global audio effects"
 msgstr "Kratkoročno"
 
-#: src/main.cpp:354
+#: src/main.cpp:361
 msgid "© 2017-2026 Easy Effects Team"
 msgstr ""
 
-#: src/main.cpp:356
+#: src/main.cpp:363
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:356
+#: src/main.cpp:363
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Pojačanje ulaza"
 
-#: src/main.cpp:360
+#: src/main.cpp:367
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 
-#: src/main.cpp:360
+#: src/main.cpp:367
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""

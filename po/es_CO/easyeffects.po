@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-05-03 13:16-0300\n"
+"POT-Creation-Date: 2026-05-05 14:41-0300\n"
 "PO-Revision-Date: 2025-07-20 18:38+0000\n"
 "Last-Translator: Santiago José Gutiérrez Llanos "
 "<gutierrezapata17@gmail.com>\n"
@@ -286,7 +286,7 @@ msgid "Auto"
 msgstr "AutoGain"
 
 #: src/contents/ui/Autotune.qml:111 src/contents/ui/Main.qml:454
-#: src/contents/ui/TrayIcon.qml:206
+#: src/contents/ui/TrayIcon.qml:218
 msgid "Manual"
 msgstr ""
 
@@ -2025,7 +2025,7 @@ msgid "Preferences"
 msgstr ""
 
 #: src/contents/ui/Main.qml:446 src/contents/ui/ShortcutsSheet.qml:418
-#: src/contents/ui/TrayIcon.qml:197
+#: src/contents/ui/TrayIcon.qml:209
 msgid "Shortcuts"
 msgstr ""
 
@@ -2034,7 +2034,7 @@ msgstr ""
 msgid "About Easy Effects"
 msgstr "EasyEffects"
 
-#: src/contents/ui/Main.qml:486 src/contents/ui/TrayIcon.qml:216
+#: src/contents/ui/Main.qml:486 src/contents/ui/TrayIcon.qml:228
 msgid "Quit"
 msgstr ""
 
@@ -3160,7 +3160,7 @@ msgid "Toggle fullscreen"
 msgstr ""
 
 #: src/contents/ui/ShortcutsSheet.qml:108
-#: src/contents/ui/ShortcutsSheet.qml:359 src/global_shortcuts.hpp:48
+#: src/contents/ui/ShortcutsSheet.qml:359 src/global_shortcuts.hpp:83
 #, fuzzy
 msgid "Toggle global bypass"
 msgstr "Bypass Global"
@@ -3199,7 +3199,7 @@ msgstr ""
 msgid "Global Shortcuts"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:399 src/global_shortcuts.hpp:50
+#: src/contents/ui/ShortcutsSheet.qml:399 src/global_shortcuts.hpp:85
 msgid "Toggle microphone monitoring"
 msgstr ""
 
@@ -3306,31 +3306,41 @@ msgstr "Base Estéreo"
 msgid "Stereo phase"
 msgstr "Fase Estéreo"
 
-#: src/contents/ui/TrayIcon.qml:87 src/contents/ui/TrayIcon.qml:107
+#: src/contents/ui/TrayIcon.qml:58
+#, fuzzy
+msgid "Effects disabled"
+msgstr "Habilitar"
+
+#: src/contents/ui/TrayIcon.qml:60
+#, fuzzy
+msgid "Effects enabled"
+msgstr "Efectos"
+
+#: src/contents/ui/TrayIcon.qml:99 src/contents/ui/TrayIcon.qml:119
 #, fuzzy
 msgid "Preset Loaded"
 msgstr "Perfiles de Dispositivos de Entrada: "
 
-#: src/contents/ui/TrayIcon.qml:118 src/contents/ui/TrayIcon.qml:130
+#: src/contents/ui/TrayIcon.qml:130 src/contents/ui/TrayIcon.qml:142
 #, fuzzy
 msgid "Clear List"
 msgstr "Clientes"
 
-#: src/contents/ui/TrayIcon.qml:119 src/contents/ui/TrayIcon.qml:131
+#: src/contents/ui/TrayIcon.qml:131 src/contents/ui/TrayIcon.qml:143
 msgid "Are you sure you want to clear this list?"
 msgstr ""
 
-#: src/contents/ui/TrayIcon.qml:140
+#: src/contents/ui/TrayIcon.qml:152
 #, fuzzy
 msgid "Input Presets"
 msgstr "Perfiles de Dispositivos de Entrada: "
 
-#: src/contents/ui/TrayIcon.qml:155
+#: src/contents/ui/TrayIcon.qml:167
 #, fuzzy
 msgid "Output Presets"
 msgstr "Perfiles de Dispositivos de Salida: "
 
-#: src/contents/ui/TrayIcon.qml:186
+#: src/contents/ui/TrayIcon.qml:198
 #, fuzzy
 msgid "Active"
 msgstr "Modo Agresivo"
@@ -3359,31 +3369,31 @@ msgstr "Máximo"
 msgid "Inverted mode"
 msgstr "Invertir Fase"
 
-#: src/main.cpp:353
+#: src/main.cpp:360
 msgid "Global audio effects"
 msgstr ""
 
-#: src/main.cpp:354
+#: src/main.cpp:361
 msgid "© 2017-2026 Easy Effects Team"
 msgstr ""
 
-#: src/main.cpp:356
+#: src/main.cpp:363
 #, fuzzy
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:356
+#: src/main.cpp:363
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Pendiente"
 
-#: src/main.cpp:360
+#: src/main.cpp:367
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 
-#: src/main.cpp:360
+#: src/main.cpp:367
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
@@ -4832,10 +4842,6 @@ msgstr ""
 
 #, fuzzy
 #~ msgid "enabled"
-#~ msgstr "Habilitar"
-
-#, fuzzy
-#~ msgid "disabled"
 #~ msgstr "Habilitar"
 
 #~ msgid "Latency"

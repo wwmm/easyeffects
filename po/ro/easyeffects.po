@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-05-03 13:16-0300\n"
+"POT-Creation-Date: 2026-05-05 14:41-0300\n"
 "PO-Revision-Date: 2026-05-04 23:09+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
@@ -264,7 +264,7 @@ msgid "Auto"
 msgstr "Auto"
 
 #: src/contents/ui/Autotune.qml:111 src/contents/ui/Main.qml:454
-#: src/contents/ui/TrayIcon.qml:206
+#: src/contents/ui/TrayIcon.qml:218
 msgid "Manual"
 msgstr "Manual"
 
@@ -1869,7 +1869,7 @@ msgid "Preferences"
 msgstr "Preferințe"
 
 #: src/contents/ui/Main.qml:446 src/contents/ui/ShortcutsSheet.qml:418
-#: src/contents/ui/TrayIcon.qml:197
+#: src/contents/ui/TrayIcon.qml:209
 msgid "Shortcuts"
 msgstr "Taste de comenzi rapide"
 
@@ -1877,7 +1877,7 @@ msgstr "Taste de comenzi rapide"
 msgid "About Easy Effects"
 msgstr "Despre Easy Effects"
 
-#: src/contents/ui/Main.qml:486 src/contents/ui/TrayIcon.qml:216
+#: src/contents/ui/Main.qml:486 src/contents/ui/TrayIcon.qml:228
 msgid "Quit"
 msgstr "Ieșire"
 
@@ -2928,7 +2928,7 @@ msgid "Toggle fullscreen"
 msgstr "Activează/dezactivează modul de ecran complet"
 
 #: src/contents/ui/ShortcutsSheet.qml:108
-#: src/contents/ui/ShortcutsSheet.qml:359 src/global_shortcuts.hpp:48
+#: src/contents/ui/ShortcutsSheet.qml:359 src/global_shortcuts.hpp:83
 msgid "Toggle global bypass"
 msgstr "Activează/dezactivează devierea globală"
 
@@ -2962,7 +2962,7 @@ msgstr "Rotița mausului"
 msgid "Global Shortcuts"
 msgstr "Taste de comenzi rapide"
 
-#: src/contents/ui/ShortcutsSheet.qml:399 src/global_shortcuts.hpp:50
+#: src/contents/ui/ShortcutsSheet.qml:399 src/global_shortcuts.hpp:85
 msgid "Toggle microphone monitoring"
 msgstr "Activează/dezactivează monitorizarea microfonului"
 
@@ -3054,27 +3054,37 @@ msgstr "Bază Stereo"
 msgid "Stereo phase"
 msgstr "Fază Stereo"
 
-#: src/contents/ui/TrayIcon.qml:87 src/contents/ui/TrayIcon.qml:107
+#: src/contents/ui/TrayIcon.qml:58
+#, fuzzy
+msgid "Effects disabled"
+msgstr "Efectele audio sunt dezactivate."
+
+#: src/contents/ui/TrayIcon.qml:60
+#, fuzzy
+msgid "Effects enabled"
+msgstr "Efectele audio sunt activate."
+
+#: src/contents/ui/TrayIcon.qml:99 src/contents/ui/TrayIcon.qml:119
 msgid "Preset Loaded"
 msgstr "Preconfigurare încărcată"
 
-#: src/contents/ui/TrayIcon.qml:118 src/contents/ui/TrayIcon.qml:130
+#: src/contents/ui/TrayIcon.qml:130 src/contents/ui/TrayIcon.qml:142
 msgid "Clear List"
 msgstr "Golește lista"
 
-#: src/contents/ui/TrayIcon.qml:119 src/contents/ui/TrayIcon.qml:131
+#: src/contents/ui/TrayIcon.qml:131 src/contents/ui/TrayIcon.qml:143
 msgid "Are you sure you want to clear this list?"
 msgstr "Sunteți sigur că doriți să goliți această listă?"
 
-#: src/contents/ui/TrayIcon.qml:140
+#: src/contents/ui/TrayIcon.qml:152
 msgid "Input Presets"
 msgstr "Preconfigurări de intrare"
 
-#: src/contents/ui/TrayIcon.qml:155
+#: src/contents/ui/TrayIcon.qml:167
 msgid "Output Presets"
 msgstr "Preconfigurări de ieșire"
 
-#: src/contents/ui/TrayIcon.qml:186
+#: src/contents/ui/TrayIcon.qml:198
 msgid "Active"
 msgstr "Activ"
 
@@ -3098,29 +3108,29 @@ msgstr "Frecvența instantanee maximă"
 msgid "Inverted mode"
 msgstr "Mod inversat"
 
-#: src/main.cpp:353
+#: src/main.cpp:360
 msgid "Global audio effects"
 msgstr "Efecte audio globale"
 
-#: src/main.cpp:354
+#: src/main.cpp:361
 msgid "© 2017-2026 Easy Effects Team"
 msgstr "© 2017-2026 Echipa Easy Effects"
 
-#: src/main.cpp:356
+#: src/main.cpp:363
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:356
+#: src/main.cpp:363
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Dezvoltator"
 
-#: src/main.cpp:360
+#: src/main.cpp:367
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Remus-Gabriel Chelu"
 
-#: src/main.cpp:360
+#: src/main.cpp:367
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "remusgabriel.chelu@disroot.org, 2025, 2026"

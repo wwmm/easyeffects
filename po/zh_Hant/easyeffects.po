@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-05-03 13:16-0300\n"
+"POT-Creation-Date: 2026-05-05 14:41-0300\n"
 "PO-Revision-Date: 2026-05-04 05:09+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
@@ -259,7 +259,7 @@ msgid "Auto"
 msgstr "自動"
 
 #: src/contents/ui/Autotune.qml:111 src/contents/ui/Main.qml:454
-#: src/contents/ui/TrayIcon.qml:206
+#: src/contents/ui/TrayIcon.qml:218
 msgid "Manual"
 msgstr "手冊"
 
@@ -1843,7 +1843,7 @@ msgid "Preferences"
 msgstr "偏好設定"
 
 #: src/contents/ui/Main.qml:446 src/contents/ui/ShortcutsSheet.qml:418
-#: src/contents/ui/TrayIcon.qml:197
+#: src/contents/ui/TrayIcon.qml:209
 msgid "Shortcuts"
 msgstr "快速鍵"
 
@@ -1851,7 +1851,7 @@ msgstr "快速鍵"
 msgid "About Easy Effects"
 msgstr "關於 Easy Effects"
 
-#: src/contents/ui/Main.qml:486 src/contents/ui/TrayIcon.qml:216
+#: src/contents/ui/Main.qml:486 src/contents/ui/TrayIcon.qml:228
 msgid "Quit"
 msgstr "退出"
 
@@ -2878,7 +2878,7 @@ msgid "Toggle fullscreen"
 msgstr "切換全螢幕"
 
 #: src/contents/ui/ShortcutsSheet.qml:108
-#: src/contents/ui/ShortcutsSheet.qml:359 src/global_shortcuts.hpp:48
+#: src/contents/ui/ShortcutsSheet.qml:359 src/global_shortcuts.hpp:83
 msgid "Toggle global bypass"
 msgstr "切換整體略過"
 
@@ -2912,7 +2912,7 @@ msgstr "滑鼠滾輪"
 msgid "Global Shortcuts"
 msgstr "整體快速鍵"
 
-#: src/contents/ui/ShortcutsSheet.qml:399 src/global_shortcuts.hpp:50
+#: src/contents/ui/ShortcutsSheet.qml:399 src/global_shortcuts.hpp:85
 msgid "Toggle microphone monitoring"
 msgstr "切換麥克風監聽"
 
@@ -3004,27 +3004,37 @@ msgstr "立體聲低音"
 msgid "Stereo phase"
 msgstr "立體聲階段"
 
-#: src/contents/ui/TrayIcon.qml:87 src/contents/ui/TrayIcon.qml:107
+#: src/contents/ui/TrayIcon.qml:58
+#, fuzzy
+msgid "Effects disabled"
+msgstr "音效處理已經停用。"
+
+#: src/contents/ui/TrayIcon.qml:60
+#, fuzzy
+msgid "Effects enabled"
+msgstr "音效處理已經啟用。"
+
+#: src/contents/ui/TrayIcon.qml:99 src/contents/ui/TrayIcon.qml:119
 msgid "Preset Loaded"
 msgstr "預設集已經載入"
 
-#: src/contents/ui/TrayIcon.qml:118 src/contents/ui/TrayIcon.qml:130
+#: src/contents/ui/TrayIcon.qml:130 src/contents/ui/TrayIcon.qml:142
 msgid "Clear List"
 msgstr "清除列表"
 
-#: src/contents/ui/TrayIcon.qml:119 src/contents/ui/TrayIcon.qml:131
+#: src/contents/ui/TrayIcon.qml:131 src/contents/ui/TrayIcon.qml:143
 msgid "Are you sure you want to clear this list?"
 msgstr "確定要清除此列表？"
 
-#: src/contents/ui/TrayIcon.qml:140
+#: src/contents/ui/TrayIcon.qml:152
 msgid "Input Presets"
 msgstr "輸入預設集"
 
-#: src/contents/ui/TrayIcon.qml:155
+#: src/contents/ui/TrayIcon.qml:167
 msgid "Output Presets"
 msgstr "輸出預設集"
 
-#: src/contents/ui/TrayIcon.qml:186
+#: src/contents/ui/TrayIcon.qml:198
 msgid "Active"
 msgstr "作用"
 
@@ -3048,29 +3058,29 @@ msgstr "最大瞬時頻率"
 msgid "Inverted mode"
 msgstr "反向模式"
 
-#: src/main.cpp:353
+#: src/main.cpp:360
 msgid "Global audio effects"
 msgstr "整體音效處理"
 
-#: src/main.cpp:354
+#: src/main.cpp:361
 msgid "© 2017-2026 Easy Effects Team"
 msgstr "© 2017-2026 Easy Effects 團隊"
 
-#: src/main.cpp:356
+#: src/main.cpp:363
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:356
+#: src/main.cpp:363
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "開發人員"
 
-#: src/main.cpp:360
+#: src/main.cpp:367
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "BigELK176 ≡"
 
-#: src/main.cpp:360
+#: src/main.cpp:367
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "．略．"
