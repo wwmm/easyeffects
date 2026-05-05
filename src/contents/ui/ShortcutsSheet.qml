@@ -335,7 +335,7 @@ Kirigami.OverlaySheet {
                     }
 
                     Kirigami.Chip {
-                        text: "Alt"
+                        text: "Ctrl"
                         closable: false
                         checkable: false
                         down: false
@@ -375,7 +375,7 @@ Kirigami.OverlaySheet {
                     }
 
                     Kirigami.Chip {
-                        text: "Alt"
+                        text: "Ctrl"
                         closable: false
                         checkable: false
                         down: false
