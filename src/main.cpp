@@ -91,6 +91,7 @@ struct CoreServices {
 
   std::unique_ptr<StreamInputEffects> sie;
   std::unique_ptr<StreamOutputEffects> soe;
+  std::unique_ptr<GlobalShortcuts> global_shortcuts;
 
   CoreServices(bool is_primary) {
     util::debug(std::format("easyffects version: {}.{}.{}", VERSION_MAJOR, VERSION_MINOR, VERSION_PATCH));
@@ -107,6 +108,10 @@ struct CoreServices {
       TestSignals::self(pwm);
       tags::plugin_name::Model::self();
       presets::Manager::self();
+
+      global_shortcuts = std::make_unique<GlobalShortcuts>(nullptr);
+
+      initGlobalShortcuts();
     }
   }
 
@@ -147,6 +152,40 @@ struct CoreServices {
       util::warning("Failed to set LV2 search paths.");
     }
   }
+
+  void initGlobalShortcuts() const {
+    auto shortcuts = global_shortcuts.get();
+
+    auto bind = [shortcuts]() {
+      util::debug("XDG Global Shortcuts experimental feature is enabled for this session.");
+
+      const auto session = qEnvironmentVariable("XDG_SESSION_DESKTOP");
+      const auto desktop = qEnvironmentVariable("XDG_CURRENT_DESKTOP");
+
+      if (session == "KDE" || desktop == "KDE") {
+        if (!DbMain::xdgGlobalShortcutsBound()) {
+          shortcuts->bind_shortcuts();
+        }
+      } else {
+        // Some desktops (gnome, hyprland) need binding always
+        shortcuts->bind_shortcuts();
+      }
+    };
+
+    QObject::connect(shortcuts, &GlobalShortcuts::bindShortcuts, [bind]() {
+      if (DbMain::xdgGlobalShortcuts()) {
+        bind();
+      }
+    });
+
+    QObject::connect(DbMain::self(), &DbMain::xdgGlobalShortcutsChanged, [bind]() {
+      if (DbMain::xdgGlobalShortcuts()) {
+        bind();
+      } else {
+        DbMain::setXdgGlobalShortcutsBound(false);
+      }
+    });
+  }
 };
 
 struct UiState {
@@ -166,38 +205,6 @@ static void initGlobalBypass(StreamInputEffects& sie, StreamOutputEffects& soe) 
   update_bypass_state();
 
   QObject::connect(DbMain::self(), &DbMain::bypassChanged, update_bypass_state);
-}
-
-static void initGlobalShortcuts(GlobalShortcuts* shortcuts) {
-  auto bind = [shortcuts]() {
-    util::debug("XDG Global Shortcuts experimental feature is enabled for this session.");
-
-    const auto session = qEnvironmentVariable("XDG_SESSION_DESKTOP");
-    const auto desktop = qEnvironmentVariable("XDG_CURRENT_DESKTOP");
-
-    if (session == "KDE" || desktop == "KDE") {
-      if (!DbMain::xdgGlobalShortcutsBound()) {
-        shortcuts->bind_shortcuts();
-      }
-    } else {
-      // Some desktops (gnome, hyprland) need binding always
-      shortcuts->bind_shortcuts();
-    }
-  };
-
-  QObject::connect(shortcuts, &GlobalShortcuts::bindShortcuts, [bind]() {
-    if (DbMain::xdgGlobalShortcuts()) {
-      bind();
-    }
-  });
-
-  QObject::connect(DbMain::self(), &DbMain::xdgGlobalShortcutsChanged, [bind]() {
-    if (DbMain::xdgGlobalShortcuts()) {
-      bind();
-    } else {
-      DbMain::setXdgGlobalShortcutsBound(false);
-    }
-  });
 }
 
 static void initQml(QQmlApplicationEngine& engine,
@@ -398,7 +405,6 @@ int main(int argc, char* argv[]) {
 
   // Main instance services
   auto local_server = std::make_unique<LocalServer>();
-  auto global_shortcuts = std::make_unique<GlobalShortcuts>(nullptr);
   auto autostart = std::make_unique<Autostart>(nullptr);
   auto color_manager = std::make_unique<KColorManager>();
 
@@ -421,7 +427,6 @@ int main(int argc, char* argv[]) {
   QObject::connect(local_server.get(), &LocalServer::onQuitApp, [&]() { QApplication::quit(); });
 
   initGlobalBypass(*core.sie, *core.soe);
-  initGlobalShortcuts(global_shortcuts.get());
 
   QObject::connect(&app, &QApplication::aboutToQuit, [&]() { db::Manager::self().saveAll(); });
 
