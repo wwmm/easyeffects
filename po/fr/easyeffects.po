@@ -263,7 +263,7 @@ msgid "Auto"
 msgstr "Auto"
 
 #: src/contents/ui/Autotune.qml:111 src/contents/ui/Main.qml:454
-#: src/contents/ui/TrayIcon.qml:206
+#: src/contents/ui/TrayIcon.qml:206 src/contents/ui/TrayIcon.qml:218
 msgid "Manual"
 msgstr "Manuel"
 
@@ -1866,7 +1866,7 @@ msgid "Preferences"
 msgstr "Préférences"
 
 #: src/contents/ui/Main.qml:446 src/contents/ui/ShortcutsSheet.qml:418
-#: src/contents/ui/TrayIcon.qml:197
+#: src/contents/ui/TrayIcon.qml:197 src/contents/ui/TrayIcon.qml:209
 msgid "Shortcuts"
 msgstr "Raccourcis"
 
@@ -1875,6 +1875,7 @@ msgid "About Easy Effects"
 msgstr "À propos d'Easy Effects"
 
 #: src/contents/ui/Main.qml:486 src/contents/ui/TrayIcon.qml:216
+#: src/contents/ui/TrayIcon.qml:228
 msgid "Quit"
 msgstr "Quitter"
 
@@ -2935,6 +2936,7 @@ msgstr "Basculer en plein écran"
 
 #: src/contents/ui/ShortcutsSheet.qml:108
 #: src/contents/ui/ShortcutsSheet.qml:359 src/global_shortcuts.hpp:48
+#: src/global_shortcuts.hpp:83
 msgid "Toggle global bypass"
 msgstr "Basculer le contournement global"
 
@@ -2969,6 +2971,7 @@ msgid "Global Shortcuts"
 msgstr "Raccourcis Globaux"
 
 #: src/contents/ui/ShortcutsSheet.qml:399 src/global_shortcuts.hpp:50
+#: src/global_shortcuts.hpp:85
 msgid "Toggle microphone monitoring"
 msgstr "Basculer la surveillance du microphone"
 
@@ -3061,26 +3064,29 @@ msgid "Stereo phase"
 msgstr "Phase stéréo"
 
 #: src/contents/ui/TrayIcon.qml:87 src/contents/ui/TrayIcon.qml:107
+#: src/contents/ui/TrayIcon.qml:99 src/contents/ui/TrayIcon.qml:119
 msgid "Preset Loaded"
 msgstr "Préréglage Chargé"
 
 #: src/contents/ui/TrayIcon.qml:118 src/contents/ui/TrayIcon.qml:130
+#: src/contents/ui/TrayIcon.qml:142
 msgid "Clear List"
 msgstr "Effacer la Liste"
 
 #: src/contents/ui/TrayIcon.qml:119 src/contents/ui/TrayIcon.qml:131
+#: src/contents/ui/TrayIcon.qml:143
 msgid "Are you sure you want to clear this list?"
 msgstr "Êtes-vous sûr de vouloir effacer cette liste ?"
 
-#: src/contents/ui/TrayIcon.qml:140
+#: src/contents/ui/TrayIcon.qml:140 src/contents/ui/TrayIcon.qml:152
 msgid "Input Presets"
 msgstr "Préréglages d’Entrée"
 
-#: src/contents/ui/TrayIcon.qml:155
+#: src/contents/ui/TrayIcon.qml:155 src/contents/ui/TrayIcon.qml:167
 msgid "Output Presets"
 msgstr "Préréglages de Sortie"
 
-#: src/contents/ui/TrayIcon.qml:186
+#: src/contents/ui/TrayIcon.qml:186 src/contents/ui/TrayIcon.qml:198
 msgid "Active"
 msgstr "Actif"
 
@@ -3104,29 +3110,29 @@ msgstr "Fréquence instantanée maximale"
 msgid "Inverted mode"
 msgstr "Mode inversé"
 
-#: src/main.cpp:353
+#: src/main.cpp:353 src/main.cpp:360
 msgid "Global audio effects"
 msgstr "Effets audio globaux"
 
-#: src/main.cpp:354
+#: src/main.cpp:354 src/main.cpp:361
 msgid "© 2017-2026 Easy Effects Team"
 msgstr "© 2017-2026 Équipe d'Easy Effects"
 
-#: src/main.cpp:356
+#: src/main.cpp:356 src/main.cpp:363
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:356
+#: src/main.cpp:356 src/main.cpp:363
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Développeur"
 
-#: src/main.cpp:360
+#: src/main.cpp:360 src/main.cpp:367
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Vos noms"
 
-#: src/main.cpp:360
+#: src/main.cpp:360 src/main.cpp:367
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "Vos courriels"
@@ -3405,6 +3411,16 @@ msgstr "Égaliseur, Compresseur et Autres Effets Audio"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "Effets audio simples"
+
+#: src/contents/ui/TrayIcon.qml:58
+#, fuzzy
+msgid "Effects disabled"
+msgstr "Les effets audio sont désactivés."
+
+#: src/contents/ui/TrayIcon.qml:60
+#, fuzzy
+msgid "Effects enabled"
+msgstr "Les effets audio sont activés."
 
 #~ msgid "Wheel"
 #~ msgstr "Molette"
