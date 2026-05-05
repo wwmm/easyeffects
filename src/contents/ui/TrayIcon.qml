@@ -50,6 +50,18 @@ SystemTrayIcon {
         mainWindow = window;
     }
 
+    Connections {
+        target: GlobalShortcuts// qmllint disable
+
+        function onGlobalBypassToggled() {
+            if (DbMain.bypass) {
+                tray.showMessage(i18n("Effects disabled"), modelData, SystemTrayIcon.Information, 3000);
+            } else {
+                tray.showMessage(i18n("Effects enabled"), modelData, SystemTrayIcon.Information, 3000);
+            }
+        }
+    }
+
     menu: Menu {
         id: trayMenu
         visible: false

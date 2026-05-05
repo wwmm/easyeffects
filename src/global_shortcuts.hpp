@@ -21,6 +21,7 @@
 
 #include <qcontainerfwd.h>
 #include <qdbusextratypes.h>
+#include <qqmlengine.h>
 #include <qtmetamacros.h>
 #include <qtypes.h>
 #include <KLocalizedString>
@@ -38,9 +39,43 @@ struct GlobalShortcutData {
 
 class GlobalShortcuts : public QObject {
   Q_OBJECT
+  QML_ELEMENT
+  QML_SINGLETON
+  QML_UNCREATABLE("Use the c++ instance")
 
  public:
   explicit GlobalShortcuts(QObject* parent = nullptr);
+
+  /**
+   * Deleting the default constructor because we want Qt to call our custom create method.
+   * If this is not done qml will create its own class instance.
+   */
+  GlobalShortcuts() = delete;
+
+  GlobalShortcuts(const GlobalShortcuts&) = delete;
+  GlobalShortcuts(GlobalShortcuts&&) = delete;
+  GlobalShortcuts& operator=(const GlobalShortcuts&) = delete;
+  GlobalShortcuts& operator=(GlobalShortcuts&&) = delete;
+
+  inline static GlobalShortcuts* singletonInstance = nullptr;
+
+  // Singleton provider for QML
+  static GlobalShortcuts* create(QQmlEngine* qmlEngine, QJSEngine* jsEngine) {
+    Q_UNUSED(jsEngine)
+
+    // The instance has to exist before it is used. We cannot replace it.
+    Q_ASSERT(singletonInstance);
+
+    // The engine has to have the same thread affinity as the singleton.
+
+    Q_ASSERT(qmlEngine->thread() == singletonInstance->thread());
+
+    // Explicitly specify C++ ownership so that the engine doesn't delete the instance.
+
+    QJSEngine::setObjectOwnership(singletonInstance, QJSEngine::CppOwnership);
+
+    return singletonInstance;
+  }
 
   void bind_shortcuts();
 
@@ -52,15 +87,16 @@ class GlobalShortcuts : public QObject {
   };
 
  Q_SIGNALS:
-  void onBindShortcuts();
+  void bindShortcuts();
+  void globalBypassToggled();
 
  public Q_SLOTS:
   void onSessionCreatedResponse(uint responseCode, const QVariantMap& results);
 
-  static void process_activated_signal(const QDBusObjectPath& session_handle,
-                                       const QString& shortcut_id,
-                                       qulonglong timestamp,
-                                       const QVariantMap& options);
+  void process_activated_signal(const QDBusObjectPath& session_handle,
+                                const QString& shortcut_id,
+                                qulonglong timestamp,
+                                const QVariantMap& options);
 
  private:
   const QString session_handle_token = QString("easyeffects%1").arg(util::random_string(32));

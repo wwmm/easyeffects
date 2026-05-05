@@ -50,6 +50,7 @@ qt_add_qml_module(easyeffects
         expander.hpp
         filter.hpp
         gate.hpp
+        global_shortcuts.hpp
         level_meter.hpp
         limiter.hpp
         loudness.hpp

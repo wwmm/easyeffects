@@ -185,7 +185,7 @@ static void initGlobalShortcuts(GlobalShortcuts* shortcuts) {
     }
   };
 
-  QObject::connect(shortcuts, &GlobalShortcuts::onBindShortcuts, [bind]() {
+  QObject::connect(shortcuts, &GlobalShortcuts::bindShortcuts, [bind]() {
     if (DbMain::xdgGlobalShortcuts()) {
       bind();
     }
@@ -398,7 +398,7 @@ int main(int argc, char* argv[]) {
 
   // Main instance services
   auto local_server = std::make_unique<LocalServer>();
-  auto global_shortcuts = std::make_unique<GlobalShortcuts>();
+  auto global_shortcuts = std::make_unique<GlobalShortcuts>(nullptr);
   auto autostart = std::make_unique<Autostart>(nullptr);
   auto color_manager = std::make_unique<KColorManager>();
 

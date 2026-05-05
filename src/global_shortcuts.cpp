@@ -41,6 +41,8 @@
 // Documentation: https://flatpak.github.io/xdg-desktop-portal/docs/doc-org.freedesktop.portal.GlobalShortcuts.html
 
 GlobalShortcuts::GlobalShortcuts(QObject* parent) : QObject(parent) {
+  singletonInstance = this;
+
   qDBusRegisterMetaType<std::pair<QString, QVariantMap>>();
   qDBusRegisterMetaType<QList<QPair<QString, QVariantMap>>>();
 
@@ -89,7 +91,7 @@ void GlobalShortcuts::onSessionCreatedResponse(uint responseCode, const QVariant
 
   util::debug("D-Bus session for GlobalShortcuts created.");
 
-  Q_EMIT onBindShortcuts();
+  Q_EMIT bindShortcuts();
 
   QDBusConnection::sessionBus().connect(
       "org.freedesktop.portal.Desktop", "/org/freedesktop/portal/desktop", "org.freedesktop.portal.GlobalShortcuts",
@@ -105,6 +107,8 @@ void GlobalShortcuts::process_activated_signal([[maybe_unused]] const QDBusObjec
 
   if (shortcut_id == "global bypass") {
     DbMain::setBypass(!DbMain::bypass());
+
+    Q_EMIT globalBypassToggled();
 
     return;
   }
