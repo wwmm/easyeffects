@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-05-05 14:41-0300\n"
-"PO-Revision-Date: 2026-05-04 23:09+0000\n"
+"PO-Revision-Date: 2026-05-06 21:11+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
 "ga/>\n"
@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :"
-"(n>6 && n<11) ? 3 : 4;\n"
+"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :(n>"
+"6 && n<11) ? 3 : 4;\n"
 "X-Generator: Weblate 5.17.1\n"
 
 #: src/autostart.cpp:92
@@ -3054,14 +3054,12 @@ msgid "Stereo phase"
 msgstr "Céim steiréó"
 
 #: src/contents/ui/TrayIcon.qml:58
-#, fuzzy
 msgid "Effects disabled"
-msgstr "Tá éifeachtaí fuaime díchumasaithe."
+msgstr "Éifeachtaí díchumasaithe"
 
 #: src/contents/ui/TrayIcon.qml:60
-#, fuzzy
 msgid "Effects enabled"
-msgstr "Tá éifeachtaí fuaime cumasaithe."
+msgstr "Éifeachtaí cumasaithe"
 
 #: src/contents/ui/TrayIcon.qml:99 src/contents/ui/TrayIcon.qml:119
 msgid "Preset Loaded"

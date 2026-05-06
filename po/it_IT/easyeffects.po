@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-05-05 14:41-0300\n"
-"PO-Revision-Date: 2026-05-04 05:09+0000\n"
+"PO-Revision-Date: 2026-05-06 21:11+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -3050,14 +3050,12 @@ msgid "Stereo phase"
 msgstr "Fase stereo"
 
 #: src/contents/ui/TrayIcon.qml:58
-#, fuzzy
 msgid "Effects disabled"
-msgstr "Gli effetti per l'audio sono disabilitati."
+msgstr "Effetti disabilitati"
 
 #: src/contents/ui/TrayIcon.qml:60
-#, fuzzy
 msgid "Effects enabled"
-msgstr "Gli effetti per l'audio sono abilitati."
+msgstr "Effetti abilitati"
 
 #: src/contents/ui/TrayIcon.qml:99 src/contents/ui/TrayIcon.qml:119
 msgid "Preset Loaded"
