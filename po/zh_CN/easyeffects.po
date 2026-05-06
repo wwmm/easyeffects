@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-05-05 14:41-0300\n"
-"PO-Revision-Date: 2026-05-04 10:29+0000\n"
+"PO-Revision-Date: 2026-05-06 07:11+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hans/>\n"
@@ -3004,14 +3004,12 @@ msgid "Stereo phase"
 msgstr "立体声相位"
 
 #: src/contents/ui/TrayIcon.qml:58
-#, fuzzy
 msgid "Effects disabled"
-msgstr "已禁用音效。"
+msgstr "已禁用音效"
 
 #: src/contents/ui/TrayIcon.qml:60
-#, fuzzy
 msgid "Effects enabled"
-msgstr "已启用音效。"
+msgstr "已启用音效"
 
 #: src/contents/ui/TrayIcon.qml:99 src/contents/ui/TrayIcon.qml:119
 msgid "Preset Loaded"
