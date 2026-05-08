@@ -486,7 +486,7 @@ void EffectsBase::requestSpectrumData() {
           cached_spectrum_frequencies.resize(n_bands);
 
           for (qsizetype n = 0; n < n_bands; n++) {
-            cached_spectrum_frequencies[n] = static_cast<float>(n) * bin_hz;
+            cached_spectrum_frequencies[n] = static_cast<double>(n) * static_cast<double>(bin_hz);
           }
         }
 
