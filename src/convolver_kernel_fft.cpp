@@ -55,10 +55,10 @@ auto ConvolverKernelFFT::calculate_fft(std::vector<float> kernel_L,
   // Initialize frequency axis
   std::vector<double> freq_axis(spectrum_L.size());
 
-  float bin_hz = kernel_rate / static_cast<float>(kernel_L.size());
+  double bin_hz = static_cast<double>(kernel_rate) / static_cast<double>(kernel_L.size());
 
   for (uint n = 0U; n < freq_axis.size(); n++) {
-    freq_axis[n] = static_cast<float>(n) * bin_hz;
+    freq_axis[n] = static_cast<double>(n) * bin_hz;
   }
 
   // Remove DC component at f = 0 Hz
