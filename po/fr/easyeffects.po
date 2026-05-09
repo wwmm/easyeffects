@@ -264,6 +264,7 @@ msgstr "Auto"
 
 #: src/contents/ui/Autotune.qml:111 src/contents/ui/Main.qml:454
 #: src/contents/ui/TrayIcon.qml:206 src/contents/ui/TrayIcon.qml:218
+#: src/contents/ui/TrayIcon.qml:221
 msgid "Manual"
 msgstr "Manuel"
 
@@ -1867,6 +1868,7 @@ msgstr "Préférences"
 
 #: src/contents/ui/Main.qml:446 src/contents/ui/ShortcutsSheet.qml:418
 #: src/contents/ui/TrayIcon.qml:197 src/contents/ui/TrayIcon.qml:209
+#: src/contents/ui/TrayIcon.qml:212
 msgid "Shortcuts"
 msgstr "Raccourcis"
 
@@ -1875,7 +1877,7 @@ msgid "About Easy Effects"
 msgstr "À propos d'Easy Effects"
 
 #: src/contents/ui/Main.qml:486 src/contents/ui/TrayIcon.qml:216
-#: src/contents/ui/TrayIcon.qml:228
+#: src/contents/ui/TrayIcon.qml:228 src/contents/ui/TrayIcon.qml:231
 msgid "Quit"
 msgstr "Quitter"
 
@@ -2936,7 +2938,7 @@ msgstr "Basculer en plein écran"
 
 #: src/contents/ui/ShortcutsSheet.qml:108
 #: src/contents/ui/ShortcutsSheet.qml:359 src/global_shortcuts.hpp:48
-#: src/global_shortcuts.hpp:83
+#: src/global_shortcuts.hpp:83 src/global_shortcuts.hpp:84
 msgid "Toggle global bypass"
 msgstr "Basculer le contournement global"
 
@@ -2971,7 +2973,7 @@ msgid "Global Shortcuts"
 msgstr "Raccourcis Globaux"
 
 #: src/contents/ui/ShortcutsSheet.qml:399 src/global_shortcuts.hpp:50
-#: src/global_shortcuts.hpp:85
+#: src/global_shortcuts.hpp:85 src/global_shortcuts.hpp:87
 msgid "Toggle microphone monitoring"
 msgstr "Basculer la surveillance du microphone"
 
@@ -3065,28 +3067,34 @@ msgstr "Phase stéréo"
 
 #: src/contents/ui/TrayIcon.qml:87 src/contents/ui/TrayIcon.qml:107
 #: src/contents/ui/TrayIcon.qml:99 src/contents/ui/TrayIcon.qml:119
+#: src/contents/ui/TrayIcon.qml:102 src/contents/ui/TrayIcon.qml:122
 msgid "Preset Loaded"
 msgstr "Préréglage Chargé"
 
 #: src/contents/ui/TrayIcon.qml:118 src/contents/ui/TrayIcon.qml:130
-#: src/contents/ui/TrayIcon.qml:142
+#: src/contents/ui/TrayIcon.qml:142 src/contents/ui/TrayIcon.qml:133
+#: src/contents/ui/TrayIcon.qml:145
 msgid "Clear List"
 msgstr "Effacer la Liste"
 
 #: src/contents/ui/TrayIcon.qml:119 src/contents/ui/TrayIcon.qml:131
-#: src/contents/ui/TrayIcon.qml:143
+#: src/contents/ui/TrayIcon.qml:143 src/contents/ui/TrayIcon.qml:134
+#: src/contents/ui/TrayIcon.qml:146
 msgid "Are you sure you want to clear this list?"
 msgstr "Êtes-vous sûr de vouloir effacer cette liste ?"
 
 #: src/contents/ui/TrayIcon.qml:140 src/contents/ui/TrayIcon.qml:152
+#: src/contents/ui/TrayIcon.qml:155
 msgid "Input Presets"
 msgstr "Préréglages d’Entrée"
 
 #: src/contents/ui/TrayIcon.qml:155 src/contents/ui/TrayIcon.qml:167
+#: src/contents/ui/TrayIcon.qml:170
 msgid "Output Presets"
 msgstr "Préréglages de Sortie"
 
 #: src/contents/ui/TrayIcon.qml:186 src/contents/ui/TrayIcon.qml:198
+#: src/contents/ui/TrayIcon.qml:201
 msgid "Active"
 msgstr "Actif"
 

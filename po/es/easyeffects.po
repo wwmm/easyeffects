@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-05-05 14:41-0300\n"
+"POT-Creation-Date: 2026-05-09 13:08-0300\n"
 "PO-Revision-Date: 2026-04-24 07:09+0000\n"
 "Last-Translator: Lito Parra <lito.15@proton.me>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -264,7 +264,7 @@ msgid "Auto"
 msgstr "Ganancia automática"
 
 #: src/contents/ui/Autotune.qml:111 src/contents/ui/Main.qml:454
-#: src/contents/ui/TrayIcon.qml:218
+#: src/contents/ui/TrayIcon.qml:221
 msgid "Manual"
 msgstr "Manual"
 
@@ -1868,7 +1868,7 @@ msgid "Preferences"
 msgstr "Preferencias"
 
 #: src/contents/ui/Main.qml:446 src/contents/ui/ShortcutsSheet.qml:418
-#: src/contents/ui/TrayIcon.qml:209
+#: src/contents/ui/TrayIcon.qml:212
 msgid "Shortcuts"
 msgstr "Atajos"
 
@@ -1876,7 +1876,7 @@ msgstr "Atajos"
 msgid "About Easy Effects"
 msgstr "Acerca de Easy Effects"
 
-#: src/contents/ui/Main.qml:486 src/contents/ui/TrayIcon.qml:228
+#: src/contents/ui/Main.qml:486 src/contents/ui/TrayIcon.qml:231
 msgid "Quit"
 msgstr "Salir"
 
@@ -2924,7 +2924,7 @@ msgid "Toggle fullscreen"
 msgstr "Mostrar en pantalla completa"
 
 #: src/contents/ui/ShortcutsSheet.qml:108
-#: src/contents/ui/ShortcutsSheet.qml:359 src/global_shortcuts.hpp:83
+#: src/contents/ui/ShortcutsSheet.qml:359 src/global_shortcuts.hpp:84
 msgid "Toggle global bypass"
 msgstr "Alternar la supresión global"
 
@@ -2958,7 +2958,7 @@ msgstr ""
 msgid "Global Shortcuts"
 msgstr "Atajos globales"
 
-#: src/contents/ui/ShortcutsSheet.qml:399 src/global_shortcuts.hpp:85
+#: src/contents/ui/ShortcutsSheet.qml:399 src/global_shortcuts.hpp:87
 msgid "Toggle microphone monitoring"
 msgstr "Cambiar el monitoreo del micrófono"
 
@@ -3050,37 +3050,37 @@ msgstr "Base estéreo"
 msgid "Stereo phase"
 msgstr "Fase estéreo"
 
-#: src/contents/ui/TrayIcon.qml:58
+#: src/contents/ui/TrayIcon.qml:61
 #, fuzzy
 msgid "Effects disabled"
 msgstr "Los efectos de audio están desactivados."
 
-#: src/contents/ui/TrayIcon.qml:60
+#: src/contents/ui/TrayIcon.qml:63
 #, fuzzy
 msgid "Effects enabled"
 msgstr "Los efectos de audio están activados."
 
-#: src/contents/ui/TrayIcon.qml:99 src/contents/ui/TrayIcon.qml:119
+#: src/contents/ui/TrayIcon.qml:102 src/contents/ui/TrayIcon.qml:122
 msgid "Preset Loaded"
 msgstr "Perfil cargado"
 
-#: src/contents/ui/TrayIcon.qml:130 src/contents/ui/TrayIcon.qml:142
+#: src/contents/ui/TrayIcon.qml:133 src/contents/ui/TrayIcon.qml:145
 msgid "Clear List"
 msgstr "Vaciar lista"
 
-#: src/contents/ui/TrayIcon.qml:131 src/contents/ui/TrayIcon.qml:143
+#: src/contents/ui/TrayIcon.qml:134 src/contents/ui/TrayIcon.qml:146
 msgid "Are you sure you want to clear this list?"
 msgstr "¿Estás seguro de que quieres vaciar esta lista?"
 
-#: src/contents/ui/TrayIcon.qml:152
+#: src/contents/ui/TrayIcon.qml:155
 msgid "Input Presets"
 msgstr "Perfiles de entrada"
 
-#: src/contents/ui/TrayIcon.qml:167
+#: src/contents/ui/TrayIcon.qml:170
 msgid "Output Presets"
 msgstr "Perfiles de salida"
 
-#: src/contents/ui/TrayIcon.qml:198
+#: src/contents/ui/TrayIcon.qml:201
 msgid "Active"
 msgstr "Activo"
 

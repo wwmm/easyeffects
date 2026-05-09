@@ -1,5 +1,24 @@
 # Changelog
  
+## 8.2.2
+### 2026-05-09
+
+ 
+### Features:
+- A new Autotune effect (by x42-plugins) has been added. It can be used to correct the pitch of the input signal in real time.
+- The shortcut "Shift + Mouse Wheel" can now be used to change the value of a control in larger steps. Similarly to what is already possible with the page up and down keys.
+- Desktop notifications are shown when changing the global bypass state through a global shortcut. For now this only works if the system tray icon is used.
+- In order to minimize conflicts with other applications shortcuts our global shortcuts now use the Meta key.
+- When effects are disabled a new tray icon that represets this state is used.
+- The spectrum frequency range now starts at 1 Hz and ends at 25000 Hz.
+
+### Bug fixes:
+- The convolver feature that combines impulse response files was not working. Regression fixed.
+
+### Other notes:
+- Package maintainers should include the LV2 module of x42-plugins in order to make the new Autotune effect available.
+
+ 
 ## 8.2.1
 ### 2026-04-25
 

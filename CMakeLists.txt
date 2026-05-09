@@ -1,12 +1,13 @@
 cmake_minimum_required(VERSION 3.28)
 
-project(easyeffects VERSION 8.2.1  LANGUAGES CXX C)
+project(easyeffects VERSION 8.2.2  LANGUAGES CXX C)
 
 set(APPLICATION_DOMAIN "easyeffects")
 set(COMPONENT_NAME "easyeffects")
 set(ORGANIZATION_NAME "WWMM")
 set(ORGANIZATION_DOMAIN "com.github.wwmm")
 
+set(CMAKE_C_STANDARD 17)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)

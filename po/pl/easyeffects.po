@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-05-05 14:41-0300\n"
+"POT-Creation-Date: 2026-05-09 13:08-0300\n"
 "PO-Revision-Date: 2026-03-19 03:09+0000\n"
 "Last-Translator: \"Jakub Kamiński (Djkikusek)\" <djkikusek@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -264,7 +264,7 @@ msgid "Auto"
 msgstr "Autowzmocnienie"
 
 #: src/contents/ui/Autotune.qml:111 src/contents/ui/Main.qml:454
-#: src/contents/ui/TrayIcon.qml:218
+#: src/contents/ui/TrayIcon.qml:221
 msgid "Manual"
 msgstr "Instrukcja"
 
@@ -1875,7 +1875,7 @@ msgid "Preferences"
 msgstr "Ustawienia"
 
 #: src/contents/ui/Main.qml:446 src/contents/ui/ShortcutsSheet.qml:418
-#: src/contents/ui/TrayIcon.qml:209
+#: src/contents/ui/TrayIcon.qml:212
 msgid "Shortcuts"
 msgstr "Skróty"
 
@@ -1883,7 +1883,7 @@ msgstr "Skróty"
 msgid "About Easy Effects"
 msgstr "O EasyEffects"
 
-#: src/contents/ui/Main.qml:486 src/contents/ui/TrayIcon.qml:228
+#: src/contents/ui/Main.qml:486 src/contents/ui/TrayIcon.qml:231
 msgid "Quit"
 msgstr "Wyjdź"
 
@@ -2973,7 +2973,7 @@ msgid "Toggle fullscreen"
 msgstr ""
 
 #: src/contents/ui/ShortcutsSheet.qml:108
-#: src/contents/ui/ShortcutsSheet.qml:359 src/global_shortcuts.hpp:83
+#: src/contents/ui/ShortcutsSheet.qml:359 src/global_shortcuts.hpp:84
 #, fuzzy
 msgid "Toggle global bypass"
 msgstr "Pomiń globalnie"
@@ -3013,7 +3013,7 @@ msgstr ""
 msgid "Global Shortcuts"
 msgstr "_Skróty"
 
-#: src/contents/ui/ShortcutsSheet.qml:399 src/global_shortcuts.hpp:85
+#: src/contents/ui/ShortcutsSheet.qml:399 src/global_shortcuts.hpp:87
 msgid "Toggle microphone monitoring"
 msgstr ""
 
@@ -3119,37 +3119,37 @@ msgstr "Baza stereo"
 msgid "Stereo phase"
 msgstr "Faza stereo"
 
-#: src/contents/ui/TrayIcon.qml:58
+#: src/contents/ui/TrayIcon.qml:61
 #, fuzzy
 msgid "Effects disabled"
 msgstr "Efekty dźwiękowe są wyłączone."
 
-#: src/contents/ui/TrayIcon.qml:60
+#: src/contents/ui/TrayIcon.qml:63
 #, fuzzy
 msgid "Effects enabled"
 msgstr "Efekty dźwiękowe są włączone."
 
-#: src/contents/ui/TrayIcon.qml:99 src/contents/ui/TrayIcon.qml:119
+#: src/contents/ui/TrayIcon.qml:102 src/contents/ui/TrayIcon.qml:122
 msgid "Preset Loaded"
 msgstr "Szablon załadowany"
 
-#: src/contents/ui/TrayIcon.qml:130 src/contents/ui/TrayIcon.qml:142
+#: src/contents/ui/TrayIcon.qml:133 src/contents/ui/TrayIcon.qml:145
 msgid "Clear List"
 msgstr "Wyczyść listę"
 
-#: src/contents/ui/TrayIcon.qml:131 src/contents/ui/TrayIcon.qml:143
+#: src/contents/ui/TrayIcon.qml:134 src/contents/ui/TrayIcon.qml:146
 msgid "Are you sure you want to clear this list?"
 msgstr "Czy na pewno chcesz wyczyścić tę listę?"
 
-#: src/contents/ui/TrayIcon.qml:152
+#: src/contents/ui/TrayIcon.qml:155
 msgid "Input Presets"
 msgstr "Profile wejścia"
 
-#: src/contents/ui/TrayIcon.qml:167
+#: src/contents/ui/TrayIcon.qml:170
 msgid "Output Presets"
 msgstr "Szablony wyjściowe"
 
-#: src/contents/ui/TrayIcon.qml:198
+#: src/contents/ui/TrayIcon.qml:201
 msgid "Active"
 msgstr "Aktywny"
 
