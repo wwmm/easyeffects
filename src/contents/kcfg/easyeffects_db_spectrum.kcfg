@@ -48,14 +48,14 @@
         </entry>
         <entry name="minimumFrequency" type="Int">
             <label></label>
-            <min>20</min>
+            <min>1</min>
             <max>21900</max>
             <default>20</default>
         </entry>
         <entry name="maximumFrequency" type="Int">
             <label></label>
             <min>120</min>
-            <max>22000</max>
+            <max>25000</max>
             <default>20000</default>
         </entry>
         <entry name="avsyncDelay" type="Int">
