@@ -30,10 +30,13 @@ SystemTrayIcon {
     required property string applicationId
     required property bool canUseSysTray
     required property ShortcutsSheet shortcuts
+
     property Main mainWindow: null
 
+    readonly property string iconName: DbMain.bypass ? applicationId + "-off-symbolic" : applicationId + "-symbolic"
+
     visible: DbMain.showTrayIcon && canUseSysTray
-    icon.name: applicationId + "-symbolic"
+    icon.name: iconName
     tooltip: applicationName
 
     onActivated: {

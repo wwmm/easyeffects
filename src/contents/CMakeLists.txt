@@ -5,6 +5,7 @@ install(FILES
 
 install(FILES 
     icons/com.github.wwmm.easyeffects-symbolic.svg 
+    icons/com.github.wwmm.easyeffects-off-symbolic.svg 
     DESTINATION ${KDE_INSTALL_FULL_DATADIR}/icons/hicolor/scalable/apps
 )
 
