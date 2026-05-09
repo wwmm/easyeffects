@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-05-03 13:16-0300\n"
-"PO-Revision-Date: 2026-05-05 17:41+0000\n"
+"PO-Revision-Date: 2026-05-09 16:09+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.17.1\n"
+"X-Generator: Weblate 2026.5-dev\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -3413,14 +3413,12 @@ msgid "Simple audio effects"
 msgstr "Effets audio simples"
 
 #: src/contents/ui/TrayIcon.qml:58
-#, fuzzy
 msgid "Effects disabled"
-msgstr "Les effets audio sont désactivés."
+msgstr "Effets désactivés"
 
 #: src/contents/ui/TrayIcon.qml:60
-#, fuzzy
 msgid "Effects enabled"
-msgstr "Les effets audio sont activés."
+msgstr "Effets activés"
 
 #~ msgid "Wheel"
 #~ msgstr "Molette"
