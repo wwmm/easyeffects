@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-05-05 14:41-0300\n"
+"POT-Creation-Date: 2026-05-09 13:08-0300\n"
 "PO-Revision-Date: 2025-09-23 14:01+0000\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -280,7 +280,7 @@ msgid "Auto"
 msgstr "افزایش خودکار"
 
 #: src/contents/ui/Autotune.qml:111 src/contents/ui/Main.qml:454
-#: src/contents/ui/TrayIcon.qml:218
+#: src/contents/ui/TrayIcon.qml:221
 msgid "Manual"
 msgstr ""
 
@@ -2027,7 +2027,7 @@ msgid "Preferences"
 msgstr "_ترجیحات"
 
 #: src/contents/ui/Main.qml:446 src/contents/ui/ShortcutsSheet.qml:418
-#: src/contents/ui/TrayIcon.qml:209
+#: src/contents/ui/TrayIcon.qml:212
 #, fuzzy
 msgid "Shortcuts"
 msgstr "_میانبرها"
@@ -2037,7 +2037,7 @@ msgstr "_میانبرها"
 msgid "About Easy Effects"
 msgstr "_درباره Easy Effects"
 
-#: src/contents/ui/Main.qml:486 src/contents/ui/TrayIcon.qml:228
+#: src/contents/ui/Main.qml:486 src/contents/ui/TrayIcon.qml:231
 #, fuzzy
 msgid "Quit"
 msgstr "_خروج"
@@ -3173,7 +3173,7 @@ msgid "Toggle fullscreen"
 msgstr ""
 
 #: src/contents/ui/ShortcutsSheet.qml:108
-#: src/contents/ui/ShortcutsSheet.qml:359 src/global_shortcuts.hpp:83
+#: src/contents/ui/ShortcutsSheet.qml:359 src/global_shortcuts.hpp:84
 #, fuzzy
 msgid "Toggle global bypass"
 msgstr "بای‌پس سراسری"
@@ -3213,7 +3213,7 @@ msgstr ""
 msgid "Global Shortcuts"
 msgstr "_میانبرها"
 
-#: src/contents/ui/ShortcutsSheet.qml:399 src/global_shortcuts.hpp:85
+#: src/contents/ui/ShortcutsSheet.qml:399 src/global_shortcuts.hpp:87
 msgid "Toggle microphone monitoring"
 msgstr ""
 
@@ -3319,39 +3319,39 @@ msgstr "پایه استریو"
 msgid "Stereo phase"
 msgstr "فاز استریو"
 
-#: src/contents/ui/TrayIcon.qml:58
+#: src/contents/ui/TrayIcon.qml:61
 #, fuzzy
 msgid "Effects disabled"
 msgstr "{} در دسترس نیست"
 
-#: src/contents/ui/TrayIcon.qml:60
+#: src/contents/ui/TrayIcon.qml:63
 #, fuzzy
 msgid "Effects enabled"
 msgstr "جلوه ها"
 
-#: src/contents/ui/TrayIcon.qml:99 src/contents/ui/TrayIcon.qml:119
+#: src/contents/ui/TrayIcon.qml:102 src/contents/ui/TrayIcon.qml:122
 #, fuzzy
 msgid "Preset Loaded"
 msgstr "هیچ پیش‌تنظیمی بارگذاری نشده است"
 
-#: src/contents/ui/TrayIcon.qml:130 src/contents/ui/TrayIcon.qml:142
+#: src/contents/ui/TrayIcon.qml:133 src/contents/ui/TrayIcon.qml:145
 #, fuzzy
 msgid "Clear List"
 msgstr "لیست مشتریان"
 
-#: src/contents/ui/TrayIcon.qml:131 src/contents/ui/TrayIcon.qml:143
+#: src/contents/ui/TrayIcon.qml:134 src/contents/ui/TrayIcon.qml:146
 msgid "Are you sure you want to clear this list?"
 msgstr ""
 
-#: src/contents/ui/TrayIcon.qml:152
+#: src/contents/ui/TrayIcon.qml:155
 msgid "Input Presets"
 msgstr "پیش‌تنظیم‌های ورودی"
 
-#: src/contents/ui/TrayIcon.qml:167
+#: src/contents/ui/TrayIcon.qml:170
 msgid "Output Presets"
 msgstr "خروجی از پیش تعیین شده"
 
-#: src/contents/ui/TrayIcon.qml:198
+#: src/contents/ui/TrayIcon.qml:201
 #, fuzzy
 msgid "Active"
 msgstr "مدل فعال"

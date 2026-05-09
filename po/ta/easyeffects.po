@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-05-05 14:41-0300\n"
+"POT-Creation-Date: 2026-05-09 13:08-0300\n"
 "PO-Revision-Date: 2026-04-23 16:12+0000\n"
 "Last-Translator: தமிழ்நேரம் <tamilneram247@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -264,7 +264,7 @@ msgid "Auto"
 msgstr "ஆட்டோகெயின்"
 
 #: src/contents/ui/Autotune.qml:111 src/contents/ui/Main.qml:454
-#: src/contents/ui/TrayIcon.qml:218
+#: src/contents/ui/TrayIcon.qml:221
 msgid "Manual"
 msgstr "கையேடு"
 
@@ -1862,7 +1862,7 @@ msgid "Preferences"
 msgstr "விருப்பத்தேர்வுகள்"
 
 #: src/contents/ui/Main.qml:446 src/contents/ui/ShortcutsSheet.qml:418
-#: src/contents/ui/TrayIcon.qml:209
+#: src/contents/ui/TrayIcon.qml:212
 msgid "Shortcuts"
 msgstr "குறுக்குவழிகள்"
 
@@ -1870,7 +1870,7 @@ msgstr "குறுக்குவழிகள்"
 msgid "About Easy Effects"
 msgstr "எளிதான விளைவுகள் பற்றி"
 
-#: src/contents/ui/Main.qml:486 src/contents/ui/TrayIcon.qml:228
+#: src/contents/ui/Main.qml:486 src/contents/ui/TrayIcon.qml:231
 msgid "Quit"
 msgstr "வெளியேறு"
 
@@ -2910,7 +2910,7 @@ msgid "Toggle fullscreen"
 msgstr "மாற்று முழுத்திரை"
 
 #: src/contents/ui/ShortcutsSheet.qml:108
-#: src/contents/ui/ShortcutsSheet.qml:359 src/global_shortcuts.hpp:83
+#: src/contents/ui/ShortcutsSheet.qml:359 src/global_shortcuts.hpp:84
 msgid "Toggle global bypass"
 msgstr "உலகளாவிய பைபாசை நிலைமாற்று"
 
@@ -2944,7 +2944,7 @@ msgstr ""
 msgid "Global Shortcuts"
 msgstr "உலகளாவிய குறுக்குவழிகள்"
 
-#: src/contents/ui/ShortcutsSheet.qml:399 src/global_shortcuts.hpp:85
+#: src/contents/ui/ShortcutsSheet.qml:399 src/global_shortcuts.hpp:87
 msgid "Toggle microphone monitoring"
 msgstr "மைக்ரோஃபோன் கண்காணிப்பை நிலைமாற்று"
 
@@ -3036,37 +3036,37 @@ msgstr "ச்டீரியோ அடிப்படை"
 msgid "Stereo phase"
 msgstr "ச்டீரியோ கட்டம்"
 
-#: src/contents/ui/TrayIcon.qml:58
+#: src/contents/ui/TrayIcon.qml:61
 #, fuzzy
 msgid "Effects disabled"
 msgstr "ஆடியோ விளைவுகள் முடக்கப்பட்டுள்ளன."
 
-#: src/contents/ui/TrayIcon.qml:60
+#: src/contents/ui/TrayIcon.qml:63
 #, fuzzy
 msgid "Effects enabled"
 msgstr "ஆடியோ விளைவுகள் இயக்கப்பட்டுள்ளன."
 
-#: src/contents/ui/TrayIcon.qml:99 src/contents/ui/TrayIcon.qml:119
+#: src/contents/ui/TrayIcon.qml:102 src/contents/ui/TrayIcon.qml:122
 msgid "Preset Loaded"
 msgstr "முன்னமைவு ஏற்றப்பட்டது"
 
-#: src/contents/ui/TrayIcon.qml:130 src/contents/ui/TrayIcon.qml:142
+#: src/contents/ui/TrayIcon.qml:133 src/contents/ui/TrayIcon.qml:145
 msgid "Clear List"
 msgstr "பட்டியலை அழி"
 
-#: src/contents/ui/TrayIcon.qml:131 src/contents/ui/TrayIcon.qml:143
+#: src/contents/ui/TrayIcon.qml:134 src/contents/ui/TrayIcon.qml:146
 msgid "Are you sure you want to clear this list?"
 msgstr "இந்தப் பட்டியலை நிச்சயமாக அழிக்க விரும்புகிறீர்களா?"
 
-#: src/contents/ui/TrayIcon.qml:152
+#: src/contents/ui/TrayIcon.qml:155
 msgid "Input Presets"
 msgstr "உள்ளீட்டு முன்னமைவுகள்"
 
-#: src/contents/ui/TrayIcon.qml:167
+#: src/contents/ui/TrayIcon.qml:170
 msgid "Output Presets"
 msgstr "வெளியீட்டு முன்னமைவுகள்"
 
-#: src/contents/ui/TrayIcon.qml:198
+#: src/contents/ui/TrayIcon.qml:201
 msgid "Active"
 msgstr "செயலில்"
 
