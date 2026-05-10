@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-05-09 13:08-0300\n"
-"PO-Revision-Date: 2026-05-06 07:11+0000\n"
+"PO-Revision-Date: 2026-05-10 14:46+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Weblate 5.17.1\n"
+"X-Generator: Weblate 2026.5-dev\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -1608,7 +1608,7 @@ msgstr "Режим эквалайзера"
 # http://wikisound.org/Гейт: шумовой гейт или просто гейт — это электронное устройство или плагин динамической обработки, который используется для контроля уровня звукового сигнала. Гейт пропускает или глушит сигнал в зависимости от установленного порогового значения. Он очень часто используется для подавления шума в паузах.
 #: src/contents/ui/Gate.qml:71 src/tags_plugin_name.cpp:64
 msgid "Gate"
-msgstr "Гейт"
+msgstr "Гейт (шлюз)"
 
 #: src/contents/ui/Gate.qml:152 src/contents/ui/Gate.qml:206
 #: src/contents/ui/MultibandGate.qml:313 src/contents/ui/MultibandGate.qml:368
@@ -2317,10 +2317,9 @@ msgid ""
 "can happen when external applications are recording from Easy Effects "
 "virtual devices monitors."
 msgstr ""
-"Используйте копию буфера входного аудио, предоставленную звуковым сервером, "
-"при обработке аудио в плагинах Easy Effects. Это устраняет звуковые сбои, "
-"которые могут возникать при записи внешними приложениями с мониторов "
-"виртуальных устройств Easy Effects."
+"Использовать копию буфера входного аудио от звукового сервера при обработке "
+"в плагинах Easy Effects. Устраняет возможные сбои звука при записи внешними "
+"приложениями с мониторов виртуальных устройств Easy Effects."
 
 #: src/contents/ui/PreferencesSheet.qml:247
 msgid "Enable the inactivity timeout"
@@ -2480,9 +2479,9 @@ msgid ""
 "Useful if the translation in the local language is incomplete or "
 "incomprehensible. A restart of the service is required to apply this option."
 msgstr ""
-"Не переводить пользовательский интерфейс и отображать текст на английском "
-"языке. Полезно, если перевод на местный язык неполный или непонятный. Для "
-"применения этой настройки требуется перезапуск службы."
+"Отображать текст интерфейса на английском языке вместо перевода. Полезно, "
+"если перевод на местный язык неполный или непонятный. Для применения этой "
+"настройки требуется перезапуск службы."
 
 #: src/contents/ui/PreferencesSheet.qml:598
 msgid "Graphs"
