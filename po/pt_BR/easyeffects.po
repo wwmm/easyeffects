@@ -1891,7 +1891,7 @@ msgstr "Sobre o Easy Effects"
 
 #: src/contents/ui/Main.qml:486 src/contents/ui/TrayIcon.qml:231
 msgid "Quit"
-msgstr "Desistir"
+msgstr "Sair"
 
 #: src/contents/ui/MenuAddPlugins.qml:93
 msgid "Add %1"
