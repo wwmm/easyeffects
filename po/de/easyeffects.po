@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-05-09 13:08-0300\n"
-"PO-Revision-Date: 2026-05-03 02:09+0000\n"
-"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
+"PO-Revision-Date: 2026-05-14 21:49+0000\n"
+"Last-Translator: Abdist <nasiefabdullah@gmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/easyeffects/main/"
 "de/>\n"
 "Language: de\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.17.1\n"
+"X-Generator: Weblate 2026.5.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -74,7 +74,7 @@ msgstr "Verfügbare Voreinstellungen anzeigen."
 
 #: src/command_line_parser.cpp:53
 msgid "preset-type"
-msgstr ""
+msgstr "Voreinstellungstyp"
 
 #: src/command_line_parser.cpp:54
 #, fuzzy
@@ -3213,7 +3213,7 @@ msgstr ""
 
 #: src/main.cpp:363
 msgid "Wellington Wallace"
-msgstr ""
+msgstr "Wellington Wallace"
 
 #: src/main.cpp:363
 msgctxt "@info:credit"

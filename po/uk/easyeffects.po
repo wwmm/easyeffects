@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-05-09 13:08-0300\n"
-"PO-Revision-Date: 2026-05-04 23:09+0000\n"
+"PO-Revision-Date: 2026-05-11 22:03+0000\n"
 "Last-Translator: Володимир <vlzuykov@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.17.1\n"
+"X-Generator: Weblate 2026.5-dev\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -3038,14 +3038,12 @@ msgid "Stereo phase"
 msgstr "Фаза стерео"
 
 #: src/contents/ui/TrayIcon.qml:61
-#, fuzzy
 msgid "Effects disabled"
-msgstr "Звукові ефекти вимкнені."
+msgstr "Ефекти вимкнені"
 
 #: src/contents/ui/TrayIcon.qml:63
-#, fuzzy
 msgid "Effects enabled"
-msgstr "Звукові ефекти увімкнені."
+msgstr "Ефекти увімкнені"
 
 #: src/contents/ui/TrayIcon.qml:102 src/contents/ui/TrayIcon.qml:122
 msgid "Preset Loaded"
