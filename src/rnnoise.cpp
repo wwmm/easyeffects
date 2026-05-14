@@ -190,9 +190,10 @@ void RNNoise::process(std::span<float>& left_in,
   }
 
 #ifdef ENABLE_RNNOISE
-  auto eps = 1e-6F;
-  auto empty = std::ranges::all_of(left_in, [&](float v){ return std::fabs(v) <= eps; }) &&
-               std::ranges::all_of(right_in, [&](float v){ return std::fabs(v) <= eps; });
+  constexpr auto eps = 1e-6F;
+
+  auto empty = std::ranges::all_of(left_in, [&](float v) { return std::fabs(v) <= eps; }) &&
+               std::ranges::all_of(right_in, [&](float v) { return std::fabs(v) <= eps; });
 
   if (!rnnoise_ready || empty) {
     std::ranges::fill(left_out, 0.0F);
