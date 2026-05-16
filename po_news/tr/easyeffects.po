@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-28 14:40+0000\n"
-"PO-Revision-Date: 2025-08-30 00:58+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2026-05-16 23:11+0000\n"
+"Last-Translator: Turan <24282230@stu.omu.edu.tr>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/tr/>\n"
 "Language: tr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.13.1-dev\n"
+"X-Generator: Weblate 2026.6.dev0\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -144,22 +144,33 @@ msgid ""
 "volunteers. You can search them on the repositories of your favorite "
 "distribution."
 msgstr ""
+"Topluluk Ön Ayarları kullanıma sunuldu. Kullanıcılar artık uygulama içinde "
+"içe aktarılıp uygulanabilecek, birden fazla Easy Effects ön ayarı barındıran "
+"paketleri yükleyebilirler. Bu paketlerin bakımı ve dağıtımı gönüllüler "
+"tarafından yapılacaktır. Söz konusu paketleri favori dağıtımınızın "
+"depolarında aratabilirsiniz."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
 msgid ""
 "Added the ability of collapsing the sidebar to hide the effects list and "
 "expand the area of the effects user interface."
 msgstr ""
+"Efekt listesini gizlemek ve efekt arayüzünün alanını genişletmek amacıyla "
+"yan çubuğu daraltma özelliği eklendi."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
 msgid ""
 "EasyEffects won't touch streams that define PW_KEY_TARGET_OBJECT to an "
 "output device that is different from the one EasyEffects is using."
 msgstr ""
+"EasyEffects, PW_KEY_TARGET_OBJECT özelliği kendi kullandığından farklı bir "
+"çıkış aygıtına yönlendirilmiş ses akışlarını artık işlemeyecek."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:63
 msgid "Equalizer APO import feature can now apply Band-Pass filters."
 msgstr ""
+"Equalizer APO içe aktarma özelliği artık Bant Geçiren (Band-Pass) filtreleri "
+"uygulayabiliyor."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:64
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:79
@@ -205,6 +216,8 @@ msgid ""
 "A change in GTK 4.14.1 prevented to apply the values inserted into the text "
 "field of our SpinButton widgets. This issue is now resolved."
 msgstr ""
+"GTK 4.14.1 sürümündeki bir değişiklik, SpinButton bileşenlerimizin metin "
+"alanına girilen değerlerin uygulanmasını engelliyordu. Bu sorun giderildi."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:66
 msgid ""
@@ -212,12 +225,17 @@ msgid ""
 "anymore. So we removed it from our user interface (you can use the plugin "
 "input gain to retrieve the same functionality)."
 msgstr ""
+"Maximizer eklentisinin son sürümlerinde artık tavan (ceiling) kontrolü "
+"bulunmuyor. Bu nedenle bu kontrolü kullanıcı arayüzümüzden kaldırdık (aynı "
+"işlevi sağlamak için eklentinin giriş kazancını kullanabilirsiniz)."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:67
 msgid ""
 "Equalizer APO import feature does not crash anymore on Flatpak when invalid "
 "values are provided."
 msgstr ""
+"Flatpak sürümünde geçersiz değerler girildiğinde Equalizer APO içe aktarma "
+"özelliğinin çökmesine neden olan sorun giderildi."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:68
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:81
@@ -249,6 +267,9 @@ msgid ""
 "invited to read and follow the guidelines linked inside the README of "
 "EasyEffects master branch."
 msgstr ""
+"Topluluk Ön Ayarlarının doğru bir şekilde dağıtılabilmesi için "
+"paketleyicilerin, EasyEffects master dalındaki README dosyasında bağlantısı "
+"verilen yönergeleri okumaları ve uygulamaları rica olunur."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:70
 msgid ""
@@ -256,6 +277,10 @@ msgid ""
 "before 7.2.0 version are deprecated. Please reload the irs/model file inside "
 "the Convolver/RNNoise UI and resave the preset."
 msgstr ""
+"7.2.0 sürümünden önce oluşturulan Convolver ve/veya Gürültü Azaltma "
+"(RNNoise) efektlerini içeren ön ayarlar kullanımdan kaldırıldı. Lütfen "
+"Convolver/RNNoise arayüzü üzerinden irs/model dosyasını yeniden yükleyin ve "
+"ön ayarı tekrar kaydedin."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:78
 msgid ""
@@ -422,6 +447,8 @@ msgstr "EasyEffects artık libc++ ile de derlenebilir."
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:183
 msgid "The Expander from Linux Studio Plugins can be used in Easy Effects."
 msgstr ""
+"Linux Studio Plugins'e ait Expander eklentisi artık Easy Effects'te "
+"kullanılabiliyor."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:184
 msgid ""
@@ -429,12 +456,17 @@ msgid ""
 "efficient input of values that are hard to set in the scale. More details at "
 "issue 1383."
 msgstr ""
+"Ekolayzer bantlarına, ölçekte ayarlanması zor olan değerlerin daha kolay "
+"girilebilmesi için ek bir kazanç (gain) kontrolü eklendi. Detaylar için: "
+"İssue 1383."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:185
 msgid ""
 "Added the ability to select and load multiple files in the opening dialogs "
 "for presets, Convolver impulse responses and RNNoise models."
 msgstr ""
+"Ön ayar, Convolver (katlama) dürtü yanıtları ve RNNoise modelleri açılış "
+"diyaloglarına çoklu dosya seçme ve yükleme yeteneği eklendi."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:187
 msgid "Fixed the Solo button in the Equalizer band settings."
@@ -457,7 +489,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:197
 msgid ""
 "An \"Experimental Features\" section was added to our preferences window."
-msgstr ""
+msgstr "Tercihler penceremize 'Deneysel Özellikler' bölümü eklendi."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:198
 msgid ""
