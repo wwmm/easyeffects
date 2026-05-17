@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-05-17 12:44-0300\n"
+"POT-Creation-Date: 2026-05-17 13:10-0300\n"
 "PO-Revision-Date: 2026-05-06 07:11+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
@@ -826,7 +826,7 @@ msgid "Rename Impulse"
 msgstr "重新命名脈衝響應"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:128
-#: src/contents/ui/PresetsLocalPage.qml:246
+#: src/contents/ui/PresetsLocalPage.qml:247
 msgid "Rename"
 msgstr "重新命名"
 
@@ -839,7 +839,7 @@ msgid "Failed to rename the %1 impulse to %2"
 msgstr "重新命名 %1 本地脈衝響應至 %2 失敗"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:147
-#: src/contents/ui/PresetsLocalPage.qml:266
+#: src/contents/ui/PresetsLocalPage.qml:267
 msgid "Cancel"
 msgstr "取消"
 
@@ -2586,15 +2586,21 @@ msgstr "註釋"
 msgid "Refresh"
 msgstr "重新整理"
 
-#: src/contents/ui/PresetsCommunityPage.qml:139
+#: src/contents/ui/PresetsCommunityPage.qml:134
+#: src/contents/ui/PresetsLocalPage.qml:306
+#, fuzzy
+msgid "Load this preset"
+msgstr "重新命名此預設集"
+
+#: src/contents/ui/PresetsCommunityPage.qml:148
 msgid "Copy to local presets"
 msgstr "複製至本地預設集"
 
-#: src/contents/ui/PresetsCommunityPage.qml:144
+#: src/contents/ui/PresetsCommunityPage.qml:153
 msgid "Imported the %1 community preset to the list of local presets."
 msgstr "已經匯入 %1 社群預設集至本地預設集列表中。"
 
-#: src/contents/ui/PresetsCommunityPage.qml:146
+#: src/contents/ui/PresetsCommunityPage.qml:155
 msgid "Failed to import the %1 community preset to the list of local presets."
 msgstr "匯入 %1 社區預設集至本地預設集列表失敗。"
 
@@ -2662,11 +2668,11 @@ msgstr "失敗建立新的本地預設集： %1"
 msgid "Export presets"
 msgstr "匯出預設集"
 
-#: src/contents/ui/PresetsLocalPage.qml:211
+#: src/contents/ui/PresetsLocalPage.qml:212
 msgid "Save Preset"
 msgstr "儲存預設集"
 
-#: src/contents/ui/PresetsLocalPage.qml:212
+#: src/contents/ui/PresetsLocalPage.qml:213
 msgid ""
 "Save current settings to the preset:\n"
 "%1"
@@ -2674,19 +2680,19 @@ msgstr ""
 "儲存目前設定至預設集：\n"
 "%1"
 
-#: src/contents/ui/PresetsLocalPage.qml:216
+#: src/contents/ui/PresetsLocalPage.qml:217
 msgid "Saved the current settings to %1 local preset."
 msgstr "已經儲存目前設定至 %1 本地預設集。"
 
-#: src/contents/ui/PresetsLocalPage.qml:218
+#: src/contents/ui/PresetsLocalPage.qml:219
 msgid "Failed to save the current settings to %1 local preset."
 msgstr "儲存目前設定至 %1 本地預設集失敗。"
 
-#: src/contents/ui/PresetsLocalPage.qml:226
+#: src/contents/ui/PresetsLocalPage.qml:227
 msgid "Remove Preset"
 msgstr "移除預設集"
 
-#: src/contents/ui/PresetsLocalPage.qml:227
+#: src/contents/ui/PresetsLocalPage.qml:228
 msgid ""
 "Are you sure you want to remove the preset\n"
 "%1\n"
@@ -2696,35 +2702,35 @@ msgstr ""
 "%1\n"
 "來自列表？"
 
-#: src/contents/ui/PresetsLocalPage.qml:231
+#: src/contents/ui/PresetsLocalPage.qml:232
 msgid "Removed the %1 local preset."
 msgstr "已經移除 %1 本地預設集。"
 
-#: src/contents/ui/PresetsLocalPage.qml:233
+#: src/contents/ui/PresetsLocalPage.qml:234
 msgid "Failed to remove the %1 local preset."
 msgstr "移除 %1 本地預設集失敗。"
 
-#: src/contents/ui/PresetsLocalPage.qml:241
+#: src/contents/ui/PresetsLocalPage.qml:242
 msgid "Rename Preset"
 msgstr "重新命名預設集"
 
-#: src/contents/ui/PresetsLocalPage.qml:255
+#: src/contents/ui/PresetsLocalPage.qml:256
 msgid "Renamed the %1 local preset to %2"
 msgstr "重新命名 %1 本地預設集至 %2"
 
-#: src/contents/ui/PresetsLocalPage.qml:258
+#: src/contents/ui/PresetsLocalPage.qml:259
 msgid "Failed to rename the %1 local preset to %2"
 msgstr "重新命名 %1 本地預設集至 %2 失敗"
 
-#: src/contents/ui/PresetsLocalPage.qml:305
+#: src/contents/ui/PresetsLocalPage.qml:314
 msgid "Save settings to this preset"
 msgstr "儲存設定至此預設集"
 
-#: src/contents/ui/PresetsLocalPage.qml:313
+#: src/contents/ui/PresetsLocalPage.qml:322
 msgid "Rename this preset"
 msgstr "重新命名此預設集"
 
-#: src/contents/ui/PresetsLocalPage.qml:321
+#: src/contents/ui/PresetsLocalPage.qml:330
 msgid "Delete this preset"
 msgstr "刪除此預設集"
 

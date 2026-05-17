@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-05-17 12:44-0300\n"
+"POT-Creation-Date: 2026-05-17 13:10-0300\n"
 "PO-Revision-Date: 2026-03-19 03:09+0000\n"
 "Last-Translator: \"Jakub Kamiński (Djkikusek)\" <djkikusek@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -843,7 +843,7 @@ msgid "Rename Impulse"
 msgstr "Usuń Impuls"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:128
-#: src/contents/ui/PresetsLocalPage.qml:246
+#: src/contents/ui/PresetsLocalPage.qml:247
 msgid "Rename"
 msgstr ""
 
@@ -858,7 +858,7 @@ msgid "Failed to rename the %1 impulse to %2"
 msgstr "Nie udało się załadować pliku impuslu"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:147
-#: src/contents/ui/PresetsLocalPage.qml:266
+#: src/contents/ui/PresetsLocalPage.qml:267
 msgid "Cancel"
 msgstr "Anuluj"
 
@@ -2641,16 +2641,22 @@ msgstr "Opis"
 msgid "Refresh"
 msgstr "Odśwież"
 
-#: src/contents/ui/PresetsCommunityPage.qml:139
+#: src/contents/ui/PresetsCommunityPage.qml:134
+#: src/contents/ui/PresetsLocalPage.qml:306
+#, fuzzy
+msgid "Load this preset"
+msgstr "Usuń ten plik szablonu"
+
+#: src/contents/ui/PresetsCommunityPage.qml:148
 #, fuzzy
 msgid "Copy to local presets"
 msgstr "Lista szablonów lokalnych"
 
-#: src/contents/ui/PresetsCommunityPage.qml:144
+#: src/contents/ui/PresetsCommunityPage.qml:153
 msgid "Imported the %1 community preset to the list of local presets."
 msgstr "Zaimportowano %1 szablon społeczności do listy szablonów lokalnych."
 
-#: src/contents/ui/PresetsCommunityPage.qml:146
+#: src/contents/ui/PresetsCommunityPage.qml:155
 msgid "Failed to import the %1 community preset to the list of local presets."
 msgstr ""
 "Nie udało się zaimportować %1 szablon społeczności do listy szablonów "
@@ -2731,12 +2737,12 @@ msgstr "Szukaj szablonów społeczności"
 msgid "Export presets"
 msgstr "Importuj profile"
 
-#: src/contents/ui/PresetsLocalPage.qml:211
+#: src/contents/ui/PresetsLocalPage.qml:212
 #, fuzzy
 msgid "Save Preset"
 msgstr "Utwórz profil"
 
-#: src/contents/ui/PresetsLocalPage.qml:212
+#: src/contents/ui/PresetsLocalPage.qml:213
 msgid ""
 "Save current settings to the preset:\n"
 "%1"
@@ -2744,60 +2750,60 @@ msgstr ""
 "Zapisz obecne ustawienia do szablonu:\n"
 "%1"
 
-#: src/contents/ui/PresetsLocalPage.qml:216
+#: src/contents/ui/PresetsLocalPage.qml:217
 msgid "Saved the current settings to %1 local preset."
 msgstr "Zapisano obecne ustawienia do lokalnego szablonu %1."
 
-#: src/contents/ui/PresetsLocalPage.qml:218
+#: src/contents/ui/PresetsLocalPage.qml:219
 msgid "Failed to save the current settings to %1 local preset."
 msgstr "Nie udało się zapisać obecnych ustawień do lokalnego szablonu %1."
 
-#: src/contents/ui/PresetsLocalPage.qml:226
+#: src/contents/ui/PresetsLocalPage.qml:227
 #, fuzzy
 msgid "Remove Preset"
 msgstr "Utwórz profil"
 
-#: src/contents/ui/PresetsLocalPage.qml:227
+#: src/contents/ui/PresetsLocalPage.qml:228
 msgid ""
 "Are you sure you want to remove the preset\n"
 "%1\n"
 "from the list?"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:231
+#: src/contents/ui/PresetsLocalPage.qml:232
 msgid "Removed the %1 local preset."
 msgstr "Usunięto lokalny szablon %1."
 
-#: src/contents/ui/PresetsLocalPage.qml:233
+#: src/contents/ui/PresetsLocalPage.qml:234
 msgid "Failed to remove the %1 local preset."
 msgstr "Nie udało się usunąć lokalnego szablonu %1."
 
-#: src/contents/ui/PresetsLocalPage.qml:241
+#: src/contents/ui/PresetsLocalPage.qml:242
 #, fuzzy
 msgid "Rename Preset"
 msgstr "Utwórz profil"
 
-#: src/contents/ui/PresetsLocalPage.qml:255
+#: src/contents/ui/PresetsLocalPage.qml:256
 #, fuzzy
 msgid "Renamed the %1 local preset to %2"
 msgstr "Usuń ten plik szablonu"
 
-#: src/contents/ui/PresetsLocalPage.qml:258
+#: src/contents/ui/PresetsLocalPage.qml:259
 #, fuzzy
 msgid "Failed to rename the %1 local preset to %2"
 msgstr "Nie udało się załadować pliku impuslu"
 
-#: src/contents/ui/PresetsLocalPage.qml:305
+#: src/contents/ui/PresetsLocalPage.qml:314
 #, fuzzy
 msgid "Save settings to this preset"
 msgstr "Zapisz obecne ustawienia do tego pliku profilu"
 
-#: src/contents/ui/PresetsLocalPage.qml:313
+#: src/contents/ui/PresetsLocalPage.qml:322
 #, fuzzy
 msgid "Rename this preset"
 msgstr "Usuń ten plik szablonu"
 
-#: src/contents/ui/PresetsLocalPage.qml:321
+#: src/contents/ui/PresetsLocalPage.qml:330
 #, fuzzy
 msgid "Delete this preset"
 msgstr "Usuń ten plik szablonu"

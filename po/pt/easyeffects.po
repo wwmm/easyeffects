@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-05-17 12:44-0300\n"
+"POT-Creation-Date: 2026-05-17 13:10-0300\n"
 "PO-Revision-Date: 2025-07-20 18:40+0000\n"
 "Last-Translator: raffyll <raffyl.dev@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/easyeffects/"
@@ -885,7 +885,7 @@ msgid "Rename Impulse"
 msgstr "Remover o Impulso"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:128
-#: src/contents/ui/PresetsLocalPage.qml:246
+#: src/contents/ui/PresetsLocalPage.qml:247
 msgid "Rename"
 msgstr ""
 
@@ -900,7 +900,7 @@ msgid "Failed to rename the %1 impulse to %2"
 msgstr "Não Foi Possível Carregar o Ficheiro com o Impulso"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:147
-#: src/contents/ui/PresetsLocalPage.qml:266
+#: src/contents/ui/PresetsLocalPage.qml:267
 #, fuzzy
 msgid "Cancel"
 msgstr "Balanço"
@@ -2836,18 +2836,24 @@ msgstr "Descrição"
 msgid "Refresh"
 msgstr "Atualizar"
 
-#: src/contents/ui/PresetsCommunityPage.qml:139
+#: src/contents/ui/PresetsCommunityPage.qml:134
+#: src/contents/ui/PresetsLocalPage.qml:306
+#, fuzzy
+msgid "Load this preset"
+msgstr "Remover este ficheiro de predefinição"
+
+#: src/contents/ui/PresetsCommunityPage.qml:148
 #, fuzzy
 msgid "Copy to local presets"
 msgstr "Lista de predefinições locais"
 
-#: src/contents/ui/PresetsCommunityPage.qml:144
+#: src/contents/ui/PresetsCommunityPage.qml:153
 #, fuzzy
 msgid "Imported the %1 community preset to the list of local presets."
 msgstr ""
 "Importe esta predefinição de comunidade para a lista de predefinições locais"
 
-#: src/contents/ui/PresetsCommunityPage.qml:146
+#: src/contents/ui/PresetsCommunityPage.qml:155
 #, fuzzy
 msgid "Failed to import the %1 community preset to the list of local presets."
 msgstr "Predefinição da comunidade de pesquisa"
@@ -2929,76 +2935,76 @@ msgstr "Predefinição da comunidade de pesquisa"
 msgid "Export presets"
 msgstr "Importar as Predefinições"
 
-#: src/contents/ui/PresetsLocalPage.qml:211
+#: src/contents/ui/PresetsLocalPage.qml:212
 #, fuzzy
 msgid "Save Preset"
 msgstr "Criar uma nova predefinição"
 
-#: src/contents/ui/PresetsLocalPage.qml:212
+#: src/contents/ui/PresetsLocalPage.qml:213
 #, fuzzy
 msgid ""
 "Save current settings to the preset:\n"
 "%1"
 msgstr "Salvar as configurações atuais para este ficheiro de predefinição"
 
-#: src/contents/ui/PresetsLocalPage.qml:216
+#: src/contents/ui/PresetsLocalPage.qml:217
 #, fuzzy
 msgid "Saved the current settings to %1 local preset."
 msgstr "Descarte as definições atuais e carregue esta predefinição"
 
-#: src/contents/ui/PresetsLocalPage.qml:218
+#: src/contents/ui/PresetsLocalPage.qml:219
 #, fuzzy
 msgid "Failed to save the current settings to %1 local preset."
 msgstr "Descarte as definições atuais e carregue esta predefinição"
 
-#: src/contents/ui/PresetsLocalPage.qml:226
+#: src/contents/ui/PresetsLocalPage.qml:227
 #, fuzzy
 msgid "Remove Preset"
 msgstr "Criar uma nova predefinição"
 
-#: src/contents/ui/PresetsLocalPage.qml:227
+#: src/contents/ui/PresetsLocalPage.qml:228
 msgid ""
 "Are you sure you want to remove the preset\n"
 "%1\n"
 "from the list?"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:231
+#: src/contents/ui/PresetsLocalPage.qml:232
 #, fuzzy
 msgid "Removed the %1 local preset."
 msgstr "Remover este predefinição carregada automáticamente"
 
-#: src/contents/ui/PresetsLocalPage.qml:233
+#: src/contents/ui/PresetsLocalPage.qml:234
 #, fuzzy
 msgid "Failed to remove the %1 local preset."
 msgstr "Importar o Ficheiro com as Predefinições do APO"
 
-#: src/contents/ui/PresetsLocalPage.qml:241
+#: src/contents/ui/PresetsLocalPage.qml:242
 #, fuzzy
 msgid "Rename Preset"
 msgstr "Criar uma nova predefinição"
 
-#: src/contents/ui/PresetsLocalPage.qml:255
+#: src/contents/ui/PresetsLocalPage.qml:256
 #, fuzzy
 msgid "Renamed the %1 local preset to %2"
 msgstr "Remover este ficheiro de predefinição"
 
-#: src/contents/ui/PresetsLocalPage.qml:258
+#: src/contents/ui/PresetsLocalPage.qml:259
 #, fuzzy
 msgid "Failed to rename the %1 local preset to %2"
 msgstr "Não Foi Possível Carregar o Ficheiro com o Impulso"
 
-#: src/contents/ui/PresetsLocalPage.qml:305
+#: src/contents/ui/PresetsLocalPage.qml:314
 #, fuzzy
 msgid "Save settings to this preset"
 msgstr "Salvar as configurações atuais para este ficheiro de predefinição"
 
-#: src/contents/ui/PresetsLocalPage.qml:313
+#: src/contents/ui/PresetsLocalPage.qml:322
 #, fuzzy
 msgid "Rename this preset"
 msgstr "Remover este ficheiro de predefinição"
 
-#: src/contents/ui/PresetsLocalPage.qml:321
+#: src/contents/ui/PresetsLocalPage.qml:330
 #, fuzzy
 msgid "Delete this preset"
 msgstr "Remover este ficheiro de predefinição"

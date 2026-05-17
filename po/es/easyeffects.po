@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-05-17 12:44-0300\n"
+"POT-Creation-Date: 2026-05-17 13:10-0300\n"
 "PO-Revision-Date: 2026-04-24 07:09+0000\n"
 "Last-Translator: Lito Parra <lito.15@proton.me>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -838,7 +838,7 @@ msgid "Rename Impulse"
 msgstr "Renombrar impulso"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:128
-#: src/contents/ui/PresetsLocalPage.qml:246
+#: src/contents/ui/PresetsLocalPage.qml:247
 msgid "Rename"
 msgstr "Renombrar"
 
@@ -851,7 +851,7 @@ msgid "Failed to rename the %1 impulse to %2"
 msgstr "No se pudo renombrar el impulso %1 a %2"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:147
-#: src/contents/ui/PresetsLocalPage.qml:266
+#: src/contents/ui/PresetsLocalPage.qml:267
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -2629,16 +2629,22 @@ msgstr "Descripción"
 msgid "Refresh"
 msgstr "Refrescar"
 
-#: src/contents/ui/PresetsCommunityPage.qml:139
+#: src/contents/ui/PresetsCommunityPage.qml:134
+#: src/contents/ui/PresetsLocalPage.qml:306
+#, fuzzy
+msgid "Load this preset"
+msgstr "Renombrar este perfil"
+
+#: src/contents/ui/PresetsCommunityPage.qml:148
 msgid "Copy to local presets"
 msgstr "Copiar a perfiles locales"
 
-#: src/contents/ui/PresetsCommunityPage.qml:144
+#: src/contents/ui/PresetsCommunityPage.qml:153
 msgid "Imported the %1 community preset to the list of local presets."
 msgstr ""
 "Se importó el perfil de la comunidad %1 a la lista de perfiles locales."
 
-#: src/contents/ui/PresetsCommunityPage.qml:146
+#: src/contents/ui/PresetsCommunityPage.qml:155
 msgid "Failed to import the %1 community preset to the list of local presets."
 msgstr ""
 "No se pudo importar el perfil de la comunidad %1 a la lista de perfiles "
@@ -2708,11 +2714,11 @@ msgstr "No se pudo crear el nuevo perfil local: %1"
 msgid "Export presets"
 msgstr "Exportar perfiles"
 
-#: src/contents/ui/PresetsLocalPage.qml:211
+#: src/contents/ui/PresetsLocalPage.qml:212
 msgid "Save Preset"
 msgstr "Guardar perfil"
 
-#: src/contents/ui/PresetsLocalPage.qml:212
+#: src/contents/ui/PresetsLocalPage.qml:213
 msgid ""
 "Save current settings to the preset:\n"
 "%1"
@@ -2720,19 +2726,19 @@ msgstr ""
 "Guardar la configuración actual en este perfil:\n"
 "%1"
 
-#: src/contents/ui/PresetsLocalPage.qml:216
+#: src/contents/ui/PresetsLocalPage.qml:217
 msgid "Saved the current settings to %1 local preset."
 msgstr "Se guardaron los ajustes actuales al perfil local %1."
 
-#: src/contents/ui/PresetsLocalPage.qml:218
+#: src/contents/ui/PresetsLocalPage.qml:219
 msgid "Failed to save the current settings to %1 local preset."
 msgstr "No se pudieron guardar los ajustes actuales al perfil local %1."
 
-#: src/contents/ui/PresetsLocalPage.qml:226
+#: src/contents/ui/PresetsLocalPage.qml:227
 msgid "Remove Preset"
 msgstr "Eliminar perfil"
 
-#: src/contents/ui/PresetsLocalPage.qml:227
+#: src/contents/ui/PresetsLocalPage.qml:228
 msgid ""
 "Are you sure you want to remove the preset\n"
 "%1\n"
@@ -2742,35 +2748,35 @@ msgstr ""
 "%1\n"
 "de la lista?"
 
-#: src/contents/ui/PresetsLocalPage.qml:231
+#: src/contents/ui/PresetsLocalPage.qml:232
 msgid "Removed the %1 local preset."
 msgstr "Se eliminó el perfil local %1."
 
-#: src/contents/ui/PresetsLocalPage.qml:233
+#: src/contents/ui/PresetsLocalPage.qml:234
 msgid "Failed to remove the %1 local preset."
 msgstr "No se pudo eliminar el perfil local %1."
 
-#: src/contents/ui/PresetsLocalPage.qml:241
+#: src/contents/ui/PresetsLocalPage.qml:242
 msgid "Rename Preset"
 msgstr "Renombrar perfil"
 
-#: src/contents/ui/PresetsLocalPage.qml:255
+#: src/contents/ui/PresetsLocalPage.qml:256
 msgid "Renamed the %1 local preset to %2"
 msgstr "Se renombró el perfil local %1 a %2"
 
-#: src/contents/ui/PresetsLocalPage.qml:258
+#: src/contents/ui/PresetsLocalPage.qml:259
 msgid "Failed to rename the %1 local preset to %2"
 msgstr "No se pudo renombrar el perfil local %1 a %2"
 
-#: src/contents/ui/PresetsLocalPage.qml:305
+#: src/contents/ui/PresetsLocalPage.qml:314
 msgid "Save settings to this preset"
 msgstr "Guardar ajustes en este perfil"
 
-#: src/contents/ui/PresetsLocalPage.qml:313
+#: src/contents/ui/PresetsLocalPage.qml:322
 msgid "Rename this preset"
 msgstr "Renombrar este perfil"
 
-#: src/contents/ui/PresetsLocalPage.qml:321
+#: src/contents/ui/PresetsLocalPage.qml:330
 msgid "Delete this preset"
 msgstr "Eliminar este perfil"
 
