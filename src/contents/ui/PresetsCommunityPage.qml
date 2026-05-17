@@ -114,6 +114,7 @@ ColumnLayout {
                 hoverEnabled: true
                 highlighted: false
                 width: listView.width
+                checked: columnLayout.pipeline === 1 ? DbMain.lastLoadedOutputPreset === name : DbMain.lastLoadedInputPreset === name
                 onClicked: PresetsManager.loadCommunityPresetFile(columnLayout.pipeline, path, presetPackage)
 
                 contentItem: RowLayout {
