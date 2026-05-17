@@ -78,6 +78,15 @@ Kirigami.Page {
     }
 
     Loader {
+        id: presetsDialogLoader
+        active: false
+
+        sourceComponent: Component {
+            PresetsDialog {}
+        }
+    }
+
+    Loader {
         id: blocklistDialogLoader
         active: false
 
@@ -622,6 +631,66 @@ Kirigami.Page {
             Kirigami.ActionToolBar {
                 alignment: Qt.AlignLeft
                 position: Controls.ToolBar.Footer
+                overflowIconName: "im-ban-kick-user-symbolic"
+                actions: [
+                    Kirigami.Action {
+                        text: i18n("Presets") // qmllint disable
+                        icon.name: "user-bookmarks-symbolic"
+                        displayHint: Kirigami.DisplayHint.KeepVisible
+                        visible: DbMain.visiblePage !== 2
+                        onTriggered: {
+                            if (!presetsDialogLoader.active) {
+                                presetsDialogLoader.active = true;
+                            }
+
+                            presetsDialogLoader.item.open();
+                        }
+                    },
+                    Kirigami.Action {
+                        text: i18n("Excluded apps") // qmllint disable
+                        icon.name: "im-ban-kick-user-symbolic"
+                        displayHint: Kirigami.DisplayHint.KeepVisible
+                        visible: pageStreamsEffects.streamDB.visiblePage === 0
+                        onTriggered: {
+                            if (!blocklistDialogLoader.active) {
+                                blocklistDialogLoader.active = true;
+                            }
+                            blocklistDialogLoader.item.open();
+                        }
+                    },
+                    Kirigami.Action {
+                        text: i18n("Input monitoring") // qmllint disable
+                        icon.name: "audio-input-microphone-symbolic"
+                        displayHint: Kirigami.DisplayHint.KeepVisible
+                        visible: pageStreamsEffects.pageType === 1
+                        checkable: true
+                        checked: DbStreamInputs.listenToMic
+                        onTriggered: {
+                            if (checked !== DbStreamInputs.listenToMic) {
+                                DbStreamInputs.listenToMic = checked;
+                            }
+                        }
+                    },
+                    Kirigami.Action {
+                        text: i18n("Share audio") // qmllint disable
+                        tooltip: i18n("Send the processed desktop audio to the virtual source") // qmllint disable
+                        icon.name: "emblem-shared-symbolic"
+                        displayHint: Kirigami.DisplayHint.KeepVisible
+                        visible: pageStreamsEffects.pageType === 0
+                        checkable: true
+                        checked: DbStreamOutputs.linkToVirtualSource
+                        onTriggered: {
+                            if (checked !== DbStreamOutputs.linkToVirtualSource) {
+                                DbStreamOutputs.linkToVirtualSource = checked;
+                            }
+                        }
+                    }
+                ]
+            }
+
+            Kirigami.ActionToolBar {
+                alignment: Qt.AlignRight
+                position: Controls.ToolBar.Footer
                 overflowIconName: "info-symbolic"
                 actions: [
                     Kirigami.Action {
@@ -752,94 +821,6 @@ Kirigami.Page {
                         actionLevelValue.text = `<pre ${cssFontColor}> ${styledLocaleLeft} ${styledLocaleRight} ${Units.dB}</pre>`;
                     }
                 }
-            }
-
-            RowLayout {
-                id: segmentedButton
-
-                Layout.alignment: Qt.AlignHCenter
-                Layout.topMargin: Math.round(Kirigami.Units.smallSpacing / 2)
-                Layout.bottomMargin: Math.round(Kirigami.Units.smallSpacing / 2)
-
-                readonly property bool hasEnoughWidth: appWindow.width >= Kirigami.Units.gridUnit * 40
-
-                readonly property int display: (!Kirigami.Settings.isMobile && hasEnoughWidth) ? Controls.ToolButton.TextBesideIcon : Controls.ToolButton.IconOnly
-
-                Controls.ButtonGroup {
-                    id: subNavButtonGroup
-                }
-
-                Controls.ToolButton {
-                    icon.name: pageStreamsEffects.pageType === 0 ? "multimedia-player-symbolic" : "media-record-symbolic"
-                    text: pageStreamsEffects.pageType === 0 ? i18n("Players") : i18n("Recorders") // qmllint disable
-                    checkable: true
-                    checked: pageStreamsEffects.streamDB.visiblePage === 0
-                    display: segmentedButton.display
-                    onClicked: {
-                        pageStreamsEffects.streamDB.visiblePage = 0;
-                    }
-
-                    Controls.ButtonGroup.group: subNavButtonGroup
-                }
-
-                Controls.ToolButton {
-                    icon.name: "folder-music-symbolic"
-                    text: i18n("Effects") // qmllint disable
-                    checkable: true
-                    checked: pageStreamsEffects.streamDB.visiblePage === 1
-                    display: segmentedButton.display
-                    onClicked: {
-                        pageStreamsEffects.streamDB.visiblePage = 1;
-                    }
-
-                    Controls.ButtonGroup.group: subNavButtonGroup
-                }
-            }
-
-            Kirigami.ActionToolBar {
-                alignment: Qt.AlignRight
-                position: Controls.ToolBar.Footer
-                overflowIconName: "im-ban-kick-user-symbolic"
-                actions: [
-                    Kirigami.Action {
-                        text: i18n("Excluded apps") // qmllint disable
-                        icon.name: "im-ban-kick-user-symbolic"
-                        displayHint: Kirigami.DisplayHint.KeepVisible
-                        visible: pageStreamsEffects.streamDB.visiblePage === 0
-                        onTriggered: {
-                            if (!blocklistDialogLoader.active) {
-                                blocklistDialogLoader.active = true;
-                            }
-                            blocklistDialogLoader.item.open();
-                        }
-                    },
-                    Kirigami.Action {
-                        tooltip: i18n("Input monitoring") // qmllint disable
-                        icon.name: "audio-input-microphone-symbolic"
-                        displayHint: Kirigami.DisplayHint.KeepVisible
-                        visible: pageStreamsEffects.pageType === 1
-                        checkable: true
-                        checked: DbStreamInputs.listenToMic
-                        onTriggered: {
-                            if (checked !== DbStreamInputs.listenToMic) {
-                                DbStreamInputs.listenToMic = checked;
-                            }
-                        }
-                    },
-                    Kirigami.Action {
-                        tooltip: i18n("Send audio to the virtual source") // qmllint disable
-                        icon.name: "emblem-shared-symbolic"
-                        displayHint: Kirigami.DisplayHint.KeepVisible
-                        visible: pageStreamsEffects.pageType === 0
-                        checkable: true
-                        checked: DbStreamOutputs.linkToVirtualSource
-                        onTriggered: {
-                            if (checked !== DbStreamOutputs.linkToVirtualSource) {
-                                DbStreamOutputs.linkToVirtualSource = checked;
-                            }
-                        }
-                    }
-                ]
             }
         }
     }

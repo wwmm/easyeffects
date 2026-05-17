@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-05-09 13:08-0300\n"
+"POT-Creation-Date: 2026-05-17 12:44-0300\n"
 "PO-Revision-Date: 2026-04-23 16:12+0000\n"
 "Last-Translator: தமிழ்நேரம் <tamilneram247@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -175,7 +175,7 @@ msgstr "வடிவியல் சராசரி (SI)"
 msgid "Target"
 msgstr "இலக்கு"
 
-#: src/contents/ui/Autogain.qml:104 src/contents/ui/PipeWirePage.qml:414
+#: src/contents/ui/Autogain.qml:104 src/contents/ui/PipeWirePage.qml:420
 msgid "Silence"
 msgstr "ம .னம்"
 
@@ -263,7 +263,7 @@ msgstr "பயன்முறை"
 msgid "Auto"
 msgstr "ஆட்டோகெயின்"
 
-#: src/contents/ui/Autotune.qml:111 src/contents/ui/Main.qml:454
+#: src/contents/ui/Autotune.qml:111 src/contents/ui/Main.qml:460
 #: src/contents/ui/TrayIcon.qml:221
 msgid "Manual"
 msgstr "கையேடு"
@@ -383,7 +383,7 @@ msgstr "கேளுங்கள்"
 #: src/contents/ui/Exciter.qml:252 src/contents/ui/Expander.qml:875
 #: src/contents/ui/Filter.qml:252 src/contents/ui/Gate.qml:1004
 #: src/contents/ui/Limiter.qml:659 src/contents/ui/Loudness.qml:217
-#: src/contents/ui/Main.qml:466 src/contents/ui/Maximizer.qml:154
+#: src/contents/ui/Main.qml:472 src/contents/ui/Maximizer.qml:154
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:358
 #: src/contents/ui/RNNoise.qml:345 src/contents/ui/Speex.qml:195
@@ -393,7 +393,7 @@ msgstr "மீட்டமை"
 
 #: src/contents/ui/BassLoudness.qml:83 src/contents/ui/Compressor.qml:478
 #: src/contents/ui/EeInputOutputGain.qml:144 src/contents/ui/Expander.qml:438
-#: src/contents/ui/Gate.qml:453 src/contents/ui/Main.qml:391
+#: src/contents/ui/Gate.qml:453 src/contents/ui/Main.qml:368
 #: src/contents/ui/StereoTools.qml:268
 msgid "Output"
 msgstr "வெளியீடு"
@@ -420,7 +420,7 @@ msgstr "விலக்கப்பட்ட பயன்பாடுகளி�
 #: src/contents/ui/BlocklistDialog.qml:114
 #: src/contents/ui/ConvolverImpulseDialog.qml:89
 #: src/contents/ui/MenuAddPlugins.qml:54
-#: src/contents/ui/PageStreamsEffects.qml:106
+#: src/contents/ui/PageStreamsEffects.qml:115
 #: src/contents/ui/PresetsAutoloadPage.qml:176
 #: src/contents/ui/PresetsCommunityPage.qml:104
 #: src/contents/ui/PresetsLocalPage.qml:193 src/contents/ui/RNNoise.qml:228
@@ -557,7 +557,7 @@ msgstr "வெளிப்புறம்"
 
 #: src/contents/ui/Compressor.qml:277 src/contents/ui/Expander.qml:237
 #: src/contents/ui/Gate.qml:255 src/contents/ui/Limiter.qml:227
-#: src/contents/ui/PageStreamsEffects.qml:457
+#: src/contents/ui/PageStreamsEffects.qml:466
 msgid "Input device"
 msgstr "உள்ளீட்டு சாதனம்"
 
@@ -616,7 +616,7 @@ msgstr "பக்கம்"
 #: src/contents/ui/Expander.qml:279 src/contents/ui/Gate.qml:297
 #: src/contents/ui/LevelMeter.qml:79 src/contents/ui/LevelMeter.qml:118
 #: src/contents/ui/MultibandCompressor.qml:449
-#: src/contents/ui/MultibandGate.qml:422 src/contents/ui/PipeWirePage.qml:340
+#: src/contents/ui/MultibandGate.qml:422 src/contents/ui/PipeWirePage.qml:346
 #: src/contents/ui/StereoTools.qml:204
 msgid "Left"
 msgstr "இடது"
@@ -626,7 +626,7 @@ msgstr "இடது"
 #: src/contents/ui/Expander.qml:279 src/contents/ui/Gate.qml:297
 #: src/contents/ui/LevelMeter.qml:89 src/contents/ui/LevelMeter.qml:128
 #: src/contents/ui/MultibandCompressor.qml:449
-#: src/contents/ui/MultibandGate.qml:422 src/contents/ui/PipeWirePage.qml:351
+#: src/contents/ui/MultibandGate.qml:422 src/contents/ui/PipeWirePage.qml:357
 #: src/contents/ui/StereoTools.qml:231
 msgid "Right"
 msgstr "வலது"
@@ -926,7 +926,7 @@ msgstr "மாதிரிகள்"
 msgid "Duration"
 msgstr "காலம்"
 
-#: src/contents/ui/Convolver.qml:395 src/contents/ui/PipeWirePage.qml:331
+#: src/contents/ui/Convolver.qml:395 src/contents/ui/PipeWirePage.qml:337
 msgid "Channels"
 msgstr "சேனல்கள்"
 
@@ -998,7 +998,7 @@ msgstr "கிராச்ஃபீட் முன்னமைவுகள்"
 msgid "Default"
 msgstr "இயல்புநிலை"
 
-#: src/contents/ui/Crossfeed.qml:167 src/contents/ui/Main.qml:361
+#: src/contents/ui/Crossfeed.qml:167 src/contents/ui/PageStreamsEffects.qml:637
 #: src/contents/ui/PreferencesSheet.qml:62 src/contents/ui/Reverb.qml:335
 msgid "Presets"
 msgstr "முன்னமைவுகள்"
@@ -1316,7 +1316,7 @@ msgstr "ஆடியோ நிலை கட்டுப்பாடு"
 msgid "Input and output gain controls with level meters"
 msgstr "நிலை மீட்டர்களுடன் உள்ளீடு மற்றும் வெளியீடு ஆதாயக் கட்டுப்பாடுகள்"
 
-#: src/contents/ui/EeInputOutputGain.qml:131 src/contents/ui/Main.qml:404
+#: src/contents/ui/EeInputOutputGain.qml:131 src/contents/ui/Main.qml:383
 #: src/contents/ui/StereoTools.qml:59
 msgid "Input"
 msgstr "உள்ளீடு"
@@ -1398,7 +1398,7 @@ msgstr "சாய்வு"
 
 #: src/contents/ui/EqualizerBandMenu.qml:96 src/contents/ui/Filter.qml:128
 #: src/contents/ui/MultibandCompressor.qml:199
-#: src/contents/ui/MultibandGate.qml:136 src/contents/ui/PipeWirePage.qml:425
+#: src/contents/ui/MultibandGate.qml:136 src/contents/ui/PipeWirePage.qml:431
 msgid "Frequency"
 msgstr "மீடிறன், மீள்திறன், நிகழ்வெண், நிகழ்வு"
 
@@ -1825,52 +1825,57 @@ msgstr "கிளிப்பிங் வரம்பு"
 msgid "Clipping"
 msgstr "கிளிப்பிங்"
 
-#: src/contents/ui/Main.qml:312
+#: src/contents/ui/Main.qml:303
 msgid "Reset Settings?"
 msgstr "அமைப்புகளை மீட்டமைக்கவா?"
 
-#: src/contents/ui/Main.qml:313
+#: src/contents/ui/Main.qml:304
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr "அனைத்து Easy Effects அமைப்புகளையும் நிச்சயமாக மீட்டமைக்க விரும்புகிறீர்களா?"
 
-#: src/contents/ui/Main.qml:335
-msgid "Go back"
-msgstr "திரும்பி போ"
-
-#: src/contents/ui/Main.qml:345 src/contents/ui/PageStreamsEffects.qml:787
-msgid "Effects"
-msgstr "விளைவுகள்"
-
-#: src/contents/ui/Main.qml:346
-msgid "Turn effects on/off"
-msgstr "விளைவுகளை இயக்கவும்/முடக்கவும்"
-
-#: src/contents/ui/Main.qml:357
-msgid "Audio effects are enabled."
-msgstr "ஆடியோ விளைவுகள் இயக்கப்பட்டுள்ளன."
-
-#: src/contents/ui/Main.qml:357
-msgid "Audio effects are disabled."
-msgstr "ஆடியோ விளைவுகள் முடக்கப்பட்டுள்ளன."
-
-#: src/contents/ui/Main.qml:417
+#: src/contents/ui/Main.qml:326 src/contents/ui/Main.qml:452
+#: src/contents/ui/PipeWirePage.qml:34
 msgid "PipeWire"
 msgstr "குழாய் கம்பி"
 
-#: src/contents/ui/Main.qml:435
+#: src/contents/ui/Main.qml:334
+msgid "Effects"
+msgstr "விளைவுகள்"
+
+#: src/contents/ui/Main.qml:335
+msgid "Turn effects on/off"
+msgstr "விளைவுகளை இயக்கவும்/முடக்கவும்"
+
+#: src/contents/ui/Main.qml:347
+msgid "Audio effects are enabled."
+msgstr "ஆடியோ விளைவுகள் இயக்கப்பட்டுள்ளன."
+
+#: src/contents/ui/Main.qml:347
+msgid "Audio effects are disabled."
+msgstr "ஆடியோ விளைவுகள் முடக்கப்பட்டுள்ளன."
+
+#: src/contents/ui/Main.qml:399 src/contents/ui/PageStreamsEffects.qml:466
+msgid "Players"
+msgstr "வீரர்கள்"
+
+#: src/contents/ui/Main.qml:414 src/contents/ui/PageStreamsEffects.qml:475
+msgid "Recorders"
+msgstr "ரெக்கார்டர்கள்"
+
+#: src/contents/ui/Main.qml:433
 msgid "Preferences"
 msgstr "விருப்பத்தேர்வுகள்"
 
-#: src/contents/ui/Main.qml:446 src/contents/ui/ShortcutsSheet.qml:418
+#: src/contents/ui/Main.qml:444 src/contents/ui/ShortcutsSheet.qml:418
 #: src/contents/ui/TrayIcon.qml:212
 msgid "Shortcuts"
 msgstr "குறுக்குவழிகள்"
 
-#: src/contents/ui/Main.qml:478
+#: src/contents/ui/Main.qml:484
 msgid "About Easy Effects"
 msgstr "எளிதான விளைவுகள் பற்றி"
 
-#: src/contents/ui/Main.qml:486 src/contents/ui/TrayIcon.qml:231
+#: src/contents/ui/Main.qml:492 src/contents/ui/TrayIcon.qml:231
 msgid "Quit"
 msgstr "வெளியேறு"
 
@@ -1955,81 +1960,76 @@ msgstr "பக்க சங்கிலி உள்ளீட்டு சாத
 msgid "Reaction"
 msgstr "எதிர்வினை"
 
-#: src/contents/ui/PageStreamsEffects.qml:107
+#: src/contents/ui/PageStreamsEffects.qml:116
 msgid "No audio application available"
 msgstr "ஆடியோ பயன்பாடு இல்லை"
 
-#: src/contents/ui/PageStreamsEffects.qml:122
+#: src/contents/ui/PageStreamsEffects.qml:131
 msgid "No Effects"
 msgstr "விளைவுகள் இல்லை"
 
-#: src/contents/ui/PageStreamsEffects.qml:123
+#: src/contents/ui/PageStreamsEffects.qml:132
 msgid "Audio stream not modified"
 msgstr "ஆடியோ ச்ட்ரீம் மாற்றப்படவில்லை"
 
-#: src/contents/ui/PageStreamsEffects.qml:387
+#: src/contents/ui/PageStreamsEffects.qml:396
 msgid "Add effect"
 msgstr "விளைவைச் சேர்க்கவும்"
 
-#: src/contents/ui/PageStreamsEffects.qml:400
+#: src/contents/ui/PageStreamsEffects.qml:409
 msgid "Close"
 msgstr "மூடு"
 
-#: src/contents/ui/PageStreamsEffects.qml:404
+#: src/contents/ui/PageStreamsEffects.qml:413
 msgid "Expand the list of effects pipeline"
 msgstr "விளைவுகளின் பட்டியலை விரிவாக்கவும்"
 
-#: src/contents/ui/PageStreamsEffects.qml:404
+#: src/contents/ui/PageStreamsEffects.qml:413
 msgid "Reduce the list of effects pipeline"
 msgstr "விளைவு பைப்லைன் பட்டியலைக் குறைக்கவும்"
 
-#: src/contents/ui/PageStreamsEffects.qml:457
-#: src/contents/ui/PageStreamsEffects.qml:774
-msgid "Players"
-msgstr "வீரர்கள்"
-
-#: src/contents/ui/PageStreamsEffects.qml:466
+#: src/contents/ui/PageStreamsEffects.qml:475
 msgid "Output device"
 msgstr "வெளியீட்டு சாதனம்"
 
-#: src/contents/ui/PageStreamsEffects.qml:466
-#: src/contents/ui/PageStreamsEffects.qml:774
-msgid "Recorders"
-msgstr "ரெக்கார்டர்கள்"
-
-#: src/contents/ui/PageStreamsEffects.qml:805
+#: src/contents/ui/PageStreamsEffects.qml:650
 msgid "Excluded apps"
 msgstr "விலக்கப்பட்ட பயன்பாடுகள்"
 
-#: src/contents/ui/PageStreamsEffects.qml:817
+#: src/contents/ui/PageStreamsEffects.qml:662
 msgid "Input monitoring"
 msgstr "உள்ளீடு கண்காணிப்பு"
 
-#: src/contents/ui/PageStreamsEffects.qml:830
-msgid "Send audio to the virtual source"
+#: src/contents/ui/PageStreamsEffects.qml:675
+msgid "Share audio"
+msgstr ""
+
+#: src/contents/ui/PageStreamsEffects.qml:676
+#, fuzzy
+msgid "Send the processed desktop audio to the virtual source"
 msgstr "மெய்நிகர் மூலத்திற்கு ஆடியோவை அனுப்பவும்"
 
-#: src/contents/ui/PipeWirePage.qml:43
+#: src/contents/ui/PipeWirePage.qml:49
 msgid "General"
 msgstr "பொது"
 
-#: src/contents/ui/PipeWirePage.qml:48
+#: src/contents/ui/PipeWirePage.qml:54
 msgid "Modules"
 msgstr "தொகுதிகள்"
 
-#: src/contents/ui/PipeWirePage.qml:53
+#: src/contents/ui/PipeWirePage.qml:59
 msgid "Clients"
 msgstr "வாடிக்கையாளர்கள்"
 
-#: src/contents/ui/PipeWirePage.qml:58
+#: src/contents/ui/PipeWirePage.qml:64
 msgid "Test Signal"
 msgstr "சோதனை சமிக்ஞை"
 
-#: src/contents/ui/PipeWirePage.qml:128
+#: src/contents/ui/PipeWirePage.qml:134
 msgid "Device Management"
 msgstr "சாதன மேலாண்மை"
 
-#: src/contents/ui/PipeWirePage.qml:132
+#: src/contents/ui/PipeWirePage.qml:138
 msgid ""
 "It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
 "external applications (e.g. Gnome Settings and Plasma System Settings)"
@@ -2037,85 +2037,85 @@ msgstr ""
 "வெளிப்புற பயன்பாடுகளில் (எ.கா. க்னோம் அமைப்புகள் மற்றும் பிளாச்மா சிச்டம் அமைப்புகள்) Easy "
 "Effects Sink/Source ஐ இயல்புநிலை சாதனமாக அமைக்க வேண்டாமெனப் பரிந்துரைக்கப்படுகிறது"
 
-#: src/contents/ui/PipeWirePage.qml:139
+#: src/contents/ui/PipeWirePage.qml:145
 msgid "Use default input"
 msgstr "இயல்பு உள்ளீட்டைப் பயன்படுத்தவும்"
 
-#: src/contents/ui/PipeWirePage.qml:153 src/contents/ui/PipeWirePage.qml:197
+#: src/contents/ui/PipeWirePage.qml:159 src/contents/ui/PipeWirePage.qml:203
 msgid "Name"
 msgstr "பெயர்"
 
-#: src/contents/ui/PipeWirePage.qml:182
+#: src/contents/ui/PipeWirePage.qml:188
 msgid "Use default output"
 msgstr "இயல்புநிலை வெளியீட்டைப் பயன்படுத்தவும்"
 
-#: src/contents/ui/PipeWirePage.qml:221
+#: src/contents/ui/PipeWirePage.qml:227
 msgid "Server Information"
 msgstr "சேவையக செய்தி"
 
-#: src/contents/ui/PipeWirePage.qml:226
+#: src/contents/ui/PipeWirePage.qml:232
 msgid "Header version"
 msgstr "தலைப்பு பதிப்பு"
 
-#: src/contents/ui/PipeWirePage.qml:231
+#: src/contents/ui/PipeWirePage.qml:237
 msgid "Library version"
 msgstr "நூலக பதிப்பு"
 
-#: src/contents/ui/PipeWirePage.qml:236
+#: src/contents/ui/PipeWirePage.qml:242
 msgid "Runtime version"
 msgstr "இயக்க நேர பதிப்பு"
 
-#: src/contents/ui/PipeWirePage.qml:241
+#: src/contents/ui/PipeWirePage.qml:247
 msgid "Default sampling rate"
 msgstr "இயல்புநிலை மாதிரி விகிதம்"
 
-#: src/contents/ui/PipeWirePage.qml:246
+#: src/contents/ui/PipeWirePage.qml:252
 msgid "Minimum quantum"
 msgstr "ஒரு சிறிய தொகை"
 
-#: src/contents/ui/PipeWirePage.qml:251
+#: src/contents/ui/PipeWirePage.qml:257
 msgid "Maximum quantum"
 msgstr "அதிகபட்ச தொகை"
 
-#: src/contents/ui/PipeWirePage.qml:256
+#: src/contents/ui/PipeWirePage.qml:262
 msgid "Default quantum"
 msgstr "இயல்புநிலை குவாண்டம்"
 
-#: src/contents/ui/PipeWirePage.qml:278
+#: src/contents/ui/PipeWirePage.qml:284
 msgid "No Modules"
 msgstr "தொகுதிகள் இல்லை"
 
-#: src/contents/ui/PipeWirePage.qml:301
+#: src/contents/ui/PipeWirePage.qml:307
 msgid "No Clients"
 msgstr "வாடிக்கையாளர்கள் இல்லை"
 
-#: src/contents/ui/PipeWirePage.qml:314
+#: src/contents/ui/PipeWirePage.qml:320
 #: src/contents/ui/PreferencesSheet.qml:336
 msgid "State"
 msgstr "மாநிலம்"
 
-#: src/contents/ui/PipeWirePage.qml:321
+#: src/contents/ui/PipeWirePage.qml:327
 #: src/contents/ui/PreferencesSheet.qml:343
 msgid "Enabled"
 msgstr "இயக்கப்பட்டது"
 
-#: src/contents/ui/PipeWirePage.qml:362
+#: src/contents/ui/PipeWirePage.qml:368
 msgid "Both"
 msgstr "இரண்டும்"
 
-#: src/contents/ui/PipeWirePage.qml:372
+#: src/contents/ui/PipeWirePage.qml:378
 msgid "Waveform"
 msgstr "அலைவடிவம், அலைப்படம்"
 
-#: src/contents/ui/PipeWirePage.qml:381
+#: src/contents/ui/PipeWirePage.qml:387
 msgid "Sine wave"
 msgstr "சைன் அலை"
 
-#: src/contents/ui/PipeWirePage.qml:392
+#: src/contents/ui/PipeWirePage.qml:398
 msgid "White noise"
 msgstr "வெண்ணிறைச்சல்"
 
-#: src/contents/ui/PipeWirePage.qml:403
+#: src/contents/ui/PipeWirePage.qml:409
 msgid "Pink noise"
 msgstr "இளஞ்செவ்விரைச்சல்"
 
@@ -3391,6 +3391,9 @@ msgstr "சமநிலைப்படுத்தி, அமுக்கி ம
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "எளிய ஆடியோ விளைவுகள்"
+
+#~ msgid "Go back"
+#~ msgstr "திரும்பி போ"
 
 #, fuzzy
 #~ msgctxt "milliseconds unit abbreviation"

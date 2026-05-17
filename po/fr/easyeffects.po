@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-05-03 13:16-0300\n"
+"POT-Creation-Date: 2026-05-17 12:44-0300\n"
 "PO-Revision-Date: 2026-05-09 16:09+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -176,7 +176,7 @@ msgstr "Moyenne géométrique (SI)"
 msgid "Target"
 msgstr "Cible"
 
-#: src/contents/ui/Autogain.qml:104 src/contents/ui/PipeWirePage.qml:414
+#: src/contents/ui/Autogain.qml:104 src/contents/ui/PipeWirePage.qml:420
 msgid "Silence"
 msgstr "Silence"
 
@@ -262,8 +262,7 @@ msgstr "Mode"
 msgid "Auto"
 msgstr "Auto"
 
-#: src/contents/ui/Autotune.qml:111 src/contents/ui/Main.qml:454
-#: src/contents/ui/TrayIcon.qml:206 src/contents/ui/TrayIcon.qml:218
+#: src/contents/ui/Autotune.qml:111 src/contents/ui/Main.qml:460
 #: src/contents/ui/TrayIcon.qml:221
 msgid "Manual"
 msgstr "Manuel"
@@ -379,7 +378,7 @@ msgstr "Écouter"
 #: src/contents/ui/Exciter.qml:252 src/contents/ui/Expander.qml:875
 #: src/contents/ui/Filter.qml:252 src/contents/ui/Gate.qml:1004
 #: src/contents/ui/Limiter.qml:659 src/contents/ui/Loudness.qml:217
-#: src/contents/ui/Main.qml:466 src/contents/ui/Maximizer.qml:154
+#: src/contents/ui/Main.qml:472 src/contents/ui/Maximizer.qml:154
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:358
 #: src/contents/ui/RNNoise.qml:345 src/contents/ui/Speex.qml:195
@@ -389,7 +388,7 @@ msgstr "Réinitialiser"
 
 #: src/contents/ui/BassLoudness.qml:83 src/contents/ui/Compressor.qml:478
 #: src/contents/ui/EeInputOutputGain.qml:144 src/contents/ui/Expander.qml:438
-#: src/contents/ui/Gate.qml:453 src/contents/ui/Main.qml:391
+#: src/contents/ui/Gate.qml:453 src/contents/ui/Main.qml:368
 #: src/contents/ui/StereoTools.qml:268
 msgid "Output"
 msgstr "Sortie"
@@ -416,7 +415,7 @@ msgstr "Ajouter aux applications exclues"
 #: src/contents/ui/BlocklistDialog.qml:114
 #: src/contents/ui/ConvolverImpulseDialog.qml:89
 #: src/contents/ui/MenuAddPlugins.qml:54
-#: src/contents/ui/PageStreamsEffects.qml:106
+#: src/contents/ui/PageStreamsEffects.qml:115
 #: src/contents/ui/PresetsAutoloadPage.qml:176
 #: src/contents/ui/PresetsCommunityPage.qml:104
 #: src/contents/ui/PresetsLocalPage.qml:193 src/contents/ui/RNNoise.qml:228
@@ -554,7 +553,7 @@ msgstr "Externe"
 
 #: src/contents/ui/Compressor.qml:277 src/contents/ui/Expander.qml:237
 #: src/contents/ui/Gate.qml:255 src/contents/ui/Limiter.qml:227
-#: src/contents/ui/PageStreamsEffects.qml:457
+#: src/contents/ui/PageStreamsEffects.qml:466
 msgid "Input device"
 msgstr "Périphérique d’entrée"
 
@@ -613,7 +612,7 @@ msgstr "Latérale"
 #: src/contents/ui/Expander.qml:279 src/contents/ui/Gate.qml:297
 #: src/contents/ui/LevelMeter.qml:79 src/contents/ui/LevelMeter.qml:118
 #: src/contents/ui/MultibandCompressor.qml:449
-#: src/contents/ui/MultibandGate.qml:422 src/contents/ui/PipeWirePage.qml:340
+#: src/contents/ui/MultibandGate.qml:422 src/contents/ui/PipeWirePage.qml:346
 #: src/contents/ui/StereoTools.qml:204
 msgid "Left"
 msgstr "Gauche"
@@ -623,7 +622,7 @@ msgstr "Gauche"
 #: src/contents/ui/Expander.qml:279 src/contents/ui/Gate.qml:297
 #: src/contents/ui/LevelMeter.qml:89 src/contents/ui/LevelMeter.qml:128
 #: src/contents/ui/MultibandCompressor.qml:449
-#: src/contents/ui/MultibandGate.qml:422 src/contents/ui/PipeWirePage.qml:351
+#: src/contents/ui/MultibandGate.qml:422 src/contents/ui/PipeWirePage.qml:357
 #: src/contents/ui/StereoTools.qml:231
 msgid "Right"
 msgstr "Droite"
@@ -925,7 +924,7 @@ msgstr "Échantillons"
 msgid "Duration"
 msgstr "Durée"
 
-#: src/contents/ui/Convolver.qml:395 src/contents/ui/PipeWirePage.qml:331
+#: src/contents/ui/Convolver.qml:395 src/contents/ui/PipeWirePage.qml:337
 msgid "Channels"
 msgstr "Canaux"
 
@@ -997,7 +996,7 @@ msgstr "Préréglages du Flux Croisé"
 msgid "Default"
 msgstr "Par défaut"
 
-#: src/contents/ui/Crossfeed.qml:167 src/contents/ui/Main.qml:361
+#: src/contents/ui/Crossfeed.qml:167 src/contents/ui/PageStreamsEffects.qml:637
 #: src/contents/ui/PreferencesSheet.qml:62 src/contents/ui/Reverb.qml:335
 msgid "Presets"
 msgstr "Préréglages"
@@ -1315,7 +1314,7 @@ msgstr "Contrôle des niveaux audio"
 msgid "Input and output gain controls with level meters"
 msgstr "Contrôles du gain entrant et sortant avec indicateurs de niveau"
 
-#: src/contents/ui/EeInputOutputGain.qml:131 src/contents/ui/Main.qml:404
+#: src/contents/ui/EeInputOutputGain.qml:131 src/contents/ui/Main.qml:383
 #: src/contents/ui/StereoTools.qml:59
 msgid "Input"
 msgstr "Entrée"
@@ -1397,7 +1396,7 @@ msgstr "Pente"
 
 #: src/contents/ui/EqualizerBandMenu.qml:96 src/contents/ui/Filter.qml:128
 #: src/contents/ui/MultibandCompressor.qml:199
-#: src/contents/ui/MultibandGate.qml:136 src/contents/ui/PipeWirePage.qml:425
+#: src/contents/ui/MultibandGate.qml:136 src/contents/ui/PipeWirePage.qml:431
 msgid "Frequency"
 msgstr "Fréquence"
 
@@ -1829,55 +1828,58 @@ msgstr "Plage de coupure"
 msgid "Clipping"
 msgstr "Coupure"
 
-#: src/contents/ui/Main.qml:312
+#: src/contents/ui/Main.qml:303
 msgid "Reset Settings?"
 msgstr "Réinitialiser les paramètres ?"
 
-#: src/contents/ui/Main.qml:313
+#: src/contents/ui/Main.qml:304
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr ""
 "Êtes-vous sûr de vouloir réinitialiser tous les paramètres Easy Effects ?"
 
-#: src/contents/ui/Main.qml:335
-msgid "Go back"
-msgstr "Revenir en arrière"
-
-#: src/contents/ui/Main.qml:345 src/contents/ui/PageStreamsEffects.qml:787
-msgid "Effects"
-msgstr "Effets"
-
-#: src/contents/ui/Main.qml:346
-msgid "Turn effects on/off"
-msgstr "Activer/ Désactiver les effets"
-
-#: src/contents/ui/Main.qml:357
-msgid "Audio effects are enabled."
-msgstr "Les effets audio sont activés."
-
-#: src/contents/ui/Main.qml:357
-msgid "Audio effects are disabled."
-msgstr "Les effets audio sont désactivés."
-
-#: src/contents/ui/Main.qml:417
+#: src/contents/ui/Main.qml:326 src/contents/ui/Main.qml:452
+#: src/contents/ui/PipeWirePage.qml:34
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/contents/ui/Main.qml:435
+#: src/contents/ui/Main.qml:334
+msgid "Effects"
+msgstr "Effets"
+
+#: src/contents/ui/Main.qml:335
+msgid "Turn effects on/off"
+msgstr "Activer/ Désactiver les effets"
+
+#: src/contents/ui/Main.qml:347
+msgid "Audio effects are enabled."
+msgstr "Les effets audio sont activés."
+
+#: src/contents/ui/Main.qml:347
+msgid "Audio effects are disabled."
+msgstr "Les effets audio sont désactivés."
+
+#: src/contents/ui/Main.qml:399 src/contents/ui/PageStreamsEffects.qml:466
+msgid "Players"
+msgstr "Lecteurs"
+
+#: src/contents/ui/Main.qml:414 src/contents/ui/PageStreamsEffects.qml:475
+msgid "Recorders"
+msgstr "Enregistreurs"
+
+#: src/contents/ui/Main.qml:433
 msgid "Preferences"
 msgstr "Préférences"
 
-#: src/contents/ui/Main.qml:446 src/contents/ui/ShortcutsSheet.qml:418
-#: src/contents/ui/TrayIcon.qml:197 src/contents/ui/TrayIcon.qml:209
+#: src/contents/ui/Main.qml:444 src/contents/ui/ShortcutsSheet.qml:418
 #: src/contents/ui/TrayIcon.qml:212
 msgid "Shortcuts"
 msgstr "Raccourcis"
 
-#: src/contents/ui/Main.qml:478
+#: src/contents/ui/Main.qml:484
 msgid "About Easy Effects"
 msgstr "À propos d'Easy Effects"
 
-#: src/contents/ui/Main.qml:486 src/contents/ui/TrayIcon.qml:216
-#: src/contents/ui/TrayIcon.qml:228 src/contents/ui/TrayIcon.qml:231
+#: src/contents/ui/Main.qml:492 src/contents/ui/TrayIcon.qml:231
 msgid "Quit"
 msgstr "Quitter"
 
@@ -1962,81 +1964,76 @@ msgstr "Périphérique d’entrée de la chaîne latérale"
 msgid "Reaction"
 msgstr "Réaction"
 
-#: src/contents/ui/PageStreamsEffects.qml:107
+#: src/contents/ui/PageStreamsEffects.qml:116
 msgid "No audio application available"
 msgstr "Aucune application audio disponible"
 
-#: src/contents/ui/PageStreamsEffects.qml:122
+#: src/contents/ui/PageStreamsEffects.qml:131
 msgid "No Effects"
 msgstr "Aucun Effet"
 
-#: src/contents/ui/PageStreamsEffects.qml:123
+#: src/contents/ui/PageStreamsEffects.qml:132
 msgid "Audio stream not modified"
 msgstr "Flux audio non modifié"
 
-#: src/contents/ui/PageStreamsEffects.qml:387
+#: src/contents/ui/PageStreamsEffects.qml:396
 msgid "Add effect"
 msgstr "Ajouter un effet"
 
-#: src/contents/ui/PageStreamsEffects.qml:400
+#: src/contents/ui/PageStreamsEffects.qml:409
 msgid "Close"
 msgstr "Fermer"
 
-#: src/contents/ui/PageStreamsEffects.qml:404
+#: src/contents/ui/PageStreamsEffects.qml:413
 msgid "Expand the list of effects pipeline"
 msgstr "Développer la liste des effets du pipeline"
 
-#: src/contents/ui/PageStreamsEffects.qml:404
+#: src/contents/ui/PageStreamsEffects.qml:413
 msgid "Reduce the list of effects pipeline"
 msgstr "Réduire la liste des effects du pipeline"
 
-#: src/contents/ui/PageStreamsEffects.qml:457
-#: src/contents/ui/PageStreamsEffects.qml:774
-msgid "Players"
-msgstr "Lecteurs"
-
-#: src/contents/ui/PageStreamsEffects.qml:466
+#: src/contents/ui/PageStreamsEffects.qml:475
 msgid "Output device"
 msgstr "Périphérique de sortie"
 
-#: src/contents/ui/PageStreamsEffects.qml:466
-#: src/contents/ui/PageStreamsEffects.qml:774
-msgid "Recorders"
-msgstr "Enregistreurs"
-
-#: src/contents/ui/PageStreamsEffects.qml:805
+#: src/contents/ui/PageStreamsEffects.qml:650
 msgid "Excluded apps"
 msgstr "Applications exclues"
 
-#: src/contents/ui/PageStreamsEffects.qml:817
+#: src/contents/ui/PageStreamsEffects.qml:662
 msgid "Input monitoring"
 msgstr "Surveillance de l'entrée"
 
-#: src/contents/ui/PageStreamsEffects.qml:830
-msgid "Send audio to the virtual source"
+#: src/contents/ui/PageStreamsEffects.qml:675
+msgid "Share audio"
+msgstr ""
+
+#: src/contents/ui/PageStreamsEffects.qml:676
+#, fuzzy
+msgid "Send the processed desktop audio to the virtual source"
 msgstr "Envoyer l'audio vers la source virtuelle"
 
-#: src/contents/ui/PipeWirePage.qml:43
+#: src/contents/ui/PipeWirePage.qml:49
 msgid "General"
 msgstr "Général"
 
-#: src/contents/ui/PipeWirePage.qml:48
+#: src/contents/ui/PipeWirePage.qml:54
 msgid "Modules"
 msgstr "Modules"
 
-#: src/contents/ui/PipeWirePage.qml:53
+#: src/contents/ui/PipeWirePage.qml:59
 msgid "Clients"
 msgstr "Clients"
 
-#: src/contents/ui/PipeWirePage.qml:58
+#: src/contents/ui/PipeWirePage.qml:64
 msgid "Test Signal"
 msgstr "Signal d’Essai"
 
-#: src/contents/ui/PipeWirePage.qml:128
+#: src/contents/ui/PipeWirePage.qml:134
 msgid "Device Management"
 msgstr "Gestion des Périphériques"
 
-#: src/contents/ui/PipeWirePage.qml:132
+#: src/contents/ui/PipeWirePage.qml:138
 msgid ""
 "It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
 "external applications (e.g. Gnome Settings and Plasma System Settings)"
@@ -2045,85 +2042,85 @@ msgstr ""
 "périphérique par défaut dans les applications externes (ex. : les Paramètres "
 "Systèmes de Gnome et Plasma)"
 
-#: src/contents/ui/PipeWirePage.qml:139
+#: src/contents/ui/PipeWirePage.qml:145
 msgid "Use default input"
 msgstr "Utiliser l’entrée par défaut"
 
-#: src/contents/ui/PipeWirePage.qml:153 src/contents/ui/PipeWirePage.qml:197
+#: src/contents/ui/PipeWirePage.qml:159 src/contents/ui/PipeWirePage.qml:203
 msgid "Name"
 msgstr "Nom"
 
-#: src/contents/ui/PipeWirePage.qml:182
+#: src/contents/ui/PipeWirePage.qml:188
 msgid "Use default output"
 msgstr "Utiliser la sortie par défaut"
 
-#: src/contents/ui/PipeWirePage.qml:221
+#: src/contents/ui/PipeWirePage.qml:227
 msgid "Server Information"
 msgstr "Information du Serveur"
 
-#: src/contents/ui/PipeWirePage.qml:226
+#: src/contents/ui/PipeWirePage.qml:232
 msgid "Header version"
 msgstr "Version de l’en-tête"
 
-#: src/contents/ui/PipeWirePage.qml:231
+#: src/contents/ui/PipeWirePage.qml:237
 msgid "Library version"
 msgstr "Version de la bibliothèque"
 
-#: src/contents/ui/PipeWirePage.qml:236
+#: src/contents/ui/PipeWirePage.qml:242
 msgid "Runtime version"
 msgstr "Version d'exécution"
 
-#: src/contents/ui/PipeWirePage.qml:241
+#: src/contents/ui/PipeWirePage.qml:247
 msgid "Default sampling rate"
 msgstr "Taux d’échantillonnage par défaut"
 
-#: src/contents/ui/PipeWirePage.qml:246
+#: src/contents/ui/PipeWirePage.qml:252
 msgid "Minimum quantum"
 msgstr "Quantum minimal"
 
-#: src/contents/ui/PipeWirePage.qml:251
+#: src/contents/ui/PipeWirePage.qml:257
 msgid "Maximum quantum"
 msgstr "Quantum maximal"
 
-#: src/contents/ui/PipeWirePage.qml:256
+#: src/contents/ui/PipeWirePage.qml:262
 msgid "Default quantum"
 msgstr "Quantum par défaut"
 
-#: src/contents/ui/PipeWirePage.qml:278
+#: src/contents/ui/PipeWirePage.qml:284
 msgid "No Modules"
 msgstr "Aucun Modules"
 
-#: src/contents/ui/PipeWirePage.qml:301
+#: src/contents/ui/PipeWirePage.qml:307
 msgid "No Clients"
 msgstr "Aucun Clients"
 
-#: src/contents/ui/PipeWirePage.qml:314
+#: src/contents/ui/PipeWirePage.qml:320
 #: src/contents/ui/PreferencesSheet.qml:336
 msgid "State"
 msgstr "État"
 
-#: src/contents/ui/PipeWirePage.qml:321
+#: src/contents/ui/PipeWirePage.qml:327
 #: src/contents/ui/PreferencesSheet.qml:343
 msgid "Enabled"
 msgstr "Activé"
 
-#: src/contents/ui/PipeWirePage.qml:362
+#: src/contents/ui/PipeWirePage.qml:368
 msgid "Both"
 msgstr "Les deux"
 
-#: src/contents/ui/PipeWirePage.qml:372
+#: src/contents/ui/PipeWirePage.qml:378
 msgid "Waveform"
 msgstr "Forme d’Onde"
 
-#: src/contents/ui/PipeWirePage.qml:381
+#: src/contents/ui/PipeWirePage.qml:387
 msgid "Sine wave"
 msgstr "Onde sinusoïdale"
 
-#: src/contents/ui/PipeWirePage.qml:392
+#: src/contents/ui/PipeWirePage.qml:398
 msgid "White noise"
 msgstr "Bruit blanc"
 
-#: src/contents/ui/PipeWirePage.qml:403
+#: src/contents/ui/PipeWirePage.qml:409
 msgid "Pink noise"
 msgstr "Bruit rose"
 
@@ -2937,8 +2934,7 @@ msgid "Toggle fullscreen"
 msgstr "Basculer en plein écran"
 
 #: src/contents/ui/ShortcutsSheet.qml:108
-#: src/contents/ui/ShortcutsSheet.qml:359 src/global_shortcuts.hpp:48
-#: src/global_shortcuts.hpp:83 src/global_shortcuts.hpp:84
+#: src/contents/ui/ShortcutsSheet.qml:359 src/global_shortcuts.hpp:84
 msgid "Toggle global bypass"
 msgstr "Basculer le contournement global"
 
@@ -2972,8 +2968,7 @@ msgstr "Molette de la souris"
 msgid "Global Shortcuts"
 msgstr "Raccourcis Globaux"
 
-#: src/contents/ui/ShortcutsSheet.qml:399 src/global_shortcuts.hpp:50
-#: src/global_shortcuts.hpp:85 src/global_shortcuts.hpp:87
+#: src/contents/ui/ShortcutsSheet.qml:399 src/global_shortcuts.hpp:87
 msgid "Toggle microphone monitoring"
 msgstr "Basculer la surveillance du microphone"
 
@@ -3065,35 +3060,34 @@ msgstr "Base stéréo"
 msgid "Stereo phase"
 msgstr "Phase stéréo"
 
-#: src/contents/ui/TrayIcon.qml:87 src/contents/ui/TrayIcon.qml:107
-#: src/contents/ui/TrayIcon.qml:99 src/contents/ui/TrayIcon.qml:119
+#: src/contents/ui/TrayIcon.qml:61
+msgid "Effects disabled"
+msgstr "Effets désactivés"
+
+#: src/contents/ui/TrayIcon.qml:63
+msgid "Effects enabled"
+msgstr "Effets activés"
+
 #: src/contents/ui/TrayIcon.qml:102 src/contents/ui/TrayIcon.qml:122
 msgid "Preset Loaded"
 msgstr "Préréglage Chargé"
 
-#: src/contents/ui/TrayIcon.qml:118 src/contents/ui/TrayIcon.qml:130
-#: src/contents/ui/TrayIcon.qml:142 src/contents/ui/TrayIcon.qml:133
-#: src/contents/ui/TrayIcon.qml:145
+#: src/contents/ui/TrayIcon.qml:133 src/contents/ui/TrayIcon.qml:145
 msgid "Clear List"
 msgstr "Effacer la Liste"
 
-#: src/contents/ui/TrayIcon.qml:119 src/contents/ui/TrayIcon.qml:131
-#: src/contents/ui/TrayIcon.qml:143 src/contents/ui/TrayIcon.qml:134
-#: src/contents/ui/TrayIcon.qml:146
+#: src/contents/ui/TrayIcon.qml:134 src/contents/ui/TrayIcon.qml:146
 msgid "Are you sure you want to clear this list?"
 msgstr "Êtes-vous sûr de vouloir effacer cette liste ?"
 
-#: src/contents/ui/TrayIcon.qml:140 src/contents/ui/TrayIcon.qml:152
 #: src/contents/ui/TrayIcon.qml:155
 msgid "Input Presets"
 msgstr "Préréglages d’Entrée"
 
-#: src/contents/ui/TrayIcon.qml:155 src/contents/ui/TrayIcon.qml:167
 #: src/contents/ui/TrayIcon.qml:170
 msgid "Output Presets"
 msgstr "Préréglages de Sortie"
 
-#: src/contents/ui/TrayIcon.qml:186 src/contents/ui/TrayIcon.qml:198
 #: src/contents/ui/TrayIcon.qml:201
 msgid "Active"
 msgstr "Actif"
@@ -3118,29 +3112,29 @@ msgstr "Fréquence instantanée maximale"
 msgid "Inverted mode"
 msgstr "Mode inversé"
 
-#: src/main.cpp:353 src/main.cpp:360
+#: src/main.cpp:360
 msgid "Global audio effects"
 msgstr "Effets audio globaux"
 
-#: src/main.cpp:354 src/main.cpp:361
+#: src/main.cpp:361
 msgid "© 2017-2026 Easy Effects Team"
 msgstr "© 2017-2026 Équipe d'Easy Effects"
 
-#: src/main.cpp:356 src/main.cpp:363
+#: src/main.cpp:363
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:356 src/main.cpp:363
+#: src/main.cpp:363
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Développeur"
 
-#: src/main.cpp:360 src/main.cpp:367
+#: src/main.cpp:367
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Vos noms"
 
-#: src/main.cpp:360 src/main.cpp:367
+#: src/main.cpp:367
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "Vos courriels"
@@ -3420,13 +3414,8 @@ msgstr "Égaliseur, Compresseur et Autres Effets Audio"
 msgid "Simple audio effects"
 msgstr "Effets audio simples"
 
-#: src/contents/ui/TrayIcon.qml:58
-msgid "Effects disabled"
-msgstr "Effets désactivés"
-
-#: src/contents/ui/TrayIcon.qml:60
-msgid "Effects enabled"
-msgstr "Effets activés"
+#~ msgid "Go back"
+#~ msgstr "Revenir en arrière"
 
 #~ msgid "Wheel"
 #~ msgstr "Molette"

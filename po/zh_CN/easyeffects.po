@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-05-09 13:08-0300\n"
+"POT-Creation-Date: 2026-05-17 12:44-0300\n"
 "PO-Revision-Date: 2026-05-06 07:11+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
@@ -173,7 +173,7 @@ msgstr "几何平均 (SI)"
 msgid "Target"
 msgstr "目标"
 
-#: src/contents/ui/Autogain.qml:104 src/contents/ui/PipeWirePage.qml:414
+#: src/contents/ui/Autogain.qml:104 src/contents/ui/PipeWirePage.qml:420
 msgid "Silence"
 msgstr "静音"
 
@@ -259,7 +259,7 @@ msgstr "模式"
 msgid "Auto"
 msgstr "自动"
 
-#: src/contents/ui/Autotune.qml:111 src/contents/ui/Main.qml:454
+#: src/contents/ui/Autotune.qml:111 src/contents/ui/Main.qml:460
 #: src/contents/ui/TrayIcon.qml:221
 msgid "Manual"
 msgstr "使用手册"
@@ -375,7 +375,7 @@ msgstr "聆听"
 #: src/contents/ui/Exciter.qml:252 src/contents/ui/Expander.qml:875
 #: src/contents/ui/Filter.qml:252 src/contents/ui/Gate.qml:1004
 #: src/contents/ui/Limiter.qml:659 src/contents/ui/Loudness.qml:217
-#: src/contents/ui/Main.qml:466 src/contents/ui/Maximizer.qml:154
+#: src/contents/ui/Main.qml:472 src/contents/ui/Maximizer.qml:154
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:358
 #: src/contents/ui/RNNoise.qml:345 src/contents/ui/Speex.qml:195
@@ -385,7 +385,7 @@ msgstr "重置"
 
 #: src/contents/ui/BassLoudness.qml:83 src/contents/ui/Compressor.qml:478
 #: src/contents/ui/EeInputOutputGain.qml:144 src/contents/ui/Expander.qml:438
-#: src/contents/ui/Gate.qml:453 src/contents/ui/Main.qml:391
+#: src/contents/ui/Gate.qml:453 src/contents/ui/Main.qml:368
 #: src/contents/ui/StereoTools.qml:268
 msgid "Output"
 msgstr "输出"
@@ -412,7 +412,7 @@ msgstr "添加到已排除的应用程序"
 #: src/contents/ui/BlocklistDialog.qml:114
 #: src/contents/ui/ConvolverImpulseDialog.qml:89
 #: src/contents/ui/MenuAddPlugins.qml:54
-#: src/contents/ui/PageStreamsEffects.qml:106
+#: src/contents/ui/PageStreamsEffects.qml:115
 #: src/contents/ui/PresetsAutoloadPage.qml:176
 #: src/contents/ui/PresetsCommunityPage.qml:104
 #: src/contents/ui/PresetsLocalPage.qml:193 src/contents/ui/RNNoise.qml:228
@@ -547,7 +547,7 @@ msgstr "外部输入"
 
 #: src/contents/ui/Compressor.qml:277 src/contents/ui/Expander.qml:237
 #: src/contents/ui/Gate.qml:255 src/contents/ui/Limiter.qml:227
-#: src/contents/ui/PageStreamsEffects.qml:457
+#: src/contents/ui/PageStreamsEffects.qml:466
 msgid "Input device"
 msgstr "输入设备"
 
@@ -606,7 +606,7 @@ msgstr "侧信号"
 #: src/contents/ui/Expander.qml:279 src/contents/ui/Gate.qml:297
 #: src/contents/ui/LevelMeter.qml:79 src/contents/ui/LevelMeter.qml:118
 #: src/contents/ui/MultibandCompressor.qml:449
-#: src/contents/ui/MultibandGate.qml:422 src/contents/ui/PipeWirePage.qml:340
+#: src/contents/ui/MultibandGate.qml:422 src/contents/ui/PipeWirePage.qml:346
 #: src/contents/ui/StereoTools.qml:204
 msgid "Left"
 msgstr "左声道"
@@ -616,7 +616,7 @@ msgstr "左声道"
 #: src/contents/ui/Expander.qml:279 src/contents/ui/Gate.qml:297
 #: src/contents/ui/LevelMeter.qml:89 src/contents/ui/LevelMeter.qml:128
 #: src/contents/ui/MultibandCompressor.qml:449
-#: src/contents/ui/MultibandGate.qml:422 src/contents/ui/PipeWirePage.qml:351
+#: src/contents/ui/MultibandGate.qml:422 src/contents/ui/PipeWirePage.qml:357
 #: src/contents/ui/StereoTools.qml:231
 msgid "Right"
 msgstr "右声道"
@@ -916,7 +916,7 @@ msgstr "采样"
 msgid "Duration"
 msgstr "持续时间"
 
-#: src/contents/ui/Convolver.qml:395 src/contents/ui/PipeWirePage.qml:331
+#: src/contents/ui/Convolver.qml:395 src/contents/ui/PipeWirePage.qml:337
 msgid "Channels"
 msgstr "声道"
 
@@ -988,7 +988,7 @@ msgstr "交叉反馈预设"
 msgid "Default"
 msgstr "默认"
 
-#: src/contents/ui/Crossfeed.qml:167 src/contents/ui/Main.qml:361
+#: src/contents/ui/Crossfeed.qml:167 src/contents/ui/PageStreamsEffects.qml:637
 #: src/contents/ui/PreferencesSheet.qml:62 src/contents/ui/Reverb.qml:335
 msgid "Presets"
 msgstr "预设"
@@ -1306,7 +1306,7 @@ msgstr "音频电平控制"
 msgid "Input and output gain controls with level meters"
 msgstr "带电平表的输入输出增益控制"
 
-#: src/contents/ui/EeInputOutputGain.qml:131 src/contents/ui/Main.qml:404
+#: src/contents/ui/EeInputOutputGain.qml:131 src/contents/ui/Main.qml:383
 #: src/contents/ui/StereoTools.qml:59
 msgid "Input"
 msgstr "输入"
@@ -1388,7 +1388,7 @@ msgstr "斜率"
 
 #: src/contents/ui/EqualizerBandMenu.qml:96 src/contents/ui/Filter.qml:128
 #: src/contents/ui/MultibandCompressor.qml:199
-#: src/contents/ui/MultibandGate.qml:136 src/contents/ui/PipeWirePage.qml:425
+#: src/contents/ui/MultibandGate.qml:136 src/contents/ui/PipeWirePage.qml:431
 msgid "Frequency"
 msgstr "频率"
 
@@ -1807,52 +1807,57 @@ msgstr "削波范围"
 msgid "Clipping"
 msgstr "削波"
 
-#: src/contents/ui/Main.qml:312
+#: src/contents/ui/Main.qml:303
 msgid "Reset Settings?"
 msgstr "重置设置？"
 
-#: src/contents/ui/Main.qml:313
+#: src/contents/ui/Main.qml:304
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr "确定要重置所有 Easy Effects 设置吗？"
 
-#: src/contents/ui/Main.qml:335
-msgid "Go back"
-msgstr "返回"
-
-#: src/contents/ui/Main.qml:345 src/contents/ui/PageStreamsEffects.qml:787
-msgid "Effects"
-msgstr "音效"
-
-#: src/contents/ui/Main.qml:346
-msgid "Turn effects on/off"
-msgstr "开关音效"
-
-#: src/contents/ui/Main.qml:357
-msgid "Audio effects are enabled."
-msgstr "已启用音效。"
-
-#: src/contents/ui/Main.qml:357
-msgid "Audio effects are disabled."
-msgstr "已禁用音效。"
-
-#: src/contents/ui/Main.qml:417
+#: src/contents/ui/Main.qml:326 src/contents/ui/Main.qml:452
+#: src/contents/ui/PipeWirePage.qml:34
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/contents/ui/Main.qml:435
+#: src/contents/ui/Main.qml:334
+msgid "Effects"
+msgstr "音效"
+
+#: src/contents/ui/Main.qml:335
+msgid "Turn effects on/off"
+msgstr "开关音效"
+
+#: src/contents/ui/Main.qml:347
+msgid "Audio effects are enabled."
+msgstr "已启用音效。"
+
+#: src/contents/ui/Main.qml:347
+msgid "Audio effects are disabled."
+msgstr "已禁用音效。"
+
+#: src/contents/ui/Main.qml:399 src/contents/ui/PageStreamsEffects.qml:466
+msgid "Players"
+msgstr "播放器"
+
+#: src/contents/ui/Main.qml:414 src/contents/ui/PageStreamsEffects.qml:475
+msgid "Recorders"
+msgstr "录音器"
+
+#: src/contents/ui/Main.qml:433
 msgid "Preferences"
 msgstr "首选项"
 
-#: src/contents/ui/Main.qml:446 src/contents/ui/ShortcutsSheet.qml:418
+#: src/contents/ui/Main.qml:444 src/contents/ui/ShortcutsSheet.qml:418
 #: src/contents/ui/TrayIcon.qml:212
 msgid "Shortcuts"
 msgstr "快捷键"
 
-#: src/contents/ui/Main.qml:478
+#: src/contents/ui/Main.qml:484
 msgid "About Easy Effects"
 msgstr "关于 Easy Effects"
 
-#: src/contents/ui/Main.qml:486 src/contents/ui/TrayIcon.qml:231
+#: src/contents/ui/Main.qml:492 src/contents/ui/TrayIcon.qml:231
 msgid "Quit"
 msgstr "退出"
 
@@ -1937,81 +1942,76 @@ msgstr "侧链输入设备"
 msgid "Reaction"
 msgstr "响应"
 
-#: src/contents/ui/PageStreamsEffects.qml:107
+#: src/contents/ui/PageStreamsEffects.qml:116
 msgid "No audio application available"
 msgstr "无可用的音频应用程序"
 
-#: src/contents/ui/PageStreamsEffects.qml:122
+#: src/contents/ui/PageStreamsEffects.qml:131
 msgid "No Effects"
 msgstr "无音效"
 
-#: src/contents/ui/PageStreamsEffects.qml:123
+#: src/contents/ui/PageStreamsEffects.qml:132
 msgid "Audio stream not modified"
 msgstr "音频流未修改"
 
-#: src/contents/ui/PageStreamsEffects.qml:387
+#: src/contents/ui/PageStreamsEffects.qml:396
 msgid "Add effect"
 msgstr "添加音效"
 
-#: src/contents/ui/PageStreamsEffects.qml:400
+#: src/contents/ui/PageStreamsEffects.qml:409
 msgid "Close"
 msgstr "关闭"
 
-#: src/contents/ui/PageStreamsEffects.qml:404
+#: src/contents/ui/PageStreamsEffects.qml:413
 msgid "Expand the list of effects pipeline"
 msgstr "展开音效管线列表"
 
-#: src/contents/ui/PageStreamsEffects.qml:404
+#: src/contents/ui/PageStreamsEffects.qml:413
 msgid "Reduce the list of effects pipeline"
 msgstr "收起音效管线列表"
 
-#: src/contents/ui/PageStreamsEffects.qml:457
-#: src/contents/ui/PageStreamsEffects.qml:774
-msgid "Players"
-msgstr "播放器"
-
-#: src/contents/ui/PageStreamsEffects.qml:466
+#: src/contents/ui/PageStreamsEffects.qml:475
 msgid "Output device"
 msgstr "输出设备"
 
-#: src/contents/ui/PageStreamsEffects.qml:466
-#: src/contents/ui/PageStreamsEffects.qml:774
-msgid "Recorders"
-msgstr "录音器"
-
-#: src/contents/ui/PageStreamsEffects.qml:805
+#: src/contents/ui/PageStreamsEffects.qml:650
 msgid "Excluded apps"
 msgstr "已排除的应用程序"
 
-#: src/contents/ui/PageStreamsEffects.qml:817
+#: src/contents/ui/PageStreamsEffects.qml:662
 msgid "Input monitoring"
 msgstr "输入监听"
 
-#: src/contents/ui/PageStreamsEffects.qml:830
-msgid "Send audio to the virtual source"
+#: src/contents/ui/PageStreamsEffects.qml:675
+msgid "Share audio"
+msgstr ""
+
+#: src/contents/ui/PageStreamsEffects.qml:676
+#, fuzzy
+msgid "Send the processed desktop audio to the virtual source"
 msgstr "发送音频至虚拟源"
 
-#: src/contents/ui/PipeWirePage.qml:43
+#: src/contents/ui/PipeWirePage.qml:49
 msgid "General"
 msgstr "通用"
 
-#: src/contents/ui/PipeWirePage.qml:48
+#: src/contents/ui/PipeWirePage.qml:54
 msgid "Modules"
 msgstr "模块"
 
-#: src/contents/ui/PipeWirePage.qml:53
+#: src/contents/ui/PipeWirePage.qml:59
 msgid "Clients"
 msgstr "客户端"
 
-#: src/contents/ui/PipeWirePage.qml:58
+#: src/contents/ui/PipeWirePage.qml:64
 msgid "Test Signal"
 msgstr "测试信号"
 
-#: src/contents/ui/PipeWirePage.qml:128
+#: src/contents/ui/PipeWirePage.qml:134
 msgid "Device Management"
 msgstr "设备管理"
 
-#: src/contents/ui/PipeWirePage.qml:132
+#: src/contents/ui/PipeWirePage.qml:138
 msgid ""
 "It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
 "external applications (e.g. Gnome Settings and Plasma System Settings)"
@@ -2019,85 +2019,85 @@ msgstr ""
 "强烈建议不要在外部应用程序 (如 GNOME 设置或 Plasma 系统设置) 中将 Easy "
 "Effects 槽/源设为默认设备"
 
-#: src/contents/ui/PipeWirePage.qml:139
+#: src/contents/ui/PipeWirePage.qml:145
 msgid "Use default input"
 msgstr "使用默认输入"
 
-#: src/contents/ui/PipeWirePage.qml:153 src/contents/ui/PipeWirePage.qml:197
+#: src/contents/ui/PipeWirePage.qml:159 src/contents/ui/PipeWirePage.qml:203
 msgid "Name"
 msgstr "名称"
 
-#: src/contents/ui/PipeWirePage.qml:182
+#: src/contents/ui/PipeWirePage.qml:188
 msgid "Use default output"
 msgstr "使用默认输出"
 
-#: src/contents/ui/PipeWirePage.qml:221
+#: src/contents/ui/PipeWirePage.qml:227
 msgid "Server Information"
 msgstr "服务器信息"
 
-#: src/contents/ui/PipeWirePage.qml:226
+#: src/contents/ui/PipeWirePage.qml:232
 msgid "Header version"
 msgstr "头文件版本"
 
-#: src/contents/ui/PipeWirePage.qml:231
+#: src/contents/ui/PipeWirePage.qml:237
 msgid "Library version"
 msgstr "库文件版本"
 
-#: src/contents/ui/PipeWirePage.qml:236
+#: src/contents/ui/PipeWirePage.qml:242
 msgid "Runtime version"
 msgstr "运行时版本"
 
-#: src/contents/ui/PipeWirePage.qml:241
+#: src/contents/ui/PipeWirePage.qml:247
 msgid "Default sampling rate"
 msgstr "默认采样率"
 
-#: src/contents/ui/PipeWirePage.qml:246
+#: src/contents/ui/PipeWirePage.qml:252
 msgid "Minimum quantum"
 msgstr "最小音频帧 (Quantum)"
 
-#: src/contents/ui/PipeWirePage.qml:251
+#: src/contents/ui/PipeWirePage.qml:257
 msgid "Maximum quantum"
 msgstr "最大音频帧 (Quantum)"
 
-#: src/contents/ui/PipeWirePage.qml:256
+#: src/contents/ui/PipeWirePage.qml:262
 msgid "Default quantum"
 msgstr "默认音频帧 (Quantum)"
 
-#: src/contents/ui/PipeWirePage.qml:278
+#: src/contents/ui/PipeWirePage.qml:284
 msgid "No Modules"
 msgstr "无模块"
 
-#: src/contents/ui/PipeWirePage.qml:301
+#: src/contents/ui/PipeWirePage.qml:307
 msgid "No Clients"
 msgstr "无客户端"
 
-#: src/contents/ui/PipeWirePage.qml:314
+#: src/contents/ui/PipeWirePage.qml:320
 #: src/contents/ui/PreferencesSheet.qml:336
 msgid "State"
 msgstr "状态"
 
-#: src/contents/ui/PipeWirePage.qml:321
+#: src/contents/ui/PipeWirePage.qml:327
 #: src/contents/ui/PreferencesSheet.qml:343
 msgid "Enabled"
 msgstr "启用"
 
-#: src/contents/ui/PipeWirePage.qml:362
+#: src/contents/ui/PipeWirePage.qml:368
 msgid "Both"
 msgstr "双声道"
 
-#: src/contents/ui/PipeWirePage.qml:372
+#: src/contents/ui/PipeWirePage.qml:378
 msgid "Waveform"
 msgstr "波形"
 
-#: src/contents/ui/PipeWirePage.qml:381
+#: src/contents/ui/PipeWirePage.qml:387
 msgid "Sine wave"
 msgstr "正弦波"
 
-#: src/contents/ui/PipeWirePage.qml:392
+#: src/contents/ui/PipeWirePage.qml:398
 msgid "White noise"
 msgstr "白噪声"
 
-#: src/contents/ui/PipeWirePage.qml:403
+#: src/contents/ui/PipeWirePage.qml:409
 msgid "Pink noise"
 msgstr "粉噪声"
 
@@ -3355,6 +3355,9 @@ msgstr "均衡器、压缩器与其他音效"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "简易音效集锦"
+
+#~ msgid "Go back"
+#~ msgstr "返回"
 
 #~ msgid "Wheel"
 #~ msgstr "滚轮"

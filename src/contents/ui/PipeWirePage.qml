@@ -29,13 +29,19 @@ import org.kde.kirigamiaddons.formcard as FormCard
 Kirigami.Page {
     id: pwPage
 
-    readonly property bool showBackButton: columnView.currentIndex === 1 && columnView.columnResizeMode === Kirigami.ColumnView.SingleColumn
+    readonly property bool columnNeedsBackButton: columnView.currentIndex === 1 && columnView.columnResizeMode === Kirigami.ColumnView.SingleColumn
+
+    title: i18n("PipeWire") // qmllint disable
+    padding: 0
 
     function goBack(): void {
-        columnView.currentIndex = 0;
+        if (columnNeedsBackButton === true) {
+            columnView.currentIndex = 0;
+        } else {
+            DbMain.visiblePage = 0;
+        }
     }
 
-    padding: 0
     Component.onCompleted: {
         columnView.addItem(panelListView);
 

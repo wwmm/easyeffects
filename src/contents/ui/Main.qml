@@ -293,15 +293,6 @@ Kirigami.ApplicationWindow {
         }
     }
 
-    Loader {
-        id: presetsDialogLoader
-        active: false
-
-        sourceComponent: Component {
-            PresetsDialog {}
-        }
-    }
-
     ShortcutsSheet {
         id: shortcutsSheet
     }
@@ -332,11 +323,9 @@ Kirigami.ApplicationWindow {
                 overflowIconName: "overflow-menu-left"
                 actions: [
                     Kirigami.Action {
-                        text: i18n("Go back") // qmllint disable
+                        text: i18n("PipeWire") // qmllint disable
                         icon.name: "draw-arrow-back-symbolic"
-                        displayHint: Kirigami.DisplayHint.IconOnly
-                        // Use nullish coalescing to avoid the `Unable to assign [undefined] to bool` message.
-                        visible: (pageStack.currentItem as Kirigami.Page)?.showBackButton ?? false
+                        visible: DbMain.visiblePage === 2
                         onTriggered: {
                             pageStack.currentItem.goBack();
                         }
@@ -349,25 +338,13 @@ Kirigami.ApplicationWindow {
                         displayHint: Kirigami.DisplayHint.KeepVisible
                         checkable: true
                         checked: !DbMain.bypass
+                        visible: DbMain.visiblePage !== 2
                         onTriggered: {
                             if (checked !== !DbMain.bypass) {
                                 DbMain.bypass = !checked;
                             }
 
                             checked ? appWindow.showStatus(i18n("Audio effects are enabled."), Kirigami.MessageType.Positive) : appWindow.showStatus(i18n("Audio effects are disabled.")); // qmllint disable
-                        }
-                    },
-                    Kirigami.Action {
-                        text: i18n("Presets") // qmllint disable
-                        icon.name: "user-bookmarks-symbolic"
-                        displayHint: Kirigami.DisplayHint.KeepVisible
-                        visible: DbMain.visiblePage !== 2
-                        onTriggered: {
-                            if (!presetsDialogLoader.active) {
-                                presetsDialogLoader.active = true;
-                            }
-
-                            presetsDialogLoader.item.open();
                         }
                     }
                 ]
@@ -391,10 +368,12 @@ Kirigami.ApplicationWindow {
                     text: i18n("Output") // qmllint disable
                     icon.name: "audio-speakers-symbolic"
                     checkable: true
-                    checked: DbMain.visiblePage === 0
+                    checked: DbMain.visiblePage === 0 && DbStreamOutputs.visiblePage === 1
                     display: segmentedButton.display
+                    visible: DbMain.visiblePage !== 2
                     onClicked: {
                         DbMain.visiblePage = 0;
+                        DbStreamOutputs.visiblePage = 1;
                     }
 
                     Controls.ButtonGroup.group: navButtonGroup
@@ -404,23 +383,42 @@ Kirigami.ApplicationWindow {
                     text: i18n("Input") // qmllint disable
                     icon.name: "audio-input-microphone-symbolic"
                     checkable: true
-                    checked: DbMain.visiblePage === 1
+                    checked: DbMain.visiblePage === 1 && DbStreamInputs.visiblePage === 1
                     display: segmentedButton.display
+                    visible: DbMain.visiblePage !== 2
                     onClicked: {
                         DbMain.visiblePage = 1;
+                        DbStreamInputs.visiblePage = 1;
                     }
 
                     Controls.ButtonGroup.group: navButtonGroup
                 }
 
                 Controls.ToolButton {
-                    text: i18n("PipeWire") // qmllint disable
-                    icon.name: "network-server-symbolic"
+                    icon.name: "multimedia-player-symbolic"
+                    text: i18n("Players") // qmllint disable
                     checkable: true
-                    checked: DbMain.visiblePage === 2
+                    checked: DbMain.visiblePage === 0 && DbStreamOutputs.visiblePage === 0
                     display: segmentedButton.display
+                    visible: DbMain.visiblePage !== 2
                     onClicked: {
-                        DbMain.visiblePage = 2;
+                        DbMain.visiblePage = 0;
+                        DbStreamOutputs.visiblePage = 0;
+                    }
+
+                    Controls.ButtonGroup.group: navButtonGroup
+                }
+
+                Controls.ToolButton {
+                    icon.name: "media-record-symbolic"
+                    text: i18n("Recorders") // qmllint disable
+                    checkable: true
+                    checked: DbMain.visiblePage === 1 && DbStreamInputs.visiblePage === 0
+                    display: segmentedButton.display
+                    visible: DbMain.visiblePage !== 2
+                    onClicked: {
+                        DbMain.visiblePage = 1;
+                        DbStreamInputs.visiblePage = 0;
                     }
 
                     Controls.ButtonGroup.group: navButtonGroup
@@ -448,6 +446,14 @@ Kirigami.ApplicationWindow {
                         displayHint: Kirigami.DisplayHint.AlwaysHide
                         onTriggered: {
                             shortcutsSheet.open();
+                        }
+                    },
+                    Kirigami.Action {
+                        text: i18n("PipeWire") // qmllint disable
+                        icon.name: "network-server-symbolic"
+                        displayHint: Kirigami.DisplayHint.AlwaysHide
+                        onTriggered: {
+                            DbMain.visiblePage = 2;
                         }
                     },
                     Kirigami.Action {
