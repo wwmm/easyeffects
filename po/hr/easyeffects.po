@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-05-09 13:08-0300\n"
-"PO-Revision-Date: 2026-03-07 07:09+0000\n"
+"PO-Revision-Date: 2026-05-17 15:45+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/easyeffects/"
 "main/hr/>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.17-dev\n"
+"X-Generator: Weblate 2026.6.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -3240,14 +3240,12 @@ msgid "Stereo phase"
 msgstr "Stereo faza"
 
 #: src/contents/ui/TrayIcon.qml:61
-#, fuzzy
 msgid "Effects disabled"
-msgstr "Audio efekti su deaktivirani."
+msgstr "Efekti su deaktivirani"
 
 #: src/contents/ui/TrayIcon.qml:63
-#, fuzzy
 msgid "Effects enabled"
-msgstr "Audio efekti su aktivirani."
+msgstr "Audio efekti su aktivirani"
 
 #: src/contents/ui/TrayIcon.qml:102 src/contents/ui/TrayIcon.qml:122
 #, fuzzy
