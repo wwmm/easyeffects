@@ -302,6 +302,14 @@ ColumnLayout {
                         alignment: Qt.AlignRight
                         actions: [
                             Kirigami.Action {
+                                text: i18n("Load this preset") // qmllint disable
+                                icon.name: "document-open-symbolic"
+                                displayHint: Kirigami.DisplayHint.AlwaysHide
+                                onTriggered: {
+                                    PresetsManager.loadLocalPresetFile(columnLayout.pipeline, name);
+                                }
+                            },
+                            Kirigami.Action {
                                 text: i18n("Save settings to this preset") // qmllint disable
                                 icon.name: "document-save-symbolic"
                                 displayHint: Kirigami.DisplayHint.AlwaysHide
