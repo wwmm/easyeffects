@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-05-17 13:10-0300\n"
-"PO-Revision-Date: 2026-05-06 07:11+0000\n"
+"PO-Revision-Date: 2026-05-18 05:11+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hant/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.17.1\n"
+"X-Generator: Weblate 2026.6.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -1983,12 +1983,11 @@ msgstr "輸入監控"
 
 #: src/contents/ui/PageStreamsEffects.qml:675
 msgid "Share audio"
-msgstr ""
+msgstr "分享音訊"
 
 #: src/contents/ui/PageStreamsEffects.qml:676
-#, fuzzy
 msgid "Send the processed desktop audio to the virtual source"
-msgstr "將音訊傳送到虛擬來源"
+msgstr "傳送已經處理的桌面音訊至虛擬來源"
 
 #: src/contents/ui/PipeWirePage.qml:49
 msgid "General"
@@ -2588,9 +2587,8 @@ msgstr "重新整理"
 
 #: src/contents/ui/PresetsCommunityPage.qml:134
 #: src/contents/ui/PresetsLocalPage.qml:306
-#, fuzzy
 msgid "Load this preset"
-msgstr "重新命名此預設集"
+msgstr "載入此預設集"
 
 #: src/contents/ui/PresetsCommunityPage.qml:148
 msgid "Copy to local presets"

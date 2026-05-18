@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-05-17 13:10-0300\n"
-"PO-Revision-Date: 2026-05-10 14:46+0000\n"
+"PO-Revision-Date: 2026-05-18 05:11+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Weblate 2026.5-dev\n"
+"X-Generator: Weblate 2026.6.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -2038,12 +2038,11 @@ msgstr "Мониторинг входа"
 
 #: src/contents/ui/PageStreamsEffects.qml:675
 msgid "Share audio"
-msgstr ""
+msgstr "Передать звук"
 
 #: src/contents/ui/PageStreamsEffects.qml:676
-#, fuzzy
 msgid "Send the processed desktop audio to the virtual source"
-msgstr "Отправить аудио на виртуальный источник"
+msgstr "Передать обработанный звук с рабочего стола на виртуальный источник"
 
 #: src/contents/ui/PipeWirePage.qml:49
 msgid "General"
@@ -2660,9 +2659,8 @@ msgstr "Обновить"
 
 #: src/contents/ui/PresetsCommunityPage.qml:134
 #: src/contents/ui/PresetsLocalPage.qml:306
-#, fuzzy
 msgid "Load this preset"
-msgstr "Переименовать эту предустановку"
+msgstr "Загрузить эту предустановку"
 
 #: src/contents/ui/PresetsCommunityPage.qml:148
 msgid "Copy to local presets"
