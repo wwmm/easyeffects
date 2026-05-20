@@ -344,6 +344,12 @@ int main(int argc, char* argv[]) {
   QCoreApplication::setAttribute(Qt::AA_ShareOpenGLContexts);
   QLoggingCategory::setFilterRules("easyeffects.debug=false");
 
+  auto qt_qpa_platform = qgetenv("QT_QPA_PLATFORM");
+  if (qt_qpa_platform.contains(';')) {
+    qt_qpa_platform.replace(';', ',');
+    qputenv("QT_QPA_PLATFORM", qt_qpa_platform);
+  }
+
   KIconTheme::initTheme();
 
   QApplication app(argc, argv);
