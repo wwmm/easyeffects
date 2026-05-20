@@ -329,13 +329,13 @@ auto LinkManager::find_matching_ports(const std::vector<PortInfo>& output_ports,
   // Determine if we should use audio channel matching
   if (!probe_link) {
     for (const auto& port : output_ports) {
-      if (port.audio_channel != "FL" && port.audio_channel != "FR") {
+      if (port.audio_channel != "FL" && port.audio_channel != "FR" && port.audio_channel != "MONO") {
         use_audio_channel = false;
         break;
       }
     }
     for (const auto& port : input_ports) {
-      if (port.audio_channel != "FL" && port.audio_channel != "FR") {
+      if (port.audio_channel != "FL" && port.audio_channel != "FR" && port.audio_channel != "MONO") {
         use_audio_channel = false;
         break;
       }
@@ -348,12 +348,21 @@ auto LinkManager::find_matching_ports(const std::vector<PortInfo>& output_ports,
 
       if (!probe_link) {
         if (use_audio_channel) {
-          ports_match = outp.audio_channel == inp.audio_channel;
+          if (outp.audio_channel == "MONO" || inp.audio_channel == "MONO") {
+            ports_match = true;  // We assume all ports match with mono
+          } else {
+            ports_match = outp.audio_channel == inp.audio_channel;
+          }
+
         } else {
           ports_match = outp.port_id == inp.port_id;
         }
       } else {
-        if ((outp.audio_channel == "FL" && inp.audio_channel == "PROBE_FL") ||
+        util::warning(std::format("port name = {}", outp.audio_channel));
+
+        if ((outp.audio_channel == "MONO" && inp.audio_channel == "PROBE_FL") ||
+            (outp.audio_channel == "MONO" && inp.audio_channel == "PROBE_FR") ||
+            (outp.audio_channel == "FL" && inp.audio_channel == "PROBE_FL") ||
             (outp.audio_channel == "FR" && inp.audio_channel == "PROBE_FR")) {
           ports_match = true;
         }

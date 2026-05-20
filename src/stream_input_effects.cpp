@@ -121,6 +121,24 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
       DbStreamInputs::self(), &DbStreamInputs::listenToMicChanged, this,
       [&]() { set_listen_to_mic(DbStreamInputs::listenToMic()); }, Qt::QueuedConnection);
 
+  /**
+   * We need to listen to output device changes because if the echo canceller is in the mic pipeline we have to change
+   * its probe links to the new output device.
+   */
+
+  connect(
+      DbStreamOutputs::self(), &DbStreamOutputs::outputDeviceChanged, this,
+      [&]() {
+        if (DbMain::bypass()) {
+          DbMain::setBypass(false);
+
+          return;  // filter connected through update_bypass_state
+        }
+
+        set_bypass(false);
+      },
+      Qt::QueuedConnection);
+
   auto* PULSE_SOURCE = std::getenv("PULSE_SOURCE");
 
   if (PULSE_SOURCE != nullptr && PULSE_SOURCE != tags::pipewire::ee_source_name) {
