@@ -68,32 +68,44 @@ Kirigami.Page {
     Loader {
         id: menuAddPluginsLoader
         active: false
+        asynchronous: true
 
-        sourceComponent: Component {
-            MenuAddPlugins {
-                parent: pageStreamsEffects.Controls.Overlay.overlay
-                streamDB: pageStreamsEffects.streamDB
-            }
+        sourceComponent: MenuAddPlugins {
+            parent: pageStreamsEffects.Controls.Overlay.overlay
+            streamDB: pageStreamsEffects.streamDB
+        }
+
+        onStatusChanged: {
+            if (status === Loader.Ready)
+                item.open();
         }
     }
 
     Loader {
         id: presetsDialogLoader
         active: false
+        asynchronous: true
 
-        sourceComponent: Component {
-            PresetsDialog {}
+        sourceComponent: PresetsDialog {}
+
+        onStatusChanged: {
+            if (status === Loader.Ready)
+                item.open();
         }
     }
 
     Loader {
         id: blocklistDialogLoader
         active: false
+        asynchronous: true
 
-        sourceComponent: Component {
-            BlocklistDialog {
-                streamDB: pageStreamsEffects.streamDB
-            }
+        sourceComponent: BlocklistDialog {
+            streamDB: pageStreamsEffects.streamDB
+        }
+
+        onStatusChanged: {
+            if (status === Loader.Ready)
+                item.open();
         }
     }
 
@@ -399,8 +411,9 @@ Kirigami.Page {
                         onClicked: {
                             if (!menuAddPluginsLoader.active) {
                                 menuAddPluginsLoader.active = true;
+                            } else {
+                                menuAddPluginsLoader.item.open();
                             }
-                            menuAddPluginsLoader.item.open();
                         }
                         Layout.fillWidth: DbMain.collapsePluginsList === true
                     }
@@ -641,9 +654,9 @@ Kirigami.Page {
                         onTriggered: {
                             if (!presetsDialogLoader.active) {
                                 presetsDialogLoader.active = true;
+                            } else {
+                                presetsDialogLoader.item.open();
                             }
-
-                            presetsDialogLoader.item.open();
                         }
                     },
                     Kirigami.Action {
@@ -654,8 +667,9 @@ Kirigami.Page {
                         onTriggered: {
                             if (!blocklistDialogLoader.active) {
                                 blocklistDialogLoader.active = true;
+                            } else {
+                                blocklistDialogLoader.item.open();
                             }
-                            blocklistDialogLoader.item.open();
                         }
                     },
                     Kirigami.Action {

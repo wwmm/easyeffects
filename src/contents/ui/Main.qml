@@ -163,9 +163,9 @@ Kirigami.ApplicationWindow {
     function showStatus(label, statusType = Kirigami.MessageType.Information, autohide = true) {
         autoHideStatusTimer.stop();
 
-        status.type = statusType;
-        status.text = label;
-        status.visible = true;
+        statusMessage.type = statusType;
+        statusMessage.text = label;
+        statusMessage.visible = true;
 
         if (autohide) {
             autoHideStatusTimer.start();
@@ -212,7 +212,7 @@ Kirigami.ApplicationWindow {
         id: autoHideStatusTimer
         interval: DbMain.autoHideInlineMessageTimeout
         onTriggered: {
-            status.visible = false;
+            statusMessage.visible = false;
 
             autoHideStatusTimer.stop();
         }
@@ -284,12 +284,16 @@ Kirigami.ApplicationWindow {
     Loader {
         id: preferencesSheetLoader
         active: false
+        asynchronous: true
 
-        sourceComponent: Component {
-            PreferencesSheet {
-                window: appWindow
-                canUseSysTray: appWindow.canUseSysTray
-            }
+        sourceComponent: PreferencesSheet {
+            window: appWindow
+            canUseSysTray: appWindow.canUseSysTray
+        }
+
+        onStatusChanged: {
+            if (status === Loader.Ready)
+                item.open();
         }
     }
 
@@ -436,8 +440,9 @@ Kirigami.ApplicationWindow {
                         onTriggered: {
                             if (!preferencesSheetLoader.active) {
                                 preferencesSheetLoader.active = true;
+                            } else {
+                                preferencesSheetLoader.item.open();
                             }
-                            preferencesSheetLoader.item.open();
                         }
                     },
                     Kirigami.Action {
@@ -502,7 +507,7 @@ Kirigami.ApplicationWindow {
     }
 
     footer: Kirigami.InlineMessage {
-        id: status
+        id: statusMessage
 
         Layout.fillWidth: true
         Layout.maximumWidth: parent.width

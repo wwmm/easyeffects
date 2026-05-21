@@ -62,6 +62,7 @@ Kirigami.Dialog {
 
         height: control.height - control.header.height - control.footer.height
         active: false
+        asynchronous: true
 
         source: {
             switch (DbMain.visiblePresetSheetPage) {
