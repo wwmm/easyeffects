@@ -45,6 +45,7 @@ Item {
     property string xUnit: ""
     property string yUnit: ""
     property list<point> baselineCache: []
+    property int pointsCount: 0
 
     readonly property real xMinLog: Math.log10(xMin)
     readonly property real xMaxLog: Math.log10(xMax)
@@ -86,6 +87,7 @@ Item {
 
     function updateData(inputData: list<point>) {
         if (!inputData || inputData.length === 0) {
+            clearData();
             return;
         }
 
@@ -95,19 +97,40 @@ Item {
         let maxY = Number.NEGATIVE_INFINITY;
 
         let processedData = [];
-        processedData.length = inputData.length;
 
         for (let n = 0; n < inputData.length; n++) {
             let y = inputData[n].y + yDataOffset;
             let x = inputData[n].x;
+
+            if (!Number.isFinite(x) || !Number.isFinite(y)) {
+                continue;
+            }
+
+            if ((widgetRoot.logarithmicHorizontalAxis && x <= 0) || (widgetRoot.logarithmicVerticalAxis && y <= 0)) {
+                continue;
+            }
+
+            const pointX = widgetRoot.logarithmicHorizontalAxis ? Math.log10(x) : x;
+            const pointY = widgetRoot.logarithmicVerticalAxis ? Math.log10(y) : y;
+
+            if (!Number.isFinite(pointX) || !Number.isFinite(pointY)) {
+                continue;
+            }
 
             minX = Math.min(minX, x);
             maxX = Math.max(maxX, x);
             minY = Math.min(minY, y);
             maxY = Math.max(maxY, y);
 
-            processedData[n] = Qt.point(widgetRoot.logarithmicHorizontalAxis ? Math.log10(x) : x, widgetRoot.logarithmicVerticalAxis ? Math.log10(y) : y);
+            processedData.push(Qt.point(pointX, pointY));
         }
+
+        if (processedData.length === 0) {
+            clearData();
+            return;
+        }
+
+        widgetRoot.pointsCount = processedData.length;
 
         // Avoid tiny changes triggering expensive relayouts
         const epsilon = 0.01; // 1% threshold
@@ -195,10 +218,13 @@ Item {
     }
 
     function clearData() {
-        splineSeries.clear();
+        widgetRoot.pointsCount = 0;
+        widgetRoot.baselineCache = [];
+        splineSeries.replace([Qt.point(0, 0), Qt.point(1, 0)]);
         scatterSeries.clear();
         barSeries.clear();
-        areaLineSeries.clear();
+        areaLineSeries.replace([Qt.point(0, 0), Qt.point(1, 0)]);
+        areaBaseline.replace([Qt.point(0, 0), Qt.point(1, 0)]);
     }
 
     function mapToValueX(mouseX: real): real {
@@ -320,7 +346,7 @@ Item {
 
             BarSeries {
                 id: barSeries
-                visible: widgetRoot.seriesType === 0
+                visible: widgetRoot.seriesType === 0 && widgetRoot.pointsCount > 0
                 BarSet {
                     id: barSeriesSet
                 }
@@ -328,26 +354,51 @@ Item {
 
             SplineSeries {
                 id: splineSeries
-                visible: widgetRoot.seriesType === 1
+                visible: widgetRoot.seriesType === 1 && widgetRoot.pointsCount > 1
+                XYPoint {
+                    x: 0
+                    y: 0
+                }
+                XYPoint {
+                    x: 1
+                    y: 0
+                }
 
                 width: DbGraph.lineWidth
             }
             ScatterSeries {
                 id: scatterSeries
-                visible: widgetRoot.seriesType === 2
+                visible: widgetRoot.seriesType === 2 && widgetRoot.pointsCount > 0
             }
 
             AreaSeries {
                 id: areaSeries
-                visible: widgetRoot.seriesType === 3
+                visible: widgetRoot.seriesType === 3 && widgetRoot.pointsCount > 1
                 upperSeries: SplineSeries {
                     id: areaLineSeries
+                    visible: areaSeries.visible
+                    XYPoint {
+                        x: 0
+                        y: 0
+                    }
+                    XYPoint {
+                        x: 1
+                        y: 0
+                    }
 
                     width: DbGraph.lineWidth
                 }
 
                 lowerSeries: LineSeries {
                     id: areaBaseline
+                    XYPoint {
+                        x: 0
+                        y: 0
+                    }
+                    XYPoint {
+                        x: 1
+                        y: 0
+                    }
                 }
             }
 
