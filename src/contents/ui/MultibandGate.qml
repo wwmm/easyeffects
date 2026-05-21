@@ -91,7 +91,7 @@ Kirigami.ScrollablePage {
                         checkable: true
                         checked: multibandGatePage.pluginDB[multibandGatePage.bandId + "Mute"]
                         onTriggered: {
-                            if (multibandGatePage.pluginDB[multibandGatePage.bandId + "Mute"] != checked)
+                            if (multibandGatePage.pluginDB[multibandGatePage.bandId + "Mute"] !== checked)
                                 multibandGatePage.pluginDB[multibandGatePage.bandId + "Mute"] = checked;
                         }
                     },
@@ -100,7 +100,7 @@ Kirigami.ScrollablePage {
                         checkable: true
                         checked: multibandGatePage.pluginDB[multibandGatePage.bandId + "Solo"]
                         onTriggered: {
-                            if (multibandGatePage.pluginDB[multibandGatePage.bandId + "Solo"] != checked)
+                            if (multibandGatePage.pluginDB[multibandGatePage.bandId + "Solo"] !== checked)
                                 multibandGatePage.pluginDB[multibandGatePage.bandId + "Solo"] = checked;
                         }
                     },
@@ -907,7 +907,7 @@ Kirigami.ScrollablePage {
                                 enabled: listItemDelegate.index > 0
                                 checked: listItemDelegate.index > 0 ? multibandGatePage.pluginDB[bandName] : true
                                 onCheckedChanged: {
-                                    if (checked != multibandGatePage.pluginDB[bandName]) {
+                                    if (checked !== multibandGatePage.pluginDB[bandName]) {
                                         multibandGatePage.pluginDB[bandName] = checked;
                                     }
                                 }
@@ -971,7 +971,7 @@ Kirigami.ScrollablePage {
                     checkable: true
                     checked: multibandGatePage.pluginDB.stereoSplit
                     onTriggered: {
-                        if (multibandGatePage.pluginDB.stereoSplit != checked)
+                        if (multibandGatePage.pluginDB.stereoSplit !== checked)
                             multibandGatePage.pluginDB.stereoSplit = checked;
                     }
                 },

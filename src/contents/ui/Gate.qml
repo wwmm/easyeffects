@@ -985,7 +985,7 @@ Kirigami.ScrollablePage {
                     checkable: true
                     checked: gatePage.pluginDB.sidechainListen
                     onTriggered: {
-                        if (gatePage.pluginDB.sidechainListen != checked)
+                            if (gatePage.pluginDB.sidechainListen !== checked)
                             gatePage.pluginDB.sidechainListen = checked;
                     }
                 },
@@ -995,7 +995,7 @@ Kirigami.ScrollablePage {
                     checkable: true
                     checked: gatePage.pluginDB.stereoSplit
                     onTriggered: {
-                        if (gatePage.pluginDB.stereoSplit != checked)
+                            if (gatePage.pluginDB.stereoSplit !== checked)
                             gatePage.pluginDB.stereoSplit = checked;
                     }
                 },

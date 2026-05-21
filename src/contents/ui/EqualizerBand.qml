@@ -96,7 +96,7 @@ Controls.ItemDelegate {
             stepSize: 0.01
             enabled: true
             onMoved: {
-                if (value != delegate.bandDB[bandName])
+                if (value !== delegate.bandDB[bandName])
                     delegate.bandDB[bandName] = value;
             }
             Keys.onPressed: event => {

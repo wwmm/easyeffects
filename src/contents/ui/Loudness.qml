@@ -103,7 +103,7 @@ Kirigami.ScrollablePage {
                         currentIndex: loudnessPage.pluginDB.fft
                         editable: false
                         model: [256, 512, 1024, 2048, 4096, 8192, 16384]
-                        visible: loudnessPage.pluginDB.mode == 0 ? true : false
+                        visible: loudnessPage.pluginDB.mode === 0 ? true : false
                         onActivated: idx => {
                             loudnessPage.pluginDB.fft = idx;
                         }
@@ -117,7 +117,7 @@ Kirigami.ScrollablePage {
                         currentIndex: loudnessPage.pluginDB.iirApproximation
                         editable: false
                         model: [i18n("Fastest"), i18n("Low"), i18n("Normal"), i18n("High"), i18n("Best")] // qmllint disable
-                        visible: loudnessPage.pluginDB.mode == 1 ? true : false
+                        visible: loudnessPage.pluginDB.mode === 1 ? true : false
                         onActivated: idx => {
                             loudnessPage.pluginDB.iirApproximation = idx;
                         }
@@ -208,7 +208,7 @@ Kirigami.ScrollablePage {
                     checkable: true
                     checked: loudnessPage.pluginDB.clipping
                     onTriggered: {
-                        if (loudnessPage.pluginDB.clipping != checked)
+                        if (loudnessPage.pluginDB.clipping !== checked)
                             loudnessPage.pluginDB.clipping = checked;
                     }
                 },

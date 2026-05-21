@@ -177,7 +177,7 @@ Kirigami.ScrollablePage {
                     checkable: true
                     checked: echoCancellerPage.pluginDB.enableAGC
                     onTriggered: {
-                        if (echoCancellerPage.pluginDB.enableAGC != checked)
+                            if (echoCancellerPage.pluginDB.enableAGC !== checked)
                             echoCancellerPage.pluginDB.enableAGC = checked;
                     }
                 },

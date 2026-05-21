@@ -174,7 +174,7 @@ Kirigami.ScrollablePage {
                     checkable: true
                     checked: crystalizerPage.pluginDB.oversampling
                     onTriggered: {
-                        if (crystalizerPage.pluginDB.oversampling != checked)
+                        if (crystalizerPage.pluginDB.oversampling !== checked)
                             crystalizerPage.pluginDB.oversampling = checked;
                     }
                 },
@@ -184,7 +184,7 @@ Kirigami.ScrollablePage {
                     checkable: true
                     checked: crystalizerPage.pluginDB.adaptiveIntensity
                     onTriggered: {
-                        if (crystalizerPage.pluginDB.adaptiveIntensity != checked)
+                        if (crystalizerPage.pluginDB.adaptiveIntensity !== checked)
                             crystalizerPage.pluginDB.adaptiveIntensity = checked;
                     }
                 },
@@ -194,7 +194,7 @@ Kirigami.ScrollablePage {
                     checkable: true
                     checked: crystalizerPage.pluginDB.useFixedQuantum
                     onTriggered: {
-                        if (crystalizerPage.pluginDB.useFixedQuantum != checked)
+                        if (crystalizerPage.pluginDB.useFixedQuantum !== checked)
                             crystalizerPage.pluginDB.useFixedQuantum = checked;
                     }
                 },

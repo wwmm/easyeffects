@@ -59,7 +59,7 @@ Controls.ItemDelegate {
                 checkable: true
                 checked: delegate.pluginDB["muteBand" + delegate.index]
                 onCheckedChanged: {
-                    if (checked != delegate.pluginDB["muteBand" + delegate.index])
+                        if (checked !== delegate.pluginDB["muteBand" + delegate.index])
                         delegate.pluginDB["muteBand" + delegate.index] = checked;
                 }
             }
@@ -70,7 +70,7 @@ Controls.ItemDelegate {
                 checkable: true
                 checked: delegate.pluginDB["bypassBand" + delegate.index]
                 onCheckedChanged: {
-                    if (checked != delegate.pluginDB["bypassBand" + delegate.index])
+                        if (checked !== delegate.pluginDB["bypassBand" + delegate.index])
                         delegate.pluginDB["bypassBand" + delegate.index] = checked;
                 }
             }
@@ -116,7 +116,7 @@ Controls.ItemDelegate {
             stepSize: 1
             enabled: !delegate.pluginDB["muteBand" + delegate.index] && !delegate.pluginDB["bypassBand" + delegate.index]
             onMoved: {
-                if (value != delegate.pluginDB["intensityBand" + delegate.index])
+                if (value !== delegate.pluginDB["intensityBand" + delegate.index])
                     delegate.pluginDB["intensityBand" + delegate.index] = value;
             }
             Keys.onPressed: event => {

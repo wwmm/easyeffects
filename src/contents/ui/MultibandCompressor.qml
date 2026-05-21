@@ -91,7 +91,7 @@ Kirigami.ScrollablePage {
                         checkable: true
                         checked: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "Mute"]
                         onTriggered: {
-                            if (multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "Mute"] != checked)
+                            if (multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "Mute"] !== checked)
                                 multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "Mute"] = checked;
                         }
                     },
@@ -100,7 +100,7 @@ Kirigami.ScrollablePage {
                         checkable: true
                         checked: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "Solo"]
                         onTriggered: {
-                            if (multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "Solo"] != checked)
+                            if (multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "Solo"] !== checked)
                                 multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "Solo"] = checked;
                         }
                     },
@@ -934,7 +934,7 @@ Kirigami.ScrollablePage {
                                 enabled: listItemDelegate.index > 0
                                 checked: listItemDelegate.index > 0 ? multibandCompressorPage.pluginDB[bandName] : true
                                 onCheckedChanged: {
-                                    if (checked != multibandCompressorPage.pluginDB[bandName]) {
+                                    if (checked !== multibandCompressorPage.pluginDB[bandName]) {
                                         multibandCompressorPage.pluginDB[bandName] = checked;
                                     }
                                 }
@@ -998,7 +998,7 @@ Kirigami.ScrollablePage {
                     checkable: true
                     checked: multibandCompressorPage.pluginDB.stereoSplit
                     onTriggered: {
-                        if (multibandCompressorPage.pluginDB.stereoSplit != checked)
+                        if (multibandCompressorPage.pluginDB.stereoSplit !== checked)
                             multibandCompressorPage.pluginDB.stereoSplit = checked;
                     }
                 },

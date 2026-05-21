@@ -238,7 +238,7 @@ Kirigami.ScrollablePage {
                     checkable: true
                     checked: bassEnhancerPage.pluginDB.listen
                     onTriggered: {
-                        if (bassEnhancerPage.pluginDB.listen != checked)
+                        if (bassEnhancerPage.pluginDB.listen !== checked)
                             bassEnhancerPage.pluginDB.listen = checked;
                     }
                 },

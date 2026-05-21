@@ -334,7 +334,7 @@ Kirigami.ScrollablePage {
                         checkable: true
                         checked: equalizerPage.pluginDB.splitChannels
                         onTriggered: {
-                            if (equalizerPage.pluginDB.splitChannels != checked)
+                            if (equalizerPage.pluginDB.splitChannels !== checked)
                                 equalizerPage.pluginDB.splitChannels = checked;
                         }
                     },

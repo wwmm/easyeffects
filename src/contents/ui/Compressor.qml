@@ -906,7 +906,7 @@ Kirigami.ScrollablePage {
                     checkable: true
                     checked: compressorPage.pluginDB.sidechainListen
                     onTriggered: {
-                        if (compressorPage.pluginDB.sidechainListen != checked)
+                        if (compressorPage.pluginDB.sidechainListen !== checked)
                             compressorPage.pluginDB.sidechainListen = checked;
                     }
                 },
@@ -916,7 +916,7 @@ Kirigami.ScrollablePage {
                     checkable: true
                     checked: compressorPage.pluginDB.stereoSplit
                     onTriggered: {
-                        if (compressorPage.pluginDB.stereoSplit != checked)
+                        if (compressorPage.pluginDB.stereoSplit !== checked)
                             compressorPage.pluginDB.stereoSplit = checked;
                     }
                 },

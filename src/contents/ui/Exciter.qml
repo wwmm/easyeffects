@@ -243,7 +243,7 @@ Kirigami.ScrollablePage {
                     checkable: true
                     checked: exciterPage.pluginDB.listen
                     onTriggered: {
-                        if (exciterPage.pluginDB.listen != checked)
+                        if (exciterPage.pluginDB.listen !== checked)
                             exciterPage.pluginDB.listen = checked;
                     }
                 },

@@ -640,7 +640,7 @@ Kirigami.ScrollablePage {
                     checkable: true
                     checked: limiterPage.pluginDB.gainBoost
                     onTriggered: {
-                        if (limiterPage.pluginDB.gainBoost != checked)
+                        if (limiterPage.pluginDB.gainBoost !== checked)
                             limiterPage.pluginDB.gainBoost = checked;
                     }
                 },
@@ -650,7 +650,7 @@ Kirigami.ScrollablePage {
                     checkable: true
                     checked: limiterPage.pluginDB.alr
                     onTriggered: {
-                        if (limiterPage.pluginDB.alr != checked)
+                        if (limiterPage.pluginDB.alr !== checked)
                             limiterPage.pluginDB.alr = checked;
                     }
                 },

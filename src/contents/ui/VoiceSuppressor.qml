@@ -176,7 +176,7 @@ Kirigami.ScrollablePage {
                     checkable: true
                     checked: voiceSuppressorPage.pluginDB.invertedMode
                     onTriggered: {
-                        if (voiceSuppressorPage.pluginDB.invertedMode != checked)
+                        if (voiceSuppressorPage.pluginDB.invertedMode !== checked)
                             voiceSuppressorPage.pluginDB.invertedMode = checked;
                     }
                 },
