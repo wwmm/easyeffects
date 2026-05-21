@@ -94,7 +94,7 @@ Kirigami.Dialog {
                     Controls.ToolTip.visible: hovered
 
                     onClicked: {
-                        let plugins = control.streamDB.plugins;
+                        let plugins = control.streamDB.plugins.slice();
                         let index_list = [];
 
                         for (let n = 0; n < plugins.length; n++) {

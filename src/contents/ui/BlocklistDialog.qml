@@ -68,7 +68,9 @@ Kirigami.Dialog {
                         // trim to exclude names containing only multiple spaces
                         if (!Common.isEmpty(name.trim())) {
                             if (!control.streamDB.blocklist.includes(name)) {
-                                control.streamDB.blocklist.push(name);
+                                const blocklist = control.streamDB.blocklist.slice();
+                                blocklist.push(name);
+                                control.streamDB.blocklist = blocklist;
                                 newBlockedApp.text = "";
                             }
                         }
@@ -140,8 +142,11 @@ Kirigami.Dialog {
                         standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
                         onAccepted: {
                             const targetIndex = control.streamDB.blocklist.indexOf(listItemDelegate.name);
-                            if (targetIndex > -1)
-                                control.streamDB.blocklist.splice(targetIndex, 1);
+                            if (targetIndex > -1) {
+                                const blocklist = control.streamDB.blocklist.slice();
+                                blocklist.splice(targetIndex, 1);
+                                control.streamDB.blocklist = blocklist;
+                            }
                         }
                     }
 

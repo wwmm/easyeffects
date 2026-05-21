@@ -327,7 +327,7 @@ Kirigami.Page {
 
             Connections {
                 function onPipelineChanged() {
-                    const newList = pageStreamsEffects.streamDB.plugins;
+                    const newList = pageStreamsEffects.streamDB.plugins.slice();
 
                     pagePluginsGrid.populatePluginsListModel(newList);
 
