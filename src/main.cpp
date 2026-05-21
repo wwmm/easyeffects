@@ -352,6 +352,10 @@ int main(int argc, char* argv[]) {
 
   KIconTheme::initTheme();
 
+  // Set the desktop app ID before QApplication startup so portal integration
+  // does not try to re-register a different/late app ID on the same bus.
+  QGuiApplication::setDesktopFileName(QStringLiteral(APPLICATION_ID));
+
   QApplication app(argc, argv);
 
   SignalHandler signalHandler;
@@ -373,7 +377,6 @@ int main(int argc, char* argv[]) {
   about.setTranslator(i18nc("NAME OF TRANSLATORS", "Your names"), i18nc("EMAIL OF TRANSLATORS", "Your emails"));
   about.setBugAddress("https://github.com/wwmm/easyeffects/issues");
   about.setHomepage("https://github.com/wwmm/easyeffects");
-  about.setDesktopFileName(APPLICATION_ID);
   about.setProgramLogo(APPLICATION_ID);
 
   KAboutData::setApplicationData(about);
