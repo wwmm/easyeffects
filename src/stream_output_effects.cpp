@@ -109,8 +109,6 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
         }
 
         set_bypass(false);
-
-        Q_EMIT pipelineChanged();
       },
       Qt::QueuedConnection);
 
@@ -435,4 +433,6 @@ void StreamOutputEffects::set_bypass(const bool& state) {
   disconnect_filters();
 
   connect_filters(state);
+
+  Q_EMIT pipelineChanged();
 }

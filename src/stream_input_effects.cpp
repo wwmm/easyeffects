@@ -99,8 +99,6 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
         }
 
         set_bypass(false);
-
-        Q_EMIT pipelineChanged();
       },
       Qt::QueuedConnection);
 
@@ -409,6 +407,8 @@ void StreamInputEffects::set_bypass(const bool& state) {
   disconnect_filters();
 
   connect_filters(state);
+
+  Q_EMIT pipelineChanged();
 }
 
 void StreamInputEffects::set_listen_to_mic(const bool& state) {
