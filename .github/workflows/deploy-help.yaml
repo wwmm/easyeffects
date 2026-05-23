@@ -1,10 +1,10 @@
 name: Deploy help
 
 on:
-  # Runs on every push to a tag not containing a /
+  # Runs on every commit pushed to any branch
   push:
-    tags:
-      - "*"
+    branches:
+      - "**"
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
