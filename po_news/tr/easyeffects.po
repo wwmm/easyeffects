@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-28 14:40+0000\n"
-"PO-Revision-Date: 2026-05-16 23:11+0000\n"
+"PO-Revision-Date: 2026-05-24 06:11+0000\n"
 "Last-Translator: Turan <24282230@stu.omu.edu.tr>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/tr/>\n"
@@ -496,10 +496,15 @@ msgid ""
 "The native window of the LSP plugins can be used. This is an experimental "
 "feature intended only for advanced users. So expect some bugs."
 msgstr ""
+"LSP eklentilerinin yerel penceresi kullanılabilir. Bu, yalnızca gelişmiş "
+"kullanıcılar için tasarlanmış deneysel bir özelliktir. Dolayısıyla bazı "
+"hatalarla karşılaşabilirsiniz."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:199
 msgid "Fractional semitone values can now be used in the Pitch Shift effect."
 msgstr ""
+"Pitch Shift (Ses Perdesi Değiştirme) efektinde artık kesirli yarı ton "
+"değerleri kullanılabilir."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:201
 msgid ""
@@ -514,6 +519,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:210
 msgid "A new Level Meter plugin based on libebur128 has been added."
 msgstr ""
+"Libebur128 tabanlı yeni bir Seviye Ölçer (Level Meter) eklentisi eklendi."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:211
 msgid ""
@@ -521,113 +527,153 @@ msgid ""
 "Hopefully some of the mysterious crashes that were happening with Rubbernand "
 "are not going to happen anymore."
 msgstr ""
+"Pitch (Ses Perdesi) eklentisi artık Rubberband yerine SoundTouch "
+"kütüphanesini kullanıyor. Böylece Rubberband kaynaklı yaşanan bazı gizemli "
+"çökmelerin artık önüne geçilmiş olacağını umuyoruz."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:212
-#, fuzzy
 msgid ""
 "Improved compatibility with recent PipeWire versions. More information at"
-msgstr "En son LSP sürümleri ile uyumluluk iyileştirildi."
+msgstr ""
+"Güncel PipeWire versiyonları ile olan uyumluluk iyileştirildi. Detaylı "
+"bilgiye şu adresten ulaşabilirsiniz:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:214
 msgid ""
 "Active Equalizer filters are not set to Bell type anymore when the number of "
 "bands changes."
 msgstr ""
+"Bant sayısı değiştiğinde, Aktif Ekolayzer (Active Equalizer) filtreleri "
+"artık otomatik olarak Bell (Çan) tipine ayarlanmıyor."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:216
+#, fuzzy
 msgid ""
 "Rabberband is not a dependency anymore since it has been replaced by "
 "SoundTouch."
 msgstr ""
+"Rubberband eklentisi artık SoundTouch ile değiştirildiğinden dolayı "
+"bağımlılık listesinden çıkarılmıştır."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:224
 msgid ""
 "The presets menu now asks for confirmation before saving/deleting a preset "
 "file."
 msgstr ""
+"Hazır ayar menüsü, artık bir preset dosyasını kaydetmeden veya silmeden önce "
+"kullanıcıdan onay isteyecektir."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:226
 msgid "The plugin reset should not make its controls innefective anymore."
 msgstr ""
+"Eklenti sıfırlandığında, kontrollerin devre dışı kalması/etkisizleşmesi "
+"sorunu giderildi."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:228
 msgid ""
 "Speex is no longer incorrectly listed as a build dependency (speexdsp is "
 "still a build dependency)"
 msgstr ""
+"Speex'in derleme bağımlılıkları arasında hatalı bir şekilde yer alması "
+"sorunu düzeltildi (speexdsp bağımlılığı ise devam etmektedir)"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:229
 msgid ""
 "RNNoise is no longer an autodependency. It is now required by default, if "
 "not available it must be explicitly disabled with -Denable-rnnoise=false"
 msgstr ""
+"RNNoise otomatik bağımlılık olmaktan çıkarıldı. Artık varsayılan olarak "
+"gerekli kılınmıştır; kullanılabilir olmadığı durumlarda -Denable-"
+"rnnoise=false kullanılarak açık bir şekilde devre dışı bırakılması gerekir"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:239
 msgid ""
 "A small mistake was done in the last release. Making a new one to make sure "
 "people have the right branch in the package"
 msgstr ""
+"Son yayındaki küçük bir hata düzeltildi. Paket içerisinde doğru dalın yer "
+"almasını sağlamak adına yeni bir sürüm hazırlandı"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:247
 msgid ""
 "The Equalizer \"sort bands\" feature is now ordering bands on GSettings, so "
 "the result can be saved into presets."
 msgstr ""
+"Ekolayzerdaki 'bantları sırala' özelliğinin sıralama sonuçları artık "
+"GSettings'e işlenmektedir; bu sayede yapılan sıralama hazır ayar dosyalarına "
+"kaydedilebilir."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:248
 msgid "Improved performance when resetting keys."
-msgstr ""
+msgstr "Anahtar (key) sıfırlama işlemlerindeki performans iyileştirildi."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:250
 msgid ""
 "Fixed the \"Large Empty Hall\" preset selection in the Reverberation effect."
 msgstr ""
+"Reverberation (Yankılanma) efekti altındaki 'Large Empty Hall' hazır "
+"ayarının seçilmesiyle ilgili sorun giderildi."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:251
 msgid ""
 "Fixed some misuses of PipeWire's API that can potentially fix some random "
 "bugs some users are facing."
 msgstr ""
+"PipeWire API'sindeki bazı usulsüz kullanımlar giderildi. Bu düzeltmenin, "
+"kullanıcılar tarafından raporlanan bazı anlık ve nedeni belirsiz hataları "
+"çözmesi beklenmektedir."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:253
 msgid ""
 "As we are removing code deprecated by GTK 4.10 the minimum GTK version has "
 "been increased."
 msgstr ""
+"GTK 4.10 sürümüyle birlikte artık desteklenmeyen kod bloklarının "
+"kaldırılması nedeniyle, gereken en düşük GTK versiyonu artırılmıştır."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:261
 msgid ""
 "The spectrum plugin update rate was improved. Different sampling rates "
 "should lead to similar update frequencies visually."
 msgstr ""
+"Spektrum eklentisinin yenilenme oranı iyileştirildi. Bu sayede, farklı "
+"örnekleme hızlarında (sampling rates) bile görsel olarak benzer güncelleme "
+"frekansları elde edilecektir."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:262
 msgid ""
 "The update interval used by level meters and the spectrum can be customized "
 "by the user."
 msgstr ""
+"Seviye ölçerler (Level meter ) ve spektrum tarafından kullanılan güncelleme "
+"aralığı artık kullanıcı tarafından özelleştirilebilir."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:263
 msgid ""
 "The equalizer band gain slider value can be updated in larger steps. Fine "
 "grain control is still possible through the keyboard up/down keys."
 msgstr ""
+"Ekolayzer bant kazancı kaydırıcı değeri daha büyük adımlarla da "
+"güncellenebiliyor. Klavye de yukarı/aşağı ok tuşlarıyla hassas kontrol "
+"sağlamak hâlâ mümkündür."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:264
 msgid "Small improvements to the echo canceller."
-msgstr ""
+msgstr "Yankı engelleyicide küçük iyileştirmeler."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:266
 msgid ""
 "The echo canceller probes were not being linked to the soundcard after the "
 "move to multiple filters intances. This should be fixed now."
 msgstr ""
+"Birden çok filtre örneğine geçişten sonra yankı engelleyici probları ses "
+"kartına bağlanmıyordu. Bu durum artık düzeltildi."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:274
 msgid ""
 "It is now possible to add more than one filter instance to the effects "
 "pipeline."
-msgstr ""
+msgstr "Efekt hattına artık birden fazla filtre örneği eklenebiliyor."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:275
 msgid ""
@@ -635,50 +681,61 @@ msgid ""
 "providing noise suppression it also can detect voice activity. It is a "
 "decent alternative to the cases whre the rnnoise library does not work well."
 msgstr ""
+"Speex kütüphanesini temel alan yeni bir Konuşma İşlemcisi eklentisi eklendi. "
+"Gürültü engelleme özelliğinin yanı sıra ses etkinliğini de algılayabiliyor. "
+"Rnnoise kütüphanesinin iyi çalışmadığı durumlar için iyi bir alternatiftir."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:276
-#, fuzzy
 msgid "Improved compatibility with Linux Studio Plugins 1.2.3."
-msgstr "En son LSP sürümleri ile uyumluluk iyileştirildi."
+msgstr "Linux Studio Plugins 1.2.3 ile uyumluluk iyileştirildi."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:277
 msgid "GraphicEQ presets can be imported into the Equalizer effect."
-msgstr ""
+msgstr "GraphicEQ hazır ayarları artık Ekolayzer efektine aktarılabiliyor."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:278
 msgid ""
 "The application name has been changed to Easy Effects to adhere to the "
 "naming conventions of GNOME Human Interface Guidelines."
 msgstr ""
+"GNOME İnsan Arayüzü Kılavuzları'nın adlandırma kurallarına uymak amacıyla "
+"uygulama adı Easy Effects olarak değiştirildi."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:279
 msgid "The documentation has been updated."
 msgstr "Belgeler güncellendi."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:280
-#, fuzzy
 msgid "Improved presets autoloading."
-msgstr "Çeviriler güncellendi"
+msgstr "Ön ayarların otomatik yükleme özelliği geliştirildi."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:281
 msgid "The Autogain silence threshold can now be configured by the user."
 msgstr ""
+"Otomatik kazanç (Autogain) sessizlik eşiği artık kullanıcı tarafından "
+"yapılandırılabiliyor."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:282
 msgid "Dry and wet controls added to the Stereo Tools effect."
 msgstr ""
+"Stereo Araçları (Stereo Tools) efektine ham (dry) ve işlenmiş (wet) ses "
+"kontrolleri eklendi."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:283
 msgid ""
 "The echo canceller now has a residual noise suppression control also based "
 "on the Speex library."
 msgstr ""
+"Yankı engelleyici artık Speex kütüphanesini temel alan bir artık gürültü "
+"bastırma kontrolüne de sahip."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:285
 msgid ""
 "When the mouse was hovering over a chart the wrong value for the x axis "
 "coordinate was being shown. This regression is fixed."
 msgstr ""
+"İmleç grafik üzerindeyken x ekseni koordinat değerinin yanlış "
+"görüntülenmesine neden olan gerileme düzeltildi."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:287
 msgid ""
@@ -687,12 +744,17 @@ msgid ""
 "consideration that saving the current preset will always write it in the new "
 "format."
 msgstr ""
+"Yeni çoklu örnek özelliği nedeniyle ön ayar biçimi değişti, ancak eski biçim "
+"hâlâ yüklenebiliyor. Yine de mevcut ön ayarı kaydetmenin onu her zaman yeni "
+"biçimde yazacağını lütfen göz önünde bulundurun."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:295
 msgid ""
 "Multiband Gate implementation has been migrated from CALF to Linux Studio "
 "Plugins."
 msgstr ""
+"Çoklu Bant Geçidi (Multiband Gate) altyapısı CALF'tan Linux Studio Plugins'e "
+"taşındı."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:296
 msgid ""
@@ -704,7 +766,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:297
 msgid "Wet/dry controls were added for some plugins"
-msgstr ""
+msgstr "Bazı eklentiler için ham/işlenmiş ses (wet/dry) kontrolleri eklendi"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:298
 msgid ""
@@ -720,7 +782,7 @@ msgstr "Belgeler güncellendi"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:300
 msgid "Improved debug messages"
-msgstr ""
+msgstr "Hata ayıklama mesajları iyileştirildi"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:311
 msgid "Improved translations"
@@ -739,6 +801,8 @@ msgid ""
 "The bypass state can be saved to the preset file. The reasons why this was "
 "done can be seen at issue 1039"
 msgstr ""
+"Bypass (yoksayma)durumu artık önayar dosyasına kaydedilebilir. Gerekçeleri "
+"#1039 numaralı sorun sayfasından incelenebilir"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:323
 #, fuzzy
@@ -753,24 +817,32 @@ msgid ""
 "A dialog is shown to the user when a preset fails to load or a preset/"
 "impulse file fails to be imported."
 msgstr ""
+"Önayar yüklenemediğinde ya da önayar/impulse dosyası içe aktarılamadığında "
+"kullanıcıya bir diyalog kutusu gösterilir."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:325
 msgid ""
 "The SideChain Gate plugin from Linux Studio Plugins is now used instead of "
 "the one from Calf Studio."
 msgstr ""
+"Calf Studio eklentisi yerine artık Linux Studio Plugins'in SideChain Gate "
+"eklentisi kullanılıyor."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:327
 msgid ""
 "EasyEffects should not crash anymore when the user locale is not properly "
 "configured."
 msgstr ""
+"Kullanıcı yerel ayarları (locale) düzgün yapılandırılmadığında EasyEffects "
+"artık çökmeyecektir."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:328
 msgid ""
 "A workaround was implemented in our icon to deal with the lack of proper SVG "
 "support in QT."
 msgstr ""
+"QT'nin SVG formatını tam olarak desteklememesinden kaynaklanan sorunu aşmak "
+"adına simgemizde bir etrafından dolanma (workaround) yöntemi uygulandı."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:337
 msgid ""
@@ -778,6 +850,10 @@ msgid ""
 "null. This will allow the media session manager (wireplumber) to properly "
 "move the stream to a new device."
 msgstr ""
+"Bir uygulama için efektler devre dışı bırakıldığında artık uygulamanın hedef "
+"meta verisini (metadata) boş (null) olarak ayarlıyoruz. Bu sayede medya "
+"oturum yöneticisi (wireplumber) ses akışını yeni bir cihaza düzgün bir "
+"şekilde taşıyabilecektir."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:338
 msgid ""
@@ -785,21 +861,30 @@ msgid ""
 "streams whose purpose is to monitor sink devices. This will help to fix some "
 "of problems our users were having when using OBS."
 msgstr ""
+"Yeni bir yapılandırma seçeneği eklendi. Bu seçenek, EasyEffects'in amacı "
+"çıkış cihazlarını (sink) izlemek olan ses akışlarını yoksaymasını sağlıyor. "
+"Bu durum, kullanıcılarımızın OBS kullanırken yaşadığı bazı sorunların "
+"çözülmesine yardımcı olacaktır."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:339
 msgid "The code that shows the stream sample format has been improved"
-msgstr ""
+msgstr "Ses akışı örnekleme biçimini gösteren kod iyileştirildi"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:340
 msgid ""
 "The rnnoise library is now optional. This should help package maintainers to "
 "build a Debian package. See issue 1000 for more information."
 msgstr ""
+"Rnnoise kütüphanesi artık isteğe bağlı hale getirildi. Bu değişikliğin paket "
+"sorumlularının bir Debian paketi derlemesine yardımcı olması bekleniyor. "
+"Daha fazla bilgi için sorun 1000'e 1000 göz atabilirsiniz."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:341
 msgid ""
 "Our logs now show the source code line where the messages are being printed"
 msgstr ""
+"Günlük kayıtlarımız (loglar) artık mesajların yazdırıldığı kaynak kod "
+"satırını da gösteriyor"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:343
 msgid ""
@@ -807,12 +892,17 @@ msgid ""
 "third party programs like pavucontrol moved the stream away from our virtual "
 "devices. This should be fixed now."
 msgstr ""
+"Pavucontrol gibi üçüncü taraf programlar ses akışını sanal cihazlarımızdan "
+"başka yere taşıdığında penceremizdeki 'efektleri etkinleştir' onay kutusu "
+"güncellenmiyordu. Bu durum artık düzeltildi."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:344
 msgid ""
 "Fixed a crash that could happen when the maximum autogain history was "
 "changed."
 msgstr ""
+"Maksimum otomatik kazanç (autogain) geçmişi değiştirildiğinde meydana "
+"gelebilecek bir çökme hatası düzeltildi."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:345
 msgid "Avoid crashes when pw-mididump is running"
