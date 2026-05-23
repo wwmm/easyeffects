@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-05-22 22:13-0300\n"
-"PO-Revision-Date: 2025-12-12 11:00+0000\n"
+"PO-Revision-Date: 2026-05-23 23:11+0000\n"
 "Last-Translator: John Peter Sa <johnppetersa@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "easyeffects/main/pt_BR/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.15-dev\n"
+"X-Generator: Weblate 2026.6.dev0\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #: src/autostart.cpp:92
@@ -46,19 +46,18 @@ msgid "Hide the window."
 msgstr "Oculte a janela."
 
 #: src/command_line_parser.cpp:48
-#, fuzzy
 msgid ""
 "Global bypass. 1 to enable, 2 to disable and 3 to get the current state."
-msgstr "Desvio global. 1 para ativar e 2 para desativar."
+msgstr ""
+"Desvio global. 1 para ativar, 2 para desativar e 3 para obter o estado atual."
 
 #: src/command_line_parser.cpp:49
 msgid "bypass-state"
 msgstr "estado de bypass"
 
 #: src/command_line_parser.cpp:50
-#, fuzzy
 msgid "Toggle the state of the global bypass."
-msgstr "Alternar desvio global"
+msgstr "Alternar o estado do bypass global."
 
 #: src/command_line_parser.cpp:51
 msgid "Load a preset. Example: easyeffects -l music"
@@ -246,9 +245,8 @@ msgid "Reset settings"
 msgstr "Redefinir configurações"
 
 #: src/contents/ui/Autotune.qml:92 src/contents/ui/Autotune.qml:120
-#, fuzzy
 msgid "Tuning"
-msgstr "Executando"
+msgstr "Ajuste"
 
 #: src/contents/ui/Autotune.qml:107 src/contents/ui/Compressor.qml:79
 #: src/contents/ui/Compressor.qml:301 src/contents/ui/Crusher.qml:97
@@ -263,9 +261,8 @@ msgid "Mode"
 msgstr "Modo"
 
 #: src/contents/ui/Autotune.qml:111
-#, fuzzy
 msgid "Auto"
-msgstr "Ganho Automático"
+msgstr "Auto"
 
 #: src/contents/ui/Autotune.qml:111 src/contents/ui/Main.qml:465
 #: src/contents/ui/TrayIcon.qml:221
@@ -273,13 +270,12 @@ msgid "Manual"
 msgstr "Manual"
 
 #: src/contents/ui/Autotune.qml:137
-#, fuzzy
 msgid "Correction"
-msgstr "Configuração"
+msgstr "Correção"
 
 #: src/contents/ui/Autotune.qml:153
 msgid "Bias"
-msgstr ""
+msgstr "Viés"
 
 #: src/contents/ui/Autotune.qml:169 src/contents/ui/Deesser.qml:171
 #: src/contents/ui/Filter.qml:123 src/contents/ui/Reverb.qml:126
@@ -289,41 +285,39 @@ msgstr "Filtro"
 
 #: src/contents/ui/Autotune.qml:186
 msgid "Offset"
-msgstr ""
+msgstr "Desvio"
 
 #: src/contents/ui/Autotune.qml:205 src/contents/ui/Autotune.qml:244
 msgid "Scale"
-msgstr ""
+msgstr "Escala"
 
 #: src/contents/ui/Autotune.qml:218
 msgid "Root"
-msgstr ""
+msgstr "Root"
 
 #: src/contents/ui/Autotune.qml:231
 msgid "Accidental"
-msgstr ""
+msgstr "Acidental"
 
 #: src/contents/ui/Autotune.qml:248
 msgid "Major"
-msgstr ""
+msgstr "Principal"
 
 #: src/contents/ui/Autotune.qml:248
 msgid "Minor"
-msgstr ""
+msgstr "Menor"
 
 #: src/contents/ui/Autotune.qml:377 src/contents/ui/Deesser.qml:276
 msgid "Level"
 msgstr "Nível"
 
 #: src/contents/ui/Autotune.qml:388
-#, fuzzy
 msgid "Pitch error"
-msgstr "Inclinação para a esquerda"
+msgstr "Erro de tom"
 
 #: src/contents/ui/Autotune.qml:425
-#, fuzzy
 msgid "Fast correction"
-msgstr "Redução"
+msgstr "Correção rápida"
 
 #: src/contents/ui/BassEnhancer.qml:56 src/contents/ui/Exciter.qml:56
 msgid "Blend harmonics"
@@ -448,13 +442,15 @@ msgstr "Remover esta aplicação"
 
 #: src/contents/ui/BlocklistDialog.qml:204
 msgid "Use media name"
-msgstr ""
+msgstr "Use o nome da mídia"
 
 #: src/contents/ui/BlocklistDialog.qml:205
 msgid ""
 "Also use a combination of node and media name when deciding if a stream "
 "should be blocked"
 msgstr ""
+"Use também uma combinação do nome do nó e do nome da mídia ao decidir se um "
+"fluxo deve ser bloqueado"
 
 #: src/contents/ui/BlocklistDialog.qml:216
 msgid "Show excluded apps"
@@ -834,9 +830,8 @@ msgid "Failed to remove the %1 Convolver impulse."
 msgstr "Falha ao remover o arquivo de impulso do Convolver %1."
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:123
-#, fuzzy
 msgid "Rename Impulse"
-msgstr "Impulso removido: %1"
+msgstr "Renomear Impulso"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:128
 #: src/contents/ui/PresetsLocalPage.qml:247
@@ -844,14 +839,12 @@ msgid "Rename"
 msgstr "Renomear"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:136
-#, fuzzy
 msgid "Renamed the %1 impulse to %2"
-msgstr "Renomeei a predefinição local %1 para %2"
+msgstr "O impulso %1 foi renomeado para %2"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:139
-#, fuzzy
 msgid "Failed to rename the %1 impulse to %2"
-msgstr "Falha ao renomear a predefinição local %1 para %2"
+msgstr "Falha ao renomear o impulso %1 para %2"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:147
 #: src/contents/ui/PresetsLocalPage.qml:267
@@ -859,9 +852,8 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:186
-#, fuzzy
 msgid "Rename this impulse"
-msgstr "Renomear esta Predefinição"
+msgstr "Renomeie este impulso"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:194
 msgid "Delete this impulse"
@@ -1010,7 +1002,7 @@ msgstr "Predefinições"
 
 #: src/contents/ui/CrosstalkCanceller.qml:64
 msgid "Process only phantom center"
-msgstr ""
+msgstr "Processar apenas o centro fantasma"
 
 #: src/contents/ui/CrosstalkCanceller.qml:75
 #: src/contents/ui/StereoTools.qml:294 src/tags_plugin_name.cpp:58
@@ -1018,31 +1010,28 @@ msgid "Delay"
 msgstr "Atraso"
 
 #: src/contents/ui/CrosstalkCanceller.qml:91
-#, fuzzy
 msgid "Decay"
-msgstr "Tempo de Decaimento"
+msgstr "Decadência"
 
 #: src/contents/ui/Crusher.qml:56
-#, fuzzy
 msgid "Bit reduction"
-msgstr "Redução"
+msgstr "Redução de bits"
 
 #: src/contents/ui/Crusher.qml:91 src/contents/ui/PreferencesSheet.qml:377
 msgid "Shape"
 msgstr "Forma"
 
 #: src/contents/ui/Crusher.qml:101
-#, fuzzy
 msgid "Linear"
-msgstr "Linhas"
+msgstr "Linear"
 
 #: src/contents/ui/Crusher.qml:101
 msgid "Logarithmic"
-msgstr ""
+msgstr "Logarítmico"
 
 #: src/contents/ui/Crusher.qml:110
 msgid "DC offset"
-msgstr ""
+msgstr "Deslocamento CC"
 
 #: src/contents/ui/Crusher.qml:126 src/contents/ui/Pitch.qml:302
 msgid "Anti-aliasing"
@@ -1065,7 +1054,7 @@ msgstr "Redução"
 
 #: src/contents/ui/Crusher.qml:181
 msgid "Low frequency oscillator"
-msgstr ""
+msgstr "Oscilador de baixa frequência"
 
 #: src/contents/ui/CrystalizerBand.qml:58
 #: src/contents/ui/EqualizerBandMenu.qml:187
@@ -1087,7 +1076,7 @@ msgstr "Qualidade da sobreamostragem"
 
 #: src/contents/ui/Crystalizer.qml:128
 msgid "Transition band"
-msgstr ""
+msgstr "Banda de transição"
 
 #: src/contents/ui/Crystalizer.qml:172 src/contents/ui/Limiter.qml:86
 msgid "Oversampling"
@@ -2021,11 +2010,11 @@ msgstr "Monitoramento de entrada"
 
 #: src/contents/ui/PageStreamsEffects.qml:689
 msgid "Share audio"
-msgstr ""
+msgstr "Compartilhar áudio"
 
 #: src/contents/ui/PageStreamsEffects.qml:690
 msgid "Send the processed desktop audio to the virtual source"
-msgstr ""
+msgstr "Envie o áudio processado da área de trabalho para a fonte virtual"
 
 #: src/contents/ui/PipeWirePage.qml:49
 msgid "General"
@@ -2294,7 +2283,7 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:234
 msgid "Copy the input audio buffer"
-msgstr ""
+msgstr "Copie o buffer de áudio de entrada"
 
 #: src/contents/ui/PreferencesSheet.qml:235
 msgid ""
@@ -2303,6 +2292,10 @@ msgid ""
 "can happen when external applications are recording from Easy Effects "
 "virtual devices monitors."
 msgstr ""
+"Use uma cópia do buffer de áudio de entrada fornecido pelo servidor de som "
+"ao processar áudio dentro dos plugins do Easy Effects. Isso corrige falhas "
+"de áudio que podem ocorrer quando aplicativos externos gravam a partir dos "
+"monitores de dispositivos virtuais do Easy Effects."
 
 #: src/contents/ui/PreferencesSheet.qml:247
 msgid "Enable the inactivity timeout"
@@ -2455,7 +2448,7 @@ msgstr "Esquema de cores"
 
 #: src/contents/ui/PreferencesSheet.qml:586
 msgid "Force English language"
-msgstr ""
+msgstr "Forçar o idioma inglês"
 
 #: src/contents/ui/PreferencesSheet.qml:587
 msgid ""
@@ -2463,6 +2456,9 @@ msgid ""
 "Useful if the translation in the local language is incomplete or "
 "incomprehensible. A restart of the service is required to apply this option."
 msgstr ""
+"Não traduza a interface do usuário e exiba o texto em inglês. Isso é útil se "
+"a tradução no idioma local estiver incompleta ou incompreensível. É "
+"necessário reiniciar o serviço para que essa opção entre em vigor."
 
 #: src/contents/ui/PreferencesSheet.qml:598
 msgid "Graphs"
@@ -2986,7 +2982,7 @@ msgstr "Pode ser usado em controles numéricos"
 
 #: src/contents/ui/ShortcutsSheet.qml:289
 msgid "Mouse wheel"
-msgstr ""
+msgstr "roda do mouse"
 
 #: src/contents/ui/ShortcutsSheet.qml:313
 msgid "Global Shortcuts"
@@ -3164,7 +3160,7 @@ msgstr "Atalhos globais"
 
 #: src/main.cpp:371
 msgid "© 2017-2026 Easy Effects Team"
-msgstr ""
+msgstr "© 2017-2026 Equipe Easy Effects"
 
 #: src/main.cpp:373
 #, fuzzy
@@ -3185,7 +3181,7 @@ msgstr "quadros"
 #: src/main.cpp:377
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
+msgstr "Seus e-mails"
 
 #: src/plugin_base.cpp:324
 msgid "(Mic)"
@@ -3288,7 +3284,7 @@ msgstr "Cancelador de Eco"
 
 #: src/tags_plugin_name.cpp:54
 msgid "Crusher"
-msgstr ""
+msgstr "Triturador"
 
 #: src/tags_plugin_name.cpp:55
 msgid "Crystalizer"
@@ -3370,12 +3366,12 @@ msgstr "WAV"
 #: src/units.hpp:68
 msgctxt "decibel unit abbreviation"
 msgid "dB"
-msgstr ""
+msgstr "dB"
 
 #: src/units.hpp:69
 msgctxt "decibel full scale unit abbreviation"
 msgid "dBFS"
-msgstr ""
+msgstr "dBFS"
 
 #: src/units.hpp:70
 #, fuzzy
@@ -3398,22 +3394,22 @@ msgstr "Melhor"
 #: src/units.hpp:73
 msgctxt "microseconds unit abbreviation"
 msgid "μs"
-msgstr ""
+msgstr "μs"
 
 #: src/units.hpp:74
 msgctxt "Hertz unit abbreviation"
 msgid "Hz"
-msgstr ""
+msgstr "Hz"
 
 #: src/units.hpp:75
 msgctxt "kiloHertz unit abbreviation"
 msgid "kHz"
-msgstr ""
+msgstr "kHz"
 
 #: src/units.hpp:76
 msgctxt "loudness full scale unit abbreviation"
 msgid "LUFS"
-msgstr ""
+msgstr "LUFS"
 
 #: src/units.hpp:77
 #, fuzzy
@@ -3424,22 +3420,22 @@ msgstr "E"
 #: src/units.hpp:78
 msgctxt "meter unit abbreviation"
 msgid "m"
-msgstr ""
+msgstr "m"
 
 #: src/units.hpp:79
 msgctxt "centimeter unit abbreviation"
 msgid "cm"
-msgstr ""
+msgstr "cm"
 
 #: src/units.hpp:80
 msgctxt "degrees Celsius unit abbreviation"
 msgid "°C"
-msgstr ""
+msgstr "°C"
 
 #: src/units.hpp:81
 msgctxt "bit unit (plural)"
 msgid "bits"
-msgstr ""
+msgstr "bits"
 
 #: src/units.hpp:82
 #, fuzzy
@@ -3450,22 +3446,22 @@ msgstr "quadros"
 #: src/units.hpp:83
 msgctxt "frames per second abbreviation"
 msgid "fps"
-msgstr ""
+msgstr "fps"
 
 #: src/units.hpp:86
 msgctxt "thousand abbreviation (single letter)"
 msgid "k"
-msgstr ""
+msgstr "k"
 
 #: src/units.hpp:87
 msgctxt "percentage symbol"
 msgid "%"
-msgstr ""
+msgstr "%"
 
 #: src/units.hpp:88
 msgctxt "degrees (angle) symbol"
 msgid "°"
-msgstr ""
+msgstr "°"
 
 #: src/units.hpp:89
 #, fuzzy
@@ -3479,7 +3475,7 @@ msgstr "Equalizador, Compressor e Outros Efeitos de Áudio"
 
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
-msgstr ""
+msgstr "Efeitos de áudio simples"
 
 #~ msgid "Go back"
 #~ msgstr "Volte"
