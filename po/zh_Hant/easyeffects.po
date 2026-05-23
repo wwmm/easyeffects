@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-05-17 13:10-0300\n"
+"POT-Creation-Date: 2026-05-22 22:13-0300\n"
 "PO-Revision-Date: 2026-05-18 05:11+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
@@ -258,7 +258,7 @@ msgstr "模式"
 msgid "Auto"
 msgstr "自動"
 
-#: src/contents/ui/Autotune.qml:111 src/contents/ui/Main.qml:460
+#: src/contents/ui/Autotune.qml:111 src/contents/ui/Main.qml:465
 #: src/contents/ui/TrayIcon.qml:221
 msgid "Manual"
 msgstr "手冊"
@@ -374,7 +374,7 @@ msgstr "聆聽"
 #: src/contents/ui/Exciter.qml:252 src/contents/ui/Expander.qml:875
 #: src/contents/ui/Filter.qml:252 src/contents/ui/Gate.qml:1004
 #: src/contents/ui/Limiter.qml:659 src/contents/ui/Loudness.qml:217
-#: src/contents/ui/Main.qml:472 src/contents/ui/Maximizer.qml:154
+#: src/contents/ui/Main.qml:477 src/contents/ui/Maximizer.qml:154
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:358
 #: src/contents/ui/RNNoise.qml:345 src/contents/ui/Speex.qml:195
@@ -384,7 +384,7 @@ msgstr "重設"
 
 #: src/contents/ui/BassLoudness.qml:83 src/contents/ui/Compressor.qml:478
 #: src/contents/ui/EeInputOutputGain.qml:144 src/contents/ui/Expander.qml:438
-#: src/contents/ui/Gate.qml:453 src/contents/ui/Main.qml:368
+#: src/contents/ui/Gate.qml:453 src/contents/ui/Main.qml:372
 #: src/contents/ui/StereoTools.qml:268
 msgid "Output"
 msgstr "輸出"
@@ -408,47 +408,47 @@ msgstr "應用程式節點名稱"
 msgid "Add to excluded applications"
 msgstr "加入至排除的應用程式"
 
-#: src/contents/ui/BlocklistDialog.qml:114
+#: src/contents/ui/BlocklistDialog.qml:116
 #: src/contents/ui/ConvolverImpulseDialog.qml:89
 #: src/contents/ui/MenuAddPlugins.qml:54
-#: src/contents/ui/PageStreamsEffects.qml:115
+#: src/contents/ui/PageStreamsEffects.qml:127
 #: src/contents/ui/PresetsAutoloadPage.qml:176
 #: src/contents/ui/PresetsCommunityPage.qml:104
 #: src/contents/ui/PresetsLocalPage.qml:193 src/contents/ui/RNNoise.qml:228
 msgid "Empty List"
 msgstr "空白列表"
 
-#: src/contents/ui/BlocklistDialog.qml:115
+#: src/contents/ui/BlocklistDialog.qml:117
 msgid "No application excluded"
 msgstr "未有應用程式列入排除"
 
-#: src/contents/ui/BlocklistDialog.qml:138
+#: src/contents/ui/BlocklistDialog.qml:140
 msgid "Remove Application"
 msgstr "移除應用程式"
 
-#: src/contents/ui/BlocklistDialog.qml:139
+#: src/contents/ui/BlocklistDialog.qml:141
 msgid "Are you sure you want to remove this application from the list?"
 msgstr "確定要從清單中移除該應用程式嗎？"
 
-#: src/contents/ui/BlocklistDialog.qml:170
+#: src/contents/ui/BlocklistDialog.qml:175
 msgid "Remove this app"
 msgstr "移除此應用程式"
 
-#: src/contents/ui/BlocklistDialog.qml:199
+#: src/contents/ui/BlocklistDialog.qml:204
 msgid "Use media name"
 msgstr "使用媒體工具名稱"
 
-#: src/contents/ui/BlocklistDialog.qml:200
+#: src/contents/ui/BlocklistDialog.qml:205
 msgid ""
 "Also use a combination of node and media name when deciding if a stream "
 "should be blocked"
 msgstr "也可以使用節點和媒體工具名稱的組合，當在決定是否某個串流應被阻斷"
 
-#: src/contents/ui/BlocklistDialog.qml:211
+#: src/contents/ui/BlocklistDialog.qml:216
 msgid "Show excluded apps"
 msgstr "顯示已經排除的應用程式"
 
-#: src/contents/ui/BlocklistDialog.qml:212
+#: src/contents/ui/BlocklistDialog.qml:217
 msgid "Show excluded applications in the list of players/recorders"
 msgstr "顯示已經排除的應用程式於播放器/錄音器的清單"
 
@@ -546,7 +546,7 @@ msgstr "外部"
 
 #: src/contents/ui/Compressor.qml:277 src/contents/ui/Expander.qml:237
 #: src/contents/ui/Gate.qml:255 src/contents/ui/Limiter.qml:227
-#: src/contents/ui/PageStreamsEffects.qml:466
+#: src/contents/ui/PageStreamsEffects.qml:479
 msgid "Input device"
 msgstr "輸入裝置"
 
@@ -856,7 +856,7 @@ msgid "Import impulse"
 msgstr "匯入脈衝"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:243
-#: src/contents/ui/MenuAddPlugins.qml:202 src/contents/ui/PresetsDialog.qml:125
+#: src/contents/ui/MenuAddPlugins.qml:202 src/contents/ui/PresetsDialog.qml:126
 msgctxt "@action:button"
 msgid "Close"
 msgstr "關閉"
@@ -987,7 +987,7 @@ msgstr "交叉饋送預設集"
 msgid "Default"
 msgstr "預設"
 
-#: src/contents/ui/Crossfeed.qml:167 src/contents/ui/PageStreamsEffects.qml:637
+#: src/contents/ui/Crossfeed.qml:167 src/contents/ui/PageStreamsEffects.qml:650
 #: src/contents/ui/PreferencesSheet.qml:62 src/contents/ui/Reverb.qml:335
 msgid "Presets"
 msgstr "預設集"
@@ -1305,7 +1305,7 @@ msgstr "音訊等級控制"
 msgid "Input and output gain controls with level meters"
 msgstr "使用等級量表的輸入和輸出增益控制"
 
-#: src/contents/ui/EeInputOutputGain.qml:131 src/contents/ui/Main.qml:383
+#: src/contents/ui/EeInputOutputGain.qml:131 src/contents/ui/Main.qml:387
 #: src/contents/ui/StereoTools.qml:59
 msgid "Input"
 msgstr "輸入"
@@ -1806,57 +1806,57 @@ msgstr "消波範圍"
 msgid "Clipping"
 msgstr "消波"
 
-#: src/contents/ui/Main.qml:303
+#: src/contents/ui/Main.qml:307
 msgid "Reset Settings?"
 msgstr "重置設定？"
 
-#: src/contents/ui/Main.qml:304
+#: src/contents/ui/Main.qml:308
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr "確定要重新設定全部 Easy Effects 設定嗎？"
 
-#: src/contents/ui/Main.qml:326 src/contents/ui/Main.qml:452
+#: src/contents/ui/Main.qml:330 src/contents/ui/Main.qml:457
 #: src/contents/ui/PipeWirePage.qml:34
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/contents/ui/Main.qml:334
+#: src/contents/ui/Main.qml:338
 msgid "Effects"
 msgstr "音效"
 
-#: src/contents/ui/Main.qml:335
+#: src/contents/ui/Main.qml:339
 msgid "Turn effects on/off"
 msgstr "將音效開啟/關閉"
 
-#: src/contents/ui/Main.qml:347
+#: src/contents/ui/Main.qml:351
 msgid "Audio effects are enabled."
 msgstr "音效處理已經啟用。"
 
-#: src/contents/ui/Main.qml:347
+#: src/contents/ui/Main.qml:351
 msgid "Audio effects are disabled."
 msgstr "音效處理已經停用。"
 
-#: src/contents/ui/Main.qml:399 src/contents/ui/PageStreamsEffects.qml:466
+#: src/contents/ui/Main.qml:403 src/contents/ui/PageStreamsEffects.qml:479
 msgid "Players"
 msgstr "播放器"
 
-#: src/contents/ui/Main.qml:414 src/contents/ui/PageStreamsEffects.qml:475
+#: src/contents/ui/Main.qml:418 src/contents/ui/PageStreamsEffects.qml:488
 msgid "Recorders"
 msgstr "錄音器"
 
-#: src/contents/ui/Main.qml:433
+#: src/contents/ui/Main.qml:437
 msgid "Preferences"
 msgstr "偏好設定"
 
-#: src/contents/ui/Main.qml:444 src/contents/ui/ShortcutsSheet.qml:418
+#: src/contents/ui/Main.qml:449 src/contents/ui/ShortcutsSheet.qml:418
 #: src/contents/ui/TrayIcon.qml:212
 msgid "Shortcuts"
 msgstr "快速鍵"
 
-#: src/contents/ui/Main.qml:484
+#: src/contents/ui/Main.qml:489
 msgid "About Easy Effects"
 msgstr "關於 Easy Effects"
 
-#: src/contents/ui/Main.qml:492 src/contents/ui/TrayIcon.qml:231
+#: src/contents/ui/Main.qml:497 src/contents/ui/TrayIcon.qml:231
 msgid "Quit"
 msgstr "退出"
 
@@ -1941,51 +1941,51 @@ msgstr "側鏈輸入裝置"
 msgid "Reaction"
 msgstr "反應作用"
 
-#: src/contents/ui/PageStreamsEffects.qml:116
+#: src/contents/ui/PageStreamsEffects.qml:128
 msgid "No audio application available"
 msgstr "沒有可用的音訊應用程式"
 
-#: src/contents/ui/PageStreamsEffects.qml:131
+#: src/contents/ui/PageStreamsEffects.qml:143
 msgid "No Effects"
 msgstr "無音效"
 
-#: src/contents/ui/PageStreamsEffects.qml:132
+#: src/contents/ui/PageStreamsEffects.qml:144
 msgid "Audio stream not modified"
 msgstr "音訊串流並未修改"
 
-#: src/contents/ui/PageStreamsEffects.qml:396
+#: src/contents/ui/PageStreamsEffects.qml:408
 msgid "Add effect"
 msgstr "添加音效"
 
-#: src/contents/ui/PageStreamsEffects.qml:409
+#: src/contents/ui/PageStreamsEffects.qml:422
 msgid "Close"
 msgstr "關閉"
 
-#: src/contents/ui/PageStreamsEffects.qml:413
+#: src/contents/ui/PageStreamsEffects.qml:426
 msgid "Expand the list of effects pipeline"
 msgstr "展開音效管道列表"
 
-#: src/contents/ui/PageStreamsEffects.qml:413
+#: src/contents/ui/PageStreamsEffects.qml:426
 msgid "Reduce the list of effects pipeline"
 msgstr "減少音效管道列表"
 
-#: src/contents/ui/PageStreamsEffects.qml:475
+#: src/contents/ui/PageStreamsEffects.qml:488
 msgid "Output device"
 msgstr "輸出裝置"
 
-#: src/contents/ui/PageStreamsEffects.qml:650
+#: src/contents/ui/PageStreamsEffects.qml:663
 msgid "Excluded apps"
 msgstr "已經排除的應用程式"
 
-#: src/contents/ui/PageStreamsEffects.qml:662
+#: src/contents/ui/PageStreamsEffects.qml:676
 msgid "Input monitoring"
 msgstr "輸入監控"
 
-#: src/contents/ui/PageStreamsEffects.qml:675
+#: src/contents/ui/PageStreamsEffects.qml:689
 msgid "Share audio"
 msgstr "分享音訊"
 
-#: src/contents/ui/PageStreamsEffects.qml:676
+#: src/contents/ui/PageStreamsEffects.qml:690
 msgid "Send the processed desktop audio to the virtual source"
 msgstr "傳送已經處理的桌面音訊至虛擬來源"
 
@@ -2602,23 +2602,23 @@ msgstr "已經匯入 %1 社群預設集至本地預設集列表中。"
 msgid "Failed to import the %1 community preset to the list of local presets."
 msgstr "匯入 %1 社區預設集至本地預設集列表失敗。"
 
-#: src/contents/ui/PresetsDialog.qml:98 src/contents/ui/PresetsDialog.qml:155
+#: src/contents/ui/PresetsDialog.qml:99 src/contents/ui/PresetsDialog.qml:156
 msgid "Local"
 msgstr "本地"
 
-#: src/contents/ui/PresetsDialog.qml:106 src/contents/ui/PresetsDialog.qml:155
+#: src/contents/ui/PresetsDialog.qml:107 src/contents/ui/PresetsDialog.qml:156
 msgid "Community"
 msgstr "社群"
 
-#: src/contents/ui/PresetsDialog.qml:114
+#: src/contents/ui/PresetsDialog.qml:115
 msgid "Autoload"
 msgstr "自動載入"
 
-#: src/contents/ui/PresetsDialog.qml:153
+#: src/contents/ui/PresetsDialog.qml:154
 msgid "No preset loaded"
 msgstr "無預設集載入"
 
-#: src/contents/ui/PresetsDialog.qml:173
+#: src/contents/ui/PresetsDialog.qml:174
 msgid "Fallback Preset"
 msgstr "退回備用預設集"
 
@@ -3060,29 +3060,29 @@ msgstr "最大瞬時頻率"
 msgid "Inverted mode"
 msgstr "反向模式"
 
-#: src/main.cpp:360
+#: src/main.cpp:370
 msgid "Global audio effects"
 msgstr "整體音效處理"
 
-#: src/main.cpp:361
+#: src/main.cpp:371
 msgid "© 2017-2026 Easy Effects Team"
 msgstr "© 2017-2026 Easy Effects 團隊"
 
-#: src/main.cpp:363
+#: src/main.cpp:373
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:363
+#: src/main.cpp:373
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "開發人員"
 
-#: src/main.cpp:367
+#: src/main.cpp:377
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "BigELK176 ≡"
 
-#: src/main.cpp:367
+#: src/main.cpp:377
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "．略．"

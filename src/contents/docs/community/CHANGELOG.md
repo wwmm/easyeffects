@@ -1,5 +1,22 @@
 # Changelog
  
+## 8.2.3
+### 2026-05-23
+
+ 
+### Features:
+- When the microphone is mono we link its port to both the left and right channel ports. It is not the bestway to create stereo from mono. But it should be ok in almost all situations.
+- An "Apply Preset" entry was added to the preset entries in our preset dialog.
+- The last loaded preset is highlighted in the presets dialog list.
+- The location of a few main window controls has been changed.
+
+### Bug fixes:
+- The mirophone pipeline was not being relinked after output device changes. This is necessary so that the echo canceller gets uses the correct output device when linking its probes.
+- Emit pipelineChanged also when the global bypass is enabled. This makes sure the plugins list displayed in our main window is updated in this situation.
+
+### Other notes:
+
+ 
 ## 8.2.2
 ### 2026-05-09
 

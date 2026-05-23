@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-05-17 13:10-0300\n"
+"POT-Creation-Date: 2026-05-22 22:13-0300\n"
 "PO-Revision-Date: 2025-07-20 18:38+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Danish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -282,7 +282,7 @@ msgstr "Tilstand"
 msgid "Auto"
 msgstr "Forindstil Autolæsning"
 
-#: src/contents/ui/Autotune.qml:111 src/contents/ui/Main.qml:460
+#: src/contents/ui/Autotune.qml:111 src/contents/ui/Main.qml:465
 #: src/contents/ui/TrayIcon.qml:221
 #, fuzzy
 msgid "Manual"
@@ -407,7 +407,7 @@ msgstr "Lyt"
 #: src/contents/ui/Exciter.qml:252 src/contents/ui/Expander.qml:875
 #: src/contents/ui/Filter.qml:252 src/contents/ui/Gate.qml:1004
 #: src/contents/ui/Limiter.qml:659 src/contents/ui/Loudness.qml:217
-#: src/contents/ui/Main.qml:472 src/contents/ui/Maximizer.qml:154
+#: src/contents/ui/Main.qml:477 src/contents/ui/Maximizer.qml:154
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:358
 #: src/contents/ui/RNNoise.qml:345 src/contents/ui/Speex.qml:195
@@ -417,7 +417,7 @@ msgstr "Nustil"
 
 #: src/contents/ui/BassLoudness.qml:83 src/contents/ui/Compressor.qml:478
 #: src/contents/ui/EeInputOutputGain.qml:144 src/contents/ui/Expander.qml:438
-#: src/contents/ui/Gate.qml:453 src/contents/ui/Main.qml:368
+#: src/contents/ui/Gate.qml:453 src/contents/ui/Main.qml:372
 #: src/contents/ui/StereoTools.qml:268
 msgid "Output"
 msgstr "Udgang"
@@ -444,10 +444,10 @@ msgstr "Applikationvolume"
 msgid "Add to excluded applications"
 msgstr "Liste over Blokerede Applikationer"
 
-#: src/contents/ui/BlocklistDialog.qml:114
+#: src/contents/ui/BlocklistDialog.qml:116
 #: src/contents/ui/ConvolverImpulseDialog.qml:89
 #: src/contents/ui/MenuAddPlugins.qml:54
-#: src/contents/ui/PageStreamsEffects.qml:115
+#: src/contents/ui/PageStreamsEffects.qml:127
 #: src/contents/ui/PresetsAutoloadPage.qml:176
 #: src/contents/ui/PresetsCommunityPage.qml:104
 #: src/contents/ui/PresetsLocalPage.qml:193 src/contents/ui/RNNoise.qml:228
@@ -455,41 +455,41 @@ msgstr "Liste over Blokerede Applikationer"
 msgid "Empty List"
 msgstr "Tomme Vægge"
 
-#: src/contents/ui/BlocklistDialog.qml:115
+#: src/contents/ui/BlocklistDialog.qml:117
 #, fuzzy
 msgid "No application excluded"
 msgstr "Applikationvolume"
 
-#: src/contents/ui/BlocklistDialog.qml:138
+#: src/contents/ui/BlocklistDialog.qml:140
 #, fuzzy
 msgid "Remove Application"
 msgstr "Stum applikation"
 
-#: src/contents/ui/BlocklistDialog.qml:139
+#: src/contents/ui/BlocklistDialog.qml:141
 msgid "Are you sure you want to remove this application from the list?"
 msgstr ""
 
-#: src/contents/ui/BlocklistDialog.qml:170
+#: src/contents/ui/BlocklistDialog.qml:175
 #, fuzzy
 msgid "Remove this app"
 msgstr "Fjern denne modelfil"
 
-#: src/contents/ui/BlocklistDialog.qml:199
+#: src/contents/ui/BlocklistDialog.qml:204
 msgid "Use media name"
 msgstr ""
 
-#: src/contents/ui/BlocklistDialog.qml:200
+#: src/contents/ui/BlocklistDialog.qml:205
 msgid ""
 "Also use a combination of node and media name when deciding if a stream "
 "should be blocked"
 msgstr ""
 
-#: src/contents/ui/BlocklistDialog.qml:211
+#: src/contents/ui/BlocklistDialog.qml:216
 #, fuzzy
 msgid "Show excluded apps"
 msgstr "Liste over Blokerede Applikationer"
 
-#: src/contents/ui/BlocklistDialog.qml:212
+#: src/contents/ui/BlocklistDialog.qml:217
 #, fuzzy
 msgid "Show excluded applications in the list of players/recorders"
 msgstr "Liste over Blokerede Applikationer"
@@ -592,7 +592,7 @@ msgstr "Ekstern"
 
 #: src/contents/ui/Compressor.qml:277 src/contents/ui/Expander.qml:237
 #: src/contents/ui/Gate.qml:255 src/contents/ui/Limiter.qml:227
-#: src/contents/ui/PageStreamsEffects.qml:466
+#: src/contents/ui/PageStreamsEffects.qml:479
 #, fuzzy
 msgid "Input device"
 msgstr "Input-enhed"
@@ -930,7 +930,7 @@ msgid "Import impulse"
 msgstr "Import Impulser"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:243
-#: src/contents/ui/MenuAddPlugins.qml:202 src/contents/ui/PresetsDialog.qml:125
+#: src/contents/ui/MenuAddPlugins.qml:202 src/contents/ui/PresetsDialog.qml:126
 msgctxt "@action:button"
 msgid "Close"
 msgstr ""
@@ -1069,7 +1069,7 @@ msgstr ""
 msgid "Default"
 msgstr "Standard"
 
-#: src/contents/ui/Crossfeed.qml:167 src/contents/ui/PageStreamsEffects.qml:637
+#: src/contents/ui/Crossfeed.qml:167 src/contents/ui/PageStreamsEffects.qml:650
 #: src/contents/ui/PreferencesSheet.qml:62 src/contents/ui/Reverb.qml:335
 msgid "Presets"
 msgstr "Forindstillinger"
@@ -1421,7 +1421,7 @@ msgstr ""
 msgid "Input and output gain controls with level meters"
 msgstr ""
 
-#: src/contents/ui/EeInputOutputGain.qml:131 src/contents/ui/Main.qml:383
+#: src/contents/ui/EeInputOutputGain.qml:131 src/contents/ui/Main.qml:387
 #: src/contents/ui/StereoTools.qml:59
 msgid "Input"
 msgstr "Indgang"
@@ -2001,62 +2001,62 @@ msgstr ""
 msgid "Clipping"
 msgstr ""
 
-#: src/contents/ui/Main.qml:303
+#: src/contents/ui/Main.qml:307
 #, fuzzy
 msgid "Reset Settings?"
 msgstr "_Nulstil Indstillinger"
 
-#: src/contents/ui/Main.qml:304
+#: src/contents/ui/Main.qml:308
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr ""
 
-#: src/contents/ui/Main.qml:326 src/contents/ui/Main.qml:452
+#: src/contents/ui/Main.qml:330 src/contents/ui/Main.qml:457
 #: src/contents/ui/PipeWirePage.qml:34
 #, fuzzy
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/contents/ui/Main.qml:334
+#: src/contents/ui/Main.qml:338
 #, fuzzy
 msgid "Effects"
 msgstr "Easyeffects"
 
-#: src/contents/ui/Main.qml:335
+#: src/contents/ui/Main.qml:339
 msgid "Turn effects on/off"
 msgstr ""
 
-#: src/contents/ui/Main.qml:347
+#: src/contents/ui/Main.qml:351
 msgid "Audio effects are enabled."
 msgstr ""
 
-#: src/contents/ui/Main.qml:347
+#: src/contents/ui/Main.qml:351
 msgid "Audio effects are disabled."
 msgstr ""
 
-#: src/contents/ui/Main.qml:399 src/contents/ui/PageStreamsEffects.qml:466
+#: src/contents/ui/Main.qml:403 src/contents/ui/PageStreamsEffects.qml:479
 msgid "Players"
 msgstr "Spillere"
 
-#: src/contents/ui/Main.qml:414 src/contents/ui/PageStreamsEffects.qml:475
+#: src/contents/ui/Main.qml:418 src/contents/ui/PageStreamsEffects.qml:488
 msgid "Recorders"
 msgstr "Optagere"
 
-#: src/contents/ui/Main.qml:433
+#: src/contents/ui/Main.qml:437
 #, fuzzy
 msgid "Preferences"
 msgstr "_Præferencer"
 
-#: src/contents/ui/Main.qml:444 src/contents/ui/ShortcutsSheet.qml:418
+#: src/contents/ui/Main.qml:449 src/contents/ui/ShortcutsSheet.qml:418
 #: src/contents/ui/TrayIcon.qml:212
 msgid "Shortcuts"
 msgstr ""
 
-#: src/contents/ui/Main.qml:484
+#: src/contents/ui/Main.qml:489
 #, fuzzy
 msgid "About Easy Effects"
 msgstr "_Om EasyEffects"
 
-#: src/contents/ui/Main.qml:492 src/contents/ui/TrayIcon.qml:231
+#: src/contents/ui/Main.qml:497 src/contents/ui/TrayIcon.qml:231
 msgid "Quit"
 msgstr ""
 
@@ -2150,57 +2150,57 @@ msgstr "Input-enhed"
 msgid "Reaction"
 msgstr "Reduktion"
 
-#: src/contents/ui/PageStreamsEffects.qml:116
+#: src/contents/ui/PageStreamsEffects.qml:128
 #, fuzzy
 msgid "No audio application available"
 msgstr "Applikationvolume"
 
-#: src/contents/ui/PageStreamsEffects.qml:131
+#: src/contents/ui/PageStreamsEffects.qml:143
 #, fuzzy
 msgid "No Effects"
 msgstr "Easyeffects"
 
-#: src/contents/ui/PageStreamsEffects.qml:132
+#: src/contents/ui/PageStreamsEffects.qml:144
 msgid "Audio stream not modified"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:396
+#: src/contents/ui/PageStreamsEffects.qml:408
 #, fuzzy
 msgid "Add effect"
 msgstr "Easyeffects"
 
-#: src/contents/ui/PageStreamsEffects.qml:409
+#: src/contents/ui/PageStreamsEffects.qml:422
 msgid "Close"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:413
+#: src/contents/ui/PageStreamsEffects.qml:426
 msgid "Expand the list of effects pipeline"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:413
+#: src/contents/ui/PageStreamsEffects.qml:426
 msgid "Reduce the list of effects pipeline"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:475
+#: src/contents/ui/PageStreamsEffects.qml:488
 #, fuzzy
 msgid "Output device"
 msgstr "Udgangsenhed"
 
-#: src/contents/ui/PageStreamsEffects.qml:650
+#: src/contents/ui/PageStreamsEffects.qml:663
 #, fuzzy
 msgid "Excluded apps"
 msgstr "Liste over Blokerede Applikationer"
 
-#: src/contents/ui/PageStreamsEffects.qml:662
+#: src/contents/ui/PageStreamsEffects.qml:676
 #, fuzzy
 msgid "Input monitoring"
 msgstr "Input-enhed"
 
-#: src/contents/ui/PageStreamsEffects.qml:675
+#: src/contents/ui/PageStreamsEffects.qml:689
 msgid "Share audio"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:676
+#: src/contents/ui/PageStreamsEffects.qml:690
 msgid "Send the processed desktop audio to the virtual source"
 msgstr ""
 
@@ -2852,25 +2852,25 @@ msgstr "Søg Udgangeforindstillinger"
 msgid "Failed to import the %1 community preset to the list of local presets."
 msgstr "Søg Udgangeforindstillinger"
 
-#: src/contents/ui/PresetsDialog.qml:98 src/contents/ui/PresetsDialog.qml:155
+#: src/contents/ui/PresetsDialog.qml:99 src/contents/ui/PresetsDialog.qml:156
 msgid "Local"
 msgstr ""
 
-#: src/contents/ui/PresetsDialog.qml:106 src/contents/ui/PresetsDialog.qml:155
+#: src/contents/ui/PresetsDialog.qml:107 src/contents/ui/PresetsDialog.qml:156
 msgid "Community"
 msgstr ""
 
-#: src/contents/ui/PresetsDialog.qml:114
+#: src/contents/ui/PresetsDialog.qml:115
 #, fuzzy
 msgid "Autoload"
 msgstr "Forindstil Autolæsning"
 
-#: src/contents/ui/PresetsDialog.qml:153
+#: src/contents/ui/PresetsDialog.qml:154
 #, fuzzy
 msgid "No preset loaded"
 msgstr "Ny Indgangsforindstillingsnavn"
 
-#: src/contents/ui/PresetsDialog.qml:173
+#: src/contents/ui/PresetsDialog.qml:174
 msgid "Fallback Preset"
 msgstr ""
 
@@ -3387,31 +3387,31 @@ msgstr "Maksimum"
 msgid "Inverted mode"
 msgstr "Inverter Fase"
 
-#: src/main.cpp:360
+#: src/main.cpp:370
 msgid "Global audio effects"
 msgstr ""
 
-#: src/main.cpp:361
+#: src/main.cpp:371
 msgid "© 2017-2026 Easy Effects Team"
 msgstr ""
 
-#: src/main.cpp:363
+#: src/main.cpp:373
 #, fuzzy
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:363
+#: src/main.cpp:373
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Konvolut"
 
-#: src/main.cpp:367
+#: src/main.cpp:377
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 
-#: src/main.cpp:367
+#: src/main.cpp:377
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""

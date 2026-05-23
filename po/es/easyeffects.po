@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-05-17 13:10-0300\n"
+"POT-Creation-Date: 2026-05-22 22:13-0300\n"
 "PO-Revision-Date: 2026-04-24 07:09+0000\n"
 "Last-Translator: Lito Parra <lito.15@proton.me>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -263,7 +263,7 @@ msgstr "Modo"
 msgid "Auto"
 msgstr "Ganancia automática"
 
-#: src/contents/ui/Autotune.qml:111 src/contents/ui/Main.qml:460
+#: src/contents/ui/Autotune.qml:111 src/contents/ui/Main.qml:465
 #: src/contents/ui/TrayIcon.qml:221
 msgid "Manual"
 msgstr "Manual"
@@ -383,7 +383,7 @@ msgstr "Escuchar"
 #: src/contents/ui/Exciter.qml:252 src/contents/ui/Expander.qml:875
 #: src/contents/ui/Filter.qml:252 src/contents/ui/Gate.qml:1004
 #: src/contents/ui/Limiter.qml:659 src/contents/ui/Loudness.qml:217
-#: src/contents/ui/Main.qml:472 src/contents/ui/Maximizer.qml:154
+#: src/contents/ui/Main.qml:477 src/contents/ui/Maximizer.qml:154
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:358
 #: src/contents/ui/RNNoise.qml:345 src/contents/ui/Speex.qml:195
@@ -393,7 +393,7 @@ msgstr "Restablecer"
 
 #: src/contents/ui/BassLoudness.qml:83 src/contents/ui/Compressor.qml:478
 #: src/contents/ui/EeInputOutputGain.qml:144 src/contents/ui/Expander.qml:438
-#: src/contents/ui/Gate.qml:453 src/contents/ui/Main.qml:368
+#: src/contents/ui/Gate.qml:453 src/contents/ui/Main.qml:372
 #: src/contents/ui/StereoTools.qml:268
 msgid "Output"
 msgstr "Salida"
@@ -417,37 +417,37 @@ msgstr "Nombre del flujo de audio de la aplicación"
 msgid "Add to excluded applications"
 msgstr "Añadir a las aplicaciones excluidas"
 
-#: src/contents/ui/BlocklistDialog.qml:114
+#: src/contents/ui/BlocklistDialog.qml:116
 #: src/contents/ui/ConvolverImpulseDialog.qml:89
 #: src/contents/ui/MenuAddPlugins.qml:54
-#: src/contents/ui/PageStreamsEffects.qml:115
+#: src/contents/ui/PageStreamsEffects.qml:127
 #: src/contents/ui/PresetsAutoloadPage.qml:176
 #: src/contents/ui/PresetsCommunityPage.qml:104
 #: src/contents/ui/PresetsLocalPage.qml:193 src/contents/ui/RNNoise.qml:228
 msgid "Empty List"
 msgstr "Lista vacía"
 
-#: src/contents/ui/BlocklistDialog.qml:115
+#: src/contents/ui/BlocklistDialog.qml:117
 msgid "No application excluded"
 msgstr "No hay aplicaciones excluidas"
 
-#: src/contents/ui/BlocklistDialog.qml:138
+#: src/contents/ui/BlocklistDialog.qml:140
 msgid "Remove Application"
 msgstr "Quitar aplicación"
 
-#: src/contents/ui/BlocklistDialog.qml:139
+#: src/contents/ui/BlocklistDialog.qml:141
 msgid "Are you sure you want to remove this application from the list?"
 msgstr "¿Estás seguro de que quieres quitar esta aplicación de la lista?"
 
-#: src/contents/ui/BlocklistDialog.qml:170
+#: src/contents/ui/BlocklistDialog.qml:175
 msgid "Remove this app"
 msgstr "Eliminar esta aplicación"
 
-#: src/contents/ui/BlocklistDialog.qml:199
+#: src/contents/ui/BlocklistDialog.qml:204
 msgid "Use media name"
 msgstr "Usar nombre del medio"
 
-#: src/contents/ui/BlocklistDialog.qml:200
+#: src/contents/ui/BlocklistDialog.qml:205
 msgid ""
 "Also use a combination of node and media name when deciding if a stream "
 "should be blocked"
@@ -455,11 +455,11 @@ msgstr ""
 "También utilizar una combinación del nombre de la fuente y del medio para "
 "decidir si un flujo de audio debe ser bloqueado"
 
-#: src/contents/ui/BlocklistDialog.qml:211
+#: src/contents/ui/BlocklistDialog.qml:216
 msgid "Show excluded apps"
 msgstr "Mostrar aplicaciones excluidas"
 
-#: src/contents/ui/BlocklistDialog.qml:212
+#: src/contents/ui/BlocklistDialog.qml:217
 msgid "Show excluded applications in the list of players/recorders"
 msgstr "Mostrar aplicaciones excluidas en la lista de reproductores/grabadores"
 
@@ -557,7 +557,7 @@ msgstr "Externa"
 
 #: src/contents/ui/Compressor.qml:277 src/contents/ui/Expander.qml:237
 #: src/contents/ui/Gate.qml:255 src/contents/ui/Limiter.qml:227
-#: src/contents/ui/PageStreamsEffects.qml:466
+#: src/contents/ui/PageStreamsEffects.qml:479
 msgid "Input device"
 msgstr "Dispositivo de entrada"
 
@@ -868,7 +868,7 @@ msgid "Import impulse"
 msgstr "Importar impulso"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:243
-#: src/contents/ui/MenuAddPlugins.qml:202 src/contents/ui/PresetsDialog.qml:125
+#: src/contents/ui/MenuAddPlugins.qml:202 src/contents/ui/PresetsDialog.qml:126
 msgctxt "@action:button"
 msgid "Close"
 msgstr "Cerrar"
@@ -1001,7 +1001,7 @@ msgstr "Perfiles de mezcla cruzada"
 msgid "Default"
 msgstr "Predeterminado"
 
-#: src/contents/ui/Crossfeed.qml:167 src/contents/ui/PageStreamsEffects.qml:637
+#: src/contents/ui/Crossfeed.qml:167 src/contents/ui/PageStreamsEffects.qml:650
 #: src/contents/ui/PreferencesSheet.qml:62 src/contents/ui/Reverb.qml:335
 msgid "Presets"
 msgstr "Perfiles"
@@ -1321,7 +1321,7 @@ msgstr "Control de niveles de audio"
 msgid "Input and output gain controls with level meters"
 msgstr "Controles de ganancia de entrada y salida con medidores de nivel"
 
-#: src/contents/ui/EeInputOutputGain.qml:131 src/contents/ui/Main.qml:383
+#: src/contents/ui/EeInputOutputGain.qml:131 src/contents/ui/Main.qml:387
 #: src/contents/ui/StereoTools.qml:59
 msgid "Input"
 msgstr "Entrada"
@@ -1830,58 +1830,58 @@ msgstr "Rango de corte"
 msgid "Clipping"
 msgstr "Recorte"
 
-#: src/contents/ui/Main.qml:303
+#: src/contents/ui/Main.qml:307
 msgid "Reset Settings?"
 msgstr "¿Restablecer ajustes?"
 
-#: src/contents/ui/Main.qml:304
+#: src/contents/ui/Main.qml:308
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr ""
 "¿Estás seguro de que quieres restablecer todos los ajustes de Easy Effects?"
 
-#: src/contents/ui/Main.qml:326 src/contents/ui/Main.qml:452
+#: src/contents/ui/Main.qml:330 src/contents/ui/Main.qml:457
 #: src/contents/ui/PipeWirePage.qml:34
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/contents/ui/Main.qml:334
+#: src/contents/ui/Main.qml:338
 msgid "Effects"
 msgstr "Efectos"
 
-#: src/contents/ui/Main.qml:335
+#: src/contents/ui/Main.qml:339
 msgid "Turn effects on/off"
 msgstr "Apagar/encender efectos"
 
-#: src/contents/ui/Main.qml:347
+#: src/contents/ui/Main.qml:351
 msgid "Audio effects are enabled."
 msgstr "Los efectos de audio están activados."
 
-#: src/contents/ui/Main.qml:347
+#: src/contents/ui/Main.qml:351
 msgid "Audio effects are disabled."
 msgstr "Los efectos de audio están desactivados."
 
-#: src/contents/ui/Main.qml:399 src/contents/ui/PageStreamsEffects.qml:466
+#: src/contents/ui/Main.qml:403 src/contents/ui/PageStreamsEffects.qml:479
 msgid "Players"
 msgstr "Reproductores"
 
-#: src/contents/ui/Main.qml:414 src/contents/ui/PageStreamsEffects.qml:475
+#: src/contents/ui/Main.qml:418 src/contents/ui/PageStreamsEffects.qml:488
 msgid "Recorders"
 msgstr "Grabadores"
 
-#: src/contents/ui/Main.qml:433
+#: src/contents/ui/Main.qml:437
 msgid "Preferences"
 msgstr "Preferencias"
 
-#: src/contents/ui/Main.qml:444 src/contents/ui/ShortcutsSheet.qml:418
+#: src/contents/ui/Main.qml:449 src/contents/ui/ShortcutsSheet.qml:418
 #: src/contents/ui/TrayIcon.qml:212
 msgid "Shortcuts"
 msgstr "Atajos"
 
-#: src/contents/ui/Main.qml:484
+#: src/contents/ui/Main.qml:489
 msgid "About Easy Effects"
 msgstr "Acerca de Easy Effects"
 
-#: src/contents/ui/Main.qml:492 src/contents/ui/TrayIcon.qml:231
+#: src/contents/ui/Main.qml:497 src/contents/ui/TrayIcon.qml:231
 msgid "Quit"
 msgstr "Salir"
 
@@ -1966,51 +1966,51 @@ msgstr "Entrada sidechain"
 msgid "Reaction"
 msgstr "Reacción"
 
-#: src/contents/ui/PageStreamsEffects.qml:116
+#: src/contents/ui/PageStreamsEffects.qml:128
 msgid "No audio application available"
 msgstr "No hay ninguna aplicación en uso"
 
-#: src/contents/ui/PageStreamsEffects.qml:131
+#: src/contents/ui/PageStreamsEffects.qml:143
 msgid "No Effects"
 msgstr "Sin efectos"
 
-#: src/contents/ui/PageStreamsEffects.qml:132
+#: src/contents/ui/PageStreamsEffects.qml:144
 msgid "Audio stream not modified"
 msgstr "El flujo de audio no tiene modificaciones"
 
-#: src/contents/ui/PageStreamsEffects.qml:396
+#: src/contents/ui/PageStreamsEffects.qml:408
 msgid "Add effect"
 msgstr "Agregar efecto"
 
-#: src/contents/ui/PageStreamsEffects.qml:409
+#: src/contents/ui/PageStreamsEffects.qml:422
 msgid "Close"
 msgstr "Cerrar"
 
-#: src/contents/ui/PageStreamsEffects.qml:413
+#: src/contents/ui/PageStreamsEffects.qml:426
 msgid "Expand the list of effects pipeline"
 msgstr "Expandir la lista de la cadena de efectos"
 
-#: src/contents/ui/PageStreamsEffects.qml:413
+#: src/contents/ui/PageStreamsEffects.qml:426
 msgid "Reduce the list of effects pipeline"
 msgstr "Colapsar la lista de la cadena de efectos"
 
-#: src/contents/ui/PageStreamsEffects.qml:475
+#: src/contents/ui/PageStreamsEffects.qml:488
 msgid "Output device"
 msgstr "Dispositivo de salida"
 
-#: src/contents/ui/PageStreamsEffects.qml:650
+#: src/contents/ui/PageStreamsEffects.qml:663
 msgid "Excluded apps"
 msgstr "Aplicaciones excluidas"
 
-#: src/contents/ui/PageStreamsEffects.qml:662
+#: src/contents/ui/PageStreamsEffects.qml:676
 msgid "Input monitoring"
 msgstr "Monitorización de entradas"
 
-#: src/contents/ui/PageStreamsEffects.qml:675
+#: src/contents/ui/PageStreamsEffects.qml:689
 msgid "Share audio"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:676
+#: src/contents/ui/PageStreamsEffects.qml:690
 #, fuzzy
 msgid "Send the processed desktop audio to the virtual source"
 msgstr "Enviar audio a la fuente virtual"
@@ -2650,23 +2650,23 @@ msgstr ""
 "No se pudo importar el perfil de la comunidad %1 a la lista de perfiles "
 "locales."
 
-#: src/contents/ui/PresetsDialog.qml:98 src/contents/ui/PresetsDialog.qml:155
+#: src/contents/ui/PresetsDialog.qml:99 src/contents/ui/PresetsDialog.qml:156
 msgid "Local"
 msgstr "Local"
 
-#: src/contents/ui/PresetsDialog.qml:106 src/contents/ui/PresetsDialog.qml:155
+#: src/contents/ui/PresetsDialog.qml:107 src/contents/ui/PresetsDialog.qml:156
 msgid "Community"
 msgstr "Comunidad"
 
-#: src/contents/ui/PresetsDialog.qml:114
+#: src/contents/ui/PresetsDialog.qml:115
 msgid "Autoload"
 msgstr "Carga automática"
 
-#: src/contents/ui/PresetsDialog.qml:153
+#: src/contents/ui/PresetsDialog.qml:154
 msgid "No preset loaded"
 msgstr "No hay ningún perfil cargado"
 
-#: src/contents/ui/PresetsDialog.qml:173
+#: src/contents/ui/PresetsDialog.qml:174
 msgid "Fallback Preset"
 msgstr "Perfil de respaldo"
 
@@ -3110,29 +3110,29 @@ msgstr "Frecuencia instantánea máxima"
 msgid "Inverted mode"
 msgstr "Modo invertido"
 
-#: src/main.cpp:360
+#: src/main.cpp:370
 msgid "Global audio effects"
 msgstr "Efectos de audio globales"
 
-#: src/main.cpp:361
+#: src/main.cpp:371
 msgid "© 2017-2026 Easy Effects Team"
 msgstr "© 2017-2026 Equipo de Easy Effects"
 
-#: src/main.cpp:363
+#: src/main.cpp:373
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:363
+#: src/main.cpp:373
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Desarrollador"
 
-#: src/main.cpp:367
+#: src/main.cpp:377
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Sus nombres"
 
-#: src/main.cpp:367
+#: src/main.cpp:377
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "Sus correos"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-05-17 13:10-0300\n"
+"POT-Creation-Date: 2026-05-22 22:13-0300\n"
 "PO-Revision-Date: 2025-09-23 14:01+0000\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -279,7 +279,7 @@ msgstr "حالت"
 msgid "Auto"
 msgstr "افزایش خودکار"
 
-#: src/contents/ui/Autotune.qml:111 src/contents/ui/Main.qml:460
+#: src/contents/ui/Autotune.qml:111 src/contents/ui/Main.qml:465
 #: src/contents/ui/TrayIcon.qml:221
 msgid "Manual"
 msgstr ""
@@ -401,7 +401,7 @@ msgstr "گوش کن"
 #: src/contents/ui/Exciter.qml:252 src/contents/ui/Expander.qml:875
 #: src/contents/ui/Filter.qml:252 src/contents/ui/Gate.qml:1004
 #: src/contents/ui/Limiter.qml:659 src/contents/ui/Loudness.qml:217
-#: src/contents/ui/Main.qml:472 src/contents/ui/Maximizer.qml:154
+#: src/contents/ui/Main.qml:477 src/contents/ui/Maximizer.qml:154
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:358
 #: src/contents/ui/RNNoise.qml:345 src/contents/ui/Speex.qml:195
@@ -411,7 +411,7 @@ msgstr "بازنشانی"
 
 #: src/contents/ui/BassLoudness.qml:83 src/contents/ui/Compressor.qml:478
 #: src/contents/ui/EeInputOutputGain.qml:144 src/contents/ui/Expander.qml:438
-#: src/contents/ui/Gate.qml:453 src/contents/ui/Main.qml:368
+#: src/contents/ui/Gate.qml:453 src/contents/ui/Main.qml:372
 #: src/contents/ui/StereoTools.qml:268
 msgid "Output"
 msgstr "خروجی"
@@ -438,51 +438,51 @@ msgstr "نام برنامه"
 msgid "Add to excluded applications"
 msgstr "به برنامه‌های حذف‌شده اضافه کنید"
 
-#: src/contents/ui/BlocklistDialog.qml:114
+#: src/contents/ui/BlocklistDialog.qml:116
 #: src/contents/ui/ConvolverImpulseDialog.qml:89
 #: src/contents/ui/MenuAddPlugins.qml:54
-#: src/contents/ui/PageStreamsEffects.qml:115
+#: src/contents/ui/PageStreamsEffects.qml:127
 #: src/contents/ui/PresetsAutoloadPage.qml:176
 #: src/contents/ui/PresetsCommunityPage.qml:104
 #: src/contents/ui/PresetsLocalPage.qml:193 src/contents/ui/RNNoise.qml:228
 msgid "Empty List"
 msgstr "لیست خالی"
 
-#: src/contents/ui/BlocklistDialog.qml:115
+#: src/contents/ui/BlocklistDialog.qml:117
 #, fuzzy
 msgid "No application excluded"
 msgstr "حجم صدای برنامه"
 
-#: src/contents/ui/BlocklistDialog.qml:138
+#: src/contents/ui/BlocklistDialog.qml:140
 #, fuzzy
 msgid "Remove Application"
 msgstr "بی صدا کردن برنامه"
 
-#: src/contents/ui/BlocklistDialog.qml:139
+#: src/contents/ui/BlocklistDialog.qml:141
 msgid "Are you sure you want to remove this application from the list?"
 msgstr ""
 
-#: src/contents/ui/BlocklistDialog.qml:170
+#: src/contents/ui/BlocklistDialog.qml:175
 #, fuzzy
 msgid "Remove this app"
 msgstr "حذف این افکت"
 
-#: src/contents/ui/BlocklistDialog.qml:199
+#: src/contents/ui/BlocklistDialog.qml:204
 msgid "Use media name"
 msgstr ""
 
-#: src/contents/ui/BlocklistDialog.qml:200
+#: src/contents/ui/BlocklistDialog.qml:205
 msgid ""
 "Also use a combination of node and media name when deciding if a stream "
 "should be blocked"
 msgstr ""
 
-#: src/contents/ui/BlocklistDialog.qml:211
+#: src/contents/ui/BlocklistDialog.qml:216
 #, fuzzy
 msgid "Show excluded apps"
 msgstr "برنامه های مستثنی شده"
 
-#: src/contents/ui/BlocklistDialog.qml:212
+#: src/contents/ui/BlocklistDialog.qml:217
 #, fuzzy
 msgid "Show excluded applications in the list of players/recorders"
 msgstr "نمایش برنامه‌های مستثنی‌شده"
@@ -584,7 +584,7 @@ msgstr "خارجی"
 
 #: src/contents/ui/Compressor.qml:277 src/contents/ui/Expander.qml:237
 #: src/contents/ui/Gate.qml:255 src/contents/ui/Limiter.qml:227
-#: src/contents/ui/PageStreamsEffects.qml:466
+#: src/contents/ui/PageStreamsEffects.qml:479
 #, fuzzy
 msgid "Input device"
 msgstr "دستگاه ورودی"
@@ -917,7 +917,7 @@ msgid "Import impulse"
 msgstr "وارد کردن ایمپالس"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:243
-#: src/contents/ui/MenuAddPlugins.qml:202 src/contents/ui/PresetsDialog.qml:125
+#: src/contents/ui/MenuAddPlugins.qml:202 src/contents/ui/PresetsDialog.qml:126
 msgctxt "@action:button"
 msgid "Close"
 msgstr ""
@@ -1057,7 +1057,7 @@ msgstr "کراس‌فید"
 msgid "Default"
 msgstr "پیش فرض"
 
-#: src/contents/ui/Crossfeed.qml:167 src/contents/ui/PageStreamsEffects.qml:637
+#: src/contents/ui/Crossfeed.qml:167 src/contents/ui/PageStreamsEffects.qml:650
 #: src/contents/ui/PreferencesSheet.qml:62 src/contents/ui/Reverb.qml:335
 msgid "Presets"
 msgstr "تنظیمات از پیش تعیین شده"
@@ -1412,7 +1412,7 @@ msgstr ""
 msgid "Input and output gain controls with level meters"
 msgstr ""
 
-#: src/contents/ui/EeInputOutputGain.qml:131 src/contents/ui/Main.qml:383
+#: src/contents/ui/EeInputOutputGain.qml:131 src/contents/ui/Main.qml:387
 #: src/contents/ui/StereoTools.qml:59
 msgid "Input"
 msgstr "ورودی"
@@ -1988,61 +1988,61 @@ msgstr "بریدن"
 msgid "Clipping"
 msgstr "بریدن"
 
-#: src/contents/ui/Main.qml:303
+#: src/contents/ui/Main.qml:307
 #, fuzzy
 msgid "Reset Settings?"
 msgstr "_بازنشانی تنظیمات"
 
-#: src/contents/ui/Main.qml:304
+#: src/contents/ui/Main.qml:308
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr ""
 
-#: src/contents/ui/Main.qml:326 src/contents/ui/Main.qml:452
+#: src/contents/ui/Main.qml:330 src/contents/ui/Main.qml:457
 #: src/contents/ui/PipeWirePage.qml:34
 msgid "PipeWire"
 msgstr "پایپ‌وایر"
 
-#: src/contents/ui/Main.qml:334
+#: src/contents/ui/Main.qml:338
 msgid "Effects"
 msgstr "جلوه ها"
 
-#: src/contents/ui/Main.qml:335
+#: src/contents/ui/Main.qml:339
 msgid "Turn effects on/off"
 msgstr ""
 
-#: src/contents/ui/Main.qml:347
+#: src/contents/ui/Main.qml:351
 msgid "Audio effects are enabled."
 msgstr ""
 
-#: src/contents/ui/Main.qml:347
+#: src/contents/ui/Main.qml:351
 msgid "Audio effects are disabled."
 msgstr ""
 
-#: src/contents/ui/Main.qml:399 src/contents/ui/PageStreamsEffects.qml:466
+#: src/contents/ui/Main.qml:403 src/contents/ui/PageStreamsEffects.qml:479
 msgid "Players"
 msgstr "پلیرها"
 
-#: src/contents/ui/Main.qml:414 src/contents/ui/PageStreamsEffects.qml:475
+#: src/contents/ui/Main.qml:418 src/contents/ui/PageStreamsEffects.qml:488
 msgid "Recorders"
 msgstr "ضبط کننده ها"
 
-#: src/contents/ui/Main.qml:433
+#: src/contents/ui/Main.qml:437
 #, fuzzy
 msgid "Preferences"
 msgstr "_ترجیحات"
 
-#: src/contents/ui/Main.qml:444 src/contents/ui/ShortcutsSheet.qml:418
+#: src/contents/ui/Main.qml:449 src/contents/ui/ShortcutsSheet.qml:418
 #: src/contents/ui/TrayIcon.qml:212
 #, fuzzy
 msgid "Shortcuts"
 msgstr "_میانبرها"
 
-#: src/contents/ui/Main.qml:484
+#: src/contents/ui/Main.qml:489
 #, fuzzy
 msgid "About Easy Effects"
 msgstr "_درباره Easy Effects"
 
-#: src/contents/ui/Main.qml:492 src/contents/ui/TrayIcon.qml:231
+#: src/contents/ui/Main.qml:497 src/contents/ui/TrayIcon.qml:231
 #, fuzzy
 msgid "Quit"
 msgstr "_خروج"
@@ -2137,57 +2137,57 @@ msgstr "دستگاه ورودی"
 msgid "Reaction"
 msgstr "کاهش"
 
-#: src/contents/ui/PageStreamsEffects.qml:116
+#: src/contents/ui/PageStreamsEffects.qml:128
 #, fuzzy
 msgid "No audio application available"
 msgstr "هیچ برنامه صوتی موجود نیست"
 
-#: src/contents/ui/PageStreamsEffects.qml:131
+#: src/contents/ui/PageStreamsEffects.qml:143
 msgid "No Effects"
 msgstr "بدون افکت"
 
-#: src/contents/ui/PageStreamsEffects.qml:132
+#: src/contents/ui/PageStreamsEffects.qml:144
 #, fuzzy
 msgid "Audio stream not modified"
 msgstr "جریان صوتی تغییر نکرده است"
 
-#: src/contents/ui/PageStreamsEffects.qml:396
+#: src/contents/ui/PageStreamsEffects.qml:408
 #, fuzzy
 msgid "Add effect"
 msgstr "افزودن افکت"
 
-#: src/contents/ui/PageStreamsEffects.qml:409
+#: src/contents/ui/PageStreamsEffects.qml:422
 msgid "Close"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:413
+#: src/contents/ui/PageStreamsEffects.qml:426
 msgid "Expand the list of effects pipeline"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:413
+#: src/contents/ui/PageStreamsEffects.qml:426
 msgid "Reduce the list of effects pipeline"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:475
+#: src/contents/ui/PageStreamsEffects.qml:488
 #, fuzzy
 msgid "Output device"
 msgstr "دستگاه خروجی"
 
-#: src/contents/ui/PageStreamsEffects.qml:650
+#: src/contents/ui/PageStreamsEffects.qml:663
 #, fuzzy
 msgid "Excluded apps"
 msgstr "برنامه های مستثنی شده"
 
-#: src/contents/ui/PageStreamsEffects.qml:662
+#: src/contents/ui/PageStreamsEffects.qml:676
 #, fuzzy
 msgid "Input monitoring"
 msgstr "فعال‌سازی پایش ورودی"
 
-#: src/contents/ui/PageStreamsEffects.qml:675
+#: src/contents/ui/PageStreamsEffects.qml:689
 msgid "Share audio"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:676
+#: src/contents/ui/PageStreamsEffects.qml:690
 msgid "Send the processed desktop audio to the virtual source"
 msgstr ""
 
@@ -2850,25 +2850,25 @@ msgstr "این پیش‌تنظیمات انجمن را به فهرست پیش‌
 msgid "Failed to import the %1 community preset to the list of local presets."
 msgstr "جستجوی پیش‌تنظیم انجمن"
 
-#: src/contents/ui/PresetsDialog.qml:98 src/contents/ui/PresetsDialog.qml:155
+#: src/contents/ui/PresetsDialog.qml:99 src/contents/ui/PresetsDialog.qml:156
 msgid "Local"
 msgstr "محلی"
 
-#: src/contents/ui/PresetsDialog.qml:106 src/contents/ui/PresetsDialog.qml:155
+#: src/contents/ui/PresetsDialog.qml:107 src/contents/ui/PresetsDialog.qml:156
 msgid "Community"
 msgstr "انجمن"
 
-#: src/contents/ui/PresetsDialog.qml:114
+#: src/contents/ui/PresetsDialog.qml:115
 #, fuzzy
 msgid "Autoload"
 msgstr "افزایش خودکار"
 
-#: src/contents/ui/PresetsDialog.qml:153
+#: src/contents/ui/PresetsDialog.qml:154
 #, fuzzy
 msgid "No preset loaded"
 msgstr "هیچ پیش‌تنظیمی بارگذاری نشده است"
 
-#: src/contents/ui/PresetsDialog.qml:173
+#: src/contents/ui/PresetsDialog.qml:174
 msgid "Fallback Preset"
 msgstr ""
 
@@ -3386,31 +3386,31 @@ msgstr "حداکثر سابقه"
 msgid "Inverted mode"
 msgstr "فاز معکوس"
 
-#: src/main.cpp:360
+#: src/main.cpp:370
 #, fuzzy
 msgid "Global audio effects"
 msgstr "_میانبرها"
 
-#: src/main.cpp:361
+#: src/main.cpp:371
 msgid "© 2017-2026 Easy Effects Team"
 msgstr ""
 
-#: src/main.cpp:363
+#: src/main.cpp:373
 msgid "Wellington Wallace"
 msgstr ""
 
-#: src/main.cpp:363
+#: src/main.cpp:373
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "پاکت"
 
-#: src/main.cpp:367
+#: src/main.cpp:377
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 
-#: src/main.cpp:367
+#: src/main.cpp:377
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
