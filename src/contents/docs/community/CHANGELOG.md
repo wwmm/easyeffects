@@ -1,5 +1,17 @@
 # Changelog
  
+## 8.2.4
+### 2026-05-23
+
+ 
+### Features:
+
+### Bug fixes:
+- Fixed a regression that caused crashes on systems that set QT_QPA_PLATFORM
+
+### Other notes:
+
+ 
 ## 8.2.3
 ### 2026-05-23
 

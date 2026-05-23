@@ -13,6 +13,18 @@ Description:
 - 
 
 ---
+Version: 8.2.4
+Date: 2026-05-23
+
+Description: 
+- Features∶
+
+- Bug fixes∶
+- Fixed a regression that caused crashes on systems that set QT_QPA_PLATFORM
+
+- Other notes∶
+
+---
 Version: 8.2.3
 Date: 2026-05-23
 
