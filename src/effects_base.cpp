@@ -324,30 +324,39 @@ void EffectsBase::disconnect_filters() {
 }
 
 void EffectsBase::update_pipeline() {
-  if (apps_want_to_play()) {
-    if (list_proxies.empty()) {
-      util::debug("At least one app linked to our device wants to play. Linking our filters.");
+  auto rebuild = [this]() {
+    if (apps_want_to_play()) {
+      if (list_proxies.empty()) {
+        util::debug("At least one app linked to our device wants to play. Linking our filters.");
 
-      connect_filters();
-    }
-  } else {
-    if (DbMain::inactivityTimerEnable()) {
-      // if the timer is enabled, wait for the timeout, then unlink plugin pipeline
-
-      QTimer::singleShot(DbMain::inactivityTimeout() * 1000, this, [&]() {
-        if (!apps_want_to_play() && !list_proxies.empty()) {
-          util::debug("No app linked to our device wants to play. Unlinking our filters.");
-
-          disconnect_filters();
-        }
-      });
+        connect_filters();
+      }
     } else {
-      // otherwise, do nothing
-      if (!list_proxies.empty()) {
-        util::debug(
-            "No app linked to our device wants to play, but the inactivity timer is disabled. Leaving filters linked.");
+      if (DbMain::inactivityTimerEnable()) {
+        // if the timer is enabled, wait for the timeout, then unlink plugin pipeline
+
+        QTimer::singleShot(DbMain::inactivityTimeout() * 1000, this, [this]() {
+          if (!apps_want_to_play() && !list_proxies.empty()) {
+            util::debug("No app linked to our device wants to play. Unlinking our filters.");
+
+            disconnect_filters();
+          }
+        });
+      } else {
+        // otherwise, do nothing
+        if (!list_proxies.empty()) {
+          util::debug(
+              "No app linked to our device wants to play, but the inactivity timer is disabled. Leaving filters "
+              "linked.");
+        }
       }
     }
+  };
+
+  if (DbMain::linkDelayEnable()) {
+    QTimer::singleShot(DbMain::linkDelay(), this, [rebuild]() { rebuild(); });
+  } else {
+    rebuild();
   }
 }
 
