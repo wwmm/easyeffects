@@ -741,8 +741,17 @@ Kirigami.Page {
                     Kirigami.Action {
                         id: actionLevelSaturation
 
-                        icon.name: "dialog-warning-symbolic"
-                        visible: false
+                        // Reserve the space for the warning icon.
+                        // This is to stop the rest of the action bar on the right side from moving
+                        // crazy when the icon enables or disables.
+                        property bool active: false
+
+                        displayComponent: Controls.ToolButton {
+                            icon.name: "dialog-warning-symbolic"
+
+                            opacity: actionLevelSaturation.active ? 1.0 : 0.0
+                            enabled: true
+                        }
                     }
                 ]
 
@@ -807,10 +816,7 @@ Kirigami.Page {
                         if (Number.isNaN(right) || right < pageStreamsEffects.minRightLevel)
                             right = pageStreamsEffects.minRightLevel;
 
-                        if ((left > 0 || right > 0) && actionLevelSaturation.visible !== true)
-                            actionLevelSaturation.visible = true;
-                        else if (actionLevelSaturation.visible !== false)
-                            actionLevelSaturation.visible = false;
+                        actionLevelSaturation.active = (left > 0 || right > 0);
 
                         const localeLeft = left.toLocaleString(Qt.locale(), 'f', 0).padStart(3, ' ');
                         const localeRight = right.toLocaleString(Qt.locale(), 'f', 0).padStart(3, ' ');
