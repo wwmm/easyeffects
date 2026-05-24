@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-05-22 22:13-0300\n"
+"POT-Creation-Date: 2026-05-24 13:53-0300\n"
 "PO-Revision-Date: 2026-05-24 13:13+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1036,7 +1036,7 @@ msgstr "Распад"
 msgid "Bit reduction"
 msgstr "Понижение разрядности"
 
-#: src/contents/ui/Crusher.qml:91 src/contents/ui/PreferencesSheet.qml:377
+#: src/contents/ui/Crusher.qml:91 src/contents/ui/PreferencesSheet.qml:407
 msgid "Shape"
 msgstr "Форма"
 
@@ -1056,7 +1056,7 @@ msgstr "Смещение нулевого уровня"
 msgid "Anti-aliasing"
 msgstr "Сглаживание"
 
-#: src/contents/ui/Crusher.qml:142 src/contents/ui/PreferencesSheet.qml:628
+#: src/contents/ui/Crusher.qml:142 src/contents/ui/PreferencesSheet.qml:658
 msgid "Mix"
 msgstr "Микс"
 
@@ -2126,12 +2126,12 @@ msgid "No Clients"
 msgstr "Нет клиентов"
 
 #: src/contents/ui/PipeWirePage.qml:320
-#: src/contents/ui/PreferencesSheet.qml:336
+#: src/contents/ui/PreferencesSheet.qml:366
 msgid "State"
 msgstr "Состояние"
 
 #: src/contents/ui/PipeWirePage.qml:327
-#: src/contents/ui/PreferencesSheet.qml:343
+#: src/contents/ui/PreferencesSheet.qml:373
 msgid "Enabled"
 msgstr "Включено"
 
@@ -2321,10 +2321,24 @@ msgstr ""
 "приложениями с мониторов виртуальных устройств Easy Effects."
 
 #: src/contents/ui/PreferencesSheet.qml:247
+#, fuzzy
+msgid "Enable the link delay"
+msgstr "Проверочный сигнал"
+
+#: src/contents/ui/PreferencesSheet.qml:248
+msgid "When enabled, a delay is applied before linking the audio filters."
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:260
+#, fuzzy
+msgid "Link delay"
+msgstr "Предзадержка"
+
+#: src/contents/ui/PreferencesSheet.qml:277
 msgid "Enable the inactivity timeout"
 msgstr "Включить тайм-аут бездействия"
 
-#: src/contents/ui/PreferencesSheet.qml:248
+#: src/contents/ui/PreferencesSheet.qml:278
 msgid ""
 "When all streams are inactive, Easy Effects pipeline remains loaded for an "
 "extra amount of time."
@@ -2332,23 +2346,23 @@ msgstr ""
 "Если все потоки бездействуют, канал обработки Easy Effects будет активен ещё "
 "какое-то время."
 
-#: src/contents/ui/PreferencesSheet.qml:260
+#: src/contents/ui/PreferencesSheet.qml:290
 msgid "Inactivity timeout"
 msgstr "Тайм-аут бездействия"
 
-#: src/contents/ui/PreferencesSheet.qml:275
+#: src/contents/ui/PreferencesSheet.qml:305
 msgid "Level meters frame rate cap"
 msgstr "Предел частоты кадров уровнемеров"
 
-#: src/contents/ui/PreferencesSheet.qml:276
+#: src/contents/ui/PreferencesSheet.qml:306
 msgid "Maximum level meter update rate."
 msgstr "Максимальная частота обновления уровнемеров."
 
-#: src/contents/ui/PreferencesSheet.qml:290
+#: src/contents/ui/PreferencesSheet.qml:320
 msgid "Level meters label"
 msgstr "Метки уровнемеров"
 
-#: src/contents/ui/PreferencesSheet.qml:291
+#: src/contents/ui/PreferencesSheet.qml:321
 msgid ""
 "The time it takes for the level meter labels to be updated when the current "
 "level is below the last highest one."
@@ -2356,106 +2370,106 @@ msgstr ""
 "Задержка обновления меток уровнемеров при снижении уровня ниже последнего "
 "пикового значения."
 
-#: src/contents/ui/PreferencesSheet.qml:308
+#: src/contents/ui/PreferencesSheet.qml:338
 msgid "Enable level meters animation"
 msgstr "Включить анимацию уровнемеров"
 
-#: src/contents/ui/PreferencesSheet.qml:317
+#: src/contents/ui/PreferencesSheet.qml:347
 msgid "Level meters animation duration"
 msgstr "Длительность анимации уровнемеров"
 
-#: src/contents/ui/PreferencesSheet.qml:355
+#: src/contents/ui/PreferencesSheet.qml:385
 msgid "Audio delay compensation"
 msgstr "Компенсация задержки звука"
 
-#: src/contents/ui/PreferencesSheet.qml:370
+#: src/contents/ui/PreferencesSheet.qml:400
 msgid "Graph"
 msgstr "График"
 
-#: src/contents/ui/PreferencesSheet.qml:381
+#: src/contents/ui/PreferencesSheet.qml:411
 msgid "Bars"
 msgstr "Полосы"
 
-#: src/contents/ui/PreferencesSheet.qml:381
+#: src/contents/ui/PreferencesSheet.qml:411
 msgid "Lines"
 msgstr "Линии"
 
-#: src/contents/ui/PreferencesSheet.qml:381
+#: src/contents/ui/PreferencesSheet.qml:411
 msgid "Dots"
 msgstr "Точки"
 
-#: src/contents/ui/PreferencesSheet.qml:381
+#: src/contents/ui/PreferencesSheet.qml:411
 msgid "Area"
 msgstr "Область"
 
-#: src/contents/ui/PreferencesSheet.qml:391
+#: src/contents/ui/PreferencesSheet.qml:421
 msgid "Dynamic scale"
 msgstr "Динамический масштаб"
 
-#: src/contents/ui/PreferencesSheet.qml:403
+#: src/contents/ui/PreferencesSheet.qml:433
 msgid "Logarithmic frequency axis"
 msgstr "Логарифмическая ось частоты"
 
-#: src/contents/ui/PreferencesSheet.qml:415
+#: src/contents/ui/PreferencesSheet.qml:445
 msgid "Points"
 msgstr "Пункты"
 
-#: src/contents/ui/PreferencesSheet.qml:430
+#: src/contents/ui/PreferencesSheet.qml:460
 msgid "Height"
 msgstr "Высота"
 
-#: src/contents/ui/PreferencesSheet.qml:437
+#: src/contents/ui/PreferencesSheet.qml:467
 msgid "px"
 msgstr "пкс"
 
-#: src/contents/ui/PreferencesSheet.qml:444
+#: src/contents/ui/PreferencesSheet.qml:474
 msgid "Spectrum frame rate cap"
 msgstr "Предел частоты кадров спектра"
 
-#: src/contents/ui/PreferencesSheet.qml:445
+#: src/contents/ui/PreferencesSheet.qml:475
 msgid "Maximum spectrum update rate."
 msgstr "Максимальная частота обновления спектра."
 
-#: src/contents/ui/PreferencesSheet.qml:460
+#: src/contents/ui/PreferencesSheet.qml:490
 msgid "Frequency Range"
 msgstr "Диапазон частот"
 
-#: src/contents/ui/PreferencesSheet.qml:467
+#: src/contents/ui/PreferencesSheet.qml:497
 msgid "Minimum"
 msgstr "Минимум"
 
-#: src/contents/ui/PreferencesSheet.qml:483
+#: src/contents/ui/PreferencesSheet.qml:513
 msgid "Maximum"
 msgstr "Максимум"
 
-#: src/contents/ui/PreferencesSheet.qml:505
+#: src/contents/ui/PreferencesSheet.qml:535
 msgid "Database autosave interval"
 msgstr "Период автосохранения базы данных"
 
-#: src/contents/ui/PreferencesSheet.qml:519
+#: src/contents/ui/PreferencesSheet.qml:549
 msgid "Most used presets"
 msgstr "Часто используемые предустановки"
 
-#: src/contents/ui/PreferencesSheet.qml:537
+#: src/contents/ui/PreferencesSheet.qml:567
 msgid "Window"
 msgstr "Окно"
 
-#: src/contents/ui/PreferencesSheet.qml:546
+#: src/contents/ui/PreferencesSheet.qml:576
 msgid "Force KDE's Breeze theme when Easy Effects starts"
 msgstr "Принудительно включать тему KDE Breeze при запуске Easy Effects"
 
-#: src/contents/ui/PreferencesSheet.qml:547
+#: src/contents/ui/PreferencesSheet.qml:577
 msgid ""
 "It is necessary to restart the service for changes in this setting to take "
 "effect."
 msgstr ""
 "Необходимо перезапустить службу для применения изменений этой настройки."
 
-#: src/contents/ui/PreferencesSheet.qml:560
+#: src/contents/ui/PreferencesSheet.qml:590
 msgid "Reduce effects list controls"
 msgstr "Свернуть элементы управления списка эффектов"
 
-#: src/contents/ui/PreferencesSheet.qml:561
+#: src/contents/ui/PreferencesSheet.qml:591
 msgid ""
 "Action buttons in the effects list are moved inside a context menu for a "
 "more compact view."
@@ -2463,16 +2477,16 @@ msgstr ""
 "Кнопки действий в списке эффектов будут перемещены в контекстное меню для "
 "более компактного вида."
 
-#: src/contents/ui/PreferencesSheet.qml:572
-#: src/contents/ui/PreferencesSheet.qml:609
+#: src/contents/ui/PreferencesSheet.qml:602
+#: src/contents/ui/PreferencesSheet.qml:639
 msgid "Color scheme"
 msgstr "Цветовая схема"
 
-#: src/contents/ui/PreferencesSheet.qml:586
+#: src/contents/ui/PreferencesSheet.qml:616
 msgid "Force English language"
 msgstr "Принудительно применить английский язык"
 
-#: src/contents/ui/PreferencesSheet.qml:587
+#: src/contents/ui/PreferencesSheet.qml:617
 msgid ""
 "Do not translate the user interface and show text in English language. "
 "Useful if the translation in the local language is incomplete or "
@@ -2482,113 +2496,113 @@ msgstr ""
 "если перевод на местный язык неполный или непонятный. Для применения этой "
 "настройки требуется перезапуск службы."
 
-#: src/contents/ui/PreferencesSheet.qml:598
+#: src/contents/ui/PreferencesSheet.qml:628
 msgid "Graphs"
 msgstr "Графики"
 
-#: src/contents/ui/PreferencesSheet.qml:613
+#: src/contents/ui/PreferencesSheet.qml:643
 msgid "Automatic"
 msgstr "Автоматически"
 
-#: src/contents/ui/PreferencesSheet.qml:613
+#: src/contents/ui/PreferencesSheet.qml:643
 msgid "Light"
 msgstr "Светлая"
 
-#: src/contents/ui/PreferencesSheet.qml:613
+#: src/contents/ui/PreferencesSheet.qml:643
 msgid "Dark"
 msgstr "Тёмная"
 
-#: src/contents/ui/PreferencesSheet.qml:624
+#: src/contents/ui/PreferencesSheet.qml:654
 msgid "Color theme"
 msgstr "Цветовая тема"
 
-#: src/contents/ui/PreferencesSheet.qml:628
+#: src/contents/ui/PreferencesSheet.qml:658
 msgid "Green"
 msgstr "Зелёная"
 
-#: src/contents/ui/PreferencesSheet.qml:628
+#: src/contents/ui/PreferencesSheet.qml:658
 msgid "Green neon"
 msgstr "Зелёный неон"
 
 # ??? Не уверен в переводе
-#: src/contents/ui/PreferencesSheet.qml:628
+#: src/contents/ui/PreferencesSheet.qml:658
 msgid "Orange"
 msgstr "Оранжевая"
 
-#: src/contents/ui/PreferencesSheet.qml:628
+#: src/contents/ui/PreferencesSheet.qml:658
 msgid "Yellow"
 msgstr "Жёлтая"
 
-#: src/contents/ui/PreferencesSheet.qml:628
+#: src/contents/ui/PreferencesSheet.qml:658
 msgid "Blue"
 msgstr "Синяя"
 
-#: src/contents/ui/PreferencesSheet.qml:628
+#: src/contents/ui/PreferencesSheet.qml:658
 msgid "Purple"
 msgstr "Фиолетовая"
 
-#: src/contents/ui/PreferencesSheet.qml:628
+#: src/contents/ui/PreferencesSheet.qml:658
 msgid "Grey"
 msgstr "Серая"
 
-#: src/contents/ui/PreferencesSheet.qml:628
+#: src/contents/ui/PreferencesSheet.qml:658
 msgid "User"
 msgstr "Пользовательская"
 
-#: src/contents/ui/PreferencesSheet.qml:636
+#: src/contents/ui/PreferencesSheet.qml:666
 msgctxt "@label"
 msgid "Background"
 msgstr "Фон"
 
-#: src/contents/ui/PreferencesSheet.qml:645
+#: src/contents/ui/PreferencesSheet.qml:675
 msgctxt "@label"
 msgid "Plot area background"
 msgstr "Фон площади участка"
 
-#: src/contents/ui/PreferencesSheet.qml:654
+#: src/contents/ui/PreferencesSheet.qml:684
 msgctxt "@label"
 msgid "Series colors"
 msgstr "Цвета серий"
 
-#: src/contents/ui/PreferencesSheet.qml:663
+#: src/contents/ui/PreferencesSheet.qml:693
 msgctxt "@label"
 msgid "Axis labels text color"
 msgstr "Цвет текста меток осей"
 
-#: src/contents/ui/PreferencesSheet.qml:672
+#: src/contents/ui/PreferencesSheet.qml:702
 msgctxt "@label"
 msgid "Axis labels background color"
 msgstr "Цвет фона меток осей"
 
-#: src/contents/ui/PreferencesSheet.qml:681
+#: src/contents/ui/PreferencesSheet.qml:711
 msgctxt "@label"
 msgid "Border color"
 msgstr "Цвет обводки"
 
-#: src/contents/ui/PreferencesSheet.qml:690
+#: src/contents/ui/PreferencesSheet.qml:720
 msgid "Line width"
 msgstr "Ширина линии"
 
-#: src/contents/ui/PreferencesSheet.qml:704
+#: src/contents/ui/PreferencesSheet.qml:734
 msgid "Show grid lines"
 msgstr "Показывать линии сетки"
 
-#: src/contents/ui/PreferencesSheet.qml:722
+#: src/contents/ui/PreferencesSheet.qml:752
 msgid "Autoload delay"
 msgstr "Задержка автозагрузки"
 
-#: src/contents/ui/PreferencesSheet.qml:723
+#: src/contents/ui/PreferencesSheet.qml:753
 msgid ""
 "Delay between receiving a new device route and the call to autoload a preset."
 msgstr ""
 "Задержка между приёмом маршрута нового устройства и вызовом автозагрузки "
 "предустановки."
 
-#: src/contents/ui/PreferencesSheet.qml:739
+#: src/contents/ui/PreferencesSheet.qml:769
 msgid "Ignore the blocklist from presets"
 msgstr "Игнорировать список исключений из предустановок"
 
-#: src/contents/ui/PreferencesSheet.qml:740
+#: src/contents/ui/PreferencesSheet.qml:770
 msgid ""
 "If enabled, the list of excluded apps set in the loaded preset is ignored "
 "and does not replace the one set by the user."
@@ -2596,28 +2610,28 @@ msgstr ""
 "Если включено, список исключённых приложений, установленный в загруженной "
 "предустановке, игнорируется и не заменяет список, заданный пользователем."
 
-#: src/contents/ui/PreferencesSheet.qml:761
+#: src/contents/ui/PreferencesSheet.qml:791
 msgid "Global shortcuts"
 msgstr "Глобальные горячие клавиши"
 
-#: src/contents/ui/PreferencesSheet.qml:762
+#: src/contents/ui/PreferencesSheet.qml:792
 msgid "Enables support for XDG global shortcuts."
 msgstr "Включает поддержку глобальных горячих клавиш XDG."
 
-#: src/contents/ui/PreferencesSheet.qml:774
+#: src/contents/ui/PreferencesSheet.qml:804
 msgid "Native window of effects"
 msgstr "Встроенное окно эффектов"
 
-#: src/contents/ui/PreferencesSheet.qml:775
+#: src/contents/ui/PreferencesSheet.qml:805
 msgid "Allows the native user interface of effects to be shown/hidden."
 msgstr ""
 "Позволяет показывать/скрывать встроенный пользовательский интерфейс плагина."
 
-#: src/contents/ui/PreferencesSheet.qml:787
+#: src/contents/ui/PreferencesSheet.qml:817
 msgid "Update frequency"
 msgstr "Частота обновления"
 
-#: src/contents/ui/PreferencesSheet.qml:788
+#: src/contents/ui/PreferencesSheet.qml:818
 msgid "Related to LV2 plugins."
 msgstr "Относится к плагинам LV2."
 
@@ -3139,29 +3153,29 @@ msgstr "Максимальная мгновенная частота"
 msgid "Inverted mode"
 msgstr "Инверсный режим"
 
-#: src/main.cpp:370
+#: src/main.cpp:364
 msgid "Global audio effects"
 msgstr "Глобальные эффекты звука"
 
-#: src/main.cpp:371
+#: src/main.cpp:365
 msgid "© 2017-2026 Easy Effects Team"
 msgstr "© 2017-2026 Команда Easy Effects"
 
-#: src/main.cpp:373
+#: src/main.cpp:367
 msgid "Wellington Wallace"
 msgstr "Веллингтон Уоллис"
 
-#: src/main.cpp:373
+#: src/main.cpp:367
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Разработчик"
 
-#: src/main.cpp:377
+#: src/main.cpp:371
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Андрей Степанов"
 
-#: src/main.cpp:377
+#: src/main.cpp:371
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "adem4ik@gmail.com"
@@ -5446,10 +5460,6 @@ msgstr "Простые звуковые эффекты"
 #, fuzzy
 #~ msgid "Documentation"
 #~ msgstr "Продолжительность"
-
-#, fuzzy
-#~ msgid "Enable Test Signal"
-#~ msgstr "Проверочный сигнал"
 
 #~ msgid "Signal"
 #~ msgstr "Сигнал"
