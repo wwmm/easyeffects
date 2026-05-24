@@ -242,6 +242,36 @@ KirigamiSettings.ConfigurationView {
                 }
 
                 EeSwitch {
+                    id: linkDelayEnable
+
+                    label: i18n("Enable the link delay") // qmllint disable
+                    subtitle: i18n("When enabled, a delay is applied before linking the audio filters.") // qmllint disable
+                    maximumLineCount: -1
+                    isChecked: DbMain.linkDelayEnable
+                    onCheckedChanged: {
+                        if (isChecked !== DbMain.linkDelayEnable)
+                            DbMain.linkDelayEnable = isChecked;
+                    }
+                }
+
+                EeSpinBox {
+                    id: linkDelay
+
+                    label: i18n("Link delay") // qmllint disable
+                    maximumLineCount: -1
+                    from: DbMain.getMinValue("linkDelay")
+                    to: DbMain.getMaxValue("linkDelay")
+                    value: DbMain.linkDelay
+                    decimals: 0
+                    stepSize: 1
+                    unit: Units.ms
+                    enabled: DbMain.linkDelayEnable
+                    onValueModified: v => {
+                        DbMain.linkDelay = v;
+                    }
+                }
+
+                EeSwitch {
                     id: inactivityTimerEnable
 
                     label: i18n("Enable the inactivity timeout") // qmllint disable

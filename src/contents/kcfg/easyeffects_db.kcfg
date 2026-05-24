@@ -203,6 +203,16 @@
             <label>Do not apply effects to system notifications.</label>
             <default>true</default>
         </entry>
+        <entry name="linkDelayEnable" type="Bool">
+            <label>Enable the Link Delay</label>
+            <default>true</default>
+        </entry>
+        <entry name="linkDelay" type="Int">
+            <label>Delay applied before linking the audio filters</label>
+            <min>1</min>
+            <max>1000</max>
+            <default>500</default>
+        </entry>
         <entry name="inactivityTimerEnable" type="Bool">
             <label>Enable the Inactivity Timeout</label>
             <default>true</default>
