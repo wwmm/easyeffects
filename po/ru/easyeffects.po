@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-05-22 22:13-0300\n"
-"PO-Revision-Date: 2026-05-18 05:11+0000\n"
+"PO-Revision-Date: 2026-05-24 13:13+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -2279,9 +2279,9 @@ msgid ""
 "percentages results in a lower perceived volume while the loudness appears "
 "to change more evenly across the slider."
 msgstr ""
-"Использовать кубическую шкалу громкости потока вместо линейной. Низкие "
-"значения процентов приводят к снижению воспринимаемой громкости, а изменение "
-"громкости на ползунке происходит более плавно."
+"Использовать кубическую шкалу громкости потока вместо линейной. При низких "
+"процентах громкость будет ощущаться тише, а ползунок громкости станет "
+"работать плавнее."
 
 #: src/contents/ui/PreferencesSheet.qml:197
 msgid "Ignore system notifications"
@@ -2317,7 +2317,7 @@ msgid ""
 "virtual devices monitors."
 msgstr ""
 "Использовать копию буфера входного аудио от звукового сервера при обработке "
-"в плагинах Easy Effects. Устраняет возможные сбои звука при записи внешними "
+"в плагинах Easy Effects. Устраняет сбои звука при записи внешними "
 "приложениями с мониторов виртуальных устройств Easy Effects."
 
 #: src/contents/ui/PreferencesSheet.qml:247
@@ -2329,8 +2329,8 @@ msgid ""
 "When all streams are inactive, Easy Effects pipeline remains loaded for an "
 "extra amount of time."
 msgstr ""
-"Когда все потоки будут неактивны, канал обработки Easy Effects останется "
-"загруженным ещё некоторое время."
+"Если все потоки бездействуют, канал обработки Easy Effects будет активен ещё "
+"какое-то время."
 
 #: src/contents/ui/PreferencesSheet.qml:260
 msgid "Inactivity timeout"
@@ -3260,7 +3260,7 @@ msgstr "Подавитель перекрёстных помех"
 
 #: src/tags_plugin_name.cpp:54
 msgid "Crusher"
-msgstr "Биткрашер"
+msgstr "Снижение битности"
 
 #: src/tags_plugin_name.cpp:55
 msgid "Crystalizer"
