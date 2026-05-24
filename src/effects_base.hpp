@@ -109,14 +109,6 @@ class EffectsBase : public QObject {
 
   void deactivate_filters();
 
-  virtual auto apps_want_to_play() -> bool;
-
-  virtual void connect_filters(const bool& bypass = false);
-
-  virtual void disconnect_filters();
-
-  void update_pipeline();
-
  private:
   int cached_spectrum_npoints = -1;
   float cached_spectrum_min_freq = -1.0F;
