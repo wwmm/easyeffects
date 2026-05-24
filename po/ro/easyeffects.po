@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-05-22 22:13-0300\n"
+"POT-Creation-Date: 2026-05-24 13:56-0300\n"
 "PO-Revision-Date: 2026-05-18 20:11+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
@@ -1020,7 +1020,7 @@ msgstr "Timpul de declin"
 msgid "Bit reduction"
 msgstr "Reducere biți"
 
-#: src/contents/ui/Crusher.qml:91 src/contents/ui/PreferencesSheet.qml:377
+#: src/contents/ui/Crusher.qml:91 src/contents/ui/PreferencesSheet.qml:407
 msgid "Shape"
 msgstr "Forma"
 
@@ -1040,7 +1040,7 @@ msgstr "Decalaj DC"
 msgid "Anti-aliasing"
 msgstr "Netezire"
 
-#: src/contents/ui/Crusher.qml:142 src/contents/ui/PreferencesSheet.qml:628
+#: src/contents/ui/Crusher.qml:142 src/contents/ui/PreferencesSheet.qml:658
 msgid "Mix"
 msgstr "Mixare"
 
@@ -2098,12 +2098,12 @@ msgid "No Clients"
 msgstr "Niciun client"
 
 #: src/contents/ui/PipeWirePage.qml:320
-#: src/contents/ui/PreferencesSheet.qml:336
+#: src/contents/ui/PreferencesSheet.qml:366
 msgid "State"
 msgstr "Stare"
 
 #: src/contents/ui/PipeWirePage.qml:327
-#: src/contents/ui/PreferencesSheet.qml:343
+#: src/contents/ui/PreferencesSheet.qml:373
 msgid "Enabled"
 msgstr "Activat"
 
@@ -2295,10 +2295,24 @@ msgstr ""
 "externe înregistrează de pe monitoarele dispozitivelor virtuale Easy Effects."
 
 #: src/contents/ui/PreferencesSheet.qml:247
+#, fuzzy
+msgid "Enable the link delay"
+msgstr "Activează acest efect"
+
+#: src/contents/ui/PreferencesSheet.qml:248
+msgid "When enabled, a delay is applied before linking the audio filters."
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:260
+#, fuzzy
+msgid "Link delay"
+msgstr "Pre-întârziere"
+
+#: src/contents/ui/PreferencesSheet.qml:277
 msgid "Enable the inactivity timeout"
 msgstr "Activează timpul de expirare al inactivității"
 
-#: src/contents/ui/PreferencesSheet.qml:248
+#: src/contents/ui/PreferencesSheet.qml:278
 msgid ""
 "When all streams are inactive, Easy Effects pipeline remains loaded for an "
 "extra amount of time."
@@ -2306,23 +2320,23 @@ msgstr ""
 "Când toate fluxurile sunt inactive, canalul(pipeline) Easy Effectse rămâne "
 "încărcat pentru o perioadă suplimentară de timp."
 
-#: src/contents/ui/PreferencesSheet.qml:260
+#: src/contents/ui/PreferencesSheet.qml:290
 msgid "Inactivity timeout"
 msgstr "Timpul de expirare al inactivității"
 
-#: src/contents/ui/PreferencesSheet.qml:275
+#: src/contents/ui/PreferencesSheet.qml:305
 msgid "Level meters frame rate cap"
 msgstr "Limita de frecvență a cadrelor pentru indicatoarele de nivel"
 
-#: src/contents/ui/PreferencesSheet.qml:276
+#: src/contents/ui/PreferencesSheet.qml:306
 msgid "Maximum level meter update rate."
 msgstr "Frecvența maximă de actualizare a indicatorului de nivel."
 
-#: src/contents/ui/PreferencesSheet.qml:290
+#: src/contents/ui/PreferencesSheet.qml:320
 msgid "Level meters label"
 msgstr "Etichetă vumetru"
 
-#: src/contents/ui/PreferencesSheet.qml:291
+#: src/contents/ui/PreferencesSheet.qml:321
 msgid ""
 "The time it takes for the level meter labels to be updated when the current "
 "level is below the last highest one."
@@ -2330,95 +2344,95 @@ msgstr ""
 "Timpul necesar pentru actualizarea etichetelor indicatoarelor de nivel "
 "(vumetrelor) atunci când nivelul actual este sub ultimul nivel maxim atins."
 
-#: src/contents/ui/PreferencesSheet.qml:308
+#: src/contents/ui/PreferencesSheet.qml:338
 msgid "Enable level meters animation"
 msgstr "Activează animația indicatoarelor de nivel"
 
-#: src/contents/ui/PreferencesSheet.qml:317
+#: src/contents/ui/PreferencesSheet.qml:347
 msgid "Level meters animation duration"
 msgstr "Durata animației indicatoarelor de nivel"
 
-#: src/contents/ui/PreferencesSheet.qml:355
+#: src/contents/ui/PreferencesSheet.qml:385
 msgid "Audio delay compensation"
 msgstr "Compensarea întârzierii audio"
 
-#: src/contents/ui/PreferencesSheet.qml:370
+#: src/contents/ui/PreferencesSheet.qml:400
 msgid "Graph"
 msgstr "Grafic"
 
-#: src/contents/ui/PreferencesSheet.qml:381
+#: src/contents/ui/PreferencesSheet.qml:411
 msgid "Bars"
 msgstr "Bare"
 
-#: src/contents/ui/PreferencesSheet.qml:381
+#: src/contents/ui/PreferencesSheet.qml:411
 msgid "Lines"
 msgstr "Linii"
 
-#: src/contents/ui/PreferencesSheet.qml:381
+#: src/contents/ui/PreferencesSheet.qml:411
 msgid "Dots"
 msgstr "Puncte"
 
-#: src/contents/ui/PreferencesSheet.qml:381
+#: src/contents/ui/PreferencesSheet.qml:411
 msgid "Area"
 msgstr "Zona"
 
-#: src/contents/ui/PreferencesSheet.qml:391
+#: src/contents/ui/PreferencesSheet.qml:421
 msgid "Dynamic scale"
 msgstr "Scară dinamică"
 
-#: src/contents/ui/PreferencesSheet.qml:403
+#: src/contents/ui/PreferencesSheet.qml:433
 msgid "Logarithmic frequency axis"
 msgstr "Axa frecvenței logaritmice"
 
-#: src/contents/ui/PreferencesSheet.qml:415
+#: src/contents/ui/PreferencesSheet.qml:445
 msgid "Points"
 msgstr "Puncte"
 
-#: src/contents/ui/PreferencesSheet.qml:430
+#: src/contents/ui/PreferencesSheet.qml:460
 msgid "Height"
 msgstr "Înălțime"
 
-#: src/contents/ui/PreferencesSheet.qml:437
+#: src/contents/ui/PreferencesSheet.qml:467
 msgid "px"
 msgstr "px"
 
-#: src/contents/ui/PreferencesSheet.qml:444
+#: src/contents/ui/PreferencesSheet.qml:474
 msgid "Spectrum frame rate cap"
 msgstr "Limita de frecvență a cadrelor spectrului"
 
-#: src/contents/ui/PreferencesSheet.qml:445
+#: src/contents/ui/PreferencesSheet.qml:475
 msgid "Maximum spectrum update rate."
 msgstr "Frecvența maximă de actualizare a spectrului."
 
-#: src/contents/ui/PreferencesSheet.qml:460
+#: src/contents/ui/PreferencesSheet.qml:490
 msgid "Frequency Range"
 msgstr "Gama de frecvențe"
 
-#: src/contents/ui/PreferencesSheet.qml:467
+#: src/contents/ui/PreferencesSheet.qml:497
 msgid "Minimum"
 msgstr "Minimă"
 
-#: src/contents/ui/PreferencesSheet.qml:483
+#: src/contents/ui/PreferencesSheet.qml:513
 msgid "Maximum"
 msgstr "Maximă"
 
-#: src/contents/ui/PreferencesSheet.qml:505
+#: src/contents/ui/PreferencesSheet.qml:535
 msgid "Database autosave interval"
 msgstr "Interval de salvare automată a bazei de date"
 
-#: src/contents/ui/PreferencesSheet.qml:519
+#: src/contents/ui/PreferencesSheet.qml:549
 msgid "Most used presets"
 msgstr "Cele mai utilizate preconfigurări"
 
-#: src/contents/ui/PreferencesSheet.qml:537
+#: src/contents/ui/PreferencesSheet.qml:567
 msgid "Window"
 msgstr "Fereastră"
 
-#: src/contents/ui/PreferencesSheet.qml:546
+#: src/contents/ui/PreferencesSheet.qml:576
 msgid "Force KDE's Breeze theme when Easy Effects starts"
 msgstr "Forțează încărcarea temei Breeze a KDE la pornirea Easy Effects"
 
-#: src/contents/ui/PreferencesSheet.qml:547
+#: src/contents/ui/PreferencesSheet.qml:577
 msgid ""
 "It is necessary to restart the service for changes in this setting to take "
 "effect."
@@ -2426,11 +2440,11 @@ msgstr ""
 "Este necesar să reporniți serviciul pentru ca modificările aduse acestei "
 "configurări să aibă efect."
 
-#: src/contents/ui/PreferencesSheet.qml:560
+#: src/contents/ui/PreferencesSheet.qml:590
 msgid "Reduce effects list controls"
 msgstr "Reduce controalele listei de efecte"
 
-#: src/contents/ui/PreferencesSheet.qml:561
+#: src/contents/ui/PreferencesSheet.qml:591
 msgid ""
 "Action buttons in the effects list are moved inside a context menu for a "
 "more compact view."
@@ -2438,16 +2452,16 @@ msgstr ""
 "Butoanele de acțiune din lista de efecte sunt mutate într-un meniu "
 "contextual pentru o vizualizare mai compactă."
 
-#: src/contents/ui/PreferencesSheet.qml:572
-#: src/contents/ui/PreferencesSheet.qml:609
+#: src/contents/ui/PreferencesSheet.qml:602
+#: src/contents/ui/PreferencesSheet.qml:639
 msgid "Color scheme"
 msgstr "Schema de culori"
 
-#: src/contents/ui/PreferencesSheet.qml:586
+#: src/contents/ui/PreferencesSheet.qml:616
 msgid "Force English language"
 msgstr "Forțează utilizarea interfeței în limba engleză"
 
-#: src/contents/ui/PreferencesSheet.qml:587
+#: src/contents/ui/PreferencesSheet.qml:617
 msgid ""
 "Do not translate the user interface and show text in English language. "
 "Useful if the translation in the local language is incomplete or "
@@ -2458,112 +2472,112 @@ msgstr ""
 "incomprehensibil. Pentru a aplica această opțiune, este necesară repornirea "
 "serviciului."
 
-#: src/contents/ui/PreferencesSheet.qml:598
+#: src/contents/ui/PreferencesSheet.qml:628
 msgid "Graphs"
 msgstr "Grafice"
 
-#: src/contents/ui/PreferencesSheet.qml:613
+#: src/contents/ui/PreferencesSheet.qml:643
 msgid "Automatic"
 msgstr "Automat"
 
-#: src/contents/ui/PreferencesSheet.qml:613
+#: src/contents/ui/PreferencesSheet.qml:643
 msgid "Light"
 msgstr "Luminoasă"
 
-#: src/contents/ui/PreferencesSheet.qml:613
+#: src/contents/ui/PreferencesSheet.qml:643
 msgid "Dark"
 msgstr "Întunecată"
 
-#: src/contents/ui/PreferencesSheet.qml:624
+#: src/contents/ui/PreferencesSheet.qml:654
 msgid "Color theme"
 msgstr "Tema de culori"
 
-#: src/contents/ui/PreferencesSheet.qml:628
+#: src/contents/ui/PreferencesSheet.qml:658
 msgid "Green"
 msgstr "Verde"
 
-#: src/contents/ui/PreferencesSheet.qml:628
+#: src/contents/ui/PreferencesSheet.qml:658
 msgid "Green neon"
 msgstr "Verde neon"
 
-#: src/contents/ui/PreferencesSheet.qml:628
+#: src/contents/ui/PreferencesSheet.qml:658
 msgid "Orange"
 msgstr "Portocaliu"
 
-#: src/contents/ui/PreferencesSheet.qml:628
+#: src/contents/ui/PreferencesSheet.qml:658
 msgid "Yellow"
 msgstr "Galben"
 
-#: src/contents/ui/PreferencesSheet.qml:628
+#: src/contents/ui/PreferencesSheet.qml:658
 msgid "Blue"
 msgstr "Albastru"
 
-#: src/contents/ui/PreferencesSheet.qml:628
+#: src/contents/ui/PreferencesSheet.qml:658
 msgid "Purple"
 msgstr "Purpuriu"
 
-#: src/contents/ui/PreferencesSheet.qml:628
+#: src/contents/ui/PreferencesSheet.qml:658
 msgid "Grey"
 msgstr "Gri"
 
-#: src/contents/ui/PreferencesSheet.qml:628
+#: src/contents/ui/PreferencesSheet.qml:658
 msgid "User"
 msgstr "Utilizator"
 
-#: src/contents/ui/PreferencesSheet.qml:636
+#: src/contents/ui/PreferencesSheet.qml:666
 msgctxt "@label"
 msgid "Background"
 msgstr "Fundal"
 
-#: src/contents/ui/PreferencesSheet.qml:645
+#: src/contents/ui/PreferencesSheet.qml:675
 msgctxt "@label"
 msgid "Plot area background"
 msgstr "Fundalul suprafeței graficului"
 
-#: src/contents/ui/PreferencesSheet.qml:654
+#: src/contents/ui/PreferencesSheet.qml:684
 msgctxt "@label"
 msgid "Series colors"
 msgstr "Seria de culori"
 
-#: src/contents/ui/PreferencesSheet.qml:663
+#: src/contents/ui/PreferencesSheet.qml:693
 msgctxt "@label"
 msgid "Axis labels text color"
 msgstr "Culoarea textului etichetelor axelor"
 
-#: src/contents/ui/PreferencesSheet.qml:672
+#: src/contents/ui/PreferencesSheet.qml:702
 msgctxt "@label"
 msgid "Axis labels background color"
 msgstr "Culoarea de fundal a etichetelor axelor"
 
-#: src/contents/ui/PreferencesSheet.qml:681
+#: src/contents/ui/PreferencesSheet.qml:711
 msgctxt "@label"
 msgid "Border color"
 msgstr "Culoarea marginii"
 
-#: src/contents/ui/PreferencesSheet.qml:690
+#: src/contents/ui/PreferencesSheet.qml:720
 msgid "Line width"
 msgstr "Lățimea liniei"
 
-#: src/contents/ui/PreferencesSheet.qml:704
+#: src/contents/ui/PreferencesSheet.qml:734
 msgid "Show grid lines"
 msgstr "Afișează liniile grilei"
 
-#: src/contents/ui/PreferencesSheet.qml:722
+#: src/contents/ui/PreferencesSheet.qml:752
 msgid "Autoload delay"
 msgstr "Întârziere încărcare automată"
 
-#: src/contents/ui/PreferencesSheet.qml:723
+#: src/contents/ui/PreferencesSheet.qml:753
 msgid ""
 "Delay between receiving a new device route and the call to autoload a preset."
 msgstr ""
 "Întârzierea dintre primirea unei noi rute a dispozitivului și apelul pentru "
 "încărcarea automată a unei preconfigurări."
 
-#: src/contents/ui/PreferencesSheet.qml:739
+#: src/contents/ui/PreferencesSheet.qml:769
 msgid "Ignore the blocklist from presets"
 msgstr "Ignoră lista de blocare din preconfigurări"
 
-#: src/contents/ui/PreferencesSheet.qml:740
+#: src/contents/ui/PreferencesSheet.qml:770
 msgid ""
 "If enabled, the list of excluded apps set in the loaded preset is ignored "
 "and does not replace the one set by the user."
@@ -2571,27 +2585,27 @@ msgstr ""
 "Dacă este activată, lista aplicațiilor excluse definită în preconfigurarea "
 "încărcată este ignorată și nu o înlocuiește pe cea definită de utilizator."
 
-#: src/contents/ui/PreferencesSheet.qml:761
+#: src/contents/ui/PreferencesSheet.qml:791
 msgid "Global shortcuts"
 msgstr "Taste de comenzi rapide globale"
 
-#: src/contents/ui/PreferencesSheet.qml:762
+#: src/contents/ui/PreferencesSheet.qml:792
 msgid "Enables support for XDG global shortcuts."
 msgstr "Activează suportul pentru tastele de comenzi rapide globale XDG."
 
-#: src/contents/ui/PreferencesSheet.qml:774
+#: src/contents/ui/PreferencesSheet.qml:804
 msgid "Native window of effects"
 msgstr "Fereastra nativă a efectelor"
 
-#: src/contents/ui/PreferencesSheet.qml:775
+#: src/contents/ui/PreferencesSheet.qml:805
 msgid "Allows the native user interface of effects to be shown/hidden."
 msgstr "Permite afișarea/ascunderea interfeței native a efectelor."
 
-#: src/contents/ui/PreferencesSheet.qml:787
+#: src/contents/ui/PreferencesSheet.qml:817
 msgid "Update frequency"
 msgstr "Frecvența de actualizare"
 
-#: src/contents/ui/PreferencesSheet.qml:788
+#: src/contents/ui/PreferencesSheet.qml:818
 msgid "Related to LV2 plugins."
 msgstr "Relativ la modulele LV2."
 
@@ -3111,29 +3125,29 @@ msgstr "Frecvența instantanee maximă"
 msgid "Inverted mode"
 msgstr "Mod inversat"
 
-#: src/main.cpp:370
+#: src/main.cpp:364
 msgid "Global audio effects"
 msgstr "Efecte audio globale"
 
-#: src/main.cpp:371
+#: src/main.cpp:365
 msgid "© 2017-2026 Easy Effects Team"
 msgstr "© 2017-2026 Echipa Easy Effects"
 
-#: src/main.cpp:373
+#: src/main.cpp:367
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:373
+#: src/main.cpp:367
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Dezvoltator"
 
-#: src/main.cpp:377
+#: src/main.cpp:371
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Remus-Gabriel Chelu"
 
-#: src/main.cpp:377
+#: src/main.cpp:371
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "remusgabriel.chelu@disroot.org, 2025, 2026"
@@ -3652,9 +3666,6 @@ msgstr "Efecte audio simple"
 
 #~ msgid "Failed to Remove the %1 Convolver Impulse."
 #~ msgstr "Eliminarea impulsului algoritmului de convoluție %1 a eșuat."
-
-#~ msgid "Enable this Effect"
-#~ msgstr "Activează acest efect"
 
 #~ msgid "Imported the Equalizer APO Preset File."
 #~ msgstr "A fost importat fișierul de preconfigurare al egalizatorului APO."

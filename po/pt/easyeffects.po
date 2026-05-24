@@ -1016,6 +1016,7 @@ msgid "Bit reduction"
 msgstr "Redução de bits"
 
 #: src/contents/ui/Crusher.qml:91 src/contents/ui/PreferencesSheet.qml:377
+#: src/contents/ui/PreferencesSheet.qml:407
 msgid "Shape"
 msgstr "Forma"
 
@@ -1036,6 +1037,7 @@ msgid "Anti-aliasing"
 msgstr "Anti-Distorção"
 
 #: src/contents/ui/Crusher.qml:142 src/contents/ui/PreferencesSheet.qml:628
+#: src/contents/ui/PreferencesSheet.qml:658
 msgid "Mix"
 msgstr "Mistura"
 
@@ -2097,11 +2099,13 @@ msgstr "Nenhum cliente"
 
 #: src/contents/ui/PipeWirePage.qml:320
 #: src/contents/ui/PreferencesSheet.qml:336
+#: src/contents/ui/PreferencesSheet.qml:366
 msgid "State"
 msgstr "Estado"
 
 #: src/contents/ui/PipeWirePage.qml:327
 #: src/contents/ui/PreferencesSheet.qml:343
+#: src/contents/ui/PreferencesSheet.qml:373
 msgid "Enabled"
 msgstr "Ativado"
 
@@ -2276,7 +2280,8 @@ msgstr "Ativar/desativar monitoramento de entrada"
 
 #: src/contents/ui/PreferencesSheet.qml:222
 msgid "Mic monitor plays to output effects pipeline"
-msgstr "O monitor de microfone reproduz o sinal na saída do pipeline de efeitos"
+msgstr ""
+"O monitor de microfone reproduz o sinal na saída do pipeline de efeitos"
 
 #: src/contents/ui/PreferencesSheet.qml:234
 msgid "Copy the input audio buffer"
@@ -2347,14 +2352,17 @@ msgid "Graph"
 msgstr "Gráfico"
 
 #: src/contents/ui/PreferencesSheet.qml:381
+#: src/contents/ui/PreferencesSheet.qml:411
 msgid "Bars"
 msgstr "Barras"
 
 #: src/contents/ui/PreferencesSheet.qml:381
+#: src/contents/ui/PreferencesSheet.qml:411
 msgid "Lines"
 msgstr "Linhas"
 
 #: src/contents/ui/PreferencesSheet.qml:381
+#: src/contents/ui/PreferencesSheet.qml:411
 msgid "Dots"
 msgstr "Pontos"
 
@@ -2371,10 +2379,12 @@ msgid "Logarithmic frequency axis"
 msgstr "Eixo de frequência logarítmica"
 
 #: src/contents/ui/PreferencesSheet.qml:415
+#: src/contents/ui/PreferencesSheet.qml:445
 msgid "Points"
 msgstr "Pontos"
 
 #: src/contents/ui/PreferencesSheet.qml:430
+#: src/contents/ui/PreferencesSheet.qml:460
 msgid "Height"
 msgstr "Altura"
 
@@ -2391,14 +2401,17 @@ msgid "Maximum spectrum update rate."
 msgstr "Taxa máxima de atualização do espectro."
 
 #: src/contents/ui/PreferencesSheet.qml:460
+#: src/contents/ui/PreferencesSheet.qml:490
 msgid "Frequency Range"
 msgstr "Faixa de frequência"
 
 #: src/contents/ui/PreferencesSheet.qml:467
+#: src/contents/ui/PreferencesSheet.qml:497
 msgid "Minimum"
 msgstr "Mínimo"
 
 #: src/contents/ui/PreferencesSheet.qml:483
+#: src/contents/ui/PreferencesSheet.qml:513
 msgid "Maximum"
 msgstr "Máximo"
 
@@ -3148,7 +3161,7 @@ msgstr "Histórico Máximo"
 msgid "Inverted mode"
 msgstr "Inverter a Fase"
 
-#: src/main.cpp:370
+#: src/main.cpp:370 src/main.cpp:364
 #, fuzzy
 msgid "Global audio effects"
 msgstr "_Atalhos"
@@ -3464,6 +3477,20 @@ msgstr "Equalizador, Compressor e Outros Efeitos de Áudio"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "Efeitos de áudio simples"
+
+#: src/contents/ui/PreferencesSheet.qml:247
+#, fuzzy
+msgid "Enable the link delay"
+msgstr "Tempo Limite de Inatividade"
+
+#: src/contents/ui/PreferencesSheet.qml:248
+msgid "When enabled, a delay is applied before linking the audio filters."
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:260
+#, fuzzy
+msgid "Link delay"
+msgstr "Pré Atraso"
 
 #, fuzzy
 #~ msgid "Attack time"

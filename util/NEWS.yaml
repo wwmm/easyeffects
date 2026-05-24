@@ -4,7 +4,7 @@ Date: UNRELEASED_DATE
 
 Description: 
 - Features∶
-- 
+- Now instead of building the pipeline immediately we build it after a delay. The application of this delay and its amount can be configured in our preferences window. 
 
 - Bug fixes∶
 - 

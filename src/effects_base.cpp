@@ -311,6 +311,55 @@ void EffectsBase::deactivate_filters() {
   }
 }
 
+auto EffectsBase::apps_want_to_play() -> bool {
+  return false;  // default implementation, overridden in derived classes
+}
+
+void EffectsBase::connect_filters([[maybe_unused]] const bool& bypass) {
+  // default implementation, overridden in derived classes
+}
+
+void EffectsBase::disconnect_filters() {
+  // default implementation, overridden in derived classes
+}
+
+void EffectsBase::update_pipeline() {
+  auto rebuild = [this]() {
+    if (apps_want_to_play()) {
+      if (list_proxies.empty()) {
+        util::debug("At least one app linked to our device wants to play. Linking our filters.");
+
+        connect_filters();
+      }
+    } else {
+      if (DbMain::inactivityTimerEnable()) {
+        // if the timer is enabled, wait for the timeout, then unlink plugin pipeline
+
+        QTimer::singleShot(DbMain::inactivityTimeout() * 1000, this, [this]() {
+          if (!apps_want_to_play() && !list_proxies.empty()) {
+            util::debug("No app linked to our device wants to play. Unlinking our filters.");
+
+            disconnect_filters();
+          }
+        });
+      } else {
+        // otherwise, do nothing
+        if (!list_proxies.empty()) {
+          util::debug(
+              "No app linked to our device wants to play, but the inactivity timer is disabled. Leaving filters "
+              "linked.");
+        }
+      }
+    }
+  };
+
+  if (DbMain::linkDelayEnable()) {
+    QTimer::singleShot(DbMain::linkDelay(), this, [rebuild]() { rebuild(); });
+  } else {
+    rebuild();
+  }
+}
+
 auto EffectsBase::get_plugins_map() -> std::map<QString, std::unique_ptr<PluginBase>>& {
   return plugins;
 }
@@ -492,10 +541,10 @@ void EffectsBase::requestSpectrumData() {
 
         const auto min_available_freq = static_cast<float>(cached_spectrum_frequencies.front());
         const auto max_available_freq = static_cast<float>(cached_spectrum_frequencies.back());
-        const auto min_freq = std::clamp(static_cast<float>(DbSpectrum::minimumFrequency()), min_available_freq,
-                                         max_available_freq);
-        const auto max_freq = std::clamp(static_cast<float>(DbSpectrum::maximumFrequency()), min_available_freq,
-                                         max_available_freq);
+        const auto min_freq =
+            std::clamp(static_cast<float>(DbSpectrum::minimumFrequency()), min_available_freq, max_available_freq);
+        const auto max_freq =
+            std::clamp(static_cast<float>(DbSpectrum::maximumFrequency()), min_available_freq, max_available_freq);
 
         if (min_freq > (max_freq - 100.0F)) {
           return;

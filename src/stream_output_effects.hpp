@@ -63,11 +63,11 @@ class StreamOutputEffects : public EffectsBase {
  private:
   bool bypass = false;
 
-  void connect_filters(const bool& bypass = false);
+  void connect_filters(const bool& bypass = false) override;
 
-  void disconnect_filters();
+  void disconnect_filters() override;
 
-  auto apps_want_to_play() -> bool;
+  auto apps_want_to_play() -> bool override;
 
   void on_link_changed(pw::LinkInfo link_info);
 

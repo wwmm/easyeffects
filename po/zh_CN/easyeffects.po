@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-05-22 22:13-0300\n"
+"POT-Creation-Date: 2026-05-24 13:56-0300\n"
 "PO-Revision-Date: 2026-05-18 05:11+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
@@ -1010,7 +1010,7 @@ msgstr "衰减"
 msgid "Bit reduction"
 msgstr "位衰减"
 
-#: src/contents/ui/Crusher.qml:91 src/contents/ui/PreferencesSheet.qml:377
+#: src/contents/ui/Crusher.qml:91 src/contents/ui/PreferencesSheet.qml:407
 msgid "Shape"
 msgstr "形状"
 
@@ -1030,7 +1030,7 @@ msgstr "DC 偏移"
 msgid "Anti-aliasing"
 msgstr "抗混叠"
 
-#: src/contents/ui/Crusher.qml:142 src/contents/ui/PreferencesSheet.qml:628
+#: src/contents/ui/Crusher.qml:142 src/contents/ui/PreferencesSheet.qml:658
 msgid "Mix"
 msgstr "混合"
 
@@ -2071,12 +2071,12 @@ msgid "No Clients"
 msgstr "无客户端"
 
 #: src/contents/ui/PipeWirePage.qml:320
-#: src/contents/ui/PreferencesSheet.qml:336
+#: src/contents/ui/PreferencesSheet.qml:366
 msgid "State"
 msgstr "状态"
 
 #: src/contents/ui/PipeWirePage.qml:327
-#: src/contents/ui/PreferencesSheet.qml:343
+#: src/contents/ui/PreferencesSheet.qml:373
 msgid "Enabled"
 msgstr "启用"
 
@@ -2262,151 +2262,165 @@ msgstr ""
 "Effects虚拟设备监视器录制时将不再产生音频故障。"
 
 #: src/contents/ui/PreferencesSheet.qml:247
-msgid "Enable the inactivity timeout"
+#, fuzzy
+msgid "Enable the link delay"
 msgstr "启用空闲超时"
 
 #: src/contents/ui/PreferencesSheet.qml:248
+msgid "When enabled, a delay is applied before linking the audio filters."
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:260
+#, fuzzy
+msgid "Link delay"
+msgstr "预延迟"
+
+#: src/contents/ui/PreferencesSheet.qml:277
+msgid "Enable the inactivity timeout"
+msgstr "启用空闲超时"
+
+#: src/contents/ui/PreferencesSheet.qml:278
 msgid ""
 "When all streams are inactive, Easy Effects pipeline remains loaded for an "
 "extra amount of time."
 msgstr "当没有活跃音频流时，Easy Effects 管线仍将额外加载一段时间。"
 
-#: src/contents/ui/PreferencesSheet.qml:260
+#: src/contents/ui/PreferencesSheet.qml:290
 msgid "Inactivity timeout"
 msgstr "空闲超时"
 
-#: src/contents/ui/PreferencesSheet.qml:275
+#: src/contents/ui/PreferencesSheet.qml:305
 msgid "Level meters frame rate cap"
 msgstr "电平表帧率上限"
 
-#: src/contents/ui/PreferencesSheet.qml:276
+#: src/contents/ui/PreferencesSheet.qml:306
 msgid "Maximum level meter update rate."
 msgstr "电平表动画的最高刷新率。"
 
-#: src/contents/ui/PreferencesSheet.qml:290
+#: src/contents/ui/PreferencesSheet.qml:320
 msgid "Level meters label"
 msgstr "电平表标签"
 
-#: src/contents/ui/PreferencesSheet.qml:291
+#: src/contents/ui/PreferencesSheet.qml:321
 msgid ""
 "The time it takes for the level meter labels to be updated when the current "
 "level is below the last highest one."
 msgstr "当前电平低于此前最高值时，电平表更新耗时。"
 
-#: src/contents/ui/PreferencesSheet.qml:308
+#: src/contents/ui/PreferencesSheet.qml:338
 msgid "Enable level meters animation"
 msgstr "启用电平表动画"
 
-#: src/contents/ui/PreferencesSheet.qml:317
+#: src/contents/ui/PreferencesSheet.qml:347
 msgid "Level meters animation duration"
 msgstr "电平表动画持续时间"
 
-#: src/contents/ui/PreferencesSheet.qml:355
+#: src/contents/ui/PreferencesSheet.qml:385
 msgid "Audio delay compensation"
 msgstr "音频延迟补偿"
 
-#: src/contents/ui/PreferencesSheet.qml:370
+#: src/contents/ui/PreferencesSheet.qml:400
 msgid "Graph"
 msgstr "图像"
 
-#: src/contents/ui/PreferencesSheet.qml:381
+#: src/contents/ui/PreferencesSheet.qml:411
 msgid "Bars"
 msgstr "柱型"
 
-#: src/contents/ui/PreferencesSheet.qml:381
+#: src/contents/ui/PreferencesSheet.qml:411
 msgid "Lines"
 msgstr "线型"
 
-#: src/contents/ui/PreferencesSheet.qml:381
+#: src/contents/ui/PreferencesSheet.qml:411
 msgid "Dots"
 msgstr "点阵"
 
-#: src/contents/ui/PreferencesSheet.qml:381
+#: src/contents/ui/PreferencesSheet.qml:411
 msgid "Area"
 msgstr "色块"
 
-#: src/contents/ui/PreferencesSheet.qml:391
+#: src/contents/ui/PreferencesSheet.qml:421
 msgid "Dynamic scale"
 msgstr "动态刻度"
 
-#: src/contents/ui/PreferencesSheet.qml:403
+#: src/contents/ui/PreferencesSheet.qml:433
 msgid "Logarithmic frequency axis"
 msgstr "对数频率轴"
 
-#: src/contents/ui/PreferencesSheet.qml:415
+#: src/contents/ui/PreferencesSheet.qml:445
 msgid "Points"
 msgstr "数量"
 
-#: src/contents/ui/PreferencesSheet.qml:430
+#: src/contents/ui/PreferencesSheet.qml:460
 msgid "Height"
 msgstr "高度"
 
-#: src/contents/ui/PreferencesSheet.qml:437
+#: src/contents/ui/PreferencesSheet.qml:467
 msgid "px"
 msgstr "像素"
 
-#: src/contents/ui/PreferencesSheet.qml:444
+#: src/contents/ui/PreferencesSheet.qml:474
 msgid "Spectrum frame rate cap"
 msgstr "频谱帧率上限"
 
-#: src/contents/ui/PreferencesSheet.qml:445
+#: src/contents/ui/PreferencesSheet.qml:475
 msgid "Maximum spectrum update rate."
 msgstr "频谱动画的最高刷新率。"
 
-#: src/contents/ui/PreferencesSheet.qml:460
+#: src/contents/ui/PreferencesSheet.qml:490
 msgid "Frequency Range"
 msgstr "频率范围"
 
-#: src/contents/ui/PreferencesSheet.qml:467
+#: src/contents/ui/PreferencesSheet.qml:497
 msgid "Minimum"
 msgstr "最低"
 
-#: src/contents/ui/PreferencesSheet.qml:483
+#: src/contents/ui/PreferencesSheet.qml:513
 msgid "Maximum"
 msgstr "最高"
 
-#: src/contents/ui/PreferencesSheet.qml:505
+#: src/contents/ui/PreferencesSheet.qml:535
 msgid "Database autosave interval"
 msgstr "数据库自动保存间隔"
 
-#: src/contents/ui/PreferencesSheet.qml:519
+#: src/contents/ui/PreferencesSheet.qml:549
 msgid "Most used presets"
 msgstr "最常用的预设"
 
-#: src/contents/ui/PreferencesSheet.qml:537
+#: src/contents/ui/PreferencesSheet.qml:567
 msgid "Window"
 msgstr "窗口"
 
-#: src/contents/ui/PreferencesSheet.qml:546
+#: src/contents/ui/PreferencesSheet.qml:576
 msgid "Force KDE's Breeze theme when Easy Effects starts"
 msgstr "在 Easy Effects 启动时强制应用 KDE Breeze 微风主题"
 
-#: src/contents/ui/PreferencesSheet.qml:547
+#: src/contents/ui/PreferencesSheet.qml:577
 msgid ""
 "It is necessary to restart the service for changes in this setting to take "
 "effect."
 msgstr "此设置需重启服务生效。"
 
-#: src/contents/ui/PreferencesSheet.qml:560
+#: src/contents/ui/PreferencesSheet.qml:590
 msgid "Reduce effects list controls"
 msgstr "收起音效列表控制项"
 
-#: src/contents/ui/PreferencesSheet.qml:561
+#: src/contents/ui/PreferencesSheet.qml:591
 msgid ""
 "Action buttons in the effects list are moved inside a context menu for a "
 "more compact view."
 msgstr "将音效列表的操控按钮移入上下文菜单，使视图更紧凑。"
 
-#: src/contents/ui/PreferencesSheet.qml:572
-#: src/contents/ui/PreferencesSheet.qml:609
+#: src/contents/ui/PreferencesSheet.qml:602
+#: src/contents/ui/PreferencesSheet.qml:639
 msgid "Color scheme"
 msgstr "颜色方案"
 
-#: src/contents/ui/PreferencesSheet.qml:586
+#: src/contents/ui/PreferencesSheet.qml:616
 msgid "Force English language"
 msgstr "强制使用英文"
 
-#: src/contents/ui/PreferencesSheet.qml:587
+#: src/contents/ui/PreferencesSheet.qml:617
 msgid ""
 "Do not translate the user interface and show text in English language. "
 "Useful if the translation in the local language is incomplete or "
@@ -2415,137 +2429,137 @@ msgstr ""
 "不翻译用户界面，以英文显示文本。用于本地翻译不完整或不好理解时。重启服务以应"
 "用此选项。"
 
-#: src/contents/ui/PreferencesSheet.qml:598
+#: src/contents/ui/PreferencesSheet.qml:628
 msgid "Graphs"
 msgstr "图像"
 
-#: src/contents/ui/PreferencesSheet.qml:613
+#: src/contents/ui/PreferencesSheet.qml:643
 msgid "Automatic"
 msgstr "自动"
 
-#: src/contents/ui/PreferencesSheet.qml:613
+#: src/contents/ui/PreferencesSheet.qml:643
 msgid "Light"
 msgstr "亮色"
 
-#: src/contents/ui/PreferencesSheet.qml:613
+#: src/contents/ui/PreferencesSheet.qml:643
 msgid "Dark"
 msgstr "暗色"
 
-#: src/contents/ui/PreferencesSheet.qml:624
+#: src/contents/ui/PreferencesSheet.qml:654
 msgid "Color theme"
 msgstr "颜色主题"
 
-#: src/contents/ui/PreferencesSheet.qml:628
+#: src/contents/ui/PreferencesSheet.qml:658
 msgid "Green"
 msgstr "绿色"
 
-#: src/contents/ui/PreferencesSheet.qml:628
+#: src/contents/ui/PreferencesSheet.qml:658
 msgid "Green neon"
 msgstr "霓虹绿色"
 
-#: src/contents/ui/PreferencesSheet.qml:628
+#: src/contents/ui/PreferencesSheet.qml:658
 msgid "Orange"
 msgstr "橙色"
 
-#: src/contents/ui/PreferencesSheet.qml:628
+#: src/contents/ui/PreferencesSheet.qml:658
 msgid "Yellow"
 msgstr "黄色"
 
-#: src/contents/ui/PreferencesSheet.qml:628
+#: src/contents/ui/PreferencesSheet.qml:658
 msgid "Blue"
 msgstr "蓝色"
 
-#: src/contents/ui/PreferencesSheet.qml:628
+#: src/contents/ui/PreferencesSheet.qml:658
 msgid "Purple"
 msgstr "紫色"
 
-#: src/contents/ui/PreferencesSheet.qml:628
+#: src/contents/ui/PreferencesSheet.qml:658
 msgid "Grey"
 msgstr "灰色"
 
-#: src/contents/ui/PreferencesSheet.qml:628
+#: src/contents/ui/PreferencesSheet.qml:658
 msgid "User"
 msgstr "自定义"
 
-#: src/contents/ui/PreferencesSheet.qml:636
+#: src/contents/ui/PreferencesSheet.qml:666
 msgctxt "@label"
 msgid "Background"
 msgstr "背景"
 
-#: src/contents/ui/PreferencesSheet.qml:645
+#: src/contents/ui/PreferencesSheet.qml:675
 msgctxt "@label"
 msgid "Plot area background"
 msgstr "线图背景"
 
-#: src/contents/ui/PreferencesSheet.qml:654
+#: src/contents/ui/PreferencesSheet.qml:684
 msgctxt "@label"
 msgid "Series colors"
 msgstr "主颜色"
 
-#: src/contents/ui/PreferencesSheet.qml:663
+#: src/contents/ui/PreferencesSheet.qml:693
 msgctxt "@label"
 msgid "Axis labels text color"
 msgstr "坐标轴文本颜色"
 
-#: src/contents/ui/PreferencesSheet.qml:672
+#: src/contents/ui/PreferencesSheet.qml:702
 msgctxt "@label"
 msgid "Axis labels background color"
 msgstr "坐标轴背景颜色"
 
-#: src/contents/ui/PreferencesSheet.qml:681
+#: src/contents/ui/PreferencesSheet.qml:711
 msgctxt "@label"
 msgid "Border color"
 msgstr "边框颜色"
 
-#: src/contents/ui/PreferencesSheet.qml:690
+#: src/contents/ui/PreferencesSheet.qml:720
 msgid "Line width"
 msgstr "线宽"
 
-#: src/contents/ui/PreferencesSheet.qml:704
+#: src/contents/ui/PreferencesSheet.qml:734
 msgid "Show grid lines"
 msgstr "显示网格线"
 
-#: src/contents/ui/PreferencesSheet.qml:722
+#: src/contents/ui/PreferencesSheet.qml:752
 msgid "Autoload delay"
 msgstr "自动加载延迟"
 
-#: src/contents/ui/PreferencesSheet.qml:723
+#: src/contents/ui/PreferencesSheet.qml:753
 msgid ""
 "Delay between receiving a new device route and the call to autoload a preset."
 msgstr "在接收新设备路由与自动加载预设之间的延迟。"
 
-#: src/contents/ui/PreferencesSheet.qml:739
+#: src/contents/ui/PreferencesSheet.qml:769
 msgid "Ignore the blocklist from presets"
 msgstr "忽略预设中的排除列表"
 
-#: src/contents/ui/PreferencesSheet.qml:740
+#: src/contents/ui/PreferencesSheet.qml:770
 msgid ""
 "If enabled, the list of excluded apps set in the loaded preset is ignored "
 "and does not replace the one set by the user."
 msgstr ""
 "启用后，Easy Effects 将忽略从预设中读取的排除列表，也不会替换用户设定。"
 
-#: src/contents/ui/PreferencesSheet.qml:761
+#: src/contents/ui/PreferencesSheet.qml:791
 msgid "Global shortcuts"
 msgstr "全局快捷键"
 
-#: src/contents/ui/PreferencesSheet.qml:762
+#: src/contents/ui/PreferencesSheet.qml:792
 msgid "Enables support for XDG global shortcuts."
 msgstr "启用对 XDG 全局快捷键的支持。"
 
-#: src/contents/ui/PreferencesSheet.qml:774
+#: src/contents/ui/PreferencesSheet.qml:804
 msgid "Native window of effects"
 msgstr "原生插件窗口"
 
-#: src/contents/ui/PreferencesSheet.qml:775
+#: src/contents/ui/PreferencesSheet.qml:805
 msgid "Allows the native user interface of effects to be shown/hidden."
 msgstr "允许显示或隐藏原生插件窗口。"
 
-#: src/contents/ui/PreferencesSheet.qml:787
+#: src/contents/ui/PreferencesSheet.qml:817
 msgid "Update frequency"
 msgstr "更新频率"
 
-#: src/contents/ui/PreferencesSheet.qml:788
+#: src/contents/ui/PreferencesSheet.qml:818
 msgid "Related to LV2 plugins."
 msgstr "影响 LV2 插件。"
 
@@ -3059,29 +3073,29 @@ msgstr "最长瞬态频率"
 msgid "Inverted mode"
 msgstr "反转模式"
 
-#: src/main.cpp:370
+#: src/main.cpp:364
 msgid "Global audio effects"
 msgstr "全局音频效果"
 
-#: src/main.cpp:371
+#: src/main.cpp:365
 msgid "© 2017-2026 Easy Effects Team"
 msgstr "© 2017–2026 Easy Effects 开发团队"
 
-#: src/main.cpp:373
+#: src/main.cpp:367
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:373
+#: src/main.cpp:367
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "开发者"
 
-#: src/main.cpp:377
+#: src/main.cpp:371
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Gerald Chen"
 
-#: src/main.cpp:377
+#: src/main.cpp:371
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "z9r55jue3@mozmail.com"
