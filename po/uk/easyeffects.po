@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-05-24 13:56-0300\n"
-"PO-Revision-Date: 2026-05-11 22:03+0000\n"
+"PO-Revision-Date: 2026-05-25 21:11+0000\n"
 "Last-Translator: Володимир <vlzuykov@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 2026.5-dev\n"
+"X-Generator: Weblate 2026.6.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -2284,18 +2284,18 @@ msgstr ""
 "віртуальних пристроїв Easy Effects."
 
 #: src/contents/ui/PreferencesSheet.qml:247
-#, fuzzy
 msgid "Enable the link delay"
-msgstr "Увімкнути час очікування при бездіяльності"
+msgstr "Увімкнути затримку підключення"
 
 #: src/contents/ui/PreferencesSheet.qml:248
 msgid "When enabled, a delay is applied before linking the audio filters."
 msgstr ""
+"Якщо ця опція увімкнена, перед підключенням аудіофільтрів застосовується "
+"затримка."
 
 #: src/contents/ui/PreferencesSheet.qml:260
-#, fuzzy
 msgid "Link delay"
-msgstr "Попередня затримка"
+msgstr "Затримка підключення"
 
 #: src/contents/ui/PreferencesSheet.qml:277
 msgid "Enable the inactivity timeout"
