@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-05-24 13:56-0300\n"
-"PO-Revision-Date: 2026-05-23 23:11+0000\n"
+"PO-Revision-Date: 2026-05-25 06:11+0000\n"
 "Last-Translator: Fjuro <fjuro@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
 "cs/>\n"
@@ -2279,18 +2279,17 @@ msgstr ""
 "nahrávají ze zvukových monitorů virtuálních zařízení Easy Effects."
 
 #: src/contents/ui/PreferencesSheet.qml:247
-#, fuzzy
 msgid "Enable the link delay"
-msgstr "Zkušební signály"
+msgstr "Povolit zpoždění linky"
 
 #: src/contents/ui/PreferencesSheet.qml:248
 msgid "When enabled, a delay is applied before linking the audio filters."
 msgstr ""
+"Pokud je povoleno, bude před linkováním zvukových filtrů použito zpoždění."
 
 #: src/contents/ui/PreferencesSheet.qml:260
-#, fuzzy
 msgid "Link delay"
-msgstr "Předzpoždění"
+msgstr "Linkové zpoždění"
 
 #: src/contents/ui/PreferencesSheet.qml:277
 msgid "Enable the inactivity timeout"

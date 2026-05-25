@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-05-24 13:56-0300\n"
-"PO-Revision-Date: 2026-05-16 23:11+0000\n"
+"PO-Revision-Date: 2026-05-25 06:11+0000\n"
 "Last-Translator: Turan <24282230@stu.omu.edu.tr>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
 "tr/>\n"
@@ -235,9 +235,8 @@ msgstr "Çıktı Kazancı"
 #: src/contents/ui/RNNoise.qml:84 src/contents/ui/RNNoise.qml:298
 #: src/contents/ui/RNNoise.qml:300 src/contents/ui/RNNoise.qml:320
 #: src/contents/ui/Speex.qml:177 src/contents/ui/StereoTools.qml:392
-#, fuzzy
 msgid "Using %1"
-msgstr "{} Kullanıyor"
+msgstr "%1 Kullanılıyor"
 
 #: src/contents/ui/Autogain.qml:250 src/contents/ui/DeepFilterNet.qml:214
 #: src/contents/ui/LevelMeter.qml:232 src/contents/ui/Pitch.qml:285
@@ -296,7 +295,7 @@ msgstr "Yapılandırma"
 
 #: src/contents/ui/Autotune.qml:153
 msgid "Bias"
-msgstr ""
+msgstr "Sapma"
 
 #: src/contents/ui/Autotune.qml:169 src/contents/ui/Deesser.qml:171
 #: src/contents/ui/Filter.qml:123 src/contents/ui/Reverb.qml:126
