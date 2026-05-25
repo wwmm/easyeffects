@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-28 14:40+0000\n"
-"PO-Revision-Date: 2026-05-24 06:11+0000\n"
+"PO-Revision-Date: 2026-05-25 03:11+0000\n"
 "Last-Translator: Turan <24282230@stu.omu.edu.tr>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/tr/>\n"
@@ -132,7 +132,6 @@ msgstr "Ses denetimlerini gösteren sarsıcı sayfası"
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:537
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:547
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:560
-#, fuzzy
 msgid "Features:"
 msgstr "Özellikler:"
 
@@ -301,15 +300,15 @@ msgstr ""
 "hata düzeltildi."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:89
-#, fuzzy
 msgid ""
 "We now set monitor.passthrough = true in our virtual devices. This will "
 "allow latency offset to be properly applied by video players when PipeWire "
 "&gt; 1.0.3 is released."
 msgstr ""
-"Artık sanal aygıtlarımızda monitor.passthrough = true olarak ayarlıyoruz. "
-"Bu, PipeWire &gt; 1.0.3 yayınlandığında gecikme süresinin video oynatıcılar "
-"tarafından düzgün bir şekilde uygulanmasını sağlayacaktır."
+"Artık sanal cihazlarımızda monitor.passthrough = true ayarını yapıyoruz "
+"(tanımlıyoruz). Bu, PipeWire'ın 1.0.3'ten daha yeni bir sürümü "
+"yayınlandığında, gecikme telafisinin (latency offset) video oynatıcılar "
+"tarafından düzgün bir şekilde uygulanabilmesini sağlayacak."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:90
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:237
@@ -906,20 +905,22 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:345
 msgid "Avoid crashes when pw-mididump is running"
-msgstr ""
+msgstr "Pw-mididump çalışırken çökmeleri önle"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:353
 msgid "The interface of the pitch plugin was improved"
-msgstr ""
+msgstr "Perde (pitch) eklentisinin arayüzü iyileştirildi"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:354
 msgid "Our application icon is now compatible with desktops that uses QT"
-msgstr ""
+msgstr "Uygulama simgemiz artık Qt kullanan masaüstleriyle uyumlu"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:355
 msgid ""
 "Our blocklist code will use the application.id tag if the stream sets it"
 msgstr ""
+"Engelleme listesi kodumuz, akış tarafından ayarlanmışsa application.id "
+"etiketini kullanacak"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:356
 msgid ""
@@ -928,12 +929,18 @@ msgid ""
 "scale anymore. More details about the problem and the solution for it can be "
 "found on issue 1211 and issue 1427"
 msgstr ""
+"Oynatıcılar/Kaydediciler sekmesindeki uygulama listesi ögeleri, fare "
+"tekerleğiyle yaşanan sorunları önlemek için artık ses seviyesi ölçeği "
+"göstermiyor. Sorun ve çözümü hakkında daha fazla ayrıntıya hata 1211 ve hata "
+"1427 üzerinden ulaşılabilir"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:357
 msgid ""
 "When no application is available for display in the Players/Recorders a "
 "message will be shown to the user"
 msgstr ""
+"Oynatıcılar/Kaydediciler sekmesinde gösterilecek bir uygulama olmadığında "
+"kullanıcıya bir mesaj görüntülenecek"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:358
 msgid "Many translation updates"
@@ -945,12 +952,17 @@ msgid ""
 "the spectrum was changed while our pipeline was active and the spectrum "
 "widget was visible"
 msgstr ""
+"İşlem hattımız etkinken ve spektrum bileşeni görünür durumdayken, spektrumda "
+"görüntülenen nokta sayısı değiştirildiğinde EasyEffects'in çökmesine neden "
+"olan bir hata düzeltildi"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:361
 msgid ""
 "The pipeline latency value displayed in our window could be wrong in some "
 "situations. This was fixed."
 msgstr ""
+"Penceremizde görüntülenen işlem hattı gecikme değerinin bazı durumlarda "
+"yanlış olması sorunu düzeltildi."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:369
 msgid ""
@@ -959,12 +971,20 @@ msgid ""
 "filters will be unlinked after the timeout is reached. This is done to make "
 "sure we do not waste CPU power processing silence."
 msgstr ""
+"Kullanıcının işlem hattı için bir boştayken zaman aşımı süresi seçmesine "
+"olanak tanıyan yeni bir ayar eklendi. Cihazlarımızdan herhangi bir oynatma "
+"veya kayıt yapılmadığında, zaman aşımı süresi dolunca filtrelerin bağlantısı "
+"kesilecek. Bu, sessizliği işleyerek CPU gücünü boşa harcamamak için "
+"yapılmıştır."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:370
 msgid ""
 "The autogain plugin now allows the user to select which of the three "
 "loudness are used to calculate the geometric mean."
 msgstr ""
+"Otomatik kazanç (autogain) eklentisi artık kullanıcının, geometrik "
+"ortalamayı hesaplamak için üç ses gürlüğü (şiddeti) değerinden hangilerinin "
+"kullanılacağını seçmesine olanak tanıyor."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:371
 msgid ""
@@ -972,6 +992,10 @@ msgid ""
 "use libebur128 histogram mode anymore. This should avoid the cases where the "
 "Integrated loudness gets stuck forever in the same value."
 msgstr ""
+"Otomatik kazanç (autogain) eklentisi artık maksimum geçmiş değerinin "
+"ayarlanmasına olanak tanıyor ve artık libebur128 histogram modunu "
+"kullanmıyor. Bu durum, bütünleşik ses gürlüğünün sonsuza kadar aynı değerde "
+"takılı kalması sorununu önleyecektir."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:372
 msgid ""
@@ -986,6 +1010,7 @@ msgid ""
 "The command line option that returns the global bypass state is working "
 "again."
 msgstr ""
+"Genel bypass durumunu döndüren komut satırı parametresi yeniden çalışıyor."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:382
 msgid ""
@@ -993,16 +1018,21 @@ msgid ""
 "switches. Jumps in volume level should not happen anymore in these "
 "situations."
 msgstr ""
+"Crossfeed filtresi artık PipeWire'ın dinamik gecikme (latency) geçişlerine "
+"daha iyi uyum sağlıyor. Bu geçişler sırasında ses seviyesinde yaşanan ani "
+"sıçramalar artık meydana gelmeyecek."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:384
 msgid ""
 "Fixed a bug that prevented mono microphones from properly working with "
 "EasyEffects"
 msgstr ""
+"Mono (tek kanallı) mikrofonların EasyEffects ile düzgün çalışmasını "
+"engelleyen bir hata giderildi"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:392
 msgid "Support for the next PipeWire release 0.3.44"
-msgstr ""
+msgstr "PipeWire'ın bir sonraki sürümü olan 0.3.44 için destek eklendi"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:393
 msgid ""
@@ -1010,6 +1040,9 @@ msgid ""
 "switches. Jumps in volume level should not happen anymore in these "
 "situations."
 msgstr ""
+"Autogain (otomatik kazanç) filtresi artık PipeWire'ın dinamik gecikme "
+"(latency) geçişlerine daha iyi uyum sağlıyor. Bu geçişler sırasında ses "
+"seviyesinde yaşanan ani sıçramalar artık meydana gelmeyecek."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:394
 msgid ""
@@ -1017,6 +1050,10 @@ msgid ""
 "devices to be reset when EasyEffects starts. It should help with the cases "
 "were our devices are muted by the audio server for unknown reasons."
 msgstr ""
+"EasyEffects başlatıldığında sanal aygıtlarımızın ses seviyesinin ve sessize "
+"alınma (mute) durumunun sıfırlanmasını sağlayan yeni bir seçenek ekledik. Bu "
+"özellik, aygıtlarımızın ses sunucusu tarafından bilinmeyen nedenlerle "
+"sessize alındığı durumların çözülmesine yardımcı olacaktır."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:395
 msgid "Better support for computer suspending."
@@ -1027,12 +1064,16 @@ msgid ""
 "Fixed a bug where trying to create an autoloading profile without having "
 "presets caused the application to crash."
 msgstr ""
+"Kayıtlı hiçbir ön ayar (preset) yokken otomatik yükleme profili oluşturmaya "
+"çalışmanın uygulamanın çökmesine (crash) yol açtığı bir hata giderildi."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:406
 msgid ""
 "Fixed a bug where setting a equalizer band quality to zero would lead to an "
 "application crash."
 msgstr ""
+"Bir ekolayzer bandının kalite değerini (Q faktörünü) sıfıra ayarlamanın "
+"uygulamanın çökmesine (crash) neden olduğu bir hata giderildi."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:414
 msgid ""
@@ -1053,28 +1094,43 @@ msgid ""
 "Bell filter, but also other supported ones (at the moment only the Bandpass "
 "filter is not available in LSP plugin)."
 msgstr ""
+"Equalizer APO ön ayar (preset) içe aktarma özelliği, sadece Bell (çan) "
+"filtresini değil, desteklenen diğer filtreleri de uygulayacak şekilde "
+"geliştirildi (şu an için LSP eklentisinde yalnızca Bandpass filtresi "
+"bulunmuyor)."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:417
 msgid "The Reset All Settings function in our menu should work in Flatpak now."
 msgstr ""
+"Menümüzdeki 'Tüm Ayarları Sıfırla' işlevi artık Flatpak sürümünde çalışıyor."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:418
 msgid ""
 "We have a new option that allows the user to disable our menus autohide. "
 "This may help to workaround some bugs Popover menus currently have on gtk4."
 msgstr ""
+"Menülerimizin otomatik gizlenme özelliğini devre dışı bırakmayı sağlayan "
+"yeni bir seçenek ekledik. Bu, şu an GTK4'teki açılır (popover) menülerde "
+"yaşanan bazı hataları aşmak için geçici bir çözüm sağlayabilir."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:420
 msgid ""
 "More robust parsing to import APO presets saved with comma as thousands "
 "separator in central frequency band."
 msgstr ""
+"APO ön ayar dosyalarını içe aktarırken, frekans değerlerinde binlik ayracı "
+"olarak virgül kullanılmışsa yaşanan okuma hataları düzeltildi. Artık bu "
+"dosyalar daha sorunsuz taranabiliyor."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:422
 msgid ""
 "The fmt library is a new dependency At least while the c++ compilers do not "
 "implement its features. This is expected to happen in the next years."
 msgstr ""
+"Fmt kütüphanesi artık program için yeni bir bağımlılık (dependency) haline "
+"geldi. En azından C++ derleyicileri bu özellikleri standart olarak sunana "
+"kadar bu şekilde kalacak (ki bunun önümüzdeki yıllarda gerçekleşmesi "
+"bekleniyor)."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:423
 msgid ""
@@ -1087,12 +1143,17 @@ msgid ""
 "It is now possible to combine impulse responses in the Convolver interface. "
 "A new impulse file is generated and it should be visible in the impulse list."
 msgstr ""
+"Artık Convolver (evrişim) arayüzünde impuls yanıtlarını (impulse responses) "
+"birleştirmek mümkün. Bu işlem sonucunda yeni bir impuls dosyası "
+"oluşturuluyor ve bu dosyayı impuls listesinde görebiliyorsun."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:432
 msgid ""
 "Improved x axis drawings in our plots. Now the number of labels is adjusted "
 "dynamically depending on our window width."
 msgstr ""
+"Grafiklerimizdeki X ekseni çizimleri iyileştirildi. Artık etiketlerin "
+"sayısı, pencere genişliğine bağlı olarak dinamik bir şekilde ayarlanıyor."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:433
 msgid ""
@@ -1100,54 +1161,77 @@ msgid ""
 "Old references about PulseEffects have been removed. The documentation "
 "button has been added in the menu section."
 msgstr ""
+"Dokümantasyon ,yeni EasyEffects özelliklerini yansıtacak şekilde "
+"güncellendi. PulseEffects'e dair eski referanslar metinlerden temizlendi ve "
+"menü bölümüne bir dokümantasyon butonu eklendi."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:435
 msgid ""
 "When a spinbutton is filled with an out of range value, now it is updated "
 "with the lowest/highest value rather than resetting to the previous one."
 msgstr ""
+"Bir sayı giriş kutusuna (spinbutton) sınırların dışında bir değer "
+"girildiğinde, artık önceki geçerli değere sıfırlanmak yerine doğrudan izin "
+"verilen en düşük veya en yüksek değere güncelleniyor."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:436
 msgid ""
 "The application window now remembers the maximized state and restores it on "
 "the next opening event."
 msgstr ""
+"Uygulama penceresi artık büyütülmüş durumunu hatırlıyor ve bir sonraki "
+"açılışta bu durumu geri yüklüyor."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:438
 msgid "The tbb library is a new dependency"
 msgstr ""
+"İş Parçacığı Oluşturma Yapı Taşları (tbb) kütüphanesi artık yeni bir "
+"bağımlılık haline geldi"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:446
 msgid ""
 "The Limiter and the Multiband Compressor plugins can now use an optional "
 "external sidechain."
 msgstr ""
+"Limiter (Sınırlayıcı) ve Multiband Compressor (Çok Bantlı Kompresör) "
+"eklentileri artık isteğe bağlı olarak harici bir yan zincir (external "
+"sidechain) kullanabiliyor."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:447
 msgid ""
 "The Autogain plugin now allows the user to select which Loudness is used as "
 "reference for the volume correction."
 msgstr ""
+"Autogain (otomatik kazanç) eklentisi, artık ses seviyesi düzeltmesi işlemi "
+"için referans olarak hangi gürlük/ses şiddeti (loudness) türünün "
+"kullanılacağını kullanıcının seçmesine olanak tanıyor."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:448
 msgid ""
 "The APO Profile Import feature of Equalizer plugin now parses the \"Pre "
 "Amplification\" parameter."
 msgstr ""
+"Ekolayzer eklentisinin APO Profili İçe Aktarma özelliği artık 'Ön "
+"Yükseltme'parametresini de ayrıştırıyor (tanıyor)."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:449
 msgid "Optional Cubic Volume can be enabled in General Settings."
 msgstr ""
+"İsteğe bağlı 'Kübik Ses' (Cubic Volume) özelliği Genel Ayarlar bölümünden "
+"etkinleştirilebilir."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:451
 msgid ""
 "The Spectrum plugin was supposed to enter passthrough whenever it was not "
 "visible, but this was happening only when our window was closed."
 msgstr ""
+"Spektrum eklentisinin, ekranda görünmediği her an passthrough (doğrudan "
+"geçiş) moduna girmesi gerekiyordu; ancak bu durum sadece penceremiz tamamen "
+"kapatıldığında gerçekleşiyordu."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:452
 msgid "Improved support for Assistive Technology."
-msgstr ""
+msgstr "Yardımcı Teknolojiler (Assistive Technology) desteği iyileştirildi."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:453
 msgid ""
@@ -1155,20 +1239,27 @@ msgid ""
 "being relinked after changing the order of the plugins in the pipeline. It "
 "should be working now."
 msgstr ""
+"Kompresör ve Limiter (Sınırlandırıcı) gibi bazı filtrelerde kullanılan "
+"problar, eklentilerin işlem zincirindeki (pipeline) sırası değiştirildikten "
+"sonra yeniden bağlanmıyordu (relink). Bu sorun artık çözüldü."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:461
 msgid ""
 "PipeWire monitor streams are now excluded and removed from the applications "
 "list."
 msgstr ""
+"PipeWire monitör akışları artık hariç tutuluyor ve uygulamalar listesinden "
+"kaldırıldı."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:463
 msgid "Hopefully crashes like the one reported at issue 1172 are fixed."
 msgstr ""
+"1172 numaralı hata kaydında bildirilenlere benzer çökmelerin düzeltilmiş "
+"olduğu umuluyor."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:464
 msgid "Prevented a case in which Spectrum was crashing."
-msgstr ""
+msgstr "Spektrum eklentisinin çökmesine neden olan bir durumun önüne geçildi."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:465
 msgid ""
@@ -1184,6 +1275,10 @@ msgid ""
 "that decided to use it instead of the built-in PipeWire session manager. "
 "More information at issue 1144."
 msgstr ""
+"WirePlumber ile olan uyumluluk iyileştirildi. Bu durum, yerleşik PipeWire "
+"oturum yöneticisi yerine WirePlumber kullanmaya karar veren sistemlerde "
+"programın çalışabilmesi için gerekliydi. Daha fazla bilgi 1144 numaralı hata "
+"kaydında yer almaktadır."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:481
 msgid ""
@@ -1191,12 +1286,19 @@ msgid ""
 "its target preset will be updated. This way we can change the profile preset "
 "without having to remove and recreating it."
 msgstr ""
+"Zaten listede bulunan bir cihaz için otomatik yüklenen bir profil eklemeye "
+"çalışıldığında, artık o cihazın hedef ön ayarı güncelleniyor. Bu sayede, bir "
+"profilin ön ayarını silip sıfırdan yeniden oluşturmaya gerek kalmadan "
+"kolayca değiştirebiliyoruz."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:482
 msgid ""
 "The preset autoloading support implementation was redesigned again. It "
 "should work on more hardware now. For more information see issue 1051."
 msgstr ""
+"Ön ayar otomatik yükleme desteğinin kod altyapısı bir kez daha yeniden "
+"tasarlandı. Artık daha fazla donanımda sorunsuz çalışması bekleniyor. Daha "
+"fazla bilgi için 1051 numaralı hata kaydına bakabilirsiniz."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:483
 msgid ""
@@ -1204,24 +1306,35 @@ msgid ""
 "stack, new plugins are added at the second to last position in order to "
 "prevent hardware damage on eventually high output level."
 msgstr ""
+"Eğer Limiter (Sınırlandırıcı) veya Maximizer (Yükseltici) eklenti zincirinin "
+"(stack) en son konumuna ayarlanmışsa, olası yüksek çıkış seviyelerinde "
+"donanım hasarını önlemek amacıyla yeni eklentiler sondan bir önceki konuma "
+"eklenir."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:484
 msgid ""
 "Removing an application from the blocklist, its previous enabled state is "
 "restored."
 msgstr ""
+"Bir uygulama engellenenler listesinden (blocklist) çıkarıldığında, önceki "
+"etkin durumu geri yükleniyor."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:486
 msgid ""
 "Sometimes when removing imported models from the noise reduction plugin the "
 "current used model was not properly updated. This should be fixed now."
 msgstr ""
+"Bazen gürültü azaltma (noise reduction) eklentisinden içe aktarılmış "
+"modeller silindiğinde, o an kullanımda olan model düzgün bir şekilde "
+"güncellenmiyordu. Bu sorun artık düzeltilmiş olmalı."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:487
 msgid ""
 "When editing presets files in an external editor, duplicated entries won't "
 "be shown in our presets menu."
 msgstr ""
+"Ön ayar dosyalarını harici bir düzenleyicide düzenlerken, yinelenen (çift) "
+"kayıtlar artık ön ayarlar menümüzde gösterilmeyecek."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:488
 msgid "Now the blocklist is correctly set when switching presets."
