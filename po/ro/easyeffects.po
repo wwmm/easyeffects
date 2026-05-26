@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-05-24 13:56-0300\n"
-"PO-Revision-Date: 2026-05-18 20:11+0000\n"
+"PO-Revision-Date: 2026-05-26 10:11+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ro/>\n"
@@ -2295,18 +2295,18 @@ msgstr ""
 "externe înregistrează de pe monitoarele dispozitivelor virtuale Easy Effects."
 
 #: src/contents/ui/PreferencesSheet.qml:247
-#, fuzzy
 msgid "Enable the link delay"
-msgstr "Activează acest efect"
+msgstr "Activează întârzierea de conectare"
 
 #: src/contents/ui/PreferencesSheet.qml:248
 msgid "When enabled, a delay is applied before linking the audio filters."
 msgstr ""
+"Când această opțiune este activată, se aplică o întârziere înainte de "
+"conectarea filtrelor audio."
 
 #: src/contents/ui/PreferencesSheet.qml:260
-#, fuzzy
 msgid "Link delay"
-msgstr "Pre-întârziere"
+msgstr "Întârziere conectare"
 
 #: src/contents/ui/PreferencesSheet.qml:277
 msgid "Enable the inactivity timeout"
