@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-05-24 13:56-0300\n"
-"PO-Revision-Date: 2026-05-18 05:11+0000\n"
+"PO-Revision-Date: 2026-05-26 10:11+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -2294,18 +2294,17 @@ msgstr ""
 "d'Easy Effects."
 
 #: src/contents/ui/PreferencesSheet.qml:247
-#, fuzzy
 msgid "Enable the link delay"
-msgstr "Activer cet Effet"
+msgstr "Activer le délai de liaison"
 
 #: src/contents/ui/PreferencesSheet.qml:248
 msgid "When enabled, a delay is applied before linking the audio filters."
 msgstr ""
+"Une fois activé, un délai est appliqué avant la liaison des filtres audio."
 
 #: src/contents/ui/PreferencesSheet.qml:260
-#, fuzzy
 msgid "Link delay"
-msgstr "Pré-délai"
+msgstr "Délai de liaison"
 
 #: src/contents/ui/PreferencesSheet.qml:277
 msgid "Enable the inactivity timeout"
