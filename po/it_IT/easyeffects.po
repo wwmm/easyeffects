@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-05-24 13:56-0300\n"
-"PO-Revision-Date: 2026-05-24 13:13+0000\n"
+"PO-Revision-Date: 2026-05-27 02:11+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -2287,18 +2287,17 @@ msgstr ""
 "virtuali di Easy Effects."
 
 #: src/contents/ui/PreferencesSheet.qml:247
-#, fuzzy
 msgid "Enable the link delay"
-msgstr "Abilita il timeout di inattività"
+msgstr "Abilita il delay sulle connessioni audio"
 
 #: src/contents/ui/PreferencesSheet.qml:248
 msgid "When enabled, a delay is applied before linking the audio filters."
 msgstr ""
+"Se abilitato, viene applicato un delay prima di connettere i filtri audio."
 
 #: src/contents/ui/PreferencesSheet.qml:260
-#, fuzzy
 msgid "Link delay"
-msgstr "Pre delay"
+msgstr "Delay sui collegamenti"
 
 #: src/contents/ui/PreferencesSheet.qml:277
 msgid "Enable the inactivity timeout"
