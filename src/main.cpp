@@ -41,6 +41,7 @@
 #include <QProcessEnvironment>
 #include <QQuickWindow>
 #include <QSystemTrayIcon>
+#include <QTimer>
 #include <csignal>
 #include <format>
 #include <memory>
@@ -195,6 +196,10 @@ struct UiState {
 }  // namespace
 
 static void initGlobalBypass(StreamInputEffects& sie, StreamOutputEffects& soe) {
+  auto* bypass_coalescer = new QTimer(DbMain::self());
+
+  bypass_coalescer->setSingleShot(true);
+
   auto update_bypass_state = [&]() {
     soe.set_bypass(DbMain::bypass());
     sie.set_bypass(DbMain::bypass());
@@ -204,7 +209,10 @@ static void initGlobalBypass(StreamInputEffects& sie, StreamOutputEffects& soe) 
 
   update_bypass_state();
 
-  QObject::connect(DbMain::self(), &DbMain::bypassChanged, update_bypass_state);
+  QObject::connect(bypass_coalescer, &QTimer::timeout, DbMain::self(), update_bypass_state);
+
+  QObject::connect(DbMain::self(), &DbMain::bypassChanged, bypass_coalescer,
+                   [bypass_coalescer]() { bypass_coalescer->start(0); });
 }
 
 static void initQml(QQmlApplicationEngine& engine,

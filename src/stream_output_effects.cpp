@@ -441,11 +441,26 @@ void StreamOutputEffects::disconnect_filters() {
 }
 
 void StreamOutputEffects::set_bypass(const bool& state) {
-  bypass = state;
+  pending_bypass_state = state;
 
-  disconnect_filters();
+  if (bypass_transition_active) {
+    bypass_transition_pending = true;
 
-  connect_filters(state);
+    return;
+  }
+
+  bypass_transition_active = true;
+
+  do {
+    bypass_transition_pending = false;
+    bypass = pending_bypass_state;
+
+    disconnect_filters();
+
+    connect_filters(bypass);
+  } while (bypass_transition_pending);
+
+  bypass_transition_active = false;
 
   Q_EMIT pipelineChanged();
 }

@@ -64,6 +64,9 @@ class StreamInputEffects : public EffectsBase {
 
  private:
   bool bypass = false;
+  bool bypass_transition_active = false;
+  bool bypass_transition_pending = false;
+  bool pending_bypass_state = false;
 
   void connect_filters(const bool& bypass = false);
 
