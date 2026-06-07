@@ -327,7 +327,17 @@ auto get_lock_file() -> std::unique_ptr<QLockFile> {
       case QLockFile::NoError:
         break;
       case QLockFile::LockFailedError: {
-        util::debug("Another instance already has the lock");
+        qint64 pid = 0;
+        QString hostname;
+        QString appname;
+
+        if (lockFile->getLockInfo(&pid, &hostname, &appname)) {
+          util::debug(std::format("Another instance already has the lock: PID={}, hostname={}, appname={}", pid,
+                                  hostname.toStdString(), appname.toStdString()));
+        } else {
+          util::debug("Another instance already has the lock");
+        }
+
         break;
       }
       case QLockFile::PermissionError: {
