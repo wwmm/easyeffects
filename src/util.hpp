@@ -79,6 +79,8 @@ auto search_filename(const std::filesystem::path& path,
 
 auto get_lock_file() -> std::unique_ptr<QLockFile>;
 
+auto handle_lock_file_error(const QLockFile& lockFile) -> void;
+
 auto spa_dict_get_bool(const spa_dict* props, const char* key, bool& b) -> bool;
 
 auto interpolate(const std::vector<double>& x_source,

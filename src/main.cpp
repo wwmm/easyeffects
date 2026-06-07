@@ -289,7 +289,11 @@ static void initQml(QQmlApplicationEngine& engine,
   }
 }
 
-static int runSecondaryInstance(KAboutData& about, QApplication& app, CommandLineParser& parser, bool& show_window) {
+static int runSecondaryInstance(const QLockFile& lockFile,
+                                KAboutData& about,
+                                QApplication& app,
+                                CommandLineParser& parser,
+                                bool& show_window) {
   auto local_client = std::make_unique<LocalClient>();
 
   QObject::connect(&parser, &CommandLineParser::onQuit, [&]() {
@@ -340,6 +344,10 @@ static int runSecondaryInstance(KAboutData& about, QApplication& app, CommandLin
   parser.set_is_primary(false);
   parser.process(about, &app);
   parser.process_events();
+  parser.process_debug_option();
+
+  // If we do this before process_debug_option we won't see any log message
+  util::handle_lock_file_error(lockFile);
 
   if (show_window) {
     local_client->show_window();
@@ -402,12 +410,15 @@ int main(int argc, char* argv[]) {
   if (!lockFile->isLocked()) {
     // Used only by an instance started when one is already running
 
-    return runSecondaryInstance(about, app, *cmd_parser, show_window);
+    return runSecondaryInstance(*lockFile, about, app, *cmd_parser, show_window);
   }
 
   cmd_parser->process(about, &app);
   cmd_parser->process_debug_option();  // if we take too long to process this one we will miss debug messages
   cmd_parser->process_hide_window(show_window);
+
+  // If we do this before process_debug_option we won't see any log message
+  util::handle_lock_file_error(*lockFile);
 
   UiState ui;
 

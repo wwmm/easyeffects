@@ -318,40 +318,39 @@ auto get_lock_file() -> std::unique_ptr<QLockFile> {
 
   lockFile->setStaleLockTime(0);
 
-  const bool status = lockFile->tryLock(100);
-
-  if (!status) {
-    util::debug(std::format("Could not lock the file: {}", lockFile->fileName().toStdString()));
-
-    switch (lockFile->error()) {
-      case QLockFile::NoError:
-        break;
-      case QLockFile::LockFailedError: {
-        qint64 pid = 0;
-        QString hostname;
-        QString appname;
-
-        if (lockFile->getLockInfo(&pid, &hostname, &appname)) {
-          util::debug(std::format("Another instance already has the lock: PID={}, hostname={}, appname={}", pid,
-                                  hostname.toStdString(), appname.toStdString()));
-        } else {
-          util::debug("Another instance already has the lock");
-        }
-
-        break;
-      }
-      case QLockFile::PermissionError: {
-        util::debug("No permission to create the lock file");
-        break;
-      }
-      case QLockFile::UnknownError: {
-        util::debug("Unknown error");
-        break;
-      }
-    }
-  }
+  lockFile->tryLock(100);
 
   return lockFile;
+}
+
+auto handle_lock_file_error(const QLockFile& lockFile) -> void {
+  switch (lockFile.error()) {
+    case QLockFile::NoError:
+      util::debug(std::format("Locking the QLockFile: {}", lockFile.fileName().toStdString()));
+      break;
+    case QLockFile::LockFailedError: {
+      qint64 pid = 0;
+      QString hostname;
+      QString appname;
+
+      if (lockFile.getLockInfo(&pid, &hostname, &appname)) {
+        util::debug(std::format("Another instance already has the lock: PID={}, hostname={}, appname={}", pid,
+                                hostname.toStdString(), appname.toStdString()));
+      } else {
+        util::debug("Another instance already has the lockfile");
+      }
+
+      break;
+    }
+    case QLockFile::PermissionError: {
+      util::debug("No permission to create the lock file");
+      break;
+    }
+    case QLockFile::UnknownError: {
+      util::debug("Unknown lockfile error");
+      break;
+    }
+  }
 }
 
 auto spa_dict_get_bool(const spa_dict* props, const char* key, bool& b) -> bool {
