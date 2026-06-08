@@ -218,6 +218,10 @@ LadspaWrapper::LadspaWrapper(const std::string& plugin_filename, const std::stri
 LadspaWrapper::~LadspaWrapper() {
   destroy_instance();
 
+  if (dl_handle != nullptr) {
+    dlclose(std::exchange(dl_handle, nullptr));
+  }
+
   if (control_ports_initialized) {
     delete[] std::exchange(control_ports_initialized, nullptr);
   }
@@ -350,6 +354,12 @@ static inline void scale_control_ports(const LADSPA_Descriptor* descriptor,
 }
 
 auto LadspaWrapper::create_instance(uint rate) -> bool {
+  if (instance != nullptr && this->rate == rate) {
+    return true;
+  }
+
+  destroy_instance();
+
   LADSPA_Handle new_instance = descriptor->instantiate(descriptor, rate);
 
   if (new_instance == nullptr) {
@@ -393,10 +403,6 @@ void LadspaWrapper::destroy_instance() {
 
   if (instance != nullptr && descriptor->cleanup != nullptr) {
     descriptor->cleanup(instance);
-  }
-
-  if (dl_handle != nullptr) {
-    dlclose(std::exchange(dl_handle, nullptr));
   }
 }
 
@@ -681,9 +687,6 @@ void LadspaWrapper::deactivate() {
 }
 
 void LadspaWrapper::run() const {
-  assert(active);
-  assert(instance);
-
   descriptor->run(instance, n_samples);
 }
 
@@ -757,9 +760,6 @@ auto LadspaWrapper::get_control_port_default(uint index) const -> float {
 }
 
 auto LadspaWrapper::get_control_port_value(uint index) const -> float {
-  assert(cp_to_port_idx(descriptor, index) != null_ul);
-  assert(control_ports_initialized[index]);
-
   return control_ports[index];
 }
 
@@ -777,8 +777,6 @@ auto LadspaWrapper::get_control_port_value(const std::string& symbol) const -> f
 
 auto LadspaWrapper::set_control_port_value_clamp(uint index, float value) -> float {
   const unsigned long i = cp_to_port_idx(descriptor, index);
-
-  assert(i != null_ul);
 
   // If the value is out of bounds, get a new clamped one in LADSPA_Data (float)
   value = clamp_port_value(descriptor, i, rate, value);
