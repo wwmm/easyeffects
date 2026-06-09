@@ -93,21 +93,26 @@ void DeepFilterNet::reset() {
 }
 
 void DeepFilterNet::clear_data() {
-  {
-    if (ladspa_wrapper == nullptr) {
-      return;
-    }
+  /*
+   * For some reason this plugin does not seem to destroy its threads properly. So recreating it often is a problem.
+   * See https://github.com/wwmm/easyeffects/issues/4652#issuecomment-4657311365
+   */
 
-    std::scoped_lock<std::mutex> lock(data_mutex);
+  // {
+  //   if (ladspa_wrapper == nullptr) {
+  //     return;
+  //   }
 
-    if (ready && ladspa_wrapper->has_instance()) {
-      ready = false;
+  //   std::scoped_lock<std::mutex> lock(data_mutex);
 
-      ladspa_wrapper->destroy_instance();
-    }
-  }
+  //   if (ready && ladspa_wrapper->has_instance()) {
+  //     ready = false;
 
-  setup();
+  //     ladspa_wrapper->destroy_instance();
+  //   }
+  // }
+
+  // setup();
 }
 
 void DeepFilterNet::setup() {
@@ -198,6 +203,7 @@ void DeepFilterNet::process(std::span<float>& left_in,
     ladspa_wrapper->n_samples = resampled_inL.size();
     ladspa_wrapper->connect_data_ports(resampled_inL, resampled_inR, resampled_outL, resampled_outR);
   } else {
+    ladspa_wrapper->n_samples = n_samples;
     ladspa_wrapper->connect_data_ports(left_in, right_in, left_out, right_out);
   }
 
@@ -258,5 +264,21 @@ auto DeepFilterNet::get_latency_seconds() -> float {
 }
 
 void DeepFilterNet::resetHistory() {
-  clear_data();
+  // clear_data();
+
+  {
+    if (ladspa_wrapper == nullptr) {
+      return;
+    }
+
+    std::scoped_lock<std::mutex> lock(data_mutex);
+
+    if (ready && ladspa_wrapper->has_instance()) {
+      ready = false;
+
+      ladspa_wrapper->destroy_instance();
+    }
+  }
+
+  setup();
 }
