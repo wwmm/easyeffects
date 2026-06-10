@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-05-24 13:56-0300\n"
-"PO-Revision-Date: 2026-05-03 15:09+0000\n"
+"PO-Revision-Date: 2026-06-10 03:01+0000\n"
 "Last-Translator: Arif Budiman <arifpedia@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/easyeffects/"
 "main/id/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.17.1\n"
+"X-Generator: Weblate 2026.6\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -1993,12 +1993,11 @@ msgstr "Pemantauan masukan"
 
 #: src/contents/ui/PageStreamsEffects.qml:689
 msgid "Share audio"
-msgstr ""
+msgstr "Bagikan audio"
 
 #: src/contents/ui/PageStreamsEffects.qml:690
-#, fuzzy
 msgid "Send the processed desktop audio to the virtual source"
-msgstr "Kirim audio ke sumber virtual"
+msgstr "Kirim audio desktop yang telah diproses ke sumber virtual"
 
 #: src/contents/ui/PipeWirePage.qml:49
 msgid "General"
@@ -2279,18 +2278,16 @@ msgstr ""
 "virtual Easy Effects."
 
 #: src/contents/ui/PreferencesSheet.qml:247
-#, fuzzy
 msgid "Enable the link delay"
-msgstr "Uji Sinyal"
+msgstr "Aktifkan penundaan tautan"
 
 #: src/contents/ui/PreferencesSheet.qml:248
 msgid "When enabled, a delay is applied before linking the audio filters."
-msgstr ""
+msgstr "Saat diaktifkan, penundaan diterapkan sebelum filter audio ditautkan."
 
 #: src/contents/ui/PreferencesSheet.qml:260
-#, fuzzy
 msgid "Link delay"
-msgstr "Penundaan pra"
+msgstr "Penundaan tautan"
 
 #: src/contents/ui/PreferencesSheet.qml:277
 msgid "Enable the inactivity timeout"
@@ -2629,9 +2626,8 @@ msgstr "Segarkan"
 
 #: src/contents/ui/PresetsCommunityPage.qml:134
 #: src/contents/ui/PresetsLocalPage.qml:306
-#, fuzzy
 msgid "Load this preset"
-msgstr "Ubah nama preset ini"
+msgstr "Muat preset ini"
 
 #: src/contents/ui/PresetsCommunityPage.qml:148
 msgid "Copy to local presets"
@@ -2953,7 +2949,7 @@ msgstr "Dapat digunakan pada kontrol numerik"
 
 #: src/contents/ui/ShortcutsSheet.qml:289
 msgid "Mouse wheel"
-msgstr ""
+msgstr "Roda mouse"
 
 #: src/contents/ui/ShortcutsSheet.qml:313
 msgid "Global Shortcuts"
@@ -3052,14 +3048,12 @@ msgid "Stereo phase"
 msgstr "Fase stereo"
 
 #: src/contents/ui/TrayIcon.qml:61
-#, fuzzy
 msgid "Effects disabled"
-msgstr "Efek audio dinonaktifkan."
+msgstr "Efek dinonaktifkan"
 
 #: src/contents/ui/TrayIcon.qml:63
-#, fuzzy
 msgid "Effects enabled"
-msgstr "Efek audio diaktifkan."
+msgstr "Efek diaktifkan"
 
 #: src/contents/ui/TrayIcon.qml:102 src/contents/ui/TrayIcon.qml:122
 msgid "Preset Loaded"
