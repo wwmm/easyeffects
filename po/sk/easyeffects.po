@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-05-24 13:56-0300\n"
+"POT-Creation-Date: 2026-06-13 15:47+0000\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Meti Cease <sockargrande@gmail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -227,16 +227,16 @@ msgstr "Výstupný Zisk"
 #: src/contents/ui/Crossfeed.qml:150 src/contents/ui/Crusher.qml:236
 #: src/contents/ui/Crystalizer.qml:155 src/contents/ui/DeepFilterNet.qml:197
 #: src/contents/ui/Deesser.qml:319 src/contents/ui/Delay.qml:376
-#: src/contents/ui/EchoCanceller.qml:158 src/contents/ui/Equalizer.qml:301
+#: src/contents/ui/EchoCanceller.qml:158 src/contents/ui/Equalizer.qml:315
 #: src/contents/ui/Exciter.qml:210 src/contents/ui/Expander.qml:823
-#: src/contents/ui/Filter.qml:220 src/contents/ui/Gate.qml:952
+#: src/contents/ui/Filter.qml:234 src/contents/ui/Gate.qml:952
 #: src/contents/ui/LevelMeter.qml:215 src/contents/ui/Limiter.qml:607
 #: src/contents/ui/Loudness.qml:175 src/contents/ui/Maximizer.qml:122
 #: src/contents/ui/MultibandCompressor.qml:965
 #: src/contents/ui/MultibandGate.qml:938 src/contents/ui/Pitch.qml:268
-#: src/contents/ui/Reverb.qml:318 src/contents/ui/RNNoise.qml:73
-#: src/contents/ui/RNNoise.qml:84 src/contents/ui/RNNoise.qml:298
-#: src/contents/ui/RNNoise.qml:300 src/contents/ui/RNNoise.qml:320
+#: src/contents/ui/RNNoise.qml:73 src/contents/ui/RNNoise.qml:84
+#: src/contents/ui/RNNoise.qml:298 src/contents/ui/RNNoise.qml:300
+#: src/contents/ui/RNNoise.qml:320 src/contents/ui/Reverb.qml:318
 #: src/contents/ui/Speex.qml:177 src/contents/ui/StereoTools.qml:392
 msgid "Using %1"
 msgstr ""
@@ -271,8 +271,8 @@ msgstr "beží"
 #: src/contents/ui/Autotune.qml:107 src/contents/ui/Compressor.qml:79
 #: src/contents/ui/Compressor.qml:301 src/contents/ui/Crusher.qml:97
 #: src/contents/ui/Deesser.qml:89 src/contents/ui/Delay.qml:71
-#: src/contents/ui/Delay.qml:224 src/contents/ui/EqualizerBandMenu.qml:61
-#: src/contents/ui/Equalizer.qml:138 src/contents/ui/Expander.qml:79
+#: src/contents/ui/Delay.qml:224 src/contents/ui/Equalizer.qml:138
+#: src/contents/ui/EqualizerBandMenu.qml:61 src/contents/ui/Expander.qml:79
 #: src/contents/ui/Expander.qml:261 src/contents/ui/Gate.qml:279
 #: src/contents/ui/Limiter.qml:72 src/contents/ui/Loudness.qml:71
 #: src/contents/ui/MultibandCompressor.qml:434
@@ -300,7 +300,7 @@ msgid "Bias"
 msgstr ""
 
 #: src/contents/ui/Autotune.qml:169 src/contents/ui/Deesser.qml:171
-#: src/contents/ui/Filter.qml:123 src/contents/ui/Reverb.qml:126
+#: src/contents/ui/Filter.qml:137 src/contents/ui/Reverb.qml:126
 #: src/tags_plugin_name.cpp:63
 msgid "Filter"
 msgstr "Filter"
@@ -381,9 +381,9 @@ msgstr "Spodná hranica"
 
 #: src/contents/ui/BassEnhancer.qml:223 src/contents/ui/Compressor.qml:891
 #: src/contents/ui/Crusher.qml:254 src/contents/ui/Deesser.qml:337
-#: src/contents/ui/Delay.qml:414 src/contents/ui/Equalizer.qml:319
+#: src/contents/ui/Delay.qml:414 src/contents/ui/Equalizer.qml:333
 #: src/contents/ui/Exciter.qml:228 src/contents/ui/Expander.qml:841
-#: src/contents/ui/Filter.qml:238 src/contents/ui/Gate.qml:970
+#: src/contents/ui/Filter.qml:252 src/contents/ui/Gate.qml:970
 #: src/contents/ui/Limiter.qml:625 src/contents/ui/Loudness.qml:193
 #: src/contents/ui/Maximizer.qml:140
 #: src/contents/ui/MultibandCompressor.qml:983
@@ -404,14 +404,14 @@ msgstr "Počúvať"
 #: src/contents/ui/Crossfeed.qml:176 src/contents/ui/CrosstalkCanceller.qml:124
 #: src/contents/ui/Crusher.qml:268 src/contents/ui/Crystalizer.qml:203
 #: src/contents/ui/Deesser.qml:361 src/contents/ui/Delay.qml:428
-#: src/contents/ui/EchoCanceller.qml:186 src/contents/ui/Equalizer.qml:385
+#: src/contents/ui/EchoCanceller.qml:186 src/contents/ui/Equalizer.qml:399
 #: src/contents/ui/Exciter.qml:252 src/contents/ui/Expander.qml:875
-#: src/contents/ui/Filter.qml:252 src/contents/ui/Gate.qml:1004
+#: src/contents/ui/Filter.qml:266 src/contents/ui/Gate.qml:1004
 #: src/contents/ui/Limiter.qml:659 src/contents/ui/Loudness.qml:217
 #: src/contents/ui/Main.qml:477 src/contents/ui/Maximizer.qml:154
 #: src/contents/ui/MultibandCompressor.qml:1014
-#: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:358
-#: src/contents/ui/RNNoise.qml:345 src/contents/ui/Speex.qml:195
+#: src/contents/ui/MultibandGate.qml:987 src/contents/ui/RNNoise.qml:345
+#: src/contents/ui/Reverb.qml:358 src/contents/ui/Speex.qml:195
 #: src/contents/ui/StereoTools.qml:424 src/contents/ui/VoiceSuppressor.qml:185
 msgid "Reset"
 msgstr "Obnoviť pôvodné hodnoty"
@@ -650,7 +650,7 @@ msgid "Side"
 msgstr "Postranný"
 
 #: src/contents/ui/Compressor.qml:319 src/contents/ui/Convolver.qml:301
-#: src/contents/ui/Delay.qml:59 src/contents/ui/Equalizer.qml:230
+#: src/contents/ui/Delay.qml:59 src/contents/ui/Equalizer.qml:244
 #: src/contents/ui/Expander.qml:279 src/contents/ui/Gate.qml:297
 #: src/contents/ui/LevelMeter.qml:79 src/contents/ui/LevelMeter.qml:118
 #: src/contents/ui/MultibandCompressor.qml:449
@@ -660,7 +660,7 @@ msgid "Left"
 msgstr "Ľavý"
 
 #: src/contents/ui/Compressor.qml:319 src/contents/ui/Convolver.qml:319
-#: src/contents/ui/Delay.qml:212 src/contents/ui/Equalizer.qml:230
+#: src/contents/ui/Delay.qml:212 src/contents/ui/Equalizer.qml:244
 #: src/contents/ui/Expander.qml:279 src/contents/ui/Gate.qml:297
 #: src/contents/ui/LevelMeter.qml:89 src/contents/ui/LevelMeter.qml:128
 #: src/contents/ui/MultibandCompressor.qml:449
@@ -745,8 +745,9 @@ msgid "High-pass"
 msgstr "Horné pásmo"
 
 #: src/contents/ui/Compressor.qml:416 src/contents/ui/Compressor.qml:430
-#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Expander.qml:372
-#: src/contents/ui/Expander.qml:386 src/contents/ui/Gate.qml:391
+#: src/contents/ui/Equalizer.qml:156 src/contents/ui/EqualizerBandMenu.qml:51
+#: src/contents/ui/Expander.qml:372 src/contents/ui/Expander.qml:386
+#: src/contents/ui/Filter.qml:111 src/contents/ui/Gate.qml:391
 #: src/contents/ui/Gate.qml:405
 msgid "Off"
 msgstr "Vyp"
@@ -829,7 +830,7 @@ msgid "Link to input"
 msgstr "Postranný reťazec"
 
 #: src/contents/ui/Compressor.qml:674 src/contents/ui/EqualizerBandMenu.qml:119
-#: src/contents/ui/Expander.qml:626 src/contents/ui/Filter.qml:159
+#: src/contents/ui/Expander.qml:626 src/contents/ui/Filter.qml:173
 #: src/contents/ui/Limiter.qml:506 src/contents/ui/MultibandCompressor.qml:359
 #: src/contents/ui/MultibandCompressor.qml:745
 #: src/contents/ui/MultibandGate.qml:245
@@ -855,6 +856,84 @@ msgstr "Sklon"
 #, fuzzy
 msgid "Stereo split"
 msgstr "Režim sterea"
+
+#: src/contents/ui/Convolver.qml:66
+#, fuzzy
+msgid "Loaded the %1 Convolver impulse."
+msgstr "Nedá sa načítať súbor s impulzom"
+
+#: src/contents/ui/Convolver.qml:68 src/contents/ui/Convolver.qml:342
+#, fuzzy
+msgid "Convolver impulse is not set"
+msgstr "Odpoveď impulzu"
+
+#: src/contents/ui/Convolver.qml:72
+msgid "The Convolver is in passthrough mode."
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:74
+#, fuzzy
+msgid "Failed to load the %1 impulse. The Convolver is in passthrough mode."
+msgstr "Nedá sa načítať súbor s impulzom"
+
+#: src/contents/ui/Convolver.qml:151
+msgid "First"
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:164
+msgid "Second"
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:196 src/contents/ui/Convolver.qml:231
+msgid "Combine"
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:224
+#, fuzzy
+msgid "Impulses"
+msgstr "Odpoveď impulzu"
+
+#: src/contents/ui/Convolver.qml:240 src/plugin_base.cpp:336
+msgid "Spectrum"
+msgstr "Spektrum"
+
+#: src/contents/ui/Convolver.qml:272
+#, fuzzy
+msgid "Log scale"
+msgstr "Mierka"
+
+#: src/contents/ui/Convolver.qml:380 src/contents/ui/Crusher.qml:208
+msgid "Rate"
+msgstr "Kmitočet"
+
+#: src/contents/ui/Convolver.qml:385 src/contents/ui/Delay.qml:75
+#: src/contents/ui/Delay.qml:86 src/contents/ui/Delay.qml:228
+#: src/contents/ui/Delay.qml:239
+msgid "Samples"
+msgstr "Vzorky"
+
+#: src/contents/ui/Convolver.qml:390
+msgid "Duration"
+msgstr "Trvanie"
+
+#: src/contents/ui/Convolver.qml:395 src/contents/ui/PipeWirePage.qml:337
+msgid "Channels"
+msgstr "Kanály"
+
+#: src/contents/ui/Convolver.qml:400
+#, fuzzy
+msgid "Format"
+msgstr "Formát"
+
+#: src/contents/ui/Convolver.qml:458
+#, fuzzy
+msgid "Stereo width"
+msgstr "Šírka sterea"
+
+#: src/contents/ui/Convolver.qml:537 src/tags_plugin_name.cpp:46
+#, fuzzy
+msgid "Autogain"
+msgstr "Automatická hlasitosť"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:49
 #, fuzzy
@@ -937,84 +1016,6 @@ msgstr "Importovať impulz"
 msgctxt "@action:button"
 msgid "Close"
 msgstr ""
-
-#: src/contents/ui/Convolver.qml:66
-#, fuzzy
-msgid "Loaded the %1 Convolver impulse."
-msgstr "Nedá sa načítať súbor s impulzom"
-
-#: src/contents/ui/Convolver.qml:68 src/contents/ui/Convolver.qml:342
-#, fuzzy
-msgid "Convolver impulse is not set"
-msgstr "Odpoveď impulzu"
-
-#: src/contents/ui/Convolver.qml:72
-msgid "The Convolver is in passthrough mode."
-msgstr ""
-
-#: src/contents/ui/Convolver.qml:74
-#, fuzzy
-msgid "Failed to load the %1 impulse. The Convolver is in passthrough mode."
-msgstr "Nedá sa načítať súbor s impulzom"
-
-#: src/contents/ui/Convolver.qml:151
-msgid "First"
-msgstr ""
-
-#: src/contents/ui/Convolver.qml:164
-msgid "Second"
-msgstr ""
-
-#: src/contents/ui/Convolver.qml:196 src/contents/ui/Convolver.qml:231
-msgid "Combine"
-msgstr ""
-
-#: src/contents/ui/Convolver.qml:224
-#, fuzzy
-msgid "Impulses"
-msgstr "Odpoveď impulzu"
-
-#: src/contents/ui/Convolver.qml:240 src/plugin_base.cpp:336
-msgid "Spectrum"
-msgstr "Spektrum"
-
-#: src/contents/ui/Convolver.qml:272
-#, fuzzy
-msgid "Log scale"
-msgstr "Mierka"
-
-#: src/contents/ui/Convolver.qml:380 src/contents/ui/Crusher.qml:208
-msgid "Rate"
-msgstr "Kmitočet"
-
-#: src/contents/ui/Convolver.qml:385 src/contents/ui/Delay.qml:75
-#: src/contents/ui/Delay.qml:86 src/contents/ui/Delay.qml:228
-#: src/contents/ui/Delay.qml:239
-msgid "Samples"
-msgstr "Vzorky"
-
-#: src/contents/ui/Convolver.qml:390
-msgid "Duration"
-msgstr "Trvanie"
-
-#: src/contents/ui/Convolver.qml:395 src/contents/ui/PipeWirePage.qml:337
-msgid "Channels"
-msgstr "Kanály"
-
-#: src/contents/ui/Convolver.qml:400
-#, fuzzy
-msgid "Format"
-msgstr "Formát"
-
-#: src/contents/ui/Convolver.qml:458
-#, fuzzy
-msgid "Stereo width"
-msgstr "Šírka sterea"
-
-#: src/contents/ui/Convolver.qml:537 src/tags_plugin_name.cpp:46
-#, fuzzy
-msgid "Autogain"
-msgstr "Automatická hlasitosť"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:32
 msgid "Target Orientation"
@@ -1141,20 +1142,6 @@ msgstr "Redukcia"
 msgid "Low frequency oscillator"
 msgstr ""
 
-#: src/contents/ui/CrystalizerBand.qml:58
-#: src/contents/ui/EqualizerBandMenu.qml:187
-#: src/contents/ui/MultibandCompressor.qml:90
-#: src/contents/ui/MultibandGate.qml:90 src/contents/ui/StereoTools.qml:210
-#: src/contents/ui/StereoTools.qml:242
-msgid "Mute"
-msgstr "Stíšený"
-
-#: src/contents/ui/CrystalizerBand.qml:69
-#: src/contents/ui/MultibandCompressor.qml:108
-#: src/contents/ui/MultibandGate.qml:108
-msgid "Bypass"
-msgstr "Premostiť"
-
 #: src/contents/ui/Crystalizer.qml:110
 #, fuzzy
 msgid "Oversampling quality"
@@ -1177,6 +1164,20 @@ msgstr "Prispôsobivý digitálny"
 #, fuzzy
 msgid "Fixed quantum"
 msgstr "Minimálna frekvencia"
+
+#: src/contents/ui/CrystalizerBand.qml:58
+#: src/contents/ui/EqualizerBandMenu.qml:187
+#: src/contents/ui/MultibandCompressor.qml:90
+#: src/contents/ui/MultibandGate.qml:90 src/contents/ui/StereoTools.qml:210
+#: src/contents/ui/StereoTools.qml:242
+msgid "Mute"
+msgstr "Stíšený"
+
+#: src/contents/ui/CrystalizerBand.qml:69
+#: src/contents/ui/MultibandCompressor.qml:108
+#: src/contents/ui/MultibandGate.qml:108
+msgid "Bypass"
+msgstr "Premostiť"
 
 #: src/contents/ui/DeepFilterNet.qml:52
 #, fuzzy
@@ -1433,113 +1434,6 @@ msgstr ""
 msgid "Input"
 msgstr "Vstup"
 
-#: src/contents/ui/EqualizerBandMenu.qml:34
-#: src/contents/ui/MultibandCompressor.qml:669
-#: src/contents/ui/MultibandCompressor.qml:928
-#: src/contents/ui/MultibandGate.qml:642 src/contents/ui/MultibandGate.qml:901
-#, fuzzy
-msgid "Band"
-msgstr "Pásma"
-
-#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
-msgid "Bell"
-msgstr "Zvonček"
-
-#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
-#, fuzzy
-msgid "High-shelf"
-msgstr "Horný prah"
-
-#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
-#, fuzzy
-msgid "Low-shelf"
-msgstr "Spodný prah"
-
-#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
-msgid "Notch"
-msgstr "Zárez"
-
-#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
-msgid "Resonance"
-msgstr "Rezonancia"
-
-#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
-#, fuzzy
-msgid "Allpass"
-msgstr "Premostiť"
-
-#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
-#, fuzzy
-msgid "Bandpass"
-msgstr "Premostiť"
-
-#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
-#, fuzzy
-msgid "Ladder-pass"
-msgstr "Dolná priepusť"
-
-#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
-#, fuzzy
-msgid "Ladder-rejection"
-msgstr "Redukcia zosilnenia"
-
-#: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
-msgid "RLC (BT)"
-msgstr "RLC (BT)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
-msgid "RLC (MT)"
-msgstr "RLC (MT)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
-msgid "BWC (BT)"
-msgstr "BWC (BT)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
-msgid "BWC (MT)"
-msgstr "BWC (MT)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
-msgid "LRX (BT)"
-msgstr "LRX (BT)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
-msgid "LRX (MT)"
-msgstr "LRX (MT)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
-msgid "APO (DR)"
-msgstr "APO (DR)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:75 src/contents/ui/Filter.qml:107
-msgid "Slope"
-msgstr "Sklon"
-
-#: src/contents/ui/EqualizerBandMenu.qml:96 src/contents/ui/Filter.qml:128
-#: src/contents/ui/MultibandCompressor.qml:199
-#: src/contents/ui/MultibandGate.qml:136 src/contents/ui/PipeWirePage.qml:431
-msgid "Frequency"
-msgstr "Frekvencia"
-
-#: src/contents/ui/EqualizerBandMenu.qml:142 src/contents/ui/Filter.qml:175
-msgid "Quality"
-msgstr "Kvalita"
-
-#: src/contents/ui/EqualizerBandMenu.qml:165 src/contents/ui/Filter.qml:144
-msgid "Width"
-msgstr "Šírka"
-
-#: src/contents/ui/EqualizerBandMenu.qml:171
-#, fuzzy
-msgid "oct"
-msgstr "Režim filtra nízkej priepuste"
-
-#: src/contents/ui/EqualizerBandMenu.qml:199
-#: src/contents/ui/MultibandCompressor.qml:99
-#: src/contents/ui/MultibandGate.qml:99
-msgid "Solo"
-msgstr "Sólo"
-
 #: src/contents/ui/Equalizer.qml:66 src/contents/ui/Equalizer.qml:106
 #, fuzzy
 msgid "APO preset"
@@ -1624,63 +1518,195 @@ msgstr "FFT"
 msgid "SPM"
 msgstr ""
 
-#: src/contents/ui/Equalizer.qml:151
+#: src/contents/ui/Equalizer.qml:152 src/contents/ui/Filter.qml:107
+#, fuzzy
+msgid "Equalizer decramping"
+msgstr "Ekvalizér"
+
+#: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
+msgid "x2"
+msgstr ""
+
+#: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
+msgid "x3"
+msgstr ""
+
+#: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
+msgid "x4"
+msgstr ""
+
+#: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
+msgid "x6"
+msgstr ""
+
+#: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
+msgid "x8"
+msgstr ""
+
+#: src/contents/ui/Equalizer.qml:165
 msgid "Bands"
 msgstr "Pásma"
 
-#: src/contents/ui/Equalizer.qml:167 src/contents/ui/Filter.qml:190
+#: src/contents/ui/Equalizer.qml:181 src/contents/ui/Filter.qml:204
 #: src/contents/ui/StereoTools.qml:77 src/contents/ui/StereoTools.qml:278
 msgid "Balance"
 msgstr "Vyváženie"
 
-#: src/contents/ui/Equalizer.qml:184
+#: src/contents/ui/Equalizer.qml:198
 #, fuzzy
 msgid "Pitch left"
 msgstr "Postranný reťazec"
 
-#: src/contents/ui/Equalizer.qml:192 src/contents/ui/Equalizer.qml:209
+#: src/contents/ui/Equalizer.qml:206 src/contents/ui/Equalizer.qml:223
 msgid "st"
 msgstr ""
 
-#: src/contents/ui/Equalizer.qml:201
+#: src/contents/ui/Equalizer.qml:215
 #, fuzzy
 msgid "Pitch right"
 msgstr "Postranný reťazec"
 
-#: src/contents/ui/Equalizer.qml:332
+#: src/contents/ui/Equalizer.qml:346
 #, fuzzy
 msgid "Split channels"
 msgstr "Rozdeliť kanály"
 
-#: src/contents/ui/Equalizer.qml:342
+#: src/contents/ui/Equalizer.qml:356
 #, fuzzy
 msgid "Flat response"
 msgstr "Vyhladiť"
 
-#: src/contents/ui/Equalizer.qml:349
+#: src/contents/ui/Equalizer.qml:363
 #, fuzzy
 msgid "Calculate frequencies"
 msgstr "Vypočítať frekvencie"
 
-#: src/contents/ui/Equalizer.qml:356
+#: src/contents/ui/Equalizer.qml:370
 #, fuzzy
 msgid "Sort bands"
 msgstr "Pásma"
 
-#: src/contents/ui/Equalizer.qml:363
+#: src/contents/ui/Equalizer.qml:377
 #, fuzzy
 msgid "Import APO"
 msgstr "Importovať model"
 
-#: src/contents/ui/Equalizer.qml:370
+#: src/contents/ui/Equalizer.qml:384
 #, fuzzy
 msgid "Import APO (GraphicEQ)"
 msgstr "Načítať APO predvoľbu"
 
-#: src/contents/ui/Equalizer.qml:377
+#: src/contents/ui/Equalizer.qml:391
 #, fuzzy
 msgid "Export APO"
 msgstr "Načítať predvoľbu"
+
+#: src/contents/ui/EqualizerBandMenu.qml:34
+#: src/contents/ui/MultibandCompressor.qml:669
+#: src/contents/ui/MultibandCompressor.qml:928
+#: src/contents/ui/MultibandGate.qml:642 src/contents/ui/MultibandGate.qml:901
+#, fuzzy
+msgid "Band"
+msgstr "Pásma"
+
+#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
+msgid "Bell"
+msgstr "Zvonček"
+
+#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
+#, fuzzy
+msgid "High-shelf"
+msgstr "Horný prah"
+
+#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
+#, fuzzy
+msgid "Low-shelf"
+msgstr "Spodný prah"
+
+#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
+msgid "Notch"
+msgstr "Zárez"
+
+#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
+msgid "Resonance"
+msgstr "Rezonancia"
+
+#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
+#, fuzzy
+msgid "Allpass"
+msgstr "Premostiť"
+
+#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
+#, fuzzy
+msgid "Bandpass"
+msgstr "Premostiť"
+
+#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
+#, fuzzy
+msgid "Ladder-pass"
+msgstr "Dolná priepusť"
+
+#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
+#, fuzzy
+msgid "Ladder-rejection"
+msgstr "Redukcia zosilnenia"
+
+#: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
+msgid "RLC (BT)"
+msgstr "RLC (BT)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
+msgid "RLC (MT)"
+msgstr "RLC (MT)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
+msgid "BWC (BT)"
+msgstr "BWC (BT)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
+msgid "BWC (MT)"
+msgstr "BWC (MT)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
+msgid "LRX (BT)"
+msgstr "LRX (BT)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
+msgid "LRX (MT)"
+msgstr "LRX (MT)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
+msgid "APO (DR)"
+msgstr "APO (DR)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:75 src/contents/ui/Filter.qml:121
+msgid "Slope"
+msgstr "Sklon"
+
+#: src/contents/ui/EqualizerBandMenu.qml:96 src/contents/ui/Filter.qml:142
+#: src/contents/ui/MultibandCompressor.qml:199
+#: src/contents/ui/MultibandGate.qml:136 src/contents/ui/PipeWirePage.qml:431
+msgid "Frequency"
+msgstr "Frekvencia"
+
+#: src/contents/ui/EqualizerBandMenu.qml:142 src/contents/ui/Filter.qml:189
+msgid "Quality"
+msgstr "Kvalita"
+
+#: src/contents/ui/EqualizerBandMenu.qml:165 src/contents/ui/Filter.qml:158
+msgid "Width"
+msgstr "Šírka"
+
+#: src/contents/ui/EqualizerBandMenu.qml:171
+#, fuzzy
+msgid "oct"
+msgstr "Režim filtra nízkej priepuste"
+
+#: src/contents/ui/EqualizerBandMenu.qml:199
+#: src/contents/ui/MultibandCompressor.qml:99
+#: src/contents/ui/MultibandGate.qml:99
+msgid "Solo"
+msgstr "Sólo"
 
 #: src/contents/ui/Exciter.qml:161
 #, fuzzy
@@ -3018,6 +3044,82 @@ msgstr "Odstrániť predvoľbu"
 msgid "Delete this preset"
 msgstr "Odstrániť predvoľbu"
 
+#: src/contents/ui/RNNoise.qml:60
+#, fuzzy
+msgid "Imported a new RNNoise model file."
+msgstr "Štandardný model RNNoise"
+
+#: src/contents/ui/RNNoise.qml:62
+#, fuzzy
+msgid "Failed to import the RNNoise model file."
+msgstr "Importovať model zo súboru"
+
+#: src/contents/ui/RNNoise.qml:73 src/contents/ui/RNNoise.qml:84
+#: src/contents/ui/RNNoise.qml:298 src/contents/ui/RNNoise.qml:300
+#, fuzzy
+msgid "Standard RNNoise model"
+msgstr "Štandardný model RNNoise"
+
+#: src/contents/ui/RNNoise.qml:75
+#, fuzzy
+msgid "Standard RNNoise model loaded."
+msgstr "Štandardný model RNNoise"
+
+#: src/contents/ui/RNNoise.qml:80 src/contents/ui/RNNoise.qml:302
+#, fuzzy
+msgid "Using %1 Model"
+msgstr "Štandardný model RNNoise"
+
+#: src/contents/ui/RNNoise.qml:82
+#, fuzzy
+msgid "Loaded the %1 RNNoise model."
+msgstr "Štandardný model RNNoise"
+
+#: src/contents/ui/RNNoise.qml:86
+#, fuzzy
+msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
+msgstr "Nedá sa načítať súbor s impulzom"
+
+#: src/contents/ui/RNNoise.qml:105 src/contents/ui/Speex.qml:118
+#, fuzzy
+msgid "Voice detection"
+msgstr "Detekcia reči"
+
+#: src/contents/ui/RNNoise.qml:142
+#, fuzzy
+msgid "Wet level"
+msgstr "Cieľová úroveň"
+
+#: src/contents/ui/RNNoise.qml:182
+#, fuzzy
+msgid "Use the Standard model"
+msgstr "Štandardný model RNNoise"
+
+#: src/contents/ui/RNNoise.qml:193
+#, fuzzy
+msgid "User Models"
+msgstr "Štandardný model RNNoise"
+
+#: src/contents/ui/RNNoise.qml:259
+#, fuzzy
+msgid "Delete this model"
+msgstr "Odstrániť predvoľbu"
+
+#: src/contents/ui/RNNoise.qml:264
+#, fuzzy
+msgid "Removed the %1 RNNoise model."
+msgstr "Štandardný model RNNoise"
+
+#: src/contents/ui/RNNoise.qml:266
+#, fuzzy
+msgid "Failed to remove the %1 RNNoise model."
+msgstr "Nedá sa načítať súbor s impulzom"
+
+#: src/contents/ui/RNNoise.qml:337
+#, fuzzy
+msgid "Import model"
+msgstr "Importovať model"
+
 #: src/contents/ui/Reverb.qml:66
 #, fuzzy
 msgid "Room size"
@@ -3108,82 +3210,6 @@ msgstr "Disko"
 #, fuzzy
 msgid "Large occupied hall"
 msgstr "Veľká miestnosť (plná)"
-
-#: src/contents/ui/RNNoise.qml:60
-#, fuzzy
-msgid "Imported a new RNNoise model file."
-msgstr "Štandardný model RNNoise"
-
-#: src/contents/ui/RNNoise.qml:62
-#, fuzzy
-msgid "Failed to import the RNNoise model file."
-msgstr "Importovať model zo súboru"
-
-#: src/contents/ui/RNNoise.qml:73 src/contents/ui/RNNoise.qml:84
-#: src/contents/ui/RNNoise.qml:298 src/contents/ui/RNNoise.qml:300
-#, fuzzy
-msgid "Standard RNNoise model"
-msgstr "Štandardný model RNNoise"
-
-#: src/contents/ui/RNNoise.qml:75
-#, fuzzy
-msgid "Standard RNNoise model loaded."
-msgstr "Štandardný model RNNoise"
-
-#: src/contents/ui/RNNoise.qml:80 src/contents/ui/RNNoise.qml:302
-#, fuzzy
-msgid "Using %1 Model"
-msgstr "Štandardný model RNNoise"
-
-#: src/contents/ui/RNNoise.qml:82
-#, fuzzy
-msgid "Loaded the %1 RNNoise model."
-msgstr "Štandardný model RNNoise"
-
-#: src/contents/ui/RNNoise.qml:86
-#, fuzzy
-msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
-msgstr "Nedá sa načítať súbor s impulzom"
-
-#: src/contents/ui/RNNoise.qml:105 src/contents/ui/Speex.qml:118
-#, fuzzy
-msgid "Voice detection"
-msgstr "Detekcia reči"
-
-#: src/contents/ui/RNNoise.qml:142
-#, fuzzy
-msgid "Wet level"
-msgstr "Cieľová úroveň"
-
-#: src/contents/ui/RNNoise.qml:182
-#, fuzzy
-msgid "Use the Standard model"
-msgstr "Štandardný model RNNoise"
-
-#: src/contents/ui/RNNoise.qml:193
-#, fuzzy
-msgid "User Models"
-msgstr "Štandardný model RNNoise"
-
-#: src/contents/ui/RNNoise.qml:259
-#, fuzzy
-msgid "Delete this model"
-msgstr "Odstrániť predvoľbu"
-
-#: src/contents/ui/RNNoise.qml:264
-#, fuzzy
-msgid "Removed the %1 RNNoise model."
-msgstr "Štandardný model RNNoise"
-
-#: src/contents/ui/RNNoise.qml:266
-#, fuzzy
-msgid "Failed to remove the %1 RNNoise model."
-msgstr "Nedá sa načítať súbor s impulzom"
-
-#: src/contents/ui/RNNoise.qml:337
-#, fuzzy
-msgid "Import model"
-msgstr "Importovať model"
 
 #: src/contents/ui/ShortcutsSheet.qml:67
 msgid "Show help"
@@ -3404,32 +3430,32 @@ msgstr "Maximálna frekvencia"
 msgid "Inverted mode"
 msgstr "Preklopiť fázu"
 
-#: src/main.cpp:364
+#: src/main.cpp:380
 #, fuzzy
 msgid "Global audio effects"
 msgstr "Krátkodobá"
 
-#: src/main.cpp:365
+#: src/main.cpp:381
 msgid "© 2017-2026 Easy Effects Team"
 msgstr ""
 
-#: src/main.cpp:367
+#: src/main.cpp:383
 #, fuzzy
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:367
+#: src/main.cpp:383
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Sklon"
 
-#: src/main.cpp:371
+#: src/main.cpp:387
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 
-#: src/main.cpp:371
+#: src/main.cpp:387
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""

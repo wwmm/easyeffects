@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-05-24 13:56-0300\n"
+"POT-Creation-Date: 2026-06-13 15:47+0000\n"
 "PO-Revision-Date: 2026-04-25 04:09+0000\n"
 "Last-Translator: Abdullah Albaroty <albaroty@gmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -218,16 +218,16 @@ msgstr "خرج التضخيم"
 #: src/contents/ui/Crossfeed.qml:150 src/contents/ui/Crusher.qml:236
 #: src/contents/ui/Crystalizer.qml:155 src/contents/ui/DeepFilterNet.qml:197
 #: src/contents/ui/Deesser.qml:319 src/contents/ui/Delay.qml:376
-#: src/contents/ui/EchoCanceller.qml:158 src/contents/ui/Equalizer.qml:301
+#: src/contents/ui/EchoCanceller.qml:158 src/contents/ui/Equalizer.qml:315
 #: src/contents/ui/Exciter.qml:210 src/contents/ui/Expander.qml:823
-#: src/contents/ui/Filter.qml:220 src/contents/ui/Gate.qml:952
+#: src/contents/ui/Filter.qml:234 src/contents/ui/Gate.qml:952
 #: src/contents/ui/LevelMeter.qml:215 src/contents/ui/Limiter.qml:607
 #: src/contents/ui/Loudness.qml:175 src/contents/ui/Maximizer.qml:122
 #: src/contents/ui/MultibandCompressor.qml:965
 #: src/contents/ui/MultibandGate.qml:938 src/contents/ui/Pitch.qml:268
-#: src/contents/ui/Reverb.qml:318 src/contents/ui/RNNoise.qml:73
-#: src/contents/ui/RNNoise.qml:84 src/contents/ui/RNNoise.qml:298
-#: src/contents/ui/RNNoise.qml:300 src/contents/ui/RNNoise.qml:320
+#: src/contents/ui/RNNoise.qml:73 src/contents/ui/RNNoise.qml:84
+#: src/contents/ui/RNNoise.qml:298 src/contents/ui/RNNoise.qml:300
+#: src/contents/ui/RNNoise.qml:320 src/contents/ui/Reverb.qml:318
 #: src/contents/ui/Speex.qml:177 src/contents/ui/StereoTools.qml:392
 msgid "Using %1"
 msgstr "الاستخدام 1%"
@@ -261,8 +261,8 @@ msgstr ""
 #: src/contents/ui/Autotune.qml:107 src/contents/ui/Compressor.qml:79
 #: src/contents/ui/Compressor.qml:301 src/contents/ui/Crusher.qml:97
 #: src/contents/ui/Deesser.qml:89 src/contents/ui/Delay.qml:71
-#: src/contents/ui/Delay.qml:224 src/contents/ui/EqualizerBandMenu.qml:61
-#: src/contents/ui/Equalizer.qml:138 src/contents/ui/Expander.qml:79
+#: src/contents/ui/Delay.qml:224 src/contents/ui/Equalizer.qml:138
+#: src/contents/ui/EqualizerBandMenu.qml:61 src/contents/ui/Expander.qml:79
 #: src/contents/ui/Expander.qml:261 src/contents/ui/Gate.qml:279
 #: src/contents/ui/Limiter.qml:72 src/contents/ui/Loudness.qml:71
 #: src/contents/ui/MultibandCompressor.qml:434
@@ -290,7 +290,7 @@ msgid "Bias"
 msgstr ""
 
 #: src/contents/ui/Autotune.qml:169 src/contents/ui/Deesser.qml:171
-#: src/contents/ui/Filter.qml:123 src/contents/ui/Reverb.qml:126
+#: src/contents/ui/Filter.qml:137 src/contents/ui/Reverb.qml:126
 #: src/tags_plugin_name.cpp:63
 msgid "Filter"
 msgstr ""
@@ -370,9 +370,9 @@ msgstr "الحد الأدنى"
 
 #: src/contents/ui/BassEnhancer.qml:223 src/contents/ui/Compressor.qml:891
 #: src/contents/ui/Crusher.qml:254 src/contents/ui/Deesser.qml:337
-#: src/contents/ui/Delay.qml:414 src/contents/ui/Equalizer.qml:319
+#: src/contents/ui/Delay.qml:414 src/contents/ui/Equalizer.qml:333
 #: src/contents/ui/Exciter.qml:228 src/contents/ui/Expander.qml:841
-#: src/contents/ui/Filter.qml:238 src/contents/ui/Gate.qml:970
+#: src/contents/ui/Filter.qml:252 src/contents/ui/Gate.qml:970
 #: src/contents/ui/Limiter.qml:625 src/contents/ui/Loudness.qml:193
 #: src/contents/ui/Maximizer.qml:140
 #: src/contents/ui/MultibandCompressor.qml:983
@@ -393,14 +393,14 @@ msgstr "استمع"
 #: src/contents/ui/Crossfeed.qml:176 src/contents/ui/CrosstalkCanceller.qml:124
 #: src/contents/ui/Crusher.qml:268 src/contents/ui/Crystalizer.qml:203
 #: src/contents/ui/Deesser.qml:361 src/contents/ui/Delay.qml:428
-#: src/contents/ui/EchoCanceller.qml:186 src/contents/ui/Equalizer.qml:385
+#: src/contents/ui/EchoCanceller.qml:186 src/contents/ui/Equalizer.qml:399
 #: src/contents/ui/Exciter.qml:252 src/contents/ui/Expander.qml:875
-#: src/contents/ui/Filter.qml:252 src/contents/ui/Gate.qml:1004
+#: src/contents/ui/Filter.qml:266 src/contents/ui/Gate.qml:1004
 #: src/contents/ui/Limiter.qml:659 src/contents/ui/Loudness.qml:217
 #: src/contents/ui/Main.qml:477 src/contents/ui/Maximizer.qml:154
 #: src/contents/ui/MultibandCompressor.qml:1014
-#: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:358
-#: src/contents/ui/RNNoise.qml:345 src/contents/ui/Speex.qml:195
+#: src/contents/ui/MultibandGate.qml:987 src/contents/ui/RNNoise.qml:345
+#: src/contents/ui/Reverb.qml:358 src/contents/ui/Speex.qml:195
 #: src/contents/ui/StereoTools.qml:424 src/contents/ui/VoiceSuppressor.qml:185
 msgid "Reset"
 msgstr "إعادة تعيين"
@@ -633,7 +633,7 @@ msgid "Side"
 msgstr "جانب"
 
 #: src/contents/ui/Compressor.qml:319 src/contents/ui/Convolver.qml:301
-#: src/contents/ui/Delay.qml:59 src/contents/ui/Equalizer.qml:230
+#: src/contents/ui/Delay.qml:59 src/contents/ui/Equalizer.qml:244
 #: src/contents/ui/Expander.qml:279 src/contents/ui/Gate.qml:297
 #: src/contents/ui/LevelMeter.qml:79 src/contents/ui/LevelMeter.qml:118
 #: src/contents/ui/MultibandCompressor.qml:449
@@ -643,7 +643,7 @@ msgid "Left"
 msgstr "يسار"
 
 #: src/contents/ui/Compressor.qml:319 src/contents/ui/Convolver.qml:319
-#: src/contents/ui/Delay.qml:212 src/contents/ui/Equalizer.qml:230
+#: src/contents/ui/Delay.qml:212 src/contents/ui/Equalizer.qml:244
 #: src/contents/ui/Expander.qml:279 src/contents/ui/Gate.qml:297
 #: src/contents/ui/LevelMeter.qml:89 src/contents/ui/LevelMeter.qml:128
 #: src/contents/ui/MultibandCompressor.qml:449
@@ -721,8 +721,9 @@ msgid "High-pass"
 msgstr ""
 
 #: src/contents/ui/Compressor.qml:416 src/contents/ui/Compressor.qml:430
-#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Expander.qml:372
-#: src/contents/ui/Expander.qml:386 src/contents/ui/Gate.qml:391
+#: src/contents/ui/Equalizer.qml:156 src/contents/ui/EqualizerBandMenu.qml:51
+#: src/contents/ui/Expander.qml:372 src/contents/ui/Expander.qml:386
+#: src/contents/ui/Filter.qml:111 src/contents/ui/Gate.qml:391
 #: src/contents/ui/Gate.qml:405
 msgid "Off"
 msgstr "مطفي"
@@ -803,7 +804,7 @@ msgid "Link to input"
 msgstr "جهاز الدخل"
 
 #: src/contents/ui/Compressor.qml:674 src/contents/ui/EqualizerBandMenu.qml:119
-#: src/contents/ui/Expander.qml:626 src/contents/ui/Filter.qml:159
+#: src/contents/ui/Expander.qml:626 src/contents/ui/Filter.qml:173
 #: src/contents/ui/Limiter.qml:506 src/contents/ui/MultibandCompressor.qml:359
 #: src/contents/ui/MultibandCompressor.qml:745
 #: src/contents/ui/MultibandGate.qml:245
@@ -827,6 +828,80 @@ msgstr ""
 #: src/contents/ui/MultibandGate.qml:969
 msgid "Stereo split"
 msgstr ""
+
+#: src/contents/ui/Convolver.qml:66
+#, fuzzy
+msgid "Loaded the %1 Convolver impulse."
+msgstr "ابحث عن ملف استجابة نبضية"
+
+#: src/contents/ui/Convolver.qml:68 src/contents/ui/Convolver.qml:342
+#, fuzzy
+msgid "Convolver impulse is not set"
+msgstr "دمج الاستجابات النبضية"
+
+#: src/contents/ui/Convolver.qml:72
+msgid "The Convolver is in passthrough mode."
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:74
+#, fuzzy
+msgid "Failed to load the %1 impulse. The Convolver is in passthrough mode."
+msgstr "ابحث عن ملف استجابة نبضية"
+
+#: src/contents/ui/Convolver.qml:151
+msgid "First"
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:164
+#, fuzzy
+msgid "Second"
+msgstr "النواة الثانية"
+
+#: src/contents/ui/Convolver.qml:196 src/contents/ui/Convolver.qml:231
+msgid "Combine"
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:224
+msgid "Impulses"
+msgstr "استجابات نبضية"
+
+#: src/contents/ui/Convolver.qml:240 src/plugin_base.cpp:336
+msgid "Spectrum"
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:272
+msgid "Log scale"
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:380 src/contents/ui/Crusher.qml:208
+msgid "Rate"
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:385 src/contents/ui/Delay.qml:75
+#: src/contents/ui/Delay.qml:86 src/contents/ui/Delay.qml:228
+#: src/contents/ui/Delay.qml:239
+msgid "Samples"
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:390
+msgid "Duration"
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:395 src/contents/ui/PipeWirePage.qml:337
+msgid "Channels"
+msgstr "قنوات"
+
+#: src/contents/ui/Convolver.qml:400
+msgid "Format"
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:458
+msgid "Stereo width"
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:537 src/tags_plugin_name.cpp:46
+msgid "Autogain"
+msgstr "التضخيم التلقائي"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:49
 msgid "Imported a new Convolver impulse file."
@@ -906,80 +981,6 @@ msgstr "استيراد استجابة نبضية"
 msgctxt "@action:button"
 msgid "Close"
 msgstr ""
-
-#: src/contents/ui/Convolver.qml:66
-#, fuzzy
-msgid "Loaded the %1 Convolver impulse."
-msgstr "ابحث عن ملف استجابة نبضية"
-
-#: src/contents/ui/Convolver.qml:68 src/contents/ui/Convolver.qml:342
-#, fuzzy
-msgid "Convolver impulse is not set"
-msgstr "دمج الاستجابات النبضية"
-
-#: src/contents/ui/Convolver.qml:72
-msgid "The Convolver is in passthrough mode."
-msgstr ""
-
-#: src/contents/ui/Convolver.qml:74
-#, fuzzy
-msgid "Failed to load the %1 impulse. The Convolver is in passthrough mode."
-msgstr "ابحث عن ملف استجابة نبضية"
-
-#: src/contents/ui/Convolver.qml:151
-msgid "First"
-msgstr ""
-
-#: src/contents/ui/Convolver.qml:164
-#, fuzzy
-msgid "Second"
-msgstr "النواة الثانية"
-
-#: src/contents/ui/Convolver.qml:196 src/contents/ui/Convolver.qml:231
-msgid "Combine"
-msgstr ""
-
-#: src/contents/ui/Convolver.qml:224
-msgid "Impulses"
-msgstr "استجابات نبضية"
-
-#: src/contents/ui/Convolver.qml:240 src/plugin_base.cpp:336
-msgid "Spectrum"
-msgstr ""
-
-#: src/contents/ui/Convolver.qml:272
-msgid "Log scale"
-msgstr ""
-
-#: src/contents/ui/Convolver.qml:380 src/contents/ui/Crusher.qml:208
-msgid "Rate"
-msgstr ""
-
-#: src/contents/ui/Convolver.qml:385 src/contents/ui/Delay.qml:75
-#: src/contents/ui/Delay.qml:86 src/contents/ui/Delay.qml:228
-#: src/contents/ui/Delay.qml:239
-msgid "Samples"
-msgstr ""
-
-#: src/contents/ui/Convolver.qml:390
-msgid "Duration"
-msgstr ""
-
-#: src/contents/ui/Convolver.qml:395 src/contents/ui/PipeWirePage.qml:337
-msgid "Channels"
-msgstr "قنوات"
-
-#: src/contents/ui/Convolver.qml:400
-msgid "Format"
-msgstr ""
-
-#: src/contents/ui/Convolver.qml:458
-msgid "Stereo width"
-msgstr ""
-
-#: src/contents/ui/Convolver.qml:537 src/tags_plugin_name.cpp:46
-msgid "Autogain"
-msgstr "التضخيم التلقائي"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:32
 msgid "Target Orientation"
@@ -1101,20 +1102,6 @@ msgstr ""
 msgid "Low frequency oscillator"
 msgstr ""
 
-#: src/contents/ui/CrystalizerBand.qml:58
-#: src/contents/ui/EqualizerBandMenu.qml:187
-#: src/contents/ui/MultibandCompressor.qml:90
-#: src/contents/ui/MultibandGate.qml:90 src/contents/ui/StereoTools.qml:210
-#: src/contents/ui/StereoTools.qml:242
-msgid "Mute"
-msgstr "كتم"
-
-#: src/contents/ui/CrystalizerBand.qml:69
-#: src/contents/ui/MultibandCompressor.qml:108
-#: src/contents/ui/MultibandGate.qml:108
-msgid "Bypass"
-msgstr "تجاوز"
-
 #: src/contents/ui/Crystalizer.qml:110
 msgid "Oversampling quality"
 msgstr ""
@@ -1135,6 +1122,20 @@ msgstr ""
 #, fuzzy
 msgid "Fixed quantum"
 msgstr "أقصى زمن"
+
+#: src/contents/ui/CrystalizerBand.qml:58
+#: src/contents/ui/EqualizerBandMenu.qml:187
+#: src/contents/ui/MultibandCompressor.qml:90
+#: src/contents/ui/MultibandGate.qml:90 src/contents/ui/StereoTools.qml:210
+#: src/contents/ui/StereoTools.qml:242
+msgid "Mute"
+msgstr "كتم"
+
+#: src/contents/ui/CrystalizerBand.qml:69
+#: src/contents/ui/MultibandCompressor.qml:108
+#: src/contents/ui/MultibandGate.qml:108
+msgid "Bypass"
+msgstr "تجاوز"
 
 #: src/contents/ui/DeepFilterNet.qml:52
 msgid "Attenuation limit"
@@ -1376,107 +1377,6 @@ msgstr ""
 msgid "Input"
 msgstr "الدخل"
 
-#: src/contents/ui/EqualizerBandMenu.qml:34
-#: src/contents/ui/MultibandCompressor.qml:669
-#: src/contents/ui/MultibandCompressor.qml:928
-#: src/contents/ui/MultibandGate.qml:642 src/contents/ui/MultibandGate.qml:901
-msgid "Band"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
-msgid "Bell"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
-msgid "High-shelf"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
-msgid "Low-shelf"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
-msgid "Notch"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
-msgid "Resonance"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
-#, fuzzy
-msgid "Allpass"
-msgstr "تخطي"
-
-#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
-#, fuzzy
-msgid "Bandpass"
-msgstr "تخطي"
-
-#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
-msgid "Ladder-pass"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
-msgid "Ladder-rejection"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
-msgid "RLC (BT)"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
-msgid "RLC (MT)"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
-msgid "BWC (BT)"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
-msgid "BWC (MT)"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
-msgid "LRX (BT)"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
-msgid "LRX (MT)"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
-msgid "APO (DR)"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:75 src/contents/ui/Filter.qml:107
-msgid "Slope"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:96 src/contents/ui/Filter.qml:128
-#: src/contents/ui/MultibandCompressor.qml:199
-#: src/contents/ui/MultibandGate.qml:136 src/contents/ui/PipeWirePage.qml:431
-msgid "Frequency"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:142 src/contents/ui/Filter.qml:175
-msgid "Quality"
-msgstr "الجودة"
-
-#: src/contents/ui/EqualizerBandMenu.qml:165 src/contents/ui/Filter.qml:144
-msgid "Width"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:171
-msgid "oct"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:199
-#: src/contents/ui/MultibandCompressor.qml:99
-#: src/contents/ui/MultibandGate.qml:99
-msgid "Solo"
-msgstr ""
-
 #: src/contents/ui/Equalizer.qml:66 src/contents/ui/Equalizer.qml:106
 #, fuzzy
 msgid "APO preset"
@@ -1559,59 +1459,184 @@ msgstr ""
 msgid "SPM"
 msgstr ""
 
-#: src/contents/ui/Equalizer.qml:151
+#: src/contents/ui/Equalizer.qml:152 src/contents/ui/Filter.qml:107
+msgid "Equalizer decramping"
+msgstr ""
+
+#: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
+msgid "x2"
+msgstr ""
+
+#: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
+msgid "x3"
+msgstr ""
+
+#: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
+msgid "x4"
+msgstr ""
+
+#: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
+msgid "x6"
+msgstr ""
+
+#: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
+msgid "x8"
+msgstr ""
+
+#: src/contents/ui/Equalizer.qml:165
 msgid "Bands"
 msgstr ""
 
-#: src/contents/ui/Equalizer.qml:167 src/contents/ui/Filter.qml:190
+#: src/contents/ui/Equalizer.qml:181 src/contents/ui/Filter.qml:204
 #: src/contents/ui/StereoTools.qml:77 src/contents/ui/StereoTools.qml:278
 msgid "Balance"
 msgstr "توازن"
 
-#: src/contents/ui/Equalizer.qml:184
+#: src/contents/ui/Equalizer.qml:198
 #, fuzzy
 msgid "Pitch left"
 msgstr "نبرة الصوت يسار"
 
-#: src/contents/ui/Equalizer.qml:192 src/contents/ui/Equalizer.qml:209
+#: src/contents/ui/Equalizer.qml:206 src/contents/ui/Equalizer.qml:223
 msgid "st"
 msgstr ""
 
-#: src/contents/ui/Equalizer.qml:201
+#: src/contents/ui/Equalizer.qml:215
 #, fuzzy
 msgid "Pitch right"
 msgstr "نبرة الصوت يمين"
 
-#: src/contents/ui/Equalizer.qml:332
+#: src/contents/ui/Equalizer.qml:346
 #, fuzzy
 msgid "Split channels"
 msgstr "تقسيم القنوات"
 
-#: src/contents/ui/Equalizer.qml:342
+#: src/contents/ui/Equalizer.qml:356
 msgid "Flat response"
 msgstr ""
 
-#: src/contents/ui/Equalizer.qml:349
+#: src/contents/ui/Equalizer.qml:363
 msgid "Calculate frequencies"
 msgstr ""
 
-#: src/contents/ui/Equalizer.qml:356
-msgid "Sort bands"
-msgstr ""
-
-#: src/contents/ui/Equalizer.qml:363
-#, fuzzy
-msgid "Import APO"
-msgstr "استورد إعدادًا مسبقًا"
-
 #: src/contents/ui/Equalizer.qml:370
-msgid "Import APO (GraphicEQ)"
+msgid "Sort bands"
 msgstr ""
 
 #: src/contents/ui/Equalizer.qml:377
 #, fuzzy
+msgid "Import APO"
+msgstr "استورد إعدادًا مسبقًا"
+
+#: src/contents/ui/Equalizer.qml:384
+msgid "Import APO (GraphicEQ)"
+msgstr ""
+
+#: src/contents/ui/Equalizer.qml:391
+#, fuzzy
 msgid "Export APO"
 msgstr "صدر إعدادًا مسبقًا"
+
+#: src/contents/ui/EqualizerBandMenu.qml:34
+#: src/contents/ui/MultibandCompressor.qml:669
+#: src/contents/ui/MultibandCompressor.qml:928
+#: src/contents/ui/MultibandGate.qml:642 src/contents/ui/MultibandGate.qml:901
+msgid "Band"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
+msgid "Bell"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
+msgid "High-shelf"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
+msgid "Low-shelf"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
+msgid "Notch"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
+msgid "Resonance"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
+#, fuzzy
+msgid "Allpass"
+msgstr "تخطي"
+
+#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
+#, fuzzy
+msgid "Bandpass"
+msgstr "تخطي"
+
+#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
+msgid "Ladder-pass"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
+msgid "Ladder-rejection"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
+msgid "RLC (BT)"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
+msgid "RLC (MT)"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
+msgid "BWC (BT)"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
+msgid "BWC (MT)"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
+msgid "LRX (BT)"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
+msgid "LRX (MT)"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
+msgid "APO (DR)"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:75 src/contents/ui/Filter.qml:121
+msgid "Slope"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:96 src/contents/ui/Filter.qml:142
+#: src/contents/ui/MultibandCompressor.qml:199
+#: src/contents/ui/MultibandGate.qml:136 src/contents/ui/PipeWirePage.qml:431
+msgid "Frequency"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:142 src/contents/ui/Filter.qml:189
+msgid "Quality"
+msgstr "الجودة"
+
+#: src/contents/ui/EqualizerBandMenu.qml:165 src/contents/ui/Filter.qml:158
+msgid "Width"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:171
+msgid "oct"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:199
+#: src/contents/ui/MultibandCompressor.qml:99
+#: src/contents/ui/MultibandGate.qml:99
+msgid "Solo"
+msgstr ""
 
 #: src/contents/ui/Exciter.qml:161
 #, fuzzy
@@ -2889,6 +2914,80 @@ msgstr "احذف مِلَفّ الإعداد المسبق هذا"
 msgid "Delete this preset"
 msgstr "احذف مِلَفّ الإعداد المسبق هذا"
 
+#: src/contents/ui/RNNoise.qml:60
+#, fuzzy
+msgid "Imported a new RNNoise model file."
+msgstr "ابحث عن ملف استجابة نبضية"
+
+#: src/contents/ui/RNNoise.qml:62
+#, fuzzy
+msgid "Failed to import the RNNoise model file."
+msgstr "ابحث عن ملف استجابة نبضية"
+
+#: src/contents/ui/RNNoise.qml:73 src/contents/ui/RNNoise.qml:84
+#: src/contents/ui/RNNoise.qml:298 src/contents/ui/RNNoise.qml:300
+#, fuzzy
+msgid "Standard RNNoise model"
+msgstr "ابحث عن ملف استجابة نبضية"
+
+#: src/contents/ui/RNNoise.qml:75
+msgid "Standard RNNoise model loaded."
+msgstr ""
+
+#: src/contents/ui/RNNoise.qml:80 src/contents/ui/RNNoise.qml:302
+#, fuzzy
+msgid "Using %1 Model"
+msgstr "الاستخدام 1%"
+
+#: src/contents/ui/RNNoise.qml:82
+#, fuzzy
+msgid "Loaded the %1 RNNoise model."
+msgstr "ابحث عن ملف استجابة نبضية"
+
+#: src/contents/ui/RNNoise.qml:86
+#, fuzzy
+msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
+msgstr "ابحث عن ملف استجابة نبضية"
+
+#: src/contents/ui/RNNoise.qml:105 src/contents/ui/Speex.qml:118
+#, fuzzy
+msgid "Voice detection"
+msgstr "كشف"
+
+#: src/contents/ui/RNNoise.qml:142
+#, fuzzy
+msgid "Wet level"
+msgstr "جهاز الدخل"
+
+#: src/contents/ui/RNNoise.qml:182
+msgid "Use the Standard model"
+msgstr ""
+
+#: src/contents/ui/RNNoise.qml:193
+#, fuzzy
+msgid "User Models"
+msgstr "وضع ستيريو"
+
+#: src/contents/ui/RNNoise.qml:259
+#, fuzzy
+msgid "Delete this model"
+msgstr "احذف مِلَفّ الإعداد المسبق هذا"
+
+#: src/contents/ui/RNNoise.qml:264
+#, fuzzy
+msgid "Removed the %1 RNNoise model."
+msgstr "ابحث عن ملف استجابة نبضية"
+
+#: src/contents/ui/RNNoise.qml:266
+#, fuzzy
+msgid "Failed to remove the %1 RNNoise model."
+msgstr "ابحث عن ملف استجابة نبضية"
+
+#: src/contents/ui/RNNoise.qml:337
+#, fuzzy
+msgid "Import model"
+msgstr "استيراد استجابة نبضية"
+
 #: src/contents/ui/Reverb.qml:66
 msgid "Room size"
 msgstr ""
@@ -2970,80 +3069,6 @@ msgstr ""
 #: src/contents/ui/Reverb.qml:297
 msgid "Large occupied hall"
 msgstr ""
-
-#: src/contents/ui/RNNoise.qml:60
-#, fuzzy
-msgid "Imported a new RNNoise model file."
-msgstr "ابحث عن ملف استجابة نبضية"
-
-#: src/contents/ui/RNNoise.qml:62
-#, fuzzy
-msgid "Failed to import the RNNoise model file."
-msgstr "ابحث عن ملف استجابة نبضية"
-
-#: src/contents/ui/RNNoise.qml:73 src/contents/ui/RNNoise.qml:84
-#: src/contents/ui/RNNoise.qml:298 src/contents/ui/RNNoise.qml:300
-#, fuzzy
-msgid "Standard RNNoise model"
-msgstr "ابحث عن ملف استجابة نبضية"
-
-#: src/contents/ui/RNNoise.qml:75
-msgid "Standard RNNoise model loaded."
-msgstr ""
-
-#: src/contents/ui/RNNoise.qml:80 src/contents/ui/RNNoise.qml:302
-#, fuzzy
-msgid "Using %1 Model"
-msgstr "الاستخدام 1%"
-
-#: src/contents/ui/RNNoise.qml:82
-#, fuzzy
-msgid "Loaded the %1 RNNoise model."
-msgstr "ابحث عن ملف استجابة نبضية"
-
-#: src/contents/ui/RNNoise.qml:86
-#, fuzzy
-msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
-msgstr "ابحث عن ملف استجابة نبضية"
-
-#: src/contents/ui/RNNoise.qml:105 src/contents/ui/Speex.qml:118
-#, fuzzy
-msgid "Voice detection"
-msgstr "كشف"
-
-#: src/contents/ui/RNNoise.qml:142
-#, fuzzy
-msgid "Wet level"
-msgstr "جهاز الدخل"
-
-#: src/contents/ui/RNNoise.qml:182
-msgid "Use the Standard model"
-msgstr ""
-
-#: src/contents/ui/RNNoise.qml:193
-#, fuzzy
-msgid "User Models"
-msgstr "وضع ستيريو"
-
-#: src/contents/ui/RNNoise.qml:259
-#, fuzzy
-msgid "Delete this model"
-msgstr "احذف مِلَفّ الإعداد المسبق هذا"
-
-#: src/contents/ui/RNNoise.qml:264
-#, fuzzy
-msgid "Removed the %1 RNNoise model."
-msgstr "ابحث عن ملف استجابة نبضية"
-
-#: src/contents/ui/RNNoise.qml:266
-#, fuzzy
-msgid "Failed to remove the %1 RNNoise model."
-msgstr "ابحث عن ملف استجابة نبضية"
-
-#: src/contents/ui/RNNoise.qml:337
-#, fuzzy
-msgid "Import model"
-msgstr "استيراد استجابة نبضية"
 
 #: src/contents/ui/ShortcutsSheet.qml:67
 msgid "Show help"
@@ -3247,30 +3272,30 @@ msgstr "أقصى زمن"
 msgid "Inverted mode"
 msgstr "التضخيم الأيسر"
 
-#: src/main.cpp:364
+#: src/main.cpp:380
 #, fuzzy
 msgid "Global audio effects"
 msgstr "الاختصارات"
 
-#: src/main.cpp:365
+#: src/main.cpp:381
 msgid "© 2017-2026 Easy Effects Team"
 msgstr ""
 
-#: src/main.cpp:367
+#: src/main.cpp:383
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:367
+#: src/main.cpp:383
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr ""
 
-#: src/main.cpp:371
+#: src/main.cpp:387
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 
-#: src/main.cpp:371
+#: src/main.cpp:387
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
