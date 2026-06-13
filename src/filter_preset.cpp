@@ -51,6 +51,8 @@ void FilterPreset::save(nlohmann::json& json) {
 
   json[section][instance_name]["mode"] = settings->defaultModeLabelsValue()[settings->mode()].toStdString();
 
+  json[section][instance_name]["decramp"] = settings->defaultDecrampLabelsValue()[settings->decramp()].toStdString();
+
   json[section][instance_name]["equal-mode"] =
       settings->defaultEqualModeLabelsValue()[settings->equalMode()].toStdString();
 
@@ -69,6 +71,7 @@ void FilterPreset::load(const nlohmann::json& json) {
 
   UPDATE_ENUM_LIKE_PROPERTY("type", Type);
   UPDATE_ENUM_LIKE_PROPERTY("mode", Mode);
+  UPDATE_ENUM_LIKE_PROPERTY("decramp", Decramp);
   UPDATE_ENUM_LIKE_PROPERTY("equal-mode", EqualMode);
   UPDATE_ENUM_LIKE_PROPERTY("slope", Slope);
 }

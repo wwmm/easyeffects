@@ -145,6 +145,20 @@ Kirigami.ScrollablePage {
                 }
             }
 
+            FormCard.FormComboBoxDelegate {
+                id: decramp
+
+                verticalPadding: Kirigami.Units.smallSpacing
+                text: i18n("Equalizer decramping") // qmllint disable
+                displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                currentIndex: equalizerPage.pluginDB.decramp
+                editable: false
+                model: [i18n("Off"), i18n("x2"), i18n("x3"), i18n("x4"), i18n("x6"), i18n("x8")]
+                onActivated: idx => {
+                    equalizerPage.pluginDB.decramp = idx;
+                }
+            }
+
             EeSpinBox {
                 id: numBands
 

@@ -211,7 +211,7 @@
             <label>Delay applied before linking the audio filters</label>
             <min>1</min>
             <max>1000</max>
-            <default>500</default>
+            <default>100</default>
         </entry>
         <entry name="inactivityTimerEnable" type="Bool">
             <label>Enable the Inactivity Timeout</label>

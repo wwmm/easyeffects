@@ -82,6 +82,7 @@ Equalizer::Equalizer(const std::string& tag, pw::Manager* pipe_manager, Pipeline
   BIND_LV2_PORT("bal", balance, setBalance, DbEqualizer::balanceChanged);
   BIND_LV2_PORT("frqs_l", pitchLeft, setPitchLeft, DbEqualizer::pitchLeftChanged);
   BIND_LV2_PORT("frqs_r", pitchRight, setPitchRight, DbEqualizer::pitchRightChanged);
+  BIND_LV2_PORT("decramp", decramp, setDecramp, DbEqualizer::decrampChanged);
 
   BIND_LV2_PORT_INVERTED_BOOL("clink", splitChannels, setSplitChannels, DbEqualizer::splitChannelsChanged);
 

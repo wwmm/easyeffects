@@ -59,6 +59,8 @@ void EqualizerPreset::save(nlohmann::json& json) {
 
   json[section][instance_name]["mode"] = settings->defaultModeLabelsValue()[settings->mode()].toStdString();
 
+  json[section][instance_name]["decramp"] = settings->defaultDecrampLabelsValue()[settings->decramp()].toStdString();
+
   json[section][instance_name]["split-channels"] = settings->splitChannels();
 
   json[section][instance_name]["balance"] = settings->balance();
@@ -118,6 +120,7 @@ void EqualizerPreset::load(const nlohmann::json& json) {
   UPDATE_PROPERTY("pitch-right", PitchRight);
 
   UPDATE_ENUM_LIKE_PROPERTY("mode", Mode);
+  UPDATE_ENUM_LIKE_PROPERTY("decramp", Decramp);
 
   const auto nbands = settings->numBands();
 

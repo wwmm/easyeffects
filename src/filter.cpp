@@ -70,6 +70,7 @@ Filter::Filter(const std::string& tag, pw::Manager* pipe_manager, PipelineType p
   BIND_LV2_PORT("fm", mode, setMode, DbFilter::modeChanged);
   BIND_LV2_PORT("mode", equalMode, setEqualMode, DbFilter::equalModeChanged);
   BIND_LV2_PORT("s", slope, setSlope, DbFilter::slopeChanged);
+  BIND_LV2_PORT("decramp", decramp, setDecramp, DbFilter::decrampChanged);
 }
 
 Filter::~Filter() {

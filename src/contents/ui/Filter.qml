@@ -101,6 +101,20 @@ Kirigami.ScrollablePage {
                 }
 
                 FormCard.FormComboBoxDelegate {
+                    id: decramp
+
+                    verticalPadding: Kirigami.Units.smallSpacing
+                    text: i18n("Equalizer decramping") // qmllint disable
+                    displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                    currentIndex: filterPage.pluginDB.decramp
+                    editable: false
+                    model: [i18n("Off"), i18n("x2"), i18n("x3"), i18n("x4"), i18n("x6"), i18n("x8")]
+                    onActivated: idx => {
+                        filterPage.pluginDB.decramp = idx;
+                    }
+                }
+
+                FormCard.FormComboBoxDelegate {
                     id: slope
 
                     verticalPadding: Kirigami.Units.smallSpacing
