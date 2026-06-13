@@ -22,6 +22,8 @@ concurrency:
 jobs:
   deploy-help:
     name: Deploy help
+    env:
+      PAGES_ARTIFACT_NAME: github-pages-${{ github.run_id }}-${{ github.run_attempt }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -57,9 +59,12 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5.0.0
         with:
+          name: ${{ env.PAGES_ARTIFACT_NAME }}
           path: src/contents/site
 
       # 7. Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5.0.0
+        with:
+          artifact_name: ${{ env.PAGES_ARTIFACT_NAME }}
