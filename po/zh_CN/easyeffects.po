@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-06-13 15:47+0000\n"
-"PO-Revision-Date: 2026-05-25 06:11+0000\n"
+"PO-Revision-Date: 2026-06-14 13:01+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hans/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2026.6.dev0\n"
+"X-Generator: Weblate 2026.7.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -1385,29 +1385,28 @@ msgid "SPM"
 msgstr "频谱处理模式 (SPM)"
 
 #: src/contents/ui/Equalizer.qml:152 src/contents/ui/Filter.qml:107
-#, fuzzy
 msgid "Equalizer decramping"
-msgstr "均衡器模式"
+msgstr "均衡器去抽动"
 
 #: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
 msgid "x2"
-msgstr ""
+msgstr "2 倍"
 
 #: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
 msgid "x3"
-msgstr ""
+msgstr "3 倍"
 
 #: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
 msgid "x4"
-msgstr ""
+msgstr "4 倍"
 
 #: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
 msgid "x6"
-msgstr ""
+msgstr "6 倍"
 
 #: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
 msgid "x8"
-msgstr ""
+msgstr "8 倍"
 
 #: src/contents/ui/Equalizer.qml:165
 msgid "Bands"
