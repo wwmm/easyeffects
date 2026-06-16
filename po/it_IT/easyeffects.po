@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-06-13 15:47+0000\n"
-"PO-Revision-Date: 2026-06-15 03:01+0000\n"
+"PO-Revision-Date: 2026-06-16 18:01+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -1404,7 +1404,7 @@ msgstr "SPM"
 
 #: src/contents/ui/Equalizer.qml:152 src/contents/ui/Filter.qml:107
 msgid "Equalizer decramping"
-msgstr "Riduzione distorsione dell'equalizzazione"
+msgstr "Riduzione distorsione EQ"
 
 #: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
 msgid "x2"
