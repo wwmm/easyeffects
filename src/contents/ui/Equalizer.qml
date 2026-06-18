@@ -126,7 +126,7 @@ Kirigami.ScrollablePage {
     ColumnLayout {
         height: equalizerPage.height - equalizerPage.header.height - equalizerPage.footer.height - Kirigami.Units.gridUnit
         Kirigami.CardsLayout {
-            maximumColumns: 5
+            maximumColumns: 6
             readonly property real columnSize: pitchLeft.implicitWidth
             minimumColumnWidth: columnSize
             maximumColumnWidth: columnSize
