@@ -85,6 +85,17 @@ Item {
         return ticks;
     }
 
+    Component.onDestruction: {
+        /*
+         * Workaround for what seems to be a QtGraphs 6.12 beta1 bug.
+         */
+
+        chart.removeSeries(barSeries);
+        chart.removeSeries(splineSeries);
+        chart.removeSeries(scatterSeries);
+        chart.removeSeries(areaSeries);
+    }
+
     function updateData(inputData: list<point>) {
         if (!inputData || inputData.length === 0) {
             clearData();
