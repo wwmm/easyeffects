@@ -48,7 +48,6 @@ class Manager : public QObject {
   Q_OBJECT
   QML_NAMED_ELEMENT(PwManager)
   QML_SINGLETON
-  QML_UNCREATABLE("Use the c++ instance")
 
   Q_PROPERTY(QString headerVersion MEMBER headerVersion NOTIFY headerVersionChanged)
   Q_PROPERTY(QString libraryVersion MEMBER libraryVersion NOTIFY libraryVersionChanged)

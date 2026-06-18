@@ -46,7 +46,6 @@ class Nodes : public QAbstractListModel {
   Q_OBJECT
   QML_NAMED_ELEMENT(ModelNodes)
   QML_SINGLETON
-  QML_UNCREATABLE("Use the c++ instance")
 
   Q_PROPERTY(QSortFilterProxyModel* inputStreams MEMBER proxy_input_streams CONSTANT)
   Q_PROPERTY(QSortFilterProxyModel* outputStreams MEMBER proxy_output_streams CONSTANT)

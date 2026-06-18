@@ -41,7 +41,6 @@ class Modules : public QAbstractListModel {
   Q_OBJECT
   QML_NAMED_ELEMENT(PwModelModules)
   QML_SINGLETON
-  QML_UNCREATABLE("Use the c++ instance")
 
  public:
   explicit Modules(QObject* parent = nullptr);

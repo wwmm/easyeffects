@@ -46,7 +46,6 @@ class Manager : public QObject {
   Q_OBJECT
   QML_NAMED_ELEMENT(PresetsManager)
   QML_SINGLETON
-  QML_UNCREATABLE("C++ singleton - use PresetsManager.instance")
 
   Q_PROPERTY(QSortFilterProxyModel* sortedInputListModel MEMBER proxyInputListModel CONSTANT)
   Q_PROPERTY(QSortFilterProxyModel* sortedOutputListModel MEMBER proxyOutputListModel CONSTANT)

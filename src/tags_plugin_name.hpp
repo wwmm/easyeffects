@@ -156,7 +156,6 @@ class Model : public QAbstractListModel {
   Q_OBJECT
   QML_NAMED_ELEMENT(PluginsNameModel)
   QML_SINGLETON
-  QML_UNCREATABLE("Use the c++ instance")
 
   Q_PROPERTY(QSortFilterProxyModel* sortedNameModel MEMBER proxyModel CONSTANT)
 

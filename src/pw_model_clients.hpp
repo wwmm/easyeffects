@@ -41,7 +41,6 @@ class Clients : public QAbstractListModel {
   Q_OBJECT
   QML_NAMED_ELEMENT(PwModelClients)
   QML_SINGLETON
-  QML_UNCREATABLE("Use the c++ instance")
 
  public:
   explicit Clients(QObject* parent = nullptr);

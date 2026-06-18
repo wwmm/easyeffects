@@ -29,7 +29,6 @@ class Autostart : public QObject {
   Q_OBJECT
   QML_ELEMENT
   QML_SINGLETON
-  QML_UNCREATABLE("Use the c++ instance")
 
  public:
   explicit Autostart(QObject* parent = nullptr);

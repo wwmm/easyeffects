@@ -41,7 +41,6 @@ class GlobalShortcuts : public QObject {
   Q_OBJECT
   QML_ELEMENT
   QML_SINGLETON
-  QML_UNCREATABLE("Use the c++ instance")
 
  public:
   explicit GlobalShortcuts(QObject* parent = nullptr);

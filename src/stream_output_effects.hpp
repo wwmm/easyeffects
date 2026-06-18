@@ -28,7 +28,6 @@ class StreamOutputEffects : public EffectsBase {
   Q_OBJECT
   QML_ELEMENT
   QML_SINGLETON
-  QML_UNCREATABLE("Use the c++ instance")
 
  public:
   StreamOutputEffects(pw::Manager* pipe_manager);

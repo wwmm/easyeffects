@@ -42,7 +42,6 @@ class Manager : public QObject {
   Q_OBJECT
   QML_NAMED_ELEMENT(DatabaseManager)
   QML_SINGLETON
-  QML_UNCREATABLE("C++ singleton - use DatabaseManager.instance")
 
   Q_PROPERTY(QMap<QString, QVariant> soePluginsDB MEMBER soePluginsDB NOTIFY soePluginsDBChanged)
   Q_PROPERTY(QMap<QString, QVariant> siePluginsDB MEMBER siePluginsDB NOTIFY siePluginsDBChanged)

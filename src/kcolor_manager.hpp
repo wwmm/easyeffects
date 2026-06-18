@@ -32,7 +32,6 @@ class KColorManager : public QObject {
   Q_OBJECT
   QML_ELEMENT
   QML_SINGLETON
-  QML_UNCREATABLE("C++ singleton - use KColorManager.instance")
 
   Q_PROPERTY(QAbstractItemModel* model MEMBER model CONSTANT)
 
