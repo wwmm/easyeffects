@@ -223,7 +223,7 @@ void NativeUi::load() {
 }
 
 void NativeUi::notify() {
-  if (!ui_descriptor || !ui_handle || !ui_descriptor->port_event) {
+  if (!ui_descriptor || !ui_handle || !ui_descriptor->port_event || !wrapper->has_instance()) {
     return;
   }
 
@@ -237,7 +237,7 @@ void NativeUi::notify() {
 }
 
 void NativeUi::update() {
-  if (!idle_iface || !ui_handle) {
+  if (!idle_iface || !ui_handle || !wrapper->has_instance()) {
     return;
   }
 

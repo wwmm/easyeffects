@@ -431,7 +431,7 @@ PluginBase::PluginBase(std::string tag,
   native_ui_timer->setInterval(static_cast<long>(1000.0 / DbMain::lv2uiUpdateFrequency()));
 
   connect(native_ui_timer, &QTimer::timeout, this, [&]() {
-    if (lv2_wrapper == nullptr || !lv2_wrapper->has_ui()) {
+    if (!connected_to_pw || lv2_wrapper == nullptr || !lv2_wrapper->has_ui()) {
       return;
     }
 
@@ -463,6 +463,8 @@ PluginBase::~PluginBase() {
 }
 
 void PluginBase::stop_worker() {
+  native_ui_timer->stop();
+
   workerThread.quit();
   workerThread.wait();
 }
@@ -558,6 +560,8 @@ void PluginBase::set_node_group(const std::string& value) const {
 }
 
 void PluginBase::disconnect_from_pw() {
+  native_ui_timer->stop();
+
   pm->lock();
 
   set_active(false);
