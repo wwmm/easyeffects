@@ -33,7 +33,6 @@ Rectangle {
     property bool topToBottom: false
     property real value: 0
     property real clampedValue: 0
-    property real latestDisplayValue: 0
     readonly property real liFrom: Common.dbToLinear(from)
     readonly property real liTo: Common.dbToLinear(to)
     readonly property real invRange: to !== from ? 1.0 / (to - from) : 0
@@ -58,9 +57,7 @@ Rectangle {
             root.setValue(0);
 
             sampleTimer.value = 0;
-            root.latestDisplayValue = 0;
-
-            valueLabel.text = Number(0).toLocaleString(Qt.locale(), 'f', root.decimals);
+            valueLabel.value = 0;
         }
     }
 
@@ -82,11 +79,7 @@ Rectangle {
             newDisplayValue = value < sampleTimer.value ? value : sampleTimer.value;
         }
 
-        if (newDisplayValue > root.latestDisplayValue) {
-            valueLabel.text = Number(root.latestDisplayValue).toLocaleString(Qt.locale(), 'f', root.decimals);
-        }
-
-        root.latestDisplayValue = newDisplayValue;
+        valueLabel.value = valueLabel.value !== newDisplayValue ? newDisplayValue : valueLabel.value;
 
         // level rect
 
@@ -170,8 +163,10 @@ Rectangle {
     Label {
         id: valueLabel
 
+        property real value: 0
+
         anchors.centerIn: parent
-        text: Number(0).toLocaleString(Qt.locale(), 'f', root.decimals)
+        text: Number(value).toLocaleString(Qt.locale(), 'f', root.decimals)
         color: Kirigami.Theme.textColor
     }
 
@@ -186,7 +181,7 @@ Rectangle {
 
         onTriggered: function (): void {
             value = root.value;
-            valueLabel.text = Number(root.latestDisplayValue).toLocaleString(Qt.locale(), 'f', root.decimals);
+            valueLabel.value = valueLabel !== value ? value : valueLabel.value;
         }
     }
 }

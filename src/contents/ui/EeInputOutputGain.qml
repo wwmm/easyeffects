@@ -64,11 +64,11 @@ Item {
         signal gainChanged(real v)
 
         function setLevelLeft(value: real) {
-            left.setValue(value);
+            leftChannel.setValue(value);
         }
 
         function setLevelRight(value: real) {
-            right.setValue(value);
+            rightChannel.setValue(value);
         }
 
         EeSpinBox {
@@ -88,7 +88,7 @@ Item {
         }
 
         EeAudioLevel {
-            id: left
+            id: leftChannel
 
             Layout.alignment: Qt.AlignRight | Qt.AlignBottom
             implicitWidth: control.radius
@@ -100,7 +100,7 @@ Item {
         }
 
         EeAudioLevel {
-            id: right
+            id: rightChannel
 
             Layout.alignment: Qt.AlignRight | Qt.AlignBottom
             implicitWidth: control.radius

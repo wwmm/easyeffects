@@ -39,7 +39,6 @@ Rectangle {
     property bool convertDecibelToLinear: false
     property real value: 0
     property real clampedValue: 0
-    property real latestDisplayValue: 0
     readonly property real liFrom: Common.dbToLinear(from)
     readonly property real liTo: Common.dbToLinear(to)
     readonly property real invRange: to !== from ? 1.0 / (to - from) : 0
@@ -70,9 +69,8 @@ Rectangle {
             control.setValue(0);
 
             sampleTimer.value = 0;
-            control.latestDisplayValue = 0;
 
-            valueLabel.text = Number(0).toLocaleString(Qt.locale(), 'f', control.decimals) + control.unitSuffix;
+            valueLabel.value = 0;
         }
     }
 
@@ -95,11 +93,7 @@ Rectangle {
             newDisplayValue = value < sampleTimer.value ? value : sampleTimer.value;
         }
 
-        if (newDisplayValue > control.latestDisplayValue) {
-            valueLabel.text = Number(control.latestDisplayValue).toLocaleString(Qt.locale(), 'f', control.decimals) + control.unitSuffix;
-        }
-
-        control.latestDisplayValue = newDisplayValue;
+        valueLabel.value = valueLabel.value !== newDisplayValue ? newDisplayValue : valueLabel.value;
 
         const normalizedClampedValue = (control.clampedValue - control.from) * control.invRange;
         const normalizedClampedValueLinear = (Common.dbToLinear(control.clampedValue) - control.liFrom) * control.invLiRange;
@@ -215,9 +209,11 @@ Rectangle {
         Label {
             id: valueLabel
 
+            property real value: 0
+
             horizontalAlignment: Qt.AlignRight
             verticalAlignment: Qt.AlignVCenter
-            text: Number(0).toLocaleString(Qt.locale(), 'f', control.decimals) + control.unitSuffix
+            text: Number(value).toLocaleString(Qt.locale(), 'f', control.decimals) + control.unitSuffix
             elide: control.elide
             color: control.enabled ? Kirigami.Theme.textColor : Kirigami.Theme.disabledTextColor
             wrapMode: control.wrapMode
@@ -242,7 +238,7 @@ Rectangle {
 
         onTriggered: function (): void {
             value = control.value;
-            valueLabel.text = Number(control.latestDisplayValue).toLocaleString(Qt.locale(), 'f', control.decimals) + control.unitSuffix;
+            valueLabel.value = valueLabel.value !== value ? value : valueLabel.value;
         }
     }
 }
