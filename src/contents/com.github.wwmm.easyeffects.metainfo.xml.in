@@ -56,6 +56,20 @@
     <color type="primary" scheme_preference="dark">#004079</color>
   </branding>
   <releases>
+    <release type="stable" version="8.2.5" date="2026-06-27T00:00:00Z">
+      <description>
+        <ul>
+          <li>Features:</li>
+          <li>Now instead of building the pipeline immediately we build it after a delay. The application of this delay and its amount can be configured in our preferences window.</li>
+          <li>Improved compatibility with the latest LSP releases</li>
+          <li>Improved level meters.</li>
+          <li>Updated translations</li>
+          <li>Bug fixes:</li>
+          <li>The correct StartupWMClass value is used.</li>
+          <li>Other notes:</li>
+        </ul>
+      </description>
+    </release>
     <release type="stable" version="8.2.4" date="2026-05-23T00:00:00Z">
       <description>
         <ul>

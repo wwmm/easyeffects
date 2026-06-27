@@ -1,5 +1,21 @@
 # Changelog
  
+## 8.2.5
+### 2026-06-27
+
+ 
+### Features:
+- Now instead of building the pipeline immediately we build it after a delay. The application of this delay and its amount can be configured in our preferences window. 
+- Improved compatibility with the latest LSP releases
+- Improved level meters.
+- Updated translations
+
+### Bug fixes:
+- The correct StartupWMClass value is used.
+
+### Other notes:
+
+ 
 ## 8.2.4
 ### 2026-05-23
 
