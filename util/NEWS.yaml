@@ -13,6 +13,18 @@ Description:
 - 
 
 ---
+Version: 8.2.6
+Date: 2026-06-28
+
+Description: 
+- Features∶
+
+- Bug fixes∶
+- The StartupWMClass key was removed from our desktop file. It seems to do more harm than good.
+
+- Other notes∶
+
+---
 Version: 8.2.5
 Date: 2026-06-27
 

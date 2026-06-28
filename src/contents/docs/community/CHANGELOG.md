@@ -1,5 +1,17 @@
 # Changelog
  
+## 8.2.6
+### 2026-06-28
+
+ 
+### Features:
+
+### Bug fixes:
+- The StartupWMClass key was removed from our desktop file. It seems to do more harm than good.
+
+### Other notes:
+
+ 
 ## 8.2.5
 ### 2026-06-27
 
