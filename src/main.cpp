@@ -358,6 +358,8 @@ static int runSecondaryInstance(const QLockFile& lockFile,
 
 int main(int argc, char* argv[]) {
   QCoreApplication::setAttribute(Qt::AA_ShareOpenGLContexts);
+  QCoreApplication::setOrganizationDomain(ORGANIZATION_DOMAIN);
+  QCoreApplication::setApplicationName(APPLICATION_DOMAIN);
   QLoggingCategory::setFilterRules("easyeffects.debug=false");
 
   KIconTheme::initTheme();
@@ -365,6 +367,8 @@ int main(int argc, char* argv[]) {
   // Set the desktop app ID before QApplication startup so portal integration
   // does not try to re-register a different/late app ID on the same bus.
   QGuiApplication::setDesktopFileName(QStringLiteral(APPLICATION_ID));
+
+  QGuiApplication::setWindowIcon(QIcon::fromTheme(QStringLiteral(APPLICATION_ID)));
 
   QApplication app(argc, argv);
 
@@ -383,15 +387,12 @@ int main(int argc, char* argv[]) {
   about.addAuthor(i18n("Wellington Wallace"), i18nc("@info:credit", "Developer"),
                   QStringLiteral("wellingtonwallace@gmail.com"));
 
-  about.setOrganizationDomain(ORGANIZATION_DOMAIN);
   about.setTranslator(i18nc("NAME OF TRANSLATORS", "Your names"), i18nc("EMAIL OF TRANSLATORS", "Your emails"));
   about.setBugAddress("https://github.com/wwmm/easyeffects/issues");
   about.setHomepage("https://github.com/wwmm/easyeffects");
   about.setProgramLogo(APPLICATION_ID);
 
   KAboutData::setApplicationData(about);
-
-  QGuiApplication::setWindowIcon(QIcon::fromTheme(QStringLiteral(APPLICATION_ID)));
 
   KColorSchemeManager::instance();
 
