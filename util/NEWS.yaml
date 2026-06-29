@@ -7,10 +7,22 @@ Description:
 - 
 
 - Bug fixes∶
-- Fixed more inconsistencies in how our desktop file name is reported to desktop environments.
+- 
 
 - Other notes∶
 - 
+
+---
+Version: 8.2.7
+Date: 2026-06-29
+
+Description: 
+- Features∶
+
+- Bug fixes∶
+- Fixed more inconsistencies in how our desktop file name is reported to desktop environments.
+
+- Other notes∶
 
 ---
 Version: 8.2.6

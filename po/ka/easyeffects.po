@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-06-28 11:09-0300\n"
+"POT-Creation-Date: 2026-06-29 10:26-0300\n"
 "PO-Revision-Date: 2025-12-19 18:00+0000\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <https://hosted.weblate.org/projects/easyeffects/"
@@ -3256,31 +3256,31 @@ msgstr "მაქსიმალური ისტორია"
 msgid "Inverted mode"
 msgstr "მარცხენა/მარჯვენა"
 
-#: src/main.cpp:380
+#: src/main.cpp:382
 #, fuzzy
 msgid "Global audio effects"
 msgstr "მალ_სახმობები"
 
-#: src/main.cpp:381
+#: src/main.cpp:383
 msgid "© 2017-2026 Easy Effects Team"
 msgstr ""
 
-#: src/main.cpp:383
+#: src/main.cpp:385
 msgid "Wellington Wallace"
 msgstr ""
 
-#: src/main.cpp:383
+#: src/main.cpp:385
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "კონვერტი"
 
-#: src/main.cpp:387
+#: src/main.cpp:388
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 
-#: src/main.cpp:387
+#: src/main.cpp:388
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""

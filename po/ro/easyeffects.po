@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-06-28 11:09-0300\n"
+"POT-Creation-Date: 2026-06-29 10:26-0300\n"
 "PO-Revision-Date: 2026-06-14 13:01+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
@@ -3150,29 +3150,29 @@ msgstr "Frecvența instantanee maximă"
 msgid "Inverted mode"
 msgstr "Mod inversat"
 
-#: src/main.cpp:380
+#: src/main.cpp:382
 msgid "Global audio effects"
 msgstr "Efecte audio globale"
 
-#: src/main.cpp:381
+#: src/main.cpp:383
 msgid "© 2017-2026 Easy Effects Team"
 msgstr "© 2017-2026 Echipa Easy Effects"
 
-#: src/main.cpp:383
+#: src/main.cpp:385
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:383
+#: src/main.cpp:385
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Dezvoltator"
 
-#: src/main.cpp:387
+#: src/main.cpp:388
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Remus-Gabriel Chelu"
 
-#: src/main.cpp:387
+#: src/main.cpp:388
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "remusgabriel.chelu@disroot.org, 2025, 2026"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-06-28 11:09-0300\n"
+"POT-Creation-Date: 2026-06-29 10:26-0300\n"
 "PO-Revision-Date: 2026-03-23 19:09+0000\n"
 "Last-Translator: Lito Parra <lito.15@proton.me>\n"
 "Language-Team: Spanish (Mexico) <https://hosted.weblate.org/projects/"
@@ -3223,31 +3223,31 @@ msgstr "Límite del historial"
 msgid "Inverted mode"
 msgstr "Invertir fase izquierda"
 
-#: src/main.cpp:380
+#: src/main.cpp:382
 #, fuzzy
 msgid "Global audio effects"
 msgstr "_Atajos"
 
-#: src/main.cpp:381
+#: src/main.cpp:383
 msgid "© 2017-2026 Easy Effects Team"
 msgstr ""
 
-#: src/main.cpp:383
+#: src/main.cpp:385
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:383
+#: src/main.cpp:385
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Pendiente"
 
-#: src/main.cpp:387
+#: src/main.cpp:388
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 
-#: src/main.cpp:387
+#: src/main.cpp:388
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""

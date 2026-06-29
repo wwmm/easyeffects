@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-06-28 11:09-0300\n"
+"POT-Creation-Date: 2026-06-29 10:26-0300\n"
 "PO-Revision-Date: 2026-05-14 21:49+0000\n"
 "Last-Translator: Abdist <nasiefabdullah@gmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -3248,29 +3248,29 @@ msgstr "Frequenz"
 msgid "Inverted mode"
 msgstr "Links invertieren"
 
-#: src/main.cpp:380
+#: src/main.cpp:382
 msgid "Global audio effects"
 msgstr "_Tastenkürzel Toneffekte"
 
-#: src/main.cpp:381
+#: src/main.cpp:383
 msgid "© 2017-2026 Easy Effects Team"
 msgstr ""
 
-#: src/main.cpp:383
+#: src/main.cpp:385
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:383
+#: src/main.cpp:385
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Entwickler"
 
-#: src/main.cpp:387
+#: src/main.cpp:388
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Deine Namen"
 
-#: src/main.cpp:387
+#: src/main.cpp:388
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "Deine E-Mail Adressen"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-06-28 11:09-0300\n"
+"POT-Creation-Date: 2026-06-29 10:26-0300\n"
 "PO-Revision-Date: 2026-03-19 03:09+0000\n"
 "Last-Translator: \"Jakub Kamiński (Djkikusek)\" <djkikusek@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -3224,31 +3224,31 @@ msgstr "Częstotliwość"
 msgid "Inverted mode"
 msgstr "Odwróć lewy kanał"
 
-#: src/main.cpp:380
+#: src/main.cpp:382
 #, fuzzy
 msgid "Global audio effects"
 msgstr "_Skróty"
 
-#: src/main.cpp:381
+#: src/main.cpp:383
 msgid "© 2017-2026 Easy Effects Team"
 msgstr ""
 
-#: src/main.cpp:383
+#: src/main.cpp:385
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:383
+#: src/main.cpp:385
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Obwiednia"
 
-#: src/main.cpp:387
+#: src/main.cpp:388
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 
-#: src/main.cpp:387
+#: src/main.cpp:388
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
