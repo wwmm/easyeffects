@@ -358,8 +358,6 @@ static int runSecondaryInstance(const QLockFile& lockFile,
 
 int main(int argc, char* argv[]) {
   QCoreApplication::setAttribute(Qt::AA_ShareOpenGLContexts);
-  QCoreApplication::setOrganizationDomain(ORGANIZATION_DOMAIN);
-  QCoreApplication::setApplicationName(APPLICATION_DOMAIN);
   QLoggingCategory::setFilterRules("easyeffects.debug=false");
 
   KIconTheme::initTheme();
@@ -391,6 +389,8 @@ int main(int argc, char* argv[]) {
   about.setBugAddress("https://github.com/wwmm/easyeffects/issues");
   about.setHomepage("https://github.com/wwmm/easyeffects");
   about.setProgramLogo(APPLICATION_ID);
+  about.setDesktopFileName(APPLICATION_ID);
+  about.setOrganizationDomain(ORGANIZATION_DOMAIN);
 
   KAboutData::setApplicationData(about);
 
