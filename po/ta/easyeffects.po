@@ -1228,11 +1228,16 @@ msgctxt "@info:placeholder"
 msgid "No description set"
 msgstr "விளக்கம் எதுவும் அமைக்கப்படவில்லை"
 
-#: src/contents/ui/DelegatePluginsList.qml:119
+#: src/contents/ui/DelegatePluginsList.qml:160
 msgid "Toggle this effect"
 msgstr "இந்த விளைவை மாற்றவும்"
 
-#: src/contents/ui/DelegatePluginsList.qml:127
+#, empty
+#: src/contents/ui/DelegatePluginsList.qml:168
+msgid "Duplicate this effect"
+msgstr ""
+
+#: src/contents/ui/DelegatePluginsList.qml:174
 msgid "Remove this effect"
 msgstr "இந்த விளைவை அகற்றவும்"
 
