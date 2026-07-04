@@ -35,6 +35,7 @@
 #include <utility>
 #include "easyeffects_db.h"
 #include "easyeffects_db_streaminputs.h"
+#include "easyeffects_db_streamoutputs.h"
 #include "util.hpp"
 
 // Based on https://github.com/SourceReviver/qt_wayland_globalshortcut_via_portal/blob/main/wayland_shortcut.cpp
@@ -118,6 +119,12 @@ void GlobalShortcuts::process_activated_signal([[maybe_unused]] const QDBusObjec
 
     return;
   }
+
+  if (shortcut_id == "audio sharing") {
+    DbStreamOutputs::setLinkToVirtualSource(!DbStreamOutputs::linkToVirtualSource());
+
+    return;
+  }
 }
 
 void GlobalShortcuts::bind_shortcuts() {
@@ -132,7 +139,7 @@ void GlobalShortcuts::bind_shortcuts() {
 
     QVariantMap shortcut_options;
     shortcut.first = gsd.shortcut_id;
-    shortcut_options.insert("description", gsd.shortcut_id);
+    shortcut_options.insert("description", gsd.description);
     shortcut_options.insert("preferred_trigger", gsd.preferred_trigger);
     shortcut.second = shortcut_options;
 

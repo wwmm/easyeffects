@@ -78,13 +78,16 @@ class GlobalShortcuts : public QObject {
 
   void bind_shortcuts();
 
-  std::array<GlobalShortcutData, 2> ee_global_shortcuts_array = {
+  std::array<GlobalShortcutData, 3> ee_global_shortcuts_array = {
       {{.shortcut_id = "global bypass",
         .description = i18n("Toggle global bypass"),
         .preferred_trigger = "LOGO+CTRL+E"},
        {.shortcut_id = "microphone monitoring",
         .description = i18n("Toggle microphone monitoring"),
-        .preferred_trigger = "LOGO+CTRL+I"}},
+        .preferred_trigger = "LOGO+CTRL+I"},
+       {.shortcut_id = "audio sharing",
+        .description = i18n("Toggle audio sharing"),
+        .preferred_trigger = "LOGO+CTRL+O"}},
   };
 
  Q_SIGNALS:
