@@ -399,6 +399,46 @@ Kirigami.OverlaySheet {
                     text: i18n("Toggle microphone monitoring") // qmllint disable
                 }
 
+                RowLayout {
+                    Layout.alignment: Qt.AlignRight
+
+                    Kirigami.Chip {
+                        text: "Meta"
+                        closable: false
+                        checkable: false
+                        down: false
+                        hoverEnabled: false
+                    }
+
+                    Controls.Label {
+                        text: "+"
+                    }
+
+                    Kirigami.Chip {
+                        text: "Ctrl"
+                        closable: false
+                        checkable: false
+                        down: false
+                        hoverEnabled: false
+                    }
+
+                    Controls.Label {
+                        text: "+"
+                    }
+
+                    Kirigami.Chip {
+                        text: "O"
+                        closable: false
+                        checkable: false
+                        down: false
+                        hoverEnabled: false
+                    }
+                }
+
+                Controls.Label {
+                    text: i18n("Toggle audio sharing") // qmllint disable
+                }
+
                 Item {
                     implicitHeight: Kirigami.Units.gridUnit
                 }
