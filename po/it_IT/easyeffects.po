@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-07-04 14:28+0000\n"
-"PO-Revision-Date: 2026-06-16 18:01+0000\n"
+"PO-Revision-Date: 2026-07-05 20:01+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2026.7.dev0\n"
+"X-Generator: Weblate 2026.7.1.dev0\n"
 "Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 
 #: src/autostart.cpp:92
@@ -3004,7 +3004,7 @@ msgstr "Abilita/disabilita il monitoraggio del microfono"
 
 #: src/contents/ui/ShortcutsSheet.qml:439 src/global_shortcuts.hpp:89
 msgid "Toggle audio sharing"
-msgstr ""
+msgstr "Attiva/disattiva condivisione audio"
 
 #: src/contents/ui/Speex.qml:64
 msgid "Denoise"
