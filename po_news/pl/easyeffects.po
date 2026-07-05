@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-28 14:40+0000\n"
-"PO-Revision-Date: 2026-07-02 11:01+0000\n"
+"PO-Revision-Date: 2026-07-06 01:01+0000\n"
 "Last-Translator: NooB9496 <noob9496@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/pl/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 2026.7.dev0\n"
+"X-Generator: Weblate 2026.7.1.dev0\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -297,6 +297,8 @@ msgid ""
 "Fixed a regression that prevented the level meters to be updated under "
 "certain conditions."
 msgstr ""
+"Naprawiono regresję, która uniemożliwiała aktualizację wskaźników poziomu w "
+"pewnych warunkach."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:89
 msgid ""
@@ -337,19 +339,23 @@ msgstr "Uaktualnione tłumaczenia"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:102
 msgid "The equalizer can export basic APO preset files"
-msgstr ""
+msgstr "Korektor może eksportować podstawowe pliki ustawień APO"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:103
 msgid ""
 "Our players/recorders tab will show the audio client binary name in the "
 "cases were no app name is defined."
 msgstr ""
+"Karta odtwarzaczy/rejestratorów wyświetli nazwę binarną klienta audio w "
+"przypadku, gdy nie zdefiniowano nazwy aplikacji."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:104
 msgid ""
 "EasyEffects version can be shown in the command line through the option --"
 "version"
 msgstr ""
+"Wersję EasyEffects można wyświetlić w wierszu poleceń za pomocą opcji --"
+"version"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:106
 msgid ""
