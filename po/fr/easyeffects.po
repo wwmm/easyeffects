@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-07-04 14:28+0000\n"
-"PO-Revision-Date: 2026-06-15 18:01+0000\n"
+"PO-Revision-Date: 2026-07-06 09:01+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2026.7.dev0\n"
+"X-Generator: Weblate 2026.7.1.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -1790,7 +1790,7 @@ msgstr "Niveau automatique"
 
 #: src/contents/ui/Limiter.qml:468
 msgid "Smooth"
-msgstr "Progressif"
+msgstr "Fluidité"
 
 #: src/contents/ui/Limiter.qml:638
 msgid "Threshold boost"
@@ -3016,7 +3016,7 @@ msgstr "Basculer la surveillance du microphone"
 
 #: src/contents/ui/ShortcutsSheet.qml:439 src/global_shortcuts.hpp:89
 msgid "Toggle audio sharing"
-msgstr ""
+msgstr "Basculer le partage audio"
 
 #: src/contents/ui/Speex.qml:64
 msgid "Denoise"
