@@ -18,14 +18,14 @@
  */
 
 #include <kicontheme.h>
-#include <klocalizedcontext.h>
+#include <klocalizedqmlcontext.h>
 #include <qcontainerfwd.h>
 #include <qhashfunctions.h>
 #include <qnamespace.h>
 #include <qobject.h>
 #include <qqml.h>
 #include <qqmlapplicationengine.h>
-#include <qqmlcontext.h>
+
 #include <qquickstyle.h>
 #include <qstringliteral.h>
 #include <qtenvironmentvariables.h>
@@ -220,7 +220,7 @@ static void initQml(QQmlApplicationEngine& engine,
                     LocalServer& server,
                     UiState& ui,
                     bool& show_window) {
-  engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
+  KLocalization::setupLocalizedContext(&engine);
 
   engine.setInitialProperties({{"applicationName", APPLICATION_NAME},
                                {"applicationId", APPLICATION_ID},
