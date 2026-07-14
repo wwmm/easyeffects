@@ -62,6 +62,7 @@ class NodeManager : public QObject {
 
   void setNodeMute(uint64_t serial, bool state);
   void setNodeVolume(uint64_t serial, uint n_vol_ch, float value);
+  void setMonitorChannelVolumes(uint64_t serial, bool state);
 
   static void onNodeInfo(void* object, const pw_node_info* info);
   static void onNodeParam(void* data, int seq, uint32_t id, uint32_t index, uint32_t next, const spa_pod* param);

@@ -375,6 +375,15 @@ Manager::Manager(QObject* parent)
                             ee_source_node.id, ee_source_node.serial));
   }
 
+  connect(db::Manager::self().main, &DbMain::activateMonitorChannelVolumesChanged, this, [this]() {
+    lock();
+
+    node_manager.setMonitorChannelVolumes(ee_sink_node.serial, DbMain::activateMonitorChannelVolumes());
+    node_manager.setMonitorChannelVolumes(ee_source_node.serial, DbMain::activateMonitorChannelVolumes());
+
+    sync_wait_unlock();
+  });
+
   /**
    * By the time our virtual devices are loaded we may have already received
    * some streams. So we connected them here now that our virtual devices are

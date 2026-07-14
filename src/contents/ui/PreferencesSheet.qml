@@ -192,6 +192,19 @@ KirigamiSettings.ConfigurationView {
                 }
 
                 EeSwitch {
+                    id: activateMonitorChannelVolumes
+
+                    label: i18n("Activate monitor channel volumes") // qmllint disable
+                    subtitle: i18n("Activate if controlling Easy effects virtual devices volume and mute state is required.") // qmllint disable
+                    maximumLineCount: -1
+                    isChecked: DbMain.activateMonitorChannelVolumes
+                    onCheckedChanged: {
+                        if (isChecked !== DbMain.activateMonitorChannelVolumes)
+                            DbMain.activateMonitorChannelVolumes = isChecked;
+                    }
+                }
+
+                EeSwitch {
                     id: ignoreSystemNotifications
 
                     label: i18n("Ignore system notifications") // qmllint disable

@@ -106,6 +106,31 @@ void NodeManager::setNodeVolume(uint64_t serial, uint n_vol_ch, float value) {
   }
 }
 
+void NodeManager::setMonitorChannelVolumes(uint64_t serial, bool state) {
+  if (auto* proxy = model_nodes.get_proxy_by_serial(serial); proxy != nullptr) {
+    std::array<char, 1024U> buffer{};
+
+    /*
+     * POD code written by AI. Fuck this damn pod API. I hate it...
+     */
+
+    auto builder = SPA_POD_BUILDER_INIT(buffer.data(), sizeof(buffer));  // NOLINT
+
+    spa_pod_frame f[2];  // NOLINT
+
+    spa_pod_builder_push_object(&builder, &f[0], SPA_TYPE_OBJECT_Props, SPA_PARAM_Props);
+    spa_pod_builder_prop(&builder, SPA_PROP_params, 0);
+    spa_pod_builder_push_struct(&builder, &f[1]);
+    spa_pod_builder_string(&builder, "monitor.channel-volumes");
+    spa_pod_builder_bool(&builder, state);
+    spa_pod_builder_pop(&builder, &f[1]);
+
+    auto* pod = static_cast<spa_pod*>(spa_pod_builder_pop(&builder, &f[0]));
+
+    pw_node_set_param(reinterpret_cast<pw_node*>(proxy), SPA_PARAM_Props, 0, pod);  // NOLINT
+  }
+}
+
 auto NodeManager::registerNode(pw_registry* registry, uint32_t id, const char* type, const spa_dict* props) -> bool {
   if (registry == nullptr || props == nullptr) {
     return false;
@@ -676,7 +701,7 @@ auto NodeManager::load_virtual_devices(pw_core* core) -> std::pair<pw_proxy*, pw
   pw_properties_set(props_sink, PW_KEY_NODE_GROUP, "ee_sink_group");
   pw_properties_set(props_sink, "factory.name", "support.null-audio-sink");
   pw_properties_set(props_sink, "audio.position", "FL,FR");
-  pw_properties_set(props_sink, "monitor.channel-volumes", "false");
+  pw_properties_set(props_sink, "monitor.channel-volumes", DbMain::activateMonitorChannelVolumes() ? "true" : "false");
   pw_properties_set(props_sink, "monitor.passthrough", "true");
   pw_properties_set(props_sink, "priority.session", "0");
 
@@ -697,7 +722,8 @@ auto NodeManager::load_virtual_devices(pw_core* core) -> std::pair<pw_proxy*, pw
   pw_properties_set(props_source, PW_KEY_NODE_GROUP, "ee_source_group");
   pw_properties_set(props_source, "factory.name", "support.null-audio-sink");
   pw_properties_set(props_source, "audio.position", "FL,FR");
-  pw_properties_set(props_source, "monitor.channel-volumes", "false");
+  pw_properties_set(props_source, "monitor.channel-volumes",
+                    DbMain::activateMonitorChannelVolumes() ? "true" : "false");
   pw_properties_set(props_source, "monitor.passthrough", "true");
   pw_properties_set(props_source, "priority.session", "0");
 
