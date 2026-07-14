@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-07-04 14:28+0000\n"
-"PO-Revision-Date: 2026-06-28 13:01+0000\n"
+"PO-Revision-Date: 2026-07-14 23:42+0000\n"
 "Last-Translator: Libre <6n0n1m0s@proton.me>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
 "es/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2026.7.dev0\n"
+"X-Generator: Weblate 2026.8.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -242,9 +242,8 @@ msgid "Reset settings"
 msgstr "Restablecer ajustes"
 
 #: src/contents/ui/Autotune.qml:92 src/contents/ui/Autotune.qml:120
-#, fuzzy
 msgid "Tuning"
-msgstr "En ejecución"
+msgstr "Sintonización"
 
 #: src/contents/ui/Autotune.qml:107 src/contents/ui/Compressor.qml:79
 #: src/contents/ui/Compressor.qml:301 src/contents/ui/Crusher.qml:97
@@ -259,9 +258,8 @@ msgid "Mode"
 msgstr "Modo"
 
 #: src/contents/ui/Autotune.qml:111
-#, fuzzy
 msgid "Auto"
-msgstr "Ganancia automática"
+msgstr "Auto"
 
 #: src/contents/ui/Autotune.qml:111 src/contents/ui/Main.qml:465
 #: src/contents/ui/TrayIcon.qml:221
@@ -269,13 +267,12 @@ msgid "Manual"
 msgstr "Manual"
 
 #: src/contents/ui/Autotune.qml:137
-#, fuzzy
 msgid "Correction"
-msgstr "Correlación"
+msgstr "Corrección"
 
 #: src/contents/ui/Autotune.qml:153
 msgid "Bias"
-msgstr ""
+msgstr "Inclinación"
 
 #: src/contents/ui/Autotune.qml:169 src/contents/ui/Deesser.qml:171
 #: src/contents/ui/Filter.qml:137 src/contents/ui/Reverb.qml:126
@@ -312,14 +309,12 @@ msgid "Level"
 msgstr "Nivel"
 
 #: src/contents/ui/Autotune.qml:388
-#, fuzzy
 msgid "Pitch error"
-msgstr "Desplazamiento de frecuencias (izquierda)"
+msgstr "Error de inclinación"
 
 #: src/contents/ui/Autotune.qml:425
-#, fuzzy
 msgid "Fast correction"
-msgstr "Reducción de profundidad de bits"
+msgstr "Corrección rápida"
 
 #: src/contents/ui/BassEnhancer.qml:56 src/contents/ui/Exciter.qml:56
 msgid "Blend harmonics"
@@ -1409,27 +1404,27 @@ msgstr "SPM"
 #: src/contents/ui/Equalizer.qml:152 src/contents/ui/Filter.qml:107
 #, fuzzy
 msgid "Equalizer decramping"
-msgstr "Modo del ecualizador"
+msgstr "Ecualizador sin grapa"
 
 #: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
 msgid "x2"
-msgstr ""
+msgstr "⨯2"
 
 #: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
 msgid "x3"
-msgstr ""
+msgstr "⨯3"
 
 #: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
 msgid "x4"
-msgstr ""
+msgstr "⨯4"
 
 #: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
 msgid "x6"
-msgstr ""
+msgstr "⨯6"
 
 #: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
 msgid "x8"
-msgstr ""
+msgstr "⨯8"
 
 #: src/contents/ui/Equalizer.qml:165
 msgid "Bands"
@@ -2036,9 +2031,8 @@ msgid "Share audio"
 msgstr "Sonido compartido"
 
 #: src/contents/ui/PageStreamsEffects.qml:690
-#, fuzzy
 msgid "Send the processed desktop audio to the virtual source"
-msgstr "Enviar audio a la fuente virtual"
+msgstr "Enviar audio del escritorio procesado a la fuente virtual"
 
 #: src/contents/ui/PipeWirePage.qml:49
 msgid "General"
@@ -2320,13 +2314,13 @@ msgstr ""
 "graban desde los monitores virtuales de Easy Effects."
 
 #: src/contents/ui/PreferencesSheet.qml:247
-#, fuzzy
 msgid "Enable the link delay"
-msgstr "Activar tiempo de inactividad"
+msgstr "Activar el enlace de retardo"
 
 #: src/contents/ui/PreferencesSheet.qml:248
 msgid "When enabled, a delay is applied before linking the audio filters."
 msgstr ""
+"Cuando habilite, se aplica un retardo antes de enlazar los filtros de sonido."
 
 #: src/contents/ui/PreferencesSheet.qml:260
 msgid "Link delay"
@@ -3007,7 +3001,7 @@ msgstr "Cambiar el monitoreo del micrófono"
 
 #: src/contents/ui/ShortcutsSheet.qml:439 src/global_shortcuts.hpp:89
 msgid "Toggle audio sharing"
-msgstr ""
+msgstr "Alterna compartir sonido"
 
 #: src/contents/ui/Speex.qml:64
 msgid "Denoise"
@@ -3243,9 +3237,8 @@ msgid "Unknown"
 msgstr "Desconocido"
 
 #: src/tags_plugin_name.cpp:47
-#, fuzzy
 msgid "Autotune"
-msgstr "Ganancia automática"
+msgstr "Auto‐afinado"
 
 #: src/tags_plugin_name.cpp:48
 msgid "Bass Enhancer"
