@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-07-04 14:28+0000\n"
 "PO-Revision-Date: 2026-07-14 23:42+0000\n"
-"Last-Translator: Libre <6n0n1m0s@proton.me>\n"
+"Last-Translator: Swyter <swyterzone@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
 "es/>\n"
 "Language: es\n"
@@ -243,7 +243,7 @@ msgstr "Restablecer ajustes"
 
 #: src/contents/ui/Autotune.qml:92 src/contents/ui/Autotune.qml:120
 msgid "Tuning"
-msgstr "Sintonización"
+msgstr "Afinación"
 
 #: src/contents/ui/Autotune.qml:107 src/contents/ui/Compressor.qml:79
 #: src/contents/ui/Compressor.qml:301 src/contents/ui/Crusher.qml:97
@@ -272,7 +272,7 @@ msgstr "Corrección"
 
 #: src/contents/ui/Autotune.qml:153
 msgid "Bias"
-msgstr "Inclinación"
+msgstr "Sesgo"
 
 #: src/contents/ui/Autotune.qml:169 src/contents/ui/Deesser.qml:171
 #: src/contents/ui/Filter.qml:137 src/contents/ui/Reverb.qml:126
@@ -310,7 +310,7 @@ msgstr "Nivel"
 
 #: src/contents/ui/Autotune.qml:388
 msgid "Pitch error"
-msgstr "Error de inclinación"
+msgstr "Error de tono"
 
 #: src/contents/ui/Autotune.qml:425
 msgid "Fast correction"
@@ -2032,7 +2032,7 @@ msgstr "Sonido compartido"
 
 #: src/contents/ui/PageStreamsEffects.qml:690
 msgid "Send the processed desktop audio to the virtual source"
-msgstr "Enviar audio del escritorio procesado a la fuente virtual"
+msgstr "Enviar el audio procesado desde el escritorio a la fuente virtual"
 
 #: src/contents/ui/PipeWirePage.qml:49
 msgid "General"
