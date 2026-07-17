@@ -48,6 +48,9 @@ You can modify individual plugin parameters on the fly using the `set_property` 
 **Format:**
 `set_property:pipeline:plugin_id:instance_id:property_name:value`
 
+For equalizer channel properties:
+`set_property:pipeline:equalizer:instance_id:(left|right):property_name:value`
+
 **Example 1:**
 Set the compressor threshold on the output pipeline to -20dB:
 ```bash
@@ -60,13 +63,27 @@ Set the compressor `mode` to `Upward`. If [Plugin Properties](../database/plugin
 echo "set_property:output:compressor:0:mode:1" | socat - UNIX-CONNECT:$XDG_RUNTIME_DIR/EasyEffectsServer
 ```
 
+**Example 3:**
+Set equalizer left channel band gain:
+```bash
+echo "set_property:output:equalizer:0:left:band0Gain:1.5" | socat - UNIX-CONNECT:$XDG_RUNTIME_DIR/EasyEffectsServer
+```
+
 ### Get property
 
 **Format:**
 `get_property:pipeline:plugin_id:instance_id:property_name`
 
+For equalizer channel properties:
+`get_property:pipeline:equalizer:instance_id:(left|right):property_name`
+
 **Example:**
 Get the current output gain of the equalizer:
 ```bash
 echo "get_property:output:equalizer:0:outputGain" | socat - UNIX-CONNECT:$XDG_RUNTIME_DIR/EasyEffectsServer
+```
+
+Get a left channel equalizer band gain:
+```bash
+echo "get_property:output:equalizer:0:left:band0Gain" | socat - UNIX-CONNECT:$XDG_RUNTIME_DIR/EasyEffectsServer
 ```

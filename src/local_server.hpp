@@ -24,6 +24,7 @@
 #include <QLocalSocket>
 #include <QObject>
 #include <memory>
+#include <optional>
 #include <string>
 #include "pipeline_type.hpp"
 
@@ -54,11 +55,13 @@ class LocalServer : public QObject {
   static void set_property(const std::string& pipeline,
                            const std::string& plugin_name,
                            const std::string& instance_id,
+                           const std::optional<std::string>& channel,
                            const std::string& property,
                            const std::string& value);
 
   static auto get_property(const std::string& pipeline,
                            const std::string& plugin_name,
                            const std::string& instance_id,
+                           const std::optional<std::string>& channel,
                            const std::string& property) -> std::string;
 };

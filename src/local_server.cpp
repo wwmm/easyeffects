@@ -28,12 +28,14 @@
 #include <filesystem>
 #include <format>
 #include <memory>
+#include <optional>
 #include <regex>
 #include <string>
 #include "db_manager.hpp"
 #include "pipeline_type.hpp"
 #include "presets_manager.hpp"
 #include "tags_local_server.hpp"
+#include "tags_plugin_name.hpp"
 #include "util.hpp"
 
 LocalServer::LocalServer(QObject* parent) : QObject(parent), server(std::make_unique<QLocalServer>(this)) {
@@ -137,25 +139,21 @@ void LocalServer::onReadyRead() {
 
       std::smatch matches;
 
-      /**
-       * Original regex:
-       * ^set_property:(input|output):([^:]+):([0-9]+):([^:]+):(.+)\n$
-       *
-       * Since the dot matches any character except line terminators, there's
-       * no need to search for final new line and end of line position.
-       */
-      static const auto re = std::regex("^set_property:(input|output):([^:]+):([0-9]+):([^:]+):([^\n]+)");
+      // Equalizer may target left/right channel DB using an extra field.
+      static const auto re =
+          std::regex("^set_property:(input|output):([^:]+):([0-9]+):(?:(left|right):)?([^:]+):([^\n]+)");
 
       std::regex_search(msg, matches, re);
-
-      if (matches.size() == 6U) {
+ 
+      if (matches.size() == 7U) {
         const auto& pipeline = matches[1].str();
         const auto& plugin_name = matches[2].str();
         const auto& instance_id = matches[3].str();
-        const auto& property = matches[4].str();
-        const auto& value = matches[5].str();
+        const std::optional<std::string> channel = matches[4].matched ? std::optional(matches[4].str()) : std::nullopt;
+        const auto& property = matches[5].str();
+        const auto& value = matches[6].str();
 
-        set_property(pipeline, plugin_name, instance_id, property, value);
+        set_property(pipeline, plugin_name, instance_id, channel, property, value);
       }
     } else if (std::strncmp(buf, tags::local_server::get_property, strlen(tags::local_server::get_property)) == 0) {
       /**
@@ -167,17 +165,18 @@ void LocalServer::onReadyRead() {
 
       std::smatch matches;
 
-      static const auto re = std::regex("^get_property:(input|output):([^:]+):([0-9]+):([^\n]+)");
+      static const auto re = std::regex("^get_property:(input|output):([^:]+):([0-9]+):(?:(left|right):)?([^\n]+)");
 
       std::regex_search(msg, matches, re);
 
-      if (matches.size() == 5U) {
+      if (matches.size() == 6U) {
         const auto& pipeline = matches[1].str();
         const auto& plugin_name = matches[2].str();
         const auto& instance_id = matches[3].str();
-        const auto& property = matches[4].str();
+        const std::optional<std::string> channel = matches[4].matched ? std::optional(matches[4].str()) : std::nullopt;
+        const auto& property = matches[5].str();
 
-        const auto value = get_property(pipeline, plugin_name, instance_id, property);
+        const auto value = get_property(pipeline, plugin_name, instance_id, channel, property);
 
         socket->write((value + "\n").c_str());
       }
@@ -224,10 +223,22 @@ void LocalServer::onDisconnected() {
 void LocalServer::set_property(const std::string& pipeline,
                                const std::string& plugin_name,
                                const std::string& instance_id,
+                               const std::optional<std::string>& channel,
                                const std::string& property,
                                const std::string& value) {
   auto type = pipeline_from(pipeline);
-  QString key = QString::fromStdString(plugin_name + "#" + instance_id);
+  auto key_name = plugin_name + "#" + instance_id;
+
+  if (channel.has_value()) {
+    if (plugin_name != tags::plugin_name::BaseName::equalizer.toStdString()) {
+      util::warning(std::format("LocalServer: Channel '{}' is only valid for equalizer", channel.value()));
+      return;
+    }
+
+    key_name += "#" + channel.value();
+  }
+
+  QString key = QString::fromStdString(key_name);
 
   auto& mgr = db::Manager::self();
   QObject* db = nullptr;
@@ -291,9 +302,20 @@ void LocalServer::set_property(const std::string& pipeline,
 auto LocalServer::get_property(const std::string& pipeline,
                                const std::string& plugin_name,
                                const std::string& instance_id,
+                               const std::optional<std::string>& channel,
                                const std::string& property) -> std::string {
-  PipelineType type = (pipeline == "input") ? PipelineType::input : PipelineType::output;
-  QString key = QString::fromStdString(plugin_name + "#" + instance_id);
+  auto type = pipeline_from(pipeline);
+  auto key_name = plugin_name + "#" + instance_id;
+
+  if (channel.has_value()) {
+    if (plugin_name != tags::plugin_name::BaseName::equalizer.toStdString()) {
+      return "error_channel_only_valid_for_equalizer";
+    }
+
+    key_name += "#" + channel.value();
+  }
+
+  QString key = QString::fromStdString(key_name);
 
   auto& mgr = db::Manager::self();
   QObject* db = nullptr;
