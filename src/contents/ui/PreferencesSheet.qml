@@ -195,7 +195,7 @@ KirigamiSettings.ConfigurationView {
                     id: activateMonitorChannelVolumes
 
                     label: i18n("Activate monitor channel volumes") // qmllint disable
-                    subtitle: i18n("Activate if controlling Easy effects virtual devices volume and mute state is required.") // qmllint disable
+                    subtitle: i18n("Activate if controlling Easy Effects virtual devices volume and mute state by third party applications is required.") // qmllint disable
                     maximumLineCount: -1
                     isChecked: DbMain.activateMonitorChannelVolumes
                     onCheckedChanged: {
