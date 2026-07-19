@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-07-14 20:32-0300\n"
-"PO-Revision-Date: 2026-07-09 19:01+0000\n"
+"PO-Revision-Date: 2026-07-19 14:33+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ro/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
-"X-Generator: Weblate 2026.7.1.dev0\n"
+"X-Generator: Weblate 2026.8.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -2282,13 +2282,15 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:197
 msgid "Activate monitor channel volumes"
-msgstr ""
+msgstr "Activează volumul canalelor monitorului"
 
 #: src/contents/ui/PreferencesSheet.qml:198
 msgid ""
 "Activate if controlling Easy effects virtual devices volume and mute state "
 "is required."
 msgstr ""
+"Activați această opțiune dacă doriți să controlați volumul și starea de "
+"deconectare a sunetului pentru dispozitivele virtuale Easy Effects."
 
 #: src/contents/ui/PreferencesSheet.qml:210
 msgid "Ignore system notifications"
