@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-07-04 14:28+0000\n"
-"PO-Revision-Date: 2026-07-14 23:42+0000\n"
-"Last-Translator: Swyter <swyterzone@gmail.com>\n"
+"PO-Revision-Date: 2026-07-19 06:01+0000\n"
+"Last-Translator: Libre <6n0n1m0s@proton.me>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
 "es/>\n"
 "Language: es\n"
@@ -1406,7 +1406,7 @@ msgstr "SPM"
 #: src/contents/ui/Equalizer.qml:152 src/contents/ui/Filter.qml:107
 #, fuzzy
 msgid "Equalizer decramping"
-msgstr "Ecualizador sin grapa"
+msgstr "Ecualizador sin calambres"
 
 #: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
 msgid "x2"
@@ -3524,13 +3524,15 @@ msgstr "Efectos de audio simples"
 
 #: src/contents/ui/PreferencesSheet.qml:197
 msgid "Activate monitor channel volumes"
-msgstr ""
+msgstr "Activar monitor del volúmenes de canal"
 
 #: src/contents/ui/PreferencesSheet.qml:198
 msgid ""
 "Activate if controlling Easy effects virtual devices volume and mute state "
 "is required."
 msgstr ""
+"Actívelo si necesita controlar el volumen y el estado de silencio de los "
+"dispositivos virtuales de Easy Effects."
 
 #~ msgid "Go back"
 #~ msgstr "Regresar"
