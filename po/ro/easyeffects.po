@@ -3467,6 +3467,12 @@ msgstr "Egalizator, compresor și alte efecte audio"
 msgid "Simple audio effects"
 msgstr "Efecte audio simple"
 
+#: src/contents/ui/PreferencesSheet.qml:198
+msgid ""
+"Activate if controlling Easy Effects virtual devices volume and mute state "
+"by third party applications is required."
+msgstr ""
+
 #~ msgid "Go back"
 #~ msgstr "Înapoi"
 

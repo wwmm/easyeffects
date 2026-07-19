@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-07-14 20:32-0300\n"
+"POT-Creation-Date: 2026-07-19 11:33-0300\n"
 "PO-Revision-Date: 2026-07-06 09:01+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2285,8 +2285,8 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:198
 msgid ""
-"Activate if controlling Easy effects virtual devices volume and mute state "
-"is required."
+"Activate if controlling Easy Effects virtual devices volume and mute state "
+"by third party applications is required."
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:210
