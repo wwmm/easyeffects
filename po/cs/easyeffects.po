@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-07-19 11:33-0300\n"
-"PO-Revision-Date: 2026-07-15 22:01+0000\n"
+"PO-Revision-Date: 2026-07-20 04:01+0000\n"
 "Last-Translator: Fjuro <fjuro@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
 "cs/>\n"
@@ -2270,13 +2270,12 @@ msgid "Activate monitor channel volumes"
 msgstr "Aktivovat ovládání hlasitosti kanálů"
 
 #: src/contents/ui/PreferencesSheet.qml:198
-#, fuzzy
 msgid ""
 "Activate if controlling Easy Effects virtual devices volume and mute state "
 "by third party applications is required."
 msgstr ""
 "Aktivujte, pokud je vyžadováno ovládání hlasitosti virtuálních zařízení Easy "
-"Effects a stav ztlumení."
+"Effects a stav ztlumení aplikacemi třetích stran."
 
 #: src/contents/ui/PreferencesSheet.qml:210
 msgid "Ignore system notifications"
