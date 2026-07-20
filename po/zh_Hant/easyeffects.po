@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-07-19 11:33-0300\n"
-"PO-Revision-Date: 2026-07-15 09:12+0000\n"
+"PO-Revision-Date: 2026-07-20 04:01+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hant/>\n"
@@ -2255,11 +2255,12 @@ msgid "Activate monitor channel volumes"
 msgstr "啟用螢幕頻道音量"
 
 #: src/contents/ui/PreferencesSheet.qml:198
-#, fuzzy
 msgid ""
 "Activate if controlling Easy Effects virtual devices volume and mute state "
 "by third party applications is required."
-msgstr "若要控制 Easy Effects 虛擬裝置的音量和靜音狀態，進行啟用是必須的。"
+msgstr ""
+"若要由第三方應用程式對 Easy Effects 虛擬裝置的音量和靜音狀態進行控制，進行啟"
+"用是必須的。"
 
 #: src/contents/ui/PreferencesSheet.qml:210
 msgid "Ignore system notifications"
