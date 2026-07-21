@@ -1,5 +1,19 @@
 # Changelog
  
+## 8.2.8
+### 2026-07-21
+
+ 
+### Features:
+- A new configuration option that allows Easy Effects virtual devices volume and mute state to be controlled has been added
+- A new global shortcut that allows audio sharing to be toggled has been added.
+- Our local server has been improved and it is now possible to fully control equalizer parameters through external tools.
+
+### Bug fixes:
+
+### Other notes:
+
+ 
 ## 8.2.7
 ### 2026-06-29
 

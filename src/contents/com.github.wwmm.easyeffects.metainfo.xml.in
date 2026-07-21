@@ -56,6 +56,18 @@
     <color type="primary" scheme_preference="dark">#004079</color>
   </branding>
   <releases>
+    <release type="stable" version="8.2.8" date="2026-07-21T00:00:00Z">
+      <description>
+        <ul>
+          <li>Features:</li>
+          <li>A new configuration option that allows Easy Effects virtual devices volume and mute state to be controlled has been added</li>
+          <li>A new global shortcut that allows audio sharing to be toggled has been added.</li>
+          <li>Our local server has been improved and it is now possible to fully control equalizer parameters through external tools.</li>
+          <li>Bug fixes:</li>
+          <li>Other notes:</li>
+        </ul>
+      </description>
+    </release>
     <release type="stable" version="8.2.7" date="2026-06-29T00:00:00Z">
       <description>
         <ul>
