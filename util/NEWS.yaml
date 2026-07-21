@@ -4,13 +4,27 @@ Date: UNRELEASED_DATE
 
 Description: 
 - Features∶
-- A new configuration option that allows Easy Effects virtual devices volume and mute state to be controlled has been added
+- 
 
 - Bug fixes∶
 - 
 
 - Other notes∶
 - 
+
+---
+Version: 8.2.8
+Date: 2026-07-21
+
+Description: 
+- Features∶
+- A new configuration option that allows Easy Effects virtual devices volume and mute state to be controlled has been added
+- A new global shortcut that allows audio sharing to be toggled has been added.
+- Our local server has been improved and it is now possible to fully control equalizer parameters through external tools.
+
+- Bug fixes∶
+
+- Other notes∶
 
 ---
 Version: 8.2.7
