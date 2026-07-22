@@ -92,7 +92,7 @@ class Lv2Wrapper {
 
   auto create_instance(const uint& rate) -> bool;
 
-  void destroy_instance();
+  void destroy_instance_locked();
 
   void set_n_samples(const uint& value);
 
@@ -160,6 +160,10 @@ class Lv2Wrapper {
 
   LilvInstance* instance = nullptr;
 
+  bool instance_active = false;
+
+  std::mutex instance_mutex;
+
   NativeUi native_ui;
 
   uint n_ports = 0U;
@@ -190,6 +194,8 @@ class Lv2Wrapper {
   std::mutex ui_mutex;
 
   void check_required_features();
+
+  void destroy_instance();
 
   void create_ports();
 

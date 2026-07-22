@@ -49,9 +49,9 @@ Autotune::Autotune(const std::string& tag, pw::Manager* pipe_manager, PipelineTy
                  instance_id,
                  pipe_manager,
                  pipe_type),
-      settings(db::Manager::self().get_plugin_db<DbAutotune>(
-          pipe_type,
-          tags::plugin_name::BaseName::autotune + "#" + instance_id)) {
+      settings(
+          db::Manager::self().get_plugin_db<DbAutotune>(pipe_type,
+                                                        tags::plugin_name::BaseName::autotune + "#" + instance_id)) {
   const auto lv2_plugin_uri = "http://gareus.org/oss/lv2/fat1";
 
   lv2_wrapper = std::make_unique<lv2::Lv2Wrapper>(lv2_plugin_uri);
@@ -133,7 +133,7 @@ void Autotune::clear_data() {
   {
     std::scoped_lock<std::mutex> lock(data_mutex);
 
-    lv2_wrapper->destroy_instance();
+    lv2_wrapper->destroy_instance_locked();
   }
 
   setup();

@@ -86,12 +86,7 @@ Lv2Wrapper::Lv2Wrapper(const std::string& plugin_uri)
 }
 
 Lv2Wrapper::~Lv2Wrapper() {
-  if (instance != nullptr) {
-    lilv_instance_deactivate(instance);
-    lilv_instance_free(instance);
-
-    instance = nullptr;
-  }
+  destroy_instance();
 
   if (world != nullptr) {
     lilv_world_free(world);
@@ -238,6 +233,8 @@ void Lv2Wrapper::create_ports() {
 }
 
 auto Lv2Wrapper::create_instance(const uint& rate) -> bool {
+  std::scoped_lock<std::mutex> lock(instance_mutex);
+
   if (instance != nullptr && this->rate == rate) {
     return true;
   }
@@ -311,19 +308,33 @@ auto Lv2Wrapper::create_instance(const uint& rate) -> bool {
 
   connect_control_ports();
 
-  activate();
+  lilv_instance_activate(instance);
+  instance_active = true;
 
   return true;
 }
 
+void Lv2Wrapper::destroy_instance_locked() {
+  std::scoped_lock<std::mutex> lock(instance_mutex);
+
+  destroy_instance();
+}
+
 void Lv2Wrapper::destroy_instance() {
-  if (instance != nullptr) {
-    deactivate();
+  if (instance == nullptr) {
+    instance_active = false;
 
-    lilv_instance_free(instance);
-
-    instance = nullptr;
+    return;
   }
+
+  if (instance_active) {
+    lilv_instance_deactivate(instance);
+    instance_active = false;
+  }
+
+  lilv_instance_free(instance);
+
+  instance = nullptr;
 }
 
 auto Lv2Wrapper::get_instance() -> LilvInstance* {
@@ -403,7 +414,15 @@ auto Lv2Wrapper::get_rate() const -> uint {
 }
 
 void Lv2Wrapper::activate() {
+  std::scoped_lock<std::mutex> lock(instance_mutex);
+
+  if (instance == nullptr || instance_active) {
+    return;
+  }
+
   lilv_instance_activate(instance);
+
+  instance_active = true;
 }
 
 void Lv2Wrapper::run() const {
@@ -413,7 +432,15 @@ void Lv2Wrapper::run() const {
 }
 
 void Lv2Wrapper::deactivate() {
+  std::scoped_lock<std::mutex> lock(instance_mutex);
+
+  if (instance == nullptr || !instance_active) {
+    return;
+  }
+
   lilv_instance_deactivate(instance);
+
+  instance_active = false;
 }
 
 void Lv2Wrapper::set_control_port_value(const std::string& symbol, const float& value) {

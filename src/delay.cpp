@@ -113,7 +113,7 @@ void Delay::clear_data() {
   {
     std::scoped_lock<std::mutex> lock(data_mutex);
 
-    lv2_wrapper->destroy_instance();
+    lv2_wrapper->destroy_instance_locked();
   }
 
   setup();
