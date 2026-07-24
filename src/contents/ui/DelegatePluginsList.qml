@@ -40,6 +40,7 @@ Item {
     readonly property bool bypass: delegateItem.pluginDB?.bypass ?? false
 
     signal selectedChanged(string name)
+    signal duplicate(string oldName, string newName)
 
     width: ListView.view.width
 
@@ -74,6 +75,46 @@ Item {
                 }
 
                 delegateItem.pluginDB.bypass = !checked;
+            }
+
+            function duplicateEffect() {
+                let plugins = delegateItem.streamDB.plugins.slice();
+
+                let index_list = [];
+                let baseName = delegateItem.name.replace(/#\d+$/, "");
+
+                // get a list of every plugin index # 
+                for (let n = 0; n < plugins.length; n++) {
+                    if (plugins[n].startsWith(baseName)) {
+                        const m = plugins[n].match(/#(\d+)$/);
+                        if (m.length === 2) {
+                            index_list.push(m[1]);
+                        }
+                    }
+                }
+
+                // base the new plugin off the highest index #
+                const new_id = (index_list.length === 0) ? null : Math.max.apply(null, index_list) + 1;
+                
+                // create the new plugin name (used as a unique identifier)
+                const newName = baseName + "#" + new_id;
+
+                // since we are duplicating, new_id should NEVER be null
+                if (new_id != null) {
+                    // add to list
+                    plugins.splice(delegateItem.index + 1, 0, newName);
+
+                    // save list
+                    delegateItem.streamDB.plugins = plugins;
+
+                    // select new plugin
+                    delegateItem.streamDB.visiblePlugin = newName;
+
+                    // update new plugin with original plugin's data
+                    delegateItem.duplicate(delegateItem.name, newName);
+
+                    appWindow.showStatus(i18n("Added a new effect to the pipeline: %1", `<strong>${delegateItem.translatedName}</strong>`), Kirigami.MessageType.Positive); // qmllint disable
+                }
             }
 
             function removedEffect() {
@@ -122,6 +163,12 @@ Item {
                         checkable: true
                         checked: !bypass
                         onTriggered: pluginRowItem.toggledEffect(checked)
+                    },
+                    Kirigami.Action {
+                        text: i18n("Duplicate this effect") // qmllint disable
+                        icon.name: "document-duplicate"
+                        displayHint: DbMain.reducePluginsListControls ? Kirigami.DisplayHint.AlwaysHide : (Kirigami.DisplayHint.IconOnly | Kirigami.DisplayHint.KeepVisible)
+                        onTriggered: pluginRowItem.duplicateEffect()
                     },
                     Kirigami.Action {
                         text: i18n("Remove this effect") // qmllint disable
