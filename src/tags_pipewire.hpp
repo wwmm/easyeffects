@@ -35,6 +35,8 @@ inline constexpr auto sink = "Audio/Sink";
 
 inline constexpr auto source = "Audio/Source";
 
+inline constexpr auto duplex = "Audio/Duplex";
+
 inline constexpr auto virtual_source = "Audio/Source/Virtual";
 
 inline constexpr auto virtual_sink = "Audio/Sink/Virtual";

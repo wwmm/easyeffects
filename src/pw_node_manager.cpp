@@ -437,7 +437,8 @@ void NodeManager::onNodeInfo(void* object, const pw_node_info* info) {
   }
 
   if (nd->nd_info->media_class == tags::pipewire::media_class::source ||
-      nd->nd_info->media_class == tags::pipewire::media_class::virtual_source) {
+      nd->nd_info->media_class == tags::pipewire::media_class::virtual_source ||
+      nd->nd_info->media_class == tags::pipewire::media_class::duplex) {
     const auto nd_info_copy = *nd->nd_info;
 
     if (nd_info_copy.serial == nm->ee_source_node.serial) {
@@ -445,7 +446,8 @@ void NodeManager::onNodeInfo(void* object, const pw_node_info* info) {
     }
 
   } else if (nd->nd_info->media_class == tags::pipewire::media_class::sink ||
-             nd->nd_info->media_class == tags::pipewire::media_class::virtual_sink) {
+             nd->nd_info->media_class == tags::pipewire::media_class::virtual_sink ||
+             nd->nd_info->media_class == tags::pipewire::media_class::duplex) {
     const auto nd_info_copy = *nd->nd_info;
 
     if (nd_info_copy.serial == nm->ee_sink_node.serial) {

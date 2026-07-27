@@ -95,7 +95,8 @@ Nodes::Nodes(QObject* parent)
     proxy_source_devices->setDynamicSortFilter(true);
 
     auto pattern = "^(" + QString(tags::pipewire::media_class::source) + "|" +
-                   QString(tags::pipewire::media_class::virtual_source) + ")$";
+                   QString(tags::pipewire::media_class::virtual_source) + "|" +
+                   QString(tags::pipewire::media_class::duplex) + ")$";
 
     proxy_source_devices->setFilterRegularExpression(
         QRegularExpression(pattern, QRegularExpression::CaseInsensitiveOption));
@@ -113,7 +114,8 @@ Nodes::Nodes(QObject* parent)
     proxy_sink_devices->setDynamicSortFilter(true);
 
     auto pattern = "^(" + QString(tags::pipewire::media_class::sink) + "|" +
-                   QString(tags::pipewire::media_class::virtual_sink) + ")$";
+                   QString(tags::pipewire::media_class::virtual_sink) + "|" +
+                   QString(tags::pipewire::media_class::duplex) + ")$";
 
     proxy_sink_devices->setFilterRegularExpression(
         QRegularExpression(pattern, QRegularExpression::CaseInsensitiveOption));
