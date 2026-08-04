@@ -255,6 +255,19 @@ KirigamiSettings.ConfigurationView {
                 }
 
                 EeSwitch {
+                    id: resetBypassOnDeviceChange
+
+                    label: i18n("Reset Global Bypass on device change") // qmllint disable
+                    subtitle: i18n("Automatically enable effects when the audio device changes.") // qmllint disable
+                    maximumLineCount: -1
+                    isChecked: DbMain.resetBypassOnDeviceChange
+                    onCheckedChanged: {
+                        if (isChecked !== DbMain.resetBypassOnDeviceChange)
+                            DbMain.resetBypassOnDeviceChange = isChecked;
+                    }
+                }
+
+                EeSwitch {
                     id: linkDelayEnable
 
                     label: i18n("Enable the link delay") // qmllint disable

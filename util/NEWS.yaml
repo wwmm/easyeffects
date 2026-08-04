@@ -5,6 +5,7 @@ Date: UNRELEASED_DATE
 Description: 
 - Features∶
 - Duplex devices can now be selected as input/output devices.
+- Added a new configuration option that allows the automatic global bypass reset on device change to be disabled.
 
 - Bug fixes∶
 - 

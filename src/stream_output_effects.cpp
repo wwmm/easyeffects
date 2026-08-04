@@ -54,7 +54,7 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
       pm, &pw::Manager::sinkAdded, this,
       [&](pw::NodeInfo node) {
         if (node.name == DbStreamOutputs::outputDevice()) {
-          if (DbMain::bypass()) {
+          if (DbMain::bypass() && DbMain::resetBypassOnDeviceChange()) {
             DbMain::setBypass(false);
 
             return;  // filter connected through update_bypass_state
@@ -86,7 +86,7 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
         }
 
         if (auto node = pm->model_nodes.get_node_by_name(name); node.serial != SPA_ID_INVALID) {
-          if (DbMain::bypass()) {
+          if (DbMain::bypass() && DbMain::resetBypassOnDeviceChange()) {
             DbMain::setBypass(false);
 
             return;  // filter connected through update_bypass_state

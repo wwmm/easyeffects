@@ -183,6 +183,10 @@
             <label>Global Bypass: Puts the Effects Pipelines in Passthrough Mode.</label>
             <default>false</default>
         </entry>
+        <entry name="resetBypassOnDeviceChange" type="Bool">
+            <label>Reset Global Bypass when the audio device changes.</label>
+            <default>true</default>
+        </entry>
         <entry name="processAllOutputs" type="Bool">
             <label>Automatically moves Audio Streams to Easy Effects Virtual Sink.</label>
             <default>true</default>

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-07-21 14:14-0300\n"
+"POT-Creation-Date: 2026-08-04 12:10-0300\n"
 "PO-Revision-Date: 2025-05-26 11:48+0200\n"
 "Last-Translator: Noel <chatenium@gmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/easyeffects/"
@@ -1071,7 +1071,7 @@ msgstr ""
 msgid "Bit reduction"
 msgstr "Csökkentés"
 
-#: src/contents/ui/Crusher.qml:91 src/contents/ui/PreferencesSheet.qml:420
+#: src/contents/ui/Crusher.qml:91 src/contents/ui/PreferencesSheet.qml:433
 msgid "Shape"
 msgstr ""
 
@@ -1092,7 +1092,7 @@ msgstr ""
 msgid "Anti-aliasing"
 msgstr ""
 
-#: src/contents/ui/Crusher.qml:142 src/contents/ui/PreferencesSheet.qml:671
+#: src/contents/ui/Crusher.qml:142 src/contents/ui/PreferencesSheet.qml:684
 msgid "Mix"
 msgstr "Mix"
 
@@ -2274,12 +2274,12 @@ msgid "No Clients"
 msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:320
-#: src/contents/ui/PreferencesSheet.qml:379
+#: src/contents/ui/PreferencesSheet.qml:392
 msgid "State"
 msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:327
-#: src/contents/ui/PreferencesSheet.qml:386
+#: src/contents/ui/PreferencesSheet.qml:399
 msgid "Enabled"
 msgstr ""
 
@@ -2474,312 +2474,320 @@ msgid ""
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:260
+msgid "Reset Global Bypass on device change"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:261
+msgid "Automatically enable effects when the audio device changes."
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:273
 #, fuzzy
 msgid "Enable the link delay"
 msgstr "Equalizer Mód"
 
-#: src/contents/ui/PreferencesSheet.qml:261
+#: src/contents/ui/PreferencesSheet.qml:274
 msgid "When enabled, a delay is applied before linking the audio filters."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:273
+#: src/contents/ui/PreferencesSheet.qml:286
 msgid "Link delay"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:290
+#: src/contents/ui/PreferencesSheet.qml:303
 msgid "Enable the inactivity timeout"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:291
+#: src/contents/ui/PreferencesSheet.qml:304
 msgid ""
 "When all streams are inactive, Easy Effects pipeline remains loaded for an "
 "extra amount of time."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:303
+#: src/contents/ui/PreferencesSheet.qml:316
 msgid "Inactivity timeout"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:318
+#: src/contents/ui/PreferencesSheet.qml:331
 #, fuzzy
 msgid "Level meters frame rate cap"
 msgstr "Alkalmazás engedélyezése/letiltása"
 
-#: src/contents/ui/PreferencesSheet.qml:319
+#: src/contents/ui/PreferencesSheet.qml:332
 msgid "Maximum level meter update rate."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:333
+#: src/contents/ui/PreferencesSheet.qml:346
 msgid "Level meters label"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:334
+#: src/contents/ui/PreferencesSheet.qml:347
 msgid ""
 "The time it takes for the level meter labels to be updated when the current "
 "level is below the last highest one."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:351
+#: src/contents/ui/PreferencesSheet.qml:364
 #, fuzzy
 msgid "Enable level meters animation"
 msgstr "Alkalmazás engedélyezése/letiltása"
 
-#: src/contents/ui/PreferencesSheet.qml:360
+#: src/contents/ui/PreferencesSheet.qml:373
 msgid "Level meters animation duration"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:398
+#: src/contents/ui/PreferencesSheet.qml:411
 msgid "Audio delay compensation"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:413
+#: src/contents/ui/PreferencesSheet.qml:426
 msgid "Graph"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:424
+#: src/contents/ui/PreferencesSheet.qml:437
 msgid "Bars"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:424
+#: src/contents/ui/PreferencesSheet.qml:437
 msgid "Lines"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:424
+#: src/contents/ui/PreferencesSheet.qml:437
 msgid "Dots"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:424
+#: src/contents/ui/PreferencesSheet.qml:437
 msgid "Area"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:434
+#: src/contents/ui/PreferencesSheet.qml:447
 msgid "Dynamic scale"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:446
+#: src/contents/ui/PreferencesSheet.qml:459
 msgid "Logarithmic frequency axis"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:458
+#: src/contents/ui/PreferencesSheet.qml:471
 msgid "Points"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:473
+#: src/contents/ui/PreferencesSheet.qml:486
 msgid "Height"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:480
+#: src/contents/ui/PreferencesSheet.qml:493
 msgid "px"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:487
+#: src/contents/ui/PreferencesSheet.qml:500
 #, fuzzy
 msgid "Spectrum frame rate cap"
 msgstr "Alkalmazás engedélyezése/letiltása"
 
-#: src/contents/ui/PreferencesSheet.qml:488
+#: src/contents/ui/PreferencesSheet.qml:501
 msgid "Maximum spectrum update rate."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:503
+#: src/contents/ui/PreferencesSheet.qml:516
 msgid "Frequency Range"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:510
+#: src/contents/ui/PreferencesSheet.qml:523
 msgid "Minimum"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:526
+#: src/contents/ui/PreferencesSheet.qml:539
 msgid "Maximum"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:548
+#: src/contents/ui/PreferencesSheet.qml:561
 msgid "Database autosave interval"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:562
+#: src/contents/ui/PreferencesSheet.qml:575
 #, fuzzy
 msgid "Most used presets"
 msgstr "Előre beállított"
 
-#: src/contents/ui/PreferencesSheet.qml:580
+#: src/contents/ui/PreferencesSheet.qml:593
 msgid "Window"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:589
+#: src/contents/ui/PreferencesSheet.qml:602
 msgid "Force KDE's Breeze theme when Easy Effects starts"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:590
+#: src/contents/ui/PreferencesSheet.qml:603
 msgid ""
 "It is necessary to restart the service for changes in this setting to take "
 "effect."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:603
+#: src/contents/ui/PreferencesSheet.qml:616
 msgid "Reduce effects list controls"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:604
+#: src/contents/ui/PreferencesSheet.qml:617
 msgid ""
 "Action buttons in the effects list are moved inside a context menu for a "
 "more compact view."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:615
-#: src/contents/ui/PreferencesSheet.qml:652
+#: src/contents/ui/PreferencesSheet.qml:628
+#: src/contents/ui/PreferencesSheet.qml:665
 msgid "Color scheme"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:629
+#: src/contents/ui/PreferencesSheet.qml:642
 msgid "Force English language"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:630
+#: src/contents/ui/PreferencesSheet.qml:643
 msgid ""
 "Do not translate the user interface and show text in English language. "
 "Useful if the translation in the local language is incomplete or "
 "incomprehensible. A restart of the service is required to apply this option."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:641
+#: src/contents/ui/PreferencesSheet.qml:654
 msgid "Graphs"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:656
+#: src/contents/ui/PreferencesSheet.qml:669
 #, fuzzy
 msgid "Automatic"
 msgstr "Autóerősítés"
 
-#: src/contents/ui/PreferencesSheet.qml:656
+#: src/contents/ui/PreferencesSheet.qml:669
 #, fuzzy
 msgid "Light"
 msgstr "Jobb"
 
-#: src/contents/ui/PreferencesSheet.qml:656
+#: src/contents/ui/PreferencesSheet.qml:669
 msgid "Dark"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:667
+#: src/contents/ui/PreferencesSheet.qml:680
 msgid "Color theme"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:671
+#: src/contents/ui/PreferencesSheet.qml:684
 msgid "Green"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:671
+#: src/contents/ui/PreferencesSheet.qml:684
 msgid "Green neon"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:671
+#: src/contents/ui/PreferencesSheet.qml:684
 #, fuzzy
 msgid "Orange"
 msgstr "Tartomány"
 
-#: src/contents/ui/PreferencesSheet.qml:671
+#: src/contents/ui/PreferencesSheet.qml:684
 msgid "Yellow"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:671
+#: src/contents/ui/PreferencesSheet.qml:684
 msgid "Blue"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:671
+#: src/contents/ui/PreferencesSheet.qml:684
 msgid "Purple"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:671
+#: src/contents/ui/PreferencesSheet.qml:684
 msgid "Grey"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:671
+#: src/contents/ui/PreferencesSheet.qml:684
 msgid "User"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:679
+#: src/contents/ui/PreferencesSheet.qml:692
 msgctxt "@label"
 msgid "Background"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:688
+#: src/contents/ui/PreferencesSheet.qml:701
 msgctxt "@label"
 msgid "Plot area background"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:697
+#: src/contents/ui/PreferencesSheet.qml:710
 msgctxt "@label"
 msgid "Series colors"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:706
+#: src/contents/ui/PreferencesSheet.qml:719
 msgctxt "@label"
 msgid "Axis labels text color"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:715
+#: src/contents/ui/PreferencesSheet.qml:728
 msgctxt "@label"
 msgid "Axis labels background color"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:724
+#: src/contents/ui/PreferencesSheet.qml:737
 msgctxt "@label"
 msgid "Border color"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:733
+#: src/contents/ui/PreferencesSheet.qml:746
 #, fuzzy
 msgid "Line width"
 msgstr "Sor Széles"
 
-#: src/contents/ui/PreferencesSheet.qml:747
+#: src/contents/ui/PreferencesSheet.qml:760
 msgid "Show grid lines"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:765
+#: src/contents/ui/PreferencesSheet.qml:778
 #, fuzzy
 msgid "Autoload delay"
 msgstr "Autóerősítés"
 
-#: src/contents/ui/PreferencesSheet.qml:766
+#: src/contents/ui/PreferencesSheet.qml:779
 msgid ""
 "Delay between receiving a new device route and the call to autoload a preset."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:782
+#: src/contents/ui/PreferencesSheet.qml:795
 msgid "Ignore the blocklist from presets"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:783
+#: src/contents/ui/PreferencesSheet.qml:796
 msgid ""
 "If enabled, the list of excluded apps set in the loaded preset is ignored "
 "and does not replace the one set by the user."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:804
+#: src/contents/ui/PreferencesSheet.qml:817
 #, fuzzy
 msgid "Global shortcuts"
 msgstr "_Gyorsbillentyűk"
 
-#: src/contents/ui/PreferencesSheet.qml:805
-msgid "Enables support for XDG global shortcuts."
-msgstr ""
-
-#: src/contents/ui/PreferencesSheet.qml:817
-#, fuzzy
-msgid "Native window of effects"
-msgstr "Natív Ablak Megjelenítése"
-
 #: src/contents/ui/PreferencesSheet.qml:818
-msgid "Allows the native user interface of effects to be shown/hidden."
+msgid "Enables support for XDG global shortcuts."
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:830
 #, fuzzy
+msgid "Native window of effects"
+msgstr "Natív Ablak Megjelenítése"
+
+#: src/contents/ui/PreferencesSheet.qml:831
+msgid "Allows the native user interface of effects to be shown/hidden."
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:843
+#, fuzzy
 msgid "Update frequency"
 msgstr "Frekvencia"
 
-#: src/contents/ui/PreferencesSheet.qml:831
+#: src/contents/ui/PreferencesSheet.qml:844
 msgid "Related to LV2 plugins."
 msgstr ""
 
@@ -3425,27 +3433,27 @@ msgstr ""
 msgid "Generic error while loading the effect"
 msgstr ""
 
-#: src/pw_model_nodes.cpp:490
+#: src/pw_model_nodes.cpp:492
 msgid "Running"
 msgstr ""
 
-#: src/pw_model_nodes.cpp:492
+#: src/pw_model_nodes.cpp:494
 msgid "Suspended"
 msgstr ""
 
-#: src/pw_model_nodes.cpp:494
+#: src/pw_model_nodes.cpp:496
 msgid "Idle"
 msgstr ""
 
-#: src/pw_model_nodes.cpp:496
+#: src/pw_model_nodes.cpp:498
 msgid "Creating"
 msgstr ""
 
-#: src/pw_model_nodes.cpp:498
+#: src/pw_model_nodes.cpp:500
 msgid "Error"
 msgstr ""
 
-#: src/pw_model_nodes.cpp:500
+#: src/pw_model_nodes.cpp:502
 msgid "Unknown"
 msgstr ""
 
