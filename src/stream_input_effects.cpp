@@ -59,7 +59,7 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
             return;  // filter connected through update_bypass_state
           }
 
-          set_bypass(false);
+          set_bypass(DbMain::bypass());
 
           presets::Manager::self().autoload(PipelineType::input, node.name, node.device_route_description);
         }
@@ -82,7 +82,7 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
             return;  // filter connected through update_bypass_state
           }
 
-          set_bypass(false);
+          set_bypass(DbMain::bypass());
 
           presets::Manager::self().autoload(PipelineType::input, node.name, node.device_route_description);
         }
@@ -133,7 +133,7 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
           return;  // filter connected through update_bypass_state
         }
 
-        set_bypass(false);
+        set_bypass(DbMain::bypass());
       },
       Qt::QueuedConnection);
 

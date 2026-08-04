@@ -60,7 +60,7 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
             return;  // filter connected through update_bypass_state
           }
 
-          set_bypass(false);
+          set_bypass(DbMain::bypass());
 
           presets::Manager::self().autoload(PipelineType::output, node.name, node.device_route_description);
         }
@@ -92,7 +92,7 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
             return;  // filter connected through update_bypass_state
           }
 
-          set_bypass(false);
+          set_bypass(DbMain::bypass());
 
           presets::Manager::self().autoload(PipelineType::output, node.name, node.device_route_description);
         }
@@ -113,8 +113,8 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
       Qt::QueuedConnection);
 
   connect(
-      DbStreamOutputs::self(), &DbStreamOutputs::linkToVirtualSourceChanged, this, [&]() { set_bypass(false); },
-      Qt::QueuedConnection);
+      DbStreamOutputs::self(), &DbStreamOutputs::linkToVirtualSourceChanged, this,
+      [&]() { set_bypass(DbMain::bypass()); }, Qt::QueuedConnection);
 
   connect(pm, &pw::Manager::linkChanged, this, &StreamOutputEffects::on_link_changed, Qt::QueuedConnection);
 
