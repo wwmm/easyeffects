@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-08-04 12:10-0300\n"
-"PO-Revision-Date: 2026-07-20 15:07+0000\n"
+"PO-Revision-Date: 2026-08-05 22:01+0000\n"
 "Last-Translator: NooB9496 <noob9496@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/main/"
 "pl/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 2026.8.dev0\n"
+"X-Generator: Weblate 2026.8.1.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -2329,11 +2329,11 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:260
 msgid "Reset Global Bypass on device change"
-msgstr ""
+msgstr "Zresetuj globalne obejście przy zmianie urządzenia"
 
 #: src/contents/ui/PreferencesSheet.qml:261
 msgid "Automatically enable effects when the audio device changes."
-msgstr ""
+msgstr "Automatycznie włącz efekty w przypadku zmiany urządzenia audio."
 
 #: src/contents/ui/PreferencesSheet.qml:273
 msgid "Enable the link delay"
