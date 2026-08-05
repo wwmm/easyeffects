@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-08-04 12:10-0300\n"
-"PO-Revision-Date: 2026-07-20 04:01+0000\n"
+"PO-Revision-Date: 2026-08-05 07:02+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hant/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2026.8.dev0\n"
+"X-Generator: Weblate 2026.8.1.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -896,7 +896,7 @@ msgstr "脈衝"
 
 #: src/contents/ui/Convolver.qml:240 src/plugin_base.cpp:336
 msgid "Spectrum"
-msgstr "波譜"
+msgstr "頻譜"
 
 #: src/contents/ui/Convolver.qml:272
 msgid "Log scale"
@@ -2182,7 +2182,7 @@ msgstr "音訊"
 
 #: src/contents/ui/PreferencesSheet.qml:50
 msgid "Spectrum Analyzer"
-msgstr "波譜分析器"
+msgstr "頻譜分析器"
 
 #: src/contents/ui/PreferencesSheet.qml:56
 msgid "Style"
@@ -2299,11 +2299,11 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:260
 msgid "Reset Global Bypass on device change"
-msgstr ""
+msgstr "重設整體省略(Global Bypass)於裝置變更時"
 
 #: src/contents/ui/PreferencesSheet.qml:261
 msgid "Automatically enable effects when the audio device changes."
-msgstr ""
+msgstr "當音訊裝置變更時自動啟用音效。"
 
 #: src/contents/ui/PreferencesSheet.qml:273
 msgid "Enable the link delay"
@@ -2334,7 +2334,7 @@ msgstr "非作用時暫停"
 
 #: src/contents/ui/PreferencesSheet.qml:331
 msgid "Level meters frame rate cap"
-msgstr "等級量表影格速率上限"
+msgstr "等級量表音框率上限"
 
 #: src/contents/ui/PreferencesSheet.qml:332
 msgid "Maximum level meter update rate."
@@ -2404,7 +2404,7 @@ msgstr "px"
 
 #: src/contents/ui/PreferencesSheet.qml:500
 msgid "Spectrum frame rate cap"
-msgstr "頻譜影格速率上限"
+msgstr "頻譜音框率上限"
 
 #: src/contents/ui/PreferencesSheet.qml:501
 msgid "Maximum spectrum update rate."
@@ -3387,7 +3387,7 @@ msgstr "bits"
 #: src/units.hpp:82
 msgctxt "frame unit (plural)"
 msgid "frames"
-msgstr "影格"
+msgstr "音框"
 
 #: src/units.hpp:83
 msgctxt "frames per second abbreviation"
