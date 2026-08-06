@@ -1232,11 +1232,16 @@ msgctxt "@info:placeholder"
 msgid "No description set"
 msgstr "Description non définie"
 
-#: src/contents/ui/DelegatePluginsList.qml:119
+#: src/contents/ui/DelegatePluginsList.qml:160
 msgid "Toggle this effect"
 msgstr "Basculer cet effet"
 
-#: src/contents/ui/DelegatePluginsList.qml:127
+#, empty
+#: src/contents/ui/DelegatePluginsList.qml:168
+msgid "Duplicate this effect"
+msgstr ""
+
+#: src/contents/ui/DelegatePluginsList.qml:174
 msgid "Remove this effect"
 msgstr "Supprimer cet effet"
 

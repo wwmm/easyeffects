@@ -1231,11 +1231,16 @@ msgctxt "@info:placeholder"
 msgid "No description set"
 msgstr "Опис не встановлено"
 
-#: src/contents/ui/DelegatePluginsList.qml:119
+#: src/contents/ui/DelegatePluginsList.qml:160
 msgid "Toggle this effect"
 msgstr "Увімкнути цей ефект"
 
-#: src/contents/ui/DelegatePluginsList.qml:127
+#, empty
+#: src/contents/ui/DelegatePluginsList.qml:168
+msgid "Duplicate this effect"
+msgstr ""
+
+#: src/contents/ui/DelegatePluginsList.qml:174
 msgid "Remove this effect"
 msgstr "Вилучити цей ефект"
 

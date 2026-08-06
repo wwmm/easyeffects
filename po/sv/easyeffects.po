@@ -1296,12 +1296,17 @@ msgctxt "@info:placeholder"
 msgid "No description set"
 msgstr "Beskrivning"
 
-#: src/contents/ui/DelegatePluginsList.qml:119
+#: src/contents/ui/DelegatePluginsList.qml:160
 #, fuzzy
 msgid "Toggle this effect"
 msgstr "Ta bort denna effekt"
 
-#: src/contents/ui/DelegatePluginsList.qml:127
+#, empty
+#: src/contents/ui/DelegatePluginsList.qml:168
+msgid "Duplicate this effect"
+msgstr ""
+
+#: src/contents/ui/DelegatePluginsList.qml:174
 #, fuzzy
 msgid "Remove this effect"
 msgstr "Ta bort denna effekt"

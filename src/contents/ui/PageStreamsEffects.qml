@@ -460,6 +460,15 @@ Kirigami.Page {
 
                                 pagePluginsGrid.createPluginStack(name, baseName, pageStreamsEffects.pluginsDB[name]);
                             }
+                        }   
+                        onDuplicate: (oldName, newName) => {
+                            for (let key in pageStreamsEffects.pluginsDB[oldName]) {
+                                try {
+                                    pageStreamsEffects.pluginsDB[newName][key] = pageStreamsEffects.pluginsDB[oldName][key]
+                                } catch (e) {
+                                    // Skip read-only values
+                                }
+                            }
                         }
                     }
 
