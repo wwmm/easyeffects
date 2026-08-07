@@ -10,6 +10,8 @@ fi
 # for some reason the arch qt6-declarative package doesn't add this to the normally searched directories
 if [[ -f /usr/lib/qt6/bin/qmllint ]]; then
     /usr/lib/qt6/bin/qmllint src/contents/ui/*.qml "$@"
+elif command -v qmllint &>/dev/null; then
+    qmllint src/contents/ui/*.qml "$@"
 # for fedora
 elif command -v qmllint-qt6 --help &>/dev/null; then
     qmllint-qt6 src/contents/ui/*.qml "$@"
