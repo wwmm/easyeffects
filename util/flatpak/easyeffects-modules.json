@@ -39,11 +39,8 @@
                     "tag": "v1.2.6",
                     "commit": "67b33abe1558160ed76ada1322329b0e9e058b02",
                     "x-checker-data": {
-                        "type": "json",
-                        "url": "https://api.github.com/repos/jiixyj/libebur128/releases/latest",
-                        "tag-query": ".tag_name",
-                        "version-query": "$tag | sub(\"^jq-\"; \"\")",
-                        "timestamp-query": ".published_at"
+                        "type": "git",
+                        "tag-pattern": "^v([\\d.]+)$"
                     }
                 }
             ]

@@ -12,8 +12,10 @@ fi
 # for some reason the arch qt6-declarative package doesn't add this to the normally searched directories
 if [[ -f /usr/lib/qt6/bin/qmlformat ]]; then
     /usr/lib/qt6/bin/qmlformat src/contents/ui/* --inplace "$@"
+elif command -v qmlformat &>/dev/null; then
+    qmlformat src/contents/ui/* --inplace "$@"
 # for fedora
-elif command -v qmlformat-qt6 --help &>/dev/null; then
+elif command -v qmlformat-qt6 &>/dev/null; then
     qmlformat-qt6 src/contents/ui/* --inplace "$@"
 else
     echo "ERROR: Could not find qmlformat qt6"
