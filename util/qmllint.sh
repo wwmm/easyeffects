@@ -13,7 +13,7 @@ if [[ -f /usr/lib/qt6/bin/qmllint ]]; then
 elif command -v qmllint &>/dev/null; then
     qmllint src/contents/ui/*.qml "$@"
 # for fedora
-elif command -v qmllint-qt6 --help &>/dev/null; then
+elif command -v qmllint-qt6 &>/dev/null; then
     qmllint-qt6 src/contents/ui/*.qml "$@"
 else
     echo "ERROR: Could not find qmllint qt6"
