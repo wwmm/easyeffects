@@ -9,12 +9,12 @@ fi
 
 # unlike qmllint, this can also be used on js files, not just qml files, so glob everything in the directory
 
-if [[ -f /usr/lib/qt6/bin/qmlformat ]]; then
+if command -v qmlformat-qt6 &>/dev/null; then
+    QMLFORMAT="qmlformat-qt6"
+elif [[ -f /usr/lib/qt6/bin/qmlformat ]]; then
     QMLFORMAT="/usr/lib/qt6/bin/qmlformat"
 elif command -v qmlformat &>/dev/null; then
     QMLFORMAT="qmlformat"
-elif command -v qmlformat-qt6 &>/dev/null; then
-    QMLFORMAT="qmlformat-qt6"
 else
     echo "ERROR: Could not find qmlformat qt6"
     exit 1
