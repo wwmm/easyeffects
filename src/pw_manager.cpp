@@ -250,6 +250,11 @@ Manager::Manager(QObject* parent)
       }
 
       for (auto& node : nodes) {
+        if (node.card_profile_device_id != -1 && device.route_device_id != -1 &&
+            node.card_profile_device_id != device.route_device_id) {
+          continue;
+        }
+
         if (node.media_class == tags::pipewire::media_class::source ||
             node.media_class == tags::pipewire::media_class::virtual_source ||
             node.media_class == tags::pipewire::media_class::duplex) {
@@ -277,6 +282,11 @@ Manager::Manager(QObject* parent)
       }
 
       for (auto& node : nodes) {
+        if (node.card_profile_device_id != -1 && device.route_device_id != -1 &&
+            node.card_profile_device_id != device.route_device_id) {
+          continue;
+        }
+
         if (node.media_class == tags::pipewire::media_class::sink ||
             node.media_class == tags::pipewire::media_class::virtual_sink ||
             node.media_class == tags::pipewire::media_class::duplex) {

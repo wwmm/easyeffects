@@ -25,6 +25,8 @@ inline constexpr auto ee_source_name = "easyeffects_source";
 
 inline constexpr auto ee_sink_name = "easyeffects_sink";
 
+inline constexpr auto card_profile_device = "card.profile.device";
+
 }  // namespace tags::pipewire
 
 namespace tags::pipewire::media_class {

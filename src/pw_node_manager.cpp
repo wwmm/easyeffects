@@ -231,6 +231,8 @@ auto NodeManager::registerNode(pw_registry* registry, uint32_t id, const char* t
 
   util::spa_dict_get_num(props, PW_KEY_DEVICE_ID, nd->nd_info->device_id);
 
+  util::spa_dict_get_num(props, tags::pipewire::card_profile_device, nd->nd_info->card_profile_device_id);
+
   const auto user_blocklist = (media_class == tags::pipewire::media_class::output_stream) ? DbStreamOutputs::blocklist()
                                                                                           : DbStreamInputs::blocklist();
 
@@ -414,6 +416,8 @@ void NodeManager::onNodeInfo(void* object, const pw_node_info* info) {
   }
 
   util::spa_dict_get_num(info->props, PW_KEY_DEVICE_ID, nd->nd_info->device_id);
+
+  util::spa_dict_get_num(info->props, tags::pipewire::card_profile_device, nd->nd_info->card_profile_device_id);
 
   // Now that we know the media name we check the blocklist again
 
