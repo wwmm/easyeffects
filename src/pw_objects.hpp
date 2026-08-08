@@ -40,6 +40,8 @@ struct NodeInfo {
 
   uint device_id = SPA_ID_INVALID;
 
+  int32_t card_profile_device_id = -1;
+
   QString name;
 
   QString description;
@@ -185,6 +187,8 @@ struct DeviceInfo {
 
   QString output_route_name;
   QString output_route_description;
+
+  int32_t route_device_id = -1;
 
   QString bus_id;
 

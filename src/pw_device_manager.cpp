@@ -167,11 +167,12 @@ void DeviceManager::on_device_event_param(void* object,
 
   enum spa_direction direction {};
   enum spa_param_availability available {};
+  int32_t route_device_id = -1;
 
   if (spa_pod_parse_object(param, SPA_TYPE_OBJECT_ParamRoute, nullptr, SPA_PARAM_ROUTE_direction,
                            SPA_POD_Id(&direction), SPA_PARAM_ROUTE_name, SPA_POD_String(&name),
                            SPA_PARAM_ROUTE_description, SPA_POD_String(&description), SPA_PARAM_ROUTE_available,
-                           SPA_POD_Id(&available)) < 0) {
+                           SPA_POD_Id(&available), SPA_PARAM_ROUTE_device, SPA_POD_OPT_Int(&route_device_id)) < 0) {
     return;
   }
 
@@ -187,6 +188,8 @@ void DeviceManager::on_device_event_param(void* object,
     if (device.id != dd->id) {
       continue;
     }
+
+    device.route_device_id = route_device_id;
 
     if (direction == SPA_DIRECTION_INPUT) {
       device.input_route_name = name;
