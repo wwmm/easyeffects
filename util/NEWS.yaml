@@ -8,7 +8,7 @@ Description:
 - Added a new configuration option that allows the automatic global bypass reset on device change to be disabled.
 
 - Bug fixes∶
-- 
+- Some ui buttons "enabled" state was incorrectly bound to the showNativePluginUi key
 
 - Other notes∶
 - 

@@ -334,7 +334,6 @@ Kirigami.ScrollablePage {
                 Kirigami.Action {
                     text: i18n("Presets") // qmllint disable
                     icon.name: "user-bookmarks-symbolic"
-                    enabled: DbMain.showNativePluginUi
                     onTriggered: {
                         presetsDialog.open();
                     }
