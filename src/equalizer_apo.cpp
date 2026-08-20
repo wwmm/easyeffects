@@ -724,4 +724,264 @@ auto export_apo_preset(DbEqualizer* settings,
   return !write_buffer.fail();
 }
 
+// ### MidSideEqualizer Section ###
+
+auto import_apo_preset(DbMidSideEqualizer* settings,
+                       DbEqualizerChannel* settings_mid,
+                       DbEqualizerChannel* settings_side,
+                       const std::string& file_path) -> bool {
+  std::filesystem::path p{file_path};
+
+  if (!std::filesystem::is_regular_file(p)) {
+    return false;
+  }
+
+  std::ifstream eq_file;
+  eq_file.open(p.c_str());
+
+  std::vector<struct APO_Band> bands;
+  double preamp = 0.0;
+
+  if (const auto re = std::regex(R"(^[ \t]*#)"); eq_file.is_open()) {
+    for (std::string line; std::getline(eq_file, line);) {
+      if (std::regex_search(line, re)) {  // Avoid commented lines
+        continue;
+      }
+
+      if (struct APO_Band filter; parse_apo_config_line(line, filter)) {
+        bands.push_back(filter);
+      } else {
+        parse_apo_preamp(line, preamp);
+      }
+    }
+  }
+
+  eq_file.close();
+
+  if (bands.empty()) {
+    return false;
+  }
+
+  const auto max_bands = static_cast<int>(settings->getMaxValue(num_bands));
+  const auto apo_bands = static_cast<int>(bands.size());
+
+  settings->setInputGain(preamp);
+
+  std::vector<DbEqualizerChannel*> settings_channels;
+
+  if (!settings->splitChannels()) {
+    settings->setNumBands(std::min(apo_bands, max_bands));
+
+    settings_channels.push_back(settings_mid);
+    settings_channels.push_back(settings_side);
+  } else {
+    settings->setNumBands(std::clamp(apo_bands, settings->numBands(), max_bands));
+
+    if (settings->viewMidChannel()) {
+      settings_channels.push_back(settings_mid);
+    } else {
+      settings_channels.push_back(settings_side);
+    }
+  }
+
+  for (int n = 0U; n < max_bands; n++) {
+    for (auto* channel : settings_channels) {
+      if (n < apo_bands) {
+        if (bands[n].freq >= channel->getMinValue(band_frequency[n].data()) &&
+            bands[n].freq <= channel->getMaxValue(band_frequency[n].data())) {
+          channel->setProperty(band_frequency[n].data(), bands[n].freq);
+
+          std::string current_band_type;
+
+          try {
+            current_band_type = ApoToEqualizerFilter.at(bands[n].type);
+          } catch (std::out_of_range const&) {
+            current_band_type = "Off";
+          }
+
+          channel->setProperty(band_type[n].data(), channel->bandTypeLabels().indexOf(current_band_type));
+
+        } else {
+          channel->resetProperty(band_frequency[n].data());
+          channel->setProperty(band_type[n].data(), channel->bandTypeLabels().indexOf("Off"));
+        }
+
+        if (bands[n].gain >= channel->getMinValue(band_gain[n].data()) &&
+            bands[n].gain <= channel->getMaxValue(band_gain[n].data())) {
+          channel->setProperty(band_gain[n].data(), bands[n].gain);
+
+        } else {
+          channel->resetProperty(band_gain[n].data());
+        }
+
+        if (bands[n].quality >= channel->getMinValue(band_q[n].data()) &&
+            bands[n].quality <= channel->getMaxValue(band_q[n].data())) {
+          channel->setProperty(band_q[n].data(), bands[n].quality);
+
+        } else {
+          channel->resetProperty(band_q[n].data());
+        }
+
+        channel->setProperty(band_mode[n].data(), channel->bandModeLabels().indexOf("APO (DR)"));
+      } else {
+        channel->setProperty(band_type[n].data(), channel->bandTypeLabels().indexOf("Off"));
+        channel->resetProperty(band_frequency[n].data());
+        channel->resetProperty(band_gain[n].data());
+        channel->resetProperty(band_q[n].data());
+        channel->resetProperty(band_mode[n].data());
+      }
+
+      channel->resetProperty(band_width[n].data());
+      channel->resetProperty(band_slope[n].data());
+      channel->resetProperty(band_solo[n].data());
+      channel->resetProperty(band_mute[n].data());
+    }
+  }
+
+  return true;
+}
+
+auto import_graphiceq_preset(DbMidSideEqualizer* settings,
+                             DbEqualizerChannel* settings_mid,
+                             DbEqualizerChannel* settings_side,
+                             const std::string& file_path) -> bool {
+  std::filesystem::path p{file_path};
+
+  if (!std::filesystem::is_regular_file(p)) {
+    return false;
+  }
+
+  std::ifstream eq_file;
+  eq_file.open(p.c_str());
+
+  std::vector<struct GraphicEQ_Band> bands;
+
+  if (const auto re = std::regex(R"(^[ \t]*#)"); eq_file.is_open()) {
+    for (std::string line; std::getline(eq_file, line);) {
+      if (std::regex_search(line, re)) {  // Avoid commented lines
+        continue;
+      }
+      if (parse_graphiceq_config(line, bands)) {
+        break;
+      }
+    }
+  }
+
+  eq_file.close();
+
+  if (bands.empty()) {
+    return false;
+  }
+
+  const auto max_bands = static_cast<int>(settings->getMaxValue(num_bands));
+  const auto geq_bands = static_cast<int>(bands.size());
+
+  settings->resetProperty("input-gain");
+
+  std::vector<DbEqualizerChannel*> settings_channels;
+
+  if (!settings->splitChannels()) {
+    settings->setNumBands(std::min(geq_bands, max_bands));
+
+    settings_channels.push_back(settings_mid);
+    settings_channels.push_back(settings_side);
+  } else {
+    settings->setNumBands(std::clamp(geq_bands, settings->numBands(), max_bands));
+
+    if (settings->viewMidChannel()) {
+      settings_channels.push_back(settings_mid);
+    } else {
+      settings_channels.push_back(settings_side);
+    }
+  }
+
+  for (int n = 0U; n < max_bands; n++) {
+    for (auto* channel : settings_channels) {
+      if (n < geq_bands) {
+        if (bands[n].freq >= channel->getMinValue(band_frequency[n].data()) &&
+            bands[n].freq <= channel->getMaxValue(band_frequency[n].data())) {
+          channel->setProperty(band_frequency[n].data(), bands[n].freq);
+          channel->setProperty(band_type[n].data(), channel->bandTypeLabels().indexOf("Bell"));
+        } else {
+          channel->resetProperty(band_frequency[n].data());
+          channel->setProperty(band_type[n].data(), channel->bandTypeLabels().indexOf("Off"));
+        }
+
+        if (bands[n].gain >= channel->getMinValue(band_gain[n].data()) &&
+            bands[n].gain <= channel->getMaxValue(band_gain[n].data())) {
+          channel->setProperty(band_gain[n].data(), bands[n].gain);
+
+        } else {
+          channel->resetProperty(band_gain[n].data());
+        }
+      } else {
+        channel->setProperty(band_type[n].data(), channel->bandTypeLabels().indexOf("Off"));
+        channel->resetProperty(band_frequency[n].data());
+        channel->resetProperty(band_gain[n].data());
+      }
+
+      channel->resetProperty(band_q[n].data());
+      channel->resetProperty(band_mode[n].data());
+      channel->resetProperty(band_width[n].data());
+      channel->resetProperty(band_slope[n].data());
+      channel->resetProperty(band_solo[n].data());
+      channel->resetProperty(band_mute[n].data());
+    }
+  }
+
+  return true;
+}
+
+auto export_apo_preset(DbMidSideEqualizer* settings,
+                       DbEqualizerChannel* settings_mid,
+                       DbEqualizerChannel* settings_side,
+                       const std::string& file_path) -> bool {
+  std::ofstream write_buffer(file_path);
+
+  const double preamp = settings->inputGain();
+
+  write_buffer << "Preamp: " << util::to_string(preamp) << " db"
+               << "\n";
+
+  DbEqualizerChannel* settings_channel = nullptr;
+
+  if (!settings->splitChannels()) {
+    settings_channel = settings_mid;
+  } else {
+    settings_channel = settings->viewMidChannel() ? settings_mid : settings_side;
+  }
+
+  for (int i = 0, k = 1; i < settings->numBands(); ++i) {
+    const auto current_band_type =
+        settings_channel->bandTypeLabels()[settings_channel->property(band_type[i].data()).value<int>()];
+
+    if (current_band_type == "Off") {
+      continue;
+    }
+
+    APO_Band apo_band;
+
+    try {
+      apo_band.type = EqualizerToApoFilter.at(current_band_type.toStdString());
+    } catch (std::out_of_range const&) {
+      apo_band.type = ApoFilter::PK;
+    }
+
+    apo_band.freq = settings_channel->property(band_frequency[i].data()).value<float>();
+    apo_band.gain = settings_channel->property(band_gain[i].data()).value<float>();
+    apo_band.quality = settings_channel->property(band_q[i].data()).value<float>();
+
+    write_buffer << "Filter " << util::to_string(k++) << ": ON " << apoFilterToString(apo_band.type) << " Fc "
+                 << util::to_string(apo_band.freq) << " Hz";
+
+    if (current_band_type == "Bell" || current_band_type == "Lo-shelf" || current_band_type == "Hi-shelf") {
+      write_buffer << " Gain " << util::to_string(apo_band.gain) << " dB";
+    }
+
+    write_buffer << " Q " << util::to_string(apo_band.quality) << "\n";
+  }
+
+  return !write_buffer.fail();
+}
+
 }  // namespace apo

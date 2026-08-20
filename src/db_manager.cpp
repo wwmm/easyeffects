@@ -45,6 +45,7 @@
 #include "easyeffects_db_echo_canceller.h"
 #include "easyeffects_db_equalizer.h"
 #include "easyeffects_db_equalizer_channel.h"
+#include "easyeffects_db_midside_equalizer.h"
 #include "easyeffects_db_exciter.h"
 #include "easyeffects_db_expander.h"
 #include "easyeffects_db_filter.h"
@@ -238,6 +239,14 @@ void Manager::create_plugin_db(const QString& parentGroup,
                    [&] { return new DbEqualizerChannel(parentGroup, id, "left"); });
       ensureExists(makeKey(tags::plugin_name::BaseName::equalizer, id, "right"),
                    [&] { return new DbEqualizerChannel(parentGroup, id, "right"); });
+
+    } else if (name.startsWith(tags::plugin_name::BaseName::midsideEqualizer)) {
+      ensureExists(makeKey(tags::plugin_name::BaseName::midsideEqualizer, id),
+                   [&] { return new DbMidSideEqualizer(parentGroup, id); });
+      ensureExists(makeKey(tags::plugin_name::BaseName::midsideEqualizer, id, "mid"),
+                   [&] { return new DbEqualizerChannel(parentGroup, id, "mid"); });
+      ensureExists(makeKey(tags::plugin_name::BaseName::midsideEqualizer, id, "side"),
+                   [&] { return new DbEqualizerChannel(parentGroup, id, "side"); });
 
     } else if (name.startsWith(tags::plugin_name::BaseName::exciter)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::exciter, id), [&] { return new DbExciter(parentGroup, id); });

@@ -130,6 +130,7 @@ class BaseName : public QObject {
   CREATE_PROPERTY(QString, delay, QStringLiteral("delay"));
   CREATE_PROPERTY(QString, echoCanceller, QStringLiteral("echo_canceller"));
   CREATE_PROPERTY(QString, equalizer, QStringLiteral("equalizer"));
+  CREATE_PROPERTY(QString, midsideEqualizer, QStringLiteral("midside_equalizer"));
   CREATE_PROPERTY(QString, exciter, QStringLiteral("exciter"));
   CREATE_PROPERTY(QString, expander, QStringLiteral("expander"));
   CREATE_PROPERTY(QString, filter, QStringLiteral("filter"));

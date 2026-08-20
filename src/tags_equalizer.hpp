@@ -224,8 +224,120 @@ constexpr auto fr = std::to_array(
 
 constexpr auto gr = std::to_array(
     {{"gr_0"},  {"gr_1"},  {"gr_2"},  {"gr_3"},  {"gr_4"},  {"gr_5"},  {"gr_6"},  {"gr_7"},
-     {"gr_8"},  {"gr_9"},  {"gr_10"}, {"gr_11"}, {"gr_12"}, {"gr_13"}, {"gr_14"}, {"gr_15"},
-     {"gr_16"}, {"gr_17"}, {"gr_18"}, {"gr_19"}, {"gr_20"}, {"gr_21"}, {"gr_22"}, {"gr_23"},
-     {"gr_24"}, {"gr_25"}, {"gr_26"}, {"gr_27"}, {"gr_28"}, {"gr_29"}, {"gr_30"}, std::to_array("gr_31")});
+      {"gr_8"},  {"gr_9"},  {"gr_10"}, {"gr_11"}, {"gr_12"}, {"gr_13"}, {"gr_14"}, {"gr_15"},
+      {"gr_16"}, {"gr_17"}, {"gr_18"}, {"gr_19"}, {"gr_20"}, {"gr_21"}, {"gr_22"}, {"gr_23"},
+      {"gr_24"}, {"gr_25"}, {"gr_26"}, {"gr_27"}, {"gr_28"}, {"gr_29"}, {"gr_30"}, std::to_array("gr_31")});
+
+// mid channel (para_equalizer_x32_ms)
+
+constexpr auto ftm = std::to_array(
+    {{"ftm_0"},  {"ftm_1"},  {"ftm_2"},  {"ftm_3"},  {"ftm_4"},  {"ftm_5"},  {"ftm_6"},  {"ftm_7"},
+      {"ftm_8"},  {"ftm_9"},  {"ftm_10"}, {"ftm_11"}, {"ftm_12"}, {"ftm_13"}, {"ftm_14"}, {"ftm_15"},
+      {"ftm_16"}, {"ftm_17"}, {"ftm_18"}, {"ftm_19"}, {"ftm_20"}, {"ftm_21"}, {"ftm_22"}, {"ftm_23"},
+      {"ftm_24"}, {"ftm_25"}, {"ftm_26"}, {"ftm_27"}, {"ftm_28"}, {"ftm_29"}, {"ftm_30"}, std::to_array("ftm_31")});
+
+constexpr auto fmm = std::to_array(
+    {{"fmm_0"},  {"fmm_1"},  {"fmm_2"},  {"fmm_3"},  {"fmm_4"},  {"fmm_5"},  {"fmm_6"},  {"fmm_7"},
+      {"fmm_8"},  {"fmm_9"},  {"fmm_10"}, {"fmm_11"}, {"fmm_12"}, {"fmm_13"}, {"fmm_14"}, {"fmm_15"},
+      {"fmm_16"}, {"fmm_17"}, {"fmm_18"}, {"fmm_19"}, {"fmm_20"}, {"fmm_21"}, {"fmm_22"}, {"fmm_23"},
+      {"fmm_24"}, {"fmm_25"}, {"fmm_26"}, {"fmm_27"}, {"fmm_28"}, {"fmm_29"}, {"fmm_30"}, std::to_array("fmm_31")});
+
+constexpr auto sm = std::to_array(
+    {{"sm_0"},  {"sm_1"},  {"sm_2"},  {"sm_3"},  {"sm_4"},  {"sm_5"},  {"sm_6"},  {"sm_7"},
+      {"sm_8"},  {"sm_9"},  {"sm_10"}, {"sm_11"}, {"sm_12"}, {"sm_13"}, {"sm_14"}, {"sm_15"},
+      {"sm_16"}, {"sm_17"}, {"sm_18"}, {"sm_19"}, {"sm_20"}, {"sm_21"}, {"sm_22"}, {"sm_23"},
+      {"sm_24"}, {"sm_25"}, {"sm_26"}, {"sm_27"}, {"sm_28"}, {"sm_29"}, {"sm_30"}, std::to_array("sm_31")});
+
+constexpr auto xsm = std::to_array(
+    {{"xsm_0"},  {"xsm_1"},  {"xsm_2"},  {"xsm_3"},  {"xsm_4"},  {"xsm_5"},  {"xsm_6"},  {"xsm_7"},
+      {"xsm_8"},  {"xsm_9"},  {"xsm_10"}, {"xsm_11"}, {"xsm_12"}, {"xsm_13"}, {"xsm_14"}, {"xsm_15"},
+      {"xsm_16"}, {"xsm_17"}, {"xsm_18"}, {"xsm_19"}, {"xsm_20"}, {"xsm_21"}, {"xsm_22"}, {"xsm_23"},
+      {"xsm_24"}, {"xsm_25"}, {"xsm_26"}, {"xsm_27"}, {"xsm_28"}, {"xsm_29"}, {"xsm_30"}, std::to_array("xsm_31")});
+
+constexpr auto xmm = std::to_array(
+    {{"xmm_0"},  {"xmm_1"},  {"xmm_2"},  {"xmm_3"},  {"xmm_4"},  {"xmm_5"},  {"xmm_6"},  {"xmm_7"},
+      {"xmm_8"},  {"xmm_9"},  {"xmm_10"}, {"xmm_11"}, {"xmm_12"}, {"xmm_13"}, {"xmm_14"}, {"xmm_15"},
+      {"xmm_16"}, {"xmm_17"}, {"xmm_18"}, {"xmm_19"}, {"xmm_20"}, {"xmm_21"}, {"xmm_22"}, {"xmm_23"},
+      {"xmm_24"}, {"xmm_25"}, {"xmm_26"}, {"xmm_27"}, {"xmm_28"}, {"xmm_29"}, {"xmm_30"}, std::to_array("xmm_31")});
+
+constexpr auto qm = std::to_array(
+    {{"qm_0"},  {"qm_1"},  {"qm_2"},  {"qm_3"},  {"qm_4"},  {"qm_5"},  {"qm_6"},  {"qm_7"},
+      {"qm_8"},  {"qm_9"},  {"qm_10"}, {"qm_11"}, {"qm_12"}, {"qm_13"}, {"qm_14"}, {"qm_15"},
+      {"qm_16"}, {"qm_17"}, {"qm_18"}, {"qm_19"}, {"qm_20"}, {"qm_21"}, {"qm_22"}, {"qm_23"},
+      {"qm_24"}, {"qm_25"}, {"qm_26"}, {"qm_27"}, {"qm_28"}, {"qm_29"}, {"qm_30"}, std::to_array("qm_31")});
+
+constexpr auto wm = std::to_array(
+    {{"wm_0"},  {"wm_1"},  {"wm_2"},  {"wm_3"},  {"wm_4"},  {"wm_5"},  {"wm_6"},  {"wm_7"},
+      {"wm_8"},  {"wm_9"},  {"wm_10"}, {"wm_11"}, {"wm_12"}, {"wm_13"}, {"wm_14"}, {"wm_15"},
+      {"wm_16"}, {"wm_17"}, {"wm_18"}, {"wm_19"}, {"wm_20"}, {"wm_21"}, {"wm_22"}, {"wm_23"},
+      {"wm_24"}, {"wm_25"}, {"wm_26"}, {"wm_27"}, {"wm_28"}, {"wm_29"}, {"wm_30"}, std::to_array("wm_31")});
+
+constexpr auto fm = std::to_array(
+    {{"fm_0"},  {"fm_1"},  {"fm_2"},  {"fm_3"},  {"fm_4"},  {"fm_5"},  {"fm_6"},  {"fm_7"},
+      {"fm_8"},  {"fm_9"},  {"fm_10"}, {"fm_11"}, {"fm_12"}, {"fm_13"}, {"fm_14"}, {"fm_15"},
+      {"fm_16"}, {"fm_17"}, {"fm_18"}, {"fm_19"}, {"fm_20"}, {"fm_21"}, {"fm_22"}, {"fm_23"},
+      {"fm_24"}, {"fm_25"}, {"fm_26"}, {"fm_27"}, {"fm_28"}, {"fm_29"}, {"fm_30"}, std::to_array("fm_31")});
+
+constexpr auto gm = std::to_array(
+    {{"gm_0"},  {"gm_1"},  {"gm_2"},  {"gm_3"},  {"gm_4"},  {"gm_5"},  {"gm_6"},  {"gm_7"},
+      {"gm_8"},  {"gm_9"},  {"gm_10"}, {"gm_11"}, {"gm_12"}, {"gm_13"}, {"gm_14"}, {"gm_15"},
+      {"gm_16"}, {"gm_17"}, {"gm_18"}, {"gm_19"}, {"gm_20"}, {"gm_21"}, {"gm_22"}, {"gm_23"},
+      {"gm_24"}, {"gm_25"}, {"gm_26"}, {"gm_27"}, {"gm_28"}, {"gm_29"}, {"gm_30"}, std::to_array("gm_31")});
+
+// side channel (para_equalizer_x32_ms)
+
+constexpr auto fts = std::to_array(
+    {{"fts_0"},  {"fts_1"},  {"fts_2"},  {"fts_3"},  {"fts_4"},  {"fts_5"},  {"fts_6"},  {"fts_7"},
+      {"fts_8"},  {"fts_9"},  {"fts_10"}, {"fts_11"}, {"fts_12"}, {"fts_13"}, {"fts_14"}, {"fts_15"},
+      {"fts_16"}, {"fts_17"}, {"fts_18"}, {"fts_19"}, {"fts_20"}, {"fts_21"}, {"fts_22"}, {"fts_23"},
+      {"fts_24"}, {"fts_25"}, {"fts_26"}, {"fts_27"}, {"fts_28"}, {"fts_29"}, {"fts_30"}, std::to_array("fts_31")});
+
+constexpr auto fms = std::to_array(
+    {{"fms_0"},  {"fms_1"},  {"fms_2"},  {"fms_3"},  {"fms_4"},  {"fms_5"},  {"fms_6"},  {"fms_7"},
+      {"fms_8"},  {"fms_9"},  {"fms_10"}, {"fms_11"}, {"fms_12"}, {"fms_13"}, {"fms_14"}, {"fms_15"},
+      {"fms_16"}, {"fms_17"}, {"fms_18"}, {"fms_19"}, {"fms_20"}, {"fms_21"}, {"fms_22"}, {"fms_23"},
+      {"fms_24"}, {"fms_25"}, {"fms_26"}, {"fms_27"}, {"fms_28"}, {"fms_29"}, {"fms_30"}, std::to_array("fms_31")});
+
+constexpr auto ss = std::to_array(
+    {{"ss_0"},  {"ss_1"},  {"ss_2"},  {"ss_3"},  {"ss_4"},  {"ss_5"},  {"ss_6"},  {"ss_7"},
+      {"ss_8"},  {"ss_9"},  {"ss_10"}, {"ss_11"}, {"ss_12"}, {"ss_13"}, {"ss_14"}, {"ss_15"},
+      {"ss_16"}, {"ss_17"}, {"ss_18"}, {"ss_19"}, {"ss_20"}, {"ss_21"}, {"ss_22"}, {"ss_23"},
+      {"ss_24"}, {"ss_25"}, {"ss_26"}, {"ss_27"}, {"ss_28"}, {"ss_29"}, {"ss_30"}, std::to_array("ss_31")});
+
+constexpr auto xss = std::to_array(
+    {{"xss_0"},  {"xss_1"},  {"xss_2"},  {"xss_3"},  {"xss_4"},  {"xss_5"},  {"xss_6"},  {"xss_7"},
+      {"xss_8"},  {"xss_9"},  {"xss_10"}, {"xss_11"}, {"xss_12"}, {"xss_13"}, {"xss_14"}, {"xss_15"},
+      {"xss_16"}, {"xss_17"}, {"xss_18"}, {"xss_19"}, {"xss_20"}, {"xss_21"}, {"xss_22"}, {"xss_23"},
+      {"xss_24"}, {"xss_25"}, {"xss_26"}, {"xss_27"}, {"xss_28"}, {"xss_29"}, {"xss_30"}, std::to_array("xss_31")});
+
+constexpr auto xms = std::to_array(
+    {{"xms_0"},  {"xms_1"},  {"xms_2"},  {"xms_3"},  {"xms_4"},  {"xms_5"},  {"xms_6"},  {"xms_7"},
+      {"xms_8"},  {"xms_9"},  {"xms_10"}, {"xms_11"}, {"xms_12"}, {"xms_13"}, {"xms_14"}, {"xms_15"},
+      {"xms_16"}, {"xms_17"}, {"xms_18"}, {"xms_19"}, {"xms_20"}, {"xms_21"}, {"xms_22"}, {"xms_23"},
+      {"xms_24"}, {"xms_25"}, {"xms_26"}, {"xms_27"}, {"xms_28"}, {"xms_29"}, {"xms_30"}, std::to_array("xms_31")});
+
+constexpr auto qs = std::to_array(
+    {{"qs_0"},  {"qs_1"},  {"qs_2"},  {"qs_3"},  {"qs_4"},  {"qs_5"},  {"qs_6"},  {"qs_7"},
+      {"qs_8"},  {"qs_9"},  {"qs_10"}, {"qs_11"}, {"qs_12"}, {"qs_13"}, {"qs_14"}, {"qs_15"},
+      {"qs_16"}, {"qs_17"}, {"qs_18"}, {"qs_19"}, {"qs_20"}, {"qs_21"}, {"qs_22"}, {"qs_23"},
+      {"qs_24"}, {"qs_25"}, {"qs_26"}, {"qs_27"}, {"qs_28"}, {"qs_29"}, {"qs_30"}, std::to_array("qs_31")});
+
+constexpr auto ws = std::to_array(
+    {{"ws_0"},  {"ws_1"},  {"ws_2"},  {"ws_3"},  {"ws_4"},  {"ws_5"},  {"ws_6"},  {"ws_7"},
+      {"ws_8"},  {"ws_9"},  {"ws_10"}, {"ws_11"}, {"ws_12"}, {"ws_13"}, {"ws_14"}, {"ws_15"},
+      {"ws_16"}, {"ws_17"}, {"ws_18"}, {"ws_19"}, {"ws_20"}, {"ws_21"}, {"ws_22"}, {"ws_23"},
+      {"ws_24"}, {"ws_25"}, {"ws_26"}, {"ws_27"}, {"ws_28"}, {"ws_29"}, {"ws_30"}, std::to_array("ws_31")});
+
+constexpr auto fs = std::to_array(
+    {{"fs_0"},  {"fs_1"},  {"fs_2"},  {"fs_3"},  {"fs_4"},  {"fs_5"},  {"fs_6"},  {"fs_7"},
+      {"fs_8"},  {"fs_9"},  {"fs_10"}, {"fs_11"}, {"fs_12"}, {"fs_13"}, {"fs_14"}, {"fs_15"},
+      {"fs_16"}, {"fs_17"}, {"fs_18"}, {"fs_19"}, {"fs_20"}, {"fs_21"}, {"fs_22"}, {"fs_23"},
+      {"fs_24"}, {"fs_25"}, {"fs_26"}, {"fs_27"}, {"fs_28"}, {"fs_29"}, {"fs_30"}, std::to_array("fs_31")});
+
+constexpr auto gs = std::to_array(
+    {{"gs_0"},  {"gs_1"},  {"gs_2"},  {"gs_3"},  {"gs_4"},  {"gs_5"},  {"gs_6"},  {"gs_7"},
+      {"gs_8"},  {"gs_9"},  {"gs_10"}, {"gs_11"}, {"gs_12"}, {"gs_13"}, {"gs_14"}, {"gs_15"},
+      {"gs_16"}, {"gs_17"}, {"gs_18"}, {"gs_19"}, {"gs_20"}, {"gs_21"}, {"gs_22"}, {"gs_23"},
+      {"gs_24"}, {"gs_25"}, {"gs_26"}, {"gs_27"}, {"gs_28"}, {"gs_29"}, {"gs_30"}, std::to_array("gs_31")});
 
 }  // namespace tags::equalizer

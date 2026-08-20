@@ -55,6 +55,7 @@
 #include "echo_canceller.hpp"
 #include "equalizer.hpp"
 #include "exciter.hpp"
+#include "midside_equalizer.hpp"
 #include "expander.hpp"
 #include "filter.hpp"
 #include "gate.hpp"
@@ -203,6 +204,9 @@ void EffectsBase::create_filters_if_necessary() {
 
     } else if (name.startsWith(tags::plugin_name::BaseName::equalizer)) {
       filter = std::make_unique<Equalizer>(log_tag, pm, pipeline_type, instance_id);
+
+    } else if (name.startsWith(tags::plugin_name::BaseName::midsideEqualizer)) {
+      filter = std::make_unique<MidSideEqualizer>(log_tag, pm, pipeline_type, instance_id);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::filter)) {
       filter = std::make_unique<Filter>(log_tag, pm, pipeline_type, instance_id);
@@ -363,6 +367,9 @@ QVariant EffectsBase::getPluginInstance(const QString& pluginName) {
 
   } else if (pluginName.startsWith(tags::plugin_name::BaseName::equalizer)) {
     return QVariant::fromValue(dynamic_cast<Equalizer*>(p.get()));
+
+  } else if (pluginName.startsWith(tags::plugin_name::BaseName::midsideEqualizer)) {
+    return QVariant::fromValue(dynamic_cast<MidSideEqualizer*>(p.get()));
 
   } else if (pluginName.startsWith(tags::plugin_name::BaseName::exciter)) {
     return QVariant::fromValue(dynamic_cast<Exciter*>(p.get()));

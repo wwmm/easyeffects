@@ -190,6 +190,7 @@ Kirigami.Page {
                     [PluginsBaseName.deepfilternet]: Qt.resolvedUrl("DeepFilterNet.qml"),
                     [PluginsBaseName.deesser]: Qt.resolvedUrl("Deesser.qml"),
                     [PluginsBaseName.equalizer]: Qt.resolvedUrl("Equalizer.qml"),
+                    [PluginsBaseName.midsideEqualizer]: Qt.resolvedUrl("MidSideEqualizer.qml"),
                     [PluginsBaseName.exciter]: Qt.resolvedUrl("Exciter.qml"),
                     [PluginsBaseName.echoCanceller]: Qt.resolvedUrl("EchoCanceller.qml"),
                     [PluginsBaseName.expander]: Qt.resolvedUrl("Expander.qml"),
@@ -222,6 +223,7 @@ Kirigami.Page {
                     [PluginsBaseName.deepfilternet]: PluginsPackage.deepfilternet,
                     [PluginsBaseName.deesser]: PluginsPackage.calf,
                     [PluginsBaseName.equalizer]: PluginsPackage.lsp,
+                    [PluginsBaseName.midsideEqualizer]: PluginsPackage.lsp,
                     [PluginsBaseName.exciter]: PluginsPackage.calf,
                     [PluginsBaseName.expander]: PluginsPackage.lsp,
                     [PluginsBaseName.filter]: PluginsPackage.lsp,
@@ -259,19 +261,27 @@ Kirigami.Page {
                     return;
                 }
 
-                if (baseName !== PluginsBaseName.equalizer) {
-                    pluginsStack.push(componentUrl, {
-                        name: name,
-                        pluginDB: pluginDB,
-                        pipelineInstance: pageStreamsEffects.pipelineInstance
-                    });
-                } else {
+                if (baseName === PluginsBaseName.equalizer) {
                     pluginsStack.push(componentUrl, {
                         name: name,
                         pluginDB: pluginDB,
                         pipelineInstance: pageStreamsEffects.pipelineInstance,
                         leftDB: pageStreamsEffects.pluginsDB[`${name}#left`],
                         rightDB: pageStreamsEffects.pluginsDB[`${name}#right`]
+                    });
+                } else if (baseName === PluginsBaseName.midsideEqualizer) {
+                    pluginsStack.push(componentUrl, {
+                        name: name,
+                        pluginDB: pluginDB,
+                        pipelineInstance: pageStreamsEffects.pipelineInstance,
+                        midDB: pageStreamsEffects.pluginsDB[`${name}#mid`],
+                        sideDB: pageStreamsEffects.pluginsDB[`${name}#side`]
+                    });
+                } else {
+                    pluginsStack.push(componentUrl, {
+                        name: name,
+                        pluginDB: pluginDB,
+                        pipelineInstance: pageStreamsEffects.pipelineInstance
                     });
                 }
             }

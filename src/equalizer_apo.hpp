@@ -24,6 +24,7 @@
 #include <string>
 #include "easyeffects_db_equalizer.h"
 #include "easyeffects_db_equalizer_channel.h"
+#include "easyeffects_db_midside_equalizer.h"
 
 namespace apo {
 
@@ -93,8 +94,23 @@ auto import_graphiceq_preset(DbEqualizer* settings,
                              const std::string& file_path) -> bool;
 
 auto export_apo_preset(DbEqualizer* settings,
-                       DbEqualizerChannel* settings_left,
-                       DbEqualizerChannel* settings_right,
+                        DbEqualizerChannel* settings_left,
+                        DbEqualizerChannel* settings_right,
+                        const std::string& file_path) -> bool;
+
+auto import_apo_preset(DbMidSideEqualizer* settings,
+                       DbEqualizerChannel* settings_mid,
+                       DbEqualizerChannel* settings_side,
+                       const std::string& file_path) -> bool;
+
+auto import_graphiceq_preset(DbMidSideEqualizer* settings,
+                             DbEqualizerChannel* settings_mid,
+                             DbEqualizerChannel* settings_side,
+                             const std::string& file_path) -> bool;
+
+auto export_apo_preset(DbMidSideEqualizer* settings,
+                       DbEqualizerChannel* settings_mid,
+                       DbEqualizerChannel* settings_side,
                        const std::string& file_path) -> bool;
 
 }  // namespace apo
