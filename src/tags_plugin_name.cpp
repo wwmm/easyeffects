@@ -58,6 +58,7 @@ Model::Model(QObject* parent)
                 {BaseName::delay, i18n("Delay")},
                 {BaseName::echoCanceller, i18n("Echo Canceller")},
                 {BaseName::equalizer, i18n("Equalizer")},
+                {BaseName::midsideEqualizer, i18n("Mid-Side Equalizer")},
                 {BaseName::exciter, i18n("Exciter")},
                 {BaseName::expander, i18n("Expander")},
                 {BaseName::filter, i18n("Filter")},

@@ -43,6 +43,7 @@ qt_add_qml_module(easyeffects
         effects_base.hpp
         equalizer.hpp
         exciter.hpp
+        midside_equalizer.hpp
         expander.hpp
         filter.hpp
         gate.hpp
@@ -100,6 +101,7 @@ qt_add_qml_module(easyeffects
         contents/ui/EeSpinBox.qml
         contents/ui/EeSwitch.qml
         contents/ui/Equalizer.qml
+        contents/ui/MidSideEqualizer.qml
         contents/ui/EqualizerBand.qml
         contents/ui/EqualizerBandMenu.qml
         contents/ui/Exciter.qml
@@ -174,6 +176,8 @@ target_sources(easyeffects PRIVATE
     equalizer_apo.cpp
     equalizer_preset.cpp
     exciter.cpp
+    midside_equalizer.cpp
+    midside_equalizer_preset.cpp
     exciter_preset.cpp
     expander.cpp
     expander_preset.cpp

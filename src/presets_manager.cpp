@@ -65,6 +65,7 @@
 #include "echo_canceller_preset.hpp"
 #include "equalizer_preset.hpp"
 #include "exciter_preset.hpp"
+#include "midside_equalizer_preset.hpp"
 #include "expander_preset.hpp"
 #include "filter_preset.hpp"
 #include "gate_preset.hpp"
@@ -895,6 +896,9 @@ auto Manager::create_wrapper(const PipelineType& pipeline_type, const QString& f
 
   } else if (filter_name.startsWith(tags::plugin_name::BaseName::equalizer)) {
     return std::make_unique<EqualizerPreset>(pipeline_type, filter_name.toStdString());
+
+  } else if (filter_name.startsWith(tags::plugin_name::BaseName::midsideEqualizer)) {
+    return std::make_unique<MidSideEqualizerPreset>(pipeline_type, filter_name.toStdString());
 
   } else if (filter_name.startsWith(tags::plugin_name::BaseName::exciter)) {
     return std::make_unique<ExciterPreset>(pipeline_type, filter_name.toStdString());

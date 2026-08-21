@@ -1,0 +1,103 @@
+/**
+ * Copyright © 2017-2026 Wellington Wallace
+ *
+ * Copyright © 2026 Alessio Attilio
+ *
+ * This file is part of Easy Effects
+ *
+ * Easy Effects is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Easy Effects is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
+ */
+
+#pragma once
+
+#include <qlist.h>
+#include <qobject.h>
+#include <qqmlintegration.h>
+#include <qtmetamacros.h>
+#include <sys/types.h>
+#include <span>
+#include <string>
+#include <vector>
+#include "easyeffects_db_equalizer_channel.h"
+#include "easyeffects_db_midside_equalizer.h"
+#include "pipeline_type.hpp"
+#include "plugin_base.hpp"
+#include "pw_manager.hpp"
+
+class MidSideEqualizer : public PluginBase {
+  Q_OBJECT
+  QML_NAMED_ELEMENT(BackendMidSideEqualizer)
+  QML_UNCREATABLE("Use the c++ instance")
+
+ public:
+  MidSideEqualizer(const std::string& tag,
+                   pw::Manager* pipe_manager,
+                   PipelineType pipe_type,
+                   QString instance_id);
+  MidSideEqualizer(const MidSideEqualizer&) = delete;
+  auto operator=(const MidSideEqualizer&) -> MidSideEqualizer& = delete;
+  MidSideEqualizer(const MidSideEqualizer&&) = delete;
+  auto operator=(const MidSideEqualizer&&) -> MidSideEqualizer& = delete;
+  ~MidSideEqualizer() override;
+
+  void reset() override;
+
+  void clear_data() override;
+
+  void setup() override;
+
+  void process(std::span<float>& left_in,
+               std::span<float>& right_in,
+               std::span<float>& left_out,
+               std::span<float>& right_out) override;
+
+  void process(std::span<float>& left_in,
+               std::span<float>& right_in,
+               std::span<float>& left_out,
+               std::span<float>& right_out,
+               std::span<float>& probe_left,
+               std::span<float>& probe_right) override;
+
+  auto get_latency_seconds() -> float override;
+
+  Q_INVOKABLE void sortBands();
+
+  Q_INVOKABLE void flatResponse();
+
+  Q_INVOKABLE void calculateFrequencies();
+
+  Q_INVOKABLE bool importApoPreset(const QList<QString>& url_list);
+
+  Q_INVOKABLE bool importApoGraphicEqPreset(const QList<QString>& url_list);
+
+  Q_INVOKABLE bool exportApoPreset(const QString& url);
+
+  static constexpr int max_bands = 32;
+
+ private:
+  DbMidSideEqualizer* settings = nullptr;
+  DbEqualizerChannel *settings_mid = nullptr, *settings_side = nullptr;
+
+  bool ready = false;
+
+  uint latency_n_frames = 0U;
+
+  std::vector<QMetaObject::Connection> unified_mode_connections;
+
+  void bind_mid_bands();
+
+  void bind_side_bands();
+
+  void on_split_channels();
+};
