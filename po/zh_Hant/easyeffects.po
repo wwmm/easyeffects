@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-08-04 12:10-0300\n"
+"POT-Creation-Date: 2026-08-21 20:14-0300\n"
 "PO-Revision-Date: 2026-08-05 07:02+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
@@ -182,7 +182,7 @@ msgstr "最大化歷史記錄"
 
 #: src/contents/ui/Autogain.qml:143 src/contents/ui/Autogain.qml:198
 #: src/contents/ui/BassLoudness.qml:67 src/contents/ui/LevelMeter.qml:146
-#: src/tags_plugin_name.cpp:67
+#: src/tags_plugin_name.cpp:68
 msgid "Loudness"
 msgstr "音量"
 
@@ -210,6 +210,7 @@ msgstr "輸出增益 (Gain)"
 #: src/contents/ui/Filter.qml:234 src/contents/ui/Gate.qml:952
 #: src/contents/ui/LevelMeter.qml:215 src/contents/ui/Limiter.qml:607
 #: src/contents/ui/Loudness.qml:175 src/contents/ui/Maximizer.qml:122
+#: src/contents/ui/MidSideEqualizer.qml:315
 #: src/contents/ui/MultibandCompressor.qml:965
 #: src/contents/ui/MultibandGate.qml:938 src/contents/ui/Pitch.qml:268
 #: src/contents/ui/Reverb.qml:318 src/contents/ui/RNNoise.qml:73
@@ -249,6 +250,7 @@ msgstr "調整中"
 #: src/contents/ui/Equalizer.qml:138 src/contents/ui/Expander.qml:79
 #: src/contents/ui/Expander.qml:261 src/contents/ui/Gate.qml:279
 #: src/contents/ui/Limiter.qml:72 src/contents/ui/Loudness.qml:71
+#: src/contents/ui/MidSideEqualizer.qml:138
 #: src/contents/ui/MultibandCompressor.qml:434
 #: src/contents/ui/MultibandGate.qml:407 src/contents/ui/StereoTools.qml:123
 msgid "Mode"
@@ -273,7 +275,7 @@ msgstr "偏壓"
 
 #: src/contents/ui/Autotune.qml:169 src/contents/ui/Deesser.qml:171
 #: src/contents/ui/Filter.qml:137 src/contents/ui/Reverb.qml:126
-#: src/tags_plugin_name.cpp:63
+#: src/tags_plugin_name.cpp:64
 msgid "Filter"
 msgstr "篩選"
 
@@ -352,9 +354,9 @@ msgstr "基底 (Floor)"
 #: src/contents/ui/Exciter.qml:228 src/contents/ui/Expander.qml:841
 #: src/contents/ui/Filter.qml:252 src/contents/ui/Gate.qml:970
 #: src/contents/ui/Limiter.qml:625 src/contents/ui/Loudness.qml:193
-#: src/contents/ui/Maximizer.qml:140
+#: src/contents/ui/Maximizer.qml:140 src/contents/ui/MidSideEqualizer.qml:333
 #: src/contents/ui/MultibandCompressor.qml:983
-#: src/contents/ui/MultibandGate.qml:956 src/contents/ui/Reverb.qml:344
+#: src/contents/ui/MultibandGate.qml:956 src/contents/ui/Reverb.qml:343
 #: src/contents/ui/StereoTools.qml:410
 msgid "Show native window"
 msgstr "顯示原生視窗"
@@ -367,7 +369,7 @@ msgstr "聆聽"
 
 #: src/contents/ui/BassEnhancer.qml:247 src/contents/ui/BassLoudness.qml:144
 #: src/contents/ui/Compressor.qml:925 src/contents/ui/Convolver.qml:555
-#: src/contents/ui/Crossfeed.qml:176 src/contents/ui/CrosstalkCanceller.qml:124
+#: src/contents/ui/Crossfeed.qml:175 src/contents/ui/CrosstalkCanceller.qml:124
 #: src/contents/ui/Crusher.qml:268 src/contents/ui/Crystalizer.qml:203
 #: src/contents/ui/Deesser.qml:361 src/contents/ui/Delay.qml:428
 #: src/contents/ui/EchoCanceller.qml:186 src/contents/ui/Equalizer.qml:399
@@ -375,8 +377,9 @@ msgstr "聆聽"
 #: src/contents/ui/Filter.qml:266 src/contents/ui/Gate.qml:1004
 #: src/contents/ui/Limiter.qml:659 src/contents/ui/Loudness.qml:217
 #: src/contents/ui/Main.qml:477 src/contents/ui/Maximizer.qml:154
+#: src/contents/ui/MidSideEqualizer.qml:399
 #: src/contents/ui/MultibandCompressor.qml:1014
-#: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:358
+#: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:357
 #: src/contents/ui/RNNoise.qml:345 src/contents/ui/Speex.qml:195
 #: src/contents/ui/StereoTools.qml:424 src/contents/ui/VoiceSuppressor.qml:185
 msgid "Reset"
@@ -546,7 +549,7 @@ msgstr "外部"
 
 #: src/contents/ui/Compressor.qml:277 src/contents/ui/Expander.qml:237
 #: src/contents/ui/Gate.qml:255 src/contents/ui/Limiter.qml:227
-#: src/contents/ui/PageStreamsEffects.qml:479
+#: src/contents/ui/PageStreamsEffects.qml:489
 msgid "Input device"
 msgstr "輸入裝置"
 
@@ -595,7 +598,8 @@ msgid "Middle"
 msgstr "中間"
 
 #: src/contents/ui/Compressor.qml:319 src/contents/ui/Expander.qml:279
-#: src/contents/ui/Gate.qml:297 src/contents/ui/MultibandCompressor.qml:449
+#: src/contents/ui/Gate.qml:297 src/contents/ui/MidSideEqualizer.qml:244
+#: src/contents/ui/MultibandCompressor.qml:449
 #: src/contents/ui/MultibandGate.qml:422
 msgid "Side"
 msgstr "側邊"
@@ -692,7 +696,7 @@ msgstr "高通"
 #: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Equalizer.qml:156
 #: src/contents/ui/Expander.qml:372 src/contents/ui/Expander.qml:386
 #: src/contents/ui/Filter.qml:111 src/contents/ui/Gate.qml:391
-#: src/contents/ui/Gate.qml:405
+#: src/contents/ui/Gate.qml:405 src/contents/ui/MidSideEqualizer.qml:156
 msgid "Off"
 msgstr "關閉"
 
@@ -988,7 +992,7 @@ msgstr "交叉饋送預設集"
 msgid "Default"
 msgstr "預設"
 
-#: src/contents/ui/Crossfeed.qml:167 src/contents/ui/PageStreamsEffects.qml:650
+#: src/contents/ui/Crossfeed.qml:167 src/contents/ui/PageStreamsEffects.qml:660
 #: src/contents/ui/PreferencesSheet.qml:62 src/contents/ui/Reverb.qml:335
 msgid "Presets"
 msgstr "預設集"
@@ -1411,6 +1415,8 @@ msgid "Solo"
 msgstr "獨奏"
 
 #: src/contents/ui/Equalizer.qml:66 src/contents/ui/Equalizer.qml:106
+#: src/contents/ui/MidSideEqualizer.qml:66
+#: src/contents/ui/MidSideEqualizer.qml:106
 msgid "APO preset"
 msgstr "APO 預設集"
 
@@ -1430,15 +1436,15 @@ msgstr "已將等化器 APO 預設集檔案匯入至左聲道。"
 msgid "Imported the Equalizer APO preset file into the right channel."
 msgstr "已將等化器 APO 預設集檔案匯入至右聲道。"
 
-#: src/contents/ui/Equalizer.qml:91
+#: src/contents/ui/Equalizer.qml:91 src/contents/ui/MidSideEqualizer.qml:91
 msgid "GraphicEQ preset"
 msgstr "GraphicEQ 預設集"
 
-#: src/contents/ui/Equalizer.qml:94
+#: src/contents/ui/Equalizer.qml:94 src/contents/ui/MidSideEqualizer.qml:94
 msgid "Imported the GraphicEQ preset file."
 msgstr "已經匯入 GraphicEQ 預設集檔案。"
 
-#: src/contents/ui/Equalizer.qml:96
+#: src/contents/ui/Equalizer.qml:96 src/contents/ui/MidSideEqualizer.qml:96
 msgid "Failed to import the GraphicEQ preset file."
 msgstr "匯入 GraphicEQ 預設集檔案失敗。"
 
@@ -1465,53 +1471,62 @@ msgid ""
 msgstr "已將右聲道的目前等化器設定匯出至外部 APO 預設集檔案。"
 
 #: src/contents/ui/Equalizer.qml:142 src/contents/ui/Filter.qml:97
-#: src/contents/ui/Loudness.qml:77
+#: src/contents/ui/Loudness.qml:77 src/contents/ui/MidSideEqualizer.qml:142
 msgid "IIR"
 msgstr "IIR"
 
 #: src/contents/ui/Equalizer.qml:142 src/contents/ui/Filter.qml:97
+#: src/contents/ui/MidSideEqualizer.qml:142
 msgid "FIR"
 msgstr "FIR"
 
 #: src/contents/ui/Equalizer.qml:142 src/contents/ui/Filter.qml:97
-#: src/contents/ui/Loudness.qml:77
+#: src/contents/ui/Loudness.qml:77 src/contents/ui/MidSideEqualizer.qml:142
 msgid "FFT"
 msgstr "FFT"
 
 #: src/contents/ui/Equalizer.qml:142 src/contents/ui/Filter.qml:97
+#: src/contents/ui/MidSideEqualizer.qml:142
 msgid "SPM"
 msgstr "SPM"
 
 #: src/contents/ui/Equalizer.qml:152 src/contents/ui/Filter.qml:107
+#: src/contents/ui/MidSideEqualizer.qml:152
 msgid "Equalizer decramping"
 msgstr "等化器消除痙攣"
 
 #: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
+#: src/contents/ui/MidSideEqualizer.qml:156
 msgid "x2"
 msgstr "x2"
 
 #: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
+#: src/contents/ui/MidSideEqualizer.qml:156
 msgid "x3"
 msgstr "x3"
 
 #: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
+#: src/contents/ui/MidSideEqualizer.qml:156
 msgid "x4"
 msgstr "x4"
 
 #: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
+#: src/contents/ui/MidSideEqualizer.qml:156
 msgid "x6"
 msgstr "x6"
 
 #: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
+#: src/contents/ui/MidSideEqualizer.qml:156
 msgid "x8"
 msgstr "x8"
 
-#: src/contents/ui/Equalizer.qml:165
+#: src/contents/ui/Equalizer.qml:165 src/contents/ui/MidSideEqualizer.qml:165
 msgid "Bands"
 msgstr "頻帶"
 
 #: src/contents/ui/Equalizer.qml:181 src/contents/ui/Filter.qml:204
-#: src/contents/ui/StereoTools.qml:77 src/contents/ui/StereoTools.qml:278
+#: src/contents/ui/MidSideEqualizer.qml:181 src/contents/ui/StereoTools.qml:77
+#: src/contents/ui/StereoTools.qml:278
 msgid "Balance"
 msgstr "平衡"
 
@@ -1520,6 +1535,8 @@ msgid "Pitch left"
 msgstr "向左傾斜"
 
 #: src/contents/ui/Equalizer.qml:206 src/contents/ui/Equalizer.qml:223
+#: src/contents/ui/MidSideEqualizer.qml:206
+#: src/contents/ui/MidSideEqualizer.qml:223
 msgid "st"
 msgstr "st"
 
@@ -1531,27 +1548,27 @@ msgstr "向右傾斜"
 msgid "Split channels"
 msgstr "分割聲道"
 
-#: src/contents/ui/Equalizer.qml:356
+#: src/contents/ui/Equalizer.qml:356 src/contents/ui/MidSideEqualizer.qml:356
 msgid "Flat response"
 msgstr "平板反應"
 
-#: src/contents/ui/Equalizer.qml:363
+#: src/contents/ui/Equalizer.qml:363 src/contents/ui/MidSideEqualizer.qml:363
 msgid "Calculate frequencies"
 msgstr "計算頻率"
 
-#: src/contents/ui/Equalizer.qml:370
+#: src/contents/ui/Equalizer.qml:370 src/contents/ui/MidSideEqualizer.qml:370
 msgid "Sort bands"
 msgstr "排序頻段"
 
-#: src/contents/ui/Equalizer.qml:377
+#: src/contents/ui/Equalizer.qml:377 src/contents/ui/MidSideEqualizer.qml:377
 msgid "Import APO"
 msgstr "匯入 APO"
 
-#: src/contents/ui/Equalizer.qml:384
+#: src/contents/ui/Equalizer.qml:384 src/contents/ui/MidSideEqualizer.qml:384
 msgid "Import APO (GraphicEQ)"
 msgstr "匯入 APO (GraphicEQ)"
 
-#: src/contents/ui/Equalizer.qml:391
+#: src/contents/ui/Equalizer.qml:391 src/contents/ui/MidSideEqualizer.qml:391
 msgid "Export APO"
 msgstr "匯出 APO"
 
@@ -1563,7 +1580,7 @@ msgstr "上限(Ceil)作用"
 msgid "Ceil"
 msgstr "上限 (Ceil)"
 
-#: src/contents/ui/Expander.qml:67 src/tags_plugin_name.cpp:62
+#: src/contents/ui/Expander.qml:67 src/tags_plugin_name.cpp:63
 msgid "Expander"
 msgstr "擴展"
 
@@ -1581,7 +1598,7 @@ msgstr "篩選模式"
 msgid "Equalizer mode"
 msgstr "等化器模式"
 
-#: src/contents/ui/Gate.qml:71 src/tags_plugin_name.cpp:64
+#: src/contents/ui/Gate.qml:71 src/tags_plugin_name.cpp:65
 msgid "Gate"
 msgstr "閘門 (Gate)"
 
@@ -1755,7 +1772,7 @@ msgstr "True peak/24 bit"
 msgid "Dithering"
 msgstr "抖動"
 
-#: src/contents/ui/Limiter.qml:116 src/tags_plugin_name.cpp:66
+#: src/contents/ui/Limiter.qml:116 src/tags_plugin_name.cpp:67
 msgid "Limiter"
 msgstr "限制器"
 
@@ -1860,11 +1877,11 @@ msgstr "音效處理已經啟用。"
 msgid "Audio effects are disabled."
 msgstr "音效處理已經停用。"
 
-#: src/contents/ui/Main.qml:403 src/contents/ui/PageStreamsEffects.qml:479
+#: src/contents/ui/Main.qml:403 src/contents/ui/PageStreamsEffects.qml:489
 msgid "Players"
 msgstr "播放器"
 
-#: src/contents/ui/Main.qml:418 src/contents/ui/PageStreamsEffects.qml:488
+#: src/contents/ui/Main.qml:418 src/contents/ui/PageStreamsEffects.qml:498
 msgid "Recorders"
 msgstr "錄音器"
 
@@ -1892,6 +1909,73 @@ msgstr "添加 %1"
 #: src/contents/ui/MenuAddPlugins.qml:165
 msgid "Added a new effect to the pipeline: %1"
 msgstr "已經添加新的音效至管道： %1"
+
+#: src/contents/ui/MidSideEqualizer.qml:69
+#, fuzzy
+msgid "Failed to import the Mid-Side Equalizer APO preset file."
+msgstr "匯入等化器 APO 預設集檔案失敗。"
+
+#: src/contents/ui/MidSideEqualizer.qml:74
+#, fuzzy
+msgid "Imported the Mid-Side Equalizer APO preset file."
+msgstr "已經匯入等化器 APO 預設集檔案。"
+
+#: src/contents/ui/MidSideEqualizer.qml:76
+#, fuzzy
+msgid "Imported the Mid-Side Equalizer APO preset file into the mid channel."
+msgstr "已將等化器 APO 預設集檔案匯入至右聲道。"
+
+#: src/contents/ui/MidSideEqualizer.qml:78
+#, fuzzy
+msgid "Imported the Mid-Side Equalizer APO preset file into the side channel."
+msgstr "已將等化器 APO 預設集檔案匯入至左聲道。"
+
+#: src/contents/ui/MidSideEqualizer.qml:109
+#, fuzzy
+msgid ""
+"Failed to export the current Mid-Side Equalizer settings to an external APO "
+"preset file."
+msgstr "匯出目前等化器設定至外部 APO 預設集檔案失敗。"
+
+#: src/contents/ui/MidSideEqualizer.qml:114
+#, fuzzy
+msgid ""
+"Exported the current Mid-Side Equalizer settings to an external APO preset "
+"file."
+msgstr "已經匯出目前等化器設定至外部 APO 預設集檔案。"
+
+#: src/contents/ui/MidSideEqualizer.qml:116
+#, fuzzy
+msgid ""
+"Exported the current Mid-Side Equalizer settings of the mid channel to an "
+"external APO preset file."
+msgstr "已將右聲道的目前等化器設定匯出至外部 APO 預設集檔案。"
+
+#: src/contents/ui/MidSideEqualizer.qml:118
+#, fuzzy
+msgid ""
+"Exported the current Mid-Side Equalizer settings of the side channel to an "
+"external APO preset file."
+msgstr "已將左聲道的目前等化器設定匯出至外部 APO 預設集檔案。"
+
+#: src/contents/ui/MidSideEqualizer.qml:198
+#, fuzzy
+msgid "Pitch mid"
+msgstr "音高"
+
+#: src/contents/ui/MidSideEqualizer.qml:215
+#, fuzzy
+msgid "Pitch side"
+msgstr "向左傾斜"
+
+#: src/contents/ui/MidSideEqualizer.qml:244
+#, fuzzy
+msgid "Mid"
+msgstr "最小"
+
+#: src/contents/ui/MidSideEqualizer.qml:346
+msgid "Split mid/side"
+msgstr ""
 
 #: src/contents/ui/MultibandCompressor.qml:127
 msgid "Compression mode"
@@ -1978,39 +2062,39 @@ msgstr "無音效"
 msgid "Audio stream not modified"
 msgstr "音訊串流並未修改"
 
-#: src/contents/ui/PageStreamsEffects.qml:408
+#: src/contents/ui/PageStreamsEffects.qml:418
 msgid "Add effect"
 msgstr "添加音效"
 
-#: src/contents/ui/PageStreamsEffects.qml:422
+#: src/contents/ui/PageStreamsEffects.qml:432
 msgid "Close"
 msgstr "關閉"
 
-#: src/contents/ui/PageStreamsEffects.qml:426
+#: src/contents/ui/PageStreamsEffects.qml:436
 msgid "Expand the list of effects pipeline"
 msgstr "展開音效管道列表"
 
-#: src/contents/ui/PageStreamsEffects.qml:426
+#: src/contents/ui/PageStreamsEffects.qml:436
 msgid "Reduce the list of effects pipeline"
 msgstr "減少音效管道列表"
 
-#: src/contents/ui/PageStreamsEffects.qml:488
+#: src/contents/ui/PageStreamsEffects.qml:498
 msgid "Output device"
 msgstr "輸出裝置"
 
-#: src/contents/ui/PageStreamsEffects.qml:663
+#: src/contents/ui/PageStreamsEffects.qml:673
 msgid "Excluded apps"
 msgstr "已經排除的應用程式"
 
-#: src/contents/ui/PageStreamsEffects.qml:676
+#: src/contents/ui/PageStreamsEffects.qml:686
 msgid "Input monitoring"
 msgstr "輸入監控"
 
-#: src/contents/ui/PageStreamsEffects.qml:689
+#: src/contents/ui/PageStreamsEffects.qml:699
 msgid "Share audio"
 msgstr "分享音訊"
 
-#: src/contents/ui/PageStreamsEffects.qml:690
+#: src/contents/ui/PageStreamsEffects.qml:700
 msgid "Send the processed desktop audio to the virtual source"
 msgstr "傳送已經處理的桌面音訊至虛擬來源"
 
@@ -2136,7 +2220,7 @@ msgstr "尋找視窗"
 msgid "Overlap length"
 msgstr "重疊長度"
 
-#: src/contents/ui/Pitch.qml:164 src/tags_plugin_name.cpp:71
+#: src/contents/ui/Pitch.qml:164 src/tags_plugin_name.cpp:72
 msgid "Pitch"
 msgstr "音高"
 
@@ -3160,33 +3244,33 @@ msgstr "(喇叭)"
 msgid "Output Level Meter"
 msgstr "輸出等級量表"
 
-#: src/presets_manager.cpp:799 src/presets_manager.cpp:806
-#: src/presets_manager.cpp:816 src/presets_manager.cpp:823
-#: src/presets_manager.cpp:833 src/presets_manager.cpp:842
+#: src/presets_manager.cpp:800 src/presets_manager.cpp:807
+#: src/presets_manager.cpp:817 src/presets_manager.cpp:824
+#: src/presets_manager.cpp:834 src/presets_manager.cpp:843
 msgid "Preset not loaded correctly"
 msgstr "預設集未正確載入"
 
-#: src/presets_manager.cpp:799
+#: src/presets_manager.cpp:800
 msgid "Wrong format in excluded apps list"
 msgstr "已經排除的應用程序列表中的錯誤格式"
 
-#: src/presets_manager.cpp:807
+#: src/presets_manager.cpp:808
 msgid "Generic error while loading excluded apps list"
 msgstr "載入排除的應用程序列表時出現一般錯誤"
 
-#: src/presets_manager.cpp:816
+#: src/presets_manager.cpp:817
 msgid "Wrong format in effects list"
 msgstr "音效列表錯誤格式"
 
-#: src/presets_manager.cpp:823
+#: src/presets_manager.cpp:824
 msgid "Generic error while loading effects list"
 msgstr "載入音效列表時出現一般錯誤"
 
-#: src/presets_manager.cpp:834
+#: src/presets_manager.cpp:835
 msgid "One or more parameters have a wrong format"
 msgstr "一個或多個參數有錯誤格式"
 
-#: src/presets_manager.cpp:843
+#: src/presets_manager.cpp:844
 msgid "Generic error while loading the effect"
 msgstr "載入音效時出現一般錯誤"
 
@@ -3255,42 +3339,47 @@ msgid "Equalizer"
 msgstr "等化器"
 
 #: src/tags_plugin_name.cpp:61
+#, fuzzy
+msgid "Mid-Side Equalizer"
+msgstr "等化器"
+
+#: src/tags_plugin_name.cpp:62
 msgid "Exciter"
 msgstr "激勵器"
 
-#: src/tags_plugin_name.cpp:65
+#: src/tags_plugin_name.cpp:66
 msgid "Level Meter"
 msgstr "等級量表"
 
-#: src/tags_plugin_name.cpp:68
+#: src/tags_plugin_name.cpp:69
 msgid "Maximizer"
 msgstr "放大器"
 
-#: src/tags_plugin_name.cpp:69
+#: src/tags_plugin_name.cpp:70
 msgid "Multiband Compressor"
 msgstr "多頻段壓縮器"
 
-#: src/tags_plugin_name.cpp:70
+#: src/tags_plugin_name.cpp:71
 msgid "Multiband Gate"
 msgstr "多頻段閘門"
 
-#: src/tags_plugin_name.cpp:72
+#: src/tags_plugin_name.cpp:73
 msgid "Reverberation"
 msgstr "混響"
 
-#: src/tags_plugin_name.cpp:73
+#: src/tags_plugin_name.cpp:74
 msgid "Noise Reduction"
 msgstr "噪音抑制"
 
-#: src/tags_plugin_name.cpp:74
+#: src/tags_plugin_name.cpp:75
 msgid "Speech Processor"
 msgstr "語音處理器"
 
-#: src/tags_plugin_name.cpp:75
+#: src/tags_plugin_name.cpp:76
 msgid "Stereo Tools"
 msgstr "立體聲工具"
 
-#: src/tags_plugin_name.cpp:76
+#: src/tags_plugin_name.cpp:77
 msgid "Voice Suppressor"
 msgstr "噪音抑制"
 

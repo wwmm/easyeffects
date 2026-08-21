@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-08-04 12:10-0300\n"
+"POT-Creation-Date: 2026-08-21 20:14-0300\n"
 "PO-Revision-Date: 2026-08-05 07:02+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -187,7 +187,7 @@ msgstr "Limite cronologia"
 
 #: src/contents/ui/Autogain.qml:143 src/contents/ui/Autogain.qml:198
 #: src/contents/ui/BassLoudness.qml:67 src/contents/ui/LevelMeter.qml:146
-#: src/tags_plugin_name.cpp:67
+#: src/tags_plugin_name.cpp:68
 msgid "Loudness"
 msgstr "Loudness"
 
@@ -215,6 +215,7 @@ msgstr "Guadagno in uscita"
 #: src/contents/ui/Filter.qml:234 src/contents/ui/Gate.qml:952
 #: src/contents/ui/LevelMeter.qml:215 src/contents/ui/Limiter.qml:607
 #: src/contents/ui/Loudness.qml:175 src/contents/ui/Maximizer.qml:122
+#: src/contents/ui/MidSideEqualizer.qml:315
 #: src/contents/ui/MultibandCompressor.qml:965
 #: src/contents/ui/MultibandGate.qml:938 src/contents/ui/Pitch.qml:268
 #: src/contents/ui/Reverb.qml:318 src/contents/ui/RNNoise.qml:73
@@ -255,6 +256,7 @@ msgstr "Accordatura"
 #: src/contents/ui/Equalizer.qml:138 src/contents/ui/Expander.qml:79
 #: src/contents/ui/Expander.qml:261 src/contents/ui/Gate.qml:279
 #: src/contents/ui/Limiter.qml:72 src/contents/ui/Loudness.qml:71
+#: src/contents/ui/MidSideEqualizer.qml:138
 #: src/contents/ui/MultibandCompressor.qml:434
 #: src/contents/ui/MultibandGate.qml:407 src/contents/ui/StereoTools.qml:123
 msgid "Mode"
@@ -279,7 +281,7 @@ msgstr "Bias"
 
 #: src/contents/ui/Autotune.qml:169 src/contents/ui/Deesser.qml:171
 #: src/contents/ui/Filter.qml:137 src/contents/ui/Reverb.qml:126
-#: src/tags_plugin_name.cpp:63
+#: src/tags_plugin_name.cpp:64
 msgid "Filter"
 msgstr "Filtro"
 
@@ -358,9 +360,9 @@ msgstr "Limite Inferiore"
 #: src/contents/ui/Exciter.qml:228 src/contents/ui/Expander.qml:841
 #: src/contents/ui/Filter.qml:252 src/contents/ui/Gate.qml:970
 #: src/contents/ui/Limiter.qml:625 src/contents/ui/Loudness.qml:193
-#: src/contents/ui/Maximizer.qml:140
+#: src/contents/ui/Maximizer.qml:140 src/contents/ui/MidSideEqualizer.qml:333
 #: src/contents/ui/MultibandCompressor.qml:983
-#: src/contents/ui/MultibandGate.qml:956 src/contents/ui/Reverb.qml:344
+#: src/contents/ui/MultibandGate.qml:956 src/contents/ui/Reverb.qml:343
 #: src/contents/ui/StereoTools.qml:410
 msgid "Show native window"
 msgstr "Mostra interfaccia nativa"
@@ -373,7 +375,7 @@ msgstr "Ascolta"
 
 #: src/contents/ui/BassEnhancer.qml:247 src/contents/ui/BassLoudness.qml:144
 #: src/contents/ui/Compressor.qml:925 src/contents/ui/Convolver.qml:555
-#: src/contents/ui/Crossfeed.qml:176 src/contents/ui/CrosstalkCanceller.qml:124
+#: src/contents/ui/Crossfeed.qml:175 src/contents/ui/CrosstalkCanceller.qml:124
 #: src/contents/ui/Crusher.qml:268 src/contents/ui/Crystalizer.qml:203
 #: src/contents/ui/Deesser.qml:361 src/contents/ui/Delay.qml:428
 #: src/contents/ui/EchoCanceller.qml:186 src/contents/ui/Equalizer.qml:399
@@ -381,8 +383,9 @@ msgstr "Ascolta"
 #: src/contents/ui/Filter.qml:266 src/contents/ui/Gate.qml:1004
 #: src/contents/ui/Limiter.qml:659 src/contents/ui/Loudness.qml:217
 #: src/contents/ui/Main.qml:477 src/contents/ui/Maximizer.qml:154
+#: src/contents/ui/MidSideEqualizer.qml:399
 #: src/contents/ui/MultibandCompressor.qml:1014
-#: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:358
+#: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:357
 #: src/contents/ui/RNNoise.qml:345 src/contents/ui/Speex.qml:195
 #: src/contents/ui/StereoTools.qml:424 src/contents/ui/VoiceSuppressor.qml:185
 msgid "Reset"
@@ -554,7 +557,7 @@ msgstr "Esterna"
 
 #: src/contents/ui/Compressor.qml:277 src/contents/ui/Expander.qml:237
 #: src/contents/ui/Gate.qml:255 src/contents/ui/Limiter.qml:227
-#: src/contents/ui/PageStreamsEffects.qml:479
+#: src/contents/ui/PageStreamsEffects.qml:489
 msgid "Input device"
 msgstr "Dispositivo di ingresso"
 
@@ -603,7 +606,8 @@ msgid "Middle"
 msgstr "Medio"
 
 #: src/contents/ui/Compressor.qml:319 src/contents/ui/Expander.qml:279
-#: src/contents/ui/Gate.qml:297 src/contents/ui/MultibandCompressor.qml:449
+#: src/contents/ui/Gate.qml:297 src/contents/ui/MidSideEqualizer.qml:244
+#: src/contents/ui/MultibandCompressor.qml:449
 #: src/contents/ui/MultibandGate.qml:422
 msgid "Side"
 msgstr "Lato"
@@ -700,7 +704,7 @@ msgstr "Passa-alto"
 #: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Equalizer.qml:156
 #: src/contents/ui/Expander.qml:372 src/contents/ui/Expander.qml:386
 #: src/contents/ui/Filter.qml:111 src/contents/ui/Gate.qml:391
-#: src/contents/ui/Gate.qml:405
+#: src/contents/ui/Gate.qml:405 src/contents/ui/MidSideEqualizer.qml:156
 msgid "Off"
 msgstr "Off"
 
@@ -999,7 +1003,7 @@ msgstr "Profili di Crossfeed"
 msgid "Default"
 msgstr "Predefinito"
 
-#: src/contents/ui/Crossfeed.qml:167 src/contents/ui/PageStreamsEffects.qml:650
+#: src/contents/ui/Crossfeed.qml:167 src/contents/ui/PageStreamsEffects.qml:660
 #: src/contents/ui/PreferencesSheet.qml:62 src/contents/ui/Reverb.qml:335
 msgid "Presets"
 msgstr "Profili"
@@ -1422,6 +1426,8 @@ msgid "Solo"
 msgstr "Isola"
 
 #: src/contents/ui/Equalizer.qml:66 src/contents/ui/Equalizer.qml:106
+#: src/contents/ui/MidSideEqualizer.qml:66
+#: src/contents/ui/MidSideEqualizer.qml:106
 msgid "APO preset"
 msgstr "Profilo APO"
 
@@ -1441,15 +1447,15 @@ msgstr "Importato il file del profilo Equalizer APO nel canale sinistro."
 msgid "Imported the Equalizer APO preset file into the right channel."
 msgstr "Importato il file del profilo Equalizer APO nel canale destro."
 
-#: src/contents/ui/Equalizer.qml:91
+#: src/contents/ui/Equalizer.qml:91 src/contents/ui/MidSideEqualizer.qml:91
 msgid "GraphicEQ preset"
 msgstr "Profilo GraphicEQ"
 
-#: src/contents/ui/Equalizer.qml:94
+#: src/contents/ui/Equalizer.qml:94 src/contents/ui/MidSideEqualizer.qml:94
 msgid "Imported the GraphicEQ preset file."
 msgstr "Importato il file del profilo GraphicEQ."
 
-#: src/contents/ui/Equalizer.qml:96
+#: src/contents/ui/Equalizer.qml:96 src/contents/ui/MidSideEqualizer.qml:96
 msgid "Failed to import the GraphicEQ preset file."
 msgstr "Importazione del file del profilo GraphicEQ non riuscita."
 
@@ -1484,53 +1490,62 @@ msgstr ""
 "esportate in un file esterno del profilo APO."
 
 #: src/contents/ui/Equalizer.qml:142 src/contents/ui/Filter.qml:97
-#: src/contents/ui/Loudness.qml:77
+#: src/contents/ui/Loudness.qml:77 src/contents/ui/MidSideEqualizer.qml:142
 msgid "IIR"
 msgstr "IIR"
 
 #: src/contents/ui/Equalizer.qml:142 src/contents/ui/Filter.qml:97
+#: src/contents/ui/MidSideEqualizer.qml:142
 msgid "FIR"
 msgstr "FIR"
 
 #: src/contents/ui/Equalizer.qml:142 src/contents/ui/Filter.qml:97
-#: src/contents/ui/Loudness.qml:77
+#: src/contents/ui/Loudness.qml:77 src/contents/ui/MidSideEqualizer.qml:142
 msgid "FFT"
 msgstr "FFT"
 
 #: src/contents/ui/Equalizer.qml:142 src/contents/ui/Filter.qml:97
+#: src/contents/ui/MidSideEqualizer.qml:142
 msgid "SPM"
 msgstr "SPM"
 
 #: src/contents/ui/Equalizer.qml:152 src/contents/ui/Filter.qml:107
+#: src/contents/ui/MidSideEqualizer.qml:152
 msgid "Equalizer decramping"
 msgstr "Riduzione distorsione EQ"
 
 #: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
+#: src/contents/ui/MidSideEqualizer.qml:156
 msgid "x2"
 msgstr "x2"
 
 #: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
+#: src/contents/ui/MidSideEqualizer.qml:156
 msgid "x3"
 msgstr "x3"
 
 #: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
+#: src/contents/ui/MidSideEqualizer.qml:156
 msgid "x4"
 msgstr "x4"
 
 #: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
+#: src/contents/ui/MidSideEqualizer.qml:156
 msgid "x6"
 msgstr "x6"
 
 #: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
+#: src/contents/ui/MidSideEqualizer.qml:156
 msgid "x8"
 msgstr "x8"
 
-#: src/contents/ui/Equalizer.qml:165
+#: src/contents/ui/Equalizer.qml:165 src/contents/ui/MidSideEqualizer.qml:165
 msgid "Bands"
 msgstr "Bande"
 
 #: src/contents/ui/Equalizer.qml:181 src/contents/ui/Filter.qml:204
-#: src/contents/ui/StereoTools.qml:77 src/contents/ui/StereoTools.qml:278
+#: src/contents/ui/MidSideEqualizer.qml:181 src/contents/ui/StereoTools.qml:77
+#: src/contents/ui/StereoTools.qml:278
 msgid "Balance"
 msgstr "Bilanciamento"
 
@@ -1539,6 +1554,8 @@ msgid "Pitch left"
 msgstr "Tono sinistro"
 
 #: src/contents/ui/Equalizer.qml:206 src/contents/ui/Equalizer.qml:223
+#: src/contents/ui/MidSideEqualizer.qml:206
+#: src/contents/ui/MidSideEqualizer.qml:223
 msgid "st"
 msgstr "st"
 
@@ -1550,27 +1567,27 @@ msgstr "Tono destro"
 msgid "Split channels"
 msgstr "Separa canali"
 
-#: src/contents/ui/Equalizer.qml:356
+#: src/contents/ui/Equalizer.qml:356 src/contents/ui/MidSideEqualizer.qml:356
 msgid "Flat response"
 msgstr "Risposta piatta"
 
-#: src/contents/ui/Equalizer.qml:363
+#: src/contents/ui/Equalizer.qml:363 src/contents/ui/MidSideEqualizer.qml:363
 msgid "Calculate frequencies"
 msgstr "Calcola frequenze"
 
-#: src/contents/ui/Equalizer.qml:370
+#: src/contents/ui/Equalizer.qml:370 src/contents/ui/MidSideEqualizer.qml:370
 msgid "Sort bands"
 msgstr "Ordina bande"
 
-#: src/contents/ui/Equalizer.qml:377
+#: src/contents/ui/Equalizer.qml:377 src/contents/ui/MidSideEqualizer.qml:377
 msgid "Import APO"
 msgstr "Importa APO"
 
-#: src/contents/ui/Equalizer.qml:384
+#: src/contents/ui/Equalizer.qml:384 src/contents/ui/MidSideEqualizer.qml:384
 msgid "Import APO (GraphicEQ)"
 msgstr "Importa APO (GraphicEQ)"
 
-#: src/contents/ui/Equalizer.qml:391
+#: src/contents/ui/Equalizer.qml:391 src/contents/ui/MidSideEqualizer.qml:391
 msgid "Export APO"
 msgstr "Esporta APO"
 
@@ -1582,7 +1599,7 @@ msgstr "Limite superiore attivo"
 msgid "Ceil"
 msgstr "Limite Superiore"
 
-#: src/contents/ui/Expander.qml:67 src/tags_plugin_name.cpp:62
+#: src/contents/ui/Expander.qml:67 src/tags_plugin_name.cpp:63
 msgid "Expander"
 msgstr "Expander"
 
@@ -1600,7 +1617,7 @@ msgstr "Modalità filtro"
 msgid "Equalizer mode"
 msgstr "Modalità di equalizzazione"
 
-#: src/contents/ui/Gate.qml:71 src/tags_plugin_name.cpp:64
+#: src/contents/ui/Gate.qml:71 src/tags_plugin_name.cpp:65
 msgid "Gate"
 msgstr "Gate"
 
@@ -1774,7 +1791,7 @@ msgstr "Picco effettivo/24 bit"
 msgid "Dithering"
 msgstr "Dithering"
 
-#: src/contents/ui/Limiter.qml:116 src/tags_plugin_name.cpp:66
+#: src/contents/ui/Limiter.qml:116 src/tags_plugin_name.cpp:67
 msgid "Limiter"
 msgstr "Limiter"
 
@@ -1879,11 +1896,11 @@ msgstr "Gli effetti per l'audio sono abilitati."
 msgid "Audio effects are disabled."
 msgstr "Gli effetti per l'audio sono disabilitati."
 
-#: src/contents/ui/Main.qml:403 src/contents/ui/PageStreamsEffects.qml:479
+#: src/contents/ui/Main.qml:403 src/contents/ui/PageStreamsEffects.qml:489
 msgid "Players"
 msgstr "Riproduttori"
 
-#: src/contents/ui/Main.qml:418 src/contents/ui/PageStreamsEffects.qml:488
+#: src/contents/ui/Main.qml:418 src/contents/ui/PageStreamsEffects.qml:498
 msgid "Recorders"
 msgstr "Registratori"
 
@@ -1911,6 +1928,82 @@ msgstr "Aggiungi %1"
 #: src/contents/ui/MenuAddPlugins.qml:165
 msgid "Added a new effect to the pipeline: %1"
 msgstr "Aggiunto un nuovo effetto alla pipeline: %1"
+
+#: src/contents/ui/MidSideEqualizer.qml:69
+#, fuzzy
+msgid "Failed to import the Mid-Side Equalizer APO preset file."
+msgstr "Importazione del file del profilo Equalizer APO non riuscita."
+
+#: src/contents/ui/MidSideEqualizer.qml:74
+#, fuzzy
+msgid "Imported the Mid-Side Equalizer APO preset file."
+msgstr "Importato il file del profilo Equalizer APO."
+
+#: src/contents/ui/MidSideEqualizer.qml:76
+#, fuzzy
+msgid "Imported the Mid-Side Equalizer APO preset file into the mid channel."
+msgstr "Importato il file del profilo Equalizer APO nel canale destro."
+
+#: src/contents/ui/MidSideEqualizer.qml:78
+#, fuzzy
+msgid "Imported the Mid-Side Equalizer APO preset file into the side channel."
+msgstr "Importato il file del profilo Equalizer APO nel canale sinistro."
+
+#: src/contents/ui/MidSideEqualizer.qml:109
+#, fuzzy
+msgid ""
+"Failed to export the current Mid-Side Equalizer settings to an external APO "
+"preset file."
+msgstr ""
+"Esportazione delle attuali impostazioni dell'Equalizer in un file esterno "
+"del profilo APO non riuscita."
+
+#: src/contents/ui/MidSideEqualizer.qml:114
+#, fuzzy
+msgid ""
+"Exported the current Mid-Side Equalizer settings to an external APO preset "
+"file."
+msgstr ""
+"Le attuali impostazioni dell'Equalizer sono state esportate in un file "
+"esterno del profilo APO."
+
+#: src/contents/ui/MidSideEqualizer.qml:116
+#, fuzzy
+msgid ""
+"Exported the current Mid-Side Equalizer settings of the mid channel to an "
+"external APO preset file."
+msgstr ""
+"Le attuali impostazioni del canale destro dell'Equalizer sono state "
+"esportate in un file esterno del profilo APO."
+
+#: src/contents/ui/MidSideEqualizer.qml:118
+#, fuzzy
+msgid ""
+"Exported the current Mid-Side Equalizer settings of the side channel to an "
+"external APO preset file."
+msgstr ""
+"Le attuali impostazioni del canale sinistro dell'Equalizer sono state "
+"esportate in un file esterno del profilo APO."
+
+#: src/contents/ui/MidSideEqualizer.qml:198
+#, fuzzy
+msgid "Pitch mid"
+msgstr "Intonazione"
+
+#: src/contents/ui/MidSideEqualizer.qml:215
+#, fuzzy
+msgid "Pitch side"
+msgstr "Tono sinistro"
+
+#: src/contents/ui/MidSideEqualizer.qml:244
+#, fuzzy
+msgid "Mid"
+msgstr "Intermedi"
+
+#: src/contents/ui/MidSideEqualizer.qml:346
+#, fuzzy
+msgid "Split mid/side"
+msgstr "Modalità Split"
 
 #: src/contents/ui/MultibandCompressor.qml:127
 msgid "Compression mode"
@@ -1997,39 +2090,39 @@ msgstr "Nessun Effetto"
 msgid "Audio stream not modified"
 msgstr "Flusso audio non alterato"
 
-#: src/contents/ui/PageStreamsEffects.qml:408
+#: src/contents/ui/PageStreamsEffects.qml:418
 msgid "Add effect"
 msgstr "Aggiungi effetto"
 
-#: src/contents/ui/PageStreamsEffects.qml:422
+#: src/contents/ui/PageStreamsEffects.qml:432
 msgid "Close"
 msgstr "Chiudi"
 
-#: src/contents/ui/PageStreamsEffects.qml:426
+#: src/contents/ui/PageStreamsEffects.qml:436
 msgid "Expand the list of effects pipeline"
 msgstr "Espandi la lista della pipeline degli effetti"
 
-#: src/contents/ui/PageStreamsEffects.qml:426
+#: src/contents/ui/PageStreamsEffects.qml:436
 msgid "Reduce the list of effects pipeline"
 msgstr "Riduci la lista della pipeline degli effetti"
 
-#: src/contents/ui/PageStreamsEffects.qml:488
+#: src/contents/ui/PageStreamsEffects.qml:498
 msgid "Output device"
 msgstr "Dispositivo di uscita"
 
-#: src/contents/ui/PageStreamsEffects.qml:663
+#: src/contents/ui/PageStreamsEffects.qml:673
 msgid "Excluded apps"
 msgstr "App escluse"
 
-#: src/contents/ui/PageStreamsEffects.qml:676
+#: src/contents/ui/PageStreamsEffects.qml:686
 msgid "Input monitoring"
 msgstr "Monitoraggio Input"
 
-#: src/contents/ui/PageStreamsEffects.qml:689
+#: src/contents/ui/PageStreamsEffects.qml:699
 msgid "Share audio"
 msgstr "Condividi audio"
 
-#: src/contents/ui/PageStreamsEffects.qml:690
+#: src/contents/ui/PageStreamsEffects.qml:700
 msgid "Send the processed desktop audio to the virtual source"
 msgstr "Invia l'audio processato alla sorgente virtuale"
 
@@ -2156,7 +2249,7 @@ msgstr "Finestra di rilevazione"
 msgid "Overlap length"
 msgstr "Lunghezza di sovrapposizione"
 
-#: src/contents/ui/Pitch.qml:164 src/tags_plugin_name.cpp:71
+#: src/contents/ui/Pitch.qml:164 src/tags_plugin_name.cpp:72
 msgid "Pitch"
 msgstr "Intonazione"
 
@@ -3206,33 +3299,33 @@ msgstr "(Altoparlanti)"
 msgid "Output Level Meter"
 msgstr "Misuratore Livello Uscita"
 
-#: src/presets_manager.cpp:799 src/presets_manager.cpp:806
-#: src/presets_manager.cpp:816 src/presets_manager.cpp:823
-#: src/presets_manager.cpp:833 src/presets_manager.cpp:842
+#: src/presets_manager.cpp:800 src/presets_manager.cpp:807
+#: src/presets_manager.cpp:817 src/presets_manager.cpp:824
+#: src/presets_manager.cpp:834 src/presets_manager.cpp:843
 msgid "Preset not loaded correctly"
 msgstr "Profilo non caricato correttamente"
 
-#: src/presets_manager.cpp:799
+#: src/presets_manager.cpp:800
 msgid "Wrong format in excluded apps list"
 msgstr "Formato errato nella lista delle applicazioni escluse"
 
-#: src/presets_manager.cpp:807
+#: src/presets_manager.cpp:808
 msgid "Generic error while loading excluded apps list"
 msgstr "Errore generico nel caricamento della lista delle applicazioni escluse"
 
-#: src/presets_manager.cpp:816
+#: src/presets_manager.cpp:817
 msgid "Wrong format in effects list"
 msgstr "Formato errato nella lista degli effetti"
 
-#: src/presets_manager.cpp:823
+#: src/presets_manager.cpp:824
 msgid "Generic error while loading effects list"
 msgstr "Errore generico nel caricamento della lista degli effetti"
 
-#: src/presets_manager.cpp:834
+#: src/presets_manager.cpp:835
 msgid "One or more parameters have a wrong format"
 msgstr "Uno o più parametri hanno un formato errato"
 
-#: src/presets_manager.cpp:843
+#: src/presets_manager.cpp:844
 msgid "Generic error while loading the effect"
 msgstr "Errore generico nel caricamento dell'effetto"
 
@@ -3301,42 +3394,47 @@ msgid "Equalizer"
 msgstr "Equalizzatore"
 
 #: src/tags_plugin_name.cpp:61
+#, fuzzy
+msgid "Mid-Side Equalizer"
+msgstr "Equalizzatore"
+
+#: src/tags_plugin_name.cpp:62
 msgid "Exciter"
 msgstr "Exciter"
 
-#: src/tags_plugin_name.cpp:65
+#: src/tags_plugin_name.cpp:66
 msgid "Level Meter"
 msgstr "Misuratore Livello"
 
-#: src/tags_plugin_name.cpp:68
+#: src/tags_plugin_name.cpp:69
 msgid "Maximizer"
 msgstr "Maximizer"
 
-#: src/tags_plugin_name.cpp:69
+#: src/tags_plugin_name.cpp:70
 msgid "Multiband Compressor"
 msgstr "Compressore Multibanda"
 
-#: src/tags_plugin_name.cpp:70
+#: src/tags_plugin_name.cpp:71
 msgid "Multiband Gate"
 msgstr "Gate Multibanda"
 
-#: src/tags_plugin_name.cpp:72
+#: src/tags_plugin_name.cpp:73
 msgid "Reverberation"
 msgstr "Riverbero"
 
-#: src/tags_plugin_name.cpp:73
+#: src/tags_plugin_name.cpp:74
 msgid "Noise Reduction"
 msgstr "Riduzione Rumore"
 
-#: src/tags_plugin_name.cpp:74
+#: src/tags_plugin_name.cpp:75
 msgid "Speech Processor"
 msgstr "Miglioramento Voce"
 
-#: src/tags_plugin_name.cpp:75
+#: src/tags_plugin_name.cpp:76
 msgid "Stereo Tools"
 msgstr "Strumenti Stereo"
 
-#: src/tags_plugin_name.cpp:76
+#: src/tags_plugin_name.cpp:77
 msgid "Voice Suppressor"
 msgstr "Soppressione Voce"
 
@@ -4490,9 +4588,6 @@ msgstr "Effetti audio semplificati"
 #~ msgid "Crisp"
 #~ msgstr "Netti"
 
-#~ msgid "Mixed"
-#~ msgstr "Intermedi"
-
 #~ msgid "Detector"
 #~ msgstr "Rilevazione"
 
@@ -4582,9 +4677,6 @@ msgstr "Effetti audio semplificati"
 #~ msgid "Reset Volume of EasyEffects Virtual Devices at Startup"
 #~ msgstr ""
 #~ "Reimposta il Volume dei Dispositivi Virtuali di EasyEffects all'Avvio"
-
-#~ msgid "Split Mode"
-#~ msgstr "Modalità Split"
 
 #~ msgid "Split 1/2"
 #~ msgstr "Split 1/2"

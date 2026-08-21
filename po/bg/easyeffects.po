@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-08-04 12:10-0300\n"
+"POT-Creation-Date: 2026-08-21 20:14-0300\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Ivan Pekov <ivan@mrivanplays.com>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/easyeffects/"
@@ -190,7 +190,7 @@ msgstr ""
 
 #: src/contents/ui/Autogain.qml:143 src/contents/ui/Autogain.qml:198
 #: src/contents/ui/BassLoudness.qml:67 src/contents/ui/LevelMeter.qml:146
-#: src/tags_plugin_name.cpp:67
+#: src/tags_plugin_name.cpp:68
 msgid "Loudness"
 msgstr ""
 
@@ -219,6 +219,7 @@ msgstr "Изходен gain"
 #: src/contents/ui/Filter.qml:234 src/contents/ui/Gate.qml:952
 #: src/contents/ui/LevelMeter.qml:215 src/contents/ui/Limiter.qml:607
 #: src/contents/ui/Loudness.qml:175 src/contents/ui/Maximizer.qml:122
+#: src/contents/ui/MidSideEqualizer.qml:315
 #: src/contents/ui/MultibandCompressor.qml:965
 #: src/contents/ui/MultibandGate.qml:938 src/contents/ui/Pitch.qml:268
 #: src/contents/ui/Reverb.qml:318 src/contents/ui/RNNoise.qml:73
@@ -261,6 +262,7 @@ msgstr ""
 #: src/contents/ui/Equalizer.qml:138 src/contents/ui/Expander.qml:79
 #: src/contents/ui/Expander.qml:261 src/contents/ui/Gate.qml:279
 #: src/contents/ui/Limiter.qml:72 src/contents/ui/Loudness.qml:71
+#: src/contents/ui/MidSideEqualizer.qml:138
 #: src/contents/ui/MultibandCompressor.qml:434
 #: src/contents/ui/MultibandGate.qml:407 src/contents/ui/StereoTools.qml:123
 msgid "Mode"
@@ -286,7 +288,7 @@ msgstr ""
 
 #: src/contents/ui/Autotune.qml:169 src/contents/ui/Deesser.qml:171
 #: src/contents/ui/Filter.qml:137 src/contents/ui/Reverb.qml:126
-#: src/tags_plugin_name.cpp:63
+#: src/tags_plugin_name.cpp:64
 msgid "Filter"
 msgstr ""
 
@@ -367,9 +369,9 @@ msgstr "Под"
 #: src/contents/ui/Exciter.qml:228 src/contents/ui/Expander.qml:841
 #: src/contents/ui/Filter.qml:252 src/contents/ui/Gate.qml:970
 #: src/contents/ui/Limiter.qml:625 src/contents/ui/Loudness.qml:193
-#: src/contents/ui/Maximizer.qml:140
+#: src/contents/ui/Maximizer.qml:140 src/contents/ui/MidSideEqualizer.qml:333
 #: src/contents/ui/MultibandCompressor.qml:983
-#: src/contents/ui/MultibandGate.qml:956 src/contents/ui/Reverb.qml:344
+#: src/contents/ui/MultibandGate.qml:956 src/contents/ui/Reverb.qml:343
 #: src/contents/ui/StereoTools.qml:410
 msgid "Show native window"
 msgstr ""
@@ -382,7 +384,7 @@ msgstr "Слушам"
 
 #: src/contents/ui/BassEnhancer.qml:247 src/contents/ui/BassLoudness.qml:144
 #: src/contents/ui/Compressor.qml:925 src/contents/ui/Convolver.qml:555
-#: src/contents/ui/Crossfeed.qml:176 src/contents/ui/CrosstalkCanceller.qml:124
+#: src/contents/ui/Crossfeed.qml:175 src/contents/ui/CrosstalkCanceller.qml:124
 #: src/contents/ui/Crusher.qml:268 src/contents/ui/Crystalizer.qml:203
 #: src/contents/ui/Deesser.qml:361 src/contents/ui/Delay.qml:428
 #: src/contents/ui/EchoCanceller.qml:186 src/contents/ui/Equalizer.qml:399
@@ -390,8 +392,9 @@ msgstr "Слушам"
 #: src/contents/ui/Filter.qml:266 src/contents/ui/Gate.qml:1004
 #: src/contents/ui/Limiter.qml:659 src/contents/ui/Loudness.qml:217
 #: src/contents/ui/Main.qml:477 src/contents/ui/Maximizer.qml:154
+#: src/contents/ui/MidSideEqualizer.qml:399
 #: src/contents/ui/MultibandCompressor.qml:1014
-#: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:358
+#: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:357
 #: src/contents/ui/RNNoise.qml:345 src/contents/ui/Speex.qml:195
 #: src/contents/ui/StereoTools.qml:424 src/contents/ui/VoiceSuppressor.qml:185
 msgid "Reset"
@@ -572,7 +575,7 @@ msgstr "Външно"
 
 #: src/contents/ui/Compressor.qml:277 src/contents/ui/Expander.qml:237
 #: src/contents/ui/Gate.qml:255 src/contents/ui/Limiter.qml:227
-#: src/contents/ui/PageStreamsEffects.qml:479
+#: src/contents/ui/PageStreamsEffects.qml:489
 #, fuzzy
 msgid "Input device"
 msgstr "Входно устройство"
@@ -622,7 +625,8 @@ msgid "Middle"
 msgstr "По средата"
 
 #: src/contents/ui/Compressor.qml:319 src/contents/ui/Expander.qml:279
-#: src/contents/ui/Gate.qml:297 src/contents/ui/MultibandCompressor.qml:449
+#: src/contents/ui/Gate.qml:297 src/contents/ui/MidSideEqualizer.qml:244
+#: src/contents/ui/MultibandCompressor.qml:449
 #: src/contents/ui/MultibandGate.qml:422
 msgid "Side"
 msgstr "Странично"
@@ -723,7 +727,7 @@ msgstr ""
 #: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Equalizer.qml:156
 #: src/contents/ui/Expander.qml:372 src/contents/ui/Expander.qml:386
 #: src/contents/ui/Filter.qml:111 src/contents/ui/Gate.qml:391
-#: src/contents/ui/Gate.qml:405
+#: src/contents/ui/Gate.qml:405 src/contents/ui/MidSideEqualizer.qml:156
 msgid "Off"
 msgstr "Изключено"
 
@@ -1037,7 +1041,7 @@ msgstr ""
 msgid "Default"
 msgstr ""
 
-#: src/contents/ui/Crossfeed.qml:167 src/contents/ui/PageStreamsEffects.qml:650
+#: src/contents/ui/Crossfeed.qml:167 src/contents/ui/PageStreamsEffects.qml:660
 #: src/contents/ui/PreferencesSheet.qml:62 src/contents/ui/Reverb.qml:335
 msgid "Presets"
 msgstr "Профили"
@@ -1469,6 +1473,8 @@ msgid "Solo"
 msgstr ""
 
 #: src/contents/ui/Equalizer.qml:66 src/contents/ui/Equalizer.qml:106
+#: src/contents/ui/MidSideEqualizer.qml:66
+#: src/contents/ui/MidSideEqualizer.qml:106
 #, fuzzy
 msgid "APO preset"
 msgstr "Предварително задаване"
@@ -1493,17 +1499,17 @@ msgstr "Предварително задаване"
 msgid "Imported the Equalizer APO preset file into the right channel."
 msgstr "Предварително задаване"
 
-#: src/contents/ui/Equalizer.qml:91
+#: src/contents/ui/Equalizer.qml:91 src/contents/ui/MidSideEqualizer.qml:91
 #, fuzzy
 msgid "GraphicEQ preset"
 msgstr "Предварително задаване"
 
-#: src/contents/ui/Equalizer.qml:94
+#: src/contents/ui/Equalizer.qml:94 src/contents/ui/MidSideEqualizer.qml:94
 #, fuzzy
 msgid "Imported the GraphicEQ preset file."
 msgstr "Предварително задаване"
 
-#: src/contents/ui/Equalizer.qml:96
+#: src/contents/ui/Equalizer.qml:96 src/contents/ui/MidSideEqualizer.qml:96
 #, fuzzy
 msgid "Failed to import the GraphicEQ preset file."
 msgstr "Предварително задаване"
@@ -1535,53 +1541,62 @@ msgid ""
 msgstr "Предварително задаване"
 
 #: src/contents/ui/Equalizer.qml:142 src/contents/ui/Filter.qml:97
-#: src/contents/ui/Loudness.qml:77
+#: src/contents/ui/Loudness.qml:77 src/contents/ui/MidSideEqualizer.qml:142
 msgid "IIR"
 msgstr ""
 
 #: src/contents/ui/Equalizer.qml:142 src/contents/ui/Filter.qml:97
+#: src/contents/ui/MidSideEqualizer.qml:142
 msgid "FIR"
 msgstr ""
 
 #: src/contents/ui/Equalizer.qml:142 src/contents/ui/Filter.qml:97
-#: src/contents/ui/Loudness.qml:77
+#: src/contents/ui/Loudness.qml:77 src/contents/ui/MidSideEqualizer.qml:142
 msgid "FFT"
 msgstr ""
 
 #: src/contents/ui/Equalizer.qml:142 src/contents/ui/Filter.qml:97
+#: src/contents/ui/MidSideEqualizer.qml:142
 msgid "SPM"
 msgstr ""
 
 #: src/contents/ui/Equalizer.qml:152 src/contents/ui/Filter.qml:107
+#: src/contents/ui/MidSideEqualizer.qml:152
 msgid "Equalizer decramping"
 msgstr ""
 
 #: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
+#: src/contents/ui/MidSideEqualizer.qml:156
 msgid "x2"
 msgstr ""
 
 #: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
+#: src/contents/ui/MidSideEqualizer.qml:156
 msgid "x3"
 msgstr ""
 
 #: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
+#: src/contents/ui/MidSideEqualizer.qml:156
 msgid "x4"
 msgstr ""
 
 #: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
+#: src/contents/ui/MidSideEqualizer.qml:156
 msgid "x6"
 msgstr ""
 
 #: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
+#: src/contents/ui/MidSideEqualizer.qml:156
 msgid "x8"
 msgstr ""
 
-#: src/contents/ui/Equalizer.qml:165
+#: src/contents/ui/Equalizer.qml:165 src/contents/ui/MidSideEqualizer.qml:165
 msgid "Bands"
 msgstr ""
 
 #: src/contents/ui/Equalizer.qml:181 src/contents/ui/Filter.qml:204
-#: src/contents/ui/StereoTools.qml:77 src/contents/ui/StereoTools.qml:278
+#: src/contents/ui/MidSideEqualizer.qml:181 src/contents/ui/StereoTools.qml:77
+#: src/contents/ui/StereoTools.qml:278
 msgid "Balance"
 msgstr ""
 
@@ -1590,6 +1605,8 @@ msgid "Pitch left"
 msgstr ""
 
 #: src/contents/ui/Equalizer.qml:206 src/contents/ui/Equalizer.qml:223
+#: src/contents/ui/MidSideEqualizer.qml:206
+#: src/contents/ui/MidSideEqualizer.qml:223
 msgid "st"
 msgstr ""
 
@@ -1602,27 +1619,27 @@ msgstr ""
 msgid "Split channels"
 msgstr "Ляв канал"
 
-#: src/contents/ui/Equalizer.qml:356
+#: src/contents/ui/Equalizer.qml:356 src/contents/ui/MidSideEqualizer.qml:356
 msgid "Flat response"
 msgstr ""
 
-#: src/contents/ui/Equalizer.qml:363
+#: src/contents/ui/Equalizer.qml:363 src/contents/ui/MidSideEqualizer.qml:363
 msgid "Calculate frequencies"
 msgstr ""
 
-#: src/contents/ui/Equalizer.qml:370
+#: src/contents/ui/Equalizer.qml:370 src/contents/ui/MidSideEqualizer.qml:370
 msgid "Sort bands"
 msgstr ""
 
-#: src/contents/ui/Equalizer.qml:377
+#: src/contents/ui/Equalizer.qml:377 src/contents/ui/MidSideEqualizer.qml:377
 msgid "Import APO"
 msgstr ""
 
-#: src/contents/ui/Equalizer.qml:384
+#: src/contents/ui/Equalizer.qml:384 src/contents/ui/MidSideEqualizer.qml:384
 msgid "Import APO (GraphicEQ)"
 msgstr ""
 
-#: src/contents/ui/Equalizer.qml:391
+#: src/contents/ui/Equalizer.qml:391 src/contents/ui/MidSideEqualizer.qml:391
 #, fuzzy
 msgid "Export APO"
 msgstr "Предварително задаване"
@@ -1636,7 +1653,7 @@ msgstr "Относително"
 msgid "Ceil"
 msgstr ""
 
-#: src/contents/ui/Expander.qml:67 src/tags_plugin_name.cpp:62
+#: src/contents/ui/Expander.qml:67 src/tags_plugin_name.cpp:63
 msgid "Expander"
 msgstr ""
 
@@ -1654,7 +1671,7 @@ msgstr ""
 msgid "Equalizer mode"
 msgstr ""
 
-#: src/contents/ui/Gate.qml:71 src/tags_plugin_name.cpp:64
+#: src/contents/ui/Gate.qml:71 src/tags_plugin_name.cpp:65
 msgid "Gate"
 msgstr ""
 
@@ -1832,7 +1849,7 @@ msgstr "Връх"
 msgid "Dithering"
 msgstr ""
 
-#: src/contents/ui/Limiter.qml:116 src/tags_plugin_name.cpp:66
+#: src/contents/ui/Limiter.qml:116 src/tags_plugin_name.cpp:67
 msgid "Limiter"
 msgstr ""
 
@@ -1940,11 +1957,11 @@ msgstr ""
 msgid "Audio effects are disabled."
 msgstr ""
 
-#: src/contents/ui/Main.qml:403 src/contents/ui/PageStreamsEffects.qml:479
+#: src/contents/ui/Main.qml:403 src/contents/ui/PageStreamsEffects.qml:489
 msgid "Players"
 msgstr ""
 
-#: src/contents/ui/Main.qml:418 src/contents/ui/PageStreamsEffects.qml:488
+#: src/contents/ui/Main.qml:418 src/contents/ui/PageStreamsEffects.qml:498
 msgid "Recorders"
 msgstr ""
 
@@ -1974,6 +1991,71 @@ msgstr ""
 
 #: src/contents/ui/MenuAddPlugins.qml:165
 msgid "Added a new effect to the pipeline: %1"
+msgstr ""
+
+#: src/contents/ui/MidSideEqualizer.qml:69
+#, fuzzy
+msgid "Failed to import the Mid-Side Equalizer APO preset file."
+msgstr "Предварително задаване"
+
+#: src/contents/ui/MidSideEqualizer.qml:74
+#, fuzzy
+msgid "Imported the Mid-Side Equalizer APO preset file."
+msgstr "Предварително задаване"
+
+#: src/contents/ui/MidSideEqualizer.qml:76
+#, fuzzy
+msgid "Imported the Mid-Side Equalizer APO preset file into the mid channel."
+msgstr "Предварително задаване"
+
+#: src/contents/ui/MidSideEqualizer.qml:78
+#, fuzzy
+msgid "Imported the Mid-Side Equalizer APO preset file into the side channel."
+msgstr "Предварително задаване"
+
+#: src/contents/ui/MidSideEqualizer.qml:109
+#, fuzzy
+msgid ""
+"Failed to export the current Mid-Side Equalizer settings to an external APO "
+"preset file."
+msgstr "Предварително задаване"
+
+#: src/contents/ui/MidSideEqualizer.qml:114
+#, fuzzy
+msgid ""
+"Exported the current Mid-Side Equalizer settings to an external APO preset "
+"file."
+msgstr "Предварително задаване"
+
+#: src/contents/ui/MidSideEqualizer.qml:116
+#, fuzzy
+msgid ""
+"Exported the current Mid-Side Equalizer settings of the mid channel to an "
+"external APO preset file."
+msgstr "Предварително задаване"
+
+#: src/contents/ui/MidSideEqualizer.qml:118
+#, fuzzy
+msgid ""
+"Exported the current Mid-Side Equalizer settings of the side channel to an "
+"external APO preset file."
+msgstr "Предварително задаване"
+
+#: src/contents/ui/MidSideEqualizer.qml:198
+msgid "Pitch mid"
+msgstr ""
+
+#: src/contents/ui/MidSideEqualizer.qml:215
+msgid "Pitch side"
+msgstr ""
+
+#: src/contents/ui/MidSideEqualizer.qml:244
+#, fuzzy
+msgid "Mid"
+msgstr "По средата"
+
+#: src/contents/ui/MidSideEqualizer.qml:346
+msgid "Split mid/side"
 msgstr ""
 
 #: src/contents/ui/MultibandCompressor.qml:127
@@ -2066,42 +2148,42 @@ msgstr ""
 msgid "Audio stream not modified"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:408
+#: src/contents/ui/PageStreamsEffects.qml:418
 msgid "Add effect"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:422
+#: src/contents/ui/PageStreamsEffects.qml:432
 msgid "Close"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:426
+#: src/contents/ui/PageStreamsEffects.qml:436
 msgid "Expand the list of effects pipeline"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:426
+#: src/contents/ui/PageStreamsEffects.qml:436
 msgid "Reduce the list of effects pipeline"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:488
+#: src/contents/ui/PageStreamsEffects.qml:498
 #, fuzzy
 msgid "Output device"
 msgstr "Входно устройство"
 
-#: src/contents/ui/PageStreamsEffects.qml:663
+#: src/contents/ui/PageStreamsEffects.qml:673
 #, fuzzy
 msgid "Excluded apps"
 msgstr "Добави към изключени приложения"
 
-#: src/contents/ui/PageStreamsEffects.qml:676
+#: src/contents/ui/PageStreamsEffects.qml:686
 #, fuzzy
 msgid "Input monitoring"
 msgstr "Активирай/спри тази програма"
 
-#: src/contents/ui/PageStreamsEffects.qml:689
+#: src/contents/ui/PageStreamsEffects.qml:699
 msgid "Share audio"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:690
+#: src/contents/ui/PageStreamsEffects.qml:700
 msgid "Send the processed desktop audio to the virtual source"
 msgstr ""
 
@@ -2225,7 +2307,7 @@ msgstr ""
 msgid "Overlap length"
 msgstr ""
 
-#: src/contents/ui/Pitch.qml:164 src/tags_plugin_name.cpp:71
+#: src/contents/ui/Pitch.qml:164 src/tags_plugin_name.cpp:72
 msgid "Pitch"
 msgstr ""
 
@@ -3296,36 +3378,36 @@ msgstr ""
 msgid "Output Level Meter"
 msgstr ""
 
-#: src/presets_manager.cpp:799 src/presets_manager.cpp:806
-#: src/presets_manager.cpp:816 src/presets_manager.cpp:823
-#: src/presets_manager.cpp:833 src/presets_manager.cpp:842
+#: src/presets_manager.cpp:800 src/presets_manager.cpp:807
+#: src/presets_manager.cpp:817 src/presets_manager.cpp:824
+#: src/presets_manager.cpp:834 src/presets_manager.cpp:843
 #, fuzzy
 msgid "Preset not loaded correctly"
 msgstr "Профили"
 
-#: src/presets_manager.cpp:799
+#: src/presets_manager.cpp:800
 #, fuzzy
 msgid "Wrong format in excluded apps list"
 msgstr "Списък на изключени приложения"
 
-#: src/presets_manager.cpp:807
+#: src/presets_manager.cpp:808
 msgid "Generic error while loading excluded apps list"
 msgstr ""
 
-#: src/presets_manager.cpp:816
+#: src/presets_manager.cpp:817
 #, fuzzy
 msgid "Wrong format in effects list"
 msgstr "Списък на изключени приложения"
 
-#: src/presets_manager.cpp:823
+#: src/presets_manager.cpp:824
 msgid "Generic error while loading effects list"
 msgstr ""
 
-#: src/presets_manager.cpp:834
+#: src/presets_manager.cpp:835
 msgid "One or more parameters have a wrong format"
 msgstr ""
 
-#: src/presets_manager.cpp:843
+#: src/presets_manager.cpp:844
 msgid "Generic error while loading the effect"
 msgstr ""
 
@@ -3394,42 +3476,46 @@ msgid "Equalizer"
 msgstr ""
 
 #: src/tags_plugin_name.cpp:61
+msgid "Mid-Side Equalizer"
+msgstr ""
+
+#: src/tags_plugin_name.cpp:62
 msgid "Exciter"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:65
+#: src/tags_plugin_name.cpp:66
 msgid "Level Meter"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:68
+#: src/tags_plugin_name.cpp:69
 msgid "Maximizer"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:69
+#: src/tags_plugin_name.cpp:70
 msgid "Multiband Compressor"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:70
+#: src/tags_plugin_name.cpp:71
 msgid "Multiband Gate"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:72
+#: src/tags_plugin_name.cpp:73
 msgid "Reverberation"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:73
+#: src/tags_plugin_name.cpp:74
 msgid "Noise Reduction"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:74
+#: src/tags_plugin_name.cpp:75
 msgid "Speech Processor"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:75
+#: src/tags_plugin_name.cpp:76
 msgid "Stereo Tools"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:76
+#: src/tags_plugin_name.cpp:77
 #, fuzzy
 msgid "Voice Suppressor"
 msgstr "Аудио компресор"

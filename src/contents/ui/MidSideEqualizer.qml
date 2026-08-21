@@ -343,7 +343,7 @@ Kirigami.ScrollablePage {
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Link Mid/Side") // qmllint disable
+                        text: i18n("Split mid/side") // qmllint disable
                         icon.name: "split-symbolic"
                         checkable: true
                         checked: midsideEqualizerPage.pluginDB.splitChannels
