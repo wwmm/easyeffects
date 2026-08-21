@@ -1,71 +1,71 @@
 # Mid-Side Equalizer
 
-The Mid-Side Equalizer processes the Mid (sum) and Side (difference) components of a stereo signal independently. This is useful to, for example, correct the overall tonality of a recording through the Mid channel while leaving only the stereo ambience untouched through the Side channel. Easy Effects uses the Parametric Equalizer x32 MidSide from Linux Studio Plugins. The user can choose from 1 to 32 bands per channel. Width and center frequency of each band can be customized as needed.
+The Mid-Side Equalizer processes the Mid (sum) and Side (difference) parts of a stereo signal independently. It's useful, for example, to fix the overall tone of a recording through the Mid channel while keeping the stereo ambience untouched on the Side channel. Easy Effects uses the Parametric Equalizer x32 MidSide from Linux Studio Plugins. You can run anywhere from 1 to 32 bands per channel, and tweak the width and center frequency of each band.
 
 ## Global Options
 
 **Bands**  
-The number of bands.
+Number of bands.
 
 **Mode**  
-- **IIR** - Infinite Impulse Response filters, nonlinear minimal phase. In most cases does not add noticeable latency to output signal.
-- **FIR** - Finite Impulse Response filters with linear phase, finite approximation of Equalizer's impulse response. Adds noticeable latency to output signal.
-- **FFT** - Fast Fourier Transform approximation of the frequency chart, linear phase. Adds noticeable latency to output signal.
+- **IIR** - Infinite Impulse Response filters, nonlinear minimal phase. Usually doesn't add noticeable latency to the output.
+- **FIR** - Finite Impulse Response filters with linear phase, a finite approximation of the equalizer's impulse response. Adds noticeable latency to the output.
+- **FFT** - Fast Fourier Transform approximation of the frequency chart, linear phase. Adds noticeable latency to the output.
 
 **Balance**  
-Balance between left and right output channels.
+Balance between the left and right output channels.
 
 **Pitch Mid**  
-The frequency shift for all filters of the mid channel, in semitones.
+Frequency shift for all mid channel filters, in semitones.
 
 **Pitch Side**  
-The frequency shift for all filters of the side channel, in semitones.
+Frequency shift for all side channel filters, in semitones.
 
 **Link Mid/Side**  
-When enabled it is possible to apply different configurations to mid and side channels.
+When enabled, you can apply different configurations to the mid and side channels.
 
 **Flat Response**  
-This function sets each band gain to 0.
+Resets all band gains to 0.
 
 **Calculate Frequencies**  
-This function calculates the center frequency and the width of each band using the current number of bands. Useful when the user wants fewer than 32 bands but has no idea about which frequencies should be chosen.
+Figures out the center frequency and width for each band based on the current band count. Handy if you want fewer than 32 bands but aren't sure which frequencies to pick.
 
 ## Band Options
 
 **Type**  
-- **Off** - The filter is not working (turned off).
+- **Off** - Filter is disabled.
 - **Bell** - Bell filter with smooth peak/recess.
-- **High Pass** - High Pass filter with rejection of low frequencies.
-- **High Shelf** - Shelving filter with adjustment of high frequency range.
-- **Low Pass** - Low Pass filter with rejection of high frequencies.
-- **Low Shelf** - Shelving filter with adjustment of low frequency range.
-- **Notch** - Notch filter with full rejection of selected frequency.
+- **High Pass** - High Pass filter that removes low frequencies.
+- **High Shelf** - Shelving filter that adjusts the high frequency range.
+- **Low Pass** - Low Pass filter that removes high frequencies.
+- **Low Shelf** - Shelving filter that adjusts the low frequency range.
+- **Notch** - Notch filter that fully rejects the selected frequency.
 - **Resonance** - Resonance filter with sharp peak/recess.
 - **All Pass** - All Pass filter.
 
 **Mode**  
-- **RLC** - Very smooth filters based on similar cascades of RLC contours. Bilinear Z-transform (BT) or Matched Z-transform (MT) is used for pole/zero mapping.
-- **BWC** - Butterworth-Chebyshev-type-1 based filters. Does not affect Resonance and Notch filters. Bilinear Z-transform (BT) or Matched Z-transform (MT) is used for pole/zero mapping.
-- **LRX** - Linkwitz-Riley based filters. Does not affect Resonance and Notch filters. Bilinear Z-transform (BT) or Matched Z-transform (MT) is used for pole/zero mapping.
-- **APO** - Digital biquad filters derived from canonic analog biquad prototypes digitalized through Bilinear transform. These are [textbook filters](https://shepazu.github.io/Audio-EQ-Cookbook/audio-eq-cookbook.html) which are implemented as in the [Equalizer APO](https://equalizerapo.com/) software. Direct design (DR) is used to serve the digital filter coefficients directly in the digital domain, without performing transforms.
+- **RLC** - Very smooth filters built from cascaded RLC contours. Uses Bilinear Z-transform (BT) or Matched Z-transform (MT) for pole/zero mapping.
+- **BWC** - Butterworth-Chebyshev-type-1 based filters. Doesn't affect Resonance and Notch filters. Uses Bilinear Z-transform (BT) or Matched Z-transform (MT) for pole/zero mapping.
+- **LRX** - Linkwitz-Riley based filters. Doesn't affect Resonance and Notch filters. Uses Bilinear Z-transform (BT) or Matched Z-transform (MT) for pole/zero mapping.
+- **APO** - Digital biquad filters derived from canonical analog biquad prototypes digitalized through Bilinear transform. These are [textbook filters](https://shepazu.github.io/Audio-EQ-Cookbook/audio-eq-cookbook.html) implemented the same way as in [Equalizer APO](https://equalizerapo.com/). Direct design (DR) generates the digital filter coefficients directly in the digital domain, without any transforms.
 
 **Slope**  
-The slope of the filter characteristics.
+Slope of the filter curve.
 
 **Solo**  
-Makes the selected band the only one active.
+Makes the selected band the only active one.
 
 **Mute**  
 Mutes the selected band.
 
 **Frequency**  
-Center frequency of the selected band.
+Center frequency of the band.
 
 **Width**  
-Bandwidth calculated as `width = frequency / quality`.
+Bandwidth, calculated as `width = frequency / quality`.
 
 **Quality**  
-The quality factor of the filter used.
+Quality factor of the filter.
 
 ## References
 
