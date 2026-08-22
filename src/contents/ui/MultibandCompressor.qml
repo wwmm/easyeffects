@@ -87,7 +87,7 @@ Kirigami.ScrollablePage {
 
                 actions: [
                     Kirigami.Action {
-                        text: i18n("Mute") // qmllint disable
+                        text: i18n("&Mute") // qmllint disable
                         checkable: true
                         checked: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "Mute"]
                         onTriggered: {
@@ -96,7 +96,7 @@ Kirigami.ScrollablePage {
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Solo") // qmllint disable
+                        text: i18n("&Solo") // qmllint disable
                         checkable: true
                         checked: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "Solo"]
                         onTriggered: {
@@ -105,7 +105,7 @@ Kirigami.ScrollablePage {
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Bypass") // qmllint disable
+                        text: i18n("&Bypass") // qmllint disable
                         checkable: true
                         checked: !multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "CompressorEnable"]
                         onTriggered: {
@@ -980,7 +980,7 @@ Kirigami.ScrollablePage {
             actions: [
                 Kirigami.Action {
                     displayHint: Kirigami.DisplayHint.KeepVisible
-                    text: i18n("Show native window") // qmllint disable
+                    text: i18n("&Show native window") // qmllint disable
                     icon.name: "window-duplicate-symbolic"
                     enabled: DbMain.showNativePluginUi
                     checkable: true
@@ -993,7 +993,7 @@ Kirigami.ScrollablePage {
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Stereo split") // qmllint disable
+                    text: i18n("&Stereo split") // qmllint disable
                     icon.name: "view-split-left-right-symbolic"
                     checkable: true
                     checked: multibandCompressorPage.pluginDB.stereoSplit
@@ -1003,7 +1003,7 @@ Kirigami.ScrollablePage {
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Pre-Mix") // qmllint disable
+                    text: i18n("&Pre-Mix") // qmllint disable
                     icon.name: "channelmixer-symbolic"
                     onTriggered: {
                         preMixDialog.open();
@@ -1011,7 +1011,7 @@ Kirigami.ScrollablePage {
                 },
                 Kirigami.Action {
                     displayHint: Kirigami.DisplayHint.KeepVisible
-                    text: i18n("Reset") // qmllint disable
+                    text: i18n("&Reset") // qmllint disable
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {
                         multibandCompressorPage.pluginBackend.reset();

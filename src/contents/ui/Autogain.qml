@@ -247,14 +247,14 @@ Kirigami.ScrollablePage {
             flat: true
             actions: [
                 Kirigami.Action {
-                    text: i18n("Reset history") // qmllint disable
+                    text: i18n("&Reset history") // qmllint disable
                     icon.name: "edit-clear-history-symbolic"
                     onTriggered: {
                         autogainPage.pluginBackend.resetHistory();
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Force silence") // qmllint disable
+                    text: i18n("&Force silence") // qmllint disable
                     tooltip: i18n("Force silence when the level is below the silence threshold") // qmllint disable
                     icon.name: "audio-volume-muted-symbolic"
                     checkable: true
@@ -267,7 +267,7 @@ Kirigami.ScrollablePage {
                 },
                 Kirigami.Action {
                     displayHint: Kirigami.DisplayHint.KeepVisible
-                    text: i18n("Reset settings") // qmllint disable
+                    text: i18n("&Reset settings") // qmllint disable
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {
                         autogainPage.pluginBackend.reset();

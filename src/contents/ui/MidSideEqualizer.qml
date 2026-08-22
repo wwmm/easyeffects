@@ -330,7 +330,7 @@ Kirigami.ScrollablePage {
                 actions: [
                     Kirigami.Action {
                         displayHint: Kirigami.DisplayHint.KeepVisible
-                        text: i18n("Show native window") // qmllint disable
+                        text: i18n("&Show native window") // qmllint disable
                         icon.name: "window-duplicate-symbolic"
                         enabled: DbMain.showNativePluginUi
                         checkable: true
@@ -343,7 +343,7 @@ Kirigami.ScrollablePage {
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Split mid/side") // qmllint disable
+                        text: i18n("&Split mid/side") // qmllint disable
                         icon.name: "split-symbolic"
                         checkable: true
                         checked: midsideEqualizerPage.pluginDB.splitChannels
@@ -353,42 +353,42 @@ Kirigami.ScrollablePage {
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Flat response") // qmllint disable
+                        text: i18n("&Flat response") // qmllint disable
                         icon.name: "map-flat-symbolic"
                         onTriggered: {
                             midsideEqualizerPage.pluginBackend.flatResponse();
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Calculate frequencies") // qmllint disable
+                        text: i18n("&Calculate frequencies") // qmllint disable
                         icon.name: "folder-calculate-symbolic"
                         onTriggered: {
                             midsideEqualizerPage.pluginBackend.calculateFrequencies();
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Sort bands") // qmllint disable
+                        text: i18n("&Sort bands") // qmllint disable
                         icon.name: "sort_incr-symbolic"
                         onTriggered: {
                             midsideEqualizerPage.pluginBackend.sortBands();
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Import APO") // qmllint disable
+                        text: i18n("&Import APO") // qmllint disable
                         icon.name: "document-import-symbolic"
                         onTriggered: {
                             apoFileDialog.open();
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Import APO (GraphicEQ)") // qmllint disable
+                        text: i18n("&Import APO (GraphicEQ)") // qmllint disable
                         icon.name: "document-import-symbolic"
                         onTriggered: {
                             apoGraphicEqFileDialog.open();
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Export APO") // qmllint disable
+                        text: i18n("&Export APO") // qmllint disable
                         icon.name: "document-export-symbolic"
                         onTriggered: {
                             apoExportFileDialog.open();
@@ -396,7 +396,7 @@ Kirigami.ScrollablePage {
                     },
                     Kirigami.Action {
                         displayHint: Kirigami.DisplayHint.KeepVisible
-                        text: i18n("Reset") // qmllint disable
+                        text: i18n("&Reset") // qmllint disable
                         icon.name: "edit-reset-symbolic"
                         onTriggered: {
                             midsideEqualizerPage.pluginBackend.reset();

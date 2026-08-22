@@ -55,7 +55,7 @@ Controls.ItemDelegate {
         contentItem: ColumnLayout {
             Controls.Button {
                 Layout.alignment: Qt.AlignCenter
-                text: i18n("Mute") // qmllint disable
+                text: i18n("&Mute") // qmllint disable
                 checkable: true
                 checked: delegate.pluginDB["muteBand" + delegate.index]
                 onCheckedChanged: {
@@ -66,7 +66,7 @@ Controls.ItemDelegate {
 
             Controls.Button {
                 Layout.alignment: Qt.AlignCenter
-                text: i18n("Bypass") // qmllint disable
+                text: i18n("&Bypass") // qmllint disable
                 checkable: true
                 checked: delegate.pluginDB["bypassBand" + delegate.index]
                 onCheckedChanged: {

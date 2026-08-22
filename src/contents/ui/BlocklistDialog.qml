@@ -61,7 +61,7 @@ Kirigami.Dialog {
             }
             rightActions: [
                 Kirigami.Action {
-                    text: i18n("Add to excluded applications") // qmllint disable
+                    text: i18n("&Add to excluded applications") // qmllint disable
                     icon.name: "list-add-symbolic"
                     onTriggered: {
                         const name = newBlockedApp.text;
@@ -172,7 +172,7 @@ Kirigami.Dialog {
                             alignment: Qt.AlignRight
                             actions: [
                                 Kirigami.Action {
-                                    text: i18n("Remove this app") // qmllint disable
+                                    text: i18n("&Remove this app") // qmllint disable
                                     icon.name: "delete"
                                     displayHint: Kirigami.DisplayHint.AlwaysHide
                                     onTriggered: {
@@ -201,7 +201,7 @@ Kirigami.Dialog {
             Layout.margins: Kirigami.Units.smallSpacing
             actions: [
                 Kirigami.Action {
-                    text: i18n("Use media name") // qmllint disable
+                    text: i18n("&Use media name") // qmllint disable
                     tooltip: i18n("Also use a combination of node and media name when deciding if a stream should be blocked") // qmllint disable
                     icon.name: "applications-multimedia-symbolic"
                     displayHint: Kirigami.DisplayHint.KeepVisible
@@ -213,7 +213,7 @@ Kirigami.Dialog {
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Show excluded apps") // qmllint disable
+                    text: i18n("&Show excluded apps") // qmllint disable
                     tooltip: i18n("Show excluded applications in the list of players/recorders") // qmllint disable
                     icon.name: "applications-all-symbolic"
                     displayHint: Kirigami.DisplayHint.KeepVisible

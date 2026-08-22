@@ -125,7 +125,7 @@ Kirigami.Dialog {
                         standardButtons: Kirigami.Dialog.NoButton
                         customFooterActions: [
                             Kirigami.Action {
-                                text: i18n("Rename") // qmllint disable
+                                text: i18n("&Rename") // qmllint disable
                                 icon.name: "dialog-ok"
                                 onTriggered: {
                                     const newName = newNameTextField.text;
@@ -144,7 +144,7 @@ Kirigami.Dialog {
                                 }
                             },
                             Kirigami.Action {
-                                text: i18n("Cancel") // qmllint disable
+                                text: i18n("&Cancel") // qmllint disable
                                 icon.name: "dialog-cancel"
                                 onTriggered: {
                                     renameDialog.close();
@@ -183,7 +183,7 @@ Kirigami.Dialog {
                             alignment: Qt.AlignRight
                             actions: [
                                 Kirigami.Action {
-                                    text: i18n("Rename this impulse") // qmllint disable
+                                    text: i18n("&Rename this impulse") // qmllint disable
                                     icon.name: "edit-entry-symbolic"
                                     displayHint: Kirigami.DisplayHint.AlwaysHide
                                     onTriggered: {
@@ -191,7 +191,7 @@ Kirigami.Dialog {
                                     }
                                 },
                                 Kirigami.Action {
-                                    text: i18n("Delete this impulse") // qmllint disable
+                                    text: i18n("&Delete this impulse") // qmllint disable
                                     icon.name: "delete"
                                     displayHint: Kirigami.DisplayHint.AlwaysHide
                                     onTriggered: {
@@ -230,7 +230,7 @@ Kirigami.Dialog {
             actions: [
                 Kirigami.Action {
                     displayHint: Kirigami.DisplayHint.KeepVisible
-                    text: i18n("Import impulse") // qmllint disable
+                    text: i18n("&Import impulse") // qmllint disable
                     icon.name: "document-import-symbolic"
                     onTriggered: {
                         fileDialog.open();

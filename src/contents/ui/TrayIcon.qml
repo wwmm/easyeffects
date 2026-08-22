@@ -152,7 +152,7 @@ SystemTrayIcon {
         }
 
         MenuItem {
-            text: i18n("Input Presets") // qmllint disable
+            text: i18n("&Input Presets") // qmllint disable
             icon.name: "user-bookmarks-symbolic"
             onTriggered: {
                 mainWindow.show();
@@ -167,7 +167,7 @@ SystemTrayIcon {
         }
 
         MenuItem {
-            text: i18n("Output Presets") // qmllint disable
+            text: i18n("&Output Presets") // qmllint disable
             icon.name: "user-bookmarks-symbolic"
             onTriggered: {
                 mainWindow.show();
@@ -198,7 +198,7 @@ SystemTrayIcon {
         MenuSeparator {}
 
         MenuItem {
-            text: i18n("Active") // qmllint disable
+            text: i18n("&Active") // qmllint disable
             checkable: true
             checked: !DbMain.bypass
             onTriggered: {
@@ -209,7 +209,7 @@ SystemTrayIcon {
         MenuSeparator {}
 
         MenuItem {
-            text: i18n("Shortcuts") // qmllint disable
+            text: i18n("&Shortcuts") // qmllint disable
             icon.name: "input-keyboard-symbolic"
             onTriggered: {
                 mainWindow.show();
@@ -218,7 +218,7 @@ SystemTrayIcon {
         }
 
         MenuItem {
-            text: i18n("Manual") // qmllint disable
+            text: i18n("&Manual") // qmllint disable
             icon.name: "help-contents-symbolic"
             onTriggered: {
                 Qt.openUrlExternally("https://wwmm.github.io/easyeffects/");
@@ -228,7 +228,7 @@ SystemTrayIcon {
         MenuSeparator {}
 
         MenuItem {
-            text: i18n("Quit") // qmllint disable
+            text: i18n("&Quit") // qmllint disable
             icon.name: "application-exit-symbolic"
             onTriggered: Qt.quit()
         }

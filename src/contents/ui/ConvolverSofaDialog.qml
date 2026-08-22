@@ -171,7 +171,7 @@ Kirigami.Dialog {
 
     customFooterActions: Kirigami.Action {
         enabled: pluginBackend?.kernelIsSofa ?? false
-        text: i18n("Apply") // qmllint disable
+        text: i18n("&Apply") // qmllint disable
         icon.name: "dialog-ok-apply-symbolic"
         onTriggered: {
             sofaDialog.pluginBackend.applySofaOrientation();

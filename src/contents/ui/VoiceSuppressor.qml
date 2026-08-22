@@ -171,7 +171,7 @@ Kirigami.ScrollablePage {
             flat: true
             actions: [
                 Kirigami.Action {
-                    text: i18n("Inverted mode") // qmllint disable
+                    text: i18n("&Inverted mode") // qmllint disable
                     icon.name: "image-invert-symbolic"
                     checkable: true
                     checked: voiceSuppressorPage.pluginDB.invertedMode
@@ -182,7 +182,7 @@ Kirigami.ScrollablePage {
                 },
                 Kirigami.Action {
                     displayHint: Kirigami.DisplayHint.KeepVisible
-                    text: i18n("Reset") // qmllint disable
+                    text: i18n("&Reset") // qmllint disable
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {
                         voiceSuppressorPage.pluginBackend.reset();

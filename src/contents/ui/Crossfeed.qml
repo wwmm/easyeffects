@@ -164,7 +164,7 @@ Kirigami.ScrollablePage {
             flat: true
             actions: [
                 Kirigami.Action {
-                    text: i18n("Presets") // qmllint disable
+                    text: i18n("&Presets") // qmllint disable
                     icon.name: "user-bookmarks-symbolic"
                     onTriggered: {
                         presetsDialog.open();
@@ -172,7 +172,7 @@ Kirigami.ScrollablePage {
                 },
                 Kirigami.Action {
                     displayHint: Kirigami.DisplayHint.KeepVisible
-                    text: i18n("Reset") // qmllint disable
+                    text: i18n("&Reset") // qmllint disable
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {
                         crossfeedPage.pluginBackend.reset();

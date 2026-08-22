@@ -327,7 +327,7 @@ Kirigami.ApplicationWindow {
                 overflowIconName: "overflow-menu-left"
                 actions: [
                     Kirigami.Action {
-                        text: i18n("PipeWire") // qmllint disable
+                        text: i18n("&PipeWire") // qmllint disable
                         icon.name: "draw-arrow-back-symbolic"
                         visible: DbMain.visiblePage === 2
                         onTriggered: {
@@ -335,7 +335,7 @@ Kirigami.ApplicationWindow {
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Effects") // qmllint disable
+                        text: i18n("&Effects") // qmllint disable
                         tooltip: i18n("Turn effects on/off") // qmllint disable
                         icon.name: "system-shutdown-symbolic"
                         icon.color: checked === true ? Kirigami.Theme.positiveTextColor : Kirigami.Theme.negativeTextColor
@@ -369,7 +369,7 @@ Kirigami.ApplicationWindow {
                 }
 
                 Controls.ToolButton {
-                    text: i18n("Output") // qmllint disable
+                    text: i18n("&Output") // qmllint disable
                     icon.name: "audio-speakers-symbolic"
                     checkable: true
                     checked: DbMain.visiblePage === 0 && DbStreamOutputs.visiblePage === 1
@@ -384,7 +384,7 @@ Kirigami.ApplicationWindow {
                 }
 
                 Controls.ToolButton {
-                    text: i18n("Input") // qmllint disable
+                    text: i18n("&Input") // qmllint disable
                     icon.name: "audio-input-microphone-symbolic"
                     checkable: true
                     checked: DbMain.visiblePage === 1 && DbStreamInputs.visiblePage === 1
@@ -400,7 +400,7 @@ Kirigami.ApplicationWindow {
 
                 Controls.ToolButton {
                     icon.name: "multimedia-player-symbolic"
-                    text: i18n("Players") // qmllint disable
+                    text: i18n("&Players") // qmllint disable
                     checkable: true
                     checked: DbMain.visiblePage === 0 && DbStreamOutputs.visiblePage === 0
                     display: segmentedButton.display
@@ -415,7 +415,7 @@ Kirigami.ApplicationWindow {
 
                 Controls.ToolButton {
                     icon.name: "media-record-symbolic"
-                    text: i18n("Recorders") // qmllint disable
+                    text: i18n("&Recorders") // qmllint disable
                     checkable: true
                     checked: DbMain.visiblePage === 1 && DbStreamInputs.visiblePage === 0
                     display: segmentedButton.display
@@ -434,7 +434,7 @@ Kirigami.ApplicationWindow {
                 overflowIconName: "application-menu-symbolic"
                 actions: [
                     Kirigami.Action {
-                        text: i18n("Preferences") // qmllint disable
+                        text: i18n("&Preferences") // qmllint disable
                         icon.name: "gtk-preferences-symbolic"
                         displayHint: Kirigami.DisplayHint.AlwaysHide
                         onTriggered: {
@@ -446,7 +446,7 @@ Kirigami.ApplicationWindow {
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Shortcuts") // qmllint disable
+                        text: i18n("&Shortcuts") // qmllint disable
                         icon.name: "input-keyboard-symbolic"
                         displayHint: Kirigami.DisplayHint.AlwaysHide
                         onTriggered: {
@@ -454,7 +454,7 @@ Kirigami.ApplicationWindow {
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("PipeWire") // qmllint disable
+                        text: i18n("&PipeWire") // qmllint disable
                         icon.name: "network-server-symbolic"
                         displayHint: Kirigami.DisplayHint.AlwaysHide
                         onTriggered: {
@@ -462,7 +462,7 @@ Kirigami.ApplicationWindow {
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Manual") // qmllint disable
+                        text: i18n("&Manual") // qmllint disable
                         icon.name: "help-contents-symbolic"
                         displayHint: Kirigami.DisplayHint.AlwaysHide
                         onTriggered: {
@@ -474,7 +474,7 @@ Kirigami.ApplicationWindow {
                         displayHint: Kirigami.DisplayHint.AlwaysHide
                     },
                     Kirigami.Action {
-                        text: i18n("Reset") // qmllint disable
+                        text: i18n("&Reset") // qmllint disable
                         icon.name: "edit-reset-symbolic"
                         displayHint: Kirigami.DisplayHint.AlwaysHide
                         onTriggered: {
@@ -486,7 +486,7 @@ Kirigami.ApplicationWindow {
                         displayHint: Kirigami.DisplayHint.AlwaysHide
                     },
                     Kirigami.Action {
-                        text: i18n("About Easy Effects") // qmllint disable
+                        text: i18n("&About Easy Effects") // qmllint disable
                         icon.name: applicationId + "-symbolic"
                         displayHint: Kirigami.DisplayHint.AlwaysHide
                         onTriggered: {
@@ -494,7 +494,7 @@ Kirigami.ApplicationWindow {
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Quit") // qmllint disable
+                        text: i18n("&Quit") // qmllint disable
                         icon.name: "application-exit-symbolic"
                         displayHint: Kirigami.DisplayHint.AlwaysHide
                         onTriggered: {

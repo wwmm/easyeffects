@@ -282,14 +282,14 @@ Kirigami.ScrollablePage {
             flat: true
             actions: [
                 Kirigami.Action {
-                    text: i18n("Reset history") // qmllint disable
+                    text: i18n("&Reset history") // qmllint disable
                     icon.name: "edit-clear-history-symbolic"
                     onTriggered: {
                         pitchPage.pluginBackend.resetHistory();
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Quick seek") // qmllint disable
+                    text: i18n("&Quick seek") // qmllint disable
                     icon.name: "media-seek-forward-symbolic"
                     checkable: true
                     checked: pitchPage.pluginDB.quickSeek
@@ -299,7 +299,7 @@ Kirigami.ScrollablePage {
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Anti-aliasing") // qmllint disable
+                    text: i18n("&Anti-aliasing") // qmllint disable
                     icon.name: "filter-symbolic"
                     checkable: true
                     checked: pitchPage.pluginDB.antiAlias
@@ -310,7 +310,7 @@ Kirigami.ScrollablePage {
                 },
                 Kirigami.Action {
                     displayHint: Kirigami.DisplayHint.KeepVisible
-                    text: i18n("Reset settings") // qmllint disable
+                    text: i18n("&Reset settings") // qmllint disable
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {
                         pitchPage.pluginBackend.reset();

@@ -169,7 +169,7 @@ Kirigami.ScrollablePage {
             flat: true
             actions: [
                 Kirigami.Action {
-                    text: i18n("Oversampling") // qmllint disable
+                    text: i18n("&Oversampling") // qmllint disable
                     icon.name: "waveform-symbolic"
                     checkable: true
                     checked: crystalizerPage.pluginDB.oversampling
@@ -179,7 +179,7 @@ Kirigami.ScrollablePage {
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Adaptive intensity") // qmllint disable
+                    text: i18n("&Adaptive intensity") // qmllint disable
                     icon.name: "adjustlevels-symbolic"
                     checkable: true
                     checked: crystalizerPage.pluginDB.adaptiveIntensity
@@ -189,7 +189,7 @@ Kirigami.ScrollablePage {
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Fixed quantum") // qmllint disable
+                    text: i18n("&Fixed quantum") // qmllint disable
                     icon.name: crystalizerPage.pluginDB.useFixedQuantum ? "object-locked-symbolic" : "unlock-symbolic"
                     checkable: true
                     checked: crystalizerPage.pluginDB.useFixedQuantum
@@ -200,7 +200,7 @@ Kirigami.ScrollablePage {
                 },
                 Kirigami.Action {
                     displayHint: Kirigami.DisplayHint.KeepVisible
-                    text: i18n("Reset") // qmllint disable
+                    text: i18n("&Reset") // qmllint disable
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {
                         crystalizerPage.pluginBackend.reset();
