@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-08-21 20:14-0300\n"
-"PO-Revision-Date: 2026-08-05 07:02+0000\n"
+"PO-Revision-Date: 2026-08-22 12:52+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Weblate 2026.8.1.dev0\n"
+"X-Generator: Weblate 2026.9.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -1964,81 +1964,69 @@ msgid "Added a new effect to the pipeline: %1"
 msgstr "Добавлен новый эффект в канал обработки: %1"
 
 #: src/contents/ui/MidSideEqualizer.qml:69
-#, fuzzy
 msgid "Failed to import the Mid-Side Equalizer APO preset file."
-msgstr "Не удалось импортировать файл предустановки эквалайзера APO."
+msgstr "Не удалось импортировать файл предустановок Mid-Side Equalizer APO."
 
 #: src/contents/ui/MidSideEqualizer.qml:74
-#, fuzzy
 msgid "Imported the Mid-Side Equalizer APO preset file."
-msgstr "Импортирован файл предустановки эквалайзера APO."
+msgstr "Импортирован файл предустановок Mid-Side Equalizer APO."
 
 #: src/contents/ui/MidSideEqualizer.qml:76
-#, fuzzy
 msgid "Imported the Mid-Side Equalizer APO preset file into the mid channel."
-msgstr "Импортирован файл предустановки эквалайзера APO в правый канал."
+msgstr "Импортирован файл предустановок Mid-Side Equalizer APO в средний канал."
 
 #: src/contents/ui/MidSideEqualizer.qml:78
-#, fuzzy
 msgid "Imported the Mid-Side Equalizer APO preset file into the side channel."
-msgstr "Импортирован файл предустановки эквалайзера APO в левый канал."
+msgstr "Импортирован файл предустановок Mid-Side Equalizer APO в боковой канал."
 
 #: src/contents/ui/MidSideEqualizer.qml:109
-#, fuzzy
 msgid ""
 "Failed to export the current Mid-Side Equalizer settings to an external APO "
 "preset file."
 msgstr ""
-"Не удалось экспортировать текущие настройки эквалайзера во внешний файл "
-"предустановок APO."
+"Не удалось экспортировать текущие настройки Mid-Side Equalizer во внешний "
+"файл предустановок APO."
 
 #: src/contents/ui/MidSideEqualizer.qml:114
-#, fuzzy
 msgid ""
 "Exported the current Mid-Side Equalizer settings to an external APO preset "
 "file."
 msgstr ""
-"Экспортированы текущие настройки эквалайзера во внешний файл предустановок "
-"APO."
+"Экспортированы текущие настройки Mid-Side Equalizer во внешний файл "
+"предустановок APO."
 
 #: src/contents/ui/MidSideEqualizer.qml:116
-#, fuzzy
 msgid ""
 "Exported the current Mid-Side Equalizer settings of the mid channel to an "
 "external APO preset file."
 msgstr ""
-"Экспортированы текущие настройки эквалайзера правого канала во внешний файл "
-"предустановок APO."
+"Экспортированы текущие настройки Mid-Side Equalizer среднего канала во "
+"внешний файл предустановок APO."
 
 #: src/contents/ui/MidSideEqualizer.qml:118
-#, fuzzy
 msgid ""
 "Exported the current Mid-Side Equalizer settings of the side channel to an "
 "external APO preset file."
 msgstr ""
-"Экспортированы текущие настройки эквалайзера левого канала во внешний файл "
-"предустановок APO."
+"Экспортированы текущие настройки Mid-Side Equalizer бокового канала во "
+"внешний файл предустановок APO."
 
 #: src/contents/ui/MidSideEqualizer.qml:198
-#, fuzzy
 msgid "Pitch mid"
-msgstr "Высота тона"
+msgstr "Высота тона среднего"
 
 # #, fuzzy
 #: src/contents/ui/MidSideEqualizer.qml:215
-#, fuzzy
 msgid "Pitch side"
-msgstr "Высота тона левого"
+msgstr "Высота тона бокового"
 
 #: src/contents/ui/MidSideEqualizer.qml:244
-#, fuzzy
 msgid "Mid"
-msgstr "Смешанный"
+msgstr "Средний"
 
 #: src/contents/ui/MidSideEqualizer.qml:346
-#, fuzzy
 msgid "Split mid/side"
-msgstr "Режим раздела"
+msgstr "Разделение среднего/бокового"
 
 #: src/contents/ui/MultibandCompressor.qml:127
 msgid "Compression mode"
@@ -3430,9 +3418,8 @@ msgid "Equalizer"
 msgstr "Эквалайзер"
 
 #: src/tags_plugin_name.cpp:61
-#, fuzzy
 msgid "Mid-Side Equalizer"
-msgstr "Эквалайзер"
+msgstr "Эквалайзер среднего/бокового"
 
 #: src/tags_plugin_name.cpp:62
 msgid "Exciter"
