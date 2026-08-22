@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-08-21 20:14-0300\n"
-"PO-Revision-Date: 2026-08-09 21:51+0000\n"
+"PO-Revision-Date: 2026-08-22 15:59+0000\n"
 "Last-Translator: Fjuro <fjuro@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
 "cs/>\n"
@@ -1924,80 +1924,68 @@ msgid "Added a new effect to the pipeline: %1"
 msgstr "Přidán nový efekt do pipeline: %1"
 
 #: src/contents/ui/MidSideEqualizer.qml:69
-#, fuzzy
 msgid "Failed to import the Mid-Side Equalizer APO preset file."
-msgstr "Nepodařilo se importovat soubor předvoleb Equalizer APO."
+msgstr "Nepodařilo se importovat soubor předvoleb Mid-Side Equalizer APO."
 
 #: src/contents/ui/MidSideEqualizer.qml:74
-#, fuzzy
 msgid "Imported the Mid-Side Equalizer APO preset file."
-msgstr "Importován soubor předvoleb Equalizer APO."
+msgstr "Importován soubor předvoleb Mid-Side Equalizer APO."
 
 #: src/contents/ui/MidSideEqualizer.qml:76
-#, fuzzy
 msgid "Imported the Mid-Side Equalizer APO preset file into the mid channel."
-msgstr "Importován soubor předvoleb Equalizer APO do pravého kanálu."
+msgstr "Importován soubor předvoleb Mid-Side Equalizer APO do pravého kanálu."
 
 #: src/contents/ui/MidSideEqualizer.qml:78
-#, fuzzy
 msgid "Imported the Mid-Side Equalizer APO preset file into the side channel."
-msgstr "Importován soubor předvoleb Equalizer APO do levého kanálu."
+msgstr "Importován soubor předvoleb Mid-Side Equalizer APO do levého kanálu."
 
 #: src/contents/ui/MidSideEqualizer.qml:109
-#, fuzzy
 msgid ""
 "Failed to export the current Mid-Side Equalizer settings to an external APO "
 "preset file."
 msgstr ""
-"Nepodařilo se exportovat aktuální nastavení ekvalizéru do externího souboru "
-"předvoleb APO."
+"Nepodařilo se exportovat aktuální nastavení Mid-Side ekvalizéru do externího "
+"souboru předvoleb APO."
 
 #: src/contents/ui/MidSideEqualizer.qml:114
-#, fuzzy
 msgid ""
 "Exported the current Mid-Side Equalizer settings to an external APO preset "
 "file."
 msgstr ""
-"Aktuální nastavení ekvalizéru byla exportována do externího souboru "
+"Aktuální nastavení Mid-Side ekvalizéru byla exportována do externího souboru "
 "předvoleb APO."
 
 #: src/contents/ui/MidSideEqualizer.qml:116
-#, fuzzy
 msgid ""
 "Exported the current Mid-Side Equalizer settings of the mid channel to an "
 "external APO preset file."
 msgstr ""
-"Aktuální nastavení pravého kanálu v ekvalizéru byla exportována do externího "
-"souboru předvoleb APO."
+"Aktuální nastavení pravého kanálu v Mid-Side ekvalizéru byla exportována do "
+"externího souboru předvoleb APO."
 
 #: src/contents/ui/MidSideEqualizer.qml:118
-#, fuzzy
 msgid ""
 "Exported the current Mid-Side Equalizer settings of the side channel to an "
 "external APO preset file."
 msgstr ""
-"Aktuální nastavení levého kanálu v ekvalizéru byla exportována do externího "
-"souboru předvoleb APO."
+"Aktuální nastavení levého kanálu v Mid-Side ekvalizéru byla exportována do "
+"externího souboru předvoleb APO."
 
 #: src/contents/ui/MidSideEqualizer.qml:198
-#, fuzzy
 msgid "Pitch mid"
-msgstr "Výška tónu"
+msgstr "Střední výška tónu"
 
 #: src/contents/ui/MidSideEqualizer.qml:215
-#, fuzzy
 msgid "Pitch side"
-msgstr "Levý pitch"
+msgstr "Výška tónu na straně"
 
 #: src/contents/ui/MidSideEqualizer.qml:244
-#, fuzzy
 msgid "Mid"
-msgstr "Smíšené"
+msgstr "Střed"
 
 #: src/contents/ui/MidSideEqualizer.qml:346
-#, fuzzy
 msgid "Split mid/side"
-msgstr "Rozdělit"
+msgstr "Rozdělit střed/stranu"
 
 #: src/contents/ui/MultibandCompressor.qml:127
 msgid "Compression mode"
@@ -3379,9 +3367,8 @@ msgid "Equalizer"
 msgstr "Ekvalizér"
 
 #: src/tags_plugin_name.cpp:61
-#, fuzzy
 msgid "Mid-Side Equalizer"
-msgstr "Ekvalizér"
+msgstr "Mid-Side ekvalizér"
 
 #: src/tags_plugin_name.cpp:62
 msgid "Exciter"
