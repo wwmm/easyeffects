@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-08-21 20:14-0300\n"
-"PO-Revision-Date: 2026-08-15 14:51+0000\n"
+"PO-Revision-Date: 2026-08-22 12:52+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -602,14 +602,14 @@ msgstr "Source"
 #: src/contents/ui/Gate.qml:297 src/contents/ui/MultibandCompressor.qml:449
 #: src/contents/ui/MultibandGate.qml:422
 msgid "Middle"
-msgstr "Centrale"
+msgstr "Central"
 
 #: src/contents/ui/Compressor.qml:319 src/contents/ui/Expander.qml:279
 #: src/contents/ui/Gate.qml:297 src/contents/ui/MidSideEqualizer.qml:244
 #: src/contents/ui/MultibandCompressor.qml:449
 #: src/contents/ui/MultibandGate.qml:422
 msgid "Side"
-msgstr "Latérale"
+msgstr "Latéral (side)"
 
 #: src/contents/ui/Compressor.qml:319 src/contents/ui/Convolver.qml:301
 #: src/contents/ui/Delay.qml:59 src/contents/ui/Equalizer.qml:244
@@ -665,13 +665,13 @@ msgstr "Droite/Gauche"
 #: src/contents/ui/Gate.qml:312 src/contents/ui/MultibandCompressor.qml:461
 #: src/contents/ui/MultibandGate.qml:434
 msgid "Mid/Side"
-msgstr "Milieu/Côté"
+msgstr "Mid/Side"
 
 #: src/contents/ui/Compressor.qml:334 src/contents/ui/Expander.qml:294
 #: src/contents/ui/Gate.qml:312 src/contents/ui/MultibandCompressor.qml:461
 #: src/contents/ui/MultibandGate.qml:434
 msgid "Side/Mid"
-msgstr "Côté/Milieu"
+msgstr "Side/Mid"
 
 #: src/contents/ui/Compressor.qml:358 src/contents/ui/Expander.qml:314
 #: src/contents/ui/Gate.qml:333 src/contents/ui/Limiter.qml:250
@@ -1934,84 +1934,73 @@ msgid "Added a new effect to the pipeline: %1"
 msgstr "Ajout d'un nouvel effet au pipeline : %1"
 
 #: src/contents/ui/MidSideEqualizer.qml:69
-#, fuzzy
 msgid "Failed to import the Mid-Side Equalizer APO preset file."
-msgstr "Échec de l'importation du fichier de préréglage APO de l'Égaliseur."
+msgstr ""
+"Échec de l'importation du fichier de préréglage APO de l'Égaliseur Mid-Side."
 
 #: src/contents/ui/MidSideEqualizer.qml:74
-#, fuzzy
 msgid "Imported the Mid-Side Equalizer APO preset file."
-msgstr "Importation du fichier de préréglage APO de l'Égaliseur."
+msgstr "Le fichier de préréglage APO de l'Égaliseur Mid-Side a été importé."
 
 #: src/contents/ui/MidSideEqualizer.qml:76
-#, fuzzy
 msgid "Imported the Mid-Side Equalizer APO preset file into the mid channel."
 msgstr ""
-"Le fichier de préréglage APO de l'Égaliseur a été importé dans le canal "
-"droit."
+"Le fichier de préréglage APO de l'Égaliseur Mid-Side a été importé dans le "
+"canal central."
 
 #: src/contents/ui/MidSideEqualizer.qml:78
-#, fuzzy
 msgid "Imported the Mid-Side Equalizer APO preset file into the side channel."
 msgstr ""
-"Le fichier de préréglage APO de l'Égaliseur a été importé dans le canal "
-"gauche."
+"Le fichier de préréglage APO de l'Égaliseur Mid-Side a été importé dans le "
+"canal latéral."
 
 #: src/contents/ui/MidSideEqualizer.qml:109
-#, fuzzy
 msgid ""
 "Failed to export the current Mid-Side Equalizer settings to an external APO "
 "preset file."
 msgstr ""
-"Échec de l'exportation des paramètres actuels de l'Égaliseur vers un fichier "
-"de préréglage APO externe."
+"Échec de l'exportation des paramètres actuels de l'Égaliseur Mid-Side vers "
+"un fichier de préréglage APO externe."
 
 #: src/contents/ui/MidSideEqualizer.qml:114
-#, fuzzy
 msgid ""
 "Exported the current Mid-Side Equalizer settings to an external APO preset "
 "file."
 msgstr ""
-"Exportation des paramètres actuels de l'Égaliseur vers un fichier de "
-"préréglages APO externe."
+"Exportation des paramètres actuels de l'Égaliseur Mid-Side vers un fichier "
+"de préréglages APO externe."
 
 #: src/contents/ui/MidSideEqualizer.qml:116
-#, fuzzy
 msgid ""
 "Exported the current Mid-Side Equalizer settings of the mid channel to an "
 "external APO preset file."
 msgstr ""
-"Les paramètres actuels du canal droit de l’Égaliseur ont été exportés vers "
-"un fichier de préréglage APO externe."
+"Exportation des paramètres actuels de l'Égaliseur Mid-Side du canal central "
+"vers un fichier de préréglage APO externe."
 
 #: src/contents/ui/MidSideEqualizer.qml:118
-#, fuzzy
 msgid ""
 "Exported the current Mid-Side Equalizer settings of the side channel to an "
 "external APO preset file."
 msgstr ""
-"Les paramètres actuels du canal gauche de l’Égaliseur ont été exportés vers "
-"un fichier de préréglage APO externe."
+"Exportation des paramètres actuels de l'Égaliseur Mid-Side du canal latéral "
+"vers un fichier de préréglage APO externe."
 
 #: src/contents/ui/MidSideEqualizer.qml:198
-#, fuzzy
 msgid "Pitch mid"
-msgstr "Hauteur"
+msgstr "Hauteur centrale (mid)"
 
 #: src/contents/ui/MidSideEqualizer.qml:215
-#, fuzzy
 msgid "Pitch side"
-msgstr "Hauteur gauche"
+msgstr "Hauteur latérale (side)"
 
 #: src/contents/ui/MidSideEqualizer.qml:244
-#, fuzzy
 msgid "Mid"
-msgstr "Intermédiaire"
+msgstr "Central (mid)"
 
 #: src/contents/ui/MidSideEqualizer.qml:346
-#, fuzzy
 msgid "Split mid/side"
-msgstr "Mode de division"
+msgstr "Séparation mid/side"
 
 #: src/contents/ui/MultibandCompressor.qml:127
 msgid "Compression mode"
@@ -3175,11 +3164,11 @@ msgstr "GD > GD (Stéréo par défaut)"
 
 #: src/contents/ui/StereoTools.qml:127
 msgid "LR > MS (Stereo to Mid-Side)"
-msgstr "GD > M (Stéréo vers Milieu)"
+msgstr "GD > MS (Stéréo vers Mid-Side)"
 
 #: src/contents/ui/StereoTools.qml:127
 msgid "MS > LR (Mid-Side to Stereo)"
-msgstr "M > GD (Milieu vers Stéréo)"
+msgstr "MS > GD (Mid-Side vers Stéréo)"
 
 #: src/contents/ui/StereoTools.qml:127
 msgid "LR > LL (Mono left channel)"
@@ -3412,9 +3401,8 @@ msgid "Equalizer"
 msgstr "Égaliseur"
 
 #: src/tags_plugin_name.cpp:61
-#, fuzzy
 msgid "Mid-Side Equalizer"
-msgstr "Égaliseur"
+msgstr "Égaliseur Mid-Side"
 
 #: src/tags_plugin_name.cpp:62
 msgid "Exciter"
