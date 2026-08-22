@@ -415,7 +415,7 @@ Kirigami.Page {
                     Layout.alignment: Qt.AlignCenter
 
                     Controls.Button {
-                        text: i18n("Add effect") // qmllint disable
+                        text: i18n("&Add effect") // qmllint disable
                         display: DbMain.collapsePluginsList === true ? Controls.Button.IconOnly : Controls.Button.TextBesideIcon
                         icon.name: "list-add"
                         onClicked: {
@@ -429,7 +429,7 @@ Kirigami.Page {
                     }
 
                     Controls.Button {
-                        text: i18n("Close") // qmllint disable
+                        text: i18n("&Close") // qmllint disable
                         display: DbMain.collapsePluginsList === true ? Controls.Button.IconOnly : Controls.Button.TextBesideIcon
                         icon.name: DbMain.collapsePluginsList === true ? "sidebar-collapse-right-symbolic" : "sidebar-collapse-symbolic"
                         Layout.fillWidth: DbMain.collapsePluginsList === true
@@ -657,7 +657,7 @@ Kirigami.Page {
                 overflowIconName: "im-ban-kick-user-symbolic"
                 actions: [
                     Kirigami.Action {
-                        text: i18n("Presets") // qmllint disable
+                        text: i18n("&Presets") // qmllint disable
                         icon.name: "user-bookmarks-symbolic"
                         displayHint: Kirigami.DisplayHint.KeepVisible
                         visible: DbMain.visiblePage !== 2
@@ -670,7 +670,7 @@ Kirigami.Page {
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Excluded apps") // qmllint disable
+                        text: i18n("&Excluded apps") // qmllint disable
                         icon.name: "im-ban-kick-user-symbolic"
                         displayHint: Kirigami.DisplayHint.KeepVisible
                         visible: pageStreamsEffects.streamDB.visiblePage === 0
@@ -683,7 +683,7 @@ Kirigami.Page {
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Input monitoring") // qmllint disable
+                        text: i18n("&Input monitoring") // qmllint disable
                         icon.name: "audio-input-microphone-symbolic"
                         displayHint: Kirigami.DisplayHint.KeepVisible
                         visible: pageStreamsEffects.pageType === 1
@@ -696,7 +696,7 @@ Kirigami.Page {
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Share audio") // qmllint disable
+                        text: i18n("&Share audio") // qmllint disable
                         tooltip: i18n("Send the processed desktop audio to the virtual source") // qmllint disable
                         icon.name: "emblem-shared-symbolic"
                         displayHint: Kirigami.DisplayHint.KeepVisible

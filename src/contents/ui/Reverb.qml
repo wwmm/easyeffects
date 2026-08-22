@@ -229,7 +229,7 @@ Kirigami.ScrollablePage {
         actions: [
             Kirigami.Action {
                 icon.name: "user-bookmarks-symbolic"
-                text: i18n("Ambience") // qmllint disable
+                text: i18n("&Ambience") // qmllint disable
                 onTriggered: {
                     reverbPage.pluginDB.decayTime = 1.10354;
                     reverbPage.pluginDB.hfDamp = 2182.58;
@@ -244,7 +244,7 @@ Kirigami.ScrollablePage {
             },
             Kirigami.Action {
                 icon.name: "user-bookmarks-symbolic"
-                text: i18n("Empty walls") // qmllint disable
+                text: i18n("&Empty walls") // qmllint disable
                 onTriggered: {
                     reverbPage.pluginDB.decayTime = 0.505687;
                     reverbPage.pluginDB.hfDamp = 3971.64;
@@ -259,7 +259,7 @@ Kirigami.ScrollablePage {
             },
             Kirigami.Action {
                 icon.name: "user-bookmarks-symbolic"
-                text: i18n("Room") // qmllint disable
+                text: i18n("&Room") // qmllint disable
                 onTriggered: {
                     reverbPage.pluginDB.decayTime = 0.445945;
                     reverbPage.pluginDB.hfDamp = 5508.46;
@@ -274,7 +274,7 @@ Kirigami.ScrollablePage {
             },
             Kirigami.Action {
                 icon.name: "user-bookmarks-symbolic"
-                text: i18n("Large empty hall") // qmllint disable
+                text: i18n("&Large empty hall") // qmllint disable
                 onTriggered: {
                     reverbPage.pluginBackend.reset();
                     reverbPage.pluginDB.decayTime = 2.00689;
@@ -284,7 +284,7 @@ Kirigami.ScrollablePage {
             },
             Kirigami.Action {
                 icon.name: "user-bookmarks-symbolic"
-                text: i18n("Disco") // qmllint disable
+                text: i18n("&Disco") // qmllint disable
                 onTriggered: {
                     reverbPage.pluginBackend.reset();
                     reverbPage.pluginDB.decayTime = 1;
@@ -294,7 +294,7 @@ Kirigami.ScrollablePage {
             },
             Kirigami.Action {
                 icon.name: "user-bookmarks-symbolic"
-                text: i18n("Large occupied hall") // qmllint disable
+                text: i18n("&Large occupied hall") // qmllint disable
                 onTriggered: {
                     reverbPage.pluginBackend.reset();
                     reverbPage.pluginDB.decayTime = 1;
@@ -332,7 +332,7 @@ Kirigami.ScrollablePage {
             flat: true
             actions: [
                 Kirigami.Action {
-                    text: i18n("Presets") // qmllint disable
+                    text: i18n("&Presets") // qmllint disable
                     icon.name: "user-bookmarks-symbolic"
                     onTriggered: {
                         presetsDialog.open();
@@ -340,7 +340,7 @@ Kirigami.ScrollablePage {
                 },
                 Kirigami.Action {
                     displayHint: Kirigami.DisplayHint.KeepVisible
-                    text: i18n("Show native window") // qmllint disable
+                    text: i18n("&Show native window") // qmllint disable
                     icon.name: "window-duplicate-symbolic"
                     enabled: DbMain.showNativePluginUi
                     checkable: true
@@ -354,7 +354,7 @@ Kirigami.ScrollablePage {
                 },
                 Kirigami.Action {
                     displayHint: Kirigami.DisplayHint.KeepVisible
-                    text: i18n("Reset") // qmllint disable
+                    text: i18n("&Reset") // qmllint disable
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {
                         reverbPage.pluginBackend.reset();

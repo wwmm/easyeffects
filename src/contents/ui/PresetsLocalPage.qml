@@ -96,7 +96,7 @@ ColumnLayout {
             }
             rightActions: [
                 Kirigami.Action {
-                    text: i18n("Import preset file") // qmllint disable
+                    text: i18n("&Import preset file") // qmllint disable
                     icon.name: "document-import-symbolic"
                     onTriggered: {
                         newPresetName.text = "";
@@ -105,7 +105,7 @@ ColumnLayout {
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Create new preset") // qmllint disable
+                    text: i18n("&Create new preset") // qmllint disable
                     icon.name: "list-add-symbolic"
                     onTriggered: {
                         // remove the final preset extension if specified
@@ -244,7 +244,7 @@ ColumnLayout {
                     standardButtons: Kirigami.Dialog.NoButton
                     customFooterActions: [
                         Kirigami.Action {
-                            text: i18n("Rename") // qmllint disable
+                            text: i18n("&Rename") // qmllint disable
                             icon.name: "dialog-ok"
                             onTriggered: {
                                 // remove the final preset extension if specified
@@ -264,7 +264,7 @@ ColumnLayout {
                             }
                         },
                         Kirigami.Action {
-                            text: i18n("Cancel") // qmllint disable
+                            text: i18n("&Cancel") // qmllint disable
                             icon.name: "dialog-cancel"
                             onTriggered: {
                                 renameDialog.close();
@@ -303,7 +303,7 @@ ColumnLayout {
                         alignment: Qt.AlignRight
                         actions: [
                             Kirigami.Action {
-                                text: i18n("Load this preset") // qmllint disable
+                                text: i18n("&Load this preset") // qmllint disable
                                 icon.name: "document-open-symbolic"
                                 displayHint: Kirigami.DisplayHint.AlwaysHide
                                 onTriggered: {
@@ -311,7 +311,7 @@ ColumnLayout {
                                 }
                             },
                             Kirigami.Action {
-                                text: i18n("Save settings to this preset") // qmllint disable
+                                text: i18n("&Save settings to this preset") // qmllint disable
                                 icon.name: "document-save-symbolic"
                                 displayHint: Kirigami.DisplayHint.AlwaysHide
                                 onTriggered: {
@@ -319,7 +319,7 @@ ColumnLayout {
                                 }
                             },
                             Kirigami.Action {
-                                text: i18n("Rename this preset") // qmllint disable
+                                text: i18n("&Rename this preset") // qmllint disable
                                 icon.name: "edit-entry-symbolic"
                                 displayHint: Kirigami.DisplayHint.AlwaysHide
                                 onTriggered: {
@@ -327,7 +327,7 @@ ColumnLayout {
                                 }
                             },
                             Kirigami.Action {
-                                text: i18n("Delete this preset") // qmllint disable
+                                text: i18n("&Delete this preset") // qmllint disable
                                 icon.name: "delete"
                                 displayHint: Kirigami.DisplayHint.AlwaysHide
                                 onTriggered: {

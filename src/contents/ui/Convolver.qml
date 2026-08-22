@@ -193,7 +193,7 @@ Kirigami.ScrollablePage {
         }
 
         customFooterActions: Kirigami.Action {
-            text: i18n("Combine") // qmllint disable
+            text: i18n("&Combine") // qmllint disable
             icon.name: "path-combine-symbolic"
             onTriggered: {
                 progressBar.visible = true;
@@ -221,14 +221,14 @@ Kirigami.ScrollablePage {
 
             actions: [
                 Kirigami.Action {
-                    text: i18n("Impulses")
+                    text: i18n("&Impulses")
                     icon.name: "waveform-symbolic"
                     onTriggered: {
                         impulseDialog.open();
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Combine")
+                    text: i18n("&Combine")
                     icon.name: "path-combine-symbolic"
                     onTriggered: {
                         combineDialog.open();
@@ -237,7 +237,7 @@ Kirigami.ScrollablePage {
                 Kirigami.Action {
                     id: spectrumAction
 
-                    text: i18n("Spectrum") // qmllint disable
+                    text: i18n("&Spectrum") // qmllint disable
                     icon.name: "folder-chart-symbolic"
                     checkable: true
                     onTriggered: {
@@ -269,7 +269,7 @@ Kirigami.ScrollablePage {
                 Kirigami.Action {
                     id: spectrumLogScale
 
-                    text: i18n("Log scale")
+                    text: i18n("&Log scale")
                     visible: spectrumAction.checked
                     checkable: true
                     icon.name: "transform-scale-symbolic"
@@ -534,7 +534,7 @@ Kirigami.ScrollablePage {
             flat: true
             actions: [
                 Kirigami.Action {
-                    text: i18n("Autogain") // qmllint disable
+                    text: i18n("&Autogain") // qmllint disable
                     icon.name: "audio-volume-medium-symbolic"
                     checkable: true
                     checked: convolverPage.pluginDB.autogain
@@ -552,7 +552,7 @@ Kirigami.ScrollablePage {
                 },
                 Kirigami.Action {
                     displayHint: Kirigami.DisplayHint.KeepVisible
-                    text: i18n("Reset") // qmllint disable
+                    text: i18n("&Reset") // qmllint disable
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {
                         convolverPage.pluginBackend.reset();

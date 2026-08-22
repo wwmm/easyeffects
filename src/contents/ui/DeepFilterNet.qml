@@ -211,7 +211,7 @@ Kirigami.ScrollablePage {
             flat: true
             actions: [
                 Kirigami.Action {
-                    text: i18n("Reset history") // qmllint disable
+                    text: i18n("&Reset history") // qmllint disable
                     icon.name: "edit-clear-history-symbolic"
                     onTriggered: {
                         deepfilternetPage.pluginBackend.resetHistory();
@@ -219,7 +219,7 @@ Kirigami.ScrollablePage {
                 },
                 Kirigami.Action {
                     displayHint: Kirigami.DisplayHint.KeepVisible
-                    text: i18n("Reset settings") // qmllint disable
+                    text: i18n("&Reset settings") // qmllint disable
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {
                         deepfilternetPage.pluginBackend.reset();

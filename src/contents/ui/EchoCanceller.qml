@@ -172,7 +172,7 @@ Kirigami.ScrollablePage {
             flat: true
             actions: [
                 Kirigami.Action {
-                    text: i18n("Automatic gain control") // qmllint disable
+                    text: i18n("&Automatic gain control") // qmllint disable
                     icon.name: "adjustlevels-symbolic"
                     checkable: true
                     checked: echoCancellerPage.pluginDB.enableAGC
@@ -183,7 +183,7 @@ Kirigami.ScrollablePage {
                 },
                 Kirigami.Action {
                     displayHint: Kirigami.DisplayHint.KeepVisible
-                    text: i18n("Reset") // qmllint disable
+                    text: i18n("&Reset") // qmllint disable
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {
                         echoCancellerPage.pluginBackend.reset();

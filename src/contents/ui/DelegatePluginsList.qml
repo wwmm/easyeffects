@@ -116,7 +116,7 @@ Item {
                 Layout.preferredWidth: !DbMain.reducePluginsListControls ? maximumContentWidth + Kirigami.Units.smallSpacing : -1
                 actions: [
                     Kirigami.Action {
-                        text: i18n("Toggle this effect") // qmllint disable
+                        text: i18n("&Toggle this effect") // qmllint disable
                         icon.name: "system-shutdown-symbolic"
                         displayHint: DbMain.reducePluginsListControls ? Kirigami.DisplayHint.AlwaysHide : (Kirigami.DisplayHint.IconOnly | Kirigami.DisplayHint.KeepVisible)
                         checkable: true
@@ -124,7 +124,7 @@ Item {
                         onTriggered: pluginRowItem.toggledEffect(checked)
                     },
                     Kirigami.Action {
-                        text: i18n("Remove this effect") // qmllint disable
+                        text: i18n("&Remove this effect") // qmllint disable
                         icon.name: "delete"
                         displayHint: DbMain.reducePluginsListControls ? Kirigami.DisplayHint.AlwaysHide : (Kirigami.DisplayHint.IconOnly | Kirigami.DisplayHint.KeepVisible)
                         onTriggered: pluginRowItem.removedEffect()

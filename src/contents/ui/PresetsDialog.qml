@@ -96,7 +96,7 @@ Kirigami.Dialog {
 
             actions: [
                 Kirigami.Action {
-                    text: i18n("Local")
+                    text: i18n("&Local")
                     icon.name: "system-file-manager-symbolic"
                     checkable: true
                     checked: DbMain.visiblePresetSheetPage === 0
@@ -104,7 +104,7 @@ Kirigami.Dialog {
                     onTriggered: DbMain.visiblePresetSheetPage = 0
                 },
                 Kirigami.Action {
-                    text: i18n("Community")
+                    text: i18n("&Community")
                     icon.name: "system-users-symbolic"
                     checkable: true
                     checked: DbMain.visiblePresetSheetPage === 1
@@ -112,7 +112,7 @@ Kirigami.Dialog {
                     onTriggered: DbMain.visiblePresetSheetPage = 1
                 },
                 Kirigami.Action {
-                    text: i18n("Autoload")
+                    text: i18n("&Autoload")
                     icon.name: "task-recurring-symbolic"
                     checkable: true
                     checked: DbMain.visiblePresetSheetPage === 2
@@ -171,7 +171,7 @@ Kirigami.Dialog {
                     Layout.margins: Kirigami.Units.smallSpacing
                     Layout.fillWidth: true
                     verticalPadding: 0
-                    text: i18n("Fallback Preset") // qmllint disable
+                    text: i18n("&Fallback Preset") // qmllint disable
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
                     currentIndex: {
                         const fallbackPreset = DbMain.visiblePage === 0 ? DbMain.outputAutoloadingFallbackPreset : DbMain.inputAutoloadingFallbackPreset;

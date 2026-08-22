@@ -131,7 +131,7 @@ ColumnLayout {
                         alignment: Qt.AlignRight
                         actions: [
                             Kirigami.Action {
-                                text: i18n("Load this preset") // qmllint disable
+                                text: i18n("&Load this preset") // qmllint disable
                                 icon.name: "document-open-symbolic"
                                 displayHint: Kirigami.DisplayHint.AlwaysHide
                                 onTriggered: {
@@ -145,7 +145,7 @@ ColumnLayout {
                                 enabled: false
                             },
                             Kirigami.Action {
-                                text: i18n("Copy to local presets") // qmllint disable
+                                text: i18n("&Copy to local presets") // qmllint disable
                                 icon.name: "document-import-symbolic"
                                 displayHint: Kirigami.DisplayHint.AlwaysHide
                                 onTriggered: {

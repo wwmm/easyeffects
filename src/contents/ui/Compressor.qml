@@ -888,7 +888,7 @@ Kirigami.ScrollablePage {
             actions: [
                 Kirigami.Action {
                     displayHint: Kirigami.DisplayHint.KeepVisible
-                    text: i18n("Show native window") // qmllint disable
+                    text: i18n("&Show native window") // qmllint disable
                     icon.name: "window-duplicate-symbolic"
                     enabled: DbMain.showNativePluginUi
                     checkable: true
@@ -901,7 +901,7 @@ Kirigami.ScrollablePage {
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Listen") // qmllint disable
+                    text: i18n("&Listen") // qmllint disable
                     icon.name: "audio-headset-symbolic"
                     checkable: true
                     checked: compressorPage.pluginDB.sidechainListen
@@ -911,7 +911,7 @@ Kirigami.ScrollablePage {
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Stereo split") // qmllint disable
+                    text: i18n("&Stereo split") // qmllint disable
                     icon.name: "view-split-left-right-symbolic"
                     checkable: true
                     checked: compressorPage.pluginDB.stereoSplit
@@ -922,7 +922,7 @@ Kirigami.ScrollablePage {
                 },
                 Kirigami.Action {
                     displayHint: Kirigami.DisplayHint.KeepVisible
-                    text: i18n("Reset") // qmllint disable
+                    text: i18n("&Reset") // qmllint disable
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {
                         compressorPage.pluginBackend.reset();

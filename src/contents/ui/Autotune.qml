@@ -422,7 +422,7 @@ Kirigami.ScrollablePage {
             flat: true
             actions: [
                 Kirigami.Action {
-                    text: i18n("Fast correction") // qmllint disable
+                    text: i18n("&Fast correction") // qmllint disable
                     icon.name: "player-time-symbolic"
                     checkable: true
                     checked: autotunePage.pluginDB.fastMode
@@ -433,7 +433,7 @@ Kirigami.ScrollablePage {
                 },
                 Kirigami.Action {
                     displayHint: Kirigami.DisplayHint.KeepVisible
-                    text: i18n("Reset settings") // qmllint disable
+                    text: i18n("&Reset settings") // qmllint disable
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {
                         autotunePage.pluginBackend.reset();
