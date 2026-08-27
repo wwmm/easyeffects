@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-08-21 20:14-0300\n"
-"PO-Revision-Date: 2026-08-11 20:51+0000\n"
+"PO-Revision-Date: 2026-08-27 13:51+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hans/>\n"
@@ -1912,72 +1912,60 @@ msgid "Added a new effect to the pipeline: %1"
 msgstr "向管线添加新音效：%1"
 
 #: src/contents/ui/MidSideEqualizer.qml:69
-#, fuzzy
 msgid "Failed to import the Mid-Side Equalizer APO preset file."
-msgstr "无法导入 APO 预设文件。"
+msgstr "无法导入中—侧均衡器 APO 预设文件。"
 
 #: src/contents/ui/MidSideEqualizer.qml:74
-#, fuzzy
 msgid "Imported the Mid-Side Equalizer APO preset file."
-msgstr "已导入 APO 预设文件。"
+msgstr "已导入中—侧均衡器 APO 预设文件。"
 
 #: src/contents/ui/MidSideEqualizer.qml:76
-#, fuzzy
 msgid "Imported the Mid-Side Equalizer APO preset file into the mid channel."
-msgstr "已向右声道导入 APO 预设文件。"
+msgstr "已向中道导入中—侧均衡器 APO 预设文件。"
 
 #: src/contents/ui/MidSideEqualizer.qml:78
-#, fuzzy
 msgid "Imported the Mid-Side Equalizer APO preset file into the side channel."
-msgstr "已向左声道导入 APO 预设文件。"
+msgstr "已向侧道导入中—侧均衡器 APO 预设文件。"
 
 #: src/contents/ui/MidSideEqualizer.qml:109
-#, fuzzy
 msgid ""
 "Failed to export the current Mid-Side Equalizer settings to an external APO "
 "preset file."
-msgstr "无法将当前均衡器设置导出为 APO 预设文件。"
+msgstr "无法将当前中—侧均衡器设置导出为 APO 预设文件。"
 
 #: src/contents/ui/MidSideEqualizer.qml:114
-#, fuzzy
 msgid ""
 "Exported the current Mid-Side Equalizer settings to an external APO preset "
 "file."
-msgstr "已将当前均衡器设置导出为 APO 预设文件。"
+msgstr "已将当前中—侧均衡器设置导出为 APO 预设文件。"
 
 #: src/contents/ui/MidSideEqualizer.qml:116
-#, fuzzy
 msgid ""
 "Exported the current Mid-Side Equalizer settings of the mid channel to an "
 "external APO preset file."
-msgstr "已将当前均衡器右声道设置导出为 APO 预设文件。"
+msgstr "已将当前中—侧均衡器中道设置导出为 APO 预设文件。"
 
 #: src/contents/ui/MidSideEqualizer.qml:118
-#, fuzzy
 msgid ""
 "Exported the current Mid-Side Equalizer settings of the side channel to an "
 "external APO preset file."
-msgstr "已将当前均衡器左声道设置导出为 APO 预设文件。"
+msgstr "已将当前中—侧均衡器侧道设置导出为 APO 预设文件。"
 
 #: src/contents/ui/MidSideEqualizer.qml:198
-#, fuzzy
 msgid "Pitch mid"
-msgstr "音高"
+msgstr "中道音高"
 
 #: src/contents/ui/MidSideEqualizer.qml:215
-#, fuzzy
 msgid "Pitch side"
-msgstr "左声道音高"
+msgstr "侧道音高"
 
 #: src/contents/ui/MidSideEqualizer.qml:244
-#, fuzzy
 msgid "Mid"
-msgstr "混合 (Mixed)"
+msgstr "中信号"
 
 #: src/contents/ui/MidSideEqualizer.qml:346
-#, fuzzy
 msgid "Split mid/side"
-msgstr "分割模式"
+msgstr "分离中/侧信号"
 
 #: src/contents/ui/MultibandCompressor.qml:127
 msgid "Compression mode"
@@ -3338,9 +3326,8 @@ msgid "Equalizer"
 msgstr "均衡器"
 
 #: src/tags_plugin_name.cpp:61
-#, fuzzy
 msgid "Mid-Side Equalizer"
-msgstr "均衡器"
+msgstr "中—侧均衡器"
 
 #: src/tags_plugin_name.cpp:62
 msgid "Exciter"
