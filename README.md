@@ -34,6 +34,12 @@
   </a>
 </p>
 
+## Security warning
+
+I have nothing to do with the website https://easyeffects.org/. It is probably a scam. Be careful! See #5238
+
+## History and window preview
+
 This application was formerly known as **PulseEffects**, but it was renamed to **Easy Effects** after it started to use GTK4 and
 GStreamer usage was replaced by native PipeWire filters. And eventually the whole application was ported from GTK4 to
 a combination of Qt, QML and KDE/Kirigami frameworks.
