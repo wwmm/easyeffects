@@ -36,7 +36,7 @@
 
 ## Security warning
 
-I have nothing to do with the website https://easyeffects.org/. It is probably a scam. Be careful! See #5238
+I have nothing to do with the website https://easyeffects.org/. It is probably a scam. Be careful! See https://github.com/wwmm/easyeffects/discussions/5238
 
 ## History and window preview
 
