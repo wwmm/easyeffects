@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-08-21 20:14-0300\n"
-"PO-Revision-Date: 2026-06-10 03:01+0000\n"
+"PO-Revision-Date: 2026-08-29 15:39+0000\n"
 "Last-Translator: Arif Budiman <arifpedia@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/easyeffects/"
 "main/id/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2026.6\n"
+"X-Generator: Weblate 2026.9.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -1509,27 +1509,27 @@ msgstr "Mode equalizer"
 #: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
 #: src/contents/ui/MidSideEqualizer.qml:156
 msgid "x2"
-msgstr ""
+msgstr "x2"
 
 #: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
 #: src/contents/ui/MidSideEqualizer.qml:156
 msgid "x3"
-msgstr ""
+msgstr "x3"
 
 #: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
 #: src/contents/ui/MidSideEqualizer.qml:156
 msgid "x4"
-msgstr ""
+msgstr "x4"
 
 #: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
 #: src/contents/ui/MidSideEqualizer.qml:156
 msgid "x6"
-msgstr ""
+msgstr "x6"
 
 #: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
 #: src/contents/ui/MidSideEqualizer.qml:156
 msgid "x8"
-msgstr ""
+msgstr "x8"
 
 #: src/contents/ui/Equalizer.qml:165 src/contents/ui/MidSideEqualizer.qml:165
 msgid "Bands"
@@ -1919,75 +1919,67 @@ msgstr "Tambahkan %1"
 
 #: src/contents/ui/MenuAddPlugins.qml:165
 msgid "Added a new effect to the pipeline: %1"
-msgstr "Menambahkan efek baru ke pipeline: %1"
+msgstr "Efek baru ditambahkan ke pipeline: %1"
 
 #: src/contents/ui/MidSideEqualizer.qml:69
-#, fuzzy
 msgid "Failed to import the Mid-Side Equalizer APO preset file."
-msgstr "Gagal mengimpor file preset APO Equalizer."
+msgstr "Gagal mengimpor file preset APO Mid-Side Equalizer."
 
 #: src/contents/ui/MidSideEqualizer.qml:74
-#, fuzzy
 msgid "Imported the Mid-Side Equalizer APO preset file."
-msgstr "Mengimpor file preset APO Equalizer."
+msgstr "File preset APO Mid-Side Equalizer berhasil diimpor."
 
 #: src/contents/ui/MidSideEqualizer.qml:76
-#, fuzzy
 msgid "Imported the Mid-Side Equalizer APO preset file into the mid channel."
-msgstr "Mengimpor file preset APO Equalizer ke saluran kanan."
+msgstr "File preset APO Mid-Side Equalizer berhasil diimpor ke saluran mid."
 
 #: src/contents/ui/MidSideEqualizer.qml:78
-#, fuzzy
 msgid "Imported the Mid-Side Equalizer APO preset file into the side channel."
-msgstr "Mengimpor file preset APO Equalizer ke saluran kiri."
+msgstr "File preset APO Mid-Side Equalizer berhasil diimpor ke saluran side."
 
 #: src/contents/ui/MidSideEqualizer.qml:109
-#, fuzzy
 msgid ""
 "Failed to export the current Mid-Side Equalizer settings to an external APO "
 "preset file."
 msgstr ""
-"Gagal mengekspor pengaturan Equalizer saat ini ke file preset APO eksternal."
+"Gagal mengekspor pengaturan Mid-Side Equalizer saat ini ke file preset APO "
+"eksternal."
 
 #: src/contents/ui/MidSideEqualizer.qml:114
-#, fuzzy
 msgid ""
 "Exported the current Mid-Side Equalizer settings to an external APO preset "
 "file."
-msgstr "Mengekspor pengaturan Equalizer saat ini ke file preset APO eksternal."
+msgstr ""
+"Pengaturan Mid-Side Equalizer saat ini berhasil diekspor ke file preset APO "
+"eksternal."
 
 #: src/contents/ui/MidSideEqualizer.qml:116
-#, fuzzy
 msgid ""
 "Exported the current Mid-Side Equalizer settings of the mid channel to an "
 "external APO preset file."
 msgstr ""
-"Mengekspor pengaturan Equalizer saluran kanan saat ini ke file preset APO "
-"eksternal."
+"Pengaturan Mid-Side Equalizer saat ini dari saluran mid berhasil diekspor ke "
+"file preset APO eksternal."
 
 #: src/contents/ui/MidSideEqualizer.qml:118
-#, fuzzy
 msgid ""
 "Exported the current Mid-Side Equalizer settings of the side channel to an "
 "external APO preset file."
 msgstr ""
-"Mengekspor pengaturan Equalizer saluran kiri saat ini ke file preset APO "
-"eksternal."
+"Pengaturan Mid-Side Equalizer saat ini dari saluran side berhasil diekspor "
+"ke file preset APO eksternal."
 
 #: src/contents/ui/MidSideEqualizer.qml:198
-#, fuzzy
 msgid "Pitch mid"
-msgstr "Nada"
+msgstr "Pitch mid"
 
 #: src/contents/ui/MidSideEqualizer.qml:215
-#, fuzzy
 msgid "Pitch side"
-msgstr "Nada kiri"
+msgstr "Pitch side"
 
 #: src/contents/ui/MidSideEqualizer.qml:244
-#, fuzzy
 msgid "Mid"
-msgstr "Min"
+msgstr "Mid"
 
 #: src/contents/ui/MidSideEqualizer.qml:346
 #, fuzzy
@@ -2357,13 +2349,15 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:197
 msgid "Activate monitor channel volumes"
-msgstr ""
+msgstr "Aktifkan volume saluran monitor"
 
 #: src/contents/ui/PreferencesSheet.qml:198
 msgid ""
 "Activate if controlling Easy Effects virtual devices volume and mute state "
 "by third party applications is required."
 msgstr ""
+"Aktifkan jika diperlukan untuk mengontrol volume dan status mute perangkat "
+"virtual Easy Effects oleh aplikasi pihak ketiga."
 
 #: src/contents/ui/PreferencesSheet.qml:210
 msgid "Ignore system notifications"
@@ -2405,11 +2399,11 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:260
 msgid "Reset Global Bypass on device change"
-msgstr ""
+msgstr "Reset Bypass Global saat perangkat berubah"
 
 #: src/contents/ui/PreferencesSheet.qml:261
 msgid "Automatically enable effects when the audio device changes."
-msgstr ""
+msgstr "Otomatis aktifkan efek saat perangkat audio berubah."
 
 #: src/contents/ui/PreferencesSheet.qml:273
 msgid "Enable the link delay"
@@ -3095,7 +3089,7 @@ msgstr "Alihkan pemantauan mikrofon"
 
 #: src/contents/ui/ShortcutsSheet.qml:439 src/global_shortcuts.hpp:89
 msgid "Toggle audio sharing"
-msgstr ""
+msgstr "Alihkan berbagi audio"
 
 #: src/contents/ui/Speex.qml:64
 msgid "Denoise"
