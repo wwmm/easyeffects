@@ -1,23 +1,21 @@
-# This is Indonesia translate file for PE. We are need your help to completely translate this project. You can translate PuleEffect's help file to Indonesian to develop this project. If you any question about translating process, just send email that I have been desribed below. But if you want to support such as reporting any bugs, go ahead to github page @ https://github.com/wwmm/easyeffects/
-# Copyright (C) 2018
-# This file is distributed under the same license as the EasyEffects package.
-# Dika Muhamad A. <ardumpl_AT_gmail.com>, 2018.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: easyeffects\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-08-21 20:14-0300\n"
-"PO-Revision-Date: 2026-08-29 15:39+0000\n"
-"Last-Translator: Arif Budiman <arifpedia@gmail.com>\n"
-"Language-Team: Indonesian <https://hosted.weblate.org/projects/easyeffects/"
-"main/id/>\n"
-"Language: id_ID\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: et\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2026.9.dev0\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -25,105 +23,100 @@ msgid ""
 "Please allow \"Run in Background\" permission for Easy Effects in your "
 "system app settings."
 msgstr ""
-"Tidak dapat mengaktifkan opsi autostart karena akses latar belakang telah "
-"ditolak. Silakan berikan izin \"Jalankan di Latar Belakang\" untuk Easy "
-"Effects di pengaturan aplikasi sistem Anda."
 
 #: src/command_line_parser.cpp:44
 msgid "Quit Easy Effects. Useful when running in service mode."
-msgstr "Keluar dari Easy Effects. Berguna saat berjalan dalam mode layanan."
+msgstr ""
 
 #: src/command_line_parser.cpp:45
 msgid "Reset Easy Effects."
-msgstr "Atur ulang Easy Effects."
+msgstr ""
 
 #: src/command_line_parser.cpp:46
 msgid "Hide the window."
-msgstr "Sembunyikan jendela."
+msgstr ""
 
 #: src/command_line_parser.cpp:48
 msgid ""
 "Global bypass. 1 to enable, 2 to disable and 3 to get the current state."
 msgstr ""
-"Bypass global. 1 untuk mengaktifkan, 2 untuk menonaktifkan dan 3 untuk "
-"mendapatkan status saat ini."
 
 #: src/command_line_parser.cpp:49
 msgid "bypass-state"
-msgstr "status-bypass"
+msgstr ""
 
 #: src/command_line_parser.cpp:50
 msgid "Toggle the state of the global bypass."
-msgstr "Alihkan status bypass global."
+msgstr ""
 
 #: src/command_line_parser.cpp:51
 msgid "Load a preset. Example: easyeffects -l music"
-msgstr "Muat preset. Contoh: easyeffects -l musik"
+msgstr ""
 
 #: src/command_line_parser.cpp:51
 msgid "preset-name"
-msgstr "nama-preset"
+msgstr ""
 
 #: src/command_line_parser.cpp:52
 msgid "Show available presets."
-msgstr "Tampilkan preset yang tersedia."
+msgstr ""
 
 #: src/command_line_parser.cpp:53
 msgid "Get the last loaded input/output preset."
-msgstr "Dapatkan preset masukan/keluaran yang terakhir dimuat."
+msgstr ""
 
 #: src/command_line_parser.cpp:53
 msgid "preset-type"
-msgstr "jenis-preset"
+msgstr ""
 
 #: src/command_line_parser.cpp:54
 msgid "Get the last loaded input and output presets."
-msgstr "Dapatkan preset masukan dan keluaran yang terakhir dimuat."
+msgstr ""
 
 #: src/command_line_parser.cpp:55
 msgid "Deprecated. Use --service-mode instead."
-msgstr "Usang. Gunakan --service-mode sebagai gantinya."
+msgstr ""
 
 #: src/command_line_parser.cpp:56
 msgid "Start the application with service mode turned on."
-msgstr "Mulai aplikasi dengan mode layanan diaktifkan."
+msgstr ""
 
 #: src/command_line_parser.cpp:57
 msgid "Enable debug messages."
-msgstr "Aktifkan pesan debug."
+msgstr ""
 
 #: src/command_line_parser.cpp:127
 msgid "Must specify preset type: input/output."
-msgstr "Harus menentukan jenis preset: masukan/keluaran."
+msgstr ""
 
 #: src/command_line_parser.cpp:162
 msgid "Output presets"
-msgstr "Preset keluaran"
+msgstr ""
 
 #: src/command_line_parser.cpp:164
 msgid "No output presets."
-msgstr "Tidak ada preset keluaran."
+msgstr ""
 
 #: src/command_line_parser.cpp:175
 msgid "Input presets"
-msgstr "Preset masukan"
+msgstr ""
 
 #: src/command_line_parser.cpp:177
 msgid "No input presets."
-msgstr "Tidak ada preset masukan."
+msgstr ""
 
 #: src/command_line_parser.cpp:207
 msgid "Specified preset does not exist."
-msgstr "Preset yang ditentukan tidak ada."
+msgstr ""
 
 #: src/command_line_parser.cpp:227
 msgid "Provided an invalid bypass state."
-msgstr "Memberikan status bypass yang tidak valid."
+msgstr ""
 
 #: src/contents/ui/AboutPage.qml:24
 msgctxt "@action:button"
 msgid "About"
-msgstr "Tentang"
+msgstr ""
 
 #: src/contents/ui/Autogain.qml:69 src/contents/ui/BassEnhancer.qml:105
 #: src/contents/ui/BassLoudness.qml:59 src/contents/ui/Crossfeed.qml:74
@@ -134,73 +127,73 @@ msgstr "Tentang"
 #: src/contents/ui/Reverb.qml:59 src/contents/ui/Speex.qml:59
 #: src/contents/ui/VoiceSuppressor.qml:58
 msgid "Controls"
-msgstr "Kontrol"
+msgstr ""
 
 #: src/contents/ui/Autogain.qml:74
 msgid "Reference"
-msgstr "Referensi"
+msgstr ""
 
 #: src/contents/ui/Autogain.qml:79 src/contents/ui/Autogain.qml:148
 #: src/contents/ui/LevelMeter.qml:158
 msgid "Momentary"
-msgstr "Sesaat"
+msgstr ""
 
 #: src/contents/ui/Autogain.qml:79 src/contents/ui/Autogain.qml:158
 #: src/contents/ui/LevelMeter.qml:168
 msgid "Short-term"
-msgstr "Jangka pendek"
+msgstr ""
 
 #: src/contents/ui/Autogain.qml:79 src/contents/ui/Autogain.qml:168
 #: src/contents/ui/LevelMeter.qml:178
 msgid "Integrated"
-msgstr "Terintegrasi"
+msgstr ""
 
 #: src/contents/ui/Autogain.qml:79
 msgid "Geometric mean (MSI)"
-msgstr "Rata-rata geometrik (MSI)"
+msgstr ""
 
 #: src/contents/ui/Autogain.qml:79
 msgid "Geometric mean (MS)"
-msgstr "Rata-rata geometrik (MS)"
+msgstr ""
 
 #: src/contents/ui/Autogain.qml:79
 msgid "Geometric mean (MI)"
-msgstr "Rata-rata geometrik (MI)"
+msgstr ""
 
 #: src/contents/ui/Autogain.qml:79
 msgid "Geometric mean (SI)"
-msgstr "Rata-rata geometrik (SI)"
+msgstr ""
 
 #: src/contents/ui/Autogain.qml:88
 msgid "Target"
-msgstr "Target"
+msgstr ""
 
 #: src/contents/ui/Autogain.qml:104 src/contents/ui/PipeWirePage.qml:420
 msgid "Silence"
-msgstr "Senyap"
+msgstr ""
 
 #: src/contents/ui/Autogain.qml:120
 msgid "Maximum history"
-msgstr "Riwayat maksimum"
+msgstr ""
 
 #: src/contents/ui/Autogain.qml:143 src/contents/ui/Autogain.qml:198
 #: src/contents/ui/BassLoudness.qml:67 src/contents/ui/LevelMeter.qml:146
 #: src/tags_plugin_name.cpp:68
 msgid "Loudness"
-msgstr "Kenyaringan"
+msgstr ""
 
 #: src/contents/ui/Autogain.qml:178 src/contents/ui/LevelMeter.qml:188
 msgid "Relative"
-msgstr "Relatif"
+msgstr ""
 
 #: src/contents/ui/Autogain.qml:188 src/contents/ui/Crusher.qml:192
 #: src/contents/ui/LevelMeter.qml:198
 msgid "Range"
-msgstr "Rentang"
+msgstr ""
 
 #: src/contents/ui/Autogain.qml:208
 msgid "Output gain"
-msgstr "Penguatan keluaran"
+msgstr ""
 
 #: src/contents/ui/Autogain.qml:233 src/contents/ui/Autotune.qml:408
 #: src/contents/ui/BassEnhancer.qml:205 src/contents/ui/BassLoudness.qml:126
@@ -221,30 +214,30 @@ msgstr "Penguatan keluaran"
 #: src/contents/ui/RNNoise.qml:300 src/contents/ui/RNNoise.qml:320
 #: src/contents/ui/Speex.qml:177 src/contents/ui/StereoTools.qml:392
 msgid "Using %1"
-msgstr "Menggunakan %1"
+msgstr ""
 
 #: src/contents/ui/Autogain.qml:250 src/contents/ui/DeepFilterNet.qml:214
 #: src/contents/ui/LevelMeter.qml:232 src/contents/ui/Pitch.qml:285
 msgid "Reset history"
-msgstr "Atur ulang riwayat"
+msgstr ""
 
 #: src/contents/ui/Autogain.qml:257
 msgid "Force silence"
-msgstr "Paksa senyap"
+msgstr ""
 
 #: src/contents/ui/Autogain.qml:258
 msgid "Force silence when the level is below the silence threshold"
-msgstr "Paksa senyap saat level berada di bawah ambang batas senyap"
+msgstr ""
 
 #: src/contents/ui/Autogain.qml:270 src/contents/ui/Autotune.qml:436
 #: src/contents/ui/DeepFilterNet.qml:222 src/contents/ui/LevelMeter.qml:240
 #: src/contents/ui/Pitch.qml:313
 msgid "Reset settings"
-msgstr "Atur ulang pengaturan"
+msgstr ""
 
 #: src/contents/ui/Autotune.qml:92 src/contents/ui/Autotune.qml:120
 msgid "Tuning"
-msgstr "Penyetelan"
+msgstr ""
 
 #: src/contents/ui/Autotune.qml:107 src/contents/ui/Compressor.qml:79
 #: src/contents/ui/Compressor.qml:301 src/contents/ui/Crusher.qml:97
@@ -257,99 +250,99 @@ msgstr "Penyetelan"
 #: src/contents/ui/MultibandCompressor.qml:434
 #: src/contents/ui/MultibandGate.qml:407 src/contents/ui/StereoTools.qml:123
 msgid "Mode"
-msgstr "Mode"
+msgstr ""
 
 #: src/contents/ui/Autotune.qml:111
 msgid "Auto"
-msgstr "Otomatis"
+msgstr ""
 
 #: src/contents/ui/Autotune.qml:111 src/contents/ui/Main.qml:465
 #: src/contents/ui/TrayIcon.qml:221
 msgid "Manual"
-msgstr "Manual"
+msgstr ""
 
 #: src/contents/ui/Autotune.qml:137
 msgid "Correction"
-msgstr "Koreksi"
+msgstr ""
 
 #: src/contents/ui/Autotune.qml:153
 msgid "Bias"
-msgstr "Bias"
+msgstr ""
 
 #: src/contents/ui/Autotune.qml:169 src/contents/ui/Deesser.qml:171
 #: src/contents/ui/Filter.qml:137 src/contents/ui/Reverb.qml:126
 #: src/tags_plugin_name.cpp:64
 msgid "Filter"
-msgstr "Filter"
+msgstr ""
 
 #: src/contents/ui/Autotune.qml:186
 msgid "Offset"
-msgstr "Offset"
+msgstr ""
 
 #: src/contents/ui/Autotune.qml:205 src/contents/ui/Autotune.qml:244
 msgid "Scale"
-msgstr "Skala"
+msgstr ""
 
 #: src/contents/ui/Autotune.qml:218
 msgid "Root"
-msgstr "Nada Dasar"
+msgstr ""
 
 #: src/contents/ui/Autotune.qml:231
 msgid "Accidental"
-msgstr "Aksidental"
+msgstr ""
 
 #: src/contents/ui/Autotune.qml:248
 msgid "Major"
-msgstr "Mayor"
+msgstr ""
 
 #: src/contents/ui/Autotune.qml:248
 msgid "Minor"
-msgstr "Minor"
+msgstr ""
 
 #: src/contents/ui/Autotune.qml:377 src/contents/ui/Deesser.qml:276
 msgid "Level"
-msgstr "Level"
+msgstr ""
 
 #: src/contents/ui/Autotune.qml:388
 msgid "Pitch error"
-msgstr "Kesalahan nada"
+msgstr ""
 
 #: src/contents/ui/Autotune.qml:425
 msgid "Fast correction"
-msgstr "Koreksi cepat"
+msgstr ""
 
 #: src/contents/ui/BassEnhancer.qml:56 src/contents/ui/Exciter.qml:56
 msgid "Blend harmonics"
-msgstr "Campurkan harmonik"
+msgstr ""
 
 #: src/contents/ui/BassEnhancer.qml:65 src/contents/ui/Exciter.qml:65
 msgid "3rd"
-msgstr "ke-3"
+msgstr ""
 
 #: src/contents/ui/BassEnhancer.qml:87 src/contents/ui/Exciter.qml:87
 msgid "2nd"
-msgstr "ke-2"
+msgstr ""
 
 #: src/contents/ui/BassEnhancer.qml:110 src/contents/ui/Exciter.qml:114
 msgid "Amount"
-msgstr "Jumlah"
+msgstr ""
 
 #: src/contents/ui/BassEnhancer.qml:126 src/contents/ui/BassEnhancer.qml:186
 #: src/contents/ui/Exciter.qml:130 src/contents/ui/Exciter.qml:190
 msgid "Harmonics"
-msgstr "Harmonik"
+msgstr ""
 
 #: src/contents/ui/BassEnhancer.qml:141 src/contents/ui/Exciter.qml:145
 msgid "Scope"
-msgstr "Cakupan"
+msgstr ""
 
 #: src/contents/ui/BassEnhancer.qml:157
 msgid "Floor active"
-msgstr "Lantai aktif"
+msgstr ""
 
 #: src/contents/ui/BassEnhancer.qml:168
 msgid "Floor"
-msgstr "Lantai"
+msgstr ""
 
 #: src/contents/ui/BassEnhancer.qml:223 src/contents/ui/Compressor.qml:891
 #: src/contents/ui/Crusher.qml:254 src/contents/ui/Deesser.qml:337
@@ -362,13 +355,13 @@ msgstr "Lantai"
 #: src/contents/ui/MultibandGate.qml:956 src/contents/ui/Reverb.qml:343
 #: src/contents/ui/StereoTools.qml:410
 msgid "Show native window"
-msgstr "Tampilkan jendela asli"
+msgstr ""
 
 #: src/contents/ui/BassEnhancer.qml:236 src/contents/ui/Compressor.qml:904
 #: src/contents/ui/Deesser.qml:350 src/contents/ui/Exciter.qml:241
 #: src/contents/ui/Expander.qml:854 src/contents/ui/Gate.qml:983
 msgid "Listen"
-msgstr "Dengarkan"
+msgstr ""
 
 #: src/contents/ui/BassEnhancer.qml:247 src/contents/ui/BassLoudness.qml:144
 #: src/contents/ui/Compressor.qml:925 src/contents/ui/Convolver.qml:555
@@ -386,33 +379,33 @@ msgstr "Dengarkan"
 #: src/contents/ui/RNNoise.qml:345 src/contents/ui/Speex.qml:195
 #: src/contents/ui/StereoTools.qml:424 src/contents/ui/VoiceSuppressor.qml:185
 msgid "Reset"
-msgstr "Atur ulang"
+msgstr ""
 
 #: src/contents/ui/BassLoudness.qml:83 src/contents/ui/Compressor.qml:478
 #: src/contents/ui/EeInputOutputGain.qml:144 src/contents/ui/Expander.qml:438
 #: src/contents/ui/Gate.qml:453 src/contents/ui/Main.qml:372
 #: src/contents/ui/StereoTools.qml:268
 msgid "Output"
-msgstr "Keluaran"
+msgstr ""
 
 #: src/contents/ui/BassLoudness.qml:99 src/contents/ui/Compressor.qml:266
 #: src/contents/ui/Expander.qml:226 src/contents/ui/Gate.qml:244
 #: src/contents/ui/Limiter.qml:217 src/contents/ui/MultibandCompressor.qml:427
 #: src/contents/ui/MultibandGate.qml:400
 msgid "Link"
-msgstr "Tautan"
+msgstr ""
 
 #: src/contents/ui/BlocklistDialog.qml:32
 msgid "Excluded Applications"
-msgstr "Aplikasi yang Dikecualikan"
+msgstr ""
 
 #: src/contents/ui/BlocklistDialog.qml:48
 msgid "Application node name"
-msgstr "Nama node aplikasi"
+msgstr ""
 
 #: src/contents/ui/BlocklistDialog.qml:64
 msgid "Add to excluded applications"
-msgstr "Tambahkan ke aplikasi yang dikecualikan"
+msgstr ""
 
 #: src/contents/ui/BlocklistDialog.qml:116
 #: src/contents/ui/ConvolverImpulseDialog.qml:89
@@ -422,86 +415,84 @@ msgstr "Tambahkan ke aplikasi yang dikecualikan"
 #: src/contents/ui/PresetsCommunityPage.qml:104
 #: src/contents/ui/PresetsLocalPage.qml:193 src/contents/ui/RNNoise.qml:228
 msgid "Empty List"
-msgstr "Daftar Kosong"
+msgstr ""
 
 #: src/contents/ui/BlocklistDialog.qml:117
 msgid "No application excluded"
-msgstr "Tidak ada aplikasi yang dikecualikan"
+msgstr ""
 
 #: src/contents/ui/BlocklistDialog.qml:140
 msgid "Remove Application"
-msgstr "Hapus Aplikasi"
+msgstr ""
 
 #: src/contents/ui/BlocklistDialog.qml:141
 msgid "Are you sure you want to remove this application from the list?"
-msgstr "Apakah Anda yakin ingin menghapus aplikasi ini dari daftar?"
+msgstr ""
 
 #: src/contents/ui/BlocklistDialog.qml:175
 msgid "Remove this app"
-msgstr "Hapus aplikasi ini"
+msgstr ""
 
 #: src/contents/ui/BlocklistDialog.qml:204
 msgid "Use media name"
-msgstr "Gunakan nama media"
+msgstr ""
 
 #: src/contents/ui/BlocklistDialog.qml:205
 msgid ""
 "Also use a combination of node and media name when deciding if a stream "
 "should be blocked"
 msgstr ""
-"Juga gunakan kombinasi nama node dan media saat memutuskan apakah aliran "
-"harus diblokir"
 
 #: src/contents/ui/BlocklistDialog.qml:216
 msgid "Show excluded apps"
-msgstr "Tampilkan aplikasi yang dikecualikan"
+msgstr ""
 
 #: src/contents/ui/BlocklistDialog.qml:217
 msgid "Show excluded applications in the list of players/recorders"
-msgstr "Tampilkan aplikasi yang dikecualikan dalam daftar pemutar/perekam"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:67 src/tags_plugin_name.cpp:50
 msgid "Compressor"
-msgstr "Kompresor"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:83 src/contents/ui/Expander.qml:83
 #: src/contents/ui/MultibandCompressor.qml:131
 msgid "Downward"
-msgstr "Ke bawah"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:83 src/contents/ui/Expander.qml:83
 #: src/contents/ui/MultibandCompressor.qml:131
 msgid "Upward"
-msgstr "Ke atas"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:83
 #: src/contents/ui/MultibandCompressor.qml:131
 msgid "Boosting"
-msgstr "Penguatan"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:93
 #: src/contents/ui/MultibandCompressor.qml:140
 msgid "Boost threshold"
-msgstr "Ambang batas penguatan"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:113
 #: src/contents/ui/MultibandCompressor.qml:159
 msgid "Boost amount"
-msgstr "Jumlah penguatan"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:132 src/contents/ui/Deesser.qml:119
 #: src/contents/ui/Expander.qml:92 src/contents/ui/MultibandCompressor.qml:363
 msgid "Ratio"
-msgstr "Rasio"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:148 src/contents/ui/Expander.qml:108
 #: src/contents/ui/Limiter.qml:451 src/contents/ui/MultibandCompressor.qml:378
 msgid "Knee"
-msgstr "Lutut"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:169 src/contents/ui/Expander.qml:129
 msgid "Threshold and Time"
-msgstr "Ambang Batas dan Waktu"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:179 src/contents/ui/Expander.qml:139
 #: src/contents/ui/Gate.qml:83 src/contents/ui/Gate.qml:856
@@ -509,7 +500,7 @@ msgstr "Ambang Batas dan Waktu"
 #: src/contents/ui/MultibandCompressor.qml:260
 #: src/contents/ui/MultibandGate.qml:201
 msgid "Attack"
-msgstr "Serangan"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:212 src/contents/ui/Expander.qml:172
 #: src/contents/ui/Gate.qml:100 src/contents/ui/Gate.qml:865
@@ -517,7 +508,7 @@ msgstr "Serangan"
 #: src/contents/ui/Maximizer.qml:68 src/contents/ui/MultibandCompressor.qml:308
 #: src/contents/ui/MultibandGate.qml:216 src/contents/ui/RNNoise.qml:158
 msgid "Release"
-msgstr "Pelepasan"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:250 src/contents/ui/Compressor.qml:348
 #: src/contents/ui/Compressor.qml:683 src/contents/ui/Expander.qml:210
@@ -527,7 +518,7 @@ msgstr "Pelepasan"
 #: src/contents/ui/Limiter.qml:515 src/contents/ui/MultibandCompressor.qml:668
 #: src/contents/ui/MultibandGate.qml:641
 msgid "Sidechain"
-msgstr "Sidechain"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:262 src/contents/ui/EqualizerBandMenu.qml:47
 #: src/contents/ui/Expander.qml:222 src/contents/ui/Filter.qml:65
@@ -535,42 +526,42 @@ msgstr "Sidechain"
 #: src/contents/ui/MultibandCompressor.qml:423
 #: src/contents/ui/MultibandGate.qml:396
 msgid "Type"
-msgstr "Jenis"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:266
 msgid "Feed-forward"
-msgstr "Umpan-maju"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:266
 msgid "Feed-back"
-msgstr "Umpan-balik"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:266 src/contents/ui/Expander.qml:226
 #: src/contents/ui/Gate.qml:244 src/contents/ui/Limiter.qml:217
 #: src/contents/ui/MultibandCompressor.qml:427
 #: src/contents/ui/MultibandGate.qml:400
 msgid "External"
-msgstr "Eksternal"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:277 src/contents/ui/Expander.qml:237
 #: src/contents/ui/Gate.qml:255 src/contents/ui/Limiter.qml:227
 #: src/contents/ui/PageStreamsEffects.qml:489
 msgid "Input device"
-msgstr "Perangkat masukan"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:305 src/contents/ui/Deesser.qml:80
 #: src/contents/ui/Expander.qml:265 src/contents/ui/Gate.qml:283
 #: src/contents/ui/MultibandCompressor.qml:438
 #: src/contents/ui/MultibandGate.qml:411
 msgid "Peak"
-msgstr "Puncak"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:305 src/contents/ui/Deesser.qml:80
 #: src/contents/ui/Expander.qml:265 src/contents/ui/Gate.qml:283
 #: src/contents/ui/MultibandCompressor.qml:438
 #: src/contents/ui/MultibandGate.qml:411
 msgid "RMS"
-msgstr "RMS"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:305 src/contents/ui/Compressor.qml:426
 #: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Expander.qml:265
@@ -579,13 +570,13 @@ msgstr "RMS"
 #: src/contents/ui/MultibandCompressor.qml:438
 #: src/contents/ui/MultibandGate.qml:411
 msgid "Low-pass"
-msgstr "Lewat-rendah"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:305 src/contents/ui/Expander.qml:265
 #: src/contents/ui/Gate.qml:283 src/contents/ui/MultibandCompressor.qml:438
 #: src/contents/ui/MultibandGate.qml:411
 msgid "SMA"
-msgstr "SMA"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:315 src/contents/ui/Compressor.qml:330
 #: src/contents/ui/Expander.qml:275 src/contents/ui/Expander.qml:290
@@ -594,20 +585,20 @@ msgstr "SMA"
 #: src/contents/ui/MultibandCompressor.qml:457
 #: src/contents/ui/MultibandGate.qml:418 src/contents/ui/MultibandGate.qml:430
 msgid "Source"
-msgstr "Sumber"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:319 src/contents/ui/Expander.qml:279
 #: src/contents/ui/Gate.qml:297 src/contents/ui/MultibandCompressor.qml:449
 #: src/contents/ui/MultibandGate.qml:422
 msgid "Middle"
-msgstr "Tengah"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:319 src/contents/ui/Expander.qml:279
 #: src/contents/ui/Gate.qml:297 src/contents/ui/MidSideEqualizer.qml:244
 #: src/contents/ui/MultibandCompressor.qml:449
 #: src/contents/ui/MultibandGate.qml:422
 msgid "Side"
-msgstr "Sisi"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:319 src/contents/ui/Convolver.qml:301
 #: src/contents/ui/Delay.qml:59 src/contents/ui/Equalizer.qml:244
@@ -617,7 +608,7 @@ msgstr "Sisi"
 #: src/contents/ui/MultibandGate.qml:422 src/contents/ui/PipeWirePage.qml:346
 #: src/contents/ui/StereoTools.qml:204
 msgid "Left"
-msgstr "Kiri"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:319 src/contents/ui/Convolver.qml:319
 #: src/contents/ui/Delay.qml:212 src/contents/ui/Equalizer.qml:244
@@ -627,7 +618,7 @@ msgstr "Kiri"
 #: src/contents/ui/MultibandGate.qml:422 src/contents/ui/PipeWirePage.qml:357
 #: src/contents/ui/StereoTools.qml:231
 msgid "Right"
-msgstr "Kanan"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:319 src/contents/ui/Compressor.qml:334
 #: src/contents/ui/Expander.qml:279 src/contents/ui/Expander.qml:294
@@ -636,7 +627,7 @@ msgstr "Kanan"
 #: src/contents/ui/MultibandCompressor.qml:461
 #: src/contents/ui/MultibandGate.qml:422 src/contents/ui/MultibandGate.qml:434
 msgid "Min"
-msgstr "Min"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:319 src/contents/ui/Compressor.qml:334
 #: src/contents/ui/Expander.qml:279 src/contents/ui/Expander.qml:294
@@ -645,57 +636,57 @@ msgstr "Min"
 #: src/contents/ui/MultibandCompressor.qml:461
 #: src/contents/ui/MultibandGate.qml:422 src/contents/ui/MultibandGate.qml:434
 msgid "Max"
-msgstr "Maks"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:334 src/contents/ui/Expander.qml:294
 #: src/contents/ui/Gate.qml:312 src/contents/ui/MultibandCompressor.qml:461
 #: src/contents/ui/MultibandGate.qml:434
 msgid "Left/Right"
-msgstr "Kiri/Kanan"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:334 src/contents/ui/Expander.qml:294
 #: src/contents/ui/Gate.qml:312 src/contents/ui/MultibandCompressor.qml:461
 #: src/contents/ui/MultibandGate.qml:434
 msgid "Right/Left"
-msgstr "Kanan/Kiri"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:334 src/contents/ui/Expander.qml:294
 #: src/contents/ui/Gate.qml:312 src/contents/ui/MultibandCompressor.qml:461
 #: src/contents/ui/MultibandGate.qml:434
 msgid "Mid/Side"
-msgstr "Tengah/Sisi"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:334 src/contents/ui/Expander.qml:294
 #: src/contents/ui/Gate.qml:312 src/contents/ui/MultibandCompressor.qml:461
 #: src/contents/ui/MultibandGate.qml:434
 msgid "Side/Mid"
-msgstr "Sisi/Tengah"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:358 src/contents/ui/Expander.qml:314
 #: src/contents/ui/Gate.qml:333 src/contents/ui/Limiter.qml:250
 #: src/contents/ui/MultibandCompressor.qml:469
 #: src/contents/ui/MultibandGate.qml:442
 msgid "Preamp"
-msgstr "Prapenguat"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:376 src/contents/ui/Expander.qml:332
 #: src/contents/ui/Gate.qml:351 src/contents/ui/MultibandCompressor.qml:485
 #: src/contents/ui/MultibandGate.qml:458
 msgid "Reactivity"
-msgstr "Reaktivitas"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:394 src/contents/ui/Expander.qml:350
 #: src/contents/ui/Gate.qml:369 src/contents/ui/Limiter.qml:268
 #: src/contents/ui/MultibandCompressor.qml:500
 #: src/contents/ui/MultibandGate.qml:473
 msgid "Lookahead"
-msgstr "Pandang ke depan"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:412 src/contents/ui/EqualizerBandMenu.qml:51
 #: src/contents/ui/Expander.qml:368 src/contents/ui/Filter.qml:69
 #: src/contents/ui/Gate.qml:387
 msgid "High-pass"
-msgstr "Lewat-tinggi"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:416 src/contents/ui/Compressor.qml:430
 #: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Equalizer.qml:156
@@ -703,7 +694,7 @@ msgstr "Lewat-tinggi"
 #: src/contents/ui/Filter.qml:111 src/contents/ui/Gate.qml:391
 #: src/contents/ui/Gate.qml:405 src/contents/ui/MidSideEqualizer.qml:156
 msgid "Off"
-msgstr "Mati"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:484 src/contents/ui/Convolver.qml:475
 #: src/contents/ui/Delay.qml:176 src/contents/ui/Delay.qml:329
@@ -712,7 +703,7 @@ msgstr "Mati"
 #: src/contents/ui/MultibandGate.qml:597 src/contents/ui/Pitch.qml:123
 #: src/contents/ui/Reverb.qml:188 src/contents/ui/StereoTools.qml:345
 msgid "Dry"
-msgstr "Kering"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:503 src/contents/ui/Convolver.qml:493
 #: src/contents/ui/Delay.qml:194 src/contents/ui/Delay.qml:347
@@ -721,14 +712,14 @@ msgstr "Kering"
 #: src/contents/ui/MultibandGate.qml:615 src/contents/ui/Pitch.qml:142
 #: src/contents/ui/Reverb.qml:206 src/contents/ui/StereoTools.qml:363
 msgid "Wet"
-msgstr "Basah"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:522 src/contents/ui/Deesser.qml:135
 #: src/contents/ui/Expander.qml:482 src/contents/ui/Gate.qml:497
 #: src/contents/ui/MultibandCompressor.qml:395
 #: src/contents/ui/MultibandGate.qml:265
 msgid "Makeup"
-msgstr "Makeup"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:542 src/contents/ui/Expander.qml:498
 #: src/contents/ui/Gate.qml:517 src/contents/ui/Limiter.qml:289
@@ -736,43 +727,43 @@ msgstr "Makeup"
 #: src/contents/ui/MultibandCompressor.qml:1006
 #: src/contents/ui/MultibandGate.qml:979
 msgid "Pre-Mix"
-msgstr "Pra-Campuran"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:550 src/contents/ui/Expander.qml:506
 #: src/contents/ui/Gate.qml:527 src/contents/ui/Limiter.qml:302
 #: src/contents/ui/LspPreMixDialog.qml:39
 msgid "Input to sidechain"
-msgstr "Masukan ke sidechain"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:566 src/contents/ui/Expander.qml:522
 #: src/contents/ui/Gate.qml:543 src/contents/ui/Limiter.qml:318
 #: src/contents/ui/LspPreMixDialog.qml:55
 msgid "Input to link"
-msgstr "Masukan ke tautan"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:582 src/contents/ui/Expander.qml:538
 #: src/contents/ui/Gate.qml:559 src/contents/ui/Limiter.qml:334
 #: src/contents/ui/LspPreMixDialog.qml:71
 msgid "Sidechain to input"
-msgstr "Sidechain ke masukan"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:598 src/contents/ui/Expander.qml:554
 #: src/contents/ui/Gate.qml:575 src/contents/ui/Limiter.qml:350
 #: src/contents/ui/LspPreMixDialog.qml:87
 msgid "Sidechain to link"
-msgstr "Sidechain ke tautan"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:614 src/contents/ui/Expander.qml:570
 #: src/contents/ui/Gate.qml:591 src/contents/ui/Limiter.qml:366
 #: src/contents/ui/LspPreMixDialog.qml:103
 msgid "Link to sidechain"
-msgstr "Tautan ke sidechain"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:630 src/contents/ui/Expander.qml:586
 #: src/contents/ui/Gate.qml:607 src/contents/ui/Limiter.qml:382
 #: src/contents/ui/LspPreMixDialog.qml:119
 msgid "Link to input"
-msgstr "Tautan ke masukan"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:674 src/contents/ui/EqualizerBandMenu.qml:119
 #: src/contents/ui/Expander.qml:626 src/contents/ui/Filter.qml:173
@@ -780,282 +771,282 @@ msgstr "Tautan ke masukan"
 #: src/contents/ui/MultibandCompressor.qml:745
 #: src/contents/ui/MultibandGate.qml:245
 msgid "Gain"
-msgstr "Penguatan"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:777 src/contents/ui/Expander.qml:727
 #: src/contents/ui/Gate.qml:755 src/contents/ui/MultibandCompressor.qml:857
 #: src/contents/ui/MultibandGate.qml:294 src/contents/ui/MultibandGate.qml:830
 msgid "Curve"
-msgstr "Kurva"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:786 src/contents/ui/Expander.qml:736
 #: src/contents/ui/Gate.qml:764 src/contents/ui/MultibandCompressor.qml:802
 #: src/contents/ui/MultibandGate.qml:775
 msgid "Envelope"
-msgstr "Selubung"
+msgstr ""
 
 #: src/contents/ui/Compressor.qml:914 src/contents/ui/Expander.qml:864
 #: src/contents/ui/Gate.qml:993 src/contents/ui/MultibandCompressor.qml:996
 #: src/contents/ui/MultibandGate.qml:969
 msgid "Stereo split"
-msgstr "Pemisahan stereo"
+msgstr ""
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:49
 msgid "Imported a new Convolver impulse file."
-msgstr "Mengimpor file impuls Convolver baru."
+msgstr ""
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:51
 msgid "Failed to import the Convolver impulse file."
-msgstr "Gagal mengimpor file impuls Convolver."
+msgstr ""
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:65
 #: src/contents/ui/MenuAddPlugins.qml:186
 #: src/contents/ui/PresetsCommunityPage.qml:64
 #: src/contents/ui/PresetsLocalPage.qml:164
 msgid "Search"
-msgstr "Cari"
+msgstr ""
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:108
 msgid "Remove Impulse Response"
-msgstr "Hapus Respons Impuls"
+msgstr ""
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:109
 msgid "Are you sure you want to remove this impulse response from the list?"
-msgstr "Apakah Anda yakin ingin menghapus respons impuls ini dari daftar?"
+msgstr ""
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:113
 msgid "Removed the %1 Convolver impulse."
-msgstr "Menghapus impuls Convolver %1."
+msgstr ""
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:115
 msgid "Failed to remove the %1 Convolver impulse."
-msgstr "Gagal menghapus impuls Convolver %1."
+msgstr ""
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:123
 msgid "Rename Impulse"
-msgstr "Ganti nama impuls"
+msgstr ""
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:128
 #: src/contents/ui/PresetsLocalPage.qml:247
 msgid "Rename"
-msgstr "Ubah nama"
+msgstr ""
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:136
 msgid "Renamed the %1 impulse to %2"
-msgstr "Mengganti nama impuls %1 menjadi %2"
+msgstr ""
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:139
 msgid "Failed to rename the %1 impulse to %2"
-msgstr "Gagal mengganti nama impuls %1 menjadi %2"
+msgstr ""
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:147
 #: src/contents/ui/PresetsLocalPage.qml:267
 msgid "Cancel"
-msgstr "Batal"
+msgstr ""
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:186
 msgid "Rename this impulse"
-msgstr "Ganti nama impuls ini"
+msgstr ""
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:194
 msgid "Delete this impulse"
-msgstr "Hapus impuls ini"
+msgstr ""
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:233
 msgid "Import impulse"
-msgstr "Impor impuls"
+msgstr ""
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:243
 #: src/contents/ui/MenuAddPlugins.qml:202 src/contents/ui/PresetsDialog.qml:126
 msgctxt "@action:button"
 msgid "Close"
-msgstr "Tutup"
+msgstr ""
 
 #: src/contents/ui/Convolver.qml:66
 msgid "Loaded the %1 Convolver impulse."
-msgstr "Memuat impuls Convolver %1."
+msgstr ""
 
 #: src/contents/ui/Convolver.qml:68 src/contents/ui/Convolver.qml:342
 msgid "Convolver impulse is not set"
-msgstr "Impuls Convolver belum diatur"
+msgstr ""
 
 #: src/contents/ui/Convolver.qml:72
 msgid "The Convolver is in passthrough mode."
-msgstr "Convolver berada dalam mode passthrough."
+msgstr ""
 
 #: src/contents/ui/Convolver.qml:74
 msgid "Failed to load the %1 impulse. The Convolver is in passthrough mode."
-msgstr "Gagal memuat impuls %1. Convolver berada dalam mode passthrough."
+msgstr ""
 
 #: src/contents/ui/Convolver.qml:151
 msgid "First"
-msgstr "Pertama"
+msgstr ""
 
 #: src/contents/ui/Convolver.qml:164
 msgid "Second"
-msgstr "Kedua"
+msgstr ""
 
 #: src/contents/ui/Convolver.qml:196 src/contents/ui/Convolver.qml:231
 msgid "Combine"
-msgstr "Gabungkan"
+msgstr ""
 
 #: src/contents/ui/Convolver.qml:224
 msgid "Impulses"
-msgstr "Impuls"
+msgstr ""
 
 #: src/contents/ui/Convolver.qml:240 src/plugin_base.cpp:336
 msgid "Spectrum"
-msgstr "Spektrum"
+msgstr ""
 
 #: src/contents/ui/Convolver.qml:272
 msgid "Log scale"
-msgstr "Skala logaritmik"
+msgstr ""
 
 #: src/contents/ui/Convolver.qml:380 src/contents/ui/Crusher.qml:208
 msgid "Rate"
-msgstr "Laju"
+msgstr ""
 
 #: src/contents/ui/Convolver.qml:385 src/contents/ui/Delay.qml:75
 #: src/contents/ui/Delay.qml:86 src/contents/ui/Delay.qml:228
 #: src/contents/ui/Delay.qml:239
 msgid "Samples"
-msgstr "Sampel"
+msgstr ""
 
 #: src/contents/ui/Convolver.qml:390
 msgid "Duration"
-msgstr "Durasi"
+msgstr ""
 
 #: src/contents/ui/Convolver.qml:395 src/contents/ui/PipeWirePage.qml:337
 msgid "Channels"
-msgstr "Saluran"
+msgstr ""
 
 #: src/contents/ui/Convolver.qml:400
 msgid "Format"
-msgstr "Format"
+msgstr ""
 
 #: src/contents/ui/Convolver.qml:458
 msgid "Stereo width"
-msgstr "Lebar stereo"
+msgstr ""
 
 #: src/contents/ui/Convolver.qml:537 src/tags_plugin_name.cpp:46
 msgid "Autogain"
-msgstr "Penguatan otomatis"
+msgstr ""
 
 #: src/contents/ui/ConvolverSofaDialog.qml:32
 msgid "Target Orientation"
-msgstr "Orientasi Target"
+msgstr ""
 
 #: src/contents/ui/ConvolverSofaDialog.qml:43
 #: src/contents/ui/ConvolverSofaDialog.qml:139
 msgid "Azimuth"
-msgstr "Azimut"
+msgstr ""
 
 #: src/contents/ui/ConvolverSofaDialog.qml:59
 #: src/contents/ui/ConvolverSofaDialog.qml:144
 msgid "Elevation"
-msgstr "Elevasi"
+msgstr ""
 
 #: src/contents/ui/ConvolverSofaDialog.qml:75
 #: src/contents/ui/ConvolverSofaDialog.qml:149
 msgid "Radius"
-msgstr "Radius"
+msgstr ""
 
 #: src/contents/ui/ConvolverSofaDialog.qml:91
 msgid "Status"
-msgstr "Status"
+msgstr ""
 
 #: src/contents/ui/ConvolverSofaDialog.qml:106
 #: src/contents/ui/PreferencesSheet.qml:68
 msgid "Database"
-msgstr "Basis data"
+msgstr ""
 
 #: src/contents/ui/ConvolverSofaDialog.qml:111
 msgid "Measurements"
-msgstr "Pengukuran"
+msgstr ""
 
 #: src/contents/ui/ConvolverSofaDialog.qml:116
 msgid "Index"
-msgstr "Indeks"
+msgstr ""
 
 #: src/contents/ui/ConvolverSofaDialog.qml:174
 msgid "Apply"
-msgstr "Terapkan"
+msgstr ""
 
 #: src/contents/ui/Crossfeed.qml:79
 msgid "Cutoff"
-msgstr "Frekuensi potong"
+msgstr ""
 
 #: src/contents/ui/Crossfeed.qml:95
 msgid "Feed"
-msgstr "Umpan"
+msgstr ""
 
 #: src/contents/ui/Crossfeed.qml:114
 msgid "Crossfeed Presets"
-msgstr "Preset Crossfeed"
+msgstr ""
 
 #: src/contents/ui/Crossfeed.qml:118
 msgid "Default"
-msgstr "Bawaan"
+msgstr ""
 
 #: src/contents/ui/Crossfeed.qml:167 src/contents/ui/PageStreamsEffects.qml:660
 #: src/contents/ui/PreferencesSheet.qml:62 src/contents/ui/Reverb.qml:335
 msgid "Presets"
-msgstr "Preset"
+msgstr ""
 
 #: src/contents/ui/CrosstalkCanceller.qml:64
 msgid "Process only phantom center"
-msgstr "Proses hanya pusat phantom"
+msgstr ""
 
 #: src/contents/ui/CrosstalkCanceller.qml:75
 #: src/contents/ui/StereoTools.qml:294 src/tags_plugin_name.cpp:58
 msgid "Delay"
-msgstr "Penundaan"
+msgstr ""
 
 #: src/contents/ui/CrosstalkCanceller.qml:91
 msgid "Decay"
-msgstr "Peluruhan"
+msgstr ""
 
 #: src/contents/ui/Crusher.qml:56
 msgid "Bit reduction"
-msgstr "Reduksi bit"
+msgstr ""
 
 #: src/contents/ui/Crusher.qml:91 src/contents/ui/PreferencesSheet.qml:433
 msgid "Shape"
-msgstr "Bentuk"
+msgstr ""
 
 #: src/contents/ui/Crusher.qml:101
 msgid "Linear"
-msgstr "Linear"
+msgstr ""
 
 #: src/contents/ui/Crusher.qml:101
 msgid "Logarithmic"
-msgstr "Logaritmik"
+msgstr ""
 
 #: src/contents/ui/Crusher.qml:110
 msgid "DC offset"
-msgstr "Offset DC"
+msgstr ""
 
 #: src/contents/ui/Crusher.qml:126 src/contents/ui/Pitch.qml:302
 msgid "Anti-aliasing"
-msgstr "Anti-aliasing"
+msgstr ""
 
 #: src/contents/ui/Crusher.qml:142 src/contents/ui/PreferencesSheet.qml:684
 msgid "Mix"
-msgstr "Campuran"
+msgstr ""
 
 #: src/contents/ui/Crusher.qml:160
 msgid "Sample Rate"
-msgstr "Laju Sampel"
+msgstr ""
 
 #: src/contents/ui/Crusher.qml:166 src/contents/ui/Gate.qml:118
 #: src/contents/ui/Gate.qml:652 src/contents/ui/Maximizer.qml:101
 #: src/contents/ui/MultibandGate.qml:249 src/contents/ui/MultibandGate.qml:718
 msgid "Reduction"
-msgstr "Reduksi"
+msgstr ""
 
 #: src/contents/ui/Crusher.qml:181
 msgid "Low frequency oscillator"
-msgstr "Osilator frekuensi rendah"
+msgstr ""
 
 #: src/contents/ui/CrystalizerBand.qml:58
 #: src/contents/ui/EqualizerBandMenu.qml:187
@@ -1063,73 +1054,73 @@ msgstr "Osilator frekuensi rendah"
 #: src/contents/ui/MultibandGate.qml:90 src/contents/ui/StereoTools.qml:210
 #: src/contents/ui/StereoTools.qml:242
 msgid "Mute"
-msgstr "Bisukan"
+msgstr ""
 
 #: src/contents/ui/CrystalizerBand.qml:69
 #: src/contents/ui/MultibandCompressor.qml:108
 #: src/contents/ui/MultibandGate.qml:108
 msgid "Bypass"
-msgstr "Bypass"
+msgstr ""
 
 #: src/contents/ui/Crystalizer.qml:110
 msgid "Oversampling quality"
-msgstr "Kualitas oversampling"
+msgstr ""
 
 #: src/contents/ui/Crystalizer.qml:128
 msgid "Transition band"
-msgstr "Pita transisi"
+msgstr ""
 
 #: src/contents/ui/Crystalizer.qml:172 src/contents/ui/Limiter.qml:86
 msgid "Oversampling"
-msgstr "Oversampling"
+msgstr ""
 
 #: src/contents/ui/Crystalizer.qml:182
 msgid "Adaptive intensity"
-msgstr "Intensitas adaptif"
+msgstr ""
 
 #: src/contents/ui/Crystalizer.qml:192
 msgid "Fixed quantum"
-msgstr "Kuantum tetap"
+msgstr ""
 
 #: src/contents/ui/DeepFilterNet.qml:52
 msgid "Attenuation limit"
-msgstr "Batas redaman"
+msgstr ""
 
 #: src/contents/ui/DeepFilterNet.qml:106
 msgid "Minimum processing threshold"
-msgstr "Ambang batas pemrosesan minimum"
+msgstr ""
 
 #: src/contents/ui/DeepFilterNet.qml:122
 msgid "Maximum ERB processing threshold"
-msgstr "Ambang batas pemrosesan ERB maksimum"
+msgstr ""
 
 #: src/contents/ui/DeepFilterNet.qml:138
 msgid "Maximum DF processing threshold"
-msgstr "Ambang batas pemrosesan DF maksimum"
+msgstr ""
 
 #: src/contents/ui/DeepFilterNet.qml:154
 msgid "Minimum processing buffer"
-msgstr "Buffer pemrosesan minimum"
+msgstr ""
 
 #: src/contents/ui/DeepFilterNet.qml:170
 msgid "Post filter Beta"
-msgstr "Beta filter pasca-proses"
+msgstr ""
 
 #: src/contents/ui/Deesser.qml:63 src/tags_plugin_name.cpp:57
 msgid "Deesser"
-msgstr "Deesser"
+msgstr ""
 
 #: src/contents/ui/Deesser.qml:76 src/contents/ui/Deesser.qml:287
 msgid "Detection"
-msgstr "Deteksi"
+msgstr ""
 
 #: src/contents/ui/Deesser.qml:93
 msgid "Wideband"
-msgstr "Pita lebar"
+msgstr ""
 
 #: src/contents/ui/Deesser.qml:93
 msgid "Split"
-msgstr "Pisah"
+msgstr ""
 
 #: src/contents/ui/Deesser.qml:102 src/contents/ui/Gate.qml:135
 #: src/contents/ui/Gate.qml:187 src/contents/ui/Gate.qml:922
@@ -1139,1176 +1130,1158 @@ msgstr "Pisah"
 #: src/contents/ui/MultibandGate.qml:298 src/contents/ui/MultibandGate.qml:352
 #: src/contents/ui/RNNoise.qml:126
 msgid "Threshold"
-msgstr "Ambang batas"
+msgstr ""
 
 #: src/contents/ui/Deesser.qml:152
 msgid "Laxity"
-msgstr "Kelonggaran"
+msgstr ""
 
 #: src/contents/ui/Deesser.qml:184
 msgid "F1 split"
-msgstr "Pisah F1"
+msgstr ""
 
 #: src/contents/ui/Deesser.qml:201
 msgid "F2 peak"
-msgstr "Puncak F2"
+msgstr ""
 
 #: src/contents/ui/Deesser.qml:218
 msgid "F1 gain"
-msgstr "Penguatan F1"
+msgstr ""
 
 #: src/contents/ui/Deesser.qml:235
 msgid "F2 level"
-msgstr "Level F2"
+msgstr ""
 
 #: src/contents/ui/Deesser.qml:253
 msgid "F2 peak Q"
-msgstr "Q puncak F2"
+msgstr ""
 
 #: src/contents/ui/Deesser.qml:297
 msgid "Gain reduction"
-msgstr "Reduksi penguatan"
+msgstr ""
 
 #: src/contents/ui/Delay.qml:75 src/contents/ui/Delay.qml:228
 msgid "Distance"
-msgstr "Jarak"
+msgstr ""
 
 #: src/contents/ui/Delay.qml:75 src/contents/ui/Delay.qml:104
 #: src/contents/ui/Delay.qml:228 src/contents/ui/Delay.qml:257
 #: src/contents/ui/MultibandCompressor.qml:264
 #: src/contents/ui/MultibandCompressor.qml:312
 msgid "Time"
-msgstr "Waktu"
+msgstr ""
 
 #: src/contents/ui/Delay.qml:122 src/contents/ui/Delay.qml:275
 msgid "Meters"
-msgstr "Meter"
+msgstr ""
 
 #: src/contents/ui/Delay.qml:140 src/contents/ui/Delay.qml:293
 msgid "Centimeters"
-msgstr "Sentimeter"
+msgstr ""
 
 #: src/contents/ui/Delay.qml:159 src/contents/ui/Delay.qml:312
 msgid "Temperature"
-msgstr "Suhu"
+msgstr ""
 
 #: src/contents/ui/Delay.qml:393
 msgid "Invert left"
-msgstr "Balik kiri"
+msgstr ""
 
 #: src/contents/ui/Delay.qml:403
 msgid "Invert right"
-msgstr "Balik kanan"
+msgstr ""
 
 #: src/contents/ui/DelegateClientsList.qml:57
 #: src/contents/ui/DelegateModulesList.qml:57
 msgctxt "@info:placeholder"
 msgid "Unknown"
-msgstr "Tidak diketahui"
+msgstr ""
 
 #: src/contents/ui/DelegateClientsList.qml:61
 msgid "(id: %1)"
-msgstr "(id: %1)"
+msgstr ""
 
 #: src/contents/ui/DelegateClientsList.qml:67
 msgid "Access: %1"
-msgstr "Akses: %1"
+msgstr ""
 
 #: src/contents/ui/DelegateClientsList.qml:74
 msgid "API: %1"
-msgstr "API: %1"
+msgstr ""
 
 #: src/contents/ui/DelegateModulesList.qml:61
 msgctxt "@info:placeholder"
 msgid "Not set"
-msgstr "Belum diatur"
+msgstr ""
 
 #: src/contents/ui/DelegateModulesList.qml:61
 msgid "(id: %1, version: %2)"
-msgstr "(id: %1, versi: %2)"
+msgstr ""
 
 #: src/contents/ui/DelegateModulesList.qml:67
 msgctxt "@info:placeholder"
 msgid "No description set"
-msgstr "Tidak ada deskripsi yang diatur"
+msgstr ""
 
 #: src/contents/ui/DelegatePluginsList.qml:119
 msgid "Toggle this effect"
-msgstr "Alihkan efek ini"
+msgstr ""
 
 #: src/contents/ui/DelegatePluginsList.qml:127
 msgid "Remove this effect"
-msgstr "Hapus efek ini"
+msgstr ""
 
 #: src/contents/ui/DelegateStreamsList.qml:96
 msgid "channels"
-msgstr "saluran"
+msgstr ""
 
 #: src/contents/ui/DelegateStreamsList.qml:107
 #: src/contents/ui/EchoCanceller.qml:64 src/contents/ui/EchoCanceller.qml:97
 #: src/contents/ui/EchoCanceller.qml:124 src/contents/ui/Gate.qml:175
 #: src/contents/ui/RNNoise.qml:115
 msgid "Enable"
-msgstr "Aktifkan"
+msgstr ""
 
 #: src/contents/ui/DelegateStreamsList.qml:128
 msgid "Exclude"
-msgstr "Kecualikan"
+msgstr ""
 
 #: src/contents/ui/DelegateStreamsList.qml:130
 msgid "Add %1 to excluded applications"
-msgstr "Tambahkan %1 ke aplikasi yang dikecualikan"
+msgstr ""
 
 #: src/contents/ui/EchoCanceller.qml:61 src/tags_plugin_name.cpp:59
 msgid "Echo Canceller"
-msgstr "Pembatal Gema"
+msgstr ""
 
 #: src/contents/ui/EchoCanceller.qml:73
 msgid "Mobile mode"
-msgstr "Mode seluler"
+msgstr ""
 
 #: src/contents/ui/EchoCanceller.qml:82
 msgid "Enforce high-pass"
-msgstr "Terapkan lewat-tinggi"
+msgstr ""
 
 #: src/contents/ui/EchoCanceller.qml:94
 msgid "Noise Suppression"
-msgstr "Penekan Kebisingan"
+msgstr ""
 
 #: src/contents/ui/EchoCanceller.qml:107
 msgid "Strength"
-msgstr "Kekuatan"
+msgstr ""
 
 #: src/contents/ui/EchoCanceller.qml:111 src/contents/ui/Loudness.qml:119
 msgid "Low"
-msgstr "Rendah"
+msgstr ""
 
 #: src/contents/ui/EchoCanceller.qml:111
 msgid "Moderate"
-msgstr "Sedang"
+msgstr ""
 
 #: src/contents/ui/EchoCanceller.qml:111 src/contents/ui/Loudness.qml:119
 msgid "High"
-msgstr "Tinggi"
+msgstr ""
 
 #: src/contents/ui/EchoCanceller.qml:111
 msgid "Very high"
-msgstr "Sangat tinggi"
+msgstr ""
 
 #: src/contents/ui/EchoCanceller.qml:121
 msgid "High-Pass Filter"
-msgstr "Filter Lewat-Tinggi"
+msgstr ""
 
 #: src/contents/ui/EchoCanceller.qml:133
 msgid "Full band"
-msgstr "Pita penuh"
+msgstr ""
 
 #: src/contents/ui/EchoCanceller.qml:175 src/contents/ui/Speex.qml:75
 msgid "Automatic gain control"
-msgstr "Kontrol penguatan otomatis"
+msgstr ""
 
 #: src/contents/ui/EeInputOutputGain.qml:36
 msgid "Audio levels control"
-msgstr "Kontrol level audio"
+msgstr ""
 
 #: src/contents/ui/EeInputOutputGain.qml:37
 msgid "Input and output gain controls with level meters"
-msgstr "Kontrol penguatan masukan dan keluaran dengan pengukur level"
+msgstr ""
 
 #: src/contents/ui/EeInputOutputGain.qml:131 src/contents/ui/Main.qml:387
 #: src/contents/ui/StereoTools.qml:59
 msgid "Input"
-msgstr "Masukan"
+msgstr ""
 
 #: src/contents/ui/EqualizerBandMenu.qml:34
 #: src/contents/ui/MultibandCompressor.qml:669
 #: src/contents/ui/MultibandCompressor.qml:928
 #: src/contents/ui/MultibandGate.qml:642 src/contents/ui/MultibandGate.qml:901
 msgid "Band"
-msgstr "Pita"
+msgstr ""
 
 #: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
 msgid "Bell"
-msgstr "Lonceng"
+msgstr ""
 
 #: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
 msgid "High-shelf"
-msgstr "Rak-tinggi"
+msgstr ""
 
 #: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
 msgid "Low-shelf"
-msgstr "Rak-rendah"
+msgstr ""
 
 #: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
 msgid "Notch"
-msgstr "Takik"
+msgstr ""
 
 #: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
 msgid "Resonance"
-msgstr "Resonansi"
+msgstr ""
 
 #: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
 msgid "Allpass"
-msgstr "Semua lewat"
+msgstr ""
 
 #: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
 msgid "Bandpass"
-msgstr "Lewat-pita"
+msgstr ""
 
 #: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
 msgid "Ladder-pass"
-msgstr "Lewat-tangga"
+msgstr ""
 
 #: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
 msgid "Ladder-rejection"
-msgstr "Tolak-tangga"
+msgstr ""
 
 #: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
 msgid "RLC (BT)"
-msgstr "RLC (BT)"
+msgstr ""
 
 #: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
 msgid "RLC (MT)"
-msgstr "RLC (MT)"
+msgstr ""
 
 #: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
 msgid "BWC (BT)"
-msgstr "BWC (BT)"
+msgstr ""
 
 #: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
 msgid "BWC (MT)"
-msgstr "BWC (MT)"
+msgstr ""
 
 #: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
 msgid "LRX (BT)"
-msgstr "LRX (BT)"
+msgstr ""
 
 #: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
 msgid "LRX (MT)"
-msgstr "LRX (MT)"
+msgstr ""
 
 #: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
 msgid "APO (DR)"
-msgstr "APO (DR)"
+msgstr ""
 
 #: src/contents/ui/EqualizerBandMenu.qml:75 src/contents/ui/Filter.qml:121
 msgid "Slope"
-msgstr "Kemiringan"
+msgstr ""
 
 #: src/contents/ui/EqualizerBandMenu.qml:96 src/contents/ui/Filter.qml:142
 #: src/contents/ui/MultibandCompressor.qml:199
 #: src/contents/ui/MultibandGate.qml:136 src/contents/ui/PipeWirePage.qml:431
 msgid "Frequency"
-msgstr "Frekuensi"
+msgstr ""
 
 #: src/contents/ui/EqualizerBandMenu.qml:142 src/contents/ui/Filter.qml:189
 msgid "Quality"
-msgstr "Kualitas"
+msgstr ""
 
 #: src/contents/ui/EqualizerBandMenu.qml:165 src/contents/ui/Filter.qml:158
 msgid "Width"
-msgstr "Lebar"
+msgstr ""
 
 #: src/contents/ui/EqualizerBandMenu.qml:171
 msgid "oct"
-msgstr "oct"
+msgstr ""
 
 #: src/contents/ui/EqualizerBandMenu.qml:199
 #: src/contents/ui/MultibandCompressor.qml:99
 #: src/contents/ui/MultibandGate.qml:99
 msgid "Solo"
-msgstr "Solo"
+msgstr ""
 
 #: src/contents/ui/Equalizer.qml:66 src/contents/ui/Equalizer.qml:106
 #: src/contents/ui/MidSideEqualizer.qml:66
 #: src/contents/ui/MidSideEqualizer.qml:106
 msgid "APO preset"
-msgstr "Preset APO"
+msgstr ""
 
 #: src/contents/ui/Equalizer.qml:69
 msgid "Failed to import the Equalizer APO preset file."
-msgstr "Gagal mengimpor file preset APO Equalizer."
+msgstr ""
 
 #: src/contents/ui/Equalizer.qml:74
 msgid "Imported the Equalizer APO preset file."
-msgstr "Mengimpor file preset APO Equalizer."
+msgstr ""
 
 #: src/contents/ui/Equalizer.qml:76
 msgid "Imported the Equalizer APO preset file into the left channel."
-msgstr "Mengimpor file preset APO Equalizer ke saluran kiri."
+msgstr ""
 
 #: src/contents/ui/Equalizer.qml:78
 msgid "Imported the Equalizer APO preset file into the right channel."
-msgstr "Mengimpor file preset APO Equalizer ke saluran kanan."
+msgstr ""
 
 #: src/contents/ui/Equalizer.qml:91 src/contents/ui/MidSideEqualizer.qml:91
 msgid "GraphicEQ preset"
-msgstr "Preset GraphicEQ"
+msgstr ""
 
 #: src/contents/ui/Equalizer.qml:94 src/contents/ui/MidSideEqualizer.qml:94
 msgid "Imported the GraphicEQ preset file."
-msgstr "Mengimpor file preset GraphicEQ."
+msgstr ""
 
 #: src/contents/ui/Equalizer.qml:96 src/contents/ui/MidSideEqualizer.qml:96
 msgid "Failed to import the GraphicEQ preset file."
-msgstr "Gagal mengimpor file preset GraphicEQ."
+msgstr ""
 
 #: src/contents/ui/Equalizer.qml:109
 msgid ""
 "Failed to export the current Equalizer settings to an external APO preset "
 "file."
 msgstr ""
-"Gagal mengekspor pengaturan Equalizer saat ini ke file preset APO eksternal."
 
 #: src/contents/ui/Equalizer.qml:114
 msgid "Exported the current Equalizer settings to an external APO preset file."
-msgstr "Mengekspor pengaturan Equalizer saat ini ke file preset APO eksternal."
+msgstr ""
 
 #: src/contents/ui/Equalizer.qml:116
 msgid ""
 "Exported the current Equalizer settings of the left channel to an external "
 "APO preset file."
 msgstr ""
-"Mengekspor pengaturan Equalizer saluran kiri saat ini ke file preset APO "
-"eksternal."
 
 #: src/contents/ui/Equalizer.qml:118
 msgid ""
 "Exported the current Equalizer settings of the right channel to an external "
 "APO preset file."
 msgstr ""
-"Mengekspor pengaturan Equalizer saluran kanan saat ini ke file preset APO "
-"eksternal."
 
 #: src/contents/ui/Equalizer.qml:142 src/contents/ui/Filter.qml:97
 #: src/contents/ui/Loudness.qml:77 src/contents/ui/MidSideEqualizer.qml:142
 msgid "IIR"
-msgstr "IIR"
+msgstr ""
 
 #: src/contents/ui/Equalizer.qml:142 src/contents/ui/Filter.qml:97
 #: src/contents/ui/MidSideEqualizer.qml:142
 msgid "FIR"
-msgstr "FIR"
+msgstr ""
 
 #: src/contents/ui/Equalizer.qml:142 src/contents/ui/Filter.qml:97
 #: src/contents/ui/Loudness.qml:77 src/contents/ui/MidSideEqualizer.qml:142
 msgid "FFT"
-msgstr "FFT"
+msgstr ""
 
 #: src/contents/ui/Equalizer.qml:142 src/contents/ui/Filter.qml:97
 #: src/contents/ui/MidSideEqualizer.qml:142
 msgid "SPM"
-msgstr "SPM"
+msgstr ""
 
 #: src/contents/ui/Equalizer.qml:152 src/contents/ui/Filter.qml:107
 #: src/contents/ui/MidSideEqualizer.qml:152
-#, fuzzy
 msgid "Equalizer decramping"
-msgstr "Mode equalizer"
+msgstr ""
 
 #: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
 #: src/contents/ui/MidSideEqualizer.qml:156
 msgid "x2"
-msgstr "x2"
+msgstr ""
 
 #: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
 #: src/contents/ui/MidSideEqualizer.qml:156
 msgid "x3"
-msgstr "x3"
+msgstr ""
 
 #: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
 #: src/contents/ui/MidSideEqualizer.qml:156
 msgid "x4"
-msgstr "x4"
+msgstr ""
 
 #: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
 #: src/contents/ui/MidSideEqualizer.qml:156
 msgid "x6"
-msgstr "x6"
+msgstr ""
 
 #: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
 #: src/contents/ui/MidSideEqualizer.qml:156
 msgid "x8"
-msgstr "x8"
+msgstr ""
 
 #: src/contents/ui/Equalizer.qml:165 src/contents/ui/MidSideEqualizer.qml:165
 msgid "Bands"
-msgstr "Pita"
+msgstr ""
 
 #: src/contents/ui/Equalizer.qml:181 src/contents/ui/Filter.qml:204
 #: src/contents/ui/MidSideEqualizer.qml:181 src/contents/ui/StereoTools.qml:77
 #: src/contents/ui/StereoTools.qml:278
 msgid "Balance"
-msgstr "Keseimbangan"
+msgstr ""
 
 #: src/contents/ui/Equalizer.qml:198
 msgid "Pitch left"
-msgstr "Nada kiri"
+msgstr ""
 
 #: src/contents/ui/Equalizer.qml:206 src/contents/ui/Equalizer.qml:223
 #: src/contents/ui/MidSideEqualizer.qml:206
 #: src/contents/ui/MidSideEqualizer.qml:223
 msgid "st"
-msgstr "st"
+msgstr ""
 
 #: src/contents/ui/Equalizer.qml:215
 msgid "Pitch right"
-msgstr "Nada kanan"
+msgstr ""
 
 #: src/contents/ui/Equalizer.qml:346
 msgid "Split channels"
-msgstr "Pisah saluran"
+msgstr ""
 
 #: src/contents/ui/Equalizer.qml:356 src/contents/ui/MidSideEqualizer.qml:356
 msgid "Flat response"
-msgstr "Respons datar"
+msgstr ""
 
 #: src/contents/ui/Equalizer.qml:363 src/contents/ui/MidSideEqualizer.qml:363
 msgid "Calculate frequencies"
-msgstr "Hitung frekuensi"
+msgstr ""
 
 #: src/contents/ui/Equalizer.qml:370 src/contents/ui/MidSideEqualizer.qml:370
 msgid "Sort bands"
-msgstr "Urutkan pita"
+msgstr ""
 
 #: src/contents/ui/Equalizer.qml:377 src/contents/ui/MidSideEqualizer.qml:377
 msgid "Import APO"
-msgstr "Impor APO"
+msgstr ""
 
 #: src/contents/ui/Equalizer.qml:384 src/contents/ui/MidSideEqualizer.qml:384
 msgid "Import APO (GraphicEQ)"
-msgstr "Impor APO (GraphicEQ)"
+msgstr ""
 
 #: src/contents/ui/Equalizer.qml:391 src/contents/ui/MidSideEqualizer.qml:391
 msgid "Export APO"
-msgstr "Ekspor APO"
+msgstr ""
 
 #: src/contents/ui/Exciter.qml:161
 msgid "Ceil active"
-msgstr "Plafon aktif"
+msgstr ""
 
 #: src/contents/ui/Exciter.qml:172
 msgid "Ceil"
-msgstr "Plafon"
+msgstr ""
 
 #: src/contents/ui/Expander.qml:67 src/tags_plugin_name.cpp:63
 msgid "Expander"
-msgstr "Ekspander"
+msgstr ""
 
 #: src/contents/ui/Expander.qml:226 src/contents/ui/Gate.qml:244
 #: src/contents/ui/Limiter.qml:217 src/contents/ui/MultibandCompressor.qml:427
 #: src/contents/ui/MultibandGate.qml:400
 msgid "Internal"
-msgstr "Internal"
+msgstr ""
 
 #: src/contents/ui/Filter.qml:79
 msgid "Filter mode"
-msgstr "Mode filter"
+msgstr ""
 
 #: src/contents/ui/Filter.qml:93
 msgid "Equalizer mode"
-msgstr "Mode equalizer"
+msgstr ""
 
 #: src/contents/ui/Gate.qml:71 src/tags_plugin_name.cpp:65
 msgid "Gate"
-msgstr "Gerbang"
+msgstr ""
 
 #: src/contents/ui/Gate.qml:152 src/contents/ui/Gate.qml:206
 #: src/contents/ui/MultibandGate.qml:313 src/contents/ui/MultibandGate.qml:368
 msgid "Zone"
-msgstr "Zona"
+msgstr ""
 
 #: src/contents/ui/Gate.qml:169 src/contents/ui/MultibandGate.qml:341
 msgid "Hysteresis"
-msgstr "Histeresis"
+msgstr ""
 
 #: src/contents/ui/Gate.qml:916 src/contents/ui/Gate.qml:929
 #: src/contents/ui/MultibandCompressor.qml:214
 #: src/contents/ui/MultibandGate.qml:151 src/contents/ui/Speex.qml:130
 #: src/contents/ui/VoiceSuppressor.qml:63
 msgid "Start"
-msgstr "Mulai"
+msgstr ""
 
 #: src/contents/ui/LevelMeter.qml:67
 msgid "Input Level"
-msgstr "Level Masukan"
+msgstr ""
 
 #: src/contents/ui/LevelMeter.qml:106
 msgid "True Peak"
-msgstr "Puncak Sejati"
+msgstr ""
 
 #: src/contents/ui/Limiter.qml:76
 msgid "Herm thin"
-msgstr "Herm tipis"
+msgstr ""
 
 #: src/contents/ui/Limiter.qml:76
 msgid "Herm wide"
-msgstr "Herm lebar"
+msgstr ""
 
 #: src/contents/ui/Limiter.qml:76
 msgid "Herm tail"
-msgstr "Herm ekor"
+msgstr ""
 
 #: src/contents/ui/Limiter.qml:76
 msgid "Herm duck"
-msgstr "Herm bebek"
+msgstr ""
 
 #: src/contents/ui/Limiter.qml:76
 msgid "Exp thin"
-msgstr "Exp tipis"
+msgstr ""
 
 #: src/contents/ui/Limiter.qml:76
 msgid "Exp wide"
-msgstr "Exp lebar"
+msgstr ""
 
 #: src/contents/ui/Limiter.qml:76
 msgid "Exp tail"
-msgstr "Exp ekor"
+msgstr ""
 
 #: src/contents/ui/Limiter.qml:76
 msgid "Exp duck"
-msgstr "Exp bebek"
+msgstr ""
 
 #: src/contents/ui/Limiter.qml:76
 msgid "Line thin"
-msgstr "Garis tipis"
+msgstr ""
 
 #: src/contents/ui/Limiter.qml:76
 msgid "Line wide"
-msgstr "Garis lebar"
+msgstr ""
 
 #: src/contents/ui/Limiter.qml:76
 msgid "Line tail"
-msgstr "Garis ekor"
+msgstr ""
 
 #: src/contents/ui/Limiter.qml:76
 msgid "Line duck"
-msgstr "Garis bebek"
+msgstr ""
 
 #: src/contents/ui/Limiter.qml:90 src/contents/ui/Limiter.qml:104
 #: src/contents/ui/MultibandCompressor.qml:591
 #: src/contents/ui/MultibandGate.qml:564
 msgid "None"
-msgstr "Tidak ada"
+msgstr ""
 
 #: src/contents/ui/Limiter.qml:90
 msgid "Half x2/16 bits"
-msgstr "Setengah x2/16 bit"
+msgstr ""
 
 #: src/contents/ui/Limiter.qml:90
 msgid "Half x2/24 bits"
-msgstr "Setengah x2/24 bit"
+msgstr ""
 
 #: src/contents/ui/Limiter.qml:90
 msgid "Half x3/16 bits"
-msgstr "Setengah x3/16 bit"
+msgstr ""
 
 #: src/contents/ui/Limiter.qml:90
 msgid "Half x3/24 bits"
-msgstr "Setengah x3/24 bit"
+msgstr ""
 
 #: src/contents/ui/Limiter.qml:90
 msgid "Half x4/16 bits"
-msgstr "Setengah x4/16 bit"
+msgstr ""
 
 #: src/contents/ui/Limiter.qml:90
 msgid "Half x4/24 bits"
-msgstr "Setengah x4/24 bit"
+msgstr ""
 
 #: src/contents/ui/Limiter.qml:90
 msgid "Half x6/16 bits"
-msgstr "Setengah x6/16 bit"
+msgstr ""
 
 #: src/contents/ui/Limiter.qml:90
 msgid "Half x6/24 bits"
-msgstr "Setengah x6/24 bit"
+msgstr ""
 
 #: src/contents/ui/Limiter.qml:90
 msgid "Half x8/16 bits"
-msgstr "Setengah x8/16 bit"
+msgstr ""
 
 #: src/contents/ui/Limiter.qml:90
 msgid "Half x8/24 bits"
-msgstr "Setengah x8/24 bit"
+msgstr ""
 
 #: src/contents/ui/Limiter.qml:90
 msgid "Full x2/16 bits"
-msgstr "Penuh x2/16 bit"
+msgstr ""
 
 #: src/contents/ui/Limiter.qml:90
 msgid "Full x2/24 bits"
-msgstr "Penuh x2/24 bit"
+msgstr ""
 
 #: src/contents/ui/Limiter.qml:90
 msgid "Full x3/16 bits"
-msgstr "Penuh x3/16 bit"
+msgstr ""
 
 #: src/contents/ui/Limiter.qml:90
 msgid "Full x3/24 bits"
-msgstr "Penuh x3/24 bit"
+msgstr ""
 
 #: src/contents/ui/Limiter.qml:90
 msgid "Full x4/16 bits"
-msgstr "Penuh x4/16 bit"
+msgstr ""
 
 #: src/contents/ui/Limiter.qml:90
 msgid "Full x4/24 bits"
-msgstr "Penuh x4/24 bit"
+msgstr ""
 
 #: src/contents/ui/Limiter.qml:90
 msgid "Full x6/16 bits"
-msgstr "Penuh x6/16 bit"
+msgstr ""
 
 #: src/contents/ui/Limiter.qml:90
 msgid "Full x6/24 bits"
-msgstr "Penuh x6/24 bit"
+msgstr ""
 
 #: src/contents/ui/Limiter.qml:90
 msgid "Full x8/16 bits"
-msgstr "Penuh x8/16 bit"
+msgstr ""
 
 #: src/contents/ui/Limiter.qml:90
 msgid "Full x8/24 bits"
-msgstr "Penuh x8/24 bit"
+msgstr ""
 
 #: src/contents/ui/Limiter.qml:90
 msgid "True peak/16 bits"
-msgstr "Puncak sejati/16 bit"
+msgstr ""
 
 #: src/contents/ui/Limiter.qml:90
 msgid "True peak/24 bits"
-msgstr "Puncak sejati/24 bit"
+msgstr ""
 
 #: src/contents/ui/Limiter.qml:100
 msgid "Dithering"
-msgstr "Dithering"
+msgstr ""
 
 #: src/contents/ui/Limiter.qml:116 src/tags_plugin_name.cpp:67
 msgid "Limiter"
-msgstr "Pembatas"
+msgstr ""
 
 #: src/contents/ui/Limiter.qml:178
 msgid "Stereo Link"
-msgstr "Tautan Stereo"
+msgstr ""
 
 #: src/contents/ui/Limiter.qml:406 src/contents/ui/Limiter.qml:648
 msgid "Automatic level"
-msgstr "Level otomatis"
+msgstr ""
 
 #: src/contents/ui/Limiter.qml:468
 msgid "Smooth"
-msgstr "Halus"
+msgstr ""
 
 #: src/contents/ui/Limiter.qml:638
 msgid "Threshold boost"
-msgstr "Dorongan ambang batas"
+msgstr ""
 
 #: src/contents/ui/Loudness.qml:87
 msgid "Contour"
-msgstr "Kontur"
+msgstr ""
 
 #: src/contents/ui/Loudness.qml:91
 msgid "Flat"
-msgstr "Datar"
+msgstr ""
 
 #: src/contents/ui/Loudness.qml:91
 msgid "ISO226-2003"
-msgstr "ISO226-2003"
+msgstr ""
 
 #: src/contents/ui/Loudness.qml:91
 msgid "Fletcher-Munson"
-msgstr "Fletcher-Munson"
+msgstr ""
 
 #: src/contents/ui/Loudness.qml:91
 msgid "Robinson-Dadson"
-msgstr "Robinson-Dadson"
+msgstr ""
 
 #: src/contents/ui/Loudness.qml:91
 msgid "ISO226-2023"
-msgstr "ISO226-2023"
+msgstr ""
 
 #: src/contents/ui/Loudness.qml:101
 msgid "FFT size"
-msgstr "Ukuran FFT"
+msgstr ""
 
 #: src/contents/ui/Loudness.qml:115
 msgid "IIR approximation"
-msgstr "Aproksimasi IIR"
+msgstr ""
 
 #: src/contents/ui/Loudness.qml:119
 msgid "Fastest"
-msgstr "Tercepat"
+msgstr ""
 
 #: src/contents/ui/Loudness.qml:119
 msgid "Normal"
-msgstr "Normal"
+msgstr ""
 
 #: src/contents/ui/Loudness.qml:119
 msgid "Best"
-msgstr "Terbaik"
+msgstr ""
 
 #: src/contents/ui/Loudness.qml:129
 msgid "Volume"
-msgstr "Volume"
+msgstr ""
 
 #: src/contents/ui/Loudness.qml:146
 msgid "Clipping range"
-msgstr "Rentang kliping"
+msgstr ""
 
 #: src/contents/ui/Loudness.qml:206
 msgid "Clipping"
-msgstr "Kliping"
+msgstr ""
 
 #: src/contents/ui/Main.qml:307
 msgid "Reset Settings?"
-msgstr "Atur Ulang Pengaturan?"
+msgstr ""
 
 #: src/contents/ui/Main.qml:308
 msgid "Are you sure you want to reset all Easy Effects settings?"
-msgstr "Apakah Anda yakin ingin mengatur ulang semua pengaturan Easy Effects?"
+msgstr ""
 
 #: src/contents/ui/Main.qml:330 src/contents/ui/Main.qml:457
 #: src/contents/ui/PipeWirePage.qml:34
 msgid "PipeWire"
-msgstr "PipeWire"
+msgstr ""
 
 #: src/contents/ui/Main.qml:338
 msgid "Effects"
-msgstr "Efek"
+msgstr ""
 
 #: src/contents/ui/Main.qml:339
 msgid "Turn effects on/off"
-msgstr "Nyalakan/matikan efek"
+msgstr ""
 
 #: src/contents/ui/Main.qml:351
 msgid "Audio effects are enabled."
-msgstr "Efek audio diaktifkan."
+msgstr ""
 
 #: src/contents/ui/Main.qml:351
 msgid "Audio effects are disabled."
-msgstr "Efek audio dinonaktifkan."
+msgstr ""
 
 #: src/contents/ui/Main.qml:403 src/contents/ui/PageStreamsEffects.qml:489
 msgid "Players"
-msgstr "Pemutar"
+msgstr ""
 
 #: src/contents/ui/Main.qml:418 src/contents/ui/PageStreamsEffects.qml:498
 msgid "Recorders"
-msgstr "Perekam"
+msgstr ""
 
 #: src/contents/ui/Main.qml:437
 msgid "Preferences"
-msgstr "Preferensi"
+msgstr ""
 
 #: src/contents/ui/Main.qml:449 src/contents/ui/ShortcutsSheet.qml:458
 #: src/contents/ui/TrayIcon.qml:212
 msgid "Shortcuts"
-msgstr "Pintasan"
+msgstr ""
 
 #: src/contents/ui/Main.qml:489
 msgid "About Easy Effects"
-msgstr "Tentang Easy Effects"
+msgstr ""
 
 #: src/contents/ui/Main.qml:497 src/contents/ui/TrayIcon.qml:231
 msgid "Quit"
-msgstr "Keluar"
+msgstr ""
 
 #: src/contents/ui/MenuAddPlugins.qml:93
 msgid "Add %1"
-msgstr "Tambahkan %1"
+msgstr ""
 
 #: src/contents/ui/MenuAddPlugins.qml:165
 msgid "Added a new effect to the pipeline: %1"
-msgstr "Efek baru ditambahkan ke pipeline: %1"
+msgstr ""
 
 #: src/contents/ui/MidSideEqualizer.qml:69
 msgid "Failed to import the Mid-Side Equalizer APO preset file."
-msgstr "Gagal mengimpor file preset APO Mid-Side Equalizer."
+msgstr ""
 
 #: src/contents/ui/MidSideEqualizer.qml:74
 msgid "Imported the Mid-Side Equalizer APO preset file."
-msgstr "File preset APO Mid-Side Equalizer berhasil diimpor."
+msgstr ""
 
 #: src/contents/ui/MidSideEqualizer.qml:76
 msgid "Imported the Mid-Side Equalizer APO preset file into the mid channel."
-msgstr "File preset APO Mid-Side Equalizer berhasil diimpor ke saluran mid."
+msgstr ""
 
 #: src/contents/ui/MidSideEqualizer.qml:78
 msgid "Imported the Mid-Side Equalizer APO preset file into the side channel."
-msgstr "File preset APO Mid-Side Equalizer berhasil diimpor ke saluran side."
+msgstr ""
 
 #: src/contents/ui/MidSideEqualizer.qml:109
 msgid ""
 "Failed to export the current Mid-Side Equalizer settings to an external APO "
 "preset file."
 msgstr ""
-"Gagal mengekspor pengaturan Mid-Side Equalizer saat ini ke file preset APO "
-"eksternal."
 
 #: src/contents/ui/MidSideEqualizer.qml:114
 msgid ""
 "Exported the current Mid-Side Equalizer settings to an external APO preset "
 "file."
 msgstr ""
-"Pengaturan Mid-Side Equalizer saat ini berhasil diekspor ke file preset APO "
-"eksternal."
 
 #: src/contents/ui/MidSideEqualizer.qml:116
 msgid ""
 "Exported the current Mid-Side Equalizer settings of the mid channel to an "
 "external APO preset file."
 msgstr ""
-"Pengaturan Mid-Side Equalizer saat ini dari saluran mid berhasil diekspor ke "
-"file preset APO eksternal."
 
 #: src/contents/ui/MidSideEqualizer.qml:118
 msgid ""
 "Exported the current Mid-Side Equalizer settings of the side channel to an "
 "external APO preset file."
 msgstr ""
-"Pengaturan Mid-Side Equalizer saat ini dari saluran side berhasil diekspor "
-"ke file preset APO eksternal."
 
 #: src/contents/ui/MidSideEqualizer.qml:198
 msgid "Pitch mid"
-msgstr "Pitch mid"
+msgstr ""
 
 #: src/contents/ui/MidSideEqualizer.qml:215
 msgid "Pitch side"
-msgstr "Pitch side"
+msgstr ""
 
 #: src/contents/ui/MidSideEqualizer.qml:244
 msgid "Mid"
-msgstr "Mid"
+msgstr ""
 
 #: src/contents/ui/MidSideEqualizer.qml:346
-#, fuzzy
 msgid "Split mid/side"
-msgstr "Pisah"
+msgstr ""
 
 #: src/contents/ui/MultibandCompressor.qml:127
 msgid "Compression mode"
-msgstr "Mode kompresi"
+msgstr ""
 
 #: src/contents/ui/MultibandCompressor.qml:234
 #: src/contents/ui/MultibandGate.qml:171 src/contents/ui/VoiceSuppressor.qml:79
 msgid "End"
-msgstr "Akhir"
+msgstr ""
 
 #: src/contents/ui/MultibandCompressor.qml:517
 #: src/contents/ui/MultibandGate.qml:490
 msgid "Low-cut"
-msgstr "Potong-rendah"
+msgstr ""
 
 #: src/contents/ui/MultibandCompressor.qml:542
 #: src/contents/ui/MultibandGate.qml:515
 msgid "High-cut"
-msgstr "Potong-tinggi"
+msgstr ""
 
 #: src/contents/ui/MultibandCompressor.qml:574
 #: src/contents/ui/MultibandGate.qml:547
 msgid "Operating mode"
-msgstr "Mode operasi"
+msgstr ""
 
 #: src/contents/ui/MultibandCompressor.qml:578
 #: src/contents/ui/MultibandGate.qml:551
 msgid "Classic"
-msgstr "Klasik"
+msgstr ""
 
 #: src/contents/ui/MultibandCompressor.qml:578
 #: src/contents/ui/MultibandGate.qml:551
 msgid "Modern"
-msgstr "Modern"
+msgstr ""
 
 #: src/contents/ui/MultibandCompressor.qml:578
 #: src/contents/ui/MultibandGate.qml:551
 msgid "Linear phase"
-msgstr "Fase linear"
+msgstr ""
 
 #: src/contents/ui/MultibandCompressor.qml:587
 #: src/contents/ui/MultibandGate.qml:560
 msgid "Sidechain boost"
-msgstr "Dorongan sidechain"
+msgstr ""
 
 #: src/contents/ui/MultibandCompressor.qml:591
 #: src/contents/ui/MultibandGate.qml:564
 msgid "Pink BT"
-msgstr "Pink BT"
+msgstr ""
 
 #: src/contents/ui/MultibandCompressor.qml:591
 #: src/contents/ui/MultibandGate.qml:564
 msgid "Pink MT"
-msgstr "Pink MT"
+msgstr ""
 
 #: src/contents/ui/MultibandCompressor.qml:591
 #: src/contents/ui/MultibandGate.qml:564
 msgid "Brown BT"
-msgstr "Brown BT"
+msgstr ""
 
 #: src/contents/ui/MultibandCompressor.qml:591
 #: src/contents/ui/MultibandGate.qml:564
 msgid "Brown MT"
-msgstr "Brown MT"
+msgstr ""
 
 #: src/contents/ui/MultibandCompressor.qml:601
 #: src/contents/ui/MultibandGate.qml:574
 msgid "Sidechain input device"
-msgstr "Perangkat masukan sidechain"
+msgstr ""
 
 #: src/contents/ui/MultibandGate.qml:197
 msgid "Reaction"
-msgstr "Reaksi"
+msgstr ""
 
 #: src/contents/ui/PageStreamsEffects.qml:128
 msgid "No audio application available"
-msgstr "Tidak ada aplikasi audio yang tersedia"
+msgstr ""
 
 #: src/contents/ui/PageStreamsEffects.qml:143
 msgid "No Effects"
-msgstr "Tidak Ada Efek"
+msgstr ""
 
 #: src/contents/ui/PageStreamsEffects.qml:144
 msgid "Audio stream not modified"
-msgstr "Aliran audio tidak dimodifikasi"
+msgstr ""
 
 #: src/contents/ui/PageStreamsEffects.qml:418
 msgid "Add effect"
-msgstr "Tambah efek"
+msgstr ""
 
 #: src/contents/ui/PageStreamsEffects.qml:432
 msgid "Close"
-msgstr "Tutup"
+msgstr ""
 
 #: src/contents/ui/PageStreamsEffects.qml:436
 msgid "Expand the list of effects pipeline"
-msgstr "Perluas daftar pipeline efek"
+msgstr ""
 
 #: src/contents/ui/PageStreamsEffects.qml:436
 msgid "Reduce the list of effects pipeline"
-msgstr "Perkecil daftar pipeline efek"
+msgstr ""
 
 #: src/contents/ui/PageStreamsEffects.qml:498
 msgid "Output device"
-msgstr "Perangkat keluaran"
+msgstr ""
 
 #: src/contents/ui/PageStreamsEffects.qml:673
 msgid "Excluded apps"
-msgstr "Aplikasi yang dikecualikan"
+msgstr ""
 
 #: src/contents/ui/PageStreamsEffects.qml:686
 msgid "Input monitoring"
-msgstr "Pemantauan masukan"
+msgstr ""
 
 #: src/contents/ui/PageStreamsEffects.qml:699
 msgid "Share audio"
-msgstr "Bagikan audio"
+msgstr ""
 
 #: src/contents/ui/PageStreamsEffects.qml:700
 msgid "Send the processed desktop audio to the virtual source"
-msgstr "Kirim audio desktop yang telah diproses ke sumber virtual"
+msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:49
 msgid "General"
-msgstr "Umum"
+msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:54
 msgid "Modules"
-msgstr "Modul"
+msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:59
 msgid "Clients"
-msgstr "Klien"
+msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:64
 msgid "Test Signal"
-msgstr "Sinyal Uji"
+msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:134
 msgid "Device Management"
-msgstr "Manajemen Perangkat"
+msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:138
 msgid ""
 "It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
 "external applications (e.g. Gnome Settings and Plasma System Settings)"
 msgstr ""
-"Disarankan untuk TIDAK menetapkan Sink/Source Easy Effects sebagai Perangkat "
-"Bawaan di aplikasi eksternal (misalnya Gnome Settings dan Plasma System "
-"Settings)"
 
 #: src/contents/ui/PipeWirePage.qml:145
 msgid "Use default input"
-msgstr "Gunakan masukan bawaan"
+msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:159 src/contents/ui/PipeWirePage.qml:203
 msgid "Name"
-msgstr "Nama"
+msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:188
 msgid "Use default output"
-msgstr "Gunakan keluaran bawaan"
+msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:227
 msgid "Server Information"
-msgstr "Informasi Server"
+msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:232
 msgid "Header version"
-msgstr "Versi header"
+msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:237
 msgid "Library version"
-msgstr "Versi pustaka"
+msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:242
 msgid "Runtime version"
-msgstr "Versi runtime"
+msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:247
 msgid "Default sampling rate"
-msgstr "Laju sampling bawaan"
+msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:252
 msgid "Minimum quantum"
-msgstr "Kuantum minimum"
+msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:257
 msgid "Maximum quantum"
-msgstr "Kuantum maksimum"
+msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:262
 msgid "Default quantum"
-msgstr "Kuantum bawaan"
+msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:284
 msgid "No Modules"
-msgstr "Tidak Ada Modul"
+msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:307
 msgid "No Clients"
-msgstr "Tidak Ada Klien"
+msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:320
 #: src/contents/ui/PreferencesSheet.qml:392
 msgid "State"
-msgstr "Status"
+msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:327
 #: src/contents/ui/PreferencesSheet.qml:399
 msgid "Enabled"
-msgstr "Diaktifkan"
+msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:368
 msgid "Both"
-msgstr "Keduanya"
+msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:378
 msgid "Waveform"
-msgstr "Bentuk gelombang"
+msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:387
 msgid "Sine wave"
-msgstr "Gelombang sinus"
+msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:398
 msgid "White noise"
-msgstr "Derau putih"
+msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:409
 msgid "Pink noise"
-msgstr "Derau merah muda"
+msgstr ""
 
 #: src/contents/ui/Pitch.qml:70
 msgid "Sequence length"
-msgstr "Panjang urutan"
+msgstr ""
 
 #: src/contents/ui/Pitch.qml:87
 msgid "Seek window"
-msgstr "Jendela pencarian"
+msgstr ""
 
 #: src/contents/ui/Pitch.qml:105
 msgid "Overlap length"
-msgstr "Panjang tumpang tindih"
+msgstr ""
 
 #: src/contents/ui/Pitch.qml:164 src/tags_plugin_name.cpp:72
 msgid "Pitch"
-msgstr "Nada"
+msgstr ""
 
 #: src/contents/ui/Pitch.qml:175
 msgid "Octaves"
-msgstr "Oktaf"
+msgstr ""
 
 #: src/contents/ui/Pitch.qml:191
 msgid "Cents"
-msgstr "Sen"
+msgstr ""
 
 #: src/contents/ui/Pitch.qml:207
 msgid "Semitones"
-msgstr "Seminada"
+msgstr ""
 
 #: src/contents/ui/Pitch.qml:223
 msgid "Tempo difference"
-msgstr "Perbedaan tempo"
+msgstr ""
 
 #: src/contents/ui/Pitch.qml:240
 msgid "Rate difference"
-msgstr "Perbedaan laju"
+msgstr ""
 
 #: src/contents/ui/Pitch.qml:292
 msgid "Quick seek"
-msgstr "Pencarian cepat"
+msgstr ""
 
 #: src/contents/ui/PluginNotAvailable.qml:34
 msgid "Effect Not Available"
-msgstr "Efek Tidak Tersedia"
+msgstr ""
 
 #: src/contents/ui/PluginNotAvailable.qml:35
 msgid "%1 cannot be used because %2 is not installed on the system."
-msgstr "%1 tidak dapat digunakan karena %2 tidak terinstal di sistem."
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:38
 msgid "Background Service"
-msgstr "Layanan Latar Belakang"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:44
 msgid "Audio"
-msgstr "Audio"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:50
 msgid "Spectrum Analyzer"
-msgstr "Penganalisis Spektrum"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:56
 msgid "Style"
-msgstr "Gaya"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:74
 msgid "Experimental Features"
-msgstr "Fitur Eksperimental"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:87
 msgid "Enable service mode"
-msgstr "Aktifkan mode layanan"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:88
 msgid "Easy Effects is active in background when the window is closed."
-msgstr "Easy Effects aktif di latar belakang saat jendela ditutup."
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:100
 msgid "Autostart on login"
-msgstr "Mulai otomatis saat masuk"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:101
 msgid "Easy Effects is launched at user session startup."
-msgstr "Easy Effects diluncurkan saat sesi pengguna dimulai."
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:114
 msgid "Show the tray icon"
-msgstr "Tampilkan ikon baki"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:127
 msgid "Do not show the application window"
-msgstr "Jangan tampilkan jendela aplikasi"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:128
 msgid ""
@@ -2316,26 +2289,22 @@ msgid ""
 "should not be enabled. It is intended only as a workaround for systems that "
 "do not work well with the autostart of Easy Effects."
 msgstr ""
-"Jangan tampilkan jendela saat aplikasi dimulai. Secara umum opsi ini tidak "
-"perlu diaktifkan. Opsi ini hanya dimaksudkan sebagai solusi sementara untuk "
-"sistem yang tidak berfungsi dengan baik saat Easy Effects dijalankan "
-"otomatis."
 
 #: src/contents/ui/PreferencesSheet.qml:148
 msgid "Process all output streams"
-msgstr "Proses semua aliran keluaran"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:160
 msgid "Process all input streams"
-msgstr "Proses semua aliran masukan"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:172
 msgid "Ignore streams from monitor of devices"
-msgstr "Abaikan aliran dari monitor perangkat"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:184
 msgid "Use cubic volume"
-msgstr "Gunakan volume kubik"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:185
 msgid ""
@@ -2343,25 +2312,20 @@ msgid ""
 "percentages results in a lower perceived volume while the loudness appears "
 "to change more evenly across the slider."
 msgstr ""
-"Gunakan skala kubik untuk volume aliran alih-alih skala linear. Persentase "
-"rendah menghasilkan volume yang terdengar lebih kecil sementara kenyaringan "
-"tampak berubah lebih merata di sepanjang penggeser."
 
 #: src/contents/ui/PreferencesSheet.qml:197
 msgid "Activate monitor channel volumes"
-msgstr "Aktifkan volume saluran monitor"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:198
 msgid ""
 "Activate if controlling Easy Effects virtual devices volume and mute state "
 "by third party applications is required."
 msgstr ""
-"Aktifkan jika diperlukan untuk mengontrol volume dan status mute perangkat "
-"virtual Easy Effects oleh aplikasi pihak ketiga."
 
 #: src/contents/ui/PreferencesSheet.qml:210
 msgid "Ignore system notifications"
-msgstr "Abaikan notifikasi sistem"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:211
 msgid ""
@@ -2369,21 +2333,18 @@ msgid ""
 "better to ignore them, but for some presets it may be recommended since they "
 "could sound too loud."
 msgstr ""
-"Memproses notifikasi sistem dapat menyebabkan suara berderak, sehingga lebih "
-"baik diabaikan, namun untuk beberapa preset hal ini mungkin disarankan "
-"karena suaranya bisa terlalu keras."
 
 #: src/contents/ui/PreferencesSheet.qml:223
 msgid "Enable/disable input monitoring"
-msgstr "Aktifkan/nonaktifkan pemantauan masukan"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:235
 msgid "Mic monitor plays to output effects pipeline"
-msgstr "Monitor mikrofon diputar ke pipeline efek keluaran"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:247
 msgid "Copy the input audio buffer"
-msgstr "Salin buffer audio masukan"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:248
 msgid ""
@@ -2392,181 +2353,171 @@ msgid ""
 "can happen when external applications are recording from Easy Effects "
 "virtual devices monitors."
 msgstr ""
-"Gunakan salinan buffer audio masukan yang diberikan oleh server suara saat "
-"memproses audio di dalam plugin Easy Effects. Ini memperbaiki gangguan audio "
-"yang dapat terjadi saat aplikasi eksternal merekam dari monitor perangkat "
-"virtual Easy Effects."
 
 #: src/contents/ui/PreferencesSheet.qml:260
 msgid "Reset Global Bypass on device change"
-msgstr "Reset Bypass Global saat perangkat berubah"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:261
 msgid "Automatically enable effects when the audio device changes."
-msgstr "Otomatis aktifkan efek saat perangkat audio berubah."
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:273
 msgid "Enable the link delay"
-msgstr "Aktifkan penundaan tautan"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:274
 msgid "When enabled, a delay is applied before linking the audio filters."
-msgstr "Saat diaktifkan, penundaan diterapkan sebelum filter audio ditautkan."
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:286
 msgid "Link delay"
-msgstr "Penundaan tautan"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:303
 msgid "Enable the inactivity timeout"
-msgstr "Aktifkan batas waktu ketidakaktifan"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:304
 msgid ""
 "When all streams are inactive, Easy Effects pipeline remains loaded for an "
 "extra amount of time."
 msgstr ""
-"Saat semua aliran tidak aktif, pipeline Easy Effects tetap dimuat selama "
-"waktu tambahan."
 
 #: src/contents/ui/PreferencesSheet.qml:316
 msgid "Inactivity timeout"
-msgstr "Batas waktu ketidakaktifan"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:331
 msgid "Level meters frame rate cap"
-msgstr "Batas laju bingkai pengukur level"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:332
 msgid "Maximum level meter update rate."
-msgstr "Laju pembaruan pengukur level maksimum."
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:346
 msgid "Level meters label"
-msgstr "Label pengukur level"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:347
 msgid ""
 "The time it takes for the level meter labels to be updated when the current "
 "level is below the last highest one."
 msgstr ""
-"Waktu yang dibutuhkan untuk memperbarui label pengukur level saat level saat "
-"ini berada di bawah level tertinggi sebelumnya."
 
 #: src/contents/ui/PreferencesSheet.qml:364
 msgid "Enable level meters animation"
-msgstr "Aktifkan animasi pengukur level"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:373
 msgid "Level meters animation duration"
-msgstr "Durasi animasi pengukur level"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:411
 msgid "Audio delay compensation"
-msgstr "Kompensasi penundaan audio"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:426
 msgid "Graph"
-msgstr "Grafik"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:437
 msgid "Bars"
-msgstr "Batang"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:437
 msgid "Lines"
-msgstr "Garis"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:437
 msgid "Dots"
-msgstr "Titik-titik"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:437
 msgid "Area"
-msgstr "Area"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:447
 msgid "Dynamic scale"
-msgstr "Skala dinamis"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:459
 msgid "Logarithmic frequency axis"
-msgstr "Sumbu frekuensi logaritmik"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:471
 msgid "Points"
-msgstr "Titik"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:486
 msgid "Height"
-msgstr "Tinggi"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:493
 msgid "px"
-msgstr "px"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:500
 msgid "Spectrum frame rate cap"
-msgstr "Batas laju bingkai spektrum"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:501
 msgid "Maximum spectrum update rate."
-msgstr "Laju pembaruan spektrum maksimum."
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:516
 msgid "Frequency Range"
-msgstr "Rentang Frekuensi"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:523
 msgid "Minimum"
-msgstr "Minimum"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:539
 msgid "Maximum"
-msgstr "Maksimum"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:561
 msgid "Database autosave interval"
-msgstr "Interval penyimpanan otomatis basis data"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:575
 msgid "Most used presets"
-msgstr "Preset yang paling sering digunakan"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:593
 msgid "Window"
-msgstr "Jendela"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:602
 msgid "Force KDE's Breeze theme when Easy Effects starts"
-msgstr "Paksa tema Breeze KDE saat Easy Effects dimulai"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:603
 msgid ""
 "It is necessary to restart the service for changes in this setting to take "
 "effect."
-msgstr "Layanan perlu dimulai ulang agar perubahan pengaturan ini berlaku."
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:616
 msgid "Reduce effects list controls"
-msgstr "Kurangi kontrol daftar efek"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:617
 msgid ""
 "Action buttons in the effects list are moved inside a context menu for a "
 "more compact view."
 msgstr ""
-"Tombol tindakan dalam daftar efek dipindahkan ke dalam menu konteks untuk "
-"tampilan yang lebih ringkas."
 
 #: src/contents/ui/PreferencesSheet.qml:628
 #: src/contents/ui/PreferencesSheet.qml:665
 msgid "Color scheme"
-msgstr "Skema warna"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:642
 msgid "Force English language"
-msgstr "Paksa bahasa Inggris"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:643
 msgid ""
@@ -2574,288 +2525,277 @@ msgid ""
 "Useful if the translation in the local language is incomplete or "
 "incomprehensible. A restart of the service is required to apply this option."
 msgstr ""
-"Jangan terjemahkan antarmuka pengguna dan tampilkan teks dalam bahasa "
-"Inggris. Berguna jika terjemahan dalam bahasa lokal tidak lengkap atau tidak "
-"dapat dipahami. Layanan perlu dimulai ulang untuk menerapkan opsi ini."
 
 #: src/contents/ui/PreferencesSheet.qml:654
 msgid "Graphs"
-msgstr "Grafik"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:669
 msgid "Automatic"
-msgstr "Otomatis"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:669
 msgid "Light"
-msgstr "Terang"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:669
 msgid "Dark"
-msgstr "Gelap"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:680
 msgid "Color theme"
-msgstr "Tema warna"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:684
 msgid "Green"
-msgstr "Hijau"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:684
 msgid "Green neon"
-msgstr "Hijau neon"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:684
 msgid "Orange"
-msgstr "Oranye"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:684
 msgid "Yellow"
-msgstr "Kuning"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:684
 msgid "Blue"
-msgstr "Biru"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:684
 msgid "Purple"
-msgstr "Ungu"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:684
 msgid "Grey"
-msgstr "Abu-abu"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:684
 msgid "User"
-msgstr "Pengguna"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:692
 msgctxt "@label"
 msgid "Background"
-msgstr "Latar belakang"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:701
 msgctxt "@label"
 msgid "Plot area background"
-msgstr "Latar belakang area plot"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:710
 msgctxt "@label"
 msgid "Series colors"
-msgstr "Warna seri"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:719
 msgctxt "@label"
 msgid "Axis labels text color"
-msgstr "Warna teks label sumbu"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:728
 msgctxt "@label"
 msgid "Axis labels background color"
-msgstr "Warna latar belakang label sumbu"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:737
 msgctxt "@label"
 msgid "Border color"
-msgstr "Warna batas"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:746
 msgid "Line width"
-msgstr "Lebar garis"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:760
 msgid "Show grid lines"
-msgstr "Tampilkan garis kisi"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:778
 msgid "Autoload delay"
-msgstr "Penundaan muat otomatis"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:779
 msgid ""
 "Delay between receiving a new device route and the call to autoload a preset."
 msgstr ""
-"Penundaan antara penerimaan rute perangkat baru dan pemanggilan untuk memuat "
-"preset secara otomatis."
 
 #: src/contents/ui/PreferencesSheet.qml:795
 msgid "Ignore the blocklist from presets"
-msgstr "Abaikan daftar blokir dari preset"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:796
 msgid ""
 "If enabled, the list of excluded apps set in the loaded preset is ignored "
 "and does not replace the one set by the user."
 msgstr ""
-"Jika diaktifkan, daftar aplikasi yang dikecualikan yang ditetapkan dalam "
-"preset yang dimuat akan diabaikan dan tidak menggantikan yang ditetapkan "
-"oleh pengguna."
 
 #: src/contents/ui/PreferencesSheet.qml:817
 msgid "Global shortcuts"
-msgstr "Pintasan global"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:818
 msgid "Enables support for XDG global shortcuts."
-msgstr "Mengaktifkan dukungan untuk pintasan global XDG."
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:830
 msgid "Native window of effects"
-msgstr "Jendela asli efek"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:831
 msgid "Allows the native user interface of effects to be shown/hidden."
 msgstr ""
-"Memungkinkan antarmuka pengguna asli efek untuk ditampilkan/disembunyikan."
 
 #: src/contents/ui/PreferencesSheet.qml:843
 msgid "Update frequency"
-msgstr "Frekuensi pembaruan"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:844
 msgid "Related to LV2 plugins."
-msgstr "Berkaitan dengan plugin LV2."
+msgstr ""
 
 #: src/contents/ui/PresetsAutoloadPage.qml:55
 #: src/contents/ui/PresetsAutoloadPage.qml:214
 msgid "Device"
-msgstr "Perangkat"
+msgstr ""
 
 #: src/contents/ui/PresetsAutoloadPage.qml:61
 #: src/contents/ui/PresetsAutoloadPage.qml:256
 msgid "Route"
-msgstr "Rute"
+msgstr ""
 
 #: src/contents/ui/PresetsAutoloadPage.qml:125
 #: src/contents/ui/PresetsAutoloadPage.qml:269
 msgid "Local preset"
-msgstr "Preset lokal"
+msgstr ""
 
 #: src/contents/ui/PresetsAutoloadPage.qml:136
 msgid "Create"
-msgstr "Buat"
+msgstr ""
 
 #: src/contents/ui/PresetsAutoloadPage.qml:138
 msgid "Create a new autoload preset"
-msgstr "Buat preset muat otomatis baru"
+msgstr ""
 
 #: src/contents/ui/PresetsAutoloadPage.qml:228
 msgid "Remove this autoload preset"
-msgstr "Hapus preset muat otomatis ini"
+msgstr ""
 
 #: src/contents/ui/PresetsAutoloadPage.qml:242
 msgid "Description"
-msgstr "Deskripsi"
+msgstr ""
 
 #: src/contents/ui/PresetsCommunityPage.qml:78
 msgid "Refresh"
-msgstr "Segarkan"
+msgstr ""
 
 #: src/contents/ui/PresetsCommunityPage.qml:134
 #: src/contents/ui/PresetsLocalPage.qml:306
 msgid "Load this preset"
-msgstr "Muat preset ini"
+msgstr ""
 
 #: src/contents/ui/PresetsCommunityPage.qml:148
 msgid "Copy to local presets"
-msgstr "Salin ke preset lokal"
+msgstr ""
 
 #: src/contents/ui/PresetsCommunityPage.qml:153
 msgid "Imported the %1 community preset to the list of local presets."
-msgstr "Mengimpor preset komunitas %1 ke daftar preset lokal."
+msgstr ""
 
 #: src/contents/ui/PresetsCommunityPage.qml:155
 msgid "Failed to import the %1 community preset to the list of local presets."
-msgstr "Gagal mengimpor preset komunitas %1 ke daftar preset lokal."
+msgstr ""
 
 #: src/contents/ui/PresetsDialog.qml:99 src/contents/ui/PresetsDialog.qml:156
 msgid "Local"
-msgstr "Lokal"
+msgstr ""
 
 #: src/contents/ui/PresetsDialog.qml:107 src/contents/ui/PresetsDialog.qml:156
 msgid "Community"
-msgstr "Komunitas"
+msgstr ""
 
 #: src/contents/ui/PresetsDialog.qml:115
 msgid "Autoload"
-msgstr "Muat otomatis"
+msgstr ""
 
 #: src/contents/ui/PresetsDialog.qml:154
 msgid "No preset loaded"
-msgstr "Tidak ada preset yang dimuat"
+msgstr ""
 
 #: src/contents/ui/PresetsDialog.qml:174
 msgid "Fallback Preset"
-msgstr "Preset Cadangan"
+msgstr ""
 
 #: src/contents/ui/PresetsLocalPage.qml:52
 msgid "Imported a new local preset from an external file."
-msgstr "Mengimpor preset lokal baru dari file eksternal."
+msgstr ""
 
 #: src/contents/ui/PresetsLocalPage.qml:54
 msgid "Failed to import a new local preset from an external file."
-msgstr "Gagal mengimpor preset lokal baru dari file eksternal."
+msgstr ""
 
 #: src/contents/ui/PresetsLocalPage.qml:63
 msgid "Export Presets"
-msgstr "Ekspor Preset"
+msgstr ""
 
 #: src/contents/ui/PresetsLocalPage.qml:66
 msgid "Exported all presets to an external folder."
-msgstr "Mengekspor semua preset ke folder eksternal."
+msgstr ""
 
 #: src/contents/ui/PresetsLocalPage.qml:68
 msgid "Failed to export all presets to an external folder."
-msgstr "Gagal mengekspor semua preset ke folder eksternal."
+msgstr ""
 
 #: src/contents/ui/PresetsLocalPage.qml:83
 msgid "New preset name"
-msgstr "Nama preset baru"
+msgstr ""
 
 #: src/contents/ui/PresetsLocalPage.qml:99
 msgid "Import preset file"
-msgstr "Impor file preset"
+msgstr ""
 
 #: src/contents/ui/PresetsLocalPage.qml:108
 msgid "Create new preset"
-msgstr "Buat preset baru"
+msgstr ""
 
 #: src/contents/ui/PresetsLocalPage.qml:118
 msgid "Created a new local preset: %1"
-msgstr "Membuat preset lokal baru: %1"
+msgstr ""
 
 #: src/contents/ui/PresetsLocalPage.qml:122
 msgid "Failed to create a new local preset: %1"
-msgstr "Gagal membuat preset lokal baru: %1"
+msgstr ""
 
 #: src/contents/ui/PresetsLocalPage.qml:150
 msgid "Export presets"
-msgstr "Ekspor preset"
+msgstr ""
 
 #: src/contents/ui/PresetsLocalPage.qml:212
 msgid "Save Preset"
-msgstr "Simpan Preset"
+msgstr ""
 
 #: src/contents/ui/PresetsLocalPage.qml:213
 msgid ""
 "Save current settings to the preset:\n"
 "%1"
 msgstr ""
-"Simpan pengaturan saat ini ke preset:\n"
-"%1"
 
 #: src/contents/ui/PresetsLocalPage.qml:217
 msgid "Saved the current settings to %1 local preset."
-msgstr "Menyimpan pengaturan saat ini ke preset lokal %1."
+msgstr ""
 
 #: src/contents/ui/PresetsLocalPage.qml:219
 msgid "Failed to save the current settings to %1 local preset."
-msgstr "Gagal menyimpan pengaturan saat ini ke preset lokal %1."
+msgstr ""
 
 #: src/contents/ui/PresetsLocalPage.qml:227
 msgid "Remove Preset"
-msgstr "Hapus Preset"
+msgstr ""
 
 #: src/contents/ui/PresetsLocalPage.qml:228
 msgid ""
@@ -2863,1977 +2803,672 @@ msgid ""
 "%1\n"
 "from the list?"
 msgstr ""
-"Apakah Anda yakin ingin menghapus preset\n"
-"%1\n"
-"dari daftar?"
 
 #: src/contents/ui/PresetsLocalPage.qml:232
 msgid "Removed the %1 local preset."
-msgstr "Menghapus preset lokal %1."
+msgstr ""
 
 #: src/contents/ui/PresetsLocalPage.qml:234
 msgid "Failed to remove the %1 local preset."
-msgstr "Gagal menghapus preset lokal %1."
+msgstr ""
 
 #: src/contents/ui/PresetsLocalPage.qml:242
 msgid "Rename Preset"
-msgstr "Ubah Nama Preset"
+msgstr ""
 
 #: src/contents/ui/PresetsLocalPage.qml:256
 msgid "Renamed the %1 local preset to %2"
-msgstr "Mengubah nama preset lokal %1 menjadi %2"
+msgstr ""
 
 #: src/contents/ui/PresetsLocalPage.qml:259
 msgid "Failed to rename the %1 local preset to %2"
-msgstr "Gagal mengubah nama preset lokal %1 menjadi %2"
+msgstr ""
 
 #: src/contents/ui/PresetsLocalPage.qml:314
 msgid "Save settings to this preset"
-msgstr "Simpan pengaturan ke preset ini"
+msgstr ""
 
 #: src/contents/ui/PresetsLocalPage.qml:322
 msgid "Rename this preset"
-msgstr "Ubah nama preset ini"
+msgstr ""
 
 #: src/contents/ui/PresetsLocalPage.qml:330
 msgid "Delete this preset"
-msgstr "Hapus preset ini"
+msgstr ""
 
 #: src/contents/ui/Reverb.qml:66
 msgid "Room size"
-msgstr "Ukuran ruangan"
+msgstr ""
 
 #: src/contents/ui/Reverb.qml:70
 msgid "Small"
-msgstr "Kecil"
+msgstr ""
 
 #: src/contents/ui/Reverb.qml:70
 msgid "Medium"
-msgstr "Sedang"
+msgstr ""
 
 #: src/contents/ui/Reverb.qml:70
 msgid "Large"
-msgstr "Besar"
+msgstr ""
 
 #: src/contents/ui/Reverb.qml:70
 msgid "Tunnel-like"
-msgstr "Seperti terowongan"
+msgstr ""
 
 #: src/contents/ui/Reverb.qml:70
 msgid "Large/smooth"
-msgstr "Besar/halus"
+msgstr ""
 
 #: src/contents/ui/Reverb.qml:70
 msgid "Experimental"
-msgstr "Eksperimental"
+msgstr ""
 
 #: src/contents/ui/Reverb.qml:79
 msgid "Decay time"
-msgstr "Waktu peluruhan"
+msgstr ""
 
 #: src/contents/ui/Reverb.qml:95
 msgid "Pre delay"
-msgstr "Penundaan pra"
+msgstr ""
 
 #: src/contents/ui/Reverb.qml:111
 msgid "Diffusion"
-msgstr "Difusi"
+msgstr ""
 
 #: src/contents/ui/Reverb.qml:137
 msgid "High frequency damping"
-msgstr "Peredaman frekuensi tinggi"
+msgstr ""
 
 #: src/contents/ui/Reverb.qml:154
 msgid "Bass cut"
-msgstr "Potong bass"
+msgstr ""
 
 #: src/contents/ui/Reverb.qml:171
 msgid "Treble cut"
-msgstr "Potong treble"
+msgstr ""
 
 #: src/contents/ui/Reverb.qml:228
 msgid "Reverberation Presets"
-msgstr "Preset Reverberasi"
+msgstr ""
 
 #: src/contents/ui/Reverb.qml:232
 msgid "Ambience"
-msgstr "Ambiens"
+msgstr ""
 
 #: src/contents/ui/Reverb.qml:247
 msgid "Empty walls"
-msgstr "Dinding kosong"
+msgstr ""
 
 #: src/contents/ui/Reverb.qml:262
 msgid "Room"
-msgstr "Ruangan"
+msgstr ""
 
 #: src/contents/ui/Reverb.qml:277
 msgid "Large empty hall"
-msgstr "Aula kosong besar"
+msgstr ""
 
 #: src/contents/ui/Reverb.qml:287
 msgid "Disco"
-msgstr "Disko"
+msgstr ""
 
 #: src/contents/ui/Reverb.qml:297
 msgid "Large occupied hall"
-msgstr "Aula berisi besar"
+msgstr ""
 
 #: src/contents/ui/RNNoise.qml:60
 msgid "Imported a new RNNoise model file."
-msgstr "Mengimpor file model RNNoise baru."
+msgstr ""
 
 #: src/contents/ui/RNNoise.qml:62
 msgid "Failed to import the RNNoise model file."
-msgstr "Gagal mengimpor file model RNNoise."
+msgstr ""
 
 #: src/contents/ui/RNNoise.qml:73 src/contents/ui/RNNoise.qml:84
 #: src/contents/ui/RNNoise.qml:298 src/contents/ui/RNNoise.qml:300
 msgid "Standard RNNoise model"
-msgstr "Model RNNoise standar"
+msgstr ""
 
 #: src/contents/ui/RNNoise.qml:75
 msgid "Standard RNNoise model loaded."
-msgstr "Model RNNoise standar dimuat."
+msgstr ""
 
 #: src/contents/ui/RNNoise.qml:80 src/contents/ui/RNNoise.qml:302
 msgid "Using %1 Model"
-msgstr "Menggunakan Model %1"
+msgstr ""
 
 #: src/contents/ui/RNNoise.qml:82
 msgid "Loaded the %1 RNNoise model."
-msgstr "Memuat model RNNoise %1."
+msgstr ""
 
 #: src/contents/ui/RNNoise.qml:86
 msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
-msgstr "Gagal memuat model %1. Kembali ke model RNNoise standar."
+msgstr ""
 
 #: src/contents/ui/RNNoise.qml:105 src/contents/ui/Speex.qml:118
 msgid "Voice detection"
-msgstr "Deteksi suara"
+msgstr ""
 
 #: src/contents/ui/RNNoise.qml:142
 msgid "Wet level"
-msgstr "Level basah"
+msgstr ""
 
 #: src/contents/ui/RNNoise.qml:182
 msgid "Use the Standard model"
-msgstr "Gunakan model Standar"
+msgstr ""
 
 #: src/contents/ui/RNNoise.qml:193
 msgid "User Models"
-msgstr "Model Pengguna"
+msgstr ""
 
 #: src/contents/ui/RNNoise.qml:259
 msgid "Delete this model"
-msgstr "Hapus model ini"
+msgstr ""
 
 #: src/contents/ui/RNNoise.qml:264
 msgid "Removed the %1 RNNoise model."
-msgstr "Menghapus model RNNoise %1."
+msgstr ""
 
 #: src/contents/ui/RNNoise.qml:266
 msgid "Failed to remove the %1 RNNoise model."
-msgstr "Gagal menghapus model RNNoise %1."
+msgstr ""
 
 #: src/contents/ui/RNNoise.qml:337
 msgid "Import model"
-msgstr "Impor model"
+msgstr ""
 
 #: src/contents/ui/ShortcutsSheet.qml:67
 msgid "Show help"
-msgstr "Tampilkan bantuan"
+msgstr ""
 
 #: src/contents/ui/ShortcutsSheet.qml:80
 msgid "Toggle fullscreen"
-msgstr "Alihkan layar penuh"
+msgstr ""
 
 #: src/contents/ui/ShortcutsSheet.qml:108
 #: src/contents/ui/ShortcutsSheet.qml:359 src/global_shortcuts.hpp:83
 msgid "Toggle global bypass"
-msgstr "Alihkan bypass global"
+msgstr ""
 
 #: src/contents/ui/ShortcutsSheet.qml:136
 msgid "Close the window"
-msgstr "Tutup jendela"
+msgstr ""
 
 #: src/contents/ui/ShortcutsSheet.qml:164
 msgid "Terminate Easy Effects service"
-msgstr "Hentikan layanan Easy Effects"
+msgstr ""
 
 #: src/contents/ui/ShortcutsSheet.qml:204
 msgid "Toggle process all inputs"
-msgstr "Alihkan proses semua masukan"
+msgstr ""
 
 #: src/contents/ui/ShortcutsSheet.qml:244
 msgid "Toggle process all outputs"
-msgstr "Alihkan proses semua keluaran"
+msgstr ""
 
 #: src/contents/ui/ShortcutsSheet.qml:257
 #: src/contents/ui/ShortcutsSheet.qml:270
 #: src/contents/ui/ShortcutsSheet.qml:298
 msgid "Can be used on numeric controls"
-msgstr "Dapat digunakan pada kontrol numerik"
+msgstr ""
 
 #: src/contents/ui/ShortcutsSheet.qml:289
 msgid "Mouse wheel"
-msgstr "Roda mouse"
+msgstr ""
 
 #: src/contents/ui/ShortcutsSheet.qml:313
 msgid "Global Shortcuts"
-msgstr "Pintasan Global"
+msgstr ""
 
 #: src/contents/ui/ShortcutsSheet.qml:399 src/global_shortcuts.hpp:86
 msgid "Toggle microphone monitoring"
-msgstr "Alihkan pemantauan mikrofon"
+msgstr ""
 
 #: src/contents/ui/ShortcutsSheet.qml:439 src/global_shortcuts.hpp:89
 msgid "Toggle audio sharing"
-msgstr "Alihkan berbagi audio"
+msgstr ""
 
 #: src/contents/ui/Speex.qml:64
 msgid "Denoise"
-msgstr "Penghilang derau"
+msgstr ""
 
 #: src/contents/ui/Speex.qml:86
 msgid "Dereverberation"
-msgstr "Penghilang reverberasi"
+msgstr ""
 
 #: src/contents/ui/Speex.qml:97
 msgid "Noise suppression"
-msgstr "Penekan kebisingan"
+msgstr ""
 
 #: src/contents/ui/Speex.qml:113
 msgid "Voice Activity Probability"
-msgstr "Probabilitas Aktivitas Suara"
+msgstr ""
 
 #: src/contents/ui/Speex.qml:149
 msgid "Continue"
-msgstr "Lanjutkan"
+msgstr ""
 
 #: src/contents/ui/StereoTools.qml:65
 msgid "Softclip"
-msgstr "Softclip"
+msgstr ""
 
 #: src/contents/ui/StereoTools.qml:94
 msgid "S/C Level"
-msgstr "Level S/C"
+msgstr ""
 
 #: src/contents/ui/StereoTools.qml:110
 msgid "Stereo Matrix"
-msgstr "Matriks Stereo"
+msgstr ""
 
 #: src/contents/ui/StereoTools.qml:127
 msgid "LR > LR (Stereo default)"
-msgstr "LR > LR (Stereo bawaan)"
+msgstr ""
 
 #: src/contents/ui/StereoTools.qml:127
 msgid "LR > MS (Stereo to Mid-Side)"
-msgstr "LR > MS (Stereo ke Mid-Side)"
+msgstr ""
 
 #: src/contents/ui/StereoTools.qml:127
 msgid "MS > LR (Mid-Side to Stereo)"
-msgstr "MS > LR (Mid-Side ke Stereo)"
+msgstr ""
 
 #: src/contents/ui/StereoTools.qml:127
 msgid "LR > LL (Mono left channel)"
-msgstr "LR > LL (Mono saluran kiri)"
+msgstr ""
 
 #: src/contents/ui/StereoTools.qml:127
 msgid "LR > RR (Mono right channel)"
-msgstr "LR > RR (Mono saluran kanan)"
+msgstr ""
 
 #: src/contents/ui/StereoTools.qml:127
 msgid "LR > L+R (Mono sum L+R)"
-msgstr "LR > L+R (Jumlah mono L+R)"
+msgstr ""
 
 #: src/contents/ui/StereoTools.qml:127
 msgid "LR > RL (Stereo flip channels)"
-msgstr "LR > RL (Balik saluran stereo)"
+msgstr ""
 
 #: src/contents/ui/StereoTools.qml:136
 msgid "Side level"
-msgstr "Level sisi"
+msgstr ""
 
 #: src/contents/ui/StereoTools.qml:154
 msgid "Side balance"
-msgstr "Keseimbangan sisi"
+msgstr ""
 
 #: src/contents/ui/StereoTools.qml:170
 msgid "Middle level"
-msgstr "Level tengah"
+msgstr ""
 
 #: src/contents/ui/StereoTools.qml:188
 msgid "Middle panorama"
-msgstr "Panorama tengah"
+msgstr ""
 
 #: src/contents/ui/StereoTools.qml:222 src/contents/ui/StereoTools.qml:254
 msgid "Invert phase"
-msgstr "Balik fase"
+msgstr ""
 
 #: src/contents/ui/StereoTools.qml:311
 msgid "Stereo base"
-msgstr "Basis stereo"
+msgstr ""
 
 #: src/contents/ui/StereoTools.qml:327
 msgid "Stereo phase"
-msgstr "Fase stereo"
+msgstr ""
 
 #: src/contents/ui/TrayIcon.qml:61
 msgid "Effects disabled"
-msgstr "Efek dinonaktifkan"
+msgstr ""
 
 #: src/contents/ui/TrayIcon.qml:63
 msgid "Effects enabled"
-msgstr "Efek diaktifkan"
+msgstr ""
 
 #: src/contents/ui/TrayIcon.qml:102 src/contents/ui/TrayIcon.qml:122
 msgid "Preset Loaded"
-msgstr "Preset Dimuat"
+msgstr ""
 
 #: src/contents/ui/TrayIcon.qml:133 src/contents/ui/TrayIcon.qml:145
 msgid "Clear List"
-msgstr "Bersihkan Daftar"
+msgstr ""
 
 #: src/contents/ui/TrayIcon.qml:134 src/contents/ui/TrayIcon.qml:146
 msgid "Are you sure you want to clear this list?"
-msgstr "Apakah Anda yakin ingin membersihkan daftar ini?"
+msgstr ""
 
 #: src/contents/ui/TrayIcon.qml:155
 msgid "Input Presets"
-msgstr "Preset Masukan"
+msgstr ""
 
 #: src/contents/ui/TrayIcon.qml:170
 msgid "Output Presets"
-msgstr "Preset Keluaran"
+msgstr ""
 
 #: src/contents/ui/TrayIcon.qml:201
 msgid "Active"
-msgstr "Aktif"
+msgstr ""
 
 #: src/contents/ui/VoiceSuppressor.qml:95
 msgid "Correlation"
-msgstr "Korelasi"
+msgstr ""
 
 #: src/contents/ui/VoiceSuppressor.qml:111
 msgid "Phase difference"
-msgstr "Perbedaan fase"
+msgstr ""
 
 #: src/contents/ui/VoiceSuppressor.qml:127
 msgid "Minimum kurtosis"
-msgstr "Kurtosis minimum"
+msgstr ""
 
 #: src/contents/ui/VoiceSuppressor.qml:142
 msgid "Maximum instantaneous frequency"
-msgstr "Frekuensi sesaat maksimum"
+msgstr ""
 
 #: src/contents/ui/VoiceSuppressor.qml:174
 msgid "Inverted mode"
-msgstr "Mode terbalik"
+msgstr ""
 
 #: src/main.cpp:382
 msgid "Global audio effects"
-msgstr "Efek audio global"
+msgstr ""
 
 #: src/main.cpp:383
 msgid "© 2017-2026 Easy Effects Team"
-msgstr "© 2017-2026 Tim Easy Effects"
+msgstr ""
 
 #: src/main.cpp:385
 msgid "Wellington Wallace"
-msgstr "Wellington Wallace"
+msgstr ""
 
 #: src/main.cpp:385
 msgctxt "@info:credit"
 msgid "Developer"
-msgstr "Pengembang"
+msgstr ""
 
 #: src/main.cpp:388
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Nama Anda"
+msgstr ""
 
 #: src/main.cpp:388
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "Email Anda"
+msgstr ""
 
 #: src/plugin_base.cpp:324
 msgid "(Mic)"
-msgstr "(Mikrofon)"
+msgstr ""
 
 #: src/plugin_base.cpp:327
 msgid "(Speakers)"
-msgstr "(Speaker)"
+msgstr ""
 
 #: src/plugin_base.cpp:334
 msgid "Output Level Meter"
-msgstr "Pengukur Level Keluaran"
+msgstr ""
 
 #: src/presets_manager.cpp:800 src/presets_manager.cpp:807
 #: src/presets_manager.cpp:817 src/presets_manager.cpp:824
 #: src/presets_manager.cpp:834 src/presets_manager.cpp:843
 msgid "Preset not loaded correctly"
-msgstr "Preset tidak dimuat dengan benar"
+msgstr ""
 
 #: src/presets_manager.cpp:800
 msgid "Wrong format in excluded apps list"
-msgstr "Format salah dalam daftar aplikasi yang dikecualikan"
+msgstr ""
 
 #: src/presets_manager.cpp:808
 msgid "Generic error while loading excluded apps list"
-msgstr "Kesalahan umum saat memuat daftar aplikasi yang dikecualikan"
+msgstr ""
 
 #: src/presets_manager.cpp:817
 msgid "Wrong format in effects list"
-msgstr "Format salah dalam daftar efek"
+msgstr ""
 
 #: src/presets_manager.cpp:824
 msgid "Generic error while loading effects list"
-msgstr "Kesalahan umum saat memuat daftar efek"
+msgstr ""
 
 #: src/presets_manager.cpp:835
 msgid "One or more parameters have a wrong format"
-msgstr "Satu atau lebih parameter memiliki format yang salah"
+msgstr ""
 
 #: src/presets_manager.cpp:844
 msgid "Generic error while loading the effect"
-msgstr "Kesalahan umum saat memuat efek"
+msgstr ""
 
 #: src/pw_model_nodes.cpp:492
 msgid "Running"
-msgstr "Berjalan"
+msgstr ""
 
 #: src/pw_model_nodes.cpp:494
 msgid "Suspended"
-msgstr "Ditangguhkan"
+msgstr ""
 
 #: src/pw_model_nodes.cpp:496
 msgid "Idle"
-msgstr "Diam"
+msgstr ""
 
 #: src/pw_model_nodes.cpp:498
 msgid "Creating"
-msgstr "Membuat"
+msgstr ""
 
 #: src/pw_model_nodes.cpp:500
 msgid "Error"
-msgstr "Kesalahan"
+msgstr ""
 
 #: src/pw_model_nodes.cpp:502
 msgid "Unknown"
-msgstr "Tidak diketahui"
+msgstr ""
 
 #: src/tags_plugin_name.cpp:47
 msgid "Autotune"
-msgstr "Autotune"
+msgstr ""
 
 #: src/tags_plugin_name.cpp:48
 msgid "Bass Enhancer"
-msgstr "Penambah Bass"
+msgstr ""
 
 #: src/tags_plugin_name.cpp:49
 msgid "Bass Loudness"
-msgstr "Kenyaringan Bass"
+msgstr ""
 
 #: src/tags_plugin_name.cpp:51
 msgid "Convolver"
-msgstr "Convolver"
+msgstr ""
 
 #: src/tags_plugin_name.cpp:52
 msgid "Crossfeed"
-msgstr "Crossfeed"
+msgstr ""
 
 #: src/tags_plugin_name.cpp:53
 msgid "Crosstalk Canceller"
-msgstr "Pembatal Bicara Silang"
+msgstr ""
 
 #: src/tags_plugin_name.cpp:54
 msgid "Crusher"
-msgstr "Crusher"
+msgstr ""
 
 #: src/tags_plugin_name.cpp:55
 msgid "Crystalizer"
-msgstr "Crystalizer"
+msgstr ""
 
 #: src/tags_plugin_name.cpp:56
 msgid "Deep Noise Remover"
-msgstr "Penghilang Kebisingan Dalam"
+msgstr ""
 
 #: src/tags_plugin_name.cpp:60
 msgid "Equalizer"
-msgstr "Equalizer"
+msgstr ""
 
 #: src/tags_plugin_name.cpp:61
-#, fuzzy
 msgid "Mid-Side Equalizer"
-msgstr "Equalizer"
+msgstr ""
 
 #: src/tags_plugin_name.cpp:62
 msgid "Exciter"
-msgstr "Exciter"
+msgstr ""
 
 #: src/tags_plugin_name.cpp:66
 msgid "Level Meter"
-msgstr "Pengukur Level"
+msgstr ""
 
 #: src/tags_plugin_name.cpp:69
 msgid "Maximizer"
-msgstr "Maximizer"
+msgstr ""
 
 #: src/tags_plugin_name.cpp:70
 msgid "Multiband Compressor"
-msgstr "Kompresor Multipita"
+msgstr ""
 
 #: src/tags_plugin_name.cpp:71
 msgid "Multiband Gate"
-msgstr "Gerbang Multipita"
+msgstr ""
 
 #: src/tags_plugin_name.cpp:73
 msgid "Reverberation"
-msgstr "Reverberasi"
+msgstr ""
 
 #: src/tags_plugin_name.cpp:74
 msgid "Noise Reduction"
-msgstr "Pengurangan Kebisingan"
+msgstr ""
 
 #: src/tags_plugin_name.cpp:75
 msgid "Speech Processor"
-msgstr "Pemroses Suara"
+msgstr ""
 
 #: src/tags_plugin_name.cpp:76
 msgid "Stereo Tools"
-msgstr "Alat Stereo"
+msgstr ""
 
 #: src/tags_plugin_name.cpp:77
 msgid "Voice Suppressor"
-msgstr "Penekan Suara"
+msgstr ""
 
 #: src/units.hpp:60
 msgctxt "left channel abbreviation (single letter)"
 msgid "L"
-msgstr "L"
+msgstr ""
 
 #: src/units.hpp:61
 msgctxt "left channel abbreviation (single letter)"
 msgid "R"
-msgstr "R"
+msgstr ""
 
 #: src/units.hpp:64
 msgctxt "The SOFA audio file format"
 msgid "SOFA"
-msgstr "SOFA"
+msgstr ""
 
 #: src/units.hpp:65
 msgctxt "The WAV audio file format"
 msgid "WAV"
-msgstr "WAV"
+msgstr ""
 
 #: src/units.hpp:68
 msgctxt "decibel unit abbreviation"
 msgid "dB"
-msgstr "dB"
+msgstr ""
 
 #: src/units.hpp:69
 msgctxt "decibel full scale unit abbreviation"
 msgid "dBFS"
-msgstr "dBFS"
+msgstr ""
 
 #: src/units.hpp:70
 msgctxt "decibel per octaves unit abbreviation"
 msgid "dB/oct"
-msgstr "dB/oct"
+msgstr ""
 
 #: src/units.hpp:71
 msgctxt "seconds unit abbreviation"
 msgid "s"
-msgstr "d"
+msgstr ""
 
 #: src/units.hpp:72
 msgctxt "milliseconds unit abbreviation"
 msgid "ms"
-msgstr "md"
+msgstr ""
 
 #: src/units.hpp:73
 msgctxt "microseconds unit abbreviation"
 msgid "μs"
-msgstr "μs"
+msgstr ""
 
 #: src/units.hpp:74
 msgctxt "Hertz unit abbreviation"
 msgid "Hz"
-msgstr "Hz"
+msgstr ""
 
 #: src/units.hpp:75
 msgctxt "kiloHertz unit abbreviation"
 msgid "kHz"
-msgstr "kHz"
+msgstr ""
 
 #: src/units.hpp:76
 msgctxt "loudness full scale unit abbreviation"
 msgid "LUFS"
-msgstr "LUFS"
+msgstr ""
 
 #: src/units.hpp:77
 msgctxt "loudness unit abbreviation"
 msgid "LU"
-msgstr "LU"
+msgstr ""
 
 #: src/units.hpp:78
 msgctxt "meter unit abbreviation"
 msgid "m"
-msgstr "m"
+msgstr ""
 
 #: src/units.hpp:79
 msgctxt "centimeter unit abbreviation"
 msgid "cm"
-msgstr "cm"
+msgstr ""
 
 #: src/units.hpp:80
 msgctxt "degrees Celsius unit abbreviation"
 msgid "°C"
-msgstr "°C"
+msgstr ""
 
 #: src/units.hpp:81
 msgctxt "bit unit (plural)"
 msgid "bits"
-msgstr "bit"
+msgstr ""
 
 #: src/units.hpp:82
 msgctxt "frame unit (plural)"
 msgid "frames"
-msgstr "bingkai"
+msgstr ""
 
 #: src/units.hpp:83
 msgctxt "frames per second abbreviation"
 msgid "fps"
-msgstr "fps"
+msgstr ""
 
 #: src/units.hpp:86
 msgctxt "thousand abbreviation (single letter)"
 msgid "k"
-msgstr "k"
+msgstr ""
 
 #: src/units.hpp:87
 msgctxt "percentage symbol"
 msgid "%"
-msgstr "%"
+msgstr ""
 
 #: src/units.hpp:88
 msgctxt "degrees (angle) symbol"
 msgid "°"
-msgstr "°"
+msgstr ""
 
 #: src/units.hpp:89
 msgctxt "minus infinity abbreviation"
 msgid "-inf"
-msgstr "-inf"
+msgstr ""
 
 #: com.github.wwmm.easyeffects.desktop.in.template.h:1
 msgid "Equalizer, Compressor and Other Audio Effects"
-msgstr "Equalizer, Kompresor dan Efek Audio Lainnya"
+msgstr ""
 
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
-msgstr "Efek audio sederhana"
-
-#~ msgid "Go back"
-#~ msgstr "Kembali"
-
-#~ msgid "Wheel"
-#~ msgstr "Roda"
-
-#, fuzzy
-#~ msgctxt "milliseconds unit abbreviation"
-#~ msgid "us"
-#~ msgstr "d"
-
-#, fuzzy
-#~ msgid "Attack time"
-#~ msgstr "Attack"
-
-#, fuzzy
-#~ msgid "Release time"
-#~ msgstr "Rilis"
-
-#, fuzzy
-#~ msgid "24 dB/oct"
-#~ msgstr "Lowpass 24dB/oktaf"
-
-#, fuzzy
-#~ msgid "36 dB/oct"
-#~ msgstr "Lowpass 36dB/oktaf"
-
-#, fuzzy
-#~ msgid "Hardware profile"
-#~ msgstr "Profil"
-
-#~ msgid "Audio effects for PipeWire applications"
-#~ msgstr "Efek Suara untuk Aplikasi PipeWire"
-
-#~ msgid "Audio Effects for PipeWire Applications"
-#~ msgstr "Efek Audio untuk Aplikasi PipeWire"
-
-#, fuzzy
-#~ msgid "Local Preset"
-#~ msgstr "Daftar Preset Input"
-
-#, fuzzy
-#~ msgid "Voice Detection"
-#~ msgstr "Pelacak Vokal"
-
-#, fuzzy
-#~ msgid "Automatic Level"
-#~ msgstr "Gain Otomatis"
-
-#, fuzzy
-#~ msgid "Gain boost"
-#~ msgstr "Sidechain"
-
-#, fuzzy
-#~ msgid "Easy Effects"
-#~ msgstr "EasyEffects"
-
-#, fuzzy
-#~ msgid "Hi-pass"
-#~ msgstr "High Pass"
-
-#, fuzzy
-#~ msgid "Hi-shelf"
-#~ msgstr "High Shelf"
-
-#, fuzzy
-#~ msgid "Lo-pass"
-#~ msgstr "Band Rendah"
-
-#, fuzzy
-#~ msgid "Lo-shelf"
-#~ msgstr "Low Shelf"
-
-#, fuzzy
-#~ msgid "Ladder-rej"
-#~ msgstr "Pengurangan Kuatan"
-
-#, fuzzy
-#~ msgid "Band-pass"
-#~ msgstr "Bypass Band"
-
-#, fuzzy
-#~ msgid "All-pass"
-#~ msgstr "Pass Rendah"
-
-#, fuzzy
-#~ msgid "Toggle Global Bypass"
-#~ msgstr "Bypass"
-
-#, fuzzy
-#~ msgid "Effects Blocklist"
-#~ msgstr "Daftar Blokir"
-
-#, fuzzy
-#~ msgid "Boost tshreshold"
-#~ msgstr "Ambang Batas"
-
-#, fuzzy
-#~ msgid "Low-Pass"
-#~ msgstr "Band Rendah"
-
-#, fuzzy
-#~ msgid "Add to Excluded Applications"
-#~ msgstr "Aplikasi"
-
-#, fuzzy
-#~ msgid "High-Pass"
-#~ msgstr "High Pass"
-
-#, fuzzy
-#~ msgid "F2 Peak"
-#~ msgstr "Peak"
-
-#, fuzzy
-#~ msgid "F1 Gain"
-#~ msgstr "Besar Gain"
-
-#~ msgid "APO Presets"
-#~ msgstr "Preset APO"
-
-#, fuzzy
-#~ msgid "Empty"
-#~ msgstr "Daftar Kosong"
-
-#, fuzzy
-#~ msgid "Impluse File Imported."
-#~ msgstr "Muat Berkas Impuls"
-
-#, fuzzy
-#~ msgid "Loaded Impulse: %1"
-#~ msgstr "Muat Impuls"
-
-#, fuzzy
-#~ msgid "APO Preset File Imported."
-#~ msgstr "Muat Berkas Impuls"
-
-#, fuzzy
-#~ msgid "GraphicEQ Preset File Imported."
-#~ msgstr "Impor File Preset APO"
-
-#, fuzzy
-#~ msgid "APO Preset File Exported."
-#~ msgstr "Impor File Preset APO"
-
-#, fuzzy
-#~ msgid "Added Effect: %1"
-#~ msgstr "Efek Input"
-
-#, fuzzy
-#~ msgid "Preset File Imported."
-#~ msgstr "Muat Berkas Impuls"
-
-#, fuzzy
-#~ msgid "Preset Files Exported."
-#~ msgstr "Impor File Preset APO"
-
-#, fuzzy
-#~ msgid "Failed to Export the Presets."
-#~ msgstr "Impor File Preset APO"
-
-#, fuzzy
-#~ msgid "New Preset Created"
-#~ msgstr "Nama Preset Input Baru"
-
-#, fuzzy
-#~ msgid "Model File Imported."
-#~ msgstr "Muat Berkas Impuls"
-
-#, fuzzy
-#~ msgid "Removed Model: %1"
-#~ msgstr "Modus Agresif"
-
-#, fuzzy
-#~ msgid "Loaded Model: %1"
-#~ msgstr "Model Standar"
-
-#, fuzzy
-#~ msgid "Residual Echo Suppression"
-#~ msgstr "Supresor Derau"
-
-#, fuzzy
-#~ msgid "Near End Suppression"
-#~ msgstr "Supresor Derau"
-
-#, fuzzy
-#~ msgid "Band "
-#~ msgstr "Band 1"
-
-#, fuzzy
-#~ msgctxt "@title:window"
-#~ msgid "Easy Effects"
-#~ msgstr "EasyEffects"
-
-#, fuzzy
-#~ msgctxt "@title"
-#~ msgid "Easy Effects"
-#~ msgstr "EasyEffects"
-
-#, fuzzy
-#~ msgid "Added Plugin"
-#~ msgstr "Plugin"
-
-#, fuzzy
-#~ msgid "Native Plugin Window"
-#~ msgstr "Tutup jendela"
-
-#~ msgid "@APP_NAME@"
-#~ msgstr "@APP_NAME@"
-
-#~ msgid "limiter;compressor;reverberation;equalizer;autovolume;"
-#~ msgstr "limiter;compressor;reverberation;equalizer;autovolume;"
-
-#~ msgid "Excluded App List: Add/remove this application"
-#~ msgstr "Pengecualian daftar aplikasi: Tambah/buang aplikasi ini"
-
-#, fuzzy
-#~ msgid "_Help"
-#~ msgstr "Bantuan"
-
-#~ msgid "Presets Menu"
-#~ msgstr "Menu Preset"
-
-#, fuzzy
-#~ msgid "Enable/disable the global bypass"
-#~ msgstr "Hidupkan/matikan aplikasi ini"
-
-#, fuzzy
-#~ msgid "Easy Effects Window"
-#~ msgstr "EasyEffects"
-
-#~ msgid "Applications List"
-#~ msgstr "Daftar Aplikasi"
-
-#, fuzzy
-#~ msgid "History"
-#~ msgstr "Atur Ulang Riwayat"
-
-#, fuzzy
-#~ msgid "Plugin Input Gain"
-#~ msgstr "Gain Input"
-
-#, fuzzy
-#~ msgid "Plugin Output Gain"
-#~ msgstr "Gain Input"
-
-#, fuzzy
-#~ msgid "Preset"
-#~ msgstr "Preset"
-
-#, fuzzy
-#~ msgid "Attack Threshold"
-#~ msgstr "Ambang Batas"
-
-#, fuzzy
-#~ msgid "Release Threshold"
-#~ msgstr "Ambang Batas"
-
-#~ msgid "Dry Level"
-#~ msgstr "Tingkat Dry"
-
-#, fuzzy
-#~ msgid "Stereo Split Mode"
-#~ msgstr "Mode Stereo"
-
-#, fuzzy
-#~ msgid "Sidechain Source"
-#~ msgstr "Sidechain"
-
-#, fuzzy
-#~ msgid "Stereo Split Source"
-#~ msgstr "Aturan Bawaan"
-
-#, fuzzy
-#~ msgid "Low-Pass Filter"
-#~ msgstr "Filter High Pass"
-
-#, fuzzy
-#~ msgid "Sidechain Type"
-#~ msgstr "Sidechain"
-
-#, fuzzy
-#~ msgid "PreAmplification"
-#~ msgstr "Pra-Amplifikasi"
-
-#, fuzzy
-#~ msgid "Sidechain Filters"
-#~ msgstr "Sidechain"
-
-#, fuzzy
-#~ msgid "High-Pass Filter Frequency"
-#~ msgstr "Frekuensi Tinggi"
-
-#, fuzzy
-#~ msgid "Low-Pass Filter Mode"
-#~ msgstr "Filter High Pass"
-
-#, fuzzy
-#~ msgid "Left Channel"
-#~ msgstr "Total Kanal"
-
-#, fuzzy
-#~ msgid "Right Channel"
-#~ msgstr "Pisahkan Kanal"
-
-#, fuzzy
-#~ msgid "Output File Name"
-#~ msgstr "Output"
-
-#, fuzzy
-#~ msgid "Search Impulse File"
-#~ msgstr "Muat Berkas Impuls"
-
-#, fuzzy
-#~ msgid "Impulse Files List"
-#~ msgstr "Muat Berkas Impuls"
-
-#, fuzzy
-#~ msgid "Frequency 1 Split"
-#~ msgstr "Frekuensi"
-
-#, fuzzy
-#~ msgid "Frequency 2 Peak"
-#~ msgstr "Frekuensi"
-
-#, fuzzy
-#~ msgid "Frequency 1 Gain"
-#~ msgstr "Frekuensi"
-
-#, fuzzy
-#~ msgid "Frequency 2 Level"
-#~ msgstr "Frekuensi"
-
-#, fuzzy
-#~ msgid "Frequency 2 Peak Q"
-#~ msgstr "Frekuensi"
-
-#~ msgid "Detected"
-#~ msgstr "Terlacak"
-
-#~ msgid "Import Preset"
-#~ msgstr "Impor Preset"
-
-#, fuzzy
-#~ msgid "Expander Mode"
-#~ msgstr "Jumlah Band"
-
-#, fuzzy
-#~ msgid "Release Zone Start"
-#~ msgstr "Rilis"
-
-#~ msgid "Half x2(3L)"
-#~ msgstr "Setengah x2(3L)"
-
-#~ msgid "Half x3(3L)"
-#~ msgstr "Setengah x3(3L)"
-
-#~ msgid "Half x4(3L)"
-#~ msgstr "Setengah x4(3L)"
-
-#~ msgid "Half x6(3L)"
-#~ msgstr "Setengah x6(3L)"
-
-#~ msgid "Half x8(3L)"
-#~ msgstr "Setengah x8(3L)"
-
-#~ msgid "Full x2(3L)"
-#~ msgstr "Penuh x2(3L)"
-
-#~ msgid "Full x3(3L)"
-#~ msgstr "Penuh x3(3L)"
-
-#~ msgid "Full x4(3L)"
-#~ msgstr "Penuh x4(3L)"
-
-#~ msgid "Full x6(3L)"
-#~ msgstr "Penuh x6(3L)"
-
-#~ msgid "Full x8(3L)"
-#~ msgstr "Penuh x8(3L)"
-
-#~ msgid "SC PreAmp"
-#~ msgstr "SC PreAmp"
-
-#~ msgid "Sidechain PreAmplification"
-#~ msgstr "Pra-Amplifikasi Sidechain"
-
-#, fuzzy
-#~ msgid "External Sidechain"
-#~ msgstr "Sidechain"
-
-#, fuzzy
-#~ msgid "Auto Leveling Attack"
-#~ msgstr "Gain Otomatis"
-
-#, fuzzy
-#~ msgid "Auto Leveling Release"
-#~ msgstr "Gain Otomatis"
-
-#, fuzzy
-#~ msgid "Auto Leveling Knee"
-#~ msgstr "Gain Otomatis"
-
-#, fuzzy
-#~ msgid "Gain Left"
-#~ msgstr "Kiri"
-
-#, fuzzy
-#~ msgid "Gain Right"
-#~ msgstr "Kanan"
-
-#~ msgid "Sidechain Left"
-#~ msgstr "Sidechain Kiri"
-
-#~ msgid "Sidechain Right"
-#~ msgstr "Sidechain Kanan"
-
-#~ msgid "Standard"
-#~ msgstr "Standar"
-
-#~ msgid "Output Volume"
-#~ msgstr "Volume Keluaran"
-
-#~ msgid "Bands List"
-#~ msgstr "Daftar Band"
-
-#~ msgid "Band 2"
-#~ msgstr "Band 2"
-
-#~ msgid "Band 3"
-#~ msgstr "Band 3"
-
-#~ msgid "Band 4"
-#~ msgstr "Band 4"
-
-#~ msgid "Band 5"
-#~ msgstr "Band 5"
-
-#~ msgid "Band 6"
-#~ msgstr "Band 6"
-
-#~ msgid "Band 7"
-#~ msgstr "Band 7"
-
-#~ msgid "Band 8"
-#~ msgstr "Band 8"
-
-#~ msgid "Band Start"
-#~ msgstr "Mulai Band"
-
-#~ msgid "Band End"
-#~ msgstr "Akhir Band"
-
-#~ msgid "Band Compression Mode"
-#~ msgstr "Mode Kompresi Band"
-
-#~ msgid "Band Sidechain Options"
-#~ msgstr "Opsi Sidechain Band"
-
-#~ msgid "Low-Cut Filter Frequency"
-#~ msgstr "Frekuensi Filter Low-Cut"
-
-#~ msgid "High-Cut Filter Frequency"
-#~ msgstr "Frekuensi Filter High-Cut"
-
-#~ msgid "PreAmp"
-#~ msgstr "PreAmp"
-
-#, fuzzy
-#~ msgid "Band Gain"
-#~ msgstr "Gain Input"
-
-#, fuzzy
-#~ msgid "Band Curve"
-#~ msgstr "Bentuk Kurva"
-
-#, fuzzy
-#~ msgid "Custom Input Device"
-#~ msgstr "Pembatas Masukan"
-
-#, fuzzy
-#~ msgid "Custom Output Device"
-#~ msgstr "Gain Input"
-
-#, fuzzy
-#~ msgid "Output Devices"
-#~ msgstr "Gain Input"
-
-#~ msgid "Output Autoloading Presets List"
-#~ msgstr "Daftar Keluaran Preset Otomatis"
-
-#, fuzzy
-#~ msgid "Input Devices"
-#~ msgstr "Pembatas Masukan"
-
-#, fuzzy
-#~ msgid "Input Autoloading Presets List"
-#~ msgstr "Preset Input"
-
-#, fuzzy
-#~ msgid "Both Channels"
-#~ msgstr "Total Kanal"
-
-#, fuzzy
-#~ msgid "Go to the previous effect"
-#~ msgstr "Hapus Berkas Preset Ini"
-
-#~ msgid "Plugins List"
-#~ msgstr "Daftar Plugin"
-
-#~ msgid "_General"
-#~ msgstr "_Umum"
-
-#~ msgid "Service"
-#~ msgstr "Layanan"
-
-#, fuzzy
-#~ msgid "Shutdown on Window Closing"
-#~ msgstr "Shutdown pada Penutupan Jendela"
-
-#, fuzzy
-#~ msgid "Input Pipeline"
-#~ msgstr "Pembatas Masukan"
-
-#, fuzzy
-#~ msgid "Update Interval"
-#~ msgstr "Terintegrasi"
-
-#~ msgid "Use Dark Theme"
-#~ msgstr "Gunakan Tema Gelap"
-
-#~ msgid "Hide Menus on Outside Clicks"
-#~ msgstr "Sembunyikan Menu di Klik Luar"
-
-#~ msgid "_Spectrum"
-#~ msgstr "_Spektrum"
-
-#~ msgid "Fill"
-#~ msgstr "Spektrum Batangan"
-
-#~ msgid "Show Bars Border"
-#~ msgstr "Tampilkan batar bar"
-
-#~ msgid "Rounded Corners"
-#~ msgstr "Sudut Bulat"
-
-#~ msgid "Lines and Bars"
-#~ msgstr "Garis dan Bar"
-
-#~ msgid "Load"
-#~ msgstr "Muat"
-
-#, fuzzy
-#~ msgid "Try this community preset"
-#~ msgstr "Cari Preset Keluaran"
-
-#, fuzzy
-#~ msgid "Community Presets List"
-#~ msgstr "Daftar Preset Keluaran"
-
-#~ msgid "Models"
-#~ msgstr "Model"
-
-#~ msgid "RNNoise Models List"
-#~ msgstr "Daftar Model RNNoise"
-
-#~ msgid "Active Model"
-#~ msgstr "Model Aktif"
-
-#~ msgid "Overview"
-#~ msgstr "Ringkasan"
-
-#~ msgid "Fullscreen/Restore from fullscreen"
-#~ msgstr "Layar penuh/Pulihkan dari layar penuh"
-
-#~ msgid "Input Balance"
-#~ msgstr "Masukan Keseimbangan"
-
-#~ msgid "Softclip Level"
-#~ msgstr "Tingkat Softclip"
-
-#~ msgid "Output Balance"
-#~ msgstr "Keluaran Balance"
-
-#~ msgid "Delay L/R"
-#~ msgstr "Penundaan Kiri/Kanan"
-
-#~ msgid "Delay Left Right"
-#~ msgstr "Penundaan Kiri Kanan"
-
-#, fuzzy
-#~ msgid "Output Preset"
-#~ msgstr "Preset Output"
-
-#, fuzzy
-#~ msgid "Input Preset"
-#~ msgstr "Preset Input"
-
-#, fuzzy
-#~ msgid "_Output"
-#~ msgstr "Output"
-
-#, fuzzy
-#~ msgid "_Input"
-#~ msgstr "Masukan"
-
-#~ msgid "Open"
-#~ msgstr "Buka"
-
-#, fuzzy
-#~ msgid "No Impulse File Loaded"
-#~ msgstr "Muat Berkas Impuls"
-
-#, fuzzy
-#~ msgid "EqualizerAPO Presets"
-#~ msgstr "Preset APO"
-
-#~ msgid "Add"
-#~ msgstr "Tambah"
-
-#, fuzzy
-#~ msgid "Community Preset"
-#~ msgstr "Impor Preset"
-
-#, fuzzy
-#~ msgid "Last Local Preset Loaded"
-#~ msgstr "Daftar Preset Input"
-
-#, fuzzy
-#~ msgid "Last Community Preset Loaded"
-#~ msgstr "Impor Preset"
-
-#~ msgid "Ceiling"
-#~ msgstr "Langit-langit"
-
-#~ msgid "\"Presets\""
-#~ msgstr "Preset"
-
-#, fuzzy
-#~ msgid "Import a preset"
-#~ msgstr "Impor Preset"
-
-#~ msgid "Low-Cut Filter"
-#~ msgstr "Filter Low-Cut"
-
-#~ msgid "High-Cut Filter"
-#~ msgstr "Filter High-Cut"
-
-#~ msgid "Uniform"
-#~ msgstr "Uniform"
-
-#~ msgid "New Output Preset Name"
-#~ msgstr "Nama Preset Keluaran Baru"
-
-#~ msgid "infinity"
-#~ msgstr "Tak Terbatas"
-
-#, fuzzy
-#~ msgid "Wet Ratio"
-#~ msgstr "Rasio"
-
-#, fuzzy
-#~ msgid "VAD Threshold"
-#~ msgstr "Ambang Batas"
-
-#~ msgid "Gating"
-#~ msgstr "Gating"
-
-#~ msgid "12dB/oct Lowpass"
-#~ msgstr "Lowpass 12dB/oktaf"
-
-#~ msgid "24dB/oct Lowpass"
-#~ msgstr "Lowpass 24dB/oktaf"
-
-#~ msgid "36dB/oct Lowpass"
-#~ msgstr "Lowpass 36dB/oktaf"
-
-#~ msgid "12dB/oct Highpass"
-#~ msgstr "Highpass 12dB/oktaf"
-
-#~ msgid "24dB/oct Highpass"
-#~ msgstr "Highpass 24dB/oktaf"
-
-#~ msgid "36dB/oct Highpass"
-#~ msgstr "Highpass 36dB/oktaf"
-
-#~ msgid "6dB/oct Bandpass"
-#~ msgstr "Bandpass 6dB/oktaf"
-
-#~ msgid "12dB/oct Bandpass"
-#~ msgstr "Bandpass 12dB/oktaf"
-
-#~ msgid "18dB/oct Bandpass"
-#~ msgstr "Bandpass 18dB/oktaf"
-
-#~ msgid "6dB/oct Bandreject"
-#~ msgstr "Bandreject 6dB/oktaf"
-
-#~ msgid "12dB/oct Bandreject"
-#~ msgstr "Bandpass 12dB/oktaf"
-
-#~ msgid "18dB/oct Bandreject"
-#~ msgstr "Bandpass 18dB/oktaf"
-
-#~ msgid "Inertia"
-#~ msgstr "Kelembaman"
-
-#, fuzzy
-#~ msgid "Band Type"
-#~ msgstr "Bypass"
-
-#, fuzzy
-#~ msgid "Band Mode"
-#~ msgstr "Jumlah Band"
-
-#, fuzzy
-#~ msgid "Band Slope"
-#~ msgstr "Besar Lembah"
-
-#, fuzzy
-#~ msgid "Loudness List"
-#~ msgstr "Kelantangan"
-
-#, fuzzy
-#~ msgid "High Speed"
-#~ msgstr "High Shelf"
-
-#, fuzzy
-#~ msgid "High Quality"
-#~ msgstr "Kualitas"
-
-#, fuzzy
-#~ msgid "Preserved"
-#~ msgstr "Preset"
-
-#, fuzzy
-#~ msgid "Crisp"
-#~ msgstr "Kerenyahan"
-
-#, fuzzy
-#~ msgid "Detector"
-#~ msgstr "Deteksi"
-
-#, fuzzy
-#~ msgid "Compound"
-#~ msgstr "Kompresi"
-
-#, fuzzy
-#~ msgid "Soft"
-#~ msgstr "Kliping Lunak"
-
-#, fuzzy
-#~ msgid "Open the Easy Effects Manual"
-#~ msgstr "Buka Manual EasyEffects"
-
-#, fuzzy
-#~ msgid "High Pass"
-#~ msgstr "High Pass"
-
-#, fuzzy
-#~ msgid "Low Pass"
-#~ msgstr "Pass Rendah"
-
-#, fuzzy
-#~ msgid " PreAmplification"
-#~ msgstr "Pra-Amplifikasi"
-
-#~ msgid "Frame Size"
-#~ msgstr "Ukuran Bingkai"
-
-#, fuzzy
-#~ msgid " Low-Pass"
-#~ msgstr "Band Rendah"
-
-#, fuzzy
-#~ msgid " Uniform"
-#~ msgstr "Uniform"
-
-#, fuzzy
-#~ msgid "Left Delay"
-#~ msgstr "Pra Tunda"
-
-#, fuzzy
-#~ msgid "Right Delay"
-#~ msgstr "Pisahkan Kanal"
-
-#, fuzzy
-#~ msgid "Left Dry Level"
-#~ msgstr "Tingkat Dry"
-
-#, fuzzy
-#~ msgid "Right Dry Level"
-#~ msgstr "Tingkat Dry"
-
-#, fuzzy
-#~ msgid "Left Wet Level"
-#~ msgstr "Tingkat Wet"
-
-#, fuzzy
-#~ msgid "Right Wet Level"
-#~ msgstr "Tingkat Wet"
-
-#, fuzzy
-#~ msgid "Suppression"
-#~ msgstr "Tingkat Supresi"
-
-#, fuzzy
-#~ msgid "Noise Reduction (Fast)"
-#~ msgstr "Pengurangan Noise"
-
-#, fuzzy
-#~ msgid "Load APO Preset"
-#~ msgstr "Preset"
-
-#~ msgid "Output Presets: "
-#~ msgstr "Preset Keluaran: "
-
-#~ msgid "Input Presets: "
-#~ msgstr "Preset Input: "
-
-#~ msgid "Split 1/2"
-#~ msgstr "Split 1/2"
-
-#~ msgid "Split 2/3"
-#~ msgstr "Split 2/3"
-
-#~ msgid "Split 3/4"
-#~ msgstr "Split 3/4"
-
-#, fuzzy
-#~ msgid "Split Frequency 3"
-#~ msgstr "Frekuensi"
-
-#, fuzzy
-#~ msgid "Band 1 Bypass"
-#~ msgstr "Bypass"
-
-#, fuzzy
-#~ msgid "Band 1 Solo"
-#~ msgstr "Jumlah Band"
-
-#, fuzzy
-#~ msgid "Band 1 Detection"
-#~ msgstr "Pengurangan Kuatan"
-
-#, fuzzy
-#~ msgid "Band 1 Attack"
-#~ msgstr "Attack"
-
-#, fuzzy
-#~ msgid "Band 1 Release"
-#~ msgstr "Rilis"
-
-#, fuzzy
-#~ msgid "Band 1 Threshold"
-#~ msgstr "Ambang Batas"
-
-#, fuzzy
-#~ msgid "Band 1 Ratio"
-#~ msgstr "Jumlah Band"
-
-#, fuzzy
-#~ msgid "Band 1 Knee"
-#~ msgstr "Jumlah Band"
-
-#, fuzzy
-#~ msgid "Band 1 Makeup"
-#~ msgstr "Penguatan"
-
-#~ msgid "Low Band"
-#~ msgstr "Band Rendah"
-
-#, fuzzy
-#~ msgid "Band 2 Bypass"
-#~ msgstr "Bypass"
-
-#, fuzzy
-#~ msgid "Band 2 Solo"
-#~ msgstr "Jumlah Band"
-
-#, fuzzy
-#~ msgid "Band 2 Detection"
-#~ msgstr "Pengurangan Kuatan"
-
-#, fuzzy
-#~ msgid "Band 2 Attack"
-#~ msgstr "Attack"
-
-#, fuzzy
-#~ msgid "Band 2 Release"
-#~ msgstr "Rilis"
-
-#, fuzzy
-#~ msgid "Band 2 Threshold"
-#~ msgstr "Ambang Batas"
-
-#, fuzzy
-#~ msgid "Band 2 Ratio"
-#~ msgstr "Jumlah Band"
-
-#, fuzzy
-#~ msgid "Band 2 Knee"
-#~ msgstr "Jumlah Band"
-
-#, fuzzy
-#~ msgid "Band 2 Makeup"
-#~ msgstr "Penguatan"
-
-#, fuzzy
-#~ msgid "Band 2 Max Reduction"
-#~ msgstr "Pengurangan Kuatan"
-
-#~ msgid "Mid Band"
-#~ msgstr "Band Tengah"
-
-#, fuzzy
-#~ msgid "Band 3 Bypass"
-#~ msgstr "Bypass"
-
-#, fuzzy
-#~ msgid "Band 3 Solo"
-#~ msgstr "Jumlah Band"
-
-#, fuzzy
-#~ msgid "Band 3 Detection"
-#~ msgstr "Pengurangan Kuatan"
-
-#, fuzzy
-#~ msgid "Band 3 Attack"
-#~ msgstr "Attack"
-
-#, fuzzy
-#~ msgid "Band 3 Release"
-#~ msgstr "Rilis"
-
-#, fuzzy
-#~ msgid "Band 3 Threshold"
-#~ msgstr "Ambang Batas"
-
-#, fuzzy
-#~ msgid "Band 3 Ratio"
-#~ msgstr "Jumlah Band"
-
-#, fuzzy
-#~ msgid "Band 3 Knee"
-#~ msgstr "Jumlah Band"
-
-#, fuzzy
-#~ msgid "Band 3 Makeup"
-#~ msgstr "Penguatan"
-
-#, fuzzy
-#~ msgid "Band 3 Max Reduction"
-#~ msgstr "Pengurangan Kuatan"
-
-#~ msgid "High Band"
-#~ msgstr "Band Tinggi"
-
-#, fuzzy
-#~ msgid "Band 4 Bypass"
-#~ msgstr "Bypass"
-
-#, fuzzy
-#~ msgid "Band 4 Solo"
-#~ msgstr "Jumlah Band"
-
-#, fuzzy
-#~ msgid "Band 4 Detection"
-#~ msgstr "Pengurangan Kuatan"
-
-#, fuzzy
-#~ msgid "Band 4 Attack"
-#~ msgstr "Attack"
-
-#, fuzzy
-#~ msgid "Band 4 Release"
-#~ msgstr "Rilis"
-
-#, fuzzy
-#~ msgid "Band 4 Threshold"
-#~ msgstr "Ambang Batas"
-
-#, fuzzy
-#~ msgid "Band 4 Ratio"
-#~ msgstr "Jumlah Band"
-
-#, fuzzy
-#~ msgid "Band 4 Knee"
-#~ msgstr "Jumlah Band"
-
-#, fuzzy
-#~ msgid "Band 4 Makeup"
-#~ msgstr "Penguatan"
-
-#, fuzzy
-#~ msgid "Band 4 Max Reduction"
-#~ msgstr "Pengurangan Kuatan"
-
-#~ msgid "Wet Amount"
-#~ msgstr "Besaran Wet"
-
-#~ msgid "Dry Amount"
-#~ msgstr "Besaran Dry"
-
-#, fuzzy
-#~ msgid ""
-#~ "EasyEffects is an advanced audio manipulation tool. It includes an "
-#~ "equalizer, limiter, compressor and a reverberation tool, just to mention "
-#~ "a few. To complement this there is also a built in spectrum analyzer."
-#~ msgstr ""
-#~ "EasyEffects merupakan aplikasi pengubah efek suara. Berisi modul-modul "
-#~ "seperti ekualiser, pembatas, kompresor, dan modul penggema. Dilengkapi "
-#~ "juga dengan Penganalisis Spektrum untuk memantau efek yang diterapkan."
-
-#, fuzzy
-#~ msgid ""
-#~ "Because EasyEffects uses the default PipeWire sound server it will work "
-#~ "with most, if not all, applications you use. All supported applications "
-#~ "are presented in the main window, where each can be enabled individually."
-#~ msgstr ""
-#~ "EasyEffects bekerja dengan aplikasi berbasis PulseAudio. Aplikasi yang "
-#~ "mendukung EasyEffects akan ditampilkan pada jendela utama aplikasi."
-
-#, fuzzy
-#~ msgid ""
-#~ "Besides manipulating sound output, EasyEffects is able to apply effects "
-#~ "to an input device, such as a microphone. This is, for example, useful in "
-#~ "audio recording, but it also works well during voice conversations."
-#~ msgstr ""
-#~ "Selain mengolah suara yang keluar, EasyEffects dapat mengolah efek suara "
-#~ "seperti pada mikrofon dan pengakat masukan lainnya. EasyEffects juga "
-#~ "bekerja dengan baik ketika dipakai dalam percakapan suara."
-
-#, fuzzy
-#~ msgid ""
-#~ "When EasyEffects is launched it will conveniently remember the "
-#~ "configuration used in the last session. It is also possible to save all "
-#~ "the current settings as profiles."
-#~ msgstr ""
-#~ "Ketika EasyEffects dijalankan, preset terakhir yang dipakai akan termuat "
-#~ "otomatis. Anda juga dapat menyimpan pengaturan yang telah dibuat ke dalam "
-#~ "profil tersendiri."
-
-#, fuzzy
-#~ msgid "and #1427"
-#~ msgstr "Band 1"
-
-#~ msgid "Average"
-#~ msgstr "Rata-Rata"
-
-#~ msgid "Failed"
-#~ msgstr "Gagal"
-
-#, fuzzy
-#~ msgid "Use Default"
-#~ msgstr "Gunakan Aturan Bawaan"
-
-#~ msgid "Start Service at Login"
-#~ msgstr "Mulai Layanan Saat Startup"
-
-#~ msgid "Reset Our Devices Volume on Startup"
-#~ msgstr "Setel Ulang Volume Perangkat Kami saat Memulai"
-
-#~ msgid "Microphone"
-#~ msgstr "Mikrofon"
-
-#, fuzzy
-#~ msgid "enabled"
-#~ msgstr "Hidupkan"
-
-#, fuzzy
-#~ msgid "disabled"
-#~ msgstr "Hidupkan"
-
-#~ msgid "Latency"
-#~ msgstr "Besar Latensi"
-
-#~ msgid "idle"
-#~ msgstr "siaga"
-
-#~ msgid "Preserve Formant"
-#~ msgstr "Jaga Bentuk"
-
-#~ msgid "Cmoy"
-#~ msgstr "C. Moy"
-
-#~ msgid "Jmeier"
-#~ msgstr "J. Meier"
-
-#~ msgid "LR4"
-#~ msgstr "LR4"
-
-#~ msgid "LR8"
-#~ msgstr "LR8"
-
-#, fuzzy
-#~ msgid "Output Channel"
-#~ msgstr "Gain Input"
-
-#, fuzzy
-#~ msgid "Channel"
-#~ msgstr "Total Kanal"
-
-#, fuzzy
-#~ msgid "Value"
-#~ msgstr "Monitor Lantai"
-
-#~ msgid "Output Effects"
-#~ msgstr "Efek Luaran"
-
-#~ msgid "Settings"
-#~ msgstr "Setelan"
-
-#, fuzzy
-#~ msgid "Settings Menu"
-#~ msgstr "Setelan"
-
-#, fuzzy
-#~ msgid "Documentation"
-#~ msgstr "Durasi"
-
-#, fuzzy
-#~ msgid "Signal"
-#~ msgstr "Uji Sinyal"
-
-#, fuzzy
-#~ msgid "Show Spectrum"
-#~ msgstr "Spektrum"
-
-#~ msgid "Spectrum Color"
-#~ msgstr "Warna Spektrum"
-
-#, fuzzy
-#~ msgid "Maximum Gain Reduction"
-#~ msgstr "Pengurangan Kuatan"
-
-#~ msgid "Short Term"
-#~ msgstr "Waktu Singkat"
-
-#~ msgid "Set the volume and turn on/off effects"
-#~ msgstr "Atur Volume dan hidupkan/matikan Efek"
-
-#~ msgid "Includes an equalizer with built-in presets"
-#~ msgstr "Dilengkapi dengan Ekualiser dengan Preset Bawaan"
-
-#~ msgid "Input Limiter"
-#~ msgstr "Pembatas Masukan"
-
-#~ msgid "Calibration"
-#~ msgstr "Kalibrasi"
-
-#~ msgid "Limit"
-#~ msgstr "Batas"
-
-#~ msgid "ASC"
-#~ msgstr "ASC"
-
-#~ msgid "Audio Effects for PulseAudio Applications"
-#~ msgstr "Penerap Efek Suara untuk Aplikasi Berbasis Pulseaudio"
-
-#~ msgid "Audio effects for PulseAudio applications"
-#~ msgstr "Terapkan Efek Suara via PulseAudio"
-
-#~ msgid "Calibration Microphone"
-#~ msgstr "Kalibrasikan Mikrofon"
-
-#~ msgid "Sine"
-#~ msgstr "Sinus"
-
-#~ msgid "Square"
-#~ msgstr "Kotak"
-
-#~ msgid "Saw"
-#~ msgstr "Gergaji"
-
-#~ msgid "Triangle"
-#~ msgstr "Segitiga"
-
-#~ msgid "Ticks"
-#~ msgstr "Ketukan per Detik"
-
-#~ msgid "Gaussian Noise"
-#~ msgstr "Derau Gaussia"
-
-#~ msgid "Blue Noise"
-#~ msgstr "Derau Biru"
-
-#~ msgid "Violet Noise"
-#~ msgstr "Derau Ungu"
-
-#~ msgid "Subtract Noise"
-#~ msgstr "Kurangi Derau"
-
-#~ msgid "Extended Filter"
-#~ msgstr "Filter Diperluas"
-
-#~ msgid "Delay Agnostic"
-#~ msgstr "Penundaan Agnosti"
-
-#~ msgid "Fixed Digital"
-#~ msgstr "Digital Tetap"
-
-#~ msgid "Detection Likelihood"
-#~ msgstr "Lacak Keberadaan Vokal"
-
-#~ msgid "Very Low"
-#~ msgstr "Sangat Rendah"
-
-#~ msgid "Use Custom Color"
-#~ msgstr "Gunakan Warna Kustom"
-
-#~ msgid "Use Gradient"
-#~ msgstr "Terapkan Gradien warna"
-
-#~ msgid "Import Impulse Response File"
-#~ msgstr "Muat Berkas Respons Impuls"
-
-#~ msgid "Select the impulse Response File"
-#~ msgstr "Pilih Berkas Repons Impuls"
-
-#, fuzzy
-#~ msgid "Aggressive Mode"
-#~ msgstr "Modus Agresif"
-
-#~ msgid "Before"
-#~ msgstr "Sebelum"
-
-#~ msgid "After"
-#~ msgstr "Sesudah"
-
-#, fuzzy
-#~ msgid "Loudness Range"
-#~ msgstr "Rentang Kelantangan"
-
-#, fuzzy
-#~ msgid "Default Clock Rate"
-#~ msgstr "Aturan Bawaan"
-
-#, fuzzy
-#~ msgid "Low-pass Frequency"
-#~ msgstr "Frekuensi Terendah"
-
-#, fuzzy
-#~ msgid "Apply APO Preset"
-#~ msgstr "Preset"
-
-#, fuzzy
-#~ msgid "Detect Silence"
-#~ msgstr "Deteksi"
-
-#~ msgid "Muted"
-#~ msgstr "Dibungkam"
-
-#~ msgid "Distant Headphones"
-#~ msgstr "Headphone Berjarak"
-
-#~ msgid "Priority Type"
-#~ msgstr "Atur Prioritas"
-
-#~ msgid "Niceness"
-#~ msgstr "Proritas Sempurna"
-
-#~ msgid "Priority"
-#~ msgstr "Atur Prioritas"
-
-#, fuzzy
-#~ msgid "Minimum Frequency"
-#~ msgstr "Frekuensi"
-
-#, fuzzy
-#~ msgid "Resamplers"
-#~ msgstr "Modus Penyampling"
-
-#~ msgid "Buffer"
-#~ msgstr "Ukuran Penyangga"
-
-#~ msgid "Block Size"
-#~ msgstr "Ukuran Blok"
-
-#~ msgid "Resampler"
-#~ msgstr "Modus Penyampling"
-
-#~ msgid "paused"
-#~ msgstr "terjeda"
-
-#~ msgid "playing"
-#~ msgstr "memutar"
-
-#~ msgid "Pulseaudio"
-#~ msgstr "Pulseaudio"
-
-#, fuzzy
-#~ msgid "Import APO Presets"
-#~ msgstr "Muat Preset"
-
-#, fuzzy
-#~ msgid "Gain Detection"
-#~ msgstr "Pengurangan Kuatan"
-
-#~ msgid "Exponent"
-#~ msgstr "Eksponen"
+msgstr ""
