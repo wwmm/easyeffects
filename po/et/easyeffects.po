@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-08-21 20:14-0300\n"
-"PO-Revision-Date: 2026-08-30 16:51+0000\n"
+"PO-Revision-Date: 2026-08-30 17:46+0000\n"
 "Last-Translator: Priit Jõerüüt <jrthwlate@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/easyeffects/"
 "main/et/>\n"
@@ -581,7 +581,7 @@ msgstr ""
 #: src/contents/ui/Gate.qml:283 src/contents/ui/MultibandCompressor.qml:438
 #: src/contents/ui/MultibandGate.qml:411
 msgid "SMA"
-msgstr ""
+msgstr "SMA"
 
 #: src/contents/ui/Compressor.qml:315 src/contents/ui/Compressor.qml:330
 #: src/contents/ui/Expander.qml:275 src/contents/ui/Expander.qml:290
@@ -590,20 +590,20 @@ msgstr ""
 #: src/contents/ui/MultibandCompressor.qml:457
 #: src/contents/ui/MultibandGate.qml:418 src/contents/ui/MultibandGate.qml:430
 msgid "Source"
-msgstr ""
+msgstr "Allikas"
 
 #: src/contents/ui/Compressor.qml:319 src/contents/ui/Expander.qml:279
 #: src/contents/ui/Gate.qml:297 src/contents/ui/MultibandCompressor.qml:449
 #: src/contents/ui/MultibandGate.qml:422
 msgid "Middle"
-msgstr ""
+msgstr "Keskmine"
 
 #: src/contents/ui/Compressor.qml:319 src/contents/ui/Expander.qml:279
 #: src/contents/ui/Gate.qml:297 src/contents/ui/MidSideEqualizer.qml:244
 #: src/contents/ui/MultibandCompressor.qml:449
 #: src/contents/ui/MultibandGate.qml:422
 msgid "Side"
-msgstr ""
+msgstr "Külgmine"
 
 #: src/contents/ui/Compressor.qml:319 src/contents/ui/Convolver.qml:301
 #: src/contents/ui/Delay.qml:59 src/contents/ui/Equalizer.qml:244
@@ -613,7 +613,7 @@ msgstr ""
 #: src/contents/ui/MultibandGate.qml:422 src/contents/ui/PipeWirePage.qml:346
 #: src/contents/ui/StereoTools.qml:204
 msgid "Left"
-msgstr ""
+msgstr "Vasak"
 
 #: src/contents/ui/Compressor.qml:319 src/contents/ui/Convolver.qml:319
 #: src/contents/ui/Delay.qml:212 src/contents/ui/Equalizer.qml:244
@@ -623,7 +623,7 @@ msgstr ""
 #: src/contents/ui/MultibandGate.qml:422 src/contents/ui/PipeWirePage.qml:357
 #: src/contents/ui/StereoTools.qml:231
 msgid "Right"
-msgstr ""
+msgstr "Probleem"
 
 #: src/contents/ui/Compressor.qml:319 src/contents/ui/Compressor.qml:334
 #: src/contents/ui/Expander.qml:279 src/contents/ui/Expander.qml:294
@@ -632,7 +632,7 @@ msgstr ""
 #: src/contents/ui/MultibandCompressor.qml:461
 #: src/contents/ui/MultibandGate.qml:422 src/contents/ui/MultibandGate.qml:434
 msgid "Min"
-msgstr ""
+msgstr "Min"
 
 #: src/contents/ui/Compressor.qml:319 src/contents/ui/Compressor.qml:334
 #: src/contents/ui/Expander.qml:279 src/contents/ui/Expander.qml:294
@@ -641,31 +641,31 @@ msgstr ""
 #: src/contents/ui/MultibandCompressor.qml:461
 #: src/contents/ui/MultibandGate.qml:422 src/contents/ui/MultibandGate.qml:434
 msgid "Max"
-msgstr ""
+msgstr "Maks"
 
 #: src/contents/ui/Compressor.qml:334 src/contents/ui/Expander.qml:294
 #: src/contents/ui/Gate.qml:312 src/contents/ui/MultibandCompressor.qml:461
 #: src/contents/ui/MultibandGate.qml:434
 msgid "Left/Right"
-msgstr ""
+msgstr "Vasak/Parem"
 
 #: src/contents/ui/Compressor.qml:334 src/contents/ui/Expander.qml:294
 #: src/contents/ui/Gate.qml:312 src/contents/ui/MultibandCompressor.qml:461
 #: src/contents/ui/MultibandGate.qml:434
 msgid "Right/Left"
-msgstr ""
+msgstr "Parem/Vasak"
 
 #: src/contents/ui/Compressor.qml:334 src/contents/ui/Expander.qml:294
 #: src/contents/ui/Gate.qml:312 src/contents/ui/MultibandCompressor.qml:461
 #: src/contents/ui/MultibandGate.qml:434
 msgid "Mid/Side"
-msgstr ""
+msgstr "Keskmine/Külgmine"
 
 #: src/contents/ui/Compressor.qml:334 src/contents/ui/Expander.qml:294
 #: src/contents/ui/Gate.qml:312 src/contents/ui/MultibandCompressor.qml:461
 #: src/contents/ui/MultibandGate.qml:434
 msgid "Side/Mid"
-msgstr ""
+msgstr "Külgmine/Keskmine"
 
 #: src/contents/ui/Compressor.qml:358 src/contents/ui/Expander.qml:314
 #: src/contents/ui/Gate.qml:333 src/contents/ui/Limiter.qml:250
@@ -885,15 +885,15 @@ msgstr ""
 
 #: src/contents/ui/Convolver.qml:151
 msgid "First"
-msgstr ""
+msgstr "Esimene"
 
 #: src/contents/ui/Convolver.qml:164
 msgid "Second"
-msgstr ""
+msgstr "Teine"
 
 #: src/contents/ui/Convolver.qml:196 src/contents/ui/Convolver.qml:231
 msgid "Combine"
-msgstr ""
+msgstr "Kombineeri"
 
 #: src/contents/ui/Convolver.qml:224
 msgid "Impulses"
@@ -958,24 +958,24 @@ msgstr ""
 
 #: src/contents/ui/ConvolverSofaDialog.qml:91
 msgid "Status"
-msgstr ""
+msgstr "Olek"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:106
 #: src/contents/ui/PreferencesSheet.qml:68
 msgid "Database"
-msgstr ""
+msgstr "Andmebaas"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:111
 msgid "Measurements"
-msgstr ""
+msgstr "Mõõdistused"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:116
 msgid "Index"
-msgstr ""
+msgstr "Indeks"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:174
 msgid "Apply"
-msgstr ""
+msgstr "Rakenda"
 
 #: src/contents/ui/Crossfeed.qml:79
 msgid "Cutoff"
@@ -1178,7 +1178,7 @@ msgstr ""
 
 #: src/contents/ui/Delay.qml:122 src/contents/ui/Delay.qml:275
 msgid "Meters"
-msgstr ""
+msgstr "Keskmine/"
 
 #: src/contents/ui/Delay.qml:140 src/contents/ui/Delay.qml:293
 msgid "Centimeters"
@@ -1200,28 +1200,28 @@ msgstr ""
 #: src/contents/ui/DelegateModulesList.qml:57
 msgctxt "@info:placeholder"
 msgid "Unknown"
-msgstr ""
+msgstr "Pole teada"
 
 #: src/contents/ui/DelegateClientsList.qml:61
 msgid "(id: %1)"
-msgstr ""
+msgstr "(tunnus: %1)"
 
 #: src/contents/ui/DelegateClientsList.qml:67
 msgid "Access: %1"
-msgstr ""
+msgstr "Ligipääs: %1"
 
 #: src/contents/ui/DelegateClientsList.qml:74
 msgid "API: %1"
-msgstr ""
+msgstr "API: %1"
 
 #: src/contents/ui/DelegateModulesList.qml:61
 msgctxt "@info:placeholder"
 msgid "Not set"
-msgstr ""
+msgstr "Määramata"
 
 #: src/contents/ui/DelegateModulesList.qml:61
 msgid "(id: %1, version: %2)"
-msgstr ""
+msgstr "(tunnus: %1, versioon: %2)"
 
 #: src/contents/ui/DelegateModulesList.qml:67
 msgctxt "@info:placeholder"
@@ -1257,7 +1257,7 @@ msgstr "Lisa %1 välistatud rakenduste sekka"
 
 #: src/contents/ui/EchoCanceller.qml:61 src/tags_plugin_name.cpp:59
 msgid "Echo Canceller"
-msgstr ""
+msgstr "Kaja summutamine"
 
 #: src/contents/ui/EchoCanceller.qml:73
 msgid "Mobile mode"
@@ -1269,7 +1269,7 @@ msgstr ""
 
 #: src/contents/ui/EchoCanceller.qml:94
 msgid "Noise Suppression"
-msgstr ""
+msgstr "Mürasummutus"
 
 #: src/contents/ui/EchoCanceller.qml:107
 msgid "Strength"
@@ -1277,19 +1277,19 @@ msgstr ""
 
 #: src/contents/ui/EchoCanceller.qml:111 src/contents/ui/Loudness.qml:119
 msgid "Low"
-msgstr ""
+msgstr "Madal"
 
 #: src/contents/ui/EchoCanceller.qml:111
 msgid "Moderate"
-msgstr ""
+msgstr "Mõõdukas"
 
 #: src/contents/ui/EchoCanceller.qml:111 src/contents/ui/Loudness.qml:119
 msgid "High"
-msgstr ""
+msgstr "Kõrge"
 
 #: src/contents/ui/EchoCanceller.qml:111
 msgid "Very high"
-msgstr ""
+msgstr "Väga kõrge"
 
 #: src/contents/ui/EchoCanceller.qml:121
 msgid "High-Pass Filter"
@@ -1314,7 +1314,7 @@ msgstr ""
 #: src/contents/ui/EeInputOutputGain.qml:131 src/contents/ui/Main.qml:387
 #: src/contents/ui/StereoTools.qml:59
 msgid "Input"
-msgstr ""
+msgstr "Sisend"
 
 #: src/contents/ui/EqualizerBandMenu.qml:34
 #: src/contents/ui/MultibandCompressor.qml:669
@@ -1407,7 +1407,7 @@ msgstr ""
 
 #: src/contents/ui/EqualizerBandMenu.qml:171
 msgid "oct"
-msgstr ""
+msgstr "id"
 
 #: src/contents/ui/EqualizerBandMenu.qml:199
 #: src/contents/ui/MultibandCompressor.qml:99
@@ -1991,17 +1991,17 @@ msgstr ""
 #: src/contents/ui/MultibandCompressor.qml:574
 #: src/contents/ui/MultibandGate.qml:547
 msgid "Operating mode"
-msgstr ""
+msgstr "Töörežiim"
 
 #: src/contents/ui/MultibandCompressor.qml:578
 #: src/contents/ui/MultibandGate.qml:551
 msgid "Classic"
-msgstr ""
+msgstr "Klassikaline"
 
 #: src/contents/ui/MultibandCompressor.qml:578
 #: src/contents/ui/MultibandGate.qml:551
 msgid "Modern"
-msgstr ""
+msgstr "Moodne"
 
 #: src/contents/ui/MultibandCompressor.qml:578
 #: src/contents/ui/MultibandGate.qml:551
@@ -2242,7 +2242,7 @@ msgstr ""
 
 #: src/contents/ui/PluginNotAvailable.qml:34
 msgid "Effect Not Available"
-msgstr ""
+msgstr "Efekt pole saadaval"
 
 #: src/contents/ui/PluginNotAvailable.qml:35
 msgid "%1 cannot be used because %2 is not installed on the system."
@@ -2250,23 +2250,23 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:38
 msgid "Background Service"
-msgstr ""
+msgstr "Taustateenus"
 
 #: src/contents/ui/PreferencesSheet.qml:44
 msgid "Audio"
-msgstr ""
+msgstr "Heli"
 
 #: src/contents/ui/PreferencesSheet.qml:50
 msgid "Spectrum Analyzer"
-msgstr ""
+msgstr "Spektrianalüsaator"
 
 #: src/contents/ui/PreferencesSheet.qml:56
 msgid "Style"
-msgstr ""
+msgstr "Stiil"
 
 #: src/contents/ui/PreferencesSheet.qml:74
 msgid "Experimental Features"
-msgstr ""
+msgstr "Katselised funktsionaalsused"
 
 #: src/contents/ui/PreferencesSheet.qml:87
 msgid "Enable service mode"
@@ -2286,11 +2286,11 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:114
 msgid "Show the tray icon"
-msgstr ""
+msgstr "Näita süsteemisalve ikooni"
 
 #: src/contents/ui/PreferencesSheet.qml:127
 msgid "Do not show the application window"
-msgstr ""
+msgstr "Ära näita rakenduse akent"
 
 #: src/contents/ui/PreferencesSheet.qml:128
 msgid ""
