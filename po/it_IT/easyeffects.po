@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-08-21 20:14-0300\n"
-"PO-Revision-Date: 2026-08-30 15:00+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2026-08-30 15:01+0000\n"
+"Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
 "Language: it_IT\n"
@@ -809,8 +809,7 @@ msgstr "Importato un nuovo file di risposta impulsiva del Convolver."
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:51
 msgid "Failed to import the Convolver impulse file."
-msgstr ""
-"Importazione del file di risposta impulsiva del Convolver non riuscita."
+msgstr "Importazione del file di risposta impulsiva del Convolver non riuscita."
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:65
 #: src/contents/ui/MenuAddPlugins.qml:186
@@ -2718,8 +2717,7 @@ msgstr "Mostra interfaccia nativa degli effetti"
 
 #: src/contents/ui/PreferencesSheet.qml:831
 msgid "Allows the native user interface of effects to be shown/hidden."
-msgstr ""
-"Permette di visualizzare o nascondere le finestre native degli effetti."
+msgstr "Permette di visualizzare o nascondere le finestre native degli effetti."
 
 #: src/contents/ui/PreferencesSheet.qml:843
 msgid "Update frequency"
@@ -2775,8 +2773,7 @@ msgstr "Copia nei profili locali"
 
 #: src/contents/ui/PresetsCommunityPage.qml:153
 msgid "Imported the %1 community preset to the list of local presets."
-msgstr ""
-"Importato il profilo della community %1 nella lista dei profili locali."
+msgstr "Importato il profilo della community %1 nella lista dei profili locali."
 
 #: src/contents/ui/PresetsCommunityPage.qml:155
 msgid "Failed to import the %1 community preset to the list of local presets."
