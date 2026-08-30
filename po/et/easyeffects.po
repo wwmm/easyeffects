@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-08-21 20:14-0300\n"
-"PO-Revision-Date: 2026-08-30 16:02+0000\n"
+"PO-Revision-Date: 2026-08-30 16:51+0000\n"
 "Last-Translator: Priit Jõerüüt <jrthwlate@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/easyeffects/"
 "main/et/>\n"
@@ -37,7 +37,7 @@ msgstr "Lähtesta Easy Effects."
 
 #: src/command_line_parser.cpp:46
 msgid "Hide the window."
-msgstr ""
+msgstr "Peida aken."
 
 #: src/command_line_parser.cpp:48
 msgid ""
@@ -62,7 +62,7 @@ msgstr ""
 
 #: src/command_line_parser.cpp:52
 msgid "Show available presets."
-msgstr ""
+msgstr "Näita saadavalolevaid eelseadistusi."
 
 #: src/command_line_parser.cpp:53
 msgid "Get the last loaded input/output preset."
@@ -919,11 +919,11 @@ msgstr ""
 
 #: src/contents/ui/Convolver.qml:390
 msgid "Duration"
-msgstr ""
+msgstr "Kestus"
 
 #: src/contents/ui/Convolver.qml:395 src/contents/ui/PipeWirePage.qml:337
 msgid "Channels"
-msgstr ""
+msgstr "Kanaleid"
 
 #: src/contents/ui/Convolver.qml:400
 msgid "Format"
@@ -1226,15 +1226,15 @@ msgstr ""
 #: src/contents/ui/DelegateModulesList.qml:67
 msgctxt "@info:placeholder"
 msgid "No description set"
-msgstr ""
+msgstr "Kirjeldus on sisestamata"
 
 #: src/contents/ui/DelegatePluginsList.qml:119
 msgid "Toggle this effect"
-msgstr ""
+msgstr "Lülita see efekt sisse/välja"
 
 #: src/contents/ui/DelegatePluginsList.qml:127
 msgid "Remove this effect"
-msgstr ""
+msgstr "Eemalda see efekt"
 
 #: src/contents/ui/DelegateStreamsList.qml:96
 msgid "channels"
@@ -1245,15 +1245,15 @@ msgstr ""
 #: src/contents/ui/EchoCanceller.qml:124 src/contents/ui/Gate.qml:175
 #: src/contents/ui/RNNoise.qml:115
 msgid "Enable"
-msgstr ""
+msgstr "Lülita sisse"
 
 #: src/contents/ui/DelegateStreamsList.qml:128
 msgid "Exclude"
-msgstr ""
+msgstr "Välista"
 
 #: src/contents/ui/DelegateStreamsList.qml:130
 msgid "Add %1 to excluded applications"
-msgstr ""
+msgstr "Lisa %1 välistatud rakenduste sekka"
 
 #: src/contents/ui/EchoCanceller.qml:61 src/tags_plugin_name.cpp:59
 msgid "Echo Canceller"
@@ -1361,31 +1361,31 @@ msgstr ""
 
 #: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
 msgid "RLC (BT)"
-msgstr ""
+msgstr "RLC (BT)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
 msgid "RLC (MT)"
-msgstr ""
+msgstr "RLC (MT)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
 msgid "BWC (BT)"
-msgstr ""
+msgstr "BWC (BT)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
 msgid "BWC (MT)"
-msgstr ""
+msgstr "BWC (MT)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
 msgid "LRX (BT)"
-msgstr ""
+msgstr "LRX (BT)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
 msgid "LRX (MT)"
-msgstr ""
+msgstr "LRX (MT)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
 msgid "APO (DR)"
-msgstr ""
+msgstr "APO (DR)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:75 src/contents/ui/Filter.qml:121
 msgid "Slope"
@@ -1474,22 +1474,22 @@ msgstr ""
 #: src/contents/ui/Equalizer.qml:142 src/contents/ui/Filter.qml:97
 #: src/contents/ui/Loudness.qml:77 src/contents/ui/MidSideEqualizer.qml:142
 msgid "IIR"
-msgstr ""
+msgstr "IIR"
 
 #: src/contents/ui/Equalizer.qml:142 src/contents/ui/Filter.qml:97
 #: src/contents/ui/MidSideEqualizer.qml:142
 msgid "FIR"
-msgstr ""
+msgstr "FIR"
 
 #: src/contents/ui/Equalizer.qml:142 src/contents/ui/Filter.qml:97
 #: src/contents/ui/Loudness.qml:77 src/contents/ui/MidSideEqualizer.qml:142
 msgid "FFT"
-msgstr ""
+msgstr "FFT"
 
 #: src/contents/ui/Equalizer.qml:142 src/contents/ui/Filter.qml:97
 #: src/contents/ui/MidSideEqualizer.qml:142
 msgid "SPM"
-msgstr ""
+msgstr "SPM"
 
 #: src/contents/ui/Equalizer.qml:152 src/contents/ui/Filter.qml:107
 #: src/contents/ui/MidSideEqualizer.qml:152
@@ -1543,7 +1543,7 @@ msgstr ""
 
 #: src/contents/ui/Equalizer.qml:215
 msgid "Pitch right"
-msgstr ""
+msgstr "wwmm"
 
 #: src/contents/ui/Equalizer.qml:346
 msgid "Split channels"
@@ -1683,83 +1683,83 @@ msgstr ""
 
 #: src/contents/ui/Limiter.qml:90
 msgid "Half x2/16 bits"
-msgstr ""
+msgstr "Poolik x2/16 bitti"
 
 #: src/contents/ui/Limiter.qml:90
 msgid "Half x2/24 bits"
-msgstr ""
+msgstr "Poolik x2/24 bitti"
 
 #: src/contents/ui/Limiter.qml:90
 msgid "Half x3/16 bits"
-msgstr ""
+msgstr "Poolik x3/16 bitti"
 
 #: src/contents/ui/Limiter.qml:90
 msgid "Half x3/24 bits"
-msgstr ""
+msgstr "Poolik x3/24 bitti"
 
 #: src/contents/ui/Limiter.qml:90
 msgid "Half x4/16 bits"
-msgstr ""
+msgstr "Poolik x4/16 bitti"
 
 #: src/contents/ui/Limiter.qml:90
 msgid "Half x4/24 bits"
-msgstr ""
+msgstr "Poolik x4/24 bitti"
 
 #: src/contents/ui/Limiter.qml:90
 msgid "Half x6/16 bits"
-msgstr ""
+msgstr "Poolik x6/16 bitti"
 
 #: src/contents/ui/Limiter.qml:90
 msgid "Half x6/24 bits"
-msgstr ""
+msgstr "Poolik x6/24 bitti"
 
 #: src/contents/ui/Limiter.qml:90
 msgid "Half x8/16 bits"
-msgstr ""
+msgstr "Poolik x8/16 bitti"
 
 #: src/contents/ui/Limiter.qml:90
 msgid "Half x8/24 bits"
-msgstr ""
+msgstr "Poolik x8/24 bitti"
 
 #: src/contents/ui/Limiter.qml:90
 msgid "Full x2/16 bits"
-msgstr ""
+msgstr "Täismahus x2/16 bitti"
 
 #: src/contents/ui/Limiter.qml:90
 msgid "Full x2/24 bits"
-msgstr ""
+msgstr "Täismahus x2/24 bitti"
 
 #: src/contents/ui/Limiter.qml:90
 msgid "Full x3/16 bits"
-msgstr ""
+msgstr "Täismahus x3/16 bitti"
 
 #: src/contents/ui/Limiter.qml:90
 msgid "Full x3/24 bits"
-msgstr ""
+msgstr "Täismahus x3/24 bitti"
 
 #: src/contents/ui/Limiter.qml:90
 msgid "Full x4/16 bits"
-msgstr ""
+msgstr "Täismahus x4/16 bitti"
 
 #: src/contents/ui/Limiter.qml:90
 msgid "Full x4/24 bits"
-msgstr ""
+msgstr "Täismahus x4/24 bitti"
 
 #: src/contents/ui/Limiter.qml:90
 msgid "Full x6/16 bits"
-msgstr ""
+msgstr "Täismahus x6/16 bitti"
 
 #: src/contents/ui/Limiter.qml:90
 msgid "Full x6/24 bits"
-msgstr ""
+msgstr "Täismahus x6/24 bitti"
 
 #: src/contents/ui/Limiter.qml:90
 msgid "Full x8/16 bits"
-msgstr ""
+msgstr "Täismahus x8/16 bitti"
 
 #: src/contents/ui/Limiter.qml:90
 msgid "Full x8/24 bits"
-msgstr ""
+msgstr "Täismahus x8/24 bitti"
 
 #: src/contents/ui/Limiter.qml:90
 msgid "True peak/16 bits"
@@ -1779,11 +1779,11 @@ msgstr ""
 
 #: src/contents/ui/Limiter.qml:178
 msgid "Stereo Link"
-msgstr ""
+msgstr "Stereolink"
 
 #: src/contents/ui/Limiter.qml:406 src/contents/ui/Limiter.qml:648
 msgid "Automatic level"
-msgstr ""
+msgstr "Automaatne tase"
 
 #: src/contents/ui/Limiter.qml:468
 msgid "Smooth"
@@ -1803,19 +1803,19 @@ msgstr ""
 
 #: src/contents/ui/Loudness.qml:91
 msgid "ISO226-2003"
-msgstr ""
+msgstr "ISO226-2003"
 
 #: src/contents/ui/Loudness.qml:91
 msgid "Fletcher-Munson"
-msgstr ""
+msgstr "Fletcher-Munson"
 
 #: src/contents/ui/Loudness.qml:91
 msgid "Robinson-Dadson"
-msgstr ""
+msgstr "Robinson-Dadson"
 
 #: src/contents/ui/Loudness.qml:91
 msgid "ISO226-2023"
-msgstr ""
+msgstr "ISO226-2023"
 
 #: src/contents/ui/Loudness.qml:101
 msgid "FFT size"
@@ -2084,15 +2084,15 @@ msgstr ""
 
 #: src/contents/ui/PageStreamsEffects.qml:699
 msgid "Share audio"
-msgstr ""
+msgstr "Jaga heli"
 
 #: src/contents/ui/PageStreamsEffects.qml:700
 msgid "Send the processed desktop audio to the virtual source"
-msgstr ""
+msgstr "Saada töödeldud heli töölaualt virtuaalsesse allikasse"
 
 #: src/contents/ui/PipeWirePage.qml:49
 msgid "General"
-msgstr ""
+msgstr "Üldine"
 
 #: src/contents/ui/PipeWirePage.qml:54
 msgid "Modules"
@@ -2115,6 +2115,8 @@ msgid ""
 "It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
 "external applications (e.g. Gnome Settings and Plasma System Settings)"
 msgstr ""
+"Me soovitame, et ÄRA määra Easy Effects väljundit välistes rakendustes (nt "
+"Gnome’i seadistused ja Plasma süsteemi seadistused) vaikimisi seadmeks"
 
 #: src/contents/ui/PipeWirePage.qml:145
 msgid "Use default input"
@@ -2166,21 +2168,21 @@ msgstr "Mooduleid pole"
 
 #: src/contents/ui/PipeWirePage.qml:307
 msgid "No Clients"
-msgstr ""
+msgstr "Kliente pole"
 
 #: src/contents/ui/PipeWirePage.qml:320
 #: src/contents/ui/PreferencesSheet.qml:392
 msgid "State"
-msgstr ""
+msgstr "Olek"
 
 #: src/contents/ui/PipeWirePage.qml:327
 #: src/contents/ui/PreferencesSheet.qml:399
 msgid "Enabled"
-msgstr ""
+msgstr "Kasutusel"
 
 #: src/contents/ui/PipeWirePage.qml:368
 msgid "Both"
-msgstr ""
+msgstr "Mõlemad"
 
 #: src/contents/ui/PipeWirePage.qml:378
 msgid "Waveform"
