@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-08-21 20:14-0300\n"
 "PO-Revision-Date: 2026-08-30 14:57+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"Last-Translator: Lito Parra <lito.15@proton.me>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
 "es/>\n"
 "Language: es\n"
@@ -2786,8 +2786,7 @@ msgstr "Copiar a perfiles locales"
 
 #: src/contents/ui/PresetsCommunityPage.qml:153
 msgid "Imported the %1 community preset to the list of local presets."
-msgstr ""
-"Se importó el perfil de la comunidad %1 a la lista de perfiles locales."
+msgstr "Se importó el perfil de la comunidad %1 a la lista de perfiles locales."
 
 #: src/contents/ui/PresetsCommunityPage.qml:155
 msgid "Failed to import the %1 community preset to the list of local presets."
