@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-08-21 20:14-0300\n"
-"PO-Revision-Date: 2026-05-24 16:57+0000\n"
+"PO-Revision-Date: 2026-08-30 15:03+0000\n"
 "Last-Translator: ssantos <ssantos@web.de>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/easyeffects/"
 "main/pt/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2026.6.dev0\n"
+"X-Generator: Weblate 2026.9.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -2406,8 +2406,7 @@ msgstr "Ativar/desativar monitoramento de entrada"
 
 #: src/contents/ui/PreferencesSheet.qml:235
 msgid "Mic monitor plays to output effects pipeline"
-msgstr ""
-"O monitor de microfone reproduz o sinal na saída do pipeline de efeitos"
+msgstr "O monitor de microfone reproduz o sinal na saída do pipeline de efeitos"
 
 #: src/contents/ui/PreferencesSheet.qml:247
 msgid "Copy the input audio buffer"
