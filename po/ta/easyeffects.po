@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-08-21 20:14-0300\n"
-"PO-Revision-Date: 2026-06-25 10:01+0000\n"
-"Last-Translator: தமிழ்நேரம் <tamilneram247@gmail.com>\n"
+"PO-Revision-Date: 2026-08-30 15:04+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/easyeffects/main/"
 "ta/>\n"
 "Language: ta\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2026.7.dev0\n"
+"X-Generator: Weblate 2026.9.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -32,8 +32,7 @@ msgstr ""
 #: src/command_line_parser.cpp:44
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr ""
-"எளிதான விளைவுகளை விட்டு வெளியேறவும். பணி பயன்முறையில் இயங்கும்போது பயனுள்ளதாக "
-"இருக்கும்."
+"எளிதான விளைவுகளை விட்டு வெளியேறவும். பணி பயன்முறையில் இயங்கும்போது பயனுள்ளதாக இருக்கும்."
 
 #: src/command_line_parser.cpp:45
 msgid "Reset Easy Effects."
@@ -1936,12 +1935,14 @@ msgstr "Equalizer APO முன்னமைக்கப்பட்ட கோப
 #: src/contents/ui/MidSideEqualizer.qml:76
 #, fuzzy
 msgid "Imported the Mid-Side Equalizer APO preset file into the mid channel."
-msgstr "Equalizer APO முன்னமைக்கப்பட்ட கோப்பை சரியான சேனலில் இறக்குமதி செய்யப்பட்டது."
+msgstr ""
+"Equalizer APO முன்னமைக்கப்பட்ட கோப்பை சரியான சேனலில் இறக்குமதி செய்யப்பட்டது."
 
 #: src/contents/ui/MidSideEqualizer.qml:78
 #, fuzzy
 msgid "Imported the Mid-Side Equalizer APO preset file into the side channel."
-msgstr "Equalizer APO முன்னமைக்கப்பட்ட கோப்பை இடது சேனலில் இறக்குமதி செய்யப்பட்டது."
+msgstr ""
+"Equalizer APO முன்னமைக்கப்பட்ட கோப்பை இடது சேனலில் இறக்குமதி செய்யப்பட்டது."
 
 #: src/contents/ui/MidSideEqualizer.qml:109
 #, fuzzy
