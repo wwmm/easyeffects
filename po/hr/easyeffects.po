@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-08-21 20:14-0300\n"
 "PO-Revision-Date: 2026-08-30 15:00+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/easyeffects/"
 "main/hr/>\n"
 "Language: hr\n"
@@ -2859,8 +2859,7 @@ msgstr "Prikaži izvorni prozor"
 
 #: src/contents/ui/PreferencesSheet.qml:831
 msgid "Allows the native user interface of effects to be shown/hidden."
-msgstr ""
-"Dozvoljava prikazivanje/skrivanje izvornog korisničkog sučelja efekata."
+msgstr "Dozvoljava prikazivanje/skrivanje izvornog korisničkog sučelja efekata."
 
 #: src/contents/ui/PreferencesSheet.qml:843
 #, fuzzy
