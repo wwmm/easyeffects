@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-08-21 20:14-0300\n"
 "PO-Revision-Date: 2026-08-30 15:03+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ro/>\n"
 "Language: ro\n"
@@ -824,8 +824,7 @@ msgstr "Elimină răspunsul la impuls"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:109
 msgid "Are you sure you want to remove this impulse response from the list?"
-msgstr ""
-"Sunteți sigur că doriți să eliminați acest răspuns la impuls din listă?"
+msgstr "Sunteți sigur că doriți să eliminați acest răspuns la impuls din listă?"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:113
 msgid "Removed the %1 Convolver impulse."
@@ -890,8 +889,8 @@ msgstr "Algoritmul de convoluție este în modul „passthrough”."
 #: src/contents/ui/Convolver.qml:74
 msgid "Failed to load the %1 impulse. The Convolver is in passthrough mode."
 msgstr ""
-"Încărcarea impulsului %1 a eșuat. Algoritmul de convoluție este în modul "
-"„passthrough”."
+"Încărcarea impulsului %1 a eșuat. Algoritmul de convoluție este în modul „"
+"passthrough”."
 
 #: src/contents/ui/Convolver.qml:151
 msgid "First"
@@ -1879,8 +1878,7 @@ msgstr "Reinițializați parametrii?"
 
 #: src/contents/ui/Main.qml:308
 msgid "Are you sure you want to reset all Easy Effects settings?"
-msgstr ""
-"Sunteți sigur că doriți să reinițializați toți parametrii Easy Effects?"
+msgstr "Sunteți sigur că doriți să reinițializați toți parametrii Easy Effects?"
 
 #: src/contents/ui/Main.qml:330 src/contents/ui/Main.qml:457
 #: src/contents/ui/PipeWirePage.qml:34
@@ -2135,8 +2133,7 @@ msgstr "Partajează fluxul audio"
 
 #: src/contents/ui/PageStreamsEffects.qml:700
 msgid "Send the processed desktop audio to the virtual source"
-msgstr ""
-"Trimite fluxul audio procesat al mediului de birou către sursa virtuală"
+msgstr "Trimite fluxul audio procesat al mediului de birou către sursa virtuală"
 
 #: src/contents/ui/PipeWirePage.qml:49
 msgid "General"
@@ -3046,8 +3043,7 @@ msgstr "A fost încărcat modelul RNNoise %1."
 
 #: src/contents/ui/RNNoise.qml:86
 msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
-msgstr ""
-"Nu s-a putut încărca modelul %1. Se revine la modelul standard RNNoise."
+msgstr "Nu s-a putut încărca modelul %1. Se revine la modelul standard RNNoise."
 
 #: src/contents/ui/RNNoise.qml:105 src/contents/ui/Speex.qml:118
 msgid "Voice detection"
