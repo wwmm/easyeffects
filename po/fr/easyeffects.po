@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-08-21 20:14-0300\n"
 "PO-Revision-Date: 2026-08-30 14:59+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
 "Language: fr\n"
@@ -2308,8 +2308,7 @@ msgstr "Activer le mode service"
 
 #: src/contents/ui/PreferencesSheet.qml:88
 msgid "Easy Effects is active in background when the window is closed."
-msgstr ""
-"Easy Effects reste actif en arrière-plan lorsque la fenêtre est fermée."
+msgstr "Easy Effects reste actif en arrière-plan lorsque la fenêtre est fermée."
 
 #: src/contents/ui/PreferencesSheet.qml:100
 msgid "Autostart on login"
@@ -2838,8 +2837,7 @@ msgstr "Exportation de tous les préréglages vers un dossier externe."
 
 #: src/contents/ui/PresetsLocalPage.qml:68
 msgid "Failed to export all presets to an external folder."
-msgstr ""
-"Échec de l'exportation de tous les préréglages vers un dossier externe."
+msgstr "Échec de l'exportation de tous les préréglages vers un dossier externe."
 
 #: src/contents/ui/PresetsLocalPage.qml:83
 msgid "New preset name"
