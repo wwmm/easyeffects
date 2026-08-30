@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-08-21 20:14-0300\n"
 "PO-Revision-Date: 2026-08-30 15:01+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"Last-Translator: Suu <suunya21@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
 "main/ja/>\n"
 "Language: ja\n"
@@ -25,9 +25,9 @@ msgid ""
 "Please allow \"Run in Background\" permission for Easy Effects in your "
 "system app settings."
 msgstr ""
-"バックグラウンドアクセスが拒否されているため、自動起動を有効化できません。シ"
-"ステムのアプリ設定で Easy Effects の「バックグラウンドでの実行」権限を許可し"
-"てください。"
+"バックグラウンドアクセスが拒否されているため、自動起動を有効化できません。"
+"システムのアプリ設定で Easy Effects の「バックグラウンドでの実行」権限を許可"
+"してください。"
 
 #: src/command_line_parser.cpp:44
 msgid "Quit Easy Effects. Useful when running in service mode."
@@ -895,8 +895,8 @@ msgstr "コンボルバーはパススルーモードです。"
 #: src/contents/ui/Convolver.qml:74
 msgid "Failed to load the %1 impulse. The Convolver is in passthrough mode."
 msgstr ""
-"インパルス「%1」の読み込みに失敗しました。コンボルバーはパススルーモードで"
-"す。"
+"インパルス「%1」の読み込みに失敗しました。コンボルバーはパススルーモードです"
+"。"
 
 #: src/contents/ui/Convolver.qml:151
 msgid "First"
@@ -1483,8 +1483,7 @@ msgstr ""
 
 #: src/contents/ui/Equalizer.qml:114
 msgid "Exported the current Equalizer settings to an external APO preset file."
-msgstr ""
-"現在のイコライザー設定を外部 APO プリセットファイルにエクスポートしました。"
+msgstr "現在のイコライザー設定を外部 APO プリセットファイルにエクスポートしました。"
 
 #: src/contents/ui/Equalizer.qml:116
 msgid ""
@@ -2396,9 +2395,9 @@ msgid ""
 "percentages results in a lower perceived volume while the loudness appears "
 "to change more evenly across the slider."
 msgstr ""
-"ストリーミング音量に線形スケールではなく立方スケールを使用する。パーセンテー"
-"ジが低いほど、スライダー上で音量がより均等に変化するように見えますが、実際の"
-"音量は低くなります。"
+"ストリーミング音量に線形スケールではなく立方スケールを使用する。"
+"パーセンテージが低いほど、スライダー上で音量がより均等に変化するように見えま"
+"すが、実際の音量は低くなります。"
 
 #: src/contents/ui/PreferencesSheet.qml:197
 msgid "Activate monitor channel volumes"
@@ -2608,8 +2607,8 @@ msgid ""
 "Action buttons in the effects list are moved inside a context menu for a "
 "more compact view."
 msgstr ""
-"エフェクトリストのアクションボタンは、よりコンパクトな表示のためにコンテキス"
-"トメニュー内に移動されます。"
+"エフェクトリストのアクションボタンは、よりコンパクトな表示のために"
+"コンテキストメニュー内に移動されます。"
 
 #: src/contents/ui/PreferencesSheet.qml:628
 #: src/contents/ui/PreferencesSheet.qml:665
@@ -2727,8 +2726,7 @@ msgstr "自動読み込み遅延"
 #: src/contents/ui/PreferencesSheet.qml:779
 msgid ""
 "Delay between receiving a new device route and the call to autoload a preset."
-msgstr ""
-"新しいデバイスルートを受信してからプリセットを自動読み込みするまでの遅延。"
+msgstr "新しいデバイスルートを受信してからプリセットを自動読み込みするまでの遅延。"
 
 #: src/contents/ui/PreferencesSheet.qml:795
 #, fuzzy
@@ -2814,8 +2812,7 @@ msgstr "ローカルプリセットにコピー"
 
 #: src/contents/ui/PresetsCommunityPage.qml:153
 msgid "Imported the %1 community preset to the list of local presets."
-msgstr ""
-"コミュニティプリセット %1 をローカルプリセット一覧にインポートしました。"
+msgstr "コミュニティプリセット %1 をローカルプリセット一覧にインポートしました。"
 
 #: src/contents/ui/PresetsCommunityPage.qml:155
 msgid "Failed to import the %1 community preset to the list of local presets."
@@ -3062,8 +3059,8 @@ msgstr "%1 RNNoise モデルを読み込みました。"
 #: src/contents/ui/RNNoise.qml:86
 msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
 msgstr ""
-"%1 モデルの読み込みに失敗しました。標準 RNNoise モデルにフォールバックしま"
-"す。"
+"%1 モデルの読み込みに失敗しました。標準 RNNoise モデルにフォールバックします"
+"。"
 
 #: src/contents/ui/RNNoise.qml:105 src/contents/ui/Speex.qml:118
 msgid "Voice detection"
