@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-08-21 20:14-0300\n"
-"PO-Revision-Date: 2025-11-23 11:51+0000\n"
-"Last-Translator: Suu <suunya21@gmail.com>\n"
+"PO-Revision-Date: 2026-08-30 15:01+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
 "main/ja/>\n"
 "Language: ja\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.15-dev\n"
+"X-Generator: Weblate 2026.9.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -31,8 +31,7 @@ msgstr ""
 
 #: src/command_line_parser.cpp:44
 msgid "Quit Easy Effects. Useful when running in service mode."
-msgstr ""
-"Easy Effects を終了します。サービスモードで動作しているときに便利です。"
+msgstr "Easy Effects を終了します。サービスモードで動作しているときに便利です。"
 
 #: src/command_line_parser.cpp:45
 msgid "Reset Easy Effects."
@@ -46,8 +45,7 @@ msgstr "ウィンドウを隠す。"
 #, fuzzy
 msgid ""
 "Global bypass. 1 to enable, 2 to disable and 3 to get the current state."
-msgstr ""
-"グローバルバイパス。1 を指定すると有効化し、2 を指定すると無効化します。"
+msgstr "グローバルバイパス。1 を指定すると有効化し、2 を指定すると無効化します。"
 
 #: src/command_line_parser.cpp:49
 msgid "bypass-state"
@@ -2001,8 +1999,7 @@ msgstr ""
 msgid ""
 "Exported the current Mid-Side Equalizer settings to an external APO preset "
 "file."
-msgstr ""
-"現在のイコライザー設定を外部 APO プリセットファイルにエクスポートしました。"
+msgstr "現在のイコライザー設定を外部 APO プリセットファイルにエクスポートしました。"
 
 #: src/contents/ui/MidSideEqualizer.qml:116
 #, fuzzy
@@ -2373,9 +2370,9 @@ msgid ""
 "should not be enabled. It is intended only as a workaround for systems that "
 "do not work well with the autostart of Easy Effects."
 msgstr ""
-"アプリケーションを起動した後にウィンドウを表示しません。 一般的に、このオプ"
-"ションは使用しないでください。 オートスタートファイルでうまく動作しないシステ"
-"ムのための回避策として使用されます。"
+"アプリケーションを起動した後にウィンドウを表示しません。 一般的に、この"
+"オプションは使用しないでください。 オートスタートファイルでうまく動作しない"
+"システムのための回避策として使用されます。"
 
 #: src/contents/ui/PreferencesSheet.qml:148
 msgid "Process all output streams"
