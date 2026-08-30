@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-08-21 20:14-0300\n"
-"PO-Revision-Date: 2026-08-30 07:46+0000\n"
+"PO-Revision-Date: 2026-08-30 16:02+0000\n"
 "Last-Translator: Priit Jõerüüt <jrthwlate@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/easyeffects/"
 "main/et/>\n"
@@ -29,10 +29,11 @@ msgstr ""
 #: src/command_line_parser.cpp:44
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr ""
+"Sulge Easy Effects. Kasulik olukorras, kus rakendus töötab taustateenusena."
 
 #: src/command_line_parser.cpp:45
 msgid "Reset Easy Effects."
-msgstr ""
+msgstr "Lähtesta Easy Effects."
 
 #: src/command_line_parser.cpp:46
 msgid "Hide the window."
@@ -53,7 +54,7 @@ msgstr ""
 
 #: src/command_line_parser.cpp:51
 msgid "Load a preset. Example: easyeffects -l music"
-msgstr ""
+msgstr "Laadi üks eelseadistus. Näide: easyeffects -l music"
 
 #: src/command_line_parser.cpp:51
 msgid "preset-name"
@@ -65,7 +66,7 @@ msgstr ""
 
 #: src/command_line_parser.cpp:53
 msgid "Get the last loaded input/output preset."
-msgstr ""
+msgstr "Võta viimatilaaditud sisendi/väljundi eelseadistus."
 
 #: src/command_line_parser.cpp:53
 msgid "preset-type"
@@ -73,43 +74,43 @@ msgstr ""
 
 #: src/command_line_parser.cpp:54
 msgid "Get the last loaded input and output presets."
-msgstr ""
+msgstr "Võta viimatilaaditud sisendi ja väljundi eelseadistused."
 
 #: src/command_line_parser.cpp:55
 msgid "Deprecated. Use --service-mode instead."
-msgstr ""
+msgstr "Kasutuselt eemaldatud. Selle asemel kasuta „--service-mode“ argumenti."
 
 #: src/command_line_parser.cpp:56
 msgid "Start the application with service mode turned on."
-msgstr ""
+msgstr "Käivita rakendus nii, et taustateenus on lülitatud sisse."
 
 #: src/command_line_parser.cpp:57
 msgid "Enable debug messages."
-msgstr ""
+msgstr "Lülita veaotsingu ja silumise teated sisse."
 
 #: src/command_line_parser.cpp:127
 msgid "Must specify preset type: input/output."
-msgstr ""
+msgstr "Sa pead määratlema eelseadistuse tüübi: sisend/väljund."
 
 #: src/command_line_parser.cpp:162
 msgid "Output presets"
-msgstr ""
+msgstr "Väljundi eelseadistused"
 
 #: src/command_line_parser.cpp:164
 msgid "No output presets."
-msgstr ""
+msgstr "Väljundi eelseadistusi ei ole."
 
 #: src/command_line_parser.cpp:175
 msgid "Input presets"
-msgstr ""
+msgstr "Sisendi eelseadistused"
 
 #: src/command_line_parser.cpp:177
 msgid "No input presets."
-msgstr ""
+msgstr "Sisendi eelseadistusi ei ole."
 
 #: src/command_line_parser.cpp:207
 msgid "Specified preset does not exist."
-msgstr ""
+msgstr "Määratletud eelseadistust pole olemas."
 
 #: src/command_line_parser.cpp:227
 msgid "Provided an invalid bypass state."
@@ -216,12 +217,12 @@ msgstr ""
 #: src/contents/ui/RNNoise.qml:300 src/contents/ui/RNNoise.qml:320
 #: src/contents/ui/Speex.qml:177 src/contents/ui/StereoTools.qml:392
 msgid "Using %1"
-msgstr ""
+msgstr "Kasutusel on: %1"
 
 #: src/contents/ui/Autogain.qml:250 src/contents/ui/DeepFilterNet.qml:214
 #: src/contents/ui/LevelMeter.qml:232 src/contents/ui/Pitch.qml:285
 msgid "Reset history"
-msgstr ""
+msgstr "Lähtesta ajalugu"
 
 #: src/contents/ui/Autogain.qml:257
 msgid "Force silence"
@@ -235,7 +236,7 @@ msgstr ""
 #: src/contents/ui/DeepFilterNet.qml:222 src/contents/ui/LevelMeter.qml:240
 #: src/contents/ui/Pitch.qml:313
 msgid "Reset settings"
-msgstr ""
+msgstr "Lähtesta seadistused"
 
 #: src/contents/ui/Autotune.qml:92 src/contents/ui/Autotune.qml:120
 msgid "Tuning"
@@ -828,33 +829,33 @@ msgstr ""
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:123
 msgid "Rename Impulse"
-msgstr ""
+msgstr "Muuda impulsi nime"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:128
 #: src/contents/ui/PresetsLocalPage.qml:247
 msgid "Rename"
-msgstr ""
+msgstr "Muuda nime"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:136
 msgid "Renamed the %1 impulse to %2"
-msgstr ""
+msgstr "Impulsi nimi on muutunud: „%1“ → „%2“"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:139
 msgid "Failed to rename the %1 impulse to %2"
-msgstr ""
+msgstr "Impulsi nime muutmine ei õnnestunud: „%1“ → „%2“"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:147
 #: src/contents/ui/PresetsLocalPage.qml:267
 msgid "Cancel"
-msgstr ""
+msgstr "Katkesta"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:186
 msgid "Rename this impulse"
-msgstr ""
+msgstr "Muuda selle impulsi nime"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:194
 msgid "Delete this impulse"
-msgstr ""
+msgstr "Kustuta impulss"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:233
 msgid "Import impulse"
@@ -1058,7 +1059,7 @@ msgstr ""
 #: src/contents/ui/MultibandGate.qml:90 src/contents/ui/StereoTools.qml:210
 #: src/contents/ui/StereoTools.qml:242
 msgid "Mute"
-msgstr ""
+msgstr "Summuta"
 
 #: src/contents/ui/CrystalizerBand.qml:69
 #: src/contents/ui/MultibandCompressor.qml:108
@@ -1394,11 +1395,11 @@ msgstr ""
 #: src/contents/ui/MultibandCompressor.qml:199
 #: src/contents/ui/MultibandGate.qml:136 src/contents/ui/PipeWirePage.qml:431
 msgid "Frequency"
-msgstr ""
+msgstr "Sagedus"
 
 #: src/contents/ui/EqualizerBandMenu.qml:142 src/contents/ui/Filter.qml:189
 msgid "Quality"
-msgstr ""
+msgstr "Kvaliteet"
 
 #: src/contents/ui/EqualizerBandMenu.qml:165 src/contents/ui/Filter.qml:158
 msgid "Width"
@@ -1438,15 +1439,15 @@ msgstr ""
 
 #: src/contents/ui/Equalizer.qml:91 src/contents/ui/MidSideEqualizer.qml:91
 msgid "GraphicEQ preset"
-msgstr ""
+msgstr "GraphicEQ eelseadistus"
 
 #: src/contents/ui/Equalizer.qml:94 src/contents/ui/MidSideEqualizer.qml:94
 msgid "Imported the GraphicEQ preset file."
-msgstr ""
+msgstr "GraphicEQ eelseadistuse fail on imporditud."
 
 #: src/contents/ui/Equalizer.qml:96 src/contents/ui/MidSideEqualizer.qml:96
 msgid "Failed to import the GraphicEQ preset file."
-msgstr ""
+msgstr "GraphicEQ eelseadistuse faili importimine ei õnnestunud."
 
 #: src/contents/ui/Equalizer.qml:109
 msgid ""
@@ -1498,27 +1499,27 @@ msgstr ""
 #: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
 #: src/contents/ui/MidSideEqualizer.qml:156
 msgid "x2"
-msgstr ""
+msgstr "x2"
 
 #: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
 #: src/contents/ui/MidSideEqualizer.qml:156
 msgid "x3"
-msgstr ""
+msgstr "x3"
 
 #: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
 #: src/contents/ui/MidSideEqualizer.qml:156
 msgid "x4"
-msgstr ""
+msgstr "x4"
 
 #: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
 #: src/contents/ui/MidSideEqualizer.qml:156
 msgid "x6"
-msgstr ""
+msgstr "x6"
 
 #: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
 #: src/contents/ui/MidSideEqualizer.qml:156
 msgid "x8"
-msgstr ""
+msgstr "x8"
 
 #: src/contents/ui/Equalizer.qml:165 src/contents/ui/MidSideEqualizer.qml:165
 msgid "Bands"
@@ -1566,11 +1567,11 @@ msgstr ""
 
 #: src/contents/ui/Equalizer.qml:384 src/contents/ui/MidSideEqualizer.qml:384
 msgid "Import APO (GraphicEQ)"
-msgstr ""
+msgstr "Impordi APO (GraphicEQ)"
 
 #: src/contents/ui/Equalizer.qml:391 src/contents/ui/MidSideEqualizer.qml:391
 msgid "Export APO"
-msgstr ""
+msgstr "Ekspordi APO"
 
 #: src/contents/ui/Exciter.qml:161
 msgid "Ceil active"
@@ -1592,11 +1593,11 @@ msgstr ""
 
 #: src/contents/ui/Filter.qml:79
 msgid "Filter mode"
-msgstr ""
+msgstr "Filtrirežiim"
 
 #: src/contents/ui/Filter.qml:93
 msgid "Equalizer mode"
-msgstr ""
+msgstr "Ekvalaiseri-režiim"
 
 #: src/contents/ui/Gate.qml:71 src/tags_plugin_name.cpp:65
 msgid "Gate"
@@ -1850,65 +1851,67 @@ msgstr ""
 
 #: src/contents/ui/Main.qml:307
 msgid "Reset Settings?"
-msgstr ""
+msgstr "Kas lähtestame seadistused?"
 
 #: src/contents/ui/Main.qml:308
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr ""
+"Kas oled kindel, et soovid rakenduse Easy Effects kõik seadistused "
+"lähtestada?"
 
 #: src/contents/ui/Main.qml:330 src/contents/ui/Main.qml:457
 #: src/contents/ui/PipeWirePage.qml:34
 msgid "PipeWire"
-msgstr ""
+msgstr "PipeWire"
 
 #: src/contents/ui/Main.qml:338
 msgid "Effects"
-msgstr ""
+msgstr "Efektid"
 
 #: src/contents/ui/Main.qml:339
 msgid "Turn effects on/off"
-msgstr ""
+msgstr "Lülita efektid sisse/välja"
 
 #: src/contents/ui/Main.qml:351
 msgid "Audio effects are enabled."
-msgstr ""
+msgstr "Heliefektid on kasutusel."
 
 #: src/contents/ui/Main.qml:351
 msgid "Audio effects are disabled."
-msgstr ""
+msgstr "Heliefektid pole kasutusel."
 
 #: src/contents/ui/Main.qml:403 src/contents/ui/PageStreamsEffects.qml:489
 msgid "Players"
-msgstr ""
+msgstr "Esitajad"
 
 #: src/contents/ui/Main.qml:418 src/contents/ui/PageStreamsEffects.qml:498
 msgid "Recorders"
-msgstr ""
+msgstr "Salvestajad"
 
 #: src/contents/ui/Main.qml:437
 msgid "Preferences"
-msgstr ""
+msgstr "Eelistused"
 
 #: src/contents/ui/Main.qml:449 src/contents/ui/ShortcutsSheet.qml:458
 #: src/contents/ui/TrayIcon.qml:212
 msgid "Shortcuts"
-msgstr ""
+msgstr "Kiirklahvid"
 
 #: src/contents/ui/Main.qml:489
 msgid "About Easy Effects"
-msgstr ""
+msgstr "Rakenduse teave: Easy Effects"
 
 #: src/contents/ui/Main.qml:497 src/contents/ui/TrayIcon.qml:231
 msgid "Quit"
-msgstr ""
+msgstr "Välju"
 
 #: src/contents/ui/MenuAddPlugins.qml:93
 msgid "Add %1"
-msgstr ""
+msgstr "Lisa: %1"
 
 #: src/contents/ui/MenuAddPlugins.qml:165
 msgid "Added a new effect to the pipeline: %1"
-msgstr ""
+msgstr "Uus efekt on lisatud töötluskonveierisse: %1"
 
 #: src/contents/ui/MidSideEqualizer.qml:69
 msgid "Failed to import the Mid-Side Equalizer APO preset file."
@@ -2041,39 +2044,39 @@ msgstr ""
 
 #: src/contents/ui/PageStreamsEffects.qml:128
 msgid "No audio application available"
-msgstr ""
+msgstr "Ühtegi helirakendust pole saadaval"
 
 #: src/contents/ui/PageStreamsEffects.qml:143
 msgid "No Effects"
-msgstr ""
+msgstr "Efekte pole"
 
 #: src/contents/ui/PageStreamsEffects.qml:144
 msgid "Audio stream not modified"
-msgstr ""
+msgstr "Helivoog pole muudetud"
 
 #: src/contents/ui/PageStreamsEffects.qml:418
 msgid "Add effect"
-msgstr ""
+msgstr "Lisa efekt"
 
 #: src/contents/ui/PageStreamsEffects.qml:432
 msgid "Close"
-msgstr ""
+msgstr "Sulge"
 
 #: src/contents/ui/PageStreamsEffects.qml:436
 msgid "Expand the list of effects pipeline"
-msgstr ""
+msgstr "Laienda efektide konveieri loendit"
 
 #: src/contents/ui/PageStreamsEffects.qml:436
 msgid "Reduce the list of effects pipeline"
-msgstr ""
+msgstr "Ahenda efektide konveieri loend"
 
 #: src/contents/ui/PageStreamsEffects.qml:498
 msgid "Output device"
-msgstr ""
+msgstr "Väljundseade"
 
 #: src/contents/ui/PageStreamsEffects.qml:673
 msgid "Excluded apps"
-msgstr ""
+msgstr "Välistatud rakendused"
 
 #: src/contents/ui/PageStreamsEffects.qml:686
 msgid "Input monitoring"
@@ -2093,19 +2096,19 @@ msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:54
 msgid "Modules"
-msgstr ""
+msgstr "Moodulid"
 
 #: src/contents/ui/PipeWirePage.qml:59
 msgid "Clients"
-msgstr ""
+msgstr "Kliendid"
 
 #: src/contents/ui/PipeWirePage.qml:64
 msgid "Test Signal"
-msgstr ""
+msgstr "Testsignaal"
 
 #: src/contents/ui/PipeWirePage.qml:134
 msgid "Device Management"
-msgstr ""
+msgstr "Seadmehaldus"
 
 #: src/contents/ui/PipeWirePage.qml:138
 msgid ""
@@ -2115,35 +2118,35 @@ msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:145
 msgid "Use default input"
-msgstr ""
+msgstr "Kasuta vaikimisi sisendit"
 
 #: src/contents/ui/PipeWirePage.qml:159 src/contents/ui/PipeWirePage.qml:203
 msgid "Name"
-msgstr ""
+msgstr "Nimi"
 
 #: src/contents/ui/PipeWirePage.qml:188
 msgid "Use default output"
-msgstr ""
+msgstr "Kasuta vaikimisi väljundit"
 
 #: src/contents/ui/PipeWirePage.qml:227
 msgid "Server Information"
-msgstr ""
+msgstr "Heliserveri teave"
 
 #: src/contents/ui/PipeWirePage.qml:232
 msgid "Header version"
-msgstr ""
+msgstr "Päise versioon"
 
 #: src/contents/ui/PipeWirePage.qml:237
 msgid "Library version"
-msgstr ""
+msgstr "Teegi versioon"
 
 #: src/contents/ui/PipeWirePage.qml:242
 msgid "Runtime version"
-msgstr ""
+msgstr "Käitusfaili versioon"
 
 #: src/contents/ui/PipeWirePage.qml:247
 msgid "Default sampling rate"
-msgstr ""
+msgstr "Vaikimisi diskreetimissagedus"
 
 #: src/contents/ui/PipeWirePage.qml:252
 msgid "Minimum quantum"
@@ -2159,7 +2162,7 @@ msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:284
 msgid "No Modules"
-msgstr ""
+msgstr "Mooduleid pole"
 
 #: src/contents/ui/PipeWirePage.qml:307
 msgid "No Clients"
@@ -3122,11 +3125,11 @@ msgstr ""
 
 #: src/contents/ui/TrayIcon.qml:61
 msgid "Effects disabled"
-msgstr ""
+msgstr "Heliefektid pole kasutusel"
 
 #: src/contents/ui/TrayIcon.qml:63
 msgid "Effects enabled"
-msgstr ""
+msgstr "Heliefektid on kasutusel"
 
 #: src/contents/ui/TrayIcon.qml:102 src/contents/ui/TrayIcon.qml:122
 msgid "Preset Loaded"
@@ -3174,11 +3177,11 @@ msgstr ""
 
 #: src/main.cpp:382
 msgid "Global audio effects"
-msgstr ""
+msgstr "Üldised heliefektid"
 
 #: src/main.cpp:383
 msgid "© 2017-2026 Easy Effects Team"
-msgstr ""
+msgstr "© 2017-2026 Easy Effectsi tiim"
 
 #: src/main.cpp:385
 msgid "Wellington Wallace"
@@ -3219,19 +3222,19 @@ msgstr ""
 
 #: src/presets_manager.cpp:800
 msgid "Wrong format in excluded apps list"
-msgstr ""
+msgstr "Vigane vorming välistatud rakenduste loendis"
 
 #: src/presets_manager.cpp:808
 msgid "Generic error while loading excluded apps list"
-msgstr ""
+msgstr "Üldine viga välistatud rakenduste loendi laadimisel"
 
 #: src/presets_manager.cpp:817
 msgid "Wrong format in effects list"
-msgstr ""
+msgstr "Vale vorming efektide loendis"
 
 #: src/presets_manager.cpp:824
 msgid "Generic error while loading effects list"
-msgstr ""
+msgstr "Üldine viga efektide loendi laadimisel"
 
 #: src/presets_manager.cpp:835
 msgid "One or more parameters have a wrong format"
@@ -3475,4 +3478,4 @@ msgstr ""
 
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
-msgstr ""
+msgstr "Lihtsad heliefektid"
