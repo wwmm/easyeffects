@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-08-21 20:14-0300\n"
-"PO-Revision-Date: 2026-08-29 16:24+0000\n"
+"PO-Revision-Date: 2026-08-30 07:46+0000\n"
 "Last-Translator: Priit Jõerüüt <jrthwlate@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/easyeffects/"
 "main/et/>\n"
@@ -399,15 +399,15 @@ msgstr ""
 
 #: src/contents/ui/BlocklistDialog.qml:32
 msgid "Excluded Applications"
-msgstr ""
+msgstr "Välistatud rakendused"
 
 #: src/contents/ui/BlocklistDialog.qml:48
 msgid "Application node name"
-msgstr ""
+msgstr "Rakenduse sõlme nimi"
 
 #: src/contents/ui/BlocklistDialog.qml:64
 msgid "Add to excluded applications"
-msgstr ""
+msgstr "Lisa välistatud rakenduste sekka"
 
 #: src/contents/ui/BlocklistDialog.qml:116
 #: src/contents/ui/ConvolverImpulseDialog.qml:89
@@ -417,19 +417,19 @@ msgstr ""
 #: src/contents/ui/PresetsCommunityPage.qml:104
 #: src/contents/ui/PresetsLocalPage.qml:193 src/contents/ui/RNNoise.qml:228
 msgid "Empty List"
-msgstr ""
+msgstr "Tühi loend"
 
 #: src/contents/ui/BlocklistDialog.qml:117
 msgid "No application excluded"
-msgstr ""
+msgstr "Ühtegi rakendust pole välistatud"
 
 #: src/contents/ui/BlocklistDialog.qml:140
 msgid "Remove Application"
-msgstr ""
+msgstr "Eemalda rakendus"
 
 #: src/contents/ui/BlocklistDialog.qml:141
 msgid "Are you sure you want to remove this application from the list?"
-msgstr ""
+msgstr "Kas oled kindel, et soovid selle rakenduse antud loendist eemaldada?"
 
 #: src/contents/ui/BlocklistDialog.qml:175
 msgid "Remove this app"
@@ -444,14 +444,16 @@ msgid ""
 "Also use a combination of node and media name when deciding if a stream "
 "should be blocked"
 msgstr ""
+"Lisaks kasuta blokeerimise otsustamisel kombinatsiooni sõlme ja meediumi "
+"nimest"
 
 #: src/contents/ui/BlocklistDialog.qml:216
 msgid "Show excluded apps"
-msgstr ""
+msgstr "Näita välistatud rakendusi"
 
 #: src/contents/ui/BlocklistDialog.qml:217
 msgid "Show excluded applications in the list of players/recorders"
-msgstr ""
+msgstr "Näita pleierite ja salvestajate loendis välistatud rakendusi"
 
 #: src/contents/ui/Compressor.qml:67 src/tags_plugin_name.cpp:50
 msgid "Compressor"
@@ -528,7 +530,7 @@ msgstr ""
 #: src/contents/ui/MultibandCompressor.qml:423
 #: src/contents/ui/MultibandGate.qml:396
 msgid "Type"
-msgstr ""
+msgstr "Tüüp"
 
 #: src/contents/ui/Compressor.qml:266
 msgid "Feed-forward"
@@ -543,13 +545,13 @@ msgstr ""
 #: src/contents/ui/MultibandCompressor.qml:427
 #: src/contents/ui/MultibandGate.qml:400
 msgid "External"
-msgstr ""
+msgstr "Väline"
 
 #: src/contents/ui/Compressor.qml:277 src/contents/ui/Expander.qml:237
 #: src/contents/ui/Gate.qml:255 src/contents/ui/Limiter.qml:227
 #: src/contents/ui/PageStreamsEffects.qml:489
 msgid "Input device"
-msgstr ""
+msgstr "Sisendseade"
 
 #: src/contents/ui/Compressor.qml:305 src/contents/ui/Deesser.qml:80
 #: src/contents/ui/Expander.qml:265 src/contents/ui/Gate.qml:283
@@ -669,7 +671,7 @@ msgstr ""
 #: src/contents/ui/MultibandCompressor.qml:469
 #: src/contents/ui/MultibandGate.qml:442
 msgid "Preamp"
-msgstr ""
+msgstr "Eelvõimendus"
 
 #: src/contents/ui/Compressor.qml:376 src/contents/ui/Expander.qml:332
 #: src/contents/ui/Gate.qml:351 src/contents/ui/MultibandCompressor.qml:485
@@ -862,7 +864,7 @@ msgstr ""
 #: src/contents/ui/MenuAddPlugins.qml:202 src/contents/ui/PresetsDialog.qml:126
 msgctxt "@action:button"
 msgid "Close"
-msgstr ""
+msgstr "Sulge"
 
 #: src/contents/ui/Convolver.qml:66
 msgid "Loaded the %1 Convolver impulse."
@@ -988,12 +990,12 @@ msgstr ""
 
 #: src/contents/ui/Crossfeed.qml:118
 msgid "Default"
-msgstr ""
+msgstr "Vaikimisi"
 
 #: src/contents/ui/Crossfeed.qml:167 src/contents/ui/PageStreamsEffects.qml:660
 #: src/contents/ui/PreferencesSheet.qml:62 src/contents/ui/Reverb.qml:335
 msgid "Presets"
-msgstr ""
+msgstr "Eelseadistused"
 
 #: src/contents/ui/CrosstalkCanceller.qml:64
 msgid "Process only phantom center"
