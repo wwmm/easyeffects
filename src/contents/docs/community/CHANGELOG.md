@@ -1,5 +1,21 @@
 # Changelog
  
+## 8.2.9
+### 2026-08-31
+
+ 
+### Features:
+- Duplex devices can now be selected as input/output devices.
+- Added a new configuration option that allows the automatic global bypass reset on device change to be disabled.
+- A new Mid-Side Equalizer effect based on the LSP Parametric Equalizer x32 MidSide plugin has been added.
+- PW_KEY_NODE_LINK_GROUP is now set to the same as PW_KEY_NODE_GROUP. It helps to fix https://github.com/wwmm/easyeffects/issues/4878 
+
+### Bug fixes:
+- Some ui buttons "enabled" state was incorrectly bound to the showNativePluginUi key
+
+### Other notes:
+
+ 
 ## 8.2.8
 ### 2026-07-21
 

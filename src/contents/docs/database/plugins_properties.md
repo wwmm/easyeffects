@@ -239,6 +239,7 @@ The following properties can be modified or queried via the [local server](../us
 | **equalizer** | `pitchLeft` | Double | `0` |
 | **equalizer** | `pitchRight` | Double | `0` |
 | **equalizer** | `viewLeftChannel` | Bool | `true` |
+| **equalizer** | `decramp` | Enum | `0` <br><small>(Choices: 0: `Off`, 1: `x2`, 2: `x3`, 3: `x4`, 4: `x6`, 5: `x8`)</small> |
 | **exciter** | `bypass` | Bool | `false` |
 | **exciter** | `inputGain` | Double | `0` |
 | **exciter** | `outputGain` | Double | `0` |
@@ -294,6 +295,7 @@ The following properties can be modified or queried via the [local server](../us
 | **filter** | `quality` | Double | `0.0` |
 | **filter** | `gain` | Double | `0` |
 | **filter** | `balance` | Double | `0` |
+| **filter** | `decramp` | Enum | `0` <br><small>(Choices: 0: `Off`, 1: `x2`, 2: `x3`, 3: `x4`, 4: `x6`, 5: `x8`)</small> |
 | **gate** | `bypass` | Bool | `false` |
 | **gate** | `inputGain` | Double | `0` |
 | **gate** | `outputGain` | Double | `0` |
@@ -371,6 +373,17 @@ The following properties can be modified or queried via the [local server](../us
 | **maximizer** | `outputGain` | Double | `0` |
 | **maximizer** | `release` | Double | `25` |
 | **maximizer** | `threshold` | Double | `0` |
+| **midside_equalizer** | `bypass` | Bool | `false` |
+| **midside_equalizer** | `inputGain` | Double | `0` |
+| **midside_equalizer** | `outputGain` | Double | `0` |
+| **midside_equalizer** | `numBands` | Int | `32` |
+| **midside_equalizer** | `mode` | Enum | `0` <br><small>(Choices: 0: `IIR`, 1: `FIR`, 2: `FFT`, 3: `SPM`)</small> |
+| **midside_equalizer** | `splitChannels` | Bool | `false` |
+| **midside_equalizer** | `balance` | Double | `0` |
+| **midside_equalizer** | `pitchMid` | Double | `0` |
+| **midside_equalizer** | `pitchSide` | Double | `0` |
+| **midside_equalizer** | `viewMidChannel` | Bool | `true` |
+| **midside_equalizer** | `decramp` | Enum | `0` <br><small>(Choices: 0: `Off`, 1: `x2`, 2: `x3`, 3: `x4`, 4: `x6`, 5: `x8`)</small> |
 | **multiband_compressor** | `bypass` | Bool | `false` |
 | **multiband_compressor** | `inputGain` | Double | `0` |
 | **multiband_compressor** | `outputGain` | Double | `0` |

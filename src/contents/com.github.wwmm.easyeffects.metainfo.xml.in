@@ -6,11 +6,19 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
   <description>
-    <p>Easy Effects is an advanced audio manipulation tool. It includes an equalizer, limiter, compressor and a reverberation tool, just to mention a few. To complement this there is also a built in spectrum analyzer.</p>
-    <p>Easy Effects is the successor to PulseEffects. Easy Effects only supports PipeWire's audio server. PulseAudio users should instead use PulseEffects.</p>
-    <p>Because Easy Effects uses the default PipeWire sound server it will work with most, if not all, applications you use. All supported applications are presented in the main window, where each can be enabled individually.</p>
-    <p>Besides manipulating sound output, Easy Effects is able to apply effects to an input device, such as a microphone. This is, for example, useful in audio recording, but it also works well during voice conversations.</p>
-    <p>When Easy Effects is launched it will conveniently remember the configuration used in the last session. It is also possible to save all the current settings as profiles.</p>
+    <p>Easy Effects is an advanced audio manipulation tool. It includes an equalizer, limiter, compressor
+    and a reverberation tool, just to mention a few. To complement this there is also a built in spectrum
+    analyzer.</p>
+    <p>Easy Effects is the successor to PulseEffects. Easy Effects only supports PipeWire's audio server.
+    PulseAudio users should instead use PulseEffects.</p>
+    <p>Because Easy Effects uses the default PipeWire sound server it will work with most, if not all,
+    applications you use. All supported applications are presented in the main window, where each can
+    be enabled individually.</p>
+    <p>Besides manipulating sound output, Easy Effects is able to apply effects to an input device, such
+    as a microphone. This is, for example, useful in audio recording, but it also works well during voice
+    conversations.</p>
+    <p>When Easy Effects is launched it will conveniently remember the configuration used in the last
+    session. It is also possible to save all the current settings as profiles.</p>
   </description>
   <developer id="com.github.wwmm">
     <name>Wellington Wallace</name>
@@ -56,13 +64,33 @@
     <color type="primary" scheme_preference="dark">#004079</color>
   </branding>
   <releases>
+    <release type="stable" version="8.2.9" date="2026-08-31T00:00:00Z">
+      <description>
+        <ul>
+          <li>Features:</li>
+          <li>Duplex devices can now be selected as input/output devices.</li>
+          <li>Added a new configuration option that allows the automatic global bypass reset on device
+          change to be disabled.</li>
+          <li>A new Mid-Side Equalizer effect based on the LSP Parametric Equalizer x32 MidSide plugin
+          has been added.</li>
+          <li>PW_KEY_NODE_LINK_GROUP is now set to the same as PW_KEY_NODE_GROUP. It helps to fix issue
+          4878</li>
+          <li>Bug fixes:</li>
+          <li>Some ui buttons "enabled" state was incorrectly bound to the showNativePluginUi
+          key</li>
+          <li>Other notes:</li>
+        </ul>
+      </description>
+    </release>
     <release type="stable" version="8.2.8" date="2026-07-21T00:00:00Z">
       <description>
         <ul>
           <li>Features:</li>
-          <li>A new configuration option that allows Easy Effects virtual devices volume and mute state to be controlled has been added</li>
+          <li>A new configuration option that allows Easy Effects virtual devices volume and mute state
+          to be controlled has been added</li>
           <li>A new global shortcut that allows audio sharing to be toggled has been added.</li>
-          <li>Our local server has been improved and it is now possible to fully control equalizer parameters through external tools.</li>
+          <li>Our local server has been improved and it is now possible to fully control equalizer parameters
+          through external tools.</li>
           <li>Bug fixes:</li>
           <li>Other notes:</li>
         </ul>
@@ -83,7 +111,8 @@
         <ul>
           <li>Features:</li>
           <li>Bug fixes:</li>
-          <li>The StartupWMClass key was removed from our desktop file. It seems to do more harm than good.</li>
+          <li>The StartupWMClass key was removed from our desktop file. It seems to do more harm than
+          good.</li>
           <li>Other notes:</li>
         </ul>
       </description>
@@ -92,7 +121,8 @@
       <description>
         <ul>
           <li>Features:</li>
-          <li>Now instead of building the pipeline immediately we build it after a delay. The application of this delay and its amount can be configured in our preferences window.</li>
+          <li>Now instead of building the pipeline immediately we build it after a delay. The application
+          of this delay and its amount can be configured in our preferences window.</li>
           <li>Improved compatibility with the latest LSP releases</li>
           <li>Improved level meters.</li>
           <li>Updated translations</li>
@@ -116,13 +146,16 @@
       <description>
         <ul>
           <li>Features:</li>
-          <li>When the microphone is mono we link its port to both the left and right channel ports. It is not the bestway to create stereo from mono. But it should be ok in almost all situations.</li>
+          <li>When the microphone is mono we link its port to both the left and right channel ports.
+          It is not the bestway to create stereo from mono. But it should be ok in almost all situations.</li>
           <li>An "Apply Preset" entry was added to the preset entries in our preset dialog.</li>
           <li>The last loaded preset is highlighted in the presets dialog list.</li>
           <li>The location of a few main window controls has been changed.</li>
           <li>Bug fixes:</li>
-          <li>The mirophone pipeline was not being relinked after output device changes. This is necessary so that the echo canceller gets uses the correct output device when linking its probes.</li>
-          <li>Emit pipelineChanged also when the global bypass is enabled. This makes sure the plugins list displayed in our main window is updated in this situation.</li>
+          <li>The mirophone pipeline was not being relinked after output device changes. This is necessary
+          so that the echo canceller gets uses the correct output device when linking its probes.</li>
+          <li>Emit pipelineChanged also when the global bypass is enabled. This makes sure the plugins
+          list displayed in our main window is updated in this situation.</li>
           <li>Other notes:</li>
         </ul>
       </description>
@@ -131,16 +164,22 @@
       <description>
         <ul>
           <li>Features:</li>
-          <li>A new Autotune effect (by x42-plugins) has been added. It can be used to correct the pitch of the input signal in real time.</li>
-          <li>The shortcut "Shift + Mouse Wheel" can now be used to change the value of a control in larger steps. Similarly to what is already possible with the page up and down keys.</li>
-          <li>Desktop notifications are shown when changing the global bypass state through a global shortcut. For now this only works if the system tray icon is used.</li>
-          <li>In order to minimize conflicts with other applications shortcuts our global shortcuts now use the Meta key.</li>
+          <li>A new Autotune effect (by x42-plugins) has been added. It can be used to correct the pitch
+          of the input signal in real time.</li>
+          <li>The shortcut "Shift + Mouse Wheel" can now be used to change the value of a control
+          in larger steps. Similarly to what is already possible with the page up and down keys.</li>
+          <li>Desktop notifications are shown when changing the global bypass state through a global
+          shortcut. For now this only works if the system tray icon is used.</li>
+          <li>In order to minimize conflicts with other applications shortcuts our global shortcuts now
+          use the Meta key.</li>
           <li>When effects are disabled a new tray icon that represets this state is used.</li>
           <li>The spectrum frequency range now starts at 1 Hz and ends at 25000 Hz.</li>
           <li>Bug fixes:</li>
-          <li>The convolver feature that combines impulse response files was not working. Regression fixed.</li>
+          <li>The convolver feature that combines impulse response files was not working. Regression
+          fixed.</li>
           <li>Other notes:</li>
-          <li>Package maintainers should include the LV2 module of x42-plugins in order to make the new Autotune effect available.</li>
+          <li>Package maintainers should include the LV2 module of x42-plugins in order to make the new
+          Autotune effect available.</li>
         </ul>
       </description>
     </release>
@@ -152,7 +191,9 @@
           <li>Updated translations</li>
           <li>Small QML performance optimizations</li>
           <li>Bug fixes:</li>
-          <li>In some distributions like NixOS the speexdsp library is compiled with the fftw backend. So we need to make our speex proecssor plugin to use our global fftw mutex. Otherwise using it together with the convolver or the crystalizer plugin can lead to random crashes.</li>
+          <li>In some distributions like NixOS the speexdsp library is compiled with the fftw backend.
+          So we need to make our speex proecssor plugin to use our global fftw mutex. Otherwise using
+          it together with the convolver or the crystalizer plugin can lead to random crashes.</li>
           <li>The inactivity timeout switch value was not being checked in some cases.</li>
           <li>Other notes:</li>
         </ul>
@@ -163,7 +204,8 @@
         <ul>
           <li>Features:</li>
           <li>Bug fixes:</li>
-          <li>Fixed a regression in the deep noise remover plugin. When the plugin was restarted its settings were not being reapplied.</li>
+          <li>Fixed a regression in the deep noise remover plugin. When the plugin was restarted its
+          settings were not being reapplied.</li>
           <li>Other notes:</li>
         </ul>
       </description>
@@ -175,7 +217,9 @@
           <li>Small performance improvements to our QML code</li>
           <li>Updated translations</li>
           <li>Bug fixes:</li>
-          <li>When running inside Flatpak's sandbox we create Qt's lock and server file in the folder QStandardPaths::TempLocation. This seems to avoid the application not being able to start after a unclean exit.</li>
+          <li>When running inside Flatpak's sandbox we create Qt's lock and server file in
+          the folder QStandardPaths::TempLocation. This seems to avoid the application not being able
+          to start after a unclean exit.</li>
           <li>Other notes:</li>
         </ul>
       </description>
@@ -185,7 +229,8 @@
         <ul>
           <li>Features:</li>
           <li>Bug fixes:</li>
-          <li>Better handling of the occasions where pipewire sends us null port pointers. This should avoid noises in some situations</li>
+          <li>Better handling of the occasions where pipewire sends us null port pointers. This should
+          avoid noises in some situations</li>
           <li>Fixed small mistakes in the spectrum frequency axis calculation</li>
           <li>Added a workaround to avoid graphical artifacts when the spectrum is using area mode.</li>
           <li>Other notes:</li>
@@ -200,8 +245,11 @@
           <li>The frequency control of some plugins can be set with more precision</li>
           <li>Updated translations</li>
           <li>Bug fixes:</li>
-          <li>The default Pre-mix control values of the compressor, gate, expander, multiband compressor and multiband gate were incorrectly set to 0 dB when it should be -Inf. Users will need to manually update their presets in case they do not have set custom pre-mix values.</li>
-          <li>We now create Qt's lock file inside QStandardPaths::RuntimeLocation. This should avoid problems with multi user setups.</li>
+          <li>The default Pre-mix control values of the compressor, gate, expander, multiband compressor
+          and multiband gate were incorrectly set to 0 dB when it should be -Inf. Users will need to
+          manually update their presets in case they do not have set custom pre-mix values.</li>
+          <li>We now create Qt's lock file inside QStandardPaths::RuntimeLocation. This should avoid
+          problems with multi user setups.</li>
           <li>Other notes:</li>
         </ul>
       </description>
@@ -212,7 +260,8 @@
           <li>Features:</li>
           <li>Updated translations</li>
           <li>Bug fixes:</li>
-          <li>Fixed a regression that made applications like PipeWeaver not work properly together with EasyEffects</li>
+          <li>Fixed a regression that made applications like PipeWeaver not work properly together with
+          EasyEffects</li>
           <li>Other notes:</li>
         </ul>
       </description>
@@ -221,7 +270,8 @@
       <description>
         <ul>
           <li>Features:</li>
-          <li>Improved compatibility with PipeWire &gt;= 1.6. Dynamic sampling rate switching should be fully working this time at least in the output effects pipeline.</li>
+          <li>Improved compatibility with PipeWire &gt;= 1.6. Dynamic sampling rate switching should
+          be fully working this time at least in the output effects pipeline.</li>
           <li>Updated translations</li>
           <li>Bug fixes:</li>
           <li>Other notes:</li>
@@ -232,7 +282,8 @@
       <description>
         <ul>
           <li>Features:</li>
-          <li>Improved compatibility with PipeWire &gt;= 1.6. Dynamic sampling rate switching should be working again.</li>
+          <li>Improved compatibility with PipeWire &gt;= 1.6. Dynamic sampling rate switching should
+          be working again.</li>
           <li>Updated translations</li>
           <li>Bug fixes:</li>
           <li>Other notes:</li>
@@ -243,11 +294,14 @@
       <description>
         <ul>
           <li>Features:</li>
-          <li>The bypass state can be retrieved from the command line as we could do with the former GTK version.</li>
-          <li>Added a new command line option to toggle the bypass. This could be bound to a custom shortcut key and used on desktop environments that do not support XDG Global Shortcuts protocol.</li>
+          <li>The bypass state can be retrieved from the command line as we could do with the former
+          GTK version.</li>
+          <li>Added a new command line option to toggle the bypass. This could be bound to a custom shortcut
+          key and used on desktop environments that do not support XDG Global Shortcuts protocol.</li>
           <li>The convolver window now allows impulse files to be renamed.</li>
           <li>Bug fixes:</li>
-          <li>The tray icon changes done in the last releases were reverted. They caused more problems than solutions.</li>
+          <li>The tray icon changes done in the last releases were reverted. They caused more problems
+          than solutions.</li>
           <li>Other notes:</li>
         </ul>
       </description>
@@ -257,8 +311,10 @@
         <ul>
           <li>Features:</li>
           <li>Bug fixes:</li>
-          <li>Fixed a regression that could cause some plugins to create loud sounds when PipeWire changed latency</li>
-          <li>Fixed a random crash caused by use after free in some plugins while they were being removed from the pipeline.</li>
+          <li>Fixed a regression that could cause some plugins to create loud sounds when PipeWire changed
+          latency</li>
+          <li>Fixed a random crash caused by use after free in some plugins while they were being removed
+          from the pipeline.</li>
           <li>Other notes:</li>
         </ul>
       </description>
@@ -268,8 +324,11 @@
         <ul>
           <li>Features:</li>
           <li>Added a new plugin that can be used to suppress voice.</li>
-          <li>The transition band of the bandpass filters used by the crystalizer plugin can be customized. Higher values will use less CPU. But cause more overlap between the bands.</li>
-          <li>The internal state of some plugins are now reset after the inactivity timeout triggers the unlinking of the filters. This should remove the presence of old audio data in the playback when easyeffects resumes operation after a new audio player becomes active.</li>
+          <li>The transition band of the bandpass filters used by the crystalizer plugin can be customized.
+          Higher values will use less CPU. But cause more overlap between the bands.</li>
+          <li>The internal state of some plugins are now reset after the inactivity timeout triggers
+          the unlinking of the filters. This should remove the presence of old audio data in the playback
+          when easyeffects resumes operation after a new audio player becomes active.</li>
           <li>Bug fixes:</li>
           <li>Fixed a regression in the crystalizer plugin that caused noises in some situations</li>
           <li>Other notes:</li>
@@ -280,15 +339,22 @@
       <description>
         <ul>
           <li>Features:</li>
-          <li>The Crusher plugin by Calf Studio Gear is now available as a new effect for input and output processing pipelines.</li>
-          <li>It is now possible to link the output of the output effects pipeline to the input of Easy Effects virtual source device. This allows users to, for example, send the audio being played in their desktops to the people talking to them in a conference room.</li>
-          <li>English language can be forced in case the user does not want to translate the labels into the application.</li>
+          <li>The Crusher plugin by Calf Studio Gear is now available as a new effect for input and output
+          processing pipelines.</li>
+          <li>It is now possible to link the output of the output effects pipeline to the input of Easy
+          Effects virtual source device. This allows users to, for example, send the audio being played
+          in their desktops to the people talking to them in a conference room.</li>
+          <li>English language can be forced in case the user does not want to translate the labels into
+          the application.</li>
           <li>Repeated names are now automatically handled when importing convolver impulse files.</li>
-          <li>The blocklist has a new option that allows the stream media name to be taken into account when blocking streams.</li>
-          <li>Added a new option for the Crystalizer effect which gives the ability to set a fixed Pipewire quantum.</li>
+          <li>The blocklist has a new option that allows the stream media name to be taken into account
+          when blocking streams.</li>
+          <li>Added a new option for the Crystalizer effect which gives the ability to set a fixed Pipewire
+          quantum.</li>
           <li>Audio level meters are reset when our pipeline is not linked.</li>
           <li>Bug fixes:</li>
-          <li>Easy Effects level meters were clamping the displayed value to zero decibel. Now higher values are correctly shown.</li>
+          <li>Easy Effects level meters were clamping the displayed value to zero decibel. Now higher
+          values are correctly shown.</li>
           <li>Noise Reduction effect is not crashing anymore when an invalid model is loaded.</li>
           <li>Other notes:</li>
         </ul>
@@ -298,10 +364,12 @@
       <description>
         <ul>
           <li>Features:</li>
-          <li>Our local server was using /tmp as path. What is not the most secure thing to do. It now uses /run/user/user_id.</li>
+          <li>Our local server was using /tmp as path. What is not the most secure thing to do. It now
+          uses /run/user/user_id.</li>
           <li>Bug fixes:</li>
           <li>The F1 shortcut was broken and was not opening our manual.</li>
-          <li>A crash could happen when using multiple convolver or crystalizer instances. As well as using the convolver and the crystalizer in the same pipeline.</li>
+          <li>A crash could happen when using multiple convolver or crystalizer instances. As well as
+          using the convolver and the crystalizer in the same pipeline.</li>
           <li>Super long preset names could make the corresponding menu button to not be visible.</li>
           <li>Other notes:</li>
         </ul>
@@ -312,7 +380,9 @@
         <ul>
           <li>Features:</li>
           <li>Bug fixes:</li>
-          <li>The last crystalizer changes could make EasyEffects crash when PipeWire used the maximum possible latency value. Almost never PipeWire actually does that but it is better to be in the safe side.</li>
+          <li>The last crystalizer changes could make EasyEffects crash when PipeWire used the maximum
+          possible latency value. Almost never PipeWire actually does that but it is better to be in
+          the safe side.</li>
           <li>Other notes:</li>
         </ul>
       </description>
@@ -322,16 +392,22 @@
         <ul>
           <li>Features:</li>
           <li>The plugins effects sidebar width can be changed.</li>
-          <li>The convolver plugin is now able to load sofa impulse files. It also has a dialog that allows the target orientation to be set.</li>
-          <li>Our local server was improved and it is now possible for third party applications to set and get more parameters values.</li>
+          <li>The convolver plugin is now able to load sofa impulse files. It also has a dialog that
+          allows the target orientation to be set.</li>
+          <li>Our local server was improved and it is now possible for third party applications to set
+          and get more parameters values.</li>
           <li>Our manual has been converted to mkdocs. And now its available only in online mode.</li>
           <li>Bug fixes:</li>
           <li>RNNoise is supposed to be optional. But that was not actually happening</li>
-          <li>In some cases when a preset was removed the most used presets list was not being properly updated.</li>
+          <li>In some cases when a preset was removed the most used presets list was not being properly
+          updated.</li>
           <li>Other notes:</li>
-          <li>Now that the manual is just an ordinary Github's page the Qt WebEngineView is not used anymore. No need to keep its package as dependency.</li>
-          <li>The library libportal-qt6 is only used by the Flatpak package and can be removed from native packages dependencies list.</li>
-          <li>Our resampler class is now based on speexdsp resampler. This means libsamplerate can be removed from our packages dependencies.</li>
+          <li>Now that the manual is just an ordinary Github's page the Qt WebEngineView is not
+          used anymore. No need to keep its package as dependency.</li>
+          <li>The library libportal-qt6 is only used by the Flatpak package and can be removed from native
+          packages dependencies list.</li>
+          <li>Our resampler class is now based on speexdsp resampler. This means libsamplerate can be
+          removed from our packages dependencies.</li>
         </ul>
       </description>
     </release>
@@ -341,7 +417,8 @@
           <li>Features:</li>
           <li>Users are now able to set custom colors and other style settings to the spectrum graph.</li>
           <li>Level meter widgets performance has been improved.</li>
-          <li>Some of our icons have been replaced by icons from the Freedesktop standard. This way our tray menu should not have missing icons in systems that do not use the icons in Breeze theme.</li>
+          <li>Some of our icons have been replaced by icons from the Freedesktop standard. This way our
+          tray menu should not have missing icons in systems that do not use the icons in Breeze theme.</li>
           <li>Users are now able to select a custom color theme in EasyEffects preferences window.</li>
           <li>Users are now able to set a fps cap to the spectrum and level meters.</li>
           <li>Improved translations.</li>
@@ -355,17 +432,26 @@
       <description>
         <ul>
           <li>Features:</li>
-          <li>The labels of an Equalizer band in the main view are greyed out when the type of the filter is set to "Off", so the user can quickly know which band is enabled or not.</li>
-          <li>Added the ability to enable a global excluded apps list. In this mode the blocklist set by the user is always valid and do not depend on the blocklist value set in the loaded preset.</li>
-          <li>The tray menu presets list now indicates the last loaded preset if this preset is among the most used ones.</li>
-          <li>Performance optimization to some operations that could temporarily freeze the main window animations. Like opening the native window of a heavy plugin.</li>
+          <li>The labels of an Equalizer band in the main view are greyed out when the type of the filter
+          is set to "Off", so the user can quickly know which band is enabled or not.</li>
+          <li>Added the ability to enable a global excluded apps list. In this mode the blocklist set
+          by the user is always valid and do not depend on the blocklist value set in the loaded preset.</li>
+          <li>The tray menu presets list now indicates the last loaded preset if this preset is among
+          the most used ones.</li>
+          <li>Performance optimization to some operations that could temporarily freeze the main window
+          animations. Like opening the native window of a heavy plugin.</li>
           <li>Our convolver now supports mono and true stereo impulse response files.</li>
           <li>Bug fixes:</li>
-          <li>Fixed a bug that occurred in the import of APO/GraphicEq presets. In certain conditions, when Equalizer Split Channels mode was enabled, the preset imported to a single channel was altering the configuration in the other channel.</li>
+          <li>Fixed a bug that occurred in the import of APO/GraphicEq presets. In certain conditions,
+          when Equalizer Split Channels mode was enabled, the preset imported to a single channel was
+          altering the configuration in the other channel.</li>
           <li>Fixed a bug that caused Easy Effects to sometimes get the wrong default output device.</li>
-          <li>Fixed a bug that caused the autoloading window to get the wrong device route when creating a profile.</li>
+          <li>Fixed a bug that caused the autoloading window to get the wrong device route when creating
+          a profile.</li>
           <li>Other notes:</li>
-          <li>Some of the UI elements that were built with the Overlay Sheets have been ported to use the Kirigami Dialogs. This should help us to better follow KDE HIG. But more work is still needed.</li>
+          <li>Some of the UI elements that were built with the Overlay Sheets have been ported to use
+          the Kirigami Dialogs. This should help us to better follow KDE HIG. But more work is still
+          needed.</li>
         </ul>
       </description>
     </release>
@@ -374,11 +460,14 @@
         <ul>
           <li>Features:</li>
           <li>Bug fixes:</li>
-          <li>Fixed a bug that prevented to correctly parse the number in input fields when the unit measurement was not deleted.</li>
+          <li>Fixed a bug that prevented to correctly parse the number in input fields when the unit
+          measurement was not deleted.</li>
           <li>Now the Reset History button in the Deep Noise Remover should work as intended.</li>
-          <li>The "end frequency" of enabled bands in the Multiband Compressor are now correctly shown.</li>
+          <li>The "end frequency" of enabled bands in the Multiband Compressor are now correctly
+          shown.</li>
           <li>Other notes:</li>
-          <li>KDE Breeze theme is a required dependency in Flatpak version. For distribution packages instead we recommend to install the Breeze theme even if it's not strictly required.</li>
+          <li>KDE Breeze theme is a required dependency in Flatpak version. For distribution packages
+          instead we recommend to install the Breeze theme even if it's not strictly required.</li>
         </ul>
       </description>
     </release>
@@ -388,7 +477,8 @@
           <li>Features:</li>
           <li>Updated translations</li>
           <li>Bug fixes:</li>
-          <li>Fixed a regression introduced by version 8.0.1 that made Easy Effects unable to properly parse extra LV2 paths given by LV2_PATH.</li>
+          <li>Fixed a regression introduced by version 8.0.1 that made Easy Effects unable to properly
+          parse extra LV2 paths given by LV2_PATH.</li>
           <li>Other notes:</li>
         </ul>
       </description>
@@ -407,15 +497,18 @@
       <description>
         <ul>
           <li>Features:</li>
-          <li>Added the ability to keep the effects list controls always visible in order to toggle and remove a plugin with a single click.</li>
+          <li>Added the ability to keep the effects list controls always visible in order to toggle and
+          remove a plugin with a single click.</li>
           <li>Added Flatpak system tray permission handling.</li>
           <li>Added XDG Color Scheme support for the Flatpak version.</li>
           <li>Locale shortcut to quit the service has been changed back to "CTRL+Q".</li>
           <li>Multiple improvements to our user interface that aim to better follow KDE HIG.</li>
           <li>Bug fixes:</li>
-          <li>Preset autoloading has been improved to handle more specific hardware which were not detected by the previous system.</li>
+          <li>Preset autoloading has been improved to handle more specific hardware which were not detected
+          by the previous system.</li>
           <li>Other notes:</li>
-          <li>Since the preset autoloading system has been changed, we recommend the users to reassociate their presets to the preferred input/output audio devices.</li>
+          <li>Since the preset autoloading system has been changed, we recommend the users to reassociate
+          their presets to the preferred input/output audio devices.</li>
         </ul>
       </description>
     </release>
@@ -423,35 +516,63 @@
       <description>
         <ul>
           <li>Features:</li>
-          <li>This is our first release using a combination of Qt, QML and Kirigami instead of GTK4. As a result our graphical interface went through major changes.</li>
-          <li>Now we have a built-in tray icon and menu. Among other things, the tray menu shows a list of most used input and output presets.</li>
-          <li>Our window is now more friendly to small screens. As a result it is friendlier than before to tiling window managers too.</li>
-          <li>Easy Effects now remembers the last used plugin or tab and restores them when the window is reopened.</li>
+          <li>This is our first release using a combination of Qt, QML and Kirigami instead of GTK4.
+          As a result our graphical interface went through major changes.</li>
+          <li>Now we have a built-in tray icon and menu. Among other things, the tray menu shows a list
+          of most used input and output presets.</li>
+          <li>Our window is now more friendly to small screens. As a result it is friendlier than before
+          to tiling window managers too.</li>
+          <li>Easy Effects now remembers the last used plugin or tab and restores them when the window
+          is reopened.</li>
           <li>The previous global bypass button is now exposed as a traditional on/off button.</li>
-          <li>Our presets menu became a presets window that now has a third tab dedicated for autoloading profiles.</li>
-          <li>It is now possible to set a fallback autoloading profile. If the fallback is enabled, the selected fallback preset is applied for any soundcard or microphone that does not have an autoloading profile.</li>
+          <li>Our presets menu became a presets window that now has a third tab dedicated for autoloading
+          profiles.</li>
+          <li>It is now possible to set a fallback autoloading profile. If the fallback is enabled, the
+          selected fallback preset is applied for any soundcard or microphone that does not have an autoloading
+          profile.</li>
           <li>The preset autoloading tab shows the current routing of the selected input/output device.</li>
           <li>Presets can be renamed in our presets window.</li>
           <li>Presets backup can be made in our presets window.</li>
-          <li>Our spectrum is now drawn by Qt Graphs. For now only Qt color presets are allowed, but this may change in the future.</li>
-          <li>We added more local shortcuts, as well as the support for XDG Global Shortcuts protocol. At the moment, if the Wayland compositor correctly implements the protocol, the global effects on/off and the microphone monitor can be toggled when the windows is hidden and Easy Effects is run as background service.</li>
+          <li>Our spectrum is now drawn by Qt Graphs. For now only Qt color presets are allowed, but
+          this may change in the future.</li>
+          <li>We added more local shortcuts, as well as the support for XDG Global Shortcuts protocol.
+          At the moment, if the Wayland compositor correctly implements the protocol, the global effects
+          on/off and the microphone monitor can be toggled when the windows is hidden and Easy Effects
+          is run as background service.</li>
           <li>Dry and wet controls were implemented for the Convolver and Pitch plugins.</li>
           <li>The Pitch plugin now has a button that allows its history to be reset.</li>
           <li>The Crystalizer plugin now has an adaptive intensity mode.</li>
-          <li>Our Echo Canceller is now based on the webrtc library instead of speexdsp. This should improve echo cancellation quality for many users.</li>
-          <li>Our manual is now displayed inside our window through WebEngineView. Yelp is not necessary anymore.</li>
+          <li>Our Echo Canceller is now based on the webrtc library instead of speexdsp. This should
+          improve echo cancellation quality for many users.</li>
+          <li>Our manual is now displayed inside our window through WebEngineView. Yelp is not necessary
+          anymore.</li>
           <li>The test signal tab now can generate pink noise.</li>
-          <li>We added a configuration option that allows the microphone monitor output to be sent to the output effects pipeline input.</li>
-          <li>We added a new Autogain parameter that allows the output level to be forced to zero when the input level is below the silence threshold.</li>
+          <li>We added a configuration option that allows the microphone monitor output to be sent to
+          the output effects pipeline input.</li>
+          <li>We added a new Autogain parameter that allows the output level to be forced to zero when
+          the input level is below the silence threshold.</li>
           <li>Improved compatibility with the latest Linux Studio Plugins releases.</li>
-          <li>We are now able to show Calf Studio Plugins native window. This requires the calf package to be built with its native window.</li>
+          <li>We are now able to show Calf Studio Plugins native window. This requires the calf package
+          to be built with its native window.</li>
           <li>Bug fixes:</li>
-          <li>We were not locking PipeWire's thread main loop before setting a stream volume and mute controls. This could cause these operations to fail in some situations.</li>
+          <li>We were not locking PipeWire's thread main loop before setting a stream volume and
+          mute controls. This could cause these operations to fail in some situations.</li>
           <li>Other notes:</li>
-          <li>Moving to Qt from GTK4 means that a lot has changed about our dependencies. I suggest that package maintainers take a look at our Arch Linux PKGBUILD to see everything that is necessary</li>
-          <li>The Crystalizer effect uses the adaptive intensity mode by default. Old presets generated by previous GTK versions should be resaved with adaptive intensity disabled in order to behave the same way as the old mechanism without it.</li>
-          <li>For a long time we have been saving presets, impulse responses, rnnoise and autoload profile files in our configuration folder. What is not what XDG standard suggests to be done. Now it's the time to change that. Our master branch now saves these files inside ~/.local/share/easyeffects and keeps only our database files inside ~/.config/easyeffects. Easy Effects will copy the current files to the new location and move the old directories to the users trash. This way if something horrible happens the user will be able to get the files back.</li>
-          <li>At this moment XDG global shortcuts are working well on KDE. Not so much on GNOME and maybe other desktops too. On Gnome in particular, the shortcut itself does work, but key binding customization seems to be properly implemented only by KDE. Other Wayland implementations should be tested and we invite users to let us know how it works.</li>
+          <li>Moving to Qt from GTK4 means that a lot has changed about our dependencies. I suggest that
+          package maintainers take a look at our Arch Linux PKGBUILD to see everything that is necessary</li>
+          <li>The Crystalizer effect uses the adaptive intensity mode by default. Old presets generated
+          by previous GTK versions should be resaved with adaptive intensity disabled in order to behave
+          the same way as the old mechanism without it.</li>
+          <li>For a long time we have been saving presets, impulse responses, rnnoise and autoload profile
+          files in our configuration folder. What is not what XDG standard suggests to be done. Now it's
+          the time to change that. Our master branch now saves these files inside ~/.local/share/easyeffects
+          and keeps only our database files inside ~/.config/easyeffects. Easy Effects will copy the
+          current files to the new location and move the old directories to the users trash. This way
+          if something horrible happens the user will be able to get the files back.</li>
+          <li>At this moment XDG global shortcuts are working well on KDE. Not so much on GNOME and maybe
+          other desktops too. On Gnome in particular, the shortcut itself does work, but key binding
+          customization seems to be properly implemented only by KDE. Other Wayland implementations should
+          be tested and we invite users to let us know how it works.</li>
         </ul>
       </description>
     </release>
@@ -460,7 +581,8 @@
         <ul>
           <li>Features:</li>
           <li>Bug fixes:</li>
-          <li>Fixed a bug in the pitch plugin that made the cents and the octaves control to not be reapplied when EasyEffects was restarted</li>
+          <li>Fixed a bug in the pitch plugin that made the cents and the octaves control to not be reapplied
+          when EasyEffects was restarted</li>
           <li>Other notes:</li>
         </ul>
       </description>
@@ -482,7 +604,8 @@
       <description>
         <ul>
           <li>Features:</li>
-          <li>Improved compatibility with future PipeWire releases. This version will avoid compilation errors like issue 3620</li>
+          <li>Improved compatibility with future PipeWire releases. This version will avoid compilation
+          errors like issue 3620</li>
           <li>Bug fixes:</li>
           <li>Other notes:</li>
         </ul>
@@ -494,7 +617,8 @@
           <li>Features:</li>
           <li>Updated translations</li>
           <li>Bug fixes:</li>
-          <li>Added a workaround for a glibc(or maybe libstdc++) bug that affects locale management. What in turns breaks our spinbuttons on some locales.</li>
+          <li>Added a workaround for a glibc(or maybe libstdc++) bug that affects locale management.
+          What in turns breaks our spinbuttons on some locales.</li>
           <li>Other notes:</li>
         </ul>
       </description>
@@ -504,7 +628,8 @@
         <ul>
           <li>Features:</li>
           <li>Bug fixes:</li>
-          <li>Fixed a bug that makes the application crash when the option Linux Studio Plugins package is not installed.</li>
+          <li>Fixed a bug that makes the application crash when the option Linux Studio Plugins package
+          is not installed.</li>
           <li>Other notes:</li>
         </ul>
       </description>
@@ -524,7 +649,8 @@
       <description>
         <ul>
           <li>Features:</li>
-          <li>Latency compensation can be applied to the spectrum plugin.It will delay its drawing so it matches the latency offset applied by the user on programs like Pavucontrol.</li>
+          <li>Latency compensation can be applied to the spectrum plugin.It will delay its drawing so
+          it matches the latency offset applied by the user on programs like Pavucontrol.</li>
           <li>Bug fixes:</li>
           <li>The command line option that shows EasyEffects version should work properly now.</li>
           <li>Fixed a regression in the autoload preset code.</li>
@@ -536,11 +662,13 @@
       <description>
         <ul>
           <li>Features:</li>
-          <li>The loudness plugin exposes the ISO 226:2023 standard that is now available in the LSP plugin.</li>
+          <li>The loudness plugin exposes the ISO 226:2023 standard that is now available in the LSP
+          plugin.</li>
           <li>Updated translations</li>
           <li>Performance optimizations to the spectrum plugin and the LADSPA wrapper</li>
           <li>Bug fixes:</li>
-          <li>We were not locking PipeWire's thread main loop before setting a stream volume and mute controls. This could cause these operations to fail in some situations</li>
+          <li>We were not locking PipeWire's thread main loop before setting a stream volume and
+          mute controls. This could cause these operations to fail in some situations</li>
           <li>Other notes:</li>
         </ul>
       </description>
@@ -549,17 +677,28 @@
       <description>
         <ul>
           <li>Features:</li>
-          <li>Community Presets have been implemented. Users can install packages containing multiple Easy Effects presets to be imported and applied inside the application. These packages will be maintained and shipped by volunteers. You can search them on the repositories of your favorite distribution.</li>
-          <li>Added the ability of collapsing the sidebar to hide the effects list and expand the area of the effects user interface.</li>
-          <li>EasyEffects won't touch streams that define PW_KEY_TARGET_OBJECT to an output device that is different from the one EasyEffects is using.</li>
+          <li>Community Presets have been implemented. Users can install packages containing multiple
+          Easy Effects presets to be imported and applied inside the application. These packages will
+          be maintained and shipped by volunteers. You can search them on the repositories of your favorite
+          distribution.</li>
+          <li>Added the ability of collapsing the sidebar to hide the effects list and expand the area
+          of the effects user interface.</li>
+          <li>EasyEffects won't touch streams that define PW_KEY_TARGET_OBJECT to an output device
+          that is different from the one EasyEffects is using.</li>
           <li>Equalizer APO import feature can now apply Band-Pass filters.</li>
           <li>Bug fixes:</li>
-          <li>A change in GTK 4.14.1 prevented to apply the values inserted into the text field of our SpinButton widgets. This issue is now resolved.</li>
-          <li>The latest Maximizer plugin releases do not have the ceiling control anymore. So we removed it from our user interface (you can use the plugin input gain to retrieve the same functionality).</li>
-          <li>Equalizer APO import feature does not crash anymore on Flatpak when invalid values are provided.</li>
+          <li>A change in GTK 4.14.1 prevented to apply the values inserted into the text field of our
+          SpinButton widgets. This issue is now resolved.</li>
+          <li>The latest Maximizer plugin releases do not have the ceiling control anymore. So we removed
+          it from our user interface (you can use the plugin input gain to retrieve the same functionality).</li>
+          <li>Equalizer APO import feature does not crash anymore on Flatpak when invalid values are
+          provided.</li>
           <li>Other notes:</li>
-          <li>In order for Community Presets to be correctly shipped, packagers are invited to read and follow the guidelines linked inside the README of EasyEffects master branch.</li>
-          <li>Presets with Convolver and/or Noise Reduction (RNNoise) effects created before 7.2.0 version are deprecated. Please reload the irs/model file inside the Convolver/RNNoise UI and resave the preset.</li>
+          <li>In order for Community Presets to be correctly shipped, packagers are invited to read and
+          follow the guidelines linked inside the README of EasyEffects master branch.</li>
+          <li>Presets with Convolver and/or Noise Reduction (RNNoise) effects created before 7.2.0 version
+          are deprecated. Please reload the irs/model file inside the Convolver/RNNoise UI and resave
+          the preset.</li>
         </ul>
       </description>
     </release>
@@ -567,7 +706,8 @@
       <description>
         <ul>
           <li>Features:</li>
-          <li>Improved the pipeline management system. Non-limiter effects are placed before the limiter even if the last two plugins in the pipeline are a limiter followed by a level meter.</li>
+          <li>Improved the pipeline management system. Non-limiter effects are placed before the limiter
+          even if the last two plugins in the pipeline are a limiter followed by a level meter.</li>
           <li>Bug fixes:</li>
           <li>Fixed a regression that prevented the level meters to be updated under certain conditions.</li>
           <li>Other notes:</li>
@@ -578,7 +718,8 @@
       <description>
         <ul>
           <li>Features:</li>
-          <li>We now set monitor.passthrough = true in our virtual devices. This will allow latency offset to be properly applied by video players when PipeWire &gt; 1.0.3 is released.</li>
+          <li>We now set monitor.passthrough = true in our virtual devices. This will allow latency offset
+          to be properly applied by video players when PipeWire &gt; 1.0.3 is released.</li>
           <li>Updated translations.</li>
           <li>Bug fixes:</li>
           <li>Other notes:</li>
@@ -589,13 +730,17 @@
       <description>
         <ul>
           <li>Features:</li>
-          <li>EasyEffects will try to avoid moving to its virtual sources streams for which the user has set a custom target.object that is different from the mic EE is recording from. The stream has to be started when EE is already running for this logic to take effect.</li>
+          <li>EasyEffects will try to avoid moving to its virtual sources streams for which the user
+          has set a custom target.object that is different from the mic EE is recording from. The stream
+          has to be started when EE is already running for this logic to take effect.</li>
           <li>Updated translations</li>
           <li>The equalizer can export basic APO preset files</li>
-          <li>Our players/recorders tab will show the audio client binary name in the cases were no app name is defined.</li>
+          <li>Our players/recorders tab will show the audio client binary name in the cases were no app
+          name is defined.</li>
           <li>EasyEffects version can be shown in the command line through the option --version</li>
           <li>Bug fixes:</li>
-          <li>A workaround for a bug in gtk4 GtkLevelBar was implemented and will be kept in place until GTK developers fix things on their side</li>
+          <li>A workaround for a bug in gtk4 GtkLevelBar was implemented and will be kept in place until
+          GTK developers fix things on their side</li>
           <li>Other notes:</li>
         </ul>
       </description>
@@ -639,7 +784,8 @@
         <ul>
           <li>Features:</li>
           <li>Bug fixes:</li>
-          <li>Fixed a small bug the prevented the noise reduction voice activity threshold from being properly initialized.</li>
+          <li>Fixed a small bug the prevented the noise reduction voice activity threshold from being
+          properly initialized.</li>
           <li>Other notes:</li>
         </ul>
       </description>
@@ -648,7 +794,8 @@
       <description>
         <ul>
           <li>Features:</li>
-          <li>Added a new control to the noise reduction plugin that allows the voice detection to be disabled.</li>
+          <li>Added a new control to the noise reduction plugin that allows the voice detection to be
+          disabled.</li>
           <li>Bug fixes:</li>
           <li>Other notes:</li>
         </ul>
@@ -658,12 +805,16 @@
       <description>
         <ul>
           <li>Features:</li>
-          <li>The Filter effect has been improved with new parameters since it has been ported from Calf Studio to Linux Studio Plugins.</li>
-          <li>Noise reduction by RNNoise has been improved with the addition of Release and VAD Threshold controls.</li>
-          <li>Noise reduction by RNNoise can now mix the original and denoised signals to avoid the output to sound too "dry".</li>
+          <li>The Filter effect has been improved with new parameters since it has been ported from Calf
+          Studio to Linux Studio Plugins.</li>
+          <li>Noise reduction by RNNoise has been improved with the addition of Release and VAD Threshold
+          controls.</li>
+          <li>Noise reduction by RNNoise can now mix the original and denoised signals to avoid the output
+          to sound too "dry".</li>
           <li>Bug fixes:</li>
           <li>Other notes:</li>
-          <li>This release is intended to work with versions of Linux Studio Plugins equal or greater than "1.2.10".</li>
+          <li>This release is intended to work with versions of Linux Studio Plugins equal or greater
+          than "1.2.10".</li>
           <li>EasyEffects is now buildable also with libc++.</li>
         </ul>
       </description>
@@ -673,12 +824,17 @@
         <ul>
           <li>Features:</li>
           <li>The Expander from Linux Studio Plugins can be used in Easy Effects.</li>
-          <li>The Equalizer bands now have an additional gain control that allows for more efficient input of values that are hard to set in the scale. More details at issue 1383.</li>
-          <li>Added the ability to select and load multiple files in the opening dialogs for presets, Convolver impulse responses and RNNoise models.</li>
+          <li>The Equalizer bands now have an additional gain control that allows for more efficient
+          input of values that are hard to set in the scale. More details at issue 1383.</li>
+          <li>Added the ability to select and load multiple files in the opening dialogs for presets,
+          Convolver impulse responses and RNNoise models.</li>
           <li>Bug fixes:</li>
           <li>Fixed the Solo button in the Equalizer band settings.</li>
           <li>Other notes:</li>
-          <li>Easy Effects folders under /etc have been deprecated and presets located there won't be loaded anymore. At the moment only local presets under ~/.config/easyeffects are automatically loaded in the Presets Menu. In the future we will implement a new system to install, manage and import Community Presets.</li>
+          <li>Easy Effects folders under /etc have been deprecated and presets located there won't
+          be loaded anymore. At the moment only local presets under ~/.config/easyeffects are automatically
+          loaded in the Presets Menu. In the future we will implement a new system to install, manage
+          and import Community Presets.</li>
         </ul>
       </description>
     </release>
@@ -687,10 +843,12 @@
         <ul>
           <li>Features:</li>
           <li>An "Experimental Features" section was added to our preferences window.</li>
-          <li>The native window of the LSP plugins can be used. This is an experimental feature intended only for advanced users. So expect some bugs.</li>
+          <li>The native window of the LSP plugins can be used. This is an experimental feature intended
+          only for advanced users. So expect some bugs.</li>
           <li>Fractional semitone values can now be used in the Pitch Shift effect.</li>
           <li>Bug fixes:</li>
-          <li>The input/output device dropdown in our PipeWire tab is updated when the system default device changes and Use Default is enabled. This fixes issue issue 1989.</li>
+          <li>The input/output device dropdown in our PipeWire tab is updated when the system default
+          device changes and Use Default is enabled. This fixes issue issue 1989.</li>
           <li>Other notes:</li>
         </ul>
       </description>
@@ -700,7 +858,8 @@
         <ul>
           <li>Features:</li>
           <li>A new Level Meter plugin based on libebur128 has been added.</li>
-          <li>The Pitch plugin now uses the library SoundTouch instead of Rubberband. Hopefully some of the mysterious crashes that were happening with Rubberband are not going to happen anymore.</li>
+          <li>The Pitch plugin now uses the library SoundTouch instead of Rubberband. Hopefully some
+          of the mysterious crashes that were happening with Rubberband are not going to happen anymore.</li>
           <li>Improved compatibility with recent PipeWire versions. More information at</li>
           <li>Bug fixes:</li>
           <li>Active Equalizer filters are not set to Bell type anymore when the number of bands changes.</li>
@@ -717,8 +876,10 @@
           <li>Bug fixes:</li>
           <li>The plugin reset should not make its controls innefective anymore.</li>
           <li>Other notes:</li>
-          <li>Speex is no longer incorrectly listed as a build dependency (speexdsp is still a build dependency)</li>
-          <li>RNNoise is no longer an autodependency. It is now required by default, if not available it must be explicitly disabled with -Denable-rnnoise=false</li>
+          <li>Speex is no longer incorrectly listed as a build dependency (speexdsp is still a build
+          dependency)</li>
+          <li>RNNoise is no longer an autodependency. It is now required by default, if not available
+          it must be explicitly disabled with -Denable-rnnoise=false</li>
         </ul>
       </description>
     </release>
@@ -728,7 +889,8 @@
           <li>Features:</li>
           <li>Updated translations.</li>
           <li>Bug fixes:</li>
-          <li>A small mistake was done in the last release. Making a new one to make sure people have the right branch in the package</li>
+          <li>A small mistake was done in the last release. Making a new one to make sure people have
+          the right branch in the package</li>
         </ul>
       </description>
     </release>
@@ -736,11 +898,13 @@
       <description>
         <ul>
           <li>Features:</li>
-          <li>The Equalizer "sort bands" feature is now ordering bands on GSettings, so the result can be saved into presets.</li>
+          <li>The Equalizer "sort bands" feature is now ordering bands on GSettings, so the
+          result can be saved into presets.</li>
           <li>Improved performance when resetting keys.</li>
           <li>Bug fixes:</li>
           <li>Fixed the "Large Empty Hall" preset selection in the Reverberation effect.</li>
-          <li>Fixed some misuses of PipeWire's API that can potentially fix some random bugs some users are facing.</li>
+          <li>Fixed some misuses of PipeWire's API that can potentially fix some random bugs some
+          users are facing.</li>
           <li>Other notes:</li>
           <li>As we are removing code deprecated by GTK 4.10 the minimum GTK version has been increased.</li>
         </ul>
@@ -750,12 +914,15 @@
       <description>
         <ul>
           <li>Features:</li>
-          <li>The spectrum plugin update rate was improved. Different sampling rates should lead to similar update frequencies visually.</li>
+          <li>The spectrum plugin update rate was improved. Different sampling rates should lead to similar
+          update frequencies visually.</li>
           <li>The update interval used by level meters and the spectrum can be customized by the user.</li>
-          <li>The equalizer band gain slider value can be updated in larger steps. Fine grain control is still possible through the keyboard up/down keys.</li>
+          <li>The equalizer band gain slider value can be updated in larger steps. Fine grain control
+          is still possible through the keyboard up/down keys.</li>
           <li>Small improvements to the echo canceller.</li>
           <li>Bug fixes:</li>
-          <li>The echo canceller probes were not being linked to the soundcard after the move to multiple filters instances. This should be fixed now.</li>
+          <li>The echo canceller probes were not being linked to the soundcard after the move to multiple
+          filters instances. This should be fixed now.</li>
         </ul>
       </description>
     </release>
@@ -764,19 +931,26 @@
         <ul>
           <li>Features:</li>
           <li>It is now possible to add more than one filter instance to the effects pipeline.</li>
-          <li>A new Speech Processor plugin based on the Speex library was added. Besides providing noise suppression it also can detect voice activity. It is a decent alternative to the cases where the rnnoise library does not work well.</li>
+          <li>A new Speech Processor plugin based on the Speex library was added. Besides providing noise
+          suppression it also can detect voice activity. It is a decent alternative to the cases where
+          the rnnoise library does not work well.</li>
           <li>Improved compatibility with Linux Studio Plugins 1.2.3.</li>
           <li>GraphicEQ presets can be imported into the Equalizer effect.</li>
-          <li>The application name has been changed to Easy Effects to adhere to the naming conventions of GNOME Human Interface Guidelines.</li>
+          <li>The application name has been changed to Easy Effects to adhere to the naming conventions
+          of GNOME Human Interface Guidelines.</li>
           <li>The documentation has been updated.</li>
           <li>Improved presets autoloading.</li>
           <li>The Autogain silence threshold can now be configured by the user.</li>
           <li>Dry and wet controls added to the Stereo Tools effect.</li>
-          <li>The echo canceller now has a residual noise suppression control also based on the Speex library.</li>
+          <li>The echo canceller now has a residual noise suppression control also based on the Speex
+          library.</li>
           <li>Bug fixes:</li>
-          <li>When the mouse was hovering over a chart the wrong value for the x axis coordinate was being shown. This regression is fixed.</li>
+          <li>When the mouse was hovering over a chart the wrong value for the x axis coordinate was
+          being shown. This regression is fixed.</li>
           <li>Other notes:</li>
-          <li>Because of the new multiple instances feature, the preset format has changed, but the old one is still compatible to be loaded. Anyway take in consideration that saving the current preset will always write it in the new format.</li>
+          <li>Because of the new multiple instances feature, the preset format has changed, but the old
+          one is still compatible to be loaded. Anyway take in consideration that saving the current
+          preset will always write it in the new format.</li>
         </ul>
       </description>
     </release>
@@ -787,7 +961,8 @@
           <li>Multiband Gate implementation has been migrated from CALF to Linux Studio Plugins.</li>
           <li>The preset autoloading code compatibility with bluez5 devices has been improved.</li>
           <li>Wet/dry controls were added for some plugins</li>
-          <li>Effect interface is no longer loaded when the related lv2 plugin is not installed on the system. In its place a status message to the user is shown.</li>
+          <li>Effect interface is no longer loaded when the related lv2 plugin is not installed on the
+          system. In its place a status message to the user is shown.</li>
           <li>The documentation has been updated</li>
           <li>Improved debug messages</li>
           <li>Updated translations</li>
@@ -802,7 +977,8 @@
           <li>Features:</li>
           <li>Improved translations</li>
           <li>Bug fixes:</li>
-          <li>Fixed a bug where EasyEffects could crash when closing its window while effects were being applied.</li>
+          <li>Fixed a bug where EasyEffects could crash when closing its window while effects were being
+          applied.</li>
           <li>Other notes:</li>
         </ul>
       </description>
@@ -811,13 +987,17 @@
       <description>
         <ul>
           <li>Features:</li>
-          <li>The bypass state can be saved to the preset file. The reasons why this was done can be seen at issue 1039</li>
+          <li>The bypass state can be saved to the preset file. The reasons why this was done can be
+          seen at issue 1039</li>
           <li>The preset autoloading code compatibility with usb devices has been improved.</li>
-          <li>A dialog is shown to the user when a preset fails to load or a preset/impulse file fails to be imported.</li>
-          <li>The SideChain Gate plugin from Linux Studio Plugins is now used instead of the one from Calf Studio.</li>
+          <li>A dialog is shown to the user when a preset fails to load or a preset/impulse file fails
+          to be imported.</li>
+          <li>The SideChain Gate plugin from Linux Studio Plugins is now used instead of the one from
+          Calf Studio.</li>
           <li>Bug fixes:</li>
           <li>EasyEffects should not crash anymore when the user locale is not properly configured.</li>
-          <li>A workaround was implemented in our icon to deal with the lack of proper SVG support in QT.</li>
+          <li>A workaround was implemented in our icon to deal with the lack of proper SVG support in
+          QT.</li>
           <li>Other notes:</li>
         </ul>
       </description>
@@ -826,13 +1006,19 @@
       <description>
         <ul>
           <li>Features:</li>
-          <li>When effects are disable to an application we now set its target metadata to null. This will allow the media session manager (wireplumber) to properly move the stream to a new device.</li>
-          <li>A new configuration option was added. It allows EasyEffects to ignore streams whose purpose is to monitor sink devices. This will help to fix some of problems our users were having when using OBS.</li>
+          <li>When effects are disable to an application we now set its target metadata to null. This
+          will allow the media session manager (wireplumber) to properly move the stream to a new device.</li>
+          <li>A new configuration option was added. It allows EasyEffects to ignore streams whose purpose
+          is to monitor sink devices. This will help to fix some of problems our users were having when
+          using OBS.</li>
           <li>The code that shows the stream sample format has been improved</li>
-          <li>The rnnoise library is now optional. This should help package maintainers to build a Debian package. See issue 1000 for more information.</li>
+          <li>The rnnoise library is now optional. This should help package maintainers to build a Debian
+          package. See issue 1000 for more information.</li>
           <li>Our logs now show the source code line where the messages are being printed</li>
           <li>Bug fixes:</li>
-          <li>The "enable effects" checkbox in our window was not being updated when third party programs like pavucontrol moved the stream away from our virtual devices. This should be fixed now.</li>
+          <li>The "enable effects" checkbox in our window was not being updated when third
+          party programs like pavucontrol moved the stream away from our virtual devices. This should
+          be fixed now.</li>
           <li>Fixed a crash that could happen when the maximum autogain history was changed.</li>
           <li>Avoid crashes when pw-mididump is running</li>
         </ul>
@@ -845,12 +1031,17 @@
           <li>The interface of the pitch plugin was improved</li>
           <li>Our application icon is now compatible with desktops that uses QT</li>
           <li>Our blocklist code will use the application.id tag if the stream sets it</li>
-          <li>In order to avoid problems with the mouse scroll the entries in the applications list shown in our Players/Recorders tab do not show a volume scale anymore. More details about the problem and the solution for it can be found on issue 1211 and issue 1427</li>
-          <li>When no application is available for display in the Players/Recorders a message will be shown to the user</li>
+          <li>In order to avoid problems with the mouse scroll the entries in the applications list shown
+          in our Players/Recorders tab do not show a volume scale anymore. More details about the problem
+          and the solution for it can be found on issue 1211 and issue 1427</li>
+          <li>When no application is available for display in the Players/Recorders a message will be
+          shown to the user</li>
           <li>Many translation updates</li>
           <li>Bug fixes:</li>
-          <li>Fixed a bug where EasyEffects crashed when the number of points displayed in the spectrum was changed while our pipeline was active and the spectrum widget was visible</li>
-          <li>The pipeline latency value displayed in our window could be wrong in some situations. This was fixed.</li>
+          <li>Fixed a bug where EasyEffects crashed when the number of points displayed in the spectrum
+          was changed while our pipeline was active and the spectrum widget was visible</li>
+          <li>The pipeline latency value displayed in our window could be wrong in some situations. This
+          was fixed.</li>
         </ul>
       </description>
     </release>
@@ -858,9 +1049,14 @@
       <description>
         <ul>
           <li>Features:</li>
-          <li>There is a new setting allowing the user to select an inactivity timeout for the pipeline. When no client is playing to or recording from our devices the filters will be unlinked after the timeout is reached. This is done to make sure we do not waste CPU power processing silence.</li>
-          <li>The autogain plugin now allows the user to select which of the three loudness are used to calculate the geometric mean.</li>
-          <li>The autogain plugin now allows the maximum history to be set and does not use libebur128 histogram mode anymore. This should avoid the cases where the Integrated loudness gets stuck forever in the same value.</li>
+          <li>There is a new setting allowing the user to select an inactivity timeout for the pipeline.
+          When no client is playing to or recording from our devices the filters will be unlinked after
+          the timeout is reached. This is done to make sure we do not waste CPU power processing silence.</li>
+          <li>The autogain plugin now allows the user to select which of the three loudness are used
+          to calculate the geometric mean.</li>
+          <li>The autogain plugin now allows the maximum history to be set and does not use libebur128
+          histogram mode anymore. This should avoid the cases where the Integrated loudness gets stuck
+          forever in the same value.</li>
           <li>EasyEffects icon has been updated in a way that should make it visible in QT desktops.</li>
           <li>Bug fixes:</li>
           <li>The command line option that returns the global bypass state is working again.</li>
@@ -871,7 +1067,8 @@
       <description>
         <ul>
           <li>Features:</li>
-          <li>The crossfeed filter should deal better with PipeWire's dynamic latency switches. Jumps in volume level should not happen anymore in these situations.</li>
+          <li>The crossfeed filter should deal better with PipeWire's dynamic latency switches.
+          Jumps in volume level should not happen anymore in these situations.</li>
           <li>Bug fixes:</li>
           <li>Fixed a bug that prevented mono microphones from properly working with EasyEffects</li>
         </ul>
@@ -882,12 +1079,16 @@
         <ul>
           <li>Features:</li>
           <li>Support for the next PipeWire release 0.3.44</li>
-          <li>The autogain filter should deal better with PipeWire's dynamic latency switches. Jumps in volume level should not happen anymore in these situations.</li>
-          <li>We added an option that allows the volume and mute state of our virtual devices to be reset when EasyEffects starts. It should help with the cases were our devices are muted by the audio server for unknown reasons.</li>
+          <li>The autogain filter should deal better with PipeWire's dynamic latency switches. Jumps
+          in volume level should not happen anymore in these situations.</li>
+          <li>We added an option that allows the volume and mute state of our virtual devices to be reset
+          when EasyEffects starts. It should help with the cases were our devices are muted by the audio
+          server for unknown reasons.</li>
           <li>Better support for computer suspending.</li>
           <li>Updated translations</li>
           <li>Bug fixes:</li>
-          <li>Fixed a bug where trying to create an autoloading profile without having presets caused the application to crash.</li>
+          <li>Fixed a bug where trying to create an autoloading profile without having presets caused
+          the application to crash.</li>
         </ul>
       </description>
     </release>
@@ -895,7 +1096,8 @@
       <description>
         <ul>
           <li>Bug fixes:</li>
-          <li>Fixed a bug where setting a equalizer band quality to zero would lead to an application crash.</li>
+          <li>Fixed a bug where setting a equalizer band quality to zero would lead to an application
+          crash.</li>
         </ul>
       </description>
     </release>
@@ -903,15 +1105,21 @@
       <description>
         <ul>
           <li>Features:</li>
-          <li>LibAdwaita is used to create some parts of our window and for handling the switching between dark and light themes.</li>
+          <li>LibAdwaita is used to create some parts of our window and for handling the switching between
+          dark and light themes.</li>
           <li>The settings menu has been redesigned using LibAdwaita widgets.</li>
-          <li>Equalizer APO preset import feature has been improved to apply not only the Bell filter, but also other supported ones (at the moment only the Bandpass filter is not available in LSP plugin).</li>
+          <li>Equalizer APO preset import feature has been improved to apply not only the Bell filter,
+          but also other supported ones (at the moment only the Bandpass filter is not available in LSP
+          plugin).</li>
           <li>The Reset All Settings function in our menu should work in Flatpak now.</li>
-          <li>We have a new option that allows the user to disable our menus autohide. This may help to workaround some bugs Popover menus currently have on gtk4.</li>
+          <li>We have a new option that allows the user to disable our menus autohide. This may help
+          to workaround some bugs Popover menus currently have on gtk4.</li>
           <li>Bug fixes:</li>
-          <li>More robust parsing to import APO presets saved with comma as thousands separator in central frequency band.</li>
+          <li>More robust parsing to import APO presets saved with comma as thousands separator in central
+          frequency band.</li>
           <li>Other notes:</li>
-          <li>The fmt library is a new dependency  At least while the c++ compilers do not implement its features. This is expected to happen in the next years.</li>
+          <li>The fmt library is a new dependency At least while the c++ compilers do not implement its
+          features. This is expected to happen in the next years.</li>
           <li>GTKMM and GLIBMM are not a dependency anymore. We now use gtk4 directly.</li>
         </ul>
       </description>
@@ -920,12 +1128,17 @@
       <description>
         <ul>
           <li>Features:</li>
-          <li>It is now possible to combine impulse responses in the Convolver interface. A new impulse file is generated and it should be visible in the impulse list.</li>
-          <li>Improved x axis drawings in our plots. Now the number of labels is adjusted dynamically depending on our window width.</li>
-          <li>The documentation has been updated reflecting the new EasyEffects features. Old references about PulseEffects have been removed. The documentation button has been added in the menu section.</li>
+          <li>It is now possible to combine impulse responses in the Convolver interface. A new impulse
+          file is generated and it should be visible in the impulse list.</li>
+          <li>Improved x axis drawings in our plots. Now the number of labels is adjusted dynamically
+          depending on our window width.</li>
+          <li>The documentation has been updated reflecting the new EasyEffects features. Old references
+          about PulseEffects have been removed. The documentation button has been added in the menu section.</li>
           <li>Bug fixes:</li>
-          <li>When a spinbutton is filled with an out of range value, now it is updated with the lowest/highest value rather than resetting to the previous one.</li>
-          <li>The application window now remembers the maximized state and restores it on the next opening event.</li>
+          <li>When a spinbutton is filled with an out of range value, now it is updated with the lowest/highest
+          value rather than resetting to the previous one.</li>
+          <li>The application window now remembers the maximized state and restores it on the next opening
+          event.</li>
           <li>Other notes:</li>
           <li>The tbb library is a new dependency</li>
         </ul>
@@ -936,13 +1149,17 @@
         <ul>
           <li>Features:</li>
           <li>The Limiter and the Multiband Compressor plugins can now use an optional external sidechain.</li>
-          <li>The Autogain plugin now allows the user to select which Loudness is used as reference for the volume correction.</li>
-          <li>The APO Profile Import feature of Equalizer plugin now parses the "Pre Amplification" parameter.</li>
+          <li>The Autogain plugin now allows the user to select which Loudness is used as reference for
+          the volume correction.</li>
+          <li>The APO Profile Import feature of Equalizer plugin now parses the "Pre Amplification"
+          parameter.</li>
           <li>Optional Cubic Volume can be enabled in General Settings.</li>
           <li>Bug fixes:</li>
-          <li>The Spectrum plugin was supposed to enter passthrough whenever it was not visible, but this was happening only when our window was closed.</li>
+          <li>The Spectrum plugin was supposed to enter passthrough whenever it was not visible, but
+          this was happening only when our window was closed.</li>
           <li>Improved support for Assistive Technology.</li>
-          <li>The probes used in some filters like the Compressor and the Limiter were not being relinked after changing the order of the plugins in the pipeline. It should be working now.</li>
+          <li>The probes used in some filters like the Compressor and the Limiter were not being relinked
+          after changing the order of the plugins in the pipeline. It should be working now.</li>
         </ul>
       </description>
     </release>
@@ -954,7 +1171,8 @@
           <li>Bug fixes:</li>
           <li>Hopefully crashes like the one reported at issue 1172 are fixed.</li>
           <li>Prevented a case in which Spectrum was crashing.</li>
-          <li>Pavucontrol is not added anymore to input applications list on systems with localization different than English.</li>
+          <li>Pavucontrol is not added anymore to input applications list on systems with localization
+          different than English.</li>
         </ul>
       </description>
     </release>
@@ -962,7 +1180,8 @@
       <description>
         <ul>
           <li>Features:</li>
-          <li>Improved compatibility with WirePlumber. This is needed to run on systems that decided to use it instead of the built-in PipeWire session manager. More information at issue 1144.</li>
+          <li>Improved compatibility with WirePlumber. This is needed to run on systems that decided
+          to use it instead of the built-in PipeWire session manager. More information at issue 1144.</li>
         </ul>
       </description>
     </release>
@@ -970,16 +1189,25 @@
       <description>
         <ul>
           <li>Features:</li>
-          <li>When trying to add an autoloading profile for a device already in the list its target preset will be updated. This way we can change the profile preset without having to remove and recreating it.</li>
-          <li>The preset autoloading support implementation was redesigned again. It should work on more hardware now. For more information see issue 1051.</li>
-          <li>If the Limiter or the Maximizer are set in the last position of the plugin stack, new plugins are added at the second to last position in order to prevent hardware damage on eventually high output level.</li>
+          <li>When trying to add an autoloading profile for a device already in the list its target preset
+          will be updated. This way we can change the profile preset without having to remove and recreating
+          it.</li>
+          <li>The preset autoloading support implementation was redesigned again. It should work on more
+          hardware now. For more information see issue 1051.</li>
+          <li>If the Limiter or the Maximizer are set in the last position of the plugin stack, new plugins
+          are added at the second to last position in order to prevent hardware damage on eventually
+          high output level.</li>
           <li>Removing an application from the blocklist, its previous enabled state is restored.</li>
           <li>Bug fixes:</li>
-          <li>Sometimes when removing imported models from the noise reduction plugin the current used model was not properly updated. This should be fixed now.</li>
-          <li>When editing presets files in an external editor, duplicated entries won't be shown in our presets menu.</li>
+          <li>Sometimes when removing imported models from the noise reduction plugin the current used
+          model was not properly updated. This should be fixed now.</li>
+          <li>When editing presets files in an external editor, duplicated entries won't be shown
+          in our presets menu.</li>
           <li>Now the blocklist is correctly set when switching presets.</li>
           <li>Now the status of the global bypass button is correctly updated when changing plugin stack.</li>
-          <li>Missing icons on the system should not be shown inside the application info UI (if an application icon could not be shown even if you're sure it's correctly installed, please open an issue).</li>
+          <li>Missing icons on the system should not be shown inside the application info UI (if an application
+          icon could not be shown even if you're sure it's correctly installed, please open
+          an issue).</li>
           <li>Some icons not showing in Plasma DE with Breeze icon theme should appear now.</li>
         </ul>
       </description>
@@ -991,18 +1219,23 @@
           <li>Updated Chinese translation.</li>
           <li>Updated Italian translation.</li>
           <li>Added support for the compressor parameter Boost Amount</li>
-          <li>The multiband compressor plugin now uses the stereo multiband compressor plugin from Linux Studio Plugins instead of the one from Calf Studio.</li>
-          <li>The limiter plugin now uses the stereo limiter plugin from Linux Studio Plugins instead of the one from Calf Studio.</li>
-          <li>LV2 filters now are spawned in PipeWire graph only when loaded the first time. Once loaded, they remain connected until EasyEffects shutdown.</li>
+          <li>The multiband compressor plugin now uses the stereo multiband compressor plugin from Linux
+          Studio Plugins instead of the one from Calf Studio.</li>
+          <li>The limiter plugin now uses the stereo limiter plugin from Linux Studio Plugins instead
+          of the one from Calf Studio.</li>
+          <li>LV2 filters now are spawned in PipeWire graph only when loaded the first time. Once loaded,
+          they remain connected until EasyEffects shutdown.</li>
           <li>Bug fixes:</li>
           <li>The echo canceller sampling rate is now properly set.</li>
           <li>The threshold parameter from the deesser plugin is now saved to the preset file.</li>
           <li>Improved band splitting for crystalizer with new default intensity values.</li>
-          <li>Depending on the input gain or output gain values the corresponding level bars could not be aligned.</li>
+          <li>Depending on the input gain or output gain values the corresponding level bars could not
+          be aligned.</li>
           <li>When adding more equalizer bands they are set to Bell instead of Off.</li>
           <li>Equalizer APO presets loading is now working properly on locales different than C.</li>
           <li>Improved linking management between port filter nodes in PipeWire.</li>
-          <li>The crystalizer plugin signal amplification was too high before. It should be within more reasonable levels now.</li>
+          <li>The crystalizer plugin signal amplification was too high before. It should be within more
+          reasonable levels now.</li>
         </ul>
       </description>
     </release>
@@ -1015,7 +1248,8 @@
           <li>Bug fixes:</li>
           <li>Setting multiple autoloading presets should be fine now</li>
           <li>Transient windows are now properly set for some plugins dialogs</li>
-          <li>The convolver impulse response menu was improved to workaround an issue where the impulse files was not loaded when only one was available in the menu, see issue 1011</li>
+          <li>The convolver impulse response menu was improved to workaround an issue where the impulse
+          files was not loaded when only one was available in the menu, see issue 1011</li>
           <li>Fixed a bug that could make the pitch plugin to not be properly initialized</li>
           <li>The saturation warning should not displace its neighbor widgets anymore</li>
           <li>Fixed the locale in a few widgets</li>
@@ -1027,7 +1261,8 @@
       <description>
         <ul>
           <li>Features:</li>
-          <li>The Loudness plugin is being used again for the reasons described at issue 820. This means that  is an optional dependency again.</li>
+          <li>The Loudness plugin is being used again for the reasons described at issue 820. This means
+          that is an optional dependency again.</li>
           <li>Bug fixes:</li>
           <li>Fixed a segmentation fault that happened when optional dependencies were not installed</li>
         </ul>
@@ -1038,11 +1273,15 @@
         <ul>
           <li>Features:</li>
           <li>Improved equalizer interface.</li>
-          <li>Now we use a sidechain LSP compressor that allows the user to select and external source as the sidechain input.</li>
+          <li>Now we use a sidechain LSP compressor that allows the user to select and external source
+          as the sidechain input.</li>
           <li>We now support the LSP compressor Boosting mode.</li>
-          <li>When split-channels is enabled in the equalizer the imported APO preset will be applied only to the channel being visualized in the window. This will allow to import different presets for each channel instead of just settings the same values to both.</li>
+          <li>When split-channels is enabled in the equalizer the imported APO preset will be applied
+          only to the channel being visualized in the window. This will allow to import different presets
+          for each channel instead of just settings the same values to both.</li>
           <li>Bug fixes:</li>
-          <li>Fixed some segmentation faults that could happen when creating a preset autoloading profile or removing presets</li>
+          <li>Fixed some segmentation faults that could happen when creating a preset autoloading profile
+          or removing presets</li>
         </ul>
       </description>
     </release>
@@ -1050,14 +1289,22 @@
       <description>
         <ul>
           <li>Features:</li>
-          <li>This is one of the biggest releases that I have ever made. The amount of changes is so big that it is hard to talk about everything here.</li>
-          <li>The following are just the most import ones. People interested on the journey that got us here can take a look at issue 904 and issue 874.</li>
+          <li>This is one of the biggest releases that I have ever made. The amount of changes is so
+          big that it is hard to talk about everything here.</li>
+          <li>The following are just the most import ones. People interested on the journey that got
+          us here can take a look at issue 904 and issue 874.</li>
           <li>The application and its repository have been renamed from PulseEffects to EasyEffects</li>
           <li>gtkmm3 was replaced by gtkmm4</li>
           <li>Gstreamer was replaced by native PipeWire filters.</li>
-          <li>Many features were reimplemented from scratch. The preset autoloading is one example. Another remarkable change will be seen in the plugins selection menu. Now the user can show in the window only the plugins that he/she wants to use.</li>
-          <li>Boost is no longer a dependency. The price paid for that was a little change in our presets structures. With some patience it is possible to edit PulseEffects presets in a text editor and make them work in EasyEffects. Hopefully someone will come up with a script for this in the feature.</li>
-          <li>New libraries are being used and some of the librarires that were optional before are now required</li>
+          <li>Many features were reimplemented from scratch. The preset autoloading is one example. Another
+          remarkable change will be seen in the plugins selection menu. Now the user can show in the
+          window only the plugins that he/she wants to use.</li>
+          <li>Boost is no longer a dependency. The price paid for that was a little change in our presets
+          structures. With some patience it is possible to edit PulseEffects presets in a text editor
+          and make them work in EasyEffects. Hopefully someone will come up with a script for this in
+          the feature.</li>
+          <li>New libraries are being used and some of the librarires that were optional before are now
+          required</li>
         </ul>
       </description>
     </release>

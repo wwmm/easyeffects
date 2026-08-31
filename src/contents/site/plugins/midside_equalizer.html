@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="gate.html">
+        <link rel="prev" href="maximizer.html">
       
       
-        <link rel="next" href="loudness.html">
+        <link rel="next" href="multibandcompressor.html">
       
       
         
@@ -23,7 +23,7 @@
     
     
       
-        <title>Limiter - Easy Effects Manual</title>
+        <title>Mid-Side Equalizer - Easy Effects Manual</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#limiter" class="md-skip">
+        <a href="#mid-side-equalizer" class="md-skip">
           Skip to content
         </a>
       
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Limiter
+              Mid-Side Equalizer
             
           </span>
         </div>
@@ -1408,37 +1408,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Limiter
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="limiter.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="limiter.html" class="md-nav__link">
         
   
   
@@ -1454,48 +1427,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#auto-leveling" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Auto Leveling
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        References
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1561,10 +1492,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="midside_equalizer.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mid-Side Equalizer
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="midside_equalizer.html" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1580,6 +1538,59 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#global-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Global Options
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#band-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Band Options
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2260,10 +2271,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#auto-leveling" class="md-nav__link">
+  <a href="#global-options" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Auto Leveling
+        Global Options
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#band-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Band Options
       
     </span>
   </a>
@@ -2301,49 +2323,61 @@
   
 
 
-<h1 id="limiter">Limiter</h1>
-<p>A Limiter is a special type of downward <a href="compressor.html">Compressor</a> which does not allow the signal to overtake a predetermined Threshold. Ideally it has a very high compression ratio that takes the amplitude below a ceiling which stands as the maximum output level. For this reason it is usually named "brick-wall limiter".</p>
-<p>Easy Effects uses the Sidechain Stereo Limiter from Linux Studio Plugins. In most cases it works as a brick-wall limiter, but it offers also an additional feature that acts like a Compressor with extreme settings, so the output signal may exceed the specified Threshold.</p>
+<h1 id="mid-side-equalizer">Mid-Side Equalizer</h1>
+<p>The Mid-Side Equalizer processes the Mid (sum) and Side (difference) parts of a stereo signal independently. It's useful, for example, to fix the overall tone of a recording through the Mid channel while keeping the stereo ambience untouched on the Side channel. Easy Effects uses the Parametric Equalizer x32 MidSide from Linux Studio Plugins. You can run anywhere from 1 to 32 bands per channel, and tweak the width and center frequency of each band.</p>
+<h2 id="global-options">Global Options</h2>
+<p><strong>Bands</strong><br />
+Number of bands.</p>
 <p><strong>Mode</strong><br />
-Select the operative mode of the peak cutting algorithm which searches the peaks above the Threshold and applies short gain reduction patches to the signal.</p>
-<p>These patches can be selected in 3 forms: <strong>Hermite</strong>, <strong>Exponential</strong> and <strong>Linear</strong>. Each one has 4 different variants related to gain reduction of the samples around the peak: <strong>Thin</strong>, <strong>Tail</strong>, <strong>Duck</strong> and <strong>Wide</strong>.</p>
-<p>The shape of each form and variant can be referred into the Linux Studio Plugin manual. See References section at the bottom of the present document.</p>
-<p><strong>Oversampling</strong><br />
-When enabled, the sample rate is internally increased in order to improve peak detection and reduce aliasing (that causes distortion).</p>
-<p>The modes have 2 main types: <strong>Full</strong>, which increases both the Sidechain and the Input signals, and <strong>Half</strong> which increases only the Sidechain. Each one of them specifies different <strong>multipliers</strong> and, between parentheses, the number of "<strong>lobes</strong> in the kernel".</p>
-<p>The oversampled Input signal is downsampled to the original sample rate after processing.</p>
-<p><strong>Dither</strong><br />
-If specified, it enables Dithering for the selected bit depth. The process of Dithering adds a low-level noise to output signal in order to mask "quantization distortion", a form of artifact present in digital audio rendered at lower bit depth.</p>
-<p><strong>SC PreAmp</strong><br />
-The gain applied to the Sidechain before it is processed.</p>
-<p><strong>Lookahead</strong><br />
-The size of the buffer used to detect the peaks in advance. It adds the corresponding latency to the output signal.</p>
-<p><strong>Attack</strong><br />
-The length of time it takes to apply the needed gain reduction to keep the peak below the Threshold.</p>
-<p>It affects the length of the gain reduction patch. It cannot be larger than the Lookahead (if specified larger, it's set internally as the max possible value).</p>
-<p><strong>Release</strong><br />
-The length of time it takes to restore the reduced gain around the limited peak.</p>
-<p>It affects the length of the gain reduction patch. It cannot be twice larger than the Lookahead (if specified larger, it's set internally as the max possible value).</p>
-<p><strong>Threshold</strong><br />
-The target level above which the Limiter should reduce the peak of the signal. In some modes it represents the maximum output level.</p>
-<p><strong>Threshold Boost</strong><br />
-If enabled it applies an amount of gain to the limited signal equal to the absolute value of the Threshold. This causes the peak limited at the Threshold level to output at 0 dB (it has only effect when the Threshold is set below 0 dB).</p>
-<p><strong>Stereo Link</strong><br />
-The degree of the channel linking. At 0% both channels are limited independently while at 100% the loudest one triggers the same gain reduction on both.</p>
-<p><strong>External Sidechain</strong><br />
-Switch the Sidechain to an external source took by a specific input device (typically a microphone).</p>
-<h2 id="auto-leveling">Auto Leveling</h2>
-<p>The Auto Leveling checkbutton introduces an additional feature named "Automated Level Regulation" (ALR) which acts like a Compressor with infinite ratio for the purpose of applying a smoothed gain reduction rather than a stronger peak cutter like in brick-wall mode. This configuration could get the output level to exceed the Threshold even if the signal is highly compressed.</p>
-<p><strong>Attack</strong><br />
-Manage how the raise of the input signal affects the smoothness of the ALR curve that controls the gain reduction level. Higher the value, more quickly the curve goes to it's maximum.</p>
-<p><strong>Release</strong><br />
-Manage how the fall of the input signal affects the smoothness of the curve that controls the gain reduction level. Higher the value, more quickly the curve goes to it's minimum.</p>
-<p><strong>Knee</strong><br />
-Manage the Threshold of the ALR gain curve and, in fact, adjust the balance between two gain reduction stages. Raising the value delegates more work to the peak-cutting algorithm. Lowering the value delegates more work to the ALR gain reduction algorithm.</p>
+- <strong>IIR</strong> - Infinite Impulse Response filters, nonlinear minimal phase. Usually doesn't add noticeable latency to the output.
+- <strong>FIR</strong> - Finite Impulse Response filters with linear phase, a finite approximation of the equalizer's impulse response. Adds noticeable latency to the output.
+- <strong>FFT</strong> - Fast Fourier Transform approximation of the frequency chart, linear phase. Adds noticeable latency to the output.</p>
+<p><strong>Balance</strong><br />
+Balance between the left and right output channels.</p>
+<p><strong>Pitch Mid</strong><br />
+Frequency shift for all mid channel filters, in semitones.</p>
+<p><strong>Pitch Side</strong><br />
+Frequency shift for all side channel filters, in semitones.</p>
+<p><strong>Link Mid/Side</strong><br />
+When enabled, you can apply different configurations to the mid and side channels.</p>
+<p><strong>Flat Response</strong><br />
+Resets all band gains to 0.</p>
+<p><strong>Calculate Frequencies</strong><br />
+Figures out the center frequency and width for each band based on the current band count. Handy if you want fewer than 32 bands but aren't sure which frequencies to pick.</p>
+<h2 id="band-options">Band Options</h2>
+<p><strong>Type</strong><br />
+- <strong>Off</strong> - Filter is disabled.
+- <strong>Bell</strong> - Bell filter with smooth peak/recess.
+- <strong>High Pass</strong> - High Pass filter that removes low frequencies.
+- <strong>High Shelf</strong> - Shelving filter that adjusts the high frequency range.
+- <strong>Low Pass</strong> - Low Pass filter that removes high frequencies.
+- <strong>Low Shelf</strong> - Shelving filter that adjusts the low frequency range.
+- <strong>Notch</strong> - Notch filter that fully rejects the selected frequency.
+- <strong>Resonance</strong> - Resonance filter with sharp peak/recess.
+- <strong>All Pass</strong> - All Pass filter.</p>
+<p><strong>Mode</strong><br />
+- <strong>RLC</strong> - Very smooth filters built from cascaded RLC contours. Uses Bilinear Z-transform (BT) or Matched Z-transform (MT) for pole/zero mapping.
+- <strong>BWC</strong> - Butterworth-Chebyshev-type-1 based filters. Doesn't affect Resonance and Notch filters. Uses Bilinear Z-transform (BT) or Matched Z-transform (MT) for pole/zero mapping.
+- <strong>LRX</strong> - Linkwitz-Riley based filters. Doesn't affect Resonance and Notch filters. Uses Bilinear Z-transform (BT) or Matched Z-transform (MT) for pole/zero mapping.
+- <strong>APO</strong> - Digital biquad filters derived from canonical analog biquad prototypes digitalized through Bilinear transform. These are <a href="https://shepazu.github.io/Audio-EQ-Cookbook/audio-eq-cookbook.html">textbook filters</a> implemented the same way as in <a href="https://equalizerapo.com/">Equalizer APO</a>. Direct design (DR) generates the digital filter coefficients directly in the digital domain, without any transforms.</p>
+<p><strong>Slope</strong><br />
+Slope of the filter curve.</p>
+<p><strong>Solo</strong><br />
+Makes the selected band the only active one.</p>
+<p><strong>Mute</strong><br />
+Mutes the selected band.</p>
+<p><strong>Frequency</strong><br />
+Center frequency of the band.</p>
+<p><strong>Width</strong><br />
+Bandwidth, calculated as <code>width = frequency / quality</code>.</p>
+<p><strong>Quality</strong><br />
+Quality factor of the filter.</p>
 <h2 id="references">References</h2>
 <ul>
-<li><a href="https://en.wikipedia.org/wiki/Limiter">Wikipedia Limiter</a></li>
-<li><a href="https://lsp-plug.in/?page=manuals&amp;section=sc_limiter_stereo">LSP Sidechain Limiter Stereo</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Equalization_(audio)">Wikipedia Equalization (audio)</a></li>
+<li><a href="http://lsp-plug.in/?page=manuals&amp;section=para_equalizer_x32_ms">LSP Parametric Equalizer x32 MidSide</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Q_factor">Wikipedia Q Factor</a></li>
+<li><a href="https://howtoeq.wordpress.com/2010/10/07/q-factor-and-bandwidth-in-eq-what-it-all-means/">How to EQ - Q Factor and Bandwidth in EQ: What They Mean</a></li>
 </ul>
 
 
@@ -2374,7 +2408,7 @@ Manage the Threshold of the ALR gain curve and, in fact, adjust the balance betw
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="gate.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Gate">
+          <a href="maximizer.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Maximizer">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2384,20 +2418,20 @@ Manage the Threshold of the ALR gain curve and, in fact, adjust the balance betw
                 Previous
               </span>
               <div class="md-ellipsis">
-                Gate
+                Maximizer
               </div>
             </div>
           </a>
         
         
           
-          <a href="loudness.html" class="md-footer__link md-footer__link--next" aria-label="Next: Loudness">
+          <a href="multibandcompressor.html" class="md-footer__link md-footer__link--next" aria-label="Next: Multiband Compressor">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Loudness
+                Multiband Compressor
               </div>
             </div>
             <div class="md-footer__button md-icon">

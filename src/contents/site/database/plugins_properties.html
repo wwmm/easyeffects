@@ -837,6 +837,8 @@
       
         
       
+        
+      
     
     
     
@@ -1483,6 +1485,34 @@
     
   
     Maximizer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../plugins/midside_equalizer.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mid-Side Equalizer
   
 
     
@@ -3580,6 +3610,12 @@
 <td style="text-align: left;"><code>true</code></td>
 </tr>
 <tr>
+<td style="text-align: left;"><strong>equalizer</strong></td>
+<td style="text-align: left;"><code>decramp</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Off</code>, 1: <code>x2</code>, 2: <code>x3</code>, 3: <code>x4</code>, 4: <code>x6</code>, 5: <code>x8</code>)</small></td>
+</tr>
+<tr>
 <td style="text-align: left;"><strong>exciter</strong></td>
 <td style="text-align: left;"><code>bypass</code></td>
 <td style="text-align: left;">Bool</td>
@@ -3908,6 +3944,12 @@
 <td style="text-align: left;"><code>balance</code></td>
 <td style="text-align: left;">Double</td>
 <td style="text-align: left;"><code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>filter</strong></td>
+<td style="text-align: left;"><code>decramp</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Off</code>, 1: <code>x2</code>, 2: <code>x3</code>, 3: <code>x4</code>, 4: <code>x6</code>, 5: <code>x8</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>gate</strong></td>
@@ -4370,6 +4412,72 @@
 <td style="text-align: left;"><code>threshold</code></td>
 <td style="text-align: left;">Double</td>
 <td style="text-align: left;"><code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>midside_equalizer</strong></td>
+<td style="text-align: left;"><code>bypass</code></td>
+<td style="text-align: left;">Bool</td>
+<td style="text-align: left;"><code>false</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>midside_equalizer</strong></td>
+<td style="text-align: left;"><code>inputGain</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>midside_equalizer</strong></td>
+<td style="text-align: left;"><code>outputGain</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>midside_equalizer</strong></td>
+<td style="text-align: left;"><code>numBands</code></td>
+<td style="text-align: left;">Int</td>
+<td style="text-align: left;"><code>32</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>midside_equalizer</strong></td>
+<td style="text-align: left;"><code>mode</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>IIR</code>, 1: <code>FIR</code>, 2: <code>FFT</code>, 3: <code>SPM</code>)</small></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>midside_equalizer</strong></td>
+<td style="text-align: left;"><code>splitChannels</code></td>
+<td style="text-align: left;">Bool</td>
+<td style="text-align: left;"><code>false</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>midside_equalizer</strong></td>
+<td style="text-align: left;"><code>balance</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>midside_equalizer</strong></td>
+<td style="text-align: left;"><code>pitchMid</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>midside_equalizer</strong></td>
+<td style="text-align: left;"><code>pitchSide</code></td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;"><code>0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>midside_equalizer</strong></td>
+<td style="text-align: left;"><code>viewMidChannel</code></td>
+<td style="text-align: left;">Bool</td>
+<td style="text-align: left;"><code>true</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>midside_equalizer</strong></td>
+<td style="text-align: left;"><code>decramp</code></td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"><code>0</code> <br><small>(Choices: 0: <code>Off</code>, 1: <code>x2</code>, 2: <code>x3</code>, 3: <code>x4</code>, 4: <code>x6</code>, 5: <code>x8</code>)</small></td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>multiband_compressor</strong></td>
