@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-08-21 20:14-0300\n"
-"PO-Revision-Date: 2026-08-30 07:46+0000\n"
+"PO-Revision-Date: 2026-08-31 08:51+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -801,7 +801,7 @@ msgstr "Envelope"
 #: src/contents/ui/Gate.qml:993 src/contents/ui/MultibandCompressor.qml:996
 #: src/contents/ui/MultibandGate.qml:969
 msgid "Stereo split"
-msgstr "Divisione stereo"
+msgstr "Separazione stereo"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:49
 msgid "Imported a new Convolver impulse file."
@@ -1135,7 +1135,7 @@ msgstr "Banda larga"
 
 #: src/contents/ui/Deesser.qml:93
 msgid "Split"
-msgstr "Split"
+msgstr "Separazione"
 
 #: src/contents/ui/Deesser.qml:102 src/contents/ui/Gate.qml:135
 #: src/contents/ui/Gate.qml:187 src/contents/ui/Gate.qml:922
@@ -1153,23 +1153,23 @@ msgstr "Lassità"
 
 #: src/contents/ui/Deesser.qml:184
 msgid "F1 split"
-msgstr "F1 split"
+msgstr "Separa F1"
 
 #: src/contents/ui/Deesser.qml:201
 msgid "F2 peak"
-msgstr "F2 picco"
+msgstr "Picco F2"
 
 #: src/contents/ui/Deesser.qml:218
 msgid "F1 gain"
-msgstr "F1 guadagno"
+msgstr "Guadagno F1"
 
 #: src/contents/ui/Deesser.qml:235
 msgid "F2 level"
-msgstr "F2 livello"
+msgstr "Livello F2"
 
 #: src/contents/ui/Deesser.qml:253
 msgid "F2 peak Q"
-msgstr "F2 picco Q"
+msgstr "Picco Q F2"
 
 #: src/contents/ui/Deesser.qml:297
 msgid "Gain reduction"
@@ -1993,7 +1993,7 @@ msgstr "Centro"
 
 #: src/contents/ui/MidSideEqualizer.qml:346
 msgid "Split mid/side"
-msgstr "Dividi centro/lato"
+msgstr "Separa centro/lato"
 
 #: src/contents/ui/MultibandCompressor.qml:127
 msgid "Compression mode"
