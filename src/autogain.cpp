@@ -322,17 +322,18 @@ void Autogain::process(std::span<float>& left_in,
       const auto db_peak = util::linear_to_db(peak);
 
       if (db_peak > util::minimum_db_level) {
-        if (gain * peak < 1.0) {
-          // Smoothing the gain correction through a leaky integrator:
-          // g[n]=α⋅g[n−1]+(1−α)⋅gtarget​[n]
+        const double max_gain = 1.0 / peak;  // safe ceiling
+        const double target_gain = std::min(gain, max_gain);
 
-          // choose based on whether gain is rising or falling
-          double alpha = (gain < prev_gain) ? attack_coeff : release_coeff;
+        // Smoothing the gain correction through a leaky integrator:
+        // g[n]=α⋅g[n−1]+(1−α)⋅gtarget​[n]
 
-          internal_output_gain = (alpha * prev_gain) + ((1.0 - alpha) * gain);
+        // choose based on whether gain is rising or falling
+        double alpha = (target_gain < prev_gain) ? attack_coeff : release_coeff;
 
-          prev_gain = internal_output_gain;
-        }
+        internal_output_gain = (alpha * prev_gain) + ((1.0 - alpha) * target_gain);
+
+        prev_gain = internal_output_gain;
       }
     }
   } else if (settings->forceSilence()) {
