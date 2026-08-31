@@ -352,6 +352,7 @@ PluginBase::PluginBase(std::string tag,
   pw_properties_set(props_filter, PW_KEY_MEDIA_CATEGORY, "Duplex");
   pw_properties_set(props_filter, PW_KEY_MEDIA_ROLE, "DSP");
   pw_properties_set(props_filter, PW_KEY_NODE_GROUP, log_tag == "soe: " ? "ee_sink_group" : "ee_source_group");
+  pw_properties_set(props_filter, PW_KEY_NODE_LINK_GROUP, log_tag == "soe: " ? "ee_sink_group" : "ee_source_group");
   pw_properties_set(props_filter, PW_KEY_NODE_PASSIVE, log_tag == "soe: " ? "true" : "false");
 
   filter = pw_filter_new(pm->core, filter_name.c_str(), props_filter);
