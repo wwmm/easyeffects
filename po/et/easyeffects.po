@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-08-21 20:14-0300\n"
-"PO-Revision-Date: 2026-08-30 17:46+0000\n"
+"PO-Revision-Date: 2026-08-31 22:51+0000\n"
 "Last-Translator: Priit Jõerüüt <jrthwlate@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/easyeffects/"
 "main/et/>\n"
@@ -1827,19 +1827,19 @@ msgstr ""
 
 #: src/contents/ui/Loudness.qml:119
 msgid "Fastest"
-msgstr ""
+msgstr "Kiireim"
 
 #: src/contents/ui/Loudness.qml:119
 msgid "Normal"
-msgstr ""
+msgstr "Tavaline"
 
 #: src/contents/ui/Loudness.qml:119
 msgid "Best"
-msgstr ""
+msgstr "Parim"
 
 #: src/contents/ui/Loudness.qml:129
 msgid "Volume"
-msgstr ""
+msgstr "Helivaljus"
 
 #: src/contents/ui/Loudness.qml:146
 msgid "Clipping range"
@@ -2270,19 +2270,19 @@ msgstr "Katselised funktsionaalsused"
 
 #: src/contents/ui/PreferencesSheet.qml:87
 msgid "Enable service mode"
-msgstr ""
+msgstr "Kasuta rakendust teenusena"
 
 #: src/contents/ui/PreferencesSheet.qml:88
 msgid "Easy Effects is active in background when the window is closed."
-msgstr ""
+msgstr "Easy Effects jääb akna sulgemisel taustal tööle."
 
 #: src/contents/ui/PreferencesSheet.qml:100
 msgid "Autostart on login"
-msgstr ""
+msgstr "Sisselogimisel käivita automaatselt"
 
 #: src/contents/ui/PreferencesSheet.qml:101
 msgid "Easy Effects is launched at user session startup."
-msgstr ""
+msgstr "Easy Effects käivitub kasutajasessiooni alguses automaatselt."
 
 #: src/contents/ui/PreferencesSheet.qml:114
 msgid "Show the tray icon"
@@ -2301,11 +2301,11 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:148
 msgid "Process all output streams"
-msgstr ""
+msgstr "Töötle kõiki väljundvooge"
 
 #: src/contents/ui/PreferencesSheet.qml:160
 msgid "Process all input streams"
-msgstr ""
+msgstr "Töötle kõiki sisendvooge"
 
 #: src/contents/ui/PreferencesSheet.qml:172
 msgid "Ignore streams from monitor of devices"
@@ -2429,27 +2429,27 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:426
 msgid "Graph"
-msgstr ""
+msgstr "Visualiseerija"
 
 #: src/contents/ui/PreferencesSheet.qml:437
 msgid "Bars"
-msgstr ""
+msgstr "Ribad"
 
 #: src/contents/ui/PreferencesSheet.qml:437
 msgid "Lines"
-msgstr ""
+msgstr "Jooned"
 
 #: src/contents/ui/PreferencesSheet.qml:437
 msgid "Dots"
-msgstr ""
+msgstr "Punktid"
 
 #: src/contents/ui/PreferencesSheet.qml:437
 msgid "Area"
-msgstr ""
+msgstr "Ala"
 
 #: src/contents/ui/PreferencesSheet.qml:447
 msgid "Dynamic scale"
-msgstr ""
+msgstr "Dünaamiline skaale"
 
 #: src/contents/ui/PreferencesSheet.qml:459
 msgid "Logarithmic frequency axis"
@@ -2522,11 +2522,11 @@ msgstr ""
 #: src/contents/ui/PreferencesSheet.qml:628
 #: src/contents/ui/PreferencesSheet.qml:665
 msgid "Color scheme"
-msgstr ""
+msgstr "Värvikombinatsioon"
 
 #: src/contents/ui/PreferencesSheet.qml:642
 msgid "Force English language"
-msgstr ""
+msgstr "Kasuta sundkorras inglise keelt"
 
 #: src/contents/ui/PreferencesSheet.qml:643
 msgid ""
@@ -2534,6 +2534,9 @@ msgid ""
 "Useful if the translation in the local language is incomplete or "
 "incomprehensible. A restart of the service is required to apply this option."
 msgstr ""
+"Ära tõlgi kasutajaliidest ja näita tekste inglise keeles. See on kasulik "
+"juhul, kui tõlge kohalikku keelde on puudulik või arusaamatu. Selle valiku "
+"rakendamiseks pead teenuse uuesti käivitama."
 
 #: src/contents/ui/PreferencesSheet.qml:654
 msgid "Graphs"
@@ -2557,40 +2560,40 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:684
 msgid "Green"
-msgstr ""
+msgstr "Roheline"
 
 #: src/contents/ui/PreferencesSheet.qml:684
 msgid "Green neon"
-msgstr ""
+msgstr "Neoonroheline"
 
 #: src/contents/ui/PreferencesSheet.qml:684
 msgid "Orange"
-msgstr ""
+msgstr "Oranž"
 
 #: src/contents/ui/PreferencesSheet.qml:684
 msgid "Yellow"
-msgstr ""
+msgstr "Kollane"
 
 #: src/contents/ui/PreferencesSheet.qml:684
 msgid "Blue"
-msgstr ""
+msgstr "Sinine"
 
 #: src/contents/ui/PreferencesSheet.qml:684
 msgid "Purple"
-msgstr ""
+msgstr "Purpurpunane"
 
 #: src/contents/ui/PreferencesSheet.qml:684
 msgid "Grey"
-msgstr ""
+msgstr "Hall"
 
 #: src/contents/ui/PreferencesSheet.qml:684
 msgid "User"
-msgstr ""
+msgstr "Kasutaja"
 
 #: src/contents/ui/PreferencesSheet.qml:692
 msgctxt "@label"
 msgid "Background"
-msgstr ""
+msgstr "Taust"
 
 #: src/contents/ui/PreferencesSheet.qml:701
 msgctxt "@label"
@@ -2671,7 +2674,7 @@ msgstr ""
 #: src/contents/ui/PresetsAutoloadPage.qml:55
 #: src/contents/ui/PresetsAutoloadPage.qml:214
 msgid "Device"
-msgstr ""
+msgstr "Seade"
 
 #: src/contents/ui/PresetsAutoloadPage.qml:61
 #: src/contents/ui/PresetsAutoloadPage.qml:256
@@ -2762,37 +2765,39 @@ msgstr ""
 
 #: src/contents/ui/PresetsLocalPage.qml:83
 msgid "New preset name"
-msgstr ""
+msgstr "Uue eelseadistuse nimi"
 
 #: src/contents/ui/PresetsLocalPage.qml:99
 msgid "Import preset file"
-msgstr ""
+msgstr "Impordi eelseadistuse fail"
 
 #: src/contents/ui/PresetsLocalPage.qml:108
 msgid "Create new preset"
-msgstr ""
+msgstr "Koosta uus eelseadistus"
 
 #: src/contents/ui/PresetsLocalPage.qml:118
 msgid "Created a new local preset: %1"
-msgstr ""
+msgstr "Uus eelseadistus on koostatud: %1"
 
 #: src/contents/ui/PresetsLocalPage.qml:122
 msgid "Failed to create a new local preset: %1"
-msgstr ""
+msgstr "Uue eelseadistuse koostamine ei õnnestunud: %1"
 
 #: src/contents/ui/PresetsLocalPage.qml:150
 msgid "Export presets"
-msgstr ""
+msgstr "Ekspordi eelseadistused"
 
 #: src/contents/ui/PresetsLocalPage.qml:212
 msgid "Save Preset"
-msgstr ""
+msgstr "Salvesta eelseadistus"
 
 #: src/contents/ui/PresetsLocalPage.qml:213
 msgid ""
 "Save current settings to the preset:\n"
 "%1"
 msgstr ""
+"Salvesta eelseadistus oma praegusel kujul:\n"
+"%1"
 
 #: src/contents/ui/PresetsLocalPage.qml:217
 msgid "Saved the current settings to %1 local preset."
