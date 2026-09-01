@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects-news\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-28 14:40+0000\n"
-"PO-Revision-Date: 2026-08-30 03:51+0000\n"
+"PO-Revision-Date: 2026-09-02 08:51+0000\n"
 "Last-Translator: Priit Jõerüüt <jrthwlate@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/et/>\n"
@@ -64,7 +64,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:16
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:18
 msgid "Wellington Wallace"
-msgstr ""
+msgstr "Wellington Wallace"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
 msgid "The main page showing two audio output apps"
