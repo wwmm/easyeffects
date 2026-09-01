@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-08-21 20:14-0300\n"
-"PO-Revision-Date: 2026-08-31 22:51+0000\n"
+"PO-Revision-Date: 2026-09-01 20:56+0000\n"
 "Last-Translator: Priit Jõerüüt <jrthwlate@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/easyeffects/"
 "main/et/>\n"
@@ -262,7 +262,7 @@ msgstr ""
 #: src/contents/ui/Autotune.qml:111 src/contents/ui/Main.qml:465
 #: src/contents/ui/TrayIcon.qml:221
 msgid "Manual"
-msgstr ""
+msgstr "Juhend"
 
 #: src/contents/ui/Autotune.qml:137
 msgid "Correction"
@@ -382,14 +382,14 @@ msgstr ""
 #: src/contents/ui/RNNoise.qml:345 src/contents/ui/Speex.qml:195
 #: src/contents/ui/StereoTools.qml:424 src/contents/ui/VoiceSuppressor.qml:185
 msgid "Reset"
-msgstr ""
+msgstr "Lähtesta"
 
 #: src/contents/ui/BassLoudness.qml:83 src/contents/ui/Compressor.qml:478
 #: src/contents/ui/EeInputOutputGain.qml:144 src/contents/ui/Expander.qml:438
 #: src/contents/ui/Gate.qml:453 src/contents/ui/Main.qml:372
 #: src/contents/ui/StereoTools.qml:268
 msgid "Output"
-msgstr ""
+msgstr "Väljund"
 
 #: src/contents/ui/BassLoudness.qml:99 src/contents/ui/Compressor.qml:266
 #: src/contents/ui/Expander.qml:226 src/contents/ui/Gate.qml:244
@@ -623,7 +623,7 @@ msgstr "Vasak"
 #: src/contents/ui/MultibandGate.qml:422 src/contents/ui/PipeWirePage.qml:357
 #: src/contents/ui/StereoTools.qml:231
 msgid "Right"
-msgstr "Probleem"
+msgstr "Parem"
 
 #: src/contents/ui/Compressor.qml:319 src/contents/ui/Compressor.qml:334
 #: src/contents/ui/Expander.qml:279 src/contents/ui/Expander.qml:294
@@ -708,7 +708,7 @@ msgstr ""
 #: src/contents/ui/MultibandGate.qml:597 src/contents/ui/Pitch.qml:123
 #: src/contents/ui/Reverb.qml:188 src/contents/ui/StereoTools.qml:345
 msgid "Dry"
-msgstr ""
+msgstr "Kuiv"
 
 #: src/contents/ui/Compressor.qml:503 src/contents/ui/Convolver.qml:493
 #: src/contents/ui/Delay.qml:194 src/contents/ui/Delay.qml:347
@@ -717,7 +717,7 @@ msgstr ""
 #: src/contents/ui/MultibandGate.qml:615 src/contents/ui/Pitch.qml:142
 #: src/contents/ui/Reverb.qml:206 src/contents/ui/StereoTools.qml:363
 msgid "Wet"
-msgstr ""
+msgstr "Märg"
 
 #: src/contents/ui/Compressor.qml:522 src/contents/ui/Deesser.qml:135
 #: src/contents/ui/Expander.qml:482 src/contents/ui/Gate.qml:497
@@ -809,7 +809,7 @@ msgstr ""
 #: src/contents/ui/PresetsCommunityPage.qml:64
 #: src/contents/ui/PresetsLocalPage.qml:164
 msgid "Search"
-msgstr ""
+msgstr "Otsi"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:108
 msgid "Remove Impulse Response"
@@ -923,7 +923,7 @@ msgstr "Kestus"
 
 #: src/contents/ui/Convolver.qml:395 src/contents/ui/PipeWirePage.qml:337
 msgid "Channels"
-msgstr "Kanaleid"
+msgstr "Kanalid"
 
 #: src/contents/ui/Convolver.qml:400
 msgid "Format"
@@ -1419,7 +1419,7 @@ msgstr ""
 #: src/contents/ui/MidSideEqualizer.qml:66
 #: src/contents/ui/MidSideEqualizer.qml:106
 msgid "APO preset"
-msgstr ""
+msgstr "APO eelseadistus"
 
 #: src/contents/ui/Equalizer.qml:69
 msgid "Failed to import the Equalizer APO preset file."
@@ -2052,7 +2052,7 @@ msgstr "Efekte pole"
 
 #: src/contents/ui/PageStreamsEffects.qml:144
 msgid "Audio stream not modified"
-msgstr "Helivoog pole muudetud"
+msgstr "Helivoog pole muutunud"
 
 #: src/contents/ui/PageStreamsEffects.qml:418
 msgid "Add effect"
@@ -2493,11 +2493,11 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:575
 msgid "Most used presets"
-msgstr ""
+msgstr "Enamkasutatud eelseadistused"
 
 #: src/contents/ui/PreferencesSheet.qml:593
 msgid "Window"
-msgstr ""
+msgstr "Aken"
 
 #: src/contents/ui/PreferencesSheet.qml:602
 msgid "Force KDE's Breeze theme when Easy Effects starts"
@@ -2544,19 +2544,19 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:669
 msgid "Automatic"
-msgstr ""
+msgstr "Automaatne kujundus"
 
 #: src/contents/ui/PreferencesSheet.qml:669
 msgid "Light"
-msgstr ""
+msgstr "Hele kujundus"
 
 #: src/contents/ui/PreferencesSheet.qml:669
 msgid "Dark"
-msgstr ""
+msgstr "Tume kujundus"
 
 #: src/contents/ui/PreferencesSheet.qml:680
 msgid "Color theme"
-msgstr ""
+msgstr "Värvikombinatsioon"
 
 #: src/contents/ui/PreferencesSheet.qml:684
 msgid "Green"
@@ -2618,19 +2618,19 @@ msgstr ""
 #: src/contents/ui/PreferencesSheet.qml:737
 msgctxt "@label"
 msgid "Border color"
-msgstr ""
+msgstr "Piirjoone värv"
 
 #: src/contents/ui/PreferencesSheet.qml:746
 msgid "Line width"
-msgstr ""
+msgstr "Joone paksus"
 
 #: src/contents/ui/PreferencesSheet.qml:760
 msgid "Show grid lines"
-msgstr ""
+msgstr "Näita ruudustikku"
 
 #: src/contents/ui/PreferencesSheet.qml:778
 msgid "Autoload delay"
-msgstr ""
+msgstr "Viivitus automaatsel laadimisel"
 
 #: src/contents/ui/PreferencesSheet.qml:779
 msgid ""
@@ -2684,36 +2684,36 @@ msgstr ""
 #: src/contents/ui/PresetsAutoloadPage.qml:125
 #: src/contents/ui/PresetsAutoloadPage.qml:269
 msgid "Local preset"
-msgstr ""
+msgstr "Kohalik eelseadistus"
 
 #: src/contents/ui/PresetsAutoloadPage.qml:136
 msgid "Create"
-msgstr ""
+msgstr "Loo"
 
 #: src/contents/ui/PresetsAutoloadPage.qml:138
 msgid "Create a new autoload preset"
-msgstr ""
+msgstr "Koosta uus automaatselt laaditav eelseadistus"
 
 #: src/contents/ui/PresetsAutoloadPage.qml:228
 msgid "Remove this autoload preset"
-msgstr ""
+msgstr "Eemalda see automaatselt laaditav eelseadistus"
 
 #: src/contents/ui/PresetsAutoloadPage.qml:242
 msgid "Description"
-msgstr ""
+msgstr "Kirjeldus"
 
 #: src/contents/ui/PresetsCommunityPage.qml:78
 msgid "Refresh"
-msgstr ""
+msgstr "Laadi uuesti"
 
 #: src/contents/ui/PresetsCommunityPage.qml:134
 #: src/contents/ui/PresetsLocalPage.qml:306
 msgid "Load this preset"
-msgstr ""
+msgstr "Laadi see eelseadistus"
 
 #: src/contents/ui/PresetsCommunityPage.qml:148
 msgid "Copy to local presets"
-msgstr ""
+msgstr "Kopeeri kohalike eelseadistuste alla"
 
 #: src/contents/ui/PresetsCommunityPage.qml:153
 msgid "Imported the %1 community preset to the list of local presets."
@@ -2725,19 +2725,19 @@ msgstr ""
 
 #: src/contents/ui/PresetsDialog.qml:99 src/contents/ui/PresetsDialog.qml:156
 msgid "Local"
-msgstr ""
+msgstr "Kohalik"
 
 #: src/contents/ui/PresetsDialog.qml:107 src/contents/ui/PresetsDialog.qml:156
 msgid "Community"
-msgstr ""
+msgstr "Kogukond"
 
 #: src/contents/ui/PresetsDialog.qml:115
 msgid "Autoload"
-msgstr ""
+msgstr "Automaatne laadimine"
 
 #: src/contents/ui/PresetsDialog.qml:154
 msgid "No preset loaded"
-msgstr ""
+msgstr "Ühtegi eelseadistust pole laaditud"
 
 #: src/contents/ui/PresetsDialog.qml:174
 msgid "Fallback Preset"
@@ -2745,23 +2745,23 @@ msgstr ""
 
 #: src/contents/ui/PresetsLocalPage.qml:52
 msgid "Imported a new local preset from an external file."
-msgstr ""
+msgstr "Impordi uus kohalik eelseadistus välisest failist."
 
 #: src/contents/ui/PresetsLocalPage.qml:54
 msgid "Failed to import a new local preset from an external file."
-msgstr ""
+msgstr "Uue kohaliku eelseadistuse importimine välisest failist ei õnnestunud."
 
 #: src/contents/ui/PresetsLocalPage.qml:63
 msgid "Export Presets"
-msgstr ""
+msgstr "Ekspordi eelseadistused"
 
 #: src/contents/ui/PresetsLocalPage.qml:66
 msgid "Exported all presets to an external folder."
-msgstr ""
+msgstr "Kõik eelseadistused on eksporditud välisesse kausta."
 
 #: src/contents/ui/PresetsLocalPage.qml:68
 msgid "Failed to export all presets to an external folder."
-msgstr ""
+msgstr "Eelseadistuste eksportimine välisesse kausta ei õnnestunud."
 
 #: src/contents/ui/PresetsLocalPage.qml:83
 msgid "New preset name"
@@ -2840,43 +2840,43 @@ msgstr ""
 
 #: src/contents/ui/PresetsLocalPage.qml:314
 msgid "Save settings to this preset"
-msgstr ""
+msgstr "Salvesta selle eelseadistuse muudatused"
 
 #: src/contents/ui/PresetsLocalPage.qml:322
 msgid "Rename this preset"
-msgstr ""
+msgstr "Muuda selle eelseadistuse nime"
 
 #: src/contents/ui/PresetsLocalPage.qml:330
 msgid "Delete this preset"
-msgstr ""
+msgstr "Kustuta see eelseadistuse"
 
 #: src/contents/ui/Reverb.qml:66
 msgid "Room size"
-msgstr ""
+msgstr "Ruumi suurus"
 
 #: src/contents/ui/Reverb.qml:70
 msgid "Small"
-msgstr ""
+msgstr "Väike"
 
 #: src/contents/ui/Reverb.qml:70
 msgid "Medium"
-msgstr ""
+msgstr "Keskmine"
 
 #: src/contents/ui/Reverb.qml:70
 msgid "Large"
-msgstr ""
+msgstr "Suur"
 
 #: src/contents/ui/Reverb.qml:70
 msgid "Tunnel-like"
-msgstr ""
+msgstr "Tunnelilaadne"
 
 #: src/contents/ui/Reverb.qml:70
 msgid "Large/smooth"
-msgstr ""
+msgstr "Suur/sujuv"
 
 #: src/contents/ui/Reverb.qml:70
 msgid "Experimental"
-msgstr ""
+msgstr "Katseline"
 
 #: src/contents/ui/Reverb.qml:79
 msgid "Decay time"
@@ -2912,23 +2912,23 @@ msgstr ""
 
 #: src/contents/ui/Reverb.qml:247
 msgid "Empty walls"
-msgstr ""
+msgstr "Tühjad seinad"
 
 #: src/contents/ui/Reverb.qml:262
 msgid "Room"
-msgstr ""
+msgstr "Ruum"
 
 #: src/contents/ui/Reverb.qml:277
 msgid "Large empty hall"
-msgstr ""
+msgstr "Suur ja tühi saal"
 
 #: src/contents/ui/Reverb.qml:287
 msgid "Disco"
-msgstr ""
+msgstr "Disko"
 
 #: src/contents/ui/Reverb.qml:297
 msgid "Large occupied hall"
-msgstr ""
+msgstr "Suur ja täis saal"
 
 #: src/contents/ui/RNNoise.qml:60
 msgid "Imported a new RNNoise model file."
@@ -2993,11 +2993,11 @@ msgstr ""
 
 #: src/contents/ui/ShortcutsSheet.qml:67
 msgid "Show help"
-msgstr ""
+msgstr "Näita abiteavet"
 
 #: src/contents/ui/ShortcutsSheet.qml:80
 msgid "Toggle fullscreen"
-msgstr ""
+msgstr "Lülita täisekraanivaade sisse/välja"
 
 #: src/contents/ui/ShortcutsSheet.qml:108
 #: src/contents/ui/ShortcutsSheet.qml:359 src/global_shortcuts.hpp:83
@@ -3006,41 +3006,41 @@ msgstr ""
 
 #: src/contents/ui/ShortcutsSheet.qml:136
 msgid "Close the window"
-msgstr ""
+msgstr "Sulge aken"
 
 #: src/contents/ui/ShortcutsSheet.qml:164
 msgid "Terminate Easy Effects service"
-msgstr ""
+msgstr "Lõpeta Easy Effectsi taustateenuse töö"
 
 #: src/contents/ui/ShortcutsSheet.qml:204
 msgid "Toggle process all inputs"
-msgstr ""
+msgstr "Lülita kõikide sisendite töötlemine sisse/välja"
 
 #: src/contents/ui/ShortcutsSheet.qml:244
 msgid "Toggle process all outputs"
-msgstr ""
+msgstr "Lülita kõikide väljundite töötlemine sisse/välja"
 
 #: src/contents/ui/ShortcutsSheet.qml:257
 #: src/contents/ui/ShortcutsSheet.qml:270
 #: src/contents/ui/ShortcutsSheet.qml:298
 msgid "Can be used on numeric controls"
-msgstr ""
+msgstr "Võid kasutada numbriliste väärtustega juhtnuppudel"
 
 #: src/contents/ui/ShortcutsSheet.qml:289
 msgid "Mouse wheel"
-msgstr ""
+msgstr "Hiire ratas"
 
 #: src/contents/ui/ShortcutsSheet.qml:313
 msgid "Global Shortcuts"
-msgstr ""
+msgstr "Üldised kiirklahvid"
 
 #: src/contents/ui/ShortcutsSheet.qml:399 src/global_shortcuts.hpp:86
 msgid "Toggle microphone monitoring"
-msgstr ""
+msgstr "Lülita mikrofoni monitor sisse/välja"
 
 #: src/contents/ui/ShortcutsSheet.qml:439 src/global_shortcuts.hpp:89
 msgid "Toggle audio sharing"
-msgstr ""
+msgstr "Lülita heli jagamine sisse/välja"
 
 #: src/contents/ui/Speex.qml:64
 msgid "Denoise"
@@ -3140,31 +3140,31 @@ msgstr "Heliefektid on kasutusel"
 
 #: src/contents/ui/TrayIcon.qml:102 src/contents/ui/TrayIcon.qml:122
 msgid "Preset Loaded"
-msgstr ""
+msgstr "Eelseadistused on laaditud"
 
 #: src/contents/ui/TrayIcon.qml:133 src/contents/ui/TrayIcon.qml:145
 msgid "Clear List"
-msgstr ""
+msgstr "Tühjenda loend"
 
 #: src/contents/ui/TrayIcon.qml:134 src/contents/ui/TrayIcon.qml:146
 msgid "Are you sure you want to clear this list?"
-msgstr ""
+msgstr "Kas oled kindel, et soovid selle loendi tühjendada?"
 
 #: src/contents/ui/TrayIcon.qml:155
 msgid "Input Presets"
-msgstr ""
+msgstr "Sisendi eelseadistused"
 
 #: src/contents/ui/TrayIcon.qml:170
 msgid "Output Presets"
-msgstr ""
+msgstr "Väljundi eelseadistused"
 
 #: src/contents/ui/TrayIcon.qml:201
 msgid "Active"
-msgstr ""
+msgstr "Aktiivne"
 
 #: src/contents/ui/VoiceSuppressor.qml:95
 msgid "Correlation"
-msgstr ""
+msgstr "Korrelatsioon"
 
 #: src/contents/ui/VoiceSuppressor.qml:111
 msgid "Phase difference"
@@ -3192,17 +3192,17 @@ msgstr "© 2017-2026 Easy Effectsi tiim"
 
 #: src/main.cpp:385
 msgid "Wellington Wallace"
-msgstr ""
+msgstr "Wellington Wallace"
 
 #: src/main.cpp:385
 msgctxt "@info:credit"
 msgid "Developer"
-msgstr ""
+msgstr "Arendaja"
 
 #: src/main.cpp:388
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
+msgstr "Priit Jõerüüt 2026"
 
 #: src/main.cpp:388
 msgctxt "EMAIL OF TRANSLATORS"
@@ -3211,21 +3211,21 @@ msgstr ""
 
 #: src/plugin_base.cpp:324
 msgid "(Mic)"
-msgstr ""
+msgstr "(Mikker)"
 
 #: src/plugin_base.cpp:327
 msgid "(Speakers)"
-msgstr ""
+msgstr "(Kõlarid)"
 
 #: src/plugin_base.cpp:334
 msgid "Output Level Meter"
-msgstr ""
+msgstr "Väljundi valjuse näidik"
 
 #: src/presets_manager.cpp:800 src/presets_manager.cpp:807
 #: src/presets_manager.cpp:817 src/presets_manager.cpp:824
 #: src/presets_manager.cpp:834 src/presets_manager.cpp:843
 msgid "Preset not loaded correctly"
-msgstr ""
+msgstr "Eelseadistus pole korrektselt laaditud"
 
 #: src/presets_manager.cpp:800
 msgid "Wrong format in excluded apps list"
@@ -3397,27 +3397,27 @@ msgstr ""
 #: src/units.hpp:71
 msgctxt "seconds unit abbreviation"
 msgid "s"
-msgstr ""
+msgstr "sek"
 
 #: src/units.hpp:72
 msgctxt "milliseconds unit abbreviation"
 msgid "ms"
-msgstr ""
+msgstr "msek"
 
 #: src/units.hpp:73
 msgctxt "microseconds unit abbreviation"
 msgid "μs"
-msgstr ""
+msgstr "μsek"
 
 #: src/units.hpp:74
 msgctxt "Hertz unit abbreviation"
 msgid "Hz"
-msgstr ""
+msgstr "Hz"
 
 #: src/units.hpp:75
 msgctxt "kiloHertz unit abbreviation"
 msgid "kHz"
-msgstr ""
+msgstr "kHz"
 
 #: src/units.hpp:76
 msgctxt "loudness full scale unit abbreviation"
@@ -3481,7 +3481,7 @@ msgstr ""
 
 #: com.github.wwmm.easyeffects.desktop.in.template.h:1
 msgid "Equalizer, Compressor and Other Audio Effects"
-msgstr ""
+msgstr "Ekvalaiser, dünaamilise ulatuse tihendamine ja muud heliefektid"
 
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
