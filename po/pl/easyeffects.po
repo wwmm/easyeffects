@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-08-21 20:14-0300\n"
-"PO-Revision-Date: 2026-08-05 22:01+0000\n"
+"PO-Revision-Date: 2026-09-02 20:51+0000\n"
 "Last-Translator: NooB9496 <noob9496@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/main/"
 "pl/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 2026.8.1.dev0\n"
+"X-Generator: Weblate 2026.9.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -1933,64 +1933,61 @@ msgid "Added a new effect to the pipeline: %1"
 msgstr "Dodano nowy efekt do ścieżki przetwarzania: %1"
 
 #: src/contents/ui/MidSideEqualizer.qml:69
-#, fuzzy
 msgid "Failed to import the Mid-Side Equalizer APO preset file."
-msgstr "Nie udało się zaimportować plik szablonu Equalizera APO."
+msgstr ""
+"Nie udało się zaimportować pliku ustawień wstępnych korektora Mid-Side APO."
 
 #: src/contents/ui/MidSideEqualizer.qml:74
-#, fuzzy
 msgid "Imported the Mid-Side Equalizer APO preset file."
-msgstr "Zaimportowano plik szablonu Equalizer APO."
+msgstr "Zaimportowano plik ustawień wstępnych korektora Mid-Side APO."
 
 #: src/contents/ui/MidSideEqualizer.qml:76
-#, fuzzy
 msgid "Imported the Mid-Side Equalizer APO preset file into the mid channel."
-msgstr "Zaimportowano plik szablonu Equalizer APO do prawego kanału."
+msgstr ""
+"Zaimportowano plik ustawień wstępnych korektora Mid-Side APO do kanału "
+"środkowego."
 
 #: src/contents/ui/MidSideEqualizer.qml:78
-#, fuzzy
 msgid "Imported the Mid-Side Equalizer APO preset file into the side channel."
-msgstr "Zaimportowano plik szablonu Equalizer APO do lewego kanału."
+msgstr ""
+"Zaimportowano plik ustawień wstępnych korektora Mid-Side APO do kanału "
+"bocznego."
 
 #: src/contents/ui/MidSideEqualizer.qml:109
-#, fuzzy
 msgid ""
 "Failed to export the current Mid-Side Equalizer settings to an external APO "
 "preset file."
 msgstr ""
-"Nie udało się wykesportować obecnych ustawień Equalizera do zewnętrznego "
-"szablonu APO."
+"Nie udało się wyeksportować bieżących ustawień korektora Mid-Side do "
+"zewnętrznego pliku presetów APO."
 
 #: src/contents/ui/MidSideEqualizer.qml:114
-#, fuzzy
 msgid ""
 "Exported the current Mid-Side Equalizer settings to an external APO preset "
 "file."
 msgstr ""
-"Wykesportowano obecne ustawienia Equalizera do zewnętrznego szablonu APO."
+"Wyeksportowano bieżące ustawienia korektora typu mid-side do zewnętrznego "
+"pliku presetów APO."
 
 #: src/contents/ui/MidSideEqualizer.qml:116
-#, fuzzy
 msgid ""
 "Exported the current Mid-Side Equalizer settings of the mid channel to an "
 "external APO preset file."
 msgstr ""
-"Wyeksportowano obecne ustawienia Equalizera prawego kanału do zewnętrznego "
-"pliku szablonu APO."
+"Wyeksportowano bieżące ustawienia korektora typu mid-side dla kanału "
+"środkowego do zewnętrznego pliku presetów APO."
 
 #: src/contents/ui/MidSideEqualizer.qml:118
-#, fuzzy
 msgid ""
 "Exported the current Mid-Side Equalizer settings of the side channel to an "
 "external APO preset file."
 msgstr ""
-"Wyeksportowano obecne ustawienia Equalizera lewego kanału do zewnętrznego "
-"pliku szablonu APO."
+"Wyeksportowano bieżące ustawienia korektora typu mid-side dla kanału "
+"bocznego do zewnętrznego pliku presetu APO."
 
 #: src/contents/ui/MidSideEqualizer.qml:198
-#, fuzzy
 msgid "Pitch mid"
-msgstr "Wysokość"
+msgstr "Średnia wysokość"
 
 #: src/contents/ui/MidSideEqualizer.qml:215
 #, fuzzy
@@ -3397,9 +3394,8 @@ msgid "Equalizer"
 msgstr "Korektor"
 
 #: src/tags_plugin_name.cpp:61
-#, fuzzy
 msgid "Mid-Side Equalizer"
-msgstr "Korektor"
+msgstr "Korektor typu mid-side"
 
 #: src/tags_plugin_name.cpp:62
 msgid "Exciter"
