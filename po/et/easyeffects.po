@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-08-21 20:14-0300\n"
-"PO-Revision-Date: 2026-09-01 20:56+0000\n"
+"PO-Revision-Date: 2026-09-02 06:35+0000\n"
 "Last-Translator: Priit Jõerüüt <jrthwlate@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/easyeffects/"
 "main/et/>\n"
@@ -25,6 +25,9 @@ msgid ""
 "Please allow \"Run in Background\" permission for Easy Effects in your "
 "system app settings."
 msgstr ""
+"Kuna töötamine taustal on keelatud, siis automaatset käivitust pole võimalik "
+"kasutada. Palun lisa Easy Effectsile oma süsteemi seadistustest õigus „"
+"Töötamine taustal“."
 
 #: src/command_line_parser.cpp:44
 msgid "Quit Easy Effects. Useful when running in service mode."
@@ -153,19 +156,19 @@ msgstr ""
 
 #: src/contents/ui/Autogain.qml:79
 msgid "Geometric mean (MSI)"
-msgstr ""
+msgstr "Geomeetriline keskmine (MSI)"
 
 #: src/contents/ui/Autogain.qml:79
 msgid "Geometric mean (MS)"
-msgstr ""
+msgstr "Geomeetriline keskmine (MS)"
 
 #: src/contents/ui/Autogain.qml:79
 msgid "Geometric mean (MI)"
-msgstr ""
+msgstr "Geomeetriline keskmine (MI)"
 
 #: src/contents/ui/Autogain.qml:79
 msgid "Geometric mean (SI)"
-msgstr ""
+msgstr "Geomeetriline keskmine (SI)"
 
 #: src/contents/ui/Autogain.qml:88
 msgid "Target"
@@ -173,21 +176,21 @@ msgstr ""
 
 #: src/contents/ui/Autogain.qml:104 src/contents/ui/PipeWirePage.qml:420
 msgid "Silence"
-msgstr ""
+msgstr "Vaikus"
 
 #: src/contents/ui/Autogain.qml:120
 msgid "Maximum history"
-msgstr ""
+msgstr "Ajaloo maksimaalne pikkus"
 
 #: src/contents/ui/Autogain.qml:143 src/contents/ui/Autogain.qml:198
 #: src/contents/ui/BassLoudness.qml:67 src/contents/ui/LevelMeter.qml:146
 #: src/tags_plugin_name.cpp:68
 msgid "Loudness"
-msgstr ""
+msgstr "Valjus"
 
 #: src/contents/ui/Autogain.qml:178 src/contents/ui/LevelMeter.qml:188
 msgid "Relative"
-msgstr ""
+msgstr "Suhteline"
 
 #: src/contents/ui/Autogain.qml:188 src/contents/ui/Crusher.qml:192
 #: src/contents/ui/LevelMeter.qml:198
@@ -253,11 +256,11 @@ msgstr ""
 #: src/contents/ui/MultibandCompressor.qml:434
 #: src/contents/ui/MultibandGate.qml:407 src/contents/ui/StereoTools.qml:123
 msgid "Mode"
-msgstr ""
+msgstr "Režiim"
 
 #: src/contents/ui/Autotune.qml:111
 msgid "Auto"
-msgstr ""
+msgstr "Automaatne"
 
 #: src/contents/ui/Autotune.qml:111 src/contents/ui/Main.qml:465
 #: src/contents/ui/TrayIcon.qml:221
@@ -284,7 +287,7 @@ msgstr ""
 
 #: src/contents/ui/Autotune.qml:205 src/contents/ui/Autotune.qml:244
 msgid "Scale"
-msgstr ""
+msgstr "Skaala"
 
 #: src/contents/ui/Autotune.qml:218
 msgid "Root"
@@ -292,7 +295,7 @@ msgstr ""
 
 #: src/contents/ui/Autotune.qml:231
 msgid "Accidental"
-msgstr ""
+msgstr "Juhuslik"
 
 #: src/contents/ui/Autotune.qml:248
 msgid "Major"
@@ -364,7 +367,7 @@ msgstr ""
 #: src/contents/ui/Deesser.qml:350 src/contents/ui/Exciter.qml:241
 #: src/contents/ui/Expander.qml:854 src/contents/ui/Gate.qml:983
 msgid "Listen"
-msgstr ""
+msgstr "Kuula"
 
 #: src/contents/ui/BassEnhancer.qml:247 src/contents/ui/BassLoudness.qml:144
 #: src/contents/ui/Compressor.qml:925 src/contents/ui/Convolver.qml:555
@@ -458,7 +461,7 @@ msgstr "Näita pleierite ja salvestajate loendis välistatud rakendusi"
 
 #: src/contents/ui/Compressor.qml:67 src/tags_plugin_name.cpp:50
 msgid "Compressor"
-msgstr ""
+msgstr "Dünaamilise ulatuse tihendamine"
 
 #: src/contents/ui/Compressor.qml:83 src/contents/ui/Expander.qml:83
 #: src/contents/ui/MultibandCompressor.qml:131
@@ -901,7 +904,7 @@ msgstr ""
 
 #: src/contents/ui/Convolver.qml:240 src/plugin_base.cpp:336
 msgid "Spectrum"
-msgstr ""
+msgstr "Spekter"
 
 #: src/contents/ui/Convolver.qml:272
 msgid "Log scale"
@@ -1017,7 +1020,7 @@ msgstr ""
 
 #: src/contents/ui/Crusher.qml:91 src/contents/ui/PreferencesSheet.qml:433
 msgid "Shape"
-msgstr ""
+msgstr "Kuju"
 
 #: src/contents/ui/Crusher.qml:101
 msgid "Linear"
@@ -1025,7 +1028,7 @@ msgstr ""
 
 #: src/contents/ui/Crusher.qml:101
 msgid "Logarithmic"
-msgstr ""
+msgstr "Logaritmiline"
 
 #: src/contents/ui/Crusher.qml:110
 msgid "DC offset"
@@ -1041,7 +1044,7 @@ msgstr ""
 
 #: src/contents/ui/Crusher.qml:160
 msgid "Sample Rate"
-msgstr ""
+msgstr "Diskreetimissagedus"
 
 #: src/contents/ui/Crusher.qml:166 src/contents/ui/Gate.qml:118
 #: src/contents/ui/Gate.qml:652 src/contents/ui/Maximizer.qml:101
@@ -1125,7 +1128,7 @@ msgstr ""
 
 #: src/contents/ui/Deesser.qml:93
 msgid "Split"
-msgstr ""
+msgstr "Jaga"
 
 #: src/contents/ui/Deesser.qml:102 src/contents/ui/Gate.qml:135
 #: src/contents/ui/Gate.qml:187 src/contents/ui/Gate.qml:922
@@ -1261,7 +1264,7 @@ msgstr "Kaja summutamine"
 
 #: src/contents/ui/EchoCanceller.qml:73
 msgid "Mobile mode"
-msgstr ""
+msgstr "Mobiilne režiim"
 
 #: src/contents/ui/EchoCanceller.qml:82
 msgid "Enforce high-pass"
@@ -1321,7 +1324,7 @@ msgstr "Sisend"
 #: src/contents/ui/MultibandCompressor.qml:928
 #: src/contents/ui/MultibandGate.qml:642 src/contents/ui/MultibandGate.qml:901
 msgid "Band"
-msgstr ""
+msgstr "Sagedusriba"
 
 #: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
 msgid "Bell"
@@ -1413,7 +1416,7 @@ msgstr "id"
 #: src/contents/ui/MultibandCompressor.qml:99
 #: src/contents/ui/MultibandGate.qml:99
 msgid "Solo"
-msgstr ""
+msgstr "Soolo"
 
 #: src/contents/ui/Equalizer.qml:66 src/contents/ui/Equalizer.qml:106
 #: src/contents/ui/MidSideEqualizer.qml:66
@@ -1423,19 +1426,19 @@ msgstr "APO eelseadistus"
 
 #: src/contents/ui/Equalizer.qml:69
 msgid "Failed to import the Equalizer APO preset file."
-msgstr ""
+msgstr "Ekvalaiseri APO eelseadistuste faili importimine ei õnnestunud."
 
 #: src/contents/ui/Equalizer.qml:74
 msgid "Imported the Equalizer APO preset file."
-msgstr ""
+msgstr "Ekvalaiseri APO eelseadistuste fail on imporditud."
 
 #: src/contents/ui/Equalizer.qml:76
 msgid "Imported the Equalizer APO preset file into the left channel."
-msgstr ""
+msgstr "Ekvalaiseri APO eelseadistuste fail on imporditud vasakusse kanalisse."
 
 #: src/contents/ui/Equalizer.qml:78
 msgid "Imported the Equalizer APO preset file into the right channel."
-msgstr ""
+msgstr "Ekvalaiseri APO eelseadistuste fail on imporditud paremasse kanalisse."
 
 #: src/contents/ui/Equalizer.qml:91 src/contents/ui/MidSideEqualizer.qml:91
 msgid "GraphicEQ preset"
@@ -1523,7 +1526,7 @@ msgstr "x8"
 
 #: src/contents/ui/Equalizer.qml:165 src/contents/ui/MidSideEqualizer.qml:165
 msgid "Bands"
-msgstr ""
+msgstr "Sagedusribasid"
 
 #: src/contents/ui/Equalizer.qml:181 src/contents/ui/Filter.qml:204
 #: src/contents/ui/MidSideEqualizer.qml:181 src/contents/ui/StereoTools.qml:77
@@ -1547,7 +1550,7 @@ msgstr "wwmm"
 
 #: src/contents/ui/Equalizer.qml:346
 msgid "Split channels"
-msgstr ""
+msgstr "Jaga kanalid"
 
 #: src/contents/ui/Equalizer.qml:356 src/contents/ui/MidSideEqualizer.qml:356
 msgid "Flat response"
@@ -1555,15 +1558,15 @@ msgstr ""
 
 #: src/contents/ui/Equalizer.qml:363 src/contents/ui/MidSideEqualizer.qml:363
 msgid "Calculate frequencies"
-msgstr ""
+msgstr "Arvuta sagedused"
 
 #: src/contents/ui/Equalizer.qml:370 src/contents/ui/MidSideEqualizer.qml:370
 msgid "Sort bands"
-msgstr ""
+msgstr "Järjesta sagedusribad"
 
 #: src/contents/ui/Equalizer.qml:377 src/contents/ui/MidSideEqualizer.qml:377
 msgid "Import APO"
-msgstr ""
+msgstr "Impordi APO"
 
 #: src/contents/ui/Equalizer.qml:384 src/contents/ui/MidSideEqualizer.qml:384
 msgid "Import APO (GraphicEQ)"
@@ -2298,6 +2301,9 @@ msgid ""
 "should not be enabled. It is intended only as a workaround for systems that "
 "do not work well with the autostart of Easy Effects."
 msgstr ""
+"Rakenduse käivitamisel ära kuva rakenduse akent. Üldiselt sa seda eelistust "
+"ei peaks kasutama. Ta on mõeldud tagavaralahendusena süsteemides, kus Easy "
+"Effects ei kipu korrektselt käivituma automaatselt."
 
 #: src/contents/ui/PreferencesSheet.qml:148
 msgid "Process all output streams"
@@ -2309,11 +2315,11 @@ msgstr "Töötle kõiki sisendvooge"
 
 #: src/contents/ui/PreferencesSheet.qml:172
 msgid "Ignore streams from monitor of devices"
-msgstr ""
+msgstr "Eira monitoridena toimivate seadmete voogedastust"
 
 #: src/contents/ui/PreferencesSheet.qml:184
 msgid "Use cubic volume"
-msgstr ""
+msgstr "Kasuta kuupskaalas helivaljust"
 
 #: src/contents/ui/PreferencesSheet.qml:185
 msgid ""
@@ -2321,6 +2327,9 @@ msgid ""
 "percentages results in a lower perceived volume while the loudness appears "
 "to change more evenly across the slider."
 msgstr ""
+"Kasuta voogedastuse valjuse reguleerimiseks kuupskaalat, mitte "
+"lineaarskaalat. Madalad protsendimäärad annavad tulemuseks madalama tajutava "
+"tugevuse, samas kui helivaljus näib liugurnupu ulatuses muutuvat ühtlasemalt."
 
 #: src/contents/ui/PreferencesSheet.qml:197
 msgid "Activate monitor channel volumes"
@@ -2334,7 +2343,7 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:210
 msgid "Ignore system notifications"
-msgstr ""
+msgstr "Eira süsteemi teavitusi"
 
 #: src/contents/ui/PreferencesSheet.qml:211
 msgid ""
@@ -2342,10 +2351,13 @@ msgid ""
 "better to ignore them, but for some presets it may be recommended since they "
 "could sound too loud."
 msgstr ""
+"Süsteemi teavituste töötlemine võib põhjustada krõbinat, seega oleks parem "
+"neid eirata, kuid mõnede eelseadistuste puhul võib see olla soovitatav, kuna "
+"need võivad kõlada liiga valjusti."
 
 #: src/contents/ui/PreferencesSheet.qml:223
 msgid "Enable/disable input monitoring"
-msgstr ""
+msgstr "Lülita sisendi monitor sisse/välja"
 
 #: src/contents/ui/PreferencesSheet.qml:235
 msgid "Mic monitor plays to output effects pipeline"
@@ -2369,7 +2381,7 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:261
 msgid "Automatically enable effects when the audio device changes."
-msgstr ""
+msgstr "Heliseadme vahetumisel lülita efektid automaatselt sisse."
 
 #: src/contents/ui/PreferencesSheet.qml:273
 msgid "Enable the link delay"
@@ -2399,7 +2411,7 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:331
 msgid "Level meters frame rate cap"
-msgstr ""
+msgstr "Valjusmõõdikute kaadrisageduse ülempiir"
 
 #: src/contents/ui/PreferencesSheet.qml:332
 msgid "Maximum level meter update rate."
@@ -2449,47 +2461,47 @@ msgstr "Ala"
 
 #: src/contents/ui/PreferencesSheet.qml:447
 msgid "Dynamic scale"
-msgstr "Dünaamiline skaale"
+msgstr "Dünaamiline skaala"
 
 #: src/contents/ui/PreferencesSheet.qml:459
 msgid "Logarithmic frequency axis"
-msgstr ""
+msgstr "Sageduste telgjoon on logaritmiline"
 
 #: src/contents/ui/PreferencesSheet.qml:471
 msgid "Points"
-msgstr ""
+msgstr "Punkte"
 
 #: src/contents/ui/PreferencesSheet.qml:486
 msgid "Height"
-msgstr ""
+msgstr "Kõrgus"
 
 #: src/contents/ui/PreferencesSheet.qml:493
 msgid "px"
-msgstr ""
+msgstr "pikslit"
 
 #: src/contents/ui/PreferencesSheet.qml:500
 msgid "Spectrum frame rate cap"
-msgstr ""
+msgstr "Skaala kaadrisageduse ülempiir"
 
 #: src/contents/ui/PreferencesSheet.qml:501
 msgid "Maximum spectrum update rate."
-msgstr ""
+msgstr "Maksimaalne spektrigraafiku uuendamise sagedus."
 
 #: src/contents/ui/PreferencesSheet.qml:516
 msgid "Frequency Range"
-msgstr ""
+msgstr "Sagedusvahemik"
 
 #: src/contents/ui/PreferencesSheet.qml:523
 msgid "Minimum"
-msgstr ""
+msgstr "Miinimum"
 
 #: src/contents/ui/PreferencesSheet.qml:539
 msgid "Maximum"
-msgstr ""
+msgstr "Maksimum"
 
 #: src/contents/ui/PreferencesSheet.qml:561
 msgid "Database autosave interval"
-msgstr ""
+msgstr "Andmebaasi automaatse salvestuse välp"
 
 #: src/contents/ui/PreferencesSheet.qml:575
 msgid "Most used presets"
@@ -2501,13 +2513,13 @@ msgstr "Aken"
 
 #: src/contents/ui/PreferencesSheet.qml:602
 msgid "Force KDE's Breeze theme when Easy Effects starts"
-msgstr ""
+msgstr "Easy Effectsi käivitamisel kasuta sundkorras kujundusena KDE Breeze'i"
 
 #: src/contents/ui/PreferencesSheet.qml:603
 msgid ""
 "It is necessary to restart the service for changes in this setting to take "
 "effect."
-msgstr ""
+msgstr "Nende seadistuste jõustamiseks pead teenuse uuesti käivitama."
 
 #: src/contents/ui/PreferencesSheet.qml:616
 msgid "Reduce effects list controls"
@@ -2522,7 +2534,7 @@ msgstr ""
 #: src/contents/ui/PreferencesSheet.qml:628
 #: src/contents/ui/PreferencesSheet.qml:665
 msgid "Color scheme"
-msgstr "Värvikombinatsioon"
+msgstr "Kujundus"
 
 #: src/contents/ui/PreferencesSheet.qml:642
 msgid "Force English language"
@@ -2540,7 +2552,7 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:654
 msgid "Graphs"
-msgstr ""
+msgstr "Diagrammid"
 
 #: src/contents/ui/PreferencesSheet.qml:669
 msgid "Automatic"
@@ -2639,37 +2651,40 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:795
 msgid "Ignore the blocklist from presets"
-msgstr ""
+msgstr "Eira eelsadistuste keeluloendiy"
 
 #: src/contents/ui/PreferencesSheet.qml:796
 msgid ""
 "If enabled, the list of excluded apps set in the loaded preset is ignored "
 "and does not replace the one set by the user."
 msgstr ""
+"Sisselülitamisel jäetakse laaditud eelseadistuses määratud välistatud "
+"rakenduste loend tähelepanuta ning see ei asenda kasutaja poolt määratud "
+"loendit."
 
 #: src/contents/ui/PreferencesSheet.qml:817
 msgid "Global shortcuts"
-msgstr ""
+msgstr "Süsteemiülesed kiirklahvid"
 
 #: src/contents/ui/PreferencesSheet.qml:818
 msgid "Enables support for XDG global shortcuts."
-msgstr ""
+msgstr "Lülita sisse süsteemiüleste XDG kiirklahvide tugi."
 
 #: src/contents/ui/PreferencesSheet.qml:830
 msgid "Native window of effects"
-msgstr ""
+msgstr "Keskkonnaomased aknaefektid"
 
 #: src/contents/ui/PreferencesSheet.qml:831
 msgid "Allows the native user interface of effects to be shown/hidden."
-msgstr ""
+msgstr "Lülita keskkonnaomased kasutajaliidese aknaefektid sisse/välja."
 
 #: src/contents/ui/PreferencesSheet.qml:843
 msgid "Update frequency"
-msgstr ""
+msgstr "Uuenduse sagedus"
 
 #: src/contents/ui/PreferencesSheet.qml:844
 msgid "Related to LV2 plugins."
-msgstr ""
+msgstr "See on seotud LV2 lisamoodulitega."
 
 #: src/contents/ui/PresetsAutoloadPage.qml:55
 #: src/contents/ui/PresetsAutoloadPage.qml:214
@@ -2932,32 +2947,34 @@ msgstr "Suur ja täis saal"
 
 #: src/contents/ui/RNNoise.qml:60
 msgid "Imported a new RNNoise model file."
-msgstr ""
+msgstr "Uus RNNoise'i mudelifail on imporditud."
 
 #: src/contents/ui/RNNoise.qml:62
 msgid "Failed to import the RNNoise model file."
-msgstr ""
+msgstr "Uue RNNoise'i mudelifaili importimine ei õnnestunud."
 
 #: src/contents/ui/RNNoise.qml:73 src/contents/ui/RNNoise.qml:84
 #: src/contents/ui/RNNoise.qml:298 src/contents/ui/RNNoise.qml:300
 msgid "Standard RNNoise model"
-msgstr ""
+msgstr "Standardne RNNoise'i mudel"
 
 #: src/contents/ui/RNNoise.qml:75
 msgid "Standard RNNoise model loaded."
-msgstr ""
+msgstr "Standardne RNNoise'i mudel on laaditud."
 
 #: src/contents/ui/RNNoise.qml:80 src/contents/ui/RNNoise.qml:302
 msgid "Using %1 Model"
-msgstr ""
+msgstr "Kasutatav mudel: %1"
 
 #: src/contents/ui/RNNoise.qml:82
 msgid "Loaded the %1 RNNoise model."
-msgstr ""
+msgstr "RNNoise'i mudel on laaditud: %1."
 
 #: src/contents/ui/RNNoise.qml:86
 msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
 msgstr ""
+"RNNoise'i mudeli laadimine ei õnnestunud (%1). Kasutan varuvariandina "
+"standardset RNNoise'i mudelit."
 
 #: src/contents/ui/RNNoise.qml:105 src/contents/ui/Speex.qml:118
 msgid "Voice detection"
@@ -2969,27 +2986,27 @@ msgstr ""
 
 #: src/contents/ui/RNNoise.qml:182
 msgid "Use the Standard model"
-msgstr ""
+msgstr "Kasuta standardset mudelit"
 
 #: src/contents/ui/RNNoise.qml:193
 msgid "User Models"
-msgstr ""
+msgstr "Kasutaja mudelid"
 
 #: src/contents/ui/RNNoise.qml:259
 msgid "Delete this model"
-msgstr ""
+msgstr "Kustuta see mudel"
 
 #: src/contents/ui/RNNoise.qml:264
 msgid "Removed the %1 RNNoise model."
-msgstr ""
+msgstr "RNNoise'i mudel on eemaldatud: %1."
 
 #: src/contents/ui/RNNoise.qml:266
 msgid "Failed to remove the %1 RNNoise model."
-msgstr ""
+msgstr "RNNoise'i mudeli eemaldamine ei õnnestunud: %1."
 
 #: src/contents/ui/RNNoise.qml:337
 msgid "Import model"
-msgstr ""
+msgstr "Impordi mudel"
 
 #: src/contents/ui/ShortcutsSheet.qml:67
 msgid "Show help"
@@ -3180,7 +3197,7 @@ msgstr ""
 
 #: src/contents/ui/VoiceSuppressor.qml:174
 msgid "Inverted mode"
-msgstr ""
+msgstr "Pööratud mudel"
 
 #: src/main.cpp:382
 msgid "Global audio effects"
@@ -3285,7 +3302,7 @@ msgstr ""
 
 #: src/tags_plugin_name.cpp:49
 msgid "Bass Loudness"
-msgstr ""
+msgstr "Bassi valjus"
 
 #: src/tags_plugin_name.cpp:51
 msgid "Convolver"
@@ -3333,7 +3350,7 @@ msgstr ""
 
 #: src/tags_plugin_name.cpp:70
 msgid "Multiband Compressor"
-msgstr ""
+msgstr "Mitmeribaline dünaamilise ulatuse tihendamine"
 
 #: src/tags_plugin_name.cpp:71
 msgid "Multiband Gate"
@@ -3422,12 +3439,12 @@ msgstr "kHz"
 #: src/units.hpp:76
 msgctxt "loudness full scale unit abbreviation"
 msgid "LUFS"
-msgstr ""
+msgstr "LUFS"
 
 #: src/units.hpp:77
 msgctxt "loudness unit abbreviation"
 msgid "LU"
-msgstr ""
+msgstr "LU"
 
 #: src/units.hpp:78
 msgctxt "meter unit abbreviation"
