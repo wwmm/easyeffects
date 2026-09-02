@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-08-21 20:14-0300\n"
-"PO-Revision-Date: 2026-08-14 03:35+0000\n"
+"PO-Revision-Date: 2026-09-02 06:11+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ro/>\n"
@@ -1937,84 +1937,75 @@ msgid "Added a new effect to the pipeline: %1"
 msgstr "A fost adăugat un efect nou în canalul (pipeline): %1"
 
 #: src/contents/ui/MidSideEqualizer.qml:69
-#, fuzzy
 msgid "Failed to import the Mid-Side Equalizer APO preset file."
-msgstr "Importarea fișierului de preconfigurare al egalizatorului APO a eșuat."
+msgstr ""
+"Importarea fișierului de preconfigurare al egalizatorului APO Mid-Side a "
+"eșuat."
 
 #: src/contents/ui/MidSideEqualizer.qml:74
-#, fuzzy
 msgid "Imported the Mid-Side Equalizer APO preset file."
-msgstr "A fost importat fișierul de preconfigurare al egalizatorului APO."
+msgstr ""
+"A fost importat fișierul de preconfigurare al egalizatorului APOMid-Side."
 
 #: src/contents/ui/MidSideEqualizer.qml:76
-#, fuzzy
 msgid "Imported the Mid-Side Equalizer APO preset file into the mid channel."
 msgstr ""
-"A fost importat fișierul de preconfigurare al egalizatorului APO în canalul "
-"drept."
+"A fost importat fișierul de preconfigurare al egalizatorului APO Mid-Side în "
+"canalul drept."
 
 #: src/contents/ui/MidSideEqualizer.qml:78
-#, fuzzy
 msgid "Imported the Mid-Side Equalizer APO preset file into the side channel."
 msgstr ""
-"A fost importat fișierul de preconfigurare al egalizatorului APO în canalul "
-"stâng."
+"A fost importat fișierul de preconfigurare al egalizatorului APO Mid-Side în "
+"canalul stâng."
 
 #: src/contents/ui/MidSideEqualizer.qml:109
-#, fuzzy
 msgid ""
 "Failed to export the current Mid-Side Equalizer settings to an external APO "
 "preset file."
 msgstr ""
-"Exportarea configurației curente a egalizatorului într-un fișier extern de "
-"preconfigurări APO a eșuat."
+"Exportarea configurației curente a egalizatorului Mid-Side într-un fișier "
+"extern de preconfigurări APO a eșuat."
 
 #: src/contents/ui/MidSideEqualizer.qml:114
-#, fuzzy
 msgid ""
 "Exported the current Mid-Side Equalizer settings to an external APO preset "
 "file."
 msgstr ""
-"A fost exportată configurația curentă a egalizatorului într-un fișier extern "
-"de preconfigurări APO."
+"A fost exportată configurația curentă a egalizatorului Mid-Side într-un "
+"fișier extern de preconfigurări APO."
 
 #: src/contents/ui/MidSideEqualizer.qml:116
-#, fuzzy
 msgid ""
 "Exported the current Mid-Side Equalizer settings of the mid channel to an "
 "external APO preset file."
 msgstr ""
-"A fost exportată configurația curentă a egalizatorului canalului drept într-"
-"un fișier extern de preconfigurări APO."
+"A fost exportată configurația curentă a egalizatorului Mid-Side al canalului "
+"drept într-un fișier extern de preconfigurări APO."
 
 #: src/contents/ui/MidSideEqualizer.qml:118
-#, fuzzy
 msgid ""
 "Exported the current Mid-Side Equalizer settings of the side channel to an "
 "external APO preset file."
 msgstr ""
-"A fost exportată configurația curentă a egalizatorului canalului stâng într-"
-"un fișier extern de preconfigurări APO."
+"A fost exportată configurația curentă a egalizatorului Mid-Side al canalului "
+"stâng într-un fișier extern de preconfigurări APO."
 
 #: src/contents/ui/MidSideEqualizer.qml:198
-#, fuzzy
 msgid "Pitch mid"
-msgstr "Înălțime tonalitate"
+msgstr "Înălțime centrală"
 
 #: src/contents/ui/MidSideEqualizer.qml:215
-#, fuzzy
 msgid "Pitch side"
-msgstr "Înclinare spre stânga"
+msgstr "Înălțime laterală"
 
 #: src/contents/ui/MidSideEqualizer.qml:244
-#, fuzzy
 msgid "Mid"
-msgstr "Minim"
+msgstr "Centrală"
 
 #: src/contents/ui/MidSideEqualizer.qml:346
-#, fuzzy
 msgid "Split mid/side"
-msgstr "Despică"
+msgstr "Împărțire la mijloc/lateral"
 
 #: src/contents/ui/MultibandCompressor.qml:127
 msgid "Compression mode"
@@ -3406,9 +3397,8 @@ msgid "Equalizer"
 msgstr "Egalizator"
 
 #: src/tags_plugin_name.cpp:61
-#, fuzzy
 msgid "Mid-Side Equalizer"
-msgstr "Egalizator"
+msgstr "Egalizator Mid-Side"
 
 #: src/tags_plugin_name.cpp:62
 msgid "Exciter"
