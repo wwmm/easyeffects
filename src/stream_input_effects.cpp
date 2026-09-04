@@ -119,6 +119,10 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
       DbStreamInputs::self(), &DbStreamInputs::listenToMicChanged, this,
       [&]() { set_listen_to_mic(DbStreamInputs::listenToMic()); }, Qt::QueuedConnection);
 
+  connect(
+      DbStreamInputs::self(), &DbStreamInputs::listenToMicVolumeChanged, this,
+      [&]() { set_listen_to_mic_volume(); }, Qt::QueuedConnection);
+
   /**
    * We need to listen to output device changes because if the echo canceller is in the mic pipeline we have to change
    * its probe links to the new output device.
@@ -454,5 +458,14 @@ void StreamInputEffects::set_listen_to_mic(const bool& state) {
     for (const auto& link : pm->link_nodes(pm->ee_source_node.id, output_device.id, false)) {
       list_proxies_listen_mic.push_back(link);
     }
+
+    set_listen_to_mic_volume();
+  }
+}
+
+void StreamInputEffects::set_listen_to_mic_volume() {
+  if (!list_proxies_listen_mic.empty() && pm->ee_source_node.serial != SPA_ID_INVALID) {
+    pm->setNodeMonitorVolume(static_cast<uint>(pm->ee_source_node.serial), pm->ee_source_node.n_volume_channels,
+                             static_cast<float>(DbStreamInputs::listenToMicVolume()));
   }
 }

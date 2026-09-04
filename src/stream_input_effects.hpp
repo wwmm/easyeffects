@@ -61,6 +61,8 @@ class StreamInputEffects : public EffectsBase {
 
   void set_listen_to_mic(const bool& state);
 
+  void set_listen_to_mic_volume();
+
  private:
   bool bypass = false;
   bool bypass_transition_active = false;
