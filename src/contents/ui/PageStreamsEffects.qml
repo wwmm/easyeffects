@@ -738,11 +738,11 @@ Kirigami.Page {
                                 id: volumePopup
 
                                 parent: inputMonitoringRowLayout
-                                x: Math.round((parent.width - width) / 2)
-                                y: parent ? -implicitHeight - Kirigami.Units.smallSpacing : 0
+                                leftMargin: Math.round((parent.width - width) / 2)
+                                bottomMargin: parent ? footer.height + Kirigami.Units.smallSpacing : 0
                                 padding: Kirigami.Units.gridUnit
                                 closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnReleaseOutside
-                                onClosed: inputMonitoringArrowButton.checked = false;
+                                onClosed: inputMonitoringArrowButton.checked = false
 
                                 ColumnLayout {
                                     spacing: Kirigami.Units.smallSpacing
