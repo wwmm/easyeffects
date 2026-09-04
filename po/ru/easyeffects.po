@@ -97,27 +97,27 @@ msgstr "Включить отладочные сообщения."
 msgid "Must specify preset type: input/output."
 msgstr "Необходимо указать тип предустановки: вход/выход."
 
-#: src/command_line_parser.cpp:162
+#: src/command_line_parser.cpp:162 src/command_line_parser.cpp:161
 msgid "Output presets"
 msgstr "Предустановки выхода"
 
-#: src/command_line_parser.cpp:164
+#: src/command_line_parser.cpp:164 src/command_line_parser.cpp:163
 msgid "No output presets."
 msgstr "Нет предустановок выхода."
 
-#: src/command_line_parser.cpp:175
+#: src/command_line_parser.cpp:175 src/command_line_parser.cpp:174
 msgid "Input presets"
 msgstr "Предустановки входа"
 
-#: src/command_line_parser.cpp:177
+#: src/command_line_parser.cpp:177 src/command_line_parser.cpp:176
 msgid "No input presets."
 msgstr "Нет предустановок входа."
 
-#: src/command_line_parser.cpp:207
+#: src/command_line_parser.cpp:207 src/command_line_parser.cpp:206
 msgid "Specified preset does not exist."
 msgstr "Указанная предустановка не существует."
 
-#: src/command_line_parser.cpp:227
+#: src/command_line_parser.cpp:227 src/command_line_parser.cpp:226
 msgid "Provided an invalid bypass state."
 msgstr "Указано недопустимое состояние обхода."
 
@@ -1973,11 +1973,13 @@ msgstr "Импортирован файл предустановок Mid-Side Eq
 
 #: src/contents/ui/MidSideEqualizer.qml:76
 msgid "Imported the Mid-Side Equalizer APO preset file into the mid channel."
-msgstr "Импортирован файл предустановок Mid-Side Equalizer APO в средний канал."
+msgstr ""
+"Импортирован файл предустановок Mid-Side Equalizer APO в средний канал."
 
 #: src/contents/ui/MidSideEqualizer.qml:78
 msgid "Imported the Mid-Side Equalizer APO preset file into the side channel."
-msgstr "Импортирован файл предустановок Mid-Side Equalizer APO в боковой канал."
+msgstr ""
+"Импортирован файл предустановок Mid-Side Equalizer APO в боковой канал."
 
 #: src/contents/ui/MidSideEqualizer.qml:109
 msgid ""
@@ -2140,14 +2142,17 @@ msgid "Excluded apps"
 msgstr "Исключённые приложения"
 
 #: src/contents/ui/PageStreamsEffects.qml:686
+#: src/contents/ui/PageStreamsEffects.qml:704
 msgid "Input monitoring"
 msgstr "Мониторинг входа"
 
 #: src/contents/ui/PageStreamsEffects.qml:699
+#: src/contents/ui/PageStreamsEffects.qml:785
 msgid "Share audio"
 msgstr "Передать звук"
 
 #: src/contents/ui/PageStreamsEffects.qml:700
+#: src/contents/ui/PageStreamsEffects.qml:786
 msgid "Send the processed desktop audio to the virtual source"
 msgstr "Передать обработанный звук с рабочего стола на виртуальный источник"
 
@@ -3588,6 +3593,20 @@ msgstr "Эквалайзер, компрессор и прочие звуков�
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "Простые звуковые эффекты"
+
+#: src/contents/ui/PageStreamsEffects.qml:713
+#, fuzzy
+msgid "Toggle input monitoring"
+msgstr "Включить/отключить мониторинг микрофона"
+
+#: src/contents/ui/PageStreamsEffects.qml:733
+#, fuzzy
+msgid "Set input monitoring volume"
+msgstr "Мониторинг входа"
+
+#: src/contents/ui/PageStreamsEffects.qml:752
+msgid "Monitoring volume"
+msgstr ""
 
 #~ msgid "Go back"
 #~ msgstr "Назад"
