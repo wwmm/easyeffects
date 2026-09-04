@@ -65,6 +65,6 @@ jobs:
       # 7. Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v5.0.0
+        uses: actions/deploy-pages@v5.0.1
         with:
           artifact_name: ${{ env.PAGES_ARTIFACT_NAME }}
