@@ -56,6 +56,10 @@
             <label>Link our virtual source signal to our virtual sink so mic monitoring includes output effects</label>
             <default>false</default>
         </entry>
+        <entry name="listenToMicVolume" type="Double">
+            <label>Volume of the input monitoring signal</label>
+            <default>1.0</default>
+        </entry>
         <entry name="usedPresets" type="StringList">
             <label>List of presets that have been used and their usage count</label>
             <default></default>

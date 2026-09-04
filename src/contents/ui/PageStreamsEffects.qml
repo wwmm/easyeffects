@@ -687,11 +687,97 @@ Kirigami.Page {
                         icon.name: "audio-input-microphone-symbolic"
                         displayHint: Kirigami.DisplayHint.KeepVisible
                         visible: pageStreamsEffects.pageType === 1
-                        checkable: true
-                        checked: DbStreamInputs.listenToMic
-                        onTriggered: {
-                            if (checked !== DbStreamInputs.listenToMic) {
-                                DbStreamInputs.listenToMic = checked;
+                        displayComponent: RowLayout {
+                            id: inputMonitoringRowLayout
+
+                            function prepareVolumeValue(normalizedValue) {
+                                const v = DbMain.useCubicVolumes === false ? normalizedValue : Math.cbrt(normalizedValue);
+                                return v * 100;
+                            }
+
+                            spacing: -1
+
+                            Controls.ToolButton {
+                                id: inputMonitoringToolButton
+
+                                icon.name: "audio-input-microphone-symbolic"
+                                text: i18n("Input monitoring") // qmllint disable
+                                checkable: true
+                                checked: DbStreamInputs.listenToMic
+                                onClicked: {
+                                    if (checked !== DbStreamInputs.listenToMic) {
+                                        DbStreamInputs.listenToMic = checked;
+                                    }
+                                }
+
+                                Controls.ToolTip.text: i18n("Toggle input monitoring") // qmllint disable
+                                Controls.ToolTip.visible: hovered
+                            }
+
+                            Controls.ToolButton {
+                                id: inputMonitoringArrowButton
+
+                                display: Controls.ToolButton.IconOnly
+                                icon.name: checked ? "arrow-down-symbolic" : "arrow-up-symbolic"
+                                flat: true
+                                checkable: true
+                                checked: false
+                                onCheckedChanged: {
+                                    if (checked) {
+                                        volumePopup.open();
+                                    } else {
+                                        volumePopup.close();
+                                    }
+                                }
+
+                                Controls.ToolTip.text: i18n("Set input monitoring volume") // qmllint disable
+                                Controls.ToolTip.visible: hovered
+                            }
+
+                            Controls.Popup {
+                                id: volumePopup
+
+                                parent: inputMonitoringRowLayout
+                                x: Math.round((parent.width - width) / 2)
+                                y: parent ? -implicitHeight - Kirigami.Units.smallSpacing : 0
+                                padding: Kirigami.Units.gridUnit
+                                closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnReleaseOutside
+                                onClosed: inputMonitoringArrowButton.checked = false;
+
+                                ColumnLayout {
+                                    spacing: Kirigami.Units.smallSpacing
+
+                                    RowLayout {
+                                        Controls.Label {
+                                            text: i18n("Monitoring volume") // qmllint disable
+                                            Layout.fillWidth: true
+                                        }
+
+                                        Controls.Label {
+                                            Layout.alignment: Qt.AlignHCenter
+                                            text: `${Math.round(volumeSlider.value)} ${Units.percent}`
+                                        }
+                                    }
+
+                                    Controls.Slider {
+                                        id: volumeSlider
+
+                                        Layout.fillWidth: true
+                                        Layout.minimumWidth: Kirigami.Units.gridUnit * 12
+                                        orientation: Qt.Horizontal
+                                        value: inputMonitoringRowLayout.prepareVolumeValue(DbStreamInputs.listenToMicVolume)
+                                        to: 100
+                                        stepSize: 1
+                                        wheelEnabled: false
+                                        onMoved: {
+                                            let v = value / 100;
+                                            v = DbMain.useCubicVolumes === false ? v : v * v * v;
+                                            if (v !== DbStreamInputs.listenToMicVolume) {
+                                                DbStreamInputs.listenToMicVolume = v;
+                                            }
+                                        }
+                                    }
+                                }
                             }
                         }
                     },

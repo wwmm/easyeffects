@@ -153,6 +153,7 @@ class Manager : public QObject {
 
   Q_INVOKABLE void setNodeMute(const uint& serial, const bool& state);
   Q_INVOKABLE void setNodeVolume(const uint& serial, const uint& n_vol_ch, const float& value);
+  Q_INVOKABLE void setNodeMonitorVolume(const uint& serial, const uint& n_vol_ch, const float& value);
   Q_INVOKABLE void connectStreamOutput(const uint& id) const;
   Q_INVOKABLE void connectStreamInput(const uint& id) const;
   Q_INVOKABLE void disconnectStream(const uint& id) const;

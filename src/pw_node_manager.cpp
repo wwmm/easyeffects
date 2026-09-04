@@ -106,6 +106,25 @@ void NodeManager::setNodeVolume(uint64_t serial, uint n_vol_ch, float value) {
   }
 }
 
+void NodeManager::setNodeMonitorVolume(uint64_t serial, uint n_vol_ch, float value) {
+  if (auto* proxy = model_nodes.get_proxy_by_serial(serial); proxy != nullptr) {
+    std::array<float, SPA_AUDIO_MAX_CHANNELS> volumes{};
+
+    std::ranges::fill(volumes, 0.0F);
+    std::fill_n(volumes.begin(), n_vol_ch, value);
+
+    std::array<char, 1024U> buffer{};
+
+    auto builder = SPA_POD_BUILDER_INIT(buffer.data(), sizeof(buffer));  // NOLINT
+
+    // NOLINTNEXTLINE
+    pw_node_set_param(reinterpret_cast<pw_node*>(proxy), SPA_PARAM_Props, 0,
+                      reinterpret_cast<spa_pod*>(spa_pod_builder_add_object(
+                          &builder, SPA_TYPE_OBJECT_Props, SPA_PARAM_Props, SPA_PROP_monitorVolumes,
+                          SPA_POD_Array(sizeof(float), SPA_TYPE_Float, n_vol_ch, volumes.data()))));
+  }
+}
+
 void NodeManager::setMonitorChannelVolumes(uint64_t serial, bool state) {
   if (auto* proxy = model_nodes.get_proxy_by_serial(serial); proxy != nullptr) {
     std::array<char, 1024U> buffer{};

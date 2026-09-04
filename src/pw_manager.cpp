@@ -485,6 +485,14 @@ void Manager::setNodeVolume(const uint& serial, const uint& n_vol_ch, const floa
   sync_wait_unlock();
 }
 
+void Manager::setNodeMonitorVolume(const uint& serial, const uint& n_vol_ch, const float& value) {
+  lock();
+
+  node_manager.setNodeMonitorVolume(serial, n_vol_ch, value);
+
+  sync_wait_unlock();
+}
+
 void Manager::setNodeMute(const uint& serial, const bool& state) {
   lock();
 
