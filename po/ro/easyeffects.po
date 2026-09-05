@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-09-04 23:23+0000\n"
-"PO-Revision-Date: 2026-09-02 06:11+0000\n"
+"PO-Revision-Date: 2026-09-05 17:51+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ro/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
-"X-Generator: Weblate 2026.9.dev0\n"
+"X-Generator: Weblate 2026.9.1.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -2122,19 +2122,16 @@ msgid "Input monitoring"
 msgstr "Monitorizarea intrării"
 
 #: src/contents/ui/PageStreamsEffects.qml:713
-#, fuzzy
 msgid "Toggle input monitoring"
-msgstr "Activează/dezactivează monitorizarea microfonului"
+msgstr "Activează/dezactivează monitorizarea semnalului de intrare"
 
 #: src/contents/ui/PageStreamsEffects.qml:733
-#, fuzzy
 msgid "Set input monitoring volume"
-msgstr "Monitorizarea intrării"
+msgstr "Stabilește volumul de monitorizare a semnalului de intrare"
 
 #: src/contents/ui/PageStreamsEffects.qml:752
-#, fuzzy
 msgid "Monitoring volume"
-msgstr "Monitorizarea intrării"
+msgstr "Monitorizează volumul"
 
 #: src/contents/ui/PageStreamsEffects.qml:785
 msgid "Share audio"
