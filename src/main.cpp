@@ -252,12 +252,24 @@ static void initQml(QQmlApplicationEngine& engine,
 
             ui.window->releaseResources();
 
-            engine.trimComponentCache();
-            engine.collectGarbage();
+            /**
+             * Hiding the window triggers Main.qml's onVisibleChanged, which calls
+             * pageStack.clear(). StackView only schedules the items it owns for
+             * deletion (deleteLater), it does not destroy them synchronously. Forcing
+             * a GC pass here, before those deferred deletions are processed, can make
+             * the V4 garbage collector walk QML list properties (e.g. StackView's
+             * children) of objects still stuck mid-teardown, crashing inside
+             * QQmlVMEResolvedList. Defer the cache trim/GC by one event loop turn so
+             * pending deleteLater teardown finishes first.
+             */
+            QTimer::singleShot(0, &engine, [&engine]() {
+              engine.trimComponentCache();
+              engine.collectGarbage();
 
 #ifdef __GLIBC__
-            malloc_trim(0);
+              malloc_trim(0);
 #endif
+            });
           }
         });
       }
