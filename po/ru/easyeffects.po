@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-08-21 20:14-0300\n"
-"PO-Revision-Date: 2026-09-04 23:33+0000\n"
+"PO-Revision-Date: 2026-09-05 17:51+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -3595,18 +3595,16 @@ msgid "Simple audio effects"
 msgstr "Простые звуковые эффекты"
 
 #: src/contents/ui/PageStreamsEffects.qml:713
-#, fuzzy
 msgid "Toggle input monitoring"
-msgstr "Включить/отключить мониторинг микрофона"
+msgstr "Включить/отключить мониторинг входа"
 
 #: src/contents/ui/PageStreamsEffects.qml:733
-#, fuzzy
 msgid "Set input monitoring volume"
-msgstr "Мониторинг входа"
+msgstr "Задать громкость мониторинга входа"
 
 #: src/contents/ui/PageStreamsEffects.qml:752
 msgid "Monitoring volume"
-msgstr ""
+msgstr "Громкость мониторинга"
 
 #~ msgid "Go back"
 #~ msgstr "Назад"
