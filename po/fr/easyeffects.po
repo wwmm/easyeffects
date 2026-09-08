@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-09-04 23:23+0000\n"
-"PO-Revision-Date: 2026-09-07 17:51+0000\n"
+"PO-Revision-Date: 2026-09-08 13:51+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2026.9.1.dev0\n"
+"X-Generator: Weblate 2026.9.1\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -149,12 +149,12 @@ msgstr "Temporaire"
 #: src/contents/ui/Autogain.qml:79 src/contents/ui/Autogain.qml:158
 #: src/contents/ui/LevelMeter.qml:168
 msgid "Short-term"
-msgstr "Short-term"
+msgstr "Court terme"
 
 #: src/contents/ui/Autogain.qml:79 src/contents/ui/Autogain.qml:168
 #: src/contents/ui/LevelMeter.qml:178
 msgid "Integrated"
-msgstr "Intégré"
+msgstr "Intégrée"
 
 #: src/contents/ui/Autogain.qml:79
 msgid "Geometric mean (MSI)"
@@ -192,7 +192,7 @@ msgstr "Sonie"
 
 #: src/contents/ui/Autogain.qml:178 src/contents/ui/LevelMeter.qml:188
 msgid "Relative"
-msgstr "Relatif"
+msgstr "Relative"
 
 #: src/contents/ui/Autogain.qml:188 src/contents/ui/Crusher.qml:192
 #: src/contents/ui/LevelMeter.qml:198
@@ -529,7 +529,7 @@ msgstr "Relâchement"
 #: src/contents/ui/Limiter.qml:515 src/contents/ui/MultibandCompressor.qml:668
 #: src/contents/ui/MultibandGate.qml:641
 msgid "Sidechain"
-msgstr "Chaîne Latérale"
+msgstr "Chaîne latérale"
 
 #: src/contents/ui/Compressor.qml:262 src/contents/ui/EqualizerBandMenu.qml:47
 #: src/contents/ui/Expander.qml:222 src/contents/ui/Filter.qml:65
@@ -2044,7 +2044,7 @@ msgstr "Phase linéaire"
 #: src/contents/ui/MultibandCompressor.qml:587
 #: src/contents/ui/MultibandGate.qml:560
 msgid "Sidechain boost"
-msgstr "Amplification de la Chaîne Latérale"
+msgstr "Amplification de la chaîne latérale"
 
 #: src/contents/ui/MultibandCompressor.qml:591
 #: src/contents/ui/MultibandGate.qml:564
