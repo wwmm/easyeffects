@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-09-04 23:23+0000\n"
 "PO-Revision-Date: 2026-09-08 13:51+0000\n"
-"Last-Translator: Abdist <nasiefabdullah@gmail.com>\n"
+"Last-Translator: Henning <me@unbekannt3.eu>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/easyeffects/main/"
 "de/>\n"
 "Language: de\n"
@@ -122,7 +122,7 @@ msgstr "Ausgewählte Vorlage existiert nicht."
 
 #: src/command_line_parser.cpp:226
 msgid "Provided an invalid bypass state."
-msgstr ""
+msgstr "Ungültiger Bypass-Status übergeben."
 
 #: src/contents/ui/AboutPage.qml:24
 msgctxt "@action:button"
