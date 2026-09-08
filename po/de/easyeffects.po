@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-09-04 23:23+0000\n"
-"PO-Revision-Date: 2026-05-14 21:49+0000\n"
+"PO-Revision-Date: 2026-09-08 13:51+0000\n"
 "Last-Translator: Abdist <nasiefabdullah@gmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/easyeffects/main/"
 "de/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2026.5.dev0\n"
+"X-Generator: Weblate 2026.9.1\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -41,10 +41,11 @@ msgid "Hide the window."
 msgstr "Fenster ausblenden."
 
 #: src/command_line_parser.cpp:48
-#, fuzzy
 msgid ""
 "Global bypass. 1 to enable, 2 to disable and 3 to get the current state."
-msgstr "Globale Umleitung. 1 zum Aktivieren und 2 zum Deaktivieren."
+msgstr ""
+"Globale Umleitung. 1 zum Aktivieren, 2 zum Deaktivieren und 3 für den "
+"aktuellen Status."
 
 #: src/command_line_parser.cpp:49
 msgid "bypass-state"
