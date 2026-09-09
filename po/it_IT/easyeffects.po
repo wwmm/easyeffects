@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-09-04 23:23+0000\n"
-"PO-Revision-Date: 2026-09-08 13:51+0000\n"
+"PO-Revision-Date: 2026-09-09 07:51+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -745,19 +745,19 @@ msgstr "Pre-Mix"
 #: src/contents/ui/Gate.qml:527 src/contents/ui/Limiter.qml:302
 #: src/contents/ui/LspPreMixDialog.qml:39
 msgid "Input to sidechain"
-msgstr "Input a sidechain"
+msgstr "Ingresso a sidechain"
 
 #: src/contents/ui/Compressor.qml:566 src/contents/ui/Expander.qml:522
 #: src/contents/ui/Gate.qml:543 src/contents/ui/Limiter.qml:318
 #: src/contents/ui/LspPreMixDialog.qml:55
 msgid "Input to link"
-msgstr "Input a link"
+msgstr "Ingresso a link"
 
 #: src/contents/ui/Compressor.qml:582 src/contents/ui/Expander.qml:538
 #: src/contents/ui/Gate.qml:559 src/contents/ui/Limiter.qml:334
 #: src/contents/ui/LspPreMixDialog.qml:71
 msgid "Sidechain to input"
-msgstr "Sidechain a input"
+msgstr "Sidechain a ingresso"
 
 #: src/contents/ui/Compressor.qml:598 src/contents/ui/Expander.qml:554
 #: src/contents/ui/Gate.qml:575 src/contents/ui/Limiter.qml:350
@@ -775,7 +775,7 @@ msgstr "Link a sidechain"
 #: src/contents/ui/Gate.qml:607 src/contents/ui/Limiter.qml:382
 #: src/contents/ui/LspPreMixDialog.qml:119
 msgid "Link to input"
-msgstr "Link a input"
+msgstr "Link a ingresso"
 
 #: src/contents/ui/Compressor.qml:674 src/contents/ui/EqualizerBandMenu.qml:119
 #: src/contents/ui/Expander.qml:626 src/contents/ui/Filter.qml:173
@@ -1319,7 +1319,8 @@ msgstr "Regolatore livelli audio"
 
 #: src/contents/ui/EeInputOutputGain.qml:37
 msgid "Input and output gain controls with level meters"
-msgstr "Regolatori del guadagno di input e output con i misuratori di livello"
+msgstr ""
+"Regolatori del guadagno di ingresso e uscita con i misuratori di livello"
 
 #: src/contents/ui/EeInputOutputGain.qml:131 src/contents/ui/Main.qml:387
 #: src/contents/ui/StereoTools.qml:59
@@ -1639,7 +1640,7 @@ msgstr "Inizio"
 
 #: src/contents/ui/LevelMeter.qml:67
 msgid "Input Level"
-msgstr "Livello Input"
+msgstr "Livello Ingresso"
 
 #: src/contents/ui/LevelMeter.qml:106
 msgid "True Peak"
@@ -2110,7 +2111,6 @@ msgid "Input monitoring"
 msgstr "Monitoraggio del microfono"
 
 #: src/contents/ui/PageStreamsEffects.qml:713
-#, fuzzy
 msgid "Toggle input monitoring"
 msgstr "Abilita/disabilita il monitoraggio del microfono"
 
@@ -2402,7 +2402,7 @@ msgstr "Abilita/disabilita monitoraggio del microfono"
 
 #: src/contents/ui/PreferencesSheet.qml:235
 msgid "Mic monitor plays to output effects pipeline"
-msgstr "Monitoraggio microfono riproduce sulla pipeline di uscita"
+msgstr "Monitoraggio del microfono riproduce sulla pipeline di uscita"
 
 #: src/contents/ui/PreferencesSheet.qml:247
 msgid "Copy the input audio buffer"
@@ -3096,11 +3096,11 @@ msgstr "Termina il servizio di Easy Effects"
 
 #: src/contents/ui/ShortcutsSheet.qml:204
 msgid "Toggle process all inputs"
-msgstr "Abilita/disabilita il \"processa tutto in ingresso\""
+msgstr "Abilita/disabilita la processione di tutti gli ingressi"
 
 #: src/contents/ui/ShortcutsSheet.qml:244
 msgid "Toggle process all outputs"
-msgstr "Abilita/disabilita il \"processa tutto in uscita\""
+msgstr "Abilita/disabilita la processione di tutte le uscite"
 
 #: src/contents/ui/ShortcutsSheet.qml:257
 #: src/contents/ui/ShortcutsSheet.qml:270
