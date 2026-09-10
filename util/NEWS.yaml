@@ -7,7 +7,7 @@ Description:
 - 
 
 - Bug fixes∶
-- 
+- Fixed the import feature of the community presets that prevented to save Convolver impulse response and RNNoise models into the local folder. 
 
 - Other notes∶
 - 
