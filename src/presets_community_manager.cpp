@@ -148,8 +148,7 @@ auto CommunityManager::import_addons_from_community_package(const PipelineType& 
       bool found = false;
 
       for (auto xdg_dir : dir_manager.systemDataDirIrs()) {
-        xdg_dir.append("/");
-        xdg_dir.append(package);
+        xdg_dir /= package; // see ticket 5299
 
         if (util::search_filename(std::filesystem::path{xdg_dir}, irs_name, path, 3U)) {
           const auto out_path = std::filesystem::path{dir_manager.userIrsDir()} / irs_name;
@@ -177,8 +176,7 @@ auto CommunityManager::import_addons_from_community_package(const PipelineType& 
       bool found = false;
 
       for (auto xdg_dir : dir_manager.systemDataDirRnnoise()) {
-        xdg_dir.append("/");
-        xdg_dir.append(package);
+        xdg_dir /= package; // see ticket 5299
 
         if (util::search_filename(std::filesystem::path{xdg_dir}, model_name, path, 3U)) {
           const auto out_path = std::filesystem::path{dir_manager.userRnnoiseDir()} / model_name;
