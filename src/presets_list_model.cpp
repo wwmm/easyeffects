@@ -128,15 +128,13 @@ QVariant ListModel::data(const QModelIndex& index, int role) const {
 }
 
 void ListModel::append(const std::filesystem::path& path) {
-  int pos = listPaths.empty() ? 0 : listPaths.size() - 1;
+  const int pos = listPaths.size();
 
   beginInsertRows(QModelIndex(), pos, pos);
 
   listPaths.append(path);
 
   endInsertRows();
-
-  Q_EMIT dataChanged(index(0), index(listPaths.size() - 1));
 }
 
 void ListModel::remove(const QString& name) {
@@ -157,8 +155,6 @@ void ListModel::remove(const QString& name) {
   listPaths.remove(rowIndex);
 
   endRemoveRows();
-
-  Q_EMIT dataChanged(index(0), index(listPaths.size() - 1));
 }
 
 void ListModel::remove(const int& rowIndex) {
@@ -167,20 +163,20 @@ void ListModel::remove(const int& rowIndex) {
   listPaths.remove(rowIndex);
 
   endRemoveRows();
-
-  Q_EMIT dataChanged(index(0), index(listPaths.size() - 1));
 }
 
 void ListModel::remove(const std::filesystem::path& path) {
   qsizetype rowIndex = listPaths.indexOf(path);
+
+  if (rowIndex == -1) {
+    return;
+  }
 
   beginRemoveRows(QModelIndex(), rowIndex, rowIndex);
 
   listPaths.remove(rowIndex);
 
   endRemoveRows();
-
-  Q_EMIT dataChanged(index(0), index(listPaths.size() - 1));
 }
 
 void ListModel::reset() {
@@ -214,15 +210,9 @@ void ListModel::emit_data_changed(const std::filesystem::path& path) {
 }
 
 void ListModel::update(const QList<std::filesystem::path>& paths) {
-  auto current_list = listPaths;
-
-  beginResetModel();
-
-  for (const auto& v : paths) {
-    if (!current_list.contains(v)) {
-      append(v);
-    }
-  }
+  // Incremental row operations only. Wrapping them in beginResetModel()/endResetModel()
+  // is not allowed (no other change signals may be emitted during a reset).
+  const auto current_list = listPaths;
 
   for (const auto& v : current_list) {
     if (!paths.contains(v)) {
@@ -230,5 +220,14 @@ void ListModel::update(const QList<std::filesystem::path>& paths) {
     }
   }
 
-  endResetModel();
+  for (const auto& v : paths) {
+    if (!listPaths.contains(v)) {
+      append(v);
+    }
+  }
+
+  // Re-read rows which survived the refresh in case they were modified externally.
+  if (!listPaths.empty()) {
+    Q_EMIT dataChanged(index(0), index(listPaths.size() - 1));
+  }
 }
