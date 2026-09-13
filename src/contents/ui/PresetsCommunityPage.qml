@@ -111,21 +111,16 @@ ColumnLayout {
                 required property string path
                 required property string presetPackage
 
+                text: listItemDelegate.name
                 hoverEnabled: true
                 highlighted: false
                 width: listView.width
                 checked: columnLayout.pipeline === 1 ? DbMain.lastLoadedOutputPreset === name : DbMain.lastLoadedInputPreset === name
                 onClicked: PresetsManager.loadCommunityPresetFile(columnLayout.pipeline, path, presetPackage)
 
-                contentItem: RowLayout {
-                    Controls.Label {
-                        Layout.fillWidth: true
-                        Layout.maximumWidth: listItemDelegate.width
-                        text: listItemDelegate.name
-                        elide: Text.ElideRight
-                        wrapMode: Text.WrapAnywhere
-                        maximumLineCount: 2
-                    }
+                contentItem: Delegates.SubtitleContentItem {
+                    itemDelegate: listItemDelegate
+                    subtitle: listItemDelegate.presetPackage
 
                     Kirigami.ActionToolBar {
                         alignment: Qt.AlignRight
@@ -137,12 +132,6 @@ ColumnLayout {
                                 onTriggered: {
                                     PresetsManager.loadCommunityPresetFile(columnLayout.pipeline, path, presetPackage);
                                 }
-                            },
-                            Kirigami.Action {
-                                text: listItemDelegate.presetPackage
-                                displayHint: Kirigami.DisplayHint.KeepVisible
-                                icon.name: "package-symbolic"
-                                enabled: false
                             },
                             Kirigami.Action {
                                 text: i18n("Copy to local presets") // qmllint disable
