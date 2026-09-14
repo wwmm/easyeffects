@@ -119,6 +119,7 @@ auto CommunityManager::import_addons_from_community_package(const PipelineType& 
   nlohmann::json json;
 
   const auto irs_ext = ".irs";
+  const auto sofa_ext = ".sofa";
   const auto rnnn_ext = ".rnnn";
 
   try {
@@ -130,36 +131,46 @@ auto CommunityManager::import_addons_from_community_package(const PipelineType& 
     const auto* pt_key = (pipeline_type == PipelineType::output) ? "output" : "input";
 
     // Fill conv_irs and rn_models vectors extracting the addon names from
-    // the json preset and append the respective file extension.
+    // the json preset.
     for (const auto& plugin : json.at(pt_key).at("plugins_order").get<std::vector<std::string>>()) {
       if (plugin.starts_with(tags::plugin_name::BaseName::convolver.toStdString())) {
-        conv_irs.push_back(json.at(pt_key).at(plugin).at("kernel-name").get<std::string>() + irs_ext);
+        conv_irs.push_back(json.at(pt_key).at(plugin).at("kernel-name").get<std::string>());
       }
 
       if (plugin.starts_with(tags::plugin_name::BaseName::rnnoise.toStdString())) {
-        rn_models.push_back(json.at(pt_key).at(plugin).at("model-name").get<std::string>() + rnnn_ext);
+        rn_models.push_back(json.at(pt_key).at(plugin).at("model-name").get<std::string>());
       }
     }
 
-    // For every filename of both vectors, search the full path and copy the file locally.
+    // For every filename of both vectors, search the full path and
+    // copy the file locally.
+
+    // For Convolver addons, we have to search for filename with
+    // "irs" and "sofa" extensions.
     for (const auto& irs_name : conv_irs) {
       std::string path;
 
       bool found = false;
 
-      for (auto xdg_dir : dir_manager.systemDataDirIrs()) {
-        xdg_dir /= package; // see ticket 5299
+      // Here we search for the filename with the extensions.
+      // The search succeed if at least one is found (irs or sofa; or both).
+      for (const auto& ext : {irs_ext, sofa_ext}) {
+        std::string irs_fullname = irs_name + ext;
 
-        if (util::search_filename(std::filesystem::path{xdg_dir}, irs_name, path, 3U)) {
-          const auto out_path = std::filesystem::path{dir_manager.userIrsDir()} / irs_name;
+        for (auto xdg_dir : dir_manager.systemDataDirIrs()) {
+          xdg_dir /= package;  // see ticket 5299
 
-          std::filesystem::copy_file(path, out_path, std::filesystem::copy_options::overwrite_existing);
+          if (util::search_filename(std::filesystem::path{xdg_dir}, irs_fullname, path, 3U)) {
+            const auto out_path = std::filesystem::path{dir_manager.userIrsDir()} / irs_fullname;
 
-          util::debug(std::format("Successfully imported community preset addon {} locally", irs_name));
+            std::filesystem::copy_file(path, out_path, std::filesystem::copy_options::overwrite_existing);
 
-          found = true;
+            util::debug(std::format("Successfully imported community preset addon {} locally", irs_fullname));
 
-          break;
+            found = true;
+
+            break;
+          }
         }
       }
 
@@ -170,20 +181,23 @@ auto CommunityManager::import_addons_from_community_package(const PipelineType& 
       }
     }
 
+    // For RNNoise addons, we have to search for filename with
+    // "rnnn" extensions.
     for (const auto& model_name : rn_models) {
       std::string path;
+      std::string model_fullname = model_name + rnnn_ext;
 
       bool found = false;
 
       for (auto xdg_dir : dir_manager.systemDataDirRnnoise()) {
-        xdg_dir /= package; // see ticket 5299
+        xdg_dir /= package;  // see ticket 5299
 
-        if (util::search_filename(std::filesystem::path{xdg_dir}, model_name, path, 3U)) {
-          const auto out_path = std::filesystem::path{dir_manager.userRnnoiseDir()} / model_name;
+        if (util::search_filename(std::filesystem::path{xdg_dir}, model_fullname, path, 3U)) {
+          const auto out_path = std::filesystem::path{dir_manager.userRnnoiseDir()} / model_fullname;
 
           std::filesystem::copy_file(path, out_path, std::filesystem::copy_options::overwrite_existing);
 
-          util::debug(std::format("Successfully imported community preset addon {} locally", model_name));
+          util::debug(std::format("Successfully imported community preset addon {} locally", model_fullname));
 
           found = true;
 
