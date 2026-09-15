@@ -4,10 +4,11 @@ Date: UNRELEASED_DATE
 
 Description: 
 - Features∶
-- 
+- Now Community Presets using SOFA impulse resposes can be correctly imported to local presets.
 
 - Bug fixes∶
 - Fixed the import feature of the community presets that prevented to save Convolver impulse response and RNNoise models into the local folder. 
+- The Community Presets list has been improved to show the preset names and the package names in a different style, which fixed a bug that was hiding the package names in certain cases.
 
 - Other notes∶
 - 
