@@ -118,6 +118,11 @@ auto CommunityManager::import_addons_from_community_package(const PipelineType& 
 
   nlohmann::json json;
 
+  /**
+   * Note that wav files imported locally from the Convolver interface are
+   * renamed with the "irs" extension, so the preset expects irs or sofa files.
+   * For that reason we don't need to lookup for wav files here.
+   */
   const auto irs_ext = ".irs";
   const auto sofa_ext = ".sofa";
   const auto rnnn_ext = ".rnnn";
