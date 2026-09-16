@@ -766,7 +766,7 @@ Kirigami.Page {
                                         Layout.minimumWidth: Kirigami.Units.gridUnit * 12
                                         orientation: Qt.Horizontal
                                         value: inputMonitoringRowLayout.prepareVolumeValue(DbStreamInputs.listenToMicVolume)
-                                        to: 100
+                                        to: 200
                                         stepSize: 1
                                         wheelEnabled: false
                                         onMoved: {
