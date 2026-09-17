@@ -21,6 +21,7 @@
 
 #include <QString>
 #include "effects_base.hpp"
+#include "microphone_monitor.hpp"
 #include "pw_manager.hpp"
 #include "pw_objects.hpp"
 
@@ -64,6 +65,8 @@ class StreamInputEffects : public EffectsBase {
   void set_listen_to_mic_volume();
 
  private:
+  std::unique_ptr<MicrophoneMonitor> microphone_monitor;
+
   bool bypass = false;
   bool bypass_transition_active = false;
   bool bypass_transition_pending = false;

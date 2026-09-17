@@ -49,6 +49,8 @@
 StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(pipe_manager, PipelineType::input) {
   singletonInstance = this;
 
+  microphone_monitor = std::make_unique<MicrophoneMonitor>(pm);
+
   connect(
       pm, &pw::Manager::sourceAdded, this,
       [&](pw::NodeInfo node) {
@@ -117,11 +119,22 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
 
   connect(
       DbStreamInputs::self(), &DbStreamInputs::listenToMicChanged, this,
+      [&]() {
+        if (DbStreamInputs::listenToMic() && list_proxies.empty()) {
+          connect_filters(bypass);
+        } else {
+          set_listen_to_mic(DbStreamInputs::listenToMic());
+        }
+      },
+      Qt::QueuedConnection);
+
+  connect(
+      DbStreamInputs::self(), &DbStreamInputs::listenToMicIncludesOutputEffectsChanged, this,
       [&]() { set_listen_to_mic(DbStreamInputs::listenToMic()); }, Qt::QueuedConnection);
 
   connect(
-      DbStreamInputs::self(), &DbStreamInputs::listenToMicVolumeChanged, this,
-      [&]() { set_listen_to_mic_volume(); }, Qt::QueuedConnection);
+      DbStreamInputs::self(), &DbStreamInputs::listenToMicVolumeChanged, this, [&]() { set_listen_to_mic_volume(); },
+      Qt::QueuedConnection);
 
   /**
    * We need to listen to output device changes because if the echo canceller is in the mic pipeline we have to change
@@ -161,6 +174,10 @@ StreamInputEffects::~StreamInputEffects() {
 }
 
 auto StreamInputEffects::apps_want_to_play() -> bool {
+  if (DbStreamInputs::listenToMic()) {
+    return true;
+  }
+
   return std::ranges::any_of(pm->get_links(), [&](const auto& link) {
     // If the destination node is not in our node list it is probably because it is blocklisted
     auto blocklisted = pm->model_nodes.get_node_by_id(link.input_node_id).id == SPA_ID_INVALID;
@@ -450,22 +467,35 @@ void StreamInputEffects::set_listen_to_mic(const bool& state) {
     list_proxies_listen_mic.clear();
   }
 
-  if (state) {
-    auto output_device = !DbStreamInputs::listenToMicIncludesOutputEffects()
-                             ? pm->model_nodes.get_node_by_name(DbStreamOutputs::outputDevice())
-                             : pm->ee_sink_node;
-
-    for (const auto& link : pm->link_nodes(pm->ee_source_node.id, output_device.id, false)) {
-      list_proxies_listen_mic.push_back(link);
+  if (!state) {
+    if (microphone_monitor->connected_to_pw) {
+      microphone_monitor->disconnect_from_pw();
     }
+    return;
+  }
 
-    set_listen_to_mic_volume();
+  // Monitoring must tap the processed microphone before desktop audio is mixed
+  // into ee_source. Listening to ee_source repeats desktop playback and can feed
+  // it back into the output pipeline when monitoring includes output effects.
+  if (!microphone_monitor->connected_to_pw && !microphone_monitor->connect_to_pw()) {
+    return;
+  }
+
+  set_listen_to_mic_volume();
+
+  const auto output_device = !DbStreamInputs::listenToMicIncludesOutputEffects()
+                                 ? pm->model_nodes.get_node_by_name(DbStreamOutputs::outputDevice())
+                                 : pm->ee_sink_node;
+
+  for (const auto& link : pm->link_nodes(output_level->get_node_id(), microphone_monitor->get_node_id())) {
+    list_proxies_listen_mic.push_back(link);
+  }
+
+  for (const auto& link : pm->link_nodes(microphone_monitor->get_node_id(), output_device.id)) {
+    list_proxies_listen_mic.push_back(link);
   }
 }
 
 void StreamInputEffects::set_listen_to_mic_volume() {
-  if (!list_proxies_listen_mic.empty() && pm->ee_source_node.serial != SPA_ID_INVALID) {
-    pm->setNodeMonitorVolume(static_cast<uint>(pm->ee_source_node.serial), pm->ee_source_node.n_volume_channels,
-                             static_cast<float>(DbStreamInputs::listenToMicVolume()));
-  }
+  microphone_monitor->set_volume(static_cast<float>(DbStreamInputs::listenToMicVolume()));
 }
