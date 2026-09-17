@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-09-04 23:23+0000\n"
-"PO-Revision-Date: 2026-09-02 06:35+0000\n"
+"PO-Revision-Date: 2026-09-17 02:51+0000\n"
 "Last-Translator: Priit Jõerüüt <jrthwlate@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/easyeffects/"
 "main/et/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2026.9.dev0\n"
+"X-Generator: Weblate 2026.10.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -2087,12 +2087,10 @@ msgid "Input monitoring"
 msgstr ""
 
 #: src/contents/ui/PageStreamsEffects.qml:713
-#, fuzzy
 msgid "Toggle input monitoring"
-msgstr "Lülita mikrofoni monitor sisse/välja"
+msgstr "Lülita sisendi monitor sisse/välja"
 
 #: src/contents/ui/PageStreamsEffects.qml:733
-#, fuzzy
 msgid "Set input monitoring volume"
 msgstr "Lülita sisendi monitor sisse/välja"
 
@@ -3321,7 +3319,7 @@ msgstr "Bassi valjus"
 
 #: src/tags_plugin_name.cpp:51
 msgid "Convolver"
-msgstr ""
+msgstr "Konvolutsioon"
 
 #: src/tags_plugin_name.cpp:52
 msgid "Crossfeed"
