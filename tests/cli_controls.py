@@ -63,7 +63,7 @@ def check_control_messages(binary, root):
     worker.start()
     try:
         for option, tag in (("microphone-monitoring", "microphone_monitoring"),
-                            ("audio-sharing", "audio_sharing")):
+                            ("audio-sharing", "audio_sharing"), ("bypass", "global_bypass")):
             for arguments, expected in (
                 ([f"--{option}", "1"], f"{tag}:1\n"),
                 ([f"--{option}", "2"], f"{tag}:0\n"),
@@ -72,6 +72,8 @@ def check_control_messages(binary, root):
                 ([f"--{option}", "invalid"], ""),
                 (["--hide-window", f"--{option}", "1"], f"hide_window\n{tag}:1\n"),
             ):
+                if arguments == ["--bypass-toggle"]:
+                    continue  # This change only covers bypass's explicit state option.
                 result = subprocess.run([binary, *arguments], capture_output=True, text=True, timeout=10)
                 assert result.returncode == 0, result.stderr
                 actual = messages.get(timeout=5).decode()

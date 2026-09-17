@@ -12,7 +12,7 @@ It starts a private D-Bus session, PipeWire server, virtual audio devices, and
 Easy Effects instance with temporary XDG directories. The session manager runs
 without hardware monitors, so the test does not use the user's sound devices.
 
-A recording socket peer also verifies that the new controls send no window
+A recording socket peer also verifies that the new controls and `--bypass` send no window
 visibility commands unless `--hide-window` is explicitly requested.
 
 It checks help, enable/disable/query/toggle commands, repeated setters, malformed

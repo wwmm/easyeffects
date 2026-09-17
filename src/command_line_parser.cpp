@@ -80,7 +80,7 @@ void CommandLineParser::process_debug_option() {
 }
 
 void CommandLineParser::process_hide_window(bool& show_window) {
-  if (parser->isSet("hide-window") || parser->isSet("microphone-monitoring") ||
+  if (parser->isSet("hide-window") || parser->isSet("bypass") || parser->isSet("microphone-monitoring") ||
       parser->isSet("microphone-monitoring-toggle") || parser->isSet("audio-sharing") ||
       parser->isSet("audio-sharing-toggle")) {
     show_window = false;
@@ -233,8 +233,6 @@ void CommandLineParser::process_events() {
 
       std::cout << i18n("Provided an invalid bypass state.").toStdString() << '\n';
     }
-
-    Q_EMIT onHideWindow();
 
     if (ok) {
       QCoreApplication::exit(EXIT_SUCCESS);
