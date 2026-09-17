@@ -44,6 +44,18 @@ class LocalClient : public QObject {
 
   void toggleGlobalBypass();
 
+  void setAudioSharing(const bool& state);
+
+  auto getAudioSharing() -> QString;
+
+  void toggleAudioSharing();
+
+  void setMicrophoneMonitoring(const bool& state);
+
+  auto getMicrophoneMonitoring() -> QString;
+
+  void toggleMicrophoneMonitoring();
+
   auto getLastLoadedPreset(PipelineType pipeline_type) -> QString;
 
  private:

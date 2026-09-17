@@ -24,10 +24,41 @@ echo "load_preset:output:MyPresetName" | socat - UNIX-CONNECT:$XDG_RUNTIME_DIR/E
 | `hide_window` | Hides the main window. | None |
 | `quit_app` | Quits Easy Effects. | None |
 | `global_bypass` | Toggles effects on/off. | `1` (bypass) or `0` (active) |
+| `get_global_bypass` | Returns `1` (enabled) or `2` (disabled). | None |
+| `toggle_global_bypass` | Toggles global bypass. | None |
+| `microphone_monitoring` | Sets microphone monitoring. | `1` (enabled) or `0` (disabled) |
+| `get_microphone_monitoring` | Returns `1` (enabled) or `2` (disabled). | None |
+| `toggle_microphone_monitoring` | Toggles microphone monitoring. | None |
+| `audio_sharing` | Sets desktop audio sharing through the virtual source. | `1` (enabled) or `0` (disabled) |
+| `get_audio_sharing` | Returns `1` (enabled) or `2` (disabled). | None |
+| `toggle_audio_sharing` | Toggles audio sharing. | None |
 | `load_preset` | Loads a preset. | `pipeline`:`preset_name` |
 | `get_last_loaded_preset` | Returns the name of the last loaded preset. | `pipeline` |
 
 ---
+
+## Command-line controls
+
+With Easy Effects running, the following options update its live state through
+this local server, just like `--bypass` and `--bypass-toggle`:
+
+```bash
+easyeffects --microphone-monitoring 1      # Enable microphone monitoring
+easyeffects --microphone-monitoring 2      # Disable microphone monitoring
+easyeffects --microphone-monitoring 3      # Print 1 (enabled) or 2 (disabled)
+easyeffects --microphone-monitoring-toggle
+
+easyeffects --audio-sharing 1              # Enable audio sharing
+easyeffects --audio-sharing 2              # Disable audio sharing
+easyeffects --audio-sharing 3              # Print 1 (enabled) or 2 (disabled)
+easyeffects --audio-sharing-toggle
+```
+
+The toggle options can also be bound to custom keyboard shortcuts on desktops
+without XDG global shortcut support. Queries print the numeric state followed by
+a newline. Unlike CLI state arguments, socket setters use `0` to disable;
+for example, send `audio_sharing:0\n`. Socket queries return the numeric state
+without a newline. Send each socket command terminated by a newline.
 
 ## Plugins
 

@@ -37,6 +37,18 @@ inline constexpr auto get_global_bypass = "get_global_bypass\n";
 
 inline constexpr auto toggle_global_bypass = "toggle_global_bypass";
 
+inline constexpr auto audio_sharing = "audio_sharing";
+
+inline constexpr auto get_audio_sharing = "get_audio_sharing\n";
+
+inline constexpr auto toggle_audio_sharing = "toggle_audio_sharing\n";
+
+inline constexpr auto microphone_monitoring = "microphone_monitoring";
+
+inline constexpr auto get_microphone_monitoring = "get_microphone_monitoring\n";
+
+inline constexpr auto toggle_microphone_monitoring = "toggle_microphone_monitoring\n";
+
 inline constexpr auto set_property = "set_property";
 
 inline constexpr auto get_property = "get_property";

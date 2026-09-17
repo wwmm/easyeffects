@@ -48,6 +48,12 @@ CommandLineParser::CommandLineParser(KAboutData& about, QObject* parent)
         i18n("Global bypass. 1 to enable, 2 to disable and 3 to get the current state."),
         i18n("bypass-state")},
        {"bypass-toggle", i18n("Toggle the state of the global bypass.")},
+       {"audio-sharing", i18n("Audio sharing. 1 to enable, 2 to disable and 3 to get the current state."),
+        i18n("state")},
+       {"audio-sharing-toggle", i18n("Toggle the state of audio sharing.")},
+       {"microphone-monitoring",
+        i18n("Microphone monitoring. 1 to enable, 2 to disable and 3 to get the current state."), i18n("state")},
+       {"microphone-monitoring-toggle", i18n("Toggle the state of microphone monitoring.")},
        {{"l", "load-preset"}, i18n("Load a preset. Example: easyeffects -l music"), i18n("preset-name")},
        {{"p", "presets"}, i18n("Show available presets.")},
        {{"a", "last-loaded-preset"}, i18n("Get the last loaded input/output preset."), i18n("preset-type")},
@@ -245,6 +251,74 @@ void CommandLineParser::process_events() {
      * in the wrong way and does not allow the shortcut key to be customized.
      */
     Q_EMIT onToggleGlobalBypass();
+
+    Q_EMIT onHideWindow();
+
+    QCoreApplication::exit(EXIT_SUCCESS);
+  }
+
+  if (parser->isSet("microphone-monitoring")) {
+    bool ok = true;
+
+    const auto value = parser->value("microphone-monitoring");
+
+    if (value == "1") {
+      Q_EMIT onSetMicrophoneMonitoring(true);
+    } else if (value == "2") {
+      Q_EMIT onSetMicrophoneMonitoring(false);
+    } else if (value == "3") {
+      Q_EMIT onGetMicrophoneMonitoring();
+    } else {
+      ok = false;
+
+      std::cout << i18n("Provided an invalid microphone monitoring state.").toStdString() << '\n';
+    }
+
+    Q_EMIT onHideWindow();
+
+    if (ok) {
+      QCoreApplication::exit(EXIT_SUCCESS);
+    } else {
+      QCoreApplication::exit(EXIT_FAILURE);
+    }
+  }
+
+  if (parser->isSet("microphone-monitoring-toggle")) {
+    Q_EMIT onToggleMicrophoneMonitoring();
+
+    Q_EMIT onHideWindow();
+
+    QCoreApplication::exit(EXIT_SUCCESS);
+  }
+
+  if (parser->isSet("audio-sharing")) {
+    bool ok = true;
+
+    const auto value = parser->value("audio-sharing");
+
+    if (value == "1") {
+      Q_EMIT onSetAudioSharing(true);
+    } else if (value == "2") {
+      Q_EMIT onSetAudioSharing(false);
+    } else if (value == "3") {
+      Q_EMIT onGetAudioSharing();
+    } else {
+      ok = false;
+
+      std::cout << i18n("Provided an invalid audio sharing state.").toStdString() << '\n';
+    }
+
+    Q_EMIT onHideWindow();
+
+    if (ok) {
+      QCoreApplication::exit(EXIT_SUCCESS);
+    } else {
+      QCoreApplication::exit(EXIT_FAILURE);
+    }
+  }
+
+  if (parser->isSet("audio-sharing-toggle")) {
+    Q_EMIT onToggleAudioSharing();
 
     Q_EMIT onHideWindow();
 
