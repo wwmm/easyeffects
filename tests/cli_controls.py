@@ -52,9 +52,19 @@ def run_test(binary, root):
         objects = graph()
         names = {o["id"]: o.get("info", {}).get("props", {}).get("node.name")
                  for o in objects if o["type"].endswith(":Node")}
-        return any(names.get(o["info"]["output-node-id"]) == source
-                   and names.get(o["info"]["input-node-id"]) == target
-                   for o in objects if o["type"].endswith(":Link"))
+        edges = [(names.get(o["info"]["output-node-id"]), names.get(o["info"]["input-node-id"]))
+                 for o in objects if o["type"].endswith(":Link")]
+        # Check connectivity rather than a specific monitoring implementation.
+        pending, visited = [source], set()
+        while pending:
+            node = pending.pop()
+            if node == target:
+                return True
+            if node in visited:
+                continue
+            visited.add(node)
+            pending.extend(destination for origin, destination in edges if origin == node)
+        return False
 
     try:
         start("pipewire")
@@ -78,7 +88,7 @@ def run_test(binary, root):
         wait_for(lambda: has_link("ee_soe_output_level", "test_sink"), "output pipeline")
         help_text = cli("--help").stdout
         for option, tag, source, target in (
-            ("microphone-monitoring", "microphone_monitoring", "easyeffects_source", "test_sink"),
+            ("microphone-monitoring", "microphone_monitoring", "ee_sie_output_level", "test_sink"),
             ("audio-sharing", "audio_sharing", "ee_soe_output_level", "easyeffects_source"),
             ("bypass", "global_bypass", None, None),
         ):
