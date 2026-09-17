@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects-news\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-28 14:40+0000\n"
-"PO-Revision-Date: 2026-09-02 08:51+0000\n"
+"PO-Revision-Date: 2026-09-17 02:51+0000\n"
 "Last-Translator: Priit Jõerüüt <jrthwlate@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/et/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2026.9.dev0\n"
+"X-Generator: Weblate 2026.10.dev0\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -25,7 +25,7 @@ msgstr "Easy Effects"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
 msgid "Audio Effects for PipeWire Applications"
-msgstr ""
+msgstr "Heliefektid PipeWire'i kasutavate rakenduste jaoks"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:9
 msgid ""
@@ -33,12 +33,18 @@ msgid ""
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
 "few. To complement this there is also a built in spectrum analyzer."
 msgstr ""
+"Easy Effects on laiade võimalustega helitöötlusvahend. Paljude tarvikute "
+"seas leidub ekvalaiser, piirajat, kompressor ja järelkõlaefektid. Lisaks on "
+"sisse ehitatud ka spektrianalüsaator."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:10
 msgid ""
 "Easy Effects is the successor to PulseEffects. Easy Effects only supports "
 "PipeWire's audio server. PulseAudio users should instead use PulseEffects."
 msgstr ""
+"Easy Effects on PulseEffectsi edasiarendus. Easy Effects toetab vaid "
+"PipeWire's heliserveri kasutamist. PulseAudio kasutajad peaksid jätkuvalt "
+"kasutama PulseEffectsi."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:11
 msgid ""
@@ -46,6 +52,9 @@ msgid ""
 "with most, if not all, applications you use. All supported applications are "
 "presented in the main window, where each can be enabled individually."
 msgstr ""
+"Kuna Easy Effects kasutab vaikimisi PipeWire'i heliserverit, töötab see "
+"enamiku, kui mitte kõigi sinu kasutatavate rakendustega. Kõik toetatud "
+"rakendused on esitatud põhivaates, kus igaühe saad eraldi sisse lülitada."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
 msgid ""
@@ -53,6 +62,9 @@ msgid ""
 "an input device, such as a microphone. This is, for example, useful in audio "
 "recording, but it also works well during voice conversations."
 msgstr ""
+"Lisaks heliväljundi töötlemisele suudab Easy Effects rakendada efekte ka "
+"sisendseadmele, näiteks mikrofonile. See on kasulik näiteks "
+"helisalvestamisel, kuid toimib hästi ka vestluste ajal."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:13
 msgid ""
@@ -60,6 +72,9 @@ msgid ""
 "configuration used in the last session. It is also possible to save all the "
 "current settings as profiles."
 msgstr ""
+"Easy Effectsi käivitamisel kasutab ta viimati meeldejäetud sessiooni "
+"seadistusi. Samuti on võimalik salvestada kõik valitud seadistuste "
+"kombinatsioonid profiilidena."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:16
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:18
@@ -68,15 +83,15 @@ msgstr "Wellington Wallace"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
 msgid "The main page showing two audio output apps"
-msgstr ""
+msgstr "Põhivaade, kus on kuvatud kaks heli väljundrakendust"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:47
 msgid "The bass enhancer page showing audio controls"
-msgstr ""
+msgstr "Bassitõhustaja vaade koos asjakohaste juhtnuppudega"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:51
 msgid "The convolver page showing audio controls"
-msgstr ""
+msgstr "Konvolutsiooni efekt leht juhtnuppudega"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:77
@@ -116,7 +131,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:547
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:560
 msgid "Features:"
-msgstr ""
+msgstr "Funktsionaalsused:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
 msgid ""
@@ -180,7 +195,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:539
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:552
 msgid "Bug fixes:"
-msgstr ""
+msgstr "Veaparandused:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:65
 msgid ""
@@ -223,7 +238,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:421
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:437
 msgid "Other notes:"
-msgstr ""
+msgstr "Muud märkmed:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:69
 msgid ""
@@ -262,7 +277,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:90
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:237
 msgid "Updated translations."
-msgstr ""
+msgstr "Uuendatud tõlked."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:100
 msgid ""
@@ -279,11 +294,11 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:396
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:522
 msgid "Updated translations"
-msgstr ""
+msgstr "Uuendatud tõlked"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:102
 msgid "The equalizer can export basic APO preset files"
-msgstr ""
+msgstr "Ekvalaiser oskab nüüd eksportida tavalisemaid APO-vormingus faile"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:103
 msgid ""
@@ -364,7 +379,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:175
 msgid "EasyEffects is now buildable also with libc++."
-msgstr ""
+msgstr "EasyEffects on nüüd kompileeritav libc++ abil."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:183
 msgid "The Expander from Linux Studio Plugins can be used in Easy Effects."
@@ -558,11 +573,11 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:279
 msgid "The documentation has been updated."
-msgstr ""
+msgstr "Oleme täiendanud dokumentatsiooni."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:280
 msgid "Improved presets autoloading."
-msgstr ""
+msgstr "Oleme parandanud eelseadistuste automaatset laadimist."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:281
 msgid "The Autogain silence threshold can now be configured by the user."
@@ -624,7 +639,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:311
 msgid "Improved translations"
-msgstr ""
+msgstr "Parandatud tõlked"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:313
 msgid ""
@@ -720,6 +735,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:354
 msgid "Our application icon is now compatible with desktops that uses QT"
 msgstr ""
+"Meie rakenduse ikoon nüüd ühildub töölauakeskkondadega, mis põhinevad Qt-l"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:355
 msgid ""
@@ -742,7 +758,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:358
 msgid "Many translation updates"
-msgstr ""
+msgstr "Palju tõlgete uuendusi"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:360
 msgid ""
@@ -805,7 +821,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:392
 msgid "Support for the next PipeWire release 0.3.44"
-msgstr ""
+msgstr "Järgmise PipeWire'i versiooni 0.3.44 tugi"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:393
 msgid ""
