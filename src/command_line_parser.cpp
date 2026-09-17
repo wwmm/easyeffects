@@ -80,7 +80,9 @@ void CommandLineParser::process_debug_option() {
 }
 
 void CommandLineParser::process_hide_window(bool& show_window) {
-  if (parser->isSet("hide-window")) {
+  if (parser->isSet("hide-window") || parser->isSet("microphone-monitoring") ||
+      parser->isSet("microphone-monitoring-toggle") || parser->isSet("audio-sharing") ||
+      parser->isSet("audio-sharing-toggle")) {
     show_window = false;
   }
 }
@@ -274,8 +276,6 @@ void CommandLineParser::process_events() {
       std::cout << i18n("Provided an invalid microphone monitoring state.").toStdString() << '\n';
     }
 
-    Q_EMIT onHideWindow();
-
     if (ok) {
       QCoreApplication::exit(EXIT_SUCCESS);
     } else {
@@ -285,8 +285,6 @@ void CommandLineParser::process_events() {
 
   if (parser->isSet("microphone-monitoring-toggle")) {
     Q_EMIT onToggleMicrophoneMonitoring();
-
-    Q_EMIT onHideWindow();
 
     QCoreApplication::exit(EXIT_SUCCESS);
   }
@@ -308,8 +306,6 @@ void CommandLineParser::process_events() {
       std::cout << i18n("Provided an invalid audio sharing state.").toStdString() << '\n';
     }
 
-    Q_EMIT onHideWindow();
-
     if (ok) {
       QCoreApplication::exit(EXIT_SUCCESS);
     } else {
@@ -319,8 +315,6 @@ void CommandLineParser::process_events() {
 
   if (parser->isSet("audio-sharing-toggle")) {
     Q_EMIT onToggleAudioSharing();
-
-    Q_EMIT onHideWindow();
 
     QCoreApplication::exit(EXIT_SUCCESS);
   }

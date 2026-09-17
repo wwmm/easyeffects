@@ -55,7 +55,8 @@ easyeffects --audio-sharing-toggle
 ```
 
 The toggle options can also be bound to custom keyboard shortcuts on desktops
-without XDG global shortcut support. Queries print the numeric state followed by
+without XDG global shortcut support. These controls preserve the current window
+visibility; use `--hide-window` explicitly to hide it. Queries print the numeric state followed by
 a newline. Unlike CLI state arguments, socket setters use `0` to disable;
 for example, send `audio_sharing:0\n`. Socket queries return the numeric state
 without a newline. Send each socket command terminated by a newline.

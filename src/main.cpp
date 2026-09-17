@@ -387,6 +387,7 @@ static int runSecondaryInstance(const QLockFile& lockFile,
 
   parser.set_is_primary(false);
   parser.process(about, &app);
+  parser.process_hide_window(show_window);
   parser.process_events();
   parser.process_debug_option();
 

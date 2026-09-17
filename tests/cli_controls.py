@@ -7,11 +7,13 @@ Requires pipewire, wireplumber, pw-cli, pw-dump and dbus-run-session.
 
 import json
 import os
+import queue
 from pathlib import Path
 import socket
 import subprocess
 import sys
 import tempfile
+import threading
 import time
 
 
@@ -22,6 +24,65 @@ def wait_for(predicate, description):
             return
         time.sleep(0.1)
     raise AssertionError(f"Timed out waiting for {description}")
+
+
+def check_control_messages(binary, root):
+    """A socket peer records every command, including unwanted window requests."""
+    runtime = root / "runtime"
+    lock = runtime / "easyeffects.lock"
+    address = runtime / "EasyEffectsServer"
+    process_name = Path("/proc/self/exe").resolve().name
+    lock.write_text(f"{os.getpid()}\n{process_name}\n{socket.gethostname()}\n")
+    messages = queue.Queue()
+    stopped = threading.Event()
+    listener = socket.socket(socket.AF_UNIX)
+    listener.bind(str(address))
+    listener.listen()
+    listener.settimeout(0.1)
+
+    def serve():
+        while not stopped.is_set():
+            try:
+                client, _ = listener.accept()
+            except socket.timeout:
+                continue
+            with client:
+                client.settimeout(5)
+                received = b""
+                pending = b""
+                while chunk := client.recv(1024):
+                    received += chunk
+                    pending += chunk
+                    while b"\n" in pending:
+                        line, pending = pending.split(b"\n", 1)
+                        if line.startswith(b"get_"):
+                            client.sendall(b"1")
+                messages.put(received)
+
+    worker = threading.Thread(target=serve, daemon=True)
+    worker.start()
+    try:
+        for option, tag in (("microphone-monitoring", "microphone_monitoring"),
+                            ("audio-sharing", "audio_sharing")):
+            for arguments, expected in (
+                ([f"--{option}", "1"], f"{tag}:1\n"),
+                ([f"--{option}", "2"], f"{tag}:0\n"),
+                ([f"--{option}", "3"], f"get_{tag}\n"),
+                ([f"--{option}-toggle"], f"toggle_{tag}\n"),
+                ([f"--{option}", "invalid"], ""),
+                (["--hide-window", f"--{option}", "1"], f"hide_window\n{tag}:1\n"),
+            ):
+                result = subprocess.run([binary, *arguments], capture_output=True, text=True, timeout=10)
+                assert result.returncode == 0, result.stderr
+                actual = messages.get(timeout=5).decode()
+                assert actual == expected, (arguments, actual, expected)
+        print("PASS: control commands preserve window visibility; explicit hide still works", flush=True)
+    finally:
+        stopped.set()
+        worker.join(timeout=6)
+        listener.close()
+        address.unlink(missing_ok=True)
+        lock.unlink(missing_ok=True)
 
 
 def run_test(binary, root):
@@ -67,6 +128,7 @@ def run_test(binary, root):
         return False
 
     try:
+        check_control_messages(binary, root)
         start("pipewire")
         wait_for(lambda: (root / "runtime/pipewire-0").exists(), "PipeWire")
         start("wireplumber", "--profile", "policy")
