@@ -29,6 +29,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <memory>
+#include <optional>
 #include <string>
 #include "easyeffects_db.h"
 #include "pipeline_type.hpp"
@@ -61,10 +62,36 @@ void CommandLineParser::set_is_primary(const bool& state) {
   is_primary = state;
 }
 
-void CommandLineParser::process(KAboutData& about, QApplication* app) {
+std::optional<int> CommandLineParser::process(KAboutData& about, QApplication* app) {
+  /**
+   * --help and --version are handled here rather than by QCommandLineParser::process():
+   * process() calls ::exit(), global destructors then run with QApplication still alive,
+   * KConfig's QThreadStorage caches (set up by KIconTheme::initTheme()) are destroyed
+   * before the main thread releases its TLS, and Qt warns "QThreadStorage: entry N
+   * destroyed before end of thread".
+   */
+  if (parser->parse(QCoreApplication::arguments())) {
+    if (parser->isSet(QStringLiteral("version"))) {
+      std::cout << QCoreApplication::applicationName().toStdString() << ' '
+                << QCoreApplication::applicationVersion().toStdString() << '\n';
+
+      return EXIT_SUCCESS;
+    }
+
+    if (parser->isSet(QStringLiteral("help"))) {
+      std::cout << parser->helpText().toStdString();
+
+      return EXIT_SUCCESS;
+    }
+  }
+
+  // --help-all needs the Qt options that only QCommandLineParser's private helpText(true)
+  // emits. It and malformed command lines exit inside process().
   parser->process(*app);
 
   about.processCommandLine(parser.get());
+
+  return std::nullopt;
 }
 
 void CommandLineParser::process_debug_option() {
