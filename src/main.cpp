@@ -45,6 +45,7 @@
 #include <csignal>
 #include <format>
 #include <memory>
+#include <optional>
 #include <stdexcept>
 #include <string>
 #include "autostart.hpp"
@@ -354,7 +355,11 @@ static int runSecondaryInstance(const QLockFile& lockFile,
   });
 
   parser.set_is_primary(false);
-  parser.process(about, &app);
+
+  if (const auto exit_code = parser.process(about, &app)) {
+    return *exit_code;
+  }
+
   parser.process_events();
   parser.process_debug_option();
 
@@ -426,7 +431,10 @@ int main(int argc, char* argv[]) {
     return runSecondaryInstance(*lockFile, about, app, *cmd_parser, show_window);
   }
 
-  cmd_parser->process(about, &app);
+  if (const auto exit_code = cmd_parser->process(about, &app)) {
+    return *exit_code;
+  }
+
   cmd_parser->process_debug_option();  // if we take too long to process this one we will miss debug messages
   cmd_parser->process_hide_window(show_window);
 

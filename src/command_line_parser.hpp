@@ -24,6 +24,7 @@
 #include <QCommandLineParser>
 #include <QObject>
 #include <memory>
+#include <optional>
 #include "pipeline_type.hpp"
 
 class KAboutData;
@@ -34,7 +35,11 @@ class CommandLineParser : public QObject {
  public:
   explicit CommandLineParser(KAboutData& about, QObject* parent = nullptr);
 
-  void process(KAboutData& about, QApplication* app);
+  /**
+   * Parses the command line. Returns an exit code for --help and --version,
+   * std::nullopt otherwise. Malformed command lines exit inside Qt.
+   */
+  std::optional<int> process(KAboutData& about, QApplication* app);
 
   void process_debug_option();
 
