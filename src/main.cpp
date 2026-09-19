@@ -321,6 +321,38 @@ static int runSecondaryInstance(const QLockFile& lockFile,
   QObject::connect(&parser, &CommandLineParser::onLoadPreset,
                    [&](PipelineType type, QString preset) { local_client->load_preset(type, preset.toStdString()); });
 
+  QObject::connect(&parser, &CommandLineParser::onSetMicrophoneMonitoring, [&](const bool& state) {
+    local_client->setMicrophoneMonitoring(state);
+    show_window = false;
+  });
+
+  QObject::connect(&parser, &CommandLineParser::onGetMicrophoneMonitoring, [&]() {
+    auto state = local_client->getMicrophoneMonitoring();
+    std::cout << state.toStdString() << '\n';
+    show_window = false;
+  });
+
+  QObject::connect(&parser, &CommandLineParser::onToggleMicrophoneMonitoring, [&]() {
+    local_client->toggleMicrophoneMonitoring();
+    show_window = false;
+  });
+
+  QObject::connect(&parser, &CommandLineParser::onSetAudioSharing, [&](const bool& state) {
+    local_client->setAudioSharing(state);
+    show_window = false;
+  });
+
+  QObject::connect(&parser, &CommandLineParser::onGetAudioSharing, [&]() {
+    auto state = local_client->getAudioSharing();
+    std::cout << state.toStdString() << '\n';
+    show_window = false;
+  });
+
+  QObject::connect(&parser, &CommandLineParser::onToggleAudioSharing, [&]() {
+    local_client->toggleAudioSharing();
+    show_window = false;
+  });
+
   QObject::connect(&parser, &CommandLineParser::onSetGlobalBypass, [&](const bool& state) {
     local_client->setGlobalBypass(state);
     show_window = false;
@@ -355,6 +387,7 @@ static int runSecondaryInstance(const QLockFile& lockFile,
 
   parser.set_is_primary(false);
   parser.process(about, &app);
+  parser.process_hide_window(show_window);
   parser.process_events();
   parser.process_debug_option();
 

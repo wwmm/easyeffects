@@ -65,6 +65,52 @@ void LocalClient::load_preset(PipelineType pipeline_type, std::string preset_nam
   client->flush();
 }
 
+void LocalClient::setMicrophoneMonitoring(const bool& state) {
+  auto msg = std::format("{}:{}\n", tags::local_server::microphone_monitoring, static_cast<int>(state));
+
+  client->write(msg.c_str());
+  client->flush();
+}
+
+auto LocalClient::getMicrophoneMonitoring() -> QString {
+  client->write(tags::local_server::get_microphone_monitoring);
+  client->flush();
+
+  if (client->waitForReadyRead(500)) {
+    return QString::fromUtf8(client->readAll());
+  }
+
+  return "";
+}
+
+void LocalClient::toggleMicrophoneMonitoring() {
+  client->write(tags::local_server::toggle_microphone_monitoring);
+  client->flush();
+}
+
+void LocalClient::setAudioSharing(const bool& state) {
+  auto msg = std::format("{}:{}\n", tags::local_server::audio_sharing, static_cast<int>(state));
+
+  client->write(msg.c_str());
+  client->flush();
+}
+
+auto LocalClient::getAudioSharing() -> QString {
+  client->write(tags::local_server::get_audio_sharing);
+  client->flush();
+
+  if (client->waitForReadyRead(500)) {
+    return QString::fromUtf8(client->readAll());
+  }
+
+  return "";
+}
+
+void LocalClient::toggleAudioSharing() {
+  client->write(tags::local_server::toggle_audio_sharing);
+  client->flush();
+}
+
 void LocalClient::setGlobalBypass(const bool& state) {
   auto msg = std::format("{}:{}\n", tags::local_server::global_bypass, static_cast<int>(state));
 

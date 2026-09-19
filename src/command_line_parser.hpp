@@ -61,6 +61,18 @@ class CommandLineParser : public QObject {
 
   void onToggleGlobalBypass();
 
+  void onSetAudioSharing(bool state);
+
+  void onGetAudioSharing();
+
+  void onToggleAudioSharing();
+
+  void onSetMicrophoneMonitoring(bool state);
+
+  void onGetMicrophoneMonitoring();
+
+  void onToggleMicrophoneMonitoring();
+
   void onInitQML();
 
  private:

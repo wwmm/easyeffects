@@ -102,6 +102,39 @@ void LocalServer::onReadyRead() {
       Q_EMIT onShowWindow();
     } else if (std::strcmp(buf, tags::local_server::hide_window) == 0) {
       Q_EMIT onHideWindow();
+    } else if (std::strncmp(buf, tags::local_server::microphone_monitoring,
+                            strlen(tags::local_server::microphone_monitoring)) == 0) {
+      std::string msg = buf;
+
+      std::smatch matches;
+
+      static const auto re = std::regex("^microphone_monitoring:([01])\n$");
+
+      std::regex_search(msg, matches, re);
+
+      if (matches.size() == 2U) {
+        int state = 0;
+
+        util::str_to_num(std::string(matches[1]), state);
+
+        DbStreamInputs::setListenToMic(state != 0);
+      }
+    } else if (std::strncmp(buf, tags::local_server::audio_sharing, strlen(tags::local_server::audio_sharing)) == 0) {
+      std::string msg = buf;
+
+      std::smatch matches;
+
+      static const auto re = std::regex("^audio_sharing:([01])\n$");
+
+      std::regex_search(msg, matches, re);
+
+      if (matches.size() == 2U) {
+        int state = 0;
+
+        util::str_to_num(std::string(matches[1]), state);
+
+        DbStreamOutputs::setLinkToVirtualSource(state != 0);
+      }
     } else if (std::strncmp(buf, tags::local_server::global_bypass, strlen(tags::local_server::global_bypass)) == 0) {
       std::string msg = buf;
 
@@ -144,7 +177,7 @@ void LocalServer::onReadyRead() {
           std::regex("^set_property:(input|output):([^:]+):([0-9]+):(?:(left|right):)?([^:]+):([^\n]+)");
 
       std::regex_search(msg, matches, re);
- 
+
       if (matches.size() == 7U) {
         const auto& pipeline = matches[1].str();
         const auto& plugin_name = matches[2].str();
@@ -198,6 +231,14 @@ void LocalServer::onReadyRead() {
 
         socket->write(preset_name.toUtf8());
       }
+    } else if (std::strcmp(buf, tags::local_server::get_microphone_monitoring) == 0) {
+      socket->write(DbStreamInputs::listenToMic() ? "1" : "2");
+    } else if (std::strcmp(buf, tags::local_server::toggle_microphone_monitoring) == 0) {
+      DbStreamInputs::setListenToMic(!DbStreamInputs::listenToMic());
+    } else if (std::strcmp(buf, tags::local_server::get_audio_sharing) == 0) {
+      socket->write(DbStreamOutputs::linkToVirtualSource() ? "1" : "2");
+    } else if (std::strcmp(buf, tags::local_server::toggle_audio_sharing) == 0) {
+      DbStreamOutputs::setLinkToVirtualSource(!DbStreamOutputs::linkToVirtualSource());
     } else if (std::strcmp(buf, tags::local_server::get_global_bypass) == 0) {
       socket->write(DbMain::bypass() ? "1" : "2");
     } else if (std::strncmp(buf, tags::local_server::toggle_global_bypass,
