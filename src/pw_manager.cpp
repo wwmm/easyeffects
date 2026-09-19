@@ -404,11 +404,13 @@ Manager::Manager(QObject* parent)
 
   for (const auto& node : model_nodes.get_list()) {
     if (node.media_class == tags::pipewire::media_class::output_stream) {
-      if (DbMain::processAllOutputs() && !node.is_blocklisted) {
+      if (DbMain::processAllOutputs() && !node.is_blocklisted &&
+          !DbMain::outputSinkBlocklist().contains(DbStreamOutputs::outputDevice())) {
         connectStreamOutput(node.id);
       }
     } else if (node.media_class == tags::pipewire::media_class::input_stream) {
-      if (DbMain::processAllInputs() && !node.is_blocklisted) {
+      if (DbMain::processAllInputs() && !node.is_blocklisted &&
+          !DbMain::inputSourceBlocklist().contains(DbStreamInputs::inputDevice())) {
         connectStreamInput(node.id);
       }
     }

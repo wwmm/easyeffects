@@ -479,7 +479,8 @@ void NodeManager::onNodeInfo(void* object, const pw_node_info* info) {
   }
 
   auto connect_to_ee_sink = [&]() {
-    if (DbMain::processAllOutputs() && !nd->nd_info->is_blocklisted) {
+    if (DbMain::processAllOutputs() && !nd->nd_info->is_blocklisted &&
+        !DbMain::outputSinkBlocklist().contains(DbStreamOutputs::outputDevice())) {
       // target.node for backward compatibility with old PW session managers
       nm->metadata_manager.set_property(nd->nd_info->id, "target.node", "Spa:Id",
                                         util::to_string(nm->ee_sink_node.id).c_str());
@@ -490,7 +491,8 @@ void NodeManager::onNodeInfo(void* object, const pw_node_info* info) {
   };
 
   auto connect_to_ee_source = [&]() {
-    if (DbMain::processAllInputs() && !nd->nd_info->is_blocklisted) {
+    if (DbMain::processAllInputs() && !nd->nd_info->is_blocklisted &&
+        !DbMain::inputSourceBlocklist().contains(DbStreamInputs::inputDevice())) {
       // target.node for backward compatibility with old PW session managers
       nm->metadata_manager.set_property(nd->nd_info->id, "target.node", "Spa:Id",
                                         util::to_string(nm->ee_source_node.id).c_str());

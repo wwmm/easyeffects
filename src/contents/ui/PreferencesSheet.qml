@@ -21,6 +21,7 @@ pragma ComponentBehavior: Bound
 import QtGraphs
 import QtQml // Despite of what Qt extension says this import is needed. We crash without it
 import QtQuick
+import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
@@ -30,6 +31,8 @@ KirigamiSettings.ConfigurationView {
     id: preferencesSheet
 
     required property bool canUseSysTray
+    property bool showExcludedOutputSinks: false
+    property bool showExcludedInputSources: false
 
     modules: [
         KirigamiSettings.ConfigurationModule {
@@ -154,6 +157,50 @@ KirigamiSettings.ConfigurationView {
                     }
                 }
 
+                FormCard.FormButtonDelegate {
+                    text: i18n("Excluded output sinks") // qmllint disable
+                    description: i18n("Do not automatically process streams when one of these sinks is selected as the output device.") // qmllint disable
+                    checkable: true
+                    checked: preferencesSheet.showExcludedOutputSinks
+                    trailingLogo.direction: checked ? Qt.DownArrow : Qt.RightArrow
+                    onClicked: preferencesSheet.showExcludedOutputSinks = checked
+                }
+
+                Controls.ScrollView {
+                    visible: preferencesSheet.showExcludedOutputSinks
+                    Layout.fillWidth: true
+                    Layout.preferredHeight: visible ? Kirigami.Units.gridUnit * 12 : 0
+                    clip: true
+
+                    ListView {
+                        id: excludedOutputSinksList
+
+                        model: ModelNodes.sinkDevices
+                        clip: true
+                        reuseItems: true
+
+                        delegate: FormCard.FormCheckDelegate {
+                            required property var model
+
+                            width: excludedOutputSinksList.width
+                            text: model.description
+                            description: model.name
+                            checked: DbMain.outputSinkBlocklist.includes(model.name)
+                            onCheckedChanged: {
+                                const blocklist = DbMain.outputSinkBlocklist.slice();
+                                const index = blocklist.indexOf(model.name);
+
+                                if (checked && index === -1)
+                                    blocklist.push(model.name);
+                                else if (!checked && index !== -1)
+                                    blocklist.splice(index, 1);
+
+                                DbMain.outputSinkBlocklist = blocklist;
+                            }
+                        }
+                    }
+                }
+
                 EeSwitch {
                     id: processAllInputs
 
@@ -163,6 +210,50 @@ KirigamiSettings.ConfigurationView {
                     onCheckedChanged: {
                         if (isChecked !== DbMain.processAllInputs)
                             DbMain.processAllInputs = isChecked;
+                    }
+                }
+
+                FormCard.FormButtonDelegate {
+                    text: i18n("Excluded input sources") // qmllint disable
+                    description: i18n("Do not automatically process streams when one of these sources is selected as the input device.") // qmllint disable
+                    checkable: true
+                    checked: preferencesSheet.showExcludedInputSources
+                    trailingLogo.direction: checked ? Qt.DownArrow : Qt.RightArrow
+                    onClicked: preferencesSheet.showExcludedInputSources = checked
+                }
+
+                Controls.ScrollView {
+                    visible: preferencesSheet.showExcludedInputSources
+                    Layout.fillWidth: true
+                    Layout.preferredHeight: visible ? Kirigami.Units.gridUnit * 12 : 0
+                    clip: true
+
+                    ListView {
+                        id: excludedInputSourcesList
+
+                        model: ModelNodes.sourceDevices
+                        clip: true
+                        reuseItems: true
+
+                        delegate: FormCard.FormCheckDelegate {
+                            required property var model
+
+                            width: excludedInputSourcesList.width
+                            text: model.description
+                            description: model.name
+                            checked: DbMain.inputSourceBlocklist.includes(model.name)
+                            onCheckedChanged: {
+                                const blocklist = DbMain.inputSourceBlocklist.slice();
+                                const index = blocklist.indexOf(model.name);
+
+                                if (checked && index === -1)
+                                    blocklist.push(model.name);
+                                else if (!checked && index !== -1)
+                                    blocklist.splice(index, 1);
+
+                                DbMain.inputSourceBlocklist = blocklist;
+                            }
+                        }
                     }
                 }
 
