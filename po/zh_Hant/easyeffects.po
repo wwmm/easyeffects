@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-09-19 00:03+0000\n"
+"POT-Creation-Date: 2026-09-19 15:26+0000\n"
 "PO-Revision-Date: 2026-09-19 14:52+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
@@ -991,7 +991,7 @@ msgid "Status"
 msgstr "狀態"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:106
-#: src/contents/ui/PreferencesSheet.qml:68
+#: src/contents/ui/PreferencesSheet.qml:71
 msgid "Database"
 msgstr "資料庫"
 
@@ -1024,7 +1024,7 @@ msgid "Default"
 msgstr "預設"
 
 #: src/contents/ui/Crossfeed.qml:167 src/contents/ui/PageStreamsEffects.qml:660
-#: src/contents/ui/PreferencesSheet.qml:62 src/contents/ui/Reverb.qml:335
+#: src/contents/ui/PreferencesSheet.qml:65 src/contents/ui/Reverb.qml:335
 msgid "Presets"
 msgstr "預設集"
 
@@ -1045,7 +1045,7 @@ msgstr "衰減"
 msgid "Bit reduction"
 msgstr "位元縮減"
 
-#: src/contents/ui/Crusher.qml:91 src/contents/ui/PreferencesSheet.qml:433
+#: src/contents/ui/Crusher.qml:91 src/contents/ui/PreferencesSheet.qml:524
 msgid "Shape"
 msgstr "形狀"
 
@@ -1065,7 +1065,7 @@ msgstr "直流偏移"
 msgid "Anti-aliasing"
 msgstr "抗鋸齒"
 
-#: src/contents/ui/Crusher.qml:142 src/contents/ui/PreferencesSheet.qml:684
+#: src/contents/ui/Crusher.qml:142 src/contents/ui/PreferencesSheet.qml:775
 msgid "Mix"
 msgstr "混音"
 
@@ -2212,12 +2212,12 @@ msgid "No Clients"
 msgstr "無客端"
 
 #: src/contents/ui/PipeWirePage.qml:320
-#: src/contents/ui/PreferencesSheet.qml:392
+#: src/contents/ui/PreferencesSheet.qml:483
 msgid "State"
 msgstr "狀態"
 
 #: src/contents/ui/PipeWirePage.qml:327
-#: src/contents/ui/PreferencesSheet.qml:399
+#: src/contents/ui/PreferencesSheet.qml:490
 msgid "Enabled"
 msgstr "已經啟用"
 
@@ -2289,51 +2289,51 @@ msgstr "音效尚無可用"
 msgid "%1 cannot be used because %2 is not installed on the system."
 msgstr "無法使用 %1 ，因為系統上尚未安裝 %2 。"
 
-#: src/contents/ui/PreferencesSheet.qml:38
+#: src/contents/ui/PreferencesSheet.qml:41
 msgid "Background Service"
 msgstr "背景服務"
 
-#: src/contents/ui/PreferencesSheet.qml:44
+#: src/contents/ui/PreferencesSheet.qml:47
 msgid "Audio"
 msgstr "音訊"
 
-#: src/contents/ui/PreferencesSheet.qml:50
+#: src/contents/ui/PreferencesSheet.qml:53
 msgid "Spectrum Analyzer"
 msgstr "頻譜分析器"
 
-#: src/contents/ui/PreferencesSheet.qml:56
+#: src/contents/ui/PreferencesSheet.qml:59
 msgid "Style"
 msgstr "樣式"
 
-#: src/contents/ui/PreferencesSheet.qml:74
+#: src/contents/ui/PreferencesSheet.qml:77
 msgid "Experimental Features"
 msgstr "實驗性功能"
 
-#: src/contents/ui/PreferencesSheet.qml:87
+#: src/contents/ui/PreferencesSheet.qml:90
 msgid "Enable service mode"
 msgstr "啟用服務模式"
 
-#: src/contents/ui/PreferencesSheet.qml:88
+#: src/contents/ui/PreferencesSheet.qml:91
 msgid "Easy Effects is active in background when the window is closed."
 msgstr "Easy Effects 是在背景中作用，當視窗關閉時。"
 
-#: src/contents/ui/PreferencesSheet.qml:100
+#: src/contents/ui/PreferencesSheet.qml:103
 msgid "Autostart on login"
 msgstr "登入時自動啟動"
 
-#: src/contents/ui/PreferencesSheet.qml:101
+#: src/contents/ui/PreferencesSheet.qml:104
 msgid "Easy Effects is launched at user session startup."
 msgstr "Easy Effects 在使用者階段工作話啟動時啟動。"
 
-#: src/contents/ui/PreferencesSheet.qml:114
+#: src/contents/ui/PreferencesSheet.qml:117
 msgid "Show the tray icon"
 msgstr "顯示系統匣圖示"
 
-#: src/contents/ui/PreferencesSheet.qml:127
+#: src/contents/ui/PreferencesSheet.qml:130
 msgid "Do not show the application window"
 msgstr "不要顯示應用程式視窗"
 
-#: src/contents/ui/PreferencesSheet.qml:128
+#: src/contents/ui/PreferencesSheet.qml:131
 msgid ""
 "Do not show the window when the application starts. In general this option "
 "should not be enabled. It is intended only as a workaround for systems that "
@@ -2342,23 +2342,45 @@ msgstr ""
 "應用程式啟動時不要顯示視窗。通常不應啟用此選項，僅作為系統無法順利自動啟動 "
 "Easy Effects 時的替代方案。"
 
-#: src/contents/ui/PreferencesSheet.qml:148
+#: src/contents/ui/PreferencesSheet.qml:151
 msgid "Process all output streams"
 msgstr "處理全部的輸出串流"
 
-#: src/contents/ui/PreferencesSheet.qml:160
+#: src/contents/ui/PreferencesSheet.qml:161
+#, fuzzy
+msgid "Excluded output sinks"
+msgstr "已經排除的應用程式"
+
+#: src/contents/ui/PreferencesSheet.qml:162
+msgid ""
+"Do not automatically process streams when one of these sinks is selected as "
+"the output device."
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:207
 msgid "Process all input streams"
 msgstr "處理全部的輸入串流"
 
-#: src/contents/ui/PreferencesSheet.qml:172
+#: src/contents/ui/PreferencesSheet.qml:217
+#, fuzzy
+msgid "Excluded input sources"
+msgstr "已經排除的應用程式"
+
+#: src/contents/ui/PreferencesSheet.qml:218
+msgid ""
+"Do not automatically process streams when one of these sources is selected "
+"as the input device."
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:263
 msgid "Ignore streams from monitor of devices"
 msgstr "忽略來自顯示器裝置的串流"
 
-#: src/contents/ui/PreferencesSheet.qml:184
+#: src/contents/ui/PreferencesSheet.qml:275
 msgid "Use cubic volume"
 msgstr "使用立方體音量"
 
-#: src/contents/ui/PreferencesSheet.qml:185
+#: src/contents/ui/PreferencesSheet.qml:276
 msgid ""
 "Use cubic scale for stream volume rather than the linear one. Low "
 "percentages results in a lower perceived volume while the loudness appears "
@@ -2367,11 +2389,11 @@ msgstr ""
 "使用立方尺度(cubic scale)來表示流量，而非線性尺度。較低的百分比會導致較低的感"
 "知音量，當調動鈕變動時其響度變化顯示較為均勻。"
 
-#: src/contents/ui/PreferencesSheet.qml:197
+#: src/contents/ui/PreferencesSheet.qml:288
 msgid "Activate monitor channel volumes"
 msgstr "啟用螢幕頻道音量"
 
-#: src/contents/ui/PreferencesSheet.qml:198
+#: src/contents/ui/PreferencesSheet.qml:289
 msgid ""
 "Activate if controlling Easy Effects virtual devices volume and mute state "
 "by third party applications is required."
@@ -2379,11 +2401,11 @@ msgstr ""
 "若要由第三方應用程式對 Easy Effects 虛擬裝置的音量和靜音狀態進行控制，進行啟"
 "用是必須的。"
 
-#: src/contents/ui/PreferencesSheet.qml:210
+#: src/contents/ui/PreferencesSheet.qml:301
 msgid "Ignore system notifications"
 msgstr "忽略串流通知"
 
-#: src/contents/ui/PreferencesSheet.qml:211
+#: src/contents/ui/PreferencesSheet.qml:302
 msgid ""
 "Processing system notifications may cause crackling sound, so it would be "
 "better to ignore them, but for some presets it may be recommended since they "
@@ -2392,19 +2414,19 @@ msgstr ""
 "處理系統通知時可能會導致爆裂聲響，因此最好是忽略它們，但對於某些預設集，可能"
 "建議如此做，因為聽起來太過大聲。"
 
-#: src/contents/ui/PreferencesSheet.qml:223
+#: src/contents/ui/PreferencesSheet.qml:314
 msgid "Enable/disable input monitoring"
 msgstr "啟用/停用輸入監控"
 
-#: src/contents/ui/PreferencesSheet.qml:235
+#: src/contents/ui/PreferencesSheet.qml:326
 msgid "Mic monitor plays to output effects pipeline"
 msgstr "麥克風監聽播放輸出音效管道"
 
-#: src/contents/ui/PreferencesSheet.qml:247
+#: src/contents/ui/PreferencesSheet.qml:338
 msgid "Copy the input audio buffer"
 msgstr "複製輸入音源緩衝"
 
-#: src/contents/ui/PreferencesSheet.qml:248
+#: src/contents/ui/PreferencesSheet.qml:339
 msgid ""
 "Use a copy of the input audio buffer given by the sound server when "
 "processing audio inside Easy Effects plugins. This fixes audio glitches that "
@@ -2414,173 +2436,173 @@ msgstr ""
 "在 Easy Effects 插件內處理音源時，使用聲音伺服器提供的輸入音源緩衝的副本。這"
 "修復了外部應用程序從 Easy Effects 虛擬設備監視器錄製時可能發生的音源差錯。"
 
-#: src/contents/ui/PreferencesSheet.qml:260
+#: src/contents/ui/PreferencesSheet.qml:351
 msgid "Reset Global Bypass on device change"
 msgstr "重設整體省略(Global Bypass)於裝置變更時"
 
-#: src/contents/ui/PreferencesSheet.qml:261
+#: src/contents/ui/PreferencesSheet.qml:352
 msgid "Automatically enable effects when the audio device changes."
 msgstr "當音訊裝置變更時自動啟用音效。"
 
-#: src/contents/ui/PreferencesSheet.qml:273
+#: src/contents/ui/PreferencesSheet.qml:364
 msgid "Enable the link delay"
 msgstr "啟用連結延遲"
 
-#: src/contents/ui/PreferencesSheet.qml:274
+#: src/contents/ui/PreferencesSheet.qml:365
 msgid "When enabled, a delay is applied before linking the audio filters."
 msgstr "當啟用之後，在連結音訊篩選器之前即會套用延遲。"
 
-#: src/contents/ui/PreferencesSheet.qml:286
+#: src/contents/ui/PreferencesSheet.qml:377
 msgid "Link delay"
 msgstr "連結延遲"
 
-#: src/contents/ui/PreferencesSheet.qml:303
+#: src/contents/ui/PreferencesSheet.qml:394
 msgid "Enable the inactivity timeout"
 msgstr "啟用在不作用時暫停"
 
-#: src/contents/ui/PreferencesSheet.qml:304
+#: src/contents/ui/PreferencesSheet.qml:395
 msgid ""
 "When all streams are inactive, Easy Effects pipeline remains loaded for an "
 "extra amount of time."
 msgstr ""
 "當全部串流都處於非作用狀態時，Easy Effects 管道會在額外的時間內保持載入狀態。"
 
-#: src/contents/ui/PreferencesSheet.qml:316
+#: src/contents/ui/PreferencesSheet.qml:407
 msgid "Inactivity timeout"
 msgstr "非作用時暫停"
 
-#: src/contents/ui/PreferencesSheet.qml:331
+#: src/contents/ui/PreferencesSheet.qml:422
 msgid "Level meters frame rate cap"
 msgstr "等級量表音框率上限"
 
-#: src/contents/ui/PreferencesSheet.qml:332
+#: src/contents/ui/PreferencesSheet.qml:423
 msgid "Maximum level meter update rate."
 msgstr "最大等級量表更新率。"
 
-#: src/contents/ui/PreferencesSheet.qml:346
+#: src/contents/ui/PreferencesSheet.qml:437
 msgid "Level meters label"
 msgstr "等級量表標籤"
 
-#: src/contents/ui/PreferencesSheet.qml:347
+#: src/contents/ui/PreferencesSheet.qml:438
 msgid ""
 "The time it takes for the level meter labels to be updated when the current "
 "level is below the last highest one."
 msgstr "當前等級低於最後最高等級時，更新等級量表標籤所需的時間。"
 
-#: src/contents/ui/PreferencesSheet.qml:364
+#: src/contents/ui/PreferencesSheet.qml:455
 msgid "Enable level meters animation"
 msgstr "啟用等級量表動畫"
 
-#: src/contents/ui/PreferencesSheet.qml:373
+#: src/contents/ui/PreferencesSheet.qml:464
 msgid "Level meters animation duration"
 msgstr "等級量表動畫持續時間"
 
-#: src/contents/ui/PreferencesSheet.qml:411
+#: src/contents/ui/PreferencesSheet.qml:502
 msgid "Audio delay compensation"
 msgstr "音訊延遲補償"
 
-#: src/contents/ui/PreferencesSheet.qml:426
+#: src/contents/ui/PreferencesSheet.qml:517
 msgid "Graph"
 msgstr "圖形"
 
-#: src/contents/ui/PreferencesSheet.qml:437
+#: src/contents/ui/PreferencesSheet.qml:528
 msgid "Bars"
 msgstr "條列"
 
-#: src/contents/ui/PreferencesSheet.qml:437
+#: src/contents/ui/PreferencesSheet.qml:528
 msgid "Lines"
 msgstr "線條"
 
-#: src/contents/ui/PreferencesSheet.qml:437
+#: src/contents/ui/PreferencesSheet.qml:528
 msgid "Dots"
 msgstr "點點"
 
-#: src/contents/ui/PreferencesSheet.qml:437
+#: src/contents/ui/PreferencesSheet.qml:528
 msgid "Area"
 msgstr "區塊"
 
-#: src/contents/ui/PreferencesSheet.qml:447
+#: src/contents/ui/PreferencesSheet.qml:538
 msgid "Dynamic scale"
 msgstr "動態比例"
 
-#: src/contents/ui/PreferencesSheet.qml:459
+#: src/contents/ui/PreferencesSheet.qml:550
 msgid "Logarithmic frequency axis"
 msgstr "對數頻率軸"
 
-#: src/contents/ui/PreferencesSheet.qml:471
+#: src/contents/ui/PreferencesSheet.qml:562
 msgid "Points"
 msgstr "點數"
 
-#: src/contents/ui/PreferencesSheet.qml:486
+#: src/contents/ui/PreferencesSheet.qml:577
 msgid "Height"
 msgstr "高度"
 
-#: src/contents/ui/PreferencesSheet.qml:493
+#: src/contents/ui/PreferencesSheet.qml:584
 msgid "px"
 msgstr "px"
 
-#: src/contents/ui/PreferencesSheet.qml:500
+#: src/contents/ui/PreferencesSheet.qml:591
 msgid "Spectrum frame rate cap"
 msgstr "頻譜音框率上限"
 
-#: src/contents/ui/PreferencesSheet.qml:501
+#: src/contents/ui/PreferencesSheet.qml:592
 msgid "Maximum spectrum update rate."
 msgstr "最大頻譜更新率。"
 
-#: src/contents/ui/PreferencesSheet.qml:516
+#: src/contents/ui/PreferencesSheet.qml:607
 msgid "Frequency Range"
 msgstr "頻率範圍"
 
-#: src/contents/ui/PreferencesSheet.qml:523
+#: src/contents/ui/PreferencesSheet.qml:614
 msgid "Minimum"
 msgstr "最小"
 
-#: src/contents/ui/PreferencesSheet.qml:539
+#: src/contents/ui/PreferencesSheet.qml:630
 msgid "Maximum"
 msgstr "最大"
 
-#: src/contents/ui/PreferencesSheet.qml:561
+#: src/contents/ui/PreferencesSheet.qml:652
 msgid "Database autosave interval"
 msgstr "資料庫自動儲存間隔"
 
-#: src/contents/ui/PreferencesSheet.qml:575
+#: src/contents/ui/PreferencesSheet.qml:666
 msgid "Most used presets"
 msgstr "最常使用預設集"
 
-#: src/contents/ui/PreferencesSheet.qml:593
+#: src/contents/ui/PreferencesSheet.qml:684
 msgid "Window"
 msgstr "視窗"
 
-#: src/contents/ui/PreferencesSheet.qml:602
+#: src/contents/ui/PreferencesSheet.qml:693
 msgid "Force KDE's Breeze theme when Easy Effects starts"
 msgstr "強制 KDE 的 Breeze 主題，當 Easy Effects 啟動時"
 
-#: src/contents/ui/PreferencesSheet.qml:603
+#: src/contents/ui/PreferencesSheet.qml:694
 msgid ""
 "It is necessary to restart the service for changes in this setting to take "
 "effect."
 msgstr "必須重新啟動服務才能使此設定變更作用生效。"
 
-#: src/contents/ui/PreferencesSheet.qml:616
+#: src/contents/ui/PreferencesSheet.qml:707
 msgid "Reduce effects list controls"
 msgstr "減小音效列表控制"
 
-#: src/contents/ui/PreferencesSheet.qml:617
+#: src/contents/ui/PreferencesSheet.qml:708
 msgid ""
 "Action buttons in the effects list are moved inside a context menu for a "
 "more compact view."
 msgstr "音效列表中的操作按鈕移動至前後選單內，以獲得較為緊湊的檢視。"
 
-#: src/contents/ui/PreferencesSheet.qml:628
-#: src/contents/ui/PreferencesSheet.qml:665
+#: src/contents/ui/PreferencesSheet.qml:719
+#: src/contents/ui/PreferencesSheet.qml:756
 msgid "Color scheme"
 msgstr "配色方案"
 
-#: src/contents/ui/PreferencesSheet.qml:642
+#: src/contents/ui/PreferencesSheet.qml:733
 msgid "Force English language"
 msgstr "强制使用英文"
 
-#: src/contents/ui/PreferencesSheet.qml:643
+#: src/contents/ui/PreferencesSheet.qml:734
 msgid ""
 "Do not translate the user interface and show text in English language. "
 "Useful if the translation in the local language is incomplete or "
@@ -2589,110 +2611,110 @@ msgstr ""
 "使用者介面文字不使用翻譯而以英語顯示。若是當地語言翻譯不太完善或難以理解，則"
 "相當有用。需要重新啟動服務才能套用此選項。"
 
-#: src/contents/ui/PreferencesSheet.qml:654
+#: src/contents/ui/PreferencesSheet.qml:745
 msgid "Graphs"
 msgstr "圖形"
 
-#: src/contents/ui/PreferencesSheet.qml:669
+#: src/contents/ui/PreferencesSheet.qml:760
 msgid "Automatic"
 msgstr "自動"
 
-#: src/contents/ui/PreferencesSheet.qml:669
+#: src/contents/ui/PreferencesSheet.qml:760
 msgid "Light"
 msgstr "亮"
 
-#: src/contents/ui/PreferencesSheet.qml:669
+#: src/contents/ui/PreferencesSheet.qml:760
 msgid "Dark"
 msgstr "暗"
 
-#: src/contents/ui/PreferencesSheet.qml:680
+#: src/contents/ui/PreferencesSheet.qml:771
 msgid "Color theme"
 msgstr "顏色主題"
 
-#: src/contents/ui/PreferencesSheet.qml:684
+#: src/contents/ui/PreferencesSheet.qml:775
 msgid "Green"
 msgstr "綠"
 
-#: src/contents/ui/PreferencesSheet.qml:684
+#: src/contents/ui/PreferencesSheet.qml:775
 msgid "Green neon"
 msgstr "綠色霓虹"
 
-#: src/contents/ui/PreferencesSheet.qml:684
+#: src/contents/ui/PreferencesSheet.qml:775
 msgid "Orange"
 msgstr "橘"
 
-#: src/contents/ui/PreferencesSheet.qml:684
+#: src/contents/ui/PreferencesSheet.qml:775
 msgid "Yellow"
 msgstr "黃"
 
-#: src/contents/ui/PreferencesSheet.qml:684
+#: src/contents/ui/PreferencesSheet.qml:775
 msgid "Blue"
 msgstr "藍"
 
-#: src/contents/ui/PreferencesSheet.qml:684
+#: src/contents/ui/PreferencesSheet.qml:775
 msgid "Purple"
 msgstr "紫"
 
-#: src/contents/ui/PreferencesSheet.qml:684
+#: src/contents/ui/PreferencesSheet.qml:775
 msgid "Grey"
 msgstr "灰"
 
-#: src/contents/ui/PreferencesSheet.qml:684
+#: src/contents/ui/PreferencesSheet.qml:775
 msgid "User"
 msgstr "使用者"
 
-#: src/contents/ui/PreferencesSheet.qml:692
+#: src/contents/ui/PreferencesSheet.qml:783
 msgctxt "@label"
 msgid "Background"
 msgstr "背景"
 
-#: src/contents/ui/PreferencesSheet.qml:701
+#: src/contents/ui/PreferencesSheet.qml:792
 msgctxt "@label"
 msgid "Plot area background"
 msgstr "繪製區域背景"
 
-#: src/contents/ui/PreferencesSheet.qml:710
+#: src/contents/ui/PreferencesSheet.qml:801
 msgctxt "@label"
 msgid "Series colors"
 msgstr "系列顏色"
 
-#: src/contents/ui/PreferencesSheet.qml:719
+#: src/contents/ui/PreferencesSheet.qml:810
 msgctxt "@label"
 msgid "Axis labels text color"
 msgstr "座標軸線標籤文字顏色"
 
-#: src/contents/ui/PreferencesSheet.qml:728
+#: src/contents/ui/PreferencesSheet.qml:819
 msgctxt "@label"
 msgid "Axis labels background color"
 msgstr "坐標軸線標籤背景顏色"
 
-#: src/contents/ui/PreferencesSheet.qml:737
+#: src/contents/ui/PreferencesSheet.qml:828
 msgctxt "@label"
 msgid "Border color"
 msgstr "邊框顏色"
 
-#: src/contents/ui/PreferencesSheet.qml:746
+#: src/contents/ui/PreferencesSheet.qml:837
 msgid "Line width"
 msgstr "線條寬度"
 
-#: src/contents/ui/PreferencesSheet.qml:760
+#: src/contents/ui/PreferencesSheet.qml:851
 msgid "Show grid lines"
 msgstr "顯示網格線"
 
-#: src/contents/ui/PreferencesSheet.qml:778
+#: src/contents/ui/PreferencesSheet.qml:869
 msgid "Autoload delay"
 msgstr "自動載入延遲"
 
-#: src/contents/ui/PreferencesSheet.qml:779
+#: src/contents/ui/PreferencesSheet.qml:870
 msgid ""
 "Delay between receiving a new device route and the call to autoload a preset."
 msgstr "接收新裝置路徑和呼叫自動載入預設集之間的延遲。"
 
-#: src/contents/ui/PreferencesSheet.qml:795
+#: src/contents/ui/PreferencesSheet.qml:886
 msgid "Ignore the blocklist from presets"
 msgstr "忽略來自預設集的封鎖清單"
 
-#: src/contents/ui/PreferencesSheet.qml:796
+#: src/contents/ui/PreferencesSheet.qml:887
 msgid ""
 "If enabled, the list of excluded apps set in the loaded preset is ignored "
 "and does not replace the one set by the user."
@@ -2700,27 +2722,27 @@ msgstr ""
 "如果啟用，則所載入的預設集其設定中的排除程式列表將被忽略，並且不會取代用戶的"
 "設定。"
 
-#: src/contents/ui/PreferencesSheet.qml:817
+#: src/contents/ui/PreferencesSheet.qml:908
 msgid "Global shortcuts"
 msgstr "整體快速鍵"
 
-#: src/contents/ui/PreferencesSheet.qml:818
+#: src/contents/ui/PreferencesSheet.qml:909
 msgid "Enables support for XDG global shortcuts."
 msgstr "啟用對 XDG 整體快速鍵的支援。"
 
-#: src/contents/ui/PreferencesSheet.qml:830
+#: src/contents/ui/PreferencesSheet.qml:921
 msgid "Native window of effects"
 msgstr "音效的原生視窗"
 
-#: src/contents/ui/PreferencesSheet.qml:831
+#: src/contents/ui/PreferencesSheet.qml:922
 msgid "Allows the native user interface of effects to be shown/hidden."
 msgstr "允許音效的原生使用者介面可以顯示/隱藏。"
 
-#: src/contents/ui/PreferencesSheet.qml:843
+#: src/contents/ui/PreferencesSheet.qml:934
 msgid "Update frequency"
 msgstr "更新頻率"
 
-#: src/contents/ui/PreferencesSheet.qml:844
+#: src/contents/ui/PreferencesSheet.qml:935
 msgid "Related to LV2 plugins."
 msgstr "與 LV2 插件相關。"
 
@@ -3307,27 +3329,27 @@ msgstr "一個或多個參數有錯誤格式"
 msgid "Generic error while loading the effect"
 msgstr "載入音效時出現一般錯誤"
 
-#: src/pw_model_nodes.cpp:492
+#: src/pw_model_nodes.cpp:508
 msgid "Running"
 msgstr "運行中"
 
-#: src/pw_model_nodes.cpp:494
+#: src/pw_model_nodes.cpp:510
 msgid "Suspended"
 msgstr "已暫停"
 
-#: src/pw_model_nodes.cpp:496
+#: src/pw_model_nodes.cpp:512
 msgid "Idle"
 msgstr "閒置"
 
-#: src/pw_model_nodes.cpp:498
+#: src/pw_model_nodes.cpp:514
 msgid "Creating"
 msgstr "建立中"
 
-#: src/pw_model_nodes.cpp:500
+#: src/pw_model_nodes.cpp:516
 msgid "Error"
 msgstr "錯誤"
 
-#: src/pw_model_nodes.cpp:502
+#: src/pw_model_nodes.cpp:518
 msgid "Unknown"
 msgstr "不明"
 

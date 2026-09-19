@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-09-19 00:03+0000\n"
+"POT-Creation-Date: 2026-09-19 15:26+0000\n"
 "PO-Revision-Date: 2026-06-25 10:01+0000\n"
 "Last-Translator: தமிழ்நேரம் <tamilneram247@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1003,7 +1003,7 @@ msgid "Status"
 msgstr "நிலை"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:106
-#: src/contents/ui/PreferencesSheet.qml:68
+#: src/contents/ui/PreferencesSheet.qml:71
 msgid "Database"
 msgstr "தரவுத்தளம்"
 
@@ -1036,7 +1036,7 @@ msgid "Default"
 msgstr "இயல்புநிலை"
 
 #: src/contents/ui/Crossfeed.qml:167 src/contents/ui/PageStreamsEffects.qml:660
-#: src/contents/ui/PreferencesSheet.qml:62 src/contents/ui/Reverb.qml:335
+#: src/contents/ui/PreferencesSheet.qml:65 src/contents/ui/Reverb.qml:335
 msgid "Presets"
 msgstr "முன்னமைவுகள்"
 
@@ -1057,7 +1057,7 @@ msgstr "சிதைவு"
 msgid "Bit reduction"
 msgstr "பிட் குறைப்பு"
 
-#: src/contents/ui/Crusher.qml:91 src/contents/ui/PreferencesSheet.qml:433
+#: src/contents/ui/Crusher.qml:91 src/contents/ui/PreferencesSheet.qml:524
 msgid "Shape"
 msgstr "வடிவம்"
 
@@ -1077,7 +1077,7 @@ msgstr "நேர்மின்னழுத்தம் ஆஃப்செட�
 msgid "Anti-aliasing"
 msgstr "எதிர்ப்பு மாற்று"
 
-#: src/contents/ui/Crusher.qml:142 src/contents/ui/PreferencesSheet.qml:684
+#: src/contents/ui/Crusher.qml:142 src/contents/ui/PreferencesSheet.qml:775
 msgid "Mix"
 msgstr "கலக்க"
 
@@ -2253,12 +2253,12 @@ msgid "No Clients"
 msgstr "வாடிக்கையாளர்கள் இல்லை"
 
 #: src/contents/ui/PipeWirePage.qml:320
-#: src/contents/ui/PreferencesSheet.qml:392
+#: src/contents/ui/PreferencesSheet.qml:483
 msgid "State"
 msgstr "மாநிலம்"
 
 #: src/contents/ui/PipeWirePage.qml:327
-#: src/contents/ui/PreferencesSheet.qml:399
+#: src/contents/ui/PreferencesSheet.qml:490
 msgid "Enabled"
 msgstr "இயக்கப்பட்டது"
 
@@ -2330,51 +2330,51 @@ msgstr "விளைவு கிடைக்கவில்லை"
 msgid "%1 cannot be used because %2 is not installed on the system."
 msgstr "கணினியில் %2 நிறுவப்படாததால் %1ஐப் பயன்படுத்த முடியாது."
 
-#: src/contents/ui/PreferencesSheet.qml:38
+#: src/contents/ui/PreferencesSheet.qml:41
 msgid "Background Service"
 msgstr "பின்னணி பணி"
 
-#: src/contents/ui/PreferencesSheet.qml:44
+#: src/contents/ui/PreferencesSheet.qml:47
 msgid "Audio"
 msgstr "ஆடியோ"
 
-#: src/contents/ui/PreferencesSheet.qml:50
+#: src/contents/ui/PreferencesSheet.qml:53
 msgid "Spectrum Analyzer"
 msgstr "நிறமாலைப் பகுப்பி"
 
-#: src/contents/ui/PreferencesSheet.qml:56
+#: src/contents/ui/PreferencesSheet.qml:59
 msgid "Style"
 msgstr "சூல் தண்டு"
 
-#: src/contents/ui/PreferencesSheet.qml:74
+#: src/contents/ui/PreferencesSheet.qml:77
 msgid "Experimental Features"
 msgstr "சோதனை நற்பொருத்தங்கள்"
 
-#: src/contents/ui/PreferencesSheet.qml:87
+#: src/contents/ui/PreferencesSheet.qml:90
 msgid "Enable service mode"
 msgstr "பணி பயன்முறையை இயக்கவும்"
 
-#: src/contents/ui/PreferencesSheet.qml:88
+#: src/contents/ui/PreferencesSheet.qml:91
 msgid "Easy Effects is active in background when the window is closed."
 msgstr "சாளரம் மூடப்படும் போது ஈசி எஃபெக்ட்ச் பின்னணியில் செயலில் இருக்கும்."
 
-#: src/contents/ui/PreferencesSheet.qml:100
+#: src/contents/ui/PreferencesSheet.qml:103
 msgid "Autostart on login"
 msgstr "ஆட்டோச்டார்ட் என்பது உள்நுழைவு"
 
-#: src/contents/ui/PreferencesSheet.qml:101
+#: src/contents/ui/PreferencesSheet.qml:104
 msgid "Easy Effects is launched at user session startup."
 msgstr "பயனர் அமர்வு தொடக்கத்தில் ஈசி எஃபெக்ட்ச் தொடங்கப்பட்டது."
 
-#: src/contents/ui/PreferencesSheet.qml:114
+#: src/contents/ui/PreferencesSheet.qml:117
 msgid "Show the tray icon"
 msgstr "தட்டு ஐகானைக் காட்டு"
 
-#: src/contents/ui/PreferencesSheet.qml:127
+#: src/contents/ui/PreferencesSheet.qml:130
 msgid "Do not show the application window"
 msgstr "பயன்பாட்டு சாளரத்தைக் காட்ட வேண்டாம்"
 
-#: src/contents/ui/PreferencesSheet.qml:128
+#: src/contents/ui/PreferencesSheet.qml:131
 msgid ""
 "Do not show the window when the application starts. In general this option "
 "should not be enabled. It is intended only as a workaround for systems that "
@@ -2384,23 +2384,45 @@ msgstr ""
 "இயக்கப்படக்கூடாது. இது ஈசி எஃபெக்ட்ச் ஆட்டோச்டார்ட்டுடன் சரியாக வேலை செய்யாத "
 "அமைப்புகளுக்கு ஒரு தீர்வாக மட்டுமே உள்ளது."
 
-#: src/contents/ui/PreferencesSheet.qml:148
+#: src/contents/ui/PreferencesSheet.qml:151
 msgid "Process all output streams"
 msgstr "அனைத்து வெளியீட்டு ச்ட்ரீம்களையும் செயலாக்கவும்"
 
-#: src/contents/ui/PreferencesSheet.qml:160
+#: src/contents/ui/PreferencesSheet.qml:161
+#, fuzzy
+msgid "Excluded output sinks"
+msgstr "விலக்கப்பட்ட பயன்பாடுகள்"
+
+#: src/contents/ui/PreferencesSheet.qml:162
+msgid ""
+"Do not automatically process streams when one of these sinks is selected as "
+"the output device."
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:207
 msgid "Process all input streams"
 msgstr "அனைத்து உள்ளீட்டு ச்ட்ரீம்களையும் செயலாக்கவும்"
 
-#: src/contents/ui/PreferencesSheet.qml:172
+#: src/contents/ui/PreferencesSheet.qml:217
+#, fuzzy
+msgid "Excluded input sources"
+msgstr "விலக்கப்பட்ட பயன்பாடுகள்"
+
+#: src/contents/ui/PreferencesSheet.qml:218
+msgid ""
+"Do not automatically process streams when one of these sources is selected "
+"as the input device."
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:263
 msgid "Ignore streams from monitor of devices"
 msgstr "சாதனங்களின் மானிட்டரிலிருந்து ச்ட்ரீம்களைப் புறக்கணிக்கவும்"
 
-#: src/contents/ui/PreferencesSheet.qml:184
+#: src/contents/ui/PreferencesSheet.qml:275
 msgid "Use cubic volume"
 msgstr "கன அளவைப் பயன்படுத்தவும்"
 
-#: src/contents/ui/PreferencesSheet.qml:185
+#: src/contents/ui/PreferencesSheet.qml:276
 msgid ""
 "Use cubic scale for stream volume rather than the linear one. Low "
 "percentages results in a lower perceived volume while the loudness appears "
@@ -2410,21 +2432,21 @@ msgstr ""
 "ஒலி மிகவும் சீராக மாறும்போது குறைந்த சதவீதங்கள் குறைந்த உணரப்பட்ட ஒலியளவை "
 "ஏற்படுத்துகின்றன."
 
-#: src/contents/ui/PreferencesSheet.qml:197
+#: src/contents/ui/PreferencesSheet.qml:288
 msgid "Activate monitor channel volumes"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:198
+#: src/contents/ui/PreferencesSheet.qml:289
 msgid ""
 "Activate if controlling Easy Effects virtual devices volume and mute state "
 "by third party applications is required."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:210
+#: src/contents/ui/PreferencesSheet.qml:301
 msgid "Ignore system notifications"
 msgstr "கணினி அறிவிப்புகளைப் புறக்கணிக்கவும்"
 
-#: src/contents/ui/PreferencesSheet.qml:211
+#: src/contents/ui/PreferencesSheet.qml:302
 msgid ""
 "Processing system notifications may cause crackling sound, so it would be "
 "better to ignore them, but for some presets it may be recommended since they "
@@ -2434,19 +2456,19 @@ msgstr ""
 "புறக்கணிப்பது நல்லது, ஆனால் சில முன்னமைவுகளுக்கு அவை மிகவும் சத்தமாக ஒலிக்கும் என்பதால் "
 "பரிந்துரைக்கப்படலாம்."
 
-#: src/contents/ui/PreferencesSheet.qml:223
+#: src/contents/ui/PreferencesSheet.qml:314
 msgid "Enable/disable input monitoring"
 msgstr "உள்ளீடு கண்காணிப்பை இயக்கு/முடக்கு"
 
-#: src/contents/ui/PreferencesSheet.qml:235
+#: src/contents/ui/PreferencesSheet.qml:326
 msgid "Mic monitor plays to output effects pipeline"
 msgstr "மைக் மானிட்டர் அவுட்புட் எஃபெக்ட் பைப்லைனை இயக்குகிறது"
 
-#: src/contents/ui/PreferencesSheet.qml:247
+#: src/contents/ui/PreferencesSheet.qml:338
 msgid "Copy the input audio buffer"
 msgstr "உள்ளீட்டு ஆடியோ இடையகத்தை நகலெடுக்கவும்"
 
-#: src/contents/ui/PreferencesSheet.qml:248
+#: src/contents/ui/PreferencesSheet.qml:339
 msgid ""
 "Use a copy of the input audio buffer given by the sound server when "
 "processing audio inside Easy Effects plugins. This fixes audio glitches that "
@@ -2458,31 +2480,31 @@ msgstr ""
 "மானிட்டர்களில் இருந்து வெளிப்புற பயன்பாடுகள் பதிவு செய்யும் போது ஏற்படும் ஆடியோ "
 "குறைபாடுகளை இது சரிசெய்கிறது."
 
-#: src/contents/ui/PreferencesSheet.qml:260
+#: src/contents/ui/PreferencesSheet.qml:351
 msgid "Reset Global Bypass on device change"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:261
+#: src/contents/ui/PreferencesSheet.qml:352
 msgid "Automatically enable effects when the audio device changes."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:273
+#: src/contents/ui/PreferencesSheet.qml:364
 msgid "Enable the link delay"
 msgstr "இணைப்பு தாமதத்தை இயக்கவும்"
 
-#: src/contents/ui/PreferencesSheet.qml:274
+#: src/contents/ui/PreferencesSheet.qml:365
 msgid "When enabled, a delay is applied before linking the audio filters."
 msgstr "இயக்கப்பட்டால், ஆடியோ வடிப்பான்களை இணைக்கும் முன் நேரந்தவறுகை ஏற்படும்."
 
-#: src/contents/ui/PreferencesSheet.qml:286
+#: src/contents/ui/PreferencesSheet.qml:377
 msgid "Link delay"
 msgstr "இணைப்பு நேரந்தவறுகை"
 
-#: src/contents/ui/PreferencesSheet.qml:303
+#: src/contents/ui/PreferencesSheet.qml:394
 msgid "Enable the inactivity timeout"
 msgstr "செயலற்ற காலக்கெடுவை இயக்கவும்"
 
-#: src/contents/ui/PreferencesSheet.qml:304
+#: src/contents/ui/PreferencesSheet.qml:395
 msgid ""
 "When all streams are inactive, Easy Effects pipeline remains loaded for an "
 "extra amount of time."
@@ -2490,23 +2512,23 @@ msgstr ""
 "அனைத்து ச்ட்ரீம்களும் செயலற்ற நிலையில் இருக்கும்போது, ஈசி எஃபெக்ட்ச் பைப்லைன் கூடுதல் "
 "நேரத்திற்கு ஏற்றப்படும்."
 
-#: src/contents/ui/PreferencesSheet.qml:316
+#: src/contents/ui/PreferencesSheet.qml:407
 msgid "Inactivity timeout"
 msgstr "செயலற்ற காலக்கெடு"
 
-#: src/contents/ui/PreferencesSheet.qml:331
+#: src/contents/ui/PreferencesSheet.qml:422
 msgid "Level meters frame rate cap"
 msgstr "லெவல் மீட்டர் பிரேம் வீத தொப்பி"
 
-#: src/contents/ui/PreferencesSheet.qml:332
+#: src/contents/ui/PreferencesSheet.qml:423
 msgid "Maximum level meter update rate."
 msgstr "அதிகபட்ச நிலை மீட்டர் புதுப்பிப்பு விகிதம்."
 
-#: src/contents/ui/PreferencesSheet.qml:346
+#: src/contents/ui/PreferencesSheet.qml:437
 msgid "Level meters label"
 msgstr "லெவல் மீட்டர் சிட்டை"
 
-#: src/contents/ui/PreferencesSheet.qml:347
+#: src/contents/ui/PreferencesSheet.qml:438
 msgid ""
 "The time it takes for the level meter labels to be updated when the current "
 "level is below the last highest one."
@@ -2514,105 +2536,105 @@ msgstr ""
 "தற்போதைய நிலை, கடந்த அதிகபட்ச அளவை விட குறைவாக இருக்கும்போது, லெவல் மீட்டர் லேபிள்கள் "
 "புதுப்பிக்கப்படும் நேரம்."
 
-#: src/contents/ui/PreferencesSheet.qml:364
+#: src/contents/ui/PreferencesSheet.qml:455
 msgid "Enable level meters animation"
 msgstr "நிலை மீட்டர் அனிமேசனை இயக்கு"
 
-#: src/contents/ui/PreferencesSheet.qml:373
+#: src/contents/ui/PreferencesSheet.qml:464
 msgid "Level meters animation duration"
 msgstr "நிலை மீட்டர் அனிமேசன் காலம்"
 
-#: src/contents/ui/PreferencesSheet.qml:411
+#: src/contents/ui/PreferencesSheet.qml:502
 msgid "Audio delay compensation"
 msgstr "ஆடியோ தாமத இழப்பீடு"
 
-#: src/contents/ui/PreferencesSheet.qml:426
+#: src/contents/ui/PreferencesSheet.qml:517
 msgid "Graph"
 msgstr "வரைபடம்"
 
-#: src/contents/ui/PreferencesSheet.qml:437
+#: src/contents/ui/PreferencesSheet.qml:528
 msgid "Bars"
 msgstr "பார்கள்"
 
-#: src/contents/ui/PreferencesSheet.qml:437
+#: src/contents/ui/PreferencesSheet.qml:528
 msgid "Lines"
 msgstr "வரிகள்"
 
-#: src/contents/ui/PreferencesSheet.qml:437
+#: src/contents/ui/PreferencesSheet.qml:528
 msgid "Dots"
 msgstr "புள்ளிகள்"
 
-#: src/contents/ui/PreferencesSheet.qml:437
+#: src/contents/ui/PreferencesSheet.qml:528
 msgid "Area"
 msgstr "பகுதி"
 
-#: src/contents/ui/PreferencesSheet.qml:447
+#: src/contents/ui/PreferencesSheet.qml:538
 msgid "Dynamic scale"
 msgstr "மாறும் அளவுகோல்"
 
-#: src/contents/ui/PreferencesSheet.qml:459
+#: src/contents/ui/PreferencesSheet.qml:550
 msgid "Logarithmic frequency axis"
 msgstr "மடக்கை அதிர்வெண் அச்சு"
 
-#: src/contents/ui/PreferencesSheet.qml:471
+#: src/contents/ui/PreferencesSheet.qml:562
 msgid "Points"
 msgstr "பிரிவகம்"
 
-#: src/contents/ui/PreferencesSheet.qml:486
+#: src/contents/ui/PreferencesSheet.qml:577
 msgid "Height"
 msgstr "உயரம்"
 
-#: src/contents/ui/PreferencesSheet.qml:493
+#: src/contents/ui/PreferencesSheet.qml:584
 msgid "px"
 msgstr "px"
 
-#: src/contents/ui/PreferencesSheet.qml:500
+#: src/contents/ui/PreferencesSheet.qml:591
 msgid "Spectrum frame rate cap"
 msgstr "ச்பெக்ட்ரம் பிரேம் வீத தொப்பி"
 
-#: src/contents/ui/PreferencesSheet.qml:501
+#: src/contents/ui/PreferencesSheet.qml:592
 msgid "Maximum spectrum update rate."
 msgstr "அதிகபட்ச ச்பெக்ட்ரம் புதுப்பிப்பு விகிதம்."
 
-#: src/contents/ui/PreferencesSheet.qml:516
+#: src/contents/ui/PreferencesSheet.qml:607
 msgid "Frequency Range"
 msgstr "அதிர்வெண் வரம்பு"
 
-#: src/contents/ui/PreferencesSheet.qml:523
+#: src/contents/ui/PreferencesSheet.qml:614
 msgid "Minimum"
 msgstr "சிறுமம்"
 
-#: src/contents/ui/PreferencesSheet.qml:539
+#: src/contents/ui/PreferencesSheet.qml:630
 msgid "Maximum"
 msgstr "பெருமம்"
 
-#: src/contents/ui/PreferencesSheet.qml:561
+#: src/contents/ui/PreferencesSheet.qml:652
 msgid "Database autosave interval"
 msgstr "தரவுத்தள தானியங்கு சேமிப்பு இடைவெளி"
 
-#: src/contents/ui/PreferencesSheet.qml:575
+#: src/contents/ui/PreferencesSheet.qml:666
 msgid "Most used presets"
 msgstr "மிகவும் பயன்படுத்தப்படும் முன்னமைவுகள்"
 
-#: src/contents/ui/PreferencesSheet.qml:593
+#: src/contents/ui/PreferencesSheet.qml:684
 msgid "Window"
 msgstr "சாளரம்"
 
-#: src/contents/ui/PreferencesSheet.qml:602
+#: src/contents/ui/PreferencesSheet.qml:693
 msgid "Force KDE's Breeze theme when Easy Effects starts"
 msgstr "ஈசி எஃபெக்ட்ச் தொடங்கும் போது கேடிஇ ப்ரீச் தீமை கட்டாயப்படுத்தவும்"
 
-#: src/contents/ui/PreferencesSheet.qml:603
+#: src/contents/ui/PreferencesSheet.qml:694
 msgid ""
 "It is necessary to restart the service for changes in this setting to take "
 "effect."
 msgstr "இந்த அமைப்பில் மாற்றங்கள் நடைமுறைக்கு வர, சேவையை மறுதொடக்கம் செய்வது தேவை."
 
-#: src/contents/ui/PreferencesSheet.qml:616
+#: src/contents/ui/PreferencesSheet.qml:707
 msgid "Reduce effects list controls"
 msgstr "விளைவுகள் பட்டியல் கட்டுப்பாடுகளைக் குறைக்கவும்"
 
-#: src/contents/ui/PreferencesSheet.qml:617
+#: src/contents/ui/PreferencesSheet.qml:708
 msgid ""
 "Action buttons in the effects list are moved inside a context menu for a "
 "more compact view."
@@ -2620,16 +2642,16 @@ msgstr ""
 "விளைவுகள் பட்டியலில் உள்ள செயல் பொத்தான்கள் மிகவும் கச்சிதமான பார்வைக்காக சூழல் "
 "மெனுவிற்குள் நகர்த்தப்படும்."
 
-#: src/contents/ui/PreferencesSheet.qml:628
-#: src/contents/ui/PreferencesSheet.qml:665
+#: src/contents/ui/PreferencesSheet.qml:719
+#: src/contents/ui/PreferencesSheet.qml:756
 msgid "Color scheme"
 msgstr "வண்ணத் திட்டம்"
 
-#: src/contents/ui/PreferencesSheet.qml:642
+#: src/contents/ui/PreferencesSheet.qml:733
 msgid "Force English language"
 msgstr "ஆங்கில மொழியை கட்டாயப்படுத்துங்கள்"
 
-#: src/contents/ui/PreferencesSheet.qml:643
+#: src/contents/ui/PreferencesSheet.qml:734
 msgid ""
 "Do not translate the user interface and show text in English language. "
 "Useful if the translation in the local language is incomplete or "
@@ -2639,112 +2661,112 @@ msgstr ""
 "மொழிபெயர்ப்பு முழுமையடையாமல் அல்லது புரிந்துகொள்ள முடியாததாக இருந்தால் பயனுள்ளதாக "
 "இருக்கும். இந்த விருப்பத்தைப் பயன்படுத்த, சேவையை மறுதொடக்கம் செய்ய வேண்டும்."
 
-#: src/contents/ui/PreferencesSheet.qml:654
+#: src/contents/ui/PreferencesSheet.qml:745
 msgid "Graphs"
 msgstr "வரைபடங்கள்"
 
-#: src/contents/ui/PreferencesSheet.qml:669
+#: src/contents/ui/PreferencesSheet.qml:760
 msgid "Automatic"
 msgstr "தானியங்கி"
 
-#: src/contents/ui/PreferencesSheet.qml:669
+#: src/contents/ui/PreferencesSheet.qml:760
 msgid "Light"
 msgstr "ஒளி"
 
-#: src/contents/ui/PreferencesSheet.qml:669
+#: src/contents/ui/PreferencesSheet.qml:760
 msgid "Dark"
 msgstr "இருள்"
 
-#: src/contents/ui/PreferencesSheet.qml:680
+#: src/contents/ui/PreferencesSheet.qml:771
 msgid "Color theme"
 msgstr "வண்ண கருப்பொருள்"
 
-#: src/contents/ui/PreferencesSheet.qml:684
+#: src/contents/ui/PreferencesSheet.qml:775
 msgid "Green"
 msgstr "பச்சை"
 
-#: src/contents/ui/PreferencesSheet.qml:684
+#: src/contents/ui/PreferencesSheet.qml:775
 msgid "Green neon"
 msgstr "பச்சை நியான்"
 
-#: src/contents/ui/PreferencesSheet.qml:684
+#: src/contents/ui/PreferencesSheet.qml:775
 msgid "Orange"
 msgstr "ஆரஞ்சு"
 
-#: src/contents/ui/PreferencesSheet.qml:684
+#: src/contents/ui/PreferencesSheet.qml:775
 msgid "Yellow"
 msgstr "மஞ்சள்"
 
-#: src/contents/ui/PreferencesSheet.qml:684
+#: src/contents/ui/PreferencesSheet.qml:775
 msgid "Blue"
 msgstr "நீலம்"
 
-#: src/contents/ui/PreferencesSheet.qml:684
+#: src/contents/ui/PreferencesSheet.qml:775
 msgid "Purple"
 msgstr "ஊதா"
 
-#: src/contents/ui/PreferencesSheet.qml:684
+#: src/contents/ui/PreferencesSheet.qml:775
 msgid "Grey"
 msgstr "சாம்பல்"
 
-#: src/contents/ui/PreferencesSheet.qml:684
+#: src/contents/ui/PreferencesSheet.qml:775
 msgid "User"
 msgstr "பயனர்"
 
-#: src/contents/ui/PreferencesSheet.qml:692
+#: src/contents/ui/PreferencesSheet.qml:783
 msgctxt "@label"
 msgid "Background"
 msgstr "பின்னணி"
 
-#: src/contents/ui/PreferencesSheet.qml:701
+#: src/contents/ui/PreferencesSheet.qml:792
 msgctxt "@label"
 msgid "Plot area background"
 msgstr "சூழ்ச்சி பகுதி பின்னணி"
 
-#: src/contents/ui/PreferencesSheet.qml:710
+#: src/contents/ui/PreferencesSheet.qml:801
 msgctxt "@label"
 msgid "Series colors"
 msgstr "தொடர் நிறங்கள்"
 
-#: src/contents/ui/PreferencesSheet.qml:719
+#: src/contents/ui/PreferencesSheet.qml:810
 msgctxt "@label"
 msgid "Axis labels text color"
 msgstr "அச்சு லேபிள்கள் உரை வண்ணம்"
 
-#: src/contents/ui/PreferencesSheet.qml:728
+#: src/contents/ui/PreferencesSheet.qml:819
 msgctxt "@label"
 msgid "Axis labels background color"
 msgstr "அச்சு லேபிள்கள் பின்னணி வண்ணம்"
 
-#: src/contents/ui/PreferencesSheet.qml:737
+#: src/contents/ui/PreferencesSheet.qml:828
 msgctxt "@label"
 msgid "Border color"
 msgstr "பார்டர் நிறம்"
 
-#: src/contents/ui/PreferencesSheet.qml:746
+#: src/contents/ui/PreferencesSheet.qml:837
 msgid "Line width"
 msgstr "வரி அகலம்"
 
-#: src/contents/ui/PreferencesSheet.qml:760
+#: src/contents/ui/PreferencesSheet.qml:851
 msgid "Show grid lines"
 msgstr "கட்டக் கோடுகளைக் காட்டு"
 
-#: src/contents/ui/PreferencesSheet.qml:778
+#: src/contents/ui/PreferencesSheet.qml:869
 msgid "Autoload delay"
 msgstr "ஆட்டோலோட் நேரந்தவறுகை"
 
-#: src/contents/ui/PreferencesSheet.qml:779
+#: src/contents/ui/PreferencesSheet.qml:870
 msgid ""
 "Delay between receiving a new device route and the call to autoload a preset."
 msgstr ""
 "புதிய சாதன வழியைப் பெறுவதற்கும் முன்னமைவைத் தானாக ஏற்றுவதற்கான அழைப்பிற்கும் இடையே "
 "நேரந்தவறுகை."
 
-#: src/contents/ui/PreferencesSheet.qml:795
+#: src/contents/ui/PreferencesSheet.qml:886
 msgid "Ignore the blocklist from presets"
 msgstr "முன்னமைவுகளிலிருந்து தடுப்புப்பட்டியலைப் புறக்கணிக்கவும்"
 
-#: src/contents/ui/PreferencesSheet.qml:796
+#: src/contents/ui/PreferencesSheet.qml:887
 msgid ""
 "If enabled, the list of excluded apps set in the loaded preset is ignored "
 "and does not replace the one set by the user."
@@ -2752,27 +2774,27 @@ msgstr ""
 "இயக்கப்பட்டால், ஏற்றப்பட்ட முன்னமைவில் அமைக்கப்பட்ட விலக்கப்பட்ட பயன்பாடுகளின் பட்டியல் "
 "புறக்கணிக்கப்படும் மற்றும் பயனரால் அமைக்கப்பட்ட ஒன்றை மாற்றாது."
 
-#: src/contents/ui/PreferencesSheet.qml:817
+#: src/contents/ui/PreferencesSheet.qml:908
 msgid "Global shortcuts"
 msgstr "உலகளாவிய குறுக்குவழிகள்"
 
-#: src/contents/ui/PreferencesSheet.qml:818
+#: src/contents/ui/PreferencesSheet.qml:909
 msgid "Enables support for XDG global shortcuts."
 msgstr "XDG உலகளாவிய குறுக்குவழிகளுக்கான ஆதரவை இயக்குகிறது."
 
-#: src/contents/ui/PreferencesSheet.qml:830
+#: src/contents/ui/PreferencesSheet.qml:921
 msgid "Native window of effects"
 msgstr "விளைவுகளின் சொந்த சாளரம்"
 
-#: src/contents/ui/PreferencesSheet.qml:831
+#: src/contents/ui/PreferencesSheet.qml:922
 msgid "Allows the native user interface of effects to be shown/hidden."
 msgstr "விளைவுகளின் சொந்த பயனர் இடைமுகத்தைக் காட்ட/மறைக்க அனுமதிக்கிறது."
 
-#: src/contents/ui/PreferencesSheet.qml:843
+#: src/contents/ui/PreferencesSheet.qml:934
 msgid "Update frequency"
 msgstr "புதுப்பிப்பு அதிர்வெண்"
 
-#: src/contents/ui/PreferencesSheet.qml:844
+#: src/contents/ui/PreferencesSheet.qml:935
 msgid "Related to LV2 plugins."
 msgstr "LV2 செருகுநிரல்களுடன் தொடர்புடையது."
 
@@ -3359,27 +3381,27 @@ msgstr "ஒன்று அல்லது அதற்கு மேற்பட
 msgid "Generic error while loading the effect"
 msgstr "விளைவை ஏற்றும்போது பொதுவான பிழை"
 
-#: src/pw_model_nodes.cpp:492
+#: src/pw_model_nodes.cpp:508
 msgid "Running"
 msgstr "இயங்கும்"
 
-#: src/pw_model_nodes.cpp:494
+#: src/pw_model_nodes.cpp:510
 msgid "Suspended"
 msgstr "இடைநீக்கம்"
 
-#: src/pw_model_nodes.cpp:496
+#: src/pw_model_nodes.cpp:512
 msgid "Idle"
 msgstr "நிலையிக்கம்"
 
-#: src/pw_model_nodes.cpp:498
+#: src/pw_model_nodes.cpp:514
 msgid "Creating"
 msgstr "உருவாக்குதல்"
 
-#: src/pw_model_nodes.cpp:500
+#: src/pw_model_nodes.cpp:516
 msgid "Error"
 msgstr "பிழை"
 
-#: src/pw_model_nodes.cpp:502
+#: src/pw_model_nodes.cpp:518
 msgid "Unknown"
 msgstr "தெரியவில்லை"
 
