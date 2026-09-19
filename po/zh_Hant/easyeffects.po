@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-09-04 23:23+0000\n"
+"POT-Creation-Date: 2026-09-19 00:03+0000\n"
 "PO-Revision-Date: 2026-09-05 17:51+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
@@ -54,67 +54,105 @@ msgid "Toggle the state of the global bypass."
 msgstr "切換整體略過狀態。"
 
 #: src/command_line_parser.cpp:51
+#, fuzzy
+msgid ""
+"Audio sharing. 1 to enable, 2 to disable and 3 to get the current state."
+msgstr "整體略過。 1 啟用；2 停用；3 取得目前狀態。"
+
+#: src/command_line_parser.cpp:52 src/command_line_parser.cpp:55
+#, fuzzy
+msgid "state"
+msgstr "狀態"
+
+#: src/command_line_parser.cpp:53
+#, fuzzy
+msgid "Toggle the state of audio sharing."
+msgstr "切換音訊分享"
+
+#: src/command_line_parser.cpp:55
+#, fuzzy
+msgid ""
+"Microphone monitoring. 1 to enable, 2 to disable and 3 to get the current "
+"state."
+msgstr "整體略過。 1 啟用；2 停用；3 取得目前狀態。"
+
+#: src/command_line_parser.cpp:56
+#, fuzzy
+msgid "Toggle the state of microphone monitoring."
+msgstr "切換麥克風監聽"
+
+#: src/command_line_parser.cpp:57
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "載入預設集。例如： easyeffects -l music"
 
-#: src/command_line_parser.cpp:51
+#: src/command_line_parser.cpp:57
 msgid "preset-name"
 msgstr "預設集-名稱"
 
-#: src/command_line_parser.cpp:52
+#: src/command_line_parser.cpp:58
 msgid "Show available presets."
 msgstr "顯示可用預設集。"
 
-#: src/command_line_parser.cpp:53
+#: src/command_line_parser.cpp:59
 msgid "Get the last loaded input/output preset."
 msgstr "取得上次載入的輸入/輸出預設集。"
 
-#: src/command_line_parser.cpp:53
+#: src/command_line_parser.cpp:59
 msgid "preset-type"
 msgstr "預設集-型式"
 
-#: src/command_line_parser.cpp:54
+#: src/command_line_parser.cpp:60
 msgid "Get the last loaded input and output presets."
 msgstr "取得上次載入的輸入及輸出預設集。"
 
-#: src/command_line_parser.cpp:55
+#: src/command_line_parser.cpp:61
 msgid "Deprecated. Use --service-mode instead."
 msgstr "已經棄用。使用 --service-mode 取代。"
 
-#: src/command_line_parser.cpp:56
+#: src/command_line_parser.cpp:62
 msgid "Start the application with service mode turned on."
 msgstr "啟動應用程式並已經開啟服務模式。"
 
-#: src/command_line_parser.cpp:57
+#: src/command_line_parser.cpp:63
 msgid "Enable debug messages."
 msgstr "啟用除錯訊息。"
 
-#: src/command_line_parser.cpp:127
+#: src/command_line_parser.cpp:135
 msgid "Must specify preset type: input/output."
 msgstr "必須指定預設集型式：輸入/輸出。"
 
-#: src/command_line_parser.cpp:161
+#: src/command_line_parser.cpp:169
 msgid "Output presets"
 msgstr "輸出預設集"
 
-#: src/command_line_parser.cpp:163
+#: src/command_line_parser.cpp:171
 msgid "No output presets."
 msgstr "無輸出預設集。"
 
-#: src/command_line_parser.cpp:174
+#: src/command_line_parser.cpp:182
 msgid "Input presets"
 msgstr "輸入預設集"
 
-#: src/command_line_parser.cpp:176
+#: src/command_line_parser.cpp:184
 msgid "No input presets."
 msgstr "無輸入預設集。"
 
-#: src/command_line_parser.cpp:206
+#: src/command_line_parser.cpp:214
 msgid "Specified preset does not exist."
 msgstr "所指定的預設集並不存在。"
 
-#: src/command_line_parser.cpp:226
+#: src/command_line_parser.cpp:234
 msgid "Provided an invalid bypass state."
+msgstr "提供了無效的略過狀態。"
+
+#: src/command_line_parser.cpp:274
+#, fuzzy
+msgid "Provided an invalid microphone monitoring state."
+msgstr "提供了無效的略過狀態。"
+
+#: src/command_line_parser.cpp:304
+#, fuzzy
+msgid "Provided an invalid audio sharing state."
 msgstr "提供了無效的略過狀態。"
 
 #: src/contents/ui/AboutPage.qml:24
@@ -2728,20 +2766,20 @@ msgstr "註釋"
 msgid "Refresh"
 msgstr "重新整理"
 
-#: src/contents/ui/PresetsCommunityPage.qml:134
+#: src/contents/ui/PresetsCommunityPage.qml:129
 #: src/contents/ui/PresetsLocalPage.qml:306
 msgid "Load this preset"
 msgstr "載入此預設集"
 
-#: src/contents/ui/PresetsCommunityPage.qml:148
+#: src/contents/ui/PresetsCommunityPage.qml:137
 msgid "Copy to local presets"
 msgstr "複製至本地預設集"
 
-#: src/contents/ui/PresetsCommunityPage.qml:153
+#: src/contents/ui/PresetsCommunityPage.qml:142
 msgid "Imported the %1 community preset to the list of local presets."
 msgstr "已經匯入 %1 社群預設集至本地預設集列表中。"
 
-#: src/contents/ui/PresetsCommunityPage.qml:155
+#: src/contents/ui/PresetsCommunityPage.qml:144
 msgid "Failed to import the %1 community preset to the list of local presets."
 msgstr "匯入 %1 社區預設集至本地預設集列表失敗。"
 
@@ -3207,29 +3245,29 @@ msgstr "最大瞬時頻率"
 msgid "Inverted mode"
 msgstr "反向模式"
 
-#: src/main.cpp:382
+#: src/main.cpp:427
 msgid "Global audio effects"
 msgstr "整體音效處理"
 
-#: src/main.cpp:383
+#: src/main.cpp:428
 msgid "© 2017-2026 Easy Effects Team"
 msgstr "© 2017-2026 Easy Effects 團隊"
 
-#: src/main.cpp:385
+#: src/main.cpp:430
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:385
+#: src/main.cpp:430
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "開發人員"
 
-#: src/main.cpp:388
+#: src/main.cpp:433
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "BigELK176 ≡"
 
-#: src/main.cpp:388
+#: src/main.cpp:433
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "．略．"
