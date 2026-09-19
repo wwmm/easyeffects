@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-09-19 00:03+0000\n"
-"PO-Revision-Date: 2026-09-08 13:51+0000\n"
+"PO-Revision-Date: 2026-09-19 14:52+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2026.9.1\n"
+"X-Generator: Weblate 2026.10.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -58,36 +58,31 @@ msgid "Toggle the state of the global bypass."
 msgstr "Basculer le contournement global."
 
 #: src/command_line_parser.cpp:51
-#, fuzzy
 msgid ""
 "Audio sharing. 1 to enable, 2 to disable and 3 to get the current state."
 msgstr ""
-"Contournement global. 1 pour activer, 2 pour désactiver et 3 pour obtenir "
-"l'état actuel."
+"Partage audio. 1 pour activer, 2 pour désactiver et 3 pour obtenir l'état "
+"actuel."
 
 #: src/command_line_parser.cpp:52 src/command_line_parser.cpp:55
-#, fuzzy
 msgid "state"
-msgstr "État"
+msgstr "état"
 
 #: src/command_line_parser.cpp:53
-#, fuzzy
 msgid "Toggle the state of audio sharing."
-msgstr "Basculer le partage audio"
+msgstr "Basculer l'état du partage audio."
 
 #: src/command_line_parser.cpp:55
-#, fuzzy
 msgid ""
 "Microphone monitoring. 1 to enable, 2 to disable and 3 to get the current "
 "state."
 msgstr ""
-"Contournement global. 1 pour activer, 2 pour désactiver et 3 pour obtenir "
-"l'état actuel."
+"Surveillance du microphone. 1 pour activer, 2 pour désactiver et 3 pour "
+"obtenir l'état actuel."
 
 #: src/command_line_parser.cpp:56
-#, fuzzy
 msgid "Toggle the state of microphone monitoring."
-msgstr "Basculer la surveillance du microphone"
+msgstr "Basculer l'état de la surveillance du microphone."
 
 #: src/command_line_parser.cpp:57
 msgid "Load a preset. Example: easyeffects -l music"
@@ -154,14 +149,12 @@ msgid "Provided an invalid bypass state."
 msgstr "État de contournement fourni invalide."
 
 #: src/command_line_parser.cpp:274
-#, fuzzy
 msgid "Provided an invalid microphone monitoring state."
-msgstr "État de contournement fourni invalide."
+msgstr "État de surveillance du microphone fournit invalide."
 
 #: src/command_line_parser.cpp:304
-#, fuzzy
 msgid "Provided an invalid audio sharing state."
-msgstr "État de contournement fourni invalide."
+msgstr "État du partage audio fournit invalide."
 
 #: src/contents/ui/AboutPage.qml:24
 msgctxt "@action:button"
