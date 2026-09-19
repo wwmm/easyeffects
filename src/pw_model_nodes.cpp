@@ -132,12 +132,28 @@ Nodes::Nodes(QObject* parent)
       [&]() { onOutputBlocklistChanged(); }, Qt::QueuedConnection);
 
   connect(
+      DbMain::self(), &DbMain::outputSinkBlocklistChanged, this, [&]() { onOutputSinkBlocklistChanged(); },
+      Qt::QueuedConnection);
+
+  connect(
+      DbStreamOutputs::self(), &DbStreamOutputs::outputDeviceChanged, this, [&]() { onOutputSinkBlocklistChanged(); },
+      Qt::QueuedConnection);
+
+  connect(
       DbStreamInputs::self(), &DbStreamInputs::blocklistChanged, this, [&]() { onInputBlocklistChanged(); },
       Qt::QueuedConnection);
 
   connect(
       DbStreamInputs::self(), &DbStreamInputs::blocklistUsesMediaNameChanged, this,
       [&]() { onInputBlocklistChanged(); }, Qt::QueuedConnection);
+
+  connect(
+      DbMain::self(), &DbMain::inputSourceBlocklistChanged, this, [&]() { onInputSourceBlocklistChanged(); },
+      Qt::QueuedConnection);
+
+  connect(
+      DbStreamInputs::self(), &DbStreamInputs::inputDeviceChanged, this, [&]() { onInputSourceBlocklistChanged(); },
+      Qt::QueuedConnection);
 }
 
 int Nodes::rowCount(const QModelIndex& /* parent */) const {
@@ -619,9 +635,27 @@ void Nodes::onOutputBlocklistChanged() {
     } else {
       update_field(n, Roles::IsBlocklisted, false);
 
-      if (DbMain::processAllOutputs()) {
+      if (DbMain::processAllOutputs() && !DbMain::outputSinkBlocklist().contains(DbStreamOutputs::outputDevice())) {
         pw::Manager::self().connectStreamOutput(list[n].id);
       }
+    }
+  }
+}
+
+void Nodes::onOutputSinkBlocklistChanged() {
+  const auto skip_automatic_processing = DbMain::outputSinkBlocklist().contains(DbStreamOutputs::outputDevice());
+
+  for (const auto& node : list) {
+    if (node.media_class != tags::pipewire::media_class::output_stream) {
+      continue;
+    }
+
+    if (skip_automatic_processing && DbMain::processAllOutputs() && !node.is_blocklisted) {
+      // Remove only the target metadata that Easy Effects owns. WirePlumber can
+      // then link the stream to the user-selected sink normally.
+      pw::Manager::self().disconnectStream(node.id);
+    } else if (DbMain::processAllOutputs() && !node.is_blocklisted) {
+      pw::Manager::self().connectStreamOutput(node.id);
     }
   }
 }
@@ -648,9 +682,25 @@ void Nodes::onInputBlocklistChanged() {
     } else {
       update_field(n, Roles::IsBlocklisted, false);
 
-      if (DbMain::processAllInputs()) {
+      if (DbMain::processAllInputs() && !DbMain::inputSourceBlocklist().contains(DbStreamInputs::inputDevice())) {
         pw::Manager::self().connectStreamInput(list[n].id);
       }
+    }
+  }
+}
+
+void Nodes::onInputSourceBlocklistChanged() {
+  const auto skip_automatic_processing = DbMain::inputSourceBlocklist().contains(DbStreamInputs::inputDevice());
+
+  for (const auto& node : list) {
+    if (node.media_class != tags::pipewire::media_class::input_stream) {
+      continue;
+    }
+
+    if (skip_automatic_processing && DbMain::processAllInputs() && !node.is_blocklisted) {
+      pw::Manager::self().disconnectStream(node.id);
+    } else if (DbMain::processAllInputs() && !node.is_blocklisted) {
+      pw::Manager::self().connectStreamInput(node.id);
     }
   }
 }

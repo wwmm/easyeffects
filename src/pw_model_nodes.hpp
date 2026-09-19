@@ -396,7 +396,11 @@ class Nodes : public QAbstractListModel {
 
   void onOutputBlocklistChanged();
 
+  void onOutputSinkBlocklistChanged();
+
   void onInputBlocklistChanged();
+
+  void onInputSourceBlocklistChanged();
 };
 
 }  // namespace pw::models

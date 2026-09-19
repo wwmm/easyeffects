@@ -191,9 +191,17 @@
             <label>Automatically moves Audio Streams to Easy Effects Virtual Sink.</label>
             <default>true</default>
         </entry>
+        <entry name="outputSinkBlocklist" type="StringList">
+            <label>Output Sinks Where Automatic Output Processing Is Disabled.</label>
+            <default></default>
+        </entry>
         <entry name="processAllInputs" type="Bool">
             <label>Automatically moves Audio Streams to Easy Effects Virtual Source.</label>
             <default>true</default>
+        </entry>
+        <entry name="inputSourceBlocklist" type="StringList">
+            <label>Input Sources Where Automatic Input Processing Is Disabled.</label>
+            <default></default>
         </entry>
         <entry name="excludeMonitorStreams" type="Bool">
             <label>Ignore Streams from Monitor of Devices.</label>
