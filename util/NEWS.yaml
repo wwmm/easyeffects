@@ -5,6 +5,9 @@ Date: UNRELEASED_DATE
 Description: 
 - Features∶
 - Now Community Presets using SOFA impulse resposes can be correctly imported to local presets.
+- Using the share audio and microphone monitoring features together should be better now.
+- More command line options.
+- The microphone monitoring volume can be controlled by the user.
 
 - Bug fixes∶
 - Fixed the import feature of the community presets that prevented to save Convolver impulse response and RNNoise models into the local folder. 
