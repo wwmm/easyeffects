@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-09-19 00:03+0000\n"
-"PO-Revision-Date: 2026-09-05 17:51+0000\n"
+"PO-Revision-Date: 2026-09-19 14:52+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Weblate 2026.9.1.dev0\n"
+"X-Generator: Weblate 2026.10.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -58,36 +58,30 @@ msgid "Toggle the state of the global bypass."
 msgstr "Переключить состояние глобального обхода."
 
 #: src/command_line_parser.cpp:51
-#, fuzzy
 msgid ""
 "Audio sharing. 1 to enable, 2 to disable and 3 to get the current state."
 msgstr ""
-"Глобальный обход. 1 — включить, 2 — отключить, 3 — получить текущее "
-"состояние."
+"Передача звука. 1 — включить, 2 — отключить, 3 — получить текущее состояние."
 
 #: src/command_line_parser.cpp:52 src/command_line_parser.cpp:55
-#, fuzzy
 msgid "state"
-msgstr "Состояние"
+msgstr "состояние"
 
 #: src/command_line_parser.cpp:53
-#, fuzzy
 msgid "Toggle the state of audio sharing."
-msgstr "Включить/отключить передачу звука"
+msgstr "Переключить состояние передачи звука."
 
 #: src/command_line_parser.cpp:55
-#, fuzzy
 msgid ""
 "Microphone monitoring. 1 to enable, 2 to disable and 3 to get the current "
 "state."
 msgstr ""
-"Глобальный обход. 1 — включить, 2 — отключить, 3 — получить текущее "
+"Мониторинг микрофона. 1 — включить, 2 — отключить, 3 — получить текущее "
 "состояние."
 
 #: src/command_line_parser.cpp:56
-#, fuzzy
 msgid "Toggle the state of microphone monitoring."
-msgstr "Включить/отключить мониторинг микрофона"
+msgstr "Переключить состояние мониторинга микрофона."
 
 #: src/command_line_parser.cpp:57
 msgid "Load a preset. Example: easyeffects -l music"
@@ -154,14 +148,12 @@ msgid "Provided an invalid bypass state."
 msgstr "Указано недопустимое состояние обхода."
 
 #: src/command_line_parser.cpp:274
-#, fuzzy
 msgid "Provided an invalid microphone monitoring state."
-msgstr "Указано недопустимое состояние обхода."
+msgstr "Указано недопустимое состояние мониторинга микрофона."
 
 #: src/command_line_parser.cpp:304
-#, fuzzy
 msgid "Provided an invalid audio sharing state."
-msgstr "Указано недопустимое состояние обхода."
+msgstr "Указано недопустимое состояние передачи звука."
 
 #: src/contents/ui/AboutPage.qml:24
 msgctxt "@action:button"

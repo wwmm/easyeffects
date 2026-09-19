@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-09-19 00:03+0000\n"
-"PO-Revision-Date: 2026-09-05 17:51+0000\n"
+"PO-Revision-Date: 2026-09-19 14:52+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hant/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2026.9.1.dev0\n"
+"X-Generator: Weblate 2026.10.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -54,32 +54,27 @@ msgid "Toggle the state of the global bypass."
 msgstr "切換整體略過狀態。"
 
 #: src/command_line_parser.cpp:51
-#, fuzzy
 msgid ""
 "Audio sharing. 1 to enable, 2 to disable and 3 to get the current state."
-msgstr "整體略過。 1 啟用；2 停用；3 取得目前狀態。"
+msgstr "音訊分享。 1 啟用；2 停用；3 取得目前狀態。"
 
 #: src/command_line_parser.cpp:52 src/command_line_parser.cpp:55
-#, fuzzy
 msgid "state"
 msgstr "狀態"
 
 #: src/command_line_parser.cpp:53
-#, fuzzy
 msgid "Toggle the state of audio sharing."
-msgstr "切換音訊分享"
+msgstr "切換音訊進行分享的狀態。"
 
 #: src/command_line_parser.cpp:55
-#, fuzzy
 msgid ""
 "Microphone monitoring. 1 to enable, 2 to disable and 3 to get the current "
 "state."
-msgstr "整體略過。 1 啟用；2 停用；3 取得目前狀態。"
+msgstr "麥克風監聽。 1 啟用；2 停用；3 取得目前狀態。"
 
 #: src/command_line_parser.cpp:56
-#, fuzzy
 msgid "Toggle the state of microphone monitoring."
-msgstr "切換麥克風監聽"
+msgstr "切換麥克風進行監聽的狀態。"
 
 #: src/command_line_parser.cpp:57
 msgid "Load a preset. Example: easyeffects -l music"
@@ -146,14 +141,12 @@ msgid "Provided an invalid bypass state."
 msgstr "提供了無效的略過狀態。"
 
 #: src/command_line_parser.cpp:274
-#, fuzzy
 msgid "Provided an invalid microphone monitoring state."
-msgstr "提供了無效的略過狀態。"
+msgstr "提供了無效的麥克風進行監聽狀態。"
 
 #: src/command_line_parser.cpp:304
-#, fuzzy
 msgid "Provided an invalid audio sharing state."
-msgstr "提供了無效的略過狀態。"
+msgstr "提供了無效的音訊進行分享狀態。"
 
 #: src/contents/ui/AboutPage.qml:24
 msgctxt "@action:button"

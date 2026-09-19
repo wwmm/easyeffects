@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-09-19 00:03+0000\n"
-"PO-Revision-Date: 2025-12-19 18:00+0000\n"
+"PO-Revision-Date: 2026-09-19 14:52+0000\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ka/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.15.1\n"
+"X-Generator: Weblate 2026.10.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -57,7 +57,6 @@ msgid ""
 msgstr ""
 
 #: src/command_line_parser.cpp:52 src/command_line_parser.cpp:55
-#, fuzzy
 msgid "state"
 msgstr "მდგომარეობა"
 
@@ -72,9 +71,8 @@ msgid ""
 msgstr ""
 
 #: src/command_line_parser.cpp:56
-#, fuzzy
 msgid "Toggle the state of microphone monitoring."
-msgstr "შეყვანის დამუშავების ხაზი"
+msgstr "მიკროფონის მონიტორინგის მდგომარეობის გადართვა."
 
 #: src/command_line_parser.cpp:57
 msgid "Load a preset. Example: easyeffects -l music"
@@ -271,9 +269,8 @@ msgid "Reset settings"
 msgstr ""
 
 #: src/contents/ui/Autotune.qml:92 src/contents/ui/Autotune.qml:120
-#, fuzzy
 msgid "Tuning"
-msgstr "გაშვებულია"
+msgstr "დაწვრილებითი მორგება"
 
 #: src/contents/ui/Autotune.qml:107 src/contents/ui/Compressor.qml:79
 #: src/contents/ui/Compressor.qml:301 src/contents/ui/Crusher.qml:97
@@ -294,14 +291,12 @@ msgstr ""
 
 #: src/contents/ui/Autotune.qml:111 src/contents/ui/Main.qml:465
 #: src/contents/ui/TrayIcon.qml:221
-#, fuzzy
 msgid "Manual"
-msgstr "_ხელით"
+msgstr "ხელით"
 
 #: src/contents/ui/Autotune.qml:137
-#, fuzzy
 msgid "Correction"
-msgstr "ხანგრძლოვობა"
+msgstr "კორექცია"
 
 #: src/contents/ui/Autotune.qml:153
 msgid "Bias"
@@ -342,19 +337,16 @@ msgid "Level"
 msgstr "დონე"
 
 #: src/contents/ui/Autotune.qml:388
-#, fuzzy
 msgid "Pitch error"
-msgstr "Pitch"
+msgstr "ტონის შეცდომა"
 
 #: src/contents/ui/Autotune.qml:425
-#, fuzzy
 msgid "Fast correction"
-msgstr "ხმაურის შემცირება"
+msgstr "სწრაფი კორექცია"
 
 #: src/contents/ui/BassEnhancer.qml:56 src/contents/ui/Exciter.qml:56
-#, fuzzy
 msgid "Blend harmonics"
-msgstr "ჰარმონიები"
+msgstr "ჰარმონიკების შერევა"
 
 #: src/contents/ui/BassEnhancer.qml:65 src/contents/ui/Exciter.qml:65
 msgid "3rd"
@@ -378,9 +370,8 @@ msgid "Scope"
 msgstr "ფარგლები"
 
 #: src/contents/ui/BassEnhancer.qml:157
-#, fuzzy
 msgid "Floor active"
-msgstr "უმცირესი მნიშვნელობა"
+msgstr "იატაკი აქტიურია"
 
 #: src/contents/ui/BassEnhancer.qml:168
 msgid "Floor"
@@ -438,14 +429,12 @@ msgid "Link"
 msgstr "ბმული"
 
 #: src/contents/ui/BlocklistDialog.qml:32
-#, fuzzy
 msgid "Excluded Applications"
-msgstr "გამორიცხვა"
+msgstr "გამორიცხული აპლიაციები"
 
 #: src/contents/ui/BlocklistDialog.qml:48
-#, fuzzy
 msgid "Application node name"
-msgstr "აპლიკაციის სახელი"
+msgstr "აპლიკაციის კვანძის სახელი"
 
 #: src/contents/ui/BlocklistDialog.qml:64
 msgid "Add to excluded applications"
@@ -474,9 +463,8 @@ msgid "Are you sure you want to remove this application from the list?"
 msgstr ""
 
 #: src/contents/ui/BlocklistDialog.qml:175
-#, fuzzy
 msgid "Remove this app"
-msgstr "პრესეტის შემოტანა"
+msgstr "ამ აპის წაშლა"
 
 #: src/contents/ui/BlocklistDialog.qml:204
 msgid "Use media name"

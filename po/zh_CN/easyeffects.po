@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-09-19 00:03+0000\n"
-"PO-Revision-Date: 2026-09-07 00:51+0000\n"
+"PO-Revision-Date: 2026-09-19 14:52+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hans/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2026.9.1.dev0\n"
+"X-Generator: Weblate 2026.10.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -44,7 +44,7 @@ msgstr "隐藏窗口。"
 #: src/command_line_parser.cpp:48
 msgid ""
 "Global bypass. 1 to enable, 2 to disable and 3 to get the current state."
-msgstr "全局旁通。1以启用，2以禁用，3以获取状态。"
+msgstr "全局旁通。1 以启用，2 以禁用，3 以获取状态。"
 
 #: src/command_line_parser.cpp:49
 msgid "bypass-state"
@@ -55,32 +55,27 @@ msgid "Toggle the state of the global bypass."
 msgstr "切换全局旁通状态。"
 
 #: src/command_line_parser.cpp:51
-#, fuzzy
 msgid ""
 "Audio sharing. 1 to enable, 2 to disable and 3 to get the current state."
-msgstr "全局旁通。1以启用，2以禁用，3以获取状态。"
+msgstr "音频共享。1 以启用，2 以禁用，3 以获取状态。"
 
 #: src/command_line_parser.cpp:52 src/command_line_parser.cpp:55
-#, fuzzy
 msgid "state"
 msgstr "状态"
 
 #: src/command_line_parser.cpp:53
-#, fuzzy
 msgid "Toggle the state of audio sharing."
-msgstr "切换音频共享"
+msgstr "切换音频共享状态。"
 
 #: src/command_line_parser.cpp:55
-#, fuzzy
 msgid ""
 "Microphone monitoring. 1 to enable, 2 to disable and 3 to get the current "
 "state."
-msgstr "全局旁通。1以启用，2以禁用，3以获取状态。"
+msgstr "麦克风监听。1 以启用，2 以禁用，3 以获取状态。"
 
 #: src/command_line_parser.cpp:56
-#, fuzzy
 msgid "Toggle the state of microphone monitoring."
-msgstr "切换麦克风监听"
+msgstr "切换麦克风监听状态。"
 
 #: src/command_line_parser.cpp:57
 msgid "Load a preset. Example: easyeffects -l music"
@@ -144,17 +139,15 @@ msgstr "未发现指定的预设。"
 
 #: src/command_line_parser.cpp:234
 msgid "Provided an invalid bypass state."
-msgstr "旁通状态参数无效。"
+msgstr "提供的旁通状态参数无效。"
 
 #: src/command_line_parser.cpp:274
-#, fuzzy
 msgid "Provided an invalid microphone monitoring state."
-msgstr "旁通状态参数无效。"
+msgstr "提供的麦克风监听状态参数无效。"
 
 #: src/command_line_parser.cpp:304
-#, fuzzy
 msgid "Provided an invalid audio sharing state."
-msgstr "旁通状态参数无效。"
+msgstr "提供的音频共享状态参数无效。"
 
 #: src/contents/ui/AboutPage.qml:24
 msgctxt "@action:button"
