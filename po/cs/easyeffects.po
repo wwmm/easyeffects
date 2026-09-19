@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-09-19 00:03+0000\n"
-"PO-Revision-Date: 2026-09-07 00:51+0000\n"
+"PO-Revision-Date: 2026-09-19 14:51+0000\n"
 "Last-Translator: Fjuro <fjuro@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
 "cs/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2);\n"
-"X-Generator: Weblate 2026.9.1.dev0\n"
+"X-Generator: Weblate 2026.10.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -56,36 +56,30 @@ msgid "Toggle the state of the global bypass."
 msgstr "Přepnout stav globálního bypassu."
 
 #: src/command_line_parser.cpp:51
-#, fuzzy
 msgid ""
 "Audio sharing. 1 to enable, 2 to disable and 3 to get the current state."
 msgstr ""
-"Globální bypass. 1 pro zapnutí, 2 pro vypnutí, 3 pro získání aktuálního "
-"stavu."
+"Sdílení zvuku. 1 pro zapnutí, 2 pro vypnutí, 3 pro získání aktuálního stavu."
 
 #: src/command_line_parser.cpp:52 src/command_line_parser.cpp:55
-#, fuzzy
 msgid "state"
-msgstr "Stav"
+msgstr "stav"
 
 #: src/command_line_parser.cpp:53
-#, fuzzy
 msgid "Toggle the state of audio sharing."
-msgstr "Přepnout sdílení zvuku"
+msgstr "Přepnout stav sdílení zvuku."
 
 #: src/command_line_parser.cpp:55
-#, fuzzy
 msgid ""
 "Microphone monitoring. 1 to enable, 2 to disable and 3 to get the current "
 "state."
 msgstr ""
-"Globální bypass. 1 pro zapnutí, 2 pro vypnutí, 3 pro získání aktuálního "
-"stavu."
+"Monitorování mikrofonu. 1 pro zapnutí, 2 pro vypnutí, 3 pro získání "
+"aktuálního stavu."
 
 #: src/command_line_parser.cpp:56
-#, fuzzy
 msgid "Toggle the state of microphone monitoring."
-msgstr "Přepnout monitorování mikrofonu"
+msgstr "Přepnout stav monitorování mikrofonu."
 
 #: src/command_line_parser.cpp:57
 msgid "Load a preset. Example: easyeffects -l music"
@@ -152,14 +146,12 @@ msgid "Provided an invalid bypass state."
 msgstr "Poskytnut neplatný stav bypassu."
 
 #: src/command_line_parser.cpp:274
-#, fuzzy
 msgid "Provided an invalid microphone monitoring state."
-msgstr "Poskytnut neplatný stav bypassu."
+msgstr "Poskytnut neplatný stav monitorování mikrofonu."
 
 #: src/command_line_parser.cpp:304
-#, fuzzy
 msgid "Provided an invalid audio sharing state."
-msgstr "Poskytnut neplatný stav bypassu."
+msgstr "Poskytnut neplatný stav sdílení zvuku."
 
 #: src/contents/ui/AboutPage.qml:24
 msgctxt "@action:button"
