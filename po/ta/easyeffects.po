@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-09-04 23:23+0000\n"
+"POT-Creation-Date: 2026-09-19 00:03+0000\n"
 "PO-Revision-Date: 2026-06-25 10:01+0000\n"
 "Last-Translator: தமிழ்நேரம் <tamilneram247@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -57,67 +57,105 @@ msgid "Toggle the state of the global bypass."
 msgstr "உலகளாவிய பைபாசின் நிலையை மாற்றவும்."
 
 #: src/command_line_parser.cpp:51
+#, fuzzy
+msgid ""
+"Audio sharing. 1 to enable, 2 to disable and 3 to get the current state."
+msgstr "உலகளாவிய பைபாச். 1 இயக்கவும், 2 முடக்கவும் மற்றும் 3 தற்போதைய நிலையைப் பெறவும்."
+
+#: src/command_line_parser.cpp:52 src/command_line_parser.cpp:55
+#, fuzzy
+msgid "state"
+msgstr "மாநிலம்"
+
+#: src/command_line_parser.cpp:53
+#, fuzzy
+msgid "Toggle the state of audio sharing."
+msgstr "உலகளாவிய பைபாசின் நிலையை மாற்றவும்."
+
+#: src/command_line_parser.cpp:55
+#, fuzzy
+msgid ""
+"Microphone monitoring. 1 to enable, 2 to disable and 3 to get the current "
+"state."
+msgstr "உலகளாவிய பைபாச். 1 இயக்கவும், 2 முடக்கவும் மற்றும் 3 தற்போதைய நிலையைப் பெறவும்."
+
+#: src/command_line_parser.cpp:56
+#, fuzzy
+msgid "Toggle the state of microphone monitoring."
+msgstr "மைக்ரோஃபோன் கண்காணிப்பை நிலைமாற்று"
+
+#: src/command_line_parser.cpp:57
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "முன்னமைவை ஏற்றவும். எடுத்துக்காட்டு: ஈசி எஃபெக்ட்ச் -எல் இசை"
 
-#: src/command_line_parser.cpp:51
+#: src/command_line_parser.cpp:57
 msgid "preset-name"
 msgstr "முன்னமைக்கப்பட்ட பெயர்"
 
-#: src/command_line_parser.cpp:52
+#: src/command_line_parser.cpp:58
 msgid "Show available presets."
 msgstr "கிடைக்கக்கூடிய முன்னமைவுகளைக் காட்டு."
 
-#: src/command_line_parser.cpp:53
+#: src/command_line_parser.cpp:59
 msgid "Get the last loaded input/output preset."
 msgstr "கடைசியாக ஏற்றப்பட்ட உள்ளீடு/வெளியீடு முன்னமைவைப் பெறவும்."
 
-#: src/command_line_parser.cpp:53
+#: src/command_line_parser.cpp:59
 msgid "preset-type"
 msgstr "முன்னமைக்கப்பட்ட வகை"
 
-#: src/command_line_parser.cpp:54
+#: src/command_line_parser.cpp:60
 msgid "Get the last loaded input and output presets."
 msgstr "கடைசியாக ஏற்றப்பட்ட உள்ளீடு மற்றும் வெளியீட்டு முன்னமைவுகளைப் பெறவும்."
 
-#: src/command_line_parser.cpp:55
+#: src/command_line_parser.cpp:61
 msgid "Deprecated. Use --service-mode instead."
 msgstr "நிராகரிக்கப்பட்டது. அதற்கு பதிலாக --service-mode ஐப் பயன்படுத்தவும்."
 
-#: src/command_line_parser.cpp:56
+#: src/command_line_parser.cpp:62
 msgid "Start the application with service mode turned on."
 msgstr "பணி பயன்முறையை இயக்கியவுடன் பயன்பாட்டைத் தொடங்கவும்."
 
-#: src/command_line_parser.cpp:57
+#: src/command_line_parser.cpp:63
 msgid "Enable debug messages."
 msgstr "பிழைத்திருத்த செய்திகளை இயக்கு."
 
-#: src/command_line_parser.cpp:127
+#: src/command_line_parser.cpp:135
 msgid "Must specify preset type: input/output."
 msgstr "முன்னமைக்கப்பட்ட வகையைக் குறிப்பிட வேண்டும்: உள்ளீடு/வெளியீடு."
 
-#: src/command_line_parser.cpp:161
+#: src/command_line_parser.cpp:169
 msgid "Output presets"
 msgstr "வெளியீட்டு முன்னமைவுகள்"
 
-#: src/command_line_parser.cpp:163
+#: src/command_line_parser.cpp:171
 msgid "No output presets."
 msgstr "வெளியீட்டு முன்னமைவுகள் இல்லை."
 
-#: src/command_line_parser.cpp:174
+#: src/command_line_parser.cpp:182
 msgid "Input presets"
 msgstr "உள்ளீடு முன்னமைவுகள்"
 
-#: src/command_line_parser.cpp:176
+#: src/command_line_parser.cpp:184
 msgid "No input presets."
 msgstr "உள்ளீடு முன்னமைவுகள் இல்லை."
 
-#: src/command_line_parser.cpp:206
+#: src/command_line_parser.cpp:214
 msgid "Specified preset does not exist."
 msgstr "குறிப்பிட்ட முன்னமைவு இல்லை."
 
-#: src/command_line_parser.cpp:226
+#: src/command_line_parser.cpp:234
 msgid "Provided an invalid bypass state."
+msgstr "தவறான பைபாச் நிலை வழங்கப்பட்டது."
+
+#: src/command_line_parser.cpp:274
+#, fuzzy
+msgid "Provided an invalid microphone monitoring state."
+msgstr "தவறான பைபாச் நிலை வழங்கப்பட்டது."
+
+#: src/command_line_parser.cpp:304
+#, fuzzy
+msgid "Provided an invalid audio sharing state."
 msgstr "தவறான பைபாச் நிலை வழங்கப்பட்டது."
 
 #: src/contents/ui/AboutPage.qml:24
@@ -2773,20 +2811,20 @@ msgstr "விவரம்"
 msgid "Refresh"
 msgstr "புதுப்பிப்பு"
 
-#: src/contents/ui/PresetsCommunityPage.qml:134
+#: src/contents/ui/PresetsCommunityPage.qml:129
 #: src/contents/ui/PresetsLocalPage.qml:306
 msgid "Load this preset"
 msgstr "இந்த முன்னமைவை ஏற்றவும்"
 
-#: src/contents/ui/PresetsCommunityPage.qml:148
+#: src/contents/ui/PresetsCommunityPage.qml:137
 msgid "Copy to local presets"
 msgstr "உள்ளக முன்னமைவுகளுக்கு நகலெடுக்கவும்"
 
-#: src/contents/ui/PresetsCommunityPage.qml:153
+#: src/contents/ui/PresetsCommunityPage.qml:142
 msgid "Imported the %1 community preset to the list of local presets."
 msgstr "உள்ளக முன்னமைவுகளின் பட்டியலில் % 1 சமூக முன்னமைவு இறக்குமதி செய்யப்பட்டது."
 
-#: src/contents/ui/PresetsCommunityPage.qml:155
+#: src/contents/ui/PresetsCommunityPage.qml:144
 msgid "Failed to import the %1 community preset to the list of local presets."
 msgstr "% 1 சமூக முன்னமைவை உள்ளக முன்னமைவுகளின் பட்டியலில் இறக்குமதி செய்ய முடியவில்லை."
 
@@ -3252,29 +3290,29 @@ msgstr "அதிகபட்ச உடனடி அதிர்வெண்"
 msgid "Inverted mode"
 msgstr "தலைகீழ் முறை"
 
-#: src/main.cpp:382
+#: src/main.cpp:427
 msgid "Global audio effects"
 msgstr "உலகளாவிய ஆடியோ விளைவுகள்"
 
-#: src/main.cpp:383
+#: src/main.cpp:428
 msgid "© 2017-2026 Easy Effects Team"
 msgstr "© 2017-2026 ஈசி எஃபெக்ட்ச் குழு"
 
-#: src/main.cpp:385
+#: src/main.cpp:430
 msgid "Wellington Wallace"
 msgstr "வெலிங்டன் வாலச்"
 
-#: src/main.cpp:385
+#: src/main.cpp:430
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "உருவாக்குநர்"
 
-#: src/main.cpp:388
+#: src/main.cpp:433
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "உங்கள் பெயர்கள்"
 
-#: src/main.cpp:388
+#: src/main.cpp:433
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "உங்கள் மின்னஞ்சல்கள்"

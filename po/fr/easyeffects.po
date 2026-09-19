@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-09-04 23:23+0000\n"
+"POT-Creation-Date: 2026-09-19 00:03+0000\n"
 "PO-Revision-Date: 2026-09-08 13:51+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -58,67 +58,109 @@ msgid "Toggle the state of the global bypass."
 msgstr "Basculer le contournement global."
 
 #: src/command_line_parser.cpp:51
+#, fuzzy
+msgid ""
+"Audio sharing. 1 to enable, 2 to disable and 3 to get the current state."
+msgstr ""
+"Contournement global. 1 pour activer, 2 pour désactiver et 3 pour obtenir "
+"l'état actuel."
+
+#: src/command_line_parser.cpp:52 src/command_line_parser.cpp:55
+#, fuzzy
+msgid "state"
+msgstr "État"
+
+#: src/command_line_parser.cpp:53
+#, fuzzy
+msgid "Toggle the state of audio sharing."
+msgstr "Basculer le partage audio"
+
+#: src/command_line_parser.cpp:55
+#, fuzzy
+msgid ""
+"Microphone monitoring. 1 to enable, 2 to disable and 3 to get the current "
+"state."
+msgstr ""
+"Contournement global. 1 pour activer, 2 pour désactiver et 3 pour obtenir "
+"l'état actuel."
+
+#: src/command_line_parser.cpp:56
+#, fuzzy
+msgid "Toggle the state of microphone monitoring."
+msgstr "Basculer la surveillance du microphone"
+
+#: src/command_line_parser.cpp:57
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Chargez un préréglage. Exemple : easyeffects -l musique"
 
-#: src/command_line_parser.cpp:51
+#: src/command_line_parser.cpp:57
 msgid "preset-name"
 msgstr "nom-du-préréglage"
 
-#: src/command_line_parser.cpp:52
+#: src/command_line_parser.cpp:58
 msgid "Show available presets."
 msgstr "Afficher les préréglages disponibles."
 
-#: src/command_line_parser.cpp:53
+#: src/command_line_parser.cpp:59
 msgid "Get the last loaded input/output preset."
 msgstr "Obtenir le dernier préréglage d'entrée/sortie chargé."
 
-#: src/command_line_parser.cpp:53
+#: src/command_line_parser.cpp:59
 msgid "preset-type"
 msgstr "préréglage-type"
 
-#: src/command_line_parser.cpp:54
+#: src/command_line_parser.cpp:60
 msgid "Get the last loaded input and output presets."
 msgstr "Obtenir les derniers préréglages d'entrée et de sortie chargés."
 
-#: src/command_line_parser.cpp:55
+#: src/command_line_parser.cpp:61
 msgid "Deprecated. Use --service-mode instead."
 msgstr "Obsolète. Utilisez plutôt --service-mode."
 
-#: src/command_line_parser.cpp:56
+#: src/command_line_parser.cpp:62
 msgid "Start the application with service mode turned on."
 msgstr "Lancer l'application avec le mode service activé."
 
-#: src/command_line_parser.cpp:57
+#: src/command_line_parser.cpp:63
 msgid "Enable debug messages."
 msgstr "Activer les messages de débogage."
 
-#: src/command_line_parser.cpp:127
+#: src/command_line_parser.cpp:135
 msgid "Must specify preset type: input/output."
 msgstr "Vous devez spécifier le type de préréglage : input/output."
 
-#: src/command_line_parser.cpp:161
+#: src/command_line_parser.cpp:169
 msgid "Output presets"
 msgstr "Préréglages de sortie"
 
-#: src/command_line_parser.cpp:163
+#: src/command_line_parser.cpp:171
 msgid "No output presets."
 msgstr "Aucun préréglage de sortie."
 
-#: src/command_line_parser.cpp:174
+#: src/command_line_parser.cpp:182
 msgid "Input presets"
 msgstr "Préréglages d’entrée"
 
-#: src/command_line_parser.cpp:176
+#: src/command_line_parser.cpp:184
 msgid "No input presets."
 msgstr "Aucun préréglage d’entrée."
 
-#: src/command_line_parser.cpp:206
+#: src/command_line_parser.cpp:214
 msgid "Specified preset does not exist."
 msgstr "Le préréglage spécifié n'existe pas."
 
-#: src/command_line_parser.cpp:226
+#: src/command_line_parser.cpp:234
 msgid "Provided an invalid bypass state."
+msgstr "État de contournement fourni invalide."
+
+#: src/command_line_parser.cpp:274
+#, fuzzy
+msgid "Provided an invalid microphone monitoring state."
+msgstr "État de contournement fourni invalide."
+
+#: src/command_line_parser.cpp:304
+#, fuzzy
+msgid "Provided an invalid audio sharing state."
 msgstr "État de contournement fourni invalide."
 
 #: src/contents/ui/AboutPage.qml:24
@@ -2789,22 +2831,22 @@ msgstr "Description"
 msgid "Refresh"
 msgstr "Actualiser"
 
-#: src/contents/ui/PresetsCommunityPage.qml:134
+#: src/contents/ui/PresetsCommunityPage.qml:129
 #: src/contents/ui/PresetsLocalPage.qml:306
 msgid "Load this preset"
 msgstr "Charger ce préréglage"
 
-#: src/contents/ui/PresetsCommunityPage.qml:148
+#: src/contents/ui/PresetsCommunityPage.qml:137
 msgid "Copy to local presets"
 msgstr "Copier vers les préréglages locaux"
 
-#: src/contents/ui/PresetsCommunityPage.qml:153
+#: src/contents/ui/PresetsCommunityPage.qml:142
 msgid "Imported the %1 community preset to the list of local presets."
 msgstr ""
 "Importation du préréglage de la communauté %1 vers la liste des préréglages "
 "locaux."
 
-#: src/contents/ui/PresetsCommunityPage.qml:155
+#: src/contents/ui/PresetsCommunityPage.qml:144
 msgid "Failed to import the %1 community preset to the list of local presets."
 msgstr ""
 "Échec de l'importation du préréglage de la communauté %1 vers la liste des "
@@ -3279,29 +3321,29 @@ msgstr "Fréquence instantanée maximale"
 msgid "Inverted mode"
 msgstr "Mode inversé"
 
-#: src/main.cpp:382
+#: src/main.cpp:427
 msgid "Global audio effects"
 msgstr "Effets audio globaux"
 
-#: src/main.cpp:383
+#: src/main.cpp:428
 msgid "© 2017-2026 Easy Effects Team"
 msgstr "© 2017-2026 Équipe d'Easy Effects"
 
-#: src/main.cpp:385
+#: src/main.cpp:430
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:385
+#: src/main.cpp:430
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Développeur"
 
-#: src/main.cpp:388
+#: src/main.cpp:433
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Vos noms"
 
-#: src/main.cpp:388
+#: src/main.cpp:433
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "Vos courriels"

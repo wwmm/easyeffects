@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-09-04 23:23+0000\n"
+"POT-Creation-Date: 2026-09-19 00:03+0000\n"
 "PO-Revision-Date: 2025-12-13 15:00+0000\n"
 "Last-Translator: SloppyPuppy <momo.injac@gmail.com>\n"
 "Language-Team: Serbian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -58,67 +58,100 @@ msgid "Toggle the state of the global bypass."
 msgstr ""
 
 #: src/command_line_parser.cpp:51
-msgid "Load a preset. Example: easyeffects -l music"
-msgstr "Учитајте шаблон. Пример: easyeffects -l music"
+#, fuzzy
+msgid ""
+"Audio sharing. 1 to enable, 2 to disable and 3 to get the current state."
+msgstr "Глобално заобилажење. 1 да омогућите, а 2 да онемогућите."
 
-#: src/command_line_parser.cpp:51
-msgid "preset-name"
-msgstr "име-шаблона"
-
-#: src/command_line_parser.cpp:52
-msgid "Show available presets."
-msgstr "Покажи доступне шаблоне."
-
-#: src/command_line_parser.cpp:53
-msgid "Get the last loaded input/output preset."
-msgstr "Изабери последњи учитани излазни/улазни шаблон."
-
-#: src/command_line_parser.cpp:53
-msgid "preset-type"
-msgstr "тип-шаблона"
-
-#: src/command_line_parser.cpp:54
-msgid "Get the last loaded input and output presets."
-msgstr "Прибави последни учитани улазни и излазни шаблон."
-
-#: src/command_line_parser.cpp:55
-msgid "Deprecated. Use --service-mode instead."
+#: src/command_line_parser.cpp:52 src/command_line_parser.cpp:55
+msgid "state"
 msgstr ""
 
+#: src/command_line_parser.cpp:53
+msgid "Toggle the state of audio sharing."
+msgstr ""
+
+#: src/command_line_parser.cpp:55
+#, fuzzy
+msgid ""
+"Microphone monitoring. 1 to enable, 2 to disable and 3 to get the current "
+"state."
+msgstr "Глобално заобилажење. 1 да омогућите, а 2 да онемогућите."
+
 #: src/command_line_parser.cpp:56
-msgid "Start the application with service mode turned on."
+msgid "Toggle the state of microphone monitoring."
 msgstr ""
 
 #: src/command_line_parser.cpp:57
+msgid "Load a preset. Example: easyeffects -l music"
+msgstr "Учитајте шаблон. Пример: easyeffects -l music"
+
+#: src/command_line_parser.cpp:57
+msgid "preset-name"
+msgstr "име-шаблона"
+
+#: src/command_line_parser.cpp:58
+msgid "Show available presets."
+msgstr "Покажи доступне шаблоне."
+
+#: src/command_line_parser.cpp:59
+msgid "Get the last loaded input/output preset."
+msgstr "Изабери последњи учитани излазни/улазни шаблон."
+
+#: src/command_line_parser.cpp:59
+msgid "preset-type"
+msgstr "тип-шаблона"
+
+#: src/command_line_parser.cpp:60
+msgid "Get the last loaded input and output presets."
+msgstr "Прибави последни учитани улазни и излазни шаблон."
+
+#: src/command_line_parser.cpp:61
+msgid "Deprecated. Use --service-mode instead."
+msgstr ""
+
+#: src/command_line_parser.cpp:62
+msgid "Start the application with service mode turned on."
+msgstr ""
+
+#: src/command_line_parser.cpp:63
 msgid "Enable debug messages."
 msgstr ""
 
-#: src/command_line_parser.cpp:127
+#: src/command_line_parser.cpp:135
 msgid "Must specify preset type: input/output."
 msgstr ""
 
-#: src/command_line_parser.cpp:161
+#: src/command_line_parser.cpp:169
 msgid "Output presets"
 msgstr ""
 
-#: src/command_line_parser.cpp:163
+#: src/command_line_parser.cpp:171
 msgid "No output presets."
 msgstr ""
 
-#: src/command_line_parser.cpp:174
+#: src/command_line_parser.cpp:182
 msgid "Input presets"
 msgstr ""
 
-#: src/command_line_parser.cpp:176
+#: src/command_line_parser.cpp:184
 msgid "No input presets."
 msgstr ""
 
-#: src/command_line_parser.cpp:206
+#: src/command_line_parser.cpp:214
 msgid "Specified preset does not exist."
 msgstr ""
 
-#: src/command_line_parser.cpp:226
+#: src/command_line_parser.cpp:234
 msgid "Provided an invalid bypass state."
+msgstr ""
+
+#: src/command_line_parser.cpp:274
+msgid "Provided an invalid microphone monitoring state."
+msgstr ""
+
+#: src/command_line_parser.cpp:304
+msgid "Provided an invalid audio sharing state."
 msgstr ""
 
 #: src/contents/ui/AboutPage.qml:24
@@ -2715,20 +2748,20 @@ msgstr ""
 msgid "Refresh"
 msgstr ""
 
-#: src/contents/ui/PresetsCommunityPage.qml:134
+#: src/contents/ui/PresetsCommunityPage.qml:129
 #: src/contents/ui/PresetsLocalPage.qml:306
 msgid "Load this preset"
 msgstr ""
 
-#: src/contents/ui/PresetsCommunityPage.qml:148
+#: src/contents/ui/PresetsCommunityPage.qml:137
 msgid "Copy to local presets"
 msgstr ""
 
-#: src/contents/ui/PresetsCommunityPage.qml:153
+#: src/contents/ui/PresetsCommunityPage.qml:142
 msgid "Imported the %1 community preset to the list of local presets."
 msgstr ""
 
-#: src/contents/ui/PresetsCommunityPage.qml:155
+#: src/contents/ui/PresetsCommunityPage.qml:144
 msgid "Failed to import the %1 community preset to the list of local presets."
 msgstr ""
 
@@ -3189,29 +3222,29 @@ msgstr ""
 msgid "Inverted mode"
 msgstr ""
 
-#: src/main.cpp:382
+#: src/main.cpp:427
 msgid "Global audio effects"
 msgstr ""
 
-#: src/main.cpp:383
+#: src/main.cpp:428
 msgid "© 2017-2026 Easy Effects Team"
 msgstr ""
 
-#: src/main.cpp:385
+#: src/main.cpp:430
 msgid "Wellington Wallace"
 msgstr "Велингтон Волес"
 
-#: src/main.cpp:385
+#: src/main.cpp:430
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr ""
 
-#: src/main.cpp:388
+#: src/main.cpp:433
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 
-#: src/main.cpp:388
+#: src/main.cpp:433
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
