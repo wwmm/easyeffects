@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-09-19 15:26+0000\n"
-"PO-Revision-Date: 2026-09-19 14:52+0000\n"
+"PO-Revision-Date: 2026-09-20 04:51+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -2418,30 +2418,32 @@ msgid "Process all output streams"
 msgstr "Обрабатывать все выходные потоки"
 
 #: src/contents/ui/PreferencesSheet.qml:161
-#, fuzzy
 msgid "Excluded output sinks"
-msgstr "Исключённые приложения"
+msgstr "Исключённые устройства выхода"
 
 #: src/contents/ui/PreferencesSheet.qml:162
 msgid ""
 "Do not automatically process streams when one of these sinks is selected as "
 "the output device."
 msgstr ""
+"Не обрабатывать потоки автоматически, когда одно из этих устройств выбрано в "
+"качестве устройства выхода."
 
 #: src/contents/ui/PreferencesSheet.qml:207
 msgid "Process all input streams"
 msgstr "Обрабатывать все входные потоки"
 
 #: src/contents/ui/PreferencesSheet.qml:217
-#, fuzzy
 msgid "Excluded input sources"
-msgstr "Исключённые приложения"
+msgstr "Исключённые устройства входа"
 
 #: src/contents/ui/PreferencesSheet.qml:218
 msgid ""
 "Do not automatically process streams when one of these sources is selected "
 "as the input device."
 msgstr ""
+"Не обрабатывать потоки автоматически, когда одно из этих устройств выбрано в "
+"качестве устройства ввода."
 
 #: src/contents/ui/PreferencesSheet.qml:263
 msgid "Ignore streams from monitor of devices"
