@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-09-19 15:26+0000\n"
-"PO-Revision-Date: 2026-09-11 19:51+0000\n"
+"PO-Revision-Date: 2026-09-20 20:51+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -59,36 +59,31 @@ msgid "Toggle the state of the global bypass."
 msgstr "Modifica lo stato del bypass globale."
 
 #: src/command_line_parser.cpp:51
-#, fuzzy
 msgid ""
 "Audio sharing. 1 to enable, 2 to disable and 3 to get the current state."
 msgstr ""
-"Bypass globale. 1 per abilitare, 2 per disabilitare e 3 per ottenere lo "
+"Condivisione audio. 1 per abilitare, 2 per disabilitare e 3 per ottenere lo "
 "stato attuale."
 
 #: src/command_line_parser.cpp:52 src/command_line_parser.cpp:55
-#, fuzzy
 msgid "state"
-msgstr "Stato"
+msgstr "stato"
 
 #: src/command_line_parser.cpp:53
-#, fuzzy
 msgid "Toggle the state of audio sharing."
-msgstr "Attiva/disattiva condivisione audio"
+msgstr "Attiva/disattiva lo stato della condivisione audio."
 
 #: src/command_line_parser.cpp:55
-#, fuzzy
 msgid ""
 "Microphone monitoring. 1 to enable, 2 to disable and 3 to get the current "
 "state."
 msgstr ""
-"Bypass globale. 1 per abilitare, 2 per disabilitare e 3 per ottenere lo "
-"stato attuale."
+"Monitoraggio del microfono. 1 per abilitare, 2 per disabilitare e 3 per "
+"ottenere lo stato attuale."
 
 #: src/command_line_parser.cpp:56
-#, fuzzy
 msgid "Toggle the state of microphone monitoring."
-msgstr "Abilita/disabilita il monitoraggio del microfono"
+msgstr "Abilita/disabilita lo stato del monitoraggio del microfono."
 
 #: src/command_line_parser.cpp:57
 msgid "Load a preset. Example: easyeffects -l music"
@@ -155,14 +150,12 @@ msgid "Provided an invalid bypass state."
 msgstr "È stato fornito uno stato del bypass non valido."
 
 #: src/command_line_parser.cpp:274
-#, fuzzy
 msgid "Provided an invalid microphone monitoring state."
-msgstr "È stato fornito uno stato del bypass non valido."
+msgstr "È stato fornito uno stato del monitoraggio del microfono non valido."
 
 #: src/command_line_parser.cpp:304
-#, fuzzy
 msgid "Provided an invalid audio sharing state."
-msgstr "È stato fornito uno stato del bypass non valido."
+msgstr "È stato fornito uno stato della condivisione audio non valido."
 
 #: src/contents/ui/AboutPage.qml:24
 msgctxt "@action:button"
@@ -2390,30 +2383,32 @@ msgid "Process all output streams"
 msgstr "Processa tutti i flussi in uscita"
 
 #: src/contents/ui/PreferencesSheet.qml:161
-#, fuzzy
 msgid "Excluded output sinks"
-msgstr "Applicazioni Escluse"
+msgstr "Dispositivi virtuali di uscita esclusi"
 
 #: src/contents/ui/PreferencesSheet.qml:162
 msgid ""
 "Do not automatically process streams when one of these sinks is selected as "
 "the output device."
 msgstr ""
+"Non processare automaticamente i flussi audio quando uno di questi "
+"dispositivi virtuali è selezionato come dispositivo predefinito di uscita."
 
 #: src/contents/ui/PreferencesSheet.qml:207
 msgid "Process all input streams"
 msgstr "Processa tutti i flussi in ingresso"
 
 #: src/contents/ui/PreferencesSheet.qml:217
-#, fuzzy
 msgid "Excluded input sources"
-msgstr "App escluse"
+msgstr "Sorgenti di ingresso escluse"
 
 #: src/contents/ui/PreferencesSheet.qml:218
 msgid ""
 "Do not automatically process streams when one of these sources is selected "
 "as the input device."
 msgstr ""
+"Non processare automaticamente i flussi audio quando una di queste sorgenti "
+"è selezionata come dispositivo predefinito di ingresso."
 
 #: src/contents/ui/PreferencesSheet.qml:263
 msgid "Ignore streams from monitor of devices"
