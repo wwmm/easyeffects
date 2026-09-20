@@ -37,30 +37,6 @@ echo "load_preset:output:MyPresetName" | socat - UNIX-CONNECT:$XDG_RUNTIME_DIR/E
 
 ---
 
-## Command-line controls
-
-With Easy Effects running, the following options update its live state through
-this local server, just like `--bypass` and `--bypass-toggle`:
-
-```bash
-easyeffects --microphone-monitoring 1      # Enable microphone monitoring
-easyeffects --microphone-monitoring 2      # Disable microphone monitoring
-easyeffects --microphone-monitoring 3      # Print 1 (enabled) or 2 (disabled)
-easyeffects --microphone-monitoring-toggle
-
-easyeffects --audio-sharing 1              # Enable audio sharing
-easyeffects --audio-sharing 2              # Disable audio sharing
-easyeffects --audio-sharing 3              # Print 1 (enabled) or 2 (disabled)
-easyeffects --audio-sharing-toggle
-```
-
-The toggle options can also be bound to custom keyboard shortcuts on desktops
-without XDG global shortcut support. These controls preserve the current window
-visibility; use `--hide-window` explicitly to hide it. Queries print the numeric state followed by
-a newline. Unlike CLI state arguments, socket setters use `0` to disable;
-for example, send `audio_sharing:0\n`. Socket queries return the numeric state
-without a newline. Send each socket command terminated by a newline.
-
 ## Plugins
 
 You can modify individual plugin parameters on the fly using the `set_property` and `get_property` commands.

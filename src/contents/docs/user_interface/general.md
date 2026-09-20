@@ -30,10 +30,9 @@ After this amount of time, Easy Effects stops audio processing and the internal 
 **Hide Menus on Outside Clicks**  
 When a popover menu is shown, return to the main window when a click is made outside the widget.
 
-## Microphone monitoring and audio sharing
+**Microphone Monitoring**<br>
+Play the processed microphone signal through the selected output device.
 
-Microphone monitoring sends the processed microphone to the selected output
-device, optionally through output effects. Its volume control affects only local
-monitoring. Audio sharing adds processed desktop audio to Easy Effects Source for
-recording or communication applications. Shared desktop audio is excluded from
-the microphone monitor, so enabling sharing does not replay desktop audio locally.
+**Audio Sharing**<br>
+Make processed output audio available through Easy Effects Source for recording
+and communication applications.
