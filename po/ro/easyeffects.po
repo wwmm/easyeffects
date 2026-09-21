@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-09-19 15:26+0000\n"
-"PO-Revision-Date: 2026-09-05 17:51+0000\n"
+"PO-Revision-Date: 2026-09-21 11:51+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ro/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
-"X-Generator: Weblate 2026.9.1.dev0\n"
+"X-Generator: Weblate 2026.10.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -59,36 +59,31 @@ msgid "Toggle the state of the global bypass."
 msgstr "Activează/dezactivează starea devierii globale."
 
 #: src/command_line_parser.cpp:51
-#, fuzzy
 msgid ""
 "Audio sharing. 1 to enable, 2 to disable and 3 to get the current state."
 msgstr ""
-"Deviere globală. 1 pentru activare, 2 pentru dezactivare și 3 pentru "
+"Partajarea audio. 1 pentru activare, 2 pentru dezactivare și 3 pentru "
 "afișarea stării curente."
 
 #: src/command_line_parser.cpp:52 src/command_line_parser.cpp:55
-#, fuzzy
 msgid "state"
-msgstr "Stare"
+msgstr "starea"
 
 #: src/command_line_parser.cpp:53
-#, fuzzy
 msgid "Toggle the state of audio sharing."
-msgstr "Activează/dezactivează partajarea audio"
+msgstr "Activează/dezactivează starea partajării audio."
 
 #: src/command_line_parser.cpp:55
-#, fuzzy
 msgid ""
 "Microphone monitoring. 1 to enable, 2 to disable and 3 to get the current "
 "state."
 msgstr ""
-"Deviere globală. 1 pentru activare, 2 pentru dezactivare și 3 pentru "
-"afișarea stării curente."
+"Monitorizarea microfonului. 1 pentru activare, 2 pentru dezactivare și 3 "
+"pentru afișarea stării curente."
 
 #: src/command_line_parser.cpp:56
-#, fuzzy
 msgid "Toggle the state of microphone monitoring."
-msgstr "Activează/dezactivează monitorizarea microfonului"
+msgstr "Activează/dezactivează starea monitorizării microfonului."
 
 #: src/command_line_parser.cpp:57
 msgid "Load a preset. Example: easyeffects -l music"
@@ -155,14 +150,12 @@ msgid "Provided an invalid bypass state."
 msgstr "A fost furnizată o stare de ocolire nevalidă."
 
 #: src/command_line_parser.cpp:274
-#, fuzzy
 msgid "Provided an invalid microphone monitoring state."
-msgstr "A fost furnizată o stare de ocolire nevalidă."
+msgstr "A fost furnizată o stare nevalidă de monitorizare a microfonului."
 
 #: src/command_line_parser.cpp:304
-#, fuzzy
 msgid "Provided an invalid audio sharing state."
-msgstr "A fost furnizată o stare de ocolire nevalidă."
+msgstr "A fost furnizată o stare nevalidă de partajare audio."
 
 #: src/contents/ui/AboutPage.qml:24
 msgctxt "@action:button"
@@ -2402,30 +2395,32 @@ msgid "Process all output streams"
 msgstr "Procesează toate fluxurile de ieșire"
 
 #: src/contents/ui/PreferencesSheet.qml:161
-#, fuzzy
 msgid "Excluded output sinks"
-msgstr "Aplicații excluse"
+msgstr "Receptoare de ieșire excluse"
 
 #: src/contents/ui/PreferencesSheet.qml:162
 msgid ""
 "Do not automatically process streams when one of these sinks is selected as "
 "the output device."
 msgstr ""
+"Nu se procesează automat fluxurile atunci când unul dintre aceste receptoare "
+"este selectat ca dispozitiv de ieșire."
 
 #: src/contents/ui/PreferencesSheet.qml:207
 msgid "Process all input streams"
 msgstr "Procesează toate fluxurile de intrare"
 
 #: src/contents/ui/PreferencesSheet.qml:217
-#, fuzzy
 msgid "Excluded input sources"
-msgstr "Aplicații excluse"
+msgstr "Surse de intrare excluse"
 
 #: src/contents/ui/PreferencesSheet.qml:218
 msgid ""
 "Do not automatically process streams when one of these sources is selected "
 "as the input device."
 msgstr ""
+"Nu se procesează automat fluxurile atunci când una dintre aceste surse este "
+"selectată ca dispozitiv de intrare."
 
 #: src/contents/ui/PreferencesSheet.qml:263
 msgid "Ignore streams from monitor of devices"
