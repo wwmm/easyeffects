@@ -173,12 +173,27 @@ Kirigami.Dialog {
                     verticalPadding: 0
                     text: i18n("Fallback Preset") // qmllint disable
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
+
+                    readonly property string dbFallbackPresetName: DbMain.visiblePage === 0 ? DbMain.outputAutoloadingFallbackPreset : DbMain.inputAutoloadingFallbackPreset
+
+                    // the fallback preset db key stays empty until the user picks one, so default it to the first model entry
+                    function ensureFallbackPresetSet() {
+                        if (!Common.isEmpty(dbFallbackPresetName) || model.rowCount() === 0) // qmllint disable
+                            return;
+
+                        const name = model.data(model.index(0, 0), PresetsListModel.Name);
+
+                        if (DbMain.visiblePage === 0)
+                            DbMain.outputAutoloadingFallbackPreset = name;
+                        else if (DbMain.visiblePage === 1)
+                            DbMain.inputAutoloadingFallbackPreset = name;
+                    }
+
                     currentIndex: {
-                        const fallbackPreset = DbMain.visiblePage === 0 ? DbMain.outputAutoloadingFallbackPreset : DbMain.inputAutoloadingFallbackPreset;
                         for (let n = 0; n < model.rowCount(); n++) {
                             const proxyIndex = model.index(n, 0);
                             const name = model.data(proxyIndex, PresetsListModel.Name);
-                            if (name === fallbackPreset)
+                            if (name === dbFallbackPresetName)
                                 return n;
                         }
                         return 0;
@@ -193,6 +208,9 @@ Kirigami.Dialog {
                         else if (DbMain.visiblePage === 1)
                             DbMain.inputAutoloadingFallbackPreset = currentText;
                     }
+                    onDbFallbackPresetNameChanged: ensureFallbackPresetSet()
+                    onModelChanged: ensureFallbackPresetSet()
+                    Component.onCompleted: ensureFallbackPresetSet()
                 }
 
                 EeSwitch {
