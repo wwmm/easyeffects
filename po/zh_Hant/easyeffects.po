@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-09-19 15:26+0000\n"
-"PO-Revision-Date: 2026-09-19 14:52+0000\n"
+"PO-Revision-Date: 2026-09-23 03:51+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hant/>\n"
@@ -2347,30 +2347,28 @@ msgid "Process all output streams"
 msgstr "處理全部的輸出串流"
 
 #: src/contents/ui/PreferencesSheet.qml:161
-#, fuzzy
 msgid "Excluded output sinks"
-msgstr "已經排除的應用程式"
+msgstr "已經排除的輸出槽"
 
 #: src/contents/ui/PreferencesSheet.qml:162
 msgid ""
 "Do not automatically process streams when one of these sinks is selected as "
 "the output device."
-msgstr ""
+msgstr "不要自動處理串流，當其中一個槽被選作為輸出裝置時。"
 
 #: src/contents/ui/PreferencesSheet.qml:207
 msgid "Process all input streams"
 msgstr "處理全部的輸入串流"
 
 #: src/contents/ui/PreferencesSheet.qml:217
-#, fuzzy
 msgid "Excluded input sources"
-msgstr "已經排除的應用程式"
+msgstr "已經排除的輸入來源"
 
 #: src/contents/ui/PreferencesSheet.qml:218
 msgid ""
 "Do not automatically process streams when one of these sources is selected "
 "as the input device."
-msgstr ""
+msgstr "不要動處理串流，當其中一個來源被選作為輸入裝置時。"
 
 #: src/contents/ui/PreferencesSheet.qml:263
 msgid "Ignore streams from monitor of devices"
