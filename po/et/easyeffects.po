@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-09-19 15:26+0000\n"
-"PO-Revision-Date: 2026-09-17 02:51+0000\n"
+"PO-Revision-Date: 2026-09-23 03:51+0000\n"
 "Last-Translator: Priit Jõerüüt <jrthwlate@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/easyeffects/"
 "main/et/>\n"
@@ -61,14 +61,12 @@ msgid ""
 msgstr ""
 
 #: src/command_line_parser.cpp:52 src/command_line_parser.cpp:55
-#, fuzzy
 msgid "state"
-msgstr "Olek"
+msgstr "olek"
 
 #: src/command_line_parser.cpp:53
-#, fuzzy
 msgid "Toggle the state of audio sharing."
-msgstr "Lülita heli jagamine sisse/välja"
+msgstr "Lülita heli jagamise olek sisse/välja."
 
 #: src/command_line_parser.cpp:55
 msgid ""
@@ -77,9 +75,8 @@ msgid ""
 msgstr ""
 
 #: src/command_line_parser.cpp:56
-#, fuzzy
 msgid "Toggle the state of microphone monitoring."
-msgstr "Lülita mikrofoni monitor sisse/välja"
+msgstr "Lülita mikrofoni monitori olek sisse/välja."
 
 #: src/command_line_parser.cpp:57
 msgid "Load a preset. Example: easyeffects -l music"
@@ -146,9 +143,8 @@ msgid "Provided an invalid bypass state."
 msgstr ""
 
 #: src/command_line_parser.cpp:274
-#, fuzzy
 msgid "Provided an invalid microphone monitoring state."
-msgstr "Lülita mikrofoni monitor sisse/välja"
+msgstr "Päringus oli vigane mikrofoni monitori olek."
 
 #: src/command_line_parser.cpp:304
 msgid "Provided an invalid audio sharing state."
@@ -2358,9 +2354,8 @@ msgid "Process all output streams"
 msgstr "Töötle kõiki väljundvooge"
 
 #: src/contents/ui/PreferencesSheet.qml:161
-#, fuzzy
 msgid "Excluded output sinks"
-msgstr "Välistatud rakendused"
+msgstr "Välistatud väljundkanalid"
 
 #: src/contents/ui/PreferencesSheet.qml:162
 msgid ""
@@ -2373,9 +2368,8 @@ msgid "Process all input streams"
 msgstr "Töötle kõiki sisendvooge"
 
 #: src/contents/ui/PreferencesSheet.qml:217
-#, fuzzy
 msgid "Excluded input sources"
-msgstr "Välistatud rakendused"
+msgstr "Välistatud sisendallikad"
 
 #: src/contents/ui/PreferencesSheet.qml:218
 msgid ""
