@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-09-19 15:26+0000\n"
-"PO-Revision-Date: 2026-09-02 20:51+0000\n"
+"PO-Revision-Date: 2026-09-25 20:51+0000\n"
 "Last-Translator: NooB9496 <noob9496@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/main/"
 "pl/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 2026.9.dev0\n"
+"X-Generator: Weblate 2026.10.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -58,36 +58,30 @@ msgid "Toggle the state of the global bypass."
 msgstr "Przełącz stan globalnego obejścia."
 
 #: src/command_line_parser.cpp:51
-#, fuzzy
 msgid ""
 "Audio sharing. 1 to enable, 2 to disable and 3 to get the current state."
 msgstr ""
-"Globalne obejście. 1 – włączenie, 2 – wyłączenie, a 3 – sprawdzenie "
-"aktualnego stanu."
+"Udostępnianie dźwięku. 1 – włącz, 2 – wyłącz, a 3 – sprawdź aktualny stan."
 
 #: src/command_line_parser.cpp:52 src/command_line_parser.cpp:55
-#, fuzzy
 msgid "state"
 msgstr "Stan"
 
 #: src/command_line_parser.cpp:53
-#, fuzzy
 msgid "Toggle the state of audio sharing."
-msgstr "Włącz/wyłącz udostępnianie dźwięku"
+msgstr "Włącz lub wyłącz udostępnianie dźwięku."
 
 #: src/command_line_parser.cpp:55
-#, fuzzy
 msgid ""
 "Microphone monitoring. 1 to enable, 2 to disable and 3 to get the current "
 "state."
 msgstr ""
-"Globalne obejście. 1 – włączenie, 2 – wyłączenie, a 3 – sprawdzenie "
+"Monitorowanie mikrofonu. 1 – włączenie, 2 – wyłączenie, a 3 – sprawdzenie "
 "aktualnego stanu."
 
 #: src/command_line_parser.cpp:56
-#, fuzzy
 msgid "Toggle the state of microphone monitoring."
-msgstr "Włącz/wyłącz monitorowanie mikrofonu"
+msgstr "Włącz lub wyłącz monitorowanie mikrofonu."
 
 #: src/command_line_parser.cpp:57
 msgid "Load a preset. Example: easyeffects -l music"
@@ -154,14 +148,12 @@ msgid "Provided an invalid bypass state."
 msgstr "Otrzymano nieprawidłowy stan bypass."
 
 #: src/command_line_parser.cpp:274
-#, fuzzy
 msgid "Provided an invalid microphone monitoring state."
-msgstr "Otrzymano nieprawidłowy stan bypass."
+msgstr "Podano nieprawidłowy stan monitorowania mikrofonu."
 
 #: src/command_line_parser.cpp:304
-#, fuzzy
 msgid "Provided an invalid audio sharing state."
-msgstr "Otrzymano nieprawidłowy stan bypass."
+msgstr "Podano nieprawidłowy stan udostępniania dźwięku."
 
 #: src/contents/ui/AboutPage.qml:24
 msgctxt "@action:button"
@@ -2032,14 +2024,12 @@ msgid "Pitch mid"
 msgstr "Średnia wysokość"
 
 #: src/contents/ui/MidSideEqualizer.qml:215
-#, fuzzy
 msgid "Pitch side"
-msgstr "Lewy ton"
+msgstr "Korygowanie wysokości dźwięku"
 
 #: src/contents/ui/MidSideEqualizer.qml:244
-#, fuzzy
 msgid "Mid"
-msgstr "Zmiksowane"
+msgstr "Środek"
 
 #: src/contents/ui/MidSideEqualizer.qml:346
 #, fuzzy
@@ -2161,18 +2151,16 @@ msgid "Input monitoring"
 msgstr "Monitorowanie wejścia"
 
 #: src/contents/ui/PageStreamsEffects.qml:713
-#, fuzzy
 msgid "Toggle input monitoring"
-msgstr "Włącz/wyłącz monitorowanie mikrofonu"
+msgstr "Zarządzanie monitorowaniem wejścia"
 
 #: src/contents/ui/PageStreamsEffects.qml:733
-#, fuzzy
 msgid "Set input monitoring volume"
-msgstr "Monitorowanie wejścia"
+msgstr "Ustaw głośność monitorowania sygnału wejściowego"
 
 #: src/contents/ui/PageStreamsEffects.qml:752
 msgid "Monitoring volume"
-msgstr ""
+msgstr "Monitorowanie głośności"
 
 #: src/contents/ui/PageStreamsEffects.qml:785
 msgid "Share audio"
@@ -2400,30 +2388,32 @@ msgid "Process all output streams"
 msgstr "Przetwarzaj wszystkie strumienie wyjściowe"
 
 #: src/contents/ui/PreferencesSheet.qml:161
-#, fuzzy
 msgid "Excluded output sinks"
-msgstr "Lista wykluczonych programów"
+msgstr "Wykluczone odbiorniki danych wyjściowych"
 
 #: src/contents/ui/PreferencesSheet.qml:162
 msgid ""
 "Do not automatically process streams when one of these sinks is selected as "
 "the output device."
 msgstr ""
+"Nie należy automatycznie przetwarzać strumieni, gdy jedno z tych urządzeń "
+"docelowych zostanie wybrane jako urządzenie wyjściowe."
 
 #: src/contents/ui/PreferencesSheet.qml:207
 msgid "Process all input streams"
 msgstr "Przetwarzaj wszystkie strumienie wejściowe"
 
 #: src/contents/ui/PreferencesSheet.qml:217
-#, fuzzy
 msgid "Excluded input sources"
-msgstr "Wykluczone aplikacje"
+msgstr "Wykluczone źródła sygnału"
 
 #: src/contents/ui/PreferencesSheet.qml:218
 msgid ""
 "Do not automatically process streams when one of these sources is selected "
 "as the input device."
 msgstr ""
+"Nie należy automatycznie przetwarzać strumieni, gdy jedno z tych źródeł "
+"zostanie wybrane jako urządzenie wejściowe."
 
 #: src/contents/ui/PreferencesSheet.qml:263
 msgid "Ignore streams from monitor of devices"
