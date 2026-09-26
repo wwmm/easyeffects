@@ -39,11 +39,8 @@
                     "tag": "v1.2.6",
                     "commit": "67b33abe1558160ed76ada1322329b0e9e058b02",
                     "x-checker-data": {
-                        "type": "json",
-                        "url": "https://api.github.com/repos/jiixyj/libebur128/releases/latest",
-                        "tag-query": ".tag_name",
-                        "version-query": "$tag | sub(\"^jq-\"; \"\")",
-                        "timestamp-query": ".published_at"
+                        "type": "git",
+                        "tag-pattern": "^v([\\d.]+)$"
                     }
                 }
             ]
@@ -158,11 +155,8 @@
                     "tag": "v3.12.0",
                     "commit": "55f93686c01528224f448c19128836e7df245f72",
                     "x-checker-data": {
-                        "type": "json",
-                        "url": "https://api.github.com/repos/nlohmann/json/releases/latest",
-                        "tag-query": ".tag_name",
-                        "version-query": "$tag | sub(\"^jq-\"; \"\")",
-                        "timestamp-query": ".published_at"
+                        "type": "git",
+                        "tag-pattern": "^v([\\d.]+)$"
                     }
                 }
             ]
@@ -176,14 +170,12 @@
             ],
             "sources": [
                 {
-                    "type": "archive",
-                    "url": "https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2023.1.0.tar.gz",
-                    "sha256": "191288b52e1e6b17198000b64d77d194bb65e791be46ebc606e9b091781e2070",
+                    "type": "git",
+                    "url": "https://github.com/oneapi-src/oneTBB",
+                    "tag": "v2023.1.0",
                     "x-checker-data": {
-                        "type": "anitya",
-                        "project-id": 227581,
-                        "stable-only": true,
-                        "url-template": "https://github.com/oneapi-src/oneTBB/archive/refs/tags/v$version.tar.gz"
+                        "type": "git",
+                        "tag-pattern": "^v([\\d.]+)$"
                     }
                 }
             ]
@@ -211,13 +203,7 @@
                 {
                     "type": "archive",
                     "url": "https://ftp.gnu.org/gnu/gsl/gsl-2.8.tar.gz",
-                    "sha256": "6a99eeed15632c6354895b1dd542ed5a855c0f15d9ad1326c6fe2b2c9e423190",
-                    "x-checker-data": {
-                        "type": "anitya",
-                        "project-id": 1267,
-                        "stable-only": true,
-                        "url-template": "https://ftp.gnu.org/gnu/gsl/gsl-$version.tar.gz"
-                    }
+                    "sha256": "6a99eeed15632c6354895b1dd542ed5a855c0f15d9ad1326c6fe2b2c9e423190"
                 }
             ]
         },
