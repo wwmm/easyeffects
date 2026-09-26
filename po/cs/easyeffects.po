@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-09-19 15:26+0000\n"
-"PO-Revision-Date: 2026-09-19 14:51+0000\n"
+"PO-Revision-Date: 2026-09-26 09:51+0000\n"
 "Last-Translator: Fjuro <fjuro@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
 "cs/>\n"
@@ -2372,30 +2372,32 @@ msgid "Process all output streams"
 msgstr "Zpracovat všechny výstupní proudy"
 
 #: src/contents/ui/PreferencesSheet.qml:161
-#, fuzzy
 msgid "Excluded output sinks"
-msgstr "Vyloučené aplikace"
+msgstr "Vyloučené výstupy"
 
 #: src/contents/ui/PreferencesSheet.qml:162
 msgid ""
 "Do not automatically process streams when one of these sinks is selected as "
 "the output device."
 msgstr ""
+"Nezpracovávat automaticky proudy, když je jeden z následujících výstupů "
+"zvolen jako výstupní zařízení."
 
 #: src/contents/ui/PreferencesSheet.qml:207
 msgid "Process all input streams"
 msgstr "Zpracovat všechny vstupní proudy"
 
 #: src/contents/ui/PreferencesSheet.qml:217
-#, fuzzy
 msgid "Excluded input sources"
-msgstr "Vyloučené aplikace"
+msgstr "Vyloučené vstupy"
 
 #: src/contents/ui/PreferencesSheet.qml:218
 msgid ""
 "Do not automatically process streams when one of these sources is selected "
 "as the input device."
 msgstr ""
+"Nezpracovávat automaticky proudy, když je jeden z následujících vstupů "
+"zvolen jako vstupní zařízení."
 
 #: src/contents/ui/PreferencesSheet.qml:263
 msgid "Ignore streams from monitor of devices"
