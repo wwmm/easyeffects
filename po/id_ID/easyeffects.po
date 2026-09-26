@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-09-19 15:26+0000\n"
-"PO-Revision-Date: 2026-08-29 15:39+0000\n"
+"PO-Revision-Date: 2026-09-26 15:15+0000\n"
 "Last-Translator: Arif Budiman <arifpedia@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/easyeffects/"
 "main/id/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2026.9.dev0\n"
+"X-Generator: Weblate 2026.10.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -57,36 +57,31 @@ msgid "Toggle the state of the global bypass."
 msgstr "Alihkan status bypass global."
 
 #: src/command_line_parser.cpp:51
-#, fuzzy
 msgid ""
 "Audio sharing. 1 to enable, 2 to disable and 3 to get the current state."
 msgstr ""
-"Bypass global. 1 untuk mengaktifkan, 2 untuk menonaktifkan dan 3 untuk "
+"Berbagi audio. 1 untuk mengaktifkan, 2 untuk menonaktifkan, dan 3 untuk "
 "mendapatkan status saat ini."
 
 #: src/command_line_parser.cpp:52 src/command_line_parser.cpp:55
-#, fuzzy
 msgid "state"
-msgstr "Status"
+msgstr "status"
 
 #: src/command_line_parser.cpp:53
-#, fuzzy
 msgid "Toggle the state of audio sharing."
-msgstr "Alihkan berbagi audio"
+msgstr "Alihkan status berbagi audio."
 
 #: src/command_line_parser.cpp:55
-#, fuzzy
 msgid ""
 "Microphone monitoring. 1 to enable, 2 to disable and 3 to get the current "
 "state."
 msgstr ""
-"Bypass global. 1 untuk mengaktifkan, 2 untuk menonaktifkan dan 3 untuk "
-"mendapatkan status saat ini."
+"Pemantauan mikrofon. 1 untuk mengaktifkan, 2 untuk menonaktifkan, dan 3 "
+"untuk mendapatkan status saat ini."
 
 #: src/command_line_parser.cpp:56
-#, fuzzy
 msgid "Toggle the state of microphone monitoring."
-msgstr "Alihkan pemantauan mikrofon"
+msgstr "Alihkan status pemantauan mikrofon."
 
 #: src/command_line_parser.cpp:57
 msgid "Load a preset. Example: easyeffects -l music"
@@ -153,14 +148,12 @@ msgid "Provided an invalid bypass state."
 msgstr "Memberikan status bypass yang tidak valid."
 
 #: src/command_line_parser.cpp:274
-#, fuzzy
 msgid "Provided an invalid microphone monitoring state."
-msgstr "Memberikan status bypass yang tidak valid."
+msgstr "Status pemantauan mikrofon yang diberikan tidak valid."
 
 #: src/command_line_parser.cpp:304
-#, fuzzy
 msgid "Provided an invalid audio sharing state."
-msgstr "Memberikan status bypass yang tidak valid."
+msgstr "Status berbagi audio yang diberikan tidak valid."
 
 #: src/contents/ui/AboutPage.qml:24
 msgctxt "@action:button"
@@ -1445,9 +1438,8 @@ msgstr "SPM"
 
 #: src/contents/ui/Equalizer.qml:152 src/contents/ui/Filter.qml:107
 #: src/contents/ui/MidSideEqualizer.qml:152
-#, fuzzy
 msgid "Equalizer decramping"
-msgstr "Mode equalizer"
+msgstr "Dekramping equalizer"
 
 #: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
 #: src/contents/ui/MidSideEqualizer.qml:156
@@ -2024,9 +2016,8 @@ msgid "Mid"
 msgstr "Mid"
 
 #: src/contents/ui/MidSideEqualizer.qml:346
-#, fuzzy
 msgid "Split mid/side"
-msgstr "Pisah"
+msgstr "Pisahkan mid/side"
 
 #: src/contents/ui/MultibandCompressor.qml:127
 msgid "Compression mode"
@@ -2143,18 +2134,16 @@ msgid "Input monitoring"
 msgstr "Pemantauan masukan"
 
 #: src/contents/ui/PageStreamsEffects.qml:713
-#, fuzzy
 msgid "Toggle input monitoring"
-msgstr "Alihkan pemantauan mikrofon"
+msgstr "Alihkan pemantauan input"
 
 #: src/contents/ui/PageStreamsEffects.qml:733
-#, fuzzy
 msgid "Set input monitoring volume"
-msgstr "Pemantauan masukan"
+msgstr "Atur volume pemantauan input"
 
 #: src/contents/ui/PageStreamsEffects.qml:752
 msgid "Monitoring volume"
-msgstr ""
+msgstr "Volume pemantauan"
 
 #: src/contents/ui/PageStreamsEffects.qml:785
 msgid "Share audio"
@@ -2383,30 +2372,32 @@ msgid "Process all output streams"
 msgstr "Proses semua aliran keluaran"
 
 #: src/contents/ui/PreferencesSheet.qml:161
-#, fuzzy
 msgid "Excluded output sinks"
-msgstr "Aplikasi yang Dikecualikan"
+msgstr "Output sink yang dikecualikan"
 
 #: src/contents/ui/PreferencesSheet.qml:162
 msgid ""
 "Do not automatically process streams when one of these sinks is selected as "
 "the output device."
 msgstr ""
+"Jangan memproses stream secara otomatis saat salah satu sink ini dipilih "
+"sebagai perangkat output."
 
 #: src/contents/ui/PreferencesSheet.qml:207
 msgid "Process all input streams"
 msgstr "Proses semua aliran masukan"
 
 #: src/contents/ui/PreferencesSheet.qml:217
-#, fuzzy
 msgid "Excluded input sources"
-msgstr "Aplikasi yang dikecualikan"
+msgstr "Sumber input yang dikecualikan"
 
 #: src/contents/ui/PreferencesSheet.qml:218
 msgid ""
 "Do not automatically process streams when one of these sources is selected "
 "as the input device."
 msgstr ""
+"Jangan memproses stream secara otomatis saat salah satu sumber ini dipilih "
+"sebagai perangkat input."
 
 #: src/contents/ui/PreferencesSheet.qml:263
 msgid "Ignore streams from monitor of devices"
@@ -3444,9 +3435,8 @@ msgid "Equalizer"
 msgstr "Equalizer"
 
 #: src/tags_plugin_name.cpp:61
-#, fuzzy
 msgid "Mid-Side Equalizer"
-msgstr "Equalizer"
+msgstr "Equalizer Mid-Side"
 
 #: src/tags_plugin_name.cpp:62
 msgid "Exciter"
