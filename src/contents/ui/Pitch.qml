@@ -178,8 +178,8 @@ Kirigami.ScrollablePage {
                         from: pitchPage.pluginDB.getMinValue("octaves")
                         to: pitchPage.pluginDB.getMaxValue("octaves")
                         value: pitchPage.pluginDB.octaves
-                        decimals: 0
-                        stepSize: 1
+                        decimals: 2
+                        stepSize: 0.1
                         onValueModified: v => {
                             pitchPage.pluginDB.octaves = v;
                         }
@@ -194,7 +194,7 @@ Kirigami.ScrollablePage {
                         from: pitchPage.pluginDB.getMinValue("cents")
                         to: pitchPage.pluginDB.getMaxValue("cents")
                         value: pitchPage.pluginDB.cents
-                        decimals: 0
+                        decimals: 1
                         stepSize: 1
                         onValueModified: v => {
                             pitchPage.pluginDB.cents = v;
@@ -210,8 +210,8 @@ Kirigami.ScrollablePage {
                         from: pitchPage.pluginDB.getMinValue("semitones")
                         to: pitchPage.pluginDB.getMaxValue("semitones")
                         value: pitchPage.pluginDB.semitones
-                        decimals: 0
-                        stepSize: 1
+                        decimals: 1
+                        stepSize: 0.1
                         onValueModified: v => {
                             pitchPage.pluginDB.semitones = v;
                         }
