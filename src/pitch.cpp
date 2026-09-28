@@ -253,9 +253,13 @@ void Pitch::set_semitones() {
     return;
   }
 
+  // Soundtouch library restricts setPitchSemiTones values to (-12 .. +12)
+  const auto new_semitones =
+      std::clamp(settings->semitones() + (settings->octaves() * 12.0) + (settings->cents() / 100.0), -12.0, 12.0);
+
   std::scoped_lock<std::mutex> lock(data_mutex);
 
-  snd_touch->setPitchSemiTones(settings->semitones() + (settings->octaves() * 12.0) + (settings->cents() / 100.0));
+  snd_touch->setPitchSemiTones(new_semitones);
 }
 
 void Pitch::set_sequence_length() {
