@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-09-19 15:26+0000\n"
-"PO-Revision-Date: 2026-09-20 20:51+0000\n"
+"PO-Revision-Date: 2026-09-28 23:51+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -2282,7 +2282,7 @@ msgstr "Lunghezza sequenza"
 
 #: src/contents/ui/Pitch.qml:87
 msgid "Seek window"
-msgstr "Finestra di rilevazione"
+msgstr "Finestra di rilevamento"
 
 #: src/contents/ui/Pitch.qml:105
 msgid "Overlap length"
