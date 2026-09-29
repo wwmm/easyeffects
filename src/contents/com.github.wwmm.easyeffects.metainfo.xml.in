@@ -64,6 +64,24 @@
     <color type="primary" scheme_preference="dark">#004079</color>
   </branding>
   <releases>
+    <release type="stable" version="8.3.0" date="2026-09-29T00:00:00Z">
+      <description>
+        <ul>
+          <li>Features:</li>
+          <li>Now Community Presets using SOFA impulse resposes can be correctly imported to local presets.</li>
+          <li>Using the share audio and microphone monitoring features together should be better now.</li>
+          <li>More command line options.</li>
+          <li>The microphone monitoring volume can be controlled by the user.</li>
+          <li>Stepsize for controls in the Pitch effect have been improved.</li>
+          <li>Bug fixes:</li>
+          <li>Fixed the import feature of the community presets that prevented to save Convolver impulse
+          response and RNNoise models into the local folder.</li>
+          <li>The Community Presets list has been improved to show the preset names and the package names
+          in a different style, which fixed a bug that was hiding the package names in certain cases.</li>
+          <li>Other notes:</li>
+        </ul>
+      </description>
+    </release>
     <release type="stable" version="8.2.9" date="2026-08-31T00:00:00Z">
       <description>
         <ul>

@@ -1,5 +1,23 @@
 # Changelog
  
+## 8.3.0
+### 2026-09-29
+
+ 
+### Features:
+- Now Community Presets using SOFA impulse resposes can be correctly imported to local presets.
+- Using the share audio and microphone monitoring features together should be better now.
+- More command line options.
+- The microphone monitoring volume can be controlled by the user.
+- Stepsize for controls in the Pitch effect have been improved.
+
+### Bug fixes:
+- Fixed the import feature of the community presets that prevented to save Convolver impulse response and RNNoise models into the local folder. 
+- The Community Presets list has been improved to show the preset names and the package names in a different style, which fixed a bug that was hiding the package names in certain cases.
+
+### Other notes:
+
+ 
 ## 8.2.9
 ### 2026-08-31
 
