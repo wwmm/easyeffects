@@ -176,6 +176,7 @@ The following properties can be modified or queried via the [local server](../us
 | **deepfilternet** | `bypass` | Bool | `false` |
 | **deepfilternet** | `inputGain` | Double | `0` |
 | **deepfilternet** | `outputGain` | Double | `0` |
+| **deepfilternet** | `model` | Enum | `0` <br><small>(Choices: 0: `DeepFilterNet`, 1: `DPDFNet`)</small> |
 | **deepfilternet** | `attenuationLimit` | Double | `100` |
 | **deepfilternet** | `minProcessingThreshold` | Double | `-10` |
 | **deepfilternet** | `maxErbProcessingThreshold` | Double | `30` |

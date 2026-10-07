@@ -2,6 +2,12 @@
 
 Advanced noise reduction is achieved using "DeepFilterNet" technology. This technology uses AI technology called deep learning to efficiently remove noise from audio signals, enabling higher quality noise suppression than conventional methods. This technology has several control parameters, which are explained below and how to set them.
 
+**Model**  
+Selects the noise reduction model. Each one must be installed separately.
+
+- DeepFilterNet: requires [DeepFilterNet](https://github.com/Rikorose/DeepFilterNet).
+- DPDFNet: requires [HushMic](https://github.com/Fovty/HushMic). Only the Attenuation Limit applies to this model.
+
 **Attenuation Limit**  
 This parameter determines how much noise is attenuated. Higher values result in stronger noise reduction, but too high a value may also remove parts of the audio.
 

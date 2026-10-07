@@ -52,11 +52,20 @@ DeepFilterNet::DeepFilterNet(const std::string& tag,
           pipe_type,
           tags::plugin_name::BaseName::deepfilternet + "#" + instance_id)) {
   ladspa_wrapper = std::make_unique<ladspa::LadspaWrapper>("libdeep_filter_ladspa.so", "deep_filter_stereo");
+  dpdfnet_l = std::make_unique<ladspa::LadspaWrapper>("libdpdfnet_ladspa.so", "dpdfnet_mono");
+  dpdfnet_r = std::make_unique<ladspa::LadspaWrapper>("libdpdfnet_ladspa.so", "dpdfnet_mono");
 
-  packageInstalled = ladspa_wrapper->found_plugin();
+  deepFilterNetInstalled = ladspa_wrapper->found_plugin();
+  dpdfnetInstalled = dpdfnet_l->found_plugin() && dpdfnet_r->found_plugin();
 
-  if (!packageInstalled) {
+  packageInstalled = deepFilterNetInstalled || dpdfnetInstalled;
+
+  if (!deepFilterNetInstalled) {
     util::debug(std::format("{}libdeep_filter_ladspa is not installed", log_tag));
+  }
+
+  if (!dpdfnetInstalled) {
+    util::debug(std::format("{}libdpdfnet_ladspa is not installed", log_tag));
   }
 
   init_common_controls<DbDeepFilterNet>(settings);
@@ -74,6 +83,20 @@ DeepFilterNet::DeepFilterNet(const std::string& tag,
                                   false);
   BIND_LADSPA_PORT_DB_EXPONENTIAL("Max DF processing threshold (dB)", maxDfProcessingThreshold,
                                   setMaxDfProcessingThreshold, DbDeepFilterNet::maxDfProcessingThresholdChanged, false);
+
+  // DPDFNet's attenuation port has the same 0-100 dB range as DeepFilterNet's, so the setting is shared
+  const auto set_dpdfnet_attenuation = [this]() {
+    if (dpdfnetInstalled) {
+      dpdfnet_l->set_control_port_value_clamp("Attenuation Limit (dB)", settings->attenuationLimit());
+      dpdfnet_r->set_control_port_value_clamp("Attenuation Limit (dB)", settings->attenuationLimit());
+    }
+  };
+
+  set_dpdfnet_attenuation();
+
+  connect(settings, &DbDeepFilterNet::attenuationLimitChanged, this, set_dpdfnet_attenuation);
+
+  connect(settings, &DbDeepFilterNet::modelChanged, this, [this]() { resetHistory(); });
 }
 
 DeepFilterNet::~DeepFilterNet() {
@@ -125,7 +148,11 @@ void DeepFilterNet::setup() {
 
   ready = false;
 
-  if (!ladspa_wrapper->found_plugin()) {
+  use_dpdfnet = settings->model() == 1;
+
+  if (use_dpdfnet ? !dpdfnetInstalled : !deepFilterNetInstalled) {
+    util::warning(std::format("{}the selected model is not installed", log_tag));
+
     return;
   }
 
@@ -136,9 +163,16 @@ void DeepFilterNet::setup() {
 
   QMetaObject::invokeMethod(
       baseWorker,
-      [this] {
-        ladspa_wrapper->n_samples = n_samples;
-        ladspa_wrapper->create_instance(48000);
+      [this, dpdfnet = use_dpdfnet] {
+        if (dpdfnet) {
+          for (auto* wrapper : {dpdfnet_l.get(), dpdfnet_r.get()}) {
+            wrapper->n_samples = n_samples;
+            wrapper->create_instance(48000);
+          }
+        } else {
+          ladspa_wrapper->n_samples = n_samples;
+          ladspa_wrapper->create_instance(48000);
+        }
 
         if (resample && !resampler_ready) {
           resampler_inL = std::make_unique<Resampler>(rate, 48000);
@@ -200,14 +234,10 @@ void DeepFilterNet::process(std::span<float>& left_in,
     resampled_outL.resize(resampled_inL.size());
     resampled_outR.resize(resampled_inR.size());
 
-    ladspa_wrapper->n_samples = resampled_inL.size();
-    ladspa_wrapper->connect_data_ports(resampled_inL, resampled_inR, resampled_outL, resampled_outR);
+    run_model(resampled_inL, resampled_inR, resampled_outL, resampled_outR);
   } else {
-    ladspa_wrapper->n_samples = n_samples;
-    ladspa_wrapper->connect_data_ports(left_in, right_in, left_out, right_out);
+    run_model(left_in, right_in, left_out, right_out);
   }
-
-  ladspa_wrapper->run();
 
   if (resample) {
     const auto& outL = resampler_outL->process(resampled_outL);
@@ -260,7 +290,27 @@ void DeepFilterNet::process([[maybe_unused]] std::span<float>& left_in,
                             [[maybe_unused]] std::span<float>& probe_right) {}
 
 auto DeepFilterNet::get_latency_seconds() -> float {
-  return 0.02F + (1.0F / rate);
+  // DPDFNet reports a fixed 3840 samples at 48 kHz
+  return (settings->model() == 1 ? 0.08F : 0.02F) + (1.0F / rate);
+}
+
+void DeepFilterNet::run_model(std::span<const float> left_in,
+                              std::span<const float> right_in,
+                              std::span<float> left_out,
+                              std::span<float> right_out) {
+  if (use_dpdfnet) {
+    dpdfnet_l->n_samples = left_in.size();
+    dpdfnet_l->connect_data_ports(left_in, left_in, left_out, left_out);
+    dpdfnet_l->run();
+
+    dpdfnet_r->n_samples = right_in.size();
+    dpdfnet_r->connect_data_ports(right_in, right_in, right_out, right_out);
+    dpdfnet_r->run();
+  } else {
+    ladspa_wrapper->n_samples = left_in.size();
+    ladspa_wrapper->connect_data_ports(left_in, right_in, left_out, right_out);
+    ladspa_wrapper->run();
+  }
 }
 
 void DeepFilterNet::resetHistory() {
@@ -273,10 +323,14 @@ void DeepFilterNet::resetHistory() {
 
     std::scoped_lock<std::mutex> lock(data_mutex);
 
-    if (ready && ladspa_wrapper->has_instance()) {
+    if (ready) {
       ready = false;
 
-      ladspa_wrapper->destroy_instance();
+      for (auto* wrapper : {ladspa_wrapper.get(), dpdfnet_l.get(), dpdfnet_r.get()}) {
+        if (wrapper->has_instance()) {
+          wrapper->destroy_instance();
+        }
+      }
     }
   }
 
