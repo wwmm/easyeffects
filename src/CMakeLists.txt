@@ -238,6 +238,7 @@ target_sources(easyeffects PRIVATE
     rnnoise.cpp
     rnnoise_preset.cpp
     spectrum.cpp
+    spectrum_dsp.cpp
     speex.cpp
     speex_preset.cpp
     stereo_tools.cpp

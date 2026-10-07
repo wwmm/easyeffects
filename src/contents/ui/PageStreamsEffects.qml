@@ -585,10 +585,10 @@ Kirigami.Page {
             xMin: DbSpectrum.minimumFrequency
             xMax: DbSpectrum.maximumFrequency
             yMin: 0
-            yMax: -Common.minimumDecibelLevel
-            yDataOffset: -Common.minimumDecibelLevel
+            yMax: DbSpectrum.maximumLevel - DbSpectrum.minimumLevel
+            yDataOffset: -DbSpectrum.minimumLevel
             logarithmicHorizontalAxis: DbSpectrum.logarithmicHorizontalAxis
-            dynamicYScale: DbSpectrum.dynamicYScale
+            dynamicYScale: false
             xUnit: Units.hz
             yUnit: Units.dB
             visible: DbSpectrum.state
@@ -610,20 +610,23 @@ Kirigami.Page {
                 }
 
                 onTriggered: {
-                    if (headerFrameAnimation.timeDiff < invFps) {
-                        headerFrameAnimation.timeDiff += headerFrameAnimation.smoothFrameTime;
+                    headerFrameAnimation.timeDiff += headerFrameAnimation.frameTime;
 
+                    // Rounding to the nearest frame keeps a cap equal to the refresh rate from skipping frames
+                    if (headerFrameAnimation.timeDiff < invFps - 0.5 * headerFrameAnimation.frameTime) {
                         return;
                     }
 
-                    headerFrameAnimation.timeDiff = 0;
+                    headerFrameAnimation.timeDiff = Math.min(headerFrameAnimation.timeDiff - invFps, invFps);
 
                     pageStreamsEffects.pipelineInstance.requestSpectrumData();
                 }
             }
 
             Connections {
-                function onNewSpectrumData(newData: list<point>) {
+                function onNewSpectrumData(newData: list<point>, rangeMin: real, rangeMax: real) {
+                    spectrumChart.yMin = rangeMin + spectrumChart.yDataOffset;
+                    spectrumChart.yMax = rangeMax + spectrumChart.yDataOffset;
                     spectrumChart.updateData(newData);
                 }
 

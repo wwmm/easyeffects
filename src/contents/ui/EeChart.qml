@@ -221,10 +221,7 @@ Item {
         }
 
         if (barSeries.visible === true) {
-            barSeriesSet.clear();
-            for (let n = 0; n < processedData.length; n++) {
-                barSeriesSet.append(processedData[n].y);
-            }
+            barSeriesSet.values = processedData.map(p => p.y);
         }
     }
 
