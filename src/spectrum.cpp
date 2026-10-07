@@ -18,8 +18,6 @@
  */
 
 #include "spectrum.hpp"
-#include <fftw3.h>
-#include <qlist.h>
 #include <qnamespace.h>
 #include <qobjectdefs.h>
 #include <qtypes.h>
@@ -27,22 +25,21 @@
 #include <QString>
 #include <algorithm>
 #include <cassert>
-#include <cmath>
+#include <chrono>
 #include <cstddef>
 #include <cstring>
 #include <format>
 #include <memory>
 #include <mutex>
-#include <numbers>
 #include <span>
 #include <string>
-#include <tuple>
 #include "easyeffects_db_spectrum.h"
 #include "lv2_macros.hpp"
 #include "lv2_wrapper.hpp"
 #include "pipeline_type.hpp"
 #include "plugin_base.hpp"
 #include "pw_manager.hpp"
+#include "spectrum_dsp.hpp"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
 
@@ -50,21 +47,6 @@ Spectrum::Spectrum(const std::string& tag, pw::Manager* pipe_manager, PipelineTy
     : PluginBase(tag, "spectrum", tags::plugin_package::Package::ee, instance_id, pipe_manager, pipe_type),
       settings(DbSpectrum::self()) {
   bypass = !DbSpectrum::state();
-  // Precompute the Hann window, which is an expensive operation.
-  // https://en.wikipedia.org/wiki/Hann_function
-  for (size_t n = 0; n < n_bands; n++) {
-    hann_window[n] =
-        0.5F *
-        (1.0F - std::cos(2.0F * std::numbers::pi_v<float> * static_cast<float>(n) / static_cast<float>(n_bands - 1)));
-  }
-
-  complex_output = fftwf_alloc_complex(output.size());
-
-  plan = fftwf_plan_dft_r2c_1d(static_cast<int>(n_bands), real_input.data(), complex_output, FFTW_ESTIMATE);
-
-  if (plan != nullptr && complex_output != nullptr) {
-    fftw_ready = true;
-  }
 
   const auto lv2_plugin_uri = "http://lsp-plug.in/plugins/lv2/comp_delay_x2_stereo";
 
@@ -103,13 +85,11 @@ Spectrum::~Spectrum() {
 
   settings->disconnect();
 
-  fftw_ready = false;
+  {
+    std::scoped_lock<std::mutex> fftw_lock(util::fftw_lock());
 
-  if (complex_output != nullptr) {
-    fftwf_free(complex_output);
+    analyzer.release();
   }
-
-  fftwf_destroy_plan(plan);
 
   util::debug(std::format("{}{} destroyed", log_tag, name.toStdString()));
 }
@@ -138,9 +118,6 @@ void Spectrum::setup() {
 
   std::scoped_lock<std::mutex> lock(data_mutex);
 
-  bin_hz = static_cast<float>(rate) / n_bands;
-
-  std::ranges::fill(real_input, 0.0F);
   std::ranges::fill(latest_samples_mono, 0.0F);
 
   if (!lv2_wrapper->found_plugin) {
@@ -182,7 +159,7 @@ void Spectrum::process(std::span<float>& left_in,
   std::ranges::copy(left_in, left_out.begin());
   std::ranges::copy(right_in, right_out.begin());
 
-  if (bypass || !fftw_ready || !ready) {
+  if (bypass || !ready) {
     return;
   }
 
@@ -195,42 +172,45 @@ void Spectrum::process(std::span<float>& left_in,
     lv2_wrapper->connect_data_ports(left_in, right_in, left_delayed, right_delayed);
     lv2_wrapper->run();
 
-    // Downmix the latest n_bands samples from the delayed signal.
-    if (n_samples < n_bands) {
+    // Downmix the latest max_fft_size samples from the delayed signal.
+    if (n_samples < max_fft_size) {
       // Drop the oldest quantum.
-      std::memmove(latest_samples_mono.data(), &latest_samples_mono[n_samples], (n_bands - n_samples) * sizeof(float));
+      std::memmove(latest_samples_mono.data(), &latest_samples_mono[n_samples],
+                   (max_fft_size - n_samples) * sizeof(float));
 
       // Copy the new quantum.
       for (size_t n = 0; n < n_samples; n++) {
-        latest_samples_mono[n_bands - n_samples + n] = 0.5F * (left_delayed[n] + right_delayed[n]);
+        latest_samples_mono[max_fft_size - n_samples + n] = 0.5F * (left_delayed[n] + right_delayed[n]);
       }
     } else {
-      // Copy the latest n_bands samples.
-      for (size_t n = 0; n < n_bands; n++) {
+      // Copy the latest max_fft_size samples.
+      for (size_t n = 0; n < max_fft_size; n++) {
         latest_samples_mono[n] =
-            0.5F * (left_delayed[n_samples - n_bands + n] + right_delayed[n_samples - n_bands + n]);
+            0.5F * (left_delayed[n_samples - max_fft_size + n] + right_delayed[n_samples - max_fft_size + n]);
       }
     }
   } else {
-    // Downmix the latest n_bands samples from the non-delayed signal.
-    if (n_samples < n_bands) {
+    // Downmix the latest max_fft_size samples from the non-delayed signal.
+    if (n_samples < max_fft_size) {
       // Drop the oldest quantum.
-      std::memmove(latest_samples_mono.data(), &latest_samples_mono[n_samples], (n_bands - n_samples) * sizeof(float));
+      std::memmove(latest_samples_mono.data(), &latest_samples_mono[n_samples],
+                   (max_fft_size - n_samples) * sizeof(float));
 
       // Copy the new quantum.
       for (size_t n = 0; n < n_samples; n++) {
-        latest_samples_mono[n_bands - n_samples + n] = 0.5F * (left_in[n] + right_in[n]);
+        latest_samples_mono[max_fft_size - n_samples + n] = 0.5F * (left_in[n] + right_in[n]);
       }
     } else {
-      // Copy the latest n_bands samples.
-      for (size_t n = 0; n < n_bands; n++) {
-        latest_samples_mono[n] = 0.5F * (left_in[n_samples - n_bands + n] + right_in[n_samples - n_bands + n]);
+      // Copy the latest max_fft_size samples.
+      for (size_t n = 0; n < max_fft_size; n++) {
+        latest_samples_mono[n] =
+            0.5F * (left_in[n_samples - max_fft_size + n] + right_in[n_samples - max_fft_size + n]);
       }
     }
   }
 
   /**
-   * OK, we have the latest_samples_mono array that contains n_bands samples. We
+   * OK, we have the latest_samples_mono array that contains max_fft_size samples. We
    * want to export it to the GUI thread. We don't wakeup the GUI thread from
    * realtime, we only want to update the buffer and let the GUI thread follow
    * its scheduling and have access to our new buffer. We accept losing old
@@ -286,54 +266,56 @@ void Spectrum::process(std::span<float>& left_in,
   db_control.store(index | static_cast<int>(DB_BIT::NEWDATA));
 }
 
-auto Spectrum::compute_magnitudes() -> std::tuple<uint, float, QList<double>> {
+auto Spectrum::compute_band_levels(std::span<const double> band_edges, std::span<double> levels_db) -> bool {
   std::scoped_lock<std::mutex> lock(data_mutex);
 
-  // Early return if no new data is available, ie if process() has not been
-  // called since our last compute_magnitudes() call.
-  int curr_control = db_control.load();
-  if (!fftw_ready || !(curr_control & static_cast<int>(DB_BIT::NEWDATA))) {
-    return {0, bin_hz, {}};
+  if (rate == 0U) {
+    return false;
   }
 
-  // CAS loop to toggle the buffer used and remove NEWDATA flag, waiting for !BUSY.
-  int next_control = 0;
-  do {
-    curr_control &= ~static_cast<int>(DB_BIT::BUSY);
-    next_control = (curr_control ^ static_cast<int>(DB_BIT::IDX)) & static_cast<int>(DB_BIT::IDX);
-  } while (!db_control.compare_exchange_weak(curr_control, next_control));
+  const size_t fft_size = 1024U << DbSpectrum::fftSize();
+  const size_t zero_padding = 1U << DbSpectrum::zeroPadding();
+  const auto window = static_cast<spectrum_dsp::WindowType>(DbSpectrum::windowFunction());
 
-  // Buffer with data is at the index which was found inside db_control.
-  int index = curr_control & static_cast<int>(DB_BIT::IDX);
-  float* buf = db_buffers[index].data();
+  {
+    std::scoped_lock<std::mutex> fftw_lock(util::fftw_lock());
 
-  // https://en.wikipedia.org/wiki/Hann_function
-  for (size_t n = 0; n < n_bands; n++) {
-    real_input[n] = buf[n] * hann_window[n];
-  }
-
-  fftwf_execute(plan);
-
-  for (uint i = 0U; i < output.size(); i++) {
-    float real = complex_output[i][0];
-    float img = complex_output[i][1];
-
-    float mag = std::sqrt((real * real) + (img * img));
-
-    mag /= static_cast<float>(n_bands);
-
-    // Compensate Hann window
-    mag *= 2.0F;
-
-    // Single-sided correction
-    if (i == 0 || i == n_bands / 2) {
-      mag *= 0.5F;
+    if (!analyzer.configure(fft_size, zero_padding, window, static_cast<double>(rate))) {
+      return false;
     }
-
-    output[i] = static_cast<double>(util::linear_to_db(mag));
   }
 
-  return {rate, bin_hz, output};
+  int curr_control = db_control.load();
+
+  if ((curr_control & static_cast<int>(DB_BIT::NEWDATA)) != 0) {
+    // CAS loop to toggle the buffer used and remove NEWDATA flag, waiting for !BUSY.
+    int next_control = 0;
+    do {
+      curr_control &= ~static_cast<int>(DB_BIT::BUSY);
+      next_control = (curr_control ^ static_cast<int>(DB_BIT::IDX)) & static_cast<int>(DB_BIT::IDX);
+    } while (!db_control.compare_exchange_weak(curr_control, next_control));
+
+    // Buffer with data is at the index which was found inside db_control.
+    const int index = curr_control & static_cast<int>(DB_BIT::IDX);
+
+    analyzer.analyze(db_buffers[index]);
+  }
+
+  const auto now = std::chrono::steady_clock::now();
+  const double dt =
+      last_compute_time.has_value() ? std::chrono::duration<double>(now - *last_compute_time).count() : 0.0;
+
+  last_compute_time = now;
+
+  analyzer.smooth(dt, 0.001 * DbSpectrum::attackTime(), 0.001 * DbSpectrum::decayTime());
+
+  if (!analyzer.has_data()) {
+    return false;
+  }
+
+  analyzer.band_levels(band_edges, levels_db);
+
+  return true;
 }
 
 void Spectrum::process([[maybe_unused]] std::span<float>& left_in,

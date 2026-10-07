@@ -19,8 +19,6 @@
 
 #pragma once
 
-#include <gsl/gsl_interp.h>
-#include <gsl/gsl_spline.h>
 #include <kconfigskeleton.h>
 #include <pipewire/proxy.h>
 #include <qlist.h>
@@ -29,8 +27,10 @@
 #include <qtmetamacros.h>
 #include <qtypes.h>
 #include <QString>
+#include <chrono>
 #include <map>
 #include <memory>
+#include <optional>
 #include <string>
 #include <vector>
 #include "output_level.hpp"
@@ -38,6 +38,7 @@
 #include "plugin_base.hpp"
 #include "pw_manager.hpp"
 #include "spectrum.hpp"
+#include "spectrum_dsp.hpp"
 
 class EffectsBaseWorker : public QObject {
   Q_OBJECT
@@ -87,7 +88,7 @@ class EffectsBase : public QObject {
 
  Q_SIGNALS:
   void pipelineChanged();
-  void newSpectrumData(QList<QPointF> newData);
+  void newSpectrumData(QList<QPointF> newData, double rangeMin, double rangeMax);
   void filtersLinkedChanged();
 
  protected:
@@ -115,11 +116,11 @@ class EffectsBase : public QObject {
   float cached_spectrum_max_freq = -1.0F;
   bool cached_spectrum_log_axis = false;
 
-  gsl_interp_accel* gsl_acc = gsl_interp_accel_alloc();
-  gsl_spline* spline = nullptr;
+  std::vector<double> cached_spectrum_x_axis;
+  std::vector<double> cached_spectrum_band_edges;
+  std::vector<double> cached_spectrum_levels;
 
-  QList<double> cached_spectrum_frequencies;
-  QList<double> cached_spectrum_mag;
+  spectrum_dsp::AutoRange spectrum_auto_range;
 
-  std::vector<float> cached_spectrum_x_axis;
+  std::optional<std::chrono::steady_clock::time_point> last_spectrum_frame_time;
 };
