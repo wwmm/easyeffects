@@ -104,6 +104,8 @@ void CommandLineParser::process_events() {
 
   if (parser->isSet("service-mode")) {
     DbMain::setEnableServiceMode(true);
+
+    Q_EMIT onHideWindow();
   }
 
   if (parser->isSet("gapplication-service")) {
