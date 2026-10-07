@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-09-19 15:26+0000\n"
+"POT-Creation-Date: 2026-10-07 23:08+0000\n"
 "PO-Revision-Date: 2026-09-23 03:51+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
@@ -534,6 +534,7 @@ msgstr "閾值和時間"
 #: src/contents/ui/Limiter.qml:144 src/contents/ui/Limiter.qml:417
 #: src/contents/ui/MultibandCompressor.qml:260
 #: src/contents/ui/MultibandGate.qml:201
+#: src/contents/ui/PreferencesSheet.qml:750
 msgid "Attack"
 msgstr "起音(Attack)"
 
@@ -1023,7 +1024,7 @@ msgstr "交叉饋送預設集"
 msgid "Default"
 msgstr "預設"
 
-#: src/contents/ui/Crossfeed.qml:167 src/contents/ui/PageStreamsEffects.qml:660
+#: src/contents/ui/Crossfeed.qml:167 src/contents/ui/PageStreamsEffects.qml:663
 #: src/contents/ui/PreferencesSheet.qml:65 src/contents/ui/Reverb.qml:335
 msgid "Presets"
 msgstr "預設集"
@@ -1038,6 +1039,7 @@ msgid "Delay"
 msgstr "延遲"
 
 #: src/contents/ui/CrosstalkCanceller.qml:91
+#: src/contents/ui/PreferencesSheet.qml:764
 msgid "Decay"
 msgstr "衰減"
 
@@ -1065,7 +1067,7 @@ msgstr "直流偏移"
 msgid "Anti-aliasing"
 msgstr "抗鋸齒"
 
-#: src/contents/ui/Crusher.qml:142 src/contents/ui/PreferencesSheet.qml:775
+#: src/contents/ui/Crusher.qml:142 src/contents/ui/PreferencesSheet.qml:909
 msgid "Mix"
 msgstr "混音"
 
@@ -1576,6 +1578,7 @@ msgid "APO (DR)"
 msgstr "APO (DR)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:75 src/contents/ui/Filter.qml:121
+#: src/contents/ui/PreferencesSheet.qml:692
 msgid "Slope"
 msgstr "傾斜"
 
@@ -1847,7 +1850,7 @@ msgstr "Robinson-Dadson"
 msgid "ISO226-2023"
 msgstr "ISO226-2023"
 
-#: src/contents/ui/Loudness.qml:101
+#: src/contents/ui/Loudness.qml:101 src/contents/ui/PreferencesSheet.qml:713
 msgid "FFT size"
 msgstr "FFT 大小"
 
@@ -2102,32 +2105,32 @@ msgstr "減少音效管道列表"
 msgid "Output device"
 msgstr "輸出裝置"
 
-#: src/contents/ui/PageStreamsEffects.qml:673
+#: src/contents/ui/PageStreamsEffects.qml:676
 msgid "Excluded apps"
 msgstr "已經排除的應用程式"
 
-#: src/contents/ui/PageStreamsEffects.qml:686
-#: src/contents/ui/PageStreamsEffects.qml:704
+#: src/contents/ui/PageStreamsEffects.qml:689
+#: src/contents/ui/PageStreamsEffects.qml:707
 msgid "Input monitoring"
 msgstr "輸入監控"
 
-#: src/contents/ui/PageStreamsEffects.qml:713
+#: src/contents/ui/PageStreamsEffects.qml:716
 msgid "Toggle input monitoring"
 msgstr "切換輸入監控"
 
-#: src/contents/ui/PageStreamsEffects.qml:733
+#: src/contents/ui/PageStreamsEffects.qml:736
 msgid "Set input monitoring volume"
 msgstr "設定輸入監控音量"
 
-#: src/contents/ui/PageStreamsEffects.qml:752
+#: src/contents/ui/PageStreamsEffects.qml:755
 msgid "Monitoring volume"
 msgstr "監控音量"
 
-#: src/contents/ui/PageStreamsEffects.qml:785
+#: src/contents/ui/PageStreamsEffects.qml:788
 msgid "Share audio"
 msgstr "分享音訊"
 
-#: src/contents/ui/PageStreamsEffects.qml:786
+#: src/contents/ui/PageStreamsEffects.qml:789
 msgid "Send the processed desktop audio to the virtual source"
 msgstr "傳送已經處理的桌面音訊至虛擬來源"
 
@@ -2520,87 +2523,153 @@ msgid "Area"
 msgstr "區塊"
 
 #: src/contents/ui/PreferencesSheet.qml:538
-msgid "Dynamic scale"
-msgstr "動態比例"
-
-#: src/contents/ui/PreferencesSheet.qml:550
 msgid "Logarithmic frequency axis"
 msgstr "對數頻率軸"
 
-#: src/contents/ui/PreferencesSheet.qml:562
+#: src/contents/ui/PreferencesSheet.qml:550
 msgid "Points"
 msgstr "點數"
 
-#: src/contents/ui/PreferencesSheet.qml:577
+#: src/contents/ui/PreferencesSheet.qml:565
 msgid "Height"
 msgstr "高度"
 
-#: src/contents/ui/PreferencesSheet.qml:584
+#: src/contents/ui/PreferencesSheet.qml:572
 msgid "px"
 msgstr "px"
 
-#: src/contents/ui/PreferencesSheet.qml:591
+#: src/contents/ui/PreferencesSheet.qml:579
 msgid "Spectrum frame rate cap"
 msgstr "頻譜音框率上限"
 
-#: src/contents/ui/PreferencesSheet.qml:592
+#: src/contents/ui/PreferencesSheet.qml:580
 msgid "Maximum spectrum update rate."
 msgstr "最大頻譜更新率。"
 
-#: src/contents/ui/PreferencesSheet.qml:607
+#: src/contents/ui/PreferencesSheet.qml:595
 msgid "Frequency Range"
 msgstr "頻率範圍"
 
-#: src/contents/ui/PreferencesSheet.qml:614
+#: src/contents/ui/PreferencesSheet.qml:602
+#: src/contents/ui/PreferencesSheet.qml:664
 msgid "Minimum"
 msgstr "最小"
 
-#: src/contents/ui/PreferencesSheet.qml:630
+#: src/contents/ui/PreferencesSheet.qml:618
+#: src/contents/ui/PreferencesSheet.qml:678
 msgid "Maximum"
 msgstr "最大"
 
-#: src/contents/ui/PreferencesSheet.qml:652
+#: src/contents/ui/PreferencesSheet.qml:633
+#, fuzzy
+msgid "Level Range"
+msgstr "等級量表"
+
+#: src/contents/ui/PreferencesSheet.qml:638
+#: src/contents/ui/PreferencesSheet.qml:894
+msgid "Automatic"
+msgstr "自動"
+
+#: src/contents/ui/PreferencesSheet.qml:639
+msgid ""
+"Follows the loudest and the quieter bands within the minimum and maximum."
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:649
+#, fuzzy
+msgid "Minimum span"
+msgstr "最小化限量"
+
+#: src/contents/ui/PreferencesSheet.qml:693
+msgid ""
+"Tilts the display around 1 kHz. The shown levels are no longer absolute."
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:708
+msgid "Analysis"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:725
+msgid "Zero padding"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:726
+msgid ""
+"Interpolates the spectrum. It does not increase the frequency resolution."
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:738
+#, fuzzy
+msgid "Window function"
+msgstr "增益減少"
+
+#: src/contents/ui/PreferencesSheet.qml:742
+msgid "Rectangular"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:742
+msgid "Hann"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:742
+msgid "Hamming"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:742
+msgid "Blackman"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:742
+msgid "Blackman-Harris"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:742
+#, fuzzy
+msgid "Flat top"
+msgstr "平坦"
+
+#: src/contents/ui/PreferencesSheet.qml:786
 msgid "Database autosave interval"
 msgstr "資料庫自動儲存間隔"
 
-#: src/contents/ui/PreferencesSheet.qml:666
+#: src/contents/ui/PreferencesSheet.qml:800
 msgid "Most used presets"
 msgstr "最常使用預設集"
 
-#: src/contents/ui/PreferencesSheet.qml:684
+#: src/contents/ui/PreferencesSheet.qml:818
 msgid "Window"
 msgstr "視窗"
 
-#: src/contents/ui/PreferencesSheet.qml:693
+#: src/contents/ui/PreferencesSheet.qml:827
 msgid "Force KDE's Breeze theme when Easy Effects starts"
 msgstr "強制 KDE 的 Breeze 主題，當 Easy Effects 啟動時"
 
-#: src/contents/ui/PreferencesSheet.qml:694
+#: src/contents/ui/PreferencesSheet.qml:828
 msgid ""
 "It is necessary to restart the service for changes in this setting to take "
 "effect."
 msgstr "必須重新啟動服務才能使此設定變更作用生效。"
 
-#: src/contents/ui/PreferencesSheet.qml:707
+#: src/contents/ui/PreferencesSheet.qml:841
 msgid "Reduce effects list controls"
 msgstr "減小音效列表控制"
 
-#: src/contents/ui/PreferencesSheet.qml:708
+#: src/contents/ui/PreferencesSheet.qml:842
 msgid ""
 "Action buttons in the effects list are moved inside a context menu for a "
 "more compact view."
 msgstr "音效列表中的操作按鈕移動至前後選單內，以獲得較為緊湊的檢視。"
 
-#: src/contents/ui/PreferencesSheet.qml:719
-#: src/contents/ui/PreferencesSheet.qml:756
+#: src/contents/ui/PreferencesSheet.qml:853
+#: src/contents/ui/PreferencesSheet.qml:890
 msgid "Color scheme"
 msgstr "配色方案"
 
-#: src/contents/ui/PreferencesSheet.qml:733
+#: src/contents/ui/PreferencesSheet.qml:867
 msgid "Force English language"
 msgstr "强制使用英文"
 
-#: src/contents/ui/PreferencesSheet.qml:734
+#: src/contents/ui/PreferencesSheet.qml:868
 msgid ""
 "Do not translate the user interface and show text in English language. "
 "Useful if the translation in the local language is incomplete or "
@@ -2609,110 +2678,106 @@ msgstr ""
 "使用者介面文字不使用翻譯而以英語顯示。若是當地語言翻譯不太完善或難以理解，則"
 "相當有用。需要重新啟動服務才能套用此選項。"
 
-#: src/contents/ui/PreferencesSheet.qml:745
+#: src/contents/ui/PreferencesSheet.qml:879
 msgid "Graphs"
 msgstr "圖形"
 
-#: src/contents/ui/PreferencesSheet.qml:760
-msgid "Automatic"
-msgstr "自動"
-
-#: src/contents/ui/PreferencesSheet.qml:760
+#: src/contents/ui/PreferencesSheet.qml:894
 msgid "Light"
 msgstr "亮"
 
-#: src/contents/ui/PreferencesSheet.qml:760
+#: src/contents/ui/PreferencesSheet.qml:894
 msgid "Dark"
 msgstr "暗"
 
-#: src/contents/ui/PreferencesSheet.qml:771
+#: src/contents/ui/PreferencesSheet.qml:905
 msgid "Color theme"
 msgstr "顏色主題"
 
-#: src/contents/ui/PreferencesSheet.qml:775
+#: src/contents/ui/PreferencesSheet.qml:909
 msgid "Green"
 msgstr "綠"
 
-#: src/contents/ui/PreferencesSheet.qml:775
+#: src/contents/ui/PreferencesSheet.qml:909
 msgid "Green neon"
 msgstr "綠色霓虹"
 
-#: src/contents/ui/PreferencesSheet.qml:775
+#: src/contents/ui/PreferencesSheet.qml:909
 msgid "Orange"
 msgstr "橘"
 
-#: src/contents/ui/PreferencesSheet.qml:775
+#: src/contents/ui/PreferencesSheet.qml:909
 msgid "Yellow"
 msgstr "黃"
 
-#: src/contents/ui/PreferencesSheet.qml:775
+#: src/contents/ui/PreferencesSheet.qml:909
 msgid "Blue"
 msgstr "藍"
 
-#: src/contents/ui/PreferencesSheet.qml:775
+#: src/contents/ui/PreferencesSheet.qml:909
 msgid "Purple"
 msgstr "紫"
 
-#: src/contents/ui/PreferencesSheet.qml:775
+#: src/contents/ui/PreferencesSheet.qml:909
 msgid "Grey"
 msgstr "灰"
 
-#: src/contents/ui/PreferencesSheet.qml:775
+#: src/contents/ui/PreferencesSheet.qml:909
 msgid "User"
 msgstr "使用者"
 
-#: src/contents/ui/PreferencesSheet.qml:783
+#: src/contents/ui/PreferencesSheet.qml:917
 msgctxt "@label"
 msgid "Background"
 msgstr "背景"
 
-#: src/contents/ui/PreferencesSheet.qml:792
+#: src/contents/ui/PreferencesSheet.qml:926
 msgctxt "@label"
 msgid "Plot area background"
 msgstr "繪製區域背景"
 
-#: src/contents/ui/PreferencesSheet.qml:801
+#: src/contents/ui/PreferencesSheet.qml:935
 msgctxt "@label"
 msgid "Series colors"
 msgstr "系列顏色"
 
-#: src/contents/ui/PreferencesSheet.qml:810
+#: src/contents/ui/PreferencesSheet.qml:944
 msgctxt "@label"
 msgid "Axis labels text color"
 msgstr "座標軸線標籤文字顏色"
 
-#: src/contents/ui/PreferencesSheet.qml:819
+#: src/contents/ui/PreferencesSheet.qml:953
 msgctxt "@label"
 msgid "Axis labels background color"
 msgstr "坐標軸線標籤背景顏色"
 
-#: src/contents/ui/PreferencesSheet.qml:828
+#: src/contents/ui/PreferencesSheet.qml:962
 msgctxt "@label"
 msgid "Border color"
 msgstr "邊框顏色"
 
-#: src/contents/ui/PreferencesSheet.qml:837
+#: src/contents/ui/PreferencesSheet.qml:971
 msgid "Line width"
 msgstr "線條寬度"
 
-#: src/contents/ui/PreferencesSheet.qml:851
+#: src/contents/ui/PreferencesSheet.qml:985
 msgid "Show grid lines"
 msgstr "顯示網格線"
 
-#: src/contents/ui/PreferencesSheet.qml:869
+#: src/contents/ui/PreferencesSheet.qml:1003
 msgid "Autoload delay"
 msgstr "自動載入延遲"
 
-#: src/contents/ui/PreferencesSheet.qml:870
+#: src/contents/ui/PreferencesSheet.qml:1004
 msgid ""
 "Delay between receiving a new device route and the call to autoload a preset."
 msgstr "接收新裝置路徑和呼叫自動載入預設集之間的延遲。"
 
-#: src/contents/ui/PreferencesSheet.qml:886
+#: src/contents/ui/PreferencesSheet.qml:1020
 msgid "Ignore the blocklist from presets"
 msgstr "忽略來自預設集的封鎖清單"
 
-#: src/contents/ui/PreferencesSheet.qml:887
+#: src/contents/ui/PreferencesSheet.qml:1021
 msgid ""
 "If enabled, the list of excluded apps set in the loaded preset is ignored "
 "and does not replace the one set by the user."
@@ -2720,27 +2785,27 @@ msgstr ""
 "如果啟用，則所載入的預設集其設定中的排除程式列表將被忽略，並且不會取代用戶的"
 "設定。"
 
-#: src/contents/ui/PreferencesSheet.qml:908
+#: src/contents/ui/PreferencesSheet.qml:1042
 msgid "Global shortcuts"
 msgstr "整體快速鍵"
 
-#: src/contents/ui/PreferencesSheet.qml:909
+#: src/contents/ui/PreferencesSheet.qml:1043
 msgid "Enables support for XDG global shortcuts."
 msgstr "啟用對 XDG 整體快速鍵的支援。"
 
-#: src/contents/ui/PreferencesSheet.qml:921
+#: src/contents/ui/PreferencesSheet.qml:1055
 msgid "Native window of effects"
 msgstr "音效的原生視窗"
 
-#: src/contents/ui/PreferencesSheet.qml:922
+#: src/contents/ui/PreferencesSheet.qml:1056
 msgid "Allows the native user interface of effects to be shown/hidden."
 msgstr "允許音效的原生使用者介面可以顯示/隱藏。"
 
-#: src/contents/ui/PreferencesSheet.qml:934
+#: src/contents/ui/PreferencesSheet.qml:1068
 msgid "Update frequency"
 msgstr "更新頻率"
 
-#: src/contents/ui/PreferencesSheet.qml:935
+#: src/contents/ui/PreferencesSheet.qml:1069
 msgid "Related to LV2 plugins."
 msgstr "與 LV2 插件相關。"
 
@@ -3562,6 +3627,9 @@ msgstr "等化器、壓縮器、及其他音效處理"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "簡易音效處理"
+
+#~ msgid "Dynamic scale"
+#~ msgstr "動態比例"
 
 #~ msgid "Go back"
 #~ msgstr "返回"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-09-19 15:26+0000\n"
+"POT-Creation-Date: 2026-10-07 23:08+0000\n"
 "PO-Revision-Date: 2026-09-26 09:51+0000\n"
 "Last-Translator: Fjuro <fjuro@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -541,6 +541,7 @@ msgstr "Práh a čas"
 #: src/contents/ui/Limiter.qml:144 src/contents/ui/Limiter.qml:417
 #: src/contents/ui/MultibandCompressor.qml:260
 #: src/contents/ui/MultibandGate.qml:201
+#: src/contents/ui/PreferencesSheet.qml:750
 msgid "Attack"
 msgstr "Náběh"
 
@@ -1030,7 +1031,7 @@ msgstr "Předvolby prolínání kanálů"
 msgid "Default"
 msgstr "Výchozí"
 
-#: src/contents/ui/Crossfeed.qml:167 src/contents/ui/PageStreamsEffects.qml:660
+#: src/contents/ui/Crossfeed.qml:167 src/contents/ui/PageStreamsEffects.qml:663
 #: src/contents/ui/PreferencesSheet.qml:65 src/contents/ui/Reverb.qml:335
 msgid "Presets"
 msgstr "Předvolby"
@@ -1045,6 +1046,7 @@ msgid "Delay"
 msgstr "Zpoždění (Delay)"
 
 #: src/contents/ui/CrosstalkCanceller.qml:91
+#: src/contents/ui/PreferencesSheet.qml:764
 msgid "Decay"
 msgstr "Rozpad"
 
@@ -1072,7 +1074,7 @@ msgstr "Posun DC"
 msgid "Anti-aliasing"
 msgstr "Vyrovnávání obrazu"
 
-#: src/contents/ui/Crusher.qml:142 src/contents/ui/PreferencesSheet.qml:775
+#: src/contents/ui/Crusher.qml:142 src/contents/ui/PreferencesSheet.qml:909
 msgid "Mix"
 msgstr "Mix"
 
@@ -1592,6 +1594,7 @@ msgid "APO (DR)"
 msgstr "APO (DR)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:75 src/contents/ui/Filter.qml:121
+#: src/contents/ui/PreferencesSheet.qml:692
 msgid "Slope"
 msgstr "Sklon"
 
@@ -1863,7 +1866,7 @@ msgstr "Robinson-Dadson"
 msgid "ISO226-2023"
 msgstr "ISO226-2023"
 
-#: src/contents/ui/Loudness.qml:101
+#: src/contents/ui/Loudness.qml:101 src/contents/ui/PreferencesSheet.qml:713
 msgid "FFT size"
 msgstr "Velikost FFT"
 
@@ -2126,32 +2129,32 @@ msgstr "Zmenšit seznam pipeliny efektů"
 msgid "Output device"
 msgstr "Výstupní zařízení"
 
-#: src/contents/ui/PageStreamsEffects.qml:673
+#: src/contents/ui/PageStreamsEffects.qml:676
 msgid "Excluded apps"
 msgstr "Vyloučené aplikace"
 
-#: src/contents/ui/PageStreamsEffects.qml:686
-#: src/contents/ui/PageStreamsEffects.qml:704
+#: src/contents/ui/PageStreamsEffects.qml:689
+#: src/contents/ui/PageStreamsEffects.qml:707
 msgid "Input monitoring"
 msgstr "Monitorování vstupu"
 
-#: src/contents/ui/PageStreamsEffects.qml:713
+#: src/contents/ui/PageStreamsEffects.qml:716
 msgid "Toggle input monitoring"
 msgstr "Přepnout monitorování vstupu"
 
-#: src/contents/ui/PageStreamsEffects.qml:733
+#: src/contents/ui/PageStreamsEffects.qml:736
 msgid "Set input monitoring volume"
 msgstr "Nastavit hlasitost monitorování vstupu"
 
-#: src/contents/ui/PageStreamsEffects.qml:752
+#: src/contents/ui/PageStreamsEffects.qml:755
 msgid "Monitoring volume"
 msgstr "Hlasitost monitorování"
 
-#: src/contents/ui/PageStreamsEffects.qml:785
+#: src/contents/ui/PageStreamsEffects.qml:788
 msgid "Share audio"
 msgstr "Sdílet zvuk"
 
-#: src/contents/ui/PageStreamsEffects.qml:786
+#: src/contents/ui/PageStreamsEffects.qml:789
 msgid "Send the processed desktop audio to the virtual source"
 msgstr "Odeslat zpracovaný zvuk z plochy do virtuálního zdroje"
 
@@ -2557,72 +2560,138 @@ msgid "Area"
 msgstr "Oblast"
 
 #: src/contents/ui/PreferencesSheet.qml:538
-msgid "Dynamic scale"
-msgstr "Dynamické měřítko"
-
-#: src/contents/ui/PreferencesSheet.qml:550
 msgid "Logarithmic frequency axis"
 msgstr "Logaritmická osa frekvence"
 
-#: src/contents/ui/PreferencesSheet.qml:562
+#: src/contents/ui/PreferencesSheet.qml:550
 msgid "Points"
 msgstr "Body"
 
-#: src/contents/ui/PreferencesSheet.qml:577
+#: src/contents/ui/PreferencesSheet.qml:565
 msgid "Height"
 msgstr "Výška"
 
-#: src/contents/ui/PreferencesSheet.qml:584
+#: src/contents/ui/PreferencesSheet.qml:572
 msgid "px"
 msgstr "px"
 
-#: src/contents/ui/PreferencesSheet.qml:591
+#: src/contents/ui/PreferencesSheet.qml:579
 msgid "Spectrum frame rate cap"
 msgstr "Hranice snímkové frekvence spektra"
 
-#: src/contents/ui/PreferencesSheet.qml:592
+#: src/contents/ui/PreferencesSheet.qml:580
 msgid "Maximum spectrum update rate."
 msgstr "Maximální frekvence aktualizací spektra."
 
-#: src/contents/ui/PreferencesSheet.qml:607
+#: src/contents/ui/PreferencesSheet.qml:595
 msgid "Frequency Range"
 msgstr "Frekvenční rozsah"
 
-#: src/contents/ui/PreferencesSheet.qml:614
+#: src/contents/ui/PreferencesSheet.qml:602
+#: src/contents/ui/PreferencesSheet.qml:664
 msgid "Minimum"
 msgstr "Minimum"
 
-#: src/contents/ui/PreferencesSheet.qml:630
+#: src/contents/ui/PreferencesSheet.qml:618
+#: src/contents/ui/PreferencesSheet.qml:678
 msgid "Maximum"
 msgstr "Maximum"
 
-#: src/contents/ui/PreferencesSheet.qml:652
+#: src/contents/ui/PreferencesSheet.qml:633
+#, fuzzy
+msgid "Level Range"
+msgstr "Rozsah hlasitosti"
+
+#: src/contents/ui/PreferencesSheet.qml:638
+#: src/contents/ui/PreferencesSheet.qml:894
+msgid "Automatic"
+msgstr "Automatické"
+
+#: src/contents/ui/PreferencesSheet.qml:639
+msgid ""
+"Follows the loudest and the quieter bands within the minimum and maximum."
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:649
+#, fuzzy
+msgid "Minimum span"
+msgstr "Minimální kvantum"
+
+#: src/contents/ui/PreferencesSheet.qml:693
+msgid ""
+"Tilts the display around 1 kHz. The shown levels are no longer absolute."
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:708
+msgid "Analysis"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:725
+msgid "Zero padding"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:726
+msgid ""
+"Interpolates the spectrum. It does not increase the frequency resolution."
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:738
+#, fuzzy
+msgid "Window function"
+msgstr "Redukce zesílení"
+
+#: src/contents/ui/PreferencesSheet.qml:742
+msgid "Rectangular"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:742
+msgid "Hann"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:742
+msgid "Hamming"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:742
+msgid "Blackman"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:742
+msgid "Blackman-Harris"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:742
+#, fuzzy
+msgid "Flat top"
+msgstr "Rovný"
+
+#: src/contents/ui/PreferencesSheet.qml:786
 msgid "Database autosave interval"
 msgstr "Interval automatického ukládání databáze"
 
-#: src/contents/ui/PreferencesSheet.qml:666
+#: src/contents/ui/PreferencesSheet.qml:800
 msgid "Most used presets"
 msgstr "Nejpoužívanější předvolby"
 
-#: src/contents/ui/PreferencesSheet.qml:684
+#: src/contents/ui/PreferencesSheet.qml:818
 msgid "Window"
 msgstr "Okno"
 
-#: src/contents/ui/PreferencesSheet.qml:693
+#: src/contents/ui/PreferencesSheet.qml:827
 msgid "Force KDE's Breeze theme when Easy Effects starts"
 msgstr "Vynutit motiv KDE Breeze po spuštění Easy Effects"
 
-#: src/contents/ui/PreferencesSheet.qml:694
+#: src/contents/ui/PreferencesSheet.qml:828
 msgid ""
 "It is necessary to restart the service for changes in this setting to take "
 "effect."
 msgstr "Pro použití změn tohoto nastavení je nutné restartovat službu."
 
-#: src/contents/ui/PreferencesSheet.qml:707
+#: src/contents/ui/PreferencesSheet.qml:841
 msgid "Reduce effects list controls"
 msgstr "Snížit počet ovládacích prvků efektů"
 
-#: src/contents/ui/PreferencesSheet.qml:708
+#: src/contents/ui/PreferencesSheet.qml:842
 msgid ""
 "Action buttons in the effects list are moved inside a context menu for a "
 "more compact view."
@@ -2630,16 +2699,16 @@ msgstr ""
 "Akční tlačítka v seznamu efektů budou přesunuta do kontextové nabídky pro "
 "kompaktnější zobrazení."
 
-#: src/contents/ui/PreferencesSheet.qml:719
-#: src/contents/ui/PreferencesSheet.qml:756
+#: src/contents/ui/PreferencesSheet.qml:853
+#: src/contents/ui/PreferencesSheet.qml:890
 msgid "Color scheme"
 msgstr "Barevné schéma"
 
-#: src/contents/ui/PreferencesSheet.qml:733
+#: src/contents/ui/PreferencesSheet.qml:867
 msgid "Force English language"
 msgstr "Vynutit angličtinu"
 
-#: src/contents/ui/PreferencesSheet.qml:734
+#: src/contents/ui/PreferencesSheet.qml:868
 msgid ""
 "Do not translate the user interface and show text in English language. "
 "Useful if the translation in the local language is incomplete or "
@@ -2649,112 +2718,108 @@ msgstr ""
 "Užitečné, pokud není překlad ve vašem jazyce dokončený nebo srozumitelný. "
 "Pro použití této možnosti bude vyžadován restart služby."
 
-#: src/contents/ui/PreferencesSheet.qml:745
+#: src/contents/ui/PreferencesSheet.qml:879
 msgid "Graphs"
 msgstr "Grafy"
 
-#: src/contents/ui/PreferencesSheet.qml:760
-msgid "Automatic"
-msgstr "Automatické"
-
-#: src/contents/ui/PreferencesSheet.qml:760
+#: src/contents/ui/PreferencesSheet.qml:894
 msgid "Light"
 msgstr "Světlé"
 
-#: src/contents/ui/PreferencesSheet.qml:760
+#: src/contents/ui/PreferencesSheet.qml:894
 msgid "Dark"
 msgstr "Tmavé"
 
-#: src/contents/ui/PreferencesSheet.qml:771
+#: src/contents/ui/PreferencesSheet.qml:905
 msgid "Color theme"
 msgstr "Barevný motiv"
 
-#: src/contents/ui/PreferencesSheet.qml:775
+#: src/contents/ui/PreferencesSheet.qml:909
 msgid "Green"
 msgstr "Zelený"
 
-#: src/contents/ui/PreferencesSheet.qml:775
+#: src/contents/ui/PreferencesSheet.qml:909
 msgid "Green neon"
 msgstr "Zelený neon"
 
-#: src/contents/ui/PreferencesSheet.qml:775
+#: src/contents/ui/PreferencesSheet.qml:909
 msgid "Orange"
 msgstr "Oranžový"
 
-#: src/contents/ui/PreferencesSheet.qml:775
+#: src/contents/ui/PreferencesSheet.qml:909
 msgid "Yellow"
 msgstr "Žlutý"
 
-#: src/contents/ui/PreferencesSheet.qml:775
+#: src/contents/ui/PreferencesSheet.qml:909
 msgid "Blue"
 msgstr "Modrý"
 
-#: src/contents/ui/PreferencesSheet.qml:775
+#: src/contents/ui/PreferencesSheet.qml:909
 msgid "Purple"
 msgstr "Fialový"
 
-#: src/contents/ui/PreferencesSheet.qml:775
+#: src/contents/ui/PreferencesSheet.qml:909
 msgid "Grey"
 msgstr "Šedý"
 
-#: src/contents/ui/PreferencesSheet.qml:775
+#: src/contents/ui/PreferencesSheet.qml:909
 msgid "User"
 msgstr "Uživatelský"
 
-#: src/contents/ui/PreferencesSheet.qml:783
+#: src/contents/ui/PreferencesSheet.qml:917
 msgctxt "@label"
 msgid "Background"
 msgstr "Pozadí"
 
-#: src/contents/ui/PreferencesSheet.qml:792
+#: src/contents/ui/PreferencesSheet.qml:926
 msgctxt "@label"
 msgid "Plot area background"
 msgstr "Pozadí oblasti grafu"
 
-#: src/contents/ui/PreferencesSheet.qml:801
+#: src/contents/ui/PreferencesSheet.qml:935
 msgctxt "@label"
 msgid "Series colors"
 msgstr "Barvy sérií"
 
-#: src/contents/ui/PreferencesSheet.qml:810
+#: src/contents/ui/PreferencesSheet.qml:944
 msgctxt "@label"
 msgid "Axis labels text color"
 msgstr "Barva textu štítků os"
 
-#: src/contents/ui/PreferencesSheet.qml:819
+#: src/contents/ui/PreferencesSheet.qml:953
 msgctxt "@label"
 msgid "Axis labels background color"
 msgstr "Barva pozadí štítků os"
 
-#: src/contents/ui/PreferencesSheet.qml:828
+#: src/contents/ui/PreferencesSheet.qml:962
 msgctxt "@label"
 msgid "Border color"
 msgstr "Barva okraje"
 
-#: src/contents/ui/PreferencesSheet.qml:837
+#: src/contents/ui/PreferencesSheet.qml:971
 msgid "Line width"
 msgstr "Šířka čáry"
 
-#: src/contents/ui/PreferencesSheet.qml:851
+#: src/contents/ui/PreferencesSheet.qml:985
 msgid "Show grid lines"
 msgstr "Zobrazit mřížku"
 
-#: src/contents/ui/PreferencesSheet.qml:869
+#: src/contents/ui/PreferencesSheet.qml:1003
 msgid "Autoload delay"
 msgstr "Zpoždění automatického načtení"
 
-#: src/contents/ui/PreferencesSheet.qml:870
+#: src/contents/ui/PreferencesSheet.qml:1004
 msgid ""
 "Delay between receiving a new device route and the call to autoload a preset."
 msgstr ""
 "Zpoždění mezi obdržením cesty k novému zařízení a automatickému načtení "
 "předvolby."
 
-#: src/contents/ui/PreferencesSheet.qml:886
+#: src/contents/ui/PreferencesSheet.qml:1020
 msgid "Ignore the blocklist from presets"
 msgstr "Ignorovat seznam blokovaných z předvoleb"
 
-#: src/contents/ui/PreferencesSheet.qml:887
+#: src/contents/ui/PreferencesSheet.qml:1021
 msgid ""
 "If enabled, the list of excluded apps set in the loaded preset is ignored "
 "and does not replace the one set by the user."
@@ -2762,27 +2827,27 @@ msgstr ""
 "Pokud je povoleno, bude seznam vyloučených aplikací v načtené předvolbě "
 "ignorován a nebude nahrazen seznamem nastaveným uživatelem."
 
-#: src/contents/ui/PreferencesSheet.qml:908
+#: src/contents/ui/PreferencesSheet.qml:1042
 msgid "Global shortcuts"
 msgstr "Globální zkratky"
 
-#: src/contents/ui/PreferencesSheet.qml:909
+#: src/contents/ui/PreferencesSheet.qml:1043
 msgid "Enables support for XDG global shortcuts."
 msgstr "Povolí podporu globálních zkratek XDG."
 
-#: src/contents/ui/PreferencesSheet.qml:921
+#: src/contents/ui/PreferencesSheet.qml:1055
 msgid "Native window of effects"
 msgstr "Nativní okno efektů"
 
-#: src/contents/ui/PreferencesSheet.qml:922
+#: src/contents/ui/PreferencesSheet.qml:1056
 msgid "Allows the native user interface of effects to be shown/hidden."
 msgstr "Umožňuje zobrazit nebo skrýt nativní uživatelské rozhraní efektů."
 
-#: src/contents/ui/PreferencesSheet.qml:934
+#: src/contents/ui/PreferencesSheet.qml:1068
 msgid "Update frequency"
 msgstr "Frekvence aktualizací"
 
-#: src/contents/ui/PreferencesSheet.qml:935
+#: src/contents/ui/PreferencesSheet.qml:1069
 msgid "Related to LV2 plugins."
 msgstr "Týká se zásuvných modulů LV2."
 
@@ -3608,6 +3673,9 @@ msgstr "Ekvalizér, kompresor a jiné zvukové efekty"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "Jednoduché zvukové efekty"
+
+#~ msgid "Dynamic scale"
+#~ msgstr "Dynamické měřítko"
 
 #, fuzzy
 #~ msgid "Attack time"
@@ -4991,9 +5059,6 @@ msgstr "Jednoduché zvukové efekty"
 
 #~ msgid "After"
 #~ msgstr "Po"
-
-#~ msgid "Loudness Range"
-#~ msgstr "Rozsah hlasitosti"
 
 #~ msgid "Based on"
 #~ msgstr "Na základě"
