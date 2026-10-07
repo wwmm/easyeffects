@@ -106,6 +106,14 @@ auto band_edges(std::span<const double> centers, bool logarithmic) -> std::vecto
   return edges;
 }
 
+auto window_end(size_t buffer_size, size_t block_size, double elapsed, double rate) -> size_t {
+  block_size = std::min(block_size, buffer_size);
+
+  const double due = std::clamp(std::round(elapsed * rate), 0.0, static_cast<double>(block_size));
+
+  return buffer_size - block_size + static_cast<size_t>(due);
+}
+
 Analyzer::~Analyzer() {
   release();
 }

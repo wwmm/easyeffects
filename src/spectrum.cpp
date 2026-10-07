@@ -172,45 +172,45 @@ void Spectrum::process(std::span<float>& left_in,
     lv2_wrapper->connect_data_ports(left_in, right_in, left_delayed, right_delayed);
     lv2_wrapper->run();
 
-    // Downmix the latest max_fft_size samples from the delayed signal.
-    if (n_samples < max_fft_size) {
+    // Downmix the latest capture_size samples from the delayed signal.
+    if (n_samples < capture_size) {
       // Drop the oldest quantum.
       std::memmove(latest_samples_mono.data(), &latest_samples_mono[n_samples],
-                   (max_fft_size - n_samples) * sizeof(float));
+                   (capture_size - n_samples) * sizeof(float));
 
       // Copy the new quantum.
       for (size_t n = 0; n < n_samples; n++) {
-        latest_samples_mono[max_fft_size - n_samples + n] = 0.5F * (left_delayed[n] + right_delayed[n]);
+        latest_samples_mono[capture_size - n_samples + n] = 0.5F * (left_delayed[n] + right_delayed[n]);
       }
     } else {
-      // Copy the latest max_fft_size samples.
-      for (size_t n = 0; n < max_fft_size; n++) {
+      // Copy the latest capture_size samples.
+      for (size_t n = 0; n < capture_size; n++) {
         latest_samples_mono[n] =
-            0.5F * (left_delayed[n_samples - max_fft_size + n] + right_delayed[n_samples - max_fft_size + n]);
+            0.5F * (left_delayed[n_samples - capture_size + n] + right_delayed[n_samples - capture_size + n]);
       }
     }
   } else {
-    // Downmix the latest max_fft_size samples from the non-delayed signal.
-    if (n_samples < max_fft_size) {
+    // Downmix the latest capture_size samples from the non-delayed signal.
+    if (n_samples < capture_size) {
       // Drop the oldest quantum.
       std::memmove(latest_samples_mono.data(), &latest_samples_mono[n_samples],
-                   (max_fft_size - n_samples) * sizeof(float));
+                   (capture_size - n_samples) * sizeof(float));
 
       // Copy the new quantum.
       for (size_t n = 0; n < n_samples; n++) {
-        latest_samples_mono[max_fft_size - n_samples + n] = 0.5F * (left_in[n] + right_in[n]);
+        latest_samples_mono[capture_size - n_samples + n] = 0.5F * (left_in[n] + right_in[n]);
       }
     } else {
-      // Copy the latest max_fft_size samples.
-      for (size_t n = 0; n < max_fft_size; n++) {
+      // Copy the latest capture_size samples.
+      for (size_t n = 0; n < capture_size; n++) {
         latest_samples_mono[n] =
-            0.5F * (left_in[n_samples - max_fft_size + n] + right_in[n_samples - max_fft_size + n]);
+            0.5F * (left_in[n_samples - capture_size + n] + right_in[n_samples - capture_size + n]);
       }
     }
   }
 
   /**
-   * OK, we have the latest_samples_mono array that contains max_fft_size samples. We
+   * OK, we have the latest_samples_mono array that contains capture_size samples. We
    * want to export it to the GUI thread. We don't wakeup the GUI thread from
    * realtime, we only want to update the buffer and let the GUI thread follow
    * its scheduling and have access to our new buffer. We accept losing old
@@ -260,7 +260,9 @@ void Spectrum::process(std::span<float>& left_in,
   int index = db_control.fetch_or(static_cast<int>(DB_BIT::BUSY)) & static_cast<int>(DB_BIT::IDX);
 
   // Fill the buffer.
-  db_buffers[index] = latest_samples_mono;
+  db_buffers[index].samples = latest_samples_mono;
+  db_buffers[index].block_size = n_samples;
+  db_buffers[index].block_time = std::chrono::steady_clock::now();
 
   // Mark new data available AND mark as not busy anymore.
   db_control.store(index | static_cast<int>(DB_BIT::NEWDATA));
@@ -296,12 +298,22 @@ auto Spectrum::compute_band_levels(std::span<const double> band_edges, std::span
     } while (!db_control.compare_exchange_weak(curr_control, next_control));
 
     // Buffer with data is at the index which was found inside db_control.
-    const int index = curr_control & static_cast<int>(DB_BIT::IDX);
-
-    analyzer.analyze(db_buffers[index]);
+    gui_buffer_index = curr_control & static_cast<int>(DB_BIT::IDX);
   }
 
   const auto now = std::chrono::steady_clock::now();
+
+  if (gui_buffer_index >= 0) {
+    const auto& buffer = db_buffers[gui_buffer_index];
+
+    const double elapsed = std::chrono::duration<double>(now - buffer.block_time).count();
+
+    const size_t end = std::max<size_t>(
+        spectrum_dsp::window_end(capture_size, buffer.block_size, elapsed, static_cast<double>(rate)), fft_size);
+
+    analyzer.analyze(std::span<const float>(buffer.samples).first(end));
+  }
+
   const double dt =
       last_compute_time.has_value() ? std::chrono::duration<double>(now - *last_compute_time).count() : 0.0;
 

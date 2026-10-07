@@ -70,6 +70,8 @@ class Spectrum : public PluginBase {
   DbSpectrum* settings = nullptr;
 
   static constexpr uint max_fft_size = 16384U;
+  static constexpr uint max_quantum = 8192U;
+  static constexpr uint capture_size = max_fft_size + max_quantum;
 
   bool ready = false;
 
@@ -82,7 +84,7 @@ class Spectrum : public PluginBase {
   std::span<float> left_delayed;
   std::span<float> right_delayed;
 
-  std::array<float, max_fft_size> latest_samples_mono;
+  std::array<float, capture_size> latest_samples_mono;
 
   enum class DB_BIT {
     IDX = (1 << 0),      // To which db_buffers array process() should write.
@@ -90,7 +92,14 @@ class Spectrum : public PluginBase {
     BUSY = (1 << 2),     // If process() is currently writing data.
   };
 
-  std::array<std::array<float, max_fft_size>, 2> db_buffers;
+  struct CaptureBuffer {
+    std::array<float, capture_size> samples;
+    uint block_size = 0U;
+    std::chrono::steady_clock::time_point block_time;
+  };
+
+  std::array<CaptureBuffer, 2> db_buffers;
+  int gui_buffer_index = -1;  // The buffer compute_band_levels() owns after the last swap
   std::atomic<int> db_control = {0};
   static_assert(std::atomic<int>::is_always_lock_free);
 };

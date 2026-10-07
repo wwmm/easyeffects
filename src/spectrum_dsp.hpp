@@ -36,6 +36,13 @@ auto make_window(WindowType type, size_t size) -> std::vector<float>;
 auto band_edges(std::span<const double> centers, bool logarithmic) -> std::vector<double>;
 
 /**
+ * End of the analysis window inside a capture buffer whose last block_size samples arrived elapsed seconds ago.
+ * PipeWire delivers a whole block at once, so sliding the window through it with time gives a new spectrum on every
+ * displayed frame instead of only once per quantum.
+ */
+auto window_end(size_t buffer_size, size_t block_size, double elapsed, double rate) -> size_t;
+
+/**
  * Band levels are in dBFS relative to a full scale sine, independent of FFT size, zero padding and window.
  * Not thread safe. The caller must serialize configure() and release() because FFTW planning is not thread safe.
  */
