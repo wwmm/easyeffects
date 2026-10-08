@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-07 23:08+0000\n"
-"PO-Revision-Date: 2026-09-28 23:51+0000\n"
+"PO-Revision-Date: 2026-10-08 11:51+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2026.10.dev0\n"
+"X-Generator: Weblate 2026.10.1.dev0\n"
 "Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 
 #: src/autostart.cpp:92
@@ -2598,7 +2598,7 @@ msgstr "La massima frequenza di aggiornamento dello spettro."
 
 #: src/contents/ui/PreferencesSheet.qml:595
 msgid "Frequency Range"
-msgstr "Gamma Frequenze"
+msgstr "Gamma delle Frequenze"
 
 #: src/contents/ui/PreferencesSheet.qml:602
 #: src/contents/ui/PreferencesSheet.qml:664
@@ -2611,9 +2611,8 @@ msgid "Maximum"
 msgstr "Massima"
 
 #: src/contents/ui/PreferencesSheet.qml:633
-#, fuzzy
 msgid "Level Range"
-msgstr "Misuratore Livello"
+msgstr "Gamma del Livello"
 
 #: src/contents/ui/PreferencesSheet.qml:638
 #: src/contents/ui/PreferencesSheet.qml:894
@@ -2624,59 +2623,62 @@ msgstr "Automatico"
 msgid ""
 "Follows the loudest and the quieter bands within the minimum and maximum."
 msgstr ""
+"Segue le bande più forti e più silenziose nell'intervallo tra minimo e "
+"massimo."
 
 #: src/contents/ui/PreferencesSheet.qml:649
-#, fuzzy
 msgid "Minimum span"
-msgstr "Quantum minimo"
+msgstr "Periodo minimo"
 
 #: src/contents/ui/PreferencesSheet.qml:693
 msgid ""
 "Tilts the display around 1 kHz. The shown levels are no longer absolute."
 msgstr ""
+"Inclina il grafico intorno a 1 kHz. I livelli visualizzati non sono più "
+"assoluti."
 
 #: src/contents/ui/PreferencesSheet.qml:708
 msgid "Analysis"
-msgstr ""
+msgstr "Analisi"
 
 #: src/contents/ui/PreferencesSheet.qml:725
 msgid "Zero padding"
-msgstr ""
+msgstr "Margine zero"
 
 #: src/contents/ui/PreferencesSheet.qml:726
 msgid ""
 "Interpolates the spectrum. It does not increase the frequency resolution."
 msgstr ""
+"Regola l'interpolazione dello spettro. Non incrementa la risoluzione delle "
+"frequenze."
 
 #: src/contents/ui/PreferencesSheet.qml:738
-#, fuzzy
 msgid "Window function"
-msgstr "Riduzione del guadagno"
+msgstr "Funzione della finestra"
 
 #: src/contents/ui/PreferencesSheet.qml:742
 msgid "Rectangular"
-msgstr ""
+msgstr "Rettangolare"
 
 #: src/contents/ui/PreferencesSheet.qml:742
 msgid "Hann"
-msgstr ""
+msgstr "Hann"
 
 #: src/contents/ui/PreferencesSheet.qml:742
 msgid "Hamming"
-msgstr ""
+msgstr "Hamming"
 
 #: src/contents/ui/PreferencesSheet.qml:742
 msgid "Blackman"
-msgstr ""
+msgstr "Blackman"
 
 #: src/contents/ui/PreferencesSheet.qml:742
 msgid "Blackman-Harris"
-msgstr ""
+msgstr "Blackman-Harris"
 
 #: src/contents/ui/PreferencesSheet.qml:742
-#, fuzzy
 msgid "Flat top"
-msgstr "Piatto"
+msgstr "Cima piatta"
 
 #: src/contents/ui/PreferencesSheet.qml:786
 msgid "Database autosave interval"
