@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-09-19 15:26+0000\n"
+"POT-Creation-Date: 2026-10-07 23:08+0000\n"
 "PO-Revision-Date: 2026-09-25 20:51+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :(n>"
-"6 && n<11) ? 3 : 4;\n"
+"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :"
+"(n>6 && n<11) ? 3 : 4;\n"
 "X-Generator: Weblate 2026.10.dev0\n"
 
 #: src/autostart.cpp:92
@@ -546,6 +546,7 @@ msgstr "Tairseach agus Am"
 #: src/contents/ui/Limiter.qml:144 src/contents/ui/Limiter.qml:417
 #: src/contents/ui/MultibandCompressor.qml:260
 #: src/contents/ui/MultibandGate.qml:201
+#: src/contents/ui/PreferencesSheet.qml:750
 msgid "Attack"
 msgstr "Ionsaí"
 
@@ -1037,7 +1038,7 @@ msgstr "Réamhshocruithe Trasbheathú"
 msgid "Default"
 msgstr "Réamhshocrú"
 
-#: src/contents/ui/Crossfeed.qml:167 src/contents/ui/PageStreamsEffects.qml:660
+#: src/contents/ui/Crossfeed.qml:167 src/contents/ui/PageStreamsEffects.qml:663
 #: src/contents/ui/PreferencesSheet.qml:65 src/contents/ui/Reverb.qml:335
 msgid "Presets"
 msgstr "Réamhshocruithe"
@@ -1052,6 +1053,7 @@ msgid "Delay"
 msgstr "Moill"
 
 #: src/contents/ui/CrosstalkCanceller.qml:91
+#: src/contents/ui/PreferencesSheet.qml:764
 msgid "Decay"
 msgstr "Lobhadh"
 
@@ -1079,7 +1081,7 @@ msgstr "Fritháireamh DC"
 msgid "Anti-aliasing"
 msgstr "Frithailiasáil"
 
-#: src/contents/ui/Crusher.qml:142 src/contents/ui/PreferencesSheet.qml:775
+#: src/contents/ui/Crusher.qml:142 src/contents/ui/PreferencesSheet.qml:909
 msgid "Mix"
 msgstr "Measc"
 
@@ -1602,6 +1604,7 @@ msgid "APO (DR)"
 msgstr "APO (DR)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:75 src/contents/ui/Filter.qml:121
+#: src/contents/ui/PreferencesSheet.qml:692
 msgid "Slope"
 msgstr "Fána"
 
@@ -1873,7 +1876,7 @@ msgstr "Robinson-Dadson"
 msgid "ISO226-2023"
 msgstr "ISO226-2023"
 
-#: src/contents/ui/Loudness.qml:101
+#: src/contents/ui/Loudness.qml:101 src/contents/ui/PreferencesSheet.qml:713
 msgid "FFT size"
 msgstr "Méid FFT"
 
@@ -2141,32 +2144,32 @@ msgstr "Laghdaigh an liosta éifeachtaí píblíne"
 msgid "Output device"
 msgstr "Gléas aschuir"
 
-#: src/contents/ui/PageStreamsEffects.qml:673
+#: src/contents/ui/PageStreamsEffects.qml:676
 msgid "Excluded apps"
 msgstr "Aipeanna eisiata"
 
-#: src/contents/ui/PageStreamsEffects.qml:686
-#: src/contents/ui/PageStreamsEffects.qml:704
+#: src/contents/ui/PageStreamsEffects.qml:689
+#: src/contents/ui/PageStreamsEffects.qml:707
 msgid "Input monitoring"
 msgstr "Monatóireacht ionchuir"
 
-#: src/contents/ui/PageStreamsEffects.qml:713
+#: src/contents/ui/PageStreamsEffects.qml:716
 msgid "Toggle input monitoring"
 msgstr "Scoránaigh monatóireacht ionchuir"
 
-#: src/contents/ui/PageStreamsEffects.qml:733
+#: src/contents/ui/PageStreamsEffects.qml:736
 msgid "Set input monitoring volume"
 msgstr "Socraigh airde fuaime na monatóireachta ionchuir"
 
-#: src/contents/ui/PageStreamsEffects.qml:752
+#: src/contents/ui/PageStreamsEffects.qml:755
 msgid "Monitoring volume"
 msgstr "Monatóireacht ar an méid"
 
-#: src/contents/ui/PageStreamsEffects.qml:785
+#: src/contents/ui/PageStreamsEffects.qml:788
 msgid "Share audio"
 msgstr "Comhroinn fuaim"
 
-#: src/contents/ui/PageStreamsEffects.qml:786
+#: src/contents/ui/PageStreamsEffects.qml:789
 msgid "Send the processed desktop audio to the virtual source"
 msgstr "Seol an fhuaim deisce próiseáilte chuig an bhfoinse fhíorúil"
 
@@ -2575,62 +2578,128 @@ msgid "Area"
 msgstr "Limistéar"
 
 #: src/contents/ui/PreferencesSheet.qml:538
-msgid "Dynamic scale"
-msgstr "Scála dinimiciúil"
-
-#: src/contents/ui/PreferencesSheet.qml:550
 msgid "Logarithmic frequency axis"
 msgstr "Ais minicíochta logartamach"
 
-#: src/contents/ui/PreferencesSheet.qml:562
+#: src/contents/ui/PreferencesSheet.qml:550
 msgid "Points"
 msgstr "Pointí"
 
-#: src/contents/ui/PreferencesSheet.qml:577
+#: src/contents/ui/PreferencesSheet.qml:565
 msgid "Height"
 msgstr "Airde"
 
-#: src/contents/ui/PreferencesSheet.qml:584
+#: src/contents/ui/PreferencesSheet.qml:572
 msgid "px"
 msgstr "px"
 
-#: src/contents/ui/PreferencesSheet.qml:591
+#: src/contents/ui/PreferencesSheet.qml:579
 msgid "Spectrum frame rate cap"
 msgstr "Caipín ráta fráma speictrim"
 
-#: src/contents/ui/PreferencesSheet.qml:592
+#: src/contents/ui/PreferencesSheet.qml:580
 msgid "Maximum spectrum update rate."
 msgstr "Uasráta nuashonraithe speictrim."
 
-#: src/contents/ui/PreferencesSheet.qml:607
+#: src/contents/ui/PreferencesSheet.qml:595
 msgid "Frequency Range"
 msgstr "Raon Minicíochta"
 
-#: src/contents/ui/PreferencesSheet.qml:614
+#: src/contents/ui/PreferencesSheet.qml:602
+#: src/contents/ui/PreferencesSheet.qml:664
 msgid "Minimum"
 msgstr "Íosmhéid"
 
-#: src/contents/ui/PreferencesSheet.qml:630
+#: src/contents/ui/PreferencesSheet.qml:618
+#: src/contents/ui/PreferencesSheet.qml:678
 msgid "Maximum"
 msgstr "Uasmhéid"
 
-#: src/contents/ui/PreferencesSheet.qml:652
+#: src/contents/ui/PreferencesSheet.qml:633
+#, fuzzy
+msgid "Level Range"
+msgstr "Méadar Leibhéal"
+
+#: src/contents/ui/PreferencesSheet.qml:638
+#: src/contents/ui/PreferencesSheet.qml:894
+msgid "Automatic"
+msgstr "Uathoibríoch"
+
+#: src/contents/ui/PreferencesSheet.qml:639
+msgid ""
+"Follows the loudest and the quieter bands within the minimum and maximum."
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:649
+#, fuzzy
+msgid "Minimum span"
+msgstr "Íosmhéid chandamach"
+
+#: src/contents/ui/PreferencesSheet.qml:693
+msgid ""
+"Tilts the display around 1 kHz. The shown levels are no longer absolute."
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:708
+msgid "Analysis"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:725
+msgid "Zero padding"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:726
+msgid ""
+"Interpolates the spectrum. It does not increase the frequency resolution."
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:738
+#, fuzzy
+msgid "Window function"
+msgstr "Laghdú gnóthachain"
+
+#: src/contents/ui/PreferencesSheet.qml:742
+msgid "Rectangular"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:742
+msgid "Hann"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:742
+msgid "Hamming"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:742
+msgid "Blackman"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:742
+msgid "Blackman-Harris"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:742
+#, fuzzy
+msgid "Flat top"
+msgstr "Maol"
+
+#: src/contents/ui/PreferencesSheet.qml:786
 msgid "Database autosave interval"
 msgstr "Eatramh uath-shábháil bunachar sonraí"
 
-#: src/contents/ui/PreferencesSheet.qml:666
+#: src/contents/ui/PreferencesSheet.qml:800
 msgid "Most used presets"
 msgstr "Réamhshocruithe is mó a úsáidtear"
 
-#: src/contents/ui/PreferencesSheet.qml:684
+#: src/contents/ui/PreferencesSheet.qml:818
 msgid "Window"
 msgstr "Fuinneog"
 
-#: src/contents/ui/PreferencesSheet.qml:693
+#: src/contents/ui/PreferencesSheet.qml:827
 msgid "Force KDE's Breeze theme when Easy Effects starts"
 msgstr "Fórsaigh téama Breeze KDE nuair a thosaíonn Easy Effects"
 
-#: src/contents/ui/PreferencesSheet.qml:694
+#: src/contents/ui/PreferencesSheet.qml:828
 msgid ""
 "It is necessary to restart the service for changes in this setting to take "
 "effect."
@@ -2638,11 +2707,11 @@ msgstr ""
 "Is gá an tseirbhís a atosú le go dtiocfaidh athruithe sa socrú seo i "
 "bhfeidhm."
 
-#: src/contents/ui/PreferencesSheet.qml:707
+#: src/contents/ui/PreferencesSheet.qml:841
 msgid "Reduce effects list controls"
 msgstr "Rialuithe liosta éifeachtaí a laghdú"
 
-#: src/contents/ui/PreferencesSheet.qml:708
+#: src/contents/ui/PreferencesSheet.qml:842
 msgid ""
 "Action buttons in the effects list are moved inside a context menu for a "
 "more compact view."
@@ -2650,16 +2719,16 @@ msgstr ""
 "Bogtar cnaipí gníomhaíochta sa liosta éifeachtaí taobh istigh de roghchlár "
 "comhthéacs le haghaidh radharc níos dlúithe."
 
-#: src/contents/ui/PreferencesSheet.qml:719
-#: src/contents/ui/PreferencesSheet.qml:756
+#: src/contents/ui/PreferencesSheet.qml:853
+#: src/contents/ui/PreferencesSheet.qml:890
 msgid "Color scheme"
 msgstr "Scéim dathanna"
 
-#: src/contents/ui/PreferencesSheet.qml:733
+#: src/contents/ui/PreferencesSheet.qml:867
 msgid "Force English language"
 msgstr "Fórsa an Bhéarla"
 
-#: src/contents/ui/PreferencesSheet.qml:734
+#: src/contents/ui/PreferencesSheet.qml:868
 msgid ""
 "Do not translate the user interface and show text in English language. "
 "Useful if the translation in the local language is incomplete or "
@@ -2669,112 +2738,108 @@ msgstr ""
 "Úsáideach mura bhfuil an t-aistriúchán sa teanga áitiúil iomlán nó "
 "dothuigthe. Tá gá le hatosú na seirbhíse chun an rogha seo a chur i bhfeidhm."
 
-#: src/contents/ui/PreferencesSheet.qml:745
+#: src/contents/ui/PreferencesSheet.qml:879
 msgid "Graphs"
 msgstr "Graif"
 
-#: src/contents/ui/PreferencesSheet.qml:760
-msgid "Automatic"
-msgstr "Uathoibríoch"
-
-#: src/contents/ui/PreferencesSheet.qml:760
+#: src/contents/ui/PreferencesSheet.qml:894
 msgid "Light"
 msgstr "Solas"
 
-#: src/contents/ui/PreferencesSheet.qml:760
+#: src/contents/ui/PreferencesSheet.qml:894
 msgid "Dark"
 msgstr "Dorcha"
 
-#: src/contents/ui/PreferencesSheet.qml:771
+#: src/contents/ui/PreferencesSheet.qml:905
 msgid "Color theme"
 msgstr "Téama datha"
 
-#: src/contents/ui/PreferencesSheet.qml:775
+#: src/contents/ui/PreferencesSheet.qml:909
 msgid "Green"
 msgstr "Glas"
 
-#: src/contents/ui/PreferencesSheet.qml:775
+#: src/contents/ui/PreferencesSheet.qml:909
 msgid "Green neon"
 msgstr "Neon glas"
 
-#: src/contents/ui/PreferencesSheet.qml:775
+#: src/contents/ui/PreferencesSheet.qml:909
 msgid "Orange"
 msgstr "Oráiste"
 
-#: src/contents/ui/PreferencesSheet.qml:775
+#: src/contents/ui/PreferencesSheet.qml:909
 msgid "Yellow"
 msgstr "Buí"
 
-#: src/contents/ui/PreferencesSheet.qml:775
+#: src/contents/ui/PreferencesSheet.qml:909
 msgid "Blue"
 msgstr "Gorm"
 
-#: src/contents/ui/PreferencesSheet.qml:775
+#: src/contents/ui/PreferencesSheet.qml:909
 msgid "Purple"
 msgstr "Corcra"
 
-#: src/contents/ui/PreferencesSheet.qml:775
+#: src/contents/ui/PreferencesSheet.qml:909
 msgid "Grey"
 msgstr "Liath"
 
-#: src/contents/ui/PreferencesSheet.qml:775
+#: src/contents/ui/PreferencesSheet.qml:909
 msgid "User"
 msgstr "Úsáideoir"
 
-#: src/contents/ui/PreferencesSheet.qml:783
+#: src/contents/ui/PreferencesSheet.qml:917
 msgctxt "@label"
 msgid "Background"
 msgstr "Cúlra"
 
-#: src/contents/ui/PreferencesSheet.qml:792
+#: src/contents/ui/PreferencesSheet.qml:926
 msgctxt "@label"
 msgid "Plot area background"
 msgstr "Cúlra limistéar an phlota"
 
-#: src/contents/ui/PreferencesSheet.qml:801
+#: src/contents/ui/PreferencesSheet.qml:935
 msgctxt "@label"
 msgid "Series colors"
 msgstr "Dathanna sraithe"
 
-#: src/contents/ui/PreferencesSheet.qml:810
+#: src/contents/ui/PreferencesSheet.qml:944
 msgctxt "@label"
 msgid "Axis labels text color"
 msgstr "Dath téacs lipéid ais"
 
-#: src/contents/ui/PreferencesSheet.qml:819
+#: src/contents/ui/PreferencesSheet.qml:953
 msgctxt "@label"
 msgid "Axis labels background color"
 msgstr "Dath cúlra lipéid ais"
 
-#: src/contents/ui/PreferencesSheet.qml:828
+#: src/contents/ui/PreferencesSheet.qml:962
 msgctxt "@label"
 msgid "Border color"
 msgstr "Dath na teorann"
 
-#: src/contents/ui/PreferencesSheet.qml:837
+#: src/contents/ui/PreferencesSheet.qml:971
 msgid "Line width"
 msgstr "Leithead líne"
 
-#: src/contents/ui/PreferencesSheet.qml:851
+#: src/contents/ui/PreferencesSheet.qml:985
 msgid "Show grid lines"
 msgstr "Taispeáin línte eangaí"
 
-#: src/contents/ui/PreferencesSheet.qml:869
+#: src/contents/ui/PreferencesSheet.qml:1003
 msgid "Autoload delay"
 msgstr "Moill uathluchtaithe"
 
-#: src/contents/ui/PreferencesSheet.qml:870
+#: src/contents/ui/PreferencesSheet.qml:1004
 msgid ""
 "Delay between receiving a new device route and the call to autoload a preset."
 msgstr ""
 "Moill idir bealach nua gléis a fháil agus an glao chun réamhshocrú a "
 "uathlódáil."
 
-#: src/contents/ui/PreferencesSheet.qml:886
+#: src/contents/ui/PreferencesSheet.qml:1020
 msgid "Ignore the blocklist from presets"
 msgstr "Déan neamhaird den liosta blocála ó réamhshocruithe"
 
-#: src/contents/ui/PreferencesSheet.qml:887
+#: src/contents/ui/PreferencesSheet.qml:1021
 msgid ""
 "If enabled, the list of excluded apps set in the loaded preset is ignored "
 "and does not replace the one set by the user."
@@ -2783,29 +2848,29 @@ msgstr ""
 "socraithe sa réamhshocrú luchtaithe agus ní chuireann sé in ionad an cheann "
 "a shocraigh an t-úsáideoir."
 
-#: src/contents/ui/PreferencesSheet.qml:908
+#: src/contents/ui/PreferencesSheet.qml:1042
 msgid "Global shortcuts"
 msgstr "Aicearraí domhanda"
 
-#: src/contents/ui/PreferencesSheet.qml:909
+#: src/contents/ui/PreferencesSheet.qml:1043
 msgid "Enables support for XDG global shortcuts."
 msgstr "Cumasaíonn sé tacaíocht do aicearraí domhanda XDG."
 
-#: src/contents/ui/PreferencesSheet.qml:921
+#: src/contents/ui/PreferencesSheet.qml:1055
 msgid "Native window of effects"
 msgstr "Fuinneog dhúchasach éifeachtaí"
 
-#: src/contents/ui/PreferencesSheet.qml:922
+#: src/contents/ui/PreferencesSheet.qml:1056
 msgid "Allows the native user interface of effects to be shown/hidden."
 msgstr ""
 "Ceadaíonn sé seo comhéadan úsáideora dúchais na n-éifeachtaí a thaispeáint/a "
 "cheilt."
 
-#: src/contents/ui/PreferencesSheet.qml:934
+#: src/contents/ui/PreferencesSheet.qml:1068
 msgid "Update frequency"
 msgstr "Minicíocht nuashonraithe"
 
-#: src/contents/ui/PreferencesSheet.qml:935
+#: src/contents/ui/PreferencesSheet.qml:1069
 msgid "Related to LV2 plugins."
 msgstr "Gaolmhar le breiseáin LV2."
 
@@ -3635,6 +3700,9 @@ msgstr "Cothromóir, Comhbhrúiteoir agus Éifeachtaí Fuaime Eile"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "Éifeachtaí fuaime simplí"
+
+#~ msgid "Dynamic scale"
+#~ msgstr "Scála dinimiciúil"
 
 #~ msgid "Go back"
 #~ msgstr "Téigh ar ais"

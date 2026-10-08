@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-09-19 15:26+0000\n"
+"POT-Creation-Date: 2026-10-07 23:08+0000\n"
 "PO-Revision-Date: 2026-01-30 12:01+0000\n"
 "Last-Translator: Anton Woolvy <antong2106@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -554,6 +554,7 @@ msgstr "Drempel­waarde en tijd"
 #: src/contents/ui/Limiter.qml:144 src/contents/ui/Limiter.qml:417
 #: src/contents/ui/MultibandCompressor.qml:260
 #: src/contents/ui/MultibandGate.qml:201
+#: src/contents/ui/PreferencesSheet.qml:750
 msgid "Attack"
 msgstr "Attack"
 
@@ -1048,7 +1049,7 @@ msgstr "Crossfeed-voor­instellingen"
 msgid "Default"
 msgstr "Standaard"
 
-#: src/contents/ui/Crossfeed.qml:167 src/contents/ui/PageStreamsEffects.qml:660
+#: src/contents/ui/Crossfeed.qml:167 src/contents/ui/PageStreamsEffects.qml:663
 #: src/contents/ui/PreferencesSheet.qml:65 src/contents/ui/Reverb.qml:335
 msgid "Presets"
 msgstr "Voor­instellingen"
@@ -1063,6 +1064,7 @@ msgid "Delay"
 msgstr "Vertraging"
 
 #: src/contents/ui/CrosstalkCanceller.qml:91
+#: src/contents/ui/PreferencesSheet.qml:764
 #, fuzzy
 msgid "Decay"
 msgstr "Afval­tijd"
@@ -1093,7 +1095,7 @@ msgstr "DC compensatie"
 msgid "Anti-aliasing"
 msgstr "Anti-aliasing"
 
-#: src/contents/ui/Crusher.qml:142 src/contents/ui/PreferencesSheet.qml:775
+#: src/contents/ui/Crusher.qml:142 src/contents/ui/PreferencesSheet.qml:909
 msgid "Mix"
 msgstr "Mix"
 
@@ -1619,6 +1621,7 @@ msgid "APO (DR)"
 msgstr "APO (DR)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:75 src/contents/ui/Filter.qml:121
+#: src/contents/ui/PreferencesSheet.qml:692
 msgid "Slope"
 msgstr "Stijging"
 
@@ -1890,7 +1893,7 @@ msgstr "Robinson-Dadson"
 msgid "ISO226-2023"
 msgstr "ISO226-2023"
 
-#: src/contents/ui/Loudness.qml:101
+#: src/contents/ui/Loudness.qml:101 src/contents/ui/PreferencesSheet.qml:713
 msgid "FFT size"
 msgstr "FFT-grootte"
 
@@ -2168,34 +2171,34 @@ msgstr "Lijst met effectenpijplijn invouwen"
 msgid "Output device"
 msgstr "Uitvoer­apparaat"
 
-#: src/contents/ui/PageStreamsEffects.qml:673
+#: src/contents/ui/PageStreamsEffects.qml:676
 msgid "Excluded apps"
 msgstr "Uitgesloten apps"
 
-#: src/contents/ui/PageStreamsEffects.qml:686
-#: src/contents/ui/PageStreamsEffects.qml:704
+#: src/contents/ui/PageStreamsEffects.qml:689
+#: src/contents/ui/PageStreamsEffects.qml:707
 msgid "Input monitoring"
 msgstr "Invoer­monitoring"
 
-#: src/contents/ui/PageStreamsEffects.qml:713
+#: src/contents/ui/PageStreamsEffects.qml:716
 #, fuzzy
 msgid "Toggle input monitoring"
 msgstr "Microfoon­monitoring schakelen"
 
-#: src/contents/ui/PageStreamsEffects.qml:733
+#: src/contents/ui/PageStreamsEffects.qml:736
 #, fuzzy
 msgid "Set input monitoring volume"
 msgstr "Invoer­monitoring"
 
-#: src/contents/ui/PageStreamsEffects.qml:752
+#: src/contents/ui/PageStreamsEffects.qml:755
 msgid "Monitoring volume"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:785
+#: src/contents/ui/PageStreamsEffects.qml:788
 msgid "Share audio"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:786
+#: src/contents/ui/PageStreamsEffects.qml:789
 #, fuzzy
 msgid "Send the processed desktop audio to the virtual source"
 msgstr "Stuur geluid naar de virtuele bron"
@@ -2603,62 +2606,128 @@ msgid "Area"
 msgstr "Gebied"
 
 #: src/contents/ui/PreferencesSheet.qml:538
-msgid "Dynamic scale"
-msgstr "Dynamische schaal"
-
-#: src/contents/ui/PreferencesSheet.qml:550
 msgid "Logarithmic frequency axis"
 msgstr "Logaritmische frequentie­as"
 
-#: src/contents/ui/PreferencesSheet.qml:562
+#: src/contents/ui/PreferencesSheet.qml:550
 msgid "Points"
 msgstr "Points"
 
-#: src/contents/ui/PreferencesSheet.qml:577
+#: src/contents/ui/PreferencesSheet.qml:565
 msgid "Height"
 msgstr "Lengte"
 
-#: src/contents/ui/PreferencesSheet.qml:584
+#: src/contents/ui/PreferencesSheet.qml:572
 msgid "px"
 msgstr "px"
 
-#: src/contents/ui/PreferencesSheet.qml:591
+#: src/contents/ui/PreferencesSheet.qml:579
 msgid "Spectrum frame rate cap"
 msgstr "Spectrum framesnelheids­limiet"
 
-#: src/contents/ui/PreferencesSheet.qml:592
+#: src/contents/ui/PreferencesSheet.qml:580
 msgid "Maximum spectrum update rate."
 msgstr "Maximale spectrum­vernieuwingssnelheid."
 
-#: src/contents/ui/PreferencesSheet.qml:607
+#: src/contents/ui/PreferencesSheet.qml:595
 msgid "Frequency Range"
 msgstr "Frequentie­bereik"
 
-#: src/contents/ui/PreferencesSheet.qml:614
+#: src/contents/ui/PreferencesSheet.qml:602
+#: src/contents/ui/PreferencesSheet.qml:664
 msgid "Minimum"
 msgstr "Minimaal"
 
-#: src/contents/ui/PreferencesSheet.qml:630
+#: src/contents/ui/PreferencesSheet.qml:618
+#: src/contents/ui/PreferencesSheet.qml:678
 msgid "Maximum"
 msgstr "Maximaal"
 
-#: src/contents/ui/PreferencesSheet.qml:652
+#: src/contents/ui/PreferencesSheet.qml:633
+#, fuzzy
+msgid "Level Range"
+msgstr "Bereik van geluidssterkte"
+
+#: src/contents/ui/PreferencesSheet.qml:638
+#: src/contents/ui/PreferencesSheet.qml:894
+msgid "Automatic"
+msgstr "Automatisch"
+
+#: src/contents/ui/PreferencesSheet.qml:639
+msgid ""
+"Follows the loudest and the quieter bands within the minimum and maximum."
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:649
+#, fuzzy
+msgid "Minimum span"
+msgstr "Minimale quantum"
+
+#: src/contents/ui/PreferencesSheet.qml:693
+msgid ""
+"Tilts the display around 1 kHz. The shown levels are no longer absolute."
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:708
+msgid "Analysis"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:725
+msgid "Zero padding"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:726
+msgid ""
+"Interpolates the spectrum. It does not increase the frequency resolution."
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:738
+#, fuzzy
+msgid "Window function"
+msgstr "Versterkings­vermindering"
+
+#: src/contents/ui/PreferencesSheet.qml:742
+msgid "Rectangular"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:742
+msgid "Hann"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:742
+msgid "Hamming"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:742
+msgid "Blackman"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:742
+msgid "Blackman-Harris"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:742
+#, fuzzy
+msgid "Flat top"
+msgstr "Plat"
+
+#: src/contents/ui/PreferencesSheet.qml:786
 msgid "Database autosave interval"
 msgstr "Database automatisch opslaan interval"
 
-#: src/contents/ui/PreferencesSheet.qml:666
+#: src/contents/ui/PreferencesSheet.qml:800
 msgid "Most used presets"
 msgstr "Meest gebruikte voor­instellingen"
 
-#: src/contents/ui/PreferencesSheet.qml:684
+#: src/contents/ui/PreferencesSheet.qml:818
 msgid "Window"
 msgstr "Venster"
 
-#: src/contents/ui/PreferencesSheet.qml:693
+#: src/contents/ui/PreferencesSheet.qml:827
 msgid "Force KDE's Breeze theme when Easy Effects starts"
 msgstr "KDE's Breeze-thema forceren wanneer Easy Effects start"
 
-#: src/contents/ui/PreferencesSheet.qml:694
+#: src/contents/ui/PreferencesSheet.qml:828
 msgid ""
 "It is necessary to restart the service for changes in this setting to take "
 "effect."
@@ -2666,11 +2735,11 @@ msgstr ""
 "Het is noodzakelijk om de dienst te herstarten om wijzigingen in deze "
 "instelling van kracht te laten worden."
 
-#: src/contents/ui/PreferencesSheet.qml:707
+#: src/contents/ui/PreferencesSheet.qml:841
 msgid "Reduce effects list controls"
 msgstr "Effectenlijst­bediening verminderen"
 
-#: src/contents/ui/PreferencesSheet.qml:708
+#: src/contents/ui/PreferencesSheet.qml:842
 msgid ""
 "Action buttons in the effects list are moved inside a context menu for a "
 "more compact view."
@@ -2678,16 +2747,16 @@ msgstr ""
 "Actie­knoppen in de effecten­lijst worden naar een contextmenu verplaatst voor "
 "een compacter overzicht."
 
-#: src/contents/ui/PreferencesSheet.qml:719
-#: src/contents/ui/PreferencesSheet.qml:756
+#: src/contents/ui/PreferencesSheet.qml:853
+#: src/contents/ui/PreferencesSheet.qml:890
 msgid "Color scheme"
 msgstr "Kleuren­schema"
 
-#: src/contents/ui/PreferencesSheet.qml:733
+#: src/contents/ui/PreferencesSheet.qml:867
 msgid "Force English language"
 msgstr "Forceer Engelse taal"
 
-#: src/contents/ui/PreferencesSheet.qml:734
+#: src/contents/ui/PreferencesSheet.qml:868
 msgid ""
 "Do not translate the user interface and show text in English language. "
 "Useful if the translation in the local language is incomplete or "
@@ -2697,112 +2766,108 @@ msgstr ""
 "Handig als de vertaling in de lokale taal onvolledig of onbegrijpelijk is. "
 "De service moet opnieuw worden opgestart om deze optie toe te passen."
 
-#: src/contents/ui/PreferencesSheet.qml:745
+#: src/contents/ui/PreferencesSheet.qml:879
 msgid "Graphs"
 msgstr "Grafieken"
 
-#: src/contents/ui/PreferencesSheet.qml:760
-msgid "Automatic"
-msgstr "Automatisch"
-
-#: src/contents/ui/PreferencesSheet.qml:760
+#: src/contents/ui/PreferencesSheet.qml:894
 msgid "Light"
 msgstr "Licht"
 
-#: src/contents/ui/PreferencesSheet.qml:760
+#: src/contents/ui/PreferencesSheet.qml:894
 msgid "Dark"
 msgstr "Donker"
 
-#: src/contents/ui/PreferencesSheet.qml:771
+#: src/contents/ui/PreferencesSheet.qml:905
 msgid "Color theme"
 msgstr "Kleuren­thema"
 
-#: src/contents/ui/PreferencesSheet.qml:775
+#: src/contents/ui/PreferencesSheet.qml:909
 msgid "Green"
 msgstr "Groen"
 
-#: src/contents/ui/PreferencesSheet.qml:775
+#: src/contents/ui/PreferencesSheet.qml:909
 msgid "Green neon"
 msgstr "Groen-neon"
 
-#: src/contents/ui/PreferencesSheet.qml:775
+#: src/contents/ui/PreferencesSheet.qml:909
 msgid "Orange"
 msgstr "Oranje"
 
-#: src/contents/ui/PreferencesSheet.qml:775
+#: src/contents/ui/PreferencesSheet.qml:909
 msgid "Yellow"
 msgstr "Geel"
 
-#: src/contents/ui/PreferencesSheet.qml:775
+#: src/contents/ui/PreferencesSheet.qml:909
 msgid "Blue"
 msgstr "Blauw"
 
-#: src/contents/ui/PreferencesSheet.qml:775
+#: src/contents/ui/PreferencesSheet.qml:909
 msgid "Purple"
 msgstr "Paars"
 
-#: src/contents/ui/PreferencesSheet.qml:775
+#: src/contents/ui/PreferencesSheet.qml:909
 msgid "Grey"
 msgstr "Grijs"
 
-#: src/contents/ui/PreferencesSheet.qml:775
+#: src/contents/ui/PreferencesSheet.qml:909
 msgid "User"
 msgstr "Gebruiker"
 
-#: src/contents/ui/PreferencesSheet.qml:783
+#: src/contents/ui/PreferencesSheet.qml:917
 msgctxt "@label"
 msgid "Background"
 msgstr "Achtergrond"
 
-#: src/contents/ui/PreferencesSheet.qml:792
+#: src/contents/ui/PreferencesSheet.qml:926
 msgctxt "@label"
 msgid "Plot area background"
 msgstr "Plotgebied­achtergrond"
 
-#: src/contents/ui/PreferencesSheet.qml:801
+#: src/contents/ui/PreferencesSheet.qml:935
 msgctxt "@label"
 msgid "Series colors"
 msgstr "Seriekleuren"
 
-#: src/contents/ui/PreferencesSheet.qml:810
+#: src/contents/ui/PreferencesSheet.qml:944
 msgctxt "@label"
 msgid "Axis labels text color"
 msgstr "Tekstkleur aslabels"
 
-#: src/contents/ui/PreferencesSheet.qml:819
+#: src/contents/ui/PreferencesSheet.qml:953
 msgctxt "@label"
 msgid "Axis labels background color"
 msgstr "Achtergrond­kleur aslabels"
 
-#: src/contents/ui/PreferencesSheet.qml:828
+#: src/contents/ui/PreferencesSheet.qml:962
 msgctxt "@label"
 msgid "Border color"
 msgstr "Rand­kleur"
 
-#: src/contents/ui/PreferencesSheet.qml:837
+#: src/contents/ui/PreferencesSheet.qml:971
 msgid "Line width"
 msgstr "Lijn­breedte"
 
-#: src/contents/ui/PreferencesSheet.qml:851
+#: src/contents/ui/PreferencesSheet.qml:985
 msgid "Show grid lines"
 msgstr "Raster­lijnen tonen"
 
-#: src/contents/ui/PreferencesSheet.qml:869
+#: src/contents/ui/PreferencesSheet.qml:1003
 msgid "Autoload delay"
 msgstr "Automatisch laden vertraging"
 
-#: src/contents/ui/PreferencesSheet.qml:870
+#: src/contents/ui/PreferencesSheet.qml:1004
 msgid ""
 "Delay between receiving a new device route and the call to autoload a preset."
 msgstr ""
 "Vertraging tussen het ontvangen van een nieuwe apparaat­route en de aanroep "
 "om automatisch een voor­instelling te laden."
 
-#: src/contents/ui/PreferencesSheet.qml:886
+#: src/contents/ui/PreferencesSheet.qml:1020
 msgid "Ignore the blocklist from presets"
 msgstr "Blokkeerlijst van voor­instellingen negeren"
 
-#: src/contents/ui/PreferencesSheet.qml:887
+#: src/contents/ui/PreferencesSheet.qml:1021
 msgid ""
 "If enabled, the list of excluded apps set in the loaded preset is ignored "
 "and does not replace the one set by the user."
@@ -2811,29 +2876,29 @@ msgstr ""
 "instelling genegeerd en vervangt deze niet de lijst die door de gebruiker is "
 "ingesteld."
 
-#: src/contents/ui/PreferencesSheet.qml:908
+#: src/contents/ui/PreferencesSheet.qml:1042
 msgid "Global shortcuts"
 msgstr "Globale snel­toetsen"
 
-#: src/contents/ui/PreferencesSheet.qml:909
+#: src/contents/ui/PreferencesSheet.qml:1043
 msgid "Enables support for XDG global shortcuts."
 msgstr "Schakelt onder­steuning voor globale XDG-sneltoetsen in."
 
-#: src/contents/ui/PreferencesSheet.qml:921
+#: src/contents/ui/PreferencesSheet.qml:1055
 msgid "Native window of effects"
 msgstr "Oorspronkelijk venster van effecten"
 
-#: src/contents/ui/PreferencesSheet.qml:922
+#: src/contents/ui/PreferencesSheet.qml:1056
 msgid "Allows the native user interface of effects to be shown/hidden."
 msgstr ""
 "Staat toe dat de oorspronkelijke gebruikers­interface van effecten wordt "
 "getoond/verborgen."
 
-#: src/contents/ui/PreferencesSheet.qml:934
+#: src/contents/ui/PreferencesSheet.qml:1068
 msgid "Update frequency"
 msgstr "Vernieuwings­frequentie"
 
-#: src/contents/ui/PreferencesSheet.qml:935
+#: src/contents/ui/PreferencesSheet.qml:1069
 msgid "Related to LV2 plugins."
 msgstr "Gerelateerd aan LV2-plug-ins."
 
@@ -3675,6 +3740,9 @@ msgstr "Equalizer, compressor en overige audio-effecten"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "Eenvoudige audio-effecten"
+
+#~ msgid "Dynamic scale"
+#~ msgstr "Dynamische schaal"
 
 #~ msgid "Go back"
 #~ msgstr "Terug"
@@ -5070,9 +5138,6 @@ msgstr "Eenvoudige audio-effecten"
 
 #~ msgid "After"
 #~ msgstr "Na"
-
-#~ msgid "Loudness Range"
-#~ msgstr "Bereik van geluidssterkte"
 
 #~ msgid "Based on"
 #~ msgstr "Gebaseerd op"

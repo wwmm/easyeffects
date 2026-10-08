@@ -19,20 +19,20 @@
 
 #pragma once
 
-#include <fftw3.h>
-#include <qlist.h>
 #include <sys/types.h>
 #include <QString>
 #include <array>
 #include <atomic>
+#include <chrono>
+#include <optional>
 #include <span>
 #include <string>
-#include <tuple>
 #include <vector>
 #include "easyeffects_db_spectrum.h"
 #include "pipeline_type.hpp"
 #include "plugin_base.hpp"
 #include "pw_manager.hpp"
+#include "spectrum_dsp.hpp"
 
 class Spectrum : public PluginBase {
  public:
@@ -63,35 +63,28 @@ class Spectrum : public PluginBase {
 
   auto get_latency_seconds() -> float override;
 
-  auto compute_magnitudes() -> std::tuple<uint, float, QList<double>>;  // rate, magnitudes
+  // Returns false when there is nothing to show yet
+  auto compute_band_levels(std::span<const double> band_edges, std::span<double> levels_db) -> bool;
 
  private:
   DbSpectrum* settings = nullptr;
 
-  std::atomic<bool> fftw_ready = false;
-
-  fftwf_plan plan = nullptr;
-
-  fftwf_complex* complex_output = nullptr;
-
-  static constexpr uint n_bands = 8192U;
+  static constexpr uint max_fft_size = 16384U;
+  static constexpr uint max_quantum = 8192U;
+  static constexpr uint capture_size = max_fft_size + max_quantum;
 
   bool ready = false;
 
-  float bin_hz = 0.0F;
+  spectrum_dsp::Analyzer analyzer;
 
-  std::array<float, n_bands> real_input;
-
-  QList<double> output = QList<double>(((n_bands / 2U) + 1U));
+  std::optional<std::chrono::steady_clock::time_point> last_compute_time;
 
   std::vector<float> left_delayed_vector;
   std::vector<float> right_delayed_vector;
   std::span<float> left_delayed;
   std::span<float> right_delayed;
 
-  std::array<float, n_bands> latest_samples_mono;
-
-  std::array<float, n_bands> hann_window;
+  std::array<float, capture_size> latest_samples_mono;
 
   enum class DB_BIT {
     IDX = (1 << 0),      // To which db_buffers array process() should write.
@@ -99,7 +92,14 @@ class Spectrum : public PluginBase {
     BUSY = (1 << 2),     // If process() is currently writing data.
   };
 
-  std::array<std::array<float, n_bands>, 2> db_buffers;
+  struct CaptureBuffer {
+    std::array<float, capture_size> samples;
+    uint block_size = 0U;
+    std::chrono::steady_clock::time_point block_time;
+  };
+
+  std::array<CaptureBuffer, 2> db_buffers;
+  int gui_buffer_index = -1;  // The buffer compute_band_levels() owns after the last swap
   std::atomic<int> db_control = {0};
   static_assert(std::atomic<int>::is_always_lock_free);
 };
