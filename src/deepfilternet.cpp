@@ -85,7 +85,7 @@ DeepFilterNet::DeepFilterNet(const std::string& tag,
                                   setMaxDfProcessingThreshold, DbDeepFilterNet::maxDfProcessingThresholdChanged, false);
 
   // DPDFNet's attenuation port has the same 0-100 dB range as DeepFilterNet's, so the setting is shared
-  const auto set_dpdfnet_attenuation = [this]() {
+  const auto set_dpdfnet_attenuation = [this] {
     if (dpdfnetInstalled) {
       dpdfnet_l->set_control_port_value_clamp("Attenuation Limit (dB)", settings->attenuationLimit());
       dpdfnet_r->set_control_port_value_clamp("Attenuation Limit (dB)", settings->attenuationLimit());
@@ -96,7 +96,7 @@ DeepFilterNet::DeepFilterNet(const std::string& tag,
 
   connect(settings, &DbDeepFilterNet::attenuationLimitChanged, this, set_dpdfnet_attenuation);
 
-  connect(settings, &DbDeepFilterNet::modelChanged, this, [this]() { resetHistory(); });
+  connect(settings, &DbDeepFilterNet::modelChanged, this, [this] { resetHistory(); });
 }
 
 DeepFilterNet::~DeepFilterNet() {
