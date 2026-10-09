@@ -420,17 +420,17 @@ QVariant EffectsBase::getPluginInstance(const QString& pluginName) {
   return {};
 }
 
-uint EffectsBase::getPipeLineRate() const {
+double EffectsBase::getPipeLineRate() const {
   switch (pipeline_type) {
     case PipelineType::input:
       if (auto node = pm->model_nodes.get_node_by_name(DbStreamInputs::inputDevice()); node.serial != SPA_ID_INVALID) {
-        return node.rate * 0.001F;
+        return node.rate * 0.001;
       }
       return 0.0F;
     case PipelineType::output: {
       if (auto node = pm->model_nodes.get_node_by_name(DbStreamOutputs::outputDevice());
           node.serial != SPA_ID_INVALID) {
-        return node.rate * 0.001F;
+        return node.rate * 0.001;
       }
       return 0.0F;
     }
