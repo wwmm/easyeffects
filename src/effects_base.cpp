@@ -18,8 +18,6 @@
  */
 
 #include "effects_base.hpp"
-#include <gsl/gsl_interp.h>
-#include <gsl/gsl_spline.h>
 #include <qcontainerfwd.h>
 #include <qnamespace.h>
 #include <qobjectdefs.h>
@@ -31,9 +29,12 @@
 #include <QSharedPointer>
 #include <QString>
 #include <algorithm>
+#include <chrono>
+#include <cmath>
 #include <cstddef>
 #include <map>
 #include <memory>
+#include <optional>
 #include <ranges>
 #include <string>
 #include <utility>
@@ -73,6 +74,7 @@
 #include "reverb.hpp"
 #include "rnnoise.hpp"
 #include "spectrum.hpp"
+#include "spectrum_dsp.hpp"
 #include "speex.hpp"
 #include "stereo_tools.hpp"
 #include "tags_plugin_name.hpp"
@@ -129,14 +131,6 @@ EffectsBase::EffectsBase(pw::Manager* pipe_manager, PipelineType pipe_type)
 EffectsBase::~EffectsBase() {
   workerThread.quit();
   workerThread.wait();
-
-  if (gsl_acc != nullptr) {
-    gsl_interp_accel_free(gsl_acc);
-  }
-
-  if (spline != nullptr) {
-    gsl_spline_free(spline);
-  }
 
   util::debug("effects_base: destroyed");
 }
@@ -480,29 +474,14 @@ void EffectsBase::requestSpectrumData() {
   QMetaObject::invokeMethod(
       baseWorker,
       [this] {
-        auto [rate, bin_hz, list] = spectrum->compute_magnitudes();
-
-        if (list.empty() || rate == 0) {
+        if (spectrum->rate == 0U) {
           return;
         }
 
-        const qsizetype n_bands = list.size();
+        const auto nyquist = 0.5F * static_cast<float>(spectrum->rate);
 
-        // Reuse or resize frequency cache based on band count
-        if (cached_spectrum_frequencies.size() != n_bands) {
-          cached_spectrum_frequencies.resize(n_bands);
-
-          for (qsizetype n = 0; n < n_bands; n++) {
-            cached_spectrum_frequencies[n] = static_cast<double>(n) * static_cast<double>(bin_hz);
-          }
-        }
-
-        const auto min_available_freq = static_cast<float>(cached_spectrum_frequencies.front());
-        const auto max_available_freq = static_cast<float>(cached_spectrum_frequencies.back());
-        const auto min_freq =
-            std::clamp(static_cast<float>(DbSpectrum::minimumFrequency()), min_available_freq, max_available_freq);
-        const auto max_freq =
-            std::clamp(static_cast<float>(DbSpectrum::maximumFrequency()), min_available_freq, max_available_freq);
+        const auto min_freq = std::clamp(static_cast<float>(DbSpectrum::minimumFrequency()), 1.0F, nyquist);
+        const auto max_freq = std::clamp(static_cast<float>(DbSpectrum::maximumFrequency()), 1.0F, nyquist);
 
         if (min_freq > (max_freq - 100.0F)) {
           return;
@@ -517,10 +496,13 @@ void EffectsBase::requestSpectrumData() {
 
         if (axis_settings_changed) {
           if (log_axis) {
-            cached_spectrum_x_axis = util::logspace(min_freq, max_freq, npoints);
+            cached_spectrum_x_axis = util::logspace<double>(min_freq, max_freq, npoints);
           } else {
-            cached_spectrum_x_axis = util::linspace(min_freq, max_freq, npoints);
+            cached_spectrum_x_axis = util::linspace<double>(min_freq, max_freq, npoints);
           }
+
+          cached_spectrum_band_edges = spectrum_dsp::band_edges(cached_spectrum_x_axis, log_axis);
+          cached_spectrum_levels.resize(cached_spectrum_x_axis.size());
 
           cached_spectrum_min_freq = min_freq;
           cached_spectrum_max_freq = max_freq;
@@ -528,30 +510,47 @@ void EffectsBase::requestSpectrumData() {
           cached_spectrum_log_axis = log_axis;
         }
 
-        if (spline == nullptr) {
-          // The spectrum plugin sends arrays that always have the same size. So we can do this only once.
-          spline = gsl_spline_alloc(gsl_interp_steffen, n_bands);
+        if (!spectrum->compute_band_levels(cached_spectrum_band_edges, cached_spectrum_levels)) {
+          return;
         }
 
-        gsl_spline_init(spline, cached_spectrum_frequencies.data(), list.data(), n_bands);
+        const double min_level = DbSpectrum::minimumLevel();
+        const double max_level = std::max(DbSpectrum::maximumLevel(), min_level + 1.0);
+        const double slope = DbSpectrum::slope();
 
-        // Reuse or resize magnitude cache
-        if (cached_spectrum_mag.size() != static_cast<int>(cached_spectrum_x_axis.size())) {
-          cached_spectrum_mag.resize(cached_spectrum_x_axis.size());
+        for (size_t n = 0; n < cached_spectrum_levels.size(); n++) {
+          // Display tilt in dB per octave around 1 kHz
+          cached_spectrum_levels[n] += slope * std::log2(cached_spectrum_x_axis[n] / 1000.0);
         }
 
-        for (size_t n = 0; n < cached_spectrum_x_axis.size(); n++) {
-          cached_spectrum_mag[n] = gsl_spline_eval(spline, cached_spectrum_x_axis[n], gsl_acc);
+        const auto now = std::chrono::steady_clock::now();
+        const double dt = last_spectrum_frame_time.has_value()
+                              ? std::chrono::duration<double>(now - *last_spectrum_frame_time).count()
+                              : 0.0;
+
+        last_spectrum_frame_time = now;
+
+        double range_min = min_level;
+        double range_max = max_level;
+
+        if (DbSpectrum::dynamicYScale()) {
+          spectrum_auto_range.update(cached_spectrum_levels, dt, min_level, max_level,
+                                     DbSpectrum::autoRangeMinimumSpan());
+
+          range_min = spectrum_auto_range.low();
+          range_max = spectrum_auto_range.high();
+        } else {
+          spectrum_auto_range.reset();
         }
 
-        // Build output without extra temporary allocations
-        QList<QPointF> output_data(cached_spectrum_mag.size());
+        QList<QPointF> output_data(static_cast<qsizetype>(cached_spectrum_levels.size()));
 
-        for (qsizetype n = 0; n < cached_spectrum_mag.size(); n++) {
-          output_data[n] = QPointF(cached_spectrum_x_axis[n], cached_spectrum_mag[n]);
+        for (size_t n = 0; n < cached_spectrum_levels.size(); n++) {
+          output_data[static_cast<qsizetype>(n)] =
+              QPointF(cached_spectrum_x_axis[n], std::clamp(cached_spectrum_levels[n], range_min, range_max));
         }
 
-        Q_EMIT newSpectrumData(output_data);
+        Q_EMIT newSpectrumData(output_data, range_min, range_max);
       },
       Qt::QueuedConnection);
 

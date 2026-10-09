@@ -533,18 +533,6 @@ KirigamiSettings.ConfigurationView {
                 }
 
                 EeSwitch {
-                    id: dynamicYScale
-
-                    label: i18n("Dynamic scale") // qmllint disable
-                    maximumLineCount: -1
-                    isChecked: DbSpectrum.dynamicYScale
-                    onCheckedChanged: {
-                        if (isChecked !== DbSpectrum.dynamicYScale)
-                            DbSpectrum.dynamicYScale = isChecked;
-                    }
-                }
-
-                EeSwitch {
                     id: logarithmicHorizontalAxis
 
                     label: i18n("Logarithmic frequency axis") // qmllint disable
@@ -637,6 +625,152 @@ KirigamiSettings.ConfigurationView {
                     unit: Units.hz
                     onValueModified: v => {
                         DbSpectrum.maximumFrequency = v;
+                    }
+                }
+            }
+
+            FormCard.FormHeader {
+                title: i18n("Level Range") // qmllint disable
+            }
+
+            FormCard.FormCard {
+                EeSwitch {
+                    label: i18n("Automatic") // qmllint disable
+                    subtitle: i18n("Follows the loudest and the quieter bands within the minimum and maximum.") // qmllint disable
+                    maximumLineCount: -1
+                    isChecked: DbSpectrum.dynamicYScale
+                    onCheckedChanged: {
+                        if (isChecked !== DbSpectrum.dynamicYScale)
+                            DbSpectrum.dynamicYScale = isChecked;
+                    }
+                }
+
+                EeSpinBox {
+                    label: i18n("Minimum span") // qmllint disable
+                    maximumLineCount: -1
+                    from: DbSpectrum.getMinValue("autoRangeMinimumSpan")
+                    to: DbSpectrum.getMaxValue("autoRangeMinimumSpan")
+                    value: DbSpectrum.autoRangeMinimumSpan
+                    decimals: 0
+                    stepSize: 1
+                    unit: Units.dB
+                    enabled: DbSpectrum.dynamicYScale
+                    onValueModified: v => {
+                        DbSpectrum.autoRangeMinimumSpan = v;
+                    }
+                }
+
+                EeSpinBox {
+                    label: i18n("Minimum") // qmllint disable
+                    maximumLineCount: -1
+                    from: DbSpectrum.getMinValue("minimumLevel")
+                    to: DbSpectrum.getMaxValue("minimumLevel")
+                    value: DbSpectrum.minimumLevel
+                    decimals: 0
+                    stepSize: 1
+                    unit: Units.dB
+                    onValueModified: v => {
+                        DbSpectrum.minimumLevel = v;
+                    }
+                }
+
+                EeSpinBox {
+                    label: i18n("Maximum") // qmllint disable
+                    maximumLineCount: -1
+                    from: DbSpectrum.getMinValue("maximumLevel")
+                    to: DbSpectrum.getMaxValue("maximumLevel")
+                    value: DbSpectrum.maximumLevel
+                    decimals: 0
+                    stepSize: 1
+                    unit: Units.dB
+                    onValueModified: v => {
+                        DbSpectrum.maximumLevel = v;
+                    }
+                }
+
+                EeSpinBox {
+                    label: i18n("Slope") // qmllint disable
+                    subtitle: i18n("Tilts the display around 1 kHz. The shown levels are no longer absolute.") // qmllint disable
+                    maximumLineCount: -1
+                    from: DbSpectrum.getMinValue("slope")
+                    to: DbSpectrum.getMaxValue("slope")
+                    value: DbSpectrum.slope
+                    decimals: 1
+                    stepSize: 0.5
+                    unit: Units.dBoct
+                    onValueModified: v => {
+                        DbSpectrum.slope = v;
+                    }
+                }
+            }
+
+            FormCard.FormHeader {
+                title: i18n("Analysis") // qmllint disable
+            }
+
+            FormCard.FormCard {
+                FormCard.FormComboBoxDelegate {
+                    text: i18n("FFT size") // qmllint disable
+                    displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                    currentIndex: DbSpectrum.fftSize
+                    editable: false
+                    model: ["1024", "2048", "4096", "8192", "16384"]
+                    onActivated: idx => {
+                        if (idx !== DbSpectrum.fftSize)
+                            DbSpectrum.fftSize = idx;
+                    }
+                }
+
+                FormCard.FormComboBoxDelegate {
+                    text: i18n("Zero padding") // qmllint disable
+                    description: i18n("Interpolates the spectrum. It does not increase the frequency resolution.") // qmllint disable
+                    displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                    currentIndex: DbSpectrum.zeroPadding
+                    editable: false
+                    model: ["1×", "2×", "4×", "8×"]
+                    onActivated: idx => {
+                        if (idx !== DbSpectrum.zeroPadding)
+                            DbSpectrum.zeroPadding = idx;
+                    }
+                }
+
+                FormCard.FormComboBoxDelegate {
+                    text: i18n("Window function") // qmllint disable
+                    displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                    currentIndex: DbSpectrum.windowFunction
+                    editable: false
+                    model: [i18n("Rectangular"), i18n("Hann"), i18n("Hamming"), i18n("Blackman"), i18n("Blackman-Harris"), i18n("Flat top")] // qmllint disable
+                    onActivated: idx => {
+                        if (idx !== DbSpectrum.windowFunction)
+                            DbSpectrum.windowFunction = idx;
+                    }
+                }
+
+                EeSpinBox {
+                    label: i18n("Attack") // qmllint disable
+                    maximumLineCount: -1
+                    from: DbSpectrum.getMinValue("attackTime")
+                    to: DbSpectrum.getMaxValue("attackTime")
+                    value: DbSpectrum.attackTime
+                    decimals: 0
+                    stepSize: 1
+                    unit: Units.ms
+                    onValueModified: v => {
+                        DbSpectrum.attackTime = v;
+                    }
+                }
+
+                EeSpinBox {
+                    label: i18n("Decay") // qmllint disable
+                    maximumLineCount: -1
+                    from: DbSpectrum.getMinValue("decayTime")
+                    to: DbSpectrum.getMaxValue("decayTime")
+                    value: DbSpectrum.decayTime
+                    decimals: 0
+                    stepSize: 10
+                    unit: Units.ms
+                    onValueModified: v => {
+                        DbSpectrum.decayTime = v;
                     }
                 }
             }

@@ -9,8 +9,14 @@
             <default>true</default>
         </entry>
         <entry name="dynamicYScale" type="Bool">
-            <label>Enable Dynamic Scaling for the Vertical Axis</label>
+            <label>Automatic Level Range</label>
             <default>true</default>
+        </entry>
+        <entry name="autoRangeMinimumSpan" type="Double">
+            <label>Minimum Span of the Automatic Level Range</label>
+            <min>6</min>
+            <max>100</max>
+            <default>30</default>
         </entry>
         <entry name="logarithmicHorizontalAxis" type="Bool">
             <label>Enable logarithmic scale for the Frequency Axis</label>
@@ -69,6 +75,69 @@
             <min>1</min>
             <max>240</max>
             <default>60</default>
+        </entry>
+        <entry name="fftSize" type="Enum">
+            <label>FFT Size</label>
+            <choices>
+                <choice name="s1024" />
+                <choice name="s2048" />
+                <choice name="s4096" />
+                <choice name="s8192" />
+                <choice name="s16384" />
+            </choices>
+            <default>3</default>
+        </entry>
+        <entry name="zeroPadding" type="Enum">
+            <label>Zero Padding Factor</label>
+            <choices>
+                <choice name="x1" />
+                <choice name="x2" />
+                <choice name="x4" />
+                <choice name="x8" />
+            </choices>
+            <default>0</default>
+        </entry>
+        <entry name="windowFunction" type="Enum">
+            <label>Window Function</label>
+            <choices>
+                <choice name="rectangular" />
+                <choice name="hann" />
+                <choice name="hamming" />
+                <choice name="blackman" />
+                <choice name="blackmanHarris" />
+                <choice name="flatTop" />
+            </choices>
+            <default>1</default>
+        </entry>
+        <entry name="attackTime" type="Int">
+            <label>Attack Time</label>
+            <min>0</min>
+            <max>2000</max>
+            <default>0</default>
+        </entry>
+        <entry name="decayTime" type="Int">
+            <label>Decay Time</label>
+            <min>0</min>
+            <max>5000</max>
+            <default>5</default>
+        </entry>
+        <entry name="minimumLevel" type="Double">
+            <label>Minimum Level</label>
+            <min>-200</min>
+            <max>-10</max>
+            <default>-90</default>
+        </entry>
+        <entry name="maximumLevel" type="Double">
+            <label>Maximum Level</label>
+            <min>-100</min>
+            <max>20</max>
+            <default>0</default>
+        </entry>
+        <entry name="slope" type="Double">
+            <label>Slope</label>
+            <min>-12</min>
+            <max>12</max>
+            <default>0</default>
         </entry>
     </group>
 </kcfg>
