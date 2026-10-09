@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-07 23:08+0000\n"
-"PO-Revision-Date: 2026-09-21 11:51+0000\n"
+"PO-Revision-Date: 2026-10-09 13:32+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ro/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
-"X-Generator: Weblate 2026.10.dev0\n"
+"X-Generator: Weblate 2026.10.1.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -2624,9 +2624,8 @@ msgid "Maximum"
 msgstr "Maximă"
 
 #: src/contents/ui/PreferencesSheet.qml:633
-#, fuzzy
 msgid "Level Range"
-msgstr "Gama de Sunet"
+msgstr "Interval nivel"
 
 #: src/contents/ui/PreferencesSheet.qml:638
 #: src/contents/ui/PreferencesSheet.qml:894
@@ -2637,59 +2636,60 @@ msgstr "Automat"
 msgid ""
 "Follows the loudest and the quieter bands within the minimum and maximum."
 msgstr ""
+"Urmărește formațiile cu cel mai tare și cu cel mai încet sunet, în limitele "
+"valorilor minime și maxime."
 
 #: src/contents/ui/PreferencesSheet.qml:649
-#, fuzzy
 msgid "Minimum span"
-msgstr "Cuantum minim"
+msgstr "Interval minim"
 
 #: src/contents/ui/PreferencesSheet.qml:693
 msgid ""
 "Tilts the display around 1 kHz. The shown levels are no longer absolute."
 msgstr ""
+"Înclină afișajul în jurul frecvenței de 1 kHz. Nivelurile afișate nu mai "
+"sunt absolute."
 
 #: src/contents/ui/PreferencesSheet.qml:708
 msgid "Analysis"
-msgstr ""
+msgstr "Analizare"
 
 #: src/contents/ui/PreferencesSheet.qml:725
 msgid "Zero padding"
-msgstr ""
+msgstr "Completare cu zerouri"
 
 #: src/contents/ui/PreferencesSheet.qml:726
 msgid ""
 "Interpolates the spectrum. It does not increase the frequency resolution."
-msgstr ""
+msgstr "Interpolează spectrul. Nu mărește rezoluția de frecvență."
 
 #: src/contents/ui/PreferencesSheet.qml:738
-#, fuzzy
 msgid "Window function"
-msgstr "Reducere câștig"
+msgstr "Funcție de fereastră"
 
 #: src/contents/ui/PreferencesSheet.qml:742
 msgid "Rectangular"
-msgstr ""
+msgstr "Rectangulară"
 
 #: src/contents/ui/PreferencesSheet.qml:742
 msgid "Hann"
-msgstr ""
+msgstr "Hann"
 
 #: src/contents/ui/PreferencesSheet.qml:742
 msgid "Hamming"
-msgstr ""
+msgstr "Hamming"
 
 #: src/contents/ui/PreferencesSheet.qml:742
 msgid "Blackman"
-msgstr ""
+msgstr "Blackman"
 
 #: src/contents/ui/PreferencesSheet.qml:742
 msgid "Blackman-Harris"
-msgstr ""
+msgstr "Blackman-Harris"
 
 #: src/contents/ui/PreferencesSheet.qml:742
-#, fuzzy
 msgid "Flat top"
-msgstr "Plat"
+msgstr "Vârf plat"
 
 #: src/contents/ui/PreferencesSheet.qml:786
 msgid "Database autosave interval"

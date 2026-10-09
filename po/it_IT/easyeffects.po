@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-07 23:08+0000\n"
-"PO-Revision-Date: 2026-10-08 11:51+0000\n"
+"PO-Revision-Date: 2026-10-09 13:32+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -2603,12 +2603,12 @@ msgstr "Gamma delle Frequenze"
 #: src/contents/ui/PreferencesSheet.qml:602
 #: src/contents/ui/PreferencesSheet.qml:664
 msgid "Minimum"
-msgstr "Minima"
+msgstr "Minimo"
 
 #: src/contents/ui/PreferencesSheet.qml:618
 #: src/contents/ui/PreferencesSheet.qml:678
 msgid "Maximum"
-msgstr "Massima"
+msgstr "Massimo"
 
 #: src/contents/ui/PreferencesSheet.qml:633
 msgid "Level Range"
