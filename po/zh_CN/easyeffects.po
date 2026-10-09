@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-07 23:08+0000\n"
-"PO-Revision-Date: 2026-09-20 04:51+0000\n"
+"PO-Revision-Date: 2026-10-09 13:32+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hans/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2026.10.dev0\n"
+"X-Generator: Weblate 2026.10.1.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -1853,7 +1853,7 @@ msgstr "ISO 226:2003"
 
 #: src/contents/ui/Loudness.qml:101 src/contents/ui/PreferencesSheet.qml:713
 msgid "FFT size"
-msgstr "快速傅里叶变换点数"
+msgstr "FFT 点数"
 
 #: src/contents/ui/Loudness.qml:115
 msgid "IIR approximation"
@@ -2527,7 +2527,7 @@ msgstr "对数频率轴"
 
 #: src/contents/ui/PreferencesSheet.qml:550
 msgid "Points"
-msgstr "数量"
+msgstr "点数"
 
 #: src/contents/ui/PreferencesSheet.qml:565
 msgid "Height"
@@ -2560,9 +2560,8 @@ msgid "Maximum"
 msgstr "最高"
 
 #: src/contents/ui/PreferencesSheet.qml:633
-#, fuzzy
 msgid "Level Range"
-msgstr "电平表"
+msgstr "电平范围"
 
 #: src/contents/ui/PreferencesSheet.qml:638
 #: src/contents/ui/PreferencesSheet.qml:894
@@ -2572,60 +2571,57 @@ msgstr "自动"
 #: src/contents/ui/PreferencesSheet.qml:639
 msgid ""
 "Follows the loudest and the quieter bands within the minimum and maximum."
-msgstr ""
+msgstr "将音量最高和最低的频带纳入范围内。"
 
 #: src/contents/ui/PreferencesSheet.qml:649
-#, fuzzy
 msgid "Minimum span"
-msgstr "最小音频帧 (Quantum)"
+msgstr "最小跨度"
 
 #: src/contents/ui/PreferencesSheet.qml:693
 msgid ""
 "Tilts the display around 1 kHz. The shown levels are no longer absolute."
-msgstr ""
+msgstr "在 1 kHz 附近倾斜图像。显示电平不再绝对。"
 
 #: src/contents/ui/PreferencesSheet.qml:708
 msgid "Analysis"
-msgstr ""
+msgstr "分析"
 
 #: src/contents/ui/PreferencesSheet.qml:725
 msgid "Zero padding"
-msgstr ""
+msgstr "零填充"
 
 #: src/contents/ui/PreferencesSheet.qml:726
 msgid ""
 "Interpolates the spectrum. It does not increase the frequency resolution."
-msgstr ""
+msgstr "对频谱插值。不提高频率分辨率。"
 
 #: src/contents/ui/PreferencesSheet.qml:738
-#, fuzzy
 msgid "Window function"
-msgstr "增益衰减"
+msgstr "窗函数"
 
 #: src/contents/ui/PreferencesSheet.qml:742
 msgid "Rectangular"
-msgstr ""
+msgstr "矩形窗"
 
 #: src/contents/ui/PreferencesSheet.qml:742
 msgid "Hann"
-msgstr ""
+msgstr "Hann 窗"
 
 #: src/contents/ui/PreferencesSheet.qml:742
 msgid "Hamming"
-msgstr ""
+msgstr "Hamming 窗"
 
 #: src/contents/ui/PreferencesSheet.qml:742
 msgid "Blackman"
-msgstr ""
+msgstr "Blackman 窗"
 
 #: src/contents/ui/PreferencesSheet.qml:742
 msgid "Blackman-Harris"
-msgstr ""
+msgstr "Blackman-Harris 窗"
 
 #: src/contents/ui/PreferencesSheet.qml:742
-#, fuzzy
 msgid "Flat top"
-msgstr "平坦"
+msgstr "平顶窗"
 
 #: src/contents/ui/PreferencesSheet.qml:786
 msgid "Database autosave interval"
