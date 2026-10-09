@@ -31,7 +31,6 @@ Kirigami.AbstractCard {
     required property bool connected
     required property bool isBlocklisted
     required property bool mute
-    required property int id
     required property int serial
     required property int nVolumeChannels
     required property real volume
@@ -115,11 +114,11 @@ Kirigami.AbstractCard {
                     onCheckedChanged: {
                         if (checked === true && !root.isBlocklisted) {
                             if (root.mediaClass === "Stream/Output/Audio")
-                                PwManager.connectStreamOutput(root.id);
+                                PwManager.connectStreamOutput(root.model.id);
                             else if (root.mediaClass === "Stream/Input/Audio")
-                                PwManager.connectStreamInput(root.id);
+                                PwManager.connectStreamInput(root.model.id);
                         } else if (checked === false || root.isBlocklisted) {
-                            PwManager.disconnectStream(root.id);
+                            PwManager.disconnectStream(root.model.id);
                         }
                     }
                 }
