@@ -72,7 +72,7 @@ class EffectsBase : public QObject {
 
   Q_INVOKABLE QVariant getPluginInstance(const QString& pluginName);
 
-  Q_INVOKABLE [[nodiscard]] uint getPipeLineRate() const;
+  Q_INVOKABLE [[nodiscard]] double getPipeLineRate() const;
 
   Q_INVOKABLE [[nodiscard]] uint getPipeLineLatency();
 
