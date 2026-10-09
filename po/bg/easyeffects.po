@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-10-07 23:08+0000\n"
+"POT-Creation-Date: 2026-10-09 22:56+0000\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Ivan Pekov <ivan@mrivanplays.com>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/easyeffects/"
@@ -161,7 +161,7 @@ msgstr ""
 #: src/contents/ui/Autogain.qml:69 src/contents/ui/BassEnhancer.qml:105
 #: src/contents/ui/BassLoudness.qml:59 src/contents/ui/Crossfeed.qml:74
 #: src/contents/ui/CrosstalkCanceller.qml:59
-#: src/contents/ui/DeepFilterNet.qml:94 src/contents/ui/Exciter.qml:106
+#: src/contents/ui/DeepFilterNet.qml:103 src/contents/ui/Exciter.qml:106
 #: src/contents/ui/Filter.qml:59 src/contents/ui/Loudness.qml:59
 #: src/contents/ui/Maximizer.qml:60 src/contents/ui/Pitch.qml:60
 #: src/contents/ui/Reverb.qml:59 src/contents/ui/Speex.qml:59
@@ -245,14 +245,13 @@ msgstr "Изходен gain"
 #: src/contents/ui/BassEnhancer.qml:205 src/contents/ui/BassLoudness.qml:126
 #: src/contents/ui/Compressor.qml:873 src/contents/ui/Convolver.qml:520
 #: src/contents/ui/Crossfeed.qml:150 src/contents/ui/Crusher.qml:236
-#: src/contents/ui/Crystalizer.qml:155 src/contents/ui/DeepFilterNet.qml:197
-#: src/contents/ui/Deesser.qml:319 src/contents/ui/Delay.qml:376
-#: src/contents/ui/EchoCanceller.qml:158 src/contents/ui/Equalizer.qml:315
-#: src/contents/ui/Exciter.qml:210 src/contents/ui/Expander.qml:823
-#: src/contents/ui/Filter.qml:234 src/contents/ui/Gate.qml:952
-#: src/contents/ui/LevelMeter.qml:215 src/contents/ui/Limiter.qml:607
-#: src/contents/ui/Loudness.qml:175 src/contents/ui/Maximizer.qml:122
-#: src/contents/ui/MidSideEqualizer.qml:315
+#: src/contents/ui/Crystalizer.qml:155 src/contents/ui/Deesser.qml:319
+#: src/contents/ui/Delay.qml:376 src/contents/ui/EchoCanceller.qml:158
+#: src/contents/ui/Equalizer.qml:315 src/contents/ui/Exciter.qml:210
+#: src/contents/ui/Expander.qml:823 src/contents/ui/Filter.qml:234
+#: src/contents/ui/Gate.qml:952 src/contents/ui/LevelMeter.qml:215
+#: src/contents/ui/Limiter.qml:607 src/contents/ui/Loudness.qml:175
+#: src/contents/ui/Maximizer.qml:122 src/contents/ui/MidSideEqualizer.qml:315
 #: src/contents/ui/MultibandCompressor.qml:965
 #: src/contents/ui/MultibandGate.qml:938 src/contents/ui/Pitch.qml:268
 #: src/contents/ui/RNNoise.qml:73 src/contents/ui/RNNoise.qml:84
@@ -263,7 +262,7 @@ msgstr "Изходен gain"
 msgid "Using %1"
 msgstr "Използвайки"
 
-#: src/contents/ui/Autogain.qml:250 src/contents/ui/DeepFilterNet.qml:214
+#: src/contents/ui/Autogain.qml:250 src/contents/ui/DeepFilterNet.qml:224
 #: src/contents/ui/LevelMeter.qml:232 src/contents/ui/Pitch.qml:285
 msgid "Reset history"
 msgstr ""
@@ -278,7 +277,7 @@ msgid "Force silence when the level is below the silence threshold"
 msgstr ""
 
 #: src/contents/ui/Autogain.qml:270 src/contents/ui/Autotune.qml:436
-#: src/contents/ui/DeepFilterNet.qml:222 src/contents/ui/LevelMeter.qml:240
+#: src/contents/ui/DeepFilterNet.qml:232 src/contents/ui/LevelMeter.qml:240
 #: src/contents/ui/Pitch.qml:313
 #, fuzzy
 msgid "Reset settings"
@@ -434,7 +433,7 @@ msgid "Reset"
 msgstr "Нулиране"
 
 #: src/contents/ui/BassLoudness.qml:83 src/contents/ui/Compressor.qml:478
-#: src/contents/ui/EeInputOutputGain.qml:144 src/contents/ui/Expander.qml:438
+#: src/contents/ui/EeInputOutputGain.qml:145 src/contents/ui/Expander.qml:438
 #: src/contents/ui/Gate.qml:453 src/contents/ui/Main.qml:372
 #: src/contents/ui/StereoTools.qml:268
 msgid "Output"
@@ -1170,27 +1169,31 @@ msgstr ""
 msgid "Bypass"
 msgstr ""
 
-#: src/contents/ui/DeepFilterNet.qml:52
+#: src/contents/ui/DeepFilterNet.qml:54
+msgid "The selected model is not installed. Audio passes through unprocessed."
+msgstr ""
+
+#: src/contents/ui/DeepFilterNet.qml:59
 msgid "Attenuation limit"
 msgstr ""
 
-#: src/contents/ui/DeepFilterNet.qml:106
+#: src/contents/ui/DeepFilterNet.qml:115
 msgid "Minimum processing threshold"
 msgstr ""
 
-#: src/contents/ui/DeepFilterNet.qml:122
+#: src/contents/ui/DeepFilterNet.qml:131
 msgid "Maximum ERB processing threshold"
 msgstr ""
 
-#: src/contents/ui/DeepFilterNet.qml:138
+#: src/contents/ui/DeepFilterNet.qml:147
 msgid "Maximum DF processing threshold"
 msgstr ""
 
-#: src/contents/ui/DeepFilterNet.qml:154
+#: src/contents/ui/DeepFilterNet.qml:163
 msgid "Minimum processing buffer"
 msgstr ""
 
-#: src/contents/ui/DeepFilterNet.qml:170
+#: src/contents/ui/DeepFilterNet.qml:179
 msgid "Post filter Beta"
 msgstr ""
 
@@ -1323,23 +1326,23 @@ msgstr "Предварително задаване"
 msgid "Remove this effect"
 msgstr "Предварително задаване"
 
-#: src/contents/ui/DelegateStreamsList.qml:96
+#: src/contents/ui/DelegateStreamsList.qml:95
 #, fuzzy
 msgid "channels"
 msgstr "Ляв канал"
 
-#: src/contents/ui/DelegateStreamsList.qml:107
+#: src/contents/ui/DelegateStreamsList.qml:106
 #: src/contents/ui/EchoCanceller.qml:64 src/contents/ui/EchoCanceller.qml:97
 #: src/contents/ui/EchoCanceller.qml:124 src/contents/ui/Gate.qml:175
 #: src/contents/ui/RNNoise.qml:115
 msgid "Enable"
 msgstr "Активирай"
 
-#: src/contents/ui/DelegateStreamsList.qml:128
+#: src/contents/ui/DelegateStreamsList.qml:127
 msgid "Exclude"
 msgstr "Премахни"
 
-#: src/contents/ui/DelegateStreamsList.qml:130
+#: src/contents/ui/DelegateStreamsList.qml:129
 #, fuzzy
 msgid "Add %1 to excluded applications"
 msgstr "Добави към изключени приложения"
@@ -1402,7 +1405,7 @@ msgstr ""
 msgid "Input and output gain controls with level meters"
 msgstr ""
 
-#: src/contents/ui/EeInputOutputGain.qml:131 src/contents/ui/Main.qml:387
+#: src/contents/ui/EeInputOutputGain.qml:132 src/contents/ui/Main.qml:387
 #: src/contents/ui/StereoTools.qml:59
 msgid "Input"
 msgstr "Вход"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-10-07 23:08+0000\n"
+"POT-Creation-Date: 2026-10-09 22:56+0000\n"
 "PO-Revision-Date: 2025-11-23 11:51+0000\n"
 "Last-Translator: Suu <suunya21@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
@@ -172,7 +172,7 @@ msgstr "概要"
 #: src/contents/ui/Autogain.qml:69 src/contents/ui/BassEnhancer.qml:105
 #: src/contents/ui/BassLoudness.qml:59 src/contents/ui/Crossfeed.qml:74
 #: src/contents/ui/CrosstalkCanceller.qml:59
-#: src/contents/ui/DeepFilterNet.qml:94 src/contents/ui/Exciter.qml:106
+#: src/contents/ui/DeepFilterNet.qml:103 src/contents/ui/Exciter.qml:106
 #: src/contents/ui/Filter.qml:59 src/contents/ui/Loudness.qml:59
 #: src/contents/ui/Maximizer.qml:60 src/contents/ui/Pitch.qml:60
 #: src/contents/ui/Reverb.qml:59 src/contents/ui/Speex.qml:59
@@ -250,14 +250,13 @@ msgstr "出力ゲイン"
 #: src/contents/ui/BassEnhancer.qml:205 src/contents/ui/BassLoudness.qml:126
 #: src/contents/ui/Compressor.qml:873 src/contents/ui/Convolver.qml:520
 #: src/contents/ui/Crossfeed.qml:150 src/contents/ui/Crusher.qml:236
-#: src/contents/ui/Crystalizer.qml:155 src/contents/ui/DeepFilterNet.qml:197
-#: src/contents/ui/Deesser.qml:319 src/contents/ui/Delay.qml:376
-#: src/contents/ui/EchoCanceller.qml:158 src/contents/ui/Equalizer.qml:315
-#: src/contents/ui/Exciter.qml:210 src/contents/ui/Expander.qml:823
-#: src/contents/ui/Filter.qml:234 src/contents/ui/Gate.qml:952
-#: src/contents/ui/LevelMeter.qml:215 src/contents/ui/Limiter.qml:607
-#: src/contents/ui/Loudness.qml:175 src/contents/ui/Maximizer.qml:122
-#: src/contents/ui/MidSideEqualizer.qml:315
+#: src/contents/ui/Crystalizer.qml:155 src/contents/ui/Deesser.qml:319
+#: src/contents/ui/Delay.qml:376 src/contents/ui/EchoCanceller.qml:158
+#: src/contents/ui/Equalizer.qml:315 src/contents/ui/Exciter.qml:210
+#: src/contents/ui/Expander.qml:823 src/contents/ui/Filter.qml:234
+#: src/contents/ui/Gate.qml:952 src/contents/ui/LevelMeter.qml:215
+#: src/contents/ui/Limiter.qml:607 src/contents/ui/Loudness.qml:175
+#: src/contents/ui/Maximizer.qml:122 src/contents/ui/MidSideEqualizer.qml:315
 #: src/contents/ui/MultibandCompressor.qml:965
 #: src/contents/ui/MultibandGate.qml:938 src/contents/ui/Pitch.qml:268
 #: src/contents/ui/RNNoise.qml:73 src/contents/ui/RNNoise.qml:84
@@ -267,7 +266,7 @@ msgstr "出力ゲイン"
 msgid "Using %1"
 msgstr "%1 を使用中"
 
-#: src/contents/ui/Autogain.qml:250 src/contents/ui/DeepFilterNet.qml:214
+#: src/contents/ui/Autogain.qml:250 src/contents/ui/DeepFilterNet.qml:224
 #: src/contents/ui/LevelMeter.qml:232 src/contents/ui/Pitch.qml:285
 msgid "Reset history"
 msgstr "履歴をリセット"
@@ -281,7 +280,7 @@ msgid "Force silence when the level is below the silence threshold"
 msgstr "レベルがしきい値を下回った場合に強制的に無音化します"
 
 #: src/contents/ui/Autogain.qml:270 src/contents/ui/Autotune.qml:436
-#: src/contents/ui/DeepFilterNet.qml:222 src/contents/ui/LevelMeter.qml:240
+#: src/contents/ui/DeepFilterNet.qml:232 src/contents/ui/LevelMeter.qml:240
 #: src/contents/ui/Pitch.qml:313
 msgid "Reset settings"
 msgstr "設定をリセット"
@@ -438,7 +437,7 @@ msgid "Reset"
 msgstr "リセット"
 
 #: src/contents/ui/BassLoudness.qml:83 src/contents/ui/Compressor.qml:478
-#: src/contents/ui/EeInputOutputGain.qml:144 src/contents/ui/Expander.qml:438
+#: src/contents/ui/EeInputOutputGain.qml:145 src/contents/ui/Expander.qml:438
 #: src/contents/ui/Gate.qml:453 src/contents/ui/Main.qml:372
 #: src/contents/ui/StereoTools.qml:268
 msgid "Output"
@@ -1155,27 +1154,31 @@ msgstr "ミュート"
 msgid "Bypass"
 msgstr "バイパス"
 
-#: src/contents/ui/DeepFilterNet.qml:52
+#: src/contents/ui/DeepFilterNet.qml:54
+msgid "The selected model is not installed. Audio passes through unprocessed."
+msgstr ""
+
+#: src/contents/ui/DeepFilterNet.qml:59
 msgid "Attenuation limit"
 msgstr "減衰制限"
 
-#: src/contents/ui/DeepFilterNet.qml:106
+#: src/contents/ui/DeepFilterNet.qml:115
 msgid "Minimum processing threshold"
 msgstr "最小処理しきい値"
 
-#: src/contents/ui/DeepFilterNet.qml:122
+#: src/contents/ui/DeepFilterNet.qml:131
 msgid "Maximum ERB processing threshold"
 msgstr "最大 ERB 処理しきい値"
 
-#: src/contents/ui/DeepFilterNet.qml:138
+#: src/contents/ui/DeepFilterNet.qml:147
 msgid "Maximum DF processing threshold"
 msgstr "最大 DF 処理しきい値"
 
-#: src/contents/ui/DeepFilterNet.qml:154
+#: src/contents/ui/DeepFilterNet.qml:163
 msgid "Minimum processing buffer"
 msgstr "最小処理バッファ"
 
-#: src/contents/ui/DeepFilterNet.qml:170
+#: src/contents/ui/DeepFilterNet.qml:179
 msgid "Post filter Beta"
 msgstr "ポストフィルターベータ"
 
@@ -1304,22 +1307,22 @@ msgstr "このエフェクトの有効化/無効化"
 msgid "Remove this effect"
 msgstr "このエフェクトを削除"
 
-#: src/contents/ui/DelegateStreamsList.qml:96
+#: src/contents/ui/DelegateStreamsList.qml:95
 msgid "channels"
 msgstr "チャンネル"
 
-#: src/contents/ui/DelegateStreamsList.qml:107
+#: src/contents/ui/DelegateStreamsList.qml:106
 #: src/contents/ui/EchoCanceller.qml:64 src/contents/ui/EchoCanceller.qml:97
 #: src/contents/ui/EchoCanceller.qml:124 src/contents/ui/Gate.qml:175
 #: src/contents/ui/RNNoise.qml:115
 msgid "Enable"
 msgstr "有効"
 
-#: src/contents/ui/DelegateStreamsList.qml:128
+#: src/contents/ui/DelegateStreamsList.qml:127
 msgid "Exclude"
 msgstr "除外"
 
-#: src/contents/ui/DelegateStreamsList.qml:130
+#: src/contents/ui/DelegateStreamsList.qml:129
 msgid "Add %1 to excluded applications"
 msgstr "%1 を除外アプリケーションに追加"
 
@@ -1379,7 +1382,7 @@ msgstr "オーディオレベル制御"
 msgid "Input and output gain controls with level meters"
 msgstr "レベルメーター付き入出力ゲイン制御"
 
-#: src/contents/ui/EeInputOutputGain.qml:131 src/contents/ui/Main.qml:387
+#: src/contents/ui/EeInputOutputGain.qml:132 src/contents/ui/Main.qml:387
 #: src/contents/ui/StereoTools.qml:59
 msgid "Input"
 msgstr "入力"
