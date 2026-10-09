@@ -47,6 +47,13 @@ Kirigami.ScrollablePage {
     }
 
     ColumnLayout {
+        Kirigami.InlineMessage {
+            Layout.fillWidth: true
+            type: Kirigami.MessageType.Warning
+            visible: deepfilternetPage.pluginBackend && (deepfilternetPage.pluginDB.model === 1 ? !deepfilternetPage.pluginBackend.dpdfnetInstalled : !deepfilternetPage.pluginBackend.deepFilterNetInstalled)
+            text: i18n("The selected model is not installed. Audio passes through unprocessed.") // qmllint disable
+        }
+
         Controls.Label {
             Layout.alignment: Qt.AlignHCenter
             text: i18n("Attenuation limit") // qmllint disable
@@ -87,6 +94,8 @@ Kirigami.ScrollablePage {
             Kirigami.Card {
                 id: cardControls
 
+                // these controls only exist in DeepFilterNet
+                visible: deepfilternetPage.pluginDB.model === 0
                 leftPadding: 0
                 rightPadding: 0
 
@@ -193,15 +202,16 @@ Kirigami.ScrollablePage {
     header: inputOutputLevels
 
     footer: RowLayout {
-        Controls.Label {
-            text: i18n("Using %1", `<strong>${PluginsPackage.deepfilternet}</strong>`) // qmllint disable
-            textFormat: Text.RichText
-            horizontalAlignment: Qt.AlignLeft
-            verticalAlignment: Qt.AlignVCenter
-            Layout.fillWidth: false
+        Controls.ComboBox {
+            id: modelCombo
+
             Layout.leftMargin: Kirigami.Units.mediumSpacing * 2
             Layout.rightMargin: Kirigami.Units.largeSpacing * 8
-            color: Kirigami.Theme.disabledTextColor
+            currentIndex: deepfilternetPage.pluginDB.model
+            model: deepfilternetPage.pluginDB.modelLabels
+            onActivated: idx => {
+                deepfilternetPage.pluginDB.model = idx;
+            }
         }
 
         Kirigami.ActionToolBar {

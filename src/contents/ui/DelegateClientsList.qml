@@ -27,7 +27,7 @@ Controls.ItemDelegate {
     id: root
 
     required property int index
-    required property int id
+    required property var model
     required property int serial
     required property string name
     required property string access
@@ -58,7 +58,7 @@ Controls.ItemDelegate {
             }
 
             Controls.Label {
-                text: i18n("(id: %1)", root.id)
+                text: i18n("(id: %1)", root.model.id)
                 opacity: 0.8
             }
         }

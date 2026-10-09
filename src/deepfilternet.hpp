@@ -38,6 +38,9 @@ class DeepFilterNet : public PluginBase {
   QML_NAMED_ELEMENT(BackendDeepFilterNet)
   QML_UNCREATABLE("Use the c++ instance")
 
+  Q_PROPERTY(bool deepFilterNetInstalled MEMBER deepFilterNetInstalled CONSTANT)
+  Q_PROPERTY(bool dpdfnetInstalled MEMBER dpdfnetInstalled CONSTANT)
+
  public:
   DeepFilterNet(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id);
   DeepFilterNet(const DeepFilterNet&) = delete;
@@ -73,6 +76,13 @@ class DeepFilterNet : public PluginBase {
 
   std::unique_ptr<ladspa::LadspaWrapper> ladspa_wrapper;
 
+  // DPDFNet is mono only, so stereo runs one instance per channel
+  std::unique_ptr<ladspa::LadspaWrapper> dpdfnet_l, dpdfnet_r;
+
+  bool deepFilterNetInstalled = false;
+  bool dpdfnetInstalled = false;
+  bool use_dpdfnet = false;
+
   bool ready = false;
   bool resample = false;
   bool resampler_ready = true;
@@ -82,4 +92,9 @@ class DeepFilterNet : public PluginBase {
 
   std::vector<float> resampled_outL, resampled_outR;
   std::vector<float> carryover_l, carryover_r;
+
+  void run_model(std::span<const float> left_in,
+                 std::span<const float> right_in,
+                 std::span<float> left_out,
+                 std::span<float> right_out);
 };

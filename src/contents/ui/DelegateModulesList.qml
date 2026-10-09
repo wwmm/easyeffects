@@ -27,7 +27,7 @@ Controls.ItemDelegate {
     id: root
 
     required property int index
-    required property int id
+    required property var model
     required property int serial
     required property string name
     required property string version
@@ -58,7 +58,7 @@ Controls.ItemDelegate {
             }
 
             Controls.Label {
-                text: i18n("(id: %1, version: %2)", root.id, root.version || i18nc("@info:placeholder", "Not set"))
+                text: i18n("(id: %1, version: %2)", root.model.id, root.version || i18nc("@info:placeholder", "Not set"))
                 opacity: 0.8
             }
         }
