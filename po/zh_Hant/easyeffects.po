@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-07 23:08+0000\n"
-"PO-Revision-Date: 2026-09-23 03:51+0000\n"
+"PO-Revision-Date: 2026-10-09 13:32+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hant/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2026.10.dev0\n"
+"X-Generator: Weblate 2026.10.1.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -2561,9 +2561,8 @@ msgid "Maximum"
 msgstr "最大"
 
 #: src/contents/ui/PreferencesSheet.qml:633
-#, fuzzy
 msgid "Level Range"
-msgstr "等級量表"
+msgstr "等級範圍"
 
 #: src/contents/ui/PreferencesSheet.qml:638
 #: src/contents/ui/PreferencesSheet.qml:894
