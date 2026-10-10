@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-09 22:56+0000\n"
-"PO-Revision-Date: 2026-10-09 13:32+0000\n"
+"PO-Revision-Date: 2026-10-10 17:51+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -1136,6 +1136,8 @@ msgstr "Bypass"
 #: src/contents/ui/DeepFilterNet.qml:54
 msgid "The selected model is not installed. Audio passes through unprocessed."
 msgstr ""
+"Il modello selezionato non è installato. Il flusso audio non viene "
+"processato."
 
 #: src/contents/ui/DeepFilterNet.qml:59
 msgid "Attenuation limit"
