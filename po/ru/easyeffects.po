@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-09 22:56+0000\n"
-"PO-Revision-Date: 2026-10-08 11:51+0000\n"
+"PO-Revision-Date: 2026-10-10 17:51+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -1151,7 +1151,7 @@ msgstr "Обход"
 
 #: src/contents/ui/DeepFilterNet.qml:54
 msgid "The selected model is not installed. Audio passes through unprocessed."
-msgstr ""
+msgstr "Выбранная модель не установлена. Звук проходит без обработки."
 
 #: src/contents/ui/DeepFilterNet.qml:59
 msgid "Attenuation limit"

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-09 22:56+0000\n"
-"PO-Revision-Date: 2026-10-09 13:32+0000\n"
+"PO-Revision-Date: 2026-10-10 17:51+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ro/>\n"
@@ -1136,6 +1136,7 @@ msgstr "Derivare"
 #: src/contents/ui/DeepFilterNet.qml:54
 msgid "The selected model is not installed. Audio passes through unprocessed."
 msgstr ""
+"Modelul selectat nu este instalat. Sunetul este transmis fără a fi procesat."
 
 #: src/contents/ui/DeepFilterNet.qml:59
 msgid "Attenuation limit"
