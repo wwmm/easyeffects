@@ -67,13 +67,15 @@ class ClientManager : public QObject {
 
   models::Clients& model_clients;
 
-  const struct pw_proxy_events client_proxy_events = {.version = 0,
-                                                      .destroy = on_destroy_client_proxy,
-                                                      .bound = nullptr,
-                                                      .removed = on_removed_proxy,
-                                                      .done = nullptr,
-                                                      .error = nullptr,
-                                                      .bound_props = nullptr};
+  const struct pw_proxy_events client_proxy_events = {
+      .version = 0,
+      .destroy = on_destroy_client_proxy,
+      .bound = nullptr,
+      .removed = on_removed_proxy,
+      .done = nullptr,
+      .error = nullptr,
+      .bound_props = nullptr,
+  };
 
   const struct pw_client_events client_events = {.version = 0, .info = on_client_info, .permissions = nullptr};
 

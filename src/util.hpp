@@ -44,7 +44,7 @@ constexpr double minimum_db_d_level = -100.0;
 constexpr float minimum_linear_level = 0.00001F;
 constexpr double minimum_linear_d_level = 0.00001;
 
-using source_location = std::source_location;
+using std::source_location;
 
 void debug(const std::string& s, source_location location = source_location::current());
 void fatal(const std::string& s, source_location location = source_location::current());

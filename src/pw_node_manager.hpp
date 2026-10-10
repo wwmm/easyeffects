@@ -106,17 +106,25 @@ class NodeManager : public QObject {
 
   const struct pw_node_events node_events = {.version = 0, .info = onNodeInfo, .param = onNodeParam};
 
-  const struct pw_proxy_events node_proxy_events = {.version = 0,
-                                                    .destroy = pw::NodeManager::onDestroyNodeProxy,
-                                                    .bound = nullptr,
-                                                    .removed = pw::NodeManager::onRemovedNodeProxy,
-                                                    .done = nullptr,
-                                                    .error = nullptr,
-                                                    .bound_props = nullptr};
+  const struct pw_proxy_events node_proxy_events = {
+      .version = 0,
+      .destroy = pw::NodeManager::onDestroyNodeProxy,
+      .bound = nullptr,
+      .removed = pw::NodeManager::onRemovedNodeProxy,
+      .done = nullptr,
+      .error = nullptr,
+      .bound_props = nullptr,
+  };
 
-  constexpr static auto blocklist_node_name =
-      std::to_array({"Easy Effects", "EasyEffects", "easyeffects", "pwvucontrol-peak-detect", "speech-dispatcher",
-                     "speech-dispatcher-dummy", "speech-dispatcher-espeak-ng"});
+  constexpr static auto blocklist_node_name = std::to_array({
+      "Easy Effects",
+      "EasyEffects",
+      "easyeffects",
+      "pwvucontrol-peak-detect",
+      "speech-dispatcher",
+      "speech-dispatcher-dummy",
+      "speech-dispatcher-espeak-ng",
+  });
 
   std::array<std::string, 2U> blocklist_app_id = {"org.PulseAudio.pavucontrol", "org.kde.plasma-pa"};
 

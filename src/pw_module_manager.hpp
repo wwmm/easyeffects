@@ -68,13 +68,15 @@ class ModuleManager : public QObject {
 
   models::Modules& model_modules;
 
-  const struct pw_proxy_events module_proxy_events = {.version = 0,
-                                                      .destroy = on_destroy_module_proxy,
-                                                      .bound = nullptr,
-                                                      .removed = on_removed_proxy,
-                                                      .done = nullptr,
-                                                      .error = nullptr,
-                                                      .bound_props = nullptr};
+  const struct pw_proxy_events module_proxy_events = {
+      .version = 0,
+      .destroy = on_destroy_module_proxy,
+      .bound = nullptr,
+      .removed = on_removed_proxy,
+      .done = nullptr,
+      .error = nullptr,
+      .bound_props = nullptr,
+  };
 
   const struct pw_module_events module_events = {
       .version = 0,

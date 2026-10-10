@@ -115,7 +115,7 @@ class Nodes : public QAbstractListModel {
     Volume,
     IsBlocklisted,
     DeviceRouteName,
-    DeviceRouteDescription
+    DeviceRouteDescription,
   };
   Q_ENUM(Roles)
 
@@ -384,11 +384,12 @@ class Nodes : public QAbstractListModel {
   QSortFilterProxyModel* proxy_sink_devices = nullptr;
   QSortFilterProxyModel* proxy_source_devices = nullptr;
 
-  constexpr static auto icon_map =
-      std::to_array<std::pair<const char*, const char*>>({{"chromium-browser", "chromium"},
-                                                          {"firefox", "firefox"},
-                                                          {"nightly", "firefox-nightly"},
-                                                          {"obs", "com.obsproject.Studio"}});
+  constexpr static auto icon_map = std::to_array<std::pair<const char*, const char*>>({
+      {"chromium-browser", "chromium"},
+      {"firefox", "firefox"},
+      {"nightly", "firefox-nightly"},
+      {"obs", "com.obsproject.Studio"},
+  });
 
   static auto node_state_to_qstring(const pw_node_state& state) -> QString;
 

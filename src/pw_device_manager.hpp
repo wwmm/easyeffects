@@ -76,13 +76,15 @@ class DeviceManager : public QObject {
 
   std::vector<DeviceInfo>& list_devices;
 
-  const struct pw_proxy_events device_proxy_events = {.version = 0,
-                                                      .destroy = on_destroy_device_proxy,
-                                                      .bound = nullptr,
-                                                      .removed = on_removed_proxy,
-                                                      .done = nullptr,
-                                                      .error = nullptr,
-                                                      .bound_props = nullptr};
+  const struct pw_proxy_events device_proxy_events = {
+      .version = 0,
+      .destroy = on_destroy_device_proxy,
+      .bound = nullptr,
+      .removed = on_removed_proxy,
+      .done = nullptr,
+      .error = nullptr,
+      .bound_props = nullptr,
+  };
 
   const struct pw_device_events device_events = {.version = 0, .info = on_device_info, .param = on_device_event_param};
 

@@ -97,26 +97,30 @@ class LinkManager : public QObject {
 
   std::vector<PortInfo> list_ports;
 
-  const struct pw_proxy_events link_proxy_events = {.version = 0,
-                                                    .destroy = on_destroy_link_proxy,
-                                                    .bound = nullptr,
-                                                    .removed = on_removed_proxy,
-                                                    .done = nullptr,
-                                                    .error = nullptr,
-                                                    .bound_props = nullptr};
+  const struct pw_proxy_events link_proxy_events = {
+      .version = 0,
+      .destroy = on_destroy_link_proxy,
+      .bound = nullptr,
+      .removed = on_removed_proxy,
+      .done = nullptr,
+      .error = nullptr,
+      .bound_props = nullptr,
+  };
 
   const struct pw_link_events link_events = {
       .version = 0,
       .info = on_link_info,
   };
 
-  const struct pw_proxy_events port_proxy_events = {.version = 0,
-                                                    .destroy = on_destroy_port_proxy,
-                                                    .bound = nullptr,
-                                                    .removed = on_removed_proxy,
-                                                    .done = nullptr,
-                                                    .error = nullptr,
-                                                    .bound_props = nullptr};
+  const struct pw_proxy_events port_proxy_events = {
+      .version = 0,
+      .destroy = on_destroy_port_proxy,
+      .bound = nullptr,
+      .removed = on_removed_proxy,
+      .done = nullptr,
+      .error = nullptr,
+      .bound_props = nullptr,
+  };
 
   static auto link_info_from_props(const spa_dict* props) -> pw::LinkInfo;
 
