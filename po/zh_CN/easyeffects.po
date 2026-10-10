@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-09 22:56+0000\n"
-"PO-Revision-Date: 2026-10-09 13:32+0000\n"
+"PO-Revision-Date: 2026-10-10 03:20+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hans/>\n"
@@ -1121,7 +1121,7 @@ msgstr "旁通"
 
 #: src/contents/ui/DeepFilterNet.qml:54
 msgid "The selected model is not installed. Audio passes through unprocessed."
-msgstr ""
+msgstr "未安装已选模型。音频不受处理。"
 
 #: src/contents/ui/DeepFilterNet.qml:59
 msgid "Attenuation limit"
