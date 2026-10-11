@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-09 22:56+0000\n"
-"PO-Revision-Date: 2026-09-26 09:51+0000\n"
+"PO-Revision-Date: 2026-10-11 09:51+0000\n"
 "Last-Translator: Fjuro <fjuro@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
 "cs/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2);\n"
-"X-Generator: Weblate 2026.10.dev0\n"
+"X-Generator: Weblate 2026.10.1.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -1127,7 +1127,7 @@ msgstr "Bypass"
 
 #: src/contents/ui/DeepFilterNet.qml:54
 msgid "The selected model is not installed. Audio passes through unprocessed."
-msgstr ""
+msgstr "Zvolený model není nainstalovaný. Zvuk prochází skrz nezpracovaný."
 
 #: src/contents/ui/DeepFilterNet.qml:59
 msgid "Attenuation limit"
@@ -2601,9 +2601,8 @@ msgid "Maximum"
 msgstr "Maximum"
 
 #: src/contents/ui/PreferencesSheet.qml:633
-#, fuzzy
 msgid "Level Range"
-msgstr "Rozsah hlasitosti"
+msgstr "Rozsah úrovní"
 
 #: src/contents/ui/PreferencesSheet.qml:638
 #: src/contents/ui/PreferencesSheet.qml:894
@@ -2613,60 +2612,57 @@ msgstr "Automatické"
 #: src/contents/ui/PreferencesSheet.qml:639
 msgid ""
 "Follows the loudest and the quieter bands within the minimum and maximum."
-msgstr ""
+msgstr "Následuje nejhlasitější a nejtišší pásma s minimem a maximem."
 
 #: src/contents/ui/PreferencesSheet.qml:649
-#, fuzzy
 msgid "Minimum span"
-msgstr "Minimální kvantum"
+msgstr "Maximální rozsah"
 
 #: src/contents/ui/PreferencesSheet.qml:693
 msgid ""
 "Tilts the display around 1 kHz. The shown levels are no longer absolute."
-msgstr ""
+msgstr "Nakloní zobrazení kolem 1 kHz. Zobrazené úrovně již nebudou absolutní."
 
 #: src/contents/ui/PreferencesSheet.qml:708
 msgid "Analysis"
-msgstr ""
+msgstr "Analýza"
 
 #: src/contents/ui/PreferencesSheet.qml:725
 msgid "Zero padding"
-msgstr ""
+msgstr "Nulové odsazení"
 
 #: src/contents/ui/PreferencesSheet.qml:726
 msgid ""
 "Interpolates the spectrum. It does not increase the frequency resolution."
-msgstr ""
+msgstr "Interpoluje spektrum. Nezvyšuje rozlišení frekvencí."
 
 #: src/contents/ui/PreferencesSheet.qml:738
-#, fuzzy
 msgid "Window function"
-msgstr "Redukce zesílení"
+msgstr "Funkce okna"
 
 #: src/contents/ui/PreferencesSheet.qml:742
 msgid "Rectangular"
-msgstr ""
+msgstr "Hranaté"
 
 #: src/contents/ui/PreferencesSheet.qml:742
 msgid "Hann"
-msgstr ""
+msgstr "Hann"
 
 #: src/contents/ui/PreferencesSheet.qml:742
 msgid "Hamming"
-msgstr ""
+msgstr "Hamming"
 
 #: src/contents/ui/PreferencesSheet.qml:742
 msgid "Blackman"
-msgstr ""
+msgstr "Blackman"
 
 #: src/contents/ui/PreferencesSheet.qml:742
 msgid "Blackman-Harris"
-msgstr ""
+msgstr "Blackman-Harris"
 
 #: src/contents/ui/PreferencesSheet.qml:742
-#, fuzzy
 msgid "Flat top"
-msgstr "Rovný"
+msgstr "Plochý vršek"
 
 #: src/contents/ui/PreferencesSheet.qml:786
 msgid "Database autosave interval"
