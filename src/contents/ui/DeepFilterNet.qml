@@ -77,6 +77,26 @@ Kirigami.ScrollablePage {
             }
         }
 
+        Controls.CheckBox {
+            id: monoProcessing
+
+            Layout.alignment: Qt.AlignHCenter
+            visible: deepfilternetPage.pluginDB.model === 1
+            text: i18n("Process as Mono") // qmllint disable
+            checked: deepfilternetPage.pluginDB.monoProcessing
+            onToggled: deepfilternetPage.pluginDB.monoProcessing = checked
+
+            readonly property string description: i18n("Average the left and right inputs and process them with one DPDFNet instance instead of two. This can significantly reduce CPU usage for mono microphones. Both output channels receive the same audio; stereo separation is lost.") // qmllint disable
+            Accessible.description: description
+
+            Controls.ToolTip {
+                text: monoProcessing.description
+                visible: monoProcessing.visible && (monoProcessing.hovered || monoProcessing.activeFocus)
+                delay: Kirigami.Units.toolTipDelay
+                width: Math.min(implicitWidth, Kirigami.Units.gridUnit * 30)
+            }
+        }
+
         Controls.Label {
             Layout.alignment: Qt.AlignHCenter
             text: i18n("Attenuation limit") // qmllint disable

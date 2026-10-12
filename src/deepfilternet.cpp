@@ -97,6 +97,11 @@ DeepFilterNet::DeepFilterNet(const std::string& tag,
   connect(settings, &DbDeepFilterNet::attenuationLimitChanged, this, set_dpdfnet_attenuation);
 
   connect(settings, &DbDeepFilterNet::modelChanged, this, [this] { resetHistory(); });
+  connect(settings, &DbDeepFilterNet::monoProcessingChanged, this, [this] {
+    if (settings->model() == 1) {
+      resetHistory();
+    }
+  });
 }
 
 DeepFilterNet::~DeepFilterNet() {
@@ -147,8 +152,15 @@ void DeepFilterNet::setup() {
   std::scoped_lock<std::mutex> lock(data_mutex);
 
   ready = false;
+  const auto generation = ++setup_generation;
 
   use_dpdfnet = settings->model() == 1;
+  mono_processing = use_dpdfnet && settings->monoProcessing();
+
+  // Allocate before processing; mixing must not allocate in the audio callback.
+  if (mono_processing) {
+    mono_input.resize(n_samples);
+  }
 
   if (use_dpdfnet ? !dpdfnetInstalled : !deepFilterNetInstalled) {
     util::warning(std::format("{}the selected model is not installed", log_tag));
@@ -163,11 +175,24 @@ void DeepFilterNet::setup() {
 
   QMetaObject::invokeMethod(
       baseWorker,
-      [this, dpdfnet = use_dpdfnet] {
+      [this, dpdfnet = use_dpdfnet, mono = mono_processing, generation] {
+        {
+          std::scoped_lock<std::mutex> lock(data_mutex);
+          if (generation != setup_generation) {
+            return;
+          }
+        }
+
         if (dpdfnet) {
-          for (auto* wrapper : {dpdfnet_l.get(), dpdfnet_r.get()}) {
-            wrapper->n_samples = n_samples;
-            wrapper->create_instance(48000);
+          dpdfnet_l->n_samples = n_samples;
+          dpdfnet_l->create_instance(48000);
+
+          if (mono) {
+            // A superseded stereo setup may already have created this instance.
+            dpdfnet_r->destroy_instance();
+          } else {
+            dpdfnet_r->n_samples = n_samples;
+            dpdfnet_r->create_instance(48000);
           }
         } else {
           ladspa_wrapper->n_samples = n_samples;
@@ -203,7 +228,11 @@ void DeepFilterNet::setup() {
 
         std::scoped_lock<std::mutex> lock(data_mutex);
 
-        ready = true;
+        // Rapid model/preset changes must not activate a superseded setup.
+        ready = generation == setup_generation;
+        if (!ready) {
+          resampler_ready = false;
+        }
       },
       Qt::QueuedConnection);
 
@@ -227,16 +256,28 @@ void DeepFilterNet::process(std::span<float>& left_in,
     apply_gain(left_in, right_in, input_gain);
   }
 
+  std::span<const float> model_inL = left_in;
+  std::span<const float> model_inR = right_in;
+
+  if (mono_processing) {
+    // Average before resampling, and before writing either output: PipeWire may
+    // provide in-place buffers. Duplicated mono retains its original level.
+    std::transform(left_in.begin(), left_in.end(), right_in.begin(), mono_input.begin(),
+                   [](const float left, const float right) { return 0.5F * left + 0.5F * right; });
+    model_inL = std::span<const float>(mono_input).first(left_in.size());
+    model_inR = model_inL;
+  }
+
   if (resample) {
-    const auto& resampled_inL = resampler_inL->process(left_in);
-    const auto& resampled_inR = resampler_inR->process(right_in);
+    const auto& resampled_inL = resampler_inL->process(model_inL);
+    const auto& resampled_inR = resampler_inR->process(model_inR);
 
     resampled_outL.resize(resampled_inL.size());
     resampled_outR.resize(resampled_inR.size());
 
     run_model(resampled_inL, resampled_inR, resampled_outL, resampled_outR);
   } else {
-    run_model(left_in, right_in, left_out, right_out);
+    run_model(model_inL, model_inR, left_out, right_out);
   }
 
   if (resample) {
@@ -303,9 +344,13 @@ void DeepFilterNet::run_model(std::span<const float> left_in,
     dpdfnet_l->connect_data_ports(left_in, left_in, left_out, left_out);
     dpdfnet_l->run();
 
-    dpdfnet_r->n_samples = right_in.size();
-    dpdfnet_r->connect_data_ports(right_in, right_in, right_out, right_out);
-    dpdfnet_r->run();
+    if (mono_processing) {
+      std::ranges::copy(left_out, right_out.begin());
+    } else {
+      dpdfnet_r->n_samples = right_in.size();
+      dpdfnet_r->connect_data_ports(right_in, right_in, right_out, right_out);
+      dpdfnet_r->run();
+    }
   } else {
     ladspa_wrapper->n_samples = left_in.size();
     ladspa_wrapper->connect_data_ports(left_in, right_in, left_out, right_out);

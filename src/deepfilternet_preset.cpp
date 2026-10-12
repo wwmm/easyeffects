@@ -39,6 +39,8 @@ void DeepFilterNetPreset::save(nlohmann::json& json) {
 
   json[section][instance_name]["model"] = settings->defaultModelLabelsValue()[settings->model()].toStdString();
 
+  json[section][instance_name]["mono-processing"] = settings->monoProcessing();
+
   json[section][instance_name]["attenuation-limit"] = settings->attenuationLimit();
 
   json[section][instance_name]["min-processing-threshold"] = settings->minProcessingThreshold();
@@ -57,6 +59,7 @@ void DeepFilterNetPreset::load(const nlohmann::json& json) {
   UPDATE_PROPERTY("input-gain", InputGain);
   UPDATE_PROPERTY("output-gain", OutputGain);
   UPDATE_ENUM_LIKE_PROPERTY("model", Model);
+  UPDATE_PROPERTY("mono-processing", MonoProcessing);
   UPDATE_PROPERTY("attenuation-limit", AttenuationLimit);
   UPDATE_PROPERTY("min-processing-threshold", MinProcessingThreshold);
   UPDATE_PROPERTY("max-erb-processing-threshold", MaxErbProcessingThreshold);

@@ -19,6 +19,8 @@
 
 #pragma once
 
+#include <cstdint>
+
 #include <qobject.h>
 #include <qqmlintegration.h>
 #include <qtmetamacros.h>
@@ -82,8 +84,11 @@ class DeepFilterNet : public PluginBase {
   bool deepFilterNetInstalled = false;
   bool dpdfnetInstalled = false;
   bool use_dpdfnet = false;
+  bool mono_processing = false;
+  std::vector<float> mono_input;
 
   bool ready = false;
+  std::uint64_t setup_generation = 0;
   bool resample = false;
   bool resampler_ready = true;
 
