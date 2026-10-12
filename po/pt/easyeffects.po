@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-10-09 22:56+0000\n"
+"POT-Creation-Date: 2026-10-12 15:26+0000\n"
 "PO-Revision-Date: 2026-05-24 16:57+0000\n"
 "Last-Translator: ssantos <ssantos@web.de>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/easyeffects/"
@@ -169,7 +169,7 @@ msgstr "Sobre"
 #: src/contents/ui/Autogain.qml:69 src/contents/ui/BassEnhancer.qml:105
 #: src/contents/ui/BassLoudness.qml:59 src/contents/ui/Crossfeed.qml:74
 #: src/contents/ui/CrosstalkCanceller.qml:59
-#: src/contents/ui/DeepFilterNet.qml:103 src/contents/ui/Exciter.qml:106
+#: src/contents/ui/DeepFilterNet.qml:126 src/contents/ui/Exciter.qml:106
 #: src/contents/ui/Filter.qml:59 src/contents/ui/Loudness.qml:59
 #: src/contents/ui/Maximizer.qml:60 src/contents/ui/Pitch.qml:60
 #: src/contents/ui/Reverb.qml:59 src/contents/ui/Speex.qml:59
@@ -226,7 +226,7 @@ msgstr "Histórico Máximo"
 
 #: src/contents/ui/Autogain.qml:143 src/contents/ui/Autogain.qml:198
 #: src/contents/ui/BassLoudness.qml:67 src/contents/ui/LevelMeter.qml:146
-#: src/tags_plugin_name.cpp:68
+#: src/tags_plugin_name.cpp:69
 msgid "Loudness"
 msgstr "Intensidade"
 
@@ -247,13 +247,14 @@ msgstr "Ganho de saída"
 #: src/contents/ui/BassEnhancer.qml:205 src/contents/ui/BassLoudness.qml:126
 #: src/contents/ui/Compressor.qml:873 src/contents/ui/Convolver.qml:520
 #: src/contents/ui/Crossfeed.qml:150 src/contents/ui/Crusher.qml:236
-#: src/contents/ui/Crystalizer.qml:155 src/contents/ui/Deesser.qml:319
-#: src/contents/ui/Delay.qml:376 src/contents/ui/EchoCanceller.qml:158
-#: src/contents/ui/Equalizer.qml:315 src/contents/ui/Exciter.qml:210
-#: src/contents/ui/Expander.qml:823 src/contents/ui/Filter.qml:234
-#: src/contents/ui/Gate.qml:952 src/contents/ui/LevelMeter.qml:215
-#: src/contents/ui/Limiter.qml:607 src/contents/ui/Loudness.qml:175
-#: src/contents/ui/Maximizer.qml:122 src/contents/ui/MidSideEqualizer.qml:315
+#: src/contents/ui/Crystalizer.qml:155 src/contents/ui/DeepFilterNet.qml:229
+#: src/contents/ui/Deesser.qml:319 src/contents/ui/Delay.qml:376
+#: src/contents/ui/EchoCanceller.qml:158 src/contents/ui/Equalizer.qml:315
+#: src/contents/ui/Exciter.qml:210 src/contents/ui/Expander.qml:823
+#: src/contents/ui/Filter.qml:234 src/contents/ui/Gate.qml:952
+#: src/contents/ui/LevelMeter.qml:215 src/contents/ui/Limiter.qml:607
+#: src/contents/ui/Loudness.qml:175 src/contents/ui/Maximizer.qml:122
+#: src/contents/ui/MidSideEqualizer.qml:315
 #: src/contents/ui/MultibandCompressor.qml:965
 #: src/contents/ui/MultibandGate.qml:938 src/contents/ui/Pitch.qml:268
 #: src/contents/ui/RNNoise.qml:73 src/contents/ui/RNNoise.qml:84
@@ -263,7 +264,7 @@ msgstr "Ganho de saída"
 msgid "Using %1"
 msgstr "A usar %1"
 
-#: src/contents/ui/Autogain.qml:250 src/contents/ui/DeepFilterNet.qml:224
+#: src/contents/ui/Autogain.qml:250 src/contents/ui/DeepFilterNet.qml:246
 #: src/contents/ui/LevelMeter.qml:232 src/contents/ui/Pitch.qml:285
 msgid "Reset history"
 msgstr "Apagar o histórico"
@@ -277,7 +278,7 @@ msgid "Force silence when the level is below the silence threshold"
 msgstr "Forçar o silêncio quando o nível estiver abaixo do limite de silêncio"
 
 #: src/contents/ui/Autogain.qml:270 src/contents/ui/Autotune.qml:436
-#: src/contents/ui/DeepFilterNet.qml:232 src/contents/ui/LevelMeter.qml:240
+#: src/contents/ui/DeepFilterNet.qml:254 src/contents/ui/LevelMeter.qml:240
 #: src/contents/ui/Pitch.qml:313
 msgid "Reset settings"
 msgstr "Redefinir configurações"
@@ -318,7 +319,7 @@ msgstr "Viés"
 
 #: src/contents/ui/Autotune.qml:169 src/contents/ui/Deesser.qml:171
 #: src/contents/ui/Filter.qml:137 src/contents/ui/Reverb.qml:126
-#: src/tags_plugin_name.cpp:64
+#: src/tags_plugin_name.cpp:65
 msgid "Filter"
 msgstr "Filtro"
 
@@ -500,7 +501,7 @@ msgstr "Mostrar apps excluídas"
 msgid "Show excluded applications in the list of players/recorders"
 msgstr "Mostrar aplicações excluídas na secção de tocadores/gravadores"
 
-#: src/contents/ui/Compressor.qml:67 src/tags_plugin_name.cpp:50
+#: src/contents/ui/Compressor.qml:67 src/tags_plugin_name.cpp:51
 msgid "Compressor"
 msgstr "Compressor de Áudio"
 
@@ -907,7 +908,7 @@ msgstr "Formatar"
 msgid "Stereo width"
 msgstr "Largura estéreo"
 
-#: src/contents/ui/Convolver.qml:537 src/tags_plugin_name.cpp:46
+#: src/contents/ui/Convolver.qml:537 src/tags_plugin_name.cpp:47
 msgid "Autogain"
 msgstr "Ganho Automático"
 
@@ -1048,7 +1049,7 @@ msgid "Process only phantom center"
 msgstr "Processar apenas o centro fantasma"
 
 #: src/contents/ui/CrosstalkCanceller.qml:75
-#: src/contents/ui/StereoTools.qml:294 src/tags_plugin_name.cpp:58
+#: src/contents/ui/StereoTools.qml:294 src/tags_plugin_name.cpp:59
 msgid "Delay"
 msgstr "Atraso"
 
@@ -1135,35 +1136,40 @@ msgstr "Mudo"
 msgid "Bypass"
 msgstr "Ignorar"
 
-#: src/contents/ui/DeepFilterNet.qml:54
+#: src/contents/ui/DeepFilterNet.qml:52
 msgid "The selected model is not installed. Audio passes through unprocessed."
 msgstr ""
 
-#: src/contents/ui/DeepFilterNet.qml:59
+#: src/contents/ui/DeepFilterNet.qml:65
+#, fuzzy
+msgid "Model"
+msgstr "Modelos"
+
+#: src/contents/ui/DeepFilterNet.qml:82
 msgid "Attenuation limit"
 msgstr "Limite de Atenuação"
 
-#: src/contents/ui/DeepFilterNet.qml:115
+#: src/contents/ui/DeepFilterNet.qml:138
 msgid "Minimum processing threshold"
 msgstr "Limite Mínimo de Processamento"
 
-#: src/contents/ui/DeepFilterNet.qml:131
+#: src/contents/ui/DeepFilterNet.qml:154
 msgid "Maximum ERB processing threshold"
 msgstr "Limite Máximo de Processamento do ERB"
 
-#: src/contents/ui/DeepFilterNet.qml:147
+#: src/contents/ui/DeepFilterNet.qml:170
 msgid "Maximum DF processing threshold"
 msgstr "Limite Máximo de Processamento do DF"
 
-#: src/contents/ui/DeepFilterNet.qml:163
+#: src/contents/ui/DeepFilterNet.qml:186
 msgid "Minimum processing buffer"
 msgstr "buffer de processamento mínimo"
 
-#: src/contents/ui/DeepFilterNet.qml:179
+#: src/contents/ui/DeepFilterNet.qml:202
 msgid "Post filter Beta"
 msgstr "Pós-filtro Beta"
 
-#: src/contents/ui/Deesser.qml:63 src/tags_plugin_name.cpp:57
+#: src/contents/ui/Deesser.qml:63 src/tags_plugin_name.cpp:58
 msgid "Deesser"
 msgstr "Sons Sibilantes Desessor (DeEsser)"
 
@@ -1307,7 +1313,7 @@ msgstr "Excluir"
 msgid "Add %1 to excluded applications"
 msgstr "Adicione %1 às aplicações excluídas"
 
-#: src/contents/ui/EchoCanceller.qml:61 src/tags_plugin_name.cpp:59
+#: src/contents/ui/EchoCanceller.qml:61 src/tags_plugin_name.cpp:60
 msgid "Echo Canceller"
 msgstr "Cancelador de Eco"
 
@@ -1645,7 +1651,7 @@ msgstr "Teto Ativo"
 msgid "Ceil"
 msgstr "Teto"
 
-#: src/contents/ui/Expander.qml:67 src/tags_plugin_name.cpp:63
+#: src/contents/ui/Expander.qml:67 src/tags_plugin_name.cpp:64
 msgid "Expander"
 msgstr "Expandir"
 
@@ -1663,7 +1669,7 @@ msgstr "modo de filtro"
 msgid "Equalizer mode"
 msgstr "Modo equalizador"
 
-#: src/contents/ui/Gate.qml:71 src/tags_plugin_name.cpp:65
+#: src/contents/ui/Gate.qml:71 src/tags_plugin_name.cpp:66
 msgid "Gate"
 msgstr "Porta"
 
@@ -1843,7 +1849,7 @@ msgstr "Pico Verdadeiro"
 msgid "Dithering"
 msgstr "ditherização"
 
-#: src/contents/ui/Limiter.qml:116 src/tags_plugin_name.cpp:67
+#: src/contents/ui/Limiter.qml:116 src/tags_plugin_name.cpp:68
 msgid "Limiter"
 msgstr "Limitador"
 
@@ -2318,7 +2324,7 @@ msgstr "Janela de Busca"
 msgid "Overlap length"
 msgstr "Comprimento de sobreposição"
 
-#: src/contents/ui/Pitch.qml:164 src/tags_plugin_name.cpp:72
+#: src/contents/ui/Pitch.qml:164 src/tags_plugin_name.cpp:73
 msgid "Pitch"
 msgstr "Altura"
 
@@ -3551,90 +3557,90 @@ msgstr "Erro"
 msgid "Unknown"
 msgstr "Desconhecido"
 
-#: src/tags_plugin_name.cpp:47
+#: src/tags_plugin_name.cpp:48
 #, fuzzy
 msgid "Autotune"
 msgstr "Ganho Automático"
 
-#: src/tags_plugin_name.cpp:48
+#: src/tags_plugin_name.cpp:49
 msgid "Bass Enhancer"
 msgstr "Amplificador dos Graves"
 
-#: src/tags_plugin_name.cpp:49
+#: src/tags_plugin_name.cpp:50
 msgid "Bass Loudness"
 msgstr "Intensidade dos Graves"
 
-#: src/tags_plugin_name.cpp:51
+#: src/tags_plugin_name.cpp:52
 msgid "Convolver"
 msgstr "Convolução"
 
-#: src/tags_plugin_name.cpp:52
+#: src/tags_plugin_name.cpp:53
 msgid "Crossfeed"
 msgstr "Alimentação Cruzada"
 
-#: src/tags_plugin_name.cpp:53
+#: src/tags_plugin_name.cpp:54
 #, fuzzy
 msgid "Crosstalk Canceller"
 msgstr "Cancelador de Eco"
 
-#: src/tags_plugin_name.cpp:54
+#: src/tags_plugin_name.cpp:55
 msgid "Crusher"
 msgstr "Triturador"
 
-#: src/tags_plugin_name.cpp:55
+#: src/tags_plugin_name.cpp:56
 msgid "Crystalizer"
 msgstr "Cristalizador"
 
-#: src/tags_plugin_name.cpp:56
+#: src/tags_plugin_name.cpp:57
 msgid "Deep Noise Remover"
 msgstr "Removedor de Ruídos Áudio"
 
-#: src/tags_plugin_name.cpp:60
+#: src/tags_plugin_name.cpp:61
 msgid "Equalizer"
 msgstr "Equalizador"
 
-#: src/tags_plugin_name.cpp:61
+#: src/tags_plugin_name.cpp:62
 #, fuzzy
 msgid "Mid-Side Equalizer"
 msgstr "Equalizador"
 
-#: src/tags_plugin_name.cpp:62
+#: src/tags_plugin_name.cpp:63
 msgid "Exciter"
 msgstr "Excitador"
 
-#: src/tags_plugin_name.cpp:66
+#: src/tags_plugin_name.cpp:67
 msgid "Level Meter"
 msgstr "Medidor do Nível da Saída"
 
-#: src/tags_plugin_name.cpp:69
+#: src/tags_plugin_name.cpp:70
 msgid "Maximizer"
 msgstr "Maximizador"
 
-#: src/tags_plugin_name.cpp:70
+#: src/tags_plugin_name.cpp:71
 msgid "Multiband Compressor"
 msgstr "Compressor de Multibanda"
 
-#: src/tags_plugin_name.cpp:71
+#: src/tags_plugin_name.cpp:72
 msgid "Multiband Gate"
 msgstr "Porta para Multibandas"
 
-#: src/tags_plugin_name.cpp:73
+#: src/tags_plugin_name.cpp:74
 msgid "Reverberation"
 msgstr "Reverberação"
 
-#: src/tags_plugin_name.cpp:74
+#: src/tags_plugin_name.cpp:75
 msgid "Noise Reduction"
 msgstr "Redução de Ruído"
 
-#: src/tags_plugin_name.cpp:75
+#: src/tags_plugin_name.cpp:76
 msgid "Speech Processor"
 msgstr "Processador de Fala"
 
-#: src/tags_plugin_name.cpp:76
+#: src/tags_plugin_name.cpp:77
 msgid "Stereo Tools"
 msgstr "Ferramentas Estéreo"
 
-#: src/tags_plugin_name.cpp:77
+#: src/tags_plugin_name.cpp:78
 #, fuzzy
 msgid "Voice Suppressor"
 msgstr "Supressão de Ruído"
@@ -4362,9 +4368,6 @@ msgstr "Efeitos de áudio simples"
 #~ msgid "Refresh to show new installed community presets"
 #~ msgstr ""
 #~ "Atualize para mostrar as novas predefinições de comunidade instaladas"
-
-#~ msgid "Models"
-#~ msgstr "Modelos"
 
 #~ msgid "RNNoise Models List"
 #~ msgstr "Lista de Modelos de Ruídos do RNNoise"
