@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-10-09 22:56+0000\n"
+"POT-Creation-Date: 2026-10-12 15:26+0000\n"
 "PO-Revision-Date: 2026-10-10 03:20+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
@@ -157,7 +157,7 @@ msgstr "关于"
 #: src/contents/ui/Autogain.qml:69 src/contents/ui/BassEnhancer.qml:105
 #: src/contents/ui/BassLoudness.qml:59 src/contents/ui/Crossfeed.qml:74
 #: src/contents/ui/CrosstalkCanceller.qml:59
-#: src/contents/ui/DeepFilterNet.qml:103 src/contents/ui/Exciter.qml:106
+#: src/contents/ui/DeepFilterNet.qml:126 src/contents/ui/Exciter.qml:106
 #: src/contents/ui/Filter.qml:59 src/contents/ui/Loudness.qml:59
 #: src/contents/ui/Maximizer.qml:60 src/contents/ui/Pitch.qml:60
 #: src/contents/ui/Reverb.qml:59 src/contents/ui/Speex.qml:59
@@ -214,7 +214,7 @@ msgstr "最长历史记录"
 
 #: src/contents/ui/Autogain.qml:143 src/contents/ui/Autogain.qml:198
 #: src/contents/ui/BassLoudness.qml:67 src/contents/ui/LevelMeter.qml:146
-#: src/tags_plugin_name.cpp:68
+#: src/tags_plugin_name.cpp:69
 msgid "Loudness"
 msgstr "响度"
 
@@ -235,13 +235,14 @@ msgstr "输出增益"
 #: src/contents/ui/BassEnhancer.qml:205 src/contents/ui/BassLoudness.qml:126
 #: src/contents/ui/Compressor.qml:873 src/contents/ui/Convolver.qml:520
 #: src/contents/ui/Crossfeed.qml:150 src/contents/ui/Crusher.qml:236
-#: src/contents/ui/Crystalizer.qml:155 src/contents/ui/Deesser.qml:319
-#: src/contents/ui/Delay.qml:376 src/contents/ui/EchoCanceller.qml:158
-#: src/contents/ui/Equalizer.qml:315 src/contents/ui/Exciter.qml:210
-#: src/contents/ui/Expander.qml:823 src/contents/ui/Filter.qml:234
-#: src/contents/ui/Gate.qml:952 src/contents/ui/LevelMeter.qml:215
-#: src/contents/ui/Limiter.qml:607 src/contents/ui/Loudness.qml:175
-#: src/contents/ui/Maximizer.qml:122 src/contents/ui/MidSideEqualizer.qml:315
+#: src/contents/ui/Crystalizer.qml:155 src/contents/ui/DeepFilterNet.qml:229
+#: src/contents/ui/Deesser.qml:319 src/contents/ui/Delay.qml:376
+#: src/contents/ui/EchoCanceller.qml:158 src/contents/ui/Equalizer.qml:315
+#: src/contents/ui/Exciter.qml:210 src/contents/ui/Expander.qml:823
+#: src/contents/ui/Filter.qml:234 src/contents/ui/Gate.qml:952
+#: src/contents/ui/LevelMeter.qml:215 src/contents/ui/Limiter.qml:607
+#: src/contents/ui/Loudness.qml:175 src/contents/ui/Maximizer.qml:122
+#: src/contents/ui/MidSideEqualizer.qml:315
 #: src/contents/ui/MultibandCompressor.qml:965
 #: src/contents/ui/MultibandGate.qml:938 src/contents/ui/Pitch.qml:268
 #: src/contents/ui/RNNoise.qml:73 src/contents/ui/RNNoise.qml:84
@@ -251,7 +252,7 @@ msgstr "输出增益"
 msgid "Using %1"
 msgstr "正在使用 %1"
 
-#: src/contents/ui/Autogain.qml:250 src/contents/ui/DeepFilterNet.qml:224
+#: src/contents/ui/Autogain.qml:250 src/contents/ui/DeepFilterNet.qml:246
 #: src/contents/ui/LevelMeter.qml:232 src/contents/ui/Pitch.qml:285
 msgid "Reset history"
 msgstr "重置历史记录"
@@ -265,7 +266,7 @@ msgid "Force silence when the level is below the silence threshold"
 msgstr "当电平低于静音阈值时强制静音"
 
 #: src/contents/ui/Autogain.qml:270 src/contents/ui/Autotune.qml:436
-#: src/contents/ui/DeepFilterNet.qml:232 src/contents/ui/LevelMeter.qml:240
+#: src/contents/ui/DeepFilterNet.qml:254 src/contents/ui/LevelMeter.qml:240
 #: src/contents/ui/Pitch.qml:313
 msgid "Reset settings"
 msgstr "重置设置"
@@ -306,7 +307,7 @@ msgstr "偏差"
 
 #: src/contents/ui/Autotune.qml:169 src/contents/ui/Deesser.qml:171
 #: src/contents/ui/Filter.qml:137 src/contents/ui/Reverb.qml:126
-#: src/tags_plugin_name.cpp:64
+#: src/tags_plugin_name.cpp:65
 msgid "Filter"
 msgstr "滤波器"
 
@@ -486,7 +487,7 @@ msgstr "显示已排除的应用程序"
 msgid "Show excluded applications in the list of players/recorders"
 msgstr "按播放器/录音器分类显示已排除的应用程序"
 
-#: src/contents/ui/Compressor.qml:67 src/tags_plugin_name.cpp:50
+#: src/contents/ui/Compressor.qml:67 src/tags_plugin_name.cpp:51
 msgid "Compressor"
 msgstr "压缩器"
 
@@ -893,7 +894,7 @@ msgstr "格式"
 msgid "Stereo width"
 msgstr "立体声宽度"
 
-#: src/contents/ui/Convolver.qml:537 src/tags_plugin_name.cpp:46
+#: src/contents/ui/Convolver.qml:537 src/tags_plugin_name.cpp:47
 msgid "Autogain"
 msgstr "自动增益"
 
@@ -1034,7 +1035,7 @@ msgid "Process only phantom center"
 msgstr "仅处理心理中置信号 (phantom center)"
 
 #: src/contents/ui/CrosstalkCanceller.qml:75
-#: src/contents/ui/StereoTools.qml:294 src/tags_plugin_name.cpp:58
+#: src/contents/ui/StereoTools.qml:294 src/tags_plugin_name.cpp:59
 msgid "Delay"
 msgstr "延迟"
 
@@ -1119,35 +1120,40 @@ msgstr "静音"
 msgid "Bypass"
 msgstr "旁通"
 
-#: src/contents/ui/DeepFilterNet.qml:54
+#: src/contents/ui/DeepFilterNet.qml:52
 msgid "The selected model is not installed. Audio passes through unprocessed."
 msgstr "未安装已选模型。音频不受处理。"
 
-#: src/contents/ui/DeepFilterNet.qml:59
+#: src/contents/ui/DeepFilterNet.qml:65
+#, fuzzy
+msgid "Model"
+msgstr "模型"
+
+#: src/contents/ui/DeepFilterNet.qml:82
 msgid "Attenuation limit"
 msgstr "降噪上限"
 
-#: src/contents/ui/DeepFilterNet.qml:115
+#: src/contents/ui/DeepFilterNet.qml:138
 msgid "Minimum processing threshold"
 msgstr "最小处理阈值"
 
-#: src/contents/ui/DeepFilterNet.qml:131
+#: src/contents/ui/DeepFilterNet.qml:154
 msgid "Maximum ERB processing threshold"
 msgstr "最大等效矩形带宽处理阈值"
 
-#: src/contents/ui/DeepFilterNet.qml:147
+#: src/contents/ui/DeepFilterNet.qml:170
 msgid "Maximum DF processing threshold"
 msgstr "最大 DeepFilter 处理阈值"
 
-#: src/contents/ui/DeepFilterNet.qml:163
+#: src/contents/ui/DeepFilterNet.qml:186
 msgid "Minimum processing buffer"
 msgstr "最小处理缓冲区"
 
-#: src/contents/ui/DeepFilterNet.qml:179
+#: src/contents/ui/DeepFilterNet.qml:202
 msgid "Post filter Beta"
 msgstr "后期过滤 Beta 值"
 
-#: src/contents/ui/Deesser.qml:63 src/tags_plugin_name.cpp:57
+#: src/contents/ui/Deesser.qml:63 src/tags_plugin_name.cpp:58
 msgid "Deesser"
 msgstr "齿音消除器"
 
@@ -1291,7 +1297,7 @@ msgstr "排除"
 msgid "Add %1 to excluded applications"
 msgstr "将 %1 添加到排除的应用程序"
 
-#: src/contents/ui/EchoCanceller.qml:61 src/tags_plugin_name.cpp:59
+#: src/contents/ui/EchoCanceller.qml:61 src/tags_plugin_name.cpp:60
 msgid "Echo Canceller"
 msgstr "回音消除器"
 
@@ -1618,7 +1624,7 @@ msgstr "激活上限"
 msgid "Ceil"
 msgstr "上限"
 
-#: src/contents/ui/Expander.qml:67 src/tags_plugin_name.cpp:63
+#: src/contents/ui/Expander.qml:67 src/tags_plugin_name.cpp:64
 msgid "Expander"
 msgstr "扩展器"
 
@@ -1636,7 +1642,7 @@ msgstr "滤波器模式"
 msgid "Equalizer mode"
 msgstr "均衡器模式"
 
-#: src/contents/ui/Gate.qml:71 src/tags_plugin_name.cpp:65
+#: src/contents/ui/Gate.qml:71 src/tags_plugin_name.cpp:66
 msgid "Gate"
 msgstr "门限"
 
@@ -1810,7 +1816,7 @@ msgstr "实际峰值/24 位输出"
 msgid "Dithering"
 msgstr "抖动"
 
-#: src/contents/ui/Limiter.qml:116 src/tags_plugin_name.cpp:67
+#: src/contents/ui/Limiter.qml:116 src/tags_plugin_name.cpp:68
 msgid "Limiter"
 msgstr "限幅器"
 
@@ -2260,7 +2266,7 @@ msgstr "查找窗口"
 msgid "Overlap length"
 msgstr "重叠长度"
 
-#: src/contents/ui/Pitch.qml:164 src/tags_plugin_name.cpp:72
+#: src/contents/ui/Pitch.qml:164 src/tags_plugin_name.cpp:73
 msgid "Pitch"
 msgstr "音高"
 
@@ -3413,87 +3419,87 @@ msgstr "错误"
 msgid "Unknown"
 msgstr "未知"
 
-#: src/tags_plugin_name.cpp:47
+#: src/tags_plugin_name.cpp:48
 msgid "Autotune"
 msgstr "自动调音"
 
-#: src/tags_plugin_name.cpp:48
+#: src/tags_plugin_name.cpp:49
 msgid "Bass Enhancer"
 msgstr "低音增强器"
 
-#: src/tags_plugin_name.cpp:49
+#: src/tags_plugin_name.cpp:50
 msgid "Bass Loudness"
 msgstr "低音响度"
 
-#: src/tags_plugin_name.cpp:51
+#: src/tags_plugin_name.cpp:52
 msgid "Convolver"
 msgstr "卷积混响器"
 
-#: src/tags_plugin_name.cpp:52
+#: src/tags_plugin_name.cpp:53
 msgid "Crossfeed"
 msgstr "交叉反馈"
 
-#: src/tags_plugin_name.cpp:53
+#: src/tags_plugin_name.cpp:54
 msgid "Crosstalk Canceller"
 msgstr "串音消除器"
 
-#: src/tags_plugin_name.cpp:54
+#: src/tags_plugin_name.cpp:55
 msgid "Crusher"
 msgstr "粉碎器"
 
-#: src/tags_plugin_name.cpp:55
+#: src/tags_plugin_name.cpp:56
 msgid "Crystalizer"
 msgstr "音质晶化器"
 
-#: src/tags_plugin_name.cpp:56
+#: src/tags_plugin_name.cpp:57
 msgid "Deep Noise Remover"
 msgstr "深度除噪器"
 
-#: src/tags_plugin_name.cpp:60
+#: src/tags_plugin_name.cpp:61
 msgid "Equalizer"
 msgstr "均衡器"
 
-#: src/tags_plugin_name.cpp:61
+#: src/tags_plugin_name.cpp:62
 msgid "Mid-Side Equalizer"
 msgstr "中—侧均衡器"
 
-#: src/tags_plugin_name.cpp:62
+#: src/tags_plugin_name.cpp:63
 msgid "Exciter"
 msgstr "激励器"
 
-#: src/tags_plugin_name.cpp:66
+#: src/tags_plugin_name.cpp:67
 msgid "Level Meter"
 msgstr "电平表"
 
-#: src/tags_plugin_name.cpp:69
+#: src/tags_plugin_name.cpp:70
 msgid "Maximizer"
 msgstr "放大器"
 
-#: src/tags_plugin_name.cpp:70
+#: src/tags_plugin_name.cpp:71
 msgid "Multiband Compressor"
 msgstr "多频带压缩器"
 
-#: src/tags_plugin_name.cpp:71
+#: src/tags_plugin_name.cpp:72
 msgid "Multiband Gate"
 msgstr "多频带门限"
 
-#: src/tags_plugin_name.cpp:73
+#: src/tags_plugin_name.cpp:74
 msgid "Reverberation"
 msgstr "混响"
 
-#: src/tags_plugin_name.cpp:74
+#: src/tags_plugin_name.cpp:75
 msgid "Noise Reduction"
 msgstr "降噪"
 
-#: src/tags_plugin_name.cpp:75
+#: src/tags_plugin_name.cpp:76
 msgid "Speech Processor"
 msgstr "语音处理器"
 
-#: src/tags_plugin_name.cpp:76
+#: src/tags_plugin_name.cpp:77
 msgid "Stereo Tools"
 msgstr "立体声工具"
 
-#: src/tags_plugin_name.cpp:77
+#: src/tags_plugin_name.cpp:78
 msgid "Voice Suppressor"
 msgstr "人声抑制器"
 
@@ -4302,9 +4308,6 @@ msgstr "简易音效集锦"
 
 #~ msgid "Refresh to show new installed community presets"
 #~ msgstr "刷新以显示新安装的社区预设"
-
-#~ msgid "Models"
-#~ msgstr "模型"
 
 #~ msgid "RNNoise Models List"
 #~ msgstr "RNNoise 模型列表"

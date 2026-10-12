@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-10-09 22:56+0000\n"
+"POT-Creation-Date: 2026-10-12 15:26+0000\n"
 "PO-Revision-Date: 2026-09-23 03:51+0000\n"
 "Last-Translator: Priit Jõerüüt <jrthwlate@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/easyeffects/"
@@ -158,7 +158,7 @@ msgstr "Rakenduse teave"
 #: src/contents/ui/Autogain.qml:69 src/contents/ui/BassEnhancer.qml:105
 #: src/contents/ui/BassLoudness.qml:59 src/contents/ui/Crossfeed.qml:74
 #: src/contents/ui/CrosstalkCanceller.qml:59
-#: src/contents/ui/DeepFilterNet.qml:103 src/contents/ui/Exciter.qml:106
+#: src/contents/ui/DeepFilterNet.qml:126 src/contents/ui/Exciter.qml:106
 #: src/contents/ui/Filter.qml:59 src/contents/ui/Loudness.qml:59
 #: src/contents/ui/Maximizer.qml:60 src/contents/ui/Pitch.qml:60
 #: src/contents/ui/Reverb.qml:59 src/contents/ui/Speex.qml:59
@@ -215,7 +215,7 @@ msgstr "Ajaloo maksimaalne pikkus"
 
 #: src/contents/ui/Autogain.qml:143 src/contents/ui/Autogain.qml:198
 #: src/contents/ui/BassLoudness.qml:67 src/contents/ui/LevelMeter.qml:146
-#: src/tags_plugin_name.cpp:68
+#: src/tags_plugin_name.cpp:69
 msgid "Loudness"
 msgstr "Valjus"
 
@@ -236,13 +236,14 @@ msgstr ""
 #: src/contents/ui/BassEnhancer.qml:205 src/contents/ui/BassLoudness.qml:126
 #: src/contents/ui/Compressor.qml:873 src/contents/ui/Convolver.qml:520
 #: src/contents/ui/Crossfeed.qml:150 src/contents/ui/Crusher.qml:236
-#: src/contents/ui/Crystalizer.qml:155 src/contents/ui/Deesser.qml:319
-#: src/contents/ui/Delay.qml:376 src/contents/ui/EchoCanceller.qml:158
-#: src/contents/ui/Equalizer.qml:315 src/contents/ui/Exciter.qml:210
-#: src/contents/ui/Expander.qml:823 src/contents/ui/Filter.qml:234
-#: src/contents/ui/Gate.qml:952 src/contents/ui/LevelMeter.qml:215
-#: src/contents/ui/Limiter.qml:607 src/contents/ui/Loudness.qml:175
-#: src/contents/ui/Maximizer.qml:122 src/contents/ui/MidSideEqualizer.qml:315
+#: src/contents/ui/Crystalizer.qml:155 src/contents/ui/DeepFilterNet.qml:229
+#: src/contents/ui/Deesser.qml:319 src/contents/ui/Delay.qml:376
+#: src/contents/ui/EchoCanceller.qml:158 src/contents/ui/Equalizer.qml:315
+#: src/contents/ui/Exciter.qml:210 src/contents/ui/Expander.qml:823
+#: src/contents/ui/Filter.qml:234 src/contents/ui/Gate.qml:952
+#: src/contents/ui/LevelMeter.qml:215 src/contents/ui/Limiter.qml:607
+#: src/contents/ui/Loudness.qml:175 src/contents/ui/Maximizer.qml:122
+#: src/contents/ui/MidSideEqualizer.qml:315
 #: src/contents/ui/MultibandCompressor.qml:965
 #: src/contents/ui/MultibandGate.qml:938 src/contents/ui/Pitch.qml:268
 #: src/contents/ui/RNNoise.qml:73 src/contents/ui/RNNoise.qml:84
@@ -252,7 +253,7 @@ msgstr ""
 msgid "Using %1"
 msgstr "Kasutusel on: %1"
 
-#: src/contents/ui/Autogain.qml:250 src/contents/ui/DeepFilterNet.qml:224
+#: src/contents/ui/Autogain.qml:250 src/contents/ui/DeepFilterNet.qml:246
 #: src/contents/ui/LevelMeter.qml:232 src/contents/ui/Pitch.qml:285
 msgid "Reset history"
 msgstr "Lähtesta ajalugu"
@@ -266,7 +267,7 @@ msgid "Force silence when the level is below the silence threshold"
 msgstr ""
 
 #: src/contents/ui/Autogain.qml:270 src/contents/ui/Autotune.qml:436
-#: src/contents/ui/DeepFilterNet.qml:232 src/contents/ui/LevelMeter.qml:240
+#: src/contents/ui/DeepFilterNet.qml:254 src/contents/ui/LevelMeter.qml:240
 #: src/contents/ui/Pitch.qml:313
 msgid "Reset settings"
 msgstr "Lähtesta seadistused"
@@ -307,7 +308,7 @@ msgstr ""
 
 #: src/contents/ui/Autotune.qml:169 src/contents/ui/Deesser.qml:171
 #: src/contents/ui/Filter.qml:137 src/contents/ui/Reverb.qml:126
-#: src/tags_plugin_name.cpp:64
+#: src/tags_plugin_name.cpp:65
 msgid "Filter"
 msgstr ""
 
@@ -489,7 +490,7 @@ msgstr "Näita välistatud rakendusi"
 msgid "Show excluded applications in the list of players/recorders"
 msgstr "Näita pleierite ja salvestajate loendis välistatud rakendusi"
 
-#: src/contents/ui/Compressor.qml:67 src/tags_plugin_name.cpp:50
+#: src/contents/ui/Compressor.qml:67 src/tags_plugin_name.cpp:51
 msgid "Compressor"
 msgstr "Dünaamilise ulatuse tihendamine"
 
@@ -896,7 +897,7 @@ msgstr ""
 msgid "Stereo width"
 msgstr ""
 
-#: src/contents/ui/Convolver.qml:537 src/tags_plugin_name.cpp:46
+#: src/contents/ui/Convolver.qml:537 src/tags_plugin_name.cpp:47
 msgid "Autogain"
 msgstr ""
 
@@ -1037,7 +1038,7 @@ msgid "Process only phantom center"
 msgstr ""
 
 #: src/contents/ui/CrosstalkCanceller.qml:75
-#: src/contents/ui/StereoTools.qml:294 src/tags_plugin_name.cpp:58
+#: src/contents/ui/StereoTools.qml:294 src/tags_plugin_name.cpp:59
 msgid "Delay"
 msgstr ""
 
@@ -1122,35 +1123,40 @@ msgstr "Summuta"
 msgid "Bypass"
 msgstr ""
 
-#: src/contents/ui/DeepFilterNet.qml:54
+#: src/contents/ui/DeepFilterNet.qml:52
 msgid "The selected model is not installed. Audio passes through unprocessed."
 msgstr ""
 
-#: src/contents/ui/DeepFilterNet.qml:59
+#: src/contents/ui/DeepFilterNet.qml:65
+#, fuzzy
+msgid "Model"
+msgstr "Režiim"
+
+#: src/contents/ui/DeepFilterNet.qml:82
 msgid "Attenuation limit"
 msgstr ""
 
-#: src/contents/ui/DeepFilterNet.qml:115
+#: src/contents/ui/DeepFilterNet.qml:138
 msgid "Minimum processing threshold"
 msgstr ""
 
-#: src/contents/ui/DeepFilterNet.qml:131
+#: src/contents/ui/DeepFilterNet.qml:154
 msgid "Maximum ERB processing threshold"
 msgstr ""
 
-#: src/contents/ui/DeepFilterNet.qml:147
+#: src/contents/ui/DeepFilterNet.qml:170
 msgid "Maximum DF processing threshold"
 msgstr ""
 
-#: src/contents/ui/DeepFilterNet.qml:163
+#: src/contents/ui/DeepFilterNet.qml:186
 msgid "Minimum processing buffer"
 msgstr ""
 
-#: src/contents/ui/DeepFilterNet.qml:179
+#: src/contents/ui/DeepFilterNet.qml:202
 msgid "Post filter Beta"
 msgstr ""
 
-#: src/contents/ui/Deesser.qml:63 src/tags_plugin_name.cpp:57
+#: src/contents/ui/Deesser.qml:63 src/tags_plugin_name.cpp:58
 msgid "Deesser"
 msgstr ""
 
@@ -1294,7 +1300,7 @@ msgstr "Välista"
 msgid "Add %1 to excluded applications"
 msgstr "Lisa %1 välistatud rakenduste sekka"
 
-#: src/contents/ui/EchoCanceller.qml:61 src/tags_plugin_name.cpp:59
+#: src/contents/ui/EchoCanceller.qml:61 src/tags_plugin_name.cpp:60
 msgid "Echo Canceller"
 msgstr "Kaja summutamine"
 
@@ -1621,7 +1627,7 @@ msgstr ""
 msgid "Ceil"
 msgstr ""
 
-#: src/contents/ui/Expander.qml:67 src/tags_plugin_name.cpp:63
+#: src/contents/ui/Expander.qml:67 src/tags_plugin_name.cpp:64
 msgid "Expander"
 msgstr ""
 
@@ -1639,7 +1645,7 @@ msgstr "Filtrirežiim"
 msgid "Equalizer mode"
 msgstr "Ekvalaiseri-režiim"
 
-#: src/contents/ui/Gate.qml:71 src/tags_plugin_name.cpp:65
+#: src/contents/ui/Gate.qml:71 src/tags_plugin_name.cpp:66
 msgid "Gate"
 msgstr ""
 
@@ -1813,7 +1819,7 @@ msgstr ""
 msgid "Dithering"
 msgstr ""
 
-#: src/contents/ui/Limiter.qml:116 src/tags_plugin_name.cpp:67
+#: src/contents/ui/Limiter.qml:116 src/tags_plugin_name.cpp:68
 msgid "Limiter"
 msgstr ""
 
@@ -2265,7 +2271,7 @@ msgstr ""
 msgid "Overlap length"
 msgstr ""
 
-#: src/contents/ui/Pitch.qml:164 src/tags_plugin_name.cpp:72
+#: src/contents/ui/Pitch.qml:164 src/tags_plugin_name.cpp:73
 msgid "Pitch"
 msgstr ""
 
@@ -3422,87 +3428,87 @@ msgstr ""
 msgid "Unknown"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:47
+#: src/tags_plugin_name.cpp:48
 msgid "Autotune"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:48
+#: src/tags_plugin_name.cpp:49
 msgid "Bass Enhancer"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:49
+#: src/tags_plugin_name.cpp:50
 msgid "Bass Loudness"
 msgstr "Bassi valjus"
 
-#: src/tags_plugin_name.cpp:51
+#: src/tags_plugin_name.cpp:52
 msgid "Convolver"
 msgstr "Konvolutsioon"
 
-#: src/tags_plugin_name.cpp:52
+#: src/tags_plugin_name.cpp:53
 msgid "Crossfeed"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:53
+#: src/tags_plugin_name.cpp:54
 msgid "Crosstalk Canceller"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:54
+#: src/tags_plugin_name.cpp:55
 msgid "Crusher"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:55
+#: src/tags_plugin_name.cpp:56
 msgid "Crystalizer"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:56
+#: src/tags_plugin_name.cpp:57
 msgid "Deep Noise Remover"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:60
+#: src/tags_plugin_name.cpp:61
 msgid "Equalizer"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:61
+#: src/tags_plugin_name.cpp:62
 msgid "Mid-Side Equalizer"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:62
+#: src/tags_plugin_name.cpp:63
 msgid "Exciter"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:66
+#: src/tags_plugin_name.cpp:67
 msgid "Level Meter"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:69
+#: src/tags_plugin_name.cpp:70
 msgid "Maximizer"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:70
+#: src/tags_plugin_name.cpp:71
 msgid "Multiband Compressor"
 msgstr "Mitmeribaline dünaamilise ulatuse tihendamine"
 
-#: src/tags_plugin_name.cpp:71
+#: src/tags_plugin_name.cpp:72
 msgid "Multiband Gate"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:73
+#: src/tags_plugin_name.cpp:74
 msgid "Reverberation"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:74
+#: src/tags_plugin_name.cpp:75
 msgid "Noise Reduction"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:75
+#: src/tags_plugin_name.cpp:76
 msgid "Speech Processor"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:76
+#: src/tags_plugin_name.cpp:77
 msgid "Stereo Tools"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:77
+#: src/tags_plugin_name.cpp:78
 msgid "Voice Suppressor"
 msgstr ""
 

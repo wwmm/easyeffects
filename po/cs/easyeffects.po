@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-10-09 22:56+0000\n"
+"POT-Creation-Date: 2026-10-12 15:26+0000\n"
 "PO-Revision-Date: 2026-10-11 09:51+0000\n"
 "Last-Translator: Fjuro <fjuro@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -161,7 +161,7 @@ msgstr "O aplikaci"
 #: src/contents/ui/Autogain.qml:69 src/contents/ui/BassEnhancer.qml:105
 #: src/contents/ui/BassLoudness.qml:59 src/contents/ui/Crossfeed.qml:74
 #: src/contents/ui/CrosstalkCanceller.qml:59
-#: src/contents/ui/DeepFilterNet.qml:103 src/contents/ui/Exciter.qml:106
+#: src/contents/ui/DeepFilterNet.qml:126 src/contents/ui/Exciter.qml:106
 #: src/contents/ui/Filter.qml:59 src/contents/ui/Loudness.qml:59
 #: src/contents/ui/Maximizer.qml:60 src/contents/ui/Pitch.qml:60
 #: src/contents/ui/Reverb.qml:59 src/contents/ui/Speex.qml:59
@@ -218,7 +218,7 @@ msgstr "Maximální historie"
 
 #: src/contents/ui/Autogain.qml:143 src/contents/ui/Autogain.qml:198
 #: src/contents/ui/BassLoudness.qml:67 src/contents/ui/LevelMeter.qml:146
-#: src/tags_plugin_name.cpp:68
+#: src/tags_plugin_name.cpp:69
 msgid "Loudness"
 msgstr "Vnímaná hlasitost"
 
@@ -239,13 +239,14 @@ msgstr "Výstupní zesílení"
 #: src/contents/ui/BassEnhancer.qml:205 src/contents/ui/BassLoudness.qml:126
 #: src/contents/ui/Compressor.qml:873 src/contents/ui/Convolver.qml:520
 #: src/contents/ui/Crossfeed.qml:150 src/contents/ui/Crusher.qml:236
-#: src/contents/ui/Crystalizer.qml:155 src/contents/ui/Deesser.qml:319
-#: src/contents/ui/Delay.qml:376 src/contents/ui/EchoCanceller.qml:158
-#: src/contents/ui/Equalizer.qml:315 src/contents/ui/Exciter.qml:210
-#: src/contents/ui/Expander.qml:823 src/contents/ui/Filter.qml:234
-#: src/contents/ui/Gate.qml:952 src/contents/ui/LevelMeter.qml:215
-#: src/contents/ui/Limiter.qml:607 src/contents/ui/Loudness.qml:175
-#: src/contents/ui/Maximizer.qml:122 src/contents/ui/MidSideEqualizer.qml:315
+#: src/contents/ui/Crystalizer.qml:155 src/contents/ui/DeepFilterNet.qml:229
+#: src/contents/ui/Deesser.qml:319 src/contents/ui/Delay.qml:376
+#: src/contents/ui/EchoCanceller.qml:158 src/contents/ui/Equalizer.qml:315
+#: src/contents/ui/Exciter.qml:210 src/contents/ui/Expander.qml:823
+#: src/contents/ui/Filter.qml:234 src/contents/ui/Gate.qml:952
+#: src/contents/ui/LevelMeter.qml:215 src/contents/ui/Limiter.qml:607
+#: src/contents/ui/Loudness.qml:175 src/contents/ui/Maximizer.qml:122
+#: src/contents/ui/MidSideEqualizer.qml:315
 #: src/contents/ui/MultibandCompressor.qml:965
 #: src/contents/ui/MultibandGate.qml:938 src/contents/ui/Pitch.qml:268
 #: src/contents/ui/RNNoise.qml:73 src/contents/ui/RNNoise.qml:84
@@ -255,7 +256,7 @@ msgstr "Výstupní zesílení"
 msgid "Using %1"
 msgstr "Používá %1"
 
-#: src/contents/ui/Autogain.qml:250 src/contents/ui/DeepFilterNet.qml:224
+#: src/contents/ui/Autogain.qml:250 src/contents/ui/DeepFilterNet.qml:246
 #: src/contents/ui/LevelMeter.qml:232 src/contents/ui/Pitch.qml:285
 msgid "Reset history"
 msgstr "Vymazat historii"
@@ -269,7 +270,7 @@ msgid "Force silence when the level is below the silence threshold"
 msgstr "Vynutit ticho, když je úroveň pod hranicí ticha"
 
 #: src/contents/ui/Autogain.qml:270 src/contents/ui/Autotune.qml:436
-#: src/contents/ui/DeepFilterNet.qml:232 src/contents/ui/LevelMeter.qml:240
+#: src/contents/ui/DeepFilterNet.qml:254 src/contents/ui/LevelMeter.qml:240
 #: src/contents/ui/Pitch.qml:313
 msgid "Reset settings"
 msgstr "Resetovat nastavení"
@@ -310,7 +311,7 @@ msgstr "Zaujatost"
 
 #: src/contents/ui/Autotune.qml:169 src/contents/ui/Deesser.qml:171
 #: src/contents/ui/Filter.qml:137 src/contents/ui/Reverb.qml:126
-#: src/tags_plugin_name.cpp:64
+#: src/tags_plugin_name.cpp:65
 msgid "Filter"
 msgstr "Filtr"
 
@@ -492,7 +493,7 @@ msgstr "Zobrazit vyloučené aplikace"
 msgid "Show excluded applications in the list of players/recorders"
 msgstr "Zobrazit vyloučené aplikace v seznamu přehrávačů/záznamníků"
 
-#: src/contents/ui/Compressor.qml:67 src/tags_plugin_name.cpp:50
+#: src/contents/ui/Compressor.qml:67 src/tags_plugin_name.cpp:51
 msgid "Compressor"
 msgstr "Kompresor"
 
@@ -899,7 +900,7 @@ msgstr "Formát"
 msgid "Stereo width"
 msgstr "Šířka sterea"
 
-#: src/contents/ui/Convolver.qml:537 src/tags_plugin_name.cpp:46
+#: src/contents/ui/Convolver.qml:537 src/tags_plugin_name.cpp:47
 msgid "Autogain"
 msgstr "Autogain"
 
@@ -1040,7 +1041,7 @@ msgid "Process only phantom center"
 msgstr "Zpracovat pouze střed fantomu"
 
 #: src/contents/ui/CrosstalkCanceller.qml:75
-#: src/contents/ui/StereoTools.qml:294 src/tags_plugin_name.cpp:58
+#: src/contents/ui/StereoTools.qml:294 src/tags_plugin_name.cpp:59
 msgid "Delay"
 msgstr "Zpoždění (Delay)"
 
@@ -1125,35 +1126,40 @@ msgstr "Ztlumit"
 msgid "Bypass"
 msgstr "Bypass"
 
-#: src/contents/ui/DeepFilterNet.qml:54
+#: src/contents/ui/DeepFilterNet.qml:52
 msgid "The selected model is not installed. Audio passes through unprocessed."
 msgstr "Zvolený model není nainstalovaný. Zvuk prochází skrz nezpracovaný."
 
-#: src/contents/ui/DeepFilterNet.qml:59
+#: src/contents/ui/DeepFilterNet.qml:65
+#, fuzzy
+msgid "Model"
+msgstr "Modely"
+
+#: src/contents/ui/DeepFilterNet.qml:82
 msgid "Attenuation limit"
 msgstr "Hranice útlumu"
 
-#: src/contents/ui/DeepFilterNet.qml:115
+#: src/contents/ui/DeepFilterNet.qml:138
 msgid "Minimum processing threshold"
 msgstr "Minimální práh zpracování"
 
-#: src/contents/ui/DeepFilterNet.qml:131
+#: src/contents/ui/DeepFilterNet.qml:154
 msgid "Maximum ERB processing threshold"
 msgstr "Maximální práh zpracování ERB"
 
-#: src/contents/ui/DeepFilterNet.qml:147
+#: src/contents/ui/DeepFilterNet.qml:170
 msgid "Maximum DF processing threshold"
 msgstr "Maximální práh zpracování DF"
 
-#: src/contents/ui/DeepFilterNet.qml:163
+#: src/contents/ui/DeepFilterNet.qml:186
 msgid "Minimum processing buffer"
 msgstr "Minimální vyrovnávací paměť pro zpracování"
 
-#: src/contents/ui/DeepFilterNet.qml:179
+#: src/contents/ui/DeepFilterNet.qml:202
 msgid "Post filter Beta"
 msgstr "Beta post filtr"
 
-#: src/contents/ui/Deesser.qml:63 src/tags_plugin_name.cpp:57
+#: src/contents/ui/Deesser.qml:63 src/tags_plugin_name.cpp:58
 msgid "Deesser"
 msgstr "Odstranění sykavek"
 
@@ -1297,7 +1303,7 @@ msgstr "Vyloučit"
 msgid "Add %1 to excluded applications"
 msgstr "Přidat %1 do vyloučených aplikací"
 
-#: src/contents/ui/EchoCanceller.qml:61 src/tags_plugin_name.cpp:59
+#: src/contents/ui/EchoCanceller.qml:61 src/tags_plugin_name.cpp:60
 msgid "Echo Canceller"
 msgstr "Potlačení ozvěny"
 
@@ -1633,7 +1639,7 @@ msgstr "Strop aktivní"
 msgid "Ceil"
 msgstr "Strop"
 
-#: src/contents/ui/Expander.qml:67 src/tags_plugin_name.cpp:63
+#: src/contents/ui/Expander.qml:67 src/tags_plugin_name.cpp:64
 msgid "Expander"
 msgstr "Expander"
 
@@ -1651,7 +1657,7 @@ msgstr "Režim filtru"
 msgid "Equalizer mode"
 msgstr "Režim ekvalizéru"
 
-#: src/contents/ui/Gate.qml:71 src/tags_plugin_name.cpp:65
+#: src/contents/ui/Gate.qml:71 src/tags_plugin_name.cpp:66
 msgid "Gate"
 msgstr "Gate"
 
@@ -1825,7 +1831,7 @@ msgstr "Opravdový vrchol/24 bitů"
 msgid "Dithering"
 msgstr "Dither"
 
-#: src/contents/ui/Limiter.qml:116 src/tags_plugin_name.cpp:67
+#: src/contents/ui/Limiter.qml:116 src/tags_plugin_name.cpp:68
 msgid "Limiter"
 msgstr "Limiter"
 
@@ -2283,7 +2289,7 @@ msgstr "Vyhledávací okno"
 msgid "Overlap length"
 msgstr "Délka překryvu"
 
-#: src/contents/ui/Pitch.qml:164 src/tags_plugin_name.cpp:72
+#: src/contents/ui/Pitch.qml:164 src/tags_plugin_name.cpp:73
 msgid "Pitch"
 msgstr "Výška tónu"
 
@@ -3461,87 +3467,87 @@ msgstr "Chyba"
 msgid "Unknown"
 msgstr "Neznámý"
 
-#: src/tags_plugin_name.cpp:47
+#: src/tags_plugin_name.cpp:48
 msgid "Autotune"
 msgstr "Autotune"
 
-#: src/tags_plugin_name.cpp:48
+#: src/tags_plugin_name.cpp:49
 msgid "Bass Enhancer"
 msgstr "Zvýraznění basů"
 
-#: src/tags_plugin_name.cpp:49
+#: src/tags_plugin_name.cpp:50
 msgid "Bass Loudness"
 msgstr "Hlasitost basů"
 
-#: src/tags_plugin_name.cpp:51
+#: src/tags_plugin_name.cpp:52
 msgid "Convolver"
 msgstr "Konvolver"
 
-#: src/tags_plugin_name.cpp:52
+#: src/tags_plugin_name.cpp:53
 msgid "Crossfeed"
 msgstr "Prolínání kanálů"
 
-#: src/tags_plugin_name.cpp:53
+#: src/tags_plugin_name.cpp:54
 msgid "Crosstalk Canceller"
 msgstr "Potlačení přeslechů"
 
-#: src/tags_plugin_name.cpp:54
+#: src/tags_plugin_name.cpp:55
 msgid "Crusher"
 msgstr "Crusher"
 
-#: src/tags_plugin_name.cpp:55
+#: src/tags_plugin_name.cpp:56
 msgid "Crystalizer"
 msgstr "Krystalizér"
 
-#: src/tags_plugin_name.cpp:56
+#: src/tags_plugin_name.cpp:57
 msgid "Deep Noise Remover"
 msgstr "Hloubkové odstranění šumu"
 
-#: src/tags_plugin_name.cpp:60
+#: src/tags_plugin_name.cpp:61
 msgid "Equalizer"
 msgstr "Ekvalizér"
 
-#: src/tags_plugin_name.cpp:61
+#: src/tags_plugin_name.cpp:62
 msgid "Mid-Side Equalizer"
 msgstr "Mid-Side ekvalizér"
 
-#: src/tags_plugin_name.cpp:62
+#: src/tags_plugin_name.cpp:63
 msgid "Exciter"
 msgstr "Budič"
 
-#: src/tags_plugin_name.cpp:66
+#: src/tags_plugin_name.cpp:67
 msgid "Level Meter"
 msgstr "Měřič úrovně"
 
-#: src/tags_plugin_name.cpp:69
+#: src/tags_plugin_name.cpp:70
 msgid "Maximizer"
 msgstr "Maximalizér"
 
-#: src/tags_plugin_name.cpp:70
+#: src/tags_plugin_name.cpp:71
 msgid "Multiband Compressor"
 msgstr "Vícepásmový kompresor"
 
-#: src/tags_plugin_name.cpp:71
+#: src/tags_plugin_name.cpp:72
 msgid "Multiband Gate"
 msgstr "Vícepásmový gate"
 
-#: src/tags_plugin_name.cpp:73
+#: src/tags_plugin_name.cpp:74
 msgid "Reverberation"
 msgstr "Dozvuk"
 
-#: src/tags_plugin_name.cpp:74
+#: src/tags_plugin_name.cpp:75
 msgid "Noise Reduction"
 msgstr "Redukce šumu"
 
-#: src/tags_plugin_name.cpp:75
+#: src/tags_plugin_name.cpp:76
 msgid "Speech Processor"
 msgstr "Zpracování řeči"
 
-#: src/tags_plugin_name.cpp:76
+#: src/tags_plugin_name.cpp:77
 msgid "Stereo Tools"
 msgstr "Stereo nástroje"
 
-#: src/tags_plugin_name.cpp:77
+#: src/tags_plugin_name.cpp:78
 msgid "Voice Suppressor"
 msgstr "Potlačení hlasu"
 
@@ -4277,9 +4283,6 @@ msgstr "Jednoduché zvukové efekty"
 
 #~ msgid "Refresh to show new installed community presets"
 #~ msgstr "Obnovte pro zobrazení nově nainstalovaných komunitních předvoleb"
-
-#~ msgid "Models"
-#~ msgstr "Modely"
 
 #~ msgid "RNNoise Models List"
 #~ msgstr "Seznam RNNoise modelů"
