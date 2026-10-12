@@ -44,7 +44,7 @@ DeepFilterNet::DeepFilterNet(const std::string& tag,
                              QString instance_id)
     : PluginBase(tag,
                  tags::plugin_name::BaseName::deepfilternet,
-                 tags::plugin_package::Package::deepfilternet,
+                 tags::plugin_package::Package::ee,
                  instance_id,
                  pipe_manager,
                  pipe_type),

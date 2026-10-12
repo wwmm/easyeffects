@@ -42,16 +42,39 @@ Kirigami.ScrollablePage {
         inputOutputLevels.setOutputLevelRight(pluginBackend.getOutputLevelRight());
     }
 
+    function warnIfModelMissing() {
+        if (!pluginBackend)
+            return;
+
+        const installed = pluginDB.model === 1 ? pluginBackend.dpdfnetInstalled : pluginBackend.deepFilterNetInstalled;
+
+        if (!installed)
+            appWindow.showStatus(i18n("The selected model is not installed. Audio passes through unprocessed."), Kirigami.MessageType.Warning, false); // qmllint disable
+    }
+
     Component.onCompleted: {
         pluginBackend = pipelineInstance.getPluginInstance(name);
+        warnIfModelMissing();
     }
 
     ColumnLayout {
-        Kirigami.InlineMessage {
-            Layout.fillWidth: true
-            type: Kirigami.MessageType.Warning
-            visible: deepfilternetPage.pluginBackend && (deepfilternetPage.pluginDB.model === 1 ? !deepfilternetPage.pluginBackend.dpdfnetInstalled : !deepfilternetPage.pluginBackend.deepFilterNetInstalled)
-            text: i18n("The selected model is not installed. Audio passes through unprocessed.") // qmllint disable
+        RowLayout {
+            Layout.alignment: Qt.AlignHCenter
+
+            Controls.Label {
+                text: i18n("Model") // qmllint disable
+            }
+
+            Controls.ComboBox {
+                id: modelCombo
+
+                currentIndex: deepfilternetPage.pluginDB.model
+                model: deepfilternetPage.pluginDB.modelLabels
+                onActivated: idx => {
+                    deepfilternetPage.pluginDB.model = idx;
+                    deepfilternetPage.warnIfModelMissing();
+                }
+            }
         }
 
         Controls.Label {
@@ -83,7 +106,7 @@ Kirigami.ScrollablePage {
 
         Controls.Label {
             Layout.alignment: Qt.AlignHCenter
-            text: attenuationLimit.value
+            text: `${attenuationLimit.value} ${Units.dB}`
         }
 
         Kirigami.CardsLayout {
@@ -202,16 +225,15 @@ Kirigami.ScrollablePage {
     header: inputOutputLevels
 
     footer: RowLayout {
-        Controls.ComboBox {
-            id: modelCombo
-
+        Controls.Label {
+            text: i18n("Using %1", `<strong>${deepfilternetPage.pluginDB.model === 1 ? "DPDFNet" : "DeepFilterNet"}</strong>`) // qmllint disable
+            textFormat: Text.RichText
+            horizontalAlignment: Qt.AlignLeft
+            verticalAlignment: Qt.AlignVCenter
+            Layout.fillWidth: false
             Layout.leftMargin: Kirigami.Units.mediumSpacing * 2
             Layout.rightMargin: Kirigami.Units.largeSpacing * 8
-            currentIndex: deepfilternetPage.pluginDB.model
-            model: deepfilternetPage.pluginDB.modelLabels
-            onActivated: idx => {
-                deepfilternetPage.pluginDB.model = idx;
-            }
+            color: Kirigami.Theme.disabledTextColor
         }
 
         Kirigami.ActionToolBar {

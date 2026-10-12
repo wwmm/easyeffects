@@ -70,7 +70,6 @@ class Package : public QObject {
   // NOLINTBEGIN(bugprone-throwing-static-initialization)
   CREATE_PROPERTY(QString, bs2b, QStringLiteral("bs2b"));
   CREATE_PROPERTY(QString, calf, QStringLiteral("Calf Studio Gear"));
-  CREATE_PROPERTY(QString, deepfilternet, QStringLiteral("DeepFilterNet"));
   CREATE_PROPERTY(QString, x42, QStringLiteral("x42"));
   CREATE_PROPERTY(QString, ebur128, QStringLiteral("libebur128"));
   CREATE_PROPERTY(QString, ee, QStringLiteral("Easy Effects"));

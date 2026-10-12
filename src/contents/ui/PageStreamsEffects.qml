@@ -220,7 +220,7 @@ Kirigami.Page {
                     [PluginsBaseName.crusher]: PluginsPackage.calf,
                     [PluginsBaseName.crystalizer]: PluginsPackage.zita,
                     [PluginsBaseName.delay]: PluginsPackage.lsp,
-                    [PluginsBaseName.deepfilternet]: PluginsPackage.deepfilternet,
+                    [PluginsBaseName.deepfilternet]: "DeepFilterNet / DPDFNet",
                     [PluginsBaseName.deesser]: PluginsPackage.calf,
                     [PluginsBaseName.equalizer]: PluginsPackage.lsp,
                     [PluginsBaseName.midsideEqualizer]: PluginsPackage.lsp,
