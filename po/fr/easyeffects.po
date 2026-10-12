@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-09 22:56+0000\n"
-"PO-Revision-Date: 2026-10-11 19:53+0000\n"
+"PO-Revision-Date: 2026-10-12 20:55+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2026.10.1.dev0\n"
+"X-Generator: Weblate 2026.11.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -839,20 +839,20 @@ msgstr "Séparation stéréo"
 
 #: src/contents/ui/Convolver.qml:66
 msgid "Loaded the %1 Convolver impulse."
-msgstr "Chargement de l'impulsion %1 du Convolver."
+msgstr "Chargement de l'impulsion %1 du Convolveur."
 
 #: src/contents/ui/Convolver.qml:68 src/contents/ui/Convolver.qml:342
 msgid "Convolver impulse is not set"
-msgstr "L'impulsion du Convolver n'est pas définie"
+msgstr "L'impulsion du Convolveur n'est pas définie"
 
 #: src/contents/ui/Convolver.qml:72
 msgid "The Convolver is in passthrough mode."
-msgstr "Le Convolver est en mode transparent."
+msgstr "Le Convolveur est en mode transparent."
 
 #: src/contents/ui/Convolver.qml:74
 msgid "Failed to load the %1 impulse. The Convolver is in passthrough mode."
 msgstr ""
-"Échec du chargement de l'impulsion %1. Le Convolver est en mode transparent."
+"Échec du chargement de l'impulsion %1. Le Convolveur est en mode transparent."
 
 #: src/contents/ui/Convolver.qml:151
 msgid "First"
@@ -910,11 +910,11 @@ msgstr "Gain Automatique"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:49
 msgid "Imported a new Convolver impulse file."
-msgstr "Importation d'un nouveau fichier d'impulsion du Convolver."
+msgstr "Importation d'un nouveau fichier d'impulsion du Convolveur."
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:51
 msgid "Failed to import the Convolver impulse file."
-msgstr "Échec de l'importation du fichier d'impulsion du Convolver."
+msgstr "Échec de l'importation du fichier d'impulsion du Convolveur."
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:65
 #: src/contents/ui/MenuAddPlugins.qml:186
@@ -934,11 +934,11 @@ msgstr ""
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:113
 msgid "Removed the %1 Convolver impulse."
-msgstr "Suppression de l'impulsion %1 du Convolver."
+msgstr "Suppression de l'impulsion %1 du Convolveur."
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:115
 msgid "Failed to remove the %1 Convolver impulse."
-msgstr "Échec de la suppression de l'impulsion %1 du Convolver."
+msgstr "Échec de la suppression de l'impulsion %1 du Convolveur."
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:123
 msgid "Rename Impulse"
@@ -1646,7 +1646,7 @@ msgstr "Plafonner"
 
 #: src/contents/ui/Expander.qml:67 src/tags_plugin_name.cpp:63
 msgid "Expander"
-msgstr "Expanseur"
+msgstr "Expandeur"
 
 #: src/contents/ui/Expander.qml:226 src/contents/ui/Gate.qml:244
 #: src/contents/ui/Limiter.qml:217 src/contents/ui/MultibandCompressor.qml:427
@@ -3516,7 +3516,7 @@ msgstr "Sonie des Basses"
 
 #: src/tags_plugin_name.cpp:51
 msgid "Convolver"
-msgstr "Convolver"
+msgstr "Convolveur"
 
 #: src/tags_plugin_name.cpp:52
 msgid "Crossfeed"
@@ -3528,7 +3528,7 @@ msgstr "Suppresseur de Diaphonie"
 
 #: src/tags_plugin_name.cpp:54
 msgid "Crusher"
-msgstr "Crusher"
+msgstr "Broyeur"
 
 #: src/tags_plugin_name.cpp:55
 msgid "Crystalizer"
