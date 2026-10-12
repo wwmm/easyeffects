@@ -157,11 +157,6 @@ void DeepFilterNet::setup() {
   use_dpdfnet = settings->model() == 1;
   mono_processing = use_dpdfnet && settings->monoProcessing();
 
-  // Allocate before processing; mixing must not allocate in the audio callback.
-  if (mono_processing) {
-    mono_input.resize(n_samples);
-  }
-
   if (use_dpdfnet ? !dpdfnetInstalled : !deepFilterNetInstalled) {
     util::warning(std::format("{}the selected model is not installed", log_tag));
 
@@ -175,13 +170,17 @@ void DeepFilterNet::setup() {
 
   QMetaObject::invokeMethod(
       baseWorker,
-      [this, dpdfnet = use_dpdfnet, mono = mono_processing, generation] {
+      [this, dpdfnet = use_dpdfnet, mono = mono_processing, generation, block_size = n_samples] {
         {
           std::scoped_lock<std::mutex> lock(data_mutex);
           if (generation != setup_generation) {
             return;
           }
         }
+
+        // setup() can be called by PipeWire's process callback. Allocate here
+        // on the worker, and publish only when this configuration is ready.
+        std::vector<float> mono_buffer(mono ? block_size : 0U);
 
         if (dpdfnet) {
           dpdfnet_l->n_samples = n_samples;
@@ -230,7 +229,10 @@ void DeepFilterNet::setup() {
 
         // Rapid model/preset changes must not activate a superseded setup.
         ready = generation == setup_generation;
-        if (!ready) {
+        if (ready) {
+          // Swap under the lock; the old buffer is freed after unlocking.
+          mono_input.swap(mono_buffer);
+        } else if (!ready) {
           resampler_ready = false;
         }
       },
@@ -262,8 +264,8 @@ void DeepFilterNet::process(std::span<float>& left_in,
   if (mono_processing) {
     // Average before resampling, and before writing either output: PipeWire may
     // provide in-place buffers. Duplicated mono retains its original level.
-    std::transform(left_in.begin(), left_in.end(), right_in.begin(), mono_input.begin(),
-                   [](const float left, const float right) { return 0.5F * left + 0.5F * right; });
+    std::ranges::transform(left_in, right_in, mono_input.begin(),
+                           [](const float left, const float right) { return (0.5F * left) + (0.5F * right); });
     model_inL = std::span<const float>(mono_input).first(left_in.size());
     model_inR = model_inL;
   }
