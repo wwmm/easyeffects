@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-09 22:56+0000\n"
-"PO-Revision-Date: 2026-09-25 20:51+0000\n"
+"PO-Revision-Date: 2026-10-12 11:53+0000\n"
 "Last-Translator: NooB9496 <noob9496@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/main/"
 "pl/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 2026.10.dev0\n"
+"X-Generator: Weblate 2026.11.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -1138,6 +1138,8 @@ msgstr "Pomiń"
 #: src/contents/ui/DeepFilterNet.qml:54
 msgid "The selected model is not installed. Audio passes through unprocessed."
 msgstr ""
+"Wybrany model nie jest zainstalowany. Sygnał audio przechodzi bez "
+"przetwarzania."
 
 # Tłumienie?
 #: src/contents/ui/DeepFilterNet.qml:59
@@ -2620,9 +2622,8 @@ msgid "Maximum"
 msgstr "Maksimum"
 
 #: src/contents/ui/PreferencesSheet.qml:633
-#, fuzzy
 msgid "Level Range"
-msgstr "Miernik poziomu"
+msgstr "Zakres poziomów"
 
 #: src/contents/ui/PreferencesSheet.qml:638
 #: src/contents/ui/PreferencesSheet.qml:894
@@ -2633,38 +2634,42 @@ msgstr "Automatycznie"
 msgid ""
 "Follows the loudest and the quieter bands within the minimum and maximum."
 msgstr ""
+"Wybiera najgłośniejsze i najcichsze pasma w zakresie od wartości minimalnej "
+"do maksymalnej."
 
 #: src/contents/ui/PreferencesSheet.qml:649
-#, fuzzy
 msgid "Minimum span"
-msgstr "Minimalne Quantum"
+msgstr "Minimalna rozpiętość"
 
 #: src/contents/ui/PreferencesSheet.qml:693
 msgid ""
 "Tilts the display around 1 kHz. The shown levels are no longer absolute."
 msgstr ""
+"Powoduje odchylenie wyświetlacza w okolicy 1 kHz. Wyświetlane poziomy nie są "
+"już wartościami bezwzględnymi."
 
 #: src/contents/ui/PreferencesSheet.qml:708
 msgid "Analysis"
-msgstr ""
+msgstr "Analiza"
 
 #: src/contents/ui/PreferencesSheet.qml:725
 msgid "Zero padding"
-msgstr ""
+msgstr "Wypełnienie zerami"
 
 #: src/contents/ui/PreferencesSheet.qml:726
 msgid ""
 "Interpolates the spectrum. It does not increase the frequency resolution."
 msgstr ""
+"Wykonuje interpolację widma. Nie zwiększa to rozdzielczości "
+"częstotliwościowej."
 
 #: src/contents/ui/PreferencesSheet.qml:738
-#, fuzzy
 msgid "Window function"
-msgstr "Redukcja wzmocnienia"
+msgstr "Funkcja okienkowa"
 
 #: src/contents/ui/PreferencesSheet.qml:742
 msgid "Rectangular"
-msgstr ""
+msgstr "Prostokątny"
 
 #: src/contents/ui/PreferencesSheet.qml:742
 msgid "Hann"
@@ -2683,9 +2688,8 @@ msgid "Blackman-Harris"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:742
-#, fuzzy
 msgid "Flat top"
-msgstr "Płaskie"
+msgstr "Płaska góra"
 
 #: src/contents/ui/PreferencesSheet.qml:786
 msgid "Database autosave interval"
