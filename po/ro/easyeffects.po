@@ -170,7 +170,7 @@ msgstr "Despre"
 #: src/contents/ui/Filter.qml:59 src/contents/ui/Loudness.qml:59
 #: src/contents/ui/Maximizer.qml:60 src/contents/ui/Pitch.qml:60
 #: src/contents/ui/Reverb.qml:59 src/contents/ui/Speex.qml:59
-#: src/contents/ui/VoiceSuppressor.qml:58
+#: src/contents/ui/VoiceSuppressor.qml:58 src/contents/ui/DeepFilterNet.qml:146
 msgid "Controls"
 msgstr "Controale"
 
@@ -258,11 +258,13 @@ msgstr "Câștig de ieșire"
 #: src/contents/ui/RNNoise.qml:298 src/contents/ui/RNNoise.qml:300
 #: src/contents/ui/RNNoise.qml:320 src/contents/ui/Reverb.qml:318
 #: src/contents/ui/Speex.qml:177 src/contents/ui/StereoTools.qml:392
+#: src/contents/ui/DeepFilterNet.qml:249
 msgid "Using %1"
 msgstr "Utilizând %1"
 
 #: src/contents/ui/Autogain.qml:250 src/contents/ui/DeepFilterNet.qml:246
 #: src/contents/ui/LevelMeter.qml:232 src/contents/ui/Pitch.qml:285
+#: src/contents/ui/DeepFilterNet.qml:266
 msgid "Reset history"
 msgstr "Reinițiere istoric"
 
@@ -276,7 +278,7 @@ msgstr "Forțează modul silențios când nivelul este sub pragul de liniște"
 
 #: src/contents/ui/Autogain.qml:270 src/contents/ui/Autotune.qml:436
 #: src/contents/ui/DeepFilterNet.qml:254 src/contents/ui/LevelMeter.qml:240
-#: src/contents/ui/Pitch.qml:313
+#: src/contents/ui/Pitch.qml:313 src/contents/ui/DeepFilterNet.qml:274
 msgid "Reset settings"
 msgstr "Restaurare valori"
 
@@ -1144,27 +1146,27 @@ msgstr ""
 msgid "Model"
 msgstr "Model"
 
-#: src/contents/ui/DeepFilterNet.qml:82
+#: src/contents/ui/DeepFilterNet.qml:82 src/contents/ui/DeepFilterNet.qml:101
 msgid "Attenuation limit"
 msgstr "Limita de atenuare"
 
-#: src/contents/ui/DeepFilterNet.qml:138
+#: src/contents/ui/DeepFilterNet.qml:138 src/contents/ui/DeepFilterNet.qml:158
 msgid "Minimum processing threshold"
 msgstr "Pragul minim de procesare"
 
-#: src/contents/ui/DeepFilterNet.qml:154
+#: src/contents/ui/DeepFilterNet.qml:154 src/contents/ui/DeepFilterNet.qml:174
 msgid "Maximum ERB processing threshold"
 msgstr "Pragul maxim de procesare ERB"
 
-#: src/contents/ui/DeepFilterNet.qml:170
+#: src/contents/ui/DeepFilterNet.qml:170 src/contents/ui/DeepFilterNet.qml:190
 msgid "Maximum DF processing threshold"
 msgstr "Pragul maxim de procesare DF"
 
-#: src/contents/ui/DeepFilterNet.qml:186
+#: src/contents/ui/DeepFilterNet.qml:186 src/contents/ui/DeepFilterNet.qml:206
 msgid "Minimum processing buffer"
 msgstr "Memoria tampon minimă de procesare"
 
-#: src/contents/ui/DeepFilterNet.qml:202
+#: src/contents/ui/DeepFilterNet.qml:202 src/contents/ui/DeepFilterNet.qml:222
 msgid "Post filter Beta"
 msgstr "Filtru posterior beta"
 
@@ -3714,6 +3716,12 @@ msgstr "Egalizator, compresor și alte efecte audio"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "Efecte audio simple"
+
+#: src/contents/ui/DeepFilterNet.qml:67
+#, fuzzy
+msgid "%1 model is not installed. Audio passes through unprocessed."
+msgstr ""
+"Modelul selectat nu este instalat. Sunetul este transmis fără a fi procesat."
 
 #~ msgid "Dynamic scale"
 #~ msgstr "Scară dinamică"

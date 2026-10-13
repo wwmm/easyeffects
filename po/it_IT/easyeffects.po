@@ -10,8 +10,8 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-12 15:26+0000\n"
 "PO-Revision-Date: 2026-10-13 10:51+0000\n"
-"Last-Translator: Giusy Digital <digitalone1@users.noreply.hosted.weblate.org>"
-"\n"
+"Last-Translator: Giusy Digital "
+"<digitalone1@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
 "Language: it_IT\n"
@@ -170,7 +170,7 @@ msgstr "Informazioni"
 #: src/contents/ui/Filter.qml:59 src/contents/ui/Loudness.qml:59
 #: src/contents/ui/Maximizer.qml:60 src/contents/ui/Pitch.qml:60
 #: src/contents/ui/Reverb.qml:59 src/contents/ui/Speex.qml:59
-#: src/contents/ui/VoiceSuppressor.qml:58
+#: src/contents/ui/VoiceSuppressor.qml:58 src/contents/ui/DeepFilterNet.qml:146
 msgid "Controls"
 msgstr "Parametri"
 
@@ -258,11 +258,13 @@ msgstr "Guadagno in uscita"
 #: src/contents/ui/RNNoise.qml:298 src/contents/ui/RNNoise.qml:300
 #: src/contents/ui/RNNoise.qml:320 src/contents/ui/Reverb.qml:318
 #: src/contents/ui/Speex.qml:177 src/contents/ui/StereoTools.qml:392
+#: src/contents/ui/DeepFilterNet.qml:249
 msgid "Using %1"
 msgstr "Utilizzo %1"
 
 #: src/contents/ui/Autogain.qml:250 src/contents/ui/DeepFilterNet.qml:246
 #: src/contents/ui/LevelMeter.qml:232 src/contents/ui/Pitch.qml:285
+#: src/contents/ui/DeepFilterNet.qml:266
 msgid "Reset history"
 msgstr "Reimposta cronologia"
 
@@ -277,7 +279,7 @@ msgstr ""
 
 #: src/contents/ui/Autogain.qml:270 src/contents/ui/Autotune.qml:436
 #: src/contents/ui/DeepFilterNet.qml:254 src/contents/ui/LevelMeter.qml:240
-#: src/contents/ui/Pitch.qml:313
+#: src/contents/ui/Pitch.qml:313 src/contents/ui/DeepFilterNet.qml:274
 msgid "Reset settings"
 msgstr "Reimposta configurazioni"
 
@@ -1145,27 +1147,27 @@ msgstr ""
 msgid "Model"
 msgstr "Modello"
 
-#: src/contents/ui/DeepFilterNet.qml:82
+#: src/contents/ui/DeepFilterNet.qml:82 src/contents/ui/DeepFilterNet.qml:101
 msgid "Attenuation limit"
 msgstr "Limite di attenuazione"
 
-#: src/contents/ui/DeepFilterNet.qml:138
+#: src/contents/ui/DeepFilterNet.qml:138 src/contents/ui/DeepFilterNet.qml:158
 msgid "Minimum processing threshold"
 msgstr "Soglia minima di elaborazione"
 
-#: src/contents/ui/DeepFilterNet.qml:154
+#: src/contents/ui/DeepFilterNet.qml:154 src/contents/ui/DeepFilterNet.qml:174
 msgid "Maximum ERB processing threshold"
 msgstr "Soglia massima di elaborazione ERB"
 
-#: src/contents/ui/DeepFilterNet.qml:170
+#: src/contents/ui/DeepFilterNet.qml:170 src/contents/ui/DeepFilterNet.qml:190
 msgid "Maximum DF processing threshold"
 msgstr "Soglia minima di elaborazione DF"
 
-#: src/contents/ui/DeepFilterNet.qml:186
+#: src/contents/ui/DeepFilterNet.qml:186 src/contents/ui/DeepFilterNet.qml:206
 msgid "Minimum processing buffer"
 msgstr "Limite minimo del buffer"
 
-#: src/contents/ui/DeepFilterNet.qml:202
+#: src/contents/ui/DeepFilterNet.qml:202 src/contents/ui/DeepFilterNet.qml:222
 msgid "Post filter Beta"
 msgstr "Post filtro Beta"
 
@@ -3705,6 +3707,13 @@ msgstr "Equalizzatore, Compressore e Altri Effetti Audio"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "Effetti audio semplificati"
+
+#: src/contents/ui/DeepFilterNet.qml:67
+#, fuzzy
+msgid "%1 model is not installed. Audio passes through unprocessed."
+msgstr ""
+"Il modello selezionato non è installato. Il flusso audio non viene "
+"processato."
 
 #~ msgid "Dynamic scale"
 #~ msgstr "Scala dinamica"
