@@ -375,7 +375,7 @@ Kirigami.ApplicationWindow {
                     checked: DbMain.visiblePage === 0 && DbStreamOutputs.visiblePage === 1
                     display: segmentedButton.display
                     visible: DbMain.visiblePage !== 2
-                    Kirigami.MnemonicData.controlType: Kirigami.MnemonicData.DialogButton
+                    Kirigami.MnemonicData.controlType: Kirigami.MnemonicData.ActionElement
                     onClicked: {
                         DbMain.visiblePage = 0;
                         DbStreamOutputs.visiblePage = 1;
@@ -391,7 +391,7 @@ Kirigami.ApplicationWindow {
                     checked: DbMain.visiblePage === 1 && DbStreamInputs.visiblePage === 1
                     display: segmentedButton.display
                     visible: DbMain.visiblePage !== 2
-                    Kirigami.MnemonicData.controlType: Kirigami.MnemonicData.DialogButton
+                    Kirigami.MnemonicData.controlType: Kirigami.MnemonicData.ActionElement
                     onClicked: {
                         DbMain.visiblePage = 1;
                         DbStreamInputs.visiblePage = 1;
@@ -407,7 +407,7 @@ Kirigami.ApplicationWindow {
                     checked: DbMain.visiblePage === 0 && DbStreamOutputs.visiblePage === 0
                     display: segmentedButton.display
                     visible: DbMain.visiblePage !== 2
-                    Kirigami.MnemonicData.controlType: Kirigami.MnemonicData.DialogButton
+                    Kirigami.MnemonicData.controlType: Kirigami.MnemonicData.ActionElement
                     onClicked: {
                         DbMain.visiblePage = 0;
                         DbStreamOutputs.visiblePage = 0;
@@ -423,7 +423,7 @@ Kirigami.ApplicationWindow {
                     checked: DbMain.visiblePage === 1 && DbStreamInputs.visiblePage === 0
                     display: segmentedButton.display
                     visible: DbMain.visiblePage !== 2
-                    Kirigami.MnemonicData.controlType: Kirigami.MnemonicData.DialogButton
+                    Kirigami.MnemonicData.controlType: Kirigami.MnemonicData.ActionElement
                     onClicked: {
                         DbMain.visiblePage = 1;
                         DbStreamInputs.visiblePage = 0;
