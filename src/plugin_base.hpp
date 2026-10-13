@@ -217,11 +217,11 @@ class PluginBase : public QObject {
     input_gain = util::db_to_linear(settings->inputGain());
     output_gain = util::db_to_linear(settings->outputGain());
 
-    connect(settings, &dbClass::bypassChanged, [&, settings]() { bypass = settings->bypass(); });
+    connect(settings, &dbClass::bypassChanged, [&, settings] { bypass = settings->bypass(); });
     connect(settings, &dbClass::inputGainChanged,
-            [&, settings]() { input_gain = util::db_to_linear(settings->inputGain()); });
+            [&, settings] { input_gain = util::db_to_linear(settings->inputGain()); });
     connect(settings, &dbClass::outputGainChanged,
-            [&, settings]() { output_gain = util::db_to_linear(settings->outputGain()); });
+            [&, settings] { output_gain = util::db_to_linear(settings->outputGain()); });
   }
 
  private:

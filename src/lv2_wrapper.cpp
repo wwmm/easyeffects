@@ -243,22 +243,32 @@ auto Lv2Wrapper::create_instance(const uint& rate) -> bool {
 
   this->rate = rate;
 
-  LV2_Log_Log lv2_log = {.handle = this,
-                         .printf = &lv2_printf,
-                         .vprintf = []([[maybe_unused]] LV2_Log_Handle handle, [[maybe_unused]] LV2_URID type,
-                                       const char* fmt, va_list ap) { return std::vprintf(fmt, ap); }};
+  LV2_Log_Log lv2_log = {
+      .handle = this,
+      .printf = &lv2_printf,
+      .vprintf = []([[maybe_unused]] LV2_Log_Handle handle, [[maybe_unused]] LV2_URID type, const char* fmt,
+                    va_list ap) { return std::vprintf(fmt, ap); },
+  };
 
-  LV2_URID_Map lv2_map = {.handle = this, .map = [](LV2_URID_Map_Handle handle, const char* uri) {
-                            auto* lw = static_cast<Lv2Wrapper*>(handle);
+  LV2_URID_Map lv2_map = {
+      .handle = this,
+      .map =
+          [](LV2_URID_Map_Handle handle, const char* uri) {
+            auto* lw = static_cast<Lv2Wrapper*>(handle);
 
-                            return lw->map_urid(uri);
-                          }};
+            return lw->map_urid(uri);
+          },
+  };
 
-  LV2_URID_Unmap lv2_unmap = {.handle = this, .unmap = [](LV2_URID_Unmap_Handle handle, LV2_URID urid) {
-                                auto* lw = static_cast<Lv2Wrapper*>(handle);
+  LV2_URID_Unmap lv2_unmap = {
+      .handle = this,
+      .unmap =
+          [](LV2_URID_Unmap_Handle handle, LV2_URID urid) {
+            auto* lw = static_cast<Lv2Wrapper*>(handle);
 
-                                return lw->map_urid_to_uri[urid].c_str();
-                              }};
+            return lw->map_urid_to_uri[urid].c_str();
+          },
+  };
 
   const LV2_Feature lv2_log_feature = {.URI = LV2_LOG__log, .data = &lv2_log};
 
@@ -266,32 +276,41 @@ auto Lv2Wrapper::create_instance(const uint& rate) -> bool {
 
   const LV2_Feature lv2_unmap_feature = {.URI = LV2_URID__unmap, .data = &lv2_unmap};
 
-  auto options = std::to_array<LV2_Options_Option>(
-      {{.context = LV2_OPTIONS_INSTANCE,
-        .subject = 0,
-        .key = map_urid(LV2_PARAMETERS__sampleRate),
-        .size = sizeof(float),
-        .type = map_urid(LV2_ATOM__Float),
-        .value = &rate},
-       {.context = LV2_OPTIONS_INSTANCE,
-        .subject = 0,
-        .key = map_urid(LV2_BUF_SIZE__minBlockLength),
-        .size = sizeof(int32_t),
-        .type = map_urid(LV2_ATOM__Int),
-        .value = &min_quantum},
-       {.context = LV2_OPTIONS_INSTANCE,
-        .subject = 0,
-        .key = map_urid(LV2_BUF_SIZE__maxBlockLength),
-        .size = sizeof(int32_t),
-        .type = map_urid(LV2_ATOM__Int),
-        .value = &max_quantum},
-       {.context = LV2_OPTIONS_INSTANCE,
-        .subject = 0,
-        .key = map_urid(LV2_BUF_SIZE__nominalBlockLength),
-        .size = sizeof(int32_t),
-        .type = map_urid(LV2_ATOM__Int),
-        .value = &n_samples},
-       {.context = LV2_OPTIONS_INSTANCE, .subject = 0, .key = 0, .size = 0, .type = 0, .value = nullptr}});
+  auto options = std::to_array<LV2_Options_Option>({
+      {
+          .context = LV2_OPTIONS_INSTANCE,
+          .subject = 0,
+          .key = map_urid(LV2_PARAMETERS__sampleRate),
+          .size = sizeof(float),
+          .type = map_urid(LV2_ATOM__Float),
+          .value = &rate,
+      },
+      {
+          .context = LV2_OPTIONS_INSTANCE,
+          .subject = 0,
+          .key = map_urid(LV2_BUF_SIZE__minBlockLength),
+          .size = sizeof(int32_t),
+          .type = map_urid(LV2_ATOM__Int),
+          .value = &min_quantum,
+      },
+      {
+          .context = LV2_OPTIONS_INSTANCE,
+          .subject = 0,
+          .key = map_urid(LV2_BUF_SIZE__maxBlockLength),
+          .size = sizeof(int32_t),
+          .type = map_urid(LV2_ATOM__Int),
+          .value = &max_quantum,
+      },
+      {
+          .context = LV2_OPTIONS_INSTANCE,
+          .subject = 0,
+          .key = map_urid(LV2_BUF_SIZE__nominalBlockLength),
+          .size = sizeof(int32_t),
+          .type = map_urid(LV2_ATOM__Int),
+          .value = &n_samples,
+      },
+      {.context = LV2_OPTIONS_INSTANCE, .subject = 0, .key = 0, .size = 0, .type = 0, .value = nullptr},
+  });
 
   LV2_Feature feature_options = {.URI = LV2_OPTIONS__options, .data = options.data()};
 

@@ -60,10 +60,10 @@ void AutoloadManager::prepareFilesystemWatchers() {
   output_watcher.addPath(QString::fromStdString(dir_manager.autoloadOutputDir().string()));
 
   connect(&input_watcher, &QFileSystemWatcher::directoryChanged,
-          [&]() { input_model->update(dir_manager.getAutoloadProfilesPaths(PipelineType::input)); });
+          [&] { input_model->update(dir_manager.getAutoloadProfilesPaths(PipelineType::input)); });
 
   connect(&output_watcher, &QFileSystemWatcher::directoryChanged,
-          [&]() { output_model->update(dir_manager.getAutoloadProfilesPaths(PipelineType::output)); });
+          [&] { output_model->update(dir_manager.getAutoloadProfilesPaths(PipelineType::output)); });
 }
 
 void AutoloadManager::refreshListModels() {
@@ -223,16 +223,15 @@ auto AutoloadManager::getProfiles(const PipelineType& pipeline_type) -> std::vec
 
   try {
     while (it != std::filesystem::directory_iterator{}) {
-      if (std::filesystem::is_regular_file(it->status())) {
-        if (it->path().extension().string() == DirectoryManager::json_ext) {
-          nlohmann::json json;
+      if (std::filesystem::is_regular_file(it->status()) &&
+          it->path().extension().string() == DirectoryManager::json_ext) {
+        nlohmann::json json;
 
-          std::ifstream is(autoload_dir / it->path());
+        std::ifstream is(autoload_dir / it->path());
 
-          is >> json;
+        is >> json;
 
-          list.push_back(json);
-        }
+        list.push_back(json);
       }
 
       ++it;

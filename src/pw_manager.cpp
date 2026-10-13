@@ -181,20 +181,24 @@ void on_core_done(void* data, uint32_t id, [[maybe_unused]] int seq) {
   }
 }
 
-const struct pw_core_events core_events = {.version = PW_VERSION_CORE_EVENTS,
-                                           .info = on_core_info,
-                                           .done = on_core_done,
-                                           .ping = nullptr,
-                                           .error = on_core_error,
-                                           .remove_id = nullptr,
-                                           .bound_id = nullptr,
-                                           .add_mem = nullptr,
-                                           .remove_mem = nullptr,
-                                           .bound_props = nullptr};
+const struct pw_core_events core_events = {
+    .version = PW_VERSION_CORE_EVENTS,
+    .info = on_core_info,
+    .done = on_core_done,
+    .ping = nullptr,
+    .error = on_core_error,
+    .remove_id = nullptr,
+    .bound_id = nullptr,
+    .add_mem = nullptr,
+    .remove_mem = nullptr,
+    .bound_props = nullptr,
+};
 
-const struct pw_registry_events registry_events = {.version = 0,
-                                                   .global = on_registry_global,
-                                                   .global_remove = nullptr};
+const struct pw_registry_events registry_events = {
+    .version = 0,
+    .global = on_registry_global,
+    .global_remove = nullptr,
+};
 
 }  // namespace
 
