@@ -60,6 +60,7 @@ Kirigami.ScrollablePage {
     ColumnLayout {
         RowLayout {
             Layout.alignment: Qt.AlignHCenter
+            Layout.bottomMargin: Kirigami.Units.largeSpacing
 
             Controls.Label {
                 text: i18n("Model") // qmllint disable
@@ -102,22 +103,23 @@ Kirigami.ScrollablePage {
                         deepfilternetPage.pluginDB.attenuationLimit = value;
                 }
             }
-        }
 
-        Controls.Label {
-            Layout.alignment: Qt.AlignHCenter
-            text: `${attenuationLimit.value} ${Units.dB}`
+            Controls.Label {
+                Layout.alignment: Qt.AlignHCenter
+                text: `${attenuationLimit.value} ${Units.dB}`
+            }
         }
 
         Kirigami.CardsLayout {
             id: cardLayout
 
             Layout.fillWidth: true
+            Layout.topMargin: Kirigami.Units.largeSpacing * 2
 
             Kirigami.Card {
                 id: cardControls
 
-                // these controls only exist in DeepFilterNet
+                // These controls only exist in DeepFilterNet
                 visible: deepfilternetPage.pluginDB.model === 0
                 leftPadding: 0
                 rightPadding: 0
