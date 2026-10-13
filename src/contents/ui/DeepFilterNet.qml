@@ -32,6 +32,10 @@ Kirigami.ScrollablePage {
     required property EffectsBase pipelineInstance
     property BackendDeepFilterNet pluginBackend
 
+    readonly property string translatedName: PluginsNameModel.translate(PluginsNameModel.getBaseName(name))
+    readonly property string deepFilterNetPackage: "DeepFilterNet"
+    readonly property string dpdfnetPackage: "DPDFNet"
+
     function updateMeters() {
         if (!pluginBackend)
             return;
@@ -46,10 +50,24 @@ Kirigami.ScrollablePage {
         if (!pluginBackend)
             return;
 
-        const installed = pluginDB.model === 1 ? pluginBackend.dpdfnetInstalled : pluginBackend.deepFilterNetInstalled;
+        let modelName = "";
+        let modelInstalled = false;
 
-        if (!installed)
-            appWindow.showStatus(i18n("The selected model is not installed. Audio passes through unprocessed."), Kirigami.MessageType.Warning, false); // qmllint disable
+        switch (pluginDB.model) {
+        case 1:
+            modelName = deepfilternetPage.dpdfnetPackage;
+            modelInstalled = pluginBackend.dpdfnetInstalled;
+            break;
+        default:
+            modelName = deepfilternetPage.deepFilterNetPackage;
+            modelInstalled = pluginBackend.deepFilterNetInstalled;
+        }
+
+        if (!modelInstalled) {
+            let description = i18n("%1 model is not installed. Audio passes through unprocessed.", modelName);
+
+            appWindow.showStatus(`<strong>${translatedName}</strong>: ${description}`, Kirigami.MessageType.Warning, false); // qmllint disable
+        }
     }
 
     Component.onCompleted: {
@@ -60,6 +78,7 @@ Kirigami.ScrollablePage {
     ColumnLayout {
         RowLayout {
             Layout.alignment: Qt.AlignHCenter
+            Layout.bottomMargin: Kirigami.Units.largeSpacing
 
             Controls.Label {
                 text: i18n("Model") // qmllint disable
@@ -102,22 +121,23 @@ Kirigami.ScrollablePage {
                         deepfilternetPage.pluginDB.attenuationLimit = value;
                 }
             }
-        }
 
-        Controls.Label {
-            Layout.alignment: Qt.AlignHCenter
-            text: `${attenuationLimit.value} ${Units.dB}`
+            Controls.Label {
+                Layout.alignment: Qt.AlignHCenter
+                text: `${attenuationLimit.value} ${Units.dB}`
+            }
         }
 
         Kirigami.CardsLayout {
             id: cardLayout
 
             Layout.fillWidth: true
+            Layout.topMargin: Kirigami.Units.largeSpacing * 2
 
             Kirigami.Card {
                 id: cardControls
 
-                // these controls only exist in DeepFilterNet
+                // These controls only exist in DeepFilterNet
                 visible: deepfilternetPage.pluginDB.model === 0
                 leftPadding: 0
                 rightPadding: 0
@@ -226,7 +246,7 @@ Kirigami.ScrollablePage {
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using %1", `<strong>${deepfilternetPage.pluginDB.model === 1 ? "DPDFNet" : "DeepFilterNet"}</strong>`) // qmllint disable
+            text: i18n("Using %1", `<strong>${deepfilternetPage.pluginDB.model === 1 ? deepfilternetPage.dpdfnetPackage : deepfilternetPage.deepFilterNetPackage}</strong>`) // qmllint disable
             textFormat: Text.RichText
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter
