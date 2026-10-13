@@ -4,13 +4,14 @@ Date: UNRELEASED_DATE
 
 Description: 
 - Features∶
+- Added the new DPDFNet model to the Deep Noise Remover effect.
 - Improved spectrum performance.
 
 - Bug fixes∶
 - 
 
 - Other notes∶
-- 
+- HushMic package should be installed in order to use DPDFNet model inside the Deep Noise Remover effect.
 
 ---
 Version: 8.3.0
