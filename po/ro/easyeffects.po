@@ -8,8 +8,9 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-12 15:26+0000\n"
-"PO-Revision-Date: 2026-10-10 17:51+0000\n"
-"Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
+"PO-Revision-Date: 2026-10-13 10:51+0000\n"
+"Last-Translator: Remus-Gabriel Chelu <remus-"
+"gabriel@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ro/>\n"
 "Language: ro\n"
@@ -18,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
-"X-Generator: Weblate 2026.10.1.dev0\n"
+"X-Generator: Weblate 2026.11.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -1140,9 +1141,8 @@ msgstr ""
 "Modelul selectat nu este instalat. Sunetul este transmis fără a fi procesat."
 
 #: src/contents/ui/DeepFilterNet.qml:65
-#, fuzzy
 msgid "Model"
-msgstr "Modele"
+msgstr "Model"
 
 #: src/contents/ui/DeepFilterNet.qml:82
 msgid "Attenuation limit"
