@@ -35,8 +35,8 @@
 </p>
 
 > [!warning]
-> 
-> I have nothing to do with the website https://easyeffects.org/. It is probably a scam. Be careful! See https://github.com/wwmm/easyeffects/discussions/5238
+>
+> I have nothing to do with the website <https://easyeffects.org/>. It is probably a scam. Be careful! See <https://github.com/wwmm/easyeffects/discussions/5238>
 
 ## History and window preview
 
@@ -107,15 +107,16 @@ Plugins needed for effects:
 
 - [Linux Studio plugins](https://lsp-plug.in/). Version 1.1.24 or higher.
 - [Calf Studio plugins](https://calf-studio-gear.org/). Version 0.90.1 or higher.
-- [Libebur128](https://github.com/jiixyj/libebur128). For Auto gain and Level meter.
-- [ZamAudio plugins](https://www.zamaudio.com/). For Maximizer.
-- [Zita-convolver](https://kokkinizita.linuxaudio.org/linuxaudio/). For Convolver.
-- [MDA](https://gitlab.com/drobilla/mda-lv2). For Bass loudness.
-- [SpeexDSP](https://www.speex.org/). For Speech processor.
-- [SoundTouch](https://www.surina.net/soundtouch/). For Pitch shift.
-- [RNNoise](https://gitlab.xiph.org/xiph/rnnoise). For Noise reduction.
-- [DeepFilterNet](https://github.com/Rikorose/DeepFilterNet). For Deep noise remover.
-- [x42-plugins](https://x42-plugins.com/) For Autotune.
+- [Libebur128](https://github.com/jiixyj/libebur128). For auto gain and Level meter.
+- [ZamAudio plugins](https://www.zamaudio.com/). For maximizer.
+- [Zita-convolver](https://kokkinizita.linuxaudio.org/linuxaudio/). For convolver.
+- [MDA](https://gitlab.com/drobilla/mda-lv2). For bass loudness.
+- [SpeexDSP](https://www.speex.org/). For speech processor.
+- [SoundTouch](https://www.surina.net/soundtouch/). For pitch shift.
+- [RNNoise](https://gitlab.xiph.org/xiph/rnnoise). For noise reduction.
+- [DeepFilterNet](https://github.com/Rikorose/DeepFilterNet). For deep noise remover.
+- [HushMic](https://github.com/Fovty/hushmic). For DPDFNet noise remover.
+- [x42-plugins](https://x42-plugins.com/) For autotune.
 
 Other dependencies include:
 
