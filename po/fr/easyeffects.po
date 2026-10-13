@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-09 22:56+0000\n"
-"PO-Revision-Date: 2026-10-12 20:55+0000\n"
+"PO-Revision-Date: 2026-10-13 10:51+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -3337,7 +3337,7 @@ msgstr "GD > G+D (Somme G+D mono)"
 
 #: src/contents/ui/StereoTools.qml:127
 msgid "LR > RL (Stereo flip channels)"
-msgstr "GD > DG (Inversement des canaux stéréo)"
+msgstr "GD > DG (Inverser les canaux stéréo)"
 
 #: src/contents/ui/StereoTools.qml:136
 msgid "Side level"
@@ -3726,9 +3726,8 @@ msgid "Simple audio effects"
 msgstr "Effets audio simples"
 
 #: src/contents/ui/DeepFilterNet.qml:65
-#, fuzzy
 msgid "Model"
-msgstr "Modèles"
+msgstr "Modèle"
 
 #~ msgid "Dynamic scale"
 #~ msgstr "Échelle dynamique"
