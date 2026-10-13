@@ -70,14 +70,30 @@ void on_process(void* userdata, spa_io_position* position) {
   std::span left_out(out_left, n_samples);
   std::span right_out(out_right, n_samples);
 
-  const auto phase_delta = pi_x_2 * d->ts->sine_frequency / static_cast<float>(rate);
+  if (d->ts->reset_phase.exchange(false)) {
+    d->ts->current_amplitude = 0.0F;
+    d->ts->sine_phase = 0.0F;
+    d->ts->pink_b0 = d->ts->pink_b1 = d->ts->pink_b2 = 0.0F;
+  }
+
+  const auto testing = d->ts->hearing_test.load();
+  const auto amplitude = d->ts->hearing_amplitude.load();
+  const auto left_enabled = d->ts->create_left_channel.load();
+  const auto right_enabled = d->ts->create_right_channel.load();
+  const auto signal_type = d->ts->signal_type.load();
+  if (!testing) {
+    d->ts->current_amplitude = 0.0F;
+  }
+
+  const auto phase_delta = pi_x_2 * d->ts->sine_frequency.load() / static_cast<float>(rate);
+  const auto smoothing = 1.0F - std::exp(-1.0F / (0.01F * static_cast<float>(rate)));
 
   for (uint n = 0U; n < n_samples; n++) {
     float signal = 0.0F;
     left_out[n] = 0.0F;
     right_out[n] = 0.0F;
 
-    switch (d->ts->signal_type) {
+    switch (signal_type) {
       case TestSignalType::sine_wave: {
         d->ts->sine_phase += phase_delta;
 
@@ -104,11 +120,16 @@ void on_process(void* userdata, spa_io_position* position) {
       }
     }
 
-    if (d->ts->create_left_channel) {
+    if (testing) {
+      d->ts->current_amplitude += smoothing * (amplitude - d->ts->current_amplitude);
+      signal *= d->ts->current_amplitude;
+    }
+
+    if (left_enabled) {
       left_out[n] = signal;
     }
 
-    if (d->ts->create_right_channel) {
+    if (right_enabled) {
       right_out[n] = signal;
     }
   }
@@ -158,6 +179,20 @@ const struct pw_filter_events filter_events = {.version = 0,
 
 TestSignals::TestSignals(pw::Manager* pipe_manager) : pm(pipe_manager), random_generator(rd()) {
   pf_data.ts = this;
+  tone_timer.setSingleShot(true);
+  tone_timer.setInterval(1500);
+  connect(&tone_timer, &QTimer::timeout, this, &TestSignals::stopTone);
+  connect(DbStreamOutputs::self(), &DbStreamOutputs::outputDeviceChanged, this, &TestSignals::endTest);
+  connect(pm, &pw::Manager::sinkRouteChanged, this, [this](const auto& node) {
+    if (node.name == DbStreamOutputs::outputDevice()) {
+      endTest();
+    }
+  });
+  connect(&pm->model_nodes, &QAbstractItemModel::rowsRemoved, this, [this] {
+    if (pm->model_nodes.get_node_by_name(DbStreamOutputs::outputDevice()).serial == SPA_ID_INVALID) {
+      endTest();
+    }
+  });
 
   const auto* filter_name = "ee_test_signals";
 
@@ -239,11 +274,18 @@ TestSignals::TestSignals(pw::Manager* pipe_manager) : pm(pipe_manager), random_g
 
   connect(DbTestSignals::self(), &DbTestSignals::channelsChanged, [this]() { set_channel(DbTestSignals::channels()); });
 
-  connect(DbTestSignals::self(), &DbTestSignals::signalTypeChanged,
-          [this]() { signal_type = static_cast<TestSignalType>(DbTestSignals::signalType()); });
+  connect(DbTestSignals::self(), &DbTestSignals::signalTypeChanged, [this]() {
+    if (!hearing_test) {
+      pm->lock();
+      signal_type = static_cast<TestSignalType>(DbTestSignals::signalType());
+      pm->unlock();
+    }
+  });
 }
 
 TestSignals::~TestSignals() {
+  endTest();
+
   util::debug("TestSignals destroyed");
 
   pm->lock();
@@ -260,8 +302,11 @@ TestSignals::~TestSignals() {
 }
 
 void TestSignals::set_state(const bool& state) {
-  sine_phase = 0.0F;
-  pink_b0 = pink_b1 = pink_b2 = 0.0F;
+  if (hearing_test) {
+    return;
+  }
+
+  reset_phase = true;
 
   if (state) {
     for (const auto& link : pm->link_nodes(node_id, pm->ee_sink_node.id, false)) {
@@ -275,9 +320,12 @@ void TestSignals::set_state(const bool& state) {
 }
 
 void TestSignals::set_frequency(const float& value) {
-  sine_frequency = value;
+  if (hearing_test) {
+    return;
+  }
 
-  sine_phase = 0.0F;
+  sine_frequency = value;
+  reset_phase = true;
 }
 
 auto TestSignals::white_noise() -> float {
@@ -287,6 +335,11 @@ auto TestSignals::white_noise() -> float {
 }
 
 void TestSignals::set_channel(const int& value) {
+  if (hearing_test) {
+    return;
+  }
+
+  pm->lock();
   switch (value) {
     case 0: {
       create_left_channel = true;
@@ -306,6 +359,7 @@ void TestSignals::set_channel(const int& value) {
     default:
       break;
   }
+  pm->unlock();
 }
 
 auto TestSignals::pink_noise() -> float {
@@ -320,4 +374,73 @@ auto TestSignals::pink_noise() -> float {
   float pink = pink_b0 + pink_b1 + pink_b2 + (white * 0.1848F);
 
   return std::clamp(pink * 0.05F, -1.0F, 1.0F);
+}
+
+bool TestSignals::beginTest() {
+  if (hearing_test || DbTestSignals::enable() || !can_get_node_id) {
+    return false;
+  }
+
+  const auto output = pm->model_nodes.get_node_by_name(DbStreamOutputs::outputDevice());
+  if (output.serial == SPA_ID_INVALID || output.id == pm->ee_sink_node.id || output.n_input_ports != 2) {
+    return false;
+  }
+
+  pm->lock();
+  hearing_test = true;
+  hearing_amplitude = 0.0F;
+  reset_phase = true;
+  signal_type = TestSignalType::sine_wave;
+  pm->unlock();
+
+  hearing_links = pm->link_nodes(node_id, output.id);
+  if (hearing_links.size() != 2) {
+    endTest();
+    return false;
+  }
+
+  Q_EMIT testingChanged();
+  return true;
+}
+
+bool TestSignals::playTone(int frequency, int channel, double level) {
+  if (!hearing_test || frequency < 250 || frequency > 8000 || channel < 0 || channel > 1 || !std::isfinite(level) ||
+      level < -80.0 || level > -20.0) {
+    return false;
+  }
+
+  pm->lock();
+  sine_frequency = static_cast<float>(frequency);
+  create_left_channel = channel == 0;
+  create_right_channel = channel == 1;
+  hearing_amplitude = static_cast<float>(std::pow(10.0, level / 20.0));
+  pm->unlock();
+  tone_timer.start();
+  return true;
+}
+
+void TestSignals::stopTone() {
+  tone_timer.stop();
+  pm->lock();
+  hearing_amplitude = 0.0F;
+  pm->unlock();
+}
+
+void TestSignals::endTest() {
+  if (!hearing_test) {
+    return;
+  }
+
+  stopTone();
+  pm->destroy_links(hearing_links);
+  hearing_links.clear();
+
+  pm->lock();
+  hearing_test = false;
+  signal_type = static_cast<TestSignalType>(DbTestSignals::signalType());
+  pm->unlock();
+  set_frequency(DbTestSignals::frequency());
+  set_channel(DbTestSignals::channels());
+  set_state(DbTestSignals::enable());
+  Q_EMIT testingChanged();
 }

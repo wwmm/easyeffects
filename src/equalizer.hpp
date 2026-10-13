@@ -70,6 +70,8 @@ class Equalizer : public PluginBase {
 
   Q_INVOKABLE void flatResponse();
 
+  Q_INVOKABLE bool applyHearingProfile(const QList<double>& left, const QList<double>& right);
+
   Q_INVOKABLE void calculateFrequencies();
 
   Q_INVOKABLE bool importApoPreset(const QList<QString>& url_list);

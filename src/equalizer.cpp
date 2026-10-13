@@ -39,6 +39,7 @@
 #include "easyeffects_db_equalizer_channel.h"
 #include "equalizer_apo.hpp"
 #include "equalizer_macros.hpp"
+#include "hearing_profile.hpp"
 #include "lv2_macros.hpp"
 #include "lv2_wrapper.hpp"
 #include "pipeline_type.hpp"
@@ -445,4 +446,40 @@ bool Equalizer::importApoGraphicEqPreset(const QList<QString>& url_list) {
 bool Equalizer::exportApoPreset(const QString& url) {
   const auto u = QUrl(url);
   return apo::export_apo_preset(settings, settings_left, settings_right, u.toLocalFile().toStdString());
+}
+
+bool Equalizer::applyHearingProfile(const QList<double>& left, const QList<double>& right) {
+  const auto profile =
+      hearing::make_profile(std::span(left.constData(), left.size()), std::span(right.constData(), right.size()));
+  if (!profile || pipeline_type != PipelineType::output) {
+    return false;
+  }
+
+  settings->setSplitChannels(true);
+  settings->setNumBands(static_cast<int>(hearing::frequencies.size()));
+  settings->setMode(0);
+  settings->setBalance(0.0);
+  settings->setPitchLeft(0.0);
+  settings->setPitchRight(0.0);
+  settings->setInputGain(-profile->headroom);
+  settings->setOutputGain(0.0);
+
+  for (auto* channel : {settings_left, settings_right}) {
+    const auto& gains = channel == settings_left ? profile->left : profile->right;
+    for (int n = 0; n < max_bands; ++n) {
+      const auto active = n < static_cast<int>(hearing::frequencies.size());
+      channel->setProperty(tags::equalizer::band_type[n].data(), active ? 1 : 0);
+      channel->setProperty(tags::equalizer::band_solo[n].data(), false);
+      channel->setProperty(tags::equalizer::band_mute[n].data(), false);
+      if (active) {
+        channel->setProperty(tags::equalizer::band_mode[n].data(), 6);
+        channel->setProperty(tags::equalizer::band_slope[n].data(), 0);
+        channel->setProperty(tags::equalizer::band_frequency[n].data(), hearing::frequencies[n]);
+        channel->setProperty(tags::equalizer::band_q[n].data(), 1.4);
+        channel->setProperty(tags::equalizer::band_gain[n].data(), gains[n]);
+      }
+    }
+  }
+  settings->setBypass(false);
+  return true;
 }
