@@ -60,6 +60,8 @@ class StreamOutputEffects : public EffectsBase {
   void set_bypass(const bool& state);
 
  private:
+  void autoload_current_device();
+
   bool bypass = false;
   bool bypass_transition_active = false;
   bool bypass_transition_pending = false;
