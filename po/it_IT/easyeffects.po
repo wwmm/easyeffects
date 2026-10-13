@@ -9,8 +9,9 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-12 15:26+0000\n"
-"PO-Revision-Date: 2026-10-10 17:51+0000\n"
-"Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
+"PO-Revision-Date: 2026-10-13 10:51+0000\n"
+"Last-Translator: Giusy Digital <digitalone1@users.noreply.hosted.weblate.org>"
+"\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
 "Language: it_IT\n"
@@ -18,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2026.10.1.dev0\n"
+"X-Generator: Weblate 2026.11.dev0\n"
 "Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 
 #: src/autostart.cpp:92
@@ -1141,9 +1142,8 @@ msgstr ""
 "processato."
 
 #: src/contents/ui/DeepFilterNet.qml:65
-#, fuzzy
 msgid "Model"
-msgstr "Modelli"
+msgstr "Modello"
 
 #: src/contents/ui/DeepFilterNet.qml:82
 msgid "Attenuation limit"
