@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-10-12 15:26+0000\n"
+"POT-Creation-Date: 2026-10-13 15:33+0000\n"
 "PO-Revision-Date: 2026-10-12 11:53+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin "
 "<aindriu80@users.noreply.hosted.weblate.org>\n"
@@ -165,7 +165,7 @@ msgstr "Maidir"
 #: src/contents/ui/Autogain.qml:69 src/contents/ui/BassEnhancer.qml:105
 #: src/contents/ui/BassLoudness.qml:59 src/contents/ui/Crossfeed.qml:74
 #: src/contents/ui/CrosstalkCanceller.qml:59
-#: src/contents/ui/DeepFilterNet.qml:126 src/contents/ui/Exciter.qml:106
+#: src/contents/ui/DeepFilterNet.qml:146 src/contents/ui/Exciter.qml:106
 #: src/contents/ui/Filter.qml:59 src/contents/ui/Loudness.qml:59
 #: src/contents/ui/Maximizer.qml:60 src/contents/ui/Pitch.qml:60
 #: src/contents/ui/Reverb.qml:59 src/contents/ui/Speex.qml:59
@@ -243,7 +243,7 @@ msgstr "Gnóthachan Aschuir"
 #: src/contents/ui/BassEnhancer.qml:205 src/contents/ui/BassLoudness.qml:126
 #: src/contents/ui/Compressor.qml:873 src/contents/ui/Convolver.qml:520
 #: src/contents/ui/Crossfeed.qml:150 src/contents/ui/Crusher.qml:236
-#: src/contents/ui/Crystalizer.qml:155 src/contents/ui/DeepFilterNet.qml:229
+#: src/contents/ui/Crystalizer.qml:155 src/contents/ui/DeepFilterNet.qml:249
 #: src/contents/ui/Deesser.qml:319 src/contents/ui/Delay.qml:376
 #: src/contents/ui/EchoCanceller.qml:158 src/contents/ui/Equalizer.qml:315
 #: src/contents/ui/Exciter.qml:210 src/contents/ui/Expander.qml:823
@@ -260,7 +260,7 @@ msgstr "Gnóthachan Aschuir"
 msgid "Using %1"
 msgstr "Ag baint úsáide as %1"
 
-#: src/contents/ui/Autogain.qml:250 src/contents/ui/DeepFilterNet.qml:246
+#: src/contents/ui/Autogain.qml:250 src/contents/ui/DeepFilterNet.qml:266
 #: src/contents/ui/LevelMeter.qml:232 src/contents/ui/Pitch.qml:285
 msgid "Reset history"
 msgstr "Athshocraigh an Stair"
@@ -275,7 +275,7 @@ msgstr ""
 "Cuir Tost i bhFeidhm nuair a bhíonn an Leibhéal faoi bhun Thairseach na Tost"
 
 #: src/contents/ui/Autogain.qml:270 src/contents/ui/Autotune.qml:436
-#: src/contents/ui/DeepFilterNet.qml:254 src/contents/ui/LevelMeter.qml:240
+#: src/contents/ui/DeepFilterNet.qml:274 src/contents/ui/LevelMeter.qml:240
 #: src/contents/ui/Pitch.qml:313
 msgid "Reset settings"
 msgstr "Athshocraigh Socruithe"
@@ -1134,38 +1134,39 @@ msgstr "MuteName"
 msgid "Bypass"
 msgstr "Seachbhóthar"
 
-#: src/contents/ui/DeepFilterNet.qml:52
-msgid "The selected model is not installed. Audio passes through unprocessed."
+#: src/contents/ui/DeepFilterNet.qml:67
+#, fuzzy
+msgid "%1 model is not installed. Audio passes through unprocessed."
 msgstr ""
 "Níl an tsamhail roghnaithe suiteáilte. Téann an fhuaim tríd gan í a "
 "phróiseáil."
 
-#: src/contents/ui/DeepFilterNet.qml:65
+#: src/contents/ui/DeepFilterNet.qml:84
 #, fuzzy
 msgid "Model"
 msgstr "Múnlaí"
 
-#: src/contents/ui/DeepFilterNet.qml:82
+#: src/contents/ui/DeepFilterNet.qml:101
 msgid "Attenuation limit"
 msgstr "Teorainn maolaithe"
 
-#: src/contents/ui/DeepFilterNet.qml:138
+#: src/contents/ui/DeepFilterNet.qml:158
 msgid "Minimum processing threshold"
 msgstr "Íostairseach próiseála"
 
-#: src/contents/ui/DeepFilterNet.qml:154
+#: src/contents/ui/DeepFilterNet.qml:174
 msgid "Maximum ERB processing threshold"
 msgstr "Uastairseach próiseála ERB"
 
-#: src/contents/ui/DeepFilterNet.qml:170
+#: src/contents/ui/DeepFilterNet.qml:190
 msgid "Maximum DF processing threshold"
 msgstr "Uastairseach próiseála DF"
 
-#: src/contents/ui/DeepFilterNet.qml:186
+#: src/contents/ui/DeepFilterNet.qml:206
 msgid "Minimum processing buffer"
 msgstr "Maolán próiseála íosta"
 
-#: src/contents/ui/DeepFilterNet.qml:202
+#: src/contents/ui/DeepFilterNet.qml:222
 msgid "Post filter Beta"
 msgstr "Scagaire iar-Béite"
 
