@@ -78,16 +78,16 @@ MultibandCompressor::MultibandCompressor(const std::string& tag,
 
   // specific plugin controls
 
-  connect(settings, &DbMultibandCompressor::sidechainInputDeviceChanged, [&]() { update_sidechain_links(); });
+  connect(settings, &DbMultibandCompressor::sidechainInputDeviceChanged, [&] { update_sidechain_links(); });
 
-  connect(settings, &DbMultibandCompressor::band0SidechainTypeChanged, [&]() { update_sidechain_links(); });
-  connect(settings, &DbMultibandCompressor::band1SidechainTypeChanged, [&]() { update_sidechain_links(); });
-  connect(settings, &DbMultibandCompressor::band2SidechainTypeChanged, [&]() { update_sidechain_links(); });
-  connect(settings, &DbMultibandCompressor::band3SidechainTypeChanged, [&]() { update_sidechain_links(); });
-  connect(settings, &DbMultibandCompressor::band4SidechainTypeChanged, [&]() { update_sidechain_links(); });
-  connect(settings, &DbMultibandCompressor::band5SidechainTypeChanged, [&]() { update_sidechain_links(); });
-  connect(settings, &DbMultibandCompressor::band6SidechainTypeChanged, [&]() { update_sidechain_links(); });
-  connect(settings, &DbMultibandCompressor::band7SidechainTypeChanged, [&]() { update_sidechain_links(); });
+  connect(settings, &DbMultibandCompressor::band0SidechainTypeChanged, [&] { update_sidechain_links(); });
+  connect(settings, &DbMultibandCompressor::band1SidechainTypeChanged, [&] { update_sidechain_links(); });
+  connect(settings, &DbMultibandCompressor::band2SidechainTypeChanged, [&] { update_sidechain_links(); });
+  connect(settings, &DbMultibandCompressor::band3SidechainTypeChanged, [&] { update_sidechain_links(); });
+  connect(settings, &DbMultibandCompressor::band4SidechainTypeChanged, [&] { update_sidechain_links(); });
+  connect(settings, &DbMultibandCompressor::band5SidechainTypeChanged, [&] { update_sidechain_links(); });
+  connect(settings, &DbMultibandCompressor::band6SidechainTypeChanged, [&] { update_sidechain_links(); });
+  connect(settings, &DbMultibandCompressor::band7SidechainTypeChanged, [&] { update_sidechain_links(); });
 
   BIND_LV2_PORT("mode", compressorMode, setCompressorMode, DbMultibandCompressor::compressorModeChanged);
   BIND_LV2_PORT("envb", envelopeBoost, setEnvelopeBoost, DbMultibandCompressor::envelopeBoostChanged);

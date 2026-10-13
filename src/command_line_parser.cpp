@@ -40,27 +40,36 @@ CommandLineParser::CommandLineParser(KAboutData& about, QObject* parent)
   parser->setApplicationDescription("Easy Effects");
 
   about.setupCommandLine(parser.get());
-  parser->addOptions(
-      {{{"q", "quit"}, i18n("Quit Easy Effects. Useful when running in service mode.")},
-       {{"r", "reset"}, i18n("Reset Easy Effects.")},
-       {{"w", "hide-window"}, i18n("Hide the window.")},
-       {{"b", "bypass"},
-        i18n("Global bypass. 1 to enable, 2 to disable and 3 to get the current state."),
-        i18n("bypass-state")},
-       {"bypass-toggle", i18n("Toggle the state of the global bypass.")},
-       {"audio-sharing", i18n("Audio sharing. 1 to enable, 2 to disable and 3 to get the current state."),
-        i18n("state")},
-       {"audio-sharing-toggle", i18n("Toggle the state of audio sharing.")},
-       {"microphone-monitoring",
-        i18n("Microphone monitoring. 1 to enable, 2 to disable and 3 to get the current state."), i18n("state")},
-       {"microphone-monitoring-toggle", i18n("Toggle the state of microphone monitoring.")},
-       {{"l", "load-preset"}, i18n("Load a preset. Example: easyeffects -l music"), i18n("preset-name")},
-       {{"p", "presets"}, i18n("Show available presets.")},
-       {{"a", "last-loaded-preset"}, i18n("Get the last loaded input/output preset."), i18n("preset-type")},
-       {{"s", "last-loaded-presets"}, i18n("Get the last loaded input and output presets.")},
-       {"gapplication-service", i18n("Deprecated. Use --service-mode instead.")},
-       {"service-mode", i18n("Start the application with service mode turned on.")},
-       {"debug", i18n("Enable debug messages.")}});
+  parser->addOptions({
+      {{"q", "quit"}, i18n("Quit Easy Effects. Useful when running in service mode.")},
+      {{"r", "reset"}, i18n("Reset Easy Effects.")},
+      {{"w", "hide-window"}, i18n("Hide the window.")},
+      {
+          {"b", "bypass"},
+          i18n("Global bypass. 1 to enable, 2 to disable and 3 to get the current state."),
+          i18n("bypass-state"),
+      },
+      {"bypass-toggle", i18n("Toggle the state of the global bypass.")},
+      {
+          "audio-sharing",
+          i18n("Audio sharing. 1 to enable, 2 to disable and 3 to get the current state."),
+          i18n("state"),
+      },
+      {"audio-sharing-toggle", i18n("Toggle the state of audio sharing.")},
+      {
+          "microphone-monitoring",
+          i18n("Microphone monitoring. 1 to enable, 2 to disable and 3 to get the current state."),
+          i18n("state"),
+      },
+      {"microphone-monitoring-toggle", i18n("Toggle the state of microphone monitoring.")},
+      {{"l", "load-preset"}, i18n("Load a preset. Example: easyeffects -l music"), i18n("preset-name")},
+      {{"p", "presets"}, i18n("Show available presets.")},
+      {{"a", "last-loaded-preset"}, i18n("Get the last loaded input/output preset."), i18n("preset-type")},
+      {{"s", "last-loaded-presets"}, i18n("Get the last loaded input and output presets.")},
+      {"gapplication-service", i18n("Deprecated. Use --service-mode instead.")},
+      {"service-mode", i18n("Start the application with service mode turned on.")},
+      {"debug", i18n("Enable debug messages.")},
+  });
 }
 
 void CommandLineParser::set_is_primary(const bool& state) {

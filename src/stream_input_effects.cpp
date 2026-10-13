@@ -405,7 +405,7 @@ void StreamInputEffects::connect_filters(const bool& bypass) {
 void StreamInputEffects::disconnect_filters() {
   std::set<uint> link_id_list;
 
-  const auto selected_plugins_list = (bypass) ? QStringList() : DbStreamInputs::plugins();
+  const auto selected_plugins_list = bypass ? QStringList() : DbStreamInputs::plugins();
 
   for (const auto& plugin : plugins | std::views::values) {
     if (plugin == nullptr) {

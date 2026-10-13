@@ -78,16 +78,16 @@ MultibandGate::MultibandGate(const std::string& tag,
 
   // specific plugin controls
 
-  connect(settings, &DbMultibandGate::sidechainInputDeviceChanged, [&]() { update_sidechain_links(); });
+  connect(settings, &DbMultibandGate::sidechainInputDeviceChanged, [&] { update_sidechain_links(); });
 
-  connect(settings, &DbMultibandGate::band0SidechainTypeChanged, [&]() { update_sidechain_links(); });
-  connect(settings, &DbMultibandGate::band1SidechainTypeChanged, [&]() { update_sidechain_links(); });
-  connect(settings, &DbMultibandGate::band2SidechainTypeChanged, [&]() { update_sidechain_links(); });
-  connect(settings, &DbMultibandGate::band3SidechainTypeChanged, [&]() { update_sidechain_links(); });
-  connect(settings, &DbMultibandGate::band4SidechainTypeChanged, [&]() { update_sidechain_links(); });
-  connect(settings, &DbMultibandGate::band5SidechainTypeChanged, [&]() { update_sidechain_links(); });
-  connect(settings, &DbMultibandGate::band6SidechainTypeChanged, [&]() { update_sidechain_links(); });
-  connect(settings, &DbMultibandGate::band7SidechainTypeChanged, [&]() { update_sidechain_links(); });
+  connect(settings, &DbMultibandGate::band0SidechainTypeChanged, [&] { update_sidechain_links(); });
+  connect(settings, &DbMultibandGate::band1SidechainTypeChanged, [&] { update_sidechain_links(); });
+  connect(settings, &DbMultibandGate::band2SidechainTypeChanged, [&] { update_sidechain_links(); });
+  connect(settings, &DbMultibandGate::band3SidechainTypeChanged, [&] { update_sidechain_links(); });
+  connect(settings, &DbMultibandGate::band4SidechainTypeChanged, [&] { update_sidechain_links(); });
+  connect(settings, &DbMultibandGate::band5SidechainTypeChanged, [&] { update_sidechain_links(); });
+  connect(settings, &DbMultibandGate::band6SidechainTypeChanged, [&] { update_sidechain_links(); });
+  connect(settings, &DbMultibandGate::band7SidechainTypeChanged, [&] { update_sidechain_links(); });
 
   BIND_LV2_PORT("mode", gateMode, setGateMode, DbMultibandGate::gateModeChanged);
   BIND_LV2_PORT("envb", envelopeBoost, setEnvelopeBoost, DbMultibandGate::envelopeBoostChanged);
