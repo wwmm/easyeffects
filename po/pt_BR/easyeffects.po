@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-10-12 15:26+0000\n"
+"POT-Creation-Date: 2026-10-13 15:33+0000\n"
 "PO-Revision-Date: 2026-05-23 23:11+0000\n"
 "Last-Translator: John Peter Sa <johnppetersa@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -171,7 +171,7 @@ msgstr "Sobre"
 #: src/contents/ui/Autogain.qml:69 src/contents/ui/BassEnhancer.qml:105
 #: src/contents/ui/BassLoudness.qml:59 src/contents/ui/Crossfeed.qml:74
 #: src/contents/ui/CrosstalkCanceller.qml:59
-#: src/contents/ui/DeepFilterNet.qml:126 src/contents/ui/Exciter.qml:106
+#: src/contents/ui/DeepFilterNet.qml:146 src/contents/ui/Exciter.qml:106
 #: src/contents/ui/Filter.qml:59 src/contents/ui/Loudness.qml:59
 #: src/contents/ui/Maximizer.qml:60 src/contents/ui/Pitch.qml:60
 #: src/contents/ui/Reverb.qml:59 src/contents/ui/Speex.qml:59
@@ -249,7 +249,7 @@ msgstr "Ganho de saída"
 #: src/contents/ui/BassEnhancer.qml:205 src/contents/ui/BassLoudness.qml:126
 #: src/contents/ui/Compressor.qml:873 src/contents/ui/Convolver.qml:520
 #: src/contents/ui/Crossfeed.qml:150 src/contents/ui/Crusher.qml:236
-#: src/contents/ui/Crystalizer.qml:155 src/contents/ui/DeepFilterNet.qml:229
+#: src/contents/ui/Crystalizer.qml:155 src/contents/ui/DeepFilterNet.qml:249
 #: src/contents/ui/Deesser.qml:319 src/contents/ui/Delay.qml:376
 #: src/contents/ui/EchoCanceller.qml:158 src/contents/ui/Equalizer.qml:315
 #: src/contents/ui/Exciter.qml:210 src/contents/ui/Expander.qml:823
@@ -266,7 +266,7 @@ msgstr "Ganho de saída"
 msgid "Using %1"
 msgstr "Usando %1"
 
-#: src/contents/ui/Autogain.qml:250 src/contents/ui/DeepFilterNet.qml:246
+#: src/contents/ui/Autogain.qml:250 src/contents/ui/DeepFilterNet.qml:266
 #: src/contents/ui/LevelMeter.qml:232 src/contents/ui/Pitch.qml:285
 msgid "Reset history"
 msgstr "Apagar o histórico"
@@ -280,7 +280,7 @@ msgid "Force silence when the level is below the silence threshold"
 msgstr "Forçar o silêncio quando o nível estiver abaixo do limite de silêncio"
 
 #: src/contents/ui/Autogain.qml:270 src/contents/ui/Autotune.qml:436
-#: src/contents/ui/DeepFilterNet.qml:254 src/contents/ui/LevelMeter.qml:240
+#: src/contents/ui/DeepFilterNet.qml:274 src/contents/ui/LevelMeter.qml:240
 #: src/contents/ui/Pitch.qml:313
 msgid "Reset settings"
 msgstr "Redefinir configurações"
@@ -1138,36 +1138,36 @@ msgstr "Mudo"
 msgid "Bypass"
 msgstr "Ignorar"
 
-#: src/contents/ui/DeepFilterNet.qml:52
-msgid "The selected model is not installed. Audio passes through unprocessed."
+#: src/contents/ui/DeepFilterNet.qml:67
+msgid "%1 model is not installed. Audio passes through unprocessed."
 msgstr ""
 
-#: src/contents/ui/DeepFilterNet.qml:65
+#: src/contents/ui/DeepFilterNet.qml:84
 #, fuzzy
 msgid "Model"
 msgstr "Modelos"
 
-#: src/contents/ui/DeepFilterNet.qml:82
+#: src/contents/ui/DeepFilterNet.qml:101
 msgid "Attenuation limit"
 msgstr "Limite de Atenuação"
 
-#: src/contents/ui/DeepFilterNet.qml:138
+#: src/contents/ui/DeepFilterNet.qml:158
 msgid "Minimum processing threshold"
 msgstr "Limite Mínimo de Processamento"
 
-#: src/contents/ui/DeepFilterNet.qml:154
+#: src/contents/ui/DeepFilterNet.qml:174
 msgid "Maximum ERB processing threshold"
 msgstr "Limite Máximo de Processamento do ERB"
 
-#: src/contents/ui/DeepFilterNet.qml:170
+#: src/contents/ui/DeepFilterNet.qml:190
 msgid "Maximum DF processing threshold"
 msgstr "Limite Máximo de Processamento do DF"
 
-#: src/contents/ui/DeepFilterNet.qml:186
+#: src/contents/ui/DeepFilterNet.qml:206
 msgid "Minimum processing buffer"
 msgstr "buffer de processamento mínimo"
 
-#: src/contents/ui/DeepFilterNet.qml:202
+#: src/contents/ui/DeepFilterNet.qml:222
 msgid "Post filter Beta"
 msgstr "Pós-filtro Beta"
 
