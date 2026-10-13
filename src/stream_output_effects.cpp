@@ -137,8 +137,14 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
     DbStreamOutputs::setOutputDevice(PULSE_SINK);
   }
 
-  if (DbStreamOutputs::outputDevice().isEmpty()) {
+  const auto has_selected_device = !DbStreamOutputs::outputDevice().isEmpty();
+
+  if (!has_selected_device) {
     DbStreamOutputs::setOutputDevice(pm->defaultOutputDeviceName);
+  }
+
+  if (has_selected_device) {
+    autoload_current_device();
   }
 
   connect_filters();
@@ -146,6 +152,18 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
 
 StreamOutputEffects::~StreamOutputEffects() {
   disconnect_filters();
+}
+
+void StreamOutputEffects::autoload_current_device() {
+  const auto name = DbStreamOutputs::outputDevice();
+
+  if (name.isEmpty()) {
+    return;
+  }
+
+  if (auto node = pm->model_nodes.get_node_by_name(name); node.serial != SPA_ID_INVALID) {
+    presets::Manager::self().autoload(PipelineType::output, node.name, node.device_route_description);
+  }
 }
 
 auto StreamOutputEffects::apps_want_to_play() -> bool {

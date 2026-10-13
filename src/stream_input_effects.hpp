@@ -65,6 +65,8 @@ class StreamInputEffects : public EffectsBase {
   void set_listen_to_mic_volume();
 
  private:
+  void autoload_current_device();
+
   std::unique_ptr<MicrophoneMonitor> microphone_monitor;
 
   bool bypass = false;
