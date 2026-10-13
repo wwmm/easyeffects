@@ -7,9 +7,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-10-13 15:33+0000\n"
-"PO-Revision-Date: 2026-10-10 17:51+0000\n"
-"Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
+"POT-Creation-Date: 2026-10-12 15:26+0000\n"
+"PO-Revision-Date: 2026-10-13 10:51+0000\n"
+"Last-Translator: Remus-Gabriel Chelu <remus-"
+"gabriel@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ro/>\n"
 "Language: ro\n"
@@ -18,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
-"X-Generator: Weblate 2026.10.1.dev0\n"
+"X-Generator: Weblate 2026.11.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -165,11 +166,11 @@ msgstr "Despre"
 #: src/contents/ui/Autogain.qml:69 src/contents/ui/BassEnhancer.qml:105
 #: src/contents/ui/BassLoudness.qml:59 src/contents/ui/Crossfeed.qml:74
 #: src/contents/ui/CrosstalkCanceller.qml:59
-#: src/contents/ui/DeepFilterNet.qml:146 src/contents/ui/Exciter.qml:106
+#: src/contents/ui/DeepFilterNet.qml:126 src/contents/ui/Exciter.qml:106
 #: src/contents/ui/Filter.qml:59 src/contents/ui/Loudness.qml:59
 #: src/contents/ui/Maximizer.qml:60 src/contents/ui/Pitch.qml:60
 #: src/contents/ui/Reverb.qml:59 src/contents/ui/Speex.qml:59
-#: src/contents/ui/VoiceSuppressor.qml:58
+#: src/contents/ui/VoiceSuppressor.qml:58 src/contents/ui/DeepFilterNet.qml:146
 msgid "Controls"
 msgstr "Controale"
 
@@ -243,7 +244,7 @@ msgstr "Câștig de ieșire"
 #: src/contents/ui/BassEnhancer.qml:205 src/contents/ui/BassLoudness.qml:126
 #: src/contents/ui/Compressor.qml:873 src/contents/ui/Convolver.qml:520
 #: src/contents/ui/Crossfeed.qml:150 src/contents/ui/Crusher.qml:236
-#: src/contents/ui/Crystalizer.qml:155 src/contents/ui/DeepFilterNet.qml:249
+#: src/contents/ui/Crystalizer.qml:155 src/contents/ui/DeepFilterNet.qml:229
 #: src/contents/ui/Deesser.qml:319 src/contents/ui/Delay.qml:376
 #: src/contents/ui/EchoCanceller.qml:158 src/contents/ui/Equalizer.qml:315
 #: src/contents/ui/Exciter.qml:210 src/contents/ui/Expander.qml:823
@@ -257,11 +258,13 @@ msgstr "Câștig de ieșire"
 #: src/contents/ui/RNNoise.qml:298 src/contents/ui/RNNoise.qml:300
 #: src/contents/ui/RNNoise.qml:320 src/contents/ui/Reverb.qml:318
 #: src/contents/ui/Speex.qml:177 src/contents/ui/StereoTools.qml:392
+#: src/contents/ui/DeepFilterNet.qml:249
 msgid "Using %1"
 msgstr "Utilizând %1"
 
-#: src/contents/ui/Autogain.qml:250 src/contents/ui/DeepFilterNet.qml:266
+#: src/contents/ui/Autogain.qml:250 src/contents/ui/DeepFilterNet.qml:246
 #: src/contents/ui/LevelMeter.qml:232 src/contents/ui/Pitch.qml:285
+#: src/contents/ui/DeepFilterNet.qml:266
 msgid "Reset history"
 msgstr "Reinițiere istoric"
 
@@ -274,8 +277,8 @@ msgid "Force silence when the level is below the silence threshold"
 msgstr "Forțează modul silențios când nivelul este sub pragul de liniște"
 
 #: src/contents/ui/Autogain.qml:270 src/contents/ui/Autotune.qml:436
-#: src/contents/ui/DeepFilterNet.qml:274 src/contents/ui/LevelMeter.qml:240
-#: src/contents/ui/Pitch.qml:313
+#: src/contents/ui/DeepFilterNet.qml:254 src/contents/ui/LevelMeter.qml:240
+#: src/contents/ui/Pitch.qml:313 src/contents/ui/DeepFilterNet.qml:274
 msgid "Reset settings"
 msgstr "Restaurare valori"
 
@@ -1134,38 +1137,36 @@ msgstr "Dezactivare sunet"
 msgid "Bypass"
 msgstr "Derivare"
 
-#: src/contents/ui/DeepFilterNet.qml:67
-#, fuzzy
-msgid "%1 model is not installed. Audio passes through unprocessed."
+#: src/contents/ui/DeepFilterNet.qml:52
+msgid "The selected model is not installed. Audio passes through unprocessed."
 msgstr ""
 "Modelul selectat nu este instalat. Sunetul este transmis fără a fi procesat."
 
-#: src/contents/ui/DeepFilterNet.qml:84
-#, fuzzy
+#: src/contents/ui/DeepFilterNet.qml:65
 msgid "Model"
-msgstr "Modele"
+msgstr "Model"
 
-#: src/contents/ui/DeepFilterNet.qml:101
+#: src/contents/ui/DeepFilterNet.qml:82 src/contents/ui/DeepFilterNet.qml:101
 msgid "Attenuation limit"
 msgstr "Limita de atenuare"
 
-#: src/contents/ui/DeepFilterNet.qml:158
+#: src/contents/ui/DeepFilterNet.qml:138 src/contents/ui/DeepFilterNet.qml:158
 msgid "Minimum processing threshold"
 msgstr "Pragul minim de procesare"
 
-#: src/contents/ui/DeepFilterNet.qml:174
+#: src/contents/ui/DeepFilterNet.qml:154 src/contents/ui/DeepFilterNet.qml:174
 msgid "Maximum ERB processing threshold"
 msgstr "Pragul maxim de procesare ERB"
 
-#: src/contents/ui/DeepFilterNet.qml:190
+#: src/contents/ui/DeepFilterNet.qml:170 src/contents/ui/DeepFilterNet.qml:190
 msgid "Maximum DF processing threshold"
 msgstr "Pragul maxim de procesare DF"
 
-#: src/contents/ui/DeepFilterNet.qml:206
+#: src/contents/ui/DeepFilterNet.qml:186 src/contents/ui/DeepFilterNet.qml:206
 msgid "Minimum processing buffer"
 msgstr "Memoria tampon minimă de procesare"
 
-#: src/contents/ui/DeepFilterNet.qml:222
+#: src/contents/ui/DeepFilterNet.qml:202 src/contents/ui/DeepFilterNet.qml:222
 msgid "Post filter Beta"
 msgstr "Filtru posterior beta"
 
@@ -3715,6 +3716,12 @@ msgstr "Egalizator, compresor și alte efecte audio"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "Efecte audio simple"
+
+#: src/contents/ui/DeepFilterNet.qml:67
+#, fuzzy
+msgid "%1 model is not installed. Audio passes through unprocessed."
+msgstr ""
+"Modelul selectat nu este instalat. Sunetul este transmis fără a fi procesat."
 
 #~ msgid "Dynamic scale"
 #~ msgstr "Scară dinamică"
