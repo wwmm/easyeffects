@@ -176,7 +176,8 @@
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^v([\\d.]+)$"
-                    }
+                    },
+                    "commit": "3046c8b0c29df995980003ea24f4d78c80ec0c8d"
                 }
             ]
         },
