@@ -296,7 +296,7 @@ void Analyzer::band_levels(std::span<const double> edges, std::span<double> leve
   const size_t n_bands = std::min(levels_db.size(), edges.empty() ? 0U : edges.size() - 1U);
 
   if (!has_smoothed) {
-    std::fill(levels_db.begin(), levels_db.end(), minimum_db);
+    std::ranges::fill(levels_db, minimum_db);
 
     return;
   }

@@ -104,3 +104,11 @@ find_path(LIBZITACONVOLVER_INCLUDE_DIRS NAMES zita-convolver.h)
 add_subdirectory(src)
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
+
+include(CTest)
+
+if(BUILD_TESTING)
+    add_executable(hearing_profile_test util/tests/hearing_profile.cpp)
+    target_include_directories(hearing_profile_test PRIVATE src)
+    add_test(NAME hearing-profile COMMAND hearing_profile_test)
+endif()

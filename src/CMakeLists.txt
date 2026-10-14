@@ -42,6 +42,7 @@ qt_add_qml_module(easyeffects
         delay.hpp
         effects_base.hpp
         equalizer.hpp
+        test_signals.hpp
         exciter.hpp
         midside_equalizer.hpp
         expander.hpp
@@ -101,6 +102,7 @@ qt_add_qml_module(easyeffects
         contents/ui/EeSpinBox.qml
         contents/ui/EeSwitch.qml
         contents/ui/Equalizer.qml
+        contents/ui/HearingTestDialog.qml
         contents/ui/MidSideEqualizer.qml
         contents/ui/EqualizerBand.qml
         contents/ui/EqualizerBandMenu.qml

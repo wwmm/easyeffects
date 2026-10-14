@@ -61,7 +61,6 @@ Checks: 'bugprone-*,cert-*,clang-analyzer-*,concurrency-*,cppcoreguidelines-*,hi
   -readability-magic-numbers,
   -readability-non-const-parameter,
   -readability-qualified-auto,
-  -readability-redundant-string-cstr,
   -bugprone-signed-bitwise,
   '
 # todo, clang-analyzer-core.NullDereference is also suppressed in the code itself with NOLINT, consider fixing that too

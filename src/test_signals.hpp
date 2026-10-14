@@ -22,10 +22,15 @@
 #include <pipewire/context.h>
 #include <pipewire/filter.h>
 #include <pipewire/proxy.h>
+#include <qjsengine.h>
 #include <qobject.h>
+#include <qqmlengine.h>
+#include <qqmlintegration.h>
+#include <qtimer.h>
 #include <qtmetamacros.h>
 #include <spa/utils/hook.h>
 #include <sys/types.h>
+#include <atomic>
 #include <random>
 #include <vector>
 #include "pw_manager.hpp"
@@ -34,9 +39,12 @@ enum class TestSignalType { sine_wave, gaussian, pink, silence };
 
 class TestSignals : public QObject {
   Q_OBJECT
+  QML_NAMED_ELEMENT(TestTone)
+  QML_SINGLETON
+  Q_PROPERTY(bool testing READ testing NOTIFY testingChanged)
 
  public:
-  TestSignals(pw::Manager* pipe_manager);
+  explicit TestSignals(pw::Manager* pipe_manager);
   TestSignals(const TestSignals&) = delete;
   auto operator=(const TestSignals&) -> TestSignals& = delete;
   TestSignals(const TestSignals&&) = delete;
@@ -47,6 +55,30 @@ class TestSignals : public QObject {
     static TestSignals ts = TestSignals(pm);
     return ts;
   }
+
+  static TestSignals* create(QQmlEngine* engine, QJSEngine* js_engine) {
+    Q_UNUSED(js_engine)
+    auto& instance = self(&pw::Manager::self());
+    Q_ASSERT(engine->thread() == instance.thread());
+    QJSEngine::setObjectOwnership(&instance, QJSEngine::CppOwnership);
+    return &instance;
+  }
+
+  [[nodiscard]] bool testing() const { return hearing_test; }
+
+  Q_INVOKABLE bool beginTest();
+  Q_INVOKABLE bool playTone(int frequency, int channel, double level);
+  Q_INVOKABLE void stopTone();
+  Q_INVOKABLE void endTest();
+
+ Q_SIGNALS:
+  void testingChanged();
+
+ public:
+  std::atomic<bool> hearing_test{false};
+  std::atomic<float> hearing_amplitude{0.0F};
+  std::atomic<bool> reset_phase{false};
+  float current_amplitude = 0.0F;
 
   struct data;
 
@@ -69,21 +101,21 @@ class TestSignals : public QObject {
 
   uint rate = 0U;
 
-  bool create_left_channel = true;
+  std::atomic<bool> create_left_channel{true};
 
-  bool create_right_channel = true;
+  std::atomic<bool> create_right_channel{true};
 
   bool can_get_node_id = false;
 
   float sine_phase = 0.0F;
 
-  float sine_frequency = 1000.0F;
+  std::atomic<float> sine_frequency{1000.0F};
 
   float pink_b0 = 0.0F;
   float pink_b1 = 0.0F;
   float pink_b2 = 0.0F;
 
-  TestSignalType signal_type = TestSignalType::sine_wave;
+  std::atomic<TestSignalType> signal_type{TestSignalType::sine_wave};
 
   void set_state(const bool& state);
 
@@ -99,6 +131,9 @@ class TestSignals : public QObject {
 
  private:
   pw::Manager* pm = nullptr;
+
+  QTimer tone_timer;
+  std::vector<pw_proxy*> hearing_links;
 
   spa_hook listener{};
 

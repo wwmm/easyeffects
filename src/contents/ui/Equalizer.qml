@@ -52,6 +52,12 @@ Kirigami.ScrollablePage {
         pluginBackend = pipelineInstance.getPluginInstance(name);
     }
 
+    HearingTestDialog {
+        id: hearingTestDialog
+
+        equalizer: equalizerPage.pluginBackend
+    }
+
     EqualizerBandMenu {
         id: bandMenu
 
@@ -351,6 +357,12 @@ Kirigami.ScrollablePage {
                             if (equalizerPage.pluginDB.splitChannels !== checked)
                                 equalizerPage.pluginDB.splitChannels = checked;
                         }
+                    },
+                    Kirigami.Action {
+                        text: i18n("Hearing Test")
+                        icon.name: "audio-headphones"
+                        enabled: equalizerPage.pipelineInstance === StreamOutputEffects && !!equalizerPage.pluginBackend
+                        onTriggered: hearingTestDialog.open()
                     },
                     Kirigami.Action {
                         text: i18n("Flat response") // qmllint disable
