@@ -6,7 +6,13 @@ Advanced noise reduction is achieved using "DeepFilterNet" technology. This tech
 Selects the noise reduction model. Each one must be installed separately.
 
 - DeepFilterNet: requires [DeepFilterNet](https://github.com/Rikorose/DeepFilterNet).
-- DPDFNet: requires [HushMic](https://github.com/Fovty/HushMic). Only the Attenuation Limit applies to this model.
+- DPDFNet: requires [HushMic](https://github.com/Fovty/HushMic). The Attenuation Limit and Process as Mono controls apply to this model.
+
+**Process as Mono (DPDFNet only)**
+
+Averages the left and right input channels before resampling, processes the result with one model instance, and sends the same processed signal to both output channels. This can significantly reduce CPU usage for mono microphones that supply the same signal on both channels. It does not change the selected model or its noise reduction quality.
+
+This setting is off by default and is saved in presets. Enable it for mono speech input; leave it off when stereo separation matters. If only one input channel contains audio, averaging reduces its level by 6 dB. Opposite-polarity signals can cancel, so check the input channels before enabling it.
 
 **Attenuation Limit**  
 This parameter determines how much noise is attenuated. Higher values result in stronger noise reduction, but too high a value may also remove parts of the audio.
