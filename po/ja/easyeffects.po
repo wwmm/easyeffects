@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-10-13 15:33+0000\n"
+"POT-Creation-Date: 2026-10-14 22:30+0000\n"
 "PO-Revision-Date: 2025-11-23 11:51+0000\n"
 "Last-Translator: Suu <suunya21@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
@@ -42,40 +42,40 @@ msgstr "Easy Effects をリセットします。"
 msgid "Hide the window."
 msgstr "ウィンドウを隠す。"
 
-#: src/command_line_parser.cpp:48
+#: src/command_line_parser.cpp:49
 #, fuzzy
 msgid ""
 "Global bypass. 1 to enable, 2 to disable and 3 to get the current state."
 msgstr ""
 "グローバルバイパス。1 を指定すると有効化し、2 を指定すると無効化します。"
 
-#: src/command_line_parser.cpp:49
+#: src/command_line_parser.cpp:50
 msgid "bypass-state"
 msgstr "bypass-state"
 
-#: src/command_line_parser.cpp:50
+#: src/command_line_parser.cpp:52
 #, fuzzy
 msgid "Toggle the state of the global bypass."
 msgstr "グローバルバイパス切り替え"
 
-#: src/command_line_parser.cpp:51
+#: src/command_line_parser.cpp:55
 #, fuzzy
 msgid ""
 "Audio sharing. 1 to enable, 2 to disable and 3 to get the current state."
 msgstr ""
 "グローバルバイパス。1 を指定すると有効化し、2 を指定すると無効化します。"
 
-#: src/command_line_parser.cpp:52 src/command_line_parser.cpp:55
+#: src/command_line_parser.cpp:56 src/command_line_parser.cpp:62
 #, fuzzy
 msgid "state"
 msgstr "状態"
 
-#: src/command_line_parser.cpp:53
+#: src/command_line_parser.cpp:58
 #, fuzzy
 msgid "Toggle the state of audio sharing."
 msgstr "グローバルバイパス切り替え"
 
-#: src/command_line_parser.cpp:55
+#: src/command_line_parser.cpp:61
 #, fuzzy
 msgid ""
 "Microphone monitoring. 1 to enable, 2 to disable and 3 to get the current "
@@ -83,83 +83,83 @@ msgid ""
 msgstr ""
 "グローバルバイパス。1 を指定すると有効化し、2 を指定すると無効化します。"
 
-#: src/command_line_parser.cpp:56
+#: src/command_line_parser.cpp:64
 #, fuzzy
 msgid "Toggle the state of microphone monitoring."
 msgstr "マイクモニタリング切り替え"
 
-#: src/command_line_parser.cpp:57
+#: src/command_line_parser.cpp:65
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "プリセットを読み込みます。例: easyeffects -l music"
 
-#: src/command_line_parser.cpp:57
+#: src/command_line_parser.cpp:65
 msgid "preset-name"
 msgstr "preset-name"
 
-#: src/command_line_parser.cpp:58
+#: src/command_line_parser.cpp:66
 msgid "Show available presets."
 msgstr "利用可能なプリセットを表示します。"
 
-#: src/command_line_parser.cpp:59
+#: src/command_line_parser.cpp:67
 #, fuzzy
 msgid "Get the last loaded input/output preset."
 msgstr "有効な入力/出力プリセットを取得します。"
 
-#: src/command_line_parser.cpp:59
+#: src/command_line_parser.cpp:67
 msgid "preset-type"
 msgstr "プリセットの種類"
 
-#: src/command_line_parser.cpp:60
+#: src/command_line_parser.cpp:68
 #, fuzzy
 msgid "Get the last loaded input and output presets."
 msgstr "有効な入力プリセットと出力プリセットを取得します。"
 
-#: src/command_line_parser.cpp:61
+#: src/command_line_parser.cpp:69
 msgid "Deprecated. Use --service-mode instead."
 msgstr "非推奨です。代わりに --service-mode を使用してください。"
 
-#: src/command_line_parser.cpp:62
+#: src/command_line_parser.cpp:70
 msgid "Start the application with service mode turned on."
 msgstr "サービスモードをオンにしてアプリケーションを起動します。"
 
-#: src/command_line_parser.cpp:63
+#: src/command_line_parser.cpp:71
 msgid "Enable debug messages."
 msgstr "デバッグメッセージを有効化します。"
 
-#: src/command_line_parser.cpp:135
+#: src/command_line_parser.cpp:144
 msgid "Must specify preset type: input/output."
 msgstr "プリセットタイプを指定してください: input/output。"
 
-#: src/command_line_parser.cpp:169
+#: src/command_line_parser.cpp:178
 msgid "Output presets"
 msgstr "出力プリセット"
 
-#: src/command_line_parser.cpp:171
+#: src/command_line_parser.cpp:180
 msgid "No output presets."
 msgstr "出力プリセットがありません。"
 
-#: src/command_line_parser.cpp:182
+#: src/command_line_parser.cpp:191
 msgid "Input presets"
 msgstr "入力プリセット"
 
-#: src/command_line_parser.cpp:184
+#: src/command_line_parser.cpp:193
 msgid "No input presets."
 msgstr "入力プリセットがありません。"
 
-#: src/command_line_parser.cpp:214
+#: src/command_line_parser.cpp:223
 msgid "Specified preset does not exist."
 msgstr "指定されたプリセットは存在しません。"
 
-#: src/command_line_parser.cpp:234
+#: src/command_line_parser.cpp:243
 msgid "Provided an invalid bypass state."
 msgstr "無効なバイパス状態が提供されました。"
 
-#: src/command_line_parser.cpp:274
+#: src/command_line_parser.cpp:283
 #, fuzzy
 msgid "Provided an invalid microphone monitoring state."
 msgstr "無効なバイパス状態が提供されました。"
 
-#: src/command_line_parser.cpp:304
+#: src/command_line_parser.cpp:313
 #, fuzzy
 msgid "Provided an invalid audio sharing state."
 msgstr "無効なバイパス状態が提供されました。"
@@ -172,7 +172,7 @@ msgstr "概要"
 #: src/contents/ui/Autogain.qml:69 src/contents/ui/BassEnhancer.qml:105
 #: src/contents/ui/BassLoudness.qml:59 src/contents/ui/Crossfeed.qml:74
 #: src/contents/ui/CrosstalkCanceller.qml:59
-#: src/contents/ui/DeepFilterNet.qml:146 src/contents/ui/Exciter.qml:106
+#: src/contents/ui/DeepFilterNet.qml:166 src/contents/ui/Exciter.qml:106
 #: src/contents/ui/Filter.qml:59 src/contents/ui/Loudness.qml:59
 #: src/contents/ui/Maximizer.qml:60 src/contents/ui/Pitch.qml:60
 #: src/contents/ui/Reverb.qml:59 src/contents/ui/Speex.qml:59
@@ -250,9 +250,9 @@ msgstr "出力ゲイン"
 #: src/contents/ui/BassEnhancer.qml:205 src/contents/ui/BassLoudness.qml:126
 #: src/contents/ui/Compressor.qml:873 src/contents/ui/Convolver.qml:520
 #: src/contents/ui/Crossfeed.qml:150 src/contents/ui/Crusher.qml:236
-#: src/contents/ui/Crystalizer.qml:155 src/contents/ui/DeepFilterNet.qml:249
+#: src/contents/ui/Crystalizer.qml:155 src/contents/ui/DeepFilterNet.qml:269
 #: src/contents/ui/Deesser.qml:319 src/contents/ui/Delay.qml:376
-#: src/contents/ui/EchoCanceller.qml:158 src/contents/ui/Equalizer.qml:315
+#: src/contents/ui/EchoCanceller.qml:158 src/contents/ui/Equalizer.qml:321
 #: src/contents/ui/Exciter.qml:210 src/contents/ui/Expander.qml:823
 #: src/contents/ui/Filter.qml:234 src/contents/ui/Gate.qml:952
 #: src/contents/ui/LevelMeter.qml:215 src/contents/ui/Limiter.qml:607
@@ -267,7 +267,7 @@ msgstr "出力ゲイン"
 msgid "Using %1"
 msgstr "%1 を使用中"
 
-#: src/contents/ui/Autogain.qml:250 src/contents/ui/DeepFilterNet.qml:266
+#: src/contents/ui/Autogain.qml:250 src/contents/ui/DeepFilterNet.qml:286
 #: src/contents/ui/LevelMeter.qml:232 src/contents/ui/Pitch.qml:285
 msgid "Reset history"
 msgstr "履歴をリセット"
@@ -281,7 +281,7 @@ msgid "Force silence when the level is below the silence threshold"
 msgstr "レベルがしきい値を下回った場合に強制的に無音化します"
 
 #: src/contents/ui/Autogain.qml:270 src/contents/ui/Autotune.qml:436
-#: src/contents/ui/DeepFilterNet.qml:274 src/contents/ui/LevelMeter.qml:240
+#: src/contents/ui/DeepFilterNet.qml:294 src/contents/ui/LevelMeter.qml:240
 #: src/contents/ui/Pitch.qml:313
 msgid "Reset settings"
 msgstr "設定をリセット"
@@ -294,7 +294,7 @@ msgstr "実行中"
 #: src/contents/ui/Autotune.qml:107 src/contents/ui/Compressor.qml:79
 #: src/contents/ui/Compressor.qml:301 src/contents/ui/Crusher.qml:97
 #: src/contents/ui/Deesser.qml:89 src/contents/ui/Delay.qml:71
-#: src/contents/ui/Delay.qml:224 src/contents/ui/Equalizer.qml:138
+#: src/contents/ui/Delay.qml:224 src/contents/ui/Equalizer.qml:144
 #: src/contents/ui/EqualizerBandMenu.qml:61 src/contents/ui/Expander.qml:79
 #: src/contents/ui/Expander.qml:261 src/contents/ui/Gate.qml:279
 #: src/contents/ui/Limiter.qml:72 src/contents/ui/Loudness.qml:71
@@ -309,7 +309,7 @@ msgstr "モード"
 msgid "Auto"
 msgstr "オートゲイン"
 
-#: src/contents/ui/Autotune.qml:111 src/contents/ui/Main.qml:465
+#: src/contents/ui/Autotune.qml:111 src/contents/ui/Main.qml:469
 #: src/contents/ui/TrayIcon.qml:221
 msgid "Manual"
 msgstr "マニュアル"
@@ -402,7 +402,7 @@ msgstr "下限"
 
 #: src/contents/ui/BassEnhancer.qml:223 src/contents/ui/Compressor.qml:891
 #: src/contents/ui/Crusher.qml:254 src/contents/ui/Deesser.qml:337
-#: src/contents/ui/Delay.qml:414 src/contents/ui/Equalizer.qml:333
+#: src/contents/ui/Delay.qml:414 src/contents/ui/Equalizer.qml:339
 #: src/contents/ui/Exciter.qml:228 src/contents/ui/Expander.qml:841
 #: src/contents/ui/Filter.qml:252 src/contents/ui/Gate.qml:970
 #: src/contents/ui/Limiter.qml:625 src/contents/ui/Loudness.qml:193
@@ -424,11 +424,11 @@ msgstr "聞く"
 #: src/contents/ui/Crossfeed.qml:175 src/contents/ui/CrosstalkCanceller.qml:124
 #: src/contents/ui/Crusher.qml:268 src/contents/ui/Crystalizer.qml:203
 #: src/contents/ui/Deesser.qml:361 src/contents/ui/Delay.qml:428
-#: src/contents/ui/EchoCanceller.qml:186 src/contents/ui/Equalizer.qml:399
+#: src/contents/ui/EchoCanceller.qml:186 src/contents/ui/Equalizer.qml:411
 #: src/contents/ui/Exciter.qml:252 src/contents/ui/Expander.qml:875
 #: src/contents/ui/Filter.qml:266 src/contents/ui/Gate.qml:1004
 #: src/contents/ui/Limiter.qml:659 src/contents/ui/Loudness.qml:217
-#: src/contents/ui/Main.qml:477 src/contents/ui/Maximizer.qml:154
+#: src/contents/ui/Main.qml:481 src/contents/ui/Maximizer.qml:154
 #: src/contents/ui/MidSideEqualizer.qml:399
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/RNNoise.qml:345
@@ -658,9 +658,10 @@ msgid "Side"
 msgstr "サイド"
 
 #: src/contents/ui/Compressor.qml:319 src/contents/ui/Convolver.qml:301
-#: src/contents/ui/Delay.qml:59 src/contents/ui/Equalizer.qml:244
+#: src/contents/ui/Delay.qml:59 src/contents/ui/Equalizer.qml:250
 #: src/contents/ui/Expander.qml:279 src/contents/ui/Gate.qml:297
-#: src/contents/ui/LevelMeter.qml:79 src/contents/ui/LevelMeter.qml:118
+#: src/contents/ui/HearingTestDialog.qml:102 src/contents/ui/LevelMeter.qml:79
+#: src/contents/ui/LevelMeter.qml:118
 #: src/contents/ui/MultibandCompressor.qml:449
 #: src/contents/ui/MultibandGate.qml:422 src/contents/ui/PipeWirePage.qml:346
 #: src/contents/ui/StereoTools.qml:204
@@ -668,9 +669,10 @@ msgid "Left"
 msgstr "左"
 
 #: src/contents/ui/Compressor.qml:319 src/contents/ui/Convolver.qml:319
-#: src/contents/ui/Delay.qml:212 src/contents/ui/Equalizer.qml:244
+#: src/contents/ui/Delay.qml:212 src/contents/ui/Equalizer.qml:250
 #: src/contents/ui/Expander.qml:279 src/contents/ui/Gate.qml:297
-#: src/contents/ui/LevelMeter.qml:89 src/contents/ui/LevelMeter.qml:128
+#: src/contents/ui/HearingTestDialog.qml:102 src/contents/ui/LevelMeter.qml:89
+#: src/contents/ui/LevelMeter.qml:128
 #: src/contents/ui/MultibandCompressor.qml:449
 #: src/contents/ui/MultibandGate.qml:422 src/contents/ui/PipeWirePage.qml:357
 #: src/contents/ui/StereoTools.qml:231
@@ -746,7 +748,7 @@ msgid "High-pass"
 msgstr "ハイパス"
 
 #: src/contents/ui/Compressor.qml:416 src/contents/ui/Compressor.qml:430
-#: src/contents/ui/Equalizer.qml:156 src/contents/ui/EqualizerBandMenu.qml:51
+#: src/contents/ui/Equalizer.qml:162 src/contents/ui/EqualizerBandMenu.qml:51
 #: src/contents/ui/Expander.qml:372 src/contents/ui/Expander.qml:386
 #: src/contents/ui/Filter.qml:111 src/contents/ui/Gate.qml:391
 #: src/contents/ui/Gate.qml:405 src/contents/ui/MidSideEqualizer.qml:156
@@ -973,6 +975,7 @@ msgid "Failed to rename the %1 impulse to %2"
 msgstr "ローカルプリセット「%1」を「%2」への名前変更に失敗しました"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:147
+#: src/contents/ui/HearingTestDialog.qml:178
 #: src/contents/ui/PresetsLocalPage.qml:267
 msgid "Cancel"
 msgstr "キャンセル"
@@ -1164,27 +1167,39 @@ msgstr ""
 msgid "Model"
 msgstr "モデル"
 
-#: src/contents/ui/DeepFilterNet.qml:101
+#: src/contents/ui/DeepFilterNet.qml:104
+msgid "Process as Mono"
+msgstr ""
+
+#: src/contents/ui/DeepFilterNet.qml:108
+msgid ""
+"Average the left and right inputs and process them with one DPDFNet instance "
+"instead of two. This can significantly reduce CPU usage for mono "
+"microphones. Both output channels receive the same audio; stereo separation "
+"is lost."
+msgstr ""
+
+#: src/contents/ui/DeepFilterNet.qml:121
 msgid "Attenuation limit"
 msgstr "減衰制限"
 
-#: src/contents/ui/DeepFilterNet.qml:158
+#: src/contents/ui/DeepFilterNet.qml:178
 msgid "Minimum processing threshold"
 msgstr "最小処理しきい値"
 
-#: src/contents/ui/DeepFilterNet.qml:174
+#: src/contents/ui/DeepFilterNet.qml:194
 msgid "Maximum ERB processing threshold"
 msgstr "最大 ERB 処理しきい値"
 
-#: src/contents/ui/DeepFilterNet.qml:190
+#: src/contents/ui/DeepFilterNet.qml:210
 msgid "Maximum DF processing threshold"
 msgstr "最大 DF 処理しきい値"
 
-#: src/contents/ui/DeepFilterNet.qml:206
+#: src/contents/ui/DeepFilterNet.qml:226
 msgid "Minimum processing buffer"
 msgstr "最小処理バッファ"
 
-#: src/contents/ui/DeepFilterNet.qml:222
+#: src/contents/ui/DeepFilterNet.qml:242
 msgid "Post filter Beta"
 msgstr "ポストフィルターベータ"
 
@@ -1388,46 +1403,46 @@ msgstr "オーディオレベル制御"
 msgid "Input and output gain controls with level meters"
 msgstr "レベルメーター付き入出力ゲイン制御"
 
-#: src/contents/ui/EeInputOutputGain.qml:132 src/contents/ui/Main.qml:387
+#: src/contents/ui/EeInputOutputGain.qml:132 src/contents/ui/Main.qml:388
 #: src/contents/ui/StereoTools.qml:59
 msgid "Input"
 msgstr "入力"
 
-#: src/contents/ui/Equalizer.qml:66 src/contents/ui/Equalizer.qml:106
+#: src/contents/ui/Equalizer.qml:72 src/contents/ui/Equalizer.qml:112
 #: src/contents/ui/MidSideEqualizer.qml:66
 #: src/contents/ui/MidSideEqualizer.qml:106
 msgid "APO preset"
 msgstr "APO プリセット"
 
-#: src/contents/ui/Equalizer.qml:69
+#: src/contents/ui/Equalizer.qml:75
 msgid "Failed to import the Equalizer APO preset file."
 msgstr "Equalizer APO プリセットファイルのインポートに失敗しました。"
 
-#: src/contents/ui/Equalizer.qml:74
+#: src/contents/ui/Equalizer.qml:80
 msgid "Imported the Equalizer APO preset file."
 msgstr "Equalizer APO プリセットファイルをインポートしました。"
 
-#: src/contents/ui/Equalizer.qml:76
+#: src/contents/ui/Equalizer.qml:82
 msgid "Imported the Equalizer APO preset file into the left channel."
 msgstr "Equalizer APO プリセットファイルを左チャンネルにインポートしました。"
 
-#: src/contents/ui/Equalizer.qml:78
+#: src/contents/ui/Equalizer.qml:84
 msgid "Imported the Equalizer APO preset file into the right channel."
 msgstr "Equalizer APO プリセットファイルを右チャンネルにインポートしました。"
 
-#: src/contents/ui/Equalizer.qml:91 src/contents/ui/MidSideEqualizer.qml:91
+#: src/contents/ui/Equalizer.qml:97 src/contents/ui/MidSideEqualizer.qml:91
 msgid "GraphicEQ preset"
 msgstr "GraphicEQ プリセット"
 
-#: src/contents/ui/Equalizer.qml:94 src/contents/ui/MidSideEqualizer.qml:94
+#: src/contents/ui/Equalizer.qml:100 src/contents/ui/MidSideEqualizer.qml:94
 msgid "Imported the GraphicEQ preset file."
 msgstr "GraphicEQ プリセットファイルをインポートしました。"
 
-#: src/contents/ui/Equalizer.qml:96 src/contents/ui/MidSideEqualizer.qml:96
+#: src/contents/ui/Equalizer.qml:102 src/contents/ui/MidSideEqualizer.qml:96
 msgid "Failed to import the GraphicEQ preset file."
 msgstr "GraphicEQ プリセットファイルのインポートに失敗しました。"
 
-#: src/contents/ui/Equalizer.qml:109
+#: src/contents/ui/Equalizer.qml:115
 msgid ""
 "Failed to export the current Equalizer settings to an external APO preset "
 "file."
@@ -1435,12 +1450,12 @@ msgstr ""
 "現在のイコライザー設定を外部 APO プリセットファイルへのエクスポートに失敗しま"
 "した。"
 
-#: src/contents/ui/Equalizer.qml:114
+#: src/contents/ui/Equalizer.qml:120
 msgid "Exported the current Equalizer settings to an external APO preset file."
 msgstr ""
 "現在のイコライザー設定を外部 APO プリセットファイルにエクスポートしました。"
 
-#: src/contents/ui/Equalizer.qml:116
+#: src/contents/ui/Equalizer.qml:122
 msgid ""
 "Exported the current Equalizer settings of the left channel to an external "
 "APO preset file."
@@ -1448,7 +1463,7 @@ msgstr ""
 "現在のイコライザー左チャンネル設定を外部 APO プリセットファイルにエクスポート"
 "しました。"
 
-#: src/contents/ui/Equalizer.qml:118
+#: src/contents/ui/Equalizer.qml:124
 msgid ""
 "Exported the current Equalizer settings of the right channel to an external "
 "APO preset file."
@@ -1456,106 +1471,110 @@ msgstr ""
 "現在のイコライザー右チャンネル設定を外部 APO プリセットファイルにエクスポート"
 "しました。"
 
-#: src/contents/ui/Equalizer.qml:142 src/contents/ui/Filter.qml:97
+#: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
 #: src/contents/ui/Loudness.qml:77 src/contents/ui/MidSideEqualizer.qml:142
 msgid "IIR"
 msgstr "IIR"
 
-#: src/contents/ui/Equalizer.qml:142 src/contents/ui/Filter.qml:97
+#: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
 #: src/contents/ui/MidSideEqualizer.qml:142
 msgid "FIR"
 msgstr "FIR"
 
-#: src/contents/ui/Equalizer.qml:142 src/contents/ui/Filter.qml:97
+#: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
 #: src/contents/ui/Loudness.qml:77 src/contents/ui/MidSideEqualizer.qml:142
 msgid "FFT"
 msgstr "FFT"
 
-#: src/contents/ui/Equalizer.qml:142 src/contents/ui/Filter.qml:97
+#: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
 #: src/contents/ui/MidSideEqualizer.qml:142
 msgid "SPM"
 msgstr "SPM"
 
-#: src/contents/ui/Equalizer.qml:152 src/contents/ui/Filter.qml:107
+#: src/contents/ui/Equalizer.qml:158 src/contents/ui/Filter.qml:107
 #: src/contents/ui/MidSideEqualizer.qml:152
 #, fuzzy
 msgid "Equalizer decramping"
 msgstr "イコライザーモード"
 
-#: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
+#: src/contents/ui/Equalizer.qml:162 src/contents/ui/Filter.qml:111
 #: src/contents/ui/MidSideEqualizer.qml:156
 msgid "x2"
 msgstr ""
 
-#: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
+#: src/contents/ui/Equalizer.qml:162 src/contents/ui/Filter.qml:111
 #: src/contents/ui/MidSideEqualizer.qml:156
 msgid "x3"
 msgstr ""
 
-#: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
+#: src/contents/ui/Equalizer.qml:162 src/contents/ui/Filter.qml:111
 #: src/contents/ui/MidSideEqualizer.qml:156
 msgid "x4"
 msgstr ""
 
-#: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
+#: src/contents/ui/Equalizer.qml:162 src/contents/ui/Filter.qml:111
 #: src/contents/ui/MidSideEqualizer.qml:156
 msgid "x6"
 msgstr ""
 
-#: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
+#: src/contents/ui/Equalizer.qml:162 src/contents/ui/Filter.qml:111
 #: src/contents/ui/MidSideEqualizer.qml:156
 msgid "x8"
 msgstr ""
 
-#: src/contents/ui/Equalizer.qml:165 src/contents/ui/MidSideEqualizer.qml:165
+#: src/contents/ui/Equalizer.qml:171 src/contents/ui/MidSideEqualizer.qml:165
 msgid "Bands"
 msgstr "バンド"
 
-#: src/contents/ui/Equalizer.qml:181 src/contents/ui/Filter.qml:204
+#: src/contents/ui/Equalizer.qml:187 src/contents/ui/Filter.qml:204
 #: src/contents/ui/MidSideEqualizer.qml:181 src/contents/ui/StereoTools.qml:77
 #: src/contents/ui/StereoTools.qml:278
 msgid "Balance"
 msgstr "バランス"
 
-#: src/contents/ui/Equalizer.qml:198
+#: src/contents/ui/Equalizer.qml:204
 msgid "Pitch left"
 msgstr "左ピッチ"
 
-#: src/contents/ui/Equalizer.qml:206 src/contents/ui/Equalizer.qml:223
+#: src/contents/ui/Equalizer.qml:212 src/contents/ui/Equalizer.qml:229
 #: src/contents/ui/MidSideEqualizer.qml:206
 #: src/contents/ui/MidSideEqualizer.qml:223
 msgid "st"
 msgstr "st"
 
-#: src/contents/ui/Equalizer.qml:215
+#: src/contents/ui/Equalizer.qml:221
 msgid "Pitch right"
 msgstr "右ピッチ"
 
-#: src/contents/ui/Equalizer.qml:346
+#: src/contents/ui/Equalizer.qml:352
 msgid "Split channels"
 msgstr "チャンネル分割"
 
-#: src/contents/ui/Equalizer.qml:356 src/contents/ui/MidSideEqualizer.qml:356
+#: src/contents/ui/Equalizer.qml:362 src/contents/ui/HearingTestDialog.qml:23
+msgid "Hearing Test"
+msgstr ""
+
+#: src/contents/ui/Equalizer.qml:368 src/contents/ui/MidSideEqualizer.qml:356
 msgid "Flat response"
 msgstr "フラットレスポンス"
 
-#: src/contents/ui/Equalizer.qml:363 src/contents/ui/MidSideEqualizer.qml:363
+#: src/contents/ui/Equalizer.qml:375 src/contents/ui/MidSideEqualizer.qml:363
 msgid "Calculate frequencies"
 msgstr "周波数計算"
 
-#: src/contents/ui/Equalizer.qml:370 src/contents/ui/MidSideEqualizer.qml:370
+#: src/contents/ui/Equalizer.qml:382 src/contents/ui/MidSideEqualizer.qml:370
 msgid "Sort bands"
 msgstr "バンド並べ替え"
 
-#: src/contents/ui/Equalizer.qml:377 src/contents/ui/MidSideEqualizer.qml:377
+#: src/contents/ui/Equalizer.qml:389 src/contents/ui/MidSideEqualizer.qml:377
 msgid "Import APO"
 msgstr "APO をインポート"
 
-#: src/contents/ui/Equalizer.qml:384 src/contents/ui/MidSideEqualizer.qml:384
+#: src/contents/ui/Equalizer.qml:396 src/contents/ui/MidSideEqualizer.qml:384
 msgid "Import APO (GraphicEQ)"
 msgstr "APO (GraphicEQ) をインポート"
 
-#: src/contents/ui/Equalizer.qml:391 src/contents/ui/MidSideEqualizer.qml:391
+#: src/contents/ui/Equalizer.qml:403 src/contents/ui/MidSideEqualizer.qml:391
 msgid "Export APO"
 msgstr "APO をエクスポート"
 
@@ -1704,6 +1723,74 @@ msgstr "ヒステリシス"
 #: src/contents/ui/VoiceSuppressor.qml:63
 msgid "Start"
 msgstr "スタート"
+
+#: src/contents/ui/HearingTestDialog.qml:53
+msgid ""
+"The output device changed. Restart the test with the same headphones and "
+"volume."
+msgstr ""
+
+#: src/contents/ui/HearingTestDialog.qml:64
+msgid ""
+"Use headphones in a quiet room. Pause other audio and keep the system volume "
+"fixed at a comfortable level. Adjust each tone until it is barely audible, "
+"then record the threshold. This uncalibrated listening test is not a medical "
+"hearing assessment."
+msgstr ""
+
+#: src/contents/ui/HearingTestDialog.qml:70
+msgid "I am using headphones"
+msgstr ""
+
+#: src/contents/ui/HearingTestDialog.qml:84
+#, fuzzy
+msgid "Start Test"
+msgstr "スタート"
+
+#: src/contents/ui/HearingTestDialog.qml:95
+msgid ""
+"Select an available stereo output device and disable the regular test "
+"signals before starting."
+msgstr ""
+
+#: src/contents/ui/HearingTestDialog.qml:102
+msgid "%1 ear: %2 Hz (%3 of %4)"
+msgstr ""
+
+#: src/contents/ui/HearingTestDialog.qml:108
+#, fuzzy
+msgid "Tone Level"
+msgstr "入力レベル"
+
+#: src/contents/ui/HearingTestDialog.qml:126
+#, fuzzy
+msgid "Play Tone"
+msgstr "プレーヤー"
+
+#: src/contents/ui/HearingTestDialog.qml:133
+#, fuzzy
+msgid "Record Threshold"
+msgstr "リリースしきい値"
+
+#: src/contents/ui/HearingTestDialog.qml:154
+msgid ""
+"The test is complete. Applying the profile replaces this equalizer's "
+"settings with separate corrections for each ear, limited to 6 dB per band, "
+"and lowers input gain to preserve headroom. Save a preset to keep the result "
+"for these headphones."
+msgstr ""
+
+#: src/contents/ui/HearingTestDialog.qml:161
+msgid "%1 Hz: left %2 dB, right %3 dB"
+msgstr ""
+
+#: src/contents/ui/HearingTestDialog.qml:168
+msgid "Apply Personalized EQ"
+msgstr ""
+
+#: src/contents/ui/HearingTestDialog.qml:173
+msgid "Could not apply the hearing profile."
+msgstr ""
 
 #: src/contents/ui/LevelMeter.qml:67
 msgid "Input Level"
@@ -1965,7 +2052,7 @@ msgstr "設定をリセットしますか？"
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr "すべての Easy Effects の設定をリセットしてもよろしいですか？"
 
-#: src/contents/ui/Main.qml:330 src/contents/ui/Main.qml:457
+#: src/contents/ui/Main.qml:330 src/contents/ui/Main.qml:461
 #: src/contents/ui/PipeWirePage.qml:34
 msgid "PipeWire"
 msgstr "PipeWire"
@@ -1986,28 +2073,28 @@ msgstr "オーディオエフェクトが有効です。"
 msgid "Audio effects are disabled."
 msgstr "オーディオエフェクトが無効です。"
 
-#: src/contents/ui/Main.qml:403 src/contents/ui/PageStreamsEffects.qml:489
+#: src/contents/ui/Main.qml:405 src/contents/ui/PageStreamsEffects.qml:489
 msgid "Players"
 msgstr "プレーヤー"
 
-#: src/contents/ui/Main.qml:418 src/contents/ui/PageStreamsEffects.qml:498
+#: src/contents/ui/Main.qml:421 src/contents/ui/PageStreamsEffects.qml:498
 msgid "Recorders"
 msgstr "レコーダー"
 
-#: src/contents/ui/Main.qml:437
+#: src/contents/ui/Main.qml:441
 msgid "Preferences"
 msgstr "環境設定"
 
-#: src/contents/ui/Main.qml:449 src/contents/ui/ShortcutsSheet.qml:458
+#: src/contents/ui/Main.qml:453 src/contents/ui/ShortcutsSheet.qml:458
 #: src/contents/ui/TrayIcon.qml:212
 msgid "Shortcuts"
 msgstr "ショートカット"
 
-#: src/contents/ui/Main.qml:489
+#: src/contents/ui/Main.qml:493
 msgid "About Easy Effects"
 msgstr "Easy Effects について"
 
-#: src/contents/ui/Main.qml:497 src/contents/ui/TrayIcon.qml:231
+#: src/contents/ui/Main.qml:501 src/contents/ui/TrayIcon.qml:231
 msgid "Quit"
 msgstr "終了"
 
@@ -4075,9 +4162,6 @@ msgstr "シンプルなオーディオエフェクト"
 
 #~ msgid "Attack Threshold"
 #~ msgstr "アタックしきい値"
-
-#~ msgid "Release Threshold"
-#~ msgstr "リリースしきい値"
 
 #~ msgid "Dry Level"
 #~ msgstr "Dry レベル"

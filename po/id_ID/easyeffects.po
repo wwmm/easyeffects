@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-10-13 15:33+0000\n"
+"POT-Creation-Date: 2026-10-14 22:30+0000\n"
 "PO-Revision-Date: 2026-09-26 15:15+0000\n"
 "Last-Translator: Arif Budiman <arifpedia@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/easyeffects/"
@@ -41,37 +41,37 @@ msgstr "Atur ulang Easy Effects."
 msgid "Hide the window."
 msgstr "Sembunyikan jendela."
 
-#: src/command_line_parser.cpp:48
+#: src/command_line_parser.cpp:49
 msgid ""
 "Global bypass. 1 to enable, 2 to disable and 3 to get the current state."
 msgstr ""
 "Bypass global. 1 untuk mengaktifkan, 2 untuk menonaktifkan dan 3 untuk "
 "mendapatkan status saat ini."
 
-#: src/command_line_parser.cpp:49
+#: src/command_line_parser.cpp:50
 msgid "bypass-state"
 msgstr "status-bypass"
 
-#: src/command_line_parser.cpp:50
+#: src/command_line_parser.cpp:52
 msgid "Toggle the state of the global bypass."
 msgstr "Alihkan status bypass global."
 
-#: src/command_line_parser.cpp:51
+#: src/command_line_parser.cpp:55
 msgid ""
 "Audio sharing. 1 to enable, 2 to disable and 3 to get the current state."
 msgstr ""
 "Berbagi audio. 1 untuk mengaktifkan, 2 untuk menonaktifkan, dan 3 untuk "
 "mendapatkan status saat ini."
 
-#: src/command_line_parser.cpp:52 src/command_line_parser.cpp:55
+#: src/command_line_parser.cpp:56 src/command_line_parser.cpp:62
 msgid "state"
 msgstr "status"
 
-#: src/command_line_parser.cpp:53
+#: src/command_line_parser.cpp:58
 msgid "Toggle the state of audio sharing."
 msgstr "Alihkan status berbagi audio."
 
-#: src/command_line_parser.cpp:55
+#: src/command_line_parser.cpp:61
 msgid ""
 "Microphone monitoring. 1 to enable, 2 to disable and 3 to get the current "
 "state."
@@ -79,79 +79,79 @@ msgstr ""
 "Pemantauan mikrofon. 1 untuk mengaktifkan, 2 untuk menonaktifkan, dan 3 "
 "untuk mendapatkan status saat ini."
 
-#: src/command_line_parser.cpp:56
+#: src/command_line_parser.cpp:64
 msgid "Toggle the state of microphone monitoring."
 msgstr "Alihkan status pemantauan mikrofon."
 
-#: src/command_line_parser.cpp:57
+#: src/command_line_parser.cpp:65
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Muat preset. Contoh: easyeffects -l musik"
 
-#: src/command_line_parser.cpp:57
+#: src/command_line_parser.cpp:65
 msgid "preset-name"
 msgstr "nama-preset"
 
-#: src/command_line_parser.cpp:58
+#: src/command_line_parser.cpp:66
 msgid "Show available presets."
 msgstr "Tampilkan preset yang tersedia."
 
-#: src/command_line_parser.cpp:59
+#: src/command_line_parser.cpp:67
 msgid "Get the last loaded input/output preset."
 msgstr "Dapatkan preset masukan/keluaran yang terakhir dimuat."
 
-#: src/command_line_parser.cpp:59
+#: src/command_line_parser.cpp:67
 msgid "preset-type"
 msgstr "jenis-preset"
 
-#: src/command_line_parser.cpp:60
+#: src/command_line_parser.cpp:68
 msgid "Get the last loaded input and output presets."
 msgstr "Dapatkan preset masukan dan keluaran yang terakhir dimuat."
 
-#: src/command_line_parser.cpp:61
+#: src/command_line_parser.cpp:69
 msgid "Deprecated. Use --service-mode instead."
 msgstr "Usang. Gunakan --service-mode sebagai gantinya."
 
-#: src/command_line_parser.cpp:62
+#: src/command_line_parser.cpp:70
 msgid "Start the application with service mode turned on."
 msgstr "Mulai aplikasi dengan mode layanan diaktifkan."
 
-#: src/command_line_parser.cpp:63
+#: src/command_line_parser.cpp:71
 msgid "Enable debug messages."
 msgstr "Aktifkan pesan debug."
 
-#: src/command_line_parser.cpp:135
+#: src/command_line_parser.cpp:144
 msgid "Must specify preset type: input/output."
 msgstr "Harus menentukan jenis preset: masukan/keluaran."
 
-#: src/command_line_parser.cpp:169
+#: src/command_line_parser.cpp:178
 msgid "Output presets"
 msgstr "Preset keluaran"
 
-#: src/command_line_parser.cpp:171
+#: src/command_line_parser.cpp:180
 msgid "No output presets."
 msgstr "Tidak ada preset keluaran."
 
-#: src/command_line_parser.cpp:182
+#: src/command_line_parser.cpp:191
 msgid "Input presets"
 msgstr "Preset masukan"
 
-#: src/command_line_parser.cpp:184
+#: src/command_line_parser.cpp:193
 msgid "No input presets."
 msgstr "Tidak ada preset masukan."
 
-#: src/command_line_parser.cpp:214
+#: src/command_line_parser.cpp:223
 msgid "Specified preset does not exist."
 msgstr "Preset yang ditentukan tidak ada."
 
-#: src/command_line_parser.cpp:234
+#: src/command_line_parser.cpp:243
 msgid "Provided an invalid bypass state."
 msgstr "Memberikan status bypass yang tidak valid."
 
-#: src/command_line_parser.cpp:274
+#: src/command_line_parser.cpp:283
 msgid "Provided an invalid microphone monitoring state."
 msgstr "Status pemantauan mikrofon yang diberikan tidak valid."
 
-#: src/command_line_parser.cpp:304
+#: src/command_line_parser.cpp:313
 msgid "Provided an invalid audio sharing state."
 msgstr "Status berbagi audio yang diberikan tidak valid."
 
@@ -163,7 +163,7 @@ msgstr "Tentang"
 #: src/contents/ui/Autogain.qml:69 src/contents/ui/BassEnhancer.qml:105
 #: src/contents/ui/BassLoudness.qml:59 src/contents/ui/Crossfeed.qml:74
 #: src/contents/ui/CrosstalkCanceller.qml:59
-#: src/contents/ui/DeepFilterNet.qml:146 src/contents/ui/Exciter.qml:106
+#: src/contents/ui/DeepFilterNet.qml:166 src/contents/ui/Exciter.qml:106
 #: src/contents/ui/Filter.qml:59 src/contents/ui/Loudness.qml:59
 #: src/contents/ui/Maximizer.qml:60 src/contents/ui/Pitch.qml:60
 #: src/contents/ui/Reverb.qml:59 src/contents/ui/Speex.qml:59
@@ -241,9 +241,9 @@ msgstr "Penguatan keluaran"
 #: src/contents/ui/BassEnhancer.qml:205 src/contents/ui/BassLoudness.qml:126
 #: src/contents/ui/Compressor.qml:873 src/contents/ui/Convolver.qml:520
 #: src/contents/ui/Crossfeed.qml:150 src/contents/ui/Crusher.qml:236
-#: src/contents/ui/Crystalizer.qml:155 src/contents/ui/DeepFilterNet.qml:249
+#: src/contents/ui/Crystalizer.qml:155 src/contents/ui/DeepFilterNet.qml:269
 #: src/contents/ui/Deesser.qml:319 src/contents/ui/Delay.qml:376
-#: src/contents/ui/EchoCanceller.qml:158 src/contents/ui/Equalizer.qml:315
+#: src/contents/ui/EchoCanceller.qml:158 src/contents/ui/Equalizer.qml:321
 #: src/contents/ui/Exciter.qml:210 src/contents/ui/Expander.qml:823
 #: src/contents/ui/Filter.qml:234 src/contents/ui/Gate.qml:952
 #: src/contents/ui/LevelMeter.qml:215 src/contents/ui/Limiter.qml:607
@@ -258,7 +258,7 @@ msgstr "Penguatan keluaran"
 msgid "Using %1"
 msgstr "Menggunakan %1"
 
-#: src/contents/ui/Autogain.qml:250 src/contents/ui/DeepFilterNet.qml:266
+#: src/contents/ui/Autogain.qml:250 src/contents/ui/DeepFilterNet.qml:286
 #: src/contents/ui/LevelMeter.qml:232 src/contents/ui/Pitch.qml:285
 msgid "Reset history"
 msgstr "Atur ulang riwayat"
@@ -272,7 +272,7 @@ msgid "Force silence when the level is below the silence threshold"
 msgstr "Paksa senyap saat level berada di bawah ambang batas senyap"
 
 #: src/contents/ui/Autogain.qml:270 src/contents/ui/Autotune.qml:436
-#: src/contents/ui/DeepFilterNet.qml:274 src/contents/ui/LevelMeter.qml:240
+#: src/contents/ui/DeepFilterNet.qml:294 src/contents/ui/LevelMeter.qml:240
 #: src/contents/ui/Pitch.qml:313
 msgid "Reset settings"
 msgstr "Atur ulang pengaturan"
@@ -284,7 +284,7 @@ msgstr "Penyetelan"
 #: src/contents/ui/Autotune.qml:107 src/contents/ui/Compressor.qml:79
 #: src/contents/ui/Compressor.qml:301 src/contents/ui/Crusher.qml:97
 #: src/contents/ui/Deesser.qml:89 src/contents/ui/Delay.qml:71
-#: src/contents/ui/Delay.qml:224 src/contents/ui/Equalizer.qml:138
+#: src/contents/ui/Delay.qml:224 src/contents/ui/Equalizer.qml:144
 #: src/contents/ui/EqualizerBandMenu.qml:61 src/contents/ui/Expander.qml:79
 #: src/contents/ui/Expander.qml:261 src/contents/ui/Gate.qml:279
 #: src/contents/ui/Limiter.qml:72 src/contents/ui/Loudness.qml:71
@@ -298,7 +298,7 @@ msgstr "Mode"
 msgid "Auto"
 msgstr "Otomatis"
 
-#: src/contents/ui/Autotune.qml:111 src/contents/ui/Main.qml:465
+#: src/contents/ui/Autotune.qml:111 src/contents/ui/Main.qml:469
 #: src/contents/ui/TrayIcon.qml:221
 msgid "Manual"
 msgstr "Manual"
@@ -388,7 +388,7 @@ msgstr "Lantai"
 
 #: src/contents/ui/BassEnhancer.qml:223 src/contents/ui/Compressor.qml:891
 #: src/contents/ui/Crusher.qml:254 src/contents/ui/Deesser.qml:337
-#: src/contents/ui/Delay.qml:414 src/contents/ui/Equalizer.qml:333
+#: src/contents/ui/Delay.qml:414 src/contents/ui/Equalizer.qml:339
 #: src/contents/ui/Exciter.qml:228 src/contents/ui/Expander.qml:841
 #: src/contents/ui/Filter.qml:252 src/contents/ui/Gate.qml:970
 #: src/contents/ui/Limiter.qml:625 src/contents/ui/Loudness.qml:193
@@ -410,11 +410,11 @@ msgstr "Dengarkan"
 #: src/contents/ui/Crossfeed.qml:175 src/contents/ui/CrosstalkCanceller.qml:124
 #: src/contents/ui/Crusher.qml:268 src/contents/ui/Crystalizer.qml:203
 #: src/contents/ui/Deesser.qml:361 src/contents/ui/Delay.qml:428
-#: src/contents/ui/EchoCanceller.qml:186 src/contents/ui/Equalizer.qml:399
+#: src/contents/ui/EchoCanceller.qml:186 src/contents/ui/Equalizer.qml:411
 #: src/contents/ui/Exciter.qml:252 src/contents/ui/Expander.qml:875
 #: src/contents/ui/Filter.qml:266 src/contents/ui/Gate.qml:1004
 #: src/contents/ui/Limiter.qml:659 src/contents/ui/Loudness.qml:217
-#: src/contents/ui/Main.qml:477 src/contents/ui/Maximizer.qml:154
+#: src/contents/ui/Main.qml:481 src/contents/ui/Maximizer.qml:154
 #: src/contents/ui/MidSideEqualizer.qml:399
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/RNNoise.qml:345
@@ -646,9 +646,10 @@ msgid "Side"
 msgstr "Sisi"
 
 #: src/contents/ui/Compressor.qml:319 src/contents/ui/Convolver.qml:301
-#: src/contents/ui/Delay.qml:59 src/contents/ui/Equalizer.qml:244
+#: src/contents/ui/Delay.qml:59 src/contents/ui/Equalizer.qml:250
 #: src/contents/ui/Expander.qml:279 src/contents/ui/Gate.qml:297
-#: src/contents/ui/LevelMeter.qml:79 src/contents/ui/LevelMeter.qml:118
+#: src/contents/ui/HearingTestDialog.qml:102 src/contents/ui/LevelMeter.qml:79
+#: src/contents/ui/LevelMeter.qml:118
 #: src/contents/ui/MultibandCompressor.qml:449
 #: src/contents/ui/MultibandGate.qml:422 src/contents/ui/PipeWirePage.qml:346
 #: src/contents/ui/StereoTools.qml:204
@@ -656,9 +657,10 @@ msgid "Left"
 msgstr "Kiri"
 
 #: src/contents/ui/Compressor.qml:319 src/contents/ui/Convolver.qml:319
-#: src/contents/ui/Delay.qml:212 src/contents/ui/Equalizer.qml:244
+#: src/contents/ui/Delay.qml:212 src/contents/ui/Equalizer.qml:250
 #: src/contents/ui/Expander.qml:279 src/contents/ui/Gate.qml:297
-#: src/contents/ui/LevelMeter.qml:89 src/contents/ui/LevelMeter.qml:128
+#: src/contents/ui/HearingTestDialog.qml:102 src/contents/ui/LevelMeter.qml:89
+#: src/contents/ui/LevelMeter.qml:128
 #: src/contents/ui/MultibandCompressor.qml:449
 #: src/contents/ui/MultibandGate.qml:422 src/contents/ui/PipeWirePage.qml:357
 #: src/contents/ui/StereoTools.qml:231
@@ -734,7 +736,7 @@ msgid "High-pass"
 msgstr "Lewat-tinggi"
 
 #: src/contents/ui/Compressor.qml:416 src/contents/ui/Compressor.qml:430
-#: src/contents/ui/Equalizer.qml:156 src/contents/ui/EqualizerBandMenu.qml:51
+#: src/contents/ui/Equalizer.qml:162 src/contents/ui/EqualizerBandMenu.qml:51
 #: src/contents/ui/Expander.qml:372 src/contents/ui/Expander.qml:386
 #: src/contents/ui/Filter.qml:111 src/contents/ui/Gate.qml:391
 #: src/contents/ui/Gate.qml:405 src/contents/ui/MidSideEqualizer.qml:156
@@ -955,6 +957,7 @@ msgid "Failed to rename the %1 impulse to %2"
 msgstr "Gagal mengganti nama impuls %1 menjadi %2"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:147
+#: src/contents/ui/HearingTestDialog.qml:178
 #: src/contents/ui/PresetsLocalPage.qml:267
 msgid "Cancel"
 msgstr "Batal"
@@ -1137,27 +1140,39 @@ msgstr ""
 msgid "Model"
 msgstr "Model"
 
-#: src/contents/ui/DeepFilterNet.qml:101
+#: src/contents/ui/DeepFilterNet.qml:104
+msgid "Process as Mono"
+msgstr ""
+
+#: src/contents/ui/DeepFilterNet.qml:108
+msgid ""
+"Average the left and right inputs and process them with one DPDFNet instance "
+"instead of two. This can significantly reduce CPU usage for mono "
+"microphones. Both output channels receive the same audio; stereo separation "
+"is lost."
+msgstr ""
+
+#: src/contents/ui/DeepFilterNet.qml:121
 msgid "Attenuation limit"
 msgstr "Batas redaman"
 
-#: src/contents/ui/DeepFilterNet.qml:158
+#: src/contents/ui/DeepFilterNet.qml:178
 msgid "Minimum processing threshold"
 msgstr "Ambang batas pemrosesan minimum"
 
-#: src/contents/ui/DeepFilterNet.qml:174
+#: src/contents/ui/DeepFilterNet.qml:194
 msgid "Maximum ERB processing threshold"
 msgstr "Ambang batas pemrosesan ERB maksimum"
 
-#: src/contents/ui/DeepFilterNet.qml:190
+#: src/contents/ui/DeepFilterNet.qml:210
 msgid "Maximum DF processing threshold"
 msgstr "Ambang batas pemrosesan DF maksimum"
 
-#: src/contents/ui/DeepFilterNet.qml:206
+#: src/contents/ui/DeepFilterNet.qml:226
 msgid "Minimum processing buffer"
 msgstr "Buffer pemrosesan minimum"
 
-#: src/contents/ui/DeepFilterNet.qml:222
+#: src/contents/ui/DeepFilterNet.qml:242
 msgid "Post filter Beta"
 msgstr "Beta filter pasca-proses"
 
@@ -1361,57 +1376,57 @@ msgstr "Kontrol level audio"
 msgid "Input and output gain controls with level meters"
 msgstr "Kontrol penguatan masukan dan keluaran dengan pengukur level"
 
-#: src/contents/ui/EeInputOutputGain.qml:132 src/contents/ui/Main.qml:387
+#: src/contents/ui/EeInputOutputGain.qml:132 src/contents/ui/Main.qml:388
 #: src/contents/ui/StereoTools.qml:59
 msgid "Input"
 msgstr "Masukan"
 
-#: src/contents/ui/Equalizer.qml:66 src/contents/ui/Equalizer.qml:106
+#: src/contents/ui/Equalizer.qml:72 src/contents/ui/Equalizer.qml:112
 #: src/contents/ui/MidSideEqualizer.qml:66
 #: src/contents/ui/MidSideEqualizer.qml:106
 msgid "APO preset"
 msgstr "Preset APO"
 
-#: src/contents/ui/Equalizer.qml:69
+#: src/contents/ui/Equalizer.qml:75
 msgid "Failed to import the Equalizer APO preset file."
 msgstr "Gagal mengimpor file preset APO Equalizer."
 
-#: src/contents/ui/Equalizer.qml:74
+#: src/contents/ui/Equalizer.qml:80
 msgid "Imported the Equalizer APO preset file."
 msgstr "Mengimpor file preset APO Equalizer."
 
-#: src/contents/ui/Equalizer.qml:76
+#: src/contents/ui/Equalizer.qml:82
 msgid "Imported the Equalizer APO preset file into the left channel."
 msgstr "Mengimpor file preset APO Equalizer ke saluran kiri."
 
-#: src/contents/ui/Equalizer.qml:78
+#: src/contents/ui/Equalizer.qml:84
 msgid "Imported the Equalizer APO preset file into the right channel."
 msgstr "Mengimpor file preset APO Equalizer ke saluran kanan."
 
-#: src/contents/ui/Equalizer.qml:91 src/contents/ui/MidSideEqualizer.qml:91
+#: src/contents/ui/Equalizer.qml:97 src/contents/ui/MidSideEqualizer.qml:91
 msgid "GraphicEQ preset"
 msgstr "Preset GraphicEQ"
 
-#: src/contents/ui/Equalizer.qml:94 src/contents/ui/MidSideEqualizer.qml:94
+#: src/contents/ui/Equalizer.qml:100 src/contents/ui/MidSideEqualizer.qml:94
 msgid "Imported the GraphicEQ preset file."
 msgstr "Mengimpor file preset GraphicEQ."
 
-#: src/contents/ui/Equalizer.qml:96 src/contents/ui/MidSideEqualizer.qml:96
+#: src/contents/ui/Equalizer.qml:102 src/contents/ui/MidSideEqualizer.qml:96
 msgid "Failed to import the GraphicEQ preset file."
 msgstr "Gagal mengimpor file preset GraphicEQ."
 
-#: src/contents/ui/Equalizer.qml:109
+#: src/contents/ui/Equalizer.qml:115
 msgid ""
 "Failed to export the current Equalizer settings to an external APO preset "
 "file."
 msgstr ""
 "Gagal mengekspor pengaturan Equalizer saat ini ke file preset APO eksternal."
 
-#: src/contents/ui/Equalizer.qml:114
+#: src/contents/ui/Equalizer.qml:120
 msgid "Exported the current Equalizer settings to an external APO preset file."
 msgstr "Mengekspor pengaturan Equalizer saat ini ke file preset APO eksternal."
 
-#: src/contents/ui/Equalizer.qml:116
+#: src/contents/ui/Equalizer.qml:122
 msgid ""
 "Exported the current Equalizer settings of the left channel to an external "
 "APO preset file."
@@ -1419,7 +1434,7 @@ msgstr ""
 "Mengekspor pengaturan Equalizer saluran kiri saat ini ke file preset APO "
 "eksternal."
 
-#: src/contents/ui/Equalizer.qml:118
+#: src/contents/ui/Equalizer.qml:124
 msgid ""
 "Exported the current Equalizer settings of the right channel to an external "
 "APO preset file."
@@ -1427,105 +1442,109 @@ msgstr ""
 "Mengekspor pengaturan Equalizer saluran kanan saat ini ke file preset APO "
 "eksternal."
 
-#: src/contents/ui/Equalizer.qml:142 src/contents/ui/Filter.qml:97
+#: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
 #: src/contents/ui/Loudness.qml:77 src/contents/ui/MidSideEqualizer.qml:142
 msgid "IIR"
 msgstr "IIR"
 
-#: src/contents/ui/Equalizer.qml:142 src/contents/ui/Filter.qml:97
+#: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
 #: src/contents/ui/MidSideEqualizer.qml:142
 msgid "FIR"
 msgstr "FIR"
 
-#: src/contents/ui/Equalizer.qml:142 src/contents/ui/Filter.qml:97
+#: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
 #: src/contents/ui/Loudness.qml:77 src/contents/ui/MidSideEqualizer.qml:142
 msgid "FFT"
 msgstr "FFT"
 
-#: src/contents/ui/Equalizer.qml:142 src/contents/ui/Filter.qml:97
+#: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
 #: src/contents/ui/MidSideEqualizer.qml:142
 msgid "SPM"
 msgstr "SPM"
 
-#: src/contents/ui/Equalizer.qml:152 src/contents/ui/Filter.qml:107
+#: src/contents/ui/Equalizer.qml:158 src/contents/ui/Filter.qml:107
 #: src/contents/ui/MidSideEqualizer.qml:152
 msgid "Equalizer decramping"
 msgstr "Dekramping equalizer"
 
-#: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
+#: src/contents/ui/Equalizer.qml:162 src/contents/ui/Filter.qml:111
 #: src/contents/ui/MidSideEqualizer.qml:156
 msgid "x2"
 msgstr "x2"
 
-#: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
+#: src/contents/ui/Equalizer.qml:162 src/contents/ui/Filter.qml:111
 #: src/contents/ui/MidSideEqualizer.qml:156
 msgid "x3"
 msgstr "x3"
 
-#: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
+#: src/contents/ui/Equalizer.qml:162 src/contents/ui/Filter.qml:111
 #: src/contents/ui/MidSideEqualizer.qml:156
 msgid "x4"
 msgstr "x4"
 
-#: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
+#: src/contents/ui/Equalizer.qml:162 src/contents/ui/Filter.qml:111
 #: src/contents/ui/MidSideEqualizer.qml:156
 msgid "x6"
 msgstr "x6"
 
-#: src/contents/ui/Equalizer.qml:156 src/contents/ui/Filter.qml:111
+#: src/contents/ui/Equalizer.qml:162 src/contents/ui/Filter.qml:111
 #: src/contents/ui/MidSideEqualizer.qml:156
 msgid "x8"
 msgstr "x8"
 
-#: src/contents/ui/Equalizer.qml:165 src/contents/ui/MidSideEqualizer.qml:165
+#: src/contents/ui/Equalizer.qml:171 src/contents/ui/MidSideEqualizer.qml:165
 msgid "Bands"
 msgstr "Pita"
 
-#: src/contents/ui/Equalizer.qml:181 src/contents/ui/Filter.qml:204
+#: src/contents/ui/Equalizer.qml:187 src/contents/ui/Filter.qml:204
 #: src/contents/ui/MidSideEqualizer.qml:181 src/contents/ui/StereoTools.qml:77
 #: src/contents/ui/StereoTools.qml:278
 msgid "Balance"
 msgstr "Keseimbangan"
 
-#: src/contents/ui/Equalizer.qml:198
+#: src/contents/ui/Equalizer.qml:204
 msgid "Pitch left"
 msgstr "Nada kiri"
 
-#: src/contents/ui/Equalizer.qml:206 src/contents/ui/Equalizer.qml:223
+#: src/contents/ui/Equalizer.qml:212 src/contents/ui/Equalizer.qml:229
 #: src/contents/ui/MidSideEqualizer.qml:206
 #: src/contents/ui/MidSideEqualizer.qml:223
 msgid "st"
 msgstr "st"
 
-#: src/contents/ui/Equalizer.qml:215
+#: src/contents/ui/Equalizer.qml:221
 msgid "Pitch right"
 msgstr "Nada kanan"
 
-#: src/contents/ui/Equalizer.qml:346
+#: src/contents/ui/Equalizer.qml:352
 msgid "Split channels"
 msgstr "Pisah saluran"
 
-#: src/contents/ui/Equalizer.qml:356 src/contents/ui/MidSideEqualizer.qml:356
+#: src/contents/ui/Equalizer.qml:362 src/contents/ui/HearingTestDialog.qml:23
+msgid "Hearing Test"
+msgstr ""
+
+#: src/contents/ui/Equalizer.qml:368 src/contents/ui/MidSideEqualizer.qml:356
 msgid "Flat response"
 msgstr "Respons datar"
 
-#: src/contents/ui/Equalizer.qml:363 src/contents/ui/MidSideEqualizer.qml:363
+#: src/contents/ui/Equalizer.qml:375 src/contents/ui/MidSideEqualizer.qml:363
 msgid "Calculate frequencies"
 msgstr "Hitung frekuensi"
 
-#: src/contents/ui/Equalizer.qml:370 src/contents/ui/MidSideEqualizer.qml:370
+#: src/contents/ui/Equalizer.qml:382 src/contents/ui/MidSideEqualizer.qml:370
 msgid "Sort bands"
 msgstr "Urutkan pita"
 
-#: src/contents/ui/Equalizer.qml:377 src/contents/ui/MidSideEqualizer.qml:377
+#: src/contents/ui/Equalizer.qml:389 src/contents/ui/MidSideEqualizer.qml:377
 msgid "Import APO"
 msgstr "Impor APO"
 
-#: src/contents/ui/Equalizer.qml:384 src/contents/ui/MidSideEqualizer.qml:384
+#: src/contents/ui/Equalizer.qml:396 src/contents/ui/MidSideEqualizer.qml:384
 msgid "Import APO (GraphicEQ)"
 msgstr "Impor APO (GraphicEQ)"
 
-#: src/contents/ui/Equalizer.qml:391 src/contents/ui/MidSideEqualizer.qml:391
+#: src/contents/ui/Equalizer.qml:403 src/contents/ui/MidSideEqualizer.qml:391
 msgid "Export APO"
 msgstr "Ekspor APO"
 
@@ -1674,6 +1693,75 @@ msgstr "Histeresis"
 #: src/contents/ui/VoiceSuppressor.qml:63
 msgid "Start"
 msgstr "Mulai"
+
+#: src/contents/ui/HearingTestDialog.qml:53
+msgid ""
+"The output device changed. Restart the test with the same headphones and "
+"volume."
+msgstr ""
+
+#: src/contents/ui/HearingTestDialog.qml:64
+msgid ""
+"Use headphones in a quiet room. Pause other audio and keep the system volume "
+"fixed at a comfortable level. Adjust each tone until it is barely audible, "
+"then record the threshold. This uncalibrated listening test is not a medical "
+"hearing assessment."
+msgstr ""
+
+#: src/contents/ui/HearingTestDialog.qml:70
+#, fuzzy
+msgid "I am using headphones"
+msgstr "Headphone Berjarak"
+
+#: src/contents/ui/HearingTestDialog.qml:84
+#, fuzzy
+msgid "Start Test"
+msgstr "Mulai"
+
+#: src/contents/ui/HearingTestDialog.qml:95
+msgid ""
+"Select an available stereo output device and disable the regular test "
+"signals before starting."
+msgstr ""
+
+#: src/contents/ui/HearingTestDialog.qml:102
+msgid "%1 ear: %2 Hz (%3 of %4)"
+msgstr ""
+
+#: src/contents/ui/HearingTestDialog.qml:108
+#, fuzzy
+msgid "Tone Level"
+msgstr "Level Masukan"
+
+#: src/contents/ui/HearingTestDialog.qml:126
+#, fuzzy
+msgid "Play Tone"
+msgstr "Pemutar"
+
+#: src/contents/ui/HearingTestDialog.qml:133
+#, fuzzy
+msgid "Record Threshold"
+msgstr "Ambang Batas"
+
+#: src/contents/ui/HearingTestDialog.qml:154
+msgid ""
+"The test is complete. Applying the profile replaces this equalizer's "
+"settings with separate corrections for each ear, limited to 6 dB per band, "
+"and lowers input gain to preserve headroom. Save a preset to keep the result "
+"for these headphones."
+msgstr ""
+
+#: src/contents/ui/HearingTestDialog.qml:161
+msgid "%1 Hz: left %2 dB, right %3 dB"
+msgstr ""
+
+#: src/contents/ui/HearingTestDialog.qml:168
+msgid "Apply Personalized EQ"
+msgstr ""
+
+#: src/contents/ui/HearingTestDialog.qml:173
+msgid "Could not apply the hearing profile."
+msgstr ""
 
 #: src/contents/ui/LevelMeter.qml:67
 msgid "Input Level"
@@ -1913,7 +2001,7 @@ msgstr "Atur Ulang Pengaturan?"
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr "Apakah Anda yakin ingin mengatur ulang semua pengaturan Easy Effects?"
 
-#: src/contents/ui/Main.qml:330 src/contents/ui/Main.qml:457
+#: src/contents/ui/Main.qml:330 src/contents/ui/Main.qml:461
 #: src/contents/ui/PipeWirePage.qml:34
 msgid "PipeWire"
 msgstr "PipeWire"
@@ -1934,28 +2022,28 @@ msgstr "Efek audio diaktifkan."
 msgid "Audio effects are disabled."
 msgstr "Efek audio dinonaktifkan."
 
-#: src/contents/ui/Main.qml:403 src/contents/ui/PageStreamsEffects.qml:489
+#: src/contents/ui/Main.qml:405 src/contents/ui/PageStreamsEffects.qml:489
 msgid "Players"
 msgstr "Pemutar"
 
-#: src/contents/ui/Main.qml:418 src/contents/ui/PageStreamsEffects.qml:498
+#: src/contents/ui/Main.qml:421 src/contents/ui/PageStreamsEffects.qml:498
 msgid "Recorders"
 msgstr "Perekam"
 
-#: src/contents/ui/Main.qml:437
+#: src/contents/ui/Main.qml:441
 msgid "Preferences"
 msgstr "Preferensi"
 
-#: src/contents/ui/Main.qml:449 src/contents/ui/ShortcutsSheet.qml:458
+#: src/contents/ui/Main.qml:453 src/contents/ui/ShortcutsSheet.qml:458
 #: src/contents/ui/TrayIcon.qml:212
 msgid "Shortcuts"
 msgstr "Pintasan"
 
-#: src/contents/ui/Main.qml:489
+#: src/contents/ui/Main.qml:493
 msgid "About Easy Effects"
 msgstr "Tentang Easy Effects"
 
-#: src/contents/ui/Main.qml:497 src/contents/ui/TrayIcon.qml:231
+#: src/contents/ui/Main.qml:501 src/contents/ui/TrayIcon.qml:231
 msgid "Quit"
 msgstr "Keluar"
 
@@ -3936,10 +4024,6 @@ msgstr "Efek audio sederhana"
 #~ msgid "Attack Threshold"
 #~ msgstr "Ambang Batas"
 
-#, fuzzy
-#~ msgid "Release Threshold"
-#~ msgstr "Ambang Batas"
-
 #~ msgid "Dry Level"
 #~ msgstr "Tingkat Dry"
 
@@ -4927,9 +5011,6 @@ msgstr "Efek audio sederhana"
 
 #~ msgid "Muted"
 #~ msgstr "Dibungkam"
-
-#~ msgid "Distant Headphones"
-#~ msgstr "Headphone Berjarak"
 
 #~ msgid "Priority Type"
 #~ msgstr "Atur Prioritas"
