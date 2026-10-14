@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-12 15:26+0000\n"
-"PO-Revision-Date: 2026-10-13 10:51+0000\n"
+"PO-Revision-Date: 2026-10-14 05:51+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remus-"
 "gabriel@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
@@ -3718,10 +3718,8 @@ msgid "Simple audio effects"
 msgstr "Efecte audio simple"
 
 #: src/contents/ui/DeepFilterNet.qml:67
-#, fuzzy
 msgid "%1 model is not installed. Audio passes through unprocessed."
-msgstr ""
-"Modelul selectat nu este instalat. Sunetul este transmis fără a fi procesat."
+msgstr "Modelul %1 nu este instalat. Sunetul este transmis fără a fi procesat."
 
 #~ msgid "Dynamic scale"
 #~ msgstr "Scară dinamică"
