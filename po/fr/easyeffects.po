@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-09 22:56+0000\n"
-"PO-Revision-Date: 2026-10-13 10:51+0000\n"
+"PO-Revision-Date: 2026-10-14 22:00+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -1462,7 +1462,7 @@ msgstr "FIR"
 #: src/contents/ui/Equalizer.qml:142 src/contents/ui/Filter.qml:97
 #: src/contents/ui/Loudness.qml:77 src/contents/ui/MidSideEqualizer.qml:142
 msgid "FFT"
-msgstr "TFR"
+msgstr "FFT"
 
 #: src/contents/ui/Equalizer.qml:142 src/contents/ui/Filter.qml:97
 #: src/contents/ui/MidSideEqualizer.qml:142
@@ -3738,11 +3738,8 @@ msgid "Model"
 msgstr "Modèle"
 
 #: src/contents/ui/DeepFilterNet.qml:67
-#, fuzzy
 msgid "%1 model is not installed. Audio passes through unprocessed."
-msgstr ""
-"Le modèle sélectionné n'est pas installé. L'audio est transmis sans être "
-"traité."
+msgstr "Le modèle %1 n'est pas installé. L'audio est transmis sans être traité."
 
 #~ msgid "Dynamic scale"
 #~ msgstr "Échelle dynamique"
