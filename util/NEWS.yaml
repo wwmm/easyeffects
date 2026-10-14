@@ -8,7 +8,7 @@ Description:
 - Improved spectrum performance.
 
 - Bug fixes∶
-- 
+- Preset autoload at startup now works also for devices with "Pro Audio" profile.
 
 - Other notes∶
 - HushMic package should be installed in order to use DPDFNet model inside the Deep Noise Remover effect.
