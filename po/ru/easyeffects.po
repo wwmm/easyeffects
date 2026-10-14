@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-12 15:26+0000\n"
-"PO-Revision-Date: 2026-10-13 10:51+0000\n"
+"PO-Revision-Date: 2026-10-14 05:51+0000\n"
 "Last-Translator: Andrei Stepanov <adem@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -3738,9 +3738,8 @@ msgid "Simple audio effects"
 msgstr "Простые звуковые эффекты"
 
 #: src/contents/ui/DeepFilterNet.qml:67
-#, fuzzy
 msgid "%1 model is not installed. Audio passes through unprocessed."
-msgstr "Выбранная модель не установлена. Звук проходит без обработки."
+msgstr "Модель %1 не установлена. Звук проходит без обработки."
 
 #~ msgid "Dynamic scale"
 #~ msgstr "Динамический масштаб"
