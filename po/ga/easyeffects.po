@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-14 22:30+0000\n"
-"PO-Revision-Date: 2026-10-14 22:00+0000\n"
+"PO-Revision-Date: 2026-10-15 11:51+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin "
 "<aindriu80@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -17,8 +17,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :"
-"(n>6 && n<11) ? 3 : 4;\n"
+"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :(n>"
+"6 && n<11) ? 3 : 4;\n"
 "X-Generator: Weblate 2026.11.dev0\n"
 
 #: src/autostart.cpp:92
@@ -1147,7 +1147,7 @@ msgstr "Samhail"
 
 #: src/contents/ui/DeepFilterNet.qml:104
 msgid "Process as Mono"
-msgstr ""
+msgstr "Próiseáil mar mhonafónach"
 
 #: src/contents/ui/DeepFilterNet.qml:108
 msgid ""
@@ -1156,6 +1156,10 @@ msgid ""
 "microphones. Both output channels receive the same audio; stereo separation "
 "is lost."
 msgstr ""
+"Ríomh meán na n-ionchur clé agus deas, agus próiseáil iad ag baint úsáide as "
+"aon instans amháin de DPDFNet in áit dhá cheann. Is féidir leis seo úsáid an "
+"LAP a laghdú go suntasach i gcás micreafóin mhonafónacha. Faigheann an dá "
+"chainéal aschuir an fhuaim chéanna; cailltear an scaradh steiréó."
 
 #: src/contents/ui/DeepFilterNet.qml:121
 msgid "Attenuation limit"
@@ -1534,7 +1538,7 @@ msgstr "Bealaí scoilte"
 
 #: src/contents/ui/Equalizer.qml:362 src/contents/ui/HearingTestDialog.qml:23
 msgid "Hearing Test"
-msgstr ""
+msgstr "Tástáil Éisteachta"
 
 #: src/contents/ui/Equalizer.qml:368 src/contents/ui/MidSideEqualizer.qml:356
 msgid "Flat response"
@@ -1711,6 +1715,8 @@ msgid ""
 "The output device changed. Restart the test with the same headphones and "
 "volume."
 msgstr ""
+"Athraíodh an gléas aschuir. Atosaigh an tástáil leis na cluasáin chéanna "
+"agus an leibhéal fuaime céanna."
 
 #: src/contents/ui/HearingTestDialog.qml:64
 msgid ""
@@ -1719,40 +1725,43 @@ msgid ""
 "then record the threshold. This uncalibrated listening test is not a medical "
 "hearing assessment."
 msgstr ""
+"Bain úsáid as cluasáin i seomra ciúin. Cuir aon fhuaim eile ar sos agus "
+"coinnigh airde fuaime an chórais socraithe ag leibhéal compordach. "
+"Coigeartaigh gach ton go dtí nach mbeidh sé le cloisteáil ach ar éigean, "
+"agus ansin taifead an tairseach sin. Ní measúnú leighis ar an éisteacht é an "
+"tástáil éisteachta seo, nach bhfuil calabrú déanta uirthi."
 
 #: src/contents/ui/HearingTestDialog.qml:70
 msgid "I am using headphones"
-msgstr ""
+msgstr "Tá cluasáin á n-úsáid agam"
 
 #: src/contents/ui/HearingTestDialog.qml:84
-#, fuzzy
 msgid "Start Test"
-msgstr "Tosaigh"
+msgstr "Cuir tús leis an tástáil"
 
 #: src/contents/ui/HearingTestDialog.qml:95
 msgid ""
 "Select an available stereo output device and disable the regular test "
 "signals before starting."
 msgstr ""
+"Roghnaigh gléas aschuir steirió atá ar fáil agus díchumasaigh na gnáth-"
+"chomharthaí tástála sula dtosaíonn tú."
 
 #: src/contents/ui/HearingTestDialog.qml:102
 msgid "%1 ear: %2 Hz (%3 of %4)"
-msgstr ""
+msgstr "%1 cluas: %2 Hz (%3 de %4)"
 
 #: src/contents/ui/HearingTestDialog.qml:108
-#, fuzzy
 msgid "Tone Level"
-msgstr "Leibhéal Ionchuir"
+msgstr "Leibhéal Ton"
 
 #: src/contents/ui/HearingTestDialog.qml:126
-#, fuzzy
 msgid "Play Tone"
-msgstr "Imreoirí"
+msgstr "Seinn Ton"
 
 #: src/contents/ui/HearingTestDialog.qml:133
-#, fuzzy
 msgid "Record Threshold"
-msgstr "Tairseach Scaoilte"
+msgstr "Tairseach Taifeadta"
 
 #: src/contents/ui/HearingTestDialog.qml:154
 msgid ""
@@ -1761,18 +1770,23 @@ msgid ""
 "and lowers input gain to preserve headroom. Save a preset to keep the result "
 "for these headphones."
 msgstr ""
+"Tá an tástáil críochnaithe. Tríd an bpróifíl a chur i bhfeidhm, cuirtear "
+"ceartúcháin ar leith do gach cluas in áit shocruithe an chothromóra seo — "
+"teoranta do 6 dB in aghaidh an bhanda — agus laghdaítear an gnóthachan "
+"ionchuir chun spás ceannróim (headroom) a chaomhnú. Sábháil réamhshocrú chun "
+"an toradh seo a choinneáil do na cluasáin seo."
 
 #: src/contents/ui/HearingTestDialog.qml:161
 msgid "%1 Hz: left %2 dB, right %3 dB"
-msgstr ""
+msgstr "%1 Hz: clé %2 dB, deas %3 dB"
 
 #: src/contents/ui/HearingTestDialog.qml:168
 msgid "Apply Personalized EQ"
-msgstr ""
+msgstr "Cuir EQ Pearsantaithe i bhFeidhm"
 
 #: src/contents/ui/HearingTestDialog.qml:173
 msgid "Could not apply the hearing profile."
-msgstr ""
+msgstr "Níorbh fhéidir an próifíl éisteachta a chur i bhfeidhm."
 
 #: src/contents/ui/LevelMeter.qml:67
 msgid "Input Level"
