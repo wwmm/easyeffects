@@ -9,9 +9,9 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-14 22:30+0000\n"
-"PO-Revision-Date: 2026-10-14 05:51+0000\n"
-"Last-Translator: Giusy Digital "
-"<digitalone1@users.noreply.hosted.weblate.org>\n"
+"PO-Revision-Date: 2026-10-15 11:51+0000\n"
+"Last-Translator: Giusy Digital <digitalone1@users.noreply.hosted.weblate.org>"
+"\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
 "Language: it_IT\n"
@@ -1148,7 +1148,7 @@ msgstr "Modello"
 
 #: src/contents/ui/DeepFilterNet.qml:104
 msgid "Process as Mono"
-msgstr ""
+msgstr "Processa come Mono"
 
 #: src/contents/ui/DeepFilterNet.qml:108
 msgid ""
@@ -1157,6 +1157,11 @@ msgid ""
 "microphones. Both output channels receive the same audio; stereo separation "
 "is lost."
 msgstr ""
+"Effettua la media dei canali destro e sinistro in ingresso e processa il "
+"risultato con una singola istanza di DPDFNet invece che due. Questo può "
+"ridurre significativamente l'uso della CPU per i microfoni mono. Entrambi i "
+"canali in ingresso ricevono lo stesso audio; la separazione stereo viene a "
+"mancare."
 
 #: src/contents/ui/DeepFilterNet.qml:121
 msgid "Attenuation limit"
@@ -1532,7 +1537,7 @@ msgstr "Separa canali"
 
 #: src/contents/ui/Equalizer.qml:362 src/contents/ui/HearingTestDialog.qml:23
 msgid "Hearing Test"
-msgstr ""
+msgstr "Test Auditivo"
 
 #: src/contents/ui/Equalizer.qml:368 src/contents/ui/MidSideEqualizer.qml:356
 msgid "Flat response"
@@ -1709,6 +1714,8 @@ msgid ""
 "The output device changed. Restart the test with the same headphones and "
 "volume."
 msgstr ""
+"Il dispositivo di uscita è stato modificato. Riavvia il test con le stesse "
+"cuffie e gli stessi auricolari."
 
 #: src/contents/ui/HearingTestDialog.qml:64
 msgid ""
@@ -1717,40 +1724,42 @@ msgid ""
 "then record the threshold. This uncalibrated listening test is not a medical "
 "hearing assessment."
 msgstr ""
+"Usa gli auricolari in una stanza senza rumore. Metti in pausa gli altri "
+"flussi audio e tieni fisso il volume di sistema ad un livello confortevole. "
+"Regola ogni tono affinché sia a malapena udibile, poi registra la soglia. "
+"Questo test di ascolto non rappresenta una valutazione medica del'udito."
 
 #: src/contents/ui/HearingTestDialog.qml:70
 msgid "I am using headphones"
-msgstr ""
+msgstr "Sto usando gli auricolari"
 
 #: src/contents/ui/HearingTestDialog.qml:84
-#, fuzzy
 msgid "Start Test"
-msgstr "Inizio"
+msgstr "Inizia Test"
 
 #: src/contents/ui/HearingTestDialog.qml:95
 msgid ""
 "Select an available stereo output device and disable the regular test "
 "signals before starting."
 msgstr ""
+"Seleziona un dispositivo di uscita stereo e disabilita gli altri segnali di "
+"test prima di iniziare."
 
 #: src/contents/ui/HearingTestDialog.qml:102
 msgid "%1 ear: %2 Hz (%3 of %4)"
-msgstr ""
+msgstr "Orecchio %1: %2 Hz (%3 di %4)"
 
 #: src/contents/ui/HearingTestDialog.qml:108
-#, fuzzy
 msgid "Tone Level"
-msgstr "Livello Ingresso"
+msgstr "Livello del Tono"
 
 #: src/contents/ui/HearingTestDialog.qml:126
-#, fuzzy
 msgid "Play Tone"
-msgstr "Riproduttori"
+msgstr "Riproduci tono"
 
 #: src/contents/ui/HearingTestDialog.qml:133
-#, fuzzy
 msgid "Record Threshold"
-msgstr "Soglia di Rilascio"
+msgstr "Registra Soglia"
 
 #: src/contents/ui/HearingTestDialog.qml:154
 msgid ""
@@ -1759,18 +1768,23 @@ msgid ""
 "and lowers input gain to preserve headroom. Save a preset to keep the result "
 "for these headphones."
 msgstr ""
+"Il test è stato completato. Applicando il profilo si rimpiazzeranno le "
+"impostazioni dell'equalizzatore con le correzioni separate per ogni singolo "
+"orecchio, limitate a 6 dB per banda, e si ridurrà il livello in ingresso per "
+"preservare l'headroom. Salva il profilo per non perdere il risultato per "
+"questi auricolari."
 
 #: src/contents/ui/HearingTestDialog.qml:161
 msgid "%1 Hz: left %2 dB, right %3 dB"
-msgstr ""
+msgstr "%1 Hz: sinistro %2 dB, destro %3 dB"
 
 #: src/contents/ui/HearingTestDialog.qml:168
 msgid "Apply Personalized EQ"
-msgstr ""
+msgstr "Applica EQ Personalizzato"
 
 #: src/contents/ui/HearingTestDialog.qml:173
 msgid "Could not apply the hearing profile."
-msgstr ""
+msgstr "Non è stato possibile applicare il profilo auditivo."
 
 #: src/contents/ui/LevelMeter.qml:67
 msgid "Input Level"
