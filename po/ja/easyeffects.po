@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-10-14 22:30+0000\n"
+"POT-Creation-Date: 2026-10-15 15:16+0000\n"
 "PO-Revision-Date: 2025-11-23 11:51+0000\n"
 "Last-Translator: Suu <suunya21@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
@@ -555,7 +555,7 @@ msgstr "しきい値と時間"
 #: src/contents/ui/Limiter.qml:144 src/contents/ui/Limiter.qml:417
 #: src/contents/ui/MultibandCompressor.qml:260
 #: src/contents/ui/MultibandGate.qml:201
-#: src/contents/ui/PreferencesSheet.qml:750
+#: src/contents/ui/PreferencesSheet.qml:780
 msgid "Attack"
 msgstr "アタック"
 
@@ -1072,7 +1072,7 @@ msgid "Delay"
 msgstr "ディレイ"
 
 #: src/contents/ui/CrosstalkCanceller.qml:91
-#: src/contents/ui/PreferencesSheet.qml:764
+#: src/contents/ui/PreferencesSheet.qml:794
 #, fuzzy
 msgid "Decay"
 msgstr "減衰時間"
@@ -1082,7 +1082,7 @@ msgstr "減衰時間"
 msgid "Bit reduction"
 msgstr "減少"
 
-#: src/contents/ui/Crusher.qml:91 src/contents/ui/PreferencesSheet.qml:524
+#: src/contents/ui/Crusher.qml:91 src/contents/ui/PreferencesSheet.qml:554
 msgid "Shape"
 msgstr "形状"
 
@@ -1103,7 +1103,7 @@ msgstr ""
 msgid "Anti-aliasing"
 msgstr "アンチエイリアス"
 
-#: src/contents/ui/Crusher.qml:142 src/contents/ui/PreferencesSheet.qml:909
+#: src/contents/ui/Crusher.qml:142 src/contents/ui/PreferencesSheet.qml:939
 msgid "Mix"
 msgstr "ミックス"
 
@@ -1650,7 +1650,7 @@ msgid "APO (DR)"
 msgstr "APO (DR)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:75 src/contents/ui/Filter.qml:121
-#: src/contents/ui/PreferencesSheet.qml:692
+#: src/contents/ui/PreferencesSheet.qml:722
 msgid "Slope"
 msgstr "スロープ"
 
@@ -2012,7 +2012,7 @@ msgstr "ロビンソン・ダッドソン曲線"
 msgid "ISO226-2023"
 msgstr "ISO226-2023"
 
-#: src/contents/ui/Loudness.qml:101 src/contents/ui/PreferencesSheet.qml:713
+#: src/contents/ui/Loudness.qml:101 src/contents/ui/PreferencesSheet.qml:743
 msgid "FFT size"
 msgstr "FFT サイズ"
 
@@ -2398,12 +2398,12 @@ msgid "No Clients"
 msgstr "クライアントなし"
 
 #: src/contents/ui/PipeWirePage.qml:320
-#: src/contents/ui/PreferencesSheet.qml:483
+#: src/contents/ui/PreferencesSheet.qml:513
 msgid "State"
 msgstr "状態"
 
 #: src/contents/ui/PipeWirePage.qml:327
-#: src/contents/ui/PreferencesSheet.qml:490
+#: src/contents/ui/PreferencesSheet.qml:520
 msgid "Enabled"
 msgstr "有効"
 
@@ -2646,35 +2646,57 @@ msgid "Link delay"
 msgstr "プリディレイ"
 
 #: src/contents/ui/PreferencesSheet.qml:394
-msgid "Enable the inactivity timeout"
+#, fuzzy
+msgid "Enable the output inactivity timeout"
 msgstr "非アクティブタイムアウトを有効化"
 
 #: src/contents/ui/PreferencesSheet.qml:395
+#, fuzzy
 msgid ""
-"When all streams are inactive, Easy Effects pipeline remains loaded for an "
-"extra amount of time."
+"When all output streams are inactive, the Easy Effects output pipeline "
+"remains loaded for an extra amount of time."
 msgstr ""
 "すべてのストリームが非アクティブな場合、Easy Effects パイプラインは追加の時間"
 "だけ読み込まれたままになります。"
 
 #: src/contents/ui/PreferencesSheet.qml:407
-msgid "Inactivity timeout"
+#, fuzzy
+msgid "Output inactivity timeout"
 msgstr "非アクティブタイムアウト"
 
-#: src/contents/ui/PreferencesSheet.qml:422
+#: src/contents/ui/PreferencesSheet.qml:424
+#, fuzzy
+msgid "Enable the input inactivity timeout"
+msgstr "非アクティブタイムアウトを有効化"
+
+#: src/contents/ui/PreferencesSheet.qml:425
+#, fuzzy
+msgid ""
+"When all input streams are inactive, the Easy Effects input pipeline remains "
+"loaded for an extra amount of time."
+msgstr ""
+"すべてのストリームが非アクティブな場合、Easy Effects パイプラインは追加の時間"
+"だけ読み込まれたままになります。"
+
+#: src/contents/ui/PreferencesSheet.qml:437
+#, fuzzy
+msgid "Input inactivity timeout"
+msgstr "非アクティブタイムアウト"
+
+#: src/contents/ui/PreferencesSheet.qml:452
 #, fuzzy
 msgid "Level meters frame rate cap"
 msgstr "このアプリケーションの有効化/無効化"
 
-#: src/contents/ui/PreferencesSheet.qml:423
+#: src/contents/ui/PreferencesSheet.qml:453
 msgid "Maximum level meter update rate."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:437
+#: src/contents/ui/PreferencesSheet.qml:467
 msgid "Level meters label"
 msgstr "レベルメーターラベル"
 
-#: src/contents/ui/PreferencesSheet.qml:438
+#: src/contents/ui/PreferencesSheet.qml:468
 msgid ""
 "The time it takes for the level meter labels to be updated when the current "
 "level is below the last highest one."
@@ -2682,173 +2704,173 @@ msgstr ""
 "現在のレベルが直前の最大値を下回った際に、レベルメーターのラベルが更新される"
 "までの時間。"
 
-#: src/contents/ui/PreferencesSheet.qml:455
+#: src/contents/ui/PreferencesSheet.qml:485
 #, fuzzy
 msgid "Enable level meters animation"
 msgstr "このアプリケーションの有効化/無効化"
 
-#: src/contents/ui/PreferencesSheet.qml:464
+#: src/contents/ui/PreferencesSheet.qml:494
 msgid "Level meters animation duration"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:502
+#: src/contents/ui/PreferencesSheet.qml:532
 msgid "Audio delay compensation"
 msgstr "オーディオ遅延補正"
 
-#: src/contents/ui/PreferencesSheet.qml:517
+#: src/contents/ui/PreferencesSheet.qml:547
 msgid "Graph"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:528
+#: src/contents/ui/PreferencesSheet.qml:558
 msgid "Bars"
 msgstr "バー"
 
-#: src/contents/ui/PreferencesSheet.qml:528
+#: src/contents/ui/PreferencesSheet.qml:558
 msgid "Lines"
 msgstr "線"
 
-#: src/contents/ui/PreferencesSheet.qml:528
+#: src/contents/ui/PreferencesSheet.qml:558
 msgid "Dots"
 msgstr "ドット"
 
-#: src/contents/ui/PreferencesSheet.qml:528
+#: src/contents/ui/PreferencesSheet.qml:558
 msgid "Area"
 msgstr "エリア"
 
-#: src/contents/ui/PreferencesSheet.qml:538
+#: src/contents/ui/PreferencesSheet.qml:568
 msgid "Logarithmic frequency axis"
 msgstr "対数周波数軸"
 
-#: src/contents/ui/PreferencesSheet.qml:550
+#: src/contents/ui/PreferencesSheet.qml:580
 msgid "Points"
 msgstr "ポイント数"
 
-#: src/contents/ui/PreferencesSheet.qml:565
+#: src/contents/ui/PreferencesSheet.qml:595
 msgid "Height"
 msgstr "高さ"
 
-#: src/contents/ui/PreferencesSheet.qml:572
+#: src/contents/ui/PreferencesSheet.qml:602
 msgid "px"
 msgstr "px"
 
-#: src/contents/ui/PreferencesSheet.qml:579
+#: src/contents/ui/PreferencesSheet.qml:609
 #, fuzzy
 msgid "Spectrum frame rate cap"
 msgstr "このアプリケーションの有効化/無効化"
 
-#: src/contents/ui/PreferencesSheet.qml:580
+#: src/contents/ui/PreferencesSheet.qml:610
 msgid "Maximum spectrum update rate."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:595
+#: src/contents/ui/PreferencesSheet.qml:625
 msgid "Frequency Range"
 msgstr "周波数範囲"
 
-#: src/contents/ui/PreferencesSheet.qml:602
-#: src/contents/ui/PreferencesSheet.qml:664
+#: src/contents/ui/PreferencesSheet.qml:632
+#: src/contents/ui/PreferencesSheet.qml:694
 msgid "Minimum"
 msgstr "最小"
 
-#: src/contents/ui/PreferencesSheet.qml:618
-#: src/contents/ui/PreferencesSheet.qml:678
+#: src/contents/ui/PreferencesSheet.qml:648
+#: src/contents/ui/PreferencesSheet.qml:708
 msgid "Maximum"
 msgstr "最大"
 
-#: src/contents/ui/PreferencesSheet.qml:633
+#: src/contents/ui/PreferencesSheet.qml:663
 #, fuzzy
 msgid "Level Range"
 msgstr "レベルメーター"
 
-#: src/contents/ui/PreferencesSheet.qml:638
-#: src/contents/ui/PreferencesSheet.qml:894
+#: src/contents/ui/PreferencesSheet.qml:668
+#: src/contents/ui/PreferencesSheet.qml:924
 msgid "Automatic"
 msgstr "自動"
 
-#: src/contents/ui/PreferencesSheet.qml:639
+#: src/contents/ui/PreferencesSheet.qml:669
 msgid ""
 "Follows the loudest and the quieter bands within the minimum and maximum."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:649
+#: src/contents/ui/PreferencesSheet.qml:679
 #, fuzzy
 msgid "Minimum span"
 msgstr "最小クォンタム"
 
-#: src/contents/ui/PreferencesSheet.qml:693
+#: src/contents/ui/PreferencesSheet.qml:723
 msgid ""
 "Tilts the display around 1 kHz. The shown levels are no longer absolute."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:708
+#: src/contents/ui/PreferencesSheet.qml:738
 msgid "Analysis"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:725
+#: src/contents/ui/PreferencesSheet.qml:755
 msgid "Zero padding"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:726
+#: src/contents/ui/PreferencesSheet.qml:756
 msgid ""
 "Interpolates the spectrum. It does not increase the frequency resolution."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:738
+#: src/contents/ui/PreferencesSheet.qml:768
 #, fuzzy
 msgid "Window function"
 msgstr "ゲインリダクション"
 
-#: src/contents/ui/PreferencesSheet.qml:742
+#: src/contents/ui/PreferencesSheet.qml:772
 msgid "Rectangular"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:742
+#: src/contents/ui/PreferencesSheet.qml:772
 msgid "Hann"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:742
+#: src/contents/ui/PreferencesSheet.qml:772
 msgid "Hamming"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:742
+#: src/contents/ui/PreferencesSheet.qml:772
 msgid "Blackman"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:742
+#: src/contents/ui/PreferencesSheet.qml:772
 msgid "Blackman-Harris"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:742
+#: src/contents/ui/PreferencesSheet.qml:772
 #, fuzzy
 msgid "Flat top"
 msgstr "フラット"
 
-#: src/contents/ui/PreferencesSheet.qml:786
+#: src/contents/ui/PreferencesSheet.qml:816
 msgid "Database autosave interval"
 msgstr "データベース自動保存間隔"
 
-#: src/contents/ui/PreferencesSheet.qml:800
+#: src/contents/ui/PreferencesSheet.qml:830
 msgid "Most used presets"
 msgstr "最も使用されているプリセット"
 
-#: src/contents/ui/PreferencesSheet.qml:818
+#: src/contents/ui/PreferencesSheet.qml:848
 msgid "Window"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:827
+#: src/contents/ui/PreferencesSheet.qml:857
 msgid "Force KDE's Breeze theme when Easy Effects starts"
 msgstr "Easy Effects の開始時に強制的にKDE Breeze テーマを使う"
 
-#: src/contents/ui/PreferencesSheet.qml:828
+#: src/contents/ui/PreferencesSheet.qml:858
 msgid ""
 "It is necessary to restart the service for changes in this setting to take "
 "effect."
 msgstr "変更を反映するにはサービスを再起動する必要があります。"
 
-#: src/contents/ui/PreferencesSheet.qml:841
+#: src/contents/ui/PreferencesSheet.qml:871
 msgid "Reduce effects list controls"
 msgstr "エフェクトリストのコントロールを減らす"
 
-#: src/contents/ui/PreferencesSheet.qml:842
+#: src/contents/ui/PreferencesSheet.qml:872
 msgid ""
 "Action buttons in the effects list are moved inside a context menu for a "
 "more compact view."
@@ -2856,153 +2878,153 @@ msgstr ""
 "エフェクトリストのアクションボタンは、よりコンパクトな表示のためにコンテキス"
 "トメニュー内に移動されます。"
 
-#: src/contents/ui/PreferencesSheet.qml:853
-#: src/contents/ui/PreferencesSheet.qml:890
+#: src/contents/ui/PreferencesSheet.qml:883
+#: src/contents/ui/PreferencesSheet.qml:920
 msgid "Color scheme"
 msgstr "カラースキーム"
 
-#: src/contents/ui/PreferencesSheet.qml:867
+#: src/contents/ui/PreferencesSheet.qml:897
 msgid "Force English language"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:868
+#: src/contents/ui/PreferencesSheet.qml:898
 msgid ""
 "Do not translate the user interface and show text in English language. "
 "Useful if the translation in the local language is incomplete or "
 "incomprehensible. A restart of the service is required to apply this option."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:879
+#: src/contents/ui/PreferencesSheet.qml:909
 msgid "Graphs"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:894
+#: src/contents/ui/PreferencesSheet.qml:924
 msgid "Light"
 msgstr "ライト"
 
-#: src/contents/ui/PreferencesSheet.qml:894
+#: src/contents/ui/PreferencesSheet.qml:924
 msgid "Dark"
 msgstr "ダーク"
 
-#: src/contents/ui/PreferencesSheet.qml:905
+#: src/contents/ui/PreferencesSheet.qml:935
 msgid "Color theme"
 msgstr "カラーテーマ"
 
-#: src/contents/ui/PreferencesSheet.qml:909
+#: src/contents/ui/PreferencesSheet.qml:939
 msgid "Green"
 msgstr "グリーン"
 
-#: src/contents/ui/PreferencesSheet.qml:909
+#: src/contents/ui/PreferencesSheet.qml:939
 msgid "Green neon"
 msgstr "グリーンネオン"
 
-#: src/contents/ui/PreferencesSheet.qml:909
+#: src/contents/ui/PreferencesSheet.qml:939
 msgid "Orange"
 msgstr "オレンジ"
 
-#: src/contents/ui/PreferencesSheet.qml:909
+#: src/contents/ui/PreferencesSheet.qml:939
 msgid "Yellow"
 msgstr "イエロー"
 
-#: src/contents/ui/PreferencesSheet.qml:909
+#: src/contents/ui/PreferencesSheet.qml:939
 msgid "Blue"
 msgstr "ブルー"
 
-#: src/contents/ui/PreferencesSheet.qml:909
+#: src/contents/ui/PreferencesSheet.qml:939
 msgid "Purple"
 msgstr "パープル"
 
-#: src/contents/ui/PreferencesSheet.qml:909
+#: src/contents/ui/PreferencesSheet.qml:939
 msgid "Grey"
 msgstr "グレー"
 
-#: src/contents/ui/PreferencesSheet.qml:909
+#: src/contents/ui/PreferencesSheet.qml:939
 msgid "User"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:917
+#: src/contents/ui/PreferencesSheet.qml:947
 #, fuzzy
 msgctxt "@label"
 msgid "Background"
 msgstr "バックグラウンドサービス"
 
-#: src/contents/ui/PreferencesSheet.qml:926
+#: src/contents/ui/PreferencesSheet.qml:956
 msgctxt "@label"
 msgid "Plot area background"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:935
+#: src/contents/ui/PreferencesSheet.qml:965
 msgctxt "@label"
 msgid "Series colors"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:944
+#: src/contents/ui/PreferencesSheet.qml:974
 #, fuzzy
 msgctxt "@label"
 msgid "Axis labels text color"
 msgstr "軸ラベル"
 
-#: src/contents/ui/PreferencesSheet.qml:953
+#: src/contents/ui/PreferencesSheet.qml:983
 msgctxt "@label"
 msgid "Axis labels background color"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:962
+#: src/contents/ui/PreferencesSheet.qml:992
 msgctxt "@label"
 msgid "Border color"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:971
+#: src/contents/ui/PreferencesSheet.qml:1001
 #, fuzzy
 msgid "Line width"
 msgstr "線幅"
 
-#: src/contents/ui/PreferencesSheet.qml:985
+#: src/contents/ui/PreferencesSheet.qml:1015
 msgid "Show grid lines"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:1003
+#: src/contents/ui/PreferencesSheet.qml:1033
 msgid "Autoload delay"
 msgstr "自動読み込み遅延"
 
-#: src/contents/ui/PreferencesSheet.qml:1004
+#: src/contents/ui/PreferencesSheet.qml:1034
 msgid ""
 "Delay between receiving a new device route and the call to autoload a preset."
 msgstr ""
 "新しいデバイスルートを受信してからプリセットを自動読み込みするまでの遅延。"
 
-#: src/contents/ui/PreferencesSheet.qml:1020
+#: src/contents/ui/PreferencesSheet.qml:1050
 #, fuzzy
 msgid "Ignore the blocklist from presets"
 msgstr "ブロックリストを無視"
 
-#: src/contents/ui/PreferencesSheet.qml:1021
+#: src/contents/ui/PreferencesSheet.qml:1051
 msgid ""
 "If enabled, the list of excluded apps set in the loaded preset is ignored "
 "and does not replace the one set by the user."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:1042
+#: src/contents/ui/PreferencesSheet.qml:1072
 msgid "Global shortcuts"
 msgstr "グローバルショートカット"
 
-#: src/contents/ui/PreferencesSheet.qml:1043
+#: src/contents/ui/PreferencesSheet.qml:1073
 msgid "Enables support for XDG global shortcuts."
 msgstr "XDG グローバルショートカットのサポートを有効にします。"
 
-#: src/contents/ui/PreferencesSheet.qml:1055
+#: src/contents/ui/PreferencesSheet.qml:1085
 msgid "Native window of effects"
 msgstr "エフェクトのネイティブウィンドウ"
 
-#: src/contents/ui/PreferencesSheet.qml:1056
+#: src/contents/ui/PreferencesSheet.qml:1086
 msgid "Allows the native user interface of effects to be shown/hidden."
 msgstr "エフェクトのネイティブウィンドウの表示/非表示を許可します。"
 
-#: src/contents/ui/PreferencesSheet.qml:1068
+#: src/contents/ui/PreferencesSheet.qml:1098
 msgid "Update frequency"
 msgstr "更新頻度"
 
-#: src/contents/ui/PreferencesSheet.qml:1069
+#: src/contents/ui/PreferencesSheet.qml:1099
 msgid "Related to LV2 plugins."
 msgstr "LV2 プラグインに影響します。"
 
