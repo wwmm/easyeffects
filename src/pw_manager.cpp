@@ -36,6 +36,7 @@
 #include <qmap.h>
 #include <qobjectdefs.h>
 #include <qqml.h>
+#include <qtimer.h>
 #include <qtmetamacros.h>
 #include <qvariant.h>
 #include <spa/monitor/device.h>
@@ -63,6 +64,7 @@
 #include <cstring>
 #include <ctime>
 #include <format>
+#include <limits>
 #include <nlohmann/json.hpp>
 #include <nlohmann/json_fwd.hpp>
 #include <string>
@@ -236,9 +238,50 @@ Manager::Manager(QObject* parent)
     Q_EMIT defaultOutputDeviceNameChanged();
   });
 
-  connect(&node_manager, &NodeManager::sourceAdded, [&](NodeInfo node) { Q_EMIT sourceAdded(node); });
+  connect(
+      &metadata_manager, &MetadataManager::eeSinkIsDefaultChanged, this,
+      [&](bool is_default) {
+        if (is_default) {
+          refreshDefaultDevicesForEeDefault();
+        }
+      },
+      Qt::QueuedConnection);
 
-  connect(&node_manager, &NodeManager::sinkAdded, [&](NodeInfo node) { Q_EMIT sinkAdded(node); });
+  connect(
+      &metadata_manager, &MetadataManager::eeSourceIsDefaultChanged, this,
+      [&](bool is_default) {
+        if (is_default) {
+          refreshDefaultDevicesForEeDefault();
+        }
+      },
+      Qt::QueuedConnection);
+
+  auto refresh_if_ee_default = [this]() {
+    if (metadata_manager.default_sink_is_easyeffects_sink() ||
+        metadata_manager.default_source_is_easyeffects_source()) {
+      refreshDefaultDevicesForEeDefault();
+    }
+  };
+
+  connect(&node_manager, &NodeManager::sinkAdded, this, [this, refresh_if_ee_default](NodeInfo node) {
+    Q_EMIT sinkAdded(node);
+
+    refresh_if_ee_default();
+  });
+
+  connect(&node_manager, &NodeManager::sourceAdded, this, [this, refresh_if_ee_default](NodeInfo node) {
+    Q_EMIT sourceAdded(node);
+
+    refresh_if_ee_default();
+  });
+
+  connect(
+      &model_nodes, &QAbstractItemModel::rowsRemoved, this, [refresh_if_ee_default]() { refresh_if_ee_default(); },
+      Qt::QueuedConnection);
+
+  connect(
+      &model_nodes, &QAbstractItemModel::modelReset, this, [refresh_if_ee_default]() { refresh_if_ee_default(); },
+      Qt::QueuedConnection);
 
   connect(&link_manager, &LinkManager::linkChanged, [&](LinkInfo link) { Q_EMIT linkChanged(link); });
 
@@ -562,6 +605,106 @@ void Manager::destroy_links(const std::vector<pw_proxy*>& list) const {
 
 auto Manager::get_links() const -> const std::vector<LinkInfo>& {
   return list_links;
+}
+
+auto Manager::bestHardwareOutputDeviceName() -> QString {
+  QString best;
+  int best_priority = std::numeric_limits<int>::min();
+  uint64_t best_serial = 0;
+
+  for (const auto& node : model_nodes.get_list()) {
+    if (node.name == tags::pipewire::ee_sink_name || node.name == tags::pipewire::ee_source_name) {
+      continue;
+    }
+
+    const auto& mc = node.media_class;
+
+    if (mc != tags::pipewire::media_class::sink && mc != tags::pipewire::media_class::virtual_sink &&
+        mc != tags::pipewire::media_class::duplex) {
+      continue;
+    }
+
+    if (node.name.isEmpty()) {
+      continue;
+    }
+
+    if (node.priority > best_priority || (node.priority == best_priority && node.serial > best_serial)) {
+      best_priority = node.priority;
+      best_serial = node.serial;
+      best = node.name;
+    }
+  }
+
+  return best;
+}
+
+auto Manager::bestHardwareInputDeviceName() -> QString {
+  QString best;
+  int best_priority = std::numeric_limits<int>::min();
+  uint64_t best_serial = 0;
+
+  for (const auto& node : model_nodes.get_list()) {
+    if (node.name == tags::pipewire::ee_sink_name || node.name == tags::pipewire::ee_source_name) {
+      continue;
+    }
+
+    const auto& mc = node.media_class;
+
+    if (mc != tags::pipewire::media_class::source && mc != tags::pipewire::media_class::virtual_source &&
+        mc != tags::pipewire::media_class::duplex) {
+      continue;
+    }
+
+    if (node.name.isEmpty()) {
+      continue;
+    }
+
+    if (node.priority > best_priority || (node.priority == best_priority && node.serial > best_serial)) {
+      best_priority = node.priority;
+      best_serial = node.serial;
+      best = node.name;
+    }
+  }
+
+  return best;
+}
+
+void Manager::refreshDefaultDevicesForEeDefault() {
+  if (metadata_manager.default_sink_is_easyeffects_sink()) {
+    const auto best = bestHardwareOutputDeviceName();
+
+    if (!best.isEmpty() && best != defaultOutputDeviceName) {
+      defaultOutputDeviceName = best;
+
+      Q_EMIT defaultOutputDeviceNameChanged();
+    }
+
+    if (!best.isEmpty() && (DbStreamOutputs::useDefaultOutputDevice() || DbStreamOutputs::outputDevice().isEmpty())) {
+      if (DbStreamOutputs::outputDevice() != best) {
+        util::debug(std::format("EE sink is default: following hardware sink {}", best.toStdString()));
+
+        DbStreamOutputs::setOutputDevice(best);
+      }
+    }
+  }
+
+  if (metadata_manager.default_source_is_easyeffects_source()) {
+    const auto best = bestHardwareInputDeviceName();
+
+    if (!best.isEmpty() && best != defaultInputDeviceName) {
+      defaultInputDeviceName = best;
+
+      Q_EMIT defaultInputDeviceNameChanged();
+    }
+
+    if (!best.isEmpty() && (DbStreamInputs::useDefaultInputDevice() || DbStreamInputs::inputDevice().isEmpty())) {
+      if (DbStreamInputs::inputDevice() != best) {
+        util::debug(std::format("EE source is default: following hardware source {}", best.toStdString()));
+
+        DbStreamInputs::setInputDevice(best);
+      }
+    }
+  }
 }
 
 }  // namespace pw

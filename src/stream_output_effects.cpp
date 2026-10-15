@@ -265,50 +265,48 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
     return;
   }
 
-  const auto wireplumber_manages_output = pm->metadata_manager.default_sink_is_easyeffects_sink();
   auto output_device = pm->model_nodes.get_node_by_name(DbStreamOutputs::outputDevice());
 
-  if (!wireplumber_manages_output) {
-    if (output_device.serial == SPA_ID_INVALID) {
-      util::debug(std::format("The output device {} is not available. Aborting the link...",
-                              DbStreamOutputs::outputDevice().toStdString()));
+  if (output_device.serial == SPA_ID_INVALID) {
+    util::debug(std::format("The output device {} is not available. Aborting the link...",
+                            DbStreamOutputs::outputDevice().toStdString()));
+
+    return;
+  }
+
+  // Waiting for the output device ports information to be available.
+
+  int timeout = 0;
+
+  while (pm->count_node_ports(output_device.id) < 2) {
+    std::this_thread::sleep_for(std::chrono::milliseconds(1));
+
+    timeout++;
+
+    if (timeout > 5000) {  // 5 seconds
+      util::warning(
+          std::format("Information about the ports of the output device {} with id {} are taking to long to be "
+                      "available. Aborting the link",
+                      output_device.name.toStdString(), output_device.id));
 
       return;
     }
-
-    int timeout = 0;
-
-    while (pm->count_node_ports(output_device.id) < 2) {
-      std::this_thread::sleep_for(std::chrono::milliseconds(1));
-
-      timeout++;
-
-      if (timeout > 5000) {
-        util::warning(
-            std::format("Information about the ports of the output device {} with id {} are taking to long to be "
-                        "available. Aborting the link",
-                        output_device.name.toStdString(), output_device.id));
-
-        return;
-      }
-    }
   }
+
+  // Link global level meter to output device.
 
   uint next_node_id = output_device.id;
   uint prev_node_id = output_level->get_node_id();
-  auto links = std::vector<pw_proxy*>{};
 
-  if (!wireplumber_manages_output) {
-    links = pm->link_nodes(prev_node_id, next_node_id);
+  auto links = pm->link_nodes(prev_node_id, next_node_id);
 
-    for (auto* link : links) {
-      list_proxies.push_back(link);
-    }
+  for (auto* link : links) {
+    list_proxies.push_back(link);
+  }
 
-    if (links.size() < 2U) {
-      util::warning(
-          std::format("Link from global level meter {} to output device {} failed", prev_node_id, next_node_id));
-    }
+  if (links.size() < 2U) {
+    util::warning(
+        std::format("Link from global level meter {} to output device {} failed", prev_node_id, next_node_id));
   }
 
   // Link spectrum to global level meter.
@@ -363,10 +361,11 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
         continue;
       }
 
-      if (!wireplumber_manages_output && name.startsWith(tags::plugin_name::BaseName::echoCanceller) &&
-          plugins[name]->connected_to_pw) {
-        for (const auto& link : pm->link_nodes(output_device.id, plugins[name]->get_node_id(), true)) {
-          list_proxies.push_back(link);
+      if (name.startsWith(tags::plugin_name::BaseName::echoCanceller)) {
+        if (plugins[name]->connected_to_pw) {
+          for (const auto& link : pm->link_nodes(output_device.id, plugins[name]->get_node_id(), true)) {
+            list_proxies.push_back(link);
+          }
         }
       }
 

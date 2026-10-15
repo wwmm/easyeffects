@@ -87,7 +87,15 @@ auto MetadataManager::on_metadata_property(void* data,
   util::debug(std::format("New metadata property: {}, {}, {}, {}", id, str_key, str_type, str_value));
 
   if (str_key == "default.audio.sink" && str_value.empty()) {
-    mm->default_sink_is_easyeffects_sink_value.store(false, std::memory_order_relaxed);
+    if (mm->default_sink_is_easyeffects_sink_value.exchange(false, std::memory_order_relaxed)) {
+      Q_EMIT mm->eeSinkIsDefaultChanged(false);
+    }
+  }
+
+  if (str_key == "default.audio.source" && str_value.empty()) {
+    if (mm->default_source_is_easyeffects_source_value.exchange(false, std::memory_order_relaxed)) {
+      Q_EMIT mm->eeSourceIsDefaultChanged(false);
+    }
   }
 
   if (str_value.empty()) {
@@ -96,12 +104,27 @@ auto MetadataManager::on_metadata_property(void* data,
 
   // Handle specific metadata properties
   if (str_key == "default.audio.sink") {
-    auto v = nlohmann::json::parse(str_value).value("name", "");
+    std::string v;
+
+    try {
+      v = nlohmann::json::parse(str_value).value("name", "");
+    } catch (...) {
+      return 0;
+    }
     const auto is_easyeffects_sink = v == tags::pipewire::ee_sink_name;
-    mm->default_sink_is_easyeffects_sink_value.store(is_easyeffects_sink, std::memory_order_relaxed);
+    const auto was_easyeffects_sink =
+        mm->default_sink_is_easyeffects_sink_value.exchange(is_easyeffects_sink, std::memory_order_relaxed);
 
     if (is_easyeffects_sink) {
+      if (was_easyeffects_sink != is_easyeffects_sink) {
+        Q_EMIT mm->eeSinkIsDefaultChanged(true);
+      }
+
       return 0;
+    }
+
+    if (was_easyeffects_sink) {
+      Q_EMIT mm->eeSinkIsDefaultChanged(false);
     }
 
     util::debug(std::format("New default output device: {}", v));
@@ -110,10 +133,27 @@ auto MetadataManager::on_metadata_property(void* data,
   }
 
   if (str_key == "default.audio.source") {
-    auto v = nlohmann::json::parse(str_value).value("name", "");
+    std::string v;
 
-    if (v == tags::pipewire::ee_source_name) {
+    try {
+      v = nlohmann::json::parse(str_value).value("name", "");
+    } catch (...) {
       return 0;
+    }
+    const auto is_easyeffects_source = v == tags::pipewire::ee_source_name;
+    const auto was_easyeffects_source =
+        mm->default_source_is_easyeffects_source_value.exchange(is_easyeffects_source, std::memory_order_relaxed);
+
+    if (is_easyeffects_source) {
+      if (was_easyeffects_source != is_easyeffects_source) {
+        Q_EMIT mm->eeSourceIsDefaultChanged(true);
+      }
+
+      return 0;
+    }
+
+    if (was_easyeffects_source) {
+      Q_EMIT mm->eeSourceIsDefaultChanged(false);
     }
 
     util::debug(std::format("New default input device: {}", v));
