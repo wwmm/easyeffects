@@ -117,6 +117,7 @@ Plugins needed for effects:
 - [DeepFilterNet](https://github.com/Rikorose/DeepFilterNet). For deep noise remover.
 - [HushMic](https://github.com/Fovty/hushmic). For DPDFNet noise remover.
 - [x42-plugins](https://x42-plugins.com/) For autotune.
+- [Rakarrack Plus](https://github.com/Stazed/rakarrack-plus). The `rakarrack-plus` package provides the LV2 plugin required for Harmonizer.
 
 Other dependencies include:
 

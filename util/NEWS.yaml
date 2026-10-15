@@ -5,6 +5,7 @@ Date: UNRELEASED_DATE
 Description: 
 - Features∶
 - Added the new DPDFNet model to the Deep Noise Remover effect.
+- Added the Harmonizer effect.
 - Improved spectrum performance.
 
 - Bug fixes∶
@@ -12,6 +13,7 @@ Description:
 
 - Other notes∶
 - HushMic package should be installed in order to use DPDFNet model inside the Deep Noise Remover effect.
+- The `rakarrack-plus` package should be installed in order to use the Harmonizer effect.
 
 ---
 Version: 8.3.0
