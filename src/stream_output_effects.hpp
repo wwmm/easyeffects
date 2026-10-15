@@ -30,7 +30,7 @@ class StreamOutputEffects : public EffectsBase {
   QML_SINGLETON
 
  public:
-  StreamOutputEffects(pw::Manager* pipe_manager);
+  explicit StreamOutputEffects(pw::Manager* pipe_manager);
   StreamOutputEffects(const StreamOutputEffects&) = delete;
   auto operator=(const StreamOutputEffects&) -> StreamOutputEffects& = delete;
   StreamOutputEffects(const StreamOutputEffects&&) = delete;
