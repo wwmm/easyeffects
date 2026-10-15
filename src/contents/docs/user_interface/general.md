@@ -24,8 +24,11 @@ Do not process streams which are a duplication of the stream of existing devices
 **Use Cubic Volume**  
 Use cubic scale for app volume rather than linear one. Low percentages give lower volume.
 
-**Inactivity Timeout**  
-After this amount of time, Easy Effects stops audio processing and the internal filters are unlinked. This helps not wasting CPU resources while processing silence, but also makes sure the filters and not unlinked and relinked for small pauses of the stream.
+**Output Inactivity Timeout**  
+When no application is playing audio, Easy Effects waits this amount of time, then stops output processing and unlinks the output filters. This helps not wasting CPU resources while processing silence, but also makes sure the filters are not unlinked and relinked for small pauses of the stream. If disabled, the output filters stay linked.
+
+**Input Inactivity Timeout**  
+The same as the output inactivity timeout, but for the input (microphone) pipeline. It can be enabled and set independently of the output one.
 
 **Hide Menus on Outside Clicks**  
 When a popover menu is shown, return to the main window when a click is made outside the widget.

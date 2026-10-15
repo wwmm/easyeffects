@@ -118,6 +118,8 @@ class Manager : public QObject {
  private:
   QTimer* timer = nullptr;
 
+  void migrate_inactivity_timeout() const;
+
   void create_plugin_db(const QString& parentGroup, const auto& plugins_list, QMap<QString, QVariant>& plugins_map);
 };
 

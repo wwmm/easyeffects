@@ -225,12 +225,22 @@
             <max>1000</max>
             <default>100</default>
         </entry>
-        <entry name="inactivityTimerEnable" type="Bool">
-            <label>Enable the Inactivity Timeout</label>
+        <entry name="outputInactivityTimerEnable" type="Bool">
+            <label>Enable the Output Inactivity Timeout</label>
             <default>true</default>
         </entry>
-        <entry name="inactivityTimeout" type="Int">
-            <label>Inactivity Timeout.</label>
+        <entry name="outputInactivityTimeout" type="Int">
+            <label>Output Inactivity Timeout.</label>
+            <min>1</min>
+            <max>3600</max>
+            <default>10</default>
+        </entry>
+        <entry name="inputInactivityTimerEnable" type="Bool">
+            <label>Enable the Input Inactivity Timeout</label>
+            <default>true</default>
+        </entry>
+        <entry name="inputInactivityTimeout" type="Int">
+            <label>Input Inactivity Timeout.</label>
             <min>1</min>
             <max>3600</max>
             <default>10</default>

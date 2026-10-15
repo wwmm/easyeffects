@@ -18,6 +18,7 @@
  */
 
 #include "db_manager.hpp"
+#include <kconfiggroup.h>
 #include <kconfigskeleton.h>
 #include <qapplication.h>
 #include <qqml.h>
@@ -88,6 +89,8 @@ Manager::Manager(QObject* parent)
   util::create_user_directory(db_dir_path.toStdString());
 
   QApplication::setQuitOnLastWindowClosed(!DbMain::enableServiceMode());
+
+  migrate_inactivity_timeout();
 
   // autosave timer
 
@@ -163,6 +166,45 @@ void Manager::resetAll() const {
   for (const auto& plugin_db : soePluginsDB.values()) {
     plugin_db.value<KConfigSkeleton*>()->setDefaults();
   }
+}
+
+void Manager::migrate_inactivity_timeout() const {
+  /**
+   * Older versions had a single inactivity timeout shared by the input and
+   * output pipelines. Copy its values to the separate input and output
+   * settings, so users keep their behavior, and remove the old keys.
+   */
+
+  auto group = main->config()->group(QStringLiteral("EffectsPipelines"));
+
+  const auto enable_key = QStringLiteral("inactivityTimerEnable");
+  const auto timeout_key = QStringLiteral("inactivityTimeout");
+
+  if (!group.hasKey(enable_key) && !group.hasKey(timeout_key)) {
+    return;
+  }
+
+  util::debug("Migrating the inactivity timeout to separate input and output settings.");
+
+  if (group.hasKey(enable_key)) {
+    const auto enabled = group.readEntry(enable_key, DbMain::defaultOutputInactivityTimerEnableValue());
+
+    DbMain::setOutputInactivityTimerEnable(enabled);
+    DbMain::setInputInactivityTimerEnable(enabled);
+
+    group.deleteEntry(enable_key);
+  }
+
+  if (group.hasKey(timeout_key)) {
+    const auto timeout = group.readEntry(timeout_key, DbMain::defaultOutputInactivityTimeoutValue());
+
+    DbMain::setOutputInactivityTimeout(timeout);
+    DbMain::setInputInactivityTimeout(timeout);
+
+    group.deleteEntry(timeout_key);
+  }
+
+  main->save();
 }
 
 void Manager::create_plugin_db(const QString& parentGroup,

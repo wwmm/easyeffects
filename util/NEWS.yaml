@@ -6,6 +6,7 @@ Description:
 - Features∶
 - Added the new DPDFNet model to the Deep Noise Remover effect.
 - Improved spectrum performance.
+- The inactivity timeout has been split into separate settings for the input and output pipelines, which can be enabled and set independently. Existing settings are copied to both.
 
 - Bug fixes∶
 - Preset autoload at startup now works also for devices with "Pro Audio" profile.
