@@ -9,7 +9,8 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-14 22:30+0000\n"
 "PO-Revision-Date: 2026-10-15 11:51+0000\n"
-"Last-Translator: Henning <unbekannt3@users.noreply.hosted.weblate.org>\n"
+"Last-Translator: Ettore Atalan <atalanttore@users.noreply.hosted.weblate.org>"
+"\n"
 "Language-Team: German <https://hosted.weblate.org/projects/easyeffects/main/"
 "de/>\n"
 "Language: de\n"
@@ -69,9 +70,8 @@ msgid "state"
 msgstr "Status"
 
 #: src/command_line_parser.cpp:58
-#, fuzzy
 msgid "Toggle the state of audio sharing."
-msgstr "Status des Globalen Bypass umschalten."
+msgstr "Status der Audiofreigabe umschalten."
 
 #: src/command_line_parser.cpp:61
 #, fuzzy
@@ -83,9 +83,8 @@ msgstr ""
 "aktuellen Status."
 
 #: src/command_line_parser.cpp:64
-#, fuzzy
 msgid "Toggle the state of microphone monitoring."
-msgstr "Mikrofonüberwachung umschalten"
+msgstr "Status der Mikrofonüberwachung umschalten."
 
 #: src/command_line_parser.cpp:65
 msgid "Load a preset. Example: easyeffects -l music"
@@ -152,14 +151,12 @@ msgid "Provided an invalid bypass state."
 msgstr "Ungültigen Bypass-Status übergeben."
 
 #: src/command_line_parser.cpp:283
-#, fuzzy
 msgid "Provided an invalid microphone monitoring state."
-msgstr "Ungültigen Bypass-Status übergeben."
+msgstr "Es wurde ein ungültiger Mikrofonüberwachungsstatus angegeben."
 
 #: src/command_line_parser.cpp:313
-#, fuzzy
 msgid "Provided an invalid audio sharing state."
-msgstr "Ungültigen Bypass-Status übergeben."
+msgstr "Es wurde ein ungültiger Audiofreigabestatus angegeben."
 
 #: src/contents/ui/AboutPage.qml:24
 msgctxt "@action:button"
@@ -352,9 +349,8 @@ msgid "Level"
 msgstr "Stufe"
 
 #: src/contents/ui/Autotune.qml:388
-#, fuzzy
 msgid "Pitch error"
-msgstr "Tonhöhe links"
+msgstr "Tonhöhenfehler"
 
 #: src/contents/ui/Autotune.qml:425
 msgid "Fast correction"
@@ -486,7 +482,7 @@ msgstr "Diese App entfernen"
 
 #: src/contents/ui/BlocklistDialog.qml:204
 msgid "Use media name"
-msgstr ""
+msgstr "Medienname verwenden"
 
 #: src/contents/ui/BlocklistDialog.qml:205
 msgid ""
@@ -531,9 +527,8 @@ msgstr "Verstärkungsschwelle"
 
 #: src/contents/ui/Compressor.qml:113
 #: src/contents/ui/MultibandCompressor.qml:159
-#, fuzzy
 msgid "Boost amount"
-msgstr "Verstärkung"
+msgstr "Verstärkungsbetrag"
 
 #: src/contents/ui/Compressor.qml:132 src/contents/ui/Deesser.qml:119
 #: src/contents/ui/Expander.qml:92 src/contents/ui/MultibandCompressor.qml:363
@@ -965,9 +960,8 @@ msgid "Failed to remove the %1 Convolver impulse."
 msgstr "Die Impulsdatei konnte nicht geladen werden"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:123
-#, fuzzy
 msgid "Rename Impulse"
-msgstr "Impuls entfernen"
+msgstr "Impuls umbenennen"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:128
 #: src/contents/ui/PresetsLocalPage.qml:247
@@ -975,14 +969,12 @@ msgid "Rename"
 msgstr "Umbenennen"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:136
-#, fuzzy
 msgid "Renamed the %1 impulse to %2"
-msgstr "Lokale Vorlage %1 zu %2 umbenannt"
+msgstr "Impuls %1 zu %2 umbenannt"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:139
-#, fuzzy
 msgid "Failed to rename the %1 impulse to %2"
-msgstr "Lokale Vorlage %1 konnte nicht zu %2 umbenannt werden"
+msgstr "Impuls %1 konnte nicht zu %2 umbenannt werden"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:147
 #: src/contents/ui/HearingTestDialog.qml:178
@@ -991,9 +983,8 @@ msgid "Cancel"
 msgstr "Abbrechen"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:186
-#, fuzzy
 msgid "Rename this impulse"
-msgstr "Diese Vorlage umbenennen"
+msgstr "Diesen Impuls umbenennen"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:194
 msgid "Delete this impulse"
@@ -1095,13 +1086,12 @@ msgid "Shape"
 msgstr "Form"
 
 #: src/contents/ui/Crusher.qml:101
-#, fuzzy
 msgid "Linear"
-msgstr "Linien"
+msgstr "Linear"
 
 #: src/contents/ui/Crusher.qml:101
 msgid "Logarithmic"
-msgstr ""
+msgstr "Logarithmisch"
 
 #: src/contents/ui/Crusher.qml:110
 msgid "DC offset"
@@ -1109,16 +1099,15 @@ msgstr ""
 
 #: src/contents/ui/Crusher.qml:126 src/contents/ui/Pitch.qml:302
 msgid "Anti-aliasing"
-msgstr ""
+msgstr "Kantenglättung"
 
 #: src/contents/ui/Crusher.qml:142 src/contents/ui/PreferencesSheet.qml:909
 msgid "Mix"
 msgstr "Gemischt"
 
 #: src/contents/ui/Crusher.qml:160
-#, fuzzy
 msgid "Sample Rate"
-msgstr "Senkung"
+msgstr "Abtastrate"
 
 #: src/contents/ui/Crusher.qml:166 src/contents/ui/Gate.qml:118
 #: src/contents/ui/Gate.qml:652 src/contents/ui/Maximizer.qml:101
@@ -1128,16 +1117,15 @@ msgstr "Senkung"
 
 #: src/contents/ui/Crusher.qml:181
 msgid "Low frequency oscillator"
-msgstr ""
+msgstr "Niederfrequenzoszillator"
 
 #: src/contents/ui/Crystalizer.qml:110
-#, fuzzy
 msgid "Oversampling quality"
-msgstr "Überabtastung"
+msgstr "Überabtastungsqualität"
 
 #: src/contents/ui/Crystalizer.qml:128
 msgid "Transition band"
-msgstr ""
+msgstr "Übergangsband"
 
 #: src/contents/ui/Crystalizer.qml:172 src/contents/ui/Limiter.qml:86
 msgid "Oversampling"
@@ -1169,15 +1157,16 @@ msgstr "Umleiten"
 #: src/contents/ui/DeepFilterNet.qml:67
 msgid "%1 model is not installed. Audio passes through unprocessed."
 msgstr ""
+"Das Modell %1 ist nicht installiert. Der Ton wird unverarbeitet "
+"weitergeleitet."
 
 #: src/contents/ui/DeepFilterNet.qml:84
-#, fuzzy
 msgid "Model"
-msgstr "Modelle"
+msgstr "Modell"
 
 #: src/contents/ui/DeepFilterNet.qml:104
 msgid "Process as Mono"
-msgstr ""
+msgstr "Als Mono verarbeiten"
 
 #: src/contents/ui/DeepFilterNet.qml:108
 msgid ""
@@ -1361,7 +1350,7 @@ msgstr "Echounterdrückung"
 
 #: src/contents/ui/EchoCanceller.qml:73
 msgid "Mobile mode"
-msgstr "Mobile-Modus"
+msgstr "Mobilmodus"
 
 #: src/contents/ui/EchoCanceller.qml:82
 msgid "Enforce high-pass"
@@ -1507,27 +1496,27 @@ msgstr "Equalizer"
 #: src/contents/ui/Equalizer.qml:162 src/contents/ui/Filter.qml:111
 #: src/contents/ui/MidSideEqualizer.qml:156
 msgid "x2"
-msgstr ""
+msgstr "x2"
 
 #: src/contents/ui/Equalizer.qml:162 src/contents/ui/Filter.qml:111
 #: src/contents/ui/MidSideEqualizer.qml:156
 msgid "x3"
-msgstr ""
+msgstr "x3"
 
 #: src/contents/ui/Equalizer.qml:162 src/contents/ui/Filter.qml:111
 #: src/contents/ui/MidSideEqualizer.qml:156
 msgid "x4"
-msgstr ""
+msgstr "x4"
 
 #: src/contents/ui/Equalizer.qml:162 src/contents/ui/Filter.qml:111
 #: src/contents/ui/MidSideEqualizer.qml:156
 msgid "x6"
-msgstr ""
+msgstr "x6"
 
 #: src/contents/ui/Equalizer.qml:162 src/contents/ui/Filter.qml:111
 #: src/contents/ui/MidSideEqualizer.qml:156
 msgid "x8"
-msgstr ""
+msgstr "x8"
 
 #: src/contents/ui/Equalizer.qml:171 src/contents/ui/MidSideEqualizer.qml:165
 msgid "Bands"
@@ -1559,7 +1548,7 @@ msgstr "Kanäle trennen"
 
 #: src/contents/ui/Equalizer.qml:362 src/contents/ui/HearingTestDialog.qml:23
 msgid "Hearing Test"
-msgstr ""
+msgstr "Hörtest"
 
 #: src/contents/ui/Equalizer.qml:368 src/contents/ui/MidSideEqualizer.qml:356
 msgid "Flat response"
@@ -1574,26 +1563,23 @@ msgid "Sort bands"
 msgstr "Bänder sortieren"
 
 #: src/contents/ui/Equalizer.qml:389 src/contents/ui/MidSideEqualizer.qml:377
-#, fuzzy
 msgid "Import APO"
-msgstr "Modell importieren"
+msgstr "APO importieren"
 
 #: src/contents/ui/Equalizer.qml:396 src/contents/ui/MidSideEqualizer.qml:384
-#, fuzzy
 msgid "Import APO (GraphicEQ)"
-msgstr "GraphicEQ-Voreinstellungsdatei importieren"
+msgstr "APO (GraphicEQ) importieren"
 
 #: src/contents/ui/Equalizer.qml:403 src/contents/ui/MidSideEqualizer.qml:391
-#, fuzzy
 msgid "Export APO"
-msgstr "Voreinstellung exportieren"
+msgstr "APO exportieren"
 
 #: src/contents/ui/EqualizerBandMenu.qml:34
 #: src/contents/ui/MultibandCompressor.qml:669
 #: src/contents/ui/MultibandCompressor.qml:928
 #: src/contents/ui/MultibandGate.qml:642 src/contents/ui/MultibandGate.qml:901
 msgid "Band"
-msgstr ""
+msgstr "Band"
 
 #: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
 msgid "Bell"
@@ -1619,11 +1605,11 @@ msgstr "Resonanz"
 
 #: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
 msgid "Allpass"
-msgstr ""
+msgstr "Allpass"
 
 #: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
 msgid "Bandpass"
-msgstr ""
+msgstr "Bandpass"
 
 #: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
 msgid "Ladder-pass"
@@ -1710,14 +1696,12 @@ msgid "Internal"
 msgstr "Intern"
 
 #: src/contents/ui/Filter.qml:79
-#, fuzzy
 msgid "Filter mode"
-msgstr "Stereo Modus"
+msgstr "Filtermodus"
 
 #: src/contents/ui/Filter.qml:93
-#, fuzzy
 msgid "Equalizer mode"
-msgstr "Equalizer"
+msgstr "Equalizer-Modus"
 
 #: src/contents/ui/Gate.qml:71 src/tags_plugin_name.cpp:66
 msgid "Gate"
@@ -1754,14 +1738,12 @@ msgid ""
 msgstr ""
 
 #: src/contents/ui/HearingTestDialog.qml:70
-#, fuzzy
 msgid "I am using headphones"
-msgstr "Entfernte Kopfhörer"
+msgstr "Ich benutze Kopfhörer"
 
 #: src/contents/ui/HearingTestDialog.qml:84
-#, fuzzy
 msgid "Start Test"
-msgstr "Beginn"
+msgstr "Test starten"
 
 #: src/contents/ui/HearingTestDialog.qml:95
 msgid ""
@@ -1771,7 +1753,7 @@ msgstr ""
 
 #: src/contents/ui/HearingTestDialog.qml:102
 msgid "%1 ear: %2 Hz (%3 of %4)"
-msgstr ""
+msgstr "%1 Ohr: %2 Hz (%3 von %4)"
 
 #: src/contents/ui/HearingTestDialog.qml:108
 #, fuzzy
@@ -1779,14 +1761,12 @@ msgid "Tone Level"
 msgstr "Eingabegerät"
 
 #: src/contents/ui/HearingTestDialog.qml:126
-#, fuzzy
 msgid "Play Tone"
-msgstr "Spieler"
+msgstr "Ton abspielen"
 
 #: src/contents/ui/HearingTestDialog.qml:133
-#, fuzzy
 msgid "Record Threshold"
-msgstr "Abkling-Schwelle"
+msgstr "Aufzeichnungsschwelle"
 
 #: src/contents/ui/HearingTestDialog.qml:154
 msgid ""
@@ -1798,25 +1778,23 @@ msgstr ""
 
 #: src/contents/ui/HearingTestDialog.qml:161
 msgid "%1 Hz: left %2 dB, right %3 dB"
-msgstr ""
+msgstr "%1 Hz: links %2 dB, rechts %3 dB"
 
 #: src/contents/ui/HearingTestDialog.qml:168
 msgid "Apply Personalized EQ"
-msgstr ""
+msgstr "Personalisierten EQ anwenden"
 
 #: src/contents/ui/HearingTestDialog.qml:173
 msgid "Could not apply the hearing profile."
-msgstr ""
+msgstr "Das Hörprofil konnte nicht angewendet werden."
 
 #: src/contents/ui/LevelMeter.qml:67
-#, fuzzy
 msgid "Input Level"
-msgstr "Eingabegerät"
+msgstr "Eingangspegel"
 
 #: src/contents/ui/LevelMeter.qml:106
-#, fuzzy
 msgid "True Peak"
-msgstr "Frequenz 2 Peak"
+msgstr "Wahrer Spitzenwert"
 
 #: src/contents/ui/Limiter.qml:76
 #, fuzzy
@@ -1885,104 +1863,84 @@ msgid "None"
 msgstr "Keine"
 
 #: src/contents/ui/Limiter.qml:90
-#, fuzzy
 msgid "Half x2/16 bits"
-msgstr "Halb x2(2L)"
+msgstr "Halb x 2/16 Bit"
 
 #: src/contents/ui/Limiter.qml:90
-#, fuzzy
 msgid "Half x2/24 bits"
-msgstr "Halb x2(2L)"
+msgstr "Halb x 2/24 Bit"
 
 #: src/contents/ui/Limiter.qml:90
-#, fuzzy
 msgid "Half x3/16 bits"
-msgstr "Halb x3(2L)"
+msgstr "Halb x 3/16 Bit"
 
 #: src/contents/ui/Limiter.qml:90
-#, fuzzy
 msgid "Half x3/24 bits"
-msgstr "Halb x3(2L)"
+msgstr "Halb x 3/24 Bit"
 
 #: src/contents/ui/Limiter.qml:90
-#, fuzzy
 msgid "Half x4/16 bits"
-msgstr "Halb x4(2L)"
+msgstr "Halb x 4/16 Bit"
 
 #: src/contents/ui/Limiter.qml:90
-#, fuzzy
 msgid "Half x4/24 bits"
-msgstr "Halb x4(2L)"
+msgstr "Halb x 4/24 Bit"
 
 #: src/contents/ui/Limiter.qml:90
-#, fuzzy
 msgid "Half x6/16 bits"
-msgstr "Halb x6(2L)"
+msgstr "Halb x 6/16 Bit"
 
 #: src/contents/ui/Limiter.qml:90
-#, fuzzy
 msgid "Half x6/24 bits"
-msgstr "Halb x6(2L)"
+msgstr "Halb x 6/24 Bit"
 
 #: src/contents/ui/Limiter.qml:90
-#, fuzzy
 msgid "Half x8/16 bits"
-msgstr "Halb x8(2L)"
+msgstr "Halb x 8/16 Bit"
 
 #: src/contents/ui/Limiter.qml:90
-#, fuzzy
 msgid "Half x8/24 bits"
-msgstr "Halb x8(2L)"
+msgstr "Halb x 8/24 Bit"
 
 #: src/contents/ui/Limiter.qml:90
-#, fuzzy
 msgid "Full x2/16 bits"
-msgstr "Voll x2(2L)"
+msgstr "Voll x 2/16 Bit"
 
 #: src/contents/ui/Limiter.qml:90
-#, fuzzy
 msgid "Full x2/24 bits"
-msgstr "Voll x2(2L)"
+msgstr "Voll x 2/24 Bit"
 
 #: src/contents/ui/Limiter.qml:90
-#, fuzzy
 msgid "Full x3/16 bits"
-msgstr "Voll x3(2L)"
+msgstr "Voll x 3/16 Bit"
 
 #: src/contents/ui/Limiter.qml:90
-#, fuzzy
 msgid "Full x3/24 bits"
-msgstr "Voll x3(2L)"
+msgstr "Voll x 3/24 Bit"
 
 #: src/contents/ui/Limiter.qml:90
-#, fuzzy
 msgid "Full x4/16 bits"
-msgstr "Voll x4(2L)"
+msgstr "Voll x 4/16 Bit"
 
 #: src/contents/ui/Limiter.qml:90
-#, fuzzy
 msgid "Full x4/24 bits"
-msgstr "Voll x4(2L)"
+msgstr "Voll x 4/24 Bit"
 
 #: src/contents/ui/Limiter.qml:90
-#, fuzzy
 msgid "Full x6/16 bits"
-msgstr "Voll x6(2L)"
+msgstr "Voll x 6/16 Bit"
 
 #: src/contents/ui/Limiter.qml:90
-#, fuzzy
 msgid "Full x6/24 bits"
-msgstr "Voll x6(2L)"
+msgstr "Voll x 6/24 Bit"
 
 #: src/contents/ui/Limiter.qml:90
-#, fuzzy
 msgid "Full x8/16 bits"
-msgstr "Voll x8(2L)"
+msgstr "Voll x 8/16 Bit"
 
 #: src/contents/ui/Limiter.qml:90
-#, fuzzy
 msgid "Full x8/24 bits"
-msgstr "Voll x8(2L)"
+msgstr "Voll x 8/24 Bit"
 
 #: src/contents/ui/Limiter.qml:90
 #, fuzzy
@@ -1996,7 +1954,7 @@ msgstr "Frequenz 2 Peak"
 
 #: src/contents/ui/Limiter.qml:100
 msgid "Dithering"
-msgstr ""
+msgstr "Dithering"
 
 #: src/contents/ui/Limiter.qml:116 src/tags_plugin_name.cpp:68
 msgid "Limiter"
@@ -2007,9 +1965,8 @@ msgid "Stereo Link"
 msgstr "Stereoverbindung"
 
 #: src/contents/ui/Limiter.qml:406 src/contents/ui/Limiter.qml:648
-#, fuzzy
 msgid "Automatic level"
-msgstr "Auto Leveling"
+msgstr "Automatischer Pegel"
 
 #: src/contents/ui/Limiter.qml:468
 msgid "Smooth"
@@ -2021,9 +1978,8 @@ msgid "Threshold boost"
 msgstr "Schwelle"
 
 #: src/contents/ui/Loudness.qml:87
-#, fuzzy
 msgid "Contour"
-msgstr "Steuerung"
+msgstr "Kontur"
 
 #: src/contents/ui/Loudness.qml:91
 msgid "Flat"
@@ -2042,33 +1998,28 @@ msgid "Robinson-Dadson"
 msgstr "Robinson-Dadson"
 
 #: src/contents/ui/Loudness.qml:91
-#, fuzzy
 msgid "ISO226-2023"
-msgstr "ISO226-2003"
+msgstr "ISO226-2023"
 
 #: src/contents/ui/Loudness.qml:101 src/contents/ui/PreferencesSheet.qml:713
-#, fuzzy
 msgid "FFT size"
 msgstr "FFT-Größe"
 
 #: src/contents/ui/Loudness.qml:115
-#, fuzzy
 msgid "IIR approximation"
-msgstr "Anwendung stummschalten"
+msgstr "IIR-Näherung"
 
 #: src/contents/ui/Loudness.qml:119
-#, fuzzy
 msgid "Fastest"
-msgstr "Schneller"
+msgstr "Am schnellsten"
 
 #: src/contents/ui/Loudness.qml:119
-#, fuzzy
 msgid "Normal"
-msgstr "Format"
+msgstr "Normal"
 
 #: src/contents/ui/Loudness.qml:119
 msgid "Best"
-msgstr ""
+msgstr "Am besten"
 
 #: src/contents/ui/Loudness.qml:129
 msgid "Volume"
@@ -2085,9 +2036,8 @@ msgid "Clipping"
 msgstr "Kanalzuordnung"
 
 #: src/contents/ui/Main.qml:307
-#, fuzzy
 msgid "Reset Settings?"
-msgstr "_Einstellungen zurücksetzen"
+msgstr "Einstellungen zurücksetzen?"
 
 #: src/contents/ui/Main.qml:308
 msgid "Are you sure you want to reset all Easy Effects settings?"
@@ -2212,9 +2162,8 @@ msgid "Pitch side"
 msgstr "Tonhöhe links"
 
 #: src/contents/ui/MidSideEqualizer.qml:244
-#, fuzzy
 msgid "Mid"
-msgstr "Gemischt"
+msgstr "Mitte"
 
 #: src/contents/ui/MidSideEqualizer.qml:346
 #, fuzzy
@@ -2305,9 +2254,8 @@ msgid "No Effects"
 msgstr "Keine Effekte"
 
 #: src/contents/ui/PageStreamsEffects.qml:144
-#, fuzzy
 msgid "Audio stream not modified"
-msgstr "Audio Stream nicht verändert"
+msgstr "Audiostream nicht verändert"
 
 #: src/contents/ui/PageStreamsEffects.qml:418
 msgid "Add effect"
@@ -2339,22 +2287,20 @@ msgid "Input monitoring"
 msgstr "Eingangsüberwachung"
 
 #: src/contents/ui/PageStreamsEffects.qml:716
-#, fuzzy
 msgid "Toggle input monitoring"
-msgstr "Mikrofonüberwachung umschalten"
+msgstr "Eingangsüberwachung umschalten"
 
 #: src/contents/ui/PageStreamsEffects.qml:736
-#, fuzzy
 msgid "Set input monitoring volume"
-msgstr "Eingangsüberwachung"
+msgstr "Eingangsüberwachungslautstärke festlegen"
 
 #: src/contents/ui/PageStreamsEffects.qml:755
 msgid "Monitoring volume"
-msgstr ""
+msgstr "Überwachungslautstärke"
 
 #: src/contents/ui/PageStreamsEffects.qml:788
 msgid "Share audio"
-msgstr ""
+msgstr "Audio teilen"
 
 #: src/contents/ui/PageStreamsEffects.qml:789
 msgid "Send the processed desktop audio to the virtual source"
@@ -2395,9 +2341,8 @@ msgid "Name"
 msgstr "Name"
 
 #: src/contents/ui/PipeWirePage.qml:188
-#, fuzzy
 msgid "Use default output"
-msgstr "Standardausgang nutzen"
+msgstr "Standardausgang verwenden"
 
 #: src/contents/ui/PipeWirePage.qml:227
 msgid "Server Information"
@@ -2480,9 +2425,8 @@ msgid "Seek window"
 msgstr "Suchfenster"
 
 #: src/contents/ui/Pitch.qml:105
-#, fuzzy
 msgid "Overlap length"
-msgstr "Filterlänge"
+msgstr "Überlappungslänge"
 
 #: src/contents/ui/Pitch.qml:164 src/tags_plugin_name.cpp:73
 msgid "Pitch"
@@ -2511,12 +2455,11 @@ msgstr "Referenz"
 
 #: src/contents/ui/Pitch.qml:292
 msgid "Quick seek"
-msgstr ""
+msgstr "Schnellsuche"
 
 #: src/contents/ui/PluginNotAvailable.qml:34
-#, fuzzy
 msgid "Effect Not Available"
-msgstr "{} nicht verfügbar"
+msgstr "Effekt nicht verfügbar"
 
 #: src/contents/ui/PluginNotAvailable.qml:35
 msgid "%1 cannot be used because %2 is not installed on the system."
@@ -2524,30 +2467,27 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:41
 msgid "Background Service"
-msgstr ""
+msgstr "Hintergrunddienst"
 
 #: src/contents/ui/PreferencesSheet.qml:47
 msgid "Audio"
 msgstr "Audio"
 
 #: src/contents/ui/PreferencesSheet.qml:53
-#, fuzzy
 msgid "Spectrum Analyzer"
-msgstr "Spektrumstyp"
+msgstr "Spektrumanalysator"
 
 #: src/contents/ui/PreferencesSheet.qml:59
 msgid "Style"
 msgstr "Stil"
 
 #: src/contents/ui/PreferencesSheet.qml:77
-#, fuzzy
 msgid "Experimental Features"
-msgstr "Experimentell"
+msgstr "Experimentelle Funktionen"
 
 #: src/contents/ui/PreferencesSheet.qml:90
-#, fuzzy
 msgid "Enable service mode"
-msgstr "Equalizer"
+msgstr "Dienstmodus aktivieren"
 
 #: src/contents/ui/PreferencesSheet.qml:91
 msgid "Easy Effects is active in background when the window is closed."
@@ -2555,7 +2495,7 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:103
 msgid "Autostart on login"
-msgstr ""
+msgstr "Automatischer Start bei der Anmeldung"
 
 #: src/contents/ui/PreferencesSheet.qml:104
 msgid "Easy Effects is launched at user session startup."
@@ -2567,7 +2507,7 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:130
 msgid "Do not show the application window"
-msgstr ""
+msgstr "Anwendungsfenster nicht anzeigen"
 
 #: src/contents/ui/PreferencesSheet.qml:131
 msgid ""
@@ -2577,9 +2517,8 @@ msgid ""
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:151
-#, fuzzy
 msgid "Process all output streams"
-msgstr "Alle Ausgänge verarbeiten"
+msgstr "Alle Ausgangsstreams verarbeiten"
 
 #: src/contents/ui/PreferencesSheet.qml:161
 #, fuzzy
@@ -2597,9 +2536,8 @@ msgid "Process all input streams"
 msgstr "Alle Eingänge verarbeiten"
 
 #: src/contents/ui/PreferencesSheet.qml:217
-#, fuzzy
 msgid "Excluded input sources"
-msgstr "Ausgeschlossene Apps"
+msgstr "Ausgeschlossene Eingangsquellen"
 
 #: src/contents/ui/PreferencesSheet.qml:218
 msgid ""
@@ -2660,7 +2598,7 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:338
 msgid "Copy the input audio buffer"
-msgstr ""
+msgstr "Eingangsaudiopuffer kopieren"
 
 #: src/contents/ui/PreferencesSheet.qml:339
 msgid ""
@@ -2742,7 +2680,7 @@ msgstr "Audio Latenzausgleich"
 
 #: src/contents/ui/PreferencesSheet.qml:517
 msgid "Graph"
-msgstr ""
+msgstr "Graph"
 
 #: src/contents/ui/PreferencesSheet.qml:528
 msgid "Bars"
@@ -2774,7 +2712,7 @@ msgstr "Höhe"
 
 #: src/contents/ui/PreferencesSheet.qml:572
 msgid "px"
-msgstr ""
+msgstr "px"
 
 #: src/contents/ui/PreferencesSheet.qml:579
 msgid "Spectrum frame rate cap"
@@ -2799,9 +2737,8 @@ msgid "Maximum"
 msgstr "Maximum"
 
 #: src/contents/ui/PreferencesSheet.qml:633
-#, fuzzy
 msgid "Level Range"
-msgstr "Lautstärkebereich"
+msgstr "Pegelbereich"
 
 #: src/contents/ui/PreferencesSheet.qml:638
 #: src/contents/ui/PreferencesSheet.qml:894
@@ -2825,7 +2762,7 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:708
 msgid "Analysis"
-msgstr ""
+msgstr "Analyse"
 
 #: src/contents/ui/PreferencesSheet.qml:725
 msgid "Zero padding"
@@ -2837,13 +2774,12 @@ msgid ""
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:738
-#, fuzzy
 msgid "Window function"
-msgstr "Pegelreduktion"
+msgstr "Fensterfunktion"
 
 #: src/contents/ui/PreferencesSheet.qml:742
 msgid "Rectangular"
-msgstr ""
+msgstr "Rechteckig"
 
 #: src/contents/ui/PreferencesSheet.qml:742
 msgid "Hann"
@@ -2868,7 +2804,7 @@ msgstr "Flach"
 
 #: src/contents/ui/PreferencesSheet.qml:786
 msgid "Database autosave interval"
-msgstr ""
+msgstr "Intervall für die automatische Speicherung der Datenbank"
 
 #: src/contents/ui/PreferencesSheet.qml:800
 msgid "Most used presets"
@@ -2909,7 +2845,7 @@ msgstr "Farbschema"
 
 #: src/contents/ui/PreferencesSheet.qml:867
 msgid "Force English language"
-msgstr ""
+msgstr "Englische Sprache erzwingen"
 
 #: src/contents/ui/PreferencesSheet.qml:868
 msgid ""
@@ -2944,7 +2880,7 @@ msgstr "Neon Grün"
 
 #: src/contents/ui/PreferencesSheet.qml:909
 msgid "Orange"
-msgstr ""
+msgstr "Orange"
 
 #: src/contents/ui/PreferencesSheet.qml:909
 msgid "Yellow"
@@ -3062,7 +2998,7 @@ msgstr "Gerät"
 #: src/contents/ui/PresetsAutoloadPage.qml:61
 #: src/contents/ui/PresetsAutoloadPage.qml:256
 msgid "Route"
-msgstr ""
+msgstr "Route"
 
 #: src/contents/ui/PresetsAutoloadPage.qml:125
 #: src/contents/ui/PresetsAutoloadPage.qml:269
@@ -3093,9 +3029,8 @@ msgstr "Aktualisieren"
 
 #: src/contents/ui/PresetsCommunityPage.qml:129
 #: src/contents/ui/PresetsLocalPage.qml:306
-#, fuzzy
 msgid "Load this preset"
-msgstr "Diese Vorlage umbenennen"
+msgstr "Diese Voreinstellung laden"
 
 #: src/contents/ui/PresetsCommunityPage.qml:137
 msgid "Copy to local presets"
@@ -3117,12 +3052,11 @@ msgstr "Lokal"
 
 #: src/contents/ui/PresetsDialog.qml:107 src/contents/ui/PresetsDialog.qml:156
 msgid "Community"
-msgstr ""
+msgstr "Gemeinschaft"
 
 #: src/contents/ui/PresetsDialog.qml:115
-#, fuzzy
 msgid "Autoload"
-msgstr "Automatische Verstärkungsregelung"
+msgstr "Automatisch laden"
 
 #: src/contents/ui/PresetsDialog.qml:154
 msgid "No preset loaded"
@@ -3322,9 +3256,8 @@ msgid "Large"
 msgstr "Groß"
 
 #: src/contents/ui/Reverb.qml:70
-#, fuzzy
 msgid "Tunnel-like"
-msgstr "Tunnel"
+msgstr "Tunnelartig"
 
 #: src/contents/ui/Reverb.qml:70
 msgid "Large/smooth"
@@ -3377,7 +3310,6 @@ msgid "Room"
 msgstr "Raum"
 
 #: src/contents/ui/Reverb.qml:277
-#, fuzzy
 msgid "Large empty hall"
 msgstr "Große leere Halle"
 
@@ -3386,7 +3318,6 @@ msgid "Disco"
 msgstr "Disco"
 
 #: src/contents/ui/Reverb.qml:297
-#, fuzzy
 msgid "Large occupied hall"
 msgstr "Große besetzte Halle"
 
@@ -3427,7 +3358,7 @@ msgstr "Kann bei numerischen Kontrollen verwendet werden"
 
 #: src/contents/ui/ShortcutsSheet.qml:289
 msgid "Mouse wheel"
-msgstr ""
+msgstr "Mausrad"
 
 #: src/contents/ui/ShortcutsSheet.qml:313
 msgid "Global Shortcuts"
@@ -3439,7 +3370,7 @@ msgstr "Mikrofonüberwachung umschalten"
 
 #: src/contents/ui/ShortcutsSheet.qml:439 src/global_shortcuts.hpp:89
 msgid "Toggle audio sharing"
-msgstr ""
+msgstr "Audiofreigabe umschalten"
 
 #: src/contents/ui/Speex.qml:64
 msgid "Denoise"
@@ -3530,19 +3461,16 @@ msgid "Stereo phase"
 msgstr "Stereo Phase"
 
 #: src/contents/ui/TrayIcon.qml:61
-#, fuzzy
 msgid "Effects disabled"
-msgstr "Audioeffekte sind deaktiviert."
+msgstr "Effekte deaktiviert"
 
 #: src/contents/ui/TrayIcon.qml:63
-#, fuzzy
 msgid "Effects enabled"
-msgstr "Audioeffekte sind aktiviert."
+msgstr "Effekte aktiviert"
 
 #: src/contents/ui/TrayIcon.qml:102 src/contents/ui/TrayIcon.qml:122
-#, fuzzy
 msgid "Preset Loaded"
-msgstr "Neuer Eingabe-Presetname"
+msgstr "Voreinstellung geladen"
 
 #: src/contents/ui/TrayIcon.qml:133 src/contents/ui/TrayIcon.qml:145
 msgid "Clear List"
@@ -3565,14 +3493,12 @@ msgid "Active"
 msgstr "Aktiv"
 
 #: src/contents/ui/VoiceSuppressor.qml:95
-#, fuzzy
 msgid "Correlation"
-msgstr "Phasenkorrelation"
+msgstr "Korrelation"
 
 #: src/contents/ui/VoiceSuppressor.qml:111
-#, fuzzy
 msgid "Phase difference"
-msgstr "Referenz"
+msgstr "Phasendifferenz"
 
 #: src/contents/ui/VoiceSuppressor.qml:127
 #, fuzzy
@@ -3580,14 +3506,12 @@ msgid "Minimum kurtosis"
 msgstr "Minimales Quantum"
 
 #: src/contents/ui/VoiceSuppressor.qml:142
-#, fuzzy
 msgid "Maximum instantaneous frequency"
-msgstr "Frequenz"
+msgstr "Maximale Momentanfrequenz"
 
 #: src/contents/ui/VoiceSuppressor.qml:174
-#, fuzzy
 msgid "Inverted mode"
-msgstr "Links invertieren"
+msgstr "Invertierter Modus"
 
 #: src/main.cpp:427
 msgid "Global audio effects"
@@ -3595,7 +3519,7 @@ msgstr "_Tastenkürzel Toneffekte"
 
 #: src/main.cpp:428
 msgid "© 2017-2026 Easy Effects Team"
-msgstr ""
+msgstr "© 2017-2026 Easy Effects Team"
 
 #: src/main.cpp:430
 msgid "Wellington Wallace"
@@ -3618,7 +3542,7 @@ msgstr "Deine E-Mail Adressen"
 
 #: src/plugin_base.cpp:324
 msgid "(Mic)"
-msgstr ""
+msgstr "(Mikro)"
 
 #: src/plugin_base.cpp:327
 msgid "(Speakers)"
@@ -3703,9 +3627,8 @@ msgid "Crossfeed"
 msgstr "Crossfeed"
 
 #: src/tags_plugin_name.cpp:54
-#, fuzzy
 msgid "Crosstalk Canceller"
-msgstr "Echounterdrückung"
+msgstr "Übersprechungsunterdrückung"
 
 #: src/tags_plugin_name.cpp:55
 msgid "Crusher"
@@ -3782,22 +3705,22 @@ msgstr "R"
 #: src/units.hpp:64
 msgctxt "The SOFA audio file format"
 msgid "SOFA"
-msgstr ""
+msgstr "SOFA"
 
 #: src/units.hpp:65
 msgctxt "The WAV audio file format"
 msgid "WAV"
-msgstr ""
+msgstr "WAV"
 
 #: src/units.hpp:68
 msgctxt "decibel unit abbreviation"
 msgid "dB"
-msgstr ""
+msgstr "dB"
 
 #: src/units.hpp:69
 msgctxt "decibel full scale unit abbreviation"
 msgid "dBFS"
-msgstr ""
+msgstr "dBFS"
 
 #: src/units.hpp:70
 msgctxt "decibel per octaves unit abbreviation"
@@ -3807,57 +3730,57 @@ msgstr "dB/okt"
 #: src/units.hpp:71
 msgctxt "seconds unit abbreviation"
 msgid "s"
-msgstr ""
+msgstr "s"
 
 #: src/units.hpp:72
 msgctxt "milliseconds unit abbreviation"
 msgid "ms"
-msgstr ""
+msgstr "ms"
 
 #: src/units.hpp:73
 msgctxt "microseconds unit abbreviation"
 msgid "μs"
-msgstr ""
+msgstr "μs"
 
 #: src/units.hpp:74
 msgctxt "Hertz unit abbreviation"
 msgid "Hz"
-msgstr ""
+msgstr "Hz"
 
 #: src/units.hpp:75
 msgctxt "kiloHertz unit abbreviation"
 msgid "kHz"
-msgstr ""
+msgstr "kHz"
 
 #: src/units.hpp:76
 msgctxt "loudness full scale unit abbreviation"
 msgid "LUFS"
-msgstr ""
+msgstr "LUFS"
 
 #: src/units.hpp:77
 msgctxt "loudness unit abbreviation"
 msgid "LU"
-msgstr ""
+msgstr "LU"
 
 #: src/units.hpp:78
 msgctxt "meter unit abbreviation"
 msgid "m"
-msgstr ""
+msgstr "m"
 
 #: src/units.hpp:79
 msgctxt "centimeter unit abbreviation"
 msgid "cm"
-msgstr ""
+msgstr "cm"
 
 #: src/units.hpp:80
 msgctxt "degrees Celsius unit abbreviation"
 msgid "°C"
-msgstr ""
+msgstr "°C"
 
 #: src/units.hpp:81
 msgctxt "bit unit (plural)"
 msgid "bits"
-msgstr ""
+msgstr "Bits"
 
 #: src/units.hpp:82
 msgctxt "frame unit (plural)"
@@ -3872,17 +3795,17 @@ msgstr "FPS"
 #: src/units.hpp:86
 msgctxt "thousand abbreviation (single letter)"
 msgid "k"
-msgstr ""
+msgstr "k"
 
 #: src/units.hpp:87
 msgctxt "percentage symbol"
 msgid "%"
-msgstr ""
+msgstr "%"
 
 #: src/units.hpp:88
 msgctxt "degrees (angle) symbol"
 msgid "°"
-msgstr ""
+msgstr "°"
 
 #: src/units.hpp:89
 msgctxt "minus infinity abbreviation"
