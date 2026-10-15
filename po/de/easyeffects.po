@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-14 22:30+0000\n"
-"PO-Revision-Date: 2026-09-08 13:51+0000\n"
-"Last-Translator: numerfolt <numerfolt@users.noreply.hosted.weblate.org>\n"
+"PO-Revision-Date: 2026-10-15 11:51+0000\n"
+"Last-Translator: Henning <unbekannt3@users.noreply.hosted.weblate.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/easyeffects/main/"
 "de/>\n"
 "Language: de\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2026.9.1\n"
+"X-Generator: Weblate 2026.11.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -880,9 +880,8 @@ msgid "First"
 msgstr ""
 
 #: src/contents/ui/Convolver.qml:164
-#, fuzzy
 msgid "Second"
-msgstr "Zweiter Kernel"
+msgstr "Zweiter"
 
 #: src/contents/ui/Convolver.qml:196 src/contents/ui/Convolver.qml:231
 msgid "Combine"
@@ -1361,9 +1360,8 @@ msgid "Echo Canceller"
 msgstr "Echounterdrückung"
 
 #: src/contents/ui/EchoCanceller.qml:73
-#, fuzzy
 msgid "Mobile mode"
-msgstr "Stereo Modus"
+msgstr "Mobile-Modus"
 
 #: src/contents/ui/EchoCanceller.qml:82
 msgid "Enforce high-pass"
@@ -1628,9 +1626,8 @@ msgid "Bandpass"
 msgstr ""
 
 #: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
-#, fuzzy
 msgid "Ladder-pass"
-msgstr "Tiefpass"
+msgstr "Ladder-Pass"
 
 #: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
 msgid "Ladder-rejection"
