@@ -28,6 +28,7 @@
 #include <qtypes.h>
 #include <spa/utils/defs.h>
 #include <spa/utils/hook.h>
+#include <atomic>
 #include <cstdint>
 
 namespace pw {
@@ -52,12 +53,18 @@ class MetadataManager : public QObject {
 
   void destroy_metadata();
 
+  [[nodiscard]] auto default_sink_is_easyeffects_sink() const -> bool {
+    return default_sink_is_easyeffects_sink_value.load(std::memory_order_relaxed);
+  }
+
  Q_SIGNALS:
   void defaultSinkChanged(const QString& name);
   void defaultSourceChanged(const QString& name);
 
  private:
   pw_metadata* metadata = nullptr;
+
+  std::atomic_bool default_sink_is_easyeffects_sink_value = false;
 
   spa_hook metadata_listener{};
 

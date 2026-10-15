@@ -86,6 +86,10 @@ auto MetadataManager::on_metadata_property(void* data,
 
   util::debug(std::format("New metadata property: {}, {}, {}, {}", id, str_key, str_type, str_value));
 
+  if (str_key == "default.audio.sink" && str_value.empty()) {
+    mm->default_sink_is_easyeffects_sink_value.store(false, std::memory_order_relaxed);
+  }
+
   if (str_value.empty()) {
     return 0;
   }
@@ -93,8 +97,10 @@ auto MetadataManager::on_metadata_property(void* data,
   // Handle specific metadata properties
   if (str_key == "default.audio.sink") {
     auto v = nlohmann::json::parse(str_value).value("name", "");
+    const auto is_easyeffects_sink = v == tags::pipewire::ee_sink_name;
+    mm->default_sink_is_easyeffects_sink_value.store(is_easyeffects_sink, std::memory_order_relaxed);
 
-    if (v == tags::pipewire::ee_sink_name) {
+    if (is_easyeffects_sink) {
       return 0;
     }
 
