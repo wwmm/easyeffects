@@ -41,6 +41,7 @@
 #include <vector>
 #include "autogain.hpp"
 #include "autotune.hpp"
+#include "harmonizer.hpp"
 #include "bass_enhancer.hpp"
 #include "bass_loudness.hpp"
 #include "compressor.hpp"
@@ -156,6 +157,8 @@ void EffectsBase::create_filters_if_necessary() {
 
     } else if (name.startsWith(tags::plugin_name::BaseName::autotune)) {
       filter = std::make_unique<Autotune>(log_tag, pm, pipeline_type, instance_id);
+    } else if (name.startsWith(tags::plugin_name::BaseName::harmonizer)) {
+      filter = std::make_unique<Harmonizer>(log_tag, pm, pipeline_type, instance_id);
 
     } else if (name.startsWith(tags::plugin_name::BaseName::bassEnhancer)) {
       filter = std::make_unique<BassEnhancer>(log_tag, pm, pipeline_type, instance_id);
@@ -325,6 +328,8 @@ QVariant EffectsBase::getPluginInstance(const QString& pluginName) {
 
   } else if (pluginName.startsWith(tags::plugin_name::BaseName::autotune)) {
     return QVariant::fromValue(dynamic_cast<Autotune*>(p.get()));
+  } else if (pluginName.startsWith(tags::plugin_name::BaseName::harmonizer)) {
+    return QVariant::fromValue(dynamic_cast<Harmonizer*>(p.get()));
 
   } else if (pluginName.startsWith(tags::plugin_name::BaseName::bassEnhancer)) {
     return QVariant::fromValue(dynamic_cast<BassEnhancer*>(p.get()));
