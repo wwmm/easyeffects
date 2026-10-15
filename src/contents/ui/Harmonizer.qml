@@ -25,7 +25,7 @@ Kirigami.ScrollablePage {
             uniformCellWidths: true
 
             EeCard {
-                title: i18n("Harmony")
+                title: i18n("Harmony") // qmllint disable
 
                 Controls.ComboBox {
                     Layout.fillWidth: true
