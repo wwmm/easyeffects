@@ -389,32 +389,62 @@ KirigamiSettings.ConfigurationView {
                 }
 
                 EeSwitch {
-                    id: inactivityTimerEnable
+                    id: outputInactivityTimerEnable
 
-                    label: i18n("Enable the inactivity timeout") // qmllint disable
-                    subtitle: i18n("When all streams are inactive, Easy Effects pipeline remains loaded for an extra amount of time.") // qmllint disable
+                    label: i18n("Enable the output inactivity timeout") // qmllint disable
+                    subtitle: i18n("When all output streams are inactive, the Easy Effects output pipeline remains loaded for an extra amount of time.") // qmllint disable
                     maximumLineCount: -1
-                    isChecked: DbMain.inactivityTimerEnable
+                    isChecked: DbMain.outputInactivityTimerEnable
                     onCheckedChanged: {
-                        if (isChecked !== DbMain.inactivityTimerEnable)
-                            DbMain.inactivityTimerEnable = isChecked;
+                        if (isChecked !== DbMain.outputInactivityTimerEnable)
+                            DbMain.outputInactivityTimerEnable = isChecked;
                     }
                 }
 
                 EeSpinBox {
-                    id: inactivityTimeout
+                    id: outputInactivityTimeout
 
-                    label: i18n("Inactivity timeout") // qmllint disable
+                    label: i18n("Output inactivity timeout") // qmllint disable
                     maximumLineCount: -1
-                    from: DbMain.getMinValue("inactivityTimeout")
-                    to: DbMain.getMaxValue("inactivityTimeout")
-                    value: DbMain.inactivityTimeout
+                    from: DbMain.getMinValue("outputInactivityTimeout")
+                    to: DbMain.getMaxValue("outputInactivityTimeout")
+                    value: DbMain.outputInactivityTimeout
                     decimals: 0
                     stepSize: 1
                     unit: Units.s
-                    enabled: DbMain.inactivityTimerEnable
+                    enabled: DbMain.outputInactivityTimerEnable
                     onValueModified: v => {
-                        DbMain.inactivityTimeout = v;
+                        DbMain.outputInactivityTimeout = v;
+                    }
+                }
+
+                EeSwitch {
+                    id: inputInactivityTimerEnable
+
+                    label: i18n("Enable the input inactivity timeout") // qmllint disable
+                    subtitle: i18n("When all input streams are inactive, the Easy Effects input pipeline remains loaded for an extra amount of time.") // qmllint disable
+                    maximumLineCount: -1
+                    isChecked: DbMain.inputInactivityTimerEnable
+                    onCheckedChanged: {
+                        if (isChecked !== DbMain.inputInactivityTimerEnable)
+                            DbMain.inputInactivityTimerEnable = isChecked;
+                    }
+                }
+
+                EeSpinBox {
+                    id: inputInactivityTimeout
+
+                    label: i18n("Input inactivity timeout") // qmllint disable
+                    maximumLineCount: -1
+                    from: DbMain.getMinValue("inputInactivityTimeout")
+                    to: DbMain.getMaxValue("inputInactivityTimeout")
+                    value: DbMain.inputInactivityTimeout
+                    decimals: 0
+                    stepSize: 1
+                    unit: Units.s
+                    enabled: DbMain.inputInactivityTimerEnable
+                    onValueModified: v => {
+                        DbMain.inputInactivityTimeout = v;
                     }
                 }
 

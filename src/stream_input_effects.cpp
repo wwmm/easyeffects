@@ -215,10 +215,10 @@ void StreamInputEffects::update_pipeline() {
         connect_filters();
       }
     } else {
-      if (DbMain::inactivityTimerEnable()) {
+      if (DbMain::inputInactivityTimerEnable()) {
         // if the timer is enabled, wait for the timeout, then unlink plugin pipeline
 
-        QTimer::singleShot(DbMain::inactivityTimeout() * 1000, this, [this]() {
+        QTimer::singleShot(DbMain::inputInactivityTimeout() * 1000, this, [this]() {
           if (!apps_want_to_play() && !list_proxies.empty()) {
             util::debug("No app linked to our device wants to play. Unlinking our filters.");
 
@@ -265,8 +265,8 @@ void StreamInputEffects::on_link_changed(const pw::LinkInfo link_info) {
 }
 
 void StreamInputEffects::on_link_removed() {
-  QTimer::singleShot(DbMain::inactivityTimeout() * 1000, this, [&]() {
-    if (DbMain::inactivityTimerEnable() && !apps_want_to_play() && !list_proxies.empty()) {
+  QTimer::singleShot(DbMain::inputInactivityTimeout() * 1000, this, [&]() {
+    if (DbMain::inputInactivityTimerEnable() && !apps_want_to_play() && !list_proxies.empty()) {
       util::debug("No app linked to our device wants to play. Unlinking our filters.");
 
       disconnect_filters();
