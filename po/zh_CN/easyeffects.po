@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-15 15:16+0000\n"
-"PO-Revision-Date: 2026-10-10 03:20+0000\n"
-"Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
+"PO-Revision-Date: 2026-10-16 19:51+0000\n"
+"Last-Translator: Gerald Chen <ramdomptm@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hans/>\n"
 "Language: zh_CN\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2026.10.1.dev0\n"
+"X-Generator: Weblate 2026.11.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -263,7 +263,7 @@ msgstr "强制静音"
 
 #: src/contents/ui/Autogain.qml:258
 msgid "Force silence when the level is below the silence threshold"
-msgstr "当电平低于静音阈值时强制静音"
+msgstr "当电平低于阈值时强制静音"
 
 #: src/contents/ui/Autogain.qml:270 src/contents/ui/Autotune.qml:436
 #: src/contents/ui/DeepFilterNet.qml:294 src/contents/ui/LevelMeter.qml:240
@@ -1124,18 +1124,16 @@ msgid "Bypass"
 msgstr "旁通"
 
 #: src/contents/ui/DeepFilterNet.qml:67
-#, fuzzy
 msgid "%1 model is not installed. Audio passes through unprocessed."
-msgstr "未安装已选模型。音频不受处理。"
+msgstr "未安装 %1 模型。音频不受处理。"
 
 #: src/contents/ui/DeepFilterNet.qml:84
-#, fuzzy
 msgid "Model"
 msgstr "模型"
 
 #: src/contents/ui/DeepFilterNet.qml:104
 msgid "Process as Mono"
-msgstr ""
+msgstr "按单声道处理"
 
 #: src/contents/ui/DeepFilterNet.qml:108
 msgid ""
@@ -1144,6 +1142,8 @@ msgid ""
 "microphones. Both output channels receive the same audio; stereo separation "
 "is lost."
 msgstr ""
+"取左右声道输入平均，用单 DPDFNet 实例处理。这可显著减少单声道麦克风的 CPU 占"
+"用。各输出声道接收相同音频，不再分离立体声。"
 
 #: src/contents/ui/DeepFilterNet.qml:121
 msgid "Attenuation limit"
@@ -1510,7 +1510,7 @@ msgstr "分离声道"
 
 #: src/contents/ui/Equalizer.qml:362 src/contents/ui/HearingTestDialog.qml:23
 msgid "Hearing Test"
-msgstr ""
+msgstr "听力测试"
 
 #: src/contents/ui/Equalizer.qml:368 src/contents/ui/MidSideEqualizer.qml:356
 msgid "Flat response"
@@ -1686,7 +1686,7 @@ msgstr "启动"
 msgid ""
 "The output device changed. Restart the test with the same headphones and "
 "volume."
-msgstr ""
+msgstr "输出设备改变。用相同耳机和音量重新测试。"
 
 #: src/contents/ui/HearingTestDialog.qml:64
 msgid ""
@@ -1695,40 +1695,38 @@ msgid ""
 "then record the threshold. This uncalibrated listening test is not a medical "
 "hearing assessment."
 msgstr ""
+"在安静房间里使用耳机。暂停其他音频，将系统音量保持在舒适水平。调整每种纯音直"
+"到几不可闻，记录其阈值。此听力测试未受校准，不作为医学评估。"
 
 #: src/contents/ui/HearingTestDialog.qml:70
 msgid "I am using headphones"
-msgstr ""
+msgstr "我正在使用耳机"
 
 #: src/contents/ui/HearingTestDialog.qml:84
-#, fuzzy
 msgid "Start Test"
-msgstr "启动"
+msgstr "开始测试"
 
 #: src/contents/ui/HearingTestDialog.qml:95
 msgid ""
 "Select an available stereo output device and disable the regular test "
 "signals before starting."
-msgstr ""
+msgstr "选择可用的双声道输出设备，在开始前禁用常规测试信号。"
 
 #: src/contents/ui/HearingTestDialog.qml:102
 msgid "%1 ear: %2 Hz (%3 of %4)"
-msgstr ""
+msgstr "%1 耳：%2 Hz (%3 / %4)"
 
 #: src/contents/ui/HearingTestDialog.qml:108
-#, fuzzy
 msgid "Tone Level"
-msgstr "输入电平"
+msgstr "纯音电平"
 
 #: src/contents/ui/HearingTestDialog.qml:126
-#, fuzzy
 msgid "Play Tone"
-msgstr "播放器"
+msgstr "播放纯音"
 
 #: src/contents/ui/HearingTestDialog.qml:133
-#, fuzzy
 msgid "Record Threshold"
-msgstr "释放阈值"
+msgstr "记录阈值"
 
 #: src/contents/ui/HearingTestDialog.qml:154
 msgid ""
@@ -1737,18 +1735,20 @@ msgid ""
 "and lowers input gain to preserve headroom. Save a preset to keep the result "
 "for these headphones."
 msgstr ""
+"测试完成。应用配置将以每侧耳朵的矫正替换此均衡器设置，限制在每频带 6 dB，降低"
+"输入增益以保留余量。保存为预设以保持耳机设置。"
 
 #: src/contents/ui/HearingTestDialog.qml:161
 msgid "%1 Hz: left %2 dB, right %3 dB"
-msgstr ""
+msgstr "%1 Hz：左耳 %2 dB，右耳 %3 dB"
 
 #: src/contents/ui/HearingTestDialog.qml:168
 msgid "Apply Personalized EQ"
-msgstr ""
+msgstr "应用个性化 EQ"
 
 #: src/contents/ui/HearingTestDialog.qml:173
 msgid "Could not apply the hearing profile."
-msgstr ""
+msgstr "无法应用听力配置。"
 
 #: src/contents/ui/LevelMeter.qml:67
 msgid "Input Level"
@@ -1914,7 +1914,7 @@ msgstr "立体声连锁"
 
 #: src/contents/ui/Limiter.qml:406 src/contents/ui/Limiter.qml:648
 msgid "Automatic level"
-msgstr "自动调平"
+msgstr "自动电平调节"
 
 #: src/contents/ui/Limiter.qml:468
 msgid "Smooth"
@@ -1970,7 +1970,7 @@ msgstr "质量最好"
 
 #: src/contents/ui/Loudness.qml:129
 msgid "Volume"
-msgstr "输出音量"
+msgstr "音量"
 
 #: src/contents/ui/Loudness.qml:146
 msgid "Clipping range"
@@ -2555,38 +2555,32 @@ msgid "Link delay"
 msgstr "链接延迟"
 
 #: src/contents/ui/PreferencesSheet.qml:394
-#, fuzzy
 msgid "Enable the output inactivity timeout"
-msgstr "启用空闲超时"
+msgstr "启用输出空闲超时"
 
 #: src/contents/ui/PreferencesSheet.qml:395
-#, fuzzy
 msgid ""
 "When all output streams are inactive, the Easy Effects output pipeline "
 "remains loaded for an extra amount of time."
-msgstr "当没有活跃音频流时，Easy Effects 管线仍将额外加载一段时间。"
+msgstr "当没有活跃音频流时，Easy Effects 输出管线仍将保持一段时间。"
 
 #: src/contents/ui/PreferencesSheet.qml:407
-#, fuzzy
 msgid "Output inactivity timeout"
-msgstr "空闲超时"
+msgstr "输出空闲超时"
 
 #: src/contents/ui/PreferencesSheet.qml:424
-#, fuzzy
 msgid "Enable the input inactivity timeout"
-msgstr "启用空闲超时"
+msgstr "启用输入空闲超时"
 
 #: src/contents/ui/PreferencesSheet.qml:425
-#, fuzzy
 msgid ""
 "When all input streams are inactive, the Easy Effects input pipeline remains "
 "loaded for an extra amount of time."
-msgstr "当没有活跃音频流时，Easy Effects 管线仍将额外加载一段时间。"
+msgstr "当没有活跃音频流时，Easy Effects 输入管线仍将保持一段时间。"
 
 #: src/contents/ui/PreferencesSheet.qml:437
-#, fuzzy
 msgid "Input inactivity timeout"
-msgstr "空闲超时"
+msgstr "输入空闲超时"
 
 #: src/contents/ui/PreferencesSheet.qml:452
 msgid "Level meters frame rate cap"
@@ -2594,7 +2588,7 @@ msgstr "电平表帧率上限"
 
 #: src/contents/ui/PreferencesSheet.qml:453
 msgid "Maximum level meter update rate."
-msgstr "电平表动画的最高刷新率。"
+msgstr "电平表最大刷新率。"
 
 #: src/contents/ui/PreferencesSheet.qml:467
 msgid "Level meters label"
@@ -2604,7 +2598,7 @@ msgstr "电平表标签"
 msgid ""
 "The time it takes for the level meter labels to be updated when the current "
 "level is below the last highest one."
-msgstr "当前电平低于此前最高值时，电平表更新耗时。"
+msgstr "当前音量低于历史峰值时，电平表标签更新耗时。"
 
 #: src/contents/ui/PreferencesSheet.qml:485
 msgid "Enable level meters animation"
