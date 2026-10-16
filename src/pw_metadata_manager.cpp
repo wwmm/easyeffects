@@ -86,13 +86,19 @@ auto MetadataManager::on_metadata_property(void* data,
 
   util::debug(std::format("New metadata property: {}, {}, {}, {}", id, str_key, str_type, str_value));
 
-  if (str_key == "default.audio.sink" && str_value.empty()) {
+  // Default devices are global metadata. Per-node properties must not change
+  // the state used to select our output/input device.
+  if (id != PW_ID_CORE) {
+    return 0;
+  }
+
+  if ((key == nullptr || str_key == "default.audio.sink") && str_value.empty()) {
     if (mm->default_sink_is_easyeffects_sink_value.exchange(false, std::memory_order_relaxed)) {
       Q_EMIT mm->eeSinkIsDefaultChanged(false);
     }
   }
 
-  if (str_key == "default.audio.source" && str_value.empty()) {
+  if ((key == nullptr || str_key == "default.audio.source") && str_value.empty()) {
     if (mm->default_source_is_easyeffects_source_value.exchange(false, std::memory_order_relaxed)) {
       Q_EMIT mm->eeSourceIsDefaultChanged(false);
     }

@@ -36,7 +36,6 @@
 #include <qmap.h>
 #include <qobjectdefs.h>
 #include <qqml.h>
-#include <qtimer.h>
 #include <qtmetamacros.h>
 #include <qvariant.h>
 #include <spa/monitor/device.h>
@@ -263,17 +262,23 @@ Manager::Manager(QObject* parent)
     }
   };
 
-  connect(&node_manager, &NodeManager::sinkAdded, this, [this, refresh_if_ee_default](NodeInfo node) {
-    Q_EMIT sinkAdded(node);
+  connect(
+      &node_manager, &NodeManager::sinkAdded, this,
+      [this, refresh_if_ee_default](NodeInfo node) {
+        Q_EMIT sinkAdded(node);
 
-    refresh_if_ee_default();
-  });
+        refresh_if_ee_default();
+      },
+      Qt::QueuedConnection);
 
-  connect(&node_manager, &NodeManager::sourceAdded, this, [this, refresh_if_ee_default](NodeInfo node) {
-    Q_EMIT sourceAdded(node);
+  connect(
+      &node_manager, &NodeManager::sourceAdded, this,
+      [this, refresh_if_ee_default](NodeInfo node) {
+        Q_EMIT sourceAdded(node);
 
-    refresh_if_ee_default();
-  });
+        refresh_if_ee_default();
+      },
+      Qt::QueuedConnection);
 
   connect(
       &model_nodes, &QAbstractItemModel::rowsRemoved, this, [refresh_if_ee_default]() { refresh_if_ee_default(); },
@@ -281,6 +286,18 @@ Manager::Manager(QObject* parent)
 
   connect(
       &model_nodes, &QAbstractItemModel::modelReset, this, [refresh_if_ee_default]() { refresh_if_ee_default(); },
+      Qt::QueuedConnection);
+
+  // Existing devices may change priority without being removed and added again.
+  connect(
+      &model_nodes, &QAbstractItemModel::dataChanged, this,
+      [refresh_if_ee_default](const QModelIndex&, const QModelIndex&, const QList<int>& roles) {
+        if (roles.isEmpty() || roles.contains(static_cast<int>(models::Nodes::Roles::Priority)) ||
+            roles.contains(static_cast<int>(models::Nodes::Roles::Name)) ||
+            roles.contains(static_cast<int>(models::Nodes::Roles::MediaClass))) {
+          refresh_if_ee_default();
+        }
+      },
       Qt::QueuedConnection);
 
   connect(&link_manager, &LinkManager::linkChanged, [&](LinkInfo link) { Q_EMIT linkChanged(link); });
