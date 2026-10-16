@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-14 22:30+0000\n"
-"PO-Revision-Date: 2026-10-15 15:12+0000\n"
+"PO-Revision-Date: 2026-10-16 19:51+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -3907,42 +3907,36 @@ msgid "Simple audio effects"
 msgstr "Effets audio simples"
 
 #: src/contents/ui/PreferencesSheet.qml:394
-#, fuzzy
 msgid "Enable the output inactivity timeout"
-msgstr "Activer le délai d’inactivité"
+msgstr "Activer le délai d’inactivité de sortie"
 
 #: src/contents/ui/PreferencesSheet.qml:395
-#, fuzzy
 msgid ""
 "When all output streams are inactive, the Easy Effects output pipeline "
 "remains loaded for an extra amount of time."
 msgstr ""
-"Lorsque tous les flux sont inactifs, le pipeline d'Easy Effects reste chargé "
-"pendant une durée supplémentaire."
+"Lorsque tous les flux de sortie sont inactifs, le pipeline de sortie d'Easy "
+"Effects reste chargé pendant une durée supplémentaire."
 
 #: src/contents/ui/PreferencesSheet.qml:407
-#, fuzzy
 msgid "Output inactivity timeout"
-msgstr "Délai d’inactivité"
+msgstr "Délai d’inactivité de sortie"
 
 #: src/contents/ui/PreferencesSheet.qml:424
-#, fuzzy
 msgid "Enable the input inactivity timeout"
-msgstr "Activer le délai d’inactivité"
+msgstr "Activer le délai d’inactivité d'entrée"
 
 #: src/contents/ui/PreferencesSheet.qml:425
-#, fuzzy
 msgid ""
 "When all input streams are inactive, the Easy Effects input pipeline remains "
 "loaded for an extra amount of time."
 msgstr ""
-"Lorsque tous les flux sont inactifs, le pipeline d'Easy Effects reste chargé "
-"pendant une durée supplémentaire."
+"Lorsque tous les flux d'entrée sont inactifs, le pipeline d'entrée d'Easy "
+"Effects reste chargé pendant une durée supplémentaire."
 
 #: src/contents/ui/PreferencesSheet.qml:437
-#, fuzzy
 msgid "Input inactivity timeout"
-msgstr "Délai d’inactivité"
+msgstr "Délai d’inactivité d'entrée"
 
 #~ msgid ""
 #~ "The selected model is not installed. Audio passes through unprocessed."

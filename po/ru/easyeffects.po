@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-15 15:16+0000\n"
-"PO-Revision-Date: 2026-10-14 05:51+0000\n"
+"PO-Revision-Date: 2026-10-16 05:51+0000\n"
 "Last-Translator: Andrei Stepanov <adem@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -1163,7 +1163,7 @@ msgstr "Модель"
 
 #: src/contents/ui/DeepFilterNet.qml:104
 msgid "Process as Mono"
-msgstr ""
+msgstr "Обрабатывать как моно"
 
 #: src/contents/ui/DeepFilterNet.qml:108
 msgid ""
@@ -1172,6 +1172,10 @@ msgid ""
 "microphones. Both output channels receive the same audio; stereo separation "
 "is lost."
 msgstr ""
+"Усреднять левый и правый входные сигналы и обрабатывать их одним экземпляром "
+"DPDFNet вместо двух. Это может значительно снизить нагрузку на ЦП при "
+"использовании монофонических микрофонов. Оба выходных канала получают один и "
+"тот же звук; стереоразделение теряется."
 
 #: src/contents/ui/DeepFilterNet.qml:121
 msgid "Attenuation limit"
@@ -1559,7 +1563,7 @@ msgstr "Разделить каналы"
 
 #: src/contents/ui/Equalizer.qml:362 src/contents/ui/HearingTestDialog.qml:23
 msgid "Hearing Test"
-msgstr ""
+msgstr "Проверка слуха"
 
 #: src/contents/ui/Equalizer.qml:368 src/contents/ui/MidSideEqualizer.qml:356
 msgid "Flat response"
@@ -1737,6 +1741,8 @@ msgid ""
 "The output device changed. Restart the test with the same headphones and "
 "volume."
 msgstr ""
+"Устройство вывода изменилось. Перезапустите проверку с теми же наушниками и "
+"тем же уровнем громкости."
 
 #: src/contents/ui/HearingTestDialog.qml:64
 msgid ""
@@ -1745,42 +1751,43 @@ msgid ""
 "then record the threshold. This uncalibrated listening test is not a medical "
 "hearing assessment."
 msgstr ""
+"Используйте наушники в тихой комнате. Приостановите воспроизведение других "
+"звуков и поддерживайте системную громкость на комфортном уровне. Регулируйте "
+"каждый тон, пока он не станет едва слышимым, затем зафиксируйте порог. Этот "
+"некалиброванный тест на слух не является медицинским обследованием слуха."
 
 #: src/contents/ui/HearingTestDialog.qml:70
-#, fuzzy
 msgid "I am using headphones"
-msgstr "Находящиеся далеко наушники"
+msgstr "Я использую наушники"
 
 #: src/contents/ui/HearingTestDialog.qml:84
-#, fuzzy
 msgid "Start Test"
-msgstr "Начало"
+msgstr "Начать проверку"
 
 #: src/contents/ui/HearingTestDialog.qml:95
 msgid ""
 "Select an available stereo output device and disable the regular test "
 "signals before starting."
 msgstr ""
+"Перед началом выберите доступное стереофоническое устройство вывода и "
+"отключите обычные тестовые сигналы."
 
 #: src/contents/ui/HearingTestDialog.qml:102
 msgid "%1 ear: %2 Hz (%3 of %4)"
-msgstr ""
+msgstr "%1 ухо: %2 Гц (%3 из %4)"
 
 # #, fuzzy
 #: src/contents/ui/HearingTestDialog.qml:108
-#, fuzzy
 msgid "Tone Level"
-msgstr "Уровень входа"
+msgstr "Уровень тона"
 
 #: src/contents/ui/HearingTestDialog.qml:126
-#, fuzzy
 msgid "Play Tone"
-msgstr "Проигрыватели"
+msgstr "Воспроизвести тон"
 
 #: src/contents/ui/HearingTestDialog.qml:133
-#, fuzzy
 msgid "Record Threshold"
-msgstr "Порог восстановления"
+msgstr "Зафиксировать порог"
 
 #: src/contents/ui/HearingTestDialog.qml:154
 msgid ""
@@ -1789,18 +1796,22 @@ msgid ""
 "and lowers input gain to preserve headroom. Save a preset to keep the result "
 "for these headphones."
 msgstr ""
+"Проверка завершена. Применение профиля заменит настройки этого эквалайзера "
+"отдельными коррекциями для каждого уха, ограниченными 6 дБ на полосу, и "
+"снизит входное усиление для сохранения запаса по уровню. Сохраните пресет, "
+"чтобы сохранить результат для этих наушников."
 
 #: src/contents/ui/HearingTestDialog.qml:161
 msgid "%1 Hz: left %2 dB, right %3 dB"
-msgstr ""
+msgstr "%1 Гц: левое %2 дБ, правое %3 дБ"
 
 #: src/contents/ui/HearingTestDialog.qml:168
 msgid "Apply Personalized EQ"
-msgstr ""
+msgstr "Применить персональный эквалайзер"
 
 #: src/contents/ui/HearingTestDialog.qml:173
 msgid "Could not apply the hearing profile."
-msgstr ""
+msgstr "Не удалось применить профиль слуха."
 
 # #, fuzzy
 #: src/contents/ui/LevelMeter.qml:67
@@ -2633,42 +2644,36 @@ msgid "Link delay"
 msgstr "Задержка связи"
 
 #: src/contents/ui/PreferencesSheet.qml:394
-#, fuzzy
 msgid "Enable the output inactivity timeout"
-msgstr "Включить тайм-аут бездействия"
+msgstr "Включить тайм-аут бездействия вывода"
 
 #: src/contents/ui/PreferencesSheet.qml:395
-#, fuzzy
 msgid ""
 "When all output streams are inactive, the Easy Effects output pipeline "
 "remains loaded for an extra amount of time."
 msgstr ""
-"Если все потоки бездействуют, канал обработки Easy Effects будет активен ещё "
-"какое-то время."
+"Когда все выходные потоки бездействуют, выходной конвейер Easy Effects "
+"остаётся загруженным ещё некоторое время."
 
 #: src/contents/ui/PreferencesSheet.qml:407
-#, fuzzy
 msgid "Output inactivity timeout"
-msgstr "Тайм-аут бездействия"
+msgstr "Тайм-аут бездействия вывода"
 
 #: src/contents/ui/PreferencesSheet.qml:424
-#, fuzzy
 msgid "Enable the input inactivity timeout"
-msgstr "Включить тайм-аут бездействия"
+msgstr "Включить тайм-аут бездействия ввода"
 
 #: src/contents/ui/PreferencesSheet.qml:425
-#, fuzzy
 msgid ""
 "When all input streams are inactive, the Easy Effects input pipeline remains "
 "loaded for an extra amount of time."
 msgstr ""
-"Если все потоки бездействуют, канал обработки Easy Effects будет активен ещё "
-"какое-то время."
+"Когда все входные потоки бездействуют, входной конвейер Easy Effects "
+"остаётся загруженным ещё некоторое время."
 
 #: src/contents/ui/PreferencesSheet.qml:437
-#, fuzzy
 msgid "Input inactivity timeout"
-msgstr "Тайм-аут бездействия"
+msgstr "Тайм-аут бездействия ввода"
 
 #: src/contents/ui/PreferencesSheet.qml:452
 msgid "Level meters frame rate cap"
