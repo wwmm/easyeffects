@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-15 15:16+0000\n"
-"PO-Revision-Date: 2026-10-14 05:51+0000\n"
+"PO-Revision-Date: 2026-10-16 19:51+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remus-"
 "gabriel@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
@@ -1148,7 +1148,7 @@ msgstr "Model"
 
 #: src/contents/ui/DeepFilterNet.qml:104
 msgid "Process as Mono"
-msgstr ""
+msgstr "Procesează ca mono"
 
 #: src/contents/ui/DeepFilterNet.qml:108
 msgid ""
@@ -1157,6 +1157,11 @@ msgid ""
 "microphones. Both output channels receive the same audio; stereo separation "
 "is lost."
 msgstr ""
+"Se calculează media semnalelor de intrare din stânga și din dreapta și se "
+"procesează acestea cu o singură instanță DPDFNet, în loc de două. Acest "
+"lucru poate reduce semnificativ consumul de resurse CPU în cazul "
+"microfoanelor mono. Ambele canale de ieșire primesc același semnal audio; "
+"separarea stereo se pierde."
 
 #: src/contents/ui/DeepFilterNet.qml:121
 msgid "Attenuation limit"
@@ -1417,15 +1422,16 @@ msgstr ""
 
 #: src/contents/ui/Equalizer.qml:97 src/contents/ui/MidSideEqualizer.qml:91
 msgid "GraphicEQ preset"
-msgstr "Preconfigurări GraphicEQ"
+msgstr "Preconfigurare egalizator grafic"
 
 #: src/contents/ui/Equalizer.qml:100 src/contents/ui/MidSideEqualizer.qml:94
 msgid "Imported the GraphicEQ preset file."
-msgstr "A fost importat fișierul de preconfigurare al GraphicEQ."
+msgstr "A fost importat fișierul de preconfigurare al egalizatorului grafic."
 
 #: src/contents/ui/Equalizer.qml:102 src/contents/ui/MidSideEqualizer.qml:96
 msgid "Failed to import the GraphicEQ preset file."
-msgstr "Importarea fișierului de preconfigurare al GraphicEQ a eșuat."
+msgstr ""
+"Importarea fișierului de preconfigurare al egalizatorului grafic a eșuat."
 
 #: src/contents/ui/Equalizer.qml:115
 msgid ""
@@ -1537,7 +1543,7 @@ msgstr "Separă canalele"
 
 #: src/contents/ui/Equalizer.qml:362 src/contents/ui/HearingTestDialog.qml:23
 msgid "Hearing Test"
-msgstr ""
+msgstr "Test auditiv"
 
 #: src/contents/ui/Equalizer.qml:368 src/contents/ui/MidSideEqualizer.qml:356
 msgid "Flat response"
@@ -1557,7 +1563,7 @@ msgstr "Importare APO"
 
 #: src/contents/ui/Equalizer.qml:396 src/contents/ui/MidSideEqualizer.qml:384
 msgid "Import APO (GraphicEQ)"
-msgstr "Importare APO (GraphicEQ)"
+msgstr "Importare APO (egalizator grafic)"
 
 #: src/contents/ui/Equalizer.qml:403 src/contents/ui/MidSideEqualizer.qml:391
 msgid "Export APO"
@@ -1714,6 +1720,8 @@ msgid ""
 "The output device changed. Restart the test with the same headphones and "
 "volume."
 msgstr ""
+"Dispozitivul de ieșire s-a schimbat. Reporniți testul folosind aceleași "
+"căști și același nivel de volum."
 
 #: src/contents/ui/HearingTestDialog.qml:64
 msgid ""
@@ -1722,41 +1730,42 @@ msgid ""
 "then record the threshold. This uncalibrated listening test is not a medical "
 "hearing assessment."
 msgstr ""
+"Folosiți căștile într-o cameră liniștită. Opriți orice altă sursă audio și "
+"mențineți volumul sistemului la un nivel confortabil. Reglați fiecare ton "
+"până când devine abia audibil, apoi înregistrați pragul. Acest test de "
+"ascultare necalibrat nu constituie o evaluare medicală a auzului."
 
 #: src/contents/ui/HearingTestDialog.qml:70
-#, fuzzy
 msgid "I am using headphones"
-msgstr "Căști Departe"
+msgstr "Folosesc căști"
 
 #: src/contents/ui/HearingTestDialog.qml:84
-#, fuzzy
 msgid "Start Test"
-msgstr "Începe"
+msgstr "Inițiază testul"
 
 #: src/contents/ui/HearingTestDialog.qml:95
 msgid ""
 "Select an available stereo output device and disable the regular test "
 "signals before starting."
 msgstr ""
+"Selectați un dispozitiv de ieșire stereo disponibil și dezactivați semnalele "
+"de testare obișnuite înainte de a începe."
 
 #: src/contents/ui/HearingTestDialog.qml:102
 msgid "%1 ear: %2 Hz (%3 of %4)"
-msgstr ""
+msgstr "Urechea %1: %2 Hz (%3 din %4)"
 
 #: src/contents/ui/HearingTestDialog.qml:108
-#, fuzzy
 msgid "Tone Level"
-msgstr "Nivel de intrare"
+msgstr "Nivel notă"
 
 #: src/contents/ui/HearingTestDialog.qml:126
-#, fuzzy
 msgid "Play Tone"
-msgstr "Reproducătoare"
+msgstr "Redare notă"
 
 #: src/contents/ui/HearingTestDialog.qml:133
-#, fuzzy
 msgid "Record Threshold"
-msgstr "Pragul de eliberare"
+msgstr "Înregistrare prag"
 
 #: src/contents/ui/HearingTestDialog.qml:154
 msgid ""
@@ -1765,18 +1774,22 @@ msgid ""
 "and lowers input gain to preserve headroom. Save a preset to keep the result "
 "for these headphones."
 msgstr ""
+"Testul s-a încheiat. Aplicarea profilului înlocuiește ajustările acestui "
+"egalizator cu corecții separate pentru fiecare ureche, limitate la 6 dB pe "
+"bandă, și reduce câștigul de intrare pentru a păstra rezerva dinamică. "
+"Salvați o preconfigurare pentru a păstra rezultatul pentru aceste căști."
 
 #: src/contents/ui/HearingTestDialog.qml:161
 msgid "%1 Hz: left %2 dB, right %3 dB"
-msgstr ""
+msgstr "%1 Hz: stânga %2 dB, dreapta %3 dB"
 
 #: src/contents/ui/HearingTestDialog.qml:168
 msgid "Apply Personalized EQ"
-msgstr ""
+msgstr "Aplică egalizatorul personalizat"
 
 #: src/contents/ui/HearingTestDialog.qml:173
 msgid "Could not apply the hearing profile."
-msgstr ""
+msgstr "Nu s-a putut aplica profilul auditiv."
 
 #: src/contents/ui/LevelMeter.qml:67
 msgid "Input Level"
@@ -2615,42 +2628,36 @@ msgid "Link delay"
 msgstr "Întârziere conectare"
 
 #: src/contents/ui/PreferencesSheet.qml:394
-#, fuzzy
 msgid "Enable the output inactivity timeout"
-msgstr "Activează timpul de expirare al inactivității"
+msgstr "Activează timpul de expirare a inactivității ieșirii"
 
 #: src/contents/ui/PreferencesSheet.qml:395
-#, fuzzy
 msgid ""
 "When all output streams are inactive, the Easy Effects output pipeline "
 "remains loaded for an extra amount of time."
 msgstr ""
-"Când toate fluxurile sunt inactive, canalul(pipeline) Easy Effectse rămâne "
-"încărcat pentru o perioadă suplimentară de timp."
+"Când toate fluxurile sunt inactive, linia de procesare a ieșirii Easy "
+"Effects rămâne încărcată pentru o perioadă suplimentară de timp."
 
 #: src/contents/ui/PreferencesSheet.qml:407
-#, fuzzy
 msgid "Output inactivity timeout"
-msgstr "Timpul de expirare al inactivității"
+msgstr "Timpul de expirare a inactivității ieșirii"
 
 #: src/contents/ui/PreferencesSheet.qml:424
-#, fuzzy
 msgid "Enable the input inactivity timeout"
-msgstr "Activează timpul de expirare al inactivității"
+msgstr "Activează timpul de expirare a inactivității intrării"
 
 #: src/contents/ui/PreferencesSheet.qml:425
-#, fuzzy
 msgid ""
 "When all input streams are inactive, the Easy Effects input pipeline remains "
 "loaded for an extra amount of time."
 msgstr ""
-"Când toate fluxurile sunt inactive, canalul(pipeline) Easy Effectse rămâne "
-"încărcat pentru o perioadă suplimentară de timp."
+"Când toate fluxurile sunt inactive, linia de procesare a intrării Easy "
+"Effects rămâne încărcată pentru o perioadă suplimentară de timp."
 
 #: src/contents/ui/PreferencesSheet.qml:437
-#, fuzzy
 msgid "Input inactivity timeout"
-msgstr "Timpul de expirare al inactivității"
+msgstr "Timpul de expirare a inactivității intrării"
 
 #: src/contents/ui/PreferencesSheet.qml:452
 msgid "Level meters frame rate cap"
