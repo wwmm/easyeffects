@@ -151,6 +151,11 @@ class Manager : public QObject {
 
   [[nodiscard]] auto get_links() const -> const std::vector<LinkInfo>&;
 
+  [[nodiscard]] auto bestHardwareOutputDeviceName() -> QString;
+  [[nodiscard]] auto bestHardwareInputDeviceName() -> QString;
+
+  void refreshDefaultDevicesForEeDefault();
+
   Q_INVOKABLE void setNodeMute(const uint& serial, const bool& state);
   Q_INVOKABLE void setNodeVolume(const uint& serial, const uint& n_vol_ch, const float& value);
   Q_INVOKABLE void setNodeMonitorVolume(const uint& serial, const uint& n_vol_ch, const float& value);
