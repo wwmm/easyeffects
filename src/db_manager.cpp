@@ -32,6 +32,7 @@
 #include "easyeffects_db.h"
 #include "easyeffects_db_autogain.h"
 #include "easyeffects_db_autotune.h"
+#include "easyeffects_db_harmonizer.h"
 #include "easyeffects_db_bass_enhancer.h"
 #include "easyeffects_db_bass_loudness.h"
 #include "easyeffects_db_compressor.h"
@@ -228,6 +229,8 @@ void Manager::create_plugin_db(const QString& parentGroup,
 
     } else if (name.startsWith(tags::plugin_name::BaseName::autotune)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::autotune, id), [&] { return new DbAutotune(parentGroup, id); });
+    } else if (name.startsWith(tags::plugin_name::BaseName::harmonizer)) {
+      ensureExists(makeKey(tags::plugin_name::BaseName::harmonizer, id), [&] { return new DbHarmonizer(parentGroup, id); });
 
     } else if (name.startsWith(tags::plugin_name::BaseName::bassEnhancer)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::bassEnhancer, id),

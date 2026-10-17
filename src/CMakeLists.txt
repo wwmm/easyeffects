@@ -28,6 +28,7 @@ qt_add_qml_module(easyeffects
         autogain.hpp
         autostart.hpp
         autotune.hpp
+        harmonizer.hpp
         bass_enhancer.hpp
         bass_loudness.hpp
         compressor.hpp
@@ -71,6 +72,7 @@ qt_add_qml_module(easyeffects
         contents/ui/AboutPage.qml
         contents/ui/Autogain.qml
         contents/ui/Autotune.qml
+        contents/ui/Harmonizer.qml
         contents/ui/BassEnhancer.qml
         contents/ui/BassLoudness.qml
         contents/ui/BlocklistDialog.qml
@@ -144,6 +146,8 @@ target_sources(easyeffects PRIVATE
     autostart.cpp
     autotune.cpp
     autotune_preset.cpp
+    harmonizer.cpp
+    harmonizer_preset.cpp
     bass_enhancer.cpp
     bass_enhancer_preset.cpp
     bass_loudness.cpp

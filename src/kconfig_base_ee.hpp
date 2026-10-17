@@ -31,8 +31,8 @@ class KConfigBaseEE : public KConfigSkeleton {
   Q_OBJECT
  public:
   KConfigBaseEE() = default;
-  KConfigBaseEE(const QString& configname = QString(), QObject* parent = nullptr);
-  KConfigBaseEE(KSharedConfig::Ptr config, QObject* parent = nullptr);
+  explicit KConfigBaseEE(const QString& configname = QString(), QObject* parent = nullptr);
+  explicit KConfigBaseEE(KSharedConfig::Ptr config, QObject* parent = nullptr);
 
   Q_INVOKABLE double getMinValue(const QString& itemName);
   Q_INVOKABLE double getMaxValue(const QString& itemName);
