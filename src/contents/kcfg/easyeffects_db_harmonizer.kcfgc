@@ -1,0 +1,12 @@
+File=easyeffects_db_harmonizer.kcfg
+ClassName=DbHarmonizer
+Singleton=false
+Inherits=KConfigBaseEE
+IncludeFiles="kconfig_base_ee.hpp"
+Mutators=true
+Notifiers=true
+DefaultValueGetters=true
+DefaultGroup=easyeffects
+GenerateProperties=true
+QmlUncreatable=true
+QmlRegistration=true
