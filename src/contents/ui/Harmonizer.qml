@@ -13,6 +13,16 @@ Kirigami.ScrollablePage {
     required property EffectsBase pipelineInstance
     property BackendHarmonizer pluginBackend
 
+    function updateMeters() {
+        if (!pluginBackend)
+            return;
+
+        inputOutputLevels.setInputLevelLeft(pluginBackend.getInputLevelLeft());
+        inputOutputLevels.setInputLevelRight(pluginBackend.getInputLevelRight());
+        inputOutputLevels.setOutputLevelLeft(pluginBackend.getOutputLevelLeft());
+        inputOutputLevels.setOutputLevelRight(pluginBackend.getOutputLevelRight());
+    }
+
     Component.onCompleted: {
         pluginBackend = pipelineInstance.getPluginInstance(name);
     }
@@ -184,7 +194,7 @@ Kirigami.ScrollablePage {
                 }
 
                 EeSwitch {
-                    text: i18n("Follow chord")
+                    label: i18n("Follow chord")
                     checked: harmonizerPage.pluginDB.chordMode
                     onCheckedChanged: harmonizerPage.pluginDB.chordMode = checked
                 }
@@ -241,6 +251,44 @@ Kirigami.ScrollablePage {
                     onValueModified: value => harmonizerPage.pluginDB.dryWet = value
                 }
             }
+        }
+    }
+
+    EeInputOutputGain {
+        id: inputOutputLevels
+
+        pluginDB: harmonizerPage.pluginDB
+    }
+
+    header: inputOutputLevels
+
+    footer: RowLayout {
+        Controls.Label {
+            text: i18n("Using %1", `<strong>${PluginsPackage.rakarrack}</strong>`) // qmllint disable
+            textFormat: Text.RichText
+            horizontalAlignment: Qt.AlignLeft
+            verticalAlignment: Qt.AlignVCenter
+            Layout.fillWidth: false
+            Layout.leftMargin: Kirigami.Units.mediumSpacing * 2
+            Layout.rightMargin: Kirigami.Units.largeSpacing * 8
+            color: Kirigami.Theme.disabledTextColor
+        }
+
+        Kirigami.ActionToolBar {
+            Layout.margins: Kirigami.Units.smallSpacing
+            alignment: Qt.AlignRight
+            position: Controls.ToolBar.Footer
+            flat: true
+            actions: [
+                Kirigami.Action {
+                    displayHint: Kirigami.DisplayHint.KeepVisible
+                    text: i18n("Reset") // qmllint disable
+                    icon.name: "edit-reset-symbolic"
+                    onTriggered: {
+                        harmonizerPage.pluginBackend.reset();
+                    }
+                }
+            ]
         }
     }
 }

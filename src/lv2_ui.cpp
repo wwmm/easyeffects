@@ -44,22 +44,32 @@
 namespace lv2 {
 
 NativeUi::NativeUi(Lv2Wrapper* wrapper) : wrapper(wrapper) {
-  lv2_log = {.handle = wrapper,
-             .printf = &Lv2Wrapper::lv2_printf,
-             .vprintf = []([[maybe_unused]] LV2_Log_Handle handle, [[maybe_unused]] LV2_URID type, const char* fmt,
-                           va_list ap) { return std::vprintf(fmt, ap); }};
+  lv2_log = {
+      .handle = wrapper,
+      .printf = &Lv2Wrapper::lv2_printf,
+      .vprintf = []([[maybe_unused]] LV2_Log_Handle handle, [[maybe_unused]] LV2_URID type, const char* fmt,
+                    va_list ap) { return std::vprintf(fmt, ap); },
+  };
 
-  lv2_map = {.handle = wrapper, .map = [](LV2_URID_Map_Handle handle, const char* uri) {
-               auto* lw = static_cast<Lv2Wrapper*>(handle);
+  lv2_map = {
+      .handle = wrapper,
+      .map =
+          [](LV2_URID_Map_Handle handle, const char* uri) {
+            auto* lw = static_cast<Lv2Wrapper*>(handle);
 
-               return lw->map_urid(uri);
-             }};
+            return lw->map_urid(uri);
+          },
+  };
 
-  lv2_unmap = {.handle = wrapper, .unmap = [](LV2_URID_Unmap_Handle handle, LV2_URID urid) {
-                 auto* lw = static_cast<Lv2Wrapper*>(handle);
+  lv2_unmap = {
+      .handle = wrapper,
+      .unmap =
+          [](LV2_URID_Unmap_Handle handle, LV2_URID urid) {
+            auto* lw = static_cast<Lv2Wrapper*>(handle);
 
-                 return lw->map_urid_to_uri[urid].c_str();
-               }};
+            return lw->map_urid_to_uri[urid].c_str();
+          },
+  };
 }
 
 NativeUi::~NativeUi() {
