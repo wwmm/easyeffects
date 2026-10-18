@@ -2,11 +2,9 @@
 
 #include <qqmlintegration.h>
 #include <QString>
-#include <memory>
 #include <span>
 #include <string>
 #include "easyeffects_db_harmonizer.h"
-#include "lv2_wrapper.hpp"
 #include "pipeline_type.hpp"
 #include "plugin_base.hpp"
 #include "pw_manager.hpp"
@@ -37,6 +35,6 @@ class Harmonizer : public PluginBase {
 
  private:
   bool ready = false;
-  // std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
+
   DbHarmonizer* settings = nullptr;
 };
