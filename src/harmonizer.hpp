@@ -37,6 +37,6 @@ class Harmonizer : public PluginBase {
 
  private:
   bool ready = false;
-  std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
+  // std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
   DbHarmonizer* settings = nullptr;
 };
