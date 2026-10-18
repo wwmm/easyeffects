@@ -22,7 +22,40 @@ Kirigami.Dialog {
 
     title: i18n("Hearing Test")
     standardButtons: Kirigami.Dialog.NoButton
-    preferredWidth: Kirigami.Units.gridUnit * 30
+    parent: applicationWindow().overlay // qmllint disable
+    implicitWidth: Math.min(Kirigami.Units.gridUnit * 30, appWindow.width * 0.8) // qmllint disable
+    implicitHeight: Math.min(Kirigami.Units.gridUnit * 40, Math.round(Controls.ApplicationWindow.window.height * 0.8))
+    leftPadding: Kirigami.Units.largeSpacing
+    rightPadding: Kirigami.Units.largeSpacing
+    topPadding: Kirigami.Units.largeSpacing
+    bottomPadding: Kirigami.Units.largeSpacing
+    anchors.centerIn: parent
+
+    header: Item {
+        width: parent.width
+        implicitHeight: titleLabel.implicitHeight + Kirigami.Units.largeSpacing * 2
+
+        Kirigami.Heading {
+            id: titleLabel
+
+            anchors.centerIn: parent
+            text: dialog.title
+            horizontalAlignment: Text.AlignHCenter
+        }
+
+        Controls.ToolButton {
+            text: i18nc("@action:button", "Close")
+            icon.name: "dialog-close-symbolic"
+            display: Controls.ToolButton.IconOnly
+            onClicked: dialog.close()
+            anchors {
+                margins: Kirigami.Units.smallSpacing
+                right: parent.right
+                top: parent.top
+                bottom: parent.bottom
+            }
+        }
+    }
 
     function finish() {
         if (started) {
@@ -60,18 +93,21 @@ Kirigami.Dialog {
 
         Controls.Label {
             Layout.fillWidth: true
+            Layout.margins: Kirigami.Units.largeSpacing
             wrapMode: Text.WordWrap
             text: i18n("Use headphones in a quiet room. Pause other audio and keep the system volume fixed at a comfortable level. Adjust each tone until it is barely audible, then record the threshold. This uncalibrated listening test is not a medical hearing assessment.")
         }
 
         Controls.CheckBox {
             id: headphones
+            Layout.alignment: Qt.AlignHCenter
             visible: !dialog.started && !dialog.complete
             text: i18n("I am using headphones")
         }
 
         Controls.Label {
             Layout.fillWidth: true
+            Layout.margins: Kirigami.Units.largeSpacing
             visible: dialog.errorText.length > 0
             wrapMode: Text.WordWrap
             text: dialog.errorText
@@ -79,6 +115,7 @@ Kirigami.Dialog {
         }
 
         Controls.Button {
+            Layout.alignment: Qt.AlignHCenter
             visible: !dialog.started && !dialog.complete
             enabled: headphones.checked
             text: i18n("Start Test")
@@ -121,6 +158,7 @@ Kirigami.Dialog {
 
         RowLayout {
             visible: dialog.started && !dialog.complete
+            Layout.alignment: Qt.AlignHCenter
 
             Controls.Button {
                 text: i18n("Play Tone")
@@ -150,6 +188,7 @@ Kirigami.Dialog {
         Controls.Label {
             visible: dialog.complete
             Layout.fillWidth: true
+            Layout.margins: Kirigami.Units.largeSpacing
             wrapMode: Text.WordWrap
             text: i18n("The test is complete. Applying the profile replaces this equalizer's settings with separate corrections for each ear, limited to 6 dB per band, and lowers input gain to preserve headroom. Save a preset to keep the result for these headphones.")
         }
@@ -163,6 +202,8 @@ Kirigami.Dialog {
         }
 
         RowLayout {
+            Layout.alignment: Qt.AlignHCenter
+
             Controls.Button {
                 visible: dialog.complete
                 text: i18n("Apply Personalized EQ")

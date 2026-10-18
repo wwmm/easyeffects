@@ -70,7 +70,7 @@ struct Port {
 
 class Lv2Wrapper {
  public:
-  Lv2Wrapper(const std::string& plugin_uri);
+  explicit Lv2Wrapper(const std::string& plugin_uri);
   Lv2Wrapper(const Lv2Wrapper&) = delete;
   auto operator=(const Lv2Wrapper&) -> Lv2Wrapper& = delete;
   Lv2Wrapper(const Lv2Wrapper&&) = delete;
