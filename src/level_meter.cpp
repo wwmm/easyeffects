@@ -88,7 +88,7 @@ auto LevelMeter::init_ebur128() -> bool {
   }
 
   ebur_state = ebur128_init(
-      2U, rate, EBUR128_MODE_S | EBUR128_MODE_I | EBUR128_MODE_LRA | EBUR128_MODE_TRUE_PEAK | EBUR128_MODE_HISTOGRAM);
+      2U, rate, EBUR128_MODE_S | EBUR128_MODE_I | EBUR128_MODE_LRA | EBUR128_MODE_SAMPLE_PEAK | EBUR128_MODE_HISTOGRAM);
 
   ebur128_set_channel(ebur_state, 0U, EBUR128_LEFT);
   ebur128_set_channel(ebur_state, 1U, EBUR128_RIGHT);
@@ -176,16 +176,16 @@ void LevelMeter::process(std::span<float>& left_in,
     range = 0.0;
   }
 
-  if (EBUR128_SUCCESS != ebur128_true_peak(ebur_state, 0U, &true_peak_L)) {
-    true_peak_L = 0.0;
+  if (EBUR128_SUCCESS != ebur128_sample_peak(ebur_state, 0U, &sample_peak_L)) {
+    sample_peak_L = 0.0;
   }
 
-  if (EBUR128_SUCCESS != ebur128_true_peak(ebur_state, 1U, &true_peak_R)) {
-    true_peak_R = 0.0;
+  if (EBUR128_SUCCESS != ebur128_sample_peak(ebur_state, 1U, &sample_peak_R)) {
+    sample_peak_R = 0.0;
   }
 
-  true_peak_L = util::linear_to_db(true_peak_L);
-  true_peak_R = util::linear_to_db(true_peak_R);
+  sample_peak_L = util::linear_to_db(sample_peak_L);
+  sample_peak_R = util::linear_to_db(sample_peak_R);
 
   if (updateLevelMeters) {
     get_peaks(left_in, right_in, left_out, right_out);
@@ -227,10 +227,10 @@ float LevelMeter::getRangeLevel() const {
   return range;
 }
 
-float LevelMeter::getTruePeakL() const {
-  return true_peak_L;
+float LevelMeter::getSamplePeakL() const {
+  return sample_peak_L;
 }
 
-float LevelMeter::getTruePeakR() const {
-  return true_peak_R;
+float LevelMeter::getSamplePeakR() const {
+  return sample_peak_R;
 }

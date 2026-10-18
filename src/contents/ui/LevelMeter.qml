@@ -41,8 +41,8 @@ Kirigami.ScrollablePage {
         integrated.setValue(pluginBackend.getIntegratedLevel());
         relative.setValue(pluginBackend.getRelativeLevel());
         range.setValue(pluginBackend.getRangeLevel());
-        truePeakL.setValue(pluginBackend.getTruePeakL());
-        truePeakR.setValue(pluginBackend.getTruePeakR());
+        samplePeakL.setValue(pluginBackend.getSamplePeakL());
+        samplePeakR.setValue(pluginBackend.getSamplePeakR());
         inputL.setValue(pluginBackend.getInputLevelLeft());
         inputR.setValue(pluginBackend.getInputLevelRight());
     }
@@ -103,7 +103,7 @@ Kirigami.ScrollablePage {
                     id: cardPeak
 
                     header: Kirigami.Heading {
-                        text: i18n("True Peak") // qmllint disable
+                        text: i18n("Sample Peak") // qmllint disable
                         level: 2
                         leftPadding: Kirigami.Units.largeSpacing
                         rightPadding: Kirigami.Units.largeSpacing
@@ -113,7 +113,7 @@ Kirigami.ScrollablePage {
                         spacing: 0
 
                         EeProgressBar {
-                            id: truePeakL
+                            id: samplePeakL
 
                             label: i18n("Left") // qmllint disable
                             unit: Units.dB
@@ -123,7 +123,7 @@ Kirigami.ScrollablePage {
                         }
 
                         EeProgressBar {
-                            id: truePeakR
+                            id: samplePeakR
 
                             label: i18n("Right") // qmllint disable
                             unit: Units.dB
