@@ -194,7 +194,7 @@ Kirigami.ScrollablePage {
                 }
 
                 EeSwitch {
-                    text: i18n("Follow chord")
+                    label: i18n("Follow chord")
                     checked: harmonizerPage.pluginDB.chordMode
                     onCheckedChanged: harmonizerPage.pluginDB.chordMode = checked
                 }
