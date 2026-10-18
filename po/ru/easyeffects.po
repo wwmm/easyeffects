@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-10-15 15:16+0000\n"
+"POT-Creation-Date: 2026-10-18 16:13+0000\n"
 "PO-Revision-Date: 2026-10-16 05:51+0000\n"
 "Last-Translator: Andrei Stepanov <adem@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -225,7 +225,7 @@ msgstr "Исторический максимум"
 
 #: src/contents/ui/Autogain.qml:143 src/contents/ui/Autogain.qml:198
 #: src/contents/ui/BassLoudness.qml:67 src/contents/ui/LevelMeter.qml:146
-#: src/tags_plugin_name.cpp:69
+#: src/tags_plugin_name.cpp:70
 msgid "Loudness"
 msgstr "Громкость"
 
@@ -252,9 +252,9 @@ msgstr "Усиление выхода"
 #: src/contents/ui/EchoCanceller.qml:158 src/contents/ui/Equalizer.qml:321
 #: src/contents/ui/Exciter.qml:210 src/contents/ui/Expander.qml:823
 #: src/contents/ui/Filter.qml:234 src/contents/ui/Gate.qml:952
-#: src/contents/ui/LevelMeter.qml:215 src/contents/ui/Limiter.qml:607
-#: src/contents/ui/Loudness.qml:175 src/contents/ui/Maximizer.qml:122
-#: src/contents/ui/MidSideEqualizer.qml:315
+#: src/contents/ui/Harmonizer.qml:267 src/contents/ui/LevelMeter.qml:215
+#: src/contents/ui/Limiter.qml:607 src/contents/ui/Loudness.qml:175
+#: src/contents/ui/Maximizer.qml:122 src/contents/ui/MidSideEqualizer.qml:315
 #: src/contents/ui/MultibandCompressor.qml:965
 #: src/contents/ui/MultibandGate.qml:938 src/contents/ui/Pitch.qml:268
 #: src/contents/ui/RNNoise.qml:73 src/contents/ui/RNNoise.qml:84
@@ -321,7 +321,7 @@ msgstr "Смещение"
 
 #: src/contents/ui/Autotune.qml:169 src/contents/ui/Deesser.qml:171
 #: src/contents/ui/Filter.qml:137 src/contents/ui/Reverb.qml:126
-#: src/tags_plugin_name.cpp:65
+#: src/tags_plugin_name.cpp:66
 msgid "Filter"
 msgstr "Фильтр"
 
@@ -345,7 +345,7 @@ msgstr "Знак альтерации"
 msgid "Major"
 msgstr "Мажор"
 
-#: src/contents/ui/Autotune.qml:248
+#: src/contents/ui/Autotune.qml:248 src/contents/ui/Harmonizer.qml:114
 msgid "Minor"
 msgstr "Минор"
 
@@ -422,9 +422,9 @@ msgstr "Прослушать"
 #: src/contents/ui/EchoCanceller.qml:186 src/contents/ui/Equalizer.qml:411
 #: src/contents/ui/Exciter.qml:252 src/contents/ui/Expander.qml:875
 #: src/contents/ui/Filter.qml:266 src/contents/ui/Gate.qml:1004
-#: src/contents/ui/Limiter.qml:659 src/contents/ui/Loudness.qml:217
-#: src/contents/ui/Main.qml:481 src/contents/ui/Maximizer.qml:154
-#: src/contents/ui/MidSideEqualizer.qml:399
+#: src/contents/ui/Harmonizer.qml:285 src/contents/ui/Limiter.qml:659
+#: src/contents/ui/Loudness.qml:217 src/contents/ui/Main.qml:481
+#: src/contents/ui/Maximizer.qml:154 src/contents/ui/MidSideEqualizer.qml:399
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/RNNoise.qml:345
 #: src/contents/ui/Reverb.qml:357 src/contents/ui/Speex.qml:195
@@ -504,7 +504,7 @@ msgstr "Показать исключённые приложения"
 msgid "Show excluded applications in the list of players/recorders"
 msgstr "Показать исключённые приложения в списке проигрывателей/рекордеров"
 
-#: src/contents/ui/Compressor.qml:67 src/tags_plugin_name.cpp:51
+#: src/contents/ui/Compressor.qml:67 src/tags_plugin_name.cpp:52
 msgid "Compressor"
 msgstr "Компрессор"
 
@@ -601,7 +601,7 @@ msgstr "Внешний"
 # #, fuzzy
 #: src/contents/ui/Compressor.qml:277 src/contents/ui/Expander.qml:237
 #: src/contents/ui/Gate.qml:255 src/contents/ui/Limiter.qml:227
-#: src/contents/ui/PageStreamsEffects.qml:489
+#: src/contents/ui/PageStreamsEffects.qml:491
 msgid "Input device"
 msgstr "Устройство ввода"
 
@@ -661,7 +661,7 @@ msgstr "Боковой"
 #: src/contents/ui/Compressor.qml:319 src/contents/ui/Convolver.qml:301
 #: src/contents/ui/Delay.qml:59 src/contents/ui/Equalizer.qml:250
 #: src/contents/ui/Expander.qml:279 src/contents/ui/Gate.qml:297
-#: src/contents/ui/HearingTestDialog.qml:102 src/contents/ui/LevelMeter.qml:79
+#: src/contents/ui/HearingTestDialog.qml:139 src/contents/ui/LevelMeter.qml:79
 #: src/contents/ui/LevelMeter.qml:118
 #: src/contents/ui/MultibandCompressor.qml:449
 #: src/contents/ui/MultibandGate.qml:422 src/contents/ui/PipeWirePage.qml:346
@@ -672,7 +672,7 @@ msgstr "Левый"
 #: src/contents/ui/Compressor.qml:319 src/contents/ui/Convolver.qml:319
 #: src/contents/ui/Delay.qml:212 src/contents/ui/Equalizer.qml:250
 #: src/contents/ui/Expander.qml:279 src/contents/ui/Gate.qml:297
-#: src/contents/ui/HearingTestDialog.qml:102 src/contents/ui/LevelMeter.qml:89
+#: src/contents/ui/HearingTestDialog.qml:139 src/contents/ui/LevelMeter.qml:89
 #: src/contents/ui/LevelMeter.qml:128
 #: src/contents/ui/MultibandCompressor.qml:449
 #: src/contents/ui/MultibandGate.qml:422 src/contents/ui/PipeWirePage.qml:357
@@ -978,7 +978,7 @@ msgid "Failed to rename the %1 impulse to %2"
 msgstr "Не удалось переименовать импульс %1 в %2"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:147
-#: src/contents/ui/HearingTestDialog.qml:178
+#: src/contents/ui/HearingTestDialog.qml:219
 #: src/contents/ui/PresetsLocalPage.qml:267
 msgid "Cancel"
 msgstr "Отмена"
@@ -996,6 +996,7 @@ msgid "Import impulse"
 msgstr "Импортировать импульс"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:243
+#: src/contents/ui/HearingTestDialog.qml:47
 #: src/contents/ui/MenuAddPlugins.qml:202 src/contents/ui/PresetsDialog.qml:126
 msgctxt "@action:button"
 msgid "Close"
@@ -1057,7 +1058,7 @@ msgstr "Перекрёстные предустановки"
 msgid "Default"
 msgstr "По умолчанию"
 
-#: src/contents/ui/Crossfeed.qml:167 src/contents/ui/PageStreamsEffects.qml:663
+#: src/contents/ui/Crossfeed.qml:167 src/contents/ui/PageStreamsEffects.qml:665
 #: src/contents/ui/PreferencesSheet.qml:65 src/contents/ui/Reverb.qml:335
 msgid "Presets"
 msgstr "Предустановки"
@@ -1067,7 +1068,7 @@ msgid "Process only phantom center"
 msgstr "Обрабатывать только фантомный центр"
 
 #: src/contents/ui/CrosstalkCanceller.qml:75
-#: src/contents/ui/StereoTools.qml:294 src/tags_plugin_name.cpp:59
+#: src/contents/ui/StereoTools.qml:294 src/tags_plugin_name.cpp:60
 msgid "Delay"
 msgstr "Задержка"
 
@@ -1202,7 +1203,7 @@ msgid "Post filter Beta"
 msgstr "Бета-регулировка постфильтра"
 
 # http://wikisound.org/Деэссер; предназначен для уменьшения или устранения избыточно шипящих звуков в записи человеческого голоса
-#: src/contents/ui/Deesser.qml:63 src/tags_plugin_name.cpp:58
+#: src/contents/ui/Deesser.qml:63 src/tags_plugin_name.cpp:59
 msgid "Deesser"
 msgstr "Антишипение (деэссер)"
 
@@ -1346,7 +1347,7 @@ msgstr "Исключить"
 msgid "Add %1 to excluded applications"
 msgstr "Добавить %1 в исключённые приложения"
 
-#: src/contents/ui/EchoCanceller.qml:61 src/tags_plugin_name.cpp:60
+#: src/contents/ui/EchoCanceller.qml:61 src/tags_plugin_name.cpp:61
 msgid "Echo Canceller"
 msgstr "Эхоподавитель"
 
@@ -1697,7 +1698,7 @@ msgstr "Потолок активен"
 msgid "Ceil"
 msgstr "Потолок"
 
-#: src/contents/ui/Expander.qml:67 src/tags_plugin_name.cpp:64
+#: src/contents/ui/Expander.qml:67 src/tags_plugin_name.cpp:65
 msgid "Expander"
 msgstr "Расширитель"
 
@@ -1716,7 +1717,7 @@ msgid "Equalizer mode"
 msgstr "Режим эквалайзера"
 
 # http://wikisound.org/Гейт: шумовой гейт или просто гейт — это электронное устройство или плагин динамической обработки, который используется для контроля уровня звукового сигнала. Гейт пропускает или глушит сигнал в зависимости от установленного порогового значения. Он очень часто используется для подавления шума в паузах.
-#: src/contents/ui/Gate.qml:71 src/tags_plugin_name.cpp:66
+#: src/contents/ui/Gate.qml:71 src/tags_plugin_name.cpp:67
 msgid "Gate"
 msgstr "Шлюз (гейт)"
 
@@ -1736,7 +1737,232 @@ msgstr "Отставание"
 msgid "Start"
 msgstr "Начало"
 
-#: src/contents/ui/HearingTestDialog.qml:53
+#: src/contents/ui/Harmonizer.qml:38
+#, fuzzy
+msgid "Harmony"
+msgstr "Гармоники"
+
+#: src/contents/ui/Harmonizer.qml:45
+msgid "C"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:48
+msgid "C♯ / D♭"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:51
+msgid "D"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:54
+msgid "D♯ / E♭"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:57
+msgid "E"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:60
+msgid "F"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:63
+msgid "F♯ / G♭"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:66
+msgid "G"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:69
+msgid "G♯ / A♭"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:72
+msgid "A"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:75
+msgid "A♯ / B♭"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:78
+#, fuzzy
+msgid "B"
+msgstr "дБ"
+
+#: src/contents/ui/Harmonizer.qml:90
+msgid "No chord"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:93
+#, fuzzy
+msgid "6"
+msgstr "x6"
+
+#: src/contents/ui/Harmonizer.qml:96
+#, fuzzy
+msgid "Major 7"
+msgstr "Мажор"
+
+#: src/contents/ui/Harmonizer.qml:99
+msgid "Lydian"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:102
+#, fuzzy
+msgid "Major 9"
+msgstr "Мажор"
+
+#: src/contents/ui/Harmonizer.qml:105
+#, fuzzy
+msgid "Major 7/9"
+msgstr "Мажор"
+
+#: src/contents/ui/Harmonizer.qml:108
+msgid "6/9"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:111
+msgid "Augmented"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:117
+#, fuzzy
+msgid "Minor 6"
+msgstr "Минор"
+
+#: src/contents/ui/Harmonizer.qml:120
+#, fuzzy
+msgid "Minor 7"
+msgstr "Минор"
+
+#: src/contents/ui/Harmonizer.qml:123
+msgid "Minor 7 flat 5"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:126
+#, fuzzy
+msgid "Minor 9"
+msgstr "Минор"
+
+#: src/contents/ui/Harmonizer.qml:129
+#, fuzzy
+msgid "Minor 7/9"
+msgstr "Минор"
+
+#: src/contents/ui/Harmonizer.qml:132
+#, fuzzy
+msgid "Minor 7/11"
+msgstr "Минор"
+
+#: src/contents/ui/Harmonizer.qml:135
+msgid "Minor major 7"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:138
+msgid "Minor major 7/9"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:141
+msgid "Diminished"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:144
+msgid "Diminished 7"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:147
+msgid "Dominant 7"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:150
+msgid "Dominant 7 sus4"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:153
+msgid "Dominant 7 flat 5"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:156
+msgid "Dominant 9"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:159
+msgid "Dominant 7 sharp 11"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:162
+msgid "Dominant 13"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:165
+msgid "Dominant 7 flat 9"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:168
+msgid "Dominant 7 flat 13"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:171
+msgid "Dominant 7 sharp 9"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:174
+msgid "Augmented major 7"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:177
+msgid "Augmented 7"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:180 src/contents/ui/Pitch.qml:175
+msgid "Octaves"
+msgstr "Октавы"
+
+#: src/contents/ui/Harmonizer.qml:183
+msgid "Fifths"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:186
+#, fuzzy
+msgid "Suspended 4"
+msgstr "Приостановлено"
+
+#: src/contents/ui/Harmonizer.qml:189
+#, fuzzy
+msgid "Seconds"
+msgstr "Второй"
+
+#: src/contents/ui/Harmonizer.qml:197
+msgid "Follow chord"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:203
+#, fuzzy
+msgid "Left voice interval"
+msgstr "Уровень обраб. левого"
+
+#: src/contents/ui/Harmonizer.qml:213
+#, fuzzy
+msgid "Left voice level"
+msgstr "Уровень обраб. левого"
+
+#: src/contents/ui/Harmonizer.qml:224
+#, fuzzy
+msgid "Right voice interval"
+msgstr "Уровень обраб. правого"
+
+#: src/contents/ui/Harmonizer.qml:234
+#, fuzzy
+msgid "Right voice level"
+msgstr "Уровень обраб. правого"
+
+#: src/contents/ui/Harmonizer.qml:245
+msgid "Dry/wet"
+msgstr ""
+
+#: src/contents/ui/HearingTestDialog.qml:86
 msgid ""
 "The output device changed. Restart the test with the same headphones and "
 "volume."
@@ -1744,7 +1970,7 @@ msgstr ""
 "Устройство вывода изменилось. Перезапустите проверку с теми же наушниками и "
 "тем же уровнем громкости."
 
-#: src/contents/ui/HearingTestDialog.qml:64
+#: src/contents/ui/HearingTestDialog.qml:98
 msgid ""
 "Use headphones in a quiet room. Pause other audio and keep the system volume "
 "fixed at a comfortable level. Adjust each tone until it is barely audible, "
@@ -1756,15 +1982,15 @@ msgstr ""
 "каждый тон, пока он не станет едва слышимым, затем зафиксируйте порог. Этот "
 "некалиброванный тест на слух не является медицинским обследованием слуха."
 
-#: src/contents/ui/HearingTestDialog.qml:70
+#: src/contents/ui/HearingTestDialog.qml:105
 msgid "I am using headphones"
 msgstr "Я использую наушники"
 
-#: src/contents/ui/HearingTestDialog.qml:84
+#: src/contents/ui/HearingTestDialog.qml:121
 msgid "Start Test"
 msgstr "Начать проверку"
 
-#: src/contents/ui/HearingTestDialog.qml:95
+#: src/contents/ui/HearingTestDialog.qml:132
 msgid ""
 "Select an available stereo output device and disable the regular test "
 "signals before starting."
@@ -1772,24 +1998,24 @@ msgstr ""
 "Перед началом выберите доступное стереофоническое устройство вывода и "
 "отключите обычные тестовые сигналы."
 
-#: src/contents/ui/HearingTestDialog.qml:102
+#: src/contents/ui/HearingTestDialog.qml:139
 msgid "%1 ear: %2 Hz (%3 of %4)"
 msgstr "%1 ухо: %2 Гц (%3 из %4)"
 
 # #, fuzzy
-#: src/contents/ui/HearingTestDialog.qml:108
+#: src/contents/ui/HearingTestDialog.qml:145
 msgid "Tone Level"
 msgstr "Уровень тона"
 
-#: src/contents/ui/HearingTestDialog.qml:126
+#: src/contents/ui/HearingTestDialog.qml:164
 msgid "Play Tone"
 msgstr "Воспроизвести тон"
 
-#: src/contents/ui/HearingTestDialog.qml:133
+#: src/contents/ui/HearingTestDialog.qml:171
 msgid "Record Threshold"
 msgstr "Зафиксировать порог"
 
-#: src/contents/ui/HearingTestDialog.qml:154
+#: src/contents/ui/HearingTestDialog.qml:193
 msgid ""
 "The test is complete. Applying the profile replaces this equalizer's "
 "settings with separate corrections for each ear, limited to 6 dB per band, "
@@ -1801,15 +2027,15 @@ msgstr ""
 "снизит входное усиление для сохранения запаса по уровню. Сохраните пресет, "
 "чтобы сохранить результат для этих наушников."
 
-#: src/contents/ui/HearingTestDialog.qml:161
+#: src/contents/ui/HearingTestDialog.qml:200
 msgid "%1 Hz: left %2 dB, right %3 dB"
 msgstr "%1 Гц: левое %2 дБ, правое %3 дБ"
 
-#: src/contents/ui/HearingTestDialog.qml:168
+#: src/contents/ui/HearingTestDialog.qml:209
 msgid "Apply Personalized EQ"
 msgstr "Применить персональный эквалайзер"
 
-#: src/contents/ui/HearingTestDialog.qml:173
+#: src/contents/ui/HearingTestDialog.qml:214
 msgid "Could not apply the hearing profile."
 msgstr "Не удалось применить профиль слуха."
 
@@ -1968,7 +2194,7 @@ msgstr "Истинный пик/24 бита"
 msgid "Dithering"
 msgstr "Дизеринг (зашумление)"
 
-#: src/contents/ui/Limiter.qml:116 src/tags_plugin_name.cpp:68
+#: src/contents/ui/Limiter.qml:116 src/tags_plugin_name.cpp:69
 msgid "Limiter"
 msgstr "Ограничитель (лимитер)"
 
@@ -2075,11 +2301,11 @@ msgstr "Звуковые эффекты включены."
 msgid "Audio effects are disabled."
 msgstr "Звуковые эффекты отключены."
 
-#: src/contents/ui/Main.qml:405 src/contents/ui/PageStreamsEffects.qml:489
+#: src/contents/ui/Main.qml:405 src/contents/ui/PageStreamsEffects.qml:491
 msgid "Players"
 msgstr "Проигрыватели"
 
-#: src/contents/ui/Main.qml:421 src/contents/ui/PageStreamsEffects.qml:498
+#: src/contents/ui/Main.qml:421 src/contents/ui/PageStreamsEffects.qml:500
 msgid "Recorders"
 msgstr "Рекордеры"
 
@@ -2262,52 +2488,52 @@ msgstr "Нет эффектов"
 msgid "Audio stream not modified"
 msgstr "Аудиопоток без изменений"
 
-#: src/contents/ui/PageStreamsEffects.qml:418
+#: src/contents/ui/PageStreamsEffects.qml:420
 msgid "Add effect"
 msgstr "Добавить эффект"
 
-#: src/contents/ui/PageStreamsEffects.qml:432
+#: src/contents/ui/PageStreamsEffects.qml:434
 msgid "Close"
 msgstr "Закрыть"
 
-#: src/contents/ui/PageStreamsEffects.qml:436
+#: src/contents/ui/PageStreamsEffects.qml:438
 msgid "Expand the list of effects pipeline"
 msgstr "Развернуть список эффектов канала обработки"
 
-#: src/contents/ui/PageStreamsEffects.qml:436
+#: src/contents/ui/PageStreamsEffects.qml:438
 msgid "Reduce the list of effects pipeline"
 msgstr "Свернуть список эффектов канала обработки"
 
-#: src/contents/ui/PageStreamsEffects.qml:498
+#: src/contents/ui/PageStreamsEffects.qml:500
 msgid "Output device"
 msgstr "Устройство вывода"
 
-#: src/contents/ui/PageStreamsEffects.qml:676
+#: src/contents/ui/PageStreamsEffects.qml:678
 msgid "Excluded apps"
 msgstr "Исключённые приложения"
 
-#: src/contents/ui/PageStreamsEffects.qml:689
-#: src/contents/ui/PageStreamsEffects.qml:707
+#: src/contents/ui/PageStreamsEffects.qml:691
+#: src/contents/ui/PageStreamsEffects.qml:709
 msgid "Input monitoring"
 msgstr "Мониторинг входа"
 
-#: src/contents/ui/PageStreamsEffects.qml:716
+#: src/contents/ui/PageStreamsEffects.qml:718
 msgid "Toggle input monitoring"
 msgstr "Включить/отключить мониторинг входа"
 
-#: src/contents/ui/PageStreamsEffects.qml:736
+#: src/contents/ui/PageStreamsEffects.qml:738
 msgid "Set input monitoring volume"
 msgstr "Задать громкость мониторинга входа"
 
-#: src/contents/ui/PageStreamsEffects.qml:755
+#: src/contents/ui/PageStreamsEffects.qml:757
 msgid "Monitoring volume"
 msgstr "Громкость мониторинга"
 
-#: src/contents/ui/PageStreamsEffects.qml:788
+#: src/contents/ui/PageStreamsEffects.qml:790
 msgid "Share audio"
 msgstr "Передать звук"
 
-#: src/contents/ui/PageStreamsEffects.qml:789
+#: src/contents/ui/PageStreamsEffects.qml:791
 msgid "Send the processed desktop audio to the virtual source"
 msgstr "Передать обработанный звук с рабочего стола на виртуальный источник"
 
@@ -2434,13 +2660,9 @@ msgstr "Окно перемотки"
 msgid "Overlap length"
 msgstr "Длина перекрытия"
 
-#: src/contents/ui/Pitch.qml:164 src/tags_plugin_name.cpp:73
+#: src/contents/ui/Pitch.qml:164 src/tags_plugin_name.cpp:74
 msgid "Pitch"
 msgstr "Высота тона"
-
-#: src/contents/ui/Pitch.qml:175
-msgid "Octaves"
-msgstr "Октавы"
 
 #: src/contents/ui/Pitch.qml:191
 msgid "Cents"
@@ -3583,33 +3805,33 @@ msgstr "(Динамики)"
 msgid "Output Level Meter"
 msgstr "Уровнемер выхода"
 
-#: src/presets_manager.cpp:800 src/presets_manager.cpp:807
-#: src/presets_manager.cpp:817 src/presets_manager.cpp:824
-#: src/presets_manager.cpp:834 src/presets_manager.cpp:843
+#: src/presets_manager.cpp:801 src/presets_manager.cpp:808
+#: src/presets_manager.cpp:818 src/presets_manager.cpp:825
+#: src/presets_manager.cpp:835 src/presets_manager.cpp:844
 msgid "Preset not loaded correctly"
 msgstr "Предустановка загружена неправильно"
 
-#: src/presets_manager.cpp:800
+#: src/presets_manager.cpp:801
 msgid "Wrong format in excluded apps list"
 msgstr "Неверный формат в списке исключённых приложений"
 
-#: src/presets_manager.cpp:808
+#: src/presets_manager.cpp:809
 msgid "Generic error while loading excluded apps list"
 msgstr "Общая ошибка при загрузке списка исключённых приложений"
 
-#: src/presets_manager.cpp:817
+#: src/presets_manager.cpp:818
 msgid "Wrong format in effects list"
 msgstr "Неверный формат в списке эффектов"
 
-#: src/presets_manager.cpp:824
+#: src/presets_manager.cpp:825
 msgid "Generic error while loading effects list"
 msgstr "Общая ошибка при загрузке списка эффектов"
 
-#: src/presets_manager.cpp:835
+#: src/presets_manager.cpp:836
 msgid "One or more parameters have a wrong format"
 msgstr "Один или несколько параметров содержат неверный формат"
 
-#: src/presets_manager.cpp:844
+#: src/presets_manager.cpp:845
 msgid "Generic error while loading the effect"
 msgstr "Общая ошибка при загрузке эффекта"
 
@@ -3641,85 +3863,90 @@ msgstr "Неизвестно"
 msgid "Autotune"
 msgstr "Автоподстройка тона"
 
+#: src/tags_plugin_name.cpp:49
+#, fuzzy
+msgid "Harmonizer"
+msgstr "Гармоники"
+
 # Энхансер (он же Эксайтер) — это прибор, который генерирует высшие гармоники низких частот, благодаря чему повышается локализация низких частот и их «читаемость».
 # «Бас-Энхансер» или «Глубокий бас»
-#: src/tags_plugin_name.cpp:49
+#: src/tags_plugin_name.cpp:50
 msgid "Bass Enhancer"
 msgstr "Насыщение басов"
 
-#: src/tags_plugin_name.cpp:50
+#: src/tags_plugin_name.cpp:51
 msgid "Bass Loudness"
 msgstr "Громкость басов"
 
-#: src/tags_plugin_name.cpp:52
+#: src/tags_plugin_name.cpp:53
 msgid "Convolver"
 msgstr "Конвольвер"
 
-#: src/tags_plugin_name.cpp:53
+#: src/tags_plugin_name.cpp:54
 msgid "Crossfeed"
 msgstr "Перекрёстная подача"
 
-#: src/tags_plugin_name.cpp:54
+#: src/tags_plugin_name.cpp:55
 msgid "Crosstalk Canceller"
 msgstr "Подавитель перекрёстных помех"
 
-#: src/tags_plugin_name.cpp:55
+#: src/tags_plugin_name.cpp:56
 msgid "Crusher"
 msgstr "Снижение битности"
 
-#: src/tags_plugin_name.cpp:56
+#: src/tags_plugin_name.cpp:57
 msgid "Crystalizer"
 msgstr "Кристаллизатор"
 
-#: src/tags_plugin_name.cpp:57
+#: src/tags_plugin_name.cpp:58
 msgid "Deep Noise Remover"
 msgstr "Глубокий шумоподавитель"
 
-#: src/tags_plugin_name.cpp:61
+#: src/tags_plugin_name.cpp:62
 msgid "Equalizer"
 msgstr "Эквалайзер"
 
-#: src/tags_plugin_name.cpp:62
+#: src/tags_plugin_name.cpp:63
 msgid "Mid-Side Equalizer"
 msgstr "Эквалайзер среднего/бокового"
 
-#: src/tags_plugin_name.cpp:63
+#: src/tags_plugin_name.cpp:64
 msgid "Exciter"
 msgstr "Гармонический возбудитель"
 
-#: src/tags_plugin_name.cpp:67
+#: src/tags_plugin_name.cpp:68
 msgid "Level Meter"
 msgstr "Уровнемер"
 
-#: src/tags_plugin_name.cpp:70
+#: src/tags_plugin_name.cpp:71
 msgid "Maximizer"
 msgstr "Максимайзер"
 
-#: src/tags_plugin_name.cpp:71
+#: src/tags_plugin_name.cpp:72
 msgid "Multiband Compressor"
 msgstr "Многополосный компрессор"
 
-#: src/tags_plugin_name.cpp:72
+#: src/tags_plugin_name.cpp:73
 msgid "Multiband Gate"
 msgstr "Многополосный шлюз (гейт)"
 
-#: src/tags_plugin_name.cpp:74
+#: src/tags_plugin_name.cpp:75
 msgid "Reverberation"
 msgstr "Реверберация"
 
-#: src/tags_plugin_name.cpp:75
+#: src/tags_plugin_name.cpp:76
 msgid "Noise Reduction"
 msgstr "Подавление шума"
 
-#: src/tags_plugin_name.cpp:76
+#: src/tags_plugin_name.cpp:77
 msgid "Speech Processor"
 msgstr "Речевой процессор"
 
-#: src/tags_plugin_name.cpp:77
+#: src/tags_plugin_name.cpp:78
 msgid "Stereo Tools"
 msgstr "Наладчики стерео"
 
-#: src/tags_plugin_name.cpp:78
+#: src/tags_plugin_name.cpp:79
 msgid "Voice Suppressor"
 msgstr "Подавитель голоса"
 
@@ -4913,12 +5140,6 @@ msgstr "Простые звуковые эффекты"
 
 #~ msgid "Right Dry Level"
 #~ msgstr "Уровень ориг. правого"
-
-#~ msgid "Left Wet Level"
-#~ msgstr "Уровень обраб. левого"
-
-#~ msgid "Right Wet Level"
-#~ msgstr "Уровень обраб. правого"
 
 #~ msgid "Fast Fourier Transform Size"
 #~ msgstr "Размер быстрого преобразования Фурье"
