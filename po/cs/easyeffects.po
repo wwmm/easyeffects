@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-15 15:16+0000\n"
-"PO-Revision-Date: 2026-10-11 09:51+0000\n"
+"PO-Revision-Date: 2026-10-18 03:51+0000\n"
 "Last-Translator: Fjuro <fjuro@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
 "cs/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2);\n"
-"X-Generator: Weblate 2026.10.1.dev0\n"
+"X-Generator: Weblate 2026.11.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -1130,18 +1130,16 @@ msgid "Bypass"
 msgstr "Bypass"
 
 #: src/contents/ui/DeepFilterNet.qml:67
-#, fuzzy
 msgid "%1 model is not installed. Audio passes through unprocessed."
-msgstr "Zvolený model není nainstalovaný. Zvuk prochází skrz nezpracovaný."
+msgstr "Model %1 není nainstalovaný. Zvuk prochází skrz nezpracovaný."
 
 #: src/contents/ui/DeepFilterNet.qml:84
-#, fuzzy
 msgid "Model"
-msgstr "Modely"
+msgstr "Model"
 
 #: src/contents/ui/DeepFilterNet.qml:104
 msgid "Process as Mono"
-msgstr ""
+msgstr "Zpracovat jednokanálově"
 
 #: src/contents/ui/DeepFilterNet.qml:108
 msgid ""
@@ -1150,6 +1148,10 @@ msgid ""
 "microphones. Both output channels receive the same audio; stereo separation "
 "is lost."
 msgstr ""
+"Zprůměrovat levé a pravé vstupy a zpracovat je jední instancí DPDFNet "
+"namísto dvou. Toto může výrazně snížit využití CPU pro jednokanálové "
+"mikrofony. Oba výstupní kanály obdrží stejný zvuk; stereo oddělení bude "
+"ztraceno."
 
 #: src/contents/ui/DeepFilterNet.qml:121
 msgid "Attenuation limit"
@@ -1525,7 +1527,7 @@ msgstr "Rozdělit kanály"
 
 #: src/contents/ui/Equalizer.qml:362 src/contents/ui/HearingTestDialog.qml:23
 msgid "Hearing Test"
-msgstr ""
+msgstr "Test sluchu"
 
 #: src/contents/ui/Equalizer.qml:368 src/contents/ui/MidSideEqualizer.qml:356
 msgid "Flat response"
@@ -1702,6 +1704,8 @@ msgid ""
 "The output device changed. Restart the test with the same headphones and "
 "volume."
 msgstr ""
+"Výstupní zařízení se změnilo. Restartujte test se stejnými sluchátky a "
+"hlasitostí."
 
 #: src/contents/ui/HearingTestDialog.qml:64
 msgid ""
@@ -1710,41 +1714,42 @@ msgid ""
 "then record the threshold. This uncalibrated listening test is not a medical "
 "hearing assessment."
 msgstr ""
+"Použijte sluchátka v tiché místnosti. Pozastavte zvuk a ponechte systémovou "
+"hlasitost pevně na pohodlné úrovni. Upravte každý tón, dokud nebude téměř "
+"neslyšitelný, poté zaznamenejte práh. Tento nekalibrovaný test sluchu není "
+"lékařským vyšetřením sluchu."
 
 #: src/contents/ui/HearingTestDialog.qml:70
-#, fuzzy
 msgid "I am using headphones"
-msgstr "Vzdálená sluchátka"
+msgstr "Používám sluchátka"
 
 #: src/contents/ui/HearingTestDialog.qml:84
-#, fuzzy
 msgid "Start Test"
-msgstr "Začít"
+msgstr "Spustit test"
 
 #: src/contents/ui/HearingTestDialog.qml:95
 msgid ""
 "Select an available stereo output device and disable the regular test "
 "signals before starting."
 msgstr ""
+"Před spuštěním vyberte dostupné dvoukanálové výstupní zařízení a zakažte "
+"běžné testovací signály."
 
 #: src/contents/ui/HearingTestDialog.qml:102
 msgid "%1 ear: %2 Hz (%3 of %4)"
-msgstr ""
+msgstr "Ucho %1: %2 Hz (%3 z %4)"
 
 #: src/contents/ui/HearingTestDialog.qml:108
-#, fuzzy
 msgid "Tone Level"
-msgstr "Vstupní úroveň"
+msgstr "Úroveň tónu"
 
 #: src/contents/ui/HearingTestDialog.qml:126
-#, fuzzy
 msgid "Play Tone"
-msgstr "Přehrávače"
+msgstr "Přehrát tón"
 
 #: src/contents/ui/HearingTestDialog.qml:133
-#, fuzzy
 msgid "Record Threshold"
-msgstr "Práh uvolnění"
+msgstr "Zaznamenat práh"
 
 #: src/contents/ui/HearingTestDialog.qml:154
 msgid ""
@@ -1753,18 +1758,22 @@ msgid ""
 "and lowers input gain to preserve headroom. Save a preset to keep the result "
 "for these headphones."
 msgstr ""
+"Test byl dokončen. Použití tohoto profilu nahradí nastavení tohoto "
+"ekvalizéru s oddělenými úpravami pro každé ucho, omezené na 6 dB na pásmo, a "
+"sníží vstupní zisk pro zachování prostoru. Uložte předvolbu pro uchování "
+"výsledku pro tato sluchátka."
 
 #: src/contents/ui/HearingTestDialog.qml:161
 msgid "%1 Hz: left %2 dB, right %3 dB"
-msgstr ""
+msgstr "%1 Hz: vlevo %2 dB, vpravo %3 dB"
 
 #: src/contents/ui/HearingTestDialog.qml:168
 msgid "Apply Personalized EQ"
-msgstr ""
+msgstr "Použít personalizovaný EQ"
 
 #: src/contents/ui/HearingTestDialog.qml:173
 msgid "Could not apply the hearing profile."
-msgstr ""
+msgstr "Nepodařilo se použít sluchový profil."
 
 #: src/contents/ui/LevelMeter.qml:67
 msgid "Input Level"
@@ -2590,42 +2599,36 @@ msgid "Link delay"
 msgstr "Linkové zpoždění"
 
 #: src/contents/ui/PreferencesSheet.qml:394
-#, fuzzy
 msgid "Enable the output inactivity timeout"
-msgstr "Povolit časový limit nečinnosti"
+msgstr "Povolit časový limit výstupu při neaktivitě"
 
 #: src/contents/ui/PreferencesSheet.qml:395
-#, fuzzy
 msgid ""
 "When all output streams are inactive, the Easy Effects output pipeline "
 "remains loaded for an extra amount of time."
 msgstr ""
-"Když jsou všechny proudy neaktivní, zůstane pipeline Easy Effects načtená "
-"ještě po určitou dobu."
+"Když jsou všechny výstupní proudy neaktivní, zůstane pipeline Easy Effects "
+"načtená ještě po určitou dobu."
 
 #: src/contents/ui/PreferencesSheet.qml:407
-#, fuzzy
 msgid "Output inactivity timeout"
-msgstr "Časový limit nečinnosti"
+msgstr "Časový limit výstupu při nečinnosti"
 
 #: src/contents/ui/PreferencesSheet.qml:424
-#, fuzzy
 msgid "Enable the input inactivity timeout"
-msgstr "Povolit časový limit nečinnosti"
+msgstr "Povolit časový limit vstupu při nečinnosti"
 
 #: src/contents/ui/PreferencesSheet.qml:425
-#, fuzzy
 msgid ""
 "When all input streams are inactive, the Easy Effects input pipeline remains "
 "loaded for an extra amount of time."
 msgstr ""
-"Když jsou všechny proudy neaktivní, zůstane pipeline Easy Effects načtená "
-"ještě po určitou dobu."
+"Když jsou všechny vstupní proudy neaktivní, zůstane pipeline Easy Effects "
+"načtená ještě po určitou dobu."
 
 #: src/contents/ui/PreferencesSheet.qml:437
-#, fuzzy
 msgid "Input inactivity timeout"
-msgstr "Časový limit nečinnosti"
+msgstr "Časový limit vstupu při nečinnosti"
 
 #: src/contents/ui/PreferencesSheet.qml:452
 msgid "Level meters frame rate cap"
