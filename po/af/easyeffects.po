@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-10-15 15:16+0000\n"
+"POT-Creation-Date: 2026-10-18 16:13+0000\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Ebert Matthee <weblate@ecmatthee.com>\n"
 "Language-Team: Afrikaans <https://hosted.weblate.org/projects/easyeffects/"
@@ -212,7 +212,7 @@ msgstr ""
 
 #: src/contents/ui/Autogain.qml:143 src/contents/ui/Autogain.qml:198
 #: src/contents/ui/BassLoudness.qml:67 src/contents/ui/LevelMeter.qml:146
-#: src/tags_plugin_name.cpp:69
+#: src/tags_plugin_name.cpp:70
 msgid "Loudness"
 msgstr ""
 
@@ -238,9 +238,9 @@ msgstr ""
 #: src/contents/ui/EchoCanceller.qml:158 src/contents/ui/Equalizer.qml:321
 #: src/contents/ui/Exciter.qml:210 src/contents/ui/Expander.qml:823
 #: src/contents/ui/Filter.qml:234 src/contents/ui/Gate.qml:952
-#: src/contents/ui/LevelMeter.qml:215 src/contents/ui/Limiter.qml:607
-#: src/contents/ui/Loudness.qml:175 src/contents/ui/Maximizer.qml:122
-#: src/contents/ui/MidSideEqualizer.qml:315
+#: src/contents/ui/Harmonizer.qml:267 src/contents/ui/LevelMeter.qml:215
+#: src/contents/ui/Limiter.qml:607 src/contents/ui/Loudness.qml:175
+#: src/contents/ui/Maximizer.qml:122 src/contents/ui/MidSideEqualizer.qml:315
 #: src/contents/ui/MultibandCompressor.qml:965
 #: src/contents/ui/MultibandGate.qml:938 src/contents/ui/Pitch.qml:268
 #: src/contents/ui/RNNoise.qml:73 src/contents/ui/RNNoise.qml:84
@@ -306,7 +306,7 @@ msgstr ""
 
 #: src/contents/ui/Autotune.qml:169 src/contents/ui/Deesser.qml:171
 #: src/contents/ui/Filter.qml:137 src/contents/ui/Reverb.qml:126
-#: src/tags_plugin_name.cpp:65
+#: src/tags_plugin_name.cpp:66
 msgid "Filter"
 msgstr ""
 
@@ -330,7 +330,7 @@ msgstr ""
 msgid "Major"
 msgstr ""
 
-#: src/contents/ui/Autotune.qml:248
+#: src/contents/ui/Autotune.qml:248 src/contents/ui/Harmonizer.qml:114
 msgid "Minor"
 msgstr ""
 
@@ -406,9 +406,9 @@ msgstr ""
 #: src/contents/ui/EchoCanceller.qml:186 src/contents/ui/Equalizer.qml:411
 #: src/contents/ui/Exciter.qml:252 src/contents/ui/Expander.qml:875
 #: src/contents/ui/Filter.qml:266 src/contents/ui/Gate.qml:1004
-#: src/contents/ui/Limiter.qml:659 src/contents/ui/Loudness.qml:217
-#: src/contents/ui/Main.qml:481 src/contents/ui/Maximizer.qml:154
-#: src/contents/ui/MidSideEqualizer.qml:399
+#: src/contents/ui/Harmonizer.qml:285 src/contents/ui/Limiter.qml:659
+#: src/contents/ui/Loudness.qml:217 src/contents/ui/Main.qml:481
+#: src/contents/ui/Maximizer.qml:154 src/contents/ui/MidSideEqualizer.qml:399
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/RNNoise.qml:345
 #: src/contents/ui/Reverb.qml:357 src/contents/ui/Speex.qml:195
@@ -490,7 +490,7 @@ msgstr "Oudio-effekte vir PipeWire toepassing"
 msgid "Show excluded applications in the list of players/recorders"
 msgstr ""
 
-#: src/contents/ui/Compressor.qml:67 src/tags_plugin_name.cpp:51
+#: src/contents/ui/Compressor.qml:67 src/tags_plugin_name.cpp:52
 msgid "Compressor"
 msgstr ""
 
@@ -585,7 +585,7 @@ msgstr ""
 
 #: src/contents/ui/Compressor.qml:277 src/contents/ui/Expander.qml:237
 #: src/contents/ui/Gate.qml:255 src/contents/ui/Limiter.qml:227
-#: src/contents/ui/PageStreamsEffects.qml:489
+#: src/contents/ui/PageStreamsEffects.qml:491
 msgid "Input device"
 msgstr ""
 
@@ -643,7 +643,7 @@ msgstr ""
 #: src/contents/ui/Compressor.qml:319 src/contents/ui/Convolver.qml:301
 #: src/contents/ui/Delay.qml:59 src/contents/ui/Equalizer.qml:250
 #: src/contents/ui/Expander.qml:279 src/contents/ui/Gate.qml:297
-#: src/contents/ui/HearingTestDialog.qml:102 src/contents/ui/LevelMeter.qml:79
+#: src/contents/ui/HearingTestDialog.qml:139 src/contents/ui/LevelMeter.qml:79
 #: src/contents/ui/LevelMeter.qml:118
 #: src/contents/ui/MultibandCompressor.qml:449
 #: src/contents/ui/MultibandGate.qml:422 src/contents/ui/PipeWirePage.qml:346
@@ -654,7 +654,7 @@ msgstr ""
 #: src/contents/ui/Compressor.qml:319 src/contents/ui/Convolver.qml:319
 #: src/contents/ui/Delay.qml:212 src/contents/ui/Equalizer.qml:250
 #: src/contents/ui/Expander.qml:279 src/contents/ui/Gate.qml:297
-#: src/contents/ui/HearingTestDialog.qml:102 src/contents/ui/LevelMeter.qml:89
+#: src/contents/ui/HearingTestDialog.qml:139 src/contents/ui/LevelMeter.qml:89
 #: src/contents/ui/LevelMeter.qml:128
 #: src/contents/ui/MultibandCompressor.qml:449
 #: src/contents/ui/MultibandGate.qml:422 src/contents/ui/PipeWirePage.qml:357
@@ -954,7 +954,7 @@ msgid "Failed to rename the %1 impulse to %2"
 msgstr ""
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:147
-#: src/contents/ui/HearingTestDialog.qml:178
+#: src/contents/ui/HearingTestDialog.qml:219
 #: src/contents/ui/PresetsLocalPage.qml:267
 msgid "Cancel"
 msgstr ""
@@ -973,6 +973,7 @@ msgid "Import impulse"
 msgstr ""
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:243
+#: src/contents/ui/HearingTestDialog.qml:47
 #: src/contents/ui/MenuAddPlugins.qml:202 src/contents/ui/PresetsDialog.qml:126
 msgctxt "@action:button"
 msgid "Close"
@@ -1034,7 +1035,7 @@ msgstr ""
 msgid "Default"
 msgstr ""
 
-#: src/contents/ui/Crossfeed.qml:167 src/contents/ui/PageStreamsEffects.qml:663
+#: src/contents/ui/Crossfeed.qml:167 src/contents/ui/PageStreamsEffects.qml:665
 #: src/contents/ui/PreferencesSheet.qml:65 src/contents/ui/Reverb.qml:335
 msgid "Presets"
 msgstr ""
@@ -1044,7 +1045,7 @@ msgid "Process only phantom center"
 msgstr ""
 
 #: src/contents/ui/CrosstalkCanceller.qml:75
-#: src/contents/ui/StereoTools.qml:294 src/tags_plugin_name.cpp:59
+#: src/contents/ui/StereoTools.qml:294 src/tags_plugin_name.cpp:60
 msgid "Delay"
 msgstr ""
 
@@ -1173,7 +1174,7 @@ msgstr ""
 msgid "Post filter Beta"
 msgstr ""
 
-#: src/contents/ui/Deesser.qml:63 src/tags_plugin_name.cpp:58
+#: src/contents/ui/Deesser.qml:63 src/tags_plugin_name.cpp:59
 msgid "Deesser"
 msgstr ""
 
@@ -1320,7 +1321,7 @@ msgstr ""
 msgid "Add %1 to excluded applications"
 msgstr "Oudio-effekte vir PipeWire toepassing"
 
-#: src/contents/ui/EchoCanceller.qml:61 src/tags_plugin_name.cpp:60
+#: src/contents/ui/EchoCanceller.qml:61 src/tags_plugin_name.cpp:61
 msgid "Echo Canceller"
 msgstr ""
 
@@ -1651,7 +1652,7 @@ msgstr ""
 msgid "Ceil"
 msgstr ""
 
-#: src/contents/ui/Expander.qml:67 src/tags_plugin_name.cpp:64
+#: src/contents/ui/Expander.qml:67 src/tags_plugin_name.cpp:65
 msgid "Expander"
 msgstr ""
 
@@ -1669,7 +1670,7 @@ msgstr ""
 msgid "Equalizer mode"
 msgstr ""
 
-#: src/contents/ui/Gate.qml:71 src/tags_plugin_name.cpp:66
+#: src/contents/ui/Gate.qml:71 src/tags_plugin_name.cpp:67
 msgid "Gate"
 msgstr ""
 
@@ -1689,13 +1690,221 @@ msgstr ""
 msgid "Start"
 msgstr ""
 
-#: src/contents/ui/HearingTestDialog.qml:53
+#: src/contents/ui/Harmonizer.qml:38
+msgid "Harmony"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:45
+msgid "C"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:48
+msgid "C♯ / D♭"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:51
+msgid "D"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:54
+msgid "D♯ / E♭"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:57
+msgid "E"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:60
+msgid "F"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:63
+msgid "F♯ / G♭"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:66
+msgid "G"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:69
+msgid "G♯ / A♭"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:72
+msgid "A"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:75
+msgid "A♯ / B♭"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:78
+msgid "B"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:90
+msgid "No chord"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:93
+msgid "6"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:96
+msgid "Major 7"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:99
+msgid "Lydian"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:102
+msgid "Major 9"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:105
+msgid "Major 7/9"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:108
+msgid "6/9"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:111
+msgid "Augmented"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:117
+msgid "Minor 6"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:120
+msgid "Minor 7"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:123
+msgid "Minor 7 flat 5"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:126
+msgid "Minor 9"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:129
+msgid "Minor 7/9"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:132
+msgid "Minor 7/11"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:135
+msgid "Minor major 7"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:138
+msgid "Minor major 7/9"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:141
+msgid "Diminished"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:144
+msgid "Diminished 7"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:147
+msgid "Dominant 7"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:150
+msgid "Dominant 7 sus4"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:153
+msgid "Dominant 7 flat 5"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:156
+msgid "Dominant 9"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:159
+msgid "Dominant 7 sharp 11"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:162
+msgid "Dominant 13"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:165
+msgid "Dominant 7 flat 9"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:168
+msgid "Dominant 7 flat 13"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:171
+msgid "Dominant 7 sharp 9"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:174
+msgid "Augmented major 7"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:177
+msgid "Augmented 7"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:180 src/contents/ui/Pitch.qml:175
+msgid "Octaves"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:183
+msgid "Fifths"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:186
+msgid "Suspended 4"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:189
+msgid "Seconds"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:197
+msgid "Follow chord"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:203
+msgid "Left voice interval"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:213
+msgid "Left voice level"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:224
+msgid "Right voice interval"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:234
+msgid "Right voice level"
+msgstr ""
+
+#: src/contents/ui/Harmonizer.qml:245
+msgid "Dry/wet"
+msgstr ""
+
+#: src/contents/ui/HearingTestDialog.qml:86
 msgid ""
 "The output device changed. Restart the test with the same headphones and "
 "volume."
 msgstr ""
 
-#: src/contents/ui/HearingTestDialog.qml:64
+#: src/contents/ui/HearingTestDialog.qml:98
 msgid ""
 "Use headphones in a quiet room. Pause other audio and keep the system volume "
 "fixed at a comfortable level. Adjust each tone until it is barely audible, "
@@ -1703,37 +1912,37 @@ msgid ""
 "hearing assessment."
 msgstr ""
 
-#: src/contents/ui/HearingTestDialog.qml:70
+#: src/contents/ui/HearingTestDialog.qml:105
 msgid "I am using headphones"
 msgstr ""
 
-#: src/contents/ui/HearingTestDialog.qml:84
+#: src/contents/ui/HearingTestDialog.qml:121
 msgid "Start Test"
 msgstr ""
 
-#: src/contents/ui/HearingTestDialog.qml:95
+#: src/contents/ui/HearingTestDialog.qml:132
 msgid ""
 "Select an available stereo output device and disable the regular test "
 "signals before starting."
 msgstr ""
 
-#: src/contents/ui/HearingTestDialog.qml:102
+#: src/contents/ui/HearingTestDialog.qml:139
 msgid "%1 ear: %2 Hz (%3 of %4)"
 msgstr ""
 
-#: src/contents/ui/HearingTestDialog.qml:108
+#: src/contents/ui/HearingTestDialog.qml:145
 msgid "Tone Level"
 msgstr ""
 
-#: src/contents/ui/HearingTestDialog.qml:126
+#: src/contents/ui/HearingTestDialog.qml:164
 msgid "Play Tone"
 msgstr ""
 
-#: src/contents/ui/HearingTestDialog.qml:133
+#: src/contents/ui/HearingTestDialog.qml:171
 msgid "Record Threshold"
 msgstr ""
 
-#: src/contents/ui/HearingTestDialog.qml:154
+#: src/contents/ui/HearingTestDialog.qml:193
 msgid ""
 "The test is complete. Applying the profile replaces this equalizer's "
 "settings with separate corrections for each ear, limited to 6 dB per band, "
@@ -1741,15 +1950,15 @@ msgid ""
 "for these headphones."
 msgstr ""
 
-#: src/contents/ui/HearingTestDialog.qml:161
+#: src/contents/ui/HearingTestDialog.qml:200
 msgid "%1 Hz: left %2 dB, right %3 dB"
 msgstr ""
 
-#: src/contents/ui/HearingTestDialog.qml:168
+#: src/contents/ui/HearingTestDialog.qml:209
 msgid "Apply Personalized EQ"
 msgstr ""
 
-#: src/contents/ui/HearingTestDialog.qml:173
+#: src/contents/ui/HearingTestDialog.qml:214
 msgid "Could not apply the hearing profile."
 msgstr ""
 
@@ -1907,7 +2116,7 @@ msgstr ""
 msgid "Dithering"
 msgstr ""
 
-#: src/contents/ui/Limiter.qml:116 src/tags_plugin_name.cpp:68
+#: src/contents/ui/Limiter.qml:116 src/tags_plugin_name.cpp:69
 msgid "Limiter"
 msgstr ""
 
@@ -2012,11 +2221,11 @@ msgstr ""
 msgid "Audio effects are disabled."
 msgstr ""
 
-#: src/contents/ui/Main.qml:405 src/contents/ui/PageStreamsEffects.qml:489
+#: src/contents/ui/Main.qml:405 src/contents/ui/PageStreamsEffects.qml:491
 msgid "Players"
 msgstr ""
 
-#: src/contents/ui/Main.qml:421 src/contents/ui/PageStreamsEffects.qml:498
+#: src/contents/ui/Main.qml:421 src/contents/ui/PageStreamsEffects.qml:500
 msgid "Recorders"
 msgstr ""
 
@@ -2187,52 +2396,52 @@ msgstr ""
 msgid "Audio stream not modified"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:418
+#: src/contents/ui/PageStreamsEffects.qml:420
 msgid "Add effect"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:432
+#: src/contents/ui/PageStreamsEffects.qml:434
 msgid "Close"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:436
+#: src/contents/ui/PageStreamsEffects.qml:438
 msgid "Expand the list of effects pipeline"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:436
+#: src/contents/ui/PageStreamsEffects.qml:438
 msgid "Reduce the list of effects pipeline"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:498
+#: src/contents/ui/PageStreamsEffects.qml:500
 msgid "Output device"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:676
+#: src/contents/ui/PageStreamsEffects.qml:678
 msgid "Excluded apps"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:689
-#: src/contents/ui/PageStreamsEffects.qml:707
+#: src/contents/ui/PageStreamsEffects.qml:691
+#: src/contents/ui/PageStreamsEffects.qml:709
 msgid "Input monitoring"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:716
+#: src/contents/ui/PageStreamsEffects.qml:718
 msgid "Toggle input monitoring"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:736
+#: src/contents/ui/PageStreamsEffects.qml:738
 msgid "Set input monitoring volume"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:755
+#: src/contents/ui/PageStreamsEffects.qml:757
 msgid "Monitoring volume"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:788
+#: src/contents/ui/PageStreamsEffects.qml:790
 msgid "Share audio"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:789
+#: src/contents/ui/PageStreamsEffects.qml:791
 msgid "Send the processed desktop audio to the virtual source"
 msgstr ""
 
@@ -2356,12 +2565,8 @@ msgstr ""
 msgid "Overlap length"
 msgstr ""
 
-#: src/contents/ui/Pitch.qml:164 src/tags_plugin_name.cpp:73
+#: src/contents/ui/Pitch.qml:164 src/tags_plugin_name.cpp:74
 msgid "Pitch"
-msgstr ""
-
-#: src/contents/ui/Pitch.qml:175
-msgid "Octaves"
 msgstr ""
 
 #: src/contents/ui/Pitch.qml:191
@@ -3459,33 +3664,33 @@ msgstr ""
 msgid "Output Level Meter"
 msgstr ""
 
-#: src/presets_manager.cpp:800 src/presets_manager.cpp:807
-#: src/presets_manager.cpp:817 src/presets_manager.cpp:824
-#: src/presets_manager.cpp:834 src/presets_manager.cpp:843
+#: src/presets_manager.cpp:801 src/presets_manager.cpp:808
+#: src/presets_manager.cpp:818 src/presets_manager.cpp:825
+#: src/presets_manager.cpp:835 src/presets_manager.cpp:844
 msgid "Preset not loaded correctly"
 msgstr ""
 
-#: src/presets_manager.cpp:800
+#: src/presets_manager.cpp:801
 msgid "Wrong format in excluded apps list"
 msgstr ""
 
-#: src/presets_manager.cpp:808
+#: src/presets_manager.cpp:809
 msgid "Generic error while loading excluded apps list"
 msgstr ""
 
-#: src/presets_manager.cpp:817
+#: src/presets_manager.cpp:818
 msgid "Wrong format in effects list"
 msgstr ""
 
-#: src/presets_manager.cpp:824
+#: src/presets_manager.cpp:825
 msgid "Generic error while loading effects list"
 msgstr ""
 
-#: src/presets_manager.cpp:835
+#: src/presets_manager.cpp:836
 msgid "One or more parameters have a wrong format"
 msgstr ""
 
-#: src/presets_manager.cpp:844
+#: src/presets_manager.cpp:845
 msgid "Generic error while loading the effect"
 msgstr ""
 
@@ -3518,82 +3723,86 @@ msgid "Autotune"
 msgstr ""
 
 #: src/tags_plugin_name.cpp:49
-msgid "Bass Enhancer"
+msgid "Harmonizer"
 msgstr ""
 
 #: src/tags_plugin_name.cpp:50
+msgid "Bass Enhancer"
+msgstr ""
+
+#: src/tags_plugin_name.cpp:51
 msgid "Bass Loudness"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:52
+#: src/tags_plugin_name.cpp:53
 msgid "Convolver"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:53
+#: src/tags_plugin_name.cpp:54
 msgid "Crossfeed"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:54
+#: src/tags_plugin_name.cpp:55
 msgid "Crosstalk Canceller"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:55
+#: src/tags_plugin_name.cpp:56
 msgid "Crusher"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:56
+#: src/tags_plugin_name.cpp:57
 msgid "Crystalizer"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:57
+#: src/tags_plugin_name.cpp:58
 msgid "Deep Noise Remover"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:61
+#: src/tags_plugin_name.cpp:62
 msgid "Equalizer"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:62
+#: src/tags_plugin_name.cpp:63
 msgid "Mid-Side Equalizer"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:63
+#: src/tags_plugin_name.cpp:64
 msgid "Exciter"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:67
+#: src/tags_plugin_name.cpp:68
 msgid "Level Meter"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:70
+#: src/tags_plugin_name.cpp:71
 msgid "Maximizer"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:71
+#: src/tags_plugin_name.cpp:72
 msgid "Multiband Compressor"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:72
+#: src/tags_plugin_name.cpp:73
 msgid "Multiband Gate"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:74
+#: src/tags_plugin_name.cpp:75
 msgid "Reverberation"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:75
+#: src/tags_plugin_name.cpp:76
 msgid "Noise Reduction"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:76
+#: src/tags_plugin_name.cpp:77
 msgid "Speech Processor"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:77
+#: src/tags_plugin_name.cpp:78
 msgid "Stereo Tools"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:78
+#: src/tags_plugin_name.cpp:79
 msgid "Voice Suppressor"
 msgstr ""
 
