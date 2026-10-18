@@ -22,10 +22,18 @@ class Harmonizer : public PluginBase {
   void reset() override;
   void clear_data() override;
   void setup() override;
+
   void process(std::span<float>& left_in,
                std::span<float>& right_in,
                std::span<float>& left_out,
                std::span<float>& right_out) override;
+
+  void process(std::span<float>& left_in,
+               std::span<float>& right_in,
+               std::span<float>& left_out,
+               std::span<float>& right_out,
+               std::span<float>& probe_left,
+               std::span<float>& probe_right) override;
 
  private:
   bool ready = false;
