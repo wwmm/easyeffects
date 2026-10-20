@@ -69,7 +69,7 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
 
   connect(
       DbStreamOutputs::self(), &DbStreamOutputs::useDefaultOutputDeviceChanged, this,
-      [&]() {
+      [&] {
         if (DbStreamOutputs::useDefaultOutputDevice()) {
           DbStreamOutputs::setOutputDevice(pm->defaultOutputDeviceName);
         }
@@ -78,7 +78,7 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
 
   connect(
       DbStreamOutputs::self(), &DbStreamOutputs::outputDeviceChanged, this,
-      [&]() {
+      [&] {
         const auto name = DbStreamOutputs::outputDevice();
 
         if (name.isEmpty()) {
@@ -101,7 +101,7 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
 
   connect(
       DbStreamOutputs::self(), &DbStreamOutputs::pluginsChanged, this,
-      [&]() {
+      [&] {
         if (DbMain::bypass()) {
           DbMain::setBypass(false);
 
@@ -114,7 +114,7 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
 
   connect(
       DbStreamOutputs::self(), &DbStreamOutputs::linkToVirtualSourceChanged, this,
-      [&]() { set_bypass(DbMain::bypass()); }, Qt::QueuedConnection);
+      [&] { set_bypass(DbMain::bypass()); }, Qt::QueuedConnection);
 
   connect(pm, &pw::Manager::linkChanged, this, &StreamOutputEffects::on_link_changed, Qt::QueuedConnection);
 
@@ -173,7 +173,7 @@ auto StreamOutputEffects::apps_want_to_play() -> bool {
 }
 
 void StreamOutputEffects::update_pipeline() {
-  auto rebuild = [this]() {
+  auto rebuild = [this] {
     if (apps_want_to_play()) {
       if (list_proxies.empty()) {
         util::debug("At least one app linked to our device wants to play. Linking our filters.");
@@ -184,7 +184,7 @@ void StreamOutputEffects::update_pipeline() {
       if (DbMain::outputInactivityTimerEnable()) {
         // if the timer is enabled, wait for the timeout, then unlink plugin pipeline
 
-        QTimer::singleShot(DbMain::outputInactivityTimeout() * 1000, this, [this]() {
+        QTimer::singleShot(DbMain::outputInactivityTimeout() * 1000, this, [this] {
           if (!apps_want_to_play() && !list_proxies.empty()) {
             util::debug("No app linked to our device wants to play. Unlinking our filters.");
 
@@ -203,7 +203,7 @@ void StreamOutputEffects::update_pipeline() {
   };
 
   if (DbMain::linkDelayEnable()) {
-    QTimer::singleShot(DbMain::linkDelay(), this, [rebuild]() { rebuild(); });
+    QTimer::singleShot(DbMain::linkDelay(), this, [rebuild] { rebuild(); });
   } else {
     rebuild();
   }
@@ -231,7 +231,7 @@ void StreamOutputEffects::on_link_changed(const pw::LinkInfo link_info) {
 }
 
 void StreamOutputEffects::on_link_removed() {
-  QTimer::singleShot(DbMain::outputInactivityTimeout() * 1000, this, [&]() {
+  QTimer::singleShot(DbMain::outputInactivityTimeout() * 1000, this, [&] {
     if (DbMain::outputInactivityTimerEnable() && !apps_want_to_play() && !list_proxies.empty()) {
       util::debug("No app linked to our device wants to play. Unlinking our filters.");
 
@@ -425,12 +425,11 @@ void StreamOutputEffects::disconnect_filters() {
       }
     }
 
-    if (plugin->connected_to_pw) {
-      if (std::ranges::find(selected_plugins_list, plugin->name) == selected_plugins_list.end()) {
-        util::debug(std::format("Disconnecting the {} filter from PipeWire", plugin->name.toStdString()));
+    if (plugin->connected_to_pw &&
+        std::ranges::find(selected_plugins_list, plugin->name) == selected_plugins_list.end()) {
+      util::debug(std::format("Disconnecting the {} filter from PipeWire", plugin->name.toStdString()));
 
-        plugin->disconnect_from_pw();
-      }
+      plugin->disconnect_from_pw();
     }
 
     plugin->clear_data();
