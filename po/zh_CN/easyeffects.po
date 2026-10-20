@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-10-15 15:16+0000\n"
-"PO-Revision-Date: 2026-10-10 03:20+0000\n"
-"Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
+"POT-Creation-Date: 2026-10-18 16:13+0000\n"
+"PO-Revision-Date: 2026-10-19 13:51+0000\n"
+"Last-Translator: Gerald Chen <ramdomptm@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hans/>\n"
 "Language: zh_CN\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2026.10.1.dev0\n"
+"X-Generator: Weblate 2026.11.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -214,7 +214,7 @@ msgstr "最长历史记录"
 
 #: src/contents/ui/Autogain.qml:143 src/contents/ui/Autogain.qml:198
 #: src/contents/ui/BassLoudness.qml:67 src/contents/ui/LevelMeter.qml:146
-#: src/tags_plugin_name.cpp:69
+#: src/tags_plugin_name.cpp:70
 msgid "Loudness"
 msgstr "响度"
 
@@ -240,9 +240,9 @@ msgstr "输出增益"
 #: src/contents/ui/EchoCanceller.qml:158 src/contents/ui/Equalizer.qml:321
 #: src/contents/ui/Exciter.qml:210 src/contents/ui/Expander.qml:823
 #: src/contents/ui/Filter.qml:234 src/contents/ui/Gate.qml:952
-#: src/contents/ui/LevelMeter.qml:215 src/contents/ui/Limiter.qml:607
-#: src/contents/ui/Loudness.qml:175 src/contents/ui/Maximizer.qml:122
-#: src/contents/ui/MidSideEqualizer.qml:315
+#: src/contents/ui/Harmonizer.qml:267 src/contents/ui/LevelMeter.qml:215
+#: src/contents/ui/Limiter.qml:607 src/contents/ui/Loudness.qml:175
+#: src/contents/ui/Maximizer.qml:122 src/contents/ui/MidSideEqualizer.qml:315
 #: src/contents/ui/MultibandCompressor.qml:965
 #: src/contents/ui/MultibandGate.qml:938 src/contents/ui/Pitch.qml:268
 #: src/contents/ui/RNNoise.qml:73 src/contents/ui/RNNoise.qml:84
@@ -263,7 +263,7 @@ msgstr "强制静音"
 
 #: src/contents/ui/Autogain.qml:258
 msgid "Force silence when the level is below the silence threshold"
-msgstr "当电平低于静音阈值时强制静音"
+msgstr "当电平低于阈值时强制静音"
 
 #: src/contents/ui/Autogain.qml:270 src/contents/ui/Autotune.qml:436
 #: src/contents/ui/DeepFilterNet.qml:294 src/contents/ui/LevelMeter.qml:240
@@ -307,7 +307,7 @@ msgstr "偏差"
 
 #: src/contents/ui/Autotune.qml:169 src/contents/ui/Deesser.qml:171
 #: src/contents/ui/Filter.qml:137 src/contents/ui/Reverb.qml:126
-#: src/tags_plugin_name.cpp:65
+#: src/tags_plugin_name.cpp:66
 msgid "Filter"
 msgstr "滤波器"
 
@@ -331,7 +331,7 @@ msgstr "偶发"
 msgid "Major"
 msgstr "大调"
 
-#: src/contents/ui/Autotune.qml:248
+#: src/contents/ui/Autotune.qml:248 src/contents/ui/Harmonizer.qml:114
 msgid "Minor"
 msgstr "小调"
 
@@ -407,9 +407,9 @@ msgstr "聆听"
 #: src/contents/ui/EchoCanceller.qml:186 src/contents/ui/Equalizer.qml:411
 #: src/contents/ui/Exciter.qml:252 src/contents/ui/Expander.qml:875
 #: src/contents/ui/Filter.qml:266 src/contents/ui/Gate.qml:1004
-#: src/contents/ui/Limiter.qml:659 src/contents/ui/Loudness.qml:217
-#: src/contents/ui/Main.qml:481 src/contents/ui/Maximizer.qml:154
-#: src/contents/ui/MidSideEqualizer.qml:399
+#: src/contents/ui/Harmonizer.qml:285 src/contents/ui/Limiter.qml:659
+#: src/contents/ui/Loudness.qml:217 src/contents/ui/Main.qml:481
+#: src/contents/ui/Maximizer.qml:154 src/contents/ui/MidSideEqualizer.qml:399
 #: src/contents/ui/MultibandCompressor.qml:1014
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/RNNoise.qml:345
 #: src/contents/ui/Reverb.qml:357 src/contents/ui/Speex.qml:195
@@ -487,7 +487,7 @@ msgstr "显示已排除的应用程序"
 msgid "Show excluded applications in the list of players/recorders"
 msgstr "按播放器/录音器分类显示已排除的应用程序"
 
-#: src/contents/ui/Compressor.qml:67 src/tags_plugin_name.cpp:51
+#: src/contents/ui/Compressor.qml:67 src/tags_plugin_name.cpp:52
 msgid "Compressor"
 msgstr "压缩器"
 
@@ -582,7 +582,7 @@ msgstr "外部输入"
 
 #: src/contents/ui/Compressor.qml:277 src/contents/ui/Expander.qml:237
 #: src/contents/ui/Gate.qml:255 src/contents/ui/Limiter.qml:227
-#: src/contents/ui/PageStreamsEffects.qml:489
+#: src/contents/ui/PageStreamsEffects.qml:491
 msgid "Input device"
 msgstr "输入设备"
 
@@ -640,7 +640,7 @@ msgstr "侧信号"
 #: src/contents/ui/Compressor.qml:319 src/contents/ui/Convolver.qml:301
 #: src/contents/ui/Delay.qml:59 src/contents/ui/Equalizer.qml:250
 #: src/contents/ui/Expander.qml:279 src/contents/ui/Gate.qml:297
-#: src/contents/ui/HearingTestDialog.qml:102 src/contents/ui/LevelMeter.qml:79
+#: src/contents/ui/HearingTestDialog.qml:139 src/contents/ui/LevelMeter.qml:79
 #: src/contents/ui/LevelMeter.qml:118
 #: src/contents/ui/MultibandCompressor.qml:449
 #: src/contents/ui/MultibandGate.qml:422 src/contents/ui/PipeWirePage.qml:346
@@ -651,7 +651,7 @@ msgstr "左声道"
 #: src/contents/ui/Compressor.qml:319 src/contents/ui/Convolver.qml:319
 #: src/contents/ui/Delay.qml:212 src/contents/ui/Equalizer.qml:250
 #: src/contents/ui/Expander.qml:279 src/contents/ui/Gate.qml:297
-#: src/contents/ui/HearingTestDialog.qml:102 src/contents/ui/LevelMeter.qml:89
+#: src/contents/ui/HearingTestDialog.qml:139 src/contents/ui/LevelMeter.qml:89
 #: src/contents/ui/LevelMeter.qml:128
 #: src/contents/ui/MultibandCompressor.qml:449
 #: src/contents/ui/MultibandGate.qml:422 src/contents/ui/PipeWirePage.qml:357
@@ -949,7 +949,7 @@ msgid "Failed to rename the %1 impulse to %2"
 msgstr "无法将脉冲响应 %1 重命名为 %2"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:147
-#: src/contents/ui/HearingTestDialog.qml:178
+#: src/contents/ui/HearingTestDialog.qml:219
 #: src/contents/ui/PresetsLocalPage.qml:267
 msgid "Cancel"
 msgstr "取消"
@@ -967,6 +967,7 @@ msgid "Import impulse"
 msgstr "导入脉冲响应"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:243
+#: src/contents/ui/HearingTestDialog.qml:47
 #: src/contents/ui/MenuAddPlugins.qml:202 src/contents/ui/PresetsDialog.qml:126
 msgctxt "@action:button"
 msgid "Close"
@@ -1028,7 +1029,7 @@ msgstr "交叉反馈预设"
 msgid "Default"
 msgstr "默认"
 
-#: src/contents/ui/Crossfeed.qml:167 src/contents/ui/PageStreamsEffects.qml:663
+#: src/contents/ui/Crossfeed.qml:167 src/contents/ui/PageStreamsEffects.qml:665
 #: src/contents/ui/PreferencesSheet.qml:65 src/contents/ui/Reverb.qml:335
 msgid "Presets"
 msgstr "预设"
@@ -1038,7 +1039,7 @@ msgid "Process only phantom center"
 msgstr "仅处理心理中置信号 (phantom center)"
 
 #: src/contents/ui/CrosstalkCanceller.qml:75
-#: src/contents/ui/StereoTools.qml:294 src/tags_plugin_name.cpp:59
+#: src/contents/ui/StereoTools.qml:294 src/tags_plugin_name.cpp:60
 msgid "Delay"
 msgstr "延迟"
 
@@ -1124,18 +1125,16 @@ msgid "Bypass"
 msgstr "旁通"
 
 #: src/contents/ui/DeepFilterNet.qml:67
-#, fuzzy
 msgid "%1 model is not installed. Audio passes through unprocessed."
-msgstr "未安装已选模型。音频不受处理。"
+msgstr "未安装 %1 模型。音频不受处理。"
 
 #: src/contents/ui/DeepFilterNet.qml:84
-#, fuzzy
 msgid "Model"
 msgstr "模型"
 
 #: src/contents/ui/DeepFilterNet.qml:104
 msgid "Process as Mono"
-msgstr ""
+msgstr "按单声道处理"
 
 #: src/contents/ui/DeepFilterNet.qml:108
 msgid ""
@@ -1144,6 +1143,8 @@ msgid ""
 "microphones. Both output channels receive the same audio; stereo separation "
 "is lost."
 msgstr ""
+"取左右声道输入平均，用单 DPDFNet 实例处理。这可显著减少单声道麦克风的 CPU 占"
+"用。各输出声道接收相同音频，不再分离立体声。"
 
 #: src/contents/ui/DeepFilterNet.qml:121
 msgid "Attenuation limit"
@@ -1169,7 +1170,7 @@ msgstr "最小处理缓冲区"
 msgid "Post filter Beta"
 msgstr "后期过滤 Beta 值"
 
-#: src/contents/ui/Deesser.qml:63 src/tags_plugin_name.cpp:58
+#: src/contents/ui/Deesser.qml:63 src/tags_plugin_name.cpp:59
 msgid "Deesser"
 msgstr "齿音消除器"
 
@@ -1313,7 +1314,7 @@ msgstr "排除"
 msgid "Add %1 to excluded applications"
 msgstr "将 %1 添加到排除的应用程序"
 
-#: src/contents/ui/EchoCanceller.qml:61 src/tags_plugin_name.cpp:60
+#: src/contents/ui/EchoCanceller.qml:61 src/tags_plugin_name.cpp:61
 msgid "Echo Canceller"
 msgstr "回音消除器"
 
@@ -1510,7 +1511,7 @@ msgstr "分离声道"
 
 #: src/contents/ui/Equalizer.qml:362 src/contents/ui/HearingTestDialog.qml:23
 msgid "Hearing Test"
-msgstr ""
+msgstr "听力测试"
 
 #: src/contents/ui/Equalizer.qml:368 src/contents/ui/MidSideEqualizer.qml:356
 msgid "Flat response"
@@ -1644,7 +1645,7 @@ msgstr "激活上限"
 msgid "Ceil"
 msgstr "上限"
 
-#: src/contents/ui/Expander.qml:67 src/tags_plugin_name.cpp:64
+#: src/contents/ui/Expander.qml:67 src/tags_plugin_name.cpp:65
 msgid "Expander"
 msgstr "扩展器"
 
@@ -1662,7 +1663,7 @@ msgstr "滤波器模式"
 msgid "Equalizer mode"
 msgstr "均衡器模式"
 
-#: src/contents/ui/Gate.qml:71 src/tags_plugin_name.cpp:66
+#: src/contents/ui/Gate.qml:71 src/tags_plugin_name.cpp:67
 msgid "Gate"
 msgstr "门限"
 
@@ -1682,73 +1683,281 @@ msgstr "迟滞"
 msgid "Start"
 msgstr "启动"
 
-#: src/contents/ui/HearingTestDialog.qml:53
+#: src/contents/ui/Harmonizer.qml:38
+msgid "Harmony"
+msgstr "和声"
+
+#: src/contents/ui/Harmonizer.qml:45
+msgid "C"
+msgstr "C"
+
+#: src/contents/ui/Harmonizer.qml:48
+msgid "C♯ / D♭"
+msgstr "C♯ / D♭"
+
+#: src/contents/ui/Harmonizer.qml:51
+msgid "D"
+msgstr "D"
+
+#: src/contents/ui/Harmonizer.qml:54
+msgid "D♯ / E♭"
+msgstr "D♯ / E♭"
+
+#: src/contents/ui/Harmonizer.qml:57
+msgid "E"
+msgstr "E"
+
+#: src/contents/ui/Harmonizer.qml:60
+msgid "F"
+msgstr "F"
+
+#: src/contents/ui/Harmonizer.qml:63
+msgid "F♯ / G♭"
+msgstr "F♯ / G♭"
+
+#: src/contents/ui/Harmonizer.qml:66
+msgid "G"
+msgstr "G"
+
+#: src/contents/ui/Harmonizer.qml:69
+msgid "G♯ / A♭"
+msgstr "G♯ / A♭"
+
+#: src/contents/ui/Harmonizer.qml:72
+msgid "A"
+msgstr "A"
+
+#: src/contents/ui/Harmonizer.qml:75
+msgid "A♯ / B♭"
+msgstr "A♯ / B♭"
+
+#: src/contents/ui/Harmonizer.qml:78
+msgid "B"
+msgstr "B"
+
+#: src/contents/ui/Harmonizer.qml:90
+msgid "No chord"
+msgstr "无和弦"
+
+#: src/contents/ui/Harmonizer.qml:93
+msgid "6"
+msgstr "六和弦"
+
+#: src/contents/ui/Harmonizer.qml:96
+msgid "Major 7"
+msgstr "大七和弦"
+
+#: src/contents/ui/Harmonizer.qml:99
+msgid "Lydian"
+msgstr "利底亚和弦"
+
+#: src/contents/ui/Harmonizer.qml:102
+msgid "Major 9"
+msgstr "大九和弦"
+
+#: src/contents/ui/Harmonizer.qml:105
+msgid "Major 7/9"
+msgstr "大七九和弦"
+
+#: src/contents/ui/Harmonizer.qml:108
+msgid "6/9"
+msgstr "六九和弦"
+
+#: src/contents/ui/Harmonizer.qml:111
+msgid "Augmented"
+msgstr "增"
+
+#: src/contents/ui/Harmonizer.qml:117
+msgid "Minor 6"
+msgstr "小六和弦"
+
+#: src/contents/ui/Harmonizer.qml:120
+msgid "Minor 7"
+msgstr "小七和弦"
+
+#: src/contents/ui/Harmonizer.qml:123
+msgid "Minor 7 flat 5"
+msgstr "小七降五和弦"
+
+#: src/contents/ui/Harmonizer.qml:126
+msgid "Minor 9"
+msgstr "小九和弦"
+
+#: src/contents/ui/Harmonizer.qml:129
+msgid "Minor 7/9"
+msgstr "小七九和弦"
+
+#: src/contents/ui/Harmonizer.qml:132
+msgid "Minor 7/11"
+msgstr "小七十一和弦"
+
+#: src/contents/ui/Harmonizer.qml:135
+msgid "Minor major 7"
+msgstr "小大七和弦"
+
+#: src/contents/ui/Harmonizer.qml:138
+msgid "Minor major 7/9"
+msgstr "小大七九和弦"
+
+#: src/contents/ui/Harmonizer.qml:141
+msgid "Diminished"
+msgstr "减"
+
+#: src/contents/ui/Harmonizer.qml:144
+msgid "Diminished 7"
+msgstr "减七和弦"
+
+#: src/contents/ui/Harmonizer.qml:147
+msgid "Dominant 7"
+msgstr "属七和弦"
+
+#: src/contents/ui/Harmonizer.qml:150
+msgid "Dominant 7 sus4"
+msgstr "属七挂四和弦"
+
+#: src/contents/ui/Harmonizer.qml:153
+msgid "Dominant 7 flat 5"
+msgstr "属七降五和弦"
+
+#: src/contents/ui/Harmonizer.qml:156
+msgid "Dominant 9"
+msgstr "属九和弦"
+
+#: src/contents/ui/Harmonizer.qml:159
+msgid "Dominant 7 sharp 11"
+msgstr "属七升十一和弦"
+
+#: src/contents/ui/Harmonizer.qml:162
+msgid "Dominant 13"
+msgstr "属十三和弦"
+
+#: src/contents/ui/Harmonizer.qml:165
+msgid "Dominant 7 flat 9"
+msgstr "属七降九和弦"
+
+#: src/contents/ui/Harmonizer.qml:168
+msgid "Dominant 7 flat 13"
+msgstr "属七降十三和弦"
+
+#: src/contents/ui/Harmonizer.qml:171
+msgid "Dominant 7 sharp 9"
+msgstr "属七升九和弦"
+
+#: src/contents/ui/Harmonizer.qml:174
+msgid "Augmented major 7"
+msgstr "增大七和弦"
+
+#: src/contents/ui/Harmonizer.qml:177
+msgid "Augmented 7"
+msgstr "增七和弦"
+
+#: src/contents/ui/Harmonizer.qml:180 src/contents/ui/Pitch.qml:175
+msgid "Octaves"
+msgstr "八度"
+
+#: src/contents/ui/Harmonizer.qml:183
+msgid "Fifths"
+msgstr "五度"
+
+#: src/contents/ui/Harmonizer.qml:186
+msgid "Suspended 4"
+msgstr "挂四和弦"
+
+#: src/contents/ui/Harmonizer.qml:189
+msgid "Seconds"
+msgstr "二度"
+
+#: src/contents/ui/Harmonizer.qml:197
+msgid "Follow chord"
+msgstr "跟随和弦"
+
+#: src/contents/ui/Harmonizer.qml:203
+msgid "Left voice interval"
+msgstr "左和弦配置音程"
+
+#: src/contents/ui/Harmonizer.qml:213
+msgid "Left voice level"
+msgstr "左和弦配置电平"
+
+#: src/contents/ui/Harmonizer.qml:224
+msgid "Right voice interval"
+msgstr "右和弦配置音程"
+
+#: src/contents/ui/Harmonizer.qml:234
+msgid "Right voice level"
+msgstr "右和弦配置电平"
+
+#: src/contents/ui/Harmonizer.qml:245
+msgid "Dry/wet"
+msgstr "干/湿"
+
+#: src/contents/ui/HearingTestDialog.qml:86
 msgid ""
 "The output device changed. Restart the test with the same headphones and "
 "volume."
-msgstr ""
+msgstr "输出设备改变。用相同耳机和音量重新测试。"
 
-#: src/contents/ui/HearingTestDialog.qml:64
+#: src/contents/ui/HearingTestDialog.qml:98
 msgid ""
 "Use headphones in a quiet room. Pause other audio and keep the system volume "
 "fixed at a comfortable level. Adjust each tone until it is barely audible, "
 "then record the threshold. This uncalibrated listening test is not a medical "
 "hearing assessment."
 msgstr ""
+"在安静房间里使用耳机。暂停其他音频，将系统音量保持在舒适水平。调整每种纯音直"
+"到几不可闻，记录其阈值。此听力测试未受校准，不作为医学评估。"
 
-#: src/contents/ui/HearingTestDialog.qml:70
+#: src/contents/ui/HearingTestDialog.qml:105
 msgid "I am using headphones"
-msgstr ""
+msgstr "我正在使用耳机"
 
-#: src/contents/ui/HearingTestDialog.qml:84
-#, fuzzy
+#: src/contents/ui/HearingTestDialog.qml:121
 msgid "Start Test"
-msgstr "启动"
+msgstr "开始测试"
 
-#: src/contents/ui/HearingTestDialog.qml:95
+#: src/contents/ui/HearingTestDialog.qml:132
 msgid ""
 "Select an available stereo output device and disable the regular test "
 "signals before starting."
-msgstr ""
+msgstr "选择可用的双声道输出设备，在开始前禁用常规测试信号。"
 
-#: src/contents/ui/HearingTestDialog.qml:102
+#: src/contents/ui/HearingTestDialog.qml:139
 msgid "%1 ear: %2 Hz (%3 of %4)"
-msgstr ""
+msgstr "%1 耳：%2 Hz (%3 / %4)"
 
-#: src/contents/ui/HearingTestDialog.qml:108
-#, fuzzy
+#: src/contents/ui/HearingTestDialog.qml:145
 msgid "Tone Level"
-msgstr "输入电平"
+msgstr "纯音电平"
 
-#: src/contents/ui/HearingTestDialog.qml:126
-#, fuzzy
+#: src/contents/ui/HearingTestDialog.qml:164
 msgid "Play Tone"
-msgstr "播放器"
+msgstr "播放纯音"
 
-#: src/contents/ui/HearingTestDialog.qml:133
-#, fuzzy
+#: src/contents/ui/HearingTestDialog.qml:171
 msgid "Record Threshold"
-msgstr "释放阈值"
+msgstr "记录阈值"
 
-#: src/contents/ui/HearingTestDialog.qml:154
+#: src/contents/ui/HearingTestDialog.qml:193
 msgid ""
 "The test is complete. Applying the profile replaces this equalizer's "
 "settings with separate corrections for each ear, limited to 6 dB per band, "
 "and lowers input gain to preserve headroom. Save a preset to keep the result "
 "for these headphones."
 msgstr ""
+"测试完成。应用配置将以每侧耳朵的矫正替换此均衡器设置，限制在每频带 6 dB，降低"
+"输入增益以保留余量。保存为预设以保持耳机设置。"
 
-#: src/contents/ui/HearingTestDialog.qml:161
+#: src/contents/ui/HearingTestDialog.qml:200
 msgid "%1 Hz: left %2 dB, right %3 dB"
-msgstr ""
+msgstr "%1 Hz：左耳 %2 dB，右耳 %3 dB"
 
-#: src/contents/ui/HearingTestDialog.qml:168
+#: src/contents/ui/HearingTestDialog.qml:209
 msgid "Apply Personalized EQ"
-msgstr ""
+msgstr "应用个性化 EQ"
 
-#: src/contents/ui/HearingTestDialog.qml:173
+#: src/contents/ui/HearingTestDialog.qml:214
 msgid "Could not apply the hearing profile."
-msgstr ""
+msgstr "无法应用听力配置。"
 
 #: src/contents/ui/LevelMeter.qml:67
 msgid "Input Level"
@@ -1904,7 +2113,7 @@ msgstr "实际峰值/24 位输出"
 msgid "Dithering"
 msgstr "抖动"
 
-#: src/contents/ui/Limiter.qml:116 src/tags_plugin_name.cpp:68
+#: src/contents/ui/Limiter.qml:116 src/tags_plugin_name.cpp:69
 msgid "Limiter"
 msgstr "限幅器"
 
@@ -1914,7 +2123,7 @@ msgstr "立体声连锁"
 
 #: src/contents/ui/Limiter.qml:406 src/contents/ui/Limiter.qml:648
 msgid "Automatic level"
-msgstr "自动调平"
+msgstr "自动电平调节"
 
 #: src/contents/ui/Limiter.qml:468
 msgid "Smooth"
@@ -1970,7 +2179,7 @@ msgstr "质量最好"
 
 #: src/contents/ui/Loudness.qml:129
 msgid "Volume"
-msgstr "输出音量"
+msgstr "音量"
 
 #: src/contents/ui/Loudness.qml:146
 msgid "Clipping range"
@@ -2009,11 +2218,11 @@ msgstr "已启用音效。"
 msgid "Audio effects are disabled."
 msgstr "已禁用音效。"
 
-#: src/contents/ui/Main.qml:405 src/contents/ui/PageStreamsEffects.qml:489
+#: src/contents/ui/Main.qml:405 src/contents/ui/PageStreamsEffects.qml:491
 msgid "Players"
 msgstr "播放器"
 
-#: src/contents/ui/Main.qml:421 src/contents/ui/PageStreamsEffects.qml:498
+#: src/contents/ui/Main.qml:421 src/contents/ui/PageStreamsEffects.qml:500
 msgid "Recorders"
 msgstr "录音器"
 
@@ -2183,52 +2392,52 @@ msgstr "无音效"
 msgid "Audio stream not modified"
 msgstr "音频流未修改"
 
-#: src/contents/ui/PageStreamsEffects.qml:418
+#: src/contents/ui/PageStreamsEffects.qml:420
 msgid "Add effect"
 msgstr "添加音效"
 
-#: src/contents/ui/PageStreamsEffects.qml:432
+#: src/contents/ui/PageStreamsEffects.qml:434
 msgid "Close"
 msgstr "关闭"
 
-#: src/contents/ui/PageStreamsEffects.qml:436
+#: src/contents/ui/PageStreamsEffects.qml:438
 msgid "Expand the list of effects pipeline"
 msgstr "展开音效管线列表"
 
-#: src/contents/ui/PageStreamsEffects.qml:436
+#: src/contents/ui/PageStreamsEffects.qml:438
 msgid "Reduce the list of effects pipeline"
 msgstr "收起音效管线列表"
 
-#: src/contents/ui/PageStreamsEffects.qml:498
+#: src/contents/ui/PageStreamsEffects.qml:500
 msgid "Output device"
 msgstr "输出设备"
 
-#: src/contents/ui/PageStreamsEffects.qml:676
+#: src/contents/ui/PageStreamsEffects.qml:678
 msgid "Excluded apps"
 msgstr "已排除的应用程序"
 
-#: src/contents/ui/PageStreamsEffects.qml:689
-#: src/contents/ui/PageStreamsEffects.qml:707
+#: src/contents/ui/PageStreamsEffects.qml:691
+#: src/contents/ui/PageStreamsEffects.qml:709
 msgid "Input monitoring"
 msgstr "输入监听"
 
-#: src/contents/ui/PageStreamsEffects.qml:716
+#: src/contents/ui/PageStreamsEffects.qml:718
 msgid "Toggle input monitoring"
 msgstr "切换输入监听"
 
-#: src/contents/ui/PageStreamsEffects.qml:736
+#: src/contents/ui/PageStreamsEffects.qml:738
 msgid "Set input monitoring volume"
 msgstr "设置输入监听音量"
 
-#: src/contents/ui/PageStreamsEffects.qml:755
+#: src/contents/ui/PageStreamsEffects.qml:757
 msgid "Monitoring volume"
 msgstr "监听音量"
 
-#: src/contents/ui/PageStreamsEffects.qml:788
+#: src/contents/ui/PageStreamsEffects.qml:790
 msgid "Share audio"
 msgstr "共享音频"
 
-#: src/contents/ui/PageStreamsEffects.qml:789
+#: src/contents/ui/PageStreamsEffects.qml:791
 msgid "Send the processed desktop audio to the virtual source"
 msgstr "发送处理后音频至虚拟源"
 
@@ -2354,13 +2563,9 @@ msgstr "查找窗口"
 msgid "Overlap length"
 msgstr "重叠长度"
 
-#: src/contents/ui/Pitch.qml:164 src/tags_plugin_name.cpp:73
+#: src/contents/ui/Pitch.qml:164 src/tags_plugin_name.cpp:74
 msgid "Pitch"
 msgstr "音高"
-
-#: src/contents/ui/Pitch.qml:175
-msgid "Octaves"
-msgstr "八度"
 
 #: src/contents/ui/Pitch.qml:191
 msgid "Cents"
@@ -2555,38 +2760,32 @@ msgid "Link delay"
 msgstr "链接延迟"
 
 #: src/contents/ui/PreferencesSheet.qml:394
-#, fuzzy
 msgid "Enable the output inactivity timeout"
-msgstr "启用空闲超时"
+msgstr "启用输出空闲超时"
 
 #: src/contents/ui/PreferencesSheet.qml:395
-#, fuzzy
 msgid ""
 "When all output streams are inactive, the Easy Effects output pipeline "
 "remains loaded for an extra amount of time."
-msgstr "当没有活跃音频流时，Easy Effects 管线仍将额外加载一段时间。"
+msgstr "当没有活跃音频流时，Easy Effects 输出管线仍将保持一段时间。"
 
 #: src/contents/ui/PreferencesSheet.qml:407
-#, fuzzy
 msgid "Output inactivity timeout"
-msgstr "空闲超时"
+msgstr "输出空闲超时"
 
 #: src/contents/ui/PreferencesSheet.qml:424
-#, fuzzy
 msgid "Enable the input inactivity timeout"
-msgstr "启用空闲超时"
+msgstr "启用输入空闲超时"
 
 #: src/contents/ui/PreferencesSheet.qml:425
-#, fuzzy
 msgid ""
 "When all input streams are inactive, the Easy Effects input pipeline remains "
 "loaded for an extra amount of time."
-msgstr "当没有活跃音频流时，Easy Effects 管线仍将额外加载一段时间。"
+msgstr "当没有活跃音频流时，Easy Effects 输入管线仍将保持一段时间。"
 
 #: src/contents/ui/PreferencesSheet.qml:437
-#, fuzzy
 msgid "Input inactivity timeout"
-msgstr "空闲超时"
+msgstr "输入空闲超时"
 
 #: src/contents/ui/PreferencesSheet.qml:452
 msgid "Level meters frame rate cap"
@@ -2594,7 +2793,7 @@ msgstr "电平表帧率上限"
 
 #: src/contents/ui/PreferencesSheet.qml:453
 msgid "Maximum level meter update rate."
-msgstr "电平表动画的最高刷新率。"
+msgstr "电平表最大刷新率。"
 
 #: src/contents/ui/PreferencesSheet.qml:467
 msgid "Level meters label"
@@ -2604,7 +2803,7 @@ msgstr "电平表标签"
 msgid ""
 "The time it takes for the level meter labels to be updated when the current "
 "level is below the last highest one."
-msgstr "当前电平低于此前最高值时，电平表更新耗时。"
+msgstr "当前音量低于历史峰值时，电平表标签更新耗时。"
 
 #: src/contents/ui/PreferencesSheet.qml:485
 msgid "Enable level meters animation"
@@ -3133,7 +3332,7 @@ msgstr "无法加载 RNNoise 模型 %1。回退到标准 RNNoise 模型。"
 
 #: src/contents/ui/RNNoise.qml:105 src/contents/ui/Speex.qml:118
 msgid "Voice detection"
-msgstr "语音检测"
+msgstr "人声检测"
 
 #: src/contents/ui/RNNoise.qml:142
 msgid "Wet level"
@@ -3308,7 +3507,7 @@ msgstr "噪音抑制"
 
 #: src/contents/ui/Speex.qml:113
 msgid "Voice Activity Probability"
-msgstr "语音活跃概率"
+msgstr "人声活跃概率"
 
 #: src/contents/ui/Speex.qml:149
 msgid "Continue"
@@ -3473,33 +3672,33 @@ msgstr "(扬声器)"
 msgid "Output Level Meter"
 msgstr "输出电平表"
 
-#: src/presets_manager.cpp:800 src/presets_manager.cpp:807
-#: src/presets_manager.cpp:817 src/presets_manager.cpp:824
-#: src/presets_manager.cpp:834 src/presets_manager.cpp:843
+#: src/presets_manager.cpp:801 src/presets_manager.cpp:808
+#: src/presets_manager.cpp:818 src/presets_manager.cpp:825
+#: src/presets_manager.cpp:835 src/presets_manager.cpp:844
 msgid "Preset not loaded correctly"
 msgstr "未正确加载预设"
 
-#: src/presets_manager.cpp:800
+#: src/presets_manager.cpp:801
 msgid "Wrong format in excluded apps list"
 msgstr "已排除应用程序列表存在格式错误"
 
-#: src/presets_manager.cpp:808
+#: src/presets_manager.cpp:809
 msgid "Generic error while loading excluded apps list"
 msgstr "加载已排除应用程序列表时发生常规错误"
 
-#: src/presets_manager.cpp:817
+#: src/presets_manager.cpp:818
 msgid "Wrong format in effects list"
 msgstr "音效列表存在格式错误"
 
-#: src/presets_manager.cpp:824
+#: src/presets_manager.cpp:825
 msgid "Generic error while loading effects list"
 msgstr "加载音效列表时发生常规错误"
 
-#: src/presets_manager.cpp:835
+#: src/presets_manager.cpp:836
 msgid "One or more parameters have a wrong format"
 msgstr "一个或多个参数存在格式错误"
 
-#: src/presets_manager.cpp:844
+#: src/presets_manager.cpp:845
 msgid "Generic error while loading the effect"
 msgstr "加载音效时发生常规错误"
 
@@ -3532,82 +3731,86 @@ msgid "Autotune"
 msgstr "自动调音"
 
 #: src/tags_plugin_name.cpp:49
+msgid "Harmonizer"
+msgstr "和声器"
+
+#: src/tags_plugin_name.cpp:50
 msgid "Bass Enhancer"
 msgstr "低音增强器"
 
-#: src/tags_plugin_name.cpp:50
+#: src/tags_plugin_name.cpp:51
 msgid "Bass Loudness"
 msgstr "低音响度"
 
-#: src/tags_plugin_name.cpp:52
+#: src/tags_plugin_name.cpp:53
 msgid "Convolver"
 msgstr "卷积混响器"
 
-#: src/tags_plugin_name.cpp:53
+#: src/tags_plugin_name.cpp:54
 msgid "Crossfeed"
 msgstr "交叉反馈"
 
-#: src/tags_plugin_name.cpp:54
+#: src/tags_plugin_name.cpp:55
 msgid "Crosstalk Canceller"
 msgstr "串音消除器"
 
-#: src/tags_plugin_name.cpp:55
+#: src/tags_plugin_name.cpp:56
 msgid "Crusher"
 msgstr "粉碎器"
 
-#: src/tags_plugin_name.cpp:56
+#: src/tags_plugin_name.cpp:57
 msgid "Crystalizer"
 msgstr "音质晶化器"
 
-#: src/tags_plugin_name.cpp:57
+#: src/tags_plugin_name.cpp:58
 msgid "Deep Noise Remover"
 msgstr "深度除噪器"
 
-#: src/tags_plugin_name.cpp:61
+#: src/tags_plugin_name.cpp:62
 msgid "Equalizer"
 msgstr "均衡器"
 
-#: src/tags_plugin_name.cpp:62
+#: src/tags_plugin_name.cpp:63
 msgid "Mid-Side Equalizer"
 msgstr "中—侧均衡器"
 
-#: src/tags_plugin_name.cpp:63
+#: src/tags_plugin_name.cpp:64
 msgid "Exciter"
 msgstr "激励器"
 
-#: src/tags_plugin_name.cpp:67
+#: src/tags_plugin_name.cpp:68
 msgid "Level Meter"
 msgstr "电平表"
 
-#: src/tags_plugin_name.cpp:70
+#: src/tags_plugin_name.cpp:71
 msgid "Maximizer"
 msgstr "放大器"
 
-#: src/tags_plugin_name.cpp:71
+#: src/tags_plugin_name.cpp:72
 msgid "Multiband Compressor"
 msgstr "多频带压缩器"
 
-#: src/tags_plugin_name.cpp:72
+#: src/tags_plugin_name.cpp:73
 msgid "Multiband Gate"
 msgstr "多频带门限"
 
-#: src/tags_plugin_name.cpp:74
+#: src/tags_plugin_name.cpp:75
 msgid "Reverberation"
 msgstr "混响"
 
-#: src/tags_plugin_name.cpp:75
+#: src/tags_plugin_name.cpp:76
 msgid "Noise Reduction"
 msgstr "降噪"
 
-#: src/tags_plugin_name.cpp:76
+#: src/tags_plugin_name.cpp:77
 msgid "Speech Processor"
 msgstr "语音处理器"
 
-#: src/tags_plugin_name.cpp:77
+#: src/tags_plugin_name.cpp:78
 msgid "Stereo Tools"
 msgstr "立体声工具"
 
-#: src/tags_plugin_name.cpp:78
+#: src/tags_plugin_name.cpp:79
 msgid "Voice Suppressor"
 msgstr "人声抑制器"
 
@@ -4724,12 +4927,6 @@ msgstr "简易音效集锦"
 
 #~ msgid "Right Dry Level"
 #~ msgstr "右干声级别"
-
-#~ msgid "Left Wet Level"
-#~ msgstr "左湿声级别"
-
-#~ msgid "Right Wet Level"
-#~ msgstr "右湿声级别"
 
 #~ msgid "Fast Fourier Transform Size"
 #~ msgstr "快速傅里叶变换大小"

@@ -46,6 +46,7 @@
 #include <vector>
 #include "autogain_preset.hpp"
 #include "autotune_preset.hpp"
+#include "harmonizer_preset.hpp"
 #include "bass_enhancer_preset.hpp"
 #include "bass_loudness_preset.hpp"
 #include "compressor_preset.hpp"
@@ -857,6 +858,8 @@ auto Manager::create_wrapper(const PipelineType& pipeline_type, const QString& f
 
   } else if (filter_name.startsWith(tags::plugin_name::BaseName::autotune)) {
     return std::make_unique<AutotunePreset>(pipeline_type, filter_name.toStdString());
+  } else if (filter_name.startsWith(tags::plugin_name::BaseName::harmonizer)) {
+    return std::make_unique<HarmonizerPreset>(pipeline_type, filter_name.toStdString());
 
   } else if (filter_name.startsWith(tags::plugin_name::BaseName::bassEnhancer)) {
     return std::make_unique<BassEnhancerPreset>(pipeline_type, filter_name.toStdString());

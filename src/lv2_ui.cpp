@@ -44,22 +44,32 @@
 namespace lv2 {
 
 NativeUi::NativeUi(Lv2Wrapper* wrapper) : wrapper(wrapper) {
-  lv2_log = {.handle = wrapper,
-             .printf = &Lv2Wrapper::lv2_printf,
-             .vprintf = []([[maybe_unused]] LV2_Log_Handle handle, [[maybe_unused]] LV2_URID type, const char* fmt,
-                           va_list ap) { return std::vprintf(fmt, ap); }};
+  lv2_log = {
+      .handle = wrapper,
+      .printf = &Lv2Wrapper::lv2_printf,
+      .vprintf = []([[maybe_unused]] LV2_Log_Handle handle, [[maybe_unused]] LV2_URID type, const char* fmt,
+                    va_list ap) { return std::vprintf(fmt, ap); },
+  };
 
-  lv2_map = {.handle = wrapper, .map = [](LV2_URID_Map_Handle handle, const char* uri) {
-               auto* lw = static_cast<Lv2Wrapper*>(handle);
+  lv2_map = {
+      .handle = wrapper,
+      .map =
+          [](LV2_URID_Map_Handle handle, const char* uri) {
+            auto* lw = static_cast<Lv2Wrapper*>(handle);
 
-               return lw->map_urid(uri);
-             }};
+            return lw->map_urid(uri);
+          },
+  };
 
-  lv2_unmap = {.handle = wrapper, .unmap = [](LV2_URID_Unmap_Handle handle, LV2_URID urid) {
-                 auto* lw = static_cast<Lv2Wrapper*>(handle);
+  lv2_unmap = {
+      .handle = wrapper,
+      .unmap =
+          [](LV2_URID_Unmap_Handle handle, LV2_URID urid) {
+            auto* lw = static_cast<Lv2Wrapper*>(handle);
 
-                 return lw->map_urid_to_uri[urid].c_str();
-               }};
+            return lw->map_urid_to_uri[urid].c_str();
+          },
+  };
 }
 
 NativeUi::~NativeUi() {
@@ -130,32 +140,41 @@ void NativeUi::load() {
       const auto rate = wrapper->get_rate();
       const auto n_samples = wrapper->get_n_samples();
 
-      auto options = std::to_array<LV2_Options_Option>(
-          {{.context = LV2_OPTIONS_INSTANCE,
-            .subject = 0,
-            .key = wrapper->map_urid(LV2_PARAMETERS__sampleRate),
-            .size = sizeof(float),
-            .type = wrapper->map_urid(LV2_ATOM__Float),
-            .value = &rate},
-           {.context = LV2_OPTIONS_INSTANCE,
-            .subject = 0,
-            .key = wrapper->map_urid(LV2_BUF_SIZE__minBlockLength),
-            .size = sizeof(int32_t),
-            .type = wrapper->map_urid(LV2_ATOM__Int),
-            .value = &lv2::Lv2Wrapper::min_quantum},
-           {.context = LV2_OPTIONS_INSTANCE,
-            .subject = 0,
-            .key = wrapper->map_urid(LV2_BUF_SIZE__maxBlockLength),
-            .size = sizeof(int32_t),
-            .type = wrapper->map_urid(LV2_ATOM__Int),
-            .value = &lv2::Lv2Wrapper::max_quantum},
-           {.context = LV2_OPTIONS_INSTANCE,
-            .subject = 0,
-            .key = wrapper->map_urid(LV2_BUF_SIZE__nominalBlockLength),
-            .size = sizeof(int32_t),
-            .type = wrapper->map_urid(LV2_ATOM__Int),
-            .value = &n_samples},
-           {.context = LV2_OPTIONS_INSTANCE, .subject = 0, .key = 0, .size = 0, .type = 0, .value = nullptr}});
+      auto options = std::to_array<LV2_Options_Option>({
+          {
+              .context = LV2_OPTIONS_INSTANCE,
+              .subject = 0,
+              .key = wrapper->map_urid(LV2_PARAMETERS__sampleRate),
+              .size = sizeof(float),
+              .type = wrapper->map_urid(LV2_ATOM__Float),
+              .value = &rate,
+          },
+          {
+              .context = LV2_OPTIONS_INSTANCE,
+              .subject = 0,
+              .key = wrapper->map_urid(LV2_BUF_SIZE__minBlockLength),
+              .size = sizeof(int32_t),
+              .type = wrapper->map_urid(LV2_ATOM__Int),
+              .value = &lv2::Lv2Wrapper::min_quantum,
+          },
+          {
+              .context = LV2_OPTIONS_INSTANCE,
+              .subject = 0,
+              .key = wrapper->map_urid(LV2_BUF_SIZE__maxBlockLength),
+              .size = sizeof(int32_t),
+              .type = wrapper->map_urid(LV2_ATOM__Int),
+              .value = &lv2::Lv2Wrapper::max_quantum,
+          },
+          {
+              .context = LV2_OPTIONS_INSTANCE,
+              .subject = 0,
+              .key = wrapper->map_urid(LV2_BUF_SIZE__nominalBlockLength),
+              .size = sizeof(int32_t),
+              .type = wrapper->map_urid(LV2_ATOM__Int),
+              .value = &n_samples,
+          },
+          {.context = LV2_OPTIONS_INSTANCE, .subject = 0, .key = 0, .size = 0, .type = 0, .value = nullptr},
+      });
 
       LV2_Feature feature_options = {.URI = LV2_OPTIONS__options, .data = options.data()};
 
@@ -163,8 +182,10 @@ void NativeUi::load() {
 
       const LV2_Feature feature_dataAccess = {.URI = LV2_DATA_ACCESS_URI, .data = &extension_data};
 
-      const LV2_Feature feature_instAccess = {.URI = LV2_INSTANCE_ACCESS_URI,
-                                              .data = wrapper->get_instance()->lv2_handle};
+      const LV2_Feature feature_instAccess = {
+          .URI = LV2_INSTANCE_ACCESS_URI,
+          .data = wrapper->get_instance()->lv2_handle,
+      };
 
       const LV2_Feature idle_feature = {.URI = LV2_UI__idleInterface, .data = nullptr};
 
@@ -178,10 +199,22 @@ void NativeUi::load() {
 
       const LV2_Feature make_soname_resident_feature = {.URI = LV2_UI_makeSONameResident, .data = nullptr};
 
-      const auto features = std::to_array<const LV2_Feature*>(
-          {&lv2_log_feature, &lv2_map_feature, &lv2_unmap_feature, &feature_options, wrapper->static_features.data(),
-           &feature_dataAccess, &feature_instAccess, &idle_feature, &parent_feature, &fixed_size_feature,
-           &no_user_resize_feature, &make_resident_feature, &make_soname_resident_feature, nullptr});
+      const auto features = std::to_array<const LV2_Feature*>({
+          &lv2_log_feature,
+          &lv2_map_feature,
+          &lv2_unmap_feature,
+          &feature_options,
+          wrapper->static_features.data(),
+          &feature_dataAccess,
+          &feature_instAccess,
+          &idle_feature,
+          &parent_feature,
+          &fixed_size_feature,
+          &no_user_resize_feature,
+          &make_resident_feature,
+          &make_soname_resident_feature,
+          nullptr,
+      });
 
       LV2UI_Widget widget = nullptr;
 
