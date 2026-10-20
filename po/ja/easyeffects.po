@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-10-20 15:24+0000\n"
-"PO-Revision-Date: 2025-11-23 11:51+0000\n"
-"Last-Translator: Suu <suunya21@gmail.com>\n"
+"POT-Creation-Date: 2026-10-18 16:13+0000\n"
+"PO-Revision-Date: 2026-10-20 15:35+0000\n"
+"Last-Translator: Suu <suu@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
 "main/ja/>\n"
 "Language: ja\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.15-dev\n"
+"X-Generator: Weblate 2026.11.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -40,53 +40,45 @@ msgstr "Easy Effects をリセットします。"
 
 #: src/command_line_parser.cpp:46
 msgid "Hide the window."
-msgstr "ウィンドウを隠す。"
+msgstr "ウィンドウを非表示にします。"
 
 #: src/command_line_parser.cpp:49
-#, fuzzy
 msgid ""
 "Global bypass. 1 to enable, 2 to disable and 3 to get the current state."
 msgstr ""
-"グローバルバイパス。1 を指定すると有効化し、2 を指定すると無効化します。"
+"グローバルバイパス。1 で有効化、2 で無効化、3 で現在の状態を取得します。"
 
 #: src/command_line_parser.cpp:50
 msgid "bypass-state"
 msgstr "bypass-state"
 
 #: src/command_line_parser.cpp:52
-#, fuzzy
 msgid "Toggle the state of the global bypass."
-msgstr "グローバルバイパス切り替え"
+msgstr "グローバルバイパスの状態を切り替えます。"
 
 #: src/command_line_parser.cpp:55
-#, fuzzy
 msgid ""
 "Audio sharing. 1 to enable, 2 to disable and 3 to get the current state."
-msgstr ""
-"グローバルバイパス。1 を指定すると有効化し、2 を指定すると無効化します。"
+msgstr "音声共有。1 で有効化、2 で無効化、3 で現在の状態を取得します。"
 
 #: src/command_line_parser.cpp:56 src/command_line_parser.cpp:62
-#, fuzzy
 msgid "state"
-msgstr "状態"
+msgstr "state"
 
 #: src/command_line_parser.cpp:58
-#, fuzzy
 msgid "Toggle the state of audio sharing."
-msgstr "グローバルバイパス切り替え"
+msgstr "音声共有の状態を切り替えます。"
 
 #: src/command_line_parser.cpp:61
-#, fuzzy
 msgid ""
 "Microphone monitoring. 1 to enable, 2 to disable and 3 to get the current "
 "state."
 msgstr ""
-"グローバルバイパス。1 を指定すると有効化し、2 を指定すると無効化します。"
+"マイクモニタリング。1 で有効化、2 で無効化、3 で現在の状態を取得します。"
 
 #: src/command_line_parser.cpp:64
-#, fuzzy
 msgid "Toggle the state of microphone monitoring."
-msgstr "マイクモニタリング切り替え"
+msgstr "マイクモニタリングの状態を切り替えます。"
 
 #: src/command_line_parser.cpp:65
 msgid "Load a preset. Example: easyeffects -l music"
@@ -101,18 +93,16 @@ msgid "Show available presets."
 msgstr "利用可能なプリセットを表示します。"
 
 #: src/command_line_parser.cpp:67
-#, fuzzy
 msgid "Get the last loaded input/output preset."
-msgstr "有効な入力/出力プリセットを取得します。"
+msgstr "最後に読み込んだ入力/出力プリセットを取得します。"
 
 #: src/command_line_parser.cpp:67
 msgid "preset-type"
-msgstr "プリセットの種類"
+msgstr "preset-type"
 
 #: src/command_line_parser.cpp:68
-#, fuzzy
 msgid "Get the last loaded input and output presets."
-msgstr "有効な入力プリセットと出力プリセットを取得します。"
+msgstr "最後に読み込んだ入力プリセットと出力プリセットを取得します。"
 
 #: src/command_line_parser.cpp:69
 msgid "Deprecated. Use --service-mode instead."
@@ -155,14 +145,12 @@ msgid "Provided an invalid bypass state."
 msgstr "無効なバイパス状態が提供されました。"
 
 #: src/command_line_parser.cpp:283
-#, fuzzy
 msgid "Provided an invalid microphone monitoring state."
-msgstr "無効なバイパス状態が提供されました。"
+msgstr "無効なマイクモニタリング状態が指定されました。"
 
 #: src/command_line_parser.cpp:313
-#, fuzzy
 msgid "Provided an invalid audio sharing state."
-msgstr "無効なバイパス状態が提供されました。"
+msgstr "無効な音声共有状態が指定されました。"
 
 #: src/contents/ui/AboutPage.qml:24
 msgctxt "@action:button"
@@ -185,17 +173,17 @@ msgid "Reference"
 msgstr "リファレンス"
 
 #: src/contents/ui/Autogain.qml:79 src/contents/ui/Autogain.qml:148
-#: src/contents/ui/LevelMeter.qml:199
+#: src/contents/ui/LevelMeter.qml:158 src/contents/ui/LevelMeter.qml:199
 msgid "Momentary"
 msgstr "瞬間"
 
 #: src/contents/ui/Autogain.qml:79 src/contents/ui/Autogain.qml:158
-#: src/contents/ui/LevelMeter.qml:209
+#: src/contents/ui/LevelMeter.qml:168 src/contents/ui/LevelMeter.qml:209
 msgid "Short-term"
 msgstr "短期"
 
 #: src/contents/ui/Autogain.qml:79 src/contents/ui/Autogain.qml:168
-#: src/contents/ui/LevelMeter.qml:219
+#: src/contents/ui/LevelMeter.qml:178 src/contents/ui/LevelMeter.qml:219
 msgid "Integrated"
 msgstr "統合"
 
@@ -228,17 +216,18 @@ msgid "Maximum history"
 msgstr "最大履歴"
 
 #: src/contents/ui/Autogain.qml:143 src/contents/ui/Autogain.qml:198
-#: src/contents/ui/BassLoudness.qml:67 src/contents/ui/LevelMeter.qml:187
-#: src/tags_plugin_name.cpp:70
+#: src/contents/ui/BassLoudness.qml:67 src/contents/ui/LevelMeter.qml:146
+#: src/tags_plugin_name.cpp:70 src/contents/ui/LevelMeter.qml:187
 msgid "Loudness"
 msgstr "ラウドネス"
 
-#: src/contents/ui/Autogain.qml:178 src/contents/ui/LevelMeter.qml:229
+#: src/contents/ui/Autogain.qml:178 src/contents/ui/LevelMeter.qml:188
+#: src/contents/ui/LevelMeter.qml:229
 msgid "Relative"
 msgstr "相対"
 
 #: src/contents/ui/Autogain.qml:188 src/contents/ui/Crusher.qml:192
-#: src/contents/ui/LevelMeter.qml:239
+#: src/contents/ui/LevelMeter.qml:198 src/contents/ui/LevelMeter.qml:239
 msgid "Range"
 msgstr "範囲"
 
@@ -255,7 +244,7 @@ msgstr "出力ゲイン"
 #: src/contents/ui/EchoCanceller.qml:158 src/contents/ui/Equalizer.qml:321
 #: src/contents/ui/Exciter.qml:210 src/contents/ui/Expander.qml:823
 #: src/contents/ui/Filter.qml:234 src/contents/ui/Gate.qml:952
-#: src/contents/ui/Harmonizer.qml:267 src/contents/ui/LevelMeter.qml:256
+#: src/contents/ui/Harmonizer.qml:267 src/contents/ui/LevelMeter.qml:215
 #: src/contents/ui/Limiter.qml:607 src/contents/ui/Loudness.qml:175
 #: src/contents/ui/Maximizer.qml:122 src/contents/ui/MidSideEqualizer.qml:315
 #: src/contents/ui/MultibandCompressor.qml:965
@@ -264,11 +253,13 @@ msgstr "出力ゲイン"
 #: src/contents/ui/RNNoise.qml:298 src/contents/ui/RNNoise.qml:300
 #: src/contents/ui/RNNoise.qml:320 src/contents/ui/Reverb.qml:318
 #: src/contents/ui/Speex.qml:177 src/contents/ui/StereoTools.qml:392
+#: src/contents/ui/LevelMeter.qml:256
 msgid "Using %1"
 msgstr "%1 を使用中"
 
 #: src/contents/ui/Autogain.qml:250 src/contents/ui/DeepFilterNet.qml:286
-#: src/contents/ui/LevelMeter.qml:273 src/contents/ui/Pitch.qml:285
+#: src/contents/ui/LevelMeter.qml:232 src/contents/ui/Pitch.qml:285
+#: src/contents/ui/LevelMeter.qml:273
 msgid "Reset history"
 msgstr "履歴をリセット"
 
@@ -281,15 +272,14 @@ msgid "Force silence when the level is below the silence threshold"
 msgstr "レベルがしきい値を下回った場合に強制的に無音化します"
 
 #: src/contents/ui/Autogain.qml:270 src/contents/ui/Autotune.qml:436
-#: src/contents/ui/DeepFilterNet.qml:294 src/contents/ui/LevelMeter.qml:281
-#: src/contents/ui/Pitch.qml:313
+#: src/contents/ui/DeepFilterNet.qml:294 src/contents/ui/LevelMeter.qml:240
+#: src/contents/ui/Pitch.qml:313 src/contents/ui/LevelMeter.qml:281
 msgid "Reset settings"
 msgstr "設定をリセット"
 
 #: src/contents/ui/Autotune.qml:92 src/contents/ui/Autotune.qml:120
-#, fuzzy
 msgid "Tuning"
-msgstr "実行中"
+msgstr "チューニング"
 
 #: src/contents/ui/Autotune.qml:107 src/contents/ui/Compressor.qml:79
 #: src/contents/ui/Compressor.qml:301 src/contents/ui/Crusher.qml:97
@@ -305,9 +295,8 @@ msgid "Mode"
 msgstr "モード"
 
 #: src/contents/ui/Autotune.qml:111
-#, fuzzy
 msgid "Auto"
-msgstr "オートゲイン"
+msgstr "自動"
 
 #: src/contents/ui/Autotune.qml:111 src/contents/ui/Main.qml:469
 #: src/contents/ui/TrayIcon.qml:221
@@ -315,13 +304,12 @@ msgid "Manual"
 msgstr "マニュアル"
 
 #: src/contents/ui/Autotune.qml:137
-#, fuzzy
 msgid "Correction"
-msgstr "長さ"
+msgstr "補正"
 
 #: src/contents/ui/Autotune.qml:153
 msgid "Bias"
-msgstr ""
+msgstr "バイアス"
 
 #: src/contents/ui/Autotune.qml:169 src/contents/ui/Deesser.qml:171
 #: src/contents/ui/Filter.qml:137 src/contents/ui/Reverb.qml:126
@@ -331,41 +319,39 @@ msgstr "フィルター"
 
 #: src/contents/ui/Autotune.qml:186
 msgid "Offset"
-msgstr ""
+msgstr "オフセット"
 
 #: src/contents/ui/Autotune.qml:205 src/contents/ui/Autotune.qml:244
 msgid "Scale"
-msgstr ""
+msgstr "音階"
 
 #: src/contents/ui/Autotune.qml:218
 msgid "Root"
-msgstr ""
+msgstr "主音"
 
 #: src/contents/ui/Autotune.qml:231
 msgid "Accidental"
-msgstr ""
+msgstr "変化記号"
 
 #: src/contents/ui/Autotune.qml:248
 msgid "Major"
-msgstr ""
+msgstr "メジャー"
 
 #: src/contents/ui/Autotune.qml:248 src/contents/ui/Harmonizer.qml:114
 msgid "Minor"
-msgstr ""
+msgstr "マイナー"
 
 #: src/contents/ui/Autotune.qml:377 src/contents/ui/Deesser.qml:276
 msgid "Level"
 msgstr "レベル"
 
 #: src/contents/ui/Autotune.qml:388
-#, fuzzy
 msgid "Pitch error"
-msgstr "左ピッチ"
+msgstr "ピッチ誤差"
 
 #: src/contents/ui/Autotune.qml:425
-#, fuzzy
 msgid "Fast correction"
-msgstr "減少"
+msgstr "高速補正"
 
 #: src/contents/ui/BassEnhancer.qml:56 src/contents/ui/Exciter.qml:56
 msgid "Blend harmonics"
@@ -394,7 +380,7 @@ msgstr "範囲"
 
 #: src/contents/ui/BassEnhancer.qml:157
 msgid "Floor active"
-msgstr "フロアを有効化"
+msgstr "下限を有効化"
 
 #: src/contents/ui/BassEnhancer.qml:168
 msgid "Floor"
@@ -491,13 +477,15 @@ msgstr "このアプリを削除"
 
 #: src/contents/ui/BlocklistDialog.qml:204
 msgid "Use media name"
-msgstr ""
+msgstr "メディア名を使用"
 
 #: src/contents/ui/BlocklistDialog.qml:205
 msgid ""
 "Also use a combination of node and media name when deciding if a stream "
 "should be blocked"
 msgstr ""
+"ストリームをブロックするかどうかの判定に、ノード名とメディア名の組み合わせも"
+"使用します"
 
 #: src/contents/ui/BlocklistDialog.qml:216
 msgid "Show excluded apps"
@@ -660,22 +648,24 @@ msgstr "サイド"
 #: src/contents/ui/Compressor.qml:319 src/contents/ui/Convolver.qml:301
 #: src/contents/ui/Delay.qml:59 src/contents/ui/Equalizer.qml:250
 #: src/contents/ui/Expander.qml:279 src/contents/ui/Gate.qml:297
-#: src/contents/ui/HearingTestDialog.qml:139 src/contents/ui/LevelMeter.qml:81
-#: src/contents/ui/LevelMeter.qml:120 src/contents/ui/LevelMeter.qml:159
+#: src/contents/ui/HearingTestDialog.qml:139 src/contents/ui/LevelMeter.qml:79
+#: src/contents/ui/LevelMeter.qml:118
 #: src/contents/ui/MultibandCompressor.qml:449
 #: src/contents/ui/MultibandGate.qml:422 src/contents/ui/PipeWirePage.qml:346
-#: src/contents/ui/StereoTools.qml:204
+#: src/contents/ui/StereoTools.qml:204 src/contents/ui/LevelMeter.qml:81
+#: src/contents/ui/LevelMeter.qml:120 src/contents/ui/LevelMeter.qml:159
 msgid "Left"
 msgstr "左"
 
 #: src/contents/ui/Compressor.qml:319 src/contents/ui/Convolver.qml:319
 #: src/contents/ui/Delay.qml:212 src/contents/ui/Equalizer.qml:250
 #: src/contents/ui/Expander.qml:279 src/contents/ui/Gate.qml:297
-#: src/contents/ui/HearingTestDialog.qml:139 src/contents/ui/LevelMeter.qml:91
-#: src/contents/ui/LevelMeter.qml:130 src/contents/ui/LevelMeter.qml:169
+#: src/contents/ui/HearingTestDialog.qml:139 src/contents/ui/LevelMeter.qml:89
+#: src/contents/ui/LevelMeter.qml:128
 #: src/contents/ui/MultibandCompressor.qml:449
 #: src/contents/ui/MultibandGate.qml:422 src/contents/ui/PipeWirePage.qml:357
-#: src/contents/ui/StereoTools.qml:231
+#: src/contents/ui/StereoTools.qml:231 src/contents/ui/LevelMeter.qml:91
+#: src/contents/ui/LevelMeter.qml:130 src/contents/ui/LevelMeter.qml:169
 msgid "Right"
 msgstr "右"
 
@@ -911,9 +901,8 @@ msgid "Channels"
 msgstr "チャンネル"
 
 #: src/contents/ui/Convolver.qml:400
-#, fuzzy
 msgid "Format"
-msgstr "フォルマント"
+msgstr "形式"
 
 #: src/contents/ui/Convolver.qml:458
 msgid "Stereo width"
@@ -955,9 +944,8 @@ msgid "Failed to remove the %1 Convolver impulse."
 msgstr "コンボルバーインパルス「%1」の削除に失敗しました。"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:123
-#, fuzzy
 msgid "Rename Impulse"
-msgstr "インパルス削除"
+msgstr "インパルスの名前を変更"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:128
 #: src/contents/ui/PresetsLocalPage.qml:247
@@ -965,14 +953,12 @@ msgid "Rename"
 msgstr "名前を変更"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:136
-#, fuzzy
 msgid "Renamed the %1 impulse to %2"
-msgstr "ローカルプリセット「%1」を「%2」に名前変更しました"
+msgstr "インパルス「%1」の名前を「%2」に変更しました"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:139
-#, fuzzy
 msgid "Failed to rename the %1 impulse to %2"
-msgstr "ローカルプリセット「%1」を「%2」への名前変更に失敗しました"
+msgstr "インパルス「%1」の名前を「%2」に変更できませんでした"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:147
 #: src/contents/ui/HearingTestDialog.qml:219
@@ -981,9 +967,8 @@ msgid "Cancel"
 msgstr "キャンセル"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:186
-#, fuzzy
 msgid "Rename this impulse"
-msgstr "このプリセットの名前を変更"
+msgstr "このインパルスの名前を変更"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:194
 msgid "Delete this impulse"
@@ -1002,26 +987,24 @@ msgstr "閉じる"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:32
 msgid "Target Orientation"
-msgstr ""
+msgstr "目標の向き"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:43
 #: src/contents/ui/ConvolverSofaDialog.qml:139
 msgid "Azimuth"
-msgstr ""
+msgstr "方位角"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:59
 #: src/contents/ui/ConvolverSofaDialog.qml:144
-#, fuzzy
 msgid "Elevation"
-msgstr "反応"
+msgstr "仰角"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:75
 #: src/contents/ui/ConvolverSofaDialog.qml:149
 msgid "Radius"
-msgstr ""
+msgstr "半径"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:91
-#, fuzzy
 msgid "Status"
 msgstr "状態"
 
@@ -1032,15 +1015,15 @@ msgstr "データベース"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:111
 msgid "Measurements"
-msgstr ""
+msgstr "測定値"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:116
 msgid "Index"
-msgstr ""
+msgstr "インデックス"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:174
 msgid "Apply"
-msgstr ""
+msgstr "適用"
 
 #: src/contents/ui/Crossfeed.qml:79
 msgid "Cutoff"
@@ -1065,7 +1048,7 @@ msgstr "プリセット"
 
 #: src/contents/ui/CrosstalkCanceller.qml:64
 msgid "Process only phantom center"
-msgstr ""
+msgstr "ファントムセンターのみを処理"
 
 #: src/contents/ui/CrosstalkCanceller.qml:75
 #: src/contents/ui/StereoTools.qml:294 src/tags_plugin_name.cpp:60
@@ -1074,31 +1057,28 @@ msgstr "ディレイ"
 
 #: src/contents/ui/CrosstalkCanceller.qml:91
 #: src/contents/ui/PreferencesSheet.qml:794
-#, fuzzy
 msgid "Decay"
-msgstr "減衰時間"
+msgstr "減衰"
 
 #: src/contents/ui/Crusher.qml:56
-#, fuzzy
 msgid "Bit reduction"
-msgstr "減少"
+msgstr "ビット数の削減"
 
 #: src/contents/ui/Crusher.qml:91 src/contents/ui/PreferencesSheet.qml:554
 msgid "Shape"
 msgstr "形状"
 
 #: src/contents/ui/Crusher.qml:101
-#, fuzzy
 msgid "Linear"
-msgstr "線"
+msgstr "線形"
 
 #: src/contents/ui/Crusher.qml:101
 msgid "Logarithmic"
-msgstr ""
+msgstr "対数"
 
 #: src/contents/ui/Crusher.qml:110
 msgid "DC offset"
-msgstr ""
+msgstr "DCオフセット"
 
 #: src/contents/ui/Crusher.qml:126 src/contents/ui/Pitch.qml:302
 msgid "Anti-aliasing"
@@ -1109,9 +1089,8 @@ msgid "Mix"
 msgstr "ミックス"
 
 #: src/contents/ui/Crusher.qml:160
-#, fuzzy
 msgid "Sample Rate"
-msgstr "最大リダクション"
+msgstr "サンプルレート"
 
 #: src/contents/ui/Crusher.qml:166 src/contents/ui/Gate.qml:118
 #: src/contents/ui/Gate.qml:652 src/contents/ui/Maximizer.qml:101
@@ -1121,16 +1100,15 @@ msgstr "減少"
 
 #: src/contents/ui/Crusher.qml:181
 msgid "Low frequency oscillator"
-msgstr ""
+msgstr "低周波オシレーター"
 
 #: src/contents/ui/Crystalizer.qml:110
-#, fuzzy
 msgid "Oversampling quality"
-msgstr "オーバーサンプリング"
+msgstr "オーバーサンプリング品質"
 
 #: src/contents/ui/Crystalizer.qml:128
 msgid "Transition band"
-msgstr ""
+msgstr "遷移帯域"
 
 #: src/contents/ui/Crystalizer.qml:172 src/contents/ui/Limiter.qml:86
 msgid "Oversampling"
@@ -1141,9 +1119,8 @@ msgid "Adaptive intensity"
 msgstr "アダプティブ強度"
 
 #: src/contents/ui/Crystalizer.qml:192
-#, fuzzy
 msgid "Fixed quantum"
-msgstr "最小クォンタム"
+msgstr "固定クォンタム"
 
 #: src/contents/ui/CrystalizerBand.qml:58
 #: src/contents/ui/EqualizerBandMenu.qml:187
@@ -1161,16 +1138,15 @@ msgstr "バイパス"
 
 #: src/contents/ui/DeepFilterNet.qml:67
 msgid "%1 model is not installed. Audio passes through unprocessed."
-msgstr ""
+msgstr "%1 モデルがインストールされていません。音声は処理されずに通過します。"
 
 #: src/contents/ui/DeepFilterNet.qml:84
-#, fuzzy
 msgid "Model"
 msgstr "モデル"
 
 #: src/contents/ui/DeepFilterNet.qml:104
 msgid "Process as Mono"
-msgstr ""
+msgstr "モノラルとして処理"
 
 #: src/contents/ui/DeepFilterNet.qml:108
 msgid ""
@@ -1179,6 +1155,9 @@ msgid ""
 "microphones. Both output channels receive the same audio; stereo separation "
 "is lost."
 msgstr ""
+"左右の入力を平均し、2つではなく1つのDPDFNetインスタンスで処理します。モノラル"
+"マイクではCPU使用率を大幅に下げられる場合があります。左右の出力チャンネルには"
+"同じ音声が送られ、ステレオの分離は失われます。"
 
 #: src/contents/ui/DeepFilterNet.qml:121
 msgid "Attenuation limit"
@@ -1448,7 +1427,7 @@ msgid ""
 "Failed to export the current Equalizer settings to an external APO preset "
 "file."
 msgstr ""
-"現在のイコライザー設定を外部 APO プリセットファイルへのエクスポートに失敗しま"
+"現在のイコライザー設定を外部 APO プリセットファイルにエクスポートできませんで"
 "した。"
 
 #: src/contents/ui/Equalizer.qml:120
@@ -1494,34 +1473,33 @@ msgstr "SPM"
 
 #: src/contents/ui/Equalizer.qml:158 src/contents/ui/Filter.qml:107
 #: src/contents/ui/MidSideEqualizer.qml:152
-#, fuzzy
 msgid "Equalizer decramping"
-msgstr "イコライザーモード"
+msgstr "イコライザーのデクランピング"
 
 #: src/contents/ui/Equalizer.qml:162 src/contents/ui/Filter.qml:111
 #: src/contents/ui/MidSideEqualizer.qml:156
 msgid "x2"
-msgstr ""
+msgstr "x2"
 
 #: src/contents/ui/Equalizer.qml:162 src/contents/ui/Filter.qml:111
 #: src/contents/ui/MidSideEqualizer.qml:156
 msgid "x3"
-msgstr ""
+msgstr "x3"
 
 #: src/contents/ui/Equalizer.qml:162 src/contents/ui/Filter.qml:111
 #: src/contents/ui/MidSideEqualizer.qml:156
 msgid "x4"
-msgstr ""
+msgstr "x4"
 
 #: src/contents/ui/Equalizer.qml:162 src/contents/ui/Filter.qml:111
 #: src/contents/ui/MidSideEqualizer.qml:156
 msgid "x6"
-msgstr ""
+msgstr "x6"
 
 #: src/contents/ui/Equalizer.qml:162 src/contents/ui/Filter.qml:111
 #: src/contents/ui/MidSideEqualizer.qml:156
 msgid "x8"
-msgstr ""
+msgstr "x8"
 
 #: src/contents/ui/Equalizer.qml:171 src/contents/ui/MidSideEqualizer.qml:165
 msgid "Bands"
@@ -1553,7 +1531,7 @@ msgstr "チャンネル分割"
 
 #: src/contents/ui/Equalizer.qml:362 src/contents/ui/HearingTestDialog.qml:23
 msgid "Hearing Test"
-msgstr ""
+msgstr "聴力テスト"
 
 #: src/contents/ui/Equalizer.qml:368 src/contents/ui/MidSideEqualizer.qml:356
 msgid "Flat response"
@@ -1604,7 +1582,7 @@ msgstr "ノッチ"
 
 #: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
 msgid "Resonance"
-msgstr "反響"
+msgstr "レゾナンス"
 
 #: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
 msgid "Allpass"
@@ -1726,174 +1704,172 @@ msgid "Start"
 msgstr "スタート"
 
 #: src/contents/ui/Harmonizer.qml:38
-#, fuzzy
 msgid "Harmony"
-msgstr "倍音"
+msgstr "ハーモニー"
 
 #: src/contents/ui/Harmonizer.qml:45
 msgid "C"
-msgstr ""
+msgstr "C"
 
 #: src/contents/ui/Harmonizer.qml:48
 msgid "C♯ / D♭"
-msgstr ""
+msgstr "C♯ / D♭"
 
 #: src/contents/ui/Harmonizer.qml:51
 msgid "D"
-msgstr ""
+msgstr "D"
 
 #: src/contents/ui/Harmonizer.qml:54
 msgid "D♯ / E♭"
-msgstr ""
+msgstr "D♯ / E♭"
 
 #: src/contents/ui/Harmonizer.qml:57
 msgid "E"
-msgstr ""
+msgstr "E"
 
 #: src/contents/ui/Harmonizer.qml:60
 msgid "F"
-msgstr ""
+msgstr "F"
 
 #: src/contents/ui/Harmonizer.qml:63
 msgid "F♯ / G♭"
-msgstr ""
+msgstr "F♯ / G♭"
 
 #: src/contents/ui/Harmonizer.qml:66
 msgid "G"
-msgstr ""
+msgstr "G"
 
 #: src/contents/ui/Harmonizer.qml:69
 msgid "G♯ / A♭"
-msgstr ""
+msgstr "G♯ / A♭"
 
 #: src/contents/ui/Harmonizer.qml:72
 msgid "A"
-msgstr ""
+msgstr "A"
 
 #: src/contents/ui/Harmonizer.qml:75
 msgid "A♯ / B♭"
-msgstr ""
+msgstr "A♯ / B♭"
 
 #: src/contents/ui/Harmonizer.qml:78
-#, fuzzy
 msgid "B"
-msgstr "dB"
+msgstr "B"
 
 #: src/contents/ui/Harmonizer.qml:90
 msgid "No chord"
-msgstr ""
+msgstr "コードなし"
 
 #: src/contents/ui/Harmonizer.qml:93
 msgid "6"
-msgstr ""
+msgstr "6"
 
 #: src/contents/ui/Harmonizer.qml:96
 msgid "Major 7"
-msgstr ""
+msgstr "メジャー7"
 
 #: src/contents/ui/Harmonizer.qml:99
 msgid "Lydian"
-msgstr ""
+msgstr "リディアン"
 
 #: src/contents/ui/Harmonizer.qml:102
 msgid "Major 9"
-msgstr ""
+msgstr "メジャー9"
 
 #: src/contents/ui/Harmonizer.qml:105
 msgid "Major 7/9"
-msgstr ""
+msgstr "メジャー7/9"
 
 #: src/contents/ui/Harmonizer.qml:108
 msgid "6/9"
-msgstr ""
+msgstr "6/9"
 
 #: src/contents/ui/Harmonizer.qml:111
 msgid "Augmented"
-msgstr ""
+msgstr "オーギュメント"
 
 #: src/contents/ui/Harmonizer.qml:117
 msgid "Minor 6"
-msgstr ""
+msgstr "マイナー6"
 
 #: src/contents/ui/Harmonizer.qml:120
 msgid "Minor 7"
-msgstr ""
+msgstr "マイナー7"
 
 #: src/contents/ui/Harmonizer.qml:123
 msgid "Minor 7 flat 5"
-msgstr ""
+msgstr "マイナー7♭5"
 
 #: src/contents/ui/Harmonizer.qml:126
 msgid "Minor 9"
-msgstr ""
+msgstr "マイナー9"
 
 #: src/contents/ui/Harmonizer.qml:129
 msgid "Minor 7/9"
-msgstr ""
+msgstr "マイナー7/9"
 
 #: src/contents/ui/Harmonizer.qml:132
 msgid "Minor 7/11"
-msgstr ""
+msgstr "マイナー7/11"
 
 #: src/contents/ui/Harmonizer.qml:135
 msgid "Minor major 7"
-msgstr ""
+msgstr "マイナー・メジャー7"
 
 #: src/contents/ui/Harmonizer.qml:138
 msgid "Minor major 7/9"
-msgstr ""
+msgstr "マイナー・メジャー7/9"
 
 #: src/contents/ui/Harmonizer.qml:141
 msgid "Diminished"
-msgstr ""
+msgstr "ディミニッシュ"
 
 #: src/contents/ui/Harmonizer.qml:144
 msgid "Diminished 7"
-msgstr ""
+msgstr "ディミニッシュ7"
 
 #: src/contents/ui/Harmonizer.qml:147
 msgid "Dominant 7"
-msgstr ""
+msgstr "ドミナント7"
 
 #: src/contents/ui/Harmonizer.qml:150
 msgid "Dominant 7 sus4"
-msgstr ""
+msgstr "ドミナント7 sus4"
 
 #: src/contents/ui/Harmonizer.qml:153
 msgid "Dominant 7 flat 5"
-msgstr ""
+msgstr "ドミナント7♭5"
 
 #: src/contents/ui/Harmonizer.qml:156
 msgid "Dominant 9"
-msgstr ""
+msgstr "ドミナント9"
 
 #: src/contents/ui/Harmonizer.qml:159
 msgid "Dominant 7 sharp 11"
-msgstr ""
+msgstr "ドミナント7♯11"
 
 #: src/contents/ui/Harmonizer.qml:162
 msgid "Dominant 13"
-msgstr ""
+msgstr "ドミナント13"
 
 #: src/contents/ui/Harmonizer.qml:165
 msgid "Dominant 7 flat 9"
-msgstr ""
+msgstr "ドミナント7♭9"
 
 #: src/contents/ui/Harmonizer.qml:168
 msgid "Dominant 7 flat 13"
-msgstr ""
+msgstr "ドミナント7♭13"
 
 #: src/contents/ui/Harmonizer.qml:171
 msgid "Dominant 7 sharp 9"
-msgstr ""
+msgstr "ドミナント7♯9"
 
 #: src/contents/ui/Harmonizer.qml:174
 msgid "Augmented major 7"
-msgstr ""
+msgstr "オーギュメント・メジャー7"
 
 #: src/contents/ui/Harmonizer.qml:177
 msgid "Augmented 7"
-msgstr ""
+msgstr "オーギュメント7"
 
 #: src/contents/ui/Harmonizer.qml:180 src/contents/ui/Pitch.qml:175
 msgid "Octaves"
@@ -1901,51 +1877,47 @@ msgstr "オクターブ"
 
 #: src/contents/ui/Harmonizer.qml:183
 msgid "Fifths"
-msgstr ""
+msgstr "五度"
 
 #: src/contents/ui/Harmonizer.qml:186
-#, fuzzy
 msgid "Suspended 4"
-msgstr "停止"
+msgstr "サスペンデッド4"
 
 #: src/contents/ui/Harmonizer.qml:189
-#, fuzzy
 msgid "Seconds"
-msgstr "2つ目"
+msgstr "二度"
 
 #: src/contents/ui/Harmonizer.qml:197
 msgid "Follow chord"
-msgstr ""
+msgstr "コードに追従"
 
 #: src/contents/ui/Harmonizer.qml:203
-#, fuzzy
 msgid "Left voice interval"
-msgstr "左ウェットレベル"
+msgstr "左ボイスの音程"
 
 #: src/contents/ui/Harmonizer.qml:213
-#, fuzzy
 msgid "Left voice level"
-msgstr "左ウェットレベル"
+msgstr "左ボイスのレベル"
 
 #: src/contents/ui/Harmonizer.qml:224
-#, fuzzy
 msgid "Right voice interval"
-msgstr "右ウェットレベル"
+msgstr "右ボイスの音程"
 
 #: src/contents/ui/Harmonizer.qml:234
-#, fuzzy
 msgid "Right voice level"
-msgstr "右ウェットレベル"
+msgstr "右ボイスのレベル"
 
 #: src/contents/ui/Harmonizer.qml:245
 msgid "Dry/wet"
-msgstr ""
+msgstr "ドライ/ウェット"
 
 #: src/contents/ui/HearingTestDialog.qml:86
 msgid ""
 "The output device changed. Restart the test with the same headphones and "
 "volume."
 msgstr ""
+"出力デバイスが変更されました。同じヘッドホンと音量でテストを再開してくださ"
+"い。"
 
 #: src/contents/ui/HearingTestDialog.qml:98
 msgid ""
@@ -1954,40 +1926,42 @@ msgid ""
 "then record the threshold. This uncalibrated listening test is not a medical "
 "hearing assessment."
 msgstr ""
+"静かな部屋でヘッドホンを使用してください。他の音声を一時停止し、システム音量"
+"を快適なレベルに固定します。各トーンがかすかに聞こえるまで調整し、そのしきい"
+"値を記録してください。この未校正の聴取テストは、医学的な聴力検査ではありませ"
+"ん。"
 
 #: src/contents/ui/HearingTestDialog.qml:105
 msgid "I am using headphones"
-msgstr ""
+msgstr "ヘッドホンを使用しています"
 
 #: src/contents/ui/HearingTestDialog.qml:121
-#, fuzzy
 msgid "Start Test"
-msgstr "スタート"
+msgstr "テストを開始"
 
 #: src/contents/ui/HearingTestDialog.qml:132
 msgid ""
 "Select an available stereo output device and disable the regular test "
 "signals before starting."
 msgstr ""
+"使用可能なステレオ出力デバイスを選択し、通常のテスト信号を無効にしてから開始"
+"してください。"
 
 #: src/contents/ui/HearingTestDialog.qml:139
 msgid "%1 ear: %2 Hz (%3 of %4)"
-msgstr ""
+msgstr "%1耳: %2 Hz（%3 / %4）"
 
 #: src/contents/ui/HearingTestDialog.qml:145
-#, fuzzy
 msgid "Tone Level"
-msgstr "入力レベル"
+msgstr "トーンレベル"
 
 #: src/contents/ui/HearingTestDialog.qml:164
-#, fuzzy
 msgid "Play Tone"
-msgstr "プレーヤー"
+msgstr "トーンを再生"
 
 #: src/contents/ui/HearingTestDialog.qml:171
-#, fuzzy
 msgid "Record Threshold"
-msgstr "リリースしきい値"
+msgstr "しきい値を記録"
 
 #: src/contents/ui/HearingTestDialog.qml:193
 msgid ""
@@ -1996,31 +1970,30 @@ msgid ""
 "and lowers input gain to preserve headroom. Save a preset to keep the result "
 "for these headphones."
 msgstr ""
+"テストが完了しました。プロファイルを適用すると、このイコライザーの設定が左右"
+"の耳ごとの補正に置き換わります。補正は各バンド最大6 dBに制限され、ヘッドルー"
+"ムを確保するため入力ゲインが下がります。このヘッドホンで結果を保持するには、"
+"プリセットを保存してください。"
 
 #: src/contents/ui/HearingTestDialog.qml:200
 msgid "%1 Hz: left %2 dB, right %3 dB"
-msgstr ""
+msgstr "%1 Hz: 左 %2 dB、右 %3 dB"
 
 #: src/contents/ui/HearingTestDialog.qml:209
 msgid "Apply Personalized EQ"
-msgstr ""
+msgstr "個人用EQを適用"
 
 #: src/contents/ui/HearingTestDialog.qml:214
 msgid "Could not apply the hearing profile."
-msgstr ""
+msgstr "聴力プロファイルを適用できませんでした。"
 
-#: src/contents/ui/LevelMeter.qml:69
+#: src/contents/ui/LevelMeter.qml:67 src/contents/ui/LevelMeter.qml:69
 msgid "Input Level"
 msgstr "入力レベル"
 
-#: src/contents/ui/LevelMeter.qml:108
+#: src/contents/ui/LevelMeter.qml:106 src/contents/ui/LevelMeter.qml:108
 msgid "True Peak"
 msgstr "トゥルーピーク"
-
-#: src/contents/ui/LevelMeter.qml:147
-#, fuzzy
-msgid "Sample Peak"
-msgstr "最大リダクション"
 
 #: src/contents/ui/Limiter.qml:76
 msgid "Herm thin"
@@ -2077,114 +2050,92 @@ msgid "None"
 msgstr "なし"
 
 #: src/contents/ui/Limiter.qml:90
-#, fuzzy
 msgid "Half x2/16 bits"
-msgstr "ハーフ x2/16 bit"
+msgstr "ハーフ x2/16ビット"
 
 #: src/contents/ui/Limiter.qml:90
-#, fuzzy
 msgid "Half x2/24 bits"
-msgstr "ハーフ x2/24 bit"
+msgstr "ハーフ x2/24ビット"
 
 #: src/contents/ui/Limiter.qml:90
-#, fuzzy
 msgid "Half x3/16 bits"
-msgstr "ハーフ x3/16 bit"
+msgstr "ハーフ x3/16ビット"
 
 #: src/contents/ui/Limiter.qml:90
-#, fuzzy
 msgid "Half x3/24 bits"
-msgstr "ハーフ x3/24 bit"
+msgstr "ハーフ x3/24ビット"
 
 #: src/contents/ui/Limiter.qml:90
-#, fuzzy
 msgid "Half x4/16 bits"
-msgstr "ハーフ x4/16 bit"
+msgstr "ハーフ x4/16ビット"
 
 #: src/contents/ui/Limiter.qml:90
-#, fuzzy
 msgid "Half x4/24 bits"
-msgstr "ハーフ x4/24 bit"
+msgstr "ハーフ x4/24ビット"
 
 #: src/contents/ui/Limiter.qml:90
-#, fuzzy
 msgid "Half x6/16 bits"
-msgstr "ハーフ x6/16 bit"
+msgstr "ハーフ x6/16ビット"
 
 #: src/contents/ui/Limiter.qml:90
-#, fuzzy
 msgid "Half x6/24 bits"
-msgstr "ハーフ x6/24 bit"
+msgstr "ハーフ x6/24ビット"
 
 #: src/contents/ui/Limiter.qml:90
-#, fuzzy
 msgid "Half x8/16 bits"
-msgstr "ハーフ x8/16 bit"
+msgstr "ハーフ x8/16ビット"
 
 #: src/contents/ui/Limiter.qml:90
-#, fuzzy
 msgid "Half x8/24 bits"
-msgstr "ハーフ x8/24 bit"
+msgstr "ハーフ x8/24ビット"
 
 #: src/contents/ui/Limiter.qml:90
-#, fuzzy
 msgid "Full x2/16 bits"
-msgstr "フル x2/16 bit"
+msgstr "フル x2/16ビット"
 
 #: src/contents/ui/Limiter.qml:90
-#, fuzzy
 msgid "Full x2/24 bits"
-msgstr "フル x2/24 bit"
+msgstr "フル x2/24ビット"
 
 #: src/contents/ui/Limiter.qml:90
-#, fuzzy
 msgid "Full x3/16 bits"
-msgstr "フル x3/16 bit"
+msgstr "フル x3/16ビット"
 
 #: src/contents/ui/Limiter.qml:90
-#, fuzzy
 msgid "Full x3/24 bits"
-msgstr "フル x3/24 bit"
+msgstr "フル x3/24ビット"
 
 #: src/contents/ui/Limiter.qml:90
-#, fuzzy
 msgid "Full x4/16 bits"
-msgstr "フル x4/16 bit"
+msgstr "フル x4/16ビット"
 
 #: src/contents/ui/Limiter.qml:90
-#, fuzzy
 msgid "Full x4/24 bits"
-msgstr "フル x4/24 bit"
+msgstr "フル x4/24ビット"
 
 #: src/contents/ui/Limiter.qml:90
-#, fuzzy
 msgid "Full x6/16 bits"
-msgstr "フル x6/16 bit"
+msgstr "フル x6/16ビット"
 
 #: src/contents/ui/Limiter.qml:90
-#, fuzzy
 msgid "Full x6/24 bits"
-msgstr "フル x6/24 bit"
+msgstr "フル x6/24ビット"
 
 #: src/contents/ui/Limiter.qml:90
-#, fuzzy
 msgid "Full x8/16 bits"
-msgstr "フル x8/16 bit"
+msgstr "フル x8/16ビット"
 
 #: src/contents/ui/Limiter.qml:90
-#, fuzzy
 msgid "Full x8/24 bits"
-msgstr "フル x8/24 bit"
+msgstr "フル x8/24ビット"
 
 #: src/contents/ui/Limiter.qml:90
-#, fuzzy
 msgid "True peak/16 bits"
-msgstr "トゥルーピーク/16 bit"
+msgstr "トゥルーピーク/16ビット"
 
 #: src/contents/ui/Limiter.qml:90
-#, fuzzy
 msgid "True peak/24 bits"
-msgstr "トゥルーピーク/24 bit"
+msgstr "トゥルーピーク/24ビット"
 
 #: src/contents/ui/Limiter.qml:100
 msgid "Dithering"
@@ -2329,79 +2280,73 @@ msgid "Added a new effect to the pipeline: %1"
 msgstr "新しいエフェクトをパイプラインに追加しました: %1"
 
 #: src/contents/ui/MidSideEqualizer.qml:69
-#, fuzzy
 msgid "Failed to import the Mid-Side Equalizer APO preset file."
-msgstr "Equalizer APO プリセットファイルのインポートに失敗しました。"
+msgstr ""
+"Mid-SideイコライザーのAPOプリセットファイルのインポートに失敗しました。"
 
 #: src/contents/ui/MidSideEqualizer.qml:74
-#, fuzzy
 msgid "Imported the Mid-Side Equalizer APO preset file."
-msgstr "Equalizer APO プリセットファイルをインポートしました。"
+msgstr "Mid-SideイコライザーのAPOプリセットファイルをインポートしました。"
 
 #: src/contents/ui/MidSideEqualizer.qml:76
-#, fuzzy
 msgid "Imported the Mid-Side Equalizer APO preset file into the mid channel."
-msgstr "Equalizer APO プリセットファイルを右チャンネルにインポートしました。"
+msgstr ""
+"Mid-SideイコライザーのAPOプリセットファイルをミッドチャンネルにインポートしま"
+"した。"
 
 #: src/contents/ui/MidSideEqualizer.qml:78
-#, fuzzy
 msgid "Imported the Mid-Side Equalizer APO preset file into the side channel."
-msgstr "Equalizer APO プリセットファイルを左チャンネルにインポートしました。"
+msgstr ""
+"Mid-SideイコライザーのAPOプリセットファイルをサイドチャンネルにインポートしま"
+"した。"
 
 #: src/contents/ui/MidSideEqualizer.qml:109
-#, fuzzy
 msgid ""
 "Failed to export the current Mid-Side Equalizer settings to an external APO "
 "preset file."
 msgstr ""
-"現在のイコライザー設定を外部 APO プリセットファイルへのエクスポートに失敗しま"
-"した。"
+"現在のMid-Sideイコライザー設定を外部APOプリセットファイルにエクスポートできま"
+"せんでした。"
 
 #: src/contents/ui/MidSideEqualizer.qml:114
-#, fuzzy
 msgid ""
 "Exported the current Mid-Side Equalizer settings to an external APO preset "
 "file."
 msgstr ""
-"現在のイコライザー設定を外部 APO プリセットファイルにエクスポートしました。"
+"現在のMid-Sideイコライザー設定を外部APOプリセットファイルにエクスポートしまし"
+"た。"
 
 #: src/contents/ui/MidSideEqualizer.qml:116
-#, fuzzy
 msgid ""
 "Exported the current Mid-Side Equalizer settings of the mid channel to an "
 "external APO preset file."
 msgstr ""
-"現在のイコライザー右チャンネル設定を外部 APO プリセットファイルにエクスポート"
-"しました。"
+"現在のMid-Sideイコライザーのミッドチャンネル設定を外部APOプリセットファイルに"
+"エクスポートしました。"
 
 #: src/contents/ui/MidSideEqualizer.qml:118
-#, fuzzy
 msgid ""
 "Exported the current Mid-Side Equalizer settings of the side channel to an "
 "external APO preset file."
 msgstr ""
-"現在のイコライザー左チャンネル設定を外部 APO プリセットファイルにエクスポート"
-"しました。"
+"現在のMid-Sideイコライザーのサイドチャンネル設定を外部APOプリセットファイルに"
+"エクスポートしました。"
 
 #: src/contents/ui/MidSideEqualizer.qml:198
-#, fuzzy
 msgid "Pitch mid"
-msgstr "ピッチ"
+msgstr "ミッドのピッチ"
 
 #: src/contents/ui/MidSideEqualizer.qml:215
-#, fuzzy
 msgid "Pitch side"
-msgstr "左ピッチ"
+msgstr "サイドのピッチ"
 
 #: src/contents/ui/MidSideEqualizer.qml:244
-#, fuzzy
 msgid "Mid"
-msgstr "ミックス"
+msgstr "ミッド"
 
 #: src/contents/ui/MidSideEqualizer.qml:346
-#, fuzzy
 msgid "Split mid/side"
-msgstr "スプリットモード"
+msgstr "ミッド/サイドを分割"
 
 #: src/contents/ui/MultibandCompressor.qml:127
 msgid "Compression mode"
@@ -2410,7 +2355,7 @@ msgstr "圧縮モード"
 #: src/contents/ui/MultibandCompressor.qml:234
 #: src/contents/ui/MultibandGate.qml:171 src/contents/ui/VoiceSuppressor.qml:79
 msgid "End"
-msgstr "終了"
+msgstr "エンド"
 
 #: src/contents/ui/MultibandCompressor.qml:517
 #: src/contents/ui/MultibandGate.qml:490
@@ -2518,26 +2463,24 @@ msgid "Input monitoring"
 msgstr "入力モニター"
 
 #: src/contents/ui/PageStreamsEffects.qml:718
-#, fuzzy
 msgid "Toggle input monitoring"
-msgstr "マイクモニタリング切り替え"
+msgstr "入力モニタリングを切り替え"
 
 #: src/contents/ui/PageStreamsEffects.qml:738
-#, fuzzy
 msgid "Set input monitoring volume"
-msgstr "入力モニター"
+msgstr "入力モニタリングの音量を設定"
 
 #: src/contents/ui/PageStreamsEffects.qml:757
 msgid "Monitoring volume"
-msgstr ""
+msgstr "モニタリング音量"
 
 #: src/contents/ui/PageStreamsEffects.qml:790
 msgid "Share audio"
-msgstr ""
+msgstr "音声を共有"
 
 #: src/contents/ui/PageStreamsEffects.qml:791
 msgid "Send the processed desktop audio to the virtual source"
-msgstr ""
+msgstr "処理済みのデスクトップ音声を仮想ソースに送信します"
 
 #: src/contents/ui/PipeWirePage.qml:49
 msgid "General"
@@ -2655,7 +2598,7 @@ msgstr "シーケンス長"
 
 #: src/contents/ui/Pitch.qml:87
 msgid "Seek window"
-msgstr "ウィンドウシーク"
+msgstr "シークウィンドウ"
 
 #: src/contents/ui/Pitch.qml:105
 msgid "Overlap length"
@@ -2734,50 +2677,50 @@ msgid "Show the tray icon"
 msgstr "トレイアイコンを表示"
 
 #: src/contents/ui/PreferencesSheet.qml:130
-#, fuzzy
 msgid "Do not show the application window"
 msgstr "ウィンドウを表示しない"
 
 #: src/contents/ui/PreferencesSheet.qml:131
-#, fuzzy
 msgid ""
 "Do not show the window when the application starts. In general this option "
 "should not be enabled. It is intended only as a workaround for systems that "
 "do not work well with the autostart of Easy Effects."
 msgstr ""
-"アプリケーションを起動した後にウィンドウを表示しません。 一般的に、このオプ"
-"ションは使用しないでください。 オートスタートファイルでうまく動作しないシステ"
-"ムのための回避策として使用されます。"
+"アプリケーションの起動時にウィンドウを表示しません。通常、このオプションは有"
+"効にしないでください。Easy Effectsの自動起動が正常に動作しないシステム向けの"
+"回避策としてのみ使用します。"
 
 #: src/contents/ui/PreferencesSheet.qml:151
 msgid "Process all output streams"
 msgstr "すべての出力を処理"
 
 #: src/contents/ui/PreferencesSheet.qml:161
-#, fuzzy
 msgid "Excluded output sinks"
-msgstr "除外アプリケーション"
+msgstr "除外する出力デバイス"
 
 #: src/contents/ui/PreferencesSheet.qml:162
 msgid ""
 "Do not automatically process streams when one of these sinks is selected as "
 "the output device."
 msgstr ""
+"これらの出力デバイスのいずれかが選択されている場合、ストリームを自動処理しま"
+"せん。"
 
 #: src/contents/ui/PreferencesSheet.qml:207
 msgid "Process all input streams"
 msgstr "すべての入力を処理"
 
 #: src/contents/ui/PreferencesSheet.qml:217
-#, fuzzy
 msgid "Excluded input sources"
-msgstr "除外アプリ"
+msgstr "除外する入力デバイス"
 
 #: src/contents/ui/PreferencesSheet.qml:218
 msgid ""
 "Do not automatically process streams when one of these sources is selected "
 "as the input device."
 msgstr ""
+"これらの入力デバイスのいずれかが選択されている場合、ストリームを自動処理しま"
+"せん。"
 
 #: src/contents/ui/PreferencesSheet.qml:263
 msgid "Ignore streams from monitor of devices"
@@ -2793,19 +2736,21 @@ msgid ""
 "percentages results in a lower perceived volume while the loudness appears "
 "to change more evenly across the slider."
 msgstr ""
-"ストリーミング音量に線形スケールではなく立方スケールを使用する。パーセンテー"
-"ジが低いほど、スライダー上で音量がより均等に変化するように見えますが、実際の"
-"音量は低くなります。"
+"ストリームの音量に線形スケールではなく立方スケールを使用します。低いパーセン"
+"テージでは知覚される音量が小さくなりますが、スライダー全体で音量の変化がより"
+"均等に感じられます。"
 
 #: src/contents/ui/PreferencesSheet.qml:288
 msgid "Activate monitor channel volumes"
-msgstr ""
+msgstr "モニターチャンネルの音量を有効化"
 
 #: src/contents/ui/PreferencesSheet.qml:289
 msgid ""
 "Activate if controlling Easy Effects virtual devices volume and mute state "
 "by third party applications is required."
 msgstr ""
+"サードパーティ製アプリケーションからEasy Effects仮想デバイスの音量とミュート"
+"状態を制御する場合に有効にします。"
 
 #: src/contents/ui/PreferencesSheet.qml:301
 msgid "Ignore system notifications"
@@ -2831,7 +2776,7 @@ msgstr "マイクモニターは出力エフェクトパイプラインで再生
 
 #: src/contents/ui/PreferencesSheet.qml:338
 msgid "Copy the input audio buffer"
-msgstr ""
+msgstr "入力オーディオバッファーをコピー"
 
 #: src/contents/ui/PreferencesSheet.qml:339
 msgid ""
@@ -2840,75 +2785,69 @@ msgid ""
 "can happen when external applications are recording from Easy Effects "
 "virtual devices monitors."
 msgstr ""
+"Easy Effectsプラグイン内で音声を処理する際、サウンドサーバーから渡された入力"
+"オーディオバッファーのコピーを使用します。外部アプリケーションがEasy Effects"
+"仮想デバイスのモニターから録音するときに発生する音声の乱れを解消します。"
 
 #: src/contents/ui/PreferencesSheet.qml:351
 msgid "Reset Global Bypass on device change"
-msgstr ""
+msgstr "デバイス変更時にグローバルバイパスをリセット"
 
 #: src/contents/ui/PreferencesSheet.qml:352
 msgid "Automatically enable effects when the audio device changes."
-msgstr ""
+msgstr "オーディオデバイスが変更されたときにエフェクトを自動的に有効化します。"
 
 #: src/contents/ui/PreferencesSheet.qml:364
-#, fuzzy
 msgid "Enable the link delay"
-msgstr "非アクティブタイムアウトを有効化"
+msgstr "リンク遅延を有効化"
 
 #: src/contents/ui/PreferencesSheet.qml:365
 msgid "When enabled, a delay is applied before linking the audio filters."
-msgstr ""
+msgstr "有効にすると、オーディオフィルターをリンクする前に遅延を適用します。"
 
 #: src/contents/ui/PreferencesSheet.qml:377
-#, fuzzy
 msgid "Link delay"
-msgstr "プリディレイ"
+msgstr "リンク遅延"
 
 #: src/contents/ui/PreferencesSheet.qml:394
-#, fuzzy
 msgid "Enable the output inactivity timeout"
-msgstr "非アクティブタイムアウトを有効化"
+msgstr "出力の非アクティブタイムアウトを有効化"
 
 #: src/contents/ui/PreferencesSheet.qml:395
-#, fuzzy
 msgid ""
 "When all output streams are inactive, the Easy Effects output pipeline "
 "remains loaded for an extra amount of time."
 msgstr ""
-"すべてのストリームが非アクティブな場合、Easy Effects パイプラインは追加の時間"
-"だけ読み込まれたままになります。"
+"すべての出力ストリームが非アクティブになった後も、Easy Effectsの出力パイプラ"
+"インを一定時間読み込んだままにします。"
 
 #: src/contents/ui/PreferencesSheet.qml:407
-#, fuzzy
 msgid "Output inactivity timeout"
-msgstr "非アクティブタイムアウト"
+msgstr "出力の非アクティブタイムアウト"
 
 #: src/contents/ui/PreferencesSheet.qml:424
-#, fuzzy
 msgid "Enable the input inactivity timeout"
-msgstr "非アクティブタイムアウトを有効化"
+msgstr "入力の非アクティブタイムアウトを有効化"
 
 #: src/contents/ui/PreferencesSheet.qml:425
-#, fuzzy
 msgid ""
 "When all input streams are inactive, the Easy Effects input pipeline remains "
 "loaded for an extra amount of time."
 msgstr ""
-"すべてのストリームが非アクティブな場合、Easy Effects パイプラインは追加の時間"
-"だけ読み込まれたままになります。"
+"すべての入力ストリームが非アクティブになった後も、Easy Effectsの入力パイプラ"
+"インを一定時間読み込んだままにします。"
 
 #: src/contents/ui/PreferencesSheet.qml:437
-#, fuzzy
 msgid "Input inactivity timeout"
-msgstr "非アクティブタイムアウト"
+msgstr "入力の非アクティブタイムアウト"
 
 #: src/contents/ui/PreferencesSheet.qml:452
-#, fuzzy
 msgid "Level meters frame rate cap"
-msgstr "このアプリケーションの有効化/無効化"
+msgstr "レベルメーターの最大フレームレート"
 
 #: src/contents/ui/PreferencesSheet.qml:453
 msgid "Maximum level meter update rate."
-msgstr ""
+msgstr "レベルメーターの最大更新頻度。"
 
 #: src/contents/ui/PreferencesSheet.qml:467
 msgid "Level meters label"
@@ -2923,13 +2862,12 @@ msgstr ""
 "までの時間。"
 
 #: src/contents/ui/PreferencesSheet.qml:485
-#, fuzzy
 msgid "Enable level meters animation"
-msgstr "このアプリケーションの有効化/無効化"
+msgstr "レベルメーターのアニメーションを有効化"
 
 #: src/contents/ui/PreferencesSheet.qml:494
 msgid "Level meters animation duration"
-msgstr ""
+msgstr "レベルメーターのアニメーション時間"
 
 #: src/contents/ui/PreferencesSheet.qml:532
 msgid "Audio delay compensation"
@@ -2937,7 +2875,7 @@ msgstr "オーディオ遅延補正"
 
 #: src/contents/ui/PreferencesSheet.qml:547
 msgid "Graph"
-msgstr ""
+msgstr "グラフ"
 
 #: src/contents/ui/PreferencesSheet.qml:558
 msgid "Bars"
@@ -2972,13 +2910,12 @@ msgid "px"
 msgstr "px"
 
 #: src/contents/ui/PreferencesSheet.qml:609
-#, fuzzy
 msgid "Spectrum frame rate cap"
-msgstr "このアプリケーションの有効化/無効化"
+msgstr "スペクトラムの最大フレームレート"
 
 #: src/contents/ui/PreferencesSheet.qml:610
 msgid "Maximum spectrum update rate."
-msgstr ""
+msgstr "スペクトラムの最大更新頻度。"
 
 #: src/contents/ui/PreferencesSheet.qml:625
 msgid "Frequency Range"
@@ -2995,9 +2932,8 @@ msgid "Maximum"
 msgstr "最大"
 
 #: src/contents/ui/PreferencesSheet.qml:663
-#, fuzzy
 msgid "Level Range"
-msgstr "レベルメーター"
+msgstr "レベル範囲"
 
 #: src/contents/ui/PreferencesSheet.qml:668
 #: src/contents/ui/PreferencesSheet.qml:924
@@ -3007,60 +2943,58 @@ msgstr "自動"
 #: src/contents/ui/PreferencesSheet.qml:669
 msgid ""
 "Follows the loudest and the quieter bands within the minimum and maximum."
-msgstr ""
+msgstr "最小値と最大値の範囲内で、最も大きい帯域と小さい帯域に追従します。"
 
 #: src/contents/ui/PreferencesSheet.qml:679
-#, fuzzy
 msgid "Minimum span"
-msgstr "最小クォンタム"
+msgstr "最小幅"
 
 #: src/contents/ui/PreferencesSheet.qml:723
 msgid ""
 "Tilts the display around 1 kHz. The shown levels are no longer absolute."
 msgstr ""
+"1 kHzを中心に表示を傾けます。表示されるレベルは絶対値ではなくなります。"
 
 #: src/contents/ui/PreferencesSheet.qml:738
 msgid "Analysis"
-msgstr ""
+msgstr "解析"
 
 #: src/contents/ui/PreferencesSheet.qml:755
 msgid "Zero padding"
-msgstr ""
+msgstr "ゼロパディング"
 
 #: src/contents/ui/PreferencesSheet.qml:756
 msgid ""
 "Interpolates the spectrum. It does not increase the frequency resolution."
-msgstr ""
+msgstr "スペクトラムを補間します。周波数分解能は向上しません。"
 
 #: src/contents/ui/PreferencesSheet.qml:768
-#, fuzzy
 msgid "Window function"
-msgstr "ゲインリダクション"
+msgstr "窓関数"
 
 #: src/contents/ui/PreferencesSheet.qml:772
 msgid "Rectangular"
-msgstr ""
+msgstr "矩形"
 
 #: src/contents/ui/PreferencesSheet.qml:772
 msgid "Hann"
-msgstr ""
+msgstr "ハン"
 
 #: src/contents/ui/PreferencesSheet.qml:772
 msgid "Hamming"
-msgstr ""
+msgstr "ハミング"
 
 #: src/contents/ui/PreferencesSheet.qml:772
 msgid "Blackman"
-msgstr ""
+msgstr "ブラックマン"
 
 #: src/contents/ui/PreferencesSheet.qml:772
 msgid "Blackman-Harris"
-msgstr ""
+msgstr "ブラックマン・ハリス"
 
 #: src/contents/ui/PreferencesSheet.qml:772
-#, fuzzy
 msgid "Flat top"
-msgstr "フラット"
+msgstr "フラットトップ"
 
 #: src/contents/ui/PreferencesSheet.qml:816
 msgid "Database autosave interval"
@@ -3072,7 +3006,7 @@ msgstr "最も使用されているプリセット"
 
 #: src/contents/ui/PreferencesSheet.qml:848
 msgid "Window"
-msgstr ""
+msgstr "ウィンドウ"
 
 #: src/contents/ui/PreferencesSheet.qml:857
 msgid "Force KDE's Breeze theme when Easy Effects starts"
@@ -3103,7 +3037,7 @@ msgstr "カラースキーム"
 
 #: src/contents/ui/PreferencesSheet.qml:897
 msgid "Force English language"
-msgstr ""
+msgstr "英語表示を強制"
 
 #: src/contents/ui/PreferencesSheet.qml:898
 msgid ""
@@ -3111,10 +3045,13 @@ msgid ""
 "Useful if the translation in the local language is incomplete or "
 "incomprehensible. A restart of the service is required to apply this option."
 msgstr ""
+"ユーザーインターフェースを翻訳せず、英語で表示します。現地語の翻訳が不完全ま"
+"たは分かりにくい場合に便利です。この設定を適用するにはサービスの再起動が必要"
+"です。"
 
 #: src/contents/ui/PreferencesSheet.qml:909
 msgid "Graphs"
-msgstr ""
+msgstr "グラフ"
 
 #: src/contents/ui/PreferencesSheet.qml:924
 msgid "Light"
@@ -3158,48 +3095,45 @@ msgstr "グレー"
 
 #: src/contents/ui/PreferencesSheet.qml:939
 msgid "User"
-msgstr ""
+msgstr "ユーザー定義"
 
 #: src/contents/ui/PreferencesSheet.qml:947
-#, fuzzy
 msgctxt "@label"
 msgid "Background"
-msgstr "バックグラウンドサービス"
+msgstr "背景"
 
 #: src/contents/ui/PreferencesSheet.qml:956
 msgctxt "@label"
 msgid "Plot area background"
-msgstr ""
+msgstr "プロット領域の背景"
 
 #: src/contents/ui/PreferencesSheet.qml:965
 msgctxt "@label"
 msgid "Series colors"
-msgstr ""
+msgstr "系列の色"
 
 #: src/contents/ui/PreferencesSheet.qml:974
-#, fuzzy
 msgctxt "@label"
 msgid "Axis labels text color"
-msgstr "軸ラベル"
+msgstr "軸ラベルの文字色"
 
 #: src/contents/ui/PreferencesSheet.qml:983
 msgctxt "@label"
 msgid "Axis labels background color"
-msgstr ""
+msgstr "軸ラベルの背景色"
 
 #: src/contents/ui/PreferencesSheet.qml:992
 msgctxt "@label"
 msgid "Border color"
-msgstr ""
+msgstr "枠線の色"
 
 #: src/contents/ui/PreferencesSheet.qml:1001
-#, fuzzy
 msgid "Line width"
 msgstr "線幅"
 
 #: src/contents/ui/PreferencesSheet.qml:1015
 msgid "Show grid lines"
-msgstr ""
+msgstr "グリッド線を表示"
 
 #: src/contents/ui/PreferencesSheet.qml:1033
 msgid "Autoload delay"
@@ -3212,15 +3146,16 @@ msgstr ""
 "新しいデバイスルートを受信してからプリセットを自動読み込みするまでの遅延。"
 
 #: src/contents/ui/PreferencesSheet.qml:1050
-#, fuzzy
 msgid "Ignore the blocklist from presets"
-msgstr "ブロックリストを無視"
+msgstr "プリセットのブロックリストを無視"
 
 #: src/contents/ui/PreferencesSheet.qml:1051
 msgid ""
 "If enabled, the list of excluded apps set in the loaded preset is ignored "
 "and does not replace the one set by the user."
 msgstr ""
+"有効にすると、読み込んだプリセットに設定されている除外アプリ一覧を無視し、"
+"ユーザーが設定した一覧を置き換えません。"
 
 #: src/contents/ui/PreferencesSheet.qml:1072
 msgid "Global shortcuts"
@@ -3266,14 +3201,12 @@ msgid "Create"
 msgstr "作成"
 
 #: src/contents/ui/PresetsAutoloadPage.qml:138
-#, fuzzy
 msgid "Create a new autoload preset"
 msgstr "新しい自動読み込みプリセットを作成"
 
 #: src/contents/ui/PresetsAutoloadPage.qml:228
-#, fuzzy
 msgid "Remove this autoload preset"
-msgstr "自動読み込みプリセットを削除"
+msgstr "この自動読み込みプリセットを削除"
 
 #: src/contents/ui/PresetsAutoloadPage.qml:242
 msgid "Description"
@@ -3285,9 +3218,8 @@ msgstr "更新"
 
 #: src/contents/ui/PresetsCommunityPage.qml:129
 #: src/contents/ui/PresetsLocalPage.qml:306
-#, fuzzy
 msgid "Load this preset"
-msgstr "このプリセットの名前を変更"
+msgstr "このプリセットを読み込む"
 
 #: src/contents/ui/PresetsCommunityPage.qml:137
 msgid "Copy to local presets"
@@ -3313,7 +3245,6 @@ msgid "Community"
 msgstr "コミュニティ"
 
 #: src/contents/ui/PresetsDialog.qml:115
-#, fuzzy
 msgid "Autoload"
 msgstr "自動読み込み"
 
@@ -3343,7 +3274,7 @@ msgstr "すべてのプリセットを外部フォルダーにエクスポート
 
 #: src/contents/ui/PresetsLocalPage.qml:68
 msgid "Failed to export all presets to an external folder."
-msgstr "すべてのプリセットを外部フォルダーへのエクスポートに失敗しました。"
+msgstr "すべてのプリセットの外部フォルダーへのエクスポートに失敗しました。"
 
 #: src/contents/ui/PresetsLocalPage.qml:83
 msgid "New preset name"
@@ -3536,7 +3467,7 @@ msgstr "プリディレイ"
 
 #: src/contents/ui/Reverb.qml:111
 msgid "Diffusion"
-msgstr "残響"
+msgstr "拡散"
 
 #: src/contents/ui/Reverb.qml:137
 msgid "High frequency damping"
@@ -3556,11 +3487,11 @@ msgstr "リバーブプリセット"
 
 #: src/contents/ui/Reverb.qml:232
 msgid "Ambience"
-msgstr "環境"
+msgstr "アンビエンス"
 
 #: src/contents/ui/Reverb.qml:247
 msgid "Empty walls"
-msgstr "空の壁"
+msgstr "何もない壁"
 
 #: src/contents/ui/Reverb.qml:262
 msgid "Room"
@@ -3601,11 +3532,11 @@ msgstr "Easy Effects サービスを終了"
 
 #: src/contents/ui/ShortcutsSheet.qml:204
 msgid "Toggle process all inputs"
-msgstr "すべての入力を処理の切り替え"
+msgstr "すべての入力の処理を切り替え"
 
 #: src/contents/ui/ShortcutsSheet.qml:244
 msgid "Toggle process all outputs"
-msgstr "すべての出力を処理の切り替え"
+msgstr "すべての出力の処理を切り替え"
 
 #: src/contents/ui/ShortcutsSheet.qml:257
 #: src/contents/ui/ShortcutsSheet.qml:270
@@ -3615,7 +3546,7 @@ msgstr "数値コントロールで使用可能"
 
 #: src/contents/ui/ShortcutsSheet.qml:289
 msgid "Mouse wheel"
-msgstr ""
+msgstr "マウスホイール"
 
 #: src/contents/ui/ShortcutsSheet.qml:313
 msgid "Global Shortcuts"
@@ -3627,7 +3558,7 @@ msgstr "マイクモニタリング切り替え"
 
 #: src/contents/ui/ShortcutsSheet.qml:439 src/global_shortcuts.hpp:89
 msgid "Toggle audio sharing"
-msgstr ""
+msgstr "音声共有を切り替え"
 
 #: src/contents/ui/Speex.qml:64
 msgid "Denoise"
@@ -3683,7 +3614,7 @@ msgstr "LR > RR (モノラル右チャンネル)"
 
 #: src/contents/ui/StereoTools.qml:127
 msgid "LR > L+R (Mono sum L+R)"
-msgstr "LR > L+R (モノラル統合 L+R)"
+msgstr "LR > L+R (モノラル加算 L+R)"
 
 #: src/contents/ui/StereoTools.qml:127
 msgid "LR > RL (Stereo flip channels)"
@@ -3718,14 +3649,12 @@ msgid "Stereo phase"
 msgstr "ステレオ位相"
 
 #: src/contents/ui/TrayIcon.qml:61
-#, fuzzy
 msgid "Effects disabled"
-msgstr "オーディオエフェクトが無効です。"
+msgstr "エフェクト無効"
 
 #: src/contents/ui/TrayIcon.qml:63
-#, fuzzy
 msgid "Effects enabled"
-msgstr "オーディオエフェクトが有効です。"
+msgstr "エフェクト有効"
 
 #: src/contents/ui/TrayIcon.qml:102 src/contents/ui/TrayIcon.qml:122
 msgid "Preset Loaded"
@@ -3752,38 +3681,32 @@ msgid "Active"
 msgstr "有効"
 
 #: src/contents/ui/VoiceSuppressor.qml:95
-#, fuzzy
 msgid "Correlation"
-msgstr "長さ"
+msgstr "相関"
 
 #: src/contents/ui/VoiceSuppressor.qml:111
-#, fuzzy
 msgid "Phase difference"
-msgstr "速度の変化"
+msgstr "位相差"
 
 #: src/contents/ui/VoiceSuppressor.qml:127
-#, fuzzy
 msgid "Minimum kurtosis"
-msgstr "最小クォンタム"
+msgstr "最小尖度"
 
 #: src/contents/ui/VoiceSuppressor.qml:142
-#, fuzzy
 msgid "Maximum instantaneous frequency"
-msgstr "最大履歴"
+msgstr "最大瞬時周波数"
 
 #: src/contents/ui/VoiceSuppressor.qml:174
-#, fuzzy
 msgid "Inverted mode"
-msgstr "左を反転"
+msgstr "反転モード"
 
 #: src/main.cpp:427
 msgid "Global audio effects"
 msgstr "グローバルオーディオエフェクト"
 
 #: src/main.cpp:428
-#, fuzzy
 msgid "© 2017-2026 Easy Effects Team"
-msgstr "© 2017-2025 EasyEffects Team"
+msgstr "© 2017-2026 Easy Effects Team"
 
 #: src/main.cpp:430
 msgid "Wellington Wallace"
@@ -3824,27 +3747,27 @@ msgstr "プリセットが正しく読み込まれていません"
 
 #: src/presets_manager.cpp:801
 msgid "Wrong format in excluded apps list"
-msgstr "間違った形式の除外されたアプリ一覧"
+msgstr "除外アプリ一覧の形式が正しくありません"
 
 #: src/presets_manager.cpp:809
 msgid "Generic error while loading excluded apps list"
-msgstr "除外されたアプリ一覧の読み込み中に発生した一般的なエラー"
+msgstr "除外アプリ一覧の読み込み中に一般的なエラーが発生しました"
 
 #: src/presets_manager.cpp:818
 msgid "Wrong format in effects list"
-msgstr "エフェクト一覧の間違った形式"
+msgstr "エフェクト一覧の形式が正しくありません"
 
 #: src/presets_manager.cpp:825
 msgid "Generic error while loading effects list"
-msgstr "エフェクト一覧の読み込み中に発生した一般的なエラー"
+msgstr "エフェクト一覧の読み込み中に一般的なエラーが発生しました"
 
 #: src/presets_manager.cpp:836
 msgid "One or more parameters have a wrong format"
-msgstr "1つ以上のパラメータに間違った形式が設定されています"
+msgstr "1つ以上のパラメータの形式が正しくありません"
 
 #: src/presets_manager.cpp:845
 msgid "Generic error while loading the effect"
-msgstr "エフェクトの読み込み中に発生した一般的なエラー"
+msgstr "エフェクトの読み込み中に一般的なエラーが発生しました"
 
 #: src/pw_model_nodes.cpp:508
 msgid "Running"
@@ -3852,7 +3775,7 @@ msgstr "実行中"
 
 #: src/pw_model_nodes.cpp:510
 msgid "Suspended"
-msgstr "停止"
+msgstr "一時停止"
 
 #: src/pw_model_nodes.cpp:512
 msgid "Idle"
@@ -3871,14 +3794,12 @@ msgid "Unknown"
 msgstr "不明"
 
 #: src/tags_plugin_name.cpp:48
-#, fuzzy
 msgid "Autotune"
-msgstr "オートゲイン"
+msgstr "オートチューン"
 
 #: src/tags_plugin_name.cpp:49
-#, fuzzy
 msgid "Harmonizer"
-msgstr "倍音"
+msgstr "ハーモナイザー"
 
 #: src/tags_plugin_name.cpp:50
 msgid "Bass Enhancer"
@@ -3897,13 +3818,12 @@ msgid "Crossfeed"
 msgstr "クロスフィード"
 
 #: src/tags_plugin_name.cpp:55
-#, fuzzy
 msgid "Crosstalk Canceller"
-msgstr "エコーキャンセラー"
+msgstr "クロストークキャンセラー"
 
 #: src/tags_plugin_name.cpp:56
 msgid "Crusher"
-msgstr ""
+msgstr "クラッシャー"
 
 #: src/tags_plugin_name.cpp:57
 msgid "Crystalizer"
@@ -3918,9 +3838,8 @@ msgid "Equalizer"
 msgstr "イコライザー"
 
 #: src/tags_plugin_name.cpp:63
-#, fuzzy
 msgid "Mid-Side Equalizer"
-msgstr "イコライザー"
+msgstr "ミッド/サイドイコライザー"
 
 #: src/tags_plugin_name.cpp:64
 msgid "Exciter"
@@ -3959,18 +3878,15 @@ msgid "Stereo Tools"
 msgstr "ステレオツール"
 
 #: src/tags_plugin_name.cpp:79
-#, fuzzy
 msgid "Voice Suppressor"
-msgstr "ノイズ抑制"
+msgstr "ボイスサプレッサー"
 
 #: src/units.hpp:60
-#, fuzzy
 msgctxt "left channel abbreviation (single letter)"
 msgid "L"
 msgstr "L"
 
 #: src/units.hpp:61
-#, fuzzy
 msgctxt "left channel abbreviation (single letter)"
 msgid "R"
 msgstr "R"
@@ -3978,39 +3894,34 @@ msgstr "R"
 #: src/units.hpp:64
 msgctxt "The SOFA audio file format"
 msgid "SOFA"
-msgstr ""
+msgstr "SOFA"
 
 #: src/units.hpp:65
 msgctxt "The WAV audio file format"
 msgid "WAV"
-msgstr ""
+msgstr "WAV"
 
 #: src/units.hpp:68
-#, fuzzy
 msgctxt "decibel unit abbreviation"
 msgid "dB"
 msgstr "dB"
 
 #: src/units.hpp:69
-#, fuzzy
 msgctxt "decibel full scale unit abbreviation"
 msgid "dBFS"
 msgstr "dBFS"
 
 #: src/units.hpp:70
-#, fuzzy
 msgctxt "decibel per octaves unit abbreviation"
 msgid "dB/oct"
-msgstr "12 dB/oct"
+msgstr "dB/oct"
 
 #: src/units.hpp:71
-#, fuzzy
 msgctxt "seconds unit abbreviation"
 msgid "s"
 msgstr "s"
 
 #: src/units.hpp:72
-#, fuzzy
 msgctxt "milliseconds unit abbreviation"
 msgid "ms"
 msgstr "ms"
@@ -4018,16 +3929,14 @@ msgstr "ms"
 #: src/units.hpp:73
 msgctxt "microseconds unit abbreviation"
 msgid "μs"
-msgstr ""
+msgstr "μs"
 
 #: src/units.hpp:74
-#, fuzzy
 msgctxt "Hertz unit abbreviation"
 msgid "Hz"
 msgstr "Hz"
 
 #: src/units.hpp:75
-#, fuzzy
 msgctxt "kiloHertz unit abbreviation"
 msgid "kHz"
 msgstr "kHz"
@@ -4035,22 +3944,19 @@ msgstr "kHz"
 #: src/units.hpp:76
 msgctxt "loudness full scale unit abbreviation"
 msgid "LUFS"
-msgstr ""
+msgstr "LUFS"
 
 #: src/units.hpp:77
-#, fuzzy
 msgctxt "loudness unit abbreviation"
 msgid "LU"
-msgstr "L"
+msgstr "LU"
 
 #: src/units.hpp:78
-#, fuzzy
 msgctxt "meter unit abbreviation"
 msgid "m"
 msgstr "m"
 
 #: src/units.hpp:79
-#, fuzzy
 msgctxt "centimeter unit abbreviation"
 msgid "cm"
 msgstr "cm"
@@ -4058,15 +3964,14 @@ msgstr "cm"
 #: src/units.hpp:80
 msgctxt "degrees Celsius unit abbreviation"
 msgid "°C"
-msgstr ""
+msgstr "°C"
 
 #: src/units.hpp:81
 msgctxt "bit unit (plural)"
 msgid "bits"
-msgstr ""
+msgstr "ビット"
 
 #: src/units.hpp:82
-#, fuzzy
 msgctxt "frame unit (plural)"
 msgid "frames"
 msgstr "フレーム"
@@ -4074,22 +3979,22 @@ msgstr "フレーム"
 #: src/units.hpp:83
 msgctxt "frames per second abbreviation"
 msgid "fps"
-msgstr ""
+msgstr "fps"
 
 #: src/units.hpp:86
 msgctxt "thousand abbreviation (single letter)"
 msgid "k"
-msgstr ""
+msgstr "k"
 
 #: src/units.hpp:87
 msgctxt "percentage symbol"
 msgid "%"
-msgstr ""
+msgstr "%"
 
 #: src/units.hpp:88
 msgctxt "degrees (angle) symbol"
 msgid "°"
-msgstr ""
+msgstr "°"
 
 #: src/units.hpp:89
 msgctxt "minus infinity abbreviation"
@@ -4103,6 +4008,11 @@ msgstr "イコライザー、コンプレッサーなどのオーディオエフ
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "シンプルなオーディオエフェクト"
+
+#: src/contents/ui/LevelMeter.qml:147
+#, fuzzy
+msgid "Sample Peak"
+msgstr "最大リダクション"
 
 #~ msgid "Dynamic scale"
 #~ msgstr "動的スケール"

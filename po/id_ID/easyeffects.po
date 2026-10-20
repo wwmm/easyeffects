@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-10-20 15:24+0000\n"
-"PO-Revision-Date: 2026-09-26 15:15+0000\n"
-"Last-Translator: Arif Budiman <arifpedia@gmail.com>\n"
+"POT-Creation-Date: 2026-10-18 16:13+0000\n"
+"PO-Revision-Date: 2026-10-20 15:34+0000\n"
+"Last-Translator: Arif Budiman <arifpedia@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/easyeffects/"
 "main/id/>\n"
 "Language: id_ID\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2026.10.dev0\n"
+"X-Generator: Weblate 2026.11.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -176,17 +176,17 @@ msgid "Reference"
 msgstr "Referensi"
 
 #: src/contents/ui/Autogain.qml:79 src/contents/ui/Autogain.qml:148
-#: src/contents/ui/LevelMeter.qml:199
+#: src/contents/ui/LevelMeter.qml:158 src/contents/ui/LevelMeter.qml:199
 msgid "Momentary"
 msgstr "Sesaat"
 
 #: src/contents/ui/Autogain.qml:79 src/contents/ui/Autogain.qml:158
-#: src/contents/ui/LevelMeter.qml:209
+#: src/contents/ui/LevelMeter.qml:168 src/contents/ui/LevelMeter.qml:209
 msgid "Short-term"
 msgstr "Jangka pendek"
 
 #: src/contents/ui/Autogain.qml:79 src/contents/ui/Autogain.qml:168
-#: src/contents/ui/LevelMeter.qml:219
+#: src/contents/ui/LevelMeter.qml:178 src/contents/ui/LevelMeter.qml:219
 msgid "Integrated"
 msgstr "Terintegrasi"
 
@@ -219,17 +219,18 @@ msgid "Maximum history"
 msgstr "Riwayat maksimum"
 
 #: src/contents/ui/Autogain.qml:143 src/contents/ui/Autogain.qml:198
-#: src/contents/ui/BassLoudness.qml:67 src/contents/ui/LevelMeter.qml:187
-#: src/tags_plugin_name.cpp:70
+#: src/contents/ui/BassLoudness.qml:67 src/contents/ui/LevelMeter.qml:146
+#: src/tags_plugin_name.cpp:70 src/contents/ui/LevelMeter.qml:187
 msgid "Loudness"
 msgstr "Kenyaringan"
 
-#: src/contents/ui/Autogain.qml:178 src/contents/ui/LevelMeter.qml:229
+#: src/contents/ui/Autogain.qml:178 src/contents/ui/LevelMeter.qml:188
+#: src/contents/ui/LevelMeter.qml:229
 msgid "Relative"
 msgstr "Relatif"
 
 #: src/contents/ui/Autogain.qml:188 src/contents/ui/Crusher.qml:192
-#: src/contents/ui/LevelMeter.qml:239
+#: src/contents/ui/LevelMeter.qml:198 src/contents/ui/LevelMeter.qml:239
 msgid "Range"
 msgstr "Rentang"
 
@@ -246,7 +247,7 @@ msgstr "Penguatan keluaran"
 #: src/contents/ui/EchoCanceller.qml:158 src/contents/ui/Equalizer.qml:321
 #: src/contents/ui/Exciter.qml:210 src/contents/ui/Expander.qml:823
 #: src/contents/ui/Filter.qml:234 src/contents/ui/Gate.qml:952
-#: src/contents/ui/Harmonizer.qml:267 src/contents/ui/LevelMeter.qml:256
+#: src/contents/ui/Harmonizer.qml:267 src/contents/ui/LevelMeter.qml:215
 #: src/contents/ui/Limiter.qml:607 src/contents/ui/Loudness.qml:175
 #: src/contents/ui/Maximizer.qml:122 src/contents/ui/MidSideEqualizer.qml:315
 #: src/contents/ui/MultibandCompressor.qml:965
@@ -255,11 +256,13 @@ msgstr "Penguatan keluaran"
 #: src/contents/ui/RNNoise.qml:298 src/contents/ui/RNNoise.qml:300
 #: src/contents/ui/RNNoise.qml:320 src/contents/ui/Reverb.qml:318
 #: src/contents/ui/Speex.qml:177 src/contents/ui/StereoTools.qml:392
+#: src/contents/ui/LevelMeter.qml:256
 msgid "Using %1"
 msgstr "Menggunakan %1"
 
 #: src/contents/ui/Autogain.qml:250 src/contents/ui/DeepFilterNet.qml:286
-#: src/contents/ui/LevelMeter.qml:273 src/contents/ui/Pitch.qml:285
+#: src/contents/ui/LevelMeter.qml:232 src/contents/ui/Pitch.qml:285
+#: src/contents/ui/LevelMeter.qml:273
 msgid "Reset history"
 msgstr "Atur ulang riwayat"
 
@@ -272,8 +275,8 @@ msgid "Force silence when the level is below the silence threshold"
 msgstr "Paksa senyap saat level berada di bawah ambang batas senyap"
 
 #: src/contents/ui/Autogain.qml:270 src/contents/ui/Autotune.qml:436
-#: src/contents/ui/DeepFilterNet.qml:294 src/contents/ui/LevelMeter.qml:281
-#: src/contents/ui/Pitch.qml:313
+#: src/contents/ui/DeepFilterNet.qml:294 src/contents/ui/LevelMeter.qml:240
+#: src/contents/ui/Pitch.qml:313 src/contents/ui/LevelMeter.qml:281
 msgid "Reset settings"
 msgstr "Atur ulang pengaturan"
 
@@ -648,22 +651,24 @@ msgstr "Sisi"
 #: src/contents/ui/Compressor.qml:319 src/contents/ui/Convolver.qml:301
 #: src/contents/ui/Delay.qml:59 src/contents/ui/Equalizer.qml:250
 #: src/contents/ui/Expander.qml:279 src/contents/ui/Gate.qml:297
-#: src/contents/ui/HearingTestDialog.qml:139 src/contents/ui/LevelMeter.qml:81
-#: src/contents/ui/LevelMeter.qml:120 src/contents/ui/LevelMeter.qml:159
+#: src/contents/ui/HearingTestDialog.qml:139 src/contents/ui/LevelMeter.qml:79
+#: src/contents/ui/LevelMeter.qml:118
 #: src/contents/ui/MultibandCompressor.qml:449
 #: src/contents/ui/MultibandGate.qml:422 src/contents/ui/PipeWirePage.qml:346
-#: src/contents/ui/StereoTools.qml:204
+#: src/contents/ui/StereoTools.qml:204 src/contents/ui/LevelMeter.qml:81
+#: src/contents/ui/LevelMeter.qml:120 src/contents/ui/LevelMeter.qml:159
 msgid "Left"
 msgstr "Kiri"
 
 #: src/contents/ui/Compressor.qml:319 src/contents/ui/Convolver.qml:319
 #: src/contents/ui/Delay.qml:212 src/contents/ui/Equalizer.qml:250
 #: src/contents/ui/Expander.qml:279 src/contents/ui/Gate.qml:297
-#: src/contents/ui/HearingTestDialog.qml:139 src/contents/ui/LevelMeter.qml:91
-#: src/contents/ui/LevelMeter.qml:130 src/contents/ui/LevelMeter.qml:169
+#: src/contents/ui/HearingTestDialog.qml:139 src/contents/ui/LevelMeter.qml:89
+#: src/contents/ui/LevelMeter.qml:128
 #: src/contents/ui/MultibandCompressor.qml:449
 #: src/contents/ui/MultibandGate.qml:422 src/contents/ui/PipeWirePage.qml:357
-#: src/contents/ui/StereoTools.qml:231
+#: src/contents/ui/StereoTools.qml:231 src/contents/ui/LevelMeter.qml:91
+#: src/contents/ui/LevelMeter.qml:130 src/contents/ui/LevelMeter.qml:169
 msgid "Right"
 msgstr "Kanan"
 
@@ -1134,16 +1139,15 @@ msgstr "Bypass"
 
 #: src/contents/ui/DeepFilterNet.qml:67
 msgid "%1 model is not installed. Audio passes through unprocessed."
-msgstr ""
+msgstr "Model %1 belum terinstal. Audio diteruskan tanpa diproses."
 
 #: src/contents/ui/DeepFilterNet.qml:84
-#, fuzzy
 msgid "Model"
 msgstr "Model"
 
 #: src/contents/ui/DeepFilterNet.qml:104
 msgid "Process as Mono"
-msgstr ""
+msgstr "Proses sebagai Mono"
 
 #: src/contents/ui/DeepFilterNet.qml:108
 msgid ""
@@ -1152,6 +1156,10 @@ msgid ""
 "microphones. Both output channels receive the same audio; stereo separation "
 "is lost."
 msgstr ""
+"Merata-ratakan masukan kiri dan kanan, lalu memprosesnya dengan satu instans "
+"DPDFNet, bukan dua. Ini dapat mengurangi penggunaan CPU secara signifikan "
+"untuk mikrofon mono. Kedua kanal keluaran menerima audio yang sama; "
+"pemisahan stereo hilang."
 
 #: src/contents/ui/DeepFilterNet.qml:121
 msgid "Attenuation limit"
@@ -1523,7 +1531,7 @@ msgstr "Pisah saluran"
 
 #: src/contents/ui/Equalizer.qml:362 src/contents/ui/HearingTestDialog.qml:23
 msgid "Hearing Test"
-msgstr ""
+msgstr "Tes Pendengaran"
 
 #: src/contents/ui/Equalizer.qml:368 src/contents/ui/MidSideEqualizer.qml:356
 msgid "Flat response"
@@ -1696,183 +1704,172 @@ msgid "Start"
 msgstr "Mulai"
 
 #: src/contents/ui/Harmonizer.qml:38
-#, fuzzy
 msgid "Harmony"
-msgstr "Harmonik"
+msgstr "Harmoni"
 
 #: src/contents/ui/Harmonizer.qml:45
 msgid "C"
-msgstr ""
+msgstr "C"
 
 #: src/contents/ui/Harmonizer.qml:48
 msgid "C♯ / D♭"
-msgstr ""
+msgstr "C♯ / D♭"
 
 #: src/contents/ui/Harmonizer.qml:51
 msgid "D"
-msgstr ""
+msgstr "D"
 
 #: src/contents/ui/Harmonizer.qml:54
 msgid "D♯ / E♭"
-msgstr ""
+msgstr "D♯ / E♭"
 
 #: src/contents/ui/Harmonizer.qml:57
 msgid "E"
-msgstr ""
+msgstr "E"
 
 #: src/contents/ui/Harmonizer.qml:60
 msgid "F"
-msgstr ""
+msgstr "F"
 
 #: src/contents/ui/Harmonizer.qml:63
 msgid "F♯ / G♭"
-msgstr ""
+msgstr "F♯ / G♭"
 
 #: src/contents/ui/Harmonizer.qml:66
 msgid "G"
-msgstr ""
+msgstr "G"
 
 #: src/contents/ui/Harmonizer.qml:69
 msgid "G♯ / A♭"
-msgstr ""
+msgstr "G♯ / A♭"
 
 #: src/contents/ui/Harmonizer.qml:72
 msgid "A"
-msgstr ""
+msgstr "A"
 
 #: src/contents/ui/Harmonizer.qml:75
 msgid "A♯ / B♭"
-msgstr ""
+msgstr "A♯ / B♭"
 
 #: src/contents/ui/Harmonizer.qml:78
-#, fuzzy
 msgid "B"
-msgstr "dB"
+msgstr "B"
 
 #: src/contents/ui/Harmonizer.qml:90
 msgid "No chord"
-msgstr ""
+msgstr "Tanpa akor"
 
 #: src/contents/ui/Harmonizer.qml:93
-#, fuzzy
 msgid "6"
-msgstr "x6"
+msgstr "6"
 
 #: src/contents/ui/Harmonizer.qml:96
-#, fuzzy
 msgid "Major 7"
-msgstr "Mayor"
+msgstr "Mayor 7"
 
 #: src/contents/ui/Harmonizer.qml:99
 msgid "Lydian"
-msgstr ""
+msgstr "Lidian"
 
 #: src/contents/ui/Harmonizer.qml:102
-#, fuzzy
 msgid "Major 9"
-msgstr "Mayor"
+msgstr "Mayor 9"
 
 #: src/contents/ui/Harmonizer.qml:105
-#, fuzzy
 msgid "Major 7/9"
-msgstr "Mayor"
+msgstr "Mayor 7/9"
 
 #: src/contents/ui/Harmonizer.qml:108
 msgid "6/9"
-msgstr ""
+msgstr "6/9"
 
 #: src/contents/ui/Harmonizer.qml:111
 msgid "Augmented"
-msgstr ""
+msgstr "Augmented"
 
 #: src/contents/ui/Harmonizer.qml:117
-#, fuzzy
 msgid "Minor 6"
-msgstr "Minor"
+msgstr "Minor 6"
 
 #: src/contents/ui/Harmonizer.qml:120
-#, fuzzy
 msgid "Minor 7"
-msgstr "Minor"
+msgstr "Minor 7"
 
 #: src/contents/ui/Harmonizer.qml:123
 msgid "Minor 7 flat 5"
-msgstr ""
+msgstr "Minor 7 mol 5"
 
 #: src/contents/ui/Harmonizer.qml:126
-#, fuzzy
 msgid "Minor 9"
-msgstr "Minor"
+msgstr "Minor 9"
 
 #: src/contents/ui/Harmonizer.qml:129
-#, fuzzy
 msgid "Minor 7/9"
-msgstr "Minor"
+msgstr "Minor 7/9"
 
 #: src/contents/ui/Harmonizer.qml:132
-#, fuzzy
 msgid "Minor 7/11"
-msgstr "Minor"
+msgstr "Minor 7/11"
 
 #: src/contents/ui/Harmonizer.qml:135
 msgid "Minor major 7"
-msgstr ""
+msgstr "Minor mayor 7"
 
 #: src/contents/ui/Harmonizer.qml:138
 msgid "Minor major 7/9"
-msgstr ""
+msgstr "Minor mayor 7/9"
 
 #: src/contents/ui/Harmonizer.qml:141
 msgid "Diminished"
-msgstr ""
+msgstr "Diminished"
 
 #: src/contents/ui/Harmonizer.qml:144
 msgid "Diminished 7"
-msgstr ""
+msgstr "Diminished 7"
 
 #: src/contents/ui/Harmonizer.qml:147
 msgid "Dominant 7"
-msgstr ""
+msgstr "Dominan 7"
 
 #: src/contents/ui/Harmonizer.qml:150
 msgid "Dominant 7 sus4"
-msgstr ""
+msgstr "Dominan 7 sus4"
 
 #: src/contents/ui/Harmonizer.qml:153
 msgid "Dominant 7 flat 5"
-msgstr ""
+msgstr "Dominan 7 mol 5"
 
 #: src/contents/ui/Harmonizer.qml:156
 msgid "Dominant 9"
-msgstr ""
+msgstr "Dominan 9"
 
 #: src/contents/ui/Harmonizer.qml:159
 msgid "Dominant 7 sharp 11"
-msgstr ""
+msgstr "Dominan 7 kres 11"
 
 #: src/contents/ui/Harmonizer.qml:162
 msgid "Dominant 13"
-msgstr ""
+msgstr "Dominan 13"
 
 #: src/contents/ui/Harmonizer.qml:165
 msgid "Dominant 7 flat 9"
-msgstr ""
+msgstr "Dominan 7 mol 9"
 
 #: src/contents/ui/Harmonizer.qml:168
 msgid "Dominant 7 flat 13"
-msgstr ""
+msgstr "Dominan 7 mol 13"
 
 #: src/contents/ui/Harmonizer.qml:171
 msgid "Dominant 7 sharp 9"
-msgstr ""
+msgstr "Dominan 7 kres 9"
 
 #: src/contents/ui/Harmonizer.qml:174
 msgid "Augmented major 7"
-msgstr ""
+msgstr "Augmented mayor 7"
 
 #: src/contents/ui/Harmonizer.qml:177
 msgid "Augmented 7"
-msgstr ""
+msgstr "Augmented 7"
 
 #: src/contents/ui/Harmonizer.qml:180 src/contents/ui/Pitch.qml:175
 msgid "Octaves"
@@ -1880,51 +1877,47 @@ msgstr "Oktaf"
 
 #: src/contents/ui/Harmonizer.qml:183
 msgid "Fifths"
-msgstr ""
+msgstr "Kuint"
 
 #: src/contents/ui/Harmonizer.qml:186
-#, fuzzy
 msgid "Suspended 4"
-msgstr "Ditangguhkan"
+msgstr "Suspended 4"
 
 #: src/contents/ui/Harmonizer.qml:189
-#, fuzzy
 msgid "Seconds"
-msgstr "Kedua"
+msgstr "Sekon"
 
 #: src/contents/ui/Harmonizer.qml:197
 msgid "Follow chord"
-msgstr ""
+msgstr "Ikuti akor"
 
 #: src/contents/ui/Harmonizer.qml:203
-#, fuzzy
 msgid "Left voice interval"
-msgstr "Tingkat Wet"
+msgstr "Interval suara kiri"
 
 #: src/contents/ui/Harmonizer.qml:213
-#, fuzzy
 msgid "Left voice level"
-msgstr "Tingkat Wet"
+msgstr "Level suara kiri"
 
 #: src/contents/ui/Harmonizer.qml:224
-#, fuzzy
 msgid "Right voice interval"
-msgstr "Tingkat Wet"
+msgstr "Interval suara kanan"
 
 #: src/contents/ui/Harmonizer.qml:234
-#, fuzzy
 msgid "Right voice level"
-msgstr "Tingkat Wet"
+msgstr "Level suara kanan"
 
 #: src/contents/ui/Harmonizer.qml:245
 msgid "Dry/wet"
-msgstr ""
+msgstr "Dry/wet"
 
 #: src/contents/ui/HearingTestDialog.qml:86
 msgid ""
 "The output device changed. Restart the test with the same headphones and "
 "volume."
 msgstr ""
+"Perangkat keluaran berubah. Mulai ulang tes dengan headphone dan volume yang "
+"sama."
 
 #: src/contents/ui/HearingTestDialog.qml:98
 msgid ""
@@ -1933,41 +1926,42 @@ msgid ""
 "then record the threshold. This uncalibrated listening test is not a medical "
 "hearing assessment."
 msgstr ""
+"Gunakan headphone di ruangan yang tenang. Jeda audio lain dan pertahankan "
+"volume sistem pada tingkat yang nyaman. Sesuaikan setiap nada hingga hampir "
+"tidak terdengar, lalu catat ambang pendengarannya. Tes pendengaran tanpa "
+"kalibrasi ini bukan pemeriksaan pendengaran medis."
 
 #: src/contents/ui/HearingTestDialog.qml:105
-#, fuzzy
 msgid "I am using headphones"
-msgstr "Headphone Berjarak"
+msgstr "Saya menggunakan headphone"
 
 #: src/contents/ui/HearingTestDialog.qml:121
-#, fuzzy
 msgid "Start Test"
-msgstr "Mulai"
+msgstr "Mulai Tes"
 
 #: src/contents/ui/HearingTestDialog.qml:132
 msgid ""
 "Select an available stereo output device and disable the regular test "
 "signals before starting."
 msgstr ""
+"Pilih perangkat keluaran stereo yang tersedia dan nonaktifkan sinyal uji "
+"reguler sebelum memulai."
 
 #: src/contents/ui/HearingTestDialog.qml:139
 msgid "%1 ear: %2 Hz (%3 of %4)"
-msgstr ""
+msgstr "Telinga %1: %2 Hz (%3 dari %4)"
 
 #: src/contents/ui/HearingTestDialog.qml:145
-#, fuzzy
 msgid "Tone Level"
-msgstr "Level Masukan"
+msgstr "Level Nada"
 
 #: src/contents/ui/HearingTestDialog.qml:164
-#, fuzzy
 msgid "Play Tone"
-msgstr "Pemutar"
+msgstr "Putar Nada"
 
 #: src/contents/ui/HearingTestDialog.qml:171
-#, fuzzy
 msgid "Record Threshold"
-msgstr "Ambang Batas"
+msgstr "Catat Ambang Pendengaran"
 
 #: src/contents/ui/HearingTestDialog.qml:193
 msgid ""
@@ -1976,31 +1970,30 @@ msgid ""
 "and lowers input gain to preserve headroom. Save a preset to keep the result "
 "for these headphones."
 msgstr ""
+"Tes selesai. Penerapan profil akan mengganti pengaturan ekualiser ini dengan "
+"koreksi terpisah untuk setiap telinga, yang dibatasi hingga 6 dB per pita, "
+"serta menurunkan gain masukan untuk mempertahankan headroom. Simpan preset "
+"untuk mempertahankan hasil bagi headphone ini."
 
 #: src/contents/ui/HearingTestDialog.qml:200
 msgid "%1 Hz: left %2 dB, right %3 dB"
-msgstr ""
+msgstr "%1 Hz: kiri %2 dB, kanan %3 dB"
 
 #: src/contents/ui/HearingTestDialog.qml:209
 msgid "Apply Personalized EQ"
-msgstr ""
+msgstr "Terapkan EQ Personal"
 
 #: src/contents/ui/HearingTestDialog.qml:214
 msgid "Could not apply the hearing profile."
-msgstr ""
+msgstr "Tidak dapat menerapkan profil pendengaran."
 
-#: src/contents/ui/LevelMeter.qml:69
+#: src/contents/ui/LevelMeter.qml:67 src/contents/ui/LevelMeter.qml:69
 msgid "Input Level"
 msgstr "Level Masukan"
 
-#: src/contents/ui/LevelMeter.qml:108
+#: src/contents/ui/LevelMeter.qml:106 src/contents/ui/LevelMeter.qml:108
 msgid "True Peak"
 msgstr "Puncak Sejati"
-
-#: src/contents/ui/LevelMeter.qml:147
-#, fuzzy
-msgid "Sample Peak"
-msgstr "Laju Sampel"
 
 #: src/contents/ui/Limiter.qml:76
 msgid "Herm thin"
@@ -2815,42 +2808,36 @@ msgid "Link delay"
 msgstr "Penundaan tautan"
 
 #: src/contents/ui/PreferencesSheet.qml:394
-#, fuzzy
 msgid "Enable the output inactivity timeout"
-msgstr "Aktifkan batas waktu ketidakaktifan"
+msgstr "Aktifkan batas waktu ketidakaktifan keluaran"
 
 #: src/contents/ui/PreferencesSheet.qml:395
-#, fuzzy
 msgid ""
 "When all output streams are inactive, the Easy Effects output pipeline "
 "remains loaded for an extra amount of time."
 msgstr ""
-"Saat semua aliran tidak aktif, pipeline Easy Effects tetap dimuat selama "
-"waktu tambahan."
+"Saat semua aliran keluaran tidak aktif, pipeline keluaran Easy Effects tetap "
+"dimuat selama beberapa waktu tambahan."
 
 #: src/contents/ui/PreferencesSheet.qml:407
-#, fuzzy
 msgid "Output inactivity timeout"
-msgstr "Batas waktu ketidakaktifan"
+msgstr "Batas waktu ketidakaktifan keluaran"
 
 #: src/contents/ui/PreferencesSheet.qml:424
-#, fuzzy
 msgid "Enable the input inactivity timeout"
-msgstr "Aktifkan batas waktu ketidakaktifan"
+msgstr "Aktifkan batas waktu ketidakaktifan masukan"
 
 #: src/contents/ui/PreferencesSheet.qml:425
-#, fuzzy
 msgid ""
 "When all input streams are inactive, the Easy Effects input pipeline remains "
 "loaded for an extra amount of time."
 msgstr ""
-"Saat semua aliran tidak aktif, pipeline Easy Effects tetap dimuat selama "
-"waktu tambahan."
+"Saat semua aliran masukan tidak aktif, pipeline masukan Easy Effects tetap "
+"dimuat selama beberapa waktu tambahan."
 
 #: src/contents/ui/PreferencesSheet.qml:437
-#, fuzzy
 msgid "Input inactivity timeout"
-msgstr "Batas waktu ketidakaktifan"
+msgstr "Batas waktu ketidakaktifan masukan"
 
 #: src/contents/ui/PreferencesSheet.qml:452
 msgid "Level meters frame rate cap"
@@ -2943,9 +2930,8 @@ msgid "Maximum"
 msgstr "Maksimum"
 
 #: src/contents/ui/PreferencesSheet.qml:663
-#, fuzzy
 msgid "Level Range"
-msgstr "Rentang Kelantangan"
+msgstr "Rentang Level"
 
 #: src/contents/ui/PreferencesSheet.qml:668
 #: src/contents/ui/PreferencesSheet.qml:924
@@ -2956,59 +2942,60 @@ msgstr "Otomatis"
 msgid ""
 "Follows the loudest and the quieter bands within the minimum and maximum."
 msgstr ""
+"Mengikuti pita dengan level tertinggi dan yang lebih rendah dalam batas "
+"minimum dan maksimum."
 
 #: src/contents/ui/PreferencesSheet.qml:679
-#, fuzzy
 msgid "Minimum span"
-msgstr "Kuantum minimum"
+msgstr "Rentang minimum"
 
 #: src/contents/ui/PreferencesSheet.qml:723
 msgid ""
 "Tilts the display around 1 kHz. The shown levels are no longer absolute."
 msgstr ""
+"Memiringkan tampilan dengan titik poros pada 1 kHz. Level yang ditampilkan "
+"tidak lagi absolut."
 
 #: src/contents/ui/PreferencesSheet.qml:738
 msgid "Analysis"
-msgstr ""
+msgstr "Analisis"
 
 #: src/contents/ui/PreferencesSheet.qml:755
 msgid "Zero padding"
-msgstr ""
+msgstr "Zero padding"
 
 #: src/contents/ui/PreferencesSheet.qml:756
 msgid ""
 "Interpolates the spectrum. It does not increase the frequency resolution."
-msgstr ""
+msgstr "Menginterpolasi spektrum. Tidak meningkatkan resolusi frekuensi."
 
 #: src/contents/ui/PreferencesSheet.qml:768
-#, fuzzy
 msgid "Window function"
-msgstr "Reduksi penguatan"
+msgstr "Fungsi jendela"
 
 #: src/contents/ui/PreferencesSheet.qml:772
 msgid "Rectangular"
-msgstr ""
+msgstr "Persegi panjang"
 
 #: src/contents/ui/PreferencesSheet.qml:772
 msgid "Hann"
-msgstr ""
+msgstr "Hann"
 
 #: src/contents/ui/PreferencesSheet.qml:772
 msgid "Hamming"
-msgstr ""
+msgstr "Hamming"
 
 #: src/contents/ui/PreferencesSheet.qml:772
 msgid "Blackman"
-msgstr ""
+msgstr "Blackman"
 
 #: src/contents/ui/PreferencesSheet.qml:772
 msgid "Blackman-Harris"
-msgstr ""
+msgstr "Blackman-Harris"
 
 #: src/contents/ui/PreferencesSheet.qml:772
-#, fuzzy
 msgid "Flat top"
-msgstr "Datar"
+msgstr "Flat top"
 
 #: src/contents/ui/PreferencesSheet.qml:816
 msgid "Database autosave interval"
@@ -3810,9 +3797,8 @@ msgid "Autotune"
 msgstr "Autotune"
 
 #: src/tags_plugin_name.cpp:49
-#, fuzzy
 msgid "Harmonizer"
-msgstr "Harmonik"
+msgstr "Harmonizer"
 
 #: src/tags_plugin_name.cpp:50
 msgid "Bass Enhancer"
@@ -4021,6 +4007,11 @@ msgstr "Equalizer, Kompresor dan Efek Audio Lainnya"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "Efek audio sederhana"
+
+#: src/contents/ui/LevelMeter.qml:147
+#, fuzzy
+msgid "Sample Peak"
+msgstr "Laju Sampel"
 
 #~ msgid "Dynamic scale"
 #~ msgstr "Skala dinamis"
