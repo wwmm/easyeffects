@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-10-18 16:13+0000\n"
+"POT-Creation-Date: 2026-10-20 15:24+0000\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Thai <https://hosted.weblate.org/projects/easyeffects/main/th/"
@@ -167,17 +167,17 @@ msgid "Reference"
 msgstr ""
 
 #: src/contents/ui/Autogain.qml:79 src/contents/ui/Autogain.qml:148
-#: src/contents/ui/LevelMeter.qml:158
+#: src/contents/ui/LevelMeter.qml:199
 msgid "Momentary"
 msgstr ""
 
 #: src/contents/ui/Autogain.qml:79 src/contents/ui/Autogain.qml:158
-#: src/contents/ui/LevelMeter.qml:168
+#: src/contents/ui/LevelMeter.qml:209
 msgid "Short-term"
 msgstr ""
 
 #: src/contents/ui/Autogain.qml:79 src/contents/ui/Autogain.qml:168
-#: src/contents/ui/LevelMeter.qml:178
+#: src/contents/ui/LevelMeter.qml:219
 msgid "Integrated"
 msgstr ""
 
@@ -210,17 +210,17 @@ msgid "Maximum history"
 msgstr ""
 
 #: src/contents/ui/Autogain.qml:143 src/contents/ui/Autogain.qml:198
-#: src/contents/ui/BassLoudness.qml:67 src/contents/ui/LevelMeter.qml:146
+#: src/contents/ui/BassLoudness.qml:67 src/contents/ui/LevelMeter.qml:187
 #: src/tags_plugin_name.cpp:70
 msgid "Loudness"
 msgstr ""
 
-#: src/contents/ui/Autogain.qml:178 src/contents/ui/LevelMeter.qml:188
+#: src/contents/ui/Autogain.qml:178 src/contents/ui/LevelMeter.qml:229
 msgid "Relative"
 msgstr ""
 
 #: src/contents/ui/Autogain.qml:188 src/contents/ui/Crusher.qml:192
-#: src/contents/ui/LevelMeter.qml:198
+#: src/contents/ui/LevelMeter.qml:239
 msgid "Range"
 msgstr ""
 
@@ -237,7 +237,7 @@ msgstr ""
 #: src/contents/ui/EchoCanceller.qml:158 src/contents/ui/Equalizer.qml:321
 #: src/contents/ui/Exciter.qml:210 src/contents/ui/Expander.qml:823
 #: src/contents/ui/Filter.qml:234 src/contents/ui/Gate.qml:952
-#: src/contents/ui/Harmonizer.qml:267 src/contents/ui/LevelMeter.qml:215
+#: src/contents/ui/Harmonizer.qml:267 src/contents/ui/LevelMeter.qml:256
 #: src/contents/ui/Limiter.qml:607 src/contents/ui/Loudness.qml:175
 #: src/contents/ui/Maximizer.qml:122 src/contents/ui/MidSideEqualizer.qml:315
 #: src/contents/ui/MultibandCompressor.qml:965
@@ -250,7 +250,7 @@ msgid "Using %1"
 msgstr ""
 
 #: src/contents/ui/Autogain.qml:250 src/contents/ui/DeepFilterNet.qml:286
-#: src/contents/ui/LevelMeter.qml:232 src/contents/ui/Pitch.qml:285
+#: src/contents/ui/LevelMeter.qml:273 src/contents/ui/Pitch.qml:285
 msgid "Reset history"
 msgstr ""
 
@@ -263,7 +263,7 @@ msgid "Force silence when the level is below the silence threshold"
 msgstr ""
 
 #: src/contents/ui/Autogain.qml:270 src/contents/ui/Autotune.qml:436
-#: src/contents/ui/DeepFilterNet.qml:294 src/contents/ui/LevelMeter.qml:240
+#: src/contents/ui/DeepFilterNet.qml:294 src/contents/ui/LevelMeter.qml:281
 #: src/contents/ui/Pitch.qml:313
 msgid "Reset settings"
 msgstr ""
@@ -637,8 +637,8 @@ msgstr ""
 #: src/contents/ui/Compressor.qml:319 src/contents/ui/Convolver.qml:301
 #: src/contents/ui/Delay.qml:59 src/contents/ui/Equalizer.qml:250
 #: src/contents/ui/Expander.qml:279 src/contents/ui/Gate.qml:297
-#: src/contents/ui/HearingTestDialog.qml:139 src/contents/ui/LevelMeter.qml:79
-#: src/contents/ui/LevelMeter.qml:118
+#: src/contents/ui/HearingTestDialog.qml:139 src/contents/ui/LevelMeter.qml:81
+#: src/contents/ui/LevelMeter.qml:120 src/contents/ui/LevelMeter.qml:159
 #: src/contents/ui/MultibandCompressor.qml:449
 #: src/contents/ui/MultibandGate.qml:422 src/contents/ui/PipeWirePage.qml:346
 #: src/contents/ui/StereoTools.qml:204
@@ -648,8 +648,8 @@ msgstr ""
 #: src/contents/ui/Compressor.qml:319 src/contents/ui/Convolver.qml:319
 #: src/contents/ui/Delay.qml:212 src/contents/ui/Equalizer.qml:250
 #: src/contents/ui/Expander.qml:279 src/contents/ui/Gate.qml:297
-#: src/contents/ui/HearingTestDialog.qml:139 src/contents/ui/LevelMeter.qml:89
-#: src/contents/ui/LevelMeter.qml:128
+#: src/contents/ui/HearingTestDialog.qml:139 src/contents/ui/LevelMeter.qml:91
+#: src/contents/ui/LevelMeter.qml:130 src/contents/ui/LevelMeter.qml:169
 #: src/contents/ui/MultibandCompressor.qml:449
 #: src/contents/ui/MultibandGate.qml:422 src/contents/ui/PipeWirePage.qml:357
 #: src/contents/ui/StereoTools.qml:231
@@ -1950,12 +1950,16 @@ msgstr ""
 msgid "Could not apply the hearing profile."
 msgstr ""
 
-#: src/contents/ui/LevelMeter.qml:67
+#: src/contents/ui/LevelMeter.qml:69
 msgid "Input Level"
 msgstr ""
 
-#: src/contents/ui/LevelMeter.qml:106
+#: src/contents/ui/LevelMeter.qml:108
 msgid "True Peak"
+msgstr ""
+
+#: src/contents/ui/LevelMeter.qml:147
+msgid "Sample Peak"
 msgstr ""
 
 #: src/contents/ui/Limiter.qml:76
