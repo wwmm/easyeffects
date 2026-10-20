@@ -43,6 +43,8 @@ Kirigami.ScrollablePage {
         range.setValue(pluginBackend.getRangeLevel());
         truePeakL.setValue(pluginBackend.getTruePeakL());
         truePeakR.setValue(pluginBackend.getTruePeakR());
+        samplePeakL.setValue(pluginBackend.getSamplePeakL());
+        samplePeakR.setValue(pluginBackend.getSamplePeakR());
         inputL.setValue(pluginBackend.getInputLevelLeft());
         inputR.setValue(pluginBackend.getInputLevelRight());
     }
@@ -124,6 +126,45 @@ Kirigami.ScrollablePage {
 
                         EeProgressBar {
                             id: truePeakR
+
+                            label: i18n("Right") // qmllint disable
+                            unit: Units.dB
+                            from: Common.minimumDecibelLevel
+                            to: 10
+                            decimals: 1
+                        }
+
+                        Item {
+                            Layout.fillHeight: true
+                        }
+                    }
+                }
+
+                Kirigami.Card {
+                    id: cardSamplePeak
+
+                    header: Kirigami.Heading {
+                        text: i18n("Sample Peak") // qmllint disable
+                        level: 2
+                        leftPadding: Kirigami.Units.largeSpacing
+                        rightPadding: Kirigami.Units.largeSpacing
+                    }
+
+                    contentItem: ColumnLayout {
+                        spacing: 0
+
+                        EeProgressBar {
+                            id: samplePeakL
+
+                            label: i18n("Left") // qmllint disable
+                            unit: Units.dB
+                            from: Common.minimumDecibelLevel
+                            to: 10
+                            decimals: 1
+                        }
+
+                        EeProgressBar {
+                            id: samplePeakR
 
                             label: i18n("Right") // qmllint disable
                             unit: Units.dB

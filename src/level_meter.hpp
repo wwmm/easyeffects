@@ -79,6 +79,10 @@ class LevelMeter : public PluginBase {
 
   Q_INVOKABLE [[nodiscard]] float getTruePeakR() const;
 
+  Q_INVOKABLE [[nodiscard]] float getSamplePeakL() const;
+
+  Q_INVOKABLE [[nodiscard]] float getSamplePeakR() const;
+
   Q_INVOKABLE void resetHistory();
 
  private:
@@ -94,6 +98,9 @@ class LevelMeter : public PluginBase {
 
   double true_peak_L = 0.0;
   double true_peak_R = 0.0;
+
+  double sample_peak_L = 0.0;
+  double sample_peak_R = 0.0;
 
   std::vector<float> data;
 

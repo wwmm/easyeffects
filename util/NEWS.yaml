@@ -5,6 +5,7 @@ Date: UNRELEASED_DATE
 Description: 
 - Features∶
 - Added the new DPDFNet model to the Deep Noise Remover effect.
+- Added a sample peak meter alongside the true peak meter in the Level Meter effect.
 - Added the Harmonizer effect.
 - Improved spectrum performance.
 - The inactivity timeout has been split into separate settings for the input and output pipelines, which can be enabled and set independently. Existing settings are copied to both.
