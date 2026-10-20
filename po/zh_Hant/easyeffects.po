@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-18 16:13+0000\n"
-"PO-Revision-Date: 2026-10-09 13:32+0000\n"
-"Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
+"PO-Revision-Date: 2026-10-20 15:35+0000\n"
+"Last-Translator: neko0xff <neko0xff@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hant/>\n"
 "Language: zh_Hant\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2026.10.1.dev0\n"
+"X-Generator: Weblate 2026.11.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -1125,7 +1125,7 @@ msgstr "略過"
 
 #: src/contents/ui/DeepFilterNet.qml:67
 msgid "%1 model is not installed. Audio passes through unprocessed."
-msgstr ""
+msgstr "%1 模型尚未安裝。音訊將以未經處理的狀態直接傳輸。"
 
 #: src/contents/ui/DeepFilterNet.qml:84
 #, fuzzy
@@ -1134,7 +1134,7 @@ msgstr "模式"
 
 #: src/contents/ui/DeepFilterNet.qml:104
 msgid "Process as Mono"
-msgstr ""
+msgstr "以 Mono 模式執行"
 
 #: src/contents/ui/DeepFilterNet.qml:108
 msgid ""
@@ -1143,6 +1143,9 @@ msgid ""
 "microphones. Both output channels receive the same audio; stereo separation "
 "is lost."
 msgstr ""
+"將左右輸入訊號進行平均處理，並使用一個 DPDFNet 實例（而非兩個）來處理這些訊號"
+"。此舉可顯著降低單聲道麥克風的 CPU 使用率。兩個輸出通道皆接收相同的音訊；因此"
+"會失去立體聲分離效果。"
 
 #: src/contents/ui/DeepFilterNet.qml:121
 msgid "Attenuation limit"
@@ -1509,7 +1512,7 @@ msgstr "分割聲道"
 
 #: src/contents/ui/Equalizer.qml:362 src/contents/ui/HearingTestDialog.qml:23
 msgid "Hearing Test"
-msgstr ""
+msgstr "聽力測試"
 
 #: src/contents/ui/Equalizer.qml:368 src/contents/ui/MidSideEqualizer.qml:356
 msgid "Flat response"
@@ -1688,47 +1691,47 @@ msgstr "諧波"
 
 #: src/contents/ui/Harmonizer.qml:45
 msgid "C"
-msgstr ""
+msgstr "C"
 
 #: src/contents/ui/Harmonizer.qml:48
 msgid "C♯ / D♭"
-msgstr ""
+msgstr "C♯ / D♭"
 
 #: src/contents/ui/Harmonizer.qml:51
 msgid "D"
-msgstr ""
+msgstr "D"
 
 #: src/contents/ui/Harmonizer.qml:54
 msgid "D♯ / E♭"
-msgstr ""
+msgstr "D♯ / E♭"
 
 #: src/contents/ui/Harmonizer.qml:57
 msgid "E"
-msgstr ""
+msgstr "E"
 
 #: src/contents/ui/Harmonizer.qml:60
 msgid "F"
-msgstr ""
+msgstr "F"
 
 #: src/contents/ui/Harmonizer.qml:63
 msgid "F♯ / G♭"
-msgstr ""
+msgstr "F♯ / G♭"
 
 #: src/contents/ui/Harmonizer.qml:66
 msgid "G"
-msgstr ""
+msgstr "G"
 
 #: src/contents/ui/Harmonizer.qml:69
 msgid "G♯ / A♭"
-msgstr ""
+msgstr "G♯ / A♭"
 
 #: src/contents/ui/Harmonizer.qml:72
 msgid "A"
-msgstr ""
+msgstr "A"
 
 #: src/contents/ui/Harmonizer.qml:75
 msgid "A♯ / B♭"
-msgstr ""
+msgstr "A♯ / B♭"
 
 #: src/contents/ui/Harmonizer.qml:78
 #, fuzzy
@@ -1737,7 +1740,7 @@ msgstr "dB"
 
 #: src/contents/ui/Harmonizer.qml:90
 msgid "No chord"
-msgstr ""
+msgstr "無和弦"
 
 #: src/contents/ui/Harmonizer.qml:93
 #, fuzzy
@@ -1751,7 +1754,7 @@ msgstr "主要的"
 
 #: src/contents/ui/Harmonizer.qml:99
 msgid "Lydian"
-msgstr ""
+msgstr "Lydian"
 
 #: src/contents/ui/Harmonizer.qml:102
 #, fuzzy
@@ -1765,25 +1768,23 @@ msgstr "主要的"
 
 #: src/contents/ui/Harmonizer.qml:108
 msgid "6/9"
-msgstr ""
+msgstr "6/9"
 
 #: src/contents/ui/Harmonizer.qml:111
 msgid "Augmented"
-msgstr ""
+msgstr "增強型"
 
 #: src/contents/ui/Harmonizer.qml:117
-#, fuzzy
 msgid "Minor 6"
-msgstr "次要的"
+msgstr "小調 6"
 
 #: src/contents/ui/Harmonizer.qml:120
-#, fuzzy
 msgid "Minor 7"
-msgstr "次要的"
+msgstr "小調 7"
 
 #: src/contents/ui/Harmonizer.qml:123
 msgid "Minor 7 flat 5"
-msgstr ""
+msgstr "小七和弦降五度"
 
 #: src/contents/ui/Harmonizer.qml:126
 #, fuzzy
