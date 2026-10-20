@@ -45,7 +45,8 @@ msgstr "ウィンドウを非表示にします。"
 #: src/command_line_parser.cpp:49
 msgid ""
 "Global bypass. 1 to enable, 2 to disable and 3 to get the current state."
-msgstr "グローバルバイパス。1 で有効化、2 で無効化、3 で現在の状態を取得します。"
+msgstr ""
+"グローバルバイパス。1 で有効化、2 で無効化、3 で現在の状態を取得します。"
 
 #: src/command_line_parser.cpp:50
 msgid "bypass-state"
@@ -72,7 +73,8 @@ msgstr "音声共有の状態を切り替えます。"
 msgid ""
 "Microphone monitoring. 1 to enable, 2 to disable and 3 to get the current "
 "state."
-msgstr "マイクモニタリング。1 で有効化、2 で無効化、3 で現在の状態を取得します。"
+msgstr ""
+"マイクモニタリング。1 で有効化、2 で無効化、3 で現在の状態を取得します。"
 
 #: src/command_line_parser.cpp:64
 msgid "Toggle the state of microphone monitoring."
@@ -171,17 +173,17 @@ msgid "Reference"
 msgstr "リファレンス"
 
 #: src/contents/ui/Autogain.qml:79 src/contents/ui/Autogain.qml:148
-#: src/contents/ui/LevelMeter.qml:158
+#: src/contents/ui/LevelMeter.qml:158 src/contents/ui/LevelMeter.qml:199
 msgid "Momentary"
 msgstr "瞬間"
 
 #: src/contents/ui/Autogain.qml:79 src/contents/ui/Autogain.qml:158
-#: src/contents/ui/LevelMeter.qml:168
+#: src/contents/ui/LevelMeter.qml:168 src/contents/ui/LevelMeter.qml:209
 msgid "Short-term"
 msgstr "短期"
 
 #: src/contents/ui/Autogain.qml:79 src/contents/ui/Autogain.qml:168
-#: src/contents/ui/LevelMeter.qml:178
+#: src/contents/ui/LevelMeter.qml:178 src/contents/ui/LevelMeter.qml:219
 msgid "Integrated"
 msgstr "統合"
 
@@ -215,16 +217,17 @@ msgstr "最大履歴"
 
 #: src/contents/ui/Autogain.qml:143 src/contents/ui/Autogain.qml:198
 #: src/contents/ui/BassLoudness.qml:67 src/contents/ui/LevelMeter.qml:146
-#: src/tags_plugin_name.cpp:70
+#: src/tags_plugin_name.cpp:70 src/contents/ui/LevelMeter.qml:187
 msgid "Loudness"
 msgstr "ラウドネス"
 
 #: src/contents/ui/Autogain.qml:178 src/contents/ui/LevelMeter.qml:188
+#: src/contents/ui/LevelMeter.qml:229
 msgid "Relative"
 msgstr "相対"
 
 #: src/contents/ui/Autogain.qml:188 src/contents/ui/Crusher.qml:192
-#: src/contents/ui/LevelMeter.qml:198
+#: src/contents/ui/LevelMeter.qml:198 src/contents/ui/LevelMeter.qml:239
 msgid "Range"
 msgstr "範囲"
 
@@ -250,11 +253,13 @@ msgstr "出力ゲイン"
 #: src/contents/ui/RNNoise.qml:298 src/contents/ui/RNNoise.qml:300
 #: src/contents/ui/RNNoise.qml:320 src/contents/ui/Reverb.qml:318
 #: src/contents/ui/Speex.qml:177 src/contents/ui/StereoTools.qml:392
+#: src/contents/ui/LevelMeter.qml:256
 msgid "Using %1"
 msgstr "%1 を使用中"
 
 #: src/contents/ui/Autogain.qml:250 src/contents/ui/DeepFilterNet.qml:286
 #: src/contents/ui/LevelMeter.qml:232 src/contents/ui/Pitch.qml:285
+#: src/contents/ui/LevelMeter.qml:273
 msgid "Reset history"
 msgstr "履歴をリセット"
 
@@ -268,7 +273,7 @@ msgstr "レベルがしきい値を下回った場合に強制的に無音化し
 
 #: src/contents/ui/Autogain.qml:270 src/contents/ui/Autotune.qml:436
 #: src/contents/ui/DeepFilterNet.qml:294 src/contents/ui/LevelMeter.qml:240
-#: src/contents/ui/Pitch.qml:313
+#: src/contents/ui/Pitch.qml:313 src/contents/ui/LevelMeter.qml:281
 msgid "Reset settings"
 msgstr "設定をリセット"
 
@@ -647,7 +652,8 @@ msgstr "サイド"
 #: src/contents/ui/LevelMeter.qml:118
 #: src/contents/ui/MultibandCompressor.qml:449
 #: src/contents/ui/MultibandGate.qml:422 src/contents/ui/PipeWirePage.qml:346
-#: src/contents/ui/StereoTools.qml:204
+#: src/contents/ui/StereoTools.qml:204 src/contents/ui/LevelMeter.qml:81
+#: src/contents/ui/LevelMeter.qml:120 src/contents/ui/LevelMeter.qml:159
 msgid "Left"
 msgstr "左"
 
@@ -658,7 +664,8 @@ msgstr "左"
 #: src/contents/ui/LevelMeter.qml:128
 #: src/contents/ui/MultibandCompressor.qml:449
 #: src/contents/ui/MultibandGate.qml:422 src/contents/ui/PipeWirePage.qml:357
-#: src/contents/ui/StereoTools.qml:231
+#: src/contents/ui/StereoTools.qml:231 src/contents/ui/LevelMeter.qml:91
+#: src/contents/ui/LevelMeter.qml:130 src/contents/ui/LevelMeter.qml:169
 msgid "Right"
 msgstr "右"
 
@@ -1148,9 +1155,9 @@ msgid ""
 "microphones. Both output channels receive the same audio; stereo separation "
 "is lost."
 msgstr ""
-"左右の入力を平均し、2つではなく1つのDPDFNetインスタンスで処理します。"
-"モノラルマイクではCPU使用率を大幅に下げられる場合があります。左右の出力"
-"チャンネルには同じ音声が送られ、ステレオの分離は失われます。"
+"左右の入力を平均し、2つではなく1つのDPDFNetインスタンスで処理します。モノラル"
+"マイクではCPU使用率を大幅に下げられる場合があります。左右の出力チャンネルには"
+"同じ音声が送られ、ステレオの分離は失われます。"
 
 #: src/contents/ui/DeepFilterNet.qml:121
 msgid "Attenuation limit"
@@ -1909,8 +1916,8 @@ msgid ""
 "The output device changed. Restart the test with the same headphones and "
 "volume."
 msgstr ""
-"出力デバイスが変更されました。同じヘッドホンと音量でテストを再開してください"
-"。"
+"出力デバイスが変更されました。同じヘッドホンと音量でテストを再開してくださ"
+"い。"
 
 #: src/contents/ui/HearingTestDialog.qml:98
 msgid ""
@@ -1964,9 +1971,9 @@ msgid ""
 "for these headphones."
 msgstr ""
 "テストが完了しました。プロファイルを適用すると、このイコライザーの設定が左右"
-"の耳ごとの補正に置き換わります。補正は各バンド最大6 dBに制限され、"
-"ヘッドルームを確保するため入力ゲインが下がります。このヘッドホンで結果を保持"
-"するには、プリセットを保存してください。"
+"の耳ごとの補正に置き換わります。補正は各バンド最大6 dBに制限され、ヘッドルー"
+"ムを確保するため入力ゲインが下がります。このヘッドホンで結果を保持するには、"
+"プリセットを保存してください。"
 
 #: src/contents/ui/HearingTestDialog.qml:200
 msgid "%1 Hz: left %2 dB, right %3 dB"
@@ -1980,11 +1987,11 @@ msgstr "個人用EQを適用"
 msgid "Could not apply the hearing profile."
 msgstr "聴力プロファイルを適用できませんでした。"
 
-#: src/contents/ui/LevelMeter.qml:67
+#: src/contents/ui/LevelMeter.qml:67 src/contents/ui/LevelMeter.qml:69
 msgid "Input Level"
 msgstr "入力レベル"
 
-#: src/contents/ui/LevelMeter.qml:106
+#: src/contents/ui/LevelMeter.qml:106 src/contents/ui/LevelMeter.qml:108
 msgid "True Peak"
 msgstr "トゥルーピーク"
 
@@ -2274,7 +2281,8 @@ msgstr "新しいエフェクトをパイプラインに追加しました: %1"
 
 #: src/contents/ui/MidSideEqualizer.qml:69
 msgid "Failed to import the Mid-Side Equalizer APO preset file."
-msgstr "Mid-SideイコライザーのAPOプリセットファイルのインポートに失敗しました。"
+msgstr ""
+"Mid-SideイコライザーのAPOプリセットファイルのインポートに失敗しました。"
 
 #: src/contents/ui/MidSideEqualizer.qml:74
 msgid "Imported the Mid-Side Equalizer APO preset file."
@@ -2728,9 +2736,9 @@ msgid ""
 "percentages results in a lower perceived volume while the loudness appears "
 "to change more evenly across the slider."
 msgstr ""
-"ストリームの音量に線形スケールではなく立方スケールを使用します。低い"
-"パーセンテージでは知覚される音量が小さくなりますが、スライダー全体で音量の変"
-"化がより均等に感じられます。"
+"ストリームの音量に線形スケールではなく立方スケールを使用します。低いパーセン"
+"テージでは知覚される音量が小さくなりますが、スライダー全体で音量の変化がより"
+"均等に感じられます。"
 
 #: src/contents/ui/PreferencesSheet.qml:288
 msgid "Activate monitor channel volumes"
@@ -2810,8 +2818,8 @@ msgid ""
 "When all output streams are inactive, the Easy Effects output pipeline "
 "remains loaded for an extra amount of time."
 msgstr ""
-"すべての出力ストリームが非アクティブになった後も、Easy Effectsの出力"
-"パイプラインを一定時間読み込んだままにします。"
+"すべての出力ストリームが非アクティブになった後も、Easy Effectsの出力パイプラ"
+"インを一定時間読み込んだままにします。"
 
 #: src/contents/ui/PreferencesSheet.qml:407
 msgid "Output inactivity timeout"
@@ -2826,8 +2834,8 @@ msgid ""
 "When all input streams are inactive, the Easy Effects input pipeline remains "
 "loaded for an extra amount of time."
 msgstr ""
-"すべての入力ストリームが非アクティブになった後も、Easy Effectsの入力"
-"パイプラインを一定時間読み込んだままにします。"
+"すべての入力ストリームが非アクティブになった後も、Easy Effectsの入力パイプラ"
+"インを一定時間読み込んだままにします。"
 
 #: src/contents/ui/PreferencesSheet.qml:437
 msgid "Input inactivity timeout"
@@ -2944,7 +2952,8 @@ msgstr "最小幅"
 #: src/contents/ui/PreferencesSheet.qml:723
 msgid ""
 "Tilts the display around 1 kHz. The shown levels are no longer absolute."
-msgstr "1 kHzを中心に表示を傾けます。表示されるレベルは絶対値ではなくなります。"
+msgstr ""
+"1 kHzを中心に表示を傾けます。表示されるレベルは絶対値ではなくなります。"
 
 #: src/contents/ui/PreferencesSheet.qml:738
 msgid "Analysis"
@@ -3999,6 +4008,11 @@ msgstr "イコライザー、コンプレッサーなどのオーディオエフ
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "シンプルなオーディオエフェクト"
+
+#: src/contents/ui/LevelMeter.qml:147
+#, fuzzy
+msgid "Sample Peak"
+msgstr "最大リダクション"
 
 #~ msgid "Dynamic scale"
 #~ msgstr "動的スケール"

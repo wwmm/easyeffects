@@ -179,17 +179,17 @@ msgid "Reference"
 msgstr "Referință"
 
 #: src/contents/ui/Autogain.qml:79 src/contents/ui/Autogain.qml:148
-#: src/contents/ui/LevelMeter.qml:158
+#: src/contents/ui/LevelMeter.qml:158 src/contents/ui/LevelMeter.qml:199
 msgid "Momentary"
 msgstr "Momentan"
 
 #: src/contents/ui/Autogain.qml:79 src/contents/ui/Autogain.qml:158
-#: src/contents/ui/LevelMeter.qml:168
+#: src/contents/ui/LevelMeter.qml:168 src/contents/ui/LevelMeter.qml:209
 msgid "Short-term"
 msgstr "Pe termen scurt"
 
 #: src/contents/ui/Autogain.qml:79 src/contents/ui/Autogain.qml:168
-#: src/contents/ui/LevelMeter.qml:178
+#: src/contents/ui/LevelMeter.qml:178 src/contents/ui/LevelMeter.qml:219
 msgid "Integrated"
 msgstr "Integrat"
 
@@ -223,16 +223,17 @@ msgstr "Istoric maxim"
 
 #: src/contents/ui/Autogain.qml:143 src/contents/ui/Autogain.qml:198
 #: src/contents/ui/BassLoudness.qml:67 src/contents/ui/LevelMeter.qml:146
-#: src/tags_plugin_name.cpp:70
+#: src/tags_plugin_name.cpp:70 src/contents/ui/LevelMeter.qml:187
 msgid "Loudness"
 msgstr "Intensitate sonoră"
 
 #: src/contents/ui/Autogain.qml:178 src/contents/ui/LevelMeter.qml:188
+#: src/contents/ui/LevelMeter.qml:229
 msgid "Relative"
 msgstr "Relativă"
 
 #: src/contents/ui/Autogain.qml:188 src/contents/ui/Crusher.qml:192
-#: src/contents/ui/LevelMeter.qml:198
+#: src/contents/ui/LevelMeter.qml:198 src/contents/ui/LevelMeter.qml:239
 msgid "Range"
 msgstr "Interval"
 
@@ -258,11 +259,13 @@ msgstr "Câștig de ieșire"
 #: src/contents/ui/RNNoise.qml:298 src/contents/ui/RNNoise.qml:300
 #: src/contents/ui/RNNoise.qml:320 src/contents/ui/Reverb.qml:318
 #: src/contents/ui/Speex.qml:177 src/contents/ui/StereoTools.qml:392
+#: src/contents/ui/LevelMeter.qml:256
 msgid "Using %1"
 msgstr "Utilizând %1"
 
 #: src/contents/ui/Autogain.qml:250 src/contents/ui/DeepFilterNet.qml:286
 #: src/contents/ui/LevelMeter.qml:232 src/contents/ui/Pitch.qml:285
+#: src/contents/ui/LevelMeter.qml:273
 msgid "Reset history"
 msgstr "Reinițiere istoric"
 
@@ -276,7 +279,7 @@ msgstr "Forțează modul silențios când nivelul este sub pragul de liniște"
 
 #: src/contents/ui/Autogain.qml:270 src/contents/ui/Autotune.qml:436
 #: src/contents/ui/DeepFilterNet.qml:294 src/contents/ui/LevelMeter.qml:240
-#: src/contents/ui/Pitch.qml:313
+#: src/contents/ui/Pitch.qml:313 src/contents/ui/LevelMeter.qml:281
 msgid "Reset settings"
 msgstr "Restaurare valori"
 
@@ -656,7 +659,8 @@ msgstr "Lateral"
 #: src/contents/ui/LevelMeter.qml:118
 #: src/contents/ui/MultibandCompressor.qml:449
 #: src/contents/ui/MultibandGate.qml:422 src/contents/ui/PipeWirePage.qml:346
-#: src/contents/ui/StereoTools.qml:204
+#: src/contents/ui/StereoTools.qml:204 src/contents/ui/LevelMeter.qml:81
+#: src/contents/ui/LevelMeter.qml:120 src/contents/ui/LevelMeter.qml:159
 msgid "Left"
 msgstr "Stânga"
 
@@ -667,7 +671,8 @@ msgstr "Stânga"
 #: src/contents/ui/LevelMeter.qml:128
 #: src/contents/ui/MultibandCompressor.qml:449
 #: src/contents/ui/MultibandGate.qml:422 src/contents/ui/PipeWirePage.qml:357
-#: src/contents/ui/StereoTools.qml:231
+#: src/contents/ui/StereoTools.qml:231 src/contents/ui/LevelMeter.qml:91
+#: src/contents/ui/LevelMeter.qml:130 src/contents/ui/LevelMeter.qml:169
 msgid "Right"
 msgstr "Dreapta"
 
@@ -2007,11 +2012,11 @@ msgstr "Aplică egalizatorul personalizat"
 msgid "Could not apply the hearing profile."
 msgstr "Nu s-a putut aplica profilul auditiv."
 
-#: src/contents/ui/LevelMeter.qml:67
+#: src/contents/ui/LevelMeter.qml:67 src/contents/ui/LevelMeter.qml:69
 msgid "Input Level"
 msgstr "Nivel de intrare"
 
-#: src/contents/ui/LevelMeter.qml:106
+#: src/contents/ui/LevelMeter.qml:106 src/contents/ui/LevelMeter.qml:108
 msgid "True Peak"
 msgstr "Vârful real"
 
@@ -4046,6 +4051,11 @@ msgstr "Egalizator, compresor și alte efecte audio"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "Efecte audio simple"
+
+#: src/contents/ui/LevelMeter.qml:147
+#, fuzzy
+msgid "Sample Peak"
+msgstr "Frecvența de eșantionare"
 
 #~ msgid ""
 #~ "The selected model is not installed. Audio passes through unprocessed."
