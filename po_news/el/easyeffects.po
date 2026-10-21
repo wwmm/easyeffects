@@ -8,23 +8,24 @@ msgstr ""
 "Project-Id-Version: easyeffects-news\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-28 14:40+0000\n"
-"PO-Revision-Date: 2025-08-30 00:58+0000\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2026-10-21 22:28+0000\n"
+"Last-Translator: Nikolaos Vasiliou <nvasiliou@mail.com>\n"
+"Language-Team: Greek <https://hosted.weblate.org/projects/easyeffects/"
+"changelog/el/>\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.13.1-dev\n"
+"X-Generator: Weblate 2026.11.dev0\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
-msgstr ""
+msgstr "Easy Effects"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
 msgid "Audio Effects for PipeWire Applications"
-msgstr ""
+msgstr "Εφέ ήχου για την εφαρμογή PipeWire"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:9
 msgid ""
@@ -32,12 +33,19 @@ msgid ""
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
 "few. To complement this there is also a built in spectrum analyzer."
 msgstr ""
+"Το Easy Effects είναι ένα προηγμένο εργαλείο επεξεργασίας ήχου. Περιλαμβάνει "
+"ισοσταθμιστή, περιοριστή, συμπιεστή και εργαλείο αντήχησης, για να "
+"αναφέρουμε ενδεικτικά μερικά από αυτά. Επιπλέον, διαθέτει ενσωματωμένο "
+"αναλυτή φάσματος."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:10
 msgid ""
 "Easy Effects is the successor to PulseEffects. Easy Effects only supports "
 "PipeWire's audio server. PulseAudio users should instead use PulseEffects."
 msgstr ""
+"Το Easy Effects αποτελεί τον διάδοχο του PulseEffects. Το Easy Effects "
+"υποστηρίζει αποκλειστικά τον διακομιστή ήχου PipeWire. Οι χρήστες του "
+"PulseAudio θα πρέπει να χρησιμοποιούν το PulseEffects."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:11
 msgid ""
@@ -45,6 +53,10 @@ msgid ""
 "with most, if not all, applications you use. All supported applications are "
 "presented in the main window, where each can be enabled individually."
 msgstr ""
+"Επειδη το Easy Effects χρησιμοποιεί τον προεπιλεγμένο διακομιστή ήχου "
+"PipeWire, θα λειτουργεί με τις περισσότερες —αν όχι με όλες— τις εφαρμογές "
+"που χρησιμοποιείτε. Όλες οι υποστηριζόμενες εφαρμογές εμφανίζονται στο κύριο "
+"παράθυρο, όπου η καθεμία μπορεί να ενεργοποιηθεί ξεχωριστά."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
 msgid ""
@@ -52,6 +64,10 @@ msgid ""
 "an input device, such as a microphone. This is, for example, useful in audio "
 "recording, but it also works well during voice conversations."
 msgstr ""
+"Εκτός από την επεξεργασία της εξόδου του ήχου, το Easy Effects έχει τη "
+"δυνατότητα να εφαρμόζει εφέ και σε μια συσκευή εισόδου, όπως για παράδειγμα "
+"ενός μικροφώνου. Αυτό είναι χρήσιμο για οποιαδήποτε ηχογράφηση και επιπλέον "
+"λειτουργεί εξίσου καλά και κατά τη διάρκεια φωνητικών συνομιλιών."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:13
 msgid ""
@@ -59,23 +75,26 @@ msgid ""
 "configuration used in the last session. It is also possible to save all the "
 "current settings as profiles."
 msgstr ""
+"Όταν εκκινείται το Easy Effects, θυμάται αυτόματα τη διαμόρφωση που "
+"χρησιμοποιήθηκε στην τελευταία συνεδρία. Υπάρχει επίσης η δυνατότητα "
+"αποθήκευσης όλων των τρεουσών ρυθμίσεων ως προφίλ."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:16
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:18
 msgid "Wellington Wallace"
-msgstr ""
+msgstr "Γουέλινγκτον Γουάλας"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
 msgid "The main page showing two audio output apps"
-msgstr ""
+msgstr "Η κύρια σελίδα που εμφανίζει δύο εφαρμογές εξόδου ήχου"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:47
 msgid "The bass enhancer page showing audio controls"
-msgstr ""
+msgstr "Σελίδα ενίσχυσης μπάσων που εμφανίζει τα στοιχεία ελέγχου ήχου"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:51
 msgid "The convolver page showing audio controls"
-msgstr ""
+msgstr "Η σελίδα του συνελικτή (convolver) που εμφανίζει στοιχεία ελέγχου ήχου"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:77
@@ -115,7 +134,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:547
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:560
 msgid "Features:"
-msgstr ""
+msgstr "Χαρακτηριστικά:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
 msgid ""
@@ -125,22 +144,35 @@ msgid ""
 "volunteers. You can search them on the repositories of your favorite "
 "distribution."
 msgstr ""
+"Προστέθηκαν οι «Προεπιλογές Κοινότητας» (Community Presets). Οι χρήστες "
+"μπορούν να εγκαθιστούν πακέτα που περιέχουν πολλαπλές προεπιλογές (presets) "
+"για το Easy Effects, οι οποίες μπορούν στη συνέχεια να εισαχθούν και να "
+"εφαρμοστούν εντός της εφαρμογής. Τα πακέτα αυτά συντηρούνται και διατίθενται "
+"από εθελοντές. Μπορείτε να τα αναζητήσετε στα αποθετήρια της διανομής που "
+"προτιμάτε."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
 msgid ""
 "Added the ability of collapsing the sidebar to hide the effects list and "
 "expand the area of the effects user interface."
 msgstr ""
+"Προστέθηκε η δυνατότητα σύμπτυξης της πλευρικής μπάρας, ώστε να αποκρύπτεται "
+"η λίστα των εφέ και να διευρύνεται ο χώρος της διεπαφής χρήστη για τα εφέ."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
 msgid ""
 "EasyEffects won't touch streams that define PW_KEY_TARGET_OBJECT to an "
 "output device that is different from the one EasyEffects is using."
 msgstr ""
+"Το EasyEffects δεν θα επεμβαίνει σε ροές που ορίζουν την παράμετρο "
+"PW_KEY_TARGET_OBJECT σε μια συσκευή εξόδου διαφορετική από αυτήν που "
+"χρησιμοποιεί το ίδιο το EasyEffects."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:63
 msgid "Equalizer APO import feature can now apply Band-Pass filters."
 msgstr ""
+"Η λειτουργία εισαγωγής του Equalizer APO μπορεί πλέον να εφαρμόζει φίλτρα "
+"ζωνοπερατής διέλευσης (band-pass filters)."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:64
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:79
@@ -179,13 +211,16 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:539
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:552
 msgid "Bug fixes:"
-msgstr ""
+msgstr "Διορθώσεις σφαλμάτων:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:65
 msgid ""
 "A change in GTK 4.14.1 prevented to apply the values inserted into the text "
 "field of our SpinButton widgets. This issue is now resolved."
 msgstr ""
+"Μια αλλαγή στο GTK 4.14.1 εμπόδιζε την εφαρμογή των τιμών που εισάγονταν στο "
+"πεδίο κειμένου των στοιχείων ελέγχου του SpinButton. Το πρόβλημα αυτό έχει "
+"πλέον επιλυθεί."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:66
 msgid ""
@@ -193,12 +228,18 @@ msgid ""
 "anymore. So we removed it from our user interface (you can use the plugin "
 "input gain to retrieve the same functionality)."
 msgstr ""
+"Οι πιο πρόσφατες εκδόσεις του πρόσθετου (plugin) Maximizer δεν διαθέτουν "
+"πλέον τον έλεγχο ορίου (ceiling control). Επομένως, τον αφαιρέσαμε από τη "
+"διεπαφή χρήστη μπορείτε όμως να χρησιμοποιήσετε το input gain του πρόσθετου "
+"για αυτή τη λειτουργία."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:67
 msgid ""
 "Equalizer APO import feature does not crash anymore on Flatpak when invalid "
 "values are provided."
 msgstr ""
+"Η λειτουργία εισαγωγής του Equalizer APO στο Flatpak δεν προκαλεί πλέον "
+"κατάρρευση όταν εισάγονται μη έγκυρες τιμές."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:68
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:81
@@ -222,7 +263,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:421
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:437
 msgid "Other notes:"
-msgstr ""
+msgstr "Άλλες σημειώσεις:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:69
 msgid ""
@@ -230,6 +271,9 @@ msgid ""
 "invited to read and follow the guidelines linked inside the README of "
 "EasyEffects master branch."
 msgstr ""
+"Προκειμένου τα Community Presets να διατεθούν σωστά, καλούνται όσοι "
+"αναλαμβάνουν τη συσκευασία τους να διαβάσουν και να ακολουθήσουν τις οδηγίες "
+"που παρατίθενται στο αρχείο README του κλάδου master του EasyEffects."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:70
 msgid ""
@@ -237,6 +281,11 @@ msgid ""
 "before 7.2.0 version are deprecated. Please reload the irs/model file inside "
 "the Convolver/RNNoise UI and resave the preset."
 msgstr ""
+"Οι προεπιλογές (presets) που περιλαμβάνουν εφέ Convolver ή Noise Reduction "
+"(RNNoise) και έχουν δημιουργηθεί πριν από την έκδοση 7.2.0, θεωρούνται πλέον "
+"παρωχημένες. Παρακαλούμε φορτώστε ξανά το αρχείο irs/model μέσω του "
+"περιβάλλοντος χρήστη (UI) του Convolver/RNNoise και αποθηκεύστε εκ νέου την "
+"προεπιλογή."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:78
 msgid ""
@@ -244,12 +293,18 @@ msgid ""
 "before the limiter even if the last two plugins in the pipeline are a "
 "limiter followed by a level meter."
 msgstr ""
+"Βελτιώθηκε το σύστημα διαχείρισης της αλυσίδας επεξεργασίας (pipeline). Τα "
+"εφέ που δεν λειτουργούν ως περιοριστές (limiters) τοποθετούνται πριν από τον "
+"περιοριστή, ακόμη και αν τα δύο τελευταία πρόσθετα (plugins) στην αλυσίδα "
+"είναι ένας περιοριστής που ακολουθείται από έναν μετρητή στάθμης."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:80
 msgid ""
 "Fixed a regression that prevented the level meters to be updated under "
 "certain conditions."
 msgstr ""
+"Διορθώθηκε ένα σφάλμα (regression) που εμπόδιζε την ενημέρωση των ενδείξεων "
+"στάθμης (level meters) υπό ορισμένες συνθήκες."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:89
 msgid ""
@@ -257,11 +312,15 @@ msgid ""
 "allow latency offset to be properly applied by video players when PipeWire "
 "&gt; 1.0.3 is released."
 msgstr ""
+"Πλέον ορίζουμε το monitor.passthrough = true στις εικονικές συσκευές μας. "
+"Αυτό θα επιτρέψει την ορθή εφαρμογή της αντιστάθμισης καθυστέρησης (latency "
+"offset) από τις εφαρμογές αναπαραγωγής βίντεο, μόλις κυκλοφορήσει το "
+"PipeWire > 1.0.3."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:90
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:237
 msgid "Updated translations."
-msgstr ""
+msgstr "Ενημερωμένες μεταφράσεις."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:100
 msgid ""
@@ -270,6 +329,11 @@ msgid ""
 "EE is recording from. THe stream has to be started when EE is already "
 "running for this logic to take effect."
 msgstr ""
+"Το EasyEffects θα προσπαθήσει να αποφύγει τη μεταφορά στις εικονικές πηγές "
+"του (virtual sources) εκείνων των ροών για τις οποίες ο χρήστης έχει ορίσει "
+"ένα προσαρμοσμένο `target.object`, το οποίο διαφέρει από το μικρόφωνο από το "
+"οποίο πραγματοποιεί εγγραφή το EasyEffects. Για να εφαρμοστεί αυτή η λογική, "
+"η ροή πρέπει να ξεκινήσει ενώ το EasyEffects εκτελείται ήδη."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:101
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:115
