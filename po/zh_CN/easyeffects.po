@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-20 15:24+0000\n"
-"PO-Revision-Date: 2026-10-19 13:51+0000\n"
+"PO-Revision-Date: 2026-10-21 13:41+0000\n"
 "Last-Translator: Gerald Chen <ramdomptm@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hans/>\n"
@@ -1968,9 +1968,8 @@ msgid "True Peak"
 msgstr "实际峰值"
 
 #: src/contents/ui/LevelMeter.qml:147
-#, fuzzy
 msgid "Sample Peak"
-msgstr "采样率"
+msgstr "采样峰值"
 
 #: src/contents/ui/Limiter.qml:76
 msgid "Herm thin"
