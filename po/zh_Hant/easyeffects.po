@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-18 16:13+0000\n"
-"PO-Revision-Date: 2026-10-20 15:35+0000\n"
-"Last-Translator: neko0xff <neko0xff@users.noreply.hosted.weblate.org>\n"
+"PO-Revision-Date: 2026-10-21 13:41+0000\n"
+"Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hant/>\n"
 "Language: zh_Hant\n"
@@ -1133,9 +1133,8 @@ msgid "%1 model is not installed. Audio passes through unprocessed."
 msgstr "%1 模型尚未安裝。音訊將以未經處理的狀態直接傳輸。"
 
 #: src/contents/ui/DeepFilterNet.qml:84
-#, fuzzy
 msgid "Model"
-msgstr "模式"
+msgstr "模型"
 
 #: src/contents/ui/DeepFilterNet.qml:104
 msgid "Process as Mono"
@@ -1690,9 +1689,8 @@ msgid "Start"
 msgstr "開始"
 
 #: src/contents/ui/Harmonizer.qml:38
-#, fuzzy
 msgid "Harmony"
-msgstr "諧波"
+msgstr "和聲"
 
 #: src/contents/ui/Harmonizer.qml:45
 msgid "C"
@@ -1739,37 +1737,32 @@ msgid "A♯ / B♭"
 msgstr "A♯ / B♭"
 
 #: src/contents/ui/Harmonizer.qml:78
-#, fuzzy
 msgid "B"
-msgstr "dB"
+msgstr "B"
 
 #: src/contents/ui/Harmonizer.qml:90
 msgid "No chord"
 msgstr "無和弦"
 
 #: src/contents/ui/Harmonizer.qml:93
-#, fuzzy
 msgid "6"
-msgstr "x6"
+msgstr "6"
 
 #: src/contents/ui/Harmonizer.qml:96
-#, fuzzy
 msgid "Major 7"
-msgstr "主要的"
+msgstr "大七和弦"
 
 #: src/contents/ui/Harmonizer.qml:99
 msgid "Lydian"
 msgstr "Lydian"
 
 #: src/contents/ui/Harmonizer.qml:102
-#, fuzzy
 msgid "Major 9"
-msgstr "主要的"
+msgstr "大九和弦"
 
 #: src/contents/ui/Harmonizer.qml:105
-#, fuzzy
 msgid "Major 7/9"
-msgstr "主要的"
+msgstr "大七九和弦"
 
 #: src/contents/ui/Harmonizer.qml:108
 msgid "6/9"
@@ -1792,79 +1785,76 @@ msgid "Minor 7 flat 5"
 msgstr "小七和弦降五度"
 
 #: src/contents/ui/Harmonizer.qml:126
-#, fuzzy
 msgid "Minor 9"
-msgstr "次要的"
+msgstr "小九和弦"
 
 #: src/contents/ui/Harmonizer.qml:129
-#, fuzzy
 msgid "Minor 7/9"
-msgstr "次要的"
+msgstr "小七九和弦"
 
 #: src/contents/ui/Harmonizer.qml:132
-#, fuzzy
 msgid "Minor 7/11"
-msgstr "次要的"
+msgstr "小七十一和弦"
 
 #: src/contents/ui/Harmonizer.qml:135
 msgid "Minor major 7"
-msgstr ""
+msgstr "小大七和弦"
 
 #: src/contents/ui/Harmonizer.qml:138
 msgid "Minor major 7/9"
-msgstr ""
+msgstr "小大七九和弦"
 
 #: src/contents/ui/Harmonizer.qml:141
 msgid "Diminished"
-msgstr ""
+msgstr "减"
 
 #: src/contents/ui/Harmonizer.qml:144
 msgid "Diminished 7"
-msgstr ""
+msgstr "减七和弦"
 
 #: src/contents/ui/Harmonizer.qml:147
 msgid "Dominant 7"
-msgstr ""
+msgstr "属七和弦"
 
 #: src/contents/ui/Harmonizer.qml:150
 msgid "Dominant 7 sus4"
-msgstr ""
+msgstr "屬七掛四和弦"
 
 #: src/contents/ui/Harmonizer.qml:153
 msgid "Dominant 7 flat 5"
-msgstr ""
+msgstr "屬七降五和弦"
 
 #: src/contents/ui/Harmonizer.qml:156
 msgid "Dominant 9"
-msgstr ""
+msgstr "屬九和弦"
 
 #: src/contents/ui/Harmonizer.qml:159
 msgid "Dominant 7 sharp 11"
-msgstr ""
+msgstr "屬七升十一和弦"
 
 #: src/contents/ui/Harmonizer.qml:162
 msgid "Dominant 13"
-msgstr ""
+msgstr "屬十三和弦"
 
 #: src/contents/ui/Harmonizer.qml:165
 msgid "Dominant 7 flat 9"
-msgstr ""
+msgstr "屬七降九和弦"
 
 #: src/contents/ui/Harmonizer.qml:168
 msgid "Dominant 7 flat 13"
-msgstr ""
+msgstr "屬七降十三和弦"
 
 #: src/contents/ui/Harmonizer.qml:171
 msgid "Dominant 7 sharp 9"
-msgstr ""
+msgstr "屬七升九和弦"
 
 #: src/contents/ui/Harmonizer.qml:174
 msgid "Augmented major 7"
-msgstr ""
+msgstr "增大七和弦"
 
 #: src/contents/ui/Harmonizer.qml:177
 msgid "Augmented 7"
-msgstr ""
+msgstr "增七和弦"
 
 #: src/contents/ui/Harmonizer.qml:180 src/contents/ui/Pitch.qml:175
 msgid "Octaves"
@@ -1872,49 +1862,45 @@ msgstr "八度"
 
 #: src/contents/ui/Harmonizer.qml:183
 msgid "Fifths"
-msgstr ""
+msgstr "五度"
 
 #: src/contents/ui/Harmonizer.qml:186
-#, fuzzy
 msgid "Suspended 4"
-msgstr "已暫停"
+msgstr "掛四和弦"
 
 #: src/contents/ui/Harmonizer.qml:189
-#, fuzzy
 msgid "Seconds"
-msgstr "第二"
+msgstr "二度"
 
 #: src/contents/ui/Harmonizer.qml:197
 msgid "Follow chord"
-msgstr ""
+msgstr "跟隨和弦"
 
 #: src/contents/ui/Harmonizer.qml:203
 msgid "Left voice interval"
-msgstr ""
+msgstr "左和弦配置音程"
 
 #: src/contents/ui/Harmonizer.qml:213
-#, fuzzy
 msgid "Left voice level"
-msgstr "自動等級"
+msgstr "左和弦配置等級"
 
 #: src/contents/ui/Harmonizer.qml:224
 msgid "Right voice interval"
-msgstr ""
+msgstr "右和弦配置音程"
 
 #: src/contents/ui/Harmonizer.qml:234
-#, fuzzy
 msgid "Right voice level"
-msgstr "自動等級"
+msgstr "右和弦配置等級"
 
 #: src/contents/ui/Harmonizer.qml:245
 msgid "Dry/wet"
-msgstr ""
+msgstr "乾/濕"
 
 #: src/contents/ui/HearingTestDialog.qml:86
 msgid ""
 "The output device changed. Restart the test with the same headphones and "
 "volume."
-msgstr ""
+msgstr "輸出裝置已經變更。使用相同的耳機和音量來重新啟動測試。"
 
 #: src/contents/ui/HearingTestDialog.qml:98
 msgid ""
@@ -1923,40 +1909,39 @@ msgid ""
 "then record the threshold. This uncalibrated listening test is not a medical "
 "hearing assessment."
 msgstr ""
+"在安靜房間中使用耳機。暫停其他音訊，並將系統音量固定在舒適的等級。調整每個音"
+"調，直到幾乎聽不見，然後記錄其閾值。此項未經校準的聽力檢測，並非是醫療聽力評"
+"估之用。"
 
 #: src/contents/ui/HearingTestDialog.qml:105
 msgid "I am using headphones"
-msgstr ""
+msgstr "我正在使用耳機"
 
 #: src/contents/ui/HearingTestDialog.qml:121
-#, fuzzy
 msgid "Start Test"
-msgstr "開始"
+msgstr "開始測試"
 
 #: src/contents/ui/HearingTestDialog.qml:132
 msgid ""
 "Select an available stereo output device and disable the regular test "
 "signals before starting."
-msgstr ""
+msgstr "選擇可用的立體聲輸出裝置，並在啟動之前停用一般測試訊號。"
 
 #: src/contents/ui/HearingTestDialog.qml:139
 msgid "%1 ear: %2 Hz (%3 of %4)"
-msgstr ""
+msgstr "%1 耳： %2 Hz (%3 / %4)"
 
 #: src/contents/ui/HearingTestDialog.qml:145
-#, fuzzy
 msgid "Tone Level"
-msgstr "輸入等級"
+msgstr "音調等級"
 
 #: src/contents/ui/HearingTestDialog.qml:164
-#, fuzzy
 msgid "Play Tone"
-msgstr "播放器"
+msgstr "播放音調"
 
 #: src/contents/ui/HearingTestDialog.qml:171
-#, fuzzy
 msgid "Record Threshold"
-msgstr "閾值"
+msgstr "記錄閾值"
 
 #: src/contents/ui/HearingTestDialog.qml:193
 msgid ""
@@ -1965,18 +1950,21 @@ msgid ""
 "and lowers input gain to preserve headroom. Save a preset to keep the result "
 "for these headphones."
 msgstr ""
+"測試已經完成。套用此設定檔，可將此等化器的設定以每隻耳朵分別進行校正來取代，"
+"每頻段限制於 6 分貝，並降低輸入增益以保留頭部空間。儲存成預設集，以保存這些耳"
+"機的結果。"
 
 #: src/contents/ui/HearingTestDialog.qml:200
 msgid "%1 Hz: left %2 dB, right %3 dB"
-msgstr ""
+msgstr "%1 Hz：左耳 %2 dB，右耳 %3 dB"
 
 #: src/contents/ui/HearingTestDialog.qml:209
 msgid "Apply Personalized EQ"
-msgstr ""
+msgstr "套用個人化的 EQ"
 
 #: src/contents/ui/HearingTestDialog.qml:214
 msgid "Could not apply the hearing profile."
-msgstr ""
+msgstr "無法套用聽力資訊檔案。"
 
 #: src/contents/ui/LevelMeter.qml:67 src/contents/ui/LevelMeter.qml:69
 msgid "Input Level"
@@ -2780,40 +2768,36 @@ msgid "Link delay"
 msgstr "連結延遲"
 
 #: src/contents/ui/PreferencesSheet.qml:394
-#, fuzzy
 msgid "Enable the output inactivity timeout"
-msgstr "啟用在不作用時暫停"
+msgstr "啟用輸出不作用逾時"
 
 #: src/contents/ui/PreferencesSheet.qml:395
-#, fuzzy
 msgid ""
 "When all output streams are inactive, the Easy Effects output pipeline "
 "remains loaded for an extra amount of time."
 msgstr ""
-"當全部串流都處於非作用狀態時，Easy Effects 管道會在額外的時間內保持載入狀態。"
+"當全部輸出串流處於非作用狀態時，則 Easy Effects 輸出管道會保持載入用於一段額"
+"外的時間。"
 
 #: src/contents/ui/PreferencesSheet.qml:407
-#, fuzzy
 msgid "Output inactivity timeout"
-msgstr "非作用時暫停"
+msgstr "輸出非作用時逾時"
 
 #: src/contents/ui/PreferencesSheet.qml:424
-#, fuzzy
 msgid "Enable the input inactivity timeout"
-msgstr "啟用在不作用時暫停"
+msgstr "啟用輸入非作用時逾時"
 
 #: src/contents/ui/PreferencesSheet.qml:425
-#, fuzzy
 msgid ""
 "When all input streams are inactive, the Easy Effects input pipeline remains "
 "loaded for an extra amount of time."
 msgstr ""
-"當全部串流都處於非作用狀態時，Easy Effects 管道會在額外的時間內保持載入狀態。"
+"當全部輸入串流處於非作用狀態時，則 Easy Effects 輸入管道會保持載入用於一段額"
+"外的時間。"
 
 #: src/contents/ui/PreferencesSheet.qml:437
-#, fuzzy
 msgid "Input inactivity timeout"
-msgstr "非作用時暫停"
+msgstr "輸入非作用時逾時"
 
 #: src/contents/ui/PreferencesSheet.qml:452
 msgid "Level meters frame rate cap"
@@ -2915,60 +2899,57 @@ msgstr "自動"
 #: src/contents/ui/PreferencesSheet.qml:669
 msgid ""
 "Follows the loudest and the quieter bands within the minimum and maximum."
-msgstr ""
+msgstr "在最小和最大的範圍間，追循最大聲和最安靜的頻段。"
 
 #: src/contents/ui/PreferencesSheet.qml:679
-#, fuzzy
 msgid "Minimum span"
-msgstr "最小化限量"
+msgstr "最小化跨度"
 
 #: src/contents/ui/PreferencesSheet.qml:723
 msgid ""
 "Tilts the display around 1 kHz. The shown levels are no longer absolute."
-msgstr ""
+msgstr "將顯示傾斜的約 1 kHz。所顯示的等級已不再是絕對值。"
 
 #: src/contents/ui/PreferencesSheet.qml:738
 msgid "Analysis"
-msgstr ""
+msgstr "分析"
 
 #: src/contents/ui/PreferencesSheet.qml:755
 msgid "Zero padding"
-msgstr ""
+msgstr "零填充"
 
 #: src/contents/ui/PreferencesSheet.qml:756
 msgid ""
 "Interpolates the spectrum. It does not increase the frequency resolution."
-msgstr ""
+msgstr "內插值頻譜。它不會提高頻率解析度。"
 
 #: src/contents/ui/PreferencesSheet.qml:768
-#, fuzzy
 msgid "Window function"
-msgstr "增益減少"
+msgstr "視窗功能"
 
 #: src/contents/ui/PreferencesSheet.qml:772
 msgid "Rectangular"
-msgstr ""
+msgstr "矩形"
 
 #: src/contents/ui/PreferencesSheet.qml:772
 msgid "Hann"
-msgstr ""
+msgstr "Hann"
 
 #: src/contents/ui/PreferencesSheet.qml:772
 msgid "Hamming"
-msgstr ""
+msgstr "Hamming"
 
 #: src/contents/ui/PreferencesSheet.qml:772
 msgid "Blackman"
-msgstr ""
+msgstr "Blackman"
 
 #: src/contents/ui/PreferencesSheet.qml:772
 msgid "Blackman-Harris"
-msgstr ""
+msgstr "Blackman-Harris"
 
 #: src/contents/ui/PreferencesSheet.qml:772
-#, fuzzy
 msgid "Flat top"
-msgstr "平坦"
+msgstr "平坦頂端"
 
 #: src/contents/ui/PreferencesSheet.qml:816
 msgid "Database autosave interval"
@@ -3763,9 +3744,8 @@ msgid "Autotune"
 msgstr "自動調整"
 
 #: src/tags_plugin_name.cpp:49
-#, fuzzy
 msgid "Harmonizer"
-msgstr "諧波"
+msgstr "和聲器"
 
 #: src/tags_plugin_name.cpp:50
 msgid "Bass Enhancer"
@@ -3976,9 +3956,8 @@ msgid "Simple audio effects"
 msgstr "簡易音效處理"
 
 #: src/contents/ui/LevelMeter.qml:147
-#, fuzzy
 msgid "Sample Peak"
-msgstr "採樣率"
+msgstr "採樣峰值"
 
 #~ msgid "Dynamic scale"
 #~ msgstr "動態比例"
