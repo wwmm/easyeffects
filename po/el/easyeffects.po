@@ -8,14 +8,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-20 15:24+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2026-10-22 03:51+0000\n"
+"Last-Translator: Nikolaos Vasiliou <nvasiliou@mail.com>\n"
+"Language-Team: Greek <https://hosted.weblate.org/projects/easyeffects/main/"
+"el/>\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2026.11.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -23,131 +25,143 @@ msgid ""
 "Please allow \"Run in Background\" permission for Easy Effects in your "
 "system app settings."
 msgstr ""
+"Δεν είναι δυνατή η ενεργοποίηση της επιλογής αυτόματης εκκίνησης επειδή "
+"απορρίφθηκε η πρόσβαση στο παρασκήνιο. Παραχωρήστε την άδεια «Εκτέλεση στο "
+"παρασκήνιο» (Run in Background) για το Easy Effects, μέσω των ρυθμίσεων "
+"εφαρμογών του συστήματός σας."
 
 #: src/command_line_parser.cpp:44
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr ""
+"Τερματισμός του Easy Effects. Χρήσιμο κατά την εκτέλεση σε λειτουργία "
+"υπηρεσίας (service mode)."
 
 #: src/command_line_parser.cpp:45
 msgid "Reset Easy Effects."
-msgstr ""
+msgstr "Επαναφορά του Easy Effects."
 
 #: src/command_line_parser.cpp:46
 msgid "Hide the window."
-msgstr ""
+msgstr "Απόκρυψη παραθύρου."
 
 #: src/command_line_parser.cpp:49
 msgid ""
 "Global bypass. 1 to enable, 2 to disable and 3 to get the current state."
 msgstr ""
+"Καθολική παράκαμψη : 1 ενεργοποίηση, 2 απενεργοποίηση και 3 για λήψη της "
+"τρέχουσας κατάστασης."
 
 #: src/command_line_parser.cpp:50
 msgid "bypass-state"
-msgstr ""
+msgstr "κατάσταση παράκαμψης"
 
 #: src/command_line_parser.cpp:52
 msgid "Toggle the state of the global bypass."
-msgstr ""
+msgstr "Εναλλαγή της κατάστασης της καθολικής παράκαμψης."
 
 #: src/command_line_parser.cpp:55
 msgid ""
 "Audio sharing. 1 to enable, 2 to disable and 3 to get the current state."
 msgstr ""
+"Κοινή χρήση ήχου: 1 ενεργοποίηση, 2 απενεργοποίηση και 3 για λήψη της "
+"τρέχουσας κατάστασης."
 
 #: src/command_line_parser.cpp:56 src/command_line_parser.cpp:62
 msgid "state"
-msgstr ""
+msgstr "κατάσταση"
 
 #: src/command_line_parser.cpp:58
 msgid "Toggle the state of audio sharing."
-msgstr ""
+msgstr "Εναλλαγή της κατάστασης κοινής χρήσης ήχου."
 
 #: src/command_line_parser.cpp:61
 msgid ""
 "Microphone monitoring. 1 to enable, 2 to disable and 3 to get the current "
 "state."
 msgstr ""
+"Παρακολούθηση μικροφώνου: 1 ενεργοποίηση, 2 απενεργοποίηση και 3 για λήψη "
+"της τρέχουσας κατάστασης."
 
 #: src/command_line_parser.cpp:64
 msgid "Toggle the state of microphone monitoring."
-msgstr ""
+msgstr "Εναλλαγή της κατάστασης παρακολούθησης μικροφώνου."
 
 #: src/command_line_parser.cpp:65
 msgid "Load a preset. Example: easyeffects -l music"
-msgstr ""
+msgstr "Φόρτωση μιας προεπιλογής: Παράδειγμα: easyeffects -l music"
 
 #: src/command_line_parser.cpp:65
 msgid "preset-name"
-msgstr ""
+msgstr "όνομα προεπιλογής"
 
 #: src/command_line_parser.cpp:66
 msgid "Show available presets."
-msgstr ""
+msgstr "Εμφάνιση διαθέσιμων προεπιλογών."
 
 #: src/command_line_parser.cpp:67
 msgid "Get the last loaded input/output preset."
-msgstr ""
+msgstr "Λήψη της τελευταίας φορτωμένης προεπιλογής εισόδου/εξόδου."
 
 #: src/command_line_parser.cpp:67
 msgid "preset-type"
-msgstr ""
+msgstr "Τύπος προεπιλογής"
 
 #: src/command_line_parser.cpp:68
 msgid "Get the last loaded input and output presets."
-msgstr ""
+msgstr "Λήψη των τελευταίων φορτωμένων προεπιλογών εισόδου και εξόδου."
 
 #: src/command_line_parser.cpp:69
 msgid "Deprecated. Use --service-mode instead."
-msgstr ""
+msgstr "Καταργήθηκε. Χρησιμοποιήστε το --service-mode."
 
 #: src/command_line_parser.cpp:70
 msgid "Start the application with service mode turned on."
-msgstr ""
+msgstr "Εκκινήστε την εφαρμογή με ενεργοποιημένη τη λειτουργία υπηρεσίας."
 
 #: src/command_line_parser.cpp:71
 msgid "Enable debug messages."
-msgstr ""
+msgstr "Ενεργοποίηση μηνυμάτων αποσφαλμάτωσης."
 
 #: src/command_line_parser.cpp:144
 msgid "Must specify preset type: input/output."
-msgstr ""
+msgstr "Πρέπει να καθοριστεί ο τύπος της προεπιλογής: είσοδος/έξοδος."
 
 #: src/command_line_parser.cpp:178
 msgid "Output presets"
-msgstr ""
+msgstr "Προεπιλογές εξόδου"
 
 #: src/command_line_parser.cpp:180
 msgid "No output presets."
-msgstr ""
+msgstr "Δεν υπάρχουν προεπιλογές εξόδου."
 
 #: src/command_line_parser.cpp:191
 msgid "Input presets"
-msgstr ""
+msgstr "Προεπιλογές εισόδου"
 
 #: src/command_line_parser.cpp:193
 msgid "No input presets."
-msgstr ""
+msgstr "Δεν υπάρχουν προεπιλογές εισόδου."
 
 #: src/command_line_parser.cpp:223
 msgid "Specified preset does not exist."
-msgstr ""
+msgstr "Η καθορισμένη προεπιλογή δεν υπάρχει."
 
 #: src/command_line_parser.cpp:243
 msgid "Provided an invalid bypass state."
-msgstr ""
+msgstr "Παρέχεται μη έγκυρη κατάσταση παράκαμψης."
 
 #: src/command_line_parser.cpp:283
 msgid "Provided an invalid microphone monitoring state."
-msgstr ""
+msgstr "Δόθηκε μη έγκυρη κατάσταση παρακολούθησης μικροφώνου."
 
 #: src/command_line_parser.cpp:313
 msgid "Provided an invalid audio sharing state."
-msgstr ""
+msgstr "Δόθηκε μη έγκυρη κατάσταση κοινής χρήσης ήχου."
 
 #: src/contents/ui/AboutPage.qml:24
 msgctxt "@action:button"
 msgid "About"
-msgstr ""
+msgstr "Σχετικά με"
 
 #: src/contents/ui/Autogain.qml:69 src/contents/ui/BassEnhancer.qml:105
 #: src/contents/ui/BassLoudness.qml:59 src/contents/ui/Crossfeed.qml:74
@@ -158,73 +172,73 @@ msgstr ""
 #: src/contents/ui/Reverb.qml:59 src/contents/ui/Speex.qml:59
 #: src/contents/ui/VoiceSuppressor.qml:58
 msgid "Controls"
-msgstr ""
+msgstr "Χειρισμοί"
 
 #: src/contents/ui/Autogain.qml:74
 msgid "Reference"
-msgstr ""
+msgstr "Αναφορικά"
 
 #: src/contents/ui/Autogain.qml:79 src/contents/ui/Autogain.qml:148
 #: src/contents/ui/LevelMeter.qml:199
 msgid "Momentary"
-msgstr ""
+msgstr "Στιγμιαία"
 
 #: src/contents/ui/Autogain.qml:79 src/contents/ui/Autogain.qml:158
 #: src/contents/ui/LevelMeter.qml:209
 msgid "Short-term"
-msgstr ""
+msgstr "Βραχυπρόθεσμο"
 
 #: src/contents/ui/Autogain.qml:79 src/contents/ui/Autogain.qml:168
 #: src/contents/ui/LevelMeter.qml:219
 msgid "Integrated"
-msgstr ""
+msgstr "Ολοκληρωμένος"
 
 #: src/contents/ui/Autogain.qml:79
 msgid "Geometric mean (MSI)"
-msgstr ""
+msgstr "Γεωμετρικός μέσος (MSI)"
 
 #: src/contents/ui/Autogain.qml:79
 msgid "Geometric mean (MS)"
-msgstr ""
+msgstr "Γεωμετρικός μέσος (MS)"
 
 #: src/contents/ui/Autogain.qml:79
 msgid "Geometric mean (MI)"
-msgstr ""
+msgstr "Γεωμετρικός μέσος (MI)"
 
 #: src/contents/ui/Autogain.qml:79
 msgid "Geometric mean (SI)"
-msgstr ""
+msgstr "Γεωμετρικός μέσος (SI)"
 
 #: src/contents/ui/Autogain.qml:88
 msgid "Target"
-msgstr ""
+msgstr "Στόχος"
 
 #: src/contents/ui/Autogain.qml:104 src/contents/ui/PipeWirePage.qml:420
 msgid "Silence"
-msgstr ""
+msgstr "Σίγαση"
 
 #: src/contents/ui/Autogain.qml:120
 msgid "Maximum history"
-msgstr ""
+msgstr "Ιστορικό μέγιστο"
 
 #: src/contents/ui/Autogain.qml:143 src/contents/ui/Autogain.qml:198
 #: src/contents/ui/BassLoudness.qml:67 src/contents/ui/LevelMeter.qml:187
 #: src/tags_plugin_name.cpp:70
 msgid "Loudness"
-msgstr ""
+msgstr "Ηχηρότητα"
 
 #: src/contents/ui/Autogain.qml:178 src/contents/ui/LevelMeter.qml:229
 msgid "Relative"
-msgstr ""
+msgstr "Σχετικός"
 
 #: src/contents/ui/Autogain.qml:188 src/contents/ui/Crusher.qml:192
 #: src/contents/ui/LevelMeter.qml:239
 msgid "Range"
-msgstr ""
+msgstr "Σειρά"
 
 #: src/contents/ui/Autogain.qml:208
 msgid "Output gain"
-msgstr ""
+msgstr "Κέρδος εξόδου"
 
 #: src/contents/ui/Autogain.qml:233 src/contents/ui/Autotune.qml:408
 #: src/contents/ui/BassEnhancer.qml:205 src/contents/ui/BassLoudness.qml:126
@@ -245,30 +259,30 @@ msgstr ""
 #: src/contents/ui/RNNoise.qml:320 src/contents/ui/Reverb.qml:318
 #: src/contents/ui/Speex.qml:177 src/contents/ui/StereoTools.qml:392
 msgid "Using %1"
-msgstr ""
+msgstr "Χρήση του %1"
 
 #: src/contents/ui/Autogain.qml:250 src/contents/ui/DeepFilterNet.qml:286
 #: src/contents/ui/LevelMeter.qml:273 src/contents/ui/Pitch.qml:285
 msgid "Reset history"
-msgstr ""
+msgstr "Επαναφορά ιστορικού"
 
 #: src/contents/ui/Autogain.qml:257
 msgid "Force silence"
-msgstr ""
+msgstr "Επιβολή σίγασης"
 
 #: src/contents/ui/Autogain.qml:258
 msgid "Force silence when the level is below the silence threshold"
-msgstr ""
+msgstr "Επιβολή σίγασης όταν η στάθμη είναι χαμηλότερη από το κατώφλι σίγασης"
 
 #: src/contents/ui/Autogain.qml:270 src/contents/ui/Autotune.qml:436
 #: src/contents/ui/DeepFilterNet.qml:294 src/contents/ui/LevelMeter.qml:281
 #: src/contents/ui/Pitch.qml:313
 msgid "Reset settings"
-msgstr ""
+msgstr "Επαναφορά ρυθμίσεων"
 
 #: src/contents/ui/Autotune.qml:92 src/contents/ui/Autotune.qml:120
 msgid "Tuning"
-msgstr ""
+msgstr "Συντονισμός"
 
 #: src/contents/ui/Autotune.qml:107 src/contents/ui/Compressor.qml:79
 #: src/contents/ui/Compressor.qml:301 src/contents/ui/Crusher.qml:97
@@ -281,66 +295,66 @@ msgstr ""
 #: src/contents/ui/MultibandCompressor.qml:434
 #: src/contents/ui/MultibandGate.qml:407 src/contents/ui/StereoTools.qml:123
 msgid "Mode"
-msgstr ""
+msgstr "Λειτουργία"
 
 #: src/contents/ui/Autotune.qml:111
 msgid "Auto"
-msgstr ""
+msgstr "Αυτόματη"
 
 #: src/contents/ui/Autotune.qml:111 src/contents/ui/Main.qml:469
 #: src/contents/ui/TrayIcon.qml:221
 msgid "Manual"
-msgstr ""
+msgstr "Χειροκίνητα"
 
 #: src/contents/ui/Autotune.qml:137
 msgid "Correction"
-msgstr ""
+msgstr "Διόρθωση"
 
 #: src/contents/ui/Autotune.qml:153
 msgid "Bias"
-msgstr ""
+msgstr "Προτίμηση (Bias)"
 
 #: src/contents/ui/Autotune.qml:169 src/contents/ui/Deesser.qml:171
 #: src/contents/ui/Filter.qml:137 src/contents/ui/Reverb.qml:126
 #: src/tags_plugin_name.cpp:66
 msgid "Filter"
-msgstr ""
+msgstr "Φίλτρα"
 
 #: src/contents/ui/Autotune.qml:186
 msgid "Offset"
-msgstr ""
+msgstr "Αντιστάθμιση"
 
 #: src/contents/ui/Autotune.qml:205 src/contents/ui/Autotune.qml:244
 msgid "Scale"
-msgstr ""
+msgstr "Κλίμακα"
 
 #: src/contents/ui/Autotune.qml:218
 msgid "Root"
-msgstr ""
+msgstr "Ρίζα"
 
 #: src/contents/ui/Autotune.qml:231
 msgid "Accidental"
-msgstr ""
+msgstr "Τυχαίο"
 
 #: src/contents/ui/Autotune.qml:248
 msgid "Major"
-msgstr ""
+msgstr "Μείζων"
 
 #: src/contents/ui/Autotune.qml:248 src/contents/ui/Harmonizer.qml:114
 msgid "Minor"
-msgstr ""
+msgstr "ελάσσων"
 
 #: src/contents/ui/Autotune.qml:377 src/contents/ui/Deesser.qml:276
 msgid "Level"
-msgstr ""
+msgstr "Επίπεδο"
 
 #: src/contents/ui/Autotune.qml:388
 msgid "Pitch error"
-msgstr ""
+msgstr "Σφάλμα τονικού ύψους"
 
 #: src/contents/ui/Autotune.qml:425
 msgid "Fast correction"
-msgstr ""
+msgstr "Γρήγορη διόρθωση"
 
 #: src/contents/ui/BassEnhancer.qml:56 src/contents/ui/Exciter.qml:56
 msgid "Blend harmonics"
@@ -3617,7 +3631,7 @@ msgstr ""
 
 #: src/main.cpp:430
 msgid "Wellington Wallace"
-msgstr ""
+msgstr "Γουέλινγκτον Γουάλας"
 
 #: src/main.cpp:430
 msgctxt "@info:credit"
