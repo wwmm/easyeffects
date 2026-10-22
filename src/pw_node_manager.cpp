@@ -54,6 +54,7 @@
 #include <span>
 #include <string>
 #include <utility>
+#include <regex>
 #include <vector>
 #include "db_manager.hpp"
 #include "pw_metadata_manager.hpp"
@@ -253,15 +254,60 @@ auto NodeManager::registerNode(pw_registry* registry, uint32_t id, const char* t
   util::spa_dict_get_num(props, tags::pipewire::card_profile_device, nd->nd_info->card_profile_device_id);
 
   const auto user_blocklist = (media_class == tags::pipewire::media_class::output_stream) ? DbStreamOutputs::blocklist()
-                                                                                          : DbStreamInputs::blocklist();
+  : DbStreamInputs::blocklist();
 
-  nd->nd_info->is_blocklisted = std::ranges::find(user_blocklist, nd->nd_info->application_id) != user_blocklist.end();
+  // little helper lambda
+  auto matches_blocklist = [&](const auto& raw_value) {
+    std::string val_str;
+    if constexpr (std::is_same_v<std::decay_t<decltype(raw_value)>, QString>) {
+      if (raw_value.isEmpty()) {
+        return false;
+      }
+      val_str = raw_value.toStdString();
+    } else {
+      if (raw_value.empty()) {
+        return false;
+      }
+      val_str = raw_value;
+    }
 
-  nd->nd_info->is_blocklisted =
-      std::ranges::find(user_blocklist, nd->nd_info->app_process_binary) != user_blocklist.end();
+    for (const auto& pattern : user_blocklist) {
+      std::string pat_str;
+      if constexpr (std::is_same_v<std::decay_t<decltype(pattern)>, QString>) {
+        if (pattern.isEmpty()) {
+          continue;
+        }
+        pat_str = pattern.toStdString();
+      } else {
+        if (pattern.isEmpty()) {
+          continue;
+        }
+        pat_str = pattern.toStdString();
+      }
 
-  nd->nd_info->is_blocklisted =
-      nd->nd_info->is_blocklisted || std::ranges::find(user_blocklist, nd->nd_info->name) != user_blocklist.end();
+      if (pat_str[0] == '~') {
+        try {
+          std::string regex_str = pat_str.substr(1);
+          if (std::regex_search(val_str, std::regex(regex_str))) {
+            return true;
+          }
+        } catch (const std::regex_error&) {
+          if (val_str == pat_str) {
+            return true;
+          }
+        }
+      } else {
+        if (val_str == pat_str) {
+          return true;
+        }
+      }
+    }
+    return false;
+  };
+
+  nd->nd_info->is_blocklisted = matches_blocklist(nd->nd_info->application_id) ||
+  matches_blocklist(nd->nd_info->app_process_binary) ||
+  matches_blocklist(nd->nd_info->name);
 
   pw_proxy_add_object_listener(proxy, &nd->object_listener, &node_events, nd);  // NOLINT
   pw_proxy_add_listener(proxy, &nd->proxy_listener, &node_proxy_events, nd);
