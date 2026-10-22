@@ -256,7 +256,7 @@ auto NodeManager::registerNode(pw_registry* registry, uint32_t id, const char* t
   const auto user_blocklist = (media_class == tags::pipewire::media_class::output_stream) ? DbStreamOutputs::blocklist()
   : DbStreamInputs::blocklist();
 
-  // little helper lambda
+  // Lambda to allow regex to be used in blocklist
   auto matches_blocklist = [&](const auto& raw_value) {
     std::string val_str;
     if constexpr (std::is_same_v<std::decay_t<decltype(raw_value)>, QString>) {
