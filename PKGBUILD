@@ -42,6 +42,8 @@ optdepends=('calf: exciter, bass enhancer and others'
             'mda.lv2: bass loudness'
             'x42-plugins-lv2: autotune'
             'libdeep_filter_ladspa: deep noise remover'
+            'hush-mic: DPDFNet noise remover'
+            'rakarrack-plus: harmonizer'
             'breeze: kde breeze style')
 conflicts=(easyeffects)
 provides=(easyeffects)

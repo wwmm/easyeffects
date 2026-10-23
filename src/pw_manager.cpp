@@ -627,7 +627,7 @@ auto Manager::get_links() const -> const std::vector<LinkInfo>& {
 auto Manager::bestHardwareOutputDeviceName() -> QString {
   QString best;
   int best_priority = std::numeric_limits<int>::min();
-  uint64_t best_serial = 0;
+  uint64_t best_serial = 0U;
 
   for (const auto& node : model_nodes.get_list()) {
     if (node.name == tags::pipewire::ee_sink_name || node.name == tags::pipewire::ee_source_name) {
@@ -658,7 +658,7 @@ auto Manager::bestHardwareOutputDeviceName() -> QString {
 auto Manager::bestHardwareInputDeviceName() -> QString {
   QString best;
   int best_priority = std::numeric_limits<int>::min();
-  uint64_t best_serial = 0;
+  uint64_t best_serial = 0U;
 
   for (const auto& node : model_nodes.get_list()) {
     if (node.name == tags::pipewire::ee_sink_name || node.name == tags::pipewire::ee_source_name) {

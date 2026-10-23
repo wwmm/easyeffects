@@ -359,7 +359,7 @@ Kirigami.ScrollablePage {
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Hearing Test")
+                        text: i18n("Hearing test")
                         icon.name: "audio-headphones"
                         enabled: equalizerPage.pipelineInstance === StreamOutputEffects && !!equalizerPage.pluginBackend
                         onTriggered: hearingTestDialog.open()

@@ -93,9 +93,9 @@ class Crystalizer : public PluginBase {
 
   static constexpr float freq_ref = 1000.0F;
 
-  float block_time = 0.0;
-  float attack_time = 0.4;   // seconds
-  float release_time = 3.0;  // seconds
+  float block_time = 0.0F;
+  float attack_time = 0.4F;   // seconds
+  float release_time = 3.0F;  // seconds
   float attack_coeff = 1.0F;
   float release_coeff = 1.0F;
 
