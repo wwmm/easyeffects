@@ -118,7 +118,7 @@ Kirigami.Dialog {
             Layout.alignment: Qt.AlignHCenter
             visible: !dialog.started && !dialog.complete
             enabled: headphones.checked
-            text: i18n("Start Test")
+            text: i18n("Start test")
             onClicked: {
                 if (TestTone.beginTest()) {
                     dialog.measurement = 0;
@@ -142,7 +142,7 @@ Kirigami.Dialog {
         EeSpinBox {
             id: level
             visible: dialog.started && !dialog.complete
-            label: i18n("Tone Level")
+            label: i18n("Tone level")
             from: -80
             to: -20
             value: -60
@@ -161,14 +161,14 @@ Kirigami.Dialog {
             Layout.alignment: Qt.AlignHCenter
 
             Controls.Button {
-                text: i18n("Play Tone")
+                text: i18n("Play tone")
                 onClicked: {
                     dialog.played = TestTone.playTone(dialog.frequencies[dialog.band], dialog.channel, level.value);
                 }
             }
 
             Controls.Button {
-                text: i18n("Record Threshold")
+                text: i18n("Record threshold")
                 enabled: dialog.played
                 onClicked: {
                     TestTone.stopTone();
@@ -206,7 +206,7 @@ Kirigami.Dialog {
 
             Controls.Button {
                 visible: dialog.complete
-                text: i18n("Apply Personalized EQ")
+                text: i18n("Apply personalized EQ")
                 onClicked: {
                     if (dialog.equalizer.applyHearingProfile(dialog.leftThresholds, dialog.rightThresholds))
                         dialog.close();
