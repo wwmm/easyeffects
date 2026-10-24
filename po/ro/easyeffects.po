@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-18 16:13+0000\n"
-"PO-Revision-Date: 2026-10-20 18:54+0000\n"
+"PO-Revision-Date: 2026-10-24 16:15+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remus-"
 "gabriel@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
@@ -1779,7 +1779,7 @@ msgstr "Fără acord"
 
 #: src/contents/ui/Harmonizer.qml:93
 msgid "6"
-msgstr "6"
+msgstr "Sextă"
 
 #: src/contents/ui/Harmonizer.qml:96
 msgid "Major 7"
@@ -1819,68 +1819,67 @@ msgstr "Septimă minoră bemol 5"
 
 #: src/contents/ui/Harmonizer.qml:126
 msgid "Minor 9"
-msgstr "Novenă minoră"
+msgstr "Nonă minoră"
 
 #: src/contents/ui/Harmonizer.qml:129
 msgid "Minor 7/9"
-msgstr "Septimă/novenă minoră"
+msgstr "Minoră cu septimă și nonă"
 
 #: src/contents/ui/Harmonizer.qml:132
-#, fuzzy
 msgid "Minor 7/11"
-msgstr "Minor"
+msgstr "Septimă/septimă+cvartă minoră"
 
 #: src/contents/ui/Harmonizer.qml:135
 msgid "Minor major 7"
-msgstr ""
+msgstr "Minoră cu septimă majoră"
 
 #: src/contents/ui/Harmonizer.qml:138
 msgid "Minor major 7/9"
-msgstr ""
+msgstr "Minoră cu septimă majoră și nonă"
 
 #: src/contents/ui/Harmonizer.qml:141
 msgid "Diminished"
-msgstr ""
+msgstr "Diminuată"
 
 #: src/contents/ui/Harmonizer.qml:144
 msgid "Diminished 7"
-msgstr ""
+msgstr "Septimă diminuată"
 
 #: src/contents/ui/Harmonizer.qml:147
 msgid "Dominant 7"
-msgstr ""
+msgstr "Septima dominantă"
 
 #: src/contents/ui/Harmonizer.qml:150
 msgid "Dominant 7 sus4"
-msgstr ""
+msgstr "Septimă dominantă cu cvartă suspendată"
 
 #: src/contents/ui/Harmonizer.qml:153
 msgid "Dominant 7 flat 5"
-msgstr ""
+msgstr "Septimă dominantă cu cvintă micșorată"
 
 #: src/contents/ui/Harmonizer.qml:156
 msgid "Dominant 9"
-msgstr ""
+msgstr "Dominantă cu nonă"
 
 #: src/contents/ui/Harmonizer.qml:159
 msgid "Dominant 7 sharp 11"
-msgstr ""
+msgstr "Septimă dominantă cu undecimă mărită"
 
 #: src/contents/ui/Harmonizer.qml:162
 msgid "Dominant 13"
-msgstr ""
+msgstr "Dominantă cu treisprezece"
 
 #: src/contents/ui/Harmonizer.qml:165
 msgid "Dominant 7 flat 9"
-msgstr ""
+msgstr "Septimă dominantă cu nonă micșorată"
 
 #: src/contents/ui/Harmonizer.qml:168
 msgid "Dominant 7 flat 13"
-msgstr ""
+msgstr "Septimă dominantă cu treisprezece micșorată"
 
 #: src/contents/ui/Harmonizer.qml:171
 msgid "Dominant 7 sharp 9"
-msgstr ""
+msgstr "Septimă dominantă cu nonă mărită"
 
 #: src/contents/ui/Harmonizer.qml:174
 msgid "Augmented major 7"
@@ -4047,9 +4046,8 @@ msgid "Simple audio effects"
 msgstr "Efecte audio simple"
 
 #: src/contents/ui/LevelMeter.qml:147
-#, fuzzy
 msgid "Sample Peak"
-msgstr "Frecvența de eșantionare"
+msgstr "Vârful eșantionului"
 
 #~ msgid ""
 #~ "The selected model is not installed. Audio passes through unprocessed."
