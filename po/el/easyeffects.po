@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-20 15:24+0000\n"
-"PO-Revision-Date: 2026-10-22 03:51+0000\n"
+"PO-Revision-Date: 2026-10-23 18:22+0000\n"
 "Last-Translator: Nikolaos Vasiliou <nvasiliou@mail.com>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/easyeffects/main/"
 "el/>\n"
@@ -358,36 +358,36 @@ msgstr "Γρήγορη διόρθωση"
 
 #: src/contents/ui/BassEnhancer.qml:56 src/contents/ui/Exciter.qml:56
 msgid "Blend harmonics"
-msgstr ""
+msgstr "Συνδυάστε αρμονικές"
 
 #: src/contents/ui/BassEnhancer.qml:65 src/contents/ui/Exciter.qml:65
 msgid "3rd"
-msgstr ""
+msgstr "3ο"
 
 #: src/contents/ui/BassEnhancer.qml:87 src/contents/ui/Exciter.qml:87
 msgid "2nd"
-msgstr ""
+msgstr "2ο"
 
 #: src/contents/ui/BassEnhancer.qml:110 src/contents/ui/Exciter.qml:114
 msgid "Amount"
-msgstr ""
+msgstr "Ποσό"
 
 #: src/contents/ui/BassEnhancer.qml:126 src/contents/ui/BassEnhancer.qml:186
 #: src/contents/ui/Exciter.qml:130 src/contents/ui/Exciter.qml:190
 msgid "Harmonics"
-msgstr ""
+msgstr "Αρμονικές"
 
 #: src/contents/ui/BassEnhancer.qml:141 src/contents/ui/Exciter.qml:145
 msgid "Scope"
-msgstr ""
+msgstr "Έκταση"
 
 #: src/contents/ui/BassEnhancer.qml:157
 msgid "Floor active"
-msgstr ""
+msgstr "Ενεργό πεδίο"
 
 #: src/contents/ui/BassEnhancer.qml:168
 msgid "Floor"
-msgstr ""
+msgstr "Πεδίο"
 
 #: src/contents/ui/BassEnhancer.qml:223 src/contents/ui/Compressor.qml:891
 #: src/contents/ui/Crusher.qml:254 src/contents/ui/Deesser.qml:337
@@ -400,13 +400,13 @@ msgstr ""
 #: src/contents/ui/MultibandGate.qml:956 src/contents/ui/Reverb.qml:343
 #: src/contents/ui/StereoTools.qml:410
 msgid "Show native window"
-msgstr ""
+msgstr "Εμφάνιση εγγενούς παραθύρου"
 
 #: src/contents/ui/BassEnhancer.qml:236 src/contents/ui/Compressor.qml:904
 #: src/contents/ui/Deesser.qml:350 src/contents/ui/Exciter.qml:241
 #: src/contents/ui/Expander.qml:854 src/contents/ui/Gate.qml:983
 msgid "Listen"
-msgstr ""
+msgstr "Ακρόαση"
 
 #: src/contents/ui/BassEnhancer.qml:247 src/contents/ui/BassLoudness.qml:144
 #: src/contents/ui/Compressor.qml:925 src/contents/ui/Convolver.qml:555
@@ -424,33 +424,33 @@ msgstr ""
 #: src/contents/ui/Reverb.qml:357 src/contents/ui/Speex.qml:195
 #: src/contents/ui/StereoTools.qml:424 src/contents/ui/VoiceSuppressor.qml:185
 msgid "Reset"
-msgstr ""
+msgstr "Επαναφορά"
 
 #: src/contents/ui/BassLoudness.qml:83 src/contents/ui/Compressor.qml:478
 #: src/contents/ui/EeInputOutputGain.qml:145 src/contents/ui/Expander.qml:438
 #: src/contents/ui/Gate.qml:453 src/contents/ui/Main.qml:372
 #: src/contents/ui/StereoTools.qml:268
 msgid "Output"
-msgstr ""
+msgstr "Έξοδος"
 
 #: src/contents/ui/BassLoudness.qml:99 src/contents/ui/Compressor.qml:266
 #: src/contents/ui/Expander.qml:226 src/contents/ui/Gate.qml:244
 #: src/contents/ui/Limiter.qml:217 src/contents/ui/MultibandCompressor.qml:427
 #: src/contents/ui/MultibandGate.qml:400
 msgid "Link"
-msgstr ""
+msgstr "Σύνδεσμος"
 
 #: src/contents/ui/BlocklistDialog.qml:32
 msgid "Excluded Applications"
-msgstr ""
+msgstr "Εξαιρούμενες εφαρμογές"
 
 #: src/contents/ui/BlocklistDialog.qml:48
 msgid "Application node name"
-msgstr ""
+msgstr "Όνομα κόμβου εφαρμογής"
 
 #: src/contents/ui/BlocklistDialog.qml:64
 msgid "Add to excluded applications"
-msgstr ""
+msgstr "Προσθήκη στις εξαιρούμενες εφαρμογές"
 
 #: src/contents/ui/BlocklistDialog.qml:116
 #: src/contents/ui/ConvolverImpulseDialog.qml:89
@@ -460,84 +460,88 @@ msgstr ""
 #: src/contents/ui/PresetsCommunityPage.qml:104
 #: src/contents/ui/PresetsLocalPage.qml:193 src/contents/ui/RNNoise.qml:228
 msgid "Empty List"
-msgstr ""
+msgstr "Άδεια λίστα"
 
 #: src/contents/ui/BlocklistDialog.qml:117
 msgid "No application excluded"
-msgstr ""
+msgstr "Δεν έχουν εξαιρεθεί εφαρμογές"
 
 #: src/contents/ui/BlocklistDialog.qml:140
 msgid "Remove Application"
-msgstr ""
+msgstr "Αφαίρεση εφαρμογής"
 
 #: src/contents/ui/BlocklistDialog.qml:141
 msgid "Are you sure you want to remove this application from the list?"
-msgstr ""
+msgstr "Είστε σίγουροι ότι θέλετε να αφαιρέσετε αυτή την εφαρμογή από τη λίστα;"
 
 #: src/contents/ui/BlocklistDialog.qml:175
 msgid "Remove this app"
-msgstr ""
+msgstr "Αφαίρεση αυτής της εφαρμογής"
 
 #: src/contents/ui/BlocklistDialog.qml:204
 msgid "Use media name"
-msgstr ""
+msgstr "Χρησιμοποίησε το όνομα του μέσου"
 
 #: src/contents/ui/BlocklistDialog.qml:205
 msgid ""
 "Also use a combination of node and media name when deciding if a stream "
 "should be blocked"
 msgstr ""
+"Χρησιμοποιήστε επίσης έναν συνδυασμό ονόματος κόμβου και ονόματος μέσου, "
+"όταν αποφασίζετε αν μια ροή πρέπει να αποκλειστεί"
 
 #: src/contents/ui/BlocklistDialog.qml:216
 msgid "Show excluded apps"
-msgstr ""
+msgstr "Εμφάνιση εξαιρούμενων εφαρμογών"
 
 #: src/contents/ui/BlocklistDialog.qml:217
 msgid "Show excluded applications in the list of players/recorders"
 msgstr ""
+"Εμφάνιση εξαιρούμενων εφαρμογών στη λίστα των προγραμμάτων αναπαραγωγής/"
+"εγγραφής"
 
 #: src/contents/ui/Compressor.qml:67 src/tags_plugin_name.cpp:52
 msgid "Compressor"
-msgstr ""
+msgstr "Συμπιεστής"
 
 #: src/contents/ui/Compressor.qml:83 src/contents/ui/Expander.qml:83
 #: src/contents/ui/MultibandCompressor.qml:131
 msgid "Downward"
-msgstr ""
+msgstr "Κάθοδος"
 
 #: src/contents/ui/Compressor.qml:83 src/contents/ui/Expander.qml:83
 #: src/contents/ui/MultibandCompressor.qml:131
 msgid "Upward"
-msgstr ""
+msgstr "Άνοδος"
 
 #: src/contents/ui/Compressor.qml:83
 #: src/contents/ui/MultibandCompressor.qml:131
 msgid "Boosting"
-msgstr ""
+msgstr "Ενίσχυση"
 
 #: src/contents/ui/Compressor.qml:93
 #: src/contents/ui/MultibandCompressor.qml:140
 msgid "Boost threshold"
-msgstr ""
+msgstr "Ενίσχυση κατώφλι"
 
 #: src/contents/ui/Compressor.qml:113
 #: src/contents/ui/MultibandCompressor.qml:159
 msgid "Boost amount"
-msgstr ""
+msgstr "Ποσό ενίσχυσης"
 
 #: src/contents/ui/Compressor.qml:132 src/contents/ui/Deesser.qml:119
 #: src/contents/ui/Expander.qml:92 src/contents/ui/MultibandCompressor.qml:363
 msgid "Ratio"
-msgstr ""
+msgstr "Αναλογία"
 
 #: src/contents/ui/Compressor.qml:148 src/contents/ui/Expander.qml:108
 #: src/contents/ui/Limiter.qml:451 src/contents/ui/MultibandCompressor.qml:378
 msgid "Knee"
-msgstr ""
+msgstr "Στάση"
 
 #: src/contents/ui/Compressor.qml:169 src/contents/ui/Expander.qml:129
 msgid "Threshold and Time"
-msgstr ""
+msgstr "Κατώφλι και Χρόνος"
 
 #: src/contents/ui/Compressor.qml:179 src/contents/ui/Expander.qml:139
 #: src/contents/ui/Gate.qml:83 src/contents/ui/Gate.qml:856
@@ -546,7 +550,7 @@ msgstr ""
 #: src/contents/ui/MultibandGate.qml:201
 #: src/contents/ui/PreferencesSheet.qml:780
 msgid "Attack"
-msgstr ""
+msgstr "Χρόνος έναρξης / απόκρισης"
 
 #: src/contents/ui/Compressor.qml:212 src/contents/ui/Expander.qml:172
 #: src/contents/ui/Gate.qml:100 src/contents/ui/Gate.qml:865
@@ -554,7 +558,7 @@ msgstr ""
 #: src/contents/ui/Maximizer.qml:68 src/contents/ui/MultibandCompressor.qml:308
 #: src/contents/ui/MultibandGate.qml:216 src/contents/ui/RNNoise.qml:158
 msgid "Release"
-msgstr ""
+msgstr "Χρόνος Αποδέσμευσης"
 
 #: src/contents/ui/Compressor.qml:250 src/contents/ui/Compressor.qml:348
 #: src/contents/ui/Compressor.qml:683 src/contents/ui/Expander.qml:210
@@ -564,7 +568,7 @@ msgstr ""
 #: src/contents/ui/Limiter.qml:515 src/contents/ui/MultibandCompressor.qml:668
 #: src/contents/ui/MultibandGate.qml:641
 msgid "Sidechain"
-msgstr ""
+msgstr "πλευρική αλυσίδα"
 
 #: src/contents/ui/Compressor.qml:262 src/contents/ui/EqualizerBandMenu.qml:47
 #: src/contents/ui/Expander.qml:222 src/contents/ui/Filter.qml:65
@@ -572,42 +576,42 @@ msgstr ""
 #: src/contents/ui/MultibandCompressor.qml:423
 #: src/contents/ui/MultibandGate.qml:396
 msgid "Type"
-msgstr ""
+msgstr "Τύπος"
 
 #: src/contents/ui/Compressor.qml:266
 msgid "Feed-forward"
-msgstr ""
+msgstr "προσωτροφοδότηση"
 
 #: src/contents/ui/Compressor.qml:266
 msgid "Feed-back"
-msgstr ""
+msgstr "ακουστική ανάδραση"
 
 #: src/contents/ui/Compressor.qml:266 src/contents/ui/Expander.qml:226
 #: src/contents/ui/Gate.qml:244 src/contents/ui/Limiter.qml:217
 #: src/contents/ui/MultibandCompressor.qml:427
 #: src/contents/ui/MultibandGate.qml:400
 msgid "External"
-msgstr ""
+msgstr "Εξωτερικός"
 
 #: src/contents/ui/Compressor.qml:277 src/contents/ui/Expander.qml:237
 #: src/contents/ui/Gate.qml:255 src/contents/ui/Limiter.qml:227
 #: src/contents/ui/PageStreamsEffects.qml:491
 msgid "Input device"
-msgstr ""
+msgstr "Συσκευή εισόδου"
 
 #: src/contents/ui/Compressor.qml:305 src/contents/ui/Deesser.qml:80
 #: src/contents/ui/Expander.qml:265 src/contents/ui/Gate.qml:283
 #: src/contents/ui/MultibandCompressor.qml:438
 #: src/contents/ui/MultibandGate.qml:411
 msgid "Peak"
-msgstr ""
+msgstr "Κορυφή"
 
 #: src/contents/ui/Compressor.qml:305 src/contents/ui/Deesser.qml:80
 #: src/contents/ui/Expander.qml:265 src/contents/ui/Gate.qml:283
 #: src/contents/ui/MultibandCompressor.qml:438
 #: src/contents/ui/MultibandGate.qml:411
 msgid "RMS"
-msgstr ""
+msgstr "Τετραγωνική Μέση Ρίζα (RMS)"
 
 #: src/contents/ui/Compressor.qml:305 src/contents/ui/Compressor.qml:426
 #: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Expander.qml:265
@@ -616,13 +620,13 @@ msgstr ""
 #: src/contents/ui/MultibandCompressor.qml:438
 #: src/contents/ui/MultibandGate.qml:411
 msgid "Low-pass"
-msgstr ""
+msgstr "φίλτρο διέλευσης χαμηλών"
 
 #: src/contents/ui/Compressor.qml:305 src/contents/ui/Expander.qml:265
 #: src/contents/ui/Gate.qml:283 src/contents/ui/MultibandCompressor.qml:438
 #: src/contents/ui/MultibandGate.qml:411
 msgid "SMA"
-msgstr ""
+msgstr "SMA"
 
 #: src/contents/ui/Compressor.qml:315 src/contents/ui/Compressor.qml:330
 #: src/contents/ui/Expander.qml:275 src/contents/ui/Expander.qml:290
@@ -631,20 +635,20 @@ msgstr ""
 #: src/contents/ui/MultibandCompressor.qml:457
 #: src/contents/ui/MultibandGate.qml:418 src/contents/ui/MultibandGate.qml:430
 msgid "Source"
-msgstr ""
+msgstr "Πηγή"
 
 #: src/contents/ui/Compressor.qml:319 src/contents/ui/Expander.qml:279
 #: src/contents/ui/Gate.qml:297 src/contents/ui/MultibandCompressor.qml:449
 #: src/contents/ui/MultibandGate.qml:422
 msgid "Middle"
-msgstr ""
+msgstr "Μέσος"
 
 #: src/contents/ui/Compressor.qml:319 src/contents/ui/Expander.qml:279
 #: src/contents/ui/Gate.qml:297 src/contents/ui/MidSideEqualizer.qml:244
 #: src/contents/ui/MultibandCompressor.qml:449
 #: src/contents/ui/MultibandGate.qml:422
 msgid "Side"
-msgstr ""
+msgstr "Πλευρά"
 
 #: src/contents/ui/Compressor.qml:319 src/contents/ui/Convolver.qml:301
 #: src/contents/ui/Delay.qml:59 src/contents/ui/Equalizer.qml:250
@@ -655,7 +659,7 @@ msgstr ""
 #: src/contents/ui/MultibandGate.qml:422 src/contents/ui/PipeWirePage.qml:346
 #: src/contents/ui/StereoTools.qml:204
 msgid "Left"
-msgstr ""
+msgstr "Αριστερό"
 
 #: src/contents/ui/Compressor.qml:319 src/contents/ui/Convolver.qml:319
 #: src/contents/ui/Delay.qml:212 src/contents/ui/Equalizer.qml:250
@@ -666,7 +670,7 @@ msgstr ""
 #: src/contents/ui/MultibandGate.qml:422 src/contents/ui/PipeWirePage.qml:357
 #: src/contents/ui/StereoTools.qml:231
 msgid "Right"
-msgstr ""
+msgstr "Δεξί"
 
 #: src/contents/ui/Compressor.qml:319 src/contents/ui/Compressor.qml:334
 #: src/contents/ui/Expander.qml:279 src/contents/ui/Expander.qml:294
@@ -675,7 +679,7 @@ msgstr ""
 #: src/contents/ui/MultibandCompressor.qml:461
 #: src/contents/ui/MultibandGate.qml:422 src/contents/ui/MultibandGate.qml:434
 msgid "Min"
-msgstr ""
+msgstr "Ελάχιστο"
 
 #: src/contents/ui/Compressor.qml:319 src/contents/ui/Compressor.qml:334
 #: src/contents/ui/Expander.qml:279 src/contents/ui/Expander.qml:294
@@ -684,57 +688,57 @@ msgstr ""
 #: src/contents/ui/MultibandCompressor.qml:461
 #: src/contents/ui/MultibandGate.qml:422 src/contents/ui/MultibandGate.qml:434
 msgid "Max"
-msgstr ""
+msgstr "Μέγιστο"
 
 #: src/contents/ui/Compressor.qml:334 src/contents/ui/Expander.qml:294
 #: src/contents/ui/Gate.qml:312 src/contents/ui/MultibandCompressor.qml:461
 #: src/contents/ui/MultibandGate.qml:434
 msgid "Left/Right"
-msgstr ""
+msgstr "Αριστερό/Δεξί"
 
 #: src/contents/ui/Compressor.qml:334 src/contents/ui/Expander.qml:294
 #: src/contents/ui/Gate.qml:312 src/contents/ui/MultibandCompressor.qml:461
 #: src/contents/ui/MultibandGate.qml:434
 msgid "Right/Left"
-msgstr ""
+msgstr "Δεξί/Αριστερό"
 
 #: src/contents/ui/Compressor.qml:334 src/contents/ui/Expander.qml:294
 #: src/contents/ui/Gate.qml:312 src/contents/ui/MultibandCompressor.qml:461
 #: src/contents/ui/MultibandGate.qml:434
 msgid "Mid/Side"
-msgstr ""
+msgstr "Μέσο/Πλευρά"
 
 #: src/contents/ui/Compressor.qml:334 src/contents/ui/Expander.qml:294
 #: src/contents/ui/Gate.qml:312 src/contents/ui/MultibandCompressor.qml:461
 #: src/contents/ui/MultibandGate.qml:434
 msgid "Side/Mid"
-msgstr ""
+msgstr "Πλευρά/Μέσο"
 
 #: src/contents/ui/Compressor.qml:358 src/contents/ui/Expander.qml:314
 #: src/contents/ui/Gate.qml:333 src/contents/ui/Limiter.qml:250
 #: src/contents/ui/MultibandCompressor.qml:469
 #: src/contents/ui/MultibandGate.qml:442
 msgid "Preamp"
-msgstr ""
+msgstr "Προενίσχυση"
 
 #: src/contents/ui/Compressor.qml:376 src/contents/ui/Expander.qml:332
 #: src/contents/ui/Gate.qml:351 src/contents/ui/MultibandCompressor.qml:485
 #: src/contents/ui/MultibandGate.qml:458
 msgid "Reactivity"
-msgstr ""
+msgstr "Αντιδραστικότητα"
 
 #: src/contents/ui/Compressor.qml:394 src/contents/ui/Expander.qml:350
 #: src/contents/ui/Gate.qml:369 src/contents/ui/Limiter.qml:268
 #: src/contents/ui/MultibandCompressor.qml:500
 #: src/contents/ui/MultibandGate.qml:473
 msgid "Lookahead"
-msgstr ""
+msgstr "Προεπόπτευση"
 
 #: src/contents/ui/Compressor.qml:412 src/contents/ui/EqualizerBandMenu.qml:51
 #: src/contents/ui/Expander.qml:368 src/contents/ui/Filter.qml:69
 #: src/contents/ui/Gate.qml:387
 msgid "High-pass"
-msgstr ""
+msgstr "φίλτρο υψηλών συχνοτήτων"
 
 #: src/contents/ui/Compressor.qml:416 src/contents/ui/Compressor.qml:430
 #: src/contents/ui/Equalizer.qml:162 src/contents/ui/EqualizerBandMenu.qml:51
@@ -742,7 +746,7 @@ msgstr ""
 #: src/contents/ui/Filter.qml:111 src/contents/ui/Gate.qml:391
 #: src/contents/ui/Gate.qml:405 src/contents/ui/MidSideEqualizer.qml:156
 msgid "Off"
-msgstr ""
+msgstr "Σβηστό"
 
 #: src/contents/ui/Compressor.qml:484 src/contents/ui/Convolver.qml:475
 #: src/contents/ui/Delay.qml:176 src/contents/ui/Delay.qml:329
@@ -751,7 +755,7 @@ msgstr ""
 #: src/contents/ui/MultibandGate.qml:597 src/contents/ui/Pitch.qml:123
 #: src/contents/ui/Reverb.qml:188 src/contents/ui/StereoTools.qml:345
 msgid "Dry"
-msgstr ""
+msgstr "Στεγνός"
 
 #: src/contents/ui/Compressor.qml:503 src/contents/ui/Convolver.qml:493
 #: src/contents/ui/Delay.qml:194 src/contents/ui/Delay.qml:347
@@ -760,14 +764,14 @@ msgstr ""
 #: src/contents/ui/MultibandGate.qml:615 src/contents/ui/Pitch.qml:142
 #: src/contents/ui/Reverb.qml:206 src/contents/ui/StereoTools.qml:363
 msgid "Wet"
-msgstr ""
+msgstr "Υγρός"
 
 #: src/contents/ui/Compressor.qml:522 src/contents/ui/Deesser.qml:135
 #: src/contents/ui/Expander.qml:482 src/contents/ui/Gate.qml:497
 #: src/contents/ui/MultibandCompressor.qml:395
 #: src/contents/ui/MultibandGate.qml:265
 msgid "Makeup"
-msgstr ""
+msgstr "Αναπλήρωση"
 
 #: src/contents/ui/Compressor.qml:542 src/contents/ui/Expander.qml:498
 #: src/contents/ui/Gate.qml:517 src/contents/ui/Limiter.qml:289
@@ -775,37 +779,37 @@ msgstr ""
 #: src/contents/ui/MultibandCompressor.qml:1006
 #: src/contents/ui/MultibandGate.qml:979
 msgid "Pre-Mix"
-msgstr ""
+msgstr "Προ-Μιξαρισμα"
 
 #: src/contents/ui/Compressor.qml:550 src/contents/ui/Expander.qml:506
 #: src/contents/ui/Gate.qml:527 src/contents/ui/Limiter.qml:302
 #: src/contents/ui/LspPreMixDialog.qml:39
 msgid "Input to sidechain"
-msgstr ""
+msgstr "Είσοδος παράπλευρης αλυσίδας"
 
 #: src/contents/ui/Compressor.qml:566 src/contents/ui/Expander.qml:522
 #: src/contents/ui/Gate.qml:543 src/contents/ui/Limiter.qml:318
 #: src/contents/ui/LspPreMixDialog.qml:55
 msgid "Input to link"
-msgstr ""
+msgstr "Είσοδος για σύνδεση"
 
 #: src/contents/ui/Compressor.qml:582 src/contents/ui/Expander.qml:538
 #: src/contents/ui/Gate.qml:559 src/contents/ui/Limiter.qml:334
 #: src/contents/ui/LspPreMixDialog.qml:71
 msgid "Sidechain to input"
-msgstr ""
+msgstr "Σύνδεση sidechain στην είσοδο"
 
 #: src/contents/ui/Compressor.qml:598 src/contents/ui/Expander.qml:554
 #: src/contents/ui/Gate.qml:575 src/contents/ui/Limiter.qml:350
 #: src/contents/ui/LspPreMixDialog.qml:87
 msgid "Sidechain to link"
-msgstr ""
+msgstr "Πλευρική διέγερση"
 
 #: src/contents/ui/Compressor.qml:614 src/contents/ui/Expander.qml:570
 #: src/contents/ui/Gate.qml:591 src/contents/ui/Limiter.qml:366
 #: src/contents/ui/LspPreMixDialog.qml:103
 msgid "Link to sidechain"
-msgstr ""
+msgstr "Παράλληλη ενεργοποίηση"
 
 #: src/contents/ui/Compressor.qml:630 src/contents/ui/Expander.qml:586
 #: src/contents/ui/Gate.qml:607 src/contents/ui/Limiter.qml:382
