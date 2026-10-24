@@ -24,11 +24,11 @@ Kirigami.Dialog {
     standardButtons: Kirigami.Dialog.NoButton
     parent: applicationWindow().overlay // qmllint disable
     implicitWidth: Math.min(Kirigami.Units.gridUnit * 30, appWindow.width * 0.8) // qmllint disable
-    implicitHeight: Math.min(Kirigami.Units.gridUnit * 40, Math.round(Controls.ApplicationWindow.window.height * 0.8))
+    maximumHeight: Controls.ApplicationWindow.window.height * 0.8
     leftPadding: Kirigami.Units.largeSpacing
     rightPadding: Kirigami.Units.largeSpacing
     topPadding: Kirigami.Units.largeSpacing
-    bottomPadding: Kirigami.Units.largeSpacing
+    bottomPadding: Kirigami.Units.largeSpacing * 2
     anchors.centerIn: parent
 
     header: Item {
@@ -116,9 +116,10 @@ Kirigami.Dialog {
 
         Controls.Button {
             Layout.alignment: Qt.AlignHCenter
+            Layout.topMargin: Kirigami.Units.mediumSpacing
             visible: !dialog.started && !dialog.complete
             enabled: headphones.checked
-            text: i18n("Start Test")
+            text: i18n("Start test")
             onClicked: {
                 if (TestTone.beginTest()) {
                     dialog.measurement = 0;
@@ -135,6 +136,7 @@ Kirigami.Dialog {
         }
 
         Controls.Label {
+            Layout.margins: Kirigami.Units.largeSpacing
             visible: dialog.started && !dialog.complete
             text: i18n("%1 ear: %2 Hz (%3 of %4)", dialog.channel === 0 ? i18n("Left") : i18n("Right"), dialog.frequencies[dialog.band], dialog.measurement + 1, dialog.frequencies.length * 2)
         }
@@ -142,12 +144,12 @@ Kirigami.Dialog {
         EeSpinBox {
             id: level
             visible: dialog.started && !dialog.complete
-            label: i18n("Tone Level")
+            label: i18n("Tone level")
             from: -80
             to: -20
             value: -60
             decimals: 0
-            stepSize: 2
+            stepSize: 1
             unit: Units.dB
             onValueModified: v => {
                 level.value = v;
@@ -161,14 +163,14 @@ Kirigami.Dialog {
             Layout.alignment: Qt.AlignHCenter
 
             Controls.Button {
-                text: i18n("Play Tone")
+                text: i18n("Play tone")
                 onClicked: {
                     dialog.played = TestTone.playTone(dialog.frequencies[dialog.band], dialog.channel, level.value);
                 }
             }
 
             Controls.Button {
-                text: i18n("Record Threshold")
+                text: i18n("Record threshold")
                 enabled: dialog.played
                 onClicked: {
                     TestTone.stopTone();
@@ -197,16 +199,19 @@ Kirigami.Dialog {
             model: dialog.complete ? dialog.frequencies.length : 0
             delegate: Controls.Label {
                 required property int index
+                Layout.rightMargin: Kirigami.Units.largeSpacing
+                Layout.leftMargin: Kirigami.Units.largeSpacing
                 text: i18n("%1 Hz: left %2 dB, right %3 dB", dialog.frequencies[index], dialog.leftThresholds[index], dialog.rightThresholds[index])
             }
         }
 
         RowLayout {
             Layout.alignment: Qt.AlignHCenter
+            Layout.topMargin: Kirigami.Units.mediumSpacing
 
             Controls.Button {
                 visible: dialog.complete
-                text: i18n("Apply Personalized EQ")
+                text: i18n("Apply personalized EQ")
                 onClicked: {
                     if (dialog.equalizer.applyHearingProfile(dialog.leftThresholds, dialog.rightThresholds))
                         dialog.close();

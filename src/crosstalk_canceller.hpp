@@ -35,16 +35,16 @@
  */
 class Biquad {
  private:
-  float fa1 = 0;
-  float fa2 = 0;
-  float fb0 = 1;
-  float fb1 = 0;
-  float fb2 = 0;
+  float fa1 = 0.0F;
+  float fa2 = 0.0F;
+  float fb0 = 1.0F;
+  float fb1 = 0.0F;
+  float fb2 = 0.0F;
 
-  float x1 = 0;
-  float x2 = 0;
-  float y1 = 0;
-  float y2 = 0;
+  float x1 = 0.0F;
+  float x2 = 0.0F;
+  float y1 = 0.0F;
+  float y2 = 0.0F;
 
   void set_coefficients(const double a0,
                         const double a1,
@@ -147,7 +147,7 @@ class Biquad {
 class FilterState {
  private:
   std::vector<float> data;
-  size_t data_index = 0;
+  size_t data_index = 0U;
 
   /* Feedback correction filters*/
   Biquad f1;
