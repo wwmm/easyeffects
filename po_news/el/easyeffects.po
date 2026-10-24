@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects-news\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-28 14:40+0000\n"
-"PO-Revision-Date: 2026-10-21 22:28+0000\n"
+"PO-Revision-Date: 2026-10-24 02:51+0000\n"
 "Last-Translator: Nikolaos Vasiliou <nvasiliou@mail.com>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/el/>\n"
@@ -342,82 +342,108 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:396
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:522
 msgid "Updated translations"
-msgstr ""
+msgstr "Ενημερωμένες μεταφράσεις"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:102
 msgid "The equalizer can export basic APO preset files"
-msgstr ""
+msgstr "Ο ισοσταθμιστής μπορεί να εξάγει βασικά αρχεία προεπιλογών APO"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:103
 msgid ""
 "Our players/recorders tab will show the audio client binary name in the "
 "cases were no app name is defined."
 msgstr ""
+"Η καρτέλα «Players/Recorders» (Αναπαραγωγείς/Εγγραφείς) θα εμφανίζει το "
+"όνομα του εκτελέσιμου αρχείου του προγράμματος ήχου, σε περίπτωση που δεν "
+"έχει οριστεί όνομα εφαρμογής."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:104
 msgid ""
 "EasyEffects version can be shown in the command line through the option --"
 "version"
 msgstr ""
+"Η έκδοση του EasyEffects μπορεί να εμφανιστεί στη γραμμή εντολών μέσω της "
+"επιλογής --version"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:106
 msgid ""
 "A workaround for a bug in gtk4 GtkLevelBar was implemented and will be kept "
 "in place until gtk developers fiz things on their side"
 msgstr ""
+"Υλοποιήθηκε μια προσωρινή λύση για ένα σφάλμα στο GtkLevelBar του gtk4, η "
+"οποία θα παραμείνει σε ισχύ μέχρι οι προγραμματιστές του gtk να διορθώσουν "
+"το πρόβλημα από την πλευρά τους"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:117
 msgid ""
 "Fixed a regression introduced in 7.1.2 that could cause EasyEffects to crash"
 msgstr ""
+"Διορθώθηκε μια υποχώρηση που εισήχθη στην έκδοση 7.1.2 και η οποία μπορούσε "
+"να προκαλέσει τη διακοπή λειτουργίας (crash) του EasyEffects"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:128
 msgid "The DeepFilterNet plugin can now be added to the preset file"
 msgstr ""
+"Το πρόσθετο DeepFilterNet μπορεί πλέον να προστεθεί στο αρχείο προεπιλογών"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:137
 msgid ""
 "The spectrum has a new option that allows the dynamic vertical scale to be "
 "disabled."
 msgstr ""
+"Το φάσμα διαθέτει μια νέα επιλογή που επιτρέπει την απενεργοποίηση της "
+"δυναμικής κατακόρυφης κλίμακας."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:138
 msgid "Improved compatibility with the latest LSP releases."
-msgstr ""
+msgstr "Βελτιωμένη συμβατότητα με τις πιο πρόσφατες εκδόσεις LSP."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:140
 msgid "Fixed an incorrect drawing of the impulse response file characteristics"
 msgstr ""
+"Διορθώθηκε η εσφαλμένη απεικόνιση των χαρακτηριστικών του αρχείου απόκρισης "
+"κρουστικής συνάρτησης (impulse response)"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:150
 msgid ""
 "Fixed a small bug the prevented the noise reduction voice activity threshold "
 "from being properly initialized."
 msgstr ""
+"Διορθώθηκε ένα μικρό σφάλμα που εμπόδιζε τη σωστή αρχικοποίηση στο κατώφλι "
+"φωνητικής δραστηριότητας για τη μείωση θορύβου."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:159
 msgid ""
 "Added a new control to the noise reduction plugin that allows the voice "
 "detection to be disabled."
 msgstr ""
+"Νέο στοιχείο ελέγχου στο πρόσθετο μείωσης θορύβου που επιτρέπει την "
+"απενεργοποίηση της ανίχνευσης φωνής."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:169
 msgid ""
 "The Filter effect has been improved with new parameters since it has been "
 "ported from Calf Studio to Linux Studio Plugins."
 msgstr ""
+"Τα φίλτρα (Filter) βελτιώθηκαν με νέες παραμέτρους, έγινε μεταφορά από το "
+"Calf Studio στο Linux Studio Plugins."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:170
 msgid ""
 "Noise reduction by RNNoise has been improved with the addition of Release "
 "and VAD Threshold controls."
 msgstr ""
+"Η μείωση θορύβου μέσω του RNNoise έχει βελτιωθεί με την προσθήκη ρυθμίσεων "
+"για το απελευθέρωση και το κατώφλι (VAD Threshold)."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:171
 msgid ""
 "Noise reduction by RNNoise can now mix the original and denoised signals to "
 "avoid the output to sound too \"dry\"."
 msgstr ""
+"Η μείωση θορύβου μέσω του RNNoise μπορεί πλέον να συνδυάζει το αρχικό σήμα "
+"με το σήμα από το οποίο έχει αφαιρεθεί ο θόρυβος, ώστε να αποφεύγεται ένα "
+"αποτέλεσμα που ακούγεται υπερβολικά «στεγνό»."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:174
 msgid ""

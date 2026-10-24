@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects-news\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-28 14:40+0000\n"
-"PO-Revision-Date: 2025-12-11 14:00+0000\n"
-"Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
+"PO-Revision-Date: 2026-10-24 16:15+0000\n"
+"Last-Translator: 泥鰍 <holiu618@proton.me>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/changelog/zh_Hant/>\n"
 "Language: zh_Hant\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.15-dev\n"
+"X-Generator: Weblate 2026.11.dev0\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -294,17 +294,15 @@ msgid "Updated translations."
 msgstr "已經更新翻譯。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:100
-#, fuzzy
 msgid ""
 "EasyEffects will try to avoid moving to its virtual sources streams for "
 "which the user has set a custom target.object that is different from the mic "
 "EE is recording from. THe stream has to be started when EE is already "
 "running for this logic to take effect."
 msgstr ""
-"EasyEffects will try to avoid moving to its virtual sources streams for "
-"which the user has set a custom target.object that is different from the mic "
-"EE is recording from. THe stream has to be started when EE is already "
-"running for this logic to take effect."
+"EasyEffects 會盡量避免將那些使用者已設定自訂 target.object（且該設定與 EE 正"
+"在錄製的麥克風不同）的虛擬音源串流進行轉移。此邏輯要生效，必須在 EE 已經運行"
+"時才啟動該串流。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:101
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:115
@@ -320,13 +318,12 @@ msgid "The equalizer can export basic APO preset files"
 msgstr "等化器可以匯出基本 APO 預設集檔案"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:103
-#, fuzzy
 msgid ""
 "Our players/recorders tab will show the audio client binary name in the "
 "cases were no app name is defined."
 msgstr ""
-"Our players/recorders tab will show the audio client binary name in the "
-"cases were no app name is defined."
+"在未定義應用程式名稱的情況下，「播放器／錄音機」分頁將顯示音訊客戶端二進位檔"
+"的名稱。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:104
 msgid ""
@@ -335,13 +332,12 @@ msgid ""
 msgstr "EasyEffects 版本編號可以在指令列加上選項 --version 進行顯示"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:106
-#, fuzzy
 msgid ""
 "A workaround for a bug in gtk4 GtkLevelBar was implemented and will be kept "
 "in place until gtk developers fiz things on their side"
 msgstr ""
-"A workaround for a bug in gtk4 GtkLevelBar was implemented and will be kept "
-"in place until gtk developers fiz things on their side"
+"針對 gtk4 GtkLevelBar 中的錯誤已實作了一項暫行解決方案，該方案將維持有效，直"
+"到 gtk 開發人員在他們那邊解決問題為止"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:117
 msgid ""
@@ -380,61 +376,49 @@ msgid ""
 msgstr "降噪插件增加新的控制功能允許停用語音偵測。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:169
-#, fuzzy
 msgid ""
 "The Filter effect has been improved with new parameters since it has been "
 "ported from Calf Studio to Linux Studio Plugins."
 msgstr ""
-"The Filter effect has been improved with new parameters since it has been "
-"ported from Calf Studio to Linux Studio Plugins."
+"自從「Filter」效果從 Calf Studio 移植到 Linux Studio Plugins 以來，其功能已透"
+"過新增的參數獲得強化。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:170
-#, fuzzy
 msgid ""
 "Noise reduction by RNNoise has been improved with the addition of Release "
 "and VAD Threshold controls."
-msgstr ""
-"Noise reduction by RNNoise has been improved with the addition of Release "
-"and VAD Threshold controls."
+msgstr "RNNoise 的降噪功能已透過新增「釋放」與「VAD 閾值」控制項而得到改善。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:171
-#, fuzzy
 msgid ""
 "Noise reduction by RNNoise can now mix the original and denoised signals to "
 "avoid the output to sound too \"dry\"."
 msgstr ""
-"Noise reduction by RNNoise can now mix the original and denoised signals to "
-"avoid the output to sound too \"dry\"."
+"RNNoise 的降噪功能現可將原始訊號與降噪後的訊號進行混音，以避免輸出音效聽起來"
+"過於「乾澀」。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:174
-#, fuzzy
 msgid ""
 "This release is intended to work with versions of Linux Studio Plugins equal "
 "or greater than \"1.2.10\"."
-msgstr ""
-"This release is intended to work with versions of Linux Studio Plugins equal "
-"or greater than \"1.2.10\"."
+msgstr "此版本旨在與 Linux Studio Plugins 1.2.10 版或更高版本搭配使用。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:175
-#, fuzzy
 msgid "EasyEffects is now buildable also with libc++."
-msgstr "EasyEffects is now buildable also with libc++."
+msgstr "EasyEffects 現已支援使用 libc++ 進行構建了。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:183
-#, fuzzy
 msgid "The Expander from Linux Studio Plugins can be used in Easy Effects."
-msgstr "The Expander from Linux Studio Plugins can be used in Easy Effects."
+msgstr "Linux Studio Plugins 推出的「Expander」可於 Easy Effects 中使用。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:184
-#, fuzzy
 msgid ""
 "The Equalizer bands now have an additional gain control that allows for more "
 "efficient input of values that are hard to set in the scale. More details at "
 "issue 1383."
 msgstr ""
-"The Equalizer bands now have an additional gain control that allows for more "
-"efficient input of values that are hard to set in the scale. More details at "
-"issue 1383."
+"等化器頻段現已新增一個增益控制，可更有效地輸入那些在刻度上難以設定的數值。更"
+"多詳情請參閱問題 Issue #1383。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:185
 #, fuzzy
@@ -446,12 +430,10 @@ msgstr ""
 "for presets, Convolver impulse responses and RNNoise models."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:187
-#, fuzzy
 msgid "Fixed the Solo button in the Equalizer band settings."
-msgstr "Fixed the Solo button in the Equalizer band settings."
+msgstr "修正了等化器頻段設定中的「Solo」按鈕。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:189
-#, fuzzy
 msgid ""
 "Easy Effects folders under /etc have been deprecated and presets located "
 "there won't be loaded anymore. At the moment only local presets under "
@@ -459,48 +441,39 @@ msgid ""
 "future we will implement a new system to install, manage and import "
 "Community Presets."
 msgstr ""
-"Easy Effects folders under /etc have been deprecated and presets located "
-"there won't be loaded anymore. At the moment only local presets under "
-"~/.config/easyeffects are automatically loaded in the Presets Menu. In the "
-"future we will implement a new system to install, manage and import "
-"Community Presets."
+"位於 /etc 目錄下的 Easy Effects 資料夾已不再支援，該處的預設值將不再被載入。"
+"目前僅有位於 ~/.config/easyeffects 下的本機預設值會自動載入至「預設值」選單中"
+"。未來我們將實作一套新的系統，用於安裝、管理及匯入社群預設值。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:197
-#, fuzzy
 msgid ""
 "An \"Experimental Features\" section was added to our preferences window."
-msgstr ""
-"An \"Experimental Features\" section was added to our preferences window."
+msgstr "我們在偏好設定視窗中新增了一個「實驗性功能」區段。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:198
-#, fuzzy
 msgid ""
 "The native window of the LSP plugins can be used. This is an experimental "
 "feature intended only for advanced users. So expect some bugs."
 msgstr ""
-"The native window of the LSP plugins can be used. This is an experimental "
-"feature intended only for advanced users. So expect some bugs."
+"可以使用 LSP 外掛程式的原生視窗。這是一項實驗性功能，僅供進階使用者使用。因此"
+"可能會出現一些錯誤。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:199
-#, fuzzy
 msgid "Fractional semitone values can now be used in the Pitch Shift effect."
-msgstr "Fractional semitone values can now be used in the Pitch Shift effect."
+msgstr "現在可以在音高效果中使用分數半音值。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:201
-#, fuzzy
 msgid ""
 "The input/output device dropdown in our PipeWire tab is updated when the "
 "system default device changes and Use Default is enabled. This fixes issue "
 "issue 1989."
 msgstr ""
-"The input/output device dropdown in our PipeWire tab is updated when the "
-"system default device changes and Use Default is enabled. This fixes issue "
-"issue 1989."
+"當系統預設裝置變更且已啟用「使用預設」選項時，我們「PipeWire」分頁中的輸入／"
+"輸出裝置下拉選單便會更新。此更新已修復 Issue #1989。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:210
-#, fuzzy
 msgid "A new Level Meter plugin based on libebur128 has been added."
-msgstr "A new Level Meter plugin based on libebur128 has been added."
+msgstr "已新增一個基於 libebur128 的新音量計外掛程式。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:211
 #, fuzzy
