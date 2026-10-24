@@ -9,9 +9,9 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-20 15:24+0000\n"
-"PO-Revision-Date: 2026-10-15 11:51+0000\n"
-"Last-Translator: Giusy Digital "
-"<digitalone1@users.noreply.hosted.weblate.org>\n"
+"PO-Revision-Date: 2026-10-23 22:01+0000\n"
+"Last-Translator: Giusy Digital <digitalone1@users.noreply.hosted.weblate.org>"
+"\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
 "Language: it_IT\n"
@@ -1711,183 +1711,172 @@ msgid "Start"
 msgstr "Inizio"
 
 #: src/contents/ui/Harmonizer.qml:38
-#, fuzzy
 msgid "Harmony"
-msgstr "Armoniche"
+msgstr "Armonia"
 
 #: src/contents/ui/Harmonizer.qml:45
 msgid "C"
-msgstr ""
+msgstr "Do"
 
 #: src/contents/ui/Harmonizer.qml:48
 msgid "C♯ / D♭"
-msgstr ""
+msgstr "Do♯ / Re♭"
 
 #: src/contents/ui/Harmonizer.qml:51
 msgid "D"
-msgstr ""
+msgstr "Re"
 
 #: src/contents/ui/Harmonizer.qml:54
 msgid "D♯ / E♭"
-msgstr ""
+msgstr "Re♯ / Mi♭"
 
 #: src/contents/ui/Harmonizer.qml:57
 msgid "E"
-msgstr ""
+msgstr "Mi"
 
 #: src/contents/ui/Harmonizer.qml:60
 msgid "F"
-msgstr ""
+msgstr "Fa"
 
 #: src/contents/ui/Harmonizer.qml:63
 msgid "F♯ / G♭"
-msgstr ""
+msgstr "Fa♯ / Sol♭"
 
 #: src/contents/ui/Harmonizer.qml:66
 msgid "G"
-msgstr ""
+msgstr "Sol"
 
 #: src/contents/ui/Harmonizer.qml:69
 msgid "G♯ / A♭"
-msgstr ""
+msgstr "Sol♯ / La♭"
 
 #: src/contents/ui/Harmonizer.qml:72
 msgid "A"
-msgstr ""
+msgstr "La"
 
 #: src/contents/ui/Harmonizer.qml:75
 msgid "A♯ / B♭"
-msgstr ""
+msgstr "La♯ / Si♭"
 
 #: src/contents/ui/Harmonizer.qml:78
-#, fuzzy
 msgid "B"
-msgstr "dB"
+msgstr "Si"
 
 #: src/contents/ui/Harmonizer.qml:90
 msgid "No chord"
-msgstr ""
+msgstr "Nessun accordo"
 
 #: src/contents/ui/Harmonizer.qml:93
-#, fuzzy
 msgid "6"
-msgstr "x6"
+msgstr "6ª"
 
 #: src/contents/ui/Harmonizer.qml:96
-#, fuzzy
 msgid "Major 7"
-msgstr "Maggiore"
+msgstr "7ª maggiore"
 
 #: src/contents/ui/Harmonizer.qml:99
 msgid "Lydian"
-msgstr ""
+msgstr "Lidio"
 
 #: src/contents/ui/Harmonizer.qml:102
-#, fuzzy
 msgid "Major 9"
-msgstr "Maggiore"
+msgstr "9ª maggiore"
 
 #: src/contents/ui/Harmonizer.qml:105
-#, fuzzy
 msgid "Major 7/9"
-msgstr "Maggiore"
+msgstr "7ª maggiore / 9ª"
 
 #: src/contents/ui/Harmonizer.qml:108
 msgid "6/9"
-msgstr ""
+msgstr "6ª / 9ª"
 
 #: src/contents/ui/Harmonizer.qml:111
 msgid "Augmented"
-msgstr ""
+msgstr "Aumentata"
 
 #: src/contents/ui/Harmonizer.qml:117
-#, fuzzy
 msgid "Minor 6"
-msgstr "Minore"
+msgstr "6ª minore"
 
 #: src/contents/ui/Harmonizer.qml:120
-#, fuzzy
 msgid "Minor 7"
-msgstr "Minore"
+msgstr "7ª minore"
 
 #: src/contents/ui/Harmonizer.qml:123
 msgid "Minor 7 flat 5"
-msgstr ""
+msgstr "7ª minore 5ª bemolle"
 
 #: src/contents/ui/Harmonizer.qml:126
-#, fuzzy
 msgid "Minor 9"
-msgstr "Minore"
+msgstr "9ª minore"
 
 #: src/contents/ui/Harmonizer.qml:129
-#, fuzzy
 msgid "Minor 7/9"
-msgstr "Minore"
+msgstr "7ª minore / 9ª"
 
 #: src/contents/ui/Harmonizer.qml:132
-#, fuzzy
 msgid "Minor 7/11"
-msgstr "Minore"
+msgstr "7ª minore / 11ª"
 
 #: src/contents/ui/Harmonizer.qml:135
 msgid "Minor major 7"
-msgstr ""
+msgstr "Minore 7ª maggiore"
 
 #: src/contents/ui/Harmonizer.qml:138
 msgid "Minor major 7/9"
-msgstr ""
+msgstr "Minore 7ª maggiore / 9ª"
 
 #: src/contents/ui/Harmonizer.qml:141
 msgid "Diminished"
-msgstr ""
+msgstr "Diminuita"
 
 #: src/contents/ui/Harmonizer.qml:144
 msgid "Diminished 7"
-msgstr ""
+msgstr "7ª diminuita"
 
 #: src/contents/ui/Harmonizer.qml:147
 msgid "Dominant 7"
-msgstr ""
+msgstr "7ª dominante"
 
 #: src/contents/ui/Harmonizer.qml:150
 msgid "Dominant 7 sus4"
-msgstr ""
+msgstr "7ª dominante sus4"
 
 #: src/contents/ui/Harmonizer.qml:153
 msgid "Dominant 7 flat 5"
-msgstr ""
+msgstr "7ª dominante 5ª bemolle"
 
 #: src/contents/ui/Harmonizer.qml:156
 msgid "Dominant 9"
-msgstr ""
+msgstr "9ª dominante"
 
 #: src/contents/ui/Harmonizer.qml:159
 msgid "Dominant 7 sharp 11"
-msgstr ""
+msgstr "7ª dominante 11ª diesis"
 
 #: src/contents/ui/Harmonizer.qml:162
 msgid "Dominant 13"
-msgstr ""
+msgstr "13ª dominante"
 
 #: src/contents/ui/Harmonizer.qml:165
 msgid "Dominant 7 flat 9"
-msgstr ""
+msgstr "7ª dominante 9ª bemolle"
 
 #: src/contents/ui/Harmonizer.qml:168
 msgid "Dominant 7 flat 13"
-msgstr ""
+msgstr "7ª dominante 13ª bemolle"
 
 #: src/contents/ui/Harmonizer.qml:171
 msgid "Dominant 7 sharp 9"
-msgstr ""
+msgstr "7ª dominante 9ª diesis"
 
 #: src/contents/ui/Harmonizer.qml:174
 msgid "Augmented major 7"
-msgstr ""
+msgstr "7ª maggiore aumentata"
 
 #: src/contents/ui/Harmonizer.qml:177
 msgid "Augmented 7"
-msgstr ""
+msgstr "7ª aumentata"
 
 #: src/contents/ui/Harmonizer.qml:180 src/contents/ui/Pitch.qml:175
 msgid "Octaves"
@@ -1895,45 +1884,39 @@ msgstr "Ottave"
 
 #: src/contents/ui/Harmonizer.qml:183
 msgid "Fifths"
-msgstr ""
+msgstr "Quinte"
 
 #: src/contents/ui/Harmonizer.qml:186
-#, fuzzy
 msgid "Suspended 4"
-msgstr "Sospeso"
+msgstr "4ª sospesa"
 
 #: src/contents/ui/Harmonizer.qml:189
-#, fuzzy
 msgid "Seconds"
-msgstr "Secondo"
+msgstr "Seconde"
 
 #: src/contents/ui/Harmonizer.qml:197
 msgid "Follow chord"
-msgstr ""
+msgstr "Segui accordo"
 
 #: src/contents/ui/Harmonizer.qml:203
-#, fuzzy
 msgid "Left voice interval"
-msgstr "Livello Wet Sinistro"
+msgstr "Intervallo voce sinistra"
 
 #: src/contents/ui/Harmonizer.qml:213
-#, fuzzy
 msgid "Left voice level"
-msgstr "Livello Wet Sinistro"
+msgstr "Livello voce sinistra"
 
 #: src/contents/ui/Harmonizer.qml:224
-#, fuzzy
 msgid "Right voice interval"
-msgstr "Livello Wet Destro"
+msgstr "Intervallo voce destra"
 
 #: src/contents/ui/Harmonizer.qml:234
-#, fuzzy
 msgid "Right voice level"
-msgstr "Livello Wet Destro"
+msgstr "Livello voce destra"
 
 #: src/contents/ui/Harmonizer.qml:245
 msgid "Dry/wet"
-msgstr ""
+msgstr "Dry/wet"
 
 #: src/contents/ui/HearingTestDialog.qml:86
 msgid ""
@@ -2018,12 +2001,11 @@ msgstr "Livello Ingresso"
 
 #: src/contents/ui/LevelMeter.qml:108
 msgid "True Peak"
-msgstr "Picco Effettivo"
+msgstr "Picco Reale"
 
 #: src/contents/ui/LevelMeter.qml:147
-#, fuzzy
 msgid "Sample Peak"
-msgstr "Campionamento"
+msgstr "Picco del Campione"
 
 #: src/contents/ui/Limiter.qml:76
 msgid "Herm thin"
@@ -2161,11 +2143,11 @@ msgstr "Intero x8/24 bit"
 
 #: src/contents/ui/Limiter.qml:90
 msgid "True peak/16 bits"
-msgstr "Picco effettivo/16 bit"
+msgstr "Picco reale/16 bit"
 
 #: src/contents/ui/Limiter.qml:90
 msgid "True peak/24 bits"
-msgstr "Picco effettivo/24 bit"
+msgstr "Picco reale/24 bit"
 
 #: src/contents/ui/Limiter.qml:100
 msgid "Dithering"
@@ -2842,42 +2824,36 @@ msgid "Link delay"
 msgstr "Delay sui collegamenti"
 
 #: src/contents/ui/PreferencesSheet.qml:394
-#, fuzzy
 msgid "Enable the output inactivity timeout"
-msgstr "Abilita il timeout di inattività"
+msgstr "Abilita il timeout di inattività in uscita"
 
 #: src/contents/ui/PreferencesSheet.qml:395
-#, fuzzy
 msgid ""
 "When all output streams are inactive, the Easy Effects output pipeline "
 "remains loaded for an extra amount of time."
 msgstr ""
-"Quando tutti i flussi sono inattivi, la pipeline degli effetti di Easy "
-"Effects rimane caricata per un periodo extra di tempo."
+"Quando tutti i flussi sono inattivi, la pipeline di uscita degli effetti di "
+"Easy Effects rimane caricata per un periodo extra di tempo."
 
 #: src/contents/ui/PreferencesSheet.qml:407
-#, fuzzy
 msgid "Output inactivity timeout"
-msgstr "Timeout di inattività"
+msgstr "Timeout di inattività in uscita"
 
 #: src/contents/ui/PreferencesSheet.qml:424
-#, fuzzy
 msgid "Enable the input inactivity timeout"
-msgstr "Abilita il timeout di inattività"
+msgstr "Abilita il timeout di inattività in ingresso"
 
 #: src/contents/ui/PreferencesSheet.qml:425
-#, fuzzy
 msgid ""
 "When all input streams are inactive, the Easy Effects input pipeline remains "
 "loaded for an extra amount of time."
 msgstr ""
-"Quando tutti i flussi sono inattivi, la pipeline degli effetti di Easy "
-"Effects rimane caricata per un periodo extra di tempo."
+"Quando tutti i flussi sono inattivi, la pipeline di ingresso degli effetti "
+"di Easy Effects rimane caricata per un periodo extra di tempo."
 
 #: src/contents/ui/PreferencesSheet.qml:437
-#, fuzzy
 msgid "Input inactivity timeout"
-msgstr "Timeout di inattività"
+msgstr "Timeout di inattività in ingresso"
 
 #: src/contents/ui/PreferencesSheet.qml:452
 msgid "Level meters frame rate cap"
@@ -3847,9 +3823,8 @@ msgid "Autotune"
 msgstr "Autotune"
 
 #: src/tags_plugin_name.cpp:49
-#, fuzzy
 msgid "Harmonizer"
-msgstr "Armoniche"
+msgstr "Armonizzatore"
 
 #: src/tags_plugin_name.cpp:50
 msgid "Bass Enhancer"

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-20 15:24+0000\n"
-"PO-Revision-Date: 2026-10-16 19:51+0000\n"
+"PO-Revision-Date: 2026-10-24 16:15+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin "
 "<aindriu80@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -17,8 +17,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :"
-"(n>6 && n<11) ? 3 : 4;\n"
+"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :(n>"
+"6 && n<11) ? 3 : 4;\n"
 "X-Generator: Weblate 2026.11.dev0\n"
 
 #: src/autostart.cpp:92
@@ -1712,183 +1712,172 @@ msgid "Start"
 msgstr "Tosaigh"
 
 #: src/contents/ui/Harmonizer.qml:38
-#, fuzzy
 msgid "Harmony"
-msgstr "Armónach"
+msgstr "Comhchuibheas"
 
 #: src/contents/ui/Harmonizer.qml:45
 msgid "C"
-msgstr ""
+msgstr "C"
 
 #: src/contents/ui/Harmonizer.qml:48
 msgid "C♯ / D♭"
-msgstr ""
+msgstr "C♯ / D♭"
 
 #: src/contents/ui/Harmonizer.qml:51
 msgid "D"
-msgstr ""
+msgstr "D"
 
 #: src/contents/ui/Harmonizer.qml:54
 msgid "D♯ / E♭"
-msgstr ""
+msgstr "D♯ / E♭"
 
 #: src/contents/ui/Harmonizer.qml:57
 msgid "E"
-msgstr ""
+msgstr "E"
 
 #: src/contents/ui/Harmonizer.qml:60
 msgid "F"
-msgstr ""
+msgstr "F"
 
 #: src/contents/ui/Harmonizer.qml:63
 msgid "F♯ / G♭"
-msgstr ""
+msgstr "F♯ / G♭"
 
 #: src/contents/ui/Harmonizer.qml:66
 msgid "G"
-msgstr ""
+msgstr "G"
 
 #: src/contents/ui/Harmonizer.qml:69
 msgid "G♯ / A♭"
-msgstr ""
+msgstr "G♯ / A♭"
 
 #: src/contents/ui/Harmonizer.qml:72
 msgid "A"
-msgstr ""
+msgstr "A"
 
 #: src/contents/ui/Harmonizer.qml:75
 msgid "A♯ / B♭"
-msgstr ""
+msgstr "A♯ / B♭"
 
 #: src/contents/ui/Harmonizer.qml:78
-#, fuzzy
 msgid "B"
-msgstr "dB"
+msgstr "B"
 
 #: src/contents/ui/Harmonizer.qml:90
 msgid "No chord"
-msgstr ""
+msgstr "Gan chorda"
 
 #: src/contents/ui/Harmonizer.qml:93
-#, fuzzy
 msgid "6"
-msgstr "x6"
+msgstr "6"
 
 #: src/contents/ui/Harmonizer.qml:96
-#, fuzzy
 msgid "Major 7"
-msgstr "Mór"
+msgstr "Mór 7"
 
 #: src/contents/ui/Harmonizer.qml:99
 msgid "Lydian"
-msgstr ""
+msgstr "Lidiceach"
 
 #: src/contents/ui/Harmonizer.qml:102
-#, fuzzy
 msgid "Major 9"
-msgstr "Mór"
+msgstr "Mór 9"
 
 #: src/contents/ui/Harmonizer.qml:105
-#, fuzzy
 msgid "Major 7/9"
-msgstr "Mór"
+msgstr "Mór 7/9"
 
 #: src/contents/ui/Harmonizer.qml:108
 msgid "6/9"
-msgstr ""
+msgstr "6/9"
 
 #: src/contents/ui/Harmonizer.qml:111
 msgid "Augmented"
-msgstr ""
+msgstr "Méadaithe"
 
 #: src/contents/ui/Harmonizer.qml:117
-#, fuzzy
 msgid "Minor 6"
-msgstr "Mionúr"
+msgstr "Mionúr 6"
 
 #: src/contents/ui/Harmonizer.qml:120
-#, fuzzy
 msgid "Minor 7"
-msgstr "Mionúr"
+msgstr "Mionúr 7"
 
 #: src/contents/ui/Harmonizer.qml:123
 msgid "Minor 7 flat 5"
-msgstr ""
+msgstr "Mionúr 7 cothrom 5"
 
 #: src/contents/ui/Harmonizer.qml:126
-#, fuzzy
 msgid "Minor 9"
-msgstr "Mionúr"
+msgstr "Mionúr 9"
 
 #: src/contents/ui/Harmonizer.qml:129
-#, fuzzy
 msgid "Minor 7/9"
-msgstr "Mionúr"
+msgstr "Mionúr 7/9"
 
 #: src/contents/ui/Harmonizer.qml:132
-#, fuzzy
 msgid "Minor 7/11"
-msgstr "Mionúr"
+msgstr "Mionúr 7/11"
 
 #: src/contents/ui/Harmonizer.qml:135
 msgid "Minor major 7"
-msgstr ""
+msgstr "Mionúr mhór 7"
 
 #: src/contents/ui/Harmonizer.qml:138
 msgid "Minor major 7/9"
-msgstr ""
+msgstr "Mionúr mhór 7/9"
 
 #: src/contents/ui/Harmonizer.qml:141
 msgid "Diminished"
-msgstr ""
+msgstr "Laghdaithe"
 
 #: src/contents/ui/Harmonizer.qml:144
 msgid "Diminished 7"
-msgstr ""
+msgstr "Laghdaithe 7"
 
 #: src/contents/ui/Harmonizer.qml:147
 msgid "Dominant 7"
-msgstr ""
+msgstr "Ceannasach 7"
 
 #: src/contents/ui/Harmonizer.qml:150
 msgid "Dominant 7 sus4"
-msgstr ""
+msgstr "Ceannasach 7 sus4"
 
 #: src/contents/ui/Harmonizer.qml:153
 msgid "Dominant 7 flat 5"
-msgstr ""
+msgstr "Ceannasach 7 cothrom 5"
 
 #: src/contents/ui/Harmonizer.qml:156
 msgid "Dominant 9"
-msgstr ""
+msgstr "Ceannasach 9"
 
 #: src/contents/ui/Harmonizer.qml:159
 msgid "Dominant 7 sharp 11"
-msgstr ""
+msgstr "Ceannasach 7 géar 11"
 
 #: src/contents/ui/Harmonizer.qml:162
 msgid "Dominant 13"
-msgstr ""
+msgstr "Ceannasach 13"
 
 #: src/contents/ui/Harmonizer.qml:165
 msgid "Dominant 7 flat 9"
-msgstr ""
+msgstr "Ceannasach 7 cothrom 9"
 
 #: src/contents/ui/Harmonizer.qml:168
 msgid "Dominant 7 flat 13"
-msgstr ""
+msgstr "Ceannasach 7 cothrom 13"
 
 #: src/contents/ui/Harmonizer.qml:171
 msgid "Dominant 7 sharp 9"
-msgstr ""
+msgstr "Ceannasach 7 géar 9"
 
 #: src/contents/ui/Harmonizer.qml:174
 msgid "Augmented major 7"
-msgstr ""
+msgstr "Mór-mhéadaithe 7"
 
 #: src/contents/ui/Harmonizer.qml:177
 msgid "Augmented 7"
-msgstr ""
+msgstr "Méadaithe 7"
 
 #: src/contents/ui/Harmonizer.qml:180 src/contents/ui/Pitch.qml:175
 msgid "Octaves"
@@ -1896,43 +1885,39 @@ msgstr "Ochtaibhí"
 
 #: src/contents/ui/Harmonizer.qml:183
 msgid "Fifths"
-msgstr ""
+msgstr "Cúigiú cuid"
 
 #: src/contents/ui/Harmonizer.qml:186
-#, fuzzy
 msgid "Suspended 4"
-msgstr "Ar fionraí"
+msgstr "Ar fionraí 4"
 
 #: src/contents/ui/Harmonizer.qml:189
-#, fuzzy
 msgid "Seconds"
-msgstr "Dara"
+msgstr "Soicindí"
 
 #: src/contents/ui/Harmonizer.qml:197
 msgid "Follow chord"
-msgstr ""
+msgstr "Lean corda"
 
 #: src/contents/ui/Harmonizer.qml:203
 msgid "Left voice interval"
-msgstr ""
+msgstr "Eatramh gutha ar chlé"
 
 #: src/contents/ui/Harmonizer.qml:213
-#, fuzzy
 msgid "Left voice level"
-msgstr "Leibhéal uathoibríoch"
+msgstr "Leibhéal gutha clé"
 
 #: src/contents/ui/Harmonizer.qml:224
 msgid "Right voice interval"
-msgstr ""
+msgstr "Eatramh gutha ceart"
 
 #: src/contents/ui/Harmonizer.qml:234
-#, fuzzy
 msgid "Right voice level"
-msgstr "Leibhéal uathoibríoch"
+msgstr "An leibhéal gutha ceart"
 
 #: src/contents/ui/Harmonizer.qml:245
 msgid "Dry/wet"
-msgstr ""
+msgstr "Tirim/fliuch"
 
 #: src/contents/ui/HearingTestDialog.qml:86
 msgid ""
@@ -2021,9 +2006,8 @@ msgid "True Peak"
 msgstr "Fíor-Bhuaic"
 
 #: src/contents/ui/LevelMeter.qml:147
-#, fuzzy
 msgid "Sample Peak"
-msgstr "Ráta Samplála"
+msgstr "Buaic Shamplach"
 
 #: src/contents/ui/Limiter.qml:76
 msgid "Herm thin"
@@ -3847,9 +3831,8 @@ msgid "Autotune"
 msgstr "Uath-thiúnáil"
 
 #: src/tags_plugin_name.cpp:49
-#, fuzzy
 msgid "Harmonizer"
-msgstr "Armónach"
+msgstr "Comhchuibheoir"
 
 #: src/tags_plugin_name.cpp:50
 msgid "Bass Enhancer"
