@@ -54,9 +54,9 @@ class ConvolverKernelManager {
       int index = 0;  // Which measurement to use
       int measurements = 1;
 
-      float azimuth = 0.0;    // In degrees
-      float elevation = 0.0;  // In degrees
-      float radius = 0.0;     // In meters
+      float azimuth = 0.0F;    // In degrees
+      float elevation = 0.0F;  // In degrees
+      float radius = 0.0F;     // In meters
 
       float min_azimuth = 0.0F;
       float max_azimuth = 0.0F;
