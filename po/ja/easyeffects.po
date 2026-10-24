@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-10-18 16:13+0000\n"
+"POT-Creation-Date: 2026-10-24 13:52-0300\n"
 "PO-Revision-Date: 2026-10-20 15:35+0000\n"
 "Last-Translator: Suu <suu@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
@@ -173,17 +173,17 @@ msgid "Reference"
 msgstr "リファレンス"
 
 #: src/contents/ui/Autogain.qml:79 src/contents/ui/Autogain.qml:148
-#: src/contents/ui/LevelMeter.qml:158 src/contents/ui/LevelMeter.qml:199
+#: src/contents/ui/LevelMeter.qml:199
 msgid "Momentary"
 msgstr "瞬間"
 
 #: src/contents/ui/Autogain.qml:79 src/contents/ui/Autogain.qml:158
-#: src/contents/ui/LevelMeter.qml:168 src/contents/ui/LevelMeter.qml:209
+#: src/contents/ui/LevelMeter.qml:209
 msgid "Short-term"
 msgstr "短期"
 
 #: src/contents/ui/Autogain.qml:79 src/contents/ui/Autogain.qml:168
-#: src/contents/ui/LevelMeter.qml:178 src/contents/ui/LevelMeter.qml:219
+#: src/contents/ui/LevelMeter.qml:219
 msgid "Integrated"
 msgstr "統合"
 
@@ -216,18 +216,17 @@ msgid "Maximum history"
 msgstr "最大履歴"
 
 #: src/contents/ui/Autogain.qml:143 src/contents/ui/Autogain.qml:198
-#: src/contents/ui/BassLoudness.qml:67 src/contents/ui/LevelMeter.qml:146
-#: src/tags_plugin_name.cpp:70 src/contents/ui/LevelMeter.qml:187
+#: src/contents/ui/BassLoudness.qml:67 src/contents/ui/LevelMeter.qml:187
+#: src/tags_plugin_name.cpp:70
 msgid "Loudness"
 msgstr "ラウドネス"
 
-#: src/contents/ui/Autogain.qml:178 src/contents/ui/LevelMeter.qml:188
-#: src/contents/ui/LevelMeter.qml:229
+#: src/contents/ui/Autogain.qml:178 src/contents/ui/LevelMeter.qml:229
 msgid "Relative"
 msgstr "相対"
 
 #: src/contents/ui/Autogain.qml:188 src/contents/ui/Crusher.qml:192
-#: src/contents/ui/LevelMeter.qml:198 src/contents/ui/LevelMeter.qml:239
+#: src/contents/ui/LevelMeter.qml:239
 msgid "Range"
 msgstr "範囲"
 
@@ -244,22 +243,20 @@ msgstr "出力ゲイン"
 #: src/contents/ui/EchoCanceller.qml:158 src/contents/ui/Equalizer.qml:321
 #: src/contents/ui/Exciter.qml:210 src/contents/ui/Expander.qml:823
 #: src/contents/ui/Filter.qml:234 src/contents/ui/Gate.qml:952
-#: src/contents/ui/Harmonizer.qml:267 src/contents/ui/LevelMeter.qml:215
+#: src/contents/ui/Harmonizer.qml:267 src/contents/ui/LevelMeter.qml:256
 #: src/contents/ui/Limiter.qml:607 src/contents/ui/Loudness.qml:175
 #: src/contents/ui/Maximizer.qml:122 src/contents/ui/MidSideEqualizer.qml:315
 #: src/contents/ui/MultibandCompressor.qml:965
 #: src/contents/ui/MultibandGate.qml:938 src/contents/ui/Pitch.qml:268
-#: src/contents/ui/RNNoise.qml:73 src/contents/ui/RNNoise.qml:84
-#: src/contents/ui/RNNoise.qml:298 src/contents/ui/RNNoise.qml:300
-#: src/contents/ui/RNNoise.qml:320 src/contents/ui/Reverb.qml:318
+#: src/contents/ui/Reverb.qml:318 src/contents/ui/RNNoise.qml:73
+#: src/contents/ui/RNNoise.qml:84 src/contents/ui/RNNoise.qml:298
+#: src/contents/ui/RNNoise.qml:300 src/contents/ui/RNNoise.qml:320
 #: src/contents/ui/Speex.qml:177 src/contents/ui/StereoTools.qml:392
-#: src/contents/ui/LevelMeter.qml:256
 msgid "Using %1"
 msgstr "%1 を使用中"
 
 #: src/contents/ui/Autogain.qml:250 src/contents/ui/DeepFilterNet.qml:286
-#: src/contents/ui/LevelMeter.qml:232 src/contents/ui/Pitch.qml:285
-#: src/contents/ui/LevelMeter.qml:273
+#: src/contents/ui/LevelMeter.qml:273 src/contents/ui/Pitch.qml:285
 msgid "Reset history"
 msgstr "履歴をリセット"
 
@@ -272,8 +269,8 @@ msgid "Force silence when the level is below the silence threshold"
 msgstr "レベルがしきい値を下回った場合に強制的に無音化します"
 
 #: src/contents/ui/Autogain.qml:270 src/contents/ui/Autotune.qml:436
-#: src/contents/ui/DeepFilterNet.qml:294 src/contents/ui/LevelMeter.qml:240
-#: src/contents/ui/Pitch.qml:313 src/contents/ui/LevelMeter.qml:281
+#: src/contents/ui/DeepFilterNet.qml:294 src/contents/ui/LevelMeter.qml:281
+#: src/contents/ui/Pitch.qml:313
 msgid "Reset settings"
 msgstr "設定をリセット"
 
@@ -284,8 +281,8 @@ msgstr "チューニング"
 #: src/contents/ui/Autotune.qml:107 src/contents/ui/Compressor.qml:79
 #: src/contents/ui/Compressor.qml:301 src/contents/ui/Crusher.qml:97
 #: src/contents/ui/Deesser.qml:89 src/contents/ui/Delay.qml:71
-#: src/contents/ui/Delay.qml:224 src/contents/ui/Equalizer.qml:144
-#: src/contents/ui/EqualizerBandMenu.qml:61 src/contents/ui/Expander.qml:79
+#: src/contents/ui/Delay.qml:224 src/contents/ui/EqualizerBandMenu.qml:61
+#: src/contents/ui/Equalizer.qml:144 src/contents/ui/Expander.qml:79
 #: src/contents/ui/Expander.qml:261 src/contents/ui/Gate.qml:279
 #: src/contents/ui/Limiter.qml:72 src/contents/ui/Loudness.qml:71
 #: src/contents/ui/MidSideEqualizer.qml:138
@@ -417,8 +414,8 @@ msgstr "聞く"
 #: src/contents/ui/Loudness.qml:217 src/contents/ui/Main.qml:481
 #: src/contents/ui/Maximizer.qml:154 src/contents/ui/MidSideEqualizer.qml:399
 #: src/contents/ui/MultibandCompressor.qml:1014
-#: src/contents/ui/MultibandGate.qml:987 src/contents/ui/RNNoise.qml:345
-#: src/contents/ui/Reverb.qml:357 src/contents/ui/Speex.qml:195
+#: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:357
+#: src/contents/ui/RNNoise.qml:345 src/contents/ui/Speex.qml:195
 #: src/contents/ui/StereoTools.qml:424 src/contents/ui/VoiceSuppressor.qml:185
 msgid "Reset"
 msgstr "リセット"
@@ -648,24 +645,22 @@ msgstr "サイド"
 #: src/contents/ui/Compressor.qml:319 src/contents/ui/Convolver.qml:301
 #: src/contents/ui/Delay.qml:59 src/contents/ui/Equalizer.qml:250
 #: src/contents/ui/Expander.qml:279 src/contents/ui/Gate.qml:297
-#: src/contents/ui/HearingTestDialog.qml:139 src/contents/ui/LevelMeter.qml:79
-#: src/contents/ui/LevelMeter.qml:118
+#: src/contents/ui/HearingTestDialog.qml:141 src/contents/ui/LevelMeter.qml:81
+#: src/contents/ui/LevelMeter.qml:120 src/contents/ui/LevelMeter.qml:159
 #: src/contents/ui/MultibandCompressor.qml:449
 #: src/contents/ui/MultibandGate.qml:422 src/contents/ui/PipeWirePage.qml:346
-#: src/contents/ui/StereoTools.qml:204 src/contents/ui/LevelMeter.qml:81
-#: src/contents/ui/LevelMeter.qml:120 src/contents/ui/LevelMeter.qml:159
+#: src/contents/ui/StereoTools.qml:204
 msgid "Left"
 msgstr "左"
 
 #: src/contents/ui/Compressor.qml:319 src/contents/ui/Convolver.qml:319
 #: src/contents/ui/Delay.qml:212 src/contents/ui/Equalizer.qml:250
 #: src/contents/ui/Expander.qml:279 src/contents/ui/Gate.qml:297
-#: src/contents/ui/HearingTestDialog.qml:139 src/contents/ui/LevelMeter.qml:89
-#: src/contents/ui/LevelMeter.qml:128
+#: src/contents/ui/HearingTestDialog.qml:141 src/contents/ui/LevelMeter.qml:91
+#: src/contents/ui/LevelMeter.qml:130 src/contents/ui/LevelMeter.qml:169
 #: src/contents/ui/MultibandCompressor.qml:449
 #: src/contents/ui/MultibandGate.qml:422 src/contents/ui/PipeWirePage.qml:357
-#: src/contents/ui/StereoTools.qml:231 src/contents/ui/LevelMeter.qml:91
-#: src/contents/ui/LevelMeter.qml:130 src/contents/ui/LevelMeter.qml:169
+#: src/contents/ui/StereoTools.qml:231
 msgid "Right"
 msgstr "右"
 
@@ -738,7 +733,7 @@ msgid "High-pass"
 msgstr "ハイパス"
 
 #: src/contents/ui/Compressor.qml:416 src/contents/ui/Compressor.qml:430
-#: src/contents/ui/Equalizer.qml:162 src/contents/ui/EqualizerBandMenu.qml:51
+#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Equalizer.qml:162
 #: src/contents/ui/Expander.qml:372 src/contents/ui/Expander.qml:386
 #: src/contents/ui/Filter.qml:111 src/contents/ui/Gate.qml:391
 #: src/contents/ui/Gate.qml:405 src/contents/ui/MidSideEqualizer.qml:156
@@ -840,6 +835,79 @@ msgstr "エンベロープ"
 msgid "Stereo split"
 msgstr "ステレオ分割"
 
+#: src/contents/ui/ConvolverImpulseDialog.qml:49
+msgid "Imported a new Convolver impulse file."
+msgstr "新しいコンボルバーインパルスファイルをインポートしました。"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:51
+msgid "Failed to import the Convolver impulse file."
+msgstr "コンボルバーインパルスファイルのインポートに失敗しました。"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:65
+#: src/contents/ui/MenuAddPlugins.qml:186
+#: src/contents/ui/PresetsCommunityPage.qml:64
+#: src/contents/ui/PresetsLocalPage.qml:164
+msgid "Search"
+msgstr "検索"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:108
+msgid "Remove Impulse Response"
+msgstr "インパルスレスポンスを削除"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:109
+msgid "Are you sure you want to remove this impulse response from the list?"
+msgstr "このインパルスレスポンスを一覧から削除してもよろしいですか？"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:113
+msgid "Removed the %1 Convolver impulse."
+msgstr "コンボルバーインパルス「%1」を削除しました。"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:115
+msgid "Failed to remove the %1 Convolver impulse."
+msgstr "コンボルバーインパルス「%1」の削除に失敗しました。"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:123
+msgid "Rename Impulse"
+msgstr "インパルスの名前を変更"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:128
+#: src/contents/ui/PresetsLocalPage.qml:247
+msgid "Rename"
+msgstr "名前を変更"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:136
+msgid "Renamed the %1 impulse to %2"
+msgstr "インパルス「%1」の名前を「%2」に変更しました"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:139
+msgid "Failed to rename the %1 impulse to %2"
+msgstr "インパルス「%1」の名前を「%2」に変更できませんでした"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:147
+#: src/contents/ui/HearingTestDialog.qml:224
+#: src/contents/ui/PresetsLocalPage.qml:267
+msgid "Cancel"
+msgstr "キャンセル"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:186
+msgid "Rename this impulse"
+msgstr "このインパルスの名前を変更"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:194
+msgid "Delete this impulse"
+msgstr "このインパルスを削除"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:233
+msgid "Import impulse"
+msgstr "インパルスをインポート"
+
+#: src/contents/ui/ConvolverImpulseDialog.qml:243
+#: src/contents/ui/HearingTestDialog.qml:47
+#: src/contents/ui/MenuAddPlugins.qml:202 src/contents/ui/PresetsDialog.qml:126
+msgctxt "@action:button"
+msgid "Close"
+msgstr "閉じる"
+
 #: src/contents/ui/Convolver.qml:66
 msgid "Loaded the %1 Convolver impulse."
 msgstr "コンボルバーインパルス「%1」を読み込みました。"
@@ -911,79 +979,6 @@ msgstr "ステレオ幅"
 #: src/contents/ui/Convolver.qml:537 src/tags_plugin_name.cpp:47
 msgid "Autogain"
 msgstr "オートゲイン"
-
-#: src/contents/ui/ConvolverImpulseDialog.qml:49
-msgid "Imported a new Convolver impulse file."
-msgstr "新しいコンボルバーインパルスファイルをインポートしました。"
-
-#: src/contents/ui/ConvolverImpulseDialog.qml:51
-msgid "Failed to import the Convolver impulse file."
-msgstr "コンボルバーインパルスファイルのインポートに失敗しました。"
-
-#: src/contents/ui/ConvolverImpulseDialog.qml:65
-#: src/contents/ui/MenuAddPlugins.qml:186
-#: src/contents/ui/PresetsCommunityPage.qml:64
-#: src/contents/ui/PresetsLocalPage.qml:164
-msgid "Search"
-msgstr "検索"
-
-#: src/contents/ui/ConvolverImpulseDialog.qml:108
-msgid "Remove Impulse Response"
-msgstr "インパルスレスポンスを削除"
-
-#: src/contents/ui/ConvolverImpulseDialog.qml:109
-msgid "Are you sure you want to remove this impulse response from the list?"
-msgstr "このインパルスレスポンスを一覧から削除してもよろしいですか？"
-
-#: src/contents/ui/ConvolverImpulseDialog.qml:113
-msgid "Removed the %1 Convolver impulse."
-msgstr "コンボルバーインパルス「%1」を削除しました。"
-
-#: src/contents/ui/ConvolverImpulseDialog.qml:115
-msgid "Failed to remove the %1 Convolver impulse."
-msgstr "コンボルバーインパルス「%1」の削除に失敗しました。"
-
-#: src/contents/ui/ConvolverImpulseDialog.qml:123
-msgid "Rename Impulse"
-msgstr "インパルスの名前を変更"
-
-#: src/contents/ui/ConvolverImpulseDialog.qml:128
-#: src/contents/ui/PresetsLocalPage.qml:247
-msgid "Rename"
-msgstr "名前を変更"
-
-#: src/contents/ui/ConvolverImpulseDialog.qml:136
-msgid "Renamed the %1 impulse to %2"
-msgstr "インパルス「%1」の名前を「%2」に変更しました"
-
-#: src/contents/ui/ConvolverImpulseDialog.qml:139
-msgid "Failed to rename the %1 impulse to %2"
-msgstr "インパルス「%1」の名前を「%2」に変更できませんでした"
-
-#: src/contents/ui/ConvolverImpulseDialog.qml:147
-#: src/contents/ui/HearingTestDialog.qml:219
-#: src/contents/ui/PresetsLocalPage.qml:267
-msgid "Cancel"
-msgstr "キャンセル"
-
-#: src/contents/ui/ConvolverImpulseDialog.qml:186
-msgid "Rename this impulse"
-msgstr "このインパルスの名前を変更"
-
-#: src/contents/ui/ConvolverImpulseDialog.qml:194
-msgid "Delete this impulse"
-msgstr "このインパルスを削除"
-
-#: src/contents/ui/ConvolverImpulseDialog.qml:233
-msgid "Import impulse"
-msgstr "インパルスをインポート"
-
-#: src/contents/ui/ConvolverImpulseDialog.qml:243
-#: src/contents/ui/HearingTestDialog.qml:47
-#: src/contents/ui/MenuAddPlugins.qml:202 src/contents/ui/PresetsDialog.qml:126
-msgctxt "@action:button"
-msgid "Close"
-msgstr "閉じる"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:32
 msgid "Target Orientation"
@@ -1102,6 +1097,20 @@ msgstr "減少"
 msgid "Low frequency oscillator"
 msgstr "低周波オシレーター"
 
+#: src/contents/ui/CrystalizerBand.qml:58
+#: src/contents/ui/EqualizerBandMenu.qml:187
+#: src/contents/ui/MultibandCompressor.qml:90
+#: src/contents/ui/MultibandGate.qml:90 src/contents/ui/StereoTools.qml:210
+#: src/contents/ui/StereoTools.qml:242
+msgid "Mute"
+msgstr "ミュート"
+
+#: src/contents/ui/CrystalizerBand.qml:69
+#: src/contents/ui/MultibandCompressor.qml:108
+#: src/contents/ui/MultibandGate.qml:108
+msgid "Bypass"
+msgstr "バイパス"
+
 #: src/contents/ui/Crystalizer.qml:110
 msgid "Oversampling quality"
 msgstr "オーバーサンプリング品質"
@@ -1121,20 +1130,6 @@ msgstr "アダプティブ強度"
 #: src/contents/ui/Crystalizer.qml:192
 msgid "Fixed quantum"
 msgstr "固定クォンタム"
-
-#: src/contents/ui/CrystalizerBand.qml:58
-#: src/contents/ui/EqualizerBandMenu.qml:187
-#: src/contents/ui/MultibandCompressor.qml:90
-#: src/contents/ui/MultibandGate.qml:90 src/contents/ui/StereoTools.qml:210
-#: src/contents/ui/StereoTools.qml:242
-msgid "Mute"
-msgstr "ミュート"
-
-#: src/contents/ui/CrystalizerBand.qml:69
-#: src/contents/ui/MultibandCompressor.qml:108
-#: src/contents/ui/MultibandGate.qml:108
-msgid "Bypass"
-msgstr "バイパス"
 
 #: src/contents/ui/DeepFilterNet.qml:67
 msgid "%1 model is not installed. Audio passes through unprocessed."
@@ -1388,6 +1383,106 @@ msgstr "レベルメーター付き入出力ゲイン制御"
 msgid "Input"
 msgstr "入力"
 
+#: src/contents/ui/EqualizerBandMenu.qml:34
+#: src/contents/ui/MultibandCompressor.qml:669
+#: src/contents/ui/MultibandCompressor.qml:928
+#: src/contents/ui/MultibandGate.qml:642 src/contents/ui/MultibandGate.qml:901
+msgid "Band"
+msgstr "バンド"
+
+#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
+msgid "Bell"
+msgstr "ベル"
+
+#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
+msgid "High-shelf"
+msgstr "ハイシェルフ"
+
+#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
+msgid "Low-shelf"
+msgstr "ローシェルフ"
+
+#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
+msgid "Notch"
+msgstr "ノッチ"
+
+#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
+msgid "Resonance"
+msgstr "レゾナンス"
+
+#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
+msgid "Allpass"
+msgstr "オールパス"
+
+#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
+msgid "Bandpass"
+msgstr "バンドパス"
+
+#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
+msgid "Ladder-pass"
+msgstr "ラダーパス"
+
+#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
+msgid "Ladder-rejection"
+msgstr "ラダーリジェクション"
+
+#: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
+msgid "RLC (BT)"
+msgstr "RLC (BT)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
+msgid "RLC (MT)"
+msgstr "RLC (MT)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
+msgid "BWC (BT)"
+msgstr "BWC (BT)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
+msgid "BWC (MT)"
+msgstr "BWC (MT)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
+msgid "LRX (BT)"
+msgstr "LRX (BT)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
+msgid "LRX (MT)"
+msgstr "LRX (MT)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
+msgid "APO (DR)"
+msgstr "APO (DR)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:75 src/contents/ui/Filter.qml:121
+#: src/contents/ui/PreferencesSheet.qml:722
+msgid "Slope"
+msgstr "スロープ"
+
+#: src/contents/ui/EqualizerBandMenu.qml:96 src/contents/ui/Filter.qml:142
+#: src/contents/ui/MultibandCompressor.qml:199
+#: src/contents/ui/MultibandGate.qml:136 src/contents/ui/PipeWirePage.qml:431
+msgid "Frequency"
+msgstr "周波数"
+
+#: src/contents/ui/EqualizerBandMenu.qml:142 src/contents/ui/Filter.qml:189
+msgid "Quality"
+msgstr "Q値"
+
+#: src/contents/ui/EqualizerBandMenu.qml:165 src/contents/ui/Filter.qml:158
+msgid "Width"
+msgstr "帯域幅"
+
+#: src/contents/ui/EqualizerBandMenu.qml:171
+msgid "oct"
+msgstr "oct"
+
+#: src/contents/ui/EqualizerBandMenu.qml:199
+#: src/contents/ui/MultibandCompressor.qml:99
+#: src/contents/ui/MultibandGate.qml:99
+msgid "Solo"
+msgstr "ソロ"
+
 #: src/contents/ui/Equalizer.qml:72 src/contents/ui/Equalizer.qml:112
 #: src/contents/ui/MidSideEqualizer.qml:66
 #: src/contents/ui/MidSideEqualizer.qml:106
@@ -1529,8 +1624,9 @@ msgstr "右ピッチ"
 msgid "Split channels"
 msgstr "チャンネル分割"
 
-#: src/contents/ui/Equalizer.qml:362 src/contents/ui/HearingTestDialog.qml:23
-msgid "Hearing Test"
+#: src/contents/ui/Equalizer.qml:362
+#, fuzzy
+msgid "Hearing test"
 msgstr "聴力テスト"
 
 #: src/contents/ui/Equalizer.qml:368 src/contents/ui/MidSideEqualizer.qml:356
@@ -1556,106 +1652,6 @@ msgstr "APO (GraphicEQ) をインポート"
 #: src/contents/ui/Equalizer.qml:403 src/contents/ui/MidSideEqualizer.qml:391
 msgid "Export APO"
 msgstr "APO をエクスポート"
-
-#: src/contents/ui/EqualizerBandMenu.qml:34
-#: src/contents/ui/MultibandCompressor.qml:669
-#: src/contents/ui/MultibandCompressor.qml:928
-#: src/contents/ui/MultibandGate.qml:642 src/contents/ui/MultibandGate.qml:901
-msgid "Band"
-msgstr "バンド"
-
-#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
-msgid "Bell"
-msgstr "ベル"
-
-#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
-msgid "High-shelf"
-msgstr "ハイシェルフ"
-
-#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
-msgid "Low-shelf"
-msgstr "ローシェルフ"
-
-#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
-msgid "Notch"
-msgstr "ノッチ"
-
-#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
-msgid "Resonance"
-msgstr "レゾナンス"
-
-#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
-msgid "Allpass"
-msgstr "オールパス"
-
-#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
-msgid "Bandpass"
-msgstr "バンドパス"
-
-#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
-msgid "Ladder-pass"
-msgstr "ラダーパス"
-
-#: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
-msgid "Ladder-rejection"
-msgstr "ラダーリジェクション"
-
-#: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
-msgid "RLC (BT)"
-msgstr "RLC (BT)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
-msgid "RLC (MT)"
-msgstr "RLC (MT)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
-msgid "BWC (BT)"
-msgstr "BWC (BT)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
-msgid "BWC (MT)"
-msgstr "BWC (MT)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
-msgid "LRX (BT)"
-msgstr "LRX (BT)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
-msgid "LRX (MT)"
-msgstr "LRX (MT)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
-msgid "APO (DR)"
-msgstr "APO (DR)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:75 src/contents/ui/Filter.qml:121
-#: src/contents/ui/PreferencesSheet.qml:722
-msgid "Slope"
-msgstr "スロープ"
-
-#: src/contents/ui/EqualizerBandMenu.qml:96 src/contents/ui/Filter.qml:142
-#: src/contents/ui/MultibandCompressor.qml:199
-#: src/contents/ui/MultibandGate.qml:136 src/contents/ui/PipeWirePage.qml:431
-msgid "Frequency"
-msgstr "周波数"
-
-#: src/contents/ui/EqualizerBandMenu.qml:142 src/contents/ui/Filter.qml:189
-msgid "Quality"
-msgstr "Q値"
-
-#: src/contents/ui/EqualizerBandMenu.qml:165 src/contents/ui/Filter.qml:158
-msgid "Width"
-msgstr "帯域幅"
-
-#: src/contents/ui/EqualizerBandMenu.qml:171
-msgid "oct"
-msgstr "oct"
-
-#: src/contents/ui/EqualizerBandMenu.qml:199
-#: src/contents/ui/MultibandCompressor.qml:99
-#: src/contents/ui/MultibandGate.qml:99
-msgid "Solo"
-msgstr "ソロ"
 
 #: src/contents/ui/Exciter.qml:161
 msgid "Ceil active"
@@ -1911,6 +1907,10 @@ msgstr "右ボイスのレベル"
 msgid "Dry/wet"
 msgstr "ドライ/ウェット"
 
+#: src/contents/ui/HearingTestDialog.qml:23
+msgid "Hearing Test"
+msgstr "聴力テスト"
+
 #: src/contents/ui/HearingTestDialog.qml:86
 msgid ""
 "The output device changed. Restart the test with the same headphones and "
@@ -1935,11 +1935,12 @@ msgstr ""
 msgid "I am using headphones"
 msgstr "ヘッドホンを使用しています"
 
-#: src/contents/ui/HearingTestDialog.qml:121
-msgid "Start Test"
+#: src/contents/ui/HearingTestDialog.qml:122
+#, fuzzy
+msgid "Start test"
 msgstr "テストを開始"
 
-#: src/contents/ui/HearingTestDialog.qml:132
+#: src/contents/ui/HearingTestDialog.qml:133
 msgid ""
 "Select an available stereo output device and disable the regular test "
 "signals before starting."
@@ -1947,23 +1948,26 @@ msgstr ""
 "使用可能なステレオ出力デバイスを選択し、通常のテスト信号を無効にしてから開始"
 "してください。"
 
-#: src/contents/ui/HearingTestDialog.qml:139
+#: src/contents/ui/HearingTestDialog.qml:141
 msgid "%1 ear: %2 Hz (%3 of %4)"
 msgstr "%1耳: %2 Hz（%3 / %4）"
 
-#: src/contents/ui/HearingTestDialog.qml:145
-msgid "Tone Level"
+#: src/contents/ui/HearingTestDialog.qml:147
+#, fuzzy
+msgid "Tone level"
 msgstr "トーンレベル"
 
-#: src/contents/ui/HearingTestDialog.qml:164
-msgid "Play Tone"
+#: src/contents/ui/HearingTestDialog.qml:166
+#, fuzzy
+msgid "Play tone"
 msgstr "トーンを再生"
 
-#: src/contents/ui/HearingTestDialog.qml:171
-msgid "Record Threshold"
+#: src/contents/ui/HearingTestDialog.qml:173
+#, fuzzy
+msgid "Record threshold"
 msgstr "しきい値を記録"
 
-#: src/contents/ui/HearingTestDialog.qml:193
+#: src/contents/ui/HearingTestDialog.qml:195
 msgid ""
 "The test is complete. Applying the profile replaces this equalizer's "
 "settings with separate corrections for each ear, limited to 6 dB per band, "
@@ -1975,25 +1979,31 @@ msgstr ""
 "ムを確保するため入力ゲインが下がります。このヘッドホンで結果を保持するには、"
 "プリセットを保存してください。"
 
-#: src/contents/ui/HearingTestDialog.qml:200
+#: src/contents/ui/HearingTestDialog.qml:204
 msgid "%1 Hz: left %2 dB, right %3 dB"
 msgstr "%1 Hz: 左 %2 dB、右 %3 dB"
 
-#: src/contents/ui/HearingTestDialog.qml:209
-msgid "Apply Personalized EQ"
+#: src/contents/ui/HearingTestDialog.qml:214
+#, fuzzy
+msgid "Apply personalized EQ"
 msgstr "個人用EQを適用"
 
-#: src/contents/ui/HearingTestDialog.qml:214
+#: src/contents/ui/HearingTestDialog.qml:219
 msgid "Could not apply the hearing profile."
 msgstr "聴力プロファイルを適用できませんでした。"
 
-#: src/contents/ui/LevelMeter.qml:67 src/contents/ui/LevelMeter.qml:69
+#: src/contents/ui/LevelMeter.qml:69
 msgid "Input Level"
 msgstr "入力レベル"
 
-#: src/contents/ui/LevelMeter.qml:106 src/contents/ui/LevelMeter.qml:108
+#: src/contents/ui/LevelMeter.qml:108
 msgid "True Peak"
 msgstr "トゥルーピーク"
+
+#: src/contents/ui/LevelMeter.qml:147
+#, fuzzy
+msgid "Sample Peak"
+msgstr "最大リダクション"
 
 #: src/contents/ui/Limiter.qml:76
 msgid "Herm thin"
@@ -3366,69 +3376,6 @@ msgstr "このプリセットの名前を変更"
 msgid "Delete this preset"
 msgstr "このプリセットを削除"
 
-#: src/contents/ui/RNNoise.qml:60
-msgid "Imported a new RNNoise model file."
-msgstr "新しい RNNoise モデルファイルをインポートしました。"
-
-#: src/contents/ui/RNNoise.qml:62
-msgid "Failed to import the RNNoise model file."
-msgstr "RNNoise モデルファイルのインポートに失敗しました。"
-
-#: src/contents/ui/RNNoise.qml:73 src/contents/ui/RNNoise.qml:84
-#: src/contents/ui/RNNoise.qml:298 src/contents/ui/RNNoise.qml:300
-msgid "Standard RNNoise model"
-msgstr "標準 RNNoise モデル"
-
-#: src/contents/ui/RNNoise.qml:75
-msgid "Standard RNNoise model loaded."
-msgstr "標準 RNNoise モデルが読み込まれました。"
-
-#: src/contents/ui/RNNoise.qml:80 src/contents/ui/RNNoise.qml:302
-msgid "Using %1 Model"
-msgstr "%1 モデルを使用中"
-
-#: src/contents/ui/RNNoise.qml:82
-msgid "Loaded the %1 RNNoise model."
-msgstr "%1 RNNoise モデルを読み込みました。"
-
-#: src/contents/ui/RNNoise.qml:86
-msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
-msgstr ""
-"%1 モデルの読み込みに失敗しました。標準 RNNoise モデルにフォールバックしま"
-"す。"
-
-#: src/contents/ui/RNNoise.qml:105 src/contents/ui/Speex.qml:118
-msgid "Voice detection"
-msgstr "音声検出"
-
-#: src/contents/ui/RNNoise.qml:142
-msgid "Wet level"
-msgstr "ウェットレベル"
-
-#: src/contents/ui/RNNoise.qml:182
-msgid "Use the Standard model"
-msgstr "標準モデルを使用"
-
-#: src/contents/ui/RNNoise.qml:193
-msgid "User Models"
-msgstr "ユーザーモデル"
-
-#: src/contents/ui/RNNoise.qml:259
-msgid "Delete this model"
-msgstr "このモデルを削除"
-
-#: src/contents/ui/RNNoise.qml:264
-msgid "Removed the %1 RNNoise model."
-msgstr "%1 RNNoise モデルを削除しました。"
-
-#: src/contents/ui/RNNoise.qml:266
-msgid "Failed to remove the %1 RNNoise model."
-msgstr "%1 RNNoise モデルの削除に失敗しました。"
-
-#: src/contents/ui/RNNoise.qml:337
-msgid "Import model"
-msgstr "モデルをインポート"
-
 #: src/contents/ui/Reverb.qml:66
 msgid "Room size"
 msgstr "部屋のサイズ"
@@ -3508,6 +3455,69 @@ msgstr "ディスコ"
 #: src/contents/ui/Reverb.qml:297
 msgid "Large occupied hall"
 msgstr "人のいる大きなホール"
+
+#: src/contents/ui/RNNoise.qml:60
+msgid "Imported a new RNNoise model file."
+msgstr "新しい RNNoise モデルファイルをインポートしました。"
+
+#: src/contents/ui/RNNoise.qml:62
+msgid "Failed to import the RNNoise model file."
+msgstr "RNNoise モデルファイルのインポートに失敗しました。"
+
+#: src/contents/ui/RNNoise.qml:73 src/contents/ui/RNNoise.qml:84
+#: src/contents/ui/RNNoise.qml:298 src/contents/ui/RNNoise.qml:300
+msgid "Standard RNNoise model"
+msgstr "標準 RNNoise モデル"
+
+#: src/contents/ui/RNNoise.qml:75
+msgid "Standard RNNoise model loaded."
+msgstr "標準 RNNoise モデルが読み込まれました。"
+
+#: src/contents/ui/RNNoise.qml:80 src/contents/ui/RNNoise.qml:302
+msgid "Using %1 Model"
+msgstr "%1 モデルを使用中"
+
+#: src/contents/ui/RNNoise.qml:82
+msgid "Loaded the %1 RNNoise model."
+msgstr "%1 RNNoise モデルを読み込みました。"
+
+#: src/contents/ui/RNNoise.qml:86
+msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
+msgstr ""
+"%1 モデルの読み込みに失敗しました。標準 RNNoise モデルにフォールバックしま"
+"す。"
+
+#: src/contents/ui/RNNoise.qml:105 src/contents/ui/Speex.qml:118
+msgid "Voice detection"
+msgstr "音声検出"
+
+#: src/contents/ui/RNNoise.qml:142
+msgid "Wet level"
+msgstr "ウェットレベル"
+
+#: src/contents/ui/RNNoise.qml:182
+msgid "Use the Standard model"
+msgstr "標準モデルを使用"
+
+#: src/contents/ui/RNNoise.qml:193
+msgid "User Models"
+msgstr "ユーザーモデル"
+
+#: src/contents/ui/RNNoise.qml:259
+msgid "Delete this model"
+msgstr "このモデルを削除"
+
+#: src/contents/ui/RNNoise.qml:264
+msgid "Removed the %1 RNNoise model."
+msgstr "%1 RNNoise モデルを削除しました。"
+
+#: src/contents/ui/RNNoise.qml:266
+msgid "Failed to remove the %1 RNNoise model."
+msgstr "%1 RNNoise モデルの削除に失敗しました。"
+
+#: src/contents/ui/RNNoise.qml:337
+msgid "Import model"
+msgstr "モデルをインポート"
 
 #: src/contents/ui/ShortcutsSheet.qml:67
 msgid "Show help"
@@ -4008,11 +4018,6 @@ msgstr "イコライザー、コンプレッサーなどのオーディオエフ
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "シンプルなオーディオエフェクト"
-
-#: src/contents/ui/LevelMeter.qml:147
-#, fuzzy
-msgid "Sample Peak"
-msgstr "最大リダクション"
 
 #~ msgid "Dynamic scale"
 #~ msgstr "動的スケール"

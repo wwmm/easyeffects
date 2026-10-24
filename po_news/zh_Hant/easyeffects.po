@@ -442,8 +442,8 @@ msgid ""
 "Community Presets."
 msgstr ""
 "位於 /etc 目錄下的 Easy Effects 資料夾已不再支援，該處的預設值將不再被載入。"
-"目前僅有位於 ~/.config/easyeffects 下的本機預設值會自動載入至「預設值」選單中"
-"。未來我們將實作一套新的系統，用於安裝、管理及匯入社群預設值。"
+"目前僅有位於 ~/.config/easyeffects 下的本機預設值會自動載入至「預設值」選單"
+"中。未來我們將實作一套新的系統，用於安裝、管理及匯入社群預設值。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:197
 msgid ""
