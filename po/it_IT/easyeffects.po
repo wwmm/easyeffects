@@ -9,9 +9,9 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-24 13:52-0300\n"
-"PO-Revision-Date: 2026-10-23 22:01+0000\n"
-"Last-Translator: Giusy Digital "
-"<digitalone1@users.noreply.hosted.weblate.org>\n"
+"PO-Revision-Date: 2026-10-25 05:51+0000\n"
+"Last-Translator: Giusy Digital <digitalone1@users.noreply.hosted.weblate.org>"
+"\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
 "Language: it_IT\n"
@@ -1637,9 +1637,8 @@ msgid "Split channels"
 msgstr "Separa canali"
 
 #: src/contents/ui/Equalizer.qml:362
-#, fuzzy
 msgid "Hearing test"
-msgstr "Test Auditivo"
+msgstr "Test auditivo"
 
 #: src/contents/ui/Equalizer.qml:368 src/contents/ui/MidSideEqualizer.qml:356
 msgid "Flat response"
@@ -1948,9 +1947,8 @@ msgid "I am using headphones"
 msgstr "Sto usando gli auricolari"
 
 #: src/contents/ui/HearingTestDialog.qml:122
-#, fuzzy
 msgid "Start test"
-msgstr "Inizia Test"
+msgstr "Inizia test"
 
 #: src/contents/ui/HearingTestDialog.qml:133
 msgid ""
@@ -1965,19 +1963,16 @@ msgid "%1 ear: %2 Hz (%3 of %4)"
 msgstr "Orecchio %1: %2 Hz (%3 di %4)"
 
 #: src/contents/ui/HearingTestDialog.qml:147
-#, fuzzy
 msgid "Tone level"
-msgstr "Livello del Tono"
+msgstr "Livello del tono"
 
 #: src/contents/ui/HearingTestDialog.qml:166
-#, fuzzy
 msgid "Play tone"
 msgstr "Riproduci tono"
 
 #: src/contents/ui/HearingTestDialog.qml:173
-#, fuzzy
 msgid "Record threshold"
-msgstr "Registra Soglia"
+msgstr "Registra soglia"
 
 #: src/contents/ui/HearingTestDialog.qml:195
 msgid ""
@@ -1997,9 +1992,8 @@ msgid "%1 Hz: left %2 dB, right %3 dB"
 msgstr "%1 Hz: sinistro %2 dB, destro %3 dB"
 
 #: src/contents/ui/HearingTestDialog.qml:214
-#, fuzzy
 msgid "Apply personalized EQ"
-msgstr "Applica EQ Personalizzato"
+msgstr "Applica EQ personalizzata"
 
 #: src/contents/ui/HearingTestDialog.qml:219
 msgid "Could not apply the hearing profile."

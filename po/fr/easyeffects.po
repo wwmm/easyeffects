@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-24 13:52-0300\n"
-"PO-Revision-Date: 2026-10-22 23:05+0000\n"
+"PO-Revision-Date: 2026-10-25 05:51+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -1637,9 +1637,8 @@ msgid "Split channels"
 msgstr "Diviser les canaux"
 
 #: src/contents/ui/Equalizer.qml:362
-#, fuzzy
 msgid "Hearing test"
-msgstr "Test Auditif"
+msgstr "Test auditif"
 
 #: src/contents/ui/Equalizer.qml:368 src/contents/ui/MidSideEqualizer.qml:356
 msgid "Flat response"
@@ -1948,9 +1947,8 @@ msgid "I am using headphones"
 msgstr "J'utilise un casque"
 
 #: src/contents/ui/HearingTestDialog.qml:122
-#, fuzzy
 msgid "Start test"
-msgstr "Lancer le Test"
+msgstr "Lancer le test"
 
 #: src/contents/ui/HearingTestDialog.qml:133
 msgid ""
@@ -1965,19 +1963,16 @@ msgid "%1 ear: %2 Hz (%3 of %4)"
 msgstr "Oreille %1 : %2 Hz (%3 de %4)"
 
 #: src/contents/ui/HearingTestDialog.qml:147
-#, fuzzy
 msgid "Tone level"
-msgstr "Niveau de Tonalité"
+msgstr "Niveau du ton"
 
 #: src/contents/ui/HearingTestDialog.qml:166
-#, fuzzy
 msgid "Play tone"
-msgstr "Lire la Tonalité"
+msgstr "Émettre le ton"
 
 #: src/contents/ui/HearingTestDialog.qml:173
-#, fuzzy
 msgid "Record threshold"
-msgstr "Enregistrer le Seuil"
+msgstr "Enregistrer le seuil"
 
 #: src/contents/ui/HearingTestDialog.qml:195
 msgid ""
@@ -1997,9 +1992,8 @@ msgid "%1 Hz: left %2 dB, right %3 dB"
 msgstr "%1 Hz : gauche %2 dB, droite %3 dB"
 
 #: src/contents/ui/HearingTestDialog.qml:214
-#, fuzzy
 msgid "Apply personalized EQ"
-msgstr "Appliquer l'EQ Personnalisé"
+msgstr "Appliquer l'EQ personnalisé"
 
 #: src/contents/ui/HearingTestDialog.qml:219
 msgid "Could not apply the hearing profile."
