@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-24 13:52-0300\n"
-"PO-Revision-Date: 2026-10-24 16:15+0000\n"
+"PO-Revision-Date: 2026-10-25 05:51+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remus-"
 "gabriel@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
@@ -1643,7 +1643,6 @@ msgid "Split channels"
 msgstr "Separă canalele"
 
 #: src/contents/ui/Equalizer.qml:362
-#, fuzzy
 msgid "Hearing test"
 msgstr "Test auditiv"
 
@@ -1954,7 +1953,6 @@ msgid "I am using headphones"
 msgstr "Folosesc căști"
 
 #: src/contents/ui/HearingTestDialog.qml:122
-#, fuzzy
 msgid "Start test"
 msgstr "Inițiază testul"
 
@@ -1971,17 +1969,14 @@ msgid "%1 ear: %2 Hz (%3 of %4)"
 msgstr "Urechea %1: %2 Hz (%3 din %4)"
 
 #: src/contents/ui/HearingTestDialog.qml:147
-#, fuzzy
 msgid "Tone level"
 msgstr "Nivel notă"
 
 #: src/contents/ui/HearingTestDialog.qml:166
-#, fuzzy
 msgid "Play tone"
 msgstr "Redare notă"
 
 #: src/contents/ui/HearingTestDialog.qml:173
-#, fuzzy
 msgid "Record threshold"
 msgstr "Înregistrare prag"
 
@@ -2002,7 +1997,6 @@ msgid "%1 Hz: left %2 dB, right %3 dB"
 msgstr "%1 Hz: stânga %2 dB, dreapta %3 dB"
 
 #: src/contents/ui/HearingTestDialog.qml:214
-#, fuzzy
 msgid "Apply personalized EQ"
 msgstr "Aplică egalizatorul personalizat"
 
