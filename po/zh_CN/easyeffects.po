@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-24 13:52-0300\n"
-"PO-Revision-Date: 2026-10-21 13:41+0000\n"
+"PO-Revision-Date: 2026-10-25 05:51+0000\n"
 "Last-Translator: Gerald Chen <ramdomptm@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hans/>\n"
@@ -1610,7 +1610,6 @@ msgid "Split channels"
 msgstr "分离声道"
 
 #: src/contents/ui/Equalizer.qml:362
-#, fuzzy
 msgid "Hearing test"
 msgstr "听力测试"
 
@@ -1917,7 +1916,6 @@ msgid "I am using headphones"
 msgstr "我正在使用耳机"
 
 #: src/contents/ui/HearingTestDialog.qml:122
-#, fuzzy
 msgid "Start test"
 msgstr "开始测试"
 
@@ -1932,17 +1930,14 @@ msgid "%1 ear: %2 Hz (%3 of %4)"
 msgstr "%1 耳：%2 Hz (%3 / %4)"
 
 #: src/contents/ui/HearingTestDialog.qml:147
-#, fuzzy
 msgid "Tone level"
-msgstr "纯音电平"
+msgstr "纯音音量"
 
 #: src/contents/ui/HearingTestDialog.qml:166
-#, fuzzy
 msgid "Play tone"
 msgstr "播放纯音"
 
 #: src/contents/ui/HearingTestDialog.qml:173
-#, fuzzy
 msgid "Record threshold"
 msgstr "记录阈值"
 
@@ -1961,7 +1956,6 @@ msgid "%1 Hz: left %2 dB, right %3 dB"
 msgstr "%1 Hz：左耳 %2 dB，右耳 %3 dB"
 
 #: src/contents/ui/HearingTestDialog.qml:214
-#, fuzzy
 msgid "Apply personalized EQ"
 msgstr "应用个性化 EQ"
 
