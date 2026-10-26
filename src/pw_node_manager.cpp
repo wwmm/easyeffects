@@ -255,22 +255,24 @@ auto NodeManager::registerNode(pw_registry* registry, uint32_t id, const char* t
   const auto user_blocklist = (media_class == tags::pipewire::media_class::output_stream) ? DbStreamOutputs::blocklist()
                                                                                           : DbStreamInputs::blocklist();
 
-  // Blocklist is evaluated against starts_with(), implicitly including also
-  // the exact match. See discussion in #5419.
-  const auto is_blocklisted = [&user_blocklist](const auto& value) {
-    return std::ranges::any_of(user_blocklist,
-                               [&value](const auto& blocklist_item) { return value.startsWith(blocklist_item); });
-  };
+  if (!user_blocklist.isEmpty()) {
+    // Blocklist is evaluated against starts_with(), implicitly including also
+    // the exact match. See discussion in #5419.
+    const auto is_blocklisted = [&user_blocklist](const auto& value) {
+      return std::ranges::any_of(user_blocklist,
+                                 [&value](const auto& blocklist_item) { return value.startsWith(blocklist_item); });
+    };
 
-  nd->nd_info->is_blocklisted =
-      (!nd->nd_info->application_id.isEmpty() && is_blocklisted(nd->nd_info->application_id)) ||
-      (!nd->nd_info->app_process_binary.isEmpty() && is_blocklisted(nd->nd_info->app_process_binary)) ||
-      (!nd->nd_info->name.isEmpty() && is_blocklisted(nd->nd_info->name));
+    nd->nd_info->is_blocklisted =
+        (!nd->nd_info->application_id.isEmpty() && is_blocklisted(nd->nd_info->application_id)) ||
+        (!nd->nd_info->app_process_binary.isEmpty() && is_blocklisted(nd->nd_info->app_process_binary)) ||
+        (!nd->nd_info->name.isEmpty() && is_blocklisted(nd->nd_info->name));
 
-  if (nd->nd_info->is_blocklisted) {
-    util::debug(std::format(R"(The stream "{}" with process binary "{}" and ID "{}" has been excluded.)",
-                            nd->nd_info->name.toStdString(), nd->nd_info->app_process_binary.toStdString(),
-                            nd->nd_info->application_id.toStdString()));
+    if (nd->nd_info->is_blocklisted) {
+      util::debug(std::format(R"(The stream "{}" with process binary "{}" and ID "{}" has been excluded.)",
+                              nd->nd_info->name.toStdString(), nd->nd_info->app_process_binary.toStdString(),
+                              nd->nd_info->application_id.toStdString()));
+    }
   }
 
   pw_proxy_add_object_listener(proxy, &nd->object_listener, &node_events, nd);  // NOLINT
