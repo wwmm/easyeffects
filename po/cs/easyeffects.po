@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-24 13:52-0300\n"
-"PO-Revision-Date: 2026-10-23 18:22+0000\n"
+"PO-Revision-Date: 2026-10-26 22:32+0000\n"
 "Last-Translator: Fjuro <fjuro@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
 "cs/>\n"
@@ -1627,7 +1627,6 @@ msgid "Split channels"
 msgstr "Rozdělit kanály"
 
 #: src/contents/ui/Equalizer.qml:362
-#, fuzzy
 msgid "Hearing test"
 msgstr "Test sluchu"
 
@@ -1938,7 +1937,6 @@ msgid "I am using headphones"
 msgstr "Používám sluchátka"
 
 #: src/contents/ui/HearingTestDialog.qml:122
-#, fuzzy
 msgid "Start test"
 msgstr "Spustit test"
 
@@ -1955,17 +1953,14 @@ msgid "%1 ear: %2 Hz (%3 of %4)"
 msgstr "Ucho %1: %2 Hz (%3 z %4)"
 
 #: src/contents/ui/HearingTestDialog.qml:147
-#, fuzzy
 msgid "Tone level"
 msgstr "Úroveň tónu"
 
 #: src/contents/ui/HearingTestDialog.qml:166
-#, fuzzy
 msgid "Play tone"
 msgstr "Přehrát tón"
 
 #: src/contents/ui/HearingTestDialog.qml:173
-#, fuzzy
 msgid "Record threshold"
 msgstr "Zaznamenat práh"
 
@@ -1986,7 +1981,6 @@ msgid "%1 Hz: left %2 dB, right %3 dB"
 msgstr "%1 Hz: vlevo %2 dB, vpravo %3 dB"
 
 #: src/contents/ui/HearingTestDialog.qml:214
-#, fuzzy
 msgid "Apply personalized EQ"
 msgstr "Použít personalizovaný EQ"
 
