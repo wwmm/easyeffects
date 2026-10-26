@@ -262,8 +262,10 @@ auto NodeManager::registerNode(pw_registry* registry, uint32_t id, const char* t
                                [&value](const auto& blocklist_item) { return value.startsWith(blocklist_item); });
   };
 
-  nd->nd_info->is_blocklisted = is_blocklisted(nd->nd_info->application_id) ||
-                                is_blocklisted(nd->nd_info->app_process_binary) || is_blocklisted(nd->nd_info->name);
+  nd->nd_info->is_blocklisted =
+      (!nd->nd_info->application_id.isEmpty() && is_blocklisted(nd->nd_info->application_id)) ||
+      (!nd->nd_info->app_process_binary.isEmpty() && is_blocklisted(nd->nd_info->app_process_binary)) ||
+      (!nd->nd_info->name.isEmpty() && is_blocklisted(nd->nd_info->name));
 
   if (nd->nd_info->is_blocklisted) {
     util::debug(std::format(R"(The stream "{}" with process binary "{}" and ID "{}" has been excluded.)",
