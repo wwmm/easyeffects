@@ -17,8 +17,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :(n>"
-"6 && n<11) ? 3 : 4;\n"
+"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :"
+"(n>6 && n<11) ? 3 : 4;\n"
 "X-Generator: Weblate 2026.11.dev0\n"
 
 #: src/autostart.cpp:92
@@ -4045,6 +4045,282 @@ msgstr "Cothromóir, Comhbhrúiteoir agus Éifeachtaí Fuaime Eile"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "Éifeachtaí fuaime simplí"
+
+#: src/contents/ui/Harmonizer.qml:45
+#, fuzzy
+msgctxt "Musical note"
+msgid "C"
+msgstr "C"
+
+#: src/contents/ui/Harmonizer.qml:48
+#, fuzzy
+msgctxt "Musical note"
+msgid "C♯ / D♭"
+msgstr "C♯ / D♭"
+
+#: src/contents/ui/Harmonizer.qml:51
+#, fuzzy
+msgctxt "Musical note"
+msgid "D"
+msgstr "D"
+
+#: src/contents/ui/Harmonizer.qml:54
+#, fuzzy
+msgctxt "Musical note"
+msgid "D♯ / E♭"
+msgstr "D♯ / E♭"
+
+#: src/contents/ui/Harmonizer.qml:57
+#, fuzzy
+msgctxt "Musical note"
+msgid "E"
+msgstr "E"
+
+#: src/contents/ui/Harmonizer.qml:60
+#, fuzzy
+msgctxt "Musical note"
+msgid "F"
+msgstr "F"
+
+#: src/contents/ui/Harmonizer.qml:63
+#, fuzzy
+msgctxt "Musical note"
+msgid "F♯ / G♭"
+msgstr "F♯ / G♭"
+
+#: src/contents/ui/Harmonizer.qml:66
+#, fuzzy
+msgctxt "Musical note"
+msgid "G"
+msgstr "G"
+
+#: src/contents/ui/Harmonizer.qml:69
+#, fuzzy
+msgctxt "Musical note"
+msgid "G♯ / A♭"
+msgstr "G♯ / A♭"
+
+#: src/contents/ui/Harmonizer.qml:72
+#, fuzzy
+msgctxt "Musical note"
+msgid "A"
+msgstr "A"
+
+#: src/contents/ui/Harmonizer.qml:75
+#, fuzzy
+msgctxt "Musical note"
+msgid "A♯ / B♭"
+msgstr "A♯ / B♭"
+
+#: src/contents/ui/Harmonizer.qml:78
+#, fuzzy
+msgctxt "Musical note"
+msgid "B"
+msgstr "B"
+
+#: src/contents/ui/Harmonizer.qml:90
+#, fuzzy
+msgctxt "Musical chord"
+msgid "No chord"
+msgstr "Gan chorda"
+
+#: src/contents/ui/Harmonizer.qml:93
+#, fuzzy
+msgctxt "Musical chord"
+msgid "6"
+msgstr "6"
+
+#: src/contents/ui/Harmonizer.qml:96
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Major 7"
+msgstr "Mór 7"
+
+#: src/contents/ui/Harmonizer.qml:99
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Lydian"
+msgstr "Lidiceach"
+
+#: src/contents/ui/Harmonizer.qml:102
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Major 9"
+msgstr "Mór 9"
+
+#: src/contents/ui/Harmonizer.qml:105
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Major 7/9"
+msgstr "Mór 7/9"
+
+#: src/contents/ui/Harmonizer.qml:108
+#, fuzzy
+msgctxt "Musical chord"
+msgid "6/9"
+msgstr "6/9"
+
+#: src/contents/ui/Harmonizer.qml:111
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Augmented"
+msgstr "Méadaithe"
+
+#: src/contents/ui/Harmonizer.qml:114
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Minor"
+msgstr "Mionúr"
+
+#: src/contents/ui/Harmonizer.qml:117
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Minor 6"
+msgstr "Mionúr 6"
+
+#: src/contents/ui/Harmonizer.qml:120
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Minor 7"
+msgstr "Mionúr 7"
+
+#: src/contents/ui/Harmonizer.qml:123
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Minor 7 flat 5"
+msgstr "Mionúr 7 cothrom 5"
+
+#: src/contents/ui/Harmonizer.qml:126
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Minor 9"
+msgstr "Mionúr 9"
+
+#: src/contents/ui/Harmonizer.qml:129
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Minor 7/9"
+msgstr "Mionúr 7/9"
+
+#: src/contents/ui/Harmonizer.qml:132
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Minor 7/11"
+msgstr "Mionúr 7/11"
+
+#: src/contents/ui/Harmonizer.qml:135
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Minor major 7"
+msgstr "Mionúr mhór 7"
+
+#: src/contents/ui/Harmonizer.qml:138
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Minor major 7/9"
+msgstr "Mionúr mhór 7/9"
+
+#: src/contents/ui/Harmonizer.qml:141
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Diminished"
+msgstr "Laghdaithe"
+
+#: src/contents/ui/Harmonizer.qml:144
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Diminished 7"
+msgstr "Laghdaithe 7"
+
+#: src/contents/ui/Harmonizer.qml:147
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Dominant 7"
+msgstr "Ceannasach 7"
+
+#: src/contents/ui/Harmonizer.qml:150
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Dominant 7 sus4"
+msgstr "Ceannasach 7 sus4"
+
+#: src/contents/ui/Harmonizer.qml:153
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Dominant 7 flat 5"
+msgstr "Ceannasach 7 cothrom 5"
+
+#: src/contents/ui/Harmonizer.qml:156
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Dominant 9"
+msgstr "Ceannasach 9"
+
+#: src/contents/ui/Harmonizer.qml:159
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Dominant 7 sharp 11"
+msgstr "Ceannasach 7 géar 11"
+
+#: src/contents/ui/Harmonizer.qml:162
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Dominant 13"
+msgstr "Ceannasach 13"
+
+#: src/contents/ui/Harmonizer.qml:165
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Dominant 7 flat 9"
+msgstr "Ceannasach 7 cothrom 9"
+
+#: src/contents/ui/Harmonizer.qml:168
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Dominant 7 flat 13"
+msgstr "Ceannasach 7 cothrom 13"
+
+#: src/contents/ui/Harmonizer.qml:171
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Dominant 7 sharp 9"
+msgstr "Ceannasach 7 géar 9"
+
+#: src/contents/ui/Harmonizer.qml:174
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Augmented major 7"
+msgstr "Mór-mhéadaithe 7"
+
+#: src/contents/ui/Harmonizer.qml:177
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Augmented 7"
+msgstr "Méadaithe 7"
+
+#: src/contents/ui/Harmonizer.qml:180
+#, fuzzy
+msgctxt "Musical interval"
+msgid "Octaves"
+msgstr "Ochtaibhí"
+
+#: src/contents/ui/Harmonizer.qml:183
+#, fuzzy
+msgctxt "Musical interval"
+msgid "Fifths"
+msgstr "Cúigiú cuid"
+
+#: src/contents/ui/Harmonizer.qml:186
+#, fuzzy
+msgctxt "Musical interval"
+msgid "Suspended 4"
+msgstr "Ar fionraí 4"
+
+#: src/contents/ui/Harmonizer.qml:189
+#, fuzzy
+msgctxt "Musical interval"
+msgid "Seconds"
+msgstr "Soicindí"
 
 #~ msgid "Dynamic scale"
 #~ msgstr "Scála dinimiciúil"

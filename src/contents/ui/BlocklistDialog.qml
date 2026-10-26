@@ -124,7 +124,7 @@ Kirigami.Dialog {
 
                     readonly property string name: {
                         if (control.streamDB.blocklist.length > 0)
-                            return control.streamDB.blocklist[index];
+                            return control.streamDB.blocklist[index] ?? "";
 
                         return "";
                     }

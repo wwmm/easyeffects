@@ -4010,6 +4010,282 @@ msgstr "Ekvalizér, kompresor a jiné zvukové efekty"
 msgid "Simple audio effects"
 msgstr "Jednoduché zvukové efekty"
 
+#: src/contents/ui/Harmonizer.qml:45
+#, fuzzy
+msgctxt "Musical note"
+msgid "C"
+msgstr "C"
+
+#: src/contents/ui/Harmonizer.qml:48
+#, fuzzy
+msgctxt "Musical note"
+msgid "C♯ / D♭"
+msgstr "C♯ / D♭"
+
+#: src/contents/ui/Harmonizer.qml:51
+#, fuzzy
+msgctxt "Musical note"
+msgid "D"
+msgstr "D"
+
+#: src/contents/ui/Harmonizer.qml:54
+#, fuzzy
+msgctxt "Musical note"
+msgid "D♯ / E♭"
+msgstr "D♯ / E♭"
+
+#: src/contents/ui/Harmonizer.qml:57
+#, fuzzy
+msgctxt "Musical note"
+msgid "E"
+msgstr "E"
+
+#: src/contents/ui/Harmonizer.qml:60
+#, fuzzy
+msgctxt "Musical note"
+msgid "F"
+msgstr "F"
+
+#: src/contents/ui/Harmonizer.qml:63
+#, fuzzy
+msgctxt "Musical note"
+msgid "F♯ / G♭"
+msgstr "F♯ / G♭"
+
+#: src/contents/ui/Harmonizer.qml:66
+#, fuzzy
+msgctxt "Musical note"
+msgid "G"
+msgstr "G"
+
+#: src/contents/ui/Harmonizer.qml:69
+#, fuzzy
+msgctxt "Musical note"
+msgid "G♯ / A♭"
+msgstr "G♯ / A♭"
+
+#: src/contents/ui/Harmonizer.qml:72
+#, fuzzy
+msgctxt "Musical note"
+msgid "A"
+msgstr "A"
+
+#: src/contents/ui/Harmonizer.qml:75
+#, fuzzy
+msgctxt "Musical note"
+msgid "A♯ / B♭"
+msgstr "A♯ / H♭"
+
+#: src/contents/ui/Harmonizer.qml:78
+#, fuzzy
+msgctxt "Musical note"
+msgid "B"
+msgstr "H"
+
+#: src/contents/ui/Harmonizer.qml:90
+#, fuzzy
+msgctxt "Musical chord"
+msgid "No chord"
+msgstr "Žádný akord"
+
+#: src/contents/ui/Harmonizer.qml:93
+#, fuzzy
+msgctxt "Musical chord"
+msgid "6"
+msgstr "Sextakord"
+
+#: src/contents/ui/Harmonizer.qml:96
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Major 7"
+msgstr "Velký septakord"
+
+#: src/contents/ui/Harmonizer.qml:99
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Lydian"
+msgstr "Lydický modus"
+
+#: src/contents/ui/Harmonizer.qml:102
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Major 9"
+msgstr "Velký nonakord"
+
+#: src/contents/ui/Harmonizer.qml:105
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Major 7/9"
+msgstr "Velký septa/nonakord"
+
+#: src/contents/ui/Harmonizer.qml:108
+#, fuzzy
+msgctxt "Musical chord"
+msgid "6/9"
+msgstr "Sexta/nonakord"
+
+#: src/contents/ui/Harmonizer.qml:111
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Augmented"
+msgstr "Zvětšený"
+
+#: src/contents/ui/Harmonizer.qml:114
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Minor"
+msgstr "Malá"
+
+#: src/contents/ui/Harmonizer.qml:117
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Minor 6"
+msgstr "Malý sextakord"
+
+#: src/contents/ui/Harmonizer.qml:120
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Minor 7"
+msgstr "Malý septakord"
+
+#: src/contents/ui/Harmonizer.qml:123
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Minor 7 flat 5"
+msgstr "Malý septakord s malou kvintou"
+
+#: src/contents/ui/Harmonizer.qml:126
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Minor 9"
+msgstr "Malý nonakord"
+
+#: src/contents/ui/Harmonizer.qml:129
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Minor 7/9"
+msgstr "Malý septa/nonakord"
+
+#: src/contents/ui/Harmonizer.qml:132
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Minor 7/11"
+msgstr "Malý septakord s jedenáctkou"
+
+#: src/contents/ui/Harmonizer.qml:135
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Minor major 7"
+msgstr "Mollový velký septakord"
+
+#: src/contents/ui/Harmonizer.qml:138
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Minor major 7/9"
+msgstr "Mollový velký septa/nonakord"
+
+#: src/contents/ui/Harmonizer.qml:141
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Diminished"
+msgstr "Zmenšený"
+
+#: src/contents/ui/Harmonizer.qml:144
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Diminished 7"
+msgstr "Zmenšený septakord"
+
+#: src/contents/ui/Harmonizer.qml:147
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Dominant 7"
+msgstr "Dominantní septakord"
+
+#: src/contents/ui/Harmonizer.qml:150
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Dominant 7 sus4"
+msgstr "Dominantní septakord sus4"
+
+#: src/contents/ui/Harmonizer.qml:153
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Dominant 7 flat 5"
+msgstr "Dominantní septakord s malou kvintou"
+
+#: src/contents/ui/Harmonizer.qml:156
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Dominant 9"
+msgstr "Dominantní nonakord"
+
+#: src/contents/ui/Harmonizer.qml:159
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Dominant 7 sharp 11"
+msgstr "Dominantní septakord se zvýšenou jedenáctkou"
+
+#: src/contents/ui/Harmonizer.qml:162
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Dominant 13"
+msgstr "Dominantní třináctka"
+
+#: src/contents/ui/Harmonizer.qml:165
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Dominant 7 flat 9"
+msgstr "Dominantní septakord s malou nonou"
+
+#: src/contents/ui/Harmonizer.qml:168
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Dominant 7 flat 13"
+msgstr "Dominantní septakord s malou třináctkou"
+
+#: src/contents/ui/Harmonizer.qml:171
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Dominant 7 sharp 9"
+msgstr "Dominantní septakord se zvýšenou nonou"
+
+#: src/contents/ui/Harmonizer.qml:174
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Augmented major 7"
+msgstr "Zvětšený velký septakord"
+
+#: src/contents/ui/Harmonizer.qml:177
+#, fuzzy
+msgctxt "Musical chord"
+msgid "Augmented 7"
+msgstr "Zvětšený septakord"
+
+#: src/contents/ui/Harmonizer.qml:180
+#, fuzzy
+msgctxt "Musical interval"
+msgid "Octaves"
+msgstr "Oktávy"
+
+#: src/contents/ui/Harmonizer.qml:183
+#, fuzzy
+msgctxt "Musical interval"
+msgid "Fifths"
+msgstr "Kvinty"
+
+#: src/contents/ui/Harmonizer.qml:186
+#, fuzzy
+msgctxt "Musical interval"
+msgid "Suspended 4"
+msgstr "Sus4"
+
+#: src/contents/ui/Harmonizer.qml:189
+#, fuzzy
+msgctxt "Musical interval"
+msgid "Seconds"
+msgstr "Sekundy"
+
 #~ msgid "Dynamic scale"
 #~ msgstr "Dynamické měřítko"
 
