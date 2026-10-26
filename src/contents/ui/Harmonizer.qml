@@ -42,40 +42,40 @@ Kirigami.ScrollablePage {
                     textRole: "text"
                     model: [
                         {
-                            "text": i18n("C")
+                            "text": i18nc("Musical note", "C")
                         },
                         {
-                            "text": i18n("C♯ / D♭")
+                            "text": i18nc("Musical note", "C♯ / D♭")
                         },
                         {
-                            "text": i18n("D")
+                            "text": i18nc("Musical note", "D")
                         },
                         {
-                            "text": i18n("D♯ / E♭")
+                            "text": i18nc("Musical note", "D♯ / E♭")
                         },
                         {
-                            "text": i18n("E")
+                            "text": i18nc("Musical note", "E")
                         },
                         {
-                            "text": i18n("F")
+                            "text": i18nc("Musical note", "F")
                         },
                         {
-                            "text": i18n("F♯ / G♭")
+                            "text": i18nc("Musical note", "F♯ / G♭")
                         },
                         {
-                            "text": i18n("G")
+                            "text": i18nc("Musical note", "G")
                         },
                         {
-                            "text": i18n("G♯ / A♭")
+                            "text": i18nc("Musical note", "G♯ / A♭")
                         },
                         {
-                            "text": i18n("A")
+                            "text": i18nc("Musical note", "A")
                         },
                         {
-                            "text": i18n("A♯ / B♭")
+                            "text": i18nc("Musical note", "A♯ / B♭")
                         },
                         {
-                            "text": i18n("B")
+                            "text": i18nc("Musical note", "B")
                         }
                     ]
                     currentIndex: harmonizerPage.pluginDB.note
@@ -87,106 +87,106 @@ Kirigami.ScrollablePage {
                     textRole: "text"
                     model: [
                         {
-                            "text": i18n("No chord")
+                            "text": i18nc("Musical chord", "No chord")
                         },
                         {
-                            "text": i18n("6")
+                            "text": i18nc("Musical chord", "6")
                         },
                         {
-                            "text": i18n("Major 7")
+                            "text": i18nc("Musical chord", "Major 7")
                         },
                         {
-                            "text": i18n("Lydian")
+                            "text": i18nc("Musical chord", "Lydian")
                         },
                         {
-                            "text": i18n("Major 9")
+                            "text": i18nc("Musical chord", "Major 9")
                         },
                         {
-                            "text": i18n("Major 7/9")
+                            "text": i18nc("Musical chord", "Major 7/9")
                         },
                         {
-                            "text": i18n("6/9")
+                            "text": i18nc("Musical chord", "6/9")
                         },
                         {
-                            "text": i18n("Augmented")
+                            "text": i18nc("Musical chord", "Augmented")
                         },
                         {
-                            "text": i18n("Minor")
+                            "text": i18nc("Musical chord", "Minor")
                         },
                         {
-                            "text": i18n("Minor 6")
+                            "text": i18nc("Musical chord", "Minor 6")
                         },
                         {
-                            "text": i18n("Minor 7")
+                            "text": i18nc("Musical chord", "Minor 7")
                         },
                         {
-                            "text": i18n("Minor 7 flat 5")
+                            "text": i18nc("Musical chord", "Minor 7 flat 5")
                         },
                         {
-                            "text": i18n("Minor 9")
+                            "text": i18nc("Musical chord", "Minor 9")
                         },
                         {
-                            "text": i18n("Minor 7/9")
+                            "text": i18nc("Musical chord", "Minor 7/9")
                         },
                         {
-                            "text": i18n("Minor 7/11")
+                            "text": i18nc("Musical chord", "Minor 7/11")
                         },
                         {
-                            "text": i18n("Minor major 7")
+                            "text": i18nc("Musical chord", "Minor major 7")
                         },
                         {
-                            "text": i18n("Minor major 7/9")
+                            "text": i18nc("Musical chord", "Minor major 7/9")
                         },
                         {
-                            "text": i18n("Diminished")
+                            "text": i18nc("Musical chord", "Diminished")
                         },
                         {
-                            "text": i18n("Diminished 7")
+                            "text": i18nc("Musical chord", "Diminished 7")
                         },
                         {
-                            "text": i18n("Dominant 7")
+                            "text": i18nc("Musical chord", "Dominant 7")
                         },
                         {
-                            "text": i18n("Dominant 7 sus4")
+                            "text": i18nc("Musical chord", "Dominant 7 sus4")
                         },
                         {
-                            "text": i18n("Dominant 7 flat 5")
+                            "text": i18nc("Musical chord", "Dominant 7 flat 5")
                         },
                         {
-                            "text": i18n("Dominant 9")
+                            "text": i18nc("Musical chord", "Dominant 9")
                         },
                         {
-                            "text": i18n("Dominant 7 sharp 11")
+                            "text": i18nc("Musical chord", "Dominant 7 sharp 11")
                         },
                         {
-                            "text": i18n("Dominant 13")
+                            "text": i18nc("Musical chord", "Dominant 13")
                         },
                         {
-                            "text": i18n("Dominant 7 flat 9")
+                            "text": i18nc("Musical chord", "Dominant 7 flat 9")
                         },
                         {
-                            "text": i18n("Dominant 7 flat 13")
+                            "text": i18nc("Musical chord", "Dominant 7 flat 13")
                         },
                         {
-                            "text": i18n("Dominant 7 sharp 9")
+                            "text": i18nc("Musical chord", "Dominant 7 sharp 9")
                         },
                         {
-                            "text": i18n("Augmented major 7")
+                            "text": i18nc("Musical chord", "Augmented major 7")
                         },
                         {
-                            "text": i18n("Augmented 7")
+                            "text": i18nc("Musical chord", "Augmented 7")
                         },
                         {
-                            "text": i18n("Octaves")
+                            "text": i18nc("Musical interval", "Octaves")
                         },
                         {
-                            "text": i18n("Fifths")
+                            "text": i18nc("Musical interval", "Fifths")
                         },
                         {
-                            "text": i18n("Suspended 4")
+                            "text": i18nc("Musical interval", "Suspended 4")
                         },
                         {
-                            "text": i18n("Seconds")
+                            "text": i18nc("Musical interval", "Seconds")
                         }
                     ]
                     currentIndex: harmonizerPage.pluginDB.chord
