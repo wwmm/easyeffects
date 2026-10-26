@@ -521,8 +521,8 @@ msgid ""
 "RNNoise is no longer an autodependency. It is now required by default, if "
 "not available it must be explicitly disabled with -Denable-rnnoise=false"
 msgstr ""
-"RNNoise 已不再是自動依賴項。現在它預設為必備，若無法取得，則必須透過 -"
-"Denable-rnnoise=false 明確停用。"
+"RNNoise 已不再是自動依賴項。現在它預設為必備，若無法取得，則必須透過 "
+"-Denable-rnnoise=false 明確停用。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:239
 msgid ""
@@ -562,16 +562,16 @@ msgid ""
 "As we are removing code deprecated by GTK 4.10 the minimum GTK version has "
 "been increased."
 msgstr ""
-"由於我們正在移除 GTK 4.10 中已標記為過時的程式碼，因此最低 GTK 版本要求已提高"
-"。"
+"由於我們正在移除 GTK 4.10 中已標記為過時的程式碼，因此最低 GTK 版本要求已提"
+"高。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:261
 msgid ""
 "The spectrum plugin update rate was improved. Different sampling rates "
 "should lead to similar update frequencies visually."
 msgstr ""
-"頻譜外掛程式的更新速率已獲得改善。不同的取樣率應能呈現出視覺上相似的更新頻率"
-"。"
+"頻譜外掛程式的更新速率已獲得改善。不同的取樣率應能呈現出視覺上相似的更新頻"
+"率。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:262
 msgid ""
@@ -596,8 +596,8 @@ msgid ""
 "The echo canceller probes were not being linked to the soundcard after the "
 "move to multiple filters intances. This should be fixed now."
 msgstr ""
-"在改用多個濾波器實例後，回聲消除器的探針未能與音效卡建立連結。此問題現已修復"
-"。"
+"在改用多個濾波器實例後，回聲消除器的探針未能與音效卡建立連結。此問題現已修"
+"復。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:274
 msgid ""
@@ -626,7 +626,8 @@ msgstr "GraphicEQ 的預設值可匯入均衡器效果中。"
 msgid ""
 "The application name has been changed to Easy Effects to adhere to the "
 "naming conventions of GNOME Human Interface Guidelines."
-msgstr "為符合 GNOME 人機介面指南 的命名規範，該應用程式名稱已變更為 Easy Effects。"
+msgstr ""
+"為符合 GNOME 人機介面指南 的命名規範，該應用程式名稱已變更為 Easy Effects。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:279
 msgid "The documentation has been updated."
@@ -727,8 +728,8 @@ msgid ""
 "A dialog is shown to the user when a preset fails to load or a preset/"
 "impulse file fails to be imported."
 msgstr ""
-"當預設檔無法載入，或預設檔／脈衝檔無法匯入時，系統會向使用者顯示一個對話方塊"
-"。"
+"當預設檔無法載入，或預設檔／脈衝檔無法匯入時，系統會向使用者顯示一個對話方"
+"塊。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:325
 msgid ""

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-10-24 13:52-0300\n"
+"POT-Creation-Date: 2026-10-26 11:29+0100\n"
 "PO-Revision-Date: 2026-08-11 20:51+0000\n"
 "Last-Translator: Lito Parra <lito.15@proton.me>\n"
 "Language-Team: Spanish (Mexico) <https://hosted.weblate.org/projects/"
@@ -347,7 +347,7 @@ msgstr ""
 msgid "Major"
 msgstr ""
 
-#: src/contents/ui/Autotune.qml:248 src/contents/ui/Harmonizer.qml:114
+#: src/contents/ui/Autotune.qml:248
 msgid "Minor"
 msgstr ""
 
@@ -1718,183 +1718,234 @@ msgid "Harmony"
 msgstr "Harmónicos"
 
 #: src/contents/ui/Harmonizer.qml:45
+msgctxt "Musical note"
 msgid "C"
 msgstr ""
 
 #: src/contents/ui/Harmonizer.qml:48
+msgctxt "Musical note"
 msgid "C♯ / D♭"
 msgstr ""
 
 #: src/contents/ui/Harmonizer.qml:51
+msgctxt "Musical note"
 msgid "D"
 msgstr ""
 
 #: src/contents/ui/Harmonizer.qml:54
+msgctxt "Musical note"
 msgid "D♯ / E♭"
 msgstr ""
 
 #: src/contents/ui/Harmonizer.qml:57
+msgctxt "Musical note"
 msgid "E"
 msgstr ""
 
 #: src/contents/ui/Harmonizer.qml:60
+msgctxt "Musical note"
 msgid "F"
 msgstr ""
 
 #: src/contents/ui/Harmonizer.qml:63
+msgctxt "Musical note"
 msgid "F♯ / G♭"
 msgstr ""
 
 #: src/contents/ui/Harmonizer.qml:66
+msgctxt "Musical note"
 msgid "G"
 msgstr ""
 
 #: src/contents/ui/Harmonizer.qml:69
+msgctxt "Musical note"
 msgid "G♯ / A♭"
 msgstr ""
 
 #: src/contents/ui/Harmonizer.qml:72
+msgctxt "Musical note"
 msgid "A"
 msgstr ""
 
 #: src/contents/ui/Harmonizer.qml:75
+msgctxt "Musical note"
 msgid "A♯ / B♭"
 msgstr ""
 
 #: src/contents/ui/Harmonizer.qml:78
+msgctxt "Musical note"
 msgid "B"
 msgstr ""
 
 #: src/contents/ui/Harmonizer.qml:90
+msgctxt "Musical chord"
 msgid "No chord"
 msgstr ""
 
 #: src/contents/ui/Harmonizer.qml:93
+msgctxt "Musical chord"
 msgid "6"
 msgstr ""
 
 #: src/contents/ui/Harmonizer.qml:96
+msgctxt "Musical chord"
 msgid "Major 7"
 msgstr ""
 
 #: src/contents/ui/Harmonizer.qml:99
+msgctxt "Musical chord"
 msgid "Lydian"
 msgstr ""
 
 #: src/contents/ui/Harmonizer.qml:102
+msgctxt "Musical chord"
 msgid "Major 9"
 msgstr ""
 
 #: src/contents/ui/Harmonizer.qml:105
+msgctxt "Musical chord"
 msgid "Major 7/9"
 msgstr ""
 
 #: src/contents/ui/Harmonizer.qml:108
+msgctxt "Musical chord"
 msgid "6/9"
 msgstr ""
 
 #: src/contents/ui/Harmonizer.qml:111
+msgctxt "Musical chord"
 msgid "Augmented"
 msgstr ""
 
+#: src/contents/ui/Harmonizer.qml:114
+msgctxt "Musical chord"
+msgid "Minor"
+msgstr ""
+
 #: src/contents/ui/Harmonizer.qml:117
+msgctxt "Musical chord"
 msgid "Minor 6"
 msgstr ""
 
 #: src/contents/ui/Harmonizer.qml:120
+msgctxt "Musical chord"
 msgid "Minor 7"
 msgstr ""
 
 #: src/contents/ui/Harmonizer.qml:123
+msgctxt "Musical chord"
 msgid "Minor 7 flat 5"
 msgstr ""
 
 #: src/contents/ui/Harmonizer.qml:126
+msgctxt "Musical chord"
 msgid "Minor 9"
 msgstr ""
 
 #: src/contents/ui/Harmonizer.qml:129
+msgctxt "Musical chord"
 msgid "Minor 7/9"
 msgstr ""
 
 #: src/contents/ui/Harmonizer.qml:132
+msgctxt "Musical chord"
 msgid "Minor 7/11"
 msgstr ""
 
 #: src/contents/ui/Harmonizer.qml:135
+msgctxt "Musical chord"
 msgid "Minor major 7"
 msgstr ""
 
 #: src/contents/ui/Harmonizer.qml:138
+msgctxt "Musical chord"
 msgid "Minor major 7/9"
 msgstr ""
 
 #: src/contents/ui/Harmonizer.qml:141
+msgctxt "Musical chord"
 msgid "Diminished"
 msgstr ""
 
 #: src/contents/ui/Harmonizer.qml:144
+msgctxt "Musical chord"
 msgid "Diminished 7"
 msgstr ""
 
 #: src/contents/ui/Harmonizer.qml:147
+msgctxt "Musical chord"
 msgid "Dominant 7"
 msgstr ""
 
 #: src/contents/ui/Harmonizer.qml:150
+msgctxt "Musical chord"
 msgid "Dominant 7 sus4"
 msgstr ""
 
 #: src/contents/ui/Harmonizer.qml:153
+msgctxt "Musical chord"
 msgid "Dominant 7 flat 5"
 msgstr ""
 
 #: src/contents/ui/Harmonizer.qml:156
+msgctxt "Musical chord"
 msgid "Dominant 9"
 msgstr ""
 
 #: src/contents/ui/Harmonizer.qml:159
+msgctxt "Musical chord"
 msgid "Dominant 7 sharp 11"
 msgstr ""
 
 #: src/contents/ui/Harmonizer.qml:162
+msgctxt "Musical chord"
 msgid "Dominant 13"
 msgstr ""
 
 #: src/contents/ui/Harmonizer.qml:165
+msgctxt "Musical chord"
 msgid "Dominant 7 flat 9"
 msgstr ""
 
 #: src/contents/ui/Harmonizer.qml:168
+msgctxt "Musical chord"
 msgid "Dominant 7 flat 13"
 msgstr ""
 
 #: src/contents/ui/Harmonizer.qml:171
+msgctxt "Musical chord"
 msgid "Dominant 7 sharp 9"
 msgstr ""
 
 #: src/contents/ui/Harmonizer.qml:174
+msgctxt "Musical chord"
 msgid "Augmented major 7"
 msgstr ""
 
 #: src/contents/ui/Harmonizer.qml:177
+msgctxt "Musical chord"
 msgid "Augmented 7"
 msgstr ""
 
-#: src/contents/ui/Harmonizer.qml:180 src/contents/ui/Pitch.qml:175
+#: src/contents/ui/Harmonizer.qml:180
+#, fuzzy
+msgctxt "Musical interval"
 msgid "Octaves"
 msgstr "Octavas"
 
 #: src/contents/ui/Harmonizer.qml:183
+msgctxt "Musical interval"
 msgid "Fifths"
 msgstr ""
 
 #: src/contents/ui/Harmonizer.qml:186
+msgctxt "Musical interval"
 msgid "Suspended 4"
 msgstr ""
 
 #: src/contents/ui/Harmonizer.qml:189
 #, fuzzy
+msgctxt "Musical interval"
 msgid "Seconds"
 msgstr "Segundo"
 
@@ -2634,6 +2685,10 @@ msgstr "Longitud de superposición"
 #: src/contents/ui/Pitch.qml:164 src/tags_plugin_name.cpp:74
 msgid "Pitch"
 msgstr "Tono"
+
+#: src/contents/ui/Pitch.qml:175
+msgid "Octaves"
+msgstr "Octavas"
 
 #: src/contents/ui/Pitch.qml:191
 msgid "Cents"
