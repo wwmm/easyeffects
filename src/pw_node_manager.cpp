@@ -258,15 +258,15 @@ auto NodeManager::registerNode(pw_registry* registry, uint32_t id, const char* t
   if (!user_blocklist.isEmpty()) {
     // Blocklist is evaluated against starts_with(), implicitly including also
     // the exact match. See discussion in #5419.
-    const auto is_blocklisted = [&user_blocklist](const auto& value) {
+    const auto app_is_blocklisted = [&user_blocklist](const auto& value) {
       return std::ranges::any_of(user_blocklist,
                                  [&value](const auto& blocklist_item) { return value.startsWith(blocklist_item); });
     };
 
     nd->nd_info->is_blocklisted =
-        (!nd->nd_info->application_id.isEmpty() && is_blocklisted(nd->nd_info->application_id)) ||
-        (!nd->nd_info->app_process_binary.isEmpty() && is_blocklisted(nd->nd_info->app_process_binary)) ||
-        (!nd->nd_info->name.isEmpty() && is_blocklisted(nd->nd_info->name));
+        (!nd->nd_info->application_id.isEmpty() && app_is_blocklisted(nd->nd_info->application_id)) ||
+        (!nd->nd_info->app_process_binary.isEmpty() && app_is_blocklisted(nd->nd_info->app_process_binary)) ||
+        (!nd->nd_info->name.isEmpty() && app_is_blocklisted(nd->nd_info->name));
 
     if (nd->nd_info->is_blocklisted) {
       util::debug(std::format(R"(The stream "{}" with process binary "{}" and ID "{}" has been excluded.)",
@@ -463,8 +463,34 @@ void NodeManager::onNodeInfo(void* object, const pw_node_info* info) {
                                     ? DbStreamOutputs::blocklist()
                                     : DbStreamInputs::blocklist();
 
-    blocklisted_media_name =
-        std::ranges::find(user_blocklist, nd->nd_info->name + ":" + nd->nd_info->media_name) != user_blocklist.end();
+    const auto app_is_blocklisted = [&user_blocklist](const auto& name, const auto& media_name) {
+      return std::ranges::any_of(user_blocklist, [&name, &media_name](const auto& blocklist_item) {
+        // Get the index position of the first occurrence of ':'.
+        const auto colon = blocklist_item.indexOf(':');
+
+        if (colon == -1) {
+          // The blocklist item does not use the media name.
+          return false;
+        }
+
+        // Check if the name starts with the first part of the blocklist item.
+        if (!name.startsWith(blocklist_item.first(colon))) {
+          return false;
+        }
+
+        // Compare the media name against the second part of the blocklist item.
+        const auto media_name_is_blocklisted = blocklist_item.sliced(colon + 1) == media_name;
+
+        if (media_name_is_blocklisted) {
+          util::debug(std::format(R"(The stream "{}" with media name "{}" has been excluded.)", name.toStdString(),
+                                  media_name.toStdString()));
+        }
+
+        return media_name_is_blocklisted;
+      });
+    };
+
+    blocklisted_media_name = app_is_blocklisted(nd->nd_info->name, nd->nd_info->media_name);
   }
 
   if (nd->nd_info->connected != nm->stream_is_connected(info->id, nd->nd_info->media_class)) {
