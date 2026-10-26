@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-28 14:40+0000\n"
-"PO-Revision-Date: 2025-08-30 00:58+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2026-10-26 02:51+0000\n"
+"Last-Translator: lilium <velocity.toml@proton.me>\n"
 "Language-Team: Thai <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/th/>\n"
 "Language: th\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.13.1-dev\n"
+"X-Generator: Weblate 2026.11.dev0\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 #, fuzzy
@@ -26,7 +26,7 @@ msgstr "Easy Effects"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
 msgid "Audio Effects for PipeWire Applications"
-msgstr ""
+msgstr "เอฟเฟกต์เสียงสำหรับแอปพลิเคชัน PipeWire"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:9
 msgid ""
@@ -117,7 +117,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:547
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:560
 msgid "Features:"
-msgstr ""
+msgstr "ฟีเจอร์:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
 msgid ""
@@ -181,7 +181,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:539
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:552
 msgid "Bug fixes:"
-msgstr ""
+msgstr "บั๊กที่ถูกแก้ไข:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:65
 msgid ""
@@ -263,7 +263,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:90
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:237
 msgid "Updated translations."
-msgstr ""
+msgstr "อัปเดตการแปลภาษา"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:100
 msgid ""
@@ -280,7 +280,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:396
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:522
 msgid "Updated translations"
-msgstr ""
+msgstr "อัปเดตการแปลภาษา"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:102
 msgid "The equalizer can export basic APO preset files"

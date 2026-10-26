@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects-news\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-28 14:40+0000\n"
-"PO-Revision-Date: 2026-10-24 16:15+0000\n"
+"PO-Revision-Date: 2026-10-26 02:51+0000\n"
 "Last-Translator: 泥鰍 <holiu618@proton.me>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/changelog/zh_Hant/>\n"
@@ -421,13 +421,12 @@ msgstr ""
 "多詳情請參閱問題 Issue #1383。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:185
-#, fuzzy
 msgid ""
 "Added the ability to select and load multiple files in the opening dialogs "
 "for presets, Convolver impulse responses and RNNoise models."
 msgstr ""
-"Added the ability to select and load multiple files in the opening dialogs "
-"for presets, Convolver impulse responses and RNNoise models."
+"在預設值、Convolver 衝激響應及 RNNoise 模型的開啟對話方塊中，新增了選取並載入"
+"多個檔案的功能。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:187
 msgid "Fixed the Solo button in the Equalizer band settings."
@@ -476,15 +475,13 @@ msgid "A new Level Meter plugin based on libebur128 has been added."
 msgstr "已新增一個基於 libebur128 的新音量計外掛程式。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:211
-#, fuzzy
 msgid ""
 "The Pitch plugin now uses the library SoundTouch instead of Rubberband. "
 "Hopefully some of the mysterious crashes that were happening with Rubbernand "
 "are not going to happen anymore."
 msgstr ""
-"The Pitch plugin now uses the library SoundTouch instead of Rubberband. "
-"Hopefully some of the mysterious crashes that were happening with Rubbernand "
-"are not going to happen anymore."
+"The Pitch外掛程式現在改用 SoundTouch 函式庫，取代了 Rubberband。希望先前使用 "
+"Rubberband 時發生的一些原因不明的當機問題，今後不再發生。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:212
 msgid ""
@@ -492,250 +489,194 @@ msgid ""
 msgstr "改進了與目前 PipeWire 版本的相容性。更多資訊見於"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:214
-#, fuzzy
 msgid ""
 "Active Equalizer filters are not set to Bell type anymore when the number of "
 "bands changes."
-msgstr ""
-"Active Equalizer filters are not set to Bell type anymore when the number of "
-"bands changes."
+msgstr "當頻段數量發生變化時，主動式等化器濾波器將不再設定為鐘形。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:216
-#, fuzzy
 msgid ""
 "Rabberband is not a dependency anymore since it has been replaced by "
 "SoundTouch."
-msgstr ""
-"Rabberband is not a dependency anymore since it has been replaced by "
-"SoundTouch."
+msgstr "Rabberband 已不再是依賴項，因為它已被 SoundTouch 取代。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:224
-#, fuzzy
 msgid ""
 "The presets menu now asks for confirmation before saving/deleting a preset "
 "file."
-msgstr ""
-"The presets menu now asks for confirmation before saving/deleting a preset "
-"file."
+msgstr "預設選單現在會在儲存或刪除預設值檔案前，要求使用者確認。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:226
-#, fuzzy
 msgid "The plugin reset should not make its controls innefective anymore."
-msgstr "The plugin reset should not make its controls innefective anymore."
+msgstr "重新設定外掛程式後，其控制項不應再失效。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:228
-#, fuzzy
 msgid ""
 "Speex is no longer incorrectly listed as a build dependency (speexdsp is "
 "still a build dependency)"
-msgstr ""
-"Speex is no longer incorrectly listed as a build dependency (speexdsp is "
-"still a build dependency)"
+msgstr "Speex 已不再被錯誤地列為建置依賴項（speexdsp 仍是建置依賴項）"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:229
-#, fuzzy
 msgid ""
 "RNNoise is no longer an autodependency. It is now required by default, if "
 "not available it must be explicitly disabled with -Denable-rnnoise=false"
 msgstr ""
-"RNNoise is no longer an autodependency. It is now required by default, if "
-"not available it must be explicitly disabled with -Denable-rnnoise=false"
+"RNNoise 已不再是自動依賴項。現在它預設為必備，若無法取得，則必須透過 -"
+"Denable-rnnoise=false 明確停用。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:239
-#, fuzzy
 msgid ""
 "A small mistake was done in the last release. Making a new one to make sure "
 "people have the right branch in the package"
 msgstr ""
-"A small mistake was done in the last release. Making a new one to make sure "
-"people have the right branch in the package"
+"上個版本中出現了一個小錯誤。因此發布新版本，以確保使用者能從套件中取得正確的"
+"分支。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:247
-#, fuzzy
 msgid ""
 "The Equalizer \"sort bands\" feature is now ordering bands on GSettings, so "
 "the result can be saved into presets."
 msgstr ""
-"The Equalizer \"sort bands\" feature is now ordering bands on GSettings, so "
-"the result can be saved into presets."
+"等化器的「頻段排序」功能現已可在 GSettings 中對頻段進行排序，因此排序結果可儲"
+"存至預設組中。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:248
-#, fuzzy
 msgid "Improved performance when resetting keys."
-msgstr "Improved performance when resetting keys."
+msgstr "重設金鑰時的效能已獲得改善。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:250
-#, fuzzy
 msgid ""
 "Fixed the \"Large Empty Hall\" preset selection in the Reverberation effect."
-msgstr ""
-"Fixed the \"Large Empty Hall\" preset selection in the Reverberation effect."
+msgstr "修正了混響效果中的「大型空曠廳堂」預設選項。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:251
-#, fuzzy
 msgid ""
 "Fixed some misuses of PipeWire's API that can potentially fix some random "
 "bugs some users are facing."
 msgstr ""
-"Fixed some misuses of PipeWire's API that can potentially fix some random "
-"bugs some users are facing."
+"修正了 PipeWire API 的一些錯誤用法，這可能有助於解決部分使用者所面臨的某些隨"
+"機錯誤。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:253
-#, fuzzy
 msgid ""
 "As we are removing code deprecated by GTK 4.10 the minimum GTK version has "
 "been increased."
 msgstr ""
-"As we are removing code deprecated by GTK 4.10 the minimum GTK version has "
-"been increased."
+"由於我們正在移除 GTK 4.10 中已標記為過時的程式碼，因此最低 GTK 版本要求已提高"
+"。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:261
-#, fuzzy
 msgid ""
 "The spectrum plugin update rate was improved. Different sampling rates "
 "should lead to similar update frequencies visually."
 msgstr ""
-"The spectrum plugin update rate was improved. Different sampling rates "
-"should lead to similar update frequencies visually."
+"頻譜外掛程式的更新速率已獲得改善。不同的取樣率應能呈現出視覺上相似的更新頻率"
+"。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:262
-#, fuzzy
 msgid ""
 "The update interval used by level meters and the spectrum can be customized "
 "by the user."
-msgstr ""
-"The update interval used by level meters and the spectrum can be customized "
-"by the user."
+msgstr "電平表和頻譜所使用的更新間隔可由使用者自行設定。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:263
-#, fuzzy
 msgid ""
 "The equalizer band gain slider value can be updated in larger steps. Fine "
 "grain control is still possible through the keyboard up/down keys."
 msgstr ""
-"The equalizer band gain slider value can be updated in larger steps. Fine "
-"grain control is still possible through the keyboard up/down keys."
+"均衡器的頻段增益滑桿數值可透過較大的步長進行調整。若需精細控制，仍可透過鍵盤"
+"上的上/下方向鍵來操作。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:264
-#, fuzzy
 msgid "Small improvements to the echo canceller."
-msgstr "Small improvements to the echo canceller."
+msgstr "對回聲消除器進行了些微改進。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:266
-#, fuzzy
 msgid ""
 "The echo canceller probes were not being linked to the soundcard after the "
 "move to multiple filters intances. This should be fixed now."
 msgstr ""
-"The echo canceller probes were not being linked to the soundcard after the "
-"move to multiple filters intances. This should be fixed now."
+"在改用多個濾波器實例後，回聲消除器的探針未能與音效卡建立連結。此問題現已修復"
+"。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:274
-#, fuzzy
 msgid ""
 "It is now possible to add more than one filter instance to the effects "
 "pipeline."
-msgstr ""
-"It is now possible to add more than one filter instance to the effects "
-"pipeline."
+msgstr "現在已經可以將多個濾鏡實例加入效果處理流程中。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:275
-#, fuzzy
 msgid ""
 "A new Speech Processor plugin based on the Speex library was added. Besides "
 "providing noise suppression it also can detect voice activity. It is a "
 "decent alternative to the cases whre the rnnoise library does not work well."
 msgstr ""
-"A new Speech Processor plugin based on the Speex library was added. Besides "
-"providing noise suppression it also can detect voice activity. It is a "
-"decent alternative to the cases whre the rnnoise library does not work well."
+"新增了一個基於 Speex 函式庫的語音處理器外掛程式。除了提供雜訊抑制功能外，它還"
+"能偵測語音活動。當 rnnoise 函式庫無法正常運作時，這是一個不錯的替代方案。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:276
-#, fuzzy
 msgid "Improved compatibility with Linux Studio Plugins 1.2.3."
-msgstr "Improved compatibility with Linux Studio Plugins 1.2.3."
+msgstr "提升了與 Linux Studio Plugins 1.2.3 的相容性。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:277
-#, fuzzy
 msgid "GraphicEQ presets can be imported into the Equalizer effect."
-msgstr "GraphicEQ presets can be imported into the Equalizer effect."
+msgstr "GraphicEQ 的預設值可匯入均衡器效果中。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:278
-#, fuzzy
 msgid ""
 "The application name has been changed to Easy Effects to adhere to the "
 "naming conventions of GNOME Human Interface Guidelines."
-msgstr ""
-"The application name has been changed to Easy Effects to adhere to the "
-"naming conventions of GNOME Human Interface Guidelines."
+msgstr "為符合 GNOME 人機介面指南 的命名規範，該應用程式名稱已變更為 Easy Effects。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:279
 msgid "The documentation has been updated."
 msgstr "文件已經更新了。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:280
-#, fuzzy
 msgid "Improved presets autoloading."
-msgstr "Improved presets autoloading."
+msgstr "改進了預設值的自動載入功能。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:281
-#, fuzzy
 msgid "The Autogain silence threshold can now be configured by the user."
-msgstr "The Autogain silence threshold can now be configured by the user."
+msgstr "使用者現在可以自行設定自動增益的靜音閾值。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:282
-#, fuzzy
 msgid "Dry and wet controls added to the Stereo Tools effect."
-msgstr "Dry and wet controls added to the Stereo Tools effect."
+msgstr "已將乾濕訊號控制項新增至 Stereo Tools 效果器中。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:283
-#, fuzzy
 msgid ""
 "The echo canceller now has a residual noise suppression control also based "
 "on the Speex library."
-msgstr ""
-"The echo canceller now has a residual noise suppression control also based "
-"on the Speex library."
+msgstr "回聲消除器現在也具備了一項基於 Speex 函式庫的殘餘雜訊抑制控制功能。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:285
-#, fuzzy
 msgid ""
 "When the mouse was hovering over a chart the wrong value for the x axis "
 "coordinate was being shown. This regression is fixed."
-msgstr ""
-"When the mouse was hovering over a chart the wrong value for the x axis "
-"coordinate was being shown. This regression is fixed."
+msgstr "當滑鼠懸停在圖表上時，顯示的 x 軸座標值不正確。此回歸問題已修復。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:287
-#, fuzzy
 msgid ""
 "Because of the new multiple instances feature, the preset format has "
 "changed, but the old one is still compatible to be loaded. Anyway take in "
 "consideration that saving the current preset will always write it in the new "
 "format."
 msgstr ""
-"Because of the new multiple instances feature, the preset format has "
-"changed, but the old one is still compatible to be loaded. Anyway take in "
-"consideration that saving the current preset will always write it in the new "
-"format."
+"由於新增了多重實例功能，預設檔的格式已有所變更，但舊版格式仍可相容並載入。無"
+"論如何，請注意：儲存當前預設檔時，系統將始終以新格式儲存。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:295
-#, fuzzy
 msgid ""
 "Multiband Gate implementation has been migrated from CALF to Linux Studio "
 "Plugins."
-msgstr ""
-"Multiband Gate implementation has been migrated from CALF to Linux Studio "
-"Plugins."
+msgstr "多頻段閘門實作已從 CALF 遷移至 Linux Studio Plugins。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:296
-#, fuzzy
 msgid ""
 "The preset autoloading code compatibility with bluez5 devices has been "
 "improved."
-msgstr ""
-"The preset autoloading code compatibility with bluez5 devices has been "
-"improved."
+msgstr "預設自動載入程式碼與 bluez5 裝置的相容性已獲得改善。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:297
 #, fuzzy
@@ -743,13 +684,12 @@ msgid "Wet/dry controls were added for some plugins"
 msgstr "Wet/dry controls were added for some plugins"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:298
-#, fuzzy
 msgid ""
 "Effect interface is no longer loaded when the related lv2 plugin is not "
 "installed on the system. In its place a status message to the user is shown."
 msgstr ""
-"Effect interface is no longer loaded when the related lv2 plugin is not "
-"installed on the system. In its place a status message to the user is shown."
+"當系統上未安裝相關的 lv2 外掛程式時，效果介面將不再載入。取而代之的是，系統會"
+"向使用者顯示一則狀態訊息。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:299
 msgid "The documentation has been updated"
@@ -764,92 +704,73 @@ msgid "Improved translations"
 msgstr "改進的翻譯"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:313
-#, fuzzy
 msgid ""
 "Fixed a bug where EasyEffects could crash when closing its window while "
 "effects were being applied."
 msgstr ""
-"Fixed a bug where EasyEffects could crash when closing its window while "
-"effects were being applied."
+"修復了一個錯誤，該錯誤會導致在套用特效時關閉 EasyEffects 視窗，進而造成程式當"
+"機。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:322
-#, fuzzy
 msgid ""
 "The bypass state can be saved to the preset file. The reasons why this was "
 "done can be seen at issue 1039"
-msgstr ""
-"The bypass state can be saved to the preset file. The reasons why this was "
-"done can be seen at issue 1039"
+msgstr "繞過狀態可儲存至預設檔中。此設計的理由請參閱 Issue 1039"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:323
-#, fuzzy
 msgid ""
 "The preset autoloading code compatibility with usb devices has been improved."
-msgstr ""
-"The preset autoloading code compatibility with usb devices has been improved."
+msgstr "預設的自動載入程式碼與 USB 裝置的相容性已獲得改善。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:324
-#, fuzzy
 msgid ""
 "A dialog is shown to the user when a preset fails to load or a preset/"
 "impulse file fails to be imported."
 msgstr ""
-"A dialog is shown to the user when a preset fails to load or a preset/"
-"impulse file fails to be imported."
+"當預設檔無法載入，或預設檔／脈衝檔無法匯入時，系統會向使用者顯示一個對話方塊"
+"。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:325
-#, fuzzy
 msgid ""
 "The SideChain Gate plugin from Linux Studio Plugins is now used instead of "
 "the one from Calf Studio."
 msgstr ""
-"The SideChain Gate plugin from Linux Studio Plugins is now used instead of "
-"the one from Calf Studio."
+"現在改用 Linux Studio Plugins 推出的 SideChain Gate 外掛程式，取代原先來自 "
+"Calf Studio 的版本。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:327
-#, fuzzy
 msgid ""
 "EasyEffects should not crash anymore when the user locale is not properly "
 "configured."
-msgstr ""
-"EasyEffects should not crash anymore when the user locale is not properly "
-"configured."
+msgstr "當使用者地區設定未正確設定時，EasyEffects 應不會再發生當機情況。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:328
-#, fuzzy
 msgid ""
 "A workaround was implemented in our icon to deal with the lack of proper SVG "
 "support in QT."
-msgstr ""
-"A workaround was implemented in our icon to deal with the lack of proper SVG "
-"support in QT."
+msgstr "由於 QT 缺乏對 SVG 的適當支援，我們在圖示中實作了臨時解決方案。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:337
-#, fuzzy
 msgid ""
 "When effects are disable to an application we now set its target metadata to "
 "null. This will allow the media session manager (wireplumber) to properly "
 "move the stream to a new device."
 msgstr ""
-"When effects are disable to an application we now set its target metadata to "
-"null. This will allow the media session manager (wireplumber) to properly "
-"move the stream to a new device."
+"當應用程式的效果被停用時，我們現在會將其目標元資料設為 null。此舉將使媒體會話"
+"管理員（wireplumber）能夠正確地將串流移轉至新裝置。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:338
-#, fuzzy
 msgid ""
 "A new configuration option was added. It allows EasyEffects to ignore "
 "streams whose purpose is to monitor sink devices. This will help to fix some "
 "of problems our users were having when using OBS."
 msgstr ""
-"A new configuration option was added. It allows EasyEffects to ignore "
-"streams whose purpose is to monitor sink devices. This will help to fix some "
-"of problems our users were having when using OBS."
+"新增了一項設定選項。此選項可讓 EasyEffects 忽略那些用於監控輸出裝置的串流。這"
+"將有助於解決使用者在使用 OBS 時所遇到的部分問題。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:339
-#, fuzzy
 msgid "The code that shows the stream sample format has been improved"
-msgstr "The code that shows the stream sample format has been improved"
+msgstr "展示串流樣本格式的程式碼已進行優化"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:340
 #, fuzzy
