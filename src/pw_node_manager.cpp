@@ -479,18 +479,17 @@ void NodeManager::onNodeInfo(void* object, const pw_node_info* info) {
         }
 
         // Compare the media name against the second part of the blocklist item.
-        const auto media_name_is_blocklisted = blocklist_item.sliced(colon + 1) == media_name;
-
-        if (media_name_is_blocklisted) {
-          util::debug(std::format(R"(The stream "{}" with media name "{}" has been excluded.)", name.toStdString(),
-                                  media_name.toStdString()));
-        }
-
-        return media_name_is_blocklisted;
+        return blocklist_item.sliced(colon + 1) == media_name;
       });
     };
 
-    blocklisted_media_name = app_is_blocklisted(nd->nd_info->name, nd->nd_info->media_name);
+    blocklisted_media_name =
+        !user_blocklist.isEmpty() && app_is_blocklisted(nd->nd_info->name, nd->nd_info->media_name);
+
+    if (blocklisted_media_name) {
+      util::debug(std::format(R"(The stream "{}" with media name "{}" has been excluded.)",
+                              nd->nd_info->name.toStdString(), nd->nd_info->media_name.toStdString()));
+    }
   }
 
   if (nd->nd_info->connected != nm->stream_is_connected(info->id, nd->nd_info->media_class)) {
