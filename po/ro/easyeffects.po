@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-26 11:29+0100\n"
-"PO-Revision-Date: 2026-10-25 05:51+0000\n"
+"PO-Revision-Date: 2026-10-27 13:51+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remus-"
 "gabriel@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
@@ -1721,277 +1721,231 @@ msgid "Harmony"
 msgstr "Armonie"
 
 #: src/contents/ui/Harmonizer.qml:45
-#, fuzzy
 msgctxt "Musical note"
 msgid "C"
-msgstr "C"
+msgstr "Do"
 
 #: src/contents/ui/Harmonizer.qml:48
-#, fuzzy
 msgctxt "Musical note"
 msgid "C♯ / D♭"
-msgstr "C♯ / D♭"
+msgstr "Do♯ / Re♭"
 
 #: src/contents/ui/Harmonizer.qml:51
-#, fuzzy
 msgctxt "Musical note"
 msgid "D"
-msgstr "D"
+msgstr "Re"
 
 #: src/contents/ui/Harmonizer.qml:54
-#, fuzzy
 msgctxt "Musical note"
 msgid "D♯ / E♭"
-msgstr "D♯ / E♭"
+msgstr "Re♯ / Mi♭"
 
 #: src/contents/ui/Harmonizer.qml:57
-#, fuzzy
 msgctxt "Musical note"
 msgid "E"
-msgstr "E"
+msgstr "Mi"
 
 #: src/contents/ui/Harmonizer.qml:60
-#, fuzzy
 msgctxt "Musical note"
 msgid "F"
-msgstr "F"
+msgstr "Fa"
 
 #: src/contents/ui/Harmonizer.qml:63
-#, fuzzy
 msgctxt "Musical note"
 msgid "F♯ / G♭"
-msgstr "F♯ / G♭"
+msgstr "Fa♯ / sol♭"
 
 #: src/contents/ui/Harmonizer.qml:66
-#, fuzzy
 msgctxt "Musical note"
 msgid "G"
-msgstr "G"
+msgstr "Sol"
 
 #: src/contents/ui/Harmonizer.qml:69
-#, fuzzy
 msgctxt "Musical note"
 msgid "G♯ / A♭"
-msgstr "G♯ / A♭"
+msgstr "Sol♯ / La♭"
 
 #: src/contents/ui/Harmonizer.qml:72
-#, fuzzy
 msgctxt "Musical note"
 msgid "A"
-msgstr "A"
+msgstr "La"
 
 #: src/contents/ui/Harmonizer.qml:75
-#, fuzzy
 msgctxt "Musical note"
 msgid "A♯ / B♭"
-msgstr "A♯ / B♭"
+msgstr "La♯ / Si♭"
 
 #: src/contents/ui/Harmonizer.qml:78
-#, fuzzy
 msgctxt "Musical note"
 msgid "B"
-msgstr "B"
+msgstr "Si"
 
 #: src/contents/ui/Harmonizer.qml:90
-#, fuzzy
 msgctxt "Musical chord"
 msgid "No chord"
 msgstr "Fără acord"
 
 #: src/contents/ui/Harmonizer.qml:93
-#, fuzzy
 msgctxt "Musical chord"
 msgid "6"
-msgstr "Sextă"
+msgstr "6"
 
 #: src/contents/ui/Harmonizer.qml:96
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Major 7"
-msgstr "Septimă majoră"
+msgstr "Major 7"
 
 #: src/contents/ui/Harmonizer.qml:99
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Lydian"
-msgstr "Lidic"
+msgstr "Lidian"
 
 #: src/contents/ui/Harmonizer.qml:102
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Major 9"
-msgstr "Novenă majoră"
+msgstr "Major 9"
 
 #: src/contents/ui/Harmonizer.qml:105
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Major 7/9"
-msgstr "Septimă/novenă majoră"
+msgstr "Major 7/9"
 
 #: src/contents/ui/Harmonizer.qml:108
-#, fuzzy
 msgctxt "Musical chord"
 msgid "6/9"
-msgstr "Sextă/novenă"
+msgstr "6/9"
 
 #: src/contents/ui/Harmonizer.qml:111
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Augmented"
-msgstr "Augmentată"
+msgstr "Mărit"
 
 #: src/contents/ui/Harmonizer.qml:114
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Minor"
 msgstr "Minor"
 
 #: src/contents/ui/Harmonizer.qml:117
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Minor 6"
-msgstr "Sextă minoră"
+msgstr "Minor 6"
 
 #: src/contents/ui/Harmonizer.qml:120
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Minor 7"
-msgstr "Septimă minoră"
+msgstr "Minor 7"
 
 #: src/contents/ui/Harmonizer.qml:123
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Minor 7 flat 5"
-msgstr "Septimă minoră bemol 5"
+msgstr "Minor 7 bemol 5"
 
 #: src/contents/ui/Harmonizer.qml:126
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Minor 9"
-msgstr "Nonă minoră"
+msgstr "Minor 9"
 
 #: src/contents/ui/Harmonizer.qml:129
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Minor 7/9"
-msgstr "Minoră cu septimă și nonă"
+msgstr "Minor 7/9"
 
 #: src/contents/ui/Harmonizer.qml:132
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Minor 7/11"
-msgstr "Septimă/septimă+cvartă minoră"
+msgstr "Minor 7/11"
 
 #: src/contents/ui/Harmonizer.qml:135
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Minor major 7"
-msgstr "Minoră cu septimă majoră"
+msgstr "Minor major 7"
 
 #: src/contents/ui/Harmonizer.qml:138
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Minor major 7/9"
-msgstr "Minoră cu septimă majoră și nonă"
+msgstr "Minor major 7/9"
 
 #: src/contents/ui/Harmonizer.qml:141
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Diminished"
-msgstr "Diminuată"
+msgstr "Diminuat"
 
 #: src/contents/ui/Harmonizer.qml:144
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Diminished 7"
-msgstr "Septimă diminuată"
+msgstr "Diminuat 7"
 
 #: src/contents/ui/Harmonizer.qml:147
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Dominant 7"
-msgstr "Septima dominantă"
+msgstr "Dominant 7"
 
 #: src/contents/ui/Harmonizer.qml:150
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Dominant 7 sus4"
-msgstr "Septimă dominantă cu cvartă suspendată"
+msgstr "Dominant 7 sus4"
 
 #: src/contents/ui/Harmonizer.qml:153
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Dominant 7 flat 5"
-msgstr "Septimă dominantă cu cvintă micșorată"
+msgstr "Dominant 7 bemol 5"
 
 #: src/contents/ui/Harmonizer.qml:156
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Dominant 9"
-msgstr "Dominantă cu nonă"
+msgstr "Dominant 9"
 
 #: src/contents/ui/Harmonizer.qml:159
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Dominant 7 sharp 11"
-msgstr "Septimă dominantă cu undecimă mărită"
+msgstr "Dominant 7 diez 11"
 
 #: src/contents/ui/Harmonizer.qml:162
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Dominant 13"
-msgstr "Dominantă cu treisprezece"
+msgstr "Dominant 13"
 
 #: src/contents/ui/Harmonizer.qml:165
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Dominant 7 flat 9"
-msgstr "Septimă dominantă cu nonă micșorată"
+msgstr "Dominant 7 bemol 9"
 
 #: src/contents/ui/Harmonizer.qml:168
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Dominant 7 flat 13"
-msgstr "Septimă dominantă cu treisprezece micșorată"
+msgstr "Dominant 7 bemol 13"
 
 #: src/contents/ui/Harmonizer.qml:171
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Dominant 7 sharp 9"
-msgstr "Septimă dominantă cu nonă mărită"
+msgstr "Dominant 7 diez 9"
 
 #: src/contents/ui/Harmonizer.qml:174
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Augmented major 7"
-msgstr "Septimă majoră mărită"
+msgstr "Mărit major 7"
 
 #: src/contents/ui/Harmonizer.qml:177
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Augmented 7"
-msgstr "Septimă mărită"
+msgstr "Mărit 7"
 
 #: src/contents/ui/Harmonizer.qml:180
-#, fuzzy
 msgctxt "Musical interval"
 msgid "Octaves"
 msgstr "Octave"
 
 #: src/contents/ui/Harmonizer.qml:183
-#, fuzzy
 msgctxt "Musical interval"
 msgid "Fifths"
 msgstr "Cvinte"
 
 #: src/contents/ui/Harmonizer.qml:186
-#, fuzzy
 msgctxt "Musical interval"
 msgid "Suspended 4"
 msgstr "Cvartă suspendată"
 
 #: src/contents/ui/Harmonizer.qml:189
-#, fuzzy
 msgctxt "Musical interval"
 msgid "Seconds"
 msgstr "Secunde"
