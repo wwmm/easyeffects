@@ -28,6 +28,7 @@
 #include <qtypes.h>
 #include <spa/utils/defs.h>
 #include <spa/utils/hook.h>
+#include <atomic>
 #include <cstdint>
 #include <utility>
 #include <vector>
@@ -43,7 +44,8 @@ class LinkManager : public QObject {
   explicit LinkManager(pw_core*& core,
                        pw_thread_loop*& thread_loop,
                        models::Nodes& model_nodes,
-                       std::vector<LinkInfo>& list_links);
+                       std::vector<LinkInfo>& list_links,
+                       const std::atomic<bool>& connection_lost);
   ~LinkManager() override = default;
 
   LinkManager(const LinkManager&) = delete;
@@ -90,6 +92,8 @@ class LinkManager : public QObject {
   pw_core*& core;
 
   pw_thread_loop*& thread_loop;
+
+  const std::atomic<bool>& connection_lost;
 
   models::Nodes& model_nodes;
 

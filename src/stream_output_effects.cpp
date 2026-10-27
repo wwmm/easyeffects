@@ -279,6 +279,10 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
   int timeout = 0;
 
   while (pm->count_node_ports(output_device.id) < 2) {
+    if (pm->connection_lost) {
+      return;
+    }
+
     std::this_thread::sleep_for(std::chrono::milliseconds(1));
 
     timeout++;

@@ -29,6 +29,7 @@
 #include <qtmetamacros.h>
 #include <spa/utils/hook.h>
 #include <sys/types.h>
+#include <atomic>
 #include <cstdint>
 #include <vector>
 #include "pw_client_manager.hpp"
@@ -101,6 +102,8 @@ class Manager : public QObject {
   pw_registry* registry = nullptr;
 
   inline static bool exiting = false;
+
+  std::atomic<bool> connection_lost = false;
 
   spa_hook metadata_listener{};
 

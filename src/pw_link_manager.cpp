@@ -49,8 +49,13 @@ namespace pw {
 LinkManager::LinkManager(pw_core*& core,
                          pw_thread_loop*& thread_loop,
                          models::Nodes& model_nodes,
-                         std::vector<LinkInfo>& list_links)
-    : core(core), thread_loop(thread_loop), model_nodes(model_nodes), list_links(list_links) {}
+                         std::vector<LinkInfo>& list_links,
+                         const std::atomic<bool>& connection_lost)
+    : core(core),
+      thread_loop(thread_loop),
+      connection_lost(connection_lost),
+      model_nodes(model_nodes),
+      list_links(list_links) {}
 
 auto LinkManager::link_info_from_props(const spa_dict* props) -> pw::LinkInfo {
   pw::LinkInfo info;
@@ -285,9 +290,9 @@ auto LinkManager::link_nodes(const uint& output_node_id, const uint& input_node_
       return list;
     }
 
-    pw_core_sync(core, PW_ID_CORE, 0);  // NOLINT
-
-    pw_thread_loop_wait(thread_loop);
+    if (!connection_lost && pw_core_sync(core, PW_ID_CORE, 0) >= 0) {  // NOLINT
+      pw_thread_loop_wait(thread_loop);
+    }
 
     pw_thread_loop_unlock(thread_loop);
 
