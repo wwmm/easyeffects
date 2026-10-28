@@ -62,7 +62,7 @@ Kirigami.ScrollablePage {
 
             Controls.Label {
                 Layout.alignment: Qt.AlignLeft
-                text: i18n("3rd") // qmllint disable
+                text: i18nc("Blend harmonics", "3rd") // qmllint disable
             }
 
             Controls.Slider {
@@ -84,7 +84,7 @@ Kirigami.ScrollablePage {
 
             Controls.Label {
                 Layout.alignment: Qt.AlignRight
-                text: i18n("2nd") // qmllint disable
+                text: i18nc("Blend harmonics", "2nd") // qmllint disable
             }
         }
 
@@ -111,7 +111,7 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: amount
 
-                        label: i18n("Amount") // qmllint disable
+                        label: i18nc("Exciter/Bass enhancer control", "Amount") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
                         from: exciterPage.pluginDB.getMinValue("amount")
                         to: exciterPage.pluginDB.getMaxValue("amount")
@@ -142,7 +142,7 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: scope
 
-                        label: i18n("Scope") // qmllint disable
+                        label: i18nc("Exciter/Bass enhancer control", "Scope") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
                         from: exciterPage.pluginDB.getMinValue("scope")
                         to: exciterPage.pluginDB.getMaxValue("scope")
@@ -169,7 +169,7 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: ceil
 
-                        label: i18n("Ceil") // qmllint disable
+                        label: i18nc("Exciter control", "Ceil") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
                         from: exciterPage.pluginDB.getMinValue("ceil")
                         to: exciterPage.pluginDB.getMaxValue("ceil")
@@ -207,7 +207,7 @@ Kirigami.ScrollablePage {
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using %1", `<strong>${PluginsPackage.calf}</strong>`) // qmllint disable
+            text: i18nc("Library in use (plugin credit)", "Using %1", `<strong>${PluginsPackage.calf}</strong>`) // qmllint disable
             textFormat: Text.RichText
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter

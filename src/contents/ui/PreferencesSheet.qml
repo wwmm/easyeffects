@@ -555,7 +555,7 @@ KirigamiSettings.ConfigurationView {
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
                     currentIndex: DbSpectrum.spectrumShape
                     editable: false
-                    model: [i18n("Bars"), i18n("Lines"), i18n("Dots"), i18n("Area")] // qmllint disable
+                    model: [i18nc("Spectrum shape", "Bars"), i18nc("Spectrum shape", "Lines"), i18nc("Spectrum shape", "Dots"), i18nc("Spectrum shape", "Area")] // qmllint disable
                     onActivated: idx => {
                         if (idx !== DbSpectrum.spectrumShape)
                             DbSpectrum.spectrumShape = idx;
@@ -577,7 +577,7 @@ KirigamiSettings.ConfigurationView {
                 EeSpinBox {
                     id: nPoints
 
-                    label: i18n("Points") // qmllint disable
+                    label: i18nc("Spectrum control", "Points") // qmllint disable
                     maximumLineCount: -1
                     from: 2
                     to: 2048
@@ -719,7 +719,7 @@ KirigamiSettings.ConfigurationView {
                 }
 
                 EeSpinBox {
-                    label: i18n("Slope") // qmllint disable
+                    label: i18nc("Filter parameter", "Slope") // qmllint disable
                     subtitle: i18n("Tilts the display around 1 kHz. The shown levels are no longer absolute.") // qmllint disable
                     maximumLineCount: -1
                     from: DbSpectrum.getMinValue("slope")
@@ -769,7 +769,7 @@ KirigamiSettings.ConfigurationView {
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
                     currentIndex: DbSpectrum.windowFunction
                     editable: false
-                    model: [i18n("Rectangular"), i18n("Hann"), i18n("Hamming"), i18n("Blackman"), i18n("Blackman-Harris"), i18n("Flat top")] // qmllint disable
+                    model: [i18nc("Spectrum function", "Rectangular"), i18nc("Spectrum function", "Hann"), i18nc("Spectrum function", "Hamming"), i18nc("Spectrum function", "Blackman"), i18nc("Spectrum function", "Blackman-Harris"), i18nc("Spectrum function", "Flat top")] // qmllint disable
                     onActivated: idx => {
                         if (idx !== DbSpectrum.windowFunction)
                             DbSpectrum.windowFunction = idx;
@@ -777,7 +777,7 @@ KirigamiSettings.ConfigurationView {
                 }
 
                 EeSpinBox {
-                    label: i18n("Attack") // qmllint disable
+                    label: i18nc("Spectrum control", "Attack") // qmllint disable
                     maximumLineCount: -1
                     from: DbSpectrum.getMinValue("attackTime")
                     to: DbSpectrum.getMaxValue("attackTime")
@@ -921,7 +921,7 @@ KirigamiSettings.ConfigurationView {
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
                     currentIndex: DbGraph.colorScheme
                     editable: false
-                    model: [i18n("Automatic"), i18n("Light"), i18n("Dark")] // qmllint disable
+                    model: [i18nc("Color scheme", "Automatic"), i18nc("Color scheme", "Light"), i18nc("Color scheme", "Dark")] // qmllint disable
                     enabled: !graphFormCard.useUserTheme
                     onActivated: idx => {
                         if (idx !== DbGraph.colorScheme)
@@ -936,7 +936,7 @@ KirigamiSettings.ConfigurationView {
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
                     currentIndex: DbGraph.colorTheme
                     editable: false
-                    model: [i18n("Green"), i18n("Green neon"), i18n("Mix"), i18n("Orange"), i18n("Yellow"), i18n("Blue"), i18n("Purple"), i18n("Grey"), i18n("User")] // qmllint disable
+                    model: [i18n("Green"), i18n("Green neon"), i18n("Mix"), i18n("Orange"), i18n("Yellow"), i18n("Blue"), i18n("Purple"), i18n("Grey"), i18nc("Color theme", "User")] // qmllint disable
                     onActivated: idx => {
                         if (idx !== DbGraph.colorTheme)
                             DbGraph.colorTheme = idx;

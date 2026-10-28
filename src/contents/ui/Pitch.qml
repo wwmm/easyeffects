@@ -120,7 +120,7 @@ Kirigami.ScrollablePage {
                         id: dry
 
                         Layout.alignment: Qt.AlignTop
-                        label: i18n("Dry") // qmllint disable
+                        label: i18nc("Signal type", "Dry") // qmllint disable
                         labelAbove: true
                         spinboxLayoutFillWidth: true
                         from: pitchPage.pluginDB.getMinValue("dry")
@@ -139,7 +139,7 @@ Kirigami.ScrollablePage {
                         id: wet
 
                         Layout.alignment: Qt.AlignTop
-                        label: i18n("Wet") // qmllint disable
+                        label: i18nc("Signal type", "Wet") // qmllint disable
                         labelAbove: true
                         spinboxLayoutFillWidth: true
                         from: pitchPage.pluginDB.getMinValue("wet")
@@ -172,7 +172,7 @@ Kirigami.ScrollablePage {
                         id: octaves
 
                         Layout.columnSpan: 2
-                        label: i18n("Octaves") // qmllint disable
+                        label: i18nc("Musical interval", "Octaves") // qmllint disable
                         labelAbove: true
                         spinboxLayoutFillWidth: true
                         from: pitchPage.pluginDB.getMinValue("octaves")
@@ -188,7 +188,7 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: cents
 
-                        label: i18n("Cents") // qmllint disable
+                        label: i18nc("Musical interval", "Cents") // qmllint disable
                         labelAbove: true
                         spinboxLayoutFillWidth: true
                         from: pitchPage.pluginDB.getMinValue("cents")
@@ -204,7 +204,7 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: semitones
 
-                        label: i18n("Semitones") // qmllint disable
+                        label: i18nc("Musical interval", "Semitones") // qmllint disable
                         labelAbove: true
                         spinboxLayoutFillWidth: true
                         from: pitchPage.pluginDB.getMinValue("semitones")
@@ -265,7 +265,7 @@ Kirigami.ScrollablePage {
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using %1", `<strong>${PluginsPackage.soundTouch}</strong>`) // qmllint disable
+            text: i18nc("Library in use (plugin credit)", "Using %1", `<strong>${PluginsPackage.soundTouch}</strong>`) // qmllint disable
             textFormat: Text.RichText
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter

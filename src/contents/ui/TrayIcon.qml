@@ -218,7 +218,7 @@ SystemTrayIcon {
         }
 
         MenuItem {
-            text: i18n("Manual") // qmllint disable
+            text: i18nc("Usage guide", "Manual") // qmllint disable
             icon.name: "help-contents-symbolic"
             onTriggered: {
                 Qt.openUrlExternally("https://wwmm.github.io/easyeffects/");

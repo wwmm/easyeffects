@@ -343,7 +343,7 @@ Kirigami.Page {
                 FormCard.FormRadioDelegate {
                     id: leftChannel
 
-                    text: i18n("Left") // qmllint disable
+                    text: i18nc("Channel", "Left") // qmllint disable
                     checked: DbTestSignals.channels === 0
                     onCheckedChanged: {
                         if (checked !== DbTestSignals.channels)
@@ -354,7 +354,7 @@ Kirigami.Page {
                 FormCard.FormRadioDelegate {
                     id: rightChannel
 
-                    text: i18n("Right") // qmllint disable
+                    text: i18nc("Channel", "Right") // qmllint disable
                     checked: DbTestSignals.channels === 1
                     onCheckedChanged: {
                         if (checked !== DbTestSignals.channels)
@@ -365,7 +365,7 @@ Kirigami.Page {
                 FormCard.FormRadioDelegate {
                     id: bothChannels
 
-                    text: i18n("Both") // qmllint disable
+                    text: i18nc("Channel selection", "Both") // qmllint disable
                     checked: DbTestSignals.channels === 2
                     onCheckedChanged: {
                         if (checked !== DbTestSignals.channels)
@@ -417,7 +417,7 @@ Kirigami.Page {
                 FormCard.FormRadioDelegate {
                     id: silence
 
-                    text: i18n("Silence") // qmllint disable
+                    text: i18nc("Waveform", "Silence") // qmllint disable
                     checked: DbTestSignals.signalType === 3
                     onCheckedChanged: {
                         if (checked !== DbTestSignals.signalType)

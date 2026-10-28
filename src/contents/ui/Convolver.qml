@@ -148,7 +148,7 @@ Kirigami.ScrollablePage {
 
                 Layout.columnSpan: 2
                 Layout.margins: Kirigami.Units.smallSpacing
-                text: i18n("First") // qmllint disable
+                text: i18nc("Convolver impulse selection", "First") // qmllint disable
                 displayMode: FormCard.FormComboBoxDelegate.ComboBox
                 currentIndex: 0
                 editable: false
@@ -161,7 +161,7 @@ Kirigami.ScrollablePage {
 
                 Layout.columnSpan: 2
                 Layout.margins: Kirigami.Units.smallSpacing
-                text: i18n("Second") // qmllint disable
+                text: i18nc("Convolver impulse selection", "Second") // qmllint disable
                 displayMode: FormCard.FormComboBoxDelegate.ComboBox
                 currentIndex: 0
                 editable: false
@@ -298,7 +298,7 @@ Kirigami.ScrollablePage {
                         Controls.RadioButton {
                             id: radioLeft
 
-                            text: i18n("Left") // qmllint disable
+                            text: i18nc("Channel", "Left") // qmllint disable
                             checked: chartChannel.left
                             onCheckedChanged: {
                                 if (checked !== chartChannel.left) {
@@ -316,7 +316,7 @@ Kirigami.ScrollablePage {
                         }
 
                         Controls.RadioButton {
-                            text: i18n("Right") // qmllint disable
+                            text: i18nc("Channel", "Right") // qmllint disable
                             checked: chartChannel.right
                             onCheckedChanged: {
                                 if (checked !== chartChannel.right) {
@@ -377,7 +377,7 @@ Kirigami.ScrollablePage {
 
                     Controls.Label {
                         Layout.alignment: Qt.AlignHCenter
-                        text: i18n("Rate") // qmllint disable
+                        text: i18nc("Audio sample rate", "Rate") // qmllint disable
                     }
 
                     Controls.Label {
@@ -397,7 +397,7 @@ Kirigami.ScrollablePage {
 
                     Controls.Label {
                         Layout.alignment: Qt.AlignHCenter
-                        text: i18n("Format") // qmllint disable
+                        text: i18nc("File format", "Format") // qmllint disable
                     }
 
                     Controls.Label {
@@ -472,7 +472,7 @@ Kirigami.ScrollablePage {
             EeSpinBox {
                 id: dry
 
-                label: i18n("Dry") // qmllint disable
+                label: i18nc("Signal type", "Dry") // qmllint disable
                 labelAbove: true
                 spinboxLayoutFillWidth: true
                 from: convolverPage.pluginDB.getMinValue("dry")
@@ -490,7 +490,7 @@ Kirigami.ScrollablePage {
             EeSpinBox {
                 id: wet
 
-                label: i18n("Wet") // qmllint disable
+                label: i18nc("Signal type", "Wet") // qmllint disable
                 labelAbove: true
                 spinboxLayoutFillWidth: true
                 from: convolverPage.pluginDB.getMinValue("wet")
@@ -517,7 +517,7 @@ Kirigami.ScrollablePage {
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using %1", `<strong>${PluginsPackage.zita}</strong>`) // qmllint disable
+            text: i18nc("Library in use (plugin credit)", "Using %1", `<strong>${PluginsPackage.zita}</strong>`) // qmllint disable
             textFormat: Text.RichText
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter

@@ -201,7 +201,7 @@ Kirigami.ScrollablePage {
             }
 
             EeCard {
-                title: i18n("Left") // qmllint disable
+                title: i18nc("Channel", "Left") // qmllint disable
 
                 EeSwitch {
                     id: mutel
@@ -228,7 +228,7 @@ Kirigami.ScrollablePage {
                 }
 
                 Kirigami.Heading {
-                    text: i18n("Right") // qmllint disable
+                    text: i18nc("Channel", "Right") // qmllint disable
                     level: 2
                     topPadding: Kirigami.Units.gridUnit * 2
                     leftPadding: Kirigami.Units.largeSpacing + Kirigami.Units.smallSpacing
@@ -342,7 +342,7 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: dry
 
-                        label: i18n("Dry") // qmllint disable
+                        label: i18nc("Signal type", "Dry") // qmllint disable
                         labelAbove: true
                         spinboxLayoutFillWidth: true
                         from: stereoToolsPage.pluginDB.getMinValue("dry")
@@ -360,7 +360,7 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: wet
 
-                        label: i18n("Wet") // qmllint disable
+                        label: i18nc("Signal type", "Wet") // qmllint disable
                         labelAbove: true
                         spinboxLayoutFillWidth: true
                         from: stereoToolsPage.pluginDB.getMinValue("wet")
@@ -389,7 +389,7 @@ Kirigami.ScrollablePage {
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using %1", `<strong>${PluginsPackage.calf}</strong>`) // qmllint disable
+            text: i18nc("Library in use (plugin credit)", "Using %1", `<strong>${PluginsPackage.calf}</strong>`) // qmllint disable
             textFormat: Text.RichText
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter

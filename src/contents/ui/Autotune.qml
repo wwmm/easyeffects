@@ -108,7 +108,7 @@ Kirigami.ScrollablePage {
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
                             currentIndex: autotunePage.pluginDB.mode
                             editable: false
-                            model: [i18n("Auto"), i18n("Manual")] //qmllint disable
+                            model: [i18nc("Operating mode", "Auto"), i18nc("Operating mode", "Manual")] //qmllint disable
                             onActivated: idx => {
                                 autotunePage.pluginDB.mode = idx;
                             }
@@ -150,7 +150,7 @@ Kirigami.ScrollablePage {
                         EeSpinBox {
                             id: bias
 
-                            label: i18n("Bias") // qmllint disable
+                            label: i18nc("Autotune preference", "Bias") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: autotunePage.pluginDB.getMinValue("bias")
@@ -215,7 +215,7 @@ Kirigami.ScrollablePage {
                         FormCard.FormComboBoxDelegate {
                             id: scaleRoot
 
-                            text: i18n("Root") // qmllint disable
+                            text: i18nc("Autotune fundamental note", "Root") // qmllint disable
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
                             currentIndex: 0
                             editable: false
@@ -228,7 +228,7 @@ Kirigami.ScrollablePage {
                         FormCard.FormComboBoxDelegate {
                             id: scaleAccidental
 
-                            text: i18n("Accidental") // qmllint disable
+                            text: i18nc("Autotune modified note) ", "Accidental") // qmllint disable
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
                             currentIndex: 0
                             editable: false
@@ -245,7 +245,7 @@ Kirigami.ScrollablePage {
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
                             currentIndex: 0
                             editable: false
-                            model: [i18n("Major"), i18n("Minor")] // qmllint disable
+                            model: [i18nc("Sound scale", "Major"), i18nc("Sound scale", "Minor")] // qmllint disable
                             onActivated: {
                                 autotunePage.applyCurrentScale();
                             }
@@ -405,7 +405,7 @@ Kirigami.ScrollablePage {
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using %1", `<strong>${PluginsPackage.x42}</strong>`) // qmllint disable
+            text: i18nc("Library in use (plugin credit)", "Using %1", `<strong>${PluginsPackage.x42}</strong>`) // qmllint disable
             textFormat: Text.RichText
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter

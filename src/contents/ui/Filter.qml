@@ -66,7 +66,7 @@ Kirigami.ScrollablePage {
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
                     currentIndex: filterPage.pluginDB.type
                     editable: false
-                    model: [i18n("Low-pass"), i18n("High-pass"), i18n("Low-shelf"), i18n("High-shelf"), i18n("Bell"), i18n("Bandpass"), i18n("Notch"), i18n("Resonance"), i18n("Ladder-pass"), i18n("Ladder-rejection"), i18n("Allpass")] // qmllint disable
+                    model: [i18nc("Filter type", "Low-pass"), i18nc("Filter type", "High-pass"), i18nc("Filter type", "Low-shelf"), i18nc("Filter type", "High-shelf"), i18nc("Filter type", "Bell"), i18nc("Filter type", "Bandpass"), i18nc("Filter type", "Notch"), i18nc("Filter type", "Resonance"), i18nc("Filter type", "Ladder-pass"), i18nc("Filter type", "Ladder-rejection"), i18nc("Filter type", "Allpass")] // qmllint disable
                     onActivated: idx => {
                         filterPage.pluginDB.type = idx;
                     }
@@ -80,7 +80,7 @@ Kirigami.ScrollablePage {
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
                     currentIndex: filterPage.pluginDB.mode
                     editable: false
-                    model: [i18n("RLC (BT)"), i18n("RLC (MT)"), i18n("BWC (BT)"), i18n("BWC (MT)"), i18n("LRX (BT)"), i18n("LRX (MT)"), i18n("APO (DR)")]
+                    model: [i18nc("Filter mode", "RLC (BT)"), i18nc("Filter mode", "RLC (MT)"), i18nc("Filter mode", "BWC (BT)"), i18nc("Filter mode", "BWC (MT)"), i18nc("Filter mode", "LRX (BT)"), i18nc("Filter mode", "LRX (MT)"), i18nc("Filter mode", "APO (DR)")]
                     onActivated: idx => {
                         filterPage.pluginDB.mode = idx;
                     }
@@ -94,7 +94,7 @@ Kirigami.ScrollablePage {
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
                     currentIndex: filterPage.pluginDB.equalMode
                     editable: false
-                    model: [i18n("IIR"), i18n("FIR"), i18n("FFT"), i18n("SPM")]
+                    model: [i18nc("Filter mode", "IIR"), i18nc("Filter mode", "FIR"), i18nc("Filter mode", "FFT"), i18nc("Filter mode", "SPM")]
                     onActivated: idx => {
                         filterPage.pluginDB.equalMode = idx;
                     }
@@ -118,7 +118,7 @@ Kirigami.ScrollablePage {
                     id: slope
 
                     verticalPadding: Kirigami.Units.smallSpacing
-                    text: i18n("Slope") // qmllint disable
+                    text: i18nc("Filter parameter", "Slope") // qmllint disable
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
                     currentIndex: filterPage.pluginDB.slope
                     editable: false
@@ -231,7 +231,7 @@ Kirigami.ScrollablePage {
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using %1", `<strong>${PluginsPackage.lsp}</strong>`) // qmllint disable
+            text: i18nc("Library in use (plugin credit)", "Using %1", `<strong>${PluginsPackage.lsp}</strong>`) // qmllint disable
             textFormat: Text.RichText
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter

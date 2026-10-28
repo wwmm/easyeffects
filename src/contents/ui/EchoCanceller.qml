@@ -108,7 +108,7 @@ Kirigami.ScrollablePage {
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
                     currentIndex: echoCancellerPage.pluginDB.noiseSuppressionLevel
                     editable: false
-                    model: [i18n("Low"), i18n("Moderate"), i18n("High"), i18n("Very high")]
+                    model: [i18nc("Echo canceller strength", "Low"), i18nc("Echo canceller strength", "Moderate"), i18nc("Echo canceller strength", "High"), i18nc("Echo canceller strength", "Very high")]
                     onActivated: idx => {
                         echoCancellerPage.pluginDB.noiseSuppressionLevel = idx;
                     }
@@ -155,7 +155,7 @@ Kirigami.ScrollablePage {
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using %1", `<strong>${PluginsPackage.webrtc}</b>`) // qmllint disable
+            text: i18nc("Library in use (plugin credit)", "Using %1", `<strong>${PluginsPackage.webrtc}</b>`) // qmllint disable
             textFormat: Text.RichText
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter

@@ -242,7 +242,7 @@ Kirigami.ScrollablePage {
                 }
 
                 EeSpinBox {
-                    label: i18n("Dry/wet")
+                    label: i18nc("Signal type", "Dry/wet")
                     from: harmonizerPage.pluginDB.getMinValue("dryWet")
                     to: harmonizerPage.pluginDB.getMaxValue("dryWet")
                     value: harmonizerPage.pluginDB.dryWet
@@ -264,7 +264,7 @@ Kirigami.ScrollablePage {
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using %1", `<strong>${PluginsPackage.rakarrack}</strong>`) // qmllint disable
+            text: i18nc("Library in use (plugin credit)", "Using %1", `<strong>${PluginsPackage.rakarrack}</strong>`) // qmllint disable
             textFormat: Text.RichText
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter

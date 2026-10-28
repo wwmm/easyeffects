@@ -488,7 +488,7 @@ Kirigami.Page {
 
                         icon.name: pageStreamsEffects.pageType === 0 ? "source-playlist-symbolic" : "audio-input-microphone-symbolic"
                         compact: DbMain.collapsePluginsList
-                        text: pageStreamsEffects.pageType === 0 ? i18n("Players") : i18n("Input device") // qmllint disable
+                        text: pageStreamsEffects.pageType === 0 ? i18nc("Applications reproducing audio", "Players") : i18n("Input device") // qmllint disable
                     }
 
                     footer: EeListSectionHeader {
@@ -497,7 +497,7 @@ Kirigami.Page {
 
                         icon.name: pageStreamsEffects.pageType === 0 ? "audio-speakers-symbolic" : "source-playlist-symbolic"
                         compact: DbMain.collapsePluginsList
-                        text: pageStreamsEffects.pageType === 0 ? i18n("Output device") : i18n("Recorders") // qmllint disable
+                        text: pageStreamsEffects.pageType === 0 ? i18n("Output device") : i18nc("Devices recording audio", "Recorders") // qmllint disable
                     }
                 }
             }

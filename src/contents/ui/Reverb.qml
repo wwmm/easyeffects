@@ -67,7 +67,7 @@ Kirigami.ScrollablePage {
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
                     currentIndex: reverbPage.pluginDB.roomSize
                     editable: false
-                    model: [i18n("Small"), i18n("Medium"), i18n("Large"), i18n("Tunnel-like"), i18n("Large/smooth"), i18n("Experimental")] // qmllint disable
+                    model: [i18nc("Reverb room size", "Small"), i18nc("Reverb room size", "Medium"), i18nc("Reverb room size", "Large"), i18nc("Reverb room size", "Tunnel-like"), i18nc("Reverb room size", "Large/smooth"), i18nc("Reverb room size", "Experimental")] // qmllint disable
                     onActivated: idx => {
                         reverbPage.pluginDB.roomSize = idx;
                     }
@@ -185,7 +185,7 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: dry
 
-                        label: i18n("Dry") // qmllint disable
+                        label: i18nc("Signal type", "Dry") // qmllint disable
                         labelAbove: true
                         spinboxLayoutFillWidth: true
                         from: reverbPage.pluginDB.getMinValue("dry")
@@ -203,7 +203,7 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: wet
 
-                        label: i18n("Wet") // qmllint disable
+                        label: i18nc("Signal type", "Wet") // qmllint disable
                         labelAbove: true
                         spinboxLayoutFillWidth: true
                         from: reverbPage.pluginDB.getMinValue("amount")
@@ -229,7 +229,7 @@ Kirigami.ScrollablePage {
         actions: [
             Kirigami.Action {
                 icon.name: "user-bookmarks-symbolic"
-                text: i18n("Ambience") // qmllint disable
+                text: i18nc("Reverb preset", "Ambience") // qmllint disable
                 onTriggered: {
                     reverbPage.pluginDB.decayTime = 1.10354;
                     reverbPage.pluginDB.hfDamp = 2182.58;
@@ -244,7 +244,7 @@ Kirigami.ScrollablePage {
             },
             Kirigami.Action {
                 icon.name: "user-bookmarks-symbolic"
-                text: i18n("Empty walls") // qmllint disable
+                text: i18nc("Reverb preset", "Empty walls") // qmllint disable
                 onTriggered: {
                     reverbPage.pluginDB.decayTime = 0.505687;
                     reverbPage.pluginDB.hfDamp = 3971.64;
@@ -259,7 +259,7 @@ Kirigami.ScrollablePage {
             },
             Kirigami.Action {
                 icon.name: "user-bookmarks-symbolic"
-                text: i18n("Room") // qmllint disable
+                text: i18nc("Reverb preset", "Room") // qmllint disable
                 onTriggered: {
                     reverbPage.pluginDB.decayTime = 0.445945;
                     reverbPage.pluginDB.hfDamp = 5508.46;
@@ -274,7 +274,7 @@ Kirigami.ScrollablePage {
             },
             Kirigami.Action {
                 icon.name: "user-bookmarks-symbolic"
-                text: i18n("Large empty hall") // qmllint disable
+                text: i18nc("Reverb preset", "Large empty hall") // qmllint disable
                 onTriggered: {
                     reverbPage.pluginBackend.reset();
                     reverbPage.pluginDB.decayTime = 2.00689;
@@ -284,7 +284,7 @@ Kirigami.ScrollablePage {
             },
             Kirigami.Action {
                 icon.name: "user-bookmarks-symbolic"
-                text: i18n("Disco") // qmllint disable
+                text: i18nc("Reverb preset", "Disco") // qmllint disable
                 onTriggered: {
                     reverbPage.pluginBackend.reset();
                     reverbPage.pluginDB.decayTime = 1;
@@ -294,7 +294,7 @@ Kirigami.ScrollablePage {
             },
             Kirigami.Action {
                 icon.name: "user-bookmarks-symbolic"
-                text: i18n("Large occupied hall") // qmllint disable
+                text: i18nc("Reverb preset", "Large occupied hall") // qmllint disable
                 onTriggered: {
                     reverbPage.pluginBackend.reset();
                     reverbPage.pluginDB.decayTime = 1;
@@ -315,7 +315,7 @@ Kirigami.ScrollablePage {
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using %1", `<strong>${PluginsPackage.calf}</strong>`) // qmllint disable
+            text: i18nc("Library in use (plugin credit)", "Using %1", `<strong>${PluginsPackage.calf}</strong>`) // qmllint disable
             textFormat: Text.RichText
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter

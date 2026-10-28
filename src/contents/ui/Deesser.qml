@@ -77,7 +77,7 @@ Kirigami.ScrollablePage {
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
                             currentIndex: deesserPage.pluginDB.detection
                             editable: false
-                            model: [i18n("RMS"), i18n("Peak")] // qmllint disable
+                            model: [i18nc("Sidechain mode", "RMS"), i18nc("Sidechain mode", "Peak")] // qmllint disable
                             onActivated: idx => {
                                 deesserPage.pluginDB.detection = idx;
                             }
@@ -90,7 +90,7 @@ Kirigami.ScrollablePage {
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
                             currentIndex: deesserPage.pluginDB.mode
                             editable: false
-                            model: [i18n("Wideband"), i18n("Split")] // qmllint disable
+                            model: [i18nc("Deesser mode", "Wideband"), i18nc("Deesser mode", "Split")] // qmllint disable
                             onActivated: idx => {
                                 deesserPage.pluginDB.mode = idx;
                             }
@@ -116,7 +116,7 @@ Kirigami.ScrollablePage {
                         EeSpinBox {
                             id: ratio
 
-                            label: i18n("Ratio") // qmllint disable
+                            label: i18nc("Compressor control", "Ratio") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: deesserPage.pluginDB.getMinValue("ratio")
@@ -132,7 +132,7 @@ Kirigami.ScrollablePage {
                         EeSpinBox {
                             id: makeup
 
-                            label: i18n("Makeup") // qmllint disable
+                            label: i18nc("Gain level", "Makeup") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: deesserPage.pluginDB.getMinValue("makeup")
@@ -316,7 +316,7 @@ Kirigami.ScrollablePage {
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using %1", `<strong>${PluginsPackage.calf}</strong>`) // qmllint disable
+            text: i18nc("Library in use (plugin credit)", "Using %1", `<strong>${PluginsPackage.calf}</strong>`) // qmllint disable
             textFormat: Text.RichText
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter

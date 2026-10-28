@@ -48,7 +48,7 @@ Kirigami.Dialog {
             displayMode: FormCard.FormComboBoxDelegate.ComboBox
             currentIndex: bandMenu.bandDB[bandName]
             editable: false
-            model: [i18n("Off"), i18n("Bell"), i18n("High-pass"), i18n("High-shelf"), i18n("Low-pass"), i18n("Low-shelf"), i18n("Notch"), i18n("Resonance"), i18n("Allpass"), i18n("Bandpass"), i18n("Ladder-pass"), i18n("Ladder-rejection")] // qmllint disable
+            model: [i18n("Off"), i18nc("Filter type", "Bell"), i18nc("Filter type", "High-pass"), i18nc("Filter type", "High-shelf"), i18nc("Filter type", "Low-pass"), i18nc("Filter type", "Low-shelf"), i18nc("Filter type", "Notch"), i18nc("Filter type", "Resonance"), i18nc("Filter type", "Allpass"), i18nc("Filter type", "Bandpass"), i18nc("Filter type", "Ladder-pass"), i18nc("Filter type", "Ladder-rejection")] // qmllint disable
             onActivated: idx => {
                 bandMenu.bandDB[bandName] = idx;
             }
@@ -62,7 +62,7 @@ Kirigami.Dialog {
             displayMode: FormCard.FormComboBoxDelegate.ComboBox
             currentIndex: bandMenu.bandDB[bandName]
             editable: false
-            model: [i18n("RLC (BT)"), i18n("RLC (MT)"), i18n("BWC (BT)"), i18n("BWC (MT)"), i18n("LRX (BT)"), i18n("LRX (MT)"), i18n("APO (DR)")]
+            model: [i18nc("Filter mode", "RLC (BT)"), i18nc("Filter mode", "RLC (MT)"), i18nc("Filter mode", "BWC (BT)"), i18nc("Filter mode", "BWC (MT)"), i18nc("Filter mode", "LRX (BT)"), i18nc("Filter mode", "LRX (MT)"), i18nc("Filter mode", "APO (DR)")]
             onActivated: idx => {
                 bandMenu.bandDB[bandName] = idx;
             }
@@ -72,7 +72,7 @@ Kirigami.Dialog {
             readonly property string bandName: `band${bandMenu.index}Slope`
 
             Layout.margins: Kirigami.Units.smallSpacing
-            text: i18n("Slope") // qmllint disable
+            text: i18nc("Filter parameter", "Slope") // qmllint disable
             displayMode: FormCard.FormComboBoxDelegate.ComboBox
             currentIndex: bandMenu.bandDB[bandName]
             editable: false
@@ -196,7 +196,7 @@ Kirigami.Dialog {
             readonly property string bandName: `band${bandMenu.index}Solo`
 
             Layout.margins: Kirigami.Units.smallSpacing
-            label: i18n("Solo") // qmllint disable
+            label: i18nc("Audio isolation", "Solo") // qmllint disable
             isChecked: bandMenu.bandDB[bandName]
             onCheckedChanged: {
                 if (isChecked !== bandMenu.bandDB[bandName])

@@ -70,7 +70,7 @@ Kirigami.ScrollablePage {
         ignoreUnknownSignals: true
 
         function onStandardModelLoaded() {
-            currentModelLoaded.text = i18n("Using %1", `<strong>${i18n("Standard RNNoise model")}</strong>`);
+            currentModelLoaded.text = i18nc("RNNoise model in use", "Using %1", `<strong>${i18n("Standard RNNoise model")}</strong>`);
 
             appWindow.showStatus(i18n("Standard RNNoise model loaded."), Kirigami.MessageType.Positive);
         }
@@ -81,7 +81,7 @@ Kirigami.ScrollablePage {
 
                 appWindow.showStatus(i18n("Loaded the %1 RNNoise model.", `<strong>${name}</strong>`), Kirigami.MessageType.Positive);
             } else {
-                currentModelLoaded.text = i18n("Using %1", `<strong>${i18n("Standard RNNoise model")}</strong>`);
+                currentModelLoaded.text = i18nc("RNNoise model in use", "Using %1", `<strong>${i18n("Standard RNNoise model")}</strong>`);
 
                 appWindow.showStatus(i18n("Failed to load the %1 model. Fallback to Standard RNNoise model.", `<strong>${name}</strong>`), Kirigami.MessageType.Error, false);
             }
@@ -155,7 +155,7 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: release
 
-                        label: i18n("Release") // qmllint disable
+                        label: i18nc("Noise reduction control", "Release") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 8
                         from: rnnoisePage.pluginDB.getMinValue("release")
                         to: rnnoisePage.pluginDB.getMaxValue("release")
@@ -295,9 +295,9 @@ Kirigami.ScrollablePage {
 
                 text: {
                     if (rnnoisePage.pluginDB.useStandardModel) {
-                        return i18n("Using %1", `<strong>${i18n("Standard RNNoise model")}</strong>`);
+                        return i18nc("RNNoise model in use", "Using %1", `<strong>${i18n("Standard RNNoise model")}</strong>`);
                     } else if (rnnoisePage.pluginBackend.usingStandardModel) {
-                        return i18n("Using %1", `<strong>${i18n("Standard RNNoise model")}</strong>`);
+                        return i18nc("RNNoise model in use", "Using %1", `<strong>${i18n("Standard RNNoise model")}</strong>`);
                     } else {
                         return i18n("Using %1 Model", `<strong>${rnnoisePage.pluginDB.modelName}</strong>`);
                     }
@@ -317,7 +317,7 @@ Kirigami.ScrollablePage {
     footer: ColumnLayout {
         RowLayout {
             Controls.Label {
-                text: i18n("Using %1", `<strong>${PluginsPackage.rnnoise}</strong>`) // qmllint disable
+                text: i18nc("Library in use (plugin credit)", "Using %1", `<strong>${PluginsPackage.rnnoise}</strong>`) // qmllint disable
                 textFormat: Text.RichText
                 horizontalAlignment: Qt.AlignLeft
                 verticalAlignment: Qt.AlignVCenter

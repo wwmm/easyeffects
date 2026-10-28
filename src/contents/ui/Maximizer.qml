@@ -65,7 +65,7 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: release
 
-                        label: i18n("Release") // qmllint disable
+                        label: i18nc("Compressor control", "Release") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
                         from: maximizerPage.pluginDB.getMinValue("release")
                         to: maximizerPage.pluginDB.getMaxValue("release")
@@ -119,7 +119,7 @@ Kirigami.ScrollablePage {
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using %1", `<strong>${PluginsPackage.zam}</b>`) // qmllint disable
+            text: i18nc("Library in use (plugin credit)", "Using %1", `<strong>${PluginsPackage.zam}</b>`) // qmllint disable
             textFormat: Text.RichText
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter

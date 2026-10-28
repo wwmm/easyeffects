@@ -76,7 +76,7 @@ Kirigami.ScrollablePage {
                 EeSpinBox {
                     id: fcut
 
-                    label: i18n("Cutoff") // qmllint disable
+                    label: i18nc("Crossfeed control", "Cutoff") // qmllint disable
                     spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
                     from: crossfeedPage.pluginDB.getMinValue("fcut")
                     to: crossfeedPage.pluginDB.getMaxValue("fcut")
@@ -92,7 +92,7 @@ Kirigami.ScrollablePage {
                 EeSpinBox {
                     id: feed
 
-                    label: i18n("Feed") // qmllint disable
+                    label: i18nc("Crossfeed control", "Feed") // qmllint disable
                     spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
                     from: crossfeedPage.pluginDB.getMinValue("feed")
                     to: crossfeedPage.pluginDB.getMaxValue("feed")
@@ -147,7 +147,7 @@ Kirigami.ScrollablePage {
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using %1", `<strong>${PluginsPackage.bs2b}</strong>`) // qmllint disable
+            text: i18nc("Library in use (plugin credit)", "Using %1", `<strong>${PluginsPackage.bs2b}</strong>`) // qmllint disable
             textFormat: Text.RichText
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter

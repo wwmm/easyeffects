@@ -73,7 +73,7 @@ Kirigami.ScrollablePage {
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: limiterPage.pluginDB.mode
                         editable: false
-                        model: [i18n("Herm thin"), i18n("Herm wide"), i18n("Herm tail"), i18n("Herm duck"), i18n("Exp thin"), i18n("Exp wide"), i18n("Exp tail"), i18n("Exp duck"), i18n("Line thin"), i18n("Line wide"), i18n("Line tail"), i18n("Line duck")] // qmllint disable
+                        model: [i18nc("Limiter mode", "Herm thin"), i18nc("Limiter mode", "Herm wide"), i18nc("Limiter mode", "Herm tail"), i18nc("Limiter mode", "Herm duck"), i18nc("Limiter mode", "Exp thin"), i18nc("Limiter mode", "Exp wide"), i18nc("Limiter mode", "Exp tail"), i18nc("Limiter mode", "Exp duck"), i18nc("Limiter mode", "Line thin"), i18nc("Limiter mode", "Line wide"), i18nc("Limiter mode", "Line tail"), i18nc("Limiter mode", "Line duck")] // qmllint disable
                         onActivated: idx => {
                             limiterPage.pluginDB.mode = idx;
                         }
@@ -141,7 +141,7 @@ Kirigami.ScrollablePage {
                         id: attack
 
                         Layout.alignment: Qt.AlignTop
-                        label: i18n("Attack") // qmllint disable
+                        label: i18nc("Compressor control", "Attack") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
                         from: limiterPage.pluginDB.getMinValue("attack")
                         to: limiterPage.pluginDB.getMaxValue("attack")
@@ -158,7 +158,7 @@ Kirigami.ScrollablePage {
                         id: release
 
                         Layout.alignment: Qt.AlignTop
-                        label: i18n("Release") // qmllint disable
+                        label: i18nc("Compressor control", "Release") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
                         from: limiterPage.pluginDB.getMinValue("release")
                         to: limiterPage.pluginDB.getMaxValue("release")
@@ -214,7 +214,7 @@ Kirigami.ScrollablePage {
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
                             currentIndex: limiterPage.pluginDB.sidechainType
                             editable: false
-                            model: [i18n("Internal"), i18n("External"), i18n("Link")] // qmllint disable
+                            model: [i18nc("Sidchain type", "Internal"), i18nc("Sidchain type", "External"), i18nc("Sidchain type", "Link")] // qmllint disable
                             onActivated: idx => {
                                 limiterPage.pluginDB.sidechainType = idx;
                             }
@@ -265,7 +265,7 @@ Kirigami.ScrollablePage {
                         EeSpinBox {
                             id: lookahead
 
-                            label: i18n("Lookahead") // qmllint disable
+                            label: i18nc("Compressor control", "Lookahead") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: limiterPage.pluginDB.getMinValue("lookahead")
@@ -414,7 +414,7 @@ Kirigami.ScrollablePage {
                         id: alrAttack
 
                         Layout.alignment: Qt.AlignTop
-                        label: i18n("Attack") // qmllint disable
+                        label: i18nc("Compressor control", "Attack") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
                         from: limiterPage.pluginDB.getMinValue("alrAttack")
                         to: limiterPage.pluginDB.getMaxValue("alrAttack")
@@ -431,7 +431,7 @@ Kirigami.ScrollablePage {
                         id: alrRelease
 
                         Layout.alignment: Qt.AlignTop
-                        label: i18n("Release") // qmllint disable
+                        label: i18nc("Compressor control", "Release") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
                         from: limiterPage.pluginDB.getMinValue("alrRelease")
                         to: limiterPage.pluginDB.getMaxValue("alrRelease")
@@ -448,7 +448,7 @@ Kirigami.ScrollablePage {
                         id: alrKnee
 
                         Layout.alignment: Qt.AlignTop
-                        label: i18n("Knee") // qmllint disable
+                        label: i18nc("Compressor control", "Knee") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
                         from: limiterPage.pluginDB.getMinValue("alrKnee")
                         to: limiterPage.pluginDB.getMaxValue("alrKnee")
@@ -604,7 +604,7 @@ Kirigami.ScrollablePage {
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using %1", `<strong>${PluginsPackage.lsp}</strong>`) // qmllint disable
+            text: i18nc("Library in use (plugin credit)", "Using %1", `<strong>${PluginsPackage.lsp}</strong>`) // qmllint disable
             textFormat: Text.RichText
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter

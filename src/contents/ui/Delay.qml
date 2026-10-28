@@ -56,7 +56,7 @@ Kirigami.ScrollablePage {
             uniformCellWidths: true
 
             EeCard {
-                title: i18n("Left") // qmllint disable
+                title: i18nc("Channel", "Left") // qmllint disable
 
                 GridLayout {
                     columns: 2
@@ -173,7 +173,7 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: dryL
 
-                        label: i18n("Dry") // qmllint disable
+                        label: i18nc("Signal type", "Dry") // qmllint disable
                         labelAbove: true
                         spinboxLayoutFillWidth: true
                         from: delayPage.pluginDB.getMinValue("dryL")
@@ -191,7 +191,7 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: wetL
 
-                        label: i18n("Wet") // qmllint disable
+                        label: i18nc("Signal type", "Wet") // qmllint disable
                         labelAbove: true
                         spinboxLayoutFillWidth: true
                         from: delayPage.pluginDB.getMinValue("wetL")
@@ -209,7 +209,7 @@ Kirigami.ScrollablePage {
             }
 
             EeCard {
-                title: i18n("Right") // qmllint disable
+                title: i18nc("Channel", "Right") // qmllint disable
 
                 GridLayout {
                     columns: 2
@@ -326,7 +326,7 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: dryR
 
-                        label: i18n("Dry") // qmllint disable
+                        label: i18nc("Signal type", "Dry") // qmllint disable
                         labelAbove: true
                         spinboxLayoutFillWidth: true
                         from: delayPage.pluginDB.getMinValue("dryR")
@@ -344,7 +344,7 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: wetR
 
-                        label: i18n("Wet") // qmllint disable
+                        label: i18nc("Signal type", "Wet") // qmllint disable
                         labelAbove: true
                         spinboxLayoutFillWidth: true
                         from: delayPage.pluginDB.getMinValue("wetR")
@@ -373,7 +373,7 @@ Kirigami.ScrollablePage {
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using %1", `<strong>${PluginsPackage.lsp}</strong>`) // qmllint disable
+            text: i18nc("Library in use (plugin credit)", "Using %1", `<strong>${PluginsPackage.lsp}</strong>`) // qmllint disable
             textFormat: Text.RichText
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter

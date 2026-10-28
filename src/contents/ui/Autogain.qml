@@ -76,7 +76,7 @@ Kirigami.ScrollablePage {
                     verticalPadding: 0
                     currentIndex: autogainPage.pluginDB.reference
                     editable: false
-                    model: [i18n("Momentary"), i18n("Short-term"), i18n("Integrated"), i18n("Geometric mean (MSI)"), i18n("Geometric mean (MS)"), i18n("Geometric mean (MI)"), i18n("Geometric mean (SI)")] // qmllint disable
+                    model: [i18nc("EBU R 128 loudness measure", "Momentary"), i18nc("EBU R 128 loudness measure", "Short-term"), i18nc("EBU R 128 loudness measure", "Integrated"), i18nc("Autogain: mean of Momentary, Short-term and Integrated", "Geometric mean (MSI)"), i18nc("Autogain: mean of Momentary and Short-term", "Geometric mean (MS)"), i18nc("Autogain: mean of Momentary and Integrated", "Geometric mean (MI)"), i18nc("Autogain: mean of Short-term and Integrated", "Geometric mean (SI)")] // qmllint disable
                     onActivated: idx => {
                         autogainPage.pluginDB.reference = idx;
                     }
@@ -145,7 +145,7 @@ Kirigami.ScrollablePage {
                 EeProgressBar {
                     id: momentary
 
-                    label: i18n("Momentary") // qmllint disable
+                    label: i18nc("EBU R 128 loudness measure", "Momentary") // qmllint disable
                     unit: Units.lufs
                     from: Common.minimumDecibelLevel
                     to: 10
@@ -155,7 +155,7 @@ Kirigami.ScrollablePage {
                 EeProgressBar {
                     id: shortterm
 
-                    label: i18n("Short-term") // qmllint disable
+                    label: i18nc("EBU R 128 loudness measure", "Short-term") // qmllint disable
                     unit: Units.lufs
                     from: Common.minimumDecibelLevel
                     to: 10
@@ -165,7 +165,7 @@ Kirigami.ScrollablePage {
                 EeProgressBar {
                     id: integrated
 
-                    label: i18n("Integrated") // qmllint disable
+                    label: i18nc("EBU R 128 loudness measure", "Integrated") // qmllint disable
                     unit: Units.lufs
                     from: Common.minimumDecibelLevel
                     to: 10
@@ -230,7 +230,7 @@ Kirigami.ScrollablePage {
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using %1", `<strong>${PluginsPackage.ebur128}</strong>`) // qmllint disable
+            text: i18nc("Library in use (plugin credit)", "Using %1", `<strong>${PluginsPackage.ebur128}</strong>`) // qmllint disable
             textFormat: Text.RichText
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter

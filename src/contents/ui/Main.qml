@@ -402,7 +402,7 @@ Kirigami.ApplicationWindow {
 
                 Controls.ToolButton {
                     icon.name: "multimedia-player-symbolic"
-                    text: i18n("Players") // qmllint disable
+                    text: i18nc("Applications reproducing audio", "Players") // qmllint disable
                     checkable: true
                     checked: DbMain.visiblePage === 0 && DbStreamOutputs.visiblePage === 0
                     display: segmentedButton.display
@@ -418,7 +418,7 @@ Kirigami.ApplicationWindow {
 
                 Controls.ToolButton {
                     icon.name: "media-record-symbolic"
-                    text: i18n("Recorders") // qmllint disable
+                    text: i18nc("Devices recording audio", "Recorders") // qmllint disable
                     checkable: true
                     checked: DbMain.visiblePage === 1 && DbStreamInputs.visiblePage === 0
                     display: segmentedButton.display
@@ -466,7 +466,7 @@ Kirigami.ApplicationWindow {
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Manual") // qmllint disable
+                        text: i18nc("Usage guide", "Manual") // qmllint disable
                         icon.name: "help-contents-symbolic"
                         displayHint: Kirigami.DisplayHint.AlwaysHide
                         onTriggered: {

@@ -145,7 +145,7 @@ Kirigami.ScrollablePage {
                 displayMode: FormCard.FormComboBoxDelegate.ComboBox
                 currentIndex: equalizerPage.pluginDB.mode
                 editable: false
-                model: [i18n("IIR"), i18n("FIR"), i18n("FFT"), i18n("SPM")]
+                model: [i18nc("Filter mode", "IIR"), i18nc("Filter mode", "FIR"), i18nc("Filter mode", "FFT"), i18nc("Filter mode", "SPM")]
                 onActivated: idx => {
                     equalizerPage.pluginDB.mode = idx;
                 }
@@ -247,7 +247,7 @@ Kirigami.ScrollablePage {
                 header: RowLayout {
                     Kirigami.Heading {
                         visible: equalizerPage.pluginDB.splitChannels
-                        text: equalizerPage.pluginDB.splitChannels ? (equalizerPage.pluginDB.viewLeftChannel ? i18n("Left") : i18n("Right")) : "" // qmllint disable
+                        text: equalizerPage.pluginDB.splitChannels ? (equalizerPage.pluginDB.viewLeftChannel ? i18nc("Channel", "Left") : i18nc("Channel", "Right")) : "" // qmllint disable
                         level: 2
                     }
 
@@ -318,7 +318,7 @@ Kirigami.ScrollablePage {
     footer: ColumnLayout {
         RowLayout {
             Controls.Label {
-                text: i18n("Using %1", `<strong>${PluginsPackage.lsp}</strong>`) // qmllint disable
+                text: i18nc("Library in use (plugin credit)", "Using %1", `<strong>${PluginsPackage.lsp}</strong>`) // qmllint disable
                 textFormat: Text.RichText
                 horizontalAlignment: Qt.AlignLeft
                 verticalAlignment: Qt.AlignVCenter
