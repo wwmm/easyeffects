@@ -96,7 +96,7 @@ Kirigami.Dialog {
 
             actions: [
                 Kirigami.Action {
-                    text: i18n("Local")
+                    text: i18nc("Preset type", "Local")
                     icon.name: "system-file-manager-symbolic"
                     checkable: true
                     checked: DbMain.visiblePresetSheetPage === 0
@@ -104,7 +104,7 @@ Kirigami.Dialog {
                     onTriggered: DbMain.visiblePresetSheetPage = 0
                 },
                 Kirigami.Action {
-                    text: i18n("Community")
+                    text: i18nc("Preset type", "Community")
                     icon.name: "system-users-symbolic"
                     checkable: true
                     checked: DbMain.visiblePresetSheetPage === 1
@@ -112,7 +112,7 @@ Kirigami.Dialog {
                     onTriggered: DbMain.visiblePresetSheetPage = 1
                 },
                 Kirigami.Action {
-                    text: i18n("Autoload")
+                    text: i18nc("Preset type", "Autoload")
                     icon.name: "task-recurring-symbolic"
                     checkable: true
                     checked: DbMain.visiblePresetSheetPage === 2
@@ -153,7 +153,7 @@ Kirigami.Dialog {
                     if (Common.isEmpty(control.lastLoadedPresetName))
                         return i18n("No preset loaded"); // qmllint disable
 
-                    const presetType = Common.isEmpty(lastLoadedCommunityPackage) ? i18n("Local") : i18n("Community"); // qmllint disable
+                    const presetType = Common.isEmpty(lastLoadedCommunityPackage) ? i18nc("Preset type", "Local") : i18nc("Preset type", "Community"); // qmllint disable
 
                     return `${presetType}: <strong>${control.lastLoadedPresetName}<strong>`;
                 }

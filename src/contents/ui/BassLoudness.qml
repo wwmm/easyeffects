@@ -123,7 +123,7 @@ Kirigami.ScrollablePage {
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using %1", `<strong>${PluginsPackage.mda}</strong>`) // qmllint disable
+            text: i18nc("Library in use (plugin credit)", "Using %1", `<strong>${PluginsPackage.mda}</strong>`) // qmllint disable
             textFormat: Text.RichText
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter

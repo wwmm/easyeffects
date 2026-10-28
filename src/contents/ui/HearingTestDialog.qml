@@ -138,7 +138,7 @@ Kirigami.Dialog {
         Controls.Label {
             Layout.margins: Kirigami.Units.largeSpacing
             visible: dialog.started && !dialog.complete
-            text: i18n("%1 ear: %2 Hz (%3 of %4)", dialog.channel === 0 ? i18n("Left") : i18n("Right"), dialog.frequencies[dialog.band], dialog.measurement + 1, dialog.frequencies.length * 2)
+            text: i18nc("Left/right ear: frequency Hz (number of total)", "%1 ear: %2 Hz (%3 of %4)", dialog.channel === 0 ? i18nc("Channel", "Left") : i18nc("Channel", "Right"), dialog.frequencies[dialog.band], dialog.measurement + 1, dialog.frequencies.length * 2)
         }
 
         EeSpinBox {

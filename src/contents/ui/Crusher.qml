@@ -205,7 +205,7 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: lfoRate
 
-                        label: i18n("Rate") // qmllint disable
+                        label: i18nc("Audio sample rate", "Rate") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
                         from: crusherPage.pluginDB.getMinValue("lfoRate")
                         to: crusherPage.pluginDB.getMaxValue("lfoRate")
@@ -233,7 +233,7 @@ Kirigami.ScrollablePage {
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using %1", `<strong>${PluginsPackage.calf}</strong>`) // qmllint disable
+            text: i18nc("Library in use (plugin credit)", "Using %1", `<strong>${PluginsPackage.calf}</strong>`) // qmllint disable
             textFormat: Text.RichText
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter

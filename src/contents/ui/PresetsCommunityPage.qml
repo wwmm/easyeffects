@@ -75,7 +75,7 @@ ColumnLayout {
         Controls.Button {
             Layout.alignment: Qt.AlignCenter
             Layout.margins: Kirigami.Units.smallSpacing
-            Controls.ToolTip.text: i18n("Refresh") // qmllint disable
+            Controls.ToolTip.text: i18nc("Update data", "Refresh") // qmllint disable
             Controls.ToolTip.visible: hovered
             icon.name: "view-refresh-symbolic"
             onClicked: {

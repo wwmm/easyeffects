@@ -74,7 +74,7 @@ Kirigami.ScrollablePage {
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: loudnessPage.pluginDB.mode
                         editable: false
-                        model: [i18n("FFT"), i18n("IIR")]
+                        model: [i18nc("Filter mode", "FFT"), i18nc("Filter mode", "IIR")]
                         onActivated: idx => {
                             loudnessPage.pluginDB.mode = idx;
                         }
@@ -88,7 +88,7 @@ Kirigami.ScrollablePage {
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: loudnessPage.pluginDB.std
                         editable: false
-                        model: [i18n("Flat"), i18n("ISO226-2003"), i18n("Fletcher-Munson"), i18n("Robinson-Dadson"), i18n("ISO226-2023")]
+                        model: [i18nc("Loudness contour", "Flat"), i18nc("Loudness contour", "ISO226-2003"), i18nc("Loudness contour", "Fletcher-Munson"), i18nc("Loudness contour", "Robinson-Dadson"), i18nc("Loudness contour", "ISO226-2023")]
                         onActivated: idx => {
                             loudnessPage.pluginDB.std = idx;
                         }
@@ -116,7 +116,7 @@ Kirigami.ScrollablePage {
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: loudnessPage.pluginDB.iirApproximation
                         editable: false
-                        model: [i18n("Fastest"), i18n("Low"), i18n("Normal"), i18n("High"), i18n("Best")] // qmllint disable
+                        model: [i18nc("Loudness IIR approximation", "Fastest"), i18nc("Loudness IIR approximation", "Low"), i18nc("Loudness IIR approximation", "Normal"), i18nc("Loudness IIR approximation", "High"), i18nc("Loudness IIR approximation", "Best")] // qmllint disable
                         visible: loudnessPage.pluginDB.mode === 1 ? true : false
                         onActivated: idx => {
                             loudnessPage.pluginDB.iirApproximation = idx;
@@ -172,7 +172,7 @@ Kirigami.ScrollablePage {
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using %1", `<strong>${PluginsPackage.lsp}</b>`) // qmllint disable
+            text: i18nc("Library in use (plugin credit)", "Using %1", `<strong>${PluginsPackage.lsp}</b>`) // qmllint disable
             textFormat: Text.RichText
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter

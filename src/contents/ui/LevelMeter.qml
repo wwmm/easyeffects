@@ -78,7 +78,7 @@ Kirigami.ScrollablePage {
                         EeProgressBar {
                             id: inputL
 
-                            label: i18n("Left") // qmllint disable
+                            label: i18nc("Channel", "Left") // qmllint disable
                             unit: Units.dB
                             from: Common.minimumDecibelLevel
                             to: 10
@@ -88,7 +88,7 @@ Kirigami.ScrollablePage {
                         EeProgressBar {
                             id: inputR
 
-                            label: i18n("Right") // qmllint disable
+                            label: i18nc("Channel", "Right") // qmllint disable
                             unit: Units.dB
                             from: Common.minimumDecibelLevel
                             to: 10
@@ -117,7 +117,7 @@ Kirigami.ScrollablePage {
                         EeProgressBar {
                             id: truePeakL
 
-                            label: i18n("Left") // qmllint disable
+                            label: i18nc("Channel", "Left") // qmllint disable
                             unit: Units.dB
                             from: Common.minimumDecibelLevel
                             to: 10
@@ -127,7 +127,7 @@ Kirigami.ScrollablePage {
                         EeProgressBar {
                             id: truePeakR
 
-                            label: i18n("Right") // qmllint disable
+                            label: i18nc("Channel", "Right") // qmllint disable
                             unit: Units.dB
                             from: Common.minimumDecibelLevel
                             to: 10
@@ -156,7 +156,7 @@ Kirigami.ScrollablePage {
                         EeProgressBar {
                             id: samplePeakL
 
-                            label: i18n("Left") // qmllint disable
+                            label: i18nc("Channel", "Left") // qmllint disable
                             unit: Units.dB
                             from: Common.minimumDecibelLevel
                             to: 10
@@ -166,7 +166,7 @@ Kirigami.ScrollablePage {
                         EeProgressBar {
                             id: samplePeakR
 
-                            label: i18n("Right") // qmllint disable
+                            label: i18nc("Channel", "Right") // qmllint disable
                             unit: Units.dB
                             from: Common.minimumDecibelLevel
                             to: 10
@@ -196,7 +196,7 @@ Kirigami.ScrollablePage {
                     EeProgressBar {
                         id: momentary
 
-                        label: i18n("Momentary") // qmllint disable
+                        label: i18nc("EBU R 128 loudness measure", "Momentary") // qmllint disable
                         unit: Units.lufs
                         from: Common.minimumDecibelLevel
                         to: 10
@@ -206,7 +206,7 @@ Kirigami.ScrollablePage {
                     EeProgressBar {
                         id: shortterm
 
-                        label: i18n("Short-term") // qmllint disable
+                        label: i18nc("EBU R 128 loudness measure", "Short-term") // qmllint disable
                         unit: Units.lufs
                         from: Common.minimumDecibelLevel
                         to: 10
@@ -216,7 +216,7 @@ Kirigami.ScrollablePage {
                     EeProgressBar {
                         id: integrated
 
-                        label: i18n("Integrated") // qmllint disable
+                        label: i18nc("EBU R 128 loudness measure", "Integrated") // qmllint disable
                         unit: Units.lufs
                         from: Common.minimumDecibelLevel
                         to: 10
@@ -253,7 +253,7 @@ Kirigami.ScrollablePage {
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using %1", `<strong>${PluginsPackage.ebur128}</strong>`) // qmllint disable
+            text: i18nc("Library in use (plugin credit)", "Using %1", `<strong>${PluginsPackage.ebur128}</strong>`) // qmllint disable
             textFormat: Text.RichText
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter

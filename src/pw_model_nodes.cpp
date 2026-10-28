@@ -505,17 +505,17 @@ void Nodes::end_reset() {
 auto Nodes::node_state_to_qstring(const pw_node_state& state) -> QString {
   switch (state) {
     case PW_NODE_STATE_RUNNING:
-      return i18n("Running");
+      return i18nc("Status of PipeWire stream", "Running");
     case PW_NODE_STATE_SUSPENDED:
-      return i18n("Suspended");
+      return i18nc("Status of PipeWire stream", "Suspended");
     case PW_NODE_STATE_IDLE:
-      return i18n("Idle");
+      return i18nc("Status of PipeWire stream", "Idle");
     case PW_NODE_STATE_CREATING:
-      return i18n("Creating");
+      return i18nc("Status of PipeWire stream", "Creating");
     case PW_NODE_STATE_ERROR:
-      return i18n("Error");
+      return i18nc("Status of PipeWire stream", "Error");
     default:
-      return i18n("Unknown");
+      return i18nc("Status of PipeWire stream", "Unknown");
   }
 }
 
