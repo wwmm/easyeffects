@@ -395,6 +395,17 @@ class Nodes : public QAbstractListModel {
 
   static auto get_app_icon_name(const NodeInfo* node_info) -> QString;
 
+  static auto app_is_blocklisted(const auto& blocklist,
+                                 const auto& name,
+                                 const auto& app_id,
+                                 const auto& process_binary) -> bool;
+
+  static auto app_is_blocklisted_by_media_name(const auto& blocklist,
+                                               const auto& name,
+                                               const auto& media_name,
+                                               const auto& app_id,
+                                               const auto& process_binary) -> bool;
+
   void onOutputBlocklistChanged();
 
   void onOutputSinkBlocklistChanged();

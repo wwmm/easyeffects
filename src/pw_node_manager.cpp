@@ -255,13 +255,25 @@ auto NodeManager::registerNode(pw_registry* registry, uint32_t id, const char* t
   const auto user_blocklist = (media_class == tags::pipewire::media_class::output_stream) ? DbStreamOutputs::blocklist()
                                                                                           : DbStreamInputs::blocklist();
 
-  nd->nd_info->is_blocklisted = std::ranges::find(user_blocklist, nd->nd_info->application_id) != user_blocklist.end();
+  if (!user_blocklist.isEmpty()) {
+    // Blocklist is evaluated against starts_with(), implicitly including also
+    // the exact match. See discussion in #5419.
+    const auto app_is_blocklisted = [&user_blocklist](const auto& value) {
+      return std::ranges::any_of(user_blocklist,
+                                 [&value](const auto& blocklist_item) { return value.startsWith(blocklist_item); });
+    };
 
-  nd->nd_info->is_blocklisted =
-      std::ranges::find(user_blocklist, nd->nd_info->app_process_binary) != user_blocklist.end();
+    nd->nd_info->is_blocklisted =
+        (!nd->nd_info->application_id.isEmpty() && app_is_blocklisted(nd->nd_info->application_id)) ||
+        (!nd->nd_info->app_process_binary.isEmpty() && app_is_blocklisted(nd->nd_info->app_process_binary)) ||
+        (!nd->nd_info->name.isEmpty() && app_is_blocklisted(nd->nd_info->name));
 
-  nd->nd_info->is_blocklisted =
-      nd->nd_info->is_blocklisted || std::ranges::find(user_blocklist, nd->nd_info->name) != user_blocklist.end();
+    if (nd->nd_info->is_blocklisted) {
+      util::debug(std::format(R"(The stream "{}" with process binary "{}" and ID "{}" has been excluded.)",
+                              nd->nd_info->name.toStdString(), nd->nd_info->app_process_binary.toStdString(),
+                              nd->nd_info->application_id.toStdString()));
+    }
+  }
 
   pw_proxy_add_object_listener(proxy, &nd->object_listener, &node_events, nd);  // NOLINT
   pw_proxy_add_listener(proxy, &nd->proxy_listener, &node_proxy_events, nd);
@@ -451,8 +463,33 @@ void NodeManager::onNodeInfo(void* object, const pw_node_info* info) {
                                     ? DbStreamOutputs::blocklist()
                                     : DbStreamInputs::blocklist();
 
+    const auto app_is_blocklisted = [&user_blocklist](const auto& name, const auto& media_name) {
+      return std::ranges::any_of(user_blocklist, [&name, &media_name](const auto& blocklist_item) {
+        // Get the index position of the first occurrence of ':'.
+        const auto colon = blocklist_item.indexOf(':');
+
+        if (colon == -1) {
+          // The blocklist item does not use the media name.
+          return false;
+        }
+
+        // Check if the name starts with the first part of the blocklist item.
+        if (!name.startsWith(blocklist_item.first(colon))) {
+          return false;
+        }
+
+        // Compare the media name against the second part of the blocklist item.
+        return blocklist_item.sliced(colon + 1) == media_name;
+      });
+    };
+
     blocklisted_media_name =
-        std::ranges::find(user_blocklist, nd->nd_info->name + ":" + nd->nd_info->media_name) != user_blocklist.end();
+        !user_blocklist.isEmpty() && app_is_blocklisted(nd->nd_info->name, nd->nd_info->media_name);
+
+    if (blocklisted_media_name) {
+      util::debug(std::format(R"(The stream "{}" with media name "{}" has been excluded.)",
+                              nd->nd_info->name.toStdString(), nd->nd_info->media_name.toStdString()));
+    }
   }
 
   if (nd->nd_info->connected != nm->stream_is_connected(info->id, nd->nd_info->media_class)) {

@@ -613,6 +613,40 @@ auto Nodes::get_nodes_by_device_id(const uint& id) -> QList<NodeInfo> {
   return nodes;
 }
 
+auto Nodes::app_is_blocklisted(const auto& blocklist, const auto& name, const auto& app_id, const auto& process_binary)
+    -> bool {
+  return std::ranges::any_of(blocklist, [&name, &app_id, &process_binary](const auto& blocklist_item) {
+    return name.startsWith(blocklist_item) || app_id.startsWith(blocklist_item) ||
+           process_binary.startsWith(blocklist_item);
+  });
+}
+
+auto Nodes::app_is_blocklisted_by_media_name(const auto& blocklist,
+                                             const auto& name,
+                                             const auto& media_name,
+                                             const auto& app_id,
+                                             const auto& process_binary) -> bool {
+  return std::ranges::any_of(blocklist, [&name, &media_name, &app_id, &process_binary](const auto& blocklist_item) {
+    // Get the index position of the first occurrence of ':'.
+    const auto colon = blocklist_item.indexOf(':');
+
+    if (colon == -1) {
+      // The blocklist item does not use the media name.
+      return false;
+    }
+
+    for (const auto& str : {name, app_id, process_binary}) {
+      // Check if the string starts with the first part of the blocklist item.
+      // Then compare the media name against the second part of the blocklist item.
+      if (str.startsWith(blocklist_item.first(colon)) && blocklist_item.sliced(colon + 1) == media_name) {
+        return true;
+      }
+    }
+
+    return false;
+  });
+}
+
 void Nodes::onOutputBlocklistChanged() {
   const auto blocklist = DbStreamOutputs::blocklist();
 
@@ -621,12 +655,12 @@ void Nodes::onOutputBlocklistChanged() {
       continue;
     }
 
-    auto is_blocklisted = blocklist.contains(list[n].name) || blocklist.contains(list[n].application_id) ||
-                          blocklist.contains(list[n].app_process_binary);
-
-    if (DbStreamOutputs::blocklistUsesMediaName()) {
-      is_blocklisted = is_blocklisted || blocklist.contains(list[n].name + ":" + list[n].media_name);
-    }
+    const auto is_blocklisted =
+        !blocklist.isEmpty() &&
+        (DbStreamOutputs::blocklistUsesMediaName()
+             ? app_is_blocklisted_by_media_name(blocklist, list[n].name, list[n].media_name, list[n].application_id,
+                                                list[n].app_process_binary)
+             : app_is_blocklisted(blocklist, list[n].name, list[n].application_id, list[n].app_process_binary));
 
     if (is_blocklisted) {
       update_field(n, Roles::IsBlocklisted, true);
@@ -668,12 +702,12 @@ void Nodes::onInputBlocklistChanged() {
       continue;
     }
 
-    auto is_blocklisted = blocklist.contains(list[n].name) || blocklist.contains(list[n].application_id) ||
-                          blocklist.contains(list[n].app_process_binary);
-
-    if (DbStreamInputs::blocklistUsesMediaName()) {
-      is_blocklisted = is_blocklisted || blocklist.contains(list[n].name + ":" + list[n].media_name);
-    }
+    const auto is_blocklisted =
+        !blocklist.isEmpty() &&
+        (DbStreamInputs::blocklistUsesMediaName()
+             ? app_is_blocklisted_by_media_name(blocklist, list[n].name, list[n].media_name, list[n].application_id,
+                                                list[n].app_process_binary)
+             : app_is_blocklisted(blocklist, list[n].name, list[n].application_id, list[n].app_process_binary));
 
     if (is_blocklisted) {
       update_field(n, Roles::IsBlocklisted, true);
