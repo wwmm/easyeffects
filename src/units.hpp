@@ -41,8 +41,9 @@ class Units : public QObject {
   Q_PROPERTY(QString us MEMBER us CONSTANT)
   Q_PROPERTY(QString hz MEMBER hz CONSTANT)
   Q_PROPERTY(QString kHz MEMBER kHz CONSTANT)
-  Q_PROPERTY(QString lufs MEMBER lufs CONSTANT)
   Q_PROPERTY(QString lu MEMBER lu CONSTANT)
+  Q_PROPERTY(QString lufs MEMBER lufs CONSTANT)
+  Q_PROPERTY(QString st MEMBER st CONSTANT)
   Q_PROPERTY(QString m MEMBER m CONSTANT)
   Q_PROPERTY(QString cm MEMBER cm CONSTANT)
   Q_PROPERTY(QString degC MEMBER degC CONSTANT)
@@ -73,8 +74,9 @@ class Units : public QObject {
     us = ki18nc("microseconds unit abbreviation", "μs").toString();
     hz = ki18nc("Hertz unit abbreviation", "Hz").toString();
     kHz = ki18nc("kiloHertz unit abbreviation", "kHz").toString();
-    lufs = ki18nc("loudness full scale unit abbreviation", "LUFS").toString();
     lu = ki18nc("loudness unit abbreviation", "LU").toString();
+    lufs = ki18nc("loudness full scale unit abbreviation", "LUFS").toString();
+    st = ki18nc("semitone unit (music interval) abbreviation", "st").toString();
     m = ki18nc("meter unit abbreviation", "m").toString();
     cm = ki18nc("centimeter unit abbreviation", "cm").toString();
     degC = ki18nc("degrees Celsius unit abbreviation", "°C").toString();
@@ -102,8 +104,9 @@ class Units : public QObject {
   QString us;
   QString hz;
   QString kHz;
-  QString lufs;
   QString lu;
+  QString lufs;
+  QString st;
   QString m;
   QString cm;
   QString degC;

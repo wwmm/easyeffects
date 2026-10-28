@@ -203,7 +203,7 @@ Kirigami.ScrollablePage {
                 value: midsideEqualizerPage.pluginDB.pitchMid
                 decimals: 2
                 stepSize: 0.01
-                unit: i18n("st")
+                unit: Units.st
                 onValueModified: v => {
                     midsideEqualizerPage.pluginDB.pitchMid = v;
                 }
@@ -220,7 +220,7 @@ Kirigami.ScrollablePage {
                 value: midsideEqualizerPage.pluginDB.pitchSide
                 decimals: 2
                 stepSize: 0.01
-                unit: i18n("st")
+                unit: Units.st
                 onValueModified: v => {
                     midsideEqualizerPage.pluginDB.pitchSide = v;
                 }
