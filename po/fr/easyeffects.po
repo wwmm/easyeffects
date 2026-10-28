@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-26 11:29+0100\n"
-"PO-Revision-Date: 2026-10-25 05:51+0000\n"
+"PO-Revision-Date: 2026-10-28 06:51+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -1715,277 +1715,231 @@ msgid "Harmony"
 msgstr "Harmonie"
 
 #: src/contents/ui/Harmonizer.qml:45
-#, fuzzy
 msgctxt "Musical note"
 msgid "C"
-msgstr "C"
+msgstr "Do"
 
 #: src/contents/ui/Harmonizer.qml:48
-#, fuzzy
 msgctxt "Musical note"
 msgid "C♯ / D♭"
-msgstr "C♯ / D♭"
+msgstr "Do♯ / Ré♭"
 
 #: src/contents/ui/Harmonizer.qml:51
-#, fuzzy
 msgctxt "Musical note"
 msgid "D"
-msgstr "D"
+msgstr "Ré"
 
 #: src/contents/ui/Harmonizer.qml:54
-#, fuzzy
 msgctxt "Musical note"
 msgid "D♯ / E♭"
-msgstr "D♯ / E♭"
+msgstr "Ré♯ / Mi♭"
 
 #: src/contents/ui/Harmonizer.qml:57
-#, fuzzy
 msgctxt "Musical note"
 msgid "E"
-msgstr "E"
+msgstr "Mi"
 
 #: src/contents/ui/Harmonizer.qml:60
-#, fuzzy
 msgctxt "Musical note"
 msgid "F"
-msgstr "F"
+msgstr "Fa"
 
 #: src/contents/ui/Harmonizer.qml:63
-#, fuzzy
 msgctxt "Musical note"
 msgid "F♯ / G♭"
-msgstr "F♯ / G♭"
+msgstr "Fa♯ / Sol♭"
 
 #: src/contents/ui/Harmonizer.qml:66
-#, fuzzy
 msgctxt "Musical note"
 msgid "G"
-msgstr "G"
+msgstr "Sol"
 
 #: src/contents/ui/Harmonizer.qml:69
-#, fuzzy
 msgctxt "Musical note"
 msgid "G♯ / A♭"
-msgstr "G♯ / A♭"
+msgstr "Sol♯ / La♭"
 
 #: src/contents/ui/Harmonizer.qml:72
-#, fuzzy
 msgctxt "Musical note"
 msgid "A"
-msgstr "A"
+msgstr "La"
 
 #: src/contents/ui/Harmonizer.qml:75
-#, fuzzy
 msgctxt "Musical note"
 msgid "A♯ / B♭"
-msgstr "A♯ / B♭"
+msgstr "La♯ / Si♭"
 
 #: src/contents/ui/Harmonizer.qml:78
-#, fuzzy
 msgctxt "Musical note"
 msgid "B"
-msgstr "B"
+msgstr "Si"
 
 #: src/contents/ui/Harmonizer.qml:90
-#, fuzzy
 msgctxt "Musical chord"
 msgid "No chord"
-msgstr "Aucun accord"
+msgstr "Sans accord"
 
 #: src/contents/ui/Harmonizer.qml:93
-#, fuzzy
 msgctxt "Musical chord"
 msgid "6"
 msgstr "6"
 
 #: src/contents/ui/Harmonizer.qml:96
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Major 7"
 msgstr "Majeur 7"
 
 #: src/contents/ui/Harmonizer.qml:99
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Lydian"
 msgstr "Lydien"
 
 #: src/contents/ui/Harmonizer.qml:102
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Major 9"
 msgstr "Majeur 9"
 
 #: src/contents/ui/Harmonizer.qml:105
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Major 7/9"
 msgstr "Majeur 7/9"
 
 #: src/contents/ui/Harmonizer.qml:108
-#, fuzzy
 msgctxt "Musical chord"
 msgid "6/9"
 msgstr "6/9"
 
 #: src/contents/ui/Harmonizer.qml:111
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Augmented"
 msgstr "Augmenté"
 
 #: src/contents/ui/Harmonizer.qml:114
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Minor"
 msgstr "Mineur"
 
 #: src/contents/ui/Harmonizer.qml:117
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Minor 6"
 msgstr "Mineur 6"
 
 #: src/contents/ui/Harmonizer.qml:120
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Minor 7"
 msgstr "Mineur 7"
 
 #: src/contents/ui/Harmonizer.qml:123
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Minor 7 flat 5"
 msgstr "Mineur 7 bémol 5"
 
 #: src/contents/ui/Harmonizer.qml:126
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Minor 9"
 msgstr "Mineur 9"
 
 #: src/contents/ui/Harmonizer.qml:129
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Minor 7/9"
 msgstr "Mineur 7/9"
 
 #: src/contents/ui/Harmonizer.qml:132
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Minor 7/11"
 msgstr "Mineur 7/11"
 
 #: src/contents/ui/Harmonizer.qml:135
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Minor major 7"
 msgstr "Mineur majeur 7"
 
 #: src/contents/ui/Harmonizer.qml:138
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Minor major 7/9"
 msgstr "Mineur majeur 7/9"
 
 #: src/contents/ui/Harmonizer.qml:141
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Diminished"
 msgstr "Diminué"
 
 #: src/contents/ui/Harmonizer.qml:144
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Diminished 7"
 msgstr "Diminué 7"
 
 #: src/contents/ui/Harmonizer.qml:147
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Dominant 7"
-msgstr "Dominante 7"
+msgstr "7ème de dominante"
 
 #: src/contents/ui/Harmonizer.qml:150
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Dominant 7 sus4"
-msgstr "Dominante 7 sus4"
+msgstr "7ème de dominante sus4"
 
 #: src/contents/ui/Harmonizer.qml:153
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Dominant 7 flat 5"
-msgstr "Dominante 7 bémol 5"
+msgstr "7ème de dominante bémol 5"
 
 #: src/contents/ui/Harmonizer.qml:156
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Dominant 9"
-msgstr "Dominante 9"
+msgstr "9ème de dominante"
 
 #: src/contents/ui/Harmonizer.qml:159
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Dominant 7 sharp 11"
-msgstr "Dominante 7 dièse 11"
+msgstr "7ème de dominante dièse 11"
 
 #: src/contents/ui/Harmonizer.qml:162
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Dominant 13"
-msgstr "Dominante 13"
+msgstr "13ème de dominante"
 
 #: src/contents/ui/Harmonizer.qml:165
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Dominant 7 flat 9"
-msgstr "Dominante 7 bémol 9"
+msgstr "7ème de dominante bémol 9"
 
 #: src/contents/ui/Harmonizer.qml:168
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Dominant 7 flat 13"
-msgstr "Dominante 7 bémol 13"
+msgstr "7ème de dominante bémol 13"
 
 #: src/contents/ui/Harmonizer.qml:171
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Dominant 7 sharp 9"
-msgstr "Dominante 7 dièse 9"
+msgstr "7ème de dominante dièse 9"
 
 #: src/contents/ui/Harmonizer.qml:174
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Augmented major 7"
-msgstr "Majeur 7 augmenté"
+msgstr "Augmenté majeur 7"
 
 #: src/contents/ui/Harmonizer.qml:177
-#, fuzzy
 msgctxt "Musical chord"
 msgid "Augmented 7"
-msgstr "7 augmenté"
+msgstr "Augmenté 7"
 
 #: src/contents/ui/Harmonizer.qml:180
-#, fuzzy
 msgctxt "Musical interval"
 msgid "Octaves"
 msgstr "Octaves"
 
 #: src/contents/ui/Harmonizer.qml:183
-#, fuzzy
 msgctxt "Musical interval"
 msgid "Fifths"
 msgstr "Quintes"
 
 #: src/contents/ui/Harmonizer.qml:186
-#, fuzzy
 msgctxt "Musical interval"
 msgid "Suspended 4"
-msgstr "4 suspendu"
+msgstr "Suspendu 4"
 
 #: src/contents/ui/Harmonizer.qml:189
-#, fuzzy
 msgctxt "Musical interval"
 msgid "Seconds"
 msgstr "Secondes"
