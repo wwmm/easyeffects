@@ -219,7 +219,7 @@ Kirigami.ScrollablePage {
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
                             currentIndex: 0
                             editable: false
-                            model: ["C", "D", "E", "F", "G", "A", "B"]
+                            model: [i18nc("Musical note", "C"), i18nc("Musical note", "D"), i18nc("Musical note", "E"), i18nc("Musical note", "F"), i18nc("Musical note", "G"), i18nc("Musical note", "A"), i18nc("Musical note", "B")]
                             onActivated: {
                                 autotunePage.applyCurrentScale();
                             }
@@ -258,7 +258,7 @@ Kirigami.ScrollablePage {
                         rowSpacing: 0
 
                         EeSwitch {
-                            label: "C"
+                            label: i18nc("Musical note", "C")
                             isChecked: autotunePage.pluginDB.noteC
                             onCheckedChanged: {
                                 if (isChecked !== autotunePage.pluginDB.noteC)
@@ -267,7 +267,7 @@ Kirigami.ScrollablePage {
                         }
 
                         EeSwitch {
-                            label: "C#"
+                            label: i18nc("Musical note", "C#")
                             isChecked: autotunePage.pluginDB.noteCSharp
                             onCheckedChanged: {
                                 if (isChecked !== autotunePage.pluginDB.noteCSharp)
@@ -276,7 +276,7 @@ Kirigami.ScrollablePage {
                         }
 
                         EeSwitch {
-                            label: "D"
+                            label: i18nc("Musical note", "D")
                             isChecked: autotunePage.pluginDB.noteD
                             onCheckedChanged: {
                                 if (isChecked !== autotunePage.pluginDB.noteD)
@@ -285,7 +285,7 @@ Kirigami.ScrollablePage {
                         }
 
                         EeSwitch {
-                            label: "D#"
+                            label: i18nc("Musical note", "D#")
                             isChecked: autotunePage.pluginDB.noteDSharp
                             onCheckedChanged: {
                                 if (isChecked !== autotunePage.pluginDB.noteDSharp)
@@ -294,7 +294,7 @@ Kirigami.ScrollablePage {
                         }
 
                         EeSwitch {
-                            label: "E"
+                            label: i18nc("Musical note", "E")
                             isChecked: autotunePage.pluginDB.noteE
                             onCheckedChanged: {
                                 if (isChecked !== autotunePage.pluginDB.noteE)
@@ -303,7 +303,7 @@ Kirigami.ScrollablePage {
                         }
 
                         EeSwitch {
-                            label: "F"
+                            label: i18nc("Musical note", "F")
                             isChecked: autotunePage.pluginDB.noteF
                             onCheckedChanged: {
                                 if (isChecked !== autotunePage.pluginDB.noteF)
@@ -312,7 +312,7 @@ Kirigami.ScrollablePage {
                         }
 
                         EeSwitch {
-                            label: "F#"
+                            label: i18nc("Musical note", "F#")
                             isChecked: autotunePage.pluginDB.noteFSharp
                             onCheckedChanged: {
                                 if (isChecked !== autotunePage.pluginDB.noteFSharp)
@@ -321,7 +321,7 @@ Kirigami.ScrollablePage {
                         }
 
                         EeSwitch {
-                            label: "G"
+                            label: i18nc("Musical note", "G")
                             isChecked: autotunePage.pluginDB.noteG
                             onCheckedChanged: {
                                 if (isChecked !== autotunePage.pluginDB.noteG)
@@ -330,7 +330,7 @@ Kirigami.ScrollablePage {
                         }
 
                         EeSwitch {
-                            label: "G#"
+                            label: i18nc("Musical note", "G#")
                             isChecked: autotunePage.pluginDB.noteGSharp
                             onCheckedChanged: {
                                 if (isChecked !== autotunePage.pluginDB.noteGSharp)
@@ -339,7 +339,7 @@ Kirigami.ScrollablePage {
                         }
 
                         EeSwitch {
-                            label: "A"
+                            label: i18nc("Musical note", "A")
                             isChecked: autotunePage.pluginDB.noteA
                             onCheckedChanged: {
                                 if (isChecked !== autotunePage.pluginDB.noteA)
@@ -348,7 +348,7 @@ Kirigami.ScrollablePage {
                         }
 
                         EeSwitch {
-                            label: "A#"
+                            label: i18nc("Musical note", "A#")
                             isChecked: autotunePage.pluginDB.noteASharp
                             onCheckedChanged: {
                                 if (isChecked !== autotunePage.pluginDB.noteASharp)
@@ -357,7 +357,7 @@ Kirigami.ScrollablePage {
                         }
 
                         EeSwitch {
-                            label: "B"
+                            label: i18nc("Musical note", "B")
                             isChecked: autotunePage.pluginDB.noteB
                             onCheckedChanged: {
                                 if (isChecked !== autotunePage.pluginDB.noteB)
