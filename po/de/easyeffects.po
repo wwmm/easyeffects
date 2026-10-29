@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-28 22:06+0000\n"
-"PO-Revision-Date: 2026-10-15 11:51+0000\n"
-"Last-Translator: Ettore Atalan "
-"<atalanttore@users.noreply.hosted.weblate.org>\n"
+"PO-Revision-Date: 2026-10-29 08:47+0000\n"
+"Last-Translator: Ettore Atalan <atalanttore@users.noreply.hosted.weblate.org>"
+"\n"
 "Language-Team: German <https://hosted.weblate.org/projects/easyeffects/main/"
 "de/>\n"
 "Language: de\n"
@@ -65,7 +65,6 @@ msgstr ""
 "aktuellen Status."
 
 #: src/command_line_parser.cpp:56 src/command_line_parser.cpp:62
-#, fuzzy
 msgid "state"
 msgstr "Status"
 
@@ -180,45 +179,38 @@ msgstr "Referenz"
 
 #: src/contents/ui/Autogain.qml:79 src/contents/ui/Autogain.qml:148
 #: src/contents/ui/LevelMeter.qml:199
-#, fuzzy
 msgctxt "EBU R 128 loudness measure"
 msgid "Momentary"
 msgstr "Momentan"
 
 #: src/contents/ui/Autogain.qml:79 src/contents/ui/Autogain.qml:158
 #: src/contents/ui/LevelMeter.qml:209
-#, fuzzy
 msgctxt "EBU R 128 loudness measure"
 msgid "Short-term"
 msgstr "Kurzzeitig"
 
 #: src/contents/ui/Autogain.qml:79 src/contents/ui/Autogain.qml:168
 #: src/contents/ui/LevelMeter.qml:219
-#, fuzzy
 msgctxt "EBU R 128 loudness measure"
 msgid "Integrated"
 msgstr "Integriert"
 
 #: src/contents/ui/Autogain.qml:79
-#, fuzzy
 msgctxt "Autogain: mean of Momentary, Short-term and Integrated"
 msgid "Geometric mean (MSI)"
 msgstr "Geometrisches Mittel (MSI)"
 
 #: src/contents/ui/Autogain.qml:79
-#, fuzzy
 msgctxt "Autogain: mean of Momentary and Short-term"
 msgid "Geometric mean (MS)"
 msgstr "Geometrisches Mittel (MS)"
 
 #: src/contents/ui/Autogain.qml:79
-#, fuzzy
 msgctxt "Autogain: mean of Momentary and Integrated"
 msgid "Geometric mean (MI)"
 msgstr "Geometrisches Mittel (MI)"
 
 #: src/contents/ui/Autogain.qml:79
-#, fuzzy
 msgctxt "Autogain: mean of Short-term and Integrated"
 msgid "Geometric mean (SI)"
 msgstr "Geometrisches Mittel (SI)"
@@ -269,7 +261,6 @@ msgstr "Ausgangsverstärkung"
 #: src/contents/ui/MultibandGate.qml:938 src/contents/ui/Pitch.qml:268
 #: src/contents/ui/RNNoise.qml:320 src/contents/ui/Reverb.qml:318
 #: src/contents/ui/Speex.qml:177 src/contents/ui/StereoTools.qml:392
-#, fuzzy
 msgctxt "Library in use (plugin credit)"
 msgid "Using %1"
 msgstr "Nutzt %1"
@@ -311,7 +302,6 @@ msgid "Mode"
 msgstr "Modus"
 
 #: src/contents/ui/Autotune.qml:111
-#, fuzzy
 msgctxt "Operating mode"
 msgid "Auto"
 msgstr "Automatisch"
@@ -4409,10 +4399,9 @@ msgid "Filter"
 msgstr "Filter"
 
 #: src/tags_plugin_name.cpp:67
-#, fuzzy
 msgctxt "Effect title"
 msgid "Gate"
-msgstr "Gate"
+msgstr "Tor"
 
 #: src/tags_plugin_name.cpp:68
 msgid "Level Meter"
