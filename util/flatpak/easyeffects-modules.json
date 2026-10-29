@@ -172,12 +172,12 @@
                 {
                     "type": "git",
                     "url": "https://github.com/oneapi-src/oneTBB",
-                    "tag": "v2023.1.0",
+                    "tag": "v2023.2.0",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^v([\\d.]+)$"
                     },
-                    "commit": "3046c8b0c29df995980003ea24f4d78c80ec0c8d"
+                    "commit": "41158a44ab3fb7ac5df7f99ef82626c87607447f"
                 }
             ]
         },
