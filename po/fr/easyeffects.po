@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-10-28 22:06+0000\n"
+"POT-Creation-Date: 2026-10-30 15:59+0000\n"
 "PO-Revision-Date: 2026-10-29 08:47+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -380,7 +380,8 @@ msgid "B"
 msgstr "Si"
 
 #: src/contents/ui/Autotune.qml:231
-msgctxt "Autotune modified note) "
+#, fuzzy
+msgctxt "Autotune modified note"
 msgid "Accidental"
 msgstr "Altération"
 
@@ -396,28 +397,28 @@ msgstr "Mineure"
 
 #: src/contents/ui/Autotune.qml:270
 msgctxt "Musical note"
-msgid "C#"
-msgstr "Do dièse"
+msgid "C♯"
+msgstr ""
 
 #: src/contents/ui/Autotune.qml:288
 msgctxt "Musical note"
-msgid "D#"
-msgstr "Ré dièse"
+msgid "D♯"
+msgstr ""
 
 #: src/contents/ui/Autotune.qml:315
 msgctxt "Musical note"
-msgid "F#"
-msgstr "Fa dièse"
+msgid "F♯"
+msgstr ""
 
 #: src/contents/ui/Autotune.qml:333
 msgctxt "Musical note"
-msgid "G#"
-msgstr "Sol dièse"
+msgid "G♯"
+msgstr ""
 
 #: src/contents/ui/Autotune.qml:351
 msgctxt "Musical note"
-msgid "A#"
-msgstr "La dièse"
+msgid "A♯"
+msgstr ""
 
 #: src/contents/ui/Autotune.qml:377 src/contents/ui/Deesser.qml:276
 msgid "Level"
@@ -4400,6 +4401,26 @@ msgstr "Égaliseur, Compresseur et Autres Effets Audio"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "Effets audio simples"
+
+#~ msgctxt "Musical note"
+#~ msgid "C#"
+#~ msgstr "Do dièse"
+
+#~ msgctxt "Musical note"
+#~ msgid "D#"
+#~ msgstr "Ré dièse"
+
+#~ msgctxt "Musical note"
+#~ msgid "F#"
+#~ msgstr "Fa dièse"
+
+#~ msgctxt "Musical note"
+#~ msgid "G#"
+#~ msgstr "Sol dièse"
+
+#~ msgctxt "Musical note"
+#~ msgid "A#"
+#~ msgstr "La dièse"
 
 #~ msgid "Octaves"
 #~ msgstr "Octaves"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-10-28 22:06+0000\n"
+"POT-Creation-Date: 2026-10-30 15:59+0000\n"
 "PO-Revision-Date: 2026-10-27 13:51+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remus-"
 "gabriel@users.noreply.hosted.weblate.org>\n"
@@ -395,7 +395,7 @@ msgstr "Si"
 
 #: src/contents/ui/Autotune.qml:231
 #, fuzzy
-msgctxt "Autotune modified note) "
+msgctxt "Autotune modified note"
 msgid "Accidental"
 msgstr "Accidental"
 
@@ -412,34 +412,29 @@ msgid "Minor"
 msgstr "Minor"
 
 #: src/contents/ui/Autotune.qml:270
-#, fuzzy
 msgctxt "Musical note"
-msgid "C#"
-msgstr "Do"
+msgid "C♯"
+msgstr ""
 
 #: src/contents/ui/Autotune.qml:288
-#, fuzzy
 msgctxt "Musical note"
-msgid "D#"
-msgstr "Re"
+msgid "D♯"
+msgstr ""
 
 #: src/contents/ui/Autotune.qml:315
-#, fuzzy
 msgctxt "Musical note"
-msgid "F#"
-msgstr "Fa"
+msgid "F♯"
+msgstr ""
 
 #: src/contents/ui/Autotune.qml:333
-#, fuzzy
 msgctxt "Musical note"
-msgid "G#"
-msgstr "Sol"
+msgid "G♯"
+msgstr ""
 
 #: src/contents/ui/Autotune.qml:351
-#, fuzzy
 msgctxt "Musical note"
-msgid "A#"
-msgstr "La"
+msgid "A♯"
+msgstr ""
 
 #: src/contents/ui/Autotune.qml:377 src/contents/ui/Deesser.qml:276
 msgid "Level"
@@ -4588,6 +4583,31 @@ msgstr "Egalizator, compresor și alte efecte audio"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "Efecte audio simple"
+
+#, fuzzy
+#~ msgctxt "Musical note"
+#~ msgid "C#"
+#~ msgstr "Do"
+
+#, fuzzy
+#~ msgctxt "Musical note"
+#~ msgid "D#"
+#~ msgstr "Re"
+
+#, fuzzy
+#~ msgctxt "Musical note"
+#~ msgid "F#"
+#~ msgstr "Fa"
+
+#, fuzzy
+#~ msgctxt "Musical note"
+#~ msgid "G#"
+#~ msgstr "Sol"
+
+#, fuzzy
+#~ msgctxt "Musical note"
+#~ msgid "A#"
+#~ msgstr "La"
 
 #~ msgid "Octaves"
 #~ msgstr "Octave"
