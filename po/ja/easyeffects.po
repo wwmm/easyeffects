@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-10-28 22:06+0000\n"
+"POT-Creation-Date: 2026-10-30 15:59+0000\n"
 "PO-Revision-Date: 2026-10-20 15:35+0000\n"
 "Last-Translator: Suu <suu@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
@@ -396,7 +396,7 @@ msgstr "B"
 
 #: src/contents/ui/Autotune.qml:231
 #, fuzzy
-msgctxt "Autotune modified note) "
+msgctxt "Autotune modified note"
 msgid "Accidental"
 msgstr "変化記号"
 
@@ -413,34 +413,29 @@ msgid "Minor"
 msgstr "マイナー"
 
 #: src/contents/ui/Autotune.qml:270
-#, fuzzy
 msgctxt "Musical note"
-msgid "C#"
-msgstr "C"
+msgid "C♯"
+msgstr ""
 
 #: src/contents/ui/Autotune.qml:288
-#, fuzzy
 msgctxt "Musical note"
-msgid "D#"
-msgstr "D"
+msgid "D♯"
+msgstr ""
 
 #: src/contents/ui/Autotune.qml:315
-#, fuzzy
 msgctxt "Musical note"
-msgid "F#"
-msgstr "F"
+msgid "F♯"
+msgstr ""
 
 #: src/contents/ui/Autotune.qml:333
-#, fuzzy
 msgctxt "Musical note"
-msgid "G#"
-msgstr "G"
+msgid "G♯"
+msgstr ""
 
 #: src/contents/ui/Autotune.qml:351
-#, fuzzy
 msgctxt "Musical note"
-msgid "A#"
-msgstr "A"
+msgid "A♯"
+msgstr ""
 
 #: src/contents/ui/Autotune.qml:377 src/contents/ui/Deesser.qml:276
 msgid "Level"
@@ -4605,6 +4600,31 @@ msgstr "イコライザー、コンプレッサーなどのオーディオエフ
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "シンプルなオーディオエフェクト"
+
+#, fuzzy
+#~ msgctxt "Musical note"
+#~ msgid "C#"
+#~ msgstr "C"
+
+#, fuzzy
+#~ msgctxt "Musical note"
+#~ msgid "D#"
+#~ msgstr "D"
+
+#, fuzzy
+#~ msgctxt "Musical note"
+#~ msgid "F#"
+#~ msgstr "F"
+
+#, fuzzy
+#~ msgctxt "Musical note"
+#~ msgid "G#"
+#~ msgstr "G"
+
+#, fuzzy
+#~ msgctxt "Musical note"
+#~ msgid "A#"
+#~ msgstr "A"
 
 #~ msgid "Octaves"
 #~ msgstr "オクターブ"

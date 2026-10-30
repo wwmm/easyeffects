@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-10-28 22:06+0000\n"
+"POT-Creation-Date: 2026-10-30 15:59+0000\n"
 "PO-Revision-Date: 2025-05-26 11:48+0200\n"
 "Last-Translator: Noel <chatenium@gmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/easyeffects/"
@@ -391,7 +391,7 @@ msgid "B"
 msgstr ""
 
 #: src/contents/ui/Autotune.qml:231
-msgctxt "Autotune modified note) "
+msgctxt "Autotune modified note"
 msgid "Accidental"
 msgstr ""
 
@@ -407,27 +407,27 @@ msgstr ""
 
 #: src/contents/ui/Autotune.qml:270
 msgctxt "Musical note"
-msgid "C#"
+msgid "C♯"
 msgstr ""
 
 #: src/contents/ui/Autotune.qml:288
 msgctxt "Musical note"
-msgid "D#"
+msgid "D♯"
 msgstr ""
 
 #: src/contents/ui/Autotune.qml:315
 msgctxt "Musical note"
-msgid "F#"
+msgid "F♯"
 msgstr ""
 
 #: src/contents/ui/Autotune.qml:333
 msgctxt "Musical note"
-msgid "G#"
+msgid "G♯"
 msgstr ""
 
 #: src/contents/ui/Autotune.qml:351
 msgctxt "Musical note"
-msgid "A#"
+msgid "A♯"
 msgstr ""
 
 #: src/contents/ui/Autotune.qml:377 src/contents/ui/Deesser.qml:276
