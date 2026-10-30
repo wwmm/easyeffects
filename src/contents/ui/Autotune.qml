@@ -228,7 +228,7 @@ Kirigami.ScrollablePage {
                         FormCard.FormComboBoxDelegate {
                             id: scaleAccidental
 
-                            text: i18nc("Autotune modified note) ", "Accidental") // qmllint disable
+                            text: i18nc("Autotune modified note", "Accidental") // qmllint disable
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
                             currentIndex: 0
                             editable: false
