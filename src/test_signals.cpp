@@ -246,7 +246,7 @@ TestSignals::TestSignals(pw::Manager* pipe_manager) : pm(pipe_manager), random_g
   while (!can_get_node_id) {
     std::this_thread::sleep_for(std::chrono::milliseconds(1));
 
-    if (state == PW_FILTER_STATE_ERROR) {
+    if (pm->connection_lost || state == PW_FILTER_STATE_ERROR) {
       util::warning(std::format("{} is in an error", filter_name));
 
       return;

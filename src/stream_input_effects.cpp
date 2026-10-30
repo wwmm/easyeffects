@@ -297,6 +297,10 @@ void StreamInputEffects::connect_filters() {
   util::debug(std::format("Before: {} -> {}", input_device.id, input_device.name.toStdString()));
 
   while (pm->count_node_ports(input_device.id) < 1) {
+    if (pm->connection_lost) {
+      return;
+    }
+
     std::this_thread::sleep_for(std::chrono::milliseconds(1));
 
     timeout++;

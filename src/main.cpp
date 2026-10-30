@@ -34,6 +34,7 @@
 #include <KColorSchemeManager>
 #include <KIconTheme>
 #include <KLocalizedString>
+#include <KSignalHandler>
 #include <QApplication>
 #include <QDir>
 #include <QLocalServer>
@@ -70,21 +71,6 @@
 #endif
 
 namespace {
-
-class SignalHandler {
- public:
-  SignalHandler() {
-    std::signal(SIGINT, handle);
-    std::signal(SIGTERM, handle);
-  }
-
- private:
-  static void handle(int s) {
-    std::signal(s, SIG_DFL);
-
-    QCoreApplication::quit();
-  }
-};
 
 struct CoreServices {
   db::Manager* dbm = nullptr;
@@ -417,7 +403,10 @@ int main(int argc, char* argv[]) {
 
   QApplication app(argc, argv);
 
-  SignalHandler signalHandler;
+  auto* signalHandler = KSignalHandler::self();
+  signalHandler->watchSignal(SIGINT);
+  signalHandler->watchSignal(SIGTERM);
+  QObject::connect(signalHandler, &KSignalHandler::signalReceived, &app, &QCoreApplication::quit);
 
   if (DbMain::englishLanguage()) {
     KLocalizedString::setLanguages({QStringLiteral("C")});

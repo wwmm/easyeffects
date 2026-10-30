@@ -473,6 +473,10 @@ void PluginBase::stop_worker() {
 void PluginBase::reset() {}
 
 auto PluginBase::connect_to_pw() -> bool {
+  if (pm->connection_lost) {
+    return false;
+  }
+
   connected_to_pw = false;
   can_get_node_id = false;
   state = PW_FILTER_STATE_UNCONNECTED;
@@ -494,7 +498,7 @@ auto PluginBase::connect_to_pw() -> bool {
   while (!can_get_node_id) {
     std::this_thread::sleep_for(std::chrono::milliseconds(1));
 
-    if (state == PW_FILTER_STATE_ERROR) {
+    if (pm->connection_lost || state == PW_FILTER_STATE_ERROR) {
       util::warning(std::format("{}{} is in an error", log_tag, name.toStdString()));
 
       return false;
@@ -514,6 +518,10 @@ auto PluginBase::connect_to_pw() -> bool {
    */
 
   while (pm->count_node_ports(node_id) != n_ports) {
+    if (pm->connection_lost) {
+      return false;
+    }
+
     std::this_thread::sleep_for(std::chrono::milliseconds(1));
   }
 
@@ -580,7 +588,7 @@ void PluginBase::disconnect_from_pw() {
 
   node_id = SPA_ID_INVALID;
 
-  while (pw_filter_get_state(filter, nullptr) != PW_FILTER_STATE_UNCONNECTED) {
+  while (!pm->connection_lost && pw_filter_get_state(filter, nullptr) != PW_FILTER_STATE_UNCONNECTED) {
     std::this_thread::sleep_for(std::chrono::milliseconds(1));
   }
 

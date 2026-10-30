@@ -57,9 +57,11 @@
 #include <spa/utils/result.h>
 #include <spa/utils/type.h>
 #include <sys/types.h>
+#include <QCoreApplication>
 #include <QString>
 #include <chrono>
 #include <cstdint>
+#include <cstdlib>
 #include <cstring>
 #include <ctime>
 #include <format>
@@ -150,7 +152,10 @@ void on_core_error(void* data, uint32_t id, [[maybe_unused]] int seq, int res, c
     util::warning(std::format("Remote error message: {}", message));
 
     if (std::string(message) == "connection error") {
-      util::fatal("No connection to PipeWire. Aborting!");
+      pm->connection_lost = true;
+      util::warning("Connection to PipeWire lost. Exiting.");
+      QMetaObject::invokeMethod(
+          QCoreApplication::instance(), [] { QCoreApplication::exit(EXIT_FAILURE); }, Qt::QueuedConnection);
     }
 
     pw_thread_loop_signal(pm->thread_loop, false);
@@ -213,7 +218,7 @@ Manager::Manager(QObject* parent)
       model_modules(pw::models::Modules(this)),
       model_clients(pw::models::Clients(this)),
       node_manager(NodeManager(model_nodes, metadata_manager, ee_sink_node, ee_source_node, list_links)),
-      link_manager(LinkManager(core, thread_loop, model_nodes, list_links)),
+      link_manager(LinkManager(core, thread_loop, model_nodes, list_links, connection_lost)),
       module_manager(ModuleManager(core, thread_loop, model_modules)),
       client_manager(ClientManager(core, thread_loop, model_clients)),
       device_manager(DeviceManager(list_devices)) {
@@ -435,6 +440,10 @@ Manager::Manager(QObject* parent)
   sync_wait_unlock();
 
   do {
+    if (connection_lost) {
+      return;
+    }
+
     std::this_thread::sleep_for(std::chrono::milliseconds(1));
 
     ee_sink_node = model_nodes.get_node_by_name(tags::pipewire::ee_sink_name);
@@ -585,9 +594,10 @@ void Manager::unlock() const {
 }
 
 void Manager::sync_wait_unlock() const {
-  pw_core_sync(core, PW_ID_CORE, 0);  // NOLINT
-
-  pw_thread_loop_wait(thread_loop);
+  // A disconnected server cannot complete another round trip during cleanup.
+  if (!connection_lost && pw_core_sync(core, PW_ID_CORE, 0) >= 0) {  // NOLINT
+    pw_thread_loop_wait(thread_loop);
+  }
 
   pw_thread_loop_unlock(thread_loop);
 }
