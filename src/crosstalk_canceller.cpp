@@ -52,7 +52,7 @@ CrosstalkCanceller::CrosstalkCanceller(const std::string& tag,
 
   // specific plugin controls
 
-  connect(settings, &DbCrosstalkCanceller::delayUsChanged, [&]() {
+  connect(settings, &DbCrosstalkCanceller::delayUsChanged, [&] {
     std::scoped_lock<std::mutex> lock(data_mutex);
 
     a.configure(settings->delayUs(), rate);

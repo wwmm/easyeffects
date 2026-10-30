@@ -431,7 +431,7 @@ PluginBase::PluginBase(std::string tag,
 
   native_ui_timer->setInterval(static_cast<long>(1000.0 / DbMain::lv2uiUpdateFrequency()));
 
-  connect(native_ui_timer, &QTimer::timeout, this, [&]() {
+  connect(native_ui_timer, &QTimer::timeout, this, [&] {
     if (!connected_to_pw || lv2_wrapper == nullptr || !lv2_wrapper->has_ui()) {
       return;
     }

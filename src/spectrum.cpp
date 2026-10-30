@@ -71,7 +71,7 @@ Spectrum::Spectrum(const std::string& tag, pw::Manager* pipe_manager, PipelineTy
   BIND_LV2_PORT("time_l", avsyncDelay, setAvsyncDelay, DbSpectrum::avsyncDelayChanged);
   BIND_LV2_PORT("time_r", avsyncDelay, setAvsyncDelay, DbSpectrum::avsyncDelayChanged);
 
-  connect(DbSpectrum::self(), &DbSpectrum::stateChanged, [&]() { bypass = !DbSpectrum::state(); });
+  connect(DbSpectrum::self(), &DbSpectrum::stateChanged, [&] { bypass = !DbSpectrum::state(); });
 }
 
 Spectrum::~Spectrum() {

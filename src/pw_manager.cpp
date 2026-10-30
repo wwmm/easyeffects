@@ -260,7 +260,7 @@ Manager::Manager(QObject* parent)
       },
       Qt::QueuedConnection);
 
-  auto refresh_if_ee_default = [this]() {
+  auto refresh_if_ee_default = [this] {
     if (metadata_manager.default_sink_is_easyeffects_sink() ||
         metadata_manager.default_source_is_easyeffects_source()) {
       refreshDefaultDevicesForEeDefault();
@@ -286,11 +286,11 @@ Manager::Manager(QObject* parent)
       Qt::QueuedConnection);
 
   connect(
-      &model_nodes, &QAbstractItemModel::rowsRemoved, this, [refresh_if_ee_default]() { refresh_if_ee_default(); },
+      &model_nodes, &QAbstractItemModel::rowsRemoved, this, [refresh_if_ee_default] { refresh_if_ee_default(); },
       Qt::QueuedConnection);
 
   connect(
-      &model_nodes, &QAbstractItemModel::modelReset, this, [refresh_if_ee_default]() { refresh_if_ee_default(); },
+      &model_nodes, &QAbstractItemModel::modelReset, this, [refresh_if_ee_default] { refresh_if_ee_default(); },
       Qt::QueuedConnection);
 
   // Existing devices may change priority without being removed and added again.
@@ -307,10 +307,10 @@ Manager::Manager(QObject* parent)
 
   connect(&link_manager, &LinkManager::linkChanged, [&](LinkInfo link) { Q_EMIT linkChanged(link); });
 
-  connect(&link_manager, &LinkManager::linkRemoved, [&]() { Q_EMIT linkRemoved(); });
+  connect(&link_manager, &LinkManager::linkRemoved, [&] { Q_EMIT linkRemoved(); });
 
   connect(&device_manager, &DeviceManager::inputRouteChanged, [&](DeviceInfo device) {
-    QTimer::singleShot(DbMain::presetsAutoloadInterval(), this, [&, device]() {
+    QTimer::singleShot(DbMain::presetsAutoloadInterval(), this, [&, device] {
       auto nodes = model_nodes.get_nodes_by_device_id(device.id);
 
       if (nodes.empty()) {
@@ -342,7 +342,7 @@ Manager::Manager(QObject* parent)
   });
 
   connect(&device_manager, &DeviceManager::outputRouteChanged, [&](DeviceInfo device) {
-    QTimer::singleShot(DbMain::presetsAutoloadInterval(), this, [&, device]() {
+    QTimer::singleShot(DbMain::presetsAutoloadInterval(), this, [&, device] {
       auto nodes = model_nodes.get_nodes_by_device_id(device.id);
 
       if (nodes.empty()) {
@@ -460,7 +460,7 @@ Manager::Manager(QObject* parent)
                             ee_source_node.id, ee_source_node.serial));
   }
 
-  connect(db::Manager::self().main, &DbMain::activateMonitorChannelVolumesChanged, this, [this]() {
+  connect(db::Manager::self().main, &DbMain::activateMonitorChannelVolumesChanged, this, [this] {
     lock();
 
     node_manager.setMonitorChannelVolumes(ee_sink_node.serial, DbMain::activateMonitorChannelVolumes());

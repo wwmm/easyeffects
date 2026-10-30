@@ -26,7 +26,7 @@
     if (actual_value != settings->getter() && !(std::isnan(actual_value) && std::isnan(settings->getter()))) {   \
       settings->setter(actual_value);                                                                            \
     }                                                                                                            \
-    connect(settings, &onChangedSignal, [this]() {                                                               \
+    connect(settings, &onChangedSignal, [this] {                                                                 \
       if (this == nullptr || settings == nullptr || ladspa_wrapper == nullptr) {                                 \
         return;                                                                                                  \
       }                                                                                                          \
@@ -46,7 +46,7 @@
     if (new_v != clamped && !(std::isnan(new_v) && std::isnan(clamped))) {                                            \
       settings->setter(new_v);                                                                                        \
     }                                                                                                                 \
-    connect(settings, &onChangedSignal, [this]() {                                                                    \
+    connect(settings, &onChangedSignal, [this] {                                                                      \
       if (this == nullptr || settings == nullptr || ladspa_wrapper == nullptr) {                                      \
         return;                                                                                                       \
       }                                                                                                               \
@@ -70,7 +70,7 @@
     if (new_v != clamped && !(std::isnan(new_v) && std::isnan(clamped))) {           \
       settings->setter(new_v);                                                       \
     }                                                                                \
-    connect(settings, &onChangedSignal, [this]() {                                   \
+    connect(settings, &onChangedSignal, [this] {                                     \
       if (this == nullptr || settings == nullptr || ladspa_wrapper == nullptr) {     \
         return;                                                                      \
       }                                                                              \

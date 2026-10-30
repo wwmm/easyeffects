@@ -69,7 +69,7 @@ EchoCanceller::EchoCanceller(const std::string& tag,
 
   // Echo Canceller
 
-  connect(settings, &DbEchoCanceller::enableEchoCancellerChanged, [&]() {
+  connect(settings, &DbEchoCanceller::enableEchoCancellerChanged, [&] {
     if (!ap_builder) {
       return;
     }
@@ -81,7 +81,7 @@ EchoCanceller::EchoCanceller(const std::string& tag,
     ap_builder->ApplyConfig(ap_cfg);
   });
 
-  connect(settings, &DbEchoCanceller::echoCancellerMobileModeChanged, [&]() {
+  connect(settings, &DbEchoCanceller::echoCancellerMobileModeChanged, [&] {
     if (!ap_builder) {
       return;
     }
@@ -93,7 +93,7 @@ EchoCanceller::EchoCanceller(const std::string& tag,
     ap_builder->ApplyConfig(ap_cfg);
   });
 
-  connect(settings, &DbEchoCanceller::echoCancellerEnforceHighPassChanged, [&]() {
+  connect(settings, &DbEchoCanceller::echoCancellerEnforceHighPassChanged, [&] {
     if (!ap_builder) {
       return;
     }
@@ -107,7 +107,7 @@ EchoCanceller::EchoCanceller(const std::string& tag,
 
   // Noise Suppression
 
-  connect(settings, &DbEchoCanceller::enableNoiseSuppressionChanged, [&]() {
+  connect(settings, &DbEchoCanceller::enableNoiseSuppressionChanged, [&] {
     if (!ap_builder) {
       return;
     }
@@ -119,7 +119,7 @@ EchoCanceller::EchoCanceller(const std::string& tag,
     ap_builder->ApplyConfig(ap_cfg);
   });
 
-  connect(settings, &DbEchoCanceller::noiseSuppressionLevelChanged, [&]() {
+  connect(settings, &DbEchoCanceller::noiseSuppressionLevelChanged, [&] {
     if (!ap_builder) {
       return;
     }
@@ -134,7 +134,7 @@ EchoCanceller::EchoCanceller(const std::string& tag,
 
   // High-pass Filter
 
-  connect(settings, &DbEchoCanceller::enableHighPassFilterChanged, [&]() {
+  connect(settings, &DbEchoCanceller::enableHighPassFilterChanged, [&] {
     if (!ap_builder) {
       return;
     }
@@ -146,7 +146,7 @@ EchoCanceller::EchoCanceller(const std::string& tag,
     ap_builder->ApplyConfig(ap_cfg);
   });
 
-  connect(settings, &DbEchoCanceller::highPassFilterFullBandChanged, [&]() {
+  connect(settings, &DbEchoCanceller::highPassFilterFullBandChanged, [&] {
     if (!ap_builder) {
       return;
     }
@@ -160,7 +160,7 @@ EchoCanceller::EchoCanceller(const std::string& tag,
 
   // Automatic gain control
 
-  connect(settings, &DbEchoCanceller::enableAGCChanged, [&]() {
+  connect(settings, &DbEchoCanceller::enableAGCChanged, [&] {
     if (!ap_builder) {
       return;
     }

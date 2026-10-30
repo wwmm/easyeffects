@@ -53,34 +53,34 @@ Pitch::Pitch(const std::string& tag, pw::Manager* pipe_manager, PipelineType pip
 
   // resetting soundtouch when bypass is pressed so its internal data is discarded
 
-  connect(settings, &DbPitch::bypassChanged, [&]() { resetHistory(); });
+  connect(settings, &DbPitch::bypassChanged, [&] { resetHistory(); });
 
-  connect(settings, &DbPitch::quickSeekChanged, [&]() { set_quick_seek(); });
+  connect(settings, &DbPitch::quickSeekChanged, [&] { set_quick_seek(); });
 
-  connect(settings, &DbPitch::antiAliasChanged, [&]() { set_anti_alias(); });
+  connect(settings, &DbPitch::antiAliasChanged, [&] { set_anti_alias(); });
 
-  connect(settings, &DbPitch::sequenceLengthChanged, [&]() { set_sequence_length(); });
+  connect(settings, &DbPitch::sequenceLengthChanged, [&] { set_sequence_length(); });
 
-  connect(settings, &DbPitch::seekWindowChanged, [&]() { set_seek_window(); });
+  connect(settings, &DbPitch::seekWindowChanged, [&] { set_seek_window(); });
 
-  connect(settings, &DbPitch::overlapLengthChanged, [&]() { set_overlap_length(); });
+  connect(settings, &DbPitch::overlapLengthChanged, [&] { set_overlap_length(); });
 
-  connect(settings, &DbPitch::tempoDifferenceChanged, [&]() { set_tempo_difference(); });
+  connect(settings, &DbPitch::tempoDifferenceChanged, [&] { set_tempo_difference(); });
 
-  connect(settings, &DbPitch::rateDifferenceChanged, [&]() { set_rate_difference(); });
+  connect(settings, &DbPitch::rateDifferenceChanged, [&] { set_rate_difference(); });
 
-  connect(settings, &DbPitch::octavesChanged, [&]() { set_semitones(); });
+  connect(settings, &DbPitch::octavesChanged, [&] { set_semitones(); });
 
-  connect(settings, &DbPitch::semitonesChanged, [&]() { set_semitones(); });
+  connect(settings, &DbPitch::semitonesChanged, [&] { set_semitones(); });
 
-  connect(settings, &DbPitch::centsChanged, [&]() { set_semitones(); });
+  connect(settings, &DbPitch::centsChanged, [&] { set_semitones(); });
 
-  connect(settings, &DbPitch::dryChanged, [&]() {
+  connect(settings, &DbPitch::dryChanged, [&] {
     dry =
         (settings->dry() <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(settings->dry()));
   });
 
-  connect(settings, &DbPitch::wetChanged, [&]() {
+  connect(settings, &DbPitch::wetChanged, [&] {
     wet =
         (settings->wet() <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(settings->wet()));
   });

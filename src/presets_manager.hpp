@@ -101,7 +101,7 @@ class Manager : public QObject {
     pipeline_format,
     pipeline_generic,
     plugin_format,
-    plugin_generic
+    plugin_generic,
   };
 
   auto preset_file_exists(const PipelineType& pipeline_type, const std::string& name) -> bool;

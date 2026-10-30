@@ -99,7 +99,7 @@ Equalizer::Equalizer(const std::string& tag, pw::Manager* pipe_manager, Pipeline
    * But it is the easiest thing to do in the case below.
    */
 
-  connect(settings, &DbEqualizer::numBandsChanged, [&]() {
+  connect(settings, &DbEqualizer::numBandsChanged, [&] {
     for (int n = 0; n < max_bands; n++) {
       if (n >= settings->numBands()) {  // turn off unused bands
         settings_left->setProperty(tags::equalizer::band_type[n].data(), 0);
@@ -111,7 +111,7 @@ Equalizer::Equalizer(const std::string& tag, pw::Manager* pipe_manager, Pipeline
     }
   });
 
-  connect(settings, &DbEqualizer::splitChannelsChanged, [&]() { on_split_channels(); });
+  connect(settings, &DbEqualizer::splitChannelsChanged, [&] { on_split_channels(); });
 }
 
 Equalizer::~Equalizer() {

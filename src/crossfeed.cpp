@@ -48,13 +48,13 @@ Crossfeed::Crossfeed(const std::string& tag, pw::Manager* pipe_manager, Pipeline
 
   // specific plugin controls
 
-  connect(settings, &DbCrossfeed::fcutChanged, [&]() {
+  connect(settings, &DbCrossfeed::fcutChanged, [&] {
     std::scoped_lock<std::mutex> lock(data_mutex);
 
     bs2b.set_level_feed(settings->fcut());
   });
 
-  connect(settings, &DbCrossfeed::feedChanged, [&]() {
+  connect(settings, &DbCrossfeed::feedChanged, [&] {
     std::scoped_lock<std::mutex> lock(data_mutex);
 
     bs2b.set_level_feed(10 * static_cast<int>(settings->feed()));

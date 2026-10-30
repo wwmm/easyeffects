@@ -359,11 +359,9 @@ void StreamOutputEffects::connect_filters() {
         continue;
       }
 
-      if (name.startsWith(tags::plugin_name::BaseName::echoCanceller)) {
-        if (plugins[name]->connected_to_pw) {
-          for (const auto& link : pm->link_nodes(output_device.id, plugins[name]->get_node_id(), true)) {
-            list_proxies.push_back(link);
-          }
+      if (name.startsWith(tags::plugin_name::BaseName::echoCanceller) && plugins[name]->connected_to_pw) {
+        for (const auto& link : pm->link_nodes(output_device.id, plugins[name]->get_node_id(), true)) {
+          list_proxies.push_back(link);
         }
       }
 

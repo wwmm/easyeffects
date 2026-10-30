@@ -41,7 +41,6 @@
 #include <vector>
 #include "autogain.hpp"
 #include "autotune.hpp"
-#include "harmonizer.hpp"
 #include "bass_enhancer.hpp"
 #include "bass_loudness.hpp"
 #include "compressor.hpp"
@@ -57,14 +56,15 @@
 #include "echo_canceller.hpp"
 #include "equalizer.hpp"
 #include "exciter.hpp"
-#include "midside_equalizer.hpp"
 #include "expander.hpp"
 #include "filter.hpp"
 #include "gate.hpp"
+#include "harmonizer.hpp"
 #include "level_meter.hpp"
 #include "limiter.hpp"
 #include "loudness.hpp"
 #include "maximizer.hpp"
+#include "midside_equalizer.hpp"
 #include "multiband_compressor.hpp"
 #include "multiband_gate.hpp"
 #include "output_level.hpp"
@@ -105,14 +105,14 @@ EffectsBase::EffectsBase(pw::Manager* pipe_manager, PipelineType pipe_type)
 
   switch (pipeline_type) {
     case PipelineType::input:
-      connect(DbStreamInputs::self(), &DbStreamInputs::pluginsChanged, [&]() { create_filters_if_necessary(); });
+      connect(DbStreamInputs::self(), &DbStreamInputs::pluginsChanged, [&] { create_filters_if_necessary(); });
       break;
     case PipelineType::output:
-      connect(DbStreamOutputs::self(), &DbStreamOutputs::pluginsChanged, [&]() { create_filters_if_necessary(); });
+      connect(DbStreamOutputs::self(), &DbStreamOutputs::pluginsChanged, [&] { create_filters_if_necessary(); });
       break;
   }
 
-  connect(DbMain::self(), &DbMain::lv2uiUpdateFrequencyChanged, [&]() {
+  connect(DbMain::self(), &DbMain::lv2uiUpdateFrequencyChanged, [&] {
     auto v = DbMain::lv2uiUpdateFrequency();
 
     for (auto& plugin : plugins | std::views::values) {

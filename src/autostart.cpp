@@ -102,9 +102,9 @@ void on_request_background_called([[maybe_unused]] GObject* source,
 Autostart::Autostart(QObject* parent) : QObject(parent) {
   singletonInstance = this;
 
-  connect(DbMain::self(), &DbMain::autostartOnLoginChanged, [&]() { update_state(); });
+  connect(DbMain::self(), &DbMain::autostartOnLoginChanged, [&] { update_state(); });
 
-  connect(DbMain::self(), &DbMain::enableServiceModeChanged, [&]() { update_state(); });
+  connect(DbMain::self(), &DbMain::enableServiceModeChanged, [&] { update_state(); });
 }
 
 void Autostart::update_state() {  // NOLINT

@@ -40,7 +40,7 @@ IrsManager::IrsManager(DirectoryManager& directory_manager)
 
   watcher.addPath(QString::fromStdString(dir_manager.userIrsDir().string()));
 
-  connect(&watcher, &QFileSystemWatcher::directoryChanged, [&]() { model->update(dir_manager.getLocalIrsPaths()); });
+  connect(&watcher, &QFileSystemWatcher::directoryChanged, [&] { model->update(dir_manager.getLocalIrsPaths()); });
 }
 
 auto IrsManager::get_model() -> ListModel* {

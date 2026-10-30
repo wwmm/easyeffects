@@ -515,7 +515,7 @@ void NodeManager::onNodeInfo(void* object, const pw_node_info* info) {
     }
   }
 
-  auto connect_to_ee_sink = [&]() {
+  auto connect_to_ee_sink = [&] {
     if (DbMain::processAllOutputs() && !nd->nd_info->is_blocklisted &&
         !DbMain::outputSinkBlocklist().contains(DbStreamOutputs::outputDevice())) {
       // target.node for backward compatibility with old PW session managers
@@ -527,7 +527,7 @@ void NodeManager::onNodeInfo(void* object, const pw_node_info* info) {
     }
   };
 
-  auto connect_to_ee_source = [&]() {
+  auto connect_to_ee_source = [&] {
     if (DbMain::processAllInputs() && !nd->nd_info->is_blocklisted &&
         !DbMain::inputSourceBlocklist().contains(DbStreamInputs::inputDevice())) {
       // target.node for backward compatibility with old PW session managers

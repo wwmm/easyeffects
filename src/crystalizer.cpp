@@ -43,17 +43,17 @@
 #include "util.hpp"
 
 // NOLINTNEXTLINE
-#define BIND_BAND(index)                                                                                    \
-  {                                                                                                         \
-    band_intensity.at(index) = util::db_to_linear(settings->intensityBand##index());                        \
-    band_mute.at(index) = settings->muteBand##index();                                                      \
-    band_bypass.at(index) = settings->bypassBand##index();                                                  \
-    connect(settings, &DbCrystalizer::intensityBand##index##Changed,                                        \
-            [this]() { band_intensity.at(index) = util::db_to_linear(settings->intensityBand##index()); }); \
-    connect(settings, &DbCrystalizer::muteBand##index##Changed,                                             \
-            [this]() { band_mute.at(index) = settings->muteBand##index(); });                               \
-    connect(settings, &DbCrystalizer::bypassBand##index##Changed,                                           \
-            [this]() { band_bypass.at(index) = settings->bypassBand##index(); });                           \
+#define BIND_BAND(index)                                                                                  \
+  {                                                                                                       \
+    band_intensity.at(index) = util::db_to_linear(settings->intensityBand##index());                      \
+    band_mute.at(index) = settings->muteBand##index();                                                    \
+    band_bypass.at(index) = settings->bypassBand##index();                                                \
+    connect(settings, &DbCrystalizer::intensityBand##index##Changed,                                      \
+            [this] { band_intensity.at(index) = util::db_to_linear(settings->intensityBand##index()); }); \
+    connect(settings, &DbCrystalizer::muteBand##index##Changed,                                           \
+            [this] { band_mute.at(index) = settings->muteBand##index(); });                               \
+    connect(settings, &DbCrystalizer::bypassBand##index##Changed,                                         \
+            [this] { band_bypass.at(index) = settings->bypassBand##index(); });                           \
   }
 
 Crystalizer::Crystalizer(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id)
@@ -107,13 +107,13 @@ Crystalizer::Crystalizer(const std::string& tag, pw::Manager* pipe_manager, Pipe
   BIND_BAND(11);
   BIND_BAND(12);
 
-  connect(settings, &DbCrystalizer::useFixedQuantumChanged, [&]() { setup(); });
+  connect(settings, &DbCrystalizer::useFixedQuantumChanged, [&] { setup(); });
 
-  connect(settings, &DbCrystalizer::oversamplingChanged, [&]() { setup(); });
+  connect(settings, &DbCrystalizer::oversamplingChanged, [&] { setup(); });
 
-  connect(settings, &DbCrystalizer::transitionBandChanged, [&]() { setup(); });
+  connect(settings, &DbCrystalizer::transitionBandChanged, [&] { setup(); });
 
-  connect(settings, &DbCrystalizer::oversamplingQualityChanged, [&]() {
+  connect(settings, &DbCrystalizer::oversamplingQualityChanged, [&] {
     std::scoped_lock<std::mutex> lock(data_mutex);
 
     if (resampler_inL) {

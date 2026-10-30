@@ -124,35 +124,35 @@ Nodes::Nodes(QObject* parent)
   }
 
   connect(
-      DbStreamOutputs::self(), &DbStreamOutputs::blocklistChanged, this, [&]() { onOutputBlocklistChanged(); },
+      DbStreamOutputs::self(), &DbStreamOutputs::blocklistChanged, this, [&] { onOutputBlocklistChanged(); },
       Qt::QueuedConnection);
 
   connect(
       DbStreamOutputs::self(), &DbStreamOutputs::blocklistUsesMediaNameChanged, this,
-      [&]() { onOutputBlocklistChanged(); }, Qt::QueuedConnection);
+      [&] { onOutputBlocklistChanged(); }, Qt::QueuedConnection);
 
   connect(
-      DbMain::self(), &DbMain::outputSinkBlocklistChanged, this, [&]() { onOutputSinkBlocklistChanged(); },
+      DbMain::self(), &DbMain::outputSinkBlocklistChanged, this, [&] { onOutputSinkBlocklistChanged(); },
       Qt::QueuedConnection);
 
   connect(
-      DbStreamOutputs::self(), &DbStreamOutputs::outputDeviceChanged, this, [&]() { onOutputSinkBlocklistChanged(); },
+      DbStreamOutputs::self(), &DbStreamOutputs::outputDeviceChanged, this, [&] { onOutputSinkBlocklistChanged(); },
       Qt::QueuedConnection);
 
   connect(
-      DbStreamInputs::self(), &DbStreamInputs::blocklistChanged, this, [&]() { onInputBlocklistChanged(); },
+      DbStreamInputs::self(), &DbStreamInputs::blocklistChanged, this, [&] { onInputBlocklistChanged(); },
       Qt::QueuedConnection);
 
   connect(
-      DbStreamInputs::self(), &DbStreamInputs::blocklistUsesMediaNameChanged, this,
-      [&]() { onInputBlocklistChanged(); }, Qt::QueuedConnection);
-
-  connect(
-      DbMain::self(), &DbMain::inputSourceBlocklistChanged, this, [&]() { onInputSourceBlocklistChanged(); },
+      DbStreamInputs::self(), &DbStreamInputs::blocklistUsesMediaNameChanged, this, [&] { onInputBlocklistChanged(); },
       Qt::QueuedConnection);
 
   connect(
-      DbStreamInputs::self(), &DbStreamInputs::inputDeviceChanged, this, [&]() { onInputSourceBlocklistChanged(); },
+      DbMain::self(), &DbMain::inputSourceBlocklistChanged, this, [&] { onInputSourceBlocklistChanged(); },
+      Qt::QueuedConnection);
+
+  connect(
+      DbStreamInputs::self(), &DbStreamInputs::inputDeviceChanged, this, [&] { onInputSourceBlocklistChanged(); },
       Qt::QueuedConnection);
 }
 

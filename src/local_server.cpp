@@ -39,7 +39,7 @@
 #include "util.hpp"
 
 LocalServer::LocalServer(QObject* parent) : QObject(parent), server(std::make_unique<QLocalServer>(this)) {
-  connect(server.get(), &QLocalServer::newConnection, [&]() {
+  connect(server.get(), &QLocalServer::newConnection, [&] {
     auto* newSocket = server->nextPendingConnection();
 
     connect(newSocket, &QLocalSocket::readyRead, this, &LocalServer::onReadyRead);

@@ -193,8 +193,8 @@ LadspaWrapper::LadspaWrapper(const std::string& plugin_filename, const std::stri
           }
         }
 
-        auto* control_ports = new LADSPA_Data[count]();
-        auto* control_ports_initialized = new bool[count]();
+        auto* control_ports = new LADSPA_Data[count];
+        auto* control_ports_initialized = new bool[count];
 
         h.disable();
 

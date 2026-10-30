@@ -46,7 +46,6 @@
 #include <vector>
 #include "autogain_preset.hpp"
 #include "autotune_preset.hpp"
-#include "harmonizer_preset.hpp"
 #include "bass_enhancer_preset.hpp"
 #include "bass_loudness_preset.hpp"
 #include "compressor_preset.hpp"
@@ -66,14 +65,15 @@
 #include "echo_canceller_preset.hpp"
 #include "equalizer_preset.hpp"
 #include "exciter_preset.hpp"
-#include "midside_equalizer_preset.hpp"
 #include "expander_preset.hpp"
 #include "filter_preset.hpp"
 #include "gate_preset.hpp"
+#include "harmonizer_preset.hpp"
 #include "level_meter_preset.hpp"
 #include "limiter_preset.hpp"
 #include "loudness_preset.hpp"
 #include "maximizer_preset.hpp"
+#include "midside_equalizer_preset.hpp"
 #include "multiband_compressor_preset.hpp"
 #include "multiband_gate_preset.hpp"
 #include "pipeline_type.hpp"
@@ -126,10 +126,10 @@ void Manager::prepare_filesystem_watchers() {
   user_output_watcher.addPath(QString::fromStdString(dir_manager.userOutputDir().string()));
 
   connect(&user_input_watcher, &QFileSystemWatcher::directoryChanged,
-          [&]() { inputListModel->update(dir_manager.getLocalPresetsPaths(PipelineType::input)); });
+          [&] { inputListModel->update(dir_manager.getLocalPresetsPaths(PipelineType::input)); });
 
   connect(&user_output_watcher, &QFileSystemWatcher::directoryChanged,
-          [&]() { outputListModel->update(dir_manager.getLocalPresetsPaths(PipelineType::output)); });
+          [&] { outputListModel->update(dir_manager.getLocalPresetsPaths(PipelineType::output)); });
 }
 
 void Manager::prepare_last_used_preset_key(const PipelineType& pipeline_type) {

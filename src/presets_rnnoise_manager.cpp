@@ -38,8 +38,7 @@ RnnoiseManager::RnnoiseManager(DirectoryManager& directory_manager)
 
   watcher.addPath(QString::fromStdString(dir_manager.userRnnoiseDir().string()));
 
-  connect(&watcher, &QFileSystemWatcher::directoryChanged,
-          [&]() { model->update(dir_manager.getLocalRnnoisePaths()); });
+  connect(&watcher, &QFileSystemWatcher::directoryChanged, [&] { model->update(dir_manager.getLocalRnnoisePaths()); });
 }
 
 auto RnnoiseManager::get_model() -> ListModel* {

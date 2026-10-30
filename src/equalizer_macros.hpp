@@ -20,16 +20,16 @@
 #pragma once
 
 // NOLINTBEGIN(bugprone-macro-parentheses,cppcoreguidelines-macro-usage)
-#define BIND_BAND_PORT(settings_obj, key, getter, setter, onChangedSignal)                                           \
-  {                                                                                                                  \
-    lv2_wrapper->set_control_port_value(key, static_cast<float>(settings_obj->getter()));                            \
-    lv2_wrapper->sync_funcs.emplace_back([&]() { settings_obj->setter(lv2_wrapper->get_control_port_value(key)); }); \
-    connect(settings_obj, &onChangedSignal, [this]() {                                                               \
-      if (this == nullptr || settings_obj == nullptr || lv2_wrapper == nullptr) {                                    \
-        return;                                                                                                      \
-      }                                                                                                              \
-      lv2_wrapper->set_control_port_value(key, static_cast<float>(settings_obj->getter()));                          \
-    });                                                                                                              \
+#define BIND_BAND_PORT(settings_obj, key, getter, setter, onChangedSignal)                                         \
+  {                                                                                                                \
+    lv2_wrapper->set_control_port_value(key, static_cast<float>(settings_obj->getter()));                          \
+    lv2_wrapper->sync_funcs.emplace_back([&] { settings_obj->setter(lv2_wrapper->get_control_port_value(key)); }); \
+    connect(settings_obj, &onChangedSignal, [this] {                                                               \
+      if (this == nullptr || settings_obj == nullptr || lv2_wrapper == nullptr) {                                  \
+        return;                                                                                                    \
+      }                                                                                                            \
+      lv2_wrapper->set_control_port_value(key, static_cast<float>(settings_obj->getter()));                        \
+    });                                                                                                            \
   }
 
 #define BIND_BAND_PORT_DB(settings_obj, key, getter, setter, onChangedSignal, enforceLowerBound)                \
@@ -39,13 +39,13 @@
                         ? 0.0F                                                                                  \
                         : static_cast<float>(util::db_to_linear(db_v));                                         \
     lv2_wrapper->set_control_port_value(key, linear_v);                                                         \
-    lv2_wrapper->sync_funcs.emplace_back([this]() {                                                             \
+    lv2_wrapper->sync_funcs.emplace_back([this] {                                                               \
       const auto linear_v = lv2_wrapper->get_control_port_value(key);                                           \
       const auto db_v =                                                                                         \
           ((enforceLowerBound) & (linear_v == 0.0F)) ? util::minimum_db_d_level : util::linear_to_db(linear_v); \
       settings_obj->setter(db_v);                                                                               \
     });                                                                                                         \
-    connect(settings_obj, &onChangedSignal, [this]() {                                                          \
+    connect(settings_obj, &onChangedSignal, [this] {                                                            \
       if (this == nullptr || settings_obj == nullptr || lv2_wrapper == nullptr) {                               \
         return;                                                                                                 \
       }                                                                                                         \
@@ -196,7 +196,7 @@
 #define UNIFIED_BAND_PORT_BIND(settings_right, settings_left, getter, setter, onChangedSignal) \
   {                                                                                            \
     settings_right->setter(settings_left->getter());                                           \
-    unified_mode_connections.push_back(connect(settings_left, &onChangedSignal, [this]() {     \
+    unified_mode_connections.push_back(connect(settings_left, &onChangedSignal, [this] {       \
       if (this == nullptr || settings_right == nullptr || settings_left == nullptr) {          \
         return;                                                                                \
       }                                                                                        \

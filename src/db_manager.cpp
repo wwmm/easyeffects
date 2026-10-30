@@ -32,7 +32,6 @@
 #include "easyeffects_db.h"
 #include "easyeffects_db_autogain.h"
 #include "easyeffects_db_autotune.h"
-#include "easyeffects_db_harmonizer.h"
 #include "easyeffects_db_bass_enhancer.h"
 #include "easyeffects_db_bass_loudness.h"
 #include "easyeffects_db_compressor.h"
@@ -47,15 +46,16 @@
 #include "easyeffects_db_echo_canceller.h"
 #include "easyeffects_db_equalizer.h"
 #include "easyeffects_db_equalizer_channel.h"
-#include "easyeffects_db_midside_equalizer.h"
 #include "easyeffects_db_exciter.h"
 #include "easyeffects_db_expander.h"
 #include "easyeffects_db_filter.h"
 #include "easyeffects_db_gate.h"
+#include "easyeffects_db_harmonizer.h"
 #include "easyeffects_db_level_meter.h"
 #include "easyeffects_db_limiter.h"
 #include "easyeffects_db_loudness.h"
 #include "easyeffects_db_maximizer.h"
+#include "easyeffects_db_midside_equalizer.h"
 #include "easyeffects_db_multiband_compressor.h"
 #include "easyeffects_db_multiband_gate.h"
 #include "easyeffects_db_pitch.h"
@@ -105,18 +105,18 @@ Manager::Manager(QObject* parent)
   // signals
 
   connect(main, &DbMain::enableServiceModeChanged,
-          []() { QApplication::setQuitOnLastWindowClosed(!DbMain::enableServiceMode()); });
+          [] { QApplication::setQuitOnLastWindowClosed(!DbMain::enableServiceMode()); });
 
   connect(streamInputs, &DbStreamInputs::pluginsChanged,
-          [&]() { create_plugin_db("sie", DbStreamInputs::plugins(), siePluginsDB); });
+          [&] { create_plugin_db("sie", DbStreamInputs::plugins(), siePluginsDB); });
 
   connect(streamOutputs, &DbStreamOutputs::pluginsChanged,
-          [&]() { create_plugin_db("soe", DbStreamOutputs::plugins(), soePluginsDB); });
+          [&] { create_plugin_db("soe", DbStreamOutputs::plugins(), soePluginsDB); });
 
   connect(main, &DbMain::databaseAutosaveIntervalChanged,
-          [&]() { timer->setInterval(DbMain::databaseAutosaveInterval()); });
+          [&] { timer->setInterval(DbMain::databaseAutosaveInterval()); });
 
-  connect(timer, &QTimer::timeout, [&]() { saveAll(); });
+  connect(timer, &QTimer::timeout, [&] { saveAll(); });
 }
 
 Manager::~Manager() {
@@ -230,7 +230,8 @@ void Manager::create_plugin_db(const QString& parentGroup,
     } else if (name.startsWith(tags::plugin_name::BaseName::autotune)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::autotune, id), [&] { return new DbAutotune(parentGroup, id); });
     } else if (name.startsWith(tags::plugin_name::BaseName::harmonizer)) {
-      ensureExists(makeKey(tags::plugin_name::BaseName::harmonizer, id), [&] { return new DbHarmonizer(parentGroup, id); });
+      ensureExists(makeKey(tags::plugin_name::BaseName::harmonizer, id),
+                   [&] { return new DbHarmonizer(parentGroup, id); });
 
     } else if (name.startsWith(tags::plugin_name::BaseName::bassEnhancer)) {
       ensureExists(makeKey(tags::plugin_name::BaseName::bassEnhancer, id),

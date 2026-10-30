@@ -70,7 +70,7 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
 
   connect(
       DbStreamInputs::self(), &DbStreamInputs::inputDeviceChanged, this,
-      [&]() {
+      [&] {
         const auto name = DbStreamInputs::inputDevice();
 
         if (name.isEmpty()) {
@@ -93,7 +93,7 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
 
   connect(
       DbStreamInputs::self(), &DbStreamInputs::pluginsChanged, this,
-      [&]() {
+      [&] {
         if (DbMain::bypass()) {
           DbMain::setBypass(false);
 
@@ -119,7 +119,7 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
 
   connect(
       DbStreamInputs::self(), &DbStreamInputs::listenToMicChanged, this,
-      [&]() {
+      [&] {
         if (DbStreamInputs::listenToMic() && list_proxies.empty()) {
           connect_filters();
         } else {
@@ -130,10 +130,10 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
 
   connect(
       DbStreamInputs::self(), &DbStreamInputs::listenToMicIncludesOutputEffectsChanged, this,
-      [&]() { set_listen_to_mic(DbStreamInputs::listenToMic()); }, Qt::QueuedConnection);
+      [&] { set_listen_to_mic(DbStreamInputs::listenToMic()); }, Qt::QueuedConnection);
 
   connect(
-      DbStreamInputs::self(), &DbStreamInputs::listenToMicVolumeChanged, this, [&]() { set_listen_to_mic_volume(); },
+      DbStreamInputs::self(), &DbStreamInputs::listenToMicVolumeChanged, this, [&] { set_listen_to_mic_volume(); },
       Qt::QueuedConnection);
 
   /**
@@ -143,7 +143,7 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
 
   connect(
       DbStreamOutputs::self(), &DbStreamOutputs::outputDeviceChanged, this,
-      [&]() {
+      [&] {
         if (DbMain::bypass() && DbMain::resetBypassOnDeviceChange()) {
           DbMain::setBypass(false);
 
@@ -207,7 +207,7 @@ auto StreamInputEffects::apps_want_to_play() -> bool {
 }
 
 void StreamInputEffects::update_pipeline() {
-  auto rebuild = [this]() {
+  auto rebuild = [this] {
     if (apps_want_to_play()) {
       if (list_proxies.empty()) {
         util::debug("At least one app linked to our device wants to play. Linking our filters.");
@@ -218,7 +218,7 @@ void StreamInputEffects::update_pipeline() {
       if (DbMain::inputInactivityTimerEnable()) {
         // if the timer is enabled, wait for the timeout, then unlink plugin pipeline
 
-        QTimer::singleShot(DbMain::inputInactivityTimeout() * 1000, this, [this]() {
+        QTimer::singleShot(DbMain::inputInactivityTimeout() * 1000, this, [this] {
           if (!apps_want_to_play() && !list_proxies.empty()) {
             util::debug("No app linked to our device wants to play. Unlinking our filters.");
 
@@ -237,7 +237,7 @@ void StreamInputEffects::update_pipeline() {
   };
 
   if (DbMain::linkDelayEnable()) {
-    QTimer::singleShot(DbMain::linkDelay(), this, [rebuild]() { rebuild(); });
+    QTimer::singleShot(DbMain::linkDelay(), this, [rebuild] { rebuild(); });
   } else {
     rebuild();
   }
@@ -259,7 +259,7 @@ void StreamInputEffects::on_link_changed(const pw::LinkInfo link_info) {
 }
 
 void StreamInputEffects::on_link_removed() {
-  QTimer::singleShot(DbMain::inputInactivityTimeout() * 1000, this, [&]() {
+  QTimer::singleShot(DbMain::inputInactivityTimeout() * 1000, this, [&] {
     if (DbMain::inputInactivityTimerEnable() && !apps_want_to_play() && !list_proxies.empty()) {
       util::debug("No app linked to our device wants to play. Unlinking our filters.");
 
@@ -353,13 +353,11 @@ void StreamInputEffects::connect_filters() {
         continue;
       }
 
-      if (name.startsWith(tags::plugin_name::BaseName::echoCanceller)) {
-        if (plugins[name]->connected_to_pw) {
-          auto output_device = pm->model_nodes.get_node_by_name(DbStreamOutputs::outputDevice());
+      if (name.startsWith(tags::plugin_name::BaseName::echoCanceller) && plugins[name]->connected_to_pw) {
+        auto output_device = pm->model_nodes.get_node_by_name(DbStreamOutputs::outputDevice());
 
-          for (const auto& link : pm->link_nodes(output_device.id, plugins[name]->get_node_id(), true)) {
-            list_proxies.push_back(link);
-          }
+        for (const auto& link : pm->link_nodes(output_device.id, plugins[name]->get_node_id(), true)) {
+          list_proxies.push_back(link);
         }
       }
 
@@ -416,12 +414,11 @@ void StreamInputEffects::disconnect_filters() {
       }
     }
 
-    if (plugin->connected_to_pw) {
-      if (std::ranges::find(selected_plugins_list, plugin->name) == selected_plugins_list.end()) {
-        util::debug(std::format("Disconnecting the {} filter from PipeWire", plugin->name.toStdString()));
+    if (plugin->connected_to_pw &&
+        std::ranges::find(selected_plugins_list, plugin->name) == selected_plugins_list.end()) {
+      util::debug(std::format("Disconnecting the {} filter from PipeWire", plugin->name.toStdString()));
 
-        plugin->disconnect_from_pw();
-      }
+      plugin->disconnect_from_pw();
     }
 
     plugin->clear_data();

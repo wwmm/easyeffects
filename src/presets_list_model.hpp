@@ -45,7 +45,7 @@ class ListModel : public QAbstractListModel {
     DeviceName,
     DeviceDescription,
     DeviceProfile,
-    DevicePreset
+    DevicePreset,
   };
   Q_ENUM(Roles)
 

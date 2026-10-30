@@ -63,9 +63,11 @@ MidSideEqualizer::MidSideEqualizer(const std::string& tag,
                  pipe_manager,
                  pipe_type),
       settings(db::Manager::self().get_plugin_db<DbMidSideEqualizer>(
-          pipe_type, tags::plugin_name::BaseName::midsideEqualizer + "#" + instance_id)),
+          pipe_type,
+          tags::plugin_name::BaseName::midsideEqualizer + "#" + instance_id)),
       settings_mid(db::Manager::self().get_plugin_db<DbEqualizerChannel>(
-          pipe_type, tags::plugin_name::BaseName::midsideEqualizer + "#" + instance_id + "#mid")),
+          pipe_type,
+          tags::plugin_name::BaseName::midsideEqualizer + "#" + instance_id + "#mid")),
       settings_side(db::Manager::self().get_plugin_db<DbEqualizerChannel>(
           pipe_type,
           tags::plugin_name::BaseName::midsideEqualizer + "#" + instance_id + "#side")) {
@@ -94,7 +96,7 @@ MidSideEqualizer::MidSideEqualizer(const std::string& tag,
 
   on_split_channels();
 
-  connect(settings, &DbMidSideEqualizer::numBandsChanged, [&]() {
+  connect(settings, &DbMidSideEqualizer::numBandsChanged, [&] {
     for (int n = 0; n < max_bands; n++) {
       if (n >= settings->numBands()) {  // turn off unused bands
         settings_mid->setProperty(tags::equalizer::band_type[n].data(), 0);
@@ -106,7 +108,7 @@ MidSideEqualizer::MidSideEqualizer(const std::string& tag,
     }
   });
 
-  connect(settings, &DbMidSideEqualizer::splitChannelsChanged, [&]() { on_split_channels(); });
+  connect(settings, &DbMidSideEqualizer::splitChannelsChanged, [&] { on_split_channels(); });
 }
 
 MidSideEqualizer::~MidSideEqualizer() {
@@ -290,11 +292,11 @@ void MidSideEqualizer::process(std::span<float>& left_in,
 }
 
 void MidSideEqualizer::process([[maybe_unused]] std::span<float>& left_in,
-                                [[maybe_unused]] std::span<float>& right_in,
-                                [[maybe_unused]] std::span<float>& left_out,
-                                [[maybe_unused]] std::span<float>& right_out,
-                                [[maybe_unused]] std::span<float>& probe_left,
-                                [[maybe_unused]] std::span<float>& probe_right) {}
+                               [[maybe_unused]] std::span<float>& right_in,
+                               [[maybe_unused]] std::span<float>& left_out,
+                               [[maybe_unused]] std::span<float>& right_out,
+                               [[maybe_unused]] std::span<float>& probe_left,
+                               [[maybe_unused]] std::span<float>& probe_right) {}
 
 void MidSideEqualizer::sortBands() {
   struct EQ_Band {
@@ -330,14 +332,14 @@ void MidSideEqualizer::sortBands() {
 
       sorted_bands.emplace(
           std::pair<double, struct EQ_Band>(f, {.freq = f,
-                                                 .type = channel->property(band_type[n].data()).value<int>(),
-                                                 .mode = channel->property(band_mode[n].data()).value<int>(),
-                                                 .slope = channel->property(band_slope[n].data()).value<int>(),
-                                                 .gain = channel->property(band_gain[n].data()).value<double>(),
-                                                 .q = channel->property(band_q[n].data()).value<double>(),
-                                                 .width = channel->property(band_width[n].data()).value<double>(),
-                                                 .solo = channel->property(band_solo[n].data()).value<bool>(),
-                                                 .mute = channel->property(band_mute[n].data()).value<bool>()}));
+                                                .type = channel->property(band_type[n].data()).value<int>(),
+                                                .mode = channel->property(band_mode[n].data()).value<int>(),
+                                                .slope = channel->property(band_slope[n].data()).value<int>(),
+                                                .gain = channel->property(band_gain[n].data()).value<double>(),
+                                                .q = channel->property(band_q[n].data()).value<double>(),
+                                                .width = channel->property(band_width[n].data()).value<double>(),
+                                                .solo = channel->property(band_solo[n].data()).value<bool>(),
+                                                .mute = channel->property(band_mute[n].data()).value<bool>()}));
     }
 
     for (int n = 0; const auto& p : sorted_bands) {

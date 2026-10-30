@@ -31,7 +31,7 @@ class StreamInputEffects : public EffectsBase {
   QML_SINGLETON
 
  public:
-  StreamInputEffects(pw::Manager* pipe_manager);
+  explicit StreamInputEffects(pw::Manager* pipe_manager);
   StreamInputEffects(const StreamInputEffects&) = delete;
   auto operator=(const StreamInputEffects&) -> StreamInputEffects& = delete;
   StreamInputEffects(const StreamInputEffects&&) = delete;

@@ -267,14 +267,14 @@ TestSignals::TestSignals(pw::Manager* pipe_manager) : pm(pipe_manager), random_g
 
   set_channel(DbTestSignals::channels());
 
-  connect(DbTestSignals::self(), &DbTestSignals::enableChanged, [this]() { set_state(DbTestSignals::enable()); });
+  connect(DbTestSignals::self(), &DbTestSignals::enableChanged, [this] { set_state(DbTestSignals::enable()); });
 
   connect(DbTestSignals::self(), &DbTestSignals::frequencyChanged,
-          [this]() { set_frequency(DbTestSignals::frequency()); });
+          [this] { set_frequency(DbTestSignals::frequency()); });
 
-  connect(DbTestSignals::self(), &DbTestSignals::channelsChanged, [this]() { set_channel(DbTestSignals::channels()); });
+  connect(DbTestSignals::self(), &DbTestSignals::channelsChanged, [this] { set_channel(DbTestSignals::channels()); });
 
-  connect(DbTestSignals::self(), &DbTestSignals::signalTypeChanged, [this]() {
+  connect(DbTestSignals::self(), &DbTestSignals::signalTypeChanged, [this] {
     if (!hearing_test) {
       pm->lock();
       signal_type = static_cast<TestSignalType>(DbTestSignals::signalType());

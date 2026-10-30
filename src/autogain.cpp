@@ -54,7 +54,7 @@ Autogain::Autogain(const std::string& tag, pw::Manager* pipe_manager, PipelineTy
 
   // specific plugin controls
 
-  connect(settings, &DbAutogain::maximumHistoryChanged, [&]() {
+  connect(settings, &DbAutogain::maximumHistoryChanged, [&] {
     std::scoped_lock<std::mutex> lock(data_mutex);
 
     set_maximum_history(settings->maximumHistory());

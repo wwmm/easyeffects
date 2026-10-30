@@ -83,12 +83,12 @@ StereoTools::StereoTools(const std::string& tag, pw::Manager* pipe_manager, Pipe
 
   wet = (settings->wet() <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(settings->wet()));
 
-  connect(settings, &DbStereoTools::dryChanged, [&]() {
+  connect(settings, &DbStereoTools::dryChanged, [&] {
     dry =
         (settings->dry() <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(settings->dry()));
   });
 
-  connect(settings, &DbStereoTools::wetChanged, [&]() {
+  connect(settings, &DbStereoTools::wetChanged, [&] {
     wet =
         (settings->wet() <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(settings->wet()));
   });

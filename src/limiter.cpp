@@ -63,8 +63,8 @@ Limiter::Limiter(const std::string& tag, pw::Manager* pipe_manager, PipelineType
 
   // specific plugin controls
 
-  connect(settings, &DbLimiter::sidechainTypeChanged, [&]() { update_sidechain_links(); });
-  connect(settings, &DbLimiter::sidechainInputDeviceChanged, [&]() { update_sidechain_links(); });
+  connect(settings, &DbLimiter::sidechainTypeChanged, [&] { update_sidechain_links(); });
+  connect(settings, &DbLimiter::sidechainInputDeviceChanged, [&] { update_sidechain_links(); });
 
   BIND_LV2_PORT("mode", mode, setMode, DbLimiter::modeChanged);
   BIND_LV2_PORT("ovs", oversampling, setOversampling, DbLimiter::oversamplingChanged);

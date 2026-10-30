@@ -69,24 +69,24 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
 
   wet = (settings->wet() <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(settings->wet()));
 
-  connect(settings, &DbConvolver::kernelNameChanged, [&]() { load_kernel_file(true, rate); });
+  connect(settings, &DbConvolver::kernelNameChanged, [&] { load_kernel_file(true, rate); });
 
-  connect(settings, &DbConvolver::irWidthChanged, [&]() {
+  connect(settings, &DbConvolver::irWidthChanged, [&] {
     std::scoped_lock<std::mutex> lock(data_mutex);
     zita.update_ir_width_and_autogain(settings->irWidth(), settings->autogain(), true);
   });
 
-  connect(settings, &DbConvolver::autogainChanged, [&]() {
+  connect(settings, &DbConvolver::autogainChanged, [&] {
     std::scoped_lock<std::mutex> lock(data_mutex);
     zita.update_ir_width_and_autogain(settings->irWidth(), settings->autogain(), true);
   });
 
-  connect(settings, &DbConvolver::dryChanged, [&]() {
+  connect(settings, &DbConvolver::dryChanged, [&] {
     dry =
         (settings->dry() <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(settings->dry()));
   });
 
-  connect(settings, &DbConvolver::wetChanged, [&]() {
+  connect(settings, &DbConvolver::wetChanged, [&] {
     wet =
         (settings->wet() <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(settings->wet()));
   });

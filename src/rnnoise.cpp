@@ -84,16 +84,16 @@ RNNoise::RNNoise(const std::string& tag, pw::Manager* pipe_manager, PipelineType
   wet_ratio =
       (settings->wet() <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(settings->wet()));
 
-  connect(settings, &DbRNNoise::useStandardModelChanged, [&]() { prepare_model(); });
+  connect(settings, &DbRNNoise::useStandardModelChanged, [&] { prepare_model(); });
 
-  connect(settings, &DbRNNoise::modelNameChanged, [&]() { prepare_model(); });
+  connect(settings, &DbRNNoise::modelNameChanged, [&] { prepare_model(); });
 
-  connect(settings, &DbRNNoise::wetChanged, [&]() {
+  connect(settings, &DbRNNoise::wetChanged, [&] {
     wet_ratio =
         (settings->wet() <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(settings->wet()));
   });
 
-  connect(settings, &DbRNNoise::releaseChanged, [&]() { init_release(); });
+  connect(settings, &DbRNNoise::releaseChanged, [&] { init_release(); });
 
   auto* m = get_model_from_name();
 
