@@ -60,7 +60,7 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
             return;  // filter connected through update_bypass_state
           }
 
-          set_bypass(DbMain::bypass());
+          set_bypass();
 
           presets::Manager::self().autoload(PipelineType::output, node.name, node.device_route_description);
         }
@@ -92,7 +92,7 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
             return;  // filter connected through update_bypass_state
           }
 
-          set_bypass(DbMain::bypass());
+          set_bypass();
 
           presets::Manager::self().autoload(PipelineType::output, node.name, node.device_route_description);
         }
@@ -108,13 +108,13 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
           return;  // filter connected through update_bypass_state
         }
 
-        set_bypass(false);
+        set_bypass();
       },
       Qt::QueuedConnection);
 
   connect(
-      DbStreamOutputs::self(), &DbStreamOutputs::linkToVirtualSourceChanged, this,
-      [&] { set_bypass(DbMain::bypass()); }, Qt::QueuedConnection);
+      DbStreamOutputs::self(), &DbStreamOutputs::linkToVirtualSourceChanged, this, [&] { set_bypass(); },
+      Qt::QueuedConnection);
 
   connect(pm, &pw::Manager::linkChanged, this, &StreamOutputEffects::on_link_changed, Qt::QueuedConnection);
 
@@ -221,12 +221,6 @@ void StreamOutputEffects::on_link_changed(const pw::LinkInfo link_info) {
     return;
   }
 
-  // If bypass is enabled do not touch the plugin pipeline
-
-  if (bypass) {
-    return;
-  }
-
   update_pipeline();
 }
 
@@ -240,7 +234,7 @@ void StreamOutputEffects::on_link_removed() {
   });
 }
 
-void StreamOutputEffects::connect_filters(const bool& bypass) {
+void StreamOutputEffects::connect_filters() {
   /**
    * In the past we were connecting the filters from EE sink to the output
    * device:
@@ -328,7 +322,7 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
 
   next_node_id = prev_node_id;
 
-  const auto list = bypass ? QStringList() : DbStreamOutputs::plugins();
+  const auto list = DbMain::bypass() ? QStringList() : DbStreamOutputs::plugins();
 
   if (!list.empty()) {
     for (const auto& name : std::ranges::reverse_view(list)) {
@@ -412,7 +406,7 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
 void StreamOutputEffects::disconnect_filters() {
   std::set<uint> link_id_list;
 
-  const auto selected_plugins_list = bypass ? QStringList() : DbStreamOutputs::plugins();
+  const auto selected_plugins_list = DbMain::bypass() ? QStringList() : DbStreamOutputs::plugins();
 
   for (const auto& plugin : plugins | std::views::values) {
     if (plugin == nullptr) {
@@ -457,27 +451,10 @@ void StreamOutputEffects::disconnect_filters() {
   Q_EMIT filtersLinkedChanged();
 }
 
-void StreamOutputEffects::set_bypass(const bool& state) {
-  pending_bypass_state = state;
+void StreamOutputEffects::set_bypass() {
+  disconnect_filters();
 
-  if (bypass_transition_active) {
-    bypass_transition_pending = true;
-
-    return;
-  }
-
-  bypass_transition_active = true;
-
-  do {
-    bypass_transition_pending = false;
-    bypass = pending_bypass_state;
-
-    disconnect_filters();
-
-    connect_filters(bypass);
-  } while (bypass_transition_pending);
-
-  bypass_transition_active = false;
+  connect_filters();
 
   Q_EMIT pipelineChanged();
 }

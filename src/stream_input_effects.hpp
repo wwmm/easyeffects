@@ -58,7 +58,7 @@ class StreamInputEffects : public EffectsBase {
     return singletonInstance;
   }
 
-  void set_bypass(const bool& state);
+  void set_bypass();
 
   void set_listen_to_mic(const bool& state);
 
@@ -69,12 +69,7 @@ class StreamInputEffects : public EffectsBase {
 
   std::unique_ptr<MicrophoneMonitor> microphone_monitor;
 
-  bool bypass = false;
-  bool bypass_transition_active = false;
-  bool bypass_transition_pending = false;
-  bool pending_bypass_state = false;
-
-  void connect_filters(const bool& bypass = false);
+  void connect_filters();
 
   void disconnect_filters();
 

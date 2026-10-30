@@ -13,6 +13,7 @@ Description:
 
 - Bug fixes∶
 - Preset autoload at startup now works also for devices with "Pro Audio" profile.
+- In some situations the pipeline was not rebuilt while the global bypass was enabled.
 
 - Other notes∶
 - HushMic package should be installed in order to use DPDFNet model inside the Deep Noise Remover effect.

@@ -234,7 +234,7 @@ auto NodeManager::registerNode(pw_registry* registry, uint32_t id, const char* t
   nd->nd_info->proxy = proxy;
   nd->nd_info->serial = serial;
   nd->nd_info->id = id;
-  nd->nd_info->media_role = media_role;
+  nd->nd_info->media_role = std::move(media_role);
   nd->nd_info->media_class = media_class;
   nd->nd_info->name = node_name;
 

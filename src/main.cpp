@@ -201,8 +201,8 @@ static void initGlobalBypass(StreamInputEffects& sie, StreamOutputEffects& soe) 
   bypass_coalescer->setSingleShot(true);
 
   auto update_bypass_state = [&]() {
-    soe.set_bypass(DbMain::bypass());
-    sie.set_bypass(DbMain::bypass());
+    soe.set_bypass();
+    sie.set_bypass();
 
     util::debug((DbMain::bypass() ? "Enabling global bypass" : "Disabling global bypass"));
   };
@@ -222,9 +222,11 @@ static void initQml(QQmlApplicationEngine& engine,
                     bool& show_window) {
   KLocalization::setupLocalizedContext(&engine);
 
-  engine.setInitialProperties({{"applicationName", APPLICATION_NAME},
-                               {"applicationId", APPLICATION_ID},
-                               {"canUseSysTray", QSystemTrayIcon::isSystemTrayAvailable()}});
+  engine.setInitialProperties({
+      {"applicationName", APPLICATION_NAME},
+      {"applicationId", APPLICATION_ID},
+      {"canUseSysTray", QSystemTrayIcon::isSystemTrayAvailable()},
+  });
 
   QObject::connect(&engine, &QQmlApplicationEngine::objectCreated, [&](QObject* object, const QUrl& url) {
     if (url.toString() == "qrc:/qt/qml/ee/ui/contents/ui/Main.qml") {

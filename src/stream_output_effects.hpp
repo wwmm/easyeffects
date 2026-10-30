@@ -57,17 +57,12 @@ class StreamOutputEffects : public EffectsBase {
     return singletonInstance;
   }
 
-  void set_bypass(const bool& state);
+  void set_bypass();
 
  private:
   void autoload_current_device();
 
-  bool bypass = false;
-  bool bypass_transition_active = false;
-  bool bypass_transition_pending = false;
-  bool pending_bypass_state = false;
-
-  void connect_filters(const bool& bypass = false);
+  void connect_filters();
 
   void disconnect_filters();
 
