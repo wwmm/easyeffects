@@ -177,6 +177,7 @@ The following properties can be modified or queried via the [local server](../us
 | **deepfilternet** | `inputGain` | Double | `0` |
 | **deepfilternet** | `outputGain` | Double | `0` |
 | **deepfilternet** | `model` | Enum | `0` <br><small>(Choices: 0: `DeepFilterNet`, 1: `DPDFNet`)</small> |
+| **deepfilternet** | `monoProcessing` | Bool | `false` |
 | **deepfilternet** | `attenuationLimit` | Double | `100` |
 | **deepfilternet** | `minProcessingThreshold` | Double | `-10` |
 | **deepfilternet** | `maxErbProcessingThreshold` | Double | `30` |
@@ -332,6 +333,17 @@ The following properties can be modified or queried via the [local server](../us
 | **gate** | `sidechainToLink` | Double | `-80.01` |
 | **gate** | `linkToSidechain` | Double | `-80.01` |
 | **gate** | `linkToInput` | Double | `-80.01` |
+| **harmonizer** | `bypass` | Bool | `false` |
+| **harmonizer** | `inputGain` | Double | `0` |
+| **harmonizer** | `outputGain` | Double | `0` |
+| **harmonizer** | `dryWet` | Int | `63` |
+| **harmonizer** | `intervalLeft` | Int | `4` |
+| **harmonizer** | `intervalRight` | Int | `7` |
+| **harmonizer** | `note` | Int | `0` |
+| **harmonizer** | `chord` | Int | `0` |
+| **harmonizer** | `chordMode` | Bool | `true` |
+| **harmonizer** | `gainLeft` | Int | `0` |
+| **harmonizer** | `gainRight` | Int | `0` |
 | **level_meter** | `bypass` | Bool | `false` |
 | **limiter** | `bypass` | Bool | `false` |
 | **limiter** | `inputGain` | Double | `0` |
@@ -861,6 +873,7 @@ The following properties can be modified or queried via the [local server](../us
 | **rnnoise** | `release` | Double | `20.0` |
 | **spectrum** | `state` | Bool | `true` |
 | **spectrum** | `dynamicYScale` | Bool | `true` |
+| **spectrum** | `autoRangeMinimumSpan` | Double | `30` |
 | **spectrum** | `logarithmicHorizontalAxis` | Bool | `true` |
 | **spectrum** | `spectrumShape` | Enum | `0` <br><small>(Choices: 0: `Bars`, 1: `Lines`, 2: `Dots`, 3: `Area`)</small> |
 | **spectrum** | `nPoints` | Int | `100` |
@@ -869,6 +882,14 @@ The following properties can be modified or queried via the [local server](../us
 | **spectrum** | `maximumFrequency` | Int | `20000` |
 | **spectrum** | `avsyncDelay` | Int | `0` |
 | **spectrum** | `spectrumFpsCap` | Int | `60` |
+| **spectrum** | `fftSize` | Enum | `3` <br><small>(Choices: 0: `s1024`, 1: `s2048`, 2: `s4096`, 3: `s8192`, 4: `s16384`)</small> |
+| **spectrum** | `zeroPadding` | Enum | `0` <br><small>(Choices: 0: `x1`, 1: `x2`, 2: `x4`, 3: `x8`)</small> |
+| **spectrum** | `windowFunction` | Enum | `1` <br><small>(Choices: 0: `rectangular`, 1: `hann`, 2: `hamming`, 3: `blackman`, 4: `blackmanHarris`, 5: `flatTop`)</small> |
+| **spectrum** | `attackTime` | Int | `0` |
+| **spectrum** | `decayTime` | Int | `5` |
+| **spectrum** | `minimumLevel` | Double | `-90` |
+| **spectrum** | `maximumLevel` | Double | `0` |
+| **spectrum** | `slope` | Double | `0` |
 | **speex** | `bypass` | Bool | `false` |
 | **speex** | `inputGain` | Double | `0` |
 | **speex** | `outputGain` | Double | `0` |

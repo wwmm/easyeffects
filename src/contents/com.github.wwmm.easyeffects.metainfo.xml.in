@@ -64,6 +64,28 @@
     <color type="primary" scheme_preference="dark">#004079</color>
   </branding>
   <releases>
+    <release type="stable" version="8.3.1" date="2026-10-30T00:00:00Z">
+      <description>
+        <ul>
+          <li>Features:</li>
+          <li>Added the new DPDFNet model to the Deep Noise Remover effect.</li>
+          <li>Added a sample peak meter alongside the true peak meter in the Level Meter effect.</li>
+          <li>Added the Harmonizer effect.</li>
+          <li>Improved spectrum performance.</li>
+          <li>The inactivity timeout has been split into separate settings for the input and output pipelines,
+          which can be enabled and set independently. Existing settings are copied to both.</li>
+          <li>The blocklist has been changed to exclude also the applications that have the stream name
+          starting with the word in the list.</li>
+          <li>Bug fixes:</li>
+          <li>Preset autoload at startup now works also for devices with "Pro Audio" profile.</li>
+          <li>In some situations the pipeline was not rebuilt while the global bypass was enabled.</li>
+          <li>Other notes:</li>
+          <li>HushMic package should be installed in order to use DPDFNet model inside the Deep Noise
+          Remover effect.</li>
+          <li>The rakarrack-plus package should be installed in order to use the Harmonizer effect.</li>
+        </ul>
+      </description>
+    </release>
     <release type="stable" version="8.3.0" date="2026-09-29T00:00:00Z">
       <description>
         <ul>

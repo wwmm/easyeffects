@@ -4,6 +4,20 @@ Date: UNRELEASED_DATE
 
 Description: 
 - Features∶
+- 
+
+- Bug fixes∶
+- 
+
+- Other notes∶
+- 
+
+---
+Version: 8.3.1
+Date: 2026-10-30
+
+Description: 
+- Features∶
 - Added the new DPDFNet model to the Deep Noise Remover effect.
 - Added a sample peak meter alongside the true peak meter in the Level Meter effect.
 - Added the Harmonizer effect.

@@ -824,6 +824,8 @@
       
         
       
+        
+      
     
     
     
@@ -1386,6 +1388,34 @@
     
   
     Gate
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../plugins/harmonizer.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Harmonizer
   
 
     
@@ -2117,6 +2147,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Test Signal
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="testsignals.html" class="md-nav__link md-nav__link--active">
         
   
@@ -2133,6 +2181,36 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#hearing-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hearing Test
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -2194,6 +2272,25 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#hearing-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hearing Test
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2222,6 +2319,11 @@ Choose if apply the test signal to left or right channel only, or both.</p>
 The type of the signal: sine wave or white noise.</p>
 <p><strong>Frequency</strong><br />
 The frequency of the sine wave.</p>
+<h2 id="hearing-test">Hearing Test</h2>
+<p>Open <strong>Hearing Test</strong> from an output Equalizer to create a listening profile for your headphones. Pause other audio, choose a comfortable system volume, and keep the headphones and volume unchanged throughout the test. Disable the regular test signal before starting.</p>
+<p>For each ear, the test measures six frequencies from 250 Hz to 8 kHz. Each tone starts at a quiet level and plays for at most 1.5 seconds. Adjust <strong>Tone Level</strong>, play it again, and select <strong>Record Threshold</strong> when it is barely audible. Cancel if a tone is uncomfortable or cannot be heard within the available range. Changing the output device or its route cancels the test. The tones go directly to the selected output, bypassing the effects pipeline.</p>
+<p><strong>Apply Personalized EQ</strong> replaces the current Equalizer settings with separate bell filters for the left and right channels. Each band's gain is half the difference between its threshold and the lowest measured threshold across both ears, capped at 6 dB. Input gain is reduced by the larger sum of the channel gains to preserve headroom. These settings can be adjusted normally and saved in a preset for the tested headphones.</p>
+<p>The thresholds are relative digital levels, not calibrated sound pressure or audiometric measurements. The result includes the response of the headphones and the listening environment. This is a subjective listening adjustment, not a diagnosis or a hearing aid prescription.</p>
 
 
 
