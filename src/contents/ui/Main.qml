@@ -510,11 +510,16 @@ Kirigami.ApplicationWindow {
         }
     }
 
-    footer: Kirigami.InlineMessage {
+    // Overlay instead of footer: resizing the window layout while toolbars are being set up crashes Qt.
+    Kirigami.InlineMessage {
         id: statusMessage
 
-        Layout.fillWidth: true
-        Layout.maximumWidth: parent.width
+        parent: Controls.Overlay.overlay
+        anchors {
+            left: parent.left
+            right: parent.right
+            bottom: parent.bottom
+        }
         visible: false
         showCloseButton: true
     }

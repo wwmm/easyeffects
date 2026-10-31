@@ -73,7 +73,7 @@ Kirigami.Dialog {
             id: listviewRow
 
             ListView {
-                id: listView
+                id: mListView
 
                 clip: true
                 reuseItems: true
@@ -85,7 +85,7 @@ Kirigami.Dialog {
                 Kirigami.PlaceholderMessage {
                     anchors.centerIn: parent
                     width: parent.width - (Kirigami.Units.largeSpacing * 4)
-                    visible: listView.count === 0
+                    visible: mListView.count === 0
                     text: i18n("Empty List") // qmllint disable
                 }
 
@@ -97,7 +97,7 @@ Kirigami.Dialog {
 
                     hoverEnabled: true
                     highlighted: false
-                    width: listView.width
+                    width: mListView.width
                     onClicked: {
                         control.pluginDB.kernelName = name;
                     }

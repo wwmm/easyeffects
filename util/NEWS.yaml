@@ -13,6 +13,18 @@ Description:
 - 
 
 ---
+Version: 8.3.2
+Date: 2026-10-31
+
+Description: 
+- Features∶
+
+- Bug fixes∶
+- using an overlay to show notifications in order to avoid layout issues. Putting the inline message inside the main window footer can causes Qt crashes in some cases.
+
+- Other notes∶
+
+---
 Version: 8.3.1
 Date: 2026-10-30
 
