@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-30 14:50-0300\n"
-"PO-Revision-Date: 2026-10-30 23:26+0000\n"
+"PO-Revision-Date: 2026-10-31 13:51+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remus-"
 "gabriel@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
@@ -399,27 +399,27 @@ msgstr "Minoră"
 #: src/contents/ui/Autotune.qml:270
 msgctxt "Musical note"
 msgid "C♯"
-msgstr ""
+msgstr "Do#"
 
 #: src/contents/ui/Autotune.qml:288
 msgctxt "Musical note"
 msgid "D♯"
-msgstr ""
+msgstr "Re#"
 
 #: src/contents/ui/Autotune.qml:315
 msgctxt "Musical note"
 msgid "F♯"
-msgstr ""
+msgstr "Fa#"
 
 #: src/contents/ui/Autotune.qml:333
 msgctxt "Musical note"
 msgid "G♯"
-msgstr ""
+msgstr "Sol#"
 
 #: src/contents/ui/Autotune.qml:351
 msgctxt "Musical note"
 msgid "A♯"
-msgstr ""
+msgstr "La♯"
 
 #: src/contents/ui/Autotune.qml:377 src/contents/ui/Deesser.qml:276
 msgid "Level"
@@ -956,11 +956,11 @@ msgstr "Separare stereo"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:49
 msgid "Imported a new Convolver impulse file."
-msgstr "A fost importat un nou fișier de impuls al algoritmului de convoluție."
+msgstr "A fost importat un nou fișier de impuls al procesorului de convoluție."
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:51
 msgid "Failed to import the Convolver impulse file."
-msgstr "Importarea fișierului de impuls al algoritmului de convoluție a eșuat."
+msgstr "Importarea fișierului de impuls al procesorului de convoluție a eșuat."
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:65
 #: src/contents/ui/MenuAddPlugins.qml:186
@@ -980,11 +980,11 @@ msgstr ""
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:113
 msgid "Removed the %1 Convolver impulse."
-msgstr "S-a eliminat impulsul algoritmului de convoluție %1."
+msgstr "S-a eliminat impulsul procesorului de convoluție %1."
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:115
 msgid "Failed to remove the %1 Convolver impulse."
-msgstr "Eliminarea impulsului algoritmului de convoluție %1 a eșuat."
+msgstr "Eliminarea impulsului procesorului de convoluție %1 a eșuat."
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:123
 msgid "Rename Impulse"
@@ -1030,21 +1030,23 @@ msgstr "Închide"
 
 #: src/contents/ui/Convolver.qml:66
 msgid "Loaded the %1 Convolver impulse."
-msgstr "S-a încărcat impulsul algoritmului de convoluție %1."
+msgstr "S-a încărcat impulsul procesorului de convoluție %1."
 
 #: src/contents/ui/Convolver.qml:68 src/contents/ui/Convolver.qml:342
 msgid "Convolver impulse is not set"
-msgstr "Impulsul algoritmului de convoluție nu este definit"
+msgstr "Impulsul procesorului de convoluție nu este definit"
 
 #: src/contents/ui/Convolver.qml:72
 msgid "The Convolver is in passthrough mode."
-msgstr "Algoritmul de convoluție este în modul „passthrough”."
+msgstr ""
+"Procesorul de convoluție este în modul de trecere directă a semnalului „"
+"passthrough”."
 
 #: src/contents/ui/Convolver.qml:74
 msgid "Failed to load the %1 impulse. The Convolver is in passthrough mode."
 msgstr ""
-"Încărcarea impulsului %1 a eșuat. Algoritmul de convoluție este în modul "
-"„passthrough”."
+"Încărcarea impulsului %1 a eșuat. Procesorul de convoluție este în modul de "
+"trecere directă a semnalului „passthrough”."
 
 #: src/contents/ui/Convolver.qml:151
 msgctxt "Convolver impulse selection"
@@ -1163,20 +1165,18 @@ msgid "Apply"
 msgstr "Aplică"
 
 #: src/contents/ui/Crossfeed.qml:79
-#, fuzzy
 msgctxt "Crossfeed control"
 msgid "Cutoff"
 msgstr "Tăiere"
 
 #: src/contents/ui/Crossfeed.qml:95
-#, fuzzy
 msgctxt "Crossfeed control"
 msgid "Feed"
-msgstr "Flux"
+msgstr "Nivel de amestec"
 
 #: src/contents/ui/Crossfeed.qml:114
 msgid "Crossfeed Presets"
-msgstr "Preconfigurări pentru flux încrucișat"
+msgstr "Preconfigurări pentru amestecare încrucișată"
 
 #: src/contents/ui/Crossfeed.qml:118
 msgid "Default"
@@ -1335,16 +1335,14 @@ msgid "Detection"
 msgstr "Detectare"
 
 #: src/contents/ui/Deesser.qml:93
-#, fuzzy
 msgctxt "Deesser mode"
 msgid "Wideband"
 msgstr "Bandă largă"
 
 #: src/contents/ui/Deesser.qml:93
-#, fuzzy
 msgctxt "Deesser mode"
 msgid "Split"
-msgstr "Separare"
+msgstr "Bandă divizată"
 
 #: src/contents/ui/Deesser.qml:102 src/contents/ui/Gate.qml:135
 #: src/contents/ui/Gate.qml:187 src/contents/ui/Gate.qml:922
@@ -1495,28 +1493,24 @@ msgid "Strength"
 msgstr "Intensitate"
 
 #: src/contents/ui/EchoCanceller.qml:111
-#, fuzzy
 msgctxt "Echo canceller strength"
 msgid "Low"
-msgstr "Jos"
+msgstr "Scăzută"
 
 #: src/contents/ui/EchoCanceller.qml:111
-#, fuzzy
 msgctxt "Echo canceller strength"
 msgid "Moderate"
-msgstr "Moderat"
+msgstr "Moderată"
 
 #: src/contents/ui/EchoCanceller.qml:111
-#, fuzzy
 msgctxt "Echo canceller strength"
 msgid "High"
-msgstr "Înalt"
+msgstr "Ridicată"
 
 #: src/contents/ui/EchoCanceller.qml:111
-#, fuzzy
 msgctxt "Echo canceller strength"
 msgid "Very high"
-msgstr "Foarte înalt"
+msgstr "Foarte ridicată"
 
 #: src/contents/ui/EchoCanceller.qml:121
 msgid "High-Pass Filter"
@@ -1553,104 +1547,87 @@ msgid "Band"
 msgstr "Bandă"
 
 #: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
-#, fuzzy
 msgctxt "Filter type"
 msgid "Bell"
 msgstr "Clopot"
 
 #: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
-#, fuzzy
 msgctxt "Filter type"
 msgid "High-shelf"
-msgstr "Reglaj trece-sus"
+msgstr "Atenuare/Accentuară înalte"
 
 #: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
-#, fuzzy
 msgctxt "Filter type"
 msgid "Low-shelf"
-msgstr "Reglaj trece-jos"
+msgstr "Atenuare/Accentuară joase"
 
 #: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
-#, fuzzy
 msgctxt "Filter type"
 msgid "Notch"
-msgstr "Decupaj de bandă"
+msgstr "Decupaj de frecvență"
 
 #: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
-#, fuzzy
 msgctxt "Filter type"
 msgid "Resonance"
 msgstr "Rezonanță"
 
 #: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
-#, fuzzy
 msgctxt "Filter type"
 msgid "Allpass"
 msgstr "Trece-tot"
 
 #: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
-#, fuzzy
 msgctxt "Filter type"
 msgid "Bandpass"
 msgstr "Trece-bandă"
 
 #: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
-#, fuzzy
 msgctxt "Filter type"
 msgid "Ladder-pass"
 msgstr "Trece-scară"
 
 #: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
-#, fuzzy
 msgctxt "Filter type"
 msgid "Ladder-rejection"
 msgstr "Rejectare-scară"
 
 #: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
-#, fuzzy
 msgctxt "Filter mode"
 msgid "RLC (BT)"
 msgstr "RLC (BT)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
-#, fuzzy
 msgctxt "Filter mode"
 msgid "RLC (MT)"
 msgstr "RLC (MT)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
-#, fuzzy
 msgctxt "Filter mode"
 msgid "BWC (BT)"
 msgstr "BWC (BT)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
-#, fuzzy
 msgctxt "Filter mode"
 msgid "BWC (MT)"
 msgstr "BWC (MT)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
-#, fuzzy
 msgctxt "Filter mode"
 msgid "LRX (BT)"
 msgstr "LRX (BT)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
-#, fuzzy
 msgctxt "Filter mode"
 msgid "LRX (MT)"
 msgstr "LRX (MT)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
-#, fuzzy
 msgctxt "Filter mode"
 msgid "APO (DR)"
 msgstr "APO (DR)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:75 src/contents/ui/Filter.qml:121
 #: src/contents/ui/PreferencesSheet.qml:722
-#, fuzzy
 msgctxt "Filter parameter"
 msgid "Slope"
 msgstr "Pantă"
@@ -1676,7 +1653,6 @@ msgstr "oct"
 #: src/contents/ui/EqualizerBandMenu.qml:199
 #: src/contents/ui/MultibandCompressor.qml:99
 #: src/contents/ui/MultibandGate.qml:99
-#, fuzzy
 msgctxt "Audio isolation"
 msgid "Solo"
 msgstr "Solo"
