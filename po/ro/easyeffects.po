@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-30 14:50-0300\n"
-"PO-Revision-Date: 2026-10-31 13:51+0000\n"
-"Last-Translator: Remus-Gabriel Chelu <remus-"
-"gabriel@users.noreply.hosted.weblate.org>\n"
+"PO-Revision-Date: 2026-11-01 02:51+0000\n"
+"Last-Translator: Giusy Digital <digitalone1@users.noreply.hosted.weblate.org>"
+"\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ro/>\n"
 "Language: ro\n"
@@ -399,22 +399,22 @@ msgstr "Minoră"
 #: src/contents/ui/Autotune.qml:270
 msgctxt "Musical note"
 msgid "C♯"
-msgstr "Do#"
+msgstr "Do♯"
 
 #: src/contents/ui/Autotune.qml:288
 msgctxt "Musical note"
 msgid "D♯"
-msgstr "Re#"
+msgstr "Re♯"
 
 #: src/contents/ui/Autotune.qml:315
 msgctxt "Musical note"
 msgid "F♯"
-msgstr "Fa#"
+msgstr "Fa♯"
 
 #: src/contents/ui/Autotune.qml:333
 msgctxt "Musical note"
 msgid "G♯"
-msgstr "Sol#"
+msgstr "Sol♯"
 
 #: src/contents/ui/Autotune.qml:351
 msgctxt "Musical note"
@@ -1916,7 +1916,7 @@ msgstr "Re♯ / Mi♭"
 #: src/contents/ui/Harmonizer.qml:63
 msgctxt "Musical note"
 msgid "F♯ / G♭"
-msgstr "Fa♯ / sol♭"
+msgstr "Fa♯ / Sol♭"
 
 #: src/contents/ui/Harmonizer.qml:69
 msgctxt "Musical note"
