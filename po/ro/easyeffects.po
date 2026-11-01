@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-30 14:50-0300\n"
-"PO-Revision-Date: 2026-10-31 13:51+0000\n"
+"PO-Revision-Date: 2026-11-01 02:51+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remus-"
 "gabriel@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
@@ -1728,27 +1728,23 @@ msgstr ""
 
 #: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
 #: src/contents/ui/Loudness.qml:77 src/contents/ui/MidSideEqualizer.qml:142
-#, fuzzy
 msgctxt "Filter mode"
 msgid "IIR"
 msgstr "IIR"
 
 #: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
 #: src/contents/ui/MidSideEqualizer.qml:142
-#, fuzzy
 msgctxt "Filter mode"
 msgid "FIR"
 msgstr "FIR"
 
 #: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
 #: src/contents/ui/Loudness.qml:77 src/contents/ui/MidSideEqualizer.qml:142
-#, fuzzy
 msgctxt "Filter mode"
 msgid "FFT"
 msgstr "FFT"
 
 #: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
-#, fuzzy
 msgctxt "Filter mode"
 msgid "SPM"
 msgstr "SPM"
@@ -1838,7 +1834,6 @@ msgid "Ceil active"
 msgstr "Plafonare activă"
 
 #: src/contents/ui/Exciter.qml:172
-#, fuzzy
 msgctxt "Exciter control"
 msgid "Ceil"
 msgstr "Plafonare"
@@ -1850,7 +1845,6 @@ msgstr "Expandare"
 #: src/contents/ui/Expander.qml:226 src/contents/ui/Gate.qml:244
 #: src/contents/ui/Limiter.qml:217 src/contents/ui/MultibandCompressor.qml:427
 #: src/contents/ui/MultibandGate.qml:400
-#, fuzzy
 msgctxt "Sidchain type"
 msgid "Internal"
 msgstr "Intern"
@@ -1858,7 +1852,6 @@ msgstr "Intern"
 #: src/contents/ui/Expander.qml:226 src/contents/ui/Gate.qml:244
 #: src/contents/ui/Limiter.qml:217 src/contents/ui/MultibandCompressor.qml:427
 #: src/contents/ui/MultibandGate.qml:400
-#, fuzzy
 msgctxt "Sidchain type"
 msgid "External"
 msgstr "Extern"
@@ -1866,7 +1859,6 @@ msgstr "Extern"
 #: src/contents/ui/Expander.qml:226 src/contents/ui/Gate.qml:244
 #: src/contents/ui/Limiter.qml:217 src/contents/ui/MultibandCompressor.qml:427
 #: src/contents/ui/MultibandGate.qml:400
-#, fuzzy
 msgctxt "Sidchain type"
 msgid "Link"
 msgstr "Legătură"
@@ -2119,7 +2111,6 @@ msgid "Right voice level"
 msgstr "Nivel voce dreapta"
 
 #: src/contents/ui/Harmonizer.qml:245
-#, fuzzy
 msgctxt "Signal type"
 msgid "Dry/wet"
 msgstr "Semnal direct/semnal procesat"
@@ -2165,7 +2156,6 @@ msgstr ""
 "de testare obișnuite înainte de a începe."
 
 #: src/contents/ui/HearingTestDialog.qml:141
-#, fuzzy
 msgctxt "Left/right ear: frequency Hz (number of total)"
 msgid "%1 ear: %2 Hz (%3 of %4)"
 msgstr "Urechea %1: %2 Hz (%3 din %4)"
@@ -2219,73 +2209,61 @@ msgid "Sample Peak"
 msgstr "Vârful eșantionului"
 
 #: src/contents/ui/Limiter.qml:76
-#, fuzzy
 msgctxt "Limiter mode"
 msgid "Herm thin"
 msgstr "Filtru „Hermite thin”"
 
 #: src/contents/ui/Limiter.qml:76
-#, fuzzy
 msgctxt "Limiter mode"
 msgid "Herm wide"
 msgstr "Filtru „Hermite wide”"
 
 #: src/contents/ui/Limiter.qml:76
-#, fuzzy
 msgctxt "Limiter mode"
 msgid "Herm tail"
 msgstr "Filtru „Hermite tail”"
 
 #: src/contents/ui/Limiter.qml:76
-#, fuzzy
 msgctxt "Limiter mode"
 msgid "Herm duck"
 msgstr "Filtru „Hermite duck”"
 
 #: src/contents/ui/Limiter.qml:76
-#, fuzzy
 msgctxt "Limiter mode"
 msgid "Exp thin"
 msgstr "Filtru „Exp thin”"
 
 #: src/contents/ui/Limiter.qml:76
-#, fuzzy
 msgctxt "Limiter mode"
 msgid "Exp wide"
 msgstr "Filtru „Exp wide”"
 
 #: src/contents/ui/Limiter.qml:76
-#, fuzzy
 msgctxt "Limiter mode"
 msgid "Exp tail"
 msgstr "Filtru „Exp tail”"
 
 #: src/contents/ui/Limiter.qml:76
-#, fuzzy
 msgctxt "Limiter mode"
 msgid "Exp duck"
 msgstr "Filtru „Exp duck”"
 
 #: src/contents/ui/Limiter.qml:76
-#, fuzzy
 msgctxt "Limiter mode"
 msgid "Line thin"
 msgstr "Filtru „Line thin”"
 
 #: src/contents/ui/Limiter.qml:76
-#, fuzzy
 msgctxt "Limiter mode"
 msgid "Line wide"
 msgstr "Filtru „Line wide”"
 
 #: src/contents/ui/Limiter.qml:76
-#, fuzzy
 msgctxt "Limiter mode"
 msgid "Line tail"
 msgstr "Filtru „Line tail”"
 
 #: src/contents/ui/Limiter.qml:76
-#, fuzzy
 msgctxt "Limiter mode"
 msgid "Line duck"
 msgstr "Filtru „Line duck”"
@@ -2411,31 +2389,26 @@ msgid "Contour"
 msgstr "Contur"
 
 #: src/contents/ui/Loudness.qml:91
-#, fuzzy
 msgctxt "Loudness contour"
 msgid "Flat"
 msgstr "Plat"
 
 #: src/contents/ui/Loudness.qml:91
-#, fuzzy
 msgctxt "Loudness contour"
 msgid "ISO226-2003"
 msgstr "ISO226-2003"
 
 #: src/contents/ui/Loudness.qml:91
-#, fuzzy
 msgctxt "Loudness contour"
 msgid "Fletcher-Munson"
 msgstr "Fletcher-Munson"
 
 #: src/contents/ui/Loudness.qml:91
-#, fuzzy
 msgctxt "Loudness contour"
 msgid "Robinson-Dadson"
 msgstr "Robinson-Dadson"
 
 #: src/contents/ui/Loudness.qml:91
-#, fuzzy
 msgctxt "Loudness contour"
 msgid "ISO226-2023"
 msgstr "ISO226-2023"
@@ -2449,34 +2422,29 @@ msgid "IIR approximation"
 msgstr "Aproximarea IIR"
 
 #: src/contents/ui/Loudness.qml:119
-#, fuzzy
 msgctxt "Loudness IIR approximation"
 msgid "Fastest"
-msgstr "Cel mai rapid"
+msgstr "Cea mai rapidă"
 
 #: src/contents/ui/Loudness.qml:119
-#, fuzzy
 msgctxt "Loudness IIR approximation"
 msgid "Low"
-msgstr "Jos"
+msgstr "Scăzută"
 
 #: src/contents/ui/Loudness.qml:119
-#, fuzzy
 msgctxt "Loudness IIR approximation"
 msgid "Normal"
-msgstr "Normal"
+msgstr "Normală"
 
 #: src/contents/ui/Loudness.qml:119
-#, fuzzy
 msgctxt "Loudness IIR approximation"
 msgid "High"
-msgstr "Înalt"
+msgstr "Ridicată"
 
 #: src/contents/ui/Loudness.qml:119
-#, fuzzy
 msgctxt "Loudness IIR approximation"
 msgid "Best"
-msgstr "Optim"
+msgstr "Cea mai bună"
 
 #: src/contents/ui/Loudness.qml:129
 msgid "Volume"
@@ -2521,13 +2489,11 @@ msgid "Audio effects are disabled."
 msgstr "Efectele audio sunt dezactivate."
 
 #: src/contents/ui/Main.qml:405 src/contents/ui/PageStreamsEffects.qml:491
-#, fuzzy
 msgctxt "Applications reproducing audio"
 msgid "Players"
 msgstr "Reproducătoare"
 
 #: src/contents/ui/Main.qml:421 src/contents/ui/PageStreamsEffects.qml:500
-#, fuzzy
 msgctxt "Devices recording audio"
 msgid "Recorders"
 msgstr "Înregistrătoare"
@@ -2542,7 +2508,6 @@ msgid "Shortcuts"
 msgstr "Taste de comenzi rapide"
 
 #: src/contents/ui/Main.qml:469 src/contents/ui/TrayIcon.qml:221
-#, fuzzy
 msgctxt "Usage guide"
 msgid "Manual"
 msgstr "Manual"
@@ -2631,13 +2596,11 @@ msgid "Pitch side"
 msgstr "Înălțime laterală"
 
 #: src/contents/ui/MidSideEqualizer.qml:244
-#, fuzzy
 msgctxt "Stereo component"
 msgid "Mid"
-msgstr "Centrală"
+msgstr "Mijloc"
 
 #: src/contents/ui/MidSideEqualizer.qml:244
-#, fuzzy
 msgctxt "Stereo component"
 msgid "Side"
 msgstr "Lateral"
@@ -2657,14 +2620,12 @@ msgstr "Sfârșit"
 
 #: src/contents/ui/MultibandCompressor.qml:517
 #: src/contents/ui/MultibandGate.qml:490
-#, fuzzy
 msgctxt "Filter type"
 msgid "Low-cut"
 msgstr "Filtru taie-jos"
 
 #: src/contents/ui/MultibandCompressor.qml:542
 #: src/contents/ui/MultibandGate.qml:515
-#, fuzzy
 msgctxt "Filter type"
 msgid "High-cut"
 msgstr "Filtru taie-sus"
@@ -2676,21 +2637,18 @@ msgstr "Modul de operare"
 
 #: src/contents/ui/MultibandCompressor.qml:578
 #: src/contents/ui/MultibandGate.qml:551
-#, fuzzy
 msgctxt "Compressor mode"
 msgid "Classic"
 msgstr "Clasic"
 
 #: src/contents/ui/MultibandCompressor.qml:578
 #: src/contents/ui/MultibandGate.qml:551
-#, fuzzy
 msgctxt "Compressor mode"
 msgid "Modern"
 msgstr "Modern"
 
 #: src/contents/ui/MultibandCompressor.qml:578
 #: src/contents/ui/MultibandGate.qml:551
-#, fuzzy
 msgctxt "Compressor mode"
 msgid "Linear phase"
 msgstr "Fază liniară"
@@ -2702,38 +2660,33 @@ msgstr "Intensificare lanț lateral"
 
 #: src/contents/ui/MultibandCompressor.qml:591
 #: src/contents/ui/MultibandGate.qml:564
-#, fuzzy
 msgctxt "Sidechain boost"
 msgid "None"
 msgstr "Niciunul"
 
 #: src/contents/ui/MultibandCompressor.qml:591
 #: src/contents/ui/MultibandGate.qml:564
-#, fuzzy
 msgctxt "Sidechain boost"
 msgid "Pink BT"
 msgstr "Roz BT"
 
 #: src/contents/ui/MultibandCompressor.qml:591
 #: src/contents/ui/MultibandGate.qml:564
-#, fuzzy
 msgctxt "Sidechain boost"
 msgid "Pink MT"
 msgstr "Roz MT"
 
 #: src/contents/ui/MultibandCompressor.qml:591
 #: src/contents/ui/MultibandGate.qml:564
-#, fuzzy
 msgctxt "Sidechain boost"
 msgid "Brown BT"
-msgstr "Maron BT"
+msgstr "Maro BT"
 
 #: src/contents/ui/MultibandCompressor.qml:591
 #: src/contents/ui/MultibandGate.qml:564
-#, fuzzy
 msgctxt "Sidechain boost"
 msgid "Brown MT"
-msgstr "Maron MT"
+msgstr "Maro MT"
 
 #: src/contents/ui/MultibandCompressor.qml:601
 #: src/contents/ui/MultibandGate.qml:574
@@ -2898,7 +2851,6 @@ msgid "Enabled"
 msgstr "Activat"
 
 #: src/contents/ui/PipeWirePage.qml:368
-#, fuzzy
 msgctxt "Channel selection"
 msgid "Both"
 msgstr "Ambele"
@@ -2920,7 +2872,6 @@ msgid "Pink noise"
 msgstr "Zgomot Roz"
 
 #: src/contents/ui/PipeWirePage.qml:420
-#, fuzzy
 msgctxt "Waveform"
 msgid "Silence"
 msgstr "Liniște"
@@ -2942,13 +2893,11 @@ msgid "Pitch"
 msgstr "Înălțime tonalitate"
 
 #: src/contents/ui/Pitch.qml:191
-#, fuzzy
 msgctxt "Musical interval"
 msgid "Cents"
 msgstr "Centisunete (U.M.=cent)"
 
 #: src/contents/ui/Pitch.qml:207
-#, fuzzy
 msgctxt "Musical interval"
 msgid "Semitones"
 msgstr "Semitonuri"
@@ -3220,35 +3169,30 @@ msgid "Graph"
 msgstr "Grafic"
 
 #: src/contents/ui/PreferencesSheet.qml:558
-#, fuzzy
 msgctxt "Spectrum shape"
 msgid "Bars"
 msgstr "Bare"
 
 #: src/contents/ui/PreferencesSheet.qml:558
-#, fuzzy
 msgctxt "Spectrum shape"
 msgid "Lines"
 msgstr "Linii"
 
 #: src/contents/ui/PreferencesSheet.qml:558
-#, fuzzy
 msgctxt "Spectrum shape"
 msgid "Dots"
 msgstr "Puncte"
 
 #: src/contents/ui/PreferencesSheet.qml:558
-#, fuzzy
 msgctxt "Spectrum shape"
 msgid "Area"
-msgstr "Zona"
+msgstr "Zonă"
 
 #: src/contents/ui/PreferencesSheet.qml:568
 msgid "Logarithmic frequency axis"
 msgstr "Axa frecvenței logaritmice"
 
 #: src/contents/ui/PreferencesSheet.qml:580
-#, fuzzy
 msgctxt "Spectrum control"
 msgid "Points"
 msgstr "Puncte"
@@ -3327,43 +3271,36 @@ msgid "Window function"
 msgstr "Funcție de fereastră"
 
 #: src/contents/ui/PreferencesSheet.qml:772
-#, fuzzy
 msgctxt "Spectrum function"
 msgid "Rectangular"
 msgstr "Rectangulară"
 
 #: src/contents/ui/PreferencesSheet.qml:772
-#, fuzzy
 msgctxt "Spectrum function"
 msgid "Hann"
 msgstr "Hann"
 
 #: src/contents/ui/PreferencesSheet.qml:772
-#, fuzzy
 msgctxt "Spectrum function"
 msgid "Hamming"
 msgstr "Hamming"
 
 #: src/contents/ui/PreferencesSheet.qml:772
-#, fuzzy
 msgctxt "Spectrum function"
 msgid "Blackman"
 msgstr "Blackman"
 
 #: src/contents/ui/PreferencesSheet.qml:772
-#, fuzzy
 msgctxt "Spectrum function"
 msgid "Blackman-Harris"
 msgstr "Blackman-Harris"
 
 #: src/contents/ui/PreferencesSheet.qml:772
-#, fuzzy
 msgctxt "Spectrum function"
 msgid "Flat top"
 msgstr "Vârf plat"
 
 #: src/contents/ui/PreferencesSheet.qml:780
-#, fuzzy
 msgctxt "Spectrum control"
 msgid "Attack"
 msgstr "Atac"
@@ -3429,19 +3366,16 @@ msgid "Graphs"
 msgstr "Grafice"
 
 #: src/contents/ui/PreferencesSheet.qml:924
-#, fuzzy
 msgctxt "Color scheme"
 msgid "Automatic"
 msgstr "Automat"
 
 #: src/contents/ui/PreferencesSheet.qml:924
-#, fuzzy
 msgctxt "Color scheme"
 msgid "Light"
 msgstr "Luminoasă"
 
 #: src/contents/ui/PreferencesSheet.qml:924
-#, fuzzy
 msgctxt "Color scheme"
 msgid "Dark"
 msgstr "Întunecată"
@@ -3479,10 +3413,9 @@ msgid "Grey"
 msgstr "Gri"
 
 #: src/contents/ui/PreferencesSheet.qml:939
-#, fuzzy
 msgctxt "Color theme"
 msgid "User"
-msgstr "Utilizator"
+msgstr "Personalizată"
 
 #: src/contents/ui/PreferencesSheet.qml:947
 msgctxt "@label"
@@ -3601,7 +3534,6 @@ msgid "Description"
 msgstr "Descriere"
 
 #: src/contents/ui/PresetsCommunityPage.qml:78
-#, fuzzy
 msgctxt "Update data"
 msgid "Refresh"
 msgstr "Actualizare"
@@ -3628,19 +3560,16 @@ msgstr ""
 "locale a eșuat."
 
 #: src/contents/ui/PresetsDialog.qml:99 src/contents/ui/PresetsDialog.qml:156
-#, fuzzy
 msgctxt "Preset type"
 msgid "Local"
 msgstr "Local"
 
 #: src/contents/ui/PresetsDialog.qml:107 src/contents/ui/PresetsDialog.qml:156
-#, fuzzy
 msgctxt "Preset type"
 msgid "Community"
 msgstr "Comunitate"
 
 #: src/contents/ui/PresetsDialog.qml:115
-#, fuzzy
 msgctxt "Preset type"
 msgid "Autoload"
 msgstr "Încărcare automată"
@@ -3769,37 +3698,31 @@ msgid "Room size"
 msgstr "Dimensiunea camerei"
 
 #: src/contents/ui/Reverb.qml:70
-#, fuzzy
 msgctxt "Reverb room size"
 msgid "Small"
 msgstr "Mică"
 
 #: src/contents/ui/Reverb.qml:70
-#, fuzzy
 msgctxt "Reverb room size"
 msgid "Medium"
 msgstr "Medie"
 
 #: src/contents/ui/Reverb.qml:70
-#, fuzzy
 msgctxt "Reverb room size"
 msgid "Large"
 msgstr "Mare"
 
 #: src/contents/ui/Reverb.qml:70
-#, fuzzy
 msgctxt "Reverb room size"
 msgid "Tunnel-like"
 msgstr "Ca un tunel"
 
 #: src/contents/ui/Reverb.qml:70
-#, fuzzy
 msgctxt "Reverb room size"
 msgid "Large/smooth"
-msgstr "Mare/neted"
+msgstr "Mare/netedă"
 
 #: src/contents/ui/Reverb.qml:70
-#, fuzzy
 msgctxt "Reverb room size"
 msgid "Experimental"
 msgstr "Experimental"
@@ -3833,37 +3756,31 @@ msgid "Reverberation Presets"
 msgstr "Preconfigurări reverberație"
 
 #: src/contents/ui/Reverb.qml:232
-#, fuzzy
 msgctxt "Reverb preset"
 msgid "Ambience"
 msgstr "Ambianță"
 
 #: src/contents/ui/Reverb.qml:247
-#, fuzzy
 msgctxt "Reverb preset"
 msgid "Empty walls"
 msgstr "Pereți goi"
 
 #: src/contents/ui/Reverb.qml:262
-#, fuzzy
 msgctxt "Reverb preset"
 msgid "Room"
 msgstr "Cameră"
 
 #: src/contents/ui/Reverb.qml:277
-#, fuzzy
 msgctxt "Reverb preset"
 msgid "Large empty hall"
 msgstr "Sală mare goală"
 
 #: src/contents/ui/Reverb.qml:287
-#, fuzzy
 msgctxt "Reverb preset"
 msgid "Disco"
 msgstr "Discotecă"
 
 #: src/contents/ui/Reverb.qml:297
-#, fuzzy
 msgctxt "Reverb preset"
 msgid "Large occupied hall"
 msgstr "Sală mare ocupată"
@@ -3883,10 +3800,9 @@ msgstr "Model standard RNNoise"
 
 #: src/contents/ui/RNNoise.qml:73 src/contents/ui/RNNoise.qml:84
 #: src/contents/ui/RNNoise.qml:298 src/contents/ui/RNNoise.qml:300
-#, fuzzy
 msgctxt "RNNoise model in use"
 msgid "Using %1"
-msgstr "Utilizând %1"
+msgstr "Se utilizează %1"
 
 #: src/contents/ui/RNNoise.qml:75
 msgid "Standard RNNoise model loaded."
@@ -3914,10 +3830,9 @@ msgid "Wet level"
 msgstr "Nivelul umed"
 
 #: src/contents/ui/RNNoise.qml:158
-#, fuzzy
 msgctxt "Noise reduction control"
 msgid "Release"
-msgstr "Eliberare"
+msgstr "Restaurare"
 
 #: src/contents/ui/RNNoise.qml:182
 msgid "Use the Standard model"
@@ -4204,49 +4119,41 @@ msgid "Generic error while loading the effect"
 msgstr "Eroare generică în timpul încărcării efectului"
 
 #: src/pw_model_nodes.cpp:510
-#, fuzzy
 msgctxt "Status of PipeWire stream"
 msgid "Running"
 msgstr "În execuție"
 
 #: src/pw_model_nodes.cpp:512
-#, fuzzy
 msgctxt "Status of PipeWire stream"
 msgid "Suspended"
 msgstr "Suspendat"
 
 #: src/pw_model_nodes.cpp:514
-#, fuzzy
 msgctxt "Status of PipeWire stream"
 msgid "Idle"
 msgstr "Inactiv"
 
 #: src/pw_model_nodes.cpp:516
-#, fuzzy
 msgctxt "Status of PipeWire stream"
 msgid "Creating"
 msgstr "Se creează"
 
 #: src/pw_model_nodes.cpp:518
-#, fuzzy
 msgctxt "Status of PipeWire stream"
 msgid "Error"
 msgstr "Eroare"
 
 #: src/pw_model_nodes.cpp:520
-#, fuzzy
 msgctxt "Status of PipeWire stream"
 msgid "Unknown"
 msgstr "Necunoscut"
 
 #: src/tags_plugin_name.cpp:47
-#, fuzzy
 msgctxt "Effect title"
 msgid "Autogain"
 msgstr "Câștig automat"
 
 #: src/tags_plugin_name.cpp:48
-#, fuzzy
 msgctxt "Effect title"
 msgid "Autotune"
 msgstr "Reglare automată"
@@ -4288,7 +4195,6 @@ msgid "Deep Noise Remover"
 msgstr "Eliminator al zgomotului profund"
 
 #: src/tags_plugin_name.cpp:60
-#, fuzzy
 msgctxt "Effect title"
 msgid "Delay"
 msgstr "Întârziere"
@@ -4306,13 +4212,11 @@ msgid "Exciter"
 msgstr "Excitator"
 
 #: src/tags_plugin_name.cpp:66
-#, fuzzy
 msgctxt "Effect title"
 msgid "Filter"
 msgstr "Filtru"
 
 #: src/tags_plugin_name.cpp:67
-#, fuzzy
 msgctxt "Effect title"
 msgid "Gate"
 msgstr "Nivel de trecere (poartă)"
@@ -4322,7 +4226,6 @@ msgid "Level Meter"
 msgstr "Vumetru"
 
 #: src/tags_plugin_name.cpp:70
-#, fuzzy
 msgctxt "Effect title"
 msgid "Loudness"
 msgstr "Intensitate sonoră"
@@ -4340,7 +4243,6 @@ msgid "Multiband Gate"
 msgstr "Poartă multibandă"
 
 #: src/tags_plugin_name.cpp:74
-#, fuzzy
 msgctxt "Effect title"
 msgid "Pitch"
 msgstr "Înălțime tonalitate"
@@ -4436,7 +4338,6 @@ msgid "LUFS"
 msgstr "LUFS"
 
 #: src/units.hpp:79
-#, fuzzy
 msgctxt "semitone unit (music interval) abbreviation"
 msgid "st"
 msgstr "st"

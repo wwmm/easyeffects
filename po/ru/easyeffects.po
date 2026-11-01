@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-30 14:50-0300\n"
-"PO-Revision-Date: 2026-10-29 23:01+0000\n"
+"PO-Revision-Date: 2026-11-01 02:51+0000\n"
 "Last-Translator: Andrei Stepanov <adem@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -387,7 +387,6 @@ msgid "B"
 msgstr "B"
 
 #: src/contents/ui/Autotune.qml:231
-#, fuzzy
 msgctxt "Autotune modified note"
 msgid "Accidental"
 msgstr "Знак альтерации"
@@ -405,27 +404,27 @@ msgstr "Минор"
 #: src/contents/ui/Autotune.qml:270
 msgctxt "Musical note"
 msgid "C♯"
-msgstr ""
+msgstr "C♯"
 
 #: src/contents/ui/Autotune.qml:288
 msgctxt "Musical note"
 msgid "D♯"
-msgstr ""
+msgstr "D♯"
 
 #: src/contents/ui/Autotune.qml:315
 msgctxt "Musical note"
 msgid "F♯"
-msgstr ""
+msgstr "F♯"
 
 #: src/contents/ui/Autotune.qml:333
 msgctxt "Musical note"
 msgid "G♯"
-msgstr ""
+msgstr "G♯"
 
 #: src/contents/ui/Autotune.qml:351
 msgctxt "Musical note"
 msgid "A♯"
-msgstr ""
+msgstr "A♯"
 
 #: src/contents/ui/Autotune.qml:377 src/contents/ui/Deesser.qml:276
 msgid "Level"
@@ -2519,7 +2518,7 @@ msgstr "Проигрыватели"
 #: src/contents/ui/Main.qml:421 src/contents/ui/PageStreamsEffects.qml:500
 msgctxt "Devices recording audio"
 msgid "Recorders"
-msgstr "Записывающие устройства"
+msgstr "Звукозапись"
 
 #: src/contents/ui/Main.qml:441
 msgid "Preferences"
@@ -3579,7 +3578,7 @@ msgstr ""
 #: src/contents/ui/PresetsDialog.qml:99 src/contents/ui/PresetsDialog.qml:156
 msgctxt "Preset type"
 msgid "Local"
-msgstr "Локальный"
+msgstr "Локально"
 
 #: src/contents/ui/PresetsDialog.qml:107 src/contents/ui/PresetsDialog.qml:156
 msgctxt "Preset type"
