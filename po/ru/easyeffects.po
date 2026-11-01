@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-30 14:50-0300\n"
-"PO-Revision-Date: 2026-11-01 02:51+0000\n"
+"PO-Revision-Date: 2026-11-01 04:08+0000\n"
 "Last-Translator: Andrei Stepanov <adem@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -709,7 +709,7 @@ msgstr "Пиковый"
 #: src/contents/ui/MultibandGate.qml:411
 msgctxt "Sidechain mode"
 msgid "RMS"
-msgstr "Среднеквадратичный (RMS)"
+msgstr "Сред. квад. (RMS)"
 
 #: src/contents/ui/Compressor.qml:305 src/contents/ui/Expander.qml:265
 #: src/contents/ui/Gate.qml:283 src/contents/ui/MultibandCompressor.qml:438
@@ -723,7 +723,7 @@ msgstr "Фильтр НЧ"
 #: src/contents/ui/MultibandGate.qml:411
 msgctxt "Sidechain mode"
 msgid "SMA"
-msgstr "Скользящее среднее (SMA)"
+msgstr "Скользящ. сред. (SMA)"
 
 # #, fuzzy
 #: src/contents/ui/Compressor.qml:315 src/contents/ui/Compressor.qml:330
@@ -1615,32 +1615,32 @@ msgstr "Лестничный заграждающий"
 #: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
 msgctxt "Filter mode"
 msgid "RLC (BT)"
-msgstr "RLC (БТ)"
+msgstr "RLC (БП)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
 msgctxt "Filter mode"
 msgid "RLC (MT)"
-msgstr "RLC (МТ)"
+msgstr "RLC (СП)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
 msgctxt "Filter mode"
 msgid "BWC (BT)"
-msgstr "BWC (БТ)"
+msgstr "BWC (БП)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
 msgctxt "Filter mode"
 msgid "BWC (MT)"
-msgstr "BWC (МТ)"
+msgstr "BWC (СП)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
 msgctxt "Filter mode"
 msgid "LRX (BT)"
-msgstr "LRX (БТ)"
+msgstr "LRX (БП)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
 msgctxt "Filter mode"
 msgid "LRX (MT)"
-msgstr "LRX (МТ)"
+msgstr "LRX (СП)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
 msgctxt "Filter mode"
@@ -1763,7 +1763,7 @@ msgstr "БПФ (FFT)"
 #: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
 msgctxt "Filter mode"
 msgid "SPM"
-msgstr "SPM"
+msgstr "Спектр (SPM)"
 
 #: src/contents/ui/Equalizer.qml:158 src/contents/ui/Filter.qml:107
 #: src/contents/ui/MidSideEqualizer.qml:152
@@ -2383,7 +2383,7 @@ msgstr "Истинный пик/24 бита"
 
 #: src/contents/ui/Limiter.qml:100
 msgid "Dithering"
-msgstr "Дизеринг (зашумление)"
+msgstr "Зашумление (дизеринг)"
 
 #: src/contents/ui/Limiter.qml:116 src/tags_plugin_name.cpp:69
 msgid "Limiter"
@@ -2418,7 +2418,7 @@ msgstr "Плоский"
 #: src/contents/ui/Loudness.qml:91
 msgctxt "Loudness contour"
 msgid "ISO226-2003"
-msgstr "ISO226-2003"
+msgstr "ИСО 226:2003"
 
 #: src/contents/ui/Loudness.qml:91
 msgctxt "Loudness contour"
@@ -2433,7 +2433,7 @@ msgstr "Робинсон-Дадсон"
 #: src/contents/ui/Loudness.qml:91
 msgctxt "Loudness contour"
 msgid "ISO226-2023"
-msgstr "ISO226-2023"
+msgstr "ИСО 226:2023"
 
 # Taking lingual shortcuts to squeeze it in the text box
 #: src/contents/ui/Loudness.qml:101 src/contents/ui/PreferencesSheet.qml:743
@@ -2688,25 +2688,25 @@ msgstr "Нет"
 #: src/contents/ui/MultibandGate.qml:564
 msgctxt "Sidechain boost"
 msgid "Pink BT"
-msgstr "Розовый БТ"
+msgstr "БП розового"
 
 #: src/contents/ui/MultibandCompressor.qml:591
 #: src/contents/ui/MultibandGate.qml:564
 msgctxt "Sidechain boost"
 msgid "Pink MT"
-msgstr "Розовый МТ"
+msgstr "СП розового"
 
 #: src/contents/ui/MultibandCompressor.qml:591
 #: src/contents/ui/MultibandGate.qml:564
 msgctxt "Sidechain boost"
 msgid "Brown BT"
-msgstr "Коричневый БТ"
+msgstr "БП коричневого"
 
 #: src/contents/ui/MultibandCompressor.qml:591
 #: src/contents/ui/MultibandGate.qml:564
 msgctxt "Sidechain boost"
 msgid "Brown MT"
-msgstr "Коричневый МТ"
+msgstr "СП коричневого"
 
 # #, fuzzy
 #: src/contents/ui/MultibandCompressor.qml:601
@@ -3489,7 +3489,7 @@ msgid ""
 "If enabled, the list of excluded apps set in the loaded preset is ignored "
 "and does not replace the one set by the user."
 msgstr ""
-"Если включено, список исключённых приложений, установленный в загруженной "
+"Если включено, список исключённых приложений, настроенный в загруженной "
 "предустановке, игнорируется и не заменяет список, заданный пользователем."
 
 #: src/contents/ui/PreferencesSheet.qml:1072
@@ -4173,7 +4173,7 @@ msgstr "Автоусиление"
 #: src/tags_plugin_name.cpp:48
 msgctxt "Effect title"
 msgid "Autotune"
-msgstr "Автотюн"
+msgstr "Автоподстройка тона"
 
 #: src/tags_plugin_name.cpp:49
 msgid "Harmonizer"
@@ -4239,7 +4239,7 @@ msgstr "Фильтр"
 #: src/tags_plugin_name.cpp:67
 msgctxt "Effect title"
 msgid "Gate"
-msgstr "Гейт"
+msgstr "Шлюз (гейт)"
 
 #: src/tags_plugin_name.cpp:68
 msgid "Level Meter"
