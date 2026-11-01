@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-30 14:50-0300\n"
-"PO-Revision-Date: 2026-10-31 13:51+0000\n"
+"PO-Revision-Date: 2026-11-01 17:51+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -2199,7 +2199,7 @@ msgstr "Pic Réel"
 
 #: src/contents/ui/LevelMeter.qml:147
 msgid "Sample Peak"
-msgstr "Pic de l'Échantillon"
+msgstr "Pic d'Échantillon"
 
 #: src/contents/ui/Limiter.qml:76
 msgctxt "Limiter mode"
