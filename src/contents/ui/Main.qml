@@ -516,10 +516,11 @@ Kirigami.ApplicationWindow {
 
         parent: Controls.Overlay.overlay
         anchors {
-            left: parent.left
-            right: parent.right
+            horizontalCenter: parent.horizontalCenter
             bottom: parent.bottom
+            bottomMargin: Kirigami.Units.smallSpacing
         }
+        width: Math.min(Kirigami.Units.gridUnit * 50, parent.width * 0.9)
         visible: false
         showCloseButton: true
     }
