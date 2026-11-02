@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-30 14:50-0300\n"
-"PO-Revision-Date: 2026-05-25 06:11+0000\n"
-"Last-Translator: Turan <24282230@stu.omu.edu.tr>\n"
+"PO-Revision-Date: 2026-11-02 12:51+0000\n"
+"Last-Translator: coffeelover <coffeelover@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
 "tr/>\n"
 "Language: tr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2026.6.dev0\n"
+"X-Generator: Weblate 2026.11.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -1921,9 +1921,8 @@ msgstr "SPM"
 
 #: src/contents/ui/Equalizer.qml:158 src/contents/ui/Filter.qml:107
 #: src/contents/ui/MidSideEqualizer.qml:152
-#, fuzzy
 msgid "Equalizer decramping"
-msgstr "Ekolayzır Kipi"
+msgstr "Ekolayzır decramping"
 
 #: src/contents/ui/Equalizer.qml:162 src/contents/ui/Filter.qml:111
 #: src/contents/ui/MidSideEqualizer.qml:156
@@ -2988,9 +2987,8 @@ msgid "Reduce the list of effects pipeline"
 msgstr ""
 
 #: src/contents/ui/PageStreamsEffects.qml:500
-#, fuzzy
 msgid "Output device"
-msgstr "Çıkış Aygıtı"
+msgstr "Çıkış aygıtı"
 
 #: src/contents/ui/PageStreamsEffects.qml:678
 #, fuzzy
@@ -3223,9 +3221,8 @@ msgid "Audio"
 msgstr "Ses"
 
 #: src/contents/ui/PreferencesSheet.qml:53
-#, fuzzy
 msgid "Spectrum Analyzer"
-msgstr "Spektrum Türü"
+msgstr "Spektrum Analizörü"
 
 #: src/contents/ui/PreferencesSheet.qml:59
 msgid "Style"
