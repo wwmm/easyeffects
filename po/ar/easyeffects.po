@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-30 14:50-0300\n"
-"PO-Revision-Date: 2026-11-01 17:51+0000\n"
+"PO-Revision-Date: 2026-11-02 12:51+0000\n"
 "Last-Translator: Abdullah Albaroty "
 "<albaroty@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -137,26 +137,24 @@ msgstr "لا يوجد إعداد دخل مسبق."
 
 #: src/command_line_parser.cpp:223
 msgid "Specified preset does not exist."
-msgstr ""
+msgstr "الإعداد المسبق المحدد غير موجود."
 
 #: src/command_line_parser.cpp:243
 msgid "Provided an invalid bypass state."
 msgstr "توفر حالة تجاوز غير صالحة."
 
 #: src/command_line_parser.cpp:283
-#, fuzzy
 msgid "Provided an invalid microphone monitoring state."
-msgstr "توفر حالة تجاوز غير صالحة."
+msgstr "توفر حالة مراقبة ميكروفون غير صالحة."
 
 #: src/command_line_parser.cpp:313
-#, fuzzy
 msgid "Provided an invalid audio sharing state."
-msgstr "توفر حالة تجاوز غير صالحة."
+msgstr "توفر حالة مشاركة صوت غير صالحة."
 
 #: src/contents/ui/AboutPage.qml:24
 msgctxt "@action:button"
 msgid "About"
-msgstr ""
+msgstr "حول"
 
 #: src/contents/ui/Autogain.qml:69 src/contents/ui/BassEnhancer.qml:105
 #: src/contents/ui/BassLoudness.qml:59 src/contents/ui/Crossfeed.qml:74
@@ -167,7 +165,7 @@ msgstr ""
 #: src/contents/ui/Reverb.qml:59 src/contents/ui/Speex.qml:59
 #: src/contents/ui/VoiceSuppressor.qml:58
 msgid "Controls"
-msgstr "ضوابط"
+msgstr "متحكمات"
 
 #: src/contents/ui/Autogain.qml:74
 msgid "Reference"
@@ -445,24 +443,20 @@ msgid "Fast correction"
 msgstr "تخفيض الإزعاج"
 
 #: src/contents/ui/BassEnhancer.qml:56 src/contents/ui/Exciter.qml:56
-#, fuzzy
 msgid "Blend harmonics"
 msgstr "مزج التوافقيات"
 
 #: src/contents/ui/BassEnhancer.qml:65 src/contents/ui/Exciter.qml:65
-#, fuzzy
 msgctxt "Blend harmonics"
 msgid "3rd"
 msgstr "الثالث"
 
 #: src/contents/ui/BassEnhancer.qml:87 src/contents/ui/Exciter.qml:87
-#, fuzzy
 msgctxt "Blend harmonics"
 msgid "2nd"
 msgstr "الثاني"
 
 #: src/contents/ui/BassEnhancer.qml:110 src/contents/ui/Exciter.qml:114
-#, fuzzy
 msgctxt "Exciter/Bass enhancer control"
 msgid "Amount"
 msgstr "مقدار"
@@ -470,24 +464,21 @@ msgstr "مقدار"
 #: src/contents/ui/BassEnhancer.qml:126 src/contents/ui/BassEnhancer.qml:186
 #: src/contents/ui/Exciter.qml:130 src/contents/ui/Exciter.qml:190
 msgid "Harmonics"
-msgstr "توافقية الموجة"
+msgstr "التوافقيات"
 
 #: src/contents/ui/BassEnhancer.qml:141 src/contents/ui/Exciter.qml:145
-#, fuzzy
 msgctxt "Exciter/Bass enhancer control"
 msgid "Scope"
-msgstr "التركيز"
+msgstr "النطاق"
 
 #: src/contents/ui/BassEnhancer.qml:157
-#, fuzzy
 msgid "Floor active"
-msgstr "الحد الأدنى فعّال"
+msgstr "تقييد الترددات المنخفضة مفعّل"
 
 #: src/contents/ui/BassEnhancer.qml:168
-#, fuzzy
 msgctxt "Bass enhancer control"
 msgid "Floor"
-msgstr "الحد الأدنى"
+msgstr "الحد الأدنى للتردد"
 
 #: src/contents/ui/BassEnhancer.qml:223 src/contents/ui/Compressor.qml:891
 #: src/contents/ui/Crusher.qml:254 src/contents/ui/Deesser.qml:337
@@ -499,9 +490,8 @@ msgstr "الحد الأدنى"
 #: src/contents/ui/MultibandCompressor.qml:983
 #: src/contents/ui/MultibandGate.qml:956 src/contents/ui/Reverb.qml:343
 #: src/contents/ui/StereoTools.qml:410
-#, fuzzy
 msgid "Show native window"
-msgstr "اظهر النافذة المدعومة"
+msgstr "اظهر النافذة الأصلية"
 
 #: src/contents/ui/BassEnhancer.qml:236 src/contents/ui/Compressor.qml:904
 #: src/contents/ui/Deesser.qml:350 src/contents/ui/Exciter.qml:241
@@ -539,9 +529,8 @@ msgid "Link"
 msgstr "ربط"
 
 #: src/contents/ui/BlocklistDialog.qml:32
-#, fuzzy
 msgid "Excluded Applications"
-msgstr "قائمة التطبيقات المستثناة"
+msgstr "التطبيقات المستثناة"
 
 #: src/contents/ui/BlocklistDialog.qml:48
 #, fuzzy
@@ -549,7 +538,6 @@ msgid "Application node name"
 msgstr "اسم عقدة التطبيق"
 
 #: src/contents/ui/BlocklistDialog.qml:64
-#, fuzzy
 msgid "Add to excluded applications"
 msgstr "أضف إلى التطبيقات المستثناة"
 
@@ -564,26 +552,24 @@ msgid "Empty List"
 msgstr "القائمة فارغة"
 
 #: src/contents/ui/BlocklistDialog.qml:117
-#, fuzzy
 msgid "No application excluded"
-msgstr "مستوى صوت التطبيق"
+msgstr "لا توجد تطبيقات مستثناة"
 
 #: src/contents/ui/BlocklistDialog.qml:140
 msgid "Remove Application"
-msgstr "حذف التطبيق"
+msgstr "أزل التطبيق"
 
 #: src/contents/ui/BlocklistDialog.qml:141
 msgid "Are you sure you want to remove this application from the list?"
-msgstr ""
+msgstr "هل أنت متأكد أنك تريد إزالة هذا التطبيق من القائمة؟"
 
 #: src/contents/ui/BlocklistDialog.qml:175
-#, fuzzy
 msgid "Remove this app"
-msgstr "حذف التطبيق"
+msgstr "إزالة التطبيق"
 
 #: src/contents/ui/BlocklistDialog.qml:204
 msgid "Use media name"
-msgstr ""
+msgstr "استخدم اسم الوسائط"
 
 #: src/contents/ui/BlocklistDialog.qml:205
 msgid ""
