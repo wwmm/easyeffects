@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-30 14:50-0300\n"
-"PO-Revision-Date: 2026-11-01 04:08+0000\n"
+"PO-Revision-Date: 2026-11-03 06:51+0000\n"
 "Last-Translator: Andrei Stepanov <adem@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Weblate 2026.11.dev0\n"
+"X-Generator: Weblate 2026.11.1.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -2968,7 +2968,7 @@ msgstr "Включить режим службы"
 
 #: src/contents/ui/PreferencesSheet.qml:91
 msgid "Easy Effects is active in background when the window is closed."
-msgstr "Easy Effects будет активен в фоновом режиме, если окно закрыто."
+msgstr "Easy Effects будет работать в фоне после закрытия окна."
 
 #: src/contents/ui/PreferencesSheet.qml:103
 msgid "Autostart on login"
@@ -2976,7 +2976,7 @@ msgstr "Автозапуск при входе в систему"
 
 #: src/contents/ui/PreferencesSheet.qml:104
 msgid "Easy Effects is launched at user session startup."
-msgstr "Easy Effects будет запускаться с началом сеанса пользователя."
+msgstr "Easy Effects будет запускаться при входе в сеанс пользователя."
 
 #: src/contents/ui/PreferencesSheet.qml:117
 msgid "Show the tray icon"
@@ -2992,9 +2992,8 @@ msgid ""
 "should not be enabled. It is intended only as a workaround for systems that "
 "do not work well with the autostart of Easy Effects."
 msgstr ""
-"Не показывать окно при запуске приложения. Обычно эту настройку включать не "
-"следует. Это обходное решение для тех систем, которые плохо работают с "
-"автозапуском Easy Effects."
+"Не показывать окно при запуске. Обычно включать не нужно — это обходное "
+"решение для систем, плохо работающих с автозапуском Easy Effects."
 
 #: src/contents/ui/PreferencesSheet.qml:151
 msgid "Process all output streams"
@@ -3026,7 +3025,7 @@ msgid ""
 "as the input device."
 msgstr ""
 "Не обрабатывать потоки автоматически, когда одно из этих устройств выбрано в "
-"качестве устройства ввода."
+"качестве устройства входа."
 
 #: src/contents/ui/PreferencesSheet.qml:263
 msgid "Ignore streams from monitor of devices"
@@ -3068,9 +3067,9 @@ msgid ""
 "better to ignore them, but for some presets it may be recommended since they "
 "could sound too loud."
 msgstr ""
-"Обработка уведомлений системы может вызывать потрескивание звука, поэтому "
-"лучше игнорировать их, но для некоторых предустановок это может быть "
-"полезно, если они звучат громко."
+"Обработка системных уведомлений может вызывать треск, поэтому их лучше "
+"игнорировать; но для некоторых предустановок это может быть полезно, если "
+"они звучат слишком громко."
 
 #: src/contents/ui/PreferencesSheet.qml:314
 msgid "Enable/disable input monitoring"
@@ -3082,7 +3081,7 @@ msgstr "Проигрывать монитор микрофона через вы
 
 #: src/contents/ui/PreferencesSheet.qml:338
 msgid "Copy the input audio buffer"
-msgstr "Копировать буфер входного аудио"
+msgstr "Копировать входной аудиобуфер"
 
 #: src/contents/ui/PreferencesSheet.qml:339
 msgid ""
@@ -3097,7 +3096,7 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:351
 msgid "Reset Global Bypass on device change"
-msgstr "Сбрасывать общий обход при смене устройства"
+msgstr "Сбрасывать глобальный обход при смене устройства"
 
 #: src/contents/ui/PreferencesSheet.qml:352
 msgid "Automatically enable effects when the audio device changes."
@@ -3117,23 +3116,23 @@ msgstr "Задержка связи"
 
 #: src/contents/ui/PreferencesSheet.qml:394
 msgid "Enable the output inactivity timeout"
-msgstr "Включить тайм-аут бездействия вывода"
+msgstr "Включить тайм-аут простоя выхода"
 
 #: src/contents/ui/PreferencesSheet.qml:395
 msgid ""
 "When all output streams are inactive, the Easy Effects output pipeline "
 "remains loaded for an extra amount of time."
 msgstr ""
-"Когда все выходные потоки бездействуют, выходной конвейер Easy Effects "
+"Когда все выходные потоки неактивны, выходной канал обработки Easy Effects "
 "остаётся загруженным ещё некоторое время."
 
 #: src/contents/ui/PreferencesSheet.qml:407
 msgid "Output inactivity timeout"
-msgstr "Тайм-аут бездействия вывода"
+msgstr "Тайм-аут простоя выхода"
 
 #: src/contents/ui/PreferencesSheet.qml:424
 msgid "Enable the input inactivity timeout"
-msgstr "Включить тайм-аут бездействия ввода"
+msgstr "Включить тайм-аут простоя входа"
 
 #: src/contents/ui/PreferencesSheet.qml:425
 msgid ""
@@ -3157,7 +3156,7 @@ msgstr "Максимальная частота обновления уровн�
 
 #: src/contents/ui/PreferencesSheet.qml:467
 msgid "Level meters label"
-msgstr "Метки уровнемеров"
+msgstr "Подписи уровнемеров"
 
 #: src/contents/ui/PreferencesSheet.qml:468
 msgid ""
@@ -3326,7 +3325,7 @@ msgstr "Период автосохранения базы данных"
 
 #: src/contents/ui/PreferencesSheet.qml:830
 msgid "Most used presets"
-msgstr "Часто используемые предустановки"
+msgstr "Частые предустановки"
 
 #: src/contents/ui/PreferencesSheet.qml:848
 msgid "Window"
@@ -3345,7 +3344,7 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:871
 msgid "Reduce effects list controls"
-msgstr "Свернуть элементы управления списка эффектов"
+msgstr "Компактные элементы управления списка эффектов"
 
 #: src/contents/ui/PreferencesSheet.qml:872
 msgid ""
@@ -3498,7 +3497,7 @@ msgstr "Глобальные горячие клавиши"
 
 #: src/contents/ui/PreferencesSheet.qml:1073
 msgid "Enables support for XDG global shortcuts."
-msgstr "Включает поддержку глобальных горячих клавиш XDG."
+msgstr "Включает поддержку глобальных сочетаний клавиш XDG."
 
 #: src/contents/ui/PreferencesSheet.qml:1085
 msgid "Native window of effects"
@@ -3886,7 +3885,7 @@ msgstr "Переключить полноэкранный режим"
 #: src/contents/ui/ShortcutsSheet.qml:108
 #: src/contents/ui/ShortcutsSheet.qml:359 src/global_shortcuts.hpp:83
 msgid "Toggle global bypass"
-msgstr "Включить/отключить общий обход"
+msgstr "Включить/отключить глобальный обход"
 
 #: src/contents/ui/ShortcutsSheet.qml:136
 msgid "Close the window"
