@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-30 14:50-0300\n"
-"PO-Revision-Date: 2026-11-02 12:51+0000\n"
+"PO-Revision-Date: 2026-11-03 06:51+0000\n"
 "Last-Translator: Abdullah Albaroty "
 "<albaroty@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 2026.11.dev0\n"
+"X-Generator: Weblate 2026.11.1.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -309,15 +309,14 @@ msgid "Mode"
 msgstr "الوضع"
 
 #: src/contents/ui/Autotune.qml:111
-#, fuzzy
 msgctxt "Operating mode"
 msgid "Auto"
-msgstr "التضخيم التلقائي"
+msgstr "تلقائي"
 
 #: src/contents/ui/Autotune.qml:111
 msgctxt "Operating mode"
 msgid "Manual"
-msgstr ""
+msgstr "يدوي"
 
 #: src/contents/ui/Autotune.qml:137
 #, fuzzy
