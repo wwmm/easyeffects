@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-30 14:50-0300\n"
-"PO-Revision-Date: 2026-11-03 06:51+0000\n"
+"PO-Revision-Date: 2026-11-05 04:25+0000\n"
 "Last-Translator: Abdullah Albaroty "
 "<albaroty@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -187,7 +187,6 @@ msgstr "قصير المدى"
 
 #: src/contents/ui/Autogain.qml:79 src/contents/ui/Autogain.qml:168
 #: src/contents/ui/LevelMeter.qml:219
-#, fuzzy
 msgctxt "EBU R 128 loudness measure"
 msgid "Integrated"
 msgstr "متكامل"
@@ -225,7 +224,6 @@ msgid "Silence"
 msgstr "الصمت"
 
 #: src/contents/ui/Autogain.qml:120
-#, fuzzy
 msgid "Maximum history"
 msgstr "أقصى زمن"
 
@@ -244,9 +242,8 @@ msgid "Range"
 msgstr "النطاق"
 
 #: src/contents/ui/Autogain.qml:208
-#, fuzzy
 msgid "Output gain"
-msgstr "خرج التضخيم"
+msgstr "تضخيم الخرج"
 
 #: src/contents/ui/Autogain.qml:233 src/contents/ui/Autotune.qml:408
 #: src/contents/ui/BassEnhancer.qml:205 src/contents/ui/BassLoudness.qml:126
@@ -264,10 +261,9 @@ msgstr "خرج التضخيم"
 #: src/contents/ui/MultibandGate.qml:938 src/contents/ui/Pitch.qml:268
 #: src/contents/ui/Reverb.qml:318 src/contents/ui/RNNoise.qml:320
 #: src/contents/ui/Speex.qml:177 src/contents/ui/StereoTools.qml:392
-#, fuzzy
 msgctxt "Library in use (plugin credit)"
 msgid "Using %1"
-msgstr "الاستخدام 1%"
+msgstr "استخدم 1%"
 
 #: src/contents/ui/Autogain.qml:250 src/contents/ui/DeepFilterNet.qml:286
 #: src/contents/ui/LevelMeter.qml:273 src/contents/ui/Pitch.qml:285
@@ -276,7 +272,6 @@ msgid "Reset history"
 msgstr "إعادة تعيين السجل"
 
 #: src/contents/ui/Autogain.qml:257
-#, fuzzy
 msgid "Force silence"
 msgstr "كتم إجباري"
 
