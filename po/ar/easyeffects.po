@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-30 14:50-0300\n"
-"PO-Revision-Date: 2026-11-05 04:25+0000\n"
-"Last-Translator: Abdullah Albaroty "
-"<albaroty@users.noreply.hosted.weblate.org>\n"
+"PO-Revision-Date: 2026-11-05 19:51+0000\n"
+"Last-Translator: Giusy Digital <digitalone1@users.noreply.hosted.weblate.org>"
+"\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/easyeffects/main/"
 "ar/>\n"
 "Language: ar\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 2026.11.1.dev0\n"
+"X-Generator: Weblate 2026.11.2.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -263,7 +263,7 @@ msgstr "تضخيم الخرج"
 #: src/contents/ui/Speex.qml:177 src/contents/ui/StereoTools.qml:392
 msgctxt "Library in use (plugin credit)"
 msgid "Using %1"
-msgstr "استخدم 1%"
+msgstr "‎%1 استخدم"
 
 #: src/contents/ui/Autogain.qml:250 src/contents/ui/DeepFilterNet.qml:286
 #: src/contents/ui/LevelMeter.qml:273 src/contents/ui/Pitch.qml:285
