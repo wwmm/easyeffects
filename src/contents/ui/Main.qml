@@ -31,8 +31,6 @@ Kirigami.ApplicationWindow {
     required property string applicationId
     required property bool canUseSysTray
 
-    readonly property real maxOverlayHeight: height - header.height - footer.height
-
     // We need to set visible to false in order to fix an issue related to
     // --hide-window option. See #4491.
     visible: false
