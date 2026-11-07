@@ -113,25 +113,7 @@ Crystalizer::Crystalizer(const std::string& tag, pw::Manager* pipe_manager, Pipe
 
   connect(settings, &DbCrystalizer::transitionBandChanged, [&] { setup(); });
 
-  connect(settings, &DbCrystalizer::oversamplingQualityChanged, [&] {
-    std::scoped_lock<std::mutex> lock(data_mutex);
-
-    if (resampler_inL) {
-      resampler_inL->set_quality(settings->oversamplingQuality());
-    }
-
-    if (resampler_inR) {
-      resampler_inR->set_quality(settings->oversamplingQuality());
-    }
-
-    if (resampler_outL) {
-      resampler_outL->set_quality(settings->oversamplingQuality());
-    }
-
-    if (resampler_outR) {
-      resampler_outR->set_quality(settings->oversamplingQuality());
-    }
-  });
+  connect(settings, &DbCrystalizer::oversamplingQualityChanged, [&] { setup(); });
 }
 
 Crystalizer::~Crystalizer() {
@@ -155,6 +137,18 @@ void Crystalizer::reset() {
 }
 
 void Crystalizer::clear_data() {
+  {
+    std::scoped_lock<std::mutex> lock(data_mutex);
+
+    /**
+     * Invalidate the cached configuration so the next setup() does not return
+     * early. This makes sure the internal buffers and the filters history are
+     * rebuilt and old audio data does not survive the unlinking of the filters.
+     */
+
+    current_rate = 0U;
+  }
+
   setup();
 }
 
@@ -166,44 +160,75 @@ void Crystalizer::setup() {
 
   std::scoped_lock<std::mutex> lock(data_mutex);
 
-  auto same_blocksize = settings->useFixedQuantum() ? n_samples == default_quantum : n_samples == blocksize;
+  const auto same_blocksize = settings->useFixedQuantum() ? n_samples == default_quantum : n_samples == blocksize;
 
-  if (filters_are_ready && rate == current_rate && same_blocksize) {
+  const auto same_oversampling = settings->oversampling() == do_oversampling;
+
+  const auto same_transition_band = settings->transitionBand() == current_transition_band;
+
+  const auto same_quality = static_cast<int>(settings->oversamplingQuality()) == current_quality;
+
+  if (filters_are_ready && rate == current_rate && same_blocksize && same_oversampling && same_transition_band &&
+      same_quality) {
     return;
   }
 
   filters_are_ready = false;
 
+  const auto generation = ++setup_generation;
+
   /**
    * As zita uses fftw we have to be careful when reinitializing it.
    * The thread that creates the fftw plan has to be the same that destroys it.
    * Otherwise segmentation faults can happen. As we do not want to do this
-   * initializing in the plugin realtime thread we send it to the main thread.
+   * initializing in the plugin realtime thread we send it to the worker thread.
+   *
+   * Quantum and sampling rate changes usually arrive in bursts. For example
+   * when a stream is paused or removed the PipeWire graph can be renegotiated
+   * more than once in a short interval of time. The realtime thread may change
+   * rate and n_samples again while the worker is still initializing. That is
+   * why the worker uses only the snapshots taken here and why a generation
+   * counter is used to discard the initializations that have been superseded
+   * before they could publish their results. Otherwise the plugin could end up
+   * active with a state built from a mix of different configurations.
    */
+
+  const auto worker_rate = rate;
+  const auto worker_n_samples = n_samples;
+  const auto worker_oversampling = settings->oversampling();
+  const auto worker_fixed_quantum = settings->useFixedQuantum();
+  const auto worker_transition_band = settings->transitionBand();
+  const auto worker_quality = static_cast<int>(settings->oversamplingQuality());
 
   // NOLINTBEGIN(clang-analyzer-cplusplus.NewDeleteLeaks)
 
   QMetaObject::invokeMethod(
       baseWorker,
-      [this] {
-        if (filters_are_ready) {
-          return;
+      [this, generation, worker_rate, worker_n_samples, worker_oversampling, worker_fixed_quantum,
+       worker_transition_band, worker_quality] {
+        {
+          std::scoped_lock<std::mutex> lock(data_mutex);
+
+          if (generation != setup_generation) {
+            // A more recent setup() call has superseded this one. The lambda
+            // it queued will redo the initialization with the newer values.
+
+            return;
+          }
         }
 
-        current_rate = rate;
+        do_oversampling = worker_oversampling;
 
-        do_oversampling = settings->oversampling();
-
-        block_time = static_cast<float>(n_samples) / static_cast<float>(rate);
+        block_time = static_cast<float>(worker_n_samples) / static_cast<float>(worker_rate);
 
         attack_coeff = std::exp(-block_time / attack_time);
         release_coeff = std::exp(-block_time / release_time);
 
-        auto blockrate = do_oversampling ? 2 * rate : rate;
+        const auto blockrate = do_oversampling ? 2 * worker_rate : worker_rate;
 
-        blocksize = do_oversampling ? 2 * n_samples : n_samples;
+        blocksize = do_oversampling ? 2 * worker_n_samples : worker_n_samples;
 
-        blocksize = settings->useFixedQuantum() ? default_quantum : blocksize;
+        blocksize = worker_fixed_quantum ? default_quantum : blocksize;
 
         n_samples_is_power_of_2 = (blocksize & (blocksize - 1U)) == 0 && blocksize != 0U;
 
@@ -218,7 +243,6 @@ void Crystalizer::setup() {
 
         util::debug(std::format("{}{} blocksize: {}", log_tag, name.toStdString(), blocksize));
 
-        notify_latency = true;
         is_first_buffer = true;
 
         latency_n_frames = 0U;
@@ -258,31 +282,55 @@ void Crystalizer::setup() {
         }
 
         for (uint n = 0U; n < nbands; n++) {
+          {
+            std::scoped_lock<std::mutex> lock(data_mutex);
+
+            if (generation != setup_generation) {
+              // Do not waste time finishing a setup that has been superseded.
+              // The lambda queued by the most recent setup() call will rebuild
+              // everything with the newer values.
+
+              return;
+            }
+          }
+
           filters.at(n)->set_n_samples(blocksize);
           filters.at(n)->set_rate(blockrate);
           filters.at(n)->set_min_frequency(frequencies.at(n));
           filters.at(n)->set_max_frequency(frequencies.at(n + 1U));
-          filters.at(n)->set_transition_band(settings->transitionBand());
+          filters.at(n)->set_transition_band(static_cast<float>(worker_transition_band));
           filters.at(n)->setup();
         }
 
-        resampler_inL = std::make_unique<Resampler>(rate, 2 * rate);
-        resampler_inR = std::make_unique<Resampler>(rate, 2 * rate);
+        resampler_inL = std::make_unique<Resampler>(worker_rate, 2 * worker_rate);
+        resampler_inR = std::make_unique<Resampler>(worker_rate, 2 * worker_rate);
 
-        resampler_outL = std::make_unique<Resampler>(2 * rate, rate);
-        resampler_outR = std::make_unique<Resampler>(2 * rate, rate);
+        resampler_outL = std::make_unique<Resampler>(2 * worker_rate, worker_rate);
+        resampler_outR = std::make_unique<Resampler>(2 * worker_rate, worker_rate);
 
-        resampler_inL->set_quality(settings->oversamplingQuality());
+        resampler_inL->set_quality(worker_quality);
 
-        resampler_inR->set_quality(settings->oversamplingQuality());
+        resampler_inR->set_quality(worker_quality);
 
-        resampler_outL->set_quality(settings->oversamplingQuality());
+        resampler_outL->set_quality(worker_quality);
 
-        resampler_outR->set_quality(settings->oversamplingQuality());
+        resampler_outR->set_quality(worker_quality);
 
         std::scoped_lock<std::mutex> lock(data_mutex);
 
-        filters_are_ready = true;
+        // Setups superseded while this one was running must not be activated.
+        // The lambda queued by the most recent setup() call will publish its
+        // own results.
+
+        filters_are_ready = generation == setup_generation;
+
+        if (filters_are_ready) {
+          current_rate = worker_rate;
+          current_transition_band = worker_transition_band;
+          current_quality = worker_quality;
+
+          notify_latency = true;
+        }
       },
       Qt::QueuedConnection);
 

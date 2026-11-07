@@ -91,6 +91,19 @@ class Crystalizer : public PluginBase {
   uint current_rate = 0U;
   uint latency_n_frames = 0U;
 
+  /**
+   * Incremented every time setup() queues a new initialization on the worker
+   * thread. Guarded by data_mutex. It is used to discard initializations that
+   * have been superseded by a more recent one before they could be published.
+   */
+
+  uint setup_generation = 0U;
+
+  // Configuration the filters have been built for. Guarded by data_mutex.
+
+  int current_quality = -1;
+  double current_transition_band = 0.0;
+
   static constexpr float freq_ref = 1000.0F;
 
   float block_time = 0.0F;
