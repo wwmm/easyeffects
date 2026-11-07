@@ -120,14 +120,25 @@ auto FirFilterBase::create_lowpass_kernel(const float& cutoff, const float& tran
 
   float sum = 0.0F;
 
+  const auto half_M = static_cast<std::ptrdiff_t>(M / 2U);
+
   for (size_t n = 0U; n < output.size(); n++) {
     // windowed-sinc kernel https://www.dspguide.com/ch16/1.htm
 
-    if (n == M / 2U) {
+    /**
+     * The offset in relation to the center of the kernel has to be computed
+     * with signed arithmetic. With unsigned types it underflows for the taps
+     * before the center and the sinc values of half of the kernel are lost.
+     */
+
+    const auto offset = static_cast<std::ptrdiff_t>(n) - half_M;
+
+    if (offset == 0) {
       output[n] = 2.0F * std::numbers::pi_v<float> * fc;
     } else {
-      output[n] = std::sin(2.0F * std::numbers::pi_v<float> * fc * static_cast<float>(n - static_cast<uint>(M / 2U))) /
-                  static_cast<float>(n - static_cast<uint>(M / 2U));
+      const auto x = static_cast<float>(offset);
+
+      output[n] = std::sin(2.0F * std::numbers::pi_v<float> * fc * x) / x;
     }
 
     // Blackman window https://www.dspguide.com/ch16/1.htm
