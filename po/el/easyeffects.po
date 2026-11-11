@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-30 14:50-0300\n"
-"PO-Revision-Date: 2026-10-23 18:22+0000\n"
+"PO-Revision-Date: 2026-11-11 09:02+0000\n"
 "Last-Translator: Nikolaos Vasiliou <nvasiliou@mail.com>\n"
 "Language-Team: Greek <https://hosted.weblate.org/projects/easyeffects/main/"
 "el/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2026.11.dev0\n"
+"X-Generator: Weblate 2026.11.2.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -194,10 +194,9 @@ msgstr "Βραχυπρόθεσμο"
 
 #: src/contents/ui/Autogain.qml:79 src/contents/ui/Autogain.qml:168
 #: src/contents/ui/LevelMeter.qml:219
-#, fuzzy
 msgctxt "EBU R 128 loudness measure"
 msgid "Integrated"
-msgstr "Ολοκληρωμένος"
+msgstr "Ενσωματωμένο"
 
 #: src/contents/ui/Autogain.qml:79
 #, fuzzy
@@ -355,43 +354,43 @@ msgstr "Ρίζα"
 #: src/contents/ui/Harmonizer.qml:45
 msgctxt "Musical note"
 msgid "C"
-msgstr ""
+msgstr "C"
 
 #: src/contents/ui/Autotune.qml:222 src/contents/ui/Autotune.qml:279
 #: src/contents/ui/Harmonizer.qml:51
 msgctxt "Musical note"
 msgid "D"
-msgstr ""
+msgstr "D"
 
 #: src/contents/ui/Autotune.qml:222 src/contents/ui/Autotune.qml:297
 #: src/contents/ui/Harmonizer.qml:57
 msgctxt "Musical note"
 msgid "E"
-msgstr ""
+msgstr "E"
 
 #: src/contents/ui/Autotune.qml:222 src/contents/ui/Autotune.qml:306
 #: src/contents/ui/Harmonizer.qml:60
 msgctxt "Musical note"
 msgid "F"
-msgstr ""
+msgstr "F"
 
 #: src/contents/ui/Autotune.qml:222 src/contents/ui/Autotune.qml:324
 #: src/contents/ui/Harmonizer.qml:66
 msgctxt "Musical note"
 msgid "G"
-msgstr ""
+msgstr "G"
 
 #: src/contents/ui/Autotune.qml:222 src/contents/ui/Autotune.qml:342
 #: src/contents/ui/Harmonizer.qml:72
 msgctxt "Musical note"
 msgid "A"
-msgstr ""
+msgstr "A"
 
 #: src/contents/ui/Autotune.qml:222 src/contents/ui/Autotune.qml:360
 #: src/contents/ui/Harmonizer.qml:78
 msgctxt "Musical note"
 msgid "B"
-msgstr ""
+msgstr "B"
 
 #: src/contents/ui/Autotune.qml:231
 #, fuzzy
@@ -979,7 +978,7 @@ msgstr "Παράλληλη ενεργοποίηση"
 #: src/contents/ui/Gate.qml:607 src/contents/ui/Limiter.qml:382
 #: src/contents/ui/LspPreMixDialog.qml:119
 msgid "Link to input"
-msgstr ""
+msgstr "Σύνδεση εισόδου"
 
 #: src/contents/ui/Compressor.qml:674 src/contents/ui/EqualizerBandMenu.qml:119
 #: src/contents/ui/Expander.qml:626 src/contents/ui/Filter.qml:173
@@ -987,100 +986,104 @@ msgstr ""
 #: src/contents/ui/MultibandCompressor.qml:745
 #: src/contents/ui/MultibandGate.qml:245
 msgid "Gain"
-msgstr ""
+msgstr "Κέρδος"
 
 #: src/contents/ui/Compressor.qml:777 src/contents/ui/Expander.qml:727
 #: src/contents/ui/Gate.qml:755 src/contents/ui/MultibandCompressor.qml:857
 #: src/contents/ui/MultibandGate.qml:294 src/contents/ui/MultibandGate.qml:830
 msgctxt "Compressor parameter"
 msgid "Curve"
-msgstr ""
+msgstr "Καμπύλη"
 
 #: src/contents/ui/Compressor.qml:786 src/contents/ui/Expander.qml:736
 #: src/contents/ui/Gate.qml:764 src/contents/ui/MultibandCompressor.qml:802
 #: src/contents/ui/MultibandGate.qml:775
 msgctxt "Compressor parameter"
 msgid "Envelope"
-msgstr ""
+msgstr "Φάκελος"
 
 #: src/contents/ui/Compressor.qml:914 src/contents/ui/Expander.qml:864
 #: src/contents/ui/Gate.qml:993 src/contents/ui/MultibandCompressor.qml:996
 #: src/contents/ui/MultibandGate.qml:969
 msgid "Stereo split"
-msgstr ""
+msgstr "Διαχωρισμός στέρεο"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:49
 msgid "Imported a new Convolver impulse file."
-msgstr ""
+msgstr "Εισήγαγε ένα νέο αρχείο Convolver ώθησης"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:51
 msgid "Failed to import the Convolver impulse file."
 msgstr ""
+"Απέτυχε η εισαγωγή του αρχείου παλμικής απόκρισης (impulse file) του "
+"Convolver."
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:65
 #: src/contents/ui/MenuAddPlugins.qml:186
 #: src/contents/ui/PresetsCommunityPage.qml:64
 #: src/contents/ui/PresetsLocalPage.qml:164
 msgid "Search"
-msgstr ""
+msgstr "Εύρεση"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:108
 msgid "Remove Impulse Response"
-msgstr ""
+msgstr "Αφαίρεση απόκρισης παλμού"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:109
 msgid "Are you sure you want to remove this impulse response from the list?"
 msgstr ""
+"Είστε σίγουροι ότι θέλετε να αφαιρέσετε αυτή την απόκριση παλμού από τη "
+"λίστα;"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:113
 msgid "Removed the %1 Convolver impulse."
-msgstr ""
+msgstr "Αφαιρέθηκε η απόκριση κρουστικής συνάρτησης (impulse) %1 του Convolver."
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:115
 msgid "Failed to remove the %1 Convolver impulse."
-msgstr ""
+msgstr "Απέτυχε η αφαίρεση της απόκρισης παλμού %1 του Convolver."
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:123
 msgid "Rename Impulse"
-msgstr ""
+msgstr "Μετονομασία του Impulse"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:128
 #: src/contents/ui/PresetsLocalPage.qml:247
 msgid "Rename"
-msgstr ""
+msgstr "Μετονομασία"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:136
 msgid "Renamed the %1 impulse to %2"
-msgstr ""
+msgstr "Μετονομάστηκε η ώθηση %1 σε %2"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:139
 msgid "Failed to rename the %1 impulse to %2"
-msgstr ""
+msgstr "Απέτυχε η μετονομασία της ώθησης %1 σε %2"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:147
 #: src/contents/ui/HearingTestDialog.qml:224
 #: src/contents/ui/PresetsLocalPage.qml:267
 msgid "Cancel"
-msgstr ""
+msgstr "Ακύρωση"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:186
 msgid "Rename this impulse"
-msgstr ""
+msgstr "Μετονόμασε αυτή την ώθηση"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:194
 msgid "Delete this impulse"
-msgstr ""
+msgstr "Διαγραφή αυτής της ώθησης"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:233
 msgid "Import impulse"
-msgstr ""
+msgstr "Εισαγωγή ώθησης"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:243
 #: src/contents/ui/HearingTestDialog.qml:47
 #: src/contents/ui/MenuAddPlugins.qml:202 src/contents/ui/PresetsDialog.qml:126
 msgctxt "@action:button"
 msgid "Close"
-msgstr ""
+msgstr "Κλείσιμο"
 
 #: src/contents/ui/Convolver.qml:66
 msgid "Loaded the %1 Convolver impulse."
