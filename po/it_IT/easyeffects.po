@@ -10,8 +10,8 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-30 14:50-0300\n"
 "PO-Revision-Date: 2026-11-14 15:48+0000\n"
-"Last-Translator: Giusy Digital <digitalone1@users.noreply.hosted.weblate.org>"
-"\n"
+"Last-Translator: Giusy Digital "
+"<digitalone1@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
 "Language: it_IT\n"
@@ -506,13 +506,14 @@ msgstr "Ascolta"
 #: src/contents/ui/MultibandGate.qml:987 src/contents/ui/Reverb.qml:357
 #: src/contents/ui/RNNoise.qml:345 src/contents/ui/Speex.qml:195
 #: src/contents/ui/StereoTools.qml:424 src/contents/ui/VoiceSuppressor.qml:185
+#: src/contents/ui/Main.qml:479
 msgid "Reset"
 msgstr "Reimposta"
 
 #: src/contents/ui/BassLoudness.qml:83 src/contents/ui/Compressor.qml:478
 #: src/contents/ui/EeInputOutputGain.qml:145 src/contents/ui/Expander.qml:438
 #: src/contents/ui/Gate.qml:453 src/contents/ui/Main.qml:372
-#: src/contents/ui/StereoTools.qml:268
+#: src/contents/ui/StereoTools.qml:268 src/contents/ui/Main.qml:370
 msgid "Output"
 msgstr "Uscita"
 
@@ -992,6 +993,7 @@ msgstr "Rinomina Impulso"
 
 #: src/contents/ui/ConvolverImpulseDialog.qml:128
 #: src/contents/ui/PresetsLocalPage.qml:247
+#: src/contents/ui/PresetsLocalPage.qml:253
 msgid "Rename"
 msgstr "Rinomina"
 
@@ -1006,6 +1008,7 @@ msgstr "Modifica del nome dell'impulso da %1 a %2 non riuscita"
 #: src/contents/ui/ConvolverImpulseDialog.qml:147
 #: src/contents/ui/HearingTestDialog.qml:224
 #: src/contents/ui/PresetsLocalPage.qml:267
+#: src/contents/ui/PresetsLocalPage.qml:273
 msgid "Cancel"
 msgstr "Annulla"
 
@@ -1532,7 +1535,7 @@ msgstr ""
 "Regolatori del guadagno di ingresso e uscita con i misuratori di livello"
 
 #: src/contents/ui/EeInputOutputGain.qml:132 src/contents/ui/Main.qml:388
-#: src/contents/ui/StereoTools.qml:59
+#: src/contents/ui/StereoTools.qml:59 src/contents/ui/Main.qml:386
 msgid "Input"
 msgstr "Ingresso"
 
@@ -2451,64 +2454,69 @@ msgstr "Intervallo di clipping"
 msgid "Clipping"
 msgstr "Clipping"
 
-#: src/contents/ui/Main.qml:307
+#: src/contents/ui/Main.qml:307 src/contents/ui/Main.qml:305
 msgid "Reset Settings?"
 msgstr "Reset delle Impostazioni?"
 
-#: src/contents/ui/Main.qml:308
+#: src/contents/ui/Main.qml:308 src/contents/ui/Main.qml:306
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr "Vuoi davvero reimpostare tutte le opzioni di Easy Effects?"
 
 #: src/contents/ui/Main.qml:330 src/contents/ui/Main.qml:461
-#: src/contents/ui/PipeWirePage.qml:34
+#: src/contents/ui/PipeWirePage.qml:34 src/contents/ui/Main.qml:328
+#: src/contents/ui/Main.qml:459
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/contents/ui/Main.qml:338
+#: src/contents/ui/Main.qml:338 src/contents/ui/Main.qml:336
 msgid "Effects"
 msgstr "Effetti"
 
-#: src/contents/ui/Main.qml:339
+#: src/contents/ui/Main.qml:339 src/contents/ui/Main.qml:337
 msgid "Turn effects on/off"
 msgstr "Abilita/disabilita gli effetti"
 
-#: src/contents/ui/Main.qml:351
+#: src/contents/ui/Main.qml:351 src/contents/ui/Main.qml:349
 msgid "Audio effects are enabled."
 msgstr "Gli effetti per l'audio sono abilitati."
 
-#: src/contents/ui/Main.qml:351
+#: src/contents/ui/Main.qml:351 src/contents/ui/Main.qml:349
 msgid "Audio effects are disabled."
 msgstr "Gli effetti per l'audio sono disabilitati."
 
 #: src/contents/ui/Main.qml:405 src/contents/ui/PageStreamsEffects.qml:491
+#: src/contents/ui/Main.qml:403
 msgctxt "Applications reproducing audio"
 msgid "Players"
 msgstr "Riproduttori"
 
 #: src/contents/ui/Main.qml:421 src/contents/ui/PageStreamsEffects.qml:500
+#: src/contents/ui/Main.qml:419
 msgctxt "Devices recording audio"
 msgid "Recorders"
 msgstr "Registratori"
 
-#: src/contents/ui/Main.qml:441
+#: src/contents/ui/Main.qml:441 src/contents/ui/Main.qml:439
 msgid "Preferences"
 msgstr "Preferenze"
 
 #: src/contents/ui/Main.qml:453 src/contents/ui/ShortcutsSheet.qml:458
-#: src/contents/ui/TrayIcon.qml:212
+#: src/contents/ui/TrayIcon.qml:212 src/contents/ui/Main.qml:451
 msgid "Shortcuts"
 msgstr "Scorciatoie"
 
 #: src/contents/ui/Main.qml:469 src/contents/ui/TrayIcon.qml:221
+#: src/contents/ui/Main.qml:467
 msgctxt "Usage guide"
 msgid "Manual"
 msgstr "Manuale"
 
-#: src/contents/ui/Main.qml:493
+#: src/contents/ui/Main.qml:493 src/contents/ui/Main.qml:491
 msgid "About Easy Effects"
 msgstr "Info su Easy Effects"
 
 #: src/contents/ui/Main.qml:501 src/contents/ui/TrayIcon.qml:231
+#: src/contents/ui/Main.qml:499
 msgid "Quit"
 msgstr "Esci"
 
@@ -3527,6 +3535,7 @@ msgstr "Aggiorna"
 
 #: src/contents/ui/PresetsCommunityPage.qml:129
 #: src/contents/ui/PresetsLocalPage.qml:306
+#: src/contents/ui/PresetsLocalPage.qml:312
 msgid "Load this preset"
 msgstr "Carica questo profilo"
 
@@ -3626,15 +3635,18 @@ msgstr ""
 "%1"
 
 #: src/contents/ui/PresetsLocalPage.qml:217
+#: src/contents/ui/PresetsLocalPage.qml:220
 msgid "Saved the current settings to %1 local preset."
 msgstr "Salvate le impostazioni attuali nel profilo locale %1."
 
 #: src/contents/ui/PresetsLocalPage.qml:219
+#: src/contents/ui/PresetsLocalPage.qml:222
 msgid "Failed to save the current settings to %1 local preset."
 msgstr ""
 "Salvataggio delle impostazioni attuali nel profilo locale %1 non riuscito."
 
 #: src/contents/ui/PresetsLocalPage.qml:227
+#: src/contents/ui/PresetsLocalPage.qml:230
 msgid "Remove Preset"
 msgstr "Rimuovi Profilo"
 
@@ -3649,34 +3661,42 @@ msgstr ""
 "dalla lista?"
 
 #: src/contents/ui/PresetsLocalPage.qml:232
+#: src/contents/ui/PresetsLocalPage.qml:238
 msgid "Removed the %1 local preset."
 msgstr "Rimosso il profilo locale %1."
 
 #: src/contents/ui/PresetsLocalPage.qml:234
+#: src/contents/ui/PresetsLocalPage.qml:240
 msgid "Failed to remove the %1 local preset."
 msgstr "Rimozione del profilo locale %1 non riuscita."
 
 #: src/contents/ui/PresetsLocalPage.qml:242
+#: src/contents/ui/PresetsLocalPage.qml:248
 msgid "Rename Preset"
 msgstr "Rinomina Profilo"
 
 #: src/contents/ui/PresetsLocalPage.qml:256
+#: src/contents/ui/PresetsLocalPage.qml:262
 msgid "Renamed the %1 local preset to %2"
 msgstr "Modificato il profilo locale %1 in %2"
 
 #: src/contents/ui/PresetsLocalPage.qml:259
+#: src/contents/ui/PresetsLocalPage.qml:265
 msgid "Failed to rename the %1 local preset to %2"
 msgstr "Modifica del profilo locale %1 in %2 non riuscita"
 
 #: src/contents/ui/PresetsLocalPage.qml:314
+#: src/contents/ui/PresetsLocalPage.qml:320
 msgid "Save settings to this preset"
 msgstr "Salva configurazione in questo profilo"
 
 #: src/contents/ui/PresetsLocalPage.qml:322
+#: src/contents/ui/PresetsLocalPage.qml:328
 msgid "Rename this preset"
 msgstr "Rinomina questo profilo"
 
 #: src/contents/ui/PresetsLocalPage.qml:330
+#: src/contents/ui/PresetsLocalPage.qml:336
 msgid "Delete this preset"
 msgstr "Elimina questo profilo"
 
@@ -4387,6 +4407,28 @@ msgstr "Equalizzatore, Compressore e Altri Effetti Audio"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "Effetti audio semplificati"
+
+#: src/contents/ui/DelegateStreamsList.qml:95
+#, fuzzy
+msgid "channel"
+msgid_plural "channels"
+msgstr[0] "canali"
+msgstr[1] "canali"
+
+#: src/contents/ui/PresetsLocalPage.qml:214
+#, fuzzy
+msgid "Save current settings to the preset: %1"
+msgstr ""
+"Salva la Configurazione Attuale nel Profilo:\n"
+"%1"
+
+#: src/contents/ui/PresetsLocalPage.qml:232
+#, fuzzy
+msgid "Are you sure you want to remove the preset %1 from the list?"
+msgstr ""
+"Vuoi davvero rimuovere il profilo\n"
+"%1\n"
+"dalla lista?"
 
 #~ msgctxt "Musical note"
 #~ msgid "C#"
