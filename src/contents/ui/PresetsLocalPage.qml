@@ -210,7 +210,10 @@ ColumnLayout {
                     id: saveDialog
 
                     title: i18n("Save Preset") // qmllint disable
-                    subtitle: i18n("Save current settings to the preset:\n%1", listItemDelegate.name) // qmllint disable
+                    Controls.Label {
+                        text: i18n("Save current settings to the preset: %1", `<br><strong>${listItemDelegate.name}</strong>`) // qmllint disable
+                        textFormat: Text.RichText
+                    }
                     standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
                     onAccepted: {
                         if (PresetsManager.savePresetFile(columnLayout.pipeline, listItemDelegate.name) === true) {
@@ -225,7 +228,10 @@ ColumnLayout {
                     id: deleteDialog
 
                     title: i18n("Remove Preset") // qmllint disable
-                    subtitle: i18n("Are you sure you want to remove the preset\n%1\nfrom the list?", listItemDelegate.name) // qmllint disable
+                    Controls.Label {
+                        text: i18n("Are you sure you want to remove the preset %1 from the list?", `<br><strong>${listItemDelegate.name}</strong><br>`) // qmllint disable
+                        textFormat: Text.RichText
+                    }
                     standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
                     onAccepted: {
                         if (PresetsManager.remove(columnLayout.pipeline, listItemDelegate.name) === true) {
