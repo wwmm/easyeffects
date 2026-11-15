@@ -9,9 +9,9 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-30 14:50-0300\n"
-"PO-Revision-Date: 2026-11-14 15:48+0000\n"
-"Last-Translator: Giusy Digital "
-"<digitalone1@users.noreply.hosted.weblate.org>\n"
+"PO-Revision-Date: 2026-11-15 03:01+0000\n"
+"Last-Translator: Giusy Digital <digitalone1@users.noreply.hosted.weblate.org>"
+"\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
 "Language: it_IT\n"
@@ -4409,26 +4409,18 @@ msgid "Simple audio effects"
 msgstr "Effetti audio semplificati"
 
 #: src/contents/ui/DelegateStreamsList.qml:95
-#, fuzzy
 msgid "channel"
 msgid_plural "channels"
-msgstr[0] "canali"
+msgstr[0] "canale"
 msgstr[1] "canali"
 
 #: src/contents/ui/PresetsLocalPage.qml:214
-#, fuzzy
 msgid "Save current settings to the preset: %1"
-msgstr ""
-"Salva la Configurazione Attuale nel Profilo:\n"
-"%1"
+msgstr "Salva la configurazione attuale nel profilo: %1"
 
 #: src/contents/ui/PresetsLocalPage.qml:232
-#, fuzzy
 msgid "Are you sure you want to remove the preset %1 from the list?"
-msgstr ""
-"Vuoi davvero rimuovere il profilo\n"
-"%1\n"
-"dalla lista?"
+msgstr "Vuoi davvero rimuovere il profilo %1 dalla lista?"
 
 #~ msgctxt "Musical note"
 #~ msgid "C#"
