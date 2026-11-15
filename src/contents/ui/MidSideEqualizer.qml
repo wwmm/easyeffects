@@ -139,7 +139,7 @@ Kirigami.ScrollablePage {
                 displayMode: FormCard.FormComboBoxDelegate.ComboBox
                 currentIndex: midsideEqualizerPage.pluginDB.mode
                 editable: false
-                model: [i18nc("Filter mode", "IIR"), i18nc("Filter mode", "FIR"), i18nc("Filter mode", "FFT"), i18n("SPM")]
+                model: [i18nc("Filter mode", "IIR"), i18nc("Filter mode", "Linear phase (FIR)"), i18nc("Filter mode", "Linear phase (FFT)"), i18nc("Filter mode", "Linear phase (SPM)"), i18nc("Filter mode", "Minimum phase (FIR)"), i18nc("Filter mode", "Minimum phase (FFT)"), i18nc("Filter mode", "Minimum phase (SPM)")]
                 onActivated: idx => {
                     midsideEqualizerPage.pluginDB.mode = idx;
                 }
