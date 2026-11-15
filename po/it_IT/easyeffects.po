@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-10-30 14:50-0300\n"
-"PO-Revision-Date: 2026-11-15 03:01+0000\n"
+"PO-Revision-Date: 2026-11-15 20:51+0000\n"
 "Last-Translator: Giusy Digital <digitalone1@users.noreply.hosted.weblate.org>"
 "\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -881,7 +881,7 @@ msgstr "Wet"
 #: src/contents/ui/MultibandGate.qml:265
 msgctxt "Gain level"
 msgid "Makeup"
-msgstr "Guadagno"
+msgstr "Ritocco"
 
 #: src/contents/ui/Compressor.qml:542 src/contents/ui/Expander.qml:498
 #: src/contents/ui/Gate.qml:517 src/contents/ui/Limiter.qml:289
@@ -1523,11 +1523,11 @@ msgstr "Banda piena"
 
 #: src/contents/ui/EchoCanceller.qml:175 src/contents/ui/Speex.qml:75
 msgid "Automatic gain control"
-msgstr "Controllo guadagno automatico"
+msgstr "Regolazione guadagno automatico"
 
 #: src/contents/ui/EeInputOutputGain.qml:36
 msgid "Audio levels control"
-msgstr "Regolatore livelli audio"
+msgstr "Regolazione livelli audio"
 
 #: src/contents/ui/EeInputOutputGain.qml:37
 msgid "Input and output gain controls with level meters"
