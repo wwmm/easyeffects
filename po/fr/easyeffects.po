@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-11-14 15:44+0000\n"
-"PO-Revision-Date: 2026-11-01 17:51+0000\n"
+"PO-Revision-Date: 2026-11-15 20:51+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2026.11.dev0\n"
+"X-Generator: Weblate 2026.12.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -1449,10 +1449,9 @@ msgid "Remove this effect"
 msgstr "Supprimer cet effet"
 
 #: src/contents/ui/DelegateStreamsList.qml:95
-#, fuzzy
 msgid "channel"
 msgid_plural "channels"
-msgstr[0] "canaux"
+msgstr[0] "canal"
 msgstr[1] "canaux"
 
 #: src/contents/ui/DelegateStreamsList.qml:106
@@ -3633,11 +3632,8 @@ msgid "Save Preset"
 msgstr "Sauvegarder le Préréglage"
 
 #: src/contents/ui/PresetsLocalPage.qml:214
-#, fuzzy
 msgid "Save current settings to the preset: %1"
-msgstr ""
-"Sauvegarder les paramètres actuels dans le préréglage :\n"
-"%1"
+msgstr "Sauvegarder les paramètres actuels dans le préréglage : %1"
 
 #: src/contents/ui/PresetsLocalPage.qml:220
 msgid "Saved the current settings to %1 local preset."
@@ -3653,12 +3649,8 @@ msgid "Remove Preset"
 msgstr "Supprimer le Préréglage"
 
 #: src/contents/ui/PresetsLocalPage.qml:232
-#, fuzzy
 msgid "Are you sure you want to remove the preset %1 from the list?"
-msgstr ""
-"Êtes-vous sûr de vouloir supprimer le préréglage\n"
-"%1\n"
-"de la liste ?"
+msgstr "Êtes-vous sûr de vouloir supprimer le préréglage %1 de la liste ?"
 
 #: src/contents/ui/PresetsLocalPage.qml:238
 msgid "Removed the %1 local preset."
