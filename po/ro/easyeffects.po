@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-11-14 15:44+0000\n"
-"PO-Revision-Date: 2026-11-01 02:51+0000\n"
+"PO-Revision-Date: 2026-11-15 20:51+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remus-"
 "gabriel@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
-"X-Generator: Weblate 2026.11.dev0\n"
+"X-Generator: Weblate 2026.12.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -1454,12 +1454,11 @@ msgid "Remove this effect"
 msgstr "Elimină acest efect"
 
 #: src/contents/ui/DelegateStreamsList.qml:95
-#, fuzzy
 msgid "channel"
 msgid_plural "channels"
-msgstr[0] "canale"
+msgstr[0] "canal"
 msgstr[1] "canale"
-msgstr[2] "canale"
+msgstr[2] "de canale"
 
 #: src/contents/ui/DelegateStreamsList.qml:106
 #: src/contents/ui/EchoCanceller.qml:64 src/contents/ui/EchoCanceller.qml:97
@@ -3636,11 +3635,8 @@ msgid "Save Preset"
 msgstr "Salvează preconfigurarea"
 
 #: src/contents/ui/PresetsLocalPage.qml:214
-#, fuzzy
 msgid "Save current settings to the preset: %1"
-msgstr ""
-"Salvează parametrii actuali în preconfigurarea:\n"
-"%1"
+msgstr "Salvează parametrii actuali în preconfigurarea: %1"
 
 #: src/contents/ui/PresetsLocalPage.qml:220
 msgid "Saved the current settings to %1 local preset."
@@ -3655,12 +3651,8 @@ msgid "Remove Preset"
 msgstr "Elimină preconfigurarea"
 
 #: src/contents/ui/PresetsLocalPage.qml:232
-#, fuzzy
 msgid "Are you sure you want to remove the preset %1 from the list?"
-msgstr ""
-"Sunteți sigur că doriți să eliminați preconfigurarea\n"
-"%1\n"
-"din listă?"
+msgstr "Sunteți sigur că doriți să eliminați preconfigurarea %1 din listă?"
 
 #: src/contents/ui/PresetsLocalPage.qml:238
 msgid "Removed the %1 local preset."
@@ -4075,7 +4067,7 @@ msgstr "Remus-Gabriel Chelu"
 #: src/main.cpp:424
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "remusgabriel.chelu@disroot.org, 2025, 2026"
+msgstr "remusgabriel.chelu@disroot.org, 2025, 2026."
 
 #: src/plugin_base.cpp:324
 msgid "(Mic)"
