@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2026-11-14 15:44+0000\n"
+"POT-Creation-Date: 2026-11-16 15:15+0000\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Meti Cease <sockargrande@gmail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -269,18 +269,18 @@ msgstr "Výstupný Zisk"
 
 #: src/contents/ui/Autogain.qml:233 src/contents/ui/Autotune.qml:408
 #: src/contents/ui/BassEnhancer.qml:205 src/contents/ui/BassLoudness.qml:126
-#: src/contents/ui/Compressor.qml:873 src/contents/ui/Convolver.qml:520
+#: src/contents/ui/Compressor.qml:890 src/contents/ui/Convolver.qml:520
 #: src/contents/ui/Crossfeed.qml:150 src/contents/ui/Crusher.qml:236
 #: src/contents/ui/Crystalizer.qml:155 src/contents/ui/DeepFilterNet.qml:269
 #: src/contents/ui/Deesser.qml:319 src/contents/ui/Delay.qml:376
 #: src/contents/ui/EchoCanceller.qml:158 src/contents/ui/Equalizer.qml:321
-#: src/contents/ui/Exciter.qml:210 src/contents/ui/Expander.qml:823
-#: src/contents/ui/Filter.qml:234 src/contents/ui/Gate.qml:952
+#: src/contents/ui/Exciter.qml:210 src/contents/ui/Expander.qml:840
+#: src/contents/ui/Filter.qml:234 src/contents/ui/Gate.qml:968
 #: src/contents/ui/Harmonizer.qml:267 src/contents/ui/LevelMeter.qml:256
 #: src/contents/ui/Limiter.qml:607 src/contents/ui/Loudness.qml:175
 #: src/contents/ui/Maximizer.qml:122 src/contents/ui/MidSideEqualizer.qml:315
-#: src/contents/ui/MultibandCompressor.qml:965
-#: src/contents/ui/MultibandGate.qml:938 src/contents/ui/Pitch.qml:268
+#: src/contents/ui/MultibandCompressor.qml:974
+#: src/contents/ui/MultibandGate.qml:949 src/contents/ui/Pitch.qml:268
 #: src/contents/ui/RNNoise.qml:320 src/contents/ui/Reverb.qml:318
 #: src/contents/ui/Speex.qml:177 src/contents/ui/StereoTools.qml:392
 #, fuzzy
@@ -316,15 +316,15 @@ msgid "Tuning"
 msgstr "beží"
 
 #: src/contents/ui/Autotune.qml:107 src/contents/ui/Compressor.qml:79
-#: src/contents/ui/Compressor.qml:301 src/contents/ui/Crusher.qml:97
+#: src/contents/ui/Compressor.qml:318 src/contents/ui/Crusher.qml:97
 #: src/contents/ui/Deesser.qml:89 src/contents/ui/Delay.qml:71
 #: src/contents/ui/Delay.qml:224 src/contents/ui/Equalizer.qml:144
 #: src/contents/ui/EqualizerBandMenu.qml:61 src/contents/ui/Expander.qml:79
-#: src/contents/ui/Expander.qml:261 src/contents/ui/Gate.qml:279
+#: src/contents/ui/Expander.qml:278 src/contents/ui/Gate.qml:295
 #: src/contents/ui/Limiter.qml:72 src/contents/ui/Loudness.qml:71
 #: src/contents/ui/MidSideEqualizer.qml:138
-#: src/contents/ui/MultibandCompressor.qml:434
-#: src/contents/ui/MultibandGate.qml:407 src/contents/ui/StereoTools.qml:123
+#: src/contents/ui/MultibandCompressor.qml:443
+#: src/contents/ui/MultibandGate.qml:418 src/contents/ui/StereoTools.qml:123
 msgid "Mode"
 msgstr "Režim"
 
@@ -450,6 +450,8 @@ msgid "A♯"
 msgstr ""
 
 #: src/contents/ui/Autotune.qml:377 src/contents/ui/Deesser.qml:276
+#: src/contents/ui/MultibandCompressor.qml:368
+#: src/contents/ui/MultibandGate.qml:258
 #, fuzzy
 msgid "Level"
 msgstr "Úroveň F2"
@@ -509,47 +511,47 @@ msgctxt "Bass enhancer control"
 msgid "Floor"
 msgstr "Spodná hranica"
 
-#: src/contents/ui/BassEnhancer.qml:223 src/contents/ui/Compressor.qml:891
+#: src/contents/ui/BassEnhancer.qml:223 src/contents/ui/Compressor.qml:908
 #: src/contents/ui/Crusher.qml:254 src/contents/ui/Deesser.qml:337
 #: src/contents/ui/Delay.qml:414 src/contents/ui/Equalizer.qml:339
-#: src/contents/ui/Exciter.qml:228 src/contents/ui/Expander.qml:841
-#: src/contents/ui/Filter.qml:252 src/contents/ui/Gate.qml:970
+#: src/contents/ui/Exciter.qml:228 src/contents/ui/Expander.qml:858
+#: src/contents/ui/Filter.qml:252 src/contents/ui/Gate.qml:986
 #: src/contents/ui/Limiter.qml:625 src/contents/ui/Loudness.qml:193
 #: src/contents/ui/Maximizer.qml:140 src/contents/ui/MidSideEqualizer.qml:333
-#: src/contents/ui/MultibandCompressor.qml:983
-#: src/contents/ui/MultibandGate.qml:956 src/contents/ui/Reverb.qml:343
+#: src/contents/ui/MultibandCompressor.qml:992
+#: src/contents/ui/MultibandGate.qml:967 src/contents/ui/Reverb.qml:343
 #: src/contents/ui/StereoTools.qml:410
 #, fuzzy
 msgid "Show native window"
 msgstr "Skryť okno"
 
-#: src/contents/ui/BassEnhancer.qml:236 src/contents/ui/Compressor.qml:904
+#: src/contents/ui/BassEnhancer.qml:236 src/contents/ui/Compressor.qml:921
 #: src/contents/ui/Deesser.qml:350 src/contents/ui/Exciter.qml:241
-#: src/contents/ui/Expander.qml:854 src/contents/ui/Gate.qml:983
+#: src/contents/ui/Expander.qml:871 src/contents/ui/Gate.qml:999
 msgid "Listen"
 msgstr "Počúvať"
 
 #: src/contents/ui/BassEnhancer.qml:247 src/contents/ui/BassLoudness.qml:144
-#: src/contents/ui/Compressor.qml:925 src/contents/ui/Convolver.qml:555
+#: src/contents/ui/Compressor.qml:942 src/contents/ui/Convolver.qml:555
 #: src/contents/ui/Crossfeed.qml:175 src/contents/ui/CrosstalkCanceller.qml:124
 #: src/contents/ui/Crusher.qml:268 src/contents/ui/Crystalizer.qml:203
 #: src/contents/ui/Deesser.qml:361 src/contents/ui/Delay.qml:428
 #: src/contents/ui/EchoCanceller.qml:186 src/contents/ui/Equalizer.qml:411
-#: src/contents/ui/Exciter.qml:252 src/contents/ui/Expander.qml:875
-#: src/contents/ui/Filter.qml:266 src/contents/ui/Gate.qml:1004
+#: src/contents/ui/Exciter.qml:252 src/contents/ui/Expander.qml:892
+#: src/contents/ui/Filter.qml:266 src/contents/ui/Gate.qml:1020
 #: src/contents/ui/Harmonizer.qml:285 src/contents/ui/Limiter.qml:659
 #: src/contents/ui/Loudness.qml:217 src/contents/ui/Main.qml:479
 #: src/contents/ui/Maximizer.qml:154 src/contents/ui/MidSideEqualizer.qml:399
-#: src/contents/ui/MultibandCompressor.qml:1014
-#: src/contents/ui/MultibandGate.qml:987 src/contents/ui/RNNoise.qml:345
+#: src/contents/ui/MultibandCompressor.qml:1023
+#: src/contents/ui/MultibandGate.qml:998 src/contents/ui/RNNoise.qml:345
 #: src/contents/ui/Reverb.qml:357 src/contents/ui/Speex.qml:195
 #: src/contents/ui/StereoTools.qml:424 src/contents/ui/VoiceSuppressor.qml:185
 msgid "Reset"
 msgstr "Obnoviť pôvodné hodnoty"
 
-#: src/contents/ui/BassLoudness.qml:83 src/contents/ui/Compressor.qml:478
-#: src/contents/ui/EeInputOutputGain.qml:145 src/contents/ui/Expander.qml:438
-#: src/contents/ui/Gate.qml:453 src/contents/ui/Main.qml:370
+#: src/contents/ui/BassLoudness.qml:83 src/contents/ui/Compressor.qml:495
+#: src/contents/ui/EeInputOutputGain.qml:145 src/contents/ui/Expander.qml:455
+#: src/contents/ui/Gate.qml:469 src/contents/ui/Main.qml:370
 #: src/contents/ui/StereoTools.qml:268
 msgid "Output"
 msgstr "Výstup"
@@ -661,14 +663,14 @@ msgid "Boost amount"
 msgstr "Množstvo"
 
 #: src/contents/ui/Compressor.qml:132 src/contents/ui/Deesser.qml:119
-#: src/contents/ui/Expander.qml:92 src/contents/ui/MultibandCompressor.qml:363
+#: src/contents/ui/Expander.qml:92 src/contents/ui/MultibandCompressor.qml:372
 #, fuzzy
 msgctxt "Compressor control"
 msgid "Ratio"
 msgstr "Pomer"
 
 #: src/contents/ui/Compressor.qml:148 src/contents/ui/Expander.qml:108
-#: src/contents/ui/Limiter.qml:451 src/contents/ui/MultibandCompressor.qml:378
+#: src/contents/ui/Limiter.qml:451 src/contents/ui/MultibandCompressor.qml:387
 #, fuzzy
 msgctxt "Compressor control"
 msgid "Knee"
@@ -676,369 +678,374 @@ msgstr "Prechod"
 
 #: src/contents/ui/Compressor.qml:169 src/contents/ui/Expander.qml:129
 #, fuzzy
-msgid "Threshold and Time"
+msgid "Time and Threshold"
 msgstr "Prah"
 
 #: src/contents/ui/Compressor.qml:179 src/contents/ui/Expander.qml:139
-#: src/contents/ui/Gate.qml:83 src/contents/ui/Gate.qml:856
+#: src/contents/ui/Gate.qml:83 src/contents/ui/Gate.qml:872
 #: src/contents/ui/Limiter.qml:144 src/contents/ui/Limiter.qml:417
-#: src/contents/ui/MultibandCompressor.qml:260
-#: src/contents/ui/MultibandGate.qml:201
+#: src/contents/ui/MultibandCompressor.qml:256
+#: src/contents/ui/MultibandGate.qml:200
 #, fuzzy
 msgctxt "Compressor control"
 msgid "Attack"
 msgstr "Nábeh"
 
 #: src/contents/ui/Compressor.qml:212 src/contents/ui/Expander.qml:172
-#: src/contents/ui/Gate.qml:100 src/contents/ui/Gate.qml:865
+#: src/contents/ui/Gate.qml:100 src/contents/ui/Gate.qml:881
 #: src/contents/ui/Limiter.qml:161 src/contents/ui/Limiter.qml:434
-#: src/contents/ui/Maximizer.qml:68 src/contents/ui/MultibandCompressor.qml:308
-#: src/contents/ui/MultibandGate.qml:216
+#: src/contents/ui/Maximizer.qml:68 src/contents/ui/MultibandCompressor.qml:303
+#: src/contents/ui/MultibandGate.qml:215
 #, fuzzy
 msgctxt "Compressor control"
 msgid "Release"
 msgstr "Uvoľnenie"
 
-#: src/contents/ui/Compressor.qml:250 src/contents/ui/Compressor.qml:348
-#: src/contents/ui/Compressor.qml:683 src/contents/ui/Expander.qml:210
-#: src/contents/ui/Expander.qml:304 src/contents/ui/Expander.qml:635
-#: src/contents/ui/Gate.qml:227 src/contents/ui/Gate.qml:322
-#: src/contents/ui/Gate.qml:661 src/contents/ui/Limiter.qml:197
-#: src/contents/ui/Limiter.qml:515 src/contents/ui/MultibandCompressor.qml:668
-#: src/contents/ui/MultibandGate.qml:641
+#: src/contents/ui/Compressor.qml:246 src/contents/ui/Expander.qml:206
+#: src/contents/ui/Gate.qml:134 src/contents/ui/MultibandCompressor.qml:338
+#: src/contents/ui/MultibandGate.qml:230
+msgctxt "Compressor control"
+msgid "Hold"
+msgstr ""
+
+#: src/contents/ui/Compressor.qml:267 src/contents/ui/Compressor.qml:365
+#: src/contents/ui/Compressor.qml:700 src/contents/ui/Expander.qml:227
+#: src/contents/ui/Expander.qml:321 src/contents/ui/Expander.qml:652
+#: src/contents/ui/Gate.qml:243 src/contents/ui/Gate.qml:338
+#: src/contents/ui/Gate.qml:677 src/contents/ui/Limiter.qml:197
+#: src/contents/ui/Limiter.qml:515 src/contents/ui/MultibandCompressor.qml:677
+#: src/contents/ui/MultibandGate.qml:652
 msgid "Sidechain"
 msgstr "Postranný reťazec"
 
-#: src/contents/ui/Compressor.qml:262 src/contents/ui/EqualizerBandMenu.qml:47
-#: src/contents/ui/Expander.qml:222 src/contents/ui/Filter.qml:65
-#: src/contents/ui/Gate.qml:240 src/contents/ui/Limiter.qml:213
-#: src/contents/ui/MultibandCompressor.qml:423
-#: src/contents/ui/MultibandGate.qml:396
+#: src/contents/ui/Compressor.qml:279 src/contents/ui/EqualizerBandMenu.qml:47
+#: src/contents/ui/Expander.qml:239 src/contents/ui/Filter.qml:65
+#: src/contents/ui/Gate.qml:256 src/contents/ui/Limiter.qml:213
+#: src/contents/ui/MultibandCompressor.qml:432
+#: src/contents/ui/MultibandGate.qml:407
 msgid "Type"
 msgstr "Typ"
 
-#: src/contents/ui/Compressor.qml:266
+#: src/contents/ui/Compressor.qml:283
 #, fuzzy
 msgctxt "Sidechain type"
 msgid "Feed-forward"
 msgstr "Kanál-Vpred"
 
-#: src/contents/ui/Compressor.qml:266
+#: src/contents/ui/Compressor.qml:283
 #, fuzzy
 msgctxt "Sidechain type"
 msgid "Feed-back"
 msgstr "Kanál-Vzad"
 
-#: src/contents/ui/Compressor.qml:266
+#: src/contents/ui/Compressor.qml:283
 #, fuzzy
 msgctxt "Sidechain type"
 msgid "External"
 msgstr "Integrovaná"
 
-#: src/contents/ui/Compressor.qml:266
+#: src/contents/ui/Compressor.qml:283
 msgctxt "Sidechain type"
 msgid "Link"
 msgstr ""
 
-#: src/contents/ui/Compressor.qml:277 src/contents/ui/Expander.qml:237
-#: src/contents/ui/Gate.qml:255 src/contents/ui/Limiter.qml:227
+#: src/contents/ui/Compressor.qml:294 src/contents/ui/Expander.qml:254
+#: src/contents/ui/Gate.qml:271 src/contents/ui/Limiter.qml:227
 #: src/contents/ui/PageStreamsEffects.qml:491
 #, fuzzy
 msgid "Input device"
 msgstr "Obmedzovač na vstupe"
 
-#: src/contents/ui/Compressor.qml:305 src/contents/ui/Deesser.qml:80
-#: src/contents/ui/Expander.qml:265 src/contents/ui/Gate.qml:283
-#: src/contents/ui/MultibandCompressor.qml:438
-#: src/contents/ui/MultibandGate.qml:411
+#: src/contents/ui/Compressor.qml:322 src/contents/ui/Deesser.qml:80
+#: src/contents/ui/Expander.qml:282 src/contents/ui/Gate.qml:299
+#: src/contents/ui/MultibandCompressor.qml:447
+#: src/contents/ui/MultibandGate.qml:422
 #, fuzzy
 msgctxt "Sidechain mode"
 msgid "Peak"
 msgstr "Vrchol"
 
-#: src/contents/ui/Compressor.qml:305 src/contents/ui/Deesser.qml:80
-#: src/contents/ui/Expander.qml:265 src/contents/ui/Gate.qml:283
-#: src/contents/ui/MultibandCompressor.qml:438
-#: src/contents/ui/MultibandGate.qml:411
+#: src/contents/ui/Compressor.qml:322 src/contents/ui/Deesser.qml:80
+#: src/contents/ui/Expander.qml:282 src/contents/ui/Gate.qml:299
+#: src/contents/ui/MultibandCompressor.qml:447
+#: src/contents/ui/MultibandGate.qml:422
 #, fuzzy
 msgctxt "Sidechain mode"
 msgid "RMS"
 msgstr "RMS"
 
-#: src/contents/ui/Compressor.qml:305 src/contents/ui/Expander.qml:265
-#: src/contents/ui/Gate.qml:283 src/contents/ui/MultibandCompressor.qml:438
-#: src/contents/ui/MultibandGate.qml:411
+#: src/contents/ui/Compressor.qml:322 src/contents/ui/Expander.qml:282
+#: src/contents/ui/Gate.qml:299 src/contents/ui/MultibandCompressor.qml:447
+#: src/contents/ui/MultibandGate.qml:422
 #, fuzzy
 msgctxt "Sidechain mode"
 msgid "Low-pass"
 msgstr "Dolná priepusť"
 
-#: src/contents/ui/Compressor.qml:305 src/contents/ui/Expander.qml:265
-#: src/contents/ui/Gate.qml:283 src/contents/ui/MultibandCompressor.qml:438
-#: src/contents/ui/MultibandGate.qml:411
+#: src/contents/ui/Compressor.qml:322 src/contents/ui/Expander.qml:282
+#: src/contents/ui/Gate.qml:299 src/contents/ui/MultibandCompressor.qml:447
+#: src/contents/ui/MultibandGate.qml:422
 msgctxt "Sidechain mode"
 msgid "SMA"
 msgstr ""
 
-#: src/contents/ui/Compressor.qml:315 src/contents/ui/Compressor.qml:330
-#: src/contents/ui/Expander.qml:275 src/contents/ui/Expander.qml:290
-#: src/contents/ui/Gate.qml:293 src/contents/ui/Gate.qml:308
-#: src/contents/ui/MultibandCompressor.qml:445
-#: src/contents/ui/MultibandCompressor.qml:457
-#: src/contents/ui/MultibandGate.qml:418 src/contents/ui/MultibandGate.qml:430
+#: src/contents/ui/Compressor.qml:332 src/contents/ui/Compressor.qml:347
+#: src/contents/ui/Expander.qml:292 src/contents/ui/Expander.qml:307
+#: src/contents/ui/Gate.qml:309 src/contents/ui/Gate.qml:324
+#: src/contents/ui/MultibandCompressor.qml:454
+#: src/contents/ui/MultibandCompressor.qml:466
+#: src/contents/ui/MultibandGate.qml:429 src/contents/ui/MultibandGate.qml:441
 msgid "Source"
 msgstr "Zdroj"
 
-#: src/contents/ui/Compressor.qml:319 src/contents/ui/Expander.qml:279
-#: src/contents/ui/Gate.qml:297 src/contents/ui/MultibandCompressor.qml:449
-#: src/contents/ui/MultibandGate.qml:422
+#: src/contents/ui/Compressor.qml:336 src/contents/ui/Expander.qml:296
+#: src/contents/ui/Gate.qml:313 src/contents/ui/MultibandCompressor.qml:458
+#: src/contents/ui/MultibandGate.qml:433
 #, fuzzy
 msgctxt "Sidechain source"
 msgid "Middle"
 msgstr "Stredný"
 
-#: src/contents/ui/Compressor.qml:319 src/contents/ui/Expander.qml:279
-#: src/contents/ui/Gate.qml:297 src/contents/ui/MultibandCompressor.qml:449
-#: src/contents/ui/MultibandGate.qml:422
+#: src/contents/ui/Compressor.qml:336 src/contents/ui/Expander.qml:296
+#: src/contents/ui/Gate.qml:313 src/contents/ui/MultibandCompressor.qml:458
+#: src/contents/ui/MultibandGate.qml:433
 #, fuzzy
 msgctxt "Sidechain source"
 msgid "Side"
 msgstr "Postranný"
 
-#: src/contents/ui/Compressor.qml:319 src/contents/ui/Expander.qml:279
-#: src/contents/ui/Gate.qml:297 src/contents/ui/MultibandCompressor.qml:449
-#: src/contents/ui/MultibandGate.qml:422
+#: src/contents/ui/Compressor.qml:336 src/contents/ui/Expander.qml:296
+#: src/contents/ui/Gate.qml:313 src/contents/ui/MultibandCompressor.qml:458
+#: src/contents/ui/MultibandGate.qml:433
 #, fuzzy
 msgctxt "Sidechain source"
 msgid "Left"
 msgstr "Ľavý"
 
-#: src/contents/ui/Compressor.qml:319 src/contents/ui/Expander.qml:279
-#: src/contents/ui/Gate.qml:297 src/contents/ui/MultibandCompressor.qml:449
-#: src/contents/ui/MultibandGate.qml:422
+#: src/contents/ui/Compressor.qml:336 src/contents/ui/Expander.qml:296
+#: src/contents/ui/Gate.qml:313 src/contents/ui/MultibandCompressor.qml:458
+#: src/contents/ui/MultibandGate.qml:433
 #, fuzzy
 msgctxt "Sidechain source"
 msgid "Right"
 msgstr "Pravý"
 
-#: src/contents/ui/Compressor.qml:319 src/contents/ui/Expander.qml:279
-#: src/contents/ui/Gate.qml:297 src/contents/ui/MultibandCompressor.qml:449
-#: src/contents/ui/MultibandGate.qml:422
+#: src/contents/ui/Compressor.qml:336 src/contents/ui/Expander.qml:296
+#: src/contents/ui/Gate.qml:313 src/contents/ui/MultibandCompressor.qml:458
+#: src/contents/ui/MultibandGate.qml:433
 #, fuzzy
 msgctxt "Sidechain source"
 msgid "Min"
 msgstr "Maximálna"
 
-#: src/contents/ui/Compressor.qml:319 src/contents/ui/Expander.qml:279
-#: src/contents/ui/Gate.qml:297 src/contents/ui/MultibandCompressor.qml:449
-#: src/contents/ui/MultibandGate.qml:422
+#: src/contents/ui/Compressor.qml:336 src/contents/ui/Expander.qml:296
+#: src/contents/ui/Gate.qml:313 src/contents/ui/MultibandCompressor.qml:458
+#: src/contents/ui/MultibandGate.qml:433
 #, fuzzy
 msgctxt "Sidechain source"
 msgid "Max"
 msgstr "Maximálna"
 
-#: src/contents/ui/Compressor.qml:334 src/contents/ui/Expander.qml:294
-#: src/contents/ui/Gate.qml:312 src/contents/ui/MultibandCompressor.qml:461
-#: src/contents/ui/MultibandGate.qml:434
+#: src/contents/ui/Compressor.qml:351 src/contents/ui/Expander.qml:311
+#: src/contents/ui/Gate.qml:328 src/contents/ui/MultibandCompressor.qml:470
+#: src/contents/ui/MultibandGate.qml:445
 #, fuzzy
 msgctxt "Stereo source"
 msgid "Left/Right"
 msgstr "Oneskorenie Ľavo/Pravo"
 
-#: src/contents/ui/Compressor.qml:334 src/contents/ui/Expander.qml:294
-#: src/contents/ui/Gate.qml:312 src/contents/ui/MultibandCompressor.qml:461
-#: src/contents/ui/MultibandGate.qml:434
+#: src/contents/ui/Compressor.qml:351 src/contents/ui/Expander.qml:311
+#: src/contents/ui/Gate.qml:328 src/contents/ui/MultibandCompressor.qml:470
+#: src/contents/ui/MultibandGate.qml:445
 #, fuzzy
 msgctxt "Stereo source"
 msgid "Right/Left"
 msgstr "Pravý"
 
-#: src/contents/ui/Compressor.qml:334 src/contents/ui/Expander.qml:294
-#: src/contents/ui/Gate.qml:312 src/contents/ui/MultibandCompressor.qml:461
-#: src/contents/ui/MultibandGate.qml:434
+#: src/contents/ui/Compressor.qml:351 src/contents/ui/Expander.qml:311
+#: src/contents/ui/Gate.qml:328 src/contents/ui/MultibandCompressor.qml:470
+#: src/contents/ui/MultibandGate.qml:445
 #, fuzzy
 msgctxt "Stereo source"
 msgid "Mid/Side"
 msgstr "Postranný"
 
-#: src/contents/ui/Compressor.qml:334 src/contents/ui/Expander.qml:294
-#: src/contents/ui/Gate.qml:312 src/contents/ui/MultibandCompressor.qml:461
-#: src/contents/ui/MultibandGate.qml:434
+#: src/contents/ui/Compressor.qml:351 src/contents/ui/Expander.qml:311
+#: src/contents/ui/Gate.qml:328 src/contents/ui/MultibandCompressor.qml:470
+#: src/contents/ui/MultibandGate.qml:445
 #, fuzzy
 msgctxt "Stereo source"
 msgid "Side/Mid"
 msgstr "Postranný"
 
-#: src/contents/ui/Compressor.qml:334 src/contents/ui/Expander.qml:294
-#: src/contents/ui/Gate.qml:312 src/contents/ui/MultibandCompressor.qml:461
-#: src/contents/ui/MultibandGate.qml:434
+#: src/contents/ui/Compressor.qml:351 src/contents/ui/Expander.qml:311
+#: src/contents/ui/Gate.qml:328 src/contents/ui/MultibandCompressor.qml:470
+#: src/contents/ui/MultibandGate.qml:445
 #, fuzzy
 msgctxt "Stereo source"
 msgid "Min"
 msgstr "Maximálna"
 
-#: src/contents/ui/Compressor.qml:334 src/contents/ui/Expander.qml:294
-#: src/contents/ui/Gate.qml:312 src/contents/ui/MultibandCompressor.qml:461
-#: src/contents/ui/MultibandGate.qml:434
+#: src/contents/ui/Compressor.qml:351 src/contents/ui/Expander.qml:311
+#: src/contents/ui/Gate.qml:328 src/contents/ui/MultibandCompressor.qml:470
+#: src/contents/ui/MultibandGate.qml:445
 #, fuzzy
 msgctxt "Stereo source"
 msgid "Max"
 msgstr "Maximálna"
 
-#: src/contents/ui/Compressor.qml:358 src/contents/ui/Expander.qml:314
-#: src/contents/ui/Gate.qml:333 src/contents/ui/Limiter.qml:250
-#: src/contents/ui/MultibandCompressor.qml:469
-#: src/contents/ui/MultibandGate.qml:442
+#: src/contents/ui/Compressor.qml:375 src/contents/ui/Expander.qml:331
+#: src/contents/ui/Gate.qml:349 src/contents/ui/Limiter.qml:250
+#: src/contents/ui/MultibandCompressor.qml:478
+#: src/contents/ui/MultibandGate.qml:453
 msgid "Preamp"
 msgstr ""
 
-#: src/contents/ui/Compressor.qml:376 src/contents/ui/Expander.qml:332
-#: src/contents/ui/Gate.qml:351 src/contents/ui/MultibandCompressor.qml:485
-#: src/contents/ui/MultibandGate.qml:458
+#: src/contents/ui/Compressor.qml:393 src/contents/ui/Expander.qml:349
+#: src/contents/ui/Gate.qml:367 src/contents/ui/MultibandCompressor.qml:494
+#: src/contents/ui/MultibandGate.qml:469
 msgid "Reactivity"
 msgstr "Reaktivita"
 
-#: src/contents/ui/Compressor.qml:394 src/contents/ui/Expander.qml:350
-#: src/contents/ui/Gate.qml:369 src/contents/ui/Limiter.qml:268
-#: src/contents/ui/MultibandCompressor.qml:500
-#: src/contents/ui/MultibandGate.qml:473
+#: src/contents/ui/Compressor.qml:411 src/contents/ui/Expander.qml:367
+#: src/contents/ui/Gate.qml:385 src/contents/ui/Limiter.qml:268
+#: src/contents/ui/MultibandCompressor.qml:509
+#: src/contents/ui/MultibandGate.qml:484
 #, fuzzy
 msgctxt "Compressor control"
 msgid "Lookahead"
 msgstr "Výhľad"
 
-#: src/contents/ui/Compressor.qml:412 src/contents/ui/EqualizerBandMenu.qml:51
-#: src/contents/ui/Expander.qml:368 src/contents/ui/Filter.qml:69
-#: src/contents/ui/Gate.qml:387
+#: src/contents/ui/Compressor.qml:429 src/contents/ui/EqualizerBandMenu.qml:51
+#: src/contents/ui/Expander.qml:385 src/contents/ui/Filter.qml:69
+#: src/contents/ui/Gate.qml:403
 #, fuzzy
 msgctxt "Filter type"
 msgid "High-pass"
 msgstr "Horné pásmo"
 
-#: src/contents/ui/Compressor.qml:416 src/contents/ui/Compressor.qml:430
+#: src/contents/ui/Compressor.qml:433 src/contents/ui/Compressor.qml:447
 #: src/contents/ui/Equalizer.qml:162 src/contents/ui/EqualizerBandMenu.qml:51
-#: src/contents/ui/Expander.qml:372 src/contents/ui/Expander.qml:386
-#: src/contents/ui/Filter.qml:111 src/contents/ui/Gate.qml:391
-#: src/contents/ui/Gate.qml:405 src/contents/ui/MidSideEqualizer.qml:156
+#: src/contents/ui/Expander.qml:389 src/contents/ui/Expander.qml:403
+#: src/contents/ui/Filter.qml:111 src/contents/ui/Gate.qml:407
+#: src/contents/ui/Gate.qml:421 src/contents/ui/MidSideEqualizer.qml:156
 msgid "Off"
 msgstr "Vyp"
 
-#: src/contents/ui/Compressor.qml:426 src/contents/ui/EqualizerBandMenu.qml:51
-#: src/contents/ui/Expander.qml:382 src/contents/ui/Filter.qml:69
-#: src/contents/ui/Gate.qml:401
+#: src/contents/ui/Compressor.qml:443 src/contents/ui/EqualizerBandMenu.qml:51
+#: src/contents/ui/Expander.qml:399 src/contents/ui/Filter.qml:69
+#: src/contents/ui/Gate.qml:417
 #, fuzzy
 msgctxt "Filter type"
 msgid "Low-pass"
 msgstr "Dolná priepusť"
 
-#: src/contents/ui/Compressor.qml:484 src/contents/ui/Convolver.qml:475
+#: src/contents/ui/Compressor.qml:501 src/contents/ui/Convolver.qml:475
 #: src/contents/ui/Delay.qml:176 src/contents/ui/Delay.qml:329
-#: src/contents/ui/Expander.qml:444 src/contents/ui/Gate.qml:459
-#: src/contents/ui/MultibandCompressor.qml:624
-#: src/contents/ui/MultibandGate.qml:597 src/contents/ui/Pitch.qml:123
+#: src/contents/ui/Expander.qml:461 src/contents/ui/Gate.qml:475
+#: src/contents/ui/MultibandCompressor.qml:633
+#: src/contents/ui/MultibandGate.qml:608 src/contents/ui/Pitch.qml:123
 #: src/contents/ui/Reverb.qml:188 src/contents/ui/StereoTools.qml:345
 #, fuzzy
 msgctxt "Signal type"
 msgid "Dry"
 msgstr "Skúšobný"
 
-#: src/contents/ui/Compressor.qml:503 src/contents/ui/Convolver.qml:493
+#: src/contents/ui/Compressor.qml:520 src/contents/ui/Convolver.qml:493
 #: src/contents/ui/Delay.qml:194 src/contents/ui/Delay.qml:347
-#: src/contents/ui/Expander.qml:463 src/contents/ui/Gate.qml:478
-#: src/contents/ui/MultibandCompressor.qml:642
-#: src/contents/ui/MultibandGate.qml:615 src/contents/ui/Pitch.qml:142
+#: src/contents/ui/Expander.qml:480 src/contents/ui/Gate.qml:494
+#: src/contents/ui/MultibandCompressor.qml:651
+#: src/contents/ui/MultibandGate.qml:626 src/contents/ui/Pitch.qml:142
 #: src/contents/ui/Reverb.qml:206 src/contents/ui/StereoTools.qml:363
 #, fuzzy
 msgctxt "Signal type"
 msgid "Wet"
 msgstr "Váhy"
 
-#: src/contents/ui/Compressor.qml:522 src/contents/ui/Deesser.qml:135
-#: src/contents/ui/Expander.qml:482 src/contents/ui/Gate.qml:497
-#: src/contents/ui/MultibandCompressor.qml:395
-#: src/contents/ui/MultibandGate.qml:265
+#: src/contents/ui/Compressor.qml:539 src/contents/ui/Deesser.qml:135
+#: src/contents/ui/Expander.qml:499 src/contents/ui/Gate.qml:513
+#: src/contents/ui/MultibandCompressor.qml:404
+#: src/contents/ui/MultibandGate.qml:278
 #, fuzzy
 msgctxt "Gain level"
 msgid "Makeup"
 msgstr "Pozdvihnutie"
 
-#: src/contents/ui/Compressor.qml:542 src/contents/ui/Expander.qml:498
-#: src/contents/ui/Gate.qml:517 src/contents/ui/Limiter.qml:289
+#: src/contents/ui/Compressor.qml:559 src/contents/ui/Expander.qml:515
+#: src/contents/ui/Gate.qml:533 src/contents/ui/Limiter.qml:289
 #: src/contents/ui/LspPreMixDialog.qml:30
-#: src/contents/ui/MultibandCompressor.qml:1006
-#: src/contents/ui/MultibandGate.qml:979
+#: src/contents/ui/MultibandCompressor.qml:1015
+#: src/contents/ui/MultibandGate.qml:990
 msgid "Pre-Mix"
 msgstr ""
 
-#: src/contents/ui/Compressor.qml:550 src/contents/ui/Expander.qml:506
-#: src/contents/ui/Gate.qml:527 src/contents/ui/Limiter.qml:302
+#: src/contents/ui/Compressor.qml:567 src/contents/ui/Expander.qml:523
+#: src/contents/ui/Gate.qml:543 src/contents/ui/Limiter.qml:302
 #: src/contents/ui/LspPreMixDialog.qml:39
 #, fuzzy
 msgid "Input to sidechain"
 msgstr "Postranný reťazec"
 
-#: src/contents/ui/Compressor.qml:566 src/contents/ui/Expander.qml:522
-#: src/contents/ui/Gate.qml:543 src/contents/ui/Limiter.qml:318
+#: src/contents/ui/Compressor.qml:583 src/contents/ui/Expander.qml:539
+#: src/contents/ui/Gate.qml:559 src/contents/ui/Limiter.qml:318
 #: src/contents/ui/LspPreMixDialog.qml:55
 #, fuzzy
 msgid "Input to link"
 msgstr "Obmedzovač na vstupe"
 
-#: src/contents/ui/Compressor.qml:582 src/contents/ui/Expander.qml:538
-#: src/contents/ui/Gate.qml:559 src/contents/ui/Limiter.qml:334
+#: src/contents/ui/Compressor.qml:599 src/contents/ui/Expander.qml:555
+#: src/contents/ui/Gate.qml:575 src/contents/ui/Limiter.qml:334
 #: src/contents/ui/LspPreMixDialog.qml:71
 #, fuzzy
 msgid "Sidechain to input"
 msgstr "Obmedzovač na vstupe"
 
-#: src/contents/ui/Compressor.qml:598 src/contents/ui/Expander.qml:554
-#: src/contents/ui/Gate.qml:575 src/contents/ui/Limiter.qml:350
+#: src/contents/ui/Compressor.qml:615 src/contents/ui/Expander.qml:571
+#: src/contents/ui/Gate.qml:591 src/contents/ui/Limiter.qml:350
 #: src/contents/ui/LspPreMixDialog.qml:87
 #, fuzzy
 msgid "Sidechain to link"
 msgstr "Postranný reťazec"
 
-#: src/contents/ui/Compressor.qml:614 src/contents/ui/Expander.qml:570
-#: src/contents/ui/Gate.qml:591 src/contents/ui/Limiter.qml:366
+#: src/contents/ui/Compressor.qml:631 src/contents/ui/Expander.qml:587
+#: src/contents/ui/Gate.qml:607 src/contents/ui/Limiter.qml:366
 #: src/contents/ui/LspPreMixDialog.qml:103
 #, fuzzy
 msgid "Link to sidechain"
 msgstr "Postranný reťazec"
 
-#: src/contents/ui/Compressor.qml:630 src/contents/ui/Expander.qml:586
-#: src/contents/ui/Gate.qml:607 src/contents/ui/Limiter.qml:382
+#: src/contents/ui/Compressor.qml:647 src/contents/ui/Expander.qml:603
+#: src/contents/ui/Gate.qml:623 src/contents/ui/Limiter.qml:382
 #: src/contents/ui/LspPreMixDialog.qml:119
 #, fuzzy
 msgid "Link to input"
 msgstr "Postranný reťazec"
 
-#: src/contents/ui/Compressor.qml:674 src/contents/ui/EqualizerBandMenu.qml:119
-#: src/contents/ui/Expander.qml:626 src/contents/ui/Filter.qml:173
-#: src/contents/ui/Limiter.qml:506 src/contents/ui/MultibandCompressor.qml:359
-#: src/contents/ui/MultibandCompressor.qml:745
-#: src/contents/ui/MultibandGate.qml:245
+#: src/contents/ui/Compressor.qml:691 src/contents/ui/EqualizerBandMenu.qml:119
+#: src/contents/ui/Expander.qml:643 src/contents/ui/Filter.qml:173
+#: src/contents/ui/Limiter.qml:506 src/contents/ui/MultibandCompressor.qml:754
 msgid "Gain"
 msgstr "Zisk"
 
-#: src/contents/ui/Compressor.qml:777 src/contents/ui/Expander.qml:727
-#: src/contents/ui/Gate.qml:755 src/contents/ui/MultibandCompressor.qml:857
-#: src/contents/ui/MultibandGate.qml:294 src/contents/ui/MultibandGate.qml:830
+#: src/contents/ui/Compressor.qml:794 src/contents/ui/Expander.qml:744
+#: src/contents/ui/Gate.qml:771 src/contents/ui/MultibandCompressor.qml:866
+#: src/contents/ui/MultibandGate.qml:306 src/contents/ui/MultibandGate.qml:841
 #, fuzzy
 msgctxt "Compressor parameter"
 msgid "Curve"
 msgstr "Krivka"
 
-#: src/contents/ui/Compressor.qml:786 src/contents/ui/Expander.qml:736
-#: src/contents/ui/Gate.qml:764 src/contents/ui/MultibandCompressor.qml:802
-#: src/contents/ui/MultibandGate.qml:775
+#: src/contents/ui/Compressor.qml:803 src/contents/ui/Expander.qml:753
+#: src/contents/ui/Gate.qml:780 src/contents/ui/MultibandCompressor.qml:811
+#: src/contents/ui/MultibandGate.qml:786
 #, fuzzy
 msgctxt "Compressor parameter"
 msgid "Envelope"
 msgstr "Sklon"
 
-#: src/contents/ui/Compressor.qml:914 src/contents/ui/Expander.qml:864
-#: src/contents/ui/Gate.qml:993 src/contents/ui/MultibandCompressor.qml:996
-#: src/contents/ui/MultibandGate.qml:969
+#: src/contents/ui/Compressor.qml:931 src/contents/ui/Expander.qml:881
+#: src/contents/ui/Gate.qml:1009 src/contents/ui/MultibandCompressor.qml:1005
+#: src/contents/ui/MultibandGate.qml:980
 #, fuzzy
 msgid "Stereo split"
 msgstr "Režim sterea"
@@ -1349,9 +1356,9 @@ msgstr ""
 msgid "Sample Rate"
 msgstr "Redukcia"
 
-#: src/contents/ui/Crusher.qml:166 src/contents/ui/Gate.qml:118
-#: src/contents/ui/Gate.qml:652 src/contents/ui/Maximizer.qml:101
-#: src/contents/ui/MultibandGate.qml:249 src/contents/ui/MultibandGate.qml:718
+#: src/contents/ui/Crusher.qml:166 src/contents/ui/Gate.qml:117
+#: src/contents/ui/Gate.qml:668 src/contents/ui/Maximizer.qml:101
+#: src/contents/ui/MultibandGate.qml:262 src/contents/ui/MultibandGate.qml:729
 #, fuzzy
 msgid "Reduction"
 msgstr "Redukcia"
@@ -1464,12 +1471,12 @@ msgctxt "Deesser mode"
 msgid "Split"
 msgstr "Rozdeliť"
 
-#: src/contents/ui/Deesser.qml:102 src/contents/ui/Gate.qml:135
-#: src/contents/ui/Gate.qml:187 src/contents/ui/Gate.qml:922
-#: src/contents/ui/Gate.qml:935 src/contents/ui/Limiter.qml:127
-#: src/contents/ui/Maximizer.qml:84 src/contents/ui/MultibandCompressor.qml:279
-#: src/contents/ui/MultibandCompressor.qml:327
-#: src/contents/ui/MultibandGate.qml:298 src/contents/ui/MultibandGate.qml:352
+#: src/contents/ui/Deesser.qml:102 src/contents/ui/Gate.qml:151
+#: src/contents/ui/Gate.qml:203 src/contents/ui/Gate.qml:938
+#: src/contents/ui/Gate.qml:951 src/contents/ui/Limiter.qml:127
+#: src/contents/ui/Maximizer.qml:84 src/contents/ui/MultibandCompressor.qml:275
+#: src/contents/ui/MultibandCompressor.qml:322
+#: src/contents/ui/MultibandGate.qml:310 src/contents/ui/MultibandGate.qml:363
 #: src/contents/ui/RNNoise.qml:126
 msgid "Threshold"
 msgstr "Prah"
@@ -1512,8 +1519,8 @@ msgstr ""
 
 #: src/contents/ui/Delay.qml:75 src/contents/ui/Delay.qml:104
 #: src/contents/ui/Delay.qml:228 src/contents/ui/Delay.qml:257
-#: src/contents/ui/MultibandCompressor.qml:264
-#: src/contents/ui/MultibandCompressor.qml:312
+#: src/contents/ui/MultibandCompressor.qml:260
+#: src/contents/ui/MultibandCompressor.qml:307
 #, fuzzy
 msgid "Time"
 msgstr "V reálnom čase"
@@ -1595,7 +1602,7 @@ msgstr[2] "Kanály"
 
 #: src/contents/ui/DelegateStreamsList.qml:106
 #: src/contents/ui/EchoCanceller.qml:64 src/contents/ui/EchoCanceller.qml:97
-#: src/contents/ui/EchoCanceller.qml:124 src/contents/ui/Gate.qml:175
+#: src/contents/ui/EchoCanceller.qml:124 src/contents/ui/Gate.qml:191
 #: src/contents/ui/RNNoise.qml:115
 #, fuzzy
 msgid "Enable"
@@ -1765,20 +1772,43 @@ msgstr "IIR"
 #: src/contents/ui/MidSideEqualizer.qml:142
 #, fuzzy
 msgctxt "Filter mode"
-msgid "FIR"
-msgstr "FIR"
+msgid "Linear phase (FIR)"
+msgstr "Preklopiť fázu"
 
 #: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
-#: src/contents/ui/Loudness.qml:77 src/contents/ui/MidSideEqualizer.qml:142
+#: src/contents/ui/MidSideEqualizer.qml:142
 #, fuzzy
 msgctxt "Filter mode"
-msgid "FFT"
-msgstr "FFT"
+msgid "Linear phase (FFT)"
+msgstr "Preklopiť fázu"
 
 #: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
+#: src/contents/ui/MidSideEqualizer.qml:142
+#, fuzzy
 msgctxt "Filter mode"
-msgid "SPM"
-msgstr ""
+msgid "Linear phase (SPM)"
+msgstr "Preklopiť fázu"
+
+#: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
+#: src/contents/ui/MidSideEqualizer.qml:142
+#, fuzzy
+msgctxt "Filter mode"
+msgid "Minimum phase (FIR)"
+msgstr "Minimálna frekvencia"
+
+#: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
+#: src/contents/ui/MidSideEqualizer.qml:142
+#, fuzzy
+msgctxt "Filter mode"
+msgid "Minimum phase (FFT)"
+msgstr "Minimálna frekvencia"
+
+#: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
+#: src/contents/ui/MidSideEqualizer.qml:142
+#, fuzzy
+msgctxt "Filter mode"
+msgid "Minimum phase (SPM)"
+msgstr "Minimálna frekvencia"
 
 #: src/contents/ui/Equalizer.qml:158 src/contents/ui/Filter.qml:107
 #: src/contents/ui/MidSideEqualizer.qml:152
@@ -1871,9 +1901,9 @@ msgid "Export APO"
 msgstr "Načítať predvoľbu"
 
 #: src/contents/ui/EqualizerBandMenu.qml:34
-#: src/contents/ui/MultibandCompressor.qml:669
-#: src/contents/ui/MultibandCompressor.qml:928
-#: src/contents/ui/MultibandGate.qml:642 src/contents/ui/MultibandGate.qml:901
+#: src/contents/ui/MultibandCompressor.qml:678
+#: src/contents/ui/MultibandCompressor.qml:937
+#: src/contents/ui/MultibandGate.qml:653 src/contents/ui/MultibandGate.qml:912
 #, fuzzy
 msgid "Band"
 msgstr "Pásma"
@@ -1982,8 +2012,7 @@ msgid "Slope"
 msgstr "Sklon"
 
 #: src/contents/ui/EqualizerBandMenu.qml:96 src/contents/ui/Filter.qml:142
-#: src/contents/ui/MultibandCompressor.qml:199
-#: src/contents/ui/MultibandGate.qml:136 src/contents/ui/PipeWirePage.qml:431
+#: src/contents/ui/PipeWirePage.qml:431
 msgid "Frequency"
 msgstr "Frekvencia"
 
@@ -2023,25 +2052,25 @@ msgstr "Strop"
 msgid "Expander"
 msgstr ""
 
-#: src/contents/ui/Expander.qml:226 src/contents/ui/Gate.qml:244
-#: src/contents/ui/Limiter.qml:217 src/contents/ui/MultibandCompressor.qml:427
-#: src/contents/ui/MultibandGate.qml:400
+#: src/contents/ui/Expander.qml:243 src/contents/ui/Gate.qml:260
+#: src/contents/ui/Limiter.qml:217 src/contents/ui/MultibandCompressor.qml:436
+#: src/contents/ui/MultibandGate.qml:411
 #, fuzzy
 msgctxt "Sidchain type"
 msgid "Internal"
 msgstr "Integrovaná"
 
-#: src/contents/ui/Expander.qml:226 src/contents/ui/Gate.qml:244
-#: src/contents/ui/Limiter.qml:217 src/contents/ui/MultibandCompressor.qml:427
-#: src/contents/ui/MultibandGate.qml:400
+#: src/contents/ui/Expander.qml:243 src/contents/ui/Gate.qml:260
+#: src/contents/ui/Limiter.qml:217 src/contents/ui/MultibandCompressor.qml:436
+#: src/contents/ui/MultibandGate.qml:411
 #, fuzzy
 msgctxt "Sidchain type"
 msgid "External"
 msgstr "Integrovaná"
 
-#: src/contents/ui/Expander.qml:226 src/contents/ui/Gate.qml:244
-#: src/contents/ui/Limiter.qml:217 src/contents/ui/MultibandCompressor.qml:427
-#: src/contents/ui/MultibandGate.qml:400
+#: src/contents/ui/Expander.qml:243 src/contents/ui/Gate.qml:260
+#: src/contents/ui/Limiter.qml:217 src/contents/ui/MultibandCompressor.qml:436
+#: src/contents/ui/MultibandGate.qml:411
 msgctxt "Sidchain type"
 msgid "Link"
 msgstr ""
@@ -2060,18 +2089,18 @@ msgstr "Ekvalizér"
 msgid "Gate"
 msgstr "Brána"
 
-#: src/contents/ui/Gate.qml:152 src/contents/ui/Gate.qml:206
-#: src/contents/ui/MultibandGate.qml:313 src/contents/ui/MultibandGate.qml:368
+#: src/contents/ui/Gate.qml:168 src/contents/ui/Gate.qml:222
+#: src/contents/ui/MultibandGate.qml:325 src/contents/ui/MultibandGate.qml:379
 msgid "Zone"
 msgstr ""
 
-#: src/contents/ui/Gate.qml:169 src/contents/ui/MultibandGate.qml:341
+#: src/contents/ui/Gate.qml:185 src/contents/ui/MultibandGate.qml:352
 msgid "Hysteresis"
 msgstr ""
 
-#: src/contents/ui/Gate.qml:916 src/contents/ui/Gate.qml:929
-#: src/contents/ui/MultibandCompressor.qml:214
-#: src/contents/ui/MultibandGate.qml:151 src/contents/ui/Speex.qml:130
+#: src/contents/ui/Gate.qml:932 src/contents/ui/Gate.qml:945
+#: src/contents/ui/MultibandCompressor.qml:210
+#: src/contents/ui/MultibandGate.qml:150 src/contents/ui/Speex.qml:130
 #: src/contents/ui/VoiceSuppressor.qml:63
 msgid "Start"
 msgstr ""
@@ -2588,6 +2617,12 @@ msgstr ""
 msgid "Threshold boost"
 msgstr "Prah"
 
+#: src/contents/ui/Loudness.qml:77
+#, fuzzy
+msgctxt "Filter mode"
+msgid "FFT"
+msgstr "FFT"
+
 #: src/contents/ui/Loudness.qml:87
 #, fuzzy
 msgid "Contour"
@@ -2801,10 +2836,6 @@ msgid ""
 "external APO preset file."
 msgstr "Načítať APO predvoľbu"
 
-#: src/contents/ui/MidSideEqualizer.qml:142
-msgid "SPM"
-msgstr ""
-
 #: src/contents/ui/MidSideEqualizer.qml:198
 #, fuzzy
 msgid "Pitch mid"
@@ -2837,96 +2868,103 @@ msgstr "Rozdeliť"
 msgid "Compression mode"
 msgstr "Mód kompresora"
 
-#: src/contents/ui/MultibandCompressor.qml:234
-#: src/contents/ui/MultibandGate.qml:171 src/contents/ui/VoiceSuppressor.qml:79
+#: src/contents/ui/MultibandCompressor.qml:195
+#: src/contents/ui/MultibandGate.qml:135
+#: src/contents/ui/PreferencesSheet.qml:625
+#, fuzzy
+msgid "Frequency Range"
+msgstr "Frekvencia"
+
+#: src/contents/ui/MultibandCompressor.qml:232
+#: src/contents/ui/MultibandGate.qml:172 src/contents/ui/VoiceSuppressor.qml:79
 #, fuzzy
 msgid "End"
 msgstr "2."
 
-#: src/contents/ui/MultibandCompressor.qml:517
-#: src/contents/ui/MultibandGate.qml:490
+#: src/contents/ui/MultibandCompressor.qml:526
+#: src/contents/ui/MultibandGate.qml:501
 #, fuzzy
 msgctxt "Filter type"
 msgid "Low-cut"
 msgstr "Režim filtra nízkej priepuste"
 
-#: src/contents/ui/MultibandCompressor.qml:542
-#: src/contents/ui/MultibandGate.qml:515
+#: src/contents/ui/MultibandCompressor.qml:551
+#: src/contents/ui/MultibandGate.qml:526
 #, fuzzy
 msgctxt "Filter type"
 msgid "High-cut"
 msgstr "Horný prechod"
 
-#: src/contents/ui/MultibandCompressor.qml:574
-#: src/contents/ui/MultibandGate.qml:547
+#: src/contents/ui/MultibandCompressor.qml:583
+#: src/contents/ui/MultibandGate.qml:558
 #, fuzzy
 msgid "Operating mode"
 msgstr "Importovať model"
 
-#: src/contents/ui/MultibandCompressor.qml:578
-#: src/contents/ui/MultibandGate.qml:551
+#: src/contents/ui/MultibandCompressor.qml:587
+#: src/contents/ui/MultibandGate.qml:562
 msgctxt "Compressor mode"
 msgid "Classic"
 msgstr ""
 
-#: src/contents/ui/MultibandCompressor.qml:578
-#: src/contents/ui/MultibandGate.qml:551
+#: src/contents/ui/MultibandCompressor.qml:587
+#: src/contents/ui/MultibandGate.qml:562
 #, fuzzy
 msgctxt "Compressor mode"
 msgid "Modern"
 msgstr "Režim"
 
-#: src/contents/ui/MultibandCompressor.qml:578
-#: src/contents/ui/MultibandGate.qml:551
+#: src/contents/ui/MultibandCompressor.qml:587
+#: src/contents/ui/MultibandGate.qml:562
 #, fuzzy
 msgctxt "Compressor mode"
 msgid "Linear phase"
 msgstr "Preklopiť fázu"
 
-#: src/contents/ui/MultibandCompressor.qml:587
-#: src/contents/ui/MultibandGate.qml:560
+#: src/contents/ui/MultibandCompressor.qml:596
+#: src/contents/ui/MultibandGate.qml:571
 #, fuzzy
 msgid "Sidechain boost"
 msgstr "Postranný reťazec"
 
-#: src/contents/ui/MultibandCompressor.qml:591
-#: src/contents/ui/MultibandGate.qml:564
+#: src/contents/ui/MultibandCompressor.qml:600
+#: src/contents/ui/MultibandGate.qml:575
 #, fuzzy
 msgctxt "Sidechain boost"
 msgid "None"
 msgstr "Žiadny"
 
-#: src/contents/ui/MultibandCompressor.qml:591
-#: src/contents/ui/MultibandGate.qml:564
+#: src/contents/ui/MultibandCompressor.qml:600
+#: src/contents/ui/MultibandGate.qml:575
 msgctxt "Sidechain boost"
 msgid "Pink BT"
 msgstr ""
 
-#: src/contents/ui/MultibandCompressor.qml:591
-#: src/contents/ui/MultibandGate.qml:564
+#: src/contents/ui/MultibandCompressor.qml:600
+#: src/contents/ui/MultibandGate.qml:575
 msgctxt "Sidechain boost"
 msgid "Pink MT"
 msgstr ""
 
-#: src/contents/ui/MultibandCompressor.qml:591
-#: src/contents/ui/MultibandGate.qml:564
+#: src/contents/ui/MultibandCompressor.qml:600
+#: src/contents/ui/MultibandGate.qml:575
 msgctxt "Sidechain boost"
 msgid "Brown BT"
 msgstr ""
 
-#: src/contents/ui/MultibandCompressor.qml:591
-#: src/contents/ui/MultibandGate.qml:564
+#: src/contents/ui/MultibandCompressor.qml:600
+#: src/contents/ui/MultibandGate.qml:575
 msgctxt "Sidechain boost"
 msgid "Brown MT"
 msgstr ""
 
-#: src/contents/ui/MultibandCompressor.qml:601
-#: src/contents/ui/MultibandGate.qml:574
+#: src/contents/ui/MultibandCompressor.qml:610
+#: src/contents/ui/MultibandGate.qml:585
 #, fuzzy
 msgid "Sidechain input device"
 msgstr "Obmedzovač na vstupe"
 
-#: src/contents/ui/MultibandGate.qml:197
+#: src/contents/ui/MultibandGate.qml:196
 #, fuzzy
 msgid "Reaction"
 msgstr "Redukcia"
@@ -3469,11 +3507,6 @@ msgstr "Výstupné efekty"
 #: src/contents/ui/PreferencesSheet.qml:610
 msgid "Maximum spectrum update rate."
 msgstr ""
-
-#: src/contents/ui/PreferencesSheet.qml:625
-#, fuzzy
-msgid "Frequency Range"
-msgstr "Frekvencia"
 
 #: src/contents/ui/PreferencesSheet.qml:632
 #: src/contents/ui/PreferencesSheet.qml:694
@@ -4780,6 +4813,15 @@ msgstr "Ekvalizér, kompresor a ďalšie audio efekty"
 msgid "Simple audio effects"
 msgstr ""
 
+#, fuzzy
+#~ msgid "Threshold and Time"
+#~ msgstr "Prah"
+
+#, fuzzy
+#~ msgctxt "Filter mode"
+#~ msgid "FIR"
+#~ msgstr "FIR"
+
 #~ msgid "Octaves"
 #~ msgstr "Oktávy"
 
@@ -5557,10 +5599,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Band 1 Release"
 #~ msgstr "Uvoľnenie"
-
-#, fuzzy
-#~ msgid "Band 1 Threshold"
-#~ msgstr "Prah"
 
 #, fuzzy
 #~ msgid "Band 1 Ratio"
