@@ -227,6 +227,17 @@ inline constexpr auto band_release_threshold = std::to_array({
     std::to_array("band7ReleaseThreshold"),
 });
 
+inline constexpr auto band_hold_time = std::to_array({
+    {"band0HoldTime"},
+    {"band1HoldTime"},
+    {"band2HoldTime"},
+    {"band3HoldTime"},
+    {"band4HoldTime"},
+    {"band5HoldTime"},
+    {"band6HoldTime"},
+    std::to_array("band7HoldTime"),
+});
+
 constexpr auto band_ratio = std::to_array({
     {"band0Ratio"},
     {"band1Ratio"},
@@ -379,6 +390,9 @@ constexpr auto rrl = std::to_array(
 
 constexpr auto rt =
     std::to_array({{"rt_0"}, {"rt_1"}, {"rt_2"}, {"rt_3"}, {"rt_4"}, {"rt_5"}, {"rt_6"}, std::to_array("rt_7")});
+
+constexpr auto ht =
+    std::to_array({{"ht_0"}, {"ht_1"}, {"ht_2"}, {"ht_3"}, {"ht_4"}, {"ht_5"}, {"ht_6"}, std::to_array("ht_7")});
 
 constexpr auto cr =
     std::to_array({{"cr_0"}, {"cr_1"}, {"cr_2"}, {"cr_3"}, {"cr_4"}, {"cr_5"}, {"cr_6"}, std::to_array("cr_7")});

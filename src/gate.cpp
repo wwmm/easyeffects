@@ -81,6 +81,7 @@ Gate::Gate(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_
   BIND_LV2_PORT("slpf", lpfFrequency, setLpfFrequency, DbGate::lpfFrequencyChanged);
   BIND_LV2_PORT("at", attack, setAttack, DbGate::attackChanged);
   BIND_LV2_PORT("rt", release, setRelease, DbGate::releaseChanged);
+  BIND_LV2_PORT("hold", hold, setHold, DbGate::holdChanged);
   BIND_LV2_PORT("gh", hysteresis, setHysteresis, DbGate::hysteresisChanged);
   BIND_LV2_PORT_DB("mk", makeup, setMakeup, DbGate::makeupChanged, false);
   BIND_LV2_PORT_DB("gr", reduction, setReduction, DbGate::reductionChanged, false);

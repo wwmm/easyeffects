@@ -66,6 +66,12 @@
             <max>0</max>
             <default>-12</default>
         </entry>
+        <entry name="hold" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>1000</max>
+            <default>0</default>
+        </entry>
         <entry name="ratio" type="Double">
             <label></label>
             <min>1</min>

@@ -114,7 +114,6 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: reduction
 
-                        Layout.columnSpan: 2
                         label: i18n("Reduction") // qmllint disable
                         labelAbove: true
                         spinboxLayoutFillWidth: true
@@ -126,6 +125,23 @@ Kirigami.ScrollablePage {
                         unit: Units.dB
                         onValueModified: v => {
                             gatePage.pluginDB.reduction = v;
+                        }
+                    }
+
+                    EeSpinBox {
+                        id: hold
+
+                        label: i18nc("Compressor control", "Hold") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: gatePage.pluginDB.getMinValue("hold")
+                        to: gatePage.pluginDB.getMaxValue("hold")
+                        value: gatePage.pluginDB.hold
+                        decimals: 2
+                        stepSize: 0.01
+                        unit: Units.ms
+                        onValueModified: v => {
+                            gatePage.pluginDB.hold = v;
                         }
                     }
 

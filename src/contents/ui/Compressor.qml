@@ -166,7 +166,7 @@ Kirigami.ScrollablePage {
             }
 
             EeCard {
-                title: i18n("Threshold and Time") // qmllint disable
+                title: i18n("Time and Threshold") // qmllint disable
 
                 GridLayout {
                     columns: 2
@@ -174,25 +174,9 @@ Kirigami.ScrollablePage {
                     rowSpacing: 0
 
                     EeSpinBox {
-                        id: threshold
-
-                        label: i18nc("Compressor control", "Attack") // qmllint disable
-                        labelAbove: true
-                        spinboxLayoutFillWidth: true
-                        from: compressorPage.pluginDB.getMinValue("threshold")
-                        to: compressorPage.pluginDB.getMaxValue("threshold")
-                        value: compressorPage.pluginDB.threshold
-                        decimals: 2
-                        stepSize: 0.01
-                        unit: Units.dB
-                        onValueModified: v => {
-                            compressorPage.pluginDB.threshold = v;
-                        }
-                    }
-
-                    EeSpinBox {
                         id: attack
 
+                        label: i18nc("Compressor control", "Attack") // qmllint disable
                         labelAbove: true
                         spinboxLayoutFillWidth: true
                         from: compressorPage.pluginDB.getMinValue("attack")
@@ -207,9 +191,41 @@ Kirigami.ScrollablePage {
                     }
 
                     EeSpinBox {
-                        id: releaseThreshold
+                        id: threshold
+
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: compressorPage.pluginDB.getMinValue("threshold")
+                        to: compressorPage.pluginDB.getMaxValue("threshold")
+                        value: compressorPage.pluginDB.threshold
+                        decimals: 2
+                        stepSize: 0.01
+                        unit: Units.dB
+                        onValueModified: v => {
+                            compressorPage.pluginDB.threshold = v;
+                        }
+                    }
+
+                    EeSpinBox {
+                        id: release
 
                         label: i18nc("Compressor control", "Release") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: compressorPage.pluginDB.getMinValue("release")
+                        to: compressorPage.pluginDB.getMaxValue("release")
+                        value: compressorPage.pluginDB.release
+                        decimals: 2
+                        stepSize: 0.01
+                        unit: Units.ms
+                        onValueModified: v => {
+                            compressorPage.pluginDB.release = v;
+                        }
+                    }
+
+                    EeSpinBox {
+                        id: releaseThreshold
+
                         labelAbove: true
                         spinboxLayoutFillWidth: true
                         from: compressorPage.pluginDB.getMinValue("releaseThreshold")
@@ -225,18 +241,19 @@ Kirigami.ScrollablePage {
                     }
 
                     EeSpinBox {
-                        id: release
+                        id: hold
 
+                        label: i18nc("Compressor control", "Hold") // qmllint disable
                         labelAbove: true
                         spinboxLayoutFillWidth: true
-                        from: compressorPage.pluginDB.getMinValue("release")
-                        to: compressorPage.pluginDB.getMaxValue("release")
-                        value: compressorPage.pluginDB.release
+                        from: compressorPage.pluginDB.getMinValue("hold")
+                        to: compressorPage.pluginDB.getMaxValue("hold")
+                        value: compressorPage.pluginDB.hold
                         decimals: 2
                         stepSize: 0.01
                         unit: Units.ms
                         onValueModified: v => {
-                            compressorPage.pluginDB.release = v;
+                            compressorPage.pluginDB.hold = v;
                         }
                     }
 

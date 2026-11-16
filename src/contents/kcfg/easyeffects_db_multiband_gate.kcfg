@@ -830,6 +830,55 @@
             <default>100</default>
         </entry>
 
+        <entry name="band0HoldTime" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>1000</max>
+            <default>0</default>
+        </entry>
+        <entry name="band1HoldTime" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>1000</max>
+            <default>0</default>
+        </entry>
+        <entry name="band2HoldTime" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>1000</max>
+            <default>0</default>
+        </entry>
+        <entry name="band3HoldTime" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>1000</max>
+            <default>0</default>
+        </entry>
+        <entry name="band4HoldTime" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>1000</max>
+            <default>0</default>
+        </entry>
+        <entry name="band5HoldTime" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>1000</max>
+            <default>0</default>
+        </entry>
+        <entry name="band6HoldTime" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>1000</max>
+            <default>0</default>
+        </entry>
+        <entry name="band7HoldTime" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>1000</max>
+            <default>0</default>
+        </entry>
+
         <entry name="band0Hysteresis" type="Bool">
             <label></label>
             <default>false</default>

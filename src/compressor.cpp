@@ -84,6 +84,7 @@ Compressor::Compressor(const std::string& tag, pw::Manager* pipe_manager, Pipeli
   BIND_LV2_PORT("cr", ratio, setRatio, DbCompressor::ratioChanged);
   BIND_LV2_PORT("at", attack, setAttack, DbCompressor::attackChanged);
   BIND_LV2_PORT("rt", release, setRelease, DbCompressor::releaseChanged);
+  BIND_LV2_PORT("hold", hold, setHold, DbCompressor::holdChanged);
   BIND_LV2_PORT_DB("bth", boostThreshold, setBoostThreshold, DbCompressor::boostThresholdChanged, false);
   BIND_LV2_PORT_DB("bsa", boostAmount, setBoostAmount, DbCompressor::boostAmountChanged, false);
   BIND_LV2_PORT_DB("kn", knee, setKnee, DbCompressor::kneeChanged, false);

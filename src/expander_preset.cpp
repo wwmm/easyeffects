@@ -51,6 +51,8 @@ void ExpanderPreset::save(nlohmann::json& json) {
 
   json[section][instance_name]["threshold"] = settings->threshold();
 
+  json[section][instance_name]["hold"] = settings->hold();
+
   json[section][instance_name]["ratio"] = settings->ratio();
 
   json[section][instance_name]["knee"] = settings->knee();
@@ -108,6 +110,7 @@ void ExpanderPreset::load(const nlohmann::json& json) {
   UPDATE_PROPERTY("release", Release);
   UPDATE_PROPERTY("release-threshold", ReleaseThreshold);
   UPDATE_PROPERTY("threshold", Threshold);
+  UPDATE_PROPERTY("hold", Hold);
   UPDATE_PROPERTY("ratio", Ratio);
   UPDATE_PROPERTY("knee", Knee);
   UPDATE_PROPERTY("makeup", Makeup);
