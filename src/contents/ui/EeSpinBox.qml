@@ -159,7 +159,7 @@ FormCard.AbstractFormDelegate {
                 // Lower bound check in minusInfinityMode.
                 const decimalValue = value / spinbox.decimalFactor;
                 if (control.minusInfinityMode === true && decimalValue <= control.from) {
-                    textInputSpinBox.text = Units.minInf;
+                    textInputSpinBox.text = `${Units.minInf}${unitSuffix}`;
                     return Units.minInf;
                 }
 
@@ -197,8 +197,10 @@ FormCard.AbstractFormDelegate {
                  * Here we don't have to localize the minus infinity symbol -∞
                  * since we only handle the special case when the user inputs it
                  * manually in the user interface field.
+                 * We use the "startsWith" string function since -inf can be
+                 * written with the unit suffix.
                  */
-                if (text.toLowerCase() === Units.minInf.toLowerCase() || text === "-∞") {
+                if (text.toLowerCase().startsWith(Units.minInf.toLowerCase()) || text.startsWith("-∞")) {
                     return Math.floor(control.from * spinbox.decimalFactor);
                 }
 
