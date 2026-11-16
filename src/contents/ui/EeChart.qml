@@ -60,26 +60,38 @@ Item {
     Kirigami.Theme.colorSet: Kirigami.Theme.View
 
     readonly property list<real> linearTicks: {
-        const step = (xMax - xMin) / targetTicks;
+        const min = xMin;
+        const max = xMax;
+        const range = max - min;
 
-        const start = xMin;
+        if (!Number.isFinite(range) || range <= 0) {
+            return [];
+        }
 
         const ticks = [];
-
-        for (let v = start; v <= xMax; v += step) {
-            ticks.push(v);
+        for (let i = 0; i <= targetTicks; i++) {
+            ticks.push(min + range * i / targetTicks);
         }
 
         return ticks;
     }
 
     readonly property list<real> logTicks: {
-        const step = (xMaxLog - xMinLog) / targetTicks;
+        if (!Number.isFinite(xMin) || !Number.isFinite(xMax) || xMin <= 0 || xMax <= xMin) {
+            return [];
+        }
+
+        const minLog = Math.log10(xMin);
+        const maxLog = Math.log10(xMax);
+        const range = maxLog - minLog;
+
+        if (!Number.isFinite(range) || range <= 0) {
+            return [];
+        }
 
         const ticks = [];
-
-        for (let p = xMinLog; p <= xMaxLog; p += step) {
-            ticks.push(Math.pow(10, p));
+        for (let i = 0; i <= targetTicks; i++) {
+            ticks.push(Math.pow(10, minLog + range * i / targetTicks));
         }
 
         return ticks;
