@@ -181,6 +181,7 @@ void MultibandCompressor::bind_bands() {
   BIND_BANDS_PROPERTY(schf, SidechainHighcutFrequency, DbMultibandCompressor);
   BIND_BANDS_PROPERTY(at, AttackTime, DbMultibandCompressor);
   BIND_BANDS_PROPERTY(rt, ReleaseTime, DbMultibandCompressor);
+  BIND_BANDS_PROPERTY(ht, HoldTime, DbMultibandCompressor);
   BIND_BANDS_PROPERTY(cr, Ratio, DbMultibandCompressor);
 
   BIND_BANDS_PROPERTY_DB(al, AttackThreshold, DbMultibandCompressor, false);

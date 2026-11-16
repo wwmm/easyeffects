@@ -177,9 +177,6 @@ Kirigami.ScrollablePage {
                 id: bandControlsLayout
 
                 maximumColumns: 4
-                // The following is the minimumColumnWidth that contains
-                // all the spinboxes in the gainFrame without overflowing
-                // on the right border.
                 minimumColumnWidth: Kirigami.Units.gridUnit * 20
                 uniformCellWidths: true
 
@@ -188,15 +185,14 @@ Kirigami.ScrollablePage {
                     Layout.fillWidth: true
 
                     GridLayout {
-                        columns: 2
+                        columns: 1
                         uniformCellWidths: true
                         anchors.fill: parent
 
                         Controls.Label {
-                            Layout.columnSpan: 2
                             Layout.alignment: Qt.AlignHCenter
                             Layout.fillWidth: false
-                            text: i18n("Frequency") // qmllint disable
+                            text: i18n("Frequency Range") // qmllint disable
                         }
 
                         /**
@@ -228,16 +224,17 @@ Kirigami.ScrollablePage {
                         }
 
                         ColumnLayout {
+                            Layout.leftMargin: Kirigami.Units.smallSpacing * 3
+                            Layout.bottomMargin: Kirigami.Units.smallSpacing * 3
+
                             Controls.Label {
                                 Layout.fillWidth: true
-                                horizontalAlignment: Text.AlignHCenter
                                 text: i18n("End") // qmllint disable
                             }
 
                             Controls.Label {
                                 id: bandEndFrequency
                                 Layout.fillWidth: true
-                                horizontalAlignment: Text.AlignHCenter
                                 text: Common.toLocaleLabel(multibandCompressorPage.bandFrequencyEnd[bandsListview.currentIndex], 0, Units.hz)
                             }
                         }
@@ -249,12 +246,11 @@ Kirigami.ScrollablePage {
                     Layout.fillWidth: true
 
                     GridLayout {
-                        columns: 2
+                        columns: 1
                         uniformCellWidths: true
                         anchors.fill: parent
 
                         Controls.Label {
-                            Layout.columnSpan: 2
                             Layout.alignment: Qt.AlignHCenter
                             Layout.fillWidth: false
                             text: i18nc("Compressor control", "Attack") // qmllint disable
@@ -297,12 +293,11 @@ Kirigami.ScrollablePage {
                     Layout.fillWidth: true
 
                     GridLayout {
-                        columns: 2
+                        columns: 1
                         uniformCellWidths: true
                         anchors.fill: parent
 
                         Controls.Label {
-                            Layout.columnSpan: 2
                             Layout.alignment: Qt.AlignHCenter
                             Layout.fillWidth: false
                             text: i18nc("Compressor control", "Release") // qmllint disable
@@ -338,6 +333,21 @@ Kirigami.ScrollablePage {
                                 multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "ReleaseThreshold"] = v;
                             }
                         }
+
+                        EeSpinBox {
+                            label: i18nc("Compressor control", "Hold") // qmllint disable
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: multibandCompressorPage.pluginDB.getMinValue(multibandCompressorPage.bandId + "HoldTime")
+                            to: multibandCompressorPage.pluginDB.getMaxValue(multibandCompressorPage.bandId + "HoldTime")
+                            value: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "HoldTime"]
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: Units.ms
+                            onValueModified: v => {
+                                multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "HoldTime"] = v;
+                            }
+                        }
                     }
                 }
 
@@ -348,15 +358,14 @@ Kirigami.ScrollablePage {
                     Layout.fillWidth: true
 
                     GridLayout {
-                        columns: bandControlsLayout.columns === 1 ? 1 : 3
+                        columns: 1
                         uniformCellWidths: true
                         anchors.fill: parent
 
                         Controls.Label {
-                            Layout.columnSpan: bandControlsLayout.columns === 1 ? 1 : 3
                             Layout.alignment: Qt.AlignHCenter
                             Layout.fillWidth: false
-                            text: i18n("Gain") // qmllint disable
+                            text: i18n("Level") // qmllint disable
                         }
 
                         EeSpinBox {

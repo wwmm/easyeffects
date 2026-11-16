@@ -31,7 +31,7 @@
             <default>0</default>
         </entry>
         <entry name="equalModeLabels" type="StringList">
-            <default>IIR,FIR,FFT,SPM</default>
+            <default>IIR,FIR,FFT,SPM,MP FIR,MP FFT,MP SPM</default>
         </entry>
         <entry name="equalMode" type="Int">
             <label>Equalizer Mode</label>

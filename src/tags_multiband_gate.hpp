@@ -194,6 +194,17 @@ constexpr auto band_release_time = std::to_array({
     std::to_array("band7ReleaseTime"),
 });
 
+constexpr auto band_hold_time = std::to_array({
+    {"band0HoldTime"},
+    {"band1HoldTime"},
+    {"band2HoldTime"},
+    {"band3HoldTime"},
+    {"band4HoldTime"},
+    {"band5HoldTime"},
+    {"band6HoldTime"},
+    std::to_array("band7HoldTime"),
+});
+
 constexpr auto band_hysteresis = std::to_array({
     {"band0Hysteresis"},
     {"band1Hysteresis"},
@@ -374,6 +385,9 @@ constexpr auto at =
 
 constexpr auto rt =
     std::to_array({{"rt_0"}, {"rt_1"}, {"rt_2"}, {"rt_3"}, {"rt_4"}, {"rt_5"}, {"rt_6"}, std::to_array("rt_7")});
+
+constexpr auto th =
+    std::to_array({{"th_0"}, {"th_1"}, {"th_2"}, {"th_3"}, {"th_4"}, {"th_5"}, {"th_6"}, std::to_array("th_7")});
 
 constexpr auto gr =
     std::to_array({{"gr_0"}, {"gr_1"}, {"gr_2"}, {"gr_3"}, {"gr_4"}, {"gr_5"}, {"gr_6"}, std::to_array("gr_7")});

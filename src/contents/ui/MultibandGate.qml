@@ -125,15 +125,14 @@ Kirigami.ScrollablePage {
                     Layout.fillWidth: true
 
                     GridLayout {
-                        columns: 2
+                        columns: 1
                         uniformCellWidths: true
                         anchors.fill: parent
 
                         Controls.Label {
-                            Layout.columnSpan: 2
                             Layout.alignment: Qt.AlignHCenter
                             Layout.fillWidth: false
-                            text: i18n("Frequency") // qmllint disable
+                            text: i18n("Frequency Range") // qmllint disable
                         }
 
                         /**
@@ -165,16 +164,17 @@ Kirigami.ScrollablePage {
                         }
 
                         ColumnLayout {
+                            Layout.leftMargin: Kirigami.Units.smallSpacing * 3
+                            Layout.bottomMargin: Kirigami.Units.smallSpacing * 3
+
                             Controls.Label {
                                 Layout.fillWidth: true
-                                horizontalAlignment: Text.AlignHCenter
                                 text: i18n("End") // qmllint disable
                             }
 
                             Controls.Label {
                                 id: bandEndFrequency
                                 Layout.fillWidth: true
-                                horizontalAlignment: Text.AlignHCenter
                                 text: Common.toLocaleLabel(multibandGatePage.bandFrequencyEnd[bandsListview.currentIndex], 0, Units.hz)
                             }
                         }
@@ -186,12 +186,11 @@ Kirigami.ScrollablePage {
                     Layout.fillWidth: true
 
                     GridLayout {
-                        columns: 2
+                        columns: 1
                         uniformCellWidths: true
                         anchors.fill: parent
 
                         Controls.Label {
-                            Layout.columnSpan: 2
                             Layout.alignment: Qt.AlignHCenter
                             Layout.fillWidth: false
                             text: i18n("Reaction") // qmllint disable
@@ -226,6 +225,21 @@ Kirigami.ScrollablePage {
                                 multibandGatePage.pluginDB[multibandGatePage.bandId + "ReleaseTime"] = v;
                             }
                         }
+
+                        EeSpinBox {
+                            label: i18nc("Compressor control", "Hold") // qmllint disable
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: multibandGatePage.pluginDB.getMinValue(multibandGatePage.bandId + "HoldTime")
+                            to: multibandGatePage.pluginDB.getMaxValue(multibandGatePage.bandId + "HoldTime")
+                            value: multibandGatePage.pluginDB[multibandGatePage.bandId + "HoldTime"]
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: Units.ms
+                            onValueModified: v => {
+                                multibandGatePage.pluginDB[multibandGatePage.bandId + "HoldTime"] = v;
+                            }
+                        }
                     }
                 }
 
@@ -234,15 +248,14 @@ Kirigami.ScrollablePage {
                     Layout.fillWidth: true
 
                     GridLayout {
-                        columns: 2
+                        columns: 1
                         uniformCellWidths: true
                         anchors.fill: parent
 
                         Controls.Label {
-                            Layout.columnSpan: 2
                             Layout.alignment: Qt.AlignHCenter
                             Layout.fillWidth: false
-                            text: i18n("Gain") // qmllint disable
+                            text: i18n("Level") // qmllint disable
                         }
 
                         EeSpinBox {
@@ -283,12 +296,11 @@ Kirigami.ScrollablePage {
                     Layout.fillWidth: true
 
                     GridLayout {
-                        columns: 2
+                        columns: 1
                         uniformCellWidths: true
                         anchors.fill: parent
 
                         Controls.Label {
-                            Layout.columnSpan: 2
                             Layout.alignment: Qt.AlignHCenter
                             Layout.fillWidth: false
                             text: i18nc("Compressor parameter", "Curve") // qmllint disable
@@ -331,12 +343,11 @@ Kirigami.ScrollablePage {
                     Layout.fillWidth: true
 
                     GridLayout {
-                        columns: 2
+                        columns: 1
                         uniformCellWidths: true
                         anchors.fill: parent
 
                         Controls.Button {
-                            Layout.columnSpan: 2
                             Layout.alignment: Qt.AlignCenter
                             text: i18n("Hysteresis") // qmllint disable
                             checkable: true

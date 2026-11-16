@@ -168,6 +168,7 @@ void MultibandGate::bind_bands() {
   BIND_BANDS_PROPERTY(scm, SidechainMode, DbMultibandGate);
   BIND_BANDS_PROPERTY(at, AttackTime, DbMultibandGate);
   BIND_BANDS_PROPERTY(rt, ReleaseTime, DbMultibandGate);
+  BIND_BANDS_PROPERTY(th, HoldTime, DbMultibandGate);
   BIND_BANDS_PROPERTY(sclf, SidechainLowcutFrequency, DbMultibandGate);
   BIND_BANDS_PROPERTY(schf, SidechainHighcutFrequency, DbMultibandGate);
   BIND_BANDS_PROPERTY(sla, SidechainLookahead, DbMultibandGate);

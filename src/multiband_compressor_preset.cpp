@@ -95,6 +95,8 @@ void MultibandCompressorPreset::save(nlohmann::json& json) {
     json[section][instance_name][bandn]["release-time"] =
         settings->property(band_release_time[n].data()).value<double>();
 
+    json[section][instance_name][bandn]["hold-time"] = settings->property(band_hold_time[n].data()).value<double>();
+
     json[section][instance_name][bandn]["ratio"] = settings->property(band_ratio[n].data()).value<double>();
 
     json[section][instance_name][bandn]["knee"] = settings->property(band_knee[n].data()).value<double>();
@@ -206,6 +208,10 @@ void MultibandCompressorPreset::load(const nlohmann::json& json) {
     settings->setProperty(
         band_release_threshold[n].data(),
         jbandn.value("release-threshold", settings->getDefaultValue(band_release_threshold[n].data()).value<double>()));
+
+    settings->setProperty(
+        band_hold_time[n].data(),
+        jbandn.value("hold-time", settings->getDefaultValue(band_hold_time[n].data()).value<double>()));
 
     settings->setProperty(band_ratio[n].data(),
                           jbandn.value("ratio", settings->getDefaultValue(band_ratio[n].data()).value<double>()));

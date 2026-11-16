@@ -88,6 +88,8 @@ void MultibandGatePreset::save(nlohmann::json& json) {
     json[section][instance_name][bandn]["release-time"] =
         settings->property(band_release_time[n].data()).value<double>();
 
+    json[section][instance_name][bandn]["hold-time"] = settings->property(band_hold_time[n].data()).value<double>();
+
     json[section][instance_name][bandn]["hysteresis"] = settings->property(band_hysteresis[n].data()).value<bool>();
 
     json[section][instance_name][bandn]["hysteresis-threshold"] =
@@ -192,6 +194,10 @@ void MultibandGatePreset::load(const nlohmann::json& json) {
     settings->setProperty(
         band_release_time[n].data(),
         jbandn.value("release-time", settings->getDefaultValue(band_release_time[n].data()).value<double>()));
+
+    settings->setProperty(
+        band_hold_time[n].data(),
+        jbandn.value("hold-time", settings->getDefaultValue(band_hold_time[n].data()).value<double>()));
 
     settings->setProperty(
         band_hysteresis[n].data(),
