@@ -31,7 +31,7 @@ Kirigami.Dialog {
     property var menuButton: null
     required property DbEqualizerChannel bandDB
 
-    title: `${i18n("Band")} ${bandMenu.index + 1}` // qmllint disable
+    title: i18nc("Number of the band", "Band %1", bandMenu.index + 1) // qmllint disable
 
     onClosed: {
         menuButton.checked = false;

@@ -69,6 +69,7 @@ Compressor::Compressor(const std::string& tag, pw::Manager* pipe_manager, Pipeli
   connect(settings, &DbCompressor::sidechainInputDeviceChanged, [&] { update_sidechain_links(); });
 
   BIND_LV2_PORT("cm", mode, setMode, DbCompressor::modeChanged);
+  BIND_LV2_PORT("cdw", dryWetBalance, setDryWetBalance, DbCompressor::dryWetBalanceChanged);
   BIND_LV2_PORT("sct", sidechainType, setSidechainType, DbCompressor::sidechainTypeChanged);
   BIND_LV2_PORT("scm", sidechainMode, setSidechainMode, DbCompressor::sidechainModeChanged);
   BIND_LV2_PORT("scl", sidechainListen, setSidechainListen, DbCompressor::sidechainListenChanged);

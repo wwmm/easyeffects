@@ -35,6 +35,12 @@
             <max>20</max>
             <default>0</default>
         </entry>
+        <entry name="dryWetBalance" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>100</max>
+            <default>100</default>
+        </entry>
         <entry name="modeLabels" type="StringList">
             <default>Downward,Upward</default>
         </entry>

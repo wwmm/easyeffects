@@ -46,11 +46,15 @@ void MultibandCompressorPreset::save(nlohmann::json& json) {
 
   json[section][instance_name]["wet"] = settings->wet();
 
+  json[section][instance_name]["dry-wet-balance"] = settings->dryWetBalance();
+
   json[section][instance_name]["compressor-mode"] =
       settings->defaultCompressorModeLabelsValue()[settings->compressorMode()].toStdString();
 
   json[section][instance_name]["envelope-boost"] =
       settings->defaultEnvelopeBoostLabelsValue()[settings->envelopeBoost()].toStdString();
+
+  json[section][instance_name]["slope"] = settings->defaultSlopeLabelsValue()[settings->slope()].toStdString();
 
   json[section][instance_name]["stereo-split"] = settings->stereoSplit();
 
@@ -158,6 +162,7 @@ void MultibandCompressorPreset::load(const nlohmann::json& json) {
   UPDATE_PROPERTY("output-gain", OutputGain);
   UPDATE_PROPERTY("dry", Dry);
   UPDATE_PROPERTY("wet", Wet);
+  UPDATE_PROPERTY("dry-wet-balance", DryWetBalance)
   UPDATE_PROPERTY("stereo-split", StereoSplit);
   UPDATE_PROPERTY("input-to-sidechain", InputToSidechain);
   UPDATE_PROPERTY("input-to-link", InputToLink);
@@ -168,6 +173,7 @@ void MultibandCompressorPreset::load(const nlohmann::json& json) {
 
   UPDATE_ENUM_LIKE_PROPERTY("compressor-mode", CompressorMode);
   UPDATE_ENUM_LIKE_PROPERTY("envelope-boost", EnvelopeBoost);
+  UPDATE_ENUM_LIKE_PROPERTY("slope", Slope);
 
   for (uint n = 0U; n < tags::multiband_compressor::n_bands; n++) {
     const auto nstr = util::to_string(n);

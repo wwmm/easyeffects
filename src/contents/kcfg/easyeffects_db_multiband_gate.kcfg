@@ -35,6 +35,12 @@
             <max>20</max>
             <default>0</default>
         </entry>
+        <entry name="dryWetBalance" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>100</max>
+            <default>100</default>
+        </entry>
 
         <entry name="viewSidechain" type="Bool">
             <label></label>
@@ -62,6 +68,13 @@
         <entry name="envelopeBoost" type="Int">
             <label></label>
             <default>0</default>
+        </entry>
+        <entry name="slopeLabels" type="StringList">
+            <default>6 dB/oct,12 dB/oct,18 dB/oct,24 dB/oct,48 dB/oct,72 dB/oct</default>
+        </entry>
+        <entry name="slope" type="Int">
+            <label></label>
+            <default>4</default>
         </entry>
 
         <entry name="inputToSidechain" type="Double">

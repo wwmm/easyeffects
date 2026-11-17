@@ -566,6 +566,19 @@ Kirigami.ScrollablePage {
             }
 
             FormCard.FormComboBoxDelegate {
+                id: slope
+
+                text: i18nc("Filter parameter", "Crossover slope") // qmllint disable
+                displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                currentIndex: multibandGatePage.pluginDB.slope
+                editable: false
+                model: [`6 ${Units.dBoct}`, `12 ${Units.dBoct}`, `18 ${Units.dBoct}`, `24 ${Units.dBoct}`, `48 ${Units.dBoct}`, `72 ${Units.dBoct}`] // qmllint disable
+                onActivated: idx => {
+                    multibandGatePage.pluginDB.slope = idx;
+                }
+            }
+
+            FormCard.FormComboBoxDelegate {
                 id: envelopeBoost
 
                 text: i18n("Sidechain boost") // qmllint disable
@@ -637,6 +650,23 @@ Kirigami.ScrollablePage {
                     multibandGatePage.pluginDB.wet = v;
                 }
             }
+
+            EeSpinBox {
+                id: dryWetBalance
+
+                label: i18n("Dry/Wet balance") // qmllint disable
+                labelAbove: true
+                spinboxLayoutFillWidth: true
+                from: multibandGatePage.pluginDB.getMinValue("dryWetBalance")
+                to: multibandGatePage.pluginDB.getMaxValue("dryWetBalance")
+                value: multibandGatePage.pluginDB.dryWetBalance
+                decimals: 1
+                stepSize: 0.1
+                unit: Units.percent
+                onValueModified: v => {
+                    multibandGatePage.pluginDB.dryWetBalance = v;
+                }
+            }
         }
 
         RowLayout {
@@ -649,8 +679,8 @@ Kirigami.ScrollablePage {
 
                 header: RowLayout {
                     Kirigami.Heading {
-                        readonly property string bandTitleTag: multibandGatePage.pluginDB.viewSidechain ? " - " + i18n("Sidechain") : "" // qmllint disable
-                        text: i18n("Band") + " " + (bandsListview.currentIndex + 1) + bandTitleTag // qmllint disable
+                        readonly property string bandTitleTag: multibandGatePage.pluginDB.viewSidechain ? i18n("Sidechain") : i18n("Controls") // qmllint disable
+                        text: i18nc("Number of the band", "Band %1", bandsListview.currentIndex + 1) + ` - ${bandTitleTag}` // qmllint disable
                         level: 2
                     }
 
@@ -909,7 +939,7 @@ Kirigami.ScrollablePage {
                         contentItem: RowLayout {
                             Controls.Label {
                                 Layout.fillWidth: true
-                                text: i18n("Band") + " " + (listItemDelegate.index + 1) // qmllint disable
+                                text: i18nc("Number of the band", "Band %1", listItemDelegate.index + 1) // qmllint disable
                             }
 
                             Controls.CheckBox {
