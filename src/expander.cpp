@@ -66,6 +66,7 @@ Expander::Expander(const std::string& tag, pw::Manager* pipe_manager, PipelineTy
   connect(settings, &DbExpander::sidechainInputDeviceChanged, [&] { update_sidechain_links(); });
 
   BIND_LV2_PORT("em", mode, setMode, DbExpander::modeChanged);
+  BIND_LV2_PORT("cdw", dryWetBalance, setDryWetBalance, DbExpander::dryWetBalanceChanged);
   BIND_LV2_PORT("sci", sidechainType, setSidechainType, DbExpander::sidechainTypeChanged);
   BIND_LV2_PORT("scm", sidechainMode, setSidechainMode, DbExpander::sidechainModeChanged);
   BIND_LV2_PORT("scs", sidechainSource, setSidechainSource, DbExpander::sidechainSourceChanged);

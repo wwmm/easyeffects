@@ -650,6 +650,23 @@ Kirigami.ScrollablePage {
                     multibandGatePage.pluginDB.wet = v;
                 }
             }
+
+            EeSpinBox {
+                id: dryWetBalance
+
+                label: i18n("Dry/Wet balance") // qmllint disable
+                labelAbove: true
+                spinboxLayoutFillWidth: true
+                from: multibandGatePage.pluginDB.getMinValue("dryWetBalance")
+                to: multibandGatePage.pluginDB.getMaxValue("dryWetBalance")
+                value: multibandGatePage.pluginDB.dryWetBalance
+                decimals: 1
+                stepSize: 0.1
+                unit: Units.percent
+                onValueModified: v => {
+                    multibandGatePage.pluginDB.dryWetBalance = v;
+                }
+            }
         }
 
         RowLayout {

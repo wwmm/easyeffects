@@ -46,6 +46,8 @@ void MultibandCompressorPreset::save(nlohmann::json& json) {
 
   json[section][instance_name]["wet"] = settings->wet();
 
+  json[section][instance_name]["dry-wet-balance"] = settings->dryWetBalance();
+
   json[section][instance_name]["compressor-mode"] =
       settings->defaultCompressorModeLabelsValue()[settings->compressorMode()].toStdString();
 
@@ -160,6 +162,7 @@ void MultibandCompressorPreset::load(const nlohmann::json& json) {
   UPDATE_PROPERTY("output-gain", OutputGain);
   UPDATE_PROPERTY("dry", Dry);
   UPDATE_PROPERTY("wet", Wet);
+  UPDATE_PROPERTY("dry-wet-balance", DryWetBalance)
   UPDATE_PROPERTY("stereo-split", StereoSplit);
   UPDATE_PROPERTY("input-to-sidechain", InputToSidechain);
   UPDATE_PROPERTY("input-to-link", InputToLink);

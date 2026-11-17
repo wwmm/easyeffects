@@ -67,6 +67,7 @@ Gate::Gate(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_
   connect(settings, &DbGate::sidechainTypeChanged, [&] { update_sidechain_links(); });
   connect(settings, &DbGate::sidechainInputDeviceChanged, [&] { update_sidechain_links(); });
 
+  BIND_LV2_PORT("cdw", dryWetBalance, setDryWetBalance, DbGate::dryWetBalanceChanged);
   BIND_LV2_PORT("sci", sidechainType, setSidechainType, DbGate::sidechainTypeChanged);
   BIND_LV2_PORT("scm", sidechainMode, setSidechainMode, DbGate::sidechainModeChanged);
   BIND_LV2_PORT("scl", sidechainListen, setSidechainListen, DbGate::sidechainListenChanged);

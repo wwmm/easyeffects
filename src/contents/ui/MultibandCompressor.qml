@@ -675,6 +675,23 @@ Kirigami.ScrollablePage {
                     multibandCompressorPage.pluginDB.wet = v;
                 }
             }
+
+            EeSpinBox {
+                id: dryWetBalance
+
+                label: i18n("Dry/Wet balance") // qmllint disable
+                labelAbove: true
+                spinboxLayoutFillWidth: true
+                from: multibandCompressorPage.pluginDB.getMinValue("dryWetBalance")
+                to: multibandCompressorPage.pluginDB.getMaxValue("dryWetBalance")
+                value: multibandCompressorPage.pluginDB.dryWetBalance
+                decimals: 1
+                stepSize: 0.1
+                unit: Units.percent
+                onValueModified: v => {
+                    multibandCompressorPage.pluginDB.dryWetBalance = v;
+                }
+            }
         }
 
         RowLayout {

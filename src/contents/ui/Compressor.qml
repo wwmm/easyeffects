@@ -494,64 +494,82 @@ Kirigami.ScrollablePage {
             EeCard {
                 title: i18n("Output") // qmllint disable
 
-                EeSpinBox {
-                    id: dry
+                GridLayout {
+                    columns: 2
+                    rowSpacing: 0
+                    uniformCellWidths: true
 
-                    Layout.alignment: Qt.AlignTop
-                    label: i18nc("Signal type", "Dry") // qmllint disable
-                    labelAbove: true
-                    spinboxLayoutFillWidth: true
-                    from: compressorPage.pluginDB.getMinValue("dry")
-                    to: compressorPage.pluginDB.getMaxValue("dry")
-                    value: compressorPage.pluginDB.dry
-                    decimals: 2 // Required to show "-inf"
-                    stepSize: 0.01
-                    unit: Units.dB
-                    minusInfinityMode: true
-                    onValueModified: v => {
-                        compressorPage.pluginDB.dry = v;
+                    EeSpinBox {
+                        id: dry
+
+                        label: i18nc("Signal type", "Dry") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: compressorPage.pluginDB.getMinValue("dry")
+                        to: compressorPage.pluginDB.getMaxValue("dry")
+                        value: compressorPage.pluginDB.dry
+                        decimals: 2 // Required to show "-inf"
+                        stepSize: 0.01
+                        unit: Units.dB
+                        minusInfinityMode: true
+                        onValueModified: v => {
+                            compressorPage.pluginDB.dry = v;
+                        }
                     }
-                }
 
-                EeSpinBox {
-                    id: wet
+                    EeSpinBox {
+                        id: wet
 
-                    Layout.alignment: Qt.AlignTop
-                    label: i18nc("Signal type", "Wet") // qmllint disable
-                    labelAbove: true
-                    spinboxLayoutFillWidth: true
-                    from: compressorPage.pluginDB.getMinValue("wet")
-                    to: compressorPage.pluginDB.getMaxValue("wet")
-                    value: compressorPage.pluginDB.wet
-                    decimals: 2 // Required to show "-inf"
-                    stepSize: 0.01
-                    unit: Units.dB
-                    minusInfinityMode: true
-                    onValueModified: v => {
-                        compressorPage.pluginDB.wet = v;
+                        label: i18nc("Signal type", "Wet") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: compressorPage.pluginDB.getMinValue("wet")
+                        to: compressorPage.pluginDB.getMaxValue("wet")
+                        value: compressorPage.pluginDB.wet
+                        decimals: 2 // Required to show "-inf"
+                        stepSize: 0.01
+                        unit: Units.dB
+                        minusInfinityMode: true
+                        onValueModified: v => {
+                            compressorPage.pluginDB.wet = v;
+                        }
                     }
-                }
 
-                EeSpinBox {
-                    id: makeup
+                    EeSpinBox {
+                        id: dryWetBalance
 
-                    Layout.alignment: Qt.AlignTop
-                    label: i18nc("Gain level", "Makeup") // qmllint disable
-                    labelAbove: true
-                    spinboxLayoutFillWidth: true
-                    from: compressorPage.pluginDB.getMinValue("makeup")
-                    to: compressorPage.pluginDB.getMaxValue("makeup")
-                    value: compressorPage.pluginDB.makeup
-                    decimals: 2
-                    stepSize: 0.01
-                    unit: Units.dB
-                    onValueModified: v => {
-                        compressorPage.pluginDB.makeup = v;
+                        Layout.columnSpan: 2
+                        label: i18n("Dry/Wet balance") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: compressorPage.pluginDB.getMinValue("dryWetBalance")
+                        to: compressorPage.pluginDB.getMaxValue("dryWetBalance")
+                        value: compressorPage.pluginDB.dryWetBalance
+                        decimals: 1
+                        stepSize: 0.1
+                        unit: Units.percent
+                        onValueModified: v => {
+                            compressorPage.pluginDB.dryWetBalance = v;
+                        }
                     }
-                }
 
-                Item {
-                    Layout.fillHeight: true
+                    EeSpinBox {
+                        id: makeup
+
+                        Layout.columnSpan: 2
+                        label: i18nc("Gain level", "Makeup") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: compressorPage.pluginDB.getMinValue("makeup")
+                        to: compressorPage.pluginDB.getMaxValue("makeup")
+                        value: compressorPage.pluginDB.makeup
+                        decimals: 2
+                        stepSize: 0.01
+                        unit: Units.dB
+                        onValueModified: v => {
+                            compressorPage.pluginDB.makeup = v;
+                        }
+                    }
                 }
             }
 
