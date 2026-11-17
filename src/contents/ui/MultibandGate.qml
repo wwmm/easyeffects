@@ -649,8 +649,8 @@ Kirigami.ScrollablePage {
 
                 header: RowLayout {
                     Kirigami.Heading {
-                        readonly property string bandTitleTag: multibandGatePage.pluginDB.viewSidechain ? " - " + i18n("Sidechain") : "" // qmllint disable
-                        text: i18n("Band") + " " + (bandsListview.currentIndex + 1) + bandTitleTag // qmllint disable
+                        readonly property string bandTitleTag: multibandGatePage.pluginDB.viewSidechain ? i18n("Sidechain") : i18n("Controls") // qmllint disable
+                        text: i18nc("Number of the band", "Band %1", bandsListview.currentIndex + 1) + ` - ${bandTitleTag}` // qmllint disable
                         level: 2
                     }
 
@@ -909,7 +909,7 @@ Kirigami.ScrollablePage {
                         contentItem: RowLayout {
                             Controls.Label {
                                 Layout.fillWidth: true
-                                text: i18n("Band") + " " + (listItemDelegate.index + 1) // qmllint disable
+                                text: i18nc("Number of the band", "Band %1", listItemDelegate.index + 1) // qmllint disable
                             }
 
                             Controls.CheckBox {
