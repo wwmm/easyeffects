@@ -213,6 +213,16 @@ Kirigami.ScrollablePage {
                     }
                 },
                 Kirigami.Action {
+                    text: i18nc("Loudness control", "Compensate") // qmllint disable
+                    icon.name: "audio-volume-medium-symbolic"
+                    checkable: true
+                    checked: loudnessPage.pluginDB.compensate
+                    onTriggered: {
+                        if (loudnessPage.pluginDB.compensate !== checked)
+                            loudnessPage.pluginDB.compensate = checked;
+                    }
+                },
+                Kirigami.Action {
                     displayHint: Kirigami.DisplayHint.KeepVisible
                     text: i18n("Reset") // qmllint disable
                     icon.name: "edit-reset-symbolic"

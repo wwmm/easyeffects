@@ -49,6 +49,8 @@ void LoudnessPreset::save(nlohmann::json& json) {
 
   json[section][instance_name]["volume"] = settings->volume();
 
+  json[section][instance_name]["compensate"] = settings->compensate();
+
   json[section][instance_name]["clipping"] = settings->clipping();
 
   json[section][instance_name]["clipping-range"] = settings->clippingRange();
@@ -59,6 +61,7 @@ void LoudnessPreset::load(const nlohmann::json& json) {
   UPDATE_PROPERTY("input-gain", InputGain);
   UPDATE_PROPERTY("output-gain", OutputGain);
   UPDATE_PROPERTY("volume", Volume);
+  UPDATE_PROPERTY("compensate", Compensate);
   UPDATE_PROPERTY("clipping", Clipping);
   UPDATE_PROPERTY("clipping-range", ClippingRange);
 
