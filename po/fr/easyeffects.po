@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-11-16 15:15+0000\n"
-"PO-Revision-Date: 2026-11-15 20:51+0000\n"
+"PO-Revision-Date: 2026-11-17 05:51+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -623,9 +623,8 @@ msgid "Knee"
 msgstr "Genou"
 
 #: src/contents/ui/Compressor.qml:169 src/contents/ui/Expander.qml:129
-#, fuzzy
 msgid "Time and Threshold"
-msgstr "Seuil de la bande 1"
+msgstr "Temps et Seuil"
 
 #: src/contents/ui/Compressor.qml:179 src/contents/ui/Expander.qml:139
 #: src/contents/ui/Gate.qml:83 src/contents/ui/Gate.qml:872
@@ -650,7 +649,7 @@ msgstr "Relâche"
 #: src/contents/ui/MultibandGate.qml:230
 msgctxt "Compressor control"
 msgid "Hold"
-msgstr ""
+msgstr "Maintien"
 
 #: src/contents/ui/Compressor.qml:267 src/contents/ui/Compressor.qml:365
 #: src/contents/ui/Compressor.qml:700 src/contents/ui/Expander.qml:227
@@ -1618,45 +1617,39 @@ msgstr "IIR"
 
 #: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
 #: src/contents/ui/MidSideEqualizer.qml:142
-#, fuzzy
 msgctxt "Filter mode"
 msgid "Linear phase (FIR)"
-msgstr "Phase linéaire"
+msgstr "Phase linéaire (FIR)"
 
 #: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
 #: src/contents/ui/MidSideEqualizer.qml:142
-#, fuzzy
 msgctxt "Filter mode"
 msgid "Linear phase (FFT)"
-msgstr "Phase linéaire"
+msgstr "Phase linéaire (FFT)"
 
 #: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
 #: src/contents/ui/MidSideEqualizer.qml:142
-#, fuzzy
 msgctxt "Filter mode"
 msgid "Linear phase (SPM)"
-msgstr "Phase linéaire"
+msgstr "Phase linéaire (SPM)"
 
 #: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
 #: src/contents/ui/MidSideEqualizer.qml:142
-#, fuzzy
 msgctxt "Filter mode"
 msgid "Minimum phase (FIR)"
-msgstr "Plage minimale"
+msgstr "Phase minimale (FIR)"
 
 #: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
 #: src/contents/ui/MidSideEqualizer.qml:142
-#, fuzzy
 msgctxt "Filter mode"
 msgid "Minimum phase (FFT)"
-msgstr "Plage minimale"
+msgstr "Phase minimale (FFT)"
 
 #: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
 #: src/contents/ui/MidSideEqualizer.qml:142
-#, fuzzy
 msgctxt "Filter mode"
 msgid "Minimum phase (SPM)"
-msgstr "Plage minimale"
+msgstr "Phase minimale (SPM)"
 
 #: src/contents/ui/Equalizer.qml:158 src/contents/ui/Filter.qml:107
 #: src/contents/ui/MidSideEqualizer.qml:152
