@@ -52,6 +52,8 @@ void MultibandCompressorPreset::save(nlohmann::json& json) {
   json[section][instance_name]["envelope-boost"] =
       settings->defaultEnvelopeBoostLabelsValue()[settings->envelopeBoost()].toStdString();
 
+  json[section][instance_name]["slope"] = settings->defaultSlopeLabelsValue()[settings->slope()].toStdString();
+
   json[section][instance_name]["stereo-split"] = settings->stereoSplit();
 
   json[section][instance_name]["input-to-sidechain"] = settings->inputToSidechain();
@@ -168,6 +170,7 @@ void MultibandCompressorPreset::load(const nlohmann::json& json) {
 
   UPDATE_ENUM_LIKE_PROPERTY("compressor-mode", CompressorMode);
   UPDATE_ENUM_LIKE_PROPERTY("envelope-boost", EnvelopeBoost);
+  UPDATE_ENUM_LIKE_PROPERTY("slope", Slope);
 
   for (uint n = 0U; n < tags::multiband_compressor::n_bands; n++) {
     const auto nstr = util::to_string(n);

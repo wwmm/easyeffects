@@ -92,6 +92,7 @@ MultibandGate::MultibandGate(const std::string& tag,
   BIND_LV2_PORT("mode", gateMode, setGateMode, DbMultibandGate::gateModeChanged);
   BIND_LV2_PORT("envb", envelopeBoost, setEnvelopeBoost, DbMultibandGate::envelopeBoostChanged);
   BIND_LV2_PORT("ssplit", stereoSplit, setStereoSplit, DbMultibandGate::stereoSplitChanged);
+  BIND_LV2_PORT("slope", slope, setSlope, DbMultibandGate::slopeChanged);
 
   // dB controls with -inf mode.
   BIND_LV2_PORT_DB("g_dry", dry, setDry, DbMultibandGate::dryChanged, true);

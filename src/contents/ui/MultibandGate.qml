@@ -566,6 +566,19 @@ Kirigami.ScrollablePage {
             }
 
             FormCard.FormComboBoxDelegate {
+                id: slope
+
+                text: i18nc("Filter parameter", "Crossover slope") // qmllint disable
+                displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                currentIndex: multibandGatePage.pluginDB.slope
+                editable: false
+                model: [`6 ${Units.dBoct}`, `12 ${Units.dBoct}`, `18 ${Units.dBoct}`, `24 ${Units.dBoct}`, `48 ${Units.dBoct}`, `72 ${Units.dBoct}`] // qmllint disable
+                onActivated: idx => {
+                    multibandGatePage.pluginDB.slope = idx;
+                }
+            }
+
+            FormCard.FormComboBoxDelegate {
                 id: envelopeBoost
 
                 text: i18n("Sidechain boost") // qmllint disable

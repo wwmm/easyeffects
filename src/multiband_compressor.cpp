@@ -92,6 +92,7 @@ MultibandCompressor::MultibandCompressor(const std::string& tag,
   BIND_LV2_PORT("mode", compressorMode, setCompressorMode, DbMultibandCompressor::compressorModeChanged);
   BIND_LV2_PORT("envb", envelopeBoost, setEnvelopeBoost, DbMultibandCompressor::envelopeBoostChanged);
   BIND_LV2_PORT("ssplit", stereoSplit, setStereoSplit, DbMultibandCompressor::stereoSplitChanged);
+  BIND_LV2_PORT("slope", slope, setSlope, DbMultibandCompressor::slopeChanged);
 
   // dB controls with -inf mode.
   BIND_LV2_PORT_DB("g_dry", dry, setDry, DbMultibandCompressor::dryChanged, true);
