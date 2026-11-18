@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-11-17 18:09+0000\n"
-"PO-Revision-Date: 2026-11-15 20:51+0000\n"
+"PO-Revision-Date: 2026-11-18 22:51+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remus-"
 "gabriel@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
@@ -626,9 +626,8 @@ msgid "Knee"
 msgstr "Cot"
 
 #: src/contents/ui/Compressor.qml:169 src/contents/ui/Expander.qml:129
-#, fuzzy
 msgid "Time and Threshold"
-msgstr "Prag"
+msgstr "Pragul și durata"
 
 #: src/contents/ui/Compressor.qml:179 src/contents/ui/Expander.qml:139
 #: src/contents/ui/Gate.qml:83 src/contents/ui/Gate.qml:890
@@ -653,7 +652,7 @@ msgstr "Eliberare"
 #: src/contents/ui/MultibandGate.qml:230
 msgctxt "Compressor control"
 msgid "Hold"
-msgstr ""
+msgstr "Menține"
 
 #: src/contents/ui/Compressor.qml:267 src/contents/ui/Compressor.qml:365
 #: src/contents/ui/Compressor.qml:718 src/contents/ui/Expander.qml:227
@@ -888,9 +887,8 @@ msgstr "Procesat"
 #: src/contents/ui/Compressor.qml:542 src/contents/ui/Expander.qml:502
 #: src/contents/ui/Gate.qml:516 src/contents/ui/MultibandCompressor.qml:682
 #: src/contents/ui/MultibandGate.qml:657
-#, fuzzy
 msgid "Dry/Wet balance"
-msgstr "Balans lateral"
+msgstr "Balans brut/procesat"
 
 #: src/contents/ui/Compressor.qml:560 src/contents/ui/Deesser.qml:135
 #: src/contents/ui/Expander.qml:520 src/contents/ui/Gate.qml:534
@@ -1635,45 +1633,39 @@ msgstr "IIR"
 
 #: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
 #: src/contents/ui/MidSideEqualizer.qml:142
-#, fuzzy
 msgctxt "Filter mode"
 msgid "Linear phase (FIR)"
-msgstr "Fază liniară"
+msgstr "Fază liniară (FIR)"
 
 #: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
 #: src/contents/ui/MidSideEqualizer.qml:142
-#, fuzzy
 msgctxt "Filter mode"
 msgid "Linear phase (FFT)"
-msgstr "Fază liniară"
+msgstr "Fază liniară (FFT)"
 
 #: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
 #: src/contents/ui/MidSideEqualizer.qml:142
-#, fuzzy
 msgctxt "Filter mode"
 msgid "Linear phase (SPM)"
-msgstr "Fază liniară"
+msgstr "Fază liniară (SPM)"
 
 #: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
 #: src/contents/ui/MidSideEqualizer.qml:142
-#, fuzzy
 msgctxt "Filter mode"
 msgid "Minimum phase (FIR)"
-msgstr "Interval minim"
+msgstr "Fază minimă (FIR)"
 
 #: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
 #: src/contents/ui/MidSideEqualizer.qml:142
-#, fuzzy
 msgctxt "Filter mode"
 msgid "Minimum phase (FFT)"
-msgstr "Interval minim"
+msgstr "Fază minimă (FFT)"
 
 #: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
 #: src/contents/ui/MidSideEqualizer.qml:142
-#, fuzzy
 msgctxt "Filter mode"
 msgid "Minimum phase (SPM)"
-msgstr "Interval minim"
+msgstr "Fază minimă (SPM)"
 
 #: src/contents/ui/Equalizer.qml:158 src/contents/ui/Filter.qml:107
 #: src/contents/ui/MidSideEqualizer.qml:152
@@ -1759,10 +1751,9 @@ msgstr "Exportare APO"
 #: src/contents/ui/MultibandCompressor.qml:708
 #: src/contents/ui/MultibandCompressor.qml:967
 #: src/contents/ui/MultibandGate.qml:683 src/contents/ui/MultibandGate.qml:942
-#, fuzzy
 msgctxt "Number of the band"
 msgid "Band %1"
-msgstr "Banda 1"
+msgstr "Banda %1"
 
 #: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
 msgctxt "Filter type"
@@ -2509,10 +2500,9 @@ msgid "Clipping"
 msgstr "Decupare"
 
 #: src/contents/ui/Loudness.qml:216
-#, fuzzy
 msgctxt "Loudness control"
 msgid "Compensate"
-msgstr "Întârziere de compensare (ms)"
+msgstr "Compensare"
 
 #: src/contents/ui/Main.qml:305
 msgid "Reset Settings?"
@@ -2715,7 +2705,7 @@ msgstr "Fază liniară"
 #: src/contents/ui/MultibandGate.qml:571
 msgctxt "Filter parameter"
 msgid "Crossover slope"
-msgstr ""
+msgstr "Panta de separare"
 
 #: src/contents/ui/MultibandCompressor.qml:609
 #: src/contents/ui/MultibandGate.qml:584
