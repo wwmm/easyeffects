@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-11-17 18:09+0000\n"
-"PO-Revision-Date: 2026-11-05 19:51+0000\n"
-"Last-Translator: Giusy Digital "
-"<digitalone1@users.noreply.hosted.weblate.org>\n"
+"PO-Revision-Date: 2026-11-18 22:51+0000\n"
+"Last-Translator: Abdullah Albaroty "
+"<albaroty@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/easyeffects/main/"
 "ar/>\n"
 "Language: ar\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 2026.11.2.dev0\n"
+"X-Generator: Weblate 2026.12.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -315,32 +315,31 @@ msgid "Manual"
 msgstr "يدوي"
 
 #: src/contents/ui/Autotune.qml:137
-#, fuzzy
 msgid "Correction"
-msgstr "كشف"
+msgstr "تصحيح"
 
 #: src/contents/ui/Autotune.qml:153
 msgctxt "Autotune preference"
 msgid "Bias"
-msgstr ""
+msgstr "تحيز"
 
 #: src/contents/ui/Autotune.qml:169 src/contents/ui/Deesser.qml:171
 #: src/contents/ui/Filter.qml:137 src/contents/ui/Reverb.qml:126
 msgid "Filter"
-msgstr ""
+msgstr "مرشح"
 
 #: src/contents/ui/Autotune.qml:186
 msgid "Offset"
-msgstr ""
+msgstr "إزاحة"
 
 #: src/contents/ui/Autotune.qml:205 src/contents/ui/Autotune.qml:244
 msgid "Scale"
-msgstr ""
+msgstr "السلم الموسيقي"
 
 #: src/contents/ui/Autotune.qml:218
 msgctxt "Autotune fundamental note"
 msgid "Root"
-msgstr ""
+msgstr "النغمة الأساسية"
 
 #: src/contents/ui/Autotune.qml:222 src/contents/ui/Autotune.qml:261
 #: src/contents/ui/Harmonizer.qml:45
