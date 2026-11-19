@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-11-17 18:09+0000\n"
-"PO-Revision-Date: 2026-11-05 19:51+0000\n"
+"PO-Revision-Date: 2026-11-19 21:05+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin "
 "<aindriu80@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -17,9 +17,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :"
-"(n>6 && n<11) ? 3 : 4;\n"
-"X-Generator: Weblate 2026.11.2.dev0\n"
+"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :(n>"
+"6 && n<11) ? 3 : 4;\n"
+"X-Generator: Weblate 2026.12.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -626,9 +626,8 @@ msgid "Knee"
 msgstr "Glúine"
 
 #: src/contents/ui/Compressor.qml:169 src/contents/ui/Expander.qml:129
-#, fuzzy
 msgid "Time and Threshold"
-msgstr "Tairseach"
+msgstr "Am agus Tairseach"
 
 #: src/contents/ui/Compressor.qml:179 src/contents/ui/Expander.qml:139
 #: src/contents/ui/Gate.qml:83 src/contents/ui/Gate.qml:890
@@ -653,7 +652,7 @@ msgstr "Scaoileadh"
 #: src/contents/ui/MultibandGate.qml:230
 msgctxt "Compressor control"
 msgid "Hold"
-msgstr ""
+msgstr "Coinnigh"
 
 #: src/contents/ui/Compressor.qml:267 src/contents/ui/Compressor.qml:365
 #: src/contents/ui/Compressor.qml:718 src/contents/ui/Expander.qml:227
@@ -888,9 +887,8 @@ msgstr "Fliuch"
 #: src/contents/ui/Compressor.qml:542 src/contents/ui/Expander.qml:502
 #: src/contents/ui/Gate.qml:516 src/contents/ui/MultibandCompressor.qml:682
 #: src/contents/ui/MultibandGate.qml:657
-#, fuzzy
 msgid "Dry/Wet balance"
-msgstr "Cothromaíocht taobh"
+msgstr "Cothromaíocht tirim/fliuch"
 
 #: src/contents/ui/Compressor.qml:560 src/contents/ui/Deesser.qml:135
 #: src/contents/ui/Expander.qml:520 src/contents/ui/Gate.qml:534
@@ -1466,10 +1464,9 @@ msgid "Remove this effect"
 msgstr "Bain an éifeacht seo"
 
 #: src/contents/ui/DelegateStreamsList.qml:95
-#, fuzzy
 msgid "channel"
 msgid_plural "channels"
-msgstr[0] "cainéil"
+msgstr[0] "cainéal"
 msgstr[1] "cainéil"
 msgstr[2] "cainéil"
 msgstr[3] "cainéil"
@@ -1631,45 +1628,39 @@ msgstr "IIR"
 
 #: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
 #: src/contents/ui/MidSideEqualizer.qml:142
-#, fuzzy
 msgctxt "Filter mode"
 msgid "Linear phase (FIR)"
-msgstr "Céim líneach"
+msgstr "Céim líneach (FIR)"
 
 #: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
 #: src/contents/ui/MidSideEqualizer.qml:142
-#, fuzzy
 msgctxt "Filter mode"
 msgid "Linear phase (FFT)"
-msgstr "Céim líneach"
+msgstr "Céim líneach (FFT)"
 
 #: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
 #: src/contents/ui/MidSideEqualizer.qml:142
-#, fuzzy
 msgctxt "Filter mode"
 msgid "Linear phase (SPM)"
-msgstr "Céim líneach"
+msgstr "Céim líneach (SPM)"
 
 #: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
 #: src/contents/ui/MidSideEqualizer.qml:142
-#, fuzzy
 msgctxt "Filter mode"
 msgid "Minimum phase (FIR)"
-msgstr "Réise íosta"
+msgstr "Céim íosta (FIR)"
 
 #: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
 #: src/contents/ui/MidSideEqualizer.qml:142
-#, fuzzy
 msgctxt "Filter mode"
 msgid "Minimum phase (FFT)"
-msgstr "Réise íosta"
+msgstr "Céim íosta (FFT)"
 
 #: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
 #: src/contents/ui/MidSideEqualizer.qml:142
-#, fuzzy
 msgctxt "Filter mode"
 msgid "Minimum phase (SPM)"
-msgstr "Réise íosta"
+msgstr "Céim íosta (SPM)"
 
 #: src/contents/ui/Equalizer.qml:158 src/contents/ui/Filter.qml:107
 #: src/contents/ui/MidSideEqualizer.qml:152
@@ -1755,10 +1746,9 @@ msgstr "Easpórtáil APO"
 #: src/contents/ui/MultibandCompressor.qml:708
 #: src/contents/ui/MultibandCompressor.qml:967
 #: src/contents/ui/MultibandGate.qml:683 src/contents/ui/MultibandGate.qml:942
-#, fuzzy
 msgctxt "Number of the band"
 msgid "Band %1"
-msgstr "Imleabhar 1"
+msgstr "Banna %1"
 
 #: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
 msgctxt "Filter type"
@@ -2507,10 +2497,9 @@ msgid "Clipping"
 msgstr "Bearradh"
 
 #: src/contents/ui/Loudness.qml:216
-#, fuzzy
 msgctxt "Loudness control"
 msgid "Compensate"
-msgstr "Moill Chúitimh (ms)"
+msgstr "Déan cúiteamh"
 
 #: src/contents/ui/Main.qml:305
 msgid "Reset Settings?"
@@ -2710,7 +2699,7 @@ msgstr "Céim líneach"
 #: src/contents/ui/MultibandGate.qml:571
 msgctxt "Filter parameter"
 msgid "Crossover slope"
-msgstr ""
+msgstr "Fána trasdula"
 
 #: src/contents/ui/MultibandCompressor.qml:609
 #: src/contents/ui/MultibandGate.qml:584
@@ -3690,11 +3679,8 @@ msgid "Save Preset"
 msgstr "Sábháil Réamhshocrú"
 
 #: src/contents/ui/PresetsLocalPage.qml:214
-#, fuzzy
 msgid "Save current settings to the preset: %1"
-msgstr ""
-"Sábháil na socruithe reatha chuig an réamhshocrú:\n"
-"%1"
+msgstr "Sábháil na socruithe reatha chuig an réamhshocrú: %1"
 
 #: src/contents/ui/PresetsLocalPage.qml:220
 msgid "Saved the current settings to %1 local preset."
@@ -3709,12 +3695,9 @@ msgid "Remove Preset"
 msgstr "Bain Réamhshocrú"
 
 #: src/contents/ui/PresetsLocalPage.qml:232
-#, fuzzy
 msgid "Are you sure you want to remove the preset %1 from the list?"
 msgstr ""
-"An bhfuil tú cinnte gur mian leat an réamhshocrú\n"
-"%1\n"
-"a bhaint den liosta?"
+"An bhfuil tú cinnte gur mian leat an réamhshocrú %1 a bhaint den liosta?"
 
 #: src/contents/ui/PresetsLocalPage.qml:238
 msgid "Removed the %1 local preset."

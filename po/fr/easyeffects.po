@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-11-17 18:09+0000\n"
-"PO-Revision-Date: 2026-11-17 05:51+0000\n"
+"PO-Revision-Date: 2026-11-19 21:05+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -885,9 +885,8 @@ msgstr "Humide"
 #: src/contents/ui/Compressor.qml:542 src/contents/ui/Expander.qml:502
 #: src/contents/ui/Gate.qml:516 src/contents/ui/MultibandCompressor.qml:682
 #: src/contents/ui/MultibandGate.qml:657
-#, fuzzy
 msgid "Dry/Wet balance"
-msgstr "Balance latérale"
+msgstr "Balance Sec/Humide"
 
 #: src/contents/ui/Compressor.qml:560 src/contents/ui/Deesser.qml:135
 #: src/contents/ui/Expander.qml:520 src/contents/ui/Gate.qml:534
@@ -1186,7 +1185,7 @@ msgstr "Couplage"
 
 #: src/contents/ui/Crossfeed.qml:114
 msgid "Crossfeed Presets"
-msgstr "Préréglages du Flux Croisé"
+msgstr "Préréglages d'Alimentation Croisée"
 
 #: src/contents/ui/Crossfeed.qml:118
 msgid "Default"
@@ -1743,10 +1742,9 @@ msgstr "Exporter APO"
 #: src/contents/ui/MultibandCompressor.qml:708
 #: src/contents/ui/MultibandCompressor.qml:967
 #: src/contents/ui/MultibandGate.qml:683 src/contents/ui/MultibandGate.qml:942
-#, fuzzy
 msgctxt "Number of the band"
 msgid "Band %1"
-msgstr "Bande "
+msgstr "Bande %1"
 
 #: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
 msgctxt "Filter type"
@@ -2495,10 +2493,9 @@ msgid "Clipping"
 msgstr "Écrêtage"
 
 #: src/contents/ui/Loudness.qml:216
-#, fuzzy
 msgctxt "Loudness control"
 msgid "Compensate"
-msgstr "Délai de Compensation (ms)"
+msgstr "Compensation"
 
 #: src/contents/ui/Main.qml:305
 msgid "Reset Settings?"
@@ -2699,7 +2696,7 @@ msgstr "Phase linéaire"
 #: src/contents/ui/MultibandGate.qml:571
 msgctxt "Filter parameter"
 msgid "Crossover slope"
-msgstr ""
+msgstr "Pente de coupure"
 
 #: src/contents/ui/MultibandCompressor.qml:609
 #: src/contents/ui/MultibandGate.qml:584
@@ -4219,7 +4216,7 @@ msgstr "Convolveur"
 
 #: src/tags_plugin_name.cpp:54
 msgid "Crossfeed"
-msgstr "Flux Croisé"
+msgstr "Alimentation Croisée"
 
 #: src/tags_plugin_name.cpp:55
 msgid "Crosstalk Canceller"
