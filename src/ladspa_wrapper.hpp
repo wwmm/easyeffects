@@ -71,6 +71,8 @@ class LadspaWrapper {
   auto set_control_port_value_clamp(uint index, float value) -> float;
   auto set_control_port_value_clamp(const std::string& symbol, float value) -> float;
 
+  [[nodiscard]] auto optional_symbol(const char* name) const -> void*;
+
   [[nodiscard]] auto found_plugin() const -> bool { return found; }
   [[nodiscard]] auto has_instance() const -> bool { return instance != nullptr; }
   [[nodiscard]] auto get_rate() const -> uint { return rate; }

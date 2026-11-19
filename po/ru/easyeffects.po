@@ -6719,3 +6719,51 @@ msgstr "Простые звуковые эффекты"
 
 #~ msgid "Gain Controller"
 #~ msgstr "Автоконтроль усиления (AGC)"
+
+msgid "Processing device"
+msgstr "Устройство обработки"
+
+msgid "DPDFNet processing device"
+msgstr "Устройство обработки DPDFNet"
+
+msgid "Prefer NPU"
+msgstr "Предпочитать NPU"
+
+msgid "Preparing NPU. Using CPU for now."
+msgstr "Подготовка NPU. Пока используется CPU."
+
+msgid "Processing on NPU"
+msgstr "Работает на NPU"
+
+msgid "Processing on CPU · Stereo"
+msgstr "Работает на CPU · стерео"
+
+msgid "Processing on CPU · NPU component unavailable"
+msgstr "Работает на CPU · компонент NPU недоступен"
+
+msgid "Processing on CPU · NPU profile unavailable for this mode"
+msgstr "Работает на CPU · профиль NPU недоступен в этом режиме"
+
+msgid "Processing on CPU · NPU is busy"
+msgstr "Работает на CPU · NPU занят"
+
+msgid "Processing on CPU · NPU stopped responding"
+msgstr "Работает на CPU · NPU перестал отвечать"
+
+msgid "Processing on CPU"
+msgstr "Работает на CPU"
+
+msgid "Set up NPU"
+msgstr "Настроить NPU"
+
+msgid "Check again"
+msgstr "Проверить снова"
+
+msgid "Automatic is using CPU. Choose Prefer NPU to try acceleration."
+msgstr "Авто использует CPU. Чтобы попробовать ускорение, выберите «Предпочитать NPU»."
+
+msgid "NPU selected. Waiting for audio."
+msgstr "Выбран NPU. Ожидание аудио."
+
+msgid "The processing device could not be changed. Try again."
+msgstr "Не удалось сменить устройство обработки. Повторите попытку."

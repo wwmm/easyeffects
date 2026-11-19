@@ -55,6 +55,10 @@ DeepFilterNet::DeepFilterNet(const std::string& tag,
   dpdfnet_l = std::make_unique<ladspa::LadspaWrapper>("libdpdfnet_ladspa.so", "dpdfnet_mono");
   dpdfnet_r = std::make_unique<ladspa::LadspaWrapper>("libdpdfnet_ladspa.so", "dpdfnet_mono");
 
+  npu_prepare = reinterpret_cast<NpuPrepare>(dpdfnet_l->optional_symbol("hushmic_dpdfnet_prepare_xdna2_v1"));
+  npu_get_status = reinterpret_cast<NpuStatus>(dpdfnet_l->optional_symbol("hushmic_dpdfnet_status_xdna2_v1"));
+  npu_get_policy = reinterpret_cast<NpuGetPolicy>(dpdfnet_l->optional_symbol("hushmic_dpdfnet_policy_xdna2_v1"));
+  npu_set_policy = reinterpret_cast<NpuSetPolicy>(dpdfnet_l->optional_symbol("hushmic_dpdfnet_set_policy_xdna2_v1"));
   deepFilterNetInstalled = ladspa_wrapper->found_plugin();
   dpdfnetInstalled = dpdfnet_l->found_plugin() && dpdfnet_r->found_plugin();
 
@@ -184,6 +188,9 @@ void DeepFilterNet::setup() {
 
         if (dpdfnet) {
           dpdfnet_l->n_samples = n_samples;
+          if (npu_prepare != nullptr && !dpdfnet_l->has_instance()) {
+            npu_ticket.store(npu_prepare(mono), std::memory_order_release);
+          }
           dpdfnet_l->create_instance(48000);
 
           if (mono) {
@@ -360,6 +367,71 @@ void DeepFilterNet::run_model(std::span<const float> left_in,
   }
 }
 
+
+auto DeepFilterNet::npuPolicy() const -> int {
+  return npu_policy < 0 ? 0 : npu_policy & 0xff;
+}
+
+auto DeepFilterNet::npuAvailable() const -> bool {
+  return npu_policy >= 0 && (npu_policy & 0x100) != 0;
+}
+
+void DeepFilterNet::refreshNpu(bool readPolicy) {
+  const auto ticket = npu_ticket.load(std::memory_order_acquire);
+  const auto status = dpdfnetInstalled && !settings->monoProcessing()
+                          ? 3
+                          : npu_get_status == nullptr || npu_policy < 0
+                                ? 4
+                                : ticket == 0 ? 0 : static_cast<int>(npu_get_status(ticket));
+  if (status != npu_status) {
+    npu_status = status;
+    Q_EMIT npuChanged();
+  }
+  if (readPolicy) {
+    updateNpuPolicy(-1);
+  }
+}
+
+void DeepFilterNet::setNpuPolicy(int policy) {
+  if (policy >= 0 && policy <= 2 && npu_set_policy != nullptr) {
+    updateNpuPolicy(policy);
+  }
+}
+
+void DeepFilterNet::updateNpuPolicy(int requested) {
+  if (npu_get_policy == nullptr) {
+    return;
+  }
+  if (npu_query_pending) {
+    if (requested >= 0) {
+      npu_queued_policy = requested;
+    }
+    return;
+  }
+  npu_query_pending = true;
+  QMetaObject::invokeMethod(
+      baseWorker,
+      [this, requested] {
+        const bool write_failed = requested >= 0 && npu_set_policy(static_cast<std::uint8_t>(requested)) != 0;
+        const auto policy = npu_get_policy();
+        QMetaObject::invokeMethod(this, [this, requested, policy, write_failed] {
+          npu_query_pending = false;
+          npu_policy = policy;
+          if (requested >= 0) {
+            npu_policy_write_failed = write_failed;
+          }
+          refreshNpu();
+          Q_EMIT npuChanged();
+          if (npu_queued_policy >= 0) {
+            const auto next = npu_queued_policy;
+            npu_queued_policy = -1;
+            updateNpuPolicy(next);
+          }
+        }, Qt::QueuedConnection);
+      },
+      Qt::QueuedConnection);
+}
+
 void DeepFilterNet::resetHistory() {
   // clear_data();
 
@@ -372,6 +444,7 @@ void DeepFilterNet::resetHistory() {
 
     if (ready) {
       ready = false;
+      npu_ticket.store(0, std::memory_order_release);
 
       for (auto* wrapper : {ladspa_wrapper.get(), dpdfnet_l.get(), dpdfnet_r.get()}) {
         if (wrapper->has_instance()) {
