@@ -622,9 +622,8 @@ msgid "Knee"
 msgstr "Codo"
 
 #: src/contents/ui/Compressor.qml:169 src/contents/ui/Expander.qml:129
-#, fuzzy
 msgid "Time and Threshold"
-msgstr "Umbral de la banda 1"
+msgstr "Tiempo y umbral"
 
 #: src/contents/ui/Compressor.qml:179 src/contents/ui/Expander.qml:139
 #: src/contents/ui/Gate.qml:83 src/contents/ui/Gate.qml:890
@@ -649,7 +648,7 @@ msgstr "Liberación"
 #: src/contents/ui/MultibandGate.qml:230
 msgctxt "Compressor control"
 msgid "Hold"
-msgstr ""
+msgstr "Retención"
 
 #: src/contents/ui/Compressor.qml:267 src/contents/ui/Compressor.qml:365
 #: src/contents/ui/Compressor.qml:718 src/contents/ui/Expander.qml:227
@@ -884,9 +883,8 @@ msgstr "Húmedo"
 #: src/contents/ui/Compressor.qml:542 src/contents/ui/Expander.qml:502
 #: src/contents/ui/Gate.qml:516 src/contents/ui/MultibandCompressor.qml:682
 #: src/contents/ui/MultibandGate.qml:657
-#, fuzzy
 msgid "Dry/Wet balance"
-msgstr "Balance de canal lateral"
+msgstr "Balance seco/húmedo"
 
 #: src/contents/ui/Compressor.qml:560 src/contents/ui/Deesser.qml:135
 #: src/contents/ui/Expander.qml:520 src/contents/ui/Gate.qml:534
@@ -1141,7 +1139,7 @@ msgstr "Orientación de destino"
 #: src/contents/ui/ConvolverSofaDialog.qml:43
 #: src/contents/ui/ConvolverSofaDialog.qml:139
 msgid "Azimuth"
-msgstr "Azimuth"
+msgstr "Azimut"
 
 #: src/contents/ui/ConvolverSofaDialog.qml:59
 #: src/contents/ui/ConvolverSofaDialog.qml:144
@@ -1465,10 +1463,9 @@ msgid "Remove this effect"
 msgstr "Quitar este efecto"
 
 #: src/contents/ui/DelegateStreamsList.qml:95
-#, fuzzy
 msgid "channel"
 msgid_plural "channels"
-msgstr[0] "canales"
+msgstr[0] "canal"
 msgstr[1] "canales"
 
 #: src/contents/ui/DelegateStreamsList.qml:106
@@ -1623,45 +1620,39 @@ msgstr "IIR"
 
 #: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
 #: src/contents/ui/MidSideEqualizer.qml:142
-#, fuzzy
 msgctxt "Filter mode"
 msgid "Linear phase (FIR)"
-msgstr "Fase lineal"
+msgstr "Fase lineal (FIR)"
 
 #: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
 #: src/contents/ui/MidSideEqualizer.qml:142
-#, fuzzy
 msgctxt "Filter mode"
 msgid "Linear phase (FFT)"
-msgstr "Fase lineal"
+msgstr "Fase lineal (FFT)"
 
 #: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
 #: src/contents/ui/MidSideEqualizer.qml:142
-#, fuzzy
 msgctxt "Filter mode"
 msgid "Linear phase (SPM)"
-msgstr "Fase lineal"
+msgstr "Fase lineal (SPM)"
 
 #: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
 #: src/contents/ui/MidSideEqualizer.qml:142
-#, fuzzy
 msgctxt "Filter mode"
 msgid "Minimum phase (FIR)"
-msgstr "Rango mínimo"
+msgstr "Fase mínima (FIR)"
 
 #: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
 #: src/contents/ui/MidSideEqualizer.qml:142
-#, fuzzy
 msgctxt "Filter mode"
 msgid "Minimum phase (FFT)"
-msgstr "Rango mínimo"
+msgstr "Fase mínima (FFT)"
 
 #: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
 #: src/contents/ui/MidSideEqualizer.qml:142
-#, fuzzy
 msgctxt "Filter mode"
 msgid "Minimum phase (SPM)"
-msgstr "Rango mínimo"
+msgstr "Fase mínima (SPM)"
 
 #: src/contents/ui/Equalizer.qml:158 src/contents/ui/Filter.qml:107
 #: src/contents/ui/MidSideEqualizer.qml:152
@@ -1747,10 +1738,9 @@ msgstr "Exportar perfil APO"
 #: src/contents/ui/MultibandCompressor.qml:708
 #: src/contents/ui/MultibandCompressor.qml:967
 #: src/contents/ui/MultibandGate.qml:683 src/contents/ui/MultibandGate.qml:942
-#, fuzzy
 msgctxt "Number of the band"
 msgid "Band %1"
-msgstr "Banda 1"
+msgstr "Banda %1"
 
 #: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
 msgctxt "Filter type"
@@ -2497,10 +2487,9 @@ msgid "Clipping"
 msgstr "Recorte"
 
 #: src/contents/ui/Loudness.qml:216
-#, fuzzy
 msgctxt "Loudness control"
 msgid "Compensate"
-msgstr "Retardo de compensación (ms)"
+msgstr "Compensación"
 
 #: src/contents/ui/Main.qml:305
 msgid "Reset Settings?"
@@ -2703,7 +2692,7 @@ msgstr "Fase lineal"
 #: src/contents/ui/MultibandGate.qml:571
 msgctxt "Filter parameter"
 msgid "Crossover slope"
-msgstr ""
+msgstr "Pendiente de cruce"
 
 #: src/contents/ui/MultibandCompressor.qml:609
 #: src/contents/ui/MultibandGate.qml:584
@@ -3675,11 +3664,8 @@ msgid "Save Preset"
 msgstr "Guardar perfil"
 
 #: src/contents/ui/PresetsLocalPage.qml:214
-#, fuzzy
 msgid "Save current settings to the preset: %1"
-msgstr ""
-"Guardar la configuración actual en este perfil:\n"
-"%1"
+msgstr "Guardar la configuración actual en el perfil: %1"
 
 #: src/contents/ui/PresetsLocalPage.qml:220
 msgid "Saved the current settings to %1 local preset."
@@ -3694,12 +3680,8 @@ msgid "Remove Preset"
 msgstr "Eliminar perfil"
 
 #: src/contents/ui/PresetsLocalPage.qml:232
-#, fuzzy
 msgid "Are you sure you want to remove the preset %1 from the list?"
-msgstr ""
-"¿Estás seguro de que quieres eliminar el perfil\n"
-"%1\n"
-"de la lista?"
+msgstr "¿Estás seguro de que quieres eliminar el perfil %1 de la lista?"
 
 #: src/contents/ui/PresetsLocalPage.qml:238
 msgid "Removed the %1 local preset."
@@ -3994,7 +3976,7 @@ msgstr "MS > LR (Medio-lateral a estéreo)"
 
 #: src/contents/ui/StereoTools.qml:127
 msgid "LR > LL (Mono left channel)"
-msgstr "R > LL (Canal mono izquierdo)"
+msgstr "LR > LL (Canal mono izquierdo)"
 
 #: src/contents/ui/StereoTools.qml:127
 msgid "LR > RR (Mono right channel)"
