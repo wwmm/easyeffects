@@ -1,5 +1,21 @@
 # Changelog
  
+## 8.3.3
+### 2026-11-21
+
+ 
+### Features:
+- Added new controls introduced in Linux Studio Plugins 1.2.37; `minimum phase filters` (in Stereo/Mid-Side Equalizer and Filter) and `crossover slope` (in Multiband Compressor/Gate).
+- Added `hold` and `dry/wet balance` controls in Compressor, Expander, Gate and Multiband Compressor/Gate effects.
+- Added `compensate` switchbutton in the Loudness effect.
+
+### Bug fixes:
+- Improved the Crystalizer effect fixing the computation of the tap offset from the center of the kernel which was using the unsigned arithmetic.
+
+### Other notes:
+- The new changes to filters in the Crystalizer may lead to a perceived slightly difference in the output sound. Expect the effect to sound cleaner but different (likely more subtle at the same intensity settings). Note also that old community presets may be tuned against the buggy behavior.
+
+ 
 ## 8.3.2
 ### 2026-10-31
 

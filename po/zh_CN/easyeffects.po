@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-11-17 18:09+0000\n"
-"PO-Revision-Date: 2026-11-16 04:53+0000\n"
+"PO-Revision-Date: 2026-11-21 15:09+0000\n"
 "Last-Translator: Gerald Chen <ramdomptm@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hans/>\n"
@@ -614,9 +614,8 @@ msgid "Knee"
 msgstr "拐点"
 
 #: src/contents/ui/Compressor.qml:169 src/contents/ui/Expander.qml:129
-#, fuzzy
 msgid "Time and Threshold"
-msgstr "频段 1 阈值"
+msgstr "时间与阈值"
 
 #: src/contents/ui/Compressor.qml:179 src/contents/ui/Expander.qml:139
 #: src/contents/ui/Gate.qml:83 src/contents/ui/Gate.qml:890
@@ -641,7 +640,7 @@ msgstr "释放"
 #: src/contents/ui/MultibandGate.qml:230
 msgctxt "Compressor control"
 msgid "Hold"
-msgstr ""
+msgstr "保持"
 
 #: src/contents/ui/Compressor.qml:267 src/contents/ui/Compressor.qml:365
 #: src/contents/ui/Compressor.qml:718 src/contents/ui/Expander.qml:227
@@ -876,9 +875,8 @@ msgstr "湿信号"
 #: src/contents/ui/Compressor.qml:542 src/contents/ui/Expander.qml:502
 #: src/contents/ui/Gate.qml:516 src/contents/ui/MultibandCompressor.qml:682
 #: src/contents/ui/MultibandGate.qml:657
-#, fuzzy
 msgid "Dry/Wet balance"
-msgstr "侧信号平衡"
+msgstr "干/湿平衡"
 
 #: src/contents/ui/Compressor.qml:560 src/contents/ui/Deesser.qml:135
 #: src/contents/ui/Expander.qml:520 src/contents/ui/Gate.qml:534
@@ -1598,45 +1596,39 @@ msgstr "无限脉冲响应 (IIR)"
 
 #: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
 #: src/contents/ui/MidSideEqualizer.qml:142
-#, fuzzy
 msgctxt "Filter mode"
 msgid "Linear phase (FIR)"
-msgstr "线性相位"
+msgstr "线性相位（FIR）"
 
 #: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
 #: src/contents/ui/MidSideEqualizer.qml:142
-#, fuzzy
 msgctxt "Filter mode"
 msgid "Linear phase (FFT)"
-msgstr "线性相位"
+msgstr "线性相位（FFT）"
 
 #: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
 #: src/contents/ui/MidSideEqualizer.qml:142
-#, fuzzy
 msgctxt "Filter mode"
 msgid "Linear phase (SPM)"
-msgstr "线性相位"
+msgstr "线性相位（SPM）"
 
 #: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
 #: src/contents/ui/MidSideEqualizer.qml:142
-#, fuzzy
 msgctxt "Filter mode"
 msgid "Minimum phase (FIR)"
-msgstr "最小跨度"
+msgstr "最小相位（FIR）"
 
 #: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
 #: src/contents/ui/MidSideEqualizer.qml:142
-#, fuzzy
 msgctxt "Filter mode"
 msgid "Minimum phase (FFT)"
-msgstr "最小跨度"
+msgstr "最小相位（FFT）"
 
 #: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
 #: src/contents/ui/MidSideEqualizer.qml:142
-#, fuzzy
 msgctxt "Filter mode"
 msgid "Minimum phase (SPM)"
-msgstr "最小跨度"
+msgstr "最小相位（SPM）"
 
 #: src/contents/ui/Equalizer.qml:158 src/contents/ui/Filter.qml:107
 #: src/contents/ui/MidSideEqualizer.qml:152
@@ -1722,10 +1714,9 @@ msgstr "导出 APO 预设"
 #: src/contents/ui/MultibandCompressor.qml:708
 #: src/contents/ui/MultibandCompressor.qml:967
 #: src/contents/ui/MultibandGate.qml:683 src/contents/ui/MultibandGate.qml:942
-#, fuzzy
 msgctxt "Number of the band"
 msgid "Band %1"
-msgstr "频段 1"
+msgstr "频带 %1"
 
 #: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
 msgctxt "Filter type"
@@ -2464,10 +2455,9 @@ msgid "Clipping"
 msgstr "削波"
 
 #: src/contents/ui/Loudness.qml:216
-#, fuzzy
 msgctxt "Loudness control"
 msgid "Compensate"
-msgstr "补偿延迟（毫秒）"
+msgstr "补偿"
 
 #: src/contents/ui/Main.qml:305
 msgid "Reset Settings?"
@@ -2654,7 +2644,7 @@ msgstr "线性相位"
 #: src/contents/ui/MultibandGate.qml:571
 msgctxt "Filter parameter"
 msgid "Crossover slope"
-msgstr ""
+msgstr "分频斜率"
 
 #: src/contents/ui/MultibandCompressor.qml:609
 #: src/contents/ui/MultibandGate.qml:584

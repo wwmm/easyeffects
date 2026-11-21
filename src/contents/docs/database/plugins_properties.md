@@ -62,11 +62,13 @@ The following properties can be modified or queried via the [local server](../us
 | **compressor** | `outputGain` | Double | `0` |
 | **compressor** | `dry` | Double | `-80.01` |
 | **compressor** | `wet` | Double | `0` |
+| **compressor** | `dryWetBalance` | Double | `100` |
 | **compressor** | `mode` | Enum | `0` <br><small>(Choices: 0: `Downward`, 1: `Upward`, 2: `Boosting`)</small> |
 | **compressor** | `attack` | Double | `20` |
 | **compressor** | `release` | Double | `100` |
 | **compressor** | `releaseThreshold` | Double | `-80.01` |
 | **compressor** | `threshold` | Double | `-12` |
+| **compressor** | `hold` | Double | `0` |
 | **compressor** | `ratio` | Double | `4` |
 | **compressor** | `knee` | Double | `-6` |
 | **compressor** | `makeup` | Double | `0` |
@@ -136,7 +138,7 @@ The following properties can be modified or queried via the [local server](../us
 | **crystalizer** | `transitionBand` | Double | `120` |
 | **crystalizer** | `intensityBand0` | Double | `0` |
 | **crystalizer** | `intensityBand1` | Double | `0` |
-| **crystalizer** | `intensityBand2` | Double | `-2` |
+| **crystalizer** | `intensityBand2` | Double | `0` |
 | **crystalizer** | `intensityBand3` | Double | `0` |
 | **crystalizer** | `intensityBand4` | Double | `0` |
 | **crystalizer** | `intensityBand5` | Double | `0` |
@@ -235,7 +237,7 @@ The following properties can be modified or queried via the [local server](../us
 | **equalizer** | `inputGain` | Double | `0` |
 | **equalizer** | `outputGain` | Double | `0` |
 | **equalizer** | `numBands` | Int | `32` |
-| **equalizer** | `mode` | Enum | `0` <br><small>(Choices: 0: `IIR`, 1: `FIR`, 2: `FFT`, 3: `SPM`)</small> |
+| **equalizer** | `mode` | Enum | `0` <br><small>(Choices: 0: `IIR`, 1: `FIR`, 2: `FFT`, 3: `SPM`, 4: `MP FIR`, 5: `MP FFT`, 6: `MP SPM`)</small> |
 | **equalizer** | `splitChannels` | Bool | `false` |
 | **equalizer** | `balance` | Double | `0` |
 | **equalizer** | `pitchLeft` | Double | `0` |
@@ -257,11 +259,13 @@ The following properties can be modified or queried via the [local server](../us
 | **expander** | `outputGain` | Double | `0` |
 | **expander** | `dry` | Double | `-80.01` |
 | **expander** | `wet` | Double | `0` |
+| **expander** | `dryWetBalance` | Double | `100` |
 | **expander** | `mode` | Enum | `1` <br><small>(Choices: 0: `Downward`, 1: `Upward`)</small> |
 | **expander** | `attack` | Double | `20` |
 | **expander** | `release` | Double | `100` |
 | **expander** | `releaseThreshold` | Double | `-80.01` |
 | **expander** | `threshold` | Double | `-12` |
+| **expander** | `hold` | Double | `0` |
 | **expander** | `ratio` | Double | `4` |
 | **expander** | `knee` | Double | `-6` |
 | **expander** | `makeup` | Double | `0` |
@@ -289,7 +293,7 @@ The following properties can be modified or queried via the [local server](../us
 | **filter** | `inputGain` | Double | `0` |
 | **filter** | `outputGain` | Double | `0` |
 | **filter** | `type` | Enum | `0` <br><small>(Choices: 0: `Low-pass`, 1: `High-pass`, 2: `Low-shelf`, 3: `High-shelf`, 4: `Bell`, 5: `Band-pass`, 6: `Notch`, 7: `Resonance`, 8: `Ladder-pass`, 9: `Ladder-rejection`, 10: `All-pass`)</small> |
-| **filter** | `equalMode` | Enum | `0` <br><small>(Choices: 0: `IIR`, 1: `FIR`, 2: `FFT`, 3: `SPM`)</small> |
+| **filter** | `equalMode` | Enum | `0` <br><small>(Choices: 0: `IIR`, 1: `FIR`, 2: `FFT`, 3: `SPM`, 4: `MP FIR`, 5: `MP FFT`, 6: `MP SPM`)</small> |
 | **filter** | `mode` | Enum | `0` <br><small>(Choices: 0: `RLC (BT)`, 1: `RLC (MT)`, 2: `BWC (BT)`, 3: `BWC (MT)`, 4: `LRX (BT)`, 5: `LRX (MT)`, 6: `APO (DR)`)</small> |
 | **filter** | `slope` | Enum | `0` <br><small>(Choices: 0: `x1`, 1: `x2`, 2: `x3`, 3: `x4`, 4: `x6`, 5: `x8`, 6: `x12`, 7: `x16`)</small> |
 | **filter** | `frequency` | Double | `2000` |
@@ -303,9 +307,11 @@ The following properties can be modified or queried via the [local server](../us
 | **gate** | `outputGain` | Double | `0` |
 | **gate** | `dry` | Double | `-80.01` |
 | **gate** | `wet` | Double | `0` |
+| **gate** | `dryWetBalance` | Double | `100` |
 | **gate** | `mode` | Enum | `0` <br><small>(Choices: 0: `Downward`, 1: `Upward`, 2: `Boosting`)</small> |
 | **gate** | `attack` | Double | `20` |
 | **gate** | `release` | Double | `100` |
+| **gate** | `hold` | Double | `0` |
 | **gate** | `curveThreshold` | Double | `-24` |
 | **gate** | `curveZone` | Double | `-6` |
 | **gate** | `hysteresis` | Bool | `false` |
@@ -378,6 +384,7 @@ The following properties can be modified or queried via the [local server](../us
 | **loudness** | `fft` | Enum | `4` <br><small>(Choices: 0: `256`, 1: `512`, 2: `1024`, 3: `2048`, 4: `4096`, 5: `8192`, 6: `16384`)</small> |
 | **loudness** | `std` | Enum | `4` <br><small>(Choices: 0: `Flat`, 1: `ISO226-2003`, 2: `Fletcher-Munson`, 3: `Robinson-Dadson`, 4: `ISO226-2023`)</small> |
 | **loudness** | `volume` | Double | `0` |
+| **loudness** | `compensate` | Bool | `false` |
 | **loudness** | `clipping` | Bool | `false` |
 | **loudness** | `clippingRange` | Double | `6` |
 | **loudness** | `iirApproximation` | Enum | `2` <br><small>(Choices: 0: `Fastest`, 1: `Low`, 2: `Normal`, 3: `High`, 4: `Best`)</small> |
@@ -390,7 +397,7 @@ The following properties can be modified or queried via the [local server](../us
 | **midside_equalizer** | `inputGain` | Double | `0` |
 | **midside_equalizer** | `outputGain` | Double | `0` |
 | **midside_equalizer** | `numBands` | Int | `32` |
-| **midside_equalizer** | `mode` | Enum | `0` <br><small>(Choices: 0: `IIR`, 1: `FIR`, 2: `FFT`, 3: `SPM`)</small> |
+| **midside_equalizer** | `mode` | Enum | `0` <br><small>(Choices: 0: `IIR`, 1: `FIR`, 2: `FFT`, 3: `SPM`, 4: `MP FIR`, 5: `MP FFT`, 6: `MP SPM`)</small> |
 | **midside_equalizer** | `splitChannels` | Bool | `false` |
 | **midside_equalizer** | `balance` | Double | `0` |
 | **midside_equalizer** | `pitchMid` | Double | `0` |
@@ -402,11 +409,13 @@ The following properties can be modified or queried via the [local server](../us
 | **multiband_compressor** | `outputGain` | Double | `0` |
 | **multiband_compressor** | `dry` | Double | `-80.01` |
 | **multiband_compressor** | `wet` | Double | `0` |
+| **multiband_compressor** | `dryWetBalance` | Double | `100` |
 | **multiband_compressor** | `viewSidechain` | Bool | `false` |
 | **multiband_compressor** | `externalSidechainEnabled` | Bool | `false` |
 | **multiband_compressor** | `stereoSplit` | Bool | `false` |
 | **multiband_compressor** | `compressorMode` | Enum | `1` <br><small>(Choices: 0: `Classic`, 1: `Modern`, 2: `Linear Phase`)</small> |
 | **multiband_compressor** | `envelopeBoost` | Enum | `0` <br><small>(Choices: 0: `None`, 1: `Pink BT`, 2: `Pink MT`, 3: `Brown BT`, 4: `Brown MT`)</small> |
+| **multiband_compressor** | `slope` | Enum | `4` <br><small>(Choices: 0: `6 dB/oct`, 1: `12 dB/oct`, 2: `18 dB/oct`, 3: `24 dB/oct`, 4: `48 dB/oct`, 5: `72 dB/oct`)</small> |
 | **multiband_compressor** | `inputToSidechain` | Double | `-80.01` |
 | **multiband_compressor** | `inputToLink` | Double | `-80.01` |
 | **multiband_compressor** | `sidechainToInput` | Double | `-80.01` |
@@ -580,6 +589,14 @@ The following properties can be modified or queried via the [local server](../us
 | **multiband_compressor** | `band5ReleaseTime` | Double | `100` |
 | **multiband_compressor** | `band6ReleaseTime` | Double | `100` |
 | **multiband_compressor** | `band7ReleaseTime` | Double | `100` |
+| **multiband_compressor** | `band0HoldTime` | Double | `0` |
+| **multiband_compressor** | `band1HoldTime` | Double | `0` |
+| **multiband_compressor** | `band2HoldTime` | Double | `0` |
+| **multiband_compressor** | `band3HoldTime` | Double | `0` |
+| **multiband_compressor** | `band4HoldTime` | Double | `0` |
+| **multiband_compressor** | `band5HoldTime` | Double | `0` |
+| **multiband_compressor** | `band6HoldTime` | Double | `0` |
+| **multiband_compressor** | `band7HoldTime` | Double | `0` |
 | **multiband_compressor** | `band0Ratio` | Double | `1` |
 | **multiband_compressor** | `band1Ratio` | Double | `1` |
 | **multiband_compressor** | `band2Ratio` | Double | `1` |
@@ -625,11 +642,13 @@ The following properties can be modified or queried via the [local server](../us
 | **multiband_gate** | `outputGain` | Double | `0` |
 | **multiband_gate** | `dry` | Double | `-80.01` |
 | **multiband_gate** | `wet` | Double | `0` |
+| **multiband_gate** | `dryWetBalance` | Double | `100` |
 | **multiband_gate** | `viewSidechain` | Bool | `false` |
 | **multiband_gate** | `externalSidechainEnabled` | Bool | `false` |
 | **multiband_gate** | `stereoSplit` | Bool | `false` |
 | **multiband_gate** | `gateMode` | Enum | `1` <br><small>(Choices: 0: `Classic`, 1: `Modern`, 2: `Linear Phase`)</small> |
 | **multiband_gate** | `envelopeBoost` | Enum | `0` <br><small>(Choices: 0: `None`, 1: `Pink BT`, 2: `Pink MT`, 3: `Brown BT`, 4: `Brown MT`)</small> |
+| **multiband_gate** | `slope` | Enum | `4` <br><small>(Choices: 0: `6 dB/oct`, 1: `12 dB/oct`, 2: `18 dB/oct`, 3: `24 dB/oct`, 4: `48 dB/oct`, 5: `72 dB/oct`)</small> |
 | **multiband_gate** | `inputToSidechain` | Double | `-80.01` |
 | **multiband_gate** | `inputToLink` | Double | `-80.01` |
 | **multiband_gate** | `sidechainToInput` | Double | `-80.01` |
@@ -779,6 +798,14 @@ The following properties can be modified or queried via the [local server](../us
 | **multiband_gate** | `band5ReleaseTime` | Double | `100` |
 | **multiband_gate** | `band6ReleaseTime` | Double | `100` |
 | **multiband_gate** | `band7ReleaseTime` | Double | `100` |
+| **multiband_gate** | `band0HoldTime` | Double | `0` |
+| **multiband_gate** | `band1HoldTime` | Double | `0` |
+| **multiband_gate** | `band2HoldTime` | Double | `0` |
+| **multiband_gate** | `band3HoldTime` | Double | `0` |
+| **multiband_gate** | `band4HoldTime` | Double | `0` |
+| **multiband_gate** | `band5HoldTime` | Double | `0` |
+| **multiband_gate** | `band6HoldTime` | Double | `0` |
+| **multiband_gate** | `band7HoldTime` | Double | `0` |
 | **multiband_gate** | `band0Hysteresis` | Bool | `false` |
 | **multiband_gate** | `band1Hysteresis` | Bool | `false` |
 | **multiband_gate** | `band2Hysteresis` | Bool | `false` |
