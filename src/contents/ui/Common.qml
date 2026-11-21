@@ -68,10 +68,8 @@ QtObject {
     }
 
     function toLocaleLabel(num: real, decimal: int, unit: string): string {
-        let n = num;
+        const result = num.toLocaleString(Qt.locale(), 'f', decimal);
 
-        const result = n.toLocaleString(Qt.locale(), 'f', decimal);
-
-        return unit ? result + " " + unit : result;
+        return unit.length !== 0 ? `${result} ${unit}` : result;
     }
 }

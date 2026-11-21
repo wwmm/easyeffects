@@ -33,7 +33,7 @@ SystemTrayIcon {
 
     property Main mainWindow: null
 
-    readonly property string iconName: DbMain.bypass ? applicationId + "-off-symbolic" : applicationId + "-symbolic"
+    readonly property string iconName: DbMain.bypass ? `${applicationId}-off-symbolic` : `${applicationId}-symbolic`
 
     visible: DbMain.showTrayIcon && canUseSysTray
     icon.name: iconName
