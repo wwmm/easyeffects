@@ -16,22 +16,13 @@ QtObject {
         return v === null || v === undefined;
     }
 
-    function equalStringArrays(a: var, b: var): bool {
-        if (!a || !b) {
+    function equalStringArrays(a: list<string>, b: list<string>): bool {
+        if (a.length !== b.length)
             return false;
-        }
 
-        const A = Array.from(a);
-        const B = Array.from(b);
-
-        if (A.length !== B.length) {
-            return false;
-        }
-
-        for (let i = 0; i < A.length; i++) {
-            if (A[i] !== B[i]) {
+        for (let i = 0; i < a.length; i++) {
+            if (a[i] !== b[i])
                 return false;
-            }
         }
 
         return true;
