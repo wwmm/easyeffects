@@ -353,6 +353,10 @@ static inline void scale_control_ports(const LADSPA_Descriptor* descriptor,
   }
 }
 
+auto LadspaWrapper::optional_symbol(const char* name) const -> void* {
+  return found && dl_handle != nullptr ? dlsym(dl_handle, name) : nullptr;
+}
+
 auto LadspaWrapper::create_instance(uint rate) -> bool {
   if (instance != nullptr && this->rate == rate) {
     return true;

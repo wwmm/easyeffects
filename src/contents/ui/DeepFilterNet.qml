@@ -116,6 +116,50 @@ Kirigami.ScrollablePage {
             }
         }
 
+        ColumnLayout {
+            id: npuControls
+            visible: deepfilternetPage.pluginDB.model === 1 && !!deepfilternetPage.pluginBackend
+            Layout.alignment: Qt.AlignHCenter
+            Layout.maximumWidth: 2 * cardLayout.maximumColumnWidth
+
+            RowLayout {
+                Layout.alignment: Qt.AlignHCenter
+                Controls.Label {
+                    text: i18n("Processing device")
+                }
+                Controls.ComboBox {
+                    Accessible.name: i18n("DPDFNet processing device")
+                    enabled: deepfilternetPage.pluginBackend?.npuPolicyAvailable ?? false
+                    currentIndex: deepfilternetPage.pluginBackend?.npuPolicy ?? 0
+                    model: [i18n("CPU"), i18n("Automatic"), i18n("Prefer NPU")]
+                    onActivated: index => deepfilternetPage.pluginBackend.setNpuPolicy(index)
+                }
+            }
+
+            Controls.Label {
+                visible: deepfilternetPage.pluginBackend?.npuPolicyWriteFailed ?? false
+                Layout.fillWidth: true
+                horizontalAlignment: Text.AlignHCenter
+                wrapMode: Text.WordWrap
+                text: i18n("The processing device could not be changed. Try again.")
+            }
+
+            Controls.Button {
+                Layout.alignment: Qt.AlignHCenter
+                visible: !(deepfilternetPage.pluginBackend?.npuAvailable ?? false)
+                text: i18n("Set up NPU")
+                onClicked: Qt.openUrlExternally("https://ryzenai.docs.amd.com/en/latest/linux.html")
+            }
+
+            Timer {
+                running: npuControls.visible
+                interval: 5000
+                repeat: true
+                triggeredOnStart: true
+                onTriggered: deepfilternetPage.pluginBackend?.refreshNpuPolicy()
+            }
+        }
+
         Controls.Label {
             Layout.alignment: Qt.AlignHCenter
             text: i18n("Attenuation limit") // qmllint disable

@@ -6719,3 +6719,18 @@ msgstr "Простые звуковые эффекты"
 
 #~ msgid "Gain Controller"
 #~ msgstr "Автоконтроль усиления (AGC)"
+
+msgid "Processing device"
+msgstr "Устройство обработки"
+
+msgid "DPDFNet processing device"
+msgstr "Устройство обработки DPDFNet"
+
+msgid "Prefer NPU"
+msgstr "Предпочитать NPU"
+
+msgid "Set up NPU"
+msgstr "Настроить NPU"
+
+msgid "The processing device could not be changed. Try again."
+msgstr "Не удалось сменить устройство обработки. Повторите попытку."
