@@ -131,7 +131,7 @@ Kirigami.Dialog {
                                     const newName = newNameTextField.text;
 
                                     // trim to exclude names containing only multiple spaces
-                                    if (!Common.isEmpty(newName.trim())) {
+                                    if (newName.trim().length !== 0) {
                                         if (PresetsManager.renameImpulseFile(listItemDelegate.name, newName) === true) {
                                             appWindow.showStatus(i18n("Renamed the %1 impulse to %2", `<strong>${listItemDelegate.name}</strong>`, `<strong>${newName}</strong>`), Kirigami.MessageType.Positive); // qmllint disable
 

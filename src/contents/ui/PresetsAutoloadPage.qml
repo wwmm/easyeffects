@@ -144,7 +144,7 @@ ColumnLayout {
                 const presetName = preset.currentText;
                 const deviceRoute = device.deviceRouteDescription;
 
-                if (Common.isEmpty(presetName)) {
+                if (Common.emptyString(presetName)) {
                     return;
                 }
 

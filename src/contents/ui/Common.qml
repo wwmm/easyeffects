@@ -6,11 +6,9 @@ QtObject {
     readonly property real minimumLinearLevel: 0.00001
     readonly property real minimumDecibelLevel: -100.0
 
-    function isEmpty(v: string): bool {
-        if (v === undefined || v === null) {
-            return true;
-        }
-
+    // Convenience util to check for empty strings which can be used also on
+    // other types that are automatically coerced to string by QML at runtime.
+    function emptyString(v: string): bool {
         return v.length === 0;
     }
 

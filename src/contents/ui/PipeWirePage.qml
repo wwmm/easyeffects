@@ -167,9 +167,8 @@ Kirigami.Page {
                         const proxyIndex = ModelNodes.sourceDevices.index(idx, 0);
                         const sourceIndex = ModelNodes.sourceDevices.mapToSource(proxyIndex);
                         const nodeName = ModelNodes.getNodeName(sourceIndex.row);
-                        if (DbStreamInputs.inputDevice !== nodeName) {
-                            if (!Common.isEmpty(nodeName))
-                                DbStreamInputs.inputDevice = nodeName;
+                        if (DbStreamInputs.inputDevice !== nodeName && nodeName.length !== 0) {
+                            DbStreamInputs.inputDevice = nodeName;
                         }
                     }
 
@@ -211,9 +210,8 @@ Kirigami.Page {
                         const proxyIndex = ModelNodes.sinkDevices.index(idx, 0);
                         const sourceIndex = ModelNodes.sinkDevices.mapToSource(proxyIndex);
                         const nodeName = ModelNodes.getNodeName(sourceIndex.row);
-                        if (DbStreamOutputs.outputDevice !== nodeName) {
-                            if (!Common.isEmpty(nodeName))
-                                DbStreamOutputs.outputDevice = nodeName;
+                        if (DbStreamOutputs.outputDevice !== nodeName && nodeName.length !== 0) {
+                            DbStreamOutputs.outputDevice = nodeName;
                         }
                     }
 

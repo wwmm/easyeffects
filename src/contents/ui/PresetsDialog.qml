@@ -32,14 +32,14 @@ Kirigami.Dialog {
     readonly property string lastLoadedPresetName: {
         if (DbMain.visiblePage === 0)
             return DbMain.lastLoadedOutputPreset;
-        else if (DbMain.visiblePage === 1)
+        if (DbMain.visiblePage === 1)
             return DbMain.lastLoadedInputPreset;
         return "";
     }
     readonly property string lastLoadedCommunityPackage: {
         if (DbMain.visiblePage === 0)
             return DbMain.lastLoadedOutputCommunityPackage;
-        else if (DbMain.visiblePage === 1)
+        if (DbMain.visiblePage === 1)
             return DbMain.lastLoadedInputCommunityPackage;
         return "";
     }
@@ -150,10 +150,10 @@ Kirigami.Dialog {
                 position: Kirigami.InlineMessage.Position.Footer
                 visible: DbMain.visiblePresetSheetPage !== 2
                 text: {
-                    if (Common.isEmpty(control.lastLoadedPresetName))
+                    if (control.lastLoadedPresetName.length === 0)
                         return i18n("No preset loaded"); // qmllint disable
 
-                    const presetType = Common.isEmpty(lastLoadedCommunityPackage) ? i18nc("Preset type", "Local") : i18nc("Preset type", "Community"); // qmllint disable
+                    const presetType = lastLoadedCommunityPackage.length === 0 ? i18nc("Preset type", "Local") : i18nc("Preset type", "Community"); // qmllint disable
 
                     return `${presetType}: <strong>${control.lastLoadedPresetName}<strong>`;
                 }
@@ -178,7 +178,7 @@ Kirigami.Dialog {
 
                     // the fallback preset db key stays empty until the user picks one, so default it to the first model entry
                     function ensureFallbackPresetSet() {
-                        if (!Common.isEmpty(dbFallbackPresetName) || model.rowCount() === 0) // qmllint disable
+                        if (dbFallbackPresetName.length !== 0 || model.rowCount() === 0) // qmllint disable
                             return;
 
                         const name = model.data(model.index(0, 0), PresetsListModel.Name);

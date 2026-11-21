@@ -166,7 +166,7 @@ Rectangle {
 
         property real value: 0
         property string localeValue: Number(value).toLocaleString(Qt.locale(), 'f', root.decimals)
-        property bool showUnit: !Common.isEmpty(root.unit)
+        property bool showUnit: root.unit.length !== 0
 
         // Fill horizontal space and center vertically.
         anchors.left: parent.left
