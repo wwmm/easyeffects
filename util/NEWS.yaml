@@ -4,6 +4,20 @@ Date: UNRELEASED_DATE
 
 Description: 
 - Features∶
+- 
+
+- Bug fixes∶
+- 
+
+- Other notes∶
+- 
+
+---
+Version: 8.3.3
+Date: 2026-11-21
+
+Description: 
+- Features∶
 - Added new controls introduced in Linux Studio Plugins 1.2.37; `minimum phase filters` (in Stereo/Mid-Side Equalizer and Filter) and `crossover slope` (in Multiband Compressor/Gate).
 - Added `hold` and `dry/wet balance` controls in Compressor, Expander, Gate and Multiband Compressor/Gate effects.
 - Added `compensate` switchbutton in the Loudness effect.
