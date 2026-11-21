@@ -366,7 +366,6 @@ void DeepFilterNet::run_model(std::span<const float> left_in,
   }
 }
 
-
 auto DeepFilterNet::npuPolicy() const -> int {
   return npu_policy < 0 ? 0 : npu_policy & 0xff;
 }
@@ -430,6 +429,7 @@ void DeepFilterNet::resetHistory() {
 
     if (ready) {
       ready = false;
+
       for (auto* wrapper : {ladspa_wrapper.get(), dpdfnet_l.get(), dpdfnet_r.get()}) {
         if (wrapper->has_instance()) {
           wrapper->destroy_instance();

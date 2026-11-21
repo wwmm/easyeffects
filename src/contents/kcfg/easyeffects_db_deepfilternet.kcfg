@@ -27,7 +27,7 @@
             <default>0</default>
         </entry>
         <entry name="monoProcessing" type="Bool">
-            <default code="true">mParammasterGroup == QStringLiteral("sie") &amp;&amp; qEnvironmentVariableIntValue("EASYEFFECTS_DPDFNET_MONO_INPUT") == 1</default>
+            <default>false</default>
         </entry>
         <entry name="attenuationLimit" type="Double">
             <min>0</min>
