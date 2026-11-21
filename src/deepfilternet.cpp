@@ -56,7 +56,6 @@ DeepFilterNet::DeepFilterNet(const std::string& tag,
   dpdfnet_r = std::make_unique<ladspa::LadspaWrapper>("libdpdfnet_ladspa.so", "dpdfnet_mono");
 
   npu_prepare = reinterpret_cast<NpuPrepare>(dpdfnet_l->optional_symbol("hushmic_dpdfnet_prepare_xdna2_v1"));
-  npu_get_status = reinterpret_cast<NpuStatus>(dpdfnet_l->optional_symbol("hushmic_dpdfnet_status_xdna2_v1"));
   npu_get_policy = reinterpret_cast<NpuGetPolicy>(dpdfnet_l->optional_symbol("hushmic_dpdfnet_policy_xdna2_v1"));
   npu_set_policy = reinterpret_cast<NpuSetPolicy>(dpdfnet_l->optional_symbol("hushmic_dpdfnet_set_policy_xdna2_v1"));
   deepFilterNetInstalled = ladspa_wrapper->found_plugin();
@@ -189,7 +188,7 @@ void DeepFilterNet::setup() {
         if (dpdfnet) {
           dpdfnet_l->n_samples = n_samples;
           if (npu_prepare != nullptr && !dpdfnet_l->has_instance()) {
-            npu_ticket.store(npu_prepare(mono), std::memory_order_release);
+            npu_prepare(mono);
           }
           dpdfnet_l->create_instance(48000);
 
@@ -376,20 +375,8 @@ auto DeepFilterNet::npuAvailable() const -> bool {
   return npu_policy >= 0 && (npu_policy & 0x100) != 0;
 }
 
-void DeepFilterNet::refreshNpu(bool readPolicy) {
-  const auto ticket = npu_ticket.load(std::memory_order_acquire);
-  const auto status = dpdfnetInstalled && !settings->monoProcessing()
-                          ? 3
-                          : npu_get_status == nullptr || npu_policy < 0
-                                ? 4
-                                : ticket == 0 ? 0 : static_cast<int>(npu_get_status(ticket));
-  if (status != npu_status) {
-    npu_status = status;
-    Q_EMIT npuChanged();
-  }
-  if (readPolicy) {
-    updateNpuPolicy(-1);
-  }
+void DeepFilterNet::refreshNpuPolicy() {
+  updateNpuPolicy(-1);
 }
 
 void DeepFilterNet::setNpuPolicy(int policy) {
@@ -420,7 +407,6 @@ void DeepFilterNet::updateNpuPolicy(int requested) {
           if (requested >= 0) {
             npu_policy_write_failed = write_failed;
           }
-          refreshNpu();
           Q_EMIT npuChanged();
           if (npu_queued_policy >= 0) {
             const auto next = npu_queued_policy;
@@ -444,8 +430,6 @@ void DeepFilterNet::resetHistory() {
 
     if (ready) {
       ready = false;
-      npu_ticket.store(0, std::memory_order_release);
-
       for (auto* wrapper : {ladspa_wrapper.get(), dpdfnet_l.get(), dpdfnet_r.get()}) {
         if (wrapper->has_instance()) {
           wrapper->destroy_instance();

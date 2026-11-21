@@ -137,29 +137,6 @@ Kirigami.ScrollablePage {
             }
 
             Controls.Label {
-                Layout.fillWidth: true
-                horizontalAlignment: Text.AlignHCenter
-                wrapMode: Text.WordWrap
-                text: {
-                    switch (deepfilternetPage.pluginBackend?.npuStatus) {
-                    case 1: return i18n("Preparing NPU. Using CPU for now.")
-                    case 2: return i18n("Processing on NPU")
-                    case 3: return i18n("Processing on CPU · Stereo")
-                    case 4: return i18n("Processing on CPU · NPU component unavailable")
-                    case 5:
-                        return deepfilternetPage.pluginBackend.npuPolicy === 1
-                            && deepfilternetPage.pluginBackend.npuAvailable
-                            ? i18n("Automatic is using CPU. Choose Prefer NPU to try acceleration.")
-                            : i18n("Processing on CPU · NPU profile unavailable for this mode")
-                    case 6: return i18n("Processing on CPU · NPU is busy")
-                    case 7: return i18n("Processing on CPU · NPU stopped responding")
-                    case 8: return i18n("NPU selected. Waiting for audio.")
-                    default: return i18n("Processing on CPU")
-                    }
-                }
-            }
-
-            Controls.Label {
                 visible: deepfilternetPage.pluginBackend?.npuPolicyWriteFailed ?? false
                 Layout.fillWidth: true
                 horizontalAlignment: Text.AlignHCenter
@@ -167,38 +144,19 @@ Kirigami.ScrollablePage {
                 text: i18n("The processing device could not be changed. Try again.")
             }
 
-            RowLayout {
+            Controls.Button {
                 Layout.alignment: Qt.AlignHCenter
-                Controls.Button {
-                    visible: !(deepfilternetPage.pluginBackend?.npuAvailable ?? false)
-                    text: i18n("Set up NPU")
-                    onClicked: Qt.openUrlExternally("https://ryzenai.docs.amd.com/en/latest/linux.html")
-                }
-                Controls.Button {
-                    text: i18n("Check again")
-                    onClicked: {
-                        const backend = deepfilternetPage.pluginBackend;
-                        if (backend.npuAvailable && backend.npuPolicy !== 0)
-                            backend.setNpuPolicy(backend.npuPolicy);
-                        else
-                            backend.refreshNpu(true);
-                    }
-                }
+                visible: !(deepfilternetPage.pluginBackend?.npuAvailable ?? false)
+                text: i18n("Set up NPU")
+                onClicked: Qt.openUrlExternally("https://ryzenai.docs.amd.com/en/latest/linux.html")
             }
 
-            Timer {
-                running: npuControls.visible
-                interval: 500
-                repeat: true
-                triggeredOnStart: true
-                onTriggered: deepfilternetPage.pluginBackend?.refreshNpu()
-            }
             Timer {
                 running: npuControls.visible
                 interval: 5000
                 repeat: true
                 triggeredOnStart: true
-                onTriggered: deepfilternetPage.pluginBackend?.refreshNpu(true)
+                onTriggered: deepfilternetPage.pluginBackend?.refreshNpuPolicy()
             }
         }
 

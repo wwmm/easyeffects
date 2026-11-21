@@ -17,11 +17,12 @@ and output on this computer and stays outside presets.
 - **Automatic** selects the NPU for eligible, performance-qualified combinations.
 - **Prefer NPU** also allows compatible combinations that have passed live-audio qualification.
 
+The selector applies the preference when you choose it. The effect reports
+a failed preference change, and refreshes availability while the page is open.
 NPU mode uses the optional HushMic host service and requires **Process as
-Mono**. The effect shows the active device and the reason when CPU takes
-over. Stereo keeps two channels on the CPU. The HushMic host package and
-a supported AMD driver/runtime are required on the host, including with
-Flatpak. **Check again** refreshes availability after setup or a failure.
+Mono**. Stereo or an unavailable NPU uses the CPU. The HushMic host package
+and a supported AMD driver/runtime are required on the host, including with
+Flatpak.
 
 **Process as Mono (DPDFNet only)**
 
