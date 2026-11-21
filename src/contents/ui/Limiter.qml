@@ -524,6 +524,7 @@ Kirigami.ScrollablePage {
                     from: Common.minimumDecibelLevel
                     to: 0
                     decimals: 0
+                    unit: Units.dB
                     convertDecibelToLinear: true
                     topToBottom: true
                 }
@@ -537,6 +538,7 @@ Kirigami.ScrollablePage {
                     from: Common.minimumDecibelLevel
                     to: 0
                     decimals: 0
+                    unit: Units.dB
                     convertDecibelToLinear: true
                     topToBottom: true
                 }
@@ -551,6 +553,7 @@ Kirigami.ScrollablePage {
                     from: Common.minimumDecibelLevel
                     to: 0
                     decimals: 0
+                    unit: Units.dB
                     convertDecibelToLinear: true
                 }
 
@@ -563,6 +566,7 @@ Kirigami.ScrollablePage {
                     from: Common.minimumDecibelLevel
                     to: 0
                     decimals: 0
+                    unit: Units.dB
                     convertDecibelToLinear: true
                 }
 

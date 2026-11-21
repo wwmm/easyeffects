@@ -96,6 +96,7 @@ Item {
             from: Common.minimumDecibelLevel
             to: 0
             decimals: 0
+            unit: Units.dB
             convertDecibelToLinear: true
         }
 
@@ -108,6 +109,7 @@ Item {
             from: Common.minimumDecibelLevel
             to: 0
             decimals: 0
+            unit: Units.dB
             convertDecibelToLinear: true
         }
     }
