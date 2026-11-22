@@ -33,7 +33,7 @@ Kirigami.ScrollablePage {
     required property DbMultibandCompressor pluginDB
     required property EffectsBase pipelineInstance
     property BackendMultibandCompressor pluginBackend
-    readonly property string bandId: "band" + bandsListview.currentIndex
+    readonly property string bandId: `band${bandsListview.currentIndex}`
     property list<real> bandFrequencyEnd: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
     property list<real> bandReductionLevelLeft: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
     property list<real> bandReductionLevelRight: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
@@ -793,6 +793,7 @@ Kirigami.ScrollablePage {
                                 from: Common.minimumDecibelLevel
                                 to: 72
                                 decimals: 0
+                                unit: Units.dB
                                 topToBottom: true
                             }
 
@@ -805,6 +806,7 @@ Kirigami.ScrollablePage {
                                 from: Common.minimumDecibelLevel
                                 to: 72
                                 decimals: 0
+                                unit: Units.dB
                                 topToBottom: true
                             }
 
@@ -850,6 +852,7 @@ Kirigami.ScrollablePage {
                                 from: Common.minimumDecibelLevel
                                 to: 36
                                 decimals: 0
+                                unit: Units.dB
                             }
 
                             EeAudioLevel {
@@ -861,6 +864,7 @@ Kirigami.ScrollablePage {
                                 from: Common.minimumDecibelLevel
                                 to: 36
                                 decimals: 0
+                                unit: Units.dB
                             }
 
                             Controls.Label {
@@ -905,6 +909,7 @@ Kirigami.ScrollablePage {
                                 from: Common.minimumDecibelLevel
                                 to: 36
                                 decimals: 0
+                                unit: Units.dB
                             }
 
                             EeAudioLevel {
@@ -916,6 +921,7 @@ Kirigami.ScrollablePage {
                                 from: Common.minimumDecibelLevel
                                 to: 36
                                 decimals: 0
+                                unit: Units.dB
                             }
 
                             Controls.Label {

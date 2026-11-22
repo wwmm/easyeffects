@@ -489,7 +489,7 @@ Kirigami.ApplicationWindow {
                     },
                     Kirigami.Action {
                         text: i18n("About Easy Effects") // qmllint disable
-                        icon.name: applicationId + "-symbolic"
+                        icon.name: `${applicationId}-symbolic`
                         displayHint: Kirigami.DisplayHint.AlwaysHide
                         onTriggered: {
                             appWindow.pageStack.pushDialogLayer(Qt.resolvedUrl("./AboutPage.qml"));

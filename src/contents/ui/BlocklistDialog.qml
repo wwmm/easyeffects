@@ -66,7 +66,7 @@ Kirigami.Dialog {
                     onTriggered: {
                         const name = newBlockedApp.text;
                         // trim to exclude names containing only multiple spaces
-                        if (!Common.isEmpty(name.trim())) {
+                        if (name.trim().length !== 0) {
                             if (!control.streamDB.blocklist.includes(name)) {
                                 const blocklist = control.streamDB.blocklist.slice();
                                 blocklist.push(name);

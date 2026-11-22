@@ -727,6 +727,7 @@ Kirigami.ScrollablePage {
                         from: Common.minimumDecibelLevel
                         to: 72
                         decimals: 0
+                        unit: Units.dB
                         topToBottom: true
                     }
 
@@ -739,6 +740,7 @@ Kirigami.ScrollablePage {
                         from: Common.minimumDecibelLevel
                         to: 72
                         decimals: 0
+                        unit: Units.dB
                         topToBottom: true
                     }
 
@@ -752,6 +754,7 @@ Kirigami.ScrollablePage {
                         from: Common.minimumDecibelLevel
                         to: 36
                         decimals: 0
+                        unit: Units.dB
                     }
 
                     EeAudioLevel {
@@ -763,6 +766,7 @@ Kirigami.ScrollablePage {
                         from: Common.minimumDecibelLevel
                         to: 36
                         decimals: 0
+                        unit: Units.dB
                     }
 
                     Controls.Label {
@@ -830,6 +834,7 @@ Kirigami.ScrollablePage {
                         from: Common.minimumDecibelLevel
                         to: 36
                         decimals: 0
+                        unit: Units.dB
                     }
 
                     EeAudioLevel {
@@ -841,6 +846,7 @@ Kirigami.ScrollablePage {
                         from: Common.minimumDecibelLevel
                         to: 36
                         decimals: 0
+                        unit: Units.dB
                     }
 
                     EeAudioLevel {
@@ -853,6 +859,7 @@ Kirigami.ScrollablePage {
                         from: Common.minimumDecibelLevel
                         to: 36
                         decimals: 0
+                        unit: Units.dB
                     }
 
                     EeAudioLevel {
@@ -864,6 +871,7 @@ Kirigami.ScrollablePage {
                         from: Common.minimumDecibelLevel
                         to: 36
                         decimals: 0
+                        unit: Units.dB
                     }
 
                     Controls.Label {

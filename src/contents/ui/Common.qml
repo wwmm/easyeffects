@@ -6,11 +6,9 @@ QtObject {
     readonly property real minimumLinearLevel: 0.00001
     readonly property real minimumDecibelLevel: -100.0
 
-    function isEmpty(v: string): bool {
-        if (v === undefined || v === null) {
-            return true;
-        }
-
+    // Convenience util to check for empty strings which can be used also on
+    // other types that are automatically coerced to string by QML at runtime.
+    function emptyString(v: string): bool {
         return v.length === 0;
     }
 
@@ -18,22 +16,13 @@ QtObject {
         return v === null || v === undefined;
     }
 
-    function equalStringArrays(a: var, b: var): bool {
-        if (!a || !b) {
+    function equalStringArrays(a: list<string>, b: list<string>): bool {
+        if (a.length !== b.length)
             return false;
-        }
 
-        const A = Array.from(a);
-        const B = Array.from(b);
-
-        if (A.length !== B.length) {
-            return false;
-        }
-
-        for (let i = 0; i < A.length; i++) {
-            if (A[i] !== B[i]) {
+        for (let i = 0; i < a.length; i++) {
+            if (a[i] !== b[i])
                 return false;
-            }
         }
 
         return true;
@@ -79,10 +68,8 @@ QtObject {
     }
 
     function toLocaleLabel(num: real, decimal: int, unit: string): string {
-        let n = num;
+        const result = num.toLocaleString(Qt.locale(), 'f', decimal);
 
-        const result = n.toLocaleString(Qt.locale(), 'f', decimal);
-
-        return unit ? result + " " + unit : result;
+        return unit.length !== 0 ? `${result} ${unit}` : result;
     }
 }

@@ -29,6 +29,7 @@ Rectangle {
     property real from: 0
     property real to: 1
     property int decimals: 2
+    property string unit: ""
     property bool convertDecibelToLinear: false
     property bool topToBottom: false
     property real value: 0
@@ -164,9 +165,17 @@ Rectangle {
         id: valueLabel
 
         property real value: 0
+        property string localeValue: Number(value).toLocaleString(Qt.locale(), 'f', root.decimals)
+        property bool showUnit: root.unit.length !== 0
 
-        anchors.centerIn: parent
-        text: Number(value).toLocaleString(Qt.locale(), 'f', root.decimals)
+        // Fill horizontal space and center vertically.
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.verticalCenter: parent.verticalCenter
+
+        textFormat: Text.RichText
+        text: showUnit ? `<div align="center">${localeValue}</div><div align="center" style="font-size:small">${root.unit}</div>` : `<div align="center">${localeValue}</div>`
+        wrapMode: Text.Wrap
         color: Kirigami.Theme.textColor
     }
 

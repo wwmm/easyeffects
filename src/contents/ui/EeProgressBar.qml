@@ -47,7 +47,7 @@ Rectangle {
     readonly property real invLiReverseRange: liFrom !== liTo ? 1.0 / (liFrom - liTo) : 0
     readonly property real decimalFactor: Math.pow(10, -decimals)
 
-    readonly property string unitSuffix: if (!Common.isEmpty(control.unit)) {
+    readonly property string unitSuffix: if (control.unit.length !== 0) {
         const split = control.separateUnit ? ' ' : '';
         return `${split}${control.unit}`;
     } else {

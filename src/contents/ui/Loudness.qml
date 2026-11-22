@@ -41,6 +41,9 @@ Kirigami.ScrollablePage {
         inputOutputLevels.setInputLevelRight(pluginBackend.getInputLevelRight());
         inputOutputLevels.setOutputLevelLeft(pluginBackend.getOutputLevelLeft());
         inputOutputLevels.setOutputLevelRight(pluginBackend.getOutputLevelRight());
+        inputLoudness.setValue(pluginBackend.getInputLoudness());
+        outputLoudness.setValue(pluginBackend.getOutputLoudness());
+        gainShift.setValue(pluginBackend.getGainShift());
     }
 
     Component.onCompleted: {
@@ -157,6 +160,80 @@ Kirigami.ScrollablePage {
                             loudnessPage.pluginDB.clippingRange = v;
                         }
                     }
+                }
+            }
+        }
+
+        Kirigami.Card {
+            Layout.fillWidth: false
+            Layout.alignment: Qt.AlignHCenter
+            Layout.topMargin: Kirigami.Units.largeSpacing
+
+            contentItem: GridLayout {
+                id: metersGridLayout
+
+                readonly property real radius: 2.5 * Kirigami.Units.gridUnit
+
+                columnSpacing: Kirigami.Units.largeSpacing * 2
+                rowSpacing: Kirigami.Units.largeSpacing
+                columns: 3
+                rows: 3
+
+                Controls.Label {
+                    Layout.alignment: Qt.AlignHCenter
+                    topPadding: Kirigami.Units.smallSpacing
+                    horizontalAlignment: Text.AlignHCenter
+                    text: i18n("Input") // qmllint disable
+                }
+
+                Controls.Label {
+                    Layout.alignment: Qt.AlignHCenter
+                    topPadding: Kirigami.Units.smallSpacing
+                    horizontalAlignment: Text.AlignHCenter
+                    text: i18n("Output") // qmllint disable
+                }
+
+                Controls.Label {
+                    Layout.alignment: Qt.AlignHCenter
+                    topPadding: Kirigami.Units.smallSpacing
+                    horizontalAlignment: Text.AlignHCenter
+                    text: i18n("Gain") // qmllint disable
+                }
+
+                EeAudioLevel {
+                    id: inputLoudness
+
+                    Layout.alignment: Qt.AlignHCenter | Qt.AlignBottom
+                    implicitWidth: metersGridLayout.radius
+                    implicitHeight: metersGridLayout.radius
+                    from: -72
+                    to: 24
+                    decimals: 0
+                    unit: Units.lufs
+                }
+
+                EeAudioLevel {
+                    id: outputLoudness
+
+                    Layout.alignment: Qt.AlignHCenter | Qt.AlignBottom
+                    implicitWidth: metersGridLayout.radius
+                    implicitHeight: metersGridLayout.radius
+                    from: -72
+                    to: 24
+                    decimals: 0
+                    unit: Units.lufs
+                }
+
+                EeAudioLevel {
+                    id: gainShift
+
+                    Layout.alignment: Qt.AlignHCenter | Qt.AlignBottom
+                    implicitWidth: metersGridLayout.radius
+                    implicitHeight: metersGridLayout.radius
+                    from: Common.minimumDecibelLevel
+                    to: 26
+                    decimals: 0
+                    unit: Units.dB
                 }
             }
         }

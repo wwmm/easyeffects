@@ -704,6 +704,7 @@ Kirigami.ScrollablePage {
                         from: Common.minimumDecibelLevel
                         to: 0
                         decimals: 0
+                        unit: Units.dB
                         topToBottom: true
                     }
 
@@ -716,6 +717,7 @@ Kirigami.ScrollablePage {
                         from: Common.minimumDecibelLevel
                         to: 0
                         decimals: 0
+                        unit: Units.dB
                         topToBottom: true
                     }
 
@@ -729,6 +731,7 @@ Kirigami.ScrollablePage {
                         from: Common.minimumDecibelLevel
                         to: 24
                         decimals: 0
+                        unit: Units.dB
                     }
 
                     EeAudioLevel {
@@ -740,6 +743,7 @@ Kirigami.ScrollablePage {
                         from: Common.minimumDecibelLevel
                         to: 24
                         decimals: 0
+                        unit: Units.dB
                     }
 
                     Controls.Label {
@@ -807,6 +811,7 @@ Kirigami.ScrollablePage {
                         from: Common.minimumDecibelLevel
                         to: 24
                         decimals: 0
+                        unit: Units.dB
                     }
 
                     EeAudioLevel {
@@ -818,6 +823,7 @@ Kirigami.ScrollablePage {
                         from: Common.minimumDecibelLevel
                         to: 24
                         decimals: 0
+                        unit: Units.dB
                     }
 
                     EeAudioLevel {
@@ -830,6 +836,7 @@ Kirigami.ScrollablePage {
                         from: Common.minimumDecibelLevel
                         to: 24
                         decimals: 0
+                        unit: Units.dB
                     }
 
                     EeAudioLevel {
@@ -841,6 +848,7 @@ Kirigami.ScrollablePage {
                         from: Common.minimumDecibelLevel
                         to: 24
                         decimals: 0
+                        unit: Units.dB
                     }
 
                     Controls.Label {
@@ -908,6 +916,7 @@ Kirigami.ScrollablePage {
                         from: Common.minimumDecibelLevel
                         to: 0
                         decimals: 0
+                        unit: Units.dB
                     }
 
                     EeAudioLevel {
@@ -919,6 +928,7 @@ Kirigami.ScrollablePage {
                         from: Common.minimumDecibelLevel
                         to: 0
                         decimals: 0
+                        unit: Units.dB
                     }
 
                     EeAudioLevel {
@@ -931,6 +941,7 @@ Kirigami.ScrollablePage {
                         from: Common.minimumDecibelLevel
                         to: 0
                         decimals: 0
+                        unit: Units.dB
                     }
 
                     EeAudioLevel {
@@ -942,6 +953,7 @@ Kirigami.ScrollablePage {
                         from: Common.minimumDecibelLevel
                         to: 0
                         decimals: 0
+                        unit: Units.dB
                     }
 
                     Controls.Label {

@@ -111,7 +111,7 @@ ColumnLayout {
                         // remove the final preset extension if specified
                         const newName = newPresetName.text.replace(Validators.removeExtRegex, "");
                         // trim to exclude names containing only multiple spaces
-                        if (!Common.isEmpty(newName.trim())) {
+                        if (newName.trim().length !== 0) {
                             if (PresetsManager.add(columnLayout.pipeline, newName) === true) {
                                 newPresetName.accepted();
 
@@ -257,7 +257,7 @@ ColumnLayout {
                                 const newName = newNameTextField.text.replace(Validators.removeExtRegex, "");
 
                                 // trim to exclude names containing only multiple spaces
-                                if (!Common.isEmpty(newName.trim())) {
+                                if (newName.trim().length !== 0) {
                                     if (PresetsManager.renameLocalPresetFile(columnLayout.pipeline, listItemDelegate.name, newName) === true) {
                                         appWindow.showStatus(i18n("Renamed the %1 local preset to %2", `<strong>${listItemDelegate.name}</strong>`, `<strong>${newName}</strong>`), Kirigami.MessageType.Positive); // qmllint disable
 

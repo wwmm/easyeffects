@@ -118,7 +118,7 @@ FormCard.AbstractFormDelegate {
                 color: Kirigami.Theme.disabledTextColor
                 wrapMode: control.wrapMode
                 horizontalAlignment: control.labelAlignment
-                visible: !Common.isEmpty(control.subtitle)
+                visible: control.subtitle.length !== 0
             }
         }
 
@@ -151,7 +151,7 @@ FormCard.AbstractFormDelegate {
             inputMethodHints: Qt.ImhPreferNumbers
             textFromValue: (value, locale) => {
                 let unitSuffix = "";
-                if (!Common.isEmpty(control.unit)) {
+                if (control.unit.length !== 0) {
                     const split = control.separateUnit ? ' ' : '';
                     unitSuffix = `${split}${control.unit}`;
                 }

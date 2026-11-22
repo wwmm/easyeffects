@@ -68,7 +68,7 @@ FormCard.AbstractFormDelegate {
                 elide: Text.ElideRight
                 color: Kirigami.Theme.disabledTextColor
                 wrapMode: Text.Wrap
-                visible: !Common.isEmpty(control.subtitle)
+                visible: control.subtitle.length !== 0
             }
         }
 
