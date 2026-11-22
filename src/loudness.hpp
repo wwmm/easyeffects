@@ -63,10 +63,18 @@ class Loudness : public PluginBase {
 
   auto get_latency_seconds() -> float override;
 
+  Q_INVOKABLE [[nodiscard]] float getInputLoudness() const;
+  Q_INVOKABLE [[nodiscard]] float getOutputLoudness() const;
+  Q_INVOKABLE [[nodiscard]] float getGainShift() const;
+
  private:
   DbLoudness* settings = nullptr;
 
   bool ready = false;
 
   uint latency_n_frames = 0U;
+
+  float input_loudness_port_value = 0.0F;
+  float output_loudness_port_value = 0.0F;
+  float gain_shift_port_value = 0.0F;
 };

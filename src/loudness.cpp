@@ -185,6 +185,10 @@ void Loudness::process(std::span<float>& left_in,
 
   if (updateLevelMeters) {
     get_peaks(left_in, right_in, left_out, right_out);
+
+    input_loudness_port_value = lv2_wrapper->get_control_port_value("lufs_il");
+    output_loudness_port_value = lv2_wrapper->get_control_port_value("lufs_ol");
+    gain_shift_port_value = util::linear_to_db(lv2_wrapper->get_control_port_value("gain"));
   }
 }
 
@@ -198,3 +202,15 @@ void Loudness::process([[maybe_unused]] std::span<float>& left_in,
 auto Loudness::get_latency_seconds() -> float {
   return latency_value;
 }
+
+float Loudness::getInputLoudness() const {
+  return this->input_loudness_port_value;
+};
+
+float Loudness::getOutputLoudness() const {
+  return this->output_loudness_port_value;
+};
+
+float Loudness::getGainShift() const {
+  return this->gain_shift_port_value;
+};
