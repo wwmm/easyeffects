@@ -4,7 +4,8 @@ Date: UNRELEASED_DATE
 
 Description: 
 - Features∶
-- 
+- Exposed level meters for LSP Loudness effect.
+- Vertical level meters in various effects UI are now showing the measurement unit.
 
 - Bug fixes∶
 - 
