@@ -166,10 +166,7 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
   connect(
       worker, &ConvolverWorker::onInvalidKernel, this,
       [this](QString name) {
-        // TODO: If a previous kernel was correctly applied, here we have to
-        // reset the zita Convolver, otherwise the reset of the settings are
-        // still applying the previous kernel even if the plugin is supposed to
-        // be in passthrough mode.
+        ready = false;
 
         clear_chart_data();
 
