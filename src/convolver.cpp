@@ -102,61 +102,63 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
       [this](ConvolverKernelManager::KernelData data, bool init_zita) {
         kernel_is_initialized = data.isValid();
 
-        if (kernel_is_initialized) {
-          kernelIsSofa = data.is_sofa;
-          kernelRate = QString::fromStdString(util::to_string(data.original_rate));
-          kernelSamples = QString::fromStdString(util::to_string(data.sampleCount()));
-          kernelDuration = QString::fromStdString(util::to_string(data.duration()));
-          kernelChannels = data.channels;
+        if (!kernel_is_initialized) {
+          return;
+        }
 
-          Q_EMIT kernelIsSofaChanged();
-          Q_EMIT kernelRateChanged();
-          Q_EMIT kernelDurationChanged();
-          Q_EMIT kernelSamplesChanged();
-          Q_EMIT kernelChannelsChanged();
-          Q_EMIT newKernelLoaded(data.name, true);
+        kernelIsSofa = data.is_sofa;
+        kernelRate = QString::fromStdString(util::to_string(data.original_rate));
+        kernelSamples = QString::fromStdString(util::to_string(data.sampleCount()));
+        kernelDuration = QString::fromStdString(util::to_string(data.duration()));
+        kernelChannels = data.channels;
 
-          if (data.is_sofa) {
-            sofaDatabase = data.sofaMetadata.database;
-            sofaMeasurements = data.sofaMetadata.measurements;
-            sofaIndex = data.sofaMetadata.index;
-            sofaAzimuth = data.sofaMetadata.azimuth;
-            sofaElevation = data.sofaMetadata.elevation;
-            sofaRadius = data.sofaMetadata.radius;
+        Q_EMIT kernelIsSofaChanged();
+        Q_EMIT kernelRateChanged();
+        Q_EMIT kernelDurationChanged();
+        Q_EMIT kernelSamplesChanged();
+        Q_EMIT kernelChannelsChanged();
+        Q_EMIT newKernelLoaded(data.name, true);
 
-            sofaMinAzimuth = data.sofaMetadata.min_azimuth;
-            sofaMaxAzimuth = data.sofaMetadata.max_azimuth;
-            sofaMinElevation = data.sofaMetadata.min_elevation;
-            sofaMaxElevation = data.sofaMetadata.max_elevation;
-            sofaMinRadius = data.sofaMetadata.min_radius;
-            sofaMaxRadius = data.sofaMetadata.max_radius;
+        if (data.is_sofa) {
+          sofaDatabase = data.sofaMetadata.database;
+          sofaMeasurements = data.sofaMetadata.measurements;
+          sofaIndex = data.sofaMetadata.index;
+          sofaAzimuth = data.sofaMetadata.azimuth;
+          sofaElevation = data.sofaMetadata.elevation;
+          sofaRadius = data.sofaMetadata.radius;
 
-            Q_EMIT sofaDatabaseChanged();
-            Q_EMIT sofaMeasurementsChanged();
-            Q_EMIT sofaIndexChanged();
-            Q_EMIT sofaAzimuthChanged();
-            Q_EMIT sofaElevationChanged();
-            Q_EMIT sofaRadiusChanged();
+          sofaMinAzimuth = data.sofaMetadata.min_azimuth;
+          sofaMaxAzimuth = data.sofaMetadata.max_azimuth;
+          sofaMinElevation = data.sofaMetadata.min_elevation;
+          sofaMaxElevation = data.sofaMetadata.max_elevation;
+          sofaMinRadius = data.sofaMetadata.min_radius;
+          sofaMaxRadius = data.sofaMetadata.max_radius;
 
-            Q_EMIT sofaMinAzimuthChanged();
-            Q_EMIT sofaMaxAzimuthChanged();
-            Q_EMIT sofaMinElevationChanged();
-            Q_EMIT sofaMaxElevationChanged();
-            Q_EMIT sofaMinRadiusChanged();
-            Q_EMIT sofaMaxRadiusChanged();
+          Q_EMIT sofaDatabaseChanged();
+          Q_EMIT sofaMeasurementsChanged();
+          Q_EMIT sofaIndexChanged();
+          Q_EMIT sofaAzimuthChanged();
+          Q_EMIT sofaElevationChanged();
+          Q_EMIT sofaRadiusChanged();
+
+          Q_EMIT sofaMinAzimuthChanged();
+          Q_EMIT sofaMaxAzimuthChanged();
+          Q_EMIT sofaMinElevationChanged();
+          Q_EMIT sofaMaxElevationChanged();
+          Q_EMIT sofaMinRadiusChanged();
+          Q_EMIT sofaMaxRadiusChanged();
+        }
+
+        if (init_zita) {
+          std::scoped_lock<std::mutex> lock(data_mutex);
+
+          auto success = zita.init(data, blocksize, settings->irWidth(), settings->autogain());
+
+          if (!success) {
+            util::warning(std::format("{} Zita init failed", log_tag));
           }
 
-          if (init_zita) {
-            std::scoped_lock<std::mutex> lock(data_mutex);
-
-            auto success = zita.init(data, blocksize, settings->irWidth(), settings->autogain());
-
-            if (!success) {
-              util::warning(std::format("{} Zita init failed", log_tag));
-            }
-
-            ready = success;
-          }
+          ready = success;
         }
       },
       Qt::QueuedConnection);
@@ -164,6 +166,11 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
   connect(
       worker, &ConvolverWorker::onInvalidKernel, this,
       [this](QString name) {
+        // TODO: If a previous kernel was correctly applied, here we have to
+        // reset the zita Convolver, otherwise the reset of the settings are
+        // still applying the previous kernel even if the plugin is supposed to
+        // be in passthrough mode.
+
         clear_chart_data();
 
         Q_EMIT newKernelLoaded(name, false);
