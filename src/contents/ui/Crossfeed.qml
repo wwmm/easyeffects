@@ -42,7 +42,7 @@ Kirigami.ScrollablePage {
         inputOutputLevels.setOutputLevelRight(pluginBackend.getOutputLevelRight());
     }
 
-    function applyPreset(name) {
+    function applyPreset(name: string) {
         switch (name) {
         case "cmoy":
             pluginDB.fcut = 700;

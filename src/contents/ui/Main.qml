@@ -127,7 +127,7 @@ Kirigami.ApplicationWindow {
         DatabaseManager.enableAutosave(false);
     }
 
-    function openMappedPage(index) {
+    function openMappedPage(index: int) {
         const info = pagesMap[index];
 
         if (!info)
@@ -158,7 +158,7 @@ Kirigami.ApplicationWindow {
         DbMain.visiblePage = index;
     }
 
-    function showStatus(label, statusType = Kirigami.MessageType.Information, autohide = true) {
+    function showStatus(label: string, statusType = Kirigami.MessageType.Information, autohide = true) {
         autoHideStatusTimer.stop();
 
         statusMessage.type = statusType;
@@ -193,7 +193,7 @@ Kirigami.ApplicationWindow {
     Connections {
         target: PresetsManager
 
-        function onPresetLoadError(title, description) {
+        function onPresetLoadError(title: string, description: string) {
             appWindow.showStatus(`${title}. ${description}.`, Kirigami.MessageType.Error, false);
         }
     }
@@ -201,7 +201,7 @@ Kirigami.ApplicationWindow {
     Connections {
         target: Autostart
 
-        function onError(description) {
+        function onError(description: string) {
             appWindow.showStatus(`${description}`, Kirigami.MessageType.Error, false);
         }
     }

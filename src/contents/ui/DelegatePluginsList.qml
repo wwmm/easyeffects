@@ -68,7 +68,7 @@ Item {
             rows: 1
             columnSpacing: Kirigami.Units.smallSpacing
 
-            function toggledEffect(checked) {
+            function toggledEffect(checked: bool) {
                 if (checked === !delegateItem.bypass) {
                     return;
                 }
@@ -136,7 +136,7 @@ Item {
                 listItem: listItemDelegate
                 listView: delegateItem.listView
                 visible: !DbMain.collapsePluginsList
-                onMoveRequested: (oldIndex, newIndex) => {
+                onMoveRequested: function (oldIndex: int, newIndex: int) {
                     if (oldIndex === newIndex)
                         return;
 
