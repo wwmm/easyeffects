@@ -522,7 +522,7 @@ Item {
     MouseArea {
         anchors.fill: parent
         hoverEnabled: true
-        onPositionChanged: function (mouse) {
+        onPositionChanged: function (mouse: MouseEvent) {
             // Calculating the label x coordinate
 
             let labelX = mouse.x + widgetRoot.coordLabelOffset;

@@ -524,13 +524,13 @@ Kirigami.Page {
                     drag.minimumX: pluginsListLayout.Layout.minimumWidth
                     drag.maximumX: pluginsListLayout.Layout.maximumWidth
 
-                    onPressed: mouse => {
+                    onPressed: function (mouse: MouseEvent) {
                         dragging = true;
                         dragStartX = mouse.x;
                         initialListWidth = pluginsListLayout.width;
                     }
 
-                    onPositionChanged: mouse => {
+                    onPositionChanged: function (mouse: MouseEvent) {
                         if (dragging && mouse.buttons & Qt.LeftButton) {
                             const deltaX = mouse.x - dragStartX;
                             const newWidth = initialListWidth + deltaX;
@@ -695,7 +695,7 @@ Kirigami.Page {
                         displayComponent: RowLayout {
                             id: inputMonitoringRowLayout
 
-                            function prepareVolumeValue(normalizedValue) {
+                            function prepareVolumeValue(normalizedValue: real): real {
                                 const v = DbMain.useCubicVolumes === false ? normalizedValue : Math.cbrt(normalizedValue);
                                 return v * 100;
                             }

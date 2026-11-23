@@ -153,7 +153,7 @@ Kirigami.AbstractCard {
                 Controls.Slider {
                     id: volumeSlider
 
-                    function prepareVolumeValue(normalizedValue) {
+                    function prepareVolumeValue(normalizedValue: real): real {
                         const v = DbMain.useCubicVolumes === false ? normalizedValue : Math.cbrt(normalizedValue);
                         return v * 100;
                     }
