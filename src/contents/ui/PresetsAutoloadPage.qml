@@ -73,7 +73,7 @@ ColumnLayout {
                 Controls.ToolTip.delay: Kirigami.Units.toolTipDelay
             }
 
-            function updateRouteDescription() {
+            function updateRouteDescription(): string {
                 const proxyIndex = model.index(currentIndex, 0);
 
                 return model.data(proxyIndex, ModelNodes.DeviceRouteDescription);

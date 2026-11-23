@@ -137,17 +137,17 @@ Kirigami.Dialog {
 
                         if (plugins.length === 0) {
                             plugins.push(new_name);
-                        } else if (limiters_and_meters.some(v => {
+                        } else if (limiters_and_meters.some(function (v: string): bool {
                             return v === name;
                         })) {
                             plugins.push(new_name);
-                        } else if (limiters.some(v => {
+                        } else if (limiters.some(function (v: string): bool {
                             return plugins[plugins.length - 1].startsWith(v);
                         })) {
                             plugins.splice(-1, 0, new_name);
                         } else if (plugins[plugins.length - 1].startsWith(PluginsBaseName.level_meter)) {
                             if (plugins.length >= 2) {
-                                if (limiters.some(v => {
+                                if (limiters.some(function (v: string): bool {
                                     return plugins[plugins.length - 2].startsWith(v);
                                 }))
                                     plugins.splice(-2, 0, new_name);

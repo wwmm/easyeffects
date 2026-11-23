@@ -43,9 +43,8 @@ Kirigami.ScrollablePage {
         inputOutputLevels.setOutputLevelRight(pluginBackend.getOutputLevelRight());
     }
 
-    function validChartMag(chartMag: var): bool {
-        const A = Array.from(chartMag);
-        return A.length > 0;
+    function validChartMag(chartMag: list<point>): bool {
+        return chartMag.length > 0;
     }
 
     Component.onCompleted: {
