@@ -367,14 +367,12 @@ bool Manager::remove(const PipelineType& pipeline_type, const QString& name) {
   std::filesystem::remove(preset_file);
 
   // Check if the removed name is the last local preset loaded.
-  if (pipeline_type == PipelineType::output) {
-    if (DbMain::lastLoadedOutputCommunityPackage().isEmpty() && name == DbMain::lastLoadedOutputPreset()) {
-      DbMain::setLastLoadedOutputPreset(DbMain::defaultLastLoadedOutputPresetValue());
-    }
-  } else if (pipeline_type == PipelineType::input) {
-    if (DbMain::lastLoadedInputCommunityPackage().isEmpty() && name == DbMain::lastLoadedInputPreset()) {
-      DbMain::setLastLoadedInputPreset(DbMain::defaultLastLoadedInputPresetValue());
-    }
+  if (pipeline_type == PipelineType::output && DbMain::lastLoadedOutputCommunityPackage().isEmpty() &&
+      name == DbMain::lastLoadedOutputPreset()) {
+    DbMain::setLastLoadedOutputPreset(DbMain::defaultLastLoadedOutputPresetValue());
+  } else if (pipeline_type == PipelineType::input && DbMain::lastLoadedInputCommunityPackage().isEmpty() &&
+             name == DbMain::lastLoadedInputPreset()) {
+    DbMain::setLastLoadedInputPreset(DbMain::defaultLastLoadedInputPresetValue());
   }
 
   util::debug(std::format("Removed preset: {}", preset_file.string()));
@@ -497,10 +495,8 @@ void Manager::write_plugins_preset(const PipelineType& pipeline_type,
                                    const QStringList& plugins,
                                    nlohmann::json& json) {
   for (const auto& name : plugins) {
-    if (auto wrapper = create_wrapper(pipeline_type, name); wrapper != std::nullopt) {
-      if (wrapper.has_value()) {
-        wrapper.value()->write(json);
-      }
+    if (auto wrapper = create_wrapper(pipeline_type, name); wrapper != std::nullopt && wrapper.has_value()) {
+      wrapper.value()->write(json);
     }
   }
 }
@@ -671,7 +667,7 @@ bool Manager::renameImpulseFile(const QString& name, const QString& newName) {
     auto impulse_file = std::filesystem::path{path};
 
     if (std::filesystem::exists(impulse_file)) {
-      current_path = impulse_file;
+      current_path = std::move(impulse_file);
 
       break;
     }

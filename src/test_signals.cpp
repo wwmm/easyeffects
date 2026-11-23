@@ -164,16 +164,18 @@ void on_filter_state_changed(void* userdata,
   }
 }
 
-const struct pw_filter_events filter_events = {.version = 0,
-                                               .destroy = nullptr,
-                                               .state_changed = on_filter_state_changed,
-                                               .io_changed = nullptr,
-                                               .param_changed = nullptr,
-                                               .add_buffer = nullptr,
-                                               .remove_buffer = nullptr,
-                                               .process = on_process,
-                                               .drained = nullptr,
-                                               .command = nullptr};
+const struct pw_filter_events filter_events = {
+    .version = 0,
+    .destroy = nullptr,
+    .state_changed = on_filter_state_changed,
+    .io_changed = nullptr,
+    .param_changed = nullptr,
+    .add_buffer = nullptr,
+    .remove_buffer = nullptr,
+    .process = on_process,
+    .drained = nullptr,
+    .command = nullptr,
+};
 
 }  // namespace
 

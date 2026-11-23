@@ -331,15 +331,17 @@ void MidSideEqualizer::sortBands() {
       const auto f = channel->property(band_frequency[n].data()).value<double>();
 
       sorted_bands.emplace(
-          std::pair<double, struct EQ_Band>(f, {.freq = f,
-                                                .type = channel->property(band_type[n].data()).value<int>(),
-                                                .mode = channel->property(band_mode[n].data()).value<int>(),
-                                                .slope = channel->property(band_slope[n].data()).value<int>(),
-                                                .gain = channel->property(band_gain[n].data()).value<double>(),
-                                                .q = channel->property(band_q[n].data()).value<double>(),
-                                                .width = channel->property(band_width[n].data()).value<double>(),
-                                                .solo = channel->property(band_solo[n].data()).value<bool>(),
-                                                .mute = channel->property(band_mute[n].data()).value<bool>()}));
+          std::pair<double, struct EQ_Band>(f, {
+                                                   .freq = f,
+                                                   .type = channel->property(band_type[n].data()).value<int>(),
+                                                   .mode = channel->property(band_mode[n].data()).value<int>(),
+                                                   .slope = channel->property(band_slope[n].data()).value<int>(),
+                                                   .gain = channel->property(band_gain[n].data()).value<double>(),
+                                                   .q = channel->property(band_q[n].data()).value<double>(),
+                                                   .width = channel->property(band_width[n].data()).value<double>(),
+                                                   .solo = channel->property(band_solo[n].data()).value<bool>(),
+                                                   .mute = channel->property(band_mute[n].data()).value<bool>(),
+                                               }));
     }
 
     for (int n = 0; const auto& p : sorted_bands) {

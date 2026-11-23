@@ -634,12 +634,10 @@ void NodeManager::onNodeParam(void* data,
         QString format_str = "unknown";
 
         for (const auto type_info : std::to_array(spa_type_audio_format)) {
-          if (format == type_info.type) {
-            if (type_info.name != nullptr) {
-              QString long_name = type_info.name;
+          if (format == type_info.type && type_info.name != nullptr) {
+            QString long_name = type_info.name;
 
-              format_str = long_name.sliced(long_name.lastIndexOf(":") + 1);
-            }
+            format_str = long_name.sliced(long_name.lastIndexOf(":") + 1);
           }
         }
 

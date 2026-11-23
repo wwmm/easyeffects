@@ -50,7 +50,7 @@ enum class ApoFilter {
   HS_12DB,
   NO,
   AP,
-  UNKNOWN
+  UNKNOWN,
 };
 
 struct APO_Band {
@@ -74,12 +74,14 @@ std::map<ApoFilter, std::string> const ApoToEqualizerFilter = {
     {ApoFilter::LS, "Lo-shelf"},      {ApoFilter::LSC, "Lo-shelf"},     {ApoFilter::LS_6DB, "Lo-shelf"},
     {ApoFilter::LS_12DB, "Lo-shelf"}, {ApoFilter::HS, "Hi-shelf"},      {ApoFilter::HSC, "Hi-shelf"},
     {ApoFilter::HS_6DB, "Hi-shelf"},  {ApoFilter::HS_12DB, "Hi-shelf"}, {ApoFilter::NO, "Notch"},
-    {ApoFilter::AP, "Allpass"},       {ApoFilter::UNKNOWN, "Off"}};
+    {ApoFilter::AP, "Allpass"},       {ApoFilter::UNKNOWN, "Off"},
+};
 
 std::map<std::string, ApoFilter> const EqualizerToApoFilter = {
     {"Bell", ApoFilter::PK},      {"Lo-pass", ApoFilter::LPQ},  {"Hi-pass", ApoFilter::HPQ},
     {"Lo-shelf", ApoFilter::LSC}, {"Hi-shelf", ApoFilter::HSC}, {"Notch", ApoFilter::NO},
-    {"Allpass", ApoFilter::AP},   {"Bandpass", ApoFilter::BP}};
+    {"Allpass", ApoFilter::AP},   {"Bandpass", ApoFilter::BP},
+};
 
 // NOLINTEND(bugprone-throwing-static-initialization)
 
@@ -94,9 +96,9 @@ auto import_graphiceq_preset(DbEqualizer* settings,
                              const std::string& file_path) -> bool;
 
 auto export_apo_preset(DbEqualizer* settings,
-                        DbEqualizerChannel* settings_left,
-                        DbEqualizerChannel* settings_right,
-                        const std::string& file_path) -> bool;
+                       DbEqualizerChannel* settings_left,
+                       DbEqualizerChannel* settings_right,
+                       const std::string& file_path) -> bool;
 
 auto import_apo_preset(DbMidSideEqualizer* settings,
                        DbEqualizerChannel* settings_mid,

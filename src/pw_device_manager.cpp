@@ -88,7 +88,7 @@ auto DeviceManager::register_device(pw_registry* registry, uint32_t id, const ch
 
   d_info.id = id;
   d_info.serial = serial;
-  d_info.media_class = media_class;
+  d_info.media_class = std::move(media_class);
 
   list_devices.push_back(d_info);
 
@@ -126,10 +126,8 @@ void DeviceManager::on_device_info(void* object, const struct pw_device_info* in
      * So as a workaround we set SPA_KEY_API_BLUEZ5_ADDRESS as bus_path
      */
 
-    if (device.api == "bluez5") {
-      if (util::spa_dict_get_string(info->props, SPA_KEY_API_BLUEZ5_ADDRESS, device.bus_path)) {
-        std::ranges::replace(device.bus_path, ':', '_');
-      }
+    if (device.api == "bluez5" && util::spa_dict_get_string(info->props, SPA_KEY_API_BLUEZ5_ADDRESS, device.bus_path)) {
+      std::ranges::replace(device.bus_path, ':', '_');
     }
 
     if ((info->change_mask & PW_DEVICE_CHANGE_MASK_PARAMS) != 0U) {

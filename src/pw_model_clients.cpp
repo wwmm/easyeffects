@@ -40,11 +40,11 @@ int Clients::rowCount(const QModelIndex& /* parent */) const {
 }
 
 QHash<int, QByteArray> Clients::roleNames() const {
-  return {{static_cast<int>(Roles::Id), "id"},
-          {static_cast<int>(Roles::Serial), "serial"},
-          {static_cast<int>(Roles::Name), "name"},
-          {static_cast<int>(Roles::Access), "access"},
-          {static_cast<int>(Roles::Api), "api"}};
+  return {
+      {static_cast<int>(Roles::Id), "id"},     {static_cast<int>(Roles::Serial), "serial"},
+      {static_cast<int>(Roles::Name), "name"}, {static_cast<int>(Roles::Access), "access"},
+      {static_cast<int>(Roles::Api), "api"},
+  };
 }
 
 QVariant Clients::data(const QModelIndex& index, int role) const {

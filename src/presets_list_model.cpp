@@ -73,13 +73,15 @@ int ListModel::rowCount(const QModelIndex& /* parent */) const {
 }
 
 QHash<int, QByteArray> ListModel::roleNames() const {
-  return {{static_cast<int>(Roles::Name), "name"},
-          {static_cast<int>(Roles::Path), "path"},
-          {static_cast<int>(Roles::PresetPackage), "presetPackage"},
-          {static_cast<int>(Roles::DeviceName), "deviceName"},
-          {static_cast<int>(Roles::DeviceDescription), "deviceDescription"},
-          {static_cast<int>(Roles::DeviceProfile), "deviceProfile"},
-          {static_cast<int>(Roles::DevicePreset), "devicePreset"}};
+  return {
+      {static_cast<int>(Roles::Name), "name"},
+      {static_cast<int>(Roles::Path), "path"},
+      {static_cast<int>(Roles::PresetPackage), "presetPackage"},
+      {static_cast<int>(Roles::DeviceName), "deviceName"},
+      {static_cast<int>(Roles::DeviceDescription), "deviceDescription"},
+      {static_cast<int>(Roles::DeviceProfile), "deviceProfile"},
+      {static_cast<int>(Roles::DevicePreset), "devicePreset"},
+  };
 }
 
 QVariant ListModel::data(const QModelIndex& index, int role) const {

@@ -31,7 +31,7 @@
 
 class FirFilterBase {
  public:
-  FirFilterBase(std::string tag);
+  explicit FirFilterBase(std::string tag);
   FirFilterBase(const FirFilterBase&) = delete;
   auto operator=(const FirFilterBase&) -> FirFilterBase& = delete;
   FirFilterBase(const FirFilterBase&&) = delete;

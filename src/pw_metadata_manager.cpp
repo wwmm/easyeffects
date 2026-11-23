@@ -92,16 +92,14 @@ auto MetadataManager::on_metadata_property(void* data,
     return 0;
   }
 
-  if ((key == nullptr || str_key == "default.audio.sink") && str_value.empty()) {
-    if (mm->default_sink_is_easyeffects_sink_value.exchange(false, std::memory_order_relaxed)) {
-      Q_EMIT mm->eeSinkIsDefaultChanged(false);
-    }
+  if ((key == nullptr || str_key == "default.audio.sink") && str_value.empty() &&
+      mm->default_sink_is_easyeffects_sink_value.exchange(false, std::memory_order_relaxed)) {
+    Q_EMIT mm->eeSinkIsDefaultChanged(false);
   }
 
-  if ((key == nullptr || str_key == "default.audio.source") && str_value.empty()) {
-    if (mm->default_source_is_easyeffects_source_value.exchange(false, std::memory_order_relaxed)) {
-      Q_EMIT mm->eeSourceIsDefaultChanged(false);
-    }
+  if ((key == nullptr || str_key == "default.audio.source") && str_value.empty() &&
+      mm->default_source_is_easyeffects_source_value.exchange(false, std::memory_order_relaxed)) {
+    Q_EMIT mm->eeSourceIsDefaultChanged(false);
   }
 
   if (str_value.empty()) {

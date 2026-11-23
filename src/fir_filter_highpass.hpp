@@ -24,7 +24,7 @@
 
 class FirFilterHighpass : public FirFilterBase {
  public:
-  FirFilterHighpass(std::string tag);
+  explicit FirFilterHighpass(std::string tag);
   FirFilterHighpass(const FirFilterHighpass&) = delete;
   auto operator=(const FirFilterHighpass&) -> FirFilterHighpass& = delete;
   FirFilterHighpass(const FirFilterHighpass&&) = delete;

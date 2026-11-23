@@ -38,7 +38,7 @@
 namespace {
 
 struct dlhandle {
-  dlhandle(void* handle) : dl_handle(handle) {}
+  explicit dlhandle(void* handle) : dl_handle(handle) {}
 
   ~dlhandle() {
     if (dl_handle != nullptr) {
