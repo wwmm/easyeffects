@@ -28,6 +28,7 @@
 #include <pipewire/node.h>
 #include <pipewire/properties.h>
 #include <pipewire/proxy.h>
+#include <qcoreapplication.h>
 #include <qobject.h>
 #include <qtmetamacros.h>
 #include <qtypes.h>
@@ -379,7 +380,10 @@ void NodeManager::onNodeInfo(void* object, const pw_node_info* info) {
 
   if (ignore_node) {
     // Just in case the previous tests returned false in the first callback iteration
-    nm->model_nodes.remove_by_serial(nd->nd_info->serial);
+    const auto serial = nd->nd_info->serial;
+
+    QMetaObject::invokeMethod(
+        QCoreApplication::instance(), [nm, serial] { nm->model_nodes.remove_by_serial(serial); }, Qt::QueuedConnection);
 
     if (nd->proxy != nullptr) {
       pw_proxy_destroy(nd->proxy);
@@ -542,9 +546,11 @@ void NodeManager::onNodeInfo(void* object, const pw_node_info* info) {
   // update NodeInfo or add it if it is not in the model yet
 
   if (!nm->model_nodes.has_serial(nd->nd_info->serial)) {
-    nm->model_nodes.append(*nd->nd_info);
-
     auto nd_info_copy = *nd->nd_info;
+
+    QMetaObject::invokeMethod(
+        QCoreApplication::instance(), [nm, nd_info_copy] { nm->model_nodes.append(nd_info_copy); },
+        Qt::QueuedConnection);
 
     if ((nd_info_copy.media_class == tags::pipewire::media_class::source ||
          nd_info_copy.media_class == tags::pipewire::media_class::virtual_source) &&
@@ -730,7 +736,10 @@ void NodeManager::onDestroyNodeProxy(void* data) {
 
   nd->nd_info->proxy = nullptr;
 
-  nm->model_nodes.remove_by_serial(nd->nd_info->serial);
+  const auto serial = nd->nd_info->serial;
+
+  QMetaObject::invokeMethod(
+      QCoreApplication::instance(), [nm, serial] { nm->model_nodes.remove_by_serial(serial); }, Qt::QueuedConnection);
 
   util::debug(std::format("{} {} {} has been removed", nd->nd_info->media_class.toStdString(), nd->nd_info->id,
                           nd->nd_info->name.toStdString()));
