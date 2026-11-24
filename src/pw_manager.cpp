@@ -221,7 +221,8 @@ Manager::Manager(QObject* parent)
       link_manager(LinkManager(core, thread_loop, model_nodes, list_links, connection_lost)),
       module_manager(ModuleManager(core, thread_loop, model_modules)),
       client_manager(ClientManager(core, thread_loop, model_clients)),
-      device_manager(DeviceManager(list_devices)) {
+      device_manager(DeviceManager(list_devices)),
+      worker(new PwWorker) {
   connect(&metadata_manager, &MetadataManager::defaultSourceChanged, [&](const QString& name) {
     defaultInputDeviceName = name;
 
@@ -373,6 +374,10 @@ Manager::Manager(QObject* parent)
     });
   });
 
+  worker->moveToThread(&workerThread);
+
+  workerThread.start();
+
   pw_init(nullptr, nullptr);
 
   spa_zero(core_listener);
@@ -439,59 +444,72 @@ Manager::Manager(QObject* parent)
 
   sync_wait_unlock();
 
-  do {
-    if (connection_lost) {
-      return;
-    }
-
-    std::this_thread::sleep_for(std::chrono::milliseconds(1));
-
-    ee_sink_node = model_nodes.get_node_by_name(tags::pipewire::ee_sink_name);
-    ee_source_node = model_nodes.get_node_by_name(tags::pipewire::ee_source_name);
-  } while (ee_sink_node.id == SPA_ID_INVALID || ee_source_node.id == SPA_ID_INVALID);
-
-  if (ee_sink_node.id != SPA_ID_INVALID) {
-    util::debug(std::format("{} node successfully retrieved with id {} and serial {}", tags::pipewire::ee_sink_name,
-                            ee_sink_node.id, ee_sink_node.serial));
-  }
-
-  if (ee_source_node.id != SPA_ID_INVALID) {
-    util::debug(std::format("{} node successfully retrieved with id {} and serial {}", tags::pipewire::ee_source_name,
-                            ee_source_node.id, ee_source_node.serial));
-  }
-
-  connect(db::Manager::self().main, &DbMain::activateMonitorChannelVolumesChanged, this, [this] {
-    lock();
-
-    node_manager.setMonitorChannelVolumes(ee_sink_node.serial, DbMain::activateMonitorChannelVolumes());
-    node_manager.setMonitorChannelVolumes(ee_source_node.serial, DbMain::activateMonitorChannelVolumes());
-
-    sync_wait_unlock();
-  });
-
   /**
-   * By the time our virtual devices are loaded we may have already received
-   * some streams. So we connected them here now that our virtual devices are
-   * available.
+   * In order to make sure mode_noes.append and model_nodes.remove_by_serial are called from the main thread I had to
+   * put the loop that waits for our virtual devices to be ready inside a worker thread. Otherwise the app would freeze.
    */
 
-  for (const auto& node : model_nodes.get_list()) {
-    if (node.media_class == tags::pipewire::media_class::output_stream) {
-      if (DbMain::processAllOutputs() && !node.is_blocklisted &&
-          !DbMain::outputSinkBlocklist().contains(DbStreamOutputs::outputDevice())) {
-        connectStreamOutput(node.id);
-      }
-    } else if (node.media_class == tags::pipewire::media_class::input_stream) {
-      if (DbMain::processAllInputs() && !node.is_blocklisted &&
-          !DbMain::inputSourceBlocklist().contains(DbStreamInputs::inputDevice())) {
-        connectStreamInput(node.id);
-      }
-    }
-  }
+  QMetaObject::invokeMethod(
+      worker,
+      [this] {
+        do {
+          if (connection_lost) {
+            return;
+          }
+
+          std::this_thread::sleep_for(std::chrono::milliseconds(1));
+
+          ee_sink_node = model_nodes.get_node_by_name(tags::pipewire::ee_sink_name);
+          ee_source_node = model_nodes.get_node_by_name(tags::pipewire::ee_source_name);
+        } while (ee_sink_node.id == SPA_ID_INVALID || ee_source_node.id == SPA_ID_INVALID);
+
+        if (ee_sink_node.id != SPA_ID_INVALID) {
+          util::debug(std::format("{} node successfully retrieved with id {} and serial {}",
+                                  tags::pipewire::ee_sink_name, ee_sink_node.id, ee_sink_node.serial));
+        }
+
+        if (ee_source_node.id != SPA_ID_INVALID) {
+          util::debug(std::format("{} node successfully retrieved with id {} and serial {}",
+                                  tags::pipewire::ee_source_name, ee_source_node.id, ee_source_node.serial));
+        }
+
+        connect(db::Manager::self().main, &DbMain::activateMonitorChannelVolumesChanged, this, [this] {
+          lock();
+
+          node_manager.setMonitorChannelVolumes(ee_sink_node.serial, DbMain::activateMonitorChannelVolumes());
+          node_manager.setMonitorChannelVolumes(ee_source_node.serial, DbMain::activateMonitorChannelVolumes());
+
+          sync_wait_unlock();
+        });
+
+        /**
+         * By the time our virtual devices are loaded we may have already received
+         * some streams. So we connected them here now that our virtual devices are
+         * available.
+         */
+
+        for (const auto& node : model_nodes.get_list()) {
+          if (node.media_class == tags::pipewire::media_class::output_stream) {
+            if (DbMain::processAllOutputs() && !node.is_blocklisted &&
+                !DbMain::outputSinkBlocklist().contains(DbStreamOutputs::outputDevice())) {
+              connectStreamOutput(node.id);
+            }
+          } else if (node.media_class == tags::pipewire::media_class::input_stream) {
+            if (DbMain::processAllInputs() && !node.is_blocklisted &&
+                !DbMain::inputSourceBlocklist().contains(DbStreamInputs::inputDevice())) {
+              connectStreamInput(node.id);
+            }
+          }
+        }
+      },
+      Qt::QueuedConnection);
 }
 
 Manager::~Manager() {
   exiting = true;
+
+  workerThread.quit();
+  workerThread.wait();
 
   lock();
 

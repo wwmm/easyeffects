@@ -26,6 +26,7 @@
 #include <pipewire/thread-loop.h>
 #include <qmap.h>
 #include <qobject.h>
+#include <qthread.h>
 #include <qtmetamacros.h>
 #include <spa/utils/hook.h>
 #include <sys/types.h>
@@ -44,6 +45,10 @@
 #include "pw_objects.hpp"
 
 namespace pw {
+
+class PwWorker : public QObject {
+  Q_OBJECT
+};
 
 class Manager : public QObject {
   Q_OBJECT
@@ -202,6 +207,10 @@ class Manager : public QObject {
 
   std::vector<LinkInfo> list_links;
   std::vector<DeviceInfo> list_devices;
+
+  PwWorker* worker;
+
+  QThread workerThread;
 
   void set_metadata_target_node(const uint& origin_id, const uint& target_id, const uint64_t& target_serial) const;
 };
