@@ -8,7 +8,7 @@ Description:
 - Vertical level meters in various effects UI are now showing the measurement unit.
 
 - Bug fixes∶
-- 
+- The Convolver is put in the passthrough mode when settings are reset.
 
 - Other notes∶
 - 
