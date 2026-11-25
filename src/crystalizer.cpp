@@ -286,9 +286,11 @@ void Crystalizer::setup() {
             std::scoped_lock<std::mutex> lock(data_mutex);
 
             if (generation != setup_generation) {
-              // Do not waste time finishing a setup that has been superseded.
-              // The lambda queued by the most recent setup() call will rebuild
-              // everything with the newer values.
+              /**
+               * Do not waste time finishing a setup that has been superseded.
+               * The lambda queued by the most recent setup() call will rebuild
+               * everything with the newer values.
+               */
 
               return;
             }
@@ -318,9 +320,11 @@ void Crystalizer::setup() {
 
         std::scoped_lock<std::mutex> lock(data_mutex);
 
-        // Setups superseded while this one was running must not be activated.
-        // The lambda queued by the most recent setup() call will publish its
-        // own results.
+        /**
+         * Setups superseded while this one was running must not be activated.
+         * The lambda queued by the most recent setup() call will publish its
+         * own results.
+         */
 
         filters_are_ready = generation == setup_generation;
 
