@@ -576,7 +576,13 @@ void NodeManager::onNodeInfo(void* object, const pw_node_info* info) {
     nd->nd_info->device_route_name = nm->model_nodes.get_node_by_id(nd->nd_info->id).device_route_name;
     nd->nd_info->device_route_description = nm->model_nodes.get_node_by_id(nd->nd_info->id).device_route_description;
 
-    nm->model_nodes.update_info(*nd->nd_info);
+    // nm->model_nodes.update_info(*nd->nd_info);
+
+    auto nd_info_copy = *nd->nd_info;
+
+    QMetaObject::invokeMethod(
+        QCoreApplication::instance(), [nm, nd_info_copy] { nm->model_nodes.update_info(nd_info_copy); },
+        Qt::QueuedConnection);
 
     if (nd->nd_info->media_class == tags::pipewire::media_class::output_stream) {
       connect_to_ee_sink();
@@ -650,7 +656,12 @@ void NodeManager::onNodeParam(void* data,
         if (format_str != nd->nd_info->format) {
           nd->nd_info->format = format_str;
 
-          nm->model_nodes.update_field(rowIndex, pw::models::Nodes::Roles::Format, format_str);
+          QMetaObject::invokeMethod(
+              QCoreApplication::instance(),
+              [nm, rowIndex, format_str] {
+                nm->model_nodes.update_field(rowIndex, pw::models::Nodes::Roles::Format, format_str);
+              },
+              Qt::QueuedConnection);
         }
 
         break;
@@ -668,7 +679,10 @@ void NodeManager::onNodeParam(void* data,
 
         nd->nd_info->rate = rate;
 
-        nm->model_nodes.update_field(rowIndex, pw::models::Nodes::Roles::Rate, rate);
+        QMetaObject::invokeMethod(
+            QCoreApplication::instance(),
+            [nm, rowIndex, rate] { nm->model_nodes.update_field(rowIndex, pw::models::Nodes::Roles::Rate, rate); },
+            Qt::QueuedConnection);
 
         break;
       }
@@ -685,7 +699,10 @@ void NodeManager::onNodeParam(void* data,
 
         nd->nd_info->mute = v;
 
-        nm->model_nodes.update_field(rowIndex, pw::models::Nodes::Roles::Mute, v);
+        QMetaObject::invokeMethod(
+            QCoreApplication::instance(),
+            [nm, rowIndex, v] { nm->model_nodes.update_field(rowIndex, pw::models::Nodes::Roles::Mute, v); },
+            Qt::QueuedConnection);
 
         break;
       }
@@ -707,8 +724,13 @@ void NodeManager::onNodeParam(void* data,
           nd->nd_info->n_volume_channels = n_volumes;
           nd->nd_info->volume = max;
 
-          nm->model_nodes.update_field(rowIndex, pw::models::Nodes::Roles::NvolumeChannels, n_volumes);
-          nm->model_nodes.update_field(rowIndex, pw::models::Nodes::Roles::Volume, max);
+          QMetaObject::invokeMethod(
+              QCoreApplication::instance(),
+              [nm, rowIndex, n_volumes, max] {
+                nm->model_nodes.update_field(rowIndex, pw::models::Nodes::Roles::NvolumeChannels, n_volumes);
+                nm->model_nodes.update_field(rowIndex, pw::models::Nodes::Roles::Volume, max);
+              },
+              Qt::QueuedConnection);
         }
 
         break;

@@ -424,6 +424,8 @@ void Nodes::update_info(NodeInfo new_info) {
   const int row = get_row_by_serial(new_info.serial);
 
   if (row < 0) {
+    util::debug(
+        std::format("Could not find row id for serial {} from node {}", new_info.serial, new_info.name.toStdString()));
     return;
   }
 
