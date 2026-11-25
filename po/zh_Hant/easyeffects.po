@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2026-11-17 18:09+0000\n"
-"PO-Revision-Date: 2026-10-27 13:51+0000\n"
+"PO-Revision-Date: 2026-11-25 11:51+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hant/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2026.11.dev0\n"
+"X-Generator: Weblate 2026.12.dev0\n"
 
 #: src/autostart.cpp:92
 msgid ""
@@ -171,45 +171,38 @@ msgstr "參考資料"
 
 #: src/contents/ui/Autogain.qml:79 src/contents/ui/Autogain.qml:148
 #: src/contents/ui/LevelMeter.qml:199
-#, fuzzy
 msgctxt "EBU R 128 loudness measure"
 msgid "Momentary"
 msgstr "瞬間"
 
 #: src/contents/ui/Autogain.qml:79 src/contents/ui/Autogain.qml:158
 #: src/contents/ui/LevelMeter.qml:209
-#, fuzzy
 msgctxt "EBU R 128 loudness measure"
 msgid "Short-term"
 msgstr "短期"
 
 #: src/contents/ui/Autogain.qml:79 src/contents/ui/Autogain.qml:168
 #: src/contents/ui/LevelMeter.qml:219
-#, fuzzy
 msgctxt "EBU R 128 loudness measure"
 msgid "Integrated"
 msgstr "融合的"
 
 #: src/contents/ui/Autogain.qml:79
-#, fuzzy
 msgctxt "Autogain: mean of Momentary, Short-term and Integrated"
 msgid "Geometric mean (MSI)"
 msgstr "幾何平均值 (MSI)"
 
 #: src/contents/ui/Autogain.qml:79
-#, fuzzy
 msgctxt "Autogain: mean of Momentary and Short-term"
 msgid "Geometric mean (MS)"
 msgstr "幾何平均值 (MS)"
 
 #: src/contents/ui/Autogain.qml:79
-#, fuzzy
 msgctxt "Autogain: mean of Momentary and Integrated"
 msgid "Geometric mean (MI)"
 msgstr "幾何平均值 (MI)"
 
 #: src/contents/ui/Autogain.qml:79
-#, fuzzy
 msgctxt "Autogain: mean of Short-term and Integrated"
 msgid "Geometric mean (SI)"
 msgstr "幾何平均值 (SI)"
@@ -260,10 +253,9 @@ msgstr "輸出增益 (Gain)"
 #: src/contents/ui/MultibandGate.qml:979 src/contents/ui/Pitch.qml:268
 #: src/contents/ui/RNNoise.qml:320 src/contents/ui/Reverb.qml:318
 #: src/contents/ui/Speex.qml:177 src/contents/ui/StereoTools.qml:392
-#, fuzzy
 msgctxt "Library in use (plugin credit)"
 msgid "Using %1"
-msgstr "使用 %1"
+msgstr "進行使用 %1"
 
 #: src/contents/ui/Autogain.qml:250 src/contents/ui/DeepFilterNet.qml:286
 #: src/contents/ui/LevelMeter.qml:273 src/contents/ui/Pitch.qml:285
@@ -302,13 +294,11 @@ msgid "Mode"
 msgstr "模式"
 
 #: src/contents/ui/Autotune.qml:111
-#, fuzzy
 msgctxt "Operating mode"
 msgid "Auto"
 msgstr "自動"
 
 #: src/contents/ui/Autotune.qml:111
-#, fuzzy
 msgctxt "Operating mode"
 msgid "Manual"
 msgstr "手冊"
@@ -318,7 +308,6 @@ msgid "Correction"
 msgstr "修正"
 
 #: src/contents/ui/Autotune.qml:153
-#, fuzzy
 msgctxt "Autotune preference"
 msgid "Bias"
 msgstr "偏壓"
@@ -337,7 +326,6 @@ msgid "Scale"
 msgstr "大小"
 
 #: src/contents/ui/Autotune.qml:218
-#, fuzzy
 msgctxt "Autotune fundamental note"
 msgid "Root"
 msgstr "根"
@@ -385,19 +373,16 @@ msgid "B"
 msgstr "B"
 
 #: src/contents/ui/Autotune.qml:231
-#, fuzzy
 msgctxt "Autotune modified note"
 msgid "Accidental"
 msgstr "偶發的"
 
 #: src/contents/ui/Autotune.qml:248
-#, fuzzy
 msgctxt "Sound scale"
 msgid "Major"
 msgstr "主要的"
 
 #: src/contents/ui/Autotune.qml:248
-#, fuzzy
 msgctxt "Sound scale"
 msgid "Minor"
 msgstr "次要的"
@@ -405,27 +390,27 @@ msgstr "次要的"
 #: src/contents/ui/Autotune.qml:270
 msgctxt "Musical note"
 msgid "C♯"
-msgstr ""
+msgstr "C♯"
 
 #: src/contents/ui/Autotune.qml:288
 msgctxt "Musical note"
 msgid "D♯"
-msgstr ""
+msgstr "D♯"
 
 #: src/contents/ui/Autotune.qml:315
 msgctxt "Musical note"
 msgid "F♯"
-msgstr ""
+msgstr "F♯"
 
 #: src/contents/ui/Autotune.qml:333
 msgctxt "Musical note"
 msgid "G♯"
-msgstr ""
+msgstr "G♯"
 
 #: src/contents/ui/Autotune.qml:351
 msgctxt "Musical note"
 msgid "A♯"
-msgstr ""
+msgstr "A♯"
 
 #: src/contents/ui/Autotune.qml:377 src/contents/ui/Deesser.qml:276
 #: src/contents/ui/MultibandCompressor.qml:368
@@ -446,19 +431,16 @@ msgid "Blend harmonics"
 msgstr "混合諧波"
 
 #: src/contents/ui/BassEnhancer.qml:65 src/contents/ui/Exciter.qml:65
-#, fuzzy
 msgctxt "Blend harmonics"
 msgid "3rd"
-msgstr "第三"
+msgstr "三次"
 
 #: src/contents/ui/BassEnhancer.qml:87 src/contents/ui/Exciter.qml:87
-#, fuzzy
 msgctxt "Blend harmonics"
 msgid "2nd"
-msgstr "第二"
+msgstr "二次"
 
 #: src/contents/ui/BassEnhancer.qml:110 src/contents/ui/Exciter.qml:114
-#, fuzzy
 msgctxt "Exciter/Bass enhancer control"
 msgid "Amount"
 msgstr "數量"
@@ -469,7 +451,6 @@ msgid "Harmonics"
 msgstr "諧波"
 
 #: src/contents/ui/BassEnhancer.qml:141 src/contents/ui/Exciter.qml:145
-#, fuzzy
 msgctxt "Exciter/Bass enhancer control"
 msgid "Scope"
 msgstr "範圍"
@@ -479,10 +460,9 @@ msgid "Floor active"
 msgstr "基底作用"
 
 #: src/contents/ui/BassEnhancer.qml:168
-#, fuzzy
 msgctxt "Bass enhancer control"
 msgid "Floor"
-msgstr "基底 (Floor)"
+msgstr "基底"
 
 #: src/contents/ui/BassEnhancer.qml:223 src/contents/ui/Compressor.qml:926
 #: src/contents/ui/Crusher.qml:254 src/contents/ui/Deesser.qml:337
@@ -594,21 +574,18 @@ msgstr "壓縮器"
 
 #: src/contents/ui/Compressor.qml:83 src/contents/ui/Expander.qml:83
 #: src/contents/ui/MultibandCompressor.qml:131
-#, fuzzy
 msgctxt "Compressor mode"
 msgid "Downward"
 msgstr "向下"
 
 #: src/contents/ui/Compressor.qml:83 src/contents/ui/Expander.qml:83
 #: src/contents/ui/MultibandCompressor.qml:131
-#, fuzzy
 msgctxt "Compressor mode"
 msgid "Upward"
 msgstr "向上"
 
 #: src/contents/ui/Compressor.qml:83
 #: src/contents/ui/MultibandCompressor.qml:131
-#, fuzzy
 msgctxt "Compressor mode"
 msgid "Boosting"
 msgstr "提升"
@@ -625,20 +602,17 @@ msgstr "提升量"
 
 #: src/contents/ui/Compressor.qml:132 src/contents/ui/Deesser.qml:119
 #: src/contents/ui/Expander.qml:92 src/contents/ui/MultibandCompressor.qml:372
-#, fuzzy
 msgctxt "Compressor control"
 msgid "Ratio"
 msgstr "比率"
 
 #: src/contents/ui/Compressor.qml:148 src/contents/ui/Expander.qml:108
 #: src/contents/ui/Limiter.qml:451 src/contents/ui/MultibandCompressor.qml:387
-#, fuzzy
 msgctxt "Compressor control"
 msgid "Knee"
 msgstr "折轉減緩(Knee)"
 
 #: src/contents/ui/Compressor.qml:169 src/contents/ui/Expander.qml:129
-#, fuzzy
 msgid "Time and Threshold"
 msgstr "閾值"
 
@@ -647,7 +621,6 @@ msgstr "閾值"
 #: src/contents/ui/Limiter.qml:144 src/contents/ui/Limiter.qml:417
 #: src/contents/ui/MultibandCompressor.qml:256
 #: src/contents/ui/MultibandGate.qml:200
-#, fuzzy
 msgctxt "Compressor control"
 msgid "Attack"
 msgstr "起音(Attack)"
@@ -657,7 +630,6 @@ msgstr "起音(Attack)"
 #: src/contents/ui/Limiter.qml:161 src/contents/ui/Limiter.qml:434
 #: src/contents/ui/Maximizer.qml:68 src/contents/ui/MultibandCompressor.qml:303
 #: src/contents/ui/MultibandGate.qml:215
-#, fuzzy
 msgctxt "Compressor control"
 msgid "Release"
 msgstr "釋出"
@@ -667,7 +639,7 @@ msgstr "釋出"
 #: src/contents/ui/MultibandGate.qml:230
 msgctxt "Compressor control"
 msgid "Hold"
-msgstr ""
+msgstr "保持"
 
 #: src/contents/ui/Compressor.qml:267 src/contents/ui/Compressor.qml:365
 #: src/contents/ui/Compressor.qml:718 src/contents/ui/Expander.qml:227
@@ -688,25 +660,21 @@ msgid "Type"
 msgstr "型式"
 
 #: src/contents/ui/Compressor.qml:283
-#, fuzzy
 msgctxt "Sidechain type"
 msgid "Feed-forward"
 msgstr "前饋"
 
 #: src/contents/ui/Compressor.qml:283
-#, fuzzy
 msgctxt "Sidechain type"
 msgid "Feed-back"
 msgstr "回饋"
 
 #: src/contents/ui/Compressor.qml:283
-#, fuzzy
 msgctxt "Sidechain type"
 msgid "External"
 msgstr "外部"
 
 #: src/contents/ui/Compressor.qml:283
-#, fuzzy
 msgctxt "Sidechain type"
 msgid "Link"
 msgstr "連結"
@@ -721,7 +689,6 @@ msgstr "輸入裝置"
 #: src/contents/ui/Expander.qml:282 src/contents/ui/Gate.qml:299
 #: src/contents/ui/MultibandCompressor.qml:447
 #: src/contents/ui/MultibandGate.qml:422
-#, fuzzy
 msgctxt "Sidechain mode"
 msgid "Peak"
 msgstr "峰值"
@@ -730,7 +697,6 @@ msgstr "峰值"
 #: src/contents/ui/Expander.qml:282 src/contents/ui/Gate.qml:299
 #: src/contents/ui/MultibandCompressor.qml:447
 #: src/contents/ui/MultibandGate.qml:422
-#, fuzzy
 msgctxt "Sidechain mode"
 msgid "RMS"
 msgstr "RMS"
@@ -738,7 +704,6 @@ msgstr "RMS"
 #: src/contents/ui/Compressor.qml:322 src/contents/ui/Expander.qml:282
 #: src/contents/ui/Gate.qml:299 src/contents/ui/MultibandCompressor.qml:447
 #: src/contents/ui/MultibandGate.qml:422
-#, fuzzy
 msgctxt "Sidechain mode"
 msgid "Low-pass"
 msgstr "低通"
@@ -746,7 +711,6 @@ msgstr "低通"
 #: src/contents/ui/Compressor.qml:322 src/contents/ui/Expander.qml:282
 #: src/contents/ui/Gate.qml:299 src/contents/ui/MultibandCompressor.qml:447
 #: src/contents/ui/MultibandGate.qml:422
-#, fuzzy
 msgctxt "Sidechain mode"
 msgid "SMA"
 msgstr "SMA"
@@ -763,7 +727,6 @@ msgstr "來源"
 #: src/contents/ui/Compressor.qml:336 src/contents/ui/Expander.qml:296
 #: src/contents/ui/Gate.qml:313 src/contents/ui/MultibandCompressor.qml:458
 #: src/contents/ui/MultibandGate.qml:433
-#, fuzzy
 msgctxt "Sidechain source"
 msgid "Middle"
 msgstr "中間"
@@ -771,7 +734,6 @@ msgstr "中間"
 #: src/contents/ui/Compressor.qml:336 src/contents/ui/Expander.qml:296
 #: src/contents/ui/Gate.qml:313 src/contents/ui/MultibandCompressor.qml:458
 #: src/contents/ui/MultibandGate.qml:433
-#, fuzzy
 msgctxt "Sidechain source"
 msgid "Side"
 msgstr "側邊"
@@ -779,7 +741,6 @@ msgstr "側邊"
 #: src/contents/ui/Compressor.qml:336 src/contents/ui/Expander.qml:296
 #: src/contents/ui/Gate.qml:313 src/contents/ui/MultibandCompressor.qml:458
 #: src/contents/ui/MultibandGate.qml:433
-#, fuzzy
 msgctxt "Sidechain source"
 msgid "Left"
 msgstr "左"
@@ -787,7 +748,6 @@ msgstr "左"
 #: src/contents/ui/Compressor.qml:336 src/contents/ui/Expander.qml:296
 #: src/contents/ui/Gate.qml:313 src/contents/ui/MultibandCompressor.qml:458
 #: src/contents/ui/MultibandGate.qml:433
-#, fuzzy
 msgctxt "Sidechain source"
 msgid "Right"
 msgstr "右"
@@ -795,7 +755,6 @@ msgstr "右"
 #: src/contents/ui/Compressor.qml:336 src/contents/ui/Expander.qml:296
 #: src/contents/ui/Gate.qml:313 src/contents/ui/MultibandCompressor.qml:458
 #: src/contents/ui/MultibandGate.qml:433
-#, fuzzy
 msgctxt "Sidechain source"
 msgid "Min"
 msgstr "最小"
@@ -803,7 +762,6 @@ msgstr "最小"
 #: src/contents/ui/Compressor.qml:336 src/contents/ui/Expander.qml:296
 #: src/contents/ui/Gate.qml:313 src/contents/ui/MultibandCompressor.qml:458
 #: src/contents/ui/MultibandGate.qml:433
-#, fuzzy
 msgctxt "Sidechain source"
 msgid "Max"
 msgstr "最大"
@@ -811,7 +769,6 @@ msgstr "最大"
 #: src/contents/ui/Compressor.qml:351 src/contents/ui/Expander.qml:311
 #: src/contents/ui/Gate.qml:328 src/contents/ui/MultibandCompressor.qml:470
 #: src/contents/ui/MultibandGate.qml:445
-#, fuzzy
 msgctxt "Stereo source"
 msgid "Left/Right"
 msgstr "左/右"
@@ -819,7 +776,6 @@ msgstr "左/右"
 #: src/contents/ui/Compressor.qml:351 src/contents/ui/Expander.qml:311
 #: src/contents/ui/Gate.qml:328 src/contents/ui/MultibandCompressor.qml:470
 #: src/contents/ui/MultibandGate.qml:445
-#, fuzzy
 msgctxt "Stereo source"
 msgid "Right/Left"
 msgstr "右/左"
@@ -827,7 +783,6 @@ msgstr "右/左"
 #: src/contents/ui/Compressor.qml:351 src/contents/ui/Expander.qml:311
 #: src/contents/ui/Gate.qml:328 src/contents/ui/MultibandCompressor.qml:470
 #: src/contents/ui/MultibandGate.qml:445
-#, fuzzy
 msgctxt "Stereo source"
 msgid "Mid/Side"
 msgstr "中間/側邊"
@@ -835,7 +790,6 @@ msgstr "中間/側邊"
 #: src/contents/ui/Compressor.qml:351 src/contents/ui/Expander.qml:311
 #: src/contents/ui/Gate.qml:328 src/contents/ui/MultibandCompressor.qml:470
 #: src/contents/ui/MultibandGate.qml:445
-#, fuzzy
 msgctxt "Stereo source"
 msgid "Side/Mid"
 msgstr "側邊/中間"
@@ -843,7 +797,6 @@ msgstr "側邊/中間"
 #: src/contents/ui/Compressor.qml:351 src/contents/ui/Expander.qml:311
 #: src/contents/ui/Gate.qml:328 src/contents/ui/MultibandCompressor.qml:470
 #: src/contents/ui/MultibandGate.qml:445
-#, fuzzy
 msgctxt "Stereo source"
 msgid "Min"
 msgstr "最小"
@@ -851,7 +804,6 @@ msgstr "最小"
 #: src/contents/ui/Compressor.qml:351 src/contents/ui/Expander.qml:311
 #: src/contents/ui/Gate.qml:328 src/contents/ui/MultibandCompressor.qml:470
 #: src/contents/ui/MultibandGate.qml:445
-#, fuzzy
 msgctxt "Stereo source"
 msgid "Max"
 msgstr "最大"
@@ -873,7 +825,6 @@ msgstr "反應性"
 #: src/contents/ui/Gate.qml:385 src/contents/ui/Limiter.qml:268
 #: src/contents/ui/MultibandCompressor.qml:509
 #: src/contents/ui/MultibandGate.qml:484
-#, fuzzy
 msgctxt "Compressor control"
 msgid "Lookahead"
 msgstr "前瞻"
@@ -881,7 +832,6 @@ msgstr "前瞻"
 #: src/contents/ui/Compressor.qml:429 src/contents/ui/EqualizerBandMenu.qml:51
 #: src/contents/ui/Expander.qml:385 src/contents/ui/Filter.qml:69
 #: src/contents/ui/Gate.qml:403
-#, fuzzy
 msgctxt "Filter type"
 msgid "High-pass"
 msgstr "高通"
@@ -897,7 +847,6 @@ msgstr "關閉"
 #: src/contents/ui/Compressor.qml:443 src/contents/ui/EqualizerBandMenu.qml:51
 #: src/contents/ui/Expander.qml:399 src/contents/ui/Filter.qml:69
 #: src/contents/ui/Gate.qml:417
-#, fuzzy
 msgctxt "Filter type"
 msgid "Low-pass"
 msgstr "低通"
@@ -908,7 +857,6 @@ msgstr "低通"
 #: src/contents/ui/MultibandCompressor.qml:646
 #: src/contents/ui/MultibandGate.qml:621 src/contents/ui/Pitch.qml:123
 #: src/contents/ui/Reverb.qml:188 src/contents/ui/StereoTools.qml:345
-#, fuzzy
 msgctxt "Signal type"
 msgid "Dry"
 msgstr "乾"
@@ -919,7 +867,6 @@ msgstr "乾"
 #: src/contents/ui/MultibandCompressor.qml:664
 #: src/contents/ui/MultibandGate.qml:639 src/contents/ui/Pitch.qml:142
 #: src/contents/ui/Reverb.qml:206 src/contents/ui/StereoTools.qml:363
-#, fuzzy
 msgctxt "Signal type"
 msgid "Wet"
 msgstr "濕"
@@ -927,7 +874,6 @@ msgstr "濕"
 #: src/contents/ui/Compressor.qml:542 src/contents/ui/Expander.qml:502
 #: src/contents/ui/Gate.qml:516 src/contents/ui/MultibandCompressor.qml:682
 #: src/contents/ui/MultibandGate.qml:657
-#, fuzzy
 msgid "Dry/Wet balance"
 msgstr "側邊平衡"
 
@@ -935,7 +881,6 @@ msgstr "側邊平衡"
 #: src/contents/ui/Expander.qml:520 src/contents/ui/Gate.qml:534
 #: src/contents/ui/MultibandCompressor.qml:404
 #: src/contents/ui/MultibandGate.qml:278
-#, fuzzy
 msgctxt "Gain level"
 msgid "Makeup"
 msgstr "補償"
@@ -993,7 +938,6 @@ msgstr "增益"
 #: src/contents/ui/Compressor.qml:812 src/contents/ui/Expander.qml:766
 #: src/contents/ui/Gate.qml:789 src/contents/ui/MultibandCompressor.qml:896
 #: src/contents/ui/MultibandGate.qml:306 src/contents/ui/MultibandGate.qml:871
-#, fuzzy
 msgctxt "Compressor parameter"
 msgid "Curve"
 msgstr "曲線"
@@ -1001,7 +945,6 @@ msgstr "曲線"
 #: src/contents/ui/Compressor.qml:821 src/contents/ui/Expander.qml:775
 #: src/contents/ui/Gate.qml:798 src/contents/ui/MultibandCompressor.qml:841
 #: src/contents/ui/MultibandGate.qml:816
-#, fuzzy
 msgctxt "Compressor parameter"
 msgid "Envelope"
 msgstr "封套"
@@ -1029,13 +972,11 @@ msgid "Failed to load the %1 impulse. The Convolver is in passthrough mode."
 msgstr "載入 %1 脈衝失敗。 Convolver 處於直通模式。"
 
 #: src/contents/ui/Convolver.qml:151
-#, fuzzy
 msgctxt "Convolver impulse selection"
 msgid "First"
 msgstr "第一"
 
 #: src/contents/ui/Convolver.qml:164
-#, fuzzy
 msgctxt "Convolver impulse selection"
 msgid "Second"
 msgstr "第二"
@@ -1061,7 +1002,6 @@ msgstr "對數刻度"
 #: src/contents/ui/LevelMeter.qml:81 src/contents/ui/LevelMeter.qml:120
 #: src/contents/ui/LevelMeter.qml:159 src/contents/ui/PipeWirePage.qml:346
 #: src/contents/ui/StereoTools.qml:204
-#, fuzzy
 msgctxt "Channel"
 msgid "Left"
 msgstr "左"
@@ -1071,13 +1011,11 @@ msgstr "左"
 #: src/contents/ui/LevelMeter.qml:91 src/contents/ui/LevelMeter.qml:130
 #: src/contents/ui/LevelMeter.qml:169 src/contents/ui/PipeWirePage.qml:357
 #: src/contents/ui/StereoTools.qml:231
-#, fuzzy
 msgctxt "Channel"
 msgid "Right"
 msgstr "右"
 
 #: src/contents/ui/Convolver.qml:380 src/contents/ui/Crusher.qml:208
-#, fuzzy
 msgctxt "Audio sample rate"
 msgid "Rate"
 msgstr "速率"
@@ -1097,7 +1035,6 @@ msgid "Channels"
 msgstr "聲道"
 
 #: src/contents/ui/Convolver.qml:400
-#, fuzzy
 msgctxt "File format"
 msgid "Format"
 msgstr "格式"
@@ -1224,13 +1161,11 @@ msgid "Apply"
 msgstr "套用"
 
 #: src/contents/ui/Crossfeed.qml:79
-#, fuzzy
 msgctxt "Crossfeed control"
 msgid "Cutoff"
 msgstr "切隔"
 
 #: src/contents/ui/Crossfeed.qml:95
-#, fuzzy
 msgctxt "Crossfeed control"
 msgid "Feed"
 msgstr "饋送"
@@ -1394,13 +1329,11 @@ msgid "Detection"
 msgstr "偵測"
 
 #: src/contents/ui/Deesser.qml:93
-#, fuzzy
 msgctxt "Deesser mode"
 msgid "Wideband"
 msgstr "寬頻"
 
 #: src/contents/ui/Deesser.qml:93
-#, fuzzy
 msgctxt "Deesser mode"
 msgid "Split"
 msgstr "分割"
@@ -1515,7 +1448,6 @@ msgid "Remove this effect"
 msgstr "移除此音效"
 
 #: src/contents/ui/DelegateStreamsList.qml:95
-#, fuzzy
 msgid "channel"
 msgid_plural "channels"
 msgstr[0] "聲道"
@@ -1556,25 +1488,21 @@ msgid "Strength"
 msgstr "強度"
 
 #: src/contents/ui/EchoCanceller.qml:111
-#, fuzzy
 msgctxt "Echo canceller strength"
 msgid "Low"
 msgstr "低"
 
 #: src/contents/ui/EchoCanceller.qml:111
-#, fuzzy
 msgctxt "Echo canceller strength"
 msgid "Moderate"
 msgstr "緩和"
 
 #: src/contents/ui/EchoCanceller.qml:111
-#, fuzzy
 msgctxt "Echo canceller strength"
 msgid "High"
 msgstr "高"
 
 #: src/contents/ui/EchoCanceller.qml:111
-#, fuzzy
 msgctxt "Echo canceller strength"
 msgid "Very high"
 msgstr "極高"
@@ -1662,52 +1590,45 @@ msgstr "已將右聲道的目前等化器設定匯出至外部 APO 預設集檔�
 
 #: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
 #: src/contents/ui/Loudness.qml:77 src/contents/ui/MidSideEqualizer.qml:142
-#, fuzzy
 msgctxt "Filter mode"
 msgid "IIR"
 msgstr "IIR"
 
 #: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
 #: src/contents/ui/MidSideEqualizer.qml:142
-#, fuzzy
 msgctxt "Filter mode"
 msgid "Linear phase (FIR)"
-msgstr "線性階段"
+msgstr "線性相位 (FIR)"
 
 #: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
 #: src/contents/ui/MidSideEqualizer.qml:142
-#, fuzzy
 msgctxt "Filter mode"
 msgid "Linear phase (FFT)"
-msgstr "線性階段"
+msgstr "線性相位 (FFT)"
 
 #: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
 #: src/contents/ui/MidSideEqualizer.qml:142
-#, fuzzy
 msgctxt "Filter mode"
 msgid "Linear phase (SPM)"
-msgstr "線性階段"
+msgstr "線性相位 (SPM)"
 
 #: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
 #: src/contents/ui/MidSideEqualizer.qml:142
-#, fuzzy
 msgctxt "Filter mode"
 msgid "Minimum phase (FIR)"
-msgstr "最小化跨度"
+msgstr "最小化相位 (FIR)"
 
 #: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
 #: src/contents/ui/MidSideEqualizer.qml:142
-#, fuzzy
 msgctxt "Filter mode"
 msgid "Minimum phase (FFT)"
-msgstr "最小化跨度"
+msgstr "最小化相位 (FFT)"
 
 #: src/contents/ui/Equalizer.qml:148 src/contents/ui/Filter.qml:97
 #: src/contents/ui/MidSideEqualizer.qml:142
-#, fuzzy
 msgctxt "Filter mode"
 msgid "Minimum phase (SPM)"
-msgstr "最小化跨度"
+msgstr "最小化相位 (SPM)"
 
 #: src/contents/ui/Equalizer.qml:158 src/contents/ui/Filter.qml:107
 #: src/contents/ui/MidSideEqualizer.qml:152
@@ -1793,113 +1714,95 @@ msgstr "匯出 APO"
 #: src/contents/ui/MultibandCompressor.qml:708
 #: src/contents/ui/MultibandCompressor.qml:967
 #: src/contents/ui/MultibandGate.qml:683 src/contents/ui/MultibandGate.qml:942
-#, fuzzy
 msgctxt "Number of the band"
 msgid "Band %1"
 msgstr "頻帶 1"
 
 #: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
-#, fuzzy
 msgctxt "Filter type"
 msgid "Bell"
 msgstr "鐘"
 
 #: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
-#, fuzzy
 msgctxt "Filter type"
 msgid "High-shelf"
 msgstr "高架位"
 
 #: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
-#, fuzzy
 msgctxt "Filter type"
 msgid "Low-shelf"
 msgstr "低架位"
 
 #: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
-#, fuzzy
 msgctxt "Filter type"
 msgid "Notch"
-msgstr "帶阻"
+msgstr "點阻"
 
 #: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
-#, fuzzy
 msgctxt "Filter type"
 msgid "Resonance"
 msgstr "共鳴"
 
 #: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
-#, fuzzy
 msgctxt "Filter type"
 msgid "Allpass"
-msgstr "全部略過"
+msgstr "全通"
 
 #: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
-#, fuzzy
 msgctxt "Filter type"
 msgid "Bandpass"
-msgstr "頻段略過"
+msgstr "帶通"
 
 #: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
-#, fuzzy
 msgctxt "Filter type"
 msgid "Ladder-pass"
-msgstr "階梯通過"
+msgstr "梯形帶通"
 
 #: src/contents/ui/EqualizerBandMenu.qml:51 src/contents/ui/Filter.qml:69
-#, fuzzy
 msgctxt "Filter type"
 msgid "Ladder-rejection"
-msgstr "階梯抵制"
+msgstr "梯形帶阻"
 
 #: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
-#, fuzzy
 msgctxt "Filter mode"
 msgid "RLC (BT)"
 msgstr "RLC (BT)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
-#, fuzzy
 msgctxt "Filter mode"
 msgid "RLC (MT)"
 msgstr "RLC (MT)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
-#, fuzzy
 msgctxt "Filter mode"
 msgid "BWC (BT)"
 msgstr "BWC (BT)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
-#, fuzzy
 msgctxt "Filter mode"
 msgid "BWC (MT)"
 msgstr "BWC (MT)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
-#, fuzzy
 msgctxt "Filter mode"
 msgid "LRX (BT)"
 msgstr "LRX (BT)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
-#, fuzzy
 msgctxt "Filter mode"
 msgid "LRX (MT)"
 msgstr "LRX (MT)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:65 src/contents/ui/Filter.qml:83
-#, fuzzy
 msgctxt "Filter mode"
 msgid "APO (DR)"
 msgstr "APO (DR)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:75 src/contents/ui/Filter.qml:121
 #: src/contents/ui/PreferencesSheet.qml:722
-#, fuzzy
 msgctxt "Filter parameter"
 msgid "Slope"
-msgstr "傾斜"
+msgstr "斜率"
 
 #: src/contents/ui/EqualizerBandMenu.qml:96 src/contents/ui/Filter.qml:142
 #: src/contents/ui/PipeWirePage.qml:431
@@ -1921,7 +1824,6 @@ msgstr "oct"
 #: src/contents/ui/EqualizerBandMenu.qml:199
 #: src/contents/ui/MultibandCompressor.qml:99
 #: src/contents/ui/MultibandGate.qml:99
-#, fuzzy
 msgctxt "Audio isolation"
 msgid "Solo"
 msgstr "獨奏"
@@ -1931,7 +1833,6 @@ msgid "Ceil active"
 msgstr "上限(Ceil)作用"
 
 #: src/contents/ui/Exciter.qml:172
-#, fuzzy
 msgctxt "Exciter control"
 msgid "Ceil"
 msgstr "上限 (Ceil)"
@@ -1943,7 +1844,6 @@ msgstr "擴展"
 #: src/contents/ui/Expander.qml:243 src/contents/ui/Gate.qml:260
 #: src/contents/ui/Limiter.qml:217 src/contents/ui/MultibandCompressor.qml:436
 #: src/contents/ui/MultibandGate.qml:411
-#, fuzzy
 msgctxt "Sidchain type"
 msgid "Internal"
 msgstr "內部"
@@ -1951,7 +1851,6 @@ msgstr "內部"
 #: src/contents/ui/Expander.qml:243 src/contents/ui/Gate.qml:260
 #: src/contents/ui/Limiter.qml:217 src/contents/ui/MultibandCompressor.qml:436
 #: src/contents/ui/MultibandGate.qml:411
-#, fuzzy
 msgctxt "Sidchain type"
 msgid "External"
 msgstr "外部"
@@ -1959,7 +1858,6 @@ msgstr "外部"
 #: src/contents/ui/Expander.qml:243 src/contents/ui/Gate.qml:260
 #: src/contents/ui/Limiter.qml:217 src/contents/ui/MultibandCompressor.qml:436
 #: src/contents/ui/MultibandGate.qml:411
-#, fuzzy
 msgctxt "Sidchain type"
 msgid "Link"
 msgstr "連結"
@@ -2212,7 +2110,6 @@ msgid "Right voice level"
 msgstr "右和弦配置等級"
 
 #: src/contents/ui/Harmonizer.qml:245
-#, fuzzy
 msgctxt "Signal type"
 msgid "Dry/wet"
 msgstr "乾/濕"
@@ -2253,7 +2150,6 @@ msgid ""
 msgstr "選擇可用的立體聲輸出裝置，並在啟動之前停用一般測試訊號。"
 
 #: src/contents/ui/HearingTestDialog.qml:141
-#, fuzzy
 msgctxt "Left/right ear: frequency Hz (number of total)"
 msgid "%1 ear: %2 Hz (%3 of %4)"
 msgstr "%1 耳： %2 Hz (%3 / %4)"
@@ -2306,76 +2202,64 @@ msgid "Sample Peak"
 msgstr "採樣峰值"
 
 #: src/contents/ui/Limiter.qml:76
-#, fuzzy
 msgctxt "Limiter mode"
 msgid "Herm thin"
 msgstr "Herm 細"
 
 #: src/contents/ui/Limiter.qml:76
-#, fuzzy
 msgctxt "Limiter mode"
 msgid "Herm wide"
 msgstr "Herm 寬"
 
 #: src/contents/ui/Limiter.qml:76
-#, fuzzy
 msgctxt "Limiter mode"
 msgid "Herm tail"
 msgstr "Herm 尾"
 
 #: src/contents/ui/Limiter.qml:76
-#, fuzzy
 msgctxt "Limiter mode"
 msgid "Herm duck"
-msgstr "Herm 鴨"
+msgstr "Herm 閃避"
 
 #: src/contents/ui/Limiter.qml:76
-#, fuzzy
 msgctxt "Limiter mode"
 msgid "Exp thin"
 msgstr "Exp 細"
 
 #: src/contents/ui/Limiter.qml:76
-#, fuzzy
 msgctxt "Limiter mode"
 msgid "Exp wide"
 msgstr "Exp 寬"
 
 #: src/contents/ui/Limiter.qml:76
-#, fuzzy
 msgctxt "Limiter mode"
 msgid "Exp tail"
 msgstr "Exp 尾"
 
 #: src/contents/ui/Limiter.qml:76
-#, fuzzy
 msgctxt "Limiter mode"
 msgid "Exp duck"
-msgstr "Exp 鴨"
+msgstr "Exp 閃避"
 
 #: src/contents/ui/Limiter.qml:76
-#, fuzzy
 msgctxt "Limiter mode"
 msgid "Line thin"
 msgstr "Line 細"
 
 #: src/contents/ui/Limiter.qml:76
-#, fuzzy
 msgctxt "Limiter mode"
 msgid "Line wide"
 msgstr "Line 寬"
 
 #: src/contents/ui/Limiter.qml:76
-#, fuzzy
 msgctxt "Limiter mode"
 msgid "Line tail"
 msgstr "Line 尾"
 
 #: src/contents/ui/Limiter.qml:76
-#, fuzzy
 msgctxt "Limiter mode"
 msgid "Line duck"
-msgstr "Line 鴨"
+msgstr "Line 閃避"
 
 #: src/contents/ui/Limiter.qml:90 src/contents/ui/Limiter.qml:104
 msgid "None"
@@ -2494,7 +2378,6 @@ msgid "Threshold boost"
 msgstr "閾值提升"
 
 #: src/contents/ui/Loudness.qml:77
-#, fuzzy
 msgctxt "Filter mode"
 msgid "FFT"
 msgstr "FFT"
@@ -2504,31 +2387,26 @@ msgid "Contour"
 msgstr "輪廓"
 
 #: src/contents/ui/Loudness.qml:91
-#, fuzzy
 msgctxt "Loudness contour"
 msgid "Flat"
 msgstr "平坦"
 
 #: src/contents/ui/Loudness.qml:91
-#, fuzzy
 msgctxt "Loudness contour"
 msgid "ISO226-2003"
 msgstr "ISO226-2003"
 
 #: src/contents/ui/Loudness.qml:91
-#, fuzzy
 msgctxt "Loudness contour"
 msgid "Fletcher-Munson"
 msgstr "Fletcher-Munson"
 
 #: src/contents/ui/Loudness.qml:91
-#, fuzzy
 msgctxt "Loudness contour"
 msgid "Robinson-Dadson"
 msgstr "Robinson-Dadson"
 
 #: src/contents/ui/Loudness.qml:91
-#, fuzzy
 msgctxt "Loudness contour"
 msgid "ISO226-2023"
 msgstr "ISO226-2023"
@@ -2542,31 +2420,26 @@ msgid "IIR approximation"
 msgstr "IIR 近似"
 
 #: src/contents/ui/Loudness.qml:119
-#, fuzzy
 msgctxt "Loudness IIR approximation"
 msgid "Fastest"
 msgstr "最快"
 
 #: src/contents/ui/Loudness.qml:119
-#, fuzzy
 msgctxt "Loudness IIR approximation"
 msgid "Low"
 msgstr "低"
 
 #: src/contents/ui/Loudness.qml:119
-#, fuzzy
 msgctxt "Loudness IIR approximation"
 msgid "Normal"
 msgstr "正常"
 
 #: src/contents/ui/Loudness.qml:119
-#, fuzzy
 msgctxt "Loudness IIR approximation"
 msgid "High"
 msgstr "高"
 
 #: src/contents/ui/Loudness.qml:119
-#, fuzzy
 msgctxt "Loudness IIR approximation"
 msgid "Best"
 msgstr "最佳"
@@ -2584,10 +2457,9 @@ msgid "Clipping"
 msgstr "消波"
 
 #: src/contents/ui/Loudness.qml:216
-#, fuzzy
 msgctxt "Loudness control"
 msgid "Compensate"
-msgstr "壓縮器"
+msgstr "補償"
 
 #: src/contents/ui/Main.qml:305
 msgid "Reset Settings?"
@@ -2619,13 +2491,11 @@ msgid "Audio effects are disabled."
 msgstr "音效處理已經停用。"
 
 #: src/contents/ui/Main.qml:403 src/contents/ui/PageStreamsEffects.qml:491
-#, fuzzy
 msgctxt "Applications reproducing audio"
 msgid "Players"
 msgstr "播放器"
 
 #: src/contents/ui/Main.qml:419 src/contents/ui/PageStreamsEffects.qml:500
-#, fuzzy
 msgctxt "Devices recording audio"
 msgid "Recorders"
 msgstr "錄音器"
@@ -2640,7 +2510,6 @@ msgid "Shortcuts"
 msgstr "快速鍵"
 
 #: src/contents/ui/Main.qml:467 src/contents/ui/TrayIcon.qml:221
-#, fuzzy
 msgctxt "Usage guide"
 msgid "Manual"
 msgstr "手冊"
@@ -2710,13 +2579,11 @@ msgid "Pitch side"
 msgstr "音高側邊"
 
 #: src/contents/ui/MidSideEqualizer.qml:244
-#, fuzzy
 msgctxt "Stereo component"
 msgid "Mid"
-msgstr "中央"
+msgstr "中間"
 
 #: src/contents/ui/MidSideEqualizer.qml:244
-#, fuzzy
 msgctxt "Stereo component"
 msgid "Side"
 msgstr "側邊"
@@ -2742,17 +2609,15 @@ msgstr "終止"
 
 #: src/contents/ui/MultibandCompressor.qml:526
 #: src/contents/ui/MultibandGate.qml:501
-#, fuzzy
 msgctxt "Filter type"
 msgid "Low-cut"
-msgstr "Low-cut"
+msgstr "低切"
 
 #: src/contents/ui/MultibandCompressor.qml:551
 #: src/contents/ui/MultibandGate.qml:526
-#, fuzzy
 msgctxt "Filter type"
 msgid "High-cut"
-msgstr "High-cut"
+msgstr "高切"
 
 #: src/contents/ui/MultibandCompressor.qml:583
 #: src/contents/ui/MultibandGate.qml:558
@@ -2761,30 +2626,27 @@ msgstr "運行模式"
 
 #: src/contents/ui/MultibandCompressor.qml:587
 #: src/contents/ui/MultibandGate.qml:562
-#, fuzzy
 msgctxt "Compressor mode"
 msgid "Classic"
 msgstr "經典"
 
 #: src/contents/ui/MultibandCompressor.qml:587
 #: src/contents/ui/MultibandGate.qml:562
-#, fuzzy
 msgctxt "Compressor mode"
 msgid "Modern"
 msgstr "現代"
 
 #: src/contents/ui/MultibandCompressor.qml:587
 #: src/contents/ui/MultibandGate.qml:562
-#, fuzzy
 msgctxt "Compressor mode"
 msgid "Linear phase"
-msgstr "線性階段"
+msgstr "線性相位"
 
 #: src/contents/ui/MultibandCompressor.qml:596
 #: src/contents/ui/MultibandGate.qml:571
 msgctxt "Filter parameter"
 msgid "Crossover slope"
-msgstr ""
+msgstr "交叉斜率"
 
 #: src/contents/ui/MultibandCompressor.qml:609
 #: src/contents/ui/MultibandGate.qml:584
@@ -2793,35 +2655,30 @@ msgstr "側鏈提升"
 
 #: src/contents/ui/MultibandCompressor.qml:613
 #: src/contents/ui/MultibandGate.qml:588
-#, fuzzy
 msgctxt "Sidechain boost"
 msgid "None"
 msgstr "無"
 
 #: src/contents/ui/MultibandCompressor.qml:613
 #: src/contents/ui/MultibandGate.qml:588
-#, fuzzy
 msgctxt "Sidechain boost"
 msgid "Pink BT"
 msgstr "Pink BT"
 
 #: src/contents/ui/MultibandCompressor.qml:613
 #: src/contents/ui/MultibandGate.qml:588
-#, fuzzy
 msgctxt "Sidechain boost"
 msgid "Pink MT"
 msgstr "Pink MT"
 
 #: src/contents/ui/MultibandCompressor.qml:613
 #: src/contents/ui/MultibandGate.qml:588
-#, fuzzy
 msgctxt "Sidechain boost"
 msgid "Brown BT"
 msgstr "Brown BT"
 
 #: src/contents/ui/MultibandCompressor.qml:613
 #: src/contents/ui/MultibandGate.qml:588
-#, fuzzy
 msgctxt "Sidechain boost"
 msgid "Brown MT"
 msgstr "Brown MT"
@@ -2987,7 +2844,6 @@ msgid "Enabled"
 msgstr "已經啟用"
 
 #: src/contents/ui/PipeWirePage.qml:368
-#, fuzzy
 msgctxt "Channel selection"
 msgid "Both"
 msgstr "雙聲道"
@@ -3009,7 +2865,6 @@ msgid "Pink noise"
 msgstr "粉紅噪音"
 
 #: src/contents/ui/PipeWirePage.qml:420
-#, fuzzy
 msgctxt "Waveform"
 msgid "Silence"
 msgstr "安靜"
@@ -3031,13 +2886,11 @@ msgid "Pitch"
 msgstr "音高"
 
 #: src/contents/ui/Pitch.qml:191
-#, fuzzy
 msgctxt "Musical interval"
 msgid "Cents"
 msgstr "音分"
 
 #: src/contents/ui/Pitch.qml:207
-#, fuzzy
 msgctxt "Musical interval"
 msgid "Semitones"
 msgstr "半音"
@@ -3294,25 +3147,21 @@ msgid "Graph"
 msgstr "圖形"
 
 #: src/contents/ui/PreferencesSheet.qml:558
-#, fuzzy
 msgctxt "Spectrum shape"
 msgid "Bars"
 msgstr "條列"
 
 #: src/contents/ui/PreferencesSheet.qml:558
-#, fuzzy
 msgctxt "Spectrum shape"
 msgid "Lines"
 msgstr "線條"
 
 #: src/contents/ui/PreferencesSheet.qml:558
-#, fuzzy
 msgctxt "Spectrum shape"
 msgid "Dots"
 msgstr "點點"
 
 #: src/contents/ui/PreferencesSheet.qml:558
-#, fuzzy
 msgctxt "Spectrum shape"
 msgid "Area"
 msgstr "區塊"
@@ -3322,7 +3171,6 @@ msgid "Logarithmic frequency axis"
 msgstr "對數頻率軸"
 
 #: src/contents/ui/PreferencesSheet.qml:580
-#, fuzzy
 msgctxt "Spectrum control"
 msgid "Points"
 msgstr "點數"
@@ -3393,43 +3241,36 @@ msgid "Window function"
 msgstr "視窗功能"
 
 #: src/contents/ui/PreferencesSheet.qml:772
-#, fuzzy
 msgctxt "Spectrum function"
 msgid "Rectangular"
 msgstr "矩形"
 
 #: src/contents/ui/PreferencesSheet.qml:772
-#, fuzzy
 msgctxt "Spectrum function"
 msgid "Hann"
 msgstr "Hann"
 
 #: src/contents/ui/PreferencesSheet.qml:772
-#, fuzzy
 msgctxt "Spectrum function"
 msgid "Hamming"
 msgstr "Hamming"
 
 #: src/contents/ui/PreferencesSheet.qml:772
-#, fuzzy
 msgctxt "Spectrum function"
 msgid "Blackman"
 msgstr "Blackman"
 
 #: src/contents/ui/PreferencesSheet.qml:772
-#, fuzzy
 msgctxt "Spectrum function"
 msgid "Blackman-Harris"
 msgstr "Blackman-Harris"
 
 #: src/contents/ui/PreferencesSheet.qml:772
-#, fuzzy
 msgctxt "Spectrum function"
 msgid "Flat top"
 msgstr "平坦頂端"
 
 #: src/contents/ui/PreferencesSheet.qml:780
-#, fuzzy
 msgctxt "Spectrum control"
 msgid "Attack"
 msgstr "起音(Attack)"
@@ -3489,19 +3330,16 @@ msgid "Graphs"
 msgstr "圖形"
 
 #: src/contents/ui/PreferencesSheet.qml:924
-#, fuzzy
 msgctxt "Color scheme"
 msgid "Automatic"
 msgstr "自動"
 
 #: src/contents/ui/PreferencesSheet.qml:924
-#, fuzzy
 msgctxt "Color scheme"
 msgid "Light"
 msgstr "亮"
 
 #: src/contents/ui/PreferencesSheet.qml:924
-#, fuzzy
 msgctxt "Color scheme"
 msgid "Dark"
 msgstr "暗"
@@ -3539,7 +3377,6 @@ msgid "Grey"
 msgstr "灰"
 
 #: src/contents/ui/PreferencesSheet.qml:939
-#, fuzzy
 msgctxt "Color theme"
 msgid "User"
 msgstr "使用者"
@@ -3659,7 +3496,6 @@ msgid "Description"
 msgstr "註釋"
 
 #: src/contents/ui/PresetsCommunityPage.qml:78
-#, fuzzy
 msgctxt "Update data"
 msgid "Refresh"
 msgstr "重新整理"
@@ -3682,19 +3518,16 @@ msgid "Failed to import the %1 community preset to the list of local presets."
 msgstr "匯入 %1 社區預設集至本地預設集列表失敗。"
 
 #: src/contents/ui/PresetsDialog.qml:99 src/contents/ui/PresetsDialog.qml:156
-#, fuzzy
 msgctxt "Preset type"
 msgid "Local"
 msgstr "本地"
 
 #: src/contents/ui/PresetsDialog.qml:107 src/contents/ui/PresetsDialog.qml:156
-#, fuzzy
 msgctxt "Preset type"
 msgid "Community"
 msgstr "社群"
 
 #: src/contents/ui/PresetsDialog.qml:115
-#, fuzzy
 msgctxt "Preset type"
 msgid "Autoload"
 msgstr "自動載入"
@@ -3756,11 +3589,8 @@ msgid "Save Preset"
 msgstr "儲存預設集"
 
 #: src/contents/ui/PresetsLocalPage.qml:214
-#, fuzzy
 msgid "Save current settings to the preset: %1"
-msgstr ""
-"儲存目前設定至預設集：\n"
-"%1"
+msgstr "儲存目前設定至預設集：%1"
 
 #: src/contents/ui/PresetsLocalPage.qml:220
 msgid "Saved the current settings to %1 local preset."
@@ -3775,12 +3605,8 @@ msgid "Remove Preset"
 msgstr "移除預設集"
 
 #: src/contents/ui/PresetsLocalPage.qml:232
-#, fuzzy
 msgid "Are you sure you want to remove the preset %1 from the list?"
-msgstr ""
-"確定要移除預設集\n"
-"%1\n"
-"來自列表？"
+msgstr "確定要移除預設集 %1 來自清單？"
 
 #: src/contents/ui/PresetsLocalPage.qml:238
 msgid "Removed the %1 local preset."
@@ -3829,10 +3655,9 @@ msgstr "標準 RNNoise 模型"
 
 #: src/contents/ui/RNNoise.qml:73 src/contents/ui/RNNoise.qml:84
 #: src/contents/ui/RNNoise.qml:298 src/contents/ui/RNNoise.qml:300
-#, fuzzy
 msgctxt "RNNoise model in use"
 msgid "Using %1"
-msgstr "使用 %1"
+msgstr "進行使用 %1"
 
 #: src/contents/ui/RNNoise.qml:75
 msgid "Standard RNNoise model loaded."
@@ -3859,7 +3684,6 @@ msgid "Wet level"
 msgstr "濕等級"
 
 #: src/contents/ui/RNNoise.qml:158
-#, fuzzy
 msgctxt "Noise reduction control"
 msgid "Release"
 msgstr "釋出"
@@ -3893,37 +3717,31 @@ msgid "Room size"
 msgstr "房間大小"
 
 #: src/contents/ui/Reverb.qml:70
-#, fuzzy
 msgctxt "Reverb room size"
 msgid "Small"
 msgstr "小"
 
 #: src/contents/ui/Reverb.qml:70
-#, fuzzy
 msgctxt "Reverb room size"
 msgid "Medium"
 msgstr "中"
 
 #: src/contents/ui/Reverb.qml:70
-#, fuzzy
 msgctxt "Reverb room size"
 msgid "Large"
 msgstr "大"
 
 #: src/contents/ui/Reverb.qml:70
-#, fuzzy
 msgctxt "Reverb room size"
 msgid "Tunnel-like"
-msgstr "猶如隧道"
+msgstr "形如隧道"
 
 #: src/contents/ui/Reverb.qml:70
-#, fuzzy
 msgctxt "Reverb room size"
 msgid "Large/smooth"
 msgstr "大/平滑"
 
 #: src/contents/ui/Reverb.qml:70
-#, fuzzy
 msgctxt "Reverb room size"
 msgid "Experimental"
 msgstr "實驗性"
@@ -3957,40 +3775,34 @@ msgid "Reverberation Presets"
 msgstr "混響預設集"
 
 #: src/contents/ui/Reverb.qml:232
-#, fuzzy
 msgctxt "Reverb preset"
 msgid "Ambience"
 msgstr "環境"
 
 #: src/contents/ui/Reverb.qml:247
-#, fuzzy
 msgctxt "Reverb preset"
 msgid "Empty walls"
 msgstr "空牆"
 
 #: src/contents/ui/Reverb.qml:262
-#, fuzzy
 msgctxt "Reverb preset"
 msgid "Room"
 msgstr "房間"
 
 #: src/contents/ui/Reverb.qml:277
-#, fuzzy
 msgctxt "Reverb preset"
 msgid "Large empty hall"
 msgstr "大型空曠演廳"
 
 #: src/contents/ui/Reverb.qml:287
-#, fuzzy
 msgctxt "Reverb preset"
 msgid "Disco"
 msgstr "迪斯可"
 
 #: src/contents/ui/Reverb.qml:297
-#, fuzzy
 msgctxt "Reverb preset"
 msgid "Large occupied hall"
-msgstr "大型寬倘演廳"
+msgstr "大型佔滿的演廳"
 
 #: src/contents/ui/ShortcutsSheet.qml:67
 msgid "Show help"
@@ -4253,49 +4065,41 @@ msgid "Generic error while loading the effect"
 msgstr "載入音效時出現一般錯誤"
 
 #: src/pw_model_nodes.cpp:510
-#, fuzzy
 msgctxt "Status of PipeWire stream"
 msgid "Running"
 msgstr "運行中"
 
 #: src/pw_model_nodes.cpp:512
-#, fuzzy
 msgctxt "Status of PipeWire stream"
 msgid "Suspended"
-msgstr "已暫停"
+msgstr "已經暫停"
 
 #: src/pw_model_nodes.cpp:514
-#, fuzzy
 msgctxt "Status of PipeWire stream"
 msgid "Idle"
 msgstr "閒置"
 
 #: src/pw_model_nodes.cpp:516
-#, fuzzy
 msgctxt "Status of PipeWire stream"
 msgid "Creating"
-msgstr "建立中"
+msgstr "進行建立"
 
 #: src/pw_model_nodes.cpp:518
-#, fuzzy
 msgctxt "Status of PipeWire stream"
 msgid "Error"
 msgstr "錯誤"
 
 #: src/pw_model_nodes.cpp:520
-#, fuzzy
 msgctxt "Status of PipeWire stream"
 msgid "Unknown"
 msgstr "不明"
 
 #: src/tags_plugin_name.cpp:47
-#, fuzzy
 msgctxt "Effect title"
 msgid "Autogain"
 msgstr "自動增益"
 
 #: src/tags_plugin_name.cpp:48
-#, fuzzy
 msgctxt "Effect title"
 msgid "Autotune"
 msgstr "自動調整"
@@ -4337,7 +4141,6 @@ msgid "Deep Noise Remover"
 msgstr "深度噪音移除器"
 
 #: src/tags_plugin_name.cpp:60
-#, fuzzy
 msgctxt "Effect title"
 msgid "Delay"
 msgstr "延遲"
@@ -4355,26 +4158,23 @@ msgid "Exciter"
 msgstr "激勵器"
 
 #: src/tags_plugin_name.cpp:66
-#, fuzzy
 msgctxt "Effect title"
 msgid "Filter"
-msgstr "篩選"
+msgstr "篩選器"
 
 #: src/tags_plugin_name.cpp:67
-#, fuzzy
 msgctxt "Effect title"
 msgid "Gate"
-msgstr "閘門 (Gate)"
+msgstr "閘門"
 
 #: src/tags_plugin_name.cpp:68
 msgid "Level Meter"
 msgstr "等級量表"
 
 #: src/tags_plugin_name.cpp:70
-#, fuzzy
 msgctxt "Effect title"
 msgid "Loudness"
-msgstr "音量"
+msgstr "響度"
 
 #: src/tags_plugin_name.cpp:71
 msgid "Maximizer"
@@ -4389,7 +4189,6 @@ msgid "Multiband Gate"
 msgstr "多頻段閘門"
 
 #: src/tags_plugin_name.cpp:74
-#, fuzzy
 msgctxt "Effect title"
 msgid "Pitch"
 msgstr "音高"
@@ -4485,7 +4284,6 @@ msgid "LUFS"
 msgstr "LUFS"
 
 #: src/units.hpp:79
-#, fuzzy
 msgctxt "semitone unit (music interval) abbreviation"
 msgid "st"
 msgstr "st"
