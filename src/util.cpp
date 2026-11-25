@@ -376,7 +376,7 @@ auto interpolate(const std::vector<double>& x_source,
   std::vector<double> output(x_new.size());
 
   for (size_t n = 0; n < x_new.size(); n++) {
-    output[n] = static_cast<float>(gsl_spline_eval(spline, x_new[n], acc));
+    output[n] = gsl_spline_eval(spline, x_new[n], acc);
   }
 
   gsl_spline_free(spline);
