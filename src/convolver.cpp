@@ -152,7 +152,7 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
         if (init_zita) {
           std::scoped_lock<std::mutex> lock(data_mutex);
 
-          auto success = zita.init(data, blocksize, settings->irWidth(), settings->autogain());
+          const auto success = zita.init(data, blocksize, settings->irWidth(), settings->autogain());
 
           if (!success) {
             util::warning(std::format("{} Zita init failed", log_tag));
@@ -443,17 +443,17 @@ void Convolver::load_kernel_file(const bool& init_zita, const uint& server_sampl
     time_axis[n] = static_cast<double>(n) * dt;
   }
 
-  auto x_linear = util::linspace(time_axis.front(), time_axis.back(), interpPoints);
+  const auto x_linear = util::linspace(time_axis.front(), time_axis.back(), interpPoints);
 
   std::vector<double> copy_helper(kernel_data.sampleCount());
 
   std::ranges::copy(kernel_data.channel_L, copy_helper.begin());
 
-  auto magL = util::interpolate(time_axis, copy_helper, x_linear);
+  const auto magL = util::interpolate(time_axis, copy_helper, x_linear);
 
   std::ranges::copy(kernel_data.channel_R, copy_helper.begin());
 
-  auto magR = util::interpolate(time_axis, copy_helper, x_linear);
+  const auto magR = util::interpolate(time_axis, copy_helper, x_linear);
 
   QList<QPointF> chart_mag_L(interpPoints);
   QList<QPointF> chart_mag_R(interpPoints);
