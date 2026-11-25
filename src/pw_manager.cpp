@@ -386,7 +386,8 @@ Manager::Manager(QObject* parent)
   util::debug(std::format("Compiled with PipeWire: {}", headerVersion.toStdString()));
   util::debug(std::format("Linked to PipeWire: {}", libraryVersion.toStdString()));
 
-  // this needs to occur after pw_init(), so putting it before pw_init() in the initializer breaks this
+  // This needs to occur after pw_init(), so putting it before pw_init() in the
+  // initializer breaks this
   // NOLINTNEXTLINE(cppcoreguidelines-prefer-member-initializer)
   thread_loop = pw_thread_loop_new("ee-pipewire-thread", nullptr);
 
@@ -445,8 +446,10 @@ Manager::Manager(QObject* parent)
   sync_wait_unlock();
 
   /**
-   * In order to make sure mode_noes.append and model_nodes.remove_by_serial are called from the main thread I had to
-   * put the loop that waits for our virtual devices to be ready inside a worker thread. Otherwise the app would freeze.
+   * In order to make sure model_nodes.append and model_nodes.remove_by_serial
+   * are called from the main thread, I had to put the loop that waits for our
+   * virtual devices to be ready inside a worker thread.
+   * Otherwise the app would freeze.
    */
 
   QMetaObject::invokeMethod(
@@ -483,9 +486,9 @@ Manager::Manager(QObject* parent)
         });
 
         /**
-         * By the time our virtual devices are loaded we may have already received
-         * some streams. So we connected them here now that our virtual devices are
-         * available.
+         * By the time our virtual devices are loaded we may have already
+         * received some streams. So we connected them here now that our
+         * virtual devices are available.
          */
 
         for (const auto& node : model_nodes.get_list()) {
