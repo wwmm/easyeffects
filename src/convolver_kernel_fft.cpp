@@ -55,7 +55,7 @@ auto ConvolverKernelFFT::calculate_fft(std::vector<float> kernel_L,
   // Initialize frequency axis
   std::vector<double> freq_axis(spectrum_L.size());
 
-  double bin_hz = static_cast<double>(kernel_rate) / static_cast<double>(kernel_L.size());
+  const double bin_hz = static_cast<double>(kernel_rate) / static_cast<double>(kernel_L.size());
 
   for (uint n = 0U; n < freq_axis.size(); n++) {
     freq_axis[n] = static_cast<double>(n) * bin_hz;
@@ -67,7 +67,7 @@ auto ConvolverKernelFFT::calculate_fft(std::vector<float> kernel_L,
   spectrum_R.erase(spectrum_R.begin());
 
   // Initialize linear axis
-  auto linear_freq_axis = util::linspace(freq_axis.front(), freq_axis.back(), interp_points);
+  const auto linear_freq_axis = util::linspace(freq_axis.front(), freq_axis.back(), interp_points);
   auto linear_spectrum_L = util::interpolate(freq_axis, spectrum_L, linear_freq_axis);
   auto linear_spectrum_R = util::interpolate(freq_axis, spectrum_R, linear_freq_axis);
 
@@ -78,7 +78,7 @@ auto ConvolverKernelFFT::calculate_fft(std::vector<float> kernel_L,
   util::debug(std::format("Min fft frequency: {}", min_freq));
   util::debug(std::format("Max fft frequency: {}", max_freq));
 
-  auto log_freq_axis = util::logspace(min_freq, max_freq, interp_points);
+  const auto log_freq_axis = util::logspace(min_freq, max_freq, interp_points);
   auto log_spectrum_L = util::interpolate(freq_axis, spectrum_L, log_freq_axis);
   auto log_spectrum_R = util::interpolate(freq_axis, spectrum_R, log_freq_axis);
 
@@ -162,8 +162,8 @@ auto ConvolverKernelFFT::compute_fft_magnitude(std::vector<float>& kernel) -> st
   fftw_execute(plan);
 
   for (uint i = 0U; i < spectrum.size(); i++) {
-    float real = complex_output[i][0];
-    float img = complex_output[i][1];
+    const float real = complex_output[i][0];
+    const float img = complex_output[i][1];
 
     float mag = std::sqrt((real * real) + (img * img));
 

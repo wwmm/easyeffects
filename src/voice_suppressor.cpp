@@ -203,10 +203,10 @@ void VoiceSuppressor::process(std::span<float>& left_in,
     fftw_execute(planR);
 
     for (uint k = 0; k < fft_size; k++) {
-      float Lr = complexL[k][0];
-      float Li = complexL[k][1];
-      float Rr = complexR[k][0];
-      float Ri = complexR[k][1];
+      const float Lr = complexL[k][0];
+      const float Li = complexL[k][1];
+      const float Rr = complexR[k][0];
+      const float Ri = complexR[k][1];
 
       fft_mag_L[k] = std::hypot(Lr, Li);
       fft_mag_R[k] = std::hypot(Rr, Ri);
@@ -225,8 +225,8 @@ void VoiceSuppressor::process(std::span<float>& left_in,
 
       // Correlation
       {
-        auto cross_mag = std::hypot(fft_cross_real[k], fft_cross_img[k]);
-        auto correlation = cross_mag / ((fft_mag_L[k] * fft_mag_R[k]) + epsilon);
+        const auto cross_mag = std::hypot(fft_cross_real[k], fft_cross_img[k]);
+        const auto correlation = cross_mag / ((fft_mag_L[k] * fft_mag_R[k]) + epsilon);
 
         if (!settings->invertedMode()) {
           corr_gain = sigmoid(correlation / (settings->correlation() * 0.01));
@@ -237,7 +237,7 @@ void VoiceSuppressor::process(std::span<float>& left_in,
 
       // Phase difference
       {
-        auto phase_diff = std::abs(std::atan2(fft_cross_img[k], fft_cross_real[k]));
+        const auto phase_diff = std::abs(std::atan2(fft_cross_img[k], fft_cross_real[k]));
 
         if (!settings->invertedMode()) {
           phase_gain = sigmoid(phase_diff / (settings->phaseDifference() * std::numbers::pi_v<double> / 180.0));
@@ -249,9 +249,9 @@ void VoiceSuppressor::process(std::span<float>& left_in,
 
       // Local kurtosis
       {
-        auto kurtosis_L = compute_local_kurtosis(k, fft_mag_L.data());
-        auto kurtosis_R = compute_local_kurtosis(k, fft_mag_R.data());
-        auto kurtosis = std::max(kurtosis_L, kurtosis_R);
+        const auto kurtosis_L = compute_local_kurtosis(k, fft_mag_L.data());
+        const auto kurtosis_R = compute_local_kurtosis(k, fft_mag_R.data());
+        const auto kurtosis = std::max(kurtosis_L, kurtosis_R);
 
         if (!settings->invertedMode()) {
           kurtosis_gain = sigmoid(kurtosis / settings->minKurtosis());
@@ -262,7 +262,7 @@ void VoiceSuppressor::process(std::span<float>& left_in,
 
       // Instantaneous frequency
       {
-        auto freq_diff = std::abs(calc_instantaneous_frequency(k));
+        const auto freq_diff = std::abs(calc_instantaneous_frequency(k));
 
         if (!settings->invertedMode()) {
           inst_freq_gain = sigmoid(freq_diff / settings->maxInstFreq());
@@ -274,7 +274,7 @@ void VoiceSuppressor::process(std::span<float>& left_in,
       // Deciding if we should attenuate the frequency
 
       if ((freqs[k] >= settings->freqStart()) && (freqs[k] <= settings->freqEnd())) {
-        auto gain = phase_gain * corr_gain * kurtosis_gain * inst_freq_gain;
+        const auto gain = phase_gain * corr_gain * kurtosis_gain * inst_freq_gain;
 
         complexL[k][0] *= gain;
         complexL[k][1] *= gain;
@@ -288,7 +288,7 @@ void VoiceSuppressor::process(std::span<float>& left_in,
     fftw_execute(planInvL);
     fftw_execute(planInvR);
 
-    float norm = 1.0F / n_samples;
+    const float norm = 1.0F / n_samples;
 
     for (uint n = 0; n < n_samples; n++) {
       data_L[n] = hanning_window[n] * realL[n] * norm;
@@ -386,7 +386,7 @@ void VoiceSuppressor::free_fftw() {
 }
 
 auto VoiceSuppressor::compute_local_kurtosis(int k, double* magnitude_spectrum) const -> double {
-  int W = 1;
+  const int W = 1;
   double mean = 0;
   double var = 0;
   double fourth = 0;
@@ -401,7 +401,7 @@ auto VoiceSuppressor::compute_local_kurtosis(int k, double* magnitude_spectrum) 
 
   for (int i = k - W; i <= k + W; i++) {
     if (i >= 0 && i < static_cast<int>(fft_size)) {
-      double d = magnitude_spectrum[i] - mean;
+      const double d = magnitude_spectrum[i] - mean;
 
       var += d * d;
       fourth += d * d * d * d;
@@ -415,7 +415,7 @@ auto VoiceSuppressor::compute_local_kurtosis(int k, double* magnitude_spectrum) 
 }
 
 auto VoiceSuppressor::calc_instantaneous_frequency(const int& k) -> double {
-  double wrapped = std::atan2(fft_cross_img[k], fft_cross_real[k]);
+  const double wrapped = std::atan2(fft_cross_img[k], fft_cross_real[k]);
 
   // --- unwrap
 
@@ -429,9 +429,9 @@ auto VoiceSuppressor::calc_instantaneous_frequency(const int& k) -> double {
     delta += 2.0 * std::numbers::pi_v<double>;
   }
 
-  double unwrapped = previous_unwrapped[k] + delta;
+  const double unwrapped = previous_unwrapped[k] + delta;
 
-  double dphi = unwrapped - previous_unwrapped[k];
+  const double dphi = unwrapped - previous_unwrapped[k];
 
   previous_wrapped[k] = wrapped;
   previous_unwrapped[k] = unwrapped;
