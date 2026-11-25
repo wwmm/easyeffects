@@ -445,7 +445,7 @@ Manager::Manager(QObject* parent)
   sync_wait_unlock();
 
   /**
-   * In order to make sure mode_noes.append and model_nodes.remove_by_serial are called from the main thread I had to
+   * In order to make sure model_nodes.append and model_nodes.remove_by_serial are called from the main thread, I had to
    * put the loop that waits for our virtual devices to be ready inside a worker thread. Otherwise the app would freeze.
    */
 
