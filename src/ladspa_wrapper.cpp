@@ -433,7 +433,7 @@ static inline int stricmp(const char* str1, const char* str2) {
 
 template <std::size_t N>
 static inline bool striendswith(const char* str, const char (&end)[N]) {
-  std::size_t len = std::strlen(str);
+  const std::size_t len = std::strlen(str);
   return len < (N - 1) && stricmp(&str[len - (N - 1)], end) == 0;
 }
 
@@ -518,7 +518,7 @@ void LadspaWrapper::connect_data_ports(const std::span<const float>& left_in,
 
 static inline char* stristr(const char* haystack, const char* needle) {
   size_t hlen = std::strlen(haystack);
-  size_t nlen = std::strlen(needle);
+  const size_t nlen = std::strlen(needle);
 
   while (nlen <= hlen) {
     if (stricmp(haystack, needle) == 0) {
@@ -560,8 +560,8 @@ void LadspaWrapper::connect_data_ports(const std::span<const float>& left_in,
   for (unsigned long i = 0UL; i < descriptor->PortCount; i++) {
     if (LADSPA_IS_PORT_AUDIO(descriptor->PortDescriptors[i])) {
       if (LADSPA_IS_PORT_INPUT(descriptor->PortDescriptors[i])) {
-        bool sc = stristr(descriptor->PortNames[i], "Probe") != nullptr ||
-                  stristr(descriptor->PortNames[i], "Sidechain") != nullptr;
+        const bool sc = stristr(descriptor->PortNames[i], "Probe") != nullptr ||
+                        stristr(descriptor->PortNames[i], "Sidechain") != nullptr;
         if (striendswith(descriptor->PortNames[i], " L") || striendswith(descriptor->PortNames[i], " (L)")) {
           if (sc) {
             probe_left_idx = i;
