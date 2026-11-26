@@ -6,7 +6,23 @@ Advanced noise reduction is achieved using "DeepFilterNet" technology. This tech
 Selects the noise reduction model. Each one must be installed separately.
 
 - DeepFilterNet: requires [DeepFilterNet](https://github.com/Rikorose/DeepFilterNet).
-- DPDFNet: requires [HushMic](https://github.com/Fovty/HushMic). The Attenuation Limit and Process as Mono controls apply to this model.
+- DPDFNet: requires [HushMic](https://github.com/Fovty/HushMic). Attenuation Limit and Process as Mono apply to this model.
+
+**Processing device (DPDFNet only)**
+
+Chooses where DPDFNet runs. The preference applies to Easy Effects input
+and output on this computer and stays outside presets.
+
+- **CPU** runs the existing processor backend.
+- **Automatic** selects the NPU for eligible, performance-qualified combinations.
+- **Prefer NPU** also allows compatible combinations that have passed live-audio qualification.
+
+The selector applies the preference when you choose it. The effect reports
+a failed preference change, and refreshes availability while the page is open.
+NPU mode uses the optional HushMic host service and requires **Process as
+Mono**. Stereo or an unavailable NPU uses the CPU. The HushMic host package
+and a supported AMD driver/runtime are required on the host, including with
+Flatpak.
 
 **Process as Mono (DPDFNet only)**
 

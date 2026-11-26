@@ -42,6 +42,10 @@ class DeepFilterNet : public PluginBase {
 
   Q_PROPERTY(bool deepFilterNetInstalled MEMBER deepFilterNetInstalled CONSTANT)
   Q_PROPERTY(bool dpdfnetInstalled MEMBER dpdfnetInstalled CONSTANT)
+  Q_PROPERTY(int npuPolicy READ npuPolicy NOTIFY npuChanged)
+  Q_PROPERTY(bool npuAvailable READ npuAvailable NOTIFY npuChanged)
+  Q_PROPERTY(bool npuPolicyAvailable READ npuPolicyAvailable NOTIFY npuChanged)
+  Q_PROPERTY(bool npuPolicyWriteFailed READ npuPolicyWriteFailed NOTIFY npuChanged)
 
  public:
   DeepFilterNet(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id);
@@ -72,6 +76,15 @@ class DeepFilterNet : public PluginBase {
   auto get_latency_seconds() -> float override;
 
   Q_INVOKABLE void resetHistory();
+  Q_INVOKABLE void refreshNpuPolicy();
+  Q_INVOKABLE void setNpuPolicy(int policy);
+  [[nodiscard]] auto npuPolicy() const -> int;
+  [[nodiscard]] auto npuAvailable() const -> bool;
+  [[nodiscard]] auto npuPolicyAvailable() const -> bool { return npu_policy >= 0; }
+  [[nodiscard]] auto npuPolicyWriteFailed() const -> bool { return npu_policy_write_failed; }
+
+ Q_SIGNALS:
+  void npuChanged();
 
  private:
   DbDeepFilterNet* settings = nullptr;
@@ -80,6 +93,18 @@ class DeepFilterNet : public PluginBase {
 
   // DPDFNet is mono only, so stereo runs one instance per channel
   std::unique_ptr<ladspa::LadspaWrapper> dpdfnet_l, dpdfnet_r;
+
+  using NpuPrepare = std::uint64_t (*)(bool);
+  using NpuGetPolicy = std::int32_t (*)();
+  using NpuSetPolicy = std::int32_t (*)(std::uint8_t);
+  NpuPrepare npu_prepare = nullptr;
+  NpuGetPolicy npu_get_policy = nullptr;
+  NpuSetPolicy npu_set_policy = nullptr;
+  bool npu_query_pending = false;
+  bool npu_policy_write_failed = false;
+  int npu_queued_policy = -1;
+  int npu_policy = -1;
+  void updateNpuPolicy(int requested);
 
   bool deepFilterNetInstalled = false;
   bool dpdfnetInstalled = false;
